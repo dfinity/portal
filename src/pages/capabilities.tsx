@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
 import transitions from "@site/static/transitions.json";
@@ -71,13 +70,19 @@ const SingleCard: React.FC<{
 const SmallCard: React.FC<{
   children: React.ReactNode;
   className?: string;
-}> = ({ children, className = "bg-white-50" }) => {
+  href: string;
+}> = ({ children, className = "bg-white-50", href }) => {
   return (
-    <AnimateSpawn
-      className={clsx("rounded-xl overflow-hidden p-6 md:p-8", className)}
-      variants={transitions.container}
-    >
-      {children}
+    <AnimateSpawn variants={transitions.container}>
+      <Link
+        className={clsx(
+          "rounded-xl overflow-hidden p-6 md:p-8 hover:no-underline hover:text-black translate-y-0 hover:-translate-y-3 transition-transform text-black h-full block",
+          className
+        )}
+        href={href}
+      >
+        {children}
+      </Link>
     </AnimateSpawn>
   );
 };
@@ -155,7 +160,13 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/serve-web.webp" alt="" className=""></img>
+              <img
+                src="/img/features/serve-web.webp"
+                alt=""
+                className="aspect-[1159/629]"
+                width="1159"
+                loading="lazy"
+              ></img>
             }
             className="md:col-span-2"
           >
@@ -182,7 +193,9 @@ function FeaturesPage() {
               <img
                 src="/img/features/no-oracles-image.webp"
                 alt=""
-                className=""
+                className="aspect-[1160/760]"
+                width="1160"
+                loading="lazy"
               ></img>
             }
             className="md:col-span-2"
@@ -219,6 +232,7 @@ function FeaturesPage() {
               src="/img/features/astronaut-image.webp"
               alt=""
               className="absolute w-[194px] bottom-0 right-20 z-0"
+              loading="lazy"
             />
             <img
               src="/img/features/astronaut-bg.svg"
@@ -301,7 +315,13 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/seo-image.webp" alt="" className=""></img>
+              <img
+                src="/img/features/seo-image.webp"
+                alt=""
+                loading="lazy"
+                className="aspect-[1159/706]"
+                width="1159"
+              ></img>
             }
             className="md:col-span-2"
           >
@@ -426,10 +446,11 @@ function FeaturesPage() {
               <img
                 src="/img/features/btc-eth.webp"
                 alt=""
-                className="my-10 h-[150px] md:h-[280px]"
+                className="my-10 h-[150px] md:h-[280px] aspect-[708/420]"
+                loading="lazy"
               ></img>
             }
-            className="md:col-span-2 text-white bg-[url(/img/features/bitcoin-bg-mobile.jpg)] md:bg-[url(/img/features/bitcoin-bg.webp)] bg-stretch md:bg-cover"
+            className="md:col-span-2 text-white bg-[url(/img/features/bitcoin-bg-mobile.webp)] md:bg-[url(/img/features/bitcoin-bg.webp)] bg-stretch md:bg-cover"
           >
             <motion.h3
               className="tw-heading-4 md:tw-heading-3 mb-4 "
@@ -549,7 +570,12 @@ function FeaturesPage() {
           <SplitCard
             imageSide="right"
             image={
-              <img src="/img/features/nns-image.webp" alt="" className=""></img>
+              <img
+                src="/img/features/nns-image.webp"
+                alt=""
+                className=""
+                loading="lazy"
+              ></img>
             }
             className="md:col-span-2"
           >
@@ -587,6 +613,7 @@ function FeaturesPage() {
                 src="/img/features/sns-image.webp"
                 alt=""
                 className="px-6 w-[550px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                loading="lazy"
               ></img>
             }
             className="md:col-span-2"
@@ -661,110 +688,68 @@ function FeaturesPage() {
               blob-top-right
             "
           ></motion.div>
-          <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+          <SmallCard href="/how-it-works#Chain-key-technology">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Chain-key cryptography
-            </h4>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            </h3>
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               The Internet Computer protocol uses a toolbox of advanced
               cryptographic mechanisms, collectively known as chain-key
               cryptography, which allows the IC to achieve functionalities and
               scalability that are impossible on other blockchains.
             </p>
-            <p className="mb-0">
-              <Link
-                href="/how-it-works#Chain-key-technology"
-                className="link-external"
-              >
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+          <SmallCard href="/capabilities/actor-model">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Concurrent execution
-            </h4>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            </h3>
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Enabled by the IC's asynchronous communication, "actor" smart
               contracts run in parallel, unlocking horizontal scaling and
               preventing reentrancy attacks like the infamous DAO attack, which
               caused a major chain to hard fork and a loss of 60 million USD.
             </p>
-            <p className="mb-0">
-              <Link href="/capabilities/actor-model" className="link-external">
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h4>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+          <SmallCard href="/capabilities/daemon-contracts">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h3>
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               On other blockchain networks, smart contract computations can only
               be invoked by submitting a new transaction to their networks. The
               Internet Computer provides a means for canister smart contracts to
               be configured so that they are invoked by the blockchain itself,
               at some specified block interval.
             </p>
-            <p className="mb-0">
-              <Link
-                href="/capabilities/daemon-contracts"
-                className="link-external"
-              >
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+          <SmallCard href="/capabilities/multi-block-transactions">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Multi-block transactions
-            </h4>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            </h3>
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Smart contract calls (TXs) can be long-running and can span
               multiple blocks. This removes the tedious "round gas limit" most
               blockchains have, simplifies smart contract programming, and
               unlocks new use cases.
             </p>
-            <p className="mb-0">
-              <Link
-                href="/capabilities/multi-block-transactions"
-                className="link-external"
-              >
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+          <SmallCard href="/capabilities/webassembly">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               WebAssembly (Wasm)
-            </h4>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            </h3>
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Use any language that compiles to Wasm to write canister smart
               contracts. SDKs are available for Motoko, Rust, TypeScript, and
               Python. Any other language that compiles to Wasm can be used as
               well, for example C.
             </p>
-            <p className="mb-0">
-              <Link href="/capabilities/webassembly" className="link-external">
-                Learn more
-              </Link>
-            </p>
           </SmallCard>
-          <SmallCard>
-            <h4 className="tw-heading-6 md:tw-heading-5 mb-3">
+          <SmallCard href="/capabilities/limitless-scaling">
+            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
               Subnets &amp; infinite scalability
-            </h4>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-3">
+            </h3>
+            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               The Internet Computer incorporates a novel subnet architecture
               that enables infinite scalability, making 100% on-chain
               mass-market Web3 services possible. No cloud servers needed.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/capabilities/limitless-scaling"
-                className="link-external"
-              >
-                Learn more
-              </Link>
             </p>
           </SmallCard>
         </section>

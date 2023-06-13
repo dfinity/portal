@@ -1,5 +1,7 @@
+---
+sidebar_position: 2
+---
 # SNS ledger canister
-
 ## Overview
 
 The SNS ledger canister keeps track of the transactions between accounts in a **chain**,

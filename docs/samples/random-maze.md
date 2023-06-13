@@ -30,12 +30,16 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/random_maze`
-`dfx start --background`
+```
+cd examples/motoko/random_maze
+dfx start --background
+```
 
 ### Step 2: Install front-end dependencies:
 
-`npm install`
+```
+npm install
+```
 
 ### Step 3: Deploy the canister:
 
@@ -45,7 +49,9 @@ dfx deploy
 
 ### Step 4: Take note of the URL at which the user interface is accessible.
 
-`echo "http://127.0.0.1:4943/?canisterId=$(dfx canister id random_maze_assets)"`
+```
+echo "http://127.0.0.1:4943/?canisterId=$(dfx canister id random_maze_assets)"
+```
 
 ![Maze interface](./_attachments/maze1.png)
 

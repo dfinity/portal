@@ -16,7 +16,7 @@ Canisters themselves can have ECDSA keys using a novel chain-key ECDSA signature
 
 The protocol-level Bitcoin integration and chain-key ECDSA signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on the IC. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions and are non-trivial to use and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA signature API is also generically useful for any ECDSA use case, e.g., integration with other blockchains such as Ethereum.
 
-We next give a high-level overview of the abovementioned technology behind the direct Bitcoin integration. For details, we refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](../t-ecdsa/t-ecdsa-how-it-works.md).
+We next give a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, we refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](../t-ecdsa/t-ecdsa-how-it-works.md).
 
 ## Protocol-level integration of the IC with the Bitcoin network
 
@@ -79,7 +79,7 @@ We refer to the [Internet Computer interface specification](/references/ic-inter
 The Bitcoin functionality including ECDSA chain-key signatures is available in all stages required for the development life cycle on the IC:
 -   The **IC SDK** for local development of canisters.
 -   IC support as the pre-production environment for final testing on **Bitcoin testnet**.
--   IC support as the production environment for the release using **Bitcoin mainnet**.
+-   IC support as the production environment for the release using the **Bitcoin mainnet**.
 
 ### Local SDK
 
@@ -87,7 +87,7 @@ In the typical canister development workflow, canisters on the IC are compiled a
 
 In contrast to the IC deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally-running bitcoind node in regression testing (regtest) mode. Using bitcoind in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, we integrated the IC SDK with bitcoind in regtest mode to bring the best Bitcoin development experience to the IC. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
-The Bitcoin adapter of the single replica running the local SDK environment connects to the local bitcoind node instead of multiple nodes of Bitcoin Testnet or Mainnet. To see the relevant flags on dfx, please look at the output of `dfx start --help`.
+The Bitcoin adapter of the single replica running the local SDK environment connects to the local `bitcoind` node instead of multiple nodes of Bitcoin Testnet or Mainnet. To see the relevant flags on dfx, please look at the output of `dfx start --help`.
 
 ### Bitcoin testnet on the IC
 

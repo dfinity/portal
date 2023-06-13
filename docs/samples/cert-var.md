@@ -52,8 +52,10 @@ Begin by opening a terminal window.
 
 ### Step 1: Navigate into the folder containing the project's files and start a local instance of the Internet Computer with the command:
 
-`cd examples/motoko/cert-var`
-`dfx start --background`
+```
+cd examples/motoko/cert-var
+dfx start --background
+```
 
 ### Step 2: Install the front-end dependencies:
 
@@ -164,12 +166,12 @@ module.exports = {
       process: require.resolve("process/browser"),
     }),
   ],
-  // proxy /api to port 8000 during development
+  // proxy /api to port 4943 during development
   devServer: {
     proxy: {
       "/api": {
 	static: './',
-        target: "http://localhost:8000",
+        target: "http://localhost:4943",
         changeOrigin: true,
         pathRewrite: {
           "^/api": "/api",
@@ -191,8 +193,8 @@ app.get('/', function (req, res) {
   res.send('Hello World!'); // This will serve your request to '/'.
 });
 
-app.listen(8000, function () {
-  console.log('Example app listening on port 8000!');
+app.listen(4943, function () {
+  console.log('Example app listening on port 4943!');
  });
 ```
 
@@ -225,12 +227,16 @@ app.listen(8000, function () {
 
 ### Step 7: Start a local web server that hosts the front-end.
 
-`npm start`
+```
+npm start
+```
 
 
 ### Step 8: Visit the frontend, and interact with the demo there:
 
-`http://localhost:8080/`
+```
+http://localhost:4943/?canisterId=$CANISTER_ID
+```
 
 This should present an entry for "New value of variable", and a button to "Set and get!".
 

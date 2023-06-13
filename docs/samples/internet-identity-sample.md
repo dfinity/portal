@@ -22,9 +22,10 @@ This is a Motoko example that does not currently have a Rust variant.
 
 ### Step 1: Navigate into the examples folder for this sample and then generate a new project with `dfx new`:
 
-`cd examples/motoko/internet_identity_integration`
-`dfx new greet`
-
+```
+cd examples/motoko/internet_identity_integration
+dfx new greet
+```
 
 You should have a starter project generated with the following file structure:
 
@@ -68,7 +69,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 }
 ```
 
-This adds a prebuilt Internet Identity canister to your project. The remote property makes sure, that this canister is only deployed locally (as it already exists on mainnet). The frontend property tells dfx that this canister does have a front-end (so it prints the front-end URL after deployment, see the next step). The URLs point to the latest dev build release of Internet Identity. The dev build has some extra features that make Internet Identity easier to use in a development setting (such as a predictable captcha, no requirement for WebAuthn, etc.).
+This adds a prebuilt Internet Identity canister to your project. The remote property makes sure, that this canister is only deployed locally (as it already exists on the mainnet). The frontend property tells dfx that this canister does have a front-end (so it prints the front-end URL after deployment, see the next step). The URLs point to the latest dev build release of Internet Identity. The dev build has some extra features that make Internet Identity easier to use in a development setting (such as a predictable captcha, no requirement for WebAuthn, etc.).
 
 ### Step 3: Deploy Internet Identity locally.
 Run `dfx deploy` to deploy all canisters including Internet Identity to the local replica. It should print the Internet Identity URL to the console:
@@ -93,7 +94,7 @@ URLs:
 Open the `internet_identity` link in the browser. You should be able to create anchors and register devices.
 
 ### Step 4: Make the Internet Identity URL available in the build process.
-We want the sample application to integrate with Internet Identity differently depending on whether we deploy locally or on mainnet:
+We want the sample application to integrate with Internet Identity differently depending on whether we deploy locally or on the mainnet:
 
 - Locally the application should use the Internet Identity URL http://127.0.0.1:4943/?canisterId=<II_CANISTER_ID>.
 - On the mainnet it should use https://identity.ic0.app.
@@ -234,7 +235,9 @@ module.exports = {
 ### Step 5: Add the auth-client library to the front-end.
 The auth-client is a library provided by DFINITY to make integration with Internet Identity easy. Run:
 
-`npm install @dfinity/auth-client @dfinity/identity --save-dev`
+```
+npm install @dfinity/auth-client @dfinity/identity --save-dev
+```
 
 ### Step 6: Add a login button to the front-end.
 Open the `index.html` file and replace the content with the following:

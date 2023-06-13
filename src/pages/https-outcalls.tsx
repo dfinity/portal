@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import Head from "@docusaurus/Head";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Link from "@docusaurus/Link";
 import RightPointer from "@site/static/img/svgIcons/rightPointer.svg";
@@ -8,6 +7,7 @@ import {
   CardWithBackground,
   CardWithDescription,
 } from "@site/src/components/Common/Card";
+import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 
@@ -20,21 +20,8 @@ function HTTPSOutcalls() {
       world, opening up a plethora of use cases."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-https-outcalls.jpeg"
-          }
-        />
-        <title>HTTPS outcalls</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-https-outcalls.jpeg"></ShareMeta>
+
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
@@ -177,7 +164,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Dev docs"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/"
+              href="https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/"
             />
             <CardWithDescription
               title="Beyond oracles"
@@ -192,7 +179,7 @@ function HTTPSOutcalls() {
             />
             <CardWithDescription
               title="ICP Wiki"
-              description="Get a high-level overview of how HTTPS oucalls work on the Internet Computer."
+              description="Get a high-level overview of how HTTPS outcalls work on the Internet Computer."
               href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
             />
           </div>

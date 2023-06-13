@@ -86,6 +86,10 @@ A dapp sample that demonstrates Conway’s [Game of Life](https://en.wikipedia.o
 - [Documentation](game-of-life).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/life).
 
+## HTTP counter
+The example demonstrates a counter dapp and an HTTP interface. It is essentially an iteration on the counter canister which adds native HTTP interfaces.
+- [Documentation](http-counter).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/http_counter).
 
 ## Hosting a static website
 
@@ -110,12 +114,43 @@ This sample code demonstrates how a dapp can transfer ICP to its most active use
 - [Documentation](internet-identity-sample).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/internet_identity_integration).
 
+## Invoice canister
+
+- [Documentation](invoice-canister).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/invoice-canister).
+
+## Minimal counter dapp
+
+The example dapp shows how to build a very basic dapp with both backend and frontend, using Motoko for the backend functionality and plain HTML and JavaScript for the frontend. The dapp is a simple counter, which will increment a counter by clicking a button in the frontend.
+
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/minimal-counter-dapp).
+- [Documentation](minimal-counter-dapp).
+
 ## NFT minting
 
 This NFT minting dapp showcases how easy it can be to create a user generated NFT and share it. This dapp uses the [DIP721](https://github.com/Psychedelic/DIP721) NFT standard.  
 - [Documentation](nft).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container).
 - [YouTube tutorial](https://youtu.be/1po3udDADp4).
+
+## NFT wallet
+This is an NFT wallet example dapp that utilizes minted NFTs from the Rust dip721-nft-container. Among some of its essential features, the wallet can register NFTs, transfer out NFTs and check how many NFTs it contains. This dapp includes a frontend UI for interaction. 
+
+- [Documentation](nft-wallet).
+- [Rust](https://github.com/dfinity/examples/tree/master/rust/nft-wallet).
+
+## Periodic tasks
+
+This example demonstrates different ways of scheduling periodic tasks on the Internet Computer: timers and heartbeats. The example shows the difference between the two, and helps to decide which method suits you the best.
+- [Documentation](periodic-tasks.md).
+- [Rust](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks).
+
+## Persistent storage
+
+The example dapp shows how to build a simple dapp in Motoko, which will have persistent storage. The dapp is a simple counter, which will increment a counter, retrieve the counter value and reset the counter value by calling backend functions. The functions are exposed through a Candid interface.
+
+- [Documentation](persistent-storage).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/persistent-storage).
 
 ## Phone book
 
@@ -159,18 +194,15 @@ This example is a simple CRUD dapp.
 - [Documentation](superheros).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/superheroes).
 
+## Who am I?
+
+This dapp is a simple canister that reports the Principal of its caller.
+- [Documentation](whoami).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/whoami).
+
 ## Explore further samples in Motoko
 
 This is a collection of repo-links to additional code samples written in Motoko. Most are also available in the [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/). The playground provides the simplest environment for trying out pure Motoko samples without having to download and learn to use the SDK, but does not support dapps with frontends.
-
-### Basic
-
-This is collection of basic getting-started Motoko samples, which demonstrate basic concepts of the IC and the Motoko language.
-
--   [Whoami](https://github.com/dfinity/examples/tree/master/motoko/whoami) is a simple canister that reports the Principal of its caller.
-
-### Intermediate
-
 
 
 ### Full stack
@@ -180,7 +212,6 @@ These samples demonstrate how to build dapps on the IC, with frontends based on 
 -   [Auth client demo](https://github.com/krpeacock/auth-client-demo) is a simple authentication with Internet Identity.
 
 -   [IC-avatar](https://github.com/krpeacock/ic-avatar) is a full-stack Motoko + React with more advanced authentication, image uploads, and optimistic updates.
-
 
 
 ### Advanced

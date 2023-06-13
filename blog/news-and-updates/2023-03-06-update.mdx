@@ -7,7 +7,7 @@ authors:
   - name: Kento Sugama
 ---
 
-# Motoko Biweekly Update Part 8!
+# Motoko update: March 6, 2023
 ![|624x351](../_assets/motoko_dash.jpeg)
 
 <head>
@@ -15,7 +15,7 @@ authors:
   <meta property="twitter:image" content={require('../_assets/motoko_dash.jpeg').default}/>
 </head>
 
-Hi Motoko Devs!
+Hi Motoko devs!
 
 Welcome to the latest Motoko update post.
 
@@ -25,7 +25,7 @@ Today we'll be talking about a new `let-else` binding and improved deserializati
 
 ![|624x55](../_assets/code.png)
 
-## New Language Feature: `let-else` binding!
+## New language feature: `let-else` binding!
 
 There is a new `let` binding known as the `let-else` binding! `let-else` works similarly to the usual `let` binding, except there is an `else` block that gets executed in case of a pattern match failure.
 
@@ -82,12 +82,12 @@ Please let us know your experience working with this binding!
 
 ![|328x240](../_assets/stack_with_motoko.png)
 
-## Improved Candid Serialization and Deserialization
+## Improved Candid serialization and deserialization
 
 Before, it was possible that you could serialize a Motoko value to Candid, but deserializing that encoded value back to Motoko would fail with a trap. It turns out that this was due to the stack consumption of Candid decoding being greater than the stack consumption of Candid encoding, especially when decoding deeply nested, recursive values such as lists. Although Candid related, the problem could also prevent upgrades, since the current stable variable format is based on Candid. Luckily, we managed to diagnose and fix the issue (a premature stack overflow) by putting the Candid decoder on a stack diet. While not a cure-all, our fix should prevent other surprising failures in the future.
 
 See details for this [here](https://github.com/dfinity/motoko/pull/3809).
 
-# Till next time!
+## Till next time!
 
 – DFINITY Languages team

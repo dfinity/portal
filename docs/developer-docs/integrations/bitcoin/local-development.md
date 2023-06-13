@@ -117,7 +117,7 @@ node is up and running, and that you're setting the correct port (default is `18
             Deployed canisters.
             URLs:
             Candid:
-                basic_bitcoin: http://127.0.0.1:8000/?canisterId=...
+                basic_bitcoin: http://127.0.0.1:4943/?canisterId=...
 
 Your canister is live and ready to use! You can interact with it using either the command line,
 or using the Candid UI, which is the link you see in the output above.

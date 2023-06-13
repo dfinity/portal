@@ -127,7 +127,9 @@ Now, your directory should look something like this:
 
 ### Step 9: To deploy your website, ensure you are in your terminal at the root of the project, and run this command:
 
-`dfx deploy --network ic`
+```
+dfx deploy --network ic
+```
 
 You should see some output in your console, and a success message looking something like this:
 
@@ -149,11 +151,15 @@ You should see some output in your console, and a success message looking someth
 
 Find your new canister’s ID by running the command:
 
-`dfx canister --network ic id website`
+```
+dfx canister --network ic id website
+```
 
 This command will return output that will look something like this:
 
-`cbopz-duaaa-aaaaa-qaaka-cai`
+```
+cbopz-duaaa-aaaaa-qaaka-cai
+```
 
 This is your **canister ID**. Take this canister ID and visit `https://<canister-id>.icp0.io`, inserting your own canister ID as the subdomain in the URL.
 

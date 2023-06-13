@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import styles from "./index.module.css";
-import { motion, useAnimation } from "framer-motion";
-import transitions from "@site/static/transitions.json";
 import Link from "@docusaurus/Link";
+import transitions from "@site/static/transitions.json";
+import { motion } from "framer-motion";
+import React from "react";
 import BiometricIcon from "./biometric.svg";
+import styles from "./index.module.css";
 import NoTrackingIcon from "./privacy.svg";
 import WebAuthnIcon from "./webauthn.svg";
 
@@ -61,7 +60,6 @@ const InternetIdentity = () => {
       >
         <motion.div variants={transitions.item} className={styles.card}>
           <BiometricIcon></BiometricIcon>
-
           <h3 className="tw-heading-5 md:tw-heading-3 m-0">
             Biometric authorization
           </h3>

@@ -9,9 +9,9 @@ title: 'Conclusion'
 
 You have built a dapp fully on-chain with both backend and frontend components.
 
-## Deploying to Mainnet
+## Deploying to the mainnet
 
-If you would like to deploy this dapp to mainnet, you can follow the same steps in the first tutorial: [deploy a dapp on-chain](../deploy_sample_app/#deploying-on-chain).
+If you would like to deploy this dapp to the mainnet, you can follow the same steps in the first tutorial: [deploy a dapp on-chain](../deploy_sample_app/#deploying-on-chain).
 
 ## Tutorial takeaways
 

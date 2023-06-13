@@ -15,8 +15,8 @@ Integrate directly with the Bitcoin network allowing canisters on the IC to rece
 ## HTTPS Outcalls
 HTTP(S) outcalls on the IC enable canisters to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the canister such that the replicated state can safely be updated using those inputs. A first in blockchain history, and alleviates the need for oracles.
 
-* [HTTPS outcalls](./http_requests/index.md) gives an overview of how the IC can communicate with the world outside.
-* [How it works](./http_requests/http_requests-how-it-works.md) to dive further into the details and gives a comparison against oracles.
+* [HTTPS outcalls](./https-outcalls/index.md) gives an overview of how the IC can communicate with the world outside.
+* [How it works](./https-outcalls/https-outcalls-how-it-works.md) to dive further into the details and gives a comparison against oracles.
 
 ## ICP Ledger
 The Internet Computer Protocol (ICP) implements management of ICP using a specialized canister, called the ledger canister. There is a single ledger canister which runs alongside other canisters on the NNS subnet. The ledger canister is a smart contract that holds accounts and transactions.
@@ -40,11 +40,13 @@ Rosetta is an open standard introduced by Coinbase to simplify the integration o
 * [Hotkeys](./rosetta/hotkeys.md) explains how to generate a hotkey for neuron management.
 
 ## Service Nervous System (SNS)
-Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md), sorted by the target group that it aims at, and then provides the documentation aimed at developers.
+Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md) and then provides the documentation aimed at developers.
 
-* [A technical introduction to the SNS.](./sns/sns-intro.md)
-* [Information on how to get an SNS.](./sns/get-sns/get-sns-intro.md)
-* Information on how to integrate with an SNS, including frontend integration and integration with the [ledger canister](./sns/integrate-sns/ledger-integration.md) and [index canister](./sns/integrate-sns/index-integration.md)
+* [An introduction to the SNS.](./sns/lifecycle-sns/sns-intro-highlevel.md)
+* [An introduction to how to prepare for an SNS launch.](./sns/tokenomics/index.md)
+* [SNS integration documentation.](./sns/integrate-sns/index.md)
+* [SNS testing documentation.](./sns/get-sns/get-sns-intro.md)
+* [An introduction to the SNS launch.](./sns/launch-sns/launch-sns.md)
 * [Information on how to manage an SNS.](./sns/managing-sns/manage-sns-intro.md)
 
 ## Threshold ECDSA

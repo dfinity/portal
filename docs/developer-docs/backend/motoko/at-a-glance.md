@@ -26,7 +26,7 @@ Edit the HTML, JavaScript, and CSS that provides the frontend for your service o
 Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment.
 
 ## Step 5:
-Register, build, and deploy locally or on mainnet (for mainnet, use:`--network ic`).
+Register, build, and deploy locally or on the mainnet (for the mainnet, use:`--network ic`).
 
         dfx deploy --network <network>
 

@@ -21,7 +21,12 @@ function RunButton(props) {
       onClick={() => handleRun(props)}
       title="Run Code"
     >
-      <img src={runIcon} style={{ width: "20px", height: "20px" }} />
+      <img
+        src={runIcon}
+        style={{ width: "20px", height: "20px" }}
+        alt="Run code"
+        loading="lazy"
+      />
     </button>
   );
 }
@@ -57,7 +62,7 @@ export default function StringWrapper(props) {
         />
       );
     }
-    const { useCodeJar } = require('react-codejar');
+    const { useCodeJar } = require("react-codejar");
     const [code, setCode] = useState(props.children || "");
     const [output, setOutput] = useState("");
     const [error, setError] = useState("");
@@ -65,7 +70,7 @@ export default function StringWrapper(props) {
 
     // syntax highlighting is done by CodeJar, creating new React components
     const editorRef = useCodeJar({
-      code: code.replace(/^\s+|\s+$/g, ''), // trim newlines
+      code: code.replace(/^\s+|\s+$/g, ""), // trim newlines
       onUpdate: (e) => {
         setCode(e);
       },

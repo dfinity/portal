@@ -14,13 +14,14 @@ This example uses the ledger transfer project files located in the [samples Gith
 
 This example requires an installation of:
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
-- [x] Assure that you have stopped any local canister execution environment (i.e. replica) or other network process that would create a port conflict on 8000.
 - [x] Download and install [git.](https://git-scm.com/downloads)
 
 ### Step 1: Create a new `dfx` project and navigate into the project's directory.
 
-`dfx new ledger_transfer`
-`cd ledger_transfer`
+```
+dfx new ledger_transfer
+cd ledger_transfer
+```
 
 ### Step 2: Download a pre-built ledger canister module and Candid interface files:
 
@@ -87,7 +88,9 @@ This download should result in 3 files:
 
 ### Step 5: Start a local replica:
 
-`dfx start --background`
+```
+dfx start --background
+```
 
 ### Step 6: Create a new identity that will work as a minting account:
 
@@ -109,7 +112,9 @@ export LEDGER_ACC=$(dfx ledger account-id)
 
 ### Step 8: Deploy the ledger canister to your network:
 
-`dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}})'`
+```
+dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}})'
+```
 
 If you want to setup the ledger in a way that matches the production deployment, you should deploy it with archiving enabled. In this setup, the ledger canister dynamically creates new canisters to store old blocks. We recommend using this setup if you are planning to exercise the interface for fetching blocks.
 
