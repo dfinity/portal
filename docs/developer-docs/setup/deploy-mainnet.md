@@ -2,7 +2,7 @@
 title: Mainnet deployment
 ---
 
-# Deploying to the Internet Computer Mainnet 
+# Deploying to the Internet Computer mainnet 
 
 ## Overview
 
@@ -10,7 +10,7 @@ This scenario assumes that you are installing the IC SDK for the first time and 
 
 If you are only deploying projects in a local development environment, see the [local development](./deploy-locally.md) scenario.
 
-To get started, let’s build and deploy a simple Hello dapp that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the dapp using the command-line or in an HTML page if you access the dapp in a browser.
+To get started, let’s build and deploy a simple 'Hello, world!' dapp that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the dapp using the command-line or in an HTML page if you access the dapp in a browser.
 
 ## Prerequisites
 
@@ -23,11 +23,11 @@ Before you download and install this release of the IC SDK, verify the following
 -   [x] You have ICP tokens or cycles available for you to use.
 
 :::info
-You must have **cycles** available to complete this guide. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This guide assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles and transfer those cycles to a **cycles wallet** that you control.
+You must have **cycles** available to complete this guide. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This guide assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles, then transfer those cycles to a **cycles wallet** that you control.
 
-For information about how to get ICP tokens, see [how you can get ICP tokens](/concepts/tokens-cycles.md#get-cycles). 
+For information about how to get ICP tokens, see [how you can get ICP tokens](../setup/cycles/converting_icp_tokens_into_cycles.md).
 
-For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network nervous system dapp quick start](../../tokenomics/token-holders/nns-app-quickstart).
+For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network Nervous System dapp quick start](../../tokenomics/token-holders/nns-app-quickstart).
 
 For information about using your default cycles wallet after you have created it, see [use the default cycles wallet](/developer-docs/setup/cycles/cycles-wallet.md).
 :::
@@ -80,7 +80,7 @@ To verify the IC SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this guide, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](/developer-docs/backend/motoko/explore-templates.md) guide.
+For this guide, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [explore the default project](/docs/developer-docs/backend/motoko/explore-templates.md) guide.
 
 To create a new project for your first dapp:
 
@@ -120,7 +120,7 @@ To check your connection to the IC:
 
 ## Confirm your developer identity and ledger account
 
-All ICP token transactions are recorded in a [ledger canister](/references/glossary.md#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
+All ICP token transactions are recorded in a [ledger canister](../../references/glossary.md#ledger) running on the Internet Computer blockchain. The ledger canister consists of **account identifiers** and **balances** for all ICP token holders.
 
 Before you can transfer any ICP tokens you hold in your ledger account, you need to send a secure and properly-signed message that verifies your identity to the ledger and authorizes your developer identity to complete the transaction.
 
@@ -230,7 +230,7 @@ To validate your cycles wallet:
 
         https://<WALLET-CANISTER-ID>.icp0.io
 
-    The first time you access the application, you see a notice that you are using an Anonymous Device and are prompted to authenticate your identity, authorize access to the wallet, and register your device.
+    The first time you access the application, you see a notice that you are using an 'Anonymous Device' and are prompted to authenticate your identity, authorize access to the wallet, and register your device.
 
 - #### Step 3:  Click **Authenticate** to continue to the Internet Identity service.
 
@@ -258,7 +258,7 @@ To validate your cycles wallet:
 
     ![cycles wallet](_attachments/cycles-wallet.png)
 
-    For more information about the commands and methods available for working with the default cycles wallet, see [Use the default cycles wallet](/developer-docs/setup/cycles/cycles-wallet.md).
+    For more information about the commands and methods available for working with the default cycles wallet, see [use the default cycles wallet](/docs/developer-docs/setup/cycles/cycles-wallet.md).
 
 ## Register, build, and deploy the application
 
@@ -272,7 +272,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](/developer-docs/frontend/index.md#troubleshoot-node).
+    For more information about this step, see [ensuring node is available in a project](/developer-docs/frontend/index.md#troubleshoot-node).
 
 - #### Step 3:  Register, build, and deploy your first application by running the following command:
 
@@ -324,8 +324,6 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         dfx canister --network ic call hello_backend greet '("everyone": text)'
 
-
-### What this does
     Let’s take a closer look at this example:
 
     -   Using the `--network ic` option indicates that the canister you want to call is deployed on the `ic`. The `ic` network alias is an internally-reserved alias for accessing the Internet Computer blockchain mainnet.
@@ -384,7 +382,7 @@ Here are some suggestions for where to go next:
 
 -   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
 
--   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
 
 -   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.
 

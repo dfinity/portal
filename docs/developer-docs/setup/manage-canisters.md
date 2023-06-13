@@ -116,9 +116,9 @@ To add a wallet for use with an existing canister:
 
 ## Reinstall a canister
 
-During the development cycle, you might want to install, then replace your program as you debug and improve it.
+During the development cycle, you might want to install, then update your program as you debug and improve it.
 
-In this scenario, you might want to keep the canister identifier you have registered but without preserving any of the canister code or state. For example, your canister might only have test data that you don’t want to keep or you might have decided to change the program altogether but want to reinstall under a canister identifier you used to install a previous program.
+In this scenario, you might want to keep the canister identifier you have registered but without preserving any of the canister code or state. For example, your canister might only have test data that you don’t want to keep or you might have decided to change the program altogether. In these scenarios, you may want to reinstall under a canister identifier you used to install a previous program.
 
 To reinstall a canister:
 
@@ -148,11 +148,11 @@ To set an identity for a project:
 
 - #### Step 1:  Create a new project by running the following command:
 
-        dfx new pubs
+        dfx new project
 
 - #### Step 2:  Change to the project directory by running the following command:
 
-        cd pubs
+        cd project
 
 - #### Step 3:  Start the local canister execution environment in the background by running the following command:
 
@@ -174,9 +174,9 @@ To set an identity for a project:
 
     These commands run using the `registered_owner` identity, making that user the owner of the canisters deployed.
 
-- #### Step 7:  Call the `greet` function to verify a successful deployment by running the following command:
+- #### Step 7:  Call the `greet` function from your project's *`_backend` canister to verify a successful deployment by running the following command:
 
-        dfx canister call pubs greet '("Sam")'
+        dfx canister call project_backend greet '("Sam")'
 
 ## Managing the running state of a canister
 
@@ -219,7 +219,7 @@ Unlike a canister reinstall that preserves the canister identifier but no state,
 
 For example, assume you have a dapp that manages professional profiles and social connections. If you want to add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously-stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
 
-To preserve state when you are upgrading a canister written in Motoko, be sure to use the `stable` keyword to identify the variables you want to preserve. For more information about preserving variable state in Motoko, see [Stable variables and upgrade methods](/motoko/main/upgrades.md). If you are upgrading a canister written in Rust, you should use `pre_upgrade` and `post_upgrade` functions as illustrated in the [Rust CDK asset storage](https://github.com/dfinity/cdk-rs/blob/master/examples/asset_storage/src/asset_storage_rs/lib.rs) example to ensure data is properly preserved after a canister upgrade.
+To preserve state when you are upgrading a canister written in Motoko, be sure to use the `stable` keyword to identify the variables you want to preserve. For more information about preserving variable state in Motoko, see [stable variables and upgrade methods](/motoko/main/upgrades.md). If you are upgrading a canister written in Rust, you should use `pre_upgrade` and `post_upgrade` functions as illustrated in the [Rust CDK asset storage](https://github.com/dfinity/cdk-rs/blob/master/examples/asset_storage/src/asset_storage_rs/lib.rs) example to ensure data is properly preserved after a canister upgrade.
 
 To upgrade a canister:
 
@@ -235,7 +235,7 @@ To upgrade a canister:
 
     Note that your program must identify the variables for which to maintain state by using the `stable` keyword in the variable declaration.
 
-    For more information about declaring stable variables, see the *Motoko Programming Language Guide*.
+    For more information about declaring stable variables, see the [**Motoko programming language guide**](../../motoko/intro/index.md).
 
 - #### Step 4:  Upgrade all of the canisters by running the following command:
 
@@ -243,9 +243,15 @@ To upgrade a canister:
 
 ## Delete a canister
 
-If you want to permanently delete a specific canister or all canisters for a specific project on a given deployment (either local, or remote), you can do so by running the `dfx canister delete` command.
+If you want to permanently delete a specific canister or all canisters for a specific project on a given deployment (either local, or remote), you can do so by running the command:
+ 
+```
+dfx canister delete <canister-name>
+```
 
 Deleting a canister removes the canister identifier, code, and state. Before you can delete a canister, however, you must first stop the canister to clear any pending message requests or replies.
+
+## Delete all canisters
 
 To delete all canisters for a project:
 
@@ -275,4 +281,4 @@ To delete all canisters for a project:
 
 -   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
 
--   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 

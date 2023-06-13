@@ -7,9 +7,10 @@ sidebar_position: 1
 
 To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is common practice to use an SDK. The [IC SDK](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) is a common entry point. The IC SDK supports a few programming languages out of the box.
 
-Because the ICP blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
+Because the Internet Computer blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create IC canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
 
 In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
+
 In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. 
 
 The most common languages to use are:
@@ -18,7 +19,7 @@ The most common languages to use are:
   - [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
   - One can use Motoko via the [IC SDK](https://github.com/dfinity/sdk) by DFINITY.
   - See [introduction to developing canisters in Motoko](./motoko/index.md).
-  - You can get a sense of Motoko by using the web-based [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app).
+  - You can get a sense of Motoko by using the web-based [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app).
 - **Rust**
   - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK).
   - See [introduction to developing canisters in Rust](./rust/index.md).
@@ -32,7 +33,7 @@ The most common languages to use are:
   - The Solidity support on Internet Computer is available via the [Bitfinity docs](https://docs.bitfinity.network/) by the [Bitfinity EVM team](https://bitfinity.network), providing the ability to create EVM-based smart contracts.
   - This opens up new possibilities for developers familiar with Ethereum and Solidity to leverage the Internet Computer’s capabilities.
 
-It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts) . What language works behind the candid interface, however, does not matter.
+It is also possible to split your work between multiple languages. Different canister smart contracts talk to each other using the [Candid](./candid/index.md) language (an [IDL](https://en.wikipedia.org/wiki/Interface_description_language) used commonly in ICP smart contracts). What language works behind the Candid interface, however, does not matter.
 
 ## A comparison between Motoko and Rust
 

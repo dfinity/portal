@@ -7,13 +7,13 @@ sidebar_position: 3
 
 As discussed in [tokens and cycles](/concepts/tokens-cycles.md), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
-Unlike ICP tokens, cycles are only associated with canisters and not user or developer principals. Because only canisters require and consume cycles to perform operations and to pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. Because the cycles wallet holds the cycles required to perform operations such as creating new canisters, these operations are executed using the canister principal for the cycles wallet instead of your user principal.
+Unlike ICP tokens, cycles are only associated with canisters and not with user or developer principals. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
 For the purposes of using the local canister execution environment, the SDK automatically creates a default cycles wallet for you in every project and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local canister execution environment.
 
-In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly.
+In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about how to use `dfx wallet` [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-wallet).
 
-You should keep in mind, however, that calls to the cycles wallet canister are executed using the cycles wallet principal associated with the currently-selected user identity. Depending on your currently-selected identity and whether the principal associated with that identity has been added as a controller or a custodian for a wallet, you might see different results or be denied access to a specific method.
+You should keep in mind, however, that calls to the cycles wallet canister are executed using the cycles wallet principal associated with the currently selected user identity. Depending on your currently selected identity and whether the principal associated with that identity has been added as a controller or a custodian for a wallet, you might see different results or be denied access to a specific method.
 
 To check the identity you are currently using, run the following command:
 
@@ -24,9 +24,10 @@ To check the identity you are currently using, run the following command:
 A user principal or canister principal can be assigned to a **controller** or **custodian** role.
 
 :::info
-The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a wallet-internal role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
+The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a **wallet-internal** role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
 :::
 
+### Controllers
 A **controller** is the most privileged role and a principal assigned to the controller role can perform privileged tasks including the following:
 
 -   Add and remove other principals as controllers.
@@ -45,6 +46,8 @@ A **controller** is the most privileged role and a principal assigned to the con
 
 -   Create canisters and additional cycles wallets.
 
+### Custodians
+
 A principal assigned to the **custodian** role can only perform a subset of cycles wallet management tasks, including the following:
 
 -   Access the cycles wallet balance and all other wallet-related information.
@@ -61,13 +64,26 @@ Authorizing a principal as a custodian does not automatically grant the principa
 
 If you are doing local development, your cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
 
-If you are deploying on the Internet Computer, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](/developer-docs/setup/deploy-mainnet.md#creating-a-cycles-wallet) shows how to do this.
+If you are deploying on the Internet Computer mainnet, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](/developer-docs/setup/deploy-mainnet.md#creating-a-cycles-wallet) shows how to do this.
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
 ## Check the cycle balance
 
-In the local canister execution environment or with a cycles wallet on the Internet Computer, you can use the `dfx wallet balance` command or the `wallet_balance` method to check the current cycle balance.
+In the local canister execution environment or with a cycles wallet on the Internet Computer, you can use the:
+
+
+```
+dfx wallet balance
+```
+
+or 
+
+```
+wallet_balance
+``` 
+
+commands to check the current cycle balance.
 
 ### Check your cycles balance when developing locally
 
@@ -119,7 +135,25 @@ The command returns the balance using Candid format as a record with an amount f
 
     (record { 3_573_748_184 = 6_895_656_625_450 })
 
-## `dfx` wallet functions
+command to create a cycles wallet canister tied to an identity. You can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
+
+## Listing wallets
+
+You can use the:
+
+```
+dfx wallet addresses
+``` 
+
+command to display the wallet's principal and role (contact, custodian, or controller), and might contain a name, and kind (unknown, user, or canister) associated with the address.
+
+## Using your wallet
+
+After you have used the `dfx identity deploy-wallet` command to create a cycles wallet canister tied to an identity, you can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
+
+For more details on each supported method, see the [dfx wallet reference](../../../references/cli-reference/dfx-wallet).
+
+### `dfx` wallet functions
 
 Use the `dfx wallet` command with subcommands and flags to manage the cycles wallets of your identities and to send cycles to the wallets of other account cycles wallet canisters.
 
@@ -152,13 +186,78 @@ For reference information and examples that illustrate using dfx wallet commands
 - `set-name`: specify a name for your cycles wallet.
 - `upgrade`: upgrade the cycles wallet's Wasm module to the current Wasm bundled with DFX.
 
-## Using your wallet
+### Adding a controller
+An identity assigned the role of controller has the most privileges and can perform the following actions on the selected identity's cycles wallet. Identities that are added as controllers are also listed as custodians. 
 
-After you have used the `dfx identity deploy-wallet` command to create a cycles wallet canister tied to an identity, you can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
+To add a controller, the following command can be used:
 
-For more details on each supported method, see the [dfx wallet reference](../../../references/cli-reference/dfx-wallet).
+```
+dfx wallet add-controller
+```
 
-## Additional methods in the default cycles wallet
+If the controller you want to add is on a different environment, specify it using the `--network` option. For example:
+
+```
+dfx wallet add-controller b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe
+```
+
+### Viewing controllers
+To list the principals of the identities that are controllers of the selected identity's cycles wallet, the following command can be used:
+
+```
+dfx wallet controllers
+```
+
+### Removing a controller
+To remove a controller from an identity's cycles wallet, the following command can be used:
+
+```
+dfx wallet remove-controller
+```
+
+For example, to remove alice_auth as a controller, specify her principal in the following command:
+
+```
+dfx wallet remove-controller dheus-mqf6t-xafkj-d3tuo-gh4ng-7t2kn-7ikxy-vvwad-dfpgu-em25m-2ae
+```
+
+### Authorizing a principal to be a custodian
+
+To authorize a custodian for a cycles wallet, the following command can be used:
+
+```
+dfx wallet authorize <custodian> [flag]
+```
+
+For example, to add alice_auth as a custodian, specify her principal in the following command:
+
+```
+dfx wallet authorize dheus-mqf6t-xafkj-d3tuo-gh4ng-7t2kn-7ikxy-vvwad-dfpgu-em25m-2ae
+```
+
+### Listing custodians
+
+To list custodians of the currently selected identity's cycles wallet, the following command can be used:
+
+```
+dfx wallet custodians
+```
+
+### De-authorizing a principal from being a custodian
+
+To de-authorize a custodian from a cycles wallet, the following command can be used:
+
+```
+dfx wallet deauthorize <custodian> [flag]
+```
+
+For example, to remove "alice_auth" as a custodian, specify her principal in the following command:
+
+```
+dfx wallet deauthorize dheus-mqf6t-xafkj-d3tuo-gh4ng-7t2kn-7ikxy-vvwad-dfpgu-em25m-2ae
+```
+
+## Additional methods that are not exposed as `dfx wallet` commands
 
 The default cycles wallet canister includes additional methods that are not exposed as `dfx wallet` commands. The additional methods support more advanced cycles management tasks such as creating new canisters and managing events.
 
