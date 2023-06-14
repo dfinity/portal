@@ -8,7 +8,7 @@ The sample code is in both Motoko and Rust. This sample canister sends a GET req
 
 This example takes less than 5 minutes to complete.
 
-## Sample Dapp
+## Sample dapp
 
 The sample canister exposes a public method, which makes a GET request under the hood.
 

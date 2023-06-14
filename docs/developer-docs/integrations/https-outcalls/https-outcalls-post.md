@@ -6,7 +6,11 @@
 
 This example takes less than 5 minutes to complete.
 
-## Sample Dapp
+## Sample dapp
+
+[[ADD IMAGE of DAPP]]
+
+[[ADD IMAGE of Request bin]
 
 ## Motoko version
 
@@ -230,7 +234,7 @@ URLs:
 
 Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `send_http_post_request()` method:
 
-![Candid web UI](../_attachments/https-post-candid-3-rust.webp)
+<!-- ![Candid web UI](../_attachments/https-post-candid-3-rust.webp) -->
 
 :::note
 In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a following section
