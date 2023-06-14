@@ -36,9 +36,9 @@ The API response looks like this:
 
 ### Motoko: Structure of the code
 
-Before we dive in, here is the structure the code we will touch:
+Before we dive in, here is the structure of the code we will touch:
 
-Here is how our main file will look like:
+Here is how our main file will look:
 
 ```motoko
 
@@ -47,7 +47,7 @@ import Types "Types";
 
 actor {
 
-//method that uses the HTTP outcalls feature and returns a string
+  //method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
@@ -73,7 +73,7 @@ actor {
 };
 ```
 
-We will also create some custom types in `Types.mo`. This will look like this:
+We will also create some custom types in `Types.mo`. It will look like this:
 
 ```motoko
 module Types {
@@ -186,7 +186,7 @@ actor {
     //     body : [Nat8];
     // };
 
-    //We need to decode that [Na8] array that is the body into readable text. 
+    //We need to decode that [Nat8] array that is the body into readable text. 
     //To do this, we:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
@@ -218,9 +218,9 @@ actor {
 
 };
 ```
-- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcalls is a GET.
+- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a GET.
 -  The code above adds `17_000_000_000` cycles. This is typically is enough for GET requests, but this may need to change depending on your use case.
-- Code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
+- The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
 - #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
 
@@ -466,7 +466,7 @@ async fn get_icp_usd_exchange() -> String {
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
+- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 - #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
@@ -504,5 +504,5 @@ Open the candid web UI for the backend (the `hello_http_rust_backend` one) and c
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
 :::note
-In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a following section
+In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a future section
 :::
