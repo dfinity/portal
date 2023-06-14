@@ -91,12 +91,12 @@ To create a new project:
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new hello_http
-cd hello_http
+dfx new send_http_get
+cd send_http_get
 npm install
 ```
 
-- #### Step 2:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
+- #### Step 2:  Open the `src/send_http_get_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -223,7 +223,7 @@ actor {
 -  The code above adds `17_000_000_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
-- #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Open the `src/send_http_get_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
@@ -476,7 +476,7 @@ We update the Candid interface file so it matches the method `get_icp_usd_exchan
 
 ```
 service : {
-    "get_icp_usd_exchange()": () -> (text);
+    "get_icp_usd_exchange": () -> (text);
 }
 ```
 

@@ -102,12 +102,12 @@ To create a new project:
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new hello_http
-cd hello_http
+dfx new send_http_post
+cd send_http_post
 npm install
 ```
 
-- #### Step 2:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
+- #### Step 2:  Open the `src/send_http_post_backend/main.mo` file in a text editor and replace content with:
 
 
 ```motoko
@@ -217,7 +217,7 @@ actor {
 };
 ```
 
-- #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Open the `src/send_http_post_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
@@ -294,10 +294,10 @@ If successful, the terminal should return canister URLs you can open:
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    hello_http_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
+    send_http_post_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
 ```
 
-Open the candid web UI for hello_http backend and call the `send_http_post_request()` method:
+Open the candid web UI for backend and call the `send_http_post_request()` method:
 
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
@@ -343,13 +343,13 @@ async fn foo() {
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new --type=rust hello_http_rust
-cd hello_http_rust
+dfx new --type=rust send_http_post_rust
+cd send_http_post_rust
 npm install
 rustup target add wasm32-unknown-unknown
 ```
 
-- #### Step 2: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
+- #### Step 2: Open the `/src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
 //1. IMPORT IC MANAGEMENT CANISTER
@@ -376,7 +376,7 @@ We update the Candid interface file so it matches the method `send_http_post_req
 
 ```
 service : {
-    "send_http_post_request()": () -> (text);
+    "send_http_post_request": () -> (text);
 }
 ```
 
@@ -394,13 +394,9 @@ If successful, the terminal should return canister URLs you can open:
 ```bash
 Deployed canisters.
 URLs:
-  Frontend canister via browser
-    hello_http_rust_frontend: http://127.0.0.1:4943/?canisterId=ajuq4-ruaaa-aaaaa-qaaga-cai
   Backend canister via Candid interface:
-    hello_http_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
+    send_http_post_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
 ```
-
-Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `send_http_post_request()` method:
 
 <!-- ![Candid web UI](../_attachments/https-post-candid-3-rust.webp) -->
 
