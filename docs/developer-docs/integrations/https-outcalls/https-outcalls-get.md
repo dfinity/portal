@@ -1,6 +1,8 @@
 # How to use HTTP outcalls: GET
 ## Overview
-A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about the ICP token. 
+A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+
+The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about the ICP token. 
 
 **The main intent of this canister is to show developers how to make idempotent GET requests.**
 
@@ -83,13 +85,9 @@ module Types {
 
 ### Motoko: Step by step
 
-To create a new project directory for testing access control and switching user identities:
+To create a new project:
 
-- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
-
-- #### Step 2:  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
-
-- #### Step 3:  Create a new project by running the following command:
+- #### Step 1:  Create a new project by running the following command:
 
 ```bash
 dfx new hello_http
@@ -97,7 +95,7 @@ cd hello_http
 npm install
 ```
 
-- #### Step 4:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
+- #### Step 2:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -224,7 +222,7 @@ actor {
 -  The code above adds `17_000_000_000` cycles. This is typically is enough for GET requests, but this may need to change depending on your use case.
 - Code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
-- #### Step 5:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
@@ -286,7 +284,7 @@ module Types {
 }
 ```
 
-- #### Step 6: Test the dapp locally.
+- #### Step 4: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -351,13 +349,9 @@ async fn foo() {
 
 ### Rust: Step by step
 
-To create a new project directory for testing access control and switching user identities:
+To create a new project:
 
-- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
-
-- #### Step 2:  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
-
-- #### Step 3:  Create a new project by running the following command:
+- #### Step 1:  Create a new project by running the following command:
 
 ```bash
 dfx new --type=rust hello_http_rust
@@ -366,7 +360,7 @@ npm install
 rustup target add wasm32-unknown-unknown
 ```
 
-- #### Step 4: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
+- #### Step 2: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
 //1. IMPORT IC MANAGEMENT CANISTER
@@ -473,7 +467,7 @@ async fn get_icp_usd_exchange() -> String {
 - The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
-- #### Step 5: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
+- #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
 
 We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`. 
 
@@ -483,7 +477,7 @@ service : {
 }
 ```
 
-- #### Step 6: Test the dapp locally.
+- #### Step 4: Test the dapp locally.
 
 Deploy the dapp locally:
 
