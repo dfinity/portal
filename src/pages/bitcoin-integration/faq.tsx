@@ -142,6 +142,7 @@ function BitcoinFaqPage() {
                 without having to trust centralized bridging services, which are 
                 at high risk of being taken down or hacked.
               </p>
+              <p>
                 This integration with the Bitcoin network is made up of two key building blocks:{" "}
                 <strong>Network integration</strong> and <strong>chain-key ECDSA</strong>.
                 Combining these building blocks, canisters can directly and
