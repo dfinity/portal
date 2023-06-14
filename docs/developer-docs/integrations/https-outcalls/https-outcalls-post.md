@@ -15,7 +15,17 @@ This example takes less than 5 minutes to complete.
 [[ADD IMAGE of DAPP]]
 
 https://public.requestbin.com/r/enyudtkdu1boj/2RCyEY1kK9Qv8V5iAiqcz1YWW6j
-[[ADD IMAGE of Request bin]
+
+[[ADD IMAGE of Request bin]]
+
+## Important notes on POST requests
+
+Because HTTPS outcalls go through consensus, a developer should expect any HTTPs POST request from a canister to be sent many times to its destination.
+Even if we forget the Web3 component, this is not new in HTTP where it is very common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
+
+The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same. 
+
+Developers should be careful that the destination server understand and use idempotency keys. A canister can be coded to be send idempotency keys, but it is ultimately up to the recipient server to know what to do with then. Here is an [example of an API service that uses idempotency keys](https://stripe.com/docs/api/idempotent_requests).
 
 ## Motoko version
 
