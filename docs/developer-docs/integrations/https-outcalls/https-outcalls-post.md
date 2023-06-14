@@ -1,6 +1,10 @@
 # How to use HTTP outcalls: POST
 
 ## Overview
+A minimal example to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+
+The sample code is in both Motoko and Rust. This sample canister sends a POST request to a free API where we can verify the headers and body from teh canister are what we expect.
+
 
 **The main intent of this canister is to show developers how to make idempotent POST requests.**
 
@@ -10,6 +14,7 @@ This example takes less than 5 minutes to complete.
 
 [[ADD IMAGE of DAPP]]
 
+https://public.requestbin.com/r/enyudtkdu1boj/2RCyEY1kK9Qv8V5iAiqcz1YWW6j
 [[ADD IMAGE of Request bin]
 
 ## Motoko version
@@ -78,7 +83,117 @@ npm install
 - #### Step 2:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
 
 
-FILL OUT
+```motoko
+import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
+import Cycles "mo:base/ExperimentalCycles";
+import Error "mo:base/Error";
+import Array "mo:base/Array";
+import Nat8 "mo:base/Nat8";
+import Nat64 "mo:base/Nat64";
+import Text "mo:base/Text";
+
+//import the custom types we have in Types.mo
+import Types "Types";
+import Bool "mo:base/Bool";
+
+actor {
+
+//This method sends a POST request to a URL with a free API we can test.
+  
+  public func send_http_post_request() : async Text {
+
+    //1. DECLARE IC MANAGEMENT CANISTER
+    //We need this so we can use it to make the HTTP request
+    let ic : Types.IC = actor ("aaaaa-aa");
+
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+
+    // 2.1 Setup the URL and its query parameters
+    //This URL is used because it allows us to inspect the HTTP request sent from the canister
+    let host : Text = "enyudtkdu1boj.x.pipedream.net";
+    let url = "https://enyudtkdu1boj.x.pipedream.net";
+
+    // 2.2 prepare headers for the system http_request call
+
+    //idempotency keys should be unique so we create a function that generates them.
+    let idempotency_key: Text = generateUUID();
+    let request_headers = [
+        { name = "Host"; value = host # ":443" },
+        { name = "User-Agent"; value = "http_post_sample" },
+        { name= "Content-Type"; value = "application/json" },
+        { name= "Idempotency-Key"; value = idempotency_key }
+    ];
+
+    // The request body is an array of [Nat8] (see Types.mo) so we do the following:
+    // 1. Write a JSON string
+    // 2. Convert ?Text optional into a Blob, which is an intermediate reprepresentation before we cast it as an array of [Nat8]
+    // 3. Convert the Blob into an array [Nat8]
+    let request_body_json: Text = "{ \"name\" : \"Grogu\" \"force_senstive\" : \"true\" }";
+    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); // 
+    let request_body_as_nat8: [Nat8] = Blob.toArray(request_body_as_Blob); // [34, 34,12,0]
+
+
+    // 2.3 The HTTP request
+    let http_request : Types.HttpRequestArgs = {
+        url = url;
+        max_response_bytes = null; //optional for request
+        headers = request_headers;
+        //note: type of `body` is ?[Nat8] so we pass it here as "?request_body_as_nat8" instead of "request_body_as_nat8"
+        body = ?request_body_as_nat8; 
+        method = #post;
+        transform = null; //optional for request
+    };
+
+    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+
+    //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
+    //IC management canister will make the HTTP request so it needs cycles
+    //See: https://internetcomputer.org/docs/current/motoko/main/cycles
+    
+    //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
+    //"Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
+    //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
+    Cycles.add(17_000_000_000);
+    
+    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //Since the cycles were added above, we can just call the IC management canister with HTTPS outcalls below
+    let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
+    
+    //5. DECODE THE RESPONSE
+
+    //As per the type declarations in `Types.mo`, the BODY in the HTTP response 
+    //comes back as [Nat8s] (e.g. [2, 5, 12, 11, 23]). Type signature:
+    
+    //public type HttpResponsePayload = {
+    //     status : Nat;
+    //     headers : [HttpHeader];
+    //     body : [Nat8];
+    // };
+
+    //We need to decode that [Na8] array that is the body into readable text. 
+    //To do this, we:
+    //  1. Convert the [Nat8] into a Blob
+    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
+    //  3. We use Motoko syntax "Let... else" to unwrap what is returned from Text.decodeUtf8()
+    let response_body: Blob = Blob.fromArray(http_response.body);
+    let ?decoded_text = Text.decodeUtf8(response_body) else return "No value returned";
+
+    //6. RETURN RESPONSE OF THE BODY
+    let result: Text = decoded_text # ". See more info of the request sent at at: https://public.requestbin.com/r/enyudtkdu1boj";
+    result
+  };
+
+  //Helper method that generates a Universally Unique Identifier
+  //this method is used for the Idempotency Key used in the request headers of the POST request.
+  //For the purposes of this exercise, it returns a constant, but in practice it should return unique identifiers
+  func generateUUID() : Text {
+    "UUID-123456789";
+  }
+};
+
+
+```
 
 - #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
 
@@ -170,6 +285,37 @@ Open the candid web UI for hello_http backend and call the `send_http_post_reque
 
 Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
 
+```rust
+//1. DECLARE IC MANAGEMENT CANISTER
+use ic_cdk::api::management_canister::http_request::{
+    http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
+    TransformContext,
+};
+
+//Update method using the HTTPS outcalls feature
+#[ic_cdk::update]
+async fn foo() {
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+    let request = CanisterHttpRequestArgument {
+        //instantiate the request
+    };
+
+    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //so no need for explicit Cycles.add() as in Motoko
+    match http_request(request).await {
+        
+        //4. DECODE AND RETURN THE RESPONSE
+        Ok((response,)) => {
+            //Ok case 
+        }
+        Err((r, m)) => {
+            //error case
+        }
+    }
+}
+```
+
 ### Rust: Step by step
 
 - #### Step 1:  Create a new project by running the following command:
@@ -194,7 +340,7 @@ use ic_cdk::api::management_canister::http_request::{
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn send_http_post_request() -> String {
-
+    FILL OUT
 }
 ```
 
