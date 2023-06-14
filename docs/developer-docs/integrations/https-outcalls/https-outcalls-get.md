@@ -162,7 +162,7 @@ actor {
     //     body : [Nat8];
     // };
 
-    //We need to decode that [Na8] array that is the body into readable text. 
+    //We need to decode that [Nat8] array that is the body into readable text. 
     //To do this, we:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
