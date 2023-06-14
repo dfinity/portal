@@ -4,7 +4,7 @@
 
 One of the most important principles to keep in mind is that the Internet Computer is a blockchain that allows running software in a distributed, replicated way.
 
-When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**, or **canister** in short. Canisters can be developed in various programming languages. Besides Motoko, a programming language purposefully designed for the Internet Computer, you can also use existing programming languages like C, Rust, JavaScript/TypeScript, AssemblyScript, and Python. 
+When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**. Canisters can be developed in various programming languages. Besides Motoko, a programming language purposefully designed for the Internet Computer, you can also use existing programming languages like C, Rust, JavaScript/TypeScript, AssemblyScript, and Python. 
 
 Once deployed, end-users can interact with the canister by accessing the entry point functions you have defined for that canister through a frontend client such as a browser.
 
