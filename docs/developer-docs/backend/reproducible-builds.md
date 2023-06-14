@@ -1,7 +1,7 @@
 # Reproducible canister builds
 
 ## Overview
-Thanks to its consensus protocol, the Internet Computer always runs canisters' code correctly. But this doesn’t mean that it’s running the **correct** code for a canister. If you are using a canister somebody else developed, you may want to verify that the canister is indeed running some intended code before giving it control to make important decision for you, e.g., sending your ICP to a canister. Verifying this requires answering two questions:
+Thanks to its consensus protocol, the Internet Computer always runs canister code correctly. But this doesn’t mean that it’s running the **correct** code for a canister. If you are using a canister somebody else developed, you may want to verify that the canister is indeed running the intended code before giving it control to make important decision for you, e.g., sending your ICP to another canister. Verifying this requires answering two questions:
 
 1.  Which WebAssembly (Wasm) code is being executed for a canister?
 2.  The canisters are normally written in a higher-level language, such as Motoko or Rust, and not directly in Wasm. The second question is then: is the Wasm that’s running really the result of compiling the purported source code?
@@ -16,13 +16,15 @@ Internet Computer does not allow you to access the Wasm code of an arbitrary can
 
 To obtain this hash, you must first note the principal of the Internet Computer canister whose code you want to check. For example, assume we’re interested in the code of the Internet Identity canister, whose principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this service is using the [IC SDK](https://internetcomputer.org/developers/) from the terminal. Open your terminal, and run:
 
-    $ dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
-    Controllers: r7inp-6aaaa-aaaaa-aaabq-cai
-    Module hash: 0x2d95e90de5d7de11f25ac256690aff44c6685a1570b1becdf6e50192e983e103
+```
+dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
+Controllers: r7inp-6aaaa-aaaaa-aaabq-cai
+Module hash: 0xa9a5d0492d1455d6b6b84fdc102fb182f55975145a2f99a403eb10ea7e37aee6
+```
 
 If you are running an older version of the IC SDK, you will need to run this command from a directory that contains a valid `dfx.json` file. If you don’t have such a directory, you can create it using `dfx new`.
 
-Here, the Internet Computer tells us that the hash of the Wasm module of the `rdmx6-jaaaa-aaaaa-aaadq-cai` canister (which happens to be the Internet Identity canister) is `0x2d95e90de5d7de11f25ac256690aff44c6685a1570b1becdf6e50192e983e103`.
+Here, the Internet Computer tells us that the hash of the Wasm module of the `rdmx6-jaaaa-aaaaa-aaadq-cai` canister (which happens to be the Internet Identity canister) is `0xa9a5d0492d1455d6b6b84fdc102fb182f55975145a2f99a403eb10ea7e37aee6`.
 
 The check above provides you the **current** hash of the canister’s Wasm module, but the **controllers** of an Internet Computer canister may change the code at any time (e.g., to upgrade a canister). However, if the list of controllers is empty or the only controller is a [black-hole](https://github.com/ninegua/ic-blackhole) canister, you know that the canister is immutable since nobody has the power to change the code.
 
@@ -64,7 +66,11 @@ You should communicate all of these to your user in the instructions. Ideally, d
 
 ### Build environments using Docker
 
-[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain. Make sure to stick with `x86_64` for running the Docker container, as builds are generally not reproducible across architectures. See [docs](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md) on setting up cross-platform Docker containers in case your host environment is not `x86_64`.
+[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). 
+
+After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain. Make sure to stick with `x86_64` for running the Docker container, as builds are generally not reproducible across architectures. See [docs](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md) on setting up cross-platform Docker containers in case your host environment is not `x86_64`.
+
+This Dockerfile is an example of how a Rust build environment can be standardized using Docker. 
 
 #### Example Dockerfile
 
@@ -77,9 +83,8 @@ You should communicate all of these to your user in the instructions. Ideally, d
     ENV RUSTUP_HOME=/opt/rustup
     ENV CARGO_HOME=/opt/cargo
     ENV RUST_VERSION=1.62.0
-    ENV IC_CDK_OPTIMIZER_VERSION=0.3.4
 
-    ENV DFX_VERSION=0.11.0
+    ENV DFX_VERSION=0.14.1
 
     # Install a basic environment needed for our build tools
     RUN apt -yq update && \
@@ -98,8 +103,8 @@ You should communicate all of these to your user in the instructions. Ideally, d
     RUN curl --fail https://sh.rustup.rs -sSf \
             | sh -s -- -y --default-toolchain ${RUST_VERSION}-x86_64-unknown-linux-gnu --no-modify-path && \
         rustup default ${RUST_VERSION}-x86_64-unknown-linux-gnu && \
-        rustup target add wasm32-unknown-unknown
-    RUN cargo install --version ${IC_CDK_OPTIMIZER_VERSION} ic-cdk-optimizer
+        rustup target add wasm32-unknown-unknown &&\
+        cargo install ic-wasm
 
     # Install dfx
     RUN sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -107,8 +112,29 @@ You should communicate all of these to your user in the instructions. Ideally, d
     COPY . /canister
     WORKDIR /canister
 
+#### What this does
+There are a couple of things worth noting about this `Dockerfile`:
+
+-   It starts from an official Docker image. Furthermore, all the installed tools are standard, and come from standard sources. This provides the user with confidence that the build environment hasn’t been tampered with, and thus that the build process using Docker can be trusted.
+
+-   To ensure that specific versions of the build tools are installed, it installs them directly, rather than through `apt` (the package manager of Ubuntu, the Linux distribution running inside of the container). Such package managers usually don’t provide a way of pinning the build tools to specific versions.
+
+To use this `Dockerfile`, get Docker [up and running](https://docs.docker.com), place the `Dockerfile` in the project directory of your canister, and create the Docker container by running:
+
+    docker build -t mycanister .
+
+This creates a Docker container image called `mycanister`, with Node.js, Rust and `dfx` installed in it, and your canister source code copied to `/canister` (recall that you should invoke `docker build` from the canister project directory). You can then enter an interactive shell inside of your container by running:
+
+    docker run -it --rm mycanister
+
+From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh` for a build script such as the example below, saved as `./build_script.sh`), to allow the user to automatically reproduce the build of your canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). 
+
 #### Example script for building a Rust project
 An example script to build a Rust project looks as follows:
+
+:::info
+This is an example build script for a Rust project, and does not include a fully comprehensive example of what a build script may contain, nor does it include build instructions for other languages such as Motoko. 
+:::
 
     #!/bin/bash
     #
@@ -117,9 +143,9 @@ An example script to build a Rust project looks as follows:
     # Rust build:
     export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
     cargo build --locked --target wasm32-unknown-unknown --release
-    ic-cdk-optimizer target/wasm32-unknown-unknown/release/example_backend.wasm -o example_backend.wasm
+    ic-wasm target/wasm32-unknown-unknown/release/example_backend.wasm -o example_backend.wasm shrink
 
-Such a build script can also be set as a custom build script in `dfx.json` as follows:
+A build script such as the one above can be specified as a custom build script in `dfx.json` as follows:
 
     "canisters": {
       "example_backend": {
@@ -131,26 +157,10 @@ Such a build script can also be set as a custom build script in `dfx.json` as fo
       }
     }
 
-#### What this does
-There are a couple of things worth noting about this `Dockerfile`:
 
--   It starts from an official Docker image. Furthermore, all the installed tools are standard, and come from standard sources. This provides the user with confidence that the build environment hasn’t been tampered with, and thus that the build process using Docker can be trusted.
-
--   To ensure that specific versions of the build tools are installed, it installs them directly, rather than through `apt` (the package manager of Ubuntu, the Linux distribution running inside of the container). Such package managers usually don’t provide a way of pinning the build tools to specific versions.
-
-To use this `Dockerfile`, get Docker [up and running](https://docs.docker.com), place the `Dockerfile` in the project directory of your canister, and create the Docker container by running:
-
-    $ docker build -t mycanister .
-
-This creates a Docker container image called `mycanister`, with Node.js, Rust and `dfx` installed in it, and your canister source code copied to `/canister` (recall that you should invoke `docker build` from the canister project directory). You can then enter an interactive shell inside of your container by running:
-
-    $ docker run -it --rm mycanister
-
-From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh` for a build script `./build_script.sh`), to allow the user to automatically reproduce the build of your canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile). Next, we will investigate what is necessary to make the build deterministic.
 
 ### Ensuring the determinism of the build process
-
-For the build process to be deterministic:
+Next, we will investigate what is necessary to make the build deterministic. For the build process to be deterministic:
 
 - #### Step 1:  You will need to ensure that any dependencies of your canister are always resolved in the same way. Most build tools now support a way of pinning dependencies to a particular version.
 
@@ -185,9 +195,8 @@ When using `dfx build --network ic`, you need to prebuild your frontend dependen
 
 Now, from the root directory of your canister project, you can test the reproducibility of your IC SDK builds as follows:
 
-    $ docker build -t mycanister .
-    ...
-    $ docker run --rm --privileged -it mycanister
+    docker build -t mycanister .
+    docker run --rm --privileged -it mycanister
     /canister# mkdir artifacts
     /canister# reprotest -vv --store-dir=artifacts --variations '+all,-time' 'dfx build --network ic' '.dfx/ic/canisters/*/*.wasm'
 
@@ -221,7 +230,7 @@ Reproducibility can be more demanding if you expect your canister code to stay a
 
 -  Build toolchain is still available in the future.
 
--  Dependencies are avaiable.
+-  Dependencies are available.
 
 -  Toolchain still runs and still correctly builds your dependencies.
 
@@ -249,6 +258,6 @@ Summarizing our recommendations for canister authors:
 
 Finally, if your build is reproducible, you can compare the hash of the resulting Wasm code to the hash of the code that is running in a canister, which you retrieve as follows:
 
-    $ dfx canister --network ic info <canister-id>
+    dfx canister --network ic info <canister-id>
 
 Beware that this hash might change if the controllers upgrade the canister code.

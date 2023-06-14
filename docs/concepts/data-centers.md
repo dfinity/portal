@@ -35,5 +35,5 @@ In most cases, node providersâ€”or the data center operators they partner withâ€
 If you are looking for more information about data center operations and node providers, check out the following related resources:
 
 - [Internet Computer Wiki: node provider documentation](https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation).
--   [Internet Computer Wiki: node provider hardware](https://wiki.internetcomputer.org/wiki/Node_provider_hardware).
--   [Internet Computer Wiki: node provider onboarding](https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding).
+- [Internet Computer Wiki: node provider hardware](https://wiki.internetcomputer.org/wiki/Node_provider_hardware).
+- [Internet Computer Wiki: node provider onboarding](https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding).
