@@ -134,18 +134,16 @@ function BitcoinFaqPage() {
           >
             <Faq title="What is Bitcoin integration?">
               <p>
-                The Internet Computer (ICP) is integrated with the Bitcoin network
-                at the protocol level. The canister smart contracts it hosts can
-                create Bitcoin addresses as well as send and receive bitcoin directly
-                on the Bitcoin network. This means bitcoin can be easily and securely
-                incorporated into DeFi and Web3 services on the Internet Computer
-                blockchain, without having to trust wrapped bitcoin from centralized
-                bridging services, which are at high risk of being taken down or
-                hacked. The Internet Computer's integration with the Bitcoin network
-                is made up of two key building blocks:{" "}
-                <strong>Network integration</strong> and <strong>chain-Key ECDSA</strong>.
+                The Internet Computer (ICP) integrates with the Bitcoin network
+                at a protocol level. This means ICP canister smart contracts can create   
+                Bitcoin addresses as well as send and receive bitcoin directly on the 
+                Bitcoin network. And, Bitcoin can easily and securely be incorporated
+                into DeFi and Web3 services on the Internet Computer blockchain,
+                without having to trust centralized bridging services, which are 
+                at high risk of being taken down or hacked.
               </p>
-              <p>
+                This integration with the Bitcoin network is made up of two key building blocks:{" "}
+                <strong>Network integration</strong> and <strong>chain-key ECDSA</strong>.
                 Combining these building blocks, canisters can directly and
                 securely hold, receive, and send bitcoin seamlessly as if the
                 Internet Computer and the Bitcoin network were one blockchain.
@@ -154,13 +152,13 @@ function BitcoinFaqPage() {
               </p>
             </Faq>
 
-            <Faq title="What does it mean that the Internet Computer directly integrated with the Bitcoin network?">
+            <Faq title="What does direct integration with the Bitcoin network really mean?">
               <p>
                 One key tech development allowing smart contracts on the Internet
                 Computer to obtain the balances of Bitcoin addresses as well as
                 directly send and receive bitcoin is inter-chain communication.
                 As the ICP blockchain creates transactions for the Bitcoin
-                blockchain, its nodes directly transmit the transaction to the
+                blockchain, its nodes directly transmit these transactions to the
                 nodes of the Bitcoin network, without any need for intermediaries
                 that might censor them. ICP nodes also directly pull blocks from
                 the Bitcoin network to maintain Bitcoin's current UTXO set,
@@ -173,10 +171,10 @@ function BitcoinFaqPage() {
             <Faq title="What is chain-key ECDSA?">
               <p>
                 The real innovation behind Bitcoin integration is chain-key ECDSA
-                signing — advanced threshold cryptography integrated with ICP. In
-                short, chain-key ECDSA is a set of cryptographic protocols that
-                allow Internet Computer nodes to cooperatively create ECDSA
-                signatures, which can be used to sign bitcoin transactions, using
+                signing — advanced threshold cryptography build into the Internet Computer.
+                In short, chain-key ECDSA is a set of cryptographic protocols that
+                allow ICP nodes to cooperatively create ECDSA signatures, 
+                which can be used to sign bitcoin transactions, using
                 a highly fault-tolerant, decentralized network that is resilient
                 to attacks by malicious nodes. The secret key is never stored in
                 one place, instead it is broken down into key shares held by ICP
@@ -196,7 +194,7 @@ function BitcoinFaqPage() {
             }
           >
             <Faq title="What is ckBTC?">
-              Chain-key Bitcoin (ckBTC) is a multi-chain bitcoin twin that can be
+              Chain-key bitcoin (ckBTC) is a multi-chain bitcoin twin that can be
               sent with 1-2 second finality and negligible fees. It is trustlessly
               created by chain-key cryptography and a pair of canister smart
               contracts that directly hold raw bitcoin without relying on
@@ -206,9 +204,9 @@ function BitcoinFaqPage() {
               <p>There are two main ways of acquiring ckBTC:</p>
               <ul>
                 <li>
-                  <strong>Swap ICP for ckBTC on DEXs:</strong> If you have ICP, you can 
+                  <strong>Swap on DEXs:</strong> If you have ICP, you can 
                   swap it for ckBTC on decentralized exchanges running on the Internet
-                  Computer such as{" "}
+                  Computer, including{" "}
                   <Link href="http://icdex.io/">
                     ICDex
                   </Link> or{" "}
@@ -218,28 +216,28 @@ function BitcoinFaqPage() {
                 </li>
                 <li>
                   <strong>
-                    Convert BTC to ckBTC directly on the protocol:
+                    Convert directly on the protocol:
                   </strong>{" "}
-                  You can receive ckBTC simply sending BTC to the NNS (for more details, see
+                  You can convert BTC to ckBTC by simply sending BTC to you NNS wallet (for more details, see
                   next question).{" "}
                   <Link href="http://icdex.io/">
                     ICDex
                   </Link> and {" "}
                   <Link href="https://icpswap.com/">
                     ICPSwap
-                  </Link>.{" "}
-                  have similar functionality that allow you to convert your BTC to ckBTC, directly
+                  </Link>{" "}
+                  have similar functionality that allows you to convert your BTC to ckBTC, directly
                   using the ckBTC canisters.
                 </li>
               </ul>
             </Faq>
-            <Faq title="How do I get ckBTC using the NNS?">
+            <Faq title="How do I convert BTC to ckBTC using the NNS?">
               <p className="tw-paragraph mb-3">
-                You can get ckBTC by sending BTC to your NNS wallet.
+                Easy steps to getting ckBTC via your NNS wallet:
               </p>
               <p>
                 <strong>
-                  1. Go to the NNS frontend dapp and click on the sign in with your Internet Identity.
+                  1. Go to the NNS frontend dapp and sign in with your Internet Identity.
                 </strong> If you don't have one, you will be prompted to create one. Any device that supports
                 WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or
                 a Ledger device.
@@ -265,7 +263,7 @@ function BitcoinFaqPage() {
                 <strong>
                   4. Send BTC to your NNS BTC address.
                 </strong> Once you see this pop up window, you can copy your NNS BTC address, and send BTC there.
-                Note, that since this is a real bitcoin transaction, it will take roughly an hour, and have bitcoin's
+                Note, that since this is a real bitcoin transaction, so it will take roughly an hour, and have the Bitcoin network's
                 transaction fees. Once you acquired ckBTC, you can take advantage of its near instant finality (1-2s) and
                 negligible transaction fees (10 satoshis).
                 <img
@@ -277,8 +275,8 @@ function BitcoinFaqPage() {
             </Faq>
             <Faq title="Is ckBTC wrapped?">
               <p className="tw-paragraph mb-3">
-                ckBTC isn't considered a wrapped token because it doesn't involve any
-                centralized custodian or bridges to work. More than a token, while
+                ckBTC isn't considered a wrapped token because it doesn't involve 
+                centralized custodians or bridges to work. More than a token, while
                 ckBTC implements the ICRC-1 fungible token standard, the pair of
                 canister smart contracts also allow bitcoin to be freely sent between
                 addresses either on the Bitcoin network or the Internet Computer,
@@ -320,22 +318,19 @@ function BitcoinFaqPage() {
 
             <Faq title="Does ckBTC incorporate KYT?">
               <p>
-                Yes, when executing cross-chain transaction, it goes through a KYT
-                check. Know Your Transaction (KYT) is a process used by financial
-                institutions to monitor and track financial transactions in order
-                to detect and prevent fraudulent or criminal activity, such as money
-                laundering or terrorist financing. To comply with regulation,
-                centralized exchanges (CEXs) use KYT services to check whether crypto
-                sent to their platform has been associated with illicit activities.
+                Yes, cross-chain transactions go through KYT checks to protect honest users.
+                Know Your Transaction (KYT) is a process that monitors and tracks financial 
+                transactions in order to detect and prevent fraudulent or criminal activity, 
+                such as money laundering or terrorist financing. 
               </p>
               <p>
-                If ckBTC were to operate without a KYT implementation, there is a risk
-                that 'tainted' bitcoin could enter the Internet Computer, that an honest
-                user withdraws. This bitcoin may be rejected by CEXs, potentially having
-                honest users lose their bitcoin.
+                If ckBTC were to operate without a KYT implementation, there would be a risk
+                of 'tainted' bitcoin entering the Internet Computer, that an honest
+                user could unknowingly withdraw. Such bitcoin may be rejected by CEXs, which 
+                means honest users could potentially lose their bitcoin when tryng to sell.
               </p>
               <p>
-                KYT is an important component of ckBTC. Read more about how ckBTC
+                KYT is an important security component of ckBTC. Read more about how ckBTC
                 implements KYT and the motivation behind it in this{" "}
                 <Link href="https://forum.dfinity.org/t/ckbtc-and-kyt-compliance/18754">
                   forum post
@@ -364,7 +359,7 @@ function BitcoinFaqPage() {
                 className="tw-lead-sm md:tw-lead mb-6"
                 variants={transitions.item}
               >
-                Everything you need to become an SNS DAO ninja.
+               Navigate your way through the technical aspects of Bitcoin integration and ckBTC.
               </motion.p>
             </div>
           </AnimateSpawn>
