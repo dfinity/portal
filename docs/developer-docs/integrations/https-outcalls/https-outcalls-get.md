@@ -2,15 +2,15 @@
 ## Overview
 A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
-The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about the ICP token. 
+The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token. 
 
-**The main intent of this canister is to show developers how to make idempotent GET requests.**
+**The main intent of this canister is to show developers how to make idempotent `GET` requests.**
 
 This example takes less than 5 minutes to complete.
 
 ## Sample dapp
 
-The sample canister exposes a public method, which makes a GET request under the hood.
+The sample canister exposes a public method, which makes a`GET` request under the hood.
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
@@ -218,8 +218,8 @@ actor {
 
 };
 ```
-- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a GET.
--  The code above adds `17_000_000_000` cycles. This is typically is enough for GET requests, but this may need to change depending on your use case.
+- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
+-  The code above adds `17_000_000_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
 - #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
@@ -229,7 +229,7 @@ module Types {
 
     public type Timestamp = Nat64;
 
-    //1. Type that describes the Request arguments for an HTTPS Outcall
+    //1. Type that describes the Request arguments for an HTTPS outcall
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     public type HttpRequestArgs = {
         url : Text;
@@ -265,7 +265,7 @@ module Types {
 
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a GET request, we declare the type for completeness, but 
+    //In this minimal example for a `GET` request, we declare the type for completeness, but 
     //we do not use this function. We will pass "null" to the HTTP request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;

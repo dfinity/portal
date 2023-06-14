@@ -3,10 +3,10 @@
 ## Overview
 A minimal example to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
-The sample code is in both Motoko and Rust. This sample canister sends a POST request to a free API where we can verify the headers and body from teh canister are what we expect.
+The sample code is in both Motoko and Rust. This sample canister sends a `POST` request to a free API where we can verify the headers and body from teh canister are what we expect.
 
 
-**The main intent of this canister is to show developers how to make idempotent POST requests.**
+**The main intent of this canister is to show developers how to make idempotent `POST` requests.**
 
 This example takes less than 5 minutes to complete.
 
@@ -18,9 +18,9 @@ https://public.requestbin.com/r/enyudtkdu1boj/2RCyEY1kK9Qv8V5iAiqcz1YWW6j
 
 [[ADD IMAGE of Request bin]]
 
-## Important notes on POST requests
+## Important notes on `POST` requests
 
-Because HTTPS outcalls go through consensus, a developer should expect any HTTPs POST request from a canister to be sent many times to its destination.
+Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination.
 Even if we forget the Web3 component, this is not new in HTTP where it is very common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same. 
