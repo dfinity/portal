@@ -318,7 +318,7 @@ function BitcoinFaqPage() {
 
             <Faq title="Does ckBTC incorporate KYT?">
               <p>
-                Yes, cross-chain transactions go through KYT checks to honest protect users.
+                Yes, cross-chain transactions go through KYT checks to protect honest users.
                 Know Your Transaction (KYT) is a process that monitors and tracks financial 
                 transactions in order to detect and prevent fraudulent or criminal activity, 
                 such as money laundering or terrorist financing. 
