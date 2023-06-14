@@ -8,9 +8,12 @@ The sample code is in both Motoko and Rust. This sample canister sends a `GET` r
 
 This example takes less than 5 minutes to complete.
 
-## Sample dapp
+## What we are building
 
-The sample canister exposes a public method, which makes a`GET` request under the hood.
+### Sample dapp
+
+The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, we can interact with its public methods via the Candid web UI, which will look like this:
+
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
@@ -29,8 +32,6 @@ The API response looks like this:
      ],
 ]
 ```
-
-
 
 ## Motoko version
 

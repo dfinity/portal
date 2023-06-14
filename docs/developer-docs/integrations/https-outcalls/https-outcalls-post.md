@@ -10,13 +10,30 @@ The sample code is in both Motoko and Rust. This sample canister sends a `POST` 
 
 This example takes less than 5 minutes to complete.
 
-## Sample dapp
+## What we are building
 
-[[ADD IMAGE of DAPP]]
+### Candid web UI of canister
 
-https://public.requestbin.com/r/enyudtkdu1boj/2RCyEY1kK9Qv8V5iAiqcz1YWW6j
+The canister in this tutorial will have only **one public method** which, when called, will trigger an HTTP `POST` request. The canister will not have a frontend (only a  backend), but like all canisters, we can interact with its public methods via the Candid web UI, which will look like this:
 
-[[ADD IMAGE of Request bin]]
+![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
+
+When we call the method, the canister will send an HTTP `POST` request with the following JSON in the response body:
+
+```json
+{
+    "name": "Grogu",
+    "force_sensitive": "true"
+}
+```
+
+![Candid web UI](../_attachments/https-post-candid-motoko-result.webp)
+
+### Verifying the HTTP POST request
+
+In order to verify that our canister sent the HTTP request we expected, this canister is sending HTTP requests to a [public API service](https://public.requestbin.com/r/en8d7aepyq2ko) where the HTTP request can be inspected. As you can see the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
+
+![Public API to inspect POST request](../_attachments/https-post-requestbin-result.webp)
 
 ## Important notes on `POST` requests
 
@@ -97,20 +114,17 @@ npm install
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
-import Error "mo:base/Error";
 import Array "mo:base/Array";
 import Nat8 "mo:base/Nat8";
-import Nat64 "mo:base/Nat64";
 import Text "mo:base/Text";
 
 //import the custom types we have in Types.mo
 import Types "Types";
-import Bool "mo:base/Bool";
 
 actor {
 
+//PULIC METHOD
 //This method sends a POST request to a URL with a free API we can test.
-  
   public func send_http_post_request() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
@@ -121,8 +135,8 @@ actor {
 
     // 2.1 Setup the URL and its query parameters
     //This URL is used because it allows us to inspect the HTTP request sent from the canister
-    let host : Text = "enyudtkdu1boj.x.pipedream.net";
-    let url = "https://enyudtkdu1boj.x.pipedream.net";
+    let host : Text = "en8d7aepyq2ko.x.pipedream.net";
+    let url = "https://en8d7aepyq2ko.x.pipedream.net/";
 
     // 2.2 prepare headers for the system http_request call
 
@@ -139,9 +153,9 @@ actor {
     // 1. Write a JSON string
     // 2. Convert ?Text optional into a Blob, which is an intermediate reprepresentation before we cast it as an array of [Nat8]
     // 3. Convert the Blob into an array [Nat8]
-    let request_body_json: Text = "{ \"name\" : \"Grogu\" \"force_senstive\" : \"true\" }";
-    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); // 
-    let request_body_as_nat8: [Nat8] = Blob.toArray(request_body_as_Blob); // [34, 34,12,0]
+    let request_body_json: Text = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }";
+    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); 
+    let request_body_as_nat8: [Nat8] = Blob.toArray(request_body_as_Blob); // e.g [34, 34,12, 0]
 
 
     // 2.3 The HTTP request
@@ -157,12 +171,10 @@ actor {
 
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
 
-    //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
     //IC management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
     
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
-    //"Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     Cycles.add(17_000_000_000);
     
@@ -190,19 +202,19 @@ actor {
     let ?decoded_text = Text.decodeUtf8(response_body) else return "No value returned";
 
     //6. RETURN RESPONSE OF THE BODY
-    let result: Text = decoded_text # ". See more info of the request sent at at: https://public.requestbin.com/r/enyudtkdu1boj";
+    let response_url: Text = "https://public.requestbin.com/r/en8d7aepyq2ko/";
+    let result: Text = decoded_text # ". See more info of the request sent at at: " # response_url;
     result
   };
 
+  //PRIVATE HELPER FUNCTION
   //Helper method that generates a Universally Unique Identifier
-  //this method is used for the Idempotency Key used in the request headers of the POST request.
+  //this method is used for the idempotency Key used in the request headers of the POST request.
   //For the purposes of this exercise, it returns a constant, but in practice it should return unique identifiers
   func generateUUID() : Text {
     "UUID-123456789";
   }
 };
-
-
 ```
 
 - #### Step 3:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
