@@ -38,11 +38,15 @@ function InfoLine({ date, formattedDate, tags }) {
   );
 }
 
-function CoverImage({ url, permalink }) {
+function CoverImage({ url = '/img/dfinity.png', permalink }) {
   return (
     <Link href={permalink} className="flex hover:no-underline w-full">
       {url ? (
-        <img src={url} alt="" className="mb-2 rounded-lg" />
+        <img
+          src={url}
+          alt=""
+          className="mb-2 rounded-lg aspect-video object-center object-cover"
+        />
       ) : (
         <div className="mb-2 rounded-lg bg-black/20 aspect-video text-white tw-title-navigation-on-page flex justify-center items-center flex-1">
           Add an image
@@ -106,7 +110,7 @@ export default function BlogPostItems({
               tags={BlogPostContent.frontMatter.tags}
             ></InfoLine>
             <Link
-              href={items[0].content.metadata.permalink}
+              href={BlogPostContent.metadata.permalink}
               className="text-black hover:text-infinite hover:no-underline"
             >
               <h2 className="tw-heading-6 mb-0">
