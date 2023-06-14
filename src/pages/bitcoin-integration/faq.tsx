@@ -142,6 +142,7 @@ function BitcoinFaqPage() {
                 without having to trust centralized bridging services, which are 
                 at high risk of being taken down or hacked.
               </p>
+              <p>
                 This integration with the Bitcoin network is made up of two key building blocks:{" "}
                 <strong>Network integration</strong> and <strong>chain-key ECDSA</strong>.
                 Combining these building blocks, canisters can directly and
@@ -277,8 +278,8 @@ function BitcoinFaqPage() {
               <p className="tw-paragraph mb-3">
                 ckBTC isn't considered a wrapped token because it doesn't involve 
                 centralized custodians or bridges to work. More than a token, while
-                ckBTC implements the ICRC-1 fungible token standard, the pair of
-                canister smart contracts also allow bitcoin to be freely sent between
+                ckBTC implements the ICRC-1 fungible token standard, it is a pair of
+                canister smart contracts that allow bitcoin to be freely sent between
                 addresses either on the Bitcoin network or the Internet Computer,
                 making it the first true multi-chain asset.
               </p>
