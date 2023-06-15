@@ -1,6 +1,6 @@
 :root {
   --ifm-menu-color-background-hover: #e8e4ed;
-  --ic0-menu-padding-top: 32px;
+  --ic0-menu-padding-top: 64px;
 }
 
 div[class*="sidebar_"] {
@@ -58,6 +58,7 @@ aside[class*="docSidebarContainer_"] {
   // hide the sidebar logo
   a[class*="sidebarLogo_"] {
     visibility: hidden;
+    display: none !important;
   }
 
   // move the entire sidebar down when the navbar is visible

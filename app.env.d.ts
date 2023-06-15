@@ -49,6 +49,7 @@ declare module "@docusaurus/theme-common" {
           docId?: string;
           readonly type?: "docSidebar" | "doc" | "dropdown";
           items?: LinkLikeNavbarItemProps[];
+          href?: string;
         }
       >;
     };
