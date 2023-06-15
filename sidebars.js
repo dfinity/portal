@@ -304,7 +304,7 @@ const sidebars = {
                   "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
                   "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
                   "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                  // "developer-docs/integrations/https-outcalls/https-outcalls-post",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-post",
               ],
             },
             {
