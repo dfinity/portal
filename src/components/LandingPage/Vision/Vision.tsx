@@ -71,82 +71,82 @@ const Vision: React.FC = () => {
   }, []);
 
   return (
-    <AnimateSpawn
-      className="container-10 pt-20 md:pt-40"
-      el={motion.section}
-      variants={transitions.container}
-      id="vision"
-    >
-      <div className="relative">
-        <div
-          className={clsx("tw-lead md:tw-title-sm md:w-7/10", styles.vision)}
-        >
-          <p>Today, blockchains only process tokens and clips of data.</p>
+    <section className="overflow-hidden" id="vision">
+      <AnimateSpawn
+        className="container-10 pt-20 md:pt-40"
+        variants={transitions.container}
+      >
+        <div className="relative">
+          <div
+            className={clsx("tw-lead md:tw-title-sm md:w-7/10", styles.vision)}
+          >
+            <p>Today, blockchains only process tokens and clips of data.</p>
 
-          <p>
-            Tomorrow, blockchain will become a decentralized{" "}
-            <em>crypto cloud</em>.
-          </p>
+            <p>
+              Tomorrow, blockchain will become a decentralized{" "}
+              <em>crypto cloud</em>.
+            </p>
 
-          <p>
-            Blockchain will eat the centralized cloud, and become the{" "}
-            <em>everything stack</em>, which hosts unstoppable systems and
-            services, and rich fully-decentralized Web3 experiences.
-          </p>
+            <p>
+              Blockchain will eat the centralized cloud, and become the{" "}
+              <em>everything stack</em>, which hosts unstoppable systems and
+              services, and rich fully-decentralized Web3 experiences.
+            </p>
 
-          <p>
-            It's already happening at scale on the Internet Computer, which is
-            powering a <em>blockchain singularity</em>.
-          </p>
+            <p>
+              It's already happening at scale on the Internet Computer, which is
+              powering a <em>blockchain singularity</em>.
+            </p>
 
-          <p>Join the movement.</p>
-          <p className="pt-6 flex flex-col gap-8 items-start">
-            <Link href="/capabilities" className="button-primary text-center">
-              Internet Computer capabilities
-            </Link>
+            <p>Join the movement.</p>
+            <p className="pt-6 flex flex-col gap-8 items-start">
+              <Link href="/capabilities" className="button-primary text-center">
+                Internet Computer capabilities
+              </Link>
 
-            <Link
-              href="https://wiki.internetcomputer.org/wiki/History"
-              className="link-primary link-with-icon"
+              <Link
+                href="https://wiki.internetcomputer.org/wiki/History"
+                className="link-primary link-with-icon"
+              >
+                Wiki history of the Internet Computer
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+          </div>
+
+          <AnimateSpawn
+            variants={transitions.item}
+            className="hidden md:block absolute right-[-170px] bottom-[400px]"
+          >
+            <HashTag
+              className=""
+              href="https://twitter.com/search?q=%23InternetComputer"
             >
-              Wiki history of the Internet Computer
-              <LinkArrowUpRight />
-            </Link>
-          </p>
+              #InternetComputer
+            </HashTag>
+          </AnimateSpawn>
+          <AnimateSpawn
+            variants={transitions.item}
+            className="hidden md:block absolute right-[180px] bottom-[270px]"
+          >
+            <HashTag className="" href="https://twitter.com/search?q=%23ICP">
+              #ICP
+            </HashTag>
+          </AnimateSpawn>
+          <AnimateSpawn
+            variants={transitions.item}
+            className="hidden md:block absolute right-[-40px] bottom-[150px]"
+          >
+            <HashTag
+              className=""
+              href="https://twitter.com/search?q=%23WorldComputer"
+            >
+              #WorldComputer
+            </HashTag>
+          </AnimateSpawn>
         </div>
-
-        <AnimateSpawn
-          variants={transitions.item}
-          className="hidden md:block absolute right-[-170px] bottom-[400px]"
-        >
-          <HashTag
-            className=""
-            href="https://twitter.com/search?q=%23InternetComputer"
-          >
-            #InternetComputer
-          </HashTag>
-        </AnimateSpawn>
-        <AnimateSpawn
-          variants={transitions.item}
-          className="hidden md:block absolute right-[180px] bottom-[270px]"
-        >
-          <HashTag className="" href="https://twitter.com/search?q=%23ICP">
-            #ICP
-          </HashTag>
-        </AnimateSpawn>
-        <AnimateSpawn
-          variants={transitions.item}
-          className="hidden md:block absolute right-[-40px] bottom-[150px]"
-        >
-          <HashTag
-            className=""
-            href="https://twitter.com/search?q=%23WorldComputer"
-          >
-            #WorldComputer
-          </HashTag>
-        </AnimateSpawn>
-      </div>
-    </AnimateSpawn>
+      </AnimateSpawn>
+    </section>
   );
 };
 

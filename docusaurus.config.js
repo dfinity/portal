@@ -6,7 +6,7 @@ const isDev = process.env.NODE_ENV === "development";
 dotenv.config({ path: ".env.local" });
 
 const versions = require("./versions.json");
-const lightCodeTheme = require("prism-react-renderer/themes/github");
+const lightCodeTheme = require("./codeblock-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
@@ -331,9 +331,8 @@ const subnavItems = [
     label: "Motoko"
   },
   {
-    type: "docSidebar",
     position: "left",
-    sidebarId: "blog",
+    href: "/blog",
     label: "Blog"
   },
   {
@@ -434,6 +433,11 @@ const config = {
           rehypePlugins: [katex],
           editUrl: "https://github.com/dfinity/portal/edit/master/"
         },
+        blog: {
+          path: "blog",
+          blogSidebarCount: "ALL",
+          postsPerPage: "ALL"
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.scss")
         }
@@ -451,9 +455,9 @@ const config = {
   // },
 
   themeConfig:
-  // NOTE: liveCodeBLock is enabled for possible future feature,
-  // but to do that type preset- classic had to be disabled below
-  // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    // NOTE: liveCodeBLock is enabled for possible future feature,
+    // but to do that type preset- classic had to be disabled below
+    // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
       image: "/img/share.jpg",
       colorMode: {
