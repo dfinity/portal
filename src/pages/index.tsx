@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
             "Multi-chain Web3",
             "No security teams",
             "No firewalls needed",
-            "Decentralized control"
+            "Decentralize control"
           ]}
         ></PreHero>
       </QueryClientProvider>
