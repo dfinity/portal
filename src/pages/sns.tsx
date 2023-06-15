@@ -369,54 +369,6 @@ function SnsPage() {
             </motion.div>
           </AnimateSpawn>
         </section>
-        <section className=" bg-infinite text-white overflow-hidden">
-          <AnimateSpawn
-            className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20  md:py-24 relative  flex flex-col justify-center"
-            variants={transitions.container}
-          >
-            {/* <CustodyGraphic className="absolute w-[520px] md:w-auto right-[-100px] top-[-160px] md:right-[-200px] md:top-[-120px]"></CustodyGraphic> */}
-            <img
-              className="
-                w-full max-w-[500px] py-20
-                md:absolute 
-                md:w-[640px] md:max-w-none md:left-auto md:translate-x-0 md:right-[-50px] md:top-[-30px]"
-              src="/img/sns/sns.webp"
-              alt="SNS"
-            ></img>
-            <div className="md:mx-auto md:w-10/12 relative">
-              <motion.h2
-                className="tw-heading-4 md:tw-heading-3 md:w-5/10 mb-6 md:my-8"
-                variants={transitions.item}
-              >
-                SNS-1: The first of its kind
-              </motion.h2>
-
-              <motion.p
-                variants={transitions.item}
-                className="tw-lead-sm mb-3 md:w-1/2"
-              >
-                SNS-1 was a dress rehearsal that DFINITY ran together with the
-                ICP community to test an SNS decentralization swap on the
-                mainnet. After a successful SNS launch, SNS-1 is now controlled
-                by the community.
-              </motion.p>
-              <motion.p variants={transitions.item}>
-                <Link
-                  className="link-primary-light"
-                  href="https://dscvr.one/p/internet-computer"
-                >
-                  Follow SNS-1 on DSCVR
-                  <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                </Link>
-              </motion.p>
-            </div>
-            <motion.img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-400px]"
-              alt=""
-            />
-          </AnimateSpawn>
-        </section>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
