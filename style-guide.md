@@ -307,6 +307,18 @@ Numbers should be formatted using the `'` character, and not any other character
 - 54'000
 - 1'000
 
+## API methods
+
+For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API method requests, they should be formatted as such:
+
+- In headings, they should be capitalized without additional formatting. 
+    - Example: "Using HTTP GET calls."
+    - Example: "Using HTTP PUT calls."
+- In the body of documents, they should be formatted as in-line code, such as:
+    - Example: "A minimal example to make a `GET` HTTPS request."
+    - Example: "That is, the canister could define the quorum size to be 1 and have only 1 replica execute the `POST` request."
+
+
 ## Punctuation
 
 The following punctuation standards should be followed:

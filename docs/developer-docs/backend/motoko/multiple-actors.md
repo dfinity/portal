@@ -19,11 +19,11 @@ For this guide, you are going to create separate program files for three actors 
 
 ## Prerequisites
 
-Before starting the guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have stopped any local canister execution environment running on your computer.
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
@@ -47,7 +47,7 @@ You have already seen that creating a new project adds a default `dfx.json` conf
 
 To modify the default `dfx.json` configuration file:
 
-- #### Step 1:  Open the `dfx.json` configuration file in a text editor, then change the default `multiple_actors` canister name and source directory to `assistant`.
+- #### Step 1:  Open the `dfx.json` configuration file in a text editor, then change the default `multiple_actors_backend` canister name and source directory to `assistant`.
 
     For example, under the `canisters` key:
 
@@ -58,19 +58,42 @@ To modify the default `dfx.json` configuration file:
 
     Because you are going to add settings to this `canisters` section of the configuration file, you must also add a **comma** after the curly brace that encloses the location of the `assistant` main source code file and the canister type.
 
-- #### Step 2:  Remove the `multiple_actors_assets` section from the file.
+- #### Step 2:  Remove the `multiple_actors_frontend` section from the file.
 
 - #### Step 3:  Add a new canister name, source code location, and canister type for the `rock_paper_scissors` canister and a new canister name, source code location, and canister type for the `daemon` program files below the `assistant` canister definition.
 
-    After making the changes, the `canisters` section of the `dfx.json` file should look similar to [this](./_attachments/multiple-actors-dfx.json).
+    After making the changes, the `canisters` section of the `dfx.json` file should look similar to [this:
 
-    You can leave the other sections as-is.
+```
+{
+  "canisters": {
+    "assistant": {
+      "main": "src/assistant/main.mo",
+      "type": "motoko"
+    },
+    "rock_paper_scissors": {
+      "main": "src/rock_paper_scissors/main.mo",
+      "type": "motoko"
+    },
+    "daemon": {
+      "main": "src/daemon/main.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "version": 1
+}
+```
 
 - #### Step 4:  Save your changes and close the `dfx.json` file to continue.
 
 - #### Step 5:  Change the name of the default source file directory to match the name specified in the `dfx.json` configuration file by running the following command:
 
-        cp -r src/multiple_actors/ src/assistant/
+        cp -r src/multiple_actors_backend/ src/assistant/
 
 - #### Step 6:  Copy the `assistant` source file directory to create the main canister file for the `rock_paper_scissors` actor by running the following command:
 
@@ -88,19 +111,143 @@ To modify the default source code:
 
 - #### Step 1:  Open the `src/assistant/main.mo` file in a text editor and delete the existing content.
 
-- #### Step 2:  Copy and paste [this code](./_attachments/multiple-actors-assistant-main.mo) into the file.
+- #### Step 2:  Copy and paste this code into the file:
+
+```
+import Array "mo:base/Array";
+import Nat "mo:base/Nat";
+
+// Define the actor
+actor Assistant {
+
+  stable var todos : [ToDo] = [];
+  stable var nextId : Nat = 1;
+
+  // Define to-do item properties
+  type ToDo = {
+    id : Nat;
+    description : Text;
+    completed : Bool;
+  };
+
+  // Add to-do item utility
+  func add(todos : [ToDo], description : Text, id : Nat) : [ToDo] {
+    let todo : ToDo = {
+      id = id;
+      description = description;
+      completed = false;
+    };
+    Array.append(todos, [todo])
+};
+
+  // Show to-do item utility
+  func show(todos : [ToDo]) : Text {
+    var output : Text = "\n___TO-DOs___";
+    for (todo : ToDo in todos.vals()) {
+      output #= "\n(" # Nat.toText(todo.id) # ") " # todo.description;
+      if (todo.completed) { output #= " ✔"; };
+    };
+    output
+  };
+
+  public func addTodo (description : Text) : async () {
+    todos := add(todos, description, nextId);
+    nextId += 1;
+  };
+
+  public query func showTodos () : async Text {
+    show(todos)
+  };
+
+};
+```
 
 - #### Step 3:  Save your changes and close the `main.mo` file to continue.
 
 - #### Step 4:  Open the `src/rock_paper_scissors/main.mo` file in a text editor and delete the existing content.
 
-- #### Step 5:  Copy and paste [this code](./_attachments/multiple-actors-rock-main.mo) into the file.
+- #### Step 5:  Copy and paste this code into the file:
+
+```
+import I "mo:base/Iter"; 
+
+actor RockPaperScissors {
+
+  stable var alice_score : Nat = 0;
+  stable var bob_score : Nat = 0;
+  stable var alice_last : Choice = #scissors;
+  stable var bob_last : Choice = #rock;
+
+  type Choice = {
+    #rock;
+    #paper;
+    #scissors;
+  };
+
+  public func contest() : async Text {
+    for (i in I.range(0, 99)) {
+      battle_round();
+    };
+    var winner = "The contest was a draw";
+    if (alice_score > bob_score) winner := "Alice won" 
+    else if (alice_score < bob_score) winner := "Bob won";
+    return (winner);
+  };
+
+  func battle_round() : () {
+    let a = alice(bob_last);
+    let b = bob(alice_last);
+
+    switch (a, b) {
+      case (#rock, #scissors) alice_score += 1;
+      case (#rock, #paper) bob_score += 1;
+      case (#paper, #scissors) alice_score += 1;
+      case (#paper, #rock) bob_score += 1;
+      case (#scissors, #paper) alice_score += 1;
+      case (#scissors, #rock) bob_score += 1;
+      case (#rock, #rock) alice_score += 0;
+      case (#paper, #paper) bob_score += 0;
+      case (#scissors, #scissors) alice_score += 0;
+    };
+
+    alice_last := a;
+    bob_last := b;
+
+    return ();
+  };
+  
+  // Hard-coded players and choices
+  func bob(last : Choice) : Choice {
+    return #paper;
+  };
+
+  func alice(last : Choice) : Choice {
+    return #rock;
+  };
+};
+```
 
 - #### Step 6:  Save your changes and close the `main.mo` file to continue.
 
 - #### Step 7:  Open the `src/daemon/main.mo` file in a text editor and delete the existing content.
 
-- #### Step 8:  Copy and paste [this code](./_attachments/multiple-actors-daemon-main.mo) into the file.
+- #### Step 8:  Copy and paste this code into the file:
+
+```
+actor Daemon {
+  stable var running = false;
+
+  public func launch() : async Text {
+    running := true;
+    debug_show "The daemon process is running";
+  };
+
+  public func stop(): async Text {
+    running := false;
+    debug_show "The daemon is stopped";
+  };
+};
+```
 
 - #### Step 9:  Save your changes and close the `main.mo` file to continue.
 
@@ -116,7 +263,11 @@ To start the local canister execution environment:
 
 - #### Step 3:  Start the local canister execution environment by running the following command:
 
-        dfx start
+        dfx start --clean
+
+    For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
+
+    This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 
 - #### Step 4:  Leave the terminal that displays canister execution operations open and switch your focus to your original terminal where you created your new project.
 
@@ -142,14 +293,12 @@ To deploy the dapp on the Internet Computer blockchain mainnet:
 
 The `dfx deploy` command output displays information about the operations it performs. For example, the command displays the specific canister identifiers for the three canisters defined in the `dfx.json` configuration file.
 
-    Deploying all canisters.
-    Creating canisters...
-    Creating canister "assistant"...
-    "assistant" canister created with canister id: "75hes-oqbaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q"
-    Creating canister "daemon"...
-    "daemon" canister created with canister id: "cxeji-wacaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q"
-    Creating canister "rock_paper_scissors"...
-    "rock_paper_scissors" canister created with canister id: "7kncf-oidaa-aaaaa-aaaaa-aaaaa-aaaaa-aaaaa-q"
+        Deployed canisters.
+        URLs:
+        Backend canister via Candid interface:
+        assistant: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=ahw5u-keaaa-aaaaa-qaaha-cai
+        daemon: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
+        rock_paper_scissors: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
 
 ## Verify deployment by calling the canisters
 

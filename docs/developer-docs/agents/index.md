@@ -39,7 +39,7 @@ If you're interested in building an agent in another language please reach out t
 
 ### Structuring data
 
-A `call` to the Internet Computer can take two common forms - an `update` or a `query`. The **agent** submits a POST request to `/api/v2/canister/<effective_canister_id>/call`, and includes the following components:
+A `call` to the Internet Computer can take two common forms - an `update` or a `query`. The **agent** submits a `POST` request to `/api/v2/canister/<effective_canister_id>/call`, and includes the following components:
 
 - `request_type`
 - Authentication
@@ -53,7 +53,7 @@ By knowing the Candid interface of the canister, the **agent** will assemble the
 
 For update requests, the agent also hashes the rest of the fields, and passes it in as a unique `request_id`. That `request_id` is used for polling while the IC reaches consensus on the update.
 
-The **agent** takes the CBOR-encoded certificate and attaches it to the body of the POST request. The canister will work on that request asynchronously, and then the **agent** can begin polling with `read_state` requests, until the canister response is ready.
+The **agent** takes the CBOR-encoded certificate and attaches it to the body of the `POST` request. The canister will work on that request asynchronously, and then the **agent** can begin polling with `read_state` requests, until the canister response is ready.
 
 ### Decoding data
 
