@@ -7,7 +7,7 @@ This section defines the current main constraints regarding resource usage on th
 ## Resource constraints and limits
 
 | Resource          | Constraint            |
-|-------------------------------------------|
+|-------------------|-----------------------|
 | Canister queue limit | 500 messages        |
 | Maximum ingress and cross-net inter-canister call payload | 2MB |
 | Maximum same-subnet inter-canister call payload (may be deprecated at some point)| 10MB |

@@ -1,5 +1,6 @@
 # How to use HTTP outcalls: GET
 ## Overview
+
 A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token. 
@@ -219,6 +220,7 @@ actor {
 
 };
 ```
+
 - `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
 -  The code above adds `17_000_000_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).

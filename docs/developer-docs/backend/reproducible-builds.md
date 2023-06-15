@@ -1,4 +1,4 @@
-# Reproducible canister builds
+# Creating reproducible canister builds
 
 ## Overview
 Thanks to its consensus protocol, the Internet Computer always runs canister code correctly. But this doesn’t mean that it’s running the **correct** code for a canister. If you are using a canister somebody else developed, you may want to verify that the canister is indeed running the intended code before giving it control to make important decision for you, e.g., sending your ICP to another canister. Verifying this requires answering two questions:

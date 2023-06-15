@@ -9,17 +9,18 @@ As a preview, the following diagram illustrates the development work flow when r
 
 ## Prerequisites
 
-Before you start this guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have `node.js` installed if you want to include the default template files for frontend development in your project.
+-   [x] Stop any local canister execution environments running on the computer.
 
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Assure you have an internet connection and access to a shell terminal on your local macOS or Linux computer.
 
--   [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+-   [x] Install `node.js` if you want to include the default template files for frontend development in your project.
 
--   [x] You have stopped any local canister execution environment processes running on the local computer.
+-   [x] Install the Visual Studio Code plugin for Motoko as described in [VS code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+
 
 ## Create a new project
 
@@ -56,9 +57,9 @@ To create a new project:
         ├── package-lock.json
         ├── package.json
         ├── src            # source files directory
-        │   ├── explore_hello
+        │   ├── explore_hello_backend
         │   │   └── main.mo
-        │   └── explore_hello_assets
+        │   ├── explore_hello_frontend
         │       ├── assets
         │       │   ├── logo.png
         │       │   ├── main.css
@@ -94,7 +95,39 @@ To review the default configuration file for your project:
 
 - #### Step 3:  Open the `dfx.json` configuration file in a text editor to review the default settings.
 
-    It may look like [this](./_attachments/sample-explore-dfx.json).
+    It may look like this:
+
+    ```
+        {
+        "canisters": {
+            "explore_hello_backend": {
+            "main": "src/explore_hello_backend/main.mo",
+            "type": "motoko"
+            },
+            "explore_hello_frontend": {
+            "dependencies": [
+                "explore_hello_backend"
+            ],
+            "frontend": {
+                "entrypoint": "src/explore_hello_frontend/src/index.html"
+            },
+            "source": [
+                "src/explore_hello_frontend/assets",
+                "dist/explore_hello_frontend/"
+            ],
+            "type": "assets"
+            }
+        },
+        "defaults": {
+            "build": {
+            "args": "",
+            "packtool": ""
+            }
+        },
+        "output_env_file": ".env",
+        "version": 1
+        }
+    ```
 
     Let’s take a look at a few of the default settings.
 
@@ -126,7 +159,7 @@ To review the default sample program for your project:
 
         pwd
 
-- #### Step 2:  Open the `src/explore_hello/main.mo` file in a text editor and review the code in the template:
+- #### Step 2:  Open the `src/explore_hello_backend/main.mo` file in a text editor and review the code in the template:
 
         actor {
             public func greet(name : Text) : async Text {
@@ -178,7 +211,7 @@ To start the local canister execution environment:
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [Deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This guide demonstrates how to perform each of the operations independently.
+In the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This guide demonstrates how to perform each of the operations independently.
 
 To register canister identifiers for the local network:
 
@@ -190,24 +223,22 @@ To register canister identifiers for the local network:
 
     The command displays the network-specific canister identifiers for the canisters defined in the `dfx.json` configuration file.
 
-        Creating a wallet canister on the local network.
-        The wallet canister on the "local" network for user "pubs-id" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
-        Creating canister "explore_hello"...
-        "explore_hello" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "explore_hello_assets"...
-        "explore_hello_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        Creating canister explore_hello_backend...
+        explore_hello_backend canister created with canister id: br5f7-7uaaa-aaaaa-qaaca-cai
+        Creating canister explore_hello_frontend...
+        explore_hello_frontend canister created with canister id: bw4dl-smaaa-aaaaa-qaacq-cai
 
     Because you are connected to the local canister execution environment, these canister identifiers are only valid locally and are stored for the project in the `.dfx/local/canister_ids.json` file.
 
     For example:
 
         {
-          "explore_hello": {
-            "local": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-          },
-          "explore_hello_assets": {
-            "local": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-          }
+        "explore_hello_backend": {
+            "local": "br5f7-7uaaa-aaaaa-qaaca-cai"
+        },
+        "explore_hello_frontend": {
+            "local": "bw4dl-smaaa-aaaaa-qaacq-cai"
+        }
         }
 
 ## Build the dapp
@@ -218,8 +249,6 @@ To build the program executable:
 
 - #### Step 1:  In the terminal shell on your local computer, navigate to your `explore_hello` project directory.
 
-    You must run the `dfx build` command from within the project directory structure.
-
 - #### Step 2:  Build the executable canister by running the following command:
 
         dfx build
@@ -228,34 +257,45 @@ To build the program executable:
 
         Building canisters...
         Building frontend...
+        WARN: Building canisters before generate for Motoko
+        Generating type declarations for canister explore_hello_frontend:
+        src/declarations/explore_hello_frontend/explore_hello_frontend.did.d.ts
+        src/declarations/explore_hello_frontend/explore_hello_frontend.did.js
+        src/declarations/explore_hello_frontend/explore_hello_frontend.did
+        Generating type declarations for canister explore_hello_backend:
+        src/declarations/explore_hello_backend/explore_hello_backend.did.d.ts
+        src/declarations/explore_hello_backend/explore_hello_backend.did.js
+        src/declarations/explore_hello_backend/explore_hello_backend.did
 
     Because you are connected to the local canister execution environment, the `dfx build` command adds the `canisters` directory under the `.dfx/local/` directory for the project.
 
-- #### Step 3:  Verify that the `.dfx/local/canisters/explore_hello` directory created by the `dfx build` command contains the WebAssembly and related application files by running the following command.
+- #### Step 3:  Verify that the `.dfx/local/canisters/explore_hello_backend` directory created by the `dfx build` command contains the WebAssembly and related application files by running the following command.
 
-        ls -l .dfx/local/canisters/explore_hello/
+        ls -l .dfx/local/canisters/explore_hello_backend/
 
     For example, the command returns output similar to the following:
 
-        -rw-r--r--  1 pubs  staff     178 Apr  6 14:25 explore_hello.d.ts
-        -rw-r--r--  1 pubs  staff      41 Apr  6 14:25 explore_hello.did
-        -rw-r--r--  1 pubs  staff     155 Apr  6 14:25 explore_hello.did.js
-        -rw-r--r--  1 pubs  staff     142 Apr  6 14:25 explore_hello.js
-        -rw-r--r--  1 pubs  staff  157613 Apr  6 14:25 explore_hello.wasm
+        -rw-rw-rw-  1 pubs  staff      47 Jun 14 15:43 constructor.did
+        -rw-r--r--  1 pubs  staff      47 Jun 14 15:43 explore_hello_backend.did
+        -rw-r--r--  1 pubs  staff      32 Jun 14 15:43 explore_hello_backend.most
+        -rw-r--r--  1 pubs  staff  134640 Jun 14 15:43 explore_hello_backend.wasm
+        -rw-r--r--  1 pubs  staff    2057 Jun 14 15:43 index.js
+        -rw-rw-rw-  1 pubs  staff       2 Jun 14 15:43 init_args.txt
+        -rw-rw-rw-  1 pubs  staff      47 Jun 14 15:43 service.did
+        -rw-r--r--  1 pubs  staff     175 Jun 14 15:43 service.did.d.ts
+        -rw-r--r--  1 pubs  staff     174 Jun 14 15:43 service.did.js
 
-    The `canisters/explore_hello` directory contains the following key files:
+    The `canisters/explore_hello_backend` directory contains the following key files:
 
-    -   The `explore_hello.did` file contains an interface description for your main dapp.
+    -   The `explore_hello_backend.did` file contains an interface description for your main dapp.
 
-    -   The `explore_hello.did.js` file contains a JavaScript representation of the canister interface for the functions in your dapp.
+    -   The `index.js` file contains a JavaScript representation of the canister interface for the functions in your dapp.
 
-    -   The `explore_hello.js` file contains a JavaScript representation of the canister interface for your dapp.
+    -   The `explore_hello_backend.wasm` file contains the compiled WebAssembly for the assets used in your project.
 
-    -   The `explore_hello.wasm` file contains the compiled WebAssembly for the assets used in your project.
+    The `canisters/explore_hello_frontend` directory contains similar files to describe the frontend assets associated with your project.
 
-    The `canisters/explore_hello_assets` directory contains similar files to describe the frontend assets associated with your project.
-
-    In addition to the files in the `canisters/explore_hello` and the `canisters/explore_hello_assets` directories, the `dfx build` command creates an `idl` directory.
+    In addition to the files in the `canisters/explore_hello_backend` and the `canisters/explore_hello_frontend` directories, the `dfx build` command creates an `idl` directory.
 
 - #### Step 4:  Verify that a new folder has been created, `src/declarations`.
 
@@ -275,21 +315,16 @@ To deploy to the local canister execution environment:
 
     The command displays output similar to the following:
 
-        Installing code for canister explore_hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        Installing code for canister explore_hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
-        Authorizing our identity (pubs-id) to the asset canister...
+        Installing code for canister explore_hello_backend, with canister ID br5f7-7uaaa-aaaaa-qaaca-cai
+        Installing code for canister explore_hello_frontend, with canister ID bw4dl-smaaa-aaaaa-qaacq-cai
         Uploading assets to asset canister...
-          /index.html 1/1 (480 bytes)
-          /index.js 1/1 (296836 bytes)
-          /main.css 1/1 (484 bytes)
-          /sample-asset.txt 1/1 (24 bytes)
-          /logo.png 1/1 (25397 bytes)
-          /index.js.map 1/1 (964679 bytes)
-          /index.js.LICENSE.txt 1/1 (499 bytes)
+        Fetching properties for all assets in the canister.
+        Starting batch.
+
 
 - #### Step 3:  Run the `dfx canister call` command and specify the dapp and function to call by running the following command:
 
-        dfx canister call explore_hello greet '("everyone": text)'
+        dfx canister call explore_hello_backend greet '("everyone": text)'
 
     This command specifies:
 
@@ -313,14 +348,14 @@ To explore the default frontend template:
 
 - #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open, and navigate to your `explore_hello` project directory.
 
-- #### Step 2:  Open the `src/explore_hello_assets/src/index.js` file in a text editor and review the code in the template script:
+- #### Step 2:  Open the `src/explore_hello_frontend/src/index.js` file in a text editor and review the code in the template script:
 
-        import { explore_hello } from "../../declarations/explore_hello";
+        import { explore_hello } from "../../declarations/explore_hello_backend";
 
         document.getElementById("clickMeBtn").addEventListener("click", async () => {
           const name = document.getElementById("name").value.toString();
           // Interact with explore_hello actor, calling the greet method
-          const greeting = await explore_hello.greet(name);
+          const greeting = await explore_hello_backend.greet(name);
 
           document.getElementById("greeting").innerText = greeting;
         });
@@ -333,24 +368,39 @@ To explore the default frontend template:
 
 - #### Step 4:  View the frontend assets created for the project by running following command:
 
-        ls -l .dfx/local/canisters/explore_hello_assets/
+        ls -l .dfx/local/canisters/explore_hello_frontend/
 
     The command displays output similar to the following:
 
-        drwxr-xr-x  9 pubs  staff     288 Apr  6 14:25 assets
-        -r--r--r--  1 pubs  staff    2931 Dec 31  1969 assetstorage.did
-        -r--r--r--  1 pubs  staff  265823 Dec 31  1969 assetstorage.wasm
-        -rw-r--r--  1 pubs  staff    3651 Apr  6 14:25 explore_hello_assets.d.ts
-        -rw-rw-rw-  1 pubs  staff    2931 Dec 31  1969 explore_hello_assets.did
-        -rw-r--r--  1 pubs  staff    4236 Apr  6 14:25 explore_hello_assets.did.js
-        -rw-r--r--  1 pubs  staff     149 Apr  6 14:25 explore_hello_assets.js
-        -rw-rw-rw-  1 pubs  staff  265823 Dec 31  1969 explore_hello_assets.wasm
+        -rw-r--r--  1 pubs  staff    6269 Dec 31  1969 assetstorage.did
+        -rw-r--r--  1 pubs  staff  432762 Jun 14 15:47 assetstorage.wasm.gz
+        -rw-rw-rw-  1 pubs  staff    6269 Dec 31  1969 constructor.did
+        -rw-r--r--  1 pubs  staff  432762 Jun 14 15:47 explore_hello_frontend.wasm.gz
+        -rw-r--r--  1 pubs  staff    2064 Jun 14 15:47 index.js
+        -rw-rw-rw-  1 pubs  staff       2 Jun 14 15:47 init_args.txt
+        -rw-rw-rw-  1 pubs  staff    6269 Jun 14 15:47 service.did
+        -rw-r--r--  1 pubs  staff    6582 Jun 14 15:47 service.did.d.ts
+        -rw-r--r--  1 pubs  staff    7918 Jun 14 15:47 service.did.js
 
     These files were generated automatically by the `dfx build` command using node modules and the template `index.js` file.
 
 - #### Step 5:  Start a development server with `npm start`.
 
-- #### Step 6:  Open a browser and navigate to the `local` network address and port number—`+127.0.0.1:8080`
+The output should resemble the following:
+
+```
+> explore_hello_frontend@0.2.0 start
+> webpack serve --mode development --env development
+
+<i> [webpack-dev-server] [HPM] Proxy created: /api  -> http://127.0.0.1:4943
+<i> [webpack-dev-server] [HPM] Proxy rewrite rule created: "^/api" ~> "/api"
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://localhost:8083/
+<i> [webpack-dev-server] On Your Network (IPv4): http://192.168.0.144:8083/
+<i> [webpack-dev-server] On Your Network (IPv6): http://[fe80::1]:8083/
+```
+
+- #### Step 6:  Open a browser and navigate to the "Loopback" or "On Your Network (IPv4) address in a web browser.
 
 - #### Step 7:  Verify that you see the HTML page for the sample application.
 

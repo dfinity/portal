@@ -50,4 +50,4 @@ The following guides introduce the basics for writing dapps that run on the IC:
 
 -   [Add a stylesheet](../../frontend/add-stylesheet.md) illustrates how to add a stylesheet when you use React to create a new frontend for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
 
-Additional guides covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [**Motoko Programming Language Guide**](/motoko/main/about-this-guide.md).
+Additional guides covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [**Motoko programming language guide**](/motoko/main/about-this-guide.md).

@@ -1,11 +1,11 @@
 # 11: Using the Candid UI to test functions in a browser
 
 ## Overview
-The canister interface description language—often referred to as Candid or more generally as the IDL—provides a common language for specifying the signature of a canister smart contract.
+The canister interface description language, often referred to as Candid or more generally as the IDL, provides a common language for specifying the signature of a canister smart contract.
 
 Candid provides a unified way for you to interact with canister smart contracts that are written in different languages or accessed using different tools.
 For example, Candid provides a consistent view of a service whether the underlying program is native Rust, JavaScript, or any other programming language. 
-Candid also enables different tools—such as the `dfx` command-line interface and the Network Nervous System dapp—to share a common description for a service.
+Candid also enables different tools, such as the `dfx` command-line interface and the Network Nervous System dapp, to share a common description for a service.
 
 Based on the type signature of the actor, Candid also provides a web interface that allows you to call canister functions for testing and debugging.
 
@@ -13,13 +13,17 @@ Based on the type signature of the actor, Candid also provides a web interface t
 
 After you have deployed your project in the local canister execution environment using the `dfx deploy` or `dfx canister install` command, you can access the Candid web interface endpoint in a browser. 
 
-This web interface—the Candid UI—exposes the service description in a form, enabling you to quickly view and test functions and experiment with entering different data types without writing any front-end code.
+This web interface—, the Candid UI, exposes the service description in a form, enabling you to quickly view and test functions and experiment with entering different data types without writing any front-end code.
 
 To use the Candid web interface to test canister functions:
 
-- #### Step 1: Find the Candid UI canister identifier associated with the current project using the `dfx canister id __Candid_UI` command. 
+- #### Step 1: Find the Candid UI canister identifier associated with the current project by running the command:
 
-The command displays the canister identifier for the Candid UI with output similar to the following:
+```
+dfx canister id __Candid_UI
+```
+
+This command displays the canister identifier for the Candid UI with output similar to the following:
 
     r7inp-6aaaa-aaaaa-aaabq-cai
 
