@@ -212,7 +212,7 @@ To experiment with modifying the source code for this guide:
             ys;
         };
 
-    For information about the functions that perform operations on arrays, see the description of the Array module in the Motoko base library or the *Motoko Programming Language Reference*. For another example focused on the use of arrays, see the [quick sort](https://github.com/dfinity/examples/tree/master/motoko/quicksort) project in the [examples](https://github.com/dfinity/examples/) repository.
+    For information about the functions that perform operations on arrays, see the description of the Array module in the Motoko base library or the **Motoko programming language reference**. For another example focused on the use of arrays, see the [quick sort](https://github.com/dfinity/examples/tree/master/motoko/quicksort) project in the [examples](https://github.com/dfinity/examples/) repository.
 
 - #### Step 6:  Register, build, and deploy the dapp by running the following command:
 
