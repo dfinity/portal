@@ -1,16 +1,45 @@
 # How to use HTTP outcalls: GET
 ## Overview
-A minimal example to make a `GET` HTTPS request. The sample code is in both Motoko and Rust. This sample canister sends a GET request to the Coinbase API and retrieves some historical data about ICP token.
+A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+
+The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token. 
+
+**The main intent of this canister is to show developers how to make idempotent `GET` requests.**
 
 This example takes less than 5 minutes to complete.
+
+## What we are building
+
+### Sample dapp
+
+The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, we can interact with its public methods via the Candid web UI, which will look like this:
+
+
+![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
+
+The `get_icp_usd_exchange()` method returns Coinbase data on the exchange rate between USD and ICP for a certain day. The data will look like this:
+
+The API response looks like this:
+```
+  [
+     [
+         1682978460, <-- start timestamp
+         5.714, <-- lowest price during time range 
+         5.718, <-- highest price during range
+         5.714, <-- price at open
+         5.714, <-- price at close
+         243.5678 <-- volume of ICP traded
+     ],
+]
+```
 
 ## Motoko version
 
 ### Motoko: Structure of the code
 
-Before we dive in, here is the structure the code we will touch:
+Before we dive in, here is the structure of the code we will touch:
 
-Here is how our main file will look like:
+Here is how our main file will look:
 
 ```motoko
 
@@ -19,7 +48,7 @@ import Types "Types";
 
 actor {
 
-//method that uses the HTTP outcalls feature and returns a string
+  //method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
@@ -45,7 +74,7 @@ actor {
 };
 ```
 
-We will also create some custom types in `Types.mo`. This will look like this:
+We will also create some custom types in `Types.mo`. It will look like this:
 
 ```motoko
 module Types {
@@ -57,21 +86,17 @@ module Types {
 
 ### Motoko: Step by step
 
-To create a new project directory for testing access control and switching user identities:
+To create a new project:
 
-- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
-
-- #### Step 2:  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
-
-- #### Step 3:  Create a new project by running the following command:
+- #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new hello_http
-cd hello_http
+dfx new send_http_get
+cd send_http_get
 npm install
 ```
 
-- #### Step 4:  Open the `src/hello_http_backend/main.mo` file in a text editor and replace content with:
+- #### Step 2:  Open the `src/send_http_get_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -91,8 +116,8 @@ import Types "Types";
 actor {
 
 //This method sends a GET request to a URL with a free API we can test.
-//This method returns Coinbase data on the exchange rate between BTC and ICP 
-//for a certain day. The data will look like this:
+//This method returns Coinbase data on the exchange rate between USD and ICP 
+//for a certain day.
 //The API response looks like this:
 //  [
 //     [
@@ -162,7 +187,7 @@ actor {
     //     body : [Nat8];
     // };
 
-    //We need to decode that [Na8] array that is the body into readable text. 
+    //We need to decode that [Nat8] array that is the body into readable text. 
     //To do this, we:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
@@ -194,14 +219,16 @@ actor {
 
 };
 ```
-- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcalls is a GET.
--  The code above adds `17_000_000_000` cycles. This is typically is enough for GET requests, but this may need to change depending on your use case.
-- Code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
+- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
+-  The code above adds `17_000_000_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
+- The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
-- #### Step 5:  Open the `src/hello_http_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Open the `src/send_http_get_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
+
+    public type Timestamp = Nat64;
 
     //1. Type that describes the Request arguments for an HTTPS outcall
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
@@ -236,9 +263,10 @@ module Types {
     //modify headers, etc. "
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     
+
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a GET request, we declare the type for completeness, but 
+    //In this minimal example for a `GET` request, we declare the type for completeness, but 
     //we do not use this function. We will pass "null" to the HTTP request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
@@ -256,11 +284,10 @@ module Types {
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
-
 }
 ```
 
-- #### Step 6: Test the dapp locally.
+- #### Step 4: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -321,15 +348,13 @@ async fn foo() {
 }
 ```
 
+
+
 ### Rust: Step by step
 
-To create a new project directory for testing access control and switching user identities:
+To create a new project:
 
-- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
-
-- #### Step 2:  Change to the folder you are using for your Internet Computer blockchain projects, if you are using one.
-
-- #### Step 3:  Create a new project by running the following command:
+- #### Step 1:  Create a new project by running the following command:
 
 ```bash
 dfx new --type=rust hello_http_rust
@@ -338,11 +363,11 @@ npm install
 rustup target add wasm32-unknown-unknown
 ```
 
-- #### Step 4: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
+- #### Step 2: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
-//1. DECLARE IC MANAGEMENT CANISTER
-//This also includes methods and types needed
+//1. IMPORT IC MANAGEMENT CANISTER
+//This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
     TransformContext,
@@ -351,44 +376,53 @@ use ic_cdk::api::management_canister::http_request::{
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn get_icp_usd_exchange() -> String {
-
-  //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTP GET request
 
     // 2.1 Setup the URL and its query parameters
     type Timestamp = u64;
-    let start_timestamp : Timestamp = 1682978460; //May 1, 2023 22:01:00 GMT
-    let seconds_of_time : u64 = 60; //we start with 60 seconds
+    let start_timestamp: Timestamp = 1682978460; //May 1, 2023 22:01:00 GMT
+    let seconds_of_time: u64 = 60; //we start with 60 seconds
     let host = "api.pro.coinbase.com";
-    let url = format!("https://{}/products/ICP-USD/candles?start={}&end={}&granularity={}", host, start_timestamp.to_string(), start_timestamp.to_string(),seconds_of_time.to_string());
+    let url = format!(
+        "https://{}/products/ICP-USD/candles?start={}&end={}&granularity={}",
+        host,
+        start_timestamp.to_string(),
+        start_timestamp.to_string(),
+        seconds_of_time.to_string()
+    );
 
     // 2.2 prepare headers for the system http_request call
     //Note that `HttpHeader` is declared in line 4
     let request_headers = vec![
-        HttpHeader { name: "Host".to_string(), value: format!("{}:443",host) }, 
-        HttpHeader { name: "User-Agent".to_string(), value: "exchange_rate_canister".to_string() },
+        HttpHeader {
+            name: "Host".to_string(),
+            value: format!("{host}:443"),
+        },
+        HttpHeader {
+            name: "User-Agent".to_string(),
+            value: "exchange_rate_canister".to_string(),
+        },
     ];
 
     //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4
     let request = CanisterHttpRequestArgument {
         url: url.to_string(),
         method: HttpMethod::GET,
-        body: None, //optional for request
+        body: None,               //optional for request
         max_response_bytes: None, //optional for request
-        transform: None, //optional for request
+        transform: None,          //optional for request
         headers: request_headers,
     };
 
     //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
 
-    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //Note: in Rust, `http_request()` already sends the cycles needed
     //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
-        
         //4. DECODE AND RETURN THE RESPONSE
-    
+
         //See:https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
         Ok((response,)) => {
-
             //if successful, `HttpResponse` has this structure:
             // pub struct HttpResponse {
             //     pub status: Nat,
@@ -396,27 +430,27 @@ async fn get_icp_usd_exchange() -> String {
             //     pub body: Vec<u8>,
             // }
 
-            //We need to decode that Vec<u8> that is the body into readable text. 
+            //We need to decode that Vec<u8> that is the body into readable text.
             //To do this, we:
             //  1. Call `String::from_utf8()` on response.body
             //  3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
             let str_body = String::from_utf8(response.body)
                 .expect("Transformed response is not UTF-8 encoded.");
 
-                //The API response will looks like this:
+            //The API response will looks like this:
 
-                // ("[[1682978460,5.714,5.718,5.714,5.714,243.5678]]")
+            // ("[[1682978460,5.714,5.718,5.714,5.714,243.5678]]")
 
-                //Which can be formatted as this
-                //  [
-                //     [
-                //         1682978460, <-- start/timestamp
-                //         5.714, <-- low
-                //         5.718, <-- high
-                //         5.714, <-- open
-                //         5.714, <-- close
-                //         243.5678 <-- volume
-                //     ],
+            //Which can be formatted as this
+            //  [
+            //     [
+            //         1682978460, <-- start/timestamp
+            //         5.714, <-- low
+            //         5.718, <-- high
+            //         5.714, <-- open
+            //         5.714, <-- close
+            //         243.5678 <-- volume
+            //     ],
 
             //Return the body as a string and end the method
             str_body
@@ -424,7 +458,7 @@ async fn get_icp_usd_exchange() -> String {
         Err((r, m)) => {
             let message =
                 format!("The http_request resulted into error. RejectionCode: {r:?}, Error: {m}");
-            
+
             //Return the error as a string and end the method
             message
         }
@@ -433,20 +467,20 @@ async fn get_icp_usd_exchange() -> String {
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
+- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
-- #### Step 5: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
+- #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
 
 We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`. 
 
 ```
 service : {
-    "get_icp_usd_exchange()": () -> (text);
+    "get_icp_usd_exchange": () -> (text);
 }
 ```
 
-- #### Step 6: Test the dapp locally.
+- #### Step 4: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -471,5 +505,5 @@ Open the candid web UI for the backend (the `hello_http_rust_backend` one) and c
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
 :::note
-In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a following section
+In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a future section
 :::

@@ -4,7 +4,7 @@
 
 One of the most important principles to keep in mind is that the Internet Computer is a blockchain that allows running software in a distributed, replicated way.
 
-When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**, or **canister** in short. Canisters can be developed in various programming languages. Besides Motoko, a programming language purposefully designed for the Internet Computer, you can also use existing programming languages like C, Rust, JavaScript/TypeScript, AssemblyScript, and Python. 
+When you write source code for a dapp that runs on the Internet Computer, you compile the source code into a **WebAssembly module**. When you deploy the WebAssembly module that contains your program on the Internet Computer blockchain, the program is executed inside a conceptual computational unit called a **canister**. Canisters can be developed in various programming languages. Besides Motoko, a programming language purposefully designed for the Internet Computer, you can also use existing programming languages like C, Rust, JavaScript/TypeScript, AssemblyScript, and Python. 
 
 Once deployed, end-users can interact with the canister by accessing the entry point functions you have defined for that canister through a frontend client such as a browser.
 
@@ -57,7 +57,7 @@ As a modern, high-level programming language, Motoko provides some key features 
 
 -   Support for function abstractions, user-defined type definitions, and user-defined actors.
 
-For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [**Motoko Programming Language Guide**](/motoko/main/about-this-guide.md).
+For more detailed information about the Motoko programming language itself, including syntactical conventions and supported features, see the [**Motoko programming language guide**](/motoko/main/about-this-guide.md).
 
 For information about Canister Development Kits (CDKs) supporting other programming languages, see this [**overview**](../developer-docs/backend/choosing-language.md).
 
@@ -69,7 +69,7 @@ The following diagram provides a simplified drill-down view of the development e
 
 One of the most important principles to keep in mind when preparing to write programs using the Motoko programming language is that Motoko uses an *actor-based* programming model.
 
-An *actor* is a special kind of object that processes messages in an isolated state, enabling messages to be handled remotely and asynchronously.
+An **actor** is a special kind of object that processes messages in an isolated state, enabling messages to be handled remotely and asynchronously.
 
 In general, each canister includes the compiled code for one actor object. Each canister may also include some additional information such as interface descriptions or frontend assets. You can create projects that include multiple canisters, but each canister can only include one actor.
 
@@ -81,7 +81,7 @@ With Motoko, developers can compile to portable WebAssembly while still deliveri
 
 The Motoko language offers many of the features that are common to other higher-level modern languages—like type safety and pattern-matching. In addition, Motoko provides built-in support for defining messaging services using actors in a way that is especially well-suited to the Internet Computer and is easy to learn whether you are a new or experienced programmer.
 
-This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [**Motoko Programming Language Guide**](/motoko/main/about-this-guide.md).
+This guide provides an introduction to the basic features of the Motoko programming language in the context of writing programs using the SDK. For more detailed information about the Motoko programming language itself, see the [**Motoko programming language guide**](/motoko/main/about-this-guide.md).
 
 ## Identities and authentication
 
