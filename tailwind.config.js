@@ -104,6 +104,7 @@ module.exports = {
       },
       razzmatazz: {
         DEFAULT: "#DA3979",
+        300: "#EB318A",
       },
       blue: {
         DEFAULT: "#29ABE2",
