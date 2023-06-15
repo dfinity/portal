@@ -27,13 +27,15 @@ export default function Home(): JSX.Element {
     >
       <QueryClientProvider client={queryClient}>
         <PreHero
-          headline="Internet as cloud"
+          headline="World Computer"
           straps={[
-            "Unstoppable code",
+            "Build on the network",
             "Autonomous code",
+            "Unstoppable code",
             "Multi-chain Web3",
             "No security teams",
             "No firewalls needed",
+            "Decentralized control"
           ]}
         ></PreHero>
       </QueryClientProvider>
