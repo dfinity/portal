@@ -121,7 +121,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Installation",
+          label: "Installing the IC SDK",
           id: "developer-docs/setup/install/index",
         },
         {
@@ -166,21 +166,20 @@ const sidebars = {
       },
   {
     type: "category",
-    label: "Building a smart contract backend",
+    label: "Designing a dapp",
+        items: [
+          "developer-docs/backend/choosing-language",
+          "developer-docs/backend/design-dapps",
+          "developer-docs/backend/resource-limits",
+        ]
+  },
+  {
+    type: "category",
+    label: "Building backend canisters",
         items: [
           {
-            type: "doc",
-            label: "Choosing a programming language",
-            id: "developer-docs/backend/choosing-language",
-          },
-          {
-            type: "doc",
-            label: "Dapp design considerations",
-            id: "developer-docs/backend/design-dapps",
-          },
-          {
             type: "category",
-            label: "Building smart contracts with Motoko",
+            label: "Building canisters with Motoko",
             link: {
               type: "doc",
               id: "developer-docs/backend/motoko/index",
@@ -205,7 +204,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Building smart contracts with Rust",
+              label: "Building canisters with Rust",
               link: {
                 type: "doc",
                 id: "developer-docs/backend/rust/index",
@@ -221,7 +220,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Candid",
+              label: "Candid UI",
               link: {
                 type: "doc",
                 id: "developer-docs/backend/candid/index",
@@ -233,7 +232,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Periodic tasks and timers",
+              label: "Periodic tasks",
               id: "developer-docs/backend/periodic-tasks",
             },
             {
@@ -250,7 +249,7 @@ const sidebars = {
         },
     {
       type: "category",
-      label: "Building a web frontend",
+      label: "Building frontend canisters",
       link: {
           type: "doc",
           id: "developer-docs/frontend/index",
@@ -262,7 +261,7 @@ const sidebars = {
         },
     {
       type: "category",
-      label: "Integrating external agents with the IC",
+      label: "Using external agents",
       link: {
           type: "doc",
           id: "developer-docs/agents/index",
@@ -275,7 +274,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Advanced features",
+      label: "Advanced features and integrations",
       link: {
           type: "doc",
           id: "developer-docs/integrations/index",

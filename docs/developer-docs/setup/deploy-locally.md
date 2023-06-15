@@ -8,7 +8,7 @@ title: Local deployment
 
 This **quick start** scenario assumes that you are installing the IC SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
-To get started, let’s build and deploy a simple Hello canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
+To get started, let’s build and deploy a simple 'Hello, world!' canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Before you download and install this release of the IC SDK, verify the following
 You can download the latest version of the IC SDK directly from within a terminal shell on your local computer.
 
 :::caution
-These instructions are for **macOS** or **Linux** machines. For Windows instructions, please see [here](/docs/current/developer-docs/setup/install/index).
+These instructions are for **macOS** or **Linux** machines. For Windows instructions, please see [here](/docs/developer-docs/setup/install/index.mdx).
 :::
 
 To download and install:
@@ -40,7 +40,7 @@ To download and install:
 
 - #### Step 3:  Type `y` and press Return to continue with the installation.
 
-    The command displays information about the components being installed on the local computer.
+    This command displays information about the components being installed on the local computer.
 
 ## Verify the IC SDK is ready to use
 
@@ -104,7 +104,7 @@ To prepare the local canister execution environment:
 
 - #### Step 4:  Leave the terminal window that displays canister execution operations open and switch your focus to the first terminal window where you created your new project.
 
-    You perform the remaining steps in the terminal that doesn’t display canister execution operations.
+    You should perform the remaining steps in the terminal that doesn’t display canister execution operations.
 
 ## Register, build, and deploy the application
 
@@ -167,7 +167,7 @@ To deploy your first dapp locally:
 
     You should also note that the **first time you deploy**, `dfx` creates a `default` identity and a local cycle wallet controlled by your `default` identity. A cycles wallet is a special type of canister that enables you to transfer [cycles](/concepts/tokens-cycles.md) to other canisters.
 
-    **To deploy this sample dapp locally**, you don’t need to know anything about your default developer identity, using a cycles wallet, or managing cycles. We’ll cover these topics later, but for now, just note that these are created for you automatically.
+    **To deploy this sample dapp locally**, you don’t need to know anything about your default developer identity, using a cycles wallet, or managing cycles. We’ll cover these topics later; for now, just note that these are created for you automatically.
 
 - #### Step 4:  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
 
@@ -197,9 +197,11 @@ Now that you have verified that your dapp has been deployed and tested its opera
 
 - #### Step 1:  Open a browser.
 
-- #### Step 2:  Navigate to the URL output by the `dfx deploy` command in the previous step. It's the one after `Frontend canister via browser`, in our case that's `http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai`.
+- #### Step 2:  Navigate to the URL output by the `dfx deploy` command in the previous step. 
 
-Navigating to this URL displays a simple HTML page with a sample asset image file, an input field, and a button. For example:
+Use the URL after `Frontend canister via browser`; in our case that's `http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai`.
+
+Navigating to this URL displays a basic HTML page with a sample asset image file, an input field, and a button. For example:
 
 ![Sample HTML page](_attachments/frontend-prompt.png)
 
@@ -236,11 +238,11 @@ Here are some suggestions for where to go next:
 
 -   [Convert ICP tokens to cycles](./deploy-mainnet.md#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
 
--   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
 
--   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.
+-   [Motoko overview](../../motoko/intro/) to learn about the features and syntax for using Motoko.
 
 -   [On-chain deployment](./deploy-mainnet.md) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 
--   [What is Candid?](/developer-docs/backend/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](/docs/developer-docs/backend/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
