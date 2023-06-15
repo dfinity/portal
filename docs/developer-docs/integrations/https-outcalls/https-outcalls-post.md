@@ -3,8 +3,7 @@
 ## Overview
 A minimal example to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
-The sample code is in both Motoko and Rust. This sample canister sends a `POST` request to a free API where we can verify the headers and body from teh canister are what we expect.
-
+The sample code is in both Motoko and Rust. This sample canister sends a `POST` request with some JSON to a free API where we can verify the headers and body were sent correctly.
 
 **The main intent of this canister is to show developers how to make idempotent `POST` requests.**
 
@@ -37,8 +36,7 @@ In order to verify that our canister sent the HTTP request we expected, this can
 
 ## Important notes on `POST` requests
 
-Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination.
-Even if we forget the Web3 component, this is not new in HTTP where it is very common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
+Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination. Even if we ignore the Web3 component, multiple identical POST requests is not new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same. 
 
@@ -209,7 +207,7 @@ actor {
 
   //PRIVATE HELPER FUNCTION
   //Helper method that generates a Universally Unique Identifier
-  //this method is used for the idempotency Key used in the request headers of the POST request.
+  //this method is used for the Idempotency Key used in the request headers of the POST request.
   //For the purposes of this exercise, it returns a constant, but in practice it should return unique identifiers
   func generateUUID() : Text {
     "UUID-123456789";
@@ -362,7 +360,119 @@ use ic_cdk::api::management_canister::http_request::{
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn send_http_post_request() -> String {
-    FILL OUT
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+
+    // 2.1 Setup the URL
+    let host = "en8d7aepyq2ko.x.pipedream.net";
+    let url = "https://en8d7aepyq2ko.x.pipedream.net/";
+
+    // 2.2 prepare headers for the system http_request call
+    //Note that `HttpHeader` is declared in line 4
+    let request_headers = vec![
+        HttpHeader {
+            name: "Host".to_string(),
+            value: format!("{host}:443"),
+        },
+        HttpHeader {
+            name: "User-Agent".to_string(),
+            value: "demo_HTTP_POST_canister".to_string(),
+        },
+        //For the purposes of this exercise, Idempotency-Key" is hard coded, but in practice
+        //it should be generated via code and unique to each POST request. Common to create helper methods for this
+        HttpHeader {
+            name: "Idempotency-Key".to_string(),
+            value: "UUID-123456789".to_string(),
+        },
+    ];
+
+    //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4.
+    //CanisterHttpRequestArgument has the following types:
+
+    // pub struct CanisterHttpRequestArgument {
+    //     pub url: String,
+    //     pub max_response_bytes: Option<u64>,
+    //     pub method: HttpMethod,
+    //     pub headers: Vec<HttpHeader>,
+    //     pub body: Option<Vec<u8>>,
+    //     pub transform: Option<TransformContext>,
+    // }
+    //see: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.CanisterHttpRequestArgument.html
+
+    //Where "HttpMethod" has structure:
+    // pub enum HttpMethod {
+    //     GET,
+    //     POST,
+    //     HEAD,
+    // }
+    //See: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/enum.HttpMethod.html
+
+    //Since the body in HTTP request has type Option<Vec<u8>> it needs to look something like this: Some(vec![104, 101, 108, 108, 111]) ("hello" in ASCII)
+    //where the vector of u8s are the UTF. In order to send JSON via POST we do the following:
+    //1. Declare a JSON string to send
+    //2. Convert that JSON string to array of UTF8 (u8)
+    //3. Wrap that array in an optional
+    let json_string: String = r#"{
+        "name": "Grogu",
+        "force_sensitive": "true",
+        "language": "rust"
+    }"#
+    .to_string();
+    //note: here, r#""# is used for raw strings in Rust, which allows you to include characters like " and \ without needing to escape them.
+    //We could have used "serde_json" as well.
+    let json_utf8: Vec<u8> = json_string.into_bytes();
+    let request_body: Option<Vec<u8>> = Some(json_utf8);
+
+    let request = CanisterHttpRequestArgument {
+        url: url.to_string(),
+        max_response_bytes: None, //optional for request
+        method: HttpMethod::POST,
+        headers: request_headers,
+        body: request_body,
+        transform: None, //optional for request
+    };
+
+    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+
+    //Note: in Rust, `http_request()` already sends the cycles needed
+    //so no need for explicit Cycles.add() as in Motoko
+    match http_request(request).await {
+        //4. DECODE AND RETURN THE RESPONSE
+
+        //See:https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
+        Ok((response,)) => {
+            //if successful, `HttpResponse` has this structure:
+            // pub struct HttpResponse {
+            //     pub status: Nat,
+            //     pub headers: Vec<HttpHeader>,
+            //     pub body: Vec<u8>,
+            // }
+
+            //We need to decode that Vec<u8> that is the body into readable text.
+            //To do this, we:
+            //  1. Call `String::from_utf8()` on response.body
+            //  3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
+            let str_body = String::from_utf8(response.body)
+                .expect("Transformed response is not UTF-8 encoded.");
+
+            //The API response will looks like this:
+            // { successful: true }
+
+            //Return the body as a string and end the method
+            let response_url = "https://public.requestbin.com/r/en8d7aepyq2ko";
+            let result: String = format!(
+                "{}. See more info of the request sent at at: {}",
+                str_body, response_url
+            );
+            result
+        }
+        Err((r, m)) => {
+            let message =
+                format!("The http_request resulted into error. RejectionCode: {r:?}, Error: {m}");
+
+            //Return the error as a string and end the method
+            message
+        }
+    }
 }
 ```
 
@@ -395,10 +505,12 @@ If successful, the terminal should return canister URLs you can open:
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    send_http_post_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
+    send_http_post_rust_backend: http://127.0.0.1:4943/?canisterId=dxfxs-weaaa-aaaaa-qaapa-cai&id=dzh22-nuaaa-aaaaa-qaaoa-cai
 ```
 
-<!-- ![Candid web UI](../_attachments/https-post-candid-3-rust.webp) -->
+Open the candid web UI for backend and call the `send_http_post_request()` method:
+
+![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
 :::note
 In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a following section
