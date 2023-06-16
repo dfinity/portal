@@ -230,9 +230,9 @@ actor {
 ```motoko
 module Types {
 
-    public type Timestamp = Nat64;
-
-    //1. Type that describes the Request arguments for an HTTPS outcall
+  public type Timestamp = Nat64;
+  
+  //1. Type that describes the Request arguments for an HTTPS outcall
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     public type HttpRequestArgs = {
         url : Text;
