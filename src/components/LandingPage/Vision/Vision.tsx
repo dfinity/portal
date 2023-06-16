@@ -80,17 +80,18 @@ const Vision: React.FC = () => {
           <div
             className={clsx("tw-lead md:tw-title-sm md:w-7/10", styles.vision)}
           >
-            <p>Today, blockchains only process tokens and clips of data.</p>
+            <p>Today, blockchain hosts tokens, but only tiny amounts of compute.</p>
 
             <p>
-              Tomorrow, blockchain will become a decentralized{" "}
-              <em>crypto cloud</em>.
+              Tomorrow, blockchain will be an autonomous cloud, and{" "}
+              <em>rival traditional IT</em>.
             </p>
 
             <p>
-              Blockchain will eat the centralized cloud, and become the{" "}
-              <em>everything stack</em>, which hosts unstoppable systems and
-              services, and rich fully-decentralized Web3 experiences.
+              In the future, this public{" "}
+              <em>everything stack</em> will eat cloud, and smart contracts
+              will eat software. Enterprise will be unstoppable, and Web3
+              will run autonomously under DAO control...
             </p>
 
             <p>
