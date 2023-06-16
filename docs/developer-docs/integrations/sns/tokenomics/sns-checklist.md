@@ -40,7 +40,7 @@ Use the [SNS tokenomics tool](https://docs.google.com/spreadsheets/u/0/d/1eSxkJl
 The technical architecture should give an overview of the dapp and illustrate how the dapp works. Some dapps rely on off-chain components, either developed and maintained by the team, or 3rd party components. The use of components that will not be controlled by the DAO should also be included to show the dependencies.
 
 ### 1.2.2. Whitepaper
-The whitepaper should provide information about the dapp, the architecture, the goal with launching the SNS, tokenomics and other information relevant to the community to vote on the decentralization proposal. It should be clear what the dapp will gain from the SNS launch. The whitepaper from OpenChat’s SNS launch can be used for inspiration, see it [here](https://oc.app/whitepaper).
+The whitepaper should provide information about the dapp, the architecture, the goal with launching the SNS, tokenomics and other information relevant to the community to vote on the decentralization proposal. It should be clear what the dapp will gain from the SNS launch. For inspiration,  see OpenChat’s whitepaper it [here](https://oc.app/whitepaper), and Hot or Not’s whitepaper [here](https://hotornot.notion.site/hotornot/Hot-or-Not-Whitepaper-c539179e51f44867979f4372e4635f59).
 
 ### 1.2.3. Project roadmap
 The roadmap should show what the plan is with the dapp, also past the SNS launch. The roadmap should show the vision the team/developers behind the dapp have for the dapp, and what they would like to work on, also after the SNS launch. See [OpenChat’s roadmap](https://oc.app/roadmap) for inspiration.
@@ -55,10 +55,14 @@ The SNS is initialized using a configuration file, and the parameters in this fi
 
 For initializing an SNS for your dapp, the configuration parameters must use the documentation created with the SNS tokenomics tool (section 1.1.5 above) to create the YAML configuration file. The [OpenChat config file](https://github.com/open-ic/open-chat/blob/master/sns/config/sns.yml) is a good example of how to format the file (note: the latest version of SNS may have new/different parameters). Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
 
+Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]` 
+
+A confirmation text, which requires acceptance, can also be shown before the user can participate in the decentralization sale. This confirmation text can be set like this: `confirmation_text: "Please confirm that..."`
+
 Use the [sns cli tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to validate the consistency of the configuration file, and test the configuration extensively locally and on the mainnet before the final canisters are set up. See section 2.4 for more information about testing.
 
 ## 1.5. Create NNS proposals
-As a part of the SNS launch process, two proposals must be created. The first proposal is for allowing a principle to create the SNS canisters.
+As a part of the SNS launch process, two proposals must be created. The first proposal is for allowing a principle to create the SNS canisters, see Hot or Not’s [command](https://forum.dfinity.org/t/help-submit-the-sns-w-wallet-principal-id-to-be-whitelisted/20322/20) to create the first proposal.
 
 ### 1.5.1. SNS canister creation proposal
 The canister creation proposal is asking the NNS neurons for acceptance to start the SNS launch process, and to allow only the accepted principal to install an SNS.
@@ -124,6 +128,8 @@ It is recommended to share:
 - [x] Explain to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
 
 The idea is to provide the community with information so they can verify what they are supporting from a decentralization standpoint.
+
+This [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) provides some initial thoughts from the perspective of DFINITY when voting. 
 
 ## 4. SNS Launch Workflow
 Please find all steps included in an SNS launch [here](../lifecycle-sns/sns-launch.md) and a more detailed

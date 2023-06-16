@@ -9,13 +9,13 @@ Unlike other blockchains, the Internet Computer can automatically execute canist
 There are two ways to schedule an automatic canister execution on the IC:
 
 1. **Timers**: single-expiration or periodic canister calls with specified minimum timeout or interval.
-2. **Heartbeats**: legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by the IC for backward compatibility and some very special use cases. Newly developed canisters should prefer using timers over the heartbeats.
+2. **Heartbeats**: legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by the IC for backward compatibility and some very special use cases. **Newly developed canisters should prefer using timers over the heartbeats.**
 
 ## Timers
 
 Timers are implemented on two layers:
 
-- **The protocol level implementation:** the Internet Computer Protocol supports minimalistic on-shot global timer per canister via `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer interface specification](../../references/ic-interface-spec.md#timer)).
+- **The protocol level implementation:** the Internet Computer protocol supports minimalistic on-shot global timer per canister via `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer interface specification](../../references/ic-interface-spec.md#timer)).
 - **The CDK timers library level:** the library wraps the minimalistic protocol implementation, adding multiple and periodic timers on top. Canister developers can enjoy the familiar timers functionality using the CDK timers library for [Rust](https://crates.io/crates/ic-cdk-timers) or [Motoko](../../motoko/main/timers.md).
 
 Internally the CDK timers library does the following:
@@ -27,9 +27,13 @@ Internally the CDK timers library does the following:
    * Reschedules periodic tasks at the end of their execution.
    * Calls the `ic0.global_timer_set()` system API to schedule the next task.
 
-Note, the library does not handle the canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+:::info
+The library does not handle the canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+:::
 
+:::caution
 For the code composability reasons, i.e. to be able to use different libraries with timers in a single project, canister developers are encouraged to use the CDK timers library over the protocol level API or the heartbeats.
+:::
 
 ### Timers library limitations
 
@@ -65,8 +69,8 @@ If there are no await points in the timer handler, the periodic timer will be re
 
 ### Tutorials and examples using Motoko
 
-- **Motoko Developer Guide:** [Timers](../../motoko/main/timers.md).
-- **Motoko Developer Guide:** [Heartbeats](../../motoko/main/heartbeats.md).
+- **Motoko developer guide:** [Timers](../../motoko/main/timers.md).
+- **Motoko developer guide:** [Heartbeats](../../motoko/main/heartbeats.md).
 
 ### Tutorials and examples using Rust
 

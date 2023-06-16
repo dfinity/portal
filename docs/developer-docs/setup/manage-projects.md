@@ -61,4 +61,4 @@ For example, you can change the IP address for the local network by modifying th
 
 -   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
 
--   [IC Glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 

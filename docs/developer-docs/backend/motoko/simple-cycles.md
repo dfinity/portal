@@ -18,13 +18,11 @@ This example consists of the following:
 
 ## Prerequisites
 
-Before starting the guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have installed the Visual Studio Code plugin for Motoko as described in [install the language editor plug-in](/developer-docs/setup/deploy-locally.md#install-vscode) if you are using Visual Studio Code as your IDE.
-
--   [x] You have stopped any local canister execution environment running on the local computer.
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
@@ -48,9 +46,51 @@ For this guide, you are going to modify the template source code to include new 
 
 To modify the default program:
 
-- #### Step 1:  Open the `src/cycles_hello/main.mo` file in a text editor and delete the existing content.
+- #### Step 1:  Open the `src/cycles_hello_backend/main.mo` file in a text editor and delete the existing content.
 
-- #### Step 2:  Copy and paste [this code](./_attachments/cycles-main.mo) into the file.
+- #### Step 2:  Copy and paste this code into the file:
+
+```
+import Nat64 "mo:base/Nat64";
+import Cycles "mo:base/ExperimentalCycles";
+
+shared(msg) actor class HelloCycles (
+   capacity: Nat
+  ) {
+
+  var balance = 0;
+
+  // Return the current cycle balance
+  public shared(msg) func wallet_balance() : async Nat {
+    return balance;
+  };
+
+  // Return the cycles received up to the capacity allowed
+  public func wallet_receive() : async { accepted: Nat64 } {
+    let amount = Cycles.available();
+    let limit : Nat = capacity - balance;
+    let accepted =
+      if (amount <= limit) amount
+      else limit;
+    let deposit = Cycles.accept(accepted);
+    assert (deposit == accepted);
+    balance += accepted;
+    { accepted = Nat64.fromNat(accepted) };
+  };
+
+  // Return the greeting
+  public func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+
+  // Return the principal of the caller/user identity
+  public shared(msg) func owner() : async Principal {
+    let currentOwner = msg.caller;
+    return currentOwner;
+  };
+
+};
+```
 
     Let’s take a look at a few key elements of this program:
 
@@ -66,7 +106,7 @@ To modify the default program:
 
 ## Start the local canister execution environment
 
-Before you can build the `access_hello` project, you need to connect to the canister execution environment running locally in your development environment, or you need to connect to a subnet that you can access.
+Before you can build the `cycles_hello` project, you need to connect to the canister execution environment running locally in your development environment, or you need to connect to a subnet that you can access.
 
 To start the local canister execution environment:
 
@@ -77,6 +117,10 @@ To start the local canister execution environment:
 - #### Step 3:  Start the local canister execution environment on your machine by running the following command:
 
         dfx start --clean --background
+
+    For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
+
+    This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 
     After the local canister execution environment completes its startup operations, you can continue to the next step.
 
@@ -90,30 +134,27 @@ To deploy the dapp locally:
 
 - #### Step 2:  Register, build, and deploy your dapp by running the following command:
 
-        dfx deploy --argument '(360000000000)'
+        dfx deploy --argument '(360000000000)' cycles_hello_backend
 
     This example sets the `capacity` for the canister to 360,000,000,000 cycles. The `dfx deploy` command output then displays information about the operations it performs, including the identity associated with the wallet canister created for this local project and the wallet canister identifier.
 
     For example:
 
-        Deploying all canisters.
-        Creating canisters...
-        Creating canister "cycles_hello"...
-        Creating the canister using the wallet canister...
+        Deploying: cycles_hello_backend
         Creating a wallet canister on the local network.
-        The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
-        "cycles_hello" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "cycles_hello_assets"...
-        Creating the canister using the wallet canister...
-        "cycles_hello_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        The wallet canister on the "local" network for user "ic_admin" is "bnz7o-iuaaa-aaaaa-qaaaa-cai"
+        Creating canisters...
+        Creating canister cycles_hello_backend...
+        cycles_hello_backend canister created with canister id: bkyz2-fmaaa-aaaaa-qaaaq-cai
         Building canisters...
-        Building frontend...
         Installing canisters...
-        Installing code for canister cycles_hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        Installing code for canister cycles_hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
-        Authorizing our identity (default) to the asset canister...
-        Uploading assets to asset canister...
+        Creating UI canister on the local network.
+        The UI canister on the "local" network is "bd3sg-teaaa-aaaaa-qaaba-cai"
+        Installing code for canister cycles_Hello_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
         Deployed canisters.
+        URLs:
+        Backend canister via Candid interface:
+        cycles_hello_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 
 ## Test the dapp
 
@@ -123,7 +164,7 @@ To test the dapp:
 
 - #### Step 1:  Check the principal for the `default` user identity by running the following command:
 
-        dfx canister call cycles_hello owner
+        dfx canister call cycles_hello_backend owner
 
     The command displays output similar to the following for the current identity:
 
@@ -133,19 +174,19 @@ To test the dapp:
 
 - #### Step 2:  Check the initial wallet cycle balance by running the following command:
 
-        dfx canister call cycles_hello wallet_balance
+        dfx canister call cycles_hello_backend wallet_balance
 
     You haven’t sent any cycles to the canister, so the command displays the following balance:
 
-        (0)
+        (0 : nat)
 
-- #### Step 3:  Send some cycles from your default wallet canister to the `cycles_hello` canister using the canister principal by running a command similar to the following:
+- #### Step 3:  Send some cycles from your default wallet canister to the `cycles_hello_backend` canister using the canister principal by running a command similar to the following:
 
         dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_send '(record { canister = principal "rrkah-fqaaa-aaaaa-aaaaq-cai"; amount = (256000000000:nat64); } )'
 
-- #### Step 4:  Call the `wallet_balance` function to see that the `cycles_hello` canister has the number of cycles you transferred, if you specified an amount under the allowed capacity, or the `capacity` you specified when you ran the `dfx deploy` command.
+- #### Step 4:  Call the `wallet_balance` function to see that the `cycles_hello_backend` canister has the number of cycles you transferred, if you specified an amount under the allowed capacity, or the `capacity` you specified when you ran the `dfx deploy` command.
 
-        dfx canister call cycles_hello wallet_balance
+        dfx canister call cycles_hello_backend wallet_balance
 
     The command displays output similar to the following:
 
@@ -163,7 +204,7 @@ To test the dapp:
 
 - #### Step 6:  Call the `greet` function by running a command similar to the following:
 
-        dfx canister call cycles_hello greet '("from DFINITY")'
+        dfx canister call cycles_hello_backend greet '("from DFINITY")'
 
 - #### Step 7:  Rerun the call to the `wallet_balance` function to see the number of cycles deducted from your default wallet:
 

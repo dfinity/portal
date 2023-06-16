@@ -7,11 +7,11 @@ This guide illustrates how to pass arguments on the command-line in a terminal u
 
 ## Prerequisites
 
-Before you start this guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have stopped any canister execution environments running on the local computer.
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
@@ -41,7 +41,7 @@ To modify settings in the `dfx.json` configuration file:
 
 - #### Step 3:  Remove all of the unnecessary configuration settings.
 
-    Because this guide does not involve creating any frontend assets, you can remove all of the `location_hello_assets` configuration settings from the file.
+    Because this guide does not involve creating any frontend assets, you can remove all of the `location_hello_frontend` configuration settings from the file.
 
 - #### Step 4:  Save your changes and close the file to continue.
 
@@ -51,11 +51,19 @@ In the [explore the default project](explore-templates) guide, you saw that crea
 
 To modify the default template source code:
 
-- #### Step 1:  Open the `src/location_hello/main.mo` source code file in a text editor.
+- #### Step 1:  Open the `src/location_hello_backend/main.mo` source code file in a text editor.
 
 - #### Step 2:  Modify the default source code to replace the `greet` function with a `location` function and the `name` argument with a `city` argument.
 
-    For example like [this](./_attachments/location_hello.mo).
+    For example, you can replace the file's existing code with the following:
+
+    ```
+    actor {
+    public func location(city : Text) : async Text {
+        return "Hello, " # city # "!";
+    };
+    };
+    ```
 
 - #### Step 3:  Save your changes and close the file to continue.
 
@@ -105,7 +113,7 @@ To test the program you have deployed locally:
 
 - #### Step 1:  Call the `location` method in the program and pass your `city` argument of type `text` by running the following command:
 
-        dfx canister call location_hello location "San Francisco"
+        dfx canister call location_hello_backend location "San Francisco"
 
     Because the argument in this case includes a space between `San` and `Francisco`, you need to enclose the argument in quotes. The command displays output similar to the following:
 
@@ -113,7 +121,7 @@ To test the program you have deployed locally:
 
     If the argument did not contain a space that required enclosing the text inside of quotation marks, you could allow the Candid interface description language to infer the data type like this:
 
-        dfx canister call location_hello location Paris
+        dfx canister call location_hello_backend location Paris
 
     Candid infers the data type as `Text` and returns the output from your program as text like this:
 
@@ -121,7 +129,7 @@ To test the program you have deployed locally:
 
 - #### Step 2:  Call the `location` method in the program and pass your `city` argument explicitly using the Candid interface description language syntax for Text arguments:
 
-        dfx canister call location_hello location '("San Francisco and Paris")'
+        dfx canister call location_hello_backend location '("San Francisco and Paris")'
 
     The command displays output similar to the following:
 
@@ -131,7 +139,7 @@ To test the program you have deployed locally:
 
     For example, if you try this command:
 
-        dfx canister call location_hello location '("San Francisco","Paris","Rome")'
+        dfx canister call location_hello_backend location '("San Francisco","Paris","Rome")'
 
     Only the first argument—`("Hello, San Francisco!")`—is returned.
 
@@ -143,19 +151,54 @@ To experiment with modifying the source code for this guide:
 
 - #### Step 1:  Open the `dfx.json` configuration file in a text editor and change the default `location_hello` settings to `favorite_cities`.
 
-    For this step, you should modify both the canister name and the path to the main program for the canister to use `favorite_cities`.
+    For this step, you should modify both the canister name and the path to the main program for the canister to use `favorite_cities`. Your `dfx.json` file should look like this:
+
+    ```
+    {
+    "canisters": {
+        "favorite_cities": {
+        "main": "src/favorite_cities/main.mo",
+        "type": "motoko"
+        }
+        },
+    "defaults": {
+        "build": {
+        "args": "",
+        "packtool": ""
+        }
+    },
+    "output_env_file": ".env",
+    "version": 1
+    }
+    ```
 
 - #### Step 2:  Save your changes and close the `dfx.json` file to continue.
 
 - #### Step 3:  Copy the `location_hello` source file directory to match the name specified in the `dfx.json` configuration file by running the following command:
 
-        cp -r src/location_hello src/favorite_cities
+        cp -r src/location_hello_backend src/favorite_cities
 
 - #### Step 4:  Open the `src/favorite_cities/main.mo` file in a text editor.
 
-- #### Step 5:  Copy and paste the following code sample to replace the `location` function with two new functions.
+- #### Step 5:  Copy and paste the following code sample to replace the `location` function with two new functions:
 
-    For example like [this](./_attachments/favorite_cities.mo).
+    ```
+    actor {
+
+    public func location(cities : [Text]) : async Text {
+        return "Hello, from " # (debug_show cities) # "!";
+    };
+
+    public func location_pretty(cities : [Text]) : async Text {
+        var str = "Hello from ";
+        for (city in cities.vals()) {
+        str := str # city #", ";
+        };
+        return str # "bon voyage!";
+    }
+    };
+
+    ```
 
     You might notice that `Text` in this code example is enclosed by square (`[ ]`) brackets. By itself, `Text` represents a collection of UTF-8 characters. The square brackets around a type indicate that it is an **array** of that type. In this context, therefore, `[Text]` indicates an array of a collection of UTF-8 characters, enabling the program to accept and return multiple text strings.
 
@@ -169,7 +212,7 @@ To experiment with modifying the source code for this guide:
             ys;
         };
 
-    For information about the functions that perform operations on arrays, see the description of the Array module in the Motoko base library or the *Motoko Programming Language Reference*. For another example focused on the use of arrays, see [Quicksort](https://github.com/dfinity/examples/tree/master/motoko/quicksort) in the [examples](https://github.com/dfinity/examples/) repository.
+    For information about the functions that perform operations on arrays, see the description of the Array module in the Motoko base library or the **Motoko programming language reference**. For another example focused on the use of arrays, see the [quick sort](https://github.com/dfinity/examples/tree/master/motoko/quicksort) project in the [examples](https://github.com/dfinity/examples/) repository.
 
 - #### Step 6:  Register, build, and deploy the dapp by running the following command:
 

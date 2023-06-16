@@ -4,7 +4,7 @@ sidebar_position: 2
 # SNS architecture
 ## Overview
 The core architecture of the SNS closely resembles the architecture of the Network Nervous System
-(NNS), the DAO that governs the Internet Computer platfrom.
+(NNS), the DAO that governs the Internet Computer platform.
 It includes a governance system that enables decentralized decision making and a ledger canister
 that defines a token unique to each SNS.
 In contrast to the SNS, the NNS contains additional canisters that are important to run the IC
@@ -15,13 +15,13 @@ swap canister that is used during the launch process of an SNS.
 
 ## SNS as a system functionality (connection to the NNS community)
 SNSs are provided as a system functionality by the IC in that the code for the SNS canisters
-is maintained by the IC. (Please find [here](dao-alternatives.md)
-a brief description of alternative ways how to use the SNS code or how to get a DAO.)
+is maintained by the IC. ([Here](dao-alternatives.md)
+is a brief description of alternative ways to use the SNS code or how to create a DAO.)
 More concretely, this means that the NNS community approved the original SNS canisters' code
 and continuously approves new improved SNS versions.
 
 ### SNS wasm modules canister (SNS-W){#SNS-W}
-All approved SNS canister version are stored on an NNS canister,
+All approved SNS canister versions are stored on an NNS canister,
 called the **SNS wasm modules canister (SNS-W)**.
 When an SNS is created, SNS-W is involved and responsible for deploying the latest version of 
 the SNS canister.
@@ -79,7 +79,7 @@ and the dapp canisters that the SNS governs.
 
 ### SNS (decentralization) swap canister
 The **decentralization swap canister**, or swap canister for short, is the main canister involved
-in the SNS launch. Users can provide ICP participations to a swap and, if teh swap is successful, 
+in the SNS launch. Users can provide ICP tokens to the swap and, if the swap is successful, 
 they get staked SNS tokens (in SNS neurons) in return. 
 Hence, the ICP and the SNS tokens are "swapped".
 This facilitates that 1) the SNS can collect initial funding and
