@@ -6,11 +6,11 @@ In the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md), y
 
 ## Prerequisites
 
-Before starting the guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have stopped any local canister execution environment processes
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
@@ -40,7 +40,7 @@ To modify the `dfx.json` configuration file:
 
 - #### Step 3:  Notice that the names and paths to source and output files all use the `actor_hello` project name.
 
-    For example, the default canister name is `actor_hello` and the default path to the main code file is `src/actor_hello/main.mo`.
+    For example, the default canister name is `actor_hello_backend` and the default path to the main code file is `src/actor_hello_backend/main.mo`.
 
     You can rename any of these files or directories. If you make any changes, however, be sure that the names you use for your files and directories on the file system match the names you specify in the `dfx.json` configuration file. If you plan to use the default directory and file names, no changes are necessary.
 
@@ -48,7 +48,25 @@ To modify the `dfx.json` configuration file:
 
     The sample canister for this guide doesn’t use any frontend assets, so you can remove those settings from the configuration file.
 
-    For example, the configuration file looks like [this](./_attachments/define-actor-dfx.json) after you remove the `actor_hello_assets` section.
+    For example, if you remove the `actor_hello_assets` section, the configuration file looks like this:
+    
+    
+    ```
+        {
+        "canisters": {
+            "actor_hello": {
+            "main": "src/actor_hello/main.mo",
+            "type": "motoko"
+            }
+        },
+        "defaults": {
+            "build": {
+            "packtool": ""
+            }
+        },
+        "version": 1
+        }
+    ```
 
 - #### Step 5:  Save your changes and close the file to continue.
 
@@ -60,13 +78,22 @@ To modify the default template source code:
 
 - #### Step 1:  Change to the source code directory for your project by running the following command:
 
-        cd src/actor_hello
+        cd src/actor_hello_backend
 
 - #### Step 2:  Open the template `main.mo` file in a text editor and delete the existing content.
 
     The next step is to write a canister that prints a statement like the traditional "Hello, World!" sample canister. To compile the canister for the Internet Computer, however, your Motoko code must define an `actor`.
 
-- #### Step 3:  Copy and paste [this code](./_attachments/actor_hello.mo) into the `main.mo` file.
+- #### Step 3:  Copy and paste this code into the `main.mo` file:
+
+```
+import Debug "mo:base/Debug";
+actor HelloActor {
+   public query func hello() : async () {
+      Debug.print ("Hello, World from DFINITY \n");
+   }
+};
+```
 
     Let’s take a closer look at this Motoko actor defining our canister:
 
@@ -74,7 +101,7 @@ To modify the default template source code:
 
     -   The actor uses the `public query func` declaration to define an Internet Computer *query* method. Our method doesn’t need to make any permanent changes to the state of the actor. Declaring it as a query means that any changes it does make are transient and discarded after the query completes.
 
-    For more information about using a query call, see [query calls](/concepts/canisters-code.md#query-update) in [Canisters include both program and state](/concepts/canisters-code.md#canister-state).
+    For more information about using a query call, see [query calls](/concepts/canisters-code.md#query-update) in [canisters include both program and state](/concepts/canisters-code.md#canister-state).
 
 - #### Step 4:  Save your changes and close the `main.mo` file.
 
@@ -94,10 +121,20 @@ To check that the canister builds:
 
     The `--check` option enables you to build a project locally to verify that it compiles and to inspect the files produced. Because the `dfx build --check` command only uses a temporary identifier, you should see output similar to the following:
 
-        Building canisters to check they build ok. Canister IDs might be hard coded.
+        WARN: Building canisters to check they build ok. Canister IDs might be hard coded.
         Building canisters...
+        Building frontend...
+        WARN: Building canisters before generate for Motoko
+        Generating type declarations for canister actor_hello_frontend:
+        src/declarations/actor_hello_frontend/actor_hello_frontend.did.d.ts
+        src/declarations/actor_hello_frontend/actor_hello_frontend.did.js
+        src/declarations/actor_hello_frontend/actor_hello_frontend.did
+        Generating type declarations for canister actor_hello_backend:
+        src/declarations/actor_hello_backend/actor_hello_backend.did.d.ts
+        src/declarations/actor_hello_backend/actor_hello_backend.did.js
+        src/declarations/actor_hello_backend/actor_hello_backend.did
 
-    If the canister compiles successfully, you can inspect the output in the default `.dfx/local/canisters` directory and `.dfx/local/canisters/actor_hello/` subdirectory.
+    If the canister compiles successfully, you can inspect the output in the default `.dfx/local/canisters` directory and `.dfx/local/canisters/actor_hello_backend/` subdirectory.
 
     For example, you might use the `tree` command to review the files created:
 
@@ -106,16 +143,31 @@ To check that the canister builds:
     The command displays output similar to the following
 
 ```
-    .dfx/local/canisters
-    ├── actor_hello
-    │   ├── actor_hello.d.ts
-    │   ├── actor_hello.did
-    │   ├── actor_hello.did.js
-    │   ├── actor_hello.js
-    │   └── actor_hello.wasm
-    └── idl
+.dfx/local/canisters
+├── actor_hello_backend
+│   ├── actor_hello_backend.did
+│   ├── actor_hello_backend.most
+│   ├── actor_hello_backend.wasm
+│   ├── constructor.did
+│   ├── index.js
+│   ├── init_args.txt
+│   ├── service.did
+│   ├── service.did.d.ts
+│   └── service.did.js
+├── actor_hello_frontend
+│   ├── actor_hello_frontend.wasm.gz
+│   ├── assetstorage.did
+│   ├── assetstorage.wasm.gz
+│   ├── constructor.did
+│   ├── index.js
+│   ├── init_args.txt
+│   ├── service.did
+│   ├── service.did.d.ts
+│   └── service.did.js
+└── idl
+    └── 6m2n7-okd37-knyui-nvnda.did
 
-    2 directories, 5 files
+    4 directories, 19 files
 ```
 
 ## Deploy the project
@@ -142,40 +194,38 @@ To deploy this project locally:
 
 - #### Step 3:  Generate a new canister identifier for your project on the local canister execution environment by running the following command:
 
-        dfx canister create actor_hello
+        dfx canister create actor_hello_backend
 
     You should see output similar to the following:
 
-        Creating a wallet canister on the local network.
-        The wallet canister on the "local" network for user "pubs-id" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
-        Creating canister "actor_hello"...
-        "actor_hello" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
+        Creating canister actor_hello_backend...
+        actor_hello_backend canister created with canister id: dzh22-nuaaa-aaaaa-qaaoa-cai
+
 
     The `dfx canister create` command also stores the connection-specific canister identifier in a `canister_ids.json` file in the `.dfx/local` directory.
 
     For example:
 
         {
-          "actor_hello": {
-            "local": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-          }
+        "actor_hello_backend": {
+            "local": "dzh22-nuaaa-aaaaa-qaaoa-cai"
+            }
         }
 
-- #### Step 4:  Build the canister by running the following command:
+- #### Step 4:  Deploy your `actor_hello_backend` project on the local canister execution environment by running the following command:
 
-        dfx build
-
-    The command displays output similar to the following:
-
-        Building canisters...
-
-- #### Step 5:  Deploy your `actor_hello` project on the local canister execution environment by running the following command:
-
-        dfx canister install actor_hello
+        dfx deploy
 
     The command displays output similar to the following:
 
-        Installing code for canister actor_hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
+        Committing batch.
+        Committing batch with 18 operations.
+        Deployed canisters.
+        URLs:
+        Frontend canister via browser
+            actor_hello_frontend: http://127.0.0.1:8080/?canisterId=d6g4o-amaaa-aaaaa-qaaoq-cai
+        Backend canister via Candid interface:
+            actor_hello_backend: http://127.0.0.1:8080/?canisterId=dxfxs-weaaa-aaaaa-qaapa-cai&id=dzh22-nuaaa-aaaaa-qaaoa-cai
 
 ## Query the canister
 
@@ -185,13 +235,13 @@ To test the canister you have deployed on the local canister execution environme
 
 - #### Step 1:  Use `dfx canister call` to call the `hello` function by running the following command:
 
-        dfx canister call actor_hello hello
+        dfx canister call actor_hello_backend hello
 
 - #### Step 2:  Verify that the command returns the text specified for the `hello` function along with a checkpoint message in the terminal running the local canister execution environment.
 
     For example, the canister displays "Hello, World from DFINITY" in output similar to the following:
 
-        [Canister rrkah-fqaaa-aaaaa-aaaaq-cai] Hello, World from DFINITY
+        2023-06-14 20:19:25.379721 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] Hello, World from DFINITY 
 
 :::info
 Note that if you are running the Internet Computer mainnet in a separate terminal instead of in the background, the "Hello, World from DFINITY" message is displayed in the terminal that displays the mainnet activity.
@@ -203,12 +253,6 @@ After you finish experimenting with your canister, you can stop the local canist
 
 To stop the local canister execution environment, you can:
 
-- #### Step 1:  In the terminal used to interact with your canister, issue the command `dfx stop`; or
-
-- #### Step 2:  In the terminal that displays operations from the local canister execution environment, press Control-C to interrupt that process; or
-
-- #### Step 3:  Kill the `replica` process using commands or tools of your operating system.
-
-- #### Step 4:  Stop the local canister execution environment by running the following command:
-
-        dfx stop
+- In the terminal used to interact with your canister, issue the command `dfx stop`; or
+- In the terminal that displays operations from the local canister execution environment, press Control-C to interrupt that process; or
+- Kill the `replica` process using commands or tools of your operating system.

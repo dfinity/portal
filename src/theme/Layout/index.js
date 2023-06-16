@@ -25,7 +25,7 @@ export default function Layout(props) {
   } = props;
 
   const location = useLocation();
-  const isDevDocs = location.pathname.startsWith("/docs/");
+  const isDevDocs = location.pathname.startsWith("/docs/") || location.pathname.startsWith("/blog");
 
   useKeyboardNavigation();
 

@@ -43,17 +43,23 @@
   border-radius: var(--ifm-global-radius);
 }
 
+.defaultCodeBlock div[class*="buttonGroup_"] :global(.clean-btn),
 .copyButton {
-  background: rgb(0 0 0 / 30%);
   border-radius: var(--ifm-global-radius);
-  color: black !important;
-  opacity: 0;
+  color: #dfdfdf;
   user-select: none;
-  padding: 0.4rem 0.5rem;
-  /* position: absolute; */
   right: calc(var(--ifm-pre-padding) / 2);
   top: calc(var(--ifm-pre-padding) / 2);
   transition: opacity 200ms ease-in-out;
+  opacity: 1;
+  width: 28px;
+  height: 28px;
+}
+.defaultCodeBlock div[class*="buttonGroup_"] :global(.clean-btn) > span,
+.copyButton > span {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .defaultCopyButton {
@@ -80,47 +86,46 @@
   }
 }
 
+.defaultCodeBlock div[class*="buttonGroup_"],
 .buttonGroup {
   display: flex;
-  column-gap: 0.2rem;
+  gap: 4px;
   align-items: center;
   position: absolute;
   right: calc(var(--ifm-pre-padding) / 2);
   top: calc(var(--ifm-pre-padding) / 2);
-  padding: 0.2rem 0.3rem;
-  background-color: var(--ifm-color-secondary-light);
+  padding: 6px 8px;
+  background-color: #242834;
   border-radius: var(--ifm-global-radius);
   transition: opacity 200ms ease-in-out;
   opacity: 0;
 }
-
+.defaultCodeBlock div[class*="buttonGroup_"] button,
 .buttonGroup button {
   display: flex;
   align-items: center;
   background: inherit;
   /* width: inherit;
   height: inherit; */
-  color: var(--prism-color);
+  color: #dfdfdf;
   border: 0;
   line-height: 0;
   transition: opacity 200ms ease-in-out;
-  opacity: 0;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+}
+
+.defaultCodeBlock div[class*="buttonGroup_"] button svg,
+.buttonGroup button svg {
+  width: 20px;
+  height: 20px;
 }
 
 .buttonGroup button:focus-visible,
 .buttonGroup button:hover {
-  opacity: 1 !important;
+  opacity: 1;
 }
-
-.run-button {
-  width: 40px;
-  height: 40px;
-}
-
-/* .copyIcon {
-  width: 20px;
-  height: 20px;
-} */
 
 button {
   cursor: pointer;
@@ -130,14 +135,20 @@ pre {
   margin: 0;
 }
 
-:global(.theme-code-block:hover) .buttonGroup button {
-  opacity: 0.4;
+/* .copyButton:hover, */
+.defaultCodeBlock div[class*="buttonGroup_"] button:hover,
+.buttonGroup button:hover {
+  color: #eb318a !important;
 }
 
-:global(.theme-code-block:hover) .buttonGroup {
+:global(.theme-code-block:hover) .buttonGroup,
+:global(.theme-code-block:hover) div[class*="buttonGroup_"] {
   opacity: 1 !important;
 }
 
 .immutableCodeBlock {
   position: relative;
 }
+
+/* .defaultCodeBlock {
+} */
