@@ -164,7 +164,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Dev docs"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/http_requests/"
+              href="https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/"
             />
             <CardWithDescription
               title="Beyond oracles"
@@ -179,7 +179,7 @@ function HTTPSOutcalls() {
             />
             <CardWithDescription
               title="ICP Wiki"
-              description="Get a high-level overview of how HTTPS oucalls work on the Internet Computer."
+              description="Get a high-level overview of how HTTPS outcalls work on the Internet Computer."
               href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
             />
           </div>

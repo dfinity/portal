@@ -1,0 +1,73 @@
+---
+title: Developer Weekly - March 13, 2023
+description: Today we'll show you how to migrate your identity so you can take advantage of the new keyring functionality!
+tags: [New features]
+image: /img/blog/Decentralized_01.jpg
+---
+
+# Developer weekly update: March 13, 2023
+![|624x351](/img/blog/Decentralized_01.jpg)
+
+## How to migrate existing identities to use keyring
+![](https://images.unsplash.com/photo-1649323357445-bcca3bb9ea3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80)
+
+dfx now comes with OS keyring support. This means you don't have to constantly type in your password to decrypt your
+identity. If you have existing encrypted identities that you'd like to port over, here is how to do it. This is available
+in dfx version `0.13.0` and later.
+
+Export your identity to pem file:
+
+```
+dfx --identity [identity you want to migrate] identity export -> my_plaintext_pem_file.pem
+```
+
+Import the same identity and give it a different name. By default, keyring will be used:
+
+```
+dfx identity import [placeholder_name] my_plaintext_pem_file.pem
+```
+
+Tell dfx to use this identity:
+
+```
+dfx identity use [placeholder_name]
+```
+
+Now you should test that the newly migrated identity works.
+
+### Cleanup
+
+Remove the previous identity:
+```
+dfx identity remove [previous identity name]
+```
+
+Give your new identity a name that you'd like to stick with:
+```
+dfx identity rename [placeholder_name] [final name]
+```
+
+### Final notes
+Please test this with a non-critical identity first - this should be tested, but for critical identities you should also
+verify this before deleting anything
+The identity’s pem file will be stored on disk in plaintext. Take any necessary precautions so you can (temporarily)
+trust that file system
+If you want to go the truly safe route that doesn’t ever write plaintext to disk:
+
+- Create a new identity (`dfx identity new`).
+- Add that identity’s principal everywhere as a controller (`dfx canister update-settings --add-controller [principal]`).
+- If necessary, also add the principal to other lists like e.g. the asset canister’s allowlist (`dfx canister
+call [frontend canister] grant_permission “(record { to_principal=principal \“[principal]\“; permission = variant {
+Commit }; })“`).
+- Test that your new identity works as expected.
+- Delete the previous identity (dfx identity remove).
+
+## New GitHub search and code view
+![|624x351](../_assets/github_search_code_view.png)
+
+GitHub released a new search and code view, and it looks great! Here is how to enable it:
+https://docs.github.com/en/repositories/working-with-files/managing-files/navigating-files-with-the-new-code-view
+
+That's all for this now. See you next week!
+
+-DFINITY

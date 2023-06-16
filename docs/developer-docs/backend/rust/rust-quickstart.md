@@ -154,7 +154,7 @@ Notice the `crate-type = ["cdylib"]` line which is necessary to compile this Rus
 The default project has a simple `greet` function that uses the Rust CDK `query` macro.
 
 ``` rust
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
 }

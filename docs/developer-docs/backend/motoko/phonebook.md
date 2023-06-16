@@ -14,11 +14,11 @@ This dapp supports the following function calls:
 
 ## Prerequisites
 
-Before starting the guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have stopped the local canister execution environment provided by `dfx`.
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
@@ -42,9 +42,45 @@ For this guide, let’s create a new `main.mo` file for the simple phone number 
 
 To modify the default template:
 
-- #### Step 1:  Open the `src/phonebook/main.mo` file in a text editor and delete the existing content.
+- #### Step 1:  Open the `src/phonebook_backend/main.mo` file in a text editor and delete the existing content.
 
-- #### Step 2:  Copy and paste [this code](./_attachments/phonebook.mo) into the `main.mo` file.
+- #### Step 2:  Copy and paste this code into the `main.mo` file:
+
+```
+// Import standard library functions for lists
+
+import L "mo:base/List";
+import A "mo:base/AssocList";
+
+// The PhoneBook actor.
+actor {
+
+    // Type aliases make the rest of the code easier to read.
+    public type Name = Text;
+    public type Phone = Text;
+
+    // The actor maps names to phone numbers.
+    flexible var book: A.AssocList<Name, Phone> = L.nil<(Name, Phone)>();
+
+    // An auxiliary function checks whether two names are equal.
+    func nameEq(l: Name, r: Name): Bool {
+        return l == r;
+    };
+
+    // A shared invokable function that inserts a new entry
+    // into the phone book or replaces the previous one.
+    public func insert(name: Name, phone: Phone): async () {
+        let (newBook, _) = A.replace<Name, Phone>(book, name, nameEq, ?phone);
+        book := newBook;
+    };
+
+    // A shared read-only query function that returns the (optional)
+    // phone number corresponding to the person with the given name.
+    public query func lookup(name: Name): async ?Phone {
+        return A.find<Name, Phone>(book, name, nameEq);
+    };
+};
+```
 
     In looking at this sample dapp, you might notice the following key elements:
 
@@ -88,13 +124,13 @@ To deploy the dapp locally:
 
 - #### Step 2:  Register, build, and deploy your dapp locally by running the following command:
 
-        dfx deploy phonebook
+        dfx deploy
 
-    The `dfx.json` file provides default settings for creating a dapp frontend entry point and `assets` canister.
+    The `dfx.json` file provides default settings for creating a dapp backend canister and a frontend canister.
 
-    In previous guides, we deleted the entries for the asset canister because we were not adding a frontend for the sample dapp. That change kept our project workspace tidy by eliminating files that would go unused. There is no requirement to do this, however, and there is no harm in leaving the asset canister description in the `dfx.json` file. For example, you might want to use it as a placeholder if you intend to add frontend assets later.
+    In previous guides, we deleted the entries for the frontend canister because we were not adding a frontend for the sample dapp. That change kept our project workspace tidy by eliminating files that would go unused. There is no requirement to do this, however, and there is no harm in leaving the frontend canister description in the `dfx.json` file. For example, you might want to use it as a placeholder if you intend to add frontend assets later.
 
-    For this guide, you can deploy just the phonebook backend canister using the `dfx deploy phonebook` command because the project doesn’t include any frontend assets and you will interact with it via the terminal.
+    For this guide, you can deploy just the phonebook_backend canister using the `dfx deploy phonebook_backend` command because the project doesn’t include any frontend assets and you will interact with it via the terminal.
 
     Although this guide illustrates how to skip compiling a frontend canister, you can add a simple user interface to this dapp later by exploring the [phonebook](https://github.com/dfinity/examples/tree/master/motoko/phone-book) project in the [examples](https://github.com/dfinity/examples) repository.
 
@@ -106,15 +142,15 @@ To test the dapp you have deployed:
 
 - #### Step 1:  Use the `dfx canister call` command to call the canister `phonebook` using the `insert` function and pass it a name and phone number by running the following command:
 
-        dfx canister call phonebook insert '("Chris Lynn", "01 415 792 1333")'
+        dfx canister call phonebook_backend insert '("Chris Lynn", "01 415 792 1333")'
 
 - #### Step 2:  Add a second name and number pair by running the following command:
 
-        dfx canister call phonebook insert '("Maya Garcia", "01 408 395 7276")'
+        dfx canister call phonebook_backend insert '("Maya Garcia", "01 408 395 7276")'
 
 - #### Step 3:  Verify that the command returns the number associated with "Chris Lynn" using the `lookup` function by running the following command:
 
-        dfx canister call phonebook lookup '("Chris Lynn")'
+        dfx canister call phonebook_backend lookup '("Chris Lynn")'
 
     The command returns output similar to the following:
 
@@ -122,13 +158,13 @@ To test the dapp you have deployed:
 
 - #### Step 4:  Try to call the `lookup` function with the number associated with "Maya Garcia" by running the following command:
 
-        dfx canister call phonebook lookup '("01 408 395 7276")'
+        dfx canister call phonebook_backend lookup '("01 408 395 7276")'
 
     Note that, in this case, the command returns `(null)` because the phone number is not a key associated with the "Maya Garcia" name entry.
 
 - #### Step 5:  Try to call the `lookup` function again to return the phone numbers for both "Maya Garcia" and "Chris Lynn" by running the following command:
 
-        dfx canister call phonebook lookup '("Maya Garcia","Chris Lynn")'
+        dfx canister call phonebook_backend lookup '("Maya Garcia","Chris Lynn")'
 
     Because the dapp is written to return one value for one key, the command only returns information associated with the first key, in this example the phone number for `Maya Garcia`.
 
@@ -141,7 +177,7 @@ To test the dapp you have deployed:
 
 To extend what you have learned in this guide, you might want to try modifying the source code to return different results.
 
-For example, you might want to change the source code so that instead of a dapp that inserts and looks up a current key-value (name-phone) pair to create a dapp that stores contact information similar to a database "record" in which a primary key is associated with multiple fields. In this example, your dapp might enable users or another dapp to add information—such as a home phone number, a cell phone number, an email address, and a street address—and selectively return all or specific field values.
+For example, you might want to change the source code so that instead of a dapp that inserts and looks up a current key-value (name-phone) pair to create a dapp that stores contact information similar to a database "record" in which a primary key is associated with multiple fields. In this example, your dapp might enable users or another dapp to add information, such as a home phone number, a cell phone number, an email address, and a street address—and selectively return all or specific field values.
 
 ## Stop the local canister execution environment
 

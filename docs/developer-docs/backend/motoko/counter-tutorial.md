@@ -4,7 +4,7 @@
 
 In this guide, you are going to write a program that creates a single actor and provides a few basic functions to increment a counter and illustrate persistence of a value.
 
-For this guide, the actor is named `Counter`. The program uses the `currentValue` variable to contain a natural number that represents the current value of the counter. This program supports the following function calls:
+For this example, the actor is named `Counter`. The program uses the `currentValue` variable to contain a natural number that represents the current value of the counter. This program supports the following function calls:
 
 -   The `increment` function call updates the current value, incrementing it by 1 (no return value).
 
@@ -12,15 +12,15 @@ For this guide, the actor is named `Counter`. The program uses the `currentValue
 
 -   The `set` function call updates the current value to an arbitrary numeric value you specify as an argument.
 
-This guide provides a simple example of how you can increment a counter by calling functions on a deployed canister. By calling the functions to increment and query the counter value multiple times, you can verify that the variable state—that is, the value of the variable between calls—persists.
+This guide provides a simple example of how you can increment a counter by calling functions on a deployed canister. By calling the functions to increment and query the counter value multiple times, you can verify that the variable state; that is, the value of the variable between calls—persists.
 
 ## Prerequisites
 
-Before starting the guide, verify the following:
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
--   [x] You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
--   [x] You have stopped any local canister execution environments running on the computer.
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
@@ -50,7 +50,7 @@ To modify the `dfx.json` configuration file:
 
     For example:
 
-        "main": "src/my_counter/increment_counter.mo",
+        "main": "src/my_counter_backend/increment_counter.mo",
 
     For this guide, changing the name of the source file from `main.mo` to `increment_counter.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
 
@@ -62,19 +62,41 @@ To modify the `dfx.json` configuration file:
 
 - #### Step 3:  Change the name of the main program file in the source code directory `src` to match the name specified in the `dfx.json` configuration file by running the following command
 
-        mv src/my_counter/main.mo src/my_counter/increment_counter.mo
+        mv src/my_counter_backend/main.mo src/my_counter_backend/increment_counter.mo
 
 ## Modify the default program
 
-So far, you have only changed the name of the main program for your project. The next step is to modify the code in the `src/my_counter/increment_counter.mo` file to define an actor named `Counter` and implement the `increment`, `get`, and `set` functions.
+So far, you have only changed the name of the main program for your project. The next step is to modify the code in the `src/my_counter_backend/increment_counter.mo` file to define an actor named `Counter` and implement the `increment`, `get`, and `set` functions.
 
 To modify the default template source code:
 
 - #### Step 1:  Check that you are still in your project directory, if needed.
 
-- #### Step 2:  Open the `src/my_counter/increment_counter.mo` file in a text editor and delete the existing content.
+- #### Step 2:  Open the `src/my_counter_backend/increment_counter.mo` file in a text editor and delete the existing content.
 
-- #### Step 3:  Copy and paste [this code](./_attachments/counter.mo) into the `increment_counter.mo` file.
+- #### Step 3:  Copy and paste this code into the `increment_counter.mo` file:
+
+```
+// Create a simple Counter actor.
+actor Counter {
+  stable var currentValue : Nat = 0;
+
+  // Increment the counter with the increment function.
+  public func increment() : async () {
+    currentValue += 1;
+  };
+
+  // Read the counter value with a get function.
+  public query func get() : async Nat {
+    currentValue
+  };
+
+  // Write an arbitrary value with a set function.
+  public func set(n: Nat) : async () {
+    currentValue := n;
+  };
+}
+```
 
     Let's take a closer look at this sample program:
 
@@ -86,9 +108,9 @@ To modify the default template source code:
 
     -   The program includes two public update methods—the `increment` and `set` functions—and one a query method-the `get` function.
 
-    For more information about stable and flexible variables, see [Stable variables and upgrade methods](/motoko/main/upgrades.md) in the [*Motoko Programming Language Guide*](/motoko/main/about-this-guide.md).
+    For more information about stable and flexible variables, see [stable variables and upgrade methods](/motoko/main/upgrades.md) in the [*Motoko programming language guide*](/motoko/main/about-this-guide.md).
 
-    For more information about the differences between a query and an update, see [Query and update methods](/concepts/canisters-code.md#query-update) in [Canisters include both program and state](/concepts/canisters-code.md#canister-state).
+    For more information about the differences between a query and an update, see [query and update methods](/concepts/canisters-code.md#query-update) in [canisters include both program and state](/concepts/canisters-code.md#canister-state).
 
 - #### Step 4:  Save your changes and close the file to continue.
 
@@ -138,7 +160,7 @@ To test invoking methods on the deployed canister:
 
 - #### Step 1:  Run the following command to invoke the `get` function, which reads the current value of the `currentValue` variable on the deployed canister:
 
-        dfx canister call my_counter get
+        dfx canister call my_counter_backend get
 
     The command returns the current value of the `currentValue` variable as zero:
 
@@ -146,13 +168,13 @@ To test invoking methods on the deployed canister:
 
 - #### Step 2:  Run the following command to invoke the `increment` function to increment the value of the `currentValue` variable on the deployed canister by one:
 
-        dfx canister call my_counter increment
+        dfx canister call my_counter_backend increment
 
-    This command increments the value of the variable—changing its state—but does not return the result.
+    This command increments the value of the variable, changing its state, but does not return the result.
 
 - #### Step 3:  Rerun the following command to get the current value of the `currentValue` variable on the deployed canister:
 
-        dfx canister call my_counter get
+        dfx canister call my_counter_backend get
 
     The command returns the updated value of the `currentValue` variable as one:
 
@@ -162,13 +184,13 @@ To test invoking methods on the deployed canister:
 
     For example, try commands similar to the following to set and return the counter value:
 
-        dfx canister call my_counter set '(987)'
-        dfx canister call my_counter get
+        dfx canister call my_counter_backend set '(987)'
+        dfx canister call my_counter_backend get
 
     This returns the updated value of the `currentValue` to be 987. Running the additional commands
 
-        dfx canister call my_counter increment
-        dfx canister call my_counter get
+        dfx canister call my_counter_backend increment
+        dfx canister call my_counter_backend get
 
     returns the incremented `currentValue` of 988.
 

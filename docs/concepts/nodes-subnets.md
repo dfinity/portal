@@ -2,7 +2,7 @@
 
 ## Overview
 
-Internet Computer **subnet blockchains** provide physical hardware and resources—like CPU and memory—for performing software operations. Each subnet is a blockchain that consists of some number of decentralized, independently owned and controlled machines—connected peer computers called **nodes**—that run the software components of the Internet Computer blockchain protocol.
+Internet Computer **subnet blockchains** provide physical hardware and resources, like CPU and memory, for performing software operations. Each subnet is a blockchain that consists of some number of decentralized, independently owned and controlled machines, connected peer computers called **nodes**, that run the software components of the Internet Computer blockchain protocol.
 
 The Internet Computer blockchain software components that run on each node are called a **replica** because they replicate state and computation across all of the nodes in a subnet blockchain.
 
