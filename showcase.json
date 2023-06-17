@@ -1918,7 +1918,6 @@
     "display": "Normal",
     "id": "dsign",
     "oneLiner": "Collaborative Product Design Innovation Hub",
-    "stats": "7+",
     "tags": ["Tools / Infrastructure"],
     "usesInternetIdentity": true,
     "github": "https://github.com/cybrowl/dsign-components",
