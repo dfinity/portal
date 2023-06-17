@@ -1907,5 +1907,23 @@
     "video": "/img/showcase/canister-store_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "35750450"
+  },
+  {
+    "name": "DSign",
+    "description": "Collaborative Product Design Innovation Hub",
+    "website": "https://www.dsign.ooo",
+    "logo": "/img/showcase/dsign_logo.webp",
+    "screenshots": ["/img/showcase/dsign_screenshot.webp"],
+    "video": "",
+    "display": "Normal",
+    "id": "dsign",
+    "oneLiner": "Collaborative Product Design Innovation Hub",
+    "stats": "7+",
+    "tags": ["Tools / Infrastructure"],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/cybrowl/dsign-components",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "34425295"
   }
 ]
