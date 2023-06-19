@@ -1907,5 +1907,21 @@
     "video": "/img/showcase/canister-store_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "35750450"
+  },
+  {
+    "id": "stakedicp",
+    "name": "StakedICP",
+    "oneLiner": "Non-custodial liquid staking for ICP",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "StakedICP is the non-custodial liquid-staking protocol for ICP. ICP is staked in the NNS DAO, and stakers receive rewards daily. The stICP token is DeFi-compatible, to support protocols building on the Internet Computer, and always fully-backed by ICP staked in the NNS.",
+    "usesInternetIdentity": true,
+    "website": "https://stakedicp.com",
+    "github": "https://github.com/AegirFinance/StakedICP",
+    "twitter": "https://twitter.com/StakedICP",
+    "display": "Normal",
+    "logo": "/img/showcase/stakedicp_logo.webp",
+    "screenshots": []
   }
 ]
