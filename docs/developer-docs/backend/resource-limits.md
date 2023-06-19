@@ -21,7 +21,8 @@ This section defines the current main constraints regarding resource usage on th
 | Wasm custom sections| 2GiB per subnet; 1MiB per canister; 16 sections at most (per canister)|
 | Wasm code section | 10MB |
 | Query calls execution threads | 2 per replica node |
-| Update calls execution threads| 4 per subnet |
+| Update calls execution threads | 4 per subnet |
+| Update call rate | 300 per boundary node, subnet and second |
 
 
 ## Additional notes
@@ -29,7 +30,7 @@ This section defines the current main constraints regarding resource usage on th
 The IC may reject WebAssembly modules for reasons such that:
 
 - They declare more than 50,000 functions.
-- They declare more than 300 globals. 
+- They declare more than 300 globals.
 - They declare more than 16 exported custom sections (the custom section names with prefix icp:).
 - The number of all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 1,000.
 - The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20,000.
