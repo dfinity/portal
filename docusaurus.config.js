@@ -536,7 +536,7 @@ const config = {
               },
               {
                 label: "Brand Materials",
-                href: "https://dfinity.frontify.com/d/XzkdhhDptijE/dfinity-brand-guide#/internet-computer/powered-by-crypto-badges"
+                href: "https://dfinity.frontify.com/d/pD7yZhsmpqos"
               }
             ]
           },
