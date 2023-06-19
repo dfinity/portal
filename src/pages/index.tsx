@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
             "Build on the network",
             "Autonomous code",
             "Unstoppable code",
-            "Multi-chain Web3",
+            "Native multi-chain",
             "No security teams",
             "No firewalls needed",
             "Decentralize control"
