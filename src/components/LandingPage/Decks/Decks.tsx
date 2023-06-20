@@ -68,11 +68,11 @@ const Decks = () => {
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
         href="/whitepaper.pdf"
       >
-        <CardLabel>Pitch Presenation</CardLabel>
-        <CardTitle>World Computer </CardTitle>
+        {/* <CardLabel>Pitch Presenation</CardLabel> */}
+        <CardTitle>World Computer</CardTitle>
         <CardBody>
-          Build on the internet. Mattis laoreet fermentum mauris malesuada.
-          Fames tortor.
+          The Internet Computer in a nutshell. Follow its journey to realizing
+          blockchain singularity.
         </CardBody>
         <CardImage
           src="/img/home/deck-astronaut.webp"
@@ -84,8 +84,8 @@ const Decks = () => {
         className="text-black hover:text-black bg-white"
         href="/whitepaper.pdf"
       >
-        <CardLabel>Overview</CardLabel>
-        <CardTitle className="text-infinite">Internet Identity </CardTitle>
+        {/* <CardLabel>Overview</CardLabel> */}
+        <CardTitle className="text-infinite">Internet Identity</CardTitle>
         <CardBody>
           Lighting the way towards secure, interoperable, borderless and
           sovereign digital identity
