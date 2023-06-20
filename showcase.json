@@ -1907,5 +1907,25 @@
     "video": "/img/showcase/canister-store_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "35750450"
+  },
+  {
+    "name": "Mops",
+    "description": "On-chain package manager for Motoko. Mops makes it easy to discover, install and publish Motoko packages.",
+    "website": "https://mops.one",
+    "logo": "/img/showcase/mops_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "mops",
+    "oneLiner": "On-chain package manager for Motoko",
+    "stats": "15,000+ downloads",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ZenVoich/mops",
+    "twitter": "https://twitter.com/mops_one",
+    "youtube": "",
+    "submittableId": ""
   }
 ]
