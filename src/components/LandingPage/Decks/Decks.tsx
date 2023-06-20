@@ -66,7 +66,7 @@ const Decks = () => {
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
       <Card
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
-        href="/whitepaper.pdf"
+        href="/icp_version_1.pdf"
       >
         {/* <CardLabel>Pitch Presenation</CardLabel> */}
         <CardTitle>World Computer</CardTitle>
@@ -82,7 +82,7 @@ const Decks = () => {
       </Card>
       <Card
         className="text-black hover:text-black bg-white"
-        href="/whitepaper.pdf"
+        href="/ii_version_1.pdf"
       >
         {/* <CardLabel>Overview</CardLabel> */}
         <CardTitle className="text-infinite">Internet Identity</CardTitle>
