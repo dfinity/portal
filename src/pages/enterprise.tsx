@@ -145,15 +145,14 @@ function EnterprisePage() {
               className="tw-lead-sm md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Replacing traditional centralized cloud, autonomous cloud is a
-              novel, decentralized cloud platform that allows developers to
-              build directly on the network. Using canister smart contracts,
-              developers can deploy tamperproof and unstoppable code directly
-              hosted on the Internet Computer blockchain. Each interaction with
-              canister smart contracts is validated by a set of independent node
-              machines, using secure multiparty computation. No one entity,
-              admin or device has the master key to access or alter sensitive
-              data.
+              Replacing traditional centralized cloud, <strong>autonomous cloud</strong>{" "}
+              is a novel, decentralized cloud platform that allows developers to build
+              directly on the network enabled by threshold cryptography and secure
+              multiparty computation. Using canister smart contracts, teams can deploy
+              tamperproof and unstoppable code directly hosted on the Internet Computer
+              blockchain. Each interaction with canister smart contracts is validated
+              by a set of independent node machines. No one entity, admin or device has
+              the master key to access or alter sensitive data.
             </motion.p>
           </div>
         </AnimateSpawn>
@@ -170,14 +169,18 @@ function EnterprisePage() {
         <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40">
           <TranslatedLayout reverse={true} imageUrl="/img/defi/image-1.webp">
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Native BTC DeFi
+              Build without bloated security departments
             </h2>
+            <p className="tw-lead-sm">
+              Most large software companies have dedicated security departments
+              responsible for maintaining firewalls, and handling sensitive user
+              data and credentials.
+            </p>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Via chain-key signatures, the Internet Computer is capable of
-              signing native transactions on other blockchains without using
-              bridges. Today, you can already swap BTC with ICP without ever
-              having to use insecure wrapped tokens. In the near future, this
-              could extent to ETH or even Dogecoin.
+              The Internet Computer moves all the security to the protocol itself,
+              providing an unstoppable, tamperproof cloud environment. Building on
+              autonomous cloud enables organizations to focus on the business logic
+              of their software, lowering costs and speeding up development.
             </p>
             <p className="mb-0">
               <Link
@@ -191,16 +194,17 @@ function EnterprisePage() {
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/defi/image-2.webp">
             <h2 className="md:tw-heading-60 md:mb-6">
-              Bringing ERC-20 tokens to ICP
+              Frictionless self-custody
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Building on chain-key signatures and HTTPS outcalls, DEXs are
-              currently working on solutions to support a plethora of ERC-20
-              tokens on ICP. Plugging into Ethereum RPC API providers, ICP smart
-              contracts will sign transactions for any ERC-20 token without
-              relying on insecure bridges. Plans to integrate the Internet
-              Computer with Ethereum network at a protocol level are also
-              underway.
+              Users of enterprise solutions often resort to giving up self custody
+              of their data or digital assets, having to trust the service provider
+              to appropriately and securely handle their data. Using canister smart
+              contracts on the Internet Computer, organizations can simply deploy
+              an architecture, in which all users have complete ownership and
+              control of both their data and digital assets. This separation is
+              enabled by chain-key cryptography, and most importantly doesn’t
+              require users to go through complicated configuring of their accounts.
             </p>
             <p className="mb-0">
               <Link
@@ -214,18 +218,30 @@ function EnterprisePage() {
           </TranslatedLayout>
           <TranslatedLayout reverse={true} imageUrl="/img/defi/image-3.webp">
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Chain-Key Tokens
+              Managing platform risk
             </h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              Imagine being able to pay for a takeaway coffee with BTC or
-              sending satoshis to friends on your favorite Web3 chat app.
-              Chain-key tokens, a cryptographically secure replacement to
-              wrapped tokens, allow end-users to seamlessly transfer tokens
-              between blockchains with speed without relying on third-party
-              bridges or custodians. Chain-key bitcoin (ckBTC) is the first
-              chain-key token on ICP, pioneering the way. Trade BTC on ICP DEXs,
-              use BTC for fundraising and much more.
+            <p className="tw-lead-sm">
+              Businesses that provide crucial software infrastructure cannot rely
+              on a single, often US controlled, centralized cloud provider. Large
+              scale software systems that rely on centralized cloud providers can
+              suffer vendor lock-in, having to deal with increasing server costs or
+              refactor portions of their codebase because important features no
+              longer supported.
             </p>
+            <p className="tw-lead-sm">
+              The Internet Computer is an open, decentralized, autonomous cloud,
+              using cryptographic distributed computing. ICP connects independent
+              node machine providers together, to create a self sovereign autonomous
+              cloud that anyone can build on. ICP’s canister smart contracts are
+              compiled to WASM (WebAssembly) the new W3 industry standard for cross
+              platform, language agnostic, portable server executable code.
+            </p>
+            <p className="tw-lead-sm">
+              ICP provides an alternative technology stack that can completely
+              replace traditional cloud — no for-profit company is in control of
+              autonomous cloud.
+            </p>
+
             <p className="mb-0">
               <Link
                 href="/how-it-works#Chain-key-technology"
@@ -238,13 +254,14 @@ function EnterprisePage() {
           </TranslatedLayout>
 
           <TranslatedLayout imageUrl="/img/defi/image-4.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">SNS DAOs</h2>
+            <h2 className="md:tw-heading-60 md:mb-6">
+              New tokenized business model opportunities
+            </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              SNS is a powerful tool that allows developers to assign control of
-              their dapp to a DAO whose governance token holders become part
-              owners and contributors of the dapp. Once a dapp has tokenized,
-              DEXs can easily support its governance token as SNS follows the
-              ICRC-1 standard.
+              From loyalty programs to memberships to ticketing. Businesses need to
+              manage their relationships with their customers via digital identities
+              and handling of digital assets. The Internet Computer provides a common
+              digital wallet that makes this collaboration much easier to build.
             </p>
             <p className="mb-0">
               <Link href="/sns" className="link-primary link-with-icon">
