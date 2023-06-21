@@ -95,12 +95,12 @@ export const sampleItems: SampleItem[] = [
     links: {
       action: {
         text: "Get Code",
-        to: "https://github.com/dfinity/examples/tree/master/motoko/https_outcalls_GET_request",
+        to: "https://github.com/dfinity/examples/tree/master/motoko/send_http_get",
       },
       motoko:
-      "https://github.com/dfinity/examples/tree/master/motoko/https_outcalls_GET_request",
+      "https://github.com/dfinity/examples/tree/master/motoko/send_http_get",
       docs: "docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/https_outcalls_GET_request",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/send_http_get",
     },
   },
   {
