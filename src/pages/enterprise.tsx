@@ -13,61 +13,6 @@ import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
-const logos: {
-  url: string;
-  title: string;
-  imageUrl: string;
-  className?: string;
-}[] = [
-  {
-    imageUrl: "/img/enterprise/federality.webp",
-    title: "",
-    url: "",
-    className: "h-10 md:h-12",
-  },
-  {
-    imageUrl: "/img/enterprise/julius-bar.webp",
-    title: "",
-    url: "",
-    className: "h-10 md:h-10",
-  },
-  {
-    imageUrl: "/img/enterprise/lbank.webp",
-    title: "",
-    url: "",
-    className: "h-10 md:h-10",
-  },
-  {
-    imageUrl: "/img/enterprise/lugano.webp",
-    title: "",
-    url: "",
-    className: "h-16 md:h-20",
-  },
-];
-
-const LogoShowcase = React.memo(() => {
-  return (
-    <section className="overflow-hidden relative h-16 md:h-20">
-      <div className="flex items-center gap-8 md:gap-8 absolute top-0 md:top-0 left-1/2 min-w-max enterprise-marquee">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <React.Fragment key={i}>
-            {logos.map((logo) => (
-              // <a href={logo.url} title={logo.title} className="flex">
-              <img
-                key={logo.imageUrl}
-                src={logo.imageUrl}
-                alt=""
-                className={clsx("object-center object-contain", logo.className)}
-              />
-              // </a>
-            ))}
-          </React.Fragment>
-        ))}
-      </div>
-    </section>
-  );
-});
-
 function EnterprisePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
@@ -89,7 +34,7 @@ function EnterprisePage() {
         {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
 
         <section
-          className="overflow-hidden bg-black text-white pt-20"
+          className="overflow-hidden bg-infinite text-white pt-20"
           ref={heroRef}
         >
           <AnimateSpawn
@@ -136,158 +81,258 @@ function EnterprisePage() {
         >
           <div className="md:w-6/10">
             <motion.h2
-              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-6"
+              className="tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              “Autonomous Cloud”
+              Relying on traditional cloud infrastructure introduces elevated
+              costs due to bloated software
             </motion.h2>
-            <motion.p
-              className="tw-lead-sm md:tw-lead mb-0"
-              variants={transitions.item}
-            >
-              Replacing traditional centralized cloud, <strong>autonomous cloud</strong>{" "}
-              is a novel, decentralized cloud platform that allows developers to build
-              directly on the network enabled by threshold cryptography and secure
-              multiparty computation. Using canister smart contracts, teams can deploy
-              tamperproof and unstoppable code directly hosted on the Internet Computer
-              blockchain. Each interaction with canister smart contracts is validated
-              by a set of independent node machines. No one entity, admin or device has
-              the master key to access or alter sensitive data.
-            </motion.p>
           </div>
         </AnimateSpawn>
 
-        <section className="my-20 md:my-48">
-          <div className="container-10 text-center">
-            <h2 className="tw-heading-7-caps">
-              Supporting enterprises and governments across the world
+        <section className="mt-20 md:mt-48">
+          <div className="container-10">
+            <h2 className="tw-heading-60 text-gradient md:w-6/10 md:mx-auto text-center mb-16">
+              Autonomous cloud for enterprises
             </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-20">
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/development-costs-2.svg"
+                  alt=""
+                  className="w-30"
+                />
+                <h3 className="mt-6 mb-2 tw-heading-5">
+                  Lower development costs
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Businesses can operate with leaner teams, as the security is
+                  built into the protocol itself
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/digital-identity.svg"
+                  alt=""
+                  className="w-30"
+                />
+                <h3 className="mt-6 mb-2 tw-heading-5">
+                  Digital identity layer
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  No need to build proprietary identity solutions or rely on
+                  for-profit companies to keep user’s data safe and private{" "}
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/loyalty-programs.svg"
+                  alt=""
+                  className="w-30"
+                />
+                <h3 className="mt-6 mb-2 tw-heading-5">
+                  Tokenized reward programs
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Customer loyalty & employee reward programs simplified using
+                  tokens
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/secure-sharing.svg"
+                  alt=""
+                  className="w-30"
+                />
+                <h3 className="mt-6 mb-2 tw-heading-5">Secure data sharing</h3>
+                <p className="tw-paragraph mb-0">
+                  Zero knowledge proofs enable secure and private sharing of
+                  sensitive data
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/ownership.svg"
+                  alt=""
+                  className="w-30"
+                />
+                <h3 className="mt-6 mb-2 tw-heading-5">Simple self-custody</h3>
+                <p className="tw-paragraph mb-0">
+                  Users can take real ownership of their own data, and digital
+                  assets
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/supply-chain.svg"
+                  alt=""
+                  className="w-30"
+                />
+                <h3 className="mt-6 mb-2 tw-heading-5">Supply chain</h3>
+                <p className="tw-paragraph mb-0">
+                  Blockchain’s transparency & immutability allow for easy
+                  authenticity verification
+                </p>
+              </div>
+            </div>
           </div>
-          <LogoShowcase />
         </section>
-
-        <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40">
-          <TranslatedLayout reverse={true} imageUrl="/img/defi/image-1.webp">
-            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Build without bloated security departments
-            </h2>
-            <p className="tw-lead-sm">
-              Most large software companies have dedicated security departments
-              responsible for maintaining firewalls, and handling sensitive user
-              data and credentials.
-            </p>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              The Internet Computer moves all the security to the protocol itself,
-              providing an unstoppable, tamperproof cloud environment. Building on
-              autonomous cloud enables organizations to focus on the business logic
-              of their software, lowering costs and speeding up development.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/bitcoin-integration"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                More on BTC Integration
-              </Link>
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout imageUrl="/img/defi/image-2.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">
-              Frictionless self-custody
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              Users of enterprise solutions often resort to giving up self custody
-              of their data or digital assets, having to trust the service provider
-              to appropriately and securely handle their data. Using canister smart
-              contracts on the Internet Computer, organizations can simply deploy
-              an architecture, in which all users have complete ownership and
-              control of both their data and digital assets. This separation is
-              enabled by chain-key cryptography, and most importantly doesn’t
-              require users to go through complicated configuring of their accounts.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/how-it-works#Chain-key-cryptography"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                More on Chain-key signatures
-              </Link>
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout reverse={true} imageUrl="/img/defi/image-3.webp">
-            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Managing platform risk
-            </h2>
-            <p className="tw-lead-sm">
-              Businesses that provide crucial software infrastructure cannot rely
-              on a single, often US controlled, centralized cloud provider. Large
-              scale software systems that rely on centralized cloud providers can
-              suffer vendor lock-in, having to deal with increasing server costs or
-              refactor portions of their codebase because important features no
-              longer supported.
-            </p>
-            <p className="tw-lead-sm">
-              The Internet Computer is an open, decentralized, autonomous cloud,
-              using cryptographic distributed computing. ICP connects independent
-              node machine providers together, to create a self sovereign autonomous
-              cloud that anyone can build on. ICP’s canister smart contracts are
-              compiled to WASM (WebAssembly) the new W3 industry standard for cross
-              platform, language agnostic, portable server executable code.
-            </p>
-            <p className="tw-lead-sm">
-              ICP provides an alternative technology stack that can completely
-              replace traditional cloud — no for-profit company is in control of
-              autonomous cloud.
-            </p>
-
-            <p className="mb-0">
-              <Link
-                href="/how-it-works#Chain-key-technology"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                More on Chain-key Tokens
-              </Link>
-            </p>
-          </TranslatedLayout>
-
-          <TranslatedLayout imageUrl="/img/defi/image-4.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">
-              New tokenized business model opportunities
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              From loyalty programs to memberships to ticketing. Businesses need to
-              manage their relationships with their customers via digital identities
-              and handling of digital assets. The Internet Computer provides a common
-              digital wallet that makes this collaboration much easier to build.
-            </p>
-            <p className="mb-0">
-              <Link href="/sns" className="link-primary link-with-icon">
-                <LinkArrowRight />
-                More on SNS DAOs
-              </Link>
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
-            <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-              EVM on the Internet Computer
-            </h3>
-            <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-              The Bitfinity EVM allows developers to run Solidity
-              smart-contracts at web-speed, directly on the Internet Computer.
-            </p>
-            <Link
-              className="link-primary link-with-icon"
-              href="https://bitfinity.network"
+        <section className="container-10 py-30 md:pt-60 md:pb-[600px] relative">
+          <div className="md:w-6/10">
+            <motion.h2
+              className="tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+              variants={transitions.item}
             >
-              <LinkArrowRight />
-              Check out Bitfinity EVM
-            </Link>
-          </TranslatedLayout>
+              Innovations in cryptography, and distributed cloud computing
+              enable the Internet Computer blockchain to simplify software while
+              enhancing security.
+            </motion.h2>
+            <motion.p>
+              <Link className="button-primary">REACH OUT</Link>
+            </motion.p>
+          </div>
+          <img
+            src="/img/enterprise/big-visual.svg"
+            alt=""
+            className="absolute top-3/12 -right-3/10"
+          />
         </section>
+        <section className="bg-infinite relative overflow-hidden text-white">
+          <div className="blob blob-white blob-xl blob-x-7 blob-y-0"></div>
+          <div className="container-10 mt-40 md:w-6/10 md:mx-auto">
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 text-center"
+              variants={transitions.item}
+            >
+              Advantages of secure, autonomous cloud
+            </motion.h2>
+          </div>
+          <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-30">
+            <TranslatedLayout reverse={true} imageUrl="/img/defi/image-1.webp">
+              <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
+                Build without bloated security departments
+              </h2>
+              <p className="tw-lead-sm">
+                Most large software companies have dedicated security
+                departments responsible for maintaining firewalls, and handling
+                sensitive user data and credentials.
+              </p>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                The Internet Computer moves all the security to the protocol
+                itself, providing an unstoppable, tamperproof cloud environment.
+                Building on autonomous cloud enables organizations to focus on
+                the business logic of their software, lowering costs and
+                speeding up development.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/bitcoin-integration"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight />
+                  More on BTC Integration
+                </Link>
+              </p>
+            </TranslatedLayout>
+            <TranslatedLayout imageUrl="/img/defi/image-2.webp">
+              <h2 className="md:tw-heading-60 md:mb-6">
+                Frictionless self-custody
+              </h2>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                Users of enterprise solutions often resort to giving up self
+                custody of their data or digital assets, having to trust the
+                service provider to appropriately and securely handle their
+                data. Using canister smart contracts on the Internet Computer,
+                organizations can simply deploy an architecture, in which all
+                users have complete ownership and control of both their data and
+                digital assets. This separation is enabled by chain-key
+                cryptography, and most importantly doesn’t require users to go
+                through complicated configuring of their accounts.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/how-it-works#Chain-key-cryptography"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight />
+                  More on Chain-key signatures
+                </Link>
+              </p>
+            </TranslatedLayout>
+            <TranslatedLayout reverse={true} imageUrl="/img/defi/image-3.webp">
+              <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
+                Managing platform risk
+              </h2>
+              <p className="tw-lead-sm">
+                Businesses that provide crucial software infrastructure cannot
+                rely on a single, often US controlled, centralized cloud
+                provider. Large scale software systems that rely on centralized
+                cloud providers can suffer vendor lock-in, having to deal with
+                increasing server costs or refactor portions of their codebase
+                because important features no longer supported.
+              </p>
+              <p className="tw-lead-sm">
+                The Internet Computer is an open, decentralized, autonomous
+                cloud, using cryptographic distributed computing. ICP connects
+                independent node machine providers together, to create a self
+                sovereign autonomous cloud that anyone can build on. ICP’s
+                canister smart contracts are compiled to WASM (WebAssembly) the
+                new W3 industry standard for cross platform, language agnostic,
+                portable server executable code.
+              </p>
+              <p className="tw-lead-sm">
+                ICP provides an alternative technology stack that can completely
+                replace traditional cloud — no for-profit company is in control
+                of autonomous cloud.
+              </p>
 
+              <p className="mb-0">
+                <Link
+                  href="/how-it-works#Chain-key-technology"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight />
+                  More on Chain-key Tokens
+                </Link>
+              </p>
+            </TranslatedLayout>
+
+            <TranslatedLayout imageUrl="/img/defi/image-4.webp">
+              <h2 className="md:tw-heading-60 md:mb-6">
+                New tokenized business model opportunities
+              </h2>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                From loyalty programs to memberships to ticketing. Businesses
+                need to manage their relationships with their customers via
+                digital identities and handling of digital assets. The Internet
+                Computer provides a common digital wallet that makes this
+                collaboration much easier to build.
+              </p>
+              <p className="mb-0">
+                <Link href="/sns" className="link-primary link-with-icon">
+                  <LinkArrowRight />
+                  More on SNS DAOs
+                </Link>
+              </p>
+            </TranslatedLayout>
+            <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                EVM on the Internet Computer
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                The Bitfinity EVM allows developers to run Solidity
+                smart-contracts at web-speed, directly on the Internet Computer.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://bitfinity.network"
+              >
+                <LinkArrowRight />
+                Check out Bitfinity EVM
+              </Link>
+            </TranslatedLayout>
+          </div>
+        </section>
         <section className="container-12 py-30 md:py-48">
           <div className="text-center mb-16 md:mb-30">
             <AnimateSpawn
