@@ -7,7 +7,7 @@ This is a standalone project that you can copy to your own project.
 
 
 * [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.10.0 or later
-* Rustup with target `wasm32-unknown-unknown` (see [rustup instructions](https://rust-lang.github.io/rustup/cross-compilation.html)), which can be installed by running [./scripts/bootstrap](./scripts/bootstrap)
+* Rustup with target `wasm32-unknown-unknown` (see [rustup instructions](https://rust-lang.github.io/rustup/cross-compilation.html)).
 * CMake
 * [`ic-wasm`](https://github.com/dfinity/ic-wasm).
 * Node.js v16+
