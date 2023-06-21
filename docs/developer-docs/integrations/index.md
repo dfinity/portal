@@ -42,12 +42,12 @@ Rosetta is an open standard introduced by Coinbase to simplify the integration o
 ## Service Nervous System (SNS)
 Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md) and then provides the documentation aimed at developers.
 
-* [An introduction to the SNS.](./sns/lifecycle-sns/sns-intro-highlevel.md)
+* [An introduction to the SNS.](./sns/introduction/sns-intro-highlevel.md)
 * [An introduction to how to prepare for an SNS launch.](./sns/tokenomics/index.md)
-* [SNS integration documentation.](./sns/integrate-sns/index.md)
-* [SNS testing documentation.](./sns/get-sns/get-sns-intro.md)
-* [An introduction to the SNS launch.](./sns/launch-sns/launch-sns.md)
-* [Information on how to manage an SNS.](./sns/managing-sns/manage-sns-intro.md)
+* [SNS integration documentation.](./sns/integrating/index.md)
+* [SNS testing documentation.](./sns/testing/get-sns-intro.md)
+* [An introduction to the SNS launch.](./sns/launching/launch-summary.md)
+* [Information on how to manage an SNS.](./sns/managing/manage-sns-intro.md)
 
 ## Threshold ECDSA
 A threshold ECDSA implementation on a blockchain can be viewed as the on-chain pendant to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities, and only to those. It is particularly important to facilitate direct integration with (ECDSA-based) blockchains.
