@@ -1,9 +1,10 @@
-# SNS launch
+# SNS launch steps
+
 ## Overview
 An SNS can be launched in production by following the steps explained on a 
-high level [here](../lifecycle-sns/sns-launch.md).
+high level [here](../launching/launch-steps.md).
 Technically, these are the same steps that the
-[SNS local testing repository](../get-sns/local-testing.md) guides you through,
+[SNS local testing repository](../testing/local-testing.md) guides you through,
 with the difference that the commands target the canisters on the mainnet.
 
 To make the most important commands and what they need to look like for 
@@ -11,7 +12,7 @@ mainnet more accesible, they are listed below.
 
 ## Submitting an NNS proposal to approve the SNS {#SNS-launch-command-NNSproposal1}
 After preparations and choosing the parameters
-([Step 1: Preparation](../lifecycle-sns/sns-launch.md/#SNS-launch-step-preparation), 
+([Step 1: Preparation](../launching/launch-steps.md/#SNS-launch-step-preparation), 
 an [NNS proposal approves the creation of the SNS](#SNS-launch-step-NNSapproval).
 Anyone who owns and NNS neuron with enough stake can submit such a proposal
 that lists a principal wallet in SNS-W who can then deploy the SNS canisters.
@@ -33,7 +34,7 @@ there is a shorthand where you can just provide `dfx canister -- network ic`.
 
 ## SNS canister creation calling SNS-W {#SNS-launch-command-SNSW}
 After the wallet canister is listed in SNS-W, 
-the [SNS canisters are created triggered by a manual call to SNS-W](../lifecycle-sns/sns-launch.md/#SNS-launch-step-deployment).
+the [SNS canisters are created triggered by a manual call to SNS-W](../launching/launch-steps.md/#SNS-launch-step-deployment).
 You can find this command in an example in the SNS local testing repository [here](https://github.com/dfinity/sns-testing/blob/main/deploy_sns.sh#L33)
 ```
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
@@ -41,7 +42,7 @@ sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_
 
 ## Submitting an NNS proposal to start the SNS swap {#SNS-launch-command-NNSproposal2}
 After the SNS canisters are deployed and the dapp's control is handed over to
-the SNS, an [NNS proposal starts the swap](../lifecycle-sns/sns-launch.md/#SNS-launch-step-startSwap). 
+the SNS, an [NNS proposal starts the swap](../launching/launch-steps.md/#SNS-launch-step-startSwap). 
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
 Of course it is crucial to set the right parameters in this proposal.
 You can also find an example how this command is used in the SNS local testing

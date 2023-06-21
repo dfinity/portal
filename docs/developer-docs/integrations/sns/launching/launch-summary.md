@@ -1,7 +1,8 @@
 ---
 sidebar_position: 3
 ---
-# SNS launch
+# SNS launch process structure
+
 ## Overview
 
 A crucial purpose of an SNS launch is to decentralize the control of the SNS and thereby of
@@ -54,7 +55,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
 
 - #### Step 2: A NNS proposal approves the creation of the SNS{#SNS-launch-step-NNSapproval}
   To ensure that malicious parties cannot simply fill the SNS subnet with non-approved SNSs, the
-  canister which is responsible for deploying SNSs, [SNS-W](sns-architecture.md#SNS-W), 
+  canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
   contains a list of principals that are allowed to do so.
   The first step in launching an SNS is asking the NNS community for approval to be added to
   this list. 
@@ -62,7 +63,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
 
 - #### Step 3: The SNS canisters are created by a manual call to SNS-W.{#SNS-launch-step-deployment} 
   When all initial parameters are specified and the NNS approved the SNS launch,
-  the SNS canisters can be created by a manual call to [SNS-W](sns-architecture.md#SNS-W).
+  the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns-architecture.md#SNS-W).
   This will initiate the creation of the SNS canisters and set their initial parameters as
   chosen in [Step 1](#SNS-launch-step-preparation).
 
@@ -77,7 +78,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   decentralization swap.
   To ensure that no one can transfer tokens, and distribute
   them or start token markets
-  prematurely, all remaining inital tokens are locked in neurons.
+  prematurely, all remaining initial tokens are locked in neurons.
   Moreover, in pre-decentralization-swap mode,
   the initial neurons cannot modify the SNS or
   transfer the treasury tokens.
