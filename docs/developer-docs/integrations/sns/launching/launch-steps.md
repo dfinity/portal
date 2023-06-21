@@ -9,18 +9,18 @@ Technically, these are the same steps that the
 with the difference that the commands target the canisters on the mainnet.
 
 To make the most important commands and what they need to look like for 
-mainnet more accesible, they are listed below.
+mainnet more accessible, they are listed below.
 
-## Submitting an NNS proposal to approve the SNS {#SNS-launch-command-NNSproposal1}
-After preparations and choosing the parameters
-([Step 1: Preparation](../launching/launch-steps.md/#SNS-launch-step-preparation), 
-an [NNS proposal approves the creation of the SNS](#SNS-launch-step-NNSapproval).
-Anyone who owns and NNS neuron with enough stake can submit such a proposal
+- #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
+
+- #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
+
+Anyone who owns and NNS neuron with enough stake can submit a proposal
 that lists a principal wallet in SNS-W who can then deploy the SNS canisters.
-For the larger context, you can consider how this command is used in the SNS
-local testing repository
-[here](https://github.com/dfinity/sns-testing/blob/main/deploy_sns.sh#L18-L23).
-``` 
+
+To create such a proposal, a common path is to use the `ic-admin` tool and run the following:
+
+```bash 
 ic-admin  \
    --nns-url "${NETWORK_URL}" propose-to-update-sns-deploy-whitelist  \
    --added-principals "${WALLET}"  \
@@ -28,10 +28,8 @@ ic-admin  \
    --summary "This proposal whitelists developer's principal to deploy SNS"
 ``` 
 
-For the ic-admin command you could substitute `NETWORK_URL` with `https://nns.ic0.app` and for the `dfx`
-there is a shorthand where you can just provide `dfx canister -- network ic`.
-
-
+* One can substitute `WALLET` with the principal in question 
+* One can substitute `NETWORK_URL` with `https://nns.ic0.app`
 
 ## SNS canister creation calling SNS-W {#SNS-launch-command-SNSW}
 After the wallet canister is listed in SNS-W, 
