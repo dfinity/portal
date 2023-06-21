@@ -102,7 +102,7 @@ export default function BlogPostItems({
           <div className="flex flex-col">
             <CoverImage
               url={BlogPostContent.frontMatter.image}
-              permalink={featuredPost.content.metadata.permalink}
+              permalink={BlogPostContent.content.metadata.permalink}
             ></CoverImage>
             <InfoLine
               date={BlogPostContent.metadata.date}
