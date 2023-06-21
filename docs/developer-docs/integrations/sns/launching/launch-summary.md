@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-# SNS launch process structure
+# SNS launch summary
 
 ## Overview
 

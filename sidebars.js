@@ -431,7 +431,7 @@ const sidebars = {
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/testing/get-sns-intro",
-                    },
+                      },
                       items: [
                         "developer-docs/integrations/sns/testing/local-testing",
                         "developer-docs/integrations/sns/testing/testflight",
@@ -440,8 +440,14 @@ const sidebars = {
                     {
                       type: "category",
                       label: "Launching an SNS",
-                      type: "doc",
-                      id: "developer-docs/integrations/sns/launching/launch-steps",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/launching/launch-summary",
+                      },
+                      items: [
+                        "developer-docs/integrations/sns/launching/launch-summary",
+                        "developer-docs/integrations/sns/launching/launch-steps",
+                      ],
                     },
                     {
                       type: "category",
