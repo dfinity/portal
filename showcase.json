@@ -1925,5 +1925,19 @@
       "/img/showcase/orally-network_screenshot_0.jpg"
     ],
     "submittableId": "35782696"
+  },
+  {
+    "id": "motoko-book",
+    "name": "The Motoko Programming Language Book",
+    "oneLiner": "Writing Web3 Applications on the Internet Computer",
+    "website": "https://web3.motoko-book.dev/",
+    "tags": ["Tools / Infrastructure"],
+    "description": "This book guides beginners into the world of Web3 programming in Motoko on the Internet Computer. It covers a broad range of concepts from the very basics to advanced async programming.",
+    "stats": "100 monthly users Google Analytics 17-06-2023",
+    "logo": "/img/showcase/motoko-book_logo.png", 
+    "usesInternetIdentity": "false",
+    "github": "https://github.com/Web3NL/motoko-book",
+    "submittableId": "34608505",
+    "youtube": "https://www.youtube.com/watch?v=FktYj4UgBKU"
   }
 ]
