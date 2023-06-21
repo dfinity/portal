@@ -35,5 +35,5 @@ We expect the majority of HTTP calls to be `GET` calls for reading Web 2.0 data,
 - In the [examples repository](https://github.com/dfinity/examples) you can find sample code which you can use as starting point for building your own dapp.:
     * Sample code for making [HTTP GET requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_get) 
     * Sample code for making [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get) 
-     * Sample code for making [HTTP POST requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post) 
+    * Sample code for making [HTTP POST requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post) 
     * Sample code for making [HTTP POST requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_post)
