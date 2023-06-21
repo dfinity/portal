@@ -42,7 +42,7 @@ Rosetta is an open standard introduced by Coinbase to simplify the integration o
 ## Service Nervous System (SNS)
 Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. This section provides an [overview of the SNS documentation](./sns/index.md) and then provides the documentation aimed at developers.
 
-* [An introduction to the SNS.](./sns/introduction/sns-intro-highlevel.md)
+* [An introduction to the SNS.](./sns/introduction/sns-intro-high-level.md)
 * [An introduction to how to prepare for an SNS launch.](./sns/tokenomics/index.md)
 * [SNS integration documentation.](./sns/integrating/index.md)
 * [SNS testing documentation.](./sns/testing/get-sns-intro.md)
