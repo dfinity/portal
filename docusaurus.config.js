@@ -331,7 +331,7 @@ const subnavItems = [
   },
   {
     position: "left",
-    href: "/blog",
+    to: "blog",
     label: "Blog"
   },
   {
