@@ -20,9 +20,14 @@ const CardTitle: FC<{
   );
 };
 
-const CardBody = ({ children }) => {
+const CardBody: FC<{
+  className?: string;
+  children?: React.ReactNode;
+}> = ({ children, className }) => {
   return (
-    <div className="tw-paragraph-sm md:tw-paragraph mb-0 md:w-7/10 lg:w-7/10">
+    <div
+      className={clsx("tw-paragraph-sm mb-0 md:w-7/10 lg:w-7/10", className)}
+    >
       {children}
     </div>
   );
@@ -93,7 +98,9 @@ const Decks = () => {
       >
         <CardLabel>Download Presentation</CardLabel>
         <CardTitle className="text-infinite">Internet Identity</CardTitle>
-        <CardBody>PDF - Last update: June 20th, 2023</CardBody>
+        <CardBody className="text-black/60">
+          PDF - Last update: June 20th, 2023
+        </CardBody>
         <CardImage
           src="/img/home/deck-identity.webp"
           alt="Internet Identity Overview"
