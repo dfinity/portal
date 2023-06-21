@@ -1,10 +1,17 @@
+---
+title: Developer weekly - June 21, 2023
+description: This week, we’re going to talk about some new important pieces of documentation, a new Quill release, and an awesome new example project developed by Luc Bläser from the DFINITY languages team for the Motoko workshop at KTH summer school.
+tags: [Devs]
+image: /img/blog/dev-update-blog-jun-2-2.jpeg
+---
+
 # Developer weekly - June 21, 2023
 
 ![June 21, 2023](../_assets/dev-update-blog-jun-2-2.jpeg)
 
 Hello devs and welcome to this week’s issue of developer weekly! 
 
-aThis week, we’re going to talk about some new important pieces of documentation, a new quill release, and an awesome new example project developed by Luc Bläser from the DFINITY languages team for the Motoko workshop at KTH summer school.
+This week, we’re going to talk about some new important pieces of documentation, a new Quill release, and an awesome new example project developed by Luc Bläser from the DFINITY languages team for the Motoko workshop at KTH summer school.
 
 Let’s get started!
 
@@ -41,9 +48,21 @@ Another new page of documentation added this week details the IC’s [resource c
 
 You can read the full list [here](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits).
 
-## New quill release
+## New Quill release - 0.4.2
 
-https://github.com/dfinity/quill/releases
+This week, Quill version 0.4.2 was released, adding some great new features such as Ledger support! With the new Ledger support feature, the same key can be shared between the NNS UI and Quill, which previously wasn't possible. To use this new feature, the `--ledger` flag can be used. 
+
+In addition to Ledger support, other new features and additions in this release include:
+
+- Added `--subaccount` to `quill public-ids`.
+- Added Ledger support via `--ledger`. 
+- Added `--confirmation-text` to `quill sns pay`.
+- Fixed `quill ckbtc update-balance` allowing the anonymous principal.
+- Added `disburse`, `disburse-maturity`, `split-neuron`, and `follow-neuron` to `quill sns`.
+- Added option to print DFN address for Genesis investors.
+- Updated to new ICRC-1 account ID format.
+
+You can get the new release of Quill [here](https://github.com/dfinity/quill/releases).
 
 ## Motoko workshop at KTH summer school
 
