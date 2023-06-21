@@ -53,7 +53,7 @@ const Card: FC<{
     <MotionLink
       variants={transitions.item}
       className={clsx(
-        "rounded-xl flex hover:no-underline relative overflow-hidden",
+        "flex-1 rounded-xl hover:no-underline relative overflow-hidden",
         className
       )}
       href={href}
@@ -78,12 +78,9 @@ const Decks = () => {
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
         href="/icp_version_1.pdf"
       >
-        {/* <CardLabel>Pitch Presenation</CardLabel> */}
-        <CardTitle>World Computer</CardTitle>
-        <CardBody>
-          The Internet Computer in a nutshell. Follow its journey to realizing
-          blockchain singularity.
-        </CardBody>
+        <CardLabel>Download Presentation</CardLabel>
+        <CardTitle>Internet Computer</CardTitle>
+        <CardBody>Last update of PDF: June 20th, 2023</CardBody>
         <CardImage
           src="/img/home/deck-astronaut.webp"
           alt="ICP Pitch Presenation"
@@ -94,12 +91,9 @@ const Decks = () => {
         className="text-black hover:text-black bg-white"
         href="/ii_version_1.pdf"
       >
-        {/* <CardLabel>Overview</CardLabel> */}
+        <CardLabel>Download Presentation</CardLabel>
         <CardTitle className="text-infinite">Internet Identity</CardTitle>
-        <CardBody>
-          Lighting the way towards secure, interoperable, borderless and
-          sovereign digital identity
-        </CardBody>
+        <CardBody>PDF - Last update: June 20th, 2023</CardBody>
         <CardImage
           src="/img/home/deck-identity.webp"
           alt="Internet Identity Overview"
