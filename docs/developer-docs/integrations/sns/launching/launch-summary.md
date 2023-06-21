@@ -1,6 +1,3 @@
----
-sidebar_position: 3
----
 # SNS launch summary
 
 ## Overview
@@ -43,71 +40,76 @@ The ICP that were collected in the decentralization swap provide initial
 funding for the SNS project in a SNS-owned treasury.
 
 
-## SNS launch process
+## SNS launch process summary
 Handing over a dapp's control to a newly created SNS proceeds in the following high level steps.
 Note that the NNS community's approvals is relevant in two steps (Step XX and XX).
 
-- #### Step 1: Preparation.{#SNS-launch-step-preparation}
-  Technically, the first step to initialize an SNS is to choose the initial parameters of the SNS.
+- #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
   As these parameters define not only the token name but also the tokenomics and how the governance
   will work, this usually requires a lot of preparation and community engagement already
   (see [here](../tokenomics/sns-checklist.md) for more information).
 
-- #### Step 2: A NNS proposal approves the creation of the SNS{#SNS-launch-step-NNSapproval}
-  To ensure that malicious parties cannot simply fill the SNS subnet with non-approved SNSs, the
+- #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
+  To ensure that malicious parties cannot simply fill the SNS subnet with un-approved SNSs, the
   canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
-  contains a list of principals that are allowed to do so.
-  The first step in launching an SNS is asking the NNS community for approval to be added to
-  this list. 
-  If the proposal is adopted, the defined principal is allowed to install exactly one SNS.
+  contains a list of principals that are allowed to do so. Therefore, a developer launching an SNS needs to ask the NNS community for approval to be added to this list. If the proposal is adopted, the defined principal is allowed to install exactly one SNS. 
 
-- #### Step 3: The SNS canisters are created by a manual call to SNS-W.{#SNS-launch-step-deployment} 
+- #### Step 3: NNS DAO accepts or rejects the proposal
+
+  This is the **first of three** NNS proposals that need to successfully pass.
+  
+  :::info
+  If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+  :::
+
+- #### Step 4: Dapp developers trigger the SNS canisters to be created on SNS subnet
+
   When all initial parameters are specified and the NNS approved the SNS launch,
   the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns-architecture.md#SNS-W).
   This will initiate the creation of the SNS canisters and set their initial parameters as
   chosen in [Step 1](#SNS-launch-step-preparation).
 
-- #### Step 3: Pre-decentralization-swap mode.
-  After the SNS canister creation, the canisters exist but are not yet
-  fully functional - the SNS is in **pre-decentralization-swap mode**.
-  At this point, the SNS ledger only has two accounts with
-  liquid tokens, the **treasury**
-  that is owned by the SNS governance canister and which
-  can be used in the future according
-  to the SNS community's wishes, and some pre-allocated tokens to be used in the initial
-  decentralization swap.
-  To ensure that no one can transfer tokens, and distribute
-  them or start token markets
-  prematurely, all remaining initial tokens are locked in neurons.
-  Moreover, in pre-decentralization-swap mode,
-  the initial neurons cannot modify the SNS or
-  transfer the treasury tokens.
+- #### Step 5: The newly-created SNS enters pre-decentralization-swap mode.
+  After the SNS canister creation, the canisters exist but are not yet fully functional - the SNS is in **pre-decentralization-swap mode**.
 
-- #### Step 4: Dapp control handover.
-  Before the decentralization swap,
-  the developers hand over the control of the dapp to the SNS.
+  At this point, the SNS ledger only has two accounts with
+  liquid tokens: 
+  
+  * the **treasury** that is owned by the SNS governance canister and which can be used in the future according to the SNS community's wishes
+  * some pre-allocated tokens to be used in the initial decentralization swap
+  
+  To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
+  Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
+
+- #### Step 6: Dapp developers submit NNS proposal to handover control of their dapp to the SNS.
+  Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
+
   This includes adding the SNS root canister as the controller of the dapp and removing
   yourself (and possibly other developers) from the list of
-  controllers. Also, this
-  includes "registering" the dapp with the SNS so that SNS
-  root is aware that it controls
-  these canisters.
+  controllers. Also, this includes "registering" the dapp with the SNS so that SNS
+  root is aware that it controls these canisters.
+
   The registration is done by SNS proposal.
+  
   As there are already initial neurons (from Step 2), this,
-  as well as potential upgrades
-  to the dapp, can be realized by SNS proposals and by the
-  majority of
-  initial neurons voting in favor of them.
+  as well as potential upgrades to the dapp, can be realized by SNS proposals and by the
+  majority of initial neurons voting in favor of them.
   The initial neurons cannot do other things, such as changing
   the SNS  parameters, as the SNS governance canister is still in
   pre-decentralization-swap mode.
 
-- #### Step 5: A NNS proposal starts the decentralization swap.{#SNS-launch-step-startSwap}
-  The decentralization swap
-  is started by an NNS proposal that can be submitted by
-  anyone and defines the conditions for the
-  decentralization swap, for example
-  how many ICP tokens should at least and at most be collected.
+- #### Step 7: NNS DAO accepts or rejects the proposal
+
+  This is the **second of three** NNS proposals that need to successfully pass for the process to continue.
+
+  :::info
+  If this NNS proposal passes, it does **not** guarantee the rest of the steps will complete.
+  :::
+
+
+- #### Step 8: Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+  
+  Once the control of the dapp has been handed over to the SNS, anyone in the community can send a proposal to trigger the decentralization swap. This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
   When voting on this proposal, the NNS voters can verify the parameters in the already
   existing SNS canisters as well as the swap parameters that are set in the proposal.
@@ -117,20 +119,32 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   If the NNS proposal is adopted, the swap is started after a specified delay. 
   If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
   back to the original developers of the dapp.
-  
-- #### Step 6: Decentralization swap.
+
+- #### Step 9: NNS DAO accepts or rejects the proposal
+
+  This is the **last of three** NNS proposals that need to successfully pass for the process to continue. 
+
+  :::info
+  Once this NNS proposal passes, the rest of the process should complete.
+  :::
+
+- #### Step 10: Decentralization swap.
+
   When the swap starts, the swap canister holds the number
   of SNS tokens that were specified. End users can
   participate in the decentralization swap by transferring ICP tokens to the
   swap canister.
 
-- #### Step 7: SNS genesis.{#SNS-launch-step-genesis}
+- #### Step 11: SNS genesis.{#SNS-launch-step-genesis}
+  
   When the decentralization swap ends, it is first established whether
   it was successful, e.g., enough ICP have been collected. If the swap was successful,
   the exchange rate is determined and all SNS tokens are given to the swap participants in
   neurons. 
-  Currently, this process needs to be triggered by a call to the swap cansiter that anyone
+  
+  Currently, this process needs to be triggered by a call to the swap canister that anyone
   can make.
+  
   Once all neurons are created, the SNS should be under decentralized control
   and the pre-decentralization-swap mode is reverted.
   Thus, the governance canister is set to be fully functional.
