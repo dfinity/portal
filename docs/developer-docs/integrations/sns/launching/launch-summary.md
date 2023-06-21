@@ -54,7 +54,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
   contains a list of principals that are allowed to do so. Therefore, a developer launching an SNS needs to ask the NNS community for approval to be added to this list. If the proposal is adopted, the defined principal is allowed to install exactly one SNS. 
 
-- #### Step 3: NNS DAO accepts or rejects the proposal
+- #### Step 3: NNS DAO accepts or rejects the NNS proposal
 
   This is the **first of three** NNS proposals that need to successfully pass.
   
@@ -81,7 +81,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
   Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
 
-- #### Step 6: Dapp developers submit NNS proposal to handover control of their dapp to the SNS.
+- #### Step 6: Dapp developers submit SNS proposal to handover control of their dapp to the SNS.
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
   This includes adding the SNS root canister as the controller of the dapp and removing
@@ -98,14 +98,17 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   the SNS  parameters, as the SNS governance canister is still in
   pre-decentralization-swap mode.
 
-- #### Step 7: NNS DAO accepts or rejects the proposal
-
-  This is the **second of three** NNS proposals that need to successfully pass for the process to continue.
-
   :::info
-  If this NNS proposal passes, it does **not** guarantee the rest of the steps will complete.
+  Note that this is an *SNS* proposal, not an NNS proposal, even though many users would vote on it within [the NNS frontend dapp](nns.ic0.app).
   :::
 
+- #### Step 7: SNS DAO accepts or rejects the SNS proposal
+
+  This is the **second of three** proposals that need to successfully pass for the process to continue.
+
+  :::info
+  If this SNS proposal passes, it does **not** guarantee the rest of the steps will complete.
+  :::
 
 - #### Step 8: Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
@@ -122,7 +125,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
 
 - #### Step 9: NNS DAO accepts or rejects the proposal
 
-  This is the **last of three** NNS proposals that need to successfully pass for the process to continue. 
+  This is the **last of three** proposals that need to successfully pass for the process to continue. 
 
   :::info
   Once this NNS proposal passes, the rest of the process should complete.
