@@ -56,7 +56,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
 
 - #### Step 3: NNS DAO accepts or rejects the NNS proposal
 
-  This is the **first of three** NNS proposals that need to successfully pass.
+  This is the **first of three** proposals that need to successfully pass.
   
   :::info
   If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
@@ -81,7 +81,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
   Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
 
-- #### Step 6: Dapp developers submit SNS proposal to handover control of their dapp to the SNS.
+- #### Step 6: Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
   This includes adding the SNS root canister as the controller of the dapp and removing
@@ -89,9 +89,9 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
   controllers. Also, this includes "registering" the dapp with the SNS so that SNS
   root is aware that it controls these canisters.
 
-  The registration is done by SNS proposal.
+  The registration is done by **SNS proposal**.
   
-  As there are already initial neurons (from Step 2), this,
+  As there are already initial neurons (from Step 3), this,
   as well as potential upgrades to the dapp, can be realized by SNS proposals and by the
   majority of initial neurons voting in favor of them.
   The initial neurons cannot do other things, such as changing
@@ -106,26 +106,26 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
 
   This is the **second of three** proposals that need to successfully pass for the process to continue.
 
+  Since this proposal is passed by the SNS DAO. When one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](nns.ic0.app), but they are two separate DAOs.
+
   :::info
   If this SNS proposal passes, it does **not** guarantee the rest of the steps will complete.
   :::
 
 - #### Step 8: Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
-  Once the control of the dapp has been handed over to the SNS, anyone in the community can send a proposal to trigger the decentralization swap. This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
-
-  When voting on this proposal, the NNS voters can verify the parameters in the already
-  existing SNS canisters as well as the swap parameters that are set in the proposal.
-  If the proposal is rejected, the SNS launch fails and the dapp is handed back to the
-  developers.
-  
-  If the NNS proposal is adopted, the swap is started after a specified delay. 
-  If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
-  back to the original developers of the dapp.
+  Once the control of the dapp has been handed over to the SNS, anyone in the community can send an NNS proposal to trigger the decentralization swap. This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
 - #### Step 9: NNS DAO accepts or rejects the proposal
 
   This is the **last of three** proposals that need to successfully pass for the process to continue. 
+
+  When voting on this proposal, the NNS voters can verify the parameters in the already
+  existing SNS canisters as well as the swap parameters that are set in the proposal.
+   
+  * If the NNS proposal is adopted, the swap is started after a specified delay. 
+  * If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
+  back to the original developers of the dapp.
 
   :::info
   Once this NNS proposal passes, the rest of the process should complete.
