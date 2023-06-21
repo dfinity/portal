@@ -1,6 +1,9 @@
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import React, { FC } from "react";
+import transitions from "@site/static/transitions.json";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 
 const CardLabel = ({ children }) => {
   return <span className="tw-heading-6">{children}</span>;
@@ -39,13 +42,16 @@ const CardImage: FC<{
   );
 };
 
+const MotionLink = motion(Link);
+
 const Card: FC<{
   className?: string;
   children?: React.ReactNode;
   href: string;
 }> = ({ children, className, href }) => {
   return (
-    <Link
+    <MotionLink
+      variants={transitions.item}
       className={clsx(
         "rounded-xl flex hover:no-underline relative overflow-hidden",
         className
@@ -56,13 +62,17 @@ const Card: FC<{
       <div className="flex flex-col justify-center gap-2 translate-y-0 transition-transform hover:-translate-y-4 px-8 py-12 md:p-16">
         {children}
       </div>
-    </Link>
+    </MotionLink>
   );
 };
 
 const Decks = () => {
   return (
-    <section className="container-12 flex gap-2 flex-col md:flex-row -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40">
+    <AnimateSpawn
+      el={motion.section}
+      className="container-12 flex gap-2 flex-col md:flex-row -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40"
+      variants={transitions.container}
+    >
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
       <Card
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
@@ -96,7 +106,7 @@ const Decks = () => {
           className="md:-right-20 lg:-right-10 -bottom-16"
         />
       </Card>
-    </section>
+    </AnimateSpawn>
   );
 };
 
