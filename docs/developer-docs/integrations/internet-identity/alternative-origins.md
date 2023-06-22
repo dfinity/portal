@@ -1,7 +1,7 @@
 # Alternative frontend origins
 
 ## Overview
-If your application has reached the stage where you want to change domain names, and you have been authenticating with Internet Identity (II), you will want to make sure that your users can seamlessly keep the same Principals they have already been using. To support this functionality, you can configure your application for alternative frontend origins using this guide.
+If your application has reached the stage where you want to change domain names, and you have been authenticating with Internet Identity (II), you will want to make sure that your users can seamlessly keep the same principals they have already been using. To support this functionality, you can configure your application for alternative frontend origins using this guide.
 
 ![End Result](../_attachments/alternative-origins.png)
 
@@ -20,7 +20,7 @@ II will only follow this specification when the origin configuring these alterna
 
 For more information, see the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/ii-spec.md#alternative-frontend-origins).
 
-## Configuring Alternative Origins
+## Configuring alternative origins
 
 For this example, we will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at https://internetcomputer.org and https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
 
@@ -30,7 +30,7 @@ In this example, **A** would be the canister ID, or https://hwvjt-wqaaa-aaaam-qa
 
 ### Listing origins
 
-For origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid origin. We'll be placing the config files in `src/assets` for this example. If your asset canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
+For origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid origin. We'll be placing the config files in `src/assets` directory of your frontend canister. If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
 
 ```json
 "source": [
@@ -67,21 +67,22 @@ Now, your project should look something like this:
 │   │   │   └── ii-alternative-origins
 ```
 
-### Configuring Your Asset Canister
+### Configuring your frontend canister
 
-Because the dot syntax in `.well-known` ordinarily will be treated as "hidden" by the file system, the asset canister will need to be configured to upload your document. To configure the asset canister, create a new file, `.ic-assets.json`. `.ic-assets.json` needs to be placed inside a directory listed in `sources` for your canister, so we can use `src/assets` again. Your new list of files should look like this:
+Because the dot syntax in `.well-known` ordinarily will be treated as "hidden" by the file system, the frontend canister will need to be configured to upload your document. To configure the frontend canister, create a new file, `.ic-assets.json`. `.ic-assets.json` needs to be placed inside a directory listed in `sources` for your canister, so we can use `src/assets` again. Your new list of files should look like this:
 
 ```
 ├── dfx.json
 ├── package.json
 ├── src
-│   ├── assets
-│   │   ├── .ic-assets.json
-│   │   ├── .well-known
-│   │   │   └── ii-alternative-origins
+│   ├── project_frontend
+│   │   ├── src
+│   │   │   ├── .ic-assets.json
+│   │   │   ├── .well-known
+│   │   │   │   └── ii-alternative-origins
 ```
 
-Then, configure the `.well-known` directory to be included, with
+Then, configure the `.well-known` directory to be included, with:
 
 ```json
 [
