@@ -11,6 +11,27 @@ with the difference that the commands target the canisters on the mainnet.
 To make the most important commands and what they need to look like for 
 mainnet more accessible, they are listed below.
 
+## Requirememts
+
+1. IC SDK
+
+2. `ic-admin`
+
+3. `sns` CLI
+
+:::note
+The version of the sns CLI that is bundled with your dfx version may not have the latest commands described in the Usage section. If needed, it is recommended to build and use the sns CLI tool yourself.
+:::
+
+```bash
+git clone git@github.com:dfinity/ic.git
+cd ic
+bazel build //rs/sns/cli:sns
+ls bazel-bin/rs/sns/cli/sns 
+```
+
+## Steps
+
 - #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
 
 - #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
@@ -31,11 +52,22 @@ ic-admin  \
 * One can substitute `WALLET` with the principal in question 
 * One can substitute `NETWORK_URL` with `https://nns.ic0.app`
 
-## SNS canister creation calling SNS-W {#SNS-launch-command-SNSW}
+- #### Step 3: NNS DAO accepts or rejects the NNS proposal
+
+  This is the **first of three** proposals that need to successfully pass.
+  
+  :::info
+  If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+  :::
+
+- #### Step 4: Dapp developers trigger the SNS canisters to be created on SNS subnet
+
 After the wallet canister is listed in SNS-W, 
 the [SNS canisters are created triggered by a manual call to SNS-W](../launching/launch-steps.md/#SNS-launch-step-deployment).
-You can find this command in an example in the SNS local testing repository [here](https://github.com/dfinity/sns-testing/blob/main/deploy_sns.sh#L33)
-```
+
+The command tp trigger the creation of SNS canisters on the SNS subnet: 
+
+```bash
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
 ```
 
