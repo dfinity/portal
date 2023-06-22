@@ -213,35 +213,40 @@ function EnterprisePage() {
             </motion.h2>
           </div>
           <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
-            <TranslatedLayout reverse={true} imageUrl="/img/defi/image-1.webp">
-              <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-                Build without bloated security departments
+            <TranslatedLayout imageUrl="/img/enterprise/platform-risk-large.webp">
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Manage platform risk
               </h2>
               <p className="tw-lead-sm">
-                Most large software companies have dedicated security
-                departments responsible for maintaining firewalls, and handling
-                sensitive user data and credentials.
+                Large scale software systems that rely on centralized cloud
+                providers, risk being subject to vendor lock-in, having to
+                dealing with increasing server costs or codebase refactoring.
               </p>
               <p className="tw-lead-sm mb-6 md:mb-10">
-                The Internet Computer moves all the security to the protocol
-                itself, providing an unstoppable, tamperproof cloud environment.
-                Building on autonomous cloud enables organizations to focus on
-                the business logic of their software, lowering costs and
-                speeding up development.
+                The Internet Computer offers an alternative technology stack
+                which is open and decentralized. It connects independent node
+                machines to create a self-sovereign autonomous cloud on which
+                any system can be built. Its software — canister smart contracts
+                — are compiled to WebAssembly, the new W3 industry standard for
+                cross platform, language agnostic, portable server executable
+                code.
               </p>
               <p className="mb-0">
                 <Link
                   href="/bitcoin-integration"
-                  className="link-primary link-with-icon"
+                  className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  More on BTC Integration
+                  Lorem ipsum
                 </Link>
               </p>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/defi/image-2.webp">
-              <h2 className="md:tw-heading-60 md:mb-6">
-                Frictionless self-custody
+            <TranslatedLayout
+              imageUrl="/img/enterprise/self-custody-large.webp"
+              reverse={true}
+            >
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Simple self-custody of digital assets
               </h2>
               <p className="tw-lead-sm mb-6 md:mb-10">
                 Users of enterprise solutions often resort to giving up self
@@ -249,7 +254,7 @@ function EnterprisePage() {
                 service provider to appropriately and securely handle their
                 data. Using canister smart contracts on the Internet Computer,
                 organizations can simply deploy an architecture, in which all
-                users have complete ownership and control of both their data and
+                users have complete ownership and control of their data and
                 digital assets. This separation is enabled by chain-key
                 cryptography, and most importantly doesn’t require users to go
                 through complicated configuring of their accounts.
@@ -257,84 +262,44 @@ function EnterprisePage() {
               <p className="mb-0">
                 <Link
                   href="/how-it-works#Chain-key-cryptography"
-                  className="link-primary link-with-icon"
+                  className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  More on Chain-key signatures
+                  Lorem ipsum
                 </Link>
               </p>
             </TranslatedLayout>
-            <TranslatedLayout reverse={true} imageUrl="/img/defi/image-3.webp">
-              <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-                Managing platform risk
+            <TranslatedLayout imageUrl="/img/enterprise/security-large.webp">
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Security by design
               </h2>
               <p className="tw-lead-sm">
-                Businesses that provide crucial software infrastructure cannot
-                rely on a single, often US controlled, centralized cloud
-                provider. Large scale software systems that rely on centralized
-                cloud providers can suffer vendor lock-in, having to deal with
-                increasing server costs or refactor portions of their codebase
-                because important features no longer supported.
+                When the internet protocol (IP), and current cloud
+                infrastructures were initially designed, people didn’t foresee
+                the scale, and impact the internet has today. The importance of
+                robust security systems became apparent only later, as the
+                number of connected devices was growing.
               </p>
               <p className="tw-lead-sm">
-                The Internet Computer is an open, decentralized, autonomous
-                cloud, using cryptographic distributed computing. ICP connects
-                independent node machine providers together, to create a self
-                sovereign autonomous cloud that anyone can build on. ICP’s
-                canister smart contracts are compiled to WASM (WebAssembly) the
-                new W3 industry standard for cross platform, language agnostic,
-                portable server executable code.
+                The Internet Computer was designed bottom up with security and
+                privacy directly built into the protocol itself by a team of
+                world class cryptographers, engineerings and computer
+                scientists.
               </p>
               <p className="tw-lead-sm">
-                ICP provides an alternative technology stack that can completely
-                replace traditional cloud — no for-profit company is in control
-                of autonomous cloud.
+                Building on ICP enables organizations to focus on the business
+                logic of software, lowering costs and speeding up development.
               </p>
 
               <p className="mb-0">
                 <Link
                   href="/how-it-works#Chain-key-technology"
-                  className="link-primary link-with-icon"
+                  className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  More on Chain-key Tokens
+                  Lorem ipsum
                 </Link>
               </p>
-            </TranslatedLayout>
-
-            <TranslatedLayout imageUrl="/img/defi/image-4.webp">
-              <h2 className="md:tw-heading-60 md:mb-6">
-                New tokenized business model opportunities
-              </h2>
-              <p className="tw-lead-sm mb-6 md:mb-10">
-                From loyalty programs to memberships to ticketing. Businesses
-                need to manage their relationships with their customers via
-                digital identities and handling of digital assets. The Internet
-                Computer provides a common digital wallet that makes this
-                collaboration much easier to build.
-              </p>
-              <p className="mb-0">
-                <Link href="/sns" className="link-primary link-with-icon">
-                  <LinkArrowRight />
-                  More on SNS DAOs
-                </Link>
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                EVM on the Internet Computer
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                The Bitfinity EVM allows developers to run Solidity
-                smart-contracts at web-speed, directly on the Internet Computer.
-              </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://bitfinity.network"
-              >
-                <LinkArrowRight />
-                Check out Bitfinity EVM
-              </Link>
             </TranslatedLayout>
           </div>
           <div className="mb-12 container-10">
@@ -437,65 +402,50 @@ function EnterprisePage() {
           </div>
 
           <div className="flex flex-col gap-16 md:gap-40">
-            <TranslatedLayout imageUrl="/img/defi/icdex.webp" reverse={true}>
-              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                ICDex
-              </div>
+            <TranslatedLayout imageUrl="/img/enterprise/italy-large.webp">
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Fully on-chain order book DEX
+                100% made in Italy
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                ICDex provides the world’s first fully on-chain order book DEX.
-                Create limit orders or swap tokens instantly with complete
-                transparency and decentralization - 100% on-chain.
+                FEDERITALY is a non-profit organization that promotes and
+                protects Italian entrepreneurship. They are developing a
+                solution on the Internet Computer to improve their “100% made in
+                Italy” verification service. This removes the need for consumers
+                to rely on services running on centralized cloud services, and
+                greatly improves the transparency of the verification process.
+                The “100% made in Italy” certificates are stored fully on-chain
+                and protected by tamperproof smart contracts.
               </p>
               <Link
                 className="link-primary link-with-icon"
                 href="https://icdex.io/"
               >
-                <LinkArrowRight /> Check out ICDex
+                <LinkArrowRight /> Lorem ipsum
               </Link>
             </TranslatedLayout>
             <TranslatedLayout
-              imageUrl="/img/defi/finterest.webp"
-              reverse={false}
+              imageUrl="/img/enterprise/nft-large.webp"
+              reverse={true}
             >
-              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                Finterest
-              </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                First-ever bridgeless lending protocol
+                NFTs as employee rewards
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Finterest is a truly decentralized borrowing protocol running on
-                the Internet Computer built to support native Bitcoin borrowing
-                and lending.
+                <Link className="link-subtle" href="">
+                  Sodexo
+                </Link>{" "}
+                is a French food services and facilities management company with
+                over 400,000 employees. They partnered with Yumi NFT Marketplace
+                to modernize their employee reward program. They launched the X
+                Collection, that employees can claim, giving them a unique
+                digital collectible. As part of the program, Sodexo has pledged
+                to donate to Stop Hunger for every NFT claimed.
               </p>
               <Link
                 className="link-primary link-with-icon"
                 href="https://finterest.ooo/"
               >
-                <LinkArrowRight /> Check out Finterest
-              </Link>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/defi/icpswap.webp" reverse={true}>
-              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                ICP.Swap
-              </div>
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Swap any ICP based token
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                ICP.Swap offers the largest number of tokens on the Internet
-                Computer. Trade the latest meme coins or the most successful SNS
-                DAO governance tokens.
-              </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://icpswap.com"
-              >
-                <LinkArrowRight />
-                Check out ICP.Swap
+                <LinkArrowRight /> More on the X Collection
               </Link>
             </TranslatedLayout>
           </div>
