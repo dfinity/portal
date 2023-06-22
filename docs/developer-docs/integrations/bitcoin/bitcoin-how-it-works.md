@@ -101,7 +101,7 @@ The final stage of development of a Bitcoin smart contract is its deployment on 
 
 The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mainnet APIs is presented in the following tables. As a general principle for the Bitcoin API, some API calls must have a minimum amount of cycles attached to the call as indicated in the column *Minimum cycles to send with call*. Cycles not consumed by the call are returned to the caller. Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of replication factor in the future. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached as the charged cost is independent of the replication factor of the subnet.
 
-The cost per API call in USD uses the USD/XDR exchange rate of November 23, 2022).
+The cost per API call in USD uses the USD/XDR exchange rate of November 23, 2022.
 
 ### Bitcoin Testnet
 
