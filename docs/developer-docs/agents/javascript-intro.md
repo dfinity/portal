@@ -26,12 +26,77 @@ To get started with JavaScript on the Internet Computer, we recommend your devel
     - `dfx new` starter project.
     - An example from [dfinity/examples](https://github.com/dfinity/examples).
 
+For this guide, we'll use the project created by the command:
+
+```
+dfx new hello
+```
+
 ## A simple call
 
 Talking to the IC from your application starts with the canister interface. Let's take a very simple one to begin with.
 
+In most cases, it is easier to configure your project to have a canister defined in `dfx.json`, and to generate your declarations automatically using the `dfx generate` command. 
+
+For our 'Hello, world!' example, the `dfx.json` file looks like this:
+
 ```
-# hello.did
+{
+  "canisters": {
+    "hello_backend": {
+      "main": "src/hello_backend/main.mo",
+      "type": "motoko"
+    },
+    "hello_frontend": {
+      "dependencies": [
+        "hello_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/hello_frontend/src/index.html"
+      },
+      "source": [
+        "src/hello_frontend/assets",
+        "dist/hello_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+
+Then, to generate the interface files, run the command:
+
+```
+dfx generate
+```
+
+By running this command, dfx will automatically write the following to your `src/declarations` directory inside your project.
+
+```
+|── src
+│   ├── declarations
+│   │   ├── hello_backend
+│   │   │   ├── hello_backend.did
+|   |   |   ├── hello_backend.did.d.js
+│   │   │   ├── hello_backend.did.d.ts
+│   │   │   ├── hello_backend.did.js
+│   │   │   ├── index.d.ts
+│   │   │   └── index.js
+```
+
+Then, you can view the contents of the Candid interface file for the `hello_backend` canister:
+
+```
+# src/declarations/hello_backend/hello_backend.did
 service : {
   greet: (text) -> (text);
 }
@@ -41,39 +106,13 @@ This is a Candid interface. It defines no new special types and defines a `servi
 
 In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid types](../../references/candid-ref.md) reference.
 
-Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
+Let's explore each of these `src/declarations` files a bit more. 
 
-In most cases, it is easier to configure your project to have a canister defined in `dfx.json`, and to generate your declarations automatically using the `dfx generate` command. 
+#### hello_backend.did
 
-For our 'Hello, world!' example, that looks like this:
+`hello_backend.did` defines your interface, as we saw above.
 
-```
-// dfx.json
-{
-  "canisters": {
-    "hello": {
-      "main": "src/hello/main.mo",
-      "type": "motoko"
-    },
-	...
-}
-```
-Then when we run `dfx generate`, dfx will automatically write the following to your `src/declarations` directory inside your project.
-
-```
-|── src
-│   ├── declarations
-│   │   ├── hello
-│   │   │   ├── hello.did
-│   │   │   ├── hello.did.d.ts
-│   │   │   ├── hello.did.js
-│   │   │   ├── hello.most
-│   │   │   └── index.js
-```
-
-`hello.did` defines your interface, as we saw above, and `hello.most` is used for upgrade safety. That leaves us with the three remaining files, `index.js`, `hello.did.js`, and `hello.did.d.ts`.
-
-Let's start with the simplest, `hello.did.d.ts`.
+#### hello.did.d.ts
 
 This file will look something like this:
 
@@ -84,6 +123,8 @@ export interface _SERVICE { 'greet' : ActorMethod<[string], string> };
 ```
 
 The `_SERVICE` export includes a `greet` method, with typings for an array of arguments and a return type. This will be typed as an [ActorMethod](https://agent-js.icp.xyz/agent/interfaces/ActorMethod.html), which will be a handler that takes arguments and returns a promise that resolves with the type specified in the declarations.
+
+#### hello.did.js
 
 Next, let's look at `hello.did.js`.
 
@@ -98,7 +139,9 @@ Unlike our `did.d.ts` declarations, this `idlFactory` needs to be available duri
 
 This factory again represents a service with a `greet` method, and the same arguments as before. You may notice, however, that the `IDL.Func` has a third argument, which here is an empty array. That represents any additional annotations the function may be tagged with, which most commonly will be `"query"`.
 
-And third, we have `index.js`, which will pull those pieces together and set up a customized actor with your smart contract's interface. This does a few things, like using `process.env` variables to determine the ID of the canister, based on which deploy context you are using, but the most important aspect is in the `createActor` export.
+#### index.js
+
+In the `index.js` file, each of the previously explained pieces are pulled together to set up a customized actor with your smart contract's interface. This does a few things, like using `process.env` variables to determine the ID of the canister, based on which deploy context you are using, but the most important aspect is in the `createActor` export.
 
 ```js
  export const createActor = (canisterId, options) => {
@@ -124,6 +167,7 @@ This constructor first creates a `HTTPAgent`, which is wraps the JS `fetch` API 
 
 This `actor` instance is now set up to call all of the service methods as methods. Once this is all set up, like it is by default in the `dfx new` template, you can simply run `dfx generate` whenever you make changes to your canister API, and the full interface will automatically stay in sync in your frontend code.
 
+Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
 
 ## Browser
 

@@ -42,7 +42,7 @@ cycles to continue operating.
 You can find more information on<!--how SNS canisters can be  upgraded to new versions on this page (./upgradeSNS.md)
 and about--> 
 cycle management [on this page](./cycles-usage.md).
-  We especially want to emphasise the following:
+  We especially want to emphasize the following:
 
 :::caution
 The SNS communities are responsible for individually topping up the cycles of
@@ -75,7 +75,7 @@ by proposal.-->
 <!-- * Each SNS community might need to have different
 kinds of proposals to ensure that the SNS DAO can
 manage the
-specific dapp and its operatiosn effectively.
+specific dapp and its operations effectively.
 This page(./proposal-guide.md) provides some guidelines 
 regarding
 how proposals can be used and how an SNS community can define
