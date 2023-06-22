@@ -11,7 +11,7 @@ An NFT or **non-fungible token** is a record on a blockchain that is associated 
 
 The Internet Computer (IC) brings a lot of potential for NFTs. For digital assets like images, sound clips, or videos, the entire assets can live on-chain and can be included in on-chain games or metaverse experiences. Furthermore, we can imagine dynamic NFTs that change based on IC-internal and external data via [HTTPS outcalls](/https-outcalls).
 
-For many applications, the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of the IC, such as the reverse gas model and the upgradability of canister smart contracts, require the NFT developer to be particularly aware.
+For many applications, the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of the IC, such as the reverse gas model and the upgradeability of canister smart contracts, require the NFT developer to be particularly aware.
 
 An NFT implementation on the IC typically has the following three functions:
 
@@ -67,7 +67,7 @@ To make sure you won’t get surprised by a high cycle burn rate or hitting an i
 
 ### Implement mechanisms to backup and restore state
 
-The IC itself does not yet support backup and restoration of the canister state, but it can be implemented in the canister itself. Regular backups are insurance against the worst-case scenario that a canister gets deallocated or there are issues with upgrading a canister. [This forum post](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) describes the approach [Distrikt](https://distrikt.app) is using.
+The IC itself does not yet support backup and restoration of the canister state, but it can be implemented in the canister itself. Regular backups are insurance against the worst-case scenario that a canister gets reallocated or there are issues with upgrading a canister. [This forum post](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) describes the approach [Distrikt](https://distrikt.app) is using.
 
 
 ### Consider using a dedicated service for storing the transaction history 
