@@ -16,9 +16,9 @@ mainnet more accessible, they are listed below.
 - #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
 Anyone who owns and NNS neuron with enough stake can submit a proposal
-that lists a principal wallet in SNS-W who can then deploy the SNS canisters.
+that lists a principal wallet in [SNS-W](../introduction/sns-architecture.md#SNS-W) who can then deploy the SNS canisters.
 
-To create such a proposal, a common path is to use the `ic-admin` tool and run the following:
+To create such a proposal, a common path is to [download the `ic-admin` tool](../../../setup/ic-admin.md) and run the following:
 
 ```bash 
 ic-admin  \
