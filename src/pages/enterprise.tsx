@@ -66,11 +66,11 @@ function EnterprisePage() {
           el={motion.section}
           variants={transitions.fadeIn}
         >
-          <div className="md:w-4/12 md:absolute top-10 md:-translate-y-1/2 right-0 -mt-30 md:-mt-24">
+          <div className="text-center md:w-5/10 relative md:absolute top-30 sm:top-40 md:top-0 -translate-y-1/2 right-0 -mt-30 md:-mt-24">
             <img
               src="/img/enterprise/enterprise-hero-image.webp"
               alt=""
-              className="w-full"
+              className="w-full max-w-sm sm:max-w-lg md:max-w-none"
             />
           </div>
         </AnimateSpawn>
@@ -81,28 +81,29 @@ function EnterprisePage() {
         >
           <div className="md:w-6/10">
             <motion.h2
-              className="tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Relying on traditional cloud infrastructure introduces elevated
-              costs due to bloated software
+              Maintaining legacy code, increasing development costs and talent
+              fleeing to new, exciting technologies — Companies have to overcome
+              many challenges to stay ahead of the competition.
             </motion.h2>
           </div>
         </AnimateSpawn>
 
         <section className="mt-20 md:mt-48">
           <div className="container-10">
-            <h2 className="tw-heading-60 text-gradient md:w-6/10 md:mx-auto text-center mb-16">
+            <h2 className="tw-heading-3 md:tw-heading-60 text-gradient md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
               Autonomous cloud for enterprises
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
               <div className="flex flex-col">
                 <img
                   src="/img/enterprise/development-costs-2.svg"
                   alt=""
-                  className="w-30"
+                  className="w-24 md:w-30"
                 />
-                <h3 className="mt-6 mb-2 tw-heading-5">
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Lower development costs
                 </h3>
                 <p className="tw-paragraph mb-0">
@@ -114,9 +115,9 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/digital-identity.svg"
                   alt=""
-                  className="w-30"
+                  className="w-24 md:w-30"
                 />
-                <h3 className="mt-6 mb-2 tw-heading-5">
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Digital identity layer
                 </h3>
                 <p className="tw-paragraph mb-0">
@@ -128,9 +129,9 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/loyalty-programs.svg"
                   alt=""
-                  className="w-30"
+                  className="w-24 md:w-30"
                 />
-                <h3 className="mt-6 mb-2 tw-heading-5">
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Tokenized reward programs
                 </h3>
                 <p className="tw-paragraph mb-0">
@@ -142,9 +143,11 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/secure-sharing.svg"
                   alt=""
-                  className="w-30"
+                  className="w-24 md:w-30"
                 />
-                <h3 className="mt-6 mb-2 tw-heading-5">Secure data sharing</h3>
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Secure data sharing
+                </h3>
                 <p className="tw-paragraph mb-0">
                   Zero knowledge proofs enable secure and private sharing of
                   sensitive data
@@ -154,9 +157,11 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/ownership.svg"
                   alt=""
-                  className="w-30"
+                  className="w-24 md:w-30"
                 />
-                <h3 className="mt-6 mb-2 tw-heading-5">Simple self-custody</h3>
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Simple self-custody
+                </h3>
                 <p className="tw-paragraph mb-0">
                   Users can take real ownership of their own data, and digital
                   assets
@@ -166,9 +171,9 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/supply-chain.svg"
                   alt=""
-                  className="w-30"
+                  className="w-24 md:w-30"
                 />
-                <h3 className="mt-6 mb-2 tw-heading-5">Supply chain</h3>
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
                 <p className="tw-paragraph mb-0">
                   Blockchain’s transparency & immutability allow for easy
                   authenticity verification
@@ -177,37 +182,37 @@ function EnterprisePage() {
             </div>
           </div>
         </section>
-        <section className="container-10 py-30 md:pt-60 md:pb-[600px] relative">
-          <div className="md:w-6/10">
+        <section className="container-10 py-30 md:pt-60 pb-60 sm:pb-[320px] md:pb-[550px] relative">
+          <div className="sm:w-8/10 md:w-6/10">
             <motion.h2
-              className="tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+              className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
               variants={transitions.item}
             >
               Innovations in cryptography, and distributed cloud computing
               enable the Internet Computer blockchain to simplify software while
               enhancing security.
             </motion.h2>
-            <motion.p>
+            <motion.p className="mb-0">
               <Link className="button-primary">REACH OUT</Link>
             </motion.p>
           </div>
           <img
             src="/img/enterprise/big-visual.svg"
             alt=""
-            className="absolute top-3/12 -right-3/10"
+            className="absolute w-[600px] max-w-none sm:max-w-full sm:w-auto bottom-0 sm:bottom-auto sm:top-5/12 md:top-3/10 sm:-right-3/10"
           />
         </section>
         <section className="bg-infinite relative overflow-hidden text-white">
-          <div className="blob blob-white blob-xl blob-x-7 blob-y-0"></div>
-          <div className="container-10 mt-40 md:w-6/10 md:mx-auto">
+          <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-0"></div>
+          <div className="container-10 mt-20 md:mt-40 md:w-6/10 md:mx-auto">
             <motion.h2
-              className="tw-heading-3 md:tw-heading-60 text-center"
+              className="tw-heading-3 md:tw-heading-60 text-center mb-0"
               variants={transitions.item}
             >
               Advantages of secure, autonomous cloud
             </motion.h2>
           </div>
-          <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-30">
+          <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
             <TranslatedLayout reverse={true} imageUrl="/img/defi/image-1.webp">
               <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
                 Build without bloated security departments
@@ -332,6 +337,80 @@ function EnterprisePage() {
               </Link>
             </TranslatedLayout>
           </div>
+          <div className="mb-12 container-10">
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 text-center mb-10"
+              variants={transitions.item}
+            >
+              More advantages to know
+            </motion.h2>
+            <motion.p className="text-center mb-0" variants={transitions.item}>
+              <Link className="link-white link-with-icon">
+                <LinkArrowRight />
+                Lorem link to more capabilities
+              </Link>
+            </motion.p>
+          </div>
+
+          <div
+            className="
+            bg-[linear-gradient(180deg,#3b00b9_0,#3b00b9_17%,#f1eef5_17%,#f1eef5_100%)]
+            md:bg-[linear-gradient(180deg,#3b00b9_0,#3b00b9_50%,#f1eef5_50%,#f1eef5_100%)]
+            text-black
+
+          "
+          >
+            <div className="container-12 grid md:grid-cols-3 gap-5">
+              <motion.div
+                variants={transitions.item}
+                className="bg-white/90 backdrop-blur-3xl rounded-xl p-12 text-center flex flex-col justify-center items-center"
+              >
+                <img
+                  src="/img/enterprise/privacy-by-design.svg"
+                  alt=""
+                  className=""
+                />
+                <h3 className="tw-lead-lg md:tw-title-sm my-3">
+                  Privacy by design
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 mb-0">
+                  Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                  venenatis vestibulum. Vestibulum id ligula porta felis euismod
+                  semper. Curabitur blandit tempus.
+                </p>
+              </motion.div>
+              <motion.div
+                variants={transitions.item}
+                className="bg-white/90 backdrop-blur-3xl rounded-xl p-12 text-center flex flex-col justify-center items-center"
+              >
+                <img
+                  src="/img/enterprise/placeholder-icon.svg"
+                  alt=""
+                  className=""
+                />
+                <h3 className="tw-lead-lg md:tw-title-sm my-3">Placeholder</h3>
+                <p className="tw-paragraph-sm text-black/60 mb-0">
+                  Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                  venenatis vestibulum. Vestibulum id ligula porta felis euismod
+                  semper. Curabitur blandit tempus.
+                </p>
+              </motion.div>
+              <motion.div
+                variants={transitions.item}
+                className="bg-white/90 backdrop-blur-3xl rounded-xl p-12 text-center flex flex-col justify-center items-center"
+              >
+                <img src="/img/enterprise/security.svg" alt="" className="" />
+                <h3 className="tw-lead-lg md:tw-title-sm my-3">
+                  Cryptographic security
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 mb-0">
+                  Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                  venenatis vestibulum. Vestibulum id ligula porta felis euismod
+                  semper. Curabitur blandit tempus.
+                </p>
+              </motion.div>
+            </div>
+          </div>
         </section>
         <section className="container-12 py-30 md:py-48">
           <div className="text-center mb-16 md:mb-30">
@@ -421,30 +500,60 @@ function EnterprisePage() {
             </TranslatedLayout>
           </div>
         </section>
+        <AnimateSpawn
+          className="  bg-infinite overflow-hidden "
+          variants={transitions.container}
+          el={motion.section}
+        >
+          <div className="container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
+            <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
+            <div className="flex-1 mt-40 sm:mt-0">
+              <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
+                Want to know more for your enterprise?
+              </h2>
+              <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
+                Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas
+                faucibus mollis interdum.
+              </p>
+              <p className="mb-0">
+                <Link className="button-white">get in contact</Link>
+              </p>
+            </div>
+            <div className="flex-1 ">
+              <img
+                src="/img/enterprise/enterprise-learnmore-background-image.svg"
+                alt=""
+                loading="lazy"
+                className="absolute top-0 right-0 left-0 max-w-md md:max-w-none sm:left-auto sm:-right-30"
+              ></img>
+            </div>
+          </div>
+        </AnimateSpawn>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
+        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 mt-40">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
           >
             <motion.div
-              className="blob blob-purple blob-md blob-center z-[-1] md:blob-xl"
+              className="blob blob-purple blob-sm blob-x-5 blob-y-7 z-[-1] md:blob-xl"
               variants={transitions.fadeIn}
             ></motion.div>
             <motion.h2
-              className="tw-heading-5 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-8/12"
+              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              Build the future of DeFi
+              Get familiar with the Internet Computer
             </motion.h2>
             <motion.p
               className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
               variants={transitions.item}
             >
-              The Internet Computer offers a plethora of out-of-the-box features
-              you can use in your DeFi application.
+              Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas
+              faucibus mollis interdum.
             </motion.p>
           </AnimateSpawn>
+
           <AnimateSpawn
             className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
             variants={transitions.container}
