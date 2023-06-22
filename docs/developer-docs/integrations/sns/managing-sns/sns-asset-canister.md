@@ -6,10 +6,6 @@ The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/fr
 
 The asset canister of an SNS serves the frontend assets related to the SNS. The contents of the asset canister must be configured prior to the launch of the SNS, and any changes afterwards must be approved on via an SNS proposal. These changes are referred to as 'upgrades' to the asset canister in the remainder of this document. 
 
-
-/// Explain how the asset canister interacts with the SNS, including how it must be change before launch and how it can be adjusted after the launch (set permissions)
-/// Link to into how the relevant proposals can be sent / how the assets can be updated
-
 This section is relevant if your project contains an asset canister and describes how you can test handing over control of an asset canister to an SNS.
 
 :::info
@@ -40,7 +36,7 @@ This grants the SNS governance canister the necessary permissions to manage acce
 ./register_dapp.sh <canister-id>
 ```
 
-where <canister-id> is the canister ID of the asset canister.
+where `<canister-id>` is the canister ID of the asset canister.
 
 - #### Step 3: Then, register the SNS's managing permissions. 
 To test managing permissions in the asset canister via SNS proposals, you need to register the asset canister's functions to manage permissions with the SNS as generic functions. This is accomplished by running the following script:
@@ -61,7 +57,7 @@ or
 ./revoke_permission_assets.sh <dfx-identity> <permission>
 ```
 
-respectively, where <dfx-identity> is the name of an identity to manage permissions for and <permission> is one of Commit, Prepare, and ManagePermissions. You can check the actual permissions by running:
+respectively, where `<dfx-identity>` is the name of an identity to manage permissions for and `<permission>` is one of Commit, Prepare, and ManagePermissions. You can check the actual permissions by running:
 
 ```
 dfx canister --network ${NETWORK} call assets list_permitted '(record {permission = variant {<permission>}})'
@@ -79,7 +75,7 @@ or by running the script:
 ./commit_assets.sh <path> <content>
 ```
 
-where <path> is the HTTP path of the asset, e.g., `/myasset.txt` and <content> is the ASCII-encoded content of the asset.
+where `<path>` is the HTTP path of the asset, e.g., `/myasset.txt` and `<content>` is the ASCII-encoded content of the asset.
 
 
 - #### Step 5: Testing all possible SNS launch scenarios includes testing a failed swap (e.g., if not enough funds have been raised) where the control of the asset canister is given back to your principal.
