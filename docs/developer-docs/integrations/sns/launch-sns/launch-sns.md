@@ -7,7 +7,7 @@ Technically, these are the same steps that the
 with the difference that the commands target the canisters on the mainnet.
 
 To make the most important commands and what they need to look like for 
-mainnet more accesible, they are listed below.
+mainnet more accessible, they are listed below.
 
 ## Submitting an NNS proposal to approve the SNS {#SNS-launch-command-NNSproposal1}
 After preparations and choosing the parameters
@@ -66,7 +66,7 @@ ic-admin   \
 
 
 ## Finalizing the SNS swap {#SNS-launch-command-finalizingswap}
-When the swap ends, either because its dealine is reached or because the maximum
+When the swap ends, either because its deadline is reached or because the maximum
 ICP have been collected, its finalization has to be triggered by a manual call
 to the SNS swap that can be done by anyone.
 You can find this command with more context in the SNS local testing repository
