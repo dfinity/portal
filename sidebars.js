@@ -454,6 +454,7 @@ const sidebars = {
                       items: [
                         "developer-docs/integrations/sns/managing-sns/sns-governance",
                         "developer-docs/integrations/sns/managing-sns/cycles-usage",
+                        "developer-docs/integrations/sns/managing-sns/sns-asset-canister",
                       ],
                     },
                   ],
