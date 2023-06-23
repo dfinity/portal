@@ -478,9 +478,9 @@ If successful, at the end of stage, we have:
   </tr>
 </table>
 
-### 8. Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+### 8. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
-  Once the control of the dapp has been handed over to the SNS, anyone in the community can send an NNS proposal to trigger the decentralization swap. This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
+This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
 If successful, at the end of stage, we have:
 
