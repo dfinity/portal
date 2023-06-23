@@ -67,7 +67,7 @@ To make sure you won’t get surprised by a high cycle burn rate or hitting an i
 
 ### Implement mechanisms to backup and restore state
 
-The IC itself does not yet support backup and restoration of the canister state, but it can be implemented in the canister itself. Regular backups are insurance against the worst-case scenario that a canister gets reallocated or there are issues with upgrading a canister. [This forum post](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) describes the approach [Distrikt](https://distrikt.app) is using.
+The IC itself does not yet support backup and restoration of the canister state, but it can be implemented in the canister itself. Regular backups are insurance against the worst-case scenario that a canister gets deallocated or there are issues with upgrading a canister. [This forum post](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) describes the approach [Distrikt](https://distrikt.app) is using.
 
 
 ### Consider using a dedicated service for storing the transaction history 
