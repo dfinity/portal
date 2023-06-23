@@ -54,9 +54,19 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 
   What we have at this stage:
 
-|  Canisters                                    | State                               |  Controlled by  |
-|-------------------                            | ----------------                    | ----------------|
-| A dapp                                        | Operational                         | Dapp developer principal |
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>dapp developer principal</td>
+  </tr>
+</table>
+
 
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
   To ensure that malicious parties cannot simply fill the SNS subnet with un-approved SNSs, the
@@ -65,28 +75,59 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 
   What we have at this stage:
 
-|  Objects in an app subnet                                     | State                               |  Controlled by  |
-|-------------------                            | ----------------                    | ----------------|
-| A dapp                                        | Operational                         | Dapp developer principal |
-| A wallet canister principal that can deploy to SNS subnet     | Pending NNS approval      | Dapp developer principal                        |
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>dapp developer principal</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">a principal that can deploy to SNS subnet</td>
+    <td class="light-green-text">pending NNS approval</td>
+    <td class="light-green-text">dapp developer principal</td>
+  </tr>
+</table>
 
-### 3. NNS Proposal #1 is passed or rejected
+
+### 3. Proposal #1 (of 3) is passed or rejected
 
 This is the **first of three** proposals that need to successfully pass.
 
+If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+
 If the proposal is adopted successfully, at the end of this step, we have:
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | Dapp developer principal | 
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>dapp developer principal</td>
+  </tr>
+</table>
 
-|  Objects in the SNS subnet                        | State                     |  Controlled by |
-|-------------------                                | ----------------          | ----------------|
-| A principal that can deploy to SNS subnet         | Ready for 1-time use      | Dapp developer principal      
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a principal that can deploy to SNS subnet</td>
+    <td class="light-orange-text">ready for 1-time use</td>
+    <td>dapp developer principal</td>
+  </tr>
+</table>
   
-:::warning
-If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
-:::
 
 ### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
 
@@ -95,57 +136,73 @@ the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns
 This will initiate the creation of the SNS canisters and set their initial parameters as
 chosen in [Step 1](#SNS-launch-step-preparation).
 
+**The SNS canisters are created in pre-decentralization-swap mode.**
+
+After the SNS canister creation, the canisters exist but are not yet fully functional - the SNS is in **pre-decentralization-swap mode**.
+
+At this point, the SNS ledger only has two accounts: 
+
+* the **treasury** that is owned by the SNS governance canister and which can be used in the future according to the SNS community's wishes
+* some pre-allocated tokens to be used in the initial decentralization swap
+
+To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
+Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
+
 If successful, at the end of stage, we have:
 
-|  Decentralization swap state                      | PENDING                               |  
-|-------------------                                | ----------------                      |
+<table>
+  <tr>
+    <th class="light-green-text">Decentralization swap state</th>
+    <th class="light-green-text">PENDING</th>
+  </tr>
+</table>
 
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>dapp developer principal</td>
+  </tr>
+</table>
 
-|  Objects in an app subnet                         | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | Dapp developer principal | 
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a principal that can deploy to SNS subnet</td>
+    <td class="light-orange-text">revoked because it is 1-time use</td>
+    <td>NA</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">newly-created SNS canisters on the SNS subnet</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
+    <td class="light-green-text">initial developer neurons</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">initial developer neurons</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
+    <td class="light-green-text">dapp developer principal</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">treasury account on the SNS Ledger</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
+    <td class="light-green-text">newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">swap account on the SNS Ledger</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
+    <td class="light-green-text">newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+</table>
 
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Pre-decentralization swap mode        | Initial developer neurons |  
-| Initial developer neurons                         | Pre-decentralization swap mode        | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-| Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-
-  
-
-  **The SNS canisters are created in pre-decentralization-swap mode.**
-  
-  After the SNS canister creation, the canisters exist but are not yet fully functional - the SNS is in **pre-decentralization-swap mode**.
-
-  At this point, the SNS ledger only has two accounts: 
-  
-  * the **treasury** that is owned by the SNS governance canister and which can be used in the future according to the SNS community's wishes
-  * some pre-allocated tokens to be used in the initial decentralization swap
-  
-  To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
-  Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
-
-
-  If successful, at the end of stage, we have:
-
-
-|  Decentralization swap state                      | PENDING                               |  
-|-------------------                                | ----------------                      |
-
-
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | Dapp developer principal | 
-
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Pre-decentralization swap mode        | Initial developer neurons |  
-| Initial developer neurons                         | Pre-decentralization swap mode        | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-| Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 
 
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
@@ -165,62 +222,127 @@ If successful, at the end of stage, we have:
   the SNS  parameters, as the SNS governance canister is still in
   pre-decentralization-swap mode.
 
-  :::info
-  Note that this is an *SNS* proposal, not an NNS proposal, even though many users would vote on it within [the NNS frontend dapp](nns.ic0.app).
-  :::
+If successful, at the end of stage, we have:
 
-  If successful, at the end of stage, we have:
+<table>
+  <tr>
+    <th>Decentralization swap state</th>
+    <th>PENDING</th>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>dapp developer principal</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a principal that can deploy to SNS subnet</td>
+    <td>revoked because it is 1-time use</td>
+    <td>NA</td>
+  </tr>
+  <tr>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>pre-decentralization swap mode</td>
+    <td>initial developer neurons</td>
+  </tr>
+  <tr>
+    <td>initial developer neurons</td>
+    <td>pre-decentralization swap mode</td>
+    <td>dapp developer principal</td>
+  </tr>
+  <tr>
+    <td>treasury account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+  <tr>
+    <td>swap account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+</table>
 
 
-|  Decentralization swap state                      | PENDING                                    |  
-|-------------------                                | ----------------                        |
 
+### 7. Proposal #2 (of 3) is passed or rejected
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | Dapp developer principal | 
+The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Pre-decentralization swap mode        | Initial developer neurons |  
-| Initial developer neurons                         | Pre-decentralization swap mode        | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-| Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
+Since this proposal is passed by the SNS DAO. When one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](nns.ic0.app), but they are two separate DAOs.
 
-
-### 7. The initial SNS developer neurons accepts or rejects the SNS proposal
-
-  The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
-
-  This is the **second of three** proposals that need to successfully pass for the process to continue.
-
-  Since this proposal is passed by the SNS DAO. When one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](nns.ic0.app), but they are two separate DAOs.
-
-  :::info
-  If this SNS proposal passes, it does **not** guarantee the rest of the steps will complete.
-  :::
-
+:::info
+If this SNS proposal passes, it does **not** guarantee the rest of the steps will complete.
+:::
 
 If successful, at the end of stage, we have:
 
-|  Decentralization swap state                      | PENDING                               |  
-|-------------------                                | ----------------                      |
+<table>
+  <tr>
+    <th>Decentralization swap state</th>
+    <th>PENDING</th>
+  </tr>
+</table>
 
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td class="light-orange-text">newly-created SNS canisters</td>
+  </tr>
+</table>
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | ~~Dapp developer principal~~ Newly-created SNS canisters | 
-
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Pre-decentralization swap mode        | Initial developer neurons |  
-| Initial developer neurons                         | Pre-decentralization swap mode        | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-| Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-
-
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a principal that can deploy to SNS subnet</td>
+    <td>revoked because it is 1-time use</td>
+    <td>NA</td>
+  </tr>
+  <tr>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>pre-decentralization swap mode</td>
+    <td>initial developer neurons</td>
+  </tr>
+  <tr>
+    <td>initial developer neurons</td>
+    <td>pre-decentralization swap mode</td>
+    <td>dapp developer principal</td>
+  </tr>
+  <tr>
+    <td>treasury account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+  <tr>
+    <td>swap account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+</table>
 
 ### 8. Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
@@ -228,54 +350,129 @@ If successful, at the end of stage, we have:
 
 If successful, at the end of stage, we have:
 
-|  Decentralization swap state                      | PENDING                                    |  
-|-------------------                                | ----------------                        |
+<table>
+  <tr>
+    <th>Decentralization swap state</th>
+    <th>PENDING</th>
+  </tr>
+</table>
 
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>newly-created SNS canisters</td>
+  </tr>
+</table>
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | ~~Dapp developer principal~~ Newly-created SNS canisters | 
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>A principal that can deploy to SNS subnet</td>
+    <td>revoked because it is 1-time use</td>
+    <td>NA</td>
+  </tr>
+  <tr>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>pre-decentralization swap mode</td>
+    <td>initial developer neurons</td>
+  </tr>
+  <tr>
+    <td>initial developer neurons</td>
+    <td>pre-decentralization swap mode</td>
+    <td>dapp developer principal</td>
+  </tr>
+  <tr>
+    <td>treasury account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+  <tr>
+    <td>swap account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+</table>
 
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Pre-decentralization swap mode        | Initial developer neurons |  
-| Initial developer neurons                         | Pre-decentralization swap mode        | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-| Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 
 ### 9. NNS DAO accepts or rejects the proposal
 
-  This is the **last of three** proposals that need to successfully pass for the process to continue. 
+:::info
+Once this NNS proposal passes, the rest of the process should complete.
+:::
 
-  When voting on this proposal, the NNS voters can verify the parameters in the already
-  existing SNS canisters as well as the swap parameters that are set in the proposal.
-   
-  * If the NNS proposal is adopted, the swap is started after a specified delay. 
-  * If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
-  back to the original developers of the dapp.
+This is the **last of three** proposals that need to successfully pass for the process to continue. 
 
-  :::info
-  Once this NNS proposal passes, the rest of the process should complete.
-  :::
+When voting on this proposal, the NNS voters can verify the parameters in the already
+existing SNS canisters as well as the swap parameters that are set in the proposal.
+  
+* If the NNS proposal is adopted, the swap is started after a specified delay. 
+* If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
+back to the original developers of the dapp.
 
-    If successful, at the end of stage, we have:
+If successful, at the end of stage, we have:
 
-|  Decentralization swap state                      | OPEN                                    |  
-|-------------------                                | ----------------                        |
+<table>
+  <tr>
+    <th>Decentralization swap state</th>
+    <th class="light-orange-text">OPEN</th>
+  </tr>
+</table>
 
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a dapp</td>
+    <td>operational</td>
+    <td>newly-created SNS canisters</td>
+  </tr>
+</table>
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | ~~Dapp developer principal~~ Newly-created SNS canisters | 
-
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Pre-decentralization swap mode        | Initial developer neurons |  
-| Initial developer neurons                         | Pre-decentralization swap mode        | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
-| Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a principal that can deploy to SNS subnet</td>
+    <td>revoked because it is 1-time use</td>
+    <td>NA</td>
+  </tr>
+  <tr>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>pre-decentralization swap mode</td>
+    <td>initial developer neurons</td>
+  </tr>
+  <tr>
+    <td>initial developer neurons</td>
+    <td>pre-decentralization swap mode</td>
+    <td>dapp developer principal</td>
+  </tr>
+  <tr>
+    <td>treasury account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+  <tr>
+    <td>swap account on the SNS Ledger</td>
+    <td>pre-decentralization swap mode</td>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+  </tr>
+</table>
 
 
 ### 10. SNS participants participate in the decentralization swap.
@@ -284,7 +481,6 @@ If successful, at the end of stage, we have:
   of SNS tokens that were specified. End users can
   participate in the decentralization swap by transferring ICP tokens to the
   swap canister.
-
   
 
 ### 11. SNS canisters become SNS DAO.{#SNS-launch-step-genesis}
@@ -308,23 +504,60 @@ If successful, at the end of stage, we have:
 
 If successful, at the end of stage, we have:
 
-|  Decentralization swap state                      | COMMITTED                               |  
-|-------------------                                | ----------------                        |
+<table>
+  <tr>
+    <th>Decentralization swap state</th>
+    <th class="light-orange-text">COMMITTED</th>
+  </tr>
+</table>
 
+<table>
+  <tr>
+    <th>Objects in an app subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>A dapp</td>
+    <td>operational</td>
+    <td class="light-orange-text">SNS DAO</td>
+  </tr>
+</table>
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| A dapp                                            | Operational                           | ~~Dapp developer principal~~ ~~Newly-created SNS canisters~~ SNS DAO | 
-
-|  Objects in the SNS subnet                                       | State                  |  Controlled by |
-|-------------------                                | ----------------                      | ----------------|
-| ~~A principal that can deploy to SNS subnet~~     | Revoked because it is 1-time use      | NA                        |
-| Newly-created SNS canisters on the SNS subnet     | Normal mode                           | ~~Initial developer neurons~~ SNS DAO |  
-| Initial developer neurons                         | Normal mode                           | Dapp developer principal  |
-| Treasury account on the SNS Ledger                | Normal mode                           | ~~Newly-created SNS canisters on the SNS subnet~~ SNS DAO   |
-| Swap account on the SNS Ledger                    | Empty                                 | ~~Newly-created SNS canisters on the SNS subnet~~ SNS DAO   |
-| SNS neurons                                       | Normal mode                           | Swap participant principals   |
-
-
-
-
+<table>
+  <tr>
+    <th>Objects in the SNS subnet</th>
+    <th>State</th>
+    <th>Controlled by</th>
+  </tr>
+  <tr>
+    <td>a principal that can deploy to SNS subnet</td>
+    <td>revoked because it is 1-time use</td>
+    <td>NA</td>
+  </tr>
+  <tr>
+    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>normal mode</td>
+    <td class="light-orange-text">SNS DAO</td>
+  </tr>
+  <tr>
+    <td>initial developer neurons</td>
+    <td>normal mode</td>
+    <td>dapp developer principal</td>
+  </tr>
+  <tr>
+    <td>treasury account on the SNS Ledger</td>
+    <td>normal mode</td>
+    <td class="light-orange-text">SNS DAO</td>
+  </tr>
+  <tr>
+    <td>swap account on the SNS Ledger</td>
+    <td>empty</td>
+    <td class="light-orange-text">SNS DAO</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">SNS neurons</td>
+    <td class="light-green-text">normal mode</td>
+    <td class="light-green-text">swap participant principals</td>
+  </tr>
+</table>
