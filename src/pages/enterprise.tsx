@@ -292,9 +292,9 @@ function EnterprisePage() {
               More advantages to know
             </motion.h2>
             <motion.p className="text-center mb-0" variants={transitions.item}>
-              <Link className="link-white link-with-icon">
+              <Link className="link-white link-with-icon" href="/capabilities">
                 <LinkArrowRight />
-                Lorem link to more capabilities
+                Internet Computer capabilities
               </Link>
             </motion.p>
           </div>
@@ -373,9 +373,9 @@ function EnterprisePage() {
               <motion.div variants={transitions.container}>
                 <Link
                   className="button-outline text-center"
-                  href="/ecosystem?tag=DeFi"
+                  href="/ecosystem"
                 >
-                  See more DeFi Dapps
+                  Applications built on ICP
                 </Link>
               </motion.div>
             </AnimateSpawn>
@@ -423,7 +423,7 @@ function EnterprisePage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://finterest.ooo/"
+                href="https://yumimarketplace.medium.com/introducing-the-x-collection-761f7cb64dec"
               >
                 <LinkArrowRight /> More on the X Collection
               </Link>
@@ -475,13 +475,6 @@ function EnterprisePage() {
             >
               Get familiar with the Internet Computer
             </motion.h2>
-            <motion.p
-              className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
-              variants={transitions.item}
-            >
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas
-              faucibus mollis interdum.
-            </motion.p>
           </AnimateSpawn>
 
           <AnimateSpawn
