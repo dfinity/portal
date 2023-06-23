@@ -30,7 +30,7 @@ If you don’t have the IC SDK installed, follow instructions on the [installing
 
 ``` bash
 # Change the variable to "ic" to deploy the ledger on the mainnet.
-export NETWORK=local
+export NETWORK=ic
 
 # Change the variable to the account that can mint and burn tokens.
 export MINT_ACC=$(dfx ledger account-id)
@@ -41,22 +41,22 @@ export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
 export TOKEN_NAME="My Token"
 export TOKEN_SYMBOL=XMTK
 
-dfx deploy --network ${NETWORK} custom-ledger --argument '(record {
-  token_name = opt "'${TOKEN_NAME}'";
-  token_symbol = opt "'${TOKEN_SYMBOL}'";
-  minting_account = "'${MINT_ACC}'";
+dfx deploy --network ${NETWORK} custom-ledger --argument "(variant {Init = record {
+  token_name = opt \"${TOKEN_NAME}\";
+  token_symbol = opt \"${TOKEN_SYMBOL}\";
+  minting_account = \"${MINT_ACC}\";
   initial_values = vec {};
   send_whitelist = vec {};
   archive_options = opt record {
     trigger_threshold = 2000;
     num_blocks_to_archive = 1000;
-    controller_id = principal "'${ARCHIVE_CONTROLLER}'";
+    controller_id = principal \"${ARCHIVE_CONTROLLER}\";
     cycles_for_archive_creation = opt 10_000_000_000_000;
   }
-})'
+}})"
 ```
 
-For each variable, replace the following values:
+For each variable, the exported environment variable will be used unless otherwise specified:
 -   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. use ic for the mainnet).
 -   the `TOKEN_NAME` is the human-readable name of your new token.
 -   the `TOKEN_SYMBOL` is the ticker symbol of your new token.
@@ -108,7 +108,7 @@ Let us now connect Rosetta to an existing ledger canister.
 ### Step 7:  Get the ledger token symbol:
 
 ``` sh
-dfx canister call <ledger_canister_id> symbol
+dfx canister call custom-ledger symbol
 ```
 
 The output should look like the following:

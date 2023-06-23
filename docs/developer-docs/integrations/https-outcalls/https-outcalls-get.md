@@ -509,3 +509,8 @@ Open the candid web UI for the backend (the `hello_http_rust_backend` one) and c
 :::note
 In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a future section
 :::
+
+## Additional resources
+
+* Sample code of [HTTP GET requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+* Sample code of [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
