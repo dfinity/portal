@@ -1930,15 +1930,15 @@
     "id": "34886232",
     "name": "Vibeverse",
     "oneLiner": "A vibrant ecosystem where users can learn about new AI tools and content, AI Films, and more",
-    "website": "https://vibeverse.xyz",
+    "website": "http://vibeverse.xyz",
     "tags": [ "NFT" ,  "AI" ],
     "description": "Our platform is a vibrant ecosystem where users can seamlessly share, discover, and collaborate on AI-generated content in the Film industry and beyond. Users can also discover AI tools to create new content and join new communities like White Mirror",
     "stats": "Top 100 projects on Buildspace S3 Dubai + San Francisco | 700 filmmakers and content creators enlisted for final demo day on 21th June 2023",
     "logo": "/public/images/logos/vibeverse.png",
     "usesInternetIdentity": true,
-    "github?": "https://github.com/roger-rangel/vibeverse%E2%80%9D",
+    "github?": "https://github.com/roger-rangel/vibeverse",
     "youtube?": "https://www.youtube.com/watch?v=-Gug7qZq4AM%E2%80%9D",
-    "twitter?": "https://twitter.com/vibeversexyz%E2%80%9D",
+    "twitter?": "https://twitter.com/vibeversexyz",
     "screenshots?": ["/img/showcase/vibeverse_screenshot_0.jpg", "/img/showcase/vibeverse_screenshot_1.jpg"],
     "submittableId?": "34886232"
   } 
