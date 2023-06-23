@@ -367,17 +367,8 @@ function EnterprisePage() {
                 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-8"
                 variants={transitions.item}
               >
-                What’s already being built
+                Enterprises adopting ICP
               </motion.h2>
-
-              <motion.div variants={transitions.container}>
-                <Link
-                  className="button-outline text-center"
-                  href="/ecosystem"
-                >
-                  Applications built on ICP
-                </Link>
-              </motion.div>
             </AnimateSpawn>
           </div>
 
@@ -428,6 +419,19 @@ function EnterprisePage() {
                 <LinkArrowRight /> More on the X Collection
               </Link>
             </TranslatedLayout>
+            <AnimateSpawn
+              className="container-12"
+              variants={transitions.container}
+            >
+              <motion.div variants={transitions.container}>
+                <Link
+                  className="button-outline text-center"
+                  href="/ecosystem"
+                >
+                  other businesses building on ICP
+                </Link>
+              </motion.div>
+            </AnimateSpawn>
           </div>
         </section>
         <AnimateSpawn
@@ -439,14 +443,14 @@ function EnterprisePage() {
             <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
             <div className="flex-1 mt-40 sm:mt-0">
               <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
-                Want to know more for your enterprise?
+                Want to run a pilot using ICP?
               </h2>
               <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
-                Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas
-                faucibus mollis interdum.
+                Committing to a new technology stack is a big decision. See the
+                advantages of the Internet Comouter by running a pilot projects first.
               </p>
               <p className="mb-0">
-                <Link className="button-white">get in contact</Link>
+                <Link className="button-white">get in touch</Link>
               </p>
             </div>
             <div className="flex-1 ">
@@ -482,9 +486,9 @@ function EnterprisePage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="About HTTPS outcalls"
+              title="Network dashboard"
               description=""
-              href="/https-outcalls"
+              href="https://dashboard.internetcomputer.org/"
             />
 
             <CardWithDescription
