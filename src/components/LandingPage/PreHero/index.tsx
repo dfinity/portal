@@ -146,7 +146,7 @@ const PreHero: React.FC<{
           </motion.button>
         </div>
         <div
-          className="tw-heading-5 text-white relative py-20 md:py-40 container-12"
+          className="tw-heading-5 text-white relative py-20 md:pt-40 pb-56 md:pb-80 container-12"
           ref={heroRef}
           id="stats"
         >
