@@ -280,7 +280,7 @@ If successful, at the end of stage, we have:
     <td>NA</td>
   </tr>
   <tr>
-    <td class="light-green-text">newly-created SNS canisters on the SNS subnet</td>
+    <td class="light-green-text">SNS root on the SNS subnet</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
     <td class="light-green-text">initial developer neurons</td>
   </tr>
@@ -292,12 +292,12 @@ If successful, at the end of stage, we have:
   <tr>
     <td class="light-green-text">treasury account on the SNS Ledger</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">newly-created SNS canisters on the SNS subnet</td>
+    <td class="light-green-text">SNS root</td>
   </tr>
   <tr>
     <td class="light-green-text">swap account on the SNS Ledger</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">newly-created SNS canisters on the SNS subnet</td>
+    <td class="light-green-text">SNS root</td>
   </tr>
 </table>
 
@@ -374,7 +374,7 @@ If successful, at the end of stage, we have:
     <td>NA</td>
   </tr>
   <tr>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
     <td>pre-decentralization swap mode</td>
     <td>initial developer neurons</td>
   </tr>
@@ -386,12 +386,12 @@ If successful, at the end of stage, we have:
   <tr>
     <td>treasury account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
   <tr>
     <td>swap account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
 </table>
 
@@ -439,7 +439,7 @@ If successful, at the end of stage, we have:
   <tr>
     <td>a dapp</td>
     <td>operational</td>
-    <td class="light-orange-text">newly-created SNS canisters</td>
+    <td class="light-orange-text">SNS root</td>
   </tr>
 </table>
 
@@ -457,7 +457,7 @@ If successful, at the end of stage, we have:
     <td>NA</td>
   </tr>
   <tr>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
     <td>pre-decentralization swap mode</td>
     <td>initial developer neurons</td>
   </tr>
@@ -469,12 +469,12 @@ If successful, at the end of stage, we have:
   <tr>
     <td>treasury account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
   <tr>
     <td>swap account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
 </table>
 
@@ -520,7 +520,7 @@ If successful, at the end of stage, we have:
   <tr>
     <td>a dapp</td>
     <td>operational</td>
-    <td>newly-created SNS canisters</td>
+    <td>SNS root</td>
   </tr>
 </table>
 
@@ -538,7 +538,7 @@ If successful, at the end of stage, we have:
     <td>NA</td>
   </tr>
   <tr>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
     <td>pre-decentralization swap mode</td>
     <td>initial developer neurons</td>
   </tr>
@@ -550,12 +550,12 @@ If successful, at the end of stage, we have:
   <tr>
     <td>treasury account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
   <tr>
     <td>swap account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
 </table>
 
@@ -610,7 +610,7 @@ If successful, at the end of stage, we have:
   <tr>
     <td>a dapp</td>
     <td>operational</td>
-    <td>newly-created SNS canisters</td>
+    <td>SNS root</td>
   </tr>
 </table>
 
@@ -628,7 +628,7 @@ If successful, at the end of stage, we have:
     <td>NA</td>
   </tr>
   <tr>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
     <td>pre-decentralization swap mode</td>
     <td>initial developer neurons</td>
   </tr>
@@ -640,12 +640,12 @@ If successful, at the end of stage, we have:
   <tr>
     <td>treasury account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
   <tr>
     <td>swap account on the SNS Ledger</td>
     <td>pre-decentralization swap mode</td>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
   </tr>
 </table>
 
@@ -733,7 +733,7 @@ If successful, at the end of stage, we have:
     <td>NA</td>
   </tr>
   <tr>
-    <td>newly-created SNS canisters on the SNS subnet</td>
+    <td>SNS root</td>
     <td>normal mode</td>
     <td class="light-orange-text">SNS DAO</td>
   </tr>
