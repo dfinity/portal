@@ -5,22 +5,31 @@ This guide shows how to integrate and test a project with Internet Identity. Thi
 
 This is a standalone project that you can copy to your own project.
 
+
+* [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.10.0 or later
+* Rustup with target `wasm32-unknown-unknown` (see [rustup instructions](https://rust-lang.github.io/rustup/cross-compilation.html)).
+* CMake
+* [`ic-wasm`](https://github.com/dfinity/ic-wasm).
+* Node.js v16+
+
 ## Usage
 
 The following commands will start a replica, install the development Internet Identity canister, and run the test suite:
 
 ```bash
-# After checking out dfinity/internet-identity, run this in `./demos/using-dev-build`:
-$ dfx start --background --clean
-$ npm ci
-$ dfx deploy --no-wallet --argument '(null)'
+git clone https://github.com/dfinity/internet-identity.git
+cd internet-identity/demos/using-dev-build
+dfx start --background --clean
+npm ci
+dfx deploy --no-wallet
 ```
 
 At this point, the replica (for all practical matters, a local version of the Internet Computer) is running and three canisters have been deployed:
 
-- `internet_identity`: The development version of Internet Identity (downloaded from the [latest release](https://github.com/dfinity/internet-identity/releases/latest), see [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json)  .
-- `webapp`: A tiny webapp that calls out to the `internet_identity` canister for identity (anchor) creation and authentication, and that then calls the `whoami` canister (see below) to show that the identity is valid. You'll find the source of the webapp in [`index.html`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.html) and [`index.ts`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.ts).
-- `whoami`: A simple canister that checks that calls are authenticated, and that returns the "principal of the caller". The implementation is terribly simple:
+- `internet_identity`: the development version of Internet Identity (downloaded from the [latest release](https://github.com/dfinity/internet-identity/releases/latest), see [`dfx.json`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/dfx.json)  .
+- `webapp`: a tiny webapp that calls out to the `internet_identity` canister for identity (anchor) creation and authentication, and that then calls the `whoami` canister (see below) to show that the identity is valid. You'll find the source of the webapp in [`index.html`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.html) and [`index.ts`](https://github.com/dfinity/internet-identity/blob/main/demos/using-dev-build/webapp/index.ts).
+- `whoami`: a simple canister that checks that calls are authenticated, and that returns the "principal of the caller". The implementation is simple:
+
   ```motoko
   actor {
       public query ({caller}) func whoami() : async Principal {
@@ -29,7 +38,7 @@ At this point, the replica (for all practical matters, a local version of the In
   };
   ```
   
-  On the IC, a principal is the identifier of someone performing a request or "call" (hence "caller"). Every call must have a valid principal. There is also a special principal for anonymous calls. When using Internet Identity you are using [self-authenticating principals](/references/ic-interface-spec.md#principals), which is a very fancy way of saying that you have a private key on your laptop (hidden behind TouchID, Windows Hello, etc) that your browser uses to sign and prove that you are indeed the person issuing the calls to the IC.
+On the IC, a principal is the identifier of someone performing a request or "call" (hence "caller"). Every call must have a valid principal. There is also a special principal for anonymous calls. When using Internet Identity you are using [self-authenticating principals](/references/ic-interface-spec.md#principals), which is a very fancy way of saying that you have a private key on your laptop (hidden behind TouchID, Windows Hello, etc) that your browser uses to sign and prove that you are indeed the person issuing the calls to the IC.
 
 If the IC actually lets the call (request) through to the `whoami` canister, it means that everything checked out, and the `whoami` canister just responds with the information the IC adds to requests, namely your identity (principal).
 

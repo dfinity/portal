@@ -1927,5 +1927,40 @@
     "twitter": "https://twitter.com/mops_one",
     "youtube": "",
     "submittableId": ""
+  },
+  {
+    "id": "orally-network",
+    "name": "Orally",
+    "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
+    "tags": ["Tools / Infrastructure", "DeFi"],
+    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dApps. Elevate your blockchain journey with us!",
+    "usesInternetIdentity": false,
+    "website": "https://orally.network",
+    "github": "https://github.com/orally-network",
+    "youtube": "https://youtu.be/1ZDEyllqUcA",
+    "twitter": "https://twitter.com/orally_network",
+    "display": "Large",
+    "logo": "/img/showcase/orally-network_logo.png",
+    "screenshots": [
+      "/img/showcase/orally-network_screenshot_0.jpg"
+    ],
+    "submittableId": "35782696"
+  },
+  {
+    "name": "DSign",
+    "description": "Collaborative Product Design Innovation Hub",
+    "website": "https://www.dsign.ooo",
+    "logo": "/img/showcase/dsign_logo.webp",
+    "screenshots": ["/img/showcase/dsign_screenshot.webp"],
+    "video": "",
+    "display": "Normal",
+    "id": "dsign",
+    "oneLiner": "Collaborative Product Design Innovation Hub",
+    "tags": ["Tools / Infrastructure"],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/cybrowl/dsign-components",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "34425295"
   }
 ]
