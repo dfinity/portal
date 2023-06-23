@@ -65,7 +65,7 @@ ic-admin  \
 After the wallet canister is listed in SNS-W, 
 the [SNS canisters are created triggered by a manual call to SNS-W](../launching/launch-steps.md/#SNS-launch-step-deployment).
 
-The command tp trigger the creation of SNS canisters on the SNS subnet: 
+The command to trigger the creation of SNS canisters on the SNS subnet: 
 
 ```bash
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
