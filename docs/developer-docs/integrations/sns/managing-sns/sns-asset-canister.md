@@ -64,7 +64,7 @@ To deploy your asset canister locally for testing purposes, the following comman
 dfx deploy assets --network "local" --no-wallet
 ```
 
-Once the asset canister has been deployed, the SNS can be launched. You can learn more about launching an SNS [here](../launch-sns/launch-sns.md)
+Once the asset canister has been deployed, the SNS can be launched. You can learn more about launching an SNS [here](../launch-sns/launch-sns.md).
 
 ### Deploying on the mainnet
 
