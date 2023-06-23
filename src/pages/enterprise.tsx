@@ -104,7 +104,7 @@ function EnterprisePage() {
                   className="w-24 md:w-30"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Lower development costs
+                  Secure doc workflow
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Businesses can operate with leaner teams, as the security is
@@ -188,9 +188,9 @@ function EnterprisePage() {
               className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
               variants={transitions.item}
             >
-              Innovations in cryptography, and distributed cloud computing
-              enable the Internet Computer blockchain to simplify software while
-              enhancing security.
+              Processing over half a billion transactions daily, ICP unlocks many
+              previously infeasible blockchain use cases, such as industry scale
+              supply chain tracking or certification of origin.
             </motion.h2>
             <motion.p className="mb-0">
               <Link className="button-primary">REACH OUT</Link>
@@ -251,26 +251,53 @@ function EnterprisePage() {
                 through complicated configuring of their accounts.
               </p>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/enterprise/security-large.webp">
+            <TranslatedLayout
+              imageUrl="/img/enterprise/self-custody-large.webp"
+            >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Security by design
+                Built-in digital identity framework
+              </h2>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                Internet Identity is a privacy-enhancing authentication framework
+                native to the Internet Computer. Following the open standards of
+                the FIDO Alliance and W3C, Internet Identity uses secure passkeys
+                and WebAuthn. It can be seamlessly integrated with any service
+                running on the Internet Computer, and provides user authentication
+                without requiring the service provider to build out the infrastructure
+                to securely and privately manage user credentials.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/internet-identity"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  More on Internet Identity
+                </Link>
+              </p>
+            </TranslatedLayout>
+            <TranslatedLayout
+              imageUrl="/img/enterprise/security-large.webp"
+              reverse={true}>
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Leaner security teams
               </h2>
               <p className="tw-lead-sm">
+                Building on ICP enables organizations to focus on the business
+                logic of software, lowering costs and speeding up development.
+              </p>
+              <p className="tw-lead-sm">
                 When the internet protocol (IP), and current cloud
-                infrastructures were initially designed, people didn’t foresee
+                infrastructures were initially conceived, people didn’t foresee
                 the scale, and impact the internet has today. The importance of
                 robust security systems became apparent only later, as the
-                number of connected devices was growing.
+                number of connected devices grew.
               </p>
               <p className="tw-lead-sm">
                 The Internet Computer was designed bottom up with security and
                 privacy directly built into the protocol itself by a team of
                 world class cryptographers, engineerings and computer
                 scientists.
-              </p>
-              <p className="tw-lead-sm">
-                Building on ICP enables organizations to focus on the business
-                logic of software, lowering costs and speeding up development.
               </p>
 
               <p className="mb-0">
@@ -283,78 +310,34 @@ function EnterprisePage() {
                 </Link>
               </p>
             </TranslatedLayout>
-          </div>
-          <div className="mb-12 container-10">
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-60 text-center mb-10"
-              variants={transitions.item}
-            >
-              More advantages to know
-            </motion.h2>
-            <motion.p className="text-center mb-0" variants={transitions.item}>
-              <Link className="link-white link-with-icon" href="/capabilities">
-                <LinkArrowRight />
-                Internet Computer capabilities
-              </Link>
-            </motion.p>
-          </div>
+            <TranslatedLayout imageUrl="/img/enterprise/security-large.webp">
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Tokenized business models
+              </h2>
+              <p className="tw-lead-sm">
+                From loyalty programs to memberships to ticketing. Businesses
+                need to manage their relationships with their customers via
+                digital identities and handling of digital assets. The Internet
+                Computer provides a common digital wallet that makes this
+                collaboration much easier to build.
+              </p>
+              <p className="tw-lead-sm">
+                Organizations can effectively include their customers in the
+                product development life cycle by leveraging built-in tokenized
+                voting tools that are native to the Internet Computer, incentivizing
+                users to actively participate.
+              </p>
 
-          <div
-            className="
-            bg-[linear-gradient(180deg,#3b00b9_0,#3b00b9_17%,#f1eef5_17%,#f1eef5_100%)]
-            md:bg-[linear-gradient(180deg,#3b00b9_0,#3b00b9_50%,#f1eef5_50%,#f1eef5_100%)]
-            text-black
-
-          "
-          >
-            <div className="container-12 grid md:grid-cols-3 gap-5">
-              <motion.div
-                variants={transitions.item}
-                className="bg-white/90 backdrop-blur-3xl rounded-xl p-12 text-center flex flex-col justify-center items-center"
-              >
-                <img
-                  src="/img/enterprise/privacy-by-design.svg"
-                  alt=""
-                  className=""
-                />
-                <h3 className="tw-lead-lg md:tw-title-sm my-3">
-                  Privacy by design
-                </h3>
-                <p className="tw-paragraph-sm text-black/60 mb-0">
-                  The Internet Computer allows for sensitive data to be stored privately on the
-                  blockchain. Users can take complete control of their data, without businesses
-                  having to build the proprietary infrastructure for it.
-                </p>
-              </motion.div>
-              <motion.div
-                variants={transitions.item}
-                className="bg-white/90 backdrop-blur-3xl rounded-xl p-12 text-center flex flex-col justify-center items-center"
-              >
-                <img
-                  src="/img/enterprise/placeholder-icon.svg"
-                  alt=""
-                  className=""
-                />
-                <h3 className="tw-lead-lg md:tw-title-sm my-3">Tokenized bussiness models</h3>
-                <p className="tw-paragraph-sm text-black/60 mb-0">
-                  From employee reward programs to ticketing systems — secure and simple digital
-                  asset transfers allow for innovative new business models.
-                </p>
-              </motion.div>
-              <motion.div
-                variants={transitions.item}
-                className="bg-white/90 backdrop-blur-3xl rounded-xl p-12 text-center flex flex-col justify-center items-center"
-              >
-                <img src="/img/enterprise/security.svg" alt="" className="" />
-                <h3 className="tw-lead-lg md:tw-title-sm my-3">
-                  Cryptographic security
-                </h3>
-                <p className="tw-paragraph-sm text-black/60 mb-0">
-                  Privacy-enhancing authentication framework native to the protocol. Internet Idenitity
-                  follows the open standards of W3C, building on WebAuthn.
-                </p>
-              </motion.div>
-            </div>
+              <p className="mb-0">
+                <Link
+                  href="/how-it-works"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  How ICP works
+                </Link>
+              </p>
+            </TranslatedLayout>
           </div>
         </section>
         <section className="container-12 py-30 md:py-48">
