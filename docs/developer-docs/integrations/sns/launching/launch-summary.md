@@ -203,8 +203,6 @@ If successful, at the end of stage, we have:
   </tr>
 </table>
 
-
-
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
@@ -215,7 +213,7 @@ If successful, at the end of stage, we have:
 
   The registration is done by **SNS proposal**.
   
-  As there are already initial neurons (from Step 3), this,
+  As there are already initial neurons, this,
   as well as potential upgrades to the dapp, can be realized by SNS proposals and by the
   majority of initial neurons voting in favor of them.
   The initial neurons cannot do other things, such as changing
@@ -276,8 +274,6 @@ If successful, at the end of stage, we have:
     <td>newly-created SNS canisters on the SNS subnet</td>
   </tr>
 </table>
-
-
 
 ### 7. Proposal #2 (of 3) is passed or rejected
 
@@ -404,11 +400,7 @@ If successful, at the end of stage, we have:
 </table>
 
 
-### 9. NNS DAO accepts or rejects the proposal
-
-:::info
-Once this NNS proposal passes, the rest of the process should complete.
-:::
+### 9. Proposal #3 (of 3) is passed or rejected
 
 This is the **last of three** proposals that need to successfully pass for the process to continue. 
 
