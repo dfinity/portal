@@ -1,0 +1,58 @@
+.admonition {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: var(--admonition-background-color);
+  border: 1px solid var(--admonition-border-color);
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.admonition p:first-child {
+  margin-left: 2.5rem;
+}
+
+.admonition > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.admonitionIcon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 24px;
+  height: 24px;
+}
+
+.admonitionNote {
+  --admonition-border-color: rgba(41, 171, 226, 0.5);
+  --admonition-background-color: rgba(41, 171, 226, 0.05);
+  --admonition-icon-color: rgba(41, 171, 226, 1);
+}
+
+.admonitionTip {
+  --admonition-border-color: rgba(38, 215, 109, 0.5);
+  --admonition-background-color: rgba(38, 215, 109, 0.05);
+  --admonition-icon-color: rgba(38, 215, 109, 1);
+}
+
+.admonitionInfo {
+  --admonition-border-color: rgba(147, 154, 255, 0.5);
+  --admonition-background-color: rgba(147, 154, 255, 0.05);
+  --admonition-icon-color: rgba(147, 154, 255, 1);
+}
+
+.admonitionWarning {
+  --admonition-border-color: rgba(246, 142, 95, 0.5);
+  --admonition-background-color: rgba(246, 142, 95, 0.05);
+  --admonition-icon-color: rgba(246, 142, 95, 1);
+}
+
+.admonitionDanger {
+  --admonition-border-color: rgba(255, 107, 107, 0.5);
+  --admonition-background-color: rgba(255, 107, 107, 0.05);
+  --admonition-icon-color: rgba(255, 107, 107, 1);
+}
+
+.admonition + .admonition {
+  margin-top: 1.5rem;
+}
