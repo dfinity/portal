@@ -55,7 +55,7 @@ function EnterprisePage() {
               >
                 Build next generation enterprise systems on autonomous cloud,
                 powered by chain-key cryptography and secure multiparty
-                computation — no bloated security departments needed
+                computation.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -84,16 +84,16 @@ function EnterprisePage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Maintaining legacy code, increasing development costs and talent
-              fleeing to new, exciting technologies — Companies have to overcome
-              many challenges to stay ahead of the competition.
+              Having to maintain legacy code, increasing development costs and talent fleeing to
+              new, exciting technologies — Companies have to overcome several challenges to stay
+              ahead of the competition.
             </motion.h2>
           </div>
         </AnimateSpawn>
 
         <section className="mt-20 md:mt-48">
           <div className="container-10">
-            <h2 className="tw-heading-3 md:tw-heading-60 text-gradient md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
+            <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
               Autonomous cloud for enterprises
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
@@ -231,15 +231,6 @@ function EnterprisePage() {
                 cross platform, language agnostic, portable server executable
                 code.
               </p>
-              <p className="mb-0">
-                <Link
-                  href="/bitcoin-integration"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  Lorem ipsum
-                </Link>
-              </p>
             </TranslatedLayout>
             <TranslatedLayout
               imageUrl="/img/enterprise/self-custody-large.webp"
@@ -258,15 +249,6 @@ function EnterprisePage() {
                 digital assets. This separation is enabled by chain-key
                 cryptography, and most importantly doesn’t require users to go
                 through complicated configuring of their accounts.
-              </p>
-              <p className="mb-0">
-                <Link
-                  href="/how-it-works#Chain-key-cryptography"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  Lorem ipsum
-                </Link>
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/security-large.webp">
@@ -293,11 +275,11 @@ function EnterprisePage() {
 
               <p className="mb-0">
                 <Link
-                  href="/how-it-works#Chain-key-technology"
+                  href="/how-it-works"
                   className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  Lorem ipsum
+                  How ICP works
                 </Link>
               </p>
             </TranslatedLayout>
@@ -339,9 +321,9 @@ function EnterprisePage() {
                   Privacy by design
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 mb-0">
-                  Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-                  venenatis vestibulum. Vestibulum id ligula porta felis euismod
-                  semper. Curabitur blandit tempus.
+                  The Internet Computer allows for sensitive data to be stored privately on the
+                  blockchain. Users can take complete control of their data, without businesses
+                  having to build the proprietary infrastructure for it.
                 </p>
               </motion.div>
               <motion.div
@@ -353,11 +335,10 @@ function EnterprisePage() {
                   alt=""
                   className=""
                 />
-                <h3 className="tw-lead-lg md:tw-title-sm my-3">Placeholder</h3>
+                <h3 className="tw-lead-lg md:tw-title-sm my-3">Tokenized bussiness models</h3>
                 <p className="tw-paragraph-sm text-black/60 mb-0">
-                  Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-                  venenatis vestibulum. Vestibulum id ligula porta felis euismod
-                  semper. Curabitur blandit tempus.
+                  From employee reward programs to ticketing systems — secure and simple digital
+                  asset transfers allow for innovative new business models.
                 </p>
               </motion.div>
               <motion.div
@@ -369,9 +350,8 @@ function EnterprisePage() {
                   Cryptographic security
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 mb-0">
-                  Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-                  venenatis vestibulum. Vestibulum id ligula porta felis euismod
-                  semper. Curabitur blandit tempus.
+                  Privacy-enhancing authentication framework native to the protocol. Internet Idenitity
+                  follows the open standards of W3C, building on WebAuthn.
                 </p>
               </motion.div>
             </div>
@@ -418,9 +398,9 @@ function EnterprisePage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://icdex.io/"
+                href="https://swissfederalism.ch/en/brand-federitaly-100-made-in-italy-dfinity-foundation/"
               >
-                <LinkArrowRight /> Lorem ipsum
+                <LinkArrowRight /> Read the announcement
               </Link>
             </TranslatedLayout>
             <TranslatedLayout
