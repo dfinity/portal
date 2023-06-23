@@ -1,0 +1,8 @@
+html.plugin-blog {
+  main[class*="docMainContainer_"] {
+    // remove empty ToC and allow blog content to take up remaining width on screen
+    .col.col--3:empty {
+      display: none;
+    }
+  }
+}

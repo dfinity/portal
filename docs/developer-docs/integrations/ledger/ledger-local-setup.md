@@ -6,14 +6,23 @@ If you are working in a local development environment, i.e with a local replica 
 
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
-### Step 1:  Get a pre-built ledger canister module and Candid interface files.
+### Step 1:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx).
+If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
+
+### Step 2: Create a new dfx project with the command:
+
+```
+dfx new ledger
+cd ledger
+```
+
+### Step 3:  Get a pre-built ledger canister module and Candid interface files.
 
 ``` sh
-export IC_VERSION=5eb2810653d4c72c7afc48a0450e2ad01378dfc7
-curl -o ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ledger-canister_notify-method.wasm.gz"
-gunzip ledger.wasm.gz
-curl -o ledger.private.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger.did"
-dfx canister --network ic call ryjl3-tyaaa-aaaaa-aaaba-cai __get_candid_interface_tmp_hack '()' --query | sed -e 's/\\n/\n/g' -e 's/^…//' -e 's/…$//' -e '1d;$d' -e 's/"//g' -e 's/,$//'> ledger.public.did
+export IC_VERSION=1612a202d030faa496e1694eed98be4179fca856
+curl -o ledger_canister.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
+curl -o ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/icrc1.did"
+gunzip ledger_canister.wasm.gz
 ```
 
 If you plan to work with Ledger archives, also download the `ledger_archive.did` file:
@@ -27,13 +36,6 @@ curl -o ledger_archive.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VER
 The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases).
 
 :::
-
-### Step 2:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx).
-If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
-
-If you don’t have an IC SDK project yet, follow these instructions to create a new project: [dfx-new](/references/cli-reference/dfx-new.md).
-
-### Step 3:  Copy the file you obtained at the first step (`ledger.wasm`, `ledger.private.did`, `ledger.public.did`) into the root of your project.
 
 ### Step 4:  Add the following canister definition to the `dfx.json` file in your project:
 
@@ -65,7 +67,7 @@ Modify `dfx.json` to include:
 ### Step 6:  Start a local replica.
 
 ``` sh
-dfx start --background
+dfx start --background --clean
 ```
 
 ### Step 7:  Create a new identity that will work as a minting account:
@@ -88,7 +90,7 @@ export LEDGER_ACC=$(dfx ledger account-id)
 ### Step 9:  Deploy the ledger canister to your network.
 
 ``` sh
-dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}})'
+dfx deploy ledger --argument "(variant {Init = record {minting_account = \"${MINT_ACC}\"; initial_values = vec { record { \"${LEDGER_ACC}\"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}}})"
 ```
 
 If you want to setup the ledger in a way that matches the production deployment, you should deploy it with archiving enabled. In this setup, the ledger canister dynamically creates new canisters to store old blocks. We recommend using this setup if you are planning to exercise the interface for fetching blocks.
@@ -103,7 +105,7 @@ export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
 Deploy the ledger canister with archiving options:
 
 ``` sh
-dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}; archive_options = opt record { trigger_threshold = 2000; num_blocks_to_archive = 1000; controller_id = principal "'${ARCHIVE_CONTROLLER}'" }})'
+dfx deploy ledger --argument "(variant {Init = record {minting_account = \"${MINT_ACC}\"; initial_values = vec { record { \"${LEDGER_ACC}\"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}; archive_options = opt record { trigger_threshold = 2000; num_blocks_to_archive = 1000; controller_id = principal \"${ARCHIVE_CONTROLLER}\" }})"
 ```
 
 You may want to set `trigger_threshold` and `num_blocks_to_archive` options to low values (e.g., 10 and 5) to trigger archivation after only a few blocks.

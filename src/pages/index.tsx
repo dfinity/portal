@@ -5,6 +5,7 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import CommunityStories from "../components/LandingPage/CommunityStories/CommunityStories";
+import Decks from "../components/LandingPage/Decks/Decks";
 import FoundationSection from "../components/LandingPage/Foundation";
 import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
@@ -35,7 +36,7 @@ export default function Home(): JSX.Element {
             "Native multi-chain",
             "No security teams",
             "No firewalls needed",
-            "Decentralize control"
+            "Decentralize control",
           ]}
         ></PreHero>
       </QueryClientProvider>
@@ -44,6 +45,7 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
+        <Decks />
         <Vision />
         <CommunityStories></CommunityStories>
         <div className="overflow-hidden">
