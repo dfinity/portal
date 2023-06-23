@@ -43,7 +43,7 @@ funding for the SNS project in a SNS-owned treasury.
 
 ## SNS launch process summary
 Handing over a dapp's control to a newly created SNS proceeds in the following high level steps.
-Note that the NNS community's approvals is relevant in two steps (Step XX and XX).
+Note that the NNS community's approval is relevant in two steps (Step XX and XX).
 
 - #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
   As these parameters define not only the token name but also the tokenomics and how the governance
