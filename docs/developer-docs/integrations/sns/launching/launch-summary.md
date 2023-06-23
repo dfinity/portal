@@ -8,7 +8,7 @@ the dapp that the SNS governs.
 Thereby, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
 
-The current SNS version provides one simple way to achieve this: a developer can hand over their dapp to the NNS DAO and ask it to start a decentralization
+The current SNS version provides one simple way to achieve this: a developer can hand over their dapp to the NNS and ask it to start a decentralization
 swap for the newly created SNS.
 
 We first explain the decentralization swap and then the steps included in an SNS launch.
@@ -35,14 +35,6 @@ In more detail, it is controlled by the NNS root canister.
   were collected during the decentralization swap, then the exchange rate would be 2:1
   and each participant would get 2 SNS tokens for each ICP token they contributed.
 
-After a successful decentralization swap, SNS tokens are owned by a large
-community and therefore the SNS governance control is decentralized.
-Moreover, the decentralization swap sets a market price for the SNS token and
-every swap participant receives SNS tokens at that price.
-The ICP that were collected in the decentralization swap provide initial
-funding for the SNS project in a SNS-owned treasury.
-
-
 ## Stages
 Handing over a dapp's control to a newly created SNS proceeds in the following high level steps.
 Note that the NNS community's approval is relevant in two steps (Step XX and XX).
@@ -53,6 +45,33 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
   (see [here](../tokenomics/sns-checklist.md) for more information).
 
   What we have at this stage:
+
+#### Table 1
+
+  <table>
+  <tr>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td class="light-green-text">Decentralization swap state</td>
+    <td class="light-green-text">Pending</td>
+  </tr>
+   <tr>
+    <td class="light-green-text">NNS Proposal #1</td>
+    <td class="light-green-text">Pending</td>
+  </tr>
+   <tr>
+    <td class="light-green-text">SNS Proposal #1</td>
+    <td class="light-green-text">Pending</td>
+  </tr>
+   <tr>
+    <td class="light-green-text">NNS Proposal #2</td>
+    <td class="light-green-text">Pending</td>
+  </tr>
+</table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -69,11 +88,39 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 
 
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
-  To ensure that malicious parties cannot simply fill the SNS subnet with un-approved SNSs, the
-  canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
-  contains a list of principals that are allowed to do so. Therefore, a developer launching an SNS needs to ask the NNS community for approval to be added to this list. If the proposal is adopted, the defined principal is allowed to install exactly one SNS. 
 
-  What we have at this stage:
+To ensure that malicious parties cannot simply fill the SNS subnet with un-approved SNSs, the
+canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
+contains a list of principals that are allowed to do so. Therefore, a developer launching an SNS needs to ask the NNS community for approval to be added to this list. If the proposal is adopted, the defined principal is allowed to install exactly one SNS. 
+
+What we have at this stage:
+
+#### Table 1
+
+<table>
+  <tr>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td>Pending</td>
+  </tr>
+</table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -102,6 +149,33 @@ If this NNS proposal passes and the developer's principal is added the list of p
 
 If the proposal is adopted successfully, at the end of this step, we have:
 
+#### Table 1
+
+<table>
+  <tr>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td class="light-orange-text">Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td>Pending</td>
+  </tr>
+</table>
+
+#### Table 2
+
 <table>
   <tr>
     <th>Objects in an app subnet</th>
@@ -114,6 +188,8 @@ If the proposal is adopted successfully, at the end of this step, we have:
     <td>dapp developer principal</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
@@ -150,12 +226,32 @@ Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify t
 
 If successful, at the end of stage, we have:
 
+#### Table 1
+
 <table>
   <tr>
-    <th class="light-green-text">Decentralization swap state</th>
-    <th class="light-green-text">PENDING</th>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td>Pending</td>
   </tr>
 </table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -169,6 +265,8 @@ If successful, at the end of stage, we have:
     <td>dapp developer principal</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
@@ -222,12 +320,32 @@ If successful, at the end of stage, we have:
 
 If successful, at the end of stage, we have:
 
+#### Table 1
+
 <table>
   <tr>
-    <th>Decentralization swap state</th>
-    <th>PENDING</th>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td >NNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td class="light-orange-text">Submitted</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td>Pending</td>
   </tr>
 </table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -241,6 +359,8 @@ If successful, at the end of stage, we have:
     <td>dapp developer principal</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
@@ -281,18 +401,34 @@ The initial SNS developer neurons are declared in the initial parameters and ava
 
 Since this proposal is passed by the SNS DAO. When one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](nns.ic0.app), but they are two separate DAOs.
 
-:::info
-If this SNS proposal passes, it does **not** guarantee the rest of the steps will complete.
-:::
-
 If successful, at the end of stage, we have:
+
+#### Table 1
 
 <table>
   <tr>
-    <th>Decentralization swap state</th>
-    <th>PENDING</th>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td class="light-orange-text">Approved</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td>Pending</td>
   </tr>
 </table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -306,6 +442,8 @@ If successful, at the end of stage, we have:
     <td class="light-orange-text">newly-created SNS canisters</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
@@ -346,12 +484,32 @@ If successful, at the end of stage, we have:
 
 If successful, at the end of stage, we have:
 
+#### Table 1
+
 <table>
   <tr>
-    <th>Decentralization swap state</th>
-    <th>PENDING</th>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td class="light-orange-text">Submitted</td>
   </tr>
 </table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -365,6 +523,8 @@ If successful, at the end of stage, we have:
     <td>newly-created SNS canisters</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
@@ -413,12 +573,33 @@ back to the original developers of the dapp.
 
 If successful, at the end of stage, we have:
 
+
+#### Table 1
+
 <table>
   <tr>
-    <th>Decentralization swap state</th>
-    <th class="light-orange-text">OPEN</th>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td class="light-orange-text">Open</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td class="light-orange-text">Approved</td>
   </tr>
 </table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -432,6 +613,8 @@ If successful, at the end of stage, we have:
     <td>newly-created SNS canisters</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
@@ -496,12 +679,32 @@ If successful, at the end of stage, we have:
 
 If successful, at the end of stage, we have:
 
+#### Table 1
+
 <table>
   <tr>
-    <th>Decentralization swap state</th>
-    <th class="light-orange-text">COMMITTED</th>
+    <th>SNS Process</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td class="light-orange-text">Committed</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS Proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>NNS Proposal #2</td>
+    <td >Approved</td>
   </tr>
 </table>
+
+#### Table 2
 
 <table>
   <tr>
@@ -515,6 +718,8 @@ If successful, at the end of stage, we have:
     <td class="light-orange-text">SNS DAO</td>
   </tr>
 </table>
+
+#### Table 3
 
 <table>
   <tr>
