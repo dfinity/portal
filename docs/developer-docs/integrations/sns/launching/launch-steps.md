@@ -57,7 +57,7 @@ ic-admin  \
   This is the **first of two NNS** proposals that need to successfully pass.
   
   :::info
-  If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+  If this NNS proposal passes and the developer's principal is added to the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
   :::
 
 - #### Step 4: Dapp developers trigger the SNS canisters to be created on SNS subnet
