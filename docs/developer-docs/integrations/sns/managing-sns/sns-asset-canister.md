@@ -71,40 +71,10 @@ Once the asset canister has been deployed, the SNS can be launched. You can lear
 To deploy your asset canister to the mainnet, the following command can be used:
 
 ```
-dfx --provisional-create-canister-effective-canister-id <canister-id> deploy assets --network "IC" --wallet <principal>
+dfx --provisional-create-canister-effective-canister-id <canister-id> deploy assets --network "ic" --wallet <principal>
 ```
 
 Once the asset canister has been deployed, the SNS can be launched. You can learn more about launching an SNS [here](../launch-sns/launch-sns.md)
-
-
-## Submitting an SNS proposal 
-
-The following asset canister APIs can be used within a proposal:
-
-```
-   type CommitProposedBatchArguments = record {
-   batch_id: BatchId;
-   evidence: blob;
-  };
-  type ValidationResult = variant { Ok : text; Err : text };
-
-
-    validate_commit_proposed_batch: (CommitProposedBatchArguments) -> (ValidationResult);
-  commit_proposed_batch: (CommitProposedBatchArguments) -> ();
-
-```
-
-An example can be found [here](https://github.com/dfinity/sdk/blob/master/e2e/tests-dfx/assetscanister.bash#L133).
-
-If the proposal is rejected, the preparer should use this new asset canister API:
-
-```
-  type DeleteBatchArguments = record {
-    batch_id: BatchId;
-  };
-  delete_batch: (DeleteBatchArguments) -> ();
-```
-
 
 ## Submitting an SNS proposal and upgrading an asset canister
 
