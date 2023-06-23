@@ -54,7 +54,7 @@ ic-admin  \
 
 - #### Step 3: NNS DAO accepts or rejects the NNS proposal
 
-  This is the **first of three** proposals that need to successfully pass.
+  This is the **first of two NNS** proposals that need to successfully pass.
   
   :::info
   If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
