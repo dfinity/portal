@@ -16,7 +16,7 @@ We first explain the decentralization swap and then the steps included in an SNS
 ## Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that 
-is owned by the IC which will run the swap.
+is owned and run by the IC.
 In more detail, it is controlled by the NNS root canister.
 
 * The swap canister is set up at the start with a defined amount of SNS tokens to be
