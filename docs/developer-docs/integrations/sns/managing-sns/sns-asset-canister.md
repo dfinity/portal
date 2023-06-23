@@ -61,17 +61,21 @@ Next, you will need to configure your `dfx.json` file to specify your asset cani
 To deploy your asset canister locally for testing purposes, the following command can be used:
 
 ```
-dfx --provisional-create-canister-effective-canister-id <canister-id> deploy assets --network "local" --no-wallet
+dfx deploy assets --network "local" --no-wallet
 ```
 
 Once the asset canister has been deployed, the SNS can be launched. You can learn more about launching an SNS [here](../launch-sns/launch-sns.md)
 
 ### Deploying on the mainnet
 
+:::info 
+To deploy to the mainnet network, you will need a wallet that contains cycles. For more information on cycles wallets, please see [here](../../../setup/cycles/cycles-wallet.md).
+:::
+
 To deploy your asset canister to the mainnet, the following command can be used:
 
 ```
-dfx --provisional-create-canister-effective-canister-id <canister-id> deploy assets --network "ic" --wallet <principal>
+dfx deploy assets --network "ic" --wallet <principal>
 ```
 
 Once the asset canister has been deployed, the SNS can be launched. You can learn more about launching an SNS [here](../launch-sns/launch-sns.md)
