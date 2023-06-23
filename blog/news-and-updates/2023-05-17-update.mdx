@@ -1,5 +1,5 @@
 ---
-title: Motoko Biweekly Update Part 12
+title: Motoko update May 17, 2023
 description: Today, we’re excited to discuss a beta test for the new incremental GC! If you want to test out the full usage of the Motoko heap then keep reading!
 tags: [New features]
 image: https://global.discourse-cdn.com/business4/uploads/dfn/original/2X/d/d118475179adf31ed419566b5052467b00b8bb0a.jpeg
@@ -11,7 +11,6 @@ authors:
 
 ![Z0zMQPRKVIaK7jX1WCzBxbK7DNGYjXBoWlMMrpIDSPqavL4W9hlRZqqqYCOEbdnC4EBkqTzFWg7c8iUig_bERsDstWcZSbvzdYWJLnGg0GrhTRAWrX96N-tm5DgMsZD21bEJvxuakLrszCG3Rpr7mXk|690x388](https://global.discourse-cdn.com/business4/uploads/dfn/original/2X/d/d118475179adf31ed419566b5052467b00b8bb0a.jpeg)
 
-
 Hey Motoko developers! :wave:
 
 Welcome back to the latest Motoko update post!
@@ -19,10 +18,7 @@ If you happened to miss our previous update, you can catch up [here](https://for
 
 Today, we’re excited to discuss a beta test for the new incremental GC! If you want to test out the full usage of the Motoko heap then keep reading!
 
-<!--truncate-->
-
 ![IluNt1_OGByxGCHdsyEM-a9NnJq8Y3-SVdbsj0M5kof_MOF2Hyc9cqsg8UMd6AYBDUBFswbyG_eE18Shcf4_ASPIsZ8QM9L3GpKgXtwBtBTmW3N7cku99sihkTinrxCygAWjxSGpK_9CnFI5Sx3o86Y|690x306](https://global.discourse-cdn.com/business4/uploads/dfn/original/2X/f/fdf17ef114032b61d14fc6aa8e79509f5f64d6c9.png)
-
 ## Incremental Garage Collector: Beta Release!
 A new, powerful garbage collector, the incremental GC, has been released for beta-testing with version [`0.9.0`](https://github.com/dfinity/motoko/releases/tag/0.9.0) of Motoko!
 The biggest impact of the incremental GC is that it enables heap usage in Motoko up to the full 4GB limit. While the existing GCs are unable to collect the whole heap due to the instruction limit per message, the new GC distributes its work across multiple messages when needed. Using evacuation-compaction based on forwarding pointers, the GC guarantees limited short pauses in all phases and is comparable to the most modern and advanced GCs used in other languages (e.g. Java). The GC’s scalability would also be a key enabler when moving Motoko to a 64-bit heap space in the future.
@@ -39,11 +35,9 @@ For the moment, the incremental GC is only intended for beta testing and can be 
   },
 }
 ```
-
 Please let us know of any feedback and special shoutout to @luc-blaeser for leading and building out this large and complex feature!
 More information on the incremental GC can be found [here](https://github.com/dfinity/motoko/pull/3837).
 
 # 'Til next time!
-
 Keep building, and stay tuned for more updates!
 – DFINITY Languages team

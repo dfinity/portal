@@ -9,7 +9,7 @@ This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC.
 The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
 
 ### IC management canister
-* [The IC Management Canister](../../../references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of the IC. Canisters can call into the system API by sending messages to the *IC Management Canister*. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
+* [The IC Management Canister](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of the IC. Canisters can call into the system API by sending messages to the **IC Management Canister**. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
 
 :::info
 The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
@@ -21,7 +21,7 @@ The IC management canister is just a facade; it does not actually exist as a can
 
 ## The API for sending HTTP outcalls
 
-As per the [Internet Computer interface specification](../../../references/ic-interface-spec), a canister can use the `http_request` method by [following construction](../../../references/ic-interface-spec#ic-http_request):
+As per the [Internet Computer interface specification](https://internetcomputer.org/docs/current/references/ic-interface-spec), a canister can use the `http_request` method by [following construction](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request):
 
 ### The request
 The following parameters should be supplied for in the request:

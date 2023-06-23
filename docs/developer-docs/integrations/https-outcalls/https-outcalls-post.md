@@ -515,3 +515,8 @@ Open the candid web UI for backend and call the `send_http_post_request()` metho
 :::note
 In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a following section
 :::
+
+## Additional resources
+
+* Sample code of [HTTP POST requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post)
+* Sample code of [HTTP POST requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_post)
