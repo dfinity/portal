@@ -78,7 +78,7 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 
   What we have at this stage:
 
-    If successful, at the end of stage, we have:
+    If the proposal is adopted successfully, at the end of this step, we have:
 
 
 |  Objects in an app subnet                                      | State                    |  Controlled by |
