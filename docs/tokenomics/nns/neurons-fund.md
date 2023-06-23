@@ -2,7 +2,7 @@
 
 ## Overview
 
-The neurons' Fund (NF) facilitates investments by the NNS neurons in the Internet Computer (IC) ecosystem. In this article, we explain how the process of the Neurons' Fund (NF) works.
+The Neurons' Fund (NF) facilitates investments by the NNS neurons in the Internet Computer (IC) ecosystem. In this article, we explain how the process of the Neurons' Fund (NF) works.
 
 ## Background and motivation
 
