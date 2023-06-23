@@ -4,10 +4,10 @@ Many projects can benefit from having a staging environment available besides th
 
 ## Benefits of a staging environment
 
-It makes sense to start with the _why_. Why would a project want a staing environment? One of the biggest reasons is testing.
+It makes sense to start with the "why?" Why would a project want a staging environment? One of the biggest reasons is testing.
 Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment is very helpful.
 It allows developers (and maybe some beta users) to try things for themselves in a real environment.
-While local deployments mirror the live Intenrnet Computer as closely as possible, it is still not the same.
+While local deployments mirror the live Internet Computer as closely as possible, it is still not the same.
 For example, the local instance only runs as a single subnet. If you want to test canisters of two different subnets connecting to each other, you cannot do this locally.
 
 Some more reasons for having a staging environment are:
@@ -54,4 +54,4 @@ Or, combining the two into a one-liner:
 dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network myStaging
 ```
 
-If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a Cycles Wallet' in the [network quickstart](/developer-docs/setup/deploy-mainnet.md).
+If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a Cycles Wallet' in the [network quick start](/developer-docs/setup/deploy-mainnet.md).

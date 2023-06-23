@@ -11,7 +11,7 @@ An NFT or **non-fungible token** is a record on a blockchain that is associated 
 
 The Internet Computer (IC) brings a lot of potential for NFTs. For digital assets like images, sound clips, or videos, the entire assets can live on-chain and can be included in on-chain games or metaverse experiences. Furthermore, we can imagine dynamic NFTs that change based on IC-internal and external data via [HTTPS outcalls](/https-outcalls).
 
-For many applications, the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of the IC, such as the reverse gas model and the upgradability of canister smart contracts, require the NFT developer to be particularly aware.
+For many applications, the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of the IC, such as the reverse gas model and the upgradeability of canister smart contracts, require the NFT developer to be particularly aware.
 
 An NFT implementation on the IC typically has the following three functions:
 
