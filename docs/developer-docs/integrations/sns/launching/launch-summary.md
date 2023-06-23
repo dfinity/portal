@@ -1,4 +1,4 @@
-# SNS launch summary
+# Stages of an SNS launch
 
 ## Overview
 
@@ -13,7 +13,9 @@ swap for the newly created SNS.
 
 We first explain the decentralization swap and then the steps included in an SNS launch.
 
-## Decentralization swap
+## Key concepts
+
+### Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that 
 is owned and run by the IC.
@@ -41,11 +43,11 @@ The ICP that were collected in the decentralization swap provide initial
 funding for the SNS project in a SNS-owned treasury.
 
 
-## SNS launch process summary
+## Stages
 Handing over a dapp's control to a newly created SNS proceeds in the following high level steps.
 Note that the NNS community's approval is relevant in two steps (Step XX and XX).
 
-- #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
+### 1. Dapp developers choose the initial parameters of the SNS for a dapp
   As these parameters define not only the token name but also the tokenomics and how the governance
   will work, this usually requires a lot of preparation and community engagement already
   (see [here](../tokenomics/sns-checklist.md) for more information).
@@ -56,7 +58,7 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 |-------------------                            | ----------------                    | ----------------|
 | A dapp                                        | Operational                         | Dapp developer principal |
 
-- #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
+### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
   To ensure that malicious parties cannot simply fill the SNS subnet with un-approved SNSs, the
   canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
   contains a list of principals that are allowed to do so. Therefore, a developer launching an SNS needs to ask the NNS community for approval to be added to this list. If the proposal is adopted, the defined principal is allowed to install exactly one SNS. 
@@ -68,18 +70,11 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 | A dapp                                        | Operational                         | Dapp developer principal |
 | A wallet canister principal that can deploy to SNS subnet     | Pending NNS approval      | Dapp developer principal                        |
 
-- #### Step 3: NNS DAO accepts or rejects the NNS proposal
+### 3. NNS Proposal #1 is passed or rejected
 
-  This is the **first of three** proposals that need to successfully pass.
-  
-  :::info
-  If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
-  :::|
+This is the **first of three** proposals that need to successfully pass.
 
-  What we have at this stage:
-
-    If the proposal is adopted successfully, at the end of this step, we have:
-
+If the proposal is adopted successfully, at the end of this step, we have:
 
 |  Objects in an app subnet                                      | State                    |  Controlled by |
 |-------------------                                | ----------------                      | ----------------|
@@ -87,23 +82,26 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 
 |  Objects in the SNS subnet                        | State                     |  Controlled by |
 |-------------------                                | ----------------          | ----------------|
-| A principal that can deploy to SNS subnet         | Ready for 1-time use      | Dapp developer principal                        |
+| A principal that can deploy to SNS subnet         | Ready for 1-time use      | Dapp developer principal      
+  
+:::warning
+If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+:::
 
-- #### Step 4: Dapp developers trigger the SNS canisters to be created on SNS subnet
+### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
 
-  When all initial parameters are specified and the NNS approved the SNS launch,
-  the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns-architecture.md#SNS-W).
-  This will initiate the creation of the SNS canisters and set their initial parameters as
-  chosen in [Step 1](#SNS-launch-step-preparation).
+When all initial parameters are specified and the NNS approved the SNS launch,
+the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns-architecture.md#SNS-W).
+This will initiate the creation of the SNS canisters and set their initial parameters as
+chosen in [Step 1](#SNS-launch-step-preparation).
 
-    If successful, at the end of stage, we have:
-
+If successful, at the end of stage, we have:
 
 |  Decentralization swap state                      | PENDING                               |  
 |-------------------                                | ----------------                      |
 
 
-|  Objects in an app subnet                                      | State                    |  Controlled by |
+|  Objects in an app subnet                         | State                    |  Controlled by |
 |-------------------                                | ----------------                      | ----------------|
 | A dapp                                            | Operational                           | Dapp developer principal | 
 
@@ -150,7 +148,7 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 | Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 
 
-- #### Step 6: Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
+### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
   This includes adding the SNS root canister as the controller of the dapp and removing
@@ -191,7 +189,7 @@ Note that the NNS community's approval is relevant in two steps (Step XX and XX)
 | Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 
 
-- #### Step 7: The initial SNS developer neurons accepts or rejects the SNS proposal
+### 7. The initial SNS developer neurons accepts or rejects the SNS proposal
 
   The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
@@ -224,7 +222,7 @@ If successful, at the end of stage, we have:
 
 
 
-- #### Step 8: Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+### 8. Anyone in the community submits an NNS proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
   Once the control of the dapp has been handed over to the SNS, anyone in the community can send an NNS proposal to trigger the decentralization swap. This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
@@ -246,7 +244,7 @@ If successful, at the end of stage, we have:
 | Treasury account on the SNS Ledger                | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 | Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 
-- #### Step 9: NNS DAO accepts or rejects the proposal
+### 9. NNS DAO accepts or rejects the proposal
 
   This is the **last of three** proposals that need to successfully pass for the process to continue. 
 
@@ -280,7 +278,7 @@ If successful, at the end of stage, we have:
 | Swap account on the SNS Ledger                    | Pre-decentralization swap mode        | Newly-created SNS canisters on the SNS subnet   |
 
 
-- #### Step 10: SNS participants participate in the decentralization swap.
+### 10. SNS participants participate in the decentralization swap.
 
   When the swap starts, the swap canister holds the number
   of SNS tokens that were specified. End users can
@@ -289,7 +287,7 @@ If successful, at the end of stage, we have:
 
   
 
-- #### Step 11: SNS canisters become SNS DAO.{#SNS-launch-step-genesis}
+### 11. SNS canisters become SNS DAO.{#SNS-launch-step-genesis}
   
   When the decentralization swap ends, it is first established whether
   it was successful, e.g., enough ICP have been collected. If the swap was successful,
