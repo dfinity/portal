@@ -16,7 +16,7 @@ We first explain the decentralization swap and then the steps included in an SNS
 ## Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that 
-is owned by the IC which will run the swap.
+is owned and run by the IC.
 In more detail, it is controlled by the NNS root canister.
 
 * The swap canister is set up at the start with a defined amount of SNS tokens to be
@@ -43,7 +43,7 @@ funding for the SNS project in a SNS-owned treasury.
 
 ## SNS launch process summary
 Handing over a dapp's control to a newly created SNS proceeds in the following high level steps.
-Note that the NNS community's approvals is relevant in two steps (Step XX and XX).
+Note that the NNS community's approval is relevant in two steps (Step XX and XX).
 
 - #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
   As these parameters define not only the token name but also the tokenomics and how the governance
@@ -78,7 +78,7 @@ Note that the NNS community's approvals is relevant in two steps (Step XX and XX
 
   What we have at this stage:
 
-    If successful, at the end of stage, we have:
+    If the proposal is adopted successfully, at the end of this step, we have:
 
 
 |  Objects in an app subnet                                      | State                    |  Controlled by |

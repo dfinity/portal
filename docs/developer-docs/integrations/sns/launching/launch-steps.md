@@ -36,7 +36,7 @@ ls bazel-bin/rs/sns/cli/sns
 
 - #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
-Anyone who owns and NNS neuron with enough stake can submit a proposal
+Anyone who owns an NNS neuron with enough stake can submit a proposal
 that lists a principal wallet in [SNS-W](../introduction/sns-architecture.md#SNS-W) who can then deploy the SNS canisters.
 
 To create such a proposal, a common path is to [download the `ic-admin` tool](../../../setup/ic-admin.md) and run the following:
@@ -54,10 +54,10 @@ ic-admin  \
 
 - #### Step 3: NNS DAO accepts or rejects the NNS proposal
 
-  This is the **first of three** proposals that need to successfully pass.
+  This is the **first of two NNS** proposals that need to successfully pass.
   
   :::info
-  If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+  If this NNS proposal passes and the developer's principal is added to the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
   :::
 
 - #### Step 4: Dapp developers trigger the SNS canisters to be created on SNS subnet
@@ -65,7 +65,7 @@ ic-admin  \
 After the wallet canister is listed in SNS-W, 
 the [SNS canisters are created triggered by a manual call to SNS-W](../launching/launch-steps.md/#SNS-launch-step-deployment).
 
-The command tp trigger the creation of SNS canisters on the SNS subnet: 
+The command to trigger the creation of SNS canisters on the SNS subnet: 
 
 ```bash
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
