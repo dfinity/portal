@@ -145,11 +145,6 @@ const navbarItems = [
           href: "https://identity.ic0.app/"
         },
         {
-          label: "Staking & Governance (NNS)",
-          href: "/nns?source=nav"
-        },
-
-        {
           label: "Help & Support",
           href: "https://support.dfinity.org/hc/en-us "
         }
@@ -239,11 +234,19 @@ const navbarItems = [
   {
     type: "dropdown",
     position: "right",
-    label: "Community",
+    label: "Participate",
     className: "dropdown--custom dropdown--columns-2",
     items: intoColumns([
       [
         menuDivider("Get Involved"),
+        {
+          label: "Become a Node Provider",
+          href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+        },
+        {
+          label: "Staking & Governance (NNS)",
+          href: "/nns?source=nav"
+        },
         {
           label: "Live Sessions",
           href: "/live-sessions?source=nav"
@@ -263,10 +266,6 @@ const navbarItems = [
         {
           label: "ICP Careers",
           href: "http://careers.internetcomputer.org/"
-        },
-        {
-          label: "Become a Node Provider",
-          href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
         },
         {
           label: "DFINITY Foundation",
@@ -332,7 +331,7 @@ const subnavItems = [
   },
   {
     position: "left",
-    href: "/blog",
+    to: "blog",
     label: "Blog"
   },
   {

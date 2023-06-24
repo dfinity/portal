@@ -21,6 +21,11 @@ If you intend to deploy canisters on high-replication subnets, your canister sho
 See below for details on the cost of compute and storage transactions as well as management canister calls for new features on the Internet Computer as of December 2, 2022.
 A thorough example how the cost of running a canister on a 13-node app subnet is computed can be found [here](https://medium.com/@DBOXFoundation/findings-from-calculating-the-cycle-consumption-of-messity-a-universal-example-b2af8dcd3151).
 
+:::info
+Regarding transaction fees, the **transaction sender** is responsible for covering any/all transaction fees.
+:::
+
+
 | Transaction                          | Description                                                                                                      | Local development ([IC SDK](./setup/index.md))             | 13-node Application Subnets           | 34-node Application Subnets        |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------- | ---------------------------------- |
 | Canister Created                     | For creating canisters on a subnet                                                                               | 100B / 13                             | 100B                                  | 100B / 13 * 34                     |

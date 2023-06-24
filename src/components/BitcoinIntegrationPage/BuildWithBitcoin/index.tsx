@@ -27,8 +27,8 @@ function Index() {
       href: "https://internetcomputer.org/samples?term=bitcoin",
     },
     {
-      title: "Wiki",
-      href: "https://wiki.internetcomputer.org/wiki/Bitcoin_integration",
+      title: "Bitcoin integration FAQ",
+      href: "/bitcoin-integration/faq",
     },
   ];
   return (
