@@ -274,7 +274,7 @@ If successful, at the end of stage, we the following has changed:
   as well as potential upgrades to the dapp, can be realized by SNS proposals and by the
   majority of initial neurons voting in favor of them.
   The initial neurons cannot do other things, such as changing
-  the SNS  parameters, as the SNS governance canister is still in
+  the SNS parameters, as the SNS governance canister is still in
   pre-decentralization-swap mode.
 
 If successful, at the end of stage, we the following has changed:
