@@ -328,15 +328,6 @@ function EnterprisePage() {
                 users to actively participate.
               </p>
 
-              <p className="mb-0">
-                <Link
-                  href="/how-it-works"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  How ICP works
-                </Link>
-              </p>
             </TranslatedLayout>
           </div>
         </section>
@@ -485,9 +476,9 @@ function EnterprisePage() {
               href="/docs/current/home"
             />
             <CardWithDescription
-              title="Code Bitcoin"
+              title="How ICP works"
               description=""
-              href="/bitcoin-integration"
+              href="/how-it-works"
             />
           </AnimateSpawn>
         </section>
