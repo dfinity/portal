@@ -217,7 +217,7 @@ After the SNS canister creation, the canisters exist but are not yet fully funct
 
 At this point, the SNS ledger only has two accounts: 
 
-* the **treasury** that is owned by the SNS governance canister and which can be used in the future according to the SNS community's wishes
+* The **treasury** that is owned by the SNS governance canister and which can be used in the future according to the SNS community's wishes.
 * some pre-allocated tokens to be used in the initial decentralization swap
 
 To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
