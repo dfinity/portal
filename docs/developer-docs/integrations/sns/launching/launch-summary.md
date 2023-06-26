@@ -224,47 +224,7 @@ At this point, the SNS ledger only has two accounts:
 To ensure that no one can transfer tokens, and distribute them or start token markets prematurely, all remaining initial tokens are locked in neurons.
 Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
 
-If successful, at the end of stage, we have:
-
-#### Table 1
-
-<table>
-  <tr>
-    <th>SNS Process</th>
-    <th>State</th>
-  </tr>
-  <tr>
-    <td>Decentralization swap state</td>
-    <td>Pending</td>
-  </tr>
-   <tr>
-    <td>NNS Proposal #1</td>
-    <td>Approved</td>
-  </tr>
-   <tr>
-    <td>SNS Proposal #1</td>
-    <td>Pending</td>
-  </tr>
-   <tr>
-    <td>NNS Proposal #2</td>
-    <td>Pending</td>
-  </tr>
-</table>
-
-#### Table 2
-
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td>dapp developer principal</td>
-  </tr>
-</table>
+If successful, at the end of stage, we the following has changed:
 
 #### Table 3
 
