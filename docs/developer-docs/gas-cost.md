@@ -41,12 +41,10 @@ Regarding transaction fees, the **transaction sender** is responsible for coveri
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
 |                                      |                                                                                                                  |                                       |                                       |                                    |
-| _Chain-key signatures_               |                                                                                                                  |                                       |                                       |                                    |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                  | 10B / 13                              | 10B                                   | 10B / 13 * 34                      |
-|                                      |                                                                                                                  |                                       |                                       |                                    |
 | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
-| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | 400M / 13                             | 400M                                  | 400M / 13 * 34                     |
-| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`) | 100K / 13                             | 100K                                  | 100K / 13 * 34                     |
+| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | 3,060,000                             | 49,140,000                                  | 171,360,000                     |
+| HTTPS outcall request payload (per byte)                | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`) | 400                             | 5,200                                  | 13,600                     |
+| HTTPS outcall response payload (per byte)                | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`) | 800                             | 10,400                                  | 27,200                     |
 
 Pricing for the Bitcoin API is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
@@ -70,12 +68,10 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | Ingress Byte Reception               | For every byte received in an ingress message                                                                    | $0.00000000261772           | $0.00000000684534           |
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | $0.00000016622522           | $0.00000043474178           |
 |                                      |                                                                                                                  |                             |                             |
-| *Chain-key signatures*               |                                                                                                                  |                             |                             |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                  | $0.0130886                  | $0.0342317                  |
-|                                      |                                                                                                                  |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
-| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0005235440               | $0.0013692689               |
-| HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`) | $0.0000001308860            | $0.0000003423166            |
+| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0000643173804               | 0.0002242862496
+| HTTPS outcall request payload (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`)                   | $0.000000006806072            | $0.000000017800496
+| HTTPS outcall response payload (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`)        | $0.000000013612144            | $0.000000035600992            |
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
 
