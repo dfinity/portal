@@ -25,7 +25,7 @@ that allow you to try out different configurations and assess them.
 
 In addition, during the preparation phase you might want to prepare the [integration of the SNS
 with your dapp](../integrating/index.md).
-Moreover, you should [test](../testing/testing-before-launch.md) your settings and convince yourself
+Moreover, you should [test](../testing/testing-before-launch.md) your settings and confirm
 that the launched SNS will work successfully with your dapp.
 Integration and testing are topics that are not only relevant during the SNS launch but also
 later in the SNS lifecycle. 
