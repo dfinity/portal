@@ -96,7 +96,7 @@ When configuring an asset canister, a set of permissions that contains a whiteli
 
 During the SNS launch, control of the asset canister must be handed over to the SNS. Apart from assigning canister control to SNS root as with all dapp canisters, the SNS' governance canister should be added to the whitelist as a principal with `Commit` rights. Only principals with `Commit` rights may apply proposed changes. 
 
-Once the asset canister has been handed over to the SNS, only the governance canister should have `Commit` rights, and principals in the whitelist should have `Prepare` rights. The developer who configured and deployed the SNS should have their permissions removed prior to launching the SNS. 
+Once the asset canister has been handed over to the SNS, only the governance canister should have `Commit` rights, and principals in the whitelist should have `Prepare` rights. The developer who configured and deployed the SNS should have their permissions removed during the SNS launch. 
 
 If the whitelist needs to be adapted or changed, the SNS can call `take_ownership` via a proposal, which must be added as a custom proposal type. This will clear all permissions, and give only the SNS governance canister `Commit` permissions. 
 
