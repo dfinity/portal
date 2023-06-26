@@ -83,7 +83,7 @@ function Index() {
           <a
             aria-label={`Video: ${video.title}`}
             key={video.id}
-            href={`https://www.youtube.com/watch?v=${video}`}
+            href={`https://www.youtube.com/watch?v=${video.id}`}
             target="_blank"
           >
             <div className="group relative flex">
