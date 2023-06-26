@@ -92,7 +92,7 @@ The asset canister should be deployed and have permissions configured before the
 
 ## Configuring an asset canister's permissions
 
-When configuring an asset canister, a set of permissions that contains a whitelist of principals must be created. This whitelist details who is allowed submit proposals that update assets in the asset canister. This whitelist must be configured prior to the SNS launch. Principals that are allowed to submit proposals are given the `Prepare` permission.
+When configuring an asset canister, a set of permissions that contains a whitelist of principals must be created. This whitelist details who is allowed to submit proposals that update assets in the asset canister. This whitelist must be configured prior to the SNS launch. Principals that are allowed to submit proposals are given the `Prepare` permission.
 
 During the SNS launch, control of the asset canister must be handed over to the SNS. Apart from assigning canister control to SNS root as with all dapp canisters, the SNS' governance canister should be added to the whitelist as a principal with `Commit` rights. Only principals with `Commit` rights may apply proposed changes. 
 
