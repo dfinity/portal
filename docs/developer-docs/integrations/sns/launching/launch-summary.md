@@ -86,7 +86,6 @@ Note that the NNS community's approval is relevant in two steps (stages 3, 7, an
   </tr>
 </table>
 
-
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
 To ensure that malicious parties cannot simply fill the SNS subnet with un-approved SNSs, the
@@ -305,7 +304,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 7. Proposal #2 (of 3) is passed or rejected
+### 6. Proposal #2 (of 3) is passed or rejected
 
 The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
@@ -353,7 +352,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 8. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+### 7. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
 This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
@@ -384,7 +383,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 9. Proposal #3 (of 3) is passed or rejected
+### 8. Proposal #3 (of 3) is passed or rejected
 
 This is the **last of three** proposals that need to successfully pass for the process to continue. 
 
@@ -423,7 +422,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 10. SNS participants participate in the decentralization swap.
+### 9. SNS participants participate in the decentralization swap.
 
   When the swap starts, the swap canister holds the number
   of SNS tokens that were specified. End users can
@@ -431,7 +430,7 @@ If successful, at the end of stage, we the following has changed:
   swap canister.
   
 
-### 11. SNS canisters become SNS DAO.{#SNS-launch-step-genesis}
+### 10. SNS canisters become SNS DAO.{#SNS-launch-step-genesis}
   
   When the decentralization swap ends, it is first established whether
   it was successful, e.g., enough ICP have been collected. If the swap was successful,

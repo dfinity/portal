@@ -11,13 +11,17 @@ with the difference that the commands target the canisters on the mainnet.
 To make the most important commands and what they need to look like for 
 mainnet more accessible, they are listed below.
 
-## Requirememts
+## Requirements
 
-1. IC SDK
+### 1. IC SDK
 
-2. `ic-admin`
+See: [installing the IC SDK](../../../setup/install).
 
-3. `sns` CLI
+### 2. `ic-admin`
+
+See: [installing the `ic-admin`](../../../setup/ic-admin.md).
+
+### 3. `sns` CLI
 
 :::note
 The version of the sns CLI that is bundled with your dfx version may not have the latest commands described in the Usage section. If needed, it is recommended to build and use the sns CLI tool yourself.
@@ -29,17 +33,16 @@ cd ic
 bazel build //rs/sns/cli:sns
 ls bazel-bin/rs/sns/cli/sns 
 ```
+## Stages
 
-## Steps
+### 1. Dapp developers choose the initial parameters of the SNS for a dapp
 
-- #### Step 1: Dapp developers choose the initial parameters of the SNS for a dapp
-
-- #### Step 2: Dapp developers submit NNS proposal so they can deploy to the SNS subnet
+### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
 Anyone who owns an NNS neuron with enough stake can submit a proposal
 that lists a principal wallet in [SNS-W](../introduction/sns-architecture.md#SNS-W) who can then deploy the SNS canisters.
 
-To create such a proposal, a common path is to [download the `ic-admin` tool](../../../setup/ic-admin.md) and run the following:
+To create such a proposal, a common path is to use `ic-admin` and run the following:
 
 ```bash 
 ic-admin  \
@@ -52,26 +55,21 @@ ic-admin  \
 * One can substitute `WALLET` with the principal in question 
 * One can substitute `NETWORK_URL` with `https://nns.ic0.app`
 
-- #### Step 3: NNS DAO accepts or rejects the NNS proposal
+### 3. Proposal #1 (of 3) is passed or rejected
 
-  This is the **first of two NNS** proposals that need to successfully pass.
-  
-  :::info
-  If this NNS proposal passes and the developer's principal is added to the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
-  :::
-
-- #### Step 4: Dapp developers trigger the SNS canisters to be created on SNS subnet
+### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
 
 After the wallet canister is listed in SNS-W, 
 the [SNS canisters are created triggered by a manual call to SNS-W](../launching/launch-steps.md/#SNS-launch-step-deployment).
 
-The command to trigger the creation of SNS canisters on the SNS subnet: 
+The `sns CLI` command to trigger the creation of SNS canisters on the SNS subnet: 
 
 ```bash
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
 ```
 
-## Submitting an NNS proposal to start the SNS swap {#SNS-launch-command-NNSproposal2}
+### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
+
 After the SNS canisters are deployed and the dapp's control is handed over to
 the SNS, an [NNS proposal starts the swap](../launching/launch-steps.md/#SNS-launch-step-startSwap). 
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
@@ -96,8 +94,16 @@ ic-admin   \
    --summary "Decentralize this SNS"
 ```
 
+### 6. Proposal #2 (of 3) is passed or rejected
 
-## Finalizing the SNS swap {#SNS-launch-command-finalizingswap}
+### 7. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+
+### 8. Proposal #3 (of 3) is passed or rejected
+
+### 9. SNS participants participate in the decentralization swap
+
+### 10. SNS canisters become SNS DAO
+
 When the swap ends, either because its deadline is reached or because the maximum
 ICP have been collected, its finalization has to be triggered by a manual call
 to the SNS swap that can be done by anyone.
