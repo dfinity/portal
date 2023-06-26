@@ -54,7 +54,7 @@ ic-admin  \
    --summary "This proposal whitelists developer's principal to deploy SNS"
 ``` 
 
-* One can substitute `WALLET` with the principal in question 
+* One can substitute `WALLET` with the principal in question.
 * One can substitute `NETWORK_URL` with `https://nns.ic0.app`.
 
 ### 3. Proposal #1 (of 3) is passed or rejected
