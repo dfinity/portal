@@ -69,7 +69,9 @@ Note that in case of high system load, a request to compute an ECDSA signature m
 
 The fees for the ECDSA signing API are as defined below. The threshold ECDSA test key resides on a regular-sized (13-node) application subnet, while the threshold ECDSA production key resides on an about 30-node-sized fiduciary subnet. The subnet size of the subnet where the threshold signature key resides and the signatures are computed define the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of of November 23, 2022 has been used.
 
+:::note
 If a canister using this feature is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
+:::
 
 ### Fees for the t-ECDSA Test Key
 
