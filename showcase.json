@@ -1962,5 +1962,26 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "36483996"
+  },
+  {
+    "name": "BTC integration in ICDex",
+    "description": "BTC integration in ICDex",
+    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/loginByExists",
+    "logo": "/img/showcase/btc-integration-in-icdex_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "btc-integration-in-icdex",
+    "oneLiner": "BTC integration in ICDex",
+    "stats": "2000",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "34393550"
   }
 ]
