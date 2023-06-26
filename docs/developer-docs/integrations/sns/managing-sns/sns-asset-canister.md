@@ -6,7 +6,7 @@ The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/fr
 
 In the context of the SNS, a dapp's associated asset canister serves the frontend assets related to dapp and may also include a frontend to the SNS DAO, e.g., through which users can vote on governance proposals.  
 
-The contents of the asset canister must be configured prior to the launch of the SNS, and any changes afterwards must be made by a submitting a proposal by a principal with the permission to do so. Once changes are proposed, they can be voted on by the SNS DAO. If approved, the SNS governance canister is the only one that can commit the approved changes.  This configuration assures that changes to the asset canister are only made by approved proposals. These changes are referred to as 'upgrades' to the asset canister in the remainder of this document. 
+The contents of the asset canister must be configured prior to the launch of the SNS. Any changes afterwards must be submitted by a principal with the permission to do so. Once changes are proposed, they can be voted on by the SNS DAO. If adopted, the SNS governance canister commits the approved changes and is the only one who can do so.  This configuration assures that changes to the asset canister are only made by adopted proposals. These changes are referred to as 'upgrades' to the asset canister in the remainder of this document. 
 
 This section is relevant if your project contains an asset canister and describes how you can test handing over control of an asset canister to an SNS.
 
