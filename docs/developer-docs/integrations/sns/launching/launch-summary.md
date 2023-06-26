@@ -318,7 +318,7 @@ If successful, at the end of stage, we have:
   the SNS  parameters, as the SNS governance canister is still in
   pre-decentralization-swap mode.
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, we the following has changed:
 
 #### Table 1
 
@@ -345,63 +345,13 @@ If successful, at the end of stage, we have:
   </tr>
 </table>
 
-#### Table 2
-
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td>dapp developer principal</td>
-  </tr>
-</table>
-
-#### Table 3
-
-<table>
-  <tr>
-    <th>Objects in the SNS subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a principal that can deploy to SNS subnet</td>
-    <td>revoked because it is 1-time use</td>
-    <td>NA</td>
-  </tr>
-  <tr>
-    <td>SNS root</td>
-    <td>pre-decentralization swap mode</td>
-    <td>initial developer neurons</td>
-  </tr>
-  <tr>
-    <td>initial developer neurons</td>
-    <td>pre-decentralization swap mode</td>
-    <td>dapp developer principal</td>
-  </tr>
-  <tr>
-    <td>treasury account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-  <tr>
-    <td>swap account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-</table>
-
 ### 7. Proposal #2 (of 3) is passed or rejected
 
 The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
 Since this proposal is passed by the SNS DAO. When one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](nns.ic0.app), but they are two separate DAOs.
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, we the following has changed:
 
 #### Table 1
 
@@ -443,46 +393,11 @@ If successful, at the end of stage, we have:
   </tr>
 </table>
 
-#### Table 3
-
-<table>
-  <tr>
-    <th>Objects in the SNS subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a principal that can deploy to SNS subnet</td>
-    <td>revoked because it is 1-time use</td>
-    <td>NA</td>
-  </tr>
-  <tr>
-    <td>SNS root</td>
-    <td>pre-decentralization swap mode</td>
-    <td>initial developer neurons</td>
-  </tr>
-  <tr>
-    <td>initial developer neurons</td>
-    <td>pre-decentralization swap mode</td>
-    <td>dapp developer principal</td>
-  </tr>
-  <tr>
-    <td>treasury account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-  <tr>
-    <td>swap account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-</table>
-
 ### 8. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
   
 This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, we the following has changed:
 
 #### Table 1
 
@@ -509,57 +424,6 @@ If successful, at the end of stage, we have:
   </tr>
 </table>
 
-#### Table 2
-
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td>SNS root</td>
-  </tr>
-</table>
-
-#### Table 3
-
-<table>
-  <tr>
-    <th>Objects in the SNS subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>A principal that can deploy to SNS subnet</td>
-    <td>revoked because it is 1-time use</td>
-    <td>NA</td>
-  </tr>
-  <tr>
-    <td>SNS root</td>
-    <td>pre-decentralization swap mode</td>
-    <td>initial developer neurons</td>
-  </tr>
-  <tr>
-    <td>initial developer neurons</td>
-    <td>pre-decentralization swap mode</td>
-    <td>dapp developer principal</td>
-  </tr>
-  <tr>
-    <td>treasury account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-  <tr>
-    <td>swap account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-</table>
-
-
 ### 9. Proposal #3 (of 3) is passed or rejected
 
 This is the **last of three** proposals that need to successfully pass for the process to continue. 
@@ -571,7 +435,7 @@ existing SNS canisters as well as the swap parameters that are set in the propos
 * If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
 back to the original developers of the dapp.
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, we the following has changed:
 
 
 #### Table 1
@@ -598,57 +462,6 @@ If successful, at the end of stage, we have:
     <td class="light-orange-text">Approved</td>
   </tr>
 </table>
-
-#### Table 2
-
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td>SNS root</td>
-  </tr>
-</table>
-
-#### Table 3
-
-<table>
-  <tr>
-    <th>Objects in the SNS subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a principal that can deploy to SNS subnet</td>
-    <td>revoked because it is 1-time use</td>
-    <td>NA</td>
-  </tr>
-  <tr>
-    <td>SNS root</td>
-    <td>pre-decentralization swap mode</td>
-    <td>initial developer neurons</td>
-  </tr>
-  <tr>
-    <td>initial developer neurons</td>
-    <td>pre-decentralization swap mode</td>
-    <td>dapp developer principal</td>
-  </tr>
-  <tr>
-    <td>treasury account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-  <tr>
-    <td>swap account on the SNS Ledger</td>
-    <td>pre-decentralization swap mode</td>
-    <td>SNS root</td>
-  </tr>
-</table>
-
 
 ### 10. SNS participants participate in the decentralization swap.
 
