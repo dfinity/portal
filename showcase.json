@@ -1942,5 +1942,25 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "34425295"
+  },
+  {
+    "name": "ETH Integration (Motoko)",
+    "description": "The integration of ethereum on the IC network without bridges is achieved through chain-key (threshold signature) technology for ECDSA signatures, and the smart contracts of IC can directly access the RPC nodes of ethereum through HTTPS Outcall technology. ",
+    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/loginByExists",
+    "logo": "/img/showcase/eth-integration-motoko_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "eth-integration-motoko",
+    "oneLiner": "uses the Motoko to implement the integration of ckETH.",
+    "stats": "It is being tested",
+    "tags": [
+      "DeFi"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "36483996"
   }
 ]
