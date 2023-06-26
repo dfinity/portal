@@ -38,7 +38,7 @@ function InfoLine({ date, formattedDate, tags }) {
   );
 }
 
-function CoverImage({ url = '/img/dfinity.png', permalink }) {
+function CoverImage({ url = "/img/dfinity.png", permalink }) {
   return (
     <Link href={permalink} className="flex hover:no-underline w-full">
       {url ? (
@@ -58,13 +58,13 @@ function CoverImage({ url = '/img/dfinity.png', permalink }) {
 
 const tagColors = {
   Devs: "bg-razzmatazz-300 text-white",
-  "New features": "bg-blue text-white"
+  "New features": "bg-blue text-white",
 };
 
 export default function BlogPostItems({
   items,
   component: BlogPostItemComponent = BlogPostItem,
-  withFeatured = false
+  withFeatured = false,
 }) {
   const featuredPost = items[0];
   const restPosts = withFeatured ? items.slice(1) : items;
@@ -102,7 +102,7 @@ export default function BlogPostItems({
           <div className="flex flex-col">
             <CoverImage
               url={BlogPostContent.frontMatter.image}
-              permalink={featuredPost.content.metadata.permalink}
+              permalink={BlogPostContent.metadata.permalink}
             ></CoverImage>
             <InfoLine
               date={BlogPostContent.metadata.date}

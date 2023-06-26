@@ -34,8 +34,9 @@ export default function Home(): JSX.Element {
             "Autonomous code",
             "Unstoppable code",
             "Native multi-chain",
-            "No security teams",
+            "Security by design",
             "No firewalls needed",
+            "Privacy by design",
             "Decentralize control",
           ]}
         ></PreHero>

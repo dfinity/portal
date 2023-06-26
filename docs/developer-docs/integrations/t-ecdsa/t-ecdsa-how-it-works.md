@@ -63,7 +63,7 @@ This call requires that the ECDSA feature is enabled, and the `canister_id` meet
 The signatures are encoded as the concatenation of the SEC1 encodings of the two values `r` and `s`. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.<br/>
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
-Note that in case of high system load, a request to compute an ECDSA signature may time out. In this case, the caniste may want to back off and retry the request later.
+Note that in case of high system load, a request to compute an ECDSA signature may time out. In this case, the canister may want to back off and retry the request later.
 
 ## API Fees
 
