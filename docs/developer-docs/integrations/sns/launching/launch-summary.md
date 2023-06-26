@@ -308,7 +308,7 @@ If successful, at the end of stage, we the following has changed:
 
 The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
-Since this proposal is passed by the SNS DAO. When one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](https://nns.ic0.app), but they are two separate DAOs.
+Since this proposal is passed by the SNS DAO, when one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](https://nns.ic0.app), but they are two separate DAOs.
 
 If successful, at the end of stage, we the following has changed:
 
