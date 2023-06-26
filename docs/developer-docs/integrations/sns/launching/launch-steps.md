@@ -37,6 +37,8 @@ ls bazel-bin/rs/sns/cli/sns
 
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp
 
+Typically, dapp developers typically choose initial parameters that will be used in subsequent proposals.
+
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
 Anyone who owns an NNS neuron with enough stake can submit a proposal
@@ -68,7 +70,7 @@ The `sns CLI` command to trigger the creation of SNS canisters on the SNS subnet
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
 ```
 
-### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
+### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
 
 After the SNS canisters are deployed and the dapp's control is handed over to
 the SNS, an [NNS proposal starts the swap](../launching/launch-steps.md/#SNS-launch-step-startSwap). 
@@ -96,11 +98,17 @@ ic-admin   \
 
 ### 6. Proposal #2 (of 3) is passed or rejected
 
-### 7. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+Nothing technical for dapp developers to do. Community votes.
+
+### 7. Proposal to start the decentralization swap
 
 ### 8. Proposal #3 (of 3) is passed or rejected
 
+Nothing technical for dapp developers to do. Community votes.
+
 ### 9. SNS participants participate in the decentralization swap
+
+Nothing technical for dapp developers to do. Community participates in the swap.
 
 ### 10. SNS canisters become SNS DAO
 
