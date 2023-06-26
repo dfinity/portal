@@ -69,7 +69,7 @@ Once the asset canister has been deployed, the SNS can be launched. You can lear
 ### Deploying on the mainnet
 
 :::info 
-To deploy to the mainnet network, you will need a wallet that contains cycles. For more information on cycles wallets, please see [here](../../../setup/cycles/cycles-wallet.md).
+To deploy to the mainnet, you will need a wallet that contains cycles. For more information on cycles wallets, please see [here](../../../setup/cycles/cycles-wallet.md).
 :::
 
 To deploy your asset canister to the mainnet, the following command can be used:
