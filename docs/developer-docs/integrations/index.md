@@ -45,7 +45,7 @@ Similar to how the NNS is the open tokenized DAO that controls the IC, SNSs are 
 * [An introduction to the SNS.](./sns/introduction/sns-intro-high-level.md)
 * [An introduction to how to prepare for an SNS launch.](./sns/tokenomics/index.md)
 * [SNS integration documentation.](./sns/integrating/index.md)
-* [SNS testing documentation.](./sns/testing/get-sns-intro.md)
+* [SNS testing documentation.](./sns/testing/testing-before-launch.md)
 * [An introduction to the SNS launch.](./sns/launching/launch-summary.md)
 * [Information on how to manage an SNS.](./sns/managing/manage-sns-intro.md)
 

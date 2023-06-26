@@ -433,7 +433,7 @@ const sidebars = {
                       label: "Testing an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/testing/get-sns-intro",
+                        id: "developer-docs/integrations/sns/testing/testing-before-launch",
                       },
                       items: [
                         "developer-docs/integrations/sns/testing/local-testing",

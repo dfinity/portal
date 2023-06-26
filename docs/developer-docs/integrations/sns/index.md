@@ -39,7 +39,7 @@ It includes
 ## SNS testing
 An important part of preparing an SNS launch, integrating with an SNS, and managing an SNS, is testing.
 This section provides 
-* [An introduction to SNS testing](./testing/get-sns-intro.md).
+* [An introduction to SNS testing](./testing/testing-before-launch.md).
 * [Guidelines how to test an SNS locally](./testing/local-testing.md), including the SNS lauch.
 * [Guidelines how to test the operation of the dapp under SNS control](./testing/testflight.md), including on mainnet.
 
