@@ -36,8 +36,8 @@ In more detail, it is controlled by the NNS root canister.
   and each participant would get 2 SNS tokens for each ICP token they contributed.
 
 ## Stages
-Handing over a dapp's control to a newly created SNS proceeds in the following high level steps.
-Note that the NNS community's approval is relevant in two steps (stages 3, 7, and 9).
+Handing over a dapp's control to a newly created SNS proceeds in the following high level stages.
+Note that the NNS community's approval is relevant in two stages (stages 3, 7, and 9).
 
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp
   As these parameters define not only the token name but also the tokenomics and how the governance
