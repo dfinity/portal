@@ -251,7 +251,7 @@ If successful, at the end of stage, we the following has changed:
   <tr>
     <td class="light-green-text">treasury account on the SNS Ledger</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">SNS root</td>
+    <td class="light-green-text">SNS governance</td>
   </tr>
   <tr>
     <td class="light-green-text">swap account on the SNS Ledger</td>
