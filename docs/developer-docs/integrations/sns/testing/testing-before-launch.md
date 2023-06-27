@@ -2,26 +2,12 @@
 sidebar_position: 1
 ---
 
-# SNS testing before the launch
+# SNS testing before launch
+
 Before launching an SNS it is advisable to thoroughly test it. 
 
-There are two main tools for testing the SNS:
-1. [SNS local testing](./local-testing.md) allows one to test the SNS locally.
-   This includes 
-   * Testing the SNS's launch which enables developers to 
-   try out different initial parameters. 
-   * Testing the integration of the SNS with a dapp, for
-   example if you integrate parts of the frontend for the SNS into you dapp or
-   if you build a DEX that interacts with the SNS.
-   * Testing the integration of the SNS canisters with the dapp canister(s).
-    
-2. [SNS testflight](./testflight.md) to test whether a dapp can be operated
-under SNS control. This testing can be done locally or on mainnet with a test
-   SNS. 
-   It might be a non-trivial tasks to ensure that all operations that are run
-   by manual scrips in a centralized setting can be executed by a DAO. 
-   This might require new proposals or specific privilege settings in the
-   dapp canister(s). Therefore, developers are encouraged to run perform 
-   an SNS testflight on the mainnet, potentially for multiple days or weeks, to
-   ensure that all aspects have been covered.
+## Two main ways for testing an SNS decentralization
 
+1. **[On a local machine](./testing-locally.md)** - Developers can run a local version of the Internet Computer on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary.md) of decentralizing their dapp. Developers can initiate, pass proposals, start decentralization swaps, upgrade dapp via DAO voting, etc...
+
+2.  **[On a mainnet](./testing-on-mainnet.md)** - Developers can also deploy their dapp to mainnet (AKA "SNS testflight") and run through each of [the stages](../launching/launch-summary.md) of decentralizing their dapp on an SNS deployed to an app subnet. The tools for testing for this way always give teh developer a way to recover control of their dapp (something that would be impossible for a real SNS decentralization). Developers can initiate, pass proposals, start decentralization swaps, upgrade dapp via DAO voting, etc... It might be a non-trivial tasks to ensure that all operations that are run by manual scrips in a centralized setting can be executed by a DAO. This might require new proposals or specific privilege settings in the dapp canister(s). Therefore, developers are encouraged to run perform an SNS testflight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.
