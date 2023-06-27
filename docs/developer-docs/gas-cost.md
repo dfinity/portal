@@ -41,14 +41,13 @@ Regarding transaction fees, the **transaction sender** is responsible for coveri
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
 |                                      |                                                                                                                  |                                       |                                       |                                    |
-| _Chain-key signatures_               |                                                                                                                  |                                       |                                       |                                    |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                  | 10B / 13                              | 10B                                   | 10B / 13 * 34                      |
-|                                      |                                                                                                                  |                                       |                                       |                                    |
 | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
 | HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | 400M / 13                             | 400M                                  | 400M / 13 * 34                     |
 | HTTPS outcall payload                | For sending an HTTPS outcall to a server outside the IC, per request and reserved response byte (`http_request`) | 100K / 13                             | 100K                                  | 100K / 13 * 34                     |
 
-Pricing for the Bitcoin API is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
+Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
+
+Pricing for the **Chain-Key Signing API** is available in the [Chain-Key Signing / threshold ECDSA documentation](./integrations/t-ecdsa/t-ecdsa-how-it-works.md).
 
 :::note
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
