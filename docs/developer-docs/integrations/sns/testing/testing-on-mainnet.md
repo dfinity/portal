@@ -1,14 +1,14 @@
 ---
 sidebar_position: 3
 ---
-# SNS testflight
+# Testing on mainnet (SNS testflight)
+
 ## Overview
-Before requesting an SNS launch in production,
-you are encouraged to test your mainnet dapp's operation (e.g., upgrading the dapp's canisters)
-via SNS proposals.
+Before requesting an SNS launch in production, you are encouraged to test your mainnet dapp's operation (e.g., upgrading the dapp's canisters) via SNS proposals.
 
 We next describe how you can test SNS proposals by deploying testflight SNS
 and submitting SNS proposals to it.
+
 The main differences to production SNS deployment are summarized here:
 - Testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved.
 - No decentralization swap is performed; in particular, the developer has full control over the SNS for the entire duration of the testflight.
