@@ -215,7 +215,7 @@ chosen in [Step 1](#SNS-launch-step-preparation).
 
 After the SNS canister creation, the canisters exist but are not yet fully functional - the SNS is in **pre-decentralization-swap mode**.
 
-At this point, the SNS ledger only has two accounts: 
+At this point, the SNS ledger has two accounts: 
 
 * The **treasury** that is owned by the SNS governance canister and which can be used in the future according to the SNS community's wishes.
 * Some pre-allocated tokens to be used in the initial decentralization swap.
@@ -256,7 +256,7 @@ If successful, at the end of stage, we the following has changed:
   <tr>
     <td class="light-green-text">swap account on the SNS Ledger</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">SNS root</td>
+    <td class="light-green-text">SNS swap</td>
   </tr>
 </table>
 
@@ -307,8 +307,6 @@ If successful, at the end of stage, we the following has changed:
 ### 6. Proposal #2 (of 3) is passed or rejected
 
 The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
-
-Since this proposal is passed by the SNS DAO, when one owns SNS neurons or votes on SNS proposals, one is are part of the SNS DAO. It is common for people to vote on both NNS and SNS proposals from within the [NNS Frontend dapp](https://nns.ic0.app), but they are two separate DAOs.
 
 If successful, at the end of stage, we the following has changed:
 
