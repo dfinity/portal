@@ -42,9 +42,9 @@ Regarding transaction fees, the **transaction sender** is responsible for coveri
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
 |                                      |                                                                                                                  |                                       |                                       |                                    |
 | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
-| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | 3,060,000                             | 49,140,000                                  | 171,360,000                     |
-| HTTPS outcall request payload (per byte)                | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`) | 400                             | 5,200                                  | 13,600                     |
-| HTTPS outcall response payload (per byte)                | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`) | 800                             | 10,400                                  | 27,200                     |
+| HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | 3,060,000                             | 49,140,000                                  | 171,360,000                     |
+| HTTPS outcall request message size (per byte)                | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`) | 400                             | 5,200                                  | 13,600                     |
+| HTTPS outcall response message size (per byte)                | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`) | 800                             | 10,400                                  | 27,200                     |
 
 Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
@@ -71,9 +71,9 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | $0.00000016622522           | $0.00000043474178           |
 |                                      |                                                                                                                  |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
-| HTTPS outcall request                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0000643173804               | 0.0002242862496
-| HTTPS outcall request payload (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`)                   | $0.000000006806072            | $0.000000017800496
-| HTTPS outcall response payload (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`)        | $0.000000013612144            | $0.000000035600992            |
+| HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0000643173804               | 0.0002242862496
+| HTTPS outcall request message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`)                   | $0.000000006806072            | $0.000000017800496
+| HTTPS outcall response message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`)        | $0.000000013612144            | $0.000000035600992            |
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
 
