@@ -460,9 +460,9 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/managing/manage-sns-intro",
                     },
                       items: [
-                        "developer-docs/integrations/sns/managing-sns/sns-governance",
-                        "developer-docs/integrations/sns/managing-sns/cycles-usage",
-                        "developer-docs/integrations/sns/managing-sns/sns-asset-canister",
+                        "developer-docs/integrations/sns/managing/sns-governance",
+                        "developer-docs/integrations/sns/managing/cycles-usage",
+                        "developer-docs/integrations/sns/managing/sns-asset-canister",
                       ],
                     },
                   ],
