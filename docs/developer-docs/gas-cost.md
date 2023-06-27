@@ -52,6 +52,8 @@ Pricing for the Bitcoin API is available in the [Bitcoin API documentation](./in
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
 :::
 
+The pricing for HTTPS outcalls is calculated in a slightly different way as the prices for other resources: The feature has a quadratic component in its implementation, which is reflected through the formula `(3M +60K*n)*n` for the base fee and `400*n` each request byte and `900*n` for each response byte. Those formulas have been used in the table to obtain the concrete values for subnets of sizes 13 and 34.
+
 The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
 To derive the estimated cost for a GB Storage per month, we assume a 30 day month.
@@ -69,7 +71,7 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | $0.00000016622522           | $0.00000043474178           |
 |                                      |                                                                                                                  |                             |                             |
 | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
-| HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0000643173804               | 0.0002242862496
+| HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | $0.0000643173804               | $0.0002242862496
 | HTTPS outcall request message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`)                   | $0.000000006806072            | $0.000000017800496
 | HTTPS outcall response message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`)        | $0.000000013612144            | $0.000000035600992            |
 
