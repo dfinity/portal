@@ -59,15 +59,15 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   </tr>
    <tr>
     <td class="light-green-text">NNS Proposal #1</td>
-    <td class="light-green-text">Pending</td>
+    <td class="light-green-text">Not Created</td>
   </tr>
    <tr>
     <td class="light-green-text">SNS Proposal #1</td>
-    <td class="light-green-text">Pending</td>
+    <td class="light-green-text">Not Created</td>
   </tr>
    <tr>
     <td class="light-green-text">NNS Proposal #2</td>
-    <td class="light-green-text">Pending</td>
+    <td class="light-green-text">Not Created</td>
   </tr>
 </table>
 
@@ -107,15 +107,15 @@ What we have at this stage:
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
-    <td>Pending</td>
+    <td class="light-orange-text">Submitted</td>
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
-    <td>Pending</td>
+    <td>Not Created</td>
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td>Pending</td>
+    <td>Not Created</td>
   </tr>
 </table>
 
@@ -165,11 +165,11 @@ If the proposal is adopted successfully, at the end of this step, we have:
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
-    <td>Pending</td>
+    <td>Not Created</td>
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td>Pending</td>
+    <td>Not Created</td>
   </tr>
 </table>
 
@@ -300,7 +300,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td>Pending</td>
+    <td>Not Created</td>
   </tr>
 </table>
 
@@ -333,7 +333,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td>Pending</td>
+    <td>Not Created</td>
   </tr>
 </table>
 
