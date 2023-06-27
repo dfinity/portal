@@ -462,7 +462,7 @@ const sidebars = {
                       items: [
                         "developer-docs/integrations/sns/managing/sns-governance",
                         "developer-docs/integrations/sns/managing/cycles-usage",
-                        // "developer-docs/integrations/sns/managing/sns-asset-canister",
+                        "developer-docs/integrations/sns/managing/sns-asset-canister",
                       ],
                     },
                   ],

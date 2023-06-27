@@ -11,7 +11,7 @@ proper decentralization of the voting power. There are of course many ways to do
 The current SNS version provides one simple way to achieve this: a developer can hand over their dapp to the NNS and ask it to start a decentralization
 swap for the newly created SNS.
 
-We first explain the decentralization swap and then the steps included in an SNS launch.
+We first explain the decentralization swap and then the stages for an SNS launch.
 
 ## Key concepts
 
@@ -144,7 +144,7 @@ What we have at this stage:
 
 This is the **first of three** proposals that need to successfully pass.
 
-If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the steps will complete.
+If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the next stages will complete.
 
 If the proposal is adopted successfully, at the end of this step, we have:
 

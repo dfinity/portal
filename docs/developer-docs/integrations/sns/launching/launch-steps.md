@@ -1,15 +1,12 @@
 # SNS launch steps
 
 ## Overview
-An SNS can be launched in production by following the steps explained on a 
-high level [here](../launching/launch-summary.md).
+At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary.md).
 
-Technically, these are the same steps that the
-[SNS local testing repository](../testing/local-testing.md) guides you through,
+This article lists the technical commands and steps a developer needs to complete the stages for an SNS launch.
+
+At a low level, the [SNS local testing repository](../testing/local-testing.md) guides you through the same,
 with the difference that the commands target the canisters on the mainnet.
-
-To make the most important commands and what they need to look like for 
-mainnet more accessible, they are listed below.
 
 ## Requirements
 
@@ -62,7 +59,7 @@ ic-admin  \
 ### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
 
 After the wallet canister is listed in SNS-W, 
-the [SNS canisters are created triggered by a manual call to SNS-W](../launching/launch-steps.md/#SNS-launch-step-deployment).
+the SNS canisters are created triggered by a manual call to SNS-W.
 
 The `sns CLI` command to trigger the creation of SNS canisters on the SNS subnet: 
 
@@ -73,7 +70,8 @@ sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
 
 After the SNS canisters are deployed and the dapp's control is handed over to
-the SNS, an [NNS proposal starts the swap](../launching/launch-steps.md/#SNS-launch-step-startSwap). 
+the SNS, an NNS proposal starts the swap. 
+
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
 Of course it is crucial to set the right parameters in this proposal.
 You can also find an example how this command is used in the SNS local testing
