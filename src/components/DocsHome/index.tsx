@@ -6,33 +6,7 @@ import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
-
-const TitlePanel: FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => {
-  return (
-    <div className={clsx("p-10  rounded-lg bg-infinite text-white", className)}>
-      {children}
-    </div>
-  );
-};
-
-const Panel: FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => {
-  return (
-    <div
-      className={clsx(
-        "p-10 border border-white border-solid rounded-lg bg-white/70",
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-};
+import { Panel, TitlePanel } from "./Panel";
 
 const queryClient = new QueryClient();
 
@@ -40,8 +14,10 @@ const DocsHomePage: FC = () => {
   return (
     <div className="mt-8">
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        <TitlePanel className="col-span-2 row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
-          <h1 className="tw-heading-2 mb-14">Developer Docs</h1>
+        <TitlePanel className="sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
+          <h1 className="tw-heading-60 md:tw-heading-2 mb-14">
+            Developer Docs
+          </h1>
           <p className="tw-lead mb-20 flex-1">
             Start a DAO, create a token, build dapps and host assets with the
             full tech stack entirely 100% on chain.
@@ -54,12 +30,12 @@ const DocsHomePage: FC = () => {
             </Link>
           </p>
         </TitlePanel>
-        <Panel className="col-span-2">
+        <Panel className="sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </Panel>
-        <Panel className="col-span-1 flex flex-col">
+        <Panel className="sm:col-span-1 flex flex-col">
           <GuidesIcon />
           <h2 className="tw-heading-5 my-6">Guides</h2>
           <p className="mb-6 tw-paragraph flex-1">
@@ -86,6 +62,116 @@ const DocsHomePage: FC = () => {
               <LinkArrowRight />
             </Link>
           </p>
+        </Panel>
+      </section>
+      <section className="mt-10">
+        <Panel
+          className="
+          grid 
+          grid-cols-1
+          sm:grid-cols-2 
+          md:grid-cols-[1.25fr_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] 
+          px-0
+          pb-5 sm:pb-10
+        "
+        >
+          <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
+            <div className="h-[100px] md:h-[200px] flex-1">
+              <h3 className="tw-heading-6 mb-10 sm:mb-0">
+                Programming
+                <br />
+                Languages
+              </h3>
+            </div>
+            <div className="flex-1 flex flex-col">
+              <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                Whether you're new to coding or an experienced developer, our
+                documentation portal has everything you need. We provide
+                easy-to-follow guides, tutorials, code samples, and API
+                references for multiple languages like JavaScript, Python, Java,
+                Go, Rust, and more.
+              </p>
+              <p className="mb-0">
+                <Link href="" className="link-primary link-with-icon">
+                  View all <LinkArrowRight />
+                </Link>
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-10 sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
+            <div className="min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img src="/img/docs/motoko.png" alt="" className="w-10 h-10" />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Motoko</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Get started with high level programming language designed
+                  specifically for the Internet Computer cdcsd
+                </p>
+                <p className="mb-0">
+                  <Link href="" className="text-infinite/50">
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+            <div className="min-w-[80vw] sm:min-w-0 border-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img src="/img/docs/rust.png" alt="" className="w-10 h-10" />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Rust</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Use Rust - a high performance and safe programming language to
+                  build high efficiency apps on Internet Computer
+                </p>
+                <p className="mb-0">
+                  <Link href="" className="text-infinite/50">
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+            <div className="min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10  md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/typescript.png"
+                  alt=""
+                  className="w-10 h-10"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">TypeScript</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Azle allows you to build Internet Computer apps using
+                  TypeScript and JavaScript, the languages of the web
+                </p>
+                <p className="mb-0">
+                  <Link href="" className="text-infinite/50">
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+            <div className="min-w-[80vw] sm:min-w-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10  md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img src="/img/docs/python.png" alt="" className="w-10 h-10" />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Python</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Kybra allows you to build Internet Computer apps using Python,
+                  one of the most popular languages in the world
+                </p>
+                <p className="mb-0">
+                  <Link href="" className="text-infinite/50 link-with-icon">
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
         </Panel>
       </section>
     </div>

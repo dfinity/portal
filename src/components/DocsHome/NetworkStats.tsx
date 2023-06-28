@@ -1,6 +1,7 @@
 import { getCanisterCount } from "@site/src/utils/network-stats";
 import React from "react";
 import { useQuery } from "react-query";
+import Tooltip from "../Common/Tooltip";
 
 function InfoIcon() {
   return (
@@ -28,7 +29,7 @@ function InfoIcon() {
 }
 
 function Divider() {
-  return <div className="h-px bg-page sm:h-auto sm:w-px"></div>;
+  return <div className="my-4 sm:my-0 h-px bg-page sm:h-auto sm:w-px"></div>;
 }
 
 function formatNumber(x: number) {
@@ -43,11 +44,16 @@ export const NetworkStats = () => {
   const canisterCount = useQuery(["canisterCount"], getCanisterCount);
 
   return (
-    <div className="flex justify-between items-stretch whitespace-nowrap">
+    <div className="flex flex-col sm:flex-row justify-between items-stretch whitespace-nowrap">
       <figure className="m-0">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Storage Costs
-          <InfoIcon />
+          <Tooltip
+            tooltip="Cost of storing 1 GB for a year in a canister smart contract"
+            className="w-52 whitespace-normal"
+          >
+            <InfoIcon />
+          </Tooltip>
         </figcaption>
         <div className="tw-heading-6">$5 / GB / Year</div>
       </figure>
@@ -55,7 +61,12 @@ export const NetworkStats = () => {
       <figure className="m-0">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Cost per Instruction
-          <InfoIcon />
+          <Tooltip
+            tooltip="Cost per instruction when executing canister smart contact code"
+            className="w-52 whitespace-normal"
+          >
+            <InfoIcon />
+          </Tooltip>
         </figcaption>
         <div className="tw-heading-6">$0.000000000000536</div>
       </figure>
@@ -63,7 +74,12 @@ export const NetworkStats = () => {
       <figure className="m-0">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Canisters
-          <InfoIcon />
+          <Tooltip
+            tooltip="Number of running canister smart contracts"
+            className="w-52 whitespace-normal"
+          >
+            <InfoIcon />
+          </Tooltip>
         </figcaption>
         <div className="tw-heading-6">
           {canisterCount.isSuccess && formatNumber(canisterCount.data)}
