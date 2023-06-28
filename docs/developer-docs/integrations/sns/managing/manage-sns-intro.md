@@ -13,7 +13,7 @@ sure that the SNS canisters do not run out of cycles.
 ## SNS community
 
 Once an
-[SNS is launched](../get-sns/get-sns-intro.md),
+[SNS is launched](../testing/testing-before-launch.md),
 neither the dapp that the SNS controls, nor the SNS canisters
 are under the control of a singe entity such as a developer.
 This means that the dapp and to the SNS

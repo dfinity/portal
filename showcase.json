@@ -1925,5 +1925,22 @@
       "/img/showcase/orally-network_screenshot_0.jpg"
     ],
     "submittableId": "35782696"
+  },
+  {
+    "name": "DSign",
+    "description": "Collaborative Product Design Innovation Hub",
+    "website": "https://www.dsign.ooo",
+    "logo": "/img/showcase/dsign_logo.webp",
+    "screenshots": ["/img/showcase/dsign_screenshot.webp"],
+    "video": "",
+    "display": "Normal",
+    "id": "dsign",
+    "oneLiner": "Collaborative Product Design Innovation Hub",
+    "tags": ["Tools / Infrastructure"],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/cybrowl/dsign-components",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "34425295"
   }
 ]

@@ -5,7 +5,7 @@ A common pattern for developer workflow is to refill canisters with cycles so th
 ## Basic Rules 
 
 1. Anyone can top up any canister deployed to the Internet Computer (does not need to be the author or controller).
-2. One can top up a canister via `dfx`, [NNS Frontend dapp](https://nns.ic0.app), or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
+2. One can top up a canister via `dfx`, [NNS frontend dapp](https://nns.ic0.app), or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
 3. There are a few ways to top up canisters so this article goes through each one.
 
 
@@ -53,7 +53,7 @@ Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
 
 ### Option 1: If you have ICP on your account
 
-If you have ICP on the account associated with a `dfx` identity, you can tell the Ledger Canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS] top-up --amount <AMOUNT> <DESTINATION>`
+If you have ICP on the account associated with a `dfx` identity, you can tell the ledger canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS] top-up --amount <AMOUNT> <DESTINATION>`
 
 ```
 dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
@@ -97,9 +97,9 @@ dfx wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai
 -   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on the mainnet.
 -   The `wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai` takes 1000000 cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
 
-## Topping up a canister with the NNS Frontend dapp
+## Topping up a canister with the NNS frontend dapp
 
-You can also top up any canister via the [NNS Frontend dapp](https://nns.ic0.app):
+You can also top up any canister via the [NNS frontend dapp](https://nns.ic0.app):
 
 1. Navigate to the **My Canisters** section of the dapp.
 2. Click **Link Canister**.
