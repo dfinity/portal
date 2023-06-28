@@ -73,7 +73,6 @@ const sidebars = {
               "samples/simple-to-do",
               "samples/superheros",
               "samples/t-ecdsa-sample",
-              "samples/http-requests-exchange-rates",
               "samples/whoami",
             ],
             },
