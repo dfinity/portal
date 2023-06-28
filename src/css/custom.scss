@@ -44,6 +44,7 @@
 }
 
 @import "./animate.scss";
+@import "./blog.scss";
 @import "./code.scss";
 @import "./navbar.scss";
 @import "./scrollbar.scss";
@@ -466,6 +467,15 @@ div[class^="announcementBarContent"] {
     transform-origin: 196px 16px;
     // top: -4px;
   }
+}
+
+//custom styling for tables on SNS docs
+.light-orange-text {
+  background-color: #fbb03b;
+}
+
+.light-green-text {
+  background-color: #b8eda8;
 }
 
 @tailwind base;

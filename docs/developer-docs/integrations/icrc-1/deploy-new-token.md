@@ -6,7 +6,17 @@ This guide will provide you a step-by-step walkthrough to deploy your own [ICRC-
 
 ## Deploy your ICRC-1 Ledger
 
-### Step 1:  First, you need to download the icrc-1 ledger image (.wasm file) and the icrc-1 ledger interface (.did file). 
+### Step 1:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx). 
+If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
+
+### Step 2: Create a new dfx project with the command:
+
+```
+dfx new icrc1
+cd icrc1
+```
+
+### Step 3:  Then, you need to download the icrc-1 ledger image (.wasm file) and the icrc-1 ledger interface (.did file). 
 
 ``` sh
 export IC_VERSION=1612a202d030faa496e1694eed98be4179fca856
@@ -21,10 +31,7 @@ The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/i
 
 :::
 
-### Step 2:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx). 
-If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
-
-### Step 3:  Add the following canister definition to the `dfx.json` file in your project:
+### Step 4:  Add the following canister definition to the `dfx.json` file in your project:
 
 ``` json
 {

@@ -18,7 +18,7 @@ This section defines the current main constraints regarding resource usage on th
 | Subnet capacity | 450GB |
 | Wasm heap size | 4GB |
 | Wasm stable memory | 64GB |
-| Wasm custom sections| 2GiB per subnet; 1MiB per canister; 16 sections at most (per canister)|
+| Wasm custom sections| 2GB per subnet; 1MB per canister; 16 sections at most (per canister)|
 | Wasm code section | 10MB |
 | Query calls execution threads | 2 per replica node |
 | Update calls execution threads| 4 per subnet |

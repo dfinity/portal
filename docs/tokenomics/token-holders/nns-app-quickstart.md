@@ -1,4 +1,4 @@
-# Network Nervous System (NNS) dapp quick start
+# Network Nervous System (NNS) dapp quick start 
 
 ## Overview
 All changes to the configuration and behavior of the Internet Computer are controlled by an algorithmic governance system called the Network Nervous System (NNS). The NNS controls all aspects of the Internet Computer blockchain configuration and is responsible for performing many network management operations. For example, the Network Nervous System (NNS) is responsible for:
@@ -45,7 +45,11 @@ To connect to the Internet Computer using the Network Nervous System (NNS) dapp:
 
 - #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
 
+![NNS dapp](../_attachments/nns1.png)
+
 - #### Step 2:  Click **Login** to connect to [Internet Identity](https://identity.ic0.app).
+
+![Connect with Internet Identity](../_attachments/nns2.png)
 
 If you haven’t previously registered, you can click **Register with Internet Identity** to register.
 
@@ -63,33 +67,31 @@ After you have registered, you can click **Login** to authenticate using your an
 
 Logging on using an Internet Identity creates a main account for you in the Internet Computer ledger. If your ICP utility tokens are associated with your developer identity; that is, the identity created by the SDK `dfx` command-line interface. Your main account displays 0.00 for your ICP utility token balance. For example:
 
-![nns app main](../_attachments/nns-app-main.png)
+![nns app main](../_attachments/nns3.png)
 
 Before transferring any tokens, you can create one or more linked subaccounts or attach a hardware wallet to your account.
 
 To add an account for managing ICP utility tokens:
 
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
+- #### Step 1:  On the default 'My Tokens' tab, click **Add Account**.
 
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
+![Add account](../_attachments/nns3.png)
 
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
-
-- #### Step 4:  Click **Proceed** to access to the Network Nervous System (NNS) dapp.
-
-- #### Step 5:  On the default ICP tab, click **Add Account**.
-
-- #### Step 6:  Select the type of account to add.
+- #### Step 2:  Select the type of account to add.
 
     -   **New Linked Account** creates a new subaccount linked to your Main account address in the ledger.
 
     -   **Attach Hardware Wallet** adds a hardware wallet to your main account address in the ledger.
 
-- #### Step 7:  Click **New Linked Account**, type an Account Name, then click **Create**.
+![Select account](../_attachments/nns4.png)
 
-![new linked account](../_attachments/new-linked-account.png)
+- #### Step 3:  Click **New Linked Account**, type an Account Name, then click **Create**.
+
+![new linked account](../_attachments/nns5.png)
 
 ## Transfer ICP utility tokens between accounts
+
+### Using the CLI
 
 If you have selected self-custody for holding your ICP utility tokens and the tokens are associated with your developer identity instead of your registered Internet Identity, you need to transfer ICP utility tokens to your accounts if you want to manage them using the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
 
@@ -161,6 +163,18 @@ If you transfer the ICP utility tokens to an account in the [Network Nervous Sys
 
 For more information about using the `dfx ledger` command-line options, see [dfx ledger](/references/cli-reference/dfx-ledger.md).
 
+### Using the NNS dapp
+
+- #### Step 1: On the default 'My Tokens' tab, assure that The Internet Computer token has been selected, then click **Send** on the bottom of the window.
+
+![Send](../_attachments/nns3.png)
+
+- #### Step 2: In the 'Send' window, select your linked account or wallet for the source, then input the destination address and the amount of ICP to send. 
+
+![Send ICP](../_attachments/nns6.png)
+
+- #### Step 3: Then select **Continue** to send the transaction. 
+
 ## Stake ICP utility tokens in a neuron
 
 After you transfer ICP utility tokens to the Network Nervous System dapp, you can use the Network Nervous System dapp to create and manage neurons, vote on proposals, and create canisters on the Internet Computer.
@@ -169,25 +183,21 @@ Neurons are required to participate in governance and earn rewards. To create a 
 
 To stake ICP utility tokens:
 
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
+- #### Step 1:  In the NNS dapp, select **My Neuron Staking** from the left navigation bar, then click **Stake Neurons** in the bottom of the window.
 
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
+![Neuron staking](../_attachments/nns7.png)
 
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
+- #### Step 2 :  Select which wallet you'd like to use as the source, then type the number of ICP utility tokens to stake, then click **Create**.
 
-- #### Step 4: Click **Proceed** to access to the Network Nervous System (NNS) dapp.
+![Neuron staking](../_attachments/nns8.png)
 
-- #### Step 5:  Click **Neurons**, then click **Stake Neuron**.
-
-- #### Step 6:  Type the number of ICP utility tokens to stake, then click **Create**.
-
-- #### Step 7:  Set the dissolve delay for the neuron to control the length of time the stake is locked, then click **Update Delay**.
+- #### Step 3:  Set the dissolve delay for the neuron to control the length of time the stake is locked, then click **Update Delay**.
 
 For example:
 
 ![dissolve delay](../_attachments/dissolve-delay.png)
 
-- #### Step 8:  Click **Yes, I’m sure** to confirm the lock up period, then close the window to review the newly-created neuron properties.
+- #### Step 4:  Click **Yes, I’m sure** to confirm the lock up period, then close the window to review the newly-created neuron properties.
 
 ![neuron properties](../_attachments/neuron-properties.png)
 
@@ -218,7 +228,7 @@ To increase the stake in an existing neuron:
 
 You can use the account identifier for your main ICP ledger account to search for your transactions.
 
-- #### Step 3:  Return to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp, then click **New Transaction**.
+- #### Step 3:  Return to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp, then from the 'My Neuron Staking' window, click **New Transaction**.
 
 - #### Step 4:  Paste the neuron address from the transaction dashboard into the **Destination** address field, then click **Continue**.
 
@@ -232,69 +242,27 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 - #### Step 8:  Click the **Neurons** tab to see the increased stake.
 
-## Configure following rules
-
-Active participation in governance is an important factor in the long-term health of the Internet Computer. Voting on proposals is also an important factor in calculating the rewards you receive in return for locking up ICP utility tokens in neurons.
-
-However, voting directly on every proposal submitted to the NNS presents several challenges. For example, proposals might be submitted and require a vote when you are unavailable or propose changes that you lack the expertise to evaluate. To address these challenges, you can configure neurons to vote automatically to adopt or reject proposals by following the votes of a group of neurons.
-
-To maximize your rewards, you should vote on as many proposals as possible by following the active neuron holders who have interests aligned with your own. For example, you might follow the Internet Computer Association (ICA) on some topics such **SubnetManagement** and other neuron holders on topics such as **Governance**.
-
-To configure how you follow other neuron holders:
-
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
-
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
-
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
-
-- #### Step 4:  Click **Proceed** to access to the Network Nervous System (NNS) dapp.
-
-- #### Step 5:  Click **Neurons**, then click the link for a specific neuron identifier to display its properties.
-
-- #### Step 6:  Click **Edit Followees**.
-
-- #### Step 7:  Choose a proposal topic. For example, expand the Governance topic, then click **Enter Followee**.
-
-#### Step 8:  Select a neuron holder to follow, then click **Follow**.
-
-For example, click **Follow** for the Internet Computer Association.
-
-![follow ica](../_attachments/follow-ica.png)
-
-The neuron holder is added to your 'Currently Following' list.
-
-- #### Step 9:  Repeat for each topic where you want your neuron’s votes to automatically follow the votes of one or more other neuron holders.
-
 ## Disburse dissolved neurons into an account
 
 When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify. After you take this step, the neuron identifier and its ledger history are permanently removed from the governance canister.
 
 To disburse a neuron and return its ICP utility tokens:
 
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
-
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
-
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
-
-- #### Step 4:  Click **Proceed** to access to the Network Nervous System (NNS) dapp.
-
-- #### Step 5:  Click **Neurons**, then click Unlocked neuron that has reach the ended of its dissolve delay period. For example:
+- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on the unlocked neuron that has reach the ended of its dissolve delay period. For example:
 
 ![unlocked neuron](../_attachments/unlocked-neuron.png)
 
-- #### Step 6:  Click **Disburse**. For example:
+- #### Step 2:  Click **Disburse**. For example:
 
 ![disburse](../_attachments/disburse.png)
 
-- #### Step 7:  Type an address or select an account to receive the ICP utility tokens. For example, you might select the `dev-projects` linked account:
+- #### Step 3:  Type an address or select an account to receive the ICP utility tokens. For example, you might select the `dev-projects` linked account:
 
-- #### Step 8:  Verify the transaction information, then click **Confirm and Send**. For example, check that the Destination address matches the intended address of the `dev-projects` linked account:
+- #### Step 4:  Verify the transaction information, then click **Confirm and Send**. For example, check that the Destination address matches the intended address of the `dev-projects` linked account:
 
 ![confirm send](../_attachments/confirm-send.png)
 
-- #### Step 9:  Verify the completed transaction, then click **Close**.
+- #### Step 5:  Verify the completed transaction, then click **Close**.
 
 For example:
 
@@ -314,57 +282,33 @@ After you spawn a new neuron from an existing neuron, the maturity for the exist
 
 To spawn new neurons from an existing neuron:
 
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
+- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
 
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
+- #### Step 2:  Click **Spawn Neuron**.
 
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
+## Vote on proposals 
 
-- #### Step 4:  Click **Proceed** to access to the Network Nervous System (NNS) dapp.
+Active participation in governance is an important factor in the long-term health of the Internet Computer. Voting on proposals is also an important factor in calculating the rewards you receive in return for locking up ICP utility tokens in neurons.
 
-- #### Step 5:  Click **Neurons**, then click the neuron that has reached the minimum maturity required to spawn a new neuron.
+However, voting directly on every proposal submitted to the NNS presents several challenges. For example, proposals might be submitted and require a vote when you are unavailable or propose changes that you lack the expertise to evaluate. To address these challenges, you can configure neurons to vote automatically to adopt or reject proposals by following the votes of a group of neurons.
 
-- #### Step 6:  Click **Spawn Neuron**.
-
-:::info
-Keep in mind that the dissolve delay for a newly-spawned neurons is one day, giving you the option to collect value from the ICP utility tokens by unlocking them or to increase the dissolve delay to collect additional rewards.
-
-For more information about maturity and spawning new neurons, see the following articles:
-
--   [Earn substantial voting rewards by staking in the Network Nervous System](https://medium.com/dfinity/earn-substantial-voting-rewards-by-staking-in-the-network-nervous-system-7eb5cf988182)
-
--   [Understanding the Internet Computer’s Network Nervous System, neurons, and ICP utility tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8)
-
--   [Getting started on the Internet Computer’s Network Nervous System app and wallet](https://medium.com/dfinity/getting-started-on-the-internet-computers-network-nervous-system-app-wallet-61ecf111ea11)
-:::
-
-## Vote on proposals
+To maximize your rewards, you should vote on as many proposals as possible by following the active neuron holders who have interests aligned with your own. For example, you might follow the Internet Computer Association (ICA) on some topics such **SubnetManagement** and other neuron holders on topics such as **Governance**.
 
 You can choose the proposal types and proposal topics that you see and vote on either directly or by following other neuron stakeholders using filters in the Network Nervous System dapp. For example, if you want to review and vote on all proposals that involve network participants such as data center identities and node operators, but aren’t interested in viewing proposals related to the current market value of ICP, as measured by an International Monetary Fund (IMF) Special Drawing Right (SDR), you can select the **ParticipantManagement** topic filter and deselect the **ExchangeRate** topic filter.
 
 To manually vote on proposals:
 
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
+- #### Step 1:  From the NNS dapp, select 'Vote on Proposals' from the left navigation bar. 
 
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
+![Proposals](../_attachments/nns9.png)
 
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
+- #### Step 2: Then, select which Nervous System you'd like to view proposals for. 
 
-- #### Step 4:  Click **Proceed** to access to the Network Nervous System (NNS) dapp.
+By default, the Internet Computer NNS proposals are shown, but other proposals for SNS's like OpenChat and Kinic are also available.
 
-- #### Step 5:  Click **Voting**.
+- #### Step 3:  Click on any proposals to view more information on it, such as the proposals summary, the type of proposals, the topic, and when the proposal's voting ends. 
 
-You can click any of the proposals listed to view information about the proposal, including a brief description of the proposal, a link for viewing additional information about the proposal, the number of votes that were cast to adopt or reject the proposal, and the votes cast by your neurons.
-
-- #### Step 6:  Use the Topics, Reward Status, and Proposal Status filters to control the list of proposals displayed.
-
-For example, open the Topics list to see if there are any proposal topics that you want to include in the proposal list that are not currently displayed and open the Proposal Status to verify that you are viewing all open proposals.
-
-- #### Step 7:  Click any Open proposal to see its details and the voting power for the neurons associated with your identity.
-
-- #### Step 8:  Select the neuron identifiers with voting power that you want to use to cast your vote.
-
-- #### Step 9:  Click **Adopt** or **Reject** to cast your vote.
+![Proposal detail](../_attachments/nns8.png)
 
 :::info
 For more information about voting and voting rewards, see the following articles:
@@ -376,7 +320,6 @@ For more information about voting and voting rewards, see the following articles
 -   [Getting started on the Internet Computer’s Network Nervous System app and wallet](https://medium.com/dfinity/getting-started-on-the-internet-computers-network-nervous-system-app-wallet-61ecf111ea11)
 :::
 
-
 ## Submit a proposal
 
 Currently, you can only submit proposals to the network nervous system by using the SDK command-line interface (`dfx`) using calls to the `governance` canister.
@@ -385,37 +328,40 @@ A separate command-line tool (`icx-nns`) for working with the `governance` canis
 
 If you want to start submitting proposals right away, however, you can access a preliminary version of the `icx-nns` command-line tool by downloading a release from the [icx-nns](https://github.com/dfinity/icx-nns/releases) repository.
 
-## Deploy a canister with cycles
+
+## SNS decentralization swaps
+
+You can participate in SNS decentralization swaps from the NNS dapp using the 'Launch Pad' tab. An SNS is an advanced version of a decentralized autonomous organization, where the participants of the SNS can vote on proposals, such as a new feature, roadmap item, or allocation of SNS funds. 
+
+You can learn more about SNS [here](https://internetcomputer.org/sns)
+
+To view current and past SNS decentralization swaps from the NNS dapp:
+
+- #### Step 1:  From the NNS dapp, click **Launch pad** from the left navigation bar.
+
+![Launch pad](../_attachments/nns15.png)
+
+- #### Step 2: Select any SNS swap to view the details, such as the status, total participants, token supply, and when the swap ended.
+
+![SNS swap](../_attachments/nns16.png)
+
+## Deploying and managing canisters from the NNS dapp
 
 You must have **cycles** available to create and manage [canisters](/references/glossary.md#canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
 
 To create a new canister:
 
-- #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
+- #### Step 1:  From the NNS dapp, click **My Canisters**, then click **Create Canister** or **Link Canister**.
 
-- #### Step 2:  Click **Login** to connect using your Internet Identity.
+![My canisters](../_attachments/nns11.png)
 
-- #### Step 3:  Verify your identification number, then click **Login** to authenticate using the device and authentication method you have registered.
+- #### Step 2: If you select **Create Canister**, select the source account you'd like to use to create the canister.
 
-- #### Step 4:  Click **Proceed** to access to the Network Nervous System (NNS) dapp.
+![Create a new canister](../_attachments/nns12.png)
 
-- #### Step 5:  Click **Canisters**, then click **Create or Link Canister**.
+- #### Step 3: Then, enter the amount of ICP tokens and cycles to create the canister with. Then select **Review Canister Creation**. 
 
-- #### Step 6:  Click **Create New Canister** to create a new cycles wallet canister.
-
-If you already have a cycles wallet canister, you can click **Link Canister to Account** to link an existing canister identifier to your account in the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
-
-- #### Step 7:  Select one of your accounts that holds ICP utility tokens as the source account.
-
-For example, if you have both a **Main** account and a **Dev-Projects** account, you might select **Dev-Projects** account if that account holds the ICP utility tokens that you want converted into cycles.
-
-- #### Step 8:  Click **Amount** and type the number of ICP utility tokens or e8s that you want to convert into cycles, then click **Review Cycles Purchase**.
-
-The amount you specify must convert to a value greater than the 2T (two trillion) cycles minimum required to create a new canister identifier. For example:
-
-![convert to cycles](../_attachments/convert-to-cycles.png)
-
-- #### Step 9:  Review the ICP utility tokens to cycles details, then click **Confirm** to continue.
+- #### Step 4:  Review the ICP utility tokens to cycles details, then click **Confirm** to continue.
 
 After you click Confirm, you can review: 
 - The new canister identifier.
@@ -427,8 +373,14 @@ After you click Confirm, you can review:
 \+ To add cycles to the canister, click **Add Cycles**.
 :::
 
-- #### Step 10: Return to the **Canisters** tab to see the canisters you have created.
+![Review canister](../_attachments/nns13.png)
+
+- #### Step 5: To link a canister, input the canister's ID, then select **Confirm**.
+
+![Link canister](../_attachments/nns14.png)
+
+- #### Step 6: Return to the **Canisters** tab to see the canisters you have created.
 
 For example:
 
-![canister list](../_attachments/canister-list.png)
+![Canister list](../_attachments/nns11.png)
