@@ -193,27 +193,35 @@ export default function Admonition(props) {
   const titleLabel = title ?? typeConfig.label;
   const { iconComponent: IconComponent } = typeConfig;
 
-  console.log("Admonition", {
-    type,
-    title,
-  });
+  // console.log("Admonition", {
+  //   type,
+  //   title,
+  // });
 
   const Icon = {
     info: InfoIcon,
+    important: InfoIcon,
     tip: TipIcon,
+    success: TipIcon,
     danger: DangerIcon,
     note: NoteIcon,
+    secondary: NoteIcon,
     caution: CautionIcon,
+    warning: CautionIcon,
   }[type];
 
   return (
     <div
       className={clsx(styles.admonition, {
         [styles.admonitionInfo]: type === "info",
+        [styles.admonitionInfo]: type === "important",
         [styles.admonitionWarning]: type === "caution",
+        [styles.admonitionWarning]: type === "warning",
         [styles.admonitionTip]: type === "tip",
+        [styles.admonitionSuccess]: type === "success",
         [styles.admonitionDanger]: type === "danger",
         [styles.admonitionNote]: type === "note",
+        [styles.admonitionSecondary]: type === "secondary",
       })}
     >
       {children}
