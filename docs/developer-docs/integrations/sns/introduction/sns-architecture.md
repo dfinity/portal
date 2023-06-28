@@ -26,7 +26,7 @@ called the **SNS wasm modules canister (SNS-W)**.
 When an SNS is created, SNS-W is involved and responsible for deploying the latest version of 
 the SNS canister.
 When the SNS should be updated, this happens by an NNS proposal that adds a new version of the 
-SNS cansiters to SNS-W.
+SNS canisters to SNS-W.
 Each SNS community can then simply decide to adopt these new, approved versions in their SNS instance.
 
 ### Customizability
