@@ -18,6 +18,34 @@ import { css } from "@site/src/utils/dummy-css";
   }
   .container {
     max-width: none;
+    padding-bottom: 0 !important;
+  }
+  .main-wrapper main {
+    max-width: none;
+  }
+
+  .theme-doc-footer {
+    display: none;
+  }
+
+  .pagination-nav {
+    display: none;
+  }
+
+  .main-wrapper main .row .col {
+    padding: 0 16px;
+  }
+
+  @media (min-width: 641px) {
+    .main-wrapper main .row .col {
+      padding: 0 32px;
+    }
+  }
+
+  @media (min-width: 997px) {
+    .main-wrapper main .row .col {
+      padding: 0 50px;
+    }
   }
 `}</style>
 

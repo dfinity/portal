@@ -10,6 +10,25 @@ import { Panel, TitlePanel } from "./Panel";
 
 const queryClient = new QueryClient();
 
+const links = [
+  {
+    label: "Live Sessions",
+    href: "/live-sessions",
+  },
+
+  {
+    label: "Technical Working Groups",
+    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
+  },
+  { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
+  { label: "Dev Discord Office Hours", href: "https://discord.gg/jnjVVQaE2C" },
+  {
+    label: "Developer Grants and Bounties",
+    href: "https://dfinity.org/grants/",
+  },
+  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
+];
+
 const DocsHomePage: FC = () => {
   return (
     <div className="mt-8">
@@ -173,6 +192,44 @@ const DocsHomePage: FC = () => {
             </div>
           </div>
         </Panel>
+      </section>
+
+      <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 mt-20 md:pt-14 md:pb-20">
+        <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
+          <div className="md:flex-[4] md:flex md:flex-col items-start">
+            <div className="tw-heading-6 mb-10">
+              Contribute to the
+              <br />
+              Internet Computer
+            </div>
+            <h2 className="tw-heading-3 mb-4 sm:w-5/10 md:w-8/10">
+              Help us make the docs better
+            </h2>
+            <p className="tw-paragraph mb-10 sm:w-6/10 md:w-8/10 md:flex-1">
+              These docs are a community effort. Create a PR if you see
+              mistakes, room for improvement, or new opportunities to help IC
+              developers.
+            </p>
+            <Link
+              href="https://github.com/dfinity/portal"
+              className="button-outline-white"
+            >
+              Contribute
+            </Link>
+          </div>
+          <div className="flex flex-col gap-2 md:flex-[5]">
+            {links.map(({ label, href }) => (
+              <Link
+                className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
+                href={href}
+                key={label}
+              >
+                {label}
+                <LinkArrowRight />
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );
