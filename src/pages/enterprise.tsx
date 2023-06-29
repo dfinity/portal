@@ -88,7 +88,7 @@ function EnterprisePage() {
               development costs and fleeing talent are just a few 
               of the blockers holding companies back from innovation 
               and staying ahead of competitors. An autonomous cloud
-              opens up opportunities. 
+              opens up new opportunities. 
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -210,7 +210,7 @@ function EnterprisePage() {
               className="tw-heading-3 md:tw-heading-60 text-center mb-0"
               variants={transitions.item}
             >
-              Advantages of secure, autonomous cloud
+              Reasons to build on autonomous cloud
             </motion.h2>
           </div>
           <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
@@ -219,16 +219,16 @@ function EnterprisePage() {
                 Manage platform risk
               </h2>
               <p className="tw-lead-sm">
-                Large scale software systems that rely on centralized cloud
-                providers, risk being subject to vendor lock-in, having to
-                dealing with increasing server costs or codebase refactoring.
+                Large scale software systems relying on centralized cloud
+                providers are subject to vendor lock-in, which can lead to
+                increasing server costs or codebase refactoring.
               </p>
               <p className="tw-lead-sm mb-6 md:mb-10">
                 The Internet Computer offers an alternative technology stack
-                which is open and decentralized. It connects independent node
-                machines to create a self-sovereign autonomous cloud on which
+                that's open and decentralized. Independent node
+                machines connect to create a self-sovereign autonomous cloud, on which
                 any system can be built. Its software — canister smart contracts
-                — are compiled to WebAssembly, the new W3 industry standard for
+                — are compiled to WebAssembly, the new Web3 industry standard for
                 cross platform, language agnostic, portable server executable
                 code.
               </p>
@@ -243,9 +243,8 @@ function EnterprisePage() {
               <p className="tw-lead-sm mb-6 md:mb-10">
                 Chain-key cryptography and secure multiparty computation enable
                 enterprise-grade custody of digital assets on the Internet Computer.
-                Built-in security of the protocol reduces the complexity of digital
-                asset custody associated with traditional solutions, while improving
-                security.
+                Security built into the protocol reduces the complexity of digital
+                asset custody associated with traditional solutions.
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/digital-identity.webp">
@@ -257,11 +256,9 @@ function EnterprisePage() {
                 companies to keep user data safe and private. Internet Identity is a
                 privacy-enhancing authentication framework native to the Internet
                 Computer. Following the open standards of the FIDO Alliance and W3C,
-                Internet Identity uses secure passkeys and WebAuthn. It can be
-                seamlessly integrated with any service running on the Internet Computer,
-                and provides user authentication without requiring the service provider
-                to build out the infrastructure to securely and privately manage user
-                credentials.
+                Internet Identity uses secure passkeys and WebAuthn that can be
+                seamlessly integrated with any service running on the Internet Computer. 
+                Zero knowledge proofs enable users to privately share sensitive data.
               </p>
               <p className="mb-0">
                 <Link
@@ -280,22 +277,20 @@ function EnterprisePage() {
                 Leaner security teams
               </h2>
               <p className="tw-lead-sm">
-                Building on the Internet Computer enables organizations to focus
-                on the business logic of software, lowering costs and speeding up
-                development.
-              </p>
-              <p className="tw-lead-sm">
-                When the internet protocol (IP), and current cloud
-                infrastructures were initially conceived, people didn’t foresee
-                the scale, and impact the internet has today. The importance of
-                robust security systems became apparent only later, as the
-                number of connected devices grew.
-              </p>
-              <p className="tw-lead-sm">
                 The Internet Computer was designed bottom up with security and
                 privacy directly built into the protocol itself by a team of
                 world class cryptographers, engineerings and computer
                 scientists.
+              </p>
+              <p className="tw-lead-sm">
+                Building on the Internet Computer enables organizations to focus
+                on the business logic of software, while lowering costs and speeding up
+                development.
+              </p>
+              <p className="tw-lead-sm">
+                When TCP/IP, and current cloud infrastructures were initially conceived,
+                the impact of the internet and its scale and security needs were
+                unforeseeable.
               </p>
 
               <p className="mb-0">
@@ -304,7 +299,7 @@ function EnterprisePage() {
                   className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  Internet Computer's architecture
+                  How the Internet Computer is designed
                 </Link>
               </p>
             </TranslatedLayout>
@@ -313,11 +308,10 @@ function EnterprisePage() {
                 Tokenized business models
               </h2>
               <p className="tw-lead-sm">
-                From loyalty programs to memberships to ticketing. Businesses
-                need to manage their relationships with their customers via
-                digital identities and handling of digital assets. The Internet
-                Computer provides a common digital wallet that makes this
-                collaboration much easier to build.
+                From loyalty programs to memberships and ticketing, businesses
+                need to manage customer relationships to be successful. The Internet
+                Computer provides a common digital wallet that makes the handling of 
+                digital assets and identities much simpler.
               </p>
               <p className="tw-lead-sm">
                 Organizations can effectively include their customers in the
@@ -339,9 +333,8 @@ function EnterprisePage() {
                 with no audit trail of who accessed and edited them, or using expensive US
                 hosted SaaS services with the associated vendor lock-in and geographical
                 data protection issues. On-chain encryption enabled by 'Verifiable Encrypted
-                Threshold Keys' (VETKeys) will enable enterprises to deploy smartcontracts
-                encoding their custom cross org workflows whilst holding the private data
-                securely encrypted on chain.
+                Threshold Keys' (VETKeys) will enable customized cross-org workflows via tamperproof
+                smart contract that store private data securely encrypted on chain.
               </p>
             </TranslatedLayout>
           </div>
@@ -368,12 +361,10 @@ function EnterprisePage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 FEDERITALY is a non-profit organization that promotes and
-                protects Italian entrepreneurship. They are developing a
-                solution on the Internet Computer to improve their “100% made in
-                Italy” verification service. This removes the need for consumers
-                to rely on services running on centralized cloud services, and
-                greatly improves the transparency of the verification process.
-                The “100% made in Italy” certificates are stored fully on-chain
+                protects Italian entrepreneurship. In collaboration with the ORIGYN
+                Foundation, they are building a solution on the Internet Computer to improve 
+                their “100% made in Italy” verification service. Consumers benefit from 
+                product authenticity of origin certificates stored fully on-chain
                 and protected by tamperproof smart contracts.
               </p>
               <Link
@@ -391,15 +382,15 @@ function EnterprisePage() {
                 NFTs as employee rewards
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                <Link className="link-subtle" href="">
-                  Sodexo
-                </Link>{" "}
-                is a French food services and facilities management company with
-                over 400,000 employees. They partnered with Yumi NFT Marketplace
-                to modernize their employee reward program. They launched the X
-                Collection, that employees can claim, giving them a unique
-                digital collectible. As part of the program, Sodexo has pledged
-                to donate to Stop Hunger for every NFT claimed.
+                  As part of their global rebranding to Pluxee, French multinational, {" "}
+                  <Link className="link-subtle" href="https://www.sodexo.com/en/services/pluxee">
+                  Sodexo Benefits & Rewards Services
+                  </Link>{" "}
+                  partnered with Yumi NFT Marketplace on the
+                  Internet Computer to modernize their employee reward program and create a dynamic
+                  company culture within the organization. Pluxee launched an exclusive NFT collection
+                  (X Collection) for its 5'000 employees. Pluxee pledged to donate to the Stop Hunger
+                  Foundation for each employee NFT claimed.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -424,7 +415,7 @@ function EnterprisePage() {
           </div>
         </section>
         <AnimateSpawn
-          className="  bg-infinite overflow-hidden "
+          className="bg-infinite overflow-hidden "
           variants={transitions.container}
           el={motion.section}
         >
@@ -432,11 +423,11 @@ function EnterprisePage() {
             <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
             <div className="flex-1 mt-40 sm:mt-0">
               <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
-                Want to run a pilot using the Internet Computer?
+                Interested in running a pilot on the Internet Computer?
               </h2>
               <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
-                Committing to a new technology stack is a big decision. See the
-                advantages of the Internet Comouter by running a pilot projects first.
+                Committing to a new technology stack is a big decision. Speak with experts
+                to get a better sense of how the Internet Computer could benefit your business.
               </p>
               <p className="mb-0">
                 <Link className="button-white">get in touch</Link>
