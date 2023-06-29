@@ -12,7 +12,7 @@ This section is relevant if your project contains an asset canister and describe
 
 :::info 
 
-In this document, the term **upgrade** refers to deploying an upgraded version of a canister's Wasm file.
+In this document, the term **upgrade** refers to deploying an upgraded version of a canister's WebAssembly module.
 
 The term **update** refers to changing or updating the assets stored within an asset canister.
 :::
