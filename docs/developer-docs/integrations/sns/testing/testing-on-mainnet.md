@@ -4,25 +4,45 @@ sidebar_position: 3
 # Testing on mainnet (SNS testflight)
 
 ## Overview
-Before requesting an SNS launch in production, you are encouraged to test your mainnet dapp's operation (e.g., upgrading the dapp's canisters) via SNS proposals.
 
-We next describe how you can test SNS proposals by deploying testflight SNS
-and submitting SNS proposals to it.
+Once a developer has tested the process of an SNS, it is highly recommended they do an **"SNS testflight" [on mainnet](./testing-on-mainnet.md)**. An SNS testflight is when a developer deploys their dapp (to mainnet) and hands control of it to a mock SNS (on mainnet). 
+
+**The main intent of performing an SNS testflight is for a developer to experience how a dapp works *after* it has been decentralized, so developer can make sure their dapps is ready for decentralization. It does not test the actual process of decentralizing it.**
+
+:::info 
+A testflight is not a repo or set of tools, but an *activity* (deploying and dapp and handing control of it to a mock SNS), so the instructions for [testing on mainnet](./testing-on-mainnet.md) utilize various tools, but developers can of course use any tools they wish. 
+:::
+
+Among other things, here are some examples of issues developers find after running an SNS testflight: 
+* developers notice they need better pipeline for creating proposals to update a dapp
+* developers notice they may have been decentralized prematurely and need to fix some things
+* developers notice they may need better monitoring before decentralizing
+
+The mock SNS used in a SNS testflight gives developers the ability to see how post-decentralization lifecycle of a dapp looks like, but still provides a way for a developer to keep control of their dapp. **Therefore, developers are encouraged to run perform an SNS testflight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.**
+
+## SNS Testflight vs SNS production
 
 The main differences to production SNS deployment are summarized here:
-- Testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved.
-- No decentralization swap is performed; in particular, the developer has full control over the SNS for the entire duration of the testflight.
-- The developer can also keep direct control over the dapp's canisters registered with testflight SNS.
-- When deployed on the mainnet, testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
+
+* Testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved.
+* No decentralization swap is actually performed; in particular, the developer has full control over the SNS for the entire duration of the testflight.
+* The developer can also keep direct control over the dapp's canisters registered with testflight SNS.
+* When deployed on the mainnet, testflight SNS is deployed to a regular *application subnet* instead of a dedicated *SNS subnet*.
 
 ## Prerequisites
 
-To perform SNS testflight, you will need the following tools:
+To perform SNS testflight using the instructions that follow, you will need the following tools:
 
 - [x] [dfx](https://github.com/dfinity/sdk)
 - [x] [sns-cli](https://github.com/dfinity/ic)
 - [x] [quill](https://github.com/dfinity/quill)
 - [x] [didc](https://github.com/dfinity/candid) (for advanced tests)
+
+:::info 
+Developers can use any set of tools that accomplish the goals of a testflight.
+:::
+
+### Installing `sns-cli`
 
 Instead of building `sns-cli` locally, you can download pre-compiled binaries for [Linux](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running the command:
 ```
@@ -34,13 +54,32 @@ You can download pre-compiled binaries for quill [here](https://github.com/dfini
 
 You can download pre-compiled binaries for didc [here](https://github.com/dfinity/candid/releases).
 
+### Versions
+
 This guide has been tested with the following version of the tools:
 - **dfx: 0.13.1**
 - **sns-cli: 82a53257ed63af4f602afdccddadc684df3d24de**
 - **quill: v0.4.0**
 - **didc: 0.3.0 (2022-11-17)**
 
-## Import and download SNS canisters
+## High-level 
+
+A testflight typically consists of the following steps:
+
+1. Import and download SNS canisters
+2. Deploy testflight SNS (mock SNS canisters to an application subnet) on mainnet and store the developer neuron ID
+4. Deploy a dapp
+5. Register a dapp (hand over control) to the mock SNS canister
+6. Test upgrading canisters via SNS proposals
+
+Activities developers may need to do in running a testflight:
+* Check the proposals
+* Test executing code on SNS managed canisters via SNS proposals
+* Abort the testflight 
+
+## Steps to run a testflight
+
+### Step 1. Import and download SNS canisters
 
 To import the SNS canisters in the `dfx.json` file of your project and download their WASM binaries, run
 ```
@@ -49,7 +88,7 @@ DFX_IC_COMMIT=82a53257ed63af4f602afdccddadc684df3d24de dfx sns download
 ```
 in the root directory of your project.
 
-## Deploy testflight SNS and store the developer neuron ID
+### Step 2. Deploy testflight SNS (mock SNS canisters to an application subnet) on mainnet and store the developer neuron ID
 
 To deploy the testflight SNS, run
 ```
@@ -67,7 +106,7 @@ Developer neuron IDs:
 594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63
 ```
 
-## Add SNS root as an additional controller of all SNS managed dapp canisters
+### Step 3. Add SNS root as an additional controller of all SNS managed dapp canisters
 
 Add the SNS root canister as an **additional** controller of all the canisters
 that you want to manage by the testflight SNS.
@@ -78,7 +117,7 @@ dfx canister update-settings --add-controller $(dfx canister id sns_root) test
 When running the testflight on the mainnet, pass `--network ic` as an additional argument
 to **both** invocations of `dfx canister`.
 
-## Register dapp canisters with SNS root
+### Step 4. Register dapp canisters with SNS root
 
 Register all canisters that are supposed to be managed by the testflight SNS
 by submitting an SNS proposal via `quill`.
@@ -118,7 +157,7 @@ dfx canister call sns_root list_sns_canisters '(record {})'
 ```
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister` above.
 
-## Test upgrading canisters via SNS proposals
+### Step 5. Test upgrading canisters via SNS proposals
 
 Determine the path to the new wasm binary that you want to upgrade the canister to.
 For projects build with `dfx`, this binary is typically located at
@@ -136,7 +175,9 @@ Unless you run the testflight against the mainnet, pass `--insecure-local-dev-mo
 
 You can omit `grep -v "^ *new_canister_wasm"` above to see the new WASM binary in the output. Note that the output then contains the entire WASM binary and can be huge!
 
-## Test executing code on SNS managed canisters via SNS proposals
+## Activities developer may need to do
+
+### Test executing code on SNS managed canisters via SNS proposals
 
 To execute code on SNS managed canisters via SNS proposals,
 the canisters must expose a pair of public
@@ -195,7 +236,7 @@ fn validate(x: Version) -> Result<String, String> {
 }
 ```
 
-## Check the proposals of the testflight SNS
+### Check the proposals of the testflight SNS
 
 You can list all proposals in the testflight SNS as follows:
 ```
@@ -204,7 +245,7 @@ dfx canister call sns_governance list_proposals '(record {include_reward_status 
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
 You can also provide a limit and thus only obtain the last few proposals.
 
-## Aborting the testflight
+### Aborting the testflight
 
 As the developer keeps direct control over the registered dapp's canisters during the testflight,
 you can directly manage your dapp's canisters during the testflight if needed.
@@ -267,64 +308,3 @@ and invoking:
 dfx canister call sns_root recover '()'
 ```
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
-
-## STAGES
-
-<table border="1">
-    <tr>
-        <th>Stage Number</th>
-        <th>Stage</th>
-        <th>SNS Testflight process</th>
-    </tr>
-    <tr>
-        <td>0</td>
-        <td>Developers deploy a dapp to the Internet Computer</td>
-        <td>Not tested</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td>Not tested</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Dapp developers submit NNS proposal so they can deploy to the SNS subnet</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Proposal #1 (of 3) is passed or rejected</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Dapp developers trigger the SNS canisters to be created on SNS subnet</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Dapp developers submit an SNS proposal to handover control of their dapp to the SNS</td>
-        <td rowspan="2">./register_dapp.sh</td>
-        <td> Potentially many proposals if one's dapp has many canisters</td>
-    </tr>
-        <tr>
-        <td>6</td>
-        <td>Proposal #2 (of 3) is passed or rejected</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Proposal to start the decentralization swap</td>
-        <td rowspan="2">./open_sns_swap.sh</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Proposal #3 (of 3) is passed or rejected</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>SNS participants participate in the decentralization swap</td>
-        <td>./participate_sns_swap.sh</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>SNS canisters become SNS DAO</td>
-        <td>./finalize_sns_swap.sh</td>
-    </tr>
-</table>
