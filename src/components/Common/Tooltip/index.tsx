@@ -5,7 +5,8 @@ const Tooltip: React.FC<{
   children?: React.ReactNode;
   tooltip: React.ReactNode;
   className?: string;
-}> = ({ children, tooltip, className }) => {
+  wrapperClassName?: string;
+}> = ({ children, tooltip, className, wrapperClassName }) => {
   const wrapperRef = React.useRef<HTMLSpanElement>(null);
   const tooltipRef = React.useRef<HTMLSpanElement>(null);
 
@@ -37,7 +38,10 @@ const Tooltip: React.FC<{
   }, []);
 
   return (
-    <span className="relative group cursor-pointer" ref={wrapperRef}>
+    <span
+      className={clsx("relative group cursor-pointer", wrapperClassName)}
+      ref={wrapperRef}
+    >
       <span
         ref={tooltipRef}
         className={clsx(

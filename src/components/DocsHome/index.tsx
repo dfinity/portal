@@ -33,9 +33,9 @@ const links = [
 const DocsHomePage: FC = () => {
   return (
     <div className="mt-8">
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <TitlePanel className="sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
-          <h1 className="tw-heading-60 md:tw-heading-2 mb-14">
+          <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
             Developer Docs
           </h1>
           <p className="tw-lead mb-20 flex-1">
@@ -50,12 +50,12 @@ const DocsHomePage: FC = () => {
             </Link>
           </p>
         </TitlePanel>
-        <Panel className="sm:col-span-2">
+        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
-        </Panel>
-        <Panel className="sm:col-span-1 flex flex-col">
+        </div>
+        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-1 flex flex-col">
           <GuidesIcon />
           <h2 className="tw-heading-5 my-6">Guides</h2>
           <p className="mb-6 tw-paragraph flex-1">
@@ -63,13 +63,13 @@ const DocsHomePage: FC = () => {
             project up and running.
           </p>
           <p className="mb-0">
-            <Link className="button-outline button-with-icon">
+            <Link className="link-primary link-with-icon">
               Start building
               <LinkArrowRight />
             </Link>
           </p>
-        </Panel>
-        <Panel className="col-span-1 flex flex-col">
+        </div>
+        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 col-span-1 flex flex-col">
           <TutorialsIcon />
           <h2 className="tw-heading-5 my-6">Tutorials</h2>
           <p className="mb-6 tw-paragraph flex-1">
@@ -77,12 +77,12 @@ const DocsHomePage: FC = () => {
             applications in a step-by-step mode.
           </p>
           <p className="mb-0">
-            <Link className="button-outline button-with-icon">
+            <Link className="link-primary link-with-icon">
               Start learning
               <LinkArrowRight />
             </Link>
           </p>
-        </Panel>
+        </div>
       </section>
       <section className="mt-10">
         <Panel
@@ -121,7 +121,12 @@ const DocsHomePage: FC = () => {
           <div className="flex gap-10 sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
             <div className="min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img src="/img/docs/motoko.png" alt="" className="w-10 h-10" />
+                <img
+                  src="/img/docs/motoko.png"
+                  alt="Motoko docs"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
               </div>
               <div className="flex-1 flex flex-col">
                 <h4 className="tw-heading-5 mb-6">Motoko</h4>
@@ -142,7 +147,12 @@ const DocsHomePage: FC = () => {
             </div>
             <div className="min-w-[80vw] sm:min-w-0 border-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img src="/img/docs/rust.png" alt="" className="w-10 h-10" />
+                <img
+                  src="/img/docs/rust.png"
+                  alt="Rust docs for the Internet Computer"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
               </div>
               <div className="flex-1 flex flex-col">
                 <h4 className="tw-heading-5 mb-6">Rust</h4>
@@ -165,8 +175,9 @@ const DocsHomePage: FC = () => {
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
                   src="/img/docs/typescript.png"
-                  alt=""
+                  alt="TypeScript docs for the Internet Computer"
                   className="w-10 h-10"
+                  loading="lazy"
                 />
               </div>
               <div className="flex-1 flex flex-col">
@@ -188,7 +199,12 @@ const DocsHomePage: FC = () => {
             </div>
             <div className="min-w-[80vw] sm:min-w-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10  md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img src="/img/docs/python.png" alt="" className="w-10 h-10" />
+                <img
+                  src="/img/docs/python.png"
+                  alt="Python docs for the Internet Computer"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
               </div>
               <div className="flex-1 flex flex-col">
                 <h4 className="tw-heading-5 mb-6">Python</h4>

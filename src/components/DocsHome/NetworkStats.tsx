@@ -35,7 +35,7 @@ function Divider() {
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 0
     })
     .replace(/,/g, "\u2019");
 }
@@ -51,6 +51,7 @@ export const NetworkStats = () => {
           <Tooltip
             tooltip="Cost of storing 1 GB for a year in a canister smart contract"
             className="w-52 whitespace-normal"
+            wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
           </Tooltip>
@@ -64,6 +65,7 @@ export const NetworkStats = () => {
           <Tooltip
             tooltip="Cost per instruction when executing canister smart contact code"
             className="w-52 whitespace-normal"
+            wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
           </Tooltip>
@@ -77,6 +79,7 @@ export const NetworkStats = () => {
           <Tooltip
             tooltip="Number of running canister smart contracts"
             className="w-52 whitespace-normal"
+            wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
           </Tooltip>
