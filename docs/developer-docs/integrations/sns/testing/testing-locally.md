@@ -44,7 +44,7 @@ To use the `sns-testing` commands and their arguments properly, please consult t
 
 ### Testing stages of decentralization
 
-Below, we match the stages of decentralization to the commands that `sns-testing` repo has. Some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
+Below, we match the stages of decentralization to the commands that the `sns-testing` repo has. Some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
 
 <table border="1">
     <tr>
