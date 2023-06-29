@@ -25,7 +25,7 @@ Among other things, developers can use `sns-testing` repo to:
 :::
 
 
-### On mainnet
+### On the mainnet
 
 Once a developer has tested the process of an SNS, it is highly recommended they do an **"SNS testflight" [on mainnet](./testing-on-mainnet.md)**. An SNS testflight is when a developer deploys their dapp (to mainnet) and hands control of it to a mock SNS (on mainnet). 
 
