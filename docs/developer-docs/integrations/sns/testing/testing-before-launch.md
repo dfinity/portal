@@ -29,7 +29,7 @@ Among other things, developers can use `sns-testing` repo to:
 
 Once a developer has tested the process of an SNS, it is highly recommended they do an **"SNS testflight" [on mainnet](./testing-on-mainnet.md)**. An SNS testflight is when a developer deploys their dapp (to mainnet) and hands control of it to a mock SNS (on mainnet). 
 
-**The main intent of performing an SNS testflight is for a developer to experience how a dapp works *after* it has been decentralized, so developer can make sure their dapps is ready for decentralization. It does not test the actual process of decentralizing it.**
+**The main intent of performing an SNS testflight is for a developer to experience how a dapp works *after* it has been decentralized, so developer can make sure their dapp is ready for decentralization. It does not test the actual process of decentralizing it.**
 
 :::info 
 A testflight is not a repo or set of tools, but an *activity* (deploying and dapp and handing control of it to a mock SNS), so the instructions for [testing on mainnet](./testing-on-mainnet.md) utilize various tools, but developers can of course use any tools they wish. 
