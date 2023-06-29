@@ -190,7 +190,7 @@ function EnterprisePage() {
             >
               Processing over half a billion transactions daily, ICP unlocks many
               previously infeasible blockchain use cases, such as industry scale
-              supply chain tracking or certification of origin.
+              supply chain tracking, or secure inter-organizational workflows.
             </motion.h2>
             <motion.p className="mb-0">
               <Link className="button-primary">REACH OUT</Link>
@@ -321,7 +321,24 @@ function EnterprisePage() {
                 voting tools that are native to the Internet Computer, incentivizing
                 users to actively participate.
               </p>
-
+            </TranslatedLayout>
+            <TranslatedLayout
+              reverse={true}
+              imageUrl="/img/enterprise/security-large.webp"
+            >
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-0">
+                Secure X-org collaboration
+              </h2>
+              <p className="md:mb-6">(coming soon)</p>
+              <p className="tw-lead-sm">
+                Enterprises today face a choice of exchanging sensitive documents via emails
+                with no audit trail of who accessed and edited them, or using expensive US
+                hosted SaaS services with the associated vendor lock-in and geographical
+                data protection issues. On-chain encryption enabled by 'Verifiable Encrypted
+                Threshold Keys' (VETKeys) will enable enterprises to deploy smartcontracts
+                encoding their custom cross org workflows whilst holding the private data
+                securely encrypted on chain.
+              </p>
             </TranslatedLayout>
           </div>
         </section>
