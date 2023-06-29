@@ -3,9 +3,25 @@ sidebar_position: 2
 ---
 # Testing SNS locally
 
+## Overview
+
+To help developers, DFINITY has created the `sns-testing` repo which has scripts that help developers test the SNS process. Developers can run a local version of the Internet Computer on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary.md) of decentralizing their dapp. 
+
 After having [chosen the initial SNS parameters in a .yaml file](../tokenomics/preparation.md)and before requesting an SNS launch in production, the SNS launch should be tested locally.
 
-## Using `sns-testing` repo
+**The main intent of `sns-testing` repo is for a developer to test the actual process of decentralizing their dapp.**
+
+Among other things, developers can use `sns-testing` repo to: 
+* initiate proposals
+* pass proposals
+* start decentralization swaps
+* upgrade dapp via DAO voting
+
+:::info
+`sns-testing` is just one form of testing SNS process locally. Developers should feel free to use others, fork/modify `sns-testing` or create their own.
+:::
+
+## Using the `sns-testing` repo
 
 These scripts have been most tested with a stack that looks like this:
 
