@@ -84,9 +84,10 @@ function EnterprisePage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Having to maintain legacy code, increasing development costs and talent fleeing to
-              new, exciting technologies — Companies have to overcome several challenges to stay
-              ahead of the competition.
+              Companies have to overcome several challenges to stay
+              ahead of the competition. Legacy tech stacks, increasing
+              development costs and fleeing talent are holding
+              back innovation of established players.
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -107,7 +108,7 @@ function EnterprisePage() {
                   Secure inter-org workflows
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Businesses can privately share documents with other organizations,
+                  Privately share documents with other organizations,
                   and customers, using onchain encryption enabled by VETKeys.
                 </p>
               </div>
@@ -121,8 +122,8 @@ function EnterprisePage() {
                   Digital identity layer
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  No need to build proprietary identity solutions or rely on
-                  for-profit companies to keep user’s data safe and private{" "}
+                  Built-in privacy-enhancing identity layer to user data safe,
+                  and private.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -135,8 +136,8 @@ function EnterprisePage() {
                   Tokenized reward programs
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Customer loyalty & employee reward programs simplified using
-                  tokens
+                  Simplify customer loyalty and employee reward programs using
+                  tokens.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -149,7 +150,7 @@ function EnterprisePage() {
                   Private data sharing
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Zero knowledge proofs enable secure and private sharing of
+                  Zero knowledge proofs to enable secure and private sharing of
                   sensitive data
                 </p>
               </div>
@@ -163,8 +164,8 @@ function EnterprisePage() {
                   Simple self-custody
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Users can take real ownership of their own data, and digital
-                  assets
+                  Cryptographically secured user ownership of data, and digital
+                  assets.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -175,8 +176,8 @@ function EnterprisePage() {
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
                 <p className="tw-paragraph mb-0">
-                  Blockchain’s transparency & immutability allow for easy
-                  authenticity verification
+                  Blockchain transparency and immutability allow for easy
+                  verification of authenticity.
                 </p>
               </div>
             </div>
@@ -188,12 +189,11 @@ function EnterprisePage() {
               className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
               variants={transitions.item}
             >
-              Processing over half a billion transactions daily, ICP unlocks many
-              previously infeasible blockchain use cases, such as industry scale
-              supply chain tracking, or secure inter-organizational workflows.
+              The Internet Computer proccesses half a billion transactions daily,
+              unlocking industry-scale blockchain use cases.
             </motion.h2>
             <motion.p className="mb-0">
-              <Link className="button-primary">REACH OUT</Link>
+              <Link className="button-primary">Get in touch to find out how</Link>
             </motion.p>
           </div>
           <img
@@ -240,11 +240,11 @@ function EnterprisePage() {
                 Enterprise custody of digital assets
               </h2>
               <p className="tw-lead-sm mb-6 md:mb-10">
-                Bussinesses can securely custody, and privately share digital assets
-                such as documents with other organizations or customers, without having
-                to create temporary business accounts. ICP implements protocol level,
-                on-chain encryption using verifiable encrypted threshold keys that allows
-                secure, and private sharing of data. 
+                Chain-key cryptography and secure multiparty computation enable
+                enterprise-grade custody of digital assets on the Internet Computer.
+                Built-in security of the protocol reduces the complexity of digital
+                asset custody associated with traditional solutions, while improving
+                security.
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/self-custody-large.webp">
@@ -252,13 +252,15 @@ function EnterprisePage() {
                 Built-in digital identity framework
               </h2>
               <p className="tw-lead-sm mb-6 md:mb-10">
-                Internet Identity is a privacy-enhancing authentication framework
-                native to the Internet Computer. Following the open standards of
-                the FIDO Alliance and W3C, Internet Identity uses secure passkeys
-                and WebAuthn. It can be seamlessly integrated with any service
-                running on the Internet Computer, and provides user authentication
-                without requiring the service provider to build out the infrastructure
-                to securely and privately manage user credentials.
+                No need to build proprietary identity solutions or rely on for-profit
+                companies to keep user data safe and private. Internet Identity is a
+                privacy-enhancing authentication framework native to the Internet
+                Computer. Following the open standards of the FIDO Alliance and W3C,
+                Internet Identity uses secure passkeys and WebAuthn. It can be
+                seamlessly integrated with any service running on the Internet Computer,
+                and provides user authentication without requiring the service provider
+                to build out the infrastructure to securely and privately manage user
+                credentials.
               </p>
               <p className="mb-0">
                 <Link
@@ -277,8 +279,9 @@ function EnterprisePage() {
                 Leaner security teams
               </h2>
               <p className="tw-lead-sm">
-                Building on ICP enables organizations to focus on the business
-                logic of software, lowering costs and speeding up development.
+                Building on the Internet Computer enables organizations to focus
+                on the business logic of software, lowering costs and speeding up
+                development.
               </p>
               <p className="tw-lead-sm">
                 When the internet protocol (IP), and current cloud
@@ -300,7 +303,7 @@ function EnterprisePage() {
                   className="link-white link-with-icon"
                 >
                   <LinkArrowRight />
-                  How ICP works
+                  Internet Computer's architecture
                 </Link>
               </p>
             </TranslatedLayout>
@@ -349,10 +352,10 @@ function EnterprisePage() {
               variants={transitions.container}
             >
               <motion.h2
-                className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-8"
+                className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-8/12 md:mx-auto mb-8"
                 variants={transitions.item}
               >
-                Enterprises adopting ICP
+                Enterprises adopting the Internet Computer
               </motion.h2>
             </AnimateSpawn>
           </div>
@@ -374,9 +377,9 @@ function EnterprisePage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://swissfederalism.ch/en/brand-federitaly-100-made-in-italy-dfinity-foundation/"
+                href="https://www.bloomberg.com/press-releases/2023-03-21/a-digital-certificate-for-authentic-italian-products"
               >
-                <LinkArrowRight /> Read the announcement
+                <LinkArrowRight /> See press release
               </Link>
             </TranslatedLayout>
             <TranslatedLayout
@@ -413,7 +416,7 @@ function EnterprisePage() {
                   className="button-outline text-center"
                   href="/ecosystem"
                 >
-                  other businesses building on ICP
+                  other projects on the Internet Computer
                 </Link>
               </motion.div>
             </AnimateSpawn>
@@ -428,7 +431,7 @@ function EnterprisePage() {
             <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
             <div className="flex-1 mt-40 sm:mt-0">
               <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
-                Want to run a pilot using ICP?
+                Want to run a pilot using the Internet Computer?
               </h2>
               <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
                 Committing to a new technology stack is a big decision. See the
@@ -482,12 +485,12 @@ function EnterprisePage() {
               href="/samples?selectedDomains=Asynchronous+DeFi"
             />
             <CardWithDescription
-              title="Dev docs"
+              title="Developer docs"
               description=""
               href="/docs/current/home"
             />
             <CardWithDescription
-              title="How ICP works"
+              title="How it works"
               description=""
               href="/how-it-works"
             />
