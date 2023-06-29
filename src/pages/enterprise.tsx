@@ -234,7 +234,7 @@ function EnterprisePage() {
               </p>
             </TranslatedLayout>
             <TranslatedLayout
-              imageUrl="/img/enterprise/self-custody-large.webp"
+              imageUrl="/img/enterprise/enterprise-custody-large.webp"
               reverse={true}
             >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
@@ -248,7 +248,7 @@ function EnterprisePage() {
                 security.
               </p>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/enterprise/self-custody-large.webp">
+            <TranslatedLayout imageUrl="/img/enterprise/digital-identity.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Built-in digital identity framework
               </h2>
@@ -274,7 +274,7 @@ function EnterprisePage() {
               </p>
             </TranslatedLayout>
             <TranslatedLayout
-              imageUrl="/img/enterprise/security-large.webp"
+              imageUrl="/img/enterprise/security-teams.webp"
               reverse={true}>
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Leaner security teams
@@ -308,7 +308,7 @@ function EnterprisePage() {
                 </Link>
               </p>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/enterprise/security-large.webp">
+            <TranslatedLayout imageUrl="/img/enterprise/tokenized-business-models.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Tokenized business models
               </h2>
@@ -328,7 +328,7 @@ function EnterprisePage() {
             </TranslatedLayout>
             <TranslatedLayout
               reverse={true}
-              imageUrl="/img/enterprise/security-large.webp"
+              imageUrl="/img/enterprise/x-org-collaboration.webp"
             >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-0">
                 Secure X-org collaboration
