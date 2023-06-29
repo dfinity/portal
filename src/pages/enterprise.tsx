@@ -87,8 +87,8 @@ function EnterprisePage() {
               Legacy tech stacks, increasing
               development costs and fleeing talent are just a few 
               of the blockers holding companies back from innovation 
-              and staying ahead of competitors. An autonomous cloud
-              opens up new opportunities. 
+              and staying ahead of competitors. Autonomous cloud
+              opens up opportunities.
             </motion.h2>
           </div>
         </AnimateSpawn>
