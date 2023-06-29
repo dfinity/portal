@@ -66,7 +66,7 @@ This guide has been tested with the following version of the tools:
 
 A testflight typically consists of the following steps:
 
-1. Import and download SNS canisters
+1. Import and download the SNS canisters.
 2. Deploy testflight SNS (mock SNS canisters to an application subnet) on the mainnet and store the developer neuron ID.
 4. Deploy a dapp.
 5. Register a dapp (hand over control) to the mock SNS canister.
