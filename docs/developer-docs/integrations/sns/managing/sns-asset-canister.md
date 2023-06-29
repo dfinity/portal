@@ -14,7 +14,7 @@ This section is relevant if your project contains an asset canister and describe
 
 In this document, the term **upgrade** refers to deploying an upgraded version of a canister's Wasm file.
 
-The term **update** refers to changing or updating the assets stored within an SNS asset canister.
+The term **update** refers to changing or updating the assets stored within an asset canister.
 :::
 
 ## Deploying an asset canister
