@@ -84,10 +84,11 @@ function EnterprisePage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Companies have to overcome several challenges to stay
-              ahead of the competition. Legacy tech stacks, increasing
-              development costs and fleeing talent are holding
-              back innovation of established players.
+              Legacy tech stacks, increasing
+              development costs and fleeing talent are just a few 
+              of the blockers holding companies back from innovation 
+              and staying ahead of competitors. An autonomous cloud
+              opens up opportunities. 
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -95,7 +96,7 @@ function EnterprisePage() {
         <section className="mt-20 md:mt-48">
           <div className="container-10">
             <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
-              Autonomous cloud for enterprises
+              Autonomous cloud for enterprise solutions
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
               <div className="flex flex-col">
@@ -108,8 +109,8 @@ function EnterprisePage() {
                   Secure inter-org workflows
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Privately share documents with other organizations,
-                  and customers, using onchain encryption enabled by VETKeys.
+                  Privately share documents with other organizations
+                  and customers, using on-chain encryption enabled by VETKeys.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -122,8 +123,8 @@ function EnterprisePage() {
                   Digital identity layer
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Built-in privacy-enhancing identity layer to user data safe,
-                  and private.
+                  Privacy-enhancing identity layer for seamless
+                  and secure authentication across applications.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -151,7 +152,7 @@ function EnterprisePage() {
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Zero knowledge proofs to enable secure and private sharing of
-                  sensitive data
+                  sensitive data.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -176,7 +177,7 @@ function EnterprisePage() {
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
                 <p className="tw-paragraph mb-0">
-                  Blockchain transparency and immutability allow for easy
+                  Blockchain transparency and immutability for easy
                   verification of authenticity.
                 </p>
               </div>
