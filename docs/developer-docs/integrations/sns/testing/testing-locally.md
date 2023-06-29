@@ -15,7 +15,7 @@ Among other things, developers can use `sns-testing` repo to:
 * Initiate proposals.
 * Pass proposals.
 * start decentralization swaps
-* upgrade dapp via DAO voting
+* Upgrade dapp via DAO voting.
 
 :::info
 `sns-testing` is just one form of testing SNS process locally. Developers should feel free to use others, fork/modify `sns-testing` or create their own.
