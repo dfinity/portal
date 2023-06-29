@@ -7,6 +7,7 @@ import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
 import { Panel, TitlePanel } from "./Panel";
+import Blog from "./Blog";
 
 const queryClient = new QueryClient();
 
@@ -192,6 +193,10 @@ const DocsHomePage: FC = () => {
             </div>
           </div>
         </Panel>
+      </section>
+
+      <section className="mt-10">
+        <Blog></Blog>
       </section>
 
       <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 mt-20 md:pt-14 md:pb-20">

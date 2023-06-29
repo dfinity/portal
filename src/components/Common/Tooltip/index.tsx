@@ -16,8 +16,6 @@ const Tooltip: React.FC<{
 
       const tooltipRect = tooltip.getBoundingClientRect();
 
-      console.log(tooltipRect);
-
       let left = -tooltipRect.width / 2 + 8;
 
       if (rect.left + left + tooltipRect.width > window.innerWidth - 32) {
