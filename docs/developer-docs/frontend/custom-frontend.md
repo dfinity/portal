@@ -133,6 +133,8 @@ To review the default frontend files:
 
 - #### Step 2:  Open the `src/custom_greeting_frontend/src/index.js` file in a text editor.
 
+This file by default will contain the following piece of code:
+
         import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
 
         document.querySelector("form").addEventListener("submit", async (e) => {
@@ -170,6 +172,10 @@ To prepare the frontend files:
 
 - #### Step 2:  Modify the frontend entry to replace the default `index.html` with `index.jsx`.
 
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
+:::
+
         entry: {
           // The frontend.entrypoint points to the HTML file for this build, so we need
           // to replace the extension to `.js`.
@@ -177,6 +183,10 @@ To prepare the frontend files:
         },
 
 - #### Step 3:  Add the following `module` key above the `plugins` section:
+
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
+:::
 
         module: {
           rules: [
@@ -186,28 +196,186 @@ To prepare the frontend files:
 
     This setting enables the project to use the `ts-loader` compiler for a React JavaScript `index.jsx` file. Note that there’s a commented section in the default `webpack.config.js` file that you can modify to add the `module` key.
 
+When finished, your `webpack.config.js` file should contain the following content:
+
+```
+require("dotenv").config();
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+
+const isDevelopment = process.env.NODE_ENV !== "production";
+
+const frontendDirectory = "custom_greeting_frontend";
+
+const frontend_entry = path.join("src", frontendDirectory, "src", "index.html");
+
+module.exports = {
+  target: "web",
+  mode: isDevelopment ? "development" : "production",
+        entry: {
+          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // to replace the extension to `.js`.
+          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
+        },
+  devtool: isDevelopment ? "source-map" : false,
+  optimization: {
+    minimize: !isDevelopment,
+    minimizer: [new TerserPlugin()],
+  },
+  resolve: {
+    extensions: [".js", ".ts", ".jsx", ".tsx"],
+    fallback: {
+      assert: require.resolve("assert/"),
+      buffer: require.resolve("buffer/"),
+      events: require.resolve("events/"),
+      stream: require.resolve("stream-browserify/"),
+      util: require.resolve("util/"),
+    },
+  },
+  output: {
+    filename: "index.js",
+    path: path.join(__dirname, "dist", frontendDirectory),
+  },
+  module: {
+    rules: [
+      { test: /\.(js|ts)x?$/, loader: "ts-loader" }
+    ]
+  },
+  // Depending in the language or framework you are using for
+  // front-end development, add module loaders to the default
+  // webpack configuration. For example, if you are using React
+  // modules and CSS as described in the "Adding a stylesheet"
+  // tutorial, uncomment the following lines:
+  // module: {
+  //  rules: [
+  //    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+  //    { test: /\.css$/, use: ['style-loader','css-loader'] }
+  //  ]
+  // },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, frontend_entry),
+      cache: false,
+    }),
+    new webpack.EnvironmentPlugin([
+      ...Object.keys(process.env).filter((key) => {
+        if (key.includes("CANISTER")) return true;
+        if (key.includes("DFX")) return true;
+        return false;
+      }),
+    ]),
+    new webpack.ProvidePlugin({
+      Buffer: [require.resolve("buffer/"), "Buffer"],
+      process: require.resolve("process/browser"),
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: `src/${frontendDirectory}/src/.ic-assets.json*`,
+          to: ".ic-assets.json5",
+          noErrorOnMissing: true,
+        },
+      ],
+    }),
+  ],
+  // proxy /api to port 4943 during development.
+  // if you edit dfx.json to define a project-specific local network, change the port to match.
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:4943",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "/api",
+        },
+      },
+    },
+    static: path.resolve(__dirname, "src", frontendDirectory, "assets"),
+    hot: true,
+    watchFiles: [path.resolve(__dirname, "src", frontendDirectory)],
+    liveReload: true,
+  },
+};
+```
+
 - #### Step 4:  Create a new file named `tsconfig.json` in the root directory for your project.
 
-- #### Step 5:  Open the `tsconfig.json` file in a text editor, then copy and paste [this code](_attachments/sample-tsconfig.json) into the file.
+- #### Step 5:  Open the `tsconfig.json` file in a text editor, then copy and paste this code into the file:
+
+```
+{
+    "compilerOptions": {
+      "target": "es2018",        /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
+      "lib": ["ES2018", "DOM"],  /* Specify library files to be included in the compilation. */
+      "allowJs": true,           /* Allow javascript files to be compiled. */
+      "jsx": "react",            /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    },
+    "include": ["src/**/*"],
+}
+```
 
 - #### Step 6:  Save your changes and close the `tsconfig.json` file to continue.
 
 - #### Step 7:  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete everything in that file.
 
-- #### Step 8:  Copy and paste [this code](_attachments/react-index.jsx) into the `index.js` file.
+- #### Step 8:  Copy and paste this code into the `index.js` file.
+
+```
+import * as React from "react";
+import { render } from "react-dom";
+import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
+
+const MyHello = () => {
+  const [name, setName] = React.useState('');
+  const [message, setMessage] = React.useState('');
+
+  async function doGreet() {
+    const greeting = await custom_greeting_backend.greet(name);
+    setMessage(greeting);
+  }
+
+  return (
+    <div style={{ "fontSize": "30px" }}>
+      <div style={{ "backgroundColor": "yellow" }}>
+        <p>Greetings, from DFINITY!</p>
+        <p>
+          {" "}
+          Type your message in the Name input field, then click{" "}
+          <b> Get Greeting</b> to display the result.
+        </p>
+      </div>
+      <div style={{ margin: "30px" }}>
+        <input
+          id="name"
+          value={name}
+          onChange={(ev) => setName(ev.target.value)}
+        ></input>
+        <button onClick={doGreet}>Get Greeting!</button>
+      </div>
+      <div>
+        Greeting is: "
+        <span style={{ color: "blue" }}>{message}</span>"
+      </div>
+    </div>
+  );
+};
+
+render(<MyHello />, document.getElementById("app"));
+```
 
 - #### Step 9:  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
         mv src/custom_greeting_frontend/src/index.js src/custom_greeting_frontend/src/index.jsx
-    and change the entry point in `webpack.config.js` from:
+    
+    
+- #### Step 10: Change the entry point in `webpack.config.js` to the following:
 
-        entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so we need
-          // to replace the extension to `.js`.
-          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
-        },
-        
-    to :
+:::caution
+The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
+:::
 
         entry: {
           // The frontend.entrypoint points to the HTML file for this build, so we need
@@ -215,9 +383,7 @@ To prepare the frontend files:
           index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
         },
 
-- #### Step 10: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with `<div id="app"></div>`.
-
-    For example:
+- #### Step 11: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
 
         <!doctype html>
         <html lang="en">
@@ -273,7 +439,7 @@ To view the custom frontend:
 
         npm start
 
-- #### Step 2:  Open a browser and navigate to <http://localhost:4943>.
+- #### Step 2:  Open a browser and navigate to `http://localhost:4943`.
 
 - #### Step 3:  Verify that you are prompted to type a greeting.
 
@@ -294,7 +460,51 @@ After viewing the frontend, you might want to make some changes.
 To modify the frontend:
 
 - #### Step 1:  Open the `index.jsx` file in a text editor and modify its style settings. 
-For example, you might want to change the font family and use a placeholder for the input field by making changes similar to [this](_attachments/react-revised-index.jsx).
+For example, you might want to change the font family and use a placeholder for the input field by making changes similar to this:
+
+```
+import * as React from "react";
+import { render } from "react-dom";
+import { custom_greeting_backend } from "../../declarations/custom_greeting_backend/index.js";
+
+const MyHello = () => {
+  const [name, setName] = React.useState('');
+  const [message, setMessage] = React.useState('');
+
+  async function doGreet() {
+    const greeting = await custom_greeting_backend.greet(name);
+    setMessage(greeting);
+  }
+
+  return (
+    <div style={{ "fontFamily": "sans-serif" }}>
+      <div style={{ "fontSize": "30px" }}>
+        <p>Greetings, from DFINITY!</p>
+        <p>
+          {" "}
+          Type your message in the Name input field, then click{" "}
+          <b> Get Greeting</b> to display the result.
+        </p>
+      </div>
+      <div style={{ margin: "30px" }}>
+        <input
+          id="name"
+          placeholder="Type text here"
+          value={name}
+          onChange={(ev) => setName(ev.target.value)}
+        ></input>
+        <button onClick={doGreet}>Get Greeting!</button>
+      </div>
+      <div>
+        Greeting is: "
+        <span style={{ color: "green" }}>{message}</span>"
+      </div>
+    </div>
+  );
+};
+
+render(<MyHello />, document.getElementById("app"));
+```
 
 - #### Step 2:  Save the file and view the updated page in your browser.
 

@@ -85,7 +85,7 @@ The Bitcoin functionality including ECDSA chain-key signatures is available in a
 
 In the typical canister development workflow, canisters on the IC are compiled and run in the local environment using the [IC SDK](../../setup/install/index.mdx) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA management canister APIs.
 
-In contrast to the IC deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally-running bitcoind node in regression testing (regtest) mode. Using bitcoind in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, we integrated the IC SDK with bitcoind in regtest mode to bring the best Bitcoin development experience to the IC. Both development and automated testing of smart contracts are first done in the local environment with this setup.
+In contrast to the IC deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally-running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, we integrated the IC SDK with `bitcoind` in regtest mode to bring the best Bitcoin development experience to the IC. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
 The Bitcoin adapter of the single replica running the local SDK environment connects to the local `bitcoind` node instead of multiple nodes of Bitcoin Testnet or Mainnet. To see the relevant flags on dfx, please look at the output of `dfx start --help`.
 
@@ -97,42 +97,35 @@ Once a smart contract is ready for acceptance testing, it is deployed on the IC 
 
 The final stage of development of a Bitcoin smart contract is its deployment on the IC with the Bitcoin API set to use Bitcoin Mainnet. This is the final production environment for the smart contract and is now available.
 
-## API fees
+## API fees & Pricing
 
-The fees for using the Bitcoin API can be found on the [page on computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/production/computation-and-storage-costs). It is important to note that the cost is scaled with the replication factor of the subnet the Bitcoin canister resides on. In order for the API to be future proof, some of the methods require to send more cycles along with an API call than actually required and any cycles exceeding the actually-charged cost are refunded.
+The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mainnet APIs is presented in the following tables. As a general principle for the Bitcoin API, some API calls must have a minimum amount of cycles attached to the call as indicated in the column *Minimum cycles to send with call*. Cycles not consumed by the call are returned to the caller. Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of replication factor in the future. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached as the charged cost is independent of the replication factor of the subnet.
 
+The cost per API call in USD uses the USD/XDR exchange rate of November 23, 2022.
 
-| Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 20,000,000 + 0.4 cycles per Wasm instruction       | 50,000,000 + 1 cycle per Wasm instruction |
-| Bitcoin fee percentiles              | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 4,000,000                 | 10,000,000                    |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4,000,000                 | 10,000,000                    |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2,000,000,000               | 5,000,000,000               |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8,000,000                  | 20,000,000                   |
+### Bitcoin Testnet
 
-Cost per API call in USD (as of the USD/XDR exchange rate of November 23, 2022):
+| Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 20,000,000 + 0.4 cycles per Wasm instruction | $0.00002617720 + Wasm instruction cost | 4,000,000,000 |
+| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 4,000,000                 | $0.00000523544                    | 40,000,000 |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4,000,000                 | $0.00000523544                    | 40,000,000 |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2,000,000,000             | $0.00261772000                    | n.a.       |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8,000,000                 | $0.00001047088                    | n.a.       |
 
-| Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| *Coding Bitcoin*                     |                                                                                                                |                             |                             |
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | $0.00002617720 + Wasm instruction cost             | $0.00006544300 + Wasm instruction cost |
-| Bitcoin fee percentiles              | For obtaining the fe percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | $0.00000523544              | $0.00001308860              |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | $0.00000523544              | $0.00001308860              |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | $0.00261772000              | $0.00654430000              |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | $0.00001047088              | $0.00002617720              |
+### Bitcoin Mainnet
 
-Some Bitcoin API calls must have at least the following amount of cylces attached to be future proof. Cycles not consumed by the call are returned. This figure does not depend on the replication factor of the subnet, but is intended to allow for the replication factor to grow over time without canisters to be adapted. The call for submitting a Bitcoin transaction to the Bitcoin network does not require to attach extra cycles as the charged cost is independent of the replication factor of the subnet.
+| Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 50,000,000 + 1 cycle per Wasm instruction | $0.00006544300 + Wasm instruction cost | 10,000,000,000 |
+| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 10,000,000                 | $0.00001308860 | 100,000,000 |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 10,000,000                 | $0.00001308860                    | 100,000,000 |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5,000,000,000             | $0.00654430000                    | n.a.       |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 20,000,000                 | $0.00002617720                    | n.a.       |
 
-| API call | Minimum cycles to be attached (Bitcoin mainnet)| Minimum cycles to be attached (Bitcoin testnet)|
-|----------|------------------------------------------------|------------------------------------------------|
-| `get_utxos` | 10,000,000,000 | 4,000,000,000 |
-| `get_balance` | 100,000,000 | 40,000,000 |
-| `get_current_fee_percentiles` | 40,000,000 |
-
-The `bitcoin_get_utxos` call is charged through a baseline fee that amortizes part of the Bitcoin block processing and the cycles cost of the actually-consumed Wasm instructions. This is the fairest way of charging because a flat fee would be less fair for requests returning a small number of UTXOs, while a fee scaling with the number of UTXOs is hard to define in a clean way. A few informal test measurement have yielded Wasm execution fees anywhere in the range from less than 200K to more than 1,000K cycles per returned UTXO and in addition 30M-50M cycles for processing of the unstable blocks. This wide variance per UTXO was the reason to not use a charging approach based on the number of UTXOs returned, but it should give you a rough indication of what to expect to pay in terms of fees. For queries with a small number of UTXOs, you can expect around 100M cycles as fee to be deducted from the provided cycles on the call for a majority of calls.
-
-Pricing for Bitcoin Testnet remains as is for now in order to not break existing canisters.
+:::note
+Note that the `bitcoin_get_utxos` call is charged through a baseline fee that amortizes part of the Bitcoin block processing and the cycles cost of the actually-used Wasm instructions. This is the fairest way of charging because a flat fee would be less fair for requests returning a small number of UTXOs, while a fee scaling with the number of UTXOs is hard to define in a clean way. A few informal test measurement have yielded Wasm execution fees anywhere in the range from less than 200K to more than 1,000K cycles per returned UTXO and in addition 30M-50M cycles for processing of the unstable blocks. This wide variance per UTXO was the reason to not use a charging approach based on the number of UTXOs returned, but it should give you a rough indication of what to expect to pay in terms of fees. For queries with a small number of UTXOs, you can expect around 100M cycles as fee to be deducted from the provided cycles on the call for a majority of calls.
+:::
 
 ## Resources
 

@@ -23,6 +23,10 @@ If you have ICP tokens, but aren’t sure how to use them, the following diagram
 
 As this diagram suggests, how you use ICP tokens depends primarily on your goals in acquiring them. For example, if you are a developer or founder, ICP tokens can be converted to **cycles**. Cycles can then be used to pay for running canisters that deliver products and services to the market. If you are a member of the community interested in participating in governance and influencing the direction of the Internet Computer, you can lock up ICP tokens in a stake, called a neuron, so that you can submit and vote on proposals.
 
+:::info
+Regarding transaction fees, the **transaction sender** is responsible for covering any/all transaction fees.
+:::
+
 ## How cycles work
 
 For developers, ICP tokens are important because they can be converted to cycles that, in turn, are used to pay for resource consumption.

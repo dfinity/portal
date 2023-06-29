@@ -1941,5 +1941,22 @@
     "twitter?": "https://twitter.com/vibeversexyz",
     "screenshots?": ["/img/showcase/vibeverse_screenshot_0.jpg", "/img/showcase/vibeverse_screenshot_1.jpg"],
     "submittableId?": "34886232"
-  } 
+  },
+  {
+    "name": "DSign",
+    "description": "Collaborative Product Design Innovation Hub",
+    "website": "https://www.dsign.ooo",
+    "logo": "/img/showcase/dsign_logo.webp",
+    "screenshots": ["/img/showcase/dsign_screenshot.webp"],
+    "video": "",
+    "display": "Normal",
+    "id": "dsign",
+    "oneLiner": "Collaborative Product Design Innovation Hub",
+    "tags": ["Tools / Infrastructure"],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/cybrowl/dsign-components",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "34425295"
+  }
 ]

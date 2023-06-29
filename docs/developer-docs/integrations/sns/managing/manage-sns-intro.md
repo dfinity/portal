@@ -1,7 +1,7 @@
 # Manage an SNS
 
 ## Overview
-SNSs are system-provided DAOs on the IC that are to some extent maintainted by the
+SNSs are system-provided DAOs on the IC that are to some extent maintained by the
 NNS community, who for example approve new upgrades of SNS canister code.
 This eliminates much of the maintenance burden from the SNS communities.
 However, there are still some maintenance tasks that have to be performed by an
@@ -13,7 +13,7 @@ sure that the SNS canisters do not run out of cycles.
 ## SNS community
 
 Once an
-[SNS is launched](../get-sns/get-sns-intro.md),
+[SNS is launched](../testing/testing-before-launch.md),
 neither the dapp that the SNS controls, nor the SNS canisters
 are under the control of a singe entity such as a developer.
 This means that the dapp and to the SNS
@@ -42,7 +42,7 @@ cycles to continue operating.
 You can find more information on<!--how SNS canisters can be  upgraded to new versions on this page (./upgradeSNS.md)
 and about--> 
 cycle management [on this page](./cycles-usage.md).
-  We especially want to emphasise the following:
+  We especially want to emphasize the following:
 
 :::caution
 The SNS communities are responsible for individually topping up the cycles of
@@ -75,7 +75,7 @@ by proposal.-->
 <!-- * Each SNS community might need to have different
 kinds of proposals to ensure that the SNS DAO can
 manage the
-specific dapp and its operatiosn effectively.
+specific dapp and its operations effectively.
 This page(./proposal-guide.md) provides some guidelines 
 regarding
 how proposals can be used and how an SNS community can define

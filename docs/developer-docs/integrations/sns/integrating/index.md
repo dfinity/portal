@@ -6,11 +6,11 @@ For example, one may want to integrate a frontend for the SNS swap or for the
 SNS governance embedded in the dapp's UI.
 Other dapps can also provide such a frontend or integrate
 with some of the SNS canisters.
-For exmpale, DEXs might have to interact with the SNS ledger canister. 
+For example, DEXs might have to interact with the SNS ledger canister. 
 
 As these considerations are not only relevant for the SNS launch but during the
 full SNS lifecycle, we explain them in this separate section.
 You can find more information on
-* The [ledger canister integration](../integrate-sns/ledger-integration.md).
-* The [index canister integration](../integrate-sns/index-integration.md).
+* The [ledger canister integration](../integrating/ledger-integration.md).
+* The [index canister integration](../integrating/index-integration.md).
 * Swap and governance frontend integration to follow.
