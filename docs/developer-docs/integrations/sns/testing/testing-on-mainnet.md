@@ -267,3 +267,64 @@ and invoking:
 dfx canister call sns_root recover '()'
 ```
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
+
+## STAGES
+
+<table border="1">
+    <tr>
+        <th>Stage Number</th>
+        <th>Stage</th>
+        <th>SNS Testflight process</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>Developers deploy a dapp to the Internet Computer</td>
+        <td>Not tested</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
+        <td>Not tested</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Dapp developers submit NNS proposal so they can deploy to the SNS subnet</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Proposal #1 (of 3) is passed or rejected</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Dapp developers trigger the SNS canisters to be created on SNS subnet</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Dapp developers submit an SNS proposal to handover control of their dapp to the SNS</td>
+        <td rowspan="2">./register_dapp.sh</td>
+        <td> Potentially many proposals if one's dapp has many canisters</td>
+    </tr>
+        <tr>
+        <td>6</td>
+        <td>Proposal #2 (of 3) is passed or rejected</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Proposal to start the decentralization swap</td>
+        <td rowspan="2">./open_sns_swap.sh</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Proposal #3 (of 3) is passed or rejected</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>SNS participants participate in the decentralization swap</td>
+        <td>./participate_sns_swap.sh</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>SNS canisters become SNS DAO</td>
+        <td>./finalize_sns_swap.sh</td>
+    </tr>
+</table>

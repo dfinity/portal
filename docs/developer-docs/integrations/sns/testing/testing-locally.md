@@ -5,6 +5,14 @@ sidebar_position: 2
 
 After having [chosen the initial SNS parameters in a .yaml file](../tokenomics/preparation.md)and before requesting an SNS launch in production, the SNS launch should be tested locally.
 
+## Using `sns-testing` repo
+
+These scripts have been most tested with a stack that looks like this:
+
+* X
+* Y
+* Z
+
 ## Testing via `sns-testing` repo
 
 A common way to test an SNS locally is to use the `sns-testing` [repo](https://github.com/dfinity/sns-testing#readme).
@@ -25,12 +33,14 @@ To use the `sns-testing` commands and their arguments properly, please consult t
     <tr>
         <th>Stage Number</th>
         <th>Stage</th>
-        <th>Command</th>
+        <th>Example `sns-testing` command</th>
+        <th>For other developers</th>
     </tr>
     <tr>
         <td>0</td>
         <td>Developers deploy a dapp to the Internet Computer</td>
-        <td>./deploy_test_canister.sh</td>
+        <td><code>./deploy_test_canister.sh</code></td>
+        <td>Custom scripts used to deploy dapps</td>
     </tr>
     <tr>
         <td>1</td>
@@ -53,6 +63,7 @@ To use the `sns-testing` commands and their arguments properly, please consult t
         <td>5</td>
         <td>Dapp developers submit an SNS proposal to handover control of their dapp to the SNS</td>
         <td rowspan="2">./register_dapp.sh</td>
+        <td> Potentially many proposals if one's dapp has many canisters</td>
     </tr>
         <tr>
         <td>6</td>
