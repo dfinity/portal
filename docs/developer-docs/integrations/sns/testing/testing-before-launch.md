@@ -38,6 +38,6 @@ A testflight is not a repo or set of tools, but an *activity* (deploying and dap
 Among other things, here are some examples of issues developers find after running an SNS testflight: 
 * Developers notice they need better pipeline for creating proposals to update a dapp.
 * developers notice they may have been decentralized prematurely and need to fix some things
-* developers notice they may need better monitoring before decentralizing
+* Developers notice they may need better monitoring before decentralizing.
 
 The mock SNS used in a SNS testflight gives developers the ability to see how post-decentralization lifecycle of a dapp looks like, but still provides a way for a developer to keep control of their dapp. **Therefore, developers are encouraged to run perform an SNS testflight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.**
