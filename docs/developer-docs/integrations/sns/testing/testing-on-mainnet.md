@@ -230,10 +230,12 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send execute-generic-functions.json
 ```
+
 The generic functions to be executed are specified by their numeric identifier defined in their registration proposal.
 The payload is a blob that is passed to both generic functions.
 The above sample payload `blob \"DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00\00\00\03\00\00\00\"` was obtained via
-```
+
+```bash
 $ didc encode '(record {major=2:nat32; minor=3:nat32;})' --format blob
 blob "DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00\00\00\03\00\00\00"
 ```
@@ -273,9 +275,11 @@ Once you are done with testing all kinds of SNS proposals needed to operate your
 you can finish the testflight.
 Make sure that you are a controller of all the canisters registered with the testflight SNS, e.g.,
 by invoking
-```
+
+```bash
 dfx canister status test
 ```
+
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
 
 If this is the case, you can safely delete the SNS testflight canisters.
@@ -327,4 +331,5 @@ and invoking:
 ```bash
 dfx canister call sns_root recover '()'
 ```
+
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
