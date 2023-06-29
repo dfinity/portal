@@ -9,9 +9,8 @@ After having [chosen the initial SNS parameters in a .yaml file](../tokenomics/p
 
 These scripts have been most tested with a stack that looks like this:
 
-* X
-* Y
-* Z
+* Single canister being decentralized
+* Canister can be deployed to local replica via `dfx deploy`
 
 ## Testing via `sns-testing` repo
 
@@ -29,6 +28,8 @@ To use the `sns-testing` commands and their arguments properly, please consult t
 
 ### Testing stages of decentralization
 
+Below, we match the stages of decentralization to the commands that `sns-testing` repo has. Some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
+
 <table border="1">
     <tr>
         <th>Stage Number</th>
@@ -40,12 +41,12 @@ To use the `sns-testing` commands and their arguments properly, please consult t
         <td>0</td>
         <td>Developers deploy a dapp to the Internet Computer</td>
         <td><code>./deploy_test_canister.sh</code></td>
-        <td>Custom scripts used to deploy dapps</td>
+        <td>Custom scripts used to deploy dapps (e.g. multi-canister dapps, use nix, etc...)</td>
     </tr>
     <tr>
         <td>1</td>
         <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td rowspan="4">./deploy_sns.sh</td>
+        <td rowspan="4"><code>./deploy_sns.sh</code></td>
     </tr>
     <tr>
         <td>2</td>
@@ -62,8 +63,8 @@ To use the `sns-testing` commands and their arguments properly, please consult t
     <tr>
         <td>5</td>
         <td>Dapp developers submit an SNS proposal to handover control of their dapp to the SNS</td>
-        <td rowspan="2">./register_dapp.sh</td>
-        <td> Potentially many proposals if one's dapp has many canisters</td>
+        <td rowspan="2"><code>./register_dapp.sh</code></td>
+        <td rowspan="2"> Potentially many proposals if one's dapp has many canisters</td>
     </tr>
         <tr>
         <td>6</td>
@@ -72,7 +73,7 @@ To use the `sns-testing` commands and their arguments properly, please consult t
     <tr>
         <td>7</td>
         <td>Proposal to start the decentralization swap</td>
-        <td rowspan="2">./open_sns_swap.sh</td>
+        <td rowspan="2"><code>./open_sns_swap.sh</code></td>
     </tr>
     <tr>
         <td>8</td>
@@ -81,12 +82,12 @@ To use the `sns-testing` commands and their arguments properly, please consult t
     <tr>
         <td>9</td>
         <td>SNS participants participate in the decentralization swap</td>
-        <td>./participate_sns_swap.sh</td>
+        <td><code>./participate_sns_swap.sh</code></td>
     </tr>
     <tr>
         <td>10</td>
         <td>SNS canisters become SNS DAO</td>
-        <td>./finalize_sns_swap.sh</td>
+        <td><code>./finalize_sns_swap.sh</code></td>
     </tr>
 </table>
 
