@@ -25,7 +25,7 @@ Among other things, developers can use `sns-testing` repo to:
 
 These scripts have been most tested with a stack that looks like this:
 
-* Single canister being decentralized
+* A single canister that is being decentralized.
 * Canister can be deployed to local replica via `dfx deploy`
 
 ## Testing via `sns-testing` repo
