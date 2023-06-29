@@ -90,11 +90,11 @@ const navbarItems = [
           href: "/capabilities?source=nav"
         },
         {
-          label: "Bitcoin Integration",
+          label: "Bitcoin on ICP",
           href: "/bitcoin-integration?source=nav"
         },
         {
-          label: "Ethereum Integration",
+          label: "Ethereum <> ICP",
           href: "/ethereum-integration?source=nav"
         },
         {
