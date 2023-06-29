@@ -14,7 +14,7 @@ After having [chosen the initial SNS parameters in a .yaml file](../tokenomics/p
 Among other things, developers can use `sns-testing` repo to: 
 * Initiate proposals.
 * Pass proposals.
-* start decentralization swaps
+* Start decentralization swaps.
 * Upgrade dapp via DAO voting.
 
 :::info
