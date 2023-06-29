@@ -15,7 +15,7 @@ Developers can test **[on a local machine](./testing-locally.md)**. To help deve
 **The main intent of `sns-testing` repo is for a developer to test the actual process of decentralizing their dapp.**
 
 Among other things, developers can use `sns-testing` repo to: 
-* initiate proposals
+* Initiate proposals.
 * pass proposals
 * start decentralization swaps
 * upgrade dapp via DAO voting
