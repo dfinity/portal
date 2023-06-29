@@ -107,8 +107,8 @@ function EnterprisePage() {
                   Secure inter-org workflows
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Businesses can operate with leaner teams, as the security is
-                  built into the protocol itself
+                  Businesses can privately share documents with other organizations,
+                  and customers, using onchain encryption enabled by VETKeys.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -146,7 +146,7 @@ function EnterprisePage() {
                   className="w-24 md:w-30"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Secure data sharing
+                  Private data sharing
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Zero knowledge proofs enable secure and private sharing of
