@@ -104,7 +104,7 @@ function EnterprisePage() {
                   className="w-24 md:w-30"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Secure doc workflow
+                  Secure inter-org workflows
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Businesses can operate with leaner teams, as the security is
@@ -237,23 +237,17 @@ function EnterprisePage() {
               reverse={true}
             >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Simple self-custody of digital assets
+                Enterprise custody of digital assets
               </h2>
               <p className="tw-lead-sm mb-6 md:mb-10">
-                Users of enterprise solutions often resort to giving up self
-                custody of their data or digital assets, having to trust the
-                service provider to appropriately and securely handle their
-                data. Using canister smart contracts on the Internet Computer,
-                organizations can simply deploy an architecture, in which all
-                users have complete ownership and control of their data and
-                digital assets. This separation is enabled by chain-key
-                cryptography, and most importantly doesn’t require users to go
-                through complicated configuring of their accounts.
+                Bussinesses can securely custody, and privately share digital assets
+                such as documents with other organizations or customers, without having
+                to create temporary business accounts. ICP implements protocol level,
+                on-chain encryption using verifiable encrypted threshold keys that allows
+                secure, and private sharing of data. 
               </p>
             </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/enterprise/self-custody-large.webp"
-            >
+            <TranslatedLayout imageUrl="/img/enterprise/self-custody-large.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Built-in digital identity framework
               </h2>
