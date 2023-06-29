@@ -14,20 +14,20 @@ const queryClient = new QueryClient();
 const links = [
   {
     label: "Live Sessions",
-    href: "/live-sessions",
+    href: "/live-sessions"
   },
 
   {
     label: "Technical Working Groups",
-    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
+    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781"
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
   { label: "Dev Discord Office Hours", href: "https://discord.gg/jnjVVQaE2C" },
   {
     label: "Developer Grants and Bounties",
-    href: "https://dfinity.org/grants/",
+    href: "https://dfinity.org/grants/"
   },
-  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
+  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" }
 ];
 
 const DocsHomePage: FC = () => {
@@ -130,7 +130,11 @@ const DocsHomePage: FC = () => {
                   specifically for the Internet Computer cdcsd
                 </p>
                 <p className="mb-0">
-                  <Link href="" className="text-infinite/50">
+                  <Link
+                    href="/docs/current/motoko/main/motoko"
+                    className="link-primary"
+                    title="Go to Motoko docs"
+                  >
                     <LinkArrowRight />
                   </Link>
                 </p>
@@ -147,7 +151,11 @@ const DocsHomePage: FC = () => {
                   build high efficiency apps on Internet Computer
                 </p>
                 <p className="mb-0">
-                  <Link href="" className="text-infinite/50">
+                  <Link
+                    href="/docs/current/developer-docs/backend/rust/"
+                    className="link-primary"
+                    title="Go to Rust docs"
+                  >
                     <LinkArrowRight />
                   </Link>
                 </p>
@@ -168,7 +176,11 @@ const DocsHomePage: FC = () => {
                   TypeScript and JavaScript, the languages of the web
                 </p>
                 <p className="mb-0">
-                  <Link href="" className="text-infinite/50">
+                  <Link
+                    href="https://demergent-labs.github.io/azle"
+                    className="link-primary"
+                    title="Go to Azle docs"
+                  >
                     <LinkArrowRight />
                   </Link>
                 </p>
@@ -185,7 +197,11 @@ const DocsHomePage: FC = () => {
                   one of the most popular languages in the world
                 </p>
                 <p className="mb-0">
-                  <Link href="" className="text-infinite/50 link-with-icon">
+                  <Link
+                    href="https://demergent-labs.github.io/kybra"
+                    className="link-primary"
+                    title="Go to Kybra docs"
+                  >
                     <LinkArrowRight />
                   </Link>
                 </p>
