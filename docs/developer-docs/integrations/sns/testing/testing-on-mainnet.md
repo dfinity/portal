@@ -10,7 +10,7 @@ Once a developer has tested the process of an SNS, it is highly recommended they
 **The main intent of performing an SNS testflight is for a developer to experience how a dapp works *after* it has been decentralized, so developer can make sure their dapps is ready for decentralization. It does not test the actual process of decentralizing it.**
 
 :::info 
-A testflight is not a repo or set of tools, but an *activity* (deploying and dapp and handing control of it to a mock SNS), so the instructions for [testing on mainnet](./testing-on-mainnet.md) utilize various tools, but developers can of course use any tools they wish. 
+A testflight is not a repo or set of tools, but an *activity* (deploying a dapp and handing control of it to a mock SNS), so the instructions for [testing on the mainnet](./testing-on-mainnet.md) utilize various tools, but developers can of course use any tools they wish. 
 :::
 
 Among other things, here are some examples of issues developers find after running an SNS testflight: 
