@@ -82,7 +82,8 @@ Activities developers may need to do in running a testflight:
 ### Step 1. Import and download SNS canisters
 
 To import the SNS canisters in the `dfx.json` file of your project and download their WASM binaries, run
-```
+
+```bash
 DFX_IC_COMMIT=82a53257ed63af4f602afdccddadc684df3d24de dfx sns import
 DFX_IC_COMMIT=82a53257ed63af4f602afdccddadc684df3d24de dfx sns download
 ```
@@ -91,7 +92,8 @@ in the root directory of your project.
 ### Step 2. Deploy testflight SNS (mock SNS canisters to an application subnet) on mainnet and store the developer neuron ID
 
 To deploy the testflight SNS, run
-```
+
+```bash
 sns-cli deploy-testflight
 ```
 To deploy on the mainnet, pass `--network ic` as an additional argument.
@@ -101,9 +103,9 @@ which you will use to submit SNS proposals.
 The testflight SNS parameters are configured so that this developer neuron ID
 has full control over the testflight SNS.
 The developer neuron ID is the last part of the testflight deployment output, e.g.:
+
 ```
-Developer neuron IDs:
-594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63
+Developer neuron IDs: 594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63
 ```
 
 ### Step 3. Add SNS root as an additional controller of all SNS managed dapp canisters
@@ -111,9 +113,11 @@ Developer neuron IDs:
 Add the SNS root canister as an **additional** controller of all the canisters
 that you want to manage by the testflight SNS.
 For a canister called `test`, you can do so as follows:
-```
+
+```bash
 dfx canister update-settings --add-controller $(dfx canister id sns_root) test
 ```
+
 When running the testflight on the mainnet, pass `--network ic` as an additional argument
 to **both** invocations of `dfx canister`.
 
@@ -124,7 +128,8 @@ by submitting an SNS proposal via `quill`.
 
 When running the testflight locally, export the environment variable `IC_URL`
 to point to your local IC instance, e.g.,
-```
+
+```bash
 export IC_URL="http://localhost:8080/"
 ```
 
@@ -134,25 +139,29 @@ Typically, this file is located at
 under your home directory.
 
 Finally, prepare and send the SNS proposal via `quill`:
-```
+
+```bash
 export DEVELOPER_NEURON_ID="594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63"
 export PEM_FILE="/home/martin/.config/dfx/identity/$(dfx identity whoami)/identity.pem"
 export CID="$(dfx canister id test)"
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal --proposal "(record { title=\"Register dapp's canisters with SNS.\"; url=\"https://example.com/\"; summary=\"This proposal registers dapp's canisters with SNS.\"; action=opt variant {RegisterDappCanisters = record {canister_ids=vec {principal\"$CID\"}}}})" $DEVELOPER_NEURON_ID > register.json
 quill send register.json
 ```
+
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`
 when obtaining the dapp's canister IDs.
 Otherwise, pass `--insecure-local-dev-mode` as an additional argument to `quill send`.
 
 You can also register multiple canisters via a single SNS proposals by adjusting `RegisterDappCanisters`
 in the `--proposal` argument above to, e.g.,
+
 ```
 RegisterDappCanisters = record {canister_ids=vec {principal\"$CID1\"; principal\"$CID2\";}}
 ```
 
 Once the SNS proposal is executed, you should see all the registered dapp's canisters listed as dapps in
-```
+
+```bash
 dfx canister call sns_root list_sns_canisters '(record {})'
 ```
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister` above.
@@ -167,8 +176,10 @@ where `<network>` is the network (e.g., `local` or `ic`) and `<canister-name>` i
 of the canister according to `dfx.json`.
 
 Now you can prepare and send the SNS proposal via `quill`:
-```
+
+```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-upgrade-canister-proposal --summary "This proposal upgrades test canister." --title "Upgrade test canister." --url "https://example.com/" --target-canister-id $CID --wasm-path "./.dfx/local/canisters/test/test.wasm" $DEVELOPER_NEURON_ID > upgrade.json
+
 quill send upgrade.json | grep -v "^ *new_canister_wasm"
 ```
 Unless you run the testflight against the mainnet, pass `--insecure-local-dev-mode` as an additional argument to `quill send`.
@@ -199,8 +210,10 @@ It should not return any value because this return value is ignored.
 To use generic functions, you must first
 submit an SNS proposal to register these functions
 with SNS governance:
-```
+
+```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal --proposal "(record { title=\"Register generic functions.\"; url=\"https://example.com/\"; summary=\"This proposals registers generic functions.\"; action=opt variant {AddGenericNervousSystemFunction = record {id=1000:nat64; name=\"MyGenericFunctions\"; description=null; function_type=opt variant {GenericNervousSystemFunction=record{validator_canister_id=opt principal\"$CID\"; target_canister_id=opt principal\"$CID\"; validator_method_name=opt\"validate\"; target_method_name=opt\"execute\"}}}}})" $DEVELOPER_NEURON_ID > register-generic-functions.json
+
 quill send register-generic-functions.json
 ```
 You have to assign a distinct numeric identifier to all generic functions registered with SNS governance.
@@ -211,8 +224,10 @@ in the canister code (the name is `MyGenericFunctions` and the description omitt
 
 Once the proposal to register generic functions is accepted, you can submit proposals to execute them
 with a given binary payload:
-```
+
+```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal --proposal "(record { title=\"Execute generic functions.\"; url=\"https://example.com/\"; summary=\"This proposal executes generic functions.\"; action=opt variant {ExecuteGenericNervousSystemFunction = record {function_id=1000:nat64; payload=blob \"DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00\00\00\03\00\00\00\"}}})" $DEVELOPER_NEURON_ID > execute-generic-functions.json
+
 quill send execute-generic-functions.json
 ```
 The generic functions to be executed are specified by their numeric identifier defined in their registration proposal.
@@ -222,8 +237,9 @@ The above sample payload `blob \"DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00
 $ didc encode '(record {major=2:nat32; minor=3:nat32;})' --format blob
 blob "DIDL\01l\02\b9\fa\ee\18y\b5\f6\a1Cy\01\00\02\00\00\00\03\00\00\00"
 ```
-and can be decoded as Candid payload (a record with two fields) in the canister Rust code
-```
+and can be decoded as Candid payload (a record with two fields) in the canister Rust code:
+
+```rust
 #[derive(CandidType, Debug, Deserialize)]
 struct Version {
   major: u32,
@@ -239,7 +255,8 @@ fn validate(x: Version) -> Result<String, String> {
 ### Check the proposals of the testflight SNS
 
 You can list all proposals in the testflight SNS as follows:
-```
+
+```bash
 dfx canister call sns_governance list_proposals '(record {include_reward_status = vec {}; limit = 0; exclude_type = vec {}; include_status = vec {};})'
 ```
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
@@ -265,7 +282,8 @@ If this is the case, you can safely delete the SNS testflight canisters.
 Otherwise, you can restore control over your dapp's canisters by reinstalling
 the SNS root canister with the following code (make sure to paste the developer principal ID
 and your dapp's canister ID into the code):
-```
+
+```rust
 use candid::{CandidType, Principal};
 
 #[derive(Default, Clone, CandidType, Debug)]
@@ -303,8 +321,10 @@ async fn recover() {
     ic_cdk::api::call::call::<_, ()>(Principal::from_text("aaaaa-aa").unwrap(), "update_settings", (settings,)).await.unwrap();
 }
 ```
+
 and invoking:
-```
+
+```bash
 dfx canister call sns_root recover '()'
 ```
 When running the testflight on the mainnet, pass `--network ic` as an additional argument to `dfx canister`.
