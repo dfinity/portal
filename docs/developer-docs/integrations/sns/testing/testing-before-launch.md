@@ -36,7 +36,7 @@ A testflight is not a repo or set of tools, but an *activity* (deploying and dap
 :::
 
 Among other things, here are some examples of issues developers find after running an SNS testflight: 
-* developers notice they need better pipeline for creating proposals to update a dapp
+* Developers notice they need better pipeline for creating proposals to update a dapp.
 * developers notice they may have been decentralized prematurely and need to fix some things
 * developers notice they may need better monitoring before decentralizing
 
