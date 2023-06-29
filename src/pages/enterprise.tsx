@@ -190,11 +190,11 @@ function EnterprisePage() {
               className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
               variants={transitions.item}
             >
-              The Internet Computer proccesses half a billion transactions daily,
-              unlocking industry-scale blockchain use cases.
+              The Internet Computer proccesses half a billion messages (TXs) daily,
+              a throughput suitable for industry-scale blockchain use cases.
             </motion.h2>
             <motion.p className="mb-0">
-              <Link className="button-primary">Get in touch to find out how</Link>
+              <Link className="button-primary">Get in touch to discuss use cases</Link>
             </motion.p>
           </div>
           <img
