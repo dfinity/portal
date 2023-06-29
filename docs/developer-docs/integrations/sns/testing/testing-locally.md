@@ -116,22 +116,22 @@ Once a canister or dapp has been decentralized, it will be updated via proposals
     <tr>
         <th>Stage Number</th>
         <th>Stage</th>
-        <th>Command</th>
+        <th>Example `sns-testing` command</th>
     </tr>
     <tr>
         <td>0</td>
-        <td>Upgrade a  yet-to-be-decentralized canister by submitting an SNS proposal that can be voted on using the SNS developer neuron.</td>
-        <td>./upgrade_test_canister.sh</td>
+        <td>Upgrade a yet-to-be-decentralized canister by submitting an SNS proposal that can be voted on using the SNS developer neuron.</td>
+        <td><code>./upgrade_test_canister.sh</code></td>
     </tr>
     <tr>
         <td>1</td>
         <td>Submit proposal to upgrade a decentralized canister</td>
-        <td>./upgrade_test_canister.sh</td>
+        <td><code>./upgrade_test_canister.sh</code></td>
     </tr>
      <tr>
         <td>1</td>
         <td>Vote on a proposal that upgrades a decentralized canister</td>
-        <td>./vote_on_sns_proposal.sh </td>
+        <td><code>./vote_on_sns_proposal.sh</code></td>
     </tr>
 </table>
 
