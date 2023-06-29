@@ -73,7 +73,7 @@ A testflight typically consists of the following steps:
 6. Test upgrading canisters via SNS proposals.
 
 Activities developers may need to do in running a testflight:
-* Check the proposals
+* Check the proposals.
 * Test executing code on SNS managed canisters via SNS proposals.
 * Abort the testflight.
 
