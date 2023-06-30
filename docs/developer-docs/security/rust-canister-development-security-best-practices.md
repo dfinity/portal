@@ -589,7 +589,9 @@ The correct execution of [canister_inspect_message](../../references/ic-interfac
 
 #### Recommendation
 
-Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security relevant checks, such as authentication or authorization, should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Also note that for inter-canister calls `canister_inspect_message` is not invoked, so these calls can't be handled there.
+Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security critical code, such as access control checks, should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function. 
+
+Also note that for inter-canister calls `canister_inspect_message` is not invoked which is another reason to execute the code as part of the update call by using a guard.
 
 ## Nonspecific to the Internet Computer
 
