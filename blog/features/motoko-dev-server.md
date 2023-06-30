@@ -1,4 +1,15 @@
+---
+title: "Announcing the Motoko Dev Server: live-reloading for Web3 dapps"
+description: Introducing [mo-dev](https://github.com/dfinity/motoko-dev-server), a flexible live-reload server for quickly building and testing Motoko services on the Internet Computer.
+tags: [Devs]
+image: /img/blog/motoko-dev-server.jpg
+---
+
 # Announcing the Motoko Dev Server: live-reloading for Web3 dapps
+
+* [Announcement post](https://medium.com/dfinity/announcing-the-motoko-dev-server-live-reloading-for-web3-dapps-20363088afb4)
+* [Developer forum topic](https://forum.dfinity.org/t/announcing-mo-dev-live-reloading-for-motoko-dapps/21007)
+* [GitHub repository](https://github.com/dfinity/motoko-dev-server)
 
 We are excited to introduce [mo-dev](https://github.com/dfinity/motoko-dev-server), a flexible live-reload server for quickly building and testing Motoko services on the Internet Computer.
 
@@ -24,7 +35,7 @@ Each use case requires different live-reload capabilities, so we decided to crea
 
 * Deploy canisters to the local replica
 * Generate language bindings
-* Run unit tests (files ending with .test.mo)
+* Run unit tests (files ending with `.test.mo`)
 * Execute commands
 * Any combination of the above
 
