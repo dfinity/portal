@@ -141,6 +141,10 @@ const navbarItems = [
           href: "/icp-tokens?source=nav"
         },
         {
+          label: "For Enterprise",
+          href: "/enterprise?source=nav"
+        },
+        {
           label: "Create an Internet Identity",
           href: "https://identity.ic0.app/"
         },
