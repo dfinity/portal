@@ -192,8 +192,13 @@ function EnterprisePage() {
               The Internet Computer proccesses half a billion messages (TXs) daily,
               a throughput suitable for industry-scale blockchain use cases.
             </motion.h2>
-            <motion.p className="mb-0">
-              <Link className="button-primary">Get in touch to discuss use cases</Link>
+            <motion.p className="mb-24">
+              <Link
+                href="mailto:comms@dfinity.org"
+                className="button-primary"
+              >
+                Get in touch to discuss use cases
+              </Link>
             </motion.p>
           </div>
           <img
@@ -443,7 +448,12 @@ function EnterprisePage() {
                 to get a better sense of how the Internet Computer could benefit your business.
               </p>
               <p className="mb-0">
-                <Link className="button-white">get in touch</Link>
+                <Link
+                  href="mailto:comms@dfinity.org"
+                  className="button-white"
+                >
+                  get in touch
+                </Link>
               </p>
             </div>
             <div className="flex-1 ">
