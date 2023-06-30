@@ -283,7 +283,7 @@ function EnterprisePage() {
               <p className="tw-lead-sm">
                 The Internet Computer was designed bottom up with security and
                 privacy directly built into the protocol itself by a team of
-                world class cryptographers, engineerings and computer
+                world class cryptographers, engineers and computer
                 scientists.
               </p>
               <p className="tw-lead-sm">
@@ -413,7 +413,7 @@ function EnterprisePage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://yumimarketplace.medium.com/introducing-the-x-collection-761f7cb64dec"
+                href="https://decrypt.co/146830/sodexo-drops-nfts-twist-employees-not-public"
               >
                 <LinkArrowRight /> More on the X Collection
               </Link>
