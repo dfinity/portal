@@ -1927,6 +1927,22 @@
     "submittableId": "35782696"
   },
   {
+    "id": "34886232",
+    "name": "Vibeverse",
+    "oneLiner": "A vibrant ecosystem where users can learn about new AI tools, AI content, AI Movies, and more",
+    "website": "https://h5fnl-4iaaa-aaaap-abddq-cai.icp0.io/",
+    "tags": [ "NFT" ,  "AI" ],
+    "description": "Our platform is a vibrant ecosystem where users can seamlessly share, discover, and collaborate on AI-generated content in the Film industry and beyond. Users can also discover AI tools to create new content and join new communities like White Mirror",
+    "stats": "Top 100 projects on Buildspace S3 Dubai + San Francisco | 700 filmmakers and content creators enlisted for final demo day on 21th June 2023",
+    "logo": "/img/showcase/vibeverse_logo.png",
+    "usesInternetIdentity": true,
+    "github?": "https://github.com/roger-rangel/vibeverse",
+    "youtube?": "https://www.youtube.com/watch?v=-Gug7qZq4AM%E2%80%9D",
+    "twitter?": "https://twitter.com/vibeversexyz",
+    "screenshots?": ["/img/showcase/vibeverse_screenshot_0.jpg", "/img/showcase/vibeverse_screenshot_1.jpg"],
+    "submittableId?": "34886232"
+  },
+  {
     "name": "DSign",
     "description": "Collaborative Product Design Innovation Hub",
     "website": "https://www.dsign.ooo",
@@ -1942,5 +1958,24 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "34425295"
+  },
+  {
+    "name": "Signals",
+    "description": "Signals is a location based chat app for making connections, creating communities and discovering events. ",
+    "website": "https://signalsicp.com/",
+    "logo": "/img/showcase/signals_logo.webp",
+    "screenshots": [
+      "/img/showcase/signals_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "signals",
+    "oneLiner": "A location based app for empowering local communities",
+    "stats": "5,000+",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/signalsicp",
+    "submittableId": "35639473"
   }
 ]

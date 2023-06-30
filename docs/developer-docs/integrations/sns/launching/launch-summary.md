@@ -260,7 +260,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
+### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
   This includes adding the SNS root canister as the controller of the dapp and removing
@@ -350,7 +350,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 7. Proposal to start the decentralization swap.{#SNS-launch-step-startSwap}
+### 7. Proposal to start the decentralization swap
   
 This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
@@ -420,7 +420,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 9. SNS participants participate in the decentralization swap.
+### 9. SNS participants participate in the decentralization swap
 
   When the swap starts, the swap canister holds the number
   of SNS tokens that were specified. End users can
@@ -428,7 +428,7 @@ If successful, at the end of stage, we the following has changed:
   swap canister.
   
 
-### 10. SNS canisters become SNS DAO.{#SNS-launch-step-genesis}
+### 10. SNS canisters become SNS DAO
   
   When the decentralization swap ends, it is first established whether
   it was successful, e.g., enough ICP have been collected. If the swap was successful,

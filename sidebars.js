@@ -73,7 +73,6 @@ const sidebars = {
               "samples/simple-to-do",
               "samples/superheros",
               "samples/t-ecdsa-sample",
-              "samples/http-requests-exchange-rates",
               "samples/whoami",
             ],
             },
@@ -418,6 +417,18 @@ const sidebars = {
                     },
                     {
                       type: "category",
+                      label: "Launching an SNS",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/launching/launch-summary",
+                      },
+                      items: [
+                        "developer-docs/integrations/sns/launching/launch-summary",
+                        "developer-docs/integrations/sns/launching/launch-steps",
+                      ],
+                    },
+                    {
+                      type: "category",
                       label: "Integrating with an SNS",
                       link: {
                         type: "doc",
@@ -436,20 +447,8 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/testing/testing-before-launch",
                       },
                       items: [
-                        "developer-docs/integrations/sns/testing/local-testing",
-                        "developer-docs/integrations/sns/testing/testflight",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Launching an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/launching/launch-summary",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/launching/launch-summary",
-                        "developer-docs/integrations/sns/launching/launch-steps",
+                        "developer-docs/integrations/sns/testing/testing-locally",
+                        "developer-docs/integrations/sns/testing/testing-on-mainnet",
                       ],
                     },
                     {

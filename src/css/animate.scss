@@ -94,3 +94,16 @@
 .search-loading {
   animation: search-loading 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
+
+@keyframes enterprise-marquee {
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(-75%);
+  }
+}
+
+.enterprise-marquee {
+  animation: enterprise-marquee 15s linear infinite;
+}

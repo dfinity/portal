@@ -91,11 +91,11 @@ const navbarItems = [
           href: "/capabilities?source=nav"
         },
         {
-          label: "Bitcoin Integration",
+          label: "Bitcoin on ICP",
           href: "/bitcoin-integration?source=nav"
         },
         {
-          label: "Ethereum Integration",
+          label: "Ethereum <> ICP",
           href: "/ethereum-integration?source=nav"
         },
         {
@@ -140,6 +140,10 @@ const navbarItems = [
         {
           label: "ICP Token",
           href: "/icp-tokens?source=nav"
+        },
+        {
+          label: "For Enterprise",
+          href: "/enterprise?source=nav"
         },
         {
           label: "Create an Internet Identity",
