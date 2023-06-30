@@ -327,11 +327,11 @@ function EnterprisePage() {
                 Extending existing software with blockchain capabilities
               </h2>
               <p className="tw-lead-sm">
-                The Internet Computer implements a feature called HTTP outcalls, which
-                allows smart contracts hosted on its network to directly make calls to
-                APIs of any online service running on traditional cloud. This means, instead
-                of developing the whole application on the blockchain, businesses have the
-                option to add blockchain capabilities to their existing software.
+                Internet Computer smart contracts can both process and create HTTP requests, 
+                which allows them to host complete web apps on the blockchain, as well as
+                directly make calls to APIs of any online service running on traditional cloud.
+                This gives businesses the option to add blockchain capabilities to their existing
+                software instead of developing the whole application on the blockchain.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
