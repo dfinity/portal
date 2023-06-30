@@ -1,13 +1,13 @@
 ---
 title: "Announcing the Motoko Dev Server: live-reloading for Web3 dapps"
-description: Introducing [mo-dev](https://github.com/dfinity/motoko-dev-server), a flexible live-reload server for quickly building and testing Motoko services on the Internet Computer.
+description: Introducing mo-dev, a flexible live-reload server for quickly building and testing Motoko services on the Internet Computer.
 tags: [Devs]
 image: /img/blog/motoko-dev-server.jpg
 ---
 
 # Announcing the Motoko Dev Server: live-reloading for Web3 dapps
 
-* [Announcement post](https://medium.com/dfinity/announcing-the-motoko-dev-server-live-reloading-for-web3-dapps-20363088afb4)
+* [Medium post](https://medium.com/dfinity/announcing-the-motoko-dev-server-live-reloading-for-web3-dapps-20363088afb4)
 * [Developer forum topic](https://forum.dfinity.org/t/announcing-mo-dev-live-reloading-for-motoko-dapps/21007)
 * [GitHub repository](https://github.com/dfinity/motoko-dev-server)
 
@@ -39,7 +39,7 @@ Each use case requires different live-reload capabilities, so we decided to crea
 * Execute commands
 * Any combination of the above
 
-For a complete list of features, check out the project’s [GitHub repository](https://github.com/dfinity/motoko-dev-server).
+For a complete list of features, check out the project’s GitHub repository at [github.com/dfinity/motoko-dev-server](https://github.com/dfinity/motoko-dev-server).
 
 Now that you know why you’d want to use `mo-dev`, here are a few ways to get started:
 
@@ -90,9 +90,9 @@ It’s also possible to use this feature by itself (`mo-dev --generate`).
 For those wanting to plug the Motoko Dev Server into an existing webapp, here is a scalable Vite project configuration we’ve adopted at DFINITY:
 
 * Run `npm install -D npm-run-all mo-dev` in your project’s root directory
-* Add a frontend npm script which runs vite
+* Add a frontend npm script which runs `vite`
 * Add a backend npm script which runs `mo-dev` with relevant flags
-* Change the start npm script to run-p frontend backend
+* Change the start npm script to `run-p frontend backend`
 
 With this project configuration, `npm start` will run the Vite and Motoko dev servers with a seamlessly integrated console output. You can split the outputs via npm run frontend and npm run backend in separate terminals.
 
@@ -116,7 +116,7 @@ assert Principal.isAnonymous(myPrincipal);
 print("Yep!");
 ```
 
-Once you’ve created a *.test.mo file, run the following command:
+Once you’ve created a `*.test.mo` file, run the following command:
 
 ```sh
 mo-dev --test
