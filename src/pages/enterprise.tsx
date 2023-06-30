@@ -86,7 +86,7 @@ function EnterprisePage() {
             >
               Legacy tech stacks, increasing
               development costs and fleeing talent are just a few 
-              of the blockers holding companies back from innovation 
+              of the blockers holding companies back from innovating 
               and staying ahead of competitors.
             </motion.h2>
           </div>
@@ -320,7 +320,21 @@ function EnterprisePage() {
               </p>
             </TranslatedLayout>
             <TranslatedLayout
+              imageUrl="/img/enterprise/https-outcalls.webp"
               reverse={true}
+            >
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Extending existing software with blockchain capabilities
+              </h2>
+              <p className="tw-lead-sm">
+                The Internet Computer implements a feature called HTTP outcalls, which
+                allows smart contracts hosted on its network to directly make calls to
+                APIs of any online service running on traditional cloud. This means, instead
+                of developing the whole application on the blockchain, businesses have the
+                option to add blockchain capabilities to their existing software.
+              </p>
+            </TranslatedLayout>
+            <TranslatedLayout
               imageUrl="/img/enterprise/x-org-collaboration.webp"
             >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-0">
