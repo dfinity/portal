@@ -129,7 +129,7 @@ const DocsHomePage: FC = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-10 sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
+          <div className="flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
             <div className="min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
@@ -156,7 +156,7 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
-            <div className="min-w-[80vw] sm:min-w-0 border-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+            <div className="min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-r-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
                   src="/img/docs/rust.png"
