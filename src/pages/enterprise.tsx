@@ -189,7 +189,7 @@ function EnterprisePage() {
               className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
               variants={transitions.item}
             >
-              The Internet Computer proccesses half a billion messages (TXs) daily,
+              The Internet Computer processes half a billion messages (TXs) daily,
               a throughput suitable for industry-scale blockchain use cases.
             </motion.h2>
             <motion.p className="mb-24">
@@ -334,9 +334,10 @@ function EnterprisePage() {
               <p className="tw-lead-sm">
                 Internet Computer smart contracts can both process and create HTTP requests, 
                 which allows them to host complete web apps on the blockchain, as well as
-                directly make calls to APIs of any online service running on traditional cloud.
-                This gives businesses the option to add blockchain capabilities to their existing
-                software instead of developing the whole application on the blockchain.
+                directly make calls to APIs of any online service running on traditional cloud or
+                elsewhere. This gives businesses the option to add blockchain capabilities to their
+                existing software instead of developing the whole application on the blockchain from
+                scratch.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
