@@ -581,6 +581,16 @@ Canisters pay for their cycles which makes them inherently vulnerable to attacks
 
 Consider monitoring, early authentication, rate limiting on canister level to mitigate this. Also, be aware that an attacker will aim for the call consuming most cycles. See the "Cycle balance drain attacks section" in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
 
+### Do not rely on ingress message inspection
+
+#### Security concern
+
+The correct execution of [canister_inspect_message](../../references/ic-interface-spec#system-api-inspect-message) is not guaranteed in the presence of a malicious node, because it is executed as a [query call](../../references/ic-interface-spec#http-query).  
+
+#### Recommendation
+
+Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security relevant checks, such as authentication or authorization, should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Also note that for inter-canister calls `canister_inspect_message` is not invoked, so these calls can't be handled there.
+
 ## Nonspecific to the Internet Computer
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
