@@ -10,6 +10,7 @@ const redirects = `
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
+  /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
   /docs/download /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
@@ -28,6 +29,7 @@ const redirects = `
   /docs/security-best-practices/introduction /docs/current/developer-docs/security/
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
+  /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/

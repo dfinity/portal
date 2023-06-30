@@ -97,14 +97,14 @@ Provide the build and deploy instructions with the source code. Ideally the inst
 ## 2.4. Test dapp operations under SNS on mainnet with SNS Testflight
 Before requesting an SNS launch in production, developers are strongly encouraged to test their deployed dapp’s operation (e.g., upgrading the dapp’s canisters) via SNS proposals, as if the live version of the dapp was managed by SNS.
 
-Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing-sns/cycles-usage.md), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
+Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing/cycles-usage.md), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
 
 The developer can keep direct control over the dapp’s canisters registered with testflight SNS.
 The testflight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the testflight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
-To use the SNS testflight on the mainnet, pass the `–network ic` parameter to the deploy command. The [documentation](../get-sns/testflight.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
+To use the SNS testflight on the mainnet, pass the `–network ic` parameter to the deploy command. The [documentation](../testing/testing-on-mainnet.md) for running the testflight is the same as for deploying it locally - except for the added parameter (which is also covered in the documentation).
 
-See the documentation for more information about the [SNS Testflight](../get-sns/testflight.md), including setup instructions.
+See the documentation for more information about testing [SNS Testflight on mainnet](../testing/testing-on-mainnet.md), including setup instructions.
 
 ## 2.5. Integrate an SNS frontend into the dapp
 Developers can choose to integrate a frontend for the SNS functionality in the dapp. A good example of a useful integration is SNS proposal voting. This allows neurons to vote on proposals directly in the dapp frontend. Integrations should be tested thoroughly with the SNS Testflight or the local SNS test before the SNS launch.
@@ -132,21 +132,21 @@ The idea is to provide the community with information so they can verify what th
 This [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) provides some initial thoughts from the perspective of DFINITY when voting. 
 
 ## 4. SNS Launch Workflow
-Please find all steps included in an SNS launch [here](../lifecycle-sns/sns-launch.md) and a more detailed
-descriptions of the following steps [here](../launch-sns/launch-sns.md).
+Please find all steps included in an SNS launch [here](../launching/launch-summary.md) and a more detailed
+descriptions of the following steps [here](../launching/launch-steps.md).
 
 ## 4.1. Submit SNS approval proposal
 First step in the launch is an NNS proposal that approves the SNS creation by listing a principal that can
 later create the SNS canisters. Use the proposal content created in Section 1.4.1 and create the NNS 
 proposal. The proposal can be created with the
 [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/) as described
-[here](../launch-sns/launch-sns.md#SNS-launch-command-NNSproposal1).
+[here](../launching/launch-steps.md#SNS-launch-command-NNSproposal1).
 
 ## 4.2. Create SNS canisters
 When the NNS neurons have adopted the proposal above, the SNS canisters can be installed, and prepared for
 the SNS launch. The SNS canisters are installed with the
 [SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) as described
-[here](../launch-sns/launch-sns.md#SNS-launch-command-SNSW)
+[here](../launching/launch-steps.md#SNS-launch-command-SNSW)
 
 ## 4.3. Dapp control handover
 Before the decentralization sale, the SNS root canister must be set as the controller of the dapp and
@@ -162,11 +162,11 @@ This step is similar to submitting Step 4.1. This proposal will initiate the dec
 Use the proposal content created in section 1.4.2 and create the NNS proposal. 
 The proposal can be created with the
 [quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/)
-as described [here](../launch-sns/launch-sns.md#SNS-launch-command-NNSproposal2).
+as described [here](../launching/launch-steps.md#SNS-launch-command-NNSproposal2).
 
 ## 4.5 Finalizing the SNS swap
 After the swap ends, its finalization has to be triggered by a `dfx` call as described
-[here](../launch-sns/launch-sns.md#SNS-launch-command-finalizingswap).
+[here](../launching/launch-steps.md#SNS-launch-command-finalizingswap).
 
 ## 4.6 Setup custom SNS functions
 To execute code on SNS managed canisters via SNS proposals, the canisters must expose two public functions,

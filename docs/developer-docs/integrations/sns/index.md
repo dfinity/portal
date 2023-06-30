@@ -10,10 +10,10 @@ This page provides an overview of how the SNS developer documentation is organiz
 ## Introduction to the SNS
 This section gives a high level overview of the SNS lifecycle, including the architecture and how an SNS is launched.
 You will find 
-* [SNS introduction](./lifecycle-sns/sns-intro-highlevel.md) giving a quick introduction.
-* [SNS architecture](./lifecycle-sns/sns-architecture.md) explaining how SNSs are deployed and upgraded and what canisters are involved.
-* [SNS launch](./lifecycle-sns/sns-launch.md) explaining all the steps that are involved in launching an SNS.
-* [Alternative DAOs](./lifecycle-sns/dao-alternatives.md) presenting alternatives ways how to get a DAO.
+* [SNS introduction](./introduction/sns-intro-high-level.md) giving a quick introduction.
+* [SNS architecture](./introduction/sns-architecture.md) explaining how SNSs are deployed and upgraded and what canisters are involved.
+* [SNS launch](./launching/launch-summary.md) explaining all the steps that are involved in launching an SNS.
+* [Alternative DAOs](./introduction/dao-alternatives.md) presenting alternatives ways how to get a DAO.
 
 ## Preparing an SNS launch
 This section introduces the ideas and tools needed when considering to form a DAO, including less technical aspects, such as planning the tokenomics, as well as more
@@ -32,26 +32,27 @@ This section not only targets developers that have a dapp that they would like t
 want to build services that integrate with SNSs, such as wallet dapps or decentralized exchanges.
 
 It includes
-* [An introduction to SNS integration](./integrate-sns/index.md). <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
-* [Guidelines how to integrate with the ledger canister](./integrate-sns/ledger-integration.md).
-* [Guidelines how to integrate with the index canister](./integrate-sns/index-integration.md).
+* [An introduction to SNS integration](./integrating/index.md). <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
+* [Guidelines how to integrate with the ledger canister](./integrating/ledger-integration.md).
+* [Guidelines how to integrate with the index canister](./integrating/index-integration.md).
 
 ## SNS testing
 An important part of preparing an SNS launch, integrating with an SNS, and managing an SNS, is testing.
 This section provides 
-* [An introduction to SNS testing](./get-sns/get-sns-intro.md).
-* [Guidelines how to test an SNS locally](./get-sns/local-testing.md), including the SNS lauch.
-* [Guidelines how to test the operation of the dapp under SNS control](./get-sns/testflight.md), including on mainnet.
+* [An introduction to SNS testing](./testing/testing-before-launch.md).
+* [Guidelines how to test an SNS locally](./testing/testing-locally.md), including the SNS launch.
+* [Guidelines how to test the operation of the dapp under SNS control](./testing/testing-on-mainnet.md), including on the mainnet.
+
 
 ## SNS launch
-This parts explains how an [SNS is launched on mainnet](./launch-sns/launch-sns.md).
+This parts explains how an [SNS is launched on mainnet](./launching/launch-steps.md).
 
 ## Managing an SNS
 After an SNS is launched, the SNS community needs to manage it, including ensuring that the canisters have enough cycles, 
 govern the dapp, and manage SNS canister upgrades.
 This section includes
-* [An introduction to managing an SNS](./managing-sns/manage-sns-intro.md).
-* [Tips regarding cycles management for the canisters](./managing-sns/cycles-usage.md).
+* [An introduction to managing an SNS](./managing/manage-sns-intro.md).
+* [Tips regarding cycles management for the canisters](./managing/cycles-usage.md).
 
 
 <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); Information on how SNS are upgraded (managing-sns/upgradeSNS.md); A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
