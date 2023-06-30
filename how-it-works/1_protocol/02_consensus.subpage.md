@@ -16,7 +16,6 @@ low latency (almost instant finality);
 high throughput;
 robustness (graceful degradation of latency and throughput in the presence of node or network failures). The IC consensus protocol achieves these goals by leveraging [chain-key cryptography](/how-it-works/#Chain-key-cryptography).
 
-The IC consensus protocol achieves these goals by leveraging [chain-key cryptography](/how-it-works/#Chain-key-cryptography).
 The IC consensus protocol provides _cryptographically guaranteed finality_.
 The option of choosing _probabilistic finality_ – similar to what is done in Bitcoin-like protocols, by considering a block final once a sufficient number of blocks have built on top of it in the blockchain – is not acceptable for the IC for two reasons: (1) probabilistic finality is a very weak notion of finality and (2) probabilistic finality would increase the time to finality drastically.
 
