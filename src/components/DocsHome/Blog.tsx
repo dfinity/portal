@@ -24,7 +24,7 @@ const Blog: FC = () => {
   return (
     <div className="rounded-lg bg-white/70 flex flex-col px-0 py-0 overflow-hidden md:flex-row md:items-stretch">
       <Link
-        className="w-full h-96 sm:h-[420px] order-1 md:order-2 flex md:flex-1 md:h-auto"
+        className="w-full h-64 sm:h-[420px] order-1 md:order-2 flex md:flex-1 md:h-auto"
         href={post.permalink}
       >
         <img

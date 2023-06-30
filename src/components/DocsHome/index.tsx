@@ -1,12 +1,10 @@
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
 import React, { FC } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
-import { Panel, TitlePanel } from "./Panel";
 import Blog from "./Blog";
 
 const queryClient = new QueryClient();
@@ -34,7 +32,7 @@ const DocsHomePage: FC = () => {
   return (
     <div className="mt-8">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <TitlePanel className="sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
+        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
             Developer Docs
           </h1>
@@ -52,7 +50,7 @@ const DocsHomePage: FC = () => {
               <LinkArrowRight />
             </Link>
           </p>
-        </TitlePanel>
+        </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
@@ -94,8 +92,9 @@ const DocsHomePage: FC = () => {
         </div>
       </section>
       <section className="mt-10">
-        <Panel
+        <div
           className="
+          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
           grid 
           grid-cols-1
           sm:grid-cols-2 
@@ -121,7 +120,10 @@ const DocsHomePage: FC = () => {
                 Go, Rust, and more.
               </p>
               <p className="mb-0">
-                <Link href="" className="link-primary link-with-icon">
+                <Link
+                  href="/docs/current/developer-docs/backend/choosing-language"
+                  className="link-primary link-with-icon"
+                >
                   View all <LinkArrowRight />
                 </Link>
               </p>
@@ -233,7 +235,7 @@ const DocsHomePage: FC = () => {
               </div>
             </div>
           </div>
-        </Panel>
+        </div>
       </section>
 
       <section className="mt-10">
