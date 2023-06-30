@@ -44,7 +44,10 @@ const DocsHomePage: FC = () => {
           </p>
           <p className="mb-0">
             {/* <Link className="bg-white py-3 px-8 tw-paragraph font-medium text-infinite rounded-lg inline-flex items-center gap-2 hover"> */}
-            <Link className="button-white button-with-icon">
+            <Link
+              className="button-white button-with-icon"
+              href="/docs/current/developer-docs/"
+            >
               Start building
               <LinkArrowRight />
             </Link>
@@ -63,7 +66,10 @@ const DocsHomePage: FC = () => {
             project up and running.
           </p>
           <p className="mb-0">
-            <Link className="link-primary link-with-icon">
+            <Link
+              className="link-primary link-with-icon"
+              href="/docs/current/developer-docs/"
+            >
               Start building
               <LinkArrowRight />
             </Link>
@@ -77,7 +83,10 @@ const DocsHomePage: FC = () => {
             applications in a step-by-step mode.
           </p>
           <p className="mb-0">
-            <Link className="link-primary link-with-icon">
+            <Link
+              className="link-primary link-with-icon"
+              href="/docs/current/tutorials/"
+            >
               Start learning
               <LinkArrowRight />
             </Link>
