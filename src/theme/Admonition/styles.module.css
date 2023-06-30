@@ -7,6 +7,23 @@
   margin-bottom: 1rem;
 }
 
+.admonition > svg {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 24px;
+  height: 24px;
+}
+
+.withTitle {
+}
+
+.admonitionTitle {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .admonition p:first-child {
   margin-left: 2.5rem;
 }
@@ -15,18 +32,10 @@
   margin-bottom: 0;
 }
 
-.admonitionIcon {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 24px;
-  height: 24px;
-}
-
 .admonitionNote {
-  --admonition-border-color: rgba(41, 171, 226, 0.5);
-  --admonition-background-color: rgba(41, 171, 226, 0.05);
-  --admonition-icon-color: rgba(41, 171, 226, 1);
+  --admonition-border-color: rgba(251, 176, 59, 0.5);
+  --admonition-background-color: rgba(251, 176, 59, 0.05);
+  --admonition-icon-color: rgba(251, 176, 59, 1);
 }
 
 .admonitionTip {
@@ -48,9 +57,9 @@
 }
 
 .admonitionDanger {
-  --admonition-border-color: rgba(255, 107, 107, 0.5);
-  --admonition-background-color: rgba(255, 107, 107, 0.05);
-  --admonition-icon-color: rgba(255, 107, 107, 1);
+  --admonition-border-color: rgba(235, 49, 138, 0.5);
+  --admonition-background-color: rgba(235, 49, 138, 0.05);
+  --admonition-icon-color: rgba(235, 49, 138, 1);
 }
 
 .admonition + .admonition {
