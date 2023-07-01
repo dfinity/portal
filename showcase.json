@@ -1985,6 +1985,25 @@
     "submittableId": "34425295"
   },
   {
+    "name": "Signals",
+    "description": "Signals is a location based chat app for making connections, creating communities and discovering events. ",
+    "website": "https://signalsicp.com/",
+    "logo": "/img/showcase/signals_logo.webp",
+    "screenshots": [
+      "/img/showcase/signals_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "signals",
+    "oneLiner": "A location based app for empowering local communities",
+    "stats": "5,000+",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/signalsicp",
+    "submittableId": "35639473"
+  },
+  {
     "id": "Arth",
     "name": "Arth",
     "oneLiner": "Arth ckBTC wallet and swap btc<>ckBtc",
@@ -2005,3 +2024,7 @@
     "submittableId": "36143434"
   }
 ]
+  
+  
+  
+ 
