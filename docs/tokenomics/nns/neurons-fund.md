@@ -2,23 +2,23 @@
 
 ## Overview
 
-The Neurons' Fund (NF) facilitates investments by the NNS neurons in the Internet Computer (IC) ecosystem. In this article, we explain how the process of the Neurons' Fund (NF) works.
+The Neurons' Fund (NF) facilitates bootstrapping the Internet Computer (IC) ecosystem. In this article, we explain how the process of the Neurons' Fund (NF) works.
 
 ## Background and motivation
 
 The success of the IC is dependent on the services built on the IC. Similar to Ethereum, we envisage that, in the long run, the value of services built on the IC will collectively be worth more than the IC itself.
-The NF introduces the concept of an NNS controlled treasury. The goals of this treasury are to aid the bootstrapping of the SNS DAO ecosystem, and later be able to re-invest in the continued growth of the ecosystem. The NNS will be the decision maker in choosing where its treasury or NF resources are to be invested. The NNS treasury can be extended in the future to support additional community-developed governance and fundraising frameworks (i.e. opportunities from these frameworks will also be featured in the Launchpad).
+The NF introduces the concept of an NNS controlled treasury. This treasury aims to assist in the bootstrapping of the SNS DAO ecosystem. The NNS will decide how the treasury resources are allocated. The NNS treasury can be extended in the future to support additional community-developed governance and fundraising frameworks.
 
-To allow the NF to create this treasury NF neurons, i.e. NNS neurons flagged as NF, will expose their maturity to the risks the NF fund is taking when investing. Maturity of NF neurons will be reduced when the NF decides to make investments. At a later date NF neurons whose maturity was reduced will be rewarded with maturity increases, dependent on the success of the investments the NF has made.
+To build this treasury, NNS neurons flagged as NF, will expose their maturity to the risks the NF fund is taking when participating in SNSes. Maturity of NF neurons will be reduced when the NF decides to participate. At a later date NF neurons whose maturity was reduced will be rewarded with maturity increases, dependent on the success of the NF's participation.
 Involving the maturity of NF neurons instead of their stake in ICP minimizes the impact on the overall ICP tokenomics.
 
-Please note that anyone can also directly invest ICP tokens in an SNS via the decentralization swap.
+Please note that anyone can also directly participate in an SNS via the decentralization swap.
 
 ## Neurons' fund process
 
 The Neurons' fund (NF) process can be split into five phases: 
 1. Joining the NF.
-2. Making an investment decision.
+2. Making a participation decision.
 3. NF participating in the decentralization swap receiving SNS neurons.
 4. Participation in SNS governance.
 5. Increasing maturity when SNS neurons dissolve. 
@@ -31,17 +31,17 @@ In the following we describe these five phases in more detail.
 
 Using a tick-box in the NNS front-end dapp, a neuron can join and leave the NF at any time, also while there are proposals with ongoing voting periods.
 
-NF neurons will expose their maturity to the risks the NF fund is taking when investing, as described in the following steps.
+NF neurons will expose their maturity to the risks the NF fund is taking when participating in SNSes, as described in the following steps.
 
-### 2: Voting on investments
+### 2: Voting on participation
 
-The NF investment proposal is part of the proposal to decentralize an SNS. It is essentially a statement “Start the SNS and invest X ICP from the NF in the SNS decentralization swap”.
+The NF participation proposal is part of the proposal to decentralize an SNS. It is essentially a statement “Start the SNS and allocate X ICP from the NF to the SNS decentralization swap”.
 
-As a consequence, all NNS neurons will vote on both the creation of an SNS for a dapp and on whether the NF invests in that dapp.
+As a consequence, all NNS neurons will vote on both the creation of an SNS for a dapp and on whether the NF participates in that dapp.
 
 If NF neurons opt out of the NF whilst an SNS proposal is open for voting, then the ICP amount the NF was proposed to make is reduced proportionally.
 
-If neurons opt in when an SNS proposal is open for voting, the ICP amount the NF invests in an SNS remains the same, but each NF neuron will participate with less maturity (proportionally decreased).
+If neurons opt in when an SNS proposal is open for voting, the ICP amount the NF allocates to an SNS remains the same, but each NF neuron will participate with less maturity (proportionally decreased).
 
 ### 3: NF participating in the decentralization swap
 
@@ -67,6 +67,6 @@ The NNS NF treasury holds SNS neurons & tokens in its treasury, to be dissolved 
 
 When a set of neurons from a decentralization swap of an SNS dissolves, the NNS determines the value of the dissolved SNS neurons. In the first stage, this is done by a proposal. In a later stage this could be done by pulling data from a DEX.
 
-The maturity of NF neurons whose maturity was reduced when an investment in a SNS-controlled dapp was made is increased by the amount determined by the NNS in the previous step. In the worst case this amount could also be zero.
+The maturity of NF neurons whose maturity was reduced when a participation in a SNS-controlled dapp was made is increased by the amount determined by the NNS in the previous step. In the worst case this amount could also be zero.
 
-The NNS can sell the tokens from an SNS at a later point in time with the goal to maximize the sale price. After the NNS sells tokens from an SNS, the received ICP will be burned.
+The NNS can sell the tokens from an SNS at a later point in time. After the NNS sells tokens from an SNS, the received ICP will be burned.

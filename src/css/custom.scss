@@ -469,6 +469,15 @@ div[class^="announcementBarContent"] {
   }
 }
 
+//custom styling for tables on SNS docs
+.light-orange-text {
+  background-color: #fbb03b;
+}
+
+.light-green-text {
+  background-color: #b8eda8;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
