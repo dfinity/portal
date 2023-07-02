@@ -166,7 +166,7 @@ Here are a few miscellaneous tips which might come in handy while working with `
 
 ---
 
-Feedback is welcome! If you find a bug or want to see a new feature, please feel free to [reach out on GitHub](https://github.com/dfinity/motoko-dev-server/issues) (or give us a star ️to support the project) at [github.com/dfinity/motoko-dev-server](https://github.com/dfinity/motoko-dev-server).
+Feedback is welcome! If you find a bug or want to see a new feature, please feel free to [reach out on GitHub](https://github.com/dfinity/motoko-dev-server/issues) (or give us a ⭐ to support the project) at [github.com/dfinity/motoko-dev-server](https://github.com/dfinity/motoko-dev-server).
 
 Otherwise, consider submitting a request on our [Developer Experience Feedback Board](https://dx.internetcomputer.org/), which itself was built with `mo-dev`! If you're curious, you can find the source code at [github.com/dfinity/feedback](https://github.com/dfinity/feedback).
 
