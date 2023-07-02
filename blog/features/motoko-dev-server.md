@@ -94,7 +94,7 @@ For those wanting to plug the Motoko Dev Server into an existing webapp, here is
 * Add a backend npm script which runs `mo-dev` with relevant flags
 * Change the start npm script to `run-p frontend backend`
 
-With this project configuration, `npm start` will run the Vite and Motoko dev servers with a seamlessly integrated console output. You can split the outputs via npm run frontend and npm run backend in separate terminals.
+With this project configuration, `npm start` will run the Vite and Motoko dev servers with a seamlessly integrated console output. You can split the outputs via `npm run frontend` and `npm run backend` in separate terminals.
 
 Another benefit of this configuration is that anyone can run the dev server without needing to globally install the `mo-dev` command, which is great for encouraging open-source contributions or working as part of a team.
 
