@@ -65,6 +65,8 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 - Do authentication as early as possible in the call to avoid unauthenticated actions and potentially expensive operations before authentication. It is also a good idea to [deny service to anonymous users](#disallow-the-anonymous-principal-in-authenticated-calls).
 
+- Do not rely on authentication performed during [ingress message inspection](#do-not-rely-on-ingress-message-inspection).
+
 ### Disallow the anonymous principal in authenticated calls
 
 #### Security concern
@@ -589,7 +591,7 @@ The correct execution of [canister_inspect_message](../../references/ic-interfac
 
 #### Recommendation
 
-Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security critical code, such as access control checks, should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function. 
+Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security critical code, such as [access control checks](#make-sure-any-action-that-only-a-specific-user-should-be-able-to-do-requires-authentication), should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function. 
 
 Also note that for inter-canister calls `canister_inspect_message` is not invoked which is another reason to execute the code as part of the update call by using a guard.
 
