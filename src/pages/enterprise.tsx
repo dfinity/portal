@@ -197,7 +197,7 @@ function EnterprisePage() {
                 href="mailto:comms@dfinity.org"
                 className="button-primary"
               >
-                Get in touch to discuss use cases
+                Get in touch to talk use cases
               </Link>
             </motion.p>
           </div>
