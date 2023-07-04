@@ -41,7 +41,6 @@ const DocsHomePage: FC = () => {
             full tech stack entirely 100% on chain.
           </p>
           <p className="mb-0">
-            {/* <Link className="bg-white py-3 px-8 tw-paragraph font-medium text-infinite rounded-lg inline-flex items-center gap-2 hover"> */}
             <Link
               className="button-white button-with-icon"
               href="/docs/current/developer-docs/"
