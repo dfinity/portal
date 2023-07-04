@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import React, { useEffect } from "react";
 
+const VIEWPORT_PADDING = 32;
+
 const Tooltip: React.FC<{
   children?: React.ReactNode;
   tooltip: React.ReactNode;
@@ -12,17 +14,24 @@ const Tooltip: React.FC<{
 
   useEffect(() => {
     function fixPosition() {
-      const rect = wrapperRef.current?.getBoundingClientRect();
+      const wrapperRect = wrapperRef.current?.getBoundingClientRect();
       const tooltip = tooltipRef.current;
 
       const tooltipRect = tooltip.getBoundingClientRect();
 
-      let left = -tooltipRect.width / 2 + 8;
+      let left = -tooltipRect.width / 2 + wrapperRect.width / 2;
 
-      if (rect.left + left + tooltipRect.width > window.innerWidth - 32) {
-        left -= rect.left + left + tooltipRect.width - (window.innerWidth - 32);
-      } else if (rect.left + left < 32) {
-        left += 32 - (rect.left + left);
+      if (
+        wrapperRect.left + left + tooltipRect.width >
+        window.innerWidth - VIEWPORT_PADDING
+      ) {
+        left -=
+          wrapperRect.left +
+          left +
+          tooltipRect.width -
+          (window.innerWidth - VIEWPORT_PADDING);
+      } else if (wrapperRect.left + left < VIEWPORT_PADDING) {
+        left += VIEWPORT_PADDING - (wrapperRect.left + left);
       }
 
       tooltip.style.left = `${left}px`;
