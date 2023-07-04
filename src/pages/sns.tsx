@@ -314,7 +314,7 @@ function SnsPage() {
             <MotionLink
               variants={transitions.fadeIn}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/get-sns/get-sns-intro/"
+              href="/docs/current/developer-docs/integrations/sns/launching/launch-summary"
             >
               Launch an SNS DAO
             </MotionLink>

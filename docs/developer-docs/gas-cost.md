@@ -46,7 +46,9 @@ Regarding transaction fees, the **transaction sender** is responsible for coveri
 | HTTPS outcall request message size (per byte)                | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`) | 400                             | 5,200                                  | 13,600                     |
 | HTTPS outcall response message size (per byte)                | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`) | 800                             | 10,400                                  | 27,200                     |
 
-Pricing for the Bitcoin API is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
+Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
+
+Pricing for the **Chain-Key Signing API** is available in the [Chain-Key Signing / threshold ECDSA documentation](./integrations/t-ecdsa/t-ecdsa-how-it-works.md).
 
 :::note
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
