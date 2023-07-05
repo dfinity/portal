@@ -38,7 +38,7 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
  | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
  | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | 3,060,000                             | 49,140,000                                  | 171,360,000                                        | 27,200                     |
 | HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside the IC, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
-| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	800	| 10,400	| 27,200 |
+| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
 
 Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
