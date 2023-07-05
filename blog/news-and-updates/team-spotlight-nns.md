@@ -1,5 +1,5 @@
 ---
-title: Team Spotlight - Network Nervous System
+title: Team spotlight - Network Nervous System
 description: For the first installment of this series, we sat down with the Network Nervous System team to learn more about the NNS, the SNS initiative, and the current goals the team is focused on.
 tags: [Team Spotlight]
 image: /img/blog/dev-update-blog-nns-1.jpeg
