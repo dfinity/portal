@@ -9,7 +9,7 @@ image: /img/blog/dev-update-blog-nns-1.jpeg
 
 Hello devs and welcome to a new blog post series: team spotlight! 
 
-Every two weeks, we're going to be showcasing one of the Internet Computer teams to learn what they're working on and dive deeper into how the team fits into the IC ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
+Every two weeks, we're going to be showcasing one of the DFINITY teams to learn what they're working on and dive deeper into how the team fits into the IC ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
 
 For the first installment of this series, we sat down with the Network Nervous System team to learn more about the NNS, the SNS initiative, and the current goals the team is focused on.
 
@@ -27,6 +27,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 *There are two main products that the NNS team works on:*
 
 *- The NNS DAO*
+
 *- The SNS DAO framework, which consists of the SNS DAO and the SNS launchpad which is used to launch an SNS.*
 
 
