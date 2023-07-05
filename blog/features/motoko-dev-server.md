@@ -7,7 +7,7 @@ image: /img/blog/motoko-dev-server.jpg
 
 # Announcing the Motoko Dev Server: live-reloading for Web3 dapps
 
-![Motoko Dev Server](/img/blog/motoko-dev-server.jpg)
+[![Motoko Dev Server](/img/blog/motoko-dev-server.jpg)](https://github.com/dfinity/motoko-dev-server)
 
 * [Medium post](https://medium.com/dfinity/announcing-the-motoko-dev-server-live-reloading-for-web3-dapps-20363088afb4)
 * [Developer forum topic](https://forum.dfinity.org/t/announcing-mo-dev-live-reloading-for-motoko-dapps/21007)
