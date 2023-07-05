@@ -5,7 +5,7 @@ tags: [Team spotlight]
 image: /img/blog/dev-update-blog-nns-1.jpeg
 ---
 
-![NNS Team spotlight](/static/img/blog/dev-update-blog-nns-1.jpeg)
+![NNS Team spotlight](static/img/blog/dev-update-blog-nns-1.jpeg)
 
 Hello devs and welcome to a new blog post series: team spotlight! 
 
