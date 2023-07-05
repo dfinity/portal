@@ -9,7 +9,7 @@ image: /img/blog/dev-update-blog-nns-1.jpeg
 
 Hello devs and welcome to a new blog post series: team spotlight! 
 
-Every two weeks, we're going to be showcasing one of the Internet Computer teams to learn what they're working on and dive deeper into how the team fits into the IC ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
+Every two weeks, we're going to be showcasing one of the DFINITY teams to learn what they're working on and dive deeper into how the team fits into the IC ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
 
 For the first installment of this series, we sat down with the Network Nervous System team to learn more about the NNS, the SNS initiative, and the current goals the team is focused on.
 
@@ -25,14 +25,20 @@ For the first installment of this series, we sat down with the Network Nervous S
 **What products or features on the IC are the primary focus of the NNS team?**
 
 *There are two main products that the NNS team works on:*
+
 *- The NNS DAO*
+
 *- The SNS DAO framework, which consists of the SNS DAO and the SNS launchpad which is used to launch an SNS.*
+
 
 **Since we've gotten an overview of the NNS DAO already, so let's talk a bit more about the SNS initiative. Could you give a brief overview of what the NNS team is responsible for in regards to the SNS initiative?**
 
 *The NNS team is one of the main contributors of the SNS initiative. We helped build and contribute to maintaining the SNS Swap canister which is responsible for collecting initial funding and decentralizing the SNS during the launch. We are also the main responsible team for maintaining:*
+
 *- The SNS Governance canister, responsible for making the decisions in the DAO.*
-*- The SNS Root canister, which is responsible for upgrading other canisters.
+
+*- The SNS Root canister, which is responsible for upgrading other canisters.*
+
 *- The NNS canister called “SNS Wasm modules canister” that is responsible for deploying and involved in upgrading the SNS canisters.*
 
 
@@ -43,6 +49,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 **Let's talk about the team's roadmap. What is the primary project that the NNS team is working on or focused on currently?**
 
 *We usually work on different projects in parallel (combining NNS and SNS features). One project that we currently work on is making the SNS launch process more user friendly. At the moment, launching an SNS includes 2 NNS proposals and quite some manual steps from the developer team that is handing over their dapp to a new SNS.*
+
 *As the name suggests, once the  “1-proposal” feature is implemented, this full process will be done in one single NNS proposal. This means that there is one NNS proposal where the IC community decides whether an SNS should be launched for a given dapp and if this proposal is adopted the full SNS launch is triggered and executed automatically.*
 
 **That sounds like it will drastically improve the SNS launch process! Could you give some insight into what pieces or components are being developed to achieve this goal?**
@@ -55,8 +62,10 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 **Are there any other major roadmap items currently planned for the NNS team?** 
 
-**It’s hard to talk about specific features as the environment we operate in is a bit dynamic. Instead, here are the high level goals we have:**
+*It’s hard to talk about specific features as the environment we operate in is a bit dynamic. Instead, here are the high level goals we have:*
+
 *- On the NNS side, our focus is on increasing governance participation, new node onboarding, and growth of the Internet Computer.*
+
 *- For SNS, the focus is on improving the project experience when launching an SNS, improving the DAO member experience once an SNS is launched, and extending the framework to support 10x projects.*
 
 **For developers who want to stay up to date with the latest NNS team updates, where should they be looking?** 
