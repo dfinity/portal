@@ -75,7 +75,7 @@ During the SNS launch, control of the asset canister must be handed over to the 
 
 Once the asset canister has been handed over to the SNS, only the governance canister should have `Commit` rights, and principals in the whitelist should have `Prepare` rights. The developer who configured and deployed the SNS should have their permissions removed during the SNS launch. 
 
-If the whitelist needs to be adapted or changed, it is recommended that the SNS calls `take_ownership` via a proposal, which must be added as a custom proposal type. This will clear all permissions, and give only the SNS governance canister `Commit` permissions. If the SNS does not call `take_ownership`, a user cannot verify that all changes to the assets have been approved by an SNS proposal. 
+It is recommended that the SNS calls `take_ownership` via a proposal, which must be added as a custom proposal type. This will clear all permissions, and give only the SNS governance canister `Commit` permissions. If the SNS does not call `take_ownership`, a user cannot verify that all changes to the assets have been approved by an SNS proposal. 
 
 ### Granting permissions
 
