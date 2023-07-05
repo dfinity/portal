@@ -1,7 +1,7 @@
 ---
 title: "Announcing the Motoko Dev Server: live-reloading for Web3 dapps"
 description: Introducing mo-dev, a flexible live-reload server for quickly building and testing Motoko services on the Internet Computer.
-tags: [Devs]
+tags: [New features]
 image: /img/blog/motoko-dev-server.jpg
 ---
 
