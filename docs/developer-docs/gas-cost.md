@@ -63,7 +63,7 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | $0.00000016622522           | $0.00000043474178           |
  |                                      |                                                                                                                  |                             |                             |
  | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
 
