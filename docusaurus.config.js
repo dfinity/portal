@@ -18,6 +18,7 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
+const blogPostsPlugin = require("./plugins/blog-posts");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
@@ -404,6 +405,7 @@ const config = {
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
     matomoPlugin,
+    blogPostsPlugin,
     [
       "@docusaurus/plugin-client-redirects",
       {

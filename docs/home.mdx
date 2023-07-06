@@ -9,21 +9,44 @@ custom_edit_url: null
 authors: null
 ---
 
-import Header from "@site/src/components/DocsHome/Header";
-import Contribute from "@site/src/components/DocsHome/Contribute";
-import Tutorials from "@site/src/components/DocsHome/Tutorials";
-import DevGuides from "@site/src/components/DocsHome/DevGuides";
-import Languages from "@site/src/components/DocsHome/Languages";
+import DocsHomePage from "@site/src/components/DocsHome/";
 import { css } from "@site/src/utils/dummy-css";
 
 <style>{css`
   .main-wrapper {
     overflow: hidden;
   }
+  .container {
+    max-width: none;
+    padding-bottom: 0 !important;
+  }
+  .main-wrapper main {
+    max-width: none;
+  }
+
+  .theme-doc-footer {
+    display: none;
+  }
+
+  .pagination-nav {
+    display: none;
+  }
+
+  .main-wrapper main .row .col {
+    padding: 0 16px;
+  }
+
+  @media (min-width: 641px) {
+    .main-wrapper main .row .col {
+      padding: 0 32px;
+    }
+  }
+
+  @media (min-width: 997px) {
+    .main-wrapper main .row .col {
+      padding: 0 50px;
+    }
+  }
 `}</style>
 
-<Header />
-<Tutorials />
-<DevGuides />
-<Languages />
-<Contribute />
+<DocsHomePage />
