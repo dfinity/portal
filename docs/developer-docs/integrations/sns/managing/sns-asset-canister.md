@@ -6,9 +6,16 @@ The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/fr
 
 In the context of the SNS, a dapp's associated asset canister serves the frontend assets related to dapp and may also include a frontend to the SNS DAO, e.g., through which users can vote on governance proposals.  
 
-The contents of the asset canister must be configured prior to the launch of the SNS, and any changes afterwards must be made by a principal with the `Prepare` permission. Principals with this `Prepare` permission can make a batch of changes to the asset canister and then 'lock' those changes. To have those changes applied, a proposal must be submitted. Anyone can submit the proposal for the 'locked' changes. Once changes are proposed, they can be voted on by the SNS DAO. If approved, the SNS governance canister is the only one that can commit the approved changes. This configuration assures that changes to the asset canister are only made by approved proposals. These changes are referred to as 'upgrades' to the asset canister in the remainder of this document. 
+The contents of the asset canister must be configured prior to the launch of the SNS, and any changes afterwards must be made by a principal with the `Prepare` permission. Principals with this `Prepare` permission can make a batch of changes to the asset canister and then 'lock' those changes. To have those changes applied, a proposal must be submitted. Anyone can submit the proposal for the 'locked' changes. Once changes are proposed, they can be voted on by the SNS DAO. If approved, the SNS governance canister is the only one that can commit the approved changes. This configuration assures that changes to the asset canister are only made by approved proposals. These changes are referred to as 'updates' to the asset canister in the remainder of this document. 
 
 This section is relevant if your project contains an asset canister and describes how you can test handing over control of an asset canister to an SNS.
+
+:::info 
+
+In this document, the term **upgrade** refers to deploying an upgraded version of a canister's WebAssembly module.
+
+The term **update** refers to changing or updating the assets stored within an asset canister.
+:::
 
 ## Deploying an asset canister
 
@@ -22,49 +29,17 @@ The general overview of deploying an asset canister during an SNS launch is as f
     - The user or developer creating the SNS should remove their own personal permissions. 
 - Lastly, the SNS's function should be registered to commit the configuration.
 
-To deploy an asset canister, first you will need an `assets.wasm.gz` file and a `candid/assets.did` file. Examples of these files can be downloaded with the commands:
+To deploy an asset canister, any canister in the `dfx.json` file can be set as `"type": "assets"`, and dfx will automatically generate the required files, such as an assets.wasm.gz file and a candid/assets.did file once the canister has been built. 
+
+An example of configuring an asset canister within the `dfx.json` file can be found below:
 
 ```
-curl -L "https://github.com/dfinity/sdk/raw/${DX_COMMIT}/src/distributed/assetstorage.wasm.gz" -o assets.wasm.gz
-curl -L "https://raw.githubusercontent.com/dfinity/sdk/${DX_COMMIT}/src/distributed/assetstorage.did" -o candid/assets.did
-```
-
-Next, you will need to configure your `dfx.json` file to specify your asset canister. An example `dfx.json` file can be found below:
-
-```
-{
-  "canisters": {
-    "nns-dapp": {
-      "type": "custom",
-      "candid": "",
-      "wasm": "nns-dapp.wasm"
-    },
-    "internet_identity": {
-      "type": "custom",
-      "candid": "",
-      "wasm": "internet_identity.wasm"
-    },
-    "sns_aggregator": {
-      "type": "custom",
-      "candid": "candid/sns_aggregator.did",
-      "wasm": "sns_aggregator.wasm"
-    },
-    "test": {
-      "candid": "candid/test.did",
-      "type": "rust",
-      "package": "test"
-    },
     "assets": {
-      "build": "",
-      "candid": "candid/assets.did",
-      "type": "custom",
-      "wasm": "./assets.wasm.gz"
+      "source": [],
+      "type": "assets"
     }
-  }
-}
 ```
 
-Alternatively, any canister in the `dfx.json` file can be set as `"type": "assets"`, and dfx will automatically perform the above steps. 
 
 ### Deploying locally for testing
 
@@ -100,7 +75,7 @@ During the SNS launch, control of the asset canister must be handed over to the 
 
 Once the asset canister has been handed over to the SNS, only the governance canister should have `Commit` rights, and principals in the whitelist should have `Prepare` rights. The developer who configured and deployed the SNS should have their permissions removed during the SNS launch. 
 
-If the whitelist needs to be adapted or changed, the SNS can call `take_ownership` via a proposal, which must be added as a custom proposal type. This will clear all permissions, and give only the SNS governance canister `Commit` permissions. 
+It is recommended that the SNS calls `take_ownership` via a proposal, which must be added as a custom proposal type. This will clear all permissions, and give only the SNS governance canister `Commit` permissions. If the SNS does not call `take_ownership`, a user cannot verify that all changes to the assets have been approved by an SNS proposal. 
 
 ### Granting permissions
 
@@ -146,15 +121,15 @@ Generic proposals are a way for each SNS to define custom proposals. To commit c
 
 To use a generic proposal, first this new proposal type has to be "registered" in the SNS. To do so, one uses a `AddGenericNervousSystemFunction` proposal.
 
-To submit a new `AddGenericNervousSystemFunction` SNS Proposal to support the `commit_proposed_batch` API, the target canister id should be the asset canister (that is upgraded in the upgrade steps below) and the target function is `commit_proposed_batch`. The validate function should be `validate_commit_proposed_batch`. 
+To submit a new `AddGenericNervousSystemFunction` SNS Proposal to support the `commit_proposed_batch` API, the target canister id should be the asset canister (that is updated in the update steps below) and the target function is `commit_proposed_batch`. The validate function should be `validate_commit_proposed_batch`. 
 
-The `ExecuteNervousSystemFunction` SNS proposal is used to execute the newly registered proposal. To submit an `ExecuteNervousSystemFunction` SNS Proposal with the output from `dfx deploy <frontend canister name> --network ic --by-proposal` see upgrade steps below.
+The `ExecuteNervousSystemFunction` SNS proposal is used to execute the newly registered proposal. To submit an `ExecuteNervousSystemFunction` SNS Proposal with the output from `dfx deploy <frontend canister name> --network ic --by-proposal` see update steps below.
 
 ## Submitting an SNS proposal and upgrading an asset canister
 
 Once an asset canister is under the control of the SNS, any changes must be done via an SNS proposal. 
 
-Before submitting an SNS proposal to upgrade an asset canister, assure that the asset canister has been upgraded (by proposal) to use the Wasm bundled with [dfx 0.14.1+](https://github.com/dfinity/sdk/blob/release-0.14.1/src/distributed/assetstorage.wasm.gz).
+Before submitting an SNS proposal to update an asset canister, assure that the asset canister has been upgraded (by proposal) to use the Wasm bundled with [dfx 0.14.1+](https://github.com/dfinity/sdk/blob/release-0.14.1/src/distributed/assetstorage.wasm.gz).
 
 - #### Step 1: To submit an SNS proposal, first have a principal with `Prepare` permission run:
 
@@ -194,8 +169,6 @@ Use these asset canister APIs in the proposal:
   commit_proposed_batch: (CommitProposedBatchArguments) -> ();
 
 ```
-
-An example can be found [here](https://github.com/dfinity/sdk/blob/master/e2e/tests-dfx/assetscanister.bash#L133).
 
 If the proposal is rejected, the preparer should use this new asset canister API:
 
