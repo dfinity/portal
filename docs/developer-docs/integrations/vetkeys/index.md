@@ -6,8 +6,8 @@ The VETKeys feature is in ongoing development on the Internet Computer (IC). It 
 
 To dive into the technical overview, please refer to the:
 
-- [vetKeys: technology overview](technology-overview.md)
-- [vetKeys primer](https://internetcomputer.org/blog/features/vetkey-primer)
+- [vetKeys technology overview](technology-overview.md).
+- [vetKeys primer](https://internetcomputer.org/blog/features/vetkey-primer).
 
 ## Using vetKeys
 
