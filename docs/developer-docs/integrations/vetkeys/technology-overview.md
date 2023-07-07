@@ -52,7 +52,7 @@ A witness encryption scheme for a language (L) with witness relationship (R) let
 Another cryptographic primitive with few instantiations is one-time programs that can be executed only once on a single input, and that don't leak anything about the program other than the result of the computation. Their only currently known instances rely on trusted hardware or on witness encryption on a blockchain. Given that witness encryption is easy to build on a VETKD-enabled blockchain, it should not come as a surprise that one-time programs are as well. The creator of the program garbles the circuit and IBE-encrypts the input wire keys, using the wire index and the value as the identity. A dapp assists users in recovering the IBE decryption corresponding to their input, making sure that only a single value for each wire is ever recovered.
 
 ## References
-[Forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
-[The first Community Conversation](https://youtu.be/baM6jHnmMq8).
-[vetKeys primer to understand the crypto background](https://internetcomputer.org/blog/features/vetkey-primer).
-[Research paper](https://eprint.iacr.org/2023/616.pdf).
+- [Forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
+- [The first Community Conversation](https://youtu.be/baM6jHnmMq8).
+- [vetKeys primer to understand the crypto background](https://internetcomputer.org/blog/features/vetkey-primer).
+- [Research paper](https://eprint.iacr.org/2023/616.pdf).
