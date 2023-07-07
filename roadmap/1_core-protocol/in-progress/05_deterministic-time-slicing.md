@@ -13,4 +13,4 @@ Deterministic time slicing allows for long(er) running, multi-round computations
 The feature is currently enabled on all application and verified application subnets.
 All messages except for queries are automatically sliced and executed in multiple rounds.
 The instruction limit for such messages has been increased from 5 billion instructions to 20 billion instructions.
-Futher increases are blocked by the "Configurable Wasm Heap Limit" feature.
+Further increases are blocked by the "Configurable Wasm Heap Limit" feature.
