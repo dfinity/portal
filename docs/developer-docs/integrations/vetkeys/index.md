@@ -11,5 +11,11 @@ To dive into the technical overview, please refer to the:
 
 ## Using vetKeys
 
-As this feature is still in development, a brief demo for using the API exists. Instructions for this demo can be found [here](using-vetkeys.md)
+As this feature is still in development, a brief demo for using the API exists. Instructions for this demo can be found [here](using-vetkeys.md).
+
+## References
+- [Forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
+- [The first Community Conversation](https://youtu.be/baM6jHnmMq8).
+- [vetKeys primer to understand the crypto background](https://internetcomputer.org/blog/features/vetkey-primer).
+- [Research paper](https://eprint.iacr.org/2023/616.pdf).
 
