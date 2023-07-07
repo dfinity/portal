@@ -7,7 +7,7 @@ module.exports = {
       zIndex: {
         1: "1",
         "-1": "-1",
-        "-10": "-10"
+        "-10": "-10",
       },
       maxWidth: {
         page: "1440px",
@@ -75,6 +75,9 @@ module.exports = {
       infinite: {
         DEFAULT: "#3B00B9",
         60: "#6E52AA",
+      },
+      page: {
+        DEFAULT: "#F1EEF5",
       },
       transparent: "transparent",
       grey: {
@@ -198,6 +201,7 @@ module.exports = {
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
                 '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                '.button-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
