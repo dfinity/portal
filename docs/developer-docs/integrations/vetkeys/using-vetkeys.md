@@ -19,6 +19,12 @@ This demo uses files found in [this repository](https://github.com/dfinity/examp
 git clone https://github.com/dfinity/examples/
 ```
 
+Then navigate into the directory specifically for this project:
+
+```
+cd examples/rust/vetkd
+```
+
 ### Step 2: Then, start a local instance of the Internet Computer:
 
 ```sh
