@@ -10,7 +10,7 @@ This demo uses files found in [this repository](https://github.com/dfinity/examp
 
 - [x] Download and install the IC SDK package as described in the [installing the IC SDK](./../../setup/install/index.mdx) page.
 - [x] Download and install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-- [ ] Download and install [git](https://git-scm.com/downloads).
+- [x] Download and install [git](https://git-scm.com/downloads).
 
 
 ### Step 1: Begin by cloning the Github repository containing this project:
