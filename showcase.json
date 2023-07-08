@@ -2018,5 +2018,26 @@
     "usesInternetIdentity": true,
     "twitter": "https://twitter.com/signalsicp",
     "submittableId": "35639473"
+  },
+  {
+    "name": "Rakeoff",
+    "description": "Rakeoff is a user-friendly crypto staking rewards platform on ICP, with options to convert rewards into ckBTC or pool them for a chance to win a no-loss prize pool. Pooling staking rewards allows users to potentially amplify their ICP earnings while preserving their principal investment.",
+    "website": "https://rakeoff.io/",
+    "logo": "/img/showcase/rakeoff_logo.webp",
+    "screenshots": [
+      "/img/showcase/rakeoff_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "rakeoff",
+    "oneLiner": "Rakeoff is a user-friendly crypto staking rewards platform on ICP.",
+    "stats": "Hackathon winner",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Wallet"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/rakeoff-labs",
+    "twitter": "https://twitter.com/rakeoff_app"
   }
 ]
