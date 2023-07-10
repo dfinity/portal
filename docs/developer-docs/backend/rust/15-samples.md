@@ -1,4 +1,4 @@
-# Rust sample projects
+# Rust sample code and applications
 
 The following sample projects for Rust can be found in the [`dfinity/examples` repository](https://github.com/dfinity/examples):
 

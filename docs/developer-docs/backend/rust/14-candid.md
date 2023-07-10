@@ -1,4 +1,4 @@
-# 14: Using Candid with a Rust canister
+# 14: Using the Candid UI with a Rust canister
 
 ## Overview
 
@@ -54,7 +54,8 @@ fn write(input: candid::Nat) {
 }
 ```
 
-`src/counter_backend/src/counter.did`:
+`src/counter_backend/counter_backend.did`:
+
 ```
 service : {
   "inc": () -> ();
@@ -62,6 +63,35 @@ service : {
   "write": (nat) -> ();
 }
 ```
+
+## Using Candid UI in the browser
+
+To use Candid UI in the browser, first you need to deploy your canisters. Using the `src/counter_backend/src/lib.rs` and `src/counter_backend/src/counter.did` files provided above, after these have been saved in a dfx project, they can be deployed with the command:
+
+```
+dfx deploy
+```
+
+:::info
+If you need to create a new dfx project to insert these files into, please see the [deploying canisters page](5-deploying.md).
+:::
+
+The output of the `dfx deploy` command will resemble:
+
+```
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    counter_frontend: http://127.0.0.1:8080/?canisterId=ajuq4-ruaaa-aaaaa-qaaga-cai
+  Backend canister via Candid interface:
+    counter_backend: http://127.0.0.1:8080/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
+```
+
+To use the Candid UI, navigate to the link specified as the 'Backend canister via Candid interface' URL. In the browser, the Candid UI will look like this:
+
+[Candid UI](../rust/_attachments/CandidUI.png)
+
+This UI interface can be used to call the functions of the `counter` canister. 
 
 ## Using Candid for interactions between canisters
 
@@ -92,7 +122,7 @@ For additional information on the type mapping between Candid and Rust, you can 
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file with the content:
 
-`src/hello_backend/src/hello.did`
+`src/hello_backend/hello_backend.did`
 
 ``` candid
 service : {
