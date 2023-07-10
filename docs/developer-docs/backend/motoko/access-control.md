@@ -169,17 +169,17 @@ shared({ caller = initializer }) actor class() {
 };
 ```
 
-    Let's take a look at a few key elements of this dapp:
+Let's take a look at a few key elements of this dapp:
 
-    - You might notice that the `greet` function is a variation on the `greet` function you have seen in previous guides. In this dapp, however, the `greet` function uses a message caller to determine the permissions that should be applied and, based on the permissions associated with the caller, which greeting to display.
+- You might notice that the `greet` function is a variation on the `greet` function you have seen in previous guides. In this dapp, however, the `greet` function uses a message caller to determine the permissions that should be applied and, based on the permissions associated with the caller, which greeting to display.
 
-    - The dapp defines two custom types—one for `Roles` and one for `Permissions`.
+- The dapp defines two custom types—one for `Roles` and one for `Permissions`.
 
-    - The `assign_roles` function enables the message caller to assign a role to the principal associated with an identity.
+- The `assign_roles` function enables the message caller to assign a role to the principal associated with an identity.
 
-    - The `callerPrincipal` function enables you to return the principal associated with an identity.
+- The `callerPrincipal` function enables you to return the principal associated with an identity.
 
-    - The `my_role` function enables you to return the role that is associated with an identity.
+- The `my_role` function enables you to return the role that is associated with an identity.
 
 - #### Step 3:  Save your changes and close the `main.mo` file to continue.
 
