@@ -352,7 +352,6 @@ const sidebars = {
               },
               items: [
                   "tokenomics/token-holders/nns-app-quickstart",
-                  "tokenomics/nns/community-fund",
                   "tokenomics/nns/neurons-fund",
                   "tokenomics/nns/nns-staking-voting-rewards",
               ],
