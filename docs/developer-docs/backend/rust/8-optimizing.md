@@ -32,7 +32,7 @@ Ok(tx_id)
 
 ### Encode byte arrays using the `serde_bytes` package
 
-Candid is the standard interface definition language on the IC. The Rust implementation of Candid relies on a popular serde framework and inherits all of serde’s quirks. One such quirk is the inefficient encoding of byte arrays (Vec<u8> and [u8]) in most serialization formats. Due to Rust limitations, serde cannot treat byte arrays specially and encodes each byte as a separate element in a generic array, increasing the number of instructions required to encode or decode the message (often by a factor of ten or more).
+Candid is the standard interface definition language on the IC. The Rust implementation of Candid relies on a popular serde framework and inherits all of serde’s quirks. One such quirk is the inefficient encoding of byte arrays `(Vec<u8> and [u8])` in most serialization formats. Due to Rust limitations, serde cannot treat byte arrays specially and encodes each byte as a separate element in a generic array, increasing the number of instructions required to encode or decode the message (often by a factor of ten or more).
 
 The `HttpResponse` from the canister HTTP protocol is a good example:
 
