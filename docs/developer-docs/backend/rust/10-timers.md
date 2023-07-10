@@ -67,7 +67,7 @@ cargo update
 
 Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of canister interfaces.
 
-To see details about the Candid interface description language syntax, see the [Candid guide](../candid/index) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [Candid guide](../candid/) or the [Candid crate documentation](https://docs.rs/candid/).
 
 Start by opening the `src/my_timers_backend/my_timers_backend.did` file in a code editor and replace its content with the following:
 
@@ -234,4 +234,4 @@ Example output:
 ```
 
 ## Next steps
-For the next step, let's dive into Rust [stable structures](./11-stable-structures).
+For the next step, let's dive into Rust [stable structures](./stable-structures).
