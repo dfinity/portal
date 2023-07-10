@@ -38,13 +38,11 @@ const ParticleAnimation: React.FC<{
   debugColors?: boolean;
   paintParticles?: boolean;
   animate: boolean;
-  blur: MotionValue<string>;
 }> = ({
   debugForces = false,
   debugColors = false,
   paintParticles = true,
   animate,
-  blur,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -235,9 +233,6 @@ const ParticleAnimation: React.FC<{
     <motion.canvas
       className="w-full h-screen fixed inset-0 bg-[#1B025A]"
       ref={canvasRef}
-      style={{
-        filter: blur,
-      }}
     ></motion.canvas>
   );
 };

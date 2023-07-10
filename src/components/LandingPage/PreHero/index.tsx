@@ -10,6 +10,7 @@ import {
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
 import { Facts } from "./Facts";
@@ -38,15 +39,15 @@ const PreHero: React.FC<{
     offset: ["end end", "end start"],
   });
 
-  const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
+  // const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
   const blobOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  const blur = useMotionTemplate`blur(${blurSize}px)`;
+  // const blur = useMotionTemplate`blur(${blurSize}px)`;
 
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <ParticleAnimation animate={animate} blur={blur}></ParticleAnimation>
+      <ParticleAnimation animate={animate}></ParticleAnimation>
 
       <div
         className="overflow-hidden relative"
@@ -55,7 +56,7 @@ const PreHero: React.FC<{
         }}
       >
         <div
-          className="relative w-screen h-screen flex items-center"
+          className="relative w-screen md:h-screen pt-48 md:pt-0 flex items-center"
           ref={headlineRef}
         >
           <motion.img
@@ -66,33 +67,96 @@ const PreHero: React.FC<{
               opacity: blobOpacity,
             }}
           ></motion.img>
-          <div className="container-10 text-center">
+          <div className="container-12 text-center w-full">
             <motion.div
-              className="animate-scale-in"
+              className="animate-scale-in mb-20 md:mb-24"
               style={{
                 animationPlayState: start ? "running" : "paused",
-                opacity: blobOpacity,
               }}
             >
-              <h1 className="tw-heading-3 md:tw-heading-2 lg:tw-heading-1 text-white mb-4 lg:mb-6">
-                {headline}
-              </h1>
-              <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-60 text-white mb-0 grid">
+              <img
+                src="/img/IC_logo_horizontal_white.svg"
+                alt=""
+                className="w-[177px] md:w-[330px] lg:w-[440px] mb-3"
+              />
+              <h1 className="tw-heading-3 md:tw-heading-2 lg:tw-heading-1 text-white mb-6 md:mb-8 grid">
+                {/* {headline} */}
                 <RotatedHeadline lines={straps} interval={2000} />
-              </p>
+              </h1>
+
+              <div>
+                <Link
+                  className="button-outline-white"
+                  href="/docs/current/home"
+                >
+                  Start building
+                </Link>
+              </div>
             </motion.div>
 
             <motion.div
-              className="animate-fade-up relative"
+              className="animate-fade-in -mx-6 md:mx-0 md:rounded-[32px] px-6 py-10 md:p-10 text-white flex flex-col md:flex-row justify-between self-stretch"
               style={{
                 animationDelay: "1500ms",
                 animationPlayState: start ? "running" : "paused",
-                opacity: blobOpacity,
+                backdropFilter: "blur(50px)",
               }}
-            ></motion.div>
+            >
+              <div className="flex-1 text-white text-left md:text-center flex flex-row items-center">
+                <div className="flex-1">
+                  <div className="text-white/60 tw-button-sm md:tw-heading-7-caps mb-1">
+                    Internet Identity
+                  </div>
+                  <h2 className="tw-lead-lg lg:tw-title-sm mb-0 md:mb-8">
+                    Web3 world ID
+                  </h2>
+                </div>
+                <Link
+                  href="/internet-identity"
+                  className="rounded-full border-white/30 border-solid border-2 inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 text-white hover:text-white hover:bg-infinite hover:no-underline hover:border-infinite transition-all duration-200"
+                >
+                  <LinkArrowRight className="w-4 md:w-auto" />
+                </Link>
+              </div>
+              <div className="w-full h-px bg-white/20 md:w-px md:h-auto my-6 md:my-0 md:mx-8"></div>
+              <div className="flex-1 text-white text-left md:text-center flex flex-row items-center">
+                <div className="flex-1">
+                  <div className="text-white/60 tw-button-sm md:tw-heading-7-caps mb-1">
+                    Open Internet Services
+                  </div>
+                  <h2 className="tw-lead-lg lg:tw-title-sm mb-0 md:mb-8">
+                    User-run Web3
+                  </h2>
+                </div>
+                <Link
+                  href="/openchat"
+                  className="rounded-full border-white/30 border-solid border-2 inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 text-white hover:text-white hover:bg-infinite hover:no-underline hover:border-infinite transition-all duration-200"
+                >
+                  <LinkArrowRight className="w-4 md:w-auto" />
+                </Link>
+              </div>
+              <div className="w-full h-px bg-white/20 md:w-px md:h-auto my-6 md:my-0 md:mx-8"></div>
+
+              <div className="flex-1 text-white text-left md:text-center flex flex-row items-center">
+                <div className="flex-1">
+                  <div className="text-white/60 tw-button-sm md:tw-heading-7-caps mb-1">
+                    Internet Identity
+                  </div>
+                  <h2 className="tw-lead-lg lg:tw-title-sm mb-0 md:mb-8">
+                    Web3 world ID
+                  </h2>
+                </div>
+                <Link
+                  href="/enterprise"
+                  className="rounded-full border-white/30 border-solid border-2 inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 text-white hover:text-white hover:bg-infinite hover:no-underline hover:border-infinite transition-all duration-200"
+                >
+                  <LinkArrowRight className="w-4 md:w-auto" />
+                </Link>
+              </div>
+            </motion.div>
           </div>
 
-          <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
+          {/* <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
             <motion.div
               className="animate-fade-in"
               style={{
@@ -103,9 +167,9 @@ const PreHero: React.FC<{
             >
               <OnChainBadge sizeClasses="w-20 h-20 md:w-32 md:h-32"></OnChainBadge>
             </motion.div>
-          </div>
+          </div> */}
 
-          <motion.button
+          {/* <motion.button
             className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
             onClick={() => {
               document.getElementById("stats").scrollIntoView();
@@ -143,40 +207,47 @@ const PreHero: React.FC<{
                 </linearGradient>
               </defs>
             </svg>
-          </motion.button>
+          </motion.button> */}
         </div>
         <div
-          className="tw-heading-5 text-white relative py-20 md:pt-40 pb-56 md:pb-80 container-12"
+          className="tw-heading-5 text-white relative md:pt-40 pb-56 md:pb-80 container-12"
           ref={heroRef}
           id="stats"
         >
-          <Facts />
-          <AnimateSpawn
-            variants={transitions.container}
-            className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
+          <div
+            className="-mx-6 md:mx-0 px-6 md:rounded-[32px] pt-20 md:pt-30"
+            style={{
+              backdropFilter: "blur(50px)",
+            }}
           >
-            <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
-              <Link
-                className="button-outline-white text-center sm:text-left"
-                href="https://dashboard.internetcomputer.org"
-              >
-                INTERNET COMPUTER DASHBOARD
-              </Link>
-              <Link
-                href="https://wiki.internetcomputer.org/wiki/L1_comparison"
-                className="link-primary-light link-with-icon"
-              >
-                Comparison of Layer-1 blockchains
-                <LinkArrowUpRight />
-              </Link>
-            </div>
-            <img
-              src="/img/home/dashboard.svg"
-              className="absolute right-0 bottom-0 pointer-events-none"
-              loading="lazy"
-              alt=""
-            ></img>
-          </AnimateSpawn>
+            <Facts />
+            <AnimateSpawn
+              variants={transitions.container}
+              className="container-10 bg-black-30 rounded-b-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
+            >
+              <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
+                <Link
+                  className="button-outline-white text-center sm:text-left"
+                  href="https://dashboard.internetcomputer.org"
+                >
+                  INTERNET COMPUTER DASHBOARD
+                </Link>
+                <Link
+                  href="https://wiki.internetcomputer.org/wiki/L1_comparison"
+                  className="link-primary-light link-with-icon"
+                >
+                  Comparison of Layer-1 blockchains
+                  <LinkArrowUpRight />
+                </Link>
+              </div>
+              <img
+                src="/img/home/dashboard.svg"
+                className="absolute right-0 bottom-0 pointer-events-none"
+                loading="lazy"
+                alt=""
+              ></img>
+            </AnimateSpawn>
+          </div>
         </div>
       </div>
     </section>

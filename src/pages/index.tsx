@@ -28,16 +28,16 @@ export default function Home(): JSX.Element {
     >
       <QueryClientProvider client={queryClient}>
         <PreHero
-          headline="World Computer"
+          headline="build on the network"
           straps={[
-            "Build on the network",
-            "Autonomous code",
-            "Unstoppable code",
-            "Native multi-chain",
-            "Security by design",
-            "No firewalls needed",
-            "Privacy by design",
-            "Decentralize control",
+            "build on the network",
+            "autonomous code",
+            "unstoppable code",
+            "native multi-chain",
+            "security by design",
+            "no firewalls needed",
+            "privacy by design",
+            "decentralize control",
           ]}
         ></PreHero>
       </QueryClientProvider>
