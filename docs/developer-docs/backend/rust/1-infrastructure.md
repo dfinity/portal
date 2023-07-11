@@ -2,7 +2,7 @@
 
 ## Overview
 
-When developing on the IC, there are currently two primary languages to build backend canisters with; Motoko and Rust. This guide provides an introduction to using Rust to developer backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability. 
+When developing on the IC, there are currently two primary languages to build backend canisters with; Motoko and Rust. This guide introduces using Rust to develop backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability. 
 
 ## Rust CDK
 
