@@ -1,4 +1,4 @@
-# 2: Code organization
+# 2: Project organization
 
 ## Overview
 
