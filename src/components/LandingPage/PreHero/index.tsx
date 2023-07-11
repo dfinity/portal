@@ -56,7 +56,11 @@ const PreHero: React.FC<{
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <ParticleAnimation animate={animate} blur={blur}></ParticleAnimation>
+      <ParticleAnimation
+        animate={animate}
+        blur={blur}
+        debugForces={false}
+      ></ParticleAnimation>
 
       <div className="overflow-hidden relative">
         <div className="md:pt-0 flex items-center" ref={headlineRef}>
