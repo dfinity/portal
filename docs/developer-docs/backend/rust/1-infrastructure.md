@@ -43,7 +43,7 @@ Stable memory can be viewed as the communication channel between old and new ver
 
 #### Testing upgrade hooks
 
-It is best practice to test upgrades before applying them in order to catch any potential errors that may result in losing data irrevocably. To test upgrades, several different workflows or approaches can be used, such as shell or bash scripts, or Rust test scripts. The following psuedo-code showcases a Rust upgrade example that adds an additional step to execute the state validation of your upgrade test. 
+It is best practice to test upgrades before applying them to catch any potential errors that may result in losing data irrevocably. Several different workflows or approaches can be used to test upgrades, such as shell scripts or Rust test scripts. The following pseudo-code showcases a Rust upgrade example that adds a step to execute the state validation of your upgrade test. 
 
 ```
 let canister_id = install_canister(WASM);
