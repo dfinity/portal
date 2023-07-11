@@ -2,7 +2,7 @@
 title: "A step towards WebSockets on the Internet Computer"
 description: Introducing a WebSocket proof-of-concept for the dev community to build on.
 tags: [Devs]
-image: /img/blog/motoko-sentinel.png
+image: /img/blog/moonshot.png
 ---
 
 Today, users expect web applications to be fast and snappy: an exchange should update
