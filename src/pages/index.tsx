@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
           cards={[
             {
               caption: "Internet Identity",
-              title: "Web3 world ID",
+              title: "Web3 ID",
               link: "/internet-identity",
             },
             {
