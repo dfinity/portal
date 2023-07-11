@@ -96,6 +96,7 @@ const PreHero: React.FC<{
               className="-mx-6 md:mx-0 px-6 md:rounded-[32px] pt-10 pb-30 md:p-10 text-white flex flex-col md:flex-row justify-between self-stretch md:mb-[calc(33vh-188px)] animate-fade-in"
               style={{
                 backdropFilter: boxBlur,
+                WebkitBackdropFilter: boxBlur,
                 animationDelay: "500ms",
                 animationPlayState: "running",
               }}
