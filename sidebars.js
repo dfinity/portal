@@ -210,7 +210,7 @@ const sidebars = {
               },
                 items: [
                   "developer-docs/backend/rust/infrastructure",
-                  "developer-docs/backend/rust/code-organization",
+                  "developer-docs/backend/rust/project-organization",
                   "developer-docs/backend/rust/dev-env",
                   "developer-docs/backend/rust/quickstart",
                   "developer-docs/backend/rust/deploying",
