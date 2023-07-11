@@ -132,7 +132,7 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 
 ## Globally mutable states
 
-By design, canisters on the IC are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to global mutable variables. This results in Rust developers needing to choose a method of code organization that takes the IC's design into consideration. This guide will cover a few of those code organization options. 
+By design, canisters on the IC are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to use global mutable variables. This results in Rust developers needing to choose a method of code organization that takes the IC's design into consideration. This guide will cover a few of those code organization options. 
 
 ### Using `thread_local!` with `Cell/RefCell` for state variables
 
