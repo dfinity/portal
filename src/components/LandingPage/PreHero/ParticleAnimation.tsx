@@ -9,7 +9,7 @@ type Force = (pos: Vector2D) => Vector2D;
 
 const hCenterOf = (x) =>
   window.innerWidth < 640
-    ? x / 2
+    ? x / 2 - 80
     : Math.min(window.innerWidth / 2 + 500, (x * 3) / 4);
 const vCenterOf = (y) =>
   window.innerWidth < 640 ? 300 : window.innerWidth < 1200 ? 300 : 440;
