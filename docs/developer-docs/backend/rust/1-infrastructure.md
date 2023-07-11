@@ -201,4 +201,4 @@ Do not lock shared resources across await boundaries.
 This issue becomes quite a problem when combined with panics: if you lock an important resource and then panic after await, the resource stays locked forever.
 
 ## Next steps
-Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [code organization](./2-code-organization.md)
+Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [code organization](./2-project-organization.md)
