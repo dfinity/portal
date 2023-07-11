@@ -14,6 +14,10 @@ which allow establishing a long-lived, full-duplex connection between the fronte
 and backend of an application. This allows for both sides to send data, for example,
 the latest exchange rates, in real-time.
 
+WebSockets can be seen as the next step after [HTTPS outcalls](https://internetcomputer.org/https-outcalls).
+While HTTPS outcalls enable canisters to access publicly-available, off-chain data,
+WebSockets provide long-lived, bi-directional connections with any client.
+
 ## Challenges
 
 While WebSockets are a standard in the web2 world, they have not yet
@@ -50,7 +54,9 @@ The gateway provides a WebSocket endpoint for the frontend and maintains the con
 while it interfaces with the backend on the Internet Computer through query and update calls.
 
 The gateway sends messages coming from the frontend as update calls to the backend
-and it continuously polls the backend for new messages for the frontend.
+and it continuously polls the backend for new messages for the frontend. Instead of
+polling, one could have also used HTTPS outcalls to "push" the messages to the gateway.
+However, with an increasing number of messages, polling is more and more efficient.
 
 Despite being a centralized point of failure, the gateway draws on the Internet Computer
 to fulfill its role trustlessly: both the frontend and the backend sign their messages
