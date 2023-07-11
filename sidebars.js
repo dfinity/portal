@@ -476,6 +476,18 @@ const sidebars = {
                   "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
               ],
             },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
+              ],
+            },
           ],
     },
     {
