@@ -18,7 +18,7 @@ The Rust CDK consists of the following crates:
 ## Canister builds
 When building a backend canister, it's important to keep two things in mind: 
 
-1. Making your build reproducible: if other developers or users are utilizing your canister, they may want to verify that the canister is functioning as they expect it to (especially if your canister deals with transferring their tokens). The IC provides the ability for anyone to inspect the SHA256 hash sum of a canister's WebAssembly module to confirm that the hash of the canister matches the hash of a validated, known good canister, allowing for users to determine if a canister's contents have been edited or changed. 
+1. Making your build reproducible: if other developers or users are utilizing your canister, they may want to verify that it is functioning as expected (especially if the canister deals with transferring their tokens). The IC allows anyone to inspect the SHA256 hash sum of a canister's WebAssembly module to confirm that the hash matches the hash of a validated, known good canister, allowing users to determine whether the canister's contents have been edited or changed. 
 
 2. Planning for canister upgrades: typically, developers can manage without needing upgrades during the canister's initial development cycle. However, losing the canister's state on each deployment of the canister can be inconvenient. Once a canister has been deployed to the mainnet, the only way for new versions of the canister's code to be shipped is through planned upgrades.
 
