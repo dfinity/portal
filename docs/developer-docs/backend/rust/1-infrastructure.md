@@ -58,7 +58,7 @@ Then, your tests should be run twice in two different scenarios:
 - In a scenario with an upgrade, to assure that your tests run successfully while executing an upgrade. 
 You then run your tests twice in different modes:
 
-By running both of these tests, developers can gain confidence that when an upgrade is applied to a canister, the canister's state is preserved. 
+By running both of these tests, you can gain confidence that when an upgrade is applied to a canister, the canister's state is preserved. 
 
 :::caution
 It is not recommended to trap within the `pre_upgrade` hook. This is because while the `pre_upgrade` and `post_upgrade` hooks appear to be symmetrical, they are not. 
