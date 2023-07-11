@@ -38,11 +38,13 @@ const ParticleAnimation: React.FC<{
   debugColors?: boolean;
   paintParticles?: boolean;
   animate: boolean;
+  blur: MotionValue<string>;
 }> = ({
   debugForces = false,
   debugColors = false,
   paintParticles = true,
   animate,
+  blur,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -161,9 +163,10 @@ const ParticleAnimation: React.FC<{
             force.add_mut(f(p.pos));
           }
           const dy =
-            canvasWidth > canvasHeight
-              ? Math.max(1, Math.abs(p.pos.y - canvasHeight / 2))
-              : Math.max(1, Math.abs(p.pos.x - canvasWidth / 2));
+            // canvasWidth > canvasHeight
+            // ?
+            Math.max(1, Math.abs(p.pos.y - canvasHeight / 2));
+          // : Math.max(1, Math.abs(p.pos.x - canvasWidth / 2));
           // force.mult_mut(Math.min(1, dy / 1000));
           const attenn = Math.min(1, dy / 1000);
           const dist = center.sub(p.pos).mag();
@@ -233,6 +236,9 @@ const ParticleAnimation: React.FC<{
     <motion.canvas
       className="w-full h-screen fixed inset-0 bg-[#1B025A]"
       ref={canvasRef}
+      style={{
+        filter: blur,
+      }}
     ></motion.canvas>
   );
 };
