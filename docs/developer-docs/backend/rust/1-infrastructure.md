@@ -126,7 +126,7 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 
 #### Important metric data to watch
 - The size of the canister's stable memory.
-- The size of the canister's internal data structures
+- The size of the canister's internal data structures.
 - The sizes of objects allocated within the heap.
 - The date and time the canister was last upgraded.
 
