@@ -45,7 +45,7 @@ src
 webpack.config.js
 ```
 
-For more information on project structure and code organization, review the [code organization guide](./2-code-organization.md).
+For more information on project structure and code organization, review the [project organization guide](./2-project-organization.md).
 
 ## Writing the `lib.rs` file
 
