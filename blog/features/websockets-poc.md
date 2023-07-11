@@ -62,5 +62,5 @@ We have released [the proof-of-concept on Github](https://github.com/dfinity/ic-
 and invite you to try it out yourself! Use it as an inspiration for your own projects and
 build upon it! Please note that this is a proof-of-concept and requires further
 improvements to enhance security and stability for any use in production. We have
-started a thread in the developer forum and are looking forward to seeing all the
-applications you built and your feedback.
+started [a thread in the developer forum](https://forum.dfinity.org/t/websockets-on-the-ic-a-proof-of-concept/20836)
+and are looking forward to seeing all the applications you built and your feedback.
