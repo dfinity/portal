@@ -162,12 +162,14 @@ It pays off to factor most of the canister code into loosely coupled modules and
 
 It is also possible to create a thin abstractions for the System API and test your code with a fake but faithful implementation. For example, we could use the following trait to abstract the stable memory API:
 
+```
 pub trait Memory {
     fn size(&self) -> WasmPages;
     fn grow(&self, pages: WasmPages) -> WasmPages;
     fn read(&self, offset: u32, dst: &mut [u8]);
     fn write(&self, offset: u32, src: &[u8]);
 }
+```
 
 ## Code asynchrony
 
