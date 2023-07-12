@@ -30,7 +30,7 @@ function BlogListPageContent(props) {
 
   return (
     <BlogLayout sidebar={sidebar}>
-      <h1 className="tw-heading-2 !mb-10">Dev Blog</h1>
+      <h1 className="tw-heading-2 !mb-10 mt-10 md:mt-0">Dev Blog</h1>
 
       <BlogPostItems items={items} withFeatured={true} />
       <BlogListPaginator metadata={metadata} />

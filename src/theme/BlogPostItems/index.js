@@ -1,8 +1,8 @@
 import React from "react";
-import BlogPostItem from "@theme/BlogPostItem";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import slugify from "slugify";
+import { tagColors } from "@site/src/utils/blog";
 
 function Tags({ tags }) {
   return (
@@ -56,16 +56,7 @@ function CoverImage({ url = "/img/dfinity.png", permalink }) {
   );
 }
 
-const tagColors = {
-  Devs: "bg-razzmatazz-300 text-white",
-  "New features": "bg-blue text-white",
-};
-
-export default function BlogPostItems({
-  items,
-  component: BlogPostItemComponent = BlogPostItem,
-  withFeatured = false,
-}) {
+export default function BlogPostItems({ items, withFeatured = false }) {
   const featuredPost = items[0];
   const restPosts = withFeatured ? items.slice(1) : items;
 

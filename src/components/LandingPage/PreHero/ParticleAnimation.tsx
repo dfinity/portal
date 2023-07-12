@@ -7,22 +7,32 @@ import { Vector2D } from "./vector";
 
 type Force = (pos: Vector2D) => Vector2D;
 
+const hCenterOf = (x) =>
+  window.innerWidth < 640
+    ? x / 2 - 80
+    : Math.min(window.innerWidth / 2 + 500, (x * 3) / 4);
+const vCenterOf = (y) =>
+  window.innerWidth < 640 ? 300 : window.innerWidth < 1200 ? 300 : 440;
+
 function getForces(center: Vector2D, minDim: number): Force[] {
   const factor = 1; //950 / minDim;
 
   return [
     (p) => {
+      // outwards from center
       const dir = p.sub(center);
       const mag = dir.mag();
       dir.mult_mut(7000 / factor / mag / mag);
       return dir;
     },
     (p) => {
+      // towards center from edges
       const dir = center.sub(p);
       dir.mult_mut(20 / factor / dir.mag());
       return dir;
     },
     (p) => {
+      // stir
       const dir = center.sub(p);
       const mag = dir.mag();
       return new Vector2D(
@@ -59,8 +69,8 @@ const ParticleAnimation: React.FC<{
     canvasRef.current.height = window.innerHeight;
 
     const center = new Vector2D(
-      canvasRef.current.width / 2,
-      canvasRef.current.height / 2
+      hCenterOf(canvasRef.current.width),
+      vCenterOf(canvasRef.current.height)
     );
     setForces(
       getForces(center, Math.min(window.innerHeight, window.innerWidth))
@@ -69,8 +79,8 @@ const ParticleAnimation: React.FC<{
     setParticles(
       Array.from({ length: PARTICLE_COUNT }).map(() =>
         Particle.randomInCircle(
-          canvasRef.current.width / 2,
-          canvasRef.current.height / 2,
+          hCenterOf(canvasRef.current.width),
+          vCenterOf(canvasRef.current.height),
           Math.min(window.innerHeight, window.innerWidth) / 6
         )
       )
@@ -111,8 +121,8 @@ const ParticleAnimation: React.FC<{
         canvasRef.current.height = window.innerHeight;
 
         const center = new Vector2D(
-          canvasRef.current.width / 2,
-          canvasRef.current.height / 2
+          hCenterOf(canvasRef.current.width),
+          vCenterOf(canvasRef.current.height)
         );
         setForces(
           getForces(center, Math.min(window.innerHeight, window.innerWidth))
@@ -126,7 +136,10 @@ const ParticleAnimation: React.FC<{
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
 
-      const center = new Vector2D(canvasWidth / 2, canvasHeight / 2);
+      const center = new Vector2D(
+        hCenterOf(canvasWidth),
+        vCenterOf(canvasHeight)
+      );
 
       ctx.fillStyle = "rgb(30,1,94)";
       ctx.globalAlpha = 1;
@@ -163,14 +176,15 @@ const ParticleAnimation: React.FC<{
             force.add_mut(f(p.pos));
           }
           const dy =
-            canvasWidth > canvasHeight
-              ? Math.max(1, Math.abs(p.pos.y - canvasHeight / 2))
-              : Math.max(1, Math.abs(p.pos.x - canvasWidth / 2));
+            // canvasWidth > canvasHeight
+            // ?
+            Math.max(1, Math.abs(p.pos.y - vCenterOf(canvasHeight)));
+          // : Math.max(1, Math.abs(p.pos.x - canvasWidth / 2));
           // force.mult_mut(Math.min(1, dy / 1000));
           const attenn = Math.min(1, dy / 1000);
           const dist = center.sub(p.pos).mag();
 
-          force.mult_mut(dist > 300 ? attenn : 1);
+          force.mult_mut(dist > 350 ? attenn : 1);
           force.x += Math.random() * 20 - 10;
           force.y += Math.random() * 20 - 10;
           p.update(force.x / 200, force.y / 200);
@@ -198,7 +212,7 @@ const ParticleAnimation: React.FC<{
             }
 
             const dist = center.sub(p).mag();
-            const dy = Math.max(1, Math.abs(p.y - canvasHeight / 2));
+            const dy = Math.max(1, Math.abs(p.y - vCenterOf(canvasHeight)));
             const attenn = Math.min(1, dy / 1000);
             force.mult_mut(dist > 300 ? attenn : 1);
 
