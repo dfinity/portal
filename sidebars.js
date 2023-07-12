@@ -352,7 +352,6 @@ const sidebars = {
               },
               items: [
                   "tokenomics/token-holders/nns-app-quickstart",
-                  "tokenomics/nns/community-fund",
                   "tokenomics/nns/neurons-fund",
                   "tokenomics/nns/nns-staking-voting-rewards",
               ],
@@ -475,6 +474,18 @@ const sidebars = {
             },
                 items: [
                   "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
           ],
