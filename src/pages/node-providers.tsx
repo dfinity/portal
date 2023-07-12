@@ -3,7 +3,7 @@ import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
@@ -20,6 +20,12 @@ const LazyMap = React.lazy(() => import("../components/NodeProvidersPage/Map"));
 function NodeProvidersPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
+
+  const [showMap, setShowMap] = useState(false);
+
+  useEffect(() => {
+    setShowMap(true);
+  }, []);
 
   return (
     <Layout
@@ -114,13 +120,17 @@ function NodeProvidersPage() {
           </div>
           <QueryClientProvider client={queryClient}>
             <div className="rounded-3xl overflow-hidden relative">
-              <Suspense
-                fallback={
-                  <div className="h-80 md:h-[480px] animate-pulse bg-black/10"></div>
-                }
-              >
-                <LazyMap />
-              </Suspense>
+              {showMap ? (
+                <Suspense
+                  fallback={
+                    <div className="h-80 md:h-[480px] animate-pulse bg-black/10"></div>
+                  }
+                >
+                  <LazyMap />
+                </Suspense>
+              ) : (
+                <div className="h-80 md:h-[480px] animate-pulse bg-black/10"></div>
+              )}
             </div>
             <Stats />
             <div className="mt-10 text-center">
