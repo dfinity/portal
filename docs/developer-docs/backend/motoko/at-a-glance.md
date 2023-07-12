@@ -34,7 +34,7 @@ Start the Internet Computer for local development or check your connection to th
 
 ## Register, build, and deploy locally or on the mainnet 
 
-For the mainnet, use:`--network ic`.
+For the mainnet, use: `--network ic`.
 
 ```
 dfx deploy --network <network>
