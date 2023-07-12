@@ -176,3 +176,20 @@ export function getStakingMetrics() {
     "https://ic-api.internetcomputer.org/api/v3/staking-metrics"
   ).then((res) => res.json() as Promise<StakingMetrics>);
 }
+
+export function getBoundaryNodeLocations() {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/boundary-node-locations"
+  ).then(
+    (res) =>
+      res.json() as Promise<{
+        locations: {
+          key: string;
+          latitude: number;
+          longitude: number;
+          name: string;
+          total_nodes: number;
+        }[];
+      }>
+  );
+}
