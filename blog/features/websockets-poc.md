@@ -2,7 +2,7 @@
 title: "A step towards WebSockets on the Internet Computer"
 description: Introducing a WebSocket proof-of-concept for the dev community to build on.
 tags: [Devs]
-image: /img/blog/moonshot-2.png
+image: /img/blog/moonshot.webp
 ---
 
 Today, users expect web applications to be fast and snappy: an exchange should update
@@ -48,7 +48,7 @@ The centerpiece of our proof-of-concept is the WebSocket gateway. It runs on a
 dedicated machine and sits between the frontend, the client’s browser, and the
 backend, the canister on the Internet Computer as the following figure shows.
 
-![WebSockets architecture](../_assets/websockets-architecture.png)
+![WebSockets architecture](../_assets/websockets-architecture.webp)
 
 The gateway provides a WebSocket endpoint for the frontend and maintains the connection,
 while it interfaces with the backend on the Internet Computer through query and update calls.
