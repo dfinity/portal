@@ -2,13 +2,13 @@
 
 ## Overview
 
-When developing on the IC, there are currently two primary languages to build backend canisters with; Motoko and Rust. This guide introduces using Rust to develop backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability. 
+When developing on the IC, there are currently two primary languages to build backend canisters with; Motoko and Rust. This guide provides an introduction to using Rust to developer backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability. 
 
 ## Rust CDK
 
 To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs).
 
-While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the Rust CDK directly. This documentation assumes you are using the IC SDK to build Rust canisters.
+While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the Rust CDK directly. This documentation assumes one is using the IC SDK to build Rust canisters.
 
 The Rust CDK consists of the following crates:
 - The core of Rust CDK is the `ic-cdk` crate. It provides the core methods that enable Rust programs to interact with the Internet Computer blockchain system API.
@@ -18,7 +18,7 @@ The Rust CDK consists of the following crates:
 ## Canister builds
 When building a backend canister, it's important to keep two things in mind: 
 
-1. Making your build reproducible: if other developers or users are utilizing your canister, they may want to verify that it is functioning as expected (especially if the canister deals with transferring their tokens). The IC allows anyone to inspect the SHA256 hash sum of a canister's WebAssembly module to confirm that the hash matches the hash of a validated, known good canister, allowing users to determine whether the canister's contents have been edited or changed. 
+1. Making your build reproducible: if other developers or users are utilizing your canister, they may want to verify that the canister is functioning as they expect it to (especially if your canister deals with transferring their tokens). The IC provides the ability for anyone to inspect the SHA256 hash sum of a canister's WebAssembly module to confirm that the hash of the canister matches the hash of a validated, known good canister, allowing for users to determine if a canister's contents have been edited or changed. 
 
 2. Planning for canister upgrades: typically, developers can manage without needing upgrades during the canister's initial development cycle. However, losing the canister's state on each deployment of the canister can be inconvenient. Once a canister has been deployed to the mainnet, the only way for new versions of the canister's code to be shipped is through planned upgrades.
 
@@ -26,7 +26,7 @@ When building a backend canister, it's important to keep two things in mind:
 
 To create a reproducible canister build, there are two popular workflows: Linux containers like Docker and Nix. Container technologies such as Docker are more popular, provide more resources and may be easier to set up. In comparison, Nix builds tend to be more widely reproducible. Either workflow can be used. Typically, building your canister using a public continuos integration (CI) can help provide easy to follow instructions for reproducing your final project. 
 
-The canister developers are responsible for providing a reproducible way of building a WebAssembly module from published sources. If your code is still in development, it can help to provide users or other developers with module hashes that correlate to each released version of the project's source code. 
+It is the canister developer’s responsibility to provide a reproducible way of building a WebAssembly module from the published sources. If your code is still within development, it can help to provide users or other developers with module hashes that correlate to each released version of the project's source code. 
 
 For more information on reproducible canister builds, check out [here](../reproducible-builds.md)
 
@@ -43,7 +43,7 @@ Stable memory can be viewed as the communication channel between old and new ver
 
 #### Testing upgrade hooks
 
-It is best practice to test upgrades before applying them to catch any potential errors that may result in losing data irrevocably. Several different workflows or approaches can be used to test upgrades, such as shell scripts or Rust test scripts. The following pseudo-code showcases a Rust upgrade example that adds a step to execute the state validation of your upgrade test. 
+It is best practice to test upgrades before applying them in order to catch any potential errors that may result in losing data irrevocably. To test upgrades, several different workflows or approaches can be used, such as shell or bash scripts, or Rust test scripts. The following psuedo-code showcases a Rust upgrade example that adds an additional step to execute the state validation of your upgrade test. 
 
 ```
 let canister_id = install_canister(WASM);
@@ -58,7 +58,7 @@ Then, your tests should be run twice in two different scenarios:
 - In a scenario with an upgrade, to assure that your tests run successfully while executing an upgrade. 
 You then run your tests twice in different modes:
 
-By running both of these tests, you can gain confidence that when an upgrade is applied to a canister, the canister's state is preserved. 
+By running both of these tests, developers can gain confidence that when an upgrade is applied to a canister, the canister's state is preserved. 
 
 :::caution
 It is not recommended to trap within the `pre_upgrade` hook. This is because while the `pre_upgrade` and `post_upgrade` hooks appear to be symmetrical, they are not. 
@@ -70,7 +70,7 @@ If the `pre_upgrade` hook succeeds, but the `post_upgrade` hook traps, the canis
 
 When a canister is upgraded, there is a limit regarding how many cycles a canister can burn during that upgrade. If the canister goes beyond that limit, the upgrade will be canceled by the system and the canister's state will be reverted. That means if you serialize the canister's whole state to stable memory in the `pre_upgrade` hook and the state becomes very large, the canister may not be able to be upgraded again. 
 
-One way to prevent this is to avoid serializing the canister state to begin with. Stable memory can be used as the canister's primary storage, where it can be used to store modifications of each update call. Using this method, the `pre_upgrade` hook may not be necessary, and the `post_upgrade` hook will burn fewer cycles. 
+One way to prevent this is to avoid serializing the canister state to begin with. Stable memory can be used as the canister's primary storage, where it can be used to store each upgrade call. Using this method, the `pre_upgrade` hook may not be necessary, and the `post_upgrade` hook will burn fewer cycles. 
 
 :::caution
 While this approach might be useful for some workflows, there are a few drawbacks of this approach:
@@ -126,13 +126,13 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 
 #### Important metric data to watch
 - The size of the canister's stable memory.
-- The size of the canister's internal data structures.
+- The size of the canister's internal data structures
 - The sizes of objects allocated within the heap.
 - The date and time the canister was last upgraded.
 
 ## Globally mutable states
 
-By design, canisters on the IC are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to use global mutable variables. This results in Rust developers needing to choose a method of code organization that takes the IC's design into consideration. This guide will cover a few of those code organization options. 
+By design, canisters on the IC are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to global mutable variables. This results in Rust developers needing to choose a method of code organization that takes the IC's design into consideration. This guide will cover a few of those code organization options. 
 
 ### Using `thread_local!` with `Cell/RefCell` for state variables
 
@@ -147,11 +147,6 @@ thread_local! {
 }
 ```
 
-### Using `let state = ic_cdk::storage::get_mut<MyState>`
-
-The IC [Rust CDK](https://github.com/dfinity/cdk-rs) provides storage abstraction that allows you to get a mutable reference indexed by a type through the `get_mut<MyState>` method. This allows you to obtain multiple non-exclusive mutable references to the same object, which should be used with caution. 
-
-
 ### Using `static mut STATE: Option<State> = None;`
 
 This approach uses plain global variables and forces you to write some boilerplate to access the global state. This method should also be used with caution, since it also allows you to obtain multiple non-exclusive mutable references. 
@@ -162,43 +157,12 @@ It pays off to factor most of the canister code into loosely coupled modules and
 
 It is also possible to create a thin abstractions for the System API and test your code with a fake but faithful implementation. For example, we could use the following trait to abstract the stable memory API:
 
-```
 pub trait Memory {
     fn size(&self) -> WasmPages;
     fn grow(&self, pages: WasmPages) -> WasmPages;
     fn read(&self, offset: u32, dst: &mut [u8]);
     fn write(&self, offset: u32, src: &[u8]);
 }
-```
-
-## Code asynchrony
-
-### Traps and panics
-In canisters, panics and traps are somewhat unique. If a code panics or traps, the system rolls the canister's state back to the latest working snapshot. This means that if your canister makes a call and then panicked in the callback, the canister might never release the resources that it used to allocate the call. Let's view an example:
-
-```
-#[update]
-async fn update_avatar(user_id: UserId, pic: ByteBuf ) {
-    let key = store_async(user_id, &pic)
-                  .await     
-                  .unwrap(); 
-    USERS.with(|users| set_avatar_key(user_id, key));
-}
-```
-
-- The method receives a byte buffer with an avatar picture.
-- The method issues a call to the storage canister. The byte buffer is captured in a Rust future allocated on the heap.
-- If the call fails, the canister panics. The system rolls back the canister state to the snapshot created right before the callback invocation. From the canister’s point of view, it still waits for the reply and keeps the future and the buffer on the heap.
-
-Note that there is no corruption, the canister is still in a valid state, but some resources, like memory, will not be released until the next upgrade.
-
-The System API was recently extended to deal with this problem (see `ic0.call_on_cleanup` in the [Internet Computer Interface Specification](../../../references/ic-interface-spec.md)). This issue is likely to be fixed in future versions of the Rust CDK.
-
-:::caution
-Do not lock shared resources across await boundaries.
-:::
-
-This issue becomes quite a problem when combined with panics: if you lock an important resource and then panic after await, the resource stays locked forever.
 
 ## Next steps
-Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [code organization](./2-project-organization.md)
+Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [code organization](./2-code-organization.md)
