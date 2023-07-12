@@ -18,6 +18,22 @@
   }
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 500ms ease-out;
+  animation-fill-mode: backwards;
+}
+
 .animate-scale-in {
   animation: hero-scale-in 1400ms ease-out;
   animation-fill-mode: backwards;
