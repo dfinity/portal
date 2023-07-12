@@ -165,4 +165,4 @@ pub trait Memory {
 }
 
 ## Next steps
-Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [code organization](./2-code-organization.md)
+Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [projectorganization](./2-project-organization.md)
