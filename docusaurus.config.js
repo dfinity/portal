@@ -18,6 +18,7 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const liveSessionsPlugin = require("./plugins/live-sessions");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
+const blogPostsPlugin = require("./plugins/blog-posts");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
@@ -90,11 +91,11 @@ const navbarItems = [
           href: "/capabilities?source=nav"
         },
         {
-          label: "Bitcoin Integration",
+          label: "Bitcoin on ICP",
           href: "/bitcoin-integration?source=nav"
         },
         {
-          label: "Ethereum Integration",
+          label: "Ethereum <> ICP",
           href: "/ethereum-integration?source=nav"
         },
         {
@@ -139,6 +140,10 @@ const navbarItems = [
         {
           label: "ICP Token",
           href: "/icp-tokens?source=nav"
+        },
+        {
+          label: "For Enterprise",
+          href: "/enterprise?source=nav"
         },
         {
           label: "Create an Internet Identity",
@@ -400,6 +405,7 @@ const config = {
     roadmapDataPlugin,
     whatIsIcpDataPlugin,
     matomoPlugin,
+    blogPostsPlugin,
     [
       "@docusaurus/plugin-client-redirects",
       {

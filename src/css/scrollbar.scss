@@ -35,3 +35,18 @@
     border-radius: 20px;
   }
 }
+
+.docs-home-languages-scrollbar {
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 0 24px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 8px;
+    background-color: rgba(#3b00b9, 50%);
+    border-radius: 20px;
+  }
+}

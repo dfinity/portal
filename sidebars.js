@@ -73,7 +73,6 @@ const sidebars = {
               "samples/simple-to-do",
               "samples/superheros",
               "samples/t-ecdsa-sample",
-              "samples/http-requests-exchange-rates",
               "samples/whoami",
             ],
             },
@@ -357,7 +356,6 @@ const sidebars = {
               },
               items: [
                   "tokenomics/token-holders/nns-app-quickstart",
-                  "tokenomics/nns/community-fund",
                   "tokenomics/nns/neurons-fund",
                   "tokenomics/nns/nns-staking-voting-rewards",
               ],
@@ -422,6 +420,18 @@ const sidebars = {
                     },
                     {
                       type: "category",
+                      label: "Launching an SNS",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/launching/launch-summary",
+                      },
+                      items: [
+                        "developer-docs/integrations/sns/launching/launch-summary",
+                        "developer-docs/integrations/sns/launching/launch-steps",
+                      ],
+                    },
+                    {
+                      type: "category",
                       label: "Integrating with an SNS",
                       link: {
                         type: "doc",
@@ -440,20 +450,8 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/testing/testing-before-launch",
                       },
                       items: [
-                        "developer-docs/integrations/sns/testing/local-testing",
-                        "developer-docs/integrations/sns/testing/testflight",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Launching an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/launching/launch-summary",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/launching/launch-summary",
-                        "developer-docs/integrations/sns/launching/launch-steps",
+                        "developer-docs/integrations/sns/testing/testing-locally",
+                        "developer-docs/integrations/sns/testing/testing-on-mainnet",
                       ],
                     },
                     {
@@ -480,6 +478,18 @@ const sidebars = {
             },
                 items: [
                   "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
           ],
