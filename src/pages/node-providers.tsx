@@ -155,11 +155,13 @@ function NodeProvidersPage() {
               Every node on the Internet Computer is a dedicated physical server
               called a node machine. To provide true decentralization, each node
               machine is run by an independent node provider, typically in a
-              data center. This is essentially what makes the network of nodes
-              sovereign — as there is no reliance on corporate cloud service
-              providers, they cannot be switched off or tampered with. This is
-              different to other blockchains where network nodes are created
-              using simple software that interacts with other nodes but are easy
+              data center. This network of nodes is sovereign, as there is no reliance
+              on corporate cloud service providers. So they cannot be switched off
+              or tampered with. 
+               </p>
+            <p className="tw-lead-sm mb-6 md:mb-10">
+              This is different to other blockchains where network nodes are created using 
+              simple software that interacts with other nodes but are easy
               to spin up on centralized cloud. Node machines on the Internet
               Computer are also technically sovereign, built to standardized
               public hardware specifications that support the network when under
@@ -181,13 +183,14 @@ function NodeProvidersPage() {
             <p className="tw-lead-sm mb-6 md:mb-10">
               To preserve the decentralization of the network, each node
               provider is voted in by token-holders via the NNS, the DAO that
-              governs the Internet Computer. This means that to become a node
-              provider a proposal must be submitted along with a
-              self-declaration document that includes a statement of identity, a
-              statement of provision of node machines, a statement of good
-              intent, and proof of identity. Based on this information, the
-              community votes ‘yes’ or ‘no’ on the onboarding proposal. Once
-              node providers are accepted into the community and their node
+              governs the Internet Computer. Becoming a node provider entails
+              submitting a proposal along with a self-declaration document
+              that state provision of node machines, intent and proof of 
+              identity. Based on this information, the community votes on
+              the onboarding proposal.
+              </p>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+              If node providers are accepted into the community and their node
               machines are up and running, they receive rewards for their
               services. Rewards are set by the NNS DAO, which follows the 30-day
               average price of ICP, and are distributed on the 15th of every
@@ -260,7 +263,7 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://dashboard.internetcomputer.org"
+                href="https://dashboard.internetcomputer.org/node/45huy-6h3k3-m7uao-7w4bu-dtcgx-4yxpc-s36gr-pq7k5-xesnw-vnjut-oae"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -338,7 +341,7 @@ function NodeProvidersPage() {
               className="tw-heading-3 md:tw-heading-2 mb-10 mt-10 md:mt-0 md:mb-16"
               variants={transitions.item}
             >
-              What you need to know about being a node provider
+              Becoming a node provider
             </motion.h2>
           </AnimateSpawn>
 
