@@ -356,59 +356,59 @@ function NodeProvidersPage() {
             <div className="space-y-20 flex-[6]">
               <AnimateSpawn className="space-y-6" variants={transitions.fadeIn}>
                 <h3 className="tw-heading-4 md:tw-heading-3">
-                  How do I get started?
+                  Where to start
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  Before making the decision to become a node provider, it’s
-                  important to familiarize yourself with the following:
+                  Before making the decision to become a node provider, it is 
+                  recommended to start by familiarizing yourself with the following:
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    Get to know the Internet Computer and its governance system
+                    Brief intro to the Internet Computer 
                   </li>
                   <li className="checklist-item pl-8">
-                    1 million token holders control a decentralized version of
-                    Twitter where token holders propose and vote on feature
-                    updates.
+                    The Internet Computer architecture 
+                  </li> 
                   </li>
+                  <li className="checklist-item pl-8">
+                    Governance of the Internet Computer 
+                  </li> 
+                 </li>
+                  <li className="checklist-item pl-8">
+                    Node provider overview documentation 
+                  </li> 
                 </ul>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  A DAO can take the role of carrying out community-driven
-                  decisions on when and how to update the code that shapes the
-                  organization or product.
+                 
                 </p>
               </AnimateSpawn>
               <AnimateSpawn className="space-y-6" variants={transitions.fadeIn}>
                 <h3 className="tw-heading-4 md:tw-heading-3">
-                  Hardware checklist
+                  Onboarding checklist
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  SNS stands for Service Nervous System. An SNS is an advanced
-                  form of DAO that allows communities to govern decentralized
-                  apps (dapps) on the Internet Computer (ICP). Main things to
-                  note about SNS:
+                  Now that you have a basic understanding of how the 
+                  Internet Computer works, you can begin the onboarding 
+                  process with the help of the following resources:
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    The design of SNS is similar to that of the Network Nervous
-                    System (NNS), which is the on-chain DAO that governs the
-                    whole ICP.
+                    Choose and purchase hardware
                   </li>
                   <li className="checklist-item pl-8">
-                    SNS dapps are controlled by the members of its DAO
-                    submitting and voting on on-chain proposals. No one
-                    developer or group of people controls the dapp, rather the
-                    dapp is controlled by voting via tokens.
+                    Set up servers in a data center 
                   </li>
                   <li className="checklist-item pl-8">
-                    There can be many SNSs on ICP. A developer can turn any dapp
-                    they control on ICP into an SNS by handing the control of
-                    their dapp entirely over to an SNS DAO.
+                    Fill out self-declaration form
+                  </li>
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Submit proposal and onboard your nodes to the Internet Computer
                   </li>
                 </ul>
                 <p className="">
                   <Link className="button-primary">
-                    Become a node providers
+                    Get started 
                   </Link>
                 </p>
               </AnimateSpawn>
