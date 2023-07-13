@@ -1,4 +1,4 @@
-# 14: Sample code and applications
+# 19: Sample code and applications
 
 ## Overview
 Sample code, applications, and microservices that have been developed by DFINITY or contributed by the community are available from the [DFINITY public repository](https://github.com/dfinity/examples).
@@ -8,16 +8,6 @@ By accessing the public repository, you can directly download, clone, fork, or s
 Sample projects provide a way for you to experiment and collaborate with other developers. The projects and sample code are not, however, intended to be used as commercial applications and do not provide any explicit or implied support or warranty of any kind.
 
 This section provides a preliminary look at some sample code for applications and microservices that you can copy and modify to jump-start your own projects.
-
-## C
-
-For examples of projects written in the C programming language for the IC, see [C++ sample projects](https://github.com/dfinity/examples/tree/master/c).
-
--   [Adventure game](https://github.com/dfinity/examples/tree/master/c/adventure)
-
--   [QR code generator](https://github.com/dfinity/examples/tree/master/c/qr)
-
--   [Reverse game](https://github.com/dfinity/examples/tree/master/c/reverse)
 
 ## Motoko
 
