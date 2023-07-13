@@ -29,7 +29,7 @@ function NodeProvidersPage() {
 
   return (
     <Layout
-      title="Node Providers"
+      title="Node providers"
       description="The Internet Computer is hosted by a decentralized collection of node machines — physical hardware devices run by independent node providers distributed across data centers globally"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -149,12 +149,12 @@ function NodeProvidersPage() {
             imageUrl="/img/node-providers/sovereign-nodes.webp"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Independent Machines
+              Independent machines
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               Every node on the Internet Computer is a dedicated physical server
               called a node machine. To provide true decentralization, each node
-              machine is run by an independent node provider, typically in an z
+              machine is run by an independent node provider, typically in a
               data center. This is essentially what makes the network of nodes
               sovereign — as there is no reliance on corporate cloud service
               providers, they cannot be switched off or tampered with. This is
@@ -168,11 +168,11 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/bitcoin-integration"
+                href="https://wiki.internetcomputer.org/wiki/Sovereign_Network"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
-                About decentralized data centers
+                About creating a sovereign network
               </Link>
             </p>
           </TranslatedLayout>
@@ -197,7 +197,7 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/how-it-works#Chain-key-cryptography"
+                href="https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -210,7 +210,7 @@ function NodeProvidersPage() {
             imageUrl="/img/node-providers/hardware.webp"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              The Hardware
+              The hardware
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The Internet Computer network consist of two generations of node
@@ -225,7 +225,7 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/how-it-works#Chain-key-technology"
+                href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -236,7 +236,7 @@ function NodeProvidersPage() {
 
           <TranslatedLayout imageUrl="/img/node-providers/sustainable.webp">
             <h2 className="md:tw-heading-60 md:mb-6">
-              Climate friendly Compute
+              Climate friendly compute
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               A key goal of the Internet Computer is to provide an energy
@@ -244,13 +244,13 @@ function NodeProvidersPage() {
               compromising scalability and utility. Operating at 0.008 kW per
               transaction, it is one of the most sustainable blockchains out
               there, and has comparable energy consumption levels to traditional
-              software running on Big Tech cloud services. Instantaneous power
+              software running on big tech cloud services. Instantaneous power
               for each node is around 0.3 kW, which is roughly between 200 and
               300 kWh a month, per node.
             </p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The Internet Computer is also the first blockchain to join the
-              Proof of Green (PoG) initiative, which aims to blockchain industry
+              Proof of Green (PoG) initiative, which aims to set blockchain industry
               standards by making ‘claims of green’ transparent, verifiable and
               accountable through metrics and real-time reporting. PoG is still
               in a pilot phase but a handful of nodes and their carbon emissions
@@ -279,7 +279,7 @@ function NodeProvidersPage() {
               className="tw-heading-3 md:tw-heading-60 mb-6"
               variants={transitions.item}
             >
-              Node Provider Community{" "}
+              Node provider community{" "}
             </motion.h2>
             <motion.p
               className="tw-lead-sm mb-6 md:mb-10"
@@ -356,59 +356,77 @@ function NodeProvidersPage() {
             <div className="space-y-20 flex-[6]">
               <AnimateSpawn className="space-y-6" variants={transitions.fadeIn}>
                 <h3 className="tw-heading-4 md:tw-heading-3">
-                  How do I get started?
+                  Where to start
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  Before making the decision to become a node provider, it’s
-                  important to familiarize yourself with the following:
+                  Before making the decision to become a node provider, it is 
+                  recommended to start by familiarizing yourself with the following:
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    Get to know the Internet Computer and its governance system
+                    <Link href="https://wiki.internetcomputer.org/wiki/Introduction_to_ICP" target="_blank">
+                      Brief intro to the Internet Computer
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    1 million token holders control a decentralized version of
-                    Twitter where token holders propose and vote on feature
-                    updates.
-                  </li>
+                    <Link href="https://wiki.internetcomputer.org/wiki/Sovereign_Network" target="_blank">
+                      The Internet Computer architecture
+                    </Link>
+                  </li> 
+                  <li className="checklist-item pl-8">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer" target="_blank">
+                      Governance of the Internet Computer
+                    </Link>
+                  </li> 
+                  <li className="checklist-item pl-8">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
+                      Node provider overview documentation
+                    </Link> 
+                  </li> 
                 </ul>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  A DAO can take the role of carrying out community-driven
-                  decisions on when and how to update the code that shapes the
-                  organization or product.
+                 
                 </p>
               </AnimateSpawn>
               <AnimateSpawn className="space-y-6" variants={transitions.fadeIn}>
                 <h3 className="tw-heading-4 md:tw-heading-3">
-                  Hardware checklist
+                  Onboarding checklist
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  SNS stands for Service Nervous System. An SNS is an advanced
-                  form of DAO that allows communities to govern decentralized
-                  apps (dapps) on the Internet Computer (ICP). Main things to
-                  note about SNS:
+                  Now that you have a basic understanding of how the 
+                  Internet Computer works, you can begin the onboarding 
+                  process with the help of the following resources:
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    The design of SNS is similar to that of the Network Nervous
-                    System (NNS), which is the on-chain DAO that governs the
-                    whole ICP.
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide" target="_blank">
+                      Choose and purchase hardware
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    SNS dapps are controlled by the members of its DAO
-                    submitting and voting on on-chain proposals. No one
-                    developer or group of people controls the dapp, rather the
-                    dapp is controlled by voting via tokens.
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Networking_Guide" target="_blank">
+                      Set up servers in a data center
+                    </Link> 
                   </li>
                   <li className="checklist-item pl-8">
-                    There can be many SNSs on ICP. A developer can turn any dapp
-                    they control on ICP into an SNS by handing the control of
-                    their dapp entirely over to an SNS DAO.
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
+                      Fill out self-declaration form
+                    </Link> 
+                  </li>
+                  <li className="checklist-item pl-8">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
+                      Submit proposal and onboard your nodes to the Internet Computer
+                    </Link> 
+                  </li>
+                  <li className="checklist-item pl-8">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel" target="_blank">
+                      Join the node provider matrix channel
+                    </Link> 
                   </li>
                 </ul>
                 <p className="">
-                  <Link className="button-primary">
-                    Become a node providers
+                  <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" className="button-primary">
+                    Get started 
                   </Link>
                 </p>
               </AnimateSpawn>
