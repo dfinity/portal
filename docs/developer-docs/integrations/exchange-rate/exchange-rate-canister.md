@@ -28,7 +28,7 @@ type GetExchangeRateRequest = record {
 }; 
 ```
 
-Once this form has been sent to the XRC, the following response is returned:
+Once this request has been sent to the XRC, the following response is returned:
 
 ```
 type GetExchangeRateResult = variant {
