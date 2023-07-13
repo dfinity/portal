@@ -2,13 +2,13 @@
 
 ## Overview
 
-The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses HTTPS outcalls to fetch data from Web2 servers, such as major cryptocurrency exchanges, by using an exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates. 
+The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates. 
 
-The XRC canister can be integrated with decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates and determine the value of assets that are held under management in a canister smart contract. For example, the cycle minting canister of the NNS uses the XRC to obtain the current ICP/XDR rates, which it requires for the conversion of ICP to cycles.
+The XRC canister can be integrated with decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the NNS uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
 
 The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp. 
 
-An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be request. If no timestamp is provided, the exchange rate for the current time is returned by default. 
+An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default. 
 
 ## Usage
 The canister ID of the XRC is `uf6dk-hyaaa-aaaaq-qaaaq-cai`. 
@@ -38,10 +38,10 @@ type GetExchangeRateResult = variant {
 ```
 
 ## Cycles cost 
-Each request to the XRC costs 10 billion cycles to submit the request, otherwise an `ExchangeRateError::NotEnoughCycles` error will be returned. The actual cycles cost of the request call will depend on two factors: the requested asset types and the state of the internal exchange rate cache. These parameters are as follows:
+Each request to the XRC costs 10B cycles to submit the request, otherwise an `ExchangeRateError::NotEnoughCycles` error will be returned. The actual cycles cost of the request call will depend on two factors: the requested asset types and the state of the internal exchange rate cache. These parameters are as follows:
 
 - If the request can be served from the cache, the actual cost is 200M cycles.
-- If both assets are fiat currencies, the cost is 200M cycles as well.
+- If both assets are fiat currencies, the cost is 200M cycles.
 - If one of the assets is a fiat currency or the cryptocurrency USDT, the cost is 2.6B cycles.
 - If both assets are cryptocurrencies, the cost is 5B cycles.
 
@@ -80,7 +80,7 @@ dfx start --background
 Then, deploy the canisters with the command:
 
 ```
-dfx deploy --with-cycles 10000000000000
+dfx deploy --with-cycles 10000000000
 ```
 
 Note that the `--with-cycles` parameter is required since cycles must be sent with every request to the exchange rate canister. For more information on the cycles cost, review the [cycles cost](#cycles-cost) section above. 
@@ -132,8 +132,3 @@ This will return the current exchange rate for BTC in an output such as:
 - [Exchange rate canister blog post.](https://medium.com/dfinity/exchange-rate-canister-a-smart-contract-with-oracle-capabilities-f30694753c89)
 - [Exchange rate canister forum post.](https://forum.dfinity.org/t/new-exchange-rate-mechanism/14543/65)
 - [Exchange rate canister repository.](https://github.com/dfinity/exchange-rate-canister)
-
-
-
-
-
