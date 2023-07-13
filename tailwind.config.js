@@ -180,6 +180,8 @@ module.exports = {
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
+                ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
+
 
                 //
                 ".tw-title-navigation": "@apply text-navigation font-medium",
