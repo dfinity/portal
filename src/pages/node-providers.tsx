@@ -364,16 +364,24 @@ function NodeProvidersPage() {
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    Brief intro to the Internet Computer 
+                    <Link href="https://wiki.internetcomputer.org/wiki/Introduction_to_ICP" target="_blank">
+                      Brief intro to the Internet Computer
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    The Internet Computer architecture 
+                    <Link href="https://wiki.internetcomputer.org/wiki/Sovereign_Network" target="_blank">
+                      The Internet Computer architecture
+                    </Link>
                   </li> 
                   <li className="checklist-item pl-8">
-                    Governance of the Internet Computer 
+                    <Link href="https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer" target="_blank">
+                      Governance of the Internet Computer
+                    </Link>
                   </li> 
                   <li className="checklist-item pl-8">
-                    Node provider overview documentation 
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
+                      Node provider overview documentation
+                    </Link> 
                   </li> 
                 </ul>
                 <p className="tw-paragraph md:tw-lead-sm">
@@ -391,23 +399,33 @@ function NodeProvidersPage() {
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    Choose and purchase hardware
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide" target="_blank">
+                      Choose and purchase hardware
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    Set up servers in a data center 
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Networking_Guide" target="_blank">
+                      Set up servers in a data center
+                    </Link> 
                   </li>
                   <li className="checklist-item pl-8">
-                    Fill out self-declaration form
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
+                      Fill out self-declaration form
+                    </Link> 
                   </li>
                   <li className="checklist-item pl-8">
-                    Submit proposal and onboard your nodes to the Internet Computer
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
+                      Submit proposal and onboard your nodes to the Internet Computer
+                    </Link> 
                   </li>
                   <li className="checklist-item pl-8">
-                    Join the node provider matrix channel
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel" target="_blank">
+                      Join the node provider matrix channel
+                    </Link> 
                   </li>
                 </ul>
                 <p className="">
-                  <Link className="button-primary">
+                  <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" className="button-primary">
                     Get started 
                   </Link>
                 </p>
