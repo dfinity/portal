@@ -8,7 +8,7 @@ The XRC canister can be integrated with decentralized exchanges (DEXs) to provid
 
 The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp. 
 
-An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default. 
+An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historical rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default. 
 
 ## Usage
 The canister ID of the XRC is `uf6dk-hyaaa-aaaaq-qaaaq-cai`. 
