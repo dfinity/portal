@@ -4,11 +4,11 @@
 
 The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates. 
 
-The XRC canister can be integrated with decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the NNS uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
+The XRC canister can be used by dapps such as decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the NNS uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
 
 The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp. 
 
-An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historical rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default. 
+An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default. 
 
 ## Usage
 The canister ID of the XRC is `uf6dk-hyaaa-aaaaq-qaaaq-cai`. 
@@ -28,7 +28,7 @@ type GetExchangeRateRequest = record {
 }; 
 ```
 
-Once this request has been sent to the XRC, the following response is returned:
+Once this form has been sent to the XRC, the following response is returned:
 
 ```
 type GetExchangeRateResult = variant {
@@ -47,6 +47,9 @@ Each request to the XRC costs 10B cycles to submit the request, otherwise an `Ex
 
 The remaining cycles are returned to the requesting canister. Note that at least 10M cycles are charged even in case of an error in order to mitigate the risk of a denial-of-service attack.
 
+:::info
+Note: The cycles cost of these requests are expected to be decreased in the next upgrade of the XRC. 
+:::
 
 ## Exchange rate canister demo
 
@@ -124,6 +127,10 @@ This will return the current exchange rate for BTC in an output such as:
 ```
 (31142.47 : float64)
 ```
+
+:::caution
+It is worth noting that this sample dapp is very simple. If there is an error, it always returns `0` because the return value is simply a float.
+:::
 
 ## Resources
 
