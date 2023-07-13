@@ -10,7 +10,7 @@ export function getBytesStored(): Promise<number> {
     )
     .then((res) => +res.memory_usage[1]);
 }
-export function getNodeProviders(): Promise<number> {
+export function getNodeProvidersCount(): Promise<number> {
   return fetch(
     "https://ic-api.internetcomputer.org/api/v3/node-providers-count"
   )
@@ -118,7 +118,10 @@ export function getFinalizationRate(): Promise<number> {
     .then((res) => +res.block_rate[0][1]);
 }
 
-export function getNodeCount(): Promise<number> {
+export function getNodeCount(): Promise<{
+  total_nodes: number;
+  up_nodes: number;
+}> {
   return fetch(
     "https://ic-api.internetcomputer.org/api/v3/metrics/ic-nodes-count"
   )
@@ -129,7 +132,10 @@ export function getNodeCount(): Promise<number> {
           up_nodes: [timestamp: number, value: string][];
         }>
     )
-    .then((res) => +res.total_nodes[0][1]);
+    .then((res) => ({
+      total_nodes: +res.total_nodes[0][1],
+      up_nodes: +res.up_nodes[0][1],
+    }));
 }
 
 export function getSubnetCount(): Promise<number> {
@@ -192,4 +198,75 @@ export function getBoundaryNodeLocations() {
         }[];
       }>
   );
+}
+
+export function getDataCenters() {
+  return fetch("https://ic-api.internetcomputer.org/api/v3/data-centers").then(
+    (res) =>
+      res.json() as Promise<{
+        data_centers: {
+          key: string;
+          latitude: number;
+          longitude: number;
+          name: string;
+          region: string;
+          owner: string;
+          total_nodes: number;
+          node_providers: number;
+        }[];
+      }>
+  );
+}
+
+export type NodeProviderLocation = {
+  dc_key: string;
+  display_name: string;
+  latitude: number;
+  longitude: number;
+  owner: string;
+  region: string;
+};
+
+export function getNodeProviders() {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/node-providers"
+  ).then(
+    (res) =>
+      res.json() as Promise<{
+        node_providers: {
+          display_name: string;
+          location_count: number;
+          locations: NodeProviderLocation[];
+          logo_url: string | null;
+          principal_id: string;
+          total_node_allowance: number;
+          total_nodes: number;
+          total_rewardable_nodes: number;
+          total_subnets: number;
+          total_unassigned_nodes: number;
+          website: string | null;
+        }[];
+      }>
+  );
+}
+
+export function getTotalRewardableNodeCount(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/total-rewardable-nodes-count"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          total_rewardable_nodes_count: number;
+        }>
+    )
+    .then((res) => res.total_rewardable_nodes_count);
+}
+
+export function getLastEnergyConsumptionRateKwh(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/total-ic-energy-consumption-rate-kwh?step=7200"
+  )
+    .then((res) => res.json())
+    .then((res) => +res.energy_consumption_rate[0][1]);
 }

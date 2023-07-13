@@ -146,6 +146,10 @@ const navbarItems = [
           href: "/enterprise?source=nav"
         },
         {
+          label: "Node Providers",
+          href: "/node-providers?source=nav"
+        },
+        {
           label: "Create an Internet Identity",
           href: "https://identity.ic0.app/"
         },
