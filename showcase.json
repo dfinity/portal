@@ -567,6 +567,19 @@
     ]
   },
   {
+    "id": "nnscat",
+    "name": "NNSCat",
+    "website": "https://iz6s6-kqaaa-aaaae-qaakq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "An intuitive email-style inbox for NNS proposals",
+    "logo": "/img/showcase/nnscat_logo.png",
+    "screenshots": [
+      "/img/showcase/nnscat_screenshot_0.jpg"
+    ]
+  },
+  {
     "id": "sandbless",
     "name": "Sand Bless",
     "oneLiner": "Sandblasting and serigraphy artworks",
