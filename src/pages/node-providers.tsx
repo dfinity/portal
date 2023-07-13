@@ -405,6 +405,10 @@ function NodeProvidersPage() {
                   <li className="checklist-item pl-8">
                     Submit proposal and onboard your nodes to the Internet Computer
                   </li>
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Join the node provider matrix channel
+                  </li>
                 </ul>
                 <p className="">
                   <Link className="button-primary">
