@@ -1,13 +1,14 @@
 import Link from "@docusaurus/Link";
-import useGlobalData from "@docusaurus/useGlobalData";
 import {
   getBlockCount,
   getBlockRate,
-  getBytesStored,
+  getEthEquivTxRateMultiplier,
   getSubnetCount,
   getTransactionRate,
   getTransactionRateV3,
 } from "@site/src/utils/network-stats";
+import transitions from "@site/static/transitions.json";
+import clsx from "clsx";
 import {
   motion,
   MotionValue,
@@ -20,8 +21,6 @@ import AnimateSpawn from "../../Common/AnimateSpawn";
 import { CostSvg } from "./CostSvg";
 import { ConstantRateCounter, SpringCounter } from "./Counters";
 import InfoIcon from "./InfoIcon";
-import transitions from "@site/static/transitions.json";
-import clsx from "clsx";
 
 function formatNumber(x: number) {
   return x
@@ -125,26 +124,36 @@ function EthEquivalentTxRate({
 }: {
   gagueValue: MotionValue<number>;
 }) {
-  const updateTxRate = useQuery(["getUpdateTxRate"], updateRateWithJitter, {
-    refetchInterval: 1000,
-    onSuccess(data) {
-      gagueValue.set(data * 80);
-    },
-  });
+  const multiplierQuery = useQuery(
+    "ethEquivMultiplier",
+    getEthEquivTxRateMultiplier
+  );
+
+  const updateTxRate = useQuery(
+    ["getUpdateTxRate"],
+    () => updateRateWithJitter().then((rate) => rate * multiplierQuery.data),
+    {
+      refetchInterval: 1000,
+      onSuccess(data) {
+        gagueValue.set(data);
+      },
+      enabled: !!multiplierQuery.isSuccess,
+    }
+  );
   return (
     <div className="tw-title-sm md:tw-title-lg mb-2 inline-grid relative left-1">
       {updateTxRate.isFetched && updateTxRate.isSuccess ? (
         <>
           <SpringCounter
-            target={updateTxRate.data * 80}
-            initialTarget={updateTxRate.data * 80}
-            initialValue={updateTxRate.data * 80}
+            target={updateTxRate.data}
+            initialTarget={updateTxRate.data}
+            initialValue={updateTxRate.data}
             format={formatNumber}
             springConfig={[3, 1, 1]}
             className="text-left col-start-1 row-start-1 text-transparent  bg-clip-text hero-stat-blue"
           ></SpringCounter>
           <span className="col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
-            {getFigureSpacer(Math.floor(updateTxRate.data * 80))}
+            {getFigureSpacer(Math.floor(updateTxRate.data))}
           </span>
         </>
       ) : (
@@ -212,13 +221,6 @@ const StatSlot: React.FC<{ children: React.ReactNode; index: number }> = ({
 
 export const Facts = () => {
   const ethTxValue = useMotionValue(0);
-
-  const stateSizeQuery = useQuery(["stateSize"], getBytesStored, {
-    refetchInterval: 10000,
-  });
-
-  const globalData = useGlobalData();
-  const xdrPrice = globalData["xdr-price"]["default"] as number;
 
   const gaugeRot = useTransform(ethTxValue, [0, 300000], [20, 160]);
 
@@ -302,8 +304,8 @@ export const Facts = () => {
           <div className="mt-8 md:mt-16">
             <h3 className="md:tw-heading-4 mb-4">Transactions</h3>
             <p className="tw-paragraph-sm text-white/60 mb-0">
-              Each transactions invokes an end-point (function) of a canister smart
-              contract hosted on the network. Blockchain subnets run their
+              Each transactions invokes an end-point (function) of a canister
+              smart contract hosted on the network. Blockchain subnets run their
               transactions concurrently, but deterministically.
             </p>
           </div>

@@ -157,7 +157,7 @@ const ProjectInfo: React.FC<{
             {project.usesInternetIdentity && (
               <Tooltip
                 tooltip="Uses Internet Identity"
-                className="left-10 -translate-x-full md:left-1/2 md:-translate-x-1/2"
+                className="text-center w-44"
               >
                 <img
                   className="relative bottom-2 left-1 cursor-pointer"

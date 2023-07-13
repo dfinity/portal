@@ -17,12 +17,14 @@ export class Particle {
   static randomInCircle(cx: number, cy: number, radius: number): Particle {
     const mag = Math.random() * radius;
     const angle = Math.random() * 2 * Math.PI;
+    const maxSize = MAX_SIZE();
+    const minSize = MIN_SIZE();
     return new Particle(
       cx + mag * Math.cos(angle),
       cy + mag * Math.sin(angle),
       Math.random() * 2 - 1,
       Math.random() * 2 - 1,
-      Math.random() * (MAX_SIZE - MIN_SIZE) + MIN_SIZE
+      Math.random() * (maxSize - minSize) + minSize
     );
   }
 
@@ -33,7 +35,10 @@ export class Particle {
     canvasWidth: number,
     canvasHeight: number
   ) {
-    const animScale = Math.min(950, Math.min(canvasHeight, canvasWidth)) / 950;
+    const animScale =
+      (Math.min(950, Math.min(canvasHeight, canvasWidth)) / 950) *
+      (canvasWidth < 640 ? 1.4 : canvasWidth < 1400 ? 0.9 : 0.9);
+
     const particleScale =
       Math.min(500, Math.min(canvasHeight, canvasWidth)) / 500;
 
