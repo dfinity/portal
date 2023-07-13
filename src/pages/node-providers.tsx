@@ -369,11 +369,9 @@ function NodeProvidersPage() {
                   <li className="checklist-item pl-8">
                     The Internet Computer architecture 
                   </li> 
-                  </li>
                   <li className="checklist-item pl-8">
                     Governance of the Internet Computer 
                   </li> 
-                 </li>
                   <li className="checklist-item pl-8">
                     Node provider overview documentation 
                   </li> 
@@ -401,10 +399,8 @@ function NodeProvidersPage() {
                   <li className="checklist-item pl-8">
                     Fill out self-declaration form
                   </li>
-                  </li>
                   <li className="checklist-item pl-8">
                     Submit proposal and onboard your nodes to the Internet Computer
-                  </li>
                   </li>
                   <li className="checklist-item pl-8">
                     Join the node provider matrix channel
