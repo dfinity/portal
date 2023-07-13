@@ -29,7 +29,7 @@ function NodeProvidersPage() {
 
   return (
     <Layout
-      title="Node Providers"
+      title="Node providers"
       description="The Internet Computer is hosted by a decentralized collection of node machines — physical hardware devices run by independent node providers distributed across data centers globally"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -149,12 +149,12 @@ function NodeProvidersPage() {
             imageUrl="/img/node-providers/sovereign-nodes.webp"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Independent Machines
+              Independent machines
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               Every node on the Internet Computer is a dedicated physical server
               called a node machine. To provide true decentralization, each node
-              machine is run by an independent node provider, typically in an z
+              machine is run by an independent node provider, typically in a
               data center. This is essentially what makes the network of nodes
               sovereign — as there is no reliance on corporate cloud service
               providers, they cannot be switched off or tampered with. This is
@@ -168,11 +168,11 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/bitcoin-integration"
+                href="https://wiki.internetcomputer.org/wiki/Sovereign_Network"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
-                About decentralized data centers
+                About creating a sovereign network
               </Link>
             </p>
           </TranslatedLayout>
@@ -197,7 +197,7 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/how-it-works#Chain-key-cryptography"
+                href="https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -210,7 +210,7 @@ function NodeProvidersPage() {
             imageUrl="/img/node-providers/hardware.webp"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              The Hardware
+              The hardware
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The Internet Computer network consist of two generations of node
@@ -225,7 +225,7 @@ function NodeProvidersPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/how-it-works#Chain-key-technology"
+                href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -236,7 +236,7 @@ function NodeProvidersPage() {
 
           <TranslatedLayout imageUrl="/img/node-providers/sustainable.webp">
             <h2 className="md:tw-heading-60 md:mb-6">
-              Climate friendly Compute
+              Climate friendly compute
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               A key goal of the Internet Computer is to provide an energy
@@ -244,13 +244,13 @@ function NodeProvidersPage() {
               compromising scalability and utility. Operating at 0.008 kW per
               transaction, it is one of the most sustainable blockchains out
               there, and has comparable energy consumption levels to traditional
-              software running on Big Tech cloud services. Instantaneous power
+              software running on big tech cloud services. Instantaneous power
               for each node is around 0.3 kW, which is roughly between 200 and
               300 kWh a month, per node.
             </p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The Internet Computer is also the first blockchain to join the
-              Proof of Green (PoG) initiative, which aims to blockchain industry
+              Proof of Green (PoG) initiative, which aims to set blockchain industry
               standards by making ‘claims of green’ transparent, verifiable and
               accountable through metrics and real-time reporting. PoG is still
               in a pilot phase but a handful of nodes and their carbon emissions
@@ -279,7 +279,7 @@ function NodeProvidersPage() {
               className="tw-heading-3 md:tw-heading-60 mb-6"
               variants={transitions.item}
             >
-              Node Provider Community{" "}
+              Node provider community{" "}
             </motion.h2>
             <motion.p
               className="tw-lead-sm mb-6 md:mb-10"
