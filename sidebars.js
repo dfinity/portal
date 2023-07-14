@@ -184,8 +184,14 @@ const sidebars = {
               id: "developer-docs/backend/motoko/index",
           },
               items: [
-                "developer-docs/backend/motoko/at-a-glance",
+                "developer-docs/backend/motoko/infrastructure",
                 "developer-docs/backend/motoko/explore-templates",
+                "developer-docs/backend/motoko/dev-env",
+                "developer-docs/backend/motoko/at-a-glance",
+                "developer-docs/backend/motoko/deploying",
+                "developer-docs/backend/motoko/upgrading",
+                "developer-docs/backend/motoko/intercanister-calls",
+                "developer-docs/backend/motoko/optimizing",
                 "developer-docs/backend/motoko/phonebook",
                 "developer-docs/backend/motoko/calculator",
                 "developer-docs/backend/motoko/counter-tutorial",
@@ -195,10 +201,8 @@ const sidebars = {
                 "developer-docs/backend/motoko/multiple-actors",
                 "developer-docs/backend/motoko/access-control",
                 "developer-docs/backend/motoko/candid-ui",
-                "developer-docs/backend/motoko/intercanister-calls",
                 "developer-docs/backend/motoko/scalability-cancan",
                 "developer-docs/backend/motoko/sample-apps",
-
               ],
             },
             {
@@ -483,6 +487,18 @@ const sidebars = {
             },
                 items: [
                   "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
           ],

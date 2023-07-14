@@ -567,6 +567,19 @@
     ]
   },
   {
+    "id": "nnscat",
+    "name": "NNSCat",
+    "website": "https://iz6s6-kqaaa-aaaae-qaakq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "An intuitive email-style inbox for NNS proposals",
+    "logo": "/img/showcase/nnscat_logo.png",
+    "screenshots": [
+      "/img/showcase/nnscat_screenshot_0.jpg"
+    ]
+  },
+  {
     "id": "sandbless",
     "name": "Sand Bless",
     "oneLiner": "Sandblasting and serigraphy artworks",
@@ -2018,5 +2031,44 @@
     "usesInternetIdentity": true,
     "twitter": "https://twitter.com/signalsicp",
     "submittableId": "35639473"
+  },
+  {
+    "id": "metaforo-icp",
+    "name": "Metaforo ICP deployment",
+    "oneLiner": "Deploy the frontend of a web3 forum system - metaforo.io on ICP",
+    "website": "https://can1.metaforo.io/",
+    "tags": [ "SocialFi" ,  "DAO" ],
+    "description": "Metaforo: a Web3 forum prioritizing decentralization, community ownership, and token-gated governance. By shifting the Front-End to IC, we boost reliability, security, and scalability, enabling a seamless user experience without intermediaries.",
+    "stats": "1000+ users after the development of an on-chain voting system using ICP",
+    "logo": "/img/showcase/metaforo-icp_logo.png",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/metaforo/metaforo-icp",
+    "youtube": "https://www.youtube.com/watch?v=d5zHu3D0SQQ",
+    "twitter": "https://twitter.com/realmetaforo",
+    "screenshots": ["/img/showcase/metaforo-icp_screenshot_1.jpg", "/img/showcase/metaforo-icp_screenshot_2.jpg", "/img/showcase/metaforo-icp_screenshot_3.jpg"],
+    "video": "/img/showcase/metaforo-icp_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId?": "35907100"
+  },
+  {
+    "name": "Rakeoff",
+    "description": "Rakeoff is a user-friendly crypto staking rewards platform on ICP, with options to convert rewards into ckBTC or pool them for a chance to win a no-loss prize pool. Pooling staking rewards allows users to potentially amplify their ICP earnings while preserving their principal investment.",
+    "website": "https://rakeoff.io/",
+    "logo": "/img/showcase/rakeoff_logo.webp",
+    "screenshots": [
+      "/img/showcase/rakeoff_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "rakeoff",
+    "oneLiner": "Rakeoff is a user-friendly crypto staking rewards platform on ICP.",
+    "stats": "Hackathon winner",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Wallet"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/rakeoff-labs",
+    "twitter": "https://twitter.com/rakeoff_app"
   }
 ]

@@ -125,6 +125,7 @@ const redirects = `
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
   /docs/current/references/security/* /docs/current/developer-docs/security/:splat
+  /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/concepts/:splat
