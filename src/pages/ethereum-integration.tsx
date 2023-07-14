@@ -146,8 +146,8 @@ function EthereumIntegrationPage() {
               World Computer capabilities for Ethereum
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="/???">
-                Read more about World Computer vision
+              <Link className="link-primary link-with-icon" href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC">
+                More on trustless multi-chain
                 <LinkArrowUpRight />
               </Link>
             </motion.p>
@@ -241,8 +241,8 @@ function EthereumIntegrationPage() {
               replicas through ICP consensus
             </p>
             <p className="mb-0">
-              <Link href="" className="link-primary link-with-icon">
-                On-chain Ethereum API <LinkArrowUpRight />
+              <Link href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains" className="link-primary link-with-icon">
+                About extending ETH <LinkArrowUpRight />
               </Link>
             </p>
           </TranslatedLayout>
