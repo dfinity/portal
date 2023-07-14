@@ -124,7 +124,10 @@ function EthereumIntegrationPage() {
               world’s most important blockchains.
             </motion.h2>
             <motion.p className="tw-paragraph mb-0" variants={transitions.item}>
-              <Link href="" className="button-primary">
+              <Link
+                href="https://www.eventbrite.com/e/bonjour-eth-icp-rooftop-soiree-tickets-652587696367"
+                className="button-primary"
+              >
                 Meet us at ETHCC
               </Link>
             </motion.p>
