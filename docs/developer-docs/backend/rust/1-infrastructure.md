@@ -74,7 +74,7 @@ One way to prevent this is to avoid serializing the canister state to begin with
 
 :::caution
 While this approach might be useful for some workflows, there are a few drawbacks of this approach:
-- It is a challenge to organize the flat address space of stable storage into a data structure, especially for complex canister states that consist of multiple interconnected data structures. 
+- It is a challenge to organize the flat address space of stable storage into a data structure, especially for complex canister states that consist of multiple interconnected data structures. The [ic-stable-structures](https://crates.io/crates/ic-stable-structures) package and the [ic-stable-memory](https://crates.io/crates/ic-stable-memory) package provide tools to help you organize data in stable memory.
 - Altering your canister's data layout may be counterproductive and infeasible. 
 - There may be a need for your canister to have backward compatibility of it's data structures; new versions of your canister may need to read data written by previous versions. 
 :::
