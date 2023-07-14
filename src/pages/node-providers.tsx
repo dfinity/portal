@@ -301,27 +301,121 @@ function NodeProvidersPage() {
             className="flex flex-wrap gap-5 justify-center items-center mt-12"
             variants={transitions.container}
           >
-            <motion.img
-              variants={transitions.item}
-              src="/img/node-providers/np-rivram.webp"
-              alt=""
-              loading="lazy"
-              className="h-20 md:h-30"
-            />
-            <motion.img
-              variants={transitions.item}
-              src="/img/node-providers/np-zondax.webp"
-              alt=""
-              loading="lazy"
-              className="h-20 md:h-30"
-            />
-            <motion.img
-              variants={transitions.item}
-              src="/img/node-providers/np-anonstake.webp"
-              alt=""
-              loading="lazy"
-              className="h-20 md:h-30"
-            />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-electric.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-scalar.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-eterna.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-signum.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+         
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-icp-global.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+           <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-tomahawk.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-warburg-serres.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-9yards.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-kr1.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-zondax.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-anonstake.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-one-sixty-two.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-archery.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-polychain.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-dfinity.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+          <motion.img
+            variants={transitions.item}
+            src="/img/node-providers/np-rivram.webp"
+            alt=""
+            loading="lazy"
+            className="h-20 md:h-30"
+          />
+            
           </AnimateSpawn>
         </section>
 
@@ -338,10 +432,10 @@ function NodeProvidersPage() {
               className="md:hidden"
             />
             <motion.h2
-              className="tw-heading-3 md:tw-heading-2 mb-10 mt-10 md:mt-0 md:mb-16"
+              className="tw-heading-3 md:tw-heading-60 mb-10 mt-10 md:mt-0 md:mb-16"
               variants={transitions.item}
             >
-              Becoming a node provider
+              What you need to know about being a node provider 
             </motion.h2>
           </AnimateSpawn>
 
