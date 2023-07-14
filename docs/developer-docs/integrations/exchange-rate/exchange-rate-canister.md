@@ -51,9 +51,29 @@ The remaining cycles are returned to the requesting canister. Note that at least
 Note: The cycles cost of these requests are expected to be decreased in the next upgrade of the XRC. 
 :::
 
+## Calling the XRC directly 
+
+T call call the XRC directly, first export your wallet canister ID as an environment variable with the command:
+
+```
+export WALLET=[wallet-canister-id]
+```
+
+If you need to get your wallet canister ID, you can run the `dfx wallet addresses` command to return your wallet's canister ID. 
+
+Then, you can send a request, such as one to get the BTC/USD rate, with the following command:
+
+```
+dfx canister call --wallet $WALLET --with-cycles 10000000000 xrc get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
+```
+
 ## Exchange rate canister demo
 
-This sample code illustrates how to interact with the exchange rate canister on the Internet Computer.
+Alternatively, you can run a local XRC demo application to test the functionality locally. 
+
+:::caution
+It is worth noting that this sample dapp is very simple. If there is an error, it always returns `0` because the return value is simply a float.
+:::
 
 ### Prerequisites
 
@@ -115,22 +135,6 @@ The output will resemble the following, depending asset requested and its curren
 ```
 (4.1865 : float64)
 ```
-
-To check the current exchange rate for BTC, you can use the command:
-
-```
-dfx canister call --network ic xrc_demo get_exchange_rate "BTC"
-```
-
-This will return the current exchange rate for BTC in an output such as:
-
-```
-(31142.47 : float64)
-```
-
-:::caution
-It is worth noting that this sample dapp is very simple. If there is an error, it always returns `0` because the return value is simply a float.
-:::
 
 ## Resources
 
