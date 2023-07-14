@@ -104,7 +104,7 @@ Open the link for the `xrc_demo` canister in a web browser to view the Candid in
 
 ![Candid UI XRC](../_attachments/Candid-xrc.png)
 
-Alternatively, you can call commands to the `xrc_demo` canister directly from the terminal, such as:
+Alternatively, you can send commands to the `xrc_demo` canister directly from the terminal, such as:
 
 ```
 dfx canister call --network ic xrc_demo get_exchange_rate "ICP"
