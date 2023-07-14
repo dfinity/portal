@@ -85,7 +85,7 @@ const Decks = () => {
       >
         <CardLabel>Download Presentation</CardLabel>
         <CardTitle>Internet Computer</CardTitle>
-        <CardBody>PDF - Last update: June 20th, 2023</CardBody>
+        <CardBody>PDF - Last update: July 14th, 2023</CardBody>
         <CardImage
           src="/img/home/deck-astronaut.webp"
           alt="ICP Pitch Presenation"
