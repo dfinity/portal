@@ -182,8 +182,8 @@ function EthereumIntegrationPage() {
               ></img>
               <h3 className="sm:tw-heading-5 mb-2">Gasless token swaps</h3>
               <p className="tw-paragraph mb-0">
-                Using ckERC-20 tokens, users can swap tokens for a few cents
-                with 0 gas fees.
+                Using ckERC-20 tokens, users can swap and transfer tokens
+                for a few cents with 0 gas fees.
               </p>
             </motion.div>
             <motion.div
@@ -279,13 +279,10 @@ function EthereumIntegrationPage() {
               EVM on the Internet Computer
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
-              An Ethereum Virtual Machine (EVM) is coming to the Internet
-              Computer built by Bitfinity — a team of developers from the ICP
-              community. Bitfinity is delivering a turn-key solution for
-              developers to operate their ETH dapps on the Internet Computer
-              using Solidity, which brings ICP’s 1-2s finality, and near 0
-              transaction fees to established Ethereum dapps, providing an
-              incredibly efficient Ethereum scaling solution.
+              Bitfinity's EVM running on the Internet Computer offers a turn-key
+              solution for developers to run their existing solidity code and dapps
+              on the Internet Computer. Combining a familiar EVM environment with
+              ICPs 1 sec block times, 1-2s finaility, and ~0$.02 Tx cost.
             </p>
             <p className="mb-0">
               <Link
@@ -318,18 +315,16 @@ function EthereumIntegrationPage() {
                 or marketplaces.{" "}
               </p>
               <p>
-                This Phase 1 of the Ethereum integration has already been
-                realized by the ICP community. An open sourced canister
-                providing an on-chain Ethereum RPC API is available to the
-                public, and can be deployed in dapps as a gateway to the
-                Ethereum network.{" "}
+                Phase 1 of the Ethereum integration was initiated by the ICP community.
+                An open sourced canister providing an on-chain Ethereum RPC API is
+                available to the public, and can be deployed in dapps as a gateway
+                to the Ethereum network.
               </p>
               <p>
-                The next steps are to refine the APIs by adding further
-                functionality to simplify building dapps. Phase 1 will also
-                entail improving the canister, security checks, and deploying
-                the canister on a system subnet to add IPv4 support, as the
-                majority of API providers only support IPv4.
+                Phase 1 continues with the APIs being refined to further functionality
+                to simplify building dapps. Completion of Phase 1 will also entail
+                improving the canister, security checks, and deploying the canister
+                on a system subnet to add IPv4 support.{" "}
               </p>
               <p className="">
                 <Link
