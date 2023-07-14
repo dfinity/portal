@@ -2,23 +2,11 @@
 
 ## Overview
 
-The conventional approach to canister state persistence is to serialize the entire state to stable memory in the `pre_upgrade` hook and decode it back in the `post_upgrade` hook.
-
-This approach is easy to implement and works well for relatively small datasets. Unfortunately, it does not scale well and can render a canister non-upgradable.
-
 Stable structures are designed to use stable memory as the backing store, allowing them to grow to gigabytes in size without the need for `pre_upgrade`/`post_upgrade` hooks.
 
 A [stable structure library](https://github.com/dfinity/stable-structures#readme) exists which aims to simplify managing data structures directly in stable memory and provides example code templates.
 
-Key design principals of stable structures include:
-- Compatibility with multi-memory Wasm.
-- Backward compatibility.
-- No `pre_upgrade` hooks.
-- No reallocation.
-- Limited blast radius of errors, bugs, or data corruption.
-- Increased simplicity. 
-
-For more information about the philosophy behind the design of stable structures, see [Roman's tutorial on stable structures](https://mmapped.blog/posts/14-stable-structures.html).
+For more information about stable structures, please see the [stable structures library](https://github.com/dfinity/stable-structures) and [Roman's tutorial on stable structures](https://mmapped.blog/posts/14-stable-structures.html).
 
 ## Prerequisites 
 
@@ -321,7 +309,7 @@ fn main() {}
 
 ## References
 
-- [Basic example](https://github.com/dfinity/stable-structures/tree/main/examples/src/basic_example) (the example shown above).
+- [Basic example](https://github.com/dfinity/stable-structures/tree/main/examples/src/basic_example) (example shown above).
 - [Advanced example](https://github.com/dfinity/ic/tree/2aa53020f13c68b1f1ef41ef2b8cb54db845683a/rs/rust_canisters/stable_structures) (example shown above).
 - [Quick start example](https://github.com/dfinity/stable-structures/tree/main/examples/src/quick_start): Ideal as a template when developing a new canister.
 - [Custom types example](https://github.com/dfinity/stable-structures/tree/main/examples/src/custom_types_example): Showcases storing your own custom types.
