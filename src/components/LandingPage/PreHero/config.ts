@@ -1,5 +1,5 @@
-export const MIN_SIZE = 4;
-export const MAX_SIZE = 9;
+export const MIN_SIZE = () => (window.innerWidth < 640 ? 6 : 4);
+export const MAX_SIZE = () => (window.innerWidth < 640 ? 10 : 9);
 export const PARTICLE_COUNT = 5000;
 export const OPACITIES = [0.4, 0.6, 0.8, 1.0];
 
