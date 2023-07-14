@@ -21,9 +21,9 @@ The following is an example method that can be used to measures the number of in
 #[update]
 async fn transfer(from: Account, to: Account, amount: Nat) -> Result<TxId, Error> {
   let start = ic_cdk::api::instruction_counter();
-let tx = apply_transfer(from, to, amount)?;
+  let tx = apply_transfer(from, to, amount)?;
   let tx_id = archive_transaction(tx).await?;
-// NOTE: the await point above resets the instruction counter.
+  // NOTE: the await point above resets the instruction counter.
   let end = ic_cdk::api::instruction_counter();
   record_measurement(end - start);
 Ok(tx_id)
