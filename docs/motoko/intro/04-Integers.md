@@ -5,7 +5,7 @@ Motoko's main number types are Int, Nat and Float.
 
 ## Nat
 
-Nats are "whole" positive numbers. By default positive whole nunbers are casted to type `Nat`.
+Nats are "whole" positive numbers. By default positive whole numbers are casted to type `Nat`.
 
 ```motoko
 1 // 1 : Nat
