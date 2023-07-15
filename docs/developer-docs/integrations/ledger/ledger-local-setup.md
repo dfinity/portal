@@ -116,7 +116,7 @@ This will prevent dfx from deploying your own ledger in case you decide to deplo
     "ledger": {
       "type": "custom",
       "wasm": "ledger_canister.wasm",
-      "candid": "ledger.did"
+      "candid": "ledger.did",
       "remote": {
         "candid": "ledger.did",
         "id": {
