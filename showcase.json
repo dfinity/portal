@@ -2075,10 +2075,8 @@
     "id": "chainsight",
     "name": "Chainsight Demo",
     "oneLiner": "Interchain Data Processing Layer",
-    "tags": [
-			"Tools / Infrastructure"
-    ],
-    "description": "Chainsight is an Interchain Data Processing Layer that makes blockchain data available for Decentralized Applications. It allows time series analysis and forecasting based on historical data to be incorporated into on-chain application logic in a trustless manner.",
+    "tags": ["Tools / Infrastructure"],
+    "description": "Chainsight is an interchain data processing layer that makes blockchain data available for decentralized applications. It allows time series analysis and forecasting based on historical data to be incorporated into on-chain application logic in a trustless manner.",
     "usesInternetIdentity": false,
     "website": "https://demo.chainsight.network",
     "github": "https://github.com/horizonx-tech",
