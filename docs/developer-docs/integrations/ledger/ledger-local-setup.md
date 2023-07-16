@@ -20,7 +20,7 @@ cd ledger
 ``` sh
 export IC_VERSION=1612a202d030faa496e1694eed98be4179fca856
 curl -o ledger_canister.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
-curl -o ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/icrc1.did"
+curl -o ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/ledger.did"
 gunzip ledger_canister.wasm.gz
 ```
 
