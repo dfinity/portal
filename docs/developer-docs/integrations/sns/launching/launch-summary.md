@@ -163,7 +163,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
-    <td class="light-orange-text">Approved</td>
+    <td class="light-orange-text">Adopted</td>
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
@@ -208,7 +208,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
 
 ### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
 
-When all initial parameters are specified and the NNS approved the SNS launch,
+When all initial parameters are specified and the NNS adopted the SNS launch,
 the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns-architecture.md#SNS-W).
 This will initiate the creation of the SNS canisters and set their initial parameters as
 chosen in [Step 1](#SNS-launch-step-preparation).
@@ -410,15 +410,15 @@ If successful, at the end of stage, the following has changed:
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
-    <td>Approved</td>
+    <td>Adopted</td>
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
-    <td>Approved</td>
+    <td>Adopted</td>
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td class="light-orange-text">Approved</td>
+    <td class="light-orange-text">Adopted</td>
   </tr>
 </table>
 
