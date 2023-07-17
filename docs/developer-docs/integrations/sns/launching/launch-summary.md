@@ -56,7 +56,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   </tr>
   <tr>
     <td class="light-green-text">Decentralization swap state</td>
-    <td class="light-green-text">Pending</td>
+    <td class="light-green-text">Not existing</td>
   </tr>
    <tr>
     <td class="light-green-text">NNS Proposal #1</td>
@@ -104,7 +104,7 @@ What we have at this stage:
   </tr>
   <tr>
     <td>Decentralization swap state</td>
-    <td>Pending</td>
+    <td>Not existing</td>
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
@@ -159,7 +159,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
   </tr>
   <tr>
     <td>Decentralization swap state</td>
-    <td>Pending</td>
+    <td>Not existing</td>
   </tr>
    <tr>
     <td>NNS Proposal #1</td>

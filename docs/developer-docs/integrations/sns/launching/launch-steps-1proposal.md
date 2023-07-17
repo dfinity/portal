@@ -38,7 +38,7 @@ Typically, dapp developers choose initial parameters that will be used in subseq
 
 ### 2. Dapp developers submit NNS proposal to create SNS
 
-Anyone who owns an eligible NNS neuron with enough stake can submit a proposal to create an
+Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an
 SNS for a given dapp.
 Of course it is crucial to set the right parameters in this proposal.
 You can also find an example how this command is used in the SNS local testing
