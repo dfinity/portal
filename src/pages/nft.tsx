@@ -10,23 +10,19 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 
 const largeNfts: { url: string; title: string; imageUrl: string }[] = [
-  { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
   { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
   { imageUrl: "/img/nft/cosmic-birth.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/creator-gloves.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icbucks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/cubetopia-2.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/colorful-abstracts.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icflowers.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/creator-gloves.webp", title: "", url: "" },
   { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/icmoji.webp", title: "", url: "" },
 ];
 
 const smallNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/icmoji.webp", title: "", url: "" },
-
-  { imageUrl: "/img/nft/icpets.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/icpunks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icpuppies.webp", title: "", url: "" },
   { imageUrl: "/img/nft/moonwalker.webp", title: "", url: "" },
   { imageUrl: "/img/nft/eimolad.webp", title: "", url: "" },

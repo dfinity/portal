@@ -88,7 +88,7 @@ ICP](#icp), whereby a certain amount of ICP are destroyed.
 The main use case is that of purchasing [cycles](#cycles),
 through which ICP are destroyed while at the same time a corresponding
 amount of cycles is created, using the current exchange rate between ICP
-and ([XDR](#SDR)), in such a way that one XDR corresponds to
+and ([XDR](#XDR)), in such a way that one XDR corresponds to
 one trillion (10E12) cycles. It is represented as a [
 transaction](#transaction) from the source [
 account](#account) to the [ ICP supply
@@ -724,3 +724,9 @@ neuron owners.
 
 **WebAssembly** (abbreviated Wasm) is a binary instruction format for a
 stack-based virtual machine.
+
+## X
+
+#### XDR
+
+**XDR** is the currency code for *special drawing rights (SDR)*. SDRs are supplementary foreign exchange assets that are defined and maintained by the International Monetary Fund (IMF). SDRs are not a currency themselves, but represent a claim to a currenty that is held by IMF member countries in which they may be exchanged. The IC developer docs refer to currencies based on their currency codes, therefore SDRs are referenced as its currency code **XDR** in this documentation. 

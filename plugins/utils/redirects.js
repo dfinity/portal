@@ -10,6 +10,7 @@ const redirects = `
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
+  /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
   /docs/download /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
@@ -124,6 +125,7 @@ const redirects = `
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
   /docs/current/references/security/* /docs/current/developer-docs/security/:splat
+  /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/concepts/:splat
