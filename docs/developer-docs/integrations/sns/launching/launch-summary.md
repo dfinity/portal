@@ -394,7 +394,7 @@ existing SNS canisters as well as the swap parameters that are set in the propos
 * If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
 back to the original developers of the dapp.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 
 #### Table 1
