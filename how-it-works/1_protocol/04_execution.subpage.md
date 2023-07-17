@@ -57,6 +57,17 @@ Queries are similar to read operations on a local or cloud Ethereum node on the 
 A dApp should use queries for non-critical operations only.
 Whenever an information item to be read is critical, e.g., financial data based on which decisions are made, update calls should be used to obtain such information as the response of an update call is certified by the subnet with a BLS threshold signature and verifiable with the subnet's public key.
 
+## Deterministic Time Slicing
+
+Each execution round progresses alongside the creation of blockchain blocks, which happens roughly once every second.
+This restricts how much computation can be performed in a single round, with the current limit being around 2 billion instructions given the existing node hardware.
+
+However, the Internet Computer can handle longer tasks that need up to 20 billion instructions, and some special tasks, like code installation, can even go up to 200 billion instructions.
+This is acheived using a technique called "Deterministic Time Slicing" (DTS).
+The idea is to pause a lengthy task at the end of one round and continue it in the next.
+As a result, a task can span multiple rounds without slowing down the block creation rate.
+DTS is automatic and transparent to smart contracts, so developers don't need to write any special code to use it.
+
 ## Memory Handling
 
 Management of the canister bytecode and state (collectively memory) is one of the key responsibilities of the execution layer.
