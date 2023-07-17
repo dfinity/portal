@@ -306,6 +306,11 @@ const sidebars = {
               ],
             },
             {
+              type: "doc",
+              label: "Exchange rate canister",
+              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               link: {
