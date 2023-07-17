@@ -124,11 +124,8 @@ function EthereumIntegrationPage() {
               world’s most important blockchains.
             </motion.h2>
             <motion.p className="tw-paragraph mb-0" variants={transitions.item}>
-              <Link
-                href="https://www.eventbrite.com/e/bonjour-eth-icp-rooftop-soiree-tickets-652587696367"
-                className="button-primary"
-              >
-                Meet us at ETHCC
+              <Link href="#subscribe" className="button-primary">
+                Get updates about ETH &lt;&gt; ICP
               </Link>
             </motion.p>
           </div>
@@ -146,7 +143,10 @@ function EthereumIntegrationPage() {
               World Computer capabilities for Ethereum
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
+              >
                 More on trustless multi-chain
                 <LinkArrowUpRight />
               </Link>
@@ -182,8 +182,8 @@ function EthereumIntegrationPage() {
               ></img>
               <h3 className="sm:tw-heading-5 mb-2">Gasless token swaps</h3>
               <p className="tw-paragraph mb-0">
-                Using ckERC-20 tokens, users can swap and transfer tokens
-                for a few cents with 0 gas fees.
+                Using ckERC-20 tokens, users can swap and transfer tokens for a
+                few cents with 0 gas fees.
               </p>
             </motion.div>
             <motion.div
@@ -241,7 +241,10 @@ function EthereumIntegrationPage() {
               replicas through ICP consensus
             </p>
             <p className="mb-0">
-              <Link href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains" className="link-primary link-with-icon">
+              <Link
+                href="https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains"
+                className="link-primary link-with-icon"
+              >
                 About extending ETH <LinkArrowUpRight />
               </Link>
             </p>
@@ -280,9 +283,10 @@ function EthereumIntegrationPage() {
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
               Bitfinity's EVM running on the Internet Computer offers a turn-key
-              solution for developers to run their existing solidity code and dapps
-              on the Internet Computer. Combining a familiar EVM environment with
-              ICPs 1 sec block times, 1-2s finaility, and ~0$.02 Tx cost.
+              solution for developers to run their existing solidity code and
+              dapps on the Internet Computer. Combining a familiar EVM
+              environment with ICPs 1 sec block times, 1-2s finaility, and
+              ~0$.02 Tx cost.
             </p>
             <p className="mb-0">
               <Link
@@ -315,16 +319,16 @@ function EthereumIntegrationPage() {
                 or marketplaces.{" "}
               </p>
               <p>
-                Phase 1 of the Ethereum integration was initiated by the ICP community.
-                An open sourced canister providing an on-chain Ethereum RPC API is
-                available to the public, and can be deployed in dapps as a gateway
-                to the Ethereum network.
+                Phase 1 of the Ethereum integration was initiated by the ICP
+                community. An open sourced canister providing an on-chain
+                Ethereum RPC API is available to the public, and can be deployed
+                in dapps as a gateway to the Ethereum network.
               </p>
               <p>
-                Phase 1 continues with the APIs being refined to further functionality
-                to simplify building dapps. Completion of Phase 1 will also entail
-                improving the canister, security checks, and deploying the canister
-                on a system subnet to add IPv4 support.{" "}
+                Phase 1 continues with the APIs being refined to further
+                functionality to simplify building dapps. Completion of Phase 1
+                will also entail improving the canister, security checks, and
+                deploying the canister on a system subnet to add IPv4 support.{" "}
               </p>
               <p className="">
                 <Link
@@ -338,7 +342,7 @@ function EthereumIntegrationPage() {
             </Prose>
           </TranslatedLayout>
         </section>
-        <section className="mt-30 mb-20  md:mt-52 md:mb-30 " id="subscribe">
+        <section className="pt-30 mb-20  md:pt-52 md:mb-30 " id="subscribe">
           <Newsletter
             fields={[
               {
@@ -361,7 +365,7 @@ function EthereumIntegrationPage() {
           >
             {/* <div className="hidden md:block blob blob-infinite blob-lg blob-top-right z-[-1]"></div> */}
             <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
-              Sign up for email updates
+              Sign up for email updates{" "}
               <span className="text-white-60">
                 to keep up to date with the Internet Computer
               </span>
