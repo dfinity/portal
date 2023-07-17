@@ -59,39 +59,20 @@ The NNS community's approval is relevant in Stage 2.
 
   What we have at this stage:
 
-#### Table 1
-
-  <table>
-  <tr>
-    <th>SNS Process</th>
-    <th>State</th>
-  </tr>
-  <tr>
-    <td class="light-green-text">Decentralization swap state</td>
-    <td class="light-green-text">Pending</td>
-  </tr>
-   <tr>
-    <td class="light-green-text">NNS Proposal</td>
-    <td class="light-green-text">Not Created</td>
-  </tr>
-   <tr>
-    <td class="light-green-text">SNS Proposal</td>
-    <td class="light-green-text">Not Created</td>
-  </tr>
-</table>
-
-#### Table 2
+#### Table 1: Canisters
 
 <table>
   <tr>
     <th>Canisters</th>
-    <th>State</th>
+    <th>Subnet</th>
     <th>Controlled by</th>
+    <th>State</th>
   </tr>
   <tr>
-    <td>a dapp</td>
-    <td>operational</td>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
     <td>dapp developer principal</td>
+    <td>operational</td>
   </tr>
 </table>
 
@@ -102,7 +83,35 @@ the first Stage to the NNS community.
 It also defines which dapp canister(s) should be handed over to the SNS.
 
 If successful, at the end of stage, we the following has changed:
-[TODO: table]
+
+#### Table 1: Canisters
+
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>dapp developer principal</td>
+    <td>operational</td>
+  </tr>
+</table>
+
+#### Table 2: NNS Proposals
+ <table>
+  <tr>
+    <th>NNS Proposal</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td class="light-green-text">SNS creation proposal</td>
+    <td class="light-green-text">Open</td>
+  </tr>
+</table>
 
 ### 3. Dapp developers add NNS root as co-controller of dapp
 Shortly after Step 2. and while the voting on the proposal is ongoing, the dapp
@@ -114,7 +123,22 @@ where the dapp developers officially agree to the conditions of the SNS for thei
 dapp canister(s).
 
 If successful, at the end of stage, we the following has changed:
-[TODO: table]
+
+#### Table 1: Canisters
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td class="light-orange-text">dapp developer principal, NNS root</td>
+    <td>operational</td>
+  </tr>
+</table>
 
 ### 4. The NNS proposal is decided
 If the NNS proposal from Stage 2 is adopted, 
@@ -134,7 +158,18 @@ given back exclusively to the original dapp developers.
 
 If successful, at the end of this stage the proposal is adopted and the conditions are met.
 This means that we are in the following situation:
-[TODO: table]
+
+#### Table 2: NNS Proposals
+ <table>
+  <tr>
+    <th>NNS Proposal</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>SNS creation proposal</td>
+    <td class="light-orange-text">Adopted</td>
+  </tr>
+</table>
 
 
 ### 5. (Automatically) SNS-W deploys SNS canisters
@@ -144,7 +179,46 @@ creates SNS canisters on the SNS subnet.
 At this stage the SNS canisters are not yet initialized with any meaningful values.
 
 This results in the following situation:
-[TODO: table - empty SNS canisters]
+
+#### Table 1: Canisters
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>dapp developer principal, NNS root</td>
+    <td>operational</td>
+  </tr>
+  <tr>
+    <td class="light-green-text">SNS swap</td>
+    <td class="light-green-text">SNS subnet</td>
+    <td class="light-green-text">NNS root</td>
+    <td class="light-green-text">not initialized</td>
+  </tr>
+ <tr>
+    <td class="light-green-text">SNS governance</td>
+    <td class="light-green-text">SNS subnet</td>
+    <td class="light-green-text">SNS root</td>
+    <td class="light-green-text">not initialized</td>
+  </tr>
+ <tr>
+    <td class="light-green-text">SNS ledger</td>
+    <td class="light-green-text">SNS subnet</td>
+    <td class="light-green-text">SNS root</td>
+    <td class="light-green-text">not initialized</td>
+  </tr>
+ <tr>
+    <td class="light-green-text">SNS root</td>
+    <td class="light-green-text">SNS subnet</td>
+    <td class="light-green-text">SNS governance</td>
+    <td class="light-green-text">not initialized</td>
+  </tr>
+</table>
 
 
 ### 6. (Automatically) SNS-W sets SNS root as single controller of dapp
@@ -165,7 +239,46 @@ In detail, this includes two steps:
   remove itself as controller.
   
 A succesful stage results in the following situation:
-[TODO: table]
+
+#### Table 1: Canisters
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td class="light-orange-text">SNS root</td>
+    <td>operational</td>
+  </tr>
+  <tr>
+    <td>SNS swap</td>
+    <td>SNS subnet</td>
+    <td>NNS root</td>
+    <td>not initialized</td>
+  </tr>
+ <tr>
+    <td>SNS governance</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td>not initialized</td>
+  </tr>
+ <tr>
+    <td>SNS ledger</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td>not initialized</td>
+  </tr>
+ <tr>
+    <td>SNS root</td>
+    <td>SNS subnet</td>
+    <td>SNS governance</td>
+    <td>not initialized</td>
+  </tr>
+</table>
 
 ### 7. (Automatically) SNS-W initializes SNS canisters according to settings from Step 1
 Next, SNS-W initializes the SNS canisters with the appropriate initial payloads as proposed
@@ -188,42 +301,45 @@ Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify t
 SNS or transfer the treasury tokens.
 
 If successful, at the end of stage, the following has changed:
-
-#### Table 3 [TODO]
-
+#### Table 1: Canisters
 <table>
   <tr>
-    <th>Objects in the SNS subnet</th>
-    <th>State</th>
+    <th>Canisters</th>
+    <th>Subnet</th>
     <th>Controlled by</th>
+    <th>State</th>
   </tr>
   <tr>
-    <td>a principal that can deploy to SNS subnet</td>
-    <td class="light-orange-text">revoked because it is 1-time use</td>
-    <td>NA</td>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>SNS root</td>
+    <td>operational</td>
   </tr>
-  <tr>
-    <td class="light-green-text">SNS root on the SNS subnet</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">initial developer neurons</td>
+ <tr>
+    <td>SNS swap</td>
+    <td>SNS subnet</td>
+    <td>NNS root</td>
+    <td class="light-orange-text">Waiting to be started</td>
   </tr>
-  <tr>
-    <td class="light-green-text">initial developer neurons</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">dapp developer principal</td>
+ <tr>
+    <td>SNS governance</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td class="light-orange-text">pre-decentralization swap mode</td>
   </tr>
-  <tr>
-    <td class="light-green-text">treasury account on the SNS Ledger</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">SNS governance</td>
+ <tr>
+    <td>SNS ledger</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td class="light-orange-text">pre-decentralization swap mode</td>
   </tr>
-  <tr>
-    <td class="light-green-text">swap account on the SNS Ledger</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
-    <td class="light-green-text">SNS swap</td>
+ <tr>
+    <td>SNS root</td>
+    <td>SNS subnet</td>
+    <td>SNS governance</td>
+    <td class="light-orange-text">pre-decentralization swap mode</td>
   </tr>
 </table>
-
 
 ### 8. (Automatically) SNS swap starts
 The swap was initialized with a defined start time. 
@@ -234,7 +350,46 @@ End users can participate in the decentralization swap by transferring ICP token
 swap canister.
 
 This means, we will have the following situation:
-[TODO: tables]
+#### Table 1: Canisters
+
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>SNS root</td>
+    <td>operational</td>
+  </tr>
+ <tr>
+    <td>SNS swap</td>
+    <td>SNS subnet</td>
+    <td>NNS root</td>
+    <td class="light-orange-text">Open</td>
+  </tr>
+ <tr>
+    <td>SNS governance</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td>pre-decentralization swap mode</td>
+  </tr>
+ <tr>
+    <td>SNS ledger</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td>pre-decentralization swap mode</td>
+  </tr>
+ <tr>
+    <td>SNS root</td>
+    <td>SNS subnet</td>
+    <td>SNS governance</td>
+    <td>pre-decentralization swap mode</td>
+  </tr>
+</table>
 
 ### 9. (Automatically) SNS swap ends
 The swap was also initialized with a defined end time.
@@ -243,7 +398,47 @@ The swap can also end earlier if the maximum ICP participation is reached before
 time.
 
 This means, we will have the following situation:
-[TODO: tables]
+#### Table 1: Canisters
+
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>SNS root</td>
+    <td>operational</td>
+  </tr>
+ <tr>
+    <td>SNS swap</td>
+    <td>SNS subnet</td>
+    <td>NNS root</td>
+    <td class="light-orange-text">Ended</td>
+  </tr>
+ <tr>
+    <td>SNS governance</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td>pre-decentralization swap mode</td>
+  </tr>
+ <tr>
+    <td>SNS ledger</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td>pre-decentralization swap mode</td>
+  </tr>
+ <tr>
+    <td>SNS root</td>
+    <td>SNS subnet</td>
+    <td>SNS governance</td>
+    <td>pre-decentralization swap mode</td>
+  </tr>
+</table>
+
 
 ### 10. (Automatically) SNS swap finalizes
 When the decentralization swap ends, it is first established whether
@@ -263,3 +458,43 @@ collected ICP are refunded to the swap participants.
 
 If successful, at the end of stage, we have:
 
+#### Table 1: Canisters
+
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>SNS root</td>
+    <td>operational</td>
+  </tr>
+ <tr>
+    <td>SNS swap</td>
+    <td>SNS subnet</td>
+    <td>NNS root</td>
+    <td class="light-orange-text">Finalized</td>
+  </tr>
+ <tr>
+    <td>SNS governance</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td class="light-orange-text">normal mode</td>
+  </tr>
+ <tr>
+    <td>SNS ledger</td>
+    <td>SNS subnet</td>
+    <td>SNS root</td>
+    <td class="light-orange-text">normal mode</td>
+  </tr>
+ <tr>
+    <td>SNS root</td>
+    <td>SNS subnet</td>
+    <td>SNS governance</td>
+    <td class="light-orange-text">normal mode</td>
+  </tr>
+</table>
