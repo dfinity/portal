@@ -319,16 +319,9 @@ function EthereumIntegrationPage() {
                 or marketplaces.{" "}
               </p>
               <p>
-                Phase 1 of the Ethereum integration was initiated by the ICP
-                community. An open sourced canister providing an on-chain
-                Ethereum RPC API is available to the public, and can be deployed
-                in dapps as a gateway to the Ethereum network.
-              </p>
-              <p>
-                Phase 1 continues with the APIs being refined to further
-                functionality to simplify building dapps. Completion of Phase 1
-                will also entail improving the canister, security checks, and
-                deploying the canister on a system subnet to add IPv4 support.{" "}
+                Several ICP teams have started integrating cross-chain ETH
+                solutions into their platforms using components already
+                available such as chain-key ECDSA signing.
               </p>
               <p className="">
                 <Link
