@@ -67,6 +67,7 @@
     "@tsconfig/docusaurus": "^1.0.4",
     "autoprefixer": "^10.4.7",
     "contentful": "^9.1.32",
+    "glob": "^10.3.1",
     "gray-matter": "^4.0.3",
     "prettier": "^2.8.8",
     "remark-code-import": "^0.4.0",

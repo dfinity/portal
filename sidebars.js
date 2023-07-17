@@ -73,7 +73,6 @@ const sidebars = {
               "samples/simple-to-do",
               "samples/superheros",
               "samples/t-ecdsa-sample",
-              "samples/http-requests-exchange-rates",
               "samples/whoami",
             ],
             },
@@ -185,8 +184,14 @@ const sidebars = {
               id: "developer-docs/backend/motoko/index",
           },
               items: [
-                "developer-docs/backend/motoko/at-a-glance",
+                "developer-docs/backend/motoko/infrastructure",
                 "developer-docs/backend/motoko/explore-templates",
+                "developer-docs/backend/motoko/dev-env",
+                "developer-docs/backend/motoko/at-a-glance",
+                "developer-docs/backend/motoko/deploying",
+                "developer-docs/backend/motoko/upgrading",
+                "developer-docs/backend/motoko/intercanister-calls",
+                "developer-docs/backend/motoko/optimizing",
                 "developer-docs/backend/motoko/phonebook",
                 "developer-docs/backend/motoko/calculator",
                 "developer-docs/backend/motoko/counter-tutorial",
@@ -196,10 +201,8 @@ const sidebars = {
                 "developer-docs/backend/motoko/multiple-actors",
                 "developer-docs/backend/motoko/access-control",
                 "developer-docs/backend/motoko/candid-ui",
-                "developer-docs/backend/motoko/intercanister-calls",
                 "developer-docs/backend/motoko/scalability-cancan",
                 "developer-docs/backend/motoko/sample-apps",
-
               ],
             },
             {
@@ -294,6 +297,11 @@ const sidebars = {
               ],
             },
             {
+              type: "doc",
+              label: "Exchange rate canister",
+              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               link: {
@@ -353,6 +361,8 @@ const sidebars = {
               },
               items: [
                   "tokenomics/token-holders/nns-app-quickstart",
+                  "tokenomics/nns/neurons-fund",
+                  "tokenomics/nns/nns-staking-voting-rewards",
               ],
             },
             {
@@ -393,10 +403,9 @@ const sidebars = {
                       type: "category",
                       label: "Introduction to the SNS",
                       items: [
-                        "developer-docs/integrations/sns/lifecycle-sns/sns-intro-highlevel",
-                        "developer-docs/integrations/sns/lifecycle-sns/sns-architecture",
-                        "developer-docs/integrations/sns/lifecycle-sns/sns-launch",
-                        "developer-docs/integrations/sns/lifecycle-sns/dao-alternatives",
+                        "developer-docs/integrations/sns/introduction/sns-intro-high-level",
+                        "developer-docs/integrations/sns/introduction/sns-architecture",
+                        "developer-docs/integrations/sns/introduction/dao-alternatives",
                       ],
                     },
                     {
@@ -416,14 +425,26 @@ const sidebars = {
                     },
                     {
                       type: "category",
+                      label: "Launching an SNS",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/launching/launch-summary",
+                      },
+                      items: [
+                        "developer-docs/integrations/sns/launching/launch-summary",
+                        "developer-docs/integrations/sns/launching/launch-steps",
+                      ],
+                    },
+                    {
+                      type: "category",
                       label: "Integrating with an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/integrate-sns/index",
+                        id: "developer-docs/integrations/sns/integrating/index",
                     },
                       items: [
-                        "developer-docs/integrations/sns/integrate-sns/index-integration",
-                        "developer-docs/integrations/sns/integrate-sns/ledger-integration",
+                        "developer-docs/integrations/sns/integrating/index-integration",
+                        "developer-docs/integrations/sns/integrating/ledger-integration",
                       ],
                     },
                     {
@@ -431,29 +452,24 @@ const sidebars = {
                       label: "Testing an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/get-sns/get-sns-intro",
-                    },
+                        id: "developer-docs/integrations/sns/testing/testing-before-launch",
+                      },
                       items: [
-                        "developer-docs/integrations/sns/get-sns/local-testing",
-                        "developer-docs/integrations/sns/get-sns/testflight",
+                        "developer-docs/integrations/sns/testing/testing-locally",
+                        "developer-docs/integrations/sns/testing/testing-on-mainnet",
                       ],
-                    },
-                    {
-                      type: "category",
-                      label: "Launching an SNS",
-                      type: "doc",
-                      id: "developer-docs/integrations/sns/launch-sns/launch-sns",
                     },
                     {
                       type: "category",
                       label: "Managing an SNS",
                       link: {
                         type: "doc",
-                        id: "developer-docs/integrations/sns/managing-sns/manage-sns-intro",
+                        id: "developer-docs/integrations/sns/managing/manage-sns-intro",
                     },
                       items: [
-                        "developer-docs/integrations/sns/managing-sns/sns-governance",
-                        "developer-docs/integrations/sns/managing-sns/cycles-usage",
+                        "developer-docs/integrations/sns/managing/sns-governance",
+                        "developer-docs/integrations/sns/managing/cycles-usage",
+                        "developer-docs/integrations/sns/managing/sns-asset-canister",
                       ],
                     },
                   ],
@@ -467,6 +483,18 @@ const sidebars = {
             },
                 items: [
                   "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
           ],
