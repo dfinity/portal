@@ -1,7 +1,7 @@
 # 8: Optimizing Rust canisters
 
 ## Overview
-Compiling Rust to Wasm often increases the file size significantly. dfx versions 0.14.0 and new include a new `wasm-opt` optimization package that can be used to optimize cycle consumption and binary size. 
+Compiling Rust to Wasm often increases the file size significantly. dfx versions 0.14.0 and newer include a the `wasm-opt` optimization package that can be used to optimize cycle consumption and binary size. 
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Ok(tx_id)
 
 ## Using `wasm-opt`
 
-`Wasm-opt` is a general purpose Wasm optimizer that is now available in dfx, versions 0.14.0 and newer. 
+`Wasm-opt` is a general purpose Wasm optimizer package from binaryen that is now available in dfx, versions 0.14.0 and newer. 
 
 `Wasm-opt` can be used to enable canister optimizations through a configuration option in the project's `dfx.json` file, such as:
 
