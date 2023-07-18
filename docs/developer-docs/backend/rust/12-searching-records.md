@@ -377,13 +377,13 @@ dfx canister call rust_profile_backend search '("black")'
 The command returns the `Dupree` profile:
 
 ```
-    (
-        opt record {
+(
+    opt record {
         name = "Dupree";
         description = "black dog";
         keywords = vec { "funny tail"; "white nose" };
-        },
-    )
+    },
+)
 ```
 ## Next steps
 
