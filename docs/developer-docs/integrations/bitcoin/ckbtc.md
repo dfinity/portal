@@ -135,6 +135,7 @@ type RetrieveBtcArgs = record {
     //   * P2WPKH addresses (they start with the "bc1q" prefix on the Bitcoin mainnet).
     //   * P2PKH addresses (they start with the "1" prefix on the Bitcoin mainnet).
     //   * P2SH addresses (they start with the "3" prefix on the Bitcoin mainnet).
+    //   * P2TR addresses (they start with the "bc1p" prefix on the Bitcoin mainnet).
     address : text;
     // The amount of BTC in Satoshis that the client wants to withdraw.
     amount : nat64;
