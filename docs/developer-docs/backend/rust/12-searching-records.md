@@ -163,40 +163,6 @@ service : {
 
 Save your changes and close the file to continue.
 
-## Writing the Cargo.toml file
-
-As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
-
-Open the `src/rust_profile_backend/Cargo.toml` file and replace the existing content with the following:
-
-``` toml
-[package]
-name = "rust_profile_backend"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-candid = "0.8.2"
-ic-cdk = "0.7.0"
-ic-cdk-macros = "0.6.0"
-serde = { version = "1.0", features = ["derive"] }
-```
-
-Save the file. 
-
-## Update the Cargo.toml dependencies
-
-Since we made changes to the Cargo.toml file, run the following command to update the project's dependencies:
-
-```
-cargo update
-```
-
 ## Start the local execution environment
 
 Before you can build the `rust_profile` project, you need to connect to the local execution environment running in your development environment or the decentralized Internet Computer blockchain mainnet.
