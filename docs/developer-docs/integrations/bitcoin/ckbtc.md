@@ -108,7 +108,7 @@ The status of a BTC retrieval request can be checked using this function. The di
 - `Sending`: The Bitcoin transaction serving the BTC retrieval request is being sent.
 - `Submitted`: The Bitcoin transaction has been transmitted. The transaction ID is returned.
 - `AmountTooLow`: The BTC retrieval request could not be served because the Bitcoin miner fees are prohibitively high.
-- `Confirmed`: The Bitcoin transaction serving the BTC retrieval request is confirmed inside the ckBTC minter, which happens when the transaction has at least the minimum required number of confirmations specified in the min_confirmations parameter above.
+- `Confirmed`: The Bitcoin transaction serving the BTC retrieval request is confirmed inside the ckBTC minter, which happens when the transaction has at least the minimum required number of confirmations specified in the `min_confirmations` parameter above.
 
 ### `get_minter_info`
 The function returns the following parameters internal to the ckBTC minter:
