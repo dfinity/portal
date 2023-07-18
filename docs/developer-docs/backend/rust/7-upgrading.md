@@ -16,7 +16,7 @@ This guide assumes you have an existing canister that you'd like to upgrade. To 
 
 To upgrade a canister written in Rust, you should use `pre_upgrade` and `post_upgrade` functions to ensure data is properly preserved after a canister upgrade as illustrated in the example below:
 
-```
+```rust
 use ic_cdk::{
     api::call::ManualReply, export::Principal, init, post_upgrade, pre_upgrade, query, storage,
     update,
