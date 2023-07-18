@@ -112,7 +112,7 @@ In the previous step, the service is declared as `service : (nat64) -> {...}`. T
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append the following:
 
 ```rust
-[...]
+// ...
 
 #[ic_cdk::init]
 fn init(timer_interval_secs: u64) {
