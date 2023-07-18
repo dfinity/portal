@@ -119,7 +119,6 @@ crate-type = ["cdylib"]
 [dependencies]
 candid = "0.8.2"
 ic-cdk = "0.7.0"
-ic-cdk-macros = "0.6.0"
 serde = { version = "1.0", features = ["derive"] }
 ```
 
