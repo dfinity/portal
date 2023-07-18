@@ -77,7 +77,7 @@ Instead of having the ckBTC minter track the balance of a Bitcoin address, the `
 
 If there is at least one new UTXO, the corresponding ckBTC amount is minted, otherwise an error is returned.
 
-The ckBTC minter effectively invokes this endpoint itself on a timer when the track_balance function is used.
+The ckBTC minter effectively invokes this endpoint itself on a timer when the `track_balance` function is used.
 
 ### `estimate_withdrawal_fee(amount: opt nat64)`
 The endpoint returns an estimate for the fee that must be paid when retrieving the given BTC amount. Internally, a transaction is built (without valid signatures) to determine the fee, which consists of the Bitcoin miner fee, the ckBTC minter fee, and the KYT fee. If no amount is provided, it is assumed that three inputs are required to build the transaction.
