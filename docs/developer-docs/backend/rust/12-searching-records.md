@@ -277,13 +277,13 @@ dfx canister call rust_profile_backend search '("black")'
 This command finds the matching profile using the `description` and returns the profile:
 
 ```
-    (
-        opt record {
+(
+    opt record {
         name = "Dupree";
         description = "black dog";
         keywords = vec { "funny tail"; "white nose" };
-        },
-    )
+    },
+)
 ```
 
 ## Adding profiles for new identities
