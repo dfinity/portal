@@ -131,7 +131,7 @@ type Account = record { owner : principal; subaccount : opt blob };
 
 type RetrieveBtcArgs = record {
     // The address to which the ckBTC minter should deposit BTC.
-    // Currently, the minter understands only the following types of addresses:
+    // Currently, the minter understands the following types of addresses:
     //   * P2WPKH addresses (they start with the "bc1q" prefix on the Bitcoin mainnet).
     //   * P2PKH addresses (they start with the "1" prefix on the Bitcoin mainnet).
     //   * P2SH addresses (they start with the "3" prefix on the Bitcoin mainnet).
