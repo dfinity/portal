@@ -104,6 +104,11 @@ This code establishes the following:
 - `#[ic_cdk::query]` marks the following `counter` function as a `query` entry point, so the function will be exported as `canister_query counter`.
 - `fn counter() -> u64 {...}` defines the query. Just like in the `.did` definition, it takes no arguments and returns `u64`.
 - `COUNTER.load(...)` loads and returns the global `COUNTER` value.
+- 
+
+:::info
+It is important to note that `Ordering` in this code is a shorter, but equivalent alternative to `thread_local!` wrapping a `Cell<u64>`.
+:::
 
 ## Implementing canister initialization
 
@@ -126,7 +131,7 @@ fn init(timer_interval_secs: u64) {
 
 This code establishes the following:
 
-- `#[ic_cdk::init]` marks the following `init` function as a canister initialization method, so the function will be exported as `canister_init`.
+- `#[ic_cdk::init]` marks the following `init` function as a canister initialization method, so the function will be run when the canister is installed.
 - `fn init(interval: u64) {...}` defines the initialization method. Just like in the `.did` definition, the function takes one argument: timer interval in seconds.
 - `ic_cdk::println!(...)` prints the debug log message on the local `dfx` console.
 - `ic_cdk_timers::set_timer_interval(...)` creates a new periodic timer with the specified interval and a closure to call.
