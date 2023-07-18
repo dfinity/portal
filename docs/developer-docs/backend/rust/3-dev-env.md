@@ -40,7 +40,7 @@ Before you start your project, verify the following:
 
     **While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the [Rust CDK](https://github.com/dfinity/cdk-rs) directly.**
 
-- [x] You have a code editor are installed. The [VSCode IDE](https://code.visualstudio.com/download) is a popular choice for Rust.
+- [x] You have a code editor installed. The [VS Code IDE](https://code.visualstudio.com/download) is a popular choice for Rust.
 
 - [x] You have downloaded and installed [git](https://git-scm.com/downloads).
 
