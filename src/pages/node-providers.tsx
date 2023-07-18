@@ -133,14 +133,7 @@ function NodeProvidersPage() {
               )}
             </div>
             <Stats />
-            <div className="mt-10 text-center">
-              <Link
-                className="link-primary link-with-icon"
-                href="https://dashboard.internetcomputer.org"
-              >
-                Get more data on the dashboard <LinkArrowUpRight />
-              </Link>
-            </div>
+            
           </QueryClientProvider>
         </section>
         <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 mt-20 md:mt-40">
@@ -292,7 +285,7 @@ function NodeProvidersPage() {
               entities across the globe, including...
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" className="button-primary">
+              <Link href="https://forum.dfinity.org/t/new-node-provider-proposals/16643" className="button-primary">
                 Join the NP community
               </Link>
             </motion.p>
@@ -501,7 +494,7 @@ function NodeProvidersPage() {
                     </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
                        Submit proposal and onboard your nodes to the Internet Computer 
                     </Link> 
                   </li>
@@ -516,7 +509,7 @@ function NodeProvidersPage() {
                     </Link> 
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
                          Set up servers in a data center
                     </Link> 
                   </li>

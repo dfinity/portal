@@ -146,10 +146,6 @@ const navbarItems = [
           href: "/enterprise?source=nav"
         },
         {
-          label: "Node Providers",
-          href: "/node-providers?source=nav"
-        },
-        {
           label: "Create an Internet Identity",
           href: "https://identity.ic0.app/"
         },
@@ -250,7 +246,7 @@ const navbarItems = [
         menuDivider("Get Involved"),
         {
           label: "Become a Node Provider",
-          href: "https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+          href: "/node-providers?source=nav"
         },
         {
           label: "Staking & Governance (NNS)",
@@ -524,7 +520,7 @@ const config = {
               },
               {
                 label: "Node Providers",
-                href: "https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#For_Node_Providers"
+                href: "/node-providers"
               },
               {
                 label: "Dashboard",
