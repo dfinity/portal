@@ -17,7 +17,7 @@ The `instruction_counter` API will tell you the number of instructions your code
 
 The following is an example method that can be used to measures the number of instructions:
 
-```
+```rust
 #[update]
 async fn transfer(from: Account, to: Account, amount: Nat) -> Result<TxId, Error> {
   let start = ic_cdk::api::instruction_counter();
