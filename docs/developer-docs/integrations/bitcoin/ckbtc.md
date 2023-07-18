@@ -115,7 +115,7 @@ The function returns the following parameters internal to the ckBTC minter:
 
 - `kyt_fee
 - `min_confirmations`
-- `retrieve_btc_min_amount
+- `retrieve_btc_min_amount`
 
 ### `get_events(start: nat64, length: nat64)`
 The ckBTC minter tracks the events that change its internal state. Given a start index and a length parameter, the ckBTC minter returns all events sequentially from the event at the given start index up to the event at index start+length-1.
