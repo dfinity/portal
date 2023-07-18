@@ -337,13 +337,13 @@ dfx --identity Miles canister call rust_profile_backend getSelf
 The command displays the profile currently associated with the Miles identity, in this example:
 
 ```
-    (
-        record {
+(
+    record {
         name = "Miles";
         description = "Great Dane";
         keywords = vec { "Boston"; "mantle"; "three-legged" };
-        },
-    )
+    },
+)
 ```
 
 Call the `search` function using part of the description or a keyword to further test the whether the correct profile is returned.
