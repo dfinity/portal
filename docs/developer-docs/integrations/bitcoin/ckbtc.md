@@ -12,7 +12,7 @@ The ckBTC ledger is responsible for keeping account balances and for transferrin
 - It enables the ckBTC minter to mint and burn ckBTC.
 - It enables the transfer of ckBTC among users.
 
-The ckBTC minter is responsible for the minting and burning of ckBTC tokens. A certain amount of tokens is minted if a user transfers the same amount of Bitcoin to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent Bitcoins, making it possible for the ckBTC minter to associate the minted ckBTC funds with the correct owner. The ckBTC minter needs to receive BTC, based on a large number of confirmations due to the lack of finality in Bitcoin, before it mints the same amount in ckBTC. The ckBTC minter burns the ckBTC before it transfers the corresponding BTC amount is transferred using a regular Bitcoin transaction.
+The ckBTC minter is responsible for the minting and burning of ckBTC tokens. A certain amount of tokens is minted if a user transfers the same amount of bitcoin to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins, making it possible for the ckBTC minter to associate the minted ckBTC funds with the correct owner. The ckBTC minter needs to receive BTC, based on a large number of confirmations due to the lack of finality in Bitcoin, before it mints the same amount in ckBTC. The ckBTC minter burns the ckBTC before it transfers the corresponding BTC amount using a regular Bitcoin transaction.
 
 A detailed description of the ckBTC minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
