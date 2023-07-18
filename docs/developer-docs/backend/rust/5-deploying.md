@@ -182,7 +182,7 @@ This will return the output:
 
 In addition to testing the canister's functionality, the canister can be interacted with using other `dfx` commands. For example:
 
-To deposit cycles into the wallet, use the command:
+To deposit cycles from the wallet into the canister, use the command:
 
 ```
 dfx canister deposit-cycles [cycles amount] [canister-name]
