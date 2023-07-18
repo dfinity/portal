@@ -82,7 +82,7 @@ In this code, you can see two inter-canister update calls: `fn subscribe(subscri
 
 ```
 use candid::{CandidType, Principal};
-use ic_cdk_macros::*;
+use ic_cdk::{update, query};
 use serde::Deserialize;
 use std::cell::Cell;
 
