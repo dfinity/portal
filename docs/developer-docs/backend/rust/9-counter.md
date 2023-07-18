@@ -45,33 +45,56 @@ To replace the default dapp, open the template `src/rust_counter_backend/src/lib
 Then, copy and paste this code into the `src/rust_counter_backend/src/lib.rs` file.
 
 ```rust
-use ic_cdk::{export::candid, init, query, update};
+use std::cell::RefCell;
+use candid::types::number::Nat;
 
-static mut COUNTER: Option<candid::Nat> = None;
+thread_local! {
+    static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0));
+}
 
-#[init]
-fn init() {
-    unsafe {
-        COUNTER = Some(candid::Nat::from(0));
+/// Get the value of the counter.
+#[ic_cdk_macros::query]
+fn get() -> Nat {
+    COUNTER.with(|counter| (*counter.borrow()).clone())
+}
+
+/// Set the value of the counter.
+#[ic_cdk_macros::update]
+fn set(n: Nat) {
+    // COUNTER.replace(n);  // requires #![feature(local_key_cell_methods)]
+    COUNTER.with(|count| *count.borrow_mut() = n);
+}
+
+/// Increment the value of the counter.
+#[ic_cdk_macros::update]
+fn inc() {
+    COUNTER.with(|counter| *counter.borrow_mut() += 1);
+}
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_get_set() {
+        let expected = Nat::from(42);
+        set(expected.clone());
+        assert_eq!(get(), expected);
     }
-}
 
-#[update]
-fn increment() {
-    unsafe {
-        COUNTER.as_mut().unwrap().0 += 1u64;
+    #[test]
+    fn test_init() {
+        assert_eq!(get(), Nat::from(0));
     }
-}
 
-#[query]
-fn get() -> candid::Nat {
-    unsafe { COUNTER.as_mut().unwrap().clone() }
-}
-
-#[update]
-fn set(input: candid::Nat) {
-    unsafe {
-        COUNTER.as_mut().unwrap().0 = input.0;
+    #[test]
+    fn test_inc() {
+        for i in 1..10 {
+            inc();
+            assert_eq!(get(), Nat::from(i));
+        }
     }
 }
 ```
