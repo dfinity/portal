@@ -89,7 +89,7 @@ Metrics can be used to gain insight into a wide range of information regarding y
 #### Approach 1: Expose a query call that returns a data structure containing your canister's metrics. 
 If this data is not intended to be public, this query can be configured to be rejected based on the caller's principal. This approach provides an response that is structured and easy to parse. 
 
-```
+```rust
 pub struct MyMetrics {   
   pub stable_memory_size: u32,   
   pub allocated_bytes: u32,   
