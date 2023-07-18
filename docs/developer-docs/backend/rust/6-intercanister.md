@@ -31,7 +31,7 @@ Let's take a look at the `src/lib.rs` file for each of these canisters.
 
 ```
 use candid::{CandidType, Principal};
-use ic_cdk_macros::*;
+use ic_cdk::update;
 use serde::Deserialize;
 use std::cell::RefCell;
 use std::collections::BTreeMap;
