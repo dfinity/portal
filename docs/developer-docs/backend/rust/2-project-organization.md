@@ -207,6 +207,8 @@ service {
 }
 ```
 
+For more information on Candid and to see the Rust equivalent of Candid types, please see the [Candid reference documentation](https://internetcomputer.org/docs/current/references/candid-ref). 
+
 To make sure that your .did file and your implementation are in sync with one another, use the Candid tooling. There are macros in the Rust CDK that allow you to annotate your Canister methods and extract the .did file.
 
 The latest versions of the Candid package have functions to check that one interface is a subtype of another interface, which is a Candid term for “backward compatible”.
