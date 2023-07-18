@@ -41,7 +41,6 @@ To replace the default program, open the `src/rust_profile_backend/Cargo.toml` f
 [dependencies]
 candid = "0.8.2"
 ic-cdk = "0.6.0"
-ic-cdk-macros = "0.6.0"
 serde = "1.0"
 ```
 
