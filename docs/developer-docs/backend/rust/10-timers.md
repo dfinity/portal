@@ -143,7 +143,7 @@ For the sake of simplicity, in this guide the `canister_post_upgrade` method jus
 In the code editor, open the `src/my_timers_backend/src/lib.rs` file and append the following:
 
 ```rust
-[...]
+// ...
 
 #[ic_cdk::post_upgrade]
 fn post_upgrade(timer_interval_secs: u64) {
