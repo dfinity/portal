@@ -319,13 +319,13 @@ dfx canister call rust_profile_backend getSelf
 The command displays the profile currently associated with the default identity, in this example, the Dupree profile:
 
 ```
-        (
-          record {
-            name = "Dupree";
-            description = "black dog";
-            keywords = vec { "funny tail"; "white nose" };
-          },
-        )
+(
+    record {
+        name = "Dupree";
+        description = "black dog";
+        keywords = vec { "funny tail"; "white nose" };
+    },
+)
 ```
 
 Call the `getSelf` function using the `Miles` user identity by running the following command:
