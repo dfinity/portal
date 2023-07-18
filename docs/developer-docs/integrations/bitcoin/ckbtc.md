@@ -73,7 +73,7 @@ The balance of the Bitcoin address is not tracked indefinitely. Tracking is stop
 If at least one new UTXO is discovered, the same amount of ckBTC tokens minus the KYT fee are minted and made available to the owner.
 
 ### `update_balance(owner: opt principal, subaccount: opt blob)`
-Instead of having the ckBTC minter track the balance of a Bitcoin address, the update_balance function can be invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
+Instead of having the ckBTC minter track the balance of a Bitcoin address, the `update_balance` function can be invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
 
 If there is at least one new UTXO, the corresponding ckBTC amount is minted, otherwise an error is returned.
 
