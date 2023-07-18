@@ -113,7 +113,7 @@ The status of a BTC retrieval request can be checked using this function. The di
 ### `get_minter_info`
 The function returns the following parameters internal to the ckBTC minter:
 
-- `kyt_fee
+- `kyt_fee`
 - `min_confirmations`
 - `retrieve_btc_min_amount`
 
