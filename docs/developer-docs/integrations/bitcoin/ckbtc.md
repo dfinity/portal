@@ -66,7 +66,7 @@ Note that the key derivation is not BIP-32 compliant where 31 bits are used for 
 This endpoint is work-in-progress and not available yet.
 :::
 
-The ckBTC minter starts tracking the Bitcoin address derived from the provided principal ID and subaccount using the get_btc_address endpoint. If no principal ID is provided, then the sender’s principal ID is used. If no subaccount is provided, then the default subaccount (all zeros) is used.
+The ckBTC minter starts tracking the Bitcoin address derived from the provided principal ID and subaccount using the `get_btc_address` endpoint. If no principal ID is provided, then the sender’s principal ID is used. If no subaccount is provided, then the default subaccount (all zeros) is used.
 
 The balance of the Bitcoin address is not tracked indefinitely. Tracking is stopped if either at least one new unspent transaction output (UTXO) is discovered or there is no new UTXO within a certain time interval (details about balance tracking are provided below).
 
