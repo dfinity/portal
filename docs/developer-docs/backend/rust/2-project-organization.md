@@ -35,8 +35,8 @@ webpack.config.js
 
 In this structure, you can see the backend canister, in this case `example_backend` contains the following components:
 
-```
 src/example_backend:
+```
 │   ├── Cargo.toml //
 │   ├── example_backend.did // The backend canister's Candid file. 
 │   └── src 
@@ -177,8 +177,10 @@ It is also recommended that you add comments that within your code that specify 
 
 ```rust
 thread_local! {
-    /* stable   */ static USERS: RefCell<Users> = ... ;
-    /* flexible */ static LAST_ACTIVE: Cell<UserId> = ...;
+    // static
+    static USERS: RefCell<Users> = ... ;
+    // flexible
+    static LAST_ACTIVE: Cell<UserId> = ...;
 }
 ```
 
@@ -218,8 +220,8 @@ The following is an example of using variant types to indicate error cases:
 type CreateEntityResult = variant {
   Ok  : record { entity_id : EntityId; };
   Err : opt variant {
-    EntityAlreadyExists : null;
-    NoSpaceLeftInThisShard : null;
+    EntityAlreadyExists;
+    NoSpaceLeftInThisShard;
   }
 };
 service : {
@@ -230,17 +232,6 @@ service : {
 :::info
 If a service method returns a result type, it can still reject the call. Therefore, there may not be much benefit from adding error variants like InvalidArgument or Unauthorized, as there is no meaningful way to recover from such errors programmatically. So rejecting malformed, invalid, or unauthorized requests is probably the right thing to do in most situations.
 :::
-
-### Making your variant types extensible
-
-To make Candid variant types evolve in a backward-compatible manner, one approach is to make the variant field optional:
-
-```
-type CreateEntityResult = variant {
-  Ok : record { /* */ };
-  Err : opt variant { /* * /}
-};
-```
 
 ## Next steps
 Now let's get started setting up the Rust [developer environment](./3-dev-env.md).
