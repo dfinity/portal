@@ -32,7 +32,7 @@ cd examples/rust/dip721-nft-container
 
 Let's review the `src/lib.rs` file which defines the permissions in the canister:
 
-```
+```rust
 #![allow(clippy::collapsible_else_if)]
 
 #[macro_use]
