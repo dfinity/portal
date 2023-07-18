@@ -96,22 +96,20 @@ thread_local! {
 }
 ```
 
-### Using `static mut STATE: Option<State> = None;`
-
-This approach uses plain global variables and forces you to write some boilerplate to access the global state. This method should also be used with caution, since it also allows you to obtain multiple non-exclusive mutable references. 
-
 ### Canister code should be target-independent 
 
 It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the System API should go into the main file.
 
 It is also possible to create a thin abstraction for the System API and test your code with a fake but faithful implementation. For example, we could use the following trait to abstract the stable memory API:
 
+```
 pub trait Memory {
     fn size(&self) -> WasmPages;
     fn grow(&self, pages: WasmPages) -> WasmPages;
     fn read(&self, offset: u32, dst: &mut [u8]);
     fn write(&self, offset: u32, src: &[u8]);
 }
+```
 
 ## Next steps
 Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [project organization](./2-project-organization.md)
