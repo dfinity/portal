@@ -31,8 +31,6 @@ Note: the following steps assume the terminal is still open and the current dire
 
 First, open the `src/my_timers_backend/Cargo.toml` file in a code editor. Replace the existing contents with the following:
 
-```
-The `src/my_timers_backend/Cargo.toml` file:
 
 ```toml
 [package]
