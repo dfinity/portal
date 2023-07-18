@@ -224,12 +224,13 @@ dfx canister call rust_profile_backend getSelf
 The command returns the profile you used the `update` function to add. For example:
 
 ```
-    (  record {
+(
+    record {
         name = "Luxi";
         description = "mountain dog";
         keywords = vec { "scars"; "toast" };
-        },
-    )
+    },
+)
 ```
 
 ### Searching records
