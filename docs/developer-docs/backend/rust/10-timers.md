@@ -226,7 +226,7 @@ dfx canister call my_timers_backend counter
 Example output:
 
 ```sh
-% dfx canister call my_timers_backend counter
+dfx canister call my_timers_backend counter
 (8 : nat64)
 ```
 
