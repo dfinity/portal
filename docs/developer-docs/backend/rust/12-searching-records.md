@@ -50,7 +50,6 @@ The next step is to add a Rust program that implements the `getSelf`, `update`, 
 
 ```rust
 use ic_cdk::{
-    api::call::ManualReply,
     export::{
         candid::{CandidType, Deserialize},
         Principal,
@@ -109,26 +108,6 @@ fn update(profile: Profile) {
     PROFILE_STORE.with(|profile_store| {
         profile_store.borrow_mut().insert(principal_id, profile);
     });
-}
-
-#[query(manual_reply = true)]
-fn search(text: String) -> ManualReply<Option<Profile>> {
-    let text = text.to_lowercase();
-    PROFILE_STORE.with(|profile_store| {
-        for (_, p) in profile_store.borrow().iter() {
-            if p.name.to_lowercase().contains(&text) || p.description.to_lowercase().contains(&text)
-            {
-                return ManualReply::one(Some(p));
-            }
-
-            for x in p.keywords.iter() {
-                if x.to_lowercase() == text {
-                    return ManualReply::one(Some(p));
-                }
-            }
-        }
-        ManualReply::one(None::<Profile>)
-    })
 }
 ```
 
