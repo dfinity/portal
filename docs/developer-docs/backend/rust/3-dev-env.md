@@ -10,14 +10,6 @@ Before you start your project, verify the following:
 
 - [x] You have stopped any local execution environment processes running on your computer.
 
-- [x] You have `cmake` installed. For macOS, use Homebrew with the following command:
-
-    ``` bash
-    brew install cmake
-    ```
-
-    For instructions on how to install Homebrew, see the [Homebrew documentation](https://docs.brew.sh/Installation).
-
 - [x] You have installed [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 - [x] You have downloaded and installed the Rust programming language and Cargo as described in the [Rust installation instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for your operating system.
