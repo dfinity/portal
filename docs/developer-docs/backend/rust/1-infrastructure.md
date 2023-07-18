@@ -114,9 +114,10 @@ fn http_request(req: HttpRequest) -> HttpResponse {
   match path(&req) {     
     "/metrics" => HttpResponse {         
         status_code: 200,         
-        body: format!(r#"stable_memory_bytes {}
-                         allocated_bytes {}  
-                         registered_users_total {}"#, 
+        body: format!("\
+stable_memory_bytes {}
+allocated_bytes {}  
+registered_users_total {}", 
                       stable_memory_bytes, allocated_bytes, num_users),         
         // ...     
     }   
