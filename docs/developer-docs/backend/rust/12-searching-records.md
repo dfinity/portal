@@ -357,13 +357,13 @@ dfx canister call rust_profile_backend search '("Great")'
 The command returns the `Miles` profile:
 
 ```
-    (
-        opt record {
-        name = "Miles";
-        description = "Great Dane";
-        keywords = vec { "Boston"; "mantle"; "three-legged" };
-        },
-    )
+(
+    opt record {
+    name = "Miles";
+    description = "Great Dane";
+    keywords = vec { "Boston"; "mantle"; "three-legged" };
+    },
+)
 ```
 
 Call the `search` function to further test the whether the correct profile is returned.
