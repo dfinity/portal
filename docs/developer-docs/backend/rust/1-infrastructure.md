@@ -24,7 +24,7 @@ When building a backend canister, it's important to keep two things in mind:
 
 ### Making canister builds reproducible
 
-To create a reproducible canister build, there are two popular workflows: Linux containers like Docker and Nix. Container technologies such as Docker are more popular, provide more resources and may be easier to set up. In comparison, Nix builds tend to be more widely reproducible. Either workflow can be used. Typically, building your canister using a public continuos integration (CI) can help provide easy to follow instructions for reproducing your final project. 
+To create a reproducible canister build, there are two popular workflows: Linux containers like Docker and Nix. Container technologies such as Docker are more popular, provide more resources and may be easier to set up. In comparison, Nix builds tend to be more widely reproducible. Either workflow can be used. Typically, building your canister using a public continuous integration system (CI) can help provide easy to follow instructions for reproducing your final project. 
 
 It is the canister developer’s responsibility to provide a reproducible way of building a WebAssembly module from the published sources. If your code is still within development, it can help to provide users or other developers with module hashes that correlate to each released version of the project's source code. 
 
