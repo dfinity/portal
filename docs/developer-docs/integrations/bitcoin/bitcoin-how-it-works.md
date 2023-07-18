@@ -6,7 +6,7 @@ Bitcoin-enabling the IC has required us to solve two advanced engineering challe
 - A protocol-level integration of the IC with the Bitcoin network.
 - A chain-key signatures based on a novel threshold ECDSA protocol.
 
-This page will provide a general overview of the Bitcoin integration technology. For a deeper technical explanation of ckBTC, please see the [wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
+This page provides a general overview of the Bitcoin integration technology. For a deeper technical explanation of ckBTC, please see the [wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
 
 ## Protocol-level integration of the IC with the Bitcoin network
 
