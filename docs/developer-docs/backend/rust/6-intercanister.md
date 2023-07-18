@@ -29,7 +29,7 @@ Let's take a look at the `src/lib.rs` file for each of these canisters.
 
 `src/publisher/src/lib.rs`:
 
-```
+```rust
 use candid::{CandidType, Principal};
 use ic_cdk::update;
 use serde::Deserialize;
