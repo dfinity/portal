@@ -26,7 +26,7 @@ Before you start your project, verify the following:
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
     ```
 
-- [x] You have downloaded `wasm32-unknown-unknown`:
+- [x] You have installed the `wasm32-unknown-unknown` target:
 
     ``` bash
     rustup target add wasm32-unknown-unknown
