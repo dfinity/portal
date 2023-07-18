@@ -45,8 +45,7 @@ To replace the default dapp, open the template `src/rust_counter_backend/src/lib
 Then, copy and paste this code into the `src/rust_counter_backend/src/lib.rs` file.
 
 ```rust
-use ic_cdk::export::candid;
-use ic_cdk_macros::*;
+use ic_cdk::{export::candid, init, query, update};
 
 static mut COUNTER: Option<candid::Nat> = None;
 
