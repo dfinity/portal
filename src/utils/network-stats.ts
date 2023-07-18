@@ -52,6 +52,19 @@ export function getTransactionRateV3(
     .then((res) => res.message_execution_rate[0][1]);
 }
 
+export function getEthEquivTxRateMultiplier(): Promise<number> {
+  return fetch(
+    "https://ic-api.internetcomputer.org/api/v3/metrics/icp-txn-vs-eth-txn"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          icp_txn_vs_eth_txn: [timestamp: number, rate: number];
+        }>
+    )
+    .then((res) => res.icp_txn_vs_eth_txn[1]);
+}
+
 export function getCyclesBurnRate(): Promise<number> {
   return fetch(
     "https://ic-api.internetcomputer.org/api/v3/metrics/cycle-burn-rate"
