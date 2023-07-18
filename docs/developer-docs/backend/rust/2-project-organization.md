@@ -175,7 +175,7 @@ It is best practice to store all global variables privately in a single file; th
 
 It is also recommended that you add comments that within your code that specify which variables are stable, such as:
 
-```
+```rust
 thread_local! {
     /* stable   */ static USERS: RefCell<Users> = ... ;
     /* flexible */ static LAST_ACTIVE: Cell<UserId> = ...;
