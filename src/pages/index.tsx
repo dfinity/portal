@@ -36,8 +36,8 @@ export default function Home(): JSX.Element {
             </>
           }
           subheadline="build on the network"
-          cta="Start building"
-          ctaLink="/docs/current/home"
+          cta="Get to know ICP"
+          ctaLink="/what-is-the-ic"
           cards={[
             {
               caption: "Internet Identity",
