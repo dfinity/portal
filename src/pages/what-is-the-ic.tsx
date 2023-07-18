@@ -144,7 +144,7 @@ function WhatIsIcpPage() {
                   Canisters can be made unmodifiable, creating permanent logic
                   on the network, or placed under the control of autonomous
                   governance – empowering communities to run Web3, or securing
-                  an enterprise
+                  an enterprise.
                 </p>
               </motion.div>
               <motion.div
@@ -161,7 +161,7 @@ function WhatIsIcpPage() {
                   The global spend on IT personnel is now $1.8 trillion.
                   Canister software greatly simplifies the development and
                   maintenance of online systems and services, driving cost
-                  savings, and making you faster to market
+                  savings, and making you faster to market.
                 </p>
               </motion.div>
               <motion.div
@@ -211,7 +211,7 @@ function WhatIsIcpPage() {
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                   The Internet Computer is currently adding support for Web3 “AI
                   compute units.” AI will also run on the network, supporting
-                  native web3 integrations, and trustlessness combinations of
+                  native Web3 integrations, and trustlessness combinations of
                   models and data.
                 </p>
               </motion.div>
@@ -235,8 +235,8 @@ function WhatIsIcpPage() {
               </h2>
 
               <p className="tw-lead-sm mb-0">
-                Standardized hardware devices called “node machines” are run by
-                independent parties called “node providers,” from different data
+                Standardized hardware devices called node machines are run by
+                independent parties called node providers, from different data
                 centers, geographies, and jurisdictions around the world. Node
                 providers run their hardware to earn tokenized rewards, rather
                 like independent ISPs and backbone providers operate routing
@@ -252,7 +252,7 @@ function WhatIsIcpPage() {
               </h2>
               <p className="tw-lead-sm mb-0">
                 The ICP protocols combine node machines into highly efficient
-                “subnet blockchains,” which add capacity for hosting tamperproof
+                subnet blockchains, which add capacity for hosting tamperproof
                 canisters. The Internet Computer has a permissionless automated
                 governance system called the Network Nervous System, which
                 instructs nodes to join or leave subnets.
@@ -330,7 +330,7 @@ function WhatIsIcpPage() {
                 their phone. Under the skin, the framework relies on TPM chips
                 inside modern hardware, which keep keys and signing secure, the
                 WebAuthn protocol, which connects code inside the web browser to
-                those TPMs, and advanced “chain-key” cryptography running on the
+                those TPMs, and advanced chain-key cryptography running on the
                 Internet Computer network.
               </p>
               <Link
@@ -348,7 +348,7 @@ function WhatIsIcpPage() {
                 Open Internet Services
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                “Open internet services” are services that run autonomously
+                Open internet services are services that run autonomously
                 under the exclusive control of a decentralized governance system
                 called a Service Nervous System (SNS), an evolution of DAO
                 technology. This can enable a Web3 service to be transparently
@@ -361,7 +361,7 @@ function WhatIsIcpPage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://decrypt.co/146830/sodexo-drops-nfts-twist-employees-not-public"
+                href="/sns"
               >
                 <LinkArrowRight /> User-run Web3
               </Link>
@@ -377,7 +377,7 @@ function WhatIsIcpPage() {
                 are backdoors enabling spying, and kill switches. With no
                 alternative, governments had to surrender sovereignty over the
                 digital foundations society relies on. Now the Internet Computer
-                is adding special localized “sovereign subnets” for usage by
+                is adding special localized sovereign subnets for usage by
                 governments, NGOs and enterprises with special needs:
                 unstoppable, secure, and transparent sovereign platform
                 infrastructure.
