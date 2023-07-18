@@ -109,7 +109,7 @@ fn metrics() -> MyMetrics {
 
 For text-based exposition formats, the following example can be used:
 
-```
+```rust
 fn http_request(req: HttpRequest) -> HttpResponse {   
   match path(&req) {     
     "/metrics" => HttpResponse {         
