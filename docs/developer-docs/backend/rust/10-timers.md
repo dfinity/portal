@@ -209,7 +209,7 @@ The counter inside the canister starts increasing every second.
 Example output:
 
 ```sh
-% dfx deploy my_timers_backend --argument 1
+dfx deploy my_timers_backend --argument 1
 [...]
 Deployed canisters.
 URLs:
