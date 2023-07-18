@@ -82,15 +82,13 @@ candid = "0.8.2"
 ic-cdk = "0.7.0"
 ```
 
-:::info
-Note: Since `ic-cdk` v0.7, all macros are re-exported. Users no longer have to depend on `ic-cdk-macros` explicitly. In source code, they can be used as `ic_cdk::query`.
-:::
-
 Save the file.
 
-## Compiling the canister
+## Deploying the canister to your local execution environment 
 
-To compile the canister, run the command:
+## Creating the canister
+
+First, create an empty canister for the canister code to be installed into. To create the canister, run the command:
 
 ```
 dfx canister create hello_world_backend
@@ -103,9 +101,25 @@ Creating canister hello_world_backend...
 hello_world_backend canister created with canister id: br5f7-7uaaa-aaaaa-qaaca-cai
 ```
 
-## Deploying the canister to your local execution environment 
+### Building the canister
 
-To deploy the canister, first start the dfx local execution environment with the command:
+Next, you need to compile your program into a WebAssembly module that can be deployed on the IC by building the canister. To build the canister, run the command:
+
+```
+dfx build hello_world_backend
+```
+
+### Installing the canister
+
+Then, install the compiled code into your canister with the command:
+
+```
+dfx canister install hello_world_backend
+```
+
+### Deploying to the execution environment
+
+To deploy the canister, start the dfx local execution environment with the command:
 
 ```
 dfx start --clean --background
@@ -148,6 +162,10 @@ Then, to deploy the canister to the mainnet, use the command:
 ```
 dfx deploy hello_world_backend --network ic
 ```
+
+:::info
+For all commands that are intended to interact with the mainnet, the `--network ic` flag needs to be used.
+:::
 
 ## Testing the canister
 
