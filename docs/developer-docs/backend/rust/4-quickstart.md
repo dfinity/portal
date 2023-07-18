@@ -58,7 +58,7 @@ dfx deploy
 
 The `dfx deploy` command output displays information about each of the operations it performs similar to the following excerpt:
 
-``` bash
+```
 Creating a wallet canister on the local network.
 The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
 Deploying all canisters.
@@ -100,7 +100,7 @@ Using this method, we open the so called [`Candid UI` canister](https://github.c
 
 To test the deployed `rust_hello_backend` locally from your command line using dfx, you can run the `greet` function by running the following command:
 
-``` bash
+```
 dfx canister call rust_hello_backend greet world
 ```
 
@@ -115,3 +115,9 @@ To stop the local execution environment running on your computer, run the follow
 ```
 dfx stop
 ```
+
+When dfx is started again in the future, it should be started with the `dfx start --clean` command to wipe the previous state. 
+
+## Next steps
+
+Now, let's take a closer look into writing and [deploying canisters](5-deploying.md)
