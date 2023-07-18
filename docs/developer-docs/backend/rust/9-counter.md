@@ -101,7 +101,7 @@ Save your changes and close the `rust_counter_backend.did` file to continue.
 
 ## Writing the Cargo.toml file
 
-As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
+As with any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
 
 Open the `src/rust_counter_backend/Cargo.toml` file and replace the existing content with the following:
 
