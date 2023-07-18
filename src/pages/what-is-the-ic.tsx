@@ -78,19 +78,6 @@ function WhatIsIcpPage() {
           </AnimateSpawn>
         </section>
 
-        {/* <AnimateSpawn
-          className="container-12 relative"
-          el={motion.section}
-          variants={transitions.fadeIn}
-        >
-          <div className="text-center w-[700px] md:w-full relative -left-20 md:left-auto md:absolute top-48 sm:top-48 md:top-0 right-0 translate-x-3/10 -translate-y-1/2 -mt-30 md:-mt-24">
-            <img
-              src="/img/what-is-the-ic/hero.svg"
-              alt=""
-              className="w-full max-w-none md:max-w-none"
-            />
-          </div>
-        </AnimateSpawn> */}
         <AnimateSpawn
           className="container-8 mt-80 md:mt-[540px] relative"
           el={motion.section}
@@ -186,7 +173,7 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Simple</h3>
+                <h3 className="tw-lead my-3 md:tw-title-sm">Sovereign</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                   If your enterprise, government or Web3 service builds on
                   centralized traditional IT, there are kill switches and
