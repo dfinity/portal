@@ -195,7 +195,7 @@ function NodeProvidersPage() {
               services. Rewards are set by the NNS DAO, which follows the 30-day
               average price of ICP, and are distributed on the 15th of every
               month. The NNS DAO issues rewards depending on three main factors:
-              generation of hardware (gen 1 or gen2), geographic location, and
+              generation of hardware (Gen 1 or Gen2), geographic location, and
               total number of nodes operated.
             </p>
             <p className="mb-0">
@@ -292,8 +292,8 @@ function NodeProvidersPage() {
               entities across the globe, including...
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="" className="button-primary">
-                Join the community
+              <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" className="button-primary">
+                Join the NP community
               </Link>
             </motion.p>
           </AnimateSpawn>
@@ -496,28 +496,28 @@ function NodeProvidersPage() {
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide" target="_blank">
-                      Choose and purchase hardware
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
+                       Fill out self-declaration form 
                     </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Networking_Guide" target="_blank">
-                      Set up servers in a data center
-                    </Link> 
-                  </li>
-                  <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
-                      Fill out self-declaration form
-                    </Link> 
-                  </li>
-                  <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
-                      Submit proposal and onboard your nodes to the Internet Computer
+                    <Link href="https://https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
+                       Submit proposal and onboard your nodes to the Internet Computer 
                     </Link> 
                   </li>
                   <li className="checklist-item pl-8">
                     <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel" target="_blank">
-                      Join the node provider matrix channel
+                          Join the node provider matrix channel 
+                    </Link> 
+                  </li>
+                  <li className="checklist-item pl-8">
+                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide" target="_blank">
+                      Choose and purchase hardware 
+                    </Link> 
+                  </li>
+                  <li className="checklist-item pl-8">
+                    <Link href="https://https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
+                         Set up servers in a data center
                     </Link> 
                   </li>
                 </ul>
