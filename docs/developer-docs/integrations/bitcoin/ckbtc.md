@@ -124,5 +124,9 @@ Note that this endpoint is used for debugging purposes and there is no guarantee
 
 ## Resources
 
-If you want to learn more about the inner workings of the ckBTC canister, see the
-[ckBTC wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
+To start building your own apps with Bitcoin see the following tutorials:
+
+- [ckBTC wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
+- [Deploying your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md).
+- [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
+- [Local development](./local-development.md).
