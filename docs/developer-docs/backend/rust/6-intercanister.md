@@ -2,7 +2,7 @@
 
 ## Overview
 
-Inter-canister calls can be used to update information between two or more canisters. With these inter-canister calls, functions may be passed as arguments that can be used as callbacks (also referred to as update calls). 
+Inter-canister calls can be used to update information between two or more canisters. 
 
 To demonstrate these inter-canister calls, we'll use an example project called "PubSub". 
 
@@ -23,7 +23,7 @@ cd examples/rust/pub-sub/
 
 This project is comprised of two canisters: publisher and subscriber. 
 
-The **subscriber** canister contains a record of topics that can be published to via inter-canister calls from the **publisher** canister. 
+The **subscriber** canister contains a record of topics. The **publisher** canister uses inter-canister calls to add topics to the record within the subscriber canister. 
 
 Let's take a look at the `src/lib.rs` file for each of these canisters.
 
@@ -66,6 +66,7 @@ fn subscribe(subscriber: Subscriber) {
 #[update]
 async fn publish(counter: Counter) {
     SUBSCRIBERS.with(|subscribers| {
+        // In this example, we are explicitly ignoring the error.
         for (k, v) in subscribers.borrow().iter() {
             if v.topic == counter.topic {
                 let _call_result: Result<(), _> =
@@ -125,7 +126,7 @@ fn get_count() -> u64 {
 
 In this code, there are three main methods: two inter-canister update methods and a query method. 
 
-The first method, `async fn setup_subscribe(publisher_id: Principal, topic: String)` provides functionality for the publisher canister to subscribe to topics within the `subscriber` canister.
+The first method, `async fn setup_subscribe(publisher_id: Principal, topic: String)` provides functionality for the publisher canister to subscribe to topics within the `subscriber` canister. This function is called by the publisher canister. 
 
 The second method, `fn update_count(counter: Counter)` updates the counter record for each published value in a topic within the subscriber canister. 
 
