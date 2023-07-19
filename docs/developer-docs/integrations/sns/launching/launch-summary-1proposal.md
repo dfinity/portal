@@ -1,4 +1,8 @@
 # Stages of an SNS launch
+## Overview
+During an SNS launch, a dapp is handed over to the NNS and the NNS both
+creates the SNS canisters and starts a decentralization swap to decentralize the SNS and
+thereby the dapp (see [here](../introduction/sns-launch.md)).
 
 ## SNS launch Stages
 Handing over a dapp's control to a newly created SNS proceeds in the following high
