@@ -32,7 +32,7 @@ In more detail, it is controlled by the NNS root canister.
 
 * At the swap's end the collected ICP are “swapped” for the SNS tokens; the
   participants get staked SNS tokens in the form of SNS neurons and the SNS gets the
-  collected ICP. Each swap participant will receive their portion of the pool of SNS
+  collected ICP in an SNS controlled treasury. Each swap participant will receive their portion of the pool of SNS
   tokens, pro-rated by their share of the overall number of ICP contributed. 
   For example, if the swap canister initially held 1000 SNS tokens and 500 ICP tokens
   were collected during the decentralization swap, then the exchange rate would be 2:1
