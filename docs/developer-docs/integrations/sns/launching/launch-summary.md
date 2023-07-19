@@ -2,10 +2,10 @@
 
 ## Overview
 
-A crucial purpose of an SNS launch is to decentralize the control of an SNS and thereby of
-the dapp that the SNS governs.
+A crucial purpose of an SNS launch is to decentralize the control of an SNS 
+and thereby of the dapp that the SNS governs.
 
-Thereby, new tokens must be distributed to a large community to ensure
+To achieve this, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
 
 The current SNS version provides one simple way to achieve this: a developer can hand
@@ -19,7 +19,7 @@ We first explain the decentralization swap and then the stages for an SNS launch
 ### Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that 
-is owned and run by the IC.
+is owned and run by the NNS.
 In more detail, it is controlled by the NNS root canister.
 
 * The swap canister is set up at the start with a defined amount of SNS tokens to be

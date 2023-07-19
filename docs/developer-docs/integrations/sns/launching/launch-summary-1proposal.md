@@ -2,10 +2,10 @@
 
 ## Overview
 
-A crucial purpose of an SNS launch is to decentralize the control of an SNS and thereby
-the dapp that the SNS governs.
+A crucial purpose of an SNS launch is to decentralize the control of an SNS
+and thereby of the dapp that the SNS governs.
 
-Thereby, new tokens must be distributed to a large community to ensure
+To achieve this, new tokens must be distributed to a large community to ensure
 proper decentralization of the voting power. There are of course many ways to do so.
 
 The SNS provides one simple way to achieve this: a developer can hand over their dapp
@@ -76,7 +76,7 @@ The NNS community's approval is relevant in Stage 2.
   </tr>
 </table>
 
-### 2. Dapp developers submit NNS proposal to create SNS
+### 2. Submit NNS proposal to create SNS
 
 This proposal presents all the initial parameters for the SNS as defined in
 the first Stage to the NNS community. 
@@ -221,9 +221,9 @@ This results in the following situation:
 </table>
 
 
-### 6. (Automatically) SNS-W sets SNS root as single controller of dapp
+### 6. (Automatically) SNS-W sets SNS root as sole controller of dapp
 Once the SNS canisters are deployed, [SNS-W](../introduction/sns-architecture.md#SNS-W)
-sets the SNS root as the single controller of the dapp canister(s).
+sets the SNS root as the sole controller of the dapp canister(s).
 
 For technical reasons, the NNS root canister was added as the co-controller of the dapp
 in Stage 3.
@@ -231,10 +231,12 @@ Therefore, the SNS-W orchestrates the necessary updates involving NNS root for
 making the appropriate changes.
 
 In detail, this includes two steps:
-* First, SNS-W adds the newly created SNS root cansiter as the dapp canister(s)
-  controller and removes the original dapp developers
-  This is done via a call to NNS root who is the co-controller of the dapp cansiter(s)
-  and thus has the necessary permissions.
+* First, SNS-W removes the original dapp developers from controlling the
+  dapp canister(s). 
+  Next, SNS-W adds the newly created SNS root canister as the dapp canister(s)
+  controller.
+  This is done via a call to NNS root who is the co-controller of the dapp
+  canister(s) and thus has the necessary permissions.
 * If this transition worked successfully, SNS-W asks the NNS root canister to 
   remove itself as controller.
   

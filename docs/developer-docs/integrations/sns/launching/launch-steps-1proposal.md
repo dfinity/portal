@@ -36,64 +36,50 @@ ls bazel-bin/rs/sns/cli/sns
 
 Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
 
-### 2. Dapp developers submit NNS proposal to create SNS
+### 2. Submit NNS proposal to create SNS
 
-Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an
-SNS for a given dapp.
+Anyone who owns an eligible NNS neuron with enough stake can submit an NNS 
+proposal to create an SNS for a given dapp.
 Of course it is crucial to set the right parameters in this proposal.
 You can also find an example how this command is used in the SNS local testing
 [here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
 
-To create such a proposal, a common path is to use `ic-admin` and run the following:
-[TODO: update command]
+To create such a proposal, a common path is to use `sns-cli` and run the following:
 ```
-ic-admin   \
-   --nns-url "${NETWORK_URL}" propose-to-open-sns-token-swap  \
-   --min-participants 3  \
-   --min-icp-e8s 5000000000  \
-   --max-icp-e8s 50000000000  \
-   --min-participant-icp-e8s 100000000  \
-   --max-participant-icp-e8s 20000000000  \
-   --swap-due-timestamp-seconds "${DEADLINE}"  \
-   --sns-token-e8s 500000000000  \
-   --target-swap-canister-id "${SNS_SWAP_ID}"  \
-   --community-fund-investment-e8s 5000000000  \
-   --neuron-basket-count 3  \
-   --neuron-basket-dissolve-delay-interval-seconds 31536000  \
-   --proposal-title "Decentralize this SNS"  \
-   --summary "Decentralize this SNS"
+dfx sns propose --network ic --neuron $NEURON_ID sns_init.yaml
 ```
-
-* One can substitute `NETWORK_URL` with `https://nns.ic0.app`.
 
 ### 3. Dapp developers add NNS root as co-controller of dapp
 
-[TODO: add command]
+They can do so by running the following command:
+```
+dfx sns prepare-canisters add-nns-root $CANISTER_ID
+```
 
 ### 4. The NNS proposal is decided
 Nothing technical for dapp developers to do. Community votes.
 
 
-### 5. (Automatically) SNS-W deploys SNS canisters
+### 5. (Automated) SNS-W deploys SNS canisters
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-### 6. (Automatically) SNS-W sets SNS root as single controller of dapp
+### 6. (Automated) SNS-W sets SNS root as sole controller of dapp
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-### 7. (Automatically) SNS-W initializes SNS canisters according to settings from Step 1
+### 7. (Automated) SNS-W initializes SNS canisters according to settings from Step 1
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-### 8. (Automatically) SNS swap starts
+### 8. (Automated) SNS swap starts
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-### 9. (Automatically) SNS swap ends
+### 9. (Automated) SNS swap ends
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-### 10. (Automatically) SNS swap finalizes
+### 10. (Automated) SNS swap finalizes
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
