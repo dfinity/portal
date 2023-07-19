@@ -48,7 +48,7 @@ The NNS community's approval is relevant in Stage 2.
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp
   These parameters define all the initial parameters of the SNS, including
   * the token name, token symbol, ledger transaction fee
-  * the tokenomics and how the governance will work
+  * the tokenomics and how governance will work
   * the initial token distribution
   * the conditions for the decentralization swap, including the swap's start date and
     how many ICP tokens should at least and at most be collected
