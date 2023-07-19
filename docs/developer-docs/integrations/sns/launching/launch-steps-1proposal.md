@@ -42,7 +42,7 @@ Anyone who owns an eligible NNS neuron with enough stake can submit an NNS propo
 SNS for a given dapp.
 Of course it is crucial to set the right parameters in this proposal.
 You can also find an example how this command is used in the SNS local testing
-[here](https://github.com/dfinity/sns-testing/blob/main/open_sns_sale.sh#L11-L26).
+[here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
 
 To create such a proposal, a common path is to use `ic-admin` and run the following:
 [TODO: update command]
