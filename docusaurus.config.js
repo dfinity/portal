@@ -271,6 +271,10 @@ const navbarItems = [
           label: "DFINITY Foundation",
           href: "https://dfinity.org",
         },
+        {
+          label: "Upcoming events",
+          href: "https://dfinity.org/events-and-news/#events",
+        },
       ],
       [
         menuDivider("Join The Discussion"),
