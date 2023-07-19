@@ -13,7 +13,7 @@ Based on the type signature of the actor, Candid also provides a web interface t
 
 After you have deployed your project in the local canister execution environment using the `dfx deploy` or `dfx canister install` command, you can access the Candid web interface endpoint in a browser. 
 
-This web interface—, the Candid UI, exposes the service description in a form, enabling you to quickly view and test functions and experiment with entering different data types without writing any front-end code.
+This web interface, the Candid UI, exposes the service description in a form, enabling you to quickly view and test functions and experiment with entering different data types without writing any front-end code.
 
 To use the Candid web interface to test canister functions, first find the Candid UI canister identifier associated with the current project by running the command:
 
