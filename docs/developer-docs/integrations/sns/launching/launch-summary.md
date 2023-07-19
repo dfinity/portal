@@ -1,42 +1,12 @@
 # Stages of an SNS launch
-
 ## Overview
+During an SNS launch, a dapp is handed over to the NNS and the NNS both
+creates the SNS canisters and starts a decentralization swap to decentralize the SNS and 
+thereby the dapp (see [here](../introduction/sns-launch.md)).
 
-A crucial purpose of an SNS launch is to decentralize the control of an SNS and thereby of
-the dapp that the SNS governs.
-
-Thereby, new tokens must be distributed to a large community to ensure
-proper decentralization of the voting power. There are of course many ways to do so.
-
-The current SNS version provides one simple way to achieve this: a developer can hand over their dapp to the NNS and ask it to start a decentralization
-swap for the newly created SNS.
-
-We first explain the decentralization swap and then the stages for an SNS launch.
-
-## Key concepts
-
-### Decentralization swap
-
-The launch of each SNS includes a separate **decentralization swap canister** that 
-is owned and run by the IC.
-In more detail, it is controlled by the NNS root canister.
-
-* The swap canister is set up at the start with a defined amount of SNS tokens to be
-  distributed publicly.
-
-* During the decentralization swap, participants can send ICP to the swap canister
-  to contribute to the dapp’s funding.
-
-* At the swap's end the collected ICP are “swapped” for the SNS tokens; the
-  participants get staked SNS tokens in the form of SNS neurons and the SNS gets the
-  collected ICP. Each swap participant will receive their portion of the pool of SNS
-  tokens, pro-rated by their share of the overall number of ICP contributed. 
-  For example, if the swap canister initially held 1000 SNS tokens and 500 ICP tokens
-  were collected during the decentralization swap, then the exchange rate would be 2:1
-  and each participant would get 2 SNS tokens for each ICP token they contributed.
-
-## Stages
-Handing over a dapp's control to a newly created SNS proceeds in the following high level stages.
+## SNS launch Stages
+Handing over a dapp's control to a newly created SNS proceeds in the following high level
+stages.
 Note that the NNS community's approval is relevant in two stages (stages 3, 7, and 9).
 
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp
@@ -55,7 +25,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   </tr>
   <tr>
     <td class="light-green-text">Decentralization swap state</td>
-    <td class="light-green-text">Pending</td>
+    <td class="light-green-text">Not existing</td>
   </tr>
    <tr>
     <td class="light-green-text">NNS Proposal #1</td>
@@ -103,7 +73,7 @@ What we have at this stage:
   </tr>
   <tr>
     <td>Decentralization swap state</td>
-    <td>Pending</td>
+    <td>Not existing</td>
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
@@ -140,11 +110,12 @@ What we have at this stage:
 </table>
 
 
-### 3. Proposal #1 (of 3) is passed or rejected
+### 3. Proposal #1 (of 3) is adopted or rejected
 
 This is the **first of three** proposals that need to successfully pass.
 
-If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS subnet, it does **not** guarantee the rest of the next stages will complete.
+If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS 
+subnet, it does **not** guarantee the rest of the next stages will complete.
 
 If the proposal is adopted successfully, at the end of this step, we have:
 
@@ -157,11 +128,11 @@ If the proposal is adopted successfully, at the end of this step, we have:
   </tr>
   <tr>
     <td>Decentralization swap state</td>
-    <td>Pending</td>
+    <td>Not existing</td>
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
-    <td class="light-orange-text">Approved</td>
+    <td class="light-orange-text">Adopted</td>
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
@@ -206,7 +177,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
 
 ### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
 
-When all initial parameters are specified and the NNS approved the SNS launch,
+When all initial parameters are specified and the NNS adopted the SNS launch,
 the SNS canisters can be created by a manual call to [SNS-W](../introduction/sns-architecture.md#SNS-W).
 This will initiate the creation of the SNS canisters and set their initial parameters as
 chosen in [Step 1](#SNS-launch-step-preparation).
@@ -304,7 +275,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 6. Proposal #2 (of 3) is passed or rejected
+### 6. Proposal #2 (of 3) is adopter or rejected
 
 The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
@@ -381,7 +352,7 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 8. Proposal #3 (of 3) is passed or rejected
+### 8. Proposal #3 (of 3) is adopted or rejected
 
 This is the **last of three** proposals that need to successfully pass for the process to continue. 
 
@@ -392,7 +363,7 @@ existing SNS canisters as well as the swap parameters that are set in the propos
 * If the NNS proposal is rejected, the SNS launch is aborted and the dapp’s control is handed
 back to the original developers of the dapp.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 
 #### Table 1
@@ -408,15 +379,15 @@ If successful, at the end of stage, we the following has changed:
   </tr>
    <tr>
     <td>NNS Proposal #1</td>
-    <td>Approved</td>
+    <td>Adopted</td>
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
-    <td>Approved</td>
+    <td>Adopted</td>
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td class="light-orange-text">Approved</td>
+    <td class="light-orange-text">Adopted</td>
   </tr>
 </table>
 
