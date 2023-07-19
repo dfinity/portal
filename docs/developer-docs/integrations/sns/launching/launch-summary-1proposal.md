@@ -82,7 +82,7 @@ This proposal presents all the initial parameters for the SNS as defined in
 the first Stage to the NNS community. 
 It also defines which dapp canister(s) should be handed over to the SNS.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 #### Table 1: Canisters
 
