@@ -114,7 +114,7 @@ If successful, at the end of stage, the following has changed:
 </table>
 
 ### 3. Dapp developers add NNS root as co-controller of dapp
-Shortly after Step 2. and while the voting on the proposal is ongoing, the dapp
+Shortly after Step 2 and while the voting on the proposal is ongoing, the dapp
 developers hand over the dapp to the NNS by adding the NNS root canister as an
 additional controller for the dapp canister(s).
 This is necessary in order for the rest of the steps to work fully automatically.
