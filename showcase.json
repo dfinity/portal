@@ -1938,6 +1938,26 @@
     "submittableId": "35750450"
   },
   {
+    "name": "Mops",
+    "description": "On-chain package manager for Motoko. Mops makes it easy to discover, install and publish Motoko packages.",
+    "website": "https://mops.one",
+    "logo": "/img/showcase/mops_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "mops",
+    "oneLiner": "On-chain package manager for Motoko",
+    "stats": "15,000+ downloads",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ZenVoich/mops",
+    "twitter": "https://twitter.com/mops_one",
+    "youtube": "",
+    "submittableId": ""
+  },
+  {
     "id": "orally-network",
     "name": "Orally",
     "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
@@ -2086,5 +2106,23 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/rakeoff-labs",
     "twitter": "https://twitter.com/rakeoff_app"
+  },
+  {
+    "id": "rubaru",
+    "name": "RuBaRu",
+    "oneLiner": "Building On-Chain Regenerative Creator-Consumer Economy",
+    "website": "https://rubaru.app/",
+    "tags": ["SocialFi" ,  "DAO", "Bitcoin"],
+    "description": "RuBaRu aims to create a vibrant 100% On-Chain DAO-based tokenized economy owned & governed by the community, where creators, influencers, consumers, and brands coexist harmoniously. By doing so, we unlock new opportunities, reshape digital creativity, drive economic growth, and foster a thriving ecosystem of shared prosperity.",
+    "stats": "100% On-Chain Data Storage",
+    "logo": "/img/showcase/rubaru_logo.png",
+    "display": "Large",
+    "usesInternetIdentity": true,
+    "youtube": "https://youtu.be/CBumSMJRV08", 
+    "twitter": "https://twitter.com/RuBaRu_app",
+    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"], 
+    "video": "/img/showcase/rubaru_video.mp4", 
+    "videoContentType": "video/mp4",
+    "submittableId": "39223821"
   }
 ]
