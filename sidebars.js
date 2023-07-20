@@ -419,6 +419,7 @@ const sidebars = {
                       items: [
                         "developer-docs/integrations/sns/introduction/sns-intro-high-level",
                         "developer-docs/integrations/sns/introduction/sns-architecture",
+                        "developer-docs/integrations/sns/introduction/sns-launch",
                         "developer-docs/integrations/sns/introduction/dao-alternatives",
                       ],
                     },
