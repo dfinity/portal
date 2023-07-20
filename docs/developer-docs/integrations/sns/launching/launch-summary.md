@@ -86,7 +86,7 @@ What we have at this stage:
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
    <tr>
