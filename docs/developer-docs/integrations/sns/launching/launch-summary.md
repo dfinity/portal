@@ -90,7 +90,7 @@ What we have at this stage:
     <th>State</th>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
+    <td>NNS proposal #1</td>
     <td class="light-orange-text">Submitted</td>
   </tr>
    <tr>
