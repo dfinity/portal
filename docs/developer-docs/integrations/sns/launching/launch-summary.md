@@ -42,7 +42,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
     <th>State</th>
   </tr>
    <tr>
-    <td class="light-green-text">NNS Proposal #1</td>
+    <td class="light-green-text">NNS proposal #1</td>
     <td class="light-green-text">Not created yet</td>
   </tr>
    <tr>
