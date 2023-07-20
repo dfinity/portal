@@ -1,4 +1,4 @@
-# Locally installing third-party canister dependencies
+# Pulling canister dependencies
 
 ## Overview
 
@@ -61,8 +61,7 @@ The wasm module of a pullable canister must be hosted via an URL so that service
 
 GitHub Releases are a good, free option with no cost if the project is open source on GitHub. The GitHub URL schema is:
 
-https://github.com/<USERNAME>/<REPONAME>/releases/latest/download/<FILENAME>
-
+`https://github.com/<USERNAME>/<REPONAME>/releases/latest/download/<FILENAME>`
 :::
 
 ## Service provider workflow overview
