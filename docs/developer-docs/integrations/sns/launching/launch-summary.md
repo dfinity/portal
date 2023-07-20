@@ -306,7 +306,7 @@ If successful, at the end of stage, we the following has changed:
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
@@ -322,7 +322,7 @@ If successful, at the end of stage, we the following has changed:
     <td class="light-orange-text">Approved</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
+    <td>NNS proposal #2</td>
     <td>Not created yet</td>
   </tr>
 </table>
