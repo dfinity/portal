@@ -184,8 +184,14 @@ const sidebars = {
               id: "developer-docs/backend/motoko/index",
           },
               items: [
-                "developer-docs/backend/motoko/at-a-glance",
+                "developer-docs/backend/motoko/infrastructure",
                 "developer-docs/backend/motoko/explore-templates",
+                "developer-docs/backend/motoko/dev-env",
+                "developer-docs/backend/motoko/at-a-glance",
+                "developer-docs/backend/motoko/deploying",
+                "developer-docs/backend/motoko/upgrading",
+                "developer-docs/backend/motoko/intercanister-calls",
+                "developer-docs/backend/motoko/optimizing",
                 "developer-docs/backend/motoko/phonebook",
                 "developer-docs/backend/motoko/calculator",
                 "developer-docs/backend/motoko/counter-tutorial",
@@ -195,10 +201,8 @@ const sidebars = {
                 "developer-docs/backend/motoko/multiple-actors",
                 "developer-docs/backend/motoko/access-control",
                 "developer-docs/backend/motoko/candid-ui",
-                "developer-docs/backend/motoko/intercanister-calls",
                 "developer-docs/backend/motoko/scalability-cancan",
                 "developer-docs/backend/motoko/sample-apps",
-
               ],
             },
             {
@@ -209,12 +213,21 @@ const sidebars = {
                 id: "developer-docs/backend/rust/index",
               },
                 items: [
-                  "developer-docs/backend/rust/rust-quickstart",
-                  "developer-docs/backend/rust/multiply-dependency",
-                  "developer-docs/backend/rust/rust-counter",
-                  "developer-docs/backend/rust/rust-profile",
+                  "developer-docs/backend/rust/infrastructure",
+                  "developer-docs/backend/rust/project-organization",
+                  "developer-docs/backend/rust/dev-env",
+                  "developer-docs/backend/rust/quickstart",
+                  "developer-docs/backend/rust/deploying",
+                  "developer-docs/backend/rust/intercanister",
+                  "developer-docs/backend/rust/upgrading",
+                  "developer-docs/backend/rust/optimizing",
+                  "developer-docs/backend/rust/counter",
                   "developer-docs/backend/rust/timers",
-                  "developer-docs/backend/rust/rust-optimize",
+                  "developer-docs/backend/rust/stable-structures",
+                  "developer-docs/backend/rust/searching-records",
+                  "developer-docs/backend/rust/access-control",
+                  "developer-docs/backend/rust/candid",
+                  "developer-docs/backend/rust/samples",
               ],
             },
             {
@@ -293,6 +306,11 @@ const sidebars = {
               ],
             },
             {
+              type: "doc",
+              label: "Exchange rate canister",
+              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               link: {
@@ -352,7 +370,6 @@ const sidebars = {
               },
               items: [
                   "tokenomics/token-holders/nns-app-quickstart",
-                  "tokenomics/nns/community-fund",
                   "tokenomics/nns/neurons-fund",
                   "tokenomics/nns/nns-staking-voting-rewards",
               ],
@@ -397,6 +414,7 @@ const sidebars = {
                       items: [
                         "developer-docs/integrations/sns/introduction/sns-intro-high-level",
                         "developer-docs/integrations/sns/introduction/sns-architecture",
+                        "developer-docs/integrations/sns/introduction/sns-launch",
                         "developer-docs/integrations/sns/introduction/dao-alternatives",
                       ],
                     },
@@ -475,6 +493,18 @@ const sidebars = {
             },
                 items: [
                   "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
           ],

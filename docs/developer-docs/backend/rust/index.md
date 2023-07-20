@@ -9,7 +9,7 @@ To help pave the way for writing dapps in Rust that can be deployed on the Inter
 dfx new --type=rust hello_world
 ```
 
-To start a new project see [Rust quick start](./rust-quickstart.md).
+To start a new project see [Rust quick start](4-quickstart.md).
 
 ## Architecture
 

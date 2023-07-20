@@ -1,5 +1,20 @@
 [
   {
+      "id": "joined-africa",
+      "name": "Joined Africa",
+      "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
+      "website": "https://fo2ol-uqaaa-aaaap-abdna-cai.icp0.io/",
+      "tags": ["SocialFi"],
+      "description": "At Joined Africa, we are dedicated to providing a seamless online marketplace that connects sellers and buyers, locally and globally within Africa. Our platform empowers sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers. Meanwhile, buyers can explore a wide range of categories, including properties, electronics, fashion, vehicles, and more. Communication between buyers and sellers is essential, and we've made it convenient through our built-in messaging application. When a seller lists a product on our site, interested buyers can contact them directly using our chat application.",
+      "logo": "/img/showcase/joined-africa_logo.jpg",
+      "usesInternetIdentity": true,
+      "youtube": "https://www.youtube.com/@JoinedAfrica",
+      "screenshots": ["/img/showcase/joined-africa_screenshot_0.jpeg", "/img/showcase/joined-africa_screenshot_1.png"],
+      "video": "img/showcase/joined-africa_video.mp4",
+      "videoContentType": "video/mp4",
+      "submittableId": "36375564"
+  },
+  {
     "id": "dscvr",
     "name": "DSCVR",
     "oneLiner": "Social portals, community airdrops, crypto tipping on chain",
@@ -564,6 +579,19 @@
     "logo": "/img/showcase/canlista_logo.webp",
     "screenshots": [
       "/img/showcase/canlista_screenshot_0.webp"
+    ]
+  },
+  {
+    "id": "nnscat",
+    "name": "NNSCat",
+    "website": "https://iz6s6-kqaaa-aaaae-qaakq-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "An intuitive email-style inbox for NNS proposals",
+    "logo": "/img/showcase/nnscat_logo.png",
+    "screenshots": [
+      "/img/showcase/nnscat_screenshot_0.jpg"
     ]
   },
   {
@@ -1909,6 +1937,26 @@
     "submittableId": "35750450"
   },
   {
+    "name": "Mops",
+    "description": "On-chain package manager for Motoko. Mops makes it easy to discover, install and publish Motoko packages.",
+    "website": "https://mops.one",
+    "logo": "/img/showcase/mops_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "mops",
+    "oneLiner": "On-chain package manager for Motoko",
+    "stats": "15,000+ downloads",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ZenVoich/mops",
+    "twitter": "https://twitter.com/mops_one",
+    "youtube": "",
+    "submittableId": ""
+  },
+  {
     "id": "orally-network",
     "name": "Orally",
     "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
@@ -2018,5 +2066,62 @@
     "usesInternetIdentity": true,
     "twitter": "https://twitter.com/signalsicp",
     "submittableId": "35639473"
+  },
+  {
+    "id": "metaforo-icp",
+    "name": "Metaforo ICP deployment",
+    "oneLiner": "Deploy the frontend of a web3 forum system - metaforo.io on ICP",
+    "website": "https://can1.metaforo.io/",
+    "tags": [ "SocialFi" ,  "DAO" ],
+    "description": "Metaforo: a Web3 forum prioritizing decentralization, community ownership, and token-gated governance. By shifting the Front-End to IC, we boost reliability, security, and scalability, enabling a seamless user experience without intermediaries.",
+    "stats": "1000+ users after the development of an on-chain voting system using ICP",
+    "logo": "/img/showcase/metaforo-icp_logo.png",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/metaforo/metaforo-icp",
+    "youtube": "https://www.youtube.com/watch?v=d5zHu3D0SQQ",
+    "twitter": "https://twitter.com/realmetaforo",
+    "screenshots": ["/img/showcase/metaforo-icp_screenshot_1.jpg", "/img/showcase/metaforo-icp_screenshot_2.jpg", "/img/showcase/metaforo-icp_screenshot_3.jpg"],
+    "video": "/img/showcase/metaforo-icp_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId?": "35907100"
+  },
+  {
+    "name": "Rakeoff",
+    "description": "Rakeoff is a user-friendly crypto staking rewards platform on ICP, with options to convert rewards into ckBTC or pool them for a chance to win a no-loss prize pool. Pooling staking rewards allows users to potentially amplify their ICP earnings while preserving their principal investment.",
+    "website": "https://rakeoff.io/",
+    "logo": "/img/showcase/rakeoff_logo.webp",
+    "screenshots": [
+      "/img/showcase/rakeoff_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "rakeoff",
+    "oneLiner": "Rakeoff is a user-friendly crypto staking rewards platform on ICP.",
+    "stats": "Hackathon winner",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Wallet"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/rakeoff-labs",
+    "twitter": "https://twitter.com/rakeoff_app"
+  },
+  {
+    "id": "rubaru",
+    "name": "RuBaRu",
+    "oneLiner": "Building On-Chain Regenerative Creator-Consumer Economy",
+    "website": "https://rubaru.app/",
+    "tags": ["SocialFi" ,  "DAO", "Bitcoin"],
+    "description": "RuBaRu aims to create a vibrant 100% On-Chain DAO-based tokenized economy owned & governed by the community, where creators, influencers, consumers, and brands coexist harmoniously. By doing so, we unlock new opportunities, reshape digital creativity, drive economic growth, and foster a thriving ecosystem of shared prosperity.",
+    "stats": "100% On-Chain Data Storage",
+    "logo": "/img/showcase/rubaru_logo.png",
+    "display": "Large",
+    "usesInternetIdentity": true,
+    "youtube": "https://youtu.be/CBumSMJRV08", 
+    "twitter": "https://twitter.com/RuBaRu_app",
+    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"], 
+    "video": "/img/showcase/rubaru_video.mp4", 
+    "videoContentType": "video/mp4",
+    "submittableId": "39223821"
   }
 ]
