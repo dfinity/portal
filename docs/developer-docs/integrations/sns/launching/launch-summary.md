@@ -144,11 +144,11 @@ If the proposal is adopted successfully, at the end of this step, we have:
     <td class="light-orange-text">Adopted</td>
   </tr>
    <tr>
-    <td>SNS Proposal #1</td>
+    <td>SNS proposal #1</td>
     <td>Not created yet</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
+    <td>NNS proposal #2</td>
     <td>Not created yet</td>
   </tr>
 </table>
@@ -205,32 +205,32 @@ If successful, at the end of stage, we the following has changed:
   </tr>
   <tr>
     <td>a principal that can deploy to SNS subnet</td>
-    <th>SNS Subnet</th>
+    <th>SNS subnet</th>
     <td>NA</td>
     <td class="light-orange-text">revoked because it is 1-time use</td>
   </tr>
   <tr>
     <td class="light-green-text">SNS root on the SNS subnet</td>
-    <th>SNS Subnet</th>
+    <th>SNS subnet</th>
     <td class="light-green-text">initial developer neurons</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
 
   </tr>
   <tr>
     <td class="light-green-text">initial developer neurons</td>
-    <th>SNS Subnet</th>
+    <th>SNS subnet</th>
     <td class="light-green-text">dapp developer principal</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
   </tr>
   <tr>
     <td class="light-green-text">treasury account on the SNS Ledger</td>
-    <th>SNS Subnet</th>
+    <th>SNS subnet</th>
     <td class="light-green-text">SNS governance</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
   </tr>
   <tr>
     <td class="light-green-text">swap account on the SNS Ledger</td>
-    <th>SNS Subnet</th>
+    <th>SNS subnet</th>
     <td class="light-green-text">SNS swap</td>
     <td class="light-green-text">pre-decentralization swap mode</td>
   </tr>
@@ -255,17 +255,17 @@ If successful, at the end of stage, we the following has changed:
 
 If successful, at the end of stage, we the following has changed:
 
-#### Table 1: NNS Proposals
+#### Table 1: NNS proposals
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
   </tr>
    <tr>
-    <td >NNS Proposal #1</td>
+    <td >NNS proposal #1</td>
     <td>Approved</td>
   </tr>
    <tr>
@@ -273,7 +273,7 @@ If successful, at the end of stage, we the following has changed:
     <td class="light-orange-text">Submitted</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
+    <td>NNS proposal #2</td>
     <td>Not created yet</td>
   </tr>
 </table>
@@ -333,11 +333,11 @@ This proposal defines the conditions for the decentralization swap (e.g. how man
 
 If successful, at the end of stage, we the following has changed:
 
-#### Table 1: NNS Proposals
+#### Table 1: NNS proposals
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
@@ -378,7 +378,7 @@ If successful, at the end of stage, the following has changed:
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
@@ -386,15 +386,15 @@ If successful, at the end of stage, the following has changed:
     <td>Pending</td>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
+    <td>NNS proposal #1</td>
     <td>Approved</td>
   </tr>
    <tr>
-    <td>SNS Proposal #1</td>
+    <td>SNS proposal #1</td>
     <td>Approved</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
+    <td>NNS proposal #2</td>
     <td class="light-orange-text">Adopted</td>
   </tr>
 </table>
