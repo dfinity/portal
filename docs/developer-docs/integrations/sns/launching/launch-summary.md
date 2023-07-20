@@ -495,7 +495,7 @@ If successful, at the end of stage, we have:
 </table>
 
 
-#### Table 2: NNS Proposals
+#### Table 2: NNS proposals
 
 <table>
   <tr>
