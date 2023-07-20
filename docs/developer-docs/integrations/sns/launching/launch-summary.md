@@ -499,7 +499,7 @@ If successful, at the end of stage, we have:
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
