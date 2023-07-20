@@ -16,45 +16,46 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
 
   What we have at this stage:
 
-#### Table 1
-
-  <table>
-  <tr>
-    <th>SNS Process</th>
-    <th>State</th>
-  </tr>
-  <tr>
-    <td class="light-green-text">Decentralization swap state</td>
-    <td class="light-green-text">Not existing</td>
-  </tr>
-   <tr>
-    <td class="light-green-text">NNS Proposal #1</td>
-    <td class="light-green-text">Not Created</td>
-  </tr>
-   <tr>
-    <td class="light-green-text">SNS Proposal #1</td>
-    <td class="light-green-text">Not Created</td>
-  </tr>
-   <tr>
-    <td class="light-green-text">NNS Proposal #2</td>
-    <td class="light-green-text">Not Created</td>
-  </tr>
-</table>
-
-#### Table 2
+#### Table 1: Canisters
 
 <table>
   <tr>
     <th>Canisters</th>
-    <th>State</th>
+    <th>Subnet</th>
     <th>Controlled by</th>
+    <th>State</th>
   </tr>
+
   <tr>
-    <td>a dapp</td>
-    <td>operational</td>
+    <td>a dapp canister(s)</td>
+    <td>application subnet</td>
     <td>dapp developer principal</td>
+    <td>operational</td>
   </tr>
 </table>
+
+#### Table 2: NNS Proposals
+
+<table>
+  <tr>
+    <th>NNS proposal</th>
+    <th>State</th>
+  </tr>
+   <tr>
+    <td class="light-green-text">NNS proposal #1</td>
+    <td class="light-green-text">Not created yet</td>
+  </tr>
+   <tr>
+    <td class="light-green-text">SNS Proposal #1</td>
+    <td class="light-green-text">Not created yet</td>
+  </tr>
+   <tr>
+    <td class="light-green-text">NNS Proposal #2</td>
+    <td class="light-green-text">Not created yet</td>
+  </tr>
+</table>
+
+
 
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
@@ -64,50 +65,44 @@ contains a list of principals that are allowed to do so. Therefore, a developer 
 
 What we have at this stage:
 
-#### Table 1
+#### Table 1: Canisters
 
 <table>
   <tr>
-    <th>SNS Process</th>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
     <th>State</th>
   </tr>
   <tr>
-    <td>Decentralization swap state</td>
-    <td>Not existing</td>
+    <td>dapp canisters</td>
+    <td>application subnet</td>
+    <td>dapp developer principal</td>
+    <td>operational</td>
+  </tr>
+</table>
+
+#### Table 2: NNS Proposals
+
+<table>
+  <tr>
+    <th>NNS proposals</th>
+    <th>State</th>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
+    <td>NNS proposal #1</td>
     <td class="light-orange-text">Submitted</td>
   </tr>
    <tr>
     <td>SNS Proposal #1</td>
-    <td>Not Created</td>
+    <td>Not created yet</td>
   </tr>
    <tr>
     <td>NNS Proposal #2</td>
-    <td>Not Created</td>
+    <td>Not created yet</td>
   </tr>
 </table>
 
-#### Table 2
-
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td>dapp developer principal</td>
-  </tr>
-  <tr>
-    <td class="light-green-text">a principal that can deploy to SNS subnet</td>
-    <td class="light-green-text">pending NNS approval</td>
-    <td class="light-green-text">dapp developer principal</td>
-  </tr>
-</table>
 
 
 ### 3. Proposal #1 (of 3) is adopted or rejected
@@ -119,58 +114,59 @@ subnet, it does **not** guarantee the rest of the next stages will complete.
 
 If the proposal is adopted successfully, at the end of this step, we have:
 
-#### Table 1
+#### Table 1: Canisters
 
 <table>
   <tr>
-    <th>SNS Process</th>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
     <th>State</th>
   </tr>
+
   <tr>
-    <td>Decentralization swap state</td>
-    <td>Not existing</td>
+    <td>a dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>dapp developer principal</td>
+    <td>operational</td>
+  </tr>
+</table>
+
+#### Table 2: NNS proposals
+
+<table>
+  <tr>
+    <th>NNS proposals</th>
+    <th>State</th>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
+    <td>NNS proposal #1</td>
     <td class="light-orange-text">Adopted</td>
   </tr>
    <tr>
-    <td>SNS Proposal #1</td>
-    <td>Not Created</td>
+    <td>SNS proposal #1</td>
+    <td>Not created yet</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
-    <td>Not Created</td>
+    <td>NNS proposal #2</td>
+    <td>Not created yet</td>
   </tr>
 </table>
 
-#### Table 2
 
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td>dapp developer principal</td>
-  </tr>
-</table>
 
-#### Table 3
+#### Table 3: Objects
 
 <table>
   <tr>
     <th>Objects in the SNS subnet</th>
-    <th>State</th>
     <th>Controlled by</th>
+    <th>State</th>
   </tr>
   <tr>
     <td>a principal that can deploy to SNS subnet</td>
-    <td class="light-orange-text">ready for 1-time use</td>
     <td>dapp developer principal</td>
+    <td class="light-orange-text">ready for 1-time use</td>
   </tr>
 </table>
   
@@ -196,38 +192,47 @@ Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify t
 
 If successful, at the end of stage, we the following has changed:
 
-#### Table 3
+
+#### Table 3: Objects
+
 
 <table>
   <tr>
     <th>Objects in the SNS subnet</th>
-    <th>State</th>
+    <th>Subnet</th>
     <th>Controlled by</th>
+    <th>State</th>
   </tr>
   <tr>
     <td>a principal that can deploy to SNS subnet</td>
-    <td class="light-orange-text">revoked because it is 1-time use</td>
+    <th>SNS subnet</th>
     <td>NA</td>
+    <td class="light-orange-text">revoked because it is 1-time use</td>
   </tr>
   <tr>
     <td class="light-green-text">SNS root on the SNS subnet</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
+    <th>SNS subnet</th>
     <td class="light-green-text">initial developer neurons</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
+
   </tr>
   <tr>
     <td class="light-green-text">initial developer neurons</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
+    <th>SNS subnet</th>
     <td class="light-green-text">dapp developer principal</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
   </tr>
   <tr>
     <td class="light-green-text">treasury account on the SNS Ledger</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
+    <th>SNS subnet</th>
     <td class="light-green-text">SNS governance</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
   </tr>
   <tr>
     <td class="light-green-text">swap account on the SNS Ledger</td>
-    <td class="light-green-text">pre-decentralization swap mode</td>
+    <th>SNS subnet</th>
     <td class="light-green-text">SNS swap</td>
+    <td class="light-green-text">pre-decentralization swap mode</td>
   </tr>
 </table>
 
@@ -250,19 +255,17 @@ If successful, at the end of stage, we the following has changed:
 
 If successful, at the end of stage, we the following has changed:
 
-#### Table 1
+#### Table 1: NNS proposals
 
 <table>
   <tr>
-    <th>SNS Process</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
-    <td>Decentralization swap state</td>
-    <td>Pending</td>
   </tr>
    <tr>
-    <td >NNS Proposal #1</td>
+    <td >NNS proposal #1</td>
     <td>Approved</td>
   </tr>
    <tr>
@@ -270,8 +273,8 @@ If successful, at the end of stage, we the following has changed:
     <td class="light-orange-text">Submitted</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
-    <td>Not Created</td>
+    <td>NNS proposal #2</td>
+    <td>Not created yet</td>
   </tr>
 </table>
 
@@ -281,11 +284,29 @@ The initial SNS developer neurons are declared in the initial parameters and ava
 
 If successful, at the end of stage, we the following has changed:
 
-#### Table 1
+#### Table 1: Canisters
 
 <table>
   <tr>
-    <th>SNS Process</th>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+
+  </tr>
+  <tr>
+    <td>dapp canisters</td>
+    <th>application Subnet</th>
+    <td>operational</td>
+    <td class="light-orange-text">SNS root</td>
+  </tr>
+</table>
+
+#### Table 2: NNS Proposals
+
+<table>
+  <tr>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
@@ -301,23 +322,8 @@ If successful, at the end of stage, we the following has changed:
     <td class="light-orange-text">Approved</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
-    <td>Not Created</td>
-  </tr>
-</table>
-
-#### Table 2
-
-<table>
-  <tr>
-    <th>Objects in an app subnet</th>
-    <th>State</th>
-    <th>Controlled by</th>
-  </tr>
-  <tr>
-    <td>a dapp</td>
-    <td>operational</td>
-    <td class="light-orange-text">SNS root</td>
+    <td>NNS proposal #2</td>
+    <td>Not created yet</td>
   </tr>
 </table>
 
@@ -327,11 +333,11 @@ This proposal defines the conditions for the decentralization swap (e.g. how man
 
 If successful, at the end of stage, we the following has changed:
 
-#### Table 1
+#### Table 1: NNS proposals
 
 <table>
   <tr>
-    <th>SNS Process</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
@@ -368,25 +374,27 @@ If successful, at the end of stage, the following has changed:
 
 #### Table 1
 
+#### Table 1: NNS Proposals
+
 <table>
   <tr>
-    <th>SNS Process</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
   <tr>
     <td>Decentralization swap state</td>
-    <td class="light-orange-text">Open</td>
+    <td>Pending</td>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
-    <td>Adopted</td>
+    <td>NNS proposal #1</td>
+    <td>Approved</td>
   </tr>
    <tr>
-    <td>SNS Proposal #1</td>
-    <td>Adopted</td>
+    <td>SNS proposal #1</td>
+    <td>Approved</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
+    <td>NNS proposal #2</td>
     <td class="light-orange-text">Adopted</td>
   </tr>
 </table>
@@ -420,30 +428,6 @@ If successful, at the end of stage, the following has changed:
 
 If successful, at the end of stage, we have:
 
-#### Table 1
-
-<table>
-  <tr>
-    <th>SNS Process</th>
-    <th>State</th>
-  </tr>
-  <tr>
-    <td>Decentralization swap state</td>
-    <td class="light-orange-text">Committed</td>
-  </tr>
-   <tr>
-    <td>NNS Proposal #1</td>
-    <td>Approved</td>
-  </tr>
-   <tr>
-    <td>SNS Proposal #1</td>
-    <td>Approved</td>
-  </tr>
-   <tr>
-    <td>NNS Proposal #2</td>
-    <td >Approved</td>
-  </tr>
-</table>
 
 #### Table 2
 
@@ -460,42 +444,78 @@ If successful, at the end of stage, we have:
   </tr>
 </table>
 
-#### Table 3
+#### Table 1: Objects
 
 <table>
   <tr>
     <th>Objects in the SNS subnet</th>
-    <th>State</th>
+    <th>Subnet</th>
     <th>Controlled by</th>
+    <th>State</th>
   </tr>
   <tr>
     <td>a principal that can deploy to SNS subnet</td>
-    <td>revoked because it is 1-time use</td>
     <td>NA</td>
+    <td>NA</td>
+    <td>revoked because it is 1-time use</td>
   </tr>
   <tr>
     <td>SNS root</td>
-    <td>normal mode</td>
+    <td>NA</td>
     <td class="light-orange-text">SNS DAO</td>
+    <td>normal mode</td>
   </tr>
   <tr>
     <td>initial developer neurons</td>
-    <td>normal mode</td>
+    <td>SNS subnet</td>
     <td>dapp developer principal</td>
+    <td>normal mode</td>
+
   </tr>
   <tr>
     <td>treasury account on the SNS Ledger</td>
-    <td>normal mode</td>
+    <td>SNS subnet</td>
     <td class="light-orange-text">SNS DAO</td>
+    <td>normal mode</td>
+
   </tr>
   <tr>
     <td>swap account on the SNS Ledger</td>
-    <td>empty</td>
+    <td>SNS subnet</td>
     <td class="light-orange-text">SNS DAO</td>
+    <td>empty</td>
   </tr>
   <tr>
     <td class="light-green-text">SNS neurons</td>
-    <td class="light-green-text">normal mode</td>
+    <td>SNS subnet</td>
     <td class="light-green-text">swap participant principals</td>
+    <td class="light-green-text">normal mode</td>
+
+  </tr>
+</table>
+
+
+#### Table 2: NNS proposals
+
+<table>
+  <tr>
+    <th>NNS proposals</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>Decentralization swap state</td>
+    <td>Pending</td>
+  </tr>
+   <tr>
+    <td>NNS proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>SNS proposal #1</td>
+    <td>Approved</td>
+  </tr>
+   <tr>
+    <td>NNS proposal #2</td>
+    <td >Approved</td>
   </tr>
 </table>
