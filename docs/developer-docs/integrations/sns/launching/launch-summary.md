@@ -38,7 +38,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
 
 <table>
   <tr>
-    <th>NNS Proposal</th>
+    <th>NNS proposal</th>
     <th>State</th>
   </tr>
    <tr>
