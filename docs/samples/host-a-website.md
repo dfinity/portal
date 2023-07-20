@@ -14,7 +14,7 @@ This example covers:
 ## Prerequisites 
 
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
-- [x] Have a cycles wallet that contains cycles, either from the [faucet quick start](https://smartcontracts.org/docs/current/developer-docs/quickstart/cycles-faucet) or by purchasing ICP and following our [mainnet deployment](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet) guide.
+- [x] Have a cycles wallet that contains cycles, either from the [faucet quick start](../developer-docs/setup/cycles/cycles-faucet.md) or by purchasing ICP and following our [mainnet deployment](../developer-docs/setup/deploy-mainnet.md) guide.
 
 ## Set up your project
 

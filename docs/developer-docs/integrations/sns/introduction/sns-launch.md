@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 ---
-## SNS launch
+# SNS launch
 
-### Overview
+## Overview
 The SNS launch not only creates the SNS, but one of its main purposes is to
 decentralize the control of an SNS and thereby of the dapp that the SNS governs.
 
@@ -19,7 +19,7 @@ We next explain this key concept, the decentralization swap, in more detail and 
 [this section](../launching/launch-summary.md) for the detailed, technical steps involved
 in an SNS launch.
 
-### Decentralization swap
+## Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that
 is owned and run by the IC.
