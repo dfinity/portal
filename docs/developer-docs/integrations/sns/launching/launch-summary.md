@@ -140,7 +140,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
     <th>State</th>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
+    <td>NNS proposal #1</td>
     <td class="light-orange-text">Adopted</td>
   </tr>
    <tr>
