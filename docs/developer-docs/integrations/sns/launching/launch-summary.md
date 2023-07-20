@@ -515,7 +515,7 @@ If successful, at the end of stage, we have:
     <td>Approved</td>
   </tr>
    <tr>
-    <td>NNS Proposal #2</td>
+    <td>NNS proposal #2</td>
     <td >Approved</td>
   </tr>
 </table>
