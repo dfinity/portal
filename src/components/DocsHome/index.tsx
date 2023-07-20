@@ -11,21 +11,20 @@ const queryClient = new QueryClient();
 
 const links = [
   {
-    label: "Live Sessions",
-    href: "/live-sessions"
+    label: "Events & News",
+    href: "https://dfinity.org/events-and-news/",
   },
-
   {
     label: "Technical Working Groups",
-    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781"
+    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
   { label: "Dev Discord Office Hours", href: "https://discord.gg/jnjVVQaE2C" },
   {
     label: "Developer Grants and Bounties",
-    href: "https://dfinity.org/grants/"
+    href: "https://dfinity.org/grants/",
   },
-  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" }
+  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
 ];
 
 const DocsHomePage: FC = () => {

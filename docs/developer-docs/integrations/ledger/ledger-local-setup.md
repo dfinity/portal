@@ -15,36 +15,26 @@ dfx new ledger
 cd ledger
 ```
 
-### Step 3:  Get a pre-built ledger canister module and Candid interface files.
+### Step 3:  Determine ledger file locations
 
-``` sh
-export IC_VERSION=1612a202d030faa496e1694eed98be4179fca856
-curl -o ledger_canister.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
-curl -o ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/icrc1.did"
-gunzip ledger_canister.wasm.gz
-```
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `a17247bd86c7aa4e87742bf74d108614580f216d`.
 
-If you plan to work with Ledger archives, also download the `ledger_archive.did` file:
-    
-``` sh
-curl -o ledger_archive.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger_archive.did"
-```
+The URL for the ledger WASM module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216d/canisters/ic-icrc1-ledger.wasm.gz`.
 
-:::info
-
-The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases).
-
-:::
+The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icrc1/ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icrc1/ledger/ledger.did`.
 
 ### Step 4:  Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
 
 ``` json
 {
-  "canisters": {
-    "ledger": {
-      "type": "custom",
-      "wasm": "ledger_canister.wasm",
-      "candid": "ledger.did"
+  "ledger": {
+    "type": "custom",
+    "candid": "https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icrc1/ledger/ledger.did",
+    "wasm": "https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216d/canisters/ic-icrc1-ledger.wasm.gz",
+    "remote": {
+      "id": {
+        "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+      }
     }
   },
   "defaults":{
@@ -88,7 +78,7 @@ export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
 ### Step 9: Deploy the ledger canister with archiving options:
 
 ```
-dfx deploy ledger --argument "(variant {Init = record {minting_account = record { owner = principal \"$MINT_ACC\" };transfer_fee = 0;token_symbol = \"TOK\";token_name = \"Token Name\";metadata = vec {};initial_balances = vec {};archive_options = record {num_blocks_to_archive = 10_000;trigger_threshold = 20_000;cycles_for_archive_creation = opt 4_000_000_000_000;controller_id = principal \"$LEDGER_ACC\";};}})"
+dfx canister install ledger --argument "(variant {Init = record { token_name = \"NAME\"; token_symbol = \"SYMB\"; transfer_fee = 1000000; metadata = vec {}; minting_account = record {owner = principal \"$(dfx --identity minter identity get-principal)\";}; initial_balances = vec {}; archive_options = record {num_blocks_to_archive = 1000000; trigger_threshold = 1000000; controller_id = principal \"$(dfx identity get-principal)\"}; }})"
 ```
 
 The output of this command will resemble the following:
@@ -105,35 +95,7 @@ Take note of the canister ID.
 
 You may want to set `trigger_threshold` and `num_blocks_to_archive` options to low values (e.g., 10 and 5) to trigger archivation after only a few blocks.
 
-### Step 10: Update the canister ID definition in the `dfx.json` file to specify a remote ID for the ledger. 
-This will be the canister ID value you took note of in the last step. 
-
-This will prevent dfx from deploying your own ledger in case you decide to deploy your project to the Internet Computer:
-
-```
-{
-  "canisters": {
-    "ledger": {
-      "type": "custom",
-      "wasm": "ledger_canister.wasm",
-      "candid": "ledger.did"
-      "remote": {
-        "candid": "ledger.did",
-        "id": {
-          "ic": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
-    }
-  }
-  }
-  },
-  "defaults":{
-    "replica": {
-      "subnet_type":"system"
-    }
-  }
-}
-```
-
-### Step 11: Interact with the canister.
+### Step 10: Interact with the canister.
 
 You can interact with the canister by running CLI commands, such as:
 
