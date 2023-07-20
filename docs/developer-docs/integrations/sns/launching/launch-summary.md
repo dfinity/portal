@@ -507,7 +507,7 @@ If successful, at the end of stage, we have:
     <td>Pending</td>
   </tr>
    <tr>
-    <td>NNS Proposal #1</td>
+    <td>NNS proposal #1</td>
     <td>Approved</td>
   </tr>
    <tr>
