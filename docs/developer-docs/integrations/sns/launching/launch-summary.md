@@ -136,7 +136,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
 
 <table>
   <tr>
-    <th>NNS Proposals</th>
+    <th>NNS proposals</th>
     <th>State</th>
   </tr>
    <tr>
