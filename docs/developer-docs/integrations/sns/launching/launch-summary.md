@@ -132,7 +132,7 @@ If the proposal is adopted successfully, at the end of this step, we have:
   </tr>
 </table>
 
-#### Table 2: NNS Proposals
+#### Table 2: NNS proposals
 
 <table>
   <tr>
