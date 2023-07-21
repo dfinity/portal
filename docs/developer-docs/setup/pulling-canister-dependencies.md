@@ -352,15 +352,15 @@ This example project will demonstrate an application canister pulling its depend
 
 In this example, the `app` canister defines a method called `double_service` which makes an inter-canister call to the `service` canister.
 
-- #### Step 1: First, assure that you have installed the [IC SDK](https://github.com/dfinity/sdk) and [git](https://git-scm.com/downloads).
+- #### Step 1: First, assure that you have installed the [IC SDK](https://github.com/dfinity/sdk).
 
-- #### Step 2: Then, open a terminal window and use `git clone` to download the following repository:
+- #### Step 2: Then, open a terminal window and create a new dfx project with the command:
 
 ```
-git clone https://github.com/lwshang/pullable.git
+dfx new pull_deps_example
 ```
 
-- #### Step 3: Open the `dfx.json` file in a text or code editor. Declare the pull dependency in `dfx.json` file with the following configuration:
+- #### Step 3: Then, open the project's `dfx.json` file in a text or code editor. Declare the pull dependency with the following configuration:
 
 ```
 {
