@@ -2063,7 +2063,7 @@ const communityProjects: SampleItem[] = [
     },
     domains: ["Website"],
     level: "advanced",
-    languages: ["rust", "react", "typescript", "javascript"],
+    languages: ["rust", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/community-projects/d-vote.png",
   },
