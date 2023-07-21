@@ -2123,5 +2123,27 @@
     "video": "/img/showcase/rubaru_video.mp4", 
     "videoContentType": "video/mp4",
     "submittableId": "39223821"
-  }
+  },
+  {
+  "name": "AStablish",
+  "description": "AStablish is an asset assurance service, dedicated to preserve privacy and protect ownership of your digital assets in a quantum world. With AStablish, enterprises can easily prove their digital assets holdings and use this for business purposes such as obtaining loans, insurance, or enter transactions that require a proof of financial standing.",
+  "website": "https://www.pqcee.com/AStablish",
+  "logo": "/img/showcase/astablish_logo.webp",
+  "screenshots": [
+    "/img/showcase/astablish_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "astablish",
+  "oneLiner": "AStablish is a tokenized asset assurance service by pQCee.com",
+  "stats": "privacy+security",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/pqcee/AStablish_ICP",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "34496660"
+}
 ]
