@@ -10,7 +10,7 @@ Third-party canisters include canisters created by DFINITY, such as NNS, ledger,
 - Performing tests using non-production data and environments.
 - Performing tests with faster completion time when run locally. 
 
-To pull these canisters from the IC mainnet to be developed and tested using a local replica, the [`dfx deps`](../../../submodules/sdk/docs/cli-reference/dfx-deps.md) command and workflow can be used. 
+To pull these canisters from the IC mainnet to be developed and tested using a local replica, the [`dfx deps`](/docs/references/cli-reference/dfx-deps.md) command and workflow can be used. 
 
 In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the IC mainnet. A service provider can be DFINITY or it can be a community developer creating a public, third-party canister. 
 
