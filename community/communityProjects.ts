@@ -2052,6 +2052,21 @@ const communityProjects: SampleItem[] = [
     level: "beginner",
     contentType: ["code samples", "community repo", "live demos"],
   },
+  {
+    index: 126,
+    title: "D-VOTE",
+    body: "Voting on the blockchain, and the vote results are transparent and can not be tampered with.",
+    links: {
+      github: "https://github.com/NewbMiao/dvote",
+      livePreview: "https://7y3zv-rqaaa-aaaag-abswa-cai.icp0.io/",
+      otherLinks: [],
+    },
+    domains: ["Website"],
+    level: "advanced",
+    languages: ["rust", "react", "typescript", "javascript"],
+    contentType: ["code samples", "community repo", "live demos"],
+    image: "/img/community-projects/d-vote.png",
+  },
 ];
 
 export default communityProjects;
