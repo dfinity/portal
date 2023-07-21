@@ -96,6 +96,11 @@ To better understand the `pullable` object, let's look at each property in depth
 
 - `wasm_url`: A URL used to download the canister wasm module which will be deployed locally.
 - `wasm_hash` A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the on-chain wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In some cases, the wasm module at `wasm_url` is not the same as the on-chain wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded wasm against this.
+
+:::caution
+If the `wasm_hash` of the wasm module at `wasm_url` does not match, dfx will abort with an error message indicating there is a hash mismatch. In this scenario, the service consumer should contact the service provider. It is the responsibility of the service provider to assure that the correct wasm module can be downloaded from the `wasm_url`. 
+:::
+
 - `dependencies`: An array of Canister IDs (`Principal`) of direct dependencies.
 - `init_guide`: A message to guide consumers how to initialize the canister.
 
@@ -345,6 +350,8 @@ Now that we've explored the concepts and overview of using the `dfx deps` workfl
 
 This example project will demonstrate an application canister pulling its dependency from the IC mainnet and integrating with it locally. 
 
+In this example, the `app` canister defines a method called `double_service` which makes an inter-canister call to the `service` canister.
+
 - #### Step 1: First, assure that you have installed the [IC SDK](https://github.com/dfinity/sdk) and [git](https://git-scm.com/downloads).
 
 - #### Step 2: Then, open a terminal window and use `git clone` to download the following repository:
@@ -397,6 +404,8 @@ dfx deploy app
 ```
 dfx canister call app double_service
 ```
+
+In this step, the `app` canister's `double_service` method is being called, which sends an inter-canister call to the `service` canister. The call will succeed since both canisters are now deployed on the local replica.
 
 The output will resemble the following:
 
