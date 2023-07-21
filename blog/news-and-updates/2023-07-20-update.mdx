@@ -48,11 +48,11 @@ dfx 0.15.0 is now available for beta testing. This new release introduces severa
 
 - The `dfx replica` and `dfx bootstrap` commands have been removed. The `dfx start` command should now be used instead.
 
-- Warnings regarding using an unencrypted identity on the mainnet can now be suppressed using the form:  can disable the warnings about using an unencrypted identity on mainnet
-It's now possible to suppress warnings of this form:
+- Warnings regarding using an unencrypted identity on the mainnet can now be suppressed:
 
 ```
 WARN: The <identity> identity is not stored securely. Do not use it to control a lot of cycles/ICP. Create a new identity with `dfx identity new` and use it in mainnet-facing commands with the `--identity` flag
+
 To do so, export the environment variable DFX_WARNING with the value -mainnet_plaintext_identity.
 
 export DFX_WARNING="-mainnet_plaintext_identity"
