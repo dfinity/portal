@@ -110,7 +110,7 @@ The canister wasm downloaded from `wasm_url` should have the following metadata 
 All metadata sections are handled by `dfx` when the canister is built.
 
 ### Deployment process
-Service providers will to use the following deployment process to deploy their `pullable` canister.
+Service providers will use the following deployment process to deploy their `pullable` canister.
 
 - #### Step 1: Deploy the canister to the mainnet with the command:
 
