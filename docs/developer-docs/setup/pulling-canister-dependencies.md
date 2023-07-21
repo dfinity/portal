@@ -101,7 +101,7 @@ To better understand the `pullable` object, let's look at each property in depth
 
 The service provider canister used in production or in a production environment running on the mainnet should have public `dfx` metadata.
 
-The canister wasm downloaded from `wasm_url` should have the following [metadata](canister-metadata.md#canister-metadata-standard) (public or private):
+The canister wasm downloaded from `wasm_url` should have the following metadata (public or private):
 
 - `candid:service`
 - `candid:args`
