@@ -62,6 +62,8 @@ The wasm module of a `pullable` canister must be hosted via an URL so that servi
 GitHub Releases are a good, free option if the project is open source on GitHub. The GitHub URL schema is:
 
 `https://github.com/<USERNAME>/<REPONAME>/releases/latest/download/<FILENAME>`
+
+In a future version of this feature, direct wasm downloads from the replica will likely be supported.
 :::
 
 ## Service provider workflow overview
@@ -93,7 +95,7 @@ The `pullable` object will be serialized as a part of the `dfx` metadata and att
 To better understand the `pullable` object, let's look at each property in depth. 
 
 - `wasm_url`: A URL used to download the canister wasm module which will be deployed locally.
-- `wasm_hash` A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the on-chain wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In other cases, the wasm module at `wasm_url` is not the same as the on-chain wasm module. For example, the Internet Identity canister provides a `development` flavor to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded wasm against this.
+- `wasm_hash` A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the on-chain wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In some cases, the wasm module at `wasm_url` is not the same as the on-chain wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded wasm against this.
 - `dependencies`: An array of Canister IDs (`Principal`) of direct dependencies.
 - `init_guide`: A message to guide consumers how to initialize the canister.
 
