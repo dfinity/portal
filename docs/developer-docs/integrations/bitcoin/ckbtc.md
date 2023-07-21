@@ -2,7 +2,7 @@
 
 ## Overview
 
-Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/aa82e52aaa74cc7c5f6a141e30b708bf42ede1e3/standards/ICRC-1/README.md)-compliant token that is backed 1:1 by Bitcoin held 100% on the IC mainnet.
+Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/aa82e52aaa74cc7c5f6a141e30b708bf42ede1e3/standards/ICRC-1/README.md)-compliant token that is backed 1:1 by bitcoins held 100% on the IC mainnet.
 
 The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
@@ -13,7 +13,7 @@ The ckBTC ledger is responsible for keeping account balances and for transferrin
 - It enables the transfer of ckBTC among users.
 
 The ckBTC minter is responsible for the minting and burning of ckBTC tokens. Tokens are minted when a user transfers bitcoins to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins, making it possible for the ckBTC minter to associate the minted ckBTC funds with the correct owner. The ckBTC minter waits for a large number of
-confirmations for all Bitcoin networks that affect the total supply of ckBTC because of the lack of finality in Bitcoin. When handling Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
+confirmations for all Bitcoin transactions that affect the total supply of ckBTC because of the lack of finality in Bitcoin. When handling Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
 
 A detailed description of the ckBTC minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
@@ -49,7 +49,7 @@ The ckBTC minter provides the following API endpoints that can be used to intera
 - `get_deposit_fee`: Returns the fee charged when minting ckBTC.
 - `get_withdrawal_account`: Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC.
 - `retrieve_btc`: Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
-- `retrieve_btc_status`: Returns the status of a previous retrieve_btc call.
+- `retrieve_btc_status`: Returns the status of a previous `retrieve_btc` call.
 - `get_minter_info`: Returns information about the ckBTC minter itself.
 - `get_events`: Returns a set of events at the ckBTC minter.
 The endpoints are discussed in more detail in the following.
@@ -64,7 +64,7 @@ Note that the key derivation is not BIP-32 compliant where 31 bits are used for 
 ### `update_balance(owner: opt principal, subaccount: opt blob)`
 The `update_balance` function is invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
 
-For each newly discovered UTXO, the corresponding ckBTC amount is minted minus the deposit fee.
+For each newly discovered UTXO, the corresponding ckBTC amount is minted minus the deposit fee, which corresponds to the KYT fee.
 If there are no new UTXOs, an error is returned.
 
 ### `estimate_withdrawal_fee(amount: opt nat64)`
@@ -72,7 +72,7 @@ The endpoint returns an estimate for the fee that must be paid when retrieving t
 
 If there is no change to the internal state of the ckBTC minter and the Bitcoin canister before issuing the request to retrieve Bitcoins, the fee will be exactly the returned estimate.
 
-The fee can change when a new Bitcoin block is mined in the meantime, which causes the Bitcoin canister to update the Bitcoin miner fees or when another retrieval request is handled first, spending some of the outputs that were used when estimating the fee.
+The fee can change when a new Bitcoin block is mined in the meantime, which causes the Bitcoin canister to update the Bitcoin miner fees or when another retrieval request that spends some of the outputs that were used when estimating the fee is handled first.
 
 ### `get_deposit_fee`
 The endpoint returns the fee that the ckBTC minter charges for minting ckBTC when receiving new UTXOs. Currently, this fee is simply the KYT fee.
