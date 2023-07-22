@@ -174,13 +174,13 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-The cycles cost for a HTTP outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a HTTP outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. 
+The cycles cost for a HTTP outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a HTTP outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. The current prices can be found [here](../../gas-cost.md).
 
 **Formula:** 
 ```
 header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
 request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
-http_outcall_cost = 400M + 100k * (request_size + max_response_size)
+http_outcall_cost = per_call_cost + per_request_byte_cost * request_size + per_response_byte_cost * max_response_size
 scaling_factor = subnet_size / 13 
 total_cost = scaling_factor * http_outcall_cost
 ```
