@@ -158,6 +158,11 @@ const sidebars = {
           },
           {
             type: "doc",
+            label: "Pulling canister dependencies",
+            id: "developer-docs/setup/pulling-canister-dependencies",
+          },
+          {
+            type: "doc",
             label: "Using Visual Studio Code",
             id: "developer-docs/setup/vs-code",
           },
@@ -414,6 +419,7 @@ const sidebars = {
                       items: [
                         "developer-docs/integrations/sns/introduction/sns-intro-high-level",
                         "developer-docs/integrations/sns/introduction/sns-architecture",
+                        "developer-docs/integrations/sns/introduction/sns-launch",
                         "developer-docs/integrations/sns/introduction/dao-alternatives",
                       ],
                     },
@@ -476,7 +482,7 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/managing/manage-sns-intro",
                     },
                       items: [
-                        "developer-docs/integrations/sns/managing/sns-governance",
+                        // "developer-docs/integrations/sns/managing/sns-governance",
                         "developer-docs/integrations/sns/managing/cycles-usage",
                         "developer-docs/integrations/sns/managing/sns-asset-canister",
                       ],
@@ -615,6 +621,7 @@ const sidebars = {
             "references/cli-reference/dfx-cache",
             "references/cli-reference/dfx-canister",
             "references/cli-reference/dfx-deploy",
+            "references/cli-reference/dfx-deps",
             "references/cli-reference/dfx-generate",
             "references/cli-reference/dfx-help",
             "references/cli-reference/dfx-identity",
