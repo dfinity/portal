@@ -14,7 +14,7 @@ To pull these canisters from the IC mainnet to be developed and tested using a l
 
 In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the IC mainnet. A service provider can be DFINITY or it can be a community developer creating a public, third-party canister. 
 
-Then, a **service consumer** can pull the canister as a dependency from the canister directly from the mainnet and can deploy the dependencies on a local replica. 
+Then, a **service consumer** can pull the canister as a dependency directly from the mainnet and then deploy the dependency on a local replica. 
 
 In this guide, we'll further describe this workflow and how to use it.
 
@@ -95,7 +95,7 @@ The `pullable` object will be serialized as a part of the `dfx` metadata and att
 To better understand the `pullable` object, let's look at each property in depth. 
 
 - `wasm_url`: A URL used to download the canister wasm module which will be deployed locally.
-- `wasm_hash` A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the on-chain wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In some cases, the wasm module at `wasm_url` is not the same as the on-chain wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded wasm against this.
+- `wasm_hash`: A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the on-chain wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In some cases, the wasm module at `wasm_url` is not the same as the on-chain wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded wasm against this.
 
 :::caution
 If the `wasm_hash` of the wasm module at `wasm_url` does not match, dfx will abort with an error message indicating there is a hash mismatch. In this scenario, the service consumer should contact the service provider. It is the responsibility of the service provider to assure that the correct wasm module can be downloaded from the `wasm_url`. 
@@ -151,7 +151,7 @@ The workflow with CI will follow these steps:
 
 1. Push a git tag and wait for the GitHub release to complete.
 2. Download the canister wasm from the release assets (`wget https://github.com/lwshang/pullable/releases/latest/download/service.wasm`).
-3. Install (upgrade) the canister using the downloaded wasm (`dfx canister --network ic install service --wasm service.wasm --argument '(1 : nat)' --mode upgrade`)
+3. Install (upgrade) the canister using the downloaded wasm (`dfx canister --network ic install service --wasm service.wasm --argument '(1 : nat)' --mode upgrade`).
 
 ## Service consumer workflow overview
 
@@ -254,7 +254,7 @@ Running the command `dfx deps init <CANISTER> --argument <ARGUMENT>` will set th
 
 Using the example above, we can run the following commands:
 
-To set the init arguments:
+- To set the init arguments:
 
 ```
 dfx deps init
@@ -263,7 +263,7 @@ yofga-2qaaa-aaaaa-aabsq-cai
 yahli-baaaa-aaaaa-aabtq-cai (dep_c)
 ```
 
-If you try to set an `init` argument for an individual dependency without an argument, it will result in the following error::
+- If you try to set an `init` argument for an individual dependency without an argument, it will result in the following error:
 
 ```
 dfx deps init yofga-2qaaa-aaaaa-aabsq-cai
@@ -279,7 +279,7 @@ init_guide => A natural number, e.g. 20.
 candid:args => (nat)
 ```
 
-To set an init argument with an argument using the `--argument` flag, the following commands can be used:
+- To set an init argument with an argument using the `--argument` flag, the following commands can be used:
 
 ```
 dfx deps init yofga-2qaaa-aaaaa-aabsq-cai --argument 10
