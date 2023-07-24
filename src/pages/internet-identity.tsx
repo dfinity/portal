@@ -77,14 +77,15 @@ function InternetIdentityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Identity on the Internet Computer
+                Internet Identity
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                A Web3 authentication framework providing a Web2 login
-                experience with blockchain security.
+                Easy-to-use online authentication using fingerprint sensors, Face ID and
+                other security hardware on phones and laptops — powered by WebAuthn and
+                advanced cryptography
               </motion.p>
             </div>
             <motion.div
@@ -109,8 +110,8 @@ function InternetIdentityPage() {
               className="tw-heading-4 text-gradient mb-6 md:tw-heading-60 md:mb-8"
               variants={transitions.item}
             >
-              Internet Identity is a privacy-enhancing authentication framework to applications on the
-              Internet Computer
+              Internet Identity creates secure privacy-enhancing sessions with Web3
+              services
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
@@ -128,15 +129,31 @@ function InternetIdentityPage() {
           >
             <div className="hidden md:block blob blob-infinite blob-bottom-right blob-lg z-[-1]"></div>
             <CardWithIcon
-              title="Passkeys to replace passwords"
+              title="Easy! (WebAuthn)"
+              icon={<IconPrivacy className="h-14 md:h-16" />}
+            >
+              <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
+                Internet Identity builds on the WebAuthn standard supported by web
+                browsers – which is the future of secure online authentication. The
+                user authorizes the creation of a secure session using, for example,
+                their fingerprint sensor. The session is signed inside a TPM chip on
+                their device, where cryptographic passkeys are stored. Fully
+                decentralized, easy-to-use and highly secure!
+              </p>
+            </CardWithIcon>
+
+            <CardWithIcon
+              title="Device passkeys"
               icon={<IconNoPassword className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Based on FIDO Alliance and W3C standards, passkeys replace
-                passwords with cryptographic key pairs. These key pairs profoundly
-                improve security as private keys are never stored online. Users
-                can simply authenticate using FaceID, a fingerprint sensor or a
-                YubiKey.
+                An "internet identity" (II) transparently links cryptographic
+                passkeys securely stored inside its owner's various phones and
+                laptops using FIDO Alliance and W3C standards. Private keys
+                remain locked inside TPM chips inside the devices, profoundly
+                improving security, since even users cannot access them directly.
+                In essence, possession and control of devices provides the means
+                to authenticate.
               </p>
             </CardWithIcon>
 
@@ -145,21 +162,12 @@ function InternetIdentityPage() {
               icon={<IconCryptography className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Users can remain pseudonymous using the Internet Identity
-                authentication framework, which prevents user tracking
-                across dapps and services by creating new principal ids
-                for each dapp a user authenticate with.
-              </p>
-            </CardWithIcon>
-
-            <CardWithIcon
-              title="WebAuthn"
-              icon={<IconPrivacy className="h-14 md:h-16" />}
-            >
-              <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Internet Identity integrates the widely used secure Web2
-                authentication framework known as WebAuthn for maximum
-                compatibility.
+                Today, Web2 users are often tracked across the different applications
+                and services they use by single sign-on (SSO) services. Meanwhile, in
+                Web3 environments involving blockchain, users can be publicly tracked by
+                their public key. Internet Identity prevents users being tracked in
+                both environments by using different cryptographic psuedonyms for each
+                service they interact with.
               </p>
             </CardWithIcon>
           </AnimateSpawn>

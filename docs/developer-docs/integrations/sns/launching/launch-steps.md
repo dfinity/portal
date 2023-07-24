@@ -33,7 +33,7 @@ ls bazel-bin/rs/sns/cli/sns
 
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp
 
-Typically, dapp developers typically choose initial parameters that will be used in subsequent proposals.
+Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
 
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
@@ -95,7 +95,8 @@ ic-admin   \
 
 ### 6. Proposal #2 (of 3) is passed or rejected
 
-Nothing technical for dapp developers to do. Community votes.
+Dapp developers vote with their initial SNS neurons. Depending on the
+initial neuron distribution, this also includes community votes.
 
 ### 7. Proposal to start the decentralization swap
 

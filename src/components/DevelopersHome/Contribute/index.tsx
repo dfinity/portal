@@ -9,11 +9,6 @@ import contribute from "@site/static/img/developers/contribute.webp";
 
 const cardsContent = [
   {
-    title: "Live sessions",
-    body: "Join the tech talks",
-    link: "/live-sessions",
-  },
-  {
     title: "Technical working groups",
     body: "Help shape IC development ",
     link: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",

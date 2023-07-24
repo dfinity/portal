@@ -76,7 +76,6 @@ Now you can deploy locally. Run:
 ``` bash
 npm install
 dfx deploy
-npm start
 ```
 
 Output should provide two URLs for where your dapp can be accessed. For example:
