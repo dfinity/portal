@@ -13,7 +13,7 @@ Today we're excited to announce a new dfx feature: dfx deps!
 
 ## What is `dfx deps`?
 
-Previously known as the `dfx pull` command, `dfx deps` is a new set of subcommands designed to provide a consistent developer workflow for integrating and testing third-party canisters within local environments. Third-party canisters can be canisters created by DFINITY, such as the Internet Identity or NNS canisters, or they can be canisters created by members of the IC community that provide a public service at a *static canister ID*. 
+`dfx deps` is a new set of subcommands designed to provide a consistent developer workflow for integrating and testing third-party canisters within local environments. Third-party canisters can be canisters created by DFINITY, such as the Internet Identity or NNS canisters, or they can be canisters created by members of the IC community that provide a public service at a *static canister ID*. 
 
 Testing third-party canister integrations locally is important to verify the third-party canister's integration functionality without paying cycles or using production environments. 
 
