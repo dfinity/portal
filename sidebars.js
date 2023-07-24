@@ -158,6 +158,11 @@ const sidebars = {
           },
           {
             type: "doc",
+            label: "Pulling canister dependencies",
+            id: "developer-docs/setup/pulling-canister-dependencies",
+          },
+          {
+            type: "doc",
             label: "Using Visual Studio Code",
             id: "developer-docs/setup/vs-code",
           },
