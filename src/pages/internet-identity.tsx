@@ -77,14 +77,15 @@ function InternetIdentityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Identity on the Internet Computer
+                Internet Identity
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                A Web3 authentication framework providing a Web2 login
-                experience with blockchain security.
+                Easy-to-use online authentication using fingerprint sensors, Face ID and
+                other security hardware on phones and laptops — powered by WebAuthn and
+                advanced cryptography
               </motion.p>
             </div>
             <motion.div
@@ -109,8 +110,8 @@ function InternetIdentityPage() {
               className="tw-heading-4 text-gradient mb-6 md:tw-heading-60 md:mb-8"
               variants={transitions.item}
             >
-              Internet Identity is a privacy-enhancing authentication framework to applications on the
-              Internet Computer
+              Internet Identity creates secure privacy-enhancing sessions with Web3
+              services
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
