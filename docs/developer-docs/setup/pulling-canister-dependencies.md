@@ -57,7 +57,7 @@ For a canister to be `pullable`, the `dfx.json` file must include a `pullable` d
 ```
 
 :::caution
-The wasm module of a `pullable` canister must be hosted via an URL so that service consumers can download it when pulling the dependency.
+The wasm module of a `pullable` canister must be hosted via a URL so that service consumers can download it when pulling the dependency.
 
 GitHub Releases are a good, free option if the project is open source on GitHub. The GitHub URL schema is:
 
@@ -341,7 +341,7 @@ Installing canister: yhgn4-myaaa-aaaaa-aabta-cai (dep_b)
 ```
 
 :::info
-`dfx deps deploy` always creates the canister with the anonymous identity so that dependencies and application canisters will have different controllers. It also always installs the canister in "reinstall" mode so that the canister status will be discarded.
+`dfx deps deploy` always creates the canister with the anonymous identity so that dependencies and application canisters will have different controllers. It also will always install the canister in "reinstall" mode so that the canister status will be discarded.
 :::
 
 ## Interactive example
