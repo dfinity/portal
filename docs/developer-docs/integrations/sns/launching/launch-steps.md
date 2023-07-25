@@ -69,7 +69,6 @@ sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
 
 In this step, the developers will hand over the control of the dapp canister(s) to the newly deployed SNS root canister. To make sure that the SNS root is also aware of the dapp canister(s), the devs then also "register" the dapp in the SNS, by an SNS proposal.
-the SNS, an NNS proposal starts the swap.
 
 Note that this proposal needs to be submitted by one of the initial SNS neurons. This means that the devs require at least one SNS neuron that they can control with the command line tool quill. They can then use the following command to submit the SNS proposal.
 Of course it is crucial to set the right parameters in this proposal.
