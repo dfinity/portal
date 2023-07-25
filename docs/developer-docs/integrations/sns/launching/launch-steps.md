@@ -114,7 +114,12 @@ Where the parameters are:
 
 ### 6. Proposal #2 (of 3) is passed or rejected
 
-Dapp developers vote with their initial SNS neurons. Depending on the
+Dapp developers vote with their initial SNS neurons. Depending on the initial neuron distirbution, this can also include other voters that have initial neurons. 
+
+Note that at this stage it is not possible to use the NNS frontend dapp to vote on SNS proposals - the NNS FE dapp will only show SNS neurons and proposals for SNSs that are fully launched. 
+Therefore, there are two options how this proposal can be adopted:
+1) The proposal is submitted by a neuron that has at least 3% of the voting power and one waits for the voting period of 4 days to be complete. If no other neurons vote, the proposal will then be adopted after this voting period.
+2) The initial neurons are set up in such a way that the majority of the voting power is in neurons that are controlled via quill. In this case, other neurons can vote in this step and the proposal can potentially pass earlier if an absolute majority of the voting power is reached. 
 initial neuron distribution, this also includes community votes.
 
 ### 7. Proposal to start the decentralization swap
