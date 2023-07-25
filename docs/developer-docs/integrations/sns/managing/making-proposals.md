@@ -2,7 +2,7 @@
 
 ## Overview
 
-To manage an SNS, developers and community need to understand how proposals work, how they can be submitted, voted on, and what effect they have. This article explains the different types of proposals and how to work with them.
+To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have. This article explains the different types of proposals and how to work with them.
 
 ## Background
 
