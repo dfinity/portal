@@ -30,24 +30,17 @@ canisters is dangerous, so they might want to verify it first (which could then 
 ### Dapp canister upgrades
 how to upgrade dapp
 
-SNS Governance checks this when trying to execute - if the dapp is not registered when the proposal is 
-executed, it will fail async fn perform_upgrade_sns_controlled_canister in SNS Governance has the 
-associated logic.
+SNS Governance checks this when trying to execute - if the dapp is not registered when the proposal is executed, it will fail async fn perform_upgrade_sns_controlled_canister in SNS Governance has the associated logic.
 
 
 ### SNS canister upgrades
-Upgrading SNS canisters will be very simple as the SNS version are blessed and the deployment paths
-are managed by the NNS.
-Nevertheless, an SNS community still has to decide when to upgrade to the next version by proposal.
-So we should describe how such a proposal can be made.
+Upgrading SNS canisters will be very simple as the SNS version are blessed and the deployment paths are managed by the NNS. Nevertheless, an SNS community still has to decide when to upgrade to the next version by proposal. So we should describe how such a proposal can be made.
 
 
 ## Generic proposals
 
-
 Some notes: for generic proposals: only call things that you trust (anyways true for SNSs),
-could be immutable canister / SNS controlled / controlled by s.b. you trust not to change things arbitraty. 
-this must be verified on adding new proposal type. 
+could be immutable canister / SNS controlled / controlled by s.b. you trust not to change things arbitraty. this must be verified on adding new proposal type.
 
 They consist of verification canister & method and of target canister & method
 why we need both: governance cannot interpret meaning of the proposals 
