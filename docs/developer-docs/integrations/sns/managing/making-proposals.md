@@ -40,7 +40,7 @@ Some examples:
 
 For all these cases SNSs have so called generic proposals. Basically those are custom proposals that each SNS community can define itself.
 
-Here we make use of an elegant cool aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as ones tell the SNS governance canister which method it has to call.
+Here we make use of an elegant cool aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
 <!-- ## SNS Proposal lifecycle
 
