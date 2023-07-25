@@ -69,29 +69,48 @@ sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
 
 After the SNS canisters are deployed and the dapp's control is handed over to
-the SNS, an NNS proposal starts the swap. 
+the SNS, an NNS proposal starts the swap.
 
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
 Of course it is crucial to set the right parameters in this proposal.
-You can also find an example how this command is used in the SNS local testing
-[here](https://github.com/dfinity/sns-testing/blob/main/open_sns_sale.sh#L11-L26).
+
+#### Quill command
+
+```bash
+quill sns \
+   --canister-ids-file ./sns_canister_ids.json \
+   --pem-file "${PEM_FILE}" \
+   make-proposal \
+   --proposal \
+      "(record { \
+         title=\"${REGISTER_DAPP_PROPOSAL_TITLE}\"; \
+         url=\"${REGISTER_DAPP_PROPOSAL_URL}\"; \
+         summary=\"${REGISTER_DAPP_PROPOSAL_SUMMARY}\"; \
+         action=opt variant {RegisterDappCanisters = record {canister_ids=${DAPP_CANISTER_IDS}}}})" \
+   "${DEVELOPER_NEURON_ID}"
 ```
-ic-admin   \
-   --nns-url "${NETWORK_URL}" propose-to-open-sns-token-swap  \
-   --min-participants 3  \
-   --min-icp-e8s 5000000000  \
-   --max-icp-e8s 50000000000  \
-   --min-participant-icp-e8s 100000000  \
-   --max-participant-icp-e8s 20000000000  \
-   --swap-due-timestamp-seconds "${DEADLINE}"  \
-   --sns-token-e8s 500000000000  \
-   --target-swap-canister-id "${SNS_SWAP_ID}"  \
-   --community-fund-investment-e8s 5000000000  \
-   --neuron-basket-count 3  \
-   --neuron-basket-dissolve-delay-interval-seconds 31536000  \
-   --proposal-title "Decentralize this SNS"  \
-   --summary "Decentralize this SNS"
-```
+
+Where the parameters are:
+
+* `sns_canister_ids.json` is a file with the IDs of this SNS’s canisters
+
+* `PEM_FILE`="$(dfx cache show)/../../${IDENTITY_NAME}/identity.pem"
+
+* `IDENTITY_NAME`=`<current-dapp-controller-identity-name>`
+
+* `REGISTER_DAPP_PROPOSAL_TITLE`="Register test dapp"
+
+* `REGISTER_DAPP_PROPOSAL_URL`="https://example.com/"
+
+* `REGISTER_DAPP_PROPOSAL_SUMMARY`="This proposal registers test dapp with SNS"
+
+* `DAPP_CANISTER_IDS`="vec { \
+ principal\"$CID1\"; \
+ principal\"$CID2\"; \
+ principal\"$CID3\" \
+} where we assume your dapp’s canister principals are encoded as strings and set into variables named `CID2`, `CID2`, `CID3`
+
+* `DEVELOPER_NEURON_ID`=`<your-developer-neuron-ID>`
 
 ### 6. Proposal #2 (of 3) is passed or rejected
 
