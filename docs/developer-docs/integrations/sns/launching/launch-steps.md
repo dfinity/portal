@@ -119,6 +119,29 @@ initial neuron distribution, this also includes community votes.
 
 ### 7. Proposal to start the decentralization swap
 
+After the SNS canisters are deployed and the dapp's control is handed over to the SNS, an NNS proposal starts the swap.
+
+Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
+Of course it is crucial to set the right parameters in this proposal.
+
+```bash
+ic-admin   \
+   --nns-url "${NETWORK_URL}" propose-to-open-sns-token-swap  \
+   --min-participants 3  \
+   --min-icp-e8s 5000000000  \
+   --max-icp-e8s 50000000000  \
+   --min-participant-icp-e8s 100000000  \
+   --max-participant-icp-e8s 20000000000  \
+   --swap-due-timestamp-seconds "${DEADLINE}"  \
+   --sns-token-e8s 500000000000  \
+   --target-swap-canister-id "${SNS_SWAP_ID}"  \
+   --community-fund-investment-e8s 5000000000  \
+   --neuron-basket-count 3  \
+   --neuron-basket-dissolve-delay-interval-seconds 31536000  \
+   --proposal-title "Decentralize this SNS"  \
+   --summary "Decentralize this SNS"
+```
+
 ### 8. Proposal #3 (of 3) is passed or rejected
 
 Nothing technical for dapp developers to do. Community votes.
