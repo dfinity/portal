@@ -2,7 +2,7 @@
 
 ## Overview
 
-To manage an SNS, developers and community need to understand how proposals work, how they can be submitted, voted on, and what effect they have. This article explains the different types of proposals and how to work with them.
+To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have. This article explains the different types of proposals and how to work with them.
 
 ## Background
 
@@ -35,12 +35,12 @@ Each SNS community might have dapp-specific needs.
 Some examples:
 
 * A dapp has a very complicated procedure to upgrade dapp canisters (as they have a canister for each user) which they orchestrate over a “user root canister”. For this they have to tell this canister what the user-canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp this should happen via proposal.
-* many dapps have an [asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister). Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update these
+* many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets 
 * Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
 
-For all these cases we have so called generic proposals. Basically those are custom proposals that each SNS community can define itself.
+For all these cases SNSs have so called generic proposals. Basically those are custom proposals that each SNS community can define itself.
 
-Here we make use of an elegant cool aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as ones tell the SNS governance canister which method it has to call.
+Here we make use of an elegant cool aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
 <!-- ## SNS Proposal lifecycle
 

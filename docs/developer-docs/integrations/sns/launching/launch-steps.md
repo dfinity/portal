@@ -68,10 +68,9 @@ sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_
 
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
 
-After the SNS canisters are deployed and the dapp's control is handed over to
-the SNS, an NNS proposal starts the swap.
+In this step, the developers will hand over the control of the dapp canister(s) to the newly deployed SNS root canister. To make sure that the SNS root is also aware of the dapp canister(s), the devs then also "register" the dapp in the SNS, by an SNS proposal.
 
-Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
+Note that this proposal needs to be submitted by one of the initial SNS neurons. This means that the devs require at least one SNS neuron that they can control with the command line tool quill. They can then use the following command to submit the SNS proposal.
 Of course it is crucial to set the right parameters in this proposal.
 
 #### Quill command
@@ -114,7 +113,15 @@ Where the parameters are:
 
 ### 6. Proposal #2 (of 3) is passed or rejected
 
-Dapp developers vote with their initial SNS neurons. Depending on the
+Dapp developers vote with their initial SNS neurons. Depending on the initial neuron distirbution, this can also include other voters that have initial neurons. 
+
+Note that at this stage it is not possible to use the NNS frontend dapp to vote on SNS proposals - the NNS FE dapp will only show SNS neurons and proposals for SNSs that are fully launched. 
+Therefore, there are two options how this proposal can be adopted:
+
+1) The proposal is submitted by a neuron that has at least 3% of the voting power and one waits for the voting period of 4 days to be complete. If no other neurons vote, the proposal will then be adopted after this voting period.
+
+2) The initial neurons are set up in such a way that the majority of the voting power is in neurons that are controlled via quill. In this case, other neurons can vote in this step and the proposal can potentially pass earlier if an absolute majority of the voting power is reached.
+
 initial neuron distribution, this also includes community votes.
 
 ### 7. Proposal to start the decentralization swap
