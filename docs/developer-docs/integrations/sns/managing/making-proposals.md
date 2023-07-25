@@ -2,6 +2,45 @@
 
 ## Overview
 
+To manage an SNS, developers and community need to understand how proposals work, how they can be submitted, voted on, and what effect they have. This article explains the different types of proposals and how to work with them.
+
+## Background
+
+### Native proposals
+
+An SNS comes with built-in proposals called “native proposals”.
+
+There are the following types:
+* `motion`
+* `manage_nervous_system_parameters`
+* `upgrade_sns_controlled_canister`
+* `add_generic_nervous_system_function`
+* `remove_generic_nervous_system_function`
+* `execute_generic_nervous_system_function`
+* `upgrade_sns_to_next_version`
+* `manage_sns_metadata`
+* `transfer_sns_treasury_funds`
+* `register_dapp_canisters` 
+* `deregister_dapp_canisters`
+
+:::info 
+See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
+:::
+
+### Generic proposals
+
+Each SNS community might have dapp-specific needs.
+
+Some examples:
+
+* A dapp has a very complicated procedure to upgrade dapp canisters (as they have a canister for each user) which they orchestrate over a “user root canister”. For this they have to tell this canister what the user-canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp this should happen via proposal.
+* many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update these
+* Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
+
+For all these cases we have so called generic proposals. Basically those are custom proposals that each SNS community can define itself.
+
+Here we make use of an elegant cool aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as ones tell the SNS governance canister which method it has to call.
+
 ## SNS Proposal lifecycle
 
 
