@@ -11,6 +11,7 @@ To manage an SNS, developers and community need to understand how proposals work
 An SNS comes with built-in proposals called “native proposals”.
 
 There are the following types:
+
 * `motion`
 * `manage_nervous_system_parameters`
 * `upgrade_sns_controlled_canister`
@@ -20,10 +21,10 @@ There are the following types:
 * `upgrade_sns_to_next_version`
 * `manage_sns_metadata`
 * `transfer_sns_treasury_funds`
-* `register_dapp_canisters` 
+* `register_dapp_canisters`
 * `deregister_dapp_canisters`
 
-:::info 
+:::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
 :::
 
@@ -41,7 +42,7 @@ For all these cases we have so called generic proposals. Basically those are cus
 
 Here we make use of an elegant cool aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as ones tell the SNS governance canister which method it has to call.
 
-## SNS Proposal lifecycle
+<!-- ## SNS Proposal lifecycle
 
 
 (not only how generic ones are added but also how a normal proposal works (who can submit it, what they 
@@ -94,4 +95,4 @@ should include how to add and remove them.
  
 
 ### Register a new generic proposal
-### Submit a generic proposal 
+### Submit a generic proposal  -->
