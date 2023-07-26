@@ -2123,5 +2123,22 @@
     "video": "/img/showcase/rubaru_video.mp4", 
     "videoContentType": "video/mp4",
     "submittableId": "39223821"
+  },
+   {
+    "id": "allkinds",
+    "name": "Allkinds",
+    "oneLiner": "Find like-minded people with a high precision",
+    "website": "https://xroyo-niaaa-aaaal-act6a-cai.icp0.io/",
+    "tags": ["Social" ,  "DAO", "Protocol"],
+    "description": "Allkinds is a web3 protocol that enables individuals to build personal profiles of values and interests, empowering them to discover like-minded individuals or organizations with high precision.",
+    "stats": "Just launched MVP",
+    "logo": "/img/showcase/allkinds_logo_black.png",
+    "display": "Large",
+    "usesInternetIdentity": true,
+    "youtube": "https://youtu.be/5I5Y2wfGvnA", 
+    "twitter": "https://twitter.com/Allkindsxyz",
+     "github": "https://github.com/AllKinds/AllkindsICP",
+    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"], 
+    "submittableId": "34286785"
   }
 ]
