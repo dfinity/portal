@@ -25,7 +25,7 @@ There are the following types:
 * `deregister_dapp_canisters`
 
 :::info
-See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
+See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
 :::
 
 ### Generic proposals
