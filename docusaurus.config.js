@@ -18,6 +18,7 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const blogPostsPlugin = require("./plugins/blog-posts");
+const externalRedirectsPlugin = require("./plugins/external-redirects");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
@@ -27,6 +28,8 @@ const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
   getSplatRedirects,
+  getExternalRedirects,
+  getExactUrlRedirects,
 } = require("./plugins/utils/redirects");
 const { menuDivider, intoColumns } = require("./plugins/utils/menu");
 
@@ -404,6 +407,10 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
+    externalRedirectsPlugin({
+      redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
+    }),
+
     [
       "@docusaurus/plugin-client-redirects",
       {
