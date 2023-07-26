@@ -35,7 +35,7 @@ Each SNS community might have dapp-specific needs.
 Some examples:
 
 * A dapp may have a very complicated procedure to upgrade dapp canisters. For example, they may have a canister for each user, in which case they orchestrate over a “user root canister”. For this workflow, they would have to tell this canister what the user-canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp this should happen via proposal.
-* many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets 
+* Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets 
 * Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
 
 For these cases, SNSs have so called 'generic proposals'. These are custom proposals that each SNS community can define itself.
