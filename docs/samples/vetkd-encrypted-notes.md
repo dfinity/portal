@@ -4,7 +4,7 @@
 
 This example dapp is a new version of the [encrypted notes dapp](./encrypted-notes.md) that has been altered to use the new [proposed vetKD feature](https://github.com/dfinity/interface-spec/pull/158).
 
-Particularly, the dapp has been altered where instead of creating a principal-specific AES key and syncing it across devices (by means of device-specific RSA keys), the notes are encrypted with an AES key that is derived (directly in the browser) from a principal-specific vetKey obtained from the backend canister. THis key is obtained in an encrypted form, using an ephemeral transport key, which obtains itself from the vetKD system API. This way, there is no need for any device management in the dapp.
+Particularly, the dapp has been altered where instead of creating a principal-specific AES key and syncing it across devices (by means of device-specific RSA keys), the notes are encrypted with an AES key that is derived (directly in the browser) from a principal-specific vetKey obtained from the backend canister. This key is obtained in an encrypted form, using an ephemeral transport key, which obtains itself from the vetKD system API. This way, there is no need for any device management in the dapp.
 
 The difference between the original encrypted-notes-dapp and the this new vetKD example can be seen in https://github.com/dfinity/examples/pull/561.
 
