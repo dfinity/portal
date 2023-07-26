@@ -67,6 +67,7 @@ const sidebars = {
               "samples/persistent-storage",
               "samples/phonebook",
               "samples/pub-sub",
+              "samples/qr-code",
               "samples/quicksort",
               "samples/random-maze",
               "samples/sending-and-receiving-cycles",
@@ -74,6 +75,7 @@ const sidebars = {
               "samples/superheros",
               "samples/t-ecdsa-sample",
               "samples/whoami",
+              "samples/vetkd-encrypted-notes"
             ],
             },
 
