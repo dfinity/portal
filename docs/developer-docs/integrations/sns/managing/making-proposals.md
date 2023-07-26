@@ -38,7 +38,7 @@ Some examples:
 * many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets 
 * Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
 
-For all these cases SNSs have so called generic proposals. Basically those are custom proposals that each SNS community can define itself.
+For these cases, SNSs have so called 'generic proposals'. These are custom proposals that each SNS community can define itself.
 
 Here we make use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
