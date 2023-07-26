@@ -1,5 +1,20 @@
 [
   {
+      "id": "joined-africa",
+      "name": "Joined Africa",
+      "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
+      "website": "https://fo2ol-uqaaa-aaaap-abdna-cai.icp0.io/",
+      "tags": ["SocialFi"],
+      "description": "At Joined Africa, we are dedicated to providing a seamless online marketplace that connects sellers and buyers, locally and globally within Africa. Our platform empowers sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers. Meanwhile, buyers can explore a wide range of categories, including properties, electronics, fashion, vehicles, and more. Communication between buyers and sellers is essential, and we've made it convenient through our built-in messaging application. When a seller lists a product on our site, interested buyers can contact them directly using our chat application.",
+      "logo": "/img/showcase/joined-africa_logo.jpg",
+      "usesInternetIdentity": true,
+      "youtube": "https://www.youtube.com/@JoinedAfrica",
+      "screenshots": ["/img/showcase/joined-africa_screenshot_0.jpeg", "/img/showcase/joined-africa_screenshot_1.png"],
+      "video": "img/showcase/joined-africa_video.mp4",
+      "videoContentType": "video/mp4",
+      "submittableId": "36375564"
+  },
+  {
     "id": "dscvr",
     "name": "DSCVR",
     "oneLiner": "Social portals, community airdrops, crypto tipping on chain",

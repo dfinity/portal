@@ -293,4 +293,12 @@ export const communityToolingItems = [
       github: "https://github.com/ic4j/ic4j-maven-plugin",
     },
   }, 
+{
+    title: "icpp-pro",
+    tags: [ "C++", "development", "CDK" ],
+    description: "C++ Canister Development Kit (CDK).",
+    links: {
+      docs: "https://docs.icpp.world/",
+    },
+  },
 ];
