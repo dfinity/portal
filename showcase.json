@@ -2132,13 +2132,12 @@
     "tags": ["Social" ,  "DAO", "Protocol"],
     "description": "Allkinds is a web3 protocol that enables individuals to build personal profiles of values and interests, empowering them to discover like-minded individuals or organizations with high precision.",
     "stats": "Just launched MVP",
-    "logo": "/img/showcase/allkinds_logo_black.png",
+    "logo": "/img/showcase/allkinds_logo_black.svg",
     "display": "Large",
     "usesInternetIdentity": true,
     "youtube": "https://youtu.be/5I5Y2wfGvnA", 
     "twitter": "https://twitter.com/Allkindsxyz",
      "github": "https://github.com/AllKinds/AllkindsICP",
-    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"], 
     "submittableId": "34286785"
   }
 ]
