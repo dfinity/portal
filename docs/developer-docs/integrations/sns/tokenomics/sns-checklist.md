@@ -15,6 +15,8 @@ an SNS is done at your own risk.
 
 # 1. Documentation / Preparation
 
+Please use this [spreadsheet](https://bit.ly/43MyJ86) as a checklist guide and share a filled-out copy on your SNS launch forum thread.
+
 ## 1.1. Tokenomics specification
 
 ### 1.1.1. Token utility
