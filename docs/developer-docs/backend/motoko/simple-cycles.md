@@ -1,4 +1,4 @@
-# 7: Accepting cycles from a wallet
+# 13: Accepting cycles from a wallet
 
 ## Overview
 
