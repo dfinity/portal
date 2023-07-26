@@ -54,12 +54,8 @@ that are automatically spawned by the ledger canister.
 history may be lost.**
 :::
 
-* While 
-SNSs that are provided as a system function 
-can only be upgraded to canister versions approved by the 
-NNS, each SNS community can configure their SNS according
-to their needs.
-Most chosen configurations can also be adjusted over time,
+* While SNSs that are provided as a system function can only be upgraded to canister versions approved by the NNS, each SNS community can configure their SNS according
+to their needs. Most chosen configurations can also be adjusted over time,
 for example to adopt to new situations or to experiment with
 different governance and tokenomic models.
 Therefore, managing an SNS also means that the community
