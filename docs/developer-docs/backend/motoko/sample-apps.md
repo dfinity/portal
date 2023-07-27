@@ -1,4 +1,4 @@
-# 19: Sample code and applications
+# Motoko sample code and applications
 
 ## Overview
 Sample code, applications, and microservices that have been developed by DFINITY or contributed by the community are available from the [DFINITY public repository](https://github.com/dfinity/examples).
