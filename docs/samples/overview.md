@@ -170,6 +170,13 @@ This example shows how to sort an array, via quick sort, in Motoko.
 - [Documentation](../samples/quicksort).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/quicksort).
 
+## QR code generator
+
+This example shows that an Internet Computer dapp can perform a long-running computation, like image processing, in a single message execution which is possible due to a unique feature called Deterministic Time Slicing (DTS) that automatically divides long computations into smaller slices executed across multiple blocks. 
+
+- [Documentation](qr-code).
+- [Rust](https://github.com/dfinity/examples/tree/master/rust/qrcode).
+
 ## Random maze
 
 This sample shows how to create a simple frontend in JavaScript where the previous samples did not provide a frontend, this sample provides both a frontend and a backend. It creates a random maze generation, with IC-based randomness.

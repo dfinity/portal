@@ -68,8 +68,8 @@ Starting a canister execution environment locally requires a `dfx.json` file, so
 To start the local canister execution environment, open a new terminal window or tab on your local computer.
 
 :::info
-    -   You should now have **two terminals** open.
-    -   You should have the **project directory** as your **current working directory**.
+-   You should now have **two terminals** open.
+-   You should have the **project directory** as your **current working directory**.
 :::
 
 Start the canister execution environment on your local computer by running the following command:

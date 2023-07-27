@@ -4,7 +4,7 @@
 
 This example dapp is a new version of the [encrypted notes dapp](./encrypted-notes.md) that has been altered to use the new [proposed vetKD feature](https://github.com/dfinity/interface-spec/pull/158).
 
-Particularly, the dapp has been altered where instead of creating a principal-specific AES key and syncing it across devices (by means of device-specific RSA keys), the notes are encrypted with an AES key that is derived (directly in the browser) from a principal-specific vetKey obtained from the backend canister. THis key is obtained in an encrypted form, using an ephemeral transport key, which obtains itself from the vetKD system API. This way, there is no need for any device management in the dapp.
+Particularly, the dapp has been altered where instead of creating a principal-specific AES key and syncing it across devices (by means of device-specific RSA keys), the notes are encrypted with an AES key that is derived (directly in the browser) from a principal-specific vetKey obtained from the backend canister. This key is obtained in an encrypted form, using an ephemeral transport key, which obtains itself from the vetKD system API. This way, there is no need for any device management in the dapp.
 
 The difference between the original encrypted-notes-dapp and the this new vetKD example can be seen in https://github.com/dfinity/examples/pull/561.
 
@@ -12,11 +12,11 @@ Currently, the only way to use this dapp is via manual local deployment, as deta
 
 This example is available in both Motoko and Rust. 
 
-Please see the [README of the original encrypted-notes-dapp](../encrypted-notes-dapp/README.md) for further details.
+Please see the [README of the original encrypted-notes-dapp](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/README.md) for further details.
 
 ## Disclaimer
 
-This example uses an [**insecure** implementation](../../rust/vetkd/src/system_api) of [the proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158) in a pre-compiled form via the [vetkd_system_api.wasm](./vetkd_system_api.wasm). **Do not use this in production or for sensitive data**! This example is solely provided **for demonstration purposes** to collect feedback on the mentioned vetKD system API.
+This example uses an [**insecure** implementation](https://github.com/dfinity/examples/tree/master/rust/vetkd/src/system_api) of [the proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158) in a pre-compiled form via the [vetkd_system_api.wasm](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp-vetkd/vetkd_system_api.wasm). **Do not use this in production or for sensitive data**! This example is solely provided **for demonstration purposes** to collect feedback on the mentioned vetKD system API.
 
 ## Prerequisites
 This example requires an installation of:
