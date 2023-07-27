@@ -2,17 +2,18 @@
 
 ## Overview
 
-Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/aa82e52aaa74cc7c5f6a141e30b708bf42ede1e3/standards/ICRC-1/README.md)-compliant token that is backed 1:1 by Bitcoin held 100% on the IC mainnet.
+Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/aa82e52aaa74cc7c5f6a141e30b708bf42ede1e3/standards/ICRC-1/README.md)-compliant token that is backed 1:1 by bitcoins held 100% on the IC mainnet.
 
 The ckBTC functionality is provided through an interplay of two canisters:
-- The **ckBTC minter**. 
+- The **ckBTC minter**.
 - The **ckBTC ledger**.
 
 The ckBTC ledger is responsible for keeping account balances and for transferring ckBTC between accounts. It provides the following functionality:
 - It enables the ckBTC minter to mint and burn ckBTC.
 - It enables the transfer of ckBTC among users.
 
-The ckBTC minter is responsible for the minting and burning of ckBTC tokens. A certain amount of tokens is minted if a user transfers the same amount of bitcoin to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins, making it possible for the ckBTC minter to associate the minted ckBTC funds with the correct owner. The ckBTC minter needs to receive BTC, based on a large number of confirmations due to the lack of finality in Bitcoin, before it mints the same amount in ckBTC. The ckBTC minter burns the ckBTC before it transfers the corresponding BTC amount using a regular Bitcoin transaction.
+The ckBTC minter is responsible for the minting and burning of ckBTC tokens. Tokens are minted when a user transfers bitcoins to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins, making it possible for the ckBTC minter to associate the minted ckBTC funds with the correct owner. The ckBTC minter waits for a large number of
+confirmations for all Bitcoin transactions that affect the total supply of ckBTC because of the lack of finality in Bitcoin. When handling Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
 
 A detailed description of the ckBTC minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
@@ -22,7 +23,7 @@ A simplified overview of the process to mint and transfer ckBTC is depicted in t
 
 For a deeper technical overview, please see [here](bitcoin-how-it-works.md).
 
-This page details the API endpoints that can be used to interact with the ckBTC minter canister. 
+This page details the API endpoints that can be used to interact with the ckBTC minter canister.
 
 ## ckBTC ledger
 The ckBTC ledger accepts minting and burning requests from the ckBTC minter and records the ckBTC balances of every account with a positive balance. Additionally, the ckBTC ledger handles the ckBTC transactions.
@@ -43,13 +44,12 @@ There are other parameters that are self-explanatory and can be found in the [ck
 The ckBTC minter provides the following API endpoints that can be used to interact with the canister:
 
 - `get_btc_address`: Returns a specific Bitcoin address that the caller can use to obtain ckBTC by sending BTC to this address.
-- `track_balance`: Instructs the ckBTC minter to track a certain Bitcoin address until funds are added, which will trigger the minting of ckBTC. NOTE: This endpoint is work-in-progress and not available yet.
 - `update_balance`: Instructs the ckBTC minter to check the balance of a Bitcoin address and mint ckBTC into the account of the owner.
 - `estimate_withdrawal_fee`: Returns a current estimate for the fee to be paid when retrieving a certain BTC amount.
 - `get_deposit_fee`: Returns the fee charged when minting ckBTC.
 - `get_withdrawal_account`: Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC.
 - `retrieve_btc`: Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
-- `retrieve_btc_status`: Returns the status of a previous retrieve_btc call.
+- `retrieve_btc_status`: Returns the status of a previous `retrieve_btc` call.
 - `get_minter_info`: Returns information about the ckBTC minter itself.
 - `get_events`: Returns a set of events at the ckBTC minter.
 The endpoints are discussed in more detail in the following.
@@ -61,30 +61,18 @@ This public key is encoded as a pay-to-witness-public-key-hash (P2WPKH) Bitcoin 
 
 Note that the key derivation is not BIP-32 compliant where 31 bits are used for each derivation level. Instead, a single derivation is performed based on the full principal ID and subaccount. Since the derivation is deterministic, a canister can derive the Bitcoin address for a given principal ID and subaccount itself.
 
-### `track_balance(owner: opt principal, subaccount: opt blob)`
-:::info
-This endpoint is work-in-progress and not available yet.
-:::
-
-The ckBTC minter starts tracking the Bitcoin address derived from the provided principal ID and subaccount using the `get_btc_address` endpoint. If no principal ID is provided, then the sender’s principal ID is used. If no subaccount is provided, then the default subaccount (all zeros) is used.
-
-The balance of the Bitcoin address is not tracked indefinitely. Tracking is stopped if either at least one new unspent transaction output (UTXO) is discovered or there is no new UTXO within a certain time interval (details about balance tracking are provided below).
-
-If at least one new UTXO is discovered, the same amount of ckBTC tokens minus the KYT fee are minted and made available to the owner.
-
 ### `update_balance(owner: opt principal, subaccount: opt blob)`
-Instead of having the ckBTC minter track the balance of a Bitcoin address, the `update_balance` function can be invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
+The `update_balance` function is invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
 
-If there is at least one new UTXO, the corresponding ckBTC amount is minted, otherwise an error is returned.
-
-The ckBTC minter effectively invokes this endpoint itself on a timer when the `track_balance` function is used.
+For each newly discovered UTXO, the corresponding ckBTC amount is minted minus the deposit fee, which corresponds to the KYT fee.
+If there are no new UTXOs, an error is returned.
 
 ### `estimate_withdrawal_fee(amount: opt nat64)`
 The endpoint returns an estimate for the fee that must be paid when retrieving the given BTC amount. Internally, a transaction is built (without valid signatures) to determine the fee, which consists of the Bitcoin miner fee, the ckBTC minter fee, and the KYT fee. If no amount is provided, it is assumed that three inputs are required to build the transaction.
 
 If there is no change to the internal state of the ckBTC minter and the Bitcoin canister before issuing the request to retrieve Bitcoins, the fee will be exactly the returned estimate.
 
-The fee can change when a new Bitcoin block is mined in the meantime, which causes the Bitcoin canister to update the Bitcoin miner fees or when another retrieval request is handled first, spending some of the outputs that were used when estimating the fee.
+The fee can change when a new Bitcoin block is mined in the meantime, which causes the Bitcoin canister to update the Bitcoin miner fees or when another retrieval request that spends some of the outputs that were used when estimating the fee is handled first.
 
 ### `get_deposit_fee`
 The endpoint returns the fee that the ckBTC minter charges for minting ckBTC when receiving new UTXOs. Currently, this fee is simply the KYT fee.
@@ -95,7 +83,7 @@ The function returns the caller’s withdrawal account, which is the account der
 A user can only retrieve BTC by first transferring ckBTC to this particular account.
 
 ### `retrieve_btc(address: text, amount: nat64)`
-The function instructs the ckBTC minter to burn the specified amount. Once the request is picked up from the queue, a Bitcoin transaction is created containing an output that transfers the requested amount (minus fees as discussed below) to the specified Bitcoin address.
+The function instructs the ckBTC minter to burn the specified amount. Once the request is picked up from the queue, a Bitcoin transaction is created containing an output that transfers the requested amount minus fees to the specified Bitcoin address.
 
 Since Bitcoin retrieval is handled asynchronously, the function returns the block index of the transaction burning the ckBTC tokens.
 
@@ -118,7 +106,7 @@ The function returns the following parameters internal to the ckBTC minter:
 - `retrieve_btc_min_amount`
 
 ### `get_events(start: nat64, length: nat64)`
-The ckBTC minter tracks the events that change its internal state. Given a start index and a length parameter, the ckBTC minter returns all events sequentially from the event at the given start index up to the event at index start+length-1.
+The ckBTC minter tracks the events that change its internal state. Given a start index and a length parameter, the ckBTC minter returns all events sequentially from the event at the given `start` index up to the event at index `start+length-1`.
 
 Note that this endpoint is used for debugging purposes and there is no guarantee that the endpoint will continue to exist in this form.
 

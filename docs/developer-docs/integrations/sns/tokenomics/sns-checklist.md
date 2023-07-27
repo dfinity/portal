@@ -26,10 +26,10 @@ For the initial token allocation, i.e., defining which groups/accounts should re
 ### 1.1.3. Voting power
 Provide information about how voting power is distributed at genesis, potential attack vectors and how the voting power might evolve over time.
 
-It is considered to be best practice that sale participants have the majority of voting power at genesis. If the developers and seed investors have the majority together, then it should be clearly articulated why these two parties are independent.
+It is considered to be best practice that swap participants have the majority of voting power at genesis. If the developers and seed investors have the majority together, then it should be clearly articulated why these two parties are independent.
 
 ### 1.1.4. Funding target
-The minimum and maximum funding target must be defined for the decentralization sale. Add information about the planned usage of the funds, e.g. plans of ramping up the team.
+The minimum and maximum funding target must be defined for the decentralization swap. Add information about the planned usage of the funds, e.g. plans of ramping up the team.
 
 ### 1.1.5. SNS tokenomics tool
 Use the [SNS tokenomics tool](https://docs.google.com/spreadsheets/u/0/d/1eSxkJl94jPt63CdOXH6ROy-WSkacW6P4qcAKMLrfBPc/edit) to analyze and document the chosen amount of tokens, initial distribution of tokens, dissolve delays etc. Both the tool and a training deck can be found in [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
@@ -57,7 +57,7 @@ For initializing an SNS for your dapp, the configuration parameters must use the
 
 Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]` 
 
-A confirmation text, which requires acceptance, can also be shown before the user can participate in the decentralization sale. This confirmation text can be set like this: `confirmation_text: "Please confirm that..."`
+A confirmation text, which requires acceptance, can also be shown before the user can participate in the decentralization swap. This confirmation text can be set like this: `confirmation_text: "Please confirm that..."`
 
 Use the [sns cli tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to validate the consistency of the configuration file, and test the configuration extensively locally and on the mainnet before the final canisters are set up. See section 2.4 for more information about testing.
 
@@ -72,7 +72,7 @@ This proposal is not going in-depth with the tokenomics, governance etc. but lin
 ### 1.5.2. Decentralization proposal
 The second proposal is asking the NNS neurons for acceptance to start the decentralization process. If the proposal is adopted, the decentralization of the dapp and the decentralization swap will begin.
 
-Include relevant information like tokenomics (token distribution, governance, decentralization sale), details about the dapp (link to the open sourced code), whitepaper and anything else relevant to the community. See OpenChat’s [decentralization proposal](https://dashboard.internetcomputer.org/proposal/109811) for inspiration.
+Include relevant information like tokenomics (token distribution, governance, decentralization swap), details about the dapp (link to the open sourced code), whitepaper and anything else relevant to the community. See OpenChat’s [decentralization proposal](https://dashboard.internetcomputer.org/proposal/109811) for inspiration.
 
 ### 1.5.3. More information
 See the [documentation](./preparation.md) for details about the process. The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
@@ -118,11 +118,11 @@ In addition to performing comprehensive testing of all dApp operations using the
 The documentation prepared in section 1.1 and 1.2 should be made publicly available ahead of the SNS launch. This provides transparency about the dapp, future plans with the dapp, the technical architecture and the tokenomics. This information can be shared on the dapp’s website, GitHub or where it would make sense.
 
 ## 3.2. Community discussion
-It’s strongly recommended that developers have a discussion in the forum with the community about the decentralization plans. It’s suggested to start a thread at least a couple of weeks before the NNS proposal is created. This will allow the community to learn about your plans, ask questions and build trust in the SNS launch. The SNS initialization and decentralization sale will not start unless enough NNS neurons vote in favor of the proposal.
+It’s strongly recommended that developers have a discussion in the forum with the community about the decentralization plans. It’s suggested to start a thread at least a couple of weeks before the NNS proposal is created. This will allow the community to learn about your plans, ask questions and build trust in the SNS launch. The SNS initialization and decentralization swap will not start unless enough NNS neurons vote in favor of the proposal.
 
 It is recommended to share:
 
-- [x] The init file and sale file (example: [OpenChat](https://github.com/open-ic/open-chat/tree/master/sns/config)).
+- [x] The init file and swap file (example: [OpenChat](https://github.com/open-ic/open-chat/tree/master/sns/config)).
 - [x] Provide whitepaper with a full description of the decentralization and tokenomics.
 - [x] Provide a technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
 - [x] Explain to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
@@ -149,7 +149,7 @@ the SNS launch. The SNS canisters are installed with the
 [here](../launching/launch-steps.md#SNS-launch-command-SNSW)
 
 ## 4.3. Dapp control handover
-Before the decentralization sale, the SNS root canister must be set as the controller of the dapp and
+Before the decentralization swap, the SNS root canister must be set as the controller of the dapp and
 other developers are removed from the list of controllers. This entails “registering” the dapp with the
 SNS so that SNS root is aware that it controls these canisters, and this registration is done by SNS proposal.
 
