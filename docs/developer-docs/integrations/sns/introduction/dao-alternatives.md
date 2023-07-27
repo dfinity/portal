@@ -1,9 +1,8 @@
 ---
 sidebar_position: 4
 ---
-
-
 # Alternatives how to get and maintain a DAO
+
 ## Overview
 
 SNSs are system-provided DAOs on the Internet Computer.

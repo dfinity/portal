@@ -67,6 +67,7 @@ const sidebars = {
               "samples/persistent-storage",
               "samples/phonebook",
               "samples/pub-sub",
+              "samples/qr-code",
               "samples/quicksort",
               "samples/random-maze",
               "samples/sending-and-receiving-cycles",
@@ -74,6 +75,7 @@ const sidebars = {
               "samples/superheros",
               "samples/t-ecdsa-sample",
               "samples/whoami",
+              "samples/vetkd-encrypted-notes"
             ],
             },
 
@@ -155,6 +157,11 @@ const sidebars = {
             type: "doc",
             label: "Managing projects",
             id: "developer-docs/setup/manage-projects",
+          },
+          {
+            type: "doc",
+            label: "Pulling canister dependencies",
+            id: "developer-docs/setup/pulling-canister-dependencies",
           },
           {
             type: "doc",
@@ -414,6 +421,7 @@ const sidebars = {
                       items: [
                         "developer-docs/integrations/sns/introduction/sns-intro-high-level",
                         "developer-docs/integrations/sns/introduction/sns-architecture",
+                        "developer-docs/integrations/sns/introduction/sns-launch",
                         "developer-docs/integrations/sns/introduction/dao-alternatives",
                       ],
                     },
@@ -476,7 +484,7 @@ const sidebars = {
                         id: "developer-docs/integrations/sns/managing/manage-sns-intro",
                     },
                       items: [
-                        "developer-docs/integrations/sns/managing/sns-governance",
+                        // "developer-docs/integrations/sns/managing/sns-governance",
                         "developer-docs/integrations/sns/managing/cycles-usage",
                         "developer-docs/integrations/sns/managing/sns-asset-canister",
                       ],
@@ -615,6 +623,7 @@ const sidebars = {
             "references/cli-reference/dfx-cache",
             "references/cli-reference/dfx-canister",
             "references/cli-reference/dfx-deploy",
+            "references/cli-reference/dfx-deps",
             "references/cli-reference/dfx-generate",
             "references/cli-reference/dfx-help",
             "references/cli-reference/dfx-identity",
