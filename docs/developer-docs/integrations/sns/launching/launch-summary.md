@@ -239,12 +239,11 @@ If successful, at the end of stage, we the following has changed:
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
-  This includes adding the SNS root canister as the controller of the dapp and removing
-  yourself (and possibly other developers) from the list of
-  controllers. Also, this includes "registering" the dapp with the SNS so that SNS
+  This includes adding the SNS root canister as the controller of the dapp and
+  "registering" the dapp with the SNS so that SNS
   root is aware that it controls these canisters.
 
-  The registration is done by **SNS proposal**.
+  The registration is done by an **SNS proposal**.
   
   As there are already initial neurons, this,
   as well as potential upgrades to the dapp, can be realized by SNS proposals and by the
