@@ -2124,6 +2124,7 @@
     "videoContentType": "video/mp4",
     "submittableId": "39223821"
   },
+
    {
     "id": "allkinds",
     "name": "Allkinds",
@@ -2139,5 +2140,21 @@
     "twitter": "https://twitter.com/Allkindsxyz",
      "github": "https://github.com/AllKinds/AllkindsICP",
     "submittableId": "34286785"
-  }
+    },
+{
+    "id": "scoge",
+    "name": "SCOGÉ Universe",
+    "oneLiner": "T.A.O.S City’s finest distributor of Luxury Fashion and Consumer goods",
+    "website": "https://uqjdj-siaaa-aaaag-aaoxq-cai.icp0.io",
+    "tags": ["NFT" ,  "Metaverse", "Games"],
+    "description": "SCOGÉ is a cutting-edge fashion-centric gamified metaverse platform that revolutionizes the way styles are born, stories are told, and interaction between users. Users embark on an enthralling journey, wielding unique powers to craft thrilling experiences while discovering T.A.O.S City and the evolving SCOGÉ Universe.",
+    "logo": "/img/showcase/scoge_logo.webp",
+    "display": "Large",
+    "usesInternetIdentity": false,
+    "twitter": "https://twitter.com/_scoge_",
+    "screenshots": ["/img/showcase/scoge_screenshots.webp"], 
+    "video": "/img/showcase/scoge_video.mp4", 
+    "videoContentType": "video/mp4",
+    "submittableId": "34276514"
+}
 ]
