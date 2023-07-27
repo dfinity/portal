@@ -17,7 +17,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   :::info 
   These parameters also define the initial neurons with which the SNS governance canister will
   be installed.
-  The Launch Stages 5 and 6 require submitting and adopting an _SNS proposal
+  The launch stages 5 and 6 require submitting and adopting an _SNS proposal
   during the launch process_, and thus before the SNS is fully launched. 
   Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not 
   fully launched. Neurons that are controlled by NNS frontend dapp principals will only be
