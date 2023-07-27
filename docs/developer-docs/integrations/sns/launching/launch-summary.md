@@ -14,6 +14,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   will work, this usually requires a lot of preparation and community engagement already
   (see [here](../tokenomics/sns-checklist.md) for more information).
 
+  :::info 
   These parameters also define the initial neurons with which the SNS governance canister will
   be installed.
   The Launch Stages 5 and 6 require submitting and adopting an _SNS proposal
@@ -22,6 +23,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   fully launched.
   Therefore, the initial neurons must be carefully setup in a way so that enough of them can be 
   operated already during the launch process.
+  :::
   
   What we have at this stage:
 
