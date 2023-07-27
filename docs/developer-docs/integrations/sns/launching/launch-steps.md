@@ -35,7 +35,9 @@ ls bazel-bin/rs/sns/cli/sns
 
 Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
 
-:::info These parameters also define the initial neurons with which the SNS governance canister will be installed. The Launch Stages 5 and 6 require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched. Therefore, neurons that are controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process. :::
+:::info These parameters also define the initial neurons with which the SNS governance canister will be installed. The Launch Stages 5 and 6 require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched. Therefore, neurons that are controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process. 
+This is also relevant for other SNS proposals that can already be used during the launch, for example to upgrade the dapp canister(s) or registering custom proposals for that DAO.
+:::
 
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
 
