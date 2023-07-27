@@ -67,6 +67,7 @@ const sidebars = {
               "samples/persistent-storage",
               "samples/phonebook",
               "samples/pub-sub",
+              "samples/qr-code",
               "samples/quicksort",
               "samples/random-maze",
               "samples/sending-and-receiving-cycles",
@@ -74,6 +75,7 @@ const sidebars = {
               "samples/superheros",
               "samples/t-ecdsa-sample",
               "samples/whoami",
+              "samples/vetkd-encrypted-notes"
             ],
             },
 
@@ -155,6 +157,11 @@ const sidebars = {
             type: "doc",
             label: "Managing projects",
             id: "developer-docs/setup/manage-projects",
+          },
+          {
+            type: "doc",
+            label: "Pulling canister dependencies",
+            id: "developer-docs/setup/pulling-canister-dependencies",
           },
           {
             type: "doc",

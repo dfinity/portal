@@ -115,7 +115,7 @@ const DocsHomePage: FC = () => {
                 documentation portal has everything you need. We provide
                 easy-to-follow guides, tutorials, code samples, and API
                 references for multiple languages like JavaScript, Python, Java,
-                Go, Rust, and more.
+                Go, Rust, C++ and more.
               </p>
               <p className="mb-0">
                 <Link
