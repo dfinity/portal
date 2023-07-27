@@ -2139,5 +2139,25 @@
     "video": "/img/showcase/scoge_video.mp4", 
     "videoContentType": "video/mp4",
     "submittableId": "34276514"
+  },
+  {
+    "id": "d-vote",
+    "name": "D-VOTE",
+    "description": "Experience the transformative power of blockchain voting, where each vote becomes an immutable, transparent transaction on a decentralized network. This ensures tamper-resistant results, fostering trust and confidence in the integrity of the voting process.",
+    "website": "https://7y3zv-rqaaa-aaaag-abswa-cai.icp0.io",
+    "logo": "/img/showcase/d-vote_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "Transparent, tamper-proof voting on blockchain.",
+    "stats": "100% On Chain Data Storage",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/NewbMiao/dvote",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "41368058"
   }
 ]
