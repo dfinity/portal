@@ -14,6 +14,20 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   will work, this usually requires a lot of preparation and community engagement already
   (see [here](../tokenomics/sns-checklist.md) for more information).
 
+  :::info 
+  These parameters also define the initial neurons with which the SNS governance canister will
+  be installed.
+  The launch stages 5 and 6 require submitting and adopting an _SNS proposal
+  during the launch process_, and thus before the SNS is fully launched. 
+  Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not 
+  fully launched. Neurons that are controlled by NNS frontend dapp principals will only be
+  visible after a successful launch. 
+  Therefore, the initial neurons must be carefully setup in a way so that enough of them can be 
+  operated already during the launch process.
+  This is also relevant for other SNS proposals that can already be used during the launch, for example to
+  upgrade the dapp canister(s) or registering custom proposals for that DAO.
+  :::
+  
   What we have at this stage:
 
 #### Table 1: Canisters
@@ -239,12 +253,11 @@ If successful, at the end of stage, we the following has changed:
 ### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
   Before the decentralization swap, the developers hand over the control of the dapp to the SNS.
 
-  This includes adding the SNS root canister as the controller of the dapp and removing
-  yourself (and possibly other developers) from the list of
-  controllers. Also, this includes "registering" the dapp with the SNS so that SNS
+  This includes adding the SNS root canister as the controller of the dapp and
+  "registering" the dapp with the SNS so that SNS
   root is aware that it controls these canisters.
 
-  The registration is done by **SNS proposal**.
+  The registration is done by an **SNS proposal**.
   
   As there are already initial neurons, this,
   as well as potential upgrades to the dapp, can be realized by SNS proposals and by the
