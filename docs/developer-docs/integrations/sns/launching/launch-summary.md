@@ -20,7 +20,8 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   The Launch Stages 5 and 6 require submitting and adopting an _SNS proposal
   during the launch process_, and thus before the SNS is fully launched. 
   Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not 
-  fully launched.
+  fully launched. Therefore, neurons that are controlled by NNS frontend dapp principals will only be
+  visible after a successful launch. 
   Therefore, the initial neurons must be carefully setup in a way so that enough of them can be 
   operated already during the launch process.
   :::
