@@ -62,8 +62,8 @@ fn get(key: u128) -> Option<u128> {
 
 ## Using composite queries
 ### Prerequisites
-[x] [Download and install the IC SDK.](https://internetcomputer.org/docs/current/developer-docs/setup/install/)
-[x] Download and install git.
+ 1. [Download and install the IC SDK.](https://internetcomputer.org/docs/current/developer-docs/setup/install/)
+ 2. Download and install git.
 
 ### Setting up the canisters
 Step 1: Open a terminal window and clone the DFINITY examples repo with the command:
