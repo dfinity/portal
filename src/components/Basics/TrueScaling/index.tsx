@@ -1,7 +1,7 @@
 import Link from "@docusaurus/Link";
 import {
   getNodeCount,
-  getNodeProviders,
+  getNodeProvidersCount,
   getSubnetCount,
 } from "@site/src/utils/network-stats";
 import React, { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ import AnimateSpawn from "../../Common/AnimateSpawn";
 
 const TrueScaling = () => {
   const [stats, setStats] = useState<{
-    nodeMachines: number;
+    nodeMachines: { total_nodes: number; up_nodes: number };
     subnets: number;
     nodeProviders: number;
   } | null>(null);
@@ -26,7 +26,7 @@ const TrueScaling = () => {
       const [nodeMachines, subnets, nodeProviders] = await Promise.all([
         getNodeCount(),
         getSubnetCount(),
-        getNodeProviders(),
+        getNodeProvidersCount(),
       ]);
       setStats({
         nodeMachines,
@@ -67,7 +67,7 @@ const TrueScaling = () => {
             <li>
               <h5 className="tw-heading-6 m-0">
                 {stats ? (
-                  `${stats.nodeMachines} Node machines`
+                  `${stats.nodeMachines.total_nodes} Node machines`
                 ) : (
                   <span className={styles.skeleton}>&nbsp;</span>
                 )}
