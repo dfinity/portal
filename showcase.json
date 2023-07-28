@@ -2182,5 +2182,29 @@
     "twitter": "https://twitter.com/icpp_pro",
     "youtube": "",
     "submittableId": "31439157"
+  },
+  {
+    "name": "KawaK",
+    "description": "A forum for critical thinkers, builders and writers. Earn by providing human to human feedback.  ",
+    "website": "https://3ysab-rqaaa-aaaan-qaewq-cai.ic0.app/",
+    "logo": "/img/showcase/kawak_logo.webp",
+    "screenshots": [
+      "/img/showcase/kawak_screenshot.webp"
+    ],
+    "video": "/img/showcase/kawak_video.mp4",
+    "display": "Normal",
+    "id": "kawak",
+    "oneLiner": "Acess real human feedback. Earn while helping others",
+    "stats": "100+ Topics ",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/kawak-org/Kawak-2.0",
+    "twitter": "https://twitter.com/KawaK_ICP",
+    "youtube": "",
+    "submittableId": "35943161",
+    "videoContentType": "video/mp4"
   }
+  
 ]
