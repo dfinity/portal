@@ -118,7 +118,7 @@ When storing data on the Internet Computer, there are two levels of data access.
 
 2. End user clients can only access whatever data that nodes and canisters have made available to them. If a node does not misbehave and leak data, clients can only read the responses to ingress messages and queries that they have sent. The canister decides what data is exposed to the client. 
 
-Data that is stored in the subnet state tree will always leak. Therefore, data with a low-entropy value may entirely leak and be fully exposed, such as a Boolean value that can only be either "True" or "False". Data with a high-entropy is negligible. 
+Partial information on data that is stored in the subnet state tree will always leak. Therefore, data with a low-entropy value may entirely leak and be fully exposed, such as a Boolean value that can only be either "True" or "False". Leakage on data with a high-entropy is negligible. 
 
 There are two types of user-related data that may be stored in the subnet state tree. The first is when a user sends an ingress message to a canister, the message and the response are both stored in the subnet state tree to be retrieved securely by the client. The ingress message should contain a high-entropy nonce that is implemented by the agent and typically not exposed to the user. The message response is determined by the canister and may not contain a high-entropy value. If the canister response consists of a low-entropy value, then the data may be leaked to users other than the ingress message sender. 
 
