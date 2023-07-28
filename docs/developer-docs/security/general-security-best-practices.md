@@ -108,7 +108,7 @@ For example, we have seen issues where the public key to verify certification wa
 
 Avoid test and dev code in production code whenever possible.
 
-### Data confidentiality guarantees of data on the Internet Computer
+### Data confidentiality on the Internet Computer
 
 #### Security concern
 
