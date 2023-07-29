@@ -235,7 +235,7 @@ To upgrade a canister:
 
     Note that your program must identify the variables for which to maintain state by using the `stable` keyword in the variable declaration.
 
-    For more information about declaring stable variables, see the [**Motoko programming language guide**](../../motoko/intro/index.md).
+    For more information about declaring stable variables, see the [**Motoko documentation**](../../motoko/main/stablememory.md).
 
 - #### Step 4:  Upgrade all of the canisters by running the following command:
 
