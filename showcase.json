@@ -11,6 +11,7 @@
       "youtube": "https://www.youtube.com/@JoinedAfrica",
       "screenshots": ["/img/showcase/joined-africa_screenshot_0.jpeg", "/img/showcase/joined-africa_screenshot_1.png"],
       "video": "img/showcase/joined-africa_video.mp4",
+      "github": "https://github.com/aginamena/Joinedafrica.com",
       "videoContentType": "video/mp4",
       "submittableId": "36375564"
   },
@@ -2176,5 +2177,51 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "41368058"
+  },
+  {
+    "id": "icpp-pro",
+    "name": "icpp-pro",
+    "description": "C++ Canister Development Kit (CDK). Seamlessly develop, debug, test & deploy your C++ Canisters from Windows, Linux or Mac.",
+    "website": "https://docs.icpp.world/",
+    "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
+    "screenshots": [
+      "/img/showcase/icpp-pro-screenshot.1024x576.png"
+    ],
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "Seamlessly develop, debug, test & deploy your C++ Canisters from Windows, Linux or Mac.",
+    "stats": "10,000 Downloads",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "https://twitter.com/icpp_pro",
+    "youtube": "",
+    "submittableId": "31439157"
+  },
+  {
+    "name": "KawaK",
+    "description": "A forum for critical thinkers, builders and writers. Earn by providing human to human feedback.  ",
+    "website": "https://3ysab-rqaaa-aaaan-qaewq-cai.ic0.app/",
+    "logo": "/img/showcase/kawak_logo.webp",
+    "screenshots": [
+      "/img/showcase/kawak_screenshot.webp"
+    ],
+    "video": "/img/showcase/kawak_video.mp4",
+    "display": "Normal",
+    "id": "kawak",
+    "oneLiner": "Acess real human feedback. Earn while helping others",
+    "stats": "100+ Topics ",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/kawak-org/Kawak-2.0",
+    "twitter": "https://twitter.com/KawaK_ICP",
+    "youtube": "",
+    "submittableId": "35943161",
+    "videoContentType": "video/mp4"
   }
+  
 ]
