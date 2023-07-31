@@ -17,7 +17,7 @@ In essence, the partitioned key-value store is structured as a single frontend w
 ## Frontend code
 The frontend code does the following for a put and get call:
 
- * Determine the ID of the canister that holds the partition with the given key.
+ * Determines the ID of the canister that holds the partition with the given key.
  * A call into the `get` or `put` function of that canister and parsing of the result.
 
 The following code shows a simplified version of the frontend code. Note the line `#[query(composite = true)]` which is used to leverage the new composite query feature:
