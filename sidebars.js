@@ -514,6 +514,11 @@ const sidebars = {
                   "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
+            {
+              type: "doc",
+              label: "Composite Queries",
+              id: "developer-docs/integrations/composite-query/composite-query",
+            },
           ],
     },
     {
