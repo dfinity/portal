@@ -14,7 +14,7 @@ Composite queries solve this problem. A composite query is a new type of query t
 Users and the client-side JavaScript code can invoke a composite query endpoint of a canister using the same query URL as for existing regular queries. In contrast to regular queries, a composite query can call other composite and regular queries. Due to limitations of the current implementation, composite queries have two restrictions:
 
  * A composite query cannot call canisters on another subnet.
- * A composite query cannot be executed as an update.  As a result, updates cannot call composite queries.
+ * A composite query cannot be executed as an update. As a result, updates cannot call composite queries.
 
 These restrictions will be hopefully lifted in future implementations.
 
@@ -30,10 +30,10 @@ Composite queries are enabled in the following releases:
 
 
 ## Code example
-As an example, consider a partitioned key value store, where a single frontend does the following for a put and get call:
+As an example, consider a partitioned key-value store, where a single frontend does the following for a `put` and `get` call:
 
-Determines the ID of the data partition canister that holds the value with the given key.
-Then, makes a call into the get or put function of that canister and parses the result.
+- First, determines the ID of the data partition canister that holds the value with the given key.
+- Then, makes a call into the `get` or `put` function of that canister and parses the result.
 
 Below is a simplified example of the frontend code. Take note of the line `#[query(composite = true)]` which is used to leverage the new composite query feature:
 
@@ -62,17 +62,17 @@ fn get(key: u128) -> Option<u128> {
 
 ## Using composite queries
 ### Prerequisites
- 1. [Download and install the IC SDK.](https://internetcomputer.org/docs/current/developer-docs/setup/install/)
- 2. Download and install git.
+ - [x] [Download and install the IC SDK.](https://internetcomputer.org/docs/current/developer-docs/setup/install/)
+ - [x] [Download and install git.](https://git-scm.com/downloads)
 
 ### Setting up the canisters
-Step 1: Open a terminal window and clone the DFINITY examples repo with the command:
+### Step 1: Open a terminal window and clone the DFINITY examples repo with the command:
 
 ```bash
 git clone https://github.com/dfinity/examples.git
 ```
 
-Step 2: Navigate into the `rust/composite_query/src` directory, start a local replica, and build the frontend canister with the commands:
+### Step 2: Navigate into the `rust/composite_query/src` directory, start a local replica, and build the frontend canister with the commands:
 
 ```bash
 cd rust/composite_query/src
@@ -80,12 +80,13 @@ dfx start
 dfx canister create kv_frontend
 dfx build kv_frontend
 During compilation of the fronted canister, the backend canister's wasm code will be compiled and inlined in the frontend canister's wasm code.
-Step 3: Then, install the frontend canister with the command:
+
+### Step 3: Then, install the frontend canister with the command:
 dfx canister install kv_frontend
 ```
 
 ### Interacting with the canisters
-Step 1: To add a key-value pair via the frontend canister, run the following command:
+### Step 1: To add a key-value pair via the frontend canister, run the following command:
 
 ```bash
 dfx canister call kv_frontend put '(1, 1337)'
@@ -98,7 +99,7 @@ The first call to put might be slow to respond because the data partition canist
 The output should resemble the following indicating that no value has previously been registered for this key:
 ```(null)```
 
-Step 2: Retrieve the value associated with a key using composite queries with the command:
+### Step 2: Retrieve the value associated with a key using composite queries with the command:
 
 ```bash
 dfx canister call kv_frontend get '(1)'
@@ -110,7 +111,7 @@ The output should resemble the following:
 This workflow displays the ability to fetch the value using composite queries with very low latency.
 
 ### Comparing composite queries to calls from update functions
-Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions. To do this, we will use the get_update method, which contains the exact same logic, but is implemented based on update calls. Run the following command in your terminal window:
+Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions. To do this, we will use the `get_update` method, which contains the exact same logic, but is implemented based on update calls. Run the following command in your terminal window:
 
 ```bash
 dfx canister call kv_frontend get_update '(1)'
@@ -122,7 +123,7 @@ The output will resemble the following:
 We can observe that with update calls we receive the very same result, but the call is at least one order of magnitude slower compared to composite query calls.
 
 :::note
-The examples repository also contains an equivalent Motoko example in: motoko/composite_query/src
+The examples repository also contains an equivalent [Motoko example](https://github.com/dfinity/examples/tree/master/motoko/composite_query).
 :::
 
 ## Resources
