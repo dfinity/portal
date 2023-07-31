@@ -18,7 +18,7 @@ In essence, the partitioned key-value store is structured as a single frontend w
 The frontend code does the following for a put and get call:
 
  * Determines the ID of the canister that holds the partition with the given key.
- * A call into the `get` or `put` function of that canister and parsing of the result.
+ * Makes a call into the `get` or `put` function of that canister and parsing of the result.
 
 The following code shows a simplified version of the frontend code. Note the line `#[query(composite = true)]` which is used to leverage the new composite query feature:
 
@@ -69,9 +69,9 @@ fn get(key: u128) -> Option<u128> {
 
 And that’s it!
 
-The complete code can be found here: https://github.com/dfinity/examples/tree/master/rust/composite_query
+The complete code can be found [here](https://github.com/dfinity/examples/tree/master/rust/composite_query).
 
-An alternative implementation for Motoko can be found here: https://github.com/dfinity/examples/tree/master/motoko/composite_query
+An alternative implementation for Motoko can be found [here](https://github.com/dfinity/examples/tree/master/motoko/composite_query).
 
 ## Using composite queries
 To start, let's set up our development environment. Make sure you have [dfx](https://internetcomputer.org/docs/current/developer-docs/setup/install/) installed on your computer. You will need at least version 0.15.0 of dfx for composite query support. Open your terminal and follow these commands:
@@ -123,6 +123,7 @@ $ dfx canister call kv_frontend get '(1)'
 
 As you can see, we can effortlessly fetch the value using composite queries with very low latency.
 Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions: for that, we use the `get_update` method, which contains the exact same logic, but is implemented based on update calls:
+
 ```bash
 $ dfx canister call kv_frontend get_update '(1)'
 (opt (1_337 : nat))
