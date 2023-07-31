@@ -22,6 +22,30 @@ The responses to [query calls](/references/ic-interface-spec.md#https-interface)
 
 -   Examples are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
 
+### Data confidentiality on the Internet Computer
+
+#### Security concern
+
+When storing data on the Internet Computer, there are two levels of data access.
+
+1. Nodes are able to read all data that is stored on a subnet. This includes all messages sent to or from a canister, along with all data stored in a canister. This means a node could extract all data available to a canister. This will change with the implementation of TEE-based security for nodes.
+
+2. End user clients can only access whatever data that nodes and canisters have made available to them. If the subnet's nodes do not misbehave and leak data, clients can only read the responses to ingress messages and queries that they have sent. The canister decides what data is exposed to the client. 
+
+Partial information on data that is stored in the subnet state tree will always leak. Therefore, data with a low-entropy value may entirely leak and be fully exposed, such as a Boolean value that can only be either "True" or "False". Leakage on data with a high-entropy is negligible. 
+
+There are two types of user-related data that may be stored in the subnet state tree. The first is when a user sends an ingress message to a canister, the message hash and the response are both stored in the subnet state tree to be retrieved securely by the client. The ingress message should contain a high-entropy nonce that is implemented by the agent and typically not exposed to the user. The message response is determined by the canister and may not contain a high-entropy value. If the canister response consists of a low-entropy value, then the data may be leaked to users other than the ingress message sender. 
+
+The second type of user-related data is certified variables maintained by a canister that are also exposed through the subnet state tree. If a canister places low-entropy data into the state tree, then the data may leak to users who should not have access to that piece of data. 
+
+#### Recommendation 
+
+For developers that need to protect the confidentiality of their data against external users, they should ensure that data in the subnet state tree has a sufficient level of entropy. 128 bits is recommended. If the data does not have enough entropy itself, then adding some artificial data using randomness would be recommended. 
+
+In particular, a canister can ensure that responses to ingress messages do not leak data to external users, other than the sender, by including high-entropy data in the response. Or, a canister can ensure that data in certified variables is not leaked by adding high-entropy data to the variables that should be kept confidential. 
+
+Additionally, similarly to ingress message responses, a canister's private custom sections that contain low-entropy data could leak to unauthorized users. Therefore, a sufficent level of entropy for canister private custom sections should be used. 128 bits is recommended. If the data does not have enough entropy itself, then adding some artificial data using randomness would be recommended. 
+
 ## Nonspecific to the Internet Computer
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
