@@ -1,3 +1,11 @@
+
+---
+title: Building a partitioned key-value store with composite queries on the Internet Computer
+description: Today, we’ll dive into composite queries and walk through the process of building a sample app: a partitioned key-value store. Each partition is represented by a single canister. We'll leverage the power of the Internet Computer’s composite queries to efficiently retrieve data from those partition canisters.
+tags: [New features]
+image: /img/blog/dev-update-blog-composite-query.png
+---
+
 # Building a partitioned key-value store with composite queries on the Internet Computer
 
 Welcome to another developer blog post! Today, we’ll dive into composite queries and walk through the process of building a sample dapp: a partitioned key-value store. Each partition is represented by a single canister. We'll leverage the power of the Internet Computer’s composite queries to efficiently retrieve data from those partition canisters.
