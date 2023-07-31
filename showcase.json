@@ -2184,6 +2184,7 @@
     "submittableId": "31439157"
   },
   {
+    "id": "kawak",
     "name": "KawaK",
     "description": "A forum for critical thinkers, builders and writers. Earn by providing human to human feedback.  ",
     "website": "https://3ysab-rqaaa-aaaan-qaewq-cai.ic0.app/",
@@ -2192,8 +2193,8 @@
       "/img/showcase/kawak_screenshot.webp"
     ],
     "video": "/img/showcase/kawak_video.mp4",
+    "videoContentType": "video/mp4",
     "display": "Normal",
-    "id": "kawak",
     "oneLiner": "Acess real human feedback. Earn while helping others",
     "stats": "100+ Topics ",
     "tags": [
@@ -2203,8 +2204,25 @@
     "github": "https://github.com/kawak-org/Kawak-2.0",
     "twitter": "https://twitter.com/KawaK_ICP",
     "youtube": "",
-    "submittableId": "35943161",
-    "videoContentType": "video/mp4"
+    "submittableId": "35943161"    
+  },
+  { 
+    "id": "obsidian-tears",
+    "name": "Obsidian Tears",
+    "oneLiner": "Obsidian Tears is a 2D RPG similar to old-time classics, complete with NFT and blockchain integration on the Internet Computer.",
+    "website": "https://obsidiantears.xyz/",
+    "tags": ["Games", "NFT", "Metaverse"],
+    "description": "Obsidian Tears is a 2D adventure featuring original art, story, music and over 50 collectable NFT artifacts. Our mission is to make a great story after our favorite old time classics, and to empower others to do the same.",
+    "stats": "First 2D RPG on the IC",
+    "logo": "/img/showcase/obsidian-tears-logo.webp",
+    "display": "Large",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/obsidian-tears",
+    "youtube": "https://youtu.be/PqlVY9Qy74M",
+    "twitter": "https://twitter.com/obsidian__tears",
+    "screenshots": ["/img/showcase/obsidian-tears-screenshot0.webp"],
+    "video": "/img/showcase/obsidian-tears-trailer.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "25983021"
   }
-  
 ]
