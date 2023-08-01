@@ -293,29 +293,16 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Advanced features and integrations",
+      label: "Advanced features",
       link: {
           type: "doc",
           id: "developer-docs/integrations/index",
       },
           items: [
             {
-              type: "category",
-              label: "Bitcoin integration",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/bitcoin/index",
-            },
-              items: [
-                "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
-                "developer-docs/integrations/bitcoin/ckbtc",
-                "developer-docs/integrations/bitcoin/local-development",
-              ],
-            },
-            {
               type: "doc",
-              label: "Exchange rate canister",
-              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+              label: "Composite queries",
+              id: "developer-docs/integrations/composite-query/composite-query",
             },
             {
               type: "category",
@@ -331,6 +318,47 @@ const sidebars = {
                   "developer-docs/integrations/https-outcalls/https-outcalls-post",
               ],
             },
+            {
+              type: "category",
+              label: "Internet Identity (II)",
+              link: {
+                type: "doc",
+                id: "references/ii-spec",
+              },
+              items: [
+                  "developer-docs/integrations/internet-identity/alternative-origins",
+                  "developer-docs/integrations/internet-identity/integrate-identity",
+              ],
+            },
+            {
+              type: "category",
+              label: "Threshold ECDSA",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/t-ecdsa/index",
+            },
+                items: [
+                  "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
+              ],
+            },
+          ],
+    },
+    {
+      type: "category",
+      label: "Ledgers and tokens",
+          items: [
             {
               type: "category",
               label: "ICP ledger",
@@ -357,29 +385,9 @@ const sidebars = {
               ],
             },
             {
-              type: "category",
-              label: "Internet Identity (II)",
-              link: {
-                type: "doc",
-                id: "references/ii-spec",
-              },
-              items: [
-                  "developer-docs/integrations/internet-identity/alternative-origins",
-                  "developer-docs/integrations/internet-identity/integrate-identity",
-              ],
-            },
-            {
-              type: "category",
-              label: "Network Nervous System (NNS)",
-              link: {
-                type: "doc",
-                id: "tokenomics/nns/nns-intro",
-              },
-              items: [
-                  "tokenomics/token-holders/nns-app-quickstart",
-                  "tokenomics/nns/neurons-fund",
-                  "tokenomics/nns/nns-staking-voting-rewards",
-              ],
+              type: "doc",
+              label: "Exchange rate canister",
+              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
             },
             {
               type: "category",
@@ -407,117 +415,115 @@ const sidebars = {
                   "tokenomics/token-holders/self-custody-quickstart",
               ],
             },
+          ],
+    },
+    {
+      type: "category",
+      label: "Bitcoin integration",
+      link: {
+        type: "doc",
+        id: "developer-docs/integrations/bitcoin/index",
+    },
+      items: [
+        "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+        "developer-docs/integrations/bitcoin/ckbtc",
+        "developer-docs/integrations/bitcoin/local-development",
+      ],
+    },
+    {
+    type: "category",
+    label: "Network Nervous System (NNS)",
+    link: {
+      type: "doc",
+      id: "tokenomics/nns/nns-intro",
+    },
+    items: [
+        "tokenomics/token-holders/nns-app-quickstart",
+        "tokenomics/nns/neurons-fund",
+        "tokenomics/nns/nns-staking-voting-rewards",
+    ],
+    }, 
+    {
+      type: "category",
+      label: "System Nervous System (SNS)",
+      link: {
+          type: "doc",
+          id: "developer-docs/integrations/sns/index",
+      },
+          items: [
             {
               type: "category",
-              label: "System Nervous System (SNS)",
+              label: "Introduction to the SNS",
+              items: [
+                "developer-docs/integrations/sns/introduction/sns-intro-high-level",
+                "developer-docs/integrations/sns/introduction/sns-architecture",
+                "developer-docs/integrations/sns/introduction/sns-launch",
+                "developer-docs/integrations/sns/introduction/dao-alternatives",
+              ],
+            },
+            {
+              type: "category",
+              label: "Preparing an SNS launch",
               link: {
-                  type: "doc",
-                  id: "developer-docs/integrations/sns/index",
+                type: "doc",
+                id: "developer-docs/integrations/sns/tokenomics/index",
+            },
+              items: [
+                "developer-docs/integrations/sns/tokenomics/sns-checklist",
+                "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
+                "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
+                "developer-docs/integrations/sns/tokenomics/rewards",
+                "developer-docs/integrations/sns/tokenomics/preparation",
+              ],
+            },
+            {
+              type: "category",
+              label: "Launching an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/launching/launch-summary",
               },
-                  items: [
-                    {
-                      type: "category",
-                      label: "Introduction to the SNS",
-                      items: [
-                        "developer-docs/integrations/sns/introduction/sns-intro-high-level",
-                        "developer-docs/integrations/sns/introduction/sns-architecture",
-                        "developer-docs/integrations/sns/introduction/sns-launch",
-                        "developer-docs/integrations/sns/introduction/dao-alternatives",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Preparing an SNS launch",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/tokenomics/index",
-                    },
-                      items: [
-                        "developer-docs/integrations/sns/tokenomics/sns-checklist",
-                        "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
-                        "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-                        "developer-docs/integrations/sns/tokenomics/rewards",
-                        "developer-docs/integrations/sns/tokenomics/preparation",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Launching an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/launching/launch-summary",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/launching/launch-summary",
-                        "developer-docs/integrations/sns/launching/launch-steps",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Integrating with an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/integrating/index",
-                    },
-                      items: [
-                        "developer-docs/integrations/sns/integrating/index-integration",
-                        "developer-docs/integrations/sns/integrating/ledger-integration",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Testing an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/testing/testing-before-launch",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/testing/testing-locally",
-                        "developer-docs/integrations/sns/testing/testing-on-mainnet",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Managing an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/managing/manage-sns-intro",
-                    },
-                      items: [
-                        // "developer-docs/integrations/sns/managing/sns-governance",
-                        "developer-docs/integrations/sns/managing/cycles-usage",
-                        "developer-docs/integrations/sns/managing/sns-asset-canister",
-                      ],
-                    },
-                  ],
-            },
-            {
-              type: "category",
-              label: "Threshold ECDSA",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/t-ecdsa/index",
-            },
-                items: [
-                  "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-              ],
-            },
-             {
-              type: "category",
-              label: "vetKeys",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/vetkeys/index",
-            },
-                items: [
-                  "developer-docs/integrations/vetkeys/technology-overview",
-                  "developer-docs/integrations/vetkeys/using-vetkeys",
+              items: [
+                "developer-docs/integrations/sns/launching/launch-summary",
+                "developer-docs/integrations/sns/launching/launch-steps",
               ],
             },
             {
-              type: "doc",
-              label: "Composite Queries",
-              id: "developer-docs/integrations/composite-query/composite-query",
+              type: "category",
+              label: "Integrating with an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/integrating/index",
+            },
+              items: [
+                "developer-docs/integrations/sns/integrating/index-integration",
+                "developer-docs/integrations/sns/integrating/ledger-integration",
+              ],
+            },
+            {
+              type: "category",
+              label: "Testing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/testing/testing-before-launch",
+              },
+              items: [
+                "developer-docs/integrations/sns/testing/testing-locally",
+                "developer-docs/integrations/sns/testing/testing-on-mainnet",
+              ],
+            },
+            {
+              type: "category",
+              label: "Managing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/sns/managing/manage-sns-intro",
+            },
+              items: [
+                // "developer-docs/integrations/sns/managing/sns-governance",
+                "developer-docs/integrations/sns/managing/cycles-usage",
+                "developer-docs/integrations/sns/managing/sns-asset-canister",
+              ],
             },
           ],
     },
