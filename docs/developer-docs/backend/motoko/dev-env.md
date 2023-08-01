@@ -12,7 +12,7 @@ Before you start your project, verify the following:
 
 - [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](./../../setup/install/index.mdx) page.
 
-- [x] You have a code editor are installed. The [VSCode IDE](https://code.visualstudio.com/download) is a popular choice.
+- [x] You have a code editor installed. The [VSCode IDE](https://code.visualstudio.com/download) is a popular choice.
 
 - [x] You have downloaded and installed [git](https://git-scm.com/downloads).
 
