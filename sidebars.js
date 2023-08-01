@@ -280,6 +280,42 @@ const sidebars = {
         },
     {
       type: "category",
+      label: "Running in production",
+      link: {
+          type: "doc",
+          id: "developer-docs/production/index",
+      },
+          items: [
+            {
+              type: "category",
+              label: "Custom domains",
+              link: {
+                type: "doc",
+                id: "developer-docs/production/custom-domain/custom-domain",
+            },
+              items: [
+                "developer-docs/production/custom-domain/dns-setup",
+              ],
+            },
+            {
+              type: "doc",
+              label: "Deploying and upgrading canisters",
+              id: "developer-docs/production/deploying-and-upgrading",
+            },
+            {
+              type: "doc",
+              label: "Instruction limits",
+              id: "developer-docs/production/instruction-limits",
+            },
+            {
+              type: "doc",
+              label: "Large web assembly modules",
+              id: "developer-docs/production/larger-wasm",
+            },
+              ],
+      },
+    {
+      type: "category",
       label: "Using external agents",
       link: {
           type: "doc",
@@ -527,42 +563,6 @@ const sidebars = {
             },
           ],
     },
-    {
-      type: "category",
-      label: "Running in production",
-      link: {
-          type: "doc",
-          id: "developer-docs/production/index",
-      },
-          items: [
-            {
-              type: "category",
-              label: "Custom domains",
-              link: {
-                type: "doc",
-                id: "developer-docs/production/custom-domain/custom-domain",
-            },
-              items: [
-                "developer-docs/production/custom-domain/dns-setup",
-              ],
-            },
-            {
-              type: "doc",
-              label: "Deploying and upgrading canisters",
-              id: "developer-docs/production/deploying-and-upgrading",
-            },
-            {
-              type: "doc",
-              label: "Instruction limits",
-              id: "developer-docs/production/instruction-limits",
-            },
-            {
-              type: "doc",
-              label: "Large web assembly modules",
-              id: "developer-docs/production/larger-wasm",
-            },
-              ],
-      },
       {
         type: "category",
         label: "Use cases",
