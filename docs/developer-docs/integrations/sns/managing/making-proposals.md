@@ -23,7 +23,7 @@ There are the following types:
 * `DeregisterDappCanisters`
 * `Unspecified`
 * `ManageSnsMetadata`
-* `ManageSnsMetadata`
+* `ExecuteGenericNervousSystemFunction`
 
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
@@ -43,7 +43,36 @@ For these cases, SNSs have so called 'generic proposals'. These are custom propo
 
 Here we make use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
-## Using Quill to make proposals
+## Governance canister
+
+All of the proposals used to manage an SNS are executed on the governance canister so it helps to have for reference, what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
+
+Below are the most important types for the purpose of this article:
+
+```candid
+    type Account = record { 
+        owner : opt principal; 
+        subaccount : opt Subaccount 
+    };
+
+    //proposals types for managing an SNS
+    type Action = variant {
+        ManageNervousSystemParameters : NervousSystemParameters;
+        AddGenericNervousSystemFunction : NervousSystemFunction;
+        RemoveGenericNervousSystemFunction : nat64;
+        UpgradeSnsToNextVersion : record {};
+        RegisterDappCanisters : RegisterDappCanisters;
+        TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
+        UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
+        DeregisterDappCanisters : DeregisterDappCanisters;
+        Unspecified : record {};
+        ManageSnsMetadata : ManageSnsMetadata;
+        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
+        Motion : Motion;
+    };
+```
+
+## Using quill to submit proposals
 
 ### Submitting via `sns make-proposal` command
 
@@ -62,7 +91,7 @@ where `<PROPOSAL>` is a formatted a candid record.
         url = "lorem ipsum";
         summary = "lorem ipsum";
         action = opt variant {
-            <METHOD_NAME_OF_PROPOSAL_TYPE> = record {
+            <PROPOSAL_TYPE> = record {
                 //parameters of the proposal
             }
         };
@@ -87,7 +116,7 @@ For example, we use the candid record for a proposal of type `Motion`, the candi
 )
 ```
 
-Putting it all together, the command to submit a motion proposal is:
+Putting it all together, the CLI-friendly command to submit a `Motion` proposal is:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
@@ -103,10 +132,11 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     }
 )'
 ```
+## References for proposals
 
-## `Motion` proposals
+### `Motion`
 
-The method associated for `motion` proposals is `Motion`. The record and parameters for a `Motion` method are:
+### Relevant Type signature
 
 ```candid
     Motion: record {
@@ -114,7 +144,9 @@ The method associated for `motion` proposals is `Motion`. The record and paramet
     }
 ```
 
-Example:
+### Putting it together
+
+Example in bash:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal (
@@ -131,12 +163,16 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal (
 )
 ```
 
-## `ManageNervousSystemParameters` proposals
+## `ManageNervousSystemParameters`
 
-The type signature `ManageNervousSystemParameters`:
+### Relevant type signatures
 
 ```candid
-    ManageNervousSystemParameters: record {
+    type ManageNervousSystemParameters : NervousSystemParameters;
+```
+
+```candid
+  type NervousSystemParameters = record {
         default_followees : opt DefaultFollowees;
         max_dissolve_delay_seconds : opt nat64;
         max_dissolve_delay_bonus_percentage : opt nat64;
@@ -157,8 +193,164 @@ The type signature `ManageNervousSystemParameters`:
         voting_rewards_parameters : opt VotingRewardsParameters;
         maturity_modulation_disabled : opt bool;
         max_number_of_principals_per_neuron : opt nat64;
+    };
+```
+
+```candid
+    type DefaultFollowees = record { 
+        followees : vec record { 
+            nat64; 
+            Followees 
+        } 
+    };
+```
+
+```candid
+    type Followees = record { followees : vec NeuronId };
+```
+
+``` candid
+    type NeuronId = record { id : vec nat8 };
+```
+
+```candid
+    type NeuronPermissionList = record { permissions : vec int32 };
+```
+
+```candid
+    type VotingRewardsParameters = record {
+        final_reward_rate_basis_points : opt nat64;
+        initial_reward_rate_basis_points : opt nat64;
+        reward_rate_transition_duration_seconds : opt nat64;
+        round_duration_seconds : opt nat64;
+    };
+```
+
+### Putting it together
+
+```candid
+    ManageNervousSystemParameters: record {
+        default_followees : opt record { 
+            followees : vec record { 
+                        nat64; 
+                        Followees 
+            } 
+        };
+        max_dissolve_delay_seconds : opt nat64;
+        max_dissolve_delay_bonus_percentage : opt nat64;
+        max_followees_per_function : opt nat64;
+        neuron_claimer_permissions : opt record { permissions : vec int32 };
+        neuron_minimum_stake_e8s : opt nat64;
+        max_neuron_age_for_age_bonus : opt nat64;
+        initial_voting_period_seconds : opt nat64;
+        neuron_minimum_dissolve_delay_to_vote_seconds : opt nat64;
+        reject_cost_e8s : opt nat64;
+        max_proposals_to_keep_per_action : opt nat32;
+        wait_for_quiet_deadline_increase_seconds : opt nat64;
+        max_number_of_neurons : opt nat64;
+        transaction_fee_e8s : opt nat64;
+        max_number_of_proposals_with_ballots : opt nat64;
+        max_age_bonus_percentage : opt nat64;
+        neuron_grantable_permissions : opt record { permissions : vec int32 };
+        voting_rewards_parameters : opt record {
+            final_reward_rate_basis_points : opt nat64;
+            initial_reward_rate_basis_points : opt nat64;
+            reward_rate_transition_duration_seconds : opt nat64;
+            round_duration_seconds : opt nat64;
+        };
+        maturity_modulation_disabled : opt bool;
+        max_number_of_principals_per_neuron : opt nat64;
     }
 ```
+
+
+## `AddGenericNervousSystemFunction`
+
+Type signature:
+
+```candid
+    AddGenericNervousSystemFunction: record {
+        id : nat64;
+        name : text;
+        description : opt text;
+        function_type : opt FunctionType;
+};
+```
+
+
+## `RemoveGenericNervousSystemFunction`
+
+Type signature:
+
+```candid
+RemoveGenericNervousSystemFunction
+```
+
+## `UpgradeSnsToNextVersion`
+
+Type signature:
+
+```candid
+
+```
+
+## `RegisterDappCanisters`
+
+Type signature:
+
+```candid
+
+```
+
+## `TransferSnsTreasuryFunds`
+
+Type signature:
+
+```candid
+
+```
+
+## `UpgradeSnsControlledCanister` 
+
+Type signature:
+
+```candid
+
+```
+
+## `DeregisterDappCanisters` 
+
+Type signature:
+
+```candid
+
+```
+
+## `Unspecified` 
+
+Type signature:
+
+```candid
+
+```
+
+## `ManageSnsMetadata` 
+
+Type signature:
+
+```candid
+
+```
+
+## `ExecuteGenericNervousSystemFunction` 
+
+Type signature:
+
+```candid
+
+```
+
+
 
 
 <!-- ## SNS Proposal lifecycle
