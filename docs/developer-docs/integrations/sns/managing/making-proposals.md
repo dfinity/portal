@@ -266,10 +266,10 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
                                 Followees 
                     } 
                 };
-                max_dissolve_delay_seconds = opt nat64;
+                max_dissolve_delay_seconds = opt 42:nat64;
                 max_dissolve_delay_bonus_percentage = opt nat64;
                 max_followees_per_function = opt nat64;
-                neuron_claimer_permissions = opt record { permissions = vec int32 };
+                neuron_claimer_permissions = opt record { permissions = vec {1:int32, 2:int32} };
                 neuron_minimum_stake_e8s = opt nat64;
                 max_neuron_age_for_age_bonus = opt nat64;
                 initial_voting_period_seconds = opt nat64;
@@ -357,7 +357,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
                 function_type : opt variant {
                     NativeNervousSystemFunction = record {};
                     GenericNervousSystemFunction = record {
-                        validator_canister_id = opt principal;
+                        validator_canister_id = opt principal "ltyfs-qiaab-aaaak-aan3a-cai";
                         target_canister_id = opt principal;
                         validator_method_name = opt text;
                         target_method_name = opt text;
@@ -388,7 +388,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         url = "https://dfinity.org";
         summary = "A motion to start the SNS";
         action = opt variant {
-            RemoveGenericNervousSystemFunction = 123456789;
+            RemoveGenericNervousSystemFunction = 123456789:nat64;
         };
     }
 )'
@@ -447,7 +447,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         summary = "A motion to start the SNS";
         action = opt variant {
             RegisterDappCanisters = record {
-                canister_ids = vec principal;
+                canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
             };
         };
     }
