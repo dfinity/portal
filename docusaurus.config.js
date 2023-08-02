@@ -77,6 +77,10 @@ const navbarItems = [
           href: "https://wiki.internetcomputer.org",
         },
         {
+          label: "History of the Internet Computer",
+          href: "https://wiki.internetcomputer.org/wiki/History",
+        },
+        {
           label: "Video Library",
           href: "/videos?source=nav",
         },
