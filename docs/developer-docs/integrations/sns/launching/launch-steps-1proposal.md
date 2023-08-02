@@ -43,11 +43,16 @@ These parameters also define the initial neurons with which the SNS governance c
 
 ### 2. Submit NNS proposal to create SNS
 
-Anyone who owns an eligible NNS neuron with enough stake can submit an NNS 
-proposal to create an SNS for a given dapp.
+Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an SNS for a given dapp.
 Of course it is crucial to set the right parameters in this proposal.
-You can also find an example how this command is used in the SNS local testing
-[here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
+You can also find an example how this command is used in the SNS local testing [here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
+
+
+:::info
+
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
+:::
+
 
 To create such a proposal, a common path is to use `sns-cli` and run the following:
 ```

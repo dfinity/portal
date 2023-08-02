@@ -345,6 +345,11 @@ If successful, at the end of stage, we the following has changed:
   
 This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
 
+:::info
+
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch. 
+:::
+
 If successful, at the end of stage, we the following has changed:
 
 #### Table 1: NNS proposals

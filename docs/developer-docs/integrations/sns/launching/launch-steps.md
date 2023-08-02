@@ -134,6 +134,11 @@ After the SNS canisters are deployed and the dapp's control is handed over to th
 Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
 Of course it is crucial to set the right parameters in this proposal.
 
+:::info
+
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
+:::
+
 ```bash
 ic-admin   \
    --nns-url "${NETWORK_URL}" propose-to-open-sns-token-swap  \
