@@ -442,18 +442,6 @@ const sidebars = {
                     },
                     {
                       type: "category",
-                      label: "Launching an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/launching/launch-summary",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/launching/launch-summary",
-                        "developer-docs/integrations/sns/launching/launch-steps",
-                      ],
-                    },
-                    {
-                      type: "category",
                       label: "Integrating with an SNS",
                       link: {
                         type: "doc",
@@ -478,13 +466,25 @@ const sidebars = {
                     },
                     {
                       type: "category",
+                      label: "Launching an SNS",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/integrations/sns/launching/launch-summary",
+                      },
+                      items: [
+                        "developer-docs/integrations/sns/launching/launch-summary",
+                        "developer-docs/integrations/sns/launching/launch-steps",
+                      ],
+                    },
+                    {
+                      type: "category",
                       label: "Managing an SNS",
                       link: {
                         type: "doc",
                         id: "developer-docs/integrations/sns/managing/manage-sns-intro",
                     },
                       items: [
-                        // "developer-docs/integrations/sns/managing/sns-governance",
+                        "developer-docs/integrations/sns/managing/making-proposals",
                         "developer-docs/integrations/sns/managing/cycles-usage",
                         "developer-docs/integrations/sns/managing/sns-asset-canister",
                       ],
