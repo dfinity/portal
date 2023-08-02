@@ -82,7 +82,7 @@ Below are the most important types for the purpose of this article:
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal <PROPOSAL> [option]
 ```
 
-where `<PROPOSAL>` is a formatted a candid record. 
+where `<PROPOSAL>` is a formatted a candid record:
 
 ```candid
 (
@@ -91,32 +91,29 @@ where `<PROPOSAL>` is a formatted a candid record.
         url = "lorem ipsum";
         summary = "lorem ipsum";
         action = opt variant {
-            <PROPOSAL_TYPE> = record {
-                //parameters of the proposal
+            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
             }
         };
     }
 )
 ```
 
-For example, we use the candid record for a proposal of type `Motion`, the candid record is:
+The CLI command structure is
 
-```candid
-(
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
-        title = "SNS Launch";
-        url = "https://dfinity.org";
-        summary = "A motion to start the SNS";
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
         action = opt variant {
-            Motion = record {
-                motion_text = "I hereby raise the motion that the use of the SNS shall commence";
-            }
+            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
         };
     }
-)
+)'
 ```
 
-Putting it all together, the CLI-friendly command to submit a `Motion` proposal is:
+For example, we use the candid record for <PROPOSAL_TYPE> `Motion`, the CLI-friendly command to submit a `Motion` proposal is:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
@@ -132,6 +129,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     }
 )'
 ```
+
 ## References for proposals
 
 ### `Motion`
@@ -194,30 +192,20 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         maturity_modulation_disabled : opt bool;
         max_number_of_principals_per_neuron : opt nat64;
     };
-```
 
-```candid
     type DefaultFollowees = record { 
         followees : vec record { 
             nat64; 
             Followees 
         } 
     };
-```
 
-```candid
     type Followees = record { followees : vec NeuronId };
-```
 
-``` candid
     type NeuronId = record { id : vec nat8 };
-```
 
-```candid
     type NeuronPermissionList = record { permissions : vec int32 };
-```
 
-```candid
     type VotingRewardsParameters = record {
         final_reward_rate_basis_points : opt nat64;
         initial_reward_rate_basis_points : opt nat64;
@@ -314,25 +302,19 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 ```candid
     type AddGenericNervousSystemFunction : NervousSystemFunction;
-```
 
-```candid
     type NervousSystemFunction = record {
-    id : nat64;
-    name : text;
-    description : opt text;
-    function_type : opt FunctionType;
+        id : nat64;
+        name : text;
+        description : opt text;
+        function_type : opt FunctionType;
     };
-```
 
-```candid
     type FunctionType = variant {
         NativeNervousSystemFunction : record {};
         GenericNervousSystemFunction : GenericNervousSystemFunction;
     };
-```
 
-```candid
     type GenericNervousSystemFunction = record {
         validator_canister_id : opt principal;
         target_canister_id : opt principal;
@@ -444,9 +426,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 ```candid
     type RegisterDappCanisters : RegisterDappCanisters;
-```
 
-```candid
     type RegisterDappCanisters = record { canister_ids : vec principal };
 ```
 
@@ -480,19 +460,64 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 ### Relevant type signatures
 
 ```candid
+    type TransferSnsTreasuryFunds = record {
+        from_treasury : int32;
+        to_principal : opt principal;
+        to_subaccount : opt Subaccount;
+        memo : opt nat64;
+        amount_e8s : nat64;
+    };
 
+    type Subaccount = record { subaccount : vec nat8 };
 ```
 
 ### Putting it together
 
+```candid
+    type TransferSnsTreasuryFunds = record {
+        from_treasury : int32;
+        to_principal : opt principal;
+        to_subaccount : opt record { subaccount : vec nat8 };
+        memo : opt nat64;
+        amount_e8s : nat64;
+    };
+```
+
 Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Lorem ipsum";
+        url = "Lorem ipsum";
+        summary = "Lorem ipsum";
+        action = opt variant {
+            TransferSnsTreasuryFunds = record {
+                from_treasury = int32;
+                to_principal = opt principal;
+                to_subaccount = opt record { subaccount = vec nat8 };
+                memo = opt nat64;
+                amount_e8s = nat64;
+               
+            }
+        };
+    }
+)'
+```
 
 ## `UpgradeSnsControlledCanister` 
 
 ### Relevant type signatures
 
 ```candid
+    type   UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
 
+    type UpgradeSnsControlledCanister = record {
+        new_canister_wasm : vec nat8;
+        mode : opt int32;
+        canister_id : opt principal;
+        canister_upgrade_arg : opt vec nat8;
+    };
 ```
 
 ### Putting it together
@@ -504,7 +529,12 @@ Example in bash:
 ### Relevant type signatures
 
 ```candid
+    type  DeregisterDappCanisters : DeregisterDappCanisters;
 
+    type DeregisterDappCanisters = record {
+        canister_ids : vec principal;
+        new_controllers : vec principal;
+    };
 ```
 
 ### Putting it together
@@ -528,7 +558,14 @@ Example in bash:
 ### Relevant type signatures
 
 ```candid
+    type  ManageSnsMetadata : ManageSnsMetadata;
 
+    type ManageSnsMetadata = record {
+        url : opt text;
+        logo : opt text;
+        name : opt text;
+        description : opt text;
+    };
 ```
 
 ### Putting it together
@@ -540,7 +577,12 @@ Example in bash:
 ### Relevant type signatures
 
 ```candid
+    type  ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
 
+    type ExecuteGenericNervousSystemFunction = record {
+        function_id : nat64;
+        payload : vec nat8;
+    };
 ```
 
 ### Putting it together
