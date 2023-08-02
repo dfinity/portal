@@ -30,15 +30,25 @@ dfx is not natively supported on Windows. To download dfx on Windows, you will n
 
 ### Download and install the IC SDK
 
-In your terminal window, run the following command to install the IC SDK:
+To download and install the IC SDK, first open a terminal window. Then, run the following command in that window:
 
 ```
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
+This command will prompt you to read and accept the license agreement before the install begins. Type `y`, then press `Return` to accept the agreement and begin the installation. 
+
 :::info
 If you are using a machine running Apple silicon, you will need to have Rosetta installed. You can install [Rosetta](https://support.apple.com/en-us/HT211861) by running `softwareupdate --install-rosetta` in your terminal.
 :::
+
+Then, to verify that the IC SDK is ready to use, run the following command:
+
+```
+dfx --version
+```
+
+This command should output information about the latest version of `dfx`. This output indicates that the installation has been successful, and that `dfx` is ready to use. 
 
 #### Why does this matter?
 

@@ -74,7 +74,7 @@ Smart contracts on the IC are referred to as **canisters**. Canisters are comput
 
 Canisters are able to communicate with each other through asynchronous messages. The execution of messages is done in isolation, allowing for increased levels of concurrent execution.
 
-Smart contract code can be written in a number of different languages. Currently, Motoko and Rust are supported and maintained by DFINITY, and there are several community contributions such as Python and Typescript. 
+Canister code can be written in a number of different languages. Currently, Motoko and Rust are supported and maintained by DFINITY, and there are several community contributions such as Python and Typescript. 
 
 A canister is managed by a **controller**. A controller can be a centralized entity, a decentralized entity such as a DAO, or it can have no controlled at all which would make it an immutable smart contract. Controllers are the only one that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister. 
 
