@@ -480,89 +480,89 @@ const sidebars = {
     ],
     }, 
     {
-      type: "category",
-      label: "System Nervous System (SNS)",
-      link: {
-          type: "doc",
-          id: "developer-docs/integrations/sns/index",
+        type: "category",
+        label: "Service Nervous System (SNS)",
+        link: {
+            type: "doc",
+            id: "developer-docs/integrations/sns/index",
+        },
+            items: [
+              {
+                type: "category",
+                label: "Introduction to the SNS",
+                items: [
+                  "developer-docs/integrations/sns/introduction/sns-intro-high-level",
+                  "developer-docs/integrations/sns/introduction/sns-architecture",
+                  "developer-docs/integrations/sns/introduction/sns-launch",
+                  "developer-docs/integrations/sns/introduction/dao-alternatives",
+                ],
+              },
+              {
+                type: "category",
+                label: "Preparing an SNS launch",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/tokenomics/index",
+              },
+                items: [
+                  "developer-docs/integrations/sns/tokenomics/sns-checklist",
+                  "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
+                  "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
+                  "developer-docs/integrations/sns/tokenomics/rewards",
+                  "developer-docs/integrations/sns/tokenomics/preparation",
+                ],
+              },
+              {
+                type: "category",
+                label: "Integrating with an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/integrating/index",
+              },
+                items: [
+                  "developer-docs/integrations/sns/integrating/index-integration",
+                  "developer-docs/integrations/sns/integrating/ledger-integration",
+                ],
+              },
+              {
+                type: "category",
+                label: "Testing an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/testing/testing-before-launch",
+                },
+                items: [
+                  "developer-docs/integrations/sns/testing/testing-locally",
+                  "developer-docs/integrations/sns/testing/testing-on-mainnet",
+                ],
+              },
+              {
+                type: "category",
+                label: "Launching an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/launching/launch-summary",
+                },
+                items: [
+                  "developer-docs/integrations/sns/launching/launch-summary",
+                  "developer-docs/integrations/sns/launching/launch-steps",
+                ],
+              },
+              {
+                type: "category",
+                label: "Managing an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/managing/manage-sns-intro",
+              },
+                items: [
+                  "developer-docs/integrations/sns/managing/making-proposals",
+                  "developer-docs/integrations/sns/managing/cycles-usage",
+                  "developer-docs/integrations/sns/managing/sns-asset-canister",
+                ],
+              },
+            ],
       },
-          items: [
-            {
-              type: "category",
-              label: "Introduction to the SNS",
-              items: [
-                "developer-docs/integrations/sns/introduction/sns-intro-high-level",
-                "developer-docs/integrations/sns/introduction/sns-architecture",
-                "developer-docs/integrations/sns/introduction/sns-launch",
-                "developer-docs/integrations/sns/introduction/dao-alternatives",
-              ],
-            },
-            {
-              type: "category",
-              label: "Preparing an SNS launch",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/tokenomics/index",
-            },
-              items: [
-                "developer-docs/integrations/sns/tokenomics/sns-checklist",
-                "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
-                "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-                "developer-docs/integrations/sns/tokenomics/rewards",
-                "developer-docs/integrations/sns/tokenomics/preparation",
-              ],
-            },
-            {
-              type: "category",
-              label: "Launching an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/launching/launch-summary",
-              },
-              items: [
-                "developer-docs/integrations/sns/launching/launch-summary",
-                "developer-docs/integrations/sns/launching/launch-steps",
-              ],
-            },
-            {
-              type: "category",
-              label: "Integrating with an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/integrating/index",
-            },
-              items: [
-                "developer-docs/integrations/sns/integrating/index-integration",
-                "developer-docs/integrations/sns/integrating/ledger-integration",
-              ],
-            },
-            {
-              type: "category",
-              label: "Testing an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/testing/testing-before-launch",
-              },
-              items: [
-                "developer-docs/integrations/sns/testing/testing-locally",
-                "developer-docs/integrations/sns/testing/testing-on-mainnet",
-              ],
-            },
-            {
-              type: "category",
-              label: "Managing an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/sns/managing/manage-sns-intro",
-            },
-              items: [
-                // "developer-docs/integrations/sns/managing/sns-governance",
-                "developer-docs/integrations/sns/managing/cycles-usage",
-                "developer-docs/integrations/sns/managing/sns-asset-canister",
-              ],
-            },
-          ],
-    },
       {
         type: "category",
         label: "Use cases",

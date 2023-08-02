@@ -23,7 +23,9 @@ The NNS community's approval is relevant in Stage 2.
   community engagement already (see [here](../tokenomics/sns-checklist.md) for
   more information).
 
-  :::info These parameters also define the initial neurons with which the SNS governance canister will be installed.
+  :::info 
+  
+These parameters also define the initial neurons with which the SNS governance canister will be installed.
   Before being fully launched, the SNS governance canister is in a pre-decentralization-swap mode and only few proposals are allowed (see Step 7).
   However, some SNS proposals might already be used during this time, for example upgrades to the dapp canister(s) while the launch is ongoing or
   registering custom proposals for that DAO.
@@ -53,9 +55,13 @@ The NNS community's approval is relevant in Stage 2.
 
 ### 2. Submit NNS proposal to create SNS
 
-This proposal presents all the initial parameters for the SNS as defined in
-the first Stage to the NNS community. 
+This proposal presents all the initial parameters for the SNS as defined in the first Stage to the NNS community. 
 It also defines which dapp canister(s) should be handed over to the SNS.
+
+:::info
+
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
+:::
 
 If successful, at the end of stage, the following has changed:
 
