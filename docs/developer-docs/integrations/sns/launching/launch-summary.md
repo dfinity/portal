@@ -15,6 +15,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   (see [here](../tokenomics/sns-checklist.md) for more information).
 
   :::info 
+
   These parameters also define the initial neurons with which the SNS governance canister will
   be installed.
   The launch stages 5 and 6 require submitting and adopting an _SNS proposal
@@ -343,6 +344,11 @@ If successful, at the end of stage, we the following has changed:
 ### 7. Proposal to start the decentralization swap
   
 This proposal defines the conditions for the decentralization swap (e.g. how many ICP tokens should at least and at most be collected).
+
+:::info
+
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch. 
+:::
 
 If successful, at the end of stage, we the following has changed:
 
