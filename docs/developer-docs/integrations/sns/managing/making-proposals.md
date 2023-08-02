@@ -166,10 +166,8 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 ```candid
     type ManageNervousSystemParameters : NervousSystemParameters;
-```
 
-```candid
-  type NervousSystemParameters = record {
+    type NervousSystemParameters = record {
         default_followees : opt DefaultFollowees;
         max_dissolve_delay_seconds : opt nat64;
         max_dissolve_delay_bonus_percentage : opt nat64;
@@ -216,7 +214,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 ### Putting it together
 
 ```candid
-    ManageNervousSystemParameters: record {
+    type ManageNervousSystemParameters: record {
         default_followees : opt record { 
             followees : vec record { 
                         nat64; 
@@ -325,7 +323,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 ### Putting it together
 
 ```candid
-    AddGenericNervousSystemFunction: record {
+    type AddGenericNervousSystemFunction: record {
         id : nat64;
         name : text;
         description : opt text;
@@ -432,7 +430,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 ### Putting it together
 
 ```candid
-    RegisterDappCanisters: record {
+    type RegisterDappCanisters: record {
         canister_ids : vec principal
     };
 ```
