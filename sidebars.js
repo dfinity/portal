@@ -409,7 +409,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "System Nervous System (SNS)",
+              label: "Service Nervous System (SNS)",
               link: {
                   type: "doc",
                   id: "developer-docs/integrations/sns/index",
