@@ -12,17 +12,18 @@ An SNS comes with built-in proposals called “native proposals”.
 
 There are the following types:
 
-* `motion`
-* `manage_nervous_system_parameters`
-* `upgrade_sns_controlled_canister`
-* `add_generic_nervous_system_function`
-* `remove_generic_nervous_system_function`
-* `execute_generic_nervous_system_function`
-* `upgrade_sns_to_next_version`
-* `manage_sns_metadata`
-* `transfer_sns_treasury_funds`
-* `register_dapp_canisters`
-* `deregister_dapp_canisters`
+* `Motion`
+* `ManageNervousSystemParameters`
+* `AddGenericNervousSystemFunction`
+* `RemoveGenericNervousSystemFunction`
+* `UpgradeSnsToNextVersion`
+* `RegisterDappCanisters`
+* `TransferSnsTreasuryFunds`
+* `UpgradeSnsControlledCanister`
+* `DeregisterDappCanisters`
+* `Unspecified`
+* `ManageSnsMetadata`
+* `ManageSnsMetadata`
 
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
@@ -41,6 +42,124 @@ Some examples:
 For these cases, SNSs have so called 'generic proposals'. These are custom proposals that each SNS community can define itself.
 
 Here we make use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
+
+## Using Quill to make proposals
+
+### Submitting via `sns make-proposal` command
+
+`sns make-proposal` signs a `ManageNeuron` message to [submit a proposal](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-proposal.md). With this command, neuron holders can submit proposals (such as a Motion Proposal) to be voted on by other neuron holders. The structure:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal <PROPOSAL> [option]
+```
+
+where `<PROPOSAL>` is a formatted a candid record. 
+
+```candid
+(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            <METHOD_NAME_OF_PROPOSAL_TYPE> = record {
+                //parameters of the proposal
+            }
+        };
+    }
+)
+```
+
+For example, we use the candid record for a proposal of type `Motion`, the candid record is:
+
+```candid
+(
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            Motion = record {
+                motion_text = "I hereby raise the motion that the use of the SNS shall commence";
+            }
+        };
+    }
+)
+```
+
+Putting it all together, the command to submit a motion proposal is:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org\";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            Motion = record {
+                motion_text = "I hereby raise the motion that doesnt the use of the SNS shall commence";
+            }
+        };
+    }
+)'
+```
+
+## `Motion` proposals
+
+The method associated for `motion` proposals is `Motion`. The record and parameters for a `Motion` method are:
+
+```candid
+    Motion: record {
+        motion_text : text;
+    }
+```
+
+Example:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal (
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            Motion = record {
+                motion_text = "I hereby raise the motion that the use of the SNS shall commence";
+            }
+        };
+    }
+)
+```
+
+## `ManageNervousSystemParameters` proposals
+
+The type signature `ManageNervousSystemParameters`:
+
+```candid
+    ManageNervousSystemParameters: record {
+        default_followees : opt DefaultFollowees;
+        max_dissolve_delay_seconds : opt nat64;
+        max_dissolve_delay_bonus_percentage : opt nat64;
+        max_followees_per_function : opt nat64;
+        neuron_claimer_permissions : opt NeuronPermissionList;
+        neuron_minimum_stake_e8s : opt nat64;
+        max_neuron_age_for_age_bonus : opt nat64;
+        initial_voting_period_seconds : opt nat64;
+        neuron_minimum_dissolve_delay_to_vote_seconds : opt nat64;
+        reject_cost_e8s : opt nat64;
+        max_proposals_to_keep_per_action : opt nat32;
+        wait_for_quiet_deadline_increase_seconds : opt nat64;
+        max_number_of_neurons : opt nat64;
+        transaction_fee_e8s : opt nat64;
+        max_number_of_proposals_with_ballots : opt nat64;
+        max_age_bonus_percentage : opt nat64;
+        neuron_grantable_permissions : opt NeuronPermissionList;
+        voting_rewards_parameters : opt VotingRewardsParameters;
+        maturity_modulation_disabled : opt bool;
+        max_number_of_principals_per_neuron : opt nat64;
+    }
+```
+
 
 <!-- ## SNS Proposal lifecycle
 
