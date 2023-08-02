@@ -21,7 +21,6 @@ There are the following types:
 * `TransferSnsTreasuryFunds`
 * `UpgradeSnsControlledCanister`
 * `DeregisterDappCanisters`
-* `Unspecified`
 * `ManageSnsMetadata`
 * `ExecuteGenericNervousSystemFunction`
 
@@ -499,9 +498,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
                 memo = opt nat64;
                 amount_e8s = nat64;
                
-            }
+            };
         };
-    }
+    };
 )'
 ```
 
@@ -510,7 +509,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 ### Relevant type signatures
 
 ```candid
-    type   UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
+    type UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
 
     type UpgradeSnsControlledCanister = record {
         new_canister_wasm : vec nat8;
@@ -524,12 +523,30 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 Example in bash:
 
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            UpgradeSnsControlledCanister = record {
+                new_canister_wasm = vec nat8;
+                mode = opt int32;
+                canister_id = opt principal;
+                canister_upgrade_arg = opt vec nat8;
+            };
+        };
+    };
+)'
+```
+
 ## `DeregisterDappCanisters` 
 
 ### Relevant type signatures
 
 ```candid
-    type  DeregisterDappCanisters : DeregisterDappCanisters;
+    type DeregisterDappCanisters : DeregisterDappCanisters;
 
     type DeregisterDappCanisters = record {
         canister_ids : vec principal;
@@ -541,17 +558,38 @@ Example in bash:
 
 Example in bash:
 
-## `Unspecified` 
-
-### Relevant type signatures
-
-```candid
-
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            DeregisterDappCanisters = record {
+                canister_ids = vec principal;
+                new_controllers = vec principal;
+            };
+        };
+    };
+)'
 ```
 
 ### Putting it together
 
 Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
+        };
+    }
+)'
+```
 
 ## `ManageSnsMetadata` 
 
@@ -572,12 +610,25 @@ Example in bash:
 
 Example in bash:
 
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
+        };
+    }
+)'
+```
+
 ## `ExecuteGenericNervousSystemFunction` 
 
 ### Relevant type signatures
 
 ```candid
-    type  ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
+    type ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
 
     type ExecuteGenericNervousSystemFunction = record {
         function_id : nat64;
@@ -589,6 +640,21 @@ Example in bash:
 
 Example in bash:
 
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            ExecuteGenericNervousSystemFunction = record {
+                function_id = nat64;
+                payload = vec nat8;
+            }
+        };
+    }
+)'
+```
 
 
 <!-- ## SNS Proposal lifecycle
