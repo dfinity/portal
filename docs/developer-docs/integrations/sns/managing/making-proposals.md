@@ -149,18 +149,18 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal (
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
-        title = "SNS Launch";
-        url = "https://dfinity.org";
-        summary = "A motion to start the SNS";
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
         action = opt variant {
             Motion = record {
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
             }
         };
     }
-)
+)'
 ```
 
 ## `ManageNervousSystemParameters`
@@ -263,93 +263,289 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal (
     }
 ```
 
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            ManageNervousSystemParameters: record {
+                default_followees : opt record { 
+                    followees : vec record { 
+                                nat64; 
+                                Followees 
+                    } 
+                };
+                max_dissolve_delay_seconds = opt nat64;
+                max_dissolve_delay_bonus_percentage = opt nat64;
+                max_followees_per_function = opt nat64;
+                neuron_claimer_permissions = opt record { permissions = vec int32 };
+                neuron_minimum_stake_e8s = opt nat64;
+                max_neuron_age_for_age_bonus = opt nat64;
+                initial_voting_period_seconds = opt nat64;
+                neuron_minimum_dissolve_delay_to_vote_seconds = opt nat64;
+                reject_cost_e8s = opt nat64;
+                max_proposals_to_keep_per_action = opt nat32;
+                wait_for_quiet_deadline_increase_seconds = opt nat64;
+                max_number_of_neurons = opt nat64;
+                transaction_fee_e8s = opt nat64;
+                max_number_of_proposals_with_ballots = opt nat64;
+                max_age_bonus_percentage = opt nat64;
+                neuron_grantable_permissions = opt record { permissions : vec int32 };
+                voting_rewards_parameters = opt record {
+                    final_reward_rate_basis_points = opt nat64;
+                    initial_reward_rate_basis_points = opt nat64;
+                    reward_rate_transition_duration_seconds = opt nat64;
+                    round_duration_seconds = opt nat64;
+                };
+                maturity_modulation_disabled = opt bool;
+                max_number_of_principals_per_neuron = opt nat64;
+            };
+    }
+)'
+```
 
 ## `AddGenericNervousSystemFunction`
 
-Type signature:
+### Relevant type signatures
+
+```candid
+    type AddGenericNervousSystemFunction : NervousSystemFunction;
+```
+
+```candid
+    type NervousSystemFunction = record {
+    id : nat64;
+    name : text;
+    description : opt text;
+    function_type : opt FunctionType;
+    };
+```
+
+```candid
+    type FunctionType = variant {
+        NativeNervousSystemFunction : record {};
+        GenericNervousSystemFunction : GenericNervousSystemFunction;
+    };
+```
+
+```candid
+    type GenericNervousSystemFunction = record {
+        validator_canister_id : opt principal;
+        target_canister_id : opt principal;
+        validator_method_name : opt text;
+        target_method_name : opt text;
+    };
+```
+
+### Putting it together
 
 ```candid
     AddGenericNervousSystemFunction: record {
         id : nat64;
         name : text;
         description : opt text;
-        function_type : opt FunctionType;
-};
+        function_type : opt variant {
+            NativeNervousSystemFunction : record {};
+            GenericNervousSystemFunction : record {
+                validator_canister_id : opt principal;
+                target_canister_id : opt principal;
+                validator_method_name : opt text;
+                target_method_name : opt text;
+            }
+        };
+    };
 ```
 
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            AddGenericNervousSystemFunction = record {
+                id = nat64;
+                name = text;
+                description = opt text;
+                function_type : opt variant {
+                    NativeNervousSystemFunction = record {};
+                    GenericNervousSystemFunction = record {
+                        validator_canister_id = opt principal;
+                        target_canister_id = opt principal;
+                        validator_method_name = opt text;
+                        target_method_name = opt text;
+                    }
+                };
+            }
+        };
+    }
+)'
+```
 
 ## `RemoveGenericNervousSystemFunction`
 
-Type signature:
+### Relevant type signatures
 
 ```candid
-RemoveGenericNervousSystemFunction
+    type RemoveGenericNervousSystemFunction : nat64;
+```
+
+### Putting it together
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            RemoveGenericNervousSystemFunction = 123456789;
+        };
+    }
+)'
 ```
 
 ## `UpgradeSnsToNextVersion`
 
-Type signature:
+### Relevant type signatures
 
 ```candid
+    type UpgradeSnsToNextVersion : record {};
+```
 
+### Putting it together
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            UpgradeSnsToNextVersion = record {};
+        };
+    }
+)'
 ```
 
 ## `RegisterDappCanisters`
 
-Type signature:
+### Relevant type signatures
 
 ```candid
+    type RegisterDappCanisters : RegisterDappCanisters;
+```
 
+```candid
+    type RegisterDappCanisters = record { canister_ids : vec principal };
+```
+
+### Putting it together
+
+```candid
+    RegisterDappCanisters: record {
+        canister_ids : vec principal
+    };
+```
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "SNS Launch";
+        url = "https://dfinity.org";
+        summary = "A motion to start the SNS";
+        action = opt variant {
+            RegisterDappCanisters = record {
+                canister_ids = vec principal;
+            };
+        };
+    }
+)'
 ```
 
 ## `TransferSnsTreasuryFunds`
 
-Type signature:
+### Relevant type signatures
 
 ```candid
 
 ```
+
+### Putting it together
+
+Example in bash:
 
 ## `UpgradeSnsControlledCanister` 
 
-Type signature:
+### Relevant type signatures
 
 ```candid
 
 ```
+
+### Putting it together
+
+Example in bash:
 
 ## `DeregisterDappCanisters` 
 
-Type signature:
+### Relevant type signatures
 
 ```candid
 
 ```
+
+### Putting it together
+
+Example in bash:
 
 ## `Unspecified` 
 
-Type signature:
+### Relevant type signatures
 
 ```candid
 
 ```
+
+### Putting it together
+
+Example in bash:
 
 ## `ManageSnsMetadata` 
 
-Type signature:
+### Relevant type signatures
 
 ```candid
 
 ```
+
+### Putting it together
+
+Example in bash:
 
 ## `ExecuteGenericNervousSystemFunction` 
 
-Type signature:
+### Relevant type signatures
 
 ```candid
 
 ```
 
+### Putting it together
+
+Example in bash:
 
 
 
