@@ -11,7 +11,7 @@ When the proposal is adopted, this method is called and executed fully on chain.
 
 In some cases, this method is on the SNS governance itself and in other cases, the method that is called can be defined in another canister.
 
-### Native proposals
+## Native proposals
 
 An SNS comes with built-in proposals called “native proposals”.
 
@@ -31,20 +31,6 @@ There are the following types:
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
 :::
-
-### Generic proposals
-
-Each SNS community might have dapp-specific needs.
-
-Some examples:
-
-* A dapp may have a very complicated procedure to upgrade dapp canisters. For example, they may have a canister for each user, in which case they orchestrate over a “user root canister”. For this workflow, they would have to tell this canister what the user-canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp this should happen via proposal.
-* Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets 
-* Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
-
-For these cases, SNSs have so called 'generic proposals'. These are custom proposals that each SNS community can define itself.
-
-Here we make use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
 ## Governance canister interface
 
@@ -77,6 +63,11 @@ Below are the most important types for the purpose of this article:
 
 ## Using quill to submit proposals
 
+### Requirements
+
+* Installing `quill`
+* principal that owns an SNS neuron that can make proposals for an SNS
+
 ### Submitting via `sns make-proposal` command
 
 Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-proposal.md)
@@ -101,6 +92,11 @@ where `<PROPOSAL>` is a formatted candid record:
     }
 )
 ```
+
+* `title` is a short description of the proposal
+* `url` is a link to a document that describes the proposal in more detail
+* `summary` is a short summary of the proposal
+* `action` defines what the proposal does.. depending on the kind of proposal we require to provide different paramters that are defined in this part. As a proposal is just a call to a method, these parameters define with which arguments the target method will be called.
 
 The CLI command structure is
 
@@ -136,8 +132,10 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 ## References for proposals
 This article explains the different kinds of proposals and provides for each of them a concrete example of the quill command to submit it.
+
 ### `Motion`
 A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. It can be used, for example for opinion polls before even starting certain features.  
+
 ### Relevant Type signature
 
 ```candid
@@ -153,9 +151,9 @@ Example in bash:
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
-        title = "lorem ipsum";
-        url = "lorem ipsum";
-        summary = "lorem ipsum";
+        title = "SNS is great";
+        url = "https://dfinity.org\";
+        summary = "This is a motion proposal to see if people agree on the fact that the SNS is great.";
         action = opt variant {
             Motion = record {
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
@@ -556,6 +554,20 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     }
 )'
 ```
+
+## Generic proposals
+
+Each SNS community might have dapp-specific needs.
+
+Some examples:
+
+* A dapp may have a very complicated procedure to upgrade dapp canisters. For example, they may have a canister for each user, in which case they orchestrate over a “user root canister”. For this workflow, they would have to tell this canister what the user-canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp this should happen via proposal.
+* Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets 
+* Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
+
+For these cases, SNSs have so called 'generic proposals'. These are custom proposals that each SNS community can define itself.
+
+Here we make use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
 
 <!-- ## SNS Proposal lifecycle
