@@ -2224,5 +2224,26 @@
     "video": "/img/showcase/obsidian-tears-trailer.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "25983021"
+  },
+  {
+    "name": "NacDB",
+    "description": "A distributed database that allows seamless scanning of items, because it is split into small databases, each fitting in a canister.",
+    "website": "https://github.com/vporton/NacDB",
+    "logo": "/img/showcase/nacdb-database_logo.webp",
+    "screenshots": [],
+    "video": "/img/showcase/nacdb-database_video.mp4",
+    "display": "Normal",
+    "id": "nacdb-database",
+    "oneLiner": "A distributed database that allows seamless scanning",
+    "stats": "0 users",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/vporton/NacDB",
+    "twitter": "https://twitter.com/NacDB_Database",
+    "youtube": "",
+    "submittableId": "37936909",
+    "videoContentType": "video/mp4"
   }
 ]
