@@ -193,5 +193,5 @@ also referred to as generic functions in the documentation. The first function i
 to validate and render the proposal payload, and the second function is an execution function to perform
 an action given the proposal payload.
 
-To use generic functions, you must first submit an SNS proposal to register these functions with SNS 
-governance. Once the proposal is adopted, you can submit proposals to execute them with a given binary payload.
+To use generic functions, you must first submit an SNS proposal to register these functions with SNS governance. Once the proposal is adopted, you can submit proposals to execute them with a given binary payload.
+You can find more details on proposals in the [documentation how to manage SNSs](../managing/making-proposals.md).
