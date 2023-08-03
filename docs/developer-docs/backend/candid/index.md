@@ -6,6 +6,6 @@ This **Candid documentation** explains what Candid is and how you can use it whe
 
 -   The [Candid concepts](candid-concepts.md) section introduces the purpose and key features of the Candid interface description language. It includes an overview of how Candid works and some simple examples to give you a working knowledge of how you can apply Candid to your use case.
 
--   The [How to use Candid](candid-howto.md) section explains how to perform typical tasks.
+-   The [how to use Candid](candid-howto.md) section explains how to perform typical tasks.
 
--   The [Reference](/references/candid-ref.md) section provides links to Candid tools and libraries and detailed reference information about Candid-supported types.
+-   The [reference](/references/candid-ref.md) section provides links to Candid tools and libraries and detailed reference information about Candid-supported types.
