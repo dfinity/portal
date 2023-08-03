@@ -6,6 +6,11 @@ To manage an SNS, the SNS community needs to understand how proposals work, how 
 
 ## Background
 
+On a high level, a proposal is defined by a particular method on a particular canister that is called if the proposal is adopted by the SNS.
+When the proposal is adopted, this method is called and executed fully on chain.
+
+In some cases, this method is on the SNS governance itself and in other cases, the method that is called can be defined in another canister.
+
 ### Native proposals
 
 An SNS comes with built-in proposals called “native proposals”.
