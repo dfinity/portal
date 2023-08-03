@@ -1,6 +1,8 @@
-# DEX Sample
+# Decentralized exchange (DEX) sample
 
-To enable DEFI applications on the IC, canisters need to interact with token canisters and the ledger canister. This sample dapp illustrates how to facilitate these interactions. You can see a quick introduction on [YouTube](https://youtu.be/fLbaOmH24Gs).
+## Overview
+
+To enable DeFi applications on the IC, canisters need to interact with token canisters and the ledger canister. This sample dapp illustrates how to facilitate these interactions. You can see a quick introduction on [YouTube](https://youtu.be/fLbaOmH24Gs).
 
 The sample exchange is implemented in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/defi) and [Rust](https://github.com/dfinity/examples/tree/master/rust/defi) and can be seen [running on the IC](https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/).
 
@@ -46,7 +48,7 @@ Request user’s balance on exchange for a specific token.
 
 It is the responsibility of the exchange to subtract fees from the trades. This is important because the exchange must pay fees for withdrawals and internal transfers.
 
-## Token Exchange Walkthrough
+## Token exchange walkthrough
 
 This section contains a detailed walkthrough of the core exchange functionalities. Most interactions require multiple steps and are simplified by using the provided frontend. Since the exchange canister functions are public, advanced users can use `dfx` to interact with the exchange.
 
@@ -60,7 +62,7 @@ The ledger canister provides a unique interface so that interactions with ICP ne
 
 -   To notify the exchange, the user calls `deposit` with the ICP token principal. The exchange will look into the user’s subaccount and adjust the user’s balance on the exchange. In a second step, the exchange will transfer the funds from the user subaccount to its default subaccount, where the exchange keeps all of its ICP.
 
-### Depositing Tokens
+### Depositing tokens
 
 There are a number of token standards in development (e.g. IS20, DFT, and DRC20); This sample uses DIP20.
 
@@ -68,18 +70,87 @@ There are a number of token standards in development (e.g. IS20, DFT, and DRC20)
 
 -   Similar to the ICP depositing, the user calls the `deposit` function of the exchange. The exchange then transfers the approved token funds to itself and adjusts the user’s exchange balance.
 
-### Placing Orders
+### Placing orders
 
-After depositing funds to the exchange, the user can place orders. An order consists of two tuples. `from: (Token1, amount1)` and `to: (Token2, amount2)`. These orders get added to the exchange. What happens to these orders is specific to the exchange implementation. This sample provides a simple exchange that only executes exactly matching orders. Be aware this is just a toy exchange, and the exchange functionality is just for completeness. Hint: The exchange can be greedy sometimes ;)
+After depositing funds to the exchange, the user can place orders. An order consists of two tuples. `from: (Token1, amount1)` and `to: (Token2, amount2)`. These orders get added to the exchange. What happens to these orders is specific to the exchange implementation. This sample provides a simple exchange that only executes exactly matching orders. Be aware this is just a toy exchange, and the exchange functionality is just for completeness. 
 
-### Withdrawing Funds
+### Withdrawing funds
 
 Compared to depositing funds, withdrawing funds is simpler. Since the exchange has custody of the funds, the exchange will send funds back to the user on `withdraw` requests. The internal exchange balances are adjusted accordingly.
 
-## Common mistakes
+## Prerequisites
+- [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
+- [x] Download [cmake](https://cmake.org/).
+- [x] Download [npm](https://nodejs.org/en/download/).
+- [x] If you want to deploy the Rust version, make sure you add Wasm as a target:
+    `rustup target add wasm32-unknown-unknown`
 
--   Concurrent execution: If canister functions have `await` statements, it is possible that execution is interleaved. To avoid bugs, it is necessary to carefully consider the placement of data structure updates to prevent double-spend attacks.
 
--   Floating Points: More advanced exchanges should take care of floating points and make sure to limit decimals.
+### Step 1: Download the project's GitHub repo and install the dependencies:
 
--   No panics after await: When a panic happens, the state gets rolled back. This can cause issues with the correctness of the exchange.
+```
+git clone --recurse-submodules --shallow-submodules https://github.com/dfinity/examples.git
+# for the rust implementation examples/rust/defi
+cd examples/motoko/defi
+make install
+```
+
+The install scripts output the URL to visit the exchange frontend:
+
+```
+===== VISIT DEFI FRONTEND =====
+http://127.0.0.1:4943?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
+===== VISIT DEFI FRONTEND =====
+```
+
+or you can regenerate the URL "http://127.0.0.1:4943?canisterId=$(dfx canister id frontend)". Open this URL in a web browser.
+
+### Step 2: To interact with the exchange, you can create a local Internet Identity by clicking the login button.
+
+:::caution
+This sample project uses a local test version of Internet Identity. **Do not** use your mainnet Internet Identity, and this testnet Internet Identity will not work on the mainnet.
+:::
+
+![DEX II Login](./_attachments/dex-ii.png)
+
+### Step 3: When prompted, select **Create Internet Identity**.
+
+![II Step 1](./_attachments/II1.png)
+
+### Step 4: Then select **Create Passkey**.
+
+![II Step 2](./_attachments/II2.png)
+
+### Step 5: Complete the CAPTCHA.
+
+![II Step 3](./_attachments/II3.png)
+
+### Step 6: Save the II number and click **I saved it, continue**.
+
+![II Step 4](./_attachments/II4.png)
+
+### Step 7: You will be redirected to the exchange's frontend webpage.
+
+![II Step 5](./_attachments/II5.png)
+
+### Step 8: You can give yourself some tokens and ICP by running an initialization script with your II principal that you can copy from the frontend.
+
+![II Principal](./_attachments/II-principal.png)
+
+### Step 9: Then run the following command:
+
+`make init-local II_PRINCIPAL=<YOUR II PRINCIPAL>`
+
+### Step 10: Refresh the web browser to verify that your tokens were deposited. 
+
+![II Deposit](./_attachments/II-deposit.png)
+
+To trade tokens with yourself, you can open a second incognito browser window.
+
+## Common mistakes and troubleshooting
+
+-   Concurrent execution: if canister functions have `await` statements, it is possible that execution is interleaved. To avoid bugs, it is necessary to carefully consider the placement of data structure updates to prevent double-spend attacks.
+
+-   Floating points: more advanced exchanges should take care of floating points and make sure to limit decimals.
+
+-   No panics after await: when a panic happens, the state gets rolled back. This can cause issues with the correctness of the exchange.

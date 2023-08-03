@@ -89,8 +89,8 @@ const RoadmapDataPlugin = async function () {
       return domains;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("roadmap-data.json", JSON.stringify(content));
     },
   };
 };

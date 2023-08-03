@@ -4,7 +4,7 @@ import Header from "@site/src/components/DevelopersHome/Header";
 import SampleCode from "@site/src/components/DevelopersHome/SampleCode";
 import DappStart from "@site/src/components/DevelopersHome/DappStart";
 import Contribute from "@site/src/components/DevelopersHome/Contribute";
-import Head from "@docusaurus/Head";
+import ShareMeta from "../components/Common/ShareMeta";
 
 function Developers(): JSX.Element {
   return (
@@ -15,21 +15,8 @@ function Developers(): JSX.Element {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Head>
-        <meta
-          property="og:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-developers.jpeg"
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            "https://internetcomputer.org/img/shareImages/share-developers.jpeg"
-          }
-        />
-        <title>Developers Home</title>
-      </Head>
+      <ShareMeta image="/img/shareImages/share-developers.jpeg"></ShareMeta>
+
       <main className="w-full overflow-hidden">
         <Header />
         <SampleCode />

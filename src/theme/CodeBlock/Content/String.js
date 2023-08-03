@@ -6,7 +6,6 @@ import styles from "./styles.module.css";
 import hljs from "highlight.js/lib/core";
 import { extractConfig, handleRun } from "../hljs_run.js";
 import CopyButton from "@theme/CodeBlock/CopyButton";
-import runIcon from "@site/static/img/runIcon.png";
 
 // NOTE: String component of CodeBlock is being swizzled as a wrapped component.
 
@@ -21,7 +20,25 @@ function RunButton(props) {
       onClick={() => handleRun(props)}
       title="Run Code"
     >
-      <img src={runIcon} style={{ width: "20px", height: "20px" }} />
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_552_2339)">
+          <path
+            d="M8 1.33333C11.676 1.33333 14.6667 4.324 14.6667 8C14.6667 11.676 11.676 14.6667 8 14.6667C4.324 14.6667 1.33333 11.676 1.33333 8C1.33333 4.324 4.324 1.33333 8 1.33333ZM8 0C3.582 0 0 3.582 0 8C0 12.418 3.582 16 8 16C12.418 16 16 12.418 16 8C16 3.582 12.418 0 8 0ZM6 11.3333V4.66667L12 8.09733L6 11.3333Z"
+            fill="currentColor"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_552_2339">
+            <rect width="16" height="16" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
     </button>
   );
 }
@@ -57,7 +74,7 @@ export default function StringWrapper(props) {
         />
       );
     }
-    const { useCodeJar } = require('react-codejar');
+    const { useCodeJar } = require("react-codejar");
     const [code, setCode] = useState(props.children || "");
     const [output, setOutput] = useState("");
     const [error, setError] = useState("");
@@ -65,12 +82,12 @@ export default function StringWrapper(props) {
 
     // syntax highlighting is done by CodeJar, creating new React components
     const editorRef = useCodeJar({
-      code: code.replace(/^\s+|\s+$/g, ''), // trim newlines
+      code: code.replace(/^\s+|\s+$/g, ""), // trim newlines
       onUpdate: (e) => {
         setCode(e);
       },
       highlight: hljs.highlightElement,
-      lineNumbers,
+      lineNumbers
     });
     return (
       <>
@@ -123,8 +140,8 @@ export default function StringWrapper(props) {
   }
   // default Docusaurus built-in String wrapper, leave as is
   return (
-    <>
+    <div className={styles.defaultCodeBlock}>
       <String {...props} />
-    </>
+    </div>
   );
 }

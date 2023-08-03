@@ -14,21 +14,21 @@ Welcome to our DAO docs. If there's anything in particular you'd like to see her
 The NNS is the open tokenized DAO that controls the IC. As we move to more and more decentralization, it is crucial to learn more about the IC components that facilitate community governance. The NNS allows users to participate the governance of the IC by staking tokens and voting (or delegating votes - liquid democracy ftw) and to earn rewards over time. 
 - A more detailed introduction to the NNS can be [found here](./nns/nns-intro.md)
 - Proposals, voting and rewards are [explained here](./nns/nns-staking-voting-rewards.md) can be explored in the [Governance section](https://dashboard.internetcomputer.org/governance) on the dashboard
-- You can read about the community fund [here](./nns/community-fund.md)
+- You can read about the neurons' fund [here](./nns/neurons-fund.md)
 - Start participating in the NNS app by checking out the [NNS Intro](token-holders/nns-app-quickstart.md)
 
 ## Service Nervous System (SNS)
 As the NNS is to the IC, an SNS is to services running on the IC. If you are a developer or founder who would like to tokenize and decentralize the governance of your dapp, this is the place to start. Governance of a service or dapp can operate in a decentralized manner by getting an SNS. 
-- [Dive into the SNS and DAOs](/developer-docs/integrations/sns/tokenomics/sns-intro-tokens.md)
-- See the [tokenomics of a DAO](/developer-docs/integrations/sns/tokenomics/tokenomics.md)
+- [Dive into the SNS and DAOs](/developer-docs/integrations/sns/tokenomics/index.md)
+- See the [tokenomics of a DAO](/developer-docs/integrations/sns/tokenomics/tokenomics-intro.md)
 - Think about the numerous [considerations](/developer-docs/integrations/sns/tokenomics//predeployment-considerations.md) that should be made if you plan to get an SNS
 
 
 ## Identity & Authentication
 One of the advantages of building apps on the Internet Computer is that users can interact and authenticate without the need for holding tokens. This is facilitated by Internet Identity. 
 
-- [What is Internet Identity](identity-auth/what-is-ic-identity.md)
-- [How to get started with Internet Identity](identity-auth/auth-how-to.md)
+- [What is Internet Identity](https://internetcomputer.org/internet-identity)
+- [How to get started with Internet Identity](https://internetidentity.zendesk.com/hc/en-us/articles/15430677359124-How-Do-I-Create-an-Internet-Identity-on-My-Mobile-Device-)
 
 ## Token Holders
 There are multiple ways to obtain token; purchasing via an exchange, earning as a node provider, receiving from a friend, or otherwise. Learn about some options for how to hold tokens, and how you can set up self-custody. Follow the quickstart to take control of your tokens. 

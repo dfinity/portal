@@ -8,17 +8,26 @@ const showcaseProjectsPlugin = async function () {
       const ids = [
         "dscvr",
         "distrikt",
-        "openchat",
-        "sonic",
+        "mora",
+        "funded",
         "kinic",
         "cubetopia",
         "plethora",
-        "entrepot",
+        "yumi",
+        "hot-or-not",
+        "taggr",
+        "catalyze",
       ];
 
-      const projects = ids.map((id) =>
-        showcase.find((project) => project.id === id)
-      );
+      const projects = ids
+        .map((id) => showcase.find((project) => project.id === id))
+        .filter((project, index) => {
+          if (!project) {
+            console.warn(`Project with id ${ids[index]} not found`);
+            return false;
+          }
+          return true;
+        });
 
       const transformed = projects.map((project) => {
         return {
@@ -33,8 +42,8 @@ const showcaseProjectsPlugin = async function () {
       return transformed;
     },
     async contentLoaded({ content, actions }) {
-      const { setGlobalData } = actions;
-      setGlobalData(content);
+      const { createData } = actions;
+      createData("home-showcase.json", JSON.stringify(content, null, 2));
     },
   };
 };

@@ -2,57 +2,61 @@
 title: Local deployment
 ---
 
-# Local Deployment
+# Local deployment
 
-This *Quick Start* scenario assumes that you are installing the SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
+## Overview
 
-To get started, let’s build and deploy a simple Hello canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
+This **quick start** scenario assumes that you are installing the IC SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
-## Before you begin
+To get started, let’s build and deploy a simple 'Hello, world!' canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
 
-Before you download and install this release of the SDK, verify the following:
+## Prerequisites
 
--   You have an internet connection and access to a shell terminal on your local **macOS** or **Linux** computer.
+Before you download and install this release of the IC SDK, verify the following:
 
-    Currently, the SDK only runs on computers with a macOS or Linux operating system.
+-   [x] You have an internet connection and access to a shell terminal on your local computer.
 
--   You have `node.js` installed if you want to include the default template files for frontend development in your project.
+-   [x] You have `node.js` installed if you want to include the default template files for frontend development in your project.
 
 ## Download and install
 
-You can download the latest version of the SDK directly from within a terminal shell on your local computer.
+You can download the latest version of the IC SDK directly from within a terminal shell on your local computer.
+
+:::caution
+These instructions are for **macOS** or **Linux** machines. For Windows instructions, please see [here](/docs/developer-docs/setup/install/index.mdx).
+:::
 
 To download and install:
 
-1.  Open a terminal shell on your local computer.
+- #### Step 1:  Open a terminal shell on your local computer.
 
-    For example, open Applications, Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
+    For example, open Applications > Utilities, then double-click **Terminal** or press <span class="keycombo">⌘+spacebar</span> to open Search, then type `terminal`.
 
-2.  Download and install the SDK package by running the following command:
+- #### Step 2:  Download and install the IC SDK package by running the following command:
 
         sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
     This command prompts you to read and accept the license agreement before installing the DFINITY execution command-line interface (CLI) and its dependencies on your local computer.
 
-3.  Type `y` and press Return to continue with the installation.
+- #### Step 3:  Type `y` and press Return to continue with the installation.
 
-    The command displays information about the components being installed on the local computer.
+    This command displays information about the components being installed on the local computer.
 
-## Verify the SDK is ready to use
+## Verify the IC SDK is ready to use
 
 If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
 
-To verify the SDK is ready to use:
+To verify the IC SDK is ready to use:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Check that you have the DFINITY execution command-line interface (CLI) installed and the `dfx` executable is available in your PATH by running the following command:
+- #### Step 2:  Check that you have the DFINITY execution command-line interface (CLI) installed and the `dfx` executable is available in your PATH by running the following command:
 
         dfx --version
 
     The command displays version information for the `dfx` command-line executable. You can see the latest version in the [release notes](https://github.com/dfinity/sdk/releases).
     
-3.  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
+- #### Step 3:  Preview usage information for the other `dfx` command-line sub-commands by running the following command:
 
         dfx --help
 
@@ -62,13 +66,13 @@ To verify the SDK is ready to use:
 
 Dapps on the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this tutorial, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [Explore the default project](/developer-docs/backend/backend-tutorials/explore-templates.md) tutorial.
+For this guide, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [explore the default project](/developer-docs/backend/motoko/explore-templates.md) guide.
 
 To create a new project for your first application:
 
-1.  Open a terminal shell on your local computer, if you don’t already have one open.
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-2.  Create a new project named `hello` by running the following command:
+- #### Step 2:  Create a new project named `hello` by running the following command:
 
         dfx new hello
 
@@ -76,7 +80,7 @@ To create a new project for your first application:
 
     If you use a different project name instead of `hello`, make note of the name you used. You’ll need to use that project name in place of the `hello` project name throughout these instructions.
 
-3.  Change to your project directory by running the following command:
+- #### Step 3:  Change to your project directory by running the following command:
 
         cd hello
 
@@ -86,21 +90,21 @@ Before you can build your first project, you need to connect to the local canist
 
 To prepare the local canister execution environment:
 
-1.  Open a new second terminal window or tab on your local computer.
+- #### Step 1:  Open a new second terminal window or tab on your local computer.
 
-2.  Navigate to the root directory for your project, if necessary.
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
     You should now have **two terminals** open with your **project directory** as your **current working directory** in both terminals.
 
-3.  Start the local canister execution environment on your computer in your second terminal by running the following command:
+- #### Step 3:  Start the local canister execution environment on your computer in your second terminal by running the following command:
 
         dfx start
 
     Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click **Allow**.
 
-4.  Leave the terminal window that displays canister execution operations open and switch your focus to the first terminal window where you created your new project.
+- #### Step 4:  Leave the terminal window that displays canister execution operations open and switch your focus to the first terminal window where you created your new project.
 
-    You perform the remaining steps in the terminal that doesn’t display canister execution operations.
+    You should perform the remaining steps in the terminal that doesn’t display canister execution operations.
 
 ## Register, build, and deploy the application
 
@@ -108,15 +112,15 @@ After you connect to the local canister execution environment you can register, 
 
 To deploy your first dapp locally:
 
-1.  Check that you are still in the root directory for your project, if needed.
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-2.  Ensure that `node` modules are available in your project directory, if needed, by running the following command:
+- #### Step 2:  Ensure that `node` modules are available in your project directory, if needed, by running the following command:
 
         npm install
 
-    For more information about this step, see [Ensuring node is available in a project](/developer-docs/frontend/index.md#troubleshoot-node).
+    For more information about this step, see [ensuring node is available in a project](/developer-docs/frontend/index.md#troubleshoot-node).
 
-3.  Register, build, and deploy your first dapp by running the following command:
+- #### Step 3:  Register, build, and deploy your first dapp by running the following command:
 
         dfx deploy
 
@@ -163,9 +167,9 @@ To deploy your first dapp locally:
 
     You should also note that the **first time you deploy**, `dfx` creates a `default` identity and a local cycle wallet controlled by your `default` identity. A cycles wallet is a special type of canister that enables you to transfer [cycles](/concepts/tokens-cycles.md) to other canisters.
 
-    **To deploy this sample dapp locally**, you don’t need to know anything about your default developer identity, using a cycles wallet, or managing cycles. We’ll cover these topics later, but for now, just note that these are created for you automatically.
+    **To deploy this sample dapp locally**, you don’t need to know anything about your default developer identity, using a cycles wallet, or managing cycles. We’ll cover these topics later; for now, just note that these are created for you automatically.
 
-4.  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
+- #### Step 4:  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
 
         dfx canister call hello_backend greet everyone
 
@@ -181,7 +185,7 @@ To deploy your first dapp locally:
 
     Remember, however, that if you created a project with a different name, the canister name will match your project name and you’ll need to modify the command line to match the name you used instead of `hello_backend`. If you were to choose `test` as the projects name, your backend canister would be called `test_backend` and the frontend canister `test_frontend`.
 
-5.  Verify the command displays the return value of the `greet` function.
+- #### Step 5:  Verify the command displays the return value of the `greet` function.
 
     For example:
 
@@ -191,15 +195,17 @@ To deploy your first dapp locally:
 
 Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
 
-1.  Open a browser.
+- #### Step 1:  Open a browser.
 
-2.  Navigate to the URL output by the `dfx deploy` command in the previous step. It's the one after `Frontend canister via browser`, in our case that's <http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai>.
+- #### Step 2:  Navigate to the URL output by the `dfx deploy` command in the previous step. 
 
-Navigating to this URL displays a simple HTML page with a sample asset image file, an input field, and a button. For example:
+Use the URL after `Frontend canister via browser`; in our case that's `http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai`.
 
-\+ ![Sample HTML page](_attachments/frontend-prompt.png)
+Navigating to this URL displays a basic HTML page with a sample asset image file, an input field, and a button. For example:
 
-1.  Type a greeting, then click **Click Me** to return the greeting.
+![Sample HTML page](_attachments/frontend-prompt.png)
+
+- #### Step 3:  Type a greeting, then click **Click Me** button to return the greeting.
 
     For example:
 
@@ -211,26 +217,30 @@ After testing the application in the browser, you can stop the local canister ex
 
 To stop the local deployment:
 
-1.  In the terminal that displays the development server, press Control-C to interrupt the development server process.
+- #### Step 1:  In the terminal that displays the development server, press Control-C to interrupt the development server process.
 
-2.  In the terminal that displays canister execution operations, press Control-C to interrupt the local network process.
+- #### Step 2:  In the terminal that displays canister execution operations, press Control-C to interrupt the local network process.
 
-3.  Stop the local canister execution environment running on your local computer by running the following command:
+- #### Step 3:  Stop the local canister execution environment running on your local computer by running the following command:
 
         dfx stop
 
-## Next steps
+## Conclusion
 
-This *Quick Start* touched on only a few key steps to introduce the basic workflow for developing dapps of your own. You can find more detailed examples and tutorials to help you learn about how to use Motoko and how to develop dapps to run on the Internet Computer blockchain throughout the documentation.
+This **quick start** touched on only a few key steps to introduce the basic workflow for developing dapps of your own. You can find more detailed examples and guides to help you learn about how to use Motoko and how to develop dapps to run on the Internet Computer blockchain throughout the documentation.
 
+## Resources
 Here are some suggestions for where to go next:
 
--   [Building on the IC]/developer-docs/build/index.md) to explore building simple dapps using a local canister execution environment.
+-   [Building on the IC](../../samples/overview.md) to explore sample dapps.
+
+-   [Concepts](../../concepts/index.md) to learn about different IC concepts and services. 
 
 -   [Convert ICP tokens to cycles](./deploy-mainnet.md#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
 
+-   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+
 -   [On-chain deployment](./deploy-mainnet.md) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 
--   [What is Candid?](/developer-docs/backend/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
+-   [What is Candid?](/docs/developer-docs/backend/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.
 
--   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.

@@ -1,7 +1,7 @@
 ---
 title: Bitcoin Integration
 abstract:
-shareImage: /img/how-it-works/btc-content.1200x600.jpg
+shareImage: /img/how-it-works/btc-content.600x300.jpg
 slug: bitcoin-integration
 ---
 
@@ -42,10 +42,10 @@ In this figure, a canister first requests the balance and then the UTXOs of a Bi
 Next, it calls the fee endpoint to get recent fees.
 Lastly, the canister builds a Bitcoin transaction using some of the UTXOs as inputs. For each input, the ECDSA API is called to obtain the required signatures. Finally, the transaction is submitted.
 
-[Bitcoin integration wiki page](https://wiki.internetcomputer.org/wiki/Bitcoin_integration)
+[Bitcoin integration wiki page](https://wiki.internetcomputer.org/wiki/Bitcoin_integration).
 
-[Bitcoin canister source code](https://github.com/dfinity/bitcoin-canister)
+[Bitcoin canister source code](https://github.com/dfinity/bitcoin-canister).
 
-[Motion Proposal 20586](https://dashboard.internetcomputer.org/proposal/20586)
+[Motion Proposal 20586](https://dashboard.internetcomputer.org/proposal/20586).
 
-[Bitcoin integration goes live](https://medium.com/dfinity/btc-icp-mainnet-integration-complete-bringing-smart-contract-functionality-to-bitcoin-9bd81d4ce0ba)
+[Bitcoin integration goes live](https://medium.com/dfinity/btc-icp-mainnet-integration-complete-bringing-smart-contract-functionality-to-bitcoin-9bd81d4ce0ba).

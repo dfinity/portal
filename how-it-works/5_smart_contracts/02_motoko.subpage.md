@@ -1,7 +1,7 @@
 ---
 title: Motoko Smart Contract Language
-abstract: 
-shareImage: /img/how-it-works/motoko.600.jpg
+abstract:
+shareImage: /img/how-it-works/motoko.jpg
 slug: motoko
 ---
 

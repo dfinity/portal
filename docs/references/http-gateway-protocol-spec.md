@@ -1,0 +1,1 @@
+../../submodules/interface-spec/spec/http-gateway-protocol-spec.md

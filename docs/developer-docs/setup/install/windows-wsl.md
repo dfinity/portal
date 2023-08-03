@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# Installing the SDK on Windows
+# Installing the IC SDK on Windows
 
 There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run `dfx` also on a Windows system as described below.
 
@@ -50,7 +50,7 @@ WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires n
 
 ### Permission Denied when running `dfx start`
 
-Projects created from `dfx` need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
+Projects created from the `dfx new` command need to be on the Linux filesystem instead of the Windows filesystem. Usually `cd ~` or `cd $HOME` in the WSL terminal will bring you to the home directory, and creating projects in there should work.
 
 ### No internet access on WSL
 

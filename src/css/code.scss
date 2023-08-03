@@ -1,0 +1,113 @@
+/* fix `react-codejar` line numbers */
+.codejar-linenumbers {
+  background: none !important;
+  color: #a0a0a0 !important;
+
+  & > div {
+    text-align: right;
+    transform: translateX(-5px);
+
+    [data-theme="dark"] & {
+      opacity: 0.5;
+    }
+  }
+}
+
+.motoko-code-output {
+  color: darkgreen;
+
+  [data-theme="dark"] & {
+    color: lightgreen;
+  }
+}
+
+.motoko-code-error {
+  color: darkred;
+
+  [data-theme="dark"] & {
+    color: pink;
+  }
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+
+  [data-theme="dark"] & {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+
+/*
+  The following is applied to Motoko code blocks
+
+  For all other languages, look at /codeblock-theme.js
+*/
+
+.hljs {
+  background: #181818;
+  color: #e8e4ed;
+}
+.hljs-keyword,
+.hljs-literal,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-strong,
+.hljs-tag {
+  color: #eb318a;
+}
+.hljs-code {
+  color: #29abe2;
+}
+.hljs-attribute,
+.hljs-link,
+.hljs-regexp,
+.hljs-string,
+.hljs-symbol {
+  color: #f68e5f;
+}
+.hljs-addition,
+.hljs-built_in,
+.hljs-bullet,
+.hljs-emphasis,
+.hljs-section,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-subst,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-title,
+.hljs-type,
+.hljs-variable {
+  color: #26d76d;
+}
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: #fff;
+}
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta,
+.hljs-quote {
+  color: #707070;
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-literal,
+.hljs-section,
+.hljs-selector-id,
+.hljs-selector-tag,
+.hljs-title,
+.hljs-type {
+  font-weight: 400;
+}

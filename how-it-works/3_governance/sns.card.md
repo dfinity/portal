@@ -1,10 +1,10 @@
 ---
 title: Service Nervous System (SNS)
 abstract: The autonomous tokenized governance system that controls the Internet Computer blockchain in a completely open, permissionless, and decentralized manner.
-coverImage: /img/how-it-works/network-nervous-system-nns.600x300.jpg
+coverImage: /img/how-it-works/network-nervous-system.webp
 ---
 
-![](/img/how-it-works/sns.600x300.png)
+![](/img/how-it-works/service-nervous-system.webp)
 
 # Service Nervous System (SNS)
 

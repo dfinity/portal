@@ -4,10 +4,10 @@ Many projects can benefit from having a staging environment available besides th
 
 ## Benefits of a staging environment
 
-It makes sense to start with the _why_. Why would a project want a staing environment? One of the biggest reasons is testing.
+It makes sense to start with the "why?" Why would a project want a staging environment? One of the biggest reasons is testing.
 Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment is very helpful.
 It allows developers (and maybe some beta users) to try things for themselves in a real environment.
-While local deployments mirror the live Intenrnet Computer as closely as possible, it is still not the same.
+While local deployments mirror the live Internet Computer as closely as possible, it is still not the same.
 For example, the local instance only runs as a single subnet. If you want to test canisters of two different subnets connecting to each other, you cannot do this locally.
 
 Some more reasons for having a staging environment are:
@@ -18,8 +18,8 @@ Some more reasons for having a staging environment are:
 
 ## Setting up a staging environment
 
-This section shows how to configure a staging environment. With a working staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` with `--network my-staging` instead.
-Of course, the name `my-staging` can be replaced with any other name (except the two reserved ones: `ic`, the built in live Internet Computer and `local`, the implicit default network that runs with `dfx start`).
+This section shows how to configure a staging environment. With a working staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` with `--network myStaging` instead.
+Of course, the name `myStaging` can be replaced with any other name (except the two reserved ones: `ic`, the built in live Internet Computer and `local`, the implicit default network that runs with `dfx start`).
 
 Networks (or also 'environments' in this context) are defined in two ways: assumed and explicitly configured. Dfx only contains one network as an assumed network: the `ic` network.
 If you add `--network ic` to (almost) any command, it will run in the context of the live Internet Computer environment.
@@ -28,12 +28,12 @@ The `local` network is the network that gets chosen by default if no other netwo
 
 ### Network definition
 
-To add a staging network named `my-staging` to `dfx.json`, add this under `"networks"` in your `dfx.json`:
+To add a staging network named `myStaging` to `dfx.json`, add this under `"networks"` in your `dfx.json`:
 
 ``` json
-"my-staging": {
+"myStaging": {
     "providers": [
-        "https://ic0.app"
+        "https://icp0.io"
     ],
     "type": "persistent"
 }
@@ -44,14 +44,14 @@ The type `persistent` tells `dfx` that the canisters on this network will stay t
 
 ### Configuring a wallet
 
-Which cycles wallet to use by default is stored separately for every network. Because of this, the newly created `my-staging` network has no wallet configured yet.
+Which cycles wallet to use by default is stored separately for every network. Because of this, the newly created `myStaging` network has no wallet configured yet.
 Most people will just want to use the same cycles wallet as on the main `ic` network. To do so, make sure the correct identity is set (`dfx identity use <identity name>`).
 Then, read the `ic` network's currently configured wallet using `dfx identity get-wallet --network ic`.
-Finally, set the wallet for the newly defined network with `dfx identity set-wallet <wallet id> --network my-staging`.
+Finally, set the wallet for the newly defined network with `dfx identity set-wallet <wallet id> --network myStaging`.
 Or, combining the two into a one-liner:
 
 ``` bash
-dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network my-staging
+dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network myStaging
 ```
 
-If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a Cycles Wallet' in the [network quickstart](/developer-docs/setup/deploy-mainnet.md).
+If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a Cycles Wallet' in the [network quick start](/developer-docs/setup/deploy-mainnet.md).

@@ -1,140 +1,122 @@
-# Ledger Local Setup
+# Ledger local setup
 
+## Overview
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
-1.  Get a pre-built Ledger canister module and Candid interface files.
+### Step 1:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx).
+If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
 
-    ``` sh
-    export IC_VERSION=dd3a710b03bd3ae10368a91b255571d012d1ec2f
-    curl -o ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ledger-canister_notify-method.wasm.gz"
-    gunzip ledger.wasm.gz
-    curl -o ledger.private.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ledger.did"
-    curl -o ledger.public.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/ledger.did"
-    ```
+### Step 2: Create a new dfx project with the command:
 
-    :::note
+```
+dfx new ledger
+cd ledger
+```
 
-    The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases).
+### Step 3:  Determine ledger file locations
 
-    :::
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `a17247bd86c7aa4e87742bf74d108614580f216d`.
 
-2.  Make sure you use a recent version of `dfx`. If you don’t have `dfx` installed, follow instructions on the [Installing the SDK](/developer-docs/setup/install/index.mdx) section to install it.
+The URL for the ledger WASM module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216d/canisters/ic-icrc1-ledger.wasm.gz`.
 
-3.  If you don’t have a `dfx` project yet, follow these instructions to create a new `dfx` project: [dfx-new](/references/cli-reference/dfx-new.md)
+The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icrc1/ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icrc1/ledger/ledger.did`.
 
-4.  Copy the file you obtained at the first step (`ledger.wasm`, `ledger.private.did`, `ledger.public.did`) into the root of your project.
+### Step 4:  Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
 
-5.  Add the following canister definition to the `dfx.json` file in your project:
-
-    ``` json
-    {
-      "canisters": {
-        "ledger": {
-          "type": "custom",
-          "wasm": "ledger.wasm",
-          "candid": "ledger.private.did"
-        }
+``` json
+{
+  "ledger": {
+    "type": "custom",
+    "candid": "https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icrc1/ledger/ledger.did",
+    "wasm": "https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216d/canisters/ic-icrc1-ledger.wasm.gz",
+    "remote": {
+      "id": {
+        "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
       }
     }
-    ```
-    
-6. Configure your replica to run a `System` subnet. Modify `dfx.json` to include:
-     ```json
-     {
-       "defaults":{
-         "replica": {
-           "subnet_type":"system"
-         }
-       }
-     }
-     ```
-
-6.  Start a local replica.
-
-    ``` sh
-    dfx start --background
-    ```
-
-7.  Create a new identity that will work as a minting account:
-
-    ``` sh
-    dfx identity new minter
-    dfx identity use minter
-    export MINT_ACC=$(dfx ledger account-id)
-    ```
-
-    Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
-
-8.  Switch back to your default identity and record its ledger account identifier.
-
-    ``` sh
-    dfx identity use default
-    export LEDGER_ACC=$(dfx ledger account-id)
-    ```
-
-9.  Deploy the ledger canister to your network.
-
-    ``` sh
-    dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}})'
-    ```
-
-    If you want to setup the ledger in a way that matches the production deployment, you should deploy it with archiving enabled. In this setup, the ledger canister dynamically creates new canisters to store old blocks. We recommend using this setup if you are planning to exercise the interface for fetching blocks.
-
-    Obtain the principal of the identity you use for development. This principal will be the controller of archive canisters.
-
-    ``` sh
-    dfx identity use default
-    export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
-    ```
-
-    Deploy the ledger canister with archiving options:
-
-    ``` sh
-    dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}; archive_options = opt record { trigger_threshold = 2000; num_blocks_to_archive = 1000; controller_id = principal "'${ARCHIVE_CONTROLLER}'" }})'
-    ```
-
-    You may want to set `trigger_threshold` and `num_blocks_to_archive` options to low values (e.g., 10 and 5) to trigger archivation after only a few blocks.
-
-10. Update the canister definition in the `dfx.json` file to use the public Candid interface:
-
-    ``` diff
-     {
-       "canisters": {
-         "ledger": {
-           "type": "custom",
-           "wasm": "ledger.wasm",
-    -       "candid": "ledger.private.did"
-    +       "candid": "ledger.public.did"
-         }
-       }
-     }
-    ```
-
-11. Update the canister definition in the `dfx.json` file to specify a remote id for the ledger. This will prevent dfx from deploying your own ledger in case you decide to deploy your project to the Internet Computer:
-
-    ```
-    "ledger": {
-      "type": "custom",
-      "candid": "ledger.public.did",
-      "wasm": "ledger.wasm",
-      "remote": {
-        "candid": "ledger.public.did",
-        "id": {
-          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-        }
-      }
+  },
+  "defaults":{
+    "replica": {
+      "subnet_type":"system"
     }
-    ```
+  }
+}
+```
 
-12. Check that the Ledger canister is healthy. Execute the following command:
+### Step 5:  Start a local replica.
 
-    ``` sh
-    dfx canister call ledger account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$LEDGER_ACC'")]) + "}")')' })'
-    ```
+``` sh
+dfx start --background --clean
+```
 
-    The output should look like the following:
+### Step 6:  Create a new identity that will work as a minting account:
 
-        (record { e8s = 100_000_000_000 : nat64 })
+``` sh
+dfx identity new minter
+dfx identity use minter
+export MINT_ACC=$(dfx identity get-principal)
+```
 
-Your local ICP ledger canister is up and running now. You can now deploy other canisters that need to communicate with the ledger canister.
+Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
+
+### Step 7:  Switch back to your default identity and record its ledger account identifier.
+
+``` sh
+dfx identity use default
+export LEDGER_ACC=$(dfx identity get-principal)
+```
+
+### Step 8: Obtain the principal of the identity you use for development. This principal will be the controller of archive canisters.
+
+``` sh
+dfx identity use default
+export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
+```
+
+### Step 9: Deploy the ledger canister with archiving options:
+
+```
+dfx canister install ledger --argument "(variant {Init = record { token_name = \"NAME\"; token_symbol = \"SYMB\"; transfer_fee = 1000000; metadata = vec {}; minting_account = record {owner = principal \"$(dfx --identity minter identity get-principal)\";}; initial_balances = vec {}; archive_options = record {num_blocks_to_archive = 1000000; trigger_threshold = 1000000; controller_id = principal \"$(dfx identity get-principal)\"}; }})"
+```
+
+The output of this command will resemble the following:
+
+```
+Installing code for canister ledger, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    ledger: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+Take note of the canister ID.
+
+You may want to set `trigger_threshold` and `num_blocks_to_archive` options to low values (e.g., 10 and 5) to trigger archivation after only a few blocks.
+
+### Step 10: Interact with the canister.
+
+You can interact with the canister by running CLI commands, such as:
+
+```
+dfx canister call ledger icrc1_name 
+```
+
+This command will return the token's name, such as:
+
+```
+("Token Name")
+```
+
+Or, you can interact with it using the Candid UI by navigating to the URL provided when the canister was deployed, such as:
+
+```
+http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+After navigating to this URL in a web browser, the Candid UI will resemble the following:
+
+![Candid UI](../_attachments/CandidUI_ledger.png)
+
+Your local ICP ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.

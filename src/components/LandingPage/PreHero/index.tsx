@@ -1,3 +1,5 @@
+import Link from "@docusaurus/Link";
+import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 import transitions from "@site/static/transitions.json";
 import {
   motion,
@@ -5,361 +7,160 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, ReactNode, useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
-import ParticleAnimation from "./ParticleAnimation";
-import { useQuery } from "react-query";
-import {
-  getBlockCount,
-  getBlockRate,
-  getBytesStored,
-  getFinalizationRate,
-  getSubnetCount,
-  getTransactionRate,
-} from "@site/src/utils/network-stats";
-import { ConstantRateCounter, SpringCounter } from "./Counters";
-import useGlobalData from "@docusaurus/useGlobalData";
-import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
+import { Facts } from "./Facts";
+import ParticleAnimation from "./ParticleAnimation";
 
-function formatNumber(x: number) {
-  return x
-    .toLocaleString("en-US", {
-      maximumFractionDigits: 0,
-    })
-    .replace(/,/g, "\u2019");
-}
-
-function formatStateSize(x: number) {
-  return (
-    (x / 1000000000000).toLocaleString("en-US", {
-      maximumFractionDigits: 2,
-    }) + " TB"
-  );
-}
-
-let lastRate = 0;
-function transactionRateWithJitter(): Promise<number> {
-  return getTransactionRate().then((rate) => {
-    if (lastRate === rate) {
-      return Math.max(0, rate + Math.random() * 50 - 25);
-    }
-    lastRate = rate;
-    return rate;
-  });
-}
-
-const Numbers = () => {
-  const blockInfoQuery = useQuery(["blockRate"], () =>
-    Promise.all([getBlockCount(), getBlockRate()])
-  );
-  const finalizationRate = useQuery(["getFinalizationRate"], getBlockRate);
-  const subnetCountQuery = useQuery(["subnetCount"], getSubnetCount);
-  const transactionRateQuery = useQuery(
-    ["transactionRate"],
-    transactionRateWithJitter,
-    {
-      refetchInterval: 1000,
-    }
-  );
-  const stateSizeQuery = useQuery(["stateSize"], getBytesStored, {
-    refetchInterval: 10000,
-  });
-
-  const globalData = useGlobalData();
-  const xdrPrice = globalData["xdr-price"]["default"] as number;
-
-  return (
-    <div className="grid gap-x-2/10 gap-y-24 grid-cols-1 md:grid-cols-2 mb-24">
-      <AnimateSpawn className="text-left" variants={transitions.container}>
-        <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {blockInfoQuery.isFetched ? (
-            <ConstantRateCounter
-              start={blockInfoQuery.data[0]}
-              ratePerSec={blockInfoQuery.data[1]}
-              format={formatNumber}
-              className="text-transparent bg-clip-text hero-stat-red"
-            ></ConstantRateCounter>
-          ) : (
-            <>&nbsp;</>
-          )}
-        </h3>
-        <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">Blocks processed</p>
-          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP scales horizontally by transparently combining subnet
-            blockchains into one unified blockchain. Subnets process blocks in
-            parallel.
-          </p>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {finalizationRate.isFetched ? (
-                (finalizationRate.data * 2).toFixed(1)
-              ) : (
-                <>&nbsp;&nbsp;</>
-              )}
-            </span>{" "}
-            MB/s block throughput capacity
-          </div>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              {subnetCountQuery.isFetched ? (
-                subnetCountQuery.data
-              ) : (
-                <>&nbsp;&nbsp;</>
-              )}
-            </span>{" "}
-            parallel subnets
-          </div>
-        </div>
-      </AnimateSpawn>
-      <AnimateSpawn className="text-left" variants={transitions.container}>
-        <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {transactionRateQuery.isFetched ? (
-            <SpringCounter
-              target={transactionRateQuery.data}
-              initialTarget={transactionRateQuery.data}
-              initialValue={0}
-              format={formatNumber}
-              className="text-transparent bg-clip-text hero-stat-blue"
-              springConfig={[3, 1, 1]}
-            ></SpringCounter>
-          ) : (
-            <>&nbsp;</>
-          )}
-        </h3>
-        <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">Transactions/s</p>
-          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            Transactions invoke computations by "actor" smart contracts. Subnets
-            run transactions concurrently, but deterministically
-          </p>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              $0.0000022
-            </span>{" "}
-            av. cost/Tx
-          </div>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              0.008
-            </span>{" "}
-            av. Wh/Tx
-          </div>
-        </div>
-      </AnimateSpawn>
-      <AnimateSpawn
-        className="text-left md:col-span-2 md:w-4/10 md:mx-auto"
-        variants={transitions.container}
-      >
-        <h3 className="tw-title-sm md:tw-title-lg mb-2">
-          {stateSizeQuery.isFetched ? (
-            <SpringCounter
-              target={stateSizeQuery.data}
-              initialTarget={stateSizeQuery.data}
-              initialValue={0}
-              format={formatStateSize}
-              className="text-transparent bg-clip-text hero-stat-green"
-              springConfig={[3, 1, 3]}
-            ></SpringCounter>
-          ) : (
-            <>&nbsp;</>
-          )}
-        </h3>
-        <div className="flex flex-col gap-3 md:gap-4">
-          <p className="tw-paragraph md:tw-heading-5 mb-0">
-            Smart contract memory
-          </p>
-          <p className="text-white-60 tw-paragraph md:tw-lead-sm mb-0">
-            ICP smart contracts combine WebAssembly bytecode with persistent
-            on-chain memory, with gigabytes available – supporting the creation
-            of truly decentralized systems and services that are 100% on-chain
-          </p>
-          <div className="tw-paragraph md:tw-lead-sm flex items-center gap-2">
-            <span className="tw-lead md:text-[35px] md:leading-[30px]">
-              $
-              {(
-                (xdrPrice * 127000 * 3600 * 24 * 30) /
-                1_000_000_000_000
-              ).toFixed(2)}
-            </span>{" "}
-            /GB/month
-          </div>
-        </div>
-      </AnimateSpawn>
-    </div>
-  );
-};
-
-export default function PreHero({}): JSX.Element {
+const PreHero: React.FC<{
+  headline: ReactNode;
+  subheadline: ReactNode;
+  cta?: ReactNode;
+  ctaLink?: string;
+  cards: {
+    caption: string;
+    title: string;
+    link: string;
+  }[];
+}> = ({ headline, subheadline, cta, ctaLink, cards }) => {
   const [start, setStart] = useState(false);
   const [animate, setAnimate] = useState(true);
 
-  const [bgDark, setBgDark] = useState(true);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const darkRef = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(darkRef);
 
   useEffect(() => {
     setStart(true);
-    setHeaderHeight(
-      document.querySelector("nav.navbar").getBoundingClientRect().height
-    );
   }, []);
-
-  useEffect(() => {
-    function onScroll() {
-      if (window.scrollY > window.innerHeight - headerHeight && bgDark) {
-        setBgDark(false);
-      } else if (
-        window.scrollY < window.innerHeight - headerHeight &&
-        !bgDark
-      ) {
-        setBgDark(true);
-      }
-    }
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [bgDark, animate, headerHeight]);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: headlineRef,
-    offset: ["end end", "end start"],
+    offset: ["start start", "end start"],
   });
-
-  const { scrollYProgress: completeScrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start end", "end start"],
-  });
-
-  const animationStop = useTransform(completeScrollYProgress, [0, 1.0], [0, 1]);
 
   const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
+  const boxBlurSize = useTransform(scrollYProgress, [0.3, 0.4], [50, 0]);
   const blobOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  const blur = useMotionTemplate`blur(${blurSize}px)`;
+  // console.log(scrollYProgress.get());
 
-  useEffect(() => {
-    const unsub = animationStop.onChange((latest) => {
-      if (latest === 1.0 && animate) {
-        setAnimate(false);
-      } else if (latest < 1.0 && !animate) {
-        setAnimate(true);
-      }
-    });
-    return unsub;
-  });
+  const blur = useMotionTemplate`blur(${blurSize}px)`;
+  const boxBlur = useMotionTemplate`blur(${boxBlurSize}px)`;
 
   return (
-    <section className=" bg-[#1B025A]" id="home">
-      {bgDark && <DarkHeroStyles bgColor="transparent" />}
-      <ParticleAnimation animate={animate} blur={blur}></ParticleAnimation>
+    <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
+      {isDark && <DarkHeroStyles bgColor="transparent" />}
+      <ParticleAnimation
+        animate={animate}
+        blur={blur}
+        debugForces={false}
+      ></ParticleAnimation>
 
-      <div
-        className="overflow-hidden relative"
-        style={{
-          top: `calc(var(--ifm-navbar-height) * -1)`,
-        }}
-      >
-        <div
-          className="relative w-screen h-screen flex items-center"
-          ref={headlineRef}
-        >
-          <motion.img
-            src="/img/home/hero-blur.svg"
-            alt=""
-            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto"
-            style={{
-              opacity: blobOpacity,
-            }}
-          ></motion.img>
-          <div className="container-10 text-center">
-            <motion.h1
-              className="tw-heading-3 md:tw-heading-2 text-white animate-scale-in"
+      <div className="overflow-hidden relative">
+        <div className="md:pt-0 flex items-center" ref={headlineRef}>
+          <div className="container-10 text-left w-full pt-24 md:pt-[10vh]">
+            <motion.div
+              className="mb-20 md:mb-0"
               style={{
                 animationPlayState: start ? "running" : "paused",
-                opacity: blobOpacity,
+                // opacity: blobOpacity,
               }}
             >
-              World Computer
-              <br />
-              is our future
-            </motion.h1>
+              <h1 className="animate-fade-up tw-heading-60 md:tw-heading-2 lg:tw-heading-1 text-white mb-3 md:mb-8">
+                {headline}
+              </h1>
+              <p className="animate-fade-up tw-heading-4 md:tw-heading-3 text-white mb-6 [animation-delay:100ms]">
+                {subheadline}
+              </p>
+              <div className="animate-fade-up [animation-delay:150ms]">
+                <Link className="button-outline-white" href={ctaLink}>
+                  {cta}
+                </Link>
+              </div>
+            </motion.div>
           </div>
-
-          <motion.button
-            className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
-            onClick={() => {
-              document.getElementById("introduction").scrollIntoView();
-            }}
-            style={{
-              animationPlayState: start ? "running" : "paused",
-              opacity: blobOpacity,
-            }}
-            aria-label="Scroll down"
-          >
-            <svg
-              width="24"
-              height="38"
-              viewBox="0 0 24 38"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M23 25.4247L12 36L1 25.4247M12 0L12 35.8937"
-                stroke="url(#paint0_linear_127_29571)"
-                strokeWidth="1.77"
-              />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_127_29571"
-                  x1="11.5784"
-                  y1="35.8937"
-                  x2="11.5784"
-                  y2="6.09638e-09"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="white" />
-                  <stop offset="1" stopColor="white" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </motion.button>
         </div>
         <div
-          className="tw-heading-5 text-white relative py-20 md:py-40 container-10"
+          className="container-12 text-white relative pb-56 md:pb-80 md:pt-[8.4vh]"
           ref={heroRef}
           id="stats"
         >
-          <Numbers></Numbers>
-          <AnimateSpawn
-            variants={transitions.container}
-            className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
-          >
-            <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
-              <Link
-                className="button-outline-white text-center sm:text-left"
-                href="https://dashboard.internetcomputer.org"
+          <div className="">
+            <motion.div
+              className="-mx-6 md:mx-0 px-6 md:rounded-[32px] pt-10 pb-30 md:p-10 text-white flex flex-col md:flex-row justify-between self-stretch md:mb-[calc(33vh-188px)] animate-fade-in"
+              style={{
+                backdropFilter: boxBlur,
+                WebkitBackdropFilter: boxBlur,
+                animationDelay: "500ms",
+                animationPlayState: "running",
+              }}
+            >
+              {cards.map((item, index, arr) => (
+                <Fragment key={item.title}>
+                  <Link
+                    className="flex-1 text-white text-left md:text-center flex flex-row md:flex-col items-center group hover:no-underline hover:text-white animate-fade-up"
+                    style={{
+                      animationDelay: `${index * 100 + 600}ms`,
+                    }}
+                    href={item.link}
+                  >
+                    <div className="flex-1">
+                      <div className="text-white/60 tw-button-sm md:tw-heading-7-caps mb-1">
+                        {item.caption}
+                      </div>
+                      <h2 className="tw-lead-lg lg:tw-title-sm mb-0 md:mb-8">
+                        {item.title}
+                      </h2>
+                    </div>
+                    <div className="rounded-full border-white/30 border-solid border-2 inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 text-white group-hover:text-infinite group-hover:bg-white group-hover:border-white transition-all duration-200">
+                      <LinkArrowRight className="w-4 md:w-auto" />
+                    </div>
+                  </Link>
+                  {index < arr.length - 1 && (
+                    <div className="w-full h-px bg-white/20 md:w-px md:h-auto my-6 md:my-0 md:mx-8"></div>
+                  )}
+                </Fragment>
+              ))}
+            </motion.div>
+            <div className="md:pt-30 -mx-6 md:mx-0 px-6 md:rounded-[32px] ">
+              <Facts />
+              <AnimateSpawn
+                variants={transitions.container}
+                className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
               >
-                INTERNET COMPUTER | ICP DASHBOARD
-              </Link>
-              <Link
-                href="https://wiki.internetcomputer.org/wiki/L1_comparison"
-                className="link-primary-light link-with-icon"
-              >
-                <LinkArrowRight />
-                See the stats
-              </Link>
+                <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
+                  <Link
+                    className="button-outline-white text-center sm:text-left"
+                    href="https://dashboard.internetcomputer.org"
+                  >
+                    INTERNET COMPUTER DASHBOARD
+                  </Link>
+                  <Link
+                    href="https://wiki.internetcomputer.org/wiki/L1_comparison"
+                    className="link-primary-light link-with-icon"
+                  >
+                    Comparison of Layer-1 blockchains
+                    <LinkArrowUpRight />
+                  </Link>
+                </div>
+                <img
+                  src="/img/home/dashboard.svg"
+                  className="absolute right-0 bottom-0 pointer-events-none"
+                  loading="lazy"
+                  alt=""
+                ></img>
+              </AnimateSpawn>
             </div>
-            <img
-              src="/img/home/dashboard.svg"
-              className="absolute right-0 bottom-0 pointer-events-none"
-            ></img>
-          </AnimateSpawn>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+export default PreHero;

@@ -1,7 +1,7 @@
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import { useQueryParam } from "@site/src/utils/use-query-param";
-import BlobPurple from "@site/static/img/purpleBlurredCircle.png";
+import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import mediaVideos from "@site/static/mediaVideos.json";
 import transitions from "@site/static/transitions.json";
@@ -36,13 +36,13 @@ function Videos() {
   }
   return (
     <Layout
-      title={"Video Library"}
+      title={"Video library"}
       description={
         "Don't like reading? Learn how the Internet Computer works from feature presentations, demos, interviews, and conference talks."
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="https://internetcomputer.org/img/shareImages/share-videos.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-videos.jpeg"></ShareMeta>
 
       <main className="text-black relative overflow-hidden">
         <img
@@ -56,13 +56,13 @@ function Videos() {
               variants={transitions.item}
               className="md:w-7/10 lg:w-6/10 md:ml-1/12"
             >
-              <Breadcrumbs links={[{ text: "Video Library" }]} />
+              <Breadcrumbs links={[{ text: "Video library" }]} />
             </motion.div>
             <motion.p
               variants={transitions.item}
               className="tw-heading-3 md:tw-heading-2 mt-16 mb-0 md:ml-1/12"
             >
-              Video Library
+              Video library
             </motion.p>
           </section>
           <section className="max-w-page px-6 mb-10 md:px-12.5 md:mx-auto">

@@ -77,14 +77,15 @@ function InternetIdentityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Identity on the Internet Computer
+                Internet Identity
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                A Web3 authentication framework providing a Web2 login
-                experience with blockchain security.
+                Easy-to-use online authentication using fingerprint sensors, Face ID and
+                other security hardware on phones and laptops — powered by WebAuthn and
+                advanced cryptography
               </motion.p>
             </div>
             <motion.div
@@ -109,8 +110,8 @@ function InternetIdentityPage() {
               className="tw-heading-4 text-gradient mb-6 md:tw-heading-60 md:mb-8"
               variants={transitions.item}
             >
-              Internet Identity is a privacy-enhancing authentication framework to applications on the
-              Internet Computer
+              Internet Identity creates secure privacy-enhancing sessions with Web3
+              services
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
@@ -128,14 +129,31 @@ function InternetIdentityPage() {
           >
             <div className="hidden md:block blob blob-infinite blob-bottom-right blob-lg z-[-1]"></div>
             <CardWithIcon
-              title="Biometric authorization"
+              title="Easy! (WebAuthn)"
+              icon={<IconPrivacy className="h-14 md:h-16" />}
+            >
+              <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
+                Internet Identity builds on the WebAuthn standard supported by web
+                browsers – which is the future of secure online authentication. The
+                user authorizes the creation of a secure session using, for example,
+                their fingerprint sensor. The session is signed inside a TPM chip on
+                their device, where cryptographic passkeys are stored. Fully
+                decentralized, easy-to-use and highly secure!
+              </p>
+            </CardWithIcon>
+
+            <CardWithIcon
+              title="Device passkeys"
               icon={<IconNoPassword className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Unlock authentication with your device via FaceID, fingerprint
-                sensor or use a YubiKey. This provides strong security, as
-                the cryptographic key never leaves your device. No passwords are used
-                to authenticate on the IC.
+                An "internet identity" (II) transparently links cryptographic
+                passkeys securely stored inside its owner's various phones and
+                laptops using FIDO Alliance and W3C standards. Private keys
+                remain locked inside TPM chips inside the devices, profoundly
+                improving security, since even users cannot access them directly.
+                In essence, possession and control of devices provides the means
+                to authenticate.
               </p>
             </CardWithIcon>
 
@@ -144,20 +162,12 @@ function InternetIdentityPage() {
               icon={<IconCryptography className="h-14 md:h-16" />}
             >
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Remain pseudonymous using the Internet Identity authentication
-                framework, which prevents user tracking across dapps and
-                services.
-              </p>
-            </CardWithIcon>
-
-            <CardWithIcon
-              title="WebAuthn"
-              icon={<IconPrivacy className="h-14 md:h-16" />}
-            >
-              <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-0">
-                Internet Identity integrates the widely used secure web2
-                authentication framework known as WebAuthn for maximum
-                compatibility.
+                Today, Web2 users are often tracked across the different applications
+                and services they use by single sign-on (SSO) services. Meanwhile, in
+                Web3 environments involving blockchain, users can be publicly tracked by
+                their public key. Internet Identity prevents users being tracked in
+                both environments by using different cryptographic psuedonyms for each
+                service they interact with.
               </p>
             </CardWithIcon>
           </AnimateSpawn>
@@ -191,10 +201,10 @@ function InternetIdentityPage() {
                 <p className="mb-0 tw-paragraph">
                   On the Internet Computer blockchain, users can securely
                   authenticate themselves without ever needing an email,
-                  username, or password. Using any WebAuthn-enabled device,
-                  users can login conveniently without their information being
-                  monetized by tech companies. Internet Identity is designed to prevent
-                  Web3 services to track your activity across dapps.
+                  username, or password. Using a passkey, users can login
+                  conveniently without their information being monetized
+                  by tech companies. Internet Identity is designed to prevent
+                  Web3 services to track user activity across dapps.
                 </p>
                 <Link
                   className="link-primary link-with-icon mt-6"
@@ -373,17 +383,17 @@ function InternetIdentityPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="Dev Toolkits"
+              title="Dev toolkits"
               description="See the docs, get building."
               href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
             />
             <CardWithDescription
-              title="GitHub Repo"
+              title="GitHub repo"
               description="Check out the source code of Internet Identity."
               href="https://github.com/dfinity/internet-identity"
             />
             <CardWithDescription
-              title="Tech Dive"
+              title="Tech dive"
               description="Resources to learn all about Internet Identity, the blockchain authentication framework supported by the Internet Computer."
               href="/how-it-works/web-authentication-identity/"
             />

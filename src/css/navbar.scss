@@ -1,0 +1,280 @@
+/* Don't display docSidebar items in the top navbar */
+.navbar__inner .navbar__items:first-child .navbar__item {
+  display: none;
+}
+
+.navbar__link {
+  font-weight: var(--ifm-font-weight-bold);
+}
+
+.navbar__logo {
+  flex: 0 0 auto;
+  height: 1.925rem;
+  margin-right: 2rem;
+}
+
+.navbar__mobile__logo {
+  display: flex;
+}
+
+.navbar__mobile__logo img {
+  flex: 0 0 auto;
+  width: 15rem;
+  margin: auto 0.5rem;
+}
+
+.navbar {
+  padding: 44px var(--ifm-navbar-x-padding) 20px var(--ifm-navbar-x-padding);
+  height: var(--ifm-navbar-height);
+  margin: 0 0;
+  @apply z-50;
+}
+
+.dropdown--hoverable .dropdown__menu {
+  transform: translateX(-50%) translateY(-0.625rem);
+}
+
+.dropdown--hoverable:hover .dropdown__menu {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+@media (max-width: 996px) {
+  :root {
+    --ifm-navbar-height: 72px;
+    --ifm-navbar-padding-horizontal: 24px;
+  }
+
+  .navbar {
+    padding: var(--ifm-navbar-padding-vertical)
+      var(--ifm-navbar-padding-horizontal);
+  }
+
+  .navbar__logo {
+    flex: 0 0 auto;
+    height: 21px;
+    margin-right: 2rem;
+  }
+
+  html.plugin-docs,
+  html.plugin-blog {
+    // keep the nav in place on mobile (i.e. disable hideOnScroll)
+    nav[class*="navbarHidden_"] {
+      transform: unset;
+    }
+  }
+
+  /* on mobile hide the search bar in the top navbar */
+  .navbar__inner .navbar__search {
+    display: none;
+  }
+  .navbar__inner .ic0-item {
+    display: none;
+  }
+}
+
+.navbar__inner {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar__inner .navbar__item.dropdown,
+.navbar__inner .navbar__item.dropdown .navbar__link,
+.navbar__inner .navbar__item.navbar__link {
+  font-weight: 500;
+}
+
+/* top menu hover color */
+.navbar__inner .navbar__item:hover.dropdown .navbar__link {
+  color: var(--ifm-navbar-link-hover-color);
+}
+
+/* update top menu chevron icon */
+.navbar__inner .navbar__item.dropdown .navbar__link:after {
+  border: none;
+  width: 1rem;
+  height: 1rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.5 10.6669L13.1669 6.00001L14.5 7.33313L8.5 13.3331L2.5 7.33313L3.83312 6.00001L8.5 10.6669Z' fill='currentColor' fill-opacity='0.3'/%3E%3C/svg%3E%0A");
+  transform: none;
+}
+
+/* colorize the chevron icon on hover */
+.navbar__inner .navbar__item:hover.dropdown .navbar__link:after {
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(62%) sepia(88%) saturate(6408%) hue-rotate(315deg)
+    brightness(90%) contrast(89%);
+}
+
+/* Swap the order of the IC logo and the hamburger icon */
+@media (max-width: 996px) {
+  .navbar__inner .navbar__items:first-child .navbar__toggle {
+    order: 2;
+    margin-right: 0;
+  }
+
+  .navbar__inner .navbar__items:first-child .navbar__brand {
+    flex: 1;
+    order: 1;
+  }
+}
+
+/* full width sidebar */
+.navbar-sidebar {
+  --ifm-navbar-sidebar-width: 100vw;
+  --ifm-navbar-background-color: white;
+}
+
+/* larger mobile menu items */
+.navbar-sidebar .navbar-sidebar__back {
+  line-height: 2.25;
+}
+
+.navbar-sidebar .menu__list-item a {
+  line-height: 2.25;
+}
+
+/* make X icon on mobile sidebar black */
+.navbar-sidebar__close {
+  --ifm-color-emphasis-600: #181818;
+}
+
+.navbar-sidebar__item {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+/* dropdown is positioned too low in the original styles making it easy to hide by accident */
+.dropdown__menu {
+  top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 4px);
+}
+
+.navbar__link--divider {
+  display: none;
+}
+
+.menu__list .menu__list-item .dropdown__link--with-icon img {
+  display: none;
+}
+
+.navbar__link--dummy {
+  display: none;
+}
+
+// mobile top level sidebar
+.navbar-sidebar__item > :not(.theme-doc-sidebar-menu).menu__list {
+  .navbar__link--divider {
+    display: block;
+    margin: 0;
+    padding: 12px 8px 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 20px;
+    font-weight: bold;
+    color: rgba(59, 0, 185, 0.3);
+  }
+
+  .menu__list-item {
+    a {
+      border-radius: 0;
+      font-size: 18px;
+      line-height: 24px;
+      padding: 0 8px;
+      line-height: 52px;
+    }
+  }
+
+  > .menu__list-item {
+    margin-bottom: 14px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid #18181814;
+
+    a:hover {
+      background-color: transparent;
+    }
+  }
+
+  .menu__list {
+    padding: 0;
+    .menu__list-item {
+      margin: 0;
+      a {
+        color: var(--ifm-color-primary);
+        padding: 0 8px;
+        line-height: 52px;
+      }
+      a:hover,
+      a.menu__link--active {
+        background: #f1eef5;
+      }
+    }
+
+    .menu__list {
+      .menu__list-item {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 996px) {
+  .navbar__link--dummy {
+    display: block;
+    line-height: 46px;
+  }
+
+  .dropdown--right .dropdown__menu {
+    left: 50%;
+    right: inherit;
+    padding: 0 0;
+    width: max-content;
+    --ifm-dropdown-link-color: var(--ifm-color-primary);
+    --ifm-dropdown-hover-background-color: rgba(59, 0, 185, 0.1);
+  }
+
+  .dropdown__menu .dropdown__link {
+    padding: 12px 24px;
+    border-radius: 0;
+    margin: 0;
+    min-width: max-content;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+
+  .dropdown__menu .dropdown__link--with-icon {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .dropdown__menu li:first-child {
+    padding-top: 12px;
+  }
+  .dropdown__menu li:last-child {
+    padding-bottom: 12px;
+  }
+
+  .navbar__link.dropdown--custom + .dropdown__menu {
+    display: grid;
+  }
+
+  .navbar__link.dropdown--custom.dropdown--columns-2 + .dropdown__menu {
+    grid-template-columns: minmax(240px, 1fr) minmax(min-content, 1fr);
+    li:nth-child(odd) {
+      border-right: 1px solid rgba(59, 0, 185, 0.1);
+    }
+  }
+
+  .navbar__link--divider {
+    display: block;
+    margin: 0;
+    padding: 12px 24px 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 20px;
+    font-weight: bold;
+    color: rgba(59, 0, 185, 0.3);
+  }
+}

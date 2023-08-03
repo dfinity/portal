@@ -1,15 +1,15 @@
 ---
 author: Timo Hanke
-title: ID Encoding Specification
+title: ID encoding specification
 published: 2020-03-15
 last-updated: 2020-08-04
 ---
 
-# ID Encoding Specification
+# ID encoding specification
 
 ## Abstract
 
-Identifiers (short: ids) are a concept of the IC which is used to refer to multiple types of registered or unregistered entities including canisters, users, accounts (registered) or ephemeral keys (unregistered).
+Identifiers (short: IDs) are a concept of the IC which is used to refer to multiple types of registered or unregistered entities including canisters, users, accounts (registered) or ephemeral keys (unregistered).
 The reference can be made either to address the entity as a target or to identify the entity as the source of something.
 Often, when identifiers are handled outside of the IC, and in particular when they are handled by humans or tools close to humans, a textual representation is required.
 
@@ -17,31 +17,31 @@ This specification encodes identifiers in the Base32 format (RFC 4648) after add
 
 ## Introduction
 
-The specification of ids (a different document) and the specification of the textual representation of ids (this document) are separate things. The former is about the ids that are used inside the IC (it covers the internal structure of ids as byte strings). The latter is about encoding those ids for use outside of the IC (ignoring the internal structure and describing the encoding as a character string that can be handled by users).
+The specification of IDs (a different document) and the specification of the textual representation of IDs (this document) are separate things. The former is about the IDs that are used inside the IC (it covers the internal structure of IDs as byte strings). The latter is about encoding those IDs for use outside of the IC (ignoring the internal structure and describing the encoding as a character string that can be handled by users).
 
-This specification works on top of the specification of ids. Therefore, we speak of the id that is used inside the IC as the _underlying id_. The encoding used outside of the IC is called _encoded id_ or simply _id_ throughout this document. Sometimes we also refer to the underlying id as the _byte string_ and to the encoded id as the _character string_.
+This specification works on top of the specification of IDs. Therefore, we speak of the ID that is used inside the IC as the **underlying ID**. The encoding used outside of the IC is called **encoded ID** or simply **ID** throughout this document. Sometimes we also refer to the underlying ID as the **byte string** and to the encoded ID as the **character string**.
 
-As far as this specification is concerned, the underlying ids are considered as binary blobs in varying sizes (opaque). The allowed size of an underlying id is up to 29 bytes.
+As far as this specification is concerned, the underlying IDs are considered as binary blobs in varying sizes (opaque). The allowed size of an underlying ID is up to 29 bytes.
 
-It shall be pointed out that the two specifications are not entirely orthogonal. This specification is not meant to describe one of possibly many textual representations for an underlying id. The reason is that ids will be frequently compared for equality. For example, we do not want to have two different encoded ids floating around on websites that point to the same underlying id. If two different representations were in use for the same underlying id this would defeat the purpose of having an id in the first place. It would be a pointer, not an id.
+It shall be pointed out that the two specifications are not entirely orthogonal. This specification is not meant to describe one of possibly many textual representations for an underlying ID. The reason is that IDs will be frequently compared for equality. For example, we do not want to have two different encoded IDs floating around on websites that point to the same underlying ID. If two different representations were in use for the same underlying ID this would defeat the purpose of having an ID in the first place. It would be a pointer, not an ID.
 
 The definition of a URL scheme is not in the scope of this specification. We leave a URL scheme as something to be defined on top of this specification.
 
-The outline of this document is as follows.
-Section [Assumptions and Requirements](#assumptions-and-requirements) presents the assumptions and requirements which guided the design process that led to this specification.
-Section [Specification](#specification) provides the specification itself.
-Section [Reference Implementations](#reference-implementations) gives reference implementations for the entire encoding and decoding functions as well for their subfunctions.
-Section [Test Vectors](#test-vectors) provides test vectors.
-Section [Rationale](#rationale) explains the reasons why the specification was chosen, given the assumptions and requirements from Section [Assumptions and Requirements](#assumptions-and-requirements).
+The outline of this document is as follows:
+- The [assumptions and requirements](#assumptions-and-requirements) section presents the assumptions and requirements which guided the design process that led to this specification.
+- The [specification](#specification) section provides the specification itself.
+- The [reference implementations](#reference-implementations) section gives reference implementations for the entire encoding and decoding functions as well for their subfunctions.
+- The [test vectors](#test-vectors) section provides test vectors.
+- The [rationale](#rationale) section explains the reasons why the specification was chosen, given the assumptions and requirements from the section [assumptions and requirements](#assumptions-and-requirements).
 
-## Assumptions and Requirements
+## Assumptions and requirements
 
 The specification was designed around the following:
 
-1. Secure. The accidental alteration of an id can cause financial loss. The requirement is to minimize the loss occurring across the entire user base.
-2. URL-compatibility. The requirement is that ids can appear in the hostname portion of a URL.
-3. User experience. The requirement is that the UI can detect the accidental alteration (with high enough probably) of an id without having to connect to the IC. 
-4. Developer experience. The requirement is that UIs can be written using widely-available libraries.
+-  **Requirement 1: security:** the accidental alteration of an ID can cause financial loss. The requirement is to minimize the loss occurring across the entire user base.
+-  **Requirement 2: URL-compatibility:** the requirement is that IDs can appear in the hostname portion of a URL.
+-  **Requirement 3: user experience:** the requirement is that the UI can detect the accidental alteration (with high enough probably) of an ID without having to connect to the IC. 
+-  **Requirement 4: developer experience:** the requirement is that UIs can be written using widely-available libraries.
 
 ## Specification
 
@@ -51,10 +51,10 @@ Let `CRC32` denote the cyclic redundancy check function commonly known as the CR
 
 Links describing our CRC32 function (resp. the polynomial used therein):
 
-* Table entry “CRC-32” on [Wikipedia](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)
-* Row “IEEE 802.3; CRC-32” in [Koopman's database](https://users.ece.cmu.edu/~koopman/crc/crc32.html)
-* Entry “CRC-32/ISO-HDLC” in the [CRC catalogue](http://reveng.sourceforge.net/crc-catalogue/all.htm)
-* Row labeled “CRC-32” in this [online calculator](https://crccalc.com/)
+* Table entry “CRC-32” on [Wikipedia](https://en.wikipedia.org/wiki/Cyclic_redundancy_check).
+* Row “IEEE 802.3; CRC-32” in [Koopman's database](https://users.ece.cmu.edu/~koopman/crc/crc32.html).
+* Entry “CRC-32/ISO-HDLC” in the [CRC catalogue](http://reveng.sourceforge.net/crc-catalogue/all.htm).
+* Row labeled “CRC-32” in this [online calculator](https://crccalc.com/).
 
 Our CRC32 function is defined by the following parameters in the [CRC catalogue](http://reveng.sourceforge.net/crc-catalogue/all.htm) and [online calculator](https://crccalc.com/): 
 
@@ -77,7 +77,7 @@ A decoder MUST reject a character string if the implicit padding bits are not al
 For example, while the base32 strings AA, AB, AC, AD differ only in the last 3 bits, only AA shall decode successfully whereas AB, AC, AD shall be rejected.
 
 Without the above rule, the last character in the encoding is no longer unique.
-There can be two different character strings, differing in the last character not only by case, which decode to the same underlying id.
+There can be two different character strings, differing in the last character not only by case, which decode to the same underlying ID.
 
 Our `Base32` encoding/decoding functions are the ones implemented by this [online encoder](https://cryptii.com/pipes/base32) when selecting “Base 32 (RFC 3548, RFC 4648)”.
 However, the decode function in this online tool does not reject non-zero padding bits (it decodes AB, AC, AD successfully).
@@ -149,7 +149,7 @@ The final group can consist of a single character. This occurs for the following
 
 ### Encoding
 
-Let `data` be the underlying id as a byte array. Then the encoded id is defined as:
+Let `data` be the underlying ID as a byte array. Then the encoded ID is defined as:
 
 ```
 Encode(data) := Group(LowerCase(Base32(CRC32(data) || data)))
@@ -162,17 +162,17 @@ This means the shortest encoding is 8 characters (5+2 characters with one dash i
 
 The longest encoding is 63 characters (10*5+3 characters with ten dashes in between).
 
-By definition, ids are case insensitive. However, by default, the `Encode` function outputs lower case.
+By definition, IDs are case insensitive. However, by default, the `Encode` function outputs lower case.
 
 ### Decoding
 
-The function `Decode` normalizes the input to all-lower-case and then applies the inverse of  `Encode,` unless one the following errors occurs:
+The function `decode` normalizes the input to all-lower-case and then applies the inverse of  `encode,` unless one the following errors occurs:
 
-* Input is longer or shorter than 8-63 characters
-* The grouping is incorrect
-* Input contains non-base32 characters
-* The internal padding bits are not all zero
-* The check sequence is invalid
+* Input is longer or shorter than 8-63 characters.
+* The grouping is incorrect.
+* Input contains non-base32 characters.
+* The internal padding bits are not all zero.
+* The check sequence is invalid.
 
 
 ## Reference implementations
@@ -181,31 +181,32 @@ The function `Decode` normalizes the input to all-lower-case and then applies th
 
 * On the command line: `crc32`
 
-  Examples:
-    * `$ echo -n 123456789 | crc32 /dev/stdin`
+#### Examples:
+* `$ echo -n 123456789 | crc32 /dev/stdin`
 
-      `cbf43926`
+  `cbf43926`
 * On the command line: `cksum -o 3`
 
-  Examples: 
-    * ``$ printf "%x\n" `echo -n "123456789" | cksum -o 3 | cut -f 1 -d " "` ``
+#### Examples: 
+* ``$ printf "%x\n" `echo -n "123456789" | cksum -o 3 | cut -f 1 -d " "` ``
 
-      `cbf43926`
+  `cbf43926`
 
 ### Base32
 
 * On the command line (from [coreutils](https://www.gnu.org/s/coreutils/)): `base32`
 
-  Examples: see bash implementation below.
+#### Examples: 
+- See bash implementation below.
 
 ### Grouping
 
 * On the command line: `fold -w5 | paste -sd'-' -`
 
-  Examples:
-    * `$ echo abcdefghijk | fold -w5 | paste -sd'-' -`
+#### Examples:
+* `$ echo abcdefghijk | fold -w5 | paste -sd'-' -`
 
-      `abcde-fghij-k`
+  `abcde-fghij-k`
 
 ## Test vectors
 
@@ -324,70 +325,70 @@ The function `Decode` normalizes the input to all-lower-case and then applies th
 
 ## Rationale
 
-**Why is the character set not Base64?**
+#### **Why is the character set not Base64?**
 
-We need case-insensitive ids because we want to use them in the hostname (i.e. the authority part) of a URL. (see Requirement 2: URL-compatibility)
+- We need case-insensitive IDs because we want to use them in the hostname (i.e. the authority part) of a URL (see **requirement 2: URL-compatibility**).
 
-**Why is the character set not hex?**
+#### **Why is the character set not hex?**
 
-URLs limit the length of hostnames to 63 characters.
+- URLs limit the length of hostnames to 63 characters.
 In hex this would allow to encode a maximum of 31 bytes.
-This is not enough to fit our derived ids into it.
-A change to the id specification could make it possible like this: 20 byte hash + 4 bytes freely chooseable + 4 bytes check sequence + 2 bytes version = 30 bytes.
-However, it is nice to a) have overall shorter ids and b) have more space available for future extensions. (see Requirement 2: URL-compatibility)
+This is not enough to fit our derived IDs into it.
+A change to the ID specification could make it possible like this: 20 byte hash + 4 bytes freely chooseable + 4 bytes check sequence + 2 bytes version = 30 bytes.
+However, it is nice to have overall shorter IDs and have more space available for future extensions (see **requirement 2: URL-compatibility**).
 
-**Why a check sequence?**
+#### **Why a check sequence?**
 
-The purpose of the check sequence is to detect errors early, right in the user interface, before connecting to the IC, in fact, without necessity to connect to the IC at all. (see Requirement 3: User experience)
+- The purpose of the check sequence is to detect errors early, right in the user interface, before connecting to the IC, in fact, without necessity to connect to the IC at all (see **requirement 3: user experience**).
 
-**Why is the check sequence 4 bytes and not shorter?**
+#### **Why is the check sequence 4 bytes and not shorter?**
 
-We expect that the protocol may accept unregistered (self-generated) ids.
+- We expect that the protocol may accept unregistered (self-generated) IDs.
 An accidental alteration could lead to financial loss.
 To minimize the total loss incurred by all users combined it is important to reduce this probability as much as possible.
 We think 1:10<sup>9</sup> or better is required.
-If it was only to improve user experience and financial loss was not an issue then 2 bytes would have been enough as, e.g., in onion addresses. (see Requirement 1: Security)
+If it was only to improve user experience and financial loss was not an issue then 2 bytes would have been enough as, e.g., in onion addresses (see **requirement 1: security**).
 
-**Why is the check sequence calculated before encoding to a character string (i.e. based on binary data as input) and not after (i.e. based on a character string as input)?**
+#### **Why is the check sequence calculated before encoding to a character string (i.e. based on binary data as input) and not after (i.e. based on a character string as input)?**
 
-Calculating the check sequence before encoding makes the check sequence part independent of the encoding part.
+- Calculating the check sequence before encoding makes the check sequence part independent of the encoding part.
 This may reduce code dependencies. 
 
-**Doesn’t a check sequence based on characters provide better detection of errors that come from human typos?**
+#### **Doesn’t a check sequence based on characters provide better detection of errors that come from human typos?**
 
-Yes, but a) we do not design for ids typed by humans and b) the improvement in detection rate is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
+- Yes, but a) we do not design for IDs typed by humans and b) the improvement in detection rate is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
 
-**Why is the check sequence not based on a cryptographic hash?**
+#### **Why is the check sequence not based on a cryptographic hash?**
 
-A cryptographic hash shortened to 4 bytes is not “cryptographic” anymore, hence it is as good as our CRC function.
+- A cryptographic hash shortened to 4 bytes is not “cryptographic” anymore, hence it is as good as our CRC function.
 
-**Why is the check sequence not based on SHA256?**
+#### **Why is the check sequence not based on SHA256?**
 
-CRC is cheaper computation wise.
-This may pay off when canister code handles encoded ids.
+- CRC is cheaper computation wise.
+This may pay off when canister code handles encoded IDs.
 
-**Why wasn’t a better polynomial chosen for the CRC than the standard one?**
+#### **Why wasn’t a better polynomial chosen for the CRC than the standard one?**
 
-It is true that there are polynomials with a better Hamming distance.
+- It is true that there are polynomials with a better Hamming distance.
 At data length of up to 256 bits one can find Hamming distance 6 where our polynomial only has Hamming distance 4.
 As said before, the difference is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
-The availability of libraries for the standard polynomial used in CRC32 is more important to us. (see Requirement 4: Developer experience)
+The availability of libraries for the standard polynomial used in CRC32 is more important to us (see **requirement 4: developer experience**).
 
-**Why is the check sequence not based on a BCH code over GF(32)?**
+#### **Why is the check sequence not based on a BCH code over GF(32)?**
 
-The advantage of a BCH code would be that the check sequence can be made character-based to detect human typos.
+- The advantage of a BCH code would be that the check sequence can be made character-based to detect human typos.
 We already answered above why we didn’t choose a character-based check sequence.
 
-**But isn’t BCH shorter code than CRC32? It only requires 5 constants where CRC32 has a table of 256 constants?**
+#### **But isn’t BCH shorter code than CRC32? It only requires 5 constants where CRC32 has a table of 256 constants?**
 
-Yes, but BCH would require custom code where CRC32 is widely available in libraries.
-This is more important to us. (see Requirement 4: Developer experience)
+- Yes, but BCH would require custom code where CRC32 is widely available in libraries.
+This is more important to us (see **requirement 4: developer experience**).
 
-**Why don’t you use capitalization as an implicit check sequence like Ethereum does?**
+#### **Why don’t you use capitalization as an implicit check sequence like Ethereum does?**
 
-Three reasons: 
-  * We want a case-insensitive encoding for use in hostnames. (see Requirement 2: URL-compatibility)
+- Three reasons: 
+  * We want a case-insensitive encoding for use in hostnames (see **requirement 2: URL-compatibility**).
   * This would not provide sufficiently many check bits in all cases.
-    Our ids can be as short as 9 bytes which would be 15 characters without adding a check sequence.
-    Capitalization cannot add more than 1 check bit per character but we wanted at least 30 bits total. (see Requirement 1: Security)
-  * This would mean highly custom code. (see Requirement 4: Developer experience)
+    Our IDs can be as short as 9 bytes which would be 15 characters without adding a check sequence.
+    Capitalization cannot add more than 1 check bit per character but we wanted at least 30 bits total (see **requirement 1: security**).
+  * This would mean highly custom code (see **requirement 4: developer experience**).

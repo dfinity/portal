@@ -3,30 +3,26 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 
 const largeNfts: { url: string; title: string; imageUrl: string }[] = [
-  { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
   { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
   { imageUrl: "/img/nft/cosmic-birth.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/creator-gloves.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/cubetopia-1.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/boxydude.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/icbucks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/cubetopia-2.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/colorful-abstracts.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icflowers.webp", title: "", url: "" },
+  { imageUrl: "/img/nft/creator-gloves.webp", title: "", url: "" },
   { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/icmoji.webp", title: "", url: "" },
 ];
 
 const smallNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/ickitties.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/icmoji.webp", title: "", url: "" },
-
-  { imageUrl: "/img/nft/icpets.webp", title: "", url: "" },
-  { imageUrl: "/img/nft/icpunks.webp", title: "", url: "" },
   { imageUrl: "/img/nft/icpuppies.webp", title: "", url: "" },
   { imageUrl: "/img/nft/moonwalker.webp", title: "", url: "" },
   { imageUrl: "/img/nft/eimolad.webp", title: "", url: "" },
@@ -92,78 +88,6 @@ const NftShowcase = React.memo(() => {
     </section>
   );
 });
-
-const TranslatedLayout: React.FC<{
-  children: React.ReactNode;
-  reverse?: boolean;
-  imageUrl?: string;
-  video?: { videoUrl: string; videoContentType: string };
-  alt?: string;
-  imageClassName?: string;
-  imageWithBlob?: boolean;
-}> = ({
-  children,
-  reverse = false,
-  alt = "",
-  imageUrl,
-  video,
-  imageWithBlob = false,
-  imageClassName,
-}) => {
-  if (!imageUrl && !video) {
-    throw new Error("imageUrl or videoUrl must be provided");
-  }
-
-  const mediaEl = imageUrl ? (
-    <img
-      src={imageUrl}
-      alt={alt}
-      className={clsx(
-        "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl",
-        imageClassName,
-        reverse ? "md:rounded-l-none" : "md:rounded-r-none"
-      )}
-    />
-  ) : (
-    <video
-      loop
-      autoPlay
-      muted
-      playsInline
-      className={clsx(
-        "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
-        reverse ? "md:rounded-l-none" : "md:rounded-r-none"
-      )}
-    >
-      <source src={video.videoUrl} type={video.videoContentType} />
-    </video>
-  );
-  return reverse ? (
-    <div className="flex flex-col md:flex-row">
-      <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-start md:items-center">
-        {imageWithBlob && (
-          <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
-        )}
-        {mediaEl}
-      </div>
-      <div className="flex flex-col justify-center md:w-7/12">
-        <div className="md:mx-auto md:w-[71.4%]">{children}</div>
-      </div>
-    </div>
-  ) : (
-    <div className="flex flex-col md:flex-row">
-      <div className="md:w-7/12 flex flex-col justify-center order-2 md:order-1">
-        <div className="md:mx-auto md:w-[71.4%]">{children}</div>
-      </div>
-      <div className="flex-1 text-center order-1 md:order-2 relative md:-mr-[50px] md:flex md:justify-end md:items-center">
-        {imageWithBlob && (
-          <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
-        )}
-        {mediaEl}
-      </div>
-    </div>
-  );
-};
 
 function NftPage() {
   const [bgDark, setBgDark] = useState(true);
@@ -233,7 +157,7 @@ function NftPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Next Generation NFTs
+                  Next generation NFTs
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
@@ -257,7 +181,7 @@ function NftPage() {
                 $33,000,000
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Total Trading Volume in 2022
+                Total trading volume in 2022
               </span>
             </div>
             <div className="flex flex-col flex-1 gap-2">
@@ -271,7 +195,7 @@ function NftPage() {
                 415
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Total NFT Projects
+                Total NFT projects
               </span>
             </div>
           </div>
@@ -295,7 +219,7 @@ function NftPage() {
           <TranslatedLayout
             reverse={true}
             imageUrl="/img/nft/creator.webp"
-            imageWithBlob={true}
+            imageWithBlob="blob blob-infinite blob-center blob-md md:blob-lg"
             imageClassName="relative"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
@@ -316,7 +240,7 @@ function NftPage() {
                 href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"
                 className="button-outline"
               >
-                Become a Creator
+                Become a creator
               </Link>
             </p>
           </TranslatedLayout>
@@ -509,7 +433,7 @@ function NftPage() {
               <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
                 Trade NFTs with
                 <br />
-                <span className="text-gradient">Zero gas fees</span>
+                <span className="text-gradient">zero gas fees</span>
               </h2>
               <p className="mb-0 text-black-60 tw-lead-sm md:tw-lead">
                 Featuring a few web3 project teams already reinventing the

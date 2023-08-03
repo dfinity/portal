@@ -4,9 +4,15 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      zIndex: {
+        1: "1",
+        "-1": "-1",
+        "-10": "-10",
+      },
       maxWidth: {
         page: "1440px",
-        "page-narrow": "1214px",
+        "page-10-cols": "1214px",
+        "page-8-cols": "987px",
       },
       spacing: {
         12.5: "50px",
@@ -70,6 +76,9 @@ module.exports = {
         DEFAULT: "#3B00B9",
         60: "#6E52AA",
       },
+      page: {
+        DEFAULT: "#F1EEF5",
+      },
       transparent: "transparent",
       grey: {
         300: "#dfdfdf",
@@ -98,6 +107,7 @@ module.exports = {
       },
       razzmatazz: {
         DEFAULT: "#DA3979",
+        300: "#EB318A",
       },
       blue: {
         DEFAULT: "#29ABE2",
@@ -111,7 +121,7 @@ module.exports = {
     },
     fontSize: {
       // bold
-      "heading-1": ["100px", "110px"],
+      "heading-1": ["120px", "110px"],
       "heading-2": ["75px", "85px"],
       "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],
@@ -155,6 +165,9 @@ module.exports = {
         }
       );
     }),
+    plugin(function ({ addVariant }) {
+      addVariant("docs", "html.docs-doc-page &");
+    }),
     plugin(({ addComponents }) => {
       // prettier-ignore
       const components = {
@@ -167,6 +180,8 @@ module.exports = {
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
+                ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
+
 
                 //
                 ".tw-title-navigation": "@apply text-navigation font-medium",
@@ -188,6 +203,7 @@ module.exports = {
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
                 '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                '.button-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
@@ -196,13 +212,16 @@ module.exports = {
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
                 '.link-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
-                '.container-10': '@apply max-w-page-narrow mx-auto px-6 md:px-12.5',
+                '.container-10': '@apply max-w-page-10-cols mx-auto px-6 md:px-12.5',
+                '.container-8': '@apply max-w-page-8-cols mx-auto px-6 md:px-12.5',
                 '.checklist': '@apply list-none pl-0',
-                '.checklist-item': '@apply bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top pl-8 my-3 leading-6',
+                '.checklist-item': '@apply bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top',
+                '.checklist-item-white': '@apply bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top',
                 '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
-                '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.png")] aspect-[256/232]',
+                '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.webp")] aspect-[256/232]',
                 '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
-                '.blob-white': '@apply bg-[url("/img/whiteBlurredCircle.png")] aspect-[256/251]',
+                '.blob-white': '@apply bg-[url("/img/whiteBlurredCircle.webp")] aspect-[256/251]',
+                '.blob-white-dense': '@apply bg-[url("/img/blob-white-dense.webp")] aspect-[512/461]',
                 '.blob-xs': '@apply w-[500px]',
                 '.blob-sm': '@apply w-[800px]',
                 '.blob-md': '@apply w-[1000px]',
@@ -216,7 +235,35 @@ module.exports = {
                 '.blob-bottom-left': '@apply left-0 -translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-right': '@apply right-0 translate-x-6/10 top-auto bottom-0 translate-y-1/3',
                 '.blob-bottom-center': '@apply left-1/2 -translate-x-1/2 top-auto bottom-0 translate-y-1/3',
-                '.text-gradient': '@apply text-transparent bg-clip-text bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
+
+                '.blob-x-0': '@apply right-auto left-0 -translate-x-1/2',
+                '.blob-x-1': '@apply right-auto left-1/10 -translate-x-1/2',
+                '.blob-x-2': '@apply right-auto left-1/10 -translate-x-1/2',
+                '.blob-x-3': '@apply right-auto left-3/10 -translate-x-1/2',
+                '.blob-x-4': '@apply right-auto left-4/10 -translate-x-1/2',
+                '.blob-x-5': '@apply right-auto left-5/10 -translate-x-1/2',
+                '.blob-x-6': '@apply right-auto left-6/10 -translate-x-1/2',
+                '.blob-x-7': '@apply right-auto left-7/10 -translate-x-1/2',
+                '.blob-x-8': '@apply right-auto left-8/10 -translate-x-1/2',
+                '.blob-x-9': '@apply right-auto left-9/10 -translate-x-1/2',
+                '.blob-x-10': '@apply right-auto left-full -translate-x-1/2',
+
+                '.blob-y-0': '@apply bottom-auto top-0 -translate-y-1/2',
+                '.blob-y-1': '@apply bottom-auto top-1/10 -translate-y-1/2',
+                '.blob-y-2': '@apply bottom-auto top-2/10 -translate-y-1/2',
+                '.blob-y-3': '@apply bottom-auto top-3/10 -translate-y-1/2',
+                '.blob-y-4': '@apply bottom-auto top-4/10 -translate-y-1/2',
+                '.blob-y-5': '@apply bottom-auto top-5/10 -translate-y-1/2',
+                '.blob-y-6': '@apply bottom-auto top-6/10 -translate-y-1/2',
+                '.blob-y-7': '@apply bottom-auto top-7/10 -translate-y-1/2',
+                '.blob-y-8': '@apply bottom-auto top-8/10 -translate-y-1/2',
+                '.blob-y-9': '@apply bottom-auto top-9/10 -translate-y-1/2',
+                '.blob-y-10': '@apply bottom-auto top-full -translate-y-1/2',
+
+                '.text-gradient-base': '@apply text-transparent bg-clip-text',
+                '.text-gradient': '@apply text-gradient-base bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]',
+                '.text-gradient-denver': '@apply text-gradient-base bg-[linear-gradient(90deg,#6A85F1_22.19%,#C572EF_79.9%)]',
+                '.text-gradient-green': '@apply text-gradient-base bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)]',
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
             };

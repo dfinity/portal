@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import BGCircle from "@site/static/img/purpleBlurredCircle.png";
+import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
 import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import {
@@ -97,7 +97,7 @@ function Samples(): JSX.Element {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="https://internetcomputer.org/img/shareImages/share-tooling.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-tooling.jpeg"></ShareMeta>
 
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>
@@ -112,7 +112,7 @@ function Samples(): JSX.Element {
                 variants={transitions.item}
                 className="tw-heading-3 md:tw-heading-2"
               >
-                Developer Tools
+                Developer tools
               </motion.p>
               <motion.p
                 variants={transitions.item}

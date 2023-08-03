@@ -1,72 +1,84 @@
 # Service Nervous System (SNS)
 
-We anticipate that different target groups are interested
-in different aspects of the Service Nervous System (SNS)
-and thus in different kinds of documentations.
-We thus try to split the SNS documentation accordingly.
+## Overview
+These pages introduce instructions needed when considering handing over control of a 
+dapp to a Service Nervous System (SNS) or integrating with an SNS.
+If this is the first time you hear about the SNS, we recommend to take a look at the high level [SNS](/sns)
+and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
 
-This page provides an overview of the SNS documentation and 
-provides links to the parts that already exist.
-Some of the SNS documentation is still being worked on and will be 
-edited or added as the last SNS features are added, so please bare with
-us if it is not yet complete or a few parts do not yet work.
+This page provides an overview of how the SNS developer documentation is organized and also lists references to other relevant SNS documentation.
 
+## Introduction to the SNS
+This section gives a high level overview of the SNS lifecycle, including the architecture and how an SNS is launched.
+You will find 
+* [SNS introduction](./introduction/sns-intro-high-level.md) giving a quick introduction.
+* [SNS architecture](./introduction/sns-architecture.md) explaining how SNSs are deployed and upgraded and what canisters are involved.
+* [SNS launch](./launching/launch-summary.md) explaining on a high level how and SNS is launched.
+* [Alternative DAOs](./introduction/dao-alternatives.md) presenting alternative ways how to get a DAO.
 
-## Technical documentation
-This documentation is, as the name suggests, aimed at
-developers.
-Most of the documentation targets developers that have
-a dapp that they would like to decentralize with an SNS. 
-However, this documentation also targets developers that
-want to build services that integrate with SNSs, such as wallet dapps
-or decentralized exchanges.  
+## Preparing an SNS launch
+This section introduces the ideas and tools needed when considering to form a DAO, including less technical aspects, such as planning the tokenomics, as well as more technical aspects, such as how different configuration choices can technically be set in the SNS.
 
 In this documentation you will find
-* [A technical introduction to the SNS](sns-intro.md)
+* [An introduction to SNS preparation](./tokenomics/index.md).
+* [The SNS launch checklist](./tokenomics/sns-checklist.md) providing a summary of what to consider when launching an SNS.
+* [Pre-deployment considerations](./tokenomics/predeployment-considerations.md) introducing some non-technical considerations to take into account when planning an SNS launch.
+* [SNS tokenomics](./tokenomics/tokenomics-intro.md) providing and introduction to tokenomics that can be considered when planning an SNS's tokenomics.
+* [SNS rewards](./tokenomics/rewards.md) providing and introduction to SNS rewards that can be considered when planning an SNS's tokenomics.
+* A (technical) introduction how to convert the configurations into [SNS parameters](./tokenomics/preparation.md).
 
-* Information on how to **get an SNS**, which includes
-    * [An introduction how to get an SNS](get-sns/get-sns-intro.md) which
-      explains the high level stages of getting an SNS
-    * [Technical preparations for getting an SNS](get-sns/preparation.md) which
-      describes the technical steps required before getting an SNS.
-      We also link to non-technical steps that we recommend,
-      which can be found under the "DAO and Tokenomics" documentation
-      targeted at a less technical audience.
-    * [Steps to Test the SNS locally](get-sns/local-testing.md)
-    * Steps how to get an SNS in production <!--Steps how to get an SNS in production-->
-  
-* Tips for how to **integrate with an SNS**, which includes
-  * Guidelines how to integrate a frontend <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
-  * [Guidelines how to integrate with the ledger canister](integrate-sns/ledger-integration.md)
-  * [Guidelines how to integrate with the index canister](integrate-sns/index-integration.md)
+## Integrating with an SNS
+This section not only targets developers that have a dapp that they would like to decentralize with an SNS, but also developers that want to build services that integrate with SNSs, such as wallet dapps or decentralized exchanges.
 
-* Guidelines for how to **manage an SNS**, which includes
-  * [An introduction to managing an SNS](managing-sns/manage-sns-intro.md)
-  * [Tips regarding cycles management for the canisters](managing-sns/cycles-usage.md)
-  * Information on nervous system parameters that can be configured
-    in each SNS <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md)-->
-  * Information on how SNS are upgraded <!--Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->  
-  * A guideline for SNS proposals <!-- A guideline for SNS proposals (managing-sns/proposal-guide.md)-->
- 
-## DAOs and Tokenomics documentation 
-This documentation is less technical.
-It targets for example developers who want to get an SNS and
-have to make certain non-technical decisions too.
-It also targets interested developers who would like to understand
-the tokenomics of an SNS better.
+It includes
+* [An introduction to SNS integration](./integrating/index.md). <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
+* [Guidelines how to integrate with the ledger canister](./integrating/ledger-integration.md).
+* [Guidelines how to integrate with the index canister](./integrating/index-integration.md).
 
-In this documentation you will find
-* [An introduction to DAOs and SNSs](./tokenomics/sns-intro-tokens.md)
-* [An introduction to tokenomics of DAOs](./tokenomics/tokenomics.md)
-* [An introduction to SNS rewards](./tokenomics/rewards.md)
-* [Tips on what to consider before getting an SNS](./tokenomics/predeployment-considerations.md)
+## Testing an SNS
+An important part of preparing an SNS launch, integrating with an SNS, and managing an SNS, is testing.
+This section provides 
+* [An introduction to SNS testing](./testing/testing-before-launch.md).
+* [Guidelines how to test an SNS locally](./testing/testing-locally.md), including the SNS launch.
+* [Guidelines how to test the operation of the dapp under SNS control](./testing/testing-on-mainnet.md), including on the mainnet.
+
+## Launching an SNS
+This parts explains the SNS launch in detail.
+It contains <!-- An introduction of how to read the launch pages as there are currently two supported methods how to launch an SNS (./launching/index.md)-->
+* A detailed [description of all stages included in an SNS launch](./launching/launch-summary.md).
+* [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps.md). <!-- NEW: - A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the new, recommended launch flow that only includes one proposal. - [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for the new, recommended launch flow that only includes one proposal. - A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the old launch flow that might be deprecated at some point but is still available for those who started testing with this flow. - [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for the old launch flow that might be deprecated at some point but is still available for those who started testing with this flow. -->
+
+## Managing an SNS
+After an SNS is launched, the SNS community needs to manage it, including ensuring that the canisters have enough cycles, govern the dapp, and manage SNS canister upgrades.
+This section includes
+* [An introduction to managing an SNS](./managing/manage-sns-intro.md).
+* [An introduction to SNS proposals](./managing/making-proposals.md).
+* [Tips regarding cycles management for the canisters](./managing/cycles-usage.md).
+* [An intorduction to how to use the asset canister with an SNS-controlled dapp](./managing/sns-asset-canister.md).
 
 
-## User Guides
-Finally, the Wiki will contain information relevant for 
-users of the SNS.
+<!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->
 
-You will find
-* [How-to: Interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters)
-* A guide how to participate in the SNS decentralization sale
-* A guide how to verify the NNS proposal that starts a SNS decentralization sale
+## Explanations and guides for users
+Finally, the website and Wiki contain information relevant for users of the SNS.
+
+On the **website**, you will find **explanations on:**
+* [SNS overview page](https://internetcomputer.org/sns).
+* [SNS FAQ](https://internetcomputer.org/sns/faq) including, for example:
+  * [A guide how to participate in the SNS decentralization swap](/sns/faq#participate).
+
+The **Wiki** contains more information about
+* [DAOs](https://wiki.internetcomputer.org/wiki/DAO).
+* [Service Nervous System (SNS)](https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS)).
+* [Neurons' Fund](https://wiki.internetcomputer.org/wiki/Neurons_Fund).
+* [SNS Rewards](https://wiki.internetcomputer.org/wiki/SNS_Rewards).
+* [SNS Tokenization Considerations](https://wiki.internetcomputer.org/wiki/SNS_Tokenization_Considerations).
+* [SNS decentralization swap trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust).
+
+The Wiki also contains guides for the following topics:
+* [How to: get a DAO on the IC](https://wiki.internetcomputer.org/wiki/How_to_get_a_DAO_on_the_IC) providing a summary of how someone can get a DAO on the IC, but this is largely subsumed by the developer documentation here.
+* [How to: SNS tokenomics configuration](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) providing material enabling teams to choose a tokenomics set-up for their SNS DAO.
+* [How to: verify SNS decentralization swap proposal](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal) which is a guide how to verify the NNS proposal that starts a SNS decentralization swap.
+* [How to: interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters) which is a guide on how to interact with SNS canisters.
+* [How to: participate in the SNS decentralization swap via quill](https://wiki.internetcomputer.org/wiki/How-To:_Participate_in_the_SNS_decentralization_sale_via_quill), which is a command line tool for interacting with canisters.
+* [How to: join the community fund via quill](https://wiki.internetcomputer.org/wiki/How-To:_Join_the_Community_fund_via_quill), which is a command line tool for interacting with canisters.

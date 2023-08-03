@@ -90,7 +90,7 @@ function Footer({ editPath }) {
           <form
             className="text-white md:max-w-[40%] md:ml-auto mt-10 md:mt-0"
             method="post"
-            action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=2117910e55&f_id=0052c2e1f0"
+            action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
           >
             <p className="tw-lead-sm mb-3 md:mb-5">
               Sign up for email updates to keep up to date with advancements on
@@ -146,7 +146,7 @@ function Footer({ editPath }) {
             {mediaLinks.map((item) => (
               <div key={item.href || item.to} className={styles.mediaLinks}>
                 <Link to={item.to} aria-label={`Go to ${item.label}`}>
-                  <img src={item.icon} alt="" />
+                  <img src={item.icon} alt="" loading="lazy" />
                 </Link>
               </div>
             ))}

@@ -1,6 +1,8 @@
 # Regular token transfers
 
-This document details how to transfer ICP using the Rosetta Construction API. See [Construction API Overview](https://www.rosetta-api.org/docs/construction_api_introduction.html) for a high-level overview of the transaction flow.
+## Overview
+
+This document details how to transfer ICP using the Rosetta construction API. See [construction API overview](https://www.rosetta-api.org/docs/construction_api_introduction.html) for a high-level overview of the transaction flow.
 
 ## Transfer operations
 
@@ -16,19 +18,19 @@ The order of operations within a transaction is irrelevant.
 
 Multiple transfers within a single transaction are not allowed. The outcome of such a transaction is unspecified.
 
-Preconditions:
+## Prerequisites
 
--   Address `A` holds at least `T` + `suggested_fee` ICP.
+-   [x] Address `A` holds at least `T` + `suggested_fee` ICP.
 
--   Address `A` is a subaccount of the principal derived from the public key that you use to sign the transaction.
+-   [x] Address `A` is a subaccount of the principal derived from the public key that you use to sign the transaction.
 
--   The amount specified in the `FEE` operation is equal in absolute value to `suggested_fee`.
+-   [x] The amount specified in the `FEE` operation is equal in absolute value to `suggested_fee`.
 
 ### Optional metadata fields
 
 Rosetta node recognizes the following optional metadata fields in [ConstructionPayloadRequest](https://www.rosetta-api.org/docs/models/ConstructionPayloadsRequest.html):
 
--   `memo` is an arbitrary 64-bit unsigned integer associated with the transaction. You can use it to associate your data with the transaction. For example, you can set the memo to a row key in a database. Valid values for the `memo` field range from `0` to `264 - 1` (`18446744073709551615`).
+-   `memo` is an arbitrary 64-bit unsigned integer associated with the transaction. You can use it to associate your data with the transaction. For example, you can set the memo to a row key in a database. Valid values for the `memo` field range from `0` to `2^64^ - 1` (`18446744073709551615`).
 
 -   `ingress_start`, `ingress_end`, and `created_at_time` are 64-bit unsigned integers representing the number of nanoseconds passed from UNIX epoch in UTC timezone. You can use these fields to construct and sign a transaction in advance and submit the signed transaction later. You can submit a signed transaction within 24 hours starting from `created_at_time` (by default equal to the time when you invoke the `/construction/payloads` endpoint).
 

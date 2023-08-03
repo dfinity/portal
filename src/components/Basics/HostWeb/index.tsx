@@ -1,29 +1,19 @@
 import clsx from "clsx";
-import React, { useEffect } from "react";
+import React from "react";
 import Lottie from "react-lottie-player";
 import styles from "./index.module.css";
 
-import animationData from "../../../animations/host-on-chain.json";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import transitions from "@site/static/transitions.json";
 import Link from "@docusaurus/Link";
+import transitions from "@site/static/transitions.json";
+import { motion } from "framer-motion";
+import animationData from "../../../animations/host-on-chain.json";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const HostWeb = () => {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0 });
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    }
-  }, [controls, inView]);
   return (
     <section className={styles.outerWrapper}>
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
+      <AnimateSpawn
         variants={transitions.container}
         className={styles.container}
       >
@@ -31,7 +21,7 @@ const HostWeb = () => {
           variants={transitions.item}
           className={clsx("tw-heading-3 md:tw-heading-2 m-0", styles.heading)}
         >
-          What makes the Internet Computer Unique?
+          What makes the Internet Computer unique?
         </motion.h2>
         <div className={styles.content}>
           <motion.div variants={transitions.item} className={styles.copy}>
@@ -61,6 +51,7 @@ const HostWeb = () => {
               Content served directly from chain
             </Link>
             <Lottie
+              aria-hidden
               loop
               animationData={animationData}
               play
@@ -68,7 +59,7 @@ const HostWeb = () => {
             />
           </motion.div>
         </div>
-      </motion.div>
+      </AnimateSpawn>
     </section>
   );
 };

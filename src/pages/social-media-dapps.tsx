@@ -1,8 +1,8 @@
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.png";
-import BlobBlue from "@site/static/img/purpleBlurredCircle.png";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
@@ -101,7 +101,7 @@ function SocialMediaDappsPage() {
 
   return (
     <Layout
-      title="Social Media Decentralized"
+      title="Social media decentralized"
       description="Take full ownership and control over your social media plaforms."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -129,7 +129,7 @@ function SocialMediaDappsPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  Social Media Decentralized
+                  Social media decentralized
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
@@ -140,14 +140,14 @@ function SocialMediaDappsPage() {
                 </motion.p>
                 <motion.p className="" variants={transitions.item}>
                   <Link href="#web3-dapps" className="button-white">
-                    Try icp social dapps
+                    Try ICP social dapps
                   </Link>
                 </motion.p>
               </div>
             </div>
             <div className="container-10 relative">
               <motion.img
-                src="/img/whiteBlurredCircle.png"
+                src="/img/whiteBlurredCircle.webp"
                 alt=""
                 className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-300px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
                 variants={transitions.item}
@@ -162,6 +162,7 @@ function SocialMediaDappsPage() {
               <img
                 src="/img/social-media-dapps/hero.webp"
                 className="w-80 sm:w-[480px] md:w-auto max-w-full"
+                alt="Social media dapps"
               />
             </div>
           </motion.section>
@@ -175,7 +176,7 @@ function SocialMediaDappsPage() {
               className="tw-heading-4 sm:tw-heading-3 md:tw-heading-2 mb-8 md:mb-10 md:w-8/10 text-transparent bg-clip-text gradient-text"
               variants={transitions.item}
             >
-              Reclaim Social Media
+              Reclaim social media
             </motion.p>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8 md:mb-12 md:w-6/10"
@@ -194,6 +195,7 @@ function SocialMediaDappsPage() {
           <div className="relative z-[-1]">
             <AnimateSpawn
               el={motion.img}
+              alt=""
               variants={transitions.item}
               src={BlobGradient}
               className="absolute pointer-events-none z-[-1]
@@ -215,7 +217,7 @@ function SocialMediaDappsPage() {
           "
           >
             <ColumnCard
-              title="Social Media Incentivized"
+              title="Social media incentivized"
               icon={<IconTokenized aria-hidden="true" />}
             >
               <motion.p
@@ -277,13 +279,14 @@ function SocialMediaDappsPage() {
             </motion.p>
             <MotionLink
               className="link-external"
-              href="/ecosystem?tag=social"
+              href="/ecosystem?tag=SocialFi"
               variants={transitions.item}
             >
               See dapp collection
             </MotionLink>
             <img
               src={BlobBlue}
+              alt=""
               className="
                 hidden
                 md:block
@@ -336,6 +339,7 @@ function SocialMediaDappsPage() {
         <section className="container-10 mx-auto relative">
           <img
             src={BlobBlue}
+            alt=""
             className="
               absolute 
               right-[-700px] md:right-[-800px] 
@@ -353,7 +357,7 @@ function SocialMediaDappsPage() {
                 className="tw-heading-3 md:tw-heading-60 mb-6"
                 variants={transitions.item}
               >
-                Build the Next Generation of Social Media Services
+                Build the next generation of social media services
               </motion.h2>
               <motion.div className="mt-3" variants={transitions.item}>
                 <p className="tw-paragraph md:tw-lead-sm mb-4">
@@ -368,17 +372,17 @@ function SocialMediaDappsPage() {
                     The Internet Computer is the only blockchain that can:
                   </p>
                   <ul className="checklist tw-paragraph md:tw-lead-sm mb-6 space-y-3">
-                    <li className="checklist-item">Serve web</li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">Serve web</li>
+                    <li className="checklist-item leading-6 pl-8">
                       Integrate existing web2 APIs without oracles
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Provides out of the box anonymous authentication system
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store large amounts of data on-chain
                     </li>
-                    <li className="checklist-item">
+                    <li className="checklist-item leading-6 pl-8">
                       Store private data on-chain
                     </li>
                   </ul>
@@ -427,7 +431,7 @@ function SocialMediaDappsPage() {
                       />
                       <span className="tw-heading-5">$79,000,000</span>
                       <span className="tw-heading-7 pl-2 relative top-[2px]">
-                        / GB per year
+                        / GB
                       </span>
                     </li>
                   </ul>
@@ -452,7 +456,7 @@ function SocialMediaDappsPage() {
                         ~1-2s to reach finality
                       </span>
                       <span className="tw-title-navigation-on-page text-black-60 block">
-                        POST Update calls
+                        POST update calls
                       </span>
                     </li>
                     <li>
@@ -460,7 +464,7 @@ function SocialMediaDappsPage() {
                         ~20,800 update calls/s
                       </span>
                       <span className="tw-title-navigation-on-page text-black-60 block">
-                        Update Call Speed
+                        Update call speed
                       </span>
                     </li>
                     <li>
@@ -468,7 +472,7 @@ function SocialMediaDappsPage() {
                         ~1,100,000 query calls/s
                       </span>
                       <span className="tw-title-navigation-on-page text-black-60 block">
-                        Query Call Speed
+                        Query call speed
                       </span>
                     </li>
                   </ul>
@@ -480,7 +484,7 @@ function SocialMediaDappsPage() {
         <section className="container-12 my-20 md:my-40">
           <AnimateSpawn variants={transitions.item}>
             <h2 className="tw-heading-4 mb-3 text-center md:tw-heading-60 md:mb-4">
-              Dev Corner
+              Dev corner
             </h2>
             <p className="tw-lead-sm mb-8 text-center md:tw-lead md:w-8/12 md:mx-auto md:mb-16">
               This corner is for the pioneers. Developers who are crazy enough
@@ -493,17 +497,17 @@ function SocialMediaDappsPage() {
             variants={transitions.item}
           >
             <CardWithDescription
-              title="Sample Code"
+              title="Sample code"
               description="Get inspired by existing social dapps on the Internet Computer."
               href="/samples"
             ></CardWithDescription>
             <CardWithDescription
-              title="Quick Start"
+              title="Quick start"
               description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
               href="/docs/current/tutorials/deploy_sample_app"
             ></CardWithDescription>
             <CardWithDescription
-              title="Developer Docs"
+              title="Developer docs"
               description="Get to know the Internet Computer and how to build on it."
               href="/developers"
               className="md:col-span-2"

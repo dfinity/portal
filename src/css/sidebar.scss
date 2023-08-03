@@ -1,0 +1,127 @@
+:root {
+  --ifm-menu-color-background-hover: #e8e4ed;
+  --ic0-menu-padding-top: 64px;
+}
+
+div[class*="sidebar_"] {
+  border-right: var(--ic0-nav-border);
+}
+
+div[class*="sidebar_"][class*="sidebarWithHideableNavbar_"] {
+  padding-top: 0px;
+}
+
+aside[class*="docSidebarContainer_"] {
+  .menu {
+    padding: var(--ic0-menu-padding-top) 20px 60px
+      calc(
+        var(--ifm-navbar-x-padding) - var(--ifm-menu-link-padding-horizontal)
+      );
+    flex-grow: 1;
+  }
+
+  .menu__link,
+  .menu__list-item-collapsible,
+  .navbar-sidebar__back {
+    border-radius: 8px;
+  }
+
+  .theme-doc-sidebar-item-link-level-3 {
+    &.menu__list-item {
+      font-weight: 400;
+
+      .menu__link--active {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .menu__caret:before,
+  .menu__link--sublist:after {
+    background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
+  }
+
+  .menu__link:hover,
+  .menu__list-item-collapsible:hover {
+    color: var(--ifm-menu-color-active);
+
+    .menu__caret:before,
+    .menu__link--sublist:after {
+      filter: var(--ifm-color-primary-filter);
+    }
+  }
+
+  .menu__list .menu__list,
+  .menu__list-item:not(:first-child) {
+    margin-top: 0.5rem;
+  }
+}
+
+// ensure the side menu also maintains consistent spacing with the nav and subnav
+.navbar ~ .main-wrapper {
+  // hide the sidebar logo
+  a[class*="sidebarLogo_"] {
+    visibility: hidden;
+    display: none !important;
+  }
+
+  // move the entire sidebar down when the navbar is visible
+  .theme-doc-sidebar-container {
+    transition: transform var(--ifm-transition-fast) ease;
+    transform: translate3d(0, var(--ifm-subnav-height), 0);
+  }
+}
+
+nav[class*="navbarHidden_"] ~ .main-wrapper {
+  // move the entire sidebar up when the navbar is hidden to keep the spacing wrt to subnav consistent
+  .theme-doc-sidebar-container {
+    transition: transform var(--ifm-transition-fast) ease;
+    transform: translate3d(
+      0,
+      calc(-1 * var(--ifm-subnav-height) + var(--ic0-menu-padding-top) - 1px),
+      0
+    );
+  }
+}
+
+.navbar-sidebar {
+  background: var(--ifm-menu-color-background-hover);
+
+  .menu__link,
+  .menu__list-item-collapsible {
+    background: var(--ifm-menu-color-background-hover);
+
+    .clean-btn {
+      background: none;
+    }
+
+    &:hover {
+      background: #f1eef5;
+    }
+  }
+}
+
+.navbar-sidebar__back {
+  width: 100%;
+  margin: unset;
+  background: #f1eef5;
+
+  &:hover {
+    background: var(--ic0-color);
+    color: white;
+  }
+}
+
+@media (max-width: 996px) {
+  .theme-doc-sidebar-menu.breadcrumbs {
+    a {
+      text-transform: capitalize;
+    }
+  }
+}
+
+@media (min-width: 997px) {
+  .theme-doc-sidebar-menu.breadcrumbs {
+    display: none;
+  }
+}

@@ -1,56 +1,23 @@
-import React from "react";
 import Link from "@docusaurus/Link";
+import { useThemeConfig } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { useThemeConfig } from "@docusaurus/theme-common";
-import ThemedImage from "@theme/ThemedImage";
-import { useLocation } from "@docusaurus/router";
-function LogoThemedImage({ logo, alt, imageClassName }) {
-  const sources = {
-    light: useBaseUrl(logo.src),
-    dark: useBaseUrl(logo.srcDark || logo.src),
-  };
-  const themedImage = (
-    <ThemedImage
-      className={logo.className}
-      sources={sources}
-      height={logo.height}
-      width={logo.width}
-      alt={alt}
-      style={logo.style}
-    />
-  );
-  // Is this extra div really necessary?
-  // introduced in https://github.com/facebook/docusaurus/pull/5666
-  return imageClassName ? (
-    <div className={imageClassName}>{themedImage}</div>
-  ) : (
-    themedImage
-  );
-}
+import React from "react";
+
 export default function Logo(props) {
   const {
-    siteConfig: { title, customFields },
+    siteConfig: { title },
   } = useDocusaurusContext();
+
   const {
     navbar: { title: navbarTitle, logo: originalLogo },
   } = useThemeConfig();
+
   const { imageClassName, titleClassName, ...propsRest } = props;
-  const location = useLocation();
-
-  const isDocsPage = location.pathname.startsWith("/docs/");
-
   const logo = { ...originalLogo };
 
-  const logoHref = isDocsPage
-    ? customFields.docsLogoUrl
-    : customFields.marketingLogoUrl;
+  const logoLink = useBaseUrl("/");
 
-  if (isDocsPage) {
-    logo.src = customFields.docsLogoSrc;
-  }
-
-  const logoLink = useBaseUrl(logoHref);
   // If visible title is shown, fallback alt text should be
   // an empty string to mark the logo as decorative.
   const fallbackAlt = navbarTitle ? "" : title;
@@ -64,11 +31,13 @@ export default function Logo(props) {
       {...(logo?.target && { target: logo.target })}
     >
       {logo && (
-        <LogoThemedImage
-          logo={logo}
-          alt={alt}
-          imageClassName={imageClassName}
-        />
+        <div className={imageClassName}>
+          <img
+            src={logo.src}
+            alt={alt}
+            className="!h-[21px] !w-[183px] md:!h-[31px] md:!w-[268px]"
+          />
+        </div>
       )}
       {navbarTitle != null && <b className={titleClassName}>{navbarTitle}</b>}
     </Link>

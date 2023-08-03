@@ -1,0 +1,72 @@
+.vision {
+}
+
+.vision em {
+  font-style: normal;
+  font-weight: 450;
+  position: relative;
+
+  background: linear-gradient(
+    to right,
+    rgba(59, 0, 185, 0.3),
+    rgba(59, 0, 185, 0.3)
+  );
+
+  background-size: 0 10px;
+  background-position: left bottom 3px;
+  background-repeat: no-repeat;
+  animation: border-enter 1200ms ease-in-out both;
+  animation-play-state: paused;
+  animation-delay: 300ms;
+}
+
+.shown em::after {
+}
+
+@keyframes border-enter {
+  from {
+    background-size: 0 10px;
+  }
+  to {
+    background-size: 100% 10px;
+  }
+}
+
+@keyframes paragraph-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.vision p {
+  margin: 0;
+  animation: paragraph-enter 1000ms ease-in-out both;
+  animation-play-state: paused;
+}
+
+.vision p + p {
+  margin-top: 2.5rem;
+}
+
+@media screen and (max-width: 996px) {
+  .vision em {
+    background-size: 0 6px;
+    background-position: left bottom 2px;
+  }
+
+  @keyframes border-enter {
+    from {
+      background-size: 0 6px;
+    }
+    to {
+      background-size: 100% 6px;
+    }
+  }
+
+  .vision p + p {
+    margin-top: 1.5rem;
+  }
+}

@@ -12,20 +12,6 @@
   margin-bottom: 24px;
 }
 
-.outerContainer {
-  position: relative;
-  padding: 240px 24px 160px;
-}
-
-.outerContainer > svg {
-  position: absolute;
-  left: 50%;
-  top: calc(50% + 200px);
-  transform: translate(-50%, -50%);
-  width: 2000px;
-  pointer-events: none;
-}
-
 .container > svg {
   width: 162px;
   position: absolute;
@@ -51,30 +37,18 @@
 .BGGradient {
   display: flex;
   position: absolute;
-  width: 3500px;
-  max-width: 3500px;
-  left: calc((100vw - 3500px) / 2);
-  right: calc((100vw - 3500px) / 2);
+  width: 4500px;
+  max-width: 4500px;
+  left: calc((100vw - 4500px) / 2);
+  right: calc((100vw - 4500px) / 2);
   top: -800px;
-  z-index: -1000;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  @apply -z-10;
 }
 @media (max-width: 996px) {
-  .outerContainer {
-    padding: 240px 24px 80px;
-  }
-
-  .outerContainer > svg {
-    left: 50%;
-    top: calc(50% + 200px);
-    transform: translate(-50%, -50%);
-    width: 2000px;
-    pointer-events: none;
-  }
-
   .heading {
     font-size: 32px;
     line-height: 42px;
