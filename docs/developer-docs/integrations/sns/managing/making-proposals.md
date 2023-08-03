@@ -17,16 +17,16 @@ An SNS comes with built-in proposals called “native proposals”.
 
 There are the following types:
 
-* `Motion`
-* `AddGenericNervousSystemFunction`
-* `RemoveGenericNervousSystemFunction`
-* `UpgradeSnsToNextVersion`
-* `RegisterDappCanisters`
-* `DeregisterDappCanisters`
-* `TransferSnsTreasuryFunds`
-* `UpgradeSnsControlledCanister`
-* `ManageSnsMetadata`
-* `ExecuteGenericNervousSystemFunction`
+* [`Motion`](#motion)
+* [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction)
+* [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction)
+* [`UpgradeSnsToNextVersion`](#upgradesnstonextversion)
+* [`RegisterDappCanisters`](#registerdappcanisters)
+* [`DeregisterDappCanisters`](#deregisterdappcanisters)
+* [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds)
+* [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister)
+* [`ManageSnsMetadata`](#managesnsmetadata)
+* [`ExecuteGenericNervousSystemFunction`](#executegenericnervoussystemfunction)
 
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
@@ -65,7 +65,7 @@ Below are the most important types for the purpose of this article:
 
 ### Requirements
 
-* Installing `quill`
+* Installing []`quill`](https://github.com/dfinity/quill).
 * principal that owns an SNS neuron that can make proposals for an SNS
 
 ### Submitting via `sns make-proposal` command
