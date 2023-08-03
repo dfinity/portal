@@ -559,6 +559,7 @@ const sidebars = {
                   "developer-docs/integrations/sns/managing/making-proposals",
                   "developer-docs/integrations/sns/managing/cycles-usage",
                   "developer-docs/integrations/sns/managing/sns-asset-canister",
+                  "developer-docs/integrations/sns/managing/managing-nervous-system-parameters",
                 ],
               },
             ],
