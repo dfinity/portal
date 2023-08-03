@@ -349,16 +349,16 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         summary = "A motion to start the SNS";
         action = opt variant {
             AddGenericNervousSystemFunction = record {
-                id = nat64;
-                name = text;
-                description = opt text;
+                id = 42:nat64;
+                name = "lorem ipsum":text;
+                description = opt "lorem ipsum":text;
                 function_type : opt variant {
                     NativeNervousSystemFunction = record {};
                     GenericNervousSystemFunction = record {
                         validator_canister_id = opt principal "ltyfs-qiaab-aaaak-aan3a-cai";
-                        target_canister_id = opt principal;
-                        validator_method_name = opt text;
-                        target_method_name = opt text;
+                        target_canister_id = opt principal "ltyfs-qiaab-aaaak-aan3a-cai";
+                        validator_method_name = opt "lorem ipsum":text;
+                        target_method_name = opt "lorem ipsum":text;
                     }
                 };
             }
