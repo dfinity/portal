@@ -44,7 +44,7 @@ Here we make use of an elegant aspect of our SNS architecture design: a proposal
 
 ## Governance canister
 
-All of the proposals used to manage an SNS are executed on the governance canister so it helps to have for reference, what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
+All of the proposals used to manage an SNS are executed on the SNS governance canister so it helps to have for reference, what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
 
 Below are the most important types for the purpose of this article:
 
