@@ -1,6 +1,8 @@
 .github/ @dfinity/idx
 * @dfinity/editorial
 
+showcase.json @dfinity/growth
+
 docs/developer-docs/updates/release-notes/ @dfinity/dx
 docs/developer-docs/build/agents @dfinity/dx
 docs/developer-docs/build/cdks @dfinity/dx
