@@ -18,9 +18,9 @@ There are the following types:
 * `RemoveGenericNervousSystemFunction`
 * `UpgradeSnsToNextVersion`
 * `RegisterDappCanisters`
+* `DeregisterDappCanisters`
 * `TransferSnsTreasuryFunds`
 * `UpgradeSnsControlledCanister`
-* `DeregisterDappCanisters`
 * `ManageSnsMetadata`
 * `ExecuteGenericNervousSystemFunction`
 
@@ -452,6 +452,39 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 )'
 ```
 
+## `DeregisterDappCanisters` 
+
+### Relevant type signatures
+
+```candid
+    type DeregisterDappCanisters : DeregisterDappCanisters;
+
+    type DeregisterDappCanisters = record {
+        canister_ids : vec principal;
+        new_controllers : vec principal;
+    };
+```
+
+### Putting it together
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "lorem ipsum";
+        url = "lorem ipsum";
+        summary = "lorem ipsum";
+        action = opt variant {
+            DeregisterDappCanisters = record {
+                canister_ids = vec principal;
+                new_controllers = vec principal;
+            };
+        };
+    };
+)'
+```
+
 ## `TransferSnsTreasuryFunds`
 
 ### Relevant type signatures
@@ -539,55 +572,8 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 )'
 ```
 
-## `DeregisterDappCanisters` 
 
-### Relevant type signatures
 
-```candid
-    type DeregisterDappCanisters : DeregisterDappCanisters;
-
-    type DeregisterDappCanisters = record {
-        canister_ids : vec principal;
-        new_controllers : vec principal;
-    };
-```
-
-### Putting it together
-
-Example in bash:
-
-```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "lorem ipsum";
-        summary = "lorem ipsum";
-        action = opt variant {
-            DeregisterDappCanisters = record {
-                canister_ids = vec principal;
-                new_controllers = vec principal;
-            };
-        };
-    };
-)'
-```
-
-### Putting it together
-
-Example in bash:
-
-```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "lorem ipsum";
-        summary = "lorem ipsum";
-        action = opt variant {
-            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
-        };
-    }
-)'
-```
 
 ## `ManageSnsMetadata` 
 
