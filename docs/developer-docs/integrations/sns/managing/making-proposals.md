@@ -375,7 +375,9 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "This proposal gives up the control of a canister";
         action = opt variant {
             DeregisterDappCanisters = record {
+                
                 canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
+                
                 new_controllers = vec {principal "rymrc-piaaa-aaaao-aaljq-cai", principal "suaf3-hqaaa-aaaaf-bfyob-cai"};
             };
         };
@@ -568,6 +570,7 @@ Later, if the proposal is adopted, the SNS governance canister will call the met
 Example in bash:
 
 ```bash
+# sample payload by constructing a blob by using didc tool
 export TEXT="${1:-Hoi}"
 export BLOB="$(didc encode --format blob "(hello)" )"
 
@@ -578,7 +581,9 @@ quill sns  --canister-ids-file ./sns_canister_ids.json  --pem-file $PEM_FILE  ma
         summary = "This proposal executes generic functions for test canister."; 
         action = opt variant {
             ExecuteGenericNervousSystemFunction = record {
+
                 function_id = 2000:nat64; 
+                
                 payload = ${BLOB}
             }
         }    
