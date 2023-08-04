@@ -72,66 +72,69 @@ Below are the most important types for the purpose of this article:
 ### Submitting via `sns make-proposal` command
 
 Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-proposal.md)
-`sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a Motion Proposal) to be voted on by other neuron holders. The structure:
+`sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` Proposal) to be voted on by other neuron holders.
+
+The structure of the commands is as follows:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal <PROPOSAL> [option]
-```
-
-where `<PROPOSAL>` is a formatted candid record:
-
-```candid
-(
+# create and sign the proposal, store it in a message.json file
+quill sns --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> --pem-file <PATH_TO_PEM_FILE> make-proposal <PROPOSAL_NEURON_ID> --proposal '(
     record {
         title = "lorem ipsum";
         url = "lorem ipsum";
         summary = "lorem ipsum";
         action = opt variant {
             <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
-            }
         };
     }
-)
+)' > message.json
+
+# send the proposal (stored in message.json) to the network
+quill send message.json
 ```
+
+* `<PATH_TO_CANISTER_IDS_JSON_FILE>` is the file path to a canister IDs JSON file. See example [sns_canister_ids.json](https://github.com/dfinity/quill/blob/master/e2e/assets/sns_canister_ids.json.)
+* `PROPOSAL_NEURON_ID` is the neuron ID of the neuron that is submitting the proposal
+* `<PATH_TO_PEM_FILE>` is the path to the PEM file of the identity that owns the neuron that is submitting the proposal. To generate a PEM file, see [here](https://internetcomputer.org/docs/current/references/quill-cli-reference/quill-generate).
 
 * `title` is a short description of the proposal
 * `url` is a link to a document that describes the proposal in more detail
 * `summary` is a short summary of the proposal
 * `action` defines what the proposal does.. depending on the kind of proposal we require to provide different paramters that are defined in this part. As a proposal is just a call to a method, these parameters define with which arguments the target method will be called.
 
-The CLI command structure is
-
-```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "lorem ipsum";
-        summary = "lorem ipsum";
-        action = opt variant {
-            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
-        };
-    }
-)'
-```
+#### Concrete example
 
 For example, if we use the candid record for <PROPOSAL_TYPE> `Motion`, the CLI-friendly command to submit a `Motion` proposal is:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+# helpful definitions (only need to set these once). This is a sample neuron ID.
+export PROPOSAL_NEURON_ID="594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63"
+# example path for the PEM file. This is a sample PEM file path.
+export PEM_FILE="/home/user/.config/dfx/identity/$(dfx identity whoami)/identity.pem"
+
+# Note: <PROPOSAL_TYPE> is replaced with "Motion" and <PARAMETERS_OF_PROPOSAL_TYPE> with the parameters for the Motion proposal
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "SNS is great";
-        url = "https://dfinity.org\";
+        url = "https://sns-examples.com/proposal/42";
         summary = "This is a motion proposal to see if people agree on the fact that the SNS is great.";
         action = opt variant {
             Motion = record {
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
-            }
+            }        
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
+:::warning
+In this article, we will not repeat the `export PROPOSAL_NEURON_ID` and `export PEM_FILE` lines for each example proposal, but it is recommended you set these variables in your terminal before submitting proposals.
+:::
+
 ## `Motion`
+
 A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. It can be used, for example for opinion polls before even starting certain features.  
 
 ### Relevant Type signature
@@ -150,7 +153,7 @@ Example in bash:
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
         title = "SNS is great";
-        url = "https://dfinity.org\";
+        url = "https://sns-examples.com/proposal/42";
         summary = "This is a motion proposal to see if people agree on the fact that the SNS is great.";
         action = opt variant {
             Motion = record {
