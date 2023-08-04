@@ -214,21 +214,21 @@ Example in bash:
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
-        title = "Adding a new generic proposal";
-        url = "https://sns-examples.com/proposal/42";
+        title = "Add a new custom SNS function to \"Import proposals group into community\"";          
+        url = "https://github.com/open-chat-labs/open-chat/blob/252b85a1877240dfea17512647ac42ac36e969db/backend/canisters/proposals_bot/impl/src/updates/import_proposals_group_into_community.rs";        
         summary = "Adding a new generic proposal that allows to change the background colour of the dapp. Specifically, proposals of this kind will trigger a call to the method change_colour on canister dapp_canister.";
         action = opt variant {
             AddGenericNervousSystemFunction = record {
-                id = 42:nat64;
-                name = "lorem ipsum":text;
-                description = opt "lorem ipsum":text;
-                function_type : opt variant {
-                    GenericNervousSystemFunction = record {
-                        validator_canister_id = opt principal "ltyfs-qiaab-aaaak-aan3a-cai";
-                        target_canister_id = opt principal "ltyfs-qiaab-aaaak-aan3a-cai";
-                        validator_method_name = opt "lorem ipsum":text;
-                        target_method_name = opt "lorem ipsum":text;
-                    }
+                id = 4_003 : nat64;
+                name = "Import proposals group into community";
+                description = opt "Import the specified proposals group into the specified community.";
+                function_type = opt variant { 
+                    GenericNervousSystemFunction = record { 
+                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        validator_method_name = opt "import_proposals_group_into_community_validate"; 
+                        target_method_name = opt "import_proposals_group_into_community";
+                    } 
                 };
             }
         };
@@ -237,6 +237,8 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send message.json
 ```
+
+See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/177).
 
 ## `RemoveGenericNervousSystemFunction`
 
@@ -453,31 +455,21 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
     };
 ```
 
-### Putting it together
+:::warning
+Because this proposal requires passing Wasm which is unwieldly to copy/paste into the commandline as binary. It is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-upgrade-canister-proposal.md) command in `quill sns`.
 
-Example in bash:
 
 ```bash
-quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "https://sns-examples.com/proposal/42";
-        summary = "lorem ipsum";
-        action = opt variant {
-            UpgradeSnsControlledCanister = record {
-              new_canister_wasm = blob "\e2\9a\a0\ef\b8\8f NOT THE ORIGINAL CONTENTS OF THIS FIELD \e2\9a\a0\ef\b8\8f\0a\0aThe original value had the following properties:\0a- Length: 760664\0a- SHA256 Hash:                03 A1 64 14 CD 9F 3C B6 E4 EF 68 2B 11 9E 8D 06 56 67 D8 D3 F4 4D 70 04 1B 9B 6E 3D 1F DC 13 AD\0a- Leading  32 Bytes (in hex): 1F 8B 08 00 00 00 00 00 00 03 EC 7C 09 78 14 55 B6 F0 AD AD 97 74 75 75 25 BD AF 54 AF 13 5C 51\0a- Trailing 32 Bytes (in hex): 51 66 DF 40 B3 F3 93 64 76 CB 41 32 FB 6E 9A DD 85 25 B3 9F 83 F6 FF 07 7E 8E 8F 32 48 AE 25 00";
-              mode = null;
-              canister_id = opt principal "4bkt6-4aaaa-aaaaf-aaaiq-cai";
-              canister_upgrade_arg = opt blob "DIDL\02l\01\bd\cf\a9\e9\04\01l\03\b9\fa\ee\18y\b5\f6\a1Cy\c8\8d\dc\ea\0by\01\00\02\00\00\00\00\00\00\00o\02\00\00";
-            };
-        };
-    };
-)' > message.json
+quill sns make-upgrade-canister-proposal <PROPOSER_NEURON_ID> --target-canister-id <TARGET_CANISTER_ID> --wasm-path <WASM_PATH> [option]
+```
 
+```bash
+export $WASM_PATH="/home/user/new_wasm.wasm"
+quill sns make-upgrade-canister-proposal --target-canister-id "4ijyc-kiaaa-aaaaf-aaaja-cai" --wasm-path $WASM_PATH $PROPOSAL_NEURON_ID > message.json
 quill send message.json
 ```
 
-See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/45).
+:::
 
 ## `ManageSnsMetadata`
 
