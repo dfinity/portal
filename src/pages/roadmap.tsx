@@ -140,14 +140,17 @@ const RoadmapPage: React.FC = () => {
               variants={transitions.item}
               className="px-8 py-12 backdrop-blur-2xl bg-white-50 rounded-xl border-white border-solid border text-center flex-1 md:mt-30"
             >
-              <h3 className="tw-lead-lg md:tw-title-sm">Live Sessions</h3>
+              <h3 className="tw-lead-lg md:tw-title-sm">Events and news</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Join live sessions with R&D to get informed about the upcoming
                 technical proposals and contributions to the Internet Computer
                 roadmap.
               </p>
-              <Link className="link-external" href="/live-sessions/#subscribe">
-                Reserve your seat
+              <Link
+                className="link-external"
+                href="https://dfinity.org/events-and-news"
+              >
+                See events
               </Link>
             </motion.div>
             <motion.div
