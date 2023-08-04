@@ -225,8 +225,11 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
                 function_type = opt variant { 
                     GenericNervousSystemFunction = record { 
                         validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+
                         target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        
                         validator_method_name = opt "import_proposals_group_into_community_validate"; 
+                        
                         target_method_name = opt "import_proposals_group_into_community";
                     } 
                 };
@@ -260,7 +263,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
     record {
         title = "Remove the generic proposal ...";
         url = "https://sns-examples.com/proposal/42";
-        summary = "Proposal to remove the generic nervous system function with ID 1006 that changed the dapp's background colour as this is no longer needed.";
+        summary = "Proposal to remove the generic nervous system function with ID 1006 that changed the dapp background colour as this is no longer needed.";
         action = opt variant {
             RemoveGenericNervousSystemFunction = 1_006:nat64;
         };
@@ -418,15 +421,20 @@ Example in bash:
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
-        title = "Lorem ipsum";
+        title = "Transfer 41100 ICP to Foo Labs";
         url = "https://sns-examples.com/proposal/42";
-        summary = "Lorem ipsum";
+        summary = "Transfer 411 ICP to Foo Labs";
         action = opt variant {
             TransferSnsTreasuryFunds = record {
+
                 from_treasury = 1 : int32;
+                
                 to_principal = opt principal "ozcnp-xcxhg-inakz-sg3bi-nczm3-jhg6y-idt46-cdygl-ebztx-iq4ft-vae";
+                
                 to_subaccount = null;
+                
                 memo = null;
+                
                 amount_e8s = 4_110_000_000_000 : nat64;
             };
         };
@@ -533,19 +541,22 @@ Later, if the proposal is adopted, the SNS governance canister will call the met
 Example in bash:
 
 ```bash
-quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "https://sns-examples.com/proposal/42";
-        summary = "lorem ipsum";
-        action = opt variant {
+export TEXT="${1:-Hoi}"
+export BLOB="$(didc encode --format blob "(\"${TEXT}\")")"
+
+quill sns  --canister-ids-file ./sns_canister_ids.json  --pem-file "${PEM_FILE}"  make-proposal$DEVELOPER_NEURON_ID --proposal '(
+    record { 
+        title="Execute generic functions for test canister."; 
+        url="https://example.com"; 
+        summary="This proposal executes generic functions for test canister."; 
+        action=opt variant {
             ExecuteGenericNervousSystemFunction = record {
-                function_id = 7_000:nat64;
-                payload = vec nat8;
+                function_id = 2000:nat64; 
+                payload = ${BLOB}
             }
-        };
+        }    
     }
-)' > message.json
+)' > msg.json
 
 quill send message.json
 ```
