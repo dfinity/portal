@@ -137,7 +137,7 @@ In this article, we will not repeat the `export PROPOSAL_NEURON_ID` and `export 
 
 A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. It can be used, for example for opinion polls before even starting certain features.  
 
-### Relevant Type signature
+### Relevant type signature
 
 ```candid
     Motion: record {
@@ -145,12 +145,10 @@ A motion proposal is the only kind of proposal that does not have any immediate 
     }
 ```
 
-#### Putting it together
-
-Example in bash:
+### Putting it together
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "SNS is great";
         url = "https://sns-examples.com/proposal/42";
@@ -158,10 +156,12 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         action = opt variant {
             Motion = record {
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
-            }
+            }        
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `AddGenericNervousSystemFunction`
@@ -212,7 +212,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Adding a new generic proposal";
         url = "https://dfinity.org";
@@ -233,7 +233,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             }
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `RemoveGenericNervousSystemFunction`
@@ -250,7 +252,7 @@ To do so, they can use the proposal  `AddGenericNervousSystemFunction` which spe
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Remove the generic proposal ...";
         url = "https://dfinity.org";
@@ -259,7 +261,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             RemoveGenericNervousSystemFunction = 123456789:nat64;
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `UpgradeSnsToNextVersion`
@@ -281,7 +285,7 @@ If this proposal is adopted, it will trigger a call to SNS root that will ask SN
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Upgrade SNS to next available version";
         url = "https://dfinity.org";
@@ -290,7 +294,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             UpgradeSnsToNextVersion = record {};
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `RegisterDappCanisters`
@@ -317,7 +323,7 @@ The proposal `RegisterDappCanisters`allows the SNS to accept the control of a se
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Register new dapp canisters";
         url = "https://dfinity.org";
@@ -328,7 +334,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             };
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `DeregisterDappCanisters` 
@@ -349,7 +357,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
         url = "lorem ipsum";
@@ -361,12 +369,16 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             };
         };
     };
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `TransferSnsTreasuryFunds`
+
 The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals. 
 To do so, one has to define the following arguments... 
+
 ### Relevant type signatures
 
 ```candid
@@ -412,11 +424,15 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             };
         };
     };
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `UpgradeSnsControlledCanister` 
+
 The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm. 
+
 ### Relevant type signatures
 
 ```candid
@@ -435,7 +451,7 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
         url = "lorem ipsum";
@@ -449,13 +465,17 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             };
         };
     };
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `DeregisterDappCanisters` 
+
 The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanisters`.
 If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so. 
 To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
+
 ### Relevant type signatures
 
 ```candid
@@ -472,7 +492,7 @@ To this end, the proposal defines the canister ID of the dapp canister to be der
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
         url = "lorem ipsum";
@@ -484,14 +504,18 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             };
         };
     };
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 
 ## `ManageSnsMetadata` 
+
 Each SNS has a metadata that defines the SNS project and which includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects.
 This metadata can be updated at any time, for example if there is a rebranding for the associated project.
 To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the above attributes.
+
 ### Relevant type signatures
 
 ```candid
@@ -510,7 +534,7 @@ To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines al
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
         url = "lorem ipsum";
@@ -519,15 +543,19 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## `ExecuteGenericNervousSystemFunction` 
+
 After a generic proposal has been registered with a  `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
 Upon submission of such a proposal, the defined validation method is called, which checks that the given payload is valid for this kind of proposal (the method that will be called for this is the method `validator_method_name` on the canister `validator_canister_id` as it was defined when the generic proposal was added. If this validation is successful, the proposal will be created.
 
 Later, if the proposal is adopted, the SNS governance canister will call the method `target_method_name ` on the canister `target_canister_id` (as also define in the generic proposal) with the payload defined here.
+
 ### Relevant type signatures
 
 ```candid
@@ -544,7 +572,7 @@ Later, if the proposal is adopted, the SNS governance canister will call the met
 Example in bash:
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
         url = "lorem ipsum";
@@ -556,7 +584,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             }
         };
     }
-)'
+)' > message.json
+
+quill send message.json
 ```
 
 ## Generic proposals
