@@ -4,7 +4,6 @@
 CHANGE TITLE: Commands & actions to go through SNS launch - legacy flow 
 [//]: # NEW: INFO 
 [//]: # This page refers to a legacy flow of how an SNS is launched. This is still supported at the moment but might be deprecated going forward. It is recommended to use the new SNS launch flow which can be fund [here](./launch-steps-1proposal.md). Please find more context on this topic [here](./index.md).
---> 
 
 ## Overview
 At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary.md).
