@@ -62,7 +62,6 @@ Many of the tutorials in this developer journey series are available in a Rust v
 
 - **Foreign function interface support:** Typical C FFI compatibility. 
 
-
 ## Candid
 
 Candid is an interface description language with the primary purpose to describe the public interface of a service. In reference to the IC, a service is a program deployed in the form of a canister.  Each canister has a Candid file that defines the interface description for the service. 

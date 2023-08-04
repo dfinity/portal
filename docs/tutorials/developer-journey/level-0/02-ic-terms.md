@@ -51,11 +51,15 @@ This page introduces some of the most commonly used terminology that developers 
 
 - **Controller:** A controller on the IC refers to the controller of an individual canister. A controller can be a person, organization (such as a DAO), or another canister that has administrative rights over a canister. Controllers are identified by their principal. Controllers are capable of functions such as upgrading the canister or deleting the canister. 
 
+- **Identity:** In regards to canisters, an identity is a principal value used for access control of canisters. Identities can be set as controllers of canisters and can have cycles wallets associated with them. 
+
 - **Query:** A query is a method used to execute operations on a canister. Queries are performed synchronously and are made to any node that hosts the canister. Consensus is not required to verify the result of the query. 
 
 - **State change:** A state change refers to the result of any operation, function call, or transaction that changes the information stored within a canister. A simple example would be a function that makes an update call that removes a value from a list. The result of this function is a change to the canister's state. 
 
 - **System canister:** System canisters are pre-installed canisters that perform specific tasks that are used to help maintain the Internet Computer. 
+
+- **Wallet:** In regards to canisters, a wallet refers to the cycles wallet for a canister. The cycles wallet contains the cycles used to pay for the canister's resource consumption. 
 
 ## Tools and products 
 

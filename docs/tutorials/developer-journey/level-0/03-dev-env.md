@@ -16,7 +16,7 @@ To follow along with the developer journey and develop on the Internet Computer,
 
 You will need an internet connection to download a few different tools and packages, as described further in this document. You will also need an internet connection whenever you plan to deploy your canister to the mainnet. You do not need an internet connection to deploy your canister locally. 
 
-#### Confirm you have access to a command line interface (CLI) on your local macOS or Linux computer
+### Confirm you have access to a command line interface (CLI) on your local macOS or Linux computer
 
 Open a command line interface (CLI) window. This may be referred to as 'Terminal' or 'Shell' depending on your computer's operating system. In this documentation, this is often referred to as the 'terminal window'. 
 
@@ -70,11 +70,19 @@ Code editors are a core component to writing and developing code.
 
 ### Download and install git
 
-Download [git](https://git-scm.com/downloads). 
+Download and install [git](https://git-scm.com/downloads). 
 
 #### Why does this matter?
 
 Many of the DFINITY public repositories are hosted on Github, such as our `examples` repository. We will be using code from this repository later in the developer journey, so it is important to install `git` to assure that you can download the sample code pieces and follow along with the later tutorials. 
+
+### Download and install Node.js
+
+Download and install [node.js](https://nodejs.org/en).
+
+#### Why does this matter?
+
+Node.js is used by dfx to generate frontend code and dependencies. It is not required for dapps that do not contain a frontend interface, though it is required for you to follow along with this developer journey series, since we will explore frontend canisters in a later tutorial. 
 
 ### Assure all packages and tools are updated to the latest release versions
 
