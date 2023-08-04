@@ -300,8 +300,8 @@ quill send message.json
 ```
 
 ## `RegisterDappCanisters`
-An SNS controls a set of dapp cansiters. 
-An SNS community can decide that new dapps should be added to the SNS' control. 
+
+An SNS controls a set of dapp cansiters. An SNS community can decide that new dapps should be added to the SNS' control.
 The proposal `RegisterDappCanisters`allows the SNS to accept the control of a set of new dapp canisters. The new canisters that should be registered are identified by their canister ID and it is allowed to register a list of canisters (not just a single one).
 
 ### Relevant type signatures
@@ -369,7 +369,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         action = opt variant {
             DeregisterDappCanisters = record {
                 canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
-                new_controllers = vec {principal "", principal ""};
+                new_controllers = vec {principal "rymrc-piaaa-aaaao-aaljq-cai", principal "suaf3-hqaaa-aaaaf-bfyob-cai"};
             };
         };
     };
