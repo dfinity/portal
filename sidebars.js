@@ -542,7 +542,7 @@ const sidebars = {
                 label: "Launching an SNS",
                 link: {
                   type: "doc",
-                  id: "developer-docs/integrations/sns/launching/launch-summary",
+                  id: "developer-docs/integrations/sns/launching/index",
                 },
                 items: [
                   "developer-docs/integrations/sns/launching/launch-summary",

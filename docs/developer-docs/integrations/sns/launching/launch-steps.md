@@ -1,9 +1,9 @@
-# SNS launch steps
+# Commands & actions to go through SNS launch
 
 ## Overview
 At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary.md).
 
-This article lists the technical commands and steps a developer needs to complete the stages for an SNS launch.
+This article lists the technical commands and actions that a developer needs to complete the stages for an SNS launch.
 
 At a low level, the [SNS local testing repository](../testing/testing-locally.md) guides you through the same, with the difference that the commands target the canisters on the mainnet.
 
