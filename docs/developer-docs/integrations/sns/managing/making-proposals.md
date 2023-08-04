@@ -523,7 +523,7 @@ After a generic proposal has been registered with a  `AddGenericNervousSystemFun
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
 Upon submission of such a proposal, the defined validation method is called, which checks that the given payload is valid for this kind of proposal (the method that will be called for this is the method `validator_method_name` on the canister `validator_canister_id` as it was defined when the generic proposal was added. If this validation is successful, the proposal will be created.
 
-Later, if the proposal is adopted, the SNS governance canister will call the method `target_method_name ` on the canister `target_canister_id` (as also define in the generic proposal) with the payload defined here.
+Later, if the proposal is adopted, the SNS governance canister will call the method `target_method_name` on the canister `target_canister_id` (as also define in the generic proposal) with the payload defined here.
 
 ### Relevant type signatures
 
@@ -542,14 +542,14 @@ Example in bash:
 
 ```bash
 export TEXT="${1:-Hoi}"
-export BLOB="$(didc encode --format blob "(\"${TEXT}\")")"
+export BLOB="$(didc encode --format blob "(hello)" )"
 
-quill sns  --canister-ids-file ./sns_canister_ids.json  --pem-file "${PEM_FILE}"  make-proposal$DEVELOPER_NEURON_ID --proposal '(
+quill sns  --canister-ids-file ./sns_canister_ids.json  --pem-file $PEM_FILE  make-proposal $DEVELOPER_NEURON_ID --proposal '(
     record { 
-        title="Execute generic functions for test canister."; 
-        url="https://example.com"; 
-        summary="This proposal executes generic functions for test canister."; 
-        action=opt variant {
+        title = "Execute generic functions for test canister."; 
+        url = "https://example.com"; 
+        summary = "This proposal executes generic functions for test canister."; 
+        action = opt variant {
             ExecuteGenericNervousSystemFunction = record {
                 function_id = 2000:nat64; 
                 payload = ${BLOB}
