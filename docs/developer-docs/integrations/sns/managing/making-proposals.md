@@ -120,7 +120,9 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "This is a motion proposal to see if people agree on the fact that the SNS is great.";
         action = opt variant {
             Motion = record {
+
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
+
             }        
         };
     }
@@ -155,7 +157,9 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "This is a motion proposal to see if people agree on the fact that the SNS is great.";
         action = opt variant {
             Motion = record {
+
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
+
             }        
         };
     }
@@ -224,6 +228,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
                 description = opt "Import the specified proposals group into the specified community.";
                 function_type = opt variant { 
                     GenericNervousSystemFunction = record { 
+
                         validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
 
                         target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
@@ -337,7 +342,9 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "Proposal to register two new dapp canisters, with ID ltyfs-qiaaa-aaaak-aan3a-cai and ltyfs-qiaaa-aaaak-aan3a-cai to the SNS.";
         action = opt variant {
             RegisterDappCanisters = record {
+
                 canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
+                
             };
         };
     }
