@@ -87,7 +87,8 @@ at any time, you must make sure that enough of the initial neurons can vote to r
 See [Stage 1 of the launch](../launching/launch-summary.md) for more details of this. 
 :::
 
-<!-- NEW: change link above--> All initial contributors (developers, seed funders etc) and the swap participants receive their neurons as a *basket of neurons*.
+<!-- NEW: change link above --> 
+All initial contributors (developers, seed funders etc) and the swap participants receive their neurons as a *basket of neurons*.
 This means that rather than one neuron, they can get many neurons 
 with different dissolve delays. The details of these neurons can
 be set in the initialization.
@@ -100,7 +101,8 @@ voting power multiplier increases until it is 1 when all swap tokens have been
 sold.
 
 ### SNS decentralization swap parameters
-<!-- NEW: REMOVE THIS PARAGRAPH--> As mentioned, the parameters of the decentralization swap are 
+<!-- NEW: REMOVE THIS PARAGRAPH --> 
+As mentioned, the parameters of the decentralization swap are 
 set in the NNS proposal that starts the swap.
 
 They include configurations such as the minimum number of 
