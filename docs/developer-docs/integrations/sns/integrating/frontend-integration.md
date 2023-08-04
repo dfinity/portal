@@ -1,8 +1,8 @@
 # SNS frontend integration
 ## Overview
 There are different reasons why you might want to interface with an SNS project.
-For example, you might want to integrate some of the SNS DAO functionality in the frontend of you dapp canister such that the dapp users can also vote on relevant SNS proposals (that goveran and change the dapp) directly in the same application.
-However, you might also consdier interfacing with SNSs if you work on a project that builds a wallet dapp or DEX, for example to provide an interface to the SNS swap, the SNS governance, or the SNS ledger. 
+For example, you might want to integrate some of the SNS DAO functionality in the frontend of your dapp canister such that the dapp users can also vote on relevant SNS proposals (that govern and change the dapp) directly in the same application.
+However, you might also consider interfacing with SNSs if you work on a project that builds a wallet dapp or DEX, for example to provide an interface to the SNS swap, the SNS governance, or the SNS ledger. 
 
 ## sns-js library
 For interfacing with an SNS project, you can use the [sns-js library](https://github.com/dfinity/ic-js/blob/main/packages/sns/README.md).
