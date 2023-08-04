@@ -27,6 +27,7 @@ The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/i
 
 ``` json
 {
+  "canisters": {
   "ledger": {
     "type": "custom",
     "candid": "https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icrc1/ledger/ledger.did",
@@ -36,6 +37,7 @@ The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/i
         "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
       }
     }
+  }
   },
   "defaults":{
     "replica": {
