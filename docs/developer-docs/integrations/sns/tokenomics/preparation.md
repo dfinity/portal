@@ -87,7 +87,7 @@ at any time, you must make sure that enough of the initial neurons can vote to r
 See [Stage 1 of the launch](../launching/launch-summary.md) for more details of this. 
 :::
 
-<!-- NEW: change link above --> 
+<!--- NEW: change link above --> 
 
 All initial contributors (developers, seed funders etc) and the swap participants receive their neurons as a *basket of neurons*.
 This means that rather than one neuron, they can get many neurons 
