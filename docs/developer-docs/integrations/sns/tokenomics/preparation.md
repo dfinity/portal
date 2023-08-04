@@ -106,7 +106,11 @@ voting power multiplier increases until it is 1 when all swap tokens have been
 sold.
 
 ### SNS decentralization swap parameters
-[//]: # NEW: REMOVE THIS PARAGRAPH 
+<!---
+
+NEW: REMOVE THIS PARAGRAPH 
+
+-->
 As mentioned, the parameters of the decentralization swap are 
 set in the NNS proposal that starts the swap.
 
