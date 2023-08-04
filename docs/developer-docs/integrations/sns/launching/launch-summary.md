@@ -3,7 +3,7 @@
 
 [//]: # CHANGE TITLE: Stages of an SNS launch - legacy flow
 [//]: # NEW: INFO 
-This page refers to a legacy flow of how an SNS is launched. This is still supported at the moment but might be deprecated going forward. It is recommended to use the new SNS launch flow which can be fund [here](./launch-summary-1proposal.md). Please find more context on this topic [here](./index.md).
+[//]: # This page refers to a legacy flow of how an SNS is launched. This is still supported at the moment but might be deprecated going forward. It is recommended to use the new SNS launch flow which can be fund [here](./launch-summary-1proposal.md). Please find more context on this topic [here](./index.md).
 --> 
 
 
