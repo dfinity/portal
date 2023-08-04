@@ -68,7 +68,7 @@ this page(./nervous-system-parameters.md)
 which parameters can be chosen and how they can be adjusted 
 by proposal.-->
 
-* An SNS community needs proposals, some of which are specific to a given dapp, to govern the DAO with its properties and the dapp. [This page](./proposal-guide.md) provides some guidelines 
+* An SNS community needs proposals, some of which are specific to a given dapp, to govern the DAO with its properties and the dapp. [This page](./making-proposals.md) provides some guidelines 
 regarding how proposals can be used and how an SNS community can define
 their own kinds of proposals.
   
