@@ -522,6 +522,7 @@ const sidebars = {
                 items: [
                   "developer-docs/integrations/sns/integrating/index-integration",
                   "developer-docs/integrations/sns/integrating/ledger-integration",
+                  "developer-docs/integrations/sns/integrating/frontend-integration",
                 ],
               },
               {
