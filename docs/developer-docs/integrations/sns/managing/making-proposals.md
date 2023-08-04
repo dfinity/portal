@@ -215,7 +215,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Adding a new generic proposal";
-        url = "https://dfinity.org";
+        url = "https://sns-examples.com/proposal/42";
         summary = "Adding a new generic proposal that allows to change the background colour of the dapp. Specifically, proposals of this kind will trigger a call to the method change_colour on canister dapp_canister.";
         action = opt variant {
             AddGenericNervousSystemFunction = record {
@@ -255,7 +255,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Remove the generic proposal ...";
-        url = "https://dfinity.org";
+        url = "https://sns-examples.com/proposal/42";
         summary = "Proposal to remove the generic nervous system function with ID 123456789 that changed the dapp's background colour as this is no longer needed.";
         action = opt variant {
             RemoveGenericNervousSystemFunction = 123456789:nat64;
@@ -288,7 +288,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Upgrade SNS to next available version";
-        url = "https://dfinity.org";
+        url = "https://sns-examples.com/proposal/42";
         summary = "A proposal to upgrade the SNS DAO to the next available version on SNS-W";
         action = opt variant {
             UpgradeSnsToNextVersion = record {};
@@ -326,7 +326,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "Register new dapp canisters";
-        url = "https://dfinity.org";
+        url = "https://sns-examples.com/proposal/42";
         summary = "Proposal to register two new dapp canisters, with ID ltyfs-qiaaa-aaaak-aan3a-cai and ltyfs-qiaaa-aaaak-aan3a-cai to the SNS.";
         action = opt variant {
             RegisterDappCanisters = record {
@@ -339,7 +339,11 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-## `DeregisterDappCanisters` 
+## `DeregisterDappCanisters`
+
+The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanisters`.
+If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so. 
+To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
 
 ### Relevant type signatures
 
@@ -359,13 +363,13 @@ Example in bash:
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
-        title = "lorem ipsum";
-        url = "lorem ipsum";
+        title = deregister dapp canisters";
+        url = "https://sns-examples.com/proposal/42";
         summary = "lorem ipsum";
         action = opt variant {
             DeregisterDappCanisters = record {
-                canister_ids = vec principal;
-                new_controllers = vec principal;
+                canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
+                new_controllers = vec {principal "", principal ""};
             };
         };
     };
@@ -411,7 +415,7 @@ Example in bash:
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
         title = "Lorem ipsum";
-        url = "Lorem ipsum";
+        url = "https://sns-examples.com/proposal/42";
         summary = "Lorem ipsum";
         action = opt variant {
             TransferSnsTreasuryFunds = record {
@@ -454,7 +458,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
-        url = "lorem ipsum";
+        url = "https://sns-examples.com/proposal/42";
         summary = "lorem ipsum";
         action = opt variant {
             UpgradeSnsControlledCanister = record {
@@ -470,47 +474,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-## `DeregisterDappCanisters` 
-
-The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanisters`.
-If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so. 
-To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
-
-### Relevant type signatures
-
-```candid
-    type DeregisterDappCanisters : DeregisterDappCanisters;
-
-    type DeregisterDappCanisters = record {
-        canister_ids : vec principal;
-        new_controllers : vec principal;
-    };
-```
-
-### Putting it together
-
-Example in bash:
-
-```bash
-quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "lorem ipsum";
-        summary = "lorem ipsum";
-        action = opt variant {
-            DeregisterDappCanisters = record {
-                canister_ids = vec principal;
-                new_controllers = vec principal;
-            };
-        };
-    };
-)' > message.json
-
-quill send message.json
-```
-
-
-## `ManageSnsMetadata` 
+## `ManageSnsMetadata`
 
 Each SNS has a metadata that defines the SNS project and which includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects.
 This metadata can be updated at any time, for example if there is a rebranding for the associated project.
@@ -537,7 +501,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
-        url = "lorem ipsum";
+        url = "https://sns-examples.com/proposal/42";
         summary = "lorem ipsum";
         action = opt variant {
             <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
@@ -575,7 +539,7 @@ Example in bash:
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
         title = "lorem ipsum";
-        url = "lorem ipsum";
+        url = "https://sns-examples.com/proposal/42";
         summary = "lorem ipsum";
         action = opt variant {
             ExecuteGenericNervousSystemFunction = record {
