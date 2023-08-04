@@ -481,9 +481,7 @@ quill send message.json
 
 ## `ManageSnsMetadata`
 
-Each SNS has a metadata that defines the SNS project and which includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects.
-This metadata can be updated at any time, for example if there is a rebranding for the associated project.
-To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the above attributes.
+Each SNS has a metadata that defines the SNS project and which includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a rebranding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the above attributes.
 
 ### Relevant type signatures
 
@@ -500,6 +498,17 @@ To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines al
 
 ### Putting it together
 
+Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this:
+
+```
+    url = "https://sns-examples.com/proposal/42";
+    logo : "https://sns-examples.com/logo/img.jpg";
+    name : "SNS Example #42";
+    description : "Sample SNS used for educational purposes";
+```
+
+Then, we can make an example and say "let's say you now want to change the description, but leave the url, logo, and name as they are" and then show a concrete proposal that would change only this one field.
+
 Example in bash:
 
 ```bash
@@ -509,12 +518,30 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         url = "https://sns-examples.com/proposal/42";
         summary = "lorem ipsum";
         action = opt variant {
-            <PROPOSAL_TYPE> = <PARAMETERS_OF_PROPOSAL_TYPE>
+            ManageSnsMetadata = record {
+                
+                url = null;
+                
+                logo = null;
+                
+                name = null;
+                
+                description = "UPDATED Sample SNS used for educational purposes";
+            };
         };
     }
 )' > message.json
 
 quill send message.json
+```
+
+Then the resulting metadata will end like this:
+
+```
+    url = "https://sns-examples.com/proposal/42";
+    logo : "https://sns-examples.com/logo/img.jpg";
+    name : "SNS Example #42";
+    description : "UPDATED Sample SNS used for educational purposes";
 ```
 
 ## `ExecuteGenericNervousSystemFunction` 
