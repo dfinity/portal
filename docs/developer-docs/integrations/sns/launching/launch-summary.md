@@ -27,6 +27,7 @@ Note that the NNS community's approval is relevant in two stages (stages 3, 7, a
   operated already during the launch process.
   This is also relevant for other SNS proposals that can already be used during the launch, for example to
   upgrade the dapp canister(s) or registering custom proposals for that DAO.
+
   :::
   
   What we have at this stage:
