@@ -6,7 +6,8 @@ The nervous system parameters define the settings of a particular SNS.
 
 Since all SNSs are upgraded along the same upgrade path [refer to architecture part], this is what allows SNSs to nevertheless customise the rules of their governance, the tokenomics, etc to meet their needs.
 
-The proposal `ManageNervousSystemParameters` allows the SNS community to adjust these parameters at any time. 
+The proposal `ManageNervousSystemParameters` allows the SNS community to adjust these parameters at any time.
+
 ### Relevant type signatures
 
 ```candid
@@ -93,47 +94,67 @@ The proposal `ManageNervousSystemParameters` allows the SNS community to adjust 
     }
 ```
 
-Example in bash:
+### Putting it together
 
 ```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+# helpful definitions (only need to set these once). This is a sample neuron ID.
+export PROPOSAL_NEURON_ID="594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63"
+# example path for the PEM file. This is a sample PEM file path.
+export PEM_FILE="/home/user/.config/dfx/identity/$(dfx identity whoami)/identity.pem"
+
+
+quill sns  --canister-ids-file ./sns_canister_ids.json  --pem-file $PEM_FILE  make-proposal $DEVELOPER_NEURON_ID --proposal '(
     record {
-        title = "Increase the maximum dissolve delay";
+        title = "Extend voting period to 5 days";
         url = "lorem ipsum";
-        summary = "Proposal to adjust the SNS nervous system parameters so that newly the maximum dissolve delay that a neuron can have it set to 10 years. All other nervous system parameters should remain as they are now.";
+        summary = "This proposal extends the 24 hour voting period to 5 days";
         action = opt variant {
             ManageNervousSystemParameters: record {
-                default_followees : opt record { 
-                    followees : vec record { 
-                                nat64; 
-                                record { followees : vec record { id : vec {1:nat8, 2:nat8} } }  
-                    } 
-                };
-                max_dissolve_delay_seconds = opt 42:nat64;
-                max_dissolve_delay_bonus_percentage = opt 42:nat64;
-                max_followees_per_function = opt 42:nat64;
-                neuron_claimer_permissions = opt record { permissions = vec {1:int32, 2:int32} };
-                neuron_minimum_stake_e8s = opt 42:nat64;
-                max_neuron_age_for_age_bonus = opt 42:nat64;
-                initial_voting_period_seconds = opt 42:nat64;
-                neuron_minimum_dissolve_delay_to_vote_seconds = opt 42:nat64;
-                reject_cost_e8s = opt 42:nat64;
-                max_proposals_to_keep_per_action = opt 42:nat32;
-                wait_for_quiet_deadline_increase_seconds = opt 42:nat64;
-                max_number_of_neurons = opt 42:nat64;
-                transaction_fee_e8s = opt 42:nat64;
-                max_number_of_proposals_with_ballots = opt 42:nat64;
-                max_age_bonus_percentage = opt 42:nat64;
-                neuron_grantable_permissions = opt record { permissions : vec {1:int32, 2:int32} };
-                voting_rewards_parameters = opt record {
-                    final_reward_rate_basis_points = opt 42:nat64;
-                    initial_reward_rate_basis_points = opt 42:nat64;
-                    reward_rate_transition_duration_seconds = opt 42:nat64;
-                    round_duration_seconds = opt 42:nat64;
-                };
-                maturity_modulation_disabled = opt true:bool;
-                max_number_of_principals_per_neuron = opt 42:nat64;
+
+                default_followees = null;
+                
+                max_dissolve_delay_seconds = null;
+                
+                max_dissolve_delay_bonus_percentage = null;
+                
+                max_followees_per_function = null;
+                
+                neuron_claimer_permissions = null;
+                
+                neuron_minimum_stake_e8s = null;
+                
+                max_neuron_age_for_age_bonus = null;
+                
+                initial_voting_period_seconds = opt (432_000 : nat64);
+                
+                neuron_minimum_dissolve_delay_to_vote_seconds = null;
+                
+                reject_cost_e8s = null;
+                
+                max_proposals_to_keep_per_action = null;
+                
+                wait_for_quiet_deadline_increase_seconds = opt (86_400 : nat64);
+                
+                max_number_of_neurons = null;
+                
+                transaction_fee_e8s = null;
+                
+                max_number_of_proposals_with_ballots = null;
+                
+                max_age_bonus_percentage = null;
+                
+                neuron_grantable_permissions = null;
+                
+                voting_rewards_parameters = null;
+                
+                maturity_modulation_disabled = null;
+                
+                max_number_of_principals_per_neuron = null;
             };
     }
-)'
+)' > msg.json
+
+quill send message.json
 ```
+
+See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/7jkta-eyaaa-aaaaq-aaarq-cai/proposal/6).
