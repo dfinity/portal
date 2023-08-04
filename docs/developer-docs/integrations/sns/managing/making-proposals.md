@@ -498,7 +498,7 @@ Each SNS has a metadata that defines the SNS project and which includes a URL, e
 
 ### Putting it together
 
-Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this:
+Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this, but we want to change the `description` field only:
 
 ```
     url = "https://sns-examples.com/proposal/42";
@@ -507,7 +507,7 @@ Sometimes a user wants to change only part of the metadata. Suppose the metadata
     description : "Sample SNS used for educational purposes";
 ```
 
-Then, we can make an example and say "let's say you now want to change the description, but leave the url, logo, and name as they are" and then show a concrete proposal that would change only this one field.
+To update the `description` field, we can use the following command (where untouched fields get marked `null`).
 
 Example in bash:
 
@@ -535,7 +535,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-Then the resulting metadata will end like this:
+Then the resulting metadata will end like this where only the `description` field changed:
 
 ```
     url = "https://sns-examples.com/proposal/42";
