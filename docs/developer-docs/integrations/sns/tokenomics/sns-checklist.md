@@ -13,6 +13,11 @@ launch – that is a decision by the NNS DAO. Ultimately, following this guide a
 an SNS is done at your own risk.
 :::
 
+:::info
+
+TODO: this is just about new flow. For old one, see launch page
+:::
+
 # 1. Documentation / Preparation
 
 ## 1.1. Tokenomics specification
