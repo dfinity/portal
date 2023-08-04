@@ -239,8 +239,10 @@ quill send message.json
 ```
 
 ## `RemoveGenericNervousSystemFunction`
+
 Similarly to how generic proposal are added, they can also be removed again if the SNS DAO thinks that they should no longer be supported. 
 To do so, they can use the proposal  `AddGenericNervousSystemFunction` which specifies the ID of the generic nervous system function to be removed.
+
 ### Relevant type signatures
 
 ```candid
@@ -256,9 +258,9 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
     record {
         title = "Remove the generic proposal ...";
         url = "https://sns-examples.com/proposal/42";
-        summary = "Proposal to remove the generic nervous system function with ID 123456789 that changed the dapp's background colour as this is no longer needed.";
+        summary = "Proposal to remove the generic nervous system function with ID 1006 that changed the dapp's background colour as this is no longer needed.";
         action = opt variant {
-            RemoveGenericNervousSystemFunction = 123456789:nat64;
+            RemoveGenericNervousSystemFunction = 1_006:nat64;
         };
     }
 )' > message.json
@@ -267,12 +269,12 @@ quill send message.json
 ```
 
 ## `UpgradeSnsToNextVersion`
+
 Recall that all approved SNS canister versions are stored on the NNS canister [SNS-W](../introduction/sns-architecture).
-New SNS canister wasm codes are approved by NNS proposals and then added to SNS-W. 
+New SNS canister wasm codes are approved by NNS proposals and then added to SNS-W.
 Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W.
 
-To do so, they can use an `UpgradeSnsToNextVersion`proposal. 
-If this proposal is adopted, it will trigger a call to SNS root that will ask SNS-W which new wasm version is available and then upgrade to this new version. 
+To do so, they can use an `UpgradeSnsToNextVersion`proposal. If this proposal is adopted, it will trigger a call to SNS root that will ask SNS-W which new wasm version is available and then upgrade to this new version.
 
 ### Relevant type signatures
 
@@ -342,7 +344,7 @@ quill send message.json
 ## `DeregisterDappCanisters`
 
 The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanisters`.
-If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so. 
+If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so.
 To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
 
 ### Relevant type signatures
@@ -365,7 +367,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
     record {
         title = deregister dapp canisters";
         url = "https://sns-examples.com/proposal/42";
-        summary = "lorem ipsum";
+        summary = "This proposal gives up the control of a canister";
         action = opt variant {
             DeregisterDappCanisters = record {
                 canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
@@ -380,7 +382,7 @@ quill send message.json
 
 ## `TransferSnsTreasuryFunds`
 
-The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals. 
+The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals.
 To do so, one has to define the following arguments... 
 
 ### Relevant type signatures
@@ -419,12 +421,11 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         summary = "Lorem ipsum";
         action = opt variant {
             TransferSnsTreasuryFunds = record {
-                from_treasury = int32;
-                to_principal = opt principal;
-                to_subaccount = opt record { subaccount = vec nat8 };
-                memo = opt nat64;
-                amount_e8s = nat64;
-               
+                from_treasury = 1 : int32;
+                to_principal = opt principal "ozcnp-xcxhg-inakz-sg3bi-nczm3-jhg6y-idt46-cdygl-ebztx-iq4ft-vae";
+                to_subaccount = null;
+                memo = null;
+                amount_e8s = 4_110_000_000_000 : nat64;
             };
         };
     };
@@ -432,6 +433,8 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 quill send message.json
 ```
+
+See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/202).
 
 ## `UpgradeSnsControlledCanister` 
 
@@ -462,10 +465,10 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "lorem ipsum";
         action = opt variant {
             UpgradeSnsControlledCanister = record {
-                new_canister_wasm = vec nat8;
-                mode = opt int32;
-                canister_id = opt principal;
-                canister_upgrade_arg = opt vec nat8;
+              new_canister_wasm = blob "\e2\9a\a0\ef\b8\8f NOT THE ORIGINAL CONTENTS OF THIS FIELD \e2\9a\a0\ef\b8\8f\0a\0aThe original value had the following properties:\0a- Length: 760664\0a- SHA256 Hash:                03 A1 64 14 CD 9F 3C B6 E4 EF 68 2B 11 9E 8D 06 56 67 D8 D3 F4 4D 70 04 1B 9B 6E 3D 1F DC 13 AD\0a- Leading  32 Bytes (in hex): 1F 8B 08 00 00 00 00 00 00 03 EC 7C 09 78 14 55 B6 F0 AD AD 97 74 75 75 25 BD AF 54 AF 13 5C 51\0a- Trailing 32 Bytes (in hex): 51 66 DF 40 B3 F3 93 64 76 CB 41 32 FB 6E 9A DD 85 25 B3 9F 83 F6 FF 07 7E 8E 8F 32 48 AE 25 00";
+              mode = null;
+              canister_id = opt principal "4bkt6-4aaaa-aaaaf-aaaiq-cai";
+              canister_upgrade_arg = opt blob "DIDL\02l\01\bd\cf\a9\e9\04\01l\03\b9\fa\ee\18y\b5\f6\a1Cy\c8\8d\dc\ea\0by\01\00\02\00\00\00\00\00\00\00o\02\00\00";
             };
         };
     };
@@ -473,6 +476,8 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send message.json
 ```
+
+See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/45).
 
 ## `ManageSnsMetadata`
 
@@ -543,7 +548,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "lorem ipsum";
         action = opt variant {
             ExecuteGenericNervousSystemFunction = record {
-                function_id = nat64;
+                function_id = 7_000:nat64;
                 payload = vec nat8;
             }
         };
