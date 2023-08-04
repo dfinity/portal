@@ -2,7 +2,10 @@
 
 ## Overview
 
-To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have. This article explains the different types of proposals and how to work with them.
+To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have.
+
+This article explains the different kinds of proposals and provides for each of them a concrete example of the quill command to submit it.
+
 
 ## Background
 
@@ -31,8 +34,6 @@ There are the following types:
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
 :::
-
-## Governance canister interface
 
 All of the proposals used to manage an SNS are executed on the SNS governance canister so it helps to have for reference, what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
 
@@ -65,7 +66,7 @@ Below are the most important types for the purpose of this article:
 
 ### Requirements
 
-* Installing []`quill`](https://github.com/dfinity/quill).
+* Installing [`quill`](https://github.com/dfinity/quill).
 * principal that owns an SNS neuron that can make proposals for an SNS
 
 ### Submitting via `sns make-proposal` command
@@ -130,10 +131,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 )'
 ```
 
-## References for proposals
-This article explains the different kinds of proposals and provides for each of them a concrete example of the quill command to submit it.
-
-### `Motion`
+## `Motion`
 A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. It can be used, for example for opinion polls before even starting certain features.  
 
 ### Relevant Type signature
@@ -144,7 +142,7 @@ A motion proposal is the only kind of proposal that does not have any immediate 
     }
 ```
 
-### Putting it together
+#### Putting it together
 
 Example in bash:
 
@@ -262,11 +260,13 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 ```
 
 ## `UpgradeSnsToNextVersion`
-Recall that all approved SNS canister versions are stored on the NNS canister [SNS-W](introduction/sns-architecture). 
+Recall that all approved SNS canister versions are stored on the NNS canister [SNS-W](../introduction/sns-architecture).
 New SNS canister wasm codes are approved by NNS proposals and then added to SNS-W. 
-Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W. 
+Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W.
+
 To do so, they can use an `UpgradeSnsToNextVersion`proposal. 
 If this proposal is adopted, it will trigger a call to SNS root that will ask SNS-W which new wasm version is available and then upgrade to this new version. 
+
 ### Relevant type signatures
 
 ```candid
@@ -294,6 +294,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 An SNS controls a set of dapp cansiters. 
 An SNS community can decide that new dapps should be added to the SNS' control. 
 The proposal `RegisterDappCanisters`allows the SNS to accept the control of a set of new dapp canisters. The new canisters that should be registered are identified by their canister ID and it is allowed to register a list of canisters (not just a single one).
+
 ### Relevant type signatures
 
 ```candid
