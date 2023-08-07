@@ -4,7 +4,7 @@
 
 To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have.
 
-This article explains the different kinds of proposals and provides for each of them a concrete example of the quill command to submit it.
+This article explains the different kinds of proposals and provides an example quill command that can be used to submit each. 
 
 
 ## Background
@@ -20,16 +20,16 @@ An SNS comes with built-in proposals called “native proposals”.
 
 There are the following types:
 
-* [`Motion`](#motion)
-* [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction)
-* [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction)
-* [`UpgradeSnsToNextVersion`](#upgradesnstonextversion)
-* [`RegisterDappCanisters`](#registerdappcanisters)
-* [`DeregisterDappCanisters`](#deregisterdappcanisters)
-* [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds)
-* [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister)
-* [`ManageSnsMetadata`](#managesnsmetadata)
-* [`ExecuteGenericNervousSystemFunction`](#executegenericnervoussystemfunction)
+* [`Motion`](#motion).
+* [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction).
+* [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction).
+* [`UpgradeSnsToNextVersion`](#upgradesnstonextversion).
+* [`RegisterDappCanisters`](#registerdappcanisters).
+* [`DeregisterDappCanisters`](#deregisterdappcanisters).
+* [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
+* [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister).
+* [`ManageSnsMetadata`](#managesnsmetadata).
+* [`ExecuteGenericNervousSystemFunction`](#executegenericnervoussystemfunction).
 
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
@@ -64,15 +64,15 @@ Below are the most important types for the purpose of this article:
 
 ## Using quill to submit proposals
 
-### Requirements
+### Prerequisites 
 
-* Installing [`quill`](https://github.com/dfinity/quill).
-* principal that owns an SNS neuron that can make proposals for an SNS
+* [x] Install [`quill`](https://github.com/dfinity/quill).
+* [x] Have a principal that owns an SNS neuron that can make proposals for an SNS.
 
 ### Submitting via `sns make-proposal` command
 
 Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-proposal.md)
-`sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` Proposal) to be voted on by other neuron holders.
+`sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` proposal) to be voted on by other neuron holders.
 
 The structure of the commands is as follows:
 
@@ -93,14 +93,13 @@ quill sns --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> --pem-file <PATH_
 quill send message.json
 ```
 
-* `<PATH_TO_CANISTER_IDS_JSON_FILE>` is the file path to a canister IDs JSON file. See example [sns_canister_ids.json](https://github.com/dfinity/quill/blob/master/e2e/assets/sns_canister_ids.json.)
-* `PROPOSAL_NEURON_ID` is the neuron ID of the neuron that is submitting the proposal
+* `<PATH_TO_CANISTER_IDS_JSON_FILE>` is the file path to a canister IDs JSON file. See example [sns_canister_ids.json](https://github.com/dfinity/quill/blob/master/e2e/assets/sns_canister_ids.json).
+* `PROPOSAL_NEURON_ID` is the neuron ID of the neuron that is submitting the proposal.
 * `<PATH_TO_PEM_FILE>` is the path to the PEM file of the identity that owns the neuron that is submitting the proposal. To generate a PEM file, see [here](https://internetcomputer.org/docs/current/references/quill-cli-reference/quill-generate).
-
-* `title` is a short description of the proposal
-* `url` is a link to a document that describes the proposal in more detail
-* `summary` is a short summary of the proposal
-* `action` defines what the proposal does.. depending on the kind of proposal we require to provide different paramters that are defined in this part. As a proposal is just a call to a method, these parameters define with which arguments the target method will be called.
+* `title` is a short description of the proposal.
+* `url` is a link to a document that describes the proposal in more detail.
+* `summary` is a short summary of the proposal.
+* `action` defines what the proposal does. Depending on the kind of proposal we require to provide different parameters that are defined in this part. As a proposal is just a call to a method, these parameters define with which arguments the target method will be called.
 
 #### Concrete example
 
@@ -137,7 +136,7 @@ In this article, we will not repeat the `export PROPOSAL_NEURON_ID` and `export 
 
 ## `Motion`
 
-A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. It can be used, for example for opinion polls before even starting certain features.  
+A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. For example, it can be used for opinion polls before even starting certain features.  
 
 ### Relevant type signature
 
@@ -251,7 +250,7 @@ See example [proposal of an active SNS](https://dashboard.internetcomputer.org/s
 ## `RemoveGenericNervousSystemFunction`
 
 Similarly to how generic proposal are added, they can also be removed again if the SNS DAO thinks that they should no longer be supported. 
-To do so, they can use the proposal  `AddGenericNervousSystemFunction` which specifies the ID of the generic nervous system function to be removed.
+To do so, they can use the proposal `AddGenericNervousSystemFunction` which specifies the ID of the generic nervous system function to be removed.
 
 ### Relevant type signatures
 
@@ -314,7 +313,7 @@ quill send message.json
 ## `RegisterDappCanisters`
 
 An SNS controls a set of dapp cansiters. An SNS community can decide that new dapps should be added to the SNS' control.
-The proposal `RegisterDappCanisters`allows the SNS to accept the control of a set of new dapp canisters. The new canisters that should be registered are identified by their canister ID and it is allowed to register a list of canisters (not just a single one).
+The proposal `RegisterDappCanisters` allows the SNS to accept the control of a set of new dapp canisters. The new canisters that should be registered are identified by their canister ID and it is allowed to register a list of canisters (not just a single one).
 
 ### Relevant type signatures
 
@@ -397,7 +396,7 @@ quill send message.json
 ## `TransferSnsTreasuryFunds`
 
 The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals.
-To do so, one has to define the following arguments... 
+To do so, one has to define the following arguments.
 
 ### Relevant type signatures
 
@@ -473,7 +472,7 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
 ```
 
 :::warning
-Because this proposal requires passing Wasm which is unwieldly to copy/paste into the commandline as binary. It is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-upgrade-canister-proposal.md) command in `quill sns`.
+Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-upgrade-canister-proposal.md) command in `quill sns`.
 
 
 ```bash
@@ -490,7 +489,7 @@ quill send message.json
 
 ## `ManageSnsMetadata`
 
-Each SNS has a metadata that defines the SNS project and which includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a rebranding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the above attributes.
+Each SNS has metadata that defines the SNS project and includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a rebranding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the below attributes.
 
 ### Relevant type signatures
 
@@ -555,7 +554,7 @@ Then the resulting metadata will end like this where only the `description` fiel
 
 ## `ExecuteGenericNervousSystemFunction` 
 
-After a generic proposal has been registered with a  `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
+After a generic proposal has been registered with a `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
 Upon submission of such a proposal, the defined validation method is called, which checks that the given payload is valid for this kind of proposal (the method that will be called for this is the method `validator_method_name` on the canister `validator_canister_id` as it was defined when the generic proposal was added. If this validation is successful, the proposal will be created.
 

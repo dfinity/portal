@@ -1,10 +1,12 @@
-# Managing Nervous System Parameters
+# Managing nervous system parameters
 
-## The `ManageNervousSystemParameters` proposal
+## Overview
 
 The nervous system parameters define the settings of a particular SNS.
 
 Since all SNSs are upgraded along the same upgrade path [refer to architecture part], this is what allows SNSs to nevertheless customise the rules of their governance, the tokenomics, etc to meet their needs.
+
+## The `ManageNervousSystemParameters` proposal
 
 The proposal `ManageNervousSystemParameters` allows the SNS community to adjust these parameters at any time.
 
@@ -94,7 +96,6 @@ The proposal `ManageNervousSystemParameters` allows the SNS community to adjust 
     }
 ```
 
-### Putting it together
 
 ```bash
 # helpful definitions (only need to set these once). This is a sample neuron ID.
