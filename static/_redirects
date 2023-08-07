@@ -1,7 +1,0 @@
-# Redirects have been reworked. Do not add redirects to this file.
-#
-#
-# Add internal route aliases to `/plugins/utils/redirects.js`
-#
-# External route redirects must now go to `/netlify/edge-functions/redirects.js`
-#

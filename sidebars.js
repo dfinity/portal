@@ -67,6 +67,7 @@ const sidebars = {
               "samples/persistent-storage",
               "samples/phonebook",
               "samples/pub-sub",
+              "samples/qr-code",
               "samples/quicksort",
               "samples/random-maze",
               "samples/sending-and-receiving-cycles",
@@ -74,6 +75,7 @@ const sidebars = {
               "samples/superheros",
               "samples/t-ecdsa-sample",
               "samples/whoami",
+              "samples/vetkd-encrypted-notes"
             ],
             },
 
@@ -155,6 +157,11 @@ const sidebars = {
             type: "doc",
             label: "Managing projects",
             id: "developer-docs/setup/manage-projects",
+          },
+          {
+            type: "doc",
+            label: "Pulling canister dependencies",
+            id: "developer-docs/setup/pulling-canister-dependencies",
           },
           {
             type: "doc",
@@ -273,243 +280,6 @@ const sidebars = {
         },
     {
       type: "category",
-      label: "Using external agents",
-      link: {
-          type: "doc",
-          id: "developer-docs/agents/index",
-          },
-          items: [
-            "developer-docs/agents/javascript-intro",
-            "developer-docs/agents/nodejs",
-            "developer-docs/agents/ic-agent-dfinity",
-          ],
-    },
-    {
-      type: "category",
-      label: "Advanced features and integrations",
-      link: {
-          type: "doc",
-          id: "developer-docs/integrations/index",
-      },
-          items: [
-            {
-              type: "category",
-              label: "Bitcoin integration",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/bitcoin/index",
-            },
-              items: [
-                "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
-                "developer-docs/integrations/bitcoin/ckbtc",
-                "developer-docs/integrations/bitcoin/local-development",
-              ],
-            },
-            {
-              type: "doc",
-              label: "Exchange rate canister",
-              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
-            },
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/https-outcalls/index",
-            },
-                items: [
-                  "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-                  "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                  "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                  "developer-docs/integrations/https-outcalls/https-outcalls-post",
-              ],
-            },
-            {
-              type: "category",
-              label: "ICP ledger",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/ledger/index",
-            },
-                items: [
-                  "developer-docs/integrations/ledger/collecting-dust",
-                  "developer-docs/integrations/ledger/deploy-new-token",
-                  "developer-docs/integrations/ledger/interact-with-ledger",
-                  "developer-docs/integrations/ledger/ledger-local-setup",
-              ],
-            },
-            {
-              type: "category",
-              label: "ICRC-1 token standard",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/icrc-1/index",
-            },
-                items: [
-                  "developer-docs/integrations/icrc-1/deploy-new-token",
-              ],
-            },
-            {
-              type: "category",
-              label: "Internet Identity (II)",
-              link: {
-                type: "doc",
-                id: "references/ii-spec",
-              },
-              items: [
-                  "developer-docs/integrations/internet-identity/alternative-origins",
-                  "developer-docs/integrations/internet-identity/integrate-identity",
-              ],
-            },
-            {
-              type: "category",
-              label: "Network Nervous System (NNS)",
-              link: {
-                type: "doc",
-                id: "tokenomics/nns/nns-intro",
-              },
-              items: [
-                  "tokenomics/token-holders/nns-app-quickstart",
-                  "tokenomics/nns/neurons-fund",
-                  "tokenomics/nns/nns-staking-voting-rewards",
-              ],
-            },
-            {
-              type: "category",
-              label: "Rosetta API",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/rosetta/index",
-            },
-                items: [
-                  "developer-docs/integrations/rosetta/hotkeys",
-                  "developer-docs/integrations/rosetta/neuron-lifecycle",
-                  "developer-docs/integrations/rosetta/staking-support",
-                  "developer-docs/integrations/rosetta/staking-tutorial",
-                  "developer-docs/integrations/rosetta/transfers",
-              ],
-            },
-            {
-              type: "category",
-              label: "Self-custody for digital assets",
-              link: {
-                type: "doc",
-                id: "tokenomics/token-holders/custody-options-intro",
-              },
-              items: [
-                  "tokenomics/token-holders/self-custody-quickstart",
-              ],
-            },
-            {
-              type: "category",
-              label: "System Nervous System (SNS)",
-              link: {
-                  type: "doc",
-                  id: "developer-docs/integrations/sns/index",
-              },
-                  items: [
-                    {
-                      type: "category",
-                      label: "Introduction to the SNS",
-                      items: [
-                        "developer-docs/integrations/sns/introduction/sns-intro-high-level",
-                        "developer-docs/integrations/sns/introduction/sns-architecture",
-                        "developer-docs/integrations/sns/introduction/dao-alternatives",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Preparing an SNS launch",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/tokenomics/index",
-                    },
-                      items: [
-                        "developer-docs/integrations/sns/tokenomics/sns-checklist",
-                        "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
-                        "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-                        "developer-docs/integrations/sns/tokenomics/rewards",
-                        "developer-docs/integrations/sns/tokenomics/preparation",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Launching an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/launching/launch-summary",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/launching/launch-summary",
-                        "developer-docs/integrations/sns/launching/launch-steps",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Integrating with an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/integrating/index",
-                    },
-                      items: [
-                        "developer-docs/integrations/sns/integrating/index-integration",
-                        "developer-docs/integrations/sns/integrating/ledger-integration",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Testing an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/testing/testing-before-launch",
-                      },
-                      items: [
-                        "developer-docs/integrations/sns/testing/testing-locally",
-                        "developer-docs/integrations/sns/testing/testing-on-mainnet",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Managing an SNS",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/integrations/sns/managing/manage-sns-intro",
-                    },
-                      items: [
-                        "developer-docs/integrations/sns/managing/sns-governance",
-                        "developer-docs/integrations/sns/managing/cycles-usage",
-                        "developer-docs/integrations/sns/managing/sns-asset-canister",
-                      ],
-                    },
-                  ],
-            },
-            {
-              type: "category",
-              label: "Threshold ECDSA",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/t-ecdsa/index",
-            },
-                items: [
-                  "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-              ],
-            },
-             {
-              type: "category",
-              label: "vetKeys",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/vetkeys/index",
-            },
-                items: [
-                  "developer-docs/integrations/vetkeys/technology-overview",
-                  "developer-docs/integrations/vetkeys/using-vetkeys",
-              ],
-            },
-          ],
-    },
-    {
-      type: "category",
       label: "Running in production",
       link: {
           type: "doc",
@@ -543,6 +313,255 @@ const sidebars = {
               id: "developer-docs/production/larger-wasm",
             },
               ],
+      },
+    {
+      type: "category",
+      label: "Using external agents",
+      link: {
+          type: "doc",
+          id: "developer-docs/agents/index",
+          },
+          items: [
+            "developer-docs/agents/javascript-intro",
+            "developer-docs/agents/nodejs",
+            "developer-docs/agents/ic-agent-dfinity",
+          ],
+    },
+    {
+      type: "category",
+      label: "Advanced features",
+      link: {
+          type: "doc",
+          id: "developer-docs/integrations/index",
+      },
+          items: [
+            {
+              type: "doc",
+              label: "Composite queries",
+              id: "developer-docs/integrations/composite-query/composite-query",
+            },
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/https-outcalls/index",
+            },
+                items: [
+                  "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-get",
+                  "developer-docs/integrations/https-outcalls/https-outcalls-post",
+              ],
+            },
+            {
+              type: "category",
+              label: "Internet Identity (II)",
+              link: {
+                type: "doc",
+                id: "references/ii-spec",
+              },
+              items: [
+                  "developer-docs/integrations/internet-identity/alternative-origins",
+                  "developer-docs/integrations/internet-identity/integrate-identity",
+              ],
+            },
+            {
+              type: "category",
+              label: "Threshold ECDSA",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/t-ecdsa/index",
+            },
+                items: [
+                  "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+              ],
+            },
+             {
+              type: "category",
+              label: "vetKeys",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/vetkeys/index",
+            },
+                items: [
+                  "developer-docs/integrations/vetkeys/technology-overview",
+                  "developer-docs/integrations/vetkeys/using-vetkeys",
+              ],
+            },
+          ],
+    },
+    {
+      type: "category",
+      label: "Ledgers and tokens",
+          items: [
+            {
+              type: "category",
+              label: "ICP ledger",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/ledger/index",
+            },
+                items: [
+                  "developer-docs/integrations/ledger/collecting-dust",
+                  "developer-docs/integrations/ledger/deploy-new-token",
+                  "developer-docs/integrations/ledger/interact-with-ledger",
+                  "developer-docs/integrations/ledger/ledger-local-setup",
+              ],
+            },
+            {
+              type: "category",
+              label: "ICRC-1 token standard",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/icrc-1/index",
+            },
+                items: [
+                  "developer-docs/integrations/icrc-1/deploy-new-token",
+              ],
+            },
+            {
+              type: "doc",
+              label: "Exchange rate canister",
+              id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+            },
+            {
+              type: "category",
+              label: "Rosetta API",
+              link: {
+                type: "doc",
+                id: "developer-docs/integrations/rosetta/index",
+            },
+                items: [
+                  "developer-docs/integrations/rosetta/hotkeys",
+                  "developer-docs/integrations/rosetta/neuron-lifecycle",
+                  "developer-docs/integrations/rosetta/staking-support",
+                  "developer-docs/integrations/rosetta/staking-tutorial",
+                  "developer-docs/integrations/rosetta/transfers",
+              ],
+            },
+            {
+              type: "category",
+              label: "Self-custody for digital assets",
+              link: {
+                type: "doc",
+                id: "tokenomics/token-holders/custody-options-intro",
+              },
+              items: [
+                  "tokenomics/token-holders/self-custody-quickstart",
+              ],
+            },
+          ],
+    },
+    {
+      type: "category",
+      label: "Bitcoin integration",
+      link: {
+        type: "doc",
+        id: "developer-docs/integrations/bitcoin/index",
+    },
+      items: [
+        "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+        "developer-docs/integrations/bitcoin/ckbtc",
+        "developer-docs/integrations/bitcoin/local-development",
+      ],
+    },
+    {
+    type: "category",
+    label: "Network Nervous System (NNS)",
+    link: {
+      type: "doc",
+      id: "tokenomics/nns/nns-intro",
+    },
+    items: [
+        "tokenomics/token-holders/nns-app-quickstart",
+        "tokenomics/nns/neurons-fund",
+        "tokenomics/nns/nns-staking-voting-rewards",
+    ],
+    }, 
+    {
+        type: "category",
+        label: "Service Nervous System (SNS)",
+        link: {
+            type: "doc",
+            id: "developer-docs/integrations/sns/index",
+        },
+            items: [
+              {
+                type: "category",
+                label: "Introduction to the SNS",
+                items: [
+                  "developer-docs/integrations/sns/introduction/sns-intro-high-level",
+                  "developer-docs/integrations/sns/introduction/sns-architecture",
+                  "developer-docs/integrations/sns/introduction/sns-launch",
+                  "developer-docs/integrations/sns/introduction/dao-alternatives",
+                ],
+              },
+              {
+                type: "category",
+                label: "Preparing an SNS launch",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/tokenomics/index",
+              },
+                items: [
+                  "developer-docs/integrations/sns/tokenomics/sns-checklist",
+                  "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
+                  "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
+                  "developer-docs/integrations/sns/tokenomics/rewards",
+                  "developer-docs/integrations/sns/tokenomics/preparation",
+                ],
+              },
+              {
+                type: "category",
+                label: "Integrating with an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/integrating/index",
+              },
+                items: [
+                  "developer-docs/integrations/sns/integrating/index-integration",
+                  "developer-docs/integrations/sns/integrating/ledger-integration",
+                ],
+              },
+              {
+                type: "category",
+                label: "Testing an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/testing/testing-before-launch",
+                },
+                items: [
+                  "developer-docs/integrations/sns/testing/testing-locally",
+                  "developer-docs/integrations/sns/testing/testing-on-mainnet",
+                ],
+              },
+              {
+                type: "category",
+                label: "Launching an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/launching/launch-summary",
+                },
+                items: [
+                  "developer-docs/integrations/sns/launching/launch-summary",
+                  "developer-docs/integrations/sns/launching/launch-steps",
+                ],
+              },
+              {
+                type: "category",
+                label: "Managing an SNS",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/integrations/sns/managing/manage-sns-intro",
+              },
+                items: [
+                  "developer-docs/integrations/sns/managing/making-proposals",
+                  "developer-docs/integrations/sns/managing/cycles-usage",
+                  "developer-docs/integrations/sns/managing/sns-asset-canister",
+                ],
+              },
+            ],
       },
       {
         type: "category",
@@ -615,6 +634,7 @@ const sidebars = {
             "references/cli-reference/dfx-cache",
             "references/cli-reference/dfx-canister",
             "references/cli-reference/dfx-deploy",
+            "references/cli-reference/dfx-deps",
             "references/cli-reference/dfx-generate",
             "references/cli-reference/dfx-help",
             "references/cli-reference/dfx-identity",
@@ -758,56 +778,43 @@ const sidebars = {
   motoko: [
     {
       type: "category",
-      label: "Motoko Language Tour",
-      link: {
-        type: "doc",
-        id: "motoko/main/motoko",
-      },
-      items: [
-        {
-          type: 'autogenerated',
-          dirName: 'motoko/intro', // Generate sidebar slice from docs/tutorials/easy
-        }]
-    },
-    {
-      type: "category",
-      label: "Motoko Developer Guide",
+      label: "Motoko developer guide",
       link: {
         type: "doc",
         id: "motoko/main/about-this-guide",
       },
       items: [
         "motoko/version",
+        "motoko/main/overview",
         "motoko/main/basic-concepts",
         "motoko/main/base-intro",
         "motoko/main/language-manual",
-        "motoko/main/overview",
         "motoko/main/style",
-        "motoko/main/mutable-state",
-        "motoko/main/local-objects-classes",
+        "motoko/main/motoko-grammar",
         "motoko/main/actors-async",
-        "motoko/main/errors",
-        "motoko/main/pattern-matching",
-        "motoko/main/sharing",
-        "motoko/main/message-inspection",
-        "motoko/main/modules-and-imports",
-        "motoko/main/control-flow",
-        "motoko/main/structural-equality",
         "motoko/main/actor-classes",
         "motoko/main/caller-id",
-        "motoko/main/cycles",
-        "motoko/main/upgrades",
         "motoko/main/compatibility",
-        "motoko/main/stablememory",
-        "motoko/main/timers",
-        "motoko/main/heartbeats",
         "motoko/main/compiler-ref",
-        "motoko/main/motoko-grammar",
+        "motoko/main/control-flow",
+        "motoko/main/cycles",
+        "motoko/main/errors",
+        "motoko/main/heartbeats",
+        "motoko/main/local-objects-classes",
+        "motoko/main/message-inspection",
+        "motoko/main/modules-and-imports",
+        "motoko/main/mutable-state",
+        "motoko/main/pattern-matching",
+        "motoko/main/sharing",
+        "motoko/main/stablememory",
+        "motoko/main/structural-equality",
+        "motoko/main/timers",
+        "motoko/main/upgrades",
       ]
     },
     {
       type: "category",
-      label: "Motoko Base Library Reference",
+      label: "Motoko base library reference",
       link: {
         type: "doc",
         id: "motoko/main/base/index",
