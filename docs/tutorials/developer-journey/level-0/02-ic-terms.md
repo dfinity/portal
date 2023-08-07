@@ -73,4 +73,4 @@ This page introduces some of the most commonly used terminology that developers 
 
 ## Next steps
 
-- [0.3: Developer environment setup](03-dev-env).
+- [0.3: Developer environment setup](/docs/current/tutorials/developer-journey/level-0/03-dev-env).
