@@ -16,7 +16,7 @@ dfx [subcommand] [flag]
 
 ### Subcommands
 
-The following is a list of the essential `dfx` subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](https://kjy6g-kaaaa-aaaam-abbnq-cai.ic0.app/docs/current/references/cli-reference/).
+The following is a list of the essential `dfx` subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/current/references/cli-reference/).
 
 - `build`: Used to build the canister output from the project's source code. 
 - `canister`: Used to manage deployed canisters. 
@@ -42,7 +42,7 @@ The following is a list of the essential `dfx` subcommands that we'll be using t
 
 ### Options
 
-Below are the essential options that we'll be referencing throughout the developer journey. For the full list of options, see the [reference documentation](/docs/references/cli-reference/dfx-parent#options).
+Below are the essential options that we'll be referencing throughout the developer journey. For the full list of options, see the [reference documentation](/docs/references/cli-reference/dfx-parent).
 
 - `--identity <identity>`: Used to specify the user identity to be used with the command.
 - `--logfile <logfile>`: Used to write the command's output logs to a specific file. 
