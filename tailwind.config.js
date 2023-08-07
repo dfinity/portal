@@ -207,6 +207,7 @@ module.exports = {
                 
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
+                '.link-primary-disabled': '@apply tw-heading-6 text-black/60 hover:text-black/60 hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
@@ -266,6 +267,8 @@ module.exports = {
                 '.text-gradient-green': '@apply text-gradient-base bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)]',
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
+
+                '.card-white': '@apply backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl',
             };
 
       addComponents(
