@@ -520,8 +520,9 @@ const sidebars = {
                   id: "developer-docs/integrations/sns/integrating/index",
               },
                 items: [
-                  "developer-docs/integrations/sns/integrating/index-integration",
                   "developer-docs/integrations/sns/integrating/ledger-integration",
+                  "developer-docs/integrations/sns/integrating/index-integration",
+                  "developer-docs/integrations/sns/integrating/frontend-integration",
                 ],
               },
               {
@@ -541,7 +542,7 @@ const sidebars = {
                 label: "Launching an SNS",
                 link: {
                   type: "doc",
-                  id: "developer-docs/integrations/sns/launching/launch-summary",
+                  id: "developer-docs/integrations/sns/launching/index",
                 },
                 items: [
                   "developer-docs/integrations/sns/launching/launch-summary",

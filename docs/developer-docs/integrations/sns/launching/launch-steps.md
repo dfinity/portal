@@ -1,9 +1,17 @@
-# SNS launch steps
+# Commands & actions to go through SNS launch
+
+
+<!---
+CHANGE TITLE: Commands & actions to go through SNS launch - legacy flow 
+NEW: INFO 
+This page refers to a legacy flow of how an SNS is launched. This is still supported at the moment but might be deprecated going forward. It is recommended to use the new SNS launch flow which can be found [here](./launch-steps-1proposal.md). Please find more context on this topic [here](./index.md).
+
+-->
 
 ## Overview
 At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary.md).
 
-This article lists the technical commands and steps a developer needs to complete the stages for an SNS launch.
+This article lists the technical commands and actions that a developer needs to complete the stages for an SNS launch.
 
 At a low level, the [SNS local testing repository](../testing/testing-locally.md) guides you through the same, with the difference that the commands target the canisters on the mainnet.
 
@@ -39,6 +47,7 @@ Typically, dapp developers choose initial parameters that will be used in subseq
 
 These parameters also define the initial neurons with which the SNS governance canister will be installed. The launch stages 5 and 6 require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched. Therefore, neurons that are controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process. 
 This is also relevant for other SNS proposals that can already be used during the launch, for example to upgrade the dapp canister(s) or registering custom proposals for that DAO.
+
 :::
 
 ### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
