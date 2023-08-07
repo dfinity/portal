@@ -1,4 +1,4 @@
-# SNS launch steps
+# Commands & actions to go through SNS launch
 
 ## Overview
 At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary-1proposal.md).
