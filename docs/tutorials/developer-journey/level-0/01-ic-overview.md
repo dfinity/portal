@@ -6,7 +6,7 @@ The **Internet Computer (IC)** is a secure and transparent blockchain-based netw
 
 Dapps are created by the development and deployment of **smart contracts**, which are known as **canisters** on the IC. Each canister is hosted on an independent blockchain network running on **nodes** called a **subnet**.
 
-We'll dive into these terms a bit further in the next section, [Internet Computer terminology](02-ic-terms.md). 
+We'll dive into these terms a bit further in the next section, [Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/02-ic-terms.md). 
 
 In order to understand how to develop dapps on the IC, first let's take a look at the architecture of the IC and how it functions. 
 
