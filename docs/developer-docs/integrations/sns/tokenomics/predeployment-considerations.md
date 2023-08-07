@@ -36,11 +36,16 @@ In addition to the above, tokenizing the dapp on the SNS will decentralize contr
 ## Starting the launch process by an NNS proposal
 The launch process for an SNS includes two NNS proposals where the NNS community approves the
 SNS and its parameters. These proposal serve different functions,
-including as an opportunity to pitch the dapp to the NNS community and potential SNS investors.
+including as an opportunity to pitch the dapp to the NNS community and potential participants of the SNS decentralization swap.
 An NNS proposal should build trust within the NNS community that the dapp is sustainable
-in the long run and that the dapp is investor-ready.
+in the long run and that the dapp is ready to be handed over to a decentralized community.
 Therefore, a proposal should include standard information that would be presented at a venture
 capitalist slide deck, including:
+<!-- NEW: The launch process for an SNS is triggered by an NNS proposals where the NNS community approves the
+SNS and its parameters. These proposal serves different functions, including an opportunity to pitch the dapp to the NNS community and potential participants of the SNS decentralization swap. 
+An NNS proposal should build trust within the NNS community that the dapp is sustainable in the long run and that the dapp is ready to be handed over to a decentralized community.
+Therefore, a proposal should include standard information that would be presented at a venture
+capitalist slide deck, including: -->
 * The management **team backgrounds** and any previous **successful application launches**.
 * The [total addressable market](https://en.wikipedia.org/wiki/Total_addressable_market) of the dapp market space.
 * **Proof of product-market fit** and growth traction, including the source of the information.

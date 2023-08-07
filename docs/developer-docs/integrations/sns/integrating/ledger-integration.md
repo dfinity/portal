@@ -12,9 +12,10 @@ The ledger canister follows the [ICRC-1](https://github.com/dfinity/ICRC-1) spec
 ## Initialization
 
 This sections explains how to deploy a ledger canister in isolation.
-You can also deploy a full SNS, which will be deployed with a ledger canister.
+When the NNS creates a new SNS for a dapp, it will automatically be deployed with a ledger canister.
 
-The index canister initialisation requires the following parameters to be initialized:
+The ledger canister requires the following parameters to be initialized.
+When a ledger canister is deployed as part of an SNS, some of these parameters are set automatically (for example the archive parameters) and others can be defined as part of the [initial parameters of an SNS](../tokenomics/preparation.md).
 
 ```
 type InitArgs = record {
