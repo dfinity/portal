@@ -14,7 +14,7 @@ To follow along with the developer journey and develop on the Internet Computer,
 
 #### Why does this matter?
 
-You will need an internet connection to download a few different tools and packages, as described further in this document. You will also need an internet connection whenever you plan to deploy your canister to the mainnet. You do not need an internet connection to deploy your canister locally. 
+You will need an internet connection to download a few different tools and packages, as described further in this document. You will also need an internet connection whenever you plan to deploy your canister to the mainnet. You do not need an internet connection to deploy your canister to your local execution environment.
 
 ### Confirm you have access to a command line interface (CLI) on your local macOS or Linux computer
 
@@ -22,11 +22,11 @@ Open a command line interface (CLI) window. This may be referred to as 'Terminal
 
 #### Why does this matter?
 
-We will primarily be using CLI-based tools, such as dfx and git, in this developer journey. 
+We will primarily be using CLI-based tools, such as `dfx` and `git`, in this developer journey. 
 
 #### Options for Windows users
 
-dfx is not natively supported on Windows. To download dfx on Windows, you will need to download the Windows Subsystem for Linux. You can learn more [here](https://internetcomputer.org/docs/current/developer-docs/setup/install/).
+`dfx` is not natively supported on Windows. To download `dfx` on Windows, you will need to download the Windows Subsystem for Linux. You can learn more [here](/docs/developer-docs/setup/install/index.mdx).
 
 ### Download and install the IC SDK
 
@@ -82,7 +82,7 @@ Download and install [node.js](https://nodejs.org/en).
 
 #### Why does this matter?
 
-Node.js is used by dfx to generate frontend code and dependencies. It is not required for dapps that do not contain a frontend interface, though it is required for you to follow along with this developer journey series, since we will explore frontend canisters in a later tutorial. 
+Node.js is used by `dfx` to generate frontend code and dependencies. It is not required for dapps that do not contain a frontend interface, though it is required for you to follow along with this developer journey series, since we will explore frontend canisters in a later tutorial. 
 
 ### Assure all packages and tools are updated to the latest release versions
 

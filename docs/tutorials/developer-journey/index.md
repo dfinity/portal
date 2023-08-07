@@ -27,7 +27,7 @@ The developer journey is designed to give both new and existing developers a cle
 
 ## Level 2: Space explorer
 
-- 2.1: Certified variables
+- 2.1: Upgrading canisters
 - 2.2: Using third-party canisters
 - 2.3: Canister query and update methods
 - 2.4: Inter-canister calls

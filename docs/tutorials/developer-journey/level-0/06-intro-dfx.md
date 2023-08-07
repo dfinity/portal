@@ -2,9 +2,9 @@
 
 ## Overview
 
-dfx is the DFINITY command-line execution environment tool. It is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. 
+`dfx` is the DFINITY command-line execution environment tool. It is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. 
 
-The dfx parent command has several flags and subcommands that can be used to perform a wide array of operations. First, we'll take a look at basic usage of the command, then we'll get started creating our first project using dfx. 
+The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, we'll take a look at basic usage of the command, then we'll get started creating our first project using dfx. 
 
 ## Basic usage
 
@@ -16,7 +16,7 @@ dfx [subcommand] [flag]
 
 ### Subcommands
 
-The following is a list of the essential dfx subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](https://kjy6g-kaaaa-aaaam-abbnq-cai.ic0.app/docs/current/references/cli-reference/).
+The following is a list of the essential `dfx` subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](https://kjy6g-kaaaa-aaaam-abbnq-cai.ic0.app/docs/current/references/cli-reference/).
 
 - `build`: Used to build the canister output from the project's source code. 
 - `canister`: Used to manage deployed canisters. 
@@ -42,30 +42,30 @@ The following is a list of the essential dfx subcommands that we'll be using thr
 
 ### Options
 
-Below are the essential options that we'll be referencing throughout the developer journey. For the full list of options, see the [reference documentation](https://kjy6g-kaaaa-aaaam-abbnq-cai.ic0.app/docs/current/references/cli-reference/dfx-parent#options).
+Below are the essential options that we'll be referencing throughout the developer journey. For the full list of options, see the [reference documentation](/docs/references/cli-reference/dfx-parent#options).
 
 - `--identity <identity>`: Used to specify the user identity to be used with the command.
 - `--logfile <logfile>`: Used to write the command's output logs to a specific file. 
 
 ## Upgrading to the latest version of dfx
 
-When a new version of dfx is released, it is recommended that the latest version be installed whenever possible. This ensures that you are benefiting from the latest features, enhancements, and fixes. 
+When a new version of `dfx` is released, it is recommended that the latest version be installed whenever possible. This ensures that you are benefiting from the latest features, enhancements, and fixes. 
 
-To upgrade to the latest version, the `dfx upgrade` command can be used. This command will compare your current version of dfx to the latest version available, and if a new version is available, the command will automatically download and install the newest version. 
+To upgrade to the latest version, the `dfx upgrade` command can be used. This command will compare your current version of `dfx` to the latest version available, and if a new version is available, the command will automatically download and install the newest version. 
 
 ## Installing a specific version of dfx
 
-If there is a specific release of dfx you'd like to use, you can set the `DFX_VERSION` environment variable, then run the install script. The install script looks for the environment variable during installation to determine which version should be downloaded. If no variable is set, the latest version is downloaded. 
+If there is a specific release of `dfx` you'd like to use, you can set the `DFX_VERSION` environment variable, then run the install script. The install script looks for this environment variable during installation to determine which version should be downloaded. If no variable is set, the latest version is downloaded. 
 
-To set the `DFX_VERSION` variable and install a specific version of dfx, run the command:
+To set the `DFX_VERSION` variable and install a specific version of `dfx`, run the command:
 
 ```
-DFX_VERSION=0.11.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+DFX_VERSION=0.14.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 ```
 
 ## Creating a new project with dfx
 
-All dapps on the IC start off as **projects**. Projects are created using the dfx command and subcommands. 
+All dapps on the IC start off as **projects**. Projects are created using the `dfx` command and subcommands. 
 
 To get started, we'll use the default sample app to demonstrate how to create a project and explore the default project structure that is generated when a new project is created. 
 
@@ -78,10 +78,10 @@ dfx new developer_journey
 ```
 
 :::info
-When creating new projects with dfx, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
+When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
 :::
 
-This command will create a new project directory called `developer-journey` that contains the project's default template files and a new Git repository for your project. 
+This command will create a new project directory called `developer-journey` that contains the project's default template files and a new git repository for your project. 
 
 ### Step 3: Then, navigate into the project's directory with the command:
 
@@ -114,7 +114,7 @@ developer_journey/
 └── webpack.config.js
 ```
 
-Of this directory, the following files and directories are notable:
+In this directory, the following files and directories are notable:
 
 - `README.md`: The default README file to be used for documenting your project.
 - `dfx.json`: The default configuration file used to set configurable options for your project.
@@ -165,7 +165,7 @@ Let's explore these settings a bit further:
 
 - There are two canisters defined in this file; `developer_journey_frontend` and `developer_journey_backend`. 
 - The `developer_journey_backend` canister has a `main` attribute which specifics the file path of the program's core file, `main.mo`.
-- The `developer_journey_backend` canister has a `type` of 'motoko`, which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
+- The `developer_journey_backend` canister has a `type` of 'motoko', which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
 - The `developer_journey_frontend` canister has a dependency of the `developer_journey_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
 - The `developer_journey_frontend` canister has a frontend endpoint of `src/developer_journey_frontend/src/index.html`, which specifies the primary frontend asset. 
 - Additional assets for the `developer_journey_frontend` canister are specified in the `source` configuration. 
@@ -173,7 +173,7 @@ Let's explore these settings a bit further:
 
 ## Reviewing the default program code
 
-Now that we've explored the default project structure, let's take a look at the default program code located in the `main.mo` file. This is located in the `src/developer_journey_backend` directory. We will cover frontend development and the default files located in that directory in a later tutorial. 
+Now that we've explored the default project structure, let's take a look at the default program code located in the `main.mo` file. This is located in the `src/developer_journey_backend` directory. We will cover frontend development and the default files located in the frontend canister directory in a later tutorial. 
 
 New Motoko projects will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/developer_journey_backend/main.mo` file in a code or text editor. The code will resemble the following:
 
@@ -192,7 +192,7 @@ In this simple 'Hello, world' program, there are a few key elements:
 - Then, the program uses an async keyword to indicate that the program will return an async message that consists of text string that is constructed using "Hello, ", the # operator, the name argument, and "!".
 
 
-We'll explore actor objects, classes, and asynchronous messages in a future tutorial. For now, this will wrap up our introduction to dfx. 
+We'll explore actor objects, classes, and asynchronous messages in a future tutorial. For now, this will wrap up our introduction to `dfx`. 
 
 ## Next steps
 

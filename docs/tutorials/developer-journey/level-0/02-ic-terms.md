@@ -2,7 +2,7 @@
 
 ## Overview
 
-This page introduces some of the most commonly used terminology that developers should be aware of when building on the Internet Computer. This page covers many terms, but does not include every single term that is related to the Internet Computer. For the full glossary of terms, please see [here.](https://internetcomputer.org/docs/current/references/glossary)
+This page introduces some of the most commonly used terminology that developers should be aware of when building on the Internet Computer. This page covers many terms, but does not include every single term that is related to the Internet Computer. For the full glossary of terms, please see [here.](/docs/references/glossary.md)
 
 ## Concepts 
 
@@ -12,9 +12,9 @@ This page introduces some of the most commonly used terminology that developers 
 
 - **Chain-key cryptography:** Chain-key cryptography is an array of advanced cryptographic mechanisms which allow the IC to achieve scalability and functionalities that aren't possible on other blockchain networks. These cryptographic protocols help orchestrate the nodes that make up the IC. One example of chain-key cryptography is the IC's single public key, which allows any device to verify the authenticity of artifacts from the IC. 
 
-- **Cycles**: A cycle in regards to the IC is a unit of measurement used for resources consumed by a canister. These resources include compute processing power, memory, storage, and network bandwidth. Cycles are consumed for every execution performed by a canister that has been deployed on the mainnet. The IC's utility token ICP can be converted into cycles and transferred into a canister to be used for that canister's consumed resources. ICP can be converted to cycles using the current price of ICP measured in XDR, where one trillion cycles corresponds to one XDR. 
+- **Cycles**: A cycle in regards to the IC is a unit of measurement used for resources consumed by a canister. These resources include compute processing power, memory, storage, and network bandwidth. Cycles are consumed for every execution performed by a canister that has been deployed on the mainnet. The IC's utility token ICP can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. ICP can be converted to cycles using the current price of ICP measured in XDR, where one trillion cycles corresponds to one XDR. 
 
-- **Decentralized application (dapp):** A decentralized application (dapp) refers to a canister running on the Internet Computer. 
+- **Decentralized application (dapp):** A decentralized application (dapp) refers to a canister or several interoperable canisters that provide a program or service that has been deployed on the Internet Computer. 
 
 - **Decentralized autonomous organization (DAO):** A decentralized autonomous organization (DAO) is a form of governance where there is no centralized form of authority. Decisions are made by stakeholders, usually determined by staking the DAO's token, through voting on decisions proposed to the DAO. All DAO activity is executed on-chain, providing a transparent and verifiable record of activity. 
 
@@ -30,7 +30,7 @@ This page introduces some of the most commonly used terminology that developers 
 
 - **Replica:** On the Internet Computer, the replica is the collection of protocol components necessary for a node to participate in a subnet. 
 
-- **Subnet:** On the Internet Computer, a subnet is a collection of nodes that operate their own independent instance of the blockchain network by running their own implementation of the consensus algorithm. Subnets interact with other subnets through chain-key cryptography. 
+- **Subnet:** On the Internet Computer, a subnet is a collection of nodes that operate an independent instance of the blockchain network by running their own implementation of the consensus algorithm. Subnets interact with other subnets through chain-key cryptography. 
 
 - **Transaction:** A transaction refers to the ledger process of transferring ICP from one account to another. A transaction can be a regular transfer transaction, a minting transaction, or a burning transaction. 
 
