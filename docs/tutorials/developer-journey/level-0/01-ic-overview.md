@@ -29,7 +29,7 @@ Together, the peer-to-peer and consensus layers select and order incoming messag
 
 In the ICP technology stack, the first layer is the peer-to-peer layer. This layer is responsible for the communication between the nodes within a subnet, and facilitates a reliable and secure channel to do so. Through peer-to-peer communication, nodes on a subnet can broadcast messages, referred to as **artifacts**, to all nodes in the subnet. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/1_protocol/01_peer-to-peer-p2p.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/peer-to-peer-p2p/)
 
 #### Consensus
 
@@ -37,13 +37,13 @@ The consensus layer is responsible for assuring that all nodes in a subnet agree
 
 A unique aspect of the IC consensus protocol is that it provides **cryptographically guaranteed finality**, which is different in comparison to other consensus protocols, such as the one used by Bitcoin, which provides **probabilistic finality**. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/1_protocol/02_consensus.subpage.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/consensus/)
 
 #### Message routing
 
 The message routing layer receives a block of messages from the consensus layer, then places these messages into the input queues of their associated target canisters. This process is called **induction**. The induction process then triggers the **execution** process, which may result in new canister messages in the executed canisters' output queues. After execution has completed, messages in the output queues are routed to their recipient by the message routing component.
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/1_protocol/03_message-routing.subpage.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/message-routing/)
 
 #### Execution
 
@@ -51,7 +51,7 @@ The execution layer is responsible for executing canister smart contract code. E
 
 Messages that have been inducted into canister queues on the subnet are executed by the execution layer until either all messages in the queue have been executed or until the cycles limit for the round has been reached. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/1_protocol/04_execution.subpage.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/execution/)
 
 ## Chain-key cryptography
 
@@ -64,10 +64,9 @@ Through chain-key cryptography:
 - New subnets and nodes can be added, or faulty nodes can be recovered, autonomously. 
 - Chain-key cryptography provides a source of pseudo-randomness that can be used by canisters for algorithms that require randomness. 
 
-[**Chain-key signatures**](/how-it-works/2_chainkeytech/01_chain-key-technology.subpage.md) provide the ability for transactions that are targeted at other blockchain networks to be computed fully on-chain using the ICP. This allows for integrations with other blockchains such as Bitcoin and Ethereum. 
+[**Chain-key signatures**](https://internetcomputer.org/how-it-works/chain-key-technology/) provide the ability for transactions that are targeted at other blockchain networks to be computed fully on-chain using the ICP. This allows for integrations with other blockchains such as Bitcoin and Ethereum. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/2_chainkeytech/01_chain-key-technology.subpage.md)
-
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/chain-key-technology/)
 ## Canisters and smart contracts
 
 Smart contracts on the IC are referred to as **canisters**. Canisters are computational units that bundle together both code and state. A canister can define functions that can be called by external services, such as browsers or mobile apps, or that can be called by other canisters. 
@@ -80,13 +79,13 @@ A canister is managed by **controllers**. A controller can be a centralized enti
 
 Controllers are also responsible for assuring that a canister contains sufficient **cycles** to pay for the canister's resources, which include network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/5_smart_contracts/01_canister-lifecycle.subpage.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/canister-lifecycle/)
 
 ## Tokens
 
 The Internet Computer's utility token is **ICP**, named after the Internet Computer Protocol. This utility token is used for several functions within the network, such as being staked to have voting power in the NNS, or being used to purchase **cycles**, which are used to power canisters deployed on the mainnet network. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/3_governance/00_tokenomics.subpage.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/tokenomics/)
 
 ## Governance 
 
@@ -108,7 +107,7 @@ The Internet Computer has pioneered a secure and advanced form of cryptographic 
 
 II can be integrated with dapps on the IC and helps secure your online identity by providing protection from websites collecting your data. II does this through the ability for users to create new anonymous, independent accounts for each website that they visit. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/6_webaccess/04_web-authentication-identity.subpage.md)
+Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/web-authentication-identity/)
 
 ## Next steps
 
