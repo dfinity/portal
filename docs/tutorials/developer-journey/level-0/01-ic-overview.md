@@ -29,7 +29,7 @@ Together, the peer-to-peer and consensus layers select and order incoming messag
 
 In the ICP technology stack, the first layer is the peer-to-peer layer. This layer is responsible for the communication between the nodes within a subnet, and facilitates a reliable and secure channel to do so. Through peer-to-peer communication, nodes on a subnet can broadcast messages, referred to as **artifacts**, to all nodes in the subnet. 
 
-Want to go further into this topic? Check out [this documentation.](/how-it-works/1_protocol/01_peer-to-peer-p2p.subpage.md)
+Want to go further into this topic? Check out [this documentation.](/how-it-works/1_protocol/01_peer-to-peer-p2p.md)
 
 #### Consensus
 
