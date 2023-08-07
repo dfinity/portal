@@ -1,5 +1,19 @@
 [
     {
+      "id": "w3ns",
+      "name": "W3NS - Multichain",
+      "oneLiner": "An omni-channel notification service on the Internet Computer for any IC, EVM or offchain application",
+      "website": "https://www.argonstudios.xyz",
+      "tags": ["Tools / Infrastructure"],
+      "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and offchain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today...",
+      "stats": "3 early launch partners sending notifications from Polygon",
+      "logo": ["/img/showcase/w3ns_logo.png"],
+      "usesInternetIdentity": false,
+      "github": "https://github.com/miguelToscano/w3ns",
+      "youtube": "https://www.youtube.com/@argonstudios",
+      "twitter": "https://twitter.com/ArgonStudiosXYZ"
+    },
+    {
     "id": "icpswap",
     "name": "ICPSwap",
     "website": "https://icpswap.com",
