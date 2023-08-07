@@ -94,4 +94,4 @@ If you previously had installed any of these tools, be sure to check the most re
 Having the latest release version assures that you have all of the newest features and bug fixes for each tool to assure for the most seamless developer experience. 
 ## Next steps
 
-- [0.4: Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/04-intro-canisters).
+- [0.4: Introduction to canisters](/docs/tutorials/developer-journey/level-0/04-intro-canisters).
