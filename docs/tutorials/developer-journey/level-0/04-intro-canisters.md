@@ -74,4 +74,4 @@ If a canister runs out of cycles, the canister is uninstalled. The code and stat
 
 ## Next steps
 
-- [0.5: Introduction to languages](/docs/tutorials/developer-journey/level-0/05-intro-languages).
+- [0.5: Introduction to languages](05-intro-languages.md).
