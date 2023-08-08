@@ -103,4 +103,4 @@ C++ is available through the [icpp-pro CDK](https://docs.icpp.world/) developed 
 
 ## Next steps
 
-- [0.6: Introduction to dfx](/docs/tutorials/developer-journey/level-0/06-intro-dfx).
+- [0.6: Introduction to dfx](06-intro-dfx.md).
