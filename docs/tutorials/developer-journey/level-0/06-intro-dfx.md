@@ -16,7 +16,7 @@ dfx [subcommand] [flag]
 
 ### Subcommands
 
-The following is a list of the essential `dfx` subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](https://internetcomputer.org/docs/current/references/cli-reference/dfx-parent).
+The following is a list of the essential `dfx` subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/references/cli-reference/dfx-parent.md).
 
 - `build`: Used to build the canister output from the project's source code. 
 - `canister`: Used to manage deployed canisters. 
