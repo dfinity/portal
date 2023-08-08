@@ -619,7 +619,36 @@ function CommunityPage() {
             </p>
           </motion.div>
         </AnimateSpawn>
+        <AnimateSpawn
+          className="container-10 mt-52 md:mt-[400px] relative mb-20"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="md:w-7/10 md:mx-auto text-center text-white relative">
+            <div className="blob blob-purple blob-xl blob-x-5 blob-y-5 z-[-1] opacity-75 md:opacity-95"></div>
 
+            <motion.h2
+              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+              variants={transitions.item}
+            >
+              Find your community hub
+            </motion.h2>
+            <motion.p
+              className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
+              variants={transitions.item}
+            >
+              We are building communities in these areas all around the globe
+              and it would be nice to have a two line sentence here
+            </motion.p>
+
+            <motion.div
+              variants={transitions.fadeIn}
+              className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-[-1] [mask-image:linear-gradient(to_bottom,black_40%,transparent_60%)]"
+            >
+              <Globe className="w-[320px] md:w-[660px] aspect-square" />
+            </motion.div>
+          </div>
+        </AnimateSpawn>
         <AnimateSpawn
           className="container-12 mt-6 md:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 relative"
           el={motion.section}
