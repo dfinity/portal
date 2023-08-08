@@ -2,14 +2,19 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
+import clsx from "clsx";
 import createGlobe from "cobe";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import { Stat, StatsPanel } from "../components/Common/Stats";
+import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+
+const MotionLink = motion(Link);
 
 type Hub = {
   name: string;
@@ -122,22 +127,104 @@ const upcomingHubs: Hub[] = [
   {
     name: "ICP. Hub launch event",
     description: "loreum ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/img/community/hub-placeholder.jpg",
+    image: "/img/community/hub-placeholder.webp",
     link: "",
   },
   {
     name: "ICP. Hub launch event",
     description: "loreum ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/img/community/hub-placeholder.jpg",
+    image: "/img/community/hub-placeholder.webp",
     link: "",
   },
   {
     name: "ICP. Hub launch event",
     description: "loreum ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/img/community/hub-placeholder.jpg",
+    image: "/img/community/hub-placeholder.webp",
     link: "",
   },
 ];
+
+const communityGallery: {
+  image: string;
+  title: string;
+  description: string;
+  heightUnits: number;
+}[] = [
+  {
+    image: "/img/community/image-7.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 3,
+  },
+  {
+    image: "/img/community/image-1.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 2,
+  },
+  {
+    image: "/img/community/image-8.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 3,
+  },
+  {
+    image: "/img/community/image-6.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 2,
+  },
+  {
+    image: "/img/community/image-4.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 2,
+  },
+  {
+    image: "/img/community/image-5.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 2,
+  },
+  {
+    image: "/img/community/image-3.webp",
+    description: "Location | Example description",
+    title: "Image Title",
+    heightUnits: 1,
+  },
+];
+
+const CommunityGalleryImage: React.FC<{
+  item: (typeof communityGallery)[0];
+}> = ({ item }) => {
+  return (
+    <motion.div
+      variants={transitions.item}
+      className={clsx(
+        `overflow-hidden rounded-xl flex flex-col bg-white group relative cursor-pointer`,
+        [
+          "row-end-auto",
+          "row-end-[span_1]",
+          "row-end-[span_2]",
+          "row-end-[span_3]",
+          "row-end-[span_4]",
+          "row-end-[span_5]",
+        ][item.heightUnits]
+      )}
+    >
+      <img
+        src={item.image}
+        alt={item.title}
+        loading="lazy"
+        className="h-full w-full object-cover object-center"
+      ></img>
+      <div className="absolute bottom-0 left-0 right-0 rounded-xl bg-white/30 backdrop-blur-md opacity-0 transition-opacity pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto text-white p-8">
+        <h4 className="tw-heading-5 mb-3">{item.title}</h4>
+        <p className="tw-lead-sm mb-0">{item.description}</p>
+      </div>
+    </motion.div>
+  );
+};
 
 const Globe: React.FC<{
   className?: string;
@@ -534,38 +621,7 @@ function CommunityPage() {
         </AnimateSpawn>
 
         <AnimateSpawn
-          className="container-10 mt-52 md:mt-[400px] relative mb-20"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <div className="md:w-7/10 md:mx-auto text-center text-white relative">
-            <div className="blob blob-purple blob-xl blob-x-5 blob-y-5 z-[-1] opacity-75 md:opacity-95"></div>
-
-            <motion.h2
-              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
-              variants={transitions.item}
-            >
-              Find your community hub
-            </motion.h2>
-            <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
-              variants={transitions.item}
-            >
-              We are building communities in these areas all around the globe
-              and it would be nice to have a two line sentence here
-            </motion.p>
-
-            <motion.div
-              variants={transitions.fadeIn}
-              className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-[-1] [mask-image:linear-gradient(to_bottom,black_40%,transparent_60%)]"
-            >
-              <Globe className="w-[320px] md:w-[660px] aspect-square" />
-            </motion.div>
-          </div>
-        </AnimateSpawn>
-
-        <AnimateSpawn
-          className="container-12 mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-5 relative"
+          className="container-12 mt-6 md:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 relative"
           el={motion.section}
           variants={transitions.container}
         >
@@ -607,6 +663,98 @@ function CommunityPage() {
             <UpcomingHubCard hub={hub} />
           ))}
         </AnimateSpawn>
+
+        <section className="bg-infinite text-white my-20 md:my-40 py-20 md:py-40">
+          <AnimateSpawn
+            className="container-10   relative"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className="blob blob-white blob-md blob-x-10 blob-y-0"></div>
+            <div className="md:w-7/10">
+              <motion.h2
+                className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+                variants={transitions.item}
+              >
+                Our Global Community
+              </motion.h2>
+              <motion.p
+                className="tw-paragraph md:tw-lead mb-10"
+                variants={transitions.item}
+              >
+                Welcome to our vibrant global community where people from all
+                corners of the world come together to connect, collaborate, and
+                create.
+              </motion.p>
+
+              <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
+                <MotionLink
+                  className="button-outline-white"
+                  variants={transitions.item}
+                >
+                  Subscribe for alerts
+                </MotionLink>
+                <MotionLink
+                  className="link-white link-with-icon"
+                  variants={transitions.item}
+                >
+                  Propose an event <LinkArrowUpRight />
+                </MotionLink>
+              </p>
+            </div>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="container-12 mt-10 md:mt-12 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-[minmax(20px,auto)] justify-center"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            {communityGallery.map((item) => (
+              <CommunityGalleryImage item={item} />
+            ))}
+          </AnimateSpawn>
+        </section>
+
+        <section className="container-12 relative mt-40">
+          <AnimateSpawn
+            className=" relative text-white"
+            variants={transitions.container}
+          >
+            <motion.div
+              className="blob blob-purple blob-sm blob-x-5 blob-y-7 z-[-1] md:blob-xl"
+              variants={transitions.fadeIn}
+            ></motion.div>
+            <motion.h2
+              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
+              variants={transitions.item}
+            >
+              Get familiar with the Internet Computer
+            </motion.h2>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
+            variants={transitions.container}
+          >
+            <CardWithDescription
+              title="Join the community telegram channels"
+              description=""
+              href=""
+            />
+
+            <CardWithDescription
+              title="Follow us on Twitter for more"
+              description=""
+              href=""
+            />
+            <CardWithDescription
+              title="Join our latest global events"
+              description=""
+              href=""
+            />
+          </AnimateSpawn>
+        </section>
+        <NewsletterSection />
       </main>
     </Layout>
   );
