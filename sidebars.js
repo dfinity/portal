@@ -160,6 +160,11 @@ const sidebars = {
           },
           {
             type: "doc",
+            label: "Motoko playground",
+            id: "developer-docs/setup/playground",
+          },
+          {
+            type: "doc",
             label: "Pulling canister dependencies",
             id: "developer-docs/setup/pulling-canister-dependencies",
           },
