@@ -48,7 +48,7 @@ The developer journey is designed to give both new and existing developers a cle
 - 4.1: Using HTTPS outcalls
 - 4.2: NFTs on the Internet Computer
 - 4.3: Deterministic time slicing
-- .4: Creating a Bitcoin dapp
+- 4.4: Creating a Bitcoin dapp
 - 4.5: Using libraries with MOPS
 - 4.6: Motoko: level 4
 
