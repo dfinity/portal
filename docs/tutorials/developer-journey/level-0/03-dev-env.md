@@ -2,7 +2,7 @@
 
 ## Overview
 
-Before we can begin our developer journey, we need to set up our developer environment. A developer environment is comprised of tools and packages that are required to develop code projects. Usually, developer environments are stored and hosted on your local computer, but there are some situations where a virtual, web-based development environment exists. 
+Before we can begin our developer journey, we need to set up our developer environment. A developer environment consists of tools and packages that are required to develop code projects. Usually, developer environments are stored and hosted on your local computer, but there are some situations where a virtual, web-based development environment exists. 
 
 An example of this is the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/), which is a web-based, virtual developer environment that can be used by developers without having to set up a local environment. The Motoko Playground has several restrictions, however, and it isn't recommended to be used for workflows other than simple, small-scale testing. 
 
