@@ -75,7 +75,7 @@ Canisters are able to communicate with each other through asynchronous messages.
 
 Canister code can be written in a number of different languages. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/developer-docs/setup/install/index.mdx), and there are several community-developed SDKs such as Python and Typescript. 
 
-A canister is managed by **controllers**. A controller can be a centralized entity, a decentralized entity such as a DAO, or it can have no controller at all, which would make it an immutable smart contract. Controllers are the only one that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister. 
+A canister is managed by **controllers**. A controller can be a centralized entity, a decentralized entity such as a DAO, or it can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister. 
 
 Controllers are also responsible for assuring that a canister contains sufficient **cycles** to pay for the canister's resources, which include network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles. 
 
