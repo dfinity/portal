@@ -196,4 +196,4 @@ We'll explore actor objects, classes, and asynchronous messages in a future tuto
 
 ## Next steps
 
-- [1.1: Exploring a live demo](../level-1/1.1-live-demo.md).
+- 1.1: Exploring a live demo.
