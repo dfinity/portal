@@ -164,7 +164,7 @@ To review the default configuration file for the project, open the `dfx.json` fi
 Let's explore these settings a bit further:
 
 - There are two canisters defined in this file; `developer_journey_frontend` and `developer_journey_backend`. 
-- The `developer_journey_backend` canister has a `main` attribute which specifics the file path of the program's core file, `main.mo`.
+- The `developer_journey_backend` canister has a `main` attribute which specifies the file path of the program's core file, `main.mo`.
 - The `developer_journey_backend` canister has a `type` of 'motoko', which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
 - The `developer_journey_frontend` canister has a dependency of the `developer_journey_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
 - The `developer_journey_frontend` canister has a frontend endpoint of `src/developer_journey_frontend/src/index.html`, which specifies the primary frontend asset. 
