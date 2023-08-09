@@ -38,9 +38,11 @@ Since Motoko has been developed and designed for the IC, this developer journey 
 
 ## Rust
 
-Rust is supported on the IC through the IC SDK and the DFINITY Rust CDK. The IC SDK automatically comes with the Rust CDK as part of the software, but the Rust CDK can be installed separately if the IC SDK is not installed. Rust is a good choice for developers who are already familiar using Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem. 
+Rust is supported on the IC through the IC SDK and the DFINITY Rust CDK. The IC SDK automatically comes with the Rust CDK as part of the software, but the Rust CDK can be installed separately if the IC SDK is not installed. Rust is a good choice for developers who are already familiar with Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem. 
 
 Many of the tutorials in this developer journey series are available in a Rust version that displays identical functionality. These will be linked where applicable for those that want to follow along with Rust, though not all tutorials will have a Rust version. 
+
+### Rust attributes:
 
 - **Candid support:** Candid is supported through Rust libraries, which needs routine manual intervention and conversion. 
 
