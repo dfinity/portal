@@ -48,7 +48,7 @@ It also may be beneficial to separate different reusable services into their own
 
 Canisters communicate with other canisters through the use of asynchronous messages. Each message is also executed in isolation, which allows for increased levels of concurrent execution. Canister messages are either requests or replies to other messages. When a canister processes a message, the result of that process could be a change to the canister's state, a reply message sent to another canister, or even the creation of a new canister. 
 
-If a canister processes a request that requires the canister send additional requests to other canisters, the canister may wait for the replies from other canisters before producing a reply to the original request. If a canister fails to respond (referred to as 'trapping'), the canister's state is rolled back to the point right after it made the last outgoing request. 
+If a canister processes a request that requires the canister to send additional requests to other canisters, the canister may wait for the replies from other canisters before producing a reply to the original request. If a canister fails to respond (referred to as 'trapping'), the canister's state is rolled back to the point right after it made the last outgoing request. 
 
 Canisters can also communicate with external entities, such as end-users or external services, through update calls and query calls. Update calls can modify the state of the canister, while query calls cannot. Updates are used to write changes to the state of the canister, and queries are used to read information from the canister's state. 
 
