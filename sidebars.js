@@ -31,6 +31,32 @@ const sidebars = {
             "tutorials/create_your_first_app/wrapup",
           ],
           },
+         {
+          type: "category",
+          label: "Developer journey",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/index",
+          },
+          items: [
+            {
+              type: "category",
+              label: "Level 0: Pre-flight operations",
+              link: {
+                type: "doc",
+                id: "level-0/index",
+            },
+              items: [
+                "level-0/01-ic-overview",
+                "level-0/02-ic-terms",
+                "level-0/03-dev-env",
+                "level-0/04-intro-canisters",
+                "level-0/05-intro-languages",
+                "level-0/06-intro-dfx"
+              ],
+            },
+          ],
+        },
           {
             type: "category",
             label: "Sample projects",
