@@ -9,19 +9,19 @@ image: /img/blog/dev-update-blog-aug-9.jpg
 
 ![August 9 2023](../../static/img/blog/dev-update-blog-aug-9.jpg)
 
-Hey developers! Welcome to this week's developer weekly update. This week, we have a wide variety of updates, including details on a new NNS proposal, updates regarding v2 response verification for asset canisters, and dive a bit into a newly publish paper on threshold Schnorr signature protocol. 
+Hey developers! Welcome to this week's developer weekly update. This week, we have a wide variety of updates, including details on a new NNS proposal, updates regarding v2 response verification for asset canisters, and diving a bit into a newly published paper on threshold Schnorr signature protocols. 
 
 Let's get started!
 
 ## New NNS proposal - voting begins August 10 2023
 
-A new NNS proposal has been submitted, and voting will begin on August 10, 2023. This proposal disables OpenSnsTokenSwap proposals within the NNS governance as a temporary measure to prevent multiple proposals of this type to be simultaneously opened in an SNS. The OpenSnsTokenSwap proposal feature will be re-enabled in the future via a separate proposal once a fix has been introduced.
+A new NNS proposal has been submitted, and voting will begin on August 10, 2023. This proposal disables OpenSnsTokenSwap proposals within the NNS governance as a temporary measure to prevent multiple proposals of this type from being simultaneously opened in an SNS. The OpenSnsTokenSwap proposal feature will be re-enabled in the future via a separate proposal once a fix has been introduced.
 
 This proposal is important for developers to be aware of, especially developers that interact with and contribute to an SNS, as the approval of this proposal may interfere with an SNS's road map or development plans if they currently include an SNS decentralization swap. 
 
 You can read the full release notes of this proposal on the [DFINITY forum](https://forum.dfinity.org/t/nns-update-august-7-2023/21992), and you can view the proposal on the NNS dapp [here](https://dashboard.internetcomputer.org/proposal/123943).
 
-##  dfx update on v2 response verification
+##  `dfx` update on v2 response verification
 
 The release of dfx `0.15.0-beta.1` re-enables response verification v2 for asset canisters. Response verification v2 was originally introduced in dfx `0.14.0` and `0.14.1`, but this implementation should not be used in production due to some implementation errors. 
 
@@ -29,13 +29,13 @@ To temporarily resolve this, dfx versions `0.14.2` and `0.14.3` use response ver
 
 However, the latest beta version of dfx, `0.15.0-beta.1` includes a service working that re-introduces response verification v2 for asset canisters, and will be compatible with the v1 response verification service worker that is included in versions `0.14.2` and `0.14.3`. 
 
-We encourage developers to upgrade any canisters currently running using `0.14.0` or `0.14.1` to `0.14.3` to benefit from the currently working implementation of response verification. We also recommend that developers test their canisters with `0.15.0-beta.1` to assure that they continue to work properly. 
+We encourage developers to upgrade any canisters currently running `0.14.0` or `0.14.1` to `0.14.3` to benefit from the currently working implementation of response verification. We also recommend that developers test their canisters with `0.15.0-beta.1` to assure that they continue to work properly. 
 
 You can read the full forum post on this update [here](https://forum.dfinity.org/t/upcoming-service-worker-rollout-with-v2-response-verification-upgrade-asset-canisters-with-dfx-0-14-3/21738).
 
 ## New Crypto ePrint paper publication
 
-DFINITY team members Jens Groth and Victor Shoup recently published a paper that present new protocols for threshold Schnorr signatures. In this paper, the authors describe how these new protocols communicate in an asynchronous manner, providing optimal resilience and robust performance. The paper discusses two parts; a secret sharing protocol used to securely distributes shares of a large batch of secret keys, and a new algorithm used to efficiently combine ephemeral public keys that have been contributed by different parties into a smaller number of secure public keys. 
+DFINITY team members Jens Groth and Victor Shoup recently published a paper that presents new protocols for threshold Schnorr signatures. In this paper, the authors describe how these new protocols communicate in an asynchronous manner, providing optimal resilience and robust performance. The paper discusses two parts; a secret sharing protocol used to securely distribute shares of a large batch of secret keys, and a new algorithm used to efficiently combine ephemeral public keys that have been contributed by different parties into a smaller number of secure public keys. 
 
 These new protocols will play a major role in threshold cryptography and multi-party computation, allowing for new, innovative developer applications. 
 
