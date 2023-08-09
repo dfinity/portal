@@ -44,15 +44,15 @@ const sidebars = {
               label: "Level 0: Pre-flight operations",
               link: {
                 type: "doc",
-                id: "level-0/index",
+                id: "tutorials/developer-journey/level-0/index",
             },
               items: [
-                "level-0/01-ic-overview",
-                "level-0/02-ic-terms",
-                "level-0/03-dev-env",
-                "level-0/04-intro-canisters",
-                "level-0/05-intro-languages",
-                "level-0/06-intro-dfx"
+                "tutorials/developer-journey/level-0/01-ic-overview",
+                "tutorials/developer-journey/level-0/02-ic-terms",
+                "tutorials/developer-journey/level-0/03-dev-env",
+                "tutorials/developer-journey/level-0/04-intro-canisters",
+                "tutorials/developer-journey/level-0/05-intro-languages",
+                "tutorials/developer-journey/level-0/06-intro-dfx"
               ],
             },
           ],
