@@ -90,9 +90,9 @@ what it's like to deploy a Bitcoin dapp locally.
 ### Deploying in `regtest` Mode
 
 Your local Bitcoin node operates in what's called "regression testing mode", or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode).
-You can now deploy your canister and configure it to connect to your local `Regtest` network.
+You can now deploy your canister and configure it to connect to your local `regtest` network.
 
-- #### Step 1: Run `dfx start --enable-bitcoin`:
+- #### Step 1: Run `dfx start --clean`:
 
 :::info
 If when running `dfx start` you see errors like
@@ -100,14 +100,13 @@ If when running `dfx start` you see errors like
     Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 
 that means that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin
-node is up and running, and that you're setting the correct port (default is `18444`)
-    
-    dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:<your_custom_port>
+node is up and running, and that you're setting the correct port (default is `18444`).
+The port used can be changed in `dfx.json`.
 :::
 
 - #### Step 2: Deploy the example canister:
 
-        dfx deploy basic_bitcoin --argument '(variant { Regtest })'
+        dfx deploy basic_bitcoin --argument '(variant { regtest })'
 
     If successful, you should see an output that looks like this:
 
