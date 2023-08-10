@@ -400,23 +400,80 @@ const stats: {
   ],
 ];
 
+const FadeInOutTitle: React.FC<{
+  title: string;
+}> = ({ title }) => {
+  const [currentTitle, setCurrentTitle] = useState(title);
+  const [nextTitle, setNextTitle] = useState(title);
+
+  useEffect(() => {
+    setNextTitle(title);
+    const handle = setTimeout(() => {
+      setCurrentTitle(title);
+    }, 300);
+    return () => clearTimeout(handle);
+  }, [title]);
+
+  return (
+    <span className="inline-grid text-center">
+      <span
+        className={clsx(
+          "col-start-1 row-start-1 duration-300",
+          currentTitle !== nextTitle
+            ? "opacity-0 transition-opacity"
+            : "opacity-1 transition-none"
+        )}
+      >
+        {currentTitle}
+      </span>
+      {currentTitle !== nextTitle && (
+        <span className="col-start-1 row-start-1 stat-fade-in">
+          {nextTitle}
+        </span>
+      )}
+    </span>
+  );
+};
+
+const rotationIndexes = [2, 0, 1, 3];
+
 const RotatingStatPanel: React.FC<{}> = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndexes, setActiveIndexes] = useState([0, 0, 0, 0]);
+  const [rotationIndex, setRotationIndex] = useState(0);
+  const [windowFocused, setWindowFocused] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % stats.length);
-    }, 5000);
+      if (!windowFocused) {
+        return;
+      }
+
+      const newActiveIndexes = [...activeIndexes];
+      newActiveIndexes[rotationIndexes[rotationIndex]] =
+        (newActiveIndexes[rotationIndexes[rotationIndex]] + 1) % stats.length;
+      setActiveIndexes(newActiveIndexes);
+      setRotationIndex((i) => (i + 1) % rotationIndexes.length);
+    }, 2000);
 
     return () => clearInterval(interval);
+  }, [activeIndexes, rotationIndex, windowFocused]);
+
+  useEffect(() => {
+    const onVisibilityChange = () => setWindowFocused(!document.hidden);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
   }, []);
+
+  const statsToDisplay = activeIndexes.map((index, i) => stats[index][i]);
 
   return (
     <StatsPanel>
-      {stats[activeIndex].map((stat, index) => (
+      {statsToDisplay.map((stat, index) => (
         <Stat
           key={index}
-          title={stat.title}
+          title={<FadeInOutTitle title={stat.title} />}
           titleClassName="whitespace-nowrap"
           value={
             <SpringCounter
