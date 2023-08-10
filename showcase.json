@@ -2437,5 +2437,19 @@
     "github": "https://github.com/miguelToscano/w3ns",
     "youtube": "https://www.youtube.com/@argonstudios",
     "twitter": "https://twitter.com/ArgonStudiosXYZ"
+  },
+  {
+    "id": "hashkeydid",
+    "name": "HashKey DID",
+    "website": "http://icp.hashkey.id",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "The uniquely-designed DID is your passport in web3. Your data and assets will be connected to HashKey DID and your private information will be kept in your own hands.",
+    "stats": "Multi-Chain DID, 1,200,000 users, 3,200,000 Credentials, 30 Eco-members",
+    "logo": "/img/showcase/hashkeydid_logo.svg",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/hashkeydid/hashkeydid-icp",
+    "twitter": "https://twitter.com/HashKeyDID"
   }
 ]
