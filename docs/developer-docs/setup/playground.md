@@ -215,7 +215,7 @@ npm start # Run the local development server
 dfx deploy
 ```
 
-### Creating editor integrations
+## Creating editor integrations
 
 The Motoko playground has limited support for cross-origin communication. For developers building custom smart contract editors or similar applications, the following code snippet can open the project in Motoko playground:
 
