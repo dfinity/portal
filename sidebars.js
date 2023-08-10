@@ -47,12 +47,12 @@ const sidebars = {
                 id: "tutorials/developer-journey/level-0/index",
             },
               items: [
-                "tutorials/developer-journey/level-0/01-ic-overview",
-                "tutorials/developer-journey/level-0/02-ic-terms",
-                "tutorials/developer-journey/level-0/03-dev-env",
-                "tutorials/developer-journey/level-0/04-intro-canisters",
-                "tutorials/developer-journey/level-0/05-intro-languages",
-                "tutorials/developer-journey/level-0/06-intro-dfx"
+                "tutorials/developer-journey/level-0/ic-overview",
+                "tutorials/developer-journey/level-0/ic-terms",
+                "tutorials/developer-journey/level-0/dev-env",
+                "tutorials/developer-journey/level-0/intro-canisters",
+                "tutorials/developer-journey/level-0/intro-languages",
+                "tutorials/developer-journey/level-0/intro-dfx"
               ],
             },
           ],
