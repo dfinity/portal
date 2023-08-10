@@ -9,7 +9,7 @@ image: /img/blog/deploy-playground.jpg
 
 Today we're excited to announce a new `dfx` subcommand: `dfx deploy --playground`!
 
-`--playground` (or `--network playground`) is a new network flag for the `dfx deploy` command that deploys the project's canister(s) to the Motoko playground's canister pool instead of deploying them to the local replica (`--network local`) or the mainnet network (`--network --ic`). 
+`--playground` (or `--network playground`) is a new network flag for the `dfx deploy` command that deploys the project's canister(s) to the Motoko playground's canister pool instead of deploying them to the local replica (`--network local`) or the mainnet network (`--network ic`). 
 
 When this flag is used, the canisters are deployed in a manner where they borrow resources from the Motoko playground's canister pool. The Motoko playground provides developers with an environment where canisters can be deployed and tested quickly without needing to configure a cycles wallet. 
 
