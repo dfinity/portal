@@ -5,13 +5,14 @@ import Layout from "@theme/Layout";
 import clsx from "clsx";
 import createGlobe from "cobe";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import { Stat, StatsPanel } from "../components/Common/Stats";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
+import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const MotionLink = motion(Link);
@@ -366,6 +367,77 @@ const UpcomingHubCard: React.FC<{
   );
 };
 
+const stats: {
+  title: string;
+  value: string;
+  fallbackValue: string;
+}[][] = [
+  [
+    { title: "Active Countries", value: "30", fallbackValue: "" },
+    { title: "Web3 Community Grants", value: "76", fallbackValue: "" },
+    { title: "Events Organized", value: "20", fallbackValue: "" },
+    { title: "Official ICP.Hubs", value: "15", fallbackValue: "" },
+  ],
+
+  [
+    { title: "PR & Media Exposure", value: "15000000", fallbackValue: "" },
+    { title: "N. of Universities", value: "32", fallbackValue: "" },
+    { title: "Entreperneurs Engaged", value: "2000", fallbackValue: "" },
+    { title: "Users Onboarded", value: "25000", fallbackValue: "" },
+  ],
+
+  [
+    { title: "Crypto Communities", value: "50", fallbackValue: "" },
+    { title: "Ecosystem Partnerships", value: "12", fallbackValue: "" },
+    { title: "Conferences Participated", value: "15", fallbackValue: "" },
+    { title: "Content Created", value: "30", fallbackValue: "" },
+  ],
+  [
+    { title: "N. of Hackathons", value: "5", fallbackValue: "" },
+    { title: "Educational Courses", value: "4", fallbackValue: "" },
+    { title: "Devs Trained", value: "600", fallbackValue: "" },
+    { title: "Projects Incubated - MVPs", value: "60", fallbackValue: "" },
+  ],
+];
+
+const RotatingStatPanel: React.FC<{}> = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % stats.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <StatsPanel>
+      {stats[activeIndex].map((stat, index) => (
+        <Stat
+          key={index}
+          title={stat.title}
+          titleClassName="whitespace-nowrap"
+          value={
+            <SpringCounter
+              initialValue={+stat.value}
+              initialTarget={+stat.value}
+              target={+stat.value}
+              format={(value) =>
+                value > 1000000
+                  ? `${(value / 1000000).toFixed(0)} mil`
+                  : value.toString()
+              }
+              springConfig={[3, 1, 10]}
+            />
+          }
+          fallbackValue={stat.fallbackValue}
+        />
+      ))}
+    </StatsPanel>
+  );
+};
+
 function CommunityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
@@ -422,12 +494,7 @@ function CommunityPage() {
         </section>
         <div className="bg-page">
           <div className="container-10 -translate-y-[110px] -mb-7 md:translate-y-10">
-            <StatsPanel>
-              <Stat title="Community members" value="200" fallbackValue="" />
-              <Stat title="ICP Hubs" value="8" fallbackValue="" />
-              <Stat title="Community events" value="70" fallbackValue="" />
-              <Stat title="Contients" value="5" fallbackValue="" />
-            </StatsPanel>
+            <RotatingStatPanel />
           </div>
         </div>
 

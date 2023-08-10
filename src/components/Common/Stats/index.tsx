@@ -4,6 +4,7 @@ import {
   getNodeProvidersCount,
   getTotalRewardableNodeCount,
 } from "@site/src/utils/network-stats";
+import clsx from "clsx";
 import React, { ReactNode } from "react";
 import { useQuery } from "react-query";
 
@@ -24,20 +25,21 @@ export const StatsPanel: React.FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 export const Stat: React.FC<{
-  title: string;
+  title: ReactNode;
   value: ReactNode | null;
   fallbackValue: string;
-}> = ({ title, value, fallbackValue }) => {
+  titleClassName?: string;
+}> = ({ title, value, fallbackValue, titleClassName }) => {
   return (
     <figure className="m-0 flex flex-col gap-2 items-center">
-      {/* <span className=""> */}
       {value !== null ? (
         <span className="tw-heading-60 text-gradient">{value}</span>
       ) : (
         <Fallback>{fallbackValue}</Fallback>
       )}
-      {/* </span> */}
-      <figcaption className="tw-lead-sm">{title}</figcaption>
+      <figcaption className={clsx("tw-lead-sm", titleClassName)}>
+        {title}
+      </figcaption>
     </figure>
   );
 };
