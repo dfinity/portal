@@ -61,7 +61,7 @@ dfx deploy --playground
 Once deployed, the canister can be interacted with using a command such as:
 
 ```
-dfx canister --network playground call hello__world_backend greet '("everyone": text)'
+dfx canister --network playground call hello_world_backend greet '("everyone": text)'
 ```
 
 This command calls the `hello_world_backend` canister that has been deployed to the playground using the `--network` flag, since the playground is classified as a deployment network. 
