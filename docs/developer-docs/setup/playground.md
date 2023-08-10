@@ -4,7 +4,7 @@
 
 Motoko playground is a development environment that can be used to build and deploy Motoko canisters directly in the web browser using the Motoko playground canister. Motoko playground can also be run locally, or it can be utilized through the `dfx deploy --playground` command via the CLI. Canisters deployed to the playground use resources that are borrowed from a canister pool. All canisters deployed to the playground will time out after 20 minutes, and new canisters will need to be borrowed for further deployments past the timer. 
 
-Motoko playground canisters provide the same functionality of a canister deployed to the mainnet network. This can be useful for quickly testing canisters and their workflows. 
+Motoko playground canisters provide the ability to quickly test canisters and their workflows without needing to configure additional parameters, such as a cycles wallet. 
 
 The Motoko playground is comprised of:
 - The playground's frontend asset canister, which contains:
@@ -12,7 +12,8 @@ The Motoko playground is comprised of:
     - A Monaco editor that includes support for Motoko syntax validation.
     - A Vessel package manager that loads libraries from the vessel package set.
     - A deploy module which integrates the canister's actor class, Candid UI, and upgrade process. 
-- The playground's backend canister that controls all canisters deployed by users on the playground. 
+- The playground's backend canister that controls all canisters deployed by users on the playground.
+- A `wasm-utils` canister that performs wasm analysis and modification to limit certain types of calls. 
 
 Each canister has an initial amount of 0.5T cycles and can be used for 20 minutes once the canister has been deployed. To avoid wasting cycles, canisters cannot transfer cycles, and the cycles transfer instructions have been removed.
 
@@ -61,7 +62,7 @@ dfx deploy --playground
 Once deployed, the canister can be interacted with using a command such as:
 
 ```
-dfx canister --network playground call hello_world_backend greet '("everyone": text)'
+dfx canister --network playground call hello_world_backend greet '("everyone")'
 ```
 
 This command calls the `hello_world_backend` canister that has been deployed to the playground using the `--network` flag, since the playground is classified as a deployment network. 
@@ -72,7 +73,23 @@ Any commands that intend to target a canister deployed to the playground must us
 
 ### Defining custom playground networks
 
-Custom playground networks can be defined in the project's `dfx.json` file in the `network` definition section, such as:
+Using a custom playground network can be beneficial for several development workflows, such as sharing a canister pool with a development team to avoid managing cycles wallets for developer, or using a canister pool for CI preview deployments without having to continuously create and delete canisters. 
+
+Custom playground networks can be defined in the project's `dfx.json` file in the `network` definition section. The following steps can be used to define a custom playground network:
+
+- #### Step 1: Clone the Motoko playground repo with the command:
+
+```
+git clone https://github.com/dfinity/motoko-playground
+```
+
+- #### Step 2: Add access control if desired.
+
+- #### Step 3: Modify the `install_code` to skip wasm analysis. This step is important if you plan on using large wasm files or intend to use calls that are limited by the wasm analysis.
+
+- #### Step 4: Deploy your canisters.
+
+- #### Step 5: Configure your custom playground network in the `dfx.json` file as shown below:
 
 ```
 "<network name>": {
@@ -184,36 +201,6 @@ Then, the 'Open Example' button can be used to open another pre-configured examp
 This menu will have the same examples and options that the initial welcome menu contained.
 
 ![Examples](./_attachments/motoko-playground22.png)
-
-## Running Motoko playground locally
-
-Alternatively, the a version of the Motoko playground can be deployed locally. 
-
-### Prerequisites
-
-- [x] You have an internet connection and access to a shell terminal on your local macOS or Linux computer.
-
-- [x] You have a command line interface (CLI) window open. This window is also referred to as the 'terminal' window.
-
-- [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](./install/index.mdx) page.
-
-- [x] Clone the [Motoko playground repository](https://github.com/dfinity/motoko-playground.git).
-
-- [x] Download and install [npm](https://nodejs.org/en/download/).
-
-- [x] Install `mops` with the command `npm i -g ic-mops`.
-
-- [x] Install [Rust](https://www.rust-lang.org/tools/install).
-
-- [x] Add wasm32 target to Rust with the command `rustup target add wasm32-unknown-unknown`.
-
-Then, run the following commands to deploy the Motoko playground to your local replica:
-
-```
-npm install # Install `npm` dependencies
-npm start # Run the local development server
-dfx deploy
-```
 
 ## Creating editor integrations
 
