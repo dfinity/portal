@@ -1,6 +1,6 @@
 ---
 title: Introducing `dfx deploy --playground`!
-description: Today we're excited to announce a new dfx subcommand- dfx deploy --playground!
+description: Today we're excited to announce a new dfx subcommand — `dfx deploy --playground`!
 tags: [New features]
 image: /img/blog/deploy-playground.jpg
 ---
