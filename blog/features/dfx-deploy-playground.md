@@ -38,12 +38,21 @@ dfx deploy --playground
 Once deployed, the canister can be interacted with using a command such as:
 
 ```
-dfx canister --network playground call hello_world_backend greet '("everyone": text)'
+dfx canister --network playground call hello_world_backend greet '("everyone")'
 ```
 
 This command calls the `hello_world_backend` canister that has been deployed to the playground using the `--network` flag, since the playground is classified as a deployment network. 
 
-Any commands that intend to target a canister deployed to the playground must use the `--playground` or `--network playground` flag in order to target the borrowed canister(s). 
+*Any commands that intend to target a canister deployed to the playground must use the `--playground` or `--network playground` flag in order to target the borrowed canister(s).*
+
+Since the canister has been deployed to the playground, it is important to know the limitations that canisters deployed with the `--playground` flag will be subject to. These restrictions are:
+
+- Cycle transfer instructions are silently ignored by the system.
+- Wasm files can't be gzipped.
+- Wasm size must be rather small since wasm files will be analyzed to remove any potentially expensive/malicious operations.
+- Canisters can use at most 1GB of memory.
+- Canisters can call the management canister to manage itself without being the controller.
+- Deployed canisters expire after 20 minutes.
 
 As always, we'd love to hear your thoughts and feedback on this new feature, so please feel free to let us know through our [community forum](https://forum.dfinity.org/) or [Discord](https://discord.gg/jnjVVQaE2C) server. 
 
