@@ -5,13 +5,22 @@ import Layout from "@theme/Layout";
 import React from "react";
 import GithubIcon from "@site/static/img/svgIcons/github.svg";
 import LinkArrowUpRight from "@site/src/components/Common/Icons/LinkArrowUpRight";
+import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 
 function DefiPage() {
   return (
     <Layout title="Design showcase">
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
-
-      <main className="container-12 py-20">
+      <div className="container-12 py-12">
+        <Breadcrumbs
+          links={[
+            {
+              text: "Links",
+            },
+          ]}
+        ></Breadcrumbs>
+      </div>
+      <main className="container-12 py-10">
         <div className="flex flex-col gap-6 items-start">
           <div className="flex flex-col gap-2 items-start ">
             <Link href="" className="link-primary">

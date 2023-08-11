@@ -35,15 +35,15 @@ const navbarItems = [
         },
         {
           label: "Links",
-          href: "/",
+          href: "/links",
         },
         {
           label: "Typography",
-          href: "/",
+          href: "/typography",
         },
         {
           label: "Input fields",
-          href: "/",
+          href: "/input",
         },
       ],
       [
@@ -51,23 +51,23 @@ const navbarItems = [
         menuDivider("Composite"),
         {
           label: "Checklists",
-          href: "/",
+          href: "/checklist",
         },
         {
           label: "On chain badge",
-          href: "/",
+          href: "/on-chain-badge",
         },
         {
           label: "On-page nav",
-          href: "/",
+          href: "/on-page-nav",
         },
         {
           label: "Tooltips",
-          href: "/",
+          href: "/tooltips",
         },
         {
           label: "Breadcrumbs",
-          href: "/",
+          href: "/breadcrumbs",
         },
       ],
     ]),

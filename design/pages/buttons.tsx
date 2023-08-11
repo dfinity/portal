@@ -4,13 +4,22 @@ import ShareMeta from "@site/src/components/Common/ShareMeta";
 import Layout from "@theme/Layout";
 import React from "react";
 import GithubIcon from "@site/static/img/svgIcons/github.svg";
+import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 
-function DefiPage() {
+function Design() {
   return (
     <Layout title="Design showcase">
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
-
-      <main className="container-12 py-20">
+      <div className="container-12 py-12">
+        <Breadcrumbs
+          links={[
+            {
+              text: "Buttons",
+            },
+          ]}
+        ></Breadcrumbs>
+      </div>
+      <main className="container-12 py-10">
         <div className="flex flex-col gap-6 items-start">
           <div className="flex gap-2 items-start">
             <button className="button-primary cursor-pointer">
@@ -149,4 +158,4 @@ function DefiPage() {
   );
 }
 
-export default DefiPage;
+export default Design;

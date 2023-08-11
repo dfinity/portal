@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 
-const isDesignBuild = ["start-design", "build-design"].includes(
+const isDesignBuild = ["design", "design:build"].includes(
   process.env.npm_lifecycle_event
 );
 
@@ -228,7 +228,8 @@ module.exports = {
                 '.container-8': '@apply max-w-page-8-cols mx-auto px-6 md:px-12.5',
                 '.checklist': '@apply list-none pl-0',
                 '.checklist-item': '@apply bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top',
-                '.checklist-item-white': '@apply bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top',
+                '.checklist-item-white': '@apply bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top bg-[length:24px]',
+                '.checklist-item-lg': '@apply bg-[length:36px]',
                 '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
                 '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.webp")] aspect-[256/232]',
                 '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',

@@ -1,3 +1,4 @@
+import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
 import Layout from "@theme/Layout";
 import React from "react";
@@ -6,8 +7,16 @@ function DefiPage() {
   return (
     <Layout title="Design showcase">
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
-
-      <main className="container-12 py-20 space-y-20">
+      <div className="container-12 py-12">
+        <Breadcrumbs
+          links={[
+            {
+              text: "Typography",
+            },
+          ]}
+        ></Breadcrumbs>
+      </div>
+      <main className="container-12 py-10 space-y-20">
         <div className="flex flex-col gap-6 items-start">
           <div className="tw-heading-1">Heading 1</div>
           <div className="tw-heading-2">Heading 2</div>
