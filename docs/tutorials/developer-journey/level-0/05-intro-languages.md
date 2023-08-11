@@ -68,7 +68,7 @@ Many of the tutorials in this developer journey series are available in a Rust v
 
 Candid is an interface description language with the primary purpose to describe the public interface of a service. In reference to the IC, a service is a program deployed in the form of a canister.  Each canister has a Candid file that defines the interface description for the service. 
 
-Candid is language-agnostic, allowing for inter-operation between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
+Candid is language-agnostic, allowing for interoperability between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
 
 A Candid interface description defines the public methods for a service. Every method has a sequence of argument and result types, and can include annotations that are specific to the IC. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
 
