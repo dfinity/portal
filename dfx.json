@@ -2,9 +2,13 @@
   "version": 1,
   "canisters": {
     "portal": {
-      "portal": {
-        "entrypoint": "build/index.html"
-      },
+      "source": [
+        "build/"
+      ],
+      "type": "assets"
+    },
+    "design": {
+      "build": "npm run build-design",
       "source": [
         "build/"
       ],

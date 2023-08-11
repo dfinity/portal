@@ -1,7 +1,19 @@
 const plugin = require("tailwindcss/plugin");
 
+const isDesignBuild = ["start-design", "build-design"].includes(
+  process.env.npm_lifecycle_event
+);
+
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    ...(!isDesignBuild
+      ? ["./src/**/*.{js,jsx,ts,tsx}"]
+      : [
+          "./design/**/*.{js,jsx,ts,tsx}",
+          "./src/components/Common/**/*.{js,jsx,ts,tsx}",
+          "./src/theme/**/*.{js,jsx,ts,tsx}",
+        ]),
+  ],
   theme: {
     extend: {
       zIndex: {
@@ -195,13 +207,13 @@ module.exports = {
                 ".tw-paragraph": "@apply text-paragraph font-book",
                 ".tw-paragraph-sm": "@apply text-paragraph-sm font-book",
                 ".tw-caption": "@apply text-caption font-book",
-                '.button-primary': '@apply inline-block bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors border-none',
-                '.button-white': '@apply inline-block bg-white rounded-xl text-infinite tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-white-80 hover:text-infinite transition-colors border-none',
-                '.button-outline': '@apply inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
-                '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
-                '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
-                '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
-                '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                '.button-primary': '@apply font-circular inline-block bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors border-none',
+                '.button-white': '@apply font-circular inline-block bg-white rounded-xl text-infinite tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-white-80 hover:text-infinite transition-colors border-none',
+                '.button-outline': '@apply font-circular inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
+                '.button-outline-white': '@apply font-circular inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
+                '.button-fancy': '@apply font-circular inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
+                '.button-small': '@apply font-circular tw-title-navigation-on-page px-3 py-[6px] normal-case',
+                '.button-round': '@apply font-circular tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 
