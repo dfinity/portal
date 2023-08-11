@@ -64,7 +64,7 @@ Through chain-key cryptography:
 - New subnets and nodes can be added, or faulty nodes can be recovered, autonomously. 
 - Chain-key cryptography provides a source of pseudo-randomness that can be used by canisters for algorithms that require randomness. 
 
-[**Chain-key signatures**](https://internetcomputer.org/how-it-works/chain-key-technology/) provide the ability for transactions that are targeted at other blockchain networks to be computed fully on-chain using the ICP. This allows for integrations with other blockchains such as Bitcoin and Ethereum. 
+[**Chain-key signatures**](https://internetcomputer.org/how-it-works/chain-key-technology/) provide the ability for transactions that are targeted at other blockchain networks to be computed fully on-chain using the IC. This allows for integrations with other blockchains such as Bitcoin and Ethereum. 
 
 Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/chain-key-technology/)
 ## Canisters and smart contracts
