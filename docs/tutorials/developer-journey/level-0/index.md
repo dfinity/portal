@@ -5,5 +5,5 @@
 - [0.3: Developer environment setup](03-dev-env.md): Before we can begin our developer journey, we need to set up our developer environment. A developer environment is comprised of tools and packages that are required to develop code projects.
 - [0.4: Introduction to canisters](04-intro-canisters.md): This page introduces canisters, their architecture, and discusses the different types of canisters that can be developed. 
 - [0.5: Introduction to languages](05-intro-languages.md): In this page, we discuss the different languages that can be used to develop dapps, and provide a base-level introduction to the two primarily supported languages: Motoko and Rust. 
-- [0.6: Introduction to dfx](06-intro-dfx.md): `dfx` is the DFINITY command-line execution environment tool. It is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. 
+- [0.6: Introduction to dfx](06-intro-dfx.md): `dfx` is the DFINITY command-line execution environment for the IC SDK. It is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. 
 
