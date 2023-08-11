@@ -25,7 +25,7 @@ The following is a list of the essential `dfx` subcommands that we'll be using t
 - `identity`: Used to create and manage identities. 
 - `info`: Used to display information, such as version or port values. 
 - `ledger`: Used to interact with accounts within the ledger canister. 
-- `new`: Used to create a new project.	Creates a new project.
+- `new`: Used to create a new project. By default, creates a Motoko project.
 - `ping`: Used to test network connectivity to the mainnet or the local canister execution environment. 
 - `quickstart`: Used to perform an initial one-time identity and wallet setup. 
 - `start`: Used to start the local canister execution environment for the current project.
@@ -77,6 +77,10 @@ To get started, we'll use the default sample app to demonstrate how to create a 
 dfx new developer_journey
 ```
 
+When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command. 
+
+In this developer journey, we will be using Motoko for our development language, so we do not need to pass any additional flags with this command. 
+
 :::info
 When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
 :::
@@ -95,12 +99,12 @@ By default, the project structure will resemble the following:
 
 ```
 developer_journey/
-├── README.md      # default project documentation
-├── dfx.json       # project configuration file
-├── node_modules   # libraries for frontend development
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
 ├── package-lock.json
 ├── package.json
-├── src            # source files directory
+├── src            # Source files directory
 │   ├── developer_journey_backend
 │   │   └── main.mo
 │   ├── developer_journey_frontend
