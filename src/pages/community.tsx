@@ -527,23 +527,20 @@ function CommunityPage() {
             variants={transitions.container}
           >
             <div className="md:flex-1"></div>
-            <div className="sm:w-6/10 md:w-auto md:flex-[5] relative pb-[55%] sm:pb-[20%] md:pb-20">
+            <div className="sm:w-6/10 md:w-auto md:flex-[6] relative pb-[55%] sm:pb-[20%] md:pb-20">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Global
-                <br />
-                Community
+                Global Community <br />& ICP.Hubs
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The Internet Computer adds autonomous serverless cloud
-                functionality to the public internet – making it possible to
-                build almost any system or service entirely on a decentralized
-                network using.
+                Welcome to our vibrant global community where Stakeholders and
+                Contributors from all corners of the world come together to
+                connect, collaborate, and create on truly decentralised Web3
               </motion.p>
             </div>
             <Globe className="min-w-[380px] sm:min-w-0 w-[80vw] md:h-full md:flex-[6] aspect-square -mt-8 sm:mt-0 absolute -right-3/10 md:right-auto bottom-0 md:bottom-auto translate-y-1/2 md:static md:-mt-60 md:translate-y-40" />
@@ -565,7 +562,8 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              We are building a global community, and we would like you to join.
+              Join a network of industry leaders, entrepreneurs and Web3 star
+              teams.
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -591,12 +589,12 @@ function CommunityPage() {
               empowering individuals to gain knowledge, skills, and perspectives
               that transcend borders and ignite positive change.
             </p>
-            <p className="mb-0">
+            {/* <p className="mb-0">
               <Link className="link-primary link-with-icon">
                 Education programme
                 <LinkArrowUpRight />
               </Link>
-            </p>
+            </p> */}
           </motion.div>
           <motion.div
             className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
@@ -614,12 +612,12 @@ function CommunityPage() {
               fostering a rich tapestry of connections that fuel innovation and
               drive collective growth
             </p>
-            <p className="mb-0">
+            {/* <p className="mb-0">
               <Link className="link-primary link-with-icon">
                 Join a Hub
                 <LinkArrowUpRight />
               </Link>
-            </p>
+            </p> */}
           </motion.div>
           <motion.div
             className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
@@ -637,12 +635,12 @@ function CommunityPage() {
               our global family comes together to celebrate, learn, and forge
               lifelong connections.
             </p>
-            <p className="mb-0">
+            {/* <p className="mb-0">
               <Link className="link-primary link-with-icon">
                 Come to an event
                 <LinkArrowUpRight />
               </Link>
-            </p>
+            </p> */}
           </motion.div>
         </AnimateSpawn>
         <AnimateSpawn
