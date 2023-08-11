@@ -81,7 +81,7 @@ Candid has a variety of features that make it a particularly good choice for dev
 
 ## Community developed CDKs
 
-There are several CDKs that have been contributed by the IC community. These CDKs are not maintained by DFINITY, so it is recommended that developers use caution when developing with these CDKs, since they may not be maintained in the same manner that the DFINITY maintained CDKs are. 
+There are several CDKs that have been contributed by the IC community. 
 
 ### Python
 
