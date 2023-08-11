@@ -26,7 +26,7 @@ Since Motoko playground is designed for short, small-scale testing, there are li
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
 - Wasm files can't be gzipped.
-- Wasm size should be less than 1M for efficiency, since wasm files will be analyzed to remove any potentially expensive/malicious operations.
+- Wasm files will be analyzed to remove any potentially expensive/malicious operations.
 
 ## `dfx deploy --playground`
 
