@@ -62,7 +62,7 @@ Additionally, controllers can update the canister code by submitting a new wasm 
 
 ## Cycles and resource charges
 
-A canister's controller is responsible for ensuring the canister contains enough **cycles**. Cycles are used to pay for the canister's resources, such as memory, computational power, and network bandwidth. Each execution that is performed by a canister on the mainnet has a cost of cycles. A canister has a local cycles account that is used to store the canister's cycles. 
+A canister's controller is responsible for ensuring the canister contains enough **cycles**. Cycles are used to pay for the canister's resources, such as memory, computational power, and network bandwidth. Each operation that is performed by a canister on the mainnet has a cost of cycles. A canister has a local cycles account that is used to store the canister's cycles. 
 
 For memory usage, the system keeps track of all memory used by the canister and regularly charges the canister's cycles account. This charging happens at regular intervals for efficiency. 
 
