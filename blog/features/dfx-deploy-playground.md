@@ -49,7 +49,7 @@ Since the canister has been deployed to the playground, it is important to know 
 
 - Cycle transfer instructions are silently ignored by the system.
 - Wasm files can't be gzipped.
-- Wasm size must be rather small since wasm files will be analyzed to remove any potentially expensive/malicious operations.
+- Wasm size should be less than 1M for efficiency, since wasm files will be analyzed to remove any potentially expensive/malicious operations.
 - Canisters can use at most 1GB of memory.
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes.
