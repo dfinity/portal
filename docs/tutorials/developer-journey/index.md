@@ -4,7 +4,7 @@
 
 Are you ready to get started developing on the Internet Computer, but not sure where to begin? 
 
-The developer journey is designed to give both new and existing developers a clear learning path to developer on the Internet Computer. Starting at level 0 with an introduction to the Internet Computer, terminology, and setting up a developer environment, to level 5 that details building complex dapps, the developer journey contains essential information for developers of all skill levels. 
+The developer journey is designed to give both new and existing developers a clear learning path to develop on the Internet Computer. Starting at level 0 with an introduction to the Internet Computer, terminology, and setting up a developer environment, to level 5 that details building complex dapps, the Developer Journey contains essential information for developers of all skill levels. 
 
 
 ## Level 0: Pre-flight operations
