@@ -43,7 +43,7 @@ This page introduces some of the most commonly used terminology that developers 
 
 - **Canister account:** A canister account is a ledger account owned by a canister. 
 
-- **Canister development kit (CDK):** A canister development kid (CDK) is an adapter used by the Internet Computer SDK that provides a programming language with the functionality and features necessary to create and manage canisters.
+- **Canister development kit (CDK):** A canister development kit (CDK) is an adapter used by the Internet Computer SDK that provides a programming language with the functionality and features necessary to create and manage canisters.
 
 - **Canister identifier:** The canister identifier (ID) is a globally-unique identifier for a canister that can be used to interact with it.
 
