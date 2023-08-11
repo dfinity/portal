@@ -105,6 +105,10 @@ The port used can be changed in `dfx.json`.
 :::
 
 - #### Step 2: Deploy the example canister:
+    If you're running the Rust example, use
+
+        dfx deploy basic_bitcoin --argument '(variant { regtest })'
+    If you're running Motoko, use
 
         dfx deploy basic_bitcoin --argument '(variant { regtest })'
 
