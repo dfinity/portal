@@ -2,7 +2,7 @@
 
 ## Overview
 
-`dfx` is the DFINITY command-line execution environment tool. It is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. 
+`dfx` is a command line utility that is used to interact with the IC SDK. It is the primary tool that is used for creating, managing, and deploying dapps onto the Internet Computer. 
 
 The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, we'll take a look at basic usage of the command, then we'll get started creating our first project using dfx. 
 
