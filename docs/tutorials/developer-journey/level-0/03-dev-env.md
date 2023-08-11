@@ -60,7 +60,7 @@ The IC SDK is composed of several components that are required for developing on
 
 ### Download and install a code editor
 
-To write and edit code, you will need a code editor. macOS and Linux systems come with some basic editors, such as `vi` or `vim`, but these have very limited functionality and can be hard to use. 
+To write and edit code, you will need a code editor. macOS and Linux systems come with some basic editors, such as `vi` or `nano`, but these have very limited functionality and can be hard to use. 
 
 We recommend you use [Visual Studio Code](https://code.visualstudio.com/download), as it is a popular choice and there is a [Motoko extension](https://github.com/dfinity/vscode-motoko) that provides additional tools for Motoko development. 
 
