@@ -137,6 +137,19 @@
     "submittableId": "34140445"
   },
   {
+    "id": "cycleops",
+    "name": "CycleOps",
+    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://cycleops.dev",
+    "twitter": "https://twitter.com/CycleOps",
+    "logo": "/img/showcase/cycleops_logo.png",
+    "submittableId": "36320431"
+  },
+
+    {
     "id": "sonic",
     "name": "Sonic",
     "oneLiner": "Swap-built end-to-end DeFi platform",
