@@ -2451,5 +2451,54 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/hashkeydid/hashkeydid-icp",
     "twitter": "https://twitter.com/HashKeyDID"
+  },
+  {
+    "id": "nnsdao",
+    "name": "NnsDAO Protocol",
+    "website": "https://www.nnsdao.org/",
+    "tags": [
+      "DAO","Tools / Infrastructure","Metaverse"
+    ],
+    "description": "The boundaryless autonomous organization.",
+    "stats": "7+ Grants Project",
+    "logo": "/img/showcase/nnsdao_logo.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/NnsDao",
+    "twitter": "https://twitter.com/nnsdaos",
+    "submittableId": "27384913"
+  },
+  {
+    "id": "iclottery",
+    "name": "Nlottery",
+    "website": "https://ycr3g-2yaaa-aaaah-abq7q-cai.raw.ic0.app/",
+    "tags": [
+      "Games","Web3","Metaverse"
+    ],
+    "description": "Web3 lottery application building on blockchain, using IC in canisters and randomness, fair and just.",
+    "stats": "Supprot 2+ Tokens",
+    "logo": "/img/showcase/nlottery.png",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/NnsDao/iclottery",
+    "twitter": "https://twitter.com/nnsdaos"
+  },
+  {
+    "id": "ICpodcast",
+    "name": "ICpodcast",
+    "website": "https://looncast.com/",
+    "oneLiner": "Create a Podcast, reach to web3.",
+    "tags": [
+      "NFT","SocialFi","Web3"
+    ],
+    "description": "ICpodcast is an async and scalable podcasting protocol built on top of Layer1 such as Dfinity, Aptos.",
+    "stats": "7+ Grants Project",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/NnsDao/podcast-fe",
+    "twitter": "https://twitter.com/Looncasts",
+    "display": "Large",
+    "logo": "/img/showcase/icpodcast_logo.png",
+    "screenshots": ["/img/showcase/icpodcast_screenshot.png"],
+    "video": "/img/showcase/icpodcast_demo.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "33308492"
   }
 ]
