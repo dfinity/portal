@@ -57,7 +57,7 @@ There is a crucial point to note about this type of IBE scheme; A central author
 :::
 
 ## VETKD
-Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
+Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it is not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
 ### The threshold setting
 Note that we care most about the secret ***key derivation*** here, as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
