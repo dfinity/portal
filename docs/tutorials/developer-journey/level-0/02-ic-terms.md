@@ -18,7 +18,7 @@ This page introduces some of the most commonly used terminology that developers 
 
 - **Decentralized autonomous organization (DAO):** A decentralized autonomous organization (DAO) is a form of governance where there is no centralized form of authority. Decisions are made by stakeholders, usually determined by staking the DAO's token, through voting on decisions proposed to the DAO. All DAO activity is executed on-chain, providing a transparent and verifiable record of activity. 
 
-- **Execution:** Execution in reference to the IC refers to the execution layer, which is responsible for executing canister smart contract code. Execution is done using WebAssembly (wasm). 
+- **Execution:** Execution in reference to the IC refers to the execution layer, which is responsible for executing canister smart contract code. Execution is done using WebAssembly (Wasm). 
 
 - **ICP:** ICP is the native utility token of the Internet Computer. ICP can be used to participate in the network's governance through token staking, or it can be converted into cycles which can be used to pay for a canister's resource consumption. 
 
