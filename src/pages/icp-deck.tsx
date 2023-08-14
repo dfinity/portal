@@ -1,6 +1,4 @@
-import Head from "@docusaurus/Head";
 import React from "react";
-import Redirect from "../components/Common/Redirect";
 import ShareMeta from "../components/Common/ShareMeta";
 
 const Page = () => {
@@ -11,7 +9,15 @@ const Page = () => {
         name="description"
         content="What the World Computer does, and how it works, in 5 minutes"
       />
-      <Redirect to="/icp-version-7.pdf" />
+      <meta
+        property="og:title"
+        content="Build on the network. ICP | Internet Computer ∞"
+      />
+      <meta
+        property="og:description"
+        content="What the World Computer does, and how it works, in 5 minutes"
+      />
+      <meta http-equiv="refresh" content={`0; url=/icp-version-7.pdf`} />
     </ShareMeta>
   );
 };
