@@ -279,8 +279,7 @@ For example:
 It's often useful to delete all the Bitcoin state you have locally and to start from
 scratch. To do so:
 
-- #### Step 1: Run the following commands in the directory of your `dfx` project to delete
-   the local state of `dfx`.
+- #### Step 1: Run the following commands in the directory of your `dfx` project to delete the local state of `dfx`.
 
         dfx stop
         rm -rf .dfx
@@ -290,8 +289,7 @@ Running `rm -rf .dfx` will permanently delete _all_ the canisters you have
 installed locally.
 :::
 
-- #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running,
-and then run the following to delete the chain you created.
+- #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running, and then run the following to delete the chain you created.
 
     rm -r data
     mkdir data
