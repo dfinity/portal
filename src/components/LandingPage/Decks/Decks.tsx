@@ -85,7 +85,7 @@ const Decks = () => {
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
       <Card
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
-        href="/icp_version_7.pdf"
+        href="/icp_version_9.5.pdf"
       >
         <CardLabel>Download Presentation</CardLabel>
         <CardTitle>Internet Computer</CardTitle>
