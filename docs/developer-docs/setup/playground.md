@@ -13,7 +13,7 @@ The Motoko playground is comprised of:
     - A Vessel package manager that loads libraries from the vessel package set.
     - A deploy module which integrates the canister's actor class, Candid UI, and upgrade process. 
 - The playground's backend canister that controls all canisters deployed by users on the playground.
-- A `wasm-utils` canister that performs wasm analysis and modification to limit certain types of calls. 
+- A `wasm-utils` canister that performs Wasm analysis and modification to limit certain types of calls. 
 
 Each canister has an initial amount of 0.5T cycles and can be used for 20 minutes once the canister has been deployed. To avoid wasting cycles, canisters cannot transfer cycles, and the cycles transfer instructions have been removed.
 
@@ -87,7 +87,7 @@ git clone https://github.com/dfinity/motoko-playground
 
 - #### Step 2: Add access control if desired.
 
-- #### Step 3: Modify the `install_code` to skip wasm analysis. This step is important if you plan on using large wasm files or intend to use calls that are limited by the wasm analysis.
+- #### Step 3: Modify the `install_code` to skip Wasm analysis. This step is important if you plan on using large Wasm files or intend to use calls that are limited by the Wasm analysis.
 
 - #### Step 4: Deploy your canisters.
 
@@ -182,7 +182,7 @@ From the 'Add a canister' menu, you can import a canister using the canister's I
 
 ![Import by ID](./_attachments/motoko-playground17.png)
 
-Alternatively, you can deploy a canister using the canister's wasm and .did files. 
+Alternatively, you can deploy a canister using the canister's Wasm and .did files. 
 
 ![Import by wasm](./_attachments/motoko-playground18.png)
 
