@@ -31,6 +31,32 @@ const sidebars = {
             "tutorials/create_your_first_app/wrapup",
           ],
           },
+         {
+          type: "category",
+          label: "Developer journey",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/index",
+          },
+          items: [
+            {
+              type: "category",
+              label: "Level 0: Pre-flight operations",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-0/index",
+            },
+              items: [
+                "tutorials/developer-journey/level-0/ic-overview",
+                "tutorials/developer-journey/level-0/ic-terms",
+                "tutorials/developer-journey/level-0/dev-env",
+                "tutorials/developer-journey/level-0/intro-canisters",
+                "tutorials/developer-journey/level-0/intro-languages",
+                "tutorials/developer-journey/level-0/intro-dfx"
+              ],
+            },
+          ],
+        },
           {
             type: "category",
             label: "Sample projects",
