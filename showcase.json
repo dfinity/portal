@@ -2468,20 +2468,6 @@
     "submittableId": "27384913"
   },
   {
-    "id": "iclottery",
-    "name": "Nlottery",
-    "website": "https://ycr3g-2yaaa-aaaah-abq7q-cai.raw.ic0.app/",
-    "tags": [
-      "Games","Web3","Metaverse"
-    ],
-    "description": "Web3 lottery application building on blockchain, using IC in canisters and randomness, fair and just.",
-    "stats": "Supprot 2+ Tokens",
-    "logo": "/img/showcase/nlottery.png",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/NnsDao/iclottery",
-    "twitter": "https://twitter.com/nnsdaos"
-  },
-  {
     "id": "ICpodcast",
     "name": "ICpodcast",
     "website": "https://looncast.com/",
@@ -2489,8 +2475,8 @@
     "tags": [
       "NFT","SocialFi","Web3"
     ],
-    "description": "ICpodcast is an async and scalable podcasting protocol built on top of Layer1 such as Dfinity, Aptos.",
-    "stats": "7+ Grants Project",
+    "description": "The Decentralization Podcasts Protocol for Creators Base on Dfinity.",
+    "stats": "10+ Podcaster",
     "usesInternetIdentity": false,
     "github": "https://github.com/NnsDao/podcast-fe",
     "twitter": "https://twitter.com/Looncasts",
