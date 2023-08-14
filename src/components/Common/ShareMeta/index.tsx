@@ -1,11 +1,12 @@
 import Head from "@docusaurus/Head";
 import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import React from "react";
+import React, { ReactNode } from "react";
 
 const ShareMeta: React.FC<{
   image?: string;
-}> = ({ image = "/img/share.jpg" }) => {
+  children?: ReactNode;
+}> = ({ image = "/img/share.jpg", children }) => {
   const { siteConfig } = useDocusaurusContext();
   const location = useLocation();
 
@@ -24,6 +25,8 @@ const ShareMeta: React.FC<{
       <meta property="twitter:domain" content={host} />
       <meta property="twitter:url" content={pageUrl} />
       <meta name="twitter:image" content={shareImageUrl} />
+
+      {children}
     </Head>
   );
 };

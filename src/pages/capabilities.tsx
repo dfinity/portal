@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import ShareMeta from "../components/Common/ShareMeta/ShareMeta";
+import ShareMeta from "../components/Common/ShareMeta";
 
 const SplitCard: React.FC<{
   children: React.ReactNode;
@@ -23,35 +23,35 @@ const SplitCard: React.FC<{
   imageSideClassName,
   contentSideClassName,
 }) => {
-    return (
-      <AnimateSpawn
+  return (
+    <AnimateSpawn
+      className={clsx(
+        "bg-white-50 rounded-xl overflow-hidden flex flex-col md:flex-row items-start",
+        imageSide === "right"
+          ? "flex-row"
+          : "flex-col-reverse md:flex-row-reverse",
+        className
+      )}
+      variants={transitions.container}
+    >
+      <div
         className={clsx(
-          "bg-white-50 rounded-xl overflow-hidden flex flex-col md:flex-row items-start",
-          imageSide === "right"
-            ? "flex-row"
-            : "flex-col-reverse md:flex-row-reverse",
-          className
+          "flex-[4] p-6 md:p-16",
+          imageSide === "right" ? "md:pr-0" : "md:pl-0",
+          contentSideClassName
         )}
-        variants={transitions.container}
       >
-        <div
-          className={clsx(
-            "flex-[4] p-6 md:p-16",
-            imageSide === "right" ? "md:pr-0" : "md:pl-0",
-            contentSideClassName
-          )}
-        >
-          {children}
-        </div>
-        <motion.div
-          className={clsx("flex-[6] self-center text-[0px]", imageSideClassName)}
-          variants={transitions.fadeIn}
-        >
-          {image}
-        </motion.div>
-      </AnimateSpawn>
-    );
-  };
+        {children}
+      </div>
+      <motion.div
+        className={clsx("flex-[6] self-center text-[0px]", imageSideClassName)}
+        variants={transitions.fadeIn}
+      >
+        {image}
+      </motion.div>
+    </AnimateSpawn>
+  );
+};
 
 const SingleCard: React.FC<{
   children: React.ReactNode;
@@ -737,8 +737,8 @@ function FeaturesPage() {
             </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Use any language that compiles to Wasm to write canister smart
-              contracts. SDKs are available for Motoko, Rust, TypeScript,
-              Python and C++. Any other language that compiles to Wasm can be used as
+              contracts. SDKs are available for Motoko, Rust, TypeScript, Python
+              and C++. Any other language that compiles to Wasm can be used as
               well.
             </p>
           </SmallCard>
