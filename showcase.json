@@ -2471,11 +2471,11 @@
     "id": "ICpodcast",
     "name": "ICpodcast",
     "website": "https://looncast.com/",
-    "oneLiner": "Create a Podcast, reach to web3.",
+    "oneLiner": "Launch a podcast and tap into web3.",
     "tags": [
       "NFT","SocialFi","Web3"
     ],
-    "description": "The Decentralization Podcasts Protocol for Creators Base on Dfinity.",
+    "description": "The Decentralized Podcast Protocol for Creators on the IC.",
     "stats": "10+ Podcaster",
     "usesInternetIdentity": false,
     "github": "https://github.com/NnsDao/podcast-fe",
