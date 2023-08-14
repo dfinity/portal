@@ -47,7 +47,7 @@ Want to go further into this topic? Check out [this documentation.](https://inte
 
 #### Execution
 
-The execution layer is responsible for executing canister smart contract code. Execution is done using WebAssembly (wasm). There is a wasm virtual machine that runs on each node that is responsible for this process. Wasm is used since wasm bytecode can be executed deterministically. 
+The execution layer is responsible for executing canister smart contract code. Execution is done using WebAssembly (Wasm). There is a Wasm virtual machine that runs on each node that is responsible for this process. Wasm is used since Wasm bytecode can be executed deterministically. 
 
 Messages that have been inducted into canister queues on the subnet are executed by the execution layer until either all messages in the queue have been executed or until the cycles limit for the round has been reached. 
 
