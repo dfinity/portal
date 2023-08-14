@@ -37,6 +37,9 @@ function DefiPage() {
           <Link href="/tooltips" className="button-outline  text-center">
             Tooltips
           </Link>
+          <Link href="/breadcrumbs" className="button-outline  text-center">
+            Breadcrumbs
+          </Link>
         </div>
       </main>
     </Layout>

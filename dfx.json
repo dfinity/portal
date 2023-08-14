@@ -8,7 +8,7 @@
       "type": "assets"
     },
     "design": {
-      "build": "npm run build-design",
+      "build": "npm run design:build",
       "source": [
         "build/"
       ],
