@@ -6,7 +6,9 @@ image: /img/blog/wasm-native-stable-memory-diagram-new.png
 ---
 
 # Wasm-native stable memory
-Wasm-native stable memory is a performance improvement to the Internet Computer’s stable memory interface which was recently rolled out to all subnets. It provides a 1.5-2x performance improvement to most stable memory workloads and does so in a completely transparent way. So if you’re already developing canisters that use stable memory then those canisters will automatically benefit from this performance improvement and if you’re not using stable memory, maybe now’s the time to try it out!
+Wasm-native stable memory is a performance improvement to the Internet Computer’s stable memory interface, which was recently rolled out to all subnets. It provides a 1.5-2x performance improvement to most stable memory workloads and does so in a completely transparent way. 
+
+If you’re already developing canisters that use stable memory, then those canisters will automatically benefit from this performance improvement. If you’re not using stable memory, maybe now’s the time to try it out!
 
 ## What is Stable Memory?
 
