@@ -86,7 +86,7 @@ First without Wasm-native stable memory:
 
 ![Metrics without Wasm-native stable memory](/img/blog/wasm-native-stable-memory-execution-metrics-no-wnsm.png)
 
-Then with Wasm-native stable memory:
+Then, with Wasm-native stable memory:
 
 ![Metrics with Wasm-native stable memory](/img/blog/wasm-native-stable-memory-execution-metrics-wnsm.png)
 
