@@ -44,7 +44,7 @@ The following diagram shows how stable memory accesses will work under Wasm-nati
 
 ![Wasm-native stable memory diagram](/img/blog/wasm-native-stable-memory-diagram-new.png)
 
-## Performance Gains on Sample App
+## Performance gains on sample dapp
 
 Here we take an example dapp using the `ic-stable-structures` library and show how its performance improves after the Wasm-native stable change. Let’s start with the [basic example](https://github.com/dfinity/stable-structures/tree/main/examples/src/basic_example) from `ic-stable-structures` repo which implements a key-value store. The dapp starts by setting up a `StableBTreeMap` to store data:
 
