@@ -616,11 +616,11 @@ function CommunityPage() {
 
   return (
     <Layout
-      title="Community"
-      description={`Build next generation enterprise systems on autonomous cloud, powered by chain-key cryptography and secure multiparty computation.`}
+      title="Global Community & ICP.Hubs"
+      description={`Welcome to the most dynamic and innovative Web3 community in the World. Join an inspiring tribe of creators, builders & educators in a journey toward the adoption of the Internet Computer as the default blockchain.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-enterprise.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-community.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
