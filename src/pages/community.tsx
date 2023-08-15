@@ -8,10 +8,11 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
+import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import Newsletter from "../components/Common/Newsletter/Newsletter";
 import ShareMeta from "../components/Common/ShareMeta";
 import { Stat, StatsPanel } from "../components/Common/Stats";
-import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
@@ -25,172 +26,288 @@ type Hub = {
   link: string;
   coordinates?: [number, number];
 };
+
 const hubs: Hub[] = [
   {
-    name: "SynergyLabs TH MY ICP.Hub",
-    location: "Malaysia / Thailand / Phuket",
+    name: "Crewsphere | ICP.Hub India",
+    location: "India",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [7.9519, 98.3381],
-    image: "/img/community/hub-synergylabs.webp",
-    link: "",
+      "In India's core, Crewsphere ICP India.Hub champions Internet Computer via bootcamps, turning top talents into Web3 experts.",
+    image: "/img/community/icp-hub-india.webp",
+    link: "https://linktr.ee/crewsphere?utm_source=linktree_admin_share",
+    coordinates: [20.5937, 78.9629],
+  },
+  {
+    name: "SynergyLabs | TH MY ICP.Hub",
+    location: "Malaysia/Thailand",
+    description:
+      "Dive into SynergyLabs ICP.Hub Thailand Malaysia: your regional hub for ICP innovation. Equip yourself with our tools, insights, and network. Lead the digital shift with us.",
+    image: "/img/community/icp-hub-synergylab.webp",
+    link: "https://linktr.ee/SynergyLabsICP",
+    coordinates: [13.7563, 100.5018],
   },
   {
     name: "ICP.Hub Italia",
-    location: "Italy:  Milan / Rome",
+    location: "Italy",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [41.9028, 12.4964],
-    image: "/img/community/hub-italia.webp",
-    link: "",
+      "ICP.Hub Italia is your regional network for developing professional & institutional Web3 initiatives and solutions on the Internet Computer blockchain.",
+    image: "/img/community/icp-hub-italia.webp",
+    link: "https://icpitalia.icp.page/",
+    coordinates: [41.8719, 12.5674],
   },
   {
     name: "ICP.Hub North America",
-    location: "Canada / Vancouver",
+    location: "Canada / USA",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [49.2827, -123.1207],
-    image: "/img/community/hub-north-america.webp",
-    link: "",
+      "We are contributing to accelerating the Internet Computer mass adoption in Canada 🇨🇦 and the US 🇺🇸",
+    image: "/img/community/icp-hub-north-america.webp",
+    link: "https://linktr.ee/Icphubnorthamerica",
+    coordinates: [54.525961, -105.255119],
   },
   {
-    name: "ICP.Hub Philippines",
+    name: "ISLA Camp | ICP.Hub Philippines",
     location: "Philippines",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [14.5995, 120.9842],
-    image: "/img/community/hub-philippines.webp",
-    link: "",
+      "ISLA Camp: Unleashing web3 potential through immersive education, dynamic workshops, and hands-on bootcamps on the Internet Computer Protocol.",
+    image: "/img/community/icp-hub-philippines.webp",
+    link: "https://linktr.ee/ISLACamp",
+    coordinates: [12.8797, 121.774],
   },
-
   {
-    name: "ICP.Hub Turkey (Middle East)",
-    location: "Turkey / Cyprus",
-    description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [39.9334, 32.8597],
-    image: "/img/community/hub-turkey.webp",
-    link: "",
+    name: "ICP.Hub Middle East",
+    location: "Turkey, Cyprus",
+    description: "",
+    image: "/img/community/icp-hub-turkey.webp",
+    link: "https://linktr.ee/Icphubnorthamerica",
+    coordinates: [38.9637, 35.2433],
   },
-
   {
-    name: "Disruptives ICP.Hub Indonesia",
-    location: "Indonesia / Bali / Canggu",
+    name: "Disruptives | ICP.Hub Indonesia",
+    location: "Indonesia",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [-8.6478, 115.1385],
-    image: "/img/community/hub-indonesia.webp",
-    link: "",
+      "ICP.Hub Indonesia is Where Ideas Transform into Innovations on the Internet Computer Protocol.",
+    image: "/img/community/icp-hub-indonesia.webp",
+    link: "https://linktr.ee/disruptives",
+    coordinates: [-0.7893, 113.9213],
   },
-
   {
     name: "ICP.Hub Korea",
-    location: "Seoul",
+    location: "Korea",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [37.5665, 126.978],
-    image: "/img/community/hub-korea.webp",
-    link: "",
+      "ICP.Hub Korea is committed to advancing the Internet Computer blockchain and Web3 in Korea by regularly hosting bootcamps for the education and cultivation of developers.",
+    image: "/img/community/icp-hub-korea.webp",
+    link: "https://linktr.ee/icphubkorea",
+    coordinates: [35.9078, 127.7669],
   },
-
   {
-    name: "Kushite ICP.Hub East Africa",
+    name: "Kushite | ICP.Hub East Africa",
     location: "East Africa",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [1.2921, 36.8219],
-    image: "/img/community/hub-east-africa.webp",
-    link: "",
+      "ICP.Hub East Africa aims to create awareness, education & evangelism of the Internet Computer Protocol among aspiring & existing web3 developers in East Africa.",
+    image: "/img/community/icp-hub-east-africa.webp",
+    link: "https://linktr.ee/icpkushitehub",
+    coordinates: [-1.2921, 36.8219],
   },
-
   {
-    name: "Sahara ICP.Hub (West Africa)",
+    name: "Sahara | ICP.Hub West Africa",
     location: "West Africa",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
+      "ICP Sahara Hub is a safe heaven for developers and blockchain enthusiasts.",
+    image: "/img/community/icp-hub-west-africa.webp",
+    link: "https://linktr.ee/saharaicphub",
     coordinates: [9.082, 8.6753],
-    image: "/img/community/hub-sahara.webp",
-    link: "",
   },
-
   {
-    name: "ICP.Hub GCC",
-    location: "GCC",
+    name: "Al Shira | ICP.Hub GCC",
+    location: "Dubai",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-    coordinates: [24.4539, 54.3773],
-    image: "/img/community/hub-gcc.webp",
-    link: "",
+      "The ICP.Hub GCC is your regional gateway to the ICP Ecosystem. We are a community of Web3 enthusiasts, developers and entrepreneurs, expanding the footprint of the Internet Compute Protocol in the region.",
+    image: "/img/community/icp-hub-gcc.webp",
+    link: "https://linktr.ee/icphubgcc",
+    coordinates: [25.276987, 55.296249],
+  },
+  {
+    name: "LinkUp | ICP.Hub Germany",
+    location: "Germany",
+    description:
+      "Focusing on Web3 development - ICP.Hub Germany is the ´go-to´ community for dreamers and makers that dedicate growing the decentralized Internet Computer Protocol (ICP) in this area.",
+    image: "/img/community/icp-hub-germany.webp",
+    link: "https://linktr.ee/icp.hub_germany",
+    coordinates: [51.1657, 10.4515],
+  },
+  {
+    name: "Interlink3 | ICP.Hub Singapore",
+    location: "Singapore",
+    description:
+      "ICP.HUB Singapore drives digital innovation by harnessing the power of web3 regional entrepreneurs, venture capital and community to realise the mass adoption of Internet Computer ICP's decentralized cloud and blockchain services",
+    image: "/img/community/icp-hub-singapore.webp",
+    link: "https://linktr.ee/interlink3",
+    coordinates: [1.3521, 103.8198],
+  },
+  {
+    name: "ICP.Hub Bulgaria",
+    location: "Balkans (Bulgaria)",
+    description:
+      "The intersection between the Internet Computer and the Balkans. Create an ecosystem around ICP blockchain, educate developers on ICP and engage potential for funding",
+    image: "/img/community/icp-hub-bulgaria.webp",
+    link: "https://linktr.ee/balkan.icp.hub",
+    coordinates: [42.7339, 25.4858],
+  },
+  {
+    name: "Nativo | ICP.Hub LatAm",
+    location: "LatAm",
+    description:
+      "ICP Hub LATAM is an initiative to drive adoption for Internet Computer Protocol in the region of Latin America, with a focus on teaching developers and entrepeneurs how to build solutions on IC. Through bootcamps, educational content and community events through out the region.",
+    image: "/img/community/icp-hub-latam.webp",
+    link: "https://linktr.ee/ethicparg",
+    coordinates: [-8.7832, -55.4915],
   },
 ];
 
 const upcomingHubs: Hub[] = [
   {
-    name: "ICP. Hub launch event",
-    description: "loreum ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/img/community/hub-placeholder.webp",
-    link: "",
+    name: "ETH Toronto",
+    description:
+      "@ICPNorth is an Official Megabyte Sponsor of ETHToronto , They're contributing to accelerating the Internet Computer mass adoption",
+    image: "/img/community/eth-toronto.webp",
+    link: "https://twitter.com/ETH_Toronto/status/1687096585715421184",
   },
   {
-    name: "ICP. Hub launch event",
-    description: "loreum ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/img/community/hub-placeholder.webp",
-    link: "",
+    name: "Coinfest Asia",
+    description:
+      "Be part of the Asia's immersive Web3 festival and join these top projects & venture capital at Coinfest Asia 2023!",
+    image: "/img/community/coinfest-asia.webp",
+    link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
   },
   {
-    name: "ICP. Hub launch event",
-    description: "loreum ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/img/community/hub-placeholder.webp",
-    link: "",
+    name: "Web3 Conf India",
+    description:
+      "Super stoked to have ICP, represented by its India Hub, as a Partner for the Web3Conf India 2023!",
+    image: "/img/community/web3-india.webp",
+    link: "https://twitter.com/web3conf_india/status/1686272790150754304?s=46&t=znCni81w_5V68LfRCHvtZA",
+  },
+  {
+    name: "Istanbul Blockchain Week",
+    description:
+      "Thrilled to announce DFINITY (ICP) as a  sponsor for #IBW23!  Witness the evolution of blockchains into...",
+    image: "/img/community/istanbul-blockchain-week.webp",
+    link: "https://twitter.com/istanbulblockwk/status/1687075926386110464?s=46&t=YWzpokcUePMtkg043EMwBQ",
+  },
+  {
+    name: "Launch of ICPnnova",
+    description:
+      "Colledge and ICP Latam Hub launch ICPnnova, incubation program for web3 projects in Latin America",
+    image: "/img/community/icpnnova.webp",
+    link: "https://es.cointelegraph.com/news/colledge-and-icp-latam-hub-launch-icpnnova-incubation-programme-for-web3-projects-in-latin-america",
+  },
+  {
+    name: "New ICP.Hub in Turkey",
+    description:
+      "Internet Computer (ICP), which is attracting more and more attention all over the world, is taking an important step in Turkey as ...",
+    image: "/img/community/icphub-turkey.webp",
+    link: "https://www.coindeskturkiye.com/yazarlar/sude-ozkan/turkiye-web3-ekosistemine-bir-yatirim-daha-internet-computer-turkiyede-icphub-kuruyor-4818",
+  },
+  {
+    name: "Women in blockchain",
+    description:
+      "ICP.Hub North America is thrilled to announce a landmark partnership between the ICP.Hub North America and Women in Blockchain Canada...",
+    image: "/img/community/women-in-blockchain.webp",
+    link: "https://twitter.com/finbold/status/1689306088561156096",
+  },
+  {
+    name: "ICP ecosystem in Japan",
+    description:
+      'NFTStudio24 announces ICP Meetup "Dev3 Japan" to introduce ICP ecosystem in Japan...',
+    image: "/img/community/ecosystem-japan.webp",
+    link: "https://jp.cointelegraph.com/press-releases/nftstudio24-announces-dev3-japan-an-icp-meetup-to-introduce-the-icp-ecosystem-in-japan",
   },
 ];
 
 const communityGallery: {
   image: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   heightUnits: number;
 }[] = [
   {
-    image: "/img/community/image-7.webp",
-    description: "Location | Example description",
-    title: "Image Title",
+    image: "img/community/image-02.webp",
+    heightUnits: 5,
+  },
+  {
+    image: "img/community/image-01.webp",
+    heightUnits: 2,
+  },
+  {
+    image: "img/community/image-03.webp",
+    heightUnits: 5,
+  },
+
+  {
+    image: "img/community/image-04.webp",
+    heightUnits: 4,
+  },
+  {
+    image: "img/community/image-05.webp",
+    heightUnits: 4,
+  },
+  {
+    image: "img/community/image-06.webp",
+    heightUnits: 4,
+  },
+
+  {
+    image: "img/community/image-07.webp",
+    heightUnits: 5,
+  },
+  {
+    image: "img/community/image-08.webp",
+    heightUnits: 5,
+  },
+  {
+    image: "img/community/image-09.webp",
+    heightUnits: 5,
+  },
+
+  {
+    image: "img/community/image-10.webp",
+    heightUnits: 4,
+  },
+  {
+    image: "img/community/image-11.webp",
     heightUnits: 3,
   },
   {
-    image: "/img/community/image-1.webp",
-    description: "Location | Example description",
-    title: "Image Title",
-    heightUnits: 2,
+    image: "img/community/image-12.webp",
+    heightUnits: 3,
+  },
+
+  {
+    image: "img/community/image-13.webp",
+    heightUnits: 4,
   },
   {
-    image: "/img/community/image-8.webp",
-    description: "Location | Example description",
-    title: "Image Title",
+    image: "img/community/image-14.webp",
+    heightUnits: 4,
+  },
+  {
+    image: "img/community/image-15.webp",
+    heightUnits: 4,
+  },
+
+  {
+    image: "img/community/image-16.webp",
     heightUnits: 3,
   },
   {
-    image: "/img/community/image-6.webp",
-    description: "Location | Example description",
-    title: "Image Title",
+    image: "img/community/image-17.webp",
     heightUnits: 2,
   },
   {
-    image: "/img/community/image-4.webp",
-    description: "Location | Example description",
-    title: "Image Title",
+    image: "img/community/image-18.webp",
     heightUnits: 2,
   },
   {
-    image: "/img/community/image-5.webp",
-    description: "Location | Example description",
-    title: "Image Title",
-    heightUnits: 2,
-  },
-  {
-    image: "/img/community/image-3.webp",
-    description: "Location | Example description",
-    title: "Image Title",
+    image: "img/community/image-19.webp",
     heightUnits: 1,
   },
 ];
@@ -202,7 +319,7 @@ const CommunityGalleryImage: React.FC<{
     <motion.div
       variants={transitions.item}
       className={clsx(
-        `overflow-hidden rounded-xl flex flex-col bg-white group relative cursor-pointer`,
+        `overflow-hidden rounded-xl flex flex-col bg-white group relative`,
         [
           "row-end-auto",
           "row-end-[span_1]",
@@ -219,10 +336,10 @@ const CommunityGalleryImage: React.FC<{
         loading="lazy"
         className="h-full w-full object-cover object-center"
       ></img>
-      <div className="absolute bottom-0 left-0 right-0 rounded-xl bg-white/30 backdrop-blur-md opacity-0 transition-opacity pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto text-white p-8">
+      {/* <div className="absolute bottom-0 left-0 right-0 rounded-xl bg-white/30 backdrop-blur-md opacity-0 transition-opacity pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto text-white p-8">
         <h4 className="tw-heading-5 mb-3">{item.title}</h4>
         <p className="tw-lead-sm mb-0">{item.description}</p>
-      </div>
+      </div> */}
     </motion.div>
   );
 };
@@ -313,7 +430,7 @@ const HubCard: React.FC<{
         {hub.description}
       </p>
       <p className="mb-8 mx-6">
-        <Link className="button-round-icon" href="">
+        <Link className="button-round-icon" href={hub.link}>
           <svg
             width="16"
             height="21"
@@ -359,7 +476,7 @@ const UpcomingHubCard: React.FC<{
         {hub.description}
       </p>
       <p className="mb-8 mx-6">
-        <Link className="button-outline button-small" href="">
+        <Link className="button-outline button-small" href={hub.link}>
           Learn more
         </Link>
       </p>
@@ -538,9 +655,10 @@ function CommunityPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Welcome to our vibrant global community where Stakeholders and
-                Contributors from all corners of the world come together to
-                connect, collaborate, and create on truly decentralised Web3
+                Welcome to the most dynamic and innovative Web3 community in the
+                World. Join an inspiring tribe of creators, builders & educators
+                in a journey toward the adoption of the Internet Computer as the
+                default blockchain.
               </motion.p>
             </div>
             <Globe className="min-w-[380px] sm:min-w-0 w-[80vw] md:h-full md:flex-[6] aspect-square -mt-8 sm:mt-0 absolute -right-3/10 md:right-auto bottom-0 md:bottom-auto translate-y-1/2 md:static md:-mt-60 md:translate-y-40" />
@@ -562,8 +680,8 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Join a network of industry leaders, entrepreneurs and Web3 star
-              teams.
+              Explore our global community and participate in our Web3 adoption
+              programs
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -585,16 +703,16 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Education</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Explore transformative education programs within our global hubs,
-              empowering individuals to gain knowledge, skills, and perspectives
-              that transcend borders and ignite positive change.
+              Dedicated educational programs in cooperation with top industry
+              players. Designed to empower talented builders and initiate
+              exciting journeys on the internet computer blockchain.
             </p>
-            {/* <p className="mb-0">
-              <Link className="link-primary link-with-icon">
+            <p className="mb-0">
+              <Link className="link-primary link-with-icon" href="#education">
                 Education programme
-                <LinkArrowUpRight />
+                <LinkArrowDown />
               </Link>
-            </p> */}
+            </p>
           </motion.div>
           <motion.div
             className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
@@ -606,18 +724,20 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">ICP hubs</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Our hubs serve as pulsating hubs of diverse cultures and ideas,
-              fostering a rich tapestry of connections that fuel innovation and
-              drive collective growth
+              Official ICP. Hubs are the core centres of action of our vibrant
+              community. Located in strategic regions of the world, these Hubs
+              fuel community growth and protocol adoption across all different
+              verticals, from evangelism to education, from strategic
+              partnerships to projects accelerations.
             </p>
-            {/* <p className="mb-0">
-              <Link className="link-primary link-with-icon">
-                Join a Hub
-                <LinkArrowUpRight />
+            <p className="mb-0">
+              <Link className="link-primary link-with-icon" href="#hubs">
+                Explore ICP.Hubs
+                <LinkArrowDown />
               </Link>
-            </p> */}
+            </p>
           </motion.div>
           <motion.div
             className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
@@ -631,16 +751,20 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Community events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Immerse yourself in a tapestry of engaging community events, where
-              our global family comes together to celebrate, learn, and forge
-              lifelong connections.
+              Immerse yourself in a tapestry of engaging community events and
+              conferences, where our global ICP family hangs out and mingle with
+              amazing forward-thinking crowds. Our gatherings are a unique
+              moment to celebrate, learn, and forge longstanding connections.
             </p>
-            {/* <p className="mb-0">
-              <Link className="link-primary link-with-icon">
-                Come to an event
+            <p className="mb-0">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://airtable.com/embed/appBKNYn6DaFccnno/shrnOms5pAnWdFjfv/tblCZBZ26gbGvPf7j?backgroundColor=purple&viewControls=on"
+              >
+                Upcoming events
                 <LinkArrowUpRight />
               </Link>
-            </p> */}
+            </p>
           </motion.div>
         </AnimateSpawn>
         <AnimateSpawn
@@ -648,19 +772,19 @@ function CommunityPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="md:w-8/10 md:mx-auto text-center">
+          <div className="md:w-5/10 md:mx-auto text-center">
             <motion.h2
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Build the community
+              Join us
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Understand the benefits and limitations of each custody option so
-              you can choose the wallet that best suits your needs.
+              This is the right place to make the most of your experience,
+              talent, and network
             </motion.p>
           </div>
         </AnimateSpawn>
@@ -680,15 +804,20 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">Launch an ICP hub</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">
+              Launch / Join an ICP.Hub
+            </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Embark on a journey of leadership and impact by launching your own
-              hub, a gateway to catalyzing local talent and global
-              collaboration.
+              Embark on a Journey of leadership and impact by launching a new
+              ICP.Hub, or join existing operations as strategic partner. Join a
+              network of global founders and entrepreneurs.
             </p>
             <p className="mb-0">
-              <Link className="link-primary link-with-icon">
-                Build a hub
+              <Link
+                className="link-primary link-with-icon"
+                href="https://airtable.com/shr94SzLU4XXs9cTi"
+              >
+                Tell us about yourself
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -703,15 +832,20 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">Apply for a grant</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">
+              Go for a community grant
+            </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Turn your vision into reality – apply for our empowering grants to
-              fuel your initiatives and amplify their positive influence within
-              our global community.
+              Turn your vision into reality. Our Web3 Community Grant Program is
+              the right instrument to support your initiatives in the area of
+              education, content, events & more.
             </p>
             <p className="mb-0">
-              <Link className="link-primary link-with-icon">
-                Apply Here
+              <Link
+                className="link-primary link-with-icon"
+                href="https://dfinity.org/community-grants/"
+              >
+                See documentation
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -730,8 +864,9 @@ function CommunityPage() {
               Become an ambassador
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Join us as an ambassador, championing the spirit of our global
-              community and fostering meaningful connections across borders.
+              Contribute to promoting the Internet Computer's unique features
+              and super-powers, and become a true advocate for decentralised web
+              ecosystems.
             </p>
             <p className="mb-0">
               <Link className="link-primary-disabled link-with-icon">
@@ -741,10 +876,45 @@ function CommunityPage() {
             </p>
           </motion.div>
         </AnimateSpawn>
+
         <AnimateSpawn
-          className="container-10 mt-52 md:mt-[400px] relative mb-20"
+          className="container-10 mt-20 md:mt-40 relative"
           el={motion.section}
           variants={transitions.container}
+        >
+          <div className="blob blob-infinite blob-md blob-x-10 blob-y-8 z-[-1]"></div>
+          <div className="md:w-7/10">
+            <motion.h2
+              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+              variants={transitions.item}
+            >
+              Upcoming ICP Hub initiatives and publications
+            </motion.h2>
+            <motion.p
+              className="tw-paragraph md:tw-lead mb-0"
+              variants={transitions.item}
+            >
+              The DFINITY Foundation open-sourced and launched the Internet
+              Computer on May 10, 2021. List of major innovations developed
+              bythe Foundation.
+            </motion.p>
+          </div>
+        </AnimateSpawn>
+        <AnimateSpawn
+          className="container-12 mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-5 relative"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          {upcomingHubs.map((hub) => (
+            <UpcomingHubCard hub={hub} />
+          ))}
+        </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-10 pt-52 md:pt-[400px] relative mb-20"
+          el={motion.section}
+          variants={transitions.container}
+          id="hubs"
         >
           <div className="md:w-7/10 md:mx-auto text-center text-white relative">
             <div className="blob blob-purple blob-xl blob-x-5 blob-y-5 z-[-1] opacity-75 md:opacity-95"></div>
@@ -753,7 +923,7 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Find your community hub
+              Official ICP.Hubs
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
@@ -782,91 +952,114 @@ function CommunityPage() {
         </AnimateSpawn>
 
         <AnimateSpawn
-          className="container-10 mt-20 md:mt-40 relative"
+          className="container-10 pt-20 md:pt-40 relative"
           el={motion.section}
           variants={transitions.container}
+          id="education"
         >
-          <div className="blob blob-infinite blob-md blob-x-10 blob-y-8 z-[-1]"></div>
-          <div className="md:w-7/10">
+          {/* <div className="blob blob-infinite blob-md blob-x-0 blob-y-8 z-[-1]"></div> */}
+          <div className="md:w-8/10 md:mx-auto text-center mb-10 md:mb-12">
             <motion.h2
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Upcoming ICP Hub initiative
+              Educational Programmes
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium iure laudantium doloremque. Labore optio placeat modi,
-              porro doloribus dolorem minima molestias voluptates amet ad
-              nesciunt maxime ea perferendis eos officia.
+              Dedicated educational programs in cooperation with top industry
+              players. Designed to empower talented builders and initiate
+              exciting journeys on the Internet Computer blockchain.
             </motion.p>
           </div>
-        </AnimateSpawn>
-        <AnimateSpawn
-          className="container-12 mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 relative"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          {upcomingHubs.map((hub) => (
-            <UpcomingHubCard hub={hub} />
-          ))}
-        </AnimateSpawn>
 
-        <section className="bg-infinite text-white my-20 md:my-40 py-20 md:py-40">
-          <AnimateSpawn
-            className="container-10   relative"
-            el={motion.section}
-            variants={transitions.container}
-          >
-            <div className="blob blob-white blob-md blob-x-10 blob-y-0"></div>
-            <div className="md:w-7/10">
-              <motion.h2
-                className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
-                variants={transitions.item}
-              >
-                Our Global Community
-              </motion.h2>
-              <motion.p
-                className="tw-paragraph md:tw-lead mb-10"
-                variants={transitions.item}
-              >
-                Welcome to our vibrant global community where people from all
-                corners of the world come together to connect, collaborate, and
-                create.
-              </motion.p>
-
-              <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
-                <MotionLink
-                  className="button-outline-white"
-                  variants={transitions.item}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+              <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
+                Internet Computer
+                <img src="/img/community/education.svg" alt="" />
+              </h3>
+              <p className="flex-1 mb-0 tw-paragraph text-black/60">
+                In this community, you will learn essential Internet Computer
+                concepts, how to write smart contracts (canisters) and create
+                dapps.
+              </p>
+              <p className="mb-0">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://dacade.org/communities/icp"
                 >
-                  Subscribe for alerts
-                </MotionLink>
-                <MotionLink
-                  className="link-white link-with-icon"
-                  variants={transitions.item}
-                >
-                  Propose an event <LinkArrowUpRight />
-                </MotionLink>
+                  View Programme <LinkArrowUpRight />
+                </Link>
               </p>
             </div>
-          </AnimateSpawn>
 
-          <AnimateSpawn
-            className="container-12 mt-10 md:mt-12 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-[minmax(20px,auto)] justify-center"
-            el={motion.section}
-            variants={transitions.container}
-          >
-            {communityGallery.map((item) => (
-              <CommunityGalleryImage item={item} />
-            ))}
-          </AnimateSpawn>
-        </section>
+            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+              <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
+                IC Rust Bootcamp
+                <img src="/img/community/education.svg" alt="" />
+              </h3>
+              <p className="flex-1 mb-0 tw-paragraph text-black/60">
+                Welcome to the Internet Computer Rust Bootcamp! Unleashing the
+                Power of Decentralized Web Development!
+              </p>
+              <p className="mb-0">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://www.risein.com/bootcamps/internet-computer-rust-bootcamp"
+                >
+                  View Programme <LinkArrowUpRight />
+                </Link>
+              </p>
+            </div>
 
-        <section className="container-12 relative mt-40">
+            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+              <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
+                ICP Developer Program
+                <img src="/img/community/education.svg" alt="" />
+              </h3>
+              <p className="flex-1 mb-0 tw-paragraph text-black/60">
+                During the next 4 weeks we want you to have an incredible
+                experience on your way to learn to develop within the Internet
+                Computer.
+              </p>
+              <p className="mb-0">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://icp-esp.gitbook.io/icp-developer/lineamientos-certificacion/programa-icp-developer"
+                >
+                  View Programme <LinkArrowUpRight />
+                </Link>
+              </p>
+            </div>
+
+            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+              <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
+                ICP
+                <br />
+                Developer II
+                <img src="/img/community/education.svg" alt="" />
+              </h3>
+              <p className="flex-1 mb-0 tw-paragraph text-black/60">
+                This certification is a continuation of the ICP Developer I
+                certification for the development of backend Canisters with
+                Motoko.
+              </p>
+              <p className="mb-0">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://icp-esp.gitbook.io/icp-developer-ii/"
+                >
+                  View Programme <LinkArrowUpRight />
+                </Link>
+              </p>
+            </div>
+          </div>
+        </AnimateSpawn>
+
+        <section className="container-12 relative mt-30 md:mt-60">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
@@ -905,7 +1098,86 @@ function CommunityPage() {
             />
           </AnimateSpawn>
         </section>
-        <NewsletterSection />
+
+        <section className="bg-infinite text-white my-20 md:my-40 py-20 md:py-40">
+          <AnimateSpawn
+            className="container-10   relative"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className="blob blob-white blob-md blob-x-10 blob-y-0"></div>
+            <div className="md:w-7/10">
+              <motion.h2
+                className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+                variants={transitions.item}
+              >
+                Our Global Community
+              </motion.h2>
+              <motion.p
+                className="tw-paragraph md:tw-lead mb-0"
+                variants={transitions.item}
+              >
+                Welcome to our vibrant global community where people from all
+                corners of the world come together to connect, collaborate, and
+                create.
+              </motion.p>
+
+              {/* <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
+                <MotionLink
+                  className="button-outline-white"
+                  variants={transitions.item}
+                >
+                  Subscribe for alerts
+                </MotionLink>
+                <MotionLink
+                  className="link-white link-with-icon"
+                  variants={transitions.item}
+                >
+                  Propose an event <LinkArrowUpRight />
+                </MotionLink>
+              </p> */}
+            </div>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="container-12 mt-10 md:mt-15 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-[minmax(20px,auto)] justify-center"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            {communityGallery.map((item) => (
+              <CommunityGalleryImage item={item} />
+            ))}
+          </AnimateSpawn>
+        </section>
+
+        <Newsletter
+          fields={[
+            {
+              name: "EMAIL",
+              placeholder: "Email",
+              type: "email",
+              required: true,
+            },
+          ]}
+          ctaLabel="Get updates!"
+          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+          decoration={
+            <img
+              src="/img/newsletter/email-image-1.webp"
+              alt=""
+              loading="lazy"
+            />
+          }
+          className="mb-20"
+        >
+          <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
+            Want to meet ICP enthusiasts IRL?
+            <br />
+            <span className="text-white-60">
+              Sign up for event updates to stay connected
+            </span>
+          </h2>
+        </Newsletter>
       </main>
     </Layout>
   );
