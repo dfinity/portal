@@ -28,7 +28,7 @@ But the downsides of stable memory are that:
 
 Wasm native stable memory is a significant step in improving the first downside.
 
-## Why is Stable Memory Slower?
+## Why is stable memory slower?
 
 Each read from or write to stable memory goes through a system API call, and this call has a significant overhead. It first calls into the Wasmtime runtime, which then invokes code in the replica to copy over data from or to the stable memory. This indirection is needed because the running canister Wasm has no way to directly access the backing store of the stable memory.
 
