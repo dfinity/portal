@@ -24,7 +24,7 @@ This means that using stable memory is really the only option when it comes to v
 But the downsides of stable memory are that:
 
 1. It is slower to access than Wasm memory.
-1. Data must be serialized when storing in stable memory and deserialized when loaded.
+2. Data must be serialized when storing in stable memory and deserialized when loaded.
 
 Wasm native stable memory is a significant step in improving the first downside.
 
