@@ -147,11 +147,11 @@ function EnterprisePage() {
                   className="w-24 md:w-30"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Private data sharing
+                  Verifiable credentials
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Zero knowledge proofs to enable secure and private sharing of
-                  sensitive data.
+                  Share only the necessary personal information with other
+                  platforms.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -218,6 +218,27 @@ function EnterprisePage() {
             </motion.h2>
           </div>
           <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
+            <TranslatedLayout
+              imageUrl="/img/enterprise/serverless.webp"
+              reverse={true}
+            >
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Serverless Computing
+              </h2>
+              <p className="tw-lead-sm">
+                Businesses looking for serverless architectures to enable quick and
+                agile development cycles that reduce infrastructure maintenance and
+                operational costs can rely on the Internet Computer. It offers
+                serverless features comparable to existing cloud providers with extra
+                benefits like decentralisation and statefulness. The Internet Computer
+              </p>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                programming model is also similar to that of serverless clouds in that
+                applications can be written in common languages such as Rust or Python.
+                It is simpler, however, as state is maintained automatically without
+                the need for developer intervention. 
+              </p>
+            </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/platform-risk-large.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Manage platform risk
