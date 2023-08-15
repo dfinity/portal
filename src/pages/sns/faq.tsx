@@ -113,9 +113,12 @@ function SnsFaqPage() {
               },
             ]}
           ></Breadcrumbs>
-          <motion.h1 className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10">
+          <motion.h1 className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10 mb-6">
             What you need to know about SNS DAOs
           </motion.h1>
+          <motion.p className="tw-lead-sm text-black/60 mb-0">
+            Disclaimer: Participation in any SNS is at your own risk
+          </motion.p>
         </AnimateSpawn>
         <section className="container-12 flex flex-col gap-30 ">
           <FaqSection
@@ -160,18 +163,16 @@ function SnsFaqPage() {
 
             <Faq title="What is an SNS?">
               <p>
-                SNS stands for Service Nervous System. An SNS is a powerful
-                form of DAO that allows communities to govern smart contracts
-                and decentralized apps (dapps) running on the Internet Computer
+                SNS stands for Service Nervous System. An SNS is a powerful form
+                of DAO that allows communities to govern smart contracts and
+                decentralized apps (dapps) running on the Internet Computer
                 (ICP) completely on chain. Main things to note about SNS:
               </p>
               <ul>
                 <li>
                   The design of SNSs is similar to that of the{" "}
-                  <Link href="/nns">
-                    Network Nervous System (NNS)
-                  </Link>
-                  , which is the on-chain DAO that governs the whole ICP.
+                  <Link href="/nns">Network Nervous System (NNS)</Link>, which
+                  is the on-chain DAO that governs the whole ICP.
                 </li>
                 <li>
                   A dapp controlled by an SNS DAO is governed by SNS token
@@ -198,12 +199,12 @@ function SnsFaqPage() {
                 </strong>{" "}
                 (frontend, backend application logic, and data), so SNS DAOs are
                 unique in that they can fully control (via voting) every aspect
-                of a dapp, since everything is on-chain. Having fully on-chain DAOs
-                is important because it enables all decisions to be executed on the
-                blockchain. This is in contrast to existing DAOs on other
-                blockchains where voting takes place on-chain but the execution of
-                the results are often carried out by developers off-chain. This
-                facilitates true decentralization.{" "}
+                of a dapp, since everything is on-chain. Having fully on-chain
+                DAOs is important because it enables all decisions to be
+                executed on the blockchain. This is in contrast to existing DAOs
+                on other blockchains where voting takes place on-chain but the
+                execution of the results are often carried out by developers
+                off-chain. This facilitates true decentralization.{" "}
                 <p>
                   Therefore, SNS DAOs serve as a vehicle to deliver fully
                   decentralized online services that are owned and governed by
@@ -253,27 +254,19 @@ function SnsFaqPage() {
 
             <Faq title="Are there other existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
-              the launch of the SNS technology. OpenChat was the first dapp
-              that handed control over to an SNS DAO announced their plans to
-              turn their dapp into an SNS DAO in Q1 of 2023. Dapps such as {" "}
-              <Link href="https://www.sonic.ooo//">
-                Sonic
-              </Link>, {" "}
-              <Link href="https://hotornot.wtf/">
-                Hot or Not
-              </Link>, {" "}
+              the launch of the SNS technology. OpenChat was the first dapp that
+              handed control over to an SNS DAO announced their plans to turn
+              their dapp into an SNS DAO in Q1 of 2023. Dapps such as{" "}
+              <Link href="https://www.sonic.ooo//">Sonic</Link>,{" "}
+              <Link href="https://hotornot.wtf/">Hot or Not</Link>,{" "}
               <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
                 Kinic
-              </Link>, {" "}
-              <Link href="https://distrikt.app/">
-                distrikt
-              </Link>, {" "}
+              </Link>
+              , <Link href="https://distrikt.app/">distrikt</Link>,{" "}
               <Link href="https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/">
                 Catalyze
-              </Link>, {" "}
-              <Link href="https://canistore.io/">
-                Canistore
-              </Link> and {" "}
+              </Link>
+              , <Link href="https://canistore.io/">Canistore</Link> and{" "}
               <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
                 Nuance
               </Link>{" "}
@@ -291,10 +284,10 @@ function SnsFaqPage() {
             <Faq title="What do I do once I am an SNS DAO member?">
               The most important thing you can do as an SNS DAO member is to
               participate in governance. On-chain governance is what
-              differentiates DAOs from traditional web applications, as members 
+              differentiates DAOs from traditional web applications, as members
               play a key role in the DAO's success. DAO members can contribute
-              in many ways, from pushing code, to designing a logo or a UI,
-              to simply voting on SNS proposals that shape how the dapp evolves.
+              in many ways, from pushing code, to designing a logo or a UI, to
+              simply voting on SNS proposals that shape how the dapp evolves.
             </Faq>
             <Faq title="In what ways can I participate in an SNS DAO?">
               There are many ways members can participate in an SNS DAO, both
@@ -303,34 +296,33 @@ function SnsFaqPage() {
               <ul>
                 <li>
                   <strong>Vote on SNS proposals:</strong> You can vote on
-                  different types of proposals manually or follow other
-                  neurons that vote.
+                  different types of proposals manually or follow other neurons
+                  that vote.
                 </li>
                 <li>
                   <strong>Create upgrade proposals: </strong>
-                  Submit an upgrade proposal to update the code of the
-                  dapp that the SNS DAO controls. This allows anyone to
-                  contribute code to an SNS DAO.
+                  Submit an upgrade proposal to update the code of the dapp that
+                  the SNS DAO controls. This allows anyone to contribute code to
+                  an SNS DAO.
                 </li>
                 <li>
                   <strong>Upgrade the asset canister: </strong>
                   Currently updates to asset canisters don't go through
                   proposals. However, you can still make changes to the frontend
-                  by upgrading the asset canister controlled by an SNS DAO.
-                  To do so, you have to first create a proposal to add your
+                  by upgrading the asset canister controlled by an SNS DAO. To
+                  do so, you have to first create a proposal to add your
                   principal ID to the list of controllers who can make updates.
                 </li>
                 <li>
-                  <strong>Create motion proposals:</strong> Motion
-                  proposals don't upgrade the code of the dapp, instead
-                  they steer the direction of the DAO in terms of new
-                  features and dapp development.
+                  <strong>Create motion proposals:</strong> Motion proposals
+                  don't upgrade the code of the dapp, instead they steer the
+                  direction of the DAO in terms of new features and dapp
+                  development.
                 </li>
                 <li>
                   <strong>Create SNS parameter update proposals: </strong>
-                  You can propose upgrades for many of the DAO's parameters
-                  such as maximum staking period, voting rewards and many more.
-                  See {" "}
+                  You can propose upgrades for many of the DAO's parameters such
+                  as maximum staking period, voting rewards and many more. See{" "}
                   <Link href="https://github.com/dfinity/ic/blob/3da3fac8fcb0c3cbfc4ab7f037f57e83245a828c/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L765">
                     parameters
                   </Link>
@@ -340,32 +332,32 @@ function SnsFaqPage() {
               Non-governance related examples of contributing are:
               <ul>
                 <li>
-                  <strong>Content moderation: </strong> Many social media
-                  dapps may incorporate content moderation as they scale to
-                  millions of users. Moderators review and approve content
-                  based on the content policies of the DAO.
+                  <strong>Content moderation: </strong> Many social media dapps
+                  may incorporate content moderation as they scale to millions
+                  of users. Moderators review and approve content based on the
+                  content policies of the DAO.
                 </li>
                 <li>
                   <strong>UI / UX design work: </strong> Users can contribute
-                  not only by coding, but designing different aspects of the 
+                  not only by coding, but designing different aspects of the
                   dapp.
                 </li>
                 <li>
                   <strong>Off-chain marketing / inviting friends: </strong>
-                  Members of the DAO can be advocates of the dapp and promote
-                  it in different ways.
+                  Members of the DAO can be advocates of the dapp and promote it
+                  in different ways.
                 </li>
               </ul>
-            </Faq> 
-            <Faq title="How does voting in an SNS DAO work?">  
+            </Faq>
+            <Faq title="How does voting in an SNS DAO work?">
               Once you have acquired SNS tokens, you can lock them into SNS
-              neurons and create a proposal or vote on one. If a proposal
-              gets adopted, the code of the SNS DAO or the dapp it controls
-              is upgraded. Depending on the SNS configuration, users who vote
-              may be rewarded with additional tokens for participating in
-              governance. If you want to get more deeply involved, you can
-              also suggest feature updates through proposals to improve the
-              dapp controlled by the DAO.
+              neurons and create a proposal or vote on one. If a proposal gets
+              adopted, the code of the SNS DAO or the dapp it controls is
+              upgraded. Depending on the SNS configuration, users who vote may
+              be rewarded with additional tokens for participating in
+              governance. If you want to get more deeply involved, you can also
+              suggest feature updates through proposals to improve the dapp
+              controlled by the DAO.
             </Faq>
             <Faq
               title="How can I get SNS Tokens?"
@@ -411,14 +403,14 @@ function SnsFaqPage() {
                 </li>
               </ul>
             </Faq>
-            
+
             <Faq title="Do I get rewards for participating in governance?">
               SNS works very similar to the NNS, however each SNS DAO can
-              configure their parameters differently. Once you have locked
-              your SNS governance tokens into SNS neurons for at least
-              the minimum required time, you can participate in voting.
-              Depending on the configuration voting may reward participants
-              with SNS governance tokens.
+              configure their parameters differently. Once you have locked your
+              SNS governance tokens into SNS neurons for at least the minimum
+              required time, you can participate in voting. Depending on the
+              configuration voting may reward participants with SNS governance
+              tokens.
             </Faq>
 
             <Faq title="What is the Community Fund?">
@@ -432,16 +424,17 @@ function SnsFaqPage() {
                 From a user's vantage point, the Community Fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
                 future SNSs, which results in higher diversification. As the NNS
-                decides how the Community Fund is distributed, those participating
-                in it can leverage the broader community's "wisdom of crowds"
-                to decide which SNS tokens to acquire.
+                decides how the Community Fund is distributed, those
+                participating in it can leverage the broader community's "wisdom
+                of crowds" to decide which SNS tokens to acquire.
               </p>
               <p>
-                ICP neuron holders can opt in or out of the Community Fund at any moment.
-                Neurons will only participate in the decentralization swap if they are
-                opted in at the moment when the proposal to initiate the decentralization
-                swap executes. The propsoal executes right after it gets adopted by ICP
-                neuron holders.
+                ICP neuron holders can opt in or out of the Community Fund at
+                any moment. Neurons will only participate in the
+                decentralization swap if they are opted in at the moment when
+                the proposal to initiate the decentralization swap executes. The
+                propsoal executes right after it gets adopted by ICP neuron
+                holders.
               </p>
               More about the{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
@@ -453,16 +446,14 @@ function SnsFaqPage() {
               <p>
                 If you want to participate in the swap, do not send ICP directly
                 to addresses! An SNS swap will never initiate contact with you,
-                e.g. via chat or email. You will never be asked to manually enter
-                an ICP address to participate in a decentralization swap. If you
-                find yourself entering an ICP address to participate in an SNS
-                swap, then STOP. Your swap address is specific to your identity,
-                and you should only interact with that address when participating
-                in a swap through the{" "}
-                <Link href="https://nns.ic0.app/launchpad/">
-                  NNS
-                </Link>{" "}
-                or other ICP based dapps that support the swap like{" "}
+                e.g. via chat or email. You will never be asked to manually
+                enter an ICP address to participate in a decentralization swap.
+                If you find yourself entering an ICP address to participate in
+                an SNS swap, then STOP. Your swap address is specific to your
+                identity, and you should only interact with that address when
+                participating in a swap through the{" "}
+                <Link href="https://nns.ic0.app/launchpad/">NNS</Link> or other
+                ICP based dapps that support the swap like{" "}
                 <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/icsns/launchpad">
                   ICLighthouse
                 </Link>
@@ -513,10 +504,10 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   The maximum amount of ICP a decentralization swap can receive
-                  before it concludes. If the maximum ICP is reached, the swap is
-                  over and the control of the dapp is turned over to the token
-                  holders. As the number of tokens to be sold is fixed, it is
-                  amount of ICP raised that determines the initial price of
+                  before it concludes. If the maximum ICP is reached, the swap
+                  is over and the control of the dapp is turned over to the
+                  token holders. As the number of tokens to be sold is fixed, it
+                  is amount of ICP raised that determines the initial price of
                   the SNS tokens.
                 </li>
                 <li>Minimum and maximum commitment of ICP per participant</li>
@@ -544,47 +535,47 @@ function SnsFaqPage() {
                 their price will be higher.
               </p>
             </Faq>
-            
+
             <Faq title="How is the price of SNS tokens calculated?">
               <p>
                 SNS tokens can be exchanged for ICP during the decentralization
-                swap. There is a fixed number of tokens distributed during the swap,
-                which means their price is determined by the amount of ICP raised.
-                You can calculate the token price by dividing the amount of ICP
-                raised with the number of tokens sold. Price = ICP raised / number
-                of tokens sold. Note that the final price of SNS tokens isn't
-                known at the time of the decentralization swap, as it is dependent 
-                on the total amount of ICP raised in the swap. However, you can 
-                calculate the minimum and maximum price based on the minimum and 
-                maximum ICP that the swap accepts, which you can verify in the 
-                swap proposal. A few examples:
+                swap. There is a fixed number of tokens distributed during the
+                swap, which means their price is determined by the amount of ICP
+                raised. You can calculate the token price by dividing the amount
+                of ICP raised with the number of tokens sold. Price = ICP raised
+                / number of tokens sold. Note that the final price of SNS tokens
+                isn't known at the time of the decentralization swap, as it is
+                dependent on the total amount of ICP raised in the swap.
+                However, you can calculate the minimum and maximum price based
+                on the minimum and maximum ICP that the swap accepts, which you
+                can verify in the swap proposal. A few examples:
               </p>
               <ul>
                 <li>
-                  The decentralization swap raised 1000 ICP by selling 5000 tokens.
-                  You contributed with 10 ICP. This means you will have 50 SNS
-                  tokens, each worth 0.2 ICP.
+                  The decentralization swap raised 1000 ICP by selling 5000
+                  tokens. You contributed with 10 ICP. This means you will have
+                  50 SNS tokens, each worth 0.2 ICP.
                 </li>
                 <li>
-                  The decentralization swap raised 500,000 ICP by selling 1 million tokens.
-                  You contributed with 200 ICP. This means you will have 400 SNS
-                  tokens, each worth 0.5 ICP.
+                  The decentralization swap raised 500,000 ICP by selling 1
+                  million tokens. You contributed with 200 ICP. This means you
+                  will have 400 SNS tokens, each worth 0.5 ICP.
                 </li>
                 <li>
-                  The decentralization swap raised 10,000 ICP by selling 100 tokens.
-                  You contributed with 5 ICP. This means you will have 0.05 SNS
-                  tokens, where a full token would be worth 100 ICP.
-                </li>  
-              </ul>              
+                  The decentralization swap raised 10,000 ICP by selling 100
+                  tokens. You contributed with 5 ICP. This means you will have
+                  0.05 SNS tokens, where a full token would be worth 100 ICP.
+                </li>
+              </ul>
             </Faq>
 
             <Faq title="How do I participate in a swap?">
               <p>
                 You can participate in the decentralization swap in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>, which
-                requires ICP utility tokens. ICP tokens can be exchanged for SNS
-                tokens during the decentralization swap. If you don’t have ICP,
-                go to any of the exchanges listed on{" "}
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
+                which requires ICP utility tokens. ICP tokens can be exchanged
+                for SNS tokens during the decentralization swap. If you don’t
+                have ICP, go to any of the exchanges listed on{" "}
                 <Link href="https://coinmarketcap.com/currencies/internet-computer/markets/">
                   CoinMarketCap
                 </Link>
@@ -650,11 +641,11 @@ function SnsFaqPage() {
               </p>
               <p>
                 After the swap ends and is successful, you receive SNS tokens.
-                Note, that this may take a few hours after the swap has concluded.
-                The number of SNS tokens you receive, and the price paid for
-                each token, depends on the amount of ICP raised during the swap
-                as well as the amount of ICP spent. The more ICP raised, the
-                fewer SNS tokens you receive.
+                Note, that this may take a few hours after the swap has
+                concluded. The number of SNS tokens you receive, and the price
+                paid for each token, depends on the amount of ICP raised during
+                the swap as well as the amount of ICP spent. The more ICP
+                raised, the fewer SNS tokens you receive.
               </p>
               <p>
                 If the set goals of the decentralization swap are not reached,
@@ -676,8 +667,8 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="Who starts the decentralization swap?">
               The developer team first creates an NNS proposal for the
-              decentralization swap. The swap itself starts automatically
-              once the NNS proposal is adopted.
+              decentralization swap. The swap itself starts automatically once
+              the NNS proposal is adopted.
             </Faq>
             <Faq title="As a participant in the SNS decentralization swap, what do I need to trust?">
               <p>
@@ -697,39 +688,37 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
-              
+
             <Faq title="How can I verify the SNS decentralization swap proposal?">
               <p>
                 There are multiple levels of verification you can do depending
                 on your level of technical understanding. SNS canisters can be
                 verified at any time, even before the decentralization swap, but
-                after they have been installed on the SNS subnet.
-                Here are some ways to verify:
+                after they have been installed on the SNS subnet. Here are some
+                ways to verify:
               </p>
               <ul>
                 <li>
                   <strong>Swap parameters:</strong> You can verify what the
-                  parameters of the decentralization swap are in the Launch
-                  Pad or in the decentralization swap NNS proposal.
+                  parameters of the decentralization swap are in the Launch Pad
+                  or in the decentralization swap NNS proposal.
                 </li>
                 <li>
                   <strong>SNS root canister: </strong> An SNS DAO is comprised
-                  of several SNS canisters that have different functions.
-                  The root canister is the canister that controls the other
-                  SNS canisters within a given SNS DAO. You should verify that
-                  the SNS root canister is the only canister controlling other
-                  SNS canisters within that SNS DAO. Verification is important for
+                  of several SNS canisters that have different functions. The
+                  root canister is the canister that controls the other SNS
+                  canisters within a given SNS DAO. You should verify that the
+                  SNS root canister is the only canister controlling other SNS
+                  canisters within that SNS DAO. Verification is important for
                   making sure there no backdoors built in.
-                </li>  
+                </li>
                 <li>
                   <strong>The dapp canister: </strong> You can verify that the
                   canister id of the dapp controlled by the SNS DAO is the same
                   as the one you're interacting with.
                 </li>
                 See Wiki for more info on{" "}
-                <Link
-                  href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_swap_proposal"
-                >
+                <Link href="https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_swap_proposal">
                   verification
                 </Link>
               </ul>
@@ -748,9 +737,7 @@ function SnsFaqPage() {
               <p>
                 Voting and the creation of SNS proposals can take place in the
                 dapp controlled by the SNS DAO, and soon in the{" "}
-                <Link href="https://nns.ic0.app/">
-                  NNS frontend dapp
-                </Link>,
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
                 Proposals are listed within the dapps themselves as in this
                 example of OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
@@ -767,9 +754,8 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How do I create a proposal for an SNS DAO?">
               <p>
-                Creating an SNS proposal requires knowledge of the
-                command line tools{" "}
-                <Link href="https://github.com/dfinity/sdk">dfx</Link> and{" "}
+                Creating an SNS proposal requires knowledge of the command line
+                tools <Link href="https://github.com/dfinity/sdk">dfx</Link> and{" "}
                 <Link href="https://github.com/dfinity/sns-quill">quill</Link>.
               </p>
               <p className="not-prose">
@@ -801,11 +787,11 @@ function SnsFaqPage() {
             <Faq title="Is it possible to sell SNS tokens to another person?">
               <p>
                 Yes. Because tokens can be sent to other people, they can
-                likewise be sent to exchanges and thus, swapped for other tokens.
-                The easiest way to sell SNS tokens is through a decentralized
-                exchange (DEX) that lists the token. You can exchange SNS tokens
-                for other tokens, depending on the token pairs available on any
-                DEX.
+                likewise be sent to exchanges and thus, swapped for other
+                tokens. The easiest way to sell SNS tokens is through a
+                decentralized exchange (DEX) that lists the token. You can
+                exchange SNS tokens for other tokens, depending on the token
+                pairs available on any DEX.
               </p>
               <p>
                 Likewise, you can acquire SNS tokens on a DEX in exchange for
@@ -817,13 +803,11 @@ function SnsFaqPage() {
                 This depends on the specific SNS configuration. An SNS DAO can
                 have both inflationary and deflationary pressures.
               </p>
-              <p>
-                Inflationary:
-              </p>
+              <p>Inflationary:</p>
               <ul>
                 <li>
-                  An SNS DAO can be set up to mint voting rewards for people
-                  who participate in governance (similar to ICP).
+                  An SNS DAO can be set up to mint voting rewards for people who
+                  participate in governance (similar to ICP).
                 </li>
                 <li>
                   An SNS DAO can mint tokens if voted on by SNS token holders.
@@ -831,14 +815,13 @@ function SnsFaqPage() {
                   distributes it among players.
                 </li>
               </ul>
-              <p>
-                Deflationary:
-              </p>
+              <p>Deflationary:</p>
               <ul>
                 <li>SNS tokens are burnt for every transaction.</li>
                 <li>
                   Locking SNS tokens into neurons removes them from circulation.
-                  While not technically deflation, it acts as a deflationary pressure.
+                  While not technically deflation, it acts as a deflationary
+                  pressure.
                 </li>
               </ul>
             </Faq>
