@@ -162,6 +162,7 @@ const sidebars = {
                 "developer-docs/setup/cycles/cycles-wallet",
                 "developer-docs/setup/cycles/converting_icp_tokens_into_cycles",
                 "developer-docs/setup/cycles/cycles-faucet",
+                "developer-docs/setup/cycles/cycles_management_services",
             ],
           },
           {
