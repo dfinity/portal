@@ -1,5 +1,5 @@
 ---
-title: Wasm-native Stable Memory
+title: Wasm-native stable memory
 description: "Introducing Wasm-native Stable Memory"
 image: /img/blog/wasm-native-stable-memory-diagram-new.png
 ---
