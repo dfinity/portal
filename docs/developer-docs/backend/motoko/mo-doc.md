@@ -1,4 +1,4 @@
-# Generating Motoko Documentation
+# Generating Motoko documentation
 
 `mo-doc` is a command-line tool for generating documentation for Motoko source code. It processes source files and generates documentation in various formats. 
 
