@@ -16,8 +16,6 @@ import { Stat, StatsPanel } from "../components/Common/Stats";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
-const MotionLink = motion(Link);
-
 type Hub = {
   name: string;
   location?: string;
@@ -287,16 +285,16 @@ const communityGallery: {
   },
   {
     image: "img/community/image-14.webp",
-    heightUnits: 4,
+    heightUnits: 3,
   },
   {
     image: "img/community/image-15.webp",
-    heightUnits: 4,
+    heightUnits: 3,
   },
 
   {
     image: "img/community/image-16.webp",
-    heightUnits: 3,
+    heightUnits: 2,
   },
   {
     image: "img/community/image-17.webp",
@@ -637,14 +635,14 @@ function CommunityPage() {
           ref={heroRef}
         >
           <div className="absolute inset-0 overflow-hidden">
-            <div className="blob blob-purple blob-xl md:blob-xl blob-x-5 blob-y-5 md:blob-x-6 md:blob-y-10 opacity-50"></div>
+            <div className="blob blob-purple blob-lg md:blob-xl blob-x-10 blob-y-10 md:blob-x-6 md:blob-y-10 opacity-40 md:opacity-50"></div>
           </div>
           <AnimateSpawn
-            className="container-12 pt-20 md:pt-36 relative md:flex md:-mb-40"
+            className="container-10 pt-20 md:pt-36 relative md:flex md:-mb-40"
             variants={transitions.container}
           >
-            <div className="md:flex-1"></div>
-            <div className="sm:w-6/10 md:w-auto md:flex-[6] relative pb-[55%] sm:pb-[20%] md:pb-20">
+            {/* <div className="md:flex-1"></div> */}
+            <div className=" md:w-6/10 relative pb-[45%] sm:pb-[20%] md:pb-20 z-1">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
@@ -661,7 +659,25 @@ function CommunityPage() {
                 default blockchain.
               </motion.p>
             </div>
-            <Globe className="min-w-[380px] sm:min-w-0 w-[80vw] md:h-full md:flex-[6] aspect-square -mt-8 sm:mt-0 absolute -right-3/10 md:right-auto bottom-0 md:bottom-auto translate-y-1/2 md:static md:-mt-60 md:translate-y-40" />
+            <Globe
+              className="
+              aspect-square
+              min-w-[380px] w-[80vw]
+              -mt-8
+              absolute 
+              -right-3/10
+              bottom-0
+              translate-y-1/2
+              
+              sm:min-w-0 
+              sm:mt-0
+              
+              md:w-[650px]
+              md:-right-20
+              md:bottom-auto 
+              md:-mt-60
+              md:translate-y-40"
+            />
           </AnimateSpawn>
         </section>
         <div className="bg-page">
@@ -976,7 +992,10 @@ function CommunityPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+            <motion.div
+              className="card-white flex flex-col justify-between gap-6 py-8 px-6"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
                 Internet Computer
                 <img src="/img/community/education.svg" alt="" />
@@ -994,9 +1013,12 @@ function CommunityPage() {
                   View Programme <LinkArrowUpRight />
                 </Link>
               </p>
-            </div>
+            </motion.div>
 
-            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+            <motion.div
+              className="card-white flex flex-col justify-between gap-6 py-8 px-6"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
                 IC Rust Bootcamp
                 <img src="/img/community/education.svg" alt="" />
@@ -1013,9 +1035,12 @@ function CommunityPage() {
                   View Programme <LinkArrowUpRight />
                 </Link>
               </p>
-            </div>
+            </motion.div>
 
-            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+            <motion.div
+              className="card-white flex flex-col justify-between gap-6 py-8 px-6"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
                 ICP Developer Program
                 <img src="/img/community/education.svg" alt="" />
@@ -1033,9 +1058,12 @@ function CommunityPage() {
                   View Programme <LinkArrowUpRight />
                 </Link>
               </p>
-            </div>
+            </motion.div>
 
-            <div className="card-white flex flex-col justify-between gap-6 py-8 px-6">
+            <motion.div
+              className="card-white flex flex-col justify-between gap-6 py-8 px-6"
+              variants={transitions.item}
+            >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
                 ICP
                 <br />
@@ -1055,7 +1083,7 @@ function CommunityPage() {
                   View Programme <LinkArrowUpRight />
                 </Link>
               </p>
-            </div>
+            </motion.div>
           </div>
         </AnimateSpawn>
 
