@@ -36,7 +36,7 @@ The following diagram shows the difference between accessing the main Wasm memor
 
 ![Original stable memory diagram](/img/blog/wasm-native-stable-memory-diagram-old.png)
  
-## How Wasm-native Stable Memory works
+## How Wasm-native stable memory works
 
 Fortunately the new [multiple memories](https://github.com/WebAssembly/multi-memory/blob/master/proposals/multi-memory/Overview.md) Wasm feature allows a Wasm module to directly address multiple byte arrays (called “memories” in the Wasm spec). We can use this to modify calls to the stable memory APIs to directly read or write from a secondary Wasm memory.
 
