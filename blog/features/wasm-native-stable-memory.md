@@ -1,6 +1,6 @@
 ---
 title: Wasm-native stable memory
-description: "Introducing Wasm-native Stable Memory"
+description: "Introducing Wasm-native stable memory"
 image: /img/blog/wasm-native-stable-memory-diagram-new.png
 ---
 
