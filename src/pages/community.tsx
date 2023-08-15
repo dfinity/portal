@@ -497,7 +497,7 @@ const stats: {
   [
     { title: "PR & Media Exposure", value: "15000000", fallbackValue: "" },
     { title: "N. of Universities", value: "32", fallbackValue: "" },
-    { title: "Entreperneurs Engaged", value: "2000", fallbackValue: "" },
+    { title: "Entrepreneurs Engaged", value: "2000", fallbackValue: "" },
     { title: "Users Onboarded", value: "25000", fallbackValue: "" },
   ],
 
@@ -912,7 +912,7 @@ function CommunityPage() {
             >
               The DFINITY Foundation open-sourced and launched the Internet
               Computer on May 10, 2021. List of major innovations developed
-              bythe Foundation.
+              by the Foundation.
             </motion.p>
           </div>
         </AnimateSpawn>
