@@ -1,4 +1,4 @@
-# 10: Using integers in calculator functions
+# 4: Using integers in calculator functions
 
 ## Overview 
 In this guide, you are going to write a simple calculator program that creates a single actor with several public entry-point functions to perform basic arithmetic operations.
@@ -21,57 +21,65 @@ The `div` function also includes code to prevent the program from attempting to 
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
+Before following this guide, assure that you have the necessary dependencies in your environment:
+
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+
+-   [x] Stop any canister execution environment running on the local computer.
 
 ## Create a new project
 
-Open a terminal shell on your local computer, if you don’t already have one open.
+To create a new project for this guide:
 
-To create a new project, run the following command:
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-```
-dfx new calc
-```
+- #### Step 2:  Change to the folder you are using for your Internet Computer projects, if you are using one.
 
-Change into your project directory by running the following command:
+- #### Step 3:  Create a new project by running the following command:
 
-```
-cd calc
-```
+        dfx new calc
+
+- #### Step 4:  Change to your project directory by running the following command:
+
+        cd calc
 
 ## Modify the default configuration
 
 For this guide, let’s modify the default `dfx.json` configuration file to use a more specific name for its main program.
 
-Open the `dfx.json` configuration file in a text editor. Then, change the `main` key setting from the default `main.mo` program name to `calc_main.mo`.
+To modify the default `dfx.json` configuration file:
 
-For example:
+- #### Step 1:  Open the `dfx.json` configuration file in a text editor.
 
-```
-"main": "src/calc_backend/calc_main.mo",
-```
+- #### Step 2:  Change the `main` key setting from the default `main.mo` program name to `calc_main.mo`.
 
-For this guide, changing the name of the source file from `main.mo` to `calc_main.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
+    For example:
 
-In a more complex dapp, you might have multiple source files instead of a single `main` program file. More complex applications might also have specific dependencies between multiple source files that you need to manage using settings in the `dfx.json` configuration file. 
+        "main": "src/calc_backend/calc_main.mo",
 
-In a scenario like that, with multiple canisters and programs defined in your `dfx.json` file, having multiple files all named `main.mo` might make navigating your workspace more difficult. The name you choose for each program isn’t significant, but it is important that the name you set in the `dfx.json` file matches the name of your program in the file system.
+    For this guide, changing the name of the source file from `main.mo` to `calc_main.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
 
-Save your changes and close the file to continue.
+    In a more complex dapp, you might have multiple source files instead of a single `main` program file. More complex applications might also have specific dependencies between multiple source files that you need to manage using settings in the `dfx.json` configuration file. 
+    
+    In a scenario like that, with multiple canisters and programs defined in your `dfx.json` file, having multiple files all named `main.mo` might make navigating your workspace more difficult. The name you choose for each program isn’t significant, but it is important that the name you set in the `dfx.json` file matches the name of your program in the file system.
+
+- #### Step 3:  Save your changes and close the file to continue.
 
 ## Modify the default program
 
 For this guide, you need to replace the default program with a program that performs basic arithmetic operations.
 
-To replace the default program, copy the template `main.mo` file to create a new file named `calc_main.mo` by running the following command:
+To replace the default program:
 
-```
-cp src/calc_backend/main.mo src/calc_backend/calc_main.mo
-```
+- #### Step 1:  Check that you are still in your project directory, if needed.
 
-Then, open the `src/calc_backend/calc_main.mo` file in a text editor and delete the existing content.
+- #### Step 2:  Copy the template `main.mo` file to create a new file named `calc_main.mo` by running the following command:
 
-Copy and paste this code into the `calc_main.mo` file:
+        cp src/calc_backend/main.mo src/calc_backend/calc_main.mo
+
+- #### Step 3:  Open the `src/calc_backend/calc_main.mo` file in a text editor and delete the existing content.
+
+- #### Step 4:  Copy and paste this code into the `calc_main.mo` file:
 
 ```
 // This single-cell calculator defines one calculator instruction per
@@ -102,9 +110,9 @@ actor Calc {
  };
 ```
 
-You might notice that this sample code uses integer (`Int`) data types, enabling you to use positive or negative numbers. If you wanted to restrict the functions in this calculator code to only use positive numbers, you could change the data type to only allow natural (`Nat`) data.
+    You might notice that this sample code uses integer (`Int`) data types, enabling you to use positive or negative numbers. If you wanted to restrict the functions in this calculator code to only use positive numbers, you could change the data type to only allow natural (`Nat`) data.
 
-Save your changes and close the file to continue.
+- #### Step 5:  Save your changes and close the file to continue.
 
 ## Start the local canister execution environment
 
@@ -114,111 +122,103 @@ Starting the network locally requires a `dfx.json` file, so you should be sure y
 
 To start the local canister execution environment:
 
-Open a new terminal window or tab on your local computer.
+- #### Step 1:  Open a new terminal window or tab on your local computer.
 
-:::info
--   You should now have **two terminals** open.
--   You should have the **project directory** as your **current working directory**.
-:::
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
-Then, start the local canister execution environment on your machine by running the following command:
+    -   You should now have **two terminals** open.
 
-```
-dfx start
-```
+    -   You should have the **project directory** as your **current working directory**.
 
-After you start the local network, the terminal displays messages about network operations. Leave the terminal that displays network operations open and switch your focus to your original terminal where you created your new project.
+- #### Step 3:  Start the local canister execution environment on your machine by running the following command:
+
+        dfx start
+
+    After you start the local network, the terminal displays messages about network operations.
+
+- #### Step 4:  Leave the terminal that displays network operations open and switch your focus to your original terminal where you created your new project.
 
 ## Register, build, and deploy the dapp
 
 After you connect to the local canister execution environment, you can register, build, and deploy your dapp locally.
 
-Register, build, and deploy your dapp by running the following command in your project's directory:
+To deploy the dapp locally:
 
-```
-dfx deploy
-```
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-The `dfx deploy` command output displays information about the operations it performs.
+- #### Step 2:  Register, build, and deploy your dapp by running the following command:
 
-## Testing canister functionality
+        dfx deploy
+
+    The `dfx deploy` command output displays information about the operations it performs.
+
+## Verify calculator functions on the canister
 
 You now have a program deployed as a **canister** on your local canister execution environment. You can test the program by using `dfx canister call` commands.
 
-Use the `dfx canister call` command to call the `calc_backend` canister `add` function and pass it the input argument `10` by running the following command:
+To test the program you have deployed:
 
-```
-dfx canister call calc_backend add '(10)'
-```
+- #### Step 1:  Use the `dfx canister call` command to call the `calc_backend` canister `add` function and pass it the input argument `10` by running the following command:
 
-When you pass an argument enclosed by the single quotation marks and parentheses,the interface description language (IDL) parses the argument type, so you don’t need to specify the argument type manually.
+        dfx canister call calc_backend add '(10)'
 
-Verify that the command returns the value expected for the `add` function. For example, the program displays output similar to the following:
+    When you pass an argument enclosed by the single quotation marks and parentheses,the interface description language (IDL) parses the argument type, so you don’t need to specify the argument type manually.
 
-```
-(10 : int)
-```
+    Verify that the command returns the value expected for the `add` function. For example, the program displays output similar to the following:
 
-Call the `mul` function and pass it the input argument `3` by running the following command:
+        (10 : int)
 
-```
-dfx canister call calc_backend mul '(3)'
-```
+- #### Step 2:  Call the `mul` function and pass it the input argument `3` by running the following command:
 
-Verify that the command returns the value expected for the `mul` function. For example, the program displays output similar to the following:
+        dfx canister call calc_backend mul '(3)'
 
-```
-(30 : int)
-```
+    Verify that the command returns the value expected for the `mul` function. For example, the program displays output similar to the following:
 
-Call the `sub` function and pass it the input argument `5` of type `number` by running the following command:
+        (30 : int)
 
-```
-dfx canister call calc_backend sub '(5)'
-```
+- #### Step 3:  Call the `sub` function and pass it the input argument `5` of type `number` by running the following command:
 
-Verify that the command returns the value expected for the `sub` function. For example, the program displays output similar to the following:
+        dfx canister call calc_backend sub '(5)'
 
-```
-(25 : int)
-```
+    Verify that the command returns the value expected for the `sub` function. For example, the program displays output similar to the following:
 
-Call the `div` function and pass it the input argument `5` by running the following command:
+        (25 : int)
 
-```
-dfx canister call calc_backend div '(5)'
-```
+- #### Step 4:  Call the `div` function and pass it the input argument `5` by running the following command:
 
-Verify that the command returns the value expected for the `div` function. For example, the program displays output similar to the following:
+        dfx canister call calc_backend div '(5)'
 
-```
-(opt (5 : int))
-```
+    Verify that the command returns the value expected for the `div` function. For example, the program displays output similar to the following:
 
-You might notice that the `div` function returns an optional result. The program makes the result optional to enable the `div` function to return `null` in the case of a division-by-zero error.
+        (opt (5 : int))
 
-Because the cell variable in this program is an integer, you can also call its functions and specify negative input values. For example, you might run the following command:
+    You might notice that the `div` function returns an optional result. The program makes the result optional to enable the `div` function to return `null` in the case of a division-by-zero error.
 
-```
-dfx canister call calc_backend mul '(-4)'
-```
+    Because the cell variable in this program is an integer, you can also call its functions and specify negative input values. For example, you might run the following command:
 
-which returns:
+        dfx canister call calc_backend mul '(-4)'
 
-(-20 : int)
+    which returns:
 
-Call the `clearall` function and verify it resets the `cell` value to zero:
+        (-20 : int)
 
-```
-dfx canister call calc_backend clearall
-```
+- #### Step 5:  Call the `clearall` function and verify it resets the `cell` value to zero:
 
-For example, the program displays output similar to the following:
+        dfx canister call calc_backend clearall
 
-```
-(0 : int)
-```
+    For example, the program displays output similar to the following:
 
-## Next steps
+        (0 : int)
 
-In the next guide, let's look at [incrementing natural numbers](counter-tutorial.md)
+
+## Stop the local canister execution environment
+
+After you finish experimenting with the dapp, you can stop the local canister execution environment so that it does not continue running in the background.
+
+To stop the local canister execution environment:
+
+- #### Step 1:  In the terminal that displays the operations, press Control-C to interrupt the process.
+
+- #### Step 2:  Stop the local canister execution environment by running the following command:
+
+        dfx stop

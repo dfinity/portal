@@ -1,1 +1,1 @@
-../../../submodules/interface-spec/spec/_attachments/interface-spec-changelog.md
+../../../submodules/interface-spec/spec/changelog.md

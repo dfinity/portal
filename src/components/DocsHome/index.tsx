@@ -11,20 +11,21 @@ const queryClient = new QueryClient();
 
 const links = [
   {
-    label: "Events & News",
-    href: "https://dfinity.org/events-and-news/",
+    label: "Live Sessions",
+    href: "/live-sessions"
   },
+
   {
     label: "Technical Working Groups",
-    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
+    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781"
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
   { label: "Dev Discord Office Hours", href: "https://discord.gg/jnjVVQaE2C" },
   {
     label: "Developer Grants and Bounties",
-    href: "https://dfinity.org/grants/",
+    href: "https://dfinity.org/grants/"
   },
-  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
+  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" }
 ];
 
 const DocsHomePage: FC = () => {
@@ -115,7 +116,7 @@ const DocsHomePage: FC = () => {
                 documentation portal has everything you need. We provide
                 easy-to-follow guides, tutorials, code samples, and API
                 references for multiple languages like JavaScript, Python, Java,
-                Go, Rust, C++ and more.
+                Go, Rust, and more.
               </p>
               <p className="mb-0">
                 <Link

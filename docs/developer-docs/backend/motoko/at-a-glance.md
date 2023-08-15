@@ -1,4 +1,7 @@
-# 4: Motoko quick start
+---
+sidebar_position: 1
+---
+# 1: Motoko quick start
 
 ## Overview
 
@@ -6,41 +9,31 @@ The [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutor
 
 If the quick start and tutorials are not quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 
-## Prerequisites
+After you [install the IC SDK](../../setup/install/index.mdx), here’s all you need to know:
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
-
-## Creating a new project
-
-Open a terminal window on your local computer, if you don’t already have one open.
-
+## Step 1:
 Create a new project and change to the project directory.
 
-```
-dfx new <project_name> && cd <project_name>>
-```
+        dfx new <project_name> && cd <project_name>>
 
-## Editing the default files
-
+## Step 2:
 Edit the `src/<project_name>_backend` files to define your service or application.
 
+## Step 3:
 Edit the `src/<project_name>_frontend` files with HTML, JavaScript, and CSS that provides the frontend for your service or application.
 
-## Starting the deployment environment
-
+## Step 4:
 Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment:
 - [Local deployment](../../setup/deploy-locally.md).
 - [Mainnet deployment](../../setup/deploy-mainnet.md).
 
-## Register, build, and deploy locally or on the mainnet 
+## Step 5:
+Register, build, and deploy locally or on the mainnet (for the mainnet, use:`--network ic`).
 
-For the mainnet, use: `--network ic`.
+        dfx deploy --network <network>
 
-```
-dfx deploy --network <network>
-```
-
-## View your service or application in a browser, using the URLS in the output of the `dfx deploy` command:
+## Step 6:
+View your service or application in a browser, using the URLS in the output of the `dfx deploy` command:
 
 ```
 ...
@@ -53,7 +46,3 @@ Frontend canister via browser
 Backend canister via Candid interface:
         access_hello_backend: http://127.0.0.1:8080/?canisterId=cbopz-duaaa-aaaaa-qaaka-cai&id=ctiya-peaaa-aaaaa-qaaja-cai
 ```
-
-## Next steps
-
-For a more detailed look at writing and deploying canisters, move onto the [writing and deploying canisters page](deploying.md).

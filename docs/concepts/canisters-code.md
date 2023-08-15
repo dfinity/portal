@@ -37,12 +37,6 @@ This concept of a canister consisting of both program and state is an important 
 As a developer, it is important to recognize this relationship between the calls that query the canister and the calls that change the canister state. In particular, you should keep in mind the inherent tradeoff between security and performance.
 :::
 
-## Certified data
-
-Since query calls do not go through consensus, [certified responses](https://internetcomputer.org/docs/current/developer-docs/security/general-security-best-practices) should be used wherever possible when data only needs to be read, not updated. 
-
-Certification happens on the canister level, i.e. is done by a subnet. Any certified response has to be pre-certified during an update call, so that the certificate can simply be fetched in a query call at a later point in time.
-
 ## How to develop dapps for the Internet Computer
 
 For programmers and software developers, the Internet Computer blockchain provides unique capabilities and opportunities within a framework that simplifies how you can design, build, and deploy dapps. A key part of this framework is a new, general purpose programming language, Motoko. Motoko is a programming language that has been specifically designed to take full advantage of the unique features that the Internet Computer blockchain provides, including:

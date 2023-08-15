@@ -90,9 +90,9 @@ what it's like to deploy a Bitcoin dapp locally.
 ### Deploying in `regtest` Mode
 
 Your local Bitcoin node operates in what's called "regression testing mode", or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode).
-You can now deploy your canister and configure it to connect to your local `regtest` network.
+You can now deploy your canister and configure it to connect to your local `Regtest` network.
 
-- #### Step 1: Run `dfx start --clean`:
+- #### Step 1: Run `dfx start --enable-bitcoin`:
 
 :::info
 If when running `dfx start` you see errors like
@@ -100,13 +100,14 @@ If when running `dfx start` you see errors like
     Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 
 that means that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin
-node is up and running, and that you're setting the correct port (default is `18444`).
-The port used can be changed in `dfx.json`.
+node is up and running, and that you're setting the correct port (default is `18444`)
+    
+    dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:<your_custom_port>
 :::
 
 - #### Step 2: Deploy the example canister:
 
-        dfx deploy basic_bitcoin --argument '(variant { regtest })'
+        dfx deploy basic_bitcoin --argument '(variant { Regtest })'
 
     If successful, you should see an output that looks like this:
 
@@ -279,7 +280,8 @@ For example:
 It's often useful to delete all the Bitcoin state you have locally and to start from
 scratch. To do so:
 
-- #### Step 1: Run the following commands in the directory of your `dfx` project to delete the local state of `dfx`.
+- #### Step 1: Run the following commands in the directory of your `dfx` project to delete
+   the local state of `dfx`.
 
         dfx stop
         rm -rf .dfx
@@ -289,7 +291,8 @@ Running `rm -rf .dfx` will permanently delete _all_ the canisters you have
 installed locally.
 :::
 
-- #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running, and then run the following to delete the chain you created.
+- #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running,
+and then run the following to delete the chain you created.
 
     rm -r data
     mkdir data

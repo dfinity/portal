@@ -240,6 +240,8 @@ Here are some suggestions for where to go next:
 
 -   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
 
+-   [Motoko overview](../../motoko/intro/) to learn about the features and syntax for using Motoko.
+
 -   [On-chain deployment](./deploy-mainnet.md) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 
 -   [What is Candid?](/docs/developer-docs/backend/candid/candid-concepts.md) to learn how the Candid interface description language enables service interoperability and composability.

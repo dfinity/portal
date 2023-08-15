@@ -1,9 +1,8 @@
-import { getDataCenters } from "@site/src/utils/network-stats";
-import * as L from "leaflet";
-import { GestureHandling } from "leaflet-gesture-handling";
-import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
-import "leaflet/dist/leaflet.css";
+import { getBoundaryNodeLocations } from "@site/src/utils/network-stats";
 import React from "react";
+import { useQuery } from "react-query";
+import { Breakpoint } from "./breakpoint";
+import useBreakpoint from "./use-breakpoint";
 import {
   CircleMarker,
   MapContainer,
@@ -11,17 +10,17 @@ import {
   Tooltip,
   ZoomControl,
 } from "react-leaflet";
-import { useQuery } from "react-query";
-import { Breakpoint } from "./breakpoint";
-import useBreakpoint from "./use-breakpoint";
+import "leaflet/dist/leaflet.css";
+import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
+import * as L from "leaflet";
+import { GestureHandling } from "leaflet-gesture-handling";
 
 const Map: React.FC = () => {
   const breakpoint: Breakpoint | undefined = useBreakpoint();
 
-  const dataCentersQuery = useQuery("dataCenters", () =>
-    getDataCenters().then((res) =>
-      res.data_centers.filter((dc) => dc.total_nodes > 0)
-    )
+  const nodeLocationsQuery = useQuery(
+    "nodeLocations",
+    getBoundaryNodeLocations
   );
 
   let center: L.LatLngExpression = [29.311319543803894, -9.478870172754636];
@@ -53,8 +52,11 @@ const Map: React.FC = () => {
 
   const bounds = L.latLngBounds([]);
 
-  if (dataCentersQuery.isSuccess && dataCentersQuery.data.length > 0) {
-    dataCentersQuery.data.forEach((location, index) => {
+  if (
+    nodeLocationsQuery.isSuccess &&
+    nodeLocationsQuery.data.locations.length > 0
+  ) {
+    nodeLocationsQuery.data.locations.forEach((location, index) => {
       if (index === 0) {
         center = [location.latitude, location.longitude];
       }
@@ -85,28 +87,27 @@ const Map: React.FC = () => {
             detectRetina={true}
             url="https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
           />
-          {dataCentersQuery.isSuccess
-            ? dataCentersQuery.data.map((location) => {
+          {nodeLocationsQuery.isSuccess
+            ? nodeLocationsQuery.data.locations.map((location) => {
+                // locations before boundaryNodeLocations puts location circles on top
+
                 return (
+                  // The formula used for radius will need to be adjusted as the network grows in size.
                   <CircleMarker
                     key={location.key}
                     center={[location.latitude, location.longitude]}
+                    // pathOptions={pathOptions}
                     radius={
                       breakpoint > Breakpoint.SM
-                        ? Math.max(location.node_providers * 2, 5)
-                        : Math.max(location.node_providers * 2, 5)
+                        ? Math.max(location.total_nodes, 5)
+                        : Math.max(location.total_nodes / 2, 5)
                     }
                   >
                     <Tooltip className="" direction="top" opacity={1}>
                       <div className="tw-heading-7 mb-3">{location.name}</div>
                       <div className="flex flex-col gap-0 tw-paragraph-sm">
-                        <span className="">Data Center: {location.owner}</span>
-                        <span className="">
-                          Node providers: {location.node_providers}
-                        </span>
-                        <span className="">
-                          Total nodes: {location.total_nodes}
-                        </span>
+                        <span className="">Data Center</span>
+                        <span className="">Nodes: {location.total_nodes}</span>
                       </div>
                     </Tooltip>
                   </CircleMarker>
@@ -117,7 +118,7 @@ const Map: React.FC = () => {
         <div className="absolute top-4 left-4 py-3 px-4 rounded-xl bg-white/10 z-[400] map-legend-fade-in">
           <div className="text-white flex gap-2 items-center tw-paragraph">
             <span className="border-[#3388ff] border-[3px] border-solid w-4 h-4 inline-block rounded-full"></span>
-            Node Providers
+            Active nodes
           </div>
         </div>
       </>

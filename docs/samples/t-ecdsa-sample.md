@@ -2,7 +2,7 @@
 
 ## Overview
 
-We present a minimal example canister smart contract for showcasing the [threshold ECDSA](../developer-docs/integrations/t-ecdsa/index.md) API. 
+We present a minimal example canister smart contract for showcasing the [threshold ECDSA](../developer-docs/integrations/t-ecdsa) API. 
 
 The example canister is a signing oracle that creates ECDSA signatures with keys derived from an input string. 
 

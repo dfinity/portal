@@ -32,8 +32,6 @@ In addition to those, there are several other community-supported agents:
   - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
 - C
   - [`agent-c` by Zondax](https://github.com/Zondax/icp-client-cpp) (C Wrapper for IC Rust Agent)
-- Ruby
-  - [`ic_agent` by Terry.Tu](https://github.com/tuminfei/ic_agent)
 
 If you're interested in building an agent in another language please reach out to us via [https://dfinity.org/grants](https://dfinity.org/grants).
 

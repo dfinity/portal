@@ -76,14 +76,16 @@ which includes the cycles, by using the SNS root canister's method
 ### Step 2: Send new cycles to a given canister.
 If the first step shows that one of SNS or dapp canisters runs 
 low on cycles, you can top up the canister's cycles.
+<!-- as follows
+dfx,
+dashboard?-->
 
 To do this, you need a wallet with sufficient cycles.
 In an SNS, can look for people who donate cycles in this way.
-You can find [here](https://internetcomputer.org/docs/current/developer-docs/production/topping-up-canister/#option-2-if-you-have-cycles-on-your-cycles-wallet) how to transfer cycles from a wallet to any other cansiter (which can be a dapp or SNS canister).
-
 Otherwise, you can make a proposal that transfers some ICP
-from the SNS treasury to an individual who is trusted to convert these to cycles and make such payments.
-You can find [here](./making-proposals.md) how to make such a proposal.
+from the SNS treasury to an individual who is 
+trusted to convert these to cycles and make such payments.
+<!--You can create such a proposal as follows TODO-->
 
 <!--## Helpful community tools
 - Is referring to community tools sth that we do? (think it would be nice)

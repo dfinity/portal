@@ -54,8 +54,12 @@ that are automatically spawned by the ledger canister.
 history may be lost.**
 :::
 
-* While SNSs that are provided as a system function can only be upgraded to canister versions approved by the NNS, each SNS community can configure their SNS according
-to their needs. Most chosen configurations can also be adjusted over time,
+* While 
+SNSs that are provided as a system function 
+can only be upgraded to canister versions approved by the 
+NNS, each SNS community can configure their SNS according
+to their needs.
+Most chosen configurations can also be adjusted over time,
 for example to adopt to new situations or to experiment with
 different governance and tokenomic models.
 Therefore, managing an SNS also means that the community
@@ -68,8 +72,11 @@ this page(./nervous-system-parameters.md)
 which parameters can be chosen and how they can be adjusted 
 by proposal.-->
 
-* An SNS community needs proposals, some of which are specific to a given dapp, to govern the DAO with its properties and the dapp. [This page](./making-proposals.md) provides some guidelines 
-regarding how proposals can be used and how an SNS community can define
-their own kinds of proposals.
-  
-* A dapp might have an associated The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) that stores and retrieves static assets from a canister deployed on the IC. Once a dapp is under SNS DAO control, the SNS DAO must also be able to control the associated asset canister. More details on how this works can be found on [this page](./sns-asset-canister.md).
+<!-- * Each SNS community might need to have different
+kinds of proposals to ensure that the SNS DAO can
+manage the
+specific dapp and its operations effectively.
+This page(./proposal-guide.md) provides some guidelines 
+regarding
+how proposals can be used and how an SNS community can define
+their own kinds of proposals.-->

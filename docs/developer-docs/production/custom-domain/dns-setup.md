@@ -64,7 +64,7 @@ DNS provider, but is less resilient and performant.
 
   ### Directly configure the IP addresses
 
-  - #### Step 1: First, you need to look up the IP addresses of the boundary nodes (`icp1.io`).
+  - #### Step 1: First, you need to look up the IP addresses of the boundary nodes (`icp1.io`). 
   To this end, use an online DNS lookup service (e.g., [nslookup.io](https://nslookup.io))
   and take a note of the IPv4- and IPv6-addresses, the `A` and `AAAA` records, respectively.
 
@@ -73,9 +73,9 @@ DNS provider, but is less resilient and performant.
   - #### Step 2: In the **DNS Management** pane in your GoDaddy account, add the following DNS records:
 
     * Create an `A` record for each IPv4-address by setting the name field
-    to "@" and the value field to the IPv4-address (e.g., `193.118.63.173`);
+    to "@" and the value field to the IPv4-address (e.g., `147.75.108.42`);
     * Create an `AAAA` record for each IPv6-address by setting the name field
-    to "@" and the value field to the IPv6-address (e.g., `2a0b:21c0:b002:2:5000:59ff:fead:c233`);
+    to "@" and the value field to the IPv6-address (e.g., `2600:c0d:3002:4:5000:3cff:fe6b:8dd2`);
     * Create a `CNAME` record for which you set the name field to `_acme-challenge` and the value field to `_acme-challenge.ic-domain.online.icp2.io`;
     * Create a `TXT` Record for which you set the name field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -105,7 +105,7 @@ for the apex of a domain.
 
   ![DNS Configuration for `ic-domain.online` on Cloudflare](cloudflare-apex.png)
 
-  - #### Step 6: In the next step, Cloudflare lists two nameservers that you should configure GoDaddy to use.
+  - #### Step 6: In the next step, Cloudflare lists two nameservers that you should configure GoDaddy to use. 
   Take note of the two nameservers (e.g., `brianna.ns.cloudflare.com` and `kaiser.ns.cloudflare.com`).
 
   - #### Step 7: In the **DNS Management** pane of GoDaddy, click on the **Change** button in the **Nameservers** section.

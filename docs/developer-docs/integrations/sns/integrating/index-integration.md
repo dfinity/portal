@@ -4,8 +4,8 @@ sidebar_position: 3
 # SNS index canister
 ## Overview
 The index canister fetches transactions from the [ledger canister](ledger-integration.md) and indexes them by **account**. 
-It allows to query the transactions of an account in descending order from the ledger chain, and the list of accounts that belongs to a **principal**. 
-An index canister is always deployed as part of an SNS project.
+It allows to query the transactions of an account in descending order from the ledger chain, and the list of account that belongs to a **principal**. 
+An index canister is always deployed as part of the SNS canisters.
 
 This canister is useful for applications that want to show the transactions of a specific account.
 
@@ -15,9 +15,10 @@ the ledger canister and then build the index of known transaction per account.
 ## Initialization
 
 This sections explains how to deploy an index canister in isolation.
-When the NNS creates a new SNS for a dapp, it will automatically be deployed with an SNS index canister.
+You can also deploy a full SNS, which will be deployed with an SNS index canister.
 
-The index canister initialisation requires the principal of the ICRC-1 ledger canister that should be indexed:
+The index canister initialisation requires the principal
+of the ICRC-1 ledger canister to index:
 
 ```
 type InitArgs = record {

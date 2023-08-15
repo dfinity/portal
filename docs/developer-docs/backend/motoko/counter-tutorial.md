@@ -1,4 +1,4 @@
-# 11: Incrementing a natural number
+# 5: Incrementing a natural number
 
 ## Overview
 
@@ -16,97 +16,103 @@ This guide provides a simple example of how you can increment a counter by calli
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
+Before following this guide, assure that you have the necessary dependencies in your environment:
+
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+
+-   [x] Stop any local canister execution environments running on the computer.
 
 ## Create a new project
 
-Open a terminal shell on your local computer, if you don’t already have one open.
+To create a new project directory for this guide:
 
-Create a new project by running the following command:
+- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
 
-```
-dfx new my_counter
-```
+- #### Step 2:  Change to the folder you are using for your Internet Computer projects, if you are using one.
 
-The command creates a new `my_counter` project for your project.
+- #### Step 3:  Create a new project by running the following command:
 
-Then change into your project directory by running the following command:
+        dfx new my_counter
 
-```
-cd my_counter
-```
+    The command creates a new `my_counter` project for your project.
+
+- #### Step 4:  Change to your project directory by running the following command:
+
+        cd my_counter
 
 ## Modify the default configuration
 
 You have already seen that creating a new project adds a default `dfx.json` configuration file to your project directory. In this guide, you will modify the default settings to use a different name for the main program in your project.
 
-To modify the `dfx.json` configuration file, open the `dfx.json` configuration file in a text editor and change the default `main` setting from `main.mo` to `increment_counter.mo`.
+To modify the `dfx.json` configuration file:
 
-For example:
+- #### Step 1:  Open the `dfx.json` configuration file in a text editor and change the default `main` setting from `main.mo` to `increment_counter.mo`.
 
-```
-"main": "src/my_counter_backend/increment_counter.mo",
-```
+    For example:
 
-For this guide, changing the name of the source file from `main.mo` to `increment_counter.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
+        "main": "src/my_counter_backend/increment_counter.mo",
 
-In a more complex dapp, you might have multiple source files with dependencies that you need to manage using settings in the `dfx.json` configuration file. In a scenario like that—with multiple canisters and programs defined in your `dfx.json` file—having multiple files all named `main.mo` might be confusing.
+    For this guide, changing the name of the source file from `main.mo` to `increment_counter.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
 
-You can leave the rest of the default settings as they are.
+    In a more complex dapp, you might have multiple source files with dependencies that you need to manage using settings in the `dfx.json` configuration file. In a scenario like that—with multiple canisters and programs defined in your `dfx.json` file—having multiple files all named `main.mo` might be confusing.
 
-Save your change and close the `dfx.json` file to continue.
+    You can leave the rest of the default settings as they are.
 
-Change the name of the main program file in the source code directory `src` to match the name specified in the `dfx.json` configuration file by running the following command:
+- #### Step 2:  Save your change and close the `dfx.json` file to continue.
 
-```
-mv src/my_counter_backend/main.mo src/my_counter_backend/increment_counter.mo
-```
+- #### Step 3:  Change the name of the main program file in the source code directory `src` to match the name specified in the `dfx.json` configuration file by running the following command
+
+        mv src/my_counter_backend/main.mo src/my_counter_backend/increment_counter.mo
 
 ## Modify the default program
 
 So far, you have only changed the name of the main program for your project. The next step is to modify the code in the `src/my_counter_backend/increment_counter.mo` file to define an actor named `Counter` and implement the `increment`, `get`, and `set` functions.
 
-To modify the default template source code, open the `src/my_counter_backend/increment_counter.mo` file in a text editor and delete the existing content.
+To modify the default template source code:
 
-Copy and paste this code into the `increment_counter.mo` file:
+- #### Step 1:  Check that you are still in your project directory, if needed.
+
+- #### Step 2:  Open the `src/my_counter_backend/increment_counter.mo` file in a text editor and delete the existing content.
+
+- #### Step 3:  Copy and paste this code into the `increment_counter.mo` file:
 
 ```
 // Create a simple Counter actor.
 actor Counter {
-stable var currentValue : Nat = 0;
+  stable var currentValue : Nat = 0;
 
-// Increment the counter with the increment function.
-public func increment() : async () {
-currentValue += 1;
-};
+  // Increment the counter with the increment function.
+  public func increment() : async () {
+    currentValue += 1;
+  };
 
-// Read the counter value with a get function.
-public query func get() : async Nat {
-currentValue
-};
+  // Read the counter value with a get function.
+  public query func get() : async Nat {
+    currentValue
+  };
 
-// Write an arbitrary value with a set function.
-public func set(n: Nat) : async () {
-currentValue := n;
-};
+  // Write an arbitrary value with a set function.
+  public func set(n: Nat) : async () {
+    currentValue := n;
+  };
 }
 ```
 
-Let's take a closer look at this sample program:
+    Let's take a closer look at this sample program:
 
--   You can see that the `currentValue` variable declaration in this example includes the `stable` keyword to indicate the state—the value that can be set, incremented, and retrieved—persists.
+    -   You can see that the `currentValue` variable declaration in this example includes the `stable` keyword to indicate the state—the value that can be set, incremented, and retrieved—persists.
 
-This keyword ensures that the value for the variable is unchanged when the program is upgraded.
+        This keyword ensures that the value for the variable is unchanged when the program is upgraded.
 
--   The declaration for the `currentValue` variable also specifies that its type is a natural number (`Nat`).
+    -   The declaration for the `currentValue` variable also specifies that its type is a natural number (`Nat`).
 
--   The program includes two public update methods—the `increment` and `set` functions—and one a query method-the `get` function.
+    -   The program includes two public update methods—the `increment` and `set` functions—and one a query method-the `get` function.
 
-For more information about stable and flexible variables, see [stable variables and upgrade methods](/motoko/main/upgrades.md) in the [**Motoko programming language guide**](/motoko/main/about-this-guide.md).
+    For more information about stable and flexible variables, see [stable variables and upgrade methods](/motoko/main/upgrades.md) in the [*Motoko programming language guide*](/motoko/main/about-this-guide.md).
 
-For more information about the differences between a query and an update, see [query and update methods](/concepts/canisters-code.md#query-update) in [canisters include both program and state](/concepts/canisters-code.md#canister-state).
+    For more information about the differences between a query and an update, see [query and update methods](/concepts/canisters-code.md#query-update) in [canisters include both program and state](/concepts/canisters-code.md#canister-state).
 
-Save your changes and close the file to continue.
+- #### Step 4:  Save your changes and close the file to continue.
 
 ## Start the local canister execution environment
 
@@ -114,91 +120,92 @@ Before you can build the `my_counter` project, you need to either connect to a l
 
 Starting the local canister execution environment requires a `dfx.json` file, so you should be sure you are in your project’s root directory. For this guide, you should have two separate terminal shells, so that you can start and see network operations in one terminal and manage your project in another.
 
-To start the local canister execution environment, open a new terminal window or tab on your local computer.
+To start the local canister execution environment:
 
-:::info
--   You should now have **two terminals** open.
--   You should have the **project directory** as your **current working directory**.
-:::
+- #### Step 1:  Open a new terminal window or tab on your local computer.
 
-Start the local canister execution environment on your computer by running the following command:
+- #### Step 2:  Navigate to the root directory for your project, if necessary.
 
-```
-dfx start
-```
+    -   You should now have **two terminals** open.
 
-After you start the local canister execution environment, the terminal displays messages about network operations.
+    -   You should have the **project directory** as your **current working directory**.
 
-Leave the terminal that displays network operations open and switch your focus to your original terminal where you created your new project.
+- #### Step 3:  Start the local canister execution environment on your computer by running the following command:
+
+        dfx start
+
+    After you start the local canister execution environment, the terminal displays messages about network operations.
+
+- #### Step 4:  Leave the terminal that displays network operations open and switch your focus to your original terminal where you created your new project.
 
 ## Register, build, and deploy the dapp
 
 After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp locally.
 
-Register, build, and deploy your dapp by running the following command in your project's directory:
+To deploy the dapp locally:
 
-```
-dfx deploy
-```
+- #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-The `dfx deploy` command output displays information about the operations it performs.
+- #### Step 2:  Register, build, and deploy your dapp by running the following command:
+
+        dfx deploy
+
+    The `dfx deploy` command output displays information about the operations it performs.
 
 ## Invoke methods on the deployed canister
 
 After successfully deploying the canister, you can simulate an end-user invoking the methods provided by the canister. For this guide, you invoke the `get` method to query the value of a counter, the `increment` method that increments the counter each time it is called, and the `set` method to pass an argument to update the counter to an arbitrary value you specify.
 
-Run the following command to invoke the `get` function, which reads the current value of the `currentValue` variable on the deployed canister:
+To test invoking methods on the deployed canister:
 
-```
-dfx canister call my_counter_backend get
-```
+- #### Step 1:  Run the following command to invoke the `get` function, which reads the current value of the `currentValue` variable on the deployed canister:
 
-The command returns the current value of the `currentValue` variable as zero:
+        dfx canister call my_counter_backend get
 
-```
-(0 : nat)
-```
+    The command returns the current value of the `currentValue` variable as zero:
 
-Run the following command to invoke the `increment` function to increment the value of the `currentValue` variable on the deployed canister by one:
+        (0 : nat)
 
-```
-dfx canister call my_counter_backend increment
-```
+- #### Step 2:  Run the following command to invoke the `increment` function to increment the value of the `currentValue` variable on the deployed canister by one:
 
-This command increments the value of the variable, changing its state, but does not return the result.
+        dfx canister call my_counter_backend increment
 
-Rerun the following command to get the current value of the `currentValue` variable on the deployed canister:
+    This command increments the value of the variable, changing its state, but does not return the result.
 
-```
-dfx canister call my_counter_backend get
-```
+- #### Step 3:  Rerun the following command to get the current value of the `currentValue` variable on the deployed canister:
 
-The command returns the updated value of the `currentValue` variable as one:
+        dfx canister call my_counter_backend get
 
-```
-(1 : nat)
-```
+    The command returns the updated value of the `currentValue` variable as one:
 
-Run additional commands to experiment with invoking other methods and using different values. For example, try commands similar to the following to set and return the counter value:
+        (1 : nat)
 
-```
-dfx canister call my_counter_backend set '(987)'
-dfx canister call my_counter_backend get
-```
+- #### Step 4:  Run additional commands to experiment with invoking other methods and using different values.
 
-This returns the updated value of the `currentValue` to be 987. Running the additional commands
+    For example, try commands similar to the following to set and return the counter value:
 
-```
-dfx canister call my_counter_backend increment
-dfx canister call my_counter_backend get
-```
+        dfx canister call my_counter_backend set '(987)'
+        dfx canister call my_counter_backend get
 
-returns the incremented `currentValue` of 988.
+    This returns the updated value of the `currentValue` to be 987. Running the additional commands
 
-## Test your code using the Candid UI.
+        dfx canister call my_counter_backend increment
+        dfx canister call my_counter_backend get
 
-To test your code, follow the instructions [here](candid-ui.md).
+    returns the incremented `currentValue` of 988.
 
-## Next steps
+- #### Step 5:  Test your code using the candid ui.
 
-In the next guide, we'll cover [passing text arguments to a canister](hello-location.md).
+    To test your code, follow the instructions [here](candid-ui.md).
+
+## Stop the local canister execution environment
+
+After you finish experimenting with your dapp, you can stop the local canister execution environment so that it doesn’t continue running in the background.
+
+To stop the local canister execution environment:
+
+- #### Step 1:  In the terminal that displays network operations, press Control-C to interrupt the local canister execution environment.
+
+- #### Step 2:  Stop the local canister execution environment by running the following command:
+
+        dfx stop

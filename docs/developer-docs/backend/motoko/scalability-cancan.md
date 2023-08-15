@@ -1,4 +1,4 @@
-# 18: Scalable dapp example
+# 13: Scalable app example
 
 ## Overview
 
@@ -68,16 +68,14 @@ The application stores information about users and information about videos. To 
 
 User profiles are stored as `profiles/{username}` and are defined using the following data model:
 
-```
-export interface Profile {
-  username: string;         // maya
-  following: string[];      // [`alice`, `bob]`
-  followers: string[];      // ['palice']
-  uploadedVideos: string[]; // ['profiles/maya/videos/a5b54646-2ea3-4e0e-82d1-da3ab8148df2']
-  likedVideos: string[];    // ['profiles/bob/videos/b74e4eb0-dea8-4a4a-a1ae-d4593dc86930']
-  avatar?: string;          // ?ImageData (TODO)
-}
-```
+    export interface Profile {
+      username: string;         // maya
+      following: string[];      // [`alice`, `bob]`
+      followers: string[];      // ['palice']
+      uploadedVideos: string[]; // ['profiles/maya/videos/a5b54646-2ea3-4e0e-82d1-da3ab8148df2']
+      likedVideos: string[];    // ['profiles/bob/videos/b74e4eb0-dea8-4a4a-a1ae-d4593dc86930']
+      avatar?: string;          // ?ImageData (TODO)
+    }
 
 ### Videos
 
@@ -87,31 +85,28 @@ Metadata for videos is stored at `profiles/{username}/videos/{videoId}/metadata`
 
 Videos are stored as `profiles/{username}` and are defined using the following data model:
 
-```
-export interface Video {
-  src: string;       // 'profiles/maya/videos/f5a44646-2ea3-4e0f-83d2-da3ab8148df2'
-  userId: string;    // 'maya'
-  createdAt: string; // Date.now()
-  caption: string;   // 'cool movie, punk'
-  tags: string[];    // ['outside', 'grilling', 'beveragino']
-  likes: string[];    // ['sam', 'kelly']
-  viewCount: number; // 102
-  name: string; // 'grilling'
-}
-```
-
-### Prerequisites
-
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
-
-Additionally, the following packages are required for this guide:
-- [x] Download and install [Node.js](https://nodejs.org).
-- [x] Download and install [Python](https://www.python.org).
-- [x] Download and install [Vessel@0.6.0](https://github.com/dfinity/vessel/releases/tag/v0.6.0).
+    export interface Video {
+      src: string;       // 'profiles/maya/videos/f5a44646-2ea3-4e0f-83d2-da3ab8148df2'
+      userId: string;    // 'maya'
+      createdAt: string; // Date.now()
+      caption: string;   // 'cool movie, punk'
+      tags: string[];    // ['outside', 'grilling', 'beveragino']
+      likes: string[];    // ['sam', 'kelly']
+      viewCount: number; // 102
+      name: string; // 'grilling'
+    }
 
 ## Deploying the CanCan dapp
 
-Double-check you have [vessel](https://github.com/dfinity/vessel) installed at version 0.6.*, then clone this repository and navigate to the `cancan` directory.
+### Prerequisites
+
+- Download and install the [Internet Computer SDK](https://sdk.dfinity.org).
+- Download and install [Node.js](https://nodejs.org).
+- Download and install [Python](https://www.python.org).
+- Download and install [Vessel@0.6.0](https://github.com/dfinity/vessel/releases/tag/v0.6.0).
+
+
+- #### Step 1: Double-check you have [vessel](https://github.com/dfinity/vessel) installed at version 0.6.*, then clone this repository and navigate to the `cancan` directory.
 
 
 ```shell
@@ -122,25 +117,25 @@ git clone git@github.com:dfinity/cancan.git
 cd cancan
 ```
 
-Start a local Internet Computer replica by running the following command:
+- #### Step 2: Start a local Internet Computer replica.
 
 ```shell
 dfx start --clean
 ```
 
-Then, edit the `dfx.json` file to use the latest version of dfx:
+- #### Step 3: Edit the `dfx.json` file to use the latest version of dfx.
 
 ```
   "dfx": "0.14.1"
 ```
 
-Execute the following command in another terminal tab in the same directory:
+- #### Step 4: Execute the following command in another terminal tab in the same directory.
 
 ```shell
 npm install
 ```
 
-Replace the contents of the `./bootstrap.sh` script with the following:
+- #### Step 5: Replace the contents of the `./bootstrap.sh` script with the following:
 
 ```
 #!/bin/bash
@@ -175,7 +170,7 @@ Linux) xdg-open $URL || true ;;
 esac
 ```
 
-Next, edit the `package-set.dhall` file to update the upstream URL:
+- #### Step 6: Next, edit the `package-set.dhall` file to update the upstream URL:
 
 ```
 let upstream =
@@ -183,7 +178,7 @@ let upstream =
 ```
 
 
-Then, run the bootstrap script:
+- #### Step 7: Then, run the bootstrap script:
 
 ```
 ./bootstrap.sh
@@ -191,7 +186,7 @@ Then, run the bootstrap script:
 
 This will deploy a local canister called `cancan_ui_backend`. To open the front-end, get the frontend canister id by running `dfx canister id cancan_ui_frontend`. Then open your browser, and navigate to `http://<cancan_ui-canister-id>.localhost:8000/sign-in`.
 
-To run a development server with fast refreshing and hot-reloading, you can use this command in the app's root directory:
+- #### Step 8: To run a development server with fast refreshing and hot-reloading, you can use this command in the app's root directory:
 
 ```shell
 npm run start
@@ -200,7 +195,3 @@ npm run start
 Your default browser will open (or focus) a tab at `localhost:3000`, to which you must then append `/?canisterId=${cancan_ui_canister_id}`, where `cancan_ui_canister_id` is typically (at current) `ryjl3-tyaaa-aaaaa-aaaba-cai`.
 
 Now you can make changes to any frontend code and see instant updates, in many cases not even requiring a page refresh, so UI state is preserved between changes. Occasionally adding a CSS rule won't trigger an update, and the user has to manually refresh to see those changes.
-
-## Next steps
-
-To complete this guide, check out some additional [sample dapps](sample-apps.md).

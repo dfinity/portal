@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import React, { FC } from "react";
 import transitions from "@site/static/transitions.json";
 import AnimateSpawn from "../../Common/AnimateSpawn";
-import DownloadIcon from "@site/static/img/svgIcons/download.svg";
 
 const CardLabel = ({ children }) => {
   return <span className="tw-heading-6">{children}</span>;
@@ -27,10 +26,7 @@ const CardBody: FC<{
 }> = ({ children, className }) => {
   return (
     <div
-      className={clsx(
-        "tw-paragraph-sm mb-0 md:w-7/10 lg:w-7/10 flex items-center gap-2",
-        className
-      )}
+      className={clsx("tw-paragraph-sm mb-0 md:w-7/10 lg:w-7/10", className)}
     >
       {children}
     </div>
@@ -85,13 +81,11 @@ const Decks = () => {
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
       <Card
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
-        href="/icp_version_9.5.pdf"
+        href="/icp_version_1.pdf"
       >
         <CardLabel>Download Presentation</CardLabel>
         <CardTitle>Internet Computer</CardTitle>
-        <CardBody>
-          <DownloadIcon /> PDF - Last update: August 14th, 2023
-        </CardBody>
+        <CardBody>PDF - Last update: June 20th, 2023</CardBody>
         <CardImage
           src="/img/home/deck-astronaut.webp"
           alt="ICP Pitch Presenation"
@@ -105,7 +99,7 @@ const Decks = () => {
         <CardLabel>Download Presentation</CardLabel>
         <CardTitle className="text-infinite">Internet Identity</CardTitle>
         <CardBody className="text-black/60">
-          <DownloadIcon /> PDF - Last update: June 20th, 2023
+          PDF - Last update: June 20th, 2023
         </CardBody>
         <CardImage
           src="/img/home/deck-identity.webp"

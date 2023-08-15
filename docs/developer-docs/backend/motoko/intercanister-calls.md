@@ -1,4 +1,4 @@
-# 7: Making inter-canister calls
+# 12: Making inter-canister calls
 
 ## Overview
 One of the most important features of the Internet Computer blockchain for developers is the ability to call functions in one canister from another canister. This capability to make calls between canisters—also sometimes referred to as **inter-canister calls**—enables you to reuse and share functionality in multiple dapps.
@@ -9,34 +9,39 @@ To address this social component, you might want to create a single canister for
 
 This example will showcase a simple way to configure inter-canister calls that can be used as the foundation for more elaborate projects and use-cases such as those mentioned above. 
 
+
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
+Before following this guide, assure that you have the necessary dependencies in your environment:
 
-## Create a new dfx project 
+-   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
 
-Open a terminal window on your local computer, if you don’t already have one open.
+-   [x] Stop any local canister execution environments running on the computer.
 
-First, create a new dfx project with the command:
+### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
+
+### Step 2:  Change to the folder you are using for your Internet Computer projects, if you are using one.
+
+### Step 3: Create a new dfx project with the command:
 
 ```
 dfx new intercanister
 ```
 
-Then, navigate into the project's directory:
+### Step 4: Navigate into the project's directory:
 
 ```
 cd intercanister
 ```
 
-Create two new directories under the `src` directory for your new canisters:
+### Step 5: Create two new directories under the `src` directory for your new canisters:
 
 ```
 mkdir src/canister1
 mkdir src/canister2
 ```
 
-Create a new file, `src/canister1/main.mo`.
+### Step 6: Create a new file, `src/canister1/main.mo`.
 
 In this file, insert the following code:
 
@@ -50,7 +55,7 @@ actor {
 };
 ```
 
-Then, create another new file, `src/canister2/main.mo`.
+### Step 7: Then, create another new file, `src/canister2/main.mo`.
 
 In this file, insert the following code:
 
@@ -65,7 +70,9 @@ actor {
 };
 ```
 
-Open the `dfx.json` file and delete the existing content. Then, insert the following code:
+### Step 8: Open the `dfx.json` file and delete the existing content.
+
+Then, insert the following code:
 
 ```
 {
@@ -90,31 +97,23 @@ Open the `dfx.json` file and delete the existing content. Then, insert the follo
 }
 ```
 
-## Starting the local canister execution environment 
+### Step 9:  Start the local canister execution environment on your local computer by running the following command:
 
-To start the local execution environment on your local computer, run the following command:
+        dfx start --clean
 
-```
-dfx start --clean
-```
+    For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
 
-:::info
-For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
+    This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 
-This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
-:::
+### Step 10: Deploy your project. 
 
-## Deploy your project 
-
-Deploy your new canisters with the command in your project's directory:
+Deploy your new canisters with the command:
 
 ```
 dfx deploy
 ```
 
-## Interacting with the canisters
-
-Use the following command to make a call from `canister1` to `canister2`:
+### Step 11: Use the following command to make a call from canister1 to canister2:
 
 ```
 dfx canister call canister1 main 
@@ -126,6 +125,8 @@ The output should resemble the following:
 2023-06-15 15:53:39.567801 UTC: [Canister ajuq4-ruaaa-aaaaa-qaaga-cai] Hello from canister 2!
 (10 : nat)
 ```
+
+### Step 12: Using a previously deployed canister.
 
 Alternatively, you can also use a canister id to access a previously deployed canister by using the following piece of code in the `src/canister1/main.mo` file:
 
@@ -149,7 +150,3 @@ For example, for a canister with the principal ID of `ajuq4-ruaaa-aaaaa-qaaga-ca
 ```
 dfx canister call canister1 main "ajuq4-ruaaa-aaaaa-qaaga-cai"
 ```
-
-## Next steps
-
-Next, let's take a look at [optimizing canisters](./optimizing.md)
