@@ -90,7 +90,7 @@ Then, with Wasm-native stable memory:
 
 ![Metrics with Wasm-native stable memory](/img/blog/wasm-native-stable-memory-execution-metrics-wnsm.png)
 
-So we can see that this dapp gets a 1.5x speedup from Wasm-native stable memory.
+We can see that this dapp gets a 1.5x speedup from the Wasm-native stable memory change.
 
 ## Production Examples
 
