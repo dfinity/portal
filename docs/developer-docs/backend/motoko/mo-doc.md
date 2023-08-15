@@ -33,16 +33,16 @@ $(dfx cache show)/mo-doc [options]
    mo-doc
    ```
 
-2. Generate Markdown documentation from a specific source directory and place it in a custom output directory:
+2. Generate AsciiDoc documentation from a specific source directory:
 
    ```bash
-   mo-doc --format plain --source ./motoko-code --output ./motoko-docs
+   mo-doc --format plain --source ./motoko-code
    ```
 
-3. Generate plain text documentation from a source directory:
+3. Generate Markdown documentation in a custom output directory:
 
    ```bash
-   mo-doc --source ./src --format plain
+   mo-doc --format adoc --output ./public
    ```
 
 ## Writing Doc Comments
@@ -64,6 +64,6 @@ func factorial(n : Nat) : ?Nat {
 }
 ```
 
-Check out Motoko's [base library souce code](https://github.com/dfinity/motoko-base/tree/master/src) for examples and best practices. 
+Check out Motoko's [base library souce code](https://github.com/dfinity/motoko-base/tree/master/src) for additional examples and best practices. 
 
 The source code for `mo-doc` is available in the [dfinity/motoko](https://github.com/dfinity/motoko/tree/master/src/docs) GitHub repository. Contributions are welcome!
