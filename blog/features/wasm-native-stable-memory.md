@@ -95,3 +95,7 @@ We can see that this dapp gets a 1.5x speedup from the Wasm-native stable memory
 ## Production examples
 
 If you’re interested in seeing some architecture of more complicated dapps that are using stable memory, the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister) and the [Internet Identity canister](https://github.com/dfinity/internet-identity/tree/main/src/internet_identity) are good examples.
+
+## Conclusion
+
+Dapps which use stable memory should see 1.5-2x performance improvements for stable memory reads and writes without developers needing to make any changes. So you should consider using stable memory today!
