@@ -2451,5 +2451,40 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/hashkeydid/hashkeydid-icp",
     "twitter": "https://twitter.com/HashKeyDID"
+  },
+  {
+    "id": "nnsdao",
+    "name": "NnsDAO Protocol",
+    "website": "https://www.nnsdao.org/",
+    "tags": [
+      "DAO","Tools / Infrastructure","Metaverse"
+    ],
+    "description": "The boundaryless autonomous organization.",
+    "stats": "7+ Grants Project",
+    "logo": "/img/showcase/nnsdao_logo.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/NnsDao",
+    "twitter": "https://twitter.com/nnsdaos",
+    "submittableId": "27384913"
+  },
+  {
+    "id": "ICpodcast",
+    "name": "ICpodcast",
+    "website": "https://looncast.com/",
+    "oneLiner": "Launch a podcast and tap into web3.",
+    "tags": [
+      "NFT","SocialFi","Web3"
+    ],
+    "description": "The Decentralized Podcast Protocol for Creators on the IC.",
+    "stats": "10+ Podcaster",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/NnsDao/podcast-fe",
+    "twitter": "https://twitter.com/Looncasts",
+    "display": "Large",
+    "logo": "/img/showcase/icpodcast_logo.png",
+    "screenshots": ["/img/showcase/icpodcast_screenshot.png"],
+    "video": "/img/showcase/icpodcast_demo.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "33308492"
   }
 ]
