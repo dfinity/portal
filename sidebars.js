@@ -237,6 +237,7 @@ const sidebars = {
                 "developer-docs/backend/motoko/candid-ui",
                 "developer-docs/backend/motoko/scalability-cancan",
                 "developer-docs/backend/motoko/sample-apps",
+                "developer-docs/backend/motoko/mo-doc",
               ],
             },
             {
