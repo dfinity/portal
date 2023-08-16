@@ -230,13 +230,13 @@ function EnterprisePage() {
                 agile development cycles that reduce infrastructure maintenance and
                 operational costs can rely on the Internet Computer. It offers
                 serverless features comparable to existing cloud providers with extra
-                benefits like decentralisation and statefulness. The Internet Computer
+                benefits like decentralisation and statefulness.
               </p>
               <p className="tw-lead-sm mb-6 md:mb-10">
-                programming model is also similar to that of serverless clouds in that
-                applications can be written in common languages such as Rust or Python.
-                It is simpler, however, as state is maintained automatically without
-                the need for developer intervention. 
+                The Internet Computer programming model is also similar to that of
+                serverless clouds in that applications can be written in common
+                languages such as Rust or Python. It is simpler, however, as state
+                is maintained automatically without the need for developer intervention. 
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/platform-risk-large.webp">
