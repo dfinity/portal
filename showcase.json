@@ -267,7 +267,7 @@
     "name": "EVM on ICP",
     "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
     "tags": [
-      "Games"
+      "Ethereum"
     ],
     "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" - Ethereum.org P.S. there is a hidden game in the demo. ",
     "display": "Normal",
@@ -476,7 +476,8 @@
     "website": "https://omnic.network",
     "tags": [
       "Tools / Infrastructure",
-      "DeFi"
+      "DeFi",
+      "Ethereum"
     ],
     "description": "Omnic is a Crosschain messaging protocol built on the Internet Computer, Omnic Token Bridge helps bring liquidity on EVM networks to the Internet Computer",
     "usesInternetIdentity": false,
@@ -738,7 +739,8 @@
     "website": "https://bitfinity.network/",
     "tags": [
       "DeFi",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Ethereum"
     ],
     "twitter": "https://twitter.com/bitfinitynet",
     "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of is many advantageous DeFi capabilities: HTTP Outcalls, the BTC integration and more.",
@@ -798,38 +800,6 @@
     "discord": "https://discord.com/invite/FQZFGGq7zv",
     "logo": "/img/showcase/iclighthouse_logo.webp"
   },
-  
- 
- 
-
-
-
-
-  
-
-
-
-
- 
-
-
-
-
- 
-
-  
-
-
- 
- 
- 
-
-
- 
-
-
- 
- 
   {
     "id": "portal",
     "name": "Portal",
@@ -863,6 +833,21 @@
     "logo": "/img/showcase/unfoldvr_logo.webp",
     "video": "/img/showcase/unfoldvr_video.mp4",
     "videoContentType": "video/mp4",
+    "screenshots": []
+  },
+  {
+    "id": "liquityfrontend",
+    "name": "Liquity Frontend on ICP",
+    "description": "Liquity is a decentralized borrowing protocol that allows users to draw interest-free loans against Ether used as collateral. Liquity now has a fully decentralized, immutable frontend hosted on the Internet Computer.",
+    "website": "https://imtbl.top/#/",
+    "tags": [
+      "Ethereum",
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/LiquityProtocol",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/liquity.webp",
     "screenshots": []
   },
   {
@@ -1005,11 +990,12 @@
   },
   {
     "id": "uniswapfrontendontheic",
-    "name": "Uniswap Front End on the IC",
+    "name": "Uniswap Frontend on ICP",
     "website": "https://yrog5-xqaaa-aaaap-qa5za-cai.ic0.app/#/swap",
     "github": "https://github.com/domwoe/uniswap_ui_on_ic",
     "tags": [
-      "DeFi"
+      "DeFi",
+      "Ethereum"
     ],
     "description": "Uniswap's frontend hosted on the Internet Computer with canister-based wallet integration. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
     "usesInternetIdentity": true,
@@ -2341,7 +2327,7 @@
     "name": "W3NS - Multichain",
     "oneLiner": "An omni-channel notification service on the Internet Computer for any IC, EVM or offchain application",
     "website": "https://www.argonstudios.xyz",
-    "tags": ["Tools / Infrastructure"],
+    "tags": ["Tools / Infrastructure", "Ethereum"],
     "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and offchain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today...",
     "stats": "3 early launch partners sending notifications from Polygon",
     "logo": "/img/showcase/w3ns_logo.png",
