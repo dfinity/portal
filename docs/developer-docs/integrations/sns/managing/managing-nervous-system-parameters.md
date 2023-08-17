@@ -159,3 +159,139 @@ quill send message.json
 ```
 
 See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/7jkta-eyaaa-aaaaq-aaarq-cai/proposal/6).
+
+## The parameters
+
+### `default_followees`
+
+The set of default followees that every newly created neuron will follow per function. This is specified as a mapping of proposal functions to followees. If unset, neurons will have no followees by default. The set of followees for each function can be at most of size `max_followees_per_function` parameter.
+
+### `max_dissolve_delay_seconds`
+  
+The maximum dissolve delay that a neuron can have. That is, the maximum
+that a neuron's dissolve delay can be increased to. The maximum is also enforced
+when saturating the dissolve delay bonus in the voting power computation.
+
+### `max_dissolve_delay_bonus_percentage`
+
+E.g. if a large dissolve delay can double the voting power of a neuron,
+then this field would have a value of 100, indicating a maximum of
+100% additional voting power.
+
+For no bonus, this should be set to 0.
+
+To achieve functionality equivalent to NNS, this should be set to 100.
+
+### `max_followees_per_function`
+
+The maximum number of followees each neuron can establish for each nervous system function.
+
+This number can be at most as large as the defined ceiling
+`MAX_FOLLOWEES_PER_FUNCTION_CEILING`.
+
+### `neuron_claimer_permissions`
+
+The default set of neuron permissions granted to the principal claiming a neuron.
+
+### `neuron_minimum_stake_e8s`
+
+The minimum number of e8s (10E-8 of a token) that can be staked in a neuron.
+
+To ensure that staking and disbursing of the neuron work, the chosen value
+must be larger than the `transaction_fee_e8s`.
+
+### `max_neuron_age_for_age_bonus`
+
+The age of a neuron that saturates the age bonus for the voting power computation.
+
+### `initial_voting_period_seconds`
+
+The initial voting period of the proposal, identical in meaning to the one in
+`NervousSystemParameters`, and duplicated here so the parameters can be changed
+without affecting existing proposals.
+
+### `neuron_minimum_dissolve_delay_to_vote_seconds`
+
+The minimum dissolve delay a neuron must have to be eligible to vote.
+
+The chosen value must be smaller than `max_dissolve_delay_seconds`.
+
+## `reject_cost_e8s`
+
+The number of e8s (10E-8 of a token) that a rejected
+proposal costs the proposer.
+
+### `max_proposals_to_keep_per_action`
+
+The maximum number of proposals to keep, per action. When the
+total number of proposals for a given action is greater than this
+number, the oldest proposals that have reached final decision state
+(rejected, executed, or failed) and final rewards status state
+(settled) may be deleted.
+
+The number must be larger than zero and at most be as large as the
+defined ceiling `MAX_PROPOSALS_TO_KEEP_PER_ACTION_CEILING`.
+
+### `wait_for_quiet_deadline_increase_seconds`
+
+The wait_for_quiet_deadline_increase_seconds of the proposal, identical in
+meaning to the one in NervousSystemParameters, and duplicated here so the
+parameters can be changed without affecting existing proposals.
+
+### `max_number_of_neurons`
+
+The maximum number of allowed neurons. When this maximum is reached, no new
+neurons will be created until some are removed.
+
+This number must be larger than zero and at most as large as the defined
+ceiling `MAX_NUMBER_OF_NEURONS_CEILING`.
+
+### `transaction_fee_e8s`
+
+The transaction fee that must be paid for ledger transactions (except
+minting and burning governance tokens).
+
+### `max_number_of_proposals_with_ballots`
+
+The max number of proposals for which ballots are still stored, i.e.,
+unsettled proposals. If this number of proposals is reached, new proposals
+can only be added in exceptional cases (for few proposals it is defined
+that they are allowed even if resources are low to guarantee that the relevant
+canisters can be upgraded).
+
+This number must be larger than zero and at most as large as the defined
+ceiling `MAX_NUMBER_OF_PROPOSALS_WITH_BALLOTS_CEILING`.
+
+### `max_age_bonus_percentage`
+
+Analogous to the previous field (see the previous comment),
+but this one relates to neuron age instead of dissolve delay.
+
+To achieve functionality equivalent to NNS, this should be set to 25.
+
+### `neuron_grantable_permissions`
+
+The superset of neuron permissions a principal with permission
+`NeuronPermissionType::ManagePrincipals` for a given neuron can grant to another
+principal for this same neuron. If this set changes via a `ManageNervousSystemParameters` proposal, previous neurons' permissions will be unchanged and only newly granted permissions will be affected.
+
+### `voting_rewards_parameters`
+
+When this field is not populated, voting rewards are "disabled". Once this
+is set, it probably should not be changed, because the results would
+may be confusing.
+
+### `maturity_modulation_disabled`
+
+By default, maturity modulation is enabled; however, an SNS can use this
+field to disable it. When disabled, this canister will still poll the
+Cycles Minting Canister (CMC), and store the value received therefrom.
+However, the fetched value does not get used when this is set to true.
+
+The reason we call this "disabled" instead of (positive) "enabled" is so
+that the protobuf default (bool fields are false) and our application default
+(enabled) agree.
+
+### `max_number_of_principals_per_neuron`
+
+The maximum number of principals that can have permissions for a neuron.
