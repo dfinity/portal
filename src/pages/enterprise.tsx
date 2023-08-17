@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
@@ -237,6 +238,15 @@ function EnterprisePage() {
                 serverless clouds in that applications can be written in common
                 languages such as Rust or Python. It is simpler, however, as state
                 is maintained automatically without the need for developer intervention. 
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="https://medium.com/@dfinity/the-internet-computer-a-blockchain-that-offers-stateful-decentralized-serverless-computing-cdbbfdca4b7e"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowUpRight />
+                  Read the blog and paper
+                </Link>
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/platform-risk-large.webp">
