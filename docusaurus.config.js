@@ -18,6 +18,7 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const blogPostsPlugin = require("./plugins/blog-posts");
+const deckRedirectPulgin = require("./plugins/deck-redirect");
 const externalRedirectsPlugin = require("./plugins/external-redirects");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
@@ -411,6 +412,7 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
+    deckRedirectPulgin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),
