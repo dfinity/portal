@@ -187,7 +187,7 @@ To achieve functionality equivalent to NNS, this should be set to 100.
 The maximum number of followees each neuron can establish for each nervous system function.
 
 This number can be at most as large as the defined ceiling
-`MAX_FOLLOWEES_PER_FUNCTION_CEILING`.
+`MAX_FOLLOWEES_PER_FUNCTION_CEILING` (15 at time of writing).
 
 ### `neuron_claimer_permissions`
 
@@ -230,7 +230,7 @@ number, the oldest proposals that have reached final decision state
 (settled) may be deleted.
 
 The number must be larger than zero and at most be as large as the
-defined ceiling `MAX_PROPOSALS_TO_KEEP_PER_ACTION_CEILING`.
+defined ceiling `MAX_PROPOSALS_TO_KEEP_PER_ACTION_CEILING` (700 at time of writing).
 
 ### `wait_for_quiet_deadline_increase_seconds`
 
@@ -244,7 +244,7 @@ The maximum number of allowed neurons. When this maximum is reached, no new
 neurons will be created until some are removed.
 
 This number must be larger than zero and at most as large as the defined
-ceiling `MAX_NUMBER_OF_NEURONS_CEILING`.
+ceiling `MAX_NUMBER_OF_NEURONS_CEILING` (200_000 at time of writing).
 
 ### `transaction_fee_e8s`
 
@@ -260,7 +260,7 @@ that they are allowed even if resources are low to guarantee that the relevant
 canisters can be upgraded).
 
 This number must be larger than zero and at most as large as the defined
-ceiling `MAX_NUMBER_OF_PROPOSALS_WITH_BALLOTS_CEILING`.
+ceiling `MAX_NUMBER_OF_PROPOSALS_WITH_BALLOTS_CEILING` (700 at time of writing).
 
 ### `max_age_bonus_percentage`
 
