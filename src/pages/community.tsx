@@ -27,19 +27,19 @@ type Hub = {
 
 const hubs: Hub[] = [
   {
-    name: "Crewsphere | ICP.Hub India",
+    name: "Crewsphere",
     location: "India",
     description:
-      "In India's core, Crewsphere ICP India.Hub champions Internet Computer via bootcamps, turning top talents into Web3 experts.",
+      "In the heart of India, Crewsphere ICP India.Hub champions the Internet Computer via bootcamps that turn talented developers into Web3 experts.",
     image: "/img/community/icp-hub-india.webp",
     link: "https://linktr.ee/crewsphere?utm_source=linktree_admin_share",
     coordinates: [20.5937, 78.9629],
   },
   {
-    name: "SynergyLabs | TH MY ICP.Hub",
+    name: "SynergyLabs",
     location: "Malaysia/Thailand",
     description:
-      "Dive into SynergyLabs ICP.Hub Thailand Malaysia: your regional hub for ICP innovation. Equip yourself with our tools, insights, and network. Lead the digital shift with us.",
+      "With hubs located in Thailand and Malaysia, SynergyLabs provide tools, insights, and network to foster ICP innovation.",
     image: "/img/community/icp-hub-synergylab.webp",
     link: "https://linktr.ee/SynergyLabsICP",
     coordinates: [13.7563, 100.5018],
@@ -48,7 +48,7 @@ const hubs: Hub[] = [
     name: "ICP.Hub Italia",
     location: "Italy",
     description:
-      "ICP.Hub Italia is your regional network for developing professional & institutional Web3 initiatives and solutions on the Internet Computer blockchain.",
+      "ICP.Hub Italia is a growing regional network for developing professional and institutional Web3 initiatives and solutions on the Internet Computer blockchain.",
     image: "/img/community/icp-hub-italia.webp",
     link: "https://icpitalia.icp.page/",
     coordinates: [41.8719, 12.5674],
@@ -57,16 +57,16 @@ const hubs: Hub[] = [
     name: "ICP.Hub North America",
     location: "Canada / USA",
     description:
-      "We are contributing to accelerating the Internet Computer mass adoption in Canada 🇨🇦 and the US 🇺🇸",
+      "Hubs in North America are dedicated to accelerating mass adoption of the Internet Computer in Canada 🇨🇦 and the US 🇺🇸",
     image: "/img/community/icp-hub-north-america.webp",
     link: "https://linktr.ee/Icphubnorthamerica",
     coordinates: [54.525961, -105.255119],
   },
   {
-    name: "ISLA Camp | ICP.Hub Philippines",
+    name: "ISLA Camp",
     location: "Philippines",
     description:
-      "ISLA Camp: Unleashing web3 potential through immersive education, dynamic workshops, and hands-on bootcamps on the Internet Computer Protocol.",
+      "ISLA Camp is unleashing the potential of Web3 in the Philippines through immersive education, dynamic workshops, and hands-on bootcamps on the Internet Computer.",
     image: "/img/community/icp-hub-philippines.webp",
     link: "https://linktr.ee/ISLACamp",
     coordinates: [12.8797, 121.774],
@@ -80,10 +80,10 @@ const hubs: Hub[] = [
     coordinates: [38.9637, 35.2433],
   },
   {
-    name: "Disruptives | ICP.Hub Indonesia",
+    name: "DISRUPTIVES",
     location: "Indonesia",
     description:
-      "ICP.Hub Indonesia is Where Ideas Transform into Innovations on the Internet Computer Protocol.",
+      "ICP.Hub Indonesia is where ideas transform into innovation. DISRUPTIVES fuel ICP projects through incubation programs and resources to kickstart.",
     image: "/img/community/icp-hub-indonesia.webp",
     link: "https://linktr.ee/disruptives",
     coordinates: [-0.7893, 113.9213],
@@ -92,16 +92,16 @@ const hubs: Hub[] = [
     name: "ICP.Hub Korea",
     location: "Korea",
     description:
-      "ICP.Hub Korea is committed to advancing the Internet Computer blockchain and Web3 in Korea by regularly hosting bootcamps for the education and cultivation of developers.",
+      "ICP.Hub Korea is committed to advancing the Internet Computer blockchain and Web3 in Korea by regularly hosting education bootcamps and cultivating a community of developers.",
     image: "/img/community/icp-hub-korea.webp",
     link: "https://linktr.ee/icphubkorea",
     coordinates: [35.9078, 127.7669],
   },
   {
-    name: "Kushite | ICP.Hub East Africa",
+    name: "Kushite",
     location: "East Africa",
     description:
-      "ICP.Hub East Africa aims to create awareness, education & evangelism of the Internet Computer Protocol among aspiring & existing web3 developers in East Africa.",
+      "The Kushite ICP.Hub aims to create awareness, educate and evangelize about the Internet Computer Protocol to aspiring and existing Web3 developers in the region.",
     image: "/img/community/icp-hub-east-africa.webp",
     link: "https://linktr.ee/icpkushitehub",
     coordinates: [-1.2921, 36.8219],
@@ -116,28 +116,28 @@ const hubs: Hub[] = [
     coordinates: [9.082, 8.6753],
   },
   {
-    name: "Al Shira | ICP.Hub GCC",
+    name: "Al Shira",
     location: "Dubai",
     description:
-      "The ICP.Hub GCC is your regional gateway to the ICP Ecosystem. We are a community of Web3 enthusiasts, developers and entrepreneurs, expanding the footprint of the Internet Compute Protocol in the region.",
+      "The ICP.Hub GCC is a local community of Web3 enthusiasts, developers and entrepreneurs, expanding the footprint of the Internet Compute Protocol through education, community building, incubation and corporate and government collaborations.",
     image: "/img/community/icp-hub-gcc.webp",
     link: "https://linktr.ee/icphubgcc",
     coordinates: [25.276987, 55.296249],
   },
   {
-    name: "LinkUp | ICP.Hub Germany",
+    name: "LinkUp",
     location: "Germany",
     description:
-      "Focusing on Web3 development - ICP.Hub Germany is the ´go-to´ community for dreamers and makers that dedicate growing the decentralized Internet Computer Protocol (ICP) in this area.",
+      "Focusing on Web3 development, LinkUp is the go-to community hub for dreamers and creators dedicated to growing the awareness of the Internet Computer in Germany.",
     image: "/img/community/icp-hub-germany.webp",
     link: "https://linktr.ee/icp.hub_germany",
     coordinates: [51.1657, 10.4515],
   },
   {
-    name: "Interlink3 | ICP.Hub Singapore",
+    name: "Interlink3",
     location: "Singapore",
     description:
-      "ICP.HUB Singapore drives digital innovation by harnessing the power of web3 regional entrepreneurs, venture capital and community to realise the mass adoption of Internet Computer ICP's decentralized cloud and blockchain services",
+      "ICP.HUB Singapore, Interlink3, drives digital innovation by harnessing the power of Web3 regional entrepreneurs, venture capital and community to realise the mass adoption of the Internet Computer's decentralized cloud and blockchain services",
     image: "/img/community/icp-hub-singapore.webp",
     link: "https://linktr.ee/interlink3",
     coordinates: [1.3521, 103.8198],
