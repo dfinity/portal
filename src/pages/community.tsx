@@ -911,8 +911,8 @@ function CommunityPage() {
               variants={transitions.item}
             >
               The DFINITY Foundation open-sourced and launched the Internet
-              Computer on May 10, 2021. List of major innovations developed
-              by the Foundation.
+              Computer on May 10, 2021. List of major innovations developed by
+              the Foundation.
             </motion.p>
           </div>
         </AnimateSpawn>
