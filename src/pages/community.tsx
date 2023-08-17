@@ -107,10 +107,10 @@ const hubs: Hub[] = [
     coordinates: [-1.2921, 36.8219],
   },
   {
-    name: "Sahara | ICP.Hub West Africa",
+    name: "Sahara",
     location: "West Africa",
     description:
-      "ICP Sahara Hub is a safe heaven for developers and blockchain enthusiasts.",
+      "ICP.Hub Sahara is a safe heaven for developers and blockchain enthusiasts to learn and build on the Internet Computer.",
     image: "/img/community/icp-hub-west-africa.webp",
     link: "https://linktr.ee/saharaicphub",
     coordinates: [9.082, 8.6753],
@@ -146,7 +146,7 @@ const hubs: Hub[] = [
     name: "ICP.Hub Bulgaria",
     location: "Balkans (Bulgaria)",
     description:
-      "The intersection between the Internet Computer and the Balkans. Create an ecosystem around ICP blockchain, educate developers on ICP and engage potential for funding",
+      "The intersection between the Internet Computer and the Balkans. This hub is building a local ICP ecosystem, educating developers and engaging with potential VCs.",
     image: "/img/community/icp-hub-bulgaria.webp",
     link: "https://linktr.ee/balkan.icp.hub",
     coordinates: [42.7339, 25.4858],
@@ -173,7 +173,7 @@ const upcomingHubs: Hub[] = [
   {
     name: "Coinfest Asia",
     description:
-      "Be part of the Asia's immersive Web3 festival and join these top projects & venture capital at Coinfest Asia 2023!",
+      "Be part of the Asia's immersive Web3 festival and join these top projects and venture capital at Coinfest Asia 2023!",
     image: "/img/community/coinfest-asia.webp",
     link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
   },
