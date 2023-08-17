@@ -46,12 +46,12 @@ export default function Home(): JSX.Element {
             },
             {
               caption: "Open Internet Services",
-              title: "User-run Web3",
+              title: "Web3 as DAO",
               link: "/openchat",
             },
             {
               caption: "Sovereign Enterprise",
-              title: "IT beyond cloud",
+              title: "Cloud 3.0",
               link: "/enterprise",
             },
           ]}
