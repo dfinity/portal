@@ -702,16 +702,15 @@ function CommunityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Global Community <br />& ICP.Hubs
+                ICP Community <br />spans the globe
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Welcome to the most dynamic and innovative Web3 community in the
-                World. Join an inspiring tribe of creators, builders & educators
-                in a journey toward the adoption of the Internet Computer as the
-                default blockchain.
+                Join an inspiring tribe of Web3 creators, builders, educators
+                and enthusiasts on the path to transforming the Internet Computer 
+                into the world's first truly decentralized open internet.
               </motion.p>
             </div>
             <Globe
@@ -751,7 +750,7 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Explore our global community and participate in our Web3 adoption
+              Learning about the Internet Computer is fun! There's something for everyone across our ICP adoption
               programs
             </motion.h2>
           </div>
