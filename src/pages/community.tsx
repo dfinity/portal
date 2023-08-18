@@ -998,11 +998,12 @@ function CommunityPage() {
               className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
               variants={transitions.item}
             >
-              We are building communities in these areas all around the globe
-              and it would be nice to have a two line sentence here
+              ICP communities are forming and taking shape in various regions around the globe,
+              bringing entrepreneurs, developers, venture capitalists, educators, enthusiasts and experts
+              under one regional roof. 
             </motion.p>
 
-            <motion.div
+            <motion.div 
               variants={transitions.fadeIn}
               className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-[-1] [mask-image:linear-gradient(to_bottom,black_40%,transparent_60%)]"
             >
@@ -1032,7 +1033,7 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Educational Programmes
+              Educational Programs
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
