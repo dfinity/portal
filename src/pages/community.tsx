@@ -750,8 +750,8 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Learning about the Internet Computer is fun! There's something for everyone across our ICP adoption
-              programs
+              Get to know the Internet Computer through our fun 
+              community programs
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -796,10 +796,10 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Since March 2023, Official ICP.Hubs have been sprouting up in all corners of the world, 
-              fueling community growth and adoption. With 15 hubs and more in the making,
-              the Internet Computer is supported by a growing vibrant community across all 
-              verticals — from evangelism to education, to strategic
+              Since March 2023, ICP.Hubs have been sprouting up in all corners of the world, 
+              With 15 hubs and more in the making, a vibrant community is
+              fueling awareness and adoption across all verticals — 
+              from evangelism to education, to strategic
               partnerships and project accelerators.
             </p>
             <p className="mb-0">
