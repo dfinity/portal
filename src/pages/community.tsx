@@ -773,13 +773,13 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Education</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Dedicated educational programs in cooperation with top industry
-              players. Designed to empower talented builders and initiate
-              exciting journeys on the internet computer blockchain.
+              Dedicated educational programs are designed in cooperation with Web3 
+              learning platforms to empower talented builders and pave the 
+              way for their future projects on the Internet Computer blockchain.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#education">
-                Education programme
+                Start learning
                 <LinkArrowDown />
               </Link>
             </p>
@@ -796,15 +796,15 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Official ICP. Hubs are the core centres of action of our vibrant
-              community. Located in strategic regions of the world, these Hubs
-              fuel community growth and protocol adoption across all different
-              verticals, from evangelism to education, from strategic
-              partnerships to projects accelerations.
+              Since March 2023, Official ICP.Hubs have been sprouting up all over the world as centers of action, 
+              fueling community growth and adoption. With 15 hubs and more in the making,
+              the Internet Computer is supported by a vibrant community across all 
+              verticals — from evangelism to education, to strategic
+              partnerships and project accelerators.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#hubs">
-                Explore ICP.Hubs
+                Find a hub near you
                 <LinkArrowDown />
               </Link>
             </p>
