@@ -478,15 +478,15 @@ By default, the data stored inside your canister is unencrypted. Therefore if yo
 
 Make sure you don’t store sensitive data inside your canister.
 
-[More information.](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#compromised-replicas)
+[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#compromised-replicas)
 
-[Data confidentiality security recommendations.](https://internetcomputer.org/docs/current/developer-docs/security/general-security-best-practices#data-confidentiality-on-the-internet-computer)
+[Data confidentiality security recommendations.](general-security-best-practices#data-confidentiality-on-the-internet-computer)
 
 ### Ensure your canisters have a sufficiently large quota with the HTTP server
 
 #### Security concern
 
-When an HTTP outcall is performed it is amplified by the number of replicas in the subnet. The endpoint will receive not one request but as many requests as nodes in the subnet.
+When an HTTP outcall is performed it is amplified by the number of replicas in the subnet. The target web server will receive not only one request but as many requests as the number of nodes in the subnet.
 
 Most web servers implement some sort of rate limiting, this is a mechanism used to restrict the number of requests a client can make to a web server within a specific time period, preventing abuse or excessive usage of their API(s).
 
@@ -494,7 +494,7 @@ Most web servers implement some sort of rate limiting, this is a mechanism used 
 
 You should consider such rate limits when designing and implementing your canisters. Rate limits are enforced using different time granularities, e.g., seconds or minutes. For second-granularity enforcement, make sure that the simultaneous requests by all subnet replicas do not violate the quota. Violations may lead to temporary or permanent bans.
 
-[More information.](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#rate-limiting-by-servers)
+[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#rate-limiting-by-servers)
 
 ### Only make HTTP outcall requests to idempotent endpoints
 
@@ -508,39 +508,39 @@ Make sure the endpoints, called by an HTTP outcall, are idempotent, i.e. the que
 
 Some servers support the use of idempotency keys. These keys are random unique strings submitted in the HTTP request as headers. If used with the HTTP outcalls feature, all requests sent by each (honest) replica will contain the same idempotency key. This allows the server to recognize duplicated requests (i.e requests with the same idempotency key), handle just one and modify the server state only once. Note that this is a feature that must be supported by the server.
 
-[More information.](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#post-requests-must-be-idempotent)
+[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#post-requests-must-be-idempotent)
 
 ### Ensure HTTP responses are identical
 
 #### Security concern
 
-When replicas of a subnet receive HTTP responses, these responses must be identical. Otherwise the consensus won’t be achieved and the HTTP response will be rejected, but still charged.
+When replicas of a subnet receive HTTP responses, these responses must be identical. Otherwise, consensus won’t be achieved and the HTTP response will be rejected, but still charged.
 
 #### Recommendation
 
 Make sure the HTTP responses sent to the consensus layer are identical.
 
-Ideally the HTTP responses returned by the queried endpoint would be always the same. However most of the time this is not possible to control and the responses include random data (e.g the response includes timestamps, cookie values or some sort of identifiers). In those cases make sure to use the [transformation functions](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#transformation-function) to guarantee that the responses, received by each replica, are identical by removing any random data or extracting only the relevant data.
+Ideally the HTTP responses returned by the queried endpoint would always be the same. However, most of the time this is not possible to control and the responses include random data (e.g the response includes timestamps, cookie values or some sort of identifiers). In those cases make sure to use the [transformation functions](../integrations/https-outcalls/https-outcalls-how-it-works#transformation-function) to guarantee that the responses received by each replica are identical by removing any random data or extracting only the relevant data.
 
-This applies to the HTTP response body and header. Make sure to consider both when applying the transformation functions. Response headers are often overlooked and lead to failure because of failed consensus.
+This applies to the HTTP response body and headers. Make sure to consider both when applying the transformation functions. Response headers are often overlooked and lead to failure because of failed consensus.
 
-[More information.](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#responses-must-be-similar)
+[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#responses-must-be-similar)
 
 ### Be aware of HTTP request and response sizes
 
 #### Security concern
 
-HTTP outcalls [pricing](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#pricing) is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
+HTTP outcalls [pricing](../integrations/https-outcalls/https-outcalls-how-it-works#pricing) is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
 
 #### Recommendation
 
 When using HTTPS outcalls be mindful of the HTTP request and response sizes. Ensure that the size of the request issued and the size of the HTTP response coming from the server are reasonable.
 
-When making an HTTP outcall it is possible – and highly recommended – to define the `max_response_bytes` parameter, which allows you to set the maximum response size of the server's response. If this parameter is not defined, it defaults to 2MB (the hard response size limit of the HTTPS outcalls functionality). The cycle cost of the response is always charged based on the `max_response_bytes` or 2MB if not set.
+When making an HTTP outcall it is possible – and highly recommended – to define the `max_response_bytes` parameter, which allows you to set the maximum allowed response size. If this parameter is not defined, it defaults to 2MB (the hard response size limit of the HTTPS outcalls functionality). The cycle cost of the response is always charged based on the `max_response_bytes` or 2MB if not set.
 
 Finally, be aware that users may incur cycles costs for HTTP outcalls in case these calls can be triggered by user actions.
 
-[More information.](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
+[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
 
 ### Perform input validation in HTTP outcalls
 
