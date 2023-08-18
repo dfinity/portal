@@ -72,7 +72,7 @@ const hubs: Hub[] = [
     coordinates: [12.8797, 121.774],
   },
   {
-    name: "ICP.Hub Middle East",
+    name: "ICP.Hub Turkey",
     location: "Turkey, Cyprus",
     description: "",
     image: "/img/community/icp-hub-turkey.webp",
