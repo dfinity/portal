@@ -610,6 +610,61 @@ const RotatingStatPanel: React.FC<{}> = () => {
   );
 };
 
+const GalleryShowcase = React.memo(() => {
+  const topRow = communityGallery.slice(
+    0,
+    Math.floor(communityGallery.length / 3)
+  );
+  const bottomRow = communityGallery.slice(
+    Math.floor(communityGallery.length / 3)
+  );
+  return (
+    <section className="overflow-hidden relative h-[280px] md:h-[560px]">
+      <div className="flex gap-1 md:gap-3 absolute left-1/2 min-w-max nft-marquee-right">
+        {topRow.map((item) => (
+          <img
+            key={item.image}
+            src={item.image}
+            loading="lazy"
+            alt=""
+            className="w-40 md:w-80 aspect-square object-cover object-center rounded-xl"
+          />
+        ))}
+        {topRow.map((item) => (
+          <img
+            key={item.image}
+            src={item.image}
+            loading="lazy"
+            alt=""
+            className="w-40 md:w-80 aspect-square object-cover object-center rounded-xl"
+          />
+        ))}
+      </div>
+
+      <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 min-w-max nft-marquee-left">
+        {bottomRow.map((item) => (
+          <img
+            key={item.image}
+            src={item.image}
+            loading="lazy"
+            alt=""
+            className="w-24 md:w-52 aspect-square object-cover object-center rounded-xl"
+          />
+        ))}
+        {bottomRow.map((item) => (
+          <img
+            key={item.image}
+            src={item.image}
+            loading="lazy"
+            alt=""
+            className="w-24 md:w-52 aspect-square object-cover object-center rounded-xl"
+          />
+        ))}
+      </div>
+    </section>
+  );
+});
+
 function CommunityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
@@ -1171,10 +1226,11 @@ function CommunityPage() {
             el={motion.section}
             variants={transitions.container}
           >
-            {communityGallery.map((item) => (
+            {/* {communityGallery.map((item) => (
               <CommunityGalleryImage item={item} />
-            ))}
+            ))} */}
           </AnimateSpawn>
+          <GalleryShowcase />
         </section>
 
         <Newsletter
