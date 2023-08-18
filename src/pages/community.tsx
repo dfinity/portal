@@ -27,7 +27,7 @@ type Hub = {
 
 const hubs: Hub[] = [
   {
-    name: "Crewsphere",
+    name: "ICP.HUB India",
     location: "India",
     description:
       "In the heart of India, Crewsphere ICP India.Hub champions the Internet Computer via bootcamps that turn talented developers into Web3 experts.",
@@ -36,7 +36,7 @@ const hubs: Hub[] = [
     coordinates: [20.5937, 78.9629],
   },
   {
-    name: "SynergyLabs",
+    name: "ICP.Hub Malaysia",
     location: "Malaysia/Thailand",
     description:
       "With hubs located in Thailand and Malaysia, SynergyLabs provide tools, insights, and network to foster ICP innovation.",
@@ -63,7 +63,7 @@ const hubs: Hub[] = [
     coordinates: [54.525961, -105.255119],
   },
   {
-    name: "ISLA Camp",
+    name: "ICP.Hub Philippines",
     location: "Philippines",
     description:
       "ISLA Camp is unleashing the potential of Web3 in the Philippines through immersive education, dynamic workshops, and hands-on bootcamps on the Internet Computer.",
@@ -80,7 +80,7 @@ const hubs: Hub[] = [
     coordinates: [38.9637, 35.2433],
   },
   {
-    name: "DISRUPTIVES",
+    name: "ICP.Hub Indonesia",
     location: "Indonesia",
     description:
       "ICP.Hub Indonesia is where ideas transform into innovation. DISRUPTIVES fuel ICP projects through incubation programs and resources to kickstart.",
@@ -98,7 +98,7 @@ const hubs: Hub[] = [
     coordinates: [35.9078, 127.7669],
   },
   {
-    name: "Kushite",
+    name: "ICP.Hub East Africa",
     location: "East Africa",
     description:
       "The Kushite ICP.Hub aims to create awareness, educate and evangelize about the Internet Computer Protocol to aspiring and existing Web3 developers in the region.",
@@ -107,7 +107,7 @@ const hubs: Hub[] = [
     coordinates: [-1.2921, 36.8219],
   },
   {
-    name: "Sahara",
+    name: "ICP.Hub West Africa",
     location: "West Africa",
     description:
       "ICP.Hub Sahara is a safe heaven for developers and blockchain enthusiasts to learn and build on the Internet Computer.",
@@ -116,7 +116,7 @@ const hubs: Hub[] = [
     coordinates: [9.082, 8.6753],
   },
   {
-    name: "Al Shira",
+    name: "ICP.Hub GCC",
     location: "Dubai",
     description:
       "The ICP.Hub GCC is a local community of Web3 enthusiasts, developers and entrepreneurs, expanding the footprint of the Internet Compute Protocol through education, community building, incubation and corporate and government collaborations.",
@@ -125,7 +125,7 @@ const hubs: Hub[] = [
     coordinates: [25.276987, 55.296249],
   },
   {
-    name: "LinkUp",
+    name: "ICP.Hub Germany",
     location: "Germany",
     description:
       "Focusing on Web3 development, LinkUp is the go-to community hub for dreamers and creators dedicated to growing the awareness of the Internet Computer in Germany.",
@@ -134,7 +134,7 @@ const hubs: Hub[] = [
     coordinates: [51.1657, 10.4515],
   },
   {
-    name: "Interlink3",
+    name: "ICP.Hub Singapore",
     location: "Singapore",
     description:
       "ICP.HUB Singapore, Interlink3, drives digital innovation by harnessing the power of Web3 regional entrepreneurs, venture capital and community to realise the mass adoption of the Internet Computer's decentralized cloud and blockchain services",
@@ -152,7 +152,7 @@ const hubs: Hub[] = [
     coordinates: [42.7339, 25.4858],
   },
   {
-    name: "Nativo | ICP.Hub LatAm",
+    name: "ICP.Hub LatAm",
     location: "LatAm",
     description:
       "ICP Hub LATAM is an initiative to drive adoption for Internet Computer Protocol in the region of Latin America, with a focus on teaching developers and entrepeneurs how to build solutions on IC. Through bootcamps, educational content and community events through out the region.",
@@ -408,7 +408,7 @@ const HubCard: React.FC<{
         loading="lazy"
         className="h-[200px] object-cover"
       />
-      <div className="tw-title-navigation-on-page rounded-full mx-4 px-3 py-1 bg-white/60 backdrop-blur-2xl -translate-y-1/2 inline-flex gap-3 items-center self-start">
+      {/* <div className="tw-title-navigation-on-page rounded-full mx-4 px-3 py-1 bg-white/60 backdrop-blur-2xl -translate-y-1/2 inline-flex gap-3 items-center self-start">
         {hub.location}
         <svg
           width="16"
@@ -422,8 +422,8 @@ const HubCard: React.FC<{
             fill="black"
           />
         </svg>
-      </div>
-      <h3 className="tw-heading-6 mb-4 mx-6">{hub.name}</h3>
+      </div> */}
+      <h3 className="tw-heading-6 mb-4 mx-6 mt-8">{hub.name}</h3>
       <p className="flex-1 tw-paragraph-sm text-black/60 mx-6 mb-3">
         {hub.description}
       </p>
@@ -765,7 +765,7 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">Community events</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">Events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               Immerse yourself in a tapestry of engaging community events and
               conferences, where our global ICP family hangs out and mingle with
@@ -775,9 +775,9 @@ function CommunityPage() {
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
-                href="https://airtable.com/embed/appBKNYn6DaFccnno/shrnOms5pAnWdFjfv/tblCZBZ26gbGvPf7j?backgroundColor=purple&viewControls=on"
+                href="https://dfinity.org/events-and-news/"
               >
-                Upcoming events
+                Join events
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -820,9 +820,7 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">
-              Launch / Join an ICP.Hub
-            </h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">Found an ICP.Hub</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               Embark on a Journey of leadership and impact by launching a new
               ICP.Hub, or join existing operations as strategic partner. Join a
@@ -904,7 +902,7 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Upcoming ICP Hub initiatives and publications
+              ICP.Hubs Showcase
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
@@ -935,12 +933,13 @@ function CommunityPage() {
           <div className="md:w-7/10 md:mx-auto text-center text-white relative">
             <div className="blob blob-purple blob-xl blob-x-5 blob-y-5 z-[-1] opacity-75 md:opacity-95"></div>
 
-            <motion.h2
-              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
-              variants={transitions.item}
-            >
-              Official ICP.Hubs
-            </motion.h2>
+            <motion.div className="mb-8 md:mb-6" variants={transitions.item}>
+              <img
+                src="/img/community/icp-hubs-logo.svg"
+                alt="Official ICP.Hubs"
+                className="max-w-[340px] sm:max-w-[480px] md:max-w-none"
+              />
+            </motion.div>
             <motion.p
               className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
               variants={transitions.item}

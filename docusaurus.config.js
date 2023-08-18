@@ -251,6 +251,10 @@ const navbarItems = [
       [
         menuDivider("Get Involved"),
         {
+          label: "Community Hubs",
+          href: "/community?source=nav",
+        },
+        {
           label: "Become a Node Provider",
           href: "/node-providers?source=nav",
         },
