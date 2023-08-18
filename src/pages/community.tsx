@@ -57,7 +57,7 @@ const hubs: Hub[] = [
     name: "ICP.Hub North America",
     location: "Canada / USA",
     description:
-      "Hubs in North America are dedicated to accelerating mass adoption of the Internet Computer in Canada 🇨🇦 and the US 🇺🇸",
+      "Hubs in North America are dedicated to accelerating mass adoption of the Internet Computer in Canada 🇨🇦 and the US 🇺🇸.",
     image: "/img/community/icp-hub-north-america.webp",
     link: "https://linktr.ee/Icphubnorthamerica",
     coordinates: [54.525961, -105.255119],
@@ -83,7 +83,7 @@ const hubs: Hub[] = [
     name: "ICP.Hub Indonesia",
     location: "Indonesia",
     description:
-      "ICP.Hub Indonesia is where ideas transform into innovation. DISRUPTIVES fuel ICP projects through incubation programs and resources to kickstart.",
+      "ICP.Hub Indonesia is where ideas transform into innovation. DISRUPTIVES support ICP projects through incubation programs and resources to kickstart.",
     image: "/img/community/icp-hub-indonesia.webp",
     link: "https://linktr.ee/disruptives",
     coordinates: [-0.7893, 113.9213],
@@ -119,7 +119,7 @@ const hubs: Hub[] = [
     name: "ICP.Hub GCC",
     location: "Dubai",
     description:
-      "The ICP.Hub GCC is a local community of Web3 enthusiasts, developers and entrepreneurs, expanding the footprint of the Internet Compute Protocol through education, community building, incubation and corporate and government collaborations.",
+      "The ICP.Hub GCC is a local community of Web3 enthusiasts, developers and entrepreneurs, expanding the footprint of the Internet Computer through education, community building, incubation and corporate and government collaborations.",
     image: "/img/community/icp-hub-gcc.webp",
     link: "https://linktr.ee/icphubgcc",
     coordinates: [25.276987, 55.296249],
@@ -137,7 +137,7 @@ const hubs: Hub[] = [
     name: "ICP.Hub Singapore",
     location: "Singapore",
     description:
-      "The Interlink3 hub in Singapore drives digital innovation by harnessing the power of Web3 regional entrepreneurs, venture capitalists and community to realise the mass adoption of the Internet Computer's decentralized cloud and blockchain services",
+      "The Interlink3 hub in Singapore drives digital innovation by harnessing the power of Web3 regional entrepreneurs, venture capitalists and community to realise the mass adoption of the Internet Computer's decentralized cloud and blockchain services.",
     image: "/img/community/icp-hub-singapore.webp",
     link: "https://linktr.ee/interlink3",
     coordinates: [1.3521, 103.8198],
@@ -152,10 +152,10 @@ const hubs: Hub[] = [
     coordinates: [42.7339, 25.4858],
   },
   {
-    name: "ICP.Hub LatAm",
+    name: "ICP.Hub LATAM",
     location: "LATAM",
     description:
-      "The Nativo Hub is an initiative to drive adoption of the Internet Computer with focus on teaching developers and entrepeneurs how to build blockchain solutions. Outreach via bootcamps, educational content and community events is increasing in the LATAM region.",
+      "A hub with an initiative to drive the adoption of the Internet Computer with focus on teaching developers and entrepeneurs how to build blockchain solutions. Outreach via bootcamps, educational content and community events is increasing awareness in the LATAM region.",
     image: "/img/community/icp-hub-latam.webp",
     link: "https://linktr.ee/ethicparg",
     coordinates: [-8.7832, -55.4915],
