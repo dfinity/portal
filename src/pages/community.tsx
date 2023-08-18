@@ -796,9 +796,9 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Since March 2023, Official ICP.Hubs have been sprouting up all over the world as centers of action, 
+              Since March 2023, Official ICP.Hubs have been sprouting up in all corners of the world, 
               fueling community growth and adoption. With 15 hubs and more in the making,
-              the Internet Computer is supported by a vibrant community across all 
+              the Internet Computer is supported by a growing vibrant community across all 
               verticals — from evangelism to education, to strategic
               partnerships and project accelerators.
             </p>
@@ -821,17 +821,17 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Immerse yourself in a tapestry of engaging community events and
-              conferences, where our global ICP family hangs out and mingle with
-              amazing forward-thinking crowds. Our gatherings are a unique
-              moment to celebrate, learn, and forge longstanding connections.
+              There's no better way to build a strong community than by meeting at events.
+              ICP gatherings and conferences offer unique moments to hang out, mingle, celebrate,
+              learn, and forge longstanding connections with forward-thinking peeps. 
+             
             </p>
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
                 href="https://dfinity.org/events-and-news/"
               >
-                Join events
+                Attend an ICP event
                 <LinkArrowUpRight />
               </Link>
             </p>
