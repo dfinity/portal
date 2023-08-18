@@ -2154,6 +2154,23 @@
     "twitter": "https://twitter.com/rakeoff_app"
   },
   {
+    "id": "chainsight",
+    "name": "Chainsight Demo",
+    "oneLiner": "Interchain Data Processing Layer",
+    "tags": ["Tools / Infrastructure"],
+    "description": "Chainsight is an interchain data processing layer that makes blockchain data available for decentralized applications. It allows time series analysis and forecasting based on historical data to be incorporated into on-chain application logic in a trustless manner.",
+    "usesInternetIdentity": false,
+    "website": "https://demo.chainsight.network",
+    "github": "https://github.com/horizonx-tech",
+    "twitter": "https://twitter.com/Chainsight_",
+    "display": "Large",
+    "logo": "/img/showcase/chainsight_logo.webp",
+    "screenshots": [
+      "/img/showcase/chainsight_screenshot.webp"
+    ],
+    "submittableId": "36057758"
+  },
+  {
     "id": "rubaru",
     "name": "RuBaRu",
     "oneLiner": "Building On-Chain Regenerative Creator-Consumer Economy",
