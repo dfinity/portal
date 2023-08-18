@@ -110,7 +110,7 @@ const hubs: Hub[] = [
     name: "Sahara",
     location: "West Africa",
     description:
-      "ICP.Hub Sahara is a safe heaven for developers and blockchain enthusiasts to learn and build on the Internet Computer.",
+      "ICP.Hub Sahara is creating a safe heaven for developers and blockchain enthusiasts to learn and build on the Internet Computer.",
     image: "/img/community/icp-hub-west-africa.webp",
     link: "https://linktr.ee/saharaicphub",
     coordinates: [9.082, 8.6753],
@@ -137,7 +137,7 @@ const hubs: Hub[] = [
     name: "Interlink3",
     location: "Singapore",
     description:
-      "ICP.HUB Singapore, Interlink3, drives digital innovation by harnessing the power of Web3 regional entrepreneurs, venture capital and community to realise the mass adoption of the Internet Computer's decentralized cloud and blockchain services",
+      "The Interlink3 hub in Singapore drives digital innovation by harnessing the power of Web3 regional entrepreneurs, venture capitalists and community to realise the mass adoption of the Internet Computer's decentralized cloud and blockchain services",
     image: "/img/community/icp-hub-singapore.webp",
     link: "https://linktr.ee/interlink3",
     coordinates: [1.3521, 103.8198],
@@ -152,10 +152,10 @@ const hubs: Hub[] = [
     coordinates: [42.7339, 25.4858],
   },
   {
-    name: "Nativo | ICP.Hub LatAm",
-    location: "LatAm",
+    name: "Nativo",
+    location: "LATAM",
     description:
-      "ICP Hub LATAM is an initiative to drive adoption for Internet Computer Protocol in the region of Latin America, with a focus on teaching developers and entrepeneurs how to build solutions on IC. Through bootcamps, educational content and community events through out the region.",
+      "The Nativo Hub is an initiative to drive adoption of the Internet Computer with focus on teaching developers and entrepeneurs how to build blockchain solutions. Outreach via bootcamps, educational content and community events is increasing in the LATAM region.",
     image: "/img/community/icp-hub-latam.webp",
     link: "https://linktr.ee/ethicparg",
     coordinates: [-8.7832, -55.4915],
