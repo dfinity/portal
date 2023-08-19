@@ -581,7 +581,13 @@ Canisters pay for their cycles which makes them inherently vulnerable to attacks
 
 #### Recommendation
 
-Consider monitoring, early authentication, rate limiting on canister level to mitigate this. Also, be aware that an attacker will aim for the call consuming most cycles. See the "Cycle balance drain attacks section" in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
+* Consider monitoring, early authentication, rate limiting on canister level to mitigate this. Also, be aware that an attacker will aim for the call consuming most cycles. See the "Cycle balance drain attacks section" in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
+
+* For query calls that cause significant computation and don't modify the state, it is advisable to not execute the expensive computation if the method is called as update. However, keep in mind that query calls [don't provide authenticity guarantees](general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security), so this is a trade-off. Unfortunately, the execution mode of the query (whether it was called as query or update) is currently not directly exposed to the user code. However, one can e.g. call  `ic0.data_certificate_present()` which returns `1` when called as query, and `0` for update methods. See the Interface Specification [section on certified data](/references/ic-interface-spec.md#system-api-certified-data). 
+
+* Expensive calls that only need to be called from other canisters can require some amount of cycles to be sent along with the call to compensate for the cycles consumed by the execution.  
+
+* Finally, it is also an option to charge for ingress messages, but that is not currently supported by the platform itself and a custom solution would need to be designed. 
 
 ### Do not rely on ingress message inspection
 
