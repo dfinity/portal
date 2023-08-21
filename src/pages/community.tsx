@@ -1006,15 +1006,14 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Educational Programs
+              ICP education programs
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Dedicated educational programs in cooperation with top industry
-              players. Designed to empower talented builders and initiate
-              exciting journeys on the Internet Computer blockchain.
+              Learn the essentials and how to build on the Internet Computer through one of the ICP community education platforms.
+        
             </motion.p>
           </div>
 
