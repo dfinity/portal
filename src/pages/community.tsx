@@ -795,7 +795,7 @@ function CommunityPage() {
             <h3 className="tw-lead md:tw-title-sm mb-0">Events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               There's no better way to build a strong community than by meeting
-              at events. ICP gatherings and conferences offer unique moments to
+              in person. ICP meetups and conferences offer unique moments to
               hang out, mingle, celebrate, learn, and forge longstanding
               connections with forward-thinking peeps.
             </p>
@@ -820,13 +820,13 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Become an ICP advocate
+              Be an ICP advocate
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              If holding ICP or using dapps is not enough, there are many ways to contribute to the adoption 
+             Go beyond simply holding ICP or using. Actively contribute to the adoption 
               advocacy of the Internet Computer. 
             </motion.p>
           </div>
@@ -878,7 +878,7 @@ function CommunityPage() {
             <p className="mb-0 tw-paragraph-sm text-black/60">
               If you're a Web3 content creator, educator, event organizer, influencer or innovator looking to support 
               the growth and adoption of the Internet Computer, then the Community Grant Program may just be the right 
-              thing for you. This is a golden opportunity to tell the ICP story.           
+              thing for you.          
             </p>
             <p className="mb-0">
               <Link
@@ -906,7 +906,6 @@ function CommunityPage() {
             <p className="mb-0 tw-paragraph-sm text-black/60">
               Be a strong voice advocating for the Internet Computer, its unprecented 
               technical capabilities and its ever expanding ecosystem. 
-              ecosystems.
             </p>
             <p className="mb-0">
               <Link className="link-primary-disabled link-with-icon">
