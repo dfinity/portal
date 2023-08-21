@@ -723,7 +723,7 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Get to know the Internet Computer through our fun community
+              Get to know the Internet Computer through fun community
               programs
             </motion.h2>
           </div>
@@ -746,7 +746,7 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Education</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Dedicated educational programs are designed in cooperation with
+              Dedicated educational programs designed in cooperation with
               Web3 learning platforms to empower talented builders and pave the
               way for their future projects on the Internet Computer blockchain.
             </p>
@@ -770,7 +770,7 @@ function CommunityPage() {
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               Since March 2023, ICP.Hubs have been sprouting up in all corners
-              of the world, With 15 hubs and more in the making, a vibrant
+              of the world, With 15 hubs and more on the way, a vibrant
               community is fueling awareness and adoption across all verticals —
               from evangelism to education, to strategic partnerships and
               project accelerators.
@@ -820,14 +820,15 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              Join us
+              Become an ICP advocate
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              This is the right place to make the most of your experience,
-              talent, and network
+              If holding ICP or using dapps is not enough, there are many ways to contribute to the adoption 
+              advocacy of the Internet Computer. Put your expertise, talent, and network to good use in one of the 
+              following programs. 
             </motion.p>
           </div>
         </AnimateSpawn>
@@ -847,18 +848,17 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">Found an ICP.Hub</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">ICP.Hub Leader</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Embark on a Journey of leadership and impact by launching a new
-              ICP.Hub, or join existing operations as strategic partner. Join a
-              network of global founders and entrepreneurs.
+              Are you a leader with entrepreneurial experience? If so, we need you. Launch and manange a new
+              regional ICP.Hub, or join an existing one as strategic partner. 
             </p>
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
                 href="https://airtable.com/shr94SzLU4XXs9cTi"
               >
-                Tell us about yourself
+                Send us your resume
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -874,19 +874,19 @@ function CommunityPage() {
               className="w-30"
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">
-              Go for a community grant
+              Community engagement
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Turn your vision into reality. Our Web3 Community Grant Program is
-              the right instrument to support your initiatives in the area of
-              education, content, events & more.
+              If you're a Web3 content creator, educator, event organizer, influencer or innovator looking to support 
+              the growth and adoption of the Internet Computer, then the Community Grant Program may just be the right 
+              thing for you. This is a golden opportunity to tell the ICP story.           
             </p>
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
                 href="https://dfinity.org/community-grants/"
               >
-                See documentation
+                Apply for a grant
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -902,16 +902,16 @@ function CommunityPage() {
               className="w-30"
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">
-              Become an ambassador
+              ICP ambassador
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Contribute to promoting the Internet Computer's unique features
-              and super-powers, and become a true advocate for decentralised web
+              Be a strong voice advocating for the Internet Computer, its unprecented 
+              technical capabilities and its ever expanding ecosystem. 
               ecosystems.
             </p>
             <p className="mb-0">
               <Link className="link-primary-disabled link-with-icon">
-                Coming soon
+                Program coming soon
                 {/* <LinkArrowUpRight /> */}
               </Link>
             </p>
