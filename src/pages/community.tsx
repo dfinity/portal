@@ -1027,16 +1027,15 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                In this community, you will learn essential Internet Computer
-                concepts, how to write smart contracts (canisters) and create
-                dapps.
+                In this beginner course on Decade, you will learn essential Internet Computer
+                concepts and how to write canister smart contracts using TypeScript.
               </p>
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
                   href="https://dacade.org/communities/icp"
                 >
-                  View Programme <LinkArrowUpRight />
+                  Start learning <LinkArrowUpRight />
                 </Link>
               </p>
             </motion.div>
@@ -1046,19 +1045,20 @@ function CommunityPage() {
               variants={transitions.item}
             >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
-                IC Rust Bootcamp
+                Internet Computer Rust Bootcamp
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                Welcome to the Internet Computer Rust Bootcamp! Unleashing the
-                Power of Decentralized Web Development!
+                From fundamentals, to core concepts, to the Internet Computer's EVM model, this Rise In 
+                bootcamp will open your eyes to the potential of decentralized web development. Plus, gain hands-on 
+                experience with Rust using the Remix IDE.
               </p>
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
                   href="https://www.risein.com/bootcamps/internet-computer-rust-bootcamp"
                 >
-                  View Programme <LinkArrowUpRight />
+                  Apply now <LinkArrowUpRight />
                 </Link>
               </p>
             </motion.div>
