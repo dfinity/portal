@@ -457,29 +457,29 @@ const stats: {
 }[][] = [
   [
     { title: "Active Countries", value: "30", fallbackValue: "" },
-    { title: "Web3 Community Grants", value: "76", fallbackValue: "" },
-    { title: "Events Organized", value: "20", fallbackValue: "" },
+    { title: "Grants Awarded", value: "76", fallbackValue: "" },
+    { title: "Events Launched", value: "20", fallbackValue: "" },
     { title: "Official ICP.Hubs", value: "15", fallbackValue: "" },
   ],
 
   [
     { title: "PR & Media Exposure", value: "15000000", fallbackValue: "" },
-    { title: "N. of Universities", value: "32", fallbackValue: "" },
-    { title: "Entrepreneurs Engaged", value: "2000", fallbackValue: "" },
-    { title: "Users Onboarded", value: "25000", fallbackValue: "" },
+    { title: "University Collaborations", value: "32", fallbackValue: "" },
+    { title: "Network Entrepreneurs", value: "2000", fallbackValue: "" },
+    { title: "New Users Accounts", value: "25000", fallbackValue: "" },
   ],
 
   [
     { title: "Crypto Communities", value: "50", fallbackValue: "" },
     { title: "Ecosystem Partnerships", value: "12", fallbackValue: "" },
-    { title: "Conferences Participated", value: "15", fallbackValue: "" },
+    { title: "Conference Appearances", value: "15", fallbackValue: "" },
     { title: "Content Created", value: "30", fallbackValue: "" },
   ],
   [
-    { title: "N. of Hackathons", value: "5", fallbackValue: "" },
-    { title: "Educational Courses", value: "4", fallbackValue: "" },
+    { title: "Hackathons Held", value: "5", fallbackValue: "" },
+    { title: "Education Courses", value: "4", fallbackValue: "" },
     { title: "Devs Trained", value: "600", fallbackValue: "" },
-    { title: "Projects Incubated - MVPs", value: "60", fallbackValue: "" },
+    { title: "Incubated Projects", value: "60", fallbackValue: "" },
   ],
 ];
 
@@ -723,8 +723,8 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Get to know the Internet Computer through fun community
-              programs
+              Get to know the Internet Computer 
+              
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -873,7 +873,7 @@ function CommunityPage() {
               className="w-30"
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">
-              Community engagement
+              Community engager
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               If you're a Web3 content creator, educator, event organizer, influencer or innovator looking to support 
@@ -1048,9 +1048,9 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                From core concepts, to the Internet Computer's EVM model, to hands-on 
+                From core concepts, to the ICP EVM model, to hands-on 
                 experience with Rust using the Remix IDE, this Rise In bootcamp will
-                open your eyes to the potential of decentralized web development.
+                open your eyes to the potential of Web3 development.
               </p>
               <p className="mb-0">
                 <Link
