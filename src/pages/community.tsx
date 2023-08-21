@@ -1125,15 +1125,15 @@ function CommunityPage() {
                 className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
                 variants={transitions.item}
               >
-                Our Global Community
+                Join, connect, collaborate and connect
               </motion.h2>
               <motion.p
                 className="tw-paragraph md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Welcome to our vibrant global community where people from all
-                corners of the world come together to connect, collaborate, and
-                create.
+                The ICP community is currently active in around 30 countries and collaborates with up to 50 well-known 
+                crypto organizations and 32 universities. Haven't joined yet? What are you waiting for?
+                
               </motion.p>
 
               {/* <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
