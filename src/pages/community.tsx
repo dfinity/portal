@@ -310,38 +310,6 @@ const communityGallery: {
   },
 ];
 
-const CommunityGalleryImage: React.FC<{
-  item: (typeof communityGallery)[0];
-}> = ({ item }) => {
-  return (
-    <motion.div
-      variants={transitions.item}
-      className={clsx(
-        `overflow-hidden rounded-xl flex flex-col bg-white group relative`,
-        [
-          "row-end-auto",
-          "row-end-[span_1]",
-          "row-end-[span_2]",
-          "row-end-[span_3]",
-          "row-end-[span_4]",
-          "row-end-[span_5]",
-        ][item.heightUnits]
-      )}
-    >
-      <img
-        src={item.image}
-        alt={item.title}
-        loading="lazy"
-        className="h-full w-full object-cover object-center"
-      ></img>
-      {/* <div className="absolute bottom-0 left-0 right-0 rounded-xl bg-white/30 backdrop-blur-md opacity-0 transition-opacity pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto text-white p-8">
-        <h4 className="tw-heading-5 mb-3">{item.title}</h4>
-        <p className="tw-lead-sm mb-0">{item.description}</p>
-      </div> */}
-    </motion.div>
-  );
-};
-
 const Globe: React.FC<{
   className?: string;
 }> = ({ className }) => {
@@ -619,7 +587,10 @@ const GalleryShowcase = React.memo(() => {
     Math.floor(communityGallery.length / 3)
   );
   return (
-    <section className="overflow-hidden relative h-[280px] md:h-[560px]">
+    <AnimateSpawn
+      className="overflow-hidden relative h-[280px] md:h-[560px]"
+      variants={transitions.container}
+    >
       <div className="flex gap-1 md:gap-3 absolute left-1/2 min-w-max nft-marquee-right">
         {topRow.map((item) => (
           <img
@@ -661,7 +632,7 @@ const GalleryShowcase = React.memo(() => {
           />
         ))}
       </div>
-    </section>
+    </AnimateSpawn>
   );
 });
 
@@ -702,15 +673,17 @@ function CommunityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                ICP Community <br />spans the globe
+                ICP Community <br />
+                spans the globe
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
                 Join an inspiring tribe of Web3 creators, builders, educators
-                and enthusiasts on the path to transforming the Internet Computer 
-                into the world's first truly decentralized open internet.
+                and enthusiasts on the path to transforming the Internet
+                Computer into the world's first truly decentralized open
+                internet.
               </motion.p>
             </div>
             <Globe
@@ -750,8 +723,8 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Get to know the Internet Computer through our fun 
-              community programs
+              Get to know the Internet Computer through our fun community
+              programs
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -773,8 +746,8 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Education</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Dedicated educational programs are designed in cooperation with Web3 
-              learning platforms to empower talented builders and pave the 
+              Dedicated educational programs are designed in cooperation with
+              Web3 learning platforms to empower talented builders and pave the
               way for their future projects on the Internet Computer blockchain.
             </p>
             <p className="mb-0">
@@ -796,11 +769,11 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Since March 2023, ICP.Hubs have been sprouting up in all corners of the world, 
-              With 15 hubs and more in the making, a vibrant community is
-              fueling awareness and adoption across all verticals — 
-              from evangelism to education, to strategic
-              partnerships and project accelerators.
+              Since March 2023, ICP.Hubs have been sprouting up in all corners
+              of the world, With 15 hubs and more in the making, a vibrant
+              community is fueling awareness and adoption across all verticals —
+              from evangelism to education, to strategic partnerships and
+              project accelerators.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#hubs">
@@ -821,10 +794,10 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              There's no better way to build a strong community than by meeting at events.
-              ICP gatherings and conferences offer unique moments to hang out, mingle, celebrate,
-              learn, and forge longstanding connections with forward-thinking peeps. 
-             
+              There's no better way to build a strong community than by meeting
+              at events. ICP gatherings and conferences offer unique moments to
+              hang out, mingle, celebrate, learn, and forge longstanding
+              connections with forward-thinking peeps.
             </p>
             <p className="mb-0">
               <Link
@@ -998,12 +971,13 @@ function CommunityPage() {
               className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
               variants={transitions.item}
             >
-              ICP communities are forming and taking shape in various regions around the globe,
-              bringing entrepreneurs, developers, venture capitalists, educators, enthusiasts and experts
-              under one regional roof. 
+              ICP communities are forming and taking shape in various regions
+              around the globe, bringing entrepreneurs, developers, venture
+              capitalists, educators, enthusiasts and experts under one regional
+              roof.
             </motion.p>
 
-            <motion.div 
+            <motion.div
               variants={transitions.fadeIn}
               className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-[-1] [mask-image:linear-gradient(to_bottom,black_40%,transparent_60%)]"
             >
@@ -1140,47 +1114,6 @@ function CommunityPage() {
             </motion.div>
           </div>
         </AnimateSpawn>
-
-        <section className="container-12 relative mt-30 md:mt-60">
-          <AnimateSpawn
-            className=" relative text-white"
-            variants={transitions.container}
-          >
-            <motion.div
-              className="blob blob-purple blob-sm blob-x-5 blob-y-7 z-[-1] md:blob-xl"
-              variants={transitions.fadeIn}
-            ></motion.div>
-            <motion.h2
-              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
-              variants={transitions.item}
-            >
-              Get familiar with the Internet Computer
-            </motion.h2>
-          </AnimateSpawn>
-
-          <AnimateSpawn
-            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
-            variants={transitions.container}
-          >
-            <CardWithDescription
-              title="Join the community telegram channels"
-              description=""
-              href=""
-            />
-
-            <CardWithDescription
-              title="Follow us on Twitter for more"
-              description=""
-              href=""
-            />
-            <CardWithDescription
-              title="Join our latest global events"
-              description=""
-              href=""
-            />
-          </AnimateSpawn>
-        </section>
-
         <section className="bg-infinite text-white my-20 md:my-40 py-20 md:py-40">
           <AnimateSpawn
             className="container-10   relative"
@@ -1231,6 +1164,46 @@ function CommunityPage() {
             ))} */}
           </AnimateSpawn>
           <GalleryShowcase />
+        </section>
+
+        <section className="container-12 relative mb-20 md:mb-40 mt-30 md:mt-40">
+          <AnimateSpawn
+            className="md:w-6/10 md:mx-auto relative text-white"
+            variants={transitions.container}
+          >
+            <motion.div
+              className="blob blob-purple blob-sm blob-x-5 blob-y-7 z-[-1] md:blob-md"
+              variants={transitions.fadeIn}
+            ></motion.div>
+            <motion.h2
+              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
+              variants={transitions.item}
+            >
+              Get familiar with the Internet Computer
+            </motion.h2>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
+            variants={transitions.container}
+          >
+            <CardWithDescription
+              title="Join the community telegram channels"
+              description=""
+              href="https://t.me/dfinity"
+            />
+
+            <CardWithDescription
+              title="Follow us on Twitter for more"
+              description=""
+              href="https://twitter.com/dfinity"
+            />
+            <CardWithDescription
+              title="Join our latest global events"
+              description=""
+              href="https://dfinity.org/events-and-news/"
+            />
+          </AnimateSpawn>
         </section>
 
         <Newsletter
