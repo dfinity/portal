@@ -929,15 +929,15 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              ICP.Hubs Showcase
+              Hub highlights
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              The DFINITY Foundation open-sourced and launched the Internet
-              Computer on May 10, 2021. List of major innovations developed by
-              the Foundation.
+              Take a look at the latest ICP.Hub activity happening around the world. 
+              We hope it inspires you to join the movement. 
+      
             </motion.p>
           </div>
         </AnimateSpawn>
