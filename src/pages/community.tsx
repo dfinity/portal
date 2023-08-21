@@ -164,37 +164,37 @@ const hubs: Hub[] = [
 
 const upcomingHubs: Hub[] = [
   {
-    name: "ETH Toronto",
+    name: "Sponsorship at ETH event",
     description:
-      "@ICPNorth is an Official Megabyte Sponsor of ETHToronto , They're contributing to accelerating the Internet Computer mass adoption",
+      "ICP.Hub North America becomes an official Megabyte Sponsor of ETHToronto! A great example of spreading the word about Internet Computer to fellow crypto communities.",
     image: "/img/community/eth-toronto.webp",
     link: "https://twitter.com/ETH_Toronto/status/1687096585715421184",
   },
   {
-    name: "Coinfest Asia",
+    name: "ICP at Coinfest Asia",
     description:
-      "Be part of the Asia's immersive Web3 festival and join these top projects and venture capital at Coinfest Asia 2023!",
+      "ICP advocates make an appearace at Coinfest Asia 2023 — Asia's immersive Web3 festival.",
     image: "/img/community/coinfest-asia.webp",
     link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
   },
   {
-    name: "Web3 Conf India",
+    name: "Event partner at Web3Conf India",
     description:
-      "Super stoked to have ICP, represented by its India Hub, as a Partner for the Web3Conf India 2023!",
+      "ICP.Hub India visits the Web3Conf India 2023 as a top partner. The local ICP community it stoked!",
     image: "/img/community/web3-india.webp",
     link: "https://twitter.com/web3conf_india/status/1686272790150754304?s=46&t=znCni81w_5V68LfRCHvtZA",
   },
   {
-    name: "Istanbul Blockchain Week",
+    name: "ICP sponsors Istanbul Blockchain Week",
     description:
-      "Thrilled to announce DFINITY (ICP) as a  sponsor for #IBW23!  Witness the evolution of blockchains into...",
+      "Thrilled to announce ICP.Hub Turkey as an official sponsor for #IBW23, the largest blockchain conference in country.",
     image: "/img/community/istanbul-blockchain-week.webp",
     link: "https://twitter.com/istanbulblockwk/status/1687075926386110464?s=46&t=YWzpokcUePMtkg043EMwBQ",
   },
   {
-    name: "Launch of ICPnnova",
+    name: "New incubator launch in LATAM",
     description:
-      "Colledge and ICP Latam Hub launch ICPnnova, incubation program for web3 projects in Latin America",
+      "Colledge, a tech academy focused on Web3, and ICP.Hub LATAM launch ICPnnova, an incubation program for web3 projects in the regional ecosystem.",
     image: "/img/community/icpnnova.webp",
     link: "https://es.cointelegraph.com/news/colledge-and-icp-latam-hub-launch-icpnnova-incubation-programme-for-web3-projects-in-latin-america",
   },
@@ -933,7 +933,7 @@ function CommunityPage() {
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Take a look at the latest ICP.Hub activity happening around the world. 
+              The latest ICP.Hub activity happening around the world. 
               We hope it inspires you to join the movement. 
       
             </motion.p>
