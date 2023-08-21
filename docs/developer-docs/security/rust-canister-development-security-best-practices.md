@@ -486,9 +486,9 @@ Make sure you don’t store sensitive data inside your canister.
 
 #### Security concern
 
-When an HTTP outcall is performed it is amplified by the number of replicas in the subnet. The target web server will receive not only one request but as many requests as the number of nodes in the subnet.
+When an HTTP outcall is performed, it is amplified by the number of replicas in the subnet. The target web server will receive not only one request, but as many requests as the number of nodes in the subnet.
 
-Most web servers implement some sort of rate limiting, this is a mechanism used to restrict the number of requests a client can make to a web server within a specific time period, preventing abuse or excessive usage of their API(s).
+Most web servers implement some sort of rate limiting; this is a mechanism used to restrict the number of requests a client can make to a web server within a specific time period, preventing abuse or excessive usage of their API(s).
 
 #### Recommendation
 
@@ -500,7 +500,7 @@ You should consider such rate limits when designing and implementing your canist
 
 #### Security concern
 
-As mentioned before, if an HTTP outcall is performed it is amplified by the number of replicas in the subnet. That means the queried endpoint will receive the same request several times. This is especially risky in requests that change the endpoint state given one HTTP outcall could lead to unintentionally changing the endpoint state several times.
+As mentioned before, if an HTTP outcall is performed it is amplified by the number of replicas in the subnet. That means the queried endpoint will receive the same request several times. This is especially risky in requests that change the endpoint state, given that one HTTP outcall could lead to unintentionally changing the endpoint state several times.
 
 #### Recommendation
 
@@ -530,7 +530,7 @@ This applies to the HTTP response body and headers. Make sure to consider both w
 
 #### Security concern
 
-HTTP outcalls [pricing](../integrations/https-outcalls/https-outcalls-how-it-works#pricing) is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
+The [pricing](../integrations/https-outcalls/https-outcalls-how-it-works#pricing) of HTTPS outcalls is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
 
 #### Recommendation
 
