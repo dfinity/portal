@@ -1188,12 +1188,6 @@ function CommunityPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="Join the community telegram channels"
-              description=""
-              href="https://t.me/dfinity"
-            />
-
-            <CardWithDescription
               title="Follow us on Twitter for more"
               description=""
               href="https://twitter.com/dfinity"
