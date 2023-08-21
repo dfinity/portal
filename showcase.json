@@ -2418,5 +2418,23 @@
     "video": "/img/showcase/TBFZ.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "36263576"
+  },
+  {
+    "id": "motokopilot",
+    "name": "MotokoPilot",
+    "website": "https://d7dm6-sqaaa-aaaag-qcgma-cai.icp0.io/",
+    "oneLiner": "Your AI-powered companion for simplifying and streamlining the Motoko coding experience.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "MotokoPilot is an AI-driven tool designed to streamline code completion, documentation, and debugging in Motoko. It simplifies the process for newcomers to Motoko development, while enabling seasoned developers to write code with greater speed and efficiency.",
+    "stats": "10,000+ lines of training data",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/icpcs/motokopilot-vscode",
+    "youtube": "https://www.youtube.com/@ICPCS",
+    "twitter": "https://twitter.com/icpcsnft",
+    "logo": "/img/showcase/motokopilot_logo.png",
+    "screenshots": ["/img/showcase/motokopilot_screenshot.jpg"],
+    "submittableId": "35960849"
   }
 ]
