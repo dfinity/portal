@@ -1005,13 +1005,13 @@ function CommunityPage() {
               className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
               variants={transitions.item}
             >
-              ICP education programs
+              Get ICP educated 
             </motion.h2>
             <motion.p
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Learn the essentials and how to build on the Internet Computer through one of the ICP community education platforms.
+              Learn the fundamentals and how to build on the Internet Computer through one of the ICP community education platforms.
         
             </motion.p>
           </div>
@@ -1022,7 +1022,7 @@ function CommunityPage() {
               variants={transitions.item}
             >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
-                Internet Computer
+                TypeScript on ICP
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
@@ -1044,13 +1044,13 @@ function CommunityPage() {
               variants={transitions.item}
             >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
-                Internet Computer Rust Bootcamp
+                ICP Rust Bootcamp
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                From fundamentals, to core concepts, to the Internet Computer's EVM model, this Rise In 
-                bootcamp will open your eyes to the potential of decentralized web development. Plus, gain hands-on 
-                experience with Rust using the Remix IDE.
+                From core concepts, to the Internet Computer's EVM model, to hands-on 
+                experience with Rust using the Remix IDE, this Rise In bootcamp will
+                open your eyes to the potential of decentralized web development.
               </p>
               <p className="mb-0">
                 <Link
@@ -1067,20 +1067,22 @@ function CommunityPage() {
               variants={transitions.item}
             >
               <h3 className="tw-heading-5 flex justify-between items-start gap-3 mb-0">
-                ICP Developer Program
+                ICP
+                <br />
+                Developer I
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                During the next 4 weeks we want you to have an incredible
-                experience on your way to learn to develop within the Internet
-                Computer.
+                A 4-week basics course in Spanish that covers canister development using Motoko, creating
+                a backend and frontend canister, and ending with building your own dapp on the Internet 
+                Computer. 
               </p>
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
                   href="https://icp-esp.gitbook.io/icp-developer/lineamientos-certificacion/programa-icp-developer"
                 >
-                  View Programme <LinkArrowUpRight />
+                  Learn at your pace <LinkArrowUpRight />
                 </Link>
               </p>
             </motion.div>
@@ -1096,16 +1098,16 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                This certification is a continuation of the ICP Developer I
-                certification for the development of backend Canisters with
-                Motoko.
+                This online course offered in Spanish is a continuation of ICP Developer I. 
+                Spend 5 days more building your project on the Internet Computer and finish the 
+                week with celebrating your first 100% on-chain dapp.
               </p>
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
                   href="https://icp-esp.gitbook.io/icp-developer-ii/"
                 >
-                  View Programme <LinkArrowUpRight />
+                  Continue building <LinkArrowUpRight />
                 </Link>
               </p>
             </motion.div>
@@ -1123,7 +1125,7 @@ function CommunityPage() {
                 className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
                 variants={transitions.item}
               >
-                Join, connect, collaborate and connect
+                Join, collaborate and connect
               </motion.h2>
               <motion.p
                 className="tw-paragraph md:tw-lead mb-0"
