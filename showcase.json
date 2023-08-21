@@ -2401,5 +2401,22 @@
     "video": "/img/showcase/icpodcast_demo.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "33308492"
+  },
+  {
+    "id": "tbfz",
+    "name": "The Battle for Zhion",
+    "website": "https://tbfz.io/",
+    "oneLiner": "Survive, conquer, and master the power of Zhion's battleground.",
+    "tags": ["Games", "Metaverse", "NFT", "Bitcoin", "Wallet"],
+    "description": "Dive headfirst into the heart-pounding world of Zhion. Set on the war-ravaged planet, this game thrusts you into a relentless 100-year war between the ruthless Crimson Empire and the unwavering Civil Guard.",
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/idarkstudio",
+    "youtube": "https://www.youtube.com/@insidedarkstudio",
+    "display": "Large",
+    "logo": "/img/showcase/TBFZ.png",
+    "screenshots": ["/img/showcase/TBFZ_screenshot.png"],
+    "video": "/img/showcase/TBFZ.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "36263576"
   }
 ]
