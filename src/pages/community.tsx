@@ -199,23 +199,23 @@ const upcomingHubs: Hub[] = [
     link: "https://es.cointelegraph.com/news/colledge-and-icp-latam-hub-launch-icpnnova-incubation-programme-for-web3-projects-in-latin-america",
   },
   {
-    name: "New ICP.Hub in Turkey",
+    name: "New hub in Turkey",
     description:
-      "Internet Computer (ICP), which is attracting more and more attention all over the world, is taking an important step in Turkey as ...",
+      "Internet Computer makes another investment in Turkey's Web3 ecosystem by etablishing an official hub.",
     image: "/img/community/icphub-turkey.webp",
     link: "https://www.coindeskturkiye.com/yazarlar/sude-ozkan/turkiye-web3-ekosistemine-bir-yatirim-daha-internet-computer-turkiyede-icphub-kuruyor-4818",
   },
   {
-    name: "Women in blockchain",
+    name: "New Partnership with WIBC",
     description:
-      "ICP.Hub North America is thrilled to announce a landmark partnership between the ICP.Hub North America and Women in Blockchain Canada...",
+      "ICP.Hub North America is thrilled to announce a landmark partnership between the ICP.Hub North America and Women in Blockchain Canada.",
     image: "/img/community/women-in-blockchain.webp",
     link: "https://twitter.com/finbold/status/1689306088561156096",
   },
   {
-    name: "ICP ecosystem in Japan",
+    name: "ICP ecosystem meets Japan",
     description:
-      'NFTStudio24 announces ICP Meetup "Dev3 Japan" to introduce ICP ecosystem in Japan...',
+      'NFTStudio24 announces ICP Meetup "Dev3 Japan" to introduce ICP ecosystem to the Web3 community in Japan.',
     image: "/img/community/ecosystem-japan.webp",
     link: "https://jp.cointelegraph.com/press-releases/nftstudio24-announces-dev3-japan-an-icp-meetup-to-introduce-the-icp-ecosystem-in-japan",
   },
