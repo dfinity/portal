@@ -827,8 +827,7 @@ function CommunityPage() {
               variants={transitions.item}
             >
               If holding ICP or using dapps is not enough, there are many ways to contribute to the adoption 
-              advocacy of the Internet Computer. Put your expertise, talent, and network to good use in one of the 
-              following programs. 
+              advocacy of the Internet Computer. 
             </motion.p>
           </div>
         </AnimateSpawn>
@@ -1179,7 +1178,7 @@ function CommunityPage() {
               className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              Get familiar with the Internet Computer
+              Follow the ICP Community
             </motion.h2>
           </AnimateSpawn>
 
@@ -1188,12 +1187,12 @@ function CommunityPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="Follow us on Twitter for more"
+              title="Engage on Twitter"
               description=""
               href="https://twitter.com/dfinity"
             />
             <CardWithDescription
-              title="Join our latest global events"
+              title="Join an ICP event"
               description=""
               href="https://dfinity.org/events-and-news/"
             />
@@ -1224,7 +1223,7 @@ function CommunityPage() {
             Want to meet ICP enthusiasts IRL?
             <br />
             <span className="text-white-60">
-              Sign up for event updates to stay connected
+              Sign up to stay connected
             </span>
           </h2>
         </Newsletter>
