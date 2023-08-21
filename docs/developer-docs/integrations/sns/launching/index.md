@@ -8,6 +8,6 @@ In August 2023, the NNS has decided to release a new version of the SNS with a n
 
 As some dapp projects might already have started with planning and testing the SNS launch process, the old legacy flow is still supported. Note that the legacy flow might be deprecated going forward.
 
-Therefore, the developer documentation currently includes pages to describe both the old and the new flow.
-The pages [Stages of an SNS launch](./launch-summary-1proposal.md) and [Commands & actions to go through SNS launch](./launch-steps-1proposal.md) define the new, recommended launch flow and how to go through it.
+Therefore, the developer documentation currently includes pages to describe both the legacy and the new flow.
+The pages [Stages of an SNS launch](./launch-summary-1proposal.md) and [Commands & actions to go through SNS launch](./launch-steps-1proposal.md) define the new, recommended 1-proposal launch flow and how to go through it.
 The pages [Stages of an SNS launch](./launch-summary.md) and [Commands & actions to go through SNS launch](./launch-steps.md) define the old, legacy flow that might be deprecated going forward.
