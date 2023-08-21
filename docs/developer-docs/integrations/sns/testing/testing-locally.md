@@ -56,7 +56,7 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
     <tr>
         <td>1</td>
         <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td rowspan="2"><code>TODO ./deploy_sns.sh<code></td>
+        <td rowspan="2"><code>TODO ./deploy_sns.sh</code></td>
     </tr>
     <tr>
         <td>2</td>

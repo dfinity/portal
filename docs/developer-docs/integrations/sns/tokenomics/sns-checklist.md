@@ -74,7 +74,7 @@ Use the [sns cli tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to 
 
  As a part of the SNS launch process, an NNS proposal must be created to ask the NNS to create an SNS and start a decentralization swap. You can find the details about how to create such a proposal [here](../launching/launch-summary-1proposal.md).
 
-Include relevant information like tokenomics (token distribution, governance, decentralization swap), details about the dapp (link to the open sourced code), whitepaper and anything else relevant for the community to make a decisions if an SNS should be launched for the dapp. 
+Include relevant information like tokenomics (token distribution, governance, decentralization swap), details about the dapp (link to the open sourced code), whitepaper, a link to the forum discussion (see Step 3.2), and anything else relevant for the community to make a decisions if an SNS should be launched for the dapp. 
 
 For details about the preparation process, see the [documentation](./preparation.md) and for details about how the launch works, see [this documentation](../launching/index.md). 
 The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
