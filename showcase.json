@@ -2419,5 +2419,25 @@
     "logo": "/img/showcase/motokopilot_logo.png",
     "screenshots": ["/img/showcase/motokopilot_screenshot.jpg"],
     "submittableId": "35960849"
+  },
+  {
+    "id": "agorapp",
+    "name": "AgorApp",
+    "oneLiner": "AgorApp is a Codecademy-syle platform that provides a browser-based IDE for all-things-web3-engineering. Learn how to build on the Internet Computer in an interactive environment.",
+    "website": "https://swbbz-kqaaa-aaaag-abt4a-cai.icp0.io/",
+    "tags": [
+      "DevEcosystem",
+      "Edtech",
+      "Tools / Infrastructure"
+    ],
+    "description": "AgorApp (https://agorapp.dev/) is a Codecademy-style interactive coding environment where users can learn about web3 engineering and immediately practice the theory they have learned by solving their related coding exercises -no local setup needed. ICP builders can use AgorApp to learn how to build ICP DApps with Motoko, submit their code and then programmatically validate their solutions against the test-cases run by our infrastructure. Alongside courses, AgorApp provides CTF and algorithm challenges with bounty prizes: the users that hack the security challenges in the least amount of time or implement the most efficient implementation of an algorithm coding problem will be rewarded with ICP tokens and ICP native badges. AgorApp's fast feedback loop paired with our web3 workspace board which aggregates all grants/jobs/bounties/hackathons/events in the web3 ecosystem and recommends them to users based on their skillsets, github portfolio, AgorApp achievements and third-party integrations (e.g. Gitcoin, Dfinity, etc.) makes AgorApp the go-to place for developer onboarding. In the future, AgorApp will extend its educational-focused IDE to a low-code/rapid-prototyping end-to-end IDE with support for native ICP dev plugins (i.e.: fuzzers and static analyzers), a marketplace for web3 components and fine-tuned LLM for code completion and code generation.",
+    "usesInternetIdentity": false,
+    "stats": "600+ users",
+    "display": "Large",
+    "logo": "/img/showcase/agorapp-logo-small.svg",
+    "video": "https://www.youtube.com/watch?v=0mRinBJbiGU",
+    "github": "https://github.com/agorapp-dao/",
+    "twitter": "https://twitter.com/agorappDAO",
+    "submittableId": "35783156"
   }
 ]
