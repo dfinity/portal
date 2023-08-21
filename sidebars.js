@@ -31,6 +31,32 @@ const sidebars = {
             "tutorials/create_your_first_app/wrapup",
           ],
           },
+         {
+          type: "category",
+          label: "Developer journey",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/index",
+          },
+          items: [
+            {
+              type: "category",
+              label: "Level 0: Pre-flight operations",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-0/index",
+            },
+              items: [
+                "tutorials/developer-journey/level-0/ic-overview",
+                "tutorials/developer-journey/level-0/ic-terms",
+                "tutorials/developer-journey/level-0/dev-env",
+                "tutorials/developer-journey/level-0/intro-canisters",
+                "tutorials/developer-journey/level-0/intro-languages",
+                "tutorials/developer-journey/level-0/intro-dfx"
+              ],
+            },
+          ],
+        },
           {
             type: "category",
             label: "Sample projects",
@@ -136,6 +162,7 @@ const sidebars = {
                 "developer-docs/setup/cycles/cycles-wallet",
                 "developer-docs/setup/cycles/converting_icp_tokens_into_cycles",
                 "developer-docs/setup/cycles/cycles-faucet",
+                "developer-docs/setup/cycles/cycles_management_services",
             ],
           },
           {
@@ -210,6 +237,7 @@ const sidebars = {
                 "developer-docs/backend/motoko/candid-ui",
                 "developer-docs/backend/motoko/scalability-cancan",
                 "developer-docs/backend/motoko/sample-apps",
+                "developer-docs/backend/motoko/mo-doc",
               ],
             },
             {
