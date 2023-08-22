@@ -2419,5 +2419,23 @@
     "logo": "/img/showcase/motokopilot_logo.png",
     "screenshots": ["/img/showcase/motokopilot_screenshot.jpg"],
     "submittableId": "35960849"
+  },
+  {
+    "id": "ethereum-canister",
+    "name": "Ethereum Canister",
+    "website": "https://www.eiger.co/",
+    "oneLiner": "A fully trustless access to the Ethereum blockchain data.",
+    "tags": [
+      "Ethereum", "Tools / Infrastructure"
+    ],
+    "description": "The Ethereum canister offers a secure and trustless way to access Ethereum blockchain data within the ICP ecosystem. Behind the scenes, it leverages the helios light Ethereum client which is equipped with the capability to validate the authenticity of fetched data.",
+    "stats": "17M+ blocks",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/eigerco/ethereum-canister",
+    "logo": "",
+    "screenshots": [],
+    "video": "",
+    "videoContentType": "video/mp4",
+    "submittableId": "40732752"
   }
 ]
