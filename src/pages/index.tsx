@@ -40,19 +40,19 @@ export default function Home(): JSX.Element {
           ctaLink="/what-is-the-ic"
           cards={[
             {
-              caption: "Internet Identity",
-              title: "Web3 ID",
-              link: "/internet-identity",
-            },
-            {
-              caption: "Open Internet Services",
-              title: "Web3 as DAO",
-              link: "/openchat",
-            },
-            {
               caption: "Sovereign Enterprise",
               title: "Cloud 3.0",
               link: "/enterprise",
+            },
+            {
+              caption: "Open Internet Services",
+              title: "Web3 → DAOs",
+              link: "/openchat",
+            },
+            {
+              caption: "Internet Identity",
+              title: "Web3 ID",
+              link: "/internet-identity",
             },
           ]}
         ></PreHero>
