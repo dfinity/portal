@@ -28,16 +28,32 @@ export default function Home(): JSX.Element {
     >
       <QueryClientProvider client={queryClient}>
         <PreHero
-          headline="World Computer"
-          straps={[
-            "Build on the network",
-            "Autonomous code",
-            "Unstoppable code",
-            "Native multi-chain",
-            "Security by design",
-            "No firewalls needed",
-            "Privacy by design",
-            "Decentralize control",
+          headline={
+            <>
+              Internet
+              <br />
+              Computer
+            </>
+          }
+          subheadline="build on the network"
+          cta="Get to know ICP"
+          ctaLink="/what-is-the-ic"
+          cards={[
+            {
+              caption: "Sovereign Enterprise",
+              title: "Cloud 3.0",
+              link: "/enterprise",
+            },
+            {
+              caption: "Open Internet Services",
+              title: "Web3 → DAOs",
+              link: "/openchat",
+            },
+            {
+              caption: "Internet Identity",
+              title: "Web3 ID",
+              link: "/internet-identity",
+            },
           ]}
         ></PreHero>
       </QueryClientProvider>

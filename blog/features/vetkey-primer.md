@@ -57,7 +57,7 @@ There is a crucial point to note about this type of IBE scheme; A central author
 :::
 
 ## VETKD
-Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it has not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
+Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it is not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
 
 ### The threshold setting
 Note that we care most about the secret ***key derivation*** here, as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
@@ -108,7 +108,7 @@ BLS signatures are a particular type of digital signature introduced in by Dan B
 
 The main feature of BLS signatures is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting. 
 As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
-Threshold BLS signatures are used a lot on the Internet Computer, so let’s used that as the motivating example for the scenario. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
+Threshold BLS signatures are used a lot on the Internet Computer, so let’s use that as the motivating example for the scenario. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from the IC. At a very high level, the scenario will run as follows:
 * Nodes in the network participate in the DKG process and obtain (private) key shares.
 * Each node computes a signature share on a message $m$ using its share of the signing key. 
 * Nodes participate in a $\mathsf{Combine}$ process to combine signature shares and produce a single signature which is then sent to Alice.

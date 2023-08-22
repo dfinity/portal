@@ -11,7 +11,7 @@ The described concepts are also relevant for
 
 ## Tokenomics overview
 ### What is tokenomics?
-A token is a digital asset on a blockchain. Tokenomics describes the economics of a token system on a blockchain. It is a game changer for Decentralized autonomous organization (DAOs) compared to traditional apps running on a Web 2.0 infrastructure, because it enables the introduction of new incentive systems and use cases. Tokenizing a DAO allows, for instance, that anyone in the world can purchase tokens and thereby contribute to initial funding for the DAO. Moreover, tokens can be paid to early adopters and active users, which will help attract users.
+A token is a digital asset on a blockchain. Tokenomics describes the economics of a token system on a blockchain. It is a game changer for decentralized autonomous organization (DAOs) compared to traditional apps running on a Web 2.0 infrastructure, because it enables the introduction of new incentive systems and use cases. Tokenizing a DAO allows, for instance, that anyone in the world can purchase tokens and thereby contribute to initial funding for the DAO. Moreover, tokens can be paid to early adopters and active users, which will help attract users.
 
 Tokenomics covers a wide range of topics, such as 
 * Development of token supply & demand over time. This includes creating new tokens (minting) and destroying tokens (burning).
@@ -29,7 +29,7 @@ Typically supply increases with increasing prices. For example, if the price of 
 
 How do we end up at the equilibrium price ?
 * If P<sub>1</sub> > P<sub>2</sub>: We have a surplus, i.e., more supply than demand. This creates downward pressure on the price. 
-* If P<sub>3</sub> < P<sub>2</sub>: We have a shortage, i.e., More demand than supply. This creates upward pressure on the price. 
+* If P<sub>3</sub> < P<sub>2</sub>: We have a shortage, i.e., more demand than supply. This creates upward pressure on the price. 
 ### Token emission over time
 A token emission schedule defines the rate at which new tokens are minted over time. The design of a token emission schedule is crucial for the success of a DAO. 
 
@@ -54,7 +54,7 @@ DeFi tokens incentivise users to facilitate these functions, e.g. providing liqu
 When establishing a DAO you might want to consider (at least) the following aspects: 
 
 ### Token utility
-Define concisely for which use cases the token (or several tokens) of the DAO will be used (see prior section on use cases).  In particular it should be considered how the token(s) could be used for 
+Define concisely for which use cases the token (or several tokens) of the DAO will be used (see prior section on use cases).  In particular, it should be considered how the token(s) could be used for 
 * Participation in governance.
 * Rewarding active participation in services offered by the DAO.
 * Rewarding contributions to the growth of the DAO.
@@ -74,7 +74,7 @@ To emphasize the decentralization of the DAO from the start, developers can send
 ### Voting power and decentralization
 The voting power should be distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves.
 
-As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. The configuration of the voting power should also consider the (initial) allocation of tokens, to ensure decentralization from the start. For example it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
+As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. The configuration of the voting power should also consider the (initial) allocation of tokens, to ensure decentralization from the start. For example, it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
 
 On this [page](rewards.md) there is more information on the configuration of voting rewards. 
 
