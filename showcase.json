@@ -2039,17 +2039,14 @@
     "logo": "/img/showcase/blocklist.png",
     "github": "https://github.com/ICEvent/Escrow"
   },
- 
-
-
   {
     "id": "34886232",
     "name": "Vibeverse",
-    "oneLiner": "A vibrant ecosystem where users can learn about new AI tools, AI content, AI Movies, and more",
-    "website": "https://h5fnl-4iaaa-aaaap-abddq-cai.icp0.io/",
-    "tags": [ "NFT" ],
-    "description": "Our platform is a vibrant ecosystem where users can seamlessly share, discover, and collaborate on AI-generated content in the Film industry and beyond. Users can also discover AI tools to create new content and join new communities like White Mirror",
-    "stats": "Top 100 projects on Buildspace S3 Dubai + San Francisco | 700 filmmakers and content creators enlisted for final demo day on 21th June 2023",
+    "oneLiner": "Where AI magic meets creative play in a universe of endless possibilities",
+    "website": "https://vibeverse.xyz/",
+    "tags": [ "AI" ],
+    "description": "Vibeverse is a vibrant digital playground where creators, filmmakers, and artists harness AI tools to craft, share, and celebrate unique content in a decentralized community.",
+    "stats": "",
     "logo": "/img/showcase/vibeverse_logo.png",
     "usesInternetIdentity": true,
     "github?": "https://github.com/roger-rangel/vibeverse",
@@ -2410,24 +2407,6 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-  },
-  {
-    "id": "34886232",
-    "name": "Vibeverse",
-    "oneLiner": "Where AI magic meets creative play in a universe of endless possibilities",
-    "website": "https://vibeverse.xyz/",
-    "tags": [ "NFT" ,  "AI" ],
-    "description": "Vibeverse is a vibrant digital playground where creators, filmmakers, and artists harness AI tools to craft, share, and celebrate unique content in a decentralized community.",
-    "stats": "",
-    "logo": "/img/showcase/vibe_mobile.png",
-    "usesInternetIdentity": true,
-    "github?": "https://github.com/roger-rangel/vibeverse",
-    "youtube?": "https://www.youtube.com/watch?v=-Gug7qZq4AM%E2%80%9D",
-    "twitter?": "https://twitter.com/vibeversexyz",
-    "screenshots?": ["/img/showcase/vibeverse_screenshot_0.jpg", "/img/showcase/vibeverse_screenshot_1.jpg"],
-    "submittableId?": "34886232"
-  },
-  {
     "description": "MotokoPilot is an AI-driven tool designed to streamline code completion, documentation, and debugging in Motoko. It simplifies the process for newcomers to Motoko development, while enabling seasoned developers to write code with greater speed and efficiency.",
     "stats": "10,000+ lines of training data",
     "usesInternetIdentity": true,
