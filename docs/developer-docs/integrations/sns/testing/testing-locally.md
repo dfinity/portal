@@ -54,19 +54,20 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
         <td>Custom scripts used to deploy dapps (e.g. multi-canister dapps, use nix, etc...)</td>
     </tr>
     <tr>
-        <td>3</td>
+        <td>1</td>
+        <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
+        <td><code></code></td>
+    </tr>
+    <tr>
+        <td>2</td>
         <td>Dapp developers add NNS root as co-controller of dapp</td>
         <td><code>./let_nns_control_dapp.sh</code></td>
         <td><code></code></td>
     </tr>
     <tr>
-        <td>1</td>
-        <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td rowspan="2"><code>./propose_sns.sh</code></td>
-    </tr>
-    <tr>
-        <td>2</td>
+        <td>3</td>
         <td>Submit NNS proposal to create SNS</td>
+        <td rowspan="1"><code>./propose_sns.sh</code></td>
     </tr>
     <tr>
         <td>4</td>
