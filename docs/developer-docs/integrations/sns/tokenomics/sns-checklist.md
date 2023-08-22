@@ -15,7 +15,7 @@ an SNS is done at your own risk.
 
 :::info
 The NNS has approved a new flow for how SNSs can be launched that only require one proposal.
-The old flow required two NNS and one SNS proposals.
+The old flow required two NNS and one SNS proposal.
 Since this is now the recommended flow how to launch an SNS, this page and others focus on the new "one-proposal" flow.
 Nevertheless, the old, legacy flow is still available for those projects who started with the old flow and want to continue with this path, for example because they already started testing. These project can find the detailed launch stages according to the old flow [here](../launching/launch-summary.md) and the concrete actions to take to run through these stages [here](../launching/launch-steps.md). 
 :::
@@ -61,7 +61,7 @@ If the dapp does have dependencies of some kind that cannot be managed by the DA
 The SNS is initialized using an NNS proposal that defines the initial parameters, thus the initial configuration is approved by the NNS DAO.
 The proposal can be created from a YAML configuration file and defines things like the token name, token supply, token distribution, transaction fees, dissolve delays and more. 
 
-For initializing an SNS for your dapp, the configuration parameters must use the documentation created with the SNS tokenomics tool (section 1.1.5 above) to create the YAML configuration file. The [OpenChat config file](https://github.com/open-ic/open-chat/blob/master/sns/config/sns.yml) is a good example of how to format the file (note: the latest version of SNS may have new/different parameters). Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading. 
+For initializing an SNS for your dapp, the configuration parameters must use the documentation created with the SNS tokenomics tool (Section 1.1.5 above) to create the .yaml configuration file. Even though this uses an old version of the configuration file, you may look at the [OpenChat config file](https://github.com/open-ic/open-chat/blob/master/sns/config/sns.yml) as a good example of how to format the file. Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading. 
 
 Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]`. 
 

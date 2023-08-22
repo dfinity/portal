@@ -17,8 +17,8 @@ The [SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli)
 allows you to set these parameters and includes detailed descriptions of all parameters.
 
 ### Initial parameters
-All SNS parameters are set in a **.yaml** file that can then be passed as an argument to the NNS proposal that triggers the SNS launch, both for testing and in production.
-There are some parameters that have to be set and others that are set to a default value but that can also be changed. To make sure that all parameters are set to valid values, that are also consistent with each other, there is a tool to validate a given input file.
+All SNS parameters are set in a **.yaml** file that can then be passed as an argument to the NNS proposal that triggers the SNS launch, both for testing and in production. 
+To make sure that all parameters make sense and are also consistent with each other, it is recommended to test the proposal locally.
 
 **To create the SNS parameter yaml file and validate it, follow the steps
 ['Creating the configuration file'](https://github.com/dfinity/ic/tree/master/rs/sns/cli#creating-the-configuration-file)
@@ -36,14 +36,9 @@ that can, in contrast to the other parameters listed here, be changed later by S
       seed funders.
    - **Treasury tokens** that are owned by the SNS governance canister which can be
       spent by the SNS community according to their needs.
-   - **Swap tokens** which are owned by the SNS and swapped for ICP tokens.
-      Initially, parts of the SNS swap tokens are swapped in exchange for ICP tokens
-      in an initial decentralization swap. If the swap is successful, the participants
-      will receive SNS tokens in a basket of neurons. 
-      If not all of the swap tokens are sold in the initial swap, the rest of the
-      swap tokens are reserved for future swaps (separate from the treasury). 
-      Note that future swap are not yet designed, but having the tokens reserved
-      makes SNSs forward compatible to such a feature if it is added in the future.
+   - **Swap tokens** which are owned by the SNS swapped in exchange for ICP tokens
+      in the decentralization swap. If the swap is successful, the participants
+      will receive SNS tokens in a basket of neurons.
 - **Decentralization swap parameters**: this defines the parameters of the decentralization swap: 
   - **Rules of the swap** such as the minimum number of ICP tokens that the swap must collect to be successful and the maximum number of ICP tokens that it will collect. 
   - **Conditions of swap participation** such as the definition of a text that must be confirmed by users when participating in the swap and the possibility to define countries from which users cannot participate (by IP addresses).
