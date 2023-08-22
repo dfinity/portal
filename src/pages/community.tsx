@@ -74,7 +74,7 @@ const hubs: Hub[] = [
   {
     name: "ICP.Hub Turkey",
     location: "Turkey, Cyprus",
-    description: "",
+    description: "The first hub in the Middle East offering a supportive environment for developers, startups, and enthusiasts to build and deploy decentralized applications on the Internet Computer.",
     image: "/img/community/icp-hub-turkey.webp",
     link: "https://linktr.ee/Icphubnorthamerica",
     coordinates: [38.9637, 35.2433],
@@ -822,11 +822,11 @@ function CommunityPage() {
               className="w-30"
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">
-              Community engager
+              ICP community engager
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               All Web3 content creators, educators, event organizers, influencers and innovators looking to spread the  
-              word about the Internet Computer — the Community Grant Program may just be the right 
+              word about the Internet Computer — the Community Grant Program may be the 
               thing for you.          
             </p>
             <p className="mb-0">
