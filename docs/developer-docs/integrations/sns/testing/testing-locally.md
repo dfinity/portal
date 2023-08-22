@@ -50,29 +50,29 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
     <tr>
         <td>0</td>
         <td>Developers deploy a dapp to the Internet Computer</td>
-        <td><code> TODO ./deploy_test_canister.sh</code></td>
+        <td><code>./deploy_test_canister.sh</code></td>
         <td>Custom scripts used to deploy dapps (e.g. multi-canister dapps, use nix, etc...)</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Dapp developers add NNS root as co-controller of dapp</td>
+        <td><code>./let_nns_control_dapp.sh</code></td>
+        <td><code></code></td>
     </tr>
     <tr>
         <td>1</td>
         <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td rowspan="2"><code>TODO ./deploy_sns.sh</code></td>
+        <td rowspan="2"><code>./propose_sns.sh</code></td>
     </tr>
     <tr>
         <td>2</td>
         <td>Submit NNS proposal to create SNS</td>
     </tr>
     <tr>
-        <td>3</td>
-        <td>Dapp developers add NNS root as co-controller of dapp</td>
-        <td><code>TODO</code></td>
-        <td><code></code></td>
-    </tr>
-    <tr>
         <td>4</td>
         <td>The NNS proposal is decided</td>
-        <td rowspan="7"><code>TODO ./deploy_sns.sh</code></td>
-        <td rowspan="7"><code> </code></td>
+        <td rowspan="5"><code>(Automated)</code></td>
+        <td rowspan="5"><code> </code></td>
     </tr>
     <tr>
         <td>5</td>
@@ -91,8 +91,15 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
         <td>(Automated) SNS swap starts</td>
     </tr>
     <tr>
+        <td> </td>
+        <td>Users participate in the swap</td>
+        <td rowspan="1"><code>./participate_in_sns_swap.sh</code></td>
+        <td rowspan="1"></td>
+    </tr>
+    <tr>
         <td>9</td>
         <td>(Automated) SNS swap ends</td>
+        <td rowspan="2"><code>(Automated)</code></td>
     </tr>
     <tr>
         <td>10</td>
