@@ -1114,39 +1114,6 @@ function CommunityPage() {
           <GalleryShowcase />
         </section>
 
-        <section className="container-12 relative mb-20 md:mb-40 mt-30 md:mt-40">
-          <AnimateSpawn
-            className="md:w-6/10 md:mx-auto relative text-white"
-            variants={transitions.container}
-          >
-            <motion.div
-              className="blob blob-purple blob-sm blob-x-5 blob-y-7 z-[-1] md:blob-md"
-              variants={transitions.fadeIn}
-            ></motion.div>
-            <motion.h2
-              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
-              variants={transitions.item}
-            >
-              Follow the ICP Community
-            </motion.h2>
-          </AnimateSpawn>
-
-          <AnimateSpawn
-            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
-            variants={transitions.container}
-          >
-            <CardWithDescription
-              title="Engage on Twitter"
-              description=""
-              href="https://twitter.com/dfinity"
-            />
-            <CardWithDescription
-              title="Join an ICP event"
-              description=""
-              href="https://dfinity.org/events-and-news/"
-            />
-          </AnimateSpawn>
-        </section>
 
         <Newsletter
           fields={[
