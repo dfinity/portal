@@ -166,12 +166,12 @@ const upcomingHubs: Hub[] = [
   {
     name: "Sponsorship at ETH event",
     description:
-      "ICP.Hub North America becomes an official Megabyte Sponsor of ETHToronto! A great example of spreading the word about Internet Computer to fellow crypto communities.",
+      "ICP people meet ETH community as ICP.Hub North America becomes an official Megabyte Sponsor of ETHToronto.",
     image: "/img/community/eth-toronto.webp",
     link: "https://twitter.com/ETH_Toronto/status/1687096585715421184",
   },
   {
-    name: "ICP at Coinfest Asia",
+    name: "ICP joins Coinfest Asia",
     description:
       "ICP advocates make an appearace at Coinfest Asia 2023 — Asia's immersive Web3 festival.",
     image: "/img/community/coinfest-asia.webp",
@@ -192,7 +192,7 @@ const upcomingHubs: Hub[] = [
     link: "https://twitter.com/istanbulblockwk/status/1687075926386110464?s=46&t=YWzpokcUePMtkg043EMwBQ",
   },
   {
-    name: "New incubator launch in LATAM",
+    name: "Incubator launch in LATAM",
     description:
       "Colledge, a tech academy focused on Web3, and ICP.Hub LATAM launch ICPnnova, an incubation program for web3 projects in the regional ecosystem.",
     image: "/img/community/icpnnova.webp",
@@ -206,9 +206,9 @@ const upcomingHubs: Hub[] = [
     link: "https://www.coindeskturkiye.com/yazarlar/sude-ozkan/turkiye-web3-ekosistemine-bir-yatirim-daha-internet-computer-turkiyede-icphub-kuruyor-4818",
   },
   {
-    name: "New Partnership with WIBC",
+    name: "Partnership with WIBC",
     description:
-      "ICP.Hub North America is thrilled to announce a landmark partnership between the ICP.Hub North America and Women in Blockchain Canada.",
+      "ICP.Hub North America is thrilled to announce a landmark partnership with Women in Blockchain Canada.",
     image: "/img/community/women-in-blockchain.webp",
     link: "https://twitter.com/finbold/status/1689306088561156096",
   },
@@ -719,11 +719,10 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Since March 2023, ICP.Hubs have been sprouting up in all corners
-              of the world, With 15 hubs and more on the way, a vibrant
-              community is fueling awareness and adoption across all verticals —
-              from evangelism to education, to strategic partnerships and
-              project accelerators.
+              Since March 2023, ICP.Hubs have been sprouting up all over
+              the world. With 15 hubs and more on the way, a vibrant
+              community is spreading awareness and adoption — from evangelism 
+              to education, to strategic partnerships and project accelerators.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#hubs">
@@ -826,8 +825,8 @@ function CommunityPage() {
               Community engager
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              If you're a Web3 content creator, educator, event organizer, influencer or innovator looking to support 
-              the growth and adoption of the Internet Computer, then the Community Grant Program may just be the right 
+              All Web3 content creators, educators, event organizers, influencers and innovators looking to spread the  
+              word about the Internet Computer — the Community Grant Program may just be the right 
               thing for you.          
             </p>
             <p className="mb-0">
@@ -961,7 +960,7 @@ function CommunityPage() {
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-              Learn the fundamentals and how to build on the Internet Computer through one of the ICP community education platforms.
+              Learn the fundamentals of the Internet Computer through one of the ICP community education platforms.
         
             </motion.p>
           </div>
