@@ -220,94 +220,45 @@ const upcomingHubs: Hub[] = [
     link: "https://jp.cointelegraph.com/press-releases/nftstudio24-announces-dev3-japan-an-icp-meetup-to-introduce-the-icp-ecosystem-in-japan",
   },
 ];
-
 const communityGallery: {
   image: string;
   title?: string;
   description?: string;
-  heightUnits: number;
 }[] = [
-  {
-    image: "img/community/image-02.webp",
-    heightUnits: 5,
-  },
-  {
-    image: "img/community/image-01.webp",
-    heightUnits: 2,
-  },
-  {
-    image: "img/community/image-03.webp",
-    heightUnits: 5,
-  },
+  { image: "img/community/image-000.webp", },
+  { image: "img/community/image-001.webp", },
+  { image: "img/community/image-002.webp", },
+  { image: "img/community/image-003.webp", },
+  { image: "img/community/image-004.webp", },
+  { image: "img/community/image-005.webp", },
+  { image: "img/community/image-006.webp", },
+  { image: "img/community/image-007.webp", },
+  { image: "img/community/image-008.webp", },
+  { image: "img/community/image-009.webp", },
+  { image: "img/community/image-010.webp", },
+  { image: "img/community/image-011.webp", },
+  { image: "img/community/image-012.webp", },
+  { image: "img/community/image-013.webp", },
+  { image: "img/community/image-014.webp", },
+  { image: "img/community/image-015.webp", },
+  { image: "img/community/image-016.webp", },
+  { image: "img/community/image-017.webp", },
+  { image: "img/community/image-018.webp", },
+  { image: "img/community/image-019.webp", },
+  { image: "img/community/image-020.webp", },
 
-  {
-    image: "img/community/image-04.webp",
-    heightUnits: 4,
-  },
-  {
-    image: "img/community/image-05.webp",
-    heightUnits: 4,
-  },
-  {
-    image: "img/community/image-06.webp",
-    heightUnits: 4,
-  },
-
-  {
-    image: "img/community/image-07.webp",
-    heightUnits: 5,
-  },
-  {
-    image: "img/community/image-08.webp",
-    heightUnits: 5,
-  },
-  {
-    image: "img/community/image-09.webp",
-    heightUnits: 5,
-  },
-
-  {
-    image: "img/community/image-10.webp",
-    heightUnits: 4,
-  },
-  {
-    image: "img/community/image-11.webp",
-    heightUnits: 3,
-  },
-  {
-    image: "img/community/image-12.webp",
-    heightUnits: 3,
-  },
-
-  {
-    image: "img/community/image-13.webp",
-    heightUnits: 4,
-  },
-  {
-    image: "img/community/image-14.webp",
-    heightUnits: 3,
-  },
-  {
-    image: "img/community/image-15.webp",
-    heightUnits: 3,
-  },
-
-  {
-    image: "img/community/image-16.webp",
-    heightUnits: 2,
-  },
-  {
-    image: "img/community/image-17.webp",
-    heightUnits: 2,
-  },
-  {
-    image: "img/community/image-18.webp",
-    heightUnits: 2,
-  },
-  {
-    image: "img/community/image-19.webp",
-    heightUnits: 1,
-  },
+  { image: "img/community/image-021.webp", },
+  { image: "img/community/image-022.webp", },
+  { image: "img/community/image-023.webp", },
+  { image: "img/community/image-024.webp", },
+  { image: "img/community/image-025.webp", },
+  { image: "img/community/image-026.webp", },
+  { image: "img/community/image-027.webp", },
+  { image: "img/community/image-028.webp", },
+  { image: "img/community/image-029.webp", },
+  { image: "img/community/image-030.webp", },
+  { image: "img/community/image-031.webp", },
+  
 ];
 
 const Globe: React.FC<{
@@ -405,14 +356,14 @@ const HubCard: React.FC<{
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M6.60718 13.9316H9.45173V20.3247H6.60718V13.9316Z"
               fill="currentColor"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M0.030082 7.38579H4.86365L1.42228 4.12851L3.31864 2.19604L6.59276 5.54477V0.779785H9.43732V5.54357L12.7102 2.19484L14.6066 4.12731L11.1652 7.38458H16V10.0787H11.1351L14.5922 13.4275L12.6958 15.3154L7.9994 10.6118L3.303 15.3154L1.40663 13.4275L4.86365 10.0787H0V7.38579H0.030082Z"
               fill="currentColor"
             />
@@ -463,23 +414,20 @@ const stats: {
   ],
 
   [
-    { title: "PR & Media Exposure", value: "15000000", fallbackValue: "" },
     { title: "University Collaborations", value: "32", fallbackValue: "" },
     { title: "Network Entrepreneurs", value: "2000", fallbackValue: "" },
     { title: "New Users Accounts", value: "25000", fallbackValue: "" },
   ],
 
   [
-    { title: "Crypto Communities", value: "50", fallbackValue: "" },
     { title: "Ecosystem Partnerships", value: "12", fallbackValue: "" },
     { title: "Conference Appearances", value: "15", fallbackValue: "" },
-    { title: "Content Created", value: "30", fallbackValue: "" },
+    { title: "Incubated Projects", value: "60", fallbackValue: "" },
   ],
   [
     { title: "Hackathons Held", value: "5", fallbackValue: "" },
     { title: "Education Courses", value: "4", fallbackValue: "" },
     { title: "Devs Trained", value: "600", fallbackValue: "" },
-    { title: "Incubated Projects", value: "60", fallbackValue: "" },
   ],
 ];
 
@@ -532,8 +480,10 @@ const RotatingStatPanel: React.FC<{}> = () => {
       }
 
       const newActiveIndexes = [...activeIndexes];
-      newActiveIndexes[rotationIndexes[rotationIndex]] =
-        (newActiveIndexes[rotationIndexes[rotationIndex]] + 1) % stats.length;
+      const nextIndexToChange = rotationIndexes[rotationIndex];
+      newActiveIndexes[nextIndexToChange] =
+        (newActiveIndexes[nextIndexToChange] + 1) % stats[nextIndexToChange].length;
+
       setActiveIndexes(newActiveIndexes);
       setRotationIndex((i) => (i + 1) % rotationIndexes.length);
     }, 2000);
@@ -549,7 +499,7 @@ const RotatingStatPanel: React.FC<{}> = () => {
     };
   }, []);
 
-  const statsToDisplay = activeIndexes.map((index, i) => stats[index][i]);
+  const statsToDisplay = activeIndexes.map((index, i) => stats[i][index]);
 
   return (
     <StatsPanel>
@@ -945,7 +895,7 @@ function CommunityPage() {
           variants={transitions.container}
         >
           {upcomingHubs.map((hub) => (
-            <UpcomingHubCard hub={hub} />
+            <UpcomingHubCard hub={hub} key={hub.name} />
           ))}
         </AnimateSpawn>
 
@@ -989,7 +939,7 @@ function CommunityPage() {
           variants={transitions.container}
         >
           {hubs.map((hub) => (
-            <HubCard hub={hub} />
+            <HubCard hub={hub} key={hub.name} />
           ))}
         </AnimateSpawn>
 
