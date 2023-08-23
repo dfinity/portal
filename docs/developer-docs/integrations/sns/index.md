@@ -43,8 +43,8 @@ This section provides
 * [Guidelines how to test the operation of the dapp under SNS control](./testing/testing-on-mainnet.md), including on the mainnet.
 
 ## Launching an SNS
-This part explains the SNS launch in detail.
-It contains
+This section of documentation explains the SNS launch in detail.
+It contains:
 * An [introduction of how to read the launch pages](./launching/index.md) as there are currently two supported methods how to launch an SNS.
 * A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the recommended launch flow that was adopted by the NNS in August 2023 and only includes one proposal.
 * [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for this recommended launch flow that only includes one proposal. 

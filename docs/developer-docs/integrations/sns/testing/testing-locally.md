@@ -37,7 +37,7 @@ To use the `sns-testing` commands and their arguments properly, please consult t
 
 ### Testing stages of the SNS launch process
 
-For simplicity, we next map the stages introduced in the [SNS launch stages documentation](../launching/launch-summary-1proposal.md) and in the documentation [Commands & actions to go through SNS launch](../launching/launch-steps-1proposal.md) to the relevant scripts in the `sns-testing` repo so you can learn what part of the launch is tested in which script.
+For simplicity, next we map the stages introduced in the [SNS launch stages documentation](../launching/launch-summary-1proposal.md) and in the documentation [commands and actions to go through SNS launch](../launching/launch-steps-1proposal.md) to the relevant scripts in the `sns-testing` repo so you can learn what part of the launch is tested in which script.
 Note that some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
 
 <table border="1">

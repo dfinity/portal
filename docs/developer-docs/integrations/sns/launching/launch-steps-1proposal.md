@@ -52,7 +52,7 @@ dfx sns prepare-canisters add-nns-root $CANISTER_ID
 
 Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an SNS for a given dapp.
 Of course it is crucial to set the right parameters in this proposal.
-You can also find an example how this command is used [here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
+You can also find an example of how this command is used [here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
 
 
 :::info

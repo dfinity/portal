@@ -56,11 +56,11 @@ These parameters also define the initial neurons with which the SNS governance c
 
 ### 2. Dapp developers add NNS root as co-controller of dapp
 Shortly before Step 3, the dapp developers hand over the dapp to the NNS by adding the NNS root canister as an additional controller for the dapp canister(s).
-This is necessary in order for the rest of the steps to work fully automatically.
+This is necessary in order for the rest of the steps to work automatically.
 As any eligible NNS neuron can submit the proposal in Stage 3, this is an important step
 where the dapp developers explicity express their intent to hand over their dapp to a DAO.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 #### Table 1: Canisters
 <table>
