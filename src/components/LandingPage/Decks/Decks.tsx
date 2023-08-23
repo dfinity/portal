@@ -46,7 +46,7 @@ const CardImage: FC<{
     <div
       className={clsx("hidden md:block absolute md:w-[264px] -z-1", className)}
     >
-      <img src={src} alt={alt} className="w-full" loading="lazy" />
+      <img src={src} alt={alt} className="w-full" />
     </div>
   );
 };
