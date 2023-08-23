@@ -19,11 +19,12 @@ The developer journey is designed to give both new and existing developers a cle
 ## Level 1: Space cadet
 
 - [1.1: Exploring a live demo](level-1/1.1-live-demo.md).
-- [1.2: Developing your first dapp](level-1/1.2-first-dapp.md).
-- [1.3: Acquiring and using cycles](level-1/1.3-using-cycles.md).
-- [1.4: Deploying canisters](level-1/1.4-deploying-canisters.md).
-- [1.5: Managing canisters](level-1/1.5-managing-canisters.md).
-- [1.6: Motoko: level 1](level-1/1.6-motoko-lvl1.md)
+- [1.2: Motoko: level 1](level-1/1.2-motoko-lvl1.md).
+- [1.3: Developing your first dapp](level-1/1.3-first-dapp.md).
+- [1.4: Acquiring and using cycles](level-1/1.4-using-cycles.md).
+- [1.5: Deploying canisters](level-1/1.5-deploying-canisters.md).
+- [1.6: Managing canisters](level-1/1.6-managing-canisters.md).
+
 
 ## Level 2: Space explorer
 

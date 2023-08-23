@@ -9,28 +9,6 @@ const sidebars = {
           label: "Tutorials introduction",
           id: "tutorials/index",
         },
-        {
-          type: "doc",
-          label: "Deploy your first dapp in 5 minutes",
-          id: "tutorials/deploy_sample_app",
-        },
-        {
-          type: "category",
-          label: "Create your first dapp in 10 minutes",
-          link: {
-            type: "doc",
-            id: "tutorials/create_your_first_app/index",
-          },
-          items: [
-            "tutorials/create_your_first_app/backend-overview",
-            "tutorials/create_your_first_app/creating-project",
-            "tutorials/create_your_first_app/adding-variables-and-methods",
-            "tutorials/create_your_first_app/deploying-locally-using-candid-ui",
-            "tutorials/create_your_first_app/storing-data",
-            "tutorials/create_your_first_app/add-frontend",
-            "tutorials/create_your_first_app/wrapup",
-          ],
-          },
          {
           type: "category",
           label: "Developer journey",
@@ -53,6 +31,22 @@ const sidebars = {
                 "tutorials/developer-journey/level-0/intro-canisters",
                 "tutorials/developer-journey/level-0/intro-languages",
                 "tutorials/developer-journey/level-0/intro-dfx"
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 1: Space cadet",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-1/index",
+            },
+              items: [
+                "tutorials/developer-journey/level-1/live-demo",
+                "tutorials/developer-journey/level-1/motoko-lvl1",
+                "tutorials/developer-journey/level-1/first-dapp",
+                "tutorials/developer-journey/level-1/using-cycles",
+                "tutorials/developer-journey/level-1/deploying-canisters",
+                "tutorials/developer-journey/level-1/managing-canisters",
               ],
             },
           ],
