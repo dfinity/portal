@@ -55,11 +55,13 @@ function EnterprisePage() {
                 variants={transitions.item}
               >
                 The future of cloud is serverless. Now imagine a serverless cloud that hosts 
-                data as well as logic, where code is unstoppable and tamperproof, easily scales,
-                processes HTTP, can run autonmously, and systems and services don't need the
-                protection of firewalls. An efficient cloud that destroys your R&D, maintenance and
-                software costs. A platform where you build using a new form of advanced 
-                smart contract software, on a radical new kind of blockchain &mdash; the Internet Computer.
+                data as well as logic, where software is tamperproof and unstoppable, can scale horizontally,
+                process HTTP, and can run autonomously, where you can build sovereign systems and services 
+                that don't need the protection of firewalls... 
+                <span style={{display: "block", height: "0.6em"}}></span>
+                An efficient cloud that destroys intractable R&D, security and
+                legacy software costs. A platform where you are building more simply using an advanced evolution of
+                smart contract technology hosted on an all-new form of blockchain &mdash; the Internet Computer.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -90,9 +92,10 @@ function EnterprisePage() {
             >
               Legacy tech stacks, increasing
               development costs and fleeing talent are just a few 
-              of the blockers holding companies back from innovating 
-              and staying ahead of competitors &mdash; use a cloud that's
-              an everything stack created by advanced network math.
+              of the blockers holding enterprise back from innovating 
+              and staying ahead of the competition &mdash; move forward by building on
+              a serverless cloud that's
+              an <i>everything stack</i> created by an advanced public network.
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -104,7 +107,7 @@ function EnterprisePage() {
               className="tw-heading-3 md:tw-heading-60 text-center mb-0"
               variants={transitions.item}
             >
-              Why build on autonomous cloud?
+              Why build on the <br /> Internet Computer?
             </motion.h2>
           </div>
           <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
@@ -120,13 +123,20 @@ function EnterprisePage() {
                 agile development cycles that reduce infrastructure maintenance and
                 operational costs can rely on the Internet Computer. It offers
                 serverless features comparable to existing cloud providers with extra
-                benefits like decentralisation and statefulness.
+                benefits like tamperproof code, decentralization and statefulness.
               </p>
-              <p className="tw-lead-sm mb-6 md:mb-10">
+              <p className="tw-lead-sm">
                 The Internet Computer programming model is also similar to that of
                 serverless clouds in that applications can be written in common
                 languages such as Rust or Python. It is simpler, however, as state
-                is maintained automatically without the need for developer intervention. 
+                is maintained automatically without the need for developer intervention
+                &mdash; a major advance in the field. 
+              </p>
+              <p className="tw-lead-sm">
+                Serverless cloud addresses the $1.8 trillion global spend on IT personnel, 
+                the $900 billion spend on software, $600 billion spend on cloud, $224 billion spend 
+                on data center systems, $179 billion spend on cybersecurity, and the $50 billion 
+                cost of cybersecurity incidents, reported by Gartner.
               </p>
               <p className="mb-0">
                 <Link
@@ -143,34 +153,67 @@ function EnterprisePage() {
                 Manage platform risk
               </h2>
               <p className="tw-lead-sm">
-                Large scale software systems relying on centralized cloud
+                Large-scale software systems relying on centralized cloud
                 providers are subject to vendor lock-in, which can lead to
                 increasing server costs or codebase refactoring.
               </p>
-              <p className="tw-lead-sm mb-6 md:mb-10">
+              <p className="tw-lead-sm">
                 The Internet Computer offers an alternative technology stack
-                that's open and decentralized. Independent node
-                machines connect to create a self-sovereign autonomous cloud, on which
-                any system can be built. Its software — canister smart contracts
+                that's open and decentralized. Independently owned and operated "node
+                machines," which are installed in independent data centers around the world,
+                are connected by advanced network protocols to form a seamless serverless
+                cloud that's stateful, unstoppable, autonomous and sovereign,
+                upon which any system can be built. Its software — canister smart contracts
                 — are compiled to WebAssembly, the new Web3 industry standard for
                 cross platform, language agnostic, portable server executable
                 code.
               </p>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/enterprise/enterprise-custody-large.webp"
-              reverse={true}
-            >
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Enterprise custody of digital assets
-              </h2>
-              <p className="tw-lead-sm mb-6 md:mb-10">
-                Chain-key cryptography and secure multiparty computation enable
-                enterprise-grade custody of digital assets on the Internet Computer.
-                Security built into the protocol reduces the complexity of digital
-                asset custody associated with traditional solutions.
+              <p className="tw-lead-sm">
+                It's an open cloud where you can build sovereign enterprise infrastructure
+                &mdash; which, just like the internet, doesn't have a corporate owner who 
+                can make arbitrary updates, and who has backdoors and kill switches.
               </p>
             </TranslatedLayout>
+            <TranslatedLayout
+              imageUrl="/img/enterprise/security-teams.webp"
+              reverse={true}>
+              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
+                Kill security costs &amp; risks
+              </h2>
+              <p className="tw-lead-sm">
+                The Internet Computer hosts tamperproof and unstoppable software systems
+                and services, which don't need protection 
+                from firewalls, SIEM logging or other traditional cybersecurity 
+                frameworks. 
+              </p>
+              <p className="tw-lead-sm">
+                Simply put, it has no backdoors through which hackers can pass, or hosted 
+                software or data can be attacked by viruses and ransomware. That's because 
+                it's a virtual platform created by advanced math &mdash; fault-tolerant network 
+                protocols and cryptography developed by world class
+                cryptographers, engineers and computer scientists in a project that applied hundreds of person-years effort.          
+              </p>
+              <p className="tw-lead-sm">
+                Now you can move beyond the security flaws of Legacy IT, to a world in which software is 
+                tamperproof and unstoppable by building on the 
+                Internet Computer.
+              </p>              
+              <p className="tw-lead-sm">
+                Say goodbye to being hacked and encrypted by ransomware, slash your 
+                cybersecurity costs, and focus instead on optimizing business logic and 
+                creating delightful user experiences.
+              </p>
+
+              <p className="mb-0">
+                <Link
+                  href="/how-it-works"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  How the Internet Computer is designed
+                </Link>
+              </p>
+            </TranslatedLayout>            
             <TranslatedLayout imageUrl="/img/enterprise/digital-identity.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Built-in digital identity framework
@@ -195,38 +238,19 @@ function EnterprisePage() {
               </p>
             </TranslatedLayout>
             <TranslatedLayout
-              imageUrl="/img/enterprise/security-teams.webp"
-              reverse={true}>
+              imageUrl="/img/enterprise/enterprise-custody-large.webp"
+              reverse={true}
+            >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Leaner security teams
+                Enterprise custody of digital assets
               </h2>
-              <p className="tw-lead-sm">
-                The Internet Computer was designed bottom up with security and
-                privacy directly built into the protocol itself by a team of
-                world class cryptographers, engineers and computer
-                scientists.
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                Chain-key cryptography and secure multiparty computation enable
+                enterprise-grade custody of digital assets on the Internet Computer.
+                Security built into the protocol reduces the complexity of digital
+                asset custody associated with traditional solutions.
               </p>
-              <p className="tw-lead-sm">
-                Building on the Internet Computer enables organizations to focus
-                on the business logic of software, while lowering costs and speeding up
-                development.
-              </p>
-              <p className="tw-lead-sm">
-                When TCP/IP, and current cloud infrastructures were initially conceived,
-                the impact of the internet and its scale and security needs were
-                unforeseeable.
-              </p>
-
-              <p className="mb-0">
-                <Link
-                  href="/how-it-works"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  How the Internet Computer is designed
-                </Link>
-              </p>
-            </TranslatedLayout>
+            </TranslatedLayout>            
             <TranslatedLayout imageUrl="/img/enterprise/tokenized-business-models.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Tokenized business models
