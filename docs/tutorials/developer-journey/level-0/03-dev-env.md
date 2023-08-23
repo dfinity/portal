@@ -92,6 +92,20 @@ If you previously had installed any of these tools, be sure to check the most re
 #### Why does this matter?
 
 Having the latest release version assures that you have all of the newest features and bug fixes for each tool to assure for the most seamless developer experience. 
+
+### Create a working directory
+
+The last step in setting up our developer environment is to create a new directory for us to build in. You can create a new directory with the command:
+
+```
+mkdir developer_journey
+```
+
+In future modules, we'll refer to this directory as the **working directory**. Each project that we create will be a *sub-directory* of this working directory.
+
+#### Why does this matter?
+
+We'll use this working directory to contain the projects that we build throughout our developer journey. This will help keep things organized in our local file structure. 
 ## Next steps
 
 - [0.4: Introduction to canisters](04-intro-canisters.md).

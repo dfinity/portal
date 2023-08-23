@@ -7,19 +7,19 @@
     - Interacting with the canister via the CLI.
     - Interacting with the canister via the Candid interface.
 
-- [1.2: Motoko level 1](02-ic-terms.md): To develop our own dapp, we first need to cover the fundamentals of writing Motoko code. This module covers:
+- [1.2: Motoko level 1](1.2-motoko-lvl1.md): To develop our own dapp, we first need to cover the fundamentals of writing Motoko code. This module covers:
     - Basic concepts and terms.
     - Motoko syntax.
     - Using the base library.
     - Declarations and expressions.
-    - Defining an actor .
+    - Defining an actor.
     - Values and evaluation:
         - Primitive values.
         - Non-primitive values.
     - Printing values.
     - Passing text arguments.
 
-- [1.3: Developing your first dapp](03-dev-env.md): 
+- [1.3: Developing your first dapp](1.3-first-dapp.md): 
     - Creating a new project.
     - Reviewing the project's file structure.
     - Writing the backend canister code.
@@ -37,16 +37,16 @@
     - Adding the frontend code.
     - Re-deploying the dapp.
 
-- [1.4: Acquiring and using cycles](04-intro-canisters.md): 
+- [1.4: Acquiring and using cycles](1.4-using-cycles.md): 
     - Overview of cycles.
     - Creating a developer identity.
     - Acquiring cycles using a cycles coupon.
     - Converting ICP tokens to cycles.
 
-- [1.5: Deploying canisters](05-intro-languages.md): 
+- [1.5: Deploying canisters](1.5-deploying-canisters.md): 
     - Deploying to the mainnet.
 
-- [1.6: Managing canisters](06-intro-dfx.md): 
+- [1.6: Managing canisters](1.6-managing-canisters.md): 
     - Obtaining a canister's ID.
     - Obtaining canister information.
     - Adding an identity as a controller of a canister.

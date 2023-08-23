@@ -71,10 +71,12 @@ To get started, we'll use the default sample app to demonstrate how to create a 
 
 ### Step 1: Open a terminal window on your local computer.
 
-### Step 2: Create a new project with the name 'developer-journey' with the command:
+Assure that you are in your working directory, `developer_journey`. 
+
+### Step 2: Create a new project with the name 'hello_world' with the command:
 
 ```
-dfx new developer_journey
+dfx new hello_world
 ```
 
 When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command. 
@@ -85,12 +87,12 @@ In this developer journey, we will be using Motoko for our development language,
 When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
 :::
 
-This command will create a new project directory called `developer-journey` that contains the project's default template files and a new git repository for your project. 
+This command will create a new project directory called `hello_world` that contains the project's default template files and a new git repository for your project. 
 
 ### Step 3: Then, navigate into the project's directory with the command:
 
 ```
-cd developer_journey
+cd hello_world
 ```
 
 ## Exploring the default project structure
@@ -98,16 +100,16 @@ cd developer_journey
 By default, the project structure will resemble the following:
 
 ```
-developer_journey/
+hello_world/
 ├── README.md      # Default project documentation
 ├── dfx.json       # Project configuration file
 ├── node_modules   # Libraries for frontend development
 ├── package-lock.json
 ├── package.json
 ├── src            # Source files directory
-│   ├── developer_journey_backend
+│   ├── hello_world_backend
 │   │   └── main.mo
-│   ├── developer_journey_frontend
+│   ├── hello_world_frontend
 │       ├── assets
 │       │   ├── logo.png
 │       │   ├── main.css
@@ -123,9 +125,9 @@ In this directory, the following files and directories are notable:
 - `README.md`: The default README file to be used for documenting your project.
 - `dfx.json`: The default configuration file used to set configurable options for your project.
 - `src/`: The source directory that contains all of your dapp's source files.
-- `developer_journey_backend`: The source directory that contains your dapp's backend code files.
-- `developer_journey_frontend`: The source directory that contains your dapp's frontend code files.
-- `developer_journey_backend/main.mo`: The default template Motoko file that can be modified or replaced to include your dapp's core programming logic. 
+- `hello_world_backend`: The source directory that contains your dapp's backend code files.
+- `hello_world_frontend`: The source directory that contains your dapp's frontend code files.
+- `hello_world_backend/main.mo`: The default template Motoko file that can be modified or replaced to include your dapp's core programming logic. 
 
 ## Reviewing the default configuration
 
@@ -136,20 +138,20 @@ To review the default configuration file for the project, open the `dfx.json` fi
 ```
 {
   "canisters": {
-    "developer_journey_backend": {
-      "main": "src/developer_journey_backend/main.mo",
+    "hello_world_backend": {
+      "main": "src/hello_world_backend/main.mo",
       "type": "motoko"
     },
-    "developer_journey_frontend": {
+    "hello_world_frontend": {
       "dependencies": [
-        "developer_journey_backend"
+        "hello_world_backend"
       ],
       "frontend": {
-        "entrypoint": "src/developer_journey_frontend/src/index.html"
+        "entrypoint": "src/hello_world_frontend/src/index.html"
       },
       "source": [
-        "src/developer_journey_frontend/assets",
-        "dist/developer_journey_frontend/"
+        "src/hello_world_frontend/assets",
+        "dist/hello_world_frontend/"
       ],
       "type": "assets"
     }
@@ -167,19 +169,19 @@ To review the default configuration file for the project, open the `dfx.json` fi
 
 Let's explore these settings a bit further:
 
-- There are two canisters defined in this file; `developer_journey_frontend` and `developer_journey_backend`. 
-- The `developer_journey_backend` canister has a `main` attribute which specifies the file path of the program's core file, `main.mo`.
-- The `developer_journey_backend` canister has a `type` of 'motoko', which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
-- The `developer_journey_frontend` canister has a dependency of the `developer_journey_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
-- The `developer_journey_frontend` canister has a frontend endpoint of `src/developer_journey_frontend/src/index.html`, which specifies the primary frontend asset. 
-- Additional assets for the `developer_journey_frontend` canister are specified in the `source` configuration. 
-- Lastly, the `developer_journey_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister. 
+- There are two canisters defined in this file; `hello_world_frontend` and `hello_world_backend`. 
+- The `hello_world_backend` canister has a `main` attribute which specifies the file path of the program's core file, `main.mo`.
+- The `hello_world_backend` canister has a `type` of 'motoko', which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
+- The `hello_world_frontend` canister has a dependency of the `hello_world_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
+- The `hello_world_frontend` canister has a frontend endpoint of `src/hello_world_frontend/src/index.html`, which specifies the primary frontend asset. 
+- Additional assets for the `hello_world_frontend` canister are specified in the `source` configuration. 
+- Lastly, the `hello_world_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister. 
 
 ## Reviewing the default program code
 
-Now that we've explored the default project structure, let's take a look at the default program code located in the `main.mo` file. This is located in the `src/developer_journey_backend` directory. We will cover frontend development and the default files located in the frontend canister directory in a later tutorial. 
+Now that we've explored the default project structure, let's take a look at the default program code located in the `main.mo` file. This is located in the `src/hello_world_backend` directory. We will cover frontend development and the default files located in the frontend canister directory in a later tutorial. 
 
-New Motoko projects will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/developer_journey_backend/main.mo` file in a code or text editor. The code will resemble the following:
+New Motoko projects will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/hello_world_backend/main.mo` file in a code or text editor. The code will resemble the following:
 
 ```
 actor {
