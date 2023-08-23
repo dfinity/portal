@@ -593,7 +593,7 @@ function CommunityPage() {
   return (
     <Layout
       title="Global Community & ICP.Hubs"
-      description={`Welcome to the most dynamic and innovative Web3 community in the World. Join an inspiring tribe of creators, builders & educators in a journey toward the adoption of the Internet Computer as the default blockchain.`}
+      description={`Join an inspiring tribe of Web3 creators, builders, educators and enthusiasts on the path to transforming the Internet Computer into the world's first truly decentralized open internet.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-community.jpg"></ShareMeta>
