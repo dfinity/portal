@@ -85,12 +85,12 @@ const Decks = () => {
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
       <Card
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
-        href="/icp_version_10.pdf"
+        href="/icp_version_11.pdf"
       >
         <CardLabel>Download Presentation</CardLabel>
         <CardTitle>Internet Computer</CardTitle>
         <CardBody>
-          <DownloadIcon /> PDF - Last update: August 18th, 2023
+          <DownloadIcon /> PDF - Last update: August 23rd, 2023
         </CardBody>
         <CardImage
           src="/img/home/deck-astronaut.webp"
