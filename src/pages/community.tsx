@@ -717,7 +717,7 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">ICP.hubs</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">ICP.Hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               Since March 2023, ICP.Hubs have been sprouting up all over
               the world. With 15 hubs and more on the way, a vibrant
@@ -775,7 +775,7 @@ function CommunityPage() {
               className="tw-paragraph md:tw-lead mb-0"
               variants={transitions.item}
             >
-             Go beyond simply holding ICP or using. Actively contribute to the adoption 
+             Go beyond simply holding ICP or using dapps. Actively contribute to the adoption 
               advocacy of the Internet Computer. 
             </motion.p>
           </div>
@@ -798,7 +798,7 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.Hub Leader</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Are you a leader with entrepreneurial experience? If so, we need you. Launch and manange a new
+              Are you a leader with entrepreneurial experience? If so, we need you. Launch and manage a new
               regional ICP.Hub, or join an existing one as strategic partner. 
             </p>
             <p className="mb-0">
@@ -854,7 +854,7 @@ function CommunityPage() {
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
               Be a strong voice advocating for the Internet Computer, its unprecented 
-              technical capabilities and its ever expanding ecosystem. 
+              technical capabilities and ever expanding ecosystem. 
             </p>
             <p className="mb-0">
               <Link className="link-primary-disabled link-with-icon">
