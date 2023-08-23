@@ -48,15 +48,18 @@ function EnterprisePage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Enterprise built on autonomous cloud
+                Enterprise Cloud 3.0
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Build next generation enterprise systems on autonomous cloud,
-                powered by chain-key cryptography and secure multiparty
-                computation.
+                The future of cloud is serverless. Now imagine a serverless cloud that hosts 
+                data as well as logic, where code is unstoppable and tamperproof, easily scales,
+                processes HTTP, can run autonmously, and systems and services don't need the
+                protection of firewalls. An efficient cloud that destroys your R&D, maintenance and
+                software costs. A platform where you build using a new form of advanced 
+                smart contract software, on a radical new kind of blockchain &mdash; the Internet Computer.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -88,126 +91,12 @@ function EnterprisePage() {
               Legacy tech stacks, increasing
               development costs and fleeing talent are just a few 
               of the blockers holding companies back from innovating 
-              and staying ahead of competitors.
+              and staying ahead of competitors &mdash; use a cloud that's
+              an everything stack created by advanced network math.
             </motion.h2>
           </div>
         </AnimateSpawn>
-
-        <section className="mt-20 md:mt-48">
-          <div className="container-10">
-            <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
-              Autonomous cloud for enterprise solutions
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
-              <div className="flex flex-col">
-                <img
-                  src="/img/enterprise/development-costs-2.svg"
-                  alt=""
-                  className="w-24 md:w-30"
-                />
-                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Secure inter-org workflows
-                </h3>
-                <p className="tw-paragraph mb-0">
-                  Privately share documents with other organizations
-                  and customers, using on-chain encryption enabled by VETKeys.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <img
-                  src="/img/enterprise/digital-identity.svg"
-                  alt=""
-                  className="w-24 md:w-30"
-                />
-                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Digital identity layer
-                </h3>
-                <p className="tw-paragraph mb-0">
-                  Privacy-enhancing identity layer for seamless
-                  and secure authentication across applications.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <img
-                  src="/img/enterprise/loyalty-programs.svg"
-                  alt=""
-                  className="w-24 md:w-30"
-                />
-                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Tokenized reward programs
-                </h3>
-                <p className="tw-paragraph mb-0">
-                  Simplify customer loyalty and employee reward programs using
-                  tokens.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <img
-                  src="/img/enterprise/secure-sharing.svg"
-                  alt=""
-                  className="w-24 md:w-30"
-                />
-                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Verifiable credentials
-                </h3>
-                <p className="tw-paragraph mb-0">
-                  Share only the necessary personal information with other
-                  platforms.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <img
-                  src="/img/enterprise/ownership.svg"
-                  alt=""
-                  className="w-24 md:w-30"
-                />
-                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
-                  Simple self-custody
-                </h3>
-                <p className="tw-paragraph mb-0">
-                  Cryptographically secured user ownership of data, and digital
-                  assets.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <img
-                  src="/img/enterprise/supply-chain.svg"
-                  alt=""
-                  className="w-24 md:w-30"
-                />
-                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
-                <p className="tw-paragraph mb-0">
-                  Blockchain transparency and immutability for easy
-                  verification of authenticity.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="container-10 py-30 md:pt-60 pb-60 sm:pb-[320px] md:pb-[550px] relative">
-          <div className="sm:w-8/10 md:w-6/10">
-            <motion.h2
-              className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
-              variants={transitions.item}
-            >
-              The Internet Computer processes half a billion messages (TXs) daily,
-              a throughput suitable for industry-scale blockchain use cases.
-            </motion.h2>
-            <motion.p className="mb-24">
-              <Link
-                href="mailto:comms@dfinity.org"
-                className="button-primary"
-              >
-                Get in touch to talk use cases
-              </Link>
-            </motion.p>
-          </div>
-          <img
-            src="/img/enterprise/big-visual.svg"
-            alt=""
-            className="absolute w-[600px] max-w-none sm:max-w-full sm:w-auto bottom-0 sm:bottom-auto sm:top-5/12 md:top-3/10 sm:-right-3/10"
-          />
-        </section>
+        <br/><br/>
         <section className="bg-infinite relative overflow-hidden text-white">
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-0"></div>
           <div className="container-10 mt-20 md:mt-40 md:w-6/10 md:mx-auto">
@@ -215,7 +104,7 @@ function EnterprisePage() {
               className="tw-heading-3 md:tw-heading-60 text-center mb-0"
               variants={transitions.item}
             >
-              Reasons to build on autonomous cloud
+              Why build on autonomous cloud?
             </motion.h2>
           </div>
           <div className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
@@ -389,6 +278,121 @@ function EnterprisePage() {
             </TranslatedLayout>
           </div>
         </section>
+        <section className="mt-20 md:mt-48">
+          <div className="container-10">
+            <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
+              Special applications of autonomous cloud
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/development-costs-2.svg"
+                  alt=""
+                  className="w-24 md:w-30"
+                />
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Secure inter-org workflows
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Privately share documents with other organizations
+                  and customers, using on-chain encryption enabled by VETKeys.
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/digital-identity.svg"
+                  alt=""
+                  className="w-24 md:w-30"
+                />
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Digital identity layer
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Privacy-enhancing identity layer for seamless
+                  and secure authentication across systems and services/applications.
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/loyalty-programs.svg"
+                  alt=""
+                  className="w-24 md:w-30"
+                />
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Tokenized reward programs
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Simplify customer loyalty and employee reward programs using
+                  tokens.
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/secure-sharing.svg"
+                  alt=""
+                  className="w-24 md:w-30"
+                />
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Verifiable credentials
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Share only the necessary personal information with other
+                  platforms.
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/ownership.svg"
+                  alt=""
+                  className="w-24 md:w-30"
+                />
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
+                  Simple self-custody
+                </h3>
+                <p className="tw-paragraph mb-0">
+                  Cryptographically secured user ownership of data, and digital
+                  assets.
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <img
+                  src="/img/enterprise/supply-chain.svg"
+                  alt=""
+                  className="w-24 md:w-30"
+                />
+                <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
+                <p className="tw-paragraph mb-0">
+                  Blockchain transparency and immutability for easy
+                  verification of authenticity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="container-10 py-30 md:pt-60 pb-60 sm:pb-[320px] md:pb-[550px] relative">
+          <div className="sm:w-8/10 md:w-6/10">
+            <motion.h2
+              className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
+              variants={transitions.item}
+            >
+              The Internet Computer processes vast numbers of computational transactions daily,
+              supporting enterprise cloud and blockchain-specific use cases.
+            </motion.h2>
+            <motion.p className="mb-24">
+              <Link
+                href="mailto:comms@dfinity.org"
+                className="button-primary"
+              >
+                Get in touch to talk use cases
+              </Link>
+            </motion.p>
+          </div>
+          <img
+            src="/img/enterprise/big-visual.svg"
+            alt=""
+            className="absolute w-[600px] max-w-none sm:max-w-full sm:w-auto bottom-0 sm:bottom-auto sm:top-5/12 md:top-3/10 sm:-right-3/10"
+          />
+        </section>        
         <section className="container-12 py-30 md:py-48">
           <div className="text-center mb-16 md:mb-30">
             <AnimateSpawn
