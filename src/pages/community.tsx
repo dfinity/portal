@@ -624,16 +624,16 @@ function CommunityPage() {
                 variants={transitions.item}
               >
                 ICP Community <br />
-                spans the globe
+                almost everywhere
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
                 Join an inspiring tribe of Web3 creators, builders, educators
-                and enthusiasts on the path to transforming the Internet
-                Computer into the world's first truly decentralized open
-                internet.
+                and enthusiasts on the path to explore wha the Internet
+                Computer can solve in today's blockchain ecosystem.
+               
               </motion.p>
             </div>
             <Globe
