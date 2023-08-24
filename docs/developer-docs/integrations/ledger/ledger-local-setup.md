@@ -193,6 +193,6 @@ http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaa
 
 After navigating to this URL in a web browser, the Candid UI will resemble the following:
 
-![Candid UI](../_attachments/CandidUI_ledger.png)
+![Candid UI](../_attachments/CandidUI.png)
 
 Your local ICP ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.
