@@ -21,7 +21,7 @@ function EnterprisePage() {
   return (
     <Layout
       title="Enterprise"
-      description={`Build next generation enterprise systems on autonomous cloud, powered by chain-key cryptography and secure multiparty computation.`}
+      description="Build next-generation enterprise systems by using advanced smart contract technology hosted on the Internet Computer blockchain."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-enterprise.jpg"></ShareMeta>
