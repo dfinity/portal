@@ -1,5 +1,5 @@
 ---
-title: The Internet Computer: Weed Out the Bugs with TLA+ Models
+title: The Internet Computer - Weed Out the Bugs with TLA+ Models
 description: Today, DFINITY is open-sourcing all of its TLA+ models. To top it off, the Foundation is also publishing a comprehensive technical tutorial to help devs apply TLA+ to canister smart contracts.
 tags: [Technology]
 author: Ognjen Maric
