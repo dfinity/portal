@@ -76,7 +76,7 @@ const hubs: Hub[] = [
     location: "Turkey, Cyprus",
     description: "The first hub in the Middle East offering a supportive environment for developers, startups, and enthusiasts to build and deploy decentralized applications on the Internet Computer.",
     image: "/img/community/icp-hub-turkey.webp",
-    link: "https://linktr.ee/Icphubnorthamerica",
+    link: "https://linktr.ee/icphubturkey",
     coordinates: [38.9637, 35.2433],
   },
   {
