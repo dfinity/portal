@@ -1,6 +1,6 @@
 
 ---
-title: The Internet Computer: A blockchain that offers stateful decentralized serverless computing
+title: The Internet Computer - A blockchain that offers stateful decentralized serverless computing
 description: Is serverless computation even possible on a blockchain platform? Our recent peer-reviewed article shows that the Internet Computer provides serverless computation comparable to existing cloud providers, but with the added benefits of decentralization and statefulness.
 tags: [Technology]
 author: Alexandru Uta
