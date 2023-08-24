@@ -11,7 +11,7 @@ A common pattern for developer workflow is to refill canisters with cycles so th
 
 ## Topping up a canister with `dfx`
 
-In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai` from the [first tutorial](../../tutorials/deploy_sample_app.md) with a million cycles (1000000). These instructions can work for any canister principal or any cycles amount.
+In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai` from the [1.3: Deploying your first dapp](/docs/tutorials/developer-journey/level-1/1.3-first-dapp.md) developer journey tutorial with a million cycles (1000000). These instructions can work for any canister principal or any cycles amount.
 
 
 ### Number of cycles
