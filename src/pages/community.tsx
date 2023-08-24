@@ -157,7 +157,7 @@ const hubs: Hub[] = [
     description:
       "With focus on teaching developers and entrepeneurs how to build blockchain solutions, the LATAM hub is driving outreach via bootcamps, educational content and community events to increase awareness in region.",
     image: "/img/community/icp-hub-latam.webp",
-    link: "https://linktr.ee/ethicparg",
+    link: "https://linktr.ee/icphublatam",
     coordinates: [-8.7832, -55.4915],
   },
 ];
