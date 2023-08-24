@@ -105,22 +105,22 @@ const redirects = `
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
   
-  /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey
-  /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey
-  /docs/quickstart/3-quickstart /docs/current/tutorials/developer-journey
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-journey
-  /docs/quickstart/4-quickstart /docs/current/tutorials/developer-journey
-  /docs/quickstart/5-quickstart /docs/current/tutorials/developer-journey
+  /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/3-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-journey/
+  /docs/quickstart/4-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/5-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/quickstart/local-quickstart /docs/current/developer-docs/setup/deploy-locally
   /docs/quickstart/network-quickstart /docs/current/developer-docs/setup/deploy-mainnet
-  /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-journey
+  /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-journey/
   /docs/quickstart/newcomers /docs/current/home
-  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-journey
-  /developers-guide/quickstart /docs/current/tutorials/developer-journey
+  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-journey/
+  /developers-guide/quickstart /docs/current/tutorials/developer-journey/
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/setup/install/windows-wsl
-  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
