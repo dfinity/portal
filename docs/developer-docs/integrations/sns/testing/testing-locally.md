@@ -29,10 +29,15 @@ These scripts have been most tested with a stack that looks like this:
 * A canister that can be deployed to local replica via `dfx deploy`.
 
 ## Testing via `sns-testing` repo
+To use the `sns-testing` commands and their arguments properly, please consult the `sns-testing` [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
 
 :::info
-To use the `sns-testing` commands and their arguments properly, please consult the `sns-testing` [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
+If you have started using `sns-testing` before August 2023 and are using the old legacy flow of launching an SNS (please see [here](../launching/index.md) for more context), please continue your work with the legacy documentation on [this old README](https://github.com/dfinity/sns-testing/blob/v1-legacy/README.md). In particular, 
+* If you were following the Apple silicon-only instructions, please switch to the `v1-legacy` Git tag.
+* If you were using the Docker-based deployment approach, please use the docker image: `docker pull ghcr.io/dfinity/sns-testing:v1-legacy`.
 :::
+
+
 
 
 ### Testing stages of the SNS launch process
