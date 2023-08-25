@@ -59,15 +59,17 @@ If the dapp does have dependencies of some kind that cannot be managed by the DA
 
 ## 1.4. Create SNS configuration file
 The SNS is initialized using an NNS proposal that defines the initial parameters, thus the initial configuration is approved by the NNS DAO.
-The proposal can be created from a YAML configuration file and defines things like the token name, token supply, token distribution, transaction fees, dissolve delays and more. 
+The proposal can be created from a .yaml configuration file and defines things like the token name, token supply, token distribution, transaction fees, dissolve delays and more. 
 
-For initializing an SNS for your dapp, the configuration parameters must use the documentation created with the SNS tokenomics tool (Section 1.1.5 above) to create the .yaml configuration file. Even though this uses an old version of the configuration file, you may look at the [OpenChat config file](https://github.com/open-ic/open-chat/blob/master/sns/config/sns.yml) as a good example of how to format the file. Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading. 
+The initial parameters are explained more [here](./preparation.md).
+You can find a template with all parameters that need to be defined [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml) and an example of a filled in file [here](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).
+Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
 
 Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]`. 
 
 A confirmation text, defined as a parameter that is approved by the NNS, can be shown before the user can participate in the decentralization swap. This confirmation text can be set like this: `confirmation_text: "Please confirm that..."` 
 
-Use the [sns cli tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to validate the consistency of the configuration file, and test the configuration extensively locally before the final canisters are set up. See section 2.4 for more information about testing.
+Test the configuration extensively locally before submitting the NNS proposal. See section 2 for more information about testing.
 
 ## 1.5. Create NNS proposals
 <!-- OLD: As a part of the SNS launch process, two proposals must be created. The first proposal is for allowing a principle to create the SNS canisters, see Hot or Not’s [command](https://forum.dfinity.org/t/help-submit-the-sns-w-wallet-principal-id-to-be-whitelisted/20322/20) to create the first proposal.-->

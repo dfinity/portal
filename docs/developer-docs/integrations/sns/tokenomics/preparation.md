@@ -20,10 +20,7 @@ allows you to set these parameters and includes detailed descriptions of all par
 All SNS parameters are set in a **.yaml** file that can then be passed as an argument to the NNS proposal that triggers the SNS launch, both for testing and in production. 
 To make sure that all parameters make sense and are also consistent with each other, it is recommended to test the proposal locally.
 
-**To create the SNS parameter yaml file and validate it, follow the steps
-['Creating the configuration file'](https://github.com/dfinity/ic/tree/master/rs/sns/cli#creating-the-configuration-file)
-in the SNS CLI tool.
-The tool is also available through the dfx cache like this: `$(dfx cache show)/sns` **
+**To create the SNS parameter yaml file, copy the template file found [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml) and fill in the fields with the desired values. An example configuration file with filled out fields can be found in [sns-testing](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).**
 
 These are the categories of parameters that can be set:
 - **Parameters of the SNS governance canister**: these are parameters of the governance
