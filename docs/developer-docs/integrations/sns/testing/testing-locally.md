@@ -56,24 +56,24 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
     <tr>
         <td>0</td>
         <td>Developers deploy a dapp to the Internet Computer</td>
-        <td>[./deploy_test_canister.sh](https://github.com/dfinity/sns-testing/blob/main/deploy_test_canister.sh)</td>
+        <td><code>./deploy_test_canister.sh</code></td>
         <td>Custom scripts used to deploy dapps (e.g. multi-canister dapps, use nix, etc...)</td>
     </tr>
     <tr>
         <td>1</td>
         <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td>[example_sns_init.yaml](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml)</td>
+        <td><code>example_sns_init.yaml</code></td>
     </tr>
     <tr>
         <td>2</td>
         <td>Dapp developers add NNS root as co-controller of dapp</td>
-        <td>[./let_nns_control_dapp.sh](https://github.com/dfinity/sns-testing/blob/main/let_nns_control_dapp.sh)</td>
+        <td><code>./let_nns_control_dapp.sh</code></td>
         <td><code></code></td>
     </tr>
     <tr>
         <td>3</td>
         <td>Submit NNS proposal to create SNS</td>
-        <td rowspan="1">[./propose_sns.sh](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh)</td>
+        <td rowspan="1"><code>./propose_sns.sh]</code></td>
     </tr>
     <tr>
         <td>4</td>
@@ -100,7 +100,7 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
     <tr>
         <td> </td>
         <td>Users participate in the swap</td>
-        <td rowspan="1">[./participate_in_sns_swap.sh](https://github.com/dfinity/sns-testing/blob/main/participate_sns_swap.sh)</td>
+        <td rowspan="1"><code>./participate_in_sns_swap.sh</code></td>
         <td rowspan="1"></td>
     </tr>
     <tr>
@@ -126,15 +126,15 @@ Once a canister or dapp has been handed over to an SNS, it will be updated via p
     </tr>
     <tr>
         <td>Upgrade a yet-to-be-decentralized canister by submitting an SNS proposal that can be voted on using the SNS developer neuron.</td>
-        <td>[./upgrade_test_canister.sh](https://github.com/dfinity/sns-testing/blob/main/upgrade_test_canister.sh)</td>
+        <td><code>./upgrade_test_canister.sh</code></td>
     </tr>
     <tr>
         <td>Submit proposal to upgrade a decentralized canister</td>
-        <td>[./upgrade_test_canister.sh](https://github.com/dfinity/sns-testing/blob/main/upgrade_test_canister.sh)</td>
+        <td><code>./upgrade_test_canister.sh]</code></td>
     </tr>
      <tr>
         <td>Vote on a proposal that upgrades a decentralized canister</td>
-        <td>[./vote_on_sns_proposal.sh](https://github.com/dfinity/sns-testing/blob/main/vote_on_sns_proposal.sh)</td>
+        <td><code>./vote_on_sns_proposal.sh</code></td>
     </tr>
 </table>
 

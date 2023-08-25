@@ -120,7 +120,7 @@ It’s strongly recommended that developers have a discussion in the forum with 
 
 It is recommended to share:
 
-- [x] The init file (example: [OpenChat](https://github.com/open-ic/open-chat/tree/master/sns/config)). <!-- NEW: TODO init file-->
+- [x] The init file that you used. You can find the template [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml).
 - [x] Provide whitepaper with a full description of the decentralization and tokenomics.
 - [x] Provide a technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
 - [x] Explain to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
