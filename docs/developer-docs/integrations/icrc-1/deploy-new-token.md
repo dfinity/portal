@@ -19,7 +19,6 @@ cd icrc1
 ### Step 3:  Then, you need to download the icrc-1 ledger image (.wasm file) and the icrc-1 ledger interface (.did file). 
 
 ``` sh
-export IC_VERSION=b9d14e71b857ceca7087b31f5a32618d25555f29
 curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/master/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
 chmod +x download_latest_icrc1_ledger.sh
 ./download_latest_icrc1_ledger.sh
