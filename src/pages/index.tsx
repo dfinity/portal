@@ -35,18 +35,18 @@ export default function Home(): JSX.Element {
               Computer
             </>
           }
-          subheadline="build on the network"
-          cta="Get to know ICP"
+          subheadline="cypherspace as cloud"
+          cta="Explore The Power Of ICP"
           ctaLink="/what-is-the-ic"
           cards={[
             {
-              caption: "Sovereign Enterprise",
+              caption: "Make Code Unstoppable",
               title: "Cloud 3.0",
               link: "/enterprise",
             },
             {
               caption: "Open Internet Services",
-              title: "Web3 → DAOs",
+              title: "Web 3.0",
               link: "/openchat",
             },
             {
