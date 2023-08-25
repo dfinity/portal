@@ -122,10 +122,13 @@ module.exports = {
     fontSize: {
       // bold
       "heading-1": ["120px", "110px"],
-      "heading-2": ["75px", "85px"],
+      "heading-2": ["75px", "75px"],
+      "heading-22": ["100px", "100px"],
+      "heading-50": ["50px", "50px"],
       "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],
       "heading-4": ["32px", "42px"],
+      "heading-44": ["22px", "22px"],
       "heading-5": ["24px", "32px"],
       "heading-6": ["18px", "26px"],
       "heading-7": ["16px", "26px"],
@@ -173,9 +176,12 @@ module.exports = {
       const components = {
                 ".tw-heading-1": "@apply text-heading-1 font-bold",
                 ".tw-heading-2": "@apply text-heading-2 font-bold",
+                ".tw-heading-22": "@apply text-heading-22 font-bold",
+                ".tw-heading-50": "@apply text-heading-50 font-bold",
                 ".tw-heading-60": "@apply text-heading-60 font-bold",
                 ".tw-heading-3": "@apply text-heading-3 font-bold",
                 ".tw-heading-4": "@apply text-heading-4 font-bold",
+                ".tw-heading-44": "@apply text-heading-44 font-bold",
                 ".tw-heading-5": "@apply text-heading-5 font-bold",
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
