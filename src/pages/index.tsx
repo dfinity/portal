@@ -30,17 +30,17 @@ export default function Home(): JSX.Element {
         <PreHero
           headline={
             <>
-              Internet
+              Cypherspace
               <br />
-              Computer
+              as cloud
             </>
           }
-          subheadline="cypherspace as cloud"
+          subheadline="INTERNET COMPUTER"
           cta="Explore The Power Of ICP"
           ctaLink="/what-is-the-ic"
           cards={[
             {
-              caption: "Make Code Unstoppable",
+              caption: "Unstoppable Software",
               title: "Cloud 3.0",
               link: "/enterprise",
             },
