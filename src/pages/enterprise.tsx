@@ -48,15 +48,17 @@ function EnterprisePage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Enterprise Cloud 3.0
+                Cloud 3.0
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                The future of cloud is serverless. Now imagine a serverless cloud that hosts 
+                <b>The future of cloud is serverless: for enterprise, government and Web3 applications.</b>
+                <span style={{display: "block", height: "0.6em"}}></span>
+                Now imagine an autonomous serverless cloud that hosts 
                 data as well as logic, where software is tamperproof and unstoppable, can scale horizontally,
-                process HTTP, and can run autonomously, where you can build sovereign systems and services 
+                and processes HTTP, where you can build sovereign systems and services 
                 that don't need the protection of firewalls... 
                 <span style={{display: "block", height: "0.6em"}}></span>
                 An efficient cloud that destroys intractable R&D, security and
@@ -92,7 +94,7 @@ function EnterprisePage() {
             >
               Legacy tech stacks, increasing
               development costs and fleeing talent are just a few 
-              of the blockers holding enterprise back from innovating 
+              of the blockers holding tech endeavors back from innovating 
               and staying ahead of the competition &mdash; move forward by building on
               a serverless cloud that's
               an <i>everything stack</i> created by an advanced public network.
@@ -119,7 +121,7 @@ function EnterprisePage() {
                 Serverless Computing
               </h2>
               <p className="tw-lead-sm">
-                Businesses looking for serverless architectures to enable quick and
+                Enterprises and Web3 projects looking for serverless architectures to enable quick and
                 agile development cycles that reduce infrastructure maintenance and
                 operational costs can rely on the Internet Computer. It offers
                 serverless features comparable to existing cloud providers with extra
@@ -134,7 +136,7 @@ function EnterprisePage() {
               </p>
               <p className="tw-lead-sm">
                 Serverless cloud addresses the $1.8 trillion global spend on IT personnel, 
-                the $900 billion spend on software, $600 billion spend on cloud, $224 billion spend 
+                the $900 billion spend on software, $600 billion spend on Big Tech's clouds, $224 billion spend 
                 on data center systems, $179 billion spend on cybersecurity, and the $50 billion 
                 cost of cybersecurity incidents, reported by Gartner.
               </p>
@@ -162,7 +164,7 @@ function EnterprisePage() {
                 that's open and decentralized. Independently owned and operated "node
                 machines," which are installed in independent data centers around the world,
                 are connected by advanced network protocols to form a seamless serverless
-                cloud that's stateful, unstoppable, autonomous and sovereign,
+                cloud that's stateful, tamperproof, unstoppable, autonomous and sovereign,
                 upon which any system can be built. Its software — canister smart contracts
                 — are compiled to WebAssembly, the new Web3 industry standard for
                 cross platform, language agnostic, portable server executable
