@@ -2442,9 +2442,8 @@
     "name": "The Asset App",
     "description": "The Asset App allows any user to generate their own file canister smart contract and visually manage their files on the Internet Computer without requiring any code.",
     "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
-    "logo": "",
-    "screenshots": ["/img/showcase/asset-app.png"],
-    "video": "",
+    "logo": "/img/showcase/asset-app_logo.png",
+    "screenshots": ["/img/showcase/asset-app.jpg"],
     "id": "asset-app",
     "oneLiner": "The Asset App allows any user to generate their own file canister smart contract and visually manage their files on the Internet Computer without requiring any code.",
     "tags": [
