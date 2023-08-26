@@ -42,8 +42,8 @@ Each request to the XRC costs 10B cycles to submit the request, otherwise an `Ex
 
 - If the request can be served from the cache, the actual cost is 200M cycles.
 - If both assets are fiat currencies, the cost is 200M cycles.
-- If one of the assets is a fiat currency or the cryptocurrency USDT, the cost is 2.6B cycles.
-- If both assets are cryptocurrencies, the cost is 5B cycles.
+- If one of the assets is a fiat currency or the cryptocurrency USDT, the cost is 0.26B cycles.
+- If both assets are cryptocurrencies, the cost is 0.5B cycles.
 
 The remaining cycles are returned to the requesting canister. Note that at least 10M cycles are charged even in case of an error in order to mitigate the risk of a denial-of-service attack.
 
