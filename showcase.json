@@ -2437,5 +2437,24 @@
     "video": "",
     "videoContentType": "video/mp4",
     "submittableId": "40732752"
+  },
+  {
+    "id": "boom-dao",
+    "name": "Boom DAO",
+    "oneLiner": "Powering the next generation of fully on-chain games, and providing a collaborative hub for all things web3 gaming.",
+    "website": "https://boomdao.xyz/",
+    "tags": ["Games", "DAO", "Tools / Infrastructure", "NFT", "Metaverse"],
+    "description": "Shorten game development timelines from months to days. Deploy WebGL, PC, and Android game canisters, create NFT and Token collections, perform seamless airdrops, manage in-game NFT and Token minting, process payments and staking, configure your World smart contract and more!",
+    "stats": "+23000 DAO Members",
+    "logo": "/img/showcase/boom-dao-logo.webp",
+    "display": "Large",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/BoomDAO/",
+    "youtube": "https://www.youtube.com/watch?v=LHVVi4pN6CI",
+    "twitter": "https://twitter.com/boomdaosns",
+    "screenshots": ["/img/showcase/boom-dao-screenshot0.webp"],
+    "video": "/img/showcase/boom-dao-video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": ""
   }
 ]
