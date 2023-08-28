@@ -2539,7 +2539,7 @@
     "stats": "17M+ blocks",
     "usesInternetIdentity": false,
     "github": "https://github.com/eigerco/ethereum-canister",
-    "logo": "",
+    "logo": "/img/ethereum.svg",
     "screenshots": [],
     "video": "",
     "videoContentType": "video/mp4",
