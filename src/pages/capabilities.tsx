@@ -518,11 +518,11 @@ function FeaturesPage() {
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
               variants={transitions.item}
             >
-              Threshold ECDSA, coupled with chain-key cryptography is the key
+              Threshold ECDSA, coupled with chain-key cryptography is the main
               innovation behind direct integration with other blockchains without
               the use of bridges. It allows the Internet Computer to natively create
               signed transactions on other blockchains like Bitcoin and Ethereum.
-              Currently, ICP supports ECDSA, which is the signature scheme used by
+              The Internet Computer supports ECDSA, which is the signature scheme used by
               most blockchains.
               <Link
                 href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
