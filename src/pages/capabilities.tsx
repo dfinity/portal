@@ -521,9 +521,9 @@ function FeaturesPage() {
               Threshold ECDSA, coupled with chain-key cryptography is the main
               innovation behind direct integration with other blockchains without
               the use of bridges. It allows the Internet Computer to natively create
-              signed transactions on other blockchains like Bitcoin and Ethereum.
-              The Internet Computer supports ECDSA, which is the signature scheme used by
-              most blockchains.
+              signed transactions on other blockchains such as Bitcoin and Ethereum.
+              The Internet Computer implements secure threshold ECDSA signing, which is 
+              the signature scheme used by most blockchains.
               <Link
                 href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
                 className="tw-heading-6 flex gap-2 items-center mt-10"
