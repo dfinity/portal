@@ -1,5 +1,27 @@
 [
   {
+    "name": "cyql.io",
+    "description": "cyql.io is a curated list of decentralized applications and projects built on the Internet Computer. The main goal the project is to be a common place to explore projects, along with providing information about the NFT collections and upcoming events. ",
+    "website": "https://cyql.io/",
+    "logo": "/img/showcase/cyqlio_logo.svg",
+    "screenshots": [
+      "/img/showcase/cyqlio_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "cyqlio",
+    "oneLiner": "Curated Internet Computer projects gallery.",
+    "stats": "5000+ users",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/tomkoom/cyql.io",
+    "twitter": "https://twitter.com/cyqlio",
+    "youtube": "",
+    "submittableId": "34615263"
+  },
+  {
     "id": "icpswap",
     "name": "ICPSwap",
     "website": "https://icpswap.com",
