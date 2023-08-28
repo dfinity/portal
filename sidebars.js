@@ -573,6 +573,8 @@ const sidebars = {
                   id: "developer-docs/integrations/sns/launching/index",
                 },
                 items: [
+                  "developer-docs/integrations/sns/launching/launch-summary-1proposal",
+                  "developer-docs/integrations/sns/launching/launch-steps-1proposal",
                   "developer-docs/integrations/sns/launching/launch-summary",
                   "developer-docs/integrations/sns/launching/launch-steps",
                 ],

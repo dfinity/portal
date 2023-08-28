@@ -43,10 +43,13 @@ This section provides
 * [Guidelines how to test the operation of the dapp under SNS control](./testing/testing-on-mainnet.md), including on the mainnet.
 
 ## Launching an SNS
-This parts explains the SNS launch in detail.
-It contains <!-- An introduction of how to read the launch pages as there are currently two supported methods how to launch an SNS (./launching/index.md)-->
-* A detailed [description of all stages included in an SNS launch](./launching/launch-summary.md).
-* [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps.md). <!-- NEW: - A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the new, recommended launch flow that only includes one proposal. - [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for the new, recommended launch flow that only includes one proposal. - A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the old launch flow that might be deprecated at some point but is still available for those who started testing with this flow. - [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for the old launch flow that might be deprecated at some point but is still available for those who started testing with this flow. -->
+This section of documentation explains the SNS launch in detail.
+It contains:
+* An [introduction of how to read the launch pages](./launching/index.md) as there are currently two supported methods how to launch an SNS.
+* A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the recommended launch flow that was adopted by the NNS in August 2023 and only includes one proposal.
+* [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for this recommended launch flow that only includes one proposal. 
+* A detailed [description of all stages included in an SNS launch](./launching/launch-summary.md) for the old, legacy launch flow that is still available for those who started testing with this flow but might be deprecated at some point.
+ * [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps.md) for the old, legacy launch flow that is still available for those who started testing with this flow but might be deprecated at some point but.
 
 ## Managing an SNS
 After an SNS is launched, the SNS community needs to manage it, including ensuring that the canisters have enough cycles, govern the dapp, and manage SNS canister upgrades.
