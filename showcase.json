@@ -2544,5 +2544,27 @@
     "video": "",
     "videoContentType": "video/mp4",
     "submittableId": "40732752"
+  },
+  {
+    "id":"zondax_unreal",
+    "name": "Zondax Unreal",
+    "oneLiner": "Enhancing Gaming development on IC.",
+    "website": "https://zondax.ch/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Metaverse",
+      "Games"
+    ],
+    "description": "This project focuses on the game development community, enabling them to smoothly integrate their C++ native projects with the IC interface on-chain, using our wrapper for seamless interaction. Easy deployment becomes a reality for any C++ projects on IC, welcoming game developers, particularly those using Unreal Engine. Our mission is to bridge the gap, enhancing IC's accessibility and inviting a broader community of creators. Through our innovative solution, game developers can fully unlock IC's potential, fostering collaboration and creativity.",
+    "logo": "/img/showcase/zondax-unreal_logo.webp",
+    "screenshots": [
+      "/img/showcase/zondax-unreal_screenshot_0.webp"
+    ],
+    "display": "Large",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/Zondax/icp-client-cpp",
+    "youtube": "https://www.youtube.com/watch?v=wdjql_lmooE",
+    "twitter": "https://twitter.com/_zondax_",
+    "submittableId": ""
   }
 ]
