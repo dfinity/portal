@@ -164,60 +164,60 @@ const hubs: Hub[] = [
 
 const upcomingHubs: Hub[] = [
   {
-    name: "Sponsorship at ETH event",
+    name: "Internet Computer at ETHToronto 2023",
     description:
-      "ICP people meet ETH community as ICP.Hub North America becomes an official Megabyte Sponsor of ETHToronto.",
+      "ICP community joins forces with ETH community as ICP.Hub North America proudly steps in as an official Megabyte Sponsor for ETH Toronto 2023.",
     image: "/img/community/eth-toronto.webp",
     link: "https://twitter.com/ETH_Toronto/status/1687096585715421184",
   },
+  // {
+  //   name: "ICP joins Coinfest Asia",
+  //   description:
+  //     "ICP advocates make an appearace at Coinfest Asia 2023 — Asia's immersive Web3 festival.",
+  //   image: "/img/community/coinfest-asia.webp",
+  //   link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
+  // },
   {
-    name: "ICP joins Coinfest Asia",
+    name: "Internet Computer at Web3Conf India 2023",
     description:
-      "ICP advocates make an appearace at Coinfest Asia 2023 — Asia's immersive Web3 festival.",
-    image: "/img/community/coinfest-asia.webp",
-    link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
-  },
-  {
-    name: "Event partner at Web3Conf India",
-    description:
-      "ICP.Hub India visits the Web3Conf India 2023 as a top partner. The local ICP community it stoked!",
+      "ICP.Hub India's prominent presence at Web3Conf India 2023 as a leading partner has ignited tremendous excitement within the local Web3 community.",
     image: "/img/community/web3-india.webp",
     link: "https://twitter.com/web3conf_india/status/1686272790150754304?s=46&t=znCni81w_5V68LfRCHvtZA",
   },
   {
-    name: "ICP sponsors Istanbul Blockchain Week",
+    name: "Internet Computer at Istanbul Blockchain Week 2023",
     description:
-      "Thrilled to announce ICP.Hub Turkey as an official sponsor for #IBW23, the largest blockchain conference in country.",
+      "ICP.Hub Turkey played a pivotal role at Istanbul Blockchain Week 2023, actively engaging in discussions, organizing insightful events, and strengthening their position as a key player in Turkey's blockchain landscape.",
     image: "/img/community/istanbul-blockchain-week.webp",
     link: "https://twitter.com/istanbulblockwk/status/1687075926386110464?s=46&t=YWzpokcUePMtkg043EMwBQ",
   },
   {
-    name: "Incubator launch in LATAM",
+    name: "Internet Computer launches Web3 incubator in Latin America",
     description:
-      "Colledge, a tech academy focused on Web3, and ICP.Hub LATAM launch ICPnnova, an incubation program for web3 projects in the regional ecosystem.",
+      "ICP.Hub LATAM has partnered with College, a technology academy specializing in Web3, to introduce ICPnova, an incubation program designed to support Web3 projects within the regional ecosystem.",
     image: "/img/community/icpnnova.webp",
     link: "https://es.cointelegraph.com/news/colledge-and-icp-latam-hub-launch-icpnnova-incubation-programme-for-web3-projects-in-latin-america",
   },
   {
-    name: "New hub in Turkey",
+    name: "Internet Computer at Web3 Lagos Conference",
     description:
-      "Internet Computer makes another investment in Turkey's Web3 ecosystem by etablishing an official hub.",
-    image: "/img/community/icphub-turkey.webp",
-    link: "https://www.coindeskturkiye.com/yazarlar/sude-ozkan/turkiye-web3-ekosistemine-bir-yatirim-daha-internet-computer-turkiyede-icphub-kuruyor-4818",
+      "ICP.Hub East Africa played a significant role at the Web3 Lagos Conference, emphasizing its dedication to fostering Web3 innovation within the region.",
+    image: "/img/community/lagos_conf.webp",
+    link: "https://twitter.com/Web3Bridge/status/1694304365694046238?s=20",
   },
   {
-    name: "Partnership with WIBC",
+    name: "Internet Computer at Korea Blockchain Week 2023",
     description:
-      "ICP.Hub North America is thrilled to announce a landmark partnership with Women in Blockchain Canada.",
-    image: "/img/community/women-in-blockchain.webp",
-    link: "https://twitter.com/finbold/status/1689306088561156096",
+      "ICP.Hub Korea hosts one of KBW 2023's largest side events, reinforcing its role as a key advocate for Web3 innovation in the Korean blockchain community.",
+    image: "/img/community/korea-blockchain-week.webp",
+    link: "https://twitter.com/ICPhubkorea/status/1685858938116575233?s=20",
   },
   {
-    name: "ICP ecosystem meets Japan",
+    name: "Internet Computer at Blockchain Week Rome 2023",
     description:
-      'NFTStudio24 announces ICP Meetup "Dev3 Japan" to introduce ICP ecosystem to the Web3 community in Japan.',
-    image: "/img/community/ecosystem-japan.webp",
-    link: "https://jp.cointelegraph.com/press-releases/nftstudio24-announces-dev3-japan-an-icp-meetup-to-introduce-the-icp-ecosystem-in-japan",
+      'ICP.Hub Italia made an impact at Blockchain Week Rome 2023, actively engaging in discussions, workshops, and networking sessions. Their presence underscored their commitment to advancing blockchain innovation and collaboration within Italy.',
+    image: "/img/community/icp-italia-highlight.webp",
+    link: "https://twitter.com/BlockchainRome/status/1655256183895121926?s=20",
   },
 ];
 const communityGallery: {
@@ -630,9 +630,8 @@ function CommunityPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Join an inspiring tribe of Web3 creators, builders, educators
-                and enthusiasts on the path to explore what the Internet
-                Computer can solve in today's blockchain ecosystem.
+                Be part of the inspiring collective of Web3 creators, builders, educators, 
+                and enthusiasts as we set out to explore how the Internet Computer can address challenges within today's blockchain ecosystem.
                
               </motion.p>
             </div>
@@ -673,7 +672,7 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Get to know the Internet Computer 
+              Explore community initiatives 
               
             </motion.h2>
           </div>
@@ -719,14 +718,13 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.Hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Since March 2023, ICP.Hubs have been sprouting up all over
-              the world. With 15 hubs and more on the way, a vibrant
-              community is spreading awareness and adoption — from evangelism 
-              to education, to strategic partnerships and project accelerators.
+            ICP. Hubs are flourishing worldwide. With 15 hubs already established and more in the pipeline, 
+            a thriving community is actively promoting awareness and adoption, encompassing evangelism, 
+            education, strategic partnerships, and project acceleration.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#hubs">
-                Find a hub near you
+              Find ICP.Hubs near you
                 <LinkArrowDown />
               </Link>
             </p>
@@ -743,17 +741,15 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              There's no better way to build a strong community than by meeting
-              in person. ICP meetups and conferences offer unique moments to
-              hang out, mingle, celebrate, learn, and forge longstanding
-              connections with forward-thinking peeps.
+              At ICP Events, you'll find fantastic chances to gather, socialize, celebrate, 
+              expand your knowledge, and form lasting bonds with fellow visionaries.
             </p>
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
                 href="https://dfinity.org/events-and-news/"
               >
-                Attend an ICP event
+                Discover upcoming events
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -764,20 +760,14 @@ function CommunityPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="md:w-5/10 md:mx-auto text-center">
+          <div className="md:w-8/10">
             <motion.h2
-              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Be an ICP advocate
+              Build the community 
+              
             </motion.h2>
-            <motion.p
-              className="tw-paragraph md:tw-lead mb-0"
-              variants={transitions.item}
-            >
-             Go beyond simply holding ICP or using dapps. Actively contribute to the adoption 
-              advocacy of the Internet Computer. 
-            </motion.p>
           </div>
         </AnimateSpawn>
 
@@ -796,17 +786,17 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">ICP.Hub Leader</h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">Launch an ICP.Hub</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Are you a leader with entrepreneurial experience? If so, we need you. Launch and manage a new
-              regional ICP.Hub, or join an existing one as strategic partner. 
+            Calling all Web3 entrepreneurs! Do you believe the Internet Computer deserves a stronger presence in your region? 
+            Share your business proposal and get ready to ignite the world with your visionary ideas. 
             </p>
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
                 href="https://airtable.com/shr94SzLU4XXs9cTi"
               >
-                Send us your resume
+                Submit your proposal
                 <LinkArrowUpRight />
               </Link>
             </p>
@@ -822,12 +812,12 @@ function CommunityPage() {
               className="w-30"
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">
-              ICP community engager
+              Community Grant Program
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              All Web3 content creators, educators, event organizers, influencers and innovators looking to spread the  
-              word about the Internet Computer — the Community Grant Program may be the 
-              thing for you.          
+            For all Web3 content creators, educators, event organizers, influencers, 
+            and innovators eager to promote the Internet Computer, the Community Grant Program 
+            is your perfect opportunity.         
             </p>
             <p className="mb-0">
               <Link
@@ -850,15 +840,15 @@ function CommunityPage() {
               className="w-30"
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">
-              ICP ambassador
+              Ambassador Program
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Be a strong voice advocating for the Internet Computer, its unprecented 
-              technical capabilities and ever expanding ecosystem. 
+              Be a strong voice advocating for the Internet Computer, 
+              its unprecented technical capabilities and ever expanding ecosystem.
             </p>
             <p className="mb-0">
               <Link className="link-primary-disabled link-with-icon">
-                Program coming soon
+                Coming soon
                 {/* <LinkArrowUpRight /> */}
               </Link>
             </p>
@@ -871,21 +861,14 @@ function CommunityPage() {
           variants={transitions.container}
         >
           <div className="blob blob-infinite blob-md blob-x-10 blob-y-8 z-[-1]"></div>
-          <div className="md:w-7/10">
+          <div className="md:w-8/10">
             <motion.h2
-              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Hub highlights
+              The best of ICP.Hubs
+              
             </motion.h2>
-            <motion.p
-              className="tw-paragraph md:tw-lead mb-0"
-              variants={transitions.item}
-            >
-              The latest ICP.Hub activity happening around the world. 
-              We hope it inspires you to join the movement. 
-      
-            </motion.p>
           </div>
         </AnimateSpawn>
         <AnimateSpawn
@@ -949,20 +932,13 @@ function CommunityPage() {
           id="education"
         >
           {/* <div className="blob blob-infinite blob-md blob-x-0 blob-y-8 z-[-1]"></div> */}
-          <div className="md:w-8/10 md:mx-auto text-center mb-10 md:mb-12">
+          <div className="md:w-8/10">
             <motion.h2
-              className="tw-heading-3 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-6"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Get ICP educated 
+              Educational resources
             </motion.h2>
-            <motion.p
-              className="tw-paragraph md:tw-lead mb-0"
-              variants={transitions.item}
-            >
-              Learn the fundamentals of the Internet Computer through one of the ICP community education platforms.
-        
-            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
