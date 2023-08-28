@@ -1333,7 +1333,7 @@
     ],
     "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" - Ethereum.org P.S. there is a hidden game in the demo. ",
     "display": "Normal",
-    "logo": "/img/showcase/evmonicp_logo.webp",
+    "logo": "/img/ethereum.svg",
     "screenshots": [
       "/img/showcase/evmonicp_screenshot_0.webp"
     ]
