@@ -11,8 +11,8 @@ canister correctly, such that you can share links to your dapp without hiccups.
 ## Context
 
 To directly access dapps hosted on the Internet Computer via a browser,
-an HTTP gateway is required. This gateway translates browser HTTP requests into API canister calls,
-is required. Currently, there are two instances of this HTTP gateway, providing
+an HTTP gateway is required. This gateway translates browser HTTP requests into 
+API canister calls. Currently, there are two instances of this HTTP gateway, providing
 users with two ways to access dapps on the IC through their browsers:
 
 1. `non-raw`: upon the initial dapp access, a service worker is loaded
