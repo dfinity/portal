@@ -26,7 +26,8 @@
     "tags": [
       "SocialFi",
       "Bitcoin",
-“DAO”    ],
+      "DAO"    
+    ],
     "description": "OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
     "display": "Large",
@@ -135,7 +136,7 @@
     "oneLiner": "Token rewards for both content creators and lurkers",
     "website": "https://hotornot.wtf/",
     "tags": [
-      "SocialFi", “DAO”
+      "SocialFi", "DAO"
     ],
     "description": "Hot or Not is a decentralized short-form video based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
     "usesInternetIdentity": true,
@@ -192,8 +193,8 @@
       "Tools / Infrastructure",
       "Wallet",
       "Bitcoin",
-      “NFT”,
-      “Ethereum”
+      "NFT",
+      "Ethereum"
     ],
     "description": "ME wallet securing your assets without seed phrase across any devices.",
     "github": "https://github.com/AstroxNetwork",
@@ -364,7 +365,7 @@
     "oneLiner": "The world's first Web3 search engine",
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
-      "Tools / Infrastructure", “DAO”
+      "Tools / Infrastructure", "DAO"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
     "description": "The world’s first Web3 search engine indexing all Internet Computer based dapps.",
@@ -491,7 +492,7 @@
     "id": "orally-network",
     "name": "Orally",
     "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
-    "tags": ["Tools / Infrastructure", "DeFi", “Ethereum”],
+    "tags": ["Tools / Infrastructure", "DeFi", "Ethereum"],
     "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dApps. Elevate your blockchain journey with us!",
     "usesInternetIdentity": false,
     "website": "https://orally.network",
@@ -568,7 +569,7 @@
     "oneLiner": "Arth ckBTC wallet and swap btc<>ckBtc",
     "tags": [
       "DeFi",
-      "Wallet", “Bitcoin”
+      "Wallet", "Bitcoin"
     ],
     "description": "Introducing Arth - the mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes. more features coming soon",
     "usesInternetIdentity": true,
@@ -857,8 +858,7 @@
     "oneLiner": "The world's First NFT Broadcast Station",
     "tags": [
       "NFT",
-      "SocialFi",
-    ],
+      "SocialFi" ],
     "description": "Introducing CaniPlay (Can I Play), the pioneering NFT broadcast station that operates fully on-chain, eliminating the need for intermediaries who control content broadcasting within the community. Submit your audio or video content and reach a global audience without relying on any third party. As a creator, receive recognition and rewards from your listeners. As a listener, enjoy airdrops and actively participate by voting for your favourite content in the playlist, influencing its position and prominence. Join CaniPlay today and redefine the way content is shared, appreciated, and rewarded!",
     "usesInternetIdentity": false,
     "website": "https://es7e3-taaaa-aaaan-qakqq-cai.icp0.io",
@@ -908,7 +908,7 @@
     "website": "https://wallet.infinityswap.one/",
     "tags": [
       "Wallet",
-      "Bitcoin", “Ethereum”
+      "Bitcoin", "Ethereum"
     ],
     "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "display": "Large",
@@ -2546,5 +2546,3 @@
     "submittableId": "40732752"
   }
 ]
-
-
