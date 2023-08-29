@@ -466,6 +466,7 @@ Typically a generic proposal will have the following structure: a developer send
 ### Defining a generic proposal
 
 A generic proposal is defined by two parts:
+
 1. **A target method and canister** (respectively called target_method_name and target_canister_id in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing it to such a target method on a canister then registering the target method in a generic proposal.
 
 2. **A validator method and canister** (respectively called validator_method_name and validator_canister_id in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on another one). This method is then called whenever such a generic proposal is submitted.
@@ -494,9 +495,9 @@ There are a few important, security-critical considerations to make when adding 
 * **If inter-canister calls cannot be avoided, try to limit them to the last operation of your validator and target methods.** A prominent source of bugs with inter-canister calls is to check a condition, then apply an inter-canister call, and then execute code that relies on this condition. This is called TOCTOU-bug: the status of the system has changed between the time of check and time of use of a condition. One way to avoid that a checking and using of a condition are separated by an inter-canister call is to defer all inter-canister calls to the very end of the method.
 * **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensures that no method that would change a relevant condition can be executing during the validator and target method.
 
-### Using a generic proposal
+### Adding/removing generic proposals
 
-To use a generic proposal, it first needs to be added to the SNS governance system. This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As we have seen that generic proposals also have security implications it is important to have this explicit approval.
+**To use a generic proposal, it first needs to be added to the SNS governance system.** This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As we have seen that generic proposals also have security implications it is important to have this explicit approval.
 
 Generic proposals can then also be removed again from SNS governance if they are not needed anymore.
 
@@ -582,8 +583,7 @@ quill send message.json
 
 See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/177).
 
-
-### `ExecuteGenericNervousSystemFunction` 
+### `ExecuteGenericNervousSystemFunction`
 
 After a generic proposal has been registered with a `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
