@@ -2566,5 +2566,18 @@
     "youtube": "https://www.youtube.com/watch?v=wdjql_lmooE",
     "twitter": "https://twitter.com/_zondax_",
     "submittableId": ""
+  },
+  {
+    "id":"pluto",
+    "name": "Pluto",
+    "oneLiner": "HTTP router on blockchain",
+    "website": "https://t5mcf-cqaaa-aaaag-qcjna-cai.raw.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Pluton is an HTTP router implemented on the Internet Computer to facilitate working with HTTP. This router is a framework that allows you to write REST API applications on the blockchain in almost the same way as in Web 2",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/pu0238/pluto",
+    "submittableId": "36517192"
   }
 ]
