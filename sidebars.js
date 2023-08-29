@@ -292,7 +292,7 @@ const sidebars = {
               label: "Troubleshooting resources",
               id: "developer-docs/backend/troubleshooting",
             },
-          ], 
+          ],
         },
     {
       type: "category",
@@ -339,6 +339,11 @@ const sidebars = {
               type: "doc",
               label: "Large web assembly modules",
               id: "developer-docs/production/larger-wasm",
+            },
+            {
+              type: "doc",
+              label: "Sharing links to dapps",
+              id: "developer-docs/production/social-sharing",
             },
               ],
       },
@@ -506,7 +511,7 @@ const sidebars = {
         "tokenomics/nns/neurons-fund",
         "tokenomics/nns/nns-staking-voting-rewards",
     ],
-    }, 
+    },
     {
         type: "category",
         label: "Service Nervous System (SNS)",
@@ -900,7 +905,7 @@ const sidebars = {
       ],
     },
   ],
-  
+
 };
 
 module.exports = sidebars;
