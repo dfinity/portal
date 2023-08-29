@@ -486,7 +486,7 @@ Together, this is the type of a generic proposal in the code:
 
 ### Security considerations when designing generic proposals
 
-There are a few important, security-critical considerations to make when adding a generic proposal. We list a few recommendations here. 
+There are a few important, security-critical considerations to make when adding a generic proposal. We list a few recommendations here:
 
 * **The canisters where the target and validator methods are defined should be controlled by the SNS DAO.** Otherwise such a method could change the behavior or not be available without the SNS’s control. If you need to call another method consider the next point.
 * **Make sure that the target and validator methods always return an answer.** If this is not the case, there is a risk that the SNS governance canister has some open call contexts, which in turn means that it cannot be stopped and therefore cannot be upgraded. This is very risky, e.g., if an urgent upgrade of governance is needed. Therefore it is recommended to only call trusted code.
@@ -494,6 +494,8 @@ There are a few important, security-critical considerations to make when adding 
 * **Avoid asynchronous inter-canister calls in the validator and target method to minimize the risk for re-entrancy bugs.** During the execution of inter-canister calls, other execution can happen (thus interleaving with your method) and change the state of the system. The easiest way to avoid this risk is to avoid inter-canister calls.
 * **If inter-canister calls cannot be avoided, try to limit them to the last operation of your validator and target methods.** A prominent source of bugs with inter-canister calls is to check a condition, then apply an inter-canister call, and then execute code that relies on this condition. This is called TOCTOU-bug: the status of the system has changed between the time of check and time of use of a condition. One way to avoid that a checking and using of a condition are separated by an inter-canister call is to defer all inter-canister calls to the very end of the method.
 * **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensures that no method that would change a relevant condition can be executing during the validator and target method.
+
+See more [considerations specific to defining SNS proposals](https://github.com/dfinity/portal/blob/master/docs/developer-docs/security/general-security-best-practices.md).
 
 ### Adding/removing generic proposals
 
