@@ -19,17 +19,10 @@ cd icrc1
 ### Step 3:  Then, you need to download the icrc-1 ledger image (.wasm file) and the icrc-1 ledger interface (.did file). 
 
 ``` sh
-export IC_VERSION=b9d14e71b857ceca7087b31f5a32618d25555f29
-curl -o icrc1-ledger.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
-curl -o icrc1-ledger.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/ledger.did"
-gunzip icrc1-ledger.wasm.gz
+curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/master/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
+chmod +x download_latest_icrc1_ledger.sh
+./download_latest_icrc1_ledger.sh
 ```
-
-:::info
-
-The `IC_VERSION` variable is a commit hash from the <http://github.com/dfinity/ic> repository. To get the latest version, take the commit hash from the last blessed version from the [releases dashboard](https://dashboard.internetcomputer.org/releases). For newer releases, the deploy arguments for the ICRC1 ledger might change. To make sure that this guide works, please use the same `IC_VERSION` as specified in the above example.
-
-:::
 
 ### Step 4:  Add the following canister definition to the `dfx.json` file in your project:
 
