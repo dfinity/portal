@@ -467,9 +467,9 @@ Typically a generic proposal will have the following structure: a developer send
 
 A generic proposal is defined by two parts:
 
-1. **A target method and canister** (respectively called target_method_name and target_canister_id in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing it to such a target method on a canister then registering the target method in a generic proposal.
+1. **A target method and canister** (respectively called `target_method_name` and `target_canister_id`` in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing it to such a target method on a canister then registering the target method in a generic proposal.
 
-2. **A validator method and canister** (respectively called validator_method_name and validator_canister_id in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on another one). This method is then called whenever such a generic proposal is submitted.
+2. **A validator method and canister** (respectively called `validator_method_name` and `validator_canister_id` in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on another one). This method is then called whenever such a generic proposal is submitted.
 
 Taking this together, this is how generic proposals work: When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will executed the proposal by calling the target method on the target canister.
 
@@ -504,6 +504,8 @@ Generic proposals can then also be removed again from SNS governance if they are
 To use a generic proposal, i.e., submit such a proposal, one uses the “execute generic nervous system function” proposal type and specifies which of the registered generic proposals should be used. We next explain how to submit each of these proposals.
 
 ### `AddGenericNervousSystemFunction`
+
+This *native proposal* type is used to **add** a *generic functions* as *generic proposals* to the SNS governance system.
 
 #### Relevant type signatures
 
@@ -585,6 +587,9 @@ See example [proposal of an active SNS](https://dashboard.internetcomputer.org/s
 
 ### `ExecuteGenericNervousSystemFunction`
 
+This *native proposal* type is used to **execute** a *generic functions* as *generic proposals* to the SNS governance system.
+
+
 After a generic proposal has been registered with a `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
 Upon submission of such a proposal, the defined validation method is called, which checks that the given payload is valid for this kind of proposal (the method that will be called for this is the method `validator_method_name` on the canister `validator_canister_id` as it was defined when the generic proposal was added. If this validation is successful, the proposal will be created.
@@ -632,8 +637,7 @@ quill send message.json
 
 ### `RemoveGenericNervousSystemFunction`
 
-Similarly to how generic proposal are added, they can also be removed again if the SNS DAO thinks that they should no longer be supported. 
-To do so, they can use the proposal `AddGenericNervousSystemFunction` which specifies the ID of the generic nervous system function to be removed.
+This *native proposal* type is used to **remove** a *generic functions* as *generic proposals* to the SNS governance system.
 
 #### Relevant type signatures
 
