@@ -47,18 +47,30 @@ the service worker.
 
 However, two key details must be noted:
 
-1. Starting from `dfx 0.13.1`, asset canisters redirect requests for `raw` to
+1. Starting from dfx version `0.13.1` until `0.14.3`, asset canisters redirect requests for `raw` to
 `non-raw` by default. This redirection must to be disabled in order for the `raw` links to work anywhere.
 1. The `raw` domain needs to be registered as an alternative frontend origin for
 Internet Identity such that users can seamlessly login across both the `non-raw` and `raw` version with the same principal.
 
 ### Disable automatic `raw` redirect
 
-If you are using dfx version 0.13.1 or newer, your asset canister automatically redirects
+If you are using dfx version `0.13.1` to `0.14.3`, your asset canister automatically redirects
 all `raw` requests to `non-raw`, preventing service worker bypassing.
 
-To change this behavior, explicitly allow raw access in the
-`.ic-assets.json` file:
+You can either upgrade your dfx version or explicitly enable raw access:
+
+#### Upgrading dfx (recommended)
+
+Simply run the following command:
+
+```
+dfx upgrade
+```
+
+
+#### Enabling `raw` access
+
+To enable raw access, add the following snippet to your `.ic-assets.json` file:
 
 ```
 [
