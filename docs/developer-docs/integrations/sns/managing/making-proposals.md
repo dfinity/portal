@@ -445,7 +445,7 @@ Then the resulting metadata will end like this where only the `description` fiel
 
 ## Generic proposals
 
-Each SNS community might have dapp-specific needs.
+Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it but that might be very dapp-specific. Generic proposals, also called generic functions or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
 
 Some examples:
 
@@ -462,6 +462,45 @@ Typically a generic proposal will have the following structure: a developer send
 * [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction).
 * [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction).
 * [`ExecuteGenericNervousSystemFunction`](#executegenericnervoussystemfunction).
+
+### Defining a generic proposal
+
+A generic proposal is defined by two parts:
+1. **A target method and canister** (respectively called target_method_name and target_canister_id in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing it to such a target method on a canister then registering the target method in a generic proposal.
+
+2. **A validator method and canister** (respectively called validator_method_name and validator_canister_id in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on another one). This method is then called whenever such a generic proposal is submitted.
+
+Taking this together, this is how generic proposals work: When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will executed the proposal by calling the target method on the target canister.
+
+Together, this is the type of a generic proposal in the code:
+
+```candid
+  type GenericNervousSystemFunction = record {
+        validator_canister_id : opt principal;
+        target_canister_id : opt principal;
+        validator_method_name : opt text;
+        target_method_name : opt text;
+    };
+```
+
+### Security considerations when designing generic proposals
+
+There are a few important, security-critical considerations to make when adding a generic proposal. We list a few recommendations here. 
+
+* **The canisters where the target and validator methods are defined should be controlled by the SNS DAO.** Otherwise such a method could change the behavior or not be available without the SNS’s control. If you need to call another method consider the next point.
+* **Make sure that the target and validator methods always return an answer.** If this is not the case, there is a risk that the SNS governance canister has some open call contexts, which in turn means that it cannot be stopped and therefore cannot be upgraded. This is very risky, e.g., if an urgent upgrade of governance is needed. Therefore it is recommended to only call trusted code.
+* **Validate everything that your code relies on again on execution time.** Even though one method is “validator” its main purpose is to disregard proposal contents that are obviously wrong. However, due to the fact that a proposal is voted on for multiple days, any validation that you did when the proposal was submitted might have become incorrect by the time the proposal is executed. Therefore it is of utmost importance to repeat any validation in the target method which is important for the validation of the proposal.
+* **Avoid asynchronous inter-canister calls in the validator and target method to minimize the risk for re-entrancy bugs.** During the execution of inter-canister calls, other execution can happen (thus interleaving with your method) and change the state of the system. The easiest way to avoid this risk is to avoid inter-canister calls.
+* **If inter-canister calls cannot be avoided, try to limit them to the last operation of your validator and target methods.** A prominent source of bugs with inter-canister calls is to check a condition, then apply an inter-canister call, and then execute code that relies on this condition. This is called TOCTOU-bug: the status of the system has changed between the time of check and time of use of a condition. One way to avoid that a checking and using of a condition are separated by an inter-canister call is to defer all inter-canister calls to the very end of the method.
+* **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensures that no method that would change a relevant condition can be executing during the validator and target method.
+
+### Using a generic proposal
+
+To use a generic proposal, it first needs to be added to the SNS governance system. This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As we have seen that generic proposals also have security implications it is important to have this explicit approval.
+
+Generic proposals can then also be removed again from SNS governance if they are not needed anymore.
+
+To use a generic proposal, i.e., submit such a proposal, one uses the “execute generic nervous system function” proposal type and specifies which of the registered generic proposals should be used. We next explain how to submit each of these proposals.
 
 ### `AddGenericNervousSystemFunction`
 
