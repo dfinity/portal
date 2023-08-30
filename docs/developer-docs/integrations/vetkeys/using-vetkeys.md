@@ -4,11 +4,11 @@
 
 This demo provides a canister (`src/system_api`) that offers the vetKD system API proposed in https://github.com/dfinity/interface-spec/pull/158, implemented in an unsafe manner for demonstration purposes.
 
-This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/13181568b9eddeaab5ab735c5c7f052c5a73aa3d/rust/vetkd).
+This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
 
 ## Prerequisites
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](./../../setup/install/index.mdx) page.
+- [x] Download and install the IC SDK package as described in the [installing the IC SDK](./../../setup/install/) page.
 - [x] Download and install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 - [x] Download and install [git](https://git-scm.com/downloads).
 
@@ -19,19 +19,45 @@ This demo uses files found in [this repository](https://github.com/dfinity/examp
 git clone https://github.com/dfinity/examples/
 ```
 
-Then navigate into the directory specifically for this project:
+Then navigate into the directory specifically for this project. For the Rust implenentation, use the command:
 
 ```
 cd examples/rust/vetkd
 ```
 
-### Step 2: Then, start a local instance of the Internet Computer:
+For the Motoko implementation, use the command:
+
+```
+cd examples/motoko/vetkd
+```
+
+### Step 2: Set an environmental variable. 
+
+For Rust deployment, use the command:
+
+```
+export BUILD_ENV=rust
+```
+
+For Motoko deployment, use the command:
+
+```
+export BUILD_ENV=motoko
+```
+
+### Step 3: Generate build specific files using the `pre-deploy.sh` script:
+
+```
+sh ./pre_deploy.sh
+```
+
+### Step 4: Then, start a local instance of the Internet Computer:
 
 ```sh
 dfx start --clean --background
 ```
 
-### Step 3: Ensure the Canister SDK (dfx) uses the canister IDs that are hard-coded in the Rust source code:
+### Step 5: Ensure the Canister SDK (dfx) uses the canister IDs that are hard-coded in the Rust source code:
 
 ```sh
 dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
@@ -39,13 +65,13 @@ dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
 
 Without this, the Canister SDK (dfx) may use different canister IDs for the `system_api` and `app_backend` canisters in your local environment.
 
-### Step 4: Ensure that the required node modules are available in your project directory, if needed, by running the following command:
+### Step 6: Ensure that the required node modules are available in your project directory, if needed, by running the following command:
 
 ```sh
 npm install
 ```
 
-### Step 5: Register, build and deploy the project:
+### Step 7: Register, build and deploy the project:
 
 ```sh
 dfx deploy
@@ -64,4 +90,4 @@ Backend canister via Candid interface:
  system_api: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
 ```
 
-### Step 6: Open the printed URL for the `app_frontend_js` in your browser.
+### Step 8: Open the printed URL for the `app_frontend_js` in your browser.
