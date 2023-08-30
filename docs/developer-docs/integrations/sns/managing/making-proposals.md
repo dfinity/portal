@@ -666,7 +666,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-### Case study: Adding an generic proposal
+### Case study: Adding a generic proposal
 
 The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister. 
 
