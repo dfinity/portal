@@ -666,6 +666,81 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
+### Case study: Adding an generic proposal
+
+The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister. 
+
+The problem: To commit changes to the asset canister associated with an SNS dapp, we need to use generic proposals.
+
+To do this, the asset canister needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
+
+See the code for the `commit_proposed_batch` function [here](https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264):
+
+```rust
+#[update]
+#[candid_method(update)]
+fn validate_commit_proposed_batch(arg: CommitProposedBatchArguments) -> Result<String, String> {
+    STATE.with(|s| s.borrow_mut().validate_commit_proposed_batch(arg))
+}
+```
+
+where `validate_commit_proposed_batch` is [here](https://github.com/dfinity/sdk/blob/f227ac05ea3b2c7f6d10025ee255e222b34b6e3e/src/canisters/frontend/ic-certified-assets/src/state_machine.rs#L650):
+
+```rust
+    pub fn validate_commit_proposed_batch(
+        &self,
+        arg: CommitProposedBatchArguments,
+    ) -> Result<String, String> {
+        self.validate_commit_proposed_batch_args(&arg)?;
+        Ok(format!(
+            "commit proposed batch {} with evidence {}",
+            arg.batch_id,
+            hex::encode(arg.evidence)
+        ))
+    }
+```
+
+Following the steps to add this proposal, the first thing needed is to to submit a new `AddGenericNervousSystemFunction` SNS Proposal to support the `commit_proposed_batch` API. In our case:
+
+* validator_canister_id : opt principal = asset canister principal
+* target_canister_id : opt principal = asset canister principal
+* validator_method_name : opt text = "commit_proposed_batch"
+* target_method_name : opt text = "validate_commit_proposed_batch"
+
+If we assume the principal of a particular asset canister for an SNS is, `iywa7-ayaaa-aaaaf-aemga-cai`, the command line call would be:
+
+```bash
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
+    record {
+        title = "Add a new custom SNS function to the asset canister";          
+        url = "https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264";        
+        summary = "Adding custom function to the asset canister of SNS foo";
+        action = opt variant {
+            AddGenericNervousSystemFunction = record {
+                id = 4_003 : nat64;
+                name = "Add a new custom SNS function to the asset canistery";
+                description = opt "Add a new custom SNS function to the asset canister";
+                function_type = opt variant { 
+                    GenericNervousSystemFunction = record { 
+
+                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+
+                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        
+                        validator_method_name = opt "validate_commit_proposed_batch"; 
+                        
+                        target_method_name = opt "commit_proposed_batch";
+                    } 
+                };
+            }
+        };
+    }
+)' > message.json
+
+quill send message.json
+```
+
+
 <!-- ## SNS Proposal lifecycle
 
 
