@@ -507,7 +507,7 @@ To use a generic proposal, i.e., submit such a proposal, one uses the “execute
 
 ### `AddGenericNervousSystemFunction`
 
-This *native proposal* type is used to **add** a *generic functions* as *generic proposals* to the SNS governance system.
+This *native proposal* type is used to **add** a *generic functions* as *generic proposals* to the SNS governance system. Proposers must select and `id` to be used to identify this generic proposal, and this id is then used to follow other neurons on this proposal. Ids 0-999 are reserved for native proposal types that may be added in the future, all other ids are valid.
 
 #### Relevant type signatures
 
