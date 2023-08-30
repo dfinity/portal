@@ -7,7 +7,7 @@ module.exports = {
       zIndex: {
         1: "1",
         "-1": "-1",
-        "-10": "-10"
+        "-10": "-10",
       },
       maxWidth: {
         page: "1440px",
@@ -76,6 +76,9 @@ module.exports = {
         DEFAULT: "#3B00B9",
         60: "#6E52AA",
       },
+      page: {
+        DEFAULT: "#F1EEF5",
+      },
       transparent: "transparent",
       grey: {
         300: "#dfdfdf",
@@ -119,10 +122,13 @@ module.exports = {
     fontSize: {
       // bold
       "heading-1": ["120px", "110px"],
-      "heading-2": ["75px", "85px"],
+      "heading-2": ["75px", "75px"],
+      "heading-22": ["100px", "100px"],
+      "heading-50": ["50px", "50px"],
       "heading-60": ["60px", "70px"],
       "heading-3": ["40px", "50px"],
       "heading-4": ["32px", "42px"],
+      "heading-44": ["22px", "22px"],
       "heading-5": ["24px", "32px"],
       "heading-6": ["18px", "26px"],
       "heading-7": ["16px", "26px"],
@@ -170,13 +176,18 @@ module.exports = {
       const components = {
                 ".tw-heading-1": "@apply text-heading-1 font-bold",
                 ".tw-heading-2": "@apply text-heading-2 font-bold",
+                ".tw-heading-22": "@apply text-heading-22 font-bold",
+                ".tw-heading-50": "@apply text-heading-50 font-bold",
                 ".tw-heading-60": "@apply text-heading-60 font-bold",
                 ".tw-heading-3": "@apply text-heading-3 font-bold",
                 ".tw-heading-4": "@apply text-heading-4 font-bold",
+                ".tw-heading-44": "@apply text-heading-44 font-bold",
                 ".tw-heading-5": "@apply text-heading-5 font-bold",
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
+                ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
+
 
                 //
                 ".tw-title-navigation": "@apply text-navigation font-medium",
@@ -198,6 +209,7 @@ module.exports = {
                 '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
                 '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
+                '.button-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',

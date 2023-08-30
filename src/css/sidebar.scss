@@ -7,6 +7,10 @@ div[class*="sidebar_"] {
   border-right: var(--ic0-nav-border);
 }
 
+div[class*="sidebar_"][class*="sidebarWithHideableNavbar_"] {
+  padding-top: 0px;
+}
+
 aside[class*="docSidebarContainer_"] {
   .menu {
     padding: var(--ic0-menu-padding-top) 20px 60px

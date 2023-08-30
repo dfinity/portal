@@ -1,5 +1,6 @@
 import Link from "@docusaurus/Link";
 import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
+import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 import transitions from "@site/static/transitions.json";
 import {
   motion,
@@ -7,176 +8,166 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { Fragment, ReactNode, useRef } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
-import { OnChainBadge } from "../../Common/OnChainBadge/OnChainBadge";
 import { Facts } from "./Facts";
 import ParticleAnimation from "./ParticleAnimation";
-import RotatedHeadline from "./RotatedHeadline";
 
 const PreHero: React.FC<{
   headline: ReactNode;
-  straps: string[];
-}> = ({ headline, straps }) => {
-  const [start, setStart] = useState(false);
-  const [animate, setAnimate] = useState(true);
+  subheadline: ReactNode;
+  cta?: ReactNode;
+  ctaLink?: string;
+  cards: {
+    caption: string;
+    title: string;
+    link: string;
+  }[];
+}> = ({ headline, subheadline, cta, ctaLink, cards }) => {
+  const fontLoaded = useFontsLoaded();
 
   const darkRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(darkRef);
-
-  useEffect(() => {
-    setStart(true);
-  }, []);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: headlineRef,
-    offset: ["end end", "end start"],
+    offset: ["start start", "end start"],
   });
 
   const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
-  const blobOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const boxBlurSize = useTransform(scrollYProgress, [0.3, 0.4], [50, 0]);
 
   const blur = useMotionTemplate`blur(${blurSize}px)`;
+  const boxBlur = useMotionTemplate`blur(${boxBlurSize}px)`;
 
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <ParticleAnimation animate={animate} blur={blur}></ParticleAnimation>
+      <ParticleAnimation
+        animate={true}
+        blur={blur}
+        debugForces={false}
+      ></ParticleAnimation>
 
-      <div
-        className="overflow-hidden relative"
-        style={{
-          top: `calc(var(--ifm-navbar-height) * -1)`,
-        }}
-      >
-        <div
-          className="relative w-screen h-screen flex items-center"
-          ref={headlineRef}
-        >
-          <motion.img
-            src="data:image/svg+xml,%3Csvg viewBox='0 0 2098 1533' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_f_212_28000)'%3E%3Cpath d='M400 656.944C400 454.532 859.224 400 1157.65 400C1456.08 400 1698 564.088 1698 766.5C1698 968.912 1456.08 1133 1157.65 1133C859.224 1133 400 859.356 400 656.944Z' fill='%233B00B9' /%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_f_212_28000' x='0' y='0.00012207' width='2098' height='1533' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix' /%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape' /%3E%3CfeGaussianBlur stdDeviation='200' result='effect1_foregroundBlur_212_28000' /%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E"
-            alt=""
-            className="absolute bottom-0 translate-y-6/10 md:translate-y-7/10 left-1/2 -translate-x-1/2 max-w-none w-[800px] md:w-full h-auto pointer-events-none"
-            style={{
-              opacity: blobOpacity,
-            }}
-          ></motion.img>
-          <div className="container-10 text-center">
+      <div className="overflow-hidden relative">
+        <div className="md:pt-0 flex items-center" ref={headlineRef}>
+          <div className="container-10 text-left w-full pt-24 md:pt-[10vh]">
             <motion.div
-              className="animate-scale-in"
+              className="mb-20 md:mb-0"
               style={{
-                animationPlayState: start ? "running" : "paused",
-                opacity: blobOpacity,
+                // animationPlayState: start ? "running" : "paused",
+                animationPlayState: "paused",
+                // opacity: blobOpacity,
               }}
             >
-              <h1 className="tw-heading-3 md:tw-heading-2 lg:tw-heading-1 text-white mb-4 lg:mb-6">
+              <h1
+                className="animate-fade-up tw-heading-50 md:tw-heading-22 lg:tw-heading-1 text-white mb-5 md:mb-6 lg:mb-8"
+                style={{
+                  animationPlayState: fontLoaded ? "running" : "paused",
+                }}
+              >
                 {headline}
               </h1>
-              <p className="tw-heading-5 md:tw-heading-3 lg:tw-heading-60 text-white mb-0 grid">
-                <RotatedHeadline lines={straps} interval={2000} />
+              <p
+                className="animate-fade-up tw-heading-44 md:tw-heading-3 text-white mb-6 [animation-delay:100ms]"
+                style={{
+                  animationPlayState: fontLoaded ? "running" : "paused",
+                }}
+              >
+                {subheadline}
               </p>
-            </motion.div>
-
-            <motion.div
-              className="animate-fade-up relative"
-              style={{
-                animationDelay: "1500ms",
-                animationPlayState: start ? "running" : "paused",
-                opacity: blobOpacity,
-              }}
-            ></motion.div>
-          </div>
-
-          <div className="absolute bottom-6 right-6 md:bottom-20 md:right-20">
-            <motion.div
-              className="animate-fade-in"
-              style={{
-                animationDelay: "2000ms",
-                animationPlayState: start ? "running" : "paused",
-                opacity: blobOpacity,
-              }}
-            >
-              <OnChainBadge sizeClasses="w-20 h-20 md:w-32 md:h-32"></OnChainBadge>
+              <div
+                className="animate-fade-up [animation-delay:150ms]"
+                style={{
+                  animationPlayState: fontLoaded ? "running" : "paused",
+                }}
+              >
+                <Link className="button-outline-white" href={ctaLink}>
+                  {cta}
+                </Link>
+              </div>
             </motion.div>
           </div>
-
-          <motion.button
-            className="bg-transparent appearance-none border-none p-0 m-0 animate-fade-in left-1/2 -translate-x-1/2 bottom-[10vh] md:bottom-[5vh] absolute w-12 h-12 md:w-[70px] md:h-[70px] rounded-xl backdrop-blur-xl flex items-center justify-center"
-            onClick={() => {
-              document.getElementById("stats").scrollIntoView();
-            }}
-            style={{
-              animationDelay: "2500ms",
-              animationPlayState: start ? "running" : "paused",
-              opacity: blobOpacity,
-            }}
-            aria-label="Scroll down"
-          >
-            <svg
-              width="24"
-              height="38"
-              viewBox="0 0 24 38"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M23 25.4247L12 36L1 25.4247M12 0L12 35.8937"
-                stroke="url(#paint0_linear_127_29571)"
-                strokeWidth="1.77"
-              />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_127_29571"
-                  x1="11.5784"
-                  y1="35.8937"
-                  x2="11.5784"
-                  y2="6.09638e-09"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="white" />
-                  <stop offset="1" stopColor="white" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </motion.button>
         </div>
         <div
-          className="tw-heading-5 text-white relative py-20 md:pt-40 pb-56 md:pb-80 container-12"
+          className="container-12 text-white relative pb-56 md:pb-80 md:pt-[8.4vh]"
           ref={heroRef}
           id="stats"
         >
-          <Facts />
-          <AnimateSpawn
-            variants={transitions.container}
-            className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
-          >
-            <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
-              <Link
-                className="button-outline-white text-center sm:text-left"
-                href="https://dashboard.internetcomputer.org"
+          <div className="">
+            <motion.div
+              className="-mx-6 md:mx-0 px-6 md:rounded-[32px] pt-10 pb-30 md:p-10 text-white flex flex-col md:flex-row justify-between self-stretch md:mb-[calc(33vh-188px)] animate-fade-in"
+              style={{
+                backdropFilter: boxBlur,
+                WebkitBackdropFilter: boxBlur,
+                animationDelay: "500ms",
+                animationPlayState: fontLoaded ? "running" : "paused",
+              }}
+            >
+              {cards.map((item, index, arr) => (
+                <Fragment key={item.title}>
+                  <Link
+                    className="flex-1 text-white text-left md:text-center flex flex-row md:flex-col items-center group hover:no-underline hover:text-white animate-fade-up"
+                    style={{
+                      animationDelay: `${index * 100 + 600}ms`,
+                      animationPlayState: fontLoaded ? "running" : "paused",
+                    }}
+                    href={item.link}
+                  >
+                    <div className="flex-1">
+                      <div className="text-white/60 tw-button-sm md:tw-heading-7-caps mb-1">
+                        {item.caption}
+                      </div>
+                      <h2 className="tw-lead-lg lg:tw-title-sm mb-0 md:mb-8">
+                        {item.title}
+                      </h2>
+                    </div>
+                    <div className="rounded-full border-white/30 border-solid border-2 inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 text-white group-hover:text-infinite group-hover:bg-white group-hover:border-white transition-all duration-200">
+                      <LinkArrowRight className="w-4 md:w-auto" />
+                    </div>
+                  </Link>
+                  {index < arr.length - 1 && (
+                    <div className="w-full h-px bg-white/20 md:w-px md:h-auto my-6 md:my-0 md:mx-8"></div>
+                  )}
+                </Fragment>
+              ))}
+            </motion.div>
+            <div className="md:pt-30 -mx-6 md:mx-0 px-6 md:rounded-[32px] ">
+              <Facts />
+              <AnimateSpawn
+                variants={transitions.container}
+                className="container-10 bg-black-30 rounded-xl pb-30 pt-8 md:py-0 md:h-60 flex items-center relative overflow-hidden"
               >
-                INTERNET COMPUTER DASHBOARD
-              </Link>
-              <Link
-                href="https://wiki.internetcomputer.org/wiki/L1_comparison"
-                className="link-primary-light link-with-icon"
-              >
-                Comparison of Layer-1 blockchains
-                <LinkArrowUpRight />
-              </Link>
+                <div className="md:mx-1/10 flex flex-col justify-center gap-8 items-start">
+                  <Link
+                    className="button-outline-white text-center sm:text-left"
+                    href="https://dashboard.internetcomputer.org"
+                  >
+                    INTERNET COMPUTER DASHBOARD
+                  </Link>
+                  <Link
+                    href="https://wiki.internetcomputer.org/wiki/L1_comparison"
+                    className="link-primary-light link-with-icon"
+                  >
+                    Comparison of Layer-1 blockchains
+                    <LinkArrowUpRight />
+                  </Link>
+                </div>
+                <img
+                  src="/img/home/dashboard.svg"
+                  className="absolute right-0 bottom-0 pointer-events-none"
+                  loading="lazy"
+                  alt=""
+                ></img>
+              </AnimateSpawn>
             </div>
-            <img
-              src="/img/home/dashboard.svg"
-              className="absolute right-0 bottom-0 pointer-events-none"
-              loading="lazy"
-              alt=""
-            ></img>
-          </AnimateSpawn>
+          </div>
         </div>
       </div>
     </section>
