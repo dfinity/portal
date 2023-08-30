@@ -35,19 +35,19 @@ cd examples/motoko/vetkd
 
 For Rust deployment, use the command:
 
-```
+```sh
 export BUILD_ENV=rust
 ```
 
 For Motoko deployment, use the command:
 
-```
+```sh
 export BUILD_ENV=motoko
 ```
 
 ### Step 3: Generate build specific files using the `pre-deploy.sh` script:
 
-```
+```sh
 sh ./pre_deploy.sh
 ```
 
