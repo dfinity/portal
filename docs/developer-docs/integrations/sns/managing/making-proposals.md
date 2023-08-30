@@ -670,7 +670,7 @@ quill send message.json
 
 The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister. 
 
-The problem: To commit changes to the asset canister associated with an SNS dapp, we need to use generic proposals.
+The problem: To commit changes to the asset canister associated with a dapp under SNS control, we need to use generic proposals.
 
 To do this, the asset canister needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
 
