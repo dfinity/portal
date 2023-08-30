@@ -50,6 +50,7 @@ const redirects = `
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   #/docs/developers-guide/concepts/what-is-ic /what-is-the-ic
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
+  /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/setup/install/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/backend/candid/candid-concepts
