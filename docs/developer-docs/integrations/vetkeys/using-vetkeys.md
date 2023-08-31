@@ -19,27 +19,13 @@ This demo uses files found in [this repository](https://github.com/dfinity/examp
 git clone https://github.com/dfinity/examples/
 ```
 
-Then navigate into the directory specifically for this project. For the Rust implementation, use the command:
-
-```
-cd examples/rust/vetkd
-```
-
-For the Motoko implementation, use the command:
+Then navigate into the directory specifically for this project:
 
 ```
 cd examples/motoko/vetkd
 ```
 
 ### Step 2: Set an environmental variable. 
-
-For Rust deployment, use the command:
-
-```sh
-export BUILD_ENV=rust
-```
-
-For Motoko deployment, use the command:
 
 ```sh
 export BUILD_ENV=motoko
