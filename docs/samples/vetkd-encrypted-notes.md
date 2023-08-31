@@ -21,7 +21,7 @@ This example uses an [**insecure** implementation](https://github.com/dfinity/ex
 ## Prerequisites
 This example requires an installation of:
 
-- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/index.mdx).
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install).
 - [x] Install `node.js` to build the web frontend.
 - [x] Download the following profile files from GitHub: https://github.com/dfinity/examples/
 - [x] If deploying in Rust, run `rustup target add wasm32-unknown-unknown` before getting started.
@@ -29,14 +29,8 @@ This example requires an installation of:
 
 ### Step 1: Navigate into the folder containing the project's files:
 
-For Motoko:
 ```
 cd examples/motoko/encrypted-notes-dapp-vetkd
-```
-
-For Rust:
-```
-cd examples/rust/encrypted-notes-dapp-vetkd
 ```
 
 ### Step 2: To generate `$BUILD_ENV`-specific files (i.e., Motoko or Rust) run:
