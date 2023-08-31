@@ -26,11 +26,20 @@ This example requires an installation of:
 - [x] Download the following profile files from GitHub: https://github.com/dfinity/examples/
 - [x] If deploying in Rust, run `rustup target add wasm32-unknown-unknown` before getting started.
 - [x] For **Motoko** deployment set environmental variable: `export BUILD_ENV=motoko`
+- [x] For **Rust** deployment set environmental variable: `export BUILD_ENV=rust`
 
 ### Step 1: Navigate into the folder containing the project's files:
 
+For Motoko deployment:
+
 ```
 cd examples/motoko/encrypted-notes-dapp-vetkd
+```
+
+For Rust deployment:
+
+```
+cd examples/rust/encrypted-notes-dapp-vetkd
 ```
 
 ### Step 2: To generate `$BUILD_ENV`-specific files (i.e., Motoko or Rust) run:
