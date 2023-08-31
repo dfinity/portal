@@ -248,6 +248,7 @@ module.exports = {
                 '.blob-x-8': '@apply right-auto left-8/10 -translate-x-1/2',
                 '.blob-x-9': '@apply right-auto left-9/10 -translate-x-1/2',
                 '.blob-x-10': '@apply right-auto left-full -translate-x-1/2',
+                '.blob-x-13': '@apply right-auto left-[130%] -translate-x-1/2',
 
                 '.blob-y-0': '@apply bottom-auto top-0 -translate-y-1/2',
                 '.blob-y-1': '@apply bottom-auto top-1/10 -translate-y-1/2',

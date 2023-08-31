@@ -74,7 +74,8 @@ const hubs: Hub[] = [
   {
     name: "ICP.Hub Turkey",
     location: "Turkey, Cyprus",
-    description: "The first hub in the Middle East offering a supportive environment for developers, startups, and enthusiasts to build and deploy decentralized applications on the Internet Computer.",
+    description:
+      "The first hub in the Middle East offering a supportive environment for developers, startups, and enthusiasts to build and deploy decentralized applications on the Internet Computer.",
     image: "/img/community/icp-hub-turkey.webp",
     link: "https://linktr.ee/icphubturkey",
     coordinates: [38.9637, 35.2433],
@@ -170,13 +171,13 @@ const upcomingHubs: Hub[] = [
     image: "/img/community/eth-toronto.webp",
     link: "https://twitter.com/ETH_Toronto/status/1687096585715421184",
   },
-  // {
-  //   name: "ICP joins Coinfest Asia",
-  //   description:
-  //     "ICP advocates make an appearace at Coinfest Asia 2023 — Asia's immersive Web3 festival.",
-  //   image: "/img/community/coinfest-asia.webp",
-  //   link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
-  // },
+  {
+    name: "Internet Computer at Coinfest Asia 2023 ",
+    description:
+      "ICP.Hub Indonesia steps into the spotlight at Coinfest Asia 2023, a dynamic and immersive Web3 festival that serves as a rallying point for visionaries, innovators, and blockchain enthusiasts across Asia.",
+    image: "/img/community/coinfest-asia.webp",
+    link: "https://twitter.com/CoinfestAsia/status/1689501197642960896",
+  },
   {
     name: "Internet Computer at Web3Conf India 2023",
     description:
@@ -215,7 +216,7 @@ const upcomingHubs: Hub[] = [
   {
     name: "Internet Computer at Blockchain Week Rome 2023",
     description:
-      'ICP.Hub Italia made an impact at Blockchain Week Rome 2023, actively engaging in discussions, workshops, and networking sessions. Their presence underscored their commitment to advancing blockchain innovation and collaboration within Italy.',
+      "ICP.Hub Italia made an impact at Blockchain Week Rome 2023, actively engaging in discussions, workshops, and networking sessions. Their presence underscored their commitment to advancing blockchain innovation and collaboration within Italy.",
     image: "/img/community/icp-italia-highlight.webp",
     link: "https://twitter.com/BlockchainRome/status/1655256183895121926?s=20",
   },
@@ -225,40 +226,39 @@ const communityGallery: {
   title?: string;
   description?: string;
 }[] = [
-  { image: "img/community/image-000.webp", },
-  { image: "img/community/image-001.webp", },
-  { image: "img/community/image-002.webp", },
-  { image: "img/community/image-003.webp", },
-  { image: "img/community/image-004.webp", },
-  { image: "img/community/image-005.webp", },
-  { image: "img/community/image-006.webp", },
-  { image: "img/community/image-007.webp", },
-  { image: "img/community/image-008.webp", },
-  { image: "img/community/image-009.webp", },
-  { image: "img/community/image-010.webp", },
-  { image: "img/community/image-011.webp", },
-  { image: "img/community/image-012.webp", },
-  { image: "img/community/image-013.webp", },
-  { image: "img/community/image-014.webp", },
-  { image: "img/community/image-015.webp", },
-  { image: "img/community/image-016.webp", },
-  { image: "img/community/image-017.webp", },
-  { image: "img/community/image-018.webp", },
-  { image: "img/community/image-019.webp", },
-  { image: "img/community/image-020.webp", },
+  { image: "img/community/image-000.webp" },
+  { image: "img/community/image-001.webp" },
+  { image: "img/community/image-002.webp" },
+  { image: "img/community/image-003.webp" },
+  { image: "img/community/image-004.webp" },
+  { image: "img/community/image-005.webp" },
+  { image: "img/community/image-006.webp" },
+  { image: "img/community/image-007.webp" },
+  { image: "img/community/image-008.webp" },
+  { image: "img/community/image-009.webp" },
+  { image: "img/community/image-010.webp" },
+  { image: "img/community/image-011.webp" },
+  { image: "img/community/image-012.webp" },
+  { image: "img/community/image-013.webp" },
+  { image: "img/community/image-014.webp" },
+  { image: "img/community/image-015.webp" },
+  { image: "img/community/image-016.webp" },
+  { image: "img/community/image-017.webp" },
+  { image: "img/community/image-018.webp" },
+  { image: "img/community/image-019.webp" },
+  { image: "img/community/image-020.webp" },
 
-  { image: "img/community/image-021.webp", },
-  { image: "img/community/image-022.webp", },
-  { image: "img/community/image-023.webp", },
-  { image: "img/community/image-024.webp", },
-  { image: "img/community/image-025.webp", },
-  { image: "img/community/image-026.webp", },
-  { image: "img/community/image-027.webp", },
-  { image: "img/community/image-028.webp", },
-  { image: "img/community/image-029.webp", },
-  { image: "img/community/image-030.webp", },
-  { image: "img/community/image-031.webp", },
-  
+  { image: "img/community/image-021.webp" },
+  { image: "img/community/image-022.webp" },
+  { image: "img/community/image-023.webp" },
+  { image: "img/community/image-024.webp" },
+  { image: "img/community/image-025.webp" },
+  { image: "img/community/image-026.webp" },
+  { image: "img/community/image-027.webp" },
+  { image: "img/community/image-028.webp" },
+  { image: "img/community/image-029.webp" },
+  { image: "img/community/image-030.webp" },
+  { image: "img/community/image-031.webp" },
 ];
 
 const Globe: React.FC<{
@@ -342,34 +342,36 @@ const HubCard: React.FC<{
           />
         </svg>
       </div> */}
-      <h3 className="tw-heading-6 mb-4 mx-6 mt-8">{hub.name}</h3>
-      <p className="flex-1 tw-paragraph-sm text-black/60 mx-6 mb-3">
+      <div className="flex items-center justify-between mb-8 mx-6 mt-8 gap-4">
+        <h3 className="tw-heading-6 mb-0">{hub.name}</h3>
+        {/* <p className="flex-1 tw-paragraph-sm text-black/60 mx-6 mb-3">
         {hub.description}
-      </p>
-      <p className="mb-8 mx-6">
-        <Link className="button-round-icon" href={hub.link}>
-          <svg
-            width="16"
-            height="21"
-            viewBox="0 0 16 21"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M6.60718 13.9316H9.45173V20.3247H6.60718V13.9316Z"
-              fill="currentColor"
-            />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M0.030082 7.38579H4.86365L1.42228 4.12851L3.31864 2.19604L6.59276 5.54477V0.779785H9.43732V5.54357L12.7102 2.19484L14.6066 4.12731L11.1652 7.38458H16V10.0787H11.1351L14.5922 13.4275L12.6958 15.3154L7.9994 10.6118L3.303 15.3154L1.40663 13.4275L4.86365 10.0787H0V7.38579H0.030082Z"
-              fill="currentColor"
-            />
-          </svg>
-        </Link>
-      </p>
+      </p> */}
+        <p className="mb-0">
+          <Link className="button-round-icon" href={hub.link}>
+            <svg
+              width="16"
+              height="21"
+              viewBox="0 0 16 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M6.60718 13.9316H9.45173V20.3247H6.60718V13.9316Z"
+                fill="currentColor"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0.030082 7.38579H4.86365L1.42228 4.12851L3.31864 2.19604L6.59276 5.54477V0.779785H9.43732V5.54357L12.7102 2.19484L14.6066 4.12731L11.1652 7.38458H16V10.0787H11.1351L14.5922 13.4275L12.6958 15.3154L7.9994 10.6118L3.303 15.3154L1.40663 13.4275L4.86365 10.0787H0V7.38579H0.030082Z"
+                fill="currentColor"
+              />
+            </svg>
+          </Link>
+        </p>
+      </div>
     </motion.div>
   );
 };
@@ -482,7 +484,8 @@ const RotatingStatPanel: React.FC<{}> = () => {
       const newActiveIndexes = [...activeIndexes];
       const nextIndexToChange = rotationIndexes[rotationIndex];
       newActiveIndexes[nextIndexToChange] =
-        (newActiveIndexes[nextIndexToChange] + 1) % stats[nextIndexToChange].length;
+        (newActiveIndexes[nextIndexToChange] + 1) %
+        stats[nextIndexToChange].length;
 
       setActiveIndexes(newActiveIndexes);
       setRotationIndex((i) => (i + 1) % rotationIndexes.length);
@@ -630,9 +633,10 @@ function CommunityPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Be part of the inspiring collective of Web3 creators, builders, educators, 
-                and enthusiasts as we set out to explore how the Internet Computer can address challenges within today's blockchain ecosystem.
-               
+                Be part of the inspiring collective of Web3 creators, builders,
+                educators, and enthusiasts as we set out to explore how the
+                Internet Computer can address challenges within today's
+                blockchain ecosystem.
               </motion.p>
             </div>
             <Globe
@@ -672,8 +676,7 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Explore community initiatives 
-              
+              Explore community initiatives
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -695,9 +698,9 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Education</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Dedicated educational programs designed in cooperation with
-              Web3 learning platforms to empower talented builders and pave the
-              way for their future projects on the Internet Computer blockchain.
+              Dedicated educational programs designed in cooperation with Web3
+              learning platforms to empower talented builders and pave the way
+              for their future projects on the Internet Computer blockchain.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#education">
@@ -718,13 +721,15 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">ICP.Hubs</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-            ICP. Hubs are flourishing worldwide. With 15 hubs already established and more in the pipeline, 
-            a thriving community is actively promoting awareness and adoption, encompassing evangelism, 
-            education, strategic partnerships, and project acceleration.
+              ICP. Hubs are flourishing worldwide. With 15 hubs already
+              established and more in the pipeline, a thriving community is
+              actively promoting awareness and adoption, encompassing
+              evangelism, education, strategic partnerships, and project
+              acceleration.
             </p>
             <p className="mb-0">
               <Link className="link-primary link-with-icon" href="#hubs">
-              Find ICP.Hubs near you
+                Find ICP.Hubs near you
                 <LinkArrowDown />
               </Link>
             </p>
@@ -741,8 +746,9 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Events</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              At ICP Events, you'll find fantastic chances to gather, socialize, celebrate, 
-              expand your knowledge, and form lasting bonds with fellow visionaries.
+              At ICP Events, you'll find fantastic chances to gather, socialize,
+              celebrate, expand your knowledge, and form lasting bonds with
+              fellow visionaries.
             </p>
             <p className="mb-0">
               <Link
@@ -765,8 +771,7 @@ function CommunityPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Build the community 
-              
+              Build the community
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -788,8 +793,10 @@ function CommunityPage() {
             />
             <h3 className="tw-lead md:tw-title-sm mb-0">Launch an ICP.Hub</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-            Calling all Web3 entrepreneurs! Do you believe the Internet Computer deserves a stronger presence in your region? 
-            Share your business proposal and get ready to ignite the world with your visionary ideas. 
+              Calling all Web3 entrepreneurs! Do you believe the Internet
+              Computer deserves a stronger presence in your region? Share your
+              business proposal and get ready to ignite the world with your
+              visionary ideas.
             </p>
             <p className="mb-0">
               <Link
@@ -815,9 +822,9 @@ function CommunityPage() {
               Community Grant Program
             </h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-            For all Web3 content creators, educators, event organizers, influencers, 
-            and innovators eager to promote the Internet Computer, the Community Grant Program 
-            is your perfect opportunity.         
+              For all Web3 content creators, educators, event organizers,
+              influencers, and innovators eager to promote the Internet
+              Computer, the Community Grant Program is your perfect opportunity.
             </p>
             <p className="mb-0">
               <Link
@@ -839,12 +846,10 @@ function CommunityPage() {
               loading="lazy"
               className="w-30"
             />
-            <h3 className="tw-lead md:tw-title-sm mb-0">
-              Ambassador Program
-            </h3>
+            <h3 className="tw-lead md:tw-title-sm mb-0">Ambassador Program</h3>
             <p className="mb-0 tw-paragraph-sm text-black/60">
-              Be a strong voice advocating for the Internet Computer, 
-              its unprecented technical capabilities and ever expanding ecosystem.
+              Be a strong voice advocating for the Internet Computer, its
+              unprecented technical capabilities and ever expanding ecosystem.
             </p>
             <p className="mb-0">
               <Link className="link-primary-disabled link-with-icon">
@@ -860,14 +865,13 @@ function CommunityPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="blob blob-infinite blob-md blob-x-10 blob-y-8 z-[-1]"></div>
+          <div className="blob blob-infinite blob-md blob-x-13 sm:blob-x-10 blob-y-8 z-[-1]"></div>
           <div className="md:w-8/10">
             <motion.h2
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
               The best of ICP.Hubs
-              
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -951,8 +955,9 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                In this beginner course on Decade, you will learn essential Internet Computer
-                concepts and how to write canister smart contracts using TypeScript.
+                In this beginner course on Decade, you will learn essential
+                Internet Computer concepts and how to write canister smart
+                contracts using TypeScript.
               </p>
               <p className="mb-0">
                 <Link
@@ -973,9 +978,9 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                From core concepts, to the ICP EVM model, to hands-on 
-                experience with Rust using the Remix IDE, this Rise In bootcamp will
-                open your eyes to the potential of Web3 development.
+                From core concepts, to the ICP EVM model, to hands-on experience
+                with Rust using the Remix IDE, this Rise In bootcamp will open
+                your eyes to the potential of Web3 development.
               </p>
               <p className="mb-0">
                 <Link
@@ -998,9 +1003,10 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                A 4-week basics course in Spanish that covers canister development using Motoko, creating
-                a backend and frontend canister, and ending with building your own dapp on the Internet 
-                Computer. 
+                A 4-week basics course in Spanish that covers canister
+                development using Motoko, creating a backend and frontend
+                canister, and ending with building your own dapp on the Internet
+                Computer.
               </p>
               <p className="mb-0">
                 <Link
@@ -1023,9 +1029,10 @@ function CommunityPage() {
                 <img src="/img/community/education.svg" alt="" />
               </h3>
               <p className="flex-1 mb-0 tw-paragraph text-black/60">
-                This online course offered in Spanish is a continuation of ICP Developer I. 
-                Spend 5 days more building your project on the Internet Computer and finish the 
-                week with celebrating your first 100% on-chain dapp.
+                This online course offered in Spanish is a continuation of ICP
+                Developer I. Spend 5 days more building your project on the
+                Internet Computer and finish the week with celebrating your
+                first 100% on-chain dapp.
               </p>
               <p className="mb-0">
                 <Link
@@ -1056,9 +1063,9 @@ function CommunityPage() {
                 className="tw-paragraph md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The ICP community is currently active in around 30 countries and collaborates with up to 50 well-known 
-                crypto organizations and 32 universities. Haven't joined yet? What are you waiting for?
-                
+                The ICP community is currently active in around 30 countries and
+                collaborates with up to 50 well-known crypto organizations and
+                32 universities. Haven't joined yet? What are you waiting for?
               </motion.p>
 
               {/* <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
@@ -1090,7 +1097,6 @@ function CommunityPage() {
           <GalleryShowcase />
         </section>
 
-
         <Newsletter
           fields={[
             {
@@ -1114,9 +1120,7 @@ function CommunityPage() {
           <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
             Want to meet ICP enthusiasts IRL?
             <br />
-            <span className="text-white-60">
-              Sign up to stay connected
-            </span>
+            <span className="text-white-60">Sign up to stay connected</span>
           </h2>
         </Newsletter>
       </main>
