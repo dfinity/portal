@@ -345,6 +345,11 @@ const sidebars = {
               label: "Sharing links to dapps",
               id: "developer-docs/production/social-sharing",
             },
+                        {
+              type: "doc",
+              label: "Topping up canisters",
+              id: "developer-docs/production/topping-up-canister",
+            },
               ],
       },
     {
