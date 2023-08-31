@@ -2593,5 +2593,29 @@
     "github": "https://github.com/Web3NL/motoko-book",
     "submittableId": "34608505",
     "youtube": "https://www.youtube.com/watch?v=FktYj4UgBKU"
+  },
+  {
+    "name": "The Registry",
+    "description": "The Registry is a revolutionary platform designed with one idea in mind: to make transferring value as straightforward and intuitive as sending an email. Dive in and experience seamless transactions in the digital age.",
+    "website": "https://theregistry.app/",
+    "logo": "/img/showcase/the-registry_logo.webp",
+    "screenshots": [
+      "/img/showcase/the-registry_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "the-registry",
+    "oneLiner": "Shaping the Internet of Value, one NFT at a time",
+    "stats": "In Development",
+    "tags": [
+      "NFT",
+      "DeFi",
+      "Wallet"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/registry-labs",
+    "twitter": "https://twitter.com/the_registry_",
+    "youtube": "",
+    "submittableId": "40721077"
   }
 ]
