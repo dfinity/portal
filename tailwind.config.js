@@ -206,13 +206,14 @@ module.exports = {
                 '.button-outline': '@apply inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
                 '.button-outline-white': '@apply inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
-                '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case',
+                '.button-small': '@apply tw-title-navigation-on-page px-3 py-[6px] normal-case tracking-normal',
                 '.button-round': '@apply tw-title-navigation px-5 py-[9px] text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-round-icon': '@apply inline-flex justify-center items-center w-10 h-10 text-infinite bg-white border border-solid border-grey-300 rounded-full hover:bg-infinite hover:border-infinite hover:text-white hover:no-underline transition-all',
                 '.button-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
+                '.link-primary-disabled': '@apply tw-heading-6 text-black/60 hover:text-black/60 hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
@@ -253,6 +254,7 @@ module.exports = {
                 '.blob-x-8': '@apply right-auto left-8/10 -translate-x-1/2',
                 '.blob-x-9': '@apply right-auto left-9/10 -translate-x-1/2',
                 '.blob-x-10': '@apply right-auto left-full -translate-x-1/2',
+                '.blob-x-13': '@apply right-auto left-[130%] -translate-x-1/2',
 
                 '.blob-y-0': '@apply bottom-auto top-0 -translate-y-1/2',
                 '.blob-y-1': '@apply bottom-auto top-1/10 -translate-y-1/2',
@@ -272,6 +274,8 @@ module.exports = {
                 '.text-gradient-green': '@apply text-gradient-base bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)]',
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
+
+                '.card-white': '@apply backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl',
             };
 
       addComponents(
