@@ -10,8 +10,6 @@ We wanted to build an example of a simple (but not too simple) dapp running pure
 1. Client-side **end-to-end encryption**. 
 2. **Multi-user** and **multi-device** support.
 
-To demonstrate the potential of the IC as a platform for developing such dapps, we implemented this example using two distinct canister development kits (CDKs). The Motoko CDK allows developers to implement actor-based dapps using the [Motoko](/motoko/main/motoko.md) language. The Rust CDK allows implementing dapps in [Rust](/developer-docs/backend/rust/index.md). In both cases, canisters are compiled into WebAssembly files that are then deployed onto the IC.
-
 ## Architecture
 
 The basic functionality of the encrypted notes consists of two main components.
@@ -86,9 +84,9 @@ Once authenticated with II:
 Follow the steps below to deploy this sample project.
 
 ## Prerequisites
-- [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
+- [x] Install the [IC SDK](../developer-docs/setup/install).
 - [x] Download and install [Docker](https://docs.docker.com/get-docker/) if using the Docker option. 
-- [x] Download the GitHub repo containing this project's files: https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp. (If using Rust, use the /master/rust/encrypted-notes-dapp folder.)
+- [x] Download the GitHub repo containing this project's files: https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp.
 
 ### Step 1. Navigate inside of the project's folder:
 
@@ -96,28 +94,12 @@ Follow the steps below to deploy this sample project.
 cd examples/motoko/encrypted-notes-dapp
 ```
 
-or
-
-```
-cd examples/rust/encrypted-notes-dapp
-```
 
 ### Step 2: Set an environmental variable reflecting which backend canister you'll be using:
-For Motoko deployment run:
 
 ```
 export BUILD_ENV=motoko
 ```
-
-For Rust deployment run:
-
-```
-export BUILD_ENV=rust
-```
-
-:::info
-Building the Rust canister requires either the Rust toolchain installed on your system or Docker-backed deployment (see below).
-:::
  
 ### Step 3: Deploy locally. 
 
@@ -160,7 +142,7 @@ If this fails with "No such container", please ensure that the Docker daemon is 
 export BUILD_ENV=motoko
 ```
 
-- #### Step 2: To generate $BUILD_ENV-specific files (i.e., Motoko or Rust) run:
+- #### Step 2: To generate $BUILD_ENV-specific files run:
 
 ```
 sh ./pre_deploy.sh
@@ -208,10 +190,6 @@ Visit the URL from above and create at least one local Internet Identity.
 dfx deploy "encrypted_notes_$BUILD_ENV"
 ```
 
-:::caution
-If you are deploying the Rust canister, you should first run `rustup target add wasm32-unknown-unknown`.
-:::
-
 - #### Step 8: Update the generated canister interface bindings:
 
 ```
@@ -254,10 +232,6 @@ Prior to starting the mainnet deployment process, ensure you have your identitie
 dfx canister --network ic create "encrypted_notes_${BUILD_ENV}"
 dfx canister --network ic create www
 ```
-
-:::info
-`encrypted_notes_rust` will only work if you have the Rust toolchain installed.
-:::
 
 - #### Step 2: Build the canisters:
 
@@ -341,7 +315,7 @@ A device cannot remove itself. That is why you do not see a "remove" button for 
 
 ## Unit testing
 
-This project also demonstrates how one can write unit tests for Motoko and Rust canisters.
+This project also demonstrates how one can write unit tests for Motoko canisters.
 
 ### Motoko unit tests
 
@@ -367,22 +341,6 @@ src/encrypted_notes_motoko/test/run_tests.sh
 ```
 
 Observer `All tests passed.` at the end of the output.
-
-### Rust unit tests
-
-The unit tests are implemented in `src/encrypted_notes_rust/src/lib.rs` at the bottom.
-
-The easiest way to run all tests involves the following steps:
-
-- #### Step 1: Follow the [above instructions](#option-1-docker-deployment) for deployment via Docker with `BUILD_ENV=rust`.
-- #### Step 2: Open a new console, type `docker ps`, and copy the _`<CONTAINER ID>`_ of the `encrypted_notes` image.
-- #### Step 3: Run: `docker exec `_`<CONTAINER ID>`_` cargo test`
-- #### Step 4: Observer `test result: ok.` at the end of the output.
-
-Alternatively, one can also run unit tests after a local deployment via:
-```sh
-cargo test
-```
 
 ## Troubleshooting resources
 
@@ -412,12 +370,6 @@ Some browsers may block local resources based on invalid SSL certificates. If wh
             "main": "src/encrypted_notes_motoko/main.mo",
             "type": "motoko"
         },
-        "encrypted_notes_rust": {
-            "type": "custom",
-            "build": "cargo build --target wasm32-unknown-unknown --package encrypted_notes_rust --release",
-            "wasm": "target/wasm32-unknown-unknown/release/encrypted_notes_rust.wasm",
-            "candid": "src/encrypted_notes_rust/src/encrypted_notes_rust.did"
-        },
         "www": {
             "dependencies": ["encrypted_notes_motoko"],
             "frontend": {
@@ -446,18 +398,6 @@ Some browsers may block local resources based on invalid SSL certificates. If wh
 Motoko is the IC-specific language for building and deploying canisters. Two keys are necessary:
 `main`: The directory location of the entrypoint file of your canister.
 `type`: needs to be "motoko", informing dfx of how to properly build the canister.
-
-#### **encrypted_notes_rust**:
-Rust natively supports WebAssembly — the binary format of the Internet Computer, and there is a crate ic_cdk which allows hooks into the IC. Unlike motoko, dfx does not yet have a native Rust target that infers as much as motoko canisters. So the keys that need to be provided are:
-`type`: custom (letting dfx know that it's going to need to do some user-defined work)
-`build`: whatever command needed to turn your project into a wasm binary. In this repo it's:
-
-```sh
-cargo build --package encrypted_notes_rust --target wasm32-unknown-unknown --release
-```
-
-`wasm`: wherever the wasm binary ends up at the end of the "build" command.
-`candid`: There is not yet Rust autogeneration for candid IDL built into dfx, so DFX needs to know where you candid file for the canister built by "build" resides.
 
 #### **www**:
 frontend www canister (an "asset" canister) is the way we describe a set of files or a static website that we are deploying to the IC. Our project frontend is built in [Svelte](https://svelte.dev/). The keys we used are as follows:
