@@ -62,7 +62,7 @@ export MINT_ACC=$(dfx identity get-principal)
 dfx identity get-principal
 ```
 
-You will also need the account ID of this principal. To get this value, navigate to the URL `https://icscan.io/principal/PRINCIPAL`, where PRINCIPAL is te value returned from the previous command, `dfx identity get-principal`. Then, copy the 'Accounts' value, and run the command:
+You will also need the account ID of this principal. To get this value, navigate to the URL `https://icscan.io/principal/PRINCIPAL`, where PRINCIPAL is the value returned from the previous command, `dfx identity get-principal`. Then, copy the 'Accounts' value, and run the command:
 
 ```
 export ACCOUNT_ID=ACCOUNTS_VALUE
