@@ -595,8 +595,8 @@ function CommunityPage() {
 
   return (
     <Layout
-      title="Global Community & ICP.Hubs"
-      description={`Join an inspiring tribe of Web3 creators, builders, educators and enthusiasts on the path to explore what the Internet Computer can solve in today's blockchain ecosystem.`}
+      title="ICP Community almost everywhere"
+      description={`Be part of the inspiring collective of Web3 creators, builders, educators, and enthusiasts as we set out to explore how the Internet Computer can address challenges within today's blockchain ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-community.jpg"></ShareMeta>
@@ -626,8 +626,8 @@ function CommunityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                ICP Community <br />
-                almost everywhere
+                ICP Community<br />
+                around the world
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
