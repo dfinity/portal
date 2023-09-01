@@ -34,7 +34,7 @@
         - Declaring the `resetVotes`  method.
         - Final code.
     - Deploying the dapp locally.
-    - Adding the frontend code.
+    - Adding pre-developed frontend code.
     - Re-deploying the dapp.
 
 - [1.4: Acquiring and using cycles](1.4-using-cycles.md): 
@@ -51,5 +51,8 @@
     - Obtaining canister information.
     - Adding an identity as a controller of a canister.
     - Managing the running state of a canister.
+    - Checking the cycles balance of a canister.
+    - Topping up a canister.
+    - Getting cycles back from a canister.
     - Setting the canister's freezing threshold.
     - Deleting a canister.
