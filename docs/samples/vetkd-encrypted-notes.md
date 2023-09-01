@@ -22,13 +22,18 @@ This example requires an installation of:
 - [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install).
 - [x] Install `node.js` to build the web frontend.
 - [x] Download the following profile files from GitHub: https://github.com/dfinity/examples/
-- [x] Set environmental variable: `export BUILD_ENV=motoko`
+- [x] Set environmental variable: `export BUILD_ENV=motoko` for Motoko or `export BUILD_ENV=rust` for Rust. 
+- [x] If deploying in Rust, run `rustup target add wasm32-unknown-unknown` before getting started.
 
 ### Step 1: Navigate into the folder containing the project's files:
 
 ```
 cd examples/motoko/encrypted-notes-dapp-vetkd
 ```
+
+:::info 
+This project folder contains both Motoko and Rust code.
+:::
 
 ### Step 2: To generate `$BUILD_ENV`-specific files (i.e., Motoko or Rust) run:
 
