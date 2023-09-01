@@ -21,29 +21,25 @@ git clone https://github.com/dfinity/examples/
 
 Then navigate into the directory specifically for this project:
 
+For Motoko deployment:
+
 ```
 cd examples/motoko/vetkd
 ```
 
-### Step 2: Set an environmental variable. 
+For Rust deployment:
 
-```sh
-export BUILD_ENV=motoko
+```
+cd examples/rust/vetkd
 ```
 
-### Step 3: Generate build specific files using the `pre-deploy.sh` script:
-
-```sh
-sh ./pre_deploy.sh
-```
-
-### Step 4: Then, start a local instance of the Internet Computer:
+### Step 2: Then, start a local instance of the Internet Computer:
 
 ```sh
 dfx start --clean --background
 ```
 
-### Step 5: Ensure the Canister SDK (dfx) uses the canister IDs that are hard-coded in the Rust source code:
+### Step 3: Ensure the Canister SDK (dfx) uses the canister IDs that are hard-coded in the Rust source code:
 
 ```sh
 dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
@@ -51,13 +47,13 @@ dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
 
 Without this, the Canister SDK (dfx) may use different canister IDs for the `system_api` and `app_backend` canisters in your local environment.
 
-### Step 6: Ensure that the required node modules are available in your project directory, if needed, by running the following command:
+### Step 4: Ensure that the required node modules are available in your project directory, if needed, by running the following command:
 
 ```sh
 npm install
 ```
 
-### Step 7: Register, build and deploy the project:
+### Step 5: Register, build and deploy the project:
 
 ```sh
 dfx deploy
@@ -76,4 +72,4 @@ Backend canister via Candid interface:
  system_api: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
 ```
 
-### Step 8: Open the printed URL for the `app_frontend_js` in your browser.
+### Step 6: Open the printed URL for the `app_frontend_js` in your browser.
