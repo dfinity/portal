@@ -252,7 +252,7 @@ const navbarItems = [
       [
         menuDivider("Get Involved"),
         {
-          label: "Community Hubs",
+          label: "ICP Community",
           href: "/community?source=nav",
         },
         {
