@@ -286,7 +286,7 @@ const sidebars = {
               label: "Troubleshooting resources",
               id: "developer-docs/backend/troubleshooting",
             },
-          ], 
+          ],
         },
     {
       type: "category",
@@ -333,6 +333,16 @@ const sidebars = {
               type: "doc",
               label: "Large web assembly modules",
               id: "developer-docs/production/larger-wasm",
+            },
+            {
+              type: "doc",
+              label: "Sharing links to dapps",
+              id: "developer-docs/production/social-sharing",
+            },
+                        {
+              type: "doc",
+              label: "Topping up canisters",
+              id: "developer-docs/production/topping-up-canister",
             },
               ],
       },
@@ -500,7 +510,7 @@ const sidebars = {
         "tokenomics/nns/neurons-fund",
         "tokenomics/nns/nns-staking-voting-rewards",
     ],
-    }, 
+    },
     {
         type: "category",
         label: "Service Nervous System (SNS)",
@@ -567,6 +577,8 @@ const sidebars = {
                   id: "developer-docs/integrations/sns/launching/index",
                 },
                 items: [
+                  "developer-docs/integrations/sns/launching/launch-summary-1proposal",
+                  "developer-docs/integrations/sns/launching/launch-steps-1proposal",
                   "developer-docs/integrations/sns/launching/launch-summary",
                   "developer-docs/integrations/sns/launching/launch-steps",
                 ],
@@ -892,7 +904,7 @@ const sidebars = {
       ],
     },
   ],
-  
+
 };
 
 module.exports = sidebars;

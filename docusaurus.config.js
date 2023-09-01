@@ -98,7 +98,7 @@ const navbarItems = [
           href: "/capabilities?source=nav",
         },
         {
-          label: "Bitcoin on ICP",
+          label: "Bitcoin <> ICP",
           href: "/bitcoin-integration?source=nav",
         },
         {
@@ -251,6 +251,10 @@ const navbarItems = [
     items: intoColumns([
       [
         menuDivider("Get Involved"),
+        {
+          label: "ICP Community",
+          href: "/community?source=nav",
+        },
         {
           label: "Become a Node Provider",
           href: "/node-providers?source=nav",

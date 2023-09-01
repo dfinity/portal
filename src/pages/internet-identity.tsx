@@ -83,9 +83,18 @@ function InternetIdentityPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Easy-to-use online authentication using fingerprint sensors, Face ID and
-                other security hardware on phones and laptops — powered by WebAuthn and
-                advanced cryptography
+                <b>
+                Web 2.0 relies on usernames and passwords for authentication, in a paradigm that 
+                is insecure, inconvenient and fails to protect privacy.
+                </b>
+                <span style={{display: "block", height: "0.6em"}}></span>
+                Web3 often builds on centralized Web 2.0 infrastructure, and keeps associated tokens and NFTs 
+                on blockchains, which are controlled using cumbersome cryptographic wallets like MetaMask.
+                <span style={{display: "block", height: "0.6em"}}></span>
+                Internet Identity is an authentication system for both Web3 amalgams and full Web 3.0 combining public
+                standards such as WebAuthn and FIDO with chain key crypto technology &mdash; users conveniently create secure
+                sessions using fingerprint sensors and Face ID systems on their personal computing devices, or 
+                using external hardware wallets.
               </motion.p>
             </div>
             <motion.div
@@ -110,8 +119,7 @@ function InternetIdentityPage() {
               className="tw-heading-4 text-gradient mb-6 md:tw-heading-60 md:mb-8"
               variants={transitions.item}
             >
-              Internet Identity creates secure privacy-enhancing sessions with Web3
-              services
+              Internet Identity authentication creates secure, convenient and privacy-enhancing sessions for Web 3.0 experiences
             </motion.h2>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
