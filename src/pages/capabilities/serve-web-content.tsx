@@ -172,7 +172,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/deploy_sample_app"
+              href="/docs/current/tutorials/developer-journey/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
