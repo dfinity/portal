@@ -6,29 +6,30 @@ When developing and deploying canisters on the Internet Computer, developers nee
 
 The biggest difference between the cycles ledger and cycles wallet is that the cycles ledger is a single global ledger canister, where as the cycles wallet canister must be deployed locally to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
 
-- Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
 - Cycles wallets are a complex solution to associate cycles with principal IDs.
+- Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
 - Since the cycles wallet canister must be deployed locally, if a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost. 
 
-The cycles ledger solves these complications by providing functionality such as allowing principal IDs to hold cycles, simplifying cycle management, and reducing the risk of loosing cycles. 
+The cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
 
 The cycles ledger complies with the ICRC-2 standard. In addition to standard ledger functionality, the cycles ledger canister also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
 
-- Depositing cycles to a given principal ID.
-- Sending cycles to a given canister ID.
+- Accepting incoming cycles sent from other canisters.
+- Sending cycles to other canisters.
 - Creating new canisters using cycles.
 
 :::caution
 It is important to note that the cycles ledger does not provide the ability to make arbitrary calls to other canisters with cycles, while the cycles wallet can. This is because open call contexts may cause complications with the cycles ledger. 
 
-If you need to make arbitrary calls to other canisters with cycles, a cycles wallet should be loaded with cycles from the cycles ledger, then the cycles wallet should be used. 
+If you need to make arbitrary calls to other canisters with cycles, a cycles wallet should be loaded with cycles, such as from the cycles ledger or another canister, then the cycles wallet should be used. 
 :::
 
 ## Obtaining ICP
 
 To use the cycles ledger, first you need ICP tokens. There are a few different ways to obtain ICP tokens, such as:
 
-- Purchasing ICP tokens directly through an exchange that lists ICP tokens available for trade. To see all available places to purchase ICP tokens, check out this [page](https://coinmarketcap.com/currencies/internet-computer/markets/). 
+- Purchasing ICP tokens directly through an exchange that lists ICP tokens available for trade. To see all available places to purchase ICP tokens, check out this [page](https://coinmarketcap.com/currencies/internet-computer/markets/).
+- Trading other tokens for ICP on a decentralized exchange.
 - Receiving tokens as rewards for participating in the governance of the Internet Computer.
 - Receiving a grant of tokens through the Internet Computer Association (ICA) or the DFINITY Foundation.
 - Receiving tokens as remuneration for providing computing capacity as a node provider.
@@ -42,13 +43,13 @@ dfx identity whoami
 If you're using the default identity, you should create a new identity with the command:
 
 ```
-dfx identity new identityName
+dfx identity new IDENTITY_NAME
 ```
 
-Your identity's seed phrase will be returned. Be sure to save this in a secure location. Then, set this identity to be used by default:
+Your identity's seed phrase will be returned. Be sure to save this in a secure location. Then, set this identity to be used by the current session:
 
 ```
-dfx identity use identityName
+dfx identity use IDENTITY_NAME
 ```
 
 Then, to get the account ID for this identity, use the command:
@@ -136,7 +137,7 @@ If neither flag is used, the canister will be created on a random subnet using t
 Alternatively, if you want to use ICP instead of cycles for creating a canister, you can use the flag `--using-icp`, which will charge your principal ICP instead of cycles such as:
 
 ```
-dfx create canister CANISTER_NAME  --using-icp
+dfx create canister CANISTER_NAME --using-icp
 ```
 
 Or you can set a specific amount of ICP with the option `--using-icp-amount AMOUNT`, such as:
@@ -151,4 +152,5 @@ dfx create canister CANISTER_NAME --using-icp-amount 2.7
 Certain functions of the cycle ledger incur a fee. The full breakdown of fees can be found below:
 
 - To transfer cycles between different principal IDs using the cycles ledger, the transfer fee is 100m cycles per transaction.
+- To send cycles from the cycles ledger to another canister, the fee is 100m cycles.  
 - To create a canister, the fee is the transfer fee (100m cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](https://internetcomputer.org/docs/current/developer-docs/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 100B cycles. This means the total fee will be 100,100,000,000 cycles. 
