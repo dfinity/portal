@@ -55,7 +55,7 @@ In many cases, it is not possible to set a `CNAME` record for the top of a domai
 
 In some cases (like AWS:Route53), the format of the `TXT` record can depend on whether it is APEX or not. 
 For APEX, the name has to be empty, with the value containing the key-value pair: "_canister-id:CANISTER_ID".
-For non-apex (e.g. www), the name should be the standard “_canister-id.www” and value "CANISTER_ID"
+For non-apex (e.g. www), the name should be the standard “_canister-id.www” and value "CANISTER_ID".
 :::
 
 --------------------------------------
