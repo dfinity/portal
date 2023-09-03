@@ -72,15 +72,23 @@ function OpenChatPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  Lighting the way to an open internet
+                  Web 3.0
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  OpenChat, a fully on-chain SocialFi messaging service,
-                  decentralized using an SNS DAO and became an early "open
-                  internet service".
+                  <b>
+                  Web 3.0 builds on Web3 &mdash; now internet communities take full and exclusive control and ownership of
+                  entire internet services, from social media, networks and games, to open enterprise tech infrastructures. 
+                  </b>
+                  <span style={{display: "block", height: "0.6em"}}></span>
+                  An "open internet service" (OIS) keeps all its code, user experience, compute and data on-chain, 
+                  and must be transparently configured, updated and instructed by an advanced DAO: a public
+                  governance framework called a "service nervous system" (SNS).
+                  <span style={{display: "block", height: "0.6em"}}></span>
+                  There are no backdoors for devs, corporations or CEOs. The community is secure and sovereign,
+                  and its members become owners and part of a vast industrious virtual team. 
                 </motion.p>
               </div>
             </div>
@@ -107,9 +115,9 @@ function OpenChatPage() {
             className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-12"
             variants={transitions.item}
           >
-            Imagine a messaging service where your chat account is a crypto
-            wallet, messages are TXs stored on-chain, and only the community can
-            push updates.
+            OpenChat was the first OIS &mdash; imagine a messaging service 
+            were bitcoin can be instantly transferred in chat messages, with 
+            functionality allowing it to provide an alternative to Slack.
           </motion.p>
           <motion.p
             className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
@@ -125,7 +133,7 @@ function OpenChatPage() {
         </AnimateSpawn>
 
         {/* Hiding this section for now */}
-        {/* <AnimateSpawn
+        <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
           className="container-10 mt-24 md:mt-30 "
@@ -159,7 +167,7 @@ function OpenChatPage() {
               </div>
             </div>
           </div>
-        </AnimateSpawn> */}
+        </AnimateSpawn>
 
         <section className="container-10 mt-24 md:mt-40">
           <div className="flex flex-col gap-16 md:gap-0">

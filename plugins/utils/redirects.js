@@ -1,4 +1,13 @@
 const redirects = `
+
+  # external redirects (/from -> https://.../to/)
+  /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
+  /live-sessions https://dfinity.org/events-and-news
+
+  # .html file internal redirects (/../from.html -> to)
+  /docs/developers-guide/working-with-canisters.html /docs/current/developer-docs/setup/manage-canisters
+
+  # regular internal redirects (from -> to)
   /docs/current/references/motoko-ref/* /docs/current/motoko/main/base/:splat
   /features/green /capabilities/sustainability
   /features /capabilities
@@ -41,6 +50,7 @@ const redirects = `
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   #/docs/developers-guide/concepts/what-is-ic /what-is-the-ic
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
+  /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/setup/install/
   
   /docs/candid-guide /docs/current/developer-docs/backend/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/backend/candid/candid-concepts
@@ -95,24 +105,23 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
-  /docs/developers-guide/working-with-canisters.html /docs/current/developer-docs/setup/manage-canisters
   
-  /docs/quickstart/1-quickstart /docs/current/tutorials/deploy_sample_app
-  /docs/quickstart/2-quickstart /docs/current/tutorials/deploy_sample_app
-  /docs/quickstart/3-quickstart /docs/current/tutorials/deploy_sample_app
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/deploy_sample_app
-  /docs/quickstart/4-quickstart /docs/current/tutorials/deploy_sample_app
-  /docs/quickstart/5-quickstart /docs/current/tutorials/deploy_sample_app
+  /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/3-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-journey/
+  /docs/quickstart/4-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/5-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/quickstart/local-quickstart /docs/current/developer-docs/setup/deploy-locally
   /docs/quickstart/network-quickstart /docs/current/developer-docs/setup/deploy-mainnet
-  /docs/quickstart/quickstart-intro /docs/current/tutorials/deploy_sample_app
+  /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-journey/
   /docs/quickstart/newcomers /docs/current/home
-  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/deploy_sample_app
-  /developers-guide/quickstart /docs/current/tutorials/deploy_sample_app
+  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-journey/
+  /developers-guide/quickstart /docs/current/tutorials/developer-journey/
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/setup/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/setup/install/windows-wsl
-  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/deploy_sample_app
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
   /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
@@ -125,6 +134,7 @@ const redirects = `
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
   /docs/current/references/security/* /docs/current/developer-docs/security/:splat
+  /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/concepts/:splat
@@ -150,23 +160,45 @@ function isSplat(redirect) {
   return redirect[0].includes("/*");
 }
 
+function isExternal(redirect) {
+  return redirect[1].startsWith("http");
+}
+
+function isExactUrl(redirect) {
+  return redirect[0].endsWith(".html");
+}
+
+function ruleToRedirect(rule) {
+  const from = rule[0].replace(/(.+)\/$/, "$1");
+  const to = rule[1];
+  return {
+    from,
+    to,
+  };
+}
+
 exports.getRedirects = function () {
   return redirects
-    .filter((r) => !isSplat(r))
-    .map((r) => {
-      const from = r[0].replace(/(.+)\/$/, "$1");
-      const to = r[1];
-      return {
-        from,
-        to,
-      };
-    });
+    .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+    .map(ruleToRedirect);
+};
+
+exports.getExternalRedirects = function () {
+  return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
+};
+
+exports.getExactUrlRedirects = function () {
+  return redirects
+    .filter((r) => !isExternal(r) && isExactUrl(r))
+    .map(ruleToRedirect);
 };
 
 exports.getSplatRedirects = function (existingUrl) {
   const urls = [];
 
-  for (const redirect of redirects.filter(isSplat)) {
+  for (const redirect of redirects.filter(
+    (r) => isSplat(r) && !isExternal(r)
+  )) {
     const trimmedSource = redirect[0].replace("/*", "/");
 
     if (redirect[1].includes(":splat")) {

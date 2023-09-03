@@ -66,7 +66,7 @@ Click **NEXT STEP** to continue.
 To create a new identity, use the command:
 
 ```
-dfx identity create MyNewIdentity
+dfx identity new MyNewIdentity
 ```
 
 Your identity's seed phrase will be returned. Be sure to save this in a secure location.
