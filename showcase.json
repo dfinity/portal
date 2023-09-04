@@ -2630,5 +2630,19 @@
     "github": "https://github.com/Web3NL/motoko-book",
     "submittableId": "34608505",
     "youtube": "https://www.youtube.com/watch?v=FktYj4UgBKU"
+  },
+  {
+    "id": "infinitinote",
+    "name": "InfinitiNote",
+    "oneLiner": "InfinitiNote: Where the Unbounded Universe of Blockchain and AI Enhances Your Notes with Endless Insights.",
+    "website": "https://jqajc-hiaaa-aaaak-qck5a-cai.icp0.io/#/",
+    "tags": ["Tools / Infrastructure"],
+    "description": "InfinitiNote is an ICP-based AI-Enabled Note taking application, that allows users to create Notebooks, store Notes, and collaboratively edit in real-time with capability for file uploads and enhacned by LLAMA AI.",
+    "stats": "Just Launched",
+    "logo": "/img/showcase/in_logo.jpg", 
+    "usesInternetIdentity": "true",
+    "github": "https://github.com/hafezrouzati/infinitinote",
+    "submittableId": "32966927",
+    "youtube": "https://www.youtube.com/watch?v=XTDznhHdeOE"
   }
 ]
