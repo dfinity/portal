@@ -612,7 +612,7 @@
       "DeFi"
     ],
     "description": "StakedICP is the liquid-staking protocol revolutionizing staking on the Internet Computer, putting control in investors' hands. ICP is staked in the NNS DAO, and stakers receive rewards just by holding the stICP token. The stICP token is DeFi-compatible, to support protocols building on the Internet Computer, and always fully-backed by ICP staked in the NNS.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "website": "https://stakedicp.com",
     "github": "https://github.com/AegirFinance/StakedICP",
     "twitter": "https://twitter.com/StakedICP",
