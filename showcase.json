@@ -2644,5 +2644,28 @@
     "github": "https://github.com/hafezrouzati/infinitinote",
     "submittableId": "32966927",
     "youtube": "https://www.youtube.com/watch?v=XTDznhHdeOE"
-  }
+  },
+  {
+  "name": "NOBLEBLOCKS",
+  "description": "NobleBlocks, a DeSci project, aims to reshape scientific publishing using the Internet Computer's decentralized technology. We focus on fair and transparent reviewing and editing processes, guided by community-led DAOs. Our objective is to make scientific research more efficient and easily accessible to all.",
+  "website": "https://www.nomadleadgen.com",
+  "logo": "/img/showcase/nobleblocks_logo.webp",
+  "screenshots": [
+    "/img/showcase/nobleblocks_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "nobleblocks",
+  "oneLiner": "A Community-Driven DeSci Project for Scientific Publishing",
+  "stats": "No stats yet",
+  "tags": [
+    "SocialFi",
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": true,
+  "github": "",
+  "twitter": "https://twitter.com/nobleblocks",
+  "youtube": "",
+  "submittableId": "36650737"
+}
 ]
