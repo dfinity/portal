@@ -21,7 +21,7 @@ The cycles ledger complies with the ICRC-2 standard. In addition to standard led
 :::caution
 It is important to note that the cycles ledger does not provide the ability to make arbitrary calls to other canisters with cycles, while the cycles wallet can. This is because open call contexts may cause complications with the cycles ledger. 
 
-If you need to make arbitrary calls to other canisters with cycles, a cycles wallet should be loaded with cycles, such as from the cycles ledger or another canister, then the cycles wallet should be used. 
+If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used as before. The cycles ledger can be used to load the cycles wallet with cycles.
 :::
 
 ## Obtaining ICP
