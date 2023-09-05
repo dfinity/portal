@@ -46,6 +46,8 @@ If you're using the default identity, you should create a new identity with the 
 dfx identity new IDENTITY_NAME
 ```
 
+Replace `IDENTITY_NAME` with the an identity name of your choice, such as 'MyIdentity`.
+
 Your identity's seed phrase will be returned. Be sure to save this in a secure location. Then, set this identity to be used by the current session:
 
 ```
