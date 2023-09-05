@@ -130,6 +130,29 @@ actor {
 //         243.5678 <-- volume of ICP traded
 //     ],
 // ]
+
+  //function to transform the response
+  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+      let transformed : Types.CanisterHttpResponsePayload = {
+          status = raw.response.status;
+          body = raw.response.body;
+          headers = [
+              {
+                  name = "Content-Security-Policy";
+                  value = "default-src 'self'";
+              },
+              { name = "Referrer-Policy"; value = "strict-origin" },
+              { name = "Permissions-Policy"; value = "geolocation=(self)" },
+              {
+                  name = "Strict-Transport-Security";
+                  value = "max-age=63072000";
+              },
+              { name = "X-Frame-Options"; value = "DENY" },
+              { name = "X-Content-Type-Options"; value = "nosniff" },
+          ];
+      };
+      transformed;
+  };
   
   public func get_icp_usd_exchange() : async Text {
 
@@ -152,6 +175,12 @@ actor {
         { name = "User-Agent"; value = "exchange_rate_canister" },
     ];
 
+    // 2.2.1 Transform context
+    let transform_context : Types.TransformContext = {
+      function = transform;
+      context = Blob.fromArray([]);
+    };
+
     // 2.3 The HTTP request
     let http_request : Types.HttpRequestArgs = {
         url = url;
@@ -159,7 +188,7 @@ actor {
         headers = request_headers;
         body = null; //optional for request
         method = #get;
-        transform = null; //optional for request
+        transform = ?transform_context;
     };
 
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
@@ -171,7 +200,7 @@ actor {
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     //"Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
-    Cycles.add(17_000_000_000);
+    Cycles.add(20_949_972_000);
     
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, we can just call the IC management canister with HTTPS outcalls below
@@ -275,9 +304,20 @@ module Types {
         context : Blob;
     };
 
-    //2.2 This type describes the arguments the transform function needs
+    //2.2 These type describes the arguments the transform function needs
     public type TransformArgs = {
         response : HttpResponsePayload;
+        context : Blob;
+    };
+
+    public type CanisterHttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    public type TransformContext = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
     };
 
@@ -286,6 +326,7 @@ module Types {
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
+
 }
 ```
 
