@@ -21,7 +21,7 @@ At a low level, the [SNS local testing repository](../testing/testing-locally.md
 - [x] Install `sns` CLI.
 
 :::note
-The version of the sns CLI that is bundled with your dfx version may not have the latest commands described in the Usage section. If needed, it is recommended to build and use the sns CLI tool yourself.
+The version of the sns CLI that is bundled with your dfx version may not have the latest commands described in the **Usage** section. If needed, it is recommended to build and use the sns CLI tool yourself.
 :::
 
 ```bash
