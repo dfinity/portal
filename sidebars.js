@@ -836,7 +836,7 @@ const sidebars = {
         "motoko/main/upgrades",
       ],
     },
-    "motoko/course",
+    "motoko/tutorial",
     {
       type: "category",
       label: "Motoko base library reference",

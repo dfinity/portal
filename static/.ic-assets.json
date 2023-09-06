@@ -12,7 +12,8 @@
       "Referrer-Policy": "same-origin",
       "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
       "X-Content-Type-Options": "nosniff",
-      "X-XSS-Protection": "1; mode=block"
+      "X-XSS-Protection": "1; mode=block",
+      "Permissions-Policy": "fullscreen=(self \"https://motoko.agorapp.dev/\")"
     }
   }
 ]
