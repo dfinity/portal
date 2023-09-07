@@ -49,7 +49,7 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 **When can we expect the project to be completed?**
 
-*By the end of 2023*
+*By the end of 2023.*
 
 **The Ethereum integration is extremely exciting, and I'm eager to see what it unlocks for developers! Where should developers look for the latest Consensus updates? (Forum, Discord, etc).**
 
