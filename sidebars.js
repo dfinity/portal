@@ -800,6 +800,7 @@ const sidebars = {
     "references/glossary",
   ],
   motoko: [
+    "motoko/main/motoko",
     "motoko/tutorial",
     {
       type: "category",
