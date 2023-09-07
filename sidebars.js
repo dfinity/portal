@@ -800,6 +800,7 @@ const sidebars = {
     "references/glossary",
   ],
   motoko: [
+    "motoko/tutorial",
     {
       type: "category",
       label: "Motoko developer guide",
@@ -836,7 +837,6 @@ const sidebars = {
         "motoko/main/upgrades",
       ],
     },
-    "motoko/tutorial",
     {
       type: "category",
       label: "Motoko base library reference",
