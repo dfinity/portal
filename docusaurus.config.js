@@ -527,7 +527,7 @@ const config = {
             items: [
               {
                 label: "Internet Computer Association",
-                href: "https://association.internetcomputer.org/",
+                href: "https://lbbne-haaaa-aaaam-absda-cai.icp0.io/",
               },
               {
                 label: "Wiki",

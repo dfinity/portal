@@ -12,20 +12,16 @@ This article lists the technical commands and actions that a developer needs to 
 
 At a low level, the [SNS local testing repository](../testing/testing-locally.md) guides you through the same, with the difference that the commands target the canisters on the mainnet.
 
-## Requirements
+## Prerequisites:
 
-### 1. IC SDK
+- [x] Install the IC SDK. See: [installing the IC SDK](../../../setup/install).
 
-See: [installing the IC SDK](../../../setup/install).
+- [x] Install `ic-admin`. See: [installing the `ic-admin`](../../../setup/ic-admin.md).
 
-### 2. `ic-admin`
-
-See: [installing the `ic-admin`](../../../setup/ic-admin.md).
-
-### 3. `sns` CLI
+- [x] Install `sns` CLI.
 
 :::note
-The version of the sns CLI that is bundled with your dfx version may not have the latest commands described in the Usage section. If needed, it is recommended to build and use the sns CLI tool yourself.
+The version of the sns CLI that is bundled with your dfx version may not have the latest commands described in the **Usage** section. If needed, it is recommended to build and use the sns CLI tool yourself.
 :::
 
 ```bash
@@ -36,18 +32,16 @@ ls bazel-bin/rs/sns/cli/sns
 ```
 ## Stages
 
-### 1. Dapp developers choose the initial parameters of the SNS for a dapp
+### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
 
 Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
 
 :::info 
-
 These parameters also define the initial neurons with which the SNS governance canister will be installed. The launch stages 5 and 6 require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Note that some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched. Therefore, neurons that are controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process. 
 This is also relevant for other SNS proposals that can already be used during the launch, for example to upgrade the dapp canister(s) or registering custom proposals for that DAO.
-
 :::
 
-### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet
+### 2. Dapp developers submit NNS proposal so they can deploy to the SNS subnet.
 
 Anyone who owns an NNS neuron with enough stake can submit a proposal
 that lists a principal wallet in [SNS-W](../introduction/sns-architecture.md#SNS-W) who can then deploy the SNS canisters.
@@ -65,9 +59,9 @@ ic-admin  \
 * One can substitute `WALLET` with the principal in question.
 * One can substitute `NETWORK_URL` with `https://nns.ic0.app`.
 
-### 3. Proposal #1 (of 3) is passed or rejected
+### 3. Proposal #1 (of 3) is passed or rejected.
 
-### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet
+### 4. Dapp developers trigger the SNS canisters to be created on SNS subnet.
 
 After the wallet canister is listed in SNS-W, 
 the SNS canisters are created triggered by a manual call to SNS-W.
@@ -78,7 +72,7 @@ The `sns CLI` command to trigger the creation of SNS canisters on the SNS subnet
 sns deploy --network "${NETWORK}" --init-config-file "${CONFIG}" --save-to "sns_canister_ids.json" 
 ```
 
-### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS
+### 5. Dapp developers submit an SNS proposal to handover control of their dapp to the SNS.
 
 In this step, the developers will hand over the control of the dapp canister(s) to the newly deployed SNS root canister. To make sure that the SNS root is also aware of the dapp canister(s), the devs then also "register" the dapp in the SNS, by an SNS proposal.
 
@@ -123,17 +117,17 @@ Where the parameters are:
 
 * `DEVELOPER_NEURON_ID`=`<your-developer-neuron-ID>`
 
-### 6. Proposal #2 (of 3) is passed or rejected
+### 6. Proposal #2 (of 3) is passed or rejected.
 
 Dapp developers vote with their initial SNS neurons. Depending on the initial neuron distirbution, this can also include other voters that have initial neurons. 
 
 Note that at this stage it is not possible to use the NNS frontend dapp to vote on SNS proposals - the NNS FE dapp will only show SNS neurons and proposals for SNSs that are fully launched. Therefore, there are two options how this proposal can be adopted:
 
-1) The proposal is submitted by a neuron that has at least 3% of the voting power and one waits for the voting period of 4 days to be complete. If no other neurons vote, the proposal will then be adopted after this voting period.
+1. The proposal is submitted by a neuron that has at least 3% of the voting power and one waits for the voting period of 4 days to be complete. If no other neurons vote, the proposal will then be adopted after this voting period.
 
-2) The initial neurons are set up in such a way that the majority of the voting power is in neurons that are controlled via quill. In this case, other neurons can vote in this step and the proposal can potentially pass earlier if an absolute majority of the voting power is reached.
+2. The initial neurons are set up in such a way that the majority of the voting power is in neurons that are controlled via quill. In this case, other neurons can vote in this step and the proposal can potentially pass earlier if an absolute majority of the voting power is reached.
 
-### 7. Proposal to start the decentralization swap
+### 7. Proposal to start the decentralization swap.
 
 After the SNS canisters are deployed and the dapp's control is handed over to the SNS, an NNS proposal starts the swap.
 
@@ -141,7 +135,6 @@ Again, anyone who owns an NNS neuron with enough stake can submit this proposal.
 Of course it is crucial to set the right parameters in this proposal.
 
 :::info
-
 Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
 :::
 
@@ -163,15 +156,15 @@ ic-admin   \
    --summary "Decentralize this SNS"
 ```
 
-### 8. Proposal #3 (of 3) is passed or rejected
+### 8. Proposal #3 (of 3) is passed or rejected.
 
 Nothing technical for dapp developers to do. Community votes.
 
-### 9. SNS participants participate in the decentralization swap
+### 9. SNS participants participate in the decentralization swap.
 
 Nothing technical for dapp developers to do. Community participates in the swap.
 
-### 10. SNS canisters become SNS DAO
+### 10. SNS canisters become SNS DAO.
 
 When the swap ends, either because its deadline is reached or because the maximum
 ICP have been collected, its finalization has to be triggered by a manual call

@@ -2,5 +2,17 @@
   {
     "match": ".well-known",
     "ignore": false
+  },
+  {
+    "match": "**/*",
+    "allow_raw_access": true,
+    "headers": {
+      "Content-Security-Policy": "default-src 'self';script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.matomo.cloud;connect-src 'self' https://*.ic0.app https://ic0.app https://icp0.io https://*.icp0.io https://internetcomputer.matomo.cloud https://cdn.matomo.cloud ic-api.internetcomputer.org mxzaz-hqaaa-aaaar-qaada-cai.raw.ic0.app https://data.jsdelivr.com https://cdn.jsdelivr.net;img-src 'self' data: https:;style-src * 'unsafe-inline';style-src-elem * 'unsafe-inline';font-src * data:;object-src 'none';base-uri 'self';frame-ancestors 'none';form-action 'self' https://dfinity.us16.list-manage.com https://internetcomputer.org;upgrade-insecure-requests;",
+      "X-Frame-Options": "DENY",
+      "Referrer-Policy": "same-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block"
+    }
   }
 ]

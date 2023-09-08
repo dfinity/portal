@@ -124,9 +124,9 @@ function InternetIdentityPage() {
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
                 className="link-primary link-with-icon"
-                href="https://internetcomputer.org/how-it-works#Web-access"
+                href="https://internetcomputer.org/how-it-works/web-authentication-identity/"
               >
-                <span>Learn how it works</span>
+                <span>Learn how to create one</span>
                 <IconExternalLink></IconExternalLink>
               </Link>
             </motion.p>
@@ -218,7 +218,7 @@ function InternetIdentityPage() {
                   className="link-primary link-with-icon mt-6"
                   href="https://identity.ic0.app/"
                 >
-                  <span>Learn how to create one</span>
+                  <span>Create one</span>
                   <IconExternalLink></IconExternalLink>
                 </Link>
               </motion.div>
