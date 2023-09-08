@@ -9,7 +9,7 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 **To get started, on a fundamental level, what is consensus?**
 
-*On IC, we use replication to enable a secure and trustless computation on independently owned and controlled hardware resources (we call them "replicas"). The consensus layer of ICP is responsible for coordination of these replicas by making them agree on inputs to be processed, their order, and on the obtained computational results. By assuming that strictly less than ⅓ of these replicas are malicious or faulty, we can achieve the Byzantine Fault Tolerance on IC meaning that the system is able operate even if some of its replicas fail or act maliciously.*
+*[The IC uses replication] to enable a secure and trustless computation on independently owned and controlled hardware resources (they are called "replicas"). The consensus layer of ICP is responsible for coordination of these replicas by making them agree on inputs to be processed, their order, and on the obtained computational results. By assuming that strictly less than ⅓ of these replicas are malicious or faulty, we can achieve the Byzantine Fault Tolerance on IC meaning that the system is able operate even if some of its replicas fail or act maliciously.*
 
 **Does the consensus team only focus on the consensus layer, or are there other responsibilities of the consensus team?**
 
@@ -33,7 +33,7 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 **It sounds like consensus definitely contributes to the developer experience! In contrast to developers and end users who don't interact directly with the consensus layer, nodes and node providers directly interact with consensus. Could you give us a bit more insight into how nodes participate in consensus?**
 
-*Once a node registers itself with IC and gets assigned to a subnet, it pulls a catch up package we mentioned above. This catch-up package is signed by the subnet and can be verified against the subnet's public key. It also contains a reference to a state which has to be pulled from node's peers. Once the node has the state available locally and all new finalized blocks, it can start participating in the consensus by creating and validating new blocks.*
+*Once a node registers itself with IC and gets assigned to a subnet, it pulls a catch-up package we mentioned above. This catch-up package is signed by the subnet and can be verified against the subnet's public key. It also contains a reference to a state which has to be pulled from node's peers. Once the node has the state available locally and all new finalized blocks, it can start participating in the consensus by creating and validating new blocks.*
 
 **If a node doesn’t act honestly during consensus, what happens to it?**
 
