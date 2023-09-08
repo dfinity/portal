@@ -218,7 +218,7 @@ function InternetIdentityPage() {
                   className="link-primary link-with-icon mt-6"
                   href="https://identity.ic0.app/"
                 >
-                  <span>Learn how to create one</span>
+                  <span>Create one</span>
                   <IconExternalLink></IconExternalLink>
                 </Link>
               </motion.div>
