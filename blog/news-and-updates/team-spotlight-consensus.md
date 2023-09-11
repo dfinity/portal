@@ -5,6 +5,7 @@ tags: [Team spotlight]
 image: /img/blog/dev-update-blog-consensus-1.jpg
 ---
 
+![Consensus team spotlight](../../static/img/blog/dev-update-blog-consensus-1.jpg)
 Hello everyone and welcome to another installment of the DFINITY team spotlight! For this issue, we're going to be taking a deep dive into the team behind one of the most important, fundamental components of any blockchain platform: the consensus protocol. What is a consensus protocol, and how does consensus on the Internet Computer happen? Let's find out!
 
 **To get started, on a fundamental level, what is consensus?**
