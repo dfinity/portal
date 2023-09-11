@@ -17,9 +17,9 @@ by configuring it to point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-
 
 ### Apex
 To configure the apex of the domain (e.g., `ic-domain.live`), add the following records by clicking on **Add new record**:
-  * Create an `ALIAS` Record for which you set the host field to `@` and the target field to `icp1.io`;
-  * Create a `CNAME` Record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`;
-  * Create a `TXT` Record for which you set the host field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+  * Create an `ALIAS` record for which you set the host field to `@` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`;
+  * Create a `TXT` record for which you set the host field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
   The resulting configuration should look similar to the following screenshot:
 
@@ -27,9 +27,9 @@ To configure the apex of the domain (e.g., `ic-domain.live`), add the following 
 
 ### Subdomain
 To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `icp1.io`;
-  * Create a `CNAME` Record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.live.icp2.io`;
-  * Create a `TXT` Record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.live.icp2.io`;
+  * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
   The resulting configuration should look similar to the following screenshot:
 
@@ -112,7 +112,7 @@ for the apex of a domain.
 By directly configuring the IP addresses of the boundary nodes, you always need to make sure
 to keep your DNS records up-to-date. If a boundary node is retired or changes its IP
 addresses, you need to remove or update your DNS records. Otherwise, you risk that
-your dapp is not accessible anymore.
+your dapp becomes inaccessible.
 :::
 
   - #### Step 1: First, you need to look up the IP addresses of the boundary nodes (`icp1.io`).
@@ -128,7 +128,7 @@ your dapp is not accessible anymore.
     * Create an `AAAA` record for each IPv6-address by setting the name field
     to "@" and the value field to the IPv6-address (e.g., `2a0b:21c0:b002:2:5000:59ff:fead:c233`);
     * Create a `CNAME` record for which you set the name field to `_acme-challenge` and the value field to `_acme-challenge.ic-domain.online.icp2.io`;
-    * Create a `TXT` Record for which you set the name field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+    * Create a `TXT` record for which you set the name field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
     The resulting configuration should look similar to the following screenshot:
 
@@ -136,9 +136,9 @@ your dapp is not accessible anymore.
 
 ### Subdomain
 To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `icp1.io`;
-  * Create a `CNAME` Record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.online.icp2.io`;
-  * Create a `TXT` Record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.online.icp2.io`;
+  * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
   The resulting configuration should look similar to the following screenshot:
 
@@ -155,8 +155,8 @@ point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 ### Apex
 
-Unfortunately, Amazon Route 53 does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain, we need to make use of a workaround.
-For instructions take a look at the steps outline for GoDaddy under ["Rely on an alternative DNS provider"](#rely-on-an-alternative-dns-provider-recommended).
+Unfortunately, Amazon Route 53 does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain. We need to make use of a workaround.
+For instructions take a look at the steps outlined for GoDaddy under ["Rely on an alternative DNS provider"](#rely-on-an-alternative-dns-provider-recommended).
 
 ### Subdomain
 
@@ -166,9 +166,9 @@ For instructions take a look at the steps outline for GoDaddy under ["Rely on an
 
 - #### Step 3: Configure your DNS records.
 To configure a subdomain (e.g., `example.ic-domain.net`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `icp1.io`;
-  * Create a `CNAME` Record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.net.icp2.io`;
-  * Create a `TXT` Record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.net.icp2.io`;
+  * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
   The resulting configuration should look similar to the following screenshot:
 
   ![DNS Configuration for `example.ic-domain.net` on Amazon Route 53](route53-subdomain.png)
