@@ -2,7 +2,7 @@
 
 ## Overview
 This guide explains how to configure the DNS records of your domain for three popular
-registrars: [Namecheap](#namecheap), [Amazon Route 53](#amazonroute53), and [GoDaddy](#godaddy).
+registrars: [Namecheap](#namecheap), [GoDaddy](#godaddy), and [Amazon Route 53](#amazonroute53).
 
 ## Namecheap
 
@@ -16,7 +16,7 @@ by configuring it to point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-
 - #### Step 2: Open the **Advanced DNS** tab.
 
 ### Apex
-To configure the apex of the domain (e.g., `ic-domain.live`), add the following records byclicking on **Add new record**:
+To configure the apex of the domain (e.g., `ic-domain.live`), add the following records by clicking on **Add new record**:
   * Create an `ALIAS` Record for which you set the host field to `@` and the target field to `icp1.io`;
   * Create a `CNAME` Record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`;
   * Create a `TXT` Record for which you set the host field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
@@ -37,20 +37,6 @@ To configure a subdomain (e.g., `example.ic-domain.live`), add the following rec
 
 Now, you are all set to register your custom domain with the boundary nodes and you can continue with step 2 of the [general custom domains instructions](custom-domain.md#custom-domains-on-the-boundary-nodes).
 
-## Amazon Route 53
-
-In the following, we explain how you can configure your domain on Amazon Route 53
-to point to a canister hosted on the Internet Computer. As an illustration, we
-configure the domain `ic-domain.net` and the subdomain `example.ic-domain.net` to
-point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
-
-### Apex
-- #### Step 1: After purchasing your domain on Route 53, open your account and navigate to **My Products**.
-
-### Subdomain
-
-
-Now, you are all set to register your custom domain with the boundary nodes and you can continue with step 2 of the [general custom domains instructions](custom-domain.md#custom-domains-on-the-boundary-nodes).
 ## GoDaddy
 
 In the following, we explain how you can configure your domain on GoDaddy to
@@ -70,8 +56,8 @@ Unfortunately, GoDaddy does not support to configure a `CNAME` record (or one of
 
   There are mainly two approaches:
 
-  - _recommended_ Relying on a different DNS provider (e.g., Cloudflare).
-  - Directly configuring the IP addresses of the boundary nodes.
+  - [_recommended_: Relying on a different DNS provider (e.g., Cloudflare).](#rely-on-an-alternative-dns-provider-recommended)
+  - [Directly configuring the IP addresses of the boundary nodes.](#directly-configure-the-ip-addresses)
 
 Directly configuring the IP addresses is simpler compared to relying on another
 DNS provider, but is less resilient and performant. Therefore, we advise you to use
@@ -120,7 +106,14 @@ for the apex of a domain.
 
   ![DNS Configuration for `ic-domain.online` on Cloudflare](cloudflare-apex.png)
 
-#### Directly configure the IP addresses
+#### Directly configure the IP addresses (at your own risk)
+
+:::caution
+By directly configuring the IP addresses of the boundary nodes, you always need to make sure
+to keep your DNS records up-to-date. If a boundary node is retired or changes its IP
+addresses, you need to remove or update your DNS records. Otherwise, you risk that
+your dapp is not accessible anymore.
+:::
 
   - #### Step 1: First, you need to look up the IP addresses of the boundary nodes (`icp1.io`).
   To this end, use an online DNS lookup service (e.g., [nslookup.io](https://nslookup.io))
@@ -150,5 +143,34 @@ To configure a subdomain (e.g., `example.ic-domain.live`), add the following rec
   The resulting configuration should look similar to the following screenshot:
 
   ![DNS Configuration for `example.ic-domain.online` on GoDaddy](godaddy-subdomain.png)
+
+Now, you are all set to register your custom domain with the boundary nodes and you can continue with step 2 of the [general custom domains instructions](custom-domain.md#custom-domains-on-the-boundary-nodes).
+
+## Amazon Route 53
+
+In the following, we explain how you can configure your domain on Amazon Route 53
+to point to a canister hosted on the Internet Computer. As an illustration, we
+configure the domain `ic-domain.net` and the subdomain `example.ic-domain.net` to
+point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+
+### Apex
+
+Unfortunately, Amazon Route 53 does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain, we need to make use of a workaround.
+For instructions take a look at the steps outline for GoDaddy under ["Rely on an alternative DNS provider"](#rely-on-an-alternative-dns-provider-recommended).
+
+### Subdomain
+
+- #### Step 1: After purchasing your domain on Route 53, navigate to **Hosted zones** and click on your domain.
+
+- #### Step 2: Click on the domain to open the DNS settings.
+
+- #### Step 3: Configure your DNS records.
+To configure a subdomain (e.g., `example.ic-domain.net`), add the following records by clicking on **Add new record**:
+  * Create a `CNAME` Record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` Record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.net.icp2.io`;
+  * Create a `TXT` Record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+  The resulting configuration should look similar to the following screenshot:
+
+  ![DNS Configuration for `example.ic-domain.net` on Amazon Route 53](route53-subdomain.png)
 
 Now, you are all set to register your custom domain with the boundary nodes and you can continue with step 2 of the [general custom domains instructions](custom-domain.md#custom-domains-on-the-boundary-nodes).
