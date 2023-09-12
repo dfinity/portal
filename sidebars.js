@@ -85,6 +85,7 @@ const sidebars = {
         "samples/periodic-tasks",
         "samples/persistent-storage",
         "samples/phonebook",
+        "samples/pos",
         "samples/pub-sub",
         "samples/qr-code",
         "samples/quicksort",
