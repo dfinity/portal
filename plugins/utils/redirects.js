@@ -152,7 +152,7 @@ const redirects = `
   /sustainability /capabilities/sustainability
   `
   .split(/[\r\n]+/)
-  .map((line) => line.replace(/#.*$/, "").trim())
+  .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
@@ -180,7 +180,11 @@ function ruleToRedirect(rule) {
 exports.getRedirects = function () {
   return redirects
     .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
-    .map(ruleToRedirect);
+    .map(ruleToRedirect)
+    .map((r) => ({
+      to: r.to.replace(/#.+$/, ""),
+      from: r.from,
+    }));
 };
 
 exports.getExternalRedirects = function () {
