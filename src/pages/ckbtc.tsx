@@ -120,14 +120,14 @@ function CkbtcPage(): JSX.Element {
                 MyLugano 
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Web2 app integration 
+                ckBTC in comes to Lugano 
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 As part of a multi-chain, multi-wallet upgrade, ckBTC has been  
                 integrated into the MyLugano crypto payment app developed by NOKU. 
-                This is another step of the Internet Computer infrastructure integrating 
-                with the city of Lugano to eventually enable a plethora of municipal services using ckBTC.
+                This is a major step towards the Internet Computer infrastructure integrating 
+                with the city of Lugano to eventually enable a plethora of municipal services using bitcoin.
               </p>
               <Link className="link-primary link-with-icon" href="https://medium.com/dfinity/the-dfinity-foundation-announces-partnership-with-the-municipality-of-lugano-and-a-1-million-fund-c6dce1fd24ae">
                 <LinkArrowRight /> Read the press release
