@@ -37,7 +37,7 @@ wget https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216
   "ledger_canister": {
     "type": "custom",
     "candid": "https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icp_ledger/ledger.did",
-    "wasm": "ledger-canister.wasm.gz",
+    "wasm": ".dfx/local/canisters/ledger_canister/ledger-canister.wasm.gz",
     "remote": {
       "id": {
         "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -96,7 +96,8 @@ export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
 
 ```
 dfx canister create ledger_canister
-mv ledger-canister.wasm.gz .dfx/canisters/ledger_canister/ledger-canister.wasm.gz
+mkdir -p ".dfx/local/canisters/ledger_canister"
+mv ledger-canister.wasm.gz .dfx/local/canisters/ledger_canister/ledger-canister.wasm.gz
 ```
 
 ### Step 11: Deploy the ledger canister with archiving options:
