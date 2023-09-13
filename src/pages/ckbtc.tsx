@@ -120,7 +120,7 @@ function CkbtcPage(): JSX.Element {
                 MyLugano 
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                ckBTC in comes to Lugano 
+                ckBTC comes to Lugano 
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
