@@ -11,8 +11,8 @@ If you don’t have the IC SDK installed, follow instructions on the [installing
 ### Step 2: Create a new dfx project with the command:
 
 ```
-dfx new ledger-canister
-cd ledger-canister
+dfx new ledger_canister
+cd ledger_canister
 ```
 
 ### Step 3:  Determine ledger file locations
@@ -28,10 +28,10 @@ The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/i
 ``` json
 {
   "canisters": {
-  "ledger-canister": {
+  "ledger_canister": {
     "type": "custom",
     "candid": "https://raw.githubusercontent.com/dfinity/ic/a17247bd86c7aa4e87742bf74d108614580f216d/rs/rosetta-api/icp_ledger/ledger.did",
-    "wasm": "https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216d/canisters/ledger-canister.wasm.gz",
+    "wasm": "https://download.dfinity.systems/ic/a17247bd86c7aa4e87742bf74d108614580f216d/canisters/ledger_canister.wasm.gz",
     "remote": {
       "id": {
         "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -89,8 +89,8 @@ export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
 ### Step 9: Deploy the ledger canister with archiving options:
 
 ```
-dfx canister create ledger-canister
-dfx canister install ledger-canister --argument "(variant {
+dfx canister create ledger_canister
+dfx canister install ledger_canister --argument "(variant {
   Init = record {
     minting_account = $ACCOUNT_ID;
     icrc1_minting_account = opt record {
@@ -133,19 +133,19 @@ dfx canister install ledger-canister --argument "(variant {
 If you get the following error:
 
 ```
-Error: Failed to install wasm module to canister 'ledger-canister'.
-Caused by: Failed to install wasm module to canister 'ledger-canister'.
-  Failed to read /Users/username/ledger/.dfx/local/canisters/ledger-canister/ledger-canister.wasm.gz.
+Error: Failed to install wasm module to canister 'ledger_canister'.
+Caused by: Failed to install wasm module to canister 'ledger_canister'.
+  Failed to read /Users/username/ledger/.dfx/local/canisters/ledger_canister/ledger_canister.wasm.gz.
     No such file or directory (os error 2)
 ```
 
-You can manually download the `ledger-canister.wasm.gz` file from the URL above, then move it into the file path `/Users/username/ledger/.dfx/local/canisters/ledger-canister/`.
+You can manually download the `ledger_canister.wasm.gz` file from the URL above, then move it into the file path `/Users/username/ledger/.dfx/local/canisters/ledger_canister/`.
 :::
 
 The output of this command will resemble the following:
 
 ```
-Installing code for canister ledger-canister, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
+Installing code for canister ledger_canister, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
 2023-08-24 14:56:33.610532 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] [ledger] init(): minting account is c8a8d79abce38016657a51824ca978dc34f3366db4c46abec0589ee3cc40c65d
 2023-08-24 14:56:33.610532 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] [ledger] init(): using maximum message size: 2560000
 ```
@@ -168,7 +168,7 @@ The output of this command will resemble the following:
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    ledger-canister: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    ledger_canister: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 ### Step 11: Interact with the canister.
@@ -176,7 +176,7 @@ URLs:
 You can interact with the canister by running CLI commands, such as:
 
 ```
-dfx canister call ledger-canister icrc1_name 
+dfx canister call ledger_canister icrc1_name 
 ```
 
 This command will return the token's name, such as:
