@@ -19,7 +19,7 @@ Stable regions are a type of dynamically allocated, isolated, and independently 
 
 ### What is a "region"? 
 
-A 'Region' is a new Motoko abstract data type that uses an experimental API which exposes low-level canister stable memory. `Region`s are unique since they use distinct portions of stable memory that never interfere with one another. New `Regions` can be created dynamically, and any old regions that are marked for garbage collection will be removed and reused for new `Regions` afterwards. 
+A 'Region' is a new Motoko abstract data type that uses an experimental API which exposes low-level canister stable memory. `Region`s are unique since they use distinct portions of stable memory that never interfere with one another. New `Region`s can be created dynamically, and any old regions that are marked for garbage collection will be removed and reused for new `Region`s afterwards. 
 
 ### How to use Motoko stable regions
 
