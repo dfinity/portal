@@ -78,10 +78,9 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC can be sent with 1-2 second finality and negligible fees
-                  — a multi-chain bitcoin twin, trustlessly created by chain-key
-                  cryptography and Internet Computer smart contracts that
-                  directly hold raw bitcoin.
+                  ckBTC — a multi-chain bitcoin twin, trustlessly created by chain-key
+                  cryptography and Internet Computer smart contracts that directly hold 
+                  raw bitcoin. ckBTC can be sent with 1-2 second finality and negligible fees.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -118,20 +117,20 @@ function CkbtcPage(): JSX.Element {
               reverse={true}
             >
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                MyLugano
+                MyLugano 
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Next-gen cashless payments
+                Web2 app integration 
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga
-                quod vel ut voluptates ipsam ipsa, distinctio voluptatem,
-                maiores placeat repellendus nobis obcaecati molestiae quia
-                assumenda. Quidem eos dignissimos exercitationem corrupti.
+                As part of a multi-chain, multi-wallet upgrade, ckBTC has been  
+                integrated into the MyLugano crypto payment app developed by NOKU. 
+                This is another step of the Internet Computer infrastructure integrating 
+                with the city of Lugano to eventually enable a plethora of municiple services using ckBTC.
               </p>
-              <Link className="link-primary link-with-icon" href="">
-                <LinkArrowRight /> Read the full article
+              <Link className="link-primary link-with-icon" href="https://medium.com/dfinity/the-dfinity-foundation-announces-partnership-with-the-municipality-of-lugano-and-a-1-million-fund-c6dce1fd24ae">
+                <LinkArrowRight /> Read the press release
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/bitcoin-integration/openchat.webp">
@@ -201,7 +200,7 @@ function CkbtcPage(): JSX.Element {
                   </span>
                 </h3>
                 <p className="tw-lead mb-6">
-                  Enables small and casual transactions with Bitcoin.
+                  Enables small and casual transactions with bitcoin.
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
@@ -219,7 +218,7 @@ function CkbtcPage(): JSX.Element {
               >
                 <h3 className="inline-flex items-center gap-3 mb-4">
                   <span className="flex-1 text-gradient tw-heading-3">
-                    Programmable Bitcoin
+                    Programable bitcoin
                   </span>
                 </h3>
                 <p className="tw-lead mb-6">
@@ -245,7 +244,7 @@ function CkbtcPage(): JSX.Element {
                   </span>
                 </h3>
                 <p className="tw-lead mb-6">
-                  Anyone can send and receive ckBTC value to and from addesses
+                 Send and receive ckBTC value to and from addesses
                   on either network
                 </p>
                 <ul className="checklist space-y-3 mb-0">
