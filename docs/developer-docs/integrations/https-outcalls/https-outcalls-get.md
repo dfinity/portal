@@ -369,9 +369,9 @@ Committing batch.
 Deployed canisters.
 URLs:
   Frontend canister via browser
-    send_http_get_rust_frontend: https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app/
+    send_http_get_motoko_frontend: https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app/
   Backend canister via Candid interface:
-    send_http_get_rust_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+    send_http_get_motoko_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
 ```
 
 ## Rust version
