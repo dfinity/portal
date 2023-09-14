@@ -354,6 +354,26 @@ Open the candid web UI for the backend (the `send_http_get_motoko_backend` one) 
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
+- #### Step 5: Test the dapp on mainnet.
+
+Deploy the dapp locally:
+
+```bash
+dfx deploy --network ic
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    send_http_get_rust_frontend: https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app/
+  Backend canister via Candid interface:
+    send_http_get_rust_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+```
+
 ## Rust version
 
 ### Rust: Structure of the code
@@ -390,8 +410,6 @@ async fn foo() {
     }
 }
 ```
-
-
 
 ### Rust: Step by step
 
@@ -613,9 +631,27 @@ Open the candid web UI for the backend (the `send_http_get_rust_backend` one) an
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
-:::note
-In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a future section
-:::
+- #### Step 5: Test the dapp on mainnet.
+
+Deploy the dapp locally:
+
+```bash
+dfx deploy --network ic
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    send_http_get_rust_frontend: https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app/
+  Backend canister via Candid interface:
+    send_http_get_rust_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+```
+
+You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
 
 ## Additional resources
 
