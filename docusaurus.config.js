@@ -18,7 +18,6 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const blogPostsPlugin = require("./plugins/blog-posts");
-const deckRedirectPulgin = require("./plugins/deck-redirect");
 const externalRedirectsPlugin = require("./plugins/external-redirects");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
@@ -366,7 +365,7 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer grants", href: "https://dfinity.org/grants" },
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -416,7 +415,6 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
-    deckRedirectPulgin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),

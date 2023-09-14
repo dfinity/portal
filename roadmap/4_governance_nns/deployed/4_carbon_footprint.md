@@ -3,6 +3,7 @@ title: Carbon Footprint and Sustainability Policy
 links:
   Forum Link: https://forum.dfinity.org/t/sustainability-nns-proposal/11976
   Proposal: https://dashboard.internetcomputer.org/proposal/55487
+eta: Q2 23
 is_community: true
 ---
 This roadmap item is based on the community proposal 55487.
