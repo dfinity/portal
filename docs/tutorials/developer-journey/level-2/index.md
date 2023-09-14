@@ -1,6 +1,6 @@
 # Level 2: Space explorer
 
-- [2.1: Canister upgrades, storage, and persistence.](2.1-storage-persistence.md):
+- [2.1: Canister upgrades, storage, and persistence.](2.1-storage-persistence.md): When a canister's code needs to have changes made, the canister must be upgraded. This module covers:
     - Memory types and terms.
     - Upgrading canisters.
 	    - Motoko stable memory workflow.
@@ -13,13 +13,13 @@
 	    - Deploying your counter app.
 	    - Stable variables in action.
     
-- [2.2: Using third-party canisters.](2.2-third-party-canisters.md):
+- [2.2: Using third-party canisters.](2.2-third-party-canisters.md): For certain workflows, using third-party canisters and integrating them with a dapp is important to provide functionalities such as authentication. This module covers:
     - Pulling third-party canister dependencies.
 	    - Prerequisites.
 	    - Creating a new project.
 	    - Using `dfx deps`.
 
-- [2.3: Advanced canister calls.](2.3-advanced-canister-calls.md):
+- [2.3: Advanced canister calls.](2.3-advanced-canister-calls.md): Now that we've covered the core functionalities of canisters and using them, let's take a look at advanced canister calls. This module covers:
     - The IC execution model.
     - Canister query calls.
 	    - Example query call.
@@ -34,7 +34,7 @@
 	    - Writing a `publisher` canister.
 	    - Writing a `subscriber` canister.
 
-- [2.4: Introduction to Candid.](2.4-intro-candid.md):
+- [2.4: Introduction to Candid.](2.4-intro-candid.md): Candid is an interface description language that has unique support for IC features. This module covers:
     - Candid types and values.
 	    - Candid textual values.
     - Candid service descriptions.
@@ -48,7 +48,7 @@
 	    - Interacting with a service using the command-line terminal.
 	    - Interacting with a service using a web browser.
 
-- [2.5: Unit, integration, and end2end testing](2.5-unit-testing.md):
+- [2.5: Unit, integration, and end2end testing](2.5-unit-testing.md): Testing code prior to setting it live in production is an important step in the development process. This module covers:
     - Motoko unit testing.
 	    - Canister unit testing.
     - Rust unit testing.
@@ -63,4 +63,20 @@
 	    - Running a complex test.
     - Integration testing.
 
-- [2.6: Motoko: level 2.](2.6-motoko-lvl2.md)
+- [2.6: Motoko: level 2.](2.6-motoko-lvl2.md): This module covers:
+    - Actor types.
+        - Actor type definition.
+    - Shared functions.
+    - Actors and async data.
+    - Actor classes.
+        - Defining an actor class.
+        - Defining an actor within the class.
+    - Using multiple actors.
+        - Prerequisites.
+        - Creating a new project.
+        - Configuring canisters in `dfx.json`.
+        - Creating canister directories and Motoko files.
+        - Creating the `characterCount` actor.
+        - Creating the `Daemon` actor.
+        - Deploying the actors locally.
+        - Interacting with multiple actors.
