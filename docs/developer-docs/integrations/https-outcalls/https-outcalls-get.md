@@ -416,6 +416,16 @@ use ic_cdk::api::management_canister::http_request::{
     TransformContext,
 };
 
+use ic_cdk_macros::{self, query, update};
+use serde::{Serialize, Deserialize};
+use serde_json::{self, Value};
+
+#[derive(Serialize, Deserialize)]
+struct Context {
+    bucket_start_time_index: usize,
+    closing_price_index: usize,
+}
+
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn get_icp_usd_exchange() -> String {
@@ -447,13 +457,19 @@ async fn get_icp_usd_exchange() -> String {
         },
     ];
 
+    let context = Context {
+        bucket_start_time_index: 0,
+        closing_price_index: 4,
+    };
+
     //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4
     let request = CanisterHttpRequestArgument {
         url: url.to_string(),
         method: HttpMethod::GET,
         body: None,               //optional for request
         max_response_bytes: None, //optional for request
-        transform: None,          //optional for request
+        // transform: None,          //optional for request
+        transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
         headers: request_headers,
     };
 
@@ -494,6 +510,8 @@ async fn get_icp_usd_exchange() -> String {
             //         5.714, <-- close
             //         243.5678 <-- volume
             //     ],
+            //  ]
+
 
             //Return the body as a string and end the method
             str_body
@@ -507,6 +525,54 @@ async fn get_icp_usd_exchange() -> String {
         }
     }
 }
+
+
+/// Strips all data that is not needed from the original response.
+#[query]
+fn transform(raw: TransformArgs) -> HttpResponse {
+
+    let headers = vec![
+        HttpHeader {
+            name: "Content-Security-Policy".to_string(),
+            value: "default-src 'self'".to_string(),
+        },
+        HttpHeader {
+            name: "Referrer-Policy".to_string(),
+            value: "strict-origin".to_string(),
+        },
+        HttpHeader {
+            name: "Permissions-Policy".to_string(),
+            value: "geolocation=(self)".to_string(),
+        },
+        HttpHeader {
+            name: "Strict-Transport-Security".to_string(),
+            value: "max-age=63072000".to_string(),
+        },
+        HttpHeader {
+            name: "X-Frame-Options".to_string(),
+            value: "DENY".to_string(),
+        },
+        HttpHeader {
+            name: "X-Content-Type-Options".to_string(),
+            value: "nosniff".to_string(),
+        },
+    ];
+    
+    let mut res = HttpResponse {
+        status: raw.response.status.clone(),
+        body: raw.response.body.clone(),
+        headers,
+        ..Default::default()
+    };
+
+    if res.status == 200 {
+
+        res.body = raw.response.body;
+    } else {
+        ic_cdk::api::print(format!("Received an error from coinbase: err = {:?}", raw));
+    }
+    res
+}
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
@@ -515,7 +581,7 @@ async fn get_icp_usd_exchange() -> String {
 
 - #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
 
-We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`. 
+We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`.
 
 ```
 service : {

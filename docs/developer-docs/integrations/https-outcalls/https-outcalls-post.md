@@ -1,6 +1,7 @@
 # How to use HTTP outcalls: POST
 
 ## Overview
+
 A minimal example to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `POST` request with some JSON to a free API where we can verify the headers and body were sent correctly.
