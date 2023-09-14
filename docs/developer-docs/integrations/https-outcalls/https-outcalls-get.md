@@ -92,12 +92,12 @@ To create a new project:
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new send_http_get
-cd send_http_get
+dfx new send_http_get_motoko
+cd send_http_get_motoko
 npm install
 ```
 
-- #### Step 2:  Open the `src/send_http_get_backend/main.mo` file in a text editor and replace content with:
+- #### Step 2:  Open the `src/send_http_get_motoko_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -251,10 +251,10 @@ actor {
 ```
 
 - `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
--  The code above adds `17_000_000_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
+- The code above adds `20_949_972_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
-- #### Step 3:  Open the `src/send_http_get_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Open the `src/send_http_get_motoko_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
@@ -345,12 +345,12 @@ If successful, the terminal should return canister URLs you can open:
 Deployed canisters.
 URLs:
   Frontend canister via browser
-    hello_http_frontend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai
+    send_http_get_motoko_frontend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai
   Backend canister via Candid interface:
-    hello_http_backend: http://127.0.0.1:4943/?canisterId=a3shf-5eaaa-aaaaa-qaafa-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
+    send_http_get_motoko_backend: http://127.0.0.1:4943/?canisterId=a3shf-5eaaa-aaaaa-qaafa-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
 ```
 
-Open the candid web UI for the backend (the `hello_http_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
 
@@ -400,13 +400,13 @@ To create a new project:
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new --type=rust hello_http_rust
-cd hello_http_rust
+dfx new --type=rust send_http_get_rust
+cd send_http_get_rust
 npm install
 rustup target add wasm32-unknown-unknown
 ```
 
-- #### Step 2: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
+- #### Step 2: Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
 //1. IMPORT IC MANAGEMENT CANISTER
@@ -510,10 +510,10 @@ async fn get_icp_usd_exchange() -> String {
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
+- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
-- #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
+- #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
 
 We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`. 
 
@@ -538,12 +538,12 @@ If successful, the terminal should return canister URLs you can open:
 Deployed canisters.
 URLs:
   Frontend canister via browser
-    hello_http_rust_frontend: http://127.0.0.1:4943/?canisterId=ajuq4-ruaaa-aaaaa-qaaga-cai
+    send_http_get_rust_frontend: http://127.0.0.1:4943/?canisterId=ajuq4-ruaaa-aaaaa-qaaga-cai
   Backend canister via Candid interface:
-    hello_http_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
+    send_http_get_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
 ```
 
-Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the candid web UI for the backend (the `send_http_get_rust_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
@@ -553,5 +553,5 @@ In both the Rust and Motoko minimal examples, we did not create a **transform** 
 
 ## Additional resources
 
-* Sample code of [HTTP GET requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
-* Sample code of [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
+- Sample code of [HTTP GET requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
