@@ -336,6 +336,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          label: "Staging environments",
+          id: "developer-docs/production/staging-environment",
+        },
+        {
+          type: "doc",
           label: "Topping up canisters",
           id: "developer-docs/production/topping-up-canister",
         },
