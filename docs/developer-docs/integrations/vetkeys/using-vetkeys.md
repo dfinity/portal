@@ -4,11 +4,11 @@
 
 This demo provides a canister (`src/system_api`) that offers the vetKD system API proposed in https://github.com/dfinity/interface-spec/pull/158, implemented in an unsafe manner for demonstration purposes.
 
-This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/13181568b9eddeaab5ab735c5c7f052c5a73aa3d/rust/vetkd).
+This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
 
 ## Prerequisites
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](./../../setup/install/index.mdx) page.
+- [x] Download and install the IC SDK package as described in the [installing the IC SDK](./../../setup/install/) page.
 - [x] Download and install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 - [x] Download and install [git](https://git-scm.com/downloads).
 
@@ -20,6 +20,14 @@ git clone https://github.com/dfinity/examples/
 ```
 
 Then navigate into the directory specifically for this project:
+
+For Motoko deployment:
+
+```
+cd examples/motoko/vetkd
+```
+
+For Rust deployment:
 
 ```
 cd examples/rust/vetkd

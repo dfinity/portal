@@ -23,8 +23,13 @@ Get the ICP balance of a specific account:
 dfx ledger --network ic balance <account-id>
 ```
 
-The `<account-id>` is encoded as a hex string.
-In many cases you want to check the main account balance of a specific principal. You can use the following command for this:
+The `<account-id>` is encoded as a hex string. You can print the account id of the current `dfx` identity by running:
+
+```bash
+dfx ledger account-id
+```
+
+In many cases you want to check the main account balance of a specific principal. You can combine the `balance` command with the `account-id` command, while specifying an `--of-principal` argument to yield this helpful command:
 
 ``` bash
 dfx ledger --network ic balance $(dfx ledger account-id --of-principal <principal-id>)

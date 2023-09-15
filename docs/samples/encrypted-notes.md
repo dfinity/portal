@@ -86,9 +86,9 @@ Once authenticated with II:
 Follow the steps below to deploy this sample project.
 
 ## Prerequisites
-- [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
+- [x] Install the [IC SDK](../developer-docs/setup/install).
 - [x] Download and install [Docker](https://docs.docker.com/get-docker/) if using the Docker option. 
-- [x] Download the GitHub repo containing this project's files: https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp. (If using Rust, use the /master/rust/encrypted-notes-dapp folder.)
+- [x] Download the GitHub repo containing this project's files: https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp.
 
 ### Step 1. Navigate inside of the project's folder:
 
@@ -96,13 +96,12 @@ Follow the steps below to deploy this sample project.
 cd examples/motoko/encrypted-notes-dapp
 ```
 
-or
-
-```
-cd examples/rust/encrypted-notes-dapp
-```
+:::info 
+This project folder contains the files for both Motoko and Rust development
+:::
 
 ### Step 2: Set an environmental variable reflecting which backend canister you'll be using:
+
 For Motoko deployment run:
 
 ```
@@ -160,7 +159,7 @@ If this fails with "No such container", please ensure that the Docker daemon is 
 export BUILD_ENV=motoko
 ```
 
-- #### Step 2: To generate $BUILD_ENV-specific files (i.e., Motoko or Rust) run:
+- #### Step 2: To generate $BUILD_ENV-specific files run:
 
 ```
 sh ./pre_deploy.sh
@@ -458,6 +457,7 @@ cargo build --package encrypted_notes_rust --target wasm32-unknown-unknown --rel
 
 `wasm`: wherever the wasm binary ends up at the end of the "build" command.
 `candid`: There is not yet Rust autogeneration for candid IDL built into dfx, so DFX needs to know where you candid file for the canister built by "build" resides.
+
 
 #### **www**:
 frontend www canister (an "asset" canister) is the way we describe a set of files or a static website that we are deploying to the IC. Our project frontend is built in [Svelte](https://svelte.dev/). The keys we used are as follows:

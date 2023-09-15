@@ -28,6 +28,7 @@
     "chart.js": "^3.8.0",
     "chartjs-plugin-datalabels": "^2.0.0",
     "clsx": "^1.1.1",
+    "cobe": "^0.6.3",
     "colorthief": "^2.3.2",
     "core-js": "^3.23.1",
     "date-fns": "^2.28.0",

@@ -123,3 +123,8 @@
 .enterprise-marquee {
   animation: enterprise-marquee 15s linear infinite;
 }
+
+.stat-fade-in {
+  animation: fade-in 300ms ease-out;
+  animation-fill-mode: backwards;
+}
