@@ -519,7 +519,6 @@ async fn send_http_post_request() -> String {
         headers: request_headers,
         body: request_body,
         transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
-        // transform: None, //optional for request
     };
 
     //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE

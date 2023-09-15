@@ -493,7 +493,6 @@ async fn get_icp_usd_exchange() -> String {
         method: HttpMethod::GET,
         body: None,               //optional for request
         max_response_bytes: None, //optional for request
-        // transform: None,          //optional for request
         transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
         headers: request_headers,
     };
