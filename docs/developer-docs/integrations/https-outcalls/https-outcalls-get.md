@@ -305,7 +305,7 @@ module Types {
         context : Blob;
     };
 
-    //2.2 These type describes the arguments the transform function needs
+    //2.2 These types describes the arguments the transform function needs
     public type TransformArgs = {
         response : HttpResponsePayload;
         context : Blob;
