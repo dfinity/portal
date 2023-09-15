@@ -248,7 +248,7 @@ actor {
 };
 ```
 
-- #### Step 3:  Open the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Create the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
@@ -301,6 +301,17 @@ module Types {
         context : Blob;
     };
 
+    public type CanisterHttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    public type TransformContext = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
+        context : Blob;
+    };
+
 
     //3. Declaring the IC management canister which we use to make the HTTPS outcall
     public type IC = actor {
@@ -308,6 +319,7 @@ module Types {
     };
 
 }
+
 ```
 
 - #### Step 4: Test the dapp locally.
