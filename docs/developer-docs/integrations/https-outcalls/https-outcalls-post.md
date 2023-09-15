@@ -342,6 +342,29 @@ Open the candid web UI for backend and call the `send_http_post_motoko_request()
 
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
+- #### Step 5: Test the dapp on mainnet.
+
+Deploy the dapp to mainnet:
+
+```bash
+dfx deploy --network ic
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    send_http_post_motoko_frontend: https://fx3cz-taaaa-aaaap-qbooa-cai.ic0.app/
+  Backend canister via Candid interface:
+    send_http_post_motoko_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai
+```
+
+You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai).
+
+
 ## Rust version
 
 ### Rust: Structure of the code

@@ -633,7 +633,7 @@ Open the candid web UI for the backend (the `send_http_get_rust_backend` one) an
 
 - #### Step 5: Test the dapp on mainnet.
 
-Deploy the dapp locally:
+Deploy the dapp to mainnet:
 
 ```bash
 dfx deploy --network ic
