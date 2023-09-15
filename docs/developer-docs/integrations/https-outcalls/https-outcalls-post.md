@@ -10,6 +10,10 @@ The sample code is in both Motoko and Rust. This sample canister sends a `POST` 
 
 This example takes less than 5 minutes to complete.
 
+:::caution
+The HTTPS Outcalls feature only works for sending HTTP POST requests to servers or API endpoints that support **IPV6**.
+:::
+
 ## What we are building
 
 ### Candid web UI of canister
@@ -427,6 +431,7 @@ use ic_cdk_macros::{self, query, update};
 use serde::{Serialize, Deserialize};
 use serde_json::{self, Value};
 
+// This struct is legacy code and is not really used in the code.
 #[derive(Serialize, Deserialize)]
 struct Context {
     bucket_start_time_index: usize,
@@ -498,6 +503,10 @@ async fn send_http_post_request() -> String {
     let json_utf8: Vec<u8> = json_string.into_bytes();
     let request_body: Option<Vec<u8>> = Some(json_utf8);
 
+    // This struct is legacy code and is not really used in the code. Need to be removed in the future
+    // The "TransformContext" function does need a CONTEXT parameter, but this implementation is not necessary
+    // the TransformContext(transform, context) below accepts this "context", but it does nothing with it in this implementation.
+    // bucket_start_time_index and closing_price_index are meaninglesss
     let context = Context {
         bucket_start_time_index: 0,
         closing_price_index: 4,
@@ -588,6 +597,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
             value: "nosniff".to_string(),
         },
     ];
+    
 
     let mut res = HttpResponse {
         status: raw.response.status.clone(),
@@ -620,7 +630,30 @@ service : {
 }
 ```
 
-- #### Step 4: Test the dapp locally.
+- #### Step 4: Open the `src/send_http_post_rust_backend/Cargo.toml` file in a text editor and replace content with:
+
+```bash
+[package]
+name = "send_http_post_rust_backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = "0.8.2"
+ic-cdk = "0.6.0"
+ic-cdk-macros = "0.6.0"
+serde = "1.0.152"
+serde_json = "1.0.93"
+serde_bytes = "0.11.9"
+
+```
+
+- #### Step 5: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -642,7 +675,7 @@ Open the candid web UI for backend and call the `send_http_post_request()` metho
 
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
-- #### Step 5: Test the dapp on mainnet.
+- #### Step 6: Test the dapp on mainnet.
 
 Deploy the dapp to mainnet:
 

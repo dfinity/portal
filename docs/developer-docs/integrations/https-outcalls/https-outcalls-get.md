@@ -5,6 +5,7 @@ A minimal example to make a `GET` HTTPS request. The purpose of this dapp is onl
 
 The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token. 
 
+
 **The main intent of this canister is to show developers how to make idempotent `GET` requests.**
 
 This example takes less than 5 minutes to complete.
@@ -438,6 +439,7 @@ use ic_cdk_macros::{self, query, update};
 use serde::{Serialize, Deserialize};
 use serde_json::{self, Value};
 
+// This struct is legacy code and is not really used in the code.
 #[derive(Serialize, Deserialize)]
 struct Context {
     bucket_start_time_index: usize,
@@ -475,6 +477,11 @@ async fn get_icp_usd_exchange() -> String {
         },
     ];
 
+
+    // This struct is legacy code and is not really used in the code. Need to be removed in the future
+    // The "TransformContext" function does need a CONTEXT parameter, but this implementation is not necessary
+    // the TransformContext(transform, context) below accepts this "context", but it does nothing with it in this implementation.
+    // bucket_start_time_index and closing_price_index are meaninglesss
     let context = Context {
         bucket_start_time_index: 0,
         closing_price_index: 4,
@@ -545,7 +552,7 @@ async fn get_icp_usd_exchange() -> String {
 }
 
 
-/// Strips all data that is not needed from the original response.
+// Strips all data that is not needed from the original response.
 #[query]
 fn transform(raw: TransformArgs) -> HttpResponse {
 
@@ -576,6 +583,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
         },
     ];
     
+
     let mut res = HttpResponse {
         status: raw.response.status.clone(),
         body: raw.response.body.clone(),
@@ -607,7 +615,29 @@ service : {
 }
 ```
 
-- #### Step 4: Test the dapp locally.
+- #### Step 4: Open the `src/send_http_get_rust_backend/Cargo.toml` file in a text editor and replace content with:
+
+```bash
+[package]
+name = "send_http_get_rust_backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = "0.8.2"
+ic-cdk = "0.6.0"
+ic-cdk-macros = "0.6.0"
+serde = "1.0.152"
+serde_json = "1.0.93"
+serde_bytes = "0.11.9"
+```
+
+- #### Step 5: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -631,7 +661,7 @@ Open the candid web UI for the backend (the `send_http_get_rust_backend` one) an
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
-- #### Step 5: Test the dapp on mainnet.
+- #### Step 6: Test the dapp on mainnet.
 
 Deploy the dapp to mainnet:
 
