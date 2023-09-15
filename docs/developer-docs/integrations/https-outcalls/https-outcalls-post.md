@@ -27,11 +27,9 @@ When we call the method, the canister will send an HTTP `POST` request with the 
 }
 ```
 
-![Candid web UI](../_attachments/https-post-candid-motoko-result.webp)
-
 ### Verifying the HTTP POST request
 
-In order to verify that our canister sent the HTTP request we expected, this canister is sending HTTP requests to a [public API service](https://public.requestbin.com/r/en8d7aepyq2ko) where the HTTP request can be inspected. As you can see the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
+In order to verify that our canister sent the HTTP request we expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
 
 ![Public API to inspect POST request](../_attachments/https-post-requestbin-result.webp)
 
