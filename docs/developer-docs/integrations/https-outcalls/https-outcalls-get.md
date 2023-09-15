@@ -651,7 +651,7 @@ URLs:
     send_http_get_rust_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
 ```
 
-You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
+You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
 
 ## Additional resources
 
