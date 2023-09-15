@@ -9,7 +9,7 @@ When a canister needs more cycles, a developer can transfer them from the wallet
 
 ## Why are cycles different from ICP tokens? 
 
-Cycles are different from ICP tokens to ensure that the price of hosting a canister is not volatile. This helps decrease the risk tof building dapps becoming economically infeasible if the ICP token price increases.
+Cycles are different from ICP tokens to ensure that the price of hosting a canister is not volatile. This helps decrease the risk of building dapps becoming economically infeasible if the ICP token price increases.
 
 :::info
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.

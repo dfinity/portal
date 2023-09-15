@@ -29,29 +29,29 @@ These scripts have been most tested with a stack that looks like this:
 * A canister that can be deployed to local replica via `dfx deploy`.
 
 ## Testing via `sns-testing` repo
-
-A common way to test an SNS locally is to use the `sns-testing` [repo](https://github.com/dfinity/sns-testing#readme).
-
-### Examples of what it tests
-
-The `sns-testing` repo can help with testing the lifecycle of launching an SNS, by running the commands listed [here](https://github.com/dfinity/sns-testing#sns-lifecycle).
-
-For simplicity, you can see the stages of decentralization and how they line up with the CLI commands. 
+To use the `sns-testing` commands and their arguments properly, please consult the `sns-testing` [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
 
 :::info
-To use the `sns-testing` commands and their arguments properly, please consult the `sns-testing` [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
+If you have started using `sns-testing` before August 2023 and are using the old legacy flow of launching an SNS (please see [here](../launching/index.md) for more context), please continue your work with the legacy documentation on [this old README](https://github.com/dfinity/sns-testing/blob/v1-legacy/README.md). In particular, 
+* If you were following the Apple silicon-only instructions, please switch to the `v1-legacy` Git tag.
+* If you were using the Docker-based deployment approach, please use the docker image: `docker pull ghcr.io/dfinity/sns-testing:v1-legacy`.
+
 :::
 
-### Testing stages of decentralization
 
-Below, we match the stages of decentralization to the commands that the `sns-testing` repo has. Some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
+
+
+### Testing stages of the SNS launch process
+
+For simplicity, next we map the stages introduced in the [SNS launch stages documentation](../launching/launch-summary-1proposal.md) and in the documentation [commands and actions to go through SNS launch](../launching/launch-steps-1proposal.md) to the relevant scripts in the `sns-testing` repo so you can learn what part of the launch is tested in which script.
+Note that some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
 
 <table border="1">
     <tr>
         <th>Stage Number</th>
         <th>Stage</th>
-        <th>Example `sns-testing` command</th>
-        <th>For other developers</th>
+        <th>Example in `sns-testing`</th>
+        <th>Notes</th>
     </tr>
     <tr>
         <td>0</td>
@@ -62,74 +62,77 @@ Below, we match the stages of decentralization to the commands that the `sns-tes
     <tr>
         <td>1</td>
         <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td rowspan="4"><code>./deploy_sns.sh</code></td>
+        <td><code>example_sns_init.yaml</code></td>
     </tr>
     <tr>
         <td>2</td>
-        <td>Dapp developers submit NNS proposal so they can deploy to the SNS subnet</td>
+        <td>Dapp developers add NNS root as co-controller of dapp</td>
+        <td><code>./let_nns_control_dapp.sh</code></td>
+        <td><code></code></td>
     </tr>
     <tr>
         <td>3</td>
-        <td>Proposal #1 (of 3) is passed or rejected</td>
+        <td>Submit NNS proposal to create SNS</td>
+        <td rowspan="1"><code>./propose_sns.sh]</code></td>
     </tr>
     <tr>
         <td>4</td>
-        <td>Dapp developers trigger the SNS canisters to be created on SNS subnet</td>
+        <td>The NNS proposal is decided</td>
+        <td rowspan="5"><code>(No commands required)</code></td>
+        <td rowspan="5"><code> </code></td>
     </tr>
     <tr>
         <td>5</td>
-        <td>Dapp developers submit an SNS proposal to handover control of their dapp to the SNS</td>
-        <td rowspan="2"><code>./register_dapp.sh</code></td>
-        <td rowspan="2"> Potentially many proposals if one's dapp has many canisters</td>
+        <td>(Automated) SNS-W deploys SNS canisters</td>
     </tr>
         <tr>
         <td>6</td>
-        <td>Proposal #2 (of 3) is passed or rejected</td>
+        <td>(Automated) SNS-W sets SNS root as sole controller of dapp</td>
     </tr>
     <tr>
         <td>7</td>
-        <td>Proposal to start the decentralization swap</td>
-        <td rowspan="2"><code>./open_sns_swap.sh</code></td>
+        <td>(Automated) SNS-W initializes SNS canisters according to settings from Step 1</td>
     </tr>
     <tr>
         <td>8</td>
-        <td>Proposal #3 (of 3) is passed or rejected</td>
+        <td>(Automated) SNS swap starts</td>
+    </tr>
+    <tr>
+        <td> </td>
+        <td>Users participate in the swap</td>
+        <td rowspan="1"><code>./participate_in_sns_swap.sh</code></td>
+        <td rowspan="1"></td>
     </tr>
     <tr>
         <td>9</td>
-        <td>SNS participants participate in the decentralization swap</td>
-        <td><code>./participate_sns_swap.sh</code></td>
+        <td>(Automated) SNS swap ends</td>
+        <td rowspan="2"><code>(No commands required)</code></td>
     </tr>
     <tr>
         <td>10</td>
-        <td>SNS canisters become SNS DAO</td>
-        <td><code>./finalize_sns_swap.sh</code></td>
+        <td>(Automated) SNS swap finalizes</td>
     </tr>
 </table>
 
 ### Testing the upgrading and managing of an SNS
 
-Once a canister or dapp has been decentralized, it will be updated via proposals and voting. Developers can test this flow by [using commands from `sns-testing`](https://github.com/dfinity/sns-testing#sns-lifecycle).
+Once a canister or dapp has been handed over to an SNS, it will be updated via proposals and voting. Developers can test this flow by [using commands from `sns-testing`](https://github.com/dfinity/sns-testing#sns-lifecycle).
 
 
 <table border="1">
     <tr>
-        <th>Stage Number</th>
-        <th>Stage</th>
-        <th>Example `sns-testing` command</th>
+        <th>Action</th>
+        <th>Example in `sns-testing`</th>
     </tr>
     <tr>
-        <td>0</td>
         <td>Upgrade a yet-to-be-decentralized canister by submitting an SNS proposal that can be voted on using the SNS developer neuron.</td>
         <td><code>./upgrade_test_canister.sh</code></td>
     </tr>
     <tr>
-        <td>1</td>
         <td>Submit proposal to upgrade a decentralized canister</td>
-        <td><code>./upgrade_test_canister.sh</code></td>
+        <td><code>./upgrade_test_canister.sh]</code></td>
     </tr>
      <tr>
-        <td>1</td>
         <td>Vote on a proposal that upgrades a decentralized canister</td>
         <td><code>./vote_on_sns_proposal.sh</code></td>
     </tr>
