@@ -11,7 +11,7 @@ The sample code is in both Motoko and Rust. This sample canister sends a `POST` 
 This example takes less than 5 minutes to complete.
 
 :::caution
-The HTTPS Outcalls feature only works for sending HTTP POST requests to servers or API endpoints that support **IPV6**.
+The HTTPS outcalls feature only works for sending HTTP POST requests to servers or API endpoints that support **IPV6**.
 :::
 
 ## What we are building

@@ -602,7 +602,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
+- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 - #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
@@ -685,5 +685,5 @@ You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [h
 
 ## Additional resources
 
-- Sample code of [HTTP GET requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
-- Sample code of [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
+- Sample code of [HTTP GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTP GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
