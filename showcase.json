@@ -2009,6 +2009,7 @@
     "name": "NNS Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
     "website": "https://nns.ic0.app",
+    "github": "https://github.com/dfinity/nns-dapp",
     "tags": [
       "Wallet",
       "Tools / Infrastructure",
