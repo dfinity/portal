@@ -2264,6 +2264,21 @@
     "twitter": "https://twitter.com/rakeoff_app"
   },
   {
+    "id": "oisy",
+    "name": "Oisy Wallet",
+    "oneLiner": "A novel Ethereum wallet hosted on the Internet Computer",
+    "website": "https://oisy.com",
+    "github": "https://github.com/dfinity/ic-eth-wallet",
+    "tags": [
+      "Ethereum",
+      "DeFi",
+      "Wallet"
+    ],
+    "description": "Crafted for the Internet Computer, Oisy is a unique Ethereum wallet that operates directly within your browser. It is entirely on-chain and secured by chain-key cryptography and Internet Identity.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/oisy_logo.svg"
+  },
+  {
     "id": "chainsight",
     "name": "Chainsight Demo",
     "oneLiner": "Interchain Data Processing Layer",
