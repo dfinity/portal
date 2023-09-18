@@ -2017,10 +2017,7 @@
     ],
     "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp",
-    "screenshots": [
-      "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
-    ]
+    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
   },
   {
     "id": "tipjar",
