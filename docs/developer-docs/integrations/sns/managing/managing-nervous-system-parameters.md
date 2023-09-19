@@ -184,7 +184,7 @@ To achieve functionality equivalent to NNS, this should be set to 100.
 
 ### `max_followees_per_function`
 
-The maximum number of followees each neuron can establish for each nervous system function.
+The maximum number of followees each neuron can have for each nervous system function.
 
 This number can be at most as large as the defined ceiling
 `MAX_FOLLOWEES_PER_FUNCTION_CEILING` (15 at time of writing).
