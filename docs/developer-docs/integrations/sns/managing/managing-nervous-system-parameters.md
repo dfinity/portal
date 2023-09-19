@@ -164,7 +164,7 @@ See example [proposal of an active SNS](https://dashboard.internetcomputer.org/s
 
 ### `default_followees`
 
-The set of default followees that every newly created neuron will follow per function. This is specified as a mapping of proposal functions to followees. If unset, neurons will have no followees by default. The set of followees for each function can be at most of size `max_followees_per_function` parameter.
+The set of default followees that every newly created neuron will follow per function. This is specified as a mapping of proposal functions to followees. If unset, neurons will have no followees by default. The number of followees for each function can be at most `max_followees_per_function`.
 
 ### `max_dissolve_delay_seconds`
   
