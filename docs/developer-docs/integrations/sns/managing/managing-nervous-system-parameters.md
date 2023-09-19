@@ -212,7 +212,7 @@ without affecting existing proposals.
 
 ### `neuron_minimum_dissolve_delay_to_vote_seconds`
 
-The minimum dissolve delay a neuron must have to be eligible to vote.
+The minimum dissolve delay, defined in seconds, that a neuron must have to be eligible to vote.
 
 The chosen value must be smaller than `max_dissolve_delay_seconds`.
 
