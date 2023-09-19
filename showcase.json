@@ -2659,6 +2659,20 @@
     "youtube": "https://www.youtube.com/watch?v=XTDznhHdeOE"
   },
   {
+  "id": "survey_ease",
+  "name": "SurveyEase",
+  "oneLiner": "Redefining the Survey Landscape",
+  "website": "https://survey-ease.web.app",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "description": "A transformative survey experience, harnessing the power of emerging tech to provide a modern, user-friendly platform for efficient data gathering and insights.",
+  "stats": "Working MVP",
+  "logo": "/img/showcase/survey_ease_logo.png",
+  "usesInternetIdentity": true,
+  "twitter": "https://twitter.com/surveyEase"
+  },
+  {
   "name": "NOBLEBLOCKS",
   "description": "NobleBlocks, a DeSci project, aims to reshape scientific publishing using the Internet Computer's decentralized technology. We focus on fair and transparent reviewing and editing processes, guided by community-led DAOs. Our objective is to make scientific research more efficient and easily accessible to all.",
   "website": "https://www.nobleblocks.com",
