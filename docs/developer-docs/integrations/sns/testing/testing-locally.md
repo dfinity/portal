@@ -29,11 +29,13 @@ These scripts have been most tested with a stack that looks like this:
 * A single canister that is being decentralized.
 * A canister that can be deployed to local replica via `dfx deploy`.
 
-## Testing via `sns-testing` repo
-To use the `sns-testing` commands and their arguments properly, please consult the `sns-testing` [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
+## Getting started
+
+To use the `sns-testing` commands and their arguments properly, you need to first set up the `sns-testing` repo properly. Please see [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
 
 :::info
-If you have started using `sns-testing` before August 2023 and are using the old legacy flow of launching an SNS (please see [here](../launching/index.md) for more context), please continue your work with the legacy documentation on [this old README](https://github.com/dfinity/sns-testing/blob/v1-legacy/README.md). In particular, 
+* All of the commands in this article require `sns-testing` to be set up properly. 
+* If you have started using `sns-testing` before August 2023 and are using the old legacy flow of launching an SNS (please see [here](../launching/index.md) for more context), please continue your work with the legacy documentation on [this old README](https://github.com/dfinity/sns-testing/blob/v1-legacy/README.md). In particular, 
 * If you were following the Apple silicon-only instructions, please switch to the `v1-legacy` Git tag.
 * If you were using the Docker-based deployment approach, please use the docker image: `docker pull ghcr.io/dfinity/sns-testing:v1-legacy`.
 
@@ -46,39 +48,66 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
 
 ## Stages
 
-### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
+### 0. Deploy a dapp to the local replica.
 
-Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
+#### Option 1: Testing a pre-packaged dapp created in `sns-testing` just for purposes of testing
 
+```bash
+./deploy_test_canister.sh
+```
 
-### 2. Dapp developers add NNS root as co-controller of dapp.
+#### Option 2: Deploying your own single-canister dapp
+
+```bash
+dfx deploy
+```
+
+#### Option 3: Deploying your own multi-canister dapp
+
+In this case, you should use whatever scripts or set up you have to deploy your dapp.
+
+### 1. Dapp developers add NNS root as co-controller of dapp.
 
 They can do so by running the following command:
 
+Option 1: You have one canister
+
 ```bash
-TBD
+dfx sns prepare-canisters add-nns-root $CANISTER_ID
+```
+
+Option 3: You have many canisters, run it for each canister ID
+
+```bash
+dfx sns prepare-canisters add-nns-root $CANISTER_ID_1
+dfx sns prepare-canisters add-nns-root $CANISTER_ID_2
+...
+dfx sns prepare-canisters add-nns-root $CANISTER_ID_N
+```
+
+### 2. Dapp developers choose the initial parameters of the SNS for a dapp.
+
+Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
+
+Fill out this file:
+
+```bash
+example_sns_init.yaml
 ```
 
 ### 3. Submit NNS proposal to create SNS.
 
-Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an SNS for a given dapp.
-Of course it is crucial to set the right parameters in this proposal.
-You can also find an example of how this command is used [here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
-
-:::info
-Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
-:::
-
-To create such a proposal, a common path is to use `sns-cli` and run the following:
+Submit an NNS proposal that ingests the `example_sns_init.yaml` file from stage #2
 
 ```bash
-TBD
+dfx sns propose --network local --neuron $NEURON_ID example_sns_init.yaml
 ```
+
+- `$NEURON_ID` comes from the `sns-testing` setup
 
 ### 4. The NNS proposal is decided.
 
 Nothing technical for dapp developers to do. Community votes.
-
 
 ### 5. (Automated) SNS-W deploys SNS canisters.
 
@@ -100,6 +129,10 @@ of an adopted proposal in Stage 4.
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
+```bash
+./participate_in_sns_swap.sh
+```
+
 ### 9. (Automated) SNS swap ends.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
@@ -109,77 +142,6 @@ of an adopted proposal in Stage 4.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
-
-
-## OLD
-
-<table border="1">
-    <tr>
-        <th>Stage Number</th>
-        <th>Stage</th>
-        <th>Example in `sns-testing`</th>
-        <th>Notes</th>
-    </tr>
-    <tr>
-        <td>0</td>
-        <td>Developers deploy a dapp to the Internet Computer</td>
-        <td><code>./deploy_test_canister.sh</code></td>
-        <td>Custom scripts used to deploy dapps (e.g. multi-canister dapps, use nix, etc...)</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Dapp developers choose the initial parameters of the SNS for a dapp</td>
-        <td><code>example_sns_init.yaml</code></td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Dapp developers add NNS root as co-controller of dapp</td>
-        <td><code>./let_nns_control_dapp.sh</code></td>
-        <td><code></code></td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Submit NNS proposal to create SNS</td>
-        <td rowspan="1"><code>./propose_sns.sh</code></td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>The NNS proposal is decided</td>
-        <td rowspan="5"><code>(No commands required)</code></td>
-        <td rowspan="5"><code> </code></td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>(Automated) SNS-W deploys SNS canisters</td>
-    </tr>
-        <tr>
-        <td>6</td>
-        <td>(Automated) SNS-W sets SNS root as sole controller of dapp</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>(Automated) SNS-W initializes SNS canisters according to settings from Step 1</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>(Automated) SNS swap starts</td>
-    </tr>
-    <tr>
-        <td> </td>
-        <td>Users participate in the swap</td>
-        <td rowspan="1"><code>./participate_in_sns_swap.sh</code></td>
-        <td rowspan="1"></td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>(Automated) SNS swap ends</td>
-        <td rowspan="2"><code>(No commands required)</code></td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>(Automated) SNS swap finalizes</td>
-    </tr>
-</table>
 
 ### Testing the upgrading and managing of an SNS
 
