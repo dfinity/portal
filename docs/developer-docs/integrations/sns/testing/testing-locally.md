@@ -5,13 +5,14 @@ sidebar_position: 2
 
 ## Overview
 
-To help developers, DFINITY has created the `sns-testing` repo which has scripts that help developers test the SNS process. Developers can run a local version of the Internet Computer on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary.md) of decentralizing their dapp. 
+To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the Internet Computer on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary.md) of decentralizing their dapp. 
 
 After having [chosen the initial SNS parameters in a .yaml file](../tokenomics/preparation.md) and before requesting an SNS launch in production, the SNS launch should be tested locally.
 
 **The main intent of `sns-testing` repo is for a developer to test the actual process of decentralizing their dapp.**
 
-Among other things, developers can use `sns-testing` repo to: 
+Among other things, developers can use `sns-testing` repo to:
+
 * Initiate proposals.
 * Pass proposals.
 * Start decentralization swaps.
@@ -38,13 +39,79 @@ If you have started using `sns-testing` before August 2023 and are using the old
 
 :::
 
-
-
-
 ### Testing stages of the SNS launch process
 
 For simplicity, next we map the stages introduced in the [SNS launch stages documentation](../launching/launch-summary-1proposal.md) and in the documentation [commands and actions to go through SNS launch](../launching/launch-steps-1proposal.md) to the relevant scripts in the `sns-testing` repo so you can learn what part of the launch is tested in which script.
 Note that some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
+
+## Stages
+
+### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
+
+Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
+
+
+### 2. Dapp developers add NNS root as co-controller of dapp.
+
+They can do so by running the following command:
+
+```bash
+TBD
+```
+
+### 3. Submit NNS proposal to create SNS.
+
+Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an SNS for a given dapp.
+Of course it is crucial to set the right parameters in this proposal.
+You can also find an example of how this command is used [here](https://github.com/dfinity/sns-testing/blob/main/propose_sns.sh).
+
+:::info
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
+:::
+
+To create such a proposal, a common path is to use `sns-cli` and run the following:
+
+```bash
+TBD
+```
+
+### 4. The NNS proposal is decided.
+
+Nothing technical for dapp developers to do. Community votes.
+
+
+### 5. (Automated) SNS-W deploys SNS canisters.
+
+Nothing technical for dapp developers to do. This is triggered automatically as a result
+of an adopted proposal in Stage 4.
+
+### 6. (Automated) SNS-W sets SNS root as sole controller of dapp.
+
+Nothing technical for dapp developers to do. This is triggered automatically as a result
+of an adopted proposal in Stage 4.
+
+### 7. (Automated) SNS-W initializes SNS canisters according to settings from Step 1.
+
+Nothing technical for dapp developers to do. This is triggered automatically as a result
+of an adopted proposal in Stage 4.
+
+### 8. (Automated) SNS swap starts.
+
+Nothing technical for dapp developers to do. This is triggered automatically as a result
+of an adopted proposal in Stage 4.
+
+### 9. (Automated) SNS swap ends.
+
+Nothing technical for dapp developers to do. This is triggered automatically as a result
+of an adopted proposal in Stage 4.
+
+### 10. (Automated) SNS swap finalizes.
+
+Nothing technical for dapp developers to do. This is triggered automatically as a result
+of an adopted proposal in Stage 4.
+
+
+## OLD
 
 <table border="1">
     <tr>
@@ -73,7 +140,7 @@ Note that some developers have dapps that do not match the narrow cases of `sns-
     <tr>
         <td>3</td>
         <td>Submit NNS proposal to create SNS</td>
-        <td rowspan="1"><code>./propose_sns.sh]</code></td>
+        <td rowspan="1"><code>./propose_sns.sh</code></td>
     </tr>
     <tr>
         <td>4</td>
