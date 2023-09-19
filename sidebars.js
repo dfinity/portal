@@ -389,6 +389,11 @@ const sidebars = {
                   "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
+            {
+              type: "doc",
+              label: "Independently verifying Internet Computer signatures",
+              id: "developer-docs/integrations/independently-verifying-ic-signatures",
+            },
           ],
     },
     {
