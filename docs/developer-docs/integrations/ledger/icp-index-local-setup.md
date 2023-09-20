@@ -10,8 +10,8 @@ If you have not done so already, follow this guide to [setup an ICP ledger local
 It is advised you use the same project folder that you created during the local ledger setup. Alternatively you can create a new one for the icp index canister using the following command.
 
 ```
-dfx new ledger_canister
-cd ledger_canister
+dfx new index_canister
+cd index_canister
 ``` 
 
 [OPTIONAL]
