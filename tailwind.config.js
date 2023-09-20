@@ -170,6 +170,7 @@ module.exports = {
     }),
     plugin(function ({ addVariant }) {
       addVariant("docs", "html.docs-doc-page &");
+      addVariant("dark-hero", "html[data-hero-theme='dark'] &");
     }),
     plugin(({ addComponents }) => {
       // prettier-ignore

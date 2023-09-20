@@ -38,10 +38,13 @@ const nav: NavItem[] = [
         name: "ICP Dashboard",
         href: "https://dashboard.internetcomputer.org/",
       },
-      { name: "ICP on YOutube", href: "https://www.youtube.com/c/DFINITY" },
+      { name: "ICP on Youtube", href: "https://www.youtube.com/c/DFINITY" },
       { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-      { name: "Whitepaper", href: "https://dfinity.org/whitepaper.pdf" },
-      { name: "History of ICP", href: "https://dfinity.org/whitepaper.pdf" },
+      { name: "Whitepaper", href: "/whitepaper.pdf" },
+      {
+        name: "History of ICP",
+        href: "https://wiki.internetcomputer.org/wiki/History",
+      },
     ],
 
     sections: [
@@ -85,27 +88,27 @@ const nav: NavItem[] = [
         items: [
           {
             name: "All Capabilities",
-            href: "/basics",
+            href: "/capabilities",
             description: "Get to know all possibilities",
           },
           {
             name: "Bitcoin <> ICP",
-            href: "/what-is-the-ic",
+            href: "/bitcoin-integration",
             description: "Using Bitcoin at the speed of chat",
           },
           {
             name: "Ethereum <> ICP",
-            href: "/how-it-works",
+            href: "/ethereum-integration",
             description: "Native ETH on Internet Computer",
           },
           {
             name: "Identity on ICP",
-            href: "/roadmap",
+            href: "/internet-identity",
             description: "One secure identity for all services",
           },
           {
             name: "HTTPS Outcalls",
-            href: "/capabilities/sustainability",
+            href: "/https-outcalls",
             description: "Connecting Smart Contracts to Web2",
           },
         ],
@@ -121,50 +124,76 @@ const nav: NavItem[] = [
     name: "Use",
     auxItems: [
       {
-        name: "ICP Dashboard",
-        href: "https://dashboard.internetcomputer.org/",
+        name: "Create an internet identity",
+        href: "https://identity.ic0.app/",
       },
-      { name: "ICP on YOutube", href: "https://www.youtube.com/c/DFINITY" },
-      { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-      { name: "Whitepaper", href: "https://dfinity.org/whitepaper.pdf" },
-      { name: "History of ICP", href: "https://dfinity.org/whitepaper.pdf" },
+      { name: "NNS and Staking", href: "https://nns.ic0.app/" },
     ],
 
     sections: [
       {
-        name: "Start Here",
+        name: "Step into Web3",
         items: [
           {
-            name: "The Basics",
-            href: "/basics",
-            description: "You new to ICP? Read this first",
+            name: "Ecosystem",
+            href: "/ecosystem",
+            description: "Enter the ICP ecosystem",
           },
           {
-            name: "What is ICP",
-            href: "/what-is-the-ic",
-            description: "In-depth look into the blockchain",
+            name: "ICP Token",
+            href: "/icp-token",
+            description: "Use native utility token ",
           },
           {
-            name: "How it works",
-            href: "/how-it-works",
-            description: "How the Internet Computer works",
+            name: "Staking and Governance (NNS)",
+            href: "/nns",
+            description: "Govern ICP and get rewards",
           },
           {
-            name: "Roadmap",
-            href: "/roadmap",
-            description: "Next steps in development",
-          },
-          {
-            name: "Sustainability",
-            href: "/capabilities/sustainability",
-            description: "Building green, efficient tech",
+            name: "Create an Internet Identity",
+            href: "/internet-identity",
+            description: "Securely connect to dapps",
           },
         ],
         featured: {
-          title: "Building green, efficient tech",
-          href: "/capabilities/sustainability",
-          image:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          title: "Enter the ICP ecosystem",
+          href: "/ecosystem",
+          image: "/img/nav/featured-ecosystem.webp",
+        },
+      },
+      {
+        name: "Use cases",
+        items: [
+          {
+            name: "Open Internet Sevices (SNS DAOs)",
+            href: "/sns",
+            description: "Web 3.0 builds on Web3",
+          },
+          {
+            name: "Multi-chain",
+            href: "/ckbtc",
+            description: "Vision of the World Computer",
+          },
+          {
+            name: "Social Media Dapps",
+            href: "/social-media-dapps",
+            description: "Full ownership and control over your profiles",
+          },
+          {
+            name: "DeFi",
+            href: "/defi",
+            description: "Everything on-chain",
+          },
+          {
+            name: "NFTs",
+            href: "/nfts",
+            description: "Go way beyond “overpriced links to JPGs”",
+          },
+        ],
+        featured: {
+          title: "Ethereum Integration",
+          href: "/ethereum-integration",
+          image: "/img/nav/featured-eth-integration.webp",
         },
       },
     ],
@@ -173,50 +202,36 @@ const nav: NavItem[] = [
     name: "Develop",
     auxItems: [
       {
-        name: "ICP Dashboard",
-        href: "https://dashboard.internetcomputer.org/",
+        name: "Help & Support",
+        href: "",
       },
-      { name: "ICP on YOutube", href: "https://www.youtube.com/c/DFINITY" },
-      { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-      { name: "Whitepaper", href: "https://dfinity.org/whitepaper.pdf" },
-      { name: "History of ICP", href: "https://dfinity.org/whitepaper.pdf" },
+      { name: "Developer grants", href: "" },
     ],
 
     sections: [
       {
-        name: "Start Here",
+        name: "DEFAULT",
         items: [
           {
-            name: "The Basics",
-            href: "/basics",
-            description: "You new to ICP? Read this first",
+            name: "Developer Docs",
+            href: "/docs/current/home",
+            description: "The docs for developers",
           },
           {
-            name: "What is ICP",
-            href: "/what-is-the-ic",
-            description: "In-depth look into the blockchain",
+            name: "Developer Journey Series",
+            href: "",
+            description: "Build step by step",
           },
           {
-            name: "How it works",
-            href: "/how-it-works",
-            description: "How the Internet Computer works",
-          },
-          {
-            name: "Roadmap",
-            href: "/roadmap",
-            description: "Next steps in development",
-          },
-          {
-            name: "Sustainability",
-            href: "/capabilities/sustainability",
-            description: "Building green, efficient tech",
+            name: "Sample code",
+            href: "/samples",
+            description: "Check out the sample code",
           },
         ],
         featured: {
-          title: "Building green, efficient tech",
-          href: "/capabilities/sustainability",
-          image:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          title: "Learn to build step by step",
+          href: "",
+          image: "/img/nav/featured-docs.webp",
         },
       },
     ],
@@ -225,50 +240,37 @@ const nav: NavItem[] = [
     name: "Participate",
     auxItems: [
       {
-        name: "ICP Dashboard",
-        href: "https://dashboard.internetcomputer.org/",
+        name: "Community grants",
+        href: "https://dfinity.org/community-grants/",
       },
-      { name: "ICP on YOutube", href: "https://www.youtube.com/c/DFINITY" },
-      { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-      { name: "Whitepaper", href: "https://dfinity.org/whitepaper.pdf" },
-      { name: "History of ICP", href: "https://dfinity.org/whitepaper.pdf" },
+      { name: "Feedback board", href: "" },
+      { name: "Blog", href: "https://medium.com/dfinity" },
     ],
 
     sections: [
       {
-        name: "Start Here",
+        name: "DEFAULT",
         items: [
           {
-            name: "The Basics",
-            href: "/basics",
-            description: "You new to ICP? Read this first",
+            name: "ICP community",
+            href: "/community",
+            description: "Welcome to our global ICP community",
           },
           {
-            name: "What is ICP",
-            href: "/what-is-the-ic",
-            description: "In-depth look into the blockchain",
+            name: "Education",
+            href: "",
+            description: "Content is yet to be defined",
           },
           {
-            name: "How it works",
-            href: "/how-it-works",
-            description: "How the Internet Computer works",
-          },
-          {
-            name: "Roadmap",
-            href: "/roadmap",
-            description: "Next steps in development",
-          },
-          {
-            name: "Sustainability",
-            href: "/capabilities/sustainability",
-            description: "Building green, efficient tech",
+            name: "Events",
+            href: "https://dfinity.org/news-and-events/",
+            description: "Meet tech minded people",
           },
         ],
         featured: {
-          title: "Building green, efficient tech",
-          href: "/capabilities/sustainability",
-          image:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          title: "Join the ICP community",
+          href: "/community",
+          image: "/img/nav/featured-community.webp",
         },
       },
     ],
@@ -277,8 +279,6 @@ const nav: NavItem[] = [
 
 const MarketingNav = () => {
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
-  const [flyoutOpen, setFlyoutOpen] = React.useState(true);
-  const [openFlyout, setOpenFlyout] = React.useState<NavItem | null>(nav[0]);
   const [selectedSection, setSelectedSection] = React.useState<Section | null>(
     nav[0].sections[0]
   );
@@ -287,11 +287,6 @@ const MarketingNav = () => {
   const mobileNavClasses = mobileNavOpen
     ? "translate-x-0 pointer-events-auto"
     : "-translate-x-full pointer-events-none";
-
-  // desktop nav flyout
-  const flyoutClasses = flyoutOpen
-    ? "opacity-100 pointer-events-auto visible"
-    : "opacity-0 pointer-events-none invisible";
 
   function closeNav() {
     setMobileNavOpen(false);
@@ -302,44 +297,109 @@ const MarketingNav = () => {
   }
 
   function showFlyout(item: NavItem) {
-    setFlyoutOpen(true);
-    setOpenFlyout(item);
     setSelectedSection(item.sections[0]);
   }
 
   return (
     <>
       <nav className="navbar !bg-transparent text-black flex justify-between">
-        <img src="/img/logo-notext.svg" alt="" className="h-7" />
+        <Link href="/">
+          <img src="/img/logo-notext.svg" alt="" className="h-7" />
+        </Link>
 
         <div className="hidden md:flex gap-4 items-center">
           {nav.map((item) => (
-            <button
-              className={`border-none bg-transparent px-4 py-[2px] text-white m-0 font-circular text-paragraph font-book rounded-full ${
-                item === openFlyout && "bg-white/20"
-              }`}
+            <div
+              className="border-none bg-transparent px-4 py-[2px] text-white m-0 font-medium text-paragraph rounded-full group hover:bg-white/20 cursor-pointer"
               key={item.name}
               onMouseEnter={() => showFlyout(item)}
             >
               {item.name}
-            </button>
+
+              <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+                <div className="bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
+                  <div className="flex-1 flex">
+                    {item.sections.length > 1 && (
+                      <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
+                        {item.sections.map((section) => (
+                          <button
+                            key={section.name}
+                            onClick={() => setSelectedSection(section)}
+                            className={`text-left appearance-none border-none rounded-xl font-circular font-medium text-[16px] leading-[22px] px-4 py-6 ${
+                              selectedSection === section
+                                ? "text-infinite bg-white"
+                                : "text-[#666] bg-transparent"
+                            }`}
+                          >
+                            {section.name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    <div className="flex flex-1 pl-8 pr-6 py-6 bg-white">
+                      <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
+                        {selectedSection.items.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
+                          >
+                            <span className="font-medium text-[16px] leading-[22px]">
+                              {item.name}
+                            </span>
+
+                            <span className="text-[14px] leading-[22px] font-normal text-black/60 group-hover/item:text-infinite">
+                              {item.description}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                      {selectedSection.featured && (
+                        <div className="flex-1 pl-6">
+                          <Link
+                            style={{
+                              backgroundImage: `url(${selectedSection.featured.image})`,
+                            }}
+                            className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
+                            href={selectedSection.featured.href}
+                          >
+                            <span className="text-[24px] leading-[26px] font-bold text-white flex-1 group-hover/featured:-translate-y-2 transition-transform">
+                              {selectedSection.featured.title}
+                            </span>
+
+                            <svg
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="group-hover/featured:-translate-y-2 transition-transform"
+                            >
+                              <path
+                                d="M13.5008 12L6.50044 4.99969L8.50012 3L17.5001 12L8.50012 21L6.50044 19.0003L13.5008 12Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="bg-[#FAFAFA] py-6 px-10 flex gap-8 items-center">
+                    {item.auxItems.map((item) => (
+                      <Link
+                        className="font-bold text-[11px] uppercase whitespace-nowrap flex items-center gap-1"
+                        key={item.name}
+                      >
+                        {item.name}
+                        <LinkArrowUpRight className="w-[14px]" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
-          {/* <button className="border-none bg-transparent px-4 py-[2px] text-white m-0 font-circular text-paragraph font-book">
-            Learn
-          </button>
-          <button className="appearance-none border-none bg-transparent px-4 py-[2px] text-white m-0 font-circular text-paragraph font-book">
-            Use
-          </button>
-        
-          <Link
-            href="/docs/current/home"
-            className="border-none bg-transparent px-4 py-[2px] text-white m-0 font-circular text-paragraph font-book hover:no-underline hover:text-white"
-          >
-            Develop
-          </Link>
-          <button className="border-none bg-transparent px-4 py-[2px] text-white m-0 font-circular text-paragraph font-book">
-            Community
-          </button> */}
         </div>
 
         <div className="flex gap-4 items-center">
@@ -354,92 +414,6 @@ const MarketingNav = () => {
           </button>
         </div>
       </nav>
-      <div
-        className={`absolute z-[1000] top-24 left-1/2 -translate-x-1/2 bg-white rounded-3xl overflow-hidden hidden md:flex flex-col ${flyoutClasses}`}
-      >
-        {openFlyout && (
-          <>
-            <div className="flex-1 flex">
-              {openFlyout.sections.length > 1 && (
-                <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
-                  {openFlyout.sections.map((section) => (
-                    <button
-                      key={section.name}
-                      onClick={() => setSelectedSection(section)}
-                      className={`text-left appearance-none border-none rounded-xl font-circular font-medium text-[16px] leading-[22px] px-4 py-6 ${
-                        selectedSection === section
-                          ? "text-infinite bg-white"
-                          : "text-[#666] bg-transparent"
-                      }`}
-                    >
-                      {section.name}
-                    </button>
-                  ))}
-                </div>
-              )}
-              <div className="flex flex-1 pl-8 pr-6 py-6 bg-white">
-                <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
-                  {selectedSection.items.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-black hover:no-underline hover:text-infinite flex flex-col"
-                    >
-                      <span className="font-medium text-[16px] leading-[22px]">
-                        {item.name}
-                      </span>
-
-                      <span className="text-[14px] leading-[22px] font-normal text-black/60">
-                        {item.description}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-                {selectedSection.featured && (
-                  <div className="flex-1 pl-6">
-                    <Link
-                      style={{
-                        backgroundImage: `url(${selectedSection.featured.image})`,
-                      }}
-                      className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group hover:no-underline"
-                      href={selectedSection.featured.href}
-                    >
-                      <span className="text-[24px] leading-[26px] font-bold text-white flex-1 group-hover:-translate-y-2 transition-transform">
-                        {selectedSection.featured.title}
-                      </span>
-
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="group-hover:-translate-y-2 transition-transform"
-                      >
-                        <path
-                          d="M13.5008 12L6.50044 4.99969L8.50012 3L17.5001 12L8.50012 21L6.50044 19.0003L13.5008 12Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="bg-[#FAFAFA] py-6 px-10 flex gap-8 items-center">
-              {openFlyout.auxItems.map((item) => (
-                <Link
-                  className="font-bold text-[11px] uppercase whitespace-nowrap flex items-center gap-1"
-                  key={item.name}
-                >
-                  {item.name}
-                  <LinkArrowUpRight className="w-[14px]" />
-                </Link>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
 
       <div
         className={`fixed inset-0 bg-white z-[1000] p-6 transition-transform ${mobileNavClasses}`}
