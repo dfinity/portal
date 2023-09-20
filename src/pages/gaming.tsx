@@ -336,7 +336,12 @@ function GamingPage() {
           <div className=" container-12 flex flex-col gap-16 md:gap-40 relative md:pb-30">
             <div className="blob blob-white blob-sm md:blob-md blob-x-10 blob-y-0"></div>
 
-            <TranslatedLayout imageUrl="/img/gaming/boomdao.webp">
+            <TranslatedLayout
+              video={{
+                videoUrl: "/img/gaming/boomdao.mp4",
+                videoContentType: "video/mp4",
+              }}
+            >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">BOOOOM!</h2>
 
               <p className="tw-lead-sm mb-10">
