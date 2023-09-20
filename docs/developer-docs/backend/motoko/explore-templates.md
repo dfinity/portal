@@ -1,7 +1,7 @@
 # 2: Project organization
 
 ## Overview
-If you started your tour of the IC SDK with the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
+If you started your tour of the IC SDK with the [0.6: Introduction to dfx](/docs/tutorials/developer-journey/level-0/06-intro-dfx.md) developer journey tutorial, you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 

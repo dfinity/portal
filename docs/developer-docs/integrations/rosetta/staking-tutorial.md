@@ -178,7 +178,7 @@ curl -0 -X POST http://localhost:8080/construction/payloads \
     },
     {
       "operation_identifier": { "index": 5 },
-      "type": "START_DISSOLVE",
+      "type": "START_DISSOLVING",
       "account": {
         "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8"
       },
@@ -363,7 +363,7 @@ The response must match the transaction intent.
     },
     {
       "operation_identifier": {"index": 5},
-      "type": "START_DISSOLVE",
+      "type": "START_DISSOLVING",
       "status": null,
       "account": {
         "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8"
@@ -610,7 +610,7 @@ The response must match the transaction intent.
     },
     {
       "operation_identifier": {"index": 5},
-      "type": "START_DISSOLVE",
+      "type": "START_DISSOLVING",
       "status": null,
       "account": {
         "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8"
@@ -715,7 +715,7 @@ The response should look like the following:
       {
         "operation_identifier": { "index": 5 },
         "status": "COMPLETED",
-        "type": "START_DISSOLVE",
+        "type": "START_DISSOLVING",
         "account": {
           "address": "8af54f1fa09faeca18d294e0787346264f9f1d6189ed20ff14f029a160b787e8"
         },

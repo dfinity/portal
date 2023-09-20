@@ -97,7 +97,7 @@ const navbarItems = [
           href: "/capabilities?source=nav",
         },
         {
-          label: "Bitcoin on ICP",
+          label: "Bitcoin <> ICP",
           href: "/bitcoin-integration?source=nav",
         },
         {
@@ -251,6 +251,10 @@ const navbarItems = [
       [
         menuDivider("Get Involved"),
         {
+          label: "ICP Community",
+          href: "/community?source=nav",
+        },
+        {
           label: "Become a Node Provider",
           href: "/node-providers?source=nav",
         },
@@ -361,7 +365,7 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer grants", href: "https://dfinity.org/grants" },
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -521,7 +525,7 @@ const config = {
             items: [
               {
                 label: "Internet Computer Association",
-                href: "https://association.internetcomputer.org/",
+                href: "https://lbbne-haaaa-aaaam-absda-cai.icp0.io/",
               },
               {
                 label: "Wiki",

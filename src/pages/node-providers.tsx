@@ -10,7 +10,7 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
-import Stats from "../components/NodeProvidersPage/Stats";
+import Stats from "../components/Common/Stats";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const queryClient = new QueryClient();
@@ -133,7 +133,6 @@ function NodeProvidersPage() {
               )}
             </div>
             <Stats />
-            
           </QueryClientProvider>
         </section>
         <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40 mt-20 md:mt-40">
@@ -148,18 +147,18 @@ function NodeProvidersPage() {
               Every node on the Internet Computer is a dedicated physical server
               called a node machine. To provide true decentralization, each node
               machine is run by an independent node provider, typically in a
-              data center. This network of nodes is sovereign, as there is no reliance
-              on corporate cloud service providers. So they cannot be switched off
-              or tampered with. 
-               </p>
+              data center. This network of nodes is sovereign, as there is no
+              reliance on corporate cloud service providers. So they cannot be
+              switched off or tampered with.
+            </p>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              This is different to other blockchains where network nodes are created using 
-              simple software that interacts with other nodes but are easy
-              to spin up on centralized cloud. Node machines on the Internet
-              Computer are also technically sovereign, built to standardized
-              public hardware specifications that support the network when under
-              load, and do not fall behind other nodes within the same subnet
-              blockchain.
+              This is different to other blockchains where network nodes are
+              created using simple software that interacts with other nodes but
+              are easy to spin up on centralized cloud. Node machines on the
+              Internet Computer are also technically sovereign, built to
+              standardized public hardware specifications that support the
+              network when under load, and do not fall behind other nodes within
+              the same subnet blockchain.
             </p>
             <p className="mb-0">
               <Link
@@ -177,12 +176,12 @@ function NodeProvidersPage() {
               To preserve the decentralization of the network, each node
               provider is voted in by token-holders via the NNS, the DAO that
               governs the Internet Computer. Becoming a node provider entails
-              submitting a proposal along with a self-declaration document
-              that state provision of node machines, intent and proof of 
-              identity. Based on this information, the community votes on
-              the onboarding proposal.
-              </p>
-              <p className="tw-lead-sm mb-6 md:mb-10">
+              submitting a proposal along with a self-declaration document that
+              state provision of node machines, intent and proof of identity.
+              Based on this information, the community votes on the onboarding
+              proposal.
+            </p>
+            <p className="tw-lead-sm mb-6 md:mb-10">
               If node providers are accepted into the community and their node
               machines are up and running, they receive rewards for their
               services. Rewards are set by the NNS DAO, which follows the 30-day
@@ -246,13 +245,14 @@ function NodeProvidersPage() {
             </p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The Internet Computer is also the first blockchain to join the
-              Proof of Green (PoG) initiative, which aims to set blockchain industry
-              standards by making ‘claims of green’ transparent, verifiable and
-              accountable through metrics and real-time reporting. PoG is still
-              in a pilot phase but a handful of nodes and their carbon emissions
-              are already represented on a live dashboard. Further steps towards
-              carbon footprint transparency are on the roadmap, including data
-              sourcing, validation and incentive mechanisms.
+              Proof of Green (PoG) initiative, which aims to set blockchain
+              industry standards by making ‘claims of green’ transparent,
+              verifiable and accountable through metrics and real-time
+              reporting. PoG is still in a pilot phase but a handful of nodes
+              and their carbon emissions are already represented on a live
+              dashboard. Further steps towards carbon footprint transparency are
+              on the roadmap, including data sourcing, validation and incentive
+              mechanisms.
             </p>
             <p className="mb-0">
               <Link
@@ -285,7 +285,10 @@ function NodeProvidersPage() {
               entities across the globe, including...
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://forum.dfinity.org/t/new-node-provider-proposals/16643" className="button-primary">
+              <Link
+                href="https://forum.dfinity.org/t/new-node-provider-proposals/16643"
+                className="button-primary"
+              >
                 Join the NP community
               </Link>
             </motion.p>
@@ -294,121 +297,120 @@ function NodeProvidersPage() {
             className="flex flex-wrap gap-5 justify-center items-center mt-12"
             variants={transitions.container}
           >
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-electric.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-scalar.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-eterna.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-signum.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-         
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-icp-global.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-           <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-tomahawk.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-warburg-serres.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-9yards.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-kr1.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-zondax.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-anonstake.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-one-sixty-two.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-archery.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-polychain.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-dfinity.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-          <motion.img
-            variants={transitions.item}
-            src="/img/node-providers/np-rivram.webp"
-            alt=""
-            loading="lazy"
-            className="h-20 md:h-30"
-          />
-            
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-electric.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-scalar.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-eterna.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-signum.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-icp-global.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-tomahawk.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-warburg-serres.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-9yards.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-kr1.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-zondax.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-anonstake.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-one-sixty-two.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-archery.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-polychain.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-dfinity.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
+            <motion.img
+              variants={transitions.item}
+              src="/img/node-providers/np-rivram.webp"
+              alt=""
+              loading="lazy"
+              className="h-20 md:h-30"
+            />
           </AnimateSpawn>
         </section>
 
@@ -428,7 +430,7 @@ function NodeProvidersPage() {
               className="tw-heading-3 md:tw-heading-60 mb-10 mt-10 md:mt-0 md:mb-16"
               variants={transitions.item}
             >
-              What you need to know about being a node provider 
+              What you need to know about being a node provider
             </motion.h2>
           </AnimateSpawn>
 
@@ -445,78 +447,106 @@ function NodeProvidersPage() {
 
             <div className="space-y-20 flex-[6]">
               <AnimateSpawn className="space-y-6" variants={transitions.fadeIn}>
-                <h3 className="tw-heading-4 md:tw-heading-3">
-                  Where to start
-                </h3>
+                <h3 className="tw-heading-4 md:tw-heading-3">Where to start</h3>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  Before making the decision to become a node provider, it is 
-                  recommended to start by familiarizing yourself with the following:
+                  Before making the decision to become a node provider, it is
+                  recommended to start by familiarizing yourself with the
+                  following:
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Introduction_to_ICP" target="_blank">
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Introduction_to_ICP"
+                      target="_blank"
+                    >
                       Brief intro to the Internet Computer
                     </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Sovereign_Network" target="_blank">
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Sovereign_Network"
+                      target="_blank"
+                    >
                       The Internet Computer architecture
                     </Link>
-                  </li> 
+                  </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer" target="_blank">
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer"
+                      target="_blank"
+                    >
                       Governance of the Internet Computer
                     </Link>
-                  </li> 
+                  </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+                      target="_blank"
+                    >
                       Node provider overview documentation
-                    </Link> 
-                  </li> 
+                    </Link>
+                  </li>
                 </ul>
-                <p className="tw-paragraph md:tw-lead-sm">
-                 
-                </p>
+                <p className="tw-paragraph md:tw-lead-sm"></p>
               </AnimateSpawn>
               <AnimateSpawn className="space-y-6" variants={transitions.fadeIn}>
                 <h3 className="tw-heading-4 md:tw-heading-3">
                   Onboarding checklist
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm">
-                  Now that you have a basic understanding of how the 
-                  Internet Computer works, you can begin the onboarding 
-                  process with the help of the following resources:
+                  Now that you have a basic understanding of how the Internet
+                  Computer works, you can begin the onboarding process with the
+                  help of the following resources:
                 </p>
                 <ul className="checklist space-y-3 tw-paragraph md:tw-lead-sm">
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" target="_blank">
-                       Fill out self-declaration form 
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+                      target="_blank"
+                    >
+                      Fill out self-declaration form
                     </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
-                       Submit proposal and onboard your nodes to the Internet Computer 
-                    </Link> 
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
+                      target="_blank"
+                    >
+                      Submit proposal and onboard your nodes to the Internet
+                      Computer
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel" target="_blank">
-                          Join the node provider matrix channel 
-                    </Link> 
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel"
+                      target="_blank"
+                    >
+                      Join the node provider matrix channel
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide" target="_blank">
-                      Choose and purchase hardware 
-                    </Link> 
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide"
+                      target="_blank"
+                    >
+                      Choose and purchase hardware
+                    </Link>
                   </li>
                   <li className="checklist-item pl-8">
-                    <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding" target="_blank">
-                         Set up servers in a data center
-                    </Link> 
+                    <Link
+                      href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
+                      target="_blank"
+                    >
+                      Set up servers in a data center
+                    </Link>
                   </li>
                 </ul>
                 <p className="">
-                  <Link href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation" className="button-primary">
-                    Get started 
+                  <Link
+                    href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+                    className="button-primary"
+                  >
+                    Get started
                   </Link>
                 </p>
               </AnimateSpawn>

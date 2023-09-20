@@ -512,21 +512,21 @@ function FeaturesPage() {
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-3 mb-4 "
             >
-              Chain-key transactions
+              Cross-chain transaction signing
             </motion.h3>
             <motion.p
               className="tw-paragraph md:tw-lead-sm text-black-60 mb-0"
               variants={transitions.item}
             >
-              Chain-key signatures are the innovation that powers direct
-              integration with other blockchains without the use of bridges. It
-              allows the Internet Computer to natively create transactions on
-              other blockchains like Bitcoin and Ethereum. Currently, the ECDSA
-              signature scheme, and with it most other blockchains, are
-              supported.
+              Threshold ECDSA, coupled with chain-key cryptography is the main
+              innovation behind direct integration with other blockchains without
+              the use of bridges. It allows the Internet Computer to natively create
+              signed transactions on other blockchains such as Bitcoin and Ethereum.
+              The Internet Computer implements secure threshold ECDSA signing, which is 
+              the signature scheme used by most blockchains.
               <Link
                 href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
-                className="tw-heading-6 flex gap-2 items-center"
+                className="tw-heading-6 flex gap-2 items-center mt-10"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
                 Learn more

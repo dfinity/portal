@@ -85,13 +85,11 @@ const Decks = () => {
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
       <Card
         className="bg-[linear-gradient(270deg,#C772EF_6.01%,#6A85F1_100%)] text-white hover:text-white"
-        href="/icp_version_9.5.pdf"
+        href="https://deck.internetcomputer.org"
       >
-        <CardLabel>Download Presentation</CardLabel>
+        <CardLabel>Pitch Deck</CardLabel>
         <CardTitle>Internet Computer</CardTitle>
-        <CardBody>
-          <DownloadIcon /> PDF - Last update: August 14th, 2023
-        </CardBody>
+
         <CardImage
           src="/img/home/deck-astronaut.webp"
           alt="ICP Pitch Presenation"
@@ -100,13 +98,11 @@ const Decks = () => {
       </Card>
       <Card
         className="text-black hover:text-black bg-white"
-        href="/ii_version_1.pdf"
+        href="https://identitydeck.internetcomputer.org"
       >
-        <CardLabel>Download Presentation</CardLabel>
+        <CardLabel>Pitch Deck</CardLabel>
         <CardTitle className="text-infinite">Internet Identity</CardTitle>
-        <CardBody className="text-black/60">
-          <DownloadIcon /> PDF - Last update: June 20th, 2023
-        </CardBody>
+
         <CardImage
           src="/img/home/deck-identity.webp"
           alt="Internet Identity Overview"
