@@ -6,7 +6,7 @@ If you are working in a local development environment, i.e with a local replica 
 ### Step 1: Deploy a local ICP ledger.
 If you have not done so already, follow the guide to [setup an ICP ledger locally](./ledger-local-setup.md) and then continue with this guide. It is assumed that you have followed the steps required to set up a local ledger and that all prerequisites are fulfilled. 
 
-### Step 2 [Optional]: Create a new project folder
+### Step 2 [Optional]: Create a new project folder.
 It is advised you use the same project folder that you created during the local ledger setup. Alternatively you can create a new one for the icp index canister using the following command.
 
 ```
