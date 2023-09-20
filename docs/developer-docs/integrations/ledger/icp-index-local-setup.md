@@ -26,7 +26,8 @@ The URL for the IPC index Wasm module is `curl -o index.wasm.gz "https://downloa
 
 The URL for the ICP index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/index/index.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did"`.
 
-### Step 4:  Open the `dfx.json` file in your project's directory. Add the icp_index canister data and insert the canister data for your ICP ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICP ledger and ICP index, your dfx.json file should look like this:
+### Step 4: Configuring the `dfx.json` file
+ Open the `dfx.json` file in your project's directory. Add the icp_index canister data and insert the canister data for your ICP ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICP ledger and ICP index, your dfx.json file should look like this:
 
 ``` json
 {
