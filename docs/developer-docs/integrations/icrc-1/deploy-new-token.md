@@ -31,8 +31,8 @@ chmod +x download_latest_icrc1_ledger.sh
   "canisters": {
     "icrc1-ledger": {
       "type": "custom",
-      "wasm": "icrc1-ledger.wasm.gz",
-      "candid": "icrc1-ledger.did"
+      "wasm": "icrc1_ledger.wasm",
+      "candid": "icrc1_ledger.did"
     }
   }
 }

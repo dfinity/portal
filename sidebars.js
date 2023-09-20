@@ -79,6 +79,7 @@ const sidebars = {
         "samples/internet-identity-sample",
         "samples/invoice-canister",
         "samples/ios-integration",
+        "samples/native-app-integration",
         "samples/minimal-counter-dapp",
         "samples/nft",
         "samples/nft-wallet",
