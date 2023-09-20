@@ -1,43 +1,42 @@
 # ICRC-Index local setup
 
 ## Overview
-If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICRC ledger nor the ICRC index canister. If your application is using the ICRC index canister and you want to test it you can setup the ICRC index and ICRC ledger locally. Neither of the two canisters will have any information about the state of the ICRC ledger on mainnet. You will have to create your own transactions on the ICRC ledger so that the ICRC index can serve them through its endpoints. 
+If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access an ICRC ledger nor its ICRC index canister. If your application is using an ICRC index canister and you want to test it you can setup an ICRC index and ICRC ledger locally. Neither of the two canisters will have any information about the state of a particular ICRC ledger on mainnet. You will have to create your own transactions on the ICRC ledger so that the ICRC index can serve them through its endpoints. 
 
 ### Step 1: Deploy a local ICRC ledger
-If you have not done so already, follow this guide to [setup an ICRC ledger locally](./ledger-local-setup.md.mdx) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ledger and that all prerequisites are fullfilled. 
+If you have not done so already, follow this guide to [setup an ICRC ledger locally](./deploy-new-token.md) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ICRC ledger and that all prerequisites are fullfilled. 
 
 ### Step 2 [Optional]: Create a new project folder
 It is advised you use the same project folder that you created during the local ledger setup. Alternatively you can create a new one for the ICRC index canister using the following command.
 
 ```
-dfx new ledger_canister
-cd ledger_canister
+dfx new icrc_index_canister
+cd icrc_index_canister
 ``` 
 
 [OPTIONAL]
-If you created a new project folder, you will either have to make sure the dfx.json file contains the correct data on the ICRC ledger (as described in the [local ledger setup guide](./ledger-local-setup.md.mdx)) or you communicate with the ICRC ledger from its project folder that contains the correct dfx.json file. If you try to communicate with the ICRC ledger from a new project folder where the dfx.json file does not contain information on the ICRC ledger canister, you will not be able to create transactions. 
-
+If you created a new project folder, you will either have to make sure the dfx.json file contains the correct data on the ICRC ledger (as described in the [local ICRC ledger setup guide](./deploy-new-token.md)) or you communicate with the ICRC ledger from its project folder that contains the correct dfx.json file. If you try to communicate with the ICRC ledger from a new project folder where the dfx.json file does not contain information on the ICRC ledger canister, you will not be able to create transactions. 
 
 ### Step 3:  Fetch the ICRC index wasm and candid files
 
 Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision (IC_VERSION). At the time of writing, this is `d87954601e4b22972899e9957e800406a0a6b929`.
 
-The URL for the IPC index Wasm module is `curl -o index.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-ICRC-index-canister.wasm.gz"`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-ICRC-index-canister.wasm.gz`.
+The URL for the IPC index Wasm module is `curl -o index.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-index-ng.wasm.gz"`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-index-ng.wasm.gz`.
 
-The URL for the ICRC index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ICRC_ledger/index/index.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/ICRC_ledger/index/index.did"`.
+The URL for the ICRC index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/index-ng/index-ng.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/index-ng/index-ng.did"`.
 
-### Step 4:  Open the `dfx.json` file in your project's directory. Add the ICRC_index canister data and insert the canister data for your ICRC ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICRC ledger and ICRC index, your dfx.json file should look like this:
+### Step 4:  Open the `dfx.json` file in your project's directory. Add the ICRC index canister data and insert the canister data for your ICRC ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICRC ledger and ICRC index, your dfx.json file should look like this:
 
 ``` json
 {
   "canisters": {
     "ICRC_index": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/ICRC_ledger/index/index.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-ICRC-index-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/index-ng/index-ng.did",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-index-ng.wasm.gz",
             "remote": {
         "id": {
-          "ic": "qhbym-qaaaa-aaaaa-aaafq-cai"
+          "ic": "n5wcd-faaaa-aaaar-qaaea-cai"
         }
       }
     },
@@ -47,7 +46,7 @@ The URL for the ICRC index .did file is `curl -o index.did "https://raw.githubus
       "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
-          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+          "ic": "mxzaz-hqaaa-aaaar-qaada-cai"
         }
       }
     }
@@ -79,10 +78,10 @@ export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
 ### Step 7: Deploy the ICRC index canister:
-Here it is assumed that the canister id of your local ICRC ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICRC ledger canister id. 
+Here it is assumed that the canister id of your local ICRC ledger is `mxzaz-hqaaa-aaaar-qaada-cai`, otherwise replace it with your ICRC ledger canister id. 
 
 ```
-dfx deploy ICRC_index --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
+dfx deploy ICRC_index --argument '(record {ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai"})'
 ```
 
 The ICRC index canister will start synching right away and will automatically try to fetch new blocks from the ICRC ledger every few seconds. 
@@ -90,15 +89,15 @@ The ICRC index canister will start synching right away and will automatically tr
 ### Step 8: Check the status and ICRC ledger id on the ICRC index canister.
 You can check that the correct ledger id was set but runnig the following command.
 ```
-dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai ledger_id '()'
+dfx canister call n5wcd-faaaa-aaaar-qaaea-cai ledger_id '()'
 ```
 The result is the ledger canister id that the index canister is using to sync.
 ```
-(principal "ryjl3-tyaaa-aaaaa-aaaba-cai")
+(principal "mxzaz-hqaaa-aaaar-qaada-cai")
 ```
 
 ```
-dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
+dfx canister call n5wcd-faaaa-aaaar-qaaea-cai status '()'
 ```
 It should return something like this:
 ```
@@ -112,11 +111,11 @@ You can check that the synchronization of the index is working by creating some 
 If you followed the guide on setting up an ICRC ledger locally your default identity should have some ICRC to be send. 
 Send some ICRC to any prinICRCal.
 ```
-dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
+dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
 ```
 
 ```
-dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
+dfx canister call n5wcd-faaaa-aaaar-qaaea-cai status '()'
 ```
 It should now indicate that an additional block was synced compared to the last time we called the status endpoint.
 ```
@@ -127,7 +126,7 @@ It should now indicate that an additional block was synced compared to the last 
 You can use the ICRC index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (The limit of blocks per call is usually set to 2000 blocks).
 ```
-dfx canister callqhbym-qaaaa-aaaaa-aaafq-cai get_blocks '(record{start=0:nat;length=2:nat})'
+dfx canister call n5wcd-faaaa-aaaar-qaaea-cai get_blocks '(record{start=0:nat;length=2:nat})'
 ```
 Which will return a vector the encoded blocks.
 ```
@@ -155,7 +154,7 @@ hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
 
 Then you can query the transactions for this principal with the default subaccount set by calling. 
 ```
-dfx canister call be2us-64aaa-aaaaa-qaabq-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
+dfx canister call n5wcd-faaaa-aaaar-qaaea-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
 The result will include the intial mint operation as well as the transfer that we made.
@@ -209,7 +208,7 @@ For example the default principal `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt
 
 You can also always check the current balance of an account by calling
 ```
-dfx canister call be2us-64aaa-aaaaa-qaabq-cai icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
+dfx canister call n5wcd-faaaa-aaaar-qaaea-cai icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
 ```
 ```
 (99_989_880_000 : nat64)
