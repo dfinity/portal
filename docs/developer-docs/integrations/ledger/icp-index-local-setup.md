@@ -206,6 +206,22 @@ The result will include the intial mint operation as well as the transfer that w
 ```
 The ICP ledger uses AccountIdentifier which are a hashed version of Account (Principal and Subaccount) for privacy. This also means that the returned transactions will show accounts as the hash in bytes rather than the actual Accounts.
 For example the default principal `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe` with no subaccount set results in the hash `0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27`.
+You can check a principals AccountIdentifier by running:
+```
+dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
+```
+It will return the AccountIdentifier.
+```
+0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27
+```
+Alternatively, you can also add a subaccount. This will change the AccountIdentifier although the principal is the same
+
+```
+dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe --subaccount 0000000000000000000000000000000000000000000000000000000000000001
+```
+```
+bd719f30834fe34f420904cde95a2cef6404ef7a8489cde57056b4daddab28b1
+```
 
 You can also always check the current balance of an account by calling
 ```
