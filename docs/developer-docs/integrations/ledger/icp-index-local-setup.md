@@ -224,7 +224,7 @@ dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-u
 bd719f30834fe34f420904cde95a2cef6404ef7a8489cde57056b4daddab28b1
 ```
 
-You can also always check the current balance of an account by calling
+You can also always check the current balance of an account by calling:
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
 ```
