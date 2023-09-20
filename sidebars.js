@@ -439,6 +439,7 @@ const sidebars = {
             "developer-docs/integrations/ledger/deploy-new-token",
             "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
+            "developer-docs/integrations/ledger/icp-index-local-setup",
           ],
         },
         {
