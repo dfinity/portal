@@ -1,7 +1,7 @@
 # ICP-Index local setup
 
 ## Overview
-If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
+If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it, you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on the mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
 
 ### Step 1: Deploy a local ICP ledger
 If you have not done so already, follow this guide to [setup an ICP ledger locally](./ledger-local-setup.md) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ledger and that all prerequisites are fullfilled. 
