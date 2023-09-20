@@ -75,7 +75,7 @@ dfx identity use default
 export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
-### Step 8: Deploy the ledger canister with archiving options:
+### Step 8: Deploy the ledger canister:
 
 ```
 dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai ledger_canister --argument "
