@@ -1,13 +1,13 @@
-# ICP-Index local setup
+# ICRC-Index local setup
 
 ## Overview
-If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
+If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICRC ledger nor the ICRC index canister. If your application is using the ICRC index canister and you want to test it you can setup the ICRC index and ICRC ledger locally. Neither of the two canisters will have any information about the state of the ICRC ledger on mainnet. You will have to create your own transactions on the ICRC ledger so that the ICRC index can serve them through its endpoints. 
 
-### Step 1: Deploy a local ICP ledger
-If you have not done so already, follow this guide to [setup an ICP ledger locally](./ledger-local-setup.md.mdx) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ledger and that all prerequisites are fullfilled. 
+### Step 1: Deploy a local ICRC ledger
+If you have not done so already, follow this guide to [setup an ICRC ledger locally](./ledger-local-setup.md.mdx) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ledger and that all prerequisites are fullfilled. 
 
 ### Step 2 [Optional]: Create a new project folder
-It is advised you use the same project folder that you created during the local ledger setup. Alternatively you can create a new one for the icp index canister using the following command.
+It is advised you use the same project folder that you created during the local ledger setup. Alternatively you can create a new one for the ICRC index canister using the following command.
 
 ```
 dfx new ledger_canister
@@ -15,26 +15,26 @@ cd ledger_canister
 ``` 
 
 [OPTIONAL]
-If you created a new project folder, you will either have to make sure the dfx.json file contains the correct data on the icp ledger (as described in the [local ledger setup guide](./ledger-local-setup.md.mdx)) or you communicate with the ICP ledger from its project folder that contains the correct dfx.json file. If you try to communicate with the ICP ledger from a new project folder where the dfx.json file does not contain information on the ICP ledger canister, you will not be able to create transactions. 
+If you created a new project folder, you will either have to make sure the dfx.json file contains the correct data on the ICRC ledger (as described in the [local ledger setup guide](./ledger-local-setup.md.mdx)) or you communicate with the ICRC ledger from its project folder that contains the correct dfx.json file. If you try to communicate with the ICRC ledger from a new project folder where the dfx.json file does not contain information on the ICRC ledger canister, you will not be able to create transactions. 
 
 
-### Step 3:  Fetch the ICP index wasm and candid files
+### Step 3:  Fetch the ICRC index wasm and candid files
 
 Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision (IC_VERSION). At the time of writing, this is `d87954601e4b22972899e9957e800406a0a6b929`.
 
-The URL for the IPC index Wasm module is `curl -o index.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icp-index-canister.wasm.gz"`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icp-index-canister.wasm.gz`.
+The URL for the IPC index Wasm module is `curl -o index.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-ICRC-index-canister.wasm.gz"`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-ICRC-index-canister.wasm.gz`.
 
-The URL for the ICP index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/index/index.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did"`.
+The URL for the ICRC index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/ICRC_ledger/index/index.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/ICRC_ledger/index/index.did"`.
 
-### Step 4:  Open the `dfx.json` file in your project's directory. Add the icp_index canister data and insert the canister data for your ICP ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICP ledger and ICP index, your dfx.json file should look like this:
+### Step 4:  Open the `dfx.json` file in your project's directory. Add the ICRC_index canister data and insert the canister data for your ICRC ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICRC ledger and ICRC index, your dfx.json file should look like this:
 
 ``` json
 {
   "canisters": {
-    "icp_index": {
+    "ICRC_index": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icp-index-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/ICRC_ledger/index/index.did",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-ICRC-index-canister.wasm.gz",
             "remote": {
         "id": {
           "ic": "qhbym-qaaaa-aaaaa-aaafq-cai"
@@ -43,7 +43,7 @@ The URL for the ICP index .did file is `curl -o index.did "https://raw.githubuse
     },
     "ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/ICRC_ledger/ledger.did",
       "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
@@ -63,7 +63,7 @@ The URL for the ICP index .did file is `curl -o index.did "https://raw.githubuse
 }
 ```
 
-In an existing project you would only need to add the `icp_index` and `ledger_canister` canisters to the `canisters` section.
+In an existing project you would only need to add the `ICRC_index` and `ledger_canister` canisters to the `canisters` section.
 
 ### Step 5 [Optional]:  Start a local replica.
 This step can be skipped if you already have a local replica up and running. 
@@ -78,16 +78,16 @@ dfx identity use default
 export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
-### Step 7: Deploy the ICP index canister:
-Here it is assumed that the canister id of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister id. 
+### Step 7: Deploy the ICRC index canister:
+Here it is assumed that the canister id of your local ICRC ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICRC ledger canister id. 
 
 ```
-dfx deploy icp_index --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
+dfx deploy ICRC_index --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
 ```
 
-The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds. 
+The ICRC index canister will start synching right away and will automatically try to fetch new blocks from the ICRC ledger every few seconds. 
 
-### Step 8: Check the status and ICP ledger id on the ICP index canister.
+### Step 8: Check the status and ICRC ledger id on the ICRC index canister.
 You can check that the correct ledger id was set but runnig the following command.
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai ledger_id '()'
@@ -104,13 +104,13 @@ It should return something like this:
 ```
 (record { num_blocks_synced = 1 : nat64 })
 ```
-Depending on how many mint operations you created while setting up your ICP ledger the number of synched blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial the guide on setting up a local ledger was used and there only one initial balance was parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1. 
+Depending on how many mint operations you created while setting up your ICRC ledger the number of synched blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial the guide on setting up a local ledger was used and there only one initial balance was parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1. 
 
 ### Step 9: Create some new blocks to sync.
 
-You can check that the synchronization of the index is working by creating some transaction on the ICP ledger and then checking the status.
-If you followed the guide on setting up an ICP ledger locally your default identity should have some ICP to be send. 
-Send some ICP to any prinicpal.
+You can check that the synchronization of the index is working by creating some transaction on the ICRC ledger and then checking the status.
+If you followed the guide on setting up an ICRC ledger locally your default identity should have some ICRC to be send. 
+Send some ICRC to any prinICRCal.
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
 ```
@@ -124,7 +124,7 @@ It should now indicate that an additional block was synced compared to the last 
 ```
 
 ### Step 10: Fetch some blocks
-You can use the ICP index canister to fetch blocks like so.
+You can use the ICRC index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (The limit of blocks per call is usually set to 2000 blocks).
 ```
 dfx canister callqhbym-qaaaa-aaaaa-aaafq-cai get_blocks '(record{start=0:nat;length=2:nat})'
@@ -204,7 +204,7 @@ The result will include the intial mint operation as well as the transfer that w
   },
 )
 ```
-The ICP ledger uses AccountIdentifier which are a hashed version of Account (Principal and Subaccount) for privacy. This also means that the returned transactions will show accounts as the hash in bytes rather than the actual Accounts.
+The ICRC ledger uses AccountIdentifier which are a hashed version of Account (Principal and Subaccount) for privacy. This also means that the returned transactions will show accounts as the hash in bytes rather than the actual Accounts.
 For example the default principal `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe` with no subaccount set results in the hash `0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27`.
 
 You can also always check the current balance of an account by calling
