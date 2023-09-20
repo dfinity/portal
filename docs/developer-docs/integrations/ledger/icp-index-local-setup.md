@@ -4,7 +4,7 @@
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
 
 ### Step 1: Deploy a local ICP ledger
-If you have not done so already, follow this guide to [setup an ICP ledger locally](./ledger-local-setup.md.mdx) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ledger and that all prerequisites are fullfilled. 
+If you have not done so already, follow this guide to [setup an ICP ledger locally](./ledger-local-setup.md) and then continue with this guide. It is assumed that you have followed the steps described in the guide on setting up a local ledger and that all prerequisites are fullfilled. 
 
 ### Step 2 [Optional]: Create a new project folder
 It is advised you use the same project folder that you created during the local ledger setup. Alternatively you can create a new one for the icp index canister using the following command.
@@ -15,7 +15,7 @@ cd ledger_canister
 ``` 
 
 [OPTIONAL]
-If you created a new project folder, you will either have to make sure the dfx.json file contains the correct data on the icp ledger (as described in the [local ledger setup guide](./ledger-local-setup.md.mdx)) or you communicate with the ICP ledger from its project folder that contains the correct dfx.json file. If you try to communicate with the ICP ledger from a new project folder where the dfx.json file does not contain information on the ICP ledger canister, you will not be able to create transactions. 
+If you created a new project folder, you will either have to make sure the dfx.json file contains the correct data on the icp ledger (as described in the [local ledger setup guide](./ledger-local-setup.md)) or you communicate with the ICP ledger from its project folder that contains the correct dfx.json file. If you try to communicate with the ICP ledger from a new project folder where the dfx.json file does not contain information on the ICP ledger canister, you will not be able to create transactions. 
 
 
 ### Step 3:  Fetch the ICP index wasm and candid files
