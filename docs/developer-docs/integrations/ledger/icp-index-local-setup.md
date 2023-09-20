@@ -82,7 +82,7 @@ export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 Here it is assumed that the canister id of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister id. 
 
 ```
-dfx deploy icp_index --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
+dfx deploy icp_index --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
 ```
 
 The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds. 
@@ -118,7 +118,7 @@ dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = rec
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```
-It should now indicate that an additional block was synced compared to the last time we called the status endpoint.
+It should now indicate that an additional block was synced compared to the last time we called the status endpoint. You may have to wait a couple of seconds for the index canister to sync. 
 ```
 (record { num_blocks_synced = 2 : nat64 })
 ```
@@ -127,15 +127,15 @@ It should now indicate that an additional block was synced compared to the last 
 You can use the ICP index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (The limit of blocks per call is usually set to 2000 blocks).
 ```
-dfx canister callqhbym-qaaaa-aaaaa-aaafq-cai get_blocks '(record{start=0:nat;length=2:nat})'
+dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_blocks '(record{start=0:nat;length=2:nat})'
 ```
 Which will return a vector the encoded blocks.
 ```
 (
   record {
     blocks = vec {
-      blob "\12\0a\08\c8\c8\aa\8e\8a\d2\96\c3\17\1a=\12-\12\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\1a\07\08\80\d0\db\c3\f4\02\22\002\0a\08\c8\c8\aa\8e\8a\d2\96\c3\17";
-      blob "\0a\22\0a !\b1\145a\e4A\ed\0c,\0b((AN%%\1a\ae\bf\1cb\1d@W;\cc9\14\dc\8c\f2\12\0a\08\88\8f\cc\a9\a5\e2\96\c3\17\1aX\1aT\0a\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\12\22\0a \930\d6\d8\cd\8ar\a5\a9Z\b7\d6@P\18\c4\ca^\bd\0cN\c1o6\eb\91\dbu\14\bd\86#\1a\05\08\80\ad\e2\04\22\03\08\90N\22\00";
+      blob "\12\0a\08\90\83\a6\c6\c7\b8\a6\c3\17\1a=\12-\12\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\1a\07\08\80\d0\db\c3\f4\02\22\002\0a\08\90\83\a6\c6\c7\b8\a6\c3\17";
+      blob "\0a\22\0a \912w)\02\f3a\9e\bc+\eax\e8D\b9\c9\09\14\12\cc%ZNRJ\06\c7?\a8\d1\97/\12\0a\08\a8\cd\b5\fb\a6\ba\a6\c3\17\1aW\1aS\0a\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\12\22\0a \930\d6\d8\cd\8ar\a5\a9Z\b7\d6@P\18\c4\ca^\bd\0cN\c1o6\eb\91\dbu\14\bd\86#\1a\04\08\a0\8d\06\22\03\08\90N\22\00";
     };
     chain_length = 2 : nat64;
   },
@@ -155,7 +155,7 @@ hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
 
 Then you can query the transactions for this principal with the default subaccount set by calling. 
 ```
-dfx canister call be2us-64aaa-aaaaa-qaabq-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
+dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
 The result will include the intial mint operation as well as the transfer that we made.
@@ -164,10 +164,10 @@ The result will include the intial mint operation as well as the transfer that w
 (
   variant {
     Ok = record {
-      balance = 99_989_880_000 : nat64;
+      balance = 99_999_890_000 : nat64;
       transactions = vec {
         record {
-          id = 2 : nat64;
+          id = 1 : nat64;
           transaction = record {
             memo = 0 : nat64;
             icrc1_memo = null;
@@ -183,19 +183,19 @@ The result will include the intial mint operation as well as the transfer that w
           };
         };
         record {
-          id = 1 : nat64;
+          id = 0 : nat64;
           transaction = record {
             memo = 0 : nat64;
             icrc1_memo = null;
             operation = variant {
-              Transfer = record {
-                to = "9330d6d8cd8a72a5a95ab7d6405018c4ca5ebd0c4ec16f36eb91db7514bd8623";
-                fee = record { e8s = 10_000 : nat64 };
-                from = "0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27";
-                amount = record { e8s = 10_000_000 : nat64 };
+              Mint = record {
+                to = "0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27";
+                amount = record { e8s = 100_000_000_000 : nat64 };
               }
             };
-            created_at_time = null;
+            created_at_time = opt record {
+              timestamp_nanos = 1_695_211_378_870_682_000 : nat64;
+            };
           };
         };
       };
@@ -209,8 +209,8 @@ For example the default principal `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt
 
 You can also always check the current balance of an account by calling
 ```
-dfx canister call be2us-64aaa-aaaaa-qaabq-cai icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
+dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
 ```
 ```
-(99_989_880_000 : nat64)
+(99_999_890_000 : nat64)
 ```
