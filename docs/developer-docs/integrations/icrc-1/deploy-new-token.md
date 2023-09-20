@@ -27,7 +27,6 @@ chmod +x download_latest_icrc1_ledger.sh
 ### Step 4:  Add the following canister definition to the `dfx.json` file in your project:
 
 ``` json
-{
   "canisters": {
     "icrc1-ledger": {
       "type": "custom",
@@ -35,7 +34,6 @@ chmod +x download_latest_icrc1_ledger.sh
       "candid": "icrc1-ledger.did"
     }
   }
-}
 ```
 
 ### Step 4:  Deploy the ledger canister to the IC:
