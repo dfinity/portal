@@ -5,8 +5,6 @@
 In versions of the Rusk CDK `v0.11.0` and higher, the Candid export workflow has been changed.
 You can call the `ic_cdk::export_candid!()` macro to enable the Candid export behavior, then use the [candid-extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor) to extract the Candid from the canister's Wasm.
 
-## Candid generation example
-
 ### Preparation
 
 - #### Step 1: Upgrade `ic-cdk` dependency to v0.11.0 or higher:
