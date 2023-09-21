@@ -455,6 +455,8 @@ const config = {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
