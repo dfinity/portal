@@ -40,11 +40,6 @@ chmod +x download_latest_icrc1_ledger.sh
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did",
       "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
-      "remote": {
-        "id": {
-          "ic": "mxzaz-hqaaa-aaaar-qaada-cai"
-        }
-      }
     }
   },
   "defaults": {
@@ -149,6 +144,7 @@ record {
 
 ::: info
 If you want to deploy your ICRC-1 ledger on the mainnet you will have to complete the following steps. 
+-   Remove the argument `--specified-id mxzaz-hqaaa-aaaar-qaada-cai`, you will receive the canister id upon deployment.
 -   You may want to specify further the intitially minted tokens by setting `initial_values = vec {<INITIAL_VALUES>}`. See the ledger.did file for the details of the argument.
 -   You will have to set the network option to `ic` -> `dfx deploy --network ic ...` before specifying the rest of the dfx command.
 -   the `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
@@ -162,7 +158,7 @@ If you want to deploy your ICRC-1 ledger on the mainnet you will have to complet
 You can interact with the canister by running CLI commands, such as:
 
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_name '()' 
+dfx canister call icrc1_ledger_canister icrc1_name '()' 
 ```
 
 This command will return the token's name, such as:
@@ -193,7 +189,7 @@ This tutorial will go through the endpoints for ICRC-1.
 You can always check which standards are supported by a certain ICRC-1 ledger by calling:
 
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_supported_standards '()' 
+dfx canister call icrc1_ledger_canister icrc1_supported_standards '()' 
 ```
 returns:
 ```
@@ -211,7 +207,7 @@ The endpoints that are supported by the reference implementation can be found in
 
 Fetching the symbol of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_symbol '()' 
+dfx canister call icrc1_ledger_canister icrc1_symbol '()' 
 ```
 returns:
 ```
@@ -220,7 +216,7 @@ returns:
 
 Fetching the decimals of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_decimals '()' 
+dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
 ```
 returns:
 ```
@@ -229,7 +225,7 @@ returns:
 
 Fetching the decimals of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_decimals '()' 
+dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
 ```
 returns:
 ```
@@ -238,7 +234,7 @@ returns:
 
 Fetching the metadata of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_metadata '()' 
+dfx canister call icrc1_ledger_canister icrc1_metadata '()' 
 ```
 returns:
 ```
@@ -255,7 +251,7 @@ returns:
 
 Fetching the total supply of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_total_supply '()' 
+dfx canister call icrc1_ledger_canister icrc1_total_supply '()' 
 ```
 returns:
 ```
@@ -264,7 +260,7 @@ returns:
 
 Fetching the fee of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_fee '()' 
+dfx canister call icrc1_ledger_canister icrc1_fee '()' 
 ```
 returns:
 ```
@@ -273,7 +269,7 @@ returns:
 
 Fetching the minting account of the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_minting_account '()' 
+dfx canister call icrc1_ledger_canister icrc1_minting_account '()' 
 ```
 returns:
 ```
@@ -287,7 +283,7 @@ returns:
 
 Fetching the of a account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_transfer "(record {owner = principal \"${DEFAULT}\"; })"  
+dfx canister call icrc1_ledger_canister icrc1_transfer "(record {owner = principal \"${DEFAULT}\"; })"  
 ```
 returns:
 ```
@@ -296,7 +292,7 @@ returns:
 
 Transfering of tokens (From DEFAULT to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
 ```
-dfx canister call mxzaz-hqaaa-aaaar-qaada-cai icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
+dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
 ```
 returns:
 ```
