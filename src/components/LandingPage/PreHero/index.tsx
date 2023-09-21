@@ -67,7 +67,7 @@ const PreHero: React.FC<{
               }}
             >
               <h1
-                className="animate-fade-up tw-heading-60 md:tw-heading-2 lg:tw-heading-1 text-white mb-3 md:mb-8"
+                className="animate-fade-up tw-heading-50 md:tw-heading-22 lg:tw-heading-1 text-white mb-5 md:mb-6 lg:mb-8"
                 style={{
                   animationPlayState: fontLoaded ? "running" : "paused",
                 }}
@@ -75,7 +75,7 @@ const PreHero: React.FC<{
                 {headline}
               </h1>
               <p
-                className="animate-fade-up tw-heading-4 md:tw-heading-3 text-white mb-6 [animation-delay:100ms]"
+                className="animate-fade-up tw-heading-44 md:tw-heading-3 text-white mb-6 [animation-delay:100ms]"
                 style={{
                   animationPlayState: fontLoaded ? "running" : "paused",
                 }}

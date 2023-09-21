@@ -112,8 +112,6 @@ Write tests for canister implementations and frontend code, especially for secur
 
 -   See also [test your canister code even in presence of System API calls](rust-canister-development-security-best-practices#test-your-canister-code).
 
--   Consider the [DFINITY Rust guidelines on testing](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_tests).
-
 -   For wasm-level unit testing, consider using [Motoko Matchers](https://github.com/kritzcreek/motoko-matchers).
 
 -   For Motoko-level unit testing, consider [the canister module](https://kritzcreek.github.io/motoko-matchers/Canister.html). There are also some example tests [here](https://github.com/dfinity/motoko-base/blob/master/test/resultTest.mo) and [here](https://github.com/dfinity/motoko-base/blob/master/test/textTest.mo). As an example see also the end-to-end tests and unit tests for the [invoice canister](https://github.com/dfinity/invoice-canister).

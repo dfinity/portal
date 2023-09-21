@@ -52,6 +52,10 @@ Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.
 
 :::info
 In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
+
+In some cases (like AWS:Route53), the format of the `TXT` record can depend on whether it is APEX or not. 
+For APEX, the name has to be empty, with the value containing the key-value pair: "_canister-id:CANISTER_ID".
+For non-apex (e.g. www), the name should be the standard “_canister-id.www” and value "CANISTER_ID".
 :::
 
 --------------------------------------

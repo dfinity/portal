@@ -301,4 +301,13 @@ export const communityToolingItems = [
       docs: "https://docs.icpp.world/",
     },
   },
+{
+    title: "MotokoPilot",
+    tags: [ "development", "service", "testing", "starter" ],
+    description: "Your AI-powered companion for simplifying and streamlining the Motoko coding experience.",
+    links: {
+      external: "https://ai.icpcs.io/",
+      github: "https://github.com/icpcs/motokopilot-vscode",
+    },
+  },
 ];

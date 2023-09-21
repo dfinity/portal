@@ -1,18 +1,16 @@
-# Topping up & Refilling a Canister with Cycles
+# Topping up & refilling a canister with cycles
 
-A common pattern for developer workflow is to refill canisters with cycles so they can continue to operate as intended.
+## Overview 
 
-## Basic Rules 
+When a canister needs to have additional cycles deposited into it to pay for the canister's used resources, this process is known as 'topping up' the canister. Topping up canisters, especially production canisters that consistently use cycles, is routine maintenance. 
 
-1. Anyone can top up any canister deployed to the Internet Computer (does not need to be the author or controller).
-2. One can top up a canister via `dfx`, [NNS frontend dapp](https://nns.ic0.app), or third-party service (e.g. https://cycleops.dev). All one needs is the canister's principal.
-3. There are a few ways to top up canisters so this article goes through each one.
+## Basic rules 
 
+Anyone can top up any canister deployed to the Internet Computer; you do not need to be the author or controller of the canister.
 
-## Topping up a canister with `dfx`
+There are a few different ways to top up canisters, such as via `dfx`, [NNS frontend dapp](https://nns.ic0.app), or [third-party service](/docs/developer-docs/setup/cycles/cycles_management_services.md)(e.g. https://cycleops.dev). All one needs is the canister's principal.
 
-In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai` from the [first tutorial](../../tutorials/deploy_sample_app.md) with a million cycles (1000000). These instructions can work for any canister principal or any cycles amount.
-
+In the following examples, we will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai`  with a million cycles (1000000). These instructions can work for any canister principal or any cycles amount.
 
 ### Number of cycles
 For ease of use, you can copy/paste the cycles amounts below:
@@ -83,7 +81,7 @@ dfx canister --network ic deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai
 -   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on the mainnet.
 -   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice.
 
-### Special Case: topping up another cycles wallet
+### Special case: topping up another cycles wallet
 
 Cycles wallets are canisters like any other, so you can top them up as well. If you have a cycles wallet you control via dfx, there is another option as well for sending cycles from your cycles wallet to a canister of your choice: `dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`.
 
@@ -101,8 +99,8 @@ dfx wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai
 
 You can also top up any canister via the [NNS frontend dapp](https://nns.ic0.app):
 
-1. Navigate to the **My Canisters** section of the dapp.
-2. Click **Link Canister**.
-3. Add a canister principal (it is not necessary for the user to actually control said canister).
-4. Once canister is added, click on that canister,
-5. Click `add cycles` to add cycles using the ICP in your NNS frontend dapp,
+- #### Step 1: Navigate to the **My Canisters** section of the dapp.
+- #### Step 2: Click **Link Canister**.
+- #### Step 3: Add a canister principal (it is not necessary for the user to actually control said canister).
+- #### Step 4: Once canister is added, click on that canister.
+- #### Step 5: Click `add cycles` to add cycles using the ICP in your NNS frontend dapp.

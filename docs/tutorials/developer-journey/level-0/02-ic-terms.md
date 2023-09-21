@@ -8,6 +8,8 @@ This page introduces some of the most commonly used terminology that developers 
 
 - **Actor:** An actor is a process with an encapsulated state that communicates with other actors that are concurrently running. Actors communicate through asynchronous messages that are received sequentially. Actors can modify their own private state, but can only alter other actors indirectly through messages.  Actors are a part of the actor model, which is used by canisters for concurrent and asynchronous computation. 
 
+- **Agent:** An agent is a library used to make calls to the Internet Computer public interface. Examples of external agents include the JavaScript and Rust agents. 
+
 - **Certified variables:** A certified variable is a piece of data that a canister stores in the subnet's canonical state during the processing of an update or inter-canister call. This data is used when a query call is made, so that the canister can return a certificate to the user to prove the data's value. 
 
 - **Chain-key cryptography:** Chain-key cryptography is an array of advanced cryptographic mechanisms which allow the IC to achieve scalability and functionalities that aren't possible on other blockchain networks. These cryptographic protocols help orchestrate the nodes that make up the IC. One example of chain-key cryptography is the IC's single public key, which allows any device to verify the authenticity of artifacts from the IC. 
