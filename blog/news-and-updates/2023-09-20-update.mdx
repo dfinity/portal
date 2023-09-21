@@ -36,64 +36,67 @@ You can read the full release notes with additional details [here](https://githu
 
 ## IC Rust CDK `v0.11.0`
 
-In the latest version of the Rust CDK, the Candid export workflow has changed. In this update, there is no need to compile for WASI separately. Instead, canisters should still use the `ic_cdk::export_candid!()` function to export the canister's Candid file, then the [candid_extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor) can be used to extract the Candid from the canister's Wasm. The candid_extractor is a CLI tool that can be used to extract the Candid definition from the canister's Wasm. 
+In the latest version of the Rust CDK, the Candid export workflow has changed. In this update, there is no need to compile for WASI separately.
+Instead, canisters should still use the `ic_cdk::export_candid!()` function to export the canister's Candid file, then the [candid_extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor) can be used to extract the Candid from the canister's Wasm. The candid_extractor is a CLI tool that can be used to extract the Candid definition from the canister's Wasm. 
 
-Let's take a look at an example. 
+### Preparation
 
-To start, import and add the `export_candid` macro at the end of your `lib.rs` file:
+1. Upgrade `ic-cdk` dependency to v0.11.0 or higher:
+
+```toml
+# Cargo.toml
+[dependencies]
+ic-cdk = "0.11.0"
+```
+
+2. Install [candid-extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor):
+
+```
+cargo install candid-extractor
+```
+
+With `cargo-binstall` you can install the prebuilt binary without waiting for compilation:
+
+```
+cargo binstall candid-extractor
+```
+
+### Workflow
+
+1. Call the `export_candid` macro at the end of your `lib.rs` file:
 
 ```rust
 #[query]
 fn hello(name: String) -> String {
     format!("Hello, {}!", name)
 }
-​
+
 #[update]
 fn world(name: String) -> String {
     format!("World, {}!", name)
 }
-​
-// Generate did files
-​
-export_candid!();
+
+// Enable Candid export
+ic_cdk::export_candid!();
 ```
 
-Then, install the [candid_extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor):
+2. Compile the Canister Wasm module
 
 ```
-cargo install candid-extractor
+cargo build --release --target wasm32-unknown-unknown --package <CANISTER>
 ```
 
-Add the following script to your project in a file called `did.sh`:
+The Wasm module will be at:
 
 ```
-#!/usr/bin/env bash
-​
-function generate_did() {
-    local canister=$1
-    canister_root="src/$canister"
-​
-    cargo build --manifest-path="$canister_root/Cargo.toml" \
-    --target wasm32-unknown-unknown \
-    --release --package "$canister" \
-    --features "ic-cdk/wasi"
-​
-    # Installation https://docs.wasmtime.dev/cli-install.html
-    wasmtime "target/wasm32-unknown-unknown/release/$canister.wasm" > "$canister_root/$canister.did"
-}
-
-# The list of canisters of your project
-CANISTERS=console,observatory,mission_control,satellite
-​
-for canister in $(echo $CANISTERS | sed "s/,/ /g")
-do
-  generate_did "$canister"
-done
+target/wasm32-unknown-unknown/release/<CANISTER>.wasm
 ```
 
-In the script, update the variable `CANISTERS` with the name(s) of the canister(s) in your project using a comma separated list.
+3. Extract candid from the Wasm module and save to a file:
 
-Then, run the `did.sh` script to generate the Candid files for your project! 
+```
+candid-extractor target/wasm32-unknown-unknown/release/<CANISTER>.wasm > <CANISTER>.did
+```
 
 That'll wrap things up for this week! See everyone in the next issue of developer weekly!
 
