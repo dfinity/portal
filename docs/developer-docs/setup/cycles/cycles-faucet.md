@@ -26,7 +26,7 @@ will need to put in a request for cycles on the [DFINITY dev official Discord](h
 ## Step 4: After you send this message, you are prompted to fill out a survey. 
 
 :::caution
-Please ensure that your Discord settings are set to allow direct messages from other users and that you have [two-factor authentication enabled](https://support.discord.com/hc/en-us/articles/219576828-Setting-up-Two-Factor-Authentication).
+Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
 
 ## Step 5: Once completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
