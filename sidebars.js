@@ -267,6 +267,7 @@ const sidebars = {
           items: [
             "developer-docs/backend/candid/candid-concepts",
             "developer-docs/backend/candid/candid-howto",
+            "developer-docs/backend/candid/generating-candid",
           ],
         },
         {
