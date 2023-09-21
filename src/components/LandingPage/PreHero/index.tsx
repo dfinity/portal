@@ -1,5 +1,6 @@
 import Link from "@docusaurus/Link";
 import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
+import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 import transitions from "@site/static/transitions.json";
 import {
   motion,
@@ -7,7 +8,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import React, { Fragment, ReactNode, useEffect, useRef, useState } from "react";
+import React, { Fragment, ReactNode, useRef } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
@@ -26,15 +27,10 @@ const PreHero: React.FC<{
     link: string;
   }[];
 }> = ({ headline, subheadline, cta, ctaLink, cards }) => {
-  const [start, setStart] = useState(false);
-  const [animate, setAnimate] = useState(true);
+  const fontLoaded = useFontsLoaded();
 
   const darkRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(darkRef);
-
-  useEffect(() => {
-    setStart(true);
-  }, []);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
@@ -46,9 +42,6 @@ const PreHero: React.FC<{
 
   const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 50]);
   const boxBlurSize = useTransform(scrollYProgress, [0.3, 0.4], [50, 0]);
-  const blobOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  // console.log(scrollYProgress.get());
 
   const blur = useMotionTemplate`blur(${blurSize}px)`;
   const boxBlur = useMotionTemplate`blur(${boxBlurSize}px)`;
@@ -57,7 +50,7 @@ const PreHero: React.FC<{
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
       <ParticleAnimation
-        animate={animate}
+        animate={true}
         blur={blur}
         debugForces={false}
       ></ParticleAnimation>
@@ -68,17 +61,33 @@ const PreHero: React.FC<{
             <motion.div
               className="mb-20 md:mb-0"
               style={{
-                animationPlayState: start ? "running" : "paused",
+                // animationPlayState: start ? "running" : "paused",
+                animationPlayState: "paused",
                 // opacity: blobOpacity,
               }}
             >
-              <h1 className="animate-fade-up tw-heading-60 md:tw-heading-2 lg:tw-heading-1 text-white mb-3 md:mb-8">
+              <h1
+                className="animate-fade-up tw-heading-50 md:tw-heading-22 lg:tw-heading-1 text-white mb-5 md:mb-6 lg:mb-8"
+                style={{
+                  animationPlayState: fontLoaded ? "running" : "paused",
+                }}
+              >
                 {headline}
               </h1>
-              <p className="animate-fade-up tw-heading-4 md:tw-heading-3 text-white mb-6 [animation-delay:100ms]">
+              <p
+                className="animate-fade-up tw-heading-44 md:tw-heading-3 text-white mb-6 [animation-delay:100ms]"
+                style={{
+                  animationPlayState: fontLoaded ? "running" : "paused",
+                }}
+              >
                 {subheadline}
               </p>
-              <div className="animate-fade-up [animation-delay:150ms]">
+              <div
+                className="animate-fade-up [animation-delay:150ms]"
+                style={{
+                  animationPlayState: fontLoaded ? "running" : "paused",
+                }}
+              >
                 <Link className="button-outline-white" href={ctaLink}>
                   {cta}
                 </Link>
@@ -98,7 +107,7 @@ const PreHero: React.FC<{
                 backdropFilter: boxBlur,
                 WebkitBackdropFilter: boxBlur,
                 animationDelay: "500ms",
-                animationPlayState: "running",
+                animationPlayState: fontLoaded ? "running" : "paused",
               }}
             >
               {cards.map((item, index, arr) => (
@@ -107,6 +116,7 @@ const PreHero: React.FC<{
                     className="flex-1 text-white text-left md:text-center flex flex-row md:flex-col items-center group hover:no-underline hover:text-white animate-fade-up"
                     style={{
                       animationDelay: `${index * 100 + 600}ms`,
+                      animationPlayState: fontLoaded ? "running" : "paused",
                     }}
                     href={item.link}
                   >

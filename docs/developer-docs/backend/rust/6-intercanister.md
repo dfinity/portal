@@ -81,7 +81,7 @@ In this code, you can see two inter-canister update calls: `fn subscribe(subscri
 
 `src/subscriber/src/lib.rs`:
 
-```
+```rust
 use candid::{CandidType, Principal};
 use ic_cdk::{update, query};
 use serde::Deserialize;
