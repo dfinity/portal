@@ -24,7 +24,6 @@ The Internet Computer Protocol (ICP) implements management of ICP using a specia
 * [Ledger overview](./ledger/index.md) to get a view of the ICP ledger basics.
 * [Interact](./ledger/interact-with-ledger.md) shows the commands and protocol flows to interact with the ICP ledger.
 * [Local setup](./ledger/ledger-local-setup.md) shows how to experiment with the ledger in your local environment.
-* [Deploy new token](./ledger/icrc1-ledger-local-setup.md) describes how to deploy an icrc-1 ledger locally, the steps on deploying it on mainnet, how to interact with it and how to test it.
 
 ## Internet Identity
 Internet Identity allows users to create sessions with Web3 services and dapps, and sign traditional blockchain transactions.

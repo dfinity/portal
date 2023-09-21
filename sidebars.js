@@ -435,7 +435,6 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/icrc1-ledger-local-setup",
             "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
             "developer-docs/integrations/ledger/icp-index-local-setup",

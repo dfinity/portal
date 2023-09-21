@@ -125,7 +125,6 @@ const redirects = `
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
-  /docs/rosetta-api/icrc1-ledger-local-setup /docs/current/developer-docs/integrations/ledger/icrc1-ledger-local-setup
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/integration/ledger-quick-start /docs/current/developer-docs/integrations/ledger/
   /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/integrations/ledger/ledger-local-setup
