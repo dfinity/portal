@@ -382,67 +382,51 @@ const sidebars = {
             id: "developer-docs/integrations/https-outcalls/index",
           },
           items: [
-            {
-              type: "doc",
-              label: "Composite queries",
-              id: "developer-docs/integrations/composite-query/composite-query",
-            },
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/https-outcalls/index",
-            },
-                items: [
-                  "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-                  "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                  "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                  "developer-docs/integrations/https-outcalls/https-outcalls-post",
-              ],
-            },
-            {
-              type: "category",
-              label: "Internet Identity (II)",
-              link: {
-                type: "doc",
-                id: "references/ii-spec",
-              },
-              items: [
-                  "developer-docs/integrations/internet-identity/alternative-origins",
-                  "developer-docs/integrations/internet-identity/integrate-identity",
-              ],
-            },
-            {
-              type: "category",
-              label: "Threshold ECDSA",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/t-ecdsa/index",
-            },
-                items: [
-                  "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-              ],
-            },
-             {
-              type: "category",
-              label: "vetKeys",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/vetkeys/index",
-            },
-                items: [
-                  "developer-docs/integrations/vetkeys/technology-overview",
-                  "developer-docs/integrations/vetkeys/using-vetkeys",
-              ],
-            },
-            {
-              type: "doc",
-              label: "Independently verifying Internet Computer signatures",
-              id: "developer-docs/integrations/independently-verifying-ic-signatures",
-            },
+            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+            "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+            "developer-docs/integrations/https-outcalls/https-outcalls-get",
+            "developer-docs/integrations/https-outcalls/https-outcalls-post",
           ],
         },
+        {
+          type: "doc",
+          label: "Independently verifying Internet Computer signatures",
+          id: "developer-docs/integrations/independently-verifying-ic-signatures",
+        },
+        {
+          type: "category",
+          label: "Internet Identity (II)",
+          link: {
+            type: "doc",
+            id: "references/ii-spec",
+          },
+          items: [
+            "developer-docs/integrations/internet-identity/alternative-origins",
+            "developer-docs/integrations/internet-identity/integrate-identity",
+          ],
+        },
+        {
+          type: "category",
+          label: "Threshold ECDSA",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/t-ecdsa/index",
+          },
+          items: ["developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works"],
+        },
+        {
+          type: "category",
+          label: "vetKeys",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/vetkeys/index",
+          },
+          items: [
+            "developer-docs/integrations/vetkeys/technology-overview",
+            "developer-docs/integrations/vetkeys/using-vetkeys",
+          ],
+        },
+      ],
     },
     {
       type: "category",
