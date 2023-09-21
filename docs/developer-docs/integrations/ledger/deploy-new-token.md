@@ -1,139 +1,167 @@
-# Deploy new token
+# ICRC-1 Ledger local setup
 
 ## Overview
+This guide will show you how to deploy an ICRC-1 ledger locally. ICRC-1 is a token standard which you can read up on [here](https://github.com/dfinity/ICRC-1). 
+The ICRC-1 ledger used in this guide is a reference implementation. This guide aims at showing you how to setup an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself. 
 
-This guide will provide you a step-by-step walkthrough to deploy your own token to the IC and to connect Rosetta to it.
-
-## Deploy your ledger
-
-### Step 1:  Ensure you have the ledger image, the private ledger interface, and the public ledger interface. 
-If you do not have them, follow the steps in [setup ledger locally](./ledger-local-setup).
-
-### Step 2:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx). 
+### Step 1:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx).
 If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
 
-### Step 3:  Add the following canister definition to the `dfx.json` file in your project:
+### Step 2: Create a new dfx project with the command:
+
+```
+dfx new icrc_ledger_canister
+cd icrc_ledger_canister
+```
+
+### Step 3:  Determine ledger file locations
+
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `d87954601e4b22972899e9957e800406a0a6b929`.
+
+The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz`.
+
+The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icrc1/ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did`.
+
+### Step 4:  Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
 
 ``` json
 {
   "canisters": {
-    "custom-ledger": {
+    "icrc1_ledger_canister": {
       "type": "custom",
-      "wasm": "ledger.wasm",
-      "candid": "ledger.private.did"
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "mxzaz-hqaaa-aaaar-qaada-cai"
+        }
+      }
     }
-  }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
+Specifying the canister id `mxzaz-hqaaa-aaaar-qaada-cai` is optional. It is set in this tutorial, so that we can be sure what we mean when referencing the deployed canister later in this tutorial.
 
-### Step 4:  Deploy the ledger canister to the IC:
+In an existing project you would only need to add the `icrc1_ledger_canister` canister to the `canisters` section.
 
-``` bash
-# Change the variable to "ic" to deploy the ledger on the mainnet.
-export NETWORK=ic
+### Step 5:  Start a local replica.
 
-# Change the variable to the account that can mint and burn tokens.
-export MINT_ACC=$(dfx ledger account-id)
+``` sh
+dfx start --background --clean
+```
 
-# Change the variable to the principal that controls archive canisters.
-export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
+### Step 6:  Create the required identities and export initialization arguments:
 
+``` sh
+dfx identity new minter
+dfx identity use minter
+export MINTER=$(dfx ledger get-principal)
+```
+Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
+
+Specify the token name and symbol of your choice:
+
+``` sh
 export TOKEN_NAME="My Token"
 export TOKEN_SYMBOL=XMTK
+```
 
-dfx deploy --network ${NETWORK} custom-ledger --argument "(variant {Init = record {
+Set the default identity or the identity with which you want to deploy the ledger.
+``` sh
+dfx identity use default
+export DEFAULT=$(dfx ledger get-principal)
+```
+
+[OPTIONAL]
+To be able to interact and send some tokens you may want to mint some tokens when you deploy the ledger. 
+We will mint some tokens for the default identity.
+You can also specify the transfer fee for transfering tokens. 
+``` sh
+export PRE_MINTED_TOKENS=10_000_000_000
+export TRANSFER_FEE=10_000
+```
+
+
+Check the set variables:
+
+For each variable, the exported environment variable will be used unless otherwise specified:
+-   the `TOKEN_NAME` is the human-readable name of your new token.
+-   the `TOKEN_SYMBOL` is the ticker symbol of your new token.
+-   the `MINTER` is the account of the Principal responsible for minting and burning tokens (see the [icrc-1 ledger documentation](https://github.com/dfinity/ICRC-1)).
+-   Minting 100 tokens to the `DEFAULT` (1 token is by default equal to 10^8 e8s, hence the name).
+-   Setting the transfer fee to 0.0001 tokens.
+### Step 8:  Deploy the ICRC-1 ledger canister locally:
+
+
+``` sh
+dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init = record {
   token_name = opt \"${TOKEN_NAME}\";
   token_symbol = opt \"${TOKEN_SYMBOL}\";
   minting_account = \"${MINT_ACC}\";
-  initial_values = vec {};
-  send_whitelist = vec {};
-  archive_options = opt record {
-    trigger_threshold = 2000;
-    num_blocks_to_archive = 1000;
-    controller_id = principal \"${ARCHIVE_CONTROLLER}\";
-    cycles_for_archive_creation = opt 10_000_000_000_000;
-  }
+  initial_values = vec {
+  record {
+    \"$DEFAULT\";
+    record {
+      e8s = ${PRE_MINTED_TOKENS} : nat64;
+    };
+  };
+};
+send_whitelist = vec {};
+transfer_fee = opt record {
+  e8s = ${TRANSFER_FEE} : nat64;
+};
 }})"
 ```
 
-For each variable, the exported environment variable will be used unless otherwise specified:
--   the `NETWORK` is the url or name of the replica where you want to deploy the ledger (e.g. use ic for the mainnet).
--   the `TOKEN_NAME` is the human-readable name of your new token.
--   the `TOKEN_SYMBOL` is the ticker symbol of your new token.
--   the `MINT_ACC` is the account of the Principal responsible for minting and burning tokens (see the [ledger documentation](./index.md)).
+::: info
+If you want to deploy your ICRC-1 ledger on the mainnet you will have to complete the following steps. The values set for archiving are the recommended values. You may change them to fit your icrc ledger's needs. 
+``` sh
+dfx identity new archive_controller
+dfx identity use archive_controller
+export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
+export TRIGGER_THRESHOLD=2000
+export NUM_OF_BLOCK_TO_ARCHIVE=1000
+export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
+```
+-   You may also want to specify the intitially minted tokens by setting `initial_values = vec {<INITIAL_VALUES>}`. See the ledger.did file for the details of the argument.
+-   You may also want to specify the whitelisted accounts by setting `send_whitelist = vec {<WHITELISTED_ACCOUNTS>}`. See the ledger.did file for the details of the argument.
+-   You will have to set the option `dfx deploy --network ic ...` before specifying the rest of the dfx command.
 -   the `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
-
-:::info
-
-When you deploy on the mainnet:
-
 -   Always set the `archive_options` field. If the archiving is disabled, the capacity of your ledger is limited to the memory of a single canister.
-
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new instances of the archive canister on demand. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::
 
-### Step 5:  Update the canister definition in the `dfx.json` file to use the public Candid interface:
 
-``` diff
-  {
-    "canisters": {
-      "custom-ledger": {
-        "type": "custom",
-        "wasm": "ledger.wasm",
--       "candid": "ledger.private.did"
-+       "candid": "ledger.public.did"
-      }
-    }
-  }
+### Step 9: Interact with the canister.
+
+You can interact with the canister by running CLI commands, such as:
+
+```
+dfx canister call mxzaz-hqaaa-aaaar-qaada-cai name 
 ```
 
-### Step 6:  Check that the Ledger canister is healthy. Execute the following command:
+This command will return the token's name, such as:
 
-``` sh
-dfx canister --network ${NETWORK} call custom-ledger symbol
+```
+("My Token")
 ```
 
-The output should look like the following:
+Or, you can interact with it using the Candid UI by navigating to the URL provided when the canister was deployed, such as:
 
-    (record { symbol = "XMTK" })
-
-Your new token is deployed and ready to be used.
-
-## Connect Rosetta
-
-Rosetta is an application that connects to a ledger canister and exposes the [Rosetta API](https://www.rosetta-api.org). Its main purpose is to facilitate integration with exchanges. You can learn more about Rosetta in the [next section](../rosetta/index.md).
-
-Let us now connect Rosetta to an existing ledger canister.
-
-### Step 7:  Get the ledger token symbol:
-
-``` sh
-dfx canister call custom-ledger symbol
+```
+http://127.0.0.1:4943/?canisterId=bnz7o-iuaaa-aaaaa-qaaaa-cai&id=mxzaz-hqaaa-aaaar-qaada-cai
 ```
 
-The output should look like the following:
+After navigating to this URL in a web browser, the Candid UI will resemble the following:
 
-    (record { symbol = <token_symbol> })
+![Candid UI](../_attachments/CandidUI.png)
 
-### Step 8:  Run `rosetta-api`:
-
-  ``` bash
-  docker run \
-      --interactive \
-      --tty \
-      --publish 8081:8080 \
-      --rm \
-      dfinity/rosetta-api:v1.3.0 \
-      --canister-id <ledger_canister_id> \
-      --ic-url <replica> \
-      -t <token_symbol>
-  ```
-
-  The output should contain the following lines:
-
-        16:31:45.472550 INFO [main] ic_rosetta_api::rosetta_server - Starting Rosetta API server
-        16:31:45.506905 INFO [main] ic_rosetta_api::ledger_client - You are all caught up to block <x>
-
-  The `<x>` above stands for the last block index in the ledger blockchain.
-
-`rosetta-api` is connected to your ledger instance and ready to be used. Read the [transfers tokens](../rosetta/transfers) article to learn about Rosetta token transfer operations.
+Your local ICRC-1 ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.

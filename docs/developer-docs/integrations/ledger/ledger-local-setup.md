@@ -1,4 +1,4 @@
-# Ledger local setup
+# ICP Ledger local setup
 
 ## Overview
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
