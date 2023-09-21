@@ -264,7 +264,7 @@ ceiling `MAX_NUMBER_OF_PROPOSALS_WITH_BALLOTS_CEILING` (700 at time of writing).
 
 ### `max_age_bonus_percentage`
 
-Analogous to the previous field (see the previous comment),
+Analogous to `max_dissolve_delay_bonus_percentage`,
 but this one relates to neuron age instead of dissolve delay.
 
 To achieve functionality equivalent to NNS, this should be set to 25.
@@ -277,13 +277,20 @@ principal for this same neuron. If this set changes via a `ManageNervousSystemPa
 
 ### `voting_rewards_parameters`
 
-When this field is not populated, voting rewards are "disabled". Once this
-is set, it probably should not be changed, because the results would
-may be confusing.
+When this field is not populated, voting rewards are "disabled". Changing this should be evaluated carefully as it might be hard to understand rewards if they change.
+
+The reward parameters are:
+
+```bash
+final_reward_rate_basis_points : opt nat64;
+initial_reward_rate_basis_points : opt nat64;
+reward_rate_transition_duration_seconds : opt nat64;
+round_duration_seconds : opt nat64;
+```
 
 ### `maturity_modulation_disabled`
 
-By default, maturity modulation is enabled; however, an SNS can use this
+By default, [maturity modulation](https://wiki.internetcomputer.org/wiki/Maturity_modulation) is enabled; however, an SNS can use this
 field to disable it. When disabled, this canister will still poll the
 Cycles Minting Canister (CMC), and store the value received therefrom.
 However, the fetched value does not get used when this is set to true.
