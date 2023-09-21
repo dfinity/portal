@@ -12,14 +12,8 @@
 	    - Defining a stable variable.
 	    - Deploying your counter app.
 	    - Stable variables in action.
-    
-- [2.2: Using third-party canisters.](2.2-third-party-canisters.md): For certain workflows, using third-party canisters and integrating them with a dapp is important to provide functionalities such as authentication. This module covers:
-    - Pulling third-party canister dependencies.
-	    - Prerequisites.
-	    - Creating a new project.
-	    - Using `dfx deps`.
 
-- [2.3: Advanced canister calls.](2.3-advanced-canister-calls.md): Now that we've covered the core functionalities of canisters and using them, let's take a look at advanced canister calls. This module covers:
+- [2.2: Advanced canister calls.](2.2-advanced-canister-calls.md): Now that we've covered the core functionalities of canisters and using them, let's take a look at advanced canister calls. This module covers:
     - The IC execution model.
     - Canister query calls.
 	    - Example query call.
@@ -33,6 +27,12 @@
 	    - Creating a new project.
 	    - Writing a `publisher` canister.
 	    - Writing a `subscriber` canister.
+    
+- [2.3: Using third-party canisters.](2.3-third-party-canisters.md): For certain workflows, using third-party canisters and integrating them with a dapp is important to provide functionalities such as authentication. This module covers:
+    - Pulling third-party canister dependencies.
+	    - Prerequisites.
+	    - Creating a new project.
+	    - Using `dfx deps`.
 
 - [2.4: Introduction to Candid.](2.4-intro-candid.md): Candid is an interface description language that has unique support for IC features. This module covers:
     - Candid types and values.

@@ -81,8 +81,8 @@ const sidebars = {
             },
               items: [
                 "tutorials/developer-journey/level-2/2.1-storage-persistence",
-                "tutorials/developer-journey/level-2/2.2-third-party-canisters",
-                "tutorials/developer-journey/level-2/2.3-advanced-canister-calls",
+                "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+                "tutorials/developer-journey/level-2/2.3-third-party-canisters",
                 "tutorials/developer-journey/level-2/2.4-intro-candid",
                 "tutorials/developer-journey/level-2/2.5-unit-testing",
                 "tutorials/developer-journey/level-2/2.6-motoko-lvl2",

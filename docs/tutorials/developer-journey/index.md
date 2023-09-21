@@ -29,8 +29,8 @@ The developer journey is designed to give both new and existing developers a cle
 ## Level 2: Space explorer
 
 - [2.1: Canister upgrades, storage, and persistence.](level-2/2.1-storage-persistence.md)
-- [2.2: Using third-party canisters.](level-2/2.2-third-party-canisters.md)
-- [2.3: Advanced canister calls.](level-2/2.3-advanced-canister-calls.md)
+- [2.2: Advanced canister calls.](level-2/2.2-advanced-canister-calls.md)
+- [2.3: Using third-party canisters.](level-2/2.3-third-party-canisters.md)
 - [2.4: Introduction to Candid.](level-2/2.4-intro-candid.md)
 - [2.5: Unit, integration, and end2end testing](level-2/2.5-unit-testing.md)
 - [2.6: Motoko: level 2.](level-2/2.6-motoko-lvl2.md)
