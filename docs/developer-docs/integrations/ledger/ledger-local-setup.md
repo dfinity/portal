@@ -1,4 +1,4 @@
-# ICP Ledger local setup
+# ICPLedger local setup
 
 ## Overview
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
@@ -22,6 +22,15 @@ Go to the [releases overview](https://dashboard.internetcomputer.org/releases) a
 The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ledger-canister.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz`.
 
 The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icp_ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did`.
+
+
+[OPTIONAL]
+If you want to make sure, you have the latest ICRC-1 ledger files you can run the following script. 
+``` sh
+curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/00a4ab409e6236d4082cee4a47544a2d87b7190d/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
+chmod +x download_latest_icp_ledger.sh
+./download_latest_icp_ledger.sh
+```
 
 ### Step 4:  Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
 
@@ -49,7 +58,14 @@ The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/i
   "version": 1
 }
 ```
+If you chose to download the ICP ledger files with the script you need to replace the candid and wasm file entries:
 
+``` json
+...
+"candid": icp_ledger.did,
+"wasm" : icp_ledger.wasm.gz,
+  ...
+```
 In an existing project you would only need to add the `ledger_canister` canister to the `canisters` section.
 
 ### Step 5:  Start a local replica.
