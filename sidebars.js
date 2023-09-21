@@ -395,6 +395,7 @@ const sidebars = {
               id: "developer-docs/integrations/independently-verifying-ic-signatures",
             },
           ],
+        },
     },
     {
       type: "category",
