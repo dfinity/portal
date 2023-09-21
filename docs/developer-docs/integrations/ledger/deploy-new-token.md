@@ -165,3 +165,16 @@ After navigating to this URL in a web browser, the Candid UI will resemble the f
 ![Candid UI](../_attachments/CandidUI.png)
 
 Your local ICRC-1 ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.
+
+### Step 10: Example commands for the ICRC-1 endpoints
+ICRC-1 is the token standard of the ledger (With ICRC standing for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC) ). The ICRC-1 standard is defined [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
+
+However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards). 
+
+Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions. 
+This tutorial will go through the endpoints for ICRC-1 and ICRC-2. 
+
+The endpoints that are supported by the reference implementation can be found in the `ledger.did`file. 
+
+### Step 11: Testing your ICRC-1 implementation
+There is a test suite available to test ICRC-1 ledgers. You can find the repository for it [here](https://github.com/dfinity/ICRC-1/tree/main/test). If you are building your own ICRC-1 repository, it might be helpful to run this test suite against your locally deployed ICRC-1 ledger, or import the test suite directly through a rust crate and add the tests to your repository. You can find a reference implementation of integrating the test suite to your repo [here](https://github.com/dfinity/ICRC-1/tree/main/test/ref).
