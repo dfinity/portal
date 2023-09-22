@@ -80,11 +80,11 @@ function AsiaAlliancePage() {
 
   return (
     <Layout
-      title="ICP Community almost everywhere"
-      description={`Be part of the inspiring collective of Web3 creators, builders, educators, and enthusiasts as we set out to explore how the Internet Computer can address challenges within today's blockchain ecosystem.`}
+      title="ICP Asia Alliance"
+      description="The ICP Asia Alliance is at the forefront of fostering a vibrant Web3 and AI ecosystem in Asia."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-community.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-asia-alliance.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -240,12 +240,17 @@ function AsiaAlliancePage() {
                 Join, collaborate and connect
               </motion.h2>
               <motion.p
-                className="tw-paragraph md:tw-lead mb-0"
+                className="tw-paragraph md:tw-lead mb-6"
                 variants={transitions.item}
               >
                 The ICP community is currently active in around 30 countries and
                 collaborates with up to 50 well-known crypto organizations and
                 32 universities. Haven't joined yet? What are you waiting for?
+              </motion.p>
+              <motion.p className="mb-0" variants={transitions.item}>
+                <Link className="button-white" href="/community">
+                  Explore ICP Community
+                </Link>
               </motion.p>
             </div>
           </Gallery>

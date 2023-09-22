@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
+import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
 import ShareMeta from "../components/Common/ShareMeta";
@@ -644,14 +645,14 @@ function CommunityPage() {
         </AnimateSpawn>
 
         <AnimateSpawn
-          className="container-10 mt-20 md:mt-40 relative"
+          className="container-10 mt-20 md:mt-40 relative mb-10"
           el={motion.section}
           variants={transitions.container}
         >
           <div className="blob blob-infinite blob-md blob-x-13 sm:blob-x-10 blob-y-8 z-[-1]"></div>
           <div className="md:w-8/10">
             <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-0 text-gradient"
               variants={transitions.item}
             >
               The best of ICP.Hubs
@@ -659,7 +660,51 @@ function CommunityPage() {
           </div>
         </AnimateSpawn>
         <AnimateSpawn
-          className="container-12 mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-5 relative"
+          className="md:container-12"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 relative flex flex-col md:flex-row md:gap-10 lg:gap-0 px-6 md:px-0">
+            <div className="max-w-sm mx-auto md:max-w-none md:mx-0 flex-1 md:self-center md:order-2 lg:self-start mb-12 md:mb-0">
+              <motion.img
+                src="/img/community/asia-alliance-hero-img.webp"
+                alt=""
+                className="w-full relative"
+                variants={transitions.item}
+                loading="lazy"
+              />
+            </div>
+            <div className="flex-1 md:order-1 pb-10 md:py-30 flex flex-col justify-center">
+              <div className="md:ml-2/12 flex flex-col">
+                <motion.h2
+                  className=" text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
+                  variants={transitions.item}
+                >
+                  ICP Asia Alliance
+                </motion.h2>
+                <motion.p
+                  className="tw-lead-sm md:tw-lead mb-8"
+                  variants={transitions.item}
+                >
+                  The ICP Asia Alliance is at the forefront of fostering a
+                  vibrant Web3 and AI ecosystem in Asia.
+                </motion.p>
+
+                <motion.p className="mb-0" variants={transitions.item}>
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="/community/asia-alliance"
+                  >
+                    <LinkArrowRight />
+                    Check out alliance's mission and vision
+                  </Link>
+                </motion.p>
+              </div>
+            </div>
+          </div>
+        </AnimateSpawn>
+        <AnimateSpawn
+          className="container-12 mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-5 relative"
           el={motion.section}
           variants={transitions.container}
         >
