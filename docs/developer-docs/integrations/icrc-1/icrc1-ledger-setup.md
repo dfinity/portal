@@ -1,4 +1,4 @@
-# ICRC-1 Ledger local setup
+# ICRC-1 Ledger setup
 
 ## Overview
 This guide will show you how to deploy an ICRC-1 ledger locally and on mainnet, how to interact with the ICRC-1 ledger and how to test it. ICRC-1 is a token standard which you can read up on [here](https://github.com/dfinity/ICRC-1). 

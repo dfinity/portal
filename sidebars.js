@@ -447,7 +447,7 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/icrc-1/index",
           },
-          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-local-setup"],
+          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup"],
         },
         {
           type: "doc",
