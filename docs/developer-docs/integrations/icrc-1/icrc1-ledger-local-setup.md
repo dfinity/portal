@@ -31,7 +31,8 @@ chmod +x download_latest_icrc1_ledger.sh
 ./download_latest_icrc1_ledger.sh
 ```
 
-### Step 4:  Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
+### Step 4: Configuring the `dfx.json` file.
+Change Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
 
 ``` json
 {
@@ -72,7 +73,9 @@ dfx start --background --clean
 ```
 
 ### Step 6:  Create the required identities and export initialization arguments:
-
+:::info
+The initialization arguments of the ICRC-1 ledger are not specified in the [standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). Thus, the arguments defined in this section are dependent on the reference implementation of the ICRC-1 ledger. If you build your own ICRC-1 ledger you may use different initialization arguments.
+:::
 ``` sh
 dfx identity new minter
 dfx identity use minter
@@ -115,7 +118,12 @@ export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
 Check the set variables:
 
 For each variable, the exported environment variable will be used unless otherwise specified:
--   the `TOKEN_NAME` is the human-readable name of your new token.
+-   the `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
+-   the `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
+-   the `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
+-   the `TRIGGER_THRESHOLD` is the number of blocks to archive when trigger threshold is exceeded.
+-   the `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
+-   the `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
 -   the `TOKEN_SYMBOL` is the ticker symbol of your new token.
 -   the `MINTER` is the account of the Principal responsible for minting and burning tokens (see the [icrc-1 ledger documentation](https://github.com/dfinity/ICRC-1)).
 -   Minting 100 tokens to the `DEFAULT` (1 token is by default equal to 10^8 e8s, hence the name).
@@ -142,12 +150,11 @@ record {
 })"
 ```
 
-::: info
+:::info
 If you want to deploy your ICRC-1 ledger on the mainnet you will have to complete the following steps. 
 -   Remove the argument `--specified-id mxzaz-hqaaa-aaaar-qaada-cai`, you will receive the canister id upon deployment.
 -   You may want to specify further the intitially minted tokens by setting `initial_values = vec {<INITIAL_VALUES>}`. See the ledger.did file for the details of the argument.
 -   You will have to set the network option to `ic` -> `dfx deploy --network ic ...` before specifying the rest of the dfx command.
--   the `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
 -   Always set the `archive_options` field. If the archiving is disabled, the capacity of your ledger is limited to the memory of a single canister.
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new instances of the archive canister on demand. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::
@@ -290,7 +297,7 @@ returns:
 (10_000_000_000 : nat)
 ```
 
-Transfering of tokens (From DEFAULT to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
+Transfering of tokens (From `DEFAULT` to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
 ```
