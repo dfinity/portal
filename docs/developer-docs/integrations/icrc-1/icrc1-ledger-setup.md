@@ -23,7 +23,7 @@ The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVI
 The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icrc1/ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did`.
 
 
-[OPTIONAL]
+**OPTIONAL:**
 If you want to make sure, you have the latest ICRC-1 ledger files you can run the following script. 
 ``` sh
 curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/00a4ab409e6236d4082cee4a47544a2d87b7190d/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
@@ -62,7 +62,6 @@ If you chose to download the ICRC-1 ledger files with the script you need to rep
 "wasm" : icrc1_ledger.wasm.gz,
   ...
 ```
-Specifying the canister id `mxzaz-hqaaa-aaaar-qaada-cai` is optional. It is set in this tutorial, so that we can be sure what we mean when referencing the deployed canister later in this tutorial.
 
 In an existing project you would only need to add the `icrc1_ledger_canister` canister to the `canisters` section.
 
@@ -150,11 +149,13 @@ record {
 })"
 ```
 
+Specifying the canister id `mxzaz-hqaaa-aaaar-qaada-cai` is optional. It is set in this tutorial, so that we can be sure what we mean when referencing the deployed canister later in this tutorial.
+
 :::info
 If you want to deploy your ICRC-1 ledger on the mainnet you will have to complete the following steps. 
 -   Remove the argument `--specified-id mxzaz-hqaaa-aaaar-qaada-cai`, you will receive the canister id upon deployment.
 -   You may want to specify further the intitially minted tokens by setting `initial_values = vec {<INITIAL_VALUES>}`. See the ledger.did file for the details of the argument.
--   You will have to set the network option to `ic` -> `dfx deploy --network ic ...` before specifying the rest of the dfx command.
+-   You will have to set the network option to `ic` -> `dfx deploy --network ic ...` before specifying the rest of the dfx command. This tells dfx that you want to deploy on mainnt.
 -   Always set the `archive_options` field. If the archiving is disabled, the capacity of your ledger is limited to the memory of a single canister.
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new instances of the archive canister on demand. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::
@@ -210,7 +211,7 @@ returns:
 )
 ```
 
-The endpoints that are supported by the reference implementation can be found in the `ledger.did`file. The return values are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose. 
+The return values in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose. 
 
 Fetching the symbol of the ICRC-1 ledger:
 ```
