@@ -1,6 +1,7 @@
 # Commands & actions to go through SNS launch
 
 ## Overview
+
 At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary-1proposal.md).
 
 This article lists the technical commands and steps a developer needs to complete the stages for an SNS launch.
@@ -26,9 +27,14 @@ cd ic
 bazel build //rs/sns/cli:sns
 ls bazel-bin/rs/sns/cli/sns 
 ```
+
 ## Stages
 
 ### 1. Dapp developers add NNS root as co-controller of dapp.
+
+:::info
+this article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
+:::
 
 They can do so by running the following command:
 
@@ -55,9 +61,9 @@ You can also find an example of how this command is used [here](https://github.c
 Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
 :::
 
-
 To create such a proposal, a common path is to use `sns-cli` and run the following:
-```
+
+```bash
 dfx sns propose --network ic --neuron $NEURON_ID sns_init.yaml
 ```
 
