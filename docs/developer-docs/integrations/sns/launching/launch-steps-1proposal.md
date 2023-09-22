@@ -92,5 +92,5 @@ of an adopted proposal in Stage 4.
 
 ### 10. (Automated) SNS swap finalizes.
 
-\Nothing technical for dapp developers to do. This is triggered automatically as a result
+Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
