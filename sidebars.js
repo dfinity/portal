@@ -389,6 +389,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Independently verifying Internet Computer signatures",
+          id: "developer-docs/integrations/independently-verifying-ic-signatures",
+        },
+        {
           type: "category",
           label: "Internet Identity (II)",
           link: {
