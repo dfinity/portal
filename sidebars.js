@@ -40,12 +40,54 @@ const sidebars = {
             id: "tutorials/developer-journey/level-1/index",
           },
           items: [
-            "tutorials/developer-journey/level-1/1.1-live-demo",
-            "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
-            "tutorials/developer-journey/level-1/1.3-first-dapp",
-            "tutorials/developer-journey/level-1/1.4-using-cycles",
-            "tutorials/developer-journey/level-1/1.5-deploying-canisters",
-            "tutorials/developer-journey/level-1/1.6-managing-canisters",
+            {
+              type: "category",
+              label: "Level 0: Pre-flight operations",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-0/index",
+            },
+              items: [
+                "tutorials/developer-journey/level-0/ic-overview",
+                "tutorials/developer-journey/level-0/ic-terms",
+                "tutorials/developer-journey/level-0/dev-env",
+                "tutorials/developer-journey/level-0/intro-canisters",
+                "tutorials/developer-journey/level-0/intro-languages",
+                "tutorials/developer-journey/level-0/intro-dfx"
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 1: Space cadet",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-1/index",
+            },
+              items: [
+                "tutorials/developer-journey/level-1/1.1-live-demo",
+                "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
+                "tutorials/developer-journey/level-1/1.3-first-dapp",
+                "tutorials/developer-journey/level-1/1.4-using-cycles",
+                "tutorials/developer-journey/level-1/1.5-deploying-canisters",
+                "tutorials/developer-journey/level-1/1.6-managing-canisters",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 2: Space explorer",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-2/index",
+            },
+              items: [
+                "tutorials/developer-journey/level-2/2.1-storage-persistence",
+                "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+                "tutorials/developer-journey/level-2/2.3-third-party-canisters",
+                "tutorials/developer-journey/level-2/2.4-intro-candid",
+                "tutorials/developer-journey/level-2/2.5-unit-testing",
+                "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+              ],
+            },
           ],
         },
       ],
