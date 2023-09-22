@@ -1,0 +1,103 @@
+---
+title: Developer weekly update September 20, 2023
+description: In this issue, we'll dive into the new releases of dfx v0.15.0 and the Rust CDK v0.11.0.
+tags: [Devs]
+image: /img/blog/dev-update-blog-sept-20.jpg
+---
+
+# Developer weekly update September 20, 2023
+
+![September 20 2023](../../static/img/blog/dev-update-blog-sept-20.jpg)
+
+Hello everyone and welcome back to this week's issue of the Internet Computer developer weekly! In this issue, we'll dive into the new releases of `dfx v0.15.0` and the Rust CDK `v0.11.0`. Both of these releases have some incredible new features for developers, so let's dive into it!
+
+
+## `dfx v0.15.0`
+
+`dfx v0.15.0` has been shipped with several new features and adjustments to enhance the developer experience and enable new workflows. Some of these new features include:
+
+- `dfx nns` and `dfx sns` have been removed as commands and turned into subcommands of the `dfx extension`, such as `dfx extension install nns` and `dfx extension install sns`. 
+
+- The `dfx replica` and `dfx bootstrap` commands have been removed. `dfx start` should be used instead. 
+
+- Warnings about using an unencrypted identity can be now be suppressed. 
+
+- `https://icp-api.io` has been added to the default Content-Security-Policy header. Existing projects will need to update this value in their `.ic-assets.json` or `.ic-assets.json5` file, then redeploy their project. 
+
+- The default value of `allow_raw_access` has been changed to `true`, meaning that raw assets are now available by default. The frontend canister will not restrict access of traffic to the `<canister-id>.raw.icp0.io` URL, nor will it redirect requests to the certified domain `<canister-id>.icp0.io` unless configured.
+
+- New identities are restricted to using the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
+
+- `dfx` now waits for the new module hash when installing a wallet to eliminate wallet installation errors.
+
+- Response verification v2 has been re-enabled in the asset canister.
+
+You can read the full release notes with additional details [here](https://github.com/dfinity/sdk/releases/tag/0.15.0).
+
+## IC Rust CDK `v0.11.0`
+
+In the latest version of the Rust CDK, the Candid export workflow has changed. In this update, there is no need to compile for WASI separately.
+Instead, canisters should still use the `ic_cdk::export_candid!()` function to export the canister's Candid file, then the [candid_extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor) can be used to extract the Candid from the canister's Wasm. The candid_extractor is a CLI tool that can be used to extract the Candid definition from the canister's Wasm. 
+
+### Preparation
+
+- #### Step 1: Upgrade `ic-cdk` dependency to v0.11.0 or higher:
+
+```toml
+# Cargo.toml
+[dependencies]
+ic-cdk = "0.11.0"
+```
+
+- #### Step 2: Install [candid-extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor):
+
+```
+cargo install candid-extractor
+```
+
+With `cargo-binstall` you can install the prebuilt binary without waiting for compilation:
+
+```
+cargo binstall candid-extractor
+```
+
+### Workflow
+
+- #### Step 1: Call the `export_candid` macro at the end of your `lib.rs` file:
+
+```rust
+#[query]
+fn hello(name: String) -> String {
+    format!("Hello, {}!", name)
+}
+
+#[update]
+fn world(name: String) -> String {
+    format!("World, {}!", name)
+}
+
+// Enable Candid export
+ic_cdk::export_candid!();
+```
+
+- #### Step 2: Compile the Canister Wasm module
+
+```
+cargo build --release --target wasm32-unknown-unknown --package <CANISTER>
+```
+
+The Wasm module will be at:
+
+```
+target/wasm32-unknown-unknown/release/<CANISTER>.wasm
+```
+
+- #### Step 3: Extract candid from the Wasm module and save to a file:
+
+```
+candid-extractor target/wasm32-unknown-unknown/release/<CANISTER>.wasm > <CANISTER>.did
+```
+
+That'll wrap things up for this week! See everyone in the next issue of developer weekly!
+
+-DFINITY

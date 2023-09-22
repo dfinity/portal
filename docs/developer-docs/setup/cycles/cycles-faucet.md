@@ -2,7 +2,7 @@
  
 ## Overview
 
-This guide explains how to use **cycles faucet** to acquire your first amount of 20T free cycles that could be used to deploy your dapps on the mainnet.
+This guide explains how to use **cycles faucet** to acquire your first amount of 10T free cycles that could be used to deploy your dapps on the mainnet.
 
 ## Prerequisites
 
@@ -19,27 +19,23 @@ will need to put in a request for cycles on the [DFINITY dev official Discord](h
 
 ![Cycles-faucet](./_attachments/cycles-faucet.png)
 
-## Step 3: In this channel, send a message such as:
+## Step 3: In this channel, execute the following slash command:
 
-> Hello, I'd like to request a cycles coupon. Thank you.
+> /request
 
-## Step 4: After you send this message, a member of the DFINITY team will reach out to you through a Discord direct message. 
+## Step 4: After you send this message, you are prompted to fill out a survey. 
 
 :::caution
-Please ensure that your Discord settings are set to allow direct messages from other users.
+Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
 
-## Step 5: In the direct message from the DFINITY team, there will be a survey. You must complete this survey. 
+## Step 5: Once completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
 
-![Survey](_attachments/faucet_step_2.png)
-
-## Step 6: Once completed, reply to the direct message to inform the team member that you've completed the survey. Then, they will send you a coupon.
-
-## Step 7: Head back to the <https://faucet.dfinity.org> webpage. 
+## Step 6: Head back to the <https://faucet.dfinity.org> webpage. 
 
 Now, click **NEXT STEP** to continue.
 
-## Step 8: Redeem the coupon.
+## Step 7: Redeem the coupon.
 
 Now that you have a coupon code, enter your coupon code within the faucet UI.
 
@@ -47,7 +43,7 @@ Now that you have a coupon code, enter your coupon code within the faucet UI.
 
 Click **NEXT STEP** to continue.
 
-## Step 9: Setup the IC SDK.
+## Step 8: Setup the IC SDK.
 
 Next, confirm your computer has `dfx` installed. Run this command to check the version of `dfx` on your computer:
 
@@ -61,7 +57,7 @@ If your dfx version is below 0.12.0, please run this command:
 
 Click **NEXT STEP** to continue.
 
-## Step 10: Create a new identity to claim your cycles.
+## Step 9: Create a new identity to claim your cycles.
 
 To create a new identity, use the command:
 
@@ -77,7 +73,7 @@ Then, set this identity to be used by default:
 dfx identity use MyNewIdentity
 ```
 
-## Step 11: Now, claim your cycles. 
+## Step 10: Now, claim your cycles. 
 
 You will need to claim your free cycles by running this command:
 
@@ -89,7 +85,7 @@ dfx wallet --network ic redeem-faucet-coupon <your-coupon-code>
 
 Click **NEXT STEP** to continue.
 
-## Step 12: Verify wallet canister.
+## Step 11: Verify wallet canister.
 
 The last step is to verify the wallet is setup correctly, by checking its balance using the `dfx wallet --network ic balance` command:
 
