@@ -43,15 +43,15 @@ There are other parameters that are self-explanatory and can be found in the [ck
 ## ckBTC minter API endpoints
 The ckBTC minter provides the following API endpoints that can be used to interact with the canister:
 
-- `get_btc_address`: Returns a specific Bitcoin address that the caller can use to obtain ckBTC by sending BTC to this address.
-- `update_balance`: Instructs the ckBTC minter to check the balance of a Bitcoin address and mint ckBTC into the account of the owner.
-- `estimate_withdrawal_fee`: Returns a current estimate for the fee to be paid when retrieving a certain BTC amount.
-- `get_deposit_fee`: Returns the fee charged when minting ckBTC.
-- `get_withdrawal_account`: Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC.
-- `retrieve_btc`: Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
-- `retrieve_btc_status`: Returns the status of a previous `retrieve_btc` call.
-- `get_minter_info`: Returns information about the ckBTC minter itself.
-- `get_events`: Returns a set of events at the ckBTC minter.
+- [`get_btc_address`](#get_btc_addressowner-opt-principal-subaccount-opt-blob): Returns a specific Bitcoin address that the caller can use to obtain ckBTC by sending BTC to this address.
+- [`update_balance`](#update_balanceowner-opt-principal-subaccount-opt-blob): Instructs the ckBTC minter to check the balance of a Bitcoin address and mint ckBTC into the account of the owner.
+- [`estimate_withdrawal_fee`](#estimate_withdrawal_feeamount-opt-nat64): Returns a current estimate for the fee to be paid when retrieving a certain BTC amount.
+- [`get_deposit_fee`](#get_deposit_fee): Returns the fee charged when minting ckBTC.
+- [`get_withdrawal_account`](#get_withdrawal_account): Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC.
+- [`retrieve_btc`](#retrieve_btcaddress-text-amount-nat64): Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
+- [`retrieve_btc_status`](#retrieve_btc_statusblock_index-nat64): Returns the status of a previous `retrieve_btc` call.
+- [`get_minter_info`](#get_minter_info): Returns information about the ckBTC minter itself.
+- [`get_events`](#get_eventsstart-nat64-length-nat64): Returns a set of events at the ckBTC minter.
 The endpoints are discussed in more detail in the following.
 
 ### `get_btc_address(owner: opt principal, subaccount: opt blob)`
