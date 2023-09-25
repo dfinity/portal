@@ -27,12 +27,12 @@ The URL for the ICP index Wasm module is `curl -o index.wasm.gz "https://downloa
 The URL for the ICP index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/index/index.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did"`.
 
 ### Step 4: Configuring the `dfx.json` file.
-Open the `dfx.json` file in your project's directory. Add the `icp_index` canister data and insert the canister data for your ICP ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICP ledger and ICP index, your `dfx.json` file should look like this:
+Open the `dfx.json` file in your project's directory. Add the `icp_index_canister` canister data and insert the canister data for your ICP ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICP ledger and ICP index, your `dfx.json` file should look like this:
 
 ``` json
 {
   "canisters": {
-    "icp_index": {
+    "icp_index_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did",
       "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icp-index-canister.wasm.gz",
@@ -42,7 +42,7 @@ Open the `dfx.json` file in your project's directory. Add the `icp_index` canist
         }
       }
     },
-    "ledger_canister": {
+    "icp_ledger_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did",
       "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
@@ -64,7 +64,7 @@ Open the `dfx.json` file in your project's directory. Add the `icp_index` canist
 }
 ```
 
-In an existing project you would only need to add the `icp_index` and `ledger_canister` canisters to the `canisters` section.
+In an existing project you would only need to add the `icp_index_canister` and `icp_ledger_canister` canisters to the `canisters` section.
 
 ### Step 5 [Optional]:  Start a local replica.
 This step can be skipped if you already have a local replica up and running. 
@@ -84,7 +84,7 @@ export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister ID. 
 
 ```
-dfx deploy icp_index --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
+dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
 ```
 
 The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds. 
