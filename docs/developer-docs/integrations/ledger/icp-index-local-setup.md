@@ -1,4 +1,4 @@
-# ICP-index local setup
+# ICP index local setup
 
 ## Overview
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it, you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on the mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
@@ -15,7 +15,7 @@ cd index_canister
 ``` 
 
 **OPTIONAL:**
-If you created a new project folder, you will either have to make sure the `dfx.json` file contains the correct data on the ICP ledger (as described in the [local ledger setup guide](./ledger-local-setup.md)) or you communicate with the ICP ledger from its project folder that contains the correct `dfx.json file`. If you try to communicate with the ICP ledger from a new project folder where the `dfx.json` file does not contain information on the ICP ledger canister, you will not be able to create transactions. 
+If you created a new project folder, you will either have to make sure the `dfx.json` file contains the correct data on the ICP ledger (as described in the [local ledger setup guide](./ledger-local-setup.md)) or you communicate with the ICP ledger from its project folder that contains the correct `dfx.json` file. If you try to communicate with the ICP ledger from a new project folder where the `dfx.json` file does not contain information on the ICP ledger canister, you will not be able to create transactions. 
 
 
 ### Step 3:  Fetch the ICP index Wasm and Candid files.
@@ -26,7 +26,7 @@ The URL for the ICP index Wasm module is `curl -o index.wasm.gz "https://downloa
 
 The URL for the ICP index .did file is `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/index/index.did"`, so with the above revision it would be `curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did"`.
 
-### Step 4: Configuring the `dfx.json` file.
+### Step 4: Configure the `dfx.json` file.
 Open the `dfx.json` file in your project's directory. Add the `icp_index` canister data and insert the canister data for your ICP ledger. If you followed the guide on local ledger setup and you used the same project folder for both the ICP ledger and ICP index, your `dfx.json` file should look like this:
 
 ``` json
@@ -66,21 +66,21 @@ Open the `dfx.json` file in your project's directory. Add the `icp_index` canist
 
 In an existing project you would only need to add the `icp_index` and `ledger_canister` canisters to the `canisters` section.
 
-### Step 5 [Optional]:  Start a local replica.
+### Step 5 [Optional]: Start a local replica.
 This step can be skipped if you already have a local replica up and running. 
 
 ``` sh
 dfx start --background --clean
 ```
 
-### Step 6:  Use your default identity to deploy the index canister.
+### Step 6: Use your default identity to deploy the index canister.
 
 ``` sh
 dfx identity use default
 export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
-### Step 7: Deploy the ICP index canister:
+### Step 7: Deploy the ICP index canister.
 Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister ID. 
 
 ```
@@ -89,9 +89,10 @@ dfx deploy icp_index --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(rec
 
 The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds. 
 
-### Step 8: Check the status and ICP ledger id on the ICP index canister.
+### Step 8: Check the status and ICP ledger ID on the ICP index canister.
 
 You can check that the correct ledger ID was set but running the following command.
+
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai ledger_id '()'
 ```
@@ -115,7 +116,7 @@ Depending on how many mint operations you created while setting up your ICP ledg
 
 ### Step 9: Create some new blocks to sync.
 
-You can check that the synchronization of the index is working by creating some transaction on the ICP ledger and then checking the status.
+You can check that the synchronization of the index is working by creating a transaction on the ICP ledger and then checking the status of that transaction.
 If you followed the guide on setting up an ICP ledger locally your default identity should have some ICP to be send. 
 Send some ICP to any principal with the command:
 
