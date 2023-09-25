@@ -89,6 +89,7 @@ The result is the ledger canister ID that the index canister is using to sync.
 (principal "ryjl3-tyaaa-aaaaa-aaaba-cai")
 ```
 
+To check how many blocks have been synched call: 
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```

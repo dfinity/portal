@@ -74,6 +74,7 @@ The result is the ledger canister id that the index canister is using to sync.
 (principal "mxzaz-hqaaa-aaaar-qaada-cai")
 ```
 
+To check how many blocks have been synched call: 
 ```
 dfx canister call icrc1_index_canister status '()'
 ```
