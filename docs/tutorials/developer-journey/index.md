@@ -37,7 +37,7 @@ The developer journey is designed to give both new and existing developers a cle
 
 ## Level 3: Space engineer 
 
-- [3.1: Using libraries with MOPS.](level-3/3.1-libraries-with-mops.md)
+- [3.1: Motoko package managers.](level-3/3.1-package-managers.md)
 - [3.2: Using HTTPS outcalls.](level-3/3.2-https-outcalls.md)
 - [3.3: Certified variables.](level-3/3.3-certified-variables.md)
 - [3.4: Introduction to agents.](level-3/3.4-intro-to-agents.md)

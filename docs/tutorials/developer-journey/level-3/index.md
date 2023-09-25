@@ -1,6 +1,6 @@
 # Level 3: Space engineer 
 
-- [3.1: Using libraries with MOPS.](3.1-libraries-with-mops.md)
+- [3.1: Motoko package managers.](3.1-package-managers.md)
 
 - [3.2: Using HTTPS outcalls.](3.2-https-outcalls.md)
 
