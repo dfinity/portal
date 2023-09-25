@@ -53,12 +53,6 @@ Open the `dfx.json` file in your project's directory. Add the `icp_index_caniste
       }
     }
   },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
   "output_env_file": ".env",
   "version": 1
 }
@@ -73,14 +67,7 @@ This step can be skipped if you already have a local replica up and running.
 dfx start --background --clean
 ```
 
-### Step 6:  Use your default identity to deploy the index canister.
-
-``` sh
-dfx identity use default
-export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
-```
-
-### Step 7: Deploy the ICP index canister:
+### Step 6: Deploy the ICP index canister:
 Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister ID. 
 
 ```
@@ -89,7 +76,7 @@ dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argum
 
 The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds. 
 
-### Step 8: Check the status and ICP ledger id on the ICP index canister.
+### Step 7: Check the status and ICP ledger id on the ICP index canister.
 
 You can check that the correct ledger ID was set but running the following command.
 ```
@@ -113,7 +100,7 @@ It should return something like this:
 
 Depending on how many mint operations you created while setting up your ICP ledger, the number of synced blocks here will be 0 if no initial balances were parsed, or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used and there only one initial balance was parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1. 
 
-### Step 9: Create some new blocks to sync.
+### Step 8: Create some new blocks to sync.
 
 You can check that the synchronization of the index is working by creating some transaction on the ICP ledger and then checking the status.
 If you followed the guide on setting up an ICP ledger locally your default identity should have some ICP to be send. 
@@ -133,7 +120,7 @@ It should now indicate that an additional block was synced compared to the last 
 (record { num_blocks_synced = 2 : nat64 })
 ```
 
-### Step 10: Fetch some blocks.
+### Step 9: Fetch some blocks.
 
 You can use the ICP index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set `start` to 0. Similarly, the `length` parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).

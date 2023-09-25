@@ -42,12 +42,6 @@ The URL for the ICRC-1 index .did file is `curl -o index.did "https://raw.github
       "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
     }
   },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
   "output_env_file": ".env",
   "version": 1
 }
@@ -61,14 +55,7 @@ This step can be skipped if you already have a local replica up and running.
 dfx start --background --clean
 ```
 
-### Step 6:  Use your default identity to deploy the index canister.
-
-``` sh
-dfx identity use default
-export DEFAULT=$(dfx identity get-principal)
-```
-
-### Step 7: Deploy the ICRC-1 index canister:
+### Step 6: Deploy the ICRC-1 index canister:
 Here it is assumed that the canister id of your local ICRC-1 ledger is `mxzaz-hqaaa-aaaar-qaada-cai`, otherwise replace it with your ICRC-1 ledger canister id. 
 
 ```
@@ -77,7 +64,7 @@ dfx deploy icrc1_index_canister --argument '(opt variant{Init = record {ledger_i
 
 The ICRC-1 index canister will start synching right away and will automatically try to fetch new blocks from the ICRC-1 ledger every few seconds. 
 
-### Step 8: Check the status and ICRC-1 ledger id on the ICRC-1 index canister.
+### Step 7: Check the status and ICRC-1 ledger id on the ICRC-1 index canister.
 You can check that the correct ledger id was set but runnig the following command.
 ```
 dfx canister call icrc1_index_canister ledger_id '()'
@@ -96,7 +83,7 @@ It should return something like this:
 ```
 Depending on how many mint operations you created while setting up your ICRC-1 ledger the number of synched blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial the guide on setting up a local ledger was used and there only one initial balance was parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1. 
 
-### Step 9: Create some new blocks to sync.
+### Step 8: Create some new blocks to sync.
 
 You can check that the synchronization of the index is working by creating some transaction on the ICRC-1 ledger and then checking the status.
 If you followed the guide on setting up an ICRC-1 ledger locally your default identity should have some ICRC-1 to be send. 
@@ -113,7 +100,7 @@ It should now indicate that an additional block was synced compared to the last 
 (record { num_blocks_synced = 2 : nat64 })
 ```
 
-### Step 10: Fetch some blocks
+### Step 9: Fetch some blocks
 You can use the ICRC-1 index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (The limit of blocks per call is usually set to 2000 blocks).
 ```
