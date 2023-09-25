@@ -34,14 +34,13 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 *The finalization phase includes some cleanup/bookkeeping tasks, including charging canisters for resources, pruning messages from ingress history, processing stopping canisters, updating some metrics and checking various invariants about the state of the system.*
 
-
 **Thank you for that description! I think that is very insightful for developers to understand what's happening behind the scenes. How do developers interact with the execution layer through canisters?**
 
 *Developers interact with the execution environment through two sets of APIs: the first is a synchronous one which we call the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on the IC – this API allows canisters to manage other canisters as well as get access to some of the special features of the IC, including tECDSA and HTTP outcalls.*
 
 **How does the Execution team work with other teams?**
 
-*The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who are in charge of the lower level Wasm execution engine of the IC, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and languages teams to expose the APIs provided by the execution environment to the developers.*
+*The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who are in charge of the lower level Wasm execution engine of the IC, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and Languages teams to expose the APIs provided by the execution environment to the developers.*
 
 **How does the IC execution environment differ from other forms of execution environments?**
 
@@ -79,7 +78,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 **To wrap things up, what makes the Execution team unique compared to some of the other dev teams at DFINITY?**
 
-*Compared to other teams, the execution team is interfacing a lot with developers given our work on the apis that canisters have access to. In a sense, we act as a bridge between the core protocol and the user facing aspects of the IC.*
+*Compared to other teams, the execution team is interfacing a lot with developers given our work on the APIs that canisters have access to. In a sense, we act as a bridge between the core protocol and the user facing aspects of the IC.*
 
 **A huge thank you to the Execution team for chatting with us today and providing a great look into what the Execution team is up to! Be sure to check in next time another team spotlight!**
 
