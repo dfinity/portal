@@ -2266,7 +2266,7 @@
     "name": "Oisy Wallet",
     "oneLiner": "A novel Ethereum wallet hosted on the Internet Computer",
     "website": "https://oisy.com",
-    "github": "https://github.com/dfinity/ic-eth-wallet",
+    "github": "https://github.com/dfinity/oisy-wallet",
     "tags": [
       "Ethereum",
       "DeFi",
