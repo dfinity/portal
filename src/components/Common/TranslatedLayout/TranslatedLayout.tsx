@@ -12,6 +12,7 @@ const TranslatedLayout: React.FC<{
   alt?: string;
   imageClassName?: string;
   imageWithBlob?: false | string;
+  attribution?: React.ReactNode;
 }> = ({
   children,
   reverse = false,
@@ -21,6 +22,7 @@ const TranslatedLayout: React.FC<{
   imageWithBlob = false,
   imageClassName,
   customContent,
+  attribution,
 }) => {
   if (!imageUrl && !video && !customContent) {
     throw new Error("imageUrl or video or customContent must be provided");
@@ -71,6 +73,11 @@ const TranslatedLayout: React.FC<{
       <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-start md:items-center">
         {imageWithBlob && <div className={imageWithBlob}></div>}
         {mediaEl}
+        {attribution && (
+          <div className="md:absolute -mt-8 md:mt-0 mb-8 md:mb-0 text-center md:-bottom-10 md:left-10">
+            {attribution}
+          </div>
+        )}
       </div>
       <div className="flex flex-col justify-center md:w-7/12">
         <div className="md:mx-auto md:w-[71.4%]">{children}</div>
@@ -89,6 +96,11 @@ const TranslatedLayout: React.FC<{
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
         {mediaEl}
+        {attribution && (
+          <div className="md:absolute -mt-8 md:mt-0 mb-8 md:mb-0 text-center md:-bottom-10 md:right-10">
+            {attribution}
+          </div>
+        )}
       </div>
     </AnimateSpawn>
   );

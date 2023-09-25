@@ -5,6 +5,7 @@ import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
@@ -46,9 +47,7 @@ function GamingPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Next level
-                <br />
-                Web3 gaming
+                Paradigm shift in Web3 gaming
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
@@ -80,9 +79,9 @@ function GamingPage() {
             className="tw-heading-4 md:tw-heading-3 mb-0 text-gradient md:w-5/10"
             variants={transitions.item}
           >
-            Web2 gaming prioritizes profits at the expense of player enjoyment.
-            Autonomous Worlds on the Internet Computer, prioritize the player
-            experience.
+            Web2 gaming often prioritizes profits at the expense of player
+            enjoyment. Autonomous Worlds on the Internet Computer, prioritize
+            the player experience.
           </motion.h2>
         </AnimateSpawn>
 
@@ -92,63 +91,81 @@ function GamingPage() {
               className="tw-heading-3 md:tw-heading-60 text-center mb-0"
               variants={transitions.item}
             >
-              Autonomous worlds on ICP
+              Extendable game worlds
             </motion.h2>
           </div>
           <div className=" container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
             <div className="blob blob-white blob-sm md:blob-md blob-x-10 blob-y-0"></div>
 
-            <TranslatedLayout imageUrl="/img/gaming/image-1.webp">
+            <TranslatedLayout
+              imageUrl="/img/gaming/image-1.webp"
+              attribution={
+                <Link
+                  href="https://shiku.com/"
+                  className="text-white/60 tw-lead-sm"
+                >
+                  © Shiku Metaverse
+                </Link>
+              }
+            >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Creating on-chain worlds
+                Web2 gaming
               </h2>
 
               <p className="tw-lead-sm mb-0">
-                Autonomous worlds are on-chain game worlds where all player
-                interactions, and digital assets are stored on the blockchain.
-                They enable new forms of gaming experiences, and game genres as
-                these worlds align incentives of developers, modders, and
-                players. Thanks to the composability of smart contracts, the
-                game’s community can infinitely extend these words in a
-                permissionless way.
+                There are growing concerns around some of the profit-seeking
+                practices that have become commonplace in the traditional gaming
+                industry. From killing modding communities to making competitive
+                advantage completely dependent on microtransactions. While Web3
+                games in the past had their own unique issues, Autonomous Worlds
+                may provide a solution that aligns incentives of players and
+                developers.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
               imageUrl="/img/gaming/image-2.webp"
               reverse={true}
+              attribution={
+                <Link
+                  href="https://dragginz.io/"
+                  className="text-white/60 tw-lead-sm"
+                >
+                  © Dragginz
+                </Link>
+              }
             >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                As fast as Web2 gaming
+                Evolution of Web3 gaming
               </h2>
               <p className="tw-lead-sm mb-0">
-                Users of enterprise solutions often resort to giving up self
-                custody of their data or digital assets, having to trust the
-                service provider to appropriately and securely handle their
-                data. Using canister smart contracts on the Internet Computer,
-                organizations can simply deploy an architecture, in which all
-                users have complete ownership and control of their data and
-                digital assets. This separation is enabled by chain-key
-                cryptography, and most importantly doesn’t require users to go
-                through complicated configuring of their accounts.
+                Blockchain based games have been around since 2017, but only
+                recently has blockchain technology evolved to allow for more
+                interesting gameplay to emerge. Initially, Web3 games were
+                simple NFTs that could breed offsprings with different
+                characteristics. Later on, more complex game economies formed
+                using tokens, and smart contracts, however most of the gameplay
+                still lived off-chain. Combining Autonomous Worlds and ICP,
+                whole game worlds can exist 100% on the blockchain, providing
+                unique gameplay mechanics.
               </p>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/gaming/image-3.webp">
+            <TranslatedLayout
+              imageUrl="/img/gaming/image-3.webp"
+              attribution={
+                <span className="text-white/60 tw-lead-sm">© CosmicRafts</span>
+              }
+            >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Jump right in with out fees
+                Autonomous Worlds
               </h2>
               <p className="tw-lead-sm mb-0">
-                Large scale software systems that rely on centralized cloud
-                providers, risk being subject to vendor lock-in, having to
-                dealing with increasing server costs or codebase refactoring.
-                <br />
-                <br />
-                The Internet Computer offers an alternative technology stack
-                which is open and decentralized. It connects independent node
-                machines to create a self-sovereign autonomous cloud on which
-                any system can be built. Its software — canister smart contracts
-                — are compiled to WebAssembly, the new W3 industry standard for
-                cross platform, language agnostic, portable server executable
-                code.
+                Autonomous worlds are on-chain game worlds where all player
+                interactions, and digital assets are stored on the blockchain.
+                They enable new forms of gaming experiences, and game genres as
+                these worlds align incentives of developers, modders, and
+                players. Thanks to the unique properties of smart contracts, the
+                communities of these games can infinitely extend these words in
+                a permissionless way.
               </p>
             </TranslatedLayout>
           </div>
@@ -168,7 +185,7 @@ function GamingPage() {
             variants={transitions.container}
           >
             <motion.h2 className="tw-heading-5 md:tw-heading-3 mb-8 md:mb-12 text-white sm:w-6/12 lg:w-4/12 sm:mx-auto text-center">
-              The perks of building games on ICP
+              Perks of Autonomous Worlds
             </motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-5">
@@ -178,12 +195,12 @@ function GamingPage() {
               >
                 <img src="/img/gaming/icon-1.svg" alt="" className="h-24" />
                 <h3 className="tw-lead my-3 md:tw-title-sm">
-                  Incentives are aligned
+                  Incentives aligned
                 </h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Autonomous Worlds are blockchain-based game environments that
-                  harmoniously align the interests of developers, modders, and
-                  players, thanks to the power of smart contracts.
+                  Autonomous Worlds align the interest of developers, modders
+                  and players, so that they can collaboratively build rich game
+                  worlds together.
                 </p>
               </motion.div>
               <motion.div
@@ -192,12 +209,12 @@ function GamingPage() {
               >
                 <img src="/img/gaming/icon-2.svg" alt="" className="h-24" />
                 <h3 className="tw-lead my-3 md:tw-title-sm">
-                  Lives on the blockchain
+                  Infinitely extendable
                 </h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Autonomous Worlds thrive on the blockchain, offering unique
-                  gaming experiences while harmonizing the interests of
-                  developers, modders, and players through smart contracts.
+                  Smart contracts are composable, which means they can serve as
+                  components to hierarchical structures. This allows Autonomous
+                  Worlds to extend endlessly.
                 </p>
               </motion.div>
               <motion.div
@@ -209,9 +226,9 @@ function GamingPage() {
                   Driven by the community
                 </h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Community-driven Autonomous Worlds on the blockchain enable
-                  diverse gaming experiences, fostering collaboration among
-                  developers, modders, and players through smart contracts.
+                  Instead of the community being simply the receiver of game
+                  content, they can be deeply integrated in evolving it through
+                  governance, and content creation.
                 </p>
               </motion.div>
             </div>
@@ -226,13 +243,22 @@ function GamingPage() {
             >
               Uncover new worlds
             </motion.h2>
-            <motion.p className="tw-lead-sm mb-0" variants={transitions.item}>
-              Exploring the games on the Internet Computer is a thrilling
-              journey into a virtual world powered by blockchain technology.
-              From multiplayer battles to solo adventures and puzzle-solving,
-              there's something for every gamer. These games showcase the
-              innovative potential of blockchain, making each visit to
-              internetcomputer.org a glimpse into the future of gaming.
+            <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
+              Discover, and build new worlds on the Internet Computer! Utilizing
+              canister smart contracts, developers can build large scale,
+              extendable game worlds hosted end-to-end on the blockchain.
+              Reverse gas model enables novel revenue models, and lowers the
+              barrier of entry for new players who don’t want to setup a wallet
+              just to interact with an on-chain game.
+            </motion.p>
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link
+                href="/ecosystem?tag=Games"
+                className="link-primary link-with-icon"
+              >
+                <LinkArrowRight />
+                View all games
+              </Link>
             </motion.p>
           </AnimateSpawn>
         </section>
@@ -257,18 +283,22 @@ function GamingPage() {
                   className=" text-transparent bg-clip-text gradient-text tw-heading-4 md:tw-heading-3 mb-6"
                   variants={transitions.item}
                 >
-                  Cubetopia Metaverse
+                  Cubetopia
                 </motion.h2>
                 <motion.p
                   className="tw-lead-sm mb-8"
                   variants={transitions.item}
                 >
-                  Minecraft meets World of Warcraft, on the blockchain. Build,
-                  chat and adventure with friends, right in your browser.
+                  Build anything on your own unique voxel island saved as a
+                  mutable NFT world, or visit the worlds others have built —
+                  100% on-chain, on the Internet Computer.
                 </motion.p>
 
                 <motion.p className="mb-0" variants={transitions.item}>
-                  <Link className="link-primary link-with-icon" href="">
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/"
+                  >
                     Play it here
                     <LinkArrowUpRight />
                   </Link>
@@ -289,42 +319,167 @@ function GamingPage() {
                 UnfoldVR
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-5">
-                Decentralizing Asset Creation and Discovery for the Metaverse.
-                Enter the VR canvas. Use tools to create 3D environments,
-                objects, sculptures or abstract art.
+                Blockchain meets virtual reality. UnfoldVR empowers the
+                immersive creator economy. Enter the VR canvas, build 3D
+                environments, objects, sculptures or abstract art and save them
+                on the blockchain.
               </p>
-              <Link className="link-primary link-with-icon" href="">
-                Discover the world
+              <Link
+                className="link-primary link-with-icon"
+                href="https://jmorc-qiaaa-aaaam-aaeda-cai.ic0.app/"
+              >
+                Build your own VR world
                 <LinkArrowUpRight />
               </Link>
             </div>
           </div>
           <div className="md:rounded-[32px] md:bg-white/60 md:backdrop-blur-2xl px-6 md:p-12">
             <img
-              src="/img/gaming/pawsarena.webp"
+              src="/img/gaming/plethora.webp"
               alt=""
               loading="lazy"
               className="rounded-2xl w-full"
             />
             <div className="md:pr-20">
               <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
-                Paws Arena
+                Plethora
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-5">
-                This is the cutest, most fun and competitive turn-based play to
-                earn multiplayer game on the ICP. Players will fight in the
-                arena and earn $PAW Tokens which will be used to buy in-game
-                items.
+                Fully on-chain web3 platformer with the goal of rewarding users
+                both with fun gameplay and NFTs. Plethora empowers NFT projects
+                to launch their collections with immersive experiences
+                customized for you. Play now to compete, have fun, and earn
+                rewards
               </p>
-              <Link className="link-primary link-with-icon" href="">
-                Play Paws Arena
+              <Link
+                className="link-primary link-with-icon"
+                href="https://plethora.game/"
+              >
+                Play Plethora
                 <LinkArrowUpRight />
               </Link>
             </div>
           </div>
         </AnimateSpawn>
 
-        <section className="bg-infinite text-white py-20 md:pb-0 md:mt-44">
+        <AnimateSpawn
+          className="container-12 mt-20 md:mt-30 relative"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <motion.h2
+            className="tw-heading-4 md:tw-heading-60 mb-6 md:mb-12 text-center md:w-6/10 md:mx-auto"
+            variants={transitions.item}
+          >
+            Advantages of ICP
+          </motion.h2>
+          <div className="flex flex-col md:flex-row gap-5">
+            <motion.div
+              className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
+              variants={transitions.item}
+            >
+              <img
+                src="/img/gaming/icon-4.svg"
+                alt=""
+                loading="lazy"
+                className="w-30"
+              />
+              <h3 className="tw-lead md:tw-title-sm mb-0">100% on-chain</h3>
+              <p className="mb-0 tw-paragraph-sm text-black/60">
+                The Internet Computer enables these worlds to be hosted fully on
+                the blockchain. As canister smart contracts serve web,
+                developers can now get rid of the last centralized component,
+                and host even the game client on chain. This allows the creation
+                of DAOs that control all aspects of these worlds.
+              </p>
+            </motion.div>
+            <motion.div
+              className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
+              variants={transitions.item}
+            >
+              <img
+                src="/img/gaming/icon-5.svg"
+                alt=""
+                loading="lazy"
+                className="w-30"
+              />
+              <h3 className="tw-lead md:tw-title-sm mb-0">300M TXs per day</h3>
+              <p className="mb-0 tw-paragraph-sm text-black/60">
+                The Internet Computer processes close to 0.3B transactions a
+                day. Being the highest throughput blockchain, games hosted on
+                ICP can serve unparalleled numbers of players, and horizontally
+                scale out with new subnet blockchains with increased network
+                usage.
+              </p>
+            </motion.div>
+            <motion.div
+              className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
+              variants={transitions.item}
+            >
+              <img
+                src="/img/gaming/icon-6.svg"
+                alt=""
+                loading="lazy"
+                className="w-30"
+              />
+              <h3 className="tw-lead md:tw-title-sm mb-0">
+                0 gas fees for players
+              </h3>
+              <p className="mb-0 tw-paragraph-sm text-black/60">
+                The Internet Computer was designed with mass adoption in mind.
+                Canister smart contracts implement the reverse gas fee model,
+                which means that end-users can interact with canisters without
+                paying gas, or even creating a wallet. This enables novel
+                revenue models, and removes a high barrier of entry.
+              </p>
+            </motion.div>
+          </div>
+        </AnimateSpawn>
+        <AnimateSpawn
+          className="md:container-12 pt-30 md:pt-30"
+          variants={transitions.container}
+          el={motion.section}
+        >
+          <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-1/12 pb-20 md:py-30 relative">
+            <div className="-translate-y-24 sm:-translate-y-40 md:translate-y-0 md:absolute z-[-1] md:w-[500px] lg:w-[700px] md:top-[40px] lg:top-[-130px] right-0 overflow-hidden">
+              <motion.img
+                src="/img/home/dao.svg"
+                alt=""
+                className="w-full relative md:right-[-50px] lg:right-[-100px]"
+                variants={transitions.item}
+              />
+            </div>
+            <div className="md:w-7/12 -mt-16 md:mt-0">
+              <motion.h2
+                className="text-gradient tw-heading-3 md:tw-heading-60 mb-6"
+                variants={transitions.item}
+              >
+                DAO-driven games
+              </motion.h2>
+              <motion.p
+                className="tw-lead-sm md:tw-lead-sm mb-12"
+                variants={transitions.item}
+              >
+                Since ICP dapps can be 100% on-chain, DAOs on the Internet
+                Computer can govern complete game worlds end-to-end, including a
+                web based game client.
+              </motion.p>
+            </div>
+            <div className="md:w-6/10">
+              <motion.p
+                className="flex flex-col sm:flex-row items-start md:items-center gap-6 md:gap-8 mb-0"
+                variants={transitions.item}
+              >
+                <Link className="link-primary link-with-icon" href="/sns">
+                  <LinkArrowRight />
+                  More on ICP DAOs
+                </Link>
+              </motion.p>
+            </div>
+          </div>
+        </AnimateSpawn>
+
+        <section className="bg-infinite text-white py-20 md:pb-0 md:mt-30">
           <div className="container-10 md:w-4/10 md:mx-auto">
             <motion.h2
               className="tw-heading-3 md:tw-heading-60 text-center mb-12"
@@ -355,7 +510,10 @@ function GamingPage() {
               </p>
 
               <p className="mb-0 text-white">
-                <Link href="" className="link-white link-with-icon">
+                <Link
+                  href="https://u52bf-3qaaa-aaaal-qb5wq-cai.icp0.io/"
+                  className="link-white link-with-icon"
+                >
                   Start Building with BOOM DAO
                   <LinkArrowUpRight />
                 </Link>
@@ -378,7 +536,10 @@ function GamingPage() {
             className="container-10"
           >
             <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
-              <Link className="md:w-7/10 h-full flex relative group" href="">
+              <Link
+                className="md:w-7/10 h-full flex relative group"
+                href="https://youtu.be/LHVVi4pN6CI?si=VZXpfMLkJMvhA-6b"
+              >
                 <img
                   src="/img/gaming/boomdao-workshop.webp"
                   alt=""
@@ -407,146 +568,39 @@ function GamingPage() {
           </AnimateSpawn>
         </section>
 
-        <AnimateSpawn
-          className="container-12 mt-20 md:mt-40 relative"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <motion.h2
-            className="tw-heading-4 md:tw-heading-60 mb-6 md:mb-12 text-center md:w-6/10 md:mx-auto"
-            variants={transitions.item}
+        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-30 md:px-15 mt-30">
+          <AnimateSpawn
+            className=" relative text-white"
+            variants={transitions.container}
           >
-            Advantages of ICP
-          </motion.h2>
-          <div className="flex flex-col md:flex-row gap-5">
             <motion.div
-              className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
+              className="blob blob-purple blob-sm blob-x-5 blob-y-7 z-[-1] md:blob-md"
+              variants={transitions.fadeIn}
+            ></motion.div>
+            <motion.h2
+              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              <img
-                src="/img/gaming/icon-3.svg"
-                alt=""
-                loading="lazy"
-                className="w-30"
-              />
-              <h3 className="tw-lead md:tw-title-sm mb-0">100% on-chain</h3>
-              <p className="mb-0 tw-paragraph-sm text-black/60">
-                The Internet Computer enables these worlds to be hosted fully on
-                the blockchain. As canister smart contracts serve web,
-                developers can now get rid of the last centralized component,
-                and host even the game client on chain. This allows the creation
-                of DAOs that control all aspects of these worlds.
-              </p>
-            </motion.div>
-            <motion.div
-              className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
-              variants={transitions.item}
-            >
-              <img
-                src="/img/gaming/icon-4.svg"
-                alt=""
-                loading="lazy"
-                className="w-30"
-              />
-              <h3 className="tw-lead md:tw-title-sm mb-0">500B TXs per day</h3>
-              <p className="mb-0 tw-paragraph-sm text-black/60">
-                The Internet Computer processes close to half a billion
-                transactions a day. Being the highest throughput blockchain,
-                games hosted on ICP can serve unparalleled numbers of players,
-                and horizontally scale out with new subnet blockchains with
-                increased network usage.
-              </p>
-            </motion.div>
-            <motion.div
-              className="flex-1 card-white p-12 flex flex-col gap-3 md:gap-4 text-center items-center justify-between"
-              variants={transitions.item}
-            >
-              <img
-                src="/img/gaming/icon-5.svg"
-                alt=""
-                loading="lazy"
-                className="w-30"
-              />
-              <h3 className="tw-lead md:tw-title-sm mb-0">0 gas fees</h3>
-              <p className="mb-0 tw-paragraph-sm text-black/60">
-                The Internet Computer was designed with mass adoption in mind.
-                Canister smart contracts implement the reverse gas fee model,
-                which means that end-users can interact with canisters without
-                paying gas, or even creating a wallet. This enables novel
-                revenue models, and removes a high barrier of entry.
-              </p>
-            </motion.div>
-          </div>
-        </AnimateSpawn>
-        <AnimateSpawn
-          className="md:container-12 pt-30 md:py-30"
-          variants={transitions.container}
-          el={motion.section}
-        >
-          <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 px-1/12 pb-20 md:py-30 relative">
-            <div className="-translate-y-24 sm:-translate-y-40 md:translate-y-0 md:absolute z-[-1] md:w-[500px] lg:w-[700px] md:top-[40px] lg:top-[-130px] right-0 overflow-hidden">
-              <motion.img
-                src="/img/home/dao.svg"
-                alt=""
-                className="w-full relative md:right-[-50px] lg:right-[-100px]"
-                variants={transitions.item}
-              />
-            </div>
-            <div className="md:w-7/12 -mt-16 md:mt-0">
-              <motion.h2
-                className="text-gradient tw-heading-3 md:tw-heading-60 mb-6"
-                variants={transitions.item}
-              >
-                Fully on-chain DAOs
-              </motion.h2>
-              <motion.p
-                className="tw-lead-sm md:tw-lead-sm mb-12"
-                variants={transitions.item}
-              >
-                OpenChat, with the launch of its first SNS DAO, marks a
-                significant milestone in the world of blockchain and social
-                media. Cras mattis consectetur purus sit amet fermentum.
-              </motion.p>
-            </div>
-            <div className="md:w-6/10">
-              <motion.p
-                className="flex flex-col sm:flex-row items-start md:items-center gap-6 md:gap-8 mb-0"
-                variants={transitions.item}
-              >
-                <Link className="link-primary link-with-icon" href="/sns">
-                  <LinkArrowRight />
-                  More on SNS DAOs
-                </Link>
-              </motion.p>
-            </div>
-          </div>
-        </AnimateSpawn>
-        <Newsletter
-          fields={[
-            {
-              name: "EMAIL",
-              placeholder: "Email",
-              type: "email",
-              required: true,
-            },
-          ]}
-          ctaLabel="Get updates!"
-          postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
-          decoration={
-            <img
-              src="/img/newsletter/email-image-1.webp"
-              alt=""
-              loading="lazy"
+              Start hacking on ICP
+            </motion.h2>
+          </AnimateSpawn>
+
+          <AnimateSpawn
+            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
+            variants={transitions.container}
+          >
+            <CardWithDescription
+              title="Dev Docs"
+              description=""
+              href="/docs/current/home"
             />
-          }
-          className="mt-30 md:mt-0 mb-20"
-        >
-          <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8">
-            Want to meet ICP enthusiasts IRL?
-            <br />
-            <span className="text-white-60">Sign up to stay connected</span>
-          </h2>
-        </Newsletter>
+            <CardWithDescription
+              title="Sample Code"
+              description=""
+              href="/samples"
+            />
+          </AnimateSpawn>
+        </section>
       </main>
     </Layout>
   );
