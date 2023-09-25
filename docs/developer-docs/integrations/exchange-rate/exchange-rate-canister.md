@@ -53,7 +53,7 @@ Note: The cycles cost of these requests are expected to be decreased in the next
 
 ## Calling the XRC directly 
 
-T call call the XRC directly, first export your wallet canister ID as an environment variable with the command:
+To call the XRC directly, first export your wallet canister ID as an environment variable with the command:
 
 ```
 export WALLET=[wallet-canister-id]
