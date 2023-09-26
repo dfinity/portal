@@ -50,7 +50,7 @@ const TranslatedLayout: React.FC<{
         muted
         playsInline
         className={clsx(
-          "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
+          "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl max-w-full",
           reverse ? "md:rounded-l-none" : "md:rounded-r-none"
         )}
       >
@@ -67,7 +67,7 @@ const TranslatedLayout: React.FC<{
 
   return reverse ? (
     <AnimateSpawn
-      className="flex flex-col md:flex-row"
+      className={clsx("flex flex-col md:flex-row", attribution && "mb-10")}
       variants={transitions.item}
     >
       <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-start md:items-center">
@@ -85,7 +85,7 @@ const TranslatedLayout: React.FC<{
     </AnimateSpawn>
   ) : (
     <AnimateSpawn
-      className="flex flex-col md:flex-row"
+      className={clsx("flex flex-col md:flex-row", attribution && "mb-10")}
       variants={transitions.item}
     >
       <div className="md:w-7/12 flex flex-col justify-center order-2 md:order-1">
