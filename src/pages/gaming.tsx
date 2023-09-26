@@ -98,7 +98,6 @@ function GamingPage() {
             <div className="blob blob-white blob-sm md:blob-md blob-x-10 blob-y-0"></div>
 
             <TranslatedLayout
-              // imageUrl="/img/gaming/image-1.webp"
               video={{
                 videoUrl: "/img/gaming/shiku.mp4",
                 videoContentType: "video/mp4",
@@ -119,11 +118,11 @@ function GamingPage() {
               <p className="tw-lead-sm mb-0">
                 There are growing concerns around some of the profit-seeking
                 practices that have become commonplace in the traditional gaming
-                industry. From blocking modding communities, to making competitive
-                advantage completely dependent on microtransactions. While Web3
-                games in the past had their own unique issues, Autonomous Worlds
-                may provide a solution that aligns incentives of players and
-                developers.
+                industry. From blocking modding communities, to making
+                competitive advantage completely dependent on microtransactions.
+                While Web3 games in the past had their own unique issues,
+                Autonomous Worlds may provide a solution that aligns incentives
+                of players and developers.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
@@ -148,10 +147,10 @@ function GamingPage() {
                 simple NFTs that could breed offsprings with different
                 characteristics. Later on, more complex game economies formed
                 using NFTs, fungible tokens, and smart contracts. However, most
-                of the gameplay lived, and still live off-chain relying on centralized
-                cloud providers. Combining Autonomous Worlds and the Internet Computer,
-                whole game worlds can now exist 100% on the blockchain, providing
-                unique gameplay mechanics.
+                of the gameplay lived, and still live off-chain relying on
+                centralized cloud providers. Combining Autonomous Worlds and the
+                Internet Computer, whole game worlds can now exist 100% on the
+                blockchain, providing unique gameplay mechanics.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
@@ -256,11 +255,11 @@ function GamingPage() {
             </motion.h2>
             <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
               Discover, and build new worlds on the Internet Computer! Utilizing
-              canister smart contracts, developers and players can build large-scale,
-              extendable game worlds hosted end-to-end on the blockchain.
-              Reverse gas model enables novel revenue models, and lowers the
-              barrier of entry for new players who don’t want to setup a wallet
-              just to interact with an on-chain game.
+              canister smart contracts, developers and players can build
+              large-scale, extendable game worlds hosted end-to-end on the
+              blockchain. Reverse gas model enables novel revenue models, and
+              lowers the barrier of entry for new players who don’t want to
+              setup a wallet just to interact with an on-chain game.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
