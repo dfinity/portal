@@ -471,7 +471,7 @@ function GamingPage() {
               >
                 Since ICP dapps can be 100% on-chain, DAOs on the Internet
                 Computer can govern complete game worlds end-to-end, including a
-                web based game client.
+                web-based game client.
               </motion.p>
             </div>
             <div className="md:w-6/10">
@@ -514,7 +514,7 @@ function GamingPage() {
                 open-sourced game tooling that handles most of the complex smart
                 contract infrastructure, so you can focus on gameplay, and your
                 game client. Player interactions, NFT minting/burning, and the
-                on-chain game server is managed by BOOM DAO's Game World
+                on-chain game server is managed by BOOM DAO's World Engine
                 Protocol.
               </p>
 
