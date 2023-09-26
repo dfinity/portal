@@ -165,13 +165,6 @@ const hubs: Hub[] = [
 
 const upcomingHubs: Hub[] = [
   {
-    name: "Internet Computer at ETHToronto 2023",
-    description:
-      "ICP community joins forces with ETH community as ICP.Hub North America proudly steps in as an official Megabyte Sponsor for ETH Toronto 2023.",
-    image: "/img/community/eth-toronto.webp",
-    link: "https://twitter.com/ETH_Toronto/status/1687096585715421184",
-  },
-  {
     name: "Internet Computer at Coinfest Asia 2023 ",
     description:
       "ICP.Hub Indonesia steps into the spotlight at Coinfest Asia 2023, a dynamic and immersive Web3 festival that serves as a rallying point for visionaries, innovators, and blockchain enthusiasts across Asia.",
@@ -219,6 +212,13 @@ const upcomingHubs: Hub[] = [
       "ICP.Hub Italia made an impact at Blockchain Week Rome 2023, actively engaging in discussions, workshops, and networking sessions. Their presence underscored their commitment to advancing blockchain innovation and collaboration within Italy.",
     image: "/img/community/icp-italia-highlight.webp",
     link: "https://twitter.com/BlockchainRome/status/1655256183895121926?s=20",
+  },
+  {
+    name: "A Deep Dive into Internet Computer",
+    description:
+      "The conversation around @dfinity & its plan is streaming NOW, exclusively on #CMCLive on CoinMarketCap's App.",
+    image: "/img/community/icp-deep-dive.webp",
+    link: "https://twitter.com/coinmarketcap/status/1702352254383112526?s=46&t=MYEPlWlA63PER7If_BM83A",
   },
 ];
 const communityGallery: {
@@ -626,7 +626,8 @@ function CommunityPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                ICP Community<br />
+                ICP Community
+                <br />
                 around the world
               </motion.h1>
               <motion.p

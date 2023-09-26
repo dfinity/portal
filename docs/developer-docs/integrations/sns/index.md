@@ -31,7 +31,7 @@ In this documentation you will find
 This section not only targets developers that have a dapp that they would like to decentralize with an SNS, but also developers that want to build services that integrate with SNSs, such as wallet dapps or decentralized exchanges.
 
 It includes
-* [An introduction to SNS integration](./integrating/index.md). <!--Guidelines how to integrate a frontend (integrate-sns/frontend-integration.md)-->
+* [An introduction to SNS integration](./integrating/index.md). 
 * [Guidelines how to integrate with the ledger canister](./integrating/ledger-integration.md).
 * [Guidelines how to integrate with the index canister](./integrating/index-integration.md).
 

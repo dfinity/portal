@@ -1,4 +1,4 @@
-# ICRC-1 Ledger setup
+# ICRC-1 ledger setup
 
 ## Overview
 This guide will show you how to deploy an ICRC-1 ledger locally and on mainnet, how to interact with the ICRC-1 ledger and how to test it. ICRC-1 is a token standard which you can read up on [here](https://github.com/dfinity/ICRC-1). 
@@ -14,7 +14,7 @@ dfx new icrc1_ledger_canister
 cd icrc1_ledger_canister
 ```
 
-### Step 3:  Determine ledger file locations
+### Step 3: Determine ledger file locations.
 
 Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `d87954601e4b22972899e9957e800406a0a6b929`.
 
@@ -31,8 +31,8 @@ chmod +x download_latest_icrc1_ledger.sh
 ./download_latest_icrc1_ledger.sh
 ```
 
-### Step 4: Configuring the `dfx.json` file.
-Change Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
+### Step 4: Configure the `dfx.json` file.
+Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
 
 ``` json
 {
@@ -54,7 +54,7 @@ Change Open the `dfx.json` file in your project's directory. Replace the existin
 }
 ```
 
-If you chose to download the ICRC-1 ledger files with the script you need to replace the candid and wasm file entries:
+If you chose to download the ICRC-1 ledger files with the script, you need to replace the Candid and Wasm file entries:
 
 ``` json
 ...
@@ -65,21 +65,24 @@ If you chose to download the ICRC-1 ledger files with the script you need to rep
 
 In an existing project you would only need to add the `icrc1_ledger_canister` canister to the `canisters` section.
 
-### Step 5:  Start a local replica.
+### Step 5: Start a local replica.
 
 ``` sh
 dfx start --background --clean
 ```
 
-### Step 6:  Create the required identities and export initialization arguments:
+### Step 6: Create the required identities and export initialization arguments:
+
 :::info
 The initialization arguments of the ICRC-1 ledger are not specified in the [standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). Thus, the arguments defined in this section are dependent on the reference implementation of the ICRC-1 ledger. If you build your own ICRC-1 ledger you may use different initialization arguments.
 :::
+
 ``` sh
 dfx identity new minter
 dfx identity use minter
 export MINTER=$(dfx identity get-principal)
 ```
+
 Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
 
 Specify the token name and symbol of your choice:
@@ -95,10 +98,13 @@ dfx identity use default
 export DEFAULT=$(dfx identity get-principal)
 ```
 
+:::info 
 [OPTIONAL]
 To be able to interact and send some tokens you may want to mint some tokens when you deploy the ledger. 
 We will mint some tokens for the default identity.
 You can also specify the transfer fee for transfering tokens. 
+:::
+
 ``` sh
 export PRE_MINTED_TOKENS=10_000_000_000
 export TRANSFER_FEE=10_000
@@ -117,18 +123,19 @@ export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
 Check the set variables:
 
 For each variable, the exported environment variable will be used unless otherwise specified:
--   the `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
--   the `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
--   the `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
--   the `TRIGGER_THRESHOLD` is the number of blocks to archive when trigger threshold is exceeded.
--   the `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
--   the `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
--   the `TOKEN_SYMBOL` is the ticker symbol of your new token.
--   the `MINTER` is the account of the Principal responsible for minting and burning tokens (see the [icrc-1 ledger documentation](https://github.com/dfinity/ICRC-1)).
+-   The `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
+-   The `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
+-   The `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
+-   The `TRIGGER_THRESHOLD` is the number of blocks to archive when trigger threshold is exceeded.
+-   The `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
+-   The `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
+-   The `TOKEN_SYMBOL` is the ticker symbol of your new token.
+-   The `MINTER` is the account of the Principal responsible for minting and burning tokens (see the [icrc-1 ledger documentation](https://github.com/dfinity/ICRC-1)).
 -   Minting 100 tokens to the `DEFAULT` (1 token is by default equal to 10^8 e8s, hence the name).
 -   Setting the transfer fee to 0.0001 tokens.
-### Step 8:  Deploy the ICRC-1 ledger canister locally:
 
+
+### Step 7: Deploy the ICRC-1 ledger canister locally:
 
 ``` sh
 dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init = 
@@ -161,7 +168,7 @@ If you want to deploy your ICRC-1 ledger on the mainnet you will have to complet
 :::
 
 
-### Step 9: Interact with the canister.
+### Step 8: Interact with the canister.
 
 You can interact with the canister by running CLI commands, such as:
 
@@ -187,19 +194,23 @@ After navigating to this URL in a web browser, the Candid UI will resemble the f
 
 Your local ICRC-1 ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.
 
-### Step 10: Example commands for the ICRC-1 endpoints
-ICRC-1 is the token standard of the ledger (With ICRC standing for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC) ). The ICRC-1 standard is defined [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
+## Example commands for the ICRC-1 endpoints
+
+ICRC-1 is the token standard of the ledger (With ICRC standing for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC)). The ICRC-1 standard is defined [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
 
 However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards). 
 
 Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions. 
 This tutorial will go through the endpoints for ICRC-1. 
+
 You can always check which standards are supported by a certain ICRC-1 ledger by calling:
 
 ```
 dfx canister call icrc1_ledger_canister icrc1_supported_standards '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (
   vec {
@@ -213,38 +224,50 @@ returns:
 
 The return values in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose. 
 
-Fetching the symbol of the ICRC-1 ledger:
+To fetch the symbol of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_symbol '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 ("XMTK")
 ```
 
-Fetching the decimals of the ICRC-1 ledger:
+To fetch the decimals of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (8 : nat8)
 ```
 
-Fetching the decimals of the ICRC-1 ledger:
+To fetch the decimals of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (8 : nat8)
 ```
 
-Fetching the metadata of the ICRC-1 ledger:
+To fetch the metadata of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_metadata '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (
   vec {
@@ -257,29 +280,38 @@ returns:
 )
 ```
 
-Fetching the total supply of the ICRC-1 ledger:
+To fetch the total supply of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_total_supply '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (10_000_000_000 : nat)
 ```
 
-Fetching the fee of the ICRC-1 ledger:
+To fetch the fee of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_fee '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (10_000 : nat)
 ```
 
-Fetching the minting account of the ICRC-1 ledger:
+To fetch the minting account of the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_minting_account '()' 
 ```
-returns:
+
+This command returns:
+
 ```
 (
   opt record {
@@ -289,20 +321,26 @@ returns:
 )
 ```
 
-Fetching the of a account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
+To fetch the of a account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record {owner = principal \"${DEFAULT}\"; })"  
 ```
-returns:
+
+This command returns:
+
 ```
 (10_000_000_000 : nat)
 ```
 
-Transfering of tokens (From `DEFAULT` to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
+Transfering of tokens (from `DEFAULT` to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
 ```
-returns:
+
+This command returns:
+
 ```
 (variant { Ok = 1 : nat })
 ```

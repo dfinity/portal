@@ -106,6 +106,7 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
+  /docs/current/samples/overview/host-a-website /docs/current/samples/host-a-website
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
