@@ -46,7 +46,7 @@ fn world(name: String) -> String {
 ic_cdk::export_candid!();
 ```
 
-- #### Step 2: Compile the Canister Wasm module
+- #### Step 2: Compile the Canister Wasm module.
 
 ```
 cargo build --release --target wasm32-unknown-unknown --package <CANISTER>
