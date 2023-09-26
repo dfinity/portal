@@ -449,6 +449,11 @@ const sidebars = {
       label: "Ledgers and tokens",
       items: [
         {
+        type: "doc",
+          label: "Introduction and Overview",
+          id: "developer-docs/integrations/ledger/introduction_and_overview",
+        },
+        {
           type: "category",
           label: "ICP ledger",
           link: {
