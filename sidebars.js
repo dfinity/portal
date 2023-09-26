@@ -414,7 +414,7 @@ const sidebars = {
           label: "Internet Identity (II)",
           link: {
             type: "doc",
-            id: "references/ii-spec",
+            id: "developer-docs/integrations/internet-identity/overview",
           },
           items: [
             "developer-docs/integrations/internet-identity/alternative-origins",
