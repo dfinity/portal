@@ -4,6 +4,12 @@
 
 While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp. From identity to ledger integrations, to integrating with other blockchains, to communicating from the IC to the outside world, and even decentralizing control of your dapp, it's all here.
 
+## Composite queries
+
+The Internet Computer (IC) supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. An update can call other updates and queries. However a query cannot make any calls, which can hinder development of scalable decentralized applications (dapps), especially those that shard data across multiple canisters. Composite queries solve this problem. 
+
+* [Composite queries](https://internetcomputer.org/docs/current/developer-docs/integrations/composite-query/).
+
 ## HTTPS Outcalls
 HTTP(S) outcalls on the IC enable canisters to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the canister such that the replicated state can safely be updated using those inputs. A first in blockchain history, and alleviates the need for oracles.
 
