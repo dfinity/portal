@@ -21,9 +21,9 @@ HTTP(S) outcalls on the IC enable canisters to directly make calls to HTTP(S) se
 ## ICP Ledger
 The Internet Computer Protocol (ICP) implements management of ICP using a specialized canister, called the ledger canister. There is a single ledger canister which runs alongside other canisters on the NNS subnet. The ledger canister is a smart contract that holds accounts and transactions.
 
-* [Ledger overview](./ledger/index.md) to get a view of the ICP ledger basics.
-* [Interact](./ledger/interact-with-ledger.md) shows the commands and protocol flows to interact with the ICP ledger.
-* [Local setup](./ledger/ledger-local-setup.md) shows how to experiment with the ledger in your local environment.
+<!-- TODO: Update Link * [Ledger overview](./ledger/index.md) to get a view of the ICP ledger basics. -->
+<!-- TODO: Update Link * [Interact](./ledger/interact-with-ledger.md) shows the commands and protocol flows to interact with the ICP ledger. -->
+<!-- TODO: Update Link * [Local setup](./ledger/ledger-local-setup.md) shows how to experiment with the ledger in your local environment. -->
 
 ## Internet Identity
 Internet Identity allows users to create sessions with Web3 services and dapps, and sign traditional blockchain transactions.
