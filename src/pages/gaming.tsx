@@ -144,9 +144,9 @@ function GamingPage() {
                 characteristics. Later on, more complex game economies formed
                 using NFTs, fungible tokens, and smart contracts. However, most
                 of the gameplay lived, and still live off-chain relying on centralized
-                cloud providers. Combining Autonomous Worlds and ICP, whole game
-                worlds can now exist 100% on the blockchain, providing unique gameplay
-                mechanics.
+                cloud providers. Combining Autonomous Worlds and the Internet Computer,
+                whole game worlds can now exist 100% on the blockchain, providing
+                unique gameplay mechanics.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
