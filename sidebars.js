@@ -450,7 +450,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-            label: "Introduction and Overview",
+            label: "Introduction and overview",
             id: "developer-docs/integrations/ledger/introduction_and_overview",
           },
         {
