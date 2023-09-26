@@ -161,7 +161,7 @@ function GamingPage() {
               <p className="tw-lead-sm mb-0">
                 Autonomous worlds are on-chain game worlds where all player
                 interactions, and digital assets are stored on the blockchain.
-                They enable new forms of gaming experiences, and game genres as
+                They enable new forms of gaming experiences and game genres, as
                 these worlds align incentives of developers, modders, and
                 players. Thanks to the unique properties of smart contracts, the
                 communities of these games can infinitely extend these words in
@@ -245,7 +245,7 @@ function GamingPage() {
             </motion.h2>
             <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
               Discover, and build new worlds on the Internet Computer! Utilizing
-              canister smart contracts, developers can build large scale,
+              canister smart contracts, developers and players can build large-scale,
               extendable game worlds hosted end-to-end on the blockchain.
               Reverse gas model enables novel revenue models, and lowers the
               barrier of entry for new players who don’t want to setup a wallet
