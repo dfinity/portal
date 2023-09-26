@@ -64,9 +64,9 @@ function GamingPage() {
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
-          className="container-10 relative md:pt-40 pb-20 md:pb-40"
+          className="container-10 relative md:pt-30 pb-20 md:pb-40"
         >
-          <div className="-mt-64 md:mt-0 md:absolute md:-right-40 md:top-[-600px] text-center md:w-[800px]">
+          <div className="-mt-64 md:mt-0 md:absolute md:-right-40 md:top-[-550px] text-center md:w-[800px]">
             <motion.img
               variants={transitions.fadeIn}
               src="/img/gaming/spaceship.webp"
@@ -74,9 +74,8 @@ function GamingPage() {
               className="w-full max-w-sm md:max-w-none aspect-square"
             />
           </div>
-
           <motion.h2
-            className="tw-heading-4 md:tw-heading-60 mb-0 text-gradient md:w-8/10 md:mx-auto"
+            className="tw-heading-4 md:tw-heading-3 mb-0 text-gradient md:w-5/10"
             variants={transitions.item}
           >
             Web2 gaming often prioritizes profits at the expense of player
@@ -98,15 +97,11 @@ function GamingPage() {
             <div className="blob blob-white blob-sm md:blob-md blob-x-10 blob-y-0"></div>
 
             <TranslatedLayout
-              // imageUrl="/img/gaming/image-1.webp"
-              video={{
-                videoUrl: "/img/gaming/shiku.mp4",
-                videoContentType: "video/mp4",
-              }}
+              imageUrl="/img/gaming/image-1.webp"
               attribution={
                 <Link
                   href="https://shiku.com/"
-                  className="text-white/60 hover:text-white hover:no-underline tw-lead-sm"
+                  className="text-white/60 tw-lead-sm"
                 >
                   © Shiku Metaverse
                 </Link>
@@ -119,7 +114,7 @@ function GamingPage() {
               <p className="tw-lead-sm mb-0">
                 There are growing concerns around some of the profit-seeking
                 practices that have become commonplace in the traditional gaming
-                industry. From killing modding communities to making competitive
+                industry. From blocking modding communities, to making competitive
                 advantage completely dependent on microtransactions. While Web3
                 games in the past had their own unique issues, Autonomous Worlds
                 may provide a solution that aligns incentives of players and
@@ -132,7 +127,7 @@ function GamingPage() {
               attribution={
                 <Link
                   href="https://dragginz.io/"
-                  className="text-white/60 hover:text-white hover:no-underline tw-lead-sm"
+                  className="text-white/60 tw-lead-sm"
                 >
                   © Dragginz
                 </Link>
@@ -142,26 +137,22 @@ function GamingPage() {
                 Evolution of Web3 gaming
               </h2>
               <p className="tw-lead-sm mb-0">
-                Blockchain based games have been around since 2017, but only
+                Blockchain-based games have been around since 2017, but only
                 recently has blockchain technology evolved to allow for more
                 interesting gameplay to emerge. Initially, Web3 games were
                 simple NFTs that could breed offsprings with different
                 characteristics. Later on, more complex game economies formed
-                using tokens, and smart contracts, however most of the gameplay
-                still lived off-chain. Combining Autonomous Worlds and ICP,
-                whole game worlds can exist 100% on the blockchain, providing
-                unique gameplay mechanics.
+                using NFTs, fungible tokens, and smart contracts. However, most
+                of the gameplay lived, and still live off-chain relying on centralized
+                cloud providers. Combining Autonomous Worlds and ICP, whole game
+                worlds can now exist 100% on the blockchain, providing unique gameplay
+                mechanics.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
               imageUrl="/img/gaming/image-3.webp"
               attribution={
-                <Link
-                  href="https://cosmicrafts.com/"
-                  className="text-white/60 hover:text-white hover:no-underline tw-lead-sm"
-                >
-                  © CosmicRafts
-                </Link>
+                <span className="text-white/60 tw-lead-sm">© CosmicRafts</span>
               }
             >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
@@ -245,7 +236,6 @@ function GamingPage() {
         </section>
 
         <section className="container-10 pt-30  md:pt-40 relative">
-          <div className="blob blob-purple blob-x-10 blob-y-0 blob-md z-[-1]"></div>
           <AnimateSpawn className="md:w-6/10" variants={transitions.container}>
             <motion.h2
               className="tw-heading-3 md:tw-heading-60 mb-8 md:w-9/10"
@@ -284,6 +274,7 @@ function GamingPage() {
                 src="/img/gaming/cubetopia.webp"
                 alt=""
                 className="w-full relative"
+                loading="lazy"
               />
             </div>
             <div className="flex-1 md:order-1 md:py-20">
