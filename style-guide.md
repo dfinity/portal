@@ -16,6 +16,7 @@ This guide will outline the following:
 - Hints.
 - Links and hyperlinks.
 - Code snippets and code blocks.
+- Command line syntax.
 - FAQ sections.
 - The difference between a tutorial and a guide.
 - How to write a tutorial.
@@ -401,7 +402,9 @@ The following format should be used for code snippets and code blocks:
     - Example: `ingress_start`
 - Command-line commands that should be run by the user should be listed in their own line using code formatting, such as:
     - #### Step 1:  Install the React module by running the following command:
+  ```
             npm install --save react react-dom
+  ```
 - Code blocks should be prefaced with the language used within the code block where applicable. For example:
 
 ```bash
@@ -409,6 +412,28 @@ cd motoko/threshold_ecdsa
 dfx start --background
 npm install
 dfx deploy
+```
+
+## Command line syntax
+
+For all CLI command examples for `dfx`, flags should always be at the end of the command, such as:
+
+```
+dfx wallet balance --network ic
+```
+
+Additional examples:
+
+```
+dfx deploy --background
+```
+
+```
+dfx identity new Alice --disable-encryption
+````
+
+```
+dfx deploy internet_identity --argument '(null)'
 ```
 
 ## FAQ sections

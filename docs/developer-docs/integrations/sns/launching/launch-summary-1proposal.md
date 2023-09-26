@@ -9,19 +9,30 @@ Handing over a dapp's control to a newly created SNS proceeds in the following h
 level stages.
 Note that only the first two stages require manual action from the dapp's developer
 team and the NNS community. All other stages are exectued fully automatically.
-The NNS community's approval is relevant in Stage 2. 
+The NNS community's approval is relevant in Stage 3. 
 
-### 1. Dapp developers choose the initial parameters of the SNS for a dapp
+### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
   These parameters define all the initial parameters of the SNS, including
-  * the token name, token symbol, ledger transaction fee
-  * the tokenomics and how governance will work
-  * the initial token distribution
-  * the conditions for the decentralization swap, including the swap's start date and
-    how many ICP tokens should at least and at most be collected
+  * The token name, token symbol, ledger transaction fee.
+  * The tokenomics and how governance will work.
+  * The initial token distribution.
+  * The conditions for the decentralization swap, including the swap's start date and
+    how many ICP tokens should at least and at most be collected.
     
   Therefore defining these parameters usually requires a lot of preparation and
   community engagement already (see [here](../tokenomics/sns-checklist.md) for
   more information).
+
+:::info 
+These parameters also define the initial neurons with which the SNS governance canister will be installed.
+Before being fully launched, the SNS governance canister is in a pre-decentralization-swap mode and only few proposals are allowed (see Step 7).
+However, some SNS proposals might already be used during this time, for example upgrades to the dapp canister(s) while the launch is ongoing or
+registering custom proposals for that DAO.
+Note that such operations require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. 
+Some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched and thus neurons controlled by NNS 
+frontend dapp principals will only be visible after a successful launch. 
+Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process.
+:::
 
   What we have at this stage:
 
@@ -42,53 +53,14 @@ The NNS community's approval is relevant in Stage 2.
   </tr>
 </table>
 
-### 2. Submit NNS proposal to create SNS
 
-This proposal presents all the initial parameters for the SNS as defined in
-the first Stage to the NNS community. 
-It also defines which dapp canister(s) should be handed over to the SNS.
+### 2. Dapp developers add NNS root as co-controller of dapp.
+Shortly before Step 3, the dapp developers hand over the dapp to the NNS by adding the NNS root canister as an additional controller for the dapp canister(s).
+This is necessary in order for the rest of the steps to work automatically.
+As any eligible NNS neuron can submit the proposal in Stage 3, this is an important step
+where the dapp developers explicity express their intent to hand over their dapp to a DAO.
 
 If successful, at the end of stage, the following has changed:
-
-#### Table 1: Canisters
-
-<table>
-  <tr>
-    <th>Canisters</th>
-    <th>Subnet</th>
-    <th>Controlled by</th>
-    <th>State</th>
-  </tr>
-  <tr>
-    <td>dapp canister(s)</td>
-    <td>application subnet</td>
-    <td>dapp developer principal</td>
-    <td>operational</td>
-  </tr>
-</table>
-
-#### Table 2: NNS Proposals
- <table>
-  <tr>
-    <th>NNS Proposal</th>
-    <th>State</th>
-  </tr>
-  <tr>
-    <td class="light-green-text">SNS creation proposal</td>
-    <td class="light-green-text">Open</td>
-  </tr>
-</table>
-
-### 3. Dapp developers add NNS root as co-controller of dapp
-Shortly after Step 2 and while the voting on the proposal is ongoing, the dapp
-developers hand over the dapp to the NNS by adding the NNS root canister as an
-additional controller for the dapp canister(s).
-This is necessary in order for the rest of the steps to work fully automatically.
-As any eligible NNS neuron can submit the proposal in Stage 2, this is an important step
-where the dapp developers officially agree to the conditions of the SNS for their
-dapp canister(s).
-
-If successful, at the end of stage, we the following has changed:
 
 #### Table 1: Canisters
 <table>
@@ -106,8 +78,49 @@ If successful, at the end of stage, we the following has changed:
   </tr>
 </table>
 
-### 4. The NNS proposal is decided
-If the NNS proposal from Stage 2 is adopted, 
+### 3. Submit NNS proposal to create SNS.
+
+This proposal presents all the initial parameters for the SNS as defined in the first Stage to the NNS community. 
+It also defines which dapp canister(s) should be handed over to the SNS.
+
+:::info
+Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch.
+:::
+
+If successful, at the end of this stage, the following has changed:
+
+#### Table 1: Canisters
+
+<table>
+  <tr>
+    <th>Canisters</th>
+    <th>Subnet</th>
+    <th>Controlled by</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td>dapp canister(s)</td>
+    <td>application subnet</td>
+    <td>dapp developer principal, NNS root</td>
+    <td>operational</td>
+  </tr>
+</table>
+
+#### Table 2: NNS Proposals
+ <table>
+  <tr>
+    <th>NNS Proposal</th>
+    <th>State</th>
+  </tr>
+  <tr>
+    <td class="light-green-text">SNS creation proposal</td>
+    <td class="light-green-text">Open</td>
+  </tr>
+</table>
+
+
+### 4. The NNS proposal is decided.
+If the NNS proposal from Stage 3 is adopted, 
 then the NNS automatically triggers the remaining stages and thus the creation of
 the SNS.
 
@@ -115,9 +128,9 @@ If the proposal is rejected, then the dapp canister(s)' control is given back ex
 to the original dapp developers.
 
 For the proposal's execution to be successful, the following conditions must also be met:
-* NNS root has been added as a co-controller of the dapp to be decentralized (Stage 3
+* NNS root has been added as a co-controller of the dapp to be decentralized (Stage 2
 was executed succesfully)
-* the SNS-W canister has sufficient cycles.
+* The SNS-W canister has sufficient cycles.
 
 If these conditions are not met, the proposal will fail immediately and the control is 
 given back exclusively to the original dapp developers.
@@ -138,7 +151,7 @@ This means that we are in the following situation:
 </table>
 
 
-### 5. (Automatically) SNS-W deploys SNS canisters
+### 5. (Automatically) SNS-W deploys SNS canisters.
 As a first step of the automatically triggered
 SNS creation, [SNS-W](../introduction/sns-architecture.md#SNS-W)
 creates SNS canisters on the SNS subnet.
@@ -187,12 +200,12 @@ This results in the following situation:
 </table>
 
 
-### 6. (Automatically) SNS-W sets SNS root as sole controller of dapp
+### 6. (Automatically) SNS-W sets SNS root as sole controller of dapp.
 Once the SNS canisters are deployed, [SNS-W](../introduction/sns-architecture.md#SNS-W)
 sets the SNS root as the sole controller of the dapp canister(s).
 
 For technical reasons, the NNS root canister was added as the co-controller of the dapp
-in Stage 3.
+in Stage 2.
 Therefore, the SNS-W orchestrates the necessary updates involving NNS root for 
 making the appropriate changes.
 
@@ -248,9 +261,9 @@ A succesful stage results in the following situation:
   </tr>
 </table>
 
-### 7. (Automatically) SNS-W initializes SNS canisters according to settings from Step 1
+### 7. (Automatically) SNS-W initializes SNS canisters according to settings from Step 1.
 Next, SNS-W initializes the SNS canisters with the appropriate initial payloads as proposed
-in Stage 2 and approved by the NNS community in Stage 4. 
+in Stage 3 and approved by the NNS community in Stage 4. 
 
 **The SNS canisters are initialized in pre-decentralization-swap mode.**
 
@@ -309,7 +322,7 @@ If successful, at the end of stage, the following has changed:
   </tr>
 </table>
 
-### 8. (Automatically) SNS swap starts
+### 8. (Automatically) SNS swap starts.
 The swap was initialized with a defined start time. 
 Once this start time is reached,
 the swap will automatically be started and is open for participations.
@@ -359,7 +372,7 @@ This means, we will have the following situation:
   </tr>
 </table>
 
-### 9. (Automatically) SNS swap ends
+### 9. (Automatically) SNS swap ends.
 The swap was also initialized with a defined end time.
 When this time is reached, the swap automatically ends.
 The swap can also end earlier if the maximum ICP participation is reached before the end 
@@ -408,7 +421,7 @@ This means, we will have the following situation:
 </table>
 
 
-### 10. (Automatically) SNS swap finalizes
+### 10. (Automatically) SNS swap finalizes.
 When the decentralization swap ends, it is first established whether
 it was successful, e.g., enough ICP have been collected. 
 If the swap was successful,

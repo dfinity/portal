@@ -141,7 +141,7 @@ Leave the terminal that displays network operations open and switch your focus t
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) tutorial, this step was performed as part of the `dfx deploy` command work flow. This guide demonstrates how to perform each of the operations independently.
+In the [1.3: Deploying your first dapp](/docs/tutorials/developer-journey/level-1/1.3-first-dapp.md) developer journey tutorial, this step was performed as part of the `dfx deploy` command work flow. This guide demonstrates how to perform each of the operations independently.
 
 To register canister identifiers for the local network, register unique canister identifiers for the canisters in the project by running the following command:
 

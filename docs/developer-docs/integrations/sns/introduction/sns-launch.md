@@ -13,11 +13,10 @@ proper decentralization of the voting power. There are of course many ways to do
 The SNS provides one simple way to achieve this: a developer can hand over their dapp
 to the NNS and ask it to create an SNS and start a decentralization swap for it.
 The decentralization swap collects ICP from participants and distributes the voting
-power of the SNS among participants by swaping the ICP for (staked) SNS tokens.
+power of the SNS among participants by swapping the ICP for (staked) SNS tokens.
 
 We next explain this key concept, the decentralization swap, in more detail and refer to
-[this section](../launching/launch-summary.md) for the detailed, technical steps involved
-in an SNS launch.
+[this section](../launching/launch-summary.md) for the detailed, technical stages of an SNS launch.
 
 ## Decentralization swap
 
@@ -33,8 +32,7 @@ In more detail, it is controlled by the NNS root canister.
 
 * At the swap's end the collected ICP are “swapped” for the SNS tokens; the
   participants get staked SNS tokens in the form of SNS neurons and the SNS gets the
-  collected ICP in an SNS controlled treasury. Each swap participant will receive their portion of the pool of SNS
-  tokens, pro-rated by their share of the overall number of ICP contributed.
+  collected ICP in an SNS controlled treasury. Each swap participant will receive their portion of the pool of SNS tokens, pro-rated by their share of the overall number of ICP contributed.
   For example, if the swap canister initially held 1000 SNS tokens and 500 ICP tokens
   were collected during the decentralization swap, then the exchange rate would be 2:1
   and each participant would get 2 SNS tokens for each ICP token they contributed.

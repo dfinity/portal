@@ -28,7 +28,7 @@ When an SNS is created, SNS-W is involved and responsible for deploying the late
 the SNS canister.
 When the SNS should be updated, this happens by an NNS proposal that adds a new version of the 
 SNS canisters to SNS-W.
-Each SNS community can then simply decide to adopt these new, approved versions in their SNS instance.
+Each SNS community can then simply decide - by SNS proposal - to adopt these new, approved versions in their SNS instance.
 
 ### Customizability
 Individual SNSs can nevertheless be customized by choosing parameters, 
@@ -50,21 +50,16 @@ The SNS consists of the following canisters:
 * The decentralization swap canister.
 
 ### SNS governance canisters
-The **governance canister** defines who can participate in governance decisions and
-automatically triggers the execution of these decisions.
+The **governance canister** defines who can participate in governance decisions and automatically triggers the execution of these decisions.
 It stores **proposals** that are suggestions on how to
-evolve the dapp that the SNS governs and **neurons** that define who the governance
-participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
+evolve the dapp that the SNS governs and **neurons** that define who the governance participants are. Neurons facilitate stake-based voting as they contain staked SNS tokens.
 Anyone can be a participant in governance by staking SNS tokens in a neuron.
-When a proposal is adopted, the governance system automatically triggers the execution of
-the proposal in the form calling a defined method. In most cases, these decisions are therefore
-executed full on chain.
+When a proposal is adopted, the governance system automatically and autonomously triggers the execution of the proposal in the form calling a defined method. In most cases, these decisions are therefore executed fully on chain.
 
 ### SNS ledger canister with archive and index
 The **ledger canister** implements the
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
-and contains a unique token that is different for each SNS. We call this _kind_ of tokens
-**SNS tokens**.
+and contains a unique token that is different for each SNS. We call this _kind_ of tokens **SNS tokens**.
 In each SNS, this SNS's ledger stores which accounts own how many SNS tokens and
 the history of transactions between them.
 To keep the full ledger history even though a canister has limited
@@ -80,10 +75,8 @@ and the dapp canisters that the SNS governs.
 
 ### SNS (decentralization) swap canister
 The **decentralization swap canister**, or swap canister for short, is the main canister involved
-in the SNS launch. Users can provide ICP tokens to the swap and, if the swap is successful, 
-they get staked SNS tokens (in SNS neurons) in return. 
+in the SNS launch. Users can provide ICP tokens to the swap and, if the swap is successful, they get staked SNS tokens (in SNS neurons) in return. 
 Hence, the ICP and the SNS tokens are "swapped".
 This facilitates that 1) the SNS can collect initial funding and
-2) the distribution of neurons and thus of voting power to many different participants, which makes
-   the governance decentralized.
+2) the distribution of neurons and thus of voting power to many different participants, which makes the governance decentralized.
 

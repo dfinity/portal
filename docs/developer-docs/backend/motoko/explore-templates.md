@@ -1,7 +1,7 @@
 # 2: Project organization
 
 ## Overview
-If you started your tour of the IC SDK with the [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md), you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
+If you started your tour of the IC SDK with the [0.6: Introduction to dfx](/docs/tutorials/developer-journey/level-0/06-intro-dfx.md) developer journey tutorial, you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 
@@ -56,7 +56,7 @@ At a minimum, the default project directory includes the following folders and f
 
 -   A default `src` directory for all of the source files required by your dapp.
 
-The default `src` directory includes a template `main.mo` file that you can modify or replace to include your core programming logic.
+The default `src/explore_hello_backend/` directory includes a template `main.mo` file that you can modify or replace to include your core programming logic.
 
 Because this guide focuses on the basics of getting started, you are only going to use the `main.mo` file. If you have `node.js` installed, your project directory includes additional files and directories that you can use to define the frontend interface for your dapp. Frontend development and the template files in the `assets` folder are discussed a little later.
 
@@ -69,52 +69,47 @@ To review the default configuration file for your project, open the `dfx.json` c
 The contents of the file should resemble the following:
 
 ```
-    {
-    "canisters": {
-        "explore_hello_backend": {
-        "main": "src/explore_hello_backend/main.mo",
-        "type": "motoko"
-        },
-        "explore_hello_frontend": {
-        "dependencies": [
-            "explore_hello_backend"
-        ],
-        "frontend": {
-            "entrypoint": "src/explore_hello_frontend/src/index.html"
-        },
-        "source": [
-            "src/explore_hello_frontend/assets",
-            "dist/explore_hello_frontend/"
-        ],
-        "type": "assets"
-        }
+{
+  "canisters": {
+    "explore_hello_backend": {
+      "main": "src/explore_hello_backend/main.mo",
+      "type": "motoko"
     },
-    "defaults": {
-        "build": {
-        "args": "",
-        "packtool": ""
-        }
-    },
-    "output_env_file": ".env",
-    "version": 1
+    "explore_hello_frontend": {
+      "dependencies": [
+        "dexplore_hello_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/explore_hello_frontend/src/index.html"
+      },
+      "source": [
+        "src/explore_hello_frontend/assets",
+        "dist/explore_hello_frontend/"
+      ],
+      "type": "assets"
     }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}%        
 ```
+
 
 Let’s take a look at a few of the default settings.
 
--   The `settings` section specifies the name of the WebAssembly module for your `explore_hello` project is `explore_hello`.
-
--   The `canisters.explore_hello` key specifies that the main program to be compiled is located in the path specified by the `main` setting, in this case, `src/explore_hello/main.mo` and the `type` setting indicates that this is a `motoko` program.
-
--   The `canisters.explore_hello_assets` key specifies configuration details about frontend assets for this project. Let’s skip those for now.
-
--   The `dfx` setting is used to identify the version of the software used to create the project.
-
--   The `networks` section specifies information about the networks to which you connect. The default settings bind the local canister execution environment to the local host address `127.0.0.1` and port `4943`.
-
-    If you have access to other Internet Computer network providers, the `networks` section can include network aliases and URLs for connecting to those providers.
-
-You can leave the default settings as they are.
+- There are two canisters defined in this file; `explore_hello_frontend` and `explore_hello_backend`. 
+- The `explore_hello_backend` canister has a `main` attribute which specifics the file path of the program's core file, `main.mo`.
+- The `explore_hello_backend` canister has a `type` of 'motoko`, which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
+- The `explore_hello_frontend` canister has a dependency of the `explore_hello_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
+- The `explore_hello_frontend` canister has a frontend endpoint of `src/explore_hello_frontend/src/index.html`, which specifies the primary frontend asset. 
+- Additional assets for the `explore_hello_frontend` canister are specified in the `source` configuration. 
+- Lastly, the `explore_hello_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister. 
 
 ## Review the default program code
 
@@ -126,9 +121,9 @@ To review the default sample program for your project, open the `src/explore_hel
 
 ```
 actor {
-    public func greet(name : Text) : async Text {
-        return "Hello, " # name # "!";
-    };
+  public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
 };
 ```
 

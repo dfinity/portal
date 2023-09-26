@@ -13,6 +13,13 @@ launch – that is a decision by the NNS DAO. Ultimately, following this guide a
 an SNS is done at your own risk.
 :::
 
+:::info
+The NNS has approved a new flow for how SNSs can be launched that only require one proposal.
+The old flow required two NNS and one SNS proposal.
+Since this is now the recommended flow how to launch an SNS, this page and others focus on the new "one-proposal" flow.
+Nevertheless, the old, legacy flow is still available for those projects who started with the old flow and want to continue with this path, for example because they already started testing. These project can find the detailed launch stages according to the old flow [here](../launching/launch-summary.md) and the concrete actions to take to run through these stages [here](../launching/launch-steps.md). 
+:::
+
 # 1. Documentation / Preparation
 
 ## 1.1. Tokenomics specification
@@ -51,35 +58,28 @@ It may not be possible to fully decentralize the dapp at the time of the SNS lau
 If the dapp does have dependencies of some kind that cannot be managed by the DAO, then those dependencies should be documented so the community is aware of potential risks. When possible, there should also be a plan for how to bring these services on-chain and under control of the DAO.
 
 ## 1.4. Create SNS configuration file
-The SNS is initialized using a configuration file, and the parameters in this file will set up token name, token supply, token distribution, transaction fees, dissolve delays and more. The configuration will be a part of the decentralization proposal, and is approved by the NNS DAO.
+The SNS is initialized using an NNS proposal that defines the initial parameters, thus the initial configuration is approved by the NNS DAO.
+The proposal can be created from a .yaml configuration file and defines things like the token name, token supply, token distribution, transaction fees, dissolve delays and more. 
 
-For initializing an SNS for your dapp, the configuration parameters must use the documentation created with the SNS tokenomics tool (section 1.1.5 above) to create the YAML configuration file. The [OpenChat config file](https://github.com/open-ic/open-chat/blob/master/sns/config/sns.yml) is a good example of how to format the file (note: the latest version of SNS may have new/different parameters). Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
+The initial parameters are explained more [here](./preparation.md).
+You can find a template with all parameters that need to be defined [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml) and an example of a filled in file [here](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).
+Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
 
-Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]` 
+Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]`. 
 
-A confirmation text, which requires acceptance, can also be shown before the user can participate in the decentralization swap. This confirmation text can be set like this: `confirmation_text: "Please confirm that..."`
+A confirmation text, defined as a parameter that is approved by the NNS, can be shown before the user can participate in the decentralization swap. This confirmation text can be set like this: `confirmation_text: "Please confirm that..."` 
 
-Use the [sns cli tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) to validate the consistency of the configuration file, and test the configuration extensively locally and on the mainnet before the final canisters are set up. See section 2.4 for more information about testing.
+Test the configuration extensively locally before submitting the NNS proposal. See section 2 for more information about testing.
 
 ## 1.5. Create NNS proposals
-As a part of the SNS launch process, two proposals must be created. The first proposal is for allowing a principle to create the SNS canisters, see Hot or Not’s [command](https://forum.dfinity.org/t/help-submit-the-sns-w-wallet-principal-id-to-be-whitelisted/20322/20) to create the first proposal.
+<!-- OLD: As a part of the SNS launch process, two proposals must be created. The first proposal is for allowing a principle to create the SNS canisters, see Hot or Not’s [command](https://forum.dfinity.org/t/help-submit-the-sns-w-wallet-principal-id-to-be-whitelisted/20322/20) to create the first proposal.-->
 
-### 1.5.1. SNS canister creation proposal
-The canister creation proposal is asking the NNS neurons for acceptance to start the SNS launch process, and to allow only the accepted principal to install an SNS.
+ As a part of the SNS launch process, an NNS proposal must be created to ask the NNS to create an SNS and start a decentralization swap. You can find the details about how to create such a proposal [here](../launching/launch-summary-1proposal.md).
 
-This proposal is not going in-depth with the tokenomics, governance etc. but links to the dapp and a whitepaper should be shared, so the community can evaluate if launching a SNS for the dapp makes sense. See OpenChat’s [proposal 1](https://dashboard.internetcomputer.org/proposal/108634) for inspiration.
+Include relevant information like tokenomics (token distribution, governance, decentralization swap), details about the dapp (link to the open sourced code), whitepaper, a link to the forum discussion (see Step 3.2), and anything else relevant for the community to make a decisions if an SNS should be launched for the dapp. 
 
-### 1.5.2. Decentralization proposal
-The second proposal is asking the NNS neurons for acceptance to start the decentralization process. If the proposal is adopted, the decentralization of the dapp and the decentralization swap will begin.
-
-Include relevant information like tokenomics (token distribution, governance, decentralization swap), details about the dapp (link to the open sourced code), whitepaper and anything else relevant to the community. See OpenChat’s [decentralization proposal](https://dashboard.internetcomputer.org/proposal/109811) for inspiration.
-
-### 1.5.3. More information
-See the [documentation](./preparation.md) for details about the process. The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
-
-:::info
-A 1-proposal process is planned to be rolled out early June.
-:::
+For details about the preparation process, see the [documentation](./preparation.md) and for details about how the launch works, see [this documentation](../launching/index.md). 
+The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
 
 # 2. Technical Prep & Testing
 
@@ -110,7 +110,7 @@ See the documentation for more information about testing [SNS Testflight on main
 Developers can choose to integrate a frontend for the SNS functionality in the dapp. A good example of a useful integration is SNS proposal voting. This allows neurons to vote on proposals directly in the dapp frontend. Integrations should be tested thoroughly with the SNS Testflight or the local SNS test before the SNS launch.
 
 ## 2.6. Test the SNS launch locally
-In addition to performing comprehensive testing of all dApp operations using the SNS (as explained in section 2.4), it is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dApp. Detailed instructions on how to set up SNS locally for testing are available [here 1](https://github.com/dfinity/sns-testing).
+In addition to performing comprehensive testing of all dapp operations using the SNS (as explained in section 2.4), it is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. Detailed instructions on how to set up SNS locally for testing are available [here 1](https://github.com/dfinity/sns-testing).
 
 # 3. Community Consultation
 
@@ -122,7 +122,7 @@ It’s strongly recommended that developers have a discussion in the forum with 
 
 It is recommended to share:
 
-- [x] The init file and swap file (example: [OpenChat](https://github.com/open-ic/open-chat/tree/master/sns/config)).
+- [x] The init file that you used. You can find the template [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml).
 - [x] Provide whitepaper with a full description of the decentralization and tokenomics.
 - [x] Provide a technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
 - [x] Explain to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
@@ -132,48 +132,21 @@ The idea is to provide the community with information so they can verify what th
 This [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) provides some initial thoughts from the perspective of DFINITY when voting. 
 
 ## 4. SNS Launch Workflow
-Please find all steps included in an SNS launch [here](../launching/launch-summary.md) and a more detailed
-descriptions of the following steps [here](../launching/launch-steps.md).
+Please find all stages included in an SNS launch [here](../launching/launch-summary-1proposal.md) and a more detailed descriptions of the actions needed to enable these stages [here](../launching/launch-steps-1proposal.md).
 
-## 4.1. Submit SNS approval proposal
-First step in the launch is an NNS proposal that approves the SNS creation by listing a principal that can
-later create the SNS canisters. Use the proposal content created in Section 1.4.1 and create the NNS 
-proposal. The proposal can be created with the
-[quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/) as described
-[here](../launching/launch-steps.md#SNS-launch-command-NNSproposal1).
+## 4.1. Dapp control handover
+Together with the submission of the NNS proposal to launch an SNS, the dapp developers hand over their dapp to the NNS by setting the NNS root canister as an additional controller of the dapp. 
 
-## 4.2. Create SNS canisters
-When the NNS neurons have adopted the proposal above, the SNS canisters can be installed, and prepared for
-the SNS launch. The SNS canisters are installed with the
-[SNS CLI tool](https://github.com/dfinity/ic/tree/master/rs/sns/cli) as described
-[here](../launching/launch-steps.md#SNS-launch-command-SNSW)
+Consider what the impact of the handover will have for the entire dapp, since principals will change. Is it necessary to change access rights to e.g. asset canisters? All features of the dapp should be thoroughly tested before the SNS launch. See previous mention of testing with the SNS testflight.
 
-## 4.3. Dapp control handover
-Before the decentralization swap, the SNS root canister must be set as the controller of the dapp and
-other developers are removed from the list of controllers. This entails “registering” the dapp with the
-SNS so that SNS root is aware that it controls these canisters, and this registration is done by SNS proposal.
+## 4.2. Submit decentralization proposal
+This proposal will initiate the SNS launch. Use the proposal content created in Step 1.4 and create the NNS proposal. You can learn how to do so in the [documentation about the required actions to go through the launch stages](../launching/launch-steps-1proposal.md).
 
-Consider what the impact of the handover will have for the entire dapp, since principals will change. 
-Is it necessary to change access rights to e.g. asset canisters? All features of the dapp should be thoroughly
-tested before the SNS launch. See previous mention of testing with the SNS testflight.
-
-## 4.4. Submit decentralization proposal
-This step is similar to submitting Step 4.1. This proposal will initiate the decentralization swap.
-Use the proposal content created in section 1.4.2 and create the NNS proposal. 
-The proposal can be created with the
-[quill command line tool](../../../../references/quill-cli-reference/sns/quill-sns-make-proposal/)
-as described [here](../launching/launch-steps.md#SNS-launch-command-NNSproposal2).
-
-## 4.5 Finalizing the SNS swap
-After the swap ends, its finalization has to be triggered by a `dfx` call as described
-[here](../launching/launch-steps.md#SNS-launch-command-finalizingswap).
-
-## 4.6 Setup custom SNS functions
+## 4.3. Setup custom SNS functions
 To execute code on SNS managed canisters via SNS proposals, the canisters must expose two public functions,
 also referred to as generic functions in the documentation. The first function is a validation function 
 to validate and render the proposal payload, and the second function is an execution function to perform
 an action given the proposal payload.
 
-To use generic functions, you must first submit an SNS proposal to register these functions with SNS 
-governance. Once the proposal is adopted, you can submit proposals to execute them with a given binary 
-payload.
+To use generic functions, you must first submit an SNS proposal to register these functions with SNS governance. Once the proposal is adopted, you can submit proposals to execute them with a given binary payload.
+You can find more details on proposals in the [documentation how to manage SNSs](../managing/making-proposals.md).

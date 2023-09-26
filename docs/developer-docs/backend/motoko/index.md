@@ -8,7 +8,7 @@ To get started, one should [install the IC SDK](../../setup/install/index.mdx) w
 
 ## Tutorials and guides
 
-The [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) quick start provides a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [1.1: Exploring a live demo](/docs/tutorials/developer-journey/level-1/1.1-live-demo.md) developer journey tutorial provides a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple Motoko programs to give you hands-on experience creating programs that run on the IC.
 

@@ -13,9 +13,6 @@ including what advantages such decentralized governance systems have.
 
 Any dapp on the Internet Computer can be handed over to an SNS with the result that the dapp is
 owned and controlled by a community.
-Each SNS includes a stake-based governance system, that orchestrates decision making and changes,
-and a ledger that defines a unique token for each SNS.
+Each SNS includes a stake-based governance system, that orchestrates decision making and changes, and a ledger that defines a unique token for each SNS.
 The SNS framework also comes with a defined path how an SNS is launched.
-During a successful launch, an SNS is created, the governance control is distributed to users in a
-decentralization swap, initial funds are collected (in exchange for governance control),
-and the dapp's control is handed over to the new SNS.
+During a successful launch, an SNS is created, the governance control is distributed to users in a decentralization swap, initial funds are collected (in exchange for governance control), and the dapp's control is handed over to the new SNS.

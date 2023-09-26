@@ -18,6 +18,7 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const blogPostsPlugin = require("./plugins/blog-posts");
+const externalRedirectsPlugin = require("./plugins/external-redirects");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
 const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
@@ -27,6 +28,8 @@ const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
   getSplatRedirects,
+  getExternalRedirects,
+  getExactUrlRedirects,
 } = require("./plugins/utils/redirects");
 const { menuDivider, intoColumns } = require("./plugins/utils/menu");
 
@@ -74,6 +77,10 @@ const navbarItems = [
           href: "https://wiki.internetcomputer.org",
         },
         {
+          label: "History of the Internet Computer",
+          href: "https://wiki.internetcomputer.org/wiki/History",
+        },
+        {
           label: "Video Library",
           href: "/videos?source=nav",
         },
@@ -90,7 +97,7 @@ const navbarItems = [
           href: "/capabilities?source=nav",
         },
         {
-          label: "Bitcoin on ICP",
+          label: "Bitcoin <> ICP",
           href: "/bitcoin-integration?source=nav",
         },
         {
@@ -244,6 +251,10 @@ const navbarItems = [
       [
         menuDivider("Get Involved"),
         {
+          label: "ICP Community",
+          href: "/community?source=nav",
+        },
+        {
           label: "Become a Node Provider",
           href: "/node-providers?source=nav",
         },
@@ -354,7 +365,7 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer grants", href: "https://dfinity.org/grants" },
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -404,6 +415,10 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
+    externalRedirectsPlugin({
+      redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
+    }),
+
     [
       "@docusaurus/plugin-client-redirects",
       {
@@ -440,6 +455,8 @@ const config = {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -510,7 +527,7 @@ const config = {
             items: [
               {
                 label: "Internet Computer Association",
-                href: "https://association.internetcomputer.org/",
+                href: "https://lbbne-haaaa-aaaam-absda-cai.icp0.io/",
               },
               {
                 label: "Wiki",

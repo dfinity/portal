@@ -5,7 +5,7 @@ tags: [Team spotlight]
 image: /img/blog/dev-update-blog-runtime-1.jpg
 ---
 
-![NNS Team spotlight](../../static/img/blog/dev-update-blog-runtime-1.jpg)
+![Runtime Team spotlight](../../static/img/blog/dev-update-blog-runtime-1.jpg)
 
 Hello developers and welcome to the second installment of the dev blog's new series team spotlight! This week, we sat down with the Runtime team to dig deeper into the team's role on the IC, their current roadmap, plus some of the features and improvements they've developed in response of direct developer feedback. 
 
@@ -28,8 +28,11 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 *WebAssembly execution happens inside a canister sandbox process. This is an example of improving security, because it protects the system and other canisters against bugs in the WebAssembly runtime that may be exploited by a malicious canister.*
 
 *There are a few interesting problems related to WebAssembly execution that the runtime environment solves:*
+
 *- How to ensure that execution terminates?*
+
 *- How much to charge for execution?*
+
 *- How to keep track of changes in the canister state and memory?*
 
 **Thank you for such a detailed summary, and I really appreciate the inclusion of some of the problems regarding WebAssembly that the runtime environment solves. I think this insight into these specific problems is very educational and beneficial to be aware of!**
@@ -41,18 +44,27 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 **Switching focus a bit, let's talk about developers and their experience with the runtime environment. Have any improvements or features been made as a direct result of developer feedback?**
 
 *Yes, there are many such features:*
+
 *- Canister timers allow canisters to schedule jobs.*
+
 *- Composite queries allow canisters to call other queries while handling a query.*
+
 *- Deterministic time slicing allows longer and more complex computations.*
+
 *- Performance counter allows the developer to profile canister code.*
+
 *- Wasm-native stable memory improves performance of the stable memory.*
+
 *- Wasm compilation cache speeds up canister upgrades in dapps that have thousands of canisters such as Open Chat and Hot-or-Not.*
 
 **What is the primary project that the Runtime team is working on or focused on currently?**
 
 *Right now we are finishing three large projects:*
+
 *- File-based page allocator enables doubling the number of query threads. This means that IC canisters can handle more queries concurrently at peak loads.*
+
 *- Wasm-native stable memory improves performance of the stable memory. This means that developers can move the data from small Wasm memory to a much larger and safer stable memory.*
+
 *- Composite queries allow canisters to call other queries while handling a query. This simplifies development of multi-canister dapps.*
 
 **Those sound like some incredible projects that I'm sure developers are quite excited for the release of! Where should developers look for the latest updates on these Runtime projects?**
@@ -62,20 +74,25 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 **In addition to these projects, are there any other major roadmap items planned?**
 
 *We have the following items in our roadmap:*
-*- New WebAssembly instrumentation. We expect huge performance improvements from this project in some compute heavy workloads such as interpreters and databases. Stay tuned for the forum post.*
-*- Supporting large WebAssembly binaries. This feature will allow users to install larger WebAssembly binaries. Stay tuned for the forum post.*
-*- Query statistics aggregation: [forum post.](https://forum.dfinity.org/t/community-consideration-explore-query-charging/19247/24?u=ulan)
-*- Configurable WebAssembly heap limit: [forum post.](https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794)
-*- Canister Lifecycle hooks: [forum post.](https://forum.dfinity.org/t/canister-lifecycle-hooks/17089)
 
-**What is one feature or aspect of Runtime that the team is the most proud of?**
+*- New WebAssembly instrumentation. We expect huge performance improvements from this project in some compute heavy workloads such as interpreters and databases. Stay tuned for the forum post.*
+
+*- Supporting large WebAssembly binaries. This feature will allow users to install larger WebAssembly binaries. Stay tuned for the forum post.*
+
+*- Query statistics aggregation: [forum post.](https://forum.dfinity.org/t/community-consideration-explore-query-charging/19247/24?u=ulan)*
+
+*- Configurable WebAssembly heap limit: [forum post.](https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794)*
+
+*- Canister Lifecycle hooks: [forum post.](https://forum.dfinity.org/t/canister-lifecycle-hooks/17089)*
+
+**What is one feature or aspect of the runtime that the team is the most proud of?**
 
 *If we have to choose one, then it is probably WebAssembly itself. It is an amazing technology that’s gaining wide adoption. WebAssembly is an open standard that was designed to be secure, safe, and fast. Right now IC supports only two programming languages at the production level: Motoko and Rust. Folks from Demergent Labs are working on bringing TypeScript and Python to the IC. There are many more languages that compile to WebAssembly. If the community or DFINITY would provide high-quality CDKs for the most popular languages, then we would reach the full potential of WebAssembly.*
 
-**This has been incredibly informative on the runtime team and their developments on the runtime environment, thank you for such educational answers! To wrap things up, what would you say makes the Runtime team unique compared to some of the other dev teams at DFINITY?**
+**This has been incredibly informative on the Runtime team and their developments on the runtime environment, thank you for such educational answers! To wrap things up, what would you say makes the Runtime team unique compared to some of the other dev teams at DFINITY?**
 
 *Compared to other teams we probably work closer to the hardware. Sometimes we read and debug WebAssembly and x64 assembly code.*
 
-Thank you to the runtime team for sitting down with us and giving some great insight into the team! That'll wrap up this issue of team spotlight, be sure to check in again in two weeks for the next installment that'll dive into Internet Identity! 
+Thank you to the Runtime team for sitting down with us and giving some great insight into the team! That'll wrap up this issue of team spotlight, be sure to check in again in two weeks for the next installment that'll dive into Internet Identity! 
 
 -DFINITY

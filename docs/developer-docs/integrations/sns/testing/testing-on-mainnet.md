@@ -105,7 +105,7 @@ has full control over the testflight SNS.
 The developer neuron ID is the last part of the testflight deployment output, e.g.:
 
 ```
-Developer neuron IDs: 594fd5d8dce3e793c3e421e1b87d55247627f8a63473047671f7f5ccc48eda63
+Developer neuron IDs: 
 ```
 
 ### Step 3. Add SNS root as an additional controller of all SNS managed dapp canisters
@@ -190,9 +190,7 @@ You can omit `grep -v "^ *new_canister_wasm"` above to see the new WASM binary i
 
 ### Test executing code on SNS managed canisters via SNS proposals
 
-To execute code on SNS managed canisters via SNS proposals,
-the canisters must expose a pair of public
-functions (referred to as **generic** functions in the following):
+To execute code on SNS managed canisters via SNS proposals, you can use [generic proposals](../managing/making-proposals.md). To use such proposals, the SNS managed canisters that define the behavior of such a proposal must expose a pair of public functions (referred to as **generic** functions in the following):
 - a validation function to validate and render the proposal payload;
 - an execution function to perform an action given the proposal payload.
 

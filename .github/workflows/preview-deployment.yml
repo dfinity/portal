@@ -98,7 +98,7 @@ jobs:
             const comments = require('./.github/workflows/scripts/comments.js');
             const maybeComment = await comments.get(context, github);
             if (maybeComment) {
-              await comments.update(context, github, maybeComment.id,  `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
+              await comments.update(context, github, maybeComment.id,  `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`);
             } else {
-              await comments.create(context, github, `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
+              await comments.create(context, github, `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`);
             }
