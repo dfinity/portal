@@ -278,15 +278,15 @@ function GamingPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="md:col-span-2 md:rounded-[32px] backdrop-blur-2xl md:bg-white-60 relative flex flex-col md:flex-row gap-10 md:gap-10 lg:gap-0 px-6 md:px-0 pt-20 md:pt-0">
-            <div className="max-w-sm mx-auto md:max-w-none md:mx-0 flex-1 md:self-center md:order-2 lg:self-start flex rounded-[32px] overflow-hidden">
+          <div className="md:col-span-2 md:rounded-[32px] backdrop-blur-2xl md:bg-white-60 relative flex flex-col md:flex-row gap-10 md:gap-10 px-6 md:px-0 pt-20 md:pt-0">
+            <div className=" flex-1 md:self-center md:order-2 lg:self-start flex rounded-[32px] overflow-hidden">
               <img
                 src="/img/gaming/cubetopia.webp"
                 alt=""
-                className="w-full relative"
+                className="w-full relative object-cover"
               />
             </div>
-            <div className="flex-1 md:order-1 md:py-20">
+            <div className="md:flex-1 md:order-1 md:py-20">
               <div className="md:ml-2/12">
                 <motion.h2
                   className=" text-transparent bg-clip-text gradient-text tw-heading-4 md:tw-heading-3 mb-6"
