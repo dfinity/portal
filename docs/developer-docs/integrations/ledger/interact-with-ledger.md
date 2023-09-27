@@ -227,7 +227,7 @@ let ledger_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
 For all other endpoints you can use the request and response structure from the `ledger.did` candid file. How to retrieve the candid file is explained in [the guide on deploying an ICP ledger locally](./ledger-local-setup.md). 
 
 ### `icrc-ledger-types` Rust crate
-As explained in the introduction of the [Ledgers and Tokens section](./introduction_and_overview.mdx), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints. 
+As explained in the introduction of the [Ledgers and Tokens section](./introduction_and_overview.md), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints. 
 To interact with ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used. 
 This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e ICRC-2, ICRC-3,...). 
 The crate can be installed with the command:
