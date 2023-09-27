@@ -1,7 +1,18 @@
 # ICP ledger local setup
 
 ## Overview
-If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger. 
+
+:::info
+There are two ways of deploying an ICP ledger locally.
+- Use [dfx-nns](/docs/references/cli-reference/dfx-nns) to deploy the entire nns locally. Since the ICP ledger is part of the NNS, this command will also instlal an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and strait forward but also more heavy weight. 
+- Deploy the ICP ledger `wasm` locally. This method is discussed and shown in this guide and it gives you more controll over the deployment and also is less heavy weight.
+:::
+
+Deploying an ICP ledger locally gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments and you have control over which `wasm` version of the ICP ledger you want to interact with. 
+
+There only exists only one ICP ledger on mainnet and the `wasm` that is running on mainnet is not meant to be used for other token deployments. It needs to be backwards compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
+ If you want to deploy your own token or build an ICRC-1 ledger, have a look at the [guide on setting up an ICRC-1 ledger](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md).
 
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
