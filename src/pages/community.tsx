@@ -696,7 +696,7 @@ function CommunityPage() {
                     href="/community/asia-alliance"
                   >
                     <LinkArrowRight />
-                    Check out alliance's mission and vision
+                    See alliance’s mission & vision
                   </Link>
                 </motion.p>
               </div>
