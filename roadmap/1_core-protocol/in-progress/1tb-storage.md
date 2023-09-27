@@ -1,7 +1,7 @@
 ---
 title: Support 1TB replicated storage
 links:
-  Forum Link: https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387
+  Forum Link:
   Proposal:
 eta: 
 is_community: false
