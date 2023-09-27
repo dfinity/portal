@@ -2680,5 +2680,29 @@
   "twitter": "https://twitter.com/nobleblocks",
   "youtube": "",
   "submittableId": "36650737"
+},
+  {
+  "name": "221Bravo App",
+  "description": "Home for ICP Data-Detectives. Token Stats, Visual Explorer, Account Searching and more.",
+  "website": "https://221Bravo.app",
+  "logo": "/img/showcase/bravo-app_logo.webp",
+  "screenshots": [
+    "/img/showcase/bravo-app_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "bravo-app",
+  "oneLiner": "Token Stats, Blockchain Visual Explorer, Account Searching and more..",
+  "stats": "1024 Members",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/SaorsaLabs/221BravoApp",
+  "twitter": "https://twitter.com/221BravoApp",
+  "youtube": "",
+  "submittableId": "36556639"
 }
 ]
