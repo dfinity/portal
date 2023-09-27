@@ -5,7 +5,7 @@ If you are working in a local development environment, i.e with a local replica 
 
 :::info
 There are two ways of deploying an ICP ledger locally.
-- Use [dfx-nns](/docs/references/cli-reference/dfx-nns) to deploy the entire nns locally. Since the ICP ledger is part of the NNS, this command will also instlal an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and strait forward but also more heavy weight. 
+- Use [dfx-nns](/docs/references/cli-reference/dfx-nns.md) to deploy the entire nns locally. Since the ICP ledger is part of the NNS, this command will also instlal an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and strait forward but also more heavy weight. 
 - Deploy the ICP ledger `wasm` locally. This method is discussed and shown in this guide and it gives you more controll over the deployment and also is less heavy weight.
 :::
 
