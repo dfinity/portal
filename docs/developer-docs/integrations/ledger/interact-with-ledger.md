@@ -63,8 +63,7 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 ```
 
 ## Interact with ICP ledger via `dfx canister`
-For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`.
-The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the icp_ledger.did file. How to retrieve it is dicsussed in the [ICP local deployment guide](./ledger-local-setup.md)
+For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the icp_ledger.did file. How to retrieve it is dicsussed in the [ICP local deployment guide](./ledger-local-setup.md)
 
 This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md).
 
@@ -104,7 +103,7 @@ Returns the ICP archives. In this case no archives have been created so far:
 (record { archives = vec {} })
 ```
 
-To transfer ICP on the ICP ledger. In this case the tokens were sent to account `d52f7f2b7277f025bcaa5c90b10d122274faba289`. You can get the string of an accountidentifier by calling 
+To send tokens to the accountidentifier `d52f7f2b7277f025bcaa5c90b10d122274faba289` you can use the following commands. Yyou will need to derive the accountidentifier by getting the principal first:
 ```
 dfx ledger account-id --of-principal <PRINCIPAL>
 ```
@@ -112,26 +111,41 @@ You can get the principal of an identity by calling
 ```
 dfx identity get-principal --identity <IDENTITY>
 ```
-If have an identity called `default2` and you want to send ICP to this principals default accountidentifier you would call:
+If you have an identity called `default2` and you want to send ICP to this principals default accountidentifier you would call:
  ```
 dfx identity get-principal --identity default2
 ```
-bringing all of these together:
+which in this case returns:
+```
+sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe
+```
+When you plug this into the account-id command:
+```
+dfx ledger account-id --of-principal sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe
+```
+you get:
+```
+d52f7f2b7277f025bcaa5c90b10d122274faba289
+```
+Bringing all of these together to form a transfer transaction:
+``
 export TO_ACCOUNT = "d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d"
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai transfer '(record { to = $(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")'); memo = 1:nat64; amount = record {e8s = 2_00_000_000 }; fee = record { e8s = 10_000 }; })'
 ```
-Returns the block index in which this transaction took place. In this case it was the first
+Returns the block index in which this transaction took place. In this case it was the first block:
 ```
 (variant { Ok = 1 : nat64 })
 ```
+To get the balance of an accountidentifier you can call:
+``
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")')' })'
 ```
-Returns the the balance in e8s of the accountidentifier `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should be 200 million as thats the amount we sent earlier:
+It returns the the balance in e8s of the accountidentifier `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should have a balance of 200 million as thats the amount we sent earlier:
 ```
 (record { e8s = 200_000_000 : nat64 })
 ```
 
-To query the blocks in the ICP ledger you can call:
+To query the created blocks from the ICP ledger you can call:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai query_blocks '(record {start = 1:nat64; length = 1:nat64})'
 ```
@@ -173,7 +187,7 @@ You will receive something like this:
 )
 ```
 
-To query the encoded blocks in the ICP ledger you can call:
+To only query the encoded blocks from the ICP ledger you can call:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai query_encoded_blocks '(record {start = 1:nat64; length = 1:nat64})'
 ```
