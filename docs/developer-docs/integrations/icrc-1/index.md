@@ -2,7 +2,7 @@
 
 ## Overview
 
-ICRC-1 is the token standard of the ledger (With ICRC standing for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC)). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
+ICRC-1 is a token standard created the internet computer working group. ICRC stands for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
 
 However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards). 
 

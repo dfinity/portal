@@ -5,10 +5,10 @@ There are two main ways to interact with an ICRC-1 ledger.
 - `dfx canister`: the generic canister call from `dfx`.
 - `ic-cdk`: inter-canister calls for the ICRC-1 ledger.
 - `ledger-js`: a library for interfacing with ICRC-1 ledger on the Internet Computer.
-## Example commands for the ICRC-1 endpoints
+## ICRC-1 and ICRC-1 extension endpoints
 
 Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions of ICRC-1(ICRC-2, ICRC-3,...). 
-This tutorial will go through the endpoints for ICRC-1. 
+This tutorial will go through the endpoints for ICRC-1 and the extension ICRC-2. If you have deployed an ICRC-1 ledger according to the [guide](./icrc1-ledger-setup.md) you have to make sure that you have enabled ICRC-2 standard. Otherwise these calls will not work. 
 
 You can always check which standards are supported by a certain ICRC-1 ledger by calling:
 
@@ -16,20 +16,27 @@ You can always check which standards are supported by a certain ICRC-1 ledger by
 dfx canister call icrc1_ledger_canister icrc1_supported_standards '()' 
 ```
 
-If your ICRC-1 ledger only supports ICRC-1, the return value will be:
+The ICRC-1 ledger used in this guide also supports the extension ICRC-2:
 
 ```
+
 (
   vec {
     record {
       url = "https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1";
       name = "ICRC-1";
     };
+    record {
+      url = "https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2";
+      name = "ICRC-2";
+    };
   },
 )
 ```
 
-The return values in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose during your [ICRC-1 ledger setup](./icrc1-ledger-setup.md). 
+The return values as well as the cansiter name `icrc1_ledger_canister` in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose during your [ICRC-1 ledger setup](./icrc1-ledger-setup.md). 
+
+### ICRC-1 endpoints
 
 To fetch the symbol of the ICRC-1 ledger:
 
@@ -150,6 +157,41 @@ This command returns:
 
 ```
 (variant { Ok = 1 : nat })
+```
+
+### ICRC-2 endpoints
+
+To approve tokens to a certain spender (in this guide we again choose the principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) you can call:
+```
+dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 100_000; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"  
+```
+
+This command returns the block index of the transaction. Since this is the second transaction the index will be 2:
+
+```
+(variant { Ok = 2 : nat })
+```
+
+To check the allowance of the spender `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe` from the previous command you can call:
+```
+dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { account = record{owner = principal \"${DEFAULT}\";}; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"  
+```
+
+This command will return the allowance of `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe` for tokens approved by the `DEFAULT` principal. We expect this to be the `100_000` tokens we approved earlier:
+```
+(record { allowance = 100_000 : nat; expires_at = null })
+```
+Alternatively, you can also set the expiration date for an approval. For specifics on see the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve).
+
+If the spender now wants to transfer tokens that were previously approve for the spender to a certain principal (in this case we use the arbitrary principal `7tmcj-ukheu-y6dvi-fhmxv-7qs5t-lwgh2-qzojr-vzt6m-maqv4-hvzlg-5qe`) you can call: 
+```
+dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 90_000; from = record{owner = principal \"${DEFAULT}\"}; to= record{owner = principal \"${DEFAULT}\"}; })"  
+```
+Note that you cannot transfer the entire allowance as the fee for making a transfer has to be substracted from the transferred amount. For the reference implementation the fee is `10_000` tokens. Thus, the maximum amount that can be transferred from `DEFAULT` to `7tmcj-ukheu-y6dvi-fhmxv-7qs5t-lwgh2-qzojr-vzt6m-maqv4-hvzlg-5qe` with the spender `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe` is `90_000`.
+The principal making this call has to be the spender, since they are the once that received the approval. 
+You will receive the block index as a return value:
+```
+(variant { Ok = 3 : nat })
 ```
 
 ## Interacting with an ICRC-1 ledger from another canister (inter-canister calls via `ic-cdk`)

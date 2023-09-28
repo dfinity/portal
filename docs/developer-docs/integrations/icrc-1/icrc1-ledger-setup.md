@@ -120,6 +120,15 @@ export NUM_OF_BLOCK_TO_ARCHIVE=1000
 export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
 ```
 
+Specify which standards to support. If you only want to support the ICRC-1 standard then you can set:
+``` sh
+export FEATURE_FLAGS=false
+```
+If you want your ICRC-1 ledger to also support the extension standard ICRC-2 then set the flag to true:
+``` sh
+export FEATURE_FLAGS=true
+```
+
 Check the set variables:
 
 For each variable, the exported environment variable will be used unless otherwise specified:
@@ -131,6 +140,7 @@ For each variable, the exported environment variable will be used unless otherwi
 -   The `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
 -   The `TOKEN_SYMBOL` is the ticker symbol of your new token.
 -   The `MINTER` is the account of the Principal responsible for minting and burning tokens (see the [icrc-1 ledger documentation](https://github.com/dfinity/ICRC-1)).
+-   The `FEATURE_FLAGS` is a flag for enabling or disabling certain extension standards to the ICRC-1 standard. In this case the reference implementation also can support ICRC-2 transactions.
 -   Minting 100 tokens to the `DEFAULT` (1 token is by default equal to 10^8 e8s, hence the name).
 -   Setting the transfer fee to 0.0001 tokens.
 
@@ -145,6 +155,7 @@ record {
      minting_account = record { owner = principal \"${MINTER}\" };
      transfer_fee = ${TRANSFER_FEE};
      metadata = vec {};
+     feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
      initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
      archive_options = record {
          num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
@@ -166,6 +177,7 @@ If you want to deploy your ICRC-1 ledger on the mainnet you will have to complet
 -   Always set the `archive_options` field. If the archiving is disabled, the capacity of your ledger is limited to the memory of a single canister.
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new instances of the archive canister on demand. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::
+
 
 
 ### Step 8: Candid UI.
