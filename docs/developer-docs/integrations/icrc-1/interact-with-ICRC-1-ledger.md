@@ -227,5 +227,5 @@ icrc-ledger-types = "0.1.1"
 
 The documentation for this crate can be found [here](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/). 
 
-## Interacting with an ICRC-1 ledger from you web application (`ledger-js`)
+## Interacting with an ICRC-1 ledger from your web application (`ledger-js`)
 You will find specifications and examples on how to use the library to interact with ICRC-1 ledgers [here](https://github.com/dfinity/ic-js/tree/main/packages/ledger).
