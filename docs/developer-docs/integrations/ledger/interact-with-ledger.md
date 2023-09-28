@@ -1,4 +1,4 @@
-# Interact with the ICP ledger
+# Interacting with the ICP ledger
 
 ## Overview
 There are multiple ways to interact with the ICP ledger. They depend on whether you want to interact with the ICP ledger on mainnet, the `dfx ledger` default ICP ledger on a local network, or whether you have deployed your own local ledger version. Also, how you interact with the ICP ledger is dependent on whether you want to interact with it from the command line, from your web app, or from another canister. 
@@ -138,6 +138,7 @@ This command returns the block index in which this transaction took place. In th
 (variant { Ok = 1 : nat64 })
 ```
 To get the balance of an `AccountIdentifier` you can call:
+```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")')' })'
 ```
 It returns the the balance in e8s of the `AccountIdentifier` `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should have a balance of 200 million as thats the amount we sent earlier:

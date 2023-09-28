@@ -7,7 +7,7 @@ There are two main ways to interact with an ICRC-1 ledger.
 - `ledger-js`: a library for interfacing with ICRC-1 ledger on the Internet Computer.
 ## ICRC-1 and ICRC-1 extension endpoints
 
-Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions of ICRC-1(ICRC-2, ICRC-3,...). 
+Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions of ICRC-1 (ICRC-2, ICRC-3,...). 
 This tutorial will go through the endpoints for ICRC-1 and the extension ICRC-2. If you have deployed an ICRC-1 ledger according to the [guide](./icrc1-ledger-setup.md) you have to make sure that you have enabled ICRC-2 standard. Otherwise these calls will not work. 
 
 You can always check which standards are supported by a certain ICRC-1 ledger by calling:
