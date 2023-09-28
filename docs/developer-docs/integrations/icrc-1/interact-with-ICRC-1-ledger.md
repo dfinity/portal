@@ -208,7 +208,7 @@ let ledger_id = Principal::from_text("mxzaz-hqaaa-aaaar-qaada-cai").unwrap();
             .await.unwrap();
 ```
 
-For all other endpoints you can use the request and response structure from the `ledger.did` Candid file. How to retrieve the Candid file is explained in [the guide on deploying an ICP ledger locally](./ledger-local-setup.md). 
+For all other endpoints you can use the request and response structure from the `ledger.did` Candid file. How to retrieve the Candid file is explained in [the guide on deploying an ICRC-1 ledger locally](./icrc1-ledger-setup.md). 
 
 ### `icrc-ledger-types` Rust crate
 To interact with ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used. I provides data types, request types and response types as well as error types needed for interacting with ICRC-1 endpoints.
