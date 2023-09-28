@@ -1,7 +1,7 @@
 # ICP index local setup
 
 ## Overview
-This guide will show you how do deploy an ICP index canister locally, how to connect it to your local ICP ledger, and how to interact with the ICP index canister.
+This guide will show you how to deploy an ICP index canister locally, how to connect it to your local ICP ledger, and how to interact with the ICP index canister.
 
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it, you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on the mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
 
