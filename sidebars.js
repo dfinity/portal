@@ -476,7 +476,7 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
-            "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger.md"],
+            "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger"],
         },
         {
           type: "doc",
