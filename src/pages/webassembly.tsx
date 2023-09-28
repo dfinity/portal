@@ -18,7 +18,7 @@ function WebAssemblyPage() {
   return (
     <Layout
       title="WebAssembly on ICP"
-      description="A distinct advantage of the Internet Computer blockchain is its use of WebAssembly for executing smart contracts and decentralized applications — written in a wide variety of languages that compile to WebAssembly."
+      description="An advantage of the Internet Computer blockchain is its use of WebAssembly for executing smart contracts and decentralized applications — written in a wide variety of languages that compile to WebAssembly."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-webassembly.jpg"></ShareMeta>
@@ -289,7 +289,7 @@ function WebAssemblyPage() {
                 applications.
               </p>
               <p className="mb-0">
-                <Link href="" className="link-primary link-with-icon">
+                <Link href="https://www.cs.cmu.edu/news/2023/webassembly-research-center" className="link-primary link-with-icon">
                   Read the press release
                   <LinkArrowUpRight />
                 </Link>
