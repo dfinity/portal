@@ -12,6 +12,7 @@ The ICP ledger canister services transaction requests and offers a variety of en
 There is only one ICP ledger on the Internet Computer. 
 
 ## ICRC-1 ledgers
+
 ICRC stands for `Internet Computer request for comments` and is a working group for various topics on the Internet Computer. The documentation of ICRC can be found [here](https://github.com/dfinity/ICRC).
 The working group has released a standard for new tokens on the IC. To create a new token, one requires a ledger to record all transactions made with this token. This is where the ICRC-1 standard comes in. 
 ICRC-1 is a standard created by the IC working group that defines the general functionalities of ledgers. All tokens and their corresponding ledgers that wish to support this standard have to fulfill all requirements

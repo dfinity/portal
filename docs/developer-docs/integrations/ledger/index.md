@@ -25,7 +25,7 @@ In this context, you can think of principal identifiers as a rough equivalent to
 
 The ledger canister is initialized using administrative operations that are internal to the Internet Computer. As part of the initialization process, the canister is created with the set of accounts and associated ICP token balances.
 
-:::info Why does the ledger use AccountIdentifiers and not just Principal IDs?
+:::info Why does the ledger use `AccountIdentifier`s and not just Principal IDs?
 
 The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by a the wallet software, this is not possible for canisters. 
 :::
@@ -59,7 +59,7 @@ The ICP token is similar to Bitcoin in the following ways:
 
 -   Tokens are entirely fungible.
 
--   `AccountIdentifiers` are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
+-   `AccountIdentifier`s are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
 
 The ICP token differs from Bitcoin in the following ways:
 
