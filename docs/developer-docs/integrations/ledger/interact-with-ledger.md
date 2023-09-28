@@ -31,7 +31,7 @@ Both commands provide a flag to specify a ledger canister id (`--ledger-canister
 Summary of different `dfx ledger` commands
 - `dfx ledger ...` interact with the ICP ledger on your local network with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`
 - `dfx ledger --network ic ...` interact with the ICP ledger on mainnet
-- `dfx ledger --ledger-canister-id <CANISTER_ID> ...` interact with the a [locally deployed](./ledger-local-setup.md) ICP ledger on your local network
+- `dfx ledger --ledger-canister-id <CANISTER_ID> ...` interact with a [locally deployed](./ledger-local-setup.md) ICP ledger on your local network
 :::
 
 ### Balance
@@ -65,7 +65,7 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 ## Interact with ICP ledger via `dfx canister`
 For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the icp_ledger.did file. How to retrieve it is dicsussed in the [ICP local deployment guide](./ledger-local-setup.md)
 
-This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md).
+This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
 
 To fetch the symbol of the ICP ledger:
 ```
@@ -128,7 +128,7 @@ you get:
 d52f7f2b7277f025bcaa5c90b10d122274faba289
 ```
 Bringing all of these together to form a transfer transaction:
-``
+```
 export TO_ACCOUNT = "d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d"
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai transfer '(record { to = $(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")'); memo = 1:nat64; amount = record {e8s = 2_00_000_000 }; fee = record { e8s = 10_000 }; })'
 ```
