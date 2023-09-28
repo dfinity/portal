@@ -6,7 +6,7 @@ The Internet Computer utilizes two different types of ledgers. The first ledger 
 the ICP ledger is running on the NNS subnet. The second type of ledger are the ICRC-1 ledgers. In this overview, both ledger types
 will be explained and their differences will be highlighted. 
 
-## ICP ledger
+### ICP ledger
 The main purpose of the ICP ledger is to record `burn`, `mint` and most commonly `transfer` transactions with regards to the IC's native [token](/docs/concepts/tokens-cycles.md) `ICP`.
 The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
 There is only one ICP ledger on the Internet Computer. 
