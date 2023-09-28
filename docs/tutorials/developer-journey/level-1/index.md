@@ -19,7 +19,7 @@
     - Printing values.
     - Passing text arguments.
 
-- [1.3: Developing your first dapp](1.3-first-dapp.md): 
+- [1.3: Developing your first dapp](1.3-first-dapp.md): Now we're ready to develop our first dapp on the Internet Computer! This module covers: 
     - Creating a new project.
     - Reviewing the project's file structure.
     - Writing the backend canister code.
@@ -37,16 +37,16 @@
     - Adding pre-developed frontend code.
     - Re-deploying the dapp.
 
-- [1.4: Acquiring and using cycles](1.4-using-cycles.md): 
+- [1.4: Acquiring and using cycles](1.4-using-cycles.md): To deploy dapps on the IC mainnet, we'll need to acquire cycles. This module covers: 
     - Overview of cycles.
     - Creating a developer identity.
     - Acquiring cycles using a cycles coupon.
     - Converting ICP tokens to cycles.
 
-- [1.5: Deploying canisters](1.5-deploying-canisters.md): 
+- [1.5: Deploying canisters](1.5-deploying-canisters.md) Once we have acquired some cycles, we can deploy our dapp to the mainnet. This module covers: 
     - Deploying to the mainnet.
 
-- [1.6: Managing canisters](1.6-managing-canisters.md): 
+- [1.6: Managing canisters](1.6-managing-canisters.md): Once our dapp is deployed on the mainnet, we need to learn how we can manage the canister. This module covers: 
     - Obtaining a canister's ID.
     - Obtaining canister information.
     - Adding an identity as a controller of a canister.

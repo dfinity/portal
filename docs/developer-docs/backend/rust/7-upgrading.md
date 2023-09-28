@@ -8,12 +8,17 @@ For example, assume you have a dapp that manages professional profiles and socia
 
 ## Canister upgrades
 When a canister needs to be upgraded, the following workflow is used:
+- If a `pre_upgrade` hook is defined, the system calls it. Note: Having a `pre_upgrade` hook is not recommended, since the `pre_upgrade` hook is run in the current Wasm. If there are any bugs or errors, the canister will trap. 
 - The system calls a `pre_upgrade` hook if your canister defines it.
 - The system discards canister memory and instantiates the new version of your WebAssembly module. The system does preserve the stable memory, which is now available to the new version.
 - The system calls a `post_upgrade` hook on the newly created instance if your canister defines it. The `init` function is not executed.
 - If the canister traps (throws an unrecoverable error) in any of the steps above, the system reverts the canister to the pre-upgrade state.
 
 ### Versioning stable memory
+
+Stable memory is a data persistence feature on the IC. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 96GiB if the subnet can accomodate it. 
+
+In comparison, heap storage refers to the regular Wasm data storage for a canister. Heap storage is not persisted across canister upgrades and is limited to 4GiB. 
 
 Stable memory can be viewed as the communication channel between old and new versions of a canister. As good practice, communication protocols should be versioned. In some cases, developers may want to radically change something such as the serialization format or the stable data layout of their canister. In radical changes like these, the stable memory decoding mechanism may need to guess the data's format, which can become messy and complicated. To make this process easier, stable memory versioning should be planned for. It can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number. 
 
