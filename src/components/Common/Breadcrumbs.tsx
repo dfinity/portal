@@ -15,20 +15,14 @@ function isLink(link: LinkType | LabelType): link is LinkType {
   return "href" in link;
 }
 
-const Breadcrumbs: React.FC<{
-  links: [...LinkType[], LabelType];
-  theme?: "light" | "dark";
-}> = ({ links, theme = "light" }) => {
-  const clickableColor =
-    theme === "light" ? "text-infinite hover: text-black" : "text-white/60";
-  const unclickableColor = theme === "light" ? "text-black" : "text-white";
-  const arrowColor = theme === "light" ? "text-black/20" : "text-white/20";
-
+const Breadcrumbs: React.FC<{ links: [...LinkType[], LabelType] }> = ({
+  links,
+}) => {
   return (
     <div className="flex flex-row gap-2 items-center tw-title-navigation-on-page whitespace-nowrap max-w-full overflow-hidden">
       <Link
         to={"/"}
-        className={`flex ${clickableColor}`}
+        className="flex text-infinite hover:text-black"
         aria-label="Go to home page"
       >
         <HomeIcon className="w-6 h-6 flex-shrink-0" />
@@ -36,20 +30,18 @@ const Breadcrumbs: React.FC<{
       {links.map((link) =>
         isLink(link) ? (
           <React.Fragment key={link.text}>
-            <RightArrowIcon className={`w-4 h-4 flex-shrink-0 ${arrowColor}`} />
+            <RightArrowIcon className="w-4 h-4 text-black opacity-20 flex-shrink-0" />
             <Link
               to={link.href}
-              className={`text-center hover:no-underline ${clickableColor}`}
+              className="text-infinite text-center hover:text-black hover:no-underline"
             >
               {link.text}
             </Link>
           </React.Fragment>
         ) : (
           <React.Fragment key={link.text}>
-            <RightArrowIcon className={`w-4 h-4 flex-shrink-0 ${arrowColor}`} />
-            <span
-              className={`text-ellipsis overflow-hidden whitespace-nowrap ${unclickableColor}`}
-            >
+            <RightArrowIcon className="w-4 h-4 text-black opacity-20 flex-shrink-0" />
+            <span className="text-ellipsis overflow-hidden whitespace-nowrap">
               {link.text}
             </span>
           </React.Fragment>

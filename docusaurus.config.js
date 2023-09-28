@@ -186,10 +186,6 @@ const navbarItems = [
           label: "OpenChat",
           href: "/openchat?source=nav",
         },
-        {
-          label: "Gaming",
-          href: "/gaming?source=nav",
-        },
       ],
     ]),
   },

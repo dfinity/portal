@@ -7,7 +7,7 @@ This guide will discuss the different ways to interact with the ICP ledger. In t
 - `dfx ledger`: the built in `dfx` shortcut for interacting with the ICP ledger.
 - `dfx canister`: the generic canister call from `dfx`.
 - `nns-js`: interact with the ICP ledger from your web app.
-- `ic-cdk`: inter-canister calls for the ICP ledger.
+- `ic-cdk: inter-canister calls for the ICP ledger.
 
 ## Interacting with ICP ledger via `dfx ledger`
 
@@ -65,7 +65,7 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 ## Interacting with ICP ledger via `dfx canister`
 For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the `icp_ledger.did` file. How to retrieve it is discussed in the [ICP local deployment guide](./ledger-local-setup.md).
 
-This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger.md). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
+This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
 
 To fetch the symbol of the ICP ledger:
 ```
@@ -209,7 +209,7 @@ It is a similar format but you will only receive the CBOR encoded block:
 ## Interact with ICP ledger from your web application
 
 In order to simplify working with ICP ledger from JavaScript applications, you can use the [nns-js library](https://github.com/dfinity/nns-js).
-To interact with the ICRC-1 endpoints of the ICP ledger you can have a look at the guide on [interacting with an ICRC-1 ledger](/docs/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger.md).
+
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 You can look at the documentation of [inter-canister calls] (/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICP ledger.
 

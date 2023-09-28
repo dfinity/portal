@@ -12,7 +12,6 @@ const TranslatedLayout: React.FC<{
   alt?: string;
   imageClassName?: string;
   imageWithBlob?: false | string;
-  attribution?: React.ReactNode;
 }> = ({
   children,
   reverse = false,
@@ -22,7 +21,6 @@ const TranslatedLayout: React.FC<{
   imageWithBlob = false,
   imageClassName,
   customContent,
-  attribution,
 }) => {
   if (!imageUrl && !video && !customContent) {
     throw new Error("imageUrl or video or customContent must be provided");
@@ -50,7 +48,7 @@ const TranslatedLayout: React.FC<{
         muted
         playsInline
         className={clsx(
-          "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl max-w-full",
+          "mb-8 md:mb-0 max-h-[600px] object-contain object-center rounded-xl xl:rounded-xl w-full",
           reverse ? "md:rounded-l-none" : "md:rounded-r-none"
         )}
       >
@@ -67,17 +65,12 @@ const TranslatedLayout: React.FC<{
 
   return reverse ? (
     <AnimateSpawn
-      className={clsx("flex flex-col md:flex-row", attribution && "mb-10")}
+      className="flex flex-col md:flex-row"
       variants={transitions.item}
     >
       <div className="flex-1 text-center relative md:-ml-[50px] md:flex md:justify-start md:items-center">
         {imageWithBlob && <div className={imageWithBlob}></div>}
         {mediaEl}
-        {attribution && (
-          <div className="md:absolute -mt-8 md:mt-0 mb-8 md:mb-0 text-center md:-bottom-10 md:left-10">
-            {attribution}
-          </div>
-        )}
       </div>
       <div className="flex flex-col justify-center md:w-7/12">
         <div className="md:mx-auto md:w-[71.4%]">{children}</div>
@@ -85,7 +78,7 @@ const TranslatedLayout: React.FC<{
     </AnimateSpawn>
   ) : (
     <AnimateSpawn
-      className={clsx("flex flex-col md:flex-row", attribution && "mb-10")}
+      className="flex flex-col md:flex-row"
       variants={transitions.item}
     >
       <div className="md:w-7/12 flex flex-col justify-center order-2 md:order-1">
@@ -96,11 +89,6 @@ const TranslatedLayout: React.FC<{
           <div className="blob blob-infinite blob-center blob-md md:blob-lg"></div>
         )}
         {mediaEl}
-        {attribution && (
-          <div className="md:absolute -mt-8 md:mt-0 mb-8 md:mb-0 text-center md:-bottom-10 md:right-10">
-            {attribution}
-          </div>
-        )}
       </div>
     </AnimateSpawn>
   );
