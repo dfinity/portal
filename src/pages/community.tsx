@@ -3,27 +3,21 @@ import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
-import createGlobe from "cobe";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
+import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
 import ShareMeta from "../components/Common/ShareMeta";
 import { Stat, StatsPanel } from "../components/Common/Stats";
+import Gallery from "../components/Community/Gallery";
+import { communityGallery } from "../components/Community/gallery-images";
+import Globe from "../components/Community/Globe";
+import { Hub, HubCard } from "../components/Community/Hubs";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-
-type Hub = {
-  name: string;
-  location?: string;
-  description: string;
-  image: string;
-  link: string;
-  coordinates?: [number, number];
-};
 
 const hubs: Hub[] = [
   {
@@ -221,160 +215,6 @@ const upcomingHubs: Hub[] = [
     link: "https://twitter.com/coinmarketcap/status/1702352254383112526?s=46&t=MYEPlWlA63PER7If_BM83A",
   },
 ];
-const communityGallery: {
-  image: string;
-  title?: string;
-  description?: string;
-}[] = [
-  { image: "img/community/image-000.webp" },
-  { image: "img/community/image-001.webp" },
-  { image: "img/community/image-002.webp" },
-  { image: "img/community/image-003.webp" },
-  { image: "img/community/image-004.webp" },
-  { image: "img/community/image-005.webp" },
-  { image: "img/community/image-006.webp" },
-  { image: "img/community/image-007.webp" },
-  { image: "img/community/image-008.webp" },
-  { image: "img/community/image-009.webp" },
-  { image: "img/community/image-010.webp" },
-  { image: "img/community/image-011.webp" },
-  { image: "img/community/image-012.webp" },
-  { image: "img/community/image-013.webp" },
-  { image: "img/community/image-014.webp" },
-  { image: "img/community/image-015.webp" },
-  { image: "img/community/image-016.webp" },
-  { image: "img/community/image-017.webp" },
-  { image: "img/community/image-018.webp" },
-  { image: "img/community/image-019.webp" },
-  { image: "img/community/image-020.webp" },
-
-  { image: "img/community/image-021.webp" },
-  { image: "img/community/image-022.webp" },
-  { image: "img/community/image-023.webp" },
-  { image: "img/community/image-024.webp" },
-  { image: "img/community/image-025.webp" },
-  { image: "img/community/image-026.webp" },
-  { image: "img/community/image-027.webp" },
-  { image: "img/community/image-028.webp" },
-  { image: "img/community/image-029.webp" },
-  { image: "img/community/image-030.webp" },
-  { image: "img/community/image-031.webp" },
-];
-
-const Globe: React.FC<{
-  className?: string;
-}> = ({ className }) => {
-  const canvasRef = useRef<HTMLCanvasElement>();
-
-  useEffect(() => {
-    let phi = 0;
-
-    canvasRef.current.width =
-      canvasRef.current.clientWidth * window.devicePixelRatio;
-    canvasRef.current.height =
-      canvasRef.current.clientHeight * window.devicePixelRatio;
-
-    const globe = createGlobe(canvasRef.current, {
-      devicePixelRatio: window.devicePixelRatio,
-      width: canvasRef.current.width,
-      height: canvasRef.current.height,
-      phi: 0,
-      theta: 0.42,
-      dark: 1,
-      diffuse: 1.75,
-      mapSamples: 43000,
-      mapBrightness: 7.3,
-      baseColor: [0.23, 0.0, 0.72], // #3b00b9 with each byte represented as 0..1
-      markerColor: [1, 1, 1],
-      // glowColor: [0.23, 0.0, 0.72],
-      glowColor: [0.8, 0.8, 0.8],
-      opacity: 0.41,
-      // longitude latitude
-      // { location: [37.7595, -122.4367], size: 0.03 },
-      markers: hubs.map((hub) => ({
-        location: hub.coordinates,
-        size: 0.03,
-      })),
-      onRender: (state) => {
-        // Called on every animation frame.
-        // `state` will be an empty object, return updated params.
-        state.phi = phi;
-        phi += 0.0025;
-        state.width = canvasRef.current.clientWidth * window.devicePixelRatio;
-        state.height = canvasRef.current.clientHeight * window.devicePixelRatio;
-      },
-    });
-
-    return () => {
-      globe.destroy();
-    };
-  }, []);
-
-  return <canvas className={className} ref={canvasRef}></canvas>;
-};
-
-const HubCard: React.FC<{
-  hub: Hub;
-}> = ({ hub }) => {
-  return (
-    <motion.div
-      className="overflow-hidden rounded-xl flex flex-col bg-white"
-      variants={transitions.item}
-    >
-      <img
-        src={hub.image}
-        alt={hub.name}
-        loading="lazy"
-        className="h-[200px] object-cover"
-      />
-      {/* <div className="tw-title-navigation-on-page rounded-full mx-4 px-3 py-1 bg-white/60 backdrop-blur-2xl -translate-y-1/2 inline-flex gap-3 items-center self-start">
-        {hub.location}
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8 13.9332L11.2998 10.6333C13.1223 8.8109 13.1223 5.85611 11.2998 4.03366C9.4774 2.21122 6.52261 2.21122 4.70017 4.03366C2.87772 5.85611 2.87772 8.8109 4.70017 10.6333L8 13.9332ZM8 15.8188L3.75736 11.5762C1.41421 9.23296 1.41421 5.434 3.75736 3.09086C6.10051 0.747709 9.89947 0.747709 12.2427 3.09086C14.5858 5.434 14.5858 9.23296 12.2427 11.5762L8 15.8188ZM8 8.66683C8.7364 8.66683 9.33333 8.0699 9.33333 7.3335C9.33333 6.59712 8.7364 6.00016 8 6.00016C7.2636 6.00016 6.66667 6.59712 6.66667 7.3335C6.66667 8.0699 7.2636 8.66683 8 8.66683ZM8 10.0002C6.52724 10.0002 5.33333 8.80623 5.33333 7.3335C5.33333 5.86074 6.52724 4.66683 8 4.66683C9.47273 4.66683 10.6667 5.86074 10.6667 7.3335C10.6667 8.80623 9.47273 10.0002 8 10.0002Z"
-            fill="black"
-          />
-        </svg>
-      </div> */}
-      <div className="flex items-center justify-between mb-8 mx-6 mt-8 gap-4">
-        <h3 className="tw-heading-6 mb-0">{hub.name}</h3>
-        {/* <p className="flex-1 tw-paragraph-sm text-black/60 mx-6 mb-3">
-        {hub.description}
-      </p> */}
-        <p className="mb-0">
-          <Link className="button-round-icon" href={hub.link}>
-            <svg
-              width="16"
-              height="21"
-              viewBox="0 0 16 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M6.60718 13.9316H9.45173V20.3247H6.60718V13.9316Z"
-                fill="currentColor"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M0.030082 7.38579H4.86365L1.42228 4.12851L3.31864 2.19604L6.59276 5.54477V0.779785H9.43732V5.54357L12.7102 2.19484L14.6066 4.12731L11.1652 7.38458H16V10.0787H11.1351L14.5922 13.4275L12.6958 15.3154L7.9994 10.6118L3.303 15.3154L1.40663 13.4275L4.86365 10.0787H0V7.38579H0.030082Z"
-                fill="currentColor"
-              />
-            </svg>
-          </Link>
-        </p>
-      </div>
-    </motion.div>
-  );
-};
 
 const UpcomingHubCard: React.FC<{
   hub: Hub;
@@ -531,64 +371,6 @@ const RotatingStatPanel: React.FC<{}> = () => {
   );
 };
 
-const GalleryShowcase = React.memo(() => {
-  const topRow = communityGallery.slice(
-    0,
-    Math.floor(communityGallery.length / 3)
-  );
-  const bottomRow = communityGallery.slice(
-    Math.floor(communityGallery.length / 3)
-  );
-  return (
-    <AnimateSpawn
-      className="overflow-hidden relative h-[280px] md:h-[560px]"
-      variants={transitions.container}
-    >
-      <div className="flex gap-1 md:gap-3 absolute left-1/2 min-w-max nft-marquee-right">
-        {topRow.map((item) => (
-          <img
-            key={item.image}
-            src={item.image}
-            loading="lazy"
-            alt=""
-            className="w-40 md:w-80 aspect-square object-cover object-center rounded-xl"
-          />
-        ))}
-        {topRow.map((item) => (
-          <img
-            key={item.image}
-            src={item.image}
-            loading="lazy"
-            alt=""
-            className="w-40 md:w-80 aspect-square object-cover object-center rounded-xl"
-          />
-        ))}
-      </div>
-
-      <div className="flex gap-1 md:gap-3 absolute top-40 md:top-80 mt-6 md:mt-8 left-1/2 min-w-max nft-marquee-left">
-        {bottomRow.map((item) => (
-          <img
-            key={item.image}
-            src={item.image}
-            loading="lazy"
-            alt=""
-            className="w-24 md:w-52 aspect-square object-cover object-center rounded-xl"
-          />
-        ))}
-        {bottomRow.map((item) => (
-          <img
-            key={item.image}
-            src={item.image}
-            loading="lazy"
-            alt=""
-            className="w-24 md:w-52 aspect-square object-cover object-center rounded-xl"
-          />
-        ))}
-      </div>
-    </AnimateSpawn>
-  );
-});
-
 function CommunityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
@@ -641,6 +423,7 @@ function CommunityPage() {
               </motion.p>
             </div>
             <Globe
+              hubs={hubs}
               className="
               aspect-square
               min-w-[380px] w-[80vw]
@@ -862,14 +645,14 @@ function CommunityPage() {
         </AnimateSpawn>
 
         <AnimateSpawn
-          className="container-10 mt-20 md:mt-40 relative"
+          className="container-10 mt-20 md:mt-40 relative mb-10"
           el={motion.section}
           variants={transitions.container}
         >
           <div className="blob blob-infinite blob-md blob-x-13 sm:blob-x-10 blob-y-8 z-[-1]"></div>
           <div className="md:w-8/10">
             <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-3 md:mb-6 text-gradient"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-0 text-gradient"
               variants={transitions.item}
             >
               The best of ICP.Hubs
@@ -877,7 +660,51 @@ function CommunityPage() {
           </div>
         </AnimateSpawn>
         <AnimateSpawn
-          className="container-12 mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-5 relative"
+          className="md:container-12"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 relative flex flex-col md:flex-row md:gap-10 lg:gap-0 px-6 md:px-0">
+            <div className="max-w-sm mx-auto md:max-w-none md:mx-0 flex-1 md:self-center md:order-2 lg:self-start mb-12 md:mb-0">
+              <motion.img
+                src="/img/community/asia-alliance-hero-img.webp"
+                alt=""
+                className="w-full relative"
+                variants={transitions.item}
+                loading="lazy"
+              />
+            </div>
+            <div className="flex-1 md:order-1 pb-10 md:py-30 flex flex-col justify-center">
+              <div className="md:ml-2/12 flex flex-col">
+                <motion.h2
+                  className=" text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
+                  variants={transitions.item}
+                >
+                  ICP Asia Alliance
+                </motion.h2>
+                <motion.p
+                  className="tw-lead-sm md:tw-lead mb-8"
+                  variants={transitions.item}
+                >
+                  The ICP Asia Alliance is at the forefront of fostering a
+                  vibrant Web3 and AI ecosystem in Asia.
+                </motion.p>
+
+                <motion.p className="mb-0" variants={transitions.item}>
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="/community/asia-alliance"
+                  >
+                    <LinkArrowRight />
+                    See alliance’s mission & vision
+                  </Link>
+                </motion.p>
+              </div>
+            </div>
+          </div>
+        </AnimateSpawn>
+        <AnimateSpawn
+          className="container-12 mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-5 relative"
           el={motion.section}
           variants={transitions.container}
         >
@@ -916,7 +743,10 @@ function CommunityPage() {
               variants={transitions.fadeIn}
               className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-[-1] [mask-image:linear-gradient(to_bottom,black_40%,transparent_60%)]"
             >
-              <Globe className="w-[320px] md:w-[660px] aspect-square" />
+              <Globe
+                hubs={hubs}
+                className="w-[320px] md:w-[660px] aspect-square"
+              />
             </motion.div>
           </div>
         </AnimateSpawn>
@@ -1047,11 +877,7 @@ function CommunityPage() {
           </div>
         </AnimateSpawn>
         <section className="bg-infinite text-white my-20 md:my-40 py-20 md:py-40">
-          <AnimateSpawn
-            className="container-10   relative"
-            el={motion.section}
-            variants={transitions.container}
-          >
+          <Gallery gallery={communityGallery}>
             <div className="blob blob-white blob-md blob-x-10 blob-y-0"></div>
             <div className="md:w-7/10">
               <motion.h2
@@ -1084,18 +910,7 @@ function CommunityPage() {
                 </MotionLink>
               </p> */}
             </div>
-          </AnimateSpawn>
-
-          <AnimateSpawn
-            className="container-12 mt-10 md:mt-15 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-[minmax(20px,auto)] justify-center"
-            el={motion.section}
-            variants={transitions.container}
-          >
-            {/* {communityGallery.map((item) => (
-              <CommunityGalleryImage item={item} />
-            ))} */}
-          </AnimateSpawn>
-          <GalleryShowcase />
+          </Gallery>
         </section>
 
         <Newsletter

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/aa82e52aaa74cc7c5f6a141e30b708bf42ede1e3/standards/ICRC-1/README.md)-compliant token that is backed 1:1 by bitcoins held 100% on the IC mainnet.
+Chain-key Bitcoin (ckBTC) is an [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)-compliant token that is backed 1:1 by bitcoins held 100% on the IC mainnet.
 
 The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
@@ -47,8 +47,9 @@ The ckBTC minter provides the following API endpoints that can be used to intera
 - [`update_balance`](#update_balanceowner-opt-principal-subaccount-opt-blob): Instructs the ckBTC minter to check the balance of a Bitcoin address and mint ckBTC into the account of the owner.
 - [`estimate_withdrawal_fee`](#estimate_withdrawal_feeamount-opt-nat64): Returns a current estimate for the fee to be paid when retrieving a certain BTC amount.
 - [`get_deposit_fee`](#get_deposit_fee): Returns the fee charged when minting ckBTC.
-- [`get_withdrawal_account`](#get_withdrawal_account): Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC.
-- [`retrieve_btc`](#retrieve_btcaddress-text-amount-nat64): Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
+- [`retrieve_btc_with_approval`](#retrieve_btc_with_approvaladdress-text-amount-nat64-from_subaccount-opt-blob): Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
+- [`retrieve_btc`](#retrieve_btcaddress-text-amount-nat64): This endpoint provides the same function as `retrieve_btc_with_approval` but with a different retrieval flow. Developers are encouraged to use the `retrieve_btc_with_approval` endpoint.
+- [`get_withdrawal_account`](#get_withdrawal_account): Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC when using the `retrieve_btc` endpoint.
 - [`retrieve_btc_status`](#retrieve_btc_statusblock_index-nat64): Returns the status of a previous `retrieve_btc` call.
 - [`get_minter_info`](#get_minter_info): Returns information about the ckBTC minter itself.
 - [`get_events`](#get_eventsstart-nat64-length-nat64): Returns a set of events at the ckBTC minter.
@@ -77,15 +78,22 @@ The fee can change when a new Bitcoin block is mined in the meantime, which caus
 ### `get_deposit_fee`
 The endpoint returns the fee that the ckBTC minter charges for minting ckBTC when receiving new UTXOs. Currently, this fee is simply the KYT fee.
 
+### `retrieve_btc_with_approval(address: text, amount: nat64, from_subaccount: opt blob)`
+The function instructs the ckBTC minter to burn the specified amount. Since the funds are transferred out of the user's account, the user must first grant the ckBTC minter the right for this withdrawal by calling `icrc2_approve` on the ckBTC ledger.
+
+After successfully burning the specified ckBTC amount, the retrieval request is recorded. The ckBTC minter periodically goes through the pending requests and handles them by creating a Bitcoin transaction containing an output that transfers the requested amount minus fees to the specified Bitcoin address.
+
+Since Bitcoin retrievals are handled asynchronously, the function returns the block index of the transaction burning the ckBTC tokens.
+
+### `retrieve_btc(address: text, amount: nat64)`
+The function provides the same functionality as `retrieve_btc_with_approval` with the key difference that the funds need to be transferred first to a user-specific withdrawal account under the ckBTC minter's control.
+It is generally recommended to use the `retrieve_btc_with_approval` endpoint.
+
 ### `get_withdrawal_account`
 The function returns the caller’s withdrawal account, which is the account derived from the ckBTC minter’s principal ID and the subaccount derived from the caller’s principal ID.
 
-A user can only retrieve BTC by first transferring ckBTC to this particular account.
+A user can only retrieve BTC using the `retrieve_btc` endpoint by first transferring ckBTC to this particular account.
 
-### `retrieve_btc(address: text, amount: nat64)`
-The function instructs the ckBTC minter to burn the specified amount. Once the request is picked up from the queue, a Bitcoin transaction is created containing an output that transfers the requested amount minus fees to the specified Bitcoin address.
-
-Since Bitcoin retrieval is handled asynchronously, the function returns the block index of the transaction burning the ckBTC tokens.
 
 ### `retrieve_btc_status(block_index: nat64)`
 The status of a BTC retrieval request can be checked using this function. The different possible statuses are:

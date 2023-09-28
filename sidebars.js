@@ -414,7 +414,7 @@ const sidebars = {
           label: "Internet Identity (II)",
           link: {
             type: "doc",
-            id: "references/ii-spec",
+            id: "developer-docs/integrations/internet-identity/overview",
           },
           items: [
             "developer-docs/integrations/internet-identity/alternative-origins",
@@ -474,7 +474,9 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/icrc-1/index",
           },
-          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup"],
+          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+          "developer-docs/integrations/icrc-1/icrc1-index-setup"
+        ],
         },
         {
           type: "doc",
