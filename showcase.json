@@ -2659,26 +2659,48 @@
     "youtube": "https://www.youtube.com/watch?v=XTDznhHdeOE"
   },
   {
-  "name": "NOBLEBLOCKS",
-  "description": "NobleBlocks, a DeSci project, aims to reshape scientific publishing using the Internet Computer's decentralized technology. We focus on fair and transparent reviewing and editing processes, guided by community-led DAOs. Our objective is to make scientific research more efficient and easily accessible to all.",
-  "website": "https://www.nobleblocks.com",
-  "logo": "/img/showcase/nobleblocks_logo.webp",
-  "screenshots": [
-    "/img/showcase/nobleblocks_screenshot.webp"
-  ],
-  "video": "",
-  "display": "Normal",
-  "id": "nobleblocks",
-  "oneLiner": "A Community-Driven DeSci Project for Scientific Publishing",
-  "stats": "",
-  "tags": [
-    "SocialFi",
-    "Tools / Infrastructure"
-  ],
-  "usesInternetIdentity": true,
-  "github": "",
-  "twitter": "https://twitter.com/nobleblocks",
-  "youtube": "",
-  "submittableId": "36650737"
-}
+    "name": "NOBLEBLOCKS",
+    "description": "NobleBlocks, a DeSci project, aims to reshape scientific publishing using the Internet Computer's decentralized technology. We focus on fair and transparent reviewing and editing processes, guided by community-led DAOs. Our objective is to make scientific research more efficient and easily accessible to all.",
+    "website": "https://www.nobleblocks.com",
+    "logo": "/img/showcase/nobleblocks_logo.webp",
+    "screenshots": [
+      "/img/showcase/nobleblocks_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "nobleblocks",
+    "oneLiner": "A Community-Driven DeSci Project for Scientific Publishing",
+    "stats": "",
+    "tags": [
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "",
+    "twitter": "https://twitter.com/nobleblocks",
+    "youtube": "",
+    "submittableId": "36650737"
+  },
+  {
+    "name": "Safenote",
+    "description": "Safenote is an open-source service that enables secure exchange of the most sensitive communication and leaves no trace. It enables any user to encrypt their message and forward it to another, potentially unsecure, platform. Safenote can be thought of as a self-destructible sticky notes system.",
+    "website": "https://safenote.store",
+    "logo": "/img/showcase/safenote_logo.webp",
+    "screenshots": [
+      "/img/showcase/safenote_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "safenote",
+    "oneLiner": "A tool for secure notes exchanging. Built with privacy in mind.",
+    "stats": "1+ user",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/khejit/Safenote",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "35796344"
+  }
 ]
