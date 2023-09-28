@@ -1,7 +1,10 @@
 # ICRC-1 token standard
 
 ## Overview
-The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer.
+
+ICRC-1 is the token standard of the ledger (With ICRC standing for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC)). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
+
+However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards). 
 
 ## Data
 
@@ -17,7 +20,7 @@ type Account = record { owner : principal; subaccount : opt Subaccount; };
 ```
 
 ## Methods
-
+This section will give you an overview of the methods of the ICRC-1 standard. If you want to have a more detailed description on how to interact with those enpoints you can have a look at [the guide on how to interact with an ICRC-1 ledger](./interact-with-ICRC-1-ledger.md)
 ### icrc1_name <span id="name_method"></span>
 
 Returns the name of the token (e.g., `MyToken`).
