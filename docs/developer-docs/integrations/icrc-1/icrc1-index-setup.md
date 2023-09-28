@@ -1,4 +1,4 @@
-# ICRC-1-index local setup
+# ICRC-1 index local setup
 
 ## Overview
 This guide will show you how do deploy an ICRC-1 index canister locally and on the mainnet, how to connect it to the ICRC-1 of your choice, and how to interact with the ICRC-1 index canister.
