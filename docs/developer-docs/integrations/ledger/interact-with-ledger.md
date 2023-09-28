@@ -3,13 +3,13 @@
 ## Overview
 There are multiple ways to interact with the ICP ledger. They depend on whether you want to interact with the ICP ledger on mainnet, the `dfx ledger` default ICP ledger on a local network, or whether you have deployed your own local ledger version. Also, how you interact with the ICP ledger is dependent on whether you want to interact with it from the command line, from your web app, or from another canister. 
 
-This guide will discuss each one of them and give you examples. There structure of this guide is the following
-- `dfx ledger` the built in `dfx` shortcut for interacting with the ICP ledger
-- `dfx canister` the generic canister call from `dfx`
-- `nns-js` interact with the ICP ledger from your web app
-- `ic-cdk` inter-canister calls for the ICP ledger
+This guide will discuss the different ways to interact with the ICP ledger. In this guide, the following workflows will be covered:
+- `dfx ledger`: the built in `dfx` shortcut for interacting with the ICP ledger.
+- `dfx canister`: the generic canister call from `dfx`.
+- `nns-js`: interact with the ICP ledger from your web app.
+- `ic-cdk: inter-canister calls for the ICP ledger.
 
-## Interact with ICP ledger via `dfx ledger`
+## Interacting with ICP ledger via `dfx ledger`
 
 `dfx` provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-ledger.md) or just enter the following command into your console:
 
@@ -18,20 +18,20 @@ dfx ledger --help
 ```
 
 It's worth checking out the `--help` flag of the subcommands as well.
-`dfx` does not come with an ICP ledger install by default. To be able to use this command you will need to install the ICP ledger locally. You can do that by following this [guide](./ledger-local-setup.md) or by installing the nns locally:
+`dfx` does not come with an ICP ledger instance installed by default. To be able to use this command you will need to install the ICP ledger locally. You can do that by following this [guide](./ledger-local-setup.md) or by installing the NNS locally:
 ``` bash
 dfx extension install nns
 dfx nns install
 ```
-The ICP ledger will then run locally with the canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`
+The ICP ledger will then run locally with the canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`.
 Currently, `dfx` exposes only a subset of the ICP ledger functionality, namely `balance` and `transfer`.
-Both commands provide a flag to specify a ledger canister id (`--ledger-canister-id`). This simplifies interacting with a local ledger deployment or other tokens that provide the same interface. If you do not specify the canister id `dfx ledger` will assume you want to interact with a ICP ledger that has a canister ID of `ryjl3-tyaaa-aaaaa-aaaba-cai` or with the ICP ledger on mainnet. For the latter you additional need to specify the mainnet as the network of choice (`--network ic`). 
+Both commands provide a flag to specify a ledger canister id (`--ledger-canister-id`). This simplifies interacting with a local ledger deployment or other tokens that provide the same interface. If you do not specify the canister ID `dfx ledger` will assume you want to interact with a ICP ledger that has a canister ID of `ryjl3-tyaaa-aaaaa-aaaba-cai` or with the ICP ledger on the mainnet. For the latter, you need to specify the mainnet as the network of choice using the flag `--network ic`. 
 
 :::info
-Summary of different `dfx ledger` commands
-- `dfx ledger ...` interact with the ICP ledger on your local network with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`
-- `dfx ledger --network ic ...` interact with the ICP ledger on mainnet
-- `dfx ledger --ledger-canister-id <CANISTER_ID> ...` interact with a [locally deployed](./ledger-local-setup.md) ICP ledger on your local network
+Summary of different `dfx ledger` commands:
+- `dfx ledger ...`: interact with the ICP ledger on your local network with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`.
+- `dfx ledger --network ic ...`: interact with the ICP ledger on the mainnet.
+- `dfx ledger --ledger-canister-id <CANISTER_ID> ...`: interact with the [locally deployed](./ledger-local-setup.md) ICP ledger on your local network.
 :::
 
 ### Balance
@@ -62,8 +62,8 @@ The transfer function can be used to transfer ICP from your account to another.
 dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-account-id>
 ```
 
-## Interact with ICP ledger via `dfx canister`
-For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the icp_ledger.did file. How to retrieve it is dicsussed in the [ICP local deployment guide](./ledger-local-setup.md)
+## Interacting with ICP ledger via `dfx canister`
+For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the `icp_ledger.did` file. How to retrieve it is discussed in the [ICP local deployment guide](./ledger-local-setup.md).
 
 This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
 
@@ -71,7 +71,7 @@ To fetch the symbol of the ICP ledger:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai symbol '()' 
 ```
-Returns the ICP symbol:
+This command returns the ICP symbol:
 ```
 (record { symbol = "ICP" })
 ```
@@ -80,7 +80,7 @@ To fetch the name of the ICP ledger:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai name '()' 
 ```
-Returns the ICP name:
+This command returns the ICP name:
 ```
 (record { name = "Internet Computer" })
 ```
@@ -89,7 +89,7 @@ To fetch the decimals of the ICP ledger:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai decimals '()' 
 ```
-Returns the ICP decimals:
+This command returns the ICP decimals:
 ```
 (record { decimals = 8 : nat32 })
 ```
@@ -98,49 +98,49 @@ To fetch the archives of the ICP ledger:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai archives '()' 
 ```
-Returns the ICP archives. In this case no archives have been created so far:
+This command returns the ICP archives. In this case no archives have been created so far:
 ```
 (record { archives = vec {} })
 ```
 
-To send tokens to the accountidentifier `d52f7f2b7277f025bcaa5c90b10d122274faba289` you can use the following commands. Yyou will need to derive the accountidentifier by getting the principal first:
+To send tokens to the `AccountIdentifier` `d52f7f2b7277f025bcaa5c90b10d122274faba289` you can use the following commands. You will need to derive the `AccountIdentifier` by getting the principal first:
 ```
 dfx ledger account-id --of-principal <PRINCIPAL>
 ```
-You can get the principal of an identity by calling
+You can get the principal of an identity by calling:
 ```
 dfx identity get-principal --identity <IDENTITY>
 ```
-If you have an identity called `default2` and you want to send ICP to this principals default accountidentifier you would call:
+If you have an identity called `default2` and you want to send ICP to this principals default `AccountIdentifier` you would call:
  ```
 dfx identity get-principal --identity default2
 ```
-which in this case returns:
+This command will return:
 ```
 sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe
 ```
-When you plug this into the account-id command:
+If you plug this response value into the `account-id` command:
 ```
 dfx ledger account-id --of-principal sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe
 ```
-you get:
+The following response will be returned:
 ```
 d52f7f2b7277f025bcaa5c90b10d122274faba289
 ```
-Bringing all of these together to form a transfer transaction:
+We can bring all of these commands together to form a transfer transaction:
 ```
 export TO_ACCOUNT = "d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d"
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai transfer '(record { to = $(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")'); memo = 1:nat64; amount = record {e8s = 2_00_000_000 }; fee = record { e8s = 10_000 }; })'
 ```
-Returns the block index in which this transaction took place. In this case it was the first block:
+
+This command returns the block index in which this transaction took place. In this example, it was the first block:
 ```
 (variant { Ok = 1 : nat64 })
 ```
-To get the balance of an accountidentifier you can call:
-``
+To get the balance of an `AccountIdentifier` you can call:
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")')' })'
 ```
-It returns the the balance in e8s of the accountidentifier `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should have a balance of 200 million as thats the amount we sent earlier:
+It returns the the balance in e8s of the `AccountIdentifier` `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should have a balance of 200 million as thats the amount we sent earlier:
 ```
 (record { e8s = 200_000_000 : nat64 })
 ```
@@ -151,7 +151,7 @@ dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai query_blocks '(record {start = 1:n
 ```
 
 You will have to specify the first block to fetch and the number of blocks to fetch. 
-You will receive something like this:
+This command will return output that resembles the following:
 
 ```
 (
@@ -210,7 +210,7 @@ It is a similar format but you will only receive the CBOR encoded block:
 
 In order to simplify working with ICP ledger from JavaScript applications, you can use the [nns-js library](https://github.com/dfinity/nns-js).
 
-## Interact with ICP from a canister (inter-canister calls via `ic-cdk`)
+## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 You can look at the documentation of [inter-canister calls] (/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICP ledger.
 
 Here is an example on how fetch the name from the ICP ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from withing a canister:
@@ -224,10 +224,10 @@ let ledger_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
             .await.unwrap();
 ```
 
-For all other endpoints you can use the request and response structure from the `ledger.did` candid file. How to retrieve the candid file is explained in [the guide on deploying an ICP ledger locally](./ledger-local-setup.md). 
+For all other endpoints you can use the request and response structure from the `ledger.did` Candid file. How to retrieve the Candid file is explained in [the guide on deploying an ICP ledger locally](./ledger-local-setup.md). 
 
 ### `icrc-ledger-types` Rust crate
-As explained in the introduction of the [Ledgers and Tokens section](./introduction_and_overview.md), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints. 
+As explained in the introduction of the [ledgers and tokens section](./introduction_and_overview.md), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints. 
 To interact with ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used. 
 This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e ICRC-2, ICRC-3,...). 
 The crate can be installed with the command:
