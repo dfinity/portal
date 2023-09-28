@@ -86,7 +86,7 @@ function WebAssemblyPage() {
             >
               WebAssembly was designed from the ground up to be secure, safe,
               and fast. Such characteristics enable the Internet Computer to run
-              scalable decentralized applications at low cost.
+              scalable decentralized applications for clients and enterprises.
             </motion.h2>
 
             <motion.p className="mb-0" variants={transitions.item}>
@@ -120,11 +120,13 @@ function WebAssemblyPage() {
                 <br />
                 <br />
                 WebAssembly is becoming a de-facto standard for secure and safe
-                computation. Its ecosystem is continuously growing thanks to
-                contributions from the industry, academia, and open source
-                enthusiasts. This means that Internet Computer developers can
-                leverage all this work to build powerful decentralized
-                applications.
+                computation, with benefits for both the server side of systems  
+                and the client browser side. Its ecosystem is continuously growing
+                thanks to contributions from industry, academia, and open source enthusiasts.
+                The Internet Computer is a secure platform to run server WebAssembly 
+                components and code in a more distributed and secure execution environment 
+                where developers and enterprises can leverage all this work to build powerful 
+                decentralized applications.  
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/webassembly/image-2.webp">
