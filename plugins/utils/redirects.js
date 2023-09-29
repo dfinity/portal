@@ -172,7 +172,7 @@ const redirects = `
   /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-IC
-  /language-guide/index.html /docs/current/tutorials/developer-journey/level-0/intro-languages
+  /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
