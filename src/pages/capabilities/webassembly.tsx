@@ -148,7 +148,7 @@ function WebAssemblyPage() {
                   href="https://medium.com/dfinity/the-internet-computer-a-blockchain-that-offers-stateful-decentralized-serverless-computing-cdbbfdca4b7e"
                   className="link-primary link-with-icon"
                 >
-                  Read a blog post
+                  Read about cloud computing on ICP
                   <LinkArrowUpRight />
                 </Link>
               </p>
