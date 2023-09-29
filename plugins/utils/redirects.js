@@ -152,7 +152,7 @@ const redirects = `
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
   /sustainability /capabilities/sustainability
   /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-journey/
-  /install.sh)" /docs/current/developer-docs/setup/install
+  /install.sh)" /docs/current/developer-docs/setup/
   /docs/current/motoko/intro/ /docs/current/motoko/main/motoko
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/setup/
@@ -170,7 +170,7 @@ const redirects = `
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/integrations/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
-  /apis/site/proxy /docs/current/references/http-gateway-protocol-spec/
+  /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-IC
   /language-guide/index.html /docs/current/tutorials/developer-journey/level-0/intro-languages
   `
