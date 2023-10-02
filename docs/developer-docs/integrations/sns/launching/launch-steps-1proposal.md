@@ -34,6 +34,8 @@ ls bazel-bin/rs/sns/cli/sns
 
 :::info
 This article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
+
+Only the NNS root canister can be added as an additional controller for the dapp canisters. Other canisters, such as the SNS governance canisters, cannot be added as an additional controller.
 :::
 
 This step also includes handing over special privileges to the SNS governance canister. For example, if the SNS contains an asset canister, the SNS governance canister should be given all permissions before handing the canister over. Please refer to the [asset canister](../managing/sns-asset-canister.md) documentation. 
