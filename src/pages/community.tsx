@@ -18,6 +18,7 @@ import Globe from "../components/Community/Globe";
 import { Hub, HubCard } from "../components/Community/Hubs";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import TelegramLogo from "@site/static/img/community/telegram.svg";
 
 const hubs: Hub[] = [
   {
@@ -887,7 +888,7 @@ function CommunityPage() {
                 Join, collaborate and connect
               </motion.h2>
               <motion.p
-                className="tw-paragraph md:tw-lead mb-0"
+                className="tw-paragraph md:tw-lead mb-6 md:mb-10"
                 variants={transitions.item}
               >
                 The ICP community is currently active in around 30 countries and
@@ -895,20 +896,15 @@ function CommunityPage() {
                 32 universities. Haven't joined yet? What are you waiting for?
               </motion.p>
 
-              {/* <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
-                <MotionLink
-                  className="button-outline-white"
-                  variants={transitions.item}
-                >
-                  Subscribe for alerts
-                </MotionLink>
-                <MotionLink
+              <motion.p className="mb-0" variants={transitions.item}>
+                <Link
                   className="link-white link-with-icon"
-                  variants={transitions.item}
+                  href="https://t.me/Official_ICP"
                 >
-                  Propose an event <LinkArrowUpRight />
-                </MotionLink>
-              </p> */}
+                  <TelegramLogo />
+                  Join the official ICP Telegram Space
+                </Link>
+              </motion.p>
             </div>
           </Gallery>
         </section>
