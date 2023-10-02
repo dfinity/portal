@@ -33,8 +33,10 @@ ls bazel-bin/rs/sns/cli/sns
 ### 1. Dapp developers add NNS root as co-controller of dapp.
 
 :::info
-this article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
+This article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
 :::
+
+This step also includes handing over special privileges to the SNS governance canister. For example, if the SNS contains an asset canister, the SNS governance canister should be given all permissions before handing the canister over. Please refer to the [asset canister](../managing/sns-asset-canister.md) documentation. 
 
 They can do so by running the following command:
 
