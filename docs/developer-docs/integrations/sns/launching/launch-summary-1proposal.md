@@ -56,6 +56,11 @@ Therefore, the initial neurons must be carefully setup in a way so that enough o
 
 ### 2. Dapp developers add NNS root as co-controller of dapp.
 Shortly before Step 3, the dapp developers hand over the dapp to the NNS by adding the NNS root canister as an additional controller for the dapp canister(s).
+
+:::info 
+Only the NNS root canister can be added as an additional controller for the dapp canisters. Other canisters, such as the SNS governance canisters, cannot be added as an additional controller.
+:::
+
 This is necessary in order for the rest of the steps to work automatically.
 
 This step also includes handing over special privileges to the SNS governance canister. For example, if the SNS contains an asset canister, the SNS governance canister should be given all permissions before handing the canister over. Please refer to the [asset canister](../managing/sns-asset-canister.md) documentation. 
