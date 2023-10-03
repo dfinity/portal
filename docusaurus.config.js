@@ -612,7 +612,7 @@ const config = {
                 label: "Twitter",
                 to: "https://twitter.com/dfinity",
                 icon: `data:image/svg+xml;base64,${fs
-                  .readFileSync("./static/img/svgIcons/twitter.svg")
+                  .readFileSync("./static/img/svgIcons/twitter-white.svg")
                   .toString("base64")}`,
               },
               {
