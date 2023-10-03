@@ -18,7 +18,6 @@ const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const roadmapDataPlugin = require("./plugins/roadmap-data");
 const blogPostsPlugin = require("./plugins/blog-posts");
-const deckRedirectPulgin = require("./plugins/deck-redirect");
 const externalRedirectsPlugin = require("./plugins/external-redirects");
 const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
 const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
@@ -186,6 +185,10 @@ const navbarItems = [
         {
           label: "OpenChat",
           href: "/openchat?source=nav",
+        },
+        {
+          label: "Gaming",
+          href: "/gaming?source=nav",
         },
       ],
     ]),
@@ -389,7 +392,7 @@ const config = {
   tagline:
     "World Computer blockchain that reimagines the internet as an infinite smart contract platform",
   url: isDeployPreview
-    ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
+    ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -416,7 +419,6 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
-    deckRedirectPulgin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),
@@ -457,6 +459,8 @@ const config = {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),

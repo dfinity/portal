@@ -60,10 +60,7 @@ function CkbtcPage(): JSX.Element {
         <main className="overflow-hidden">
           <ShareMeta image="/img/shareImages/share-ckBTC.jpg" />
           {isDark && <DarkHeroStyles />}
-          <section
-            className="bg-infinite text-white overflow-hidden"
-            ref={ref}
-          >
+          <section className="bg-infinite text-white overflow-hidden" ref={ref}>
             <AnimateSpawn
               className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative "
               variants={transitions.container}
@@ -81,9 +78,9 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin,
-                  trustlessly created by chain-key cryptography and Internet Computer smart contracts that
-                  directly hold raw bitcoin.
+                  ckBTC — a multi-chain bitcoin twin, trustlessly created by chain-key
+                  cryptography and Internet Computer smart contracts that directly hold 
+                  raw bitcoin. Send and receive ckBTC with 1-2 second finality and negligible fees.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -113,82 +110,29 @@ function CkbtcPage(): JSX.Element {
               </motion.h2>
             </div>
           </AnimateSpawn>
-          <AnimateSpawn
-            el={motion.section}
-            variants={transitions.container}
-            className="container-12 relative md:pt-40"
-          >
-            <div className="flex flex-col gap-5 md:flex-row">
-              <motion.div
-                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
-                variants={transitions.item}
-              >
-                <h3 className="inline-flex items-center gap-3 mb-4">
-                  <span className="flex-1 text-gradient tw-heading-5">
-                    Fast TXs with negligible fees
-                  </span>
-                </h3>
-                <p className="tw-paragraph mb-6">
-                  Enables small and casual transactions with Bitcoin.
-                </p>
-                <ul className="checklist space-y-3 mb-0">
-                  <li className="checklist-item pl-8">
-                    Fixed transaction fee: 10 satoshis
-                  </li>
-                  <li className="checklist-item pl-8">Finality: 1-2 sec</li>
-                  <li className="checklist-item pl-8">
-                    Full balance always available. No channel liquidity issues
-                  </li>
-                </ul>
-              </motion.div>
-              <motion.div
-                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
-                variants={transitions.item}
-              >
-                <h3 className="inline-flex items-center gap-3 mb-4">
-                  <span className="flex-1 text-gradient tw-heading-5">
-                    Programmable
-                  </span>
-                </h3>
-                <p className="tw-paragraph mb-6">
-                  Build applications that address real world needs.
-                </p>
-                <ul className="checklist space-y-3 mb-0">
-                  <li className="checklist-item pl-8">
-                    Canister smart contracts can hold and send ckBTC
-                  </li>
-                  <li className="checklist-item pl-8">
-                    Build web applications with BTC support. Users only need a
-                    browser
-                  </li>
-                </ul>
-              </motion.div>
-              <motion.div
-                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
-                variants={transitions.item}
-              >
-                <h3 className="inline-flex items-center gap-3 mb-4">
-                  <span className="flex-1 text-gradient tw-heading-5">
-                    Multi-chain asset
-                  </span>
-                </h3>
-                <p className="tw-paragraph mb-6">
-                  Anyone can send and receive ckBTC value to and from addesses
-                  on either network
-                </p>
-                <ul className="checklist space-y-3 mb-0">
-                  <li className="checklist-item pl-8">
-                    No centralized custodians or bridges{" "}
-                  </li>
-                  <li className="checklist-item pl-8">
-                    Chain-key integrations with other networks like Ethereum
-                  </li>
-                </ul>
-              </motion.div>
-            </div>
-          </AnimateSpawn>
 
           <section className="container-12 mt-30 md:mt-40 flex flex-col gap-16 md:gap-40">
+            <TranslatedLayout
+              imageUrl="/img/ckbtc/mylugano.webp"
+              reverse={true}
+            >
+              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
+                MyLugano 
+              </div>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                ckBTC comes to Lugano 
+              </h3>
+
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                As part of a multi-chain, multi-wallet upgrade, ckBTC has been  
+                integrated into the MyLugano crypto payment app developed by NOKU. 
+                This is a major step towards the Internet Computer infrastructure integrating 
+                with the city of Lugano to eventually enable a plethora of municipal services using bitcoin.
+              </p>
+              <Link className="link-primary link-with-icon" href="https://medium.com/dfinity/the-dfinity-foundation-announces-partnership-with-the-municipality-of-lugano-and-a-1-million-fund-c6dce1fd24ae">
+                <LinkArrowRight /> Read the press release
+              </Link>
+            </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/bitcoin-integration/openchat.webp">
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 OpenChat
@@ -227,8 +171,8 @@ function CkbtcPage(): JSX.Element {
                 on which communities form into groups called Portals. Create NFT
                 gated Portals, airdrop fungible and non-fungible tokens to
                 members and tip content creators for posts in a growing number
-                of tokens and ckBTC. Social media tipping with bitcoin
-                realizes a key part of Satoshi's original vision.
+                of tokens and ckBTC. Social media tipping with bitcoin realizes
+                a key part of Satoshi's original vision.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -240,6 +184,80 @@ function CkbtcPage(): JSX.Element {
             </TranslatedLayout>
           </section>
 
+          <AnimateSpawn
+            el={motion.section}
+            variants={transitions.container}
+            className="container-12 relative pt-20 md:pt-40"
+          >
+            <div className="flex flex-col gap-5 md:flex-row">
+              <motion.div
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
+                variants={transitions.item}
+              >
+                <h3 className="inline-flex items-center gap-3 mb-4">
+                  <span className="flex-1 text-gradient tw-heading-3">
+                    Fast TXs with negligible fees
+                  </span>
+                </h3>
+                <p className="tw-lead mb-6">
+                  Enables small and casual transactions with bitcoin.
+                </p>
+                <ul className="checklist space-y-3 mb-0">
+                  <li className="checklist-item pl-8">
+                    Fixed transaction fee: 10 satoshis
+                  </li>
+                  <li className="checklist-item pl-8">Finality: 1-2 sec</li>
+                  <li className="checklist-item pl-8">
+                    Full balance always available. No channel liquidity issues
+                  </li>
+                </ul>
+              </motion.div>
+              <motion.div
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
+                variants={transitions.item}
+              >
+                <h3 className="inline-flex items-center gap-3 mb-4">
+                  <span className="flex-1 text-gradient tw-heading-3">
+                    Programable bitcoin
+                  </span>
+                </h3>
+                <p className="tw-lead mb-6">
+                  Build applications that address real world needs.
+                </p>
+                <ul className="checklist space-y-3 mb-0">
+                  <li className="checklist-item pl-8">
+                    Canister smart contracts can hold and send ckBTC
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Build web applications with BTC support. Users only need a
+                    browser
+                  </li>
+                </ul>
+              </motion.div>
+              <motion.div
+                className="bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-8 md:flex-1"
+                variants={transitions.item}
+              >
+                <h3 className="inline-flex items-center gap-3 mb-4">
+                  <span className="flex-1 text-gradient tw-heading-3">
+                    Transactions across multiple chains
+                  </span>
+                </h3>
+                <p className="tw-lead mb-6">
+                 Send and receive ckBTC value to and from addesses
+                  on either network
+                </p>
+                <ul className="checklist space-y-3 mb-0">
+                  <li className="checklist-item pl-8">
+                    No centralized custodians or bridges{" "}
+                  </li>
+                  <li className="checklist-item pl-8">
+                    Chain-key integrations with other networks like Ethereum
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+          </AnimateSpawn>
           <section className="container-12 relative pt-20 md:pt-40">
             <AnimateSpawn
               className="mb-12 text-center"
@@ -308,7 +326,7 @@ function CkbtcPage(): JSX.Element {
                   </p>
                 </Link>
               </motion.div>
-              
+
               <motion.div className="" variants={transitions.item}>
                 <Link
                   className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
@@ -326,7 +344,7 @@ function CkbtcPage(): JSX.Element {
                   </p>
                 </Link>
               </motion.div>
-              
+
               <motion.div className="" variants={transitions.item}>
                 <Link
                   className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
@@ -377,7 +395,8 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">AirGap</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    Turn your old smartphone into an air gapped wallet to secure your ckBTC.
+                    Turn your old smartphone into an air gapped wallet to secure
+                    your ckBTC.
                   </p>
                 </Link>
               </motion.div>
@@ -443,36 +462,41 @@ function CkbtcPage(): JSX.Element {
                     <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
                       chain-key ECDSA signing
                     </Link>{" "}
-                    — advanced threshold cryptography integrated with ICP.
-                    In short, chain-key ECDSA is a set of cryptographic protocols that allow
-                    Internet Computer nodes to cooperatively create ECDSA signatures, which
-                    can be used to sign bitcoin transactions, using a highly fault-tolerant,
-                    decentralized network that is resilient to attacks by malicious nodes.
-                    The secret key is never stored in one place, instead it is broken down
-                    into key shares held by ICP nodes that are re-shared periodically.
-                    When requested, nodes use their key shares to collectively sign BTC
-                    transactions without recreating the original secret key.
+                    — advanced threshold cryptography integrated with ICP. In
+                    short, chain-key ECDSA is a set of cryptographic protocols
+                    that allow Internet Computer nodes to cooperatively create
+                    ECDSA signatures, which can be used to sign bitcoin
+                    transactions, using a highly fault-tolerant, decentralized
+                    network that is resilient to attacks by malicious nodes. The
+                    secret key is never stored in one place, instead it is
+                    broken down into key shares held by ICP nodes that are
+                    re-shared periodically. When requested, nodes use their key
+                    shares to collectively sign BTC transactions without
+                    recreating the original secret key.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    This enables a pair of canister smart contracts to trustlessly create ckBTC,
-                    a multichain bitcoin twin that can be controlled by smart contracts and
-                    sent with near instant finality for negligible fees — all without the need for
+                    This enables a pair of canister smart contracts to
+                    trustlessly create ckBTC, a multichain bitcoin twin that can
+                    be controlled by smart contracts and sent with near instant
+                    finality for negligible fees — all without the need for
                     bridges or centralized custodians.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    This is important, because blockchain bridges are centralized, insecure,
-                    cumbersome and costly. The insecurity alone is a dealbreaker: between
-                    2021-2022, more than 2 billion dollars was stolen by exploiting blockchain
-                    bridges. 
+                    This is important, because blockchain bridges are
+                    centralized, insecure, cumbersome and costly. The insecurity
+                    alone is a dealbreaker: between 2021-2022, more than 2
+                    billion dollars was stolen by exploiting blockchain bridges.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    The recent incident where the FTX exchange acted as the custodian, and
-                    Sollet the bridge for wrapping and unwrapping BTC and ETH on Solana,
-                    demonstrates how bridges and intermediaries can act as single points of
-                    failures and are highly vulnerable to hacks. Ethereum smart contracts
-                    behind a bridge make asset transfers between blockchains possible, but
-                    users must still trust a third-party centralized custodian to manage the
-                    digital assets whose code is often not publicly verifiable.
+                    The recent incident where the FTX exchange acted as the
+                    custodian, and Sollet the bridge for wrapping and unwrapping
+                    BTC and ETH on Solana, demonstrates how bridges and
+                    intermediaries can act as single points of failures and are
+                    highly vulnerable to hacks. Ethereum smart contracts behind
+                    a bridge make asset transfers between blockchains possible,
+                    but users must still trust a third-party centralized
+                    custodian to manage the digital assets whose code is often
+                    not publicly verifiable.
                   </p>
                   <p className="mt-10">
                     <Link
@@ -487,7 +511,7 @@ function CkbtcPage(): JSX.Element {
                     href="https://medium.com/dfinity/threshold-ecdsa-the-key-ingredient-behind-the-internet-computers-bitcoin-and-ethereum-cf22649b98a1"
                   >
                     <LinkArrowRight />
-                     Chain-key ECDSA blog
+                    Chain-key ECDSA blog
                   </Link>
                 </div>
                 <div>
@@ -523,8 +547,8 @@ function CkbtcPage(): JSX.Element {
                   <p className="tw-paragraph mb-3">
                     Canister smart contracts can programmatically hold and
                     transfer ckBTC, making it possible to develop fully on-chain
-                    Layer-2 applications for Bitcoin, which is not possible using
-                    the Lightning Network.
+                    Layer-2 applications for Bitcoin, which is not possible
+                    using the Lightning Network.
                   </p>
                   <p className="tw-paragraph mb-3">
                     Another key difference is that ckBTC transaction fees are
@@ -532,9 +556,9 @@ function CkbtcPage(): JSX.Element {
                     intermediate forwarding, or unexpected channel funding fees.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    In the future, ckBTC will be available on other networks like
-                    Ethereum – also directly, and without bridges, thanks to
-                    chain-key cryptography integrations. 
+                    In the future, ckBTC will be available on other networks
+                    like Ethereum – also directly, and without bridges, thanks
+                    to chain-key cryptography integrations.
                   </p>
                   <Link
                     className="link-primary link-with-icon mt-10"
@@ -549,7 +573,7 @@ function CkbtcPage(): JSX.Element {
                   >
                     <LinkArrowUpRight />
                     Blog: Chain-Key Bitcoin: A Decentralized Bitcoin Twin
-                  </Link> 
+                  </Link>
                 </div>
               </div>
               <div className="flex-[0]"></div>

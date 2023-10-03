@@ -2,7 +2,8 @@ const redirects = `
 
   # external redirects (/from -> https://.../to/)
   /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
-  /live-sessions https://dfinity.org/events-and-news
+  /deck-main https://deck.internetcomputer.org
+  /live-sessions https://dfinity.org/events-and-news/#videos-live-sessions
 
   # .html file internal redirects (/../from.html -> to)
   /docs/developers-guide/working-with-canisters.html /docs/current/developer-docs/setup/manage-canisters
@@ -105,6 +106,7 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
+  /docs/current/samples/overview/host-a-website /docs/current/samples/host-a-website
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
@@ -124,7 +126,6 @@ const redirects = `
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
-  /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/integration/ledger-quick-start /docs/current/developer-docs/integrations/ledger/
   /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/integrations/ledger/ledger-local-setup
@@ -150,9 +151,31 @@ const redirects = `
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
   /sustainability /capabilities/sustainability
+  /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-journey/
+  /install.sh)" /docs/current/developer-docs/setup/
+  /docs/current/motoko/intro/ /docs/current/motoko/main/motoko
+  /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
+  /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/setup/
+  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/current/motoko/main/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/current/motoko/main/base/IterType
+  /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/agents/
+  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/integrations/internet-identity/overview
+  /docs/quickstart/local-quickstart.html /docs/current/developer-docs/setup/
+  /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
+  /docs/quickstart/network-quickstart.html /docs/current/developer-docs/setup/
+  /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
+  /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/integrations/internet-identity/overview
+  /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
+  /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
+  /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
+  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-IC
+  /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
   `
   .split(/[\r\n]+/)
-  .map((line) => line.replace(/#.*$/, "").trim())
+  .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
@@ -180,7 +203,11 @@ function ruleToRedirect(rule) {
 exports.getRedirects = function () {
   return redirects
     .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
-    .map(ruleToRedirect);
+    .map(ruleToRedirect)
+    .map((r) => ({
+      to: r.to.replace(/#.+$/, ""),
+      from: r.from,
+    }));
 };
 
 exports.getExternalRedirects = function () {

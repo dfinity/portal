@@ -528,7 +528,7 @@
   {
     "id": "juno",
     "name": "Juno",
-    "oneLiner": "Build Web3 Apps Like It's Web2",
+    "oneLiner": "Build Web3 dApps like Web2",
     "website": "https://juno.build",
     "tags": [
       "Tools / Infrastructure"
@@ -2009,6 +2009,7 @@
     "name": "NNS Dapp",
     "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
     "website": "https://nns.ic0.app",
+    "github": "https://github.com/dfinity/nns-dapp",
     "tags": [
       "Wallet",
       "Tools / Infrastructure",
@@ -2016,10 +2017,7 @@
     ],
     "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp",
-    "screenshots": [
-      "/img/showcase/nnsfront-enddapp_screenshot_0.webp"
-    ]
+    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
   },
   {
     "id": "tipjar",
@@ -2262,6 +2260,21 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/rakeoff-labs",
     "twitter": "https://twitter.com/rakeoff_app"
+  },
+  {
+    "id": "oisy",
+    "name": "Oisy Wallet",
+    "oneLiner": "A novel Ethereum wallet hosted on the Internet Computer",
+    "website": "https://oisy.com",
+    "github": "https://github.com/dfinity/oisy-wallet",
+    "tags": [
+      "Ethereum",
+      "DeFi",
+      "Wallet"
+    ],
+    "description": "Crafted for the Internet Computer, Oisy is a unique Ethereum wallet that operates directly within your browser. It is entirely on-chain and secured by chain-key cryptography and Internet Identity.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/oisy_logo.svg"
   },
   {
     "id": "chainsight",
@@ -2646,26 +2659,48 @@
     "youtube": "https://www.youtube.com/watch?v=XTDznhHdeOE"
   },
   {
-  "name": "NOBLEBLOCKS",
-  "description": "NobleBlocks, a DeSci project, aims to reshape scientific publishing using the Internet Computer's decentralized technology. We focus on fair and transparent reviewing and editing processes, guided by community-led DAOs. Our objective is to make scientific research more efficient and easily accessible to all.",
-  "website": "https://www.nobleblocks.com",
-  "logo": "/img/showcase/nobleblocks_logo.webp",
-  "screenshots": [
-    "/img/showcase/nobleblocks_screenshot.webp"
-  ],
-  "video": "",
-  "display": "Normal",
-  "id": "nobleblocks",
-  "oneLiner": "A Community-Driven DeSci Project for Scientific Publishing",
-  "stats": "",
-  "tags": [
-    "SocialFi",
-    "Tools / Infrastructure"
-  ],
-  "usesInternetIdentity": true,
-  "github": "",
-  "twitter": "https://twitter.com/nobleblocks",
-  "youtube": "",
-  "submittableId": "36650737"
-}
+    "name": "NOBLEBLOCKS",
+    "description": "NobleBlocks, a DeSci project, aims to reshape scientific publishing using the Internet Computer's decentralized technology. We focus on fair and transparent reviewing and editing processes, guided by community-led DAOs. Our objective is to make scientific research more efficient and easily accessible to all.",
+    "website": "https://www.nobleblocks.com",
+    "logo": "/img/showcase/nobleblocks_logo.webp",
+    "screenshots": [
+      "/img/showcase/nobleblocks_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "nobleblocks",
+    "oneLiner": "A Community-Driven DeSci Project for Scientific Publishing",
+    "stats": "",
+    "tags": [
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "",
+    "twitter": "https://twitter.com/nobleblocks",
+    "youtube": "",
+    "submittableId": "36650737"
+  },
+  {
+    "name": "Safenote",
+    "description": "Safenote is an open-source service that enables secure exchange of the most sensitive communication and leaves no trace. It enables any user to encrypt their message and forward it to another, potentially unsecure, platform. Safenote can be thought of as a self-destructible sticky notes system.",
+    "website": "https://safenote.store",
+    "logo": "/img/showcase/safenote_logo.webp",
+    "screenshots": [
+      "/img/showcase/safenote_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "safenote",
+    "oneLiner": "A tool for secure notes exchanging. Built with privacy in mind.",
+    "stats": "1+ user",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/khejit/Safenote",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "35796344"
+  }
 ]

@@ -40,12 +40,28 @@ const sidebars = {
             id: "tutorials/developer-journey/level-1/index",
           },
           items: [
-            "tutorials/developer-journey/level-1/1.1-live-demo",
-            "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
-            "tutorials/developer-journey/level-1/1.3-first-dapp",
-            "tutorials/developer-journey/level-1/1.4-using-cycles",
-            "tutorials/developer-journey/level-1/1.5-deploying-canisters",
-            "tutorials/developer-journey/level-1/1.6-managing-canisters",
+                "tutorials/developer-journey/level-1/1.1-live-demo",
+                "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
+                "tutorials/developer-journey/level-1/1.3-first-dapp",
+                "tutorials/developer-journey/level-1/1.4-using-cycles",
+                "tutorials/developer-journey/level-1/1.5-deploying-canisters",
+                "tutorials/developer-journey/level-1/1.6-managing-canisters",
+              ],
+            },
+        {
+          type: "category",
+          label: "Level 2: Space explorer",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-2/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-2/2.1-storage-persistence",
+            "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+            "tutorials/developer-journey/level-2/2.3-third-party-canisters",
+            "tutorials/developer-journey/level-2/2.4-intro-candid",
+            "tutorials/developer-journey/level-2/2.5-unit-testing",
+            "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
           ],
         },
       ],
@@ -79,6 +95,7 @@ const sidebars = {
         "samples/internet-identity-sample",
         "samples/invoice-canister",
         "samples/ios-integration",
+        "samples/native-app-integration",
         "samples/minimal-counter-dapp",
         "samples/nft",
         "samples/nft-wallet",
@@ -267,6 +284,7 @@ const sidebars = {
           items: [
             "developer-docs/backend/candid/candid-concepts",
             "developer-docs/backend/candid/candid-howto",
+            "developer-docs/backend/candid/generating-candid",
           ],
         },
         {
@@ -337,6 +355,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          label: "Staging environments",
+          id: "developer-docs/production/staging-environment",
+        },
+        {
+          type: "doc",
           label: "Topping up canisters",
           id: "developer-docs/production/topping-up-canister",
         },
@@ -383,11 +406,16 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Independently verifying Internet Computer signatures",
+          id: "developer-docs/integrations/independently-verifying-ic-signatures",
+        },
+        {
           type: "category",
           label: "Internet Identity (II)",
           link: {
             type: "doc",
-            id: "references/ii-spec",
+            id: "developer-docs/integrations/internet-identity/overview",
           },
           items: [
             "developer-docs/integrations/internet-identity/alternative-origins",
@@ -430,9 +458,9 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/deploy-new-token",
             "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
+            "developer-docs/integrations/ledger/icp-index-local-setup",
           ],
         },
         {
@@ -442,7 +470,9 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/icrc-1/index",
           },
-          items: ["developer-docs/integrations/icrc-1/deploy-new-token"],
+          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+          "developer-docs/integrations/icrc-1/icrc1-index-setup"
+        ],
         },
         {
           type: "doc",

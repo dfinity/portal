@@ -113,6 +113,7 @@ This sample code demonstrates how a dapp can transfer ICP to its most active use
 
 - [Documentation](./internet-identity-sample).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/internet_identity_integration).
+- [Unity mobile integration](./native-app-integration).
 
 ## Invoice canister
 
