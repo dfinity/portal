@@ -731,13 +731,20 @@ function CommunityPage() {
               />
             </motion.div>
             <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
+              className="tw-paragraph md:tw-lead-sm mb-4 md:mb-6 md:w-8/10 md:mx-auto"
               variants={transitions.item}
             >
               ICP communities are forming and taking shape in various regions
               around the globe, bringing entrepreneurs, developers, venture
               capitalists, educators, enthusiasts and experts under one regional
               roof.
+            </motion.p>
+
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link className="link-white" href="https://t.me/Official_ICP">
+                <TelegramLogo className="inline-block align-text-bottom mr-2" />
+                Join the official ICP Telegram Space
+              </Link>
             </motion.p>
 
             <motion.div
@@ -897,11 +904,8 @@ function CommunityPage() {
               </motion.p>
 
               <motion.p className="mb-0" variants={transitions.item}>
-                <Link
-                  className="link-white link-with-icon"
-                  href="https://t.me/Official_ICP"
-                >
-                  <TelegramLogo />
+                <Link className="link-white" href="https://t.me/Official_ICP">
+                  <TelegramLogo className="inline-block align-text-bottom mr-2" />
                   Join the official ICP Telegram Space
                 </Link>
               </motion.p>
