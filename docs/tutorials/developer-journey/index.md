@@ -32,7 +32,7 @@ The developer journey is designed to give both new and existing developers a cle
 - [2.2: Advanced canister calls.](level-2/2.2-advanced-canister-calls.md)
 - [2.3: Using third-party canisters.](level-2/2.3-third-party-canisters.md)
 - [2.4: Introduction to Candid.](level-2/2.4-intro-candid.md)
-- [2.5: Unit, integration, and end2end testing](level-2/2.5-unit-testing.md)
+- [2.5: Unit, integration, and end2end testing.](level-2/2.5-unit-testing.md)
 - [2.6: Motoko level 2.](level-2/2.6-motoko-lvl2.md)
 
 ## Level 3: Space engineer 
@@ -41,16 +41,16 @@ The developer journey is designed to give both new and existing developers a cle
 - [3.2: Using HTTPS outcalls.](level-3/3.2-https-outcalls.md)
 - [3.3: Certified variables.](level-3/3.3-certified-variables.md)
 - [3.4: Introduction to agents.](level-3/3.4-intro-to-agents.md)
-- [3.5: Using Quill.](level-3/3.5-using-quill.md)
+- [3.5: Identities and authentication.](level-3/3.5-identities-and-auth.md)
 - [3.6: Motoko level 3.](level-3/3.6-motoko-lvl3.md)
 
 ## Level 4: Space pilot
 
-- 4.1: Identities and authentication.
-- 4.2: Using the ICP ledger.
-- 4.3: ICRC-1 tokens.
-- 4.4: ckBTC and Bitcoin integration.
-- 4.5: NNS governance and staking.
+- 4.1: Using the ICP ledger.
+- 4.2: ICRC-1 tokens.
+- 4.3: ckBTC and Bitcoin integration.
+- 4.4: NNS governance and staking.
+- 4.5: Using Quill.
 - 4.6: Motoko: level 4.
 
 ## Level 5: Internet Computer astronaut 

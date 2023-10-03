@@ -8,6 +8,6 @@
 
 - [3.4: Introduction to agents.](3.4-intro-to-agents.md)
 
-- [3.5: Using Quill.](3.5-using-quill.md)
+- [3.5:  Identities and authentication.](3.5-identities-and-auth.md)
 
 - [3.6: Motoko level 3.](3.6-motoko-lvl3.md)
