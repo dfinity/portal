@@ -2702,5 +2702,28 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "35796344"
+  },
+  {
+    "name": "John Dao",
+    "description": "John Dao is community controlled twitter/X account. You can post tweet proposals and vote on what the next tweet should be. If your tweet wins you get paid with ICP!",
+    "website": "https://johndao.gg",
+    "logo": "/img/showcase/john-dao_logo.webp",
+    "screenshots": [
+      "/img/showcase/john-dao_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "john-dao",
+    "oneLiner": "A Twitter/X account controlled by a DAO on the Internet Computer",
+    "stats": "25.000+ views",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "github": "",
+    "twitter": "https://twitter.com/JohnDao_gg",
+    "youtube": "",
+    "submittableId": "35119262"
   }
 ]
