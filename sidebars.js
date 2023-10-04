@@ -197,7 +197,7 @@ const sidebars = {
         {
           type: "doc",
           label: "Motoko playground",
-          id: "developer-docs/setup/motoko-playground",
+          id: "developer-docs/setup/playground",
         },
         {
           type: "doc",
