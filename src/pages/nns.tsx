@@ -100,7 +100,13 @@ function NnsPage() {
             className="container-12 relative h-60 sm:h-30"
             variants={transitions.item}
           >
-            <HeroGraphic className="w-full max-w-md sm:w-auto sm:absolute pointer-events-none right-5 -translate-y-1/2 sm:-translate-y-2/3" />
+            <img
+              src="/img/nns/hero.svg"
+              alt=""
+              loading="lazy"
+              className="w-full max-w-md sm:w-auto sm:absolute pointer-events-none right-5 -translate-y-1/2 sm:-translate-y-2/3"
+            />
+            {/* <HeroGraphic className="w-full max-w-md sm:w-auto sm:absolute pointer-events-none right-5 -translate-y-1/2 sm:-translate-y-2/3" /> */}
           </motion.section>
         </AnimateSpawn>
         <section className="container-12">
