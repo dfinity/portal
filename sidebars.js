@@ -259,7 +259,6 @@ const sidebars = {
           label: "Building canisters with Rust",
           link: {
             type: "doc",
-          {
             id: "developer-docs/backend/rust/index",
           },
           items: [
