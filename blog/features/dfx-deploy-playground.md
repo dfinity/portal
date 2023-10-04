@@ -17,7 +17,7 @@ When this flag is used, the canisters are deployed in a manner where they borrow
 
 ## What this means for developers
 
-Since the `dfx deploy --playground` feature doesn't require additional configuration, developers can get up and running with very little prerequisites, making the on-boarding of new developers more seamless than before. For existing developers, this provides a new way for canisters to be tested, since canisters deployed to the playground are deployed on the mainnet, but do not cost cycles that the developer must pay. This means developers can run short tests using mainnet resources, without actually having to set up a well-funded and permanent identity. 
+Since the `dfx deploy --playground` feature doesn't require additional configuration, developers can get up and running with very few prerequisites, making the on-boarding of new developers more seamless than before. For existing developers, this provides a new way for canisters to be tested, since canisters deployed to the playground are deployed on the mainnet, but do not cost cycles that the developer must pay. This means developers can run short tests using mainnet resources, without actually having to set up a well-funded and permanent identity. 
 
 ## Using `dfx deploy --playground`
 
