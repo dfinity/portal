@@ -6,11 +6,11 @@ This is an experimental app to demonstrate a real world use case for [ckBTC](htt
 
 The Internet Computer [integrates directly with the Bitcoin network](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/). This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. Chain-key Bitcoin (ckBTC) is an ICRC-1-compliant token that is backed 1:1 by Bitcoin held 100% on the IC mainnet.
 
-For deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
+For a deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
 
 ## Features
 
-- **Create store**: Users logs in with their Internet Identity and configure the store with a name and other settings.
+- **Create store**: Users log in with their Internet Identity and configure the store with a name and other settings.
 - **Charge customer**: Users can charge a customer by entering an amount. This will generate and display a QR code for the customer to scan and pay. QR code follows the [ICRC-22](https://github.com/dfinity/ICRC/issues/22) standard.
 - **Send tokens**: Users can send ckBTC tokens to other users.
 - **Receive notifications**: Users can choose to receive notifications by email or SMS when a payment is received. This uses the [HTTP outcall](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/) feature of the Internet Computer.
@@ -47,13 +47,19 @@ The frontend interacts with the following IC canisters:
 - [x] Install [Node.js](https://nodejs.org/en/)
 - [x] Download the following project files from GitHub: https://github.com/dfinity/examples/
 
-### Step 1: Start a local instance of the Internet Computer.
+### Step 1: Navigate into the folder containing the project's files.
+
+```bash
+cd examples/motoko/ic-pos
+```
+
+### Step 2: Start a local instance of the Internet Computer.
 
 ```bash
 dfx start --clean --background
 ```
 
-### Step 2: Deploy the Internet Identity canister.
+### Step 3: Deploy the Internet Identity canister.
 
 Integration with the [Internet Identity](https://internetcomputer.org/internet-identity/) allows store owners to securely setup and manage their store. The Internet Identity canister is already deployed on the IC mainnet. For local development, you need to deploy it to your local instance of the IC.
 
@@ -61,7 +67,7 @@ Integration with the [Internet Identity](https://internetcomputer.org/internet-i
 dfx deploy --network local internet_identity
 ```
 
-### Step 3: Save current principal as a variable.
+### Step 4: Save current principal as a variable.
 
 The principal will be used when deploying the ledger canister.
 
@@ -69,9 +75,9 @@ The principal will be used when deploying the ledger canister.
 export OWNER=$(dfx identity get-principal)
 ```
 
-### Step 3: Deploy the ckBTC ledger canister.
+### Step 5: Deploy the ckBTC ledger canister.
 
-The responsibilities of the ledger canister is to keep track of token balances and handle token transfers.
+The responsibilities of the ledger canister are to keep track of token balances and handle token transfers.
 
 The ckBTC ledger canister is already deployed on the IC mainnet. ckBTC implements the [ICRC-1](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/) token standard. For local development, we deploy the ledger for an ICRC-1 token mimicking the mainnet setup.
 
@@ -112,7 +118,7 @@ dfx deploy --network local --specified-id mxzaz-hqaaa-aaaar-qaada-cai icrc1_ledg
 '
 ```
 
-### Step 4: Deploy the index canister.
+### Step 6: Deploy the index canister.
 
 The index canister syncs the ledger transactions and indexes them by account.
 
@@ -124,7 +130,7 @@ dfx deploy --network local icrc1_index --argument '
 '
 ```
 
-### Step 5: Deploy the icpos canister.
+### Step 7: Deploy the icpos canister.
 
 The icpos canister manages the store configuration and sends notifications when a payment is received.
 
@@ -134,15 +140,15 @@ The `--argument '(0)'` argument is used to initialize the canister with `startBl
 dfx deploy --network local icpos --argument '(0)'
 ```
 
-### Step 6: Configure the icpos canister.
+### Step 8: Configure the icpos canister.
 
-ic-pos uses [Courier](https://courier.com/) to send email and SMS notifications. If you want to enable notifications, you need to sign up for a Courier account and and create and API key. Then issue the following command:
+ic-pos uses [Courier](https://courier.com/) to send email and SMS notifications. If you want to enable notifications, you need to sign up for a Courier account and create and API key. Then issue the following command:
 
 ```bash
 dfx canister --network local call icpos setCourierApiKey "pk_prod_..."
 ```
 
-### Step 7: Build and run the frontend.
+### Step 9: Build and run the frontend.
 
 Run npm to install dependencies and start the frontend. The frontend will be available at http://localhost:5173.
 
@@ -153,7 +159,7 @@ npm run dev
 
 Why don't we deploy the frontend as a local canister? Vite uses lazy loading of modules. This does not work when deploying to a local canister. When deploying to the IC mainnet, this is not an issue. Also, running using `npm run dev` allows for hot reloading of the frontend code when making changes.
 
-### Step 8: Make a transfer.
+### Step 10: Make a transfer.
 
 Now that everything is up and running, you can make a transfer to your newly created store.
 
@@ -161,7 +167,7 @@ Transfers made from the owner principal will not trigger notifications in the UI
 
 The easiest way to do this is to create two stores using two different Internet Identity accounts, using two different web browsers. Then, transfer some tokens from one store to the other.
 
-#### 8.1: Create the first store and supply it with some tokens.
+#### 10.1: Create the first store and supply it with some tokens.
 
 Log in to the frontend using the Internet Identity. Configure the store and navigate to the `Receive` page. Click on the principal pill to copy the address to your clipboard. Then, using the `dfx` command, mint some tokens from your owner principal to the store principal.
 
@@ -176,7 +182,7 @@ dfx canister --network local call icrc1_ledger icrc1_transfer '
 '
 ```
 
-#### 8.2: Create the second store.
+#### 10.2: Create the second store.
 
 Log in to the frontend using **a new Internet Identity on another web browser**. Configure the store and navigate to the `Receive` page. Click on the principal pill to copy the address to your clipboard.
 
