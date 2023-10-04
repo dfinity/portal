@@ -23,8 +23,13 @@ Get the ICP balance of a specific account:
 dfx ledger --network ic balance <account-id>
 ```
 
-The `<account-id>` is encoded as a hex string.
-In many cases you want to check the main account balance of a specific principal. You can use the following command for this:
+The `<account-id>` is encoded as a hex string. You can print the account id of the current `dfx` identity by running:
+
+```bash
+dfx ledger account-id
+```
+
+In many cases you want to check the main account balance of a specific principal. You can combine the `balance` command with the `account-id` command, while specifying an `--of-principal` argument to yield this helpful command:
 
 ``` bash
 dfx ledger --network ic balance $(dfx ledger account-id --of-principal <principal-id>)
@@ -87,3 +92,21 @@ In this pattern the ledger itself notifies the receiver. Thereby, the receiver c
     Sender -> "ICP Ledger": notify(blockNumber, receiver)
     "ICP Ledger" -> "Receiver": transaction_notification(details)
 ```
+
+## `icrc-ledger-types` Rust crate
+
+To interact with ICRC-1 and ICRC-2 compatible canisters, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used. 
+
+The crate can be installed with the command:
+
+```
+cargo add icrc-ledger-types
+```
+
+Or, it can be added to the `Cargo.toml` file:
+
+```
+icrc-ledger-types = "0.1.1"
+```
+
+The documentation for this crate can be found [here](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/). 

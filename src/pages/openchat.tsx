@@ -1,7 +1,6 @@
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
-import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
@@ -11,6 +10,7 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
+import VideoCard from "../components/Common/VideoCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const MotionLink = motion(Link);
@@ -72,15 +72,28 @@ function OpenChatPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
                 >
-                  Lighting the way to an open internet
+                  Web 3.0
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  OpenChat, a fully on-chain SocialFi messaging service,
-                  decentralized using an SNS DAO and became an early "open
-                  internet service".
+                  <b>
+                    Web 3.0 builds on Web3 &mdash; now internet communities take
+                    full and exclusive control and ownership of entire internet
+                    services, from social media, networks and games, to open
+                    enterprise tech infrastructures.
+                  </b>
+                  <span style={{ display: "block", height: "0.6em" }}></span>
+                  An "open internet service" (OIS) keeps all its code, user
+                  experience, compute and data on-chain, and must be
+                  transparently configured, updated and instructed by an
+                  advanced DAO: a public governance framework called a "service
+                  nervous system" (SNS).
+                  <span style={{ display: "block", height: "0.6em" }}></span>
+                  There are no backdoors for devs, corporations or CEOs. The
+                  community is secure and sovereign, and its members become
+                  owners and part of a vast industrious virtual team.
                 </motion.p>
               </div>
             </div>
@@ -107,9 +120,9 @@ function OpenChatPage() {
             className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-12"
             variants={transitions.item}
           >
-            Imagine a messaging service where your chat account is a crypto
-            wallet, messages are TXs stored on-chain, and only the community can
-            push updates.
+            OpenChat was the first OIS &mdash; imagine a messaging service were
+            bitcoin can be instantly transferred in chat messages, with
+            functionality allowing it to provide an alternative to Slack.
           </motion.p>
           <motion.p
             className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
@@ -125,41 +138,19 @@ function OpenChatPage() {
         </AnimateSpawn>
 
         {/* Hiding this section for now */}
-        {/* <AnimateSpawn
+        <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
           className="container-10 mt-24 md:mt-30 "
         >
-          <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
-            <Link
-              className="md:w-7/10 h-full flex relative group"
-              href="https://youtu.be/nZBWx6y070Y"
-            >
-              <img
-                src={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
-                alt=""
-                className="w-full h-full object-cover"
-              />
-
-              <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
-                <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
-              </div>
-            </Link>
-            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12">
-              <div className="self-end">
-                <h4 className="text-razzmatazz tw-heading-7 mb-3">
-                  Fully On-chain with DFINITY
-                </h4>
-                <p className="mb-3 tw-heading-6 md:tw-heading-5">
-                  Next Generation DAOs
-                </p>
-                <p className="text-black-60 tw-paragraph md:tw-lead-sm mb-0">
-                  Episode #2 | SNS
-                </p>
-              </div>
-            </div>
-          </div>
-        </AnimateSpawn> */}
+          <VideoCard
+            label="Fully On-chain with DFINITY"
+            title="Next Generation DAOs"
+            description="Episode #2 | SNS"
+            image={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
+            link="https://youtu.be/nZBWx6y070Y"
+          />
+        </AnimateSpawn>
 
         <section className="container-10 mt-24 md:mt-40">
           <div className="flex flex-col gap-16 md:gap-0">

@@ -97,7 +97,7 @@ const navbarItems = [
           href: "/capabilities?source=nav",
         },
         {
-          label: "Bitcoin on ICP",
+          label: "Bitcoin <> ICP",
           href: "/bitcoin-integration?source=nav",
         },
         {
@@ -186,6 +186,10 @@ const navbarItems = [
           label: "OpenChat",
           href: "/openchat?source=nav",
         },
+        {
+          label: "Gaming",
+          href: "/gaming?source=nav",
+        },
       ],
     ]),
   },
@@ -250,6 +254,10 @@ const navbarItems = [
     items: intoColumns([
       [
         menuDivider("Get Involved"),
+        {
+          label: "ICP Community",
+          href: "/community?source=nav",
+        },
         {
           label: "Become a Node Provider",
           href: "/node-providers?source=nav",
@@ -361,7 +369,7 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer grants", href: "https://dfinity.org/grants" },
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
@@ -384,7 +392,7 @@ const config = {
   tagline:
     "World Computer blockchain that reimagines the internet as an infinite smart contract platform",
   url: isDeployPreview
-    ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
+    ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -451,6 +459,8 @@ const config = {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
+          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -521,7 +531,7 @@ const config = {
             items: [
               {
                 label: "Internet Computer Association",
-                href: "https://association.internetcomputer.org/",
+                href: "https://lbbne-haaaa-aaaam-absda-cai.icp0.io/",
               },
               {
                 label: "Wiki",

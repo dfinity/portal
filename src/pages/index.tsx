@@ -30,29 +30,29 @@ export default function Home(): JSX.Element {
         <PreHero
           headline={
             <>
-              Internet
+              Cypherspace
               <br />
-              Computer
+              as cloud
             </>
           }
-          subheadline="build on the network"
-          cta="Get to know ICP"
+          subheadline="INTERNET COMPUTER"
+          cta="Explore The Power Of ICP"
           ctaLink="/what-is-the-ic"
           cards={[
+            {
+              caption: "Unstoppable Software",
+              title: "Cloud 3.0",
+              link: "/enterprise",
+            },
+            {
+              caption: "Open Internet Services",
+              title: "Web 3.0",
+              link: "/openchat",
+            },
             {
               caption: "Internet Identity",
               title: "Web3 ID",
               link: "/internet-identity",
-            },
-            {
-              caption: "Open Internet Services",
-              title: "User-run Web3",
-              link: "/openchat",
-            },
-            {
-              caption: "Sovereign Enterprise",
-              title: "IT beyond cloud",
-              link: "/enterprise",
             },
           ]}
         ></PreHero>
