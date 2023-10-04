@@ -292,11 +292,11 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://youtu.be/Ls_FlVERMjg"
+                    href="/nns"
                     className="link-primary link-with-icon items-center"
                   >
                     <LinkArrowRight />
-                    How to stake on the NNS dapp
+                    Participate in governance by staking ICP
                   </Link>
                 </p>
               </AnimateSpawn>

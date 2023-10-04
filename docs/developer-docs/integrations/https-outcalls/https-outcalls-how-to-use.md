@@ -9,7 +9,7 @@ This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC.
 The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
 
 ### IC management canister
-* [The IC Management Canister](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of the IC. Canisters can call into the system API by sending messages to the **IC Management Canister**. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
+* [The IC management canister](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of the IC. Canisters can call into the system API by sending messages to the **IC management canister**. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
 
 :::info
 The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
