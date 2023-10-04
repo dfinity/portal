@@ -3,6 +3,7 @@ title: Introducing `dfx deploy --playground`!
 description: Today we're excited to announce a new dfx subcommand — `dfx deploy --playground`!
 tags: [New features]
 image: /img/blog/deploy-playground.jpg
+date: October 4, 2023
 ---
 
 # Introducing `dfx deploy --playground`
