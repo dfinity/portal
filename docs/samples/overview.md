@@ -159,6 +159,14 @@ This simple dapp is a CRUD-like demo service for storing pieces of related infor
 - [Documentation](./phonebook).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/phone-book).
 
+## Point of sale (POS)
+
+This app demonstrates a real world use case for [ckBTC](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc/) on the Internet Computer. It is a simple point of sale app that allows users to charge customers using ckBTC. It also demonstrates the [HTTPS outcall](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/) functionality by sending notifications to users when a payment is received.
+
+- [Documentation](./pos).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+- [See a running example](https://hngac-6aaaa-aaaal-qb6tq-cai.icp0.io/).
+
 ## PubSub
 
 This sample shows multiple canisters, with publisher-subscriber inter-canister calls.
