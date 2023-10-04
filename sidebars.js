@@ -40,30 +40,6 @@ const sidebars = {
             id: "tutorials/developer-journey/level-1/index",
           },
           items: [
-            {
-              type: "category",
-              label: "Level 0: Pre-flight operations",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-0/index",
-            },
-              items: [
-                "tutorials/developer-journey/level-0/ic-overview",
-                "tutorials/developer-journey/level-0/ic-terms",
-                "tutorials/developer-journey/level-0/dev-env",
-                "tutorials/developer-journey/level-0/intro-canisters",
-                "tutorials/developer-journey/level-0/intro-languages",
-                "tutorials/developer-journey/level-0/intro-dfx"
-              ],
-            },
-            {
-              type: "category",
-              label: "Level 1: Space cadet",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-1/index",
-            },
-              items: [
                 "tutorials/developer-journey/level-1/1.1-live-demo",
                 "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
                 "tutorials/developer-journey/level-1/1.3-first-dapp",
@@ -72,22 +48,36 @@ const sidebars = {
                 "tutorials/developer-journey/level-1/1.6-managing-canisters",
               ],
             },
-            {
-              type: "category",
-              label: "Level 2: Space explorer",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-2/index",
-            },
-              items: [
-                "tutorials/developer-journey/level-2/2.1-storage-persistence",
-                "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
-                "tutorials/developer-journey/level-2/2.3-third-party-canisters",
-                "tutorials/developer-journey/level-2/2.4-intro-candid",
-                "tutorials/developer-journey/level-2/2.5-unit-testing",
-                "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
-              ],
-            },
+        {
+          type: "category",
+          label: "Level 2: Space explorer",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-2/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-2/2.1-storage-persistence",
+            "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+            "tutorials/developer-journey/level-2/2.3-third-party-canisters",
+            "tutorials/developer-journey/level-2/2.4-intro-candid",
+            "tutorials/developer-journey/level-2/2.5-unit-testing",
+            "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+          ],
+        },
+        {
+          type: "category",
+          label: "Level 3: Space engineer",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-3/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-3/3.1-package-managers",
+            "tutorials/developer-journey/level-3/3.2-https-outcalls",
+            "tutorials/developer-journey/level-3/3.3-certified-data",
+            "tutorials/developer-journey/level-3/3.4-intro-to-agents",
+            "tutorials/developer-journey/level-3/3.5-identities-and-auth",
+            "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
           ],
         },
       ],
@@ -128,6 +118,7 @@ const sidebars = {
         "samples/periodic-tasks",
         "samples/persistent-storage",
         "samples/phonebook",
+        "samples/pos",
         "samples/pub-sub",
         "samples/qr-code",
         "samples/quicksort",
@@ -218,6 +209,11 @@ const sidebars = {
           type: "doc",
           label: "Managing projects",
           id: "developer-docs/setup/manage-projects",
+        },
+        {
+          type: "doc",
+          label: "Motoko playground",
+          id: "developer-docs/setup/playground",
         },
         {
           type: "doc",
@@ -440,7 +436,7 @@ const sidebars = {
           label: "Internet Identity (II)",
           link: {
             type: "doc",
-            id: "references/ii-spec",
+            id: "developer-docs/integrations/internet-identity/overview",
           },
           items: [
             "developer-docs/integrations/internet-identity/alternative-origins",
@@ -483,7 +479,6 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/deploy-new-token",
             "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
             "developer-docs/integrations/ledger/icp-index-local-setup",
@@ -496,7 +491,9 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/icrc-1/index",
           },
-          items: ["developer-docs/integrations/icrc-1/deploy-new-token"],
+          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+          "developer-docs/integrations/icrc-1/icrc1-index-setup"
+        ],
         },
         {
           type: "doc",
