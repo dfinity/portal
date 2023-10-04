@@ -292,11 +292,11 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://youtu.be/Ls_FlVERMjg"
+                    href="/nns"
                     className="link-primary link-with-icon items-center"
                   >
                     <LinkArrowRight />
-                    How to stake on the NNS dapp
+                    Learn about the NNS and how to earn voting rewards
                   </Link>
                 </p>
               </AnimateSpawn>
@@ -409,8 +409,7 @@ function TokenHolders(): JSX.Element {
                 >
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
-                  This was made possible on the Internet Computer through  
-                  native{" "}
+                  This was made possible on the Internet Computer through native{" "}
                   <Link
                     className="text-white hover:text-white underline hover:cursor-pointer"
                     href="/bitcoin-integration"
