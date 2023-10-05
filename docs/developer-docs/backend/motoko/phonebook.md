@@ -42,7 +42,7 @@ To install a package using Vessel, edit the `vessel.dhall` file to include what 
 
 Then, configure `dfx.json` to use Vessel as a `packtool`:
 
-```
+```json
 "defaults": {
   "build": {
     "packtool": "vessel sources"
