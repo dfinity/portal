@@ -1,8 +1,8 @@
-# Internet Computer developer quick start
+# Developer quick start
 
 ## Overview
 
-This guide is designed as a minimal quick start tutorial for creating a project on the Internet Computer. The other developer documentation pages provide additional supporting context to the concepts and workflows used within this page, and they will be linked for reference accordingly. 
+This guide is designed as a minimal quick start tutorial for creating a project on the Internet Computer. Other developer documentation pages provide additional supporting context to the concepts and workflows used within this page, and they will be linked for reference accordingly. 
 
 ## Prerequisites
 
