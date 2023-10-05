@@ -9,7 +9,7 @@ This project uses the **pullable** version of the Internet identity canister. A 
 
 Before you start, verify that you have:
 
-- Downloaded and installed [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.10.0 or later.
+- Downloaded and installed [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.14.1 or later.
 - [Node.js v16+.](https://nodejs.org/en).
 
 ### Step 1: To get started, open a terminal window and create a new project:
