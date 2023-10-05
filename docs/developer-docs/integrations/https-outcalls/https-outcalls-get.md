@@ -50,7 +50,7 @@ import Types "Types";
 
 actor {
 
-  //method that uses the HTTP outcalls feature and returns a string
+  //0. method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
@@ -73,6 +73,12 @@ actor {
     //6. RETURN RESPONSE OF THE BODY
     response
   };
+
+  //7. CREATE TRANSFORM FUNCTION
+  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload { 
+    ////code for the transform function
+  }
+
 };
 ```
 
@@ -131,29 +137,6 @@ actor {
 //         243.5678 <-- volume of ICP traded
 //     ],
 // ]
-
-  //function to transform the response
-  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
-      let transformed : Types.CanisterHttpResponsePayload = {
-          status = raw.response.status;
-          body = raw.response.body;
-          headers = [
-              {
-                  name = "Content-Security-Policy";
-                  value = "default-src 'self'";
-              },
-              { name = "Referrer-Policy"; value = "strict-origin" },
-              { name = "Permissions-Policy"; value = "geolocation=(self)" },
-              {
-                  name = "Strict-Transport-Security";
-                  value = "max-age=63072000";
-              },
-              { name = "X-Frame-Options"; value = "DENY" },
-              { name = "X-Content-Type-Options"; value = "nosniff" },
-          ];
-      };
-      transformed;
-  };
   
   public func get_icp_usd_exchange() : async Text {
 
@@ -248,6 +231,28 @@ actor {
     decoded_text
   };
 
+  //7. CREATE TRANSFORM FUNCTION
+  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+      let transformed : Types.CanisterHttpResponsePayload = {
+          status = raw.response.status;
+          body = raw.response.body;
+          headers = [
+              {
+                  name = "Content-Security-Policy";
+                  value = "default-src 'self'";
+              },
+              { name = "Referrer-Policy"; value = "strict-origin" },
+              { name = "Permissions-Policy"; value = "geolocation=(self)" },
+              {
+                  name = "Strict-Transport-Security";
+                  value = "max-age=63072000";
+              },
+              { name = "X-Frame-Options"; value = "DENY" },
+              { name = "X-Content-Type-Options"; value = "nosniff" },
+          ];
+      };
+      transformed;
+  };
 };
 ```
 
@@ -410,6 +415,10 @@ async fn foo() {
         }
     }
 }
+
+// 4. CREATE TRANSFORM FUNCTION 
+#[query]
+fn transform(raw: TransformArgs) -> HttpResponse { }
 ```
 
 ### Rust: Step by step

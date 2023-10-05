@@ -296,7 +296,7 @@ function TokenHolders(): JSX.Element {
                     className="link-primary link-with-icon items-center"
                   >
                     <LinkArrowRight />
-                    Learn about the NNS and how to earn voting rewards
+                    Participate in governance by staking ICP
                   </Link>
                 </p>
               </AnimateSpawn>
