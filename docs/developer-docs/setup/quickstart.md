@@ -22,6 +22,16 @@ sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
 For more information on installing the IC SDK, please see [here](./install/index.mdx)
 
+## Start the local replica
+
+To start a local instance of the IC replica, use the command:
+
+```
+dfx start --background
+```
+
+This will start the replica in the background.
+
 ## Create and deploy the template project
 
 To create a new project with `dfx`, run the command:
