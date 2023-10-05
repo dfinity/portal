@@ -2725,5 +2725,26 @@
     "twitter": "https://twitter.com/JohnDao_gg",
     "youtube": "",
     "submittableId": "35119262"
+  },
+  {
+    "name": "Taurus",
+    "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
+    "website": "https://www.taurushq.com/",
+    "logo": "/img/showcase/taurus_logo.png",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "taurus",
+    "oneLiner": "Banking-grade custody for digital asset management.",
+    "stats": "Powering 15+ banks",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": ""
   }
 ]
