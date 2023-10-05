@@ -649,6 +649,12 @@ function TokenHolders(): JSX.Element {
                     link="https://www.coinbase.com/"
                     icon="/img/showcase/coinbase_logo.webp"
                   />
+                  <WalletCard
+                    title="Taurus"
+                    description="The Taurus platform offers banking-grade custody and everything needed for managing any digital asset."
+                    link="https://www.taurushq.com/"
+                    icon="/img/showcase/taurus_logo.png"
+                  />
                 </div>
               </motion.div>
             </AnimateSpawn>
