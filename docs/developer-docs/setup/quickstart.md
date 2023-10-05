@@ -38,7 +38,7 @@ Then, to create, build, and deploy the project, use the command:
 dfx deploy
 ```
 
-This command will deploy the project **locally**. To learn more about local developer, please see [here](deploy-locally.md)
+This command will deploy the project **locally**. To learn more about local developer, please see [here.](deploy-locally.md)
 
 The project's local URLs will be returned in the output of this command:
 
@@ -63,6 +63,12 @@ dfx deploy --network ic
 Deploying to the mainnet will cost **cycles**. To learn more about cycles, please see [here](./cycles/index.md).
 
 To learn more about mainnet deployment, please see [here](deploy-mainnet.md).
+
+To deploy your project to the [Motoko playground](playground.md), which simulates the mainnet network without having to use cycles, use the `--network playground` flag, such as:
+
+```
+dfx deploy --network playground
+```
 
 ### Default project structure
 
