@@ -228,4 +228,8 @@ Once you save it, select the 'I saved it, continue' button.
 
 ## Resources
 
-
+- [Internet Identity dashboard](https://identity.ic0.app/).
+- [Internet Identity specification](https://internetcomputer.org/docs/current/references/ii-spec).
+- [Internet Identity GitHub repository](https://github.com/dfinity/internet-identity).
+- [Internet Identity alternative frontend origins](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins).
+- [Internet Identity integration](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity).
