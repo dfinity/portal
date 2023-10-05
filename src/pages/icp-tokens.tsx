@@ -651,7 +651,7 @@ function TokenHolders(): JSX.Element {
                   />
                   <WalletCard
                     title="Taurus"
-                    description="The Taurus platform offers banking-grade custody and everything needed for managing any digital asset."
+                    description="A platform that offers banking-grade custody and everything needed for managing any digital asset."
                     link="https://www.taurushq.com/"
                     icon="/img/showcase/taurus_logo.png"
                   />
