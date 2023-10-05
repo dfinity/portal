@@ -30,7 +30,7 @@ To start a local instance of the IC replica, use the command:
 dfx start --background
 ```
 
-This will start the replica in the background.
+The `--background` flag will start the replica in the background.
 
 ## Create and deploy the template project
 
@@ -40,7 +40,7 @@ To create a new project with `dfx`, run the command:
 dfx new project_name
 ```
 
-This project is a simple 'Hello, world!' project that includes a simple frontend UI. 
+This project is a simple 'Hello, world!' project that includes a simple frontend UI. You can see a more detailed look into this project in the guide [here](/docs/current/developer-docs/setup/deploy-locally#test-the-dapp-frontend).
 
 Then, to create, build, and deploy the project, use the command:
 
@@ -48,7 +48,7 @@ Then, to create, build, and deploy the project, use the command:
 dfx deploy
 ```
 
-This command will deploy the project **locally**. To learn more about local developer, please see [here.](deploy-locally.md)
+This command will deploy the project **locally**. To learn more about local development, including how to interact with your canister once deployed, please see [here.](deploy-locally.md)
 
 The project's local URLs will be returned in the output of this command:
 
@@ -116,6 +116,12 @@ In all new projects, the following files and directories are created:
 
 ## Developing an app
 
+To develop your own custom application from this point, you will need to determine which programming language to use and determine what your app's functionalities will be. 
+
+- [Choosing a programming language](../backend/choosing-language.md)
+  
+- [Designing a dapp](../backend/design-dapps.md)
+
 ### Developing with Motoko
 
 - [Motoko quick start.](../backend/motoko/at-a-glance.md)
@@ -132,10 +138,6 @@ In all new projects, the following files and directories are created:
 
 - [Agents.](../agents/index.md)
 
-### Integrating with Internet Identity
-
-- [Integrating with Internet Identity.](../integrations/internet-identity/integrate-identity.md)
-
 ### Developing with frontend frameworks
 
 - React.
@@ -151,6 +153,10 @@ In all new projects, the following files and directories are created:
 - [ICRC-1 ledger setup.](../integrations/icrc-1/icrc1-ledger-setup.md)
 
 - [ICRC-1 index local setup](../integrations/icrc-1/icrc1-index-setup.md)
+
+### Integrating with Internet Identity
+
+- [Integrating with Internet Identity.](../integrations/internet-identity/integrate-identity.md)
 
 ## Resources
 
