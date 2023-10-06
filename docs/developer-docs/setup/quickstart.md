@@ -77,7 +77,7 @@ To learn more about mainnet deployment, please see [here](deploy-mainnet.md).
 To deploy your project to the [Motoko playground](playground.md), which simulates the mainnet network without having to use cycles, use the `--network playground` flag, such as:
 
 ```
-dfx deploy --network playground
+dfx deploy --playground
 ```
 
 ### Default project structure
