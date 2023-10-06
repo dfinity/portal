@@ -2746,5 +2746,27 @@
     "twitter": "",
     "youtube": "",
     "submittableId": ""
-  }
+  },
+{
+  "name": "IC based storage service",
+  "description": "IC based storage service to store and organize any kind of files. Yes, at first glance it might be similar to AWS S3 or Google drive where user can store files, share the access, have a direct http link to the file, organize the files within the directories etc. But it works on the IC platform.",
+  "website": "https://dcm-swiss.com/",
+  "logo": "/img/showcase/ics2_logo.webp",
+  "screenshots": [
+    "/img/showcase/ics2_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "ics2",
+  "oneLiner": "store and organize your files in IC ecosystem",
+  "stats": "100+",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/sergeybykov85/ic-storage-service/tree/main/ic-ss",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "41213024"
+}  
 ]
