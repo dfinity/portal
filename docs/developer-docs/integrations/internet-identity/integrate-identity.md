@@ -1,7 +1,7 @@
 # Internet Identity integration
 
 ## Overview
-This guide shows an example of to integrate Internet Identity into an application by using a simple 'Who am I?' backend canister and a frontend UI that returns the Internet Identity principal of the user who calls the backend's `whoami` method. 
+This guide shows an example of how to integrate Internet Identity into an application by using a simple 'Who am I?' backend canister and a frontend UI that returns the Internet Identity principal of the user who calls the backend's `whoami` method. 
 
 This project uses the **pullable** version of the Internet identity canister. A pullable canister is a canister that provides a public service at a static canister ID. To learn more about pullable canisters, please see the documentation [here](/docs/current/developer-docs/setup/pulling-canister-dependencies). 
 
