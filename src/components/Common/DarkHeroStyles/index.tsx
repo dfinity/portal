@@ -11,7 +11,7 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
       <style
         dangerouslySetInnerHTML={{
           __html: css`
-            nav.navbar {
+            nav.marketing-navbar {
               background-color: ${bgColor} !important;
             }
           `,

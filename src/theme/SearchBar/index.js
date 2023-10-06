@@ -56,7 +56,7 @@ const Search = () => {
           outline-offset-2
           absolute right-[64px] md:static
           text-black
-          dark-hero:text-white dark-hero:border-white 
+          dark-hero:text-white dark-hero:border-white/50
 
           md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
           

@@ -24,7 +24,7 @@ type Section = {
   featured: FeaturedItem;
 };
 
-type NavItem = {
+export type NavItem = {
   name: string;
   auxItems?: {
     name: string;
@@ -33,252 +33,7 @@ type NavItem = {
   sections: Section[];
 };
 
-const nav: NavItem[] = [
-  {
-    name: "Learn",
-    auxItems: [
-      {
-        name: "ICP Dashboard",
-        href: "https://dashboard.internetcomputer.org/",
-      },
-      { name: "ICP on Youtube", href: "https://www.youtube.com/c/DFINITY" },
-      { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-      { name: "Whitepaper", href: "/whitepaper.pdf" },
-      {
-        name: "History of ICP",
-        href: "https://wiki.internetcomputer.org/wiki/History",
-      },
-    ],
-
-    sections: [
-      {
-        name: "Start Here",
-        items: [
-          {
-            name: "The Basics",
-            href: "/basics",
-            description: "You new to ICP? Read this first",
-          },
-          {
-            name: "What is ICP",
-            href: "/what-is-the-ic",
-            description: "In-depth look into the blockchain",
-          },
-          {
-            name: "How it works",
-            href: "/how-it-works",
-            description: "How the Internet Computer works",
-          },
-          {
-            name: "Roadmap",
-            href: "/roadmap",
-            description: "Next steps in development",
-          },
-          {
-            name: "Sustainability",
-            href: "/capabilities/sustainability",
-            description: "Building green, efficient tech",
-          },
-        ],
-        featured: {
-          title: "Building green, efficient tech",
-          href: "/capabilities/sustainability",
-          image: "/img/nav/featured-sustainability.webp",
-        },
-      },
-      {
-        name: "Capabilities",
-        items: [
-          {
-            name: "All Capabilities",
-            href: "/capabilities",
-            description: "Get to know all possibilities",
-          },
-          {
-            name: "Bitcoin <> ICP",
-            href: "/bitcoin-integration",
-            description: "Using Bitcoin at the speed of chat",
-          },
-          {
-            name: "Ethereum <> ICP",
-            href: "/ethereum-integration",
-            description: "Native ETH on Internet Computer",
-          },
-          {
-            name: "Identity on ICP",
-            href: "/internet-identity",
-            description: "One secure identity for all services",
-          },
-          {
-            name: "HTTPS Outcalls",
-            href: "/https-outcalls",
-            description: "Connecting Smart Contracts to Web2",
-          },
-        ],
-        featured: {
-          title: "Full web experience on chain",
-          href: "/https-outcalls",
-          image: "/img/nav/featured-https-outcalls.webp",
-        },
-      },
-    ],
-  },
-  {
-    name: "Use",
-    auxItems: [
-      {
-        name: "Create an internet identity",
-        href: "https://identity.ic0.app/",
-      },
-      { name: "NNS and Staking", href: "https://nns.ic0.app/" },
-    ],
-
-    sections: [
-      {
-        name: "Step into Web3",
-        items: [
-          {
-            name: "Ecosystem",
-            href: "/ecosystem",
-            description: "Enter the ICP ecosystem",
-          },
-          {
-            name: "ICP Token",
-            href: "/icp-tokens",
-            description: "Use native utility token ",
-          },
-          {
-            name: "Staking and Governance (NNS)",
-            href: "/nns",
-            description: "Govern ICP and get rewards",
-          },
-          {
-            name: "Create an Internet Identity",
-            href: "/internet-identity",
-            description: "Securely connect to dapps",
-          },
-        ],
-        featured: {
-          title: "Enter the ICP ecosystem",
-          href: "/ecosystem",
-          image: "/img/nav/featured-ecosystem.webp",
-        },
-      },
-      {
-        name: "Use cases",
-        items: [
-          {
-            name: "Open Internet Sevices (SNS DAOs)",
-            href: "/sns",
-            description: "Web 3.0 builds on Web3",
-          },
-          {
-            name: "Multi-chain",
-            href: "/ckbtc",
-            description: "Vision of the World Computer",
-          },
-          {
-            name: "Social Media Dapps",
-            href: "/social-media-dapps",
-            description: "Full ownership and control over your profiles",
-          },
-          {
-            name: "DeFi",
-            href: "/defi",
-            description: "Everything on-chain",
-          },
-          {
-            name: "NFTs",
-            href: "/nfts",
-            description: "Go way beyond “overpriced links to JPGs”",
-          },
-        ],
-        featured: {
-          title: "Ethereum Integration",
-          href: "/ethereum-integration",
-          image: "/img/nav/featured-eth-integration.webp",
-        },
-      },
-    ],
-  },
-  {
-    name: "Develop",
-    auxItems: [
-      {
-        name: "Help & Support",
-        href: "",
-      },
-      { name: "Developer grants", href: "" },
-    ],
-
-    sections: [
-      {
-        name: "Start Coding",
-        items: [
-          {
-            name: "Developer Docs",
-            href: "/docs/current/home",
-            description: "The docs for developers",
-          },
-          {
-            name: "Developer Journey Series",
-            href: "",
-            description: "Build step by step",
-          },
-          {
-            name: "Sample code",
-            href: "/samples",
-            description: "Check out the sample code",
-          },
-        ],
-        featured: {
-          title: "Learn to build step by step",
-          href: "",
-          image: "/img/nav/featured-docs.webp",
-        },
-      },
-    ],
-  },
-  {
-    name: "Participate",
-    auxItems: [
-      {
-        name: "Community grants",
-        href: "https://dfinity.org/community-grants/",
-      },
-      { name: "Feedback board", href: "" },
-      { name: "Blog", href: "https://medium.com/dfinity" },
-    ],
-
-    sections: [
-      {
-        name: "Get Involved",
-        items: [
-          {
-            name: "ICP community",
-            href: "/community",
-            description: "Welcome to our global ICP community",
-          },
-          {
-            name: "Education",
-            href: "",
-            description: "Content is yet to be defined",
-          },
-          {
-            name: "Events",
-            href: "https://dfinity.org/news-and-events/",
-            description: "Meet tech minded people",
-          },
-        ],
-        featured: {
-          title: "Join the ICP community",
-          href: "/community",
-          image: "/img/nav/featured-community.webp",
-        },
-      },
-    ],
-  },
-];
+export type MarketingNavType = NavItem[];
 
 const Arrow: React.FC<{ open: boolean }> = ({ open }) => {
   return (
@@ -347,14 +102,14 @@ const Drawer: React.FC<{
         className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
         onClick={() => setOpen((o) => !o)}
       >
-        <div className="font-medium text-heading-4">{title}</div>
+        <div className="tw-heading-4">{title}</div>
 
         <Arrow open={open} />
       </button>
       <div
         ref={ref}
         className={clsx(
-          "transition-all overflow-hidden pb-6",
+          "transition-all overflow-hidden",
           open ? "max-h-none" : "max-h-0"
         )}
       >
@@ -364,7 +119,39 @@ const Drawer: React.FC<{
   );
 };
 
+const CloseButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
+  return (
+    <button
+      className="appearance-none border-none bg-transparent w-10 h-10 -mr-2"
+      onClick={onClick}
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2 2L18 18"
+          stroke="black"
+          strokeWidth="2"
+          strokeLinecap="square"
+        />
+        <path
+          d="M18.5 2L2.5 18"
+          stroke="black"
+          strokeWidth="2"
+          strokeLinecap="square"
+        />
+      </svg>
+    </button>
+  );
+};
+
 const MarketingNav = () => {
+  const { siteConfig } = useDocusaurusContext();
+  const nav = siteConfig.customFields.marketingNav as MarketingNavType;
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
   const [secondaryMobileNavOpen, setSecondaryMobileNavOpen] = React.useState<
     false | number
@@ -373,7 +160,6 @@ const MarketingNav = () => {
     nav[0].sections[0]
   );
 
-  const { siteConfig } = useDocusaurusContext();
   const hiddenRef = React.useRef(false);
   const lastScrollPosRef = React.useRef(0);
   const navbarRef = React.useRef<HTMLElement>(null);
@@ -458,17 +244,19 @@ const MarketingNav = () => {
   return (
     <>
       <nav
-        className="navbar text-black flex justify-between bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
+        className="marketing-navbar z-[1000] pl-6 pr-4 py-4 md:px-12 md:pt-11 md:pb-5 text-black flex items-center justify-between bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
         ref={navbarRef}
       >
-        <Link href="/" className="self-center">
+        {/* logo */}
+        <Link href="/" className="self-center flex items-center">
           <img src="/img/logo-notext.svg" alt="" className="h-5 md:h-7" />
         </Link>
 
+        {/* middle desktop items */}
         <div className="hidden md:flex gap-4 items-center">
           {nav.map((item) => (
             <div
-              className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 font-medium text-paragraph rounded-full group hover:bg-black/20 hover:dark-hero:bg-white/20 cursor-pointer"
+              className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 font-medium text-paragraph rounded-full group hover:bg-infinite hover:text-white hover:dark-hero:bg-white/20 cursor-pointer"
               key={item.name}
               onMouseEnter={() => showFlyout(item)}
             >
@@ -549,56 +337,36 @@ const MarketingNav = () => {
           ))}
         </div>
 
+        {/* right side items: search and hamburger on mobile */}
         <div className="flex gap-4 items-center">
           <Search />
           <button
-            className="md:hidden flex flex-col gap-2 border-none bg-transparent w-6 h-6 p-0 justify-center"
+            className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[9px] h-10 w-10 p-0 justify-center"
             onClick={toggleNav}
           >
-            <span className="bg-white h-[2px] w-full shrink-0"></span>
-            <span className="bg-white h-[2px] w-full shrink-0"></span>
-            <span className="bg-white h-[2px] w-full shrink-0"></span>
+            <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
+            <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
+            <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
           </button>
         </div>
       </nav>
 
+      {/* Level 1 of mobile fly-in menu */}
       <div
-        className={`fixed inset-0 bg-white z-[1000] p-6 transition-transform ${mobileNavClasses}`}
+        className={`fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${mobileNavClasses}`}
       >
-        <div className="flex items-center justify-between">
+        {/* logo + close button */}
+        <div className="flex items-center justify-between ">
           <img src="/img/logo-notext.svg" alt="" className="h-5" />
-          <button
-            className="appearance-none border-none bg-transparent"
-            onClick={closeNav}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2L18 18"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="square"
-              />
-              <path
-                d="M18.5 2L2.5 18"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="square"
-              />
-            </svg>
-          </button>
+          <CloseButton onClick={closeNav} />
         </div>
 
-        <ul className="list-none p-0 flex flex-col gap-4 mt-12">
+        {/* top level items */}
+        <ul className="list-none p-0 flex flex-col gap-6 mt-8 mb-0">
           {nav.map((item, index) => (
             <li className="p-0" key={item.name}>
               <button
-                className="border-none bg-transparent p-0 text-infinite m-0 font-circular font-medium text-heading-4"
+                className="border-none bg-transparent p-0 text-infinite m-0 font-circular tw-heading-4"
                 onClick={() => openSecondaryMobileNav(index)}
               >
                 {item.name}
@@ -608,55 +376,35 @@ const MarketingNav = () => {
         </ul>
       </div>
 
+      {/* Level 2 of mobile fly-in menu*/}
       <div
-        className={`overflow-auto touch-none fixed inset-0 bg-white z-[1000] p-6 transition-transform ${secondaryMobileNavClasses}`}
+        className={`overflow-auto touch-none fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${secondaryMobileNavClasses}`}
       >
+        {/* Back button + close button */}
         <div className="flex items-center justify-between">
           <button
-            className="flex gap-6 text-navigation font-medium font-circular bg-transparent p-0 text-left border-none"
+            className="flex items-center gap-6 tw-heading-7 font-circular bg-transparent p-0 text-left border-none"
             onClick={() => setSecondaryMobileNavOpen(false)}
           >
             <LinkArrowLeft />
             Home
           </button>
-          <button
-            className="appearance-none border-none bg-transparent"
-            onClick={closeNav}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2 2L18 18"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="square"
-              />
-              <path
-                d="M18.5 2L2.5 18"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="square"
-              />
-            </svg>
-          </button>
+          <CloseButton onClick={closeNav} />
         </div>
 
+        {/* list of sections */}
         {secondaryMobileNavOpen !== false && (
           <>
-            <ul className="list-none p-0 flex flex-col gap-3 mt-12">
+            <ul className="list-none p-0 flex flex-col gap-6 mt-8 pb-10 mb-0">
               {nav[secondaryMobileNavOpen].sections.map((item, index) => (
                 <li className="p-0" key={item.name}>
                   <Drawer title={item.name} startingState={index === 0}>
-                    <ul className="list-none p-0 flex flex-col gap-3 mt-4">
+                    {/* list of section items */}
+                    <ul className="list-none p-0 flex flex-col gap-3 mt-5 mb-6">
                       {item.items.map((item) => (
                         <li className="p-0" key={item.name}>
                           <Link
-                            className="border-none bg-transparent p-0 text-infinite m-0 font-circular font-medium text-navigation hover:no-underline hover:text-black"
+                            className="border-none bg-transparent p-0 text-infinite m-0 tw-heading-7 hover:no-underline hover:text-black"
                             href={item.href}
                           >
                             {item.name}
@@ -665,10 +413,11 @@ const MarketingNav = () => {
                       ))}
                     </ul>
 
+                    {/* featured item */}
                     {item.featured && (
                       <Link
                         href={item.featured.href}
-                        className="mt-6 h-30 w-full bg-center bg-cover relative p-6 no-underline hover:no-underline rounded-xl flex"
+                        className="mb-6 h-30 w-full bg-center bg-cover relative p-6 no-underline hover:no-underline rounded-xl flex"
                         style={{
                           backgroundImage: `url(${item.featured.image})`,
                         }}
@@ -683,13 +432,15 @@ const MarketingNav = () => {
                 </li>
               ))}
             </ul>
+
+            {/* aux items */}
             {nav[secondaryMobileNavOpen].auxItems && (
-              <ul className="list-none p-0 flex flex-col gap-4 mt-8 mb-12 pt-4 border-0 border-t border-solid border-grey-300">
+              <ul className="relative list-none p-0 flex flex-col gap-3 mt-4 mb-12 pt-6 border-0 border-t border-solid border-grey-300">
                 {nav[secondaryMobileNavOpen].auxItems.map((item) => (
                   <li>
                     <Link
                       href={item.href}
-                      className="text-[#522785] font-medium text-navigation inline-flex gap-4 items-center hover:no-underline hover:text-black"
+                      className="text-infinite tw-button-xs inline-flex gap-2 items-center hover:no-underline hover:text-black"
                     >
                       {item.name}
 
