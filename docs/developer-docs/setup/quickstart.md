@@ -48,7 +48,7 @@ Then, to create, build, and deploy the project, use the command:
 dfx deploy
 ```
 
-This command will deploy the project **locally**. To learn more about local development, including how to interact with your canister once deployed, please see [here.](deploy-locally.md)
+This command will deploy the project **locally**. To learn more about local development, including how to interact with your canister once deployed, please see [here](deploy-locally.md).
 
 The project's local URLs will be returned in the output of this command:
 
