@@ -256,7 +256,7 @@ const MarketingNav = () => {
         <div className="hidden md:flex gap-4 items-center">
           {nav.map((item) => (
             <div
-              className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 font-medium text-paragraph rounded-full group hover:bg-infinite hover:text-white hover:dark-hero:bg-white/20 cursor-pointer"
+              className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-infinite hover:text-white hover:dark-hero:bg-white/20 cursor-pointer"
               key={item.name}
               onMouseEnter={() => showFlyout(item)}
             >
@@ -272,7 +272,7 @@ const MarketingNav = () => {
                             key={section.name}
                             onMouseEnter={() => setSelectedSection(section)}
                             onClick={() => setSelectedSection(section)}
-                            className={`text-left appearance-none border-none rounded-xl font-circular font-medium text-[16px] leading-[22px] px-4 py-6 ${
+                            className={`text-left appearance-none border-none rounded-xl font-circular tw-heading-7 px-4 py-6 ${
                               selectedSection === section
                                 ? "text-infinite bg-white"
                                 : "text-[#666] bg-transparent"
@@ -291,11 +291,9 @@ const MarketingNav = () => {
                             href={item.href}
                             className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
                           >
-                            <span className="font-medium text-[16px] leading-[22px]">
-                              {item.name}
-                            </span>
+                            <span className="tw-heading-7">{item.name}</span>
 
-                            <span className="text-[14px] leading-[22px] font-normal text-black/60 group-hover/item:text-infinite">
+                            <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite">
                               {item.description}
                             </span>
                           </Link>
@@ -310,7 +308,7 @@ const MarketingNav = () => {
                             className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
                             href={selectedSection.featured.href}
                           >
-                            <span className="text-[24px] leading-[26px] font-bold text-white flex-1 group-hover/featured:-translate-y-2 transition-transform">
+                            <span className="tw-heading-5 text-white flex-1 group-hover/featured:-translate-y-2 transition-transform">
                               {selectedSection.featured.title}
                             </span>
 
@@ -323,7 +321,7 @@ const MarketingNav = () => {
                   <div className="bg-[#FAFAFA] py-6 px-10 flex gap-8 items-center">
                     {item.auxItems.map((item) => (
                       <Link
-                        className="font-bold text-[11px] uppercase whitespace-nowrap flex items-center gap-1"
+                        className="tw-button-xs whitespace-nowrap flex items-center gap-1"
                         key={item.name}
                       >
                         {item.name}
