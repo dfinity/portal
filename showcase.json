@@ -2746,5 +2746,27 @@
     "twitter": "",
     "youtube": "",
     "submittableId": ""
+  },
+  {
+    "name": "aVa",
+    "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
+    "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
+    "logo": "/img/showcase/ava_logo.webp",
+    "screenshots": [
+      "/img/showcase/ava_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "ava",
+    "oneLiner": "aVa: Action-Based Decentralized Reputation Landscape.",
+    "stats": "All II users",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ava-vs",
+    "twitter": "https://twitter.com/ava_projects?t=-ZSMuS6rJLoUucHWynaLeg&s=09",
+    "youtube": "https://www.youtube.com/@aVa_Verification",
+    "submittableId": "41404317"
   }
 ]
