@@ -118,25 +118,25 @@ In all new projects, the following files and directories are created:
 
 To develop your own custom application from this point, you will need to determine which programming language to use and determine what your app's functionalities will be. 
 
-- [Choosing a programming language](../backend/choosing-language.md)
+- [Choosing a programming language](../backend/choosing-language.md).
   
-- [Designing a dapp](../backend/design-dapps.md)
+- [Designing a dapp](../backend/design-dapps.md).
 
 ### Developing with Motoko
 
-- [Motoko quick start.](../backend/motoko/at-a-glance.md)
+- [Motoko quick start.](../backend/motoko/at-a-glance.md).
 
 ### Developing with Rust
 
-- [Rust quick start.](../backend/rust/4-quickstart.md)
+- [Rust quick start](../backend/rust/4-quickstart.md).
 
 ### Using Candid
 
-- [Candid.](../backend/candid/index.md)
+- [Candid](../backend/candid/index.md).
 
 ### Developing with agents
 
-- [Agents.](../agents/index.md)
+- [Agents](../agents/index.md).
 
 ### Developing with frontend frameworks
 
@@ -146,17 +146,17 @@ To develop your own custom application from this point, you will need to determi
 
 ### Developing with tokens and ledgers
 
-- [ICP ledger local setup.](../integrations/ledger/ledger-local-setup.md)
+- [ICP ledger local setup](../integrations/ledger/ledger-local-setup.md).
 
-- [ICP index local setup.](../integrations/ledger/icp-index-local-setup.md)
+- [ICP index local setup](../integrations/ledger/icp-index-local-setup.md).
 
-- [ICRC-1 ledger setup.](../integrations/icrc-1/icrc1-ledger-setup.md)
+- [ICRC-1 ledger setup](../integrations/icrc-1/icrc1-ledger-setup.md).
 
-- [ICRC-1 index local setup](../integrations/icrc-1/icrc1-index-setup.md)
+- [ICRC-1 index local setup](../integrations/icrc-1/icrc1-index-setup.md).
 
 ### Integrating with Internet Identity
 
-- [Integrating with Internet Identity.](../integrations/internet-identity/integrate-identity.md)
+- [Integrating with Internet Identity](../integrations/internet-identity/integrate-identity.md).
 
 ## Resources
 
