@@ -244,108 +244,110 @@ const MarketingNav = () => {
   return (
     <>
       <nav
-        className="marketing-navbar z-[1000] pl-6 pr-4 py-4 md:px-12 md:pt-11 md:pb-5 text-black flex items-center justify-between bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
+        className="marketing-navbar z-[1000] pl-6 pr-4 py-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
         ref={navbarRef}
       >
-        {/* logo */}
-        <Link href="/" className="self-center flex items-center">
-          <img src="/img/logo-notext.svg" alt="" className="h-5 md:h-7" />
-        </Link>
+        <div className="md:max-w-[1440px] md:w-full md:mx-auto flex items-center justify-between">
+          {/* logo */}
+          <Link href="/" className="self-center flex items-center">
+            <img src="/img/logo-notext.svg" alt="" className="h-5 md:h-7" />
+          </Link>
 
-        {/* middle desktop items */}
-        <div className="hidden md:flex gap-4 items-center">
-          {nav.map((item) => (
-            <div
-              className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-infinite hover:text-white hover:dark-hero:bg-white/20 cursor-pointer"
-              key={item.name}
-              onMouseEnter={() => showFlyout(item)}
-            >
-              {item.name}
+          {/* middle desktop items */}
+          <div className="hidden md:flex gap-4 items-center">
+            {nav.map((item) => (
+              <div
+                className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-infinite hover:text-white hover:dark-hero:bg-white/20 cursor-pointer"
+                key={item.name}
+                onMouseEnter={() => showFlyout(item)}
+              >
+                {item.name}
 
-              <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
-                <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
-                  <div className="flex-1 flex">
-                    {item.sections.length > 1 && (
-                      <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
-                        {item.sections.map((section) => (
-                          <button
-                            key={section.name}
-                            onMouseEnter={() => setSelectedSection(section)}
-                            onClick={() => setSelectedSection(section)}
-                            className={`text-left appearance-none border-none rounded-xl font-circular tw-heading-7 px-4 py-6 ${
-                              selectedSection === section
-                                ? "text-infinite bg-white"
-                                : "text-[#666] bg-transparent"
-                            }`}
-                          >
-                            {section.name}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                    <div className="flex flex-1 pl-8 pr-6 py-6 bg-white">
-                      <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
-                        {selectedSection.items.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
-                          >
-                            <span className="tw-heading-7">{item.name}</span>
-
-                            <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite">
-                              {item.description}
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                      {selectedSection.featured && (
-                        <div className="flex-1 pl-6">
-                          <Link
-                            style={{
-                              backgroundImage: `url(${selectedSection.featured.image})`,
-                            }}
-                            className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
-                            href={selectedSection.featured.href}
-                          >
-                            <span className="tw-heading-5 text-white flex-1 group-hover/featured:-translate-y-2 transition-transform">
-                              {selectedSection.featured.title}
-                            </span>
-
-                            <FeaturedArrowRight />
-                          </Link>
+                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+                  <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
+                    <div className="flex-1 flex">
+                      {item.sections.length > 1 && (
+                        <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
+                          {item.sections.map((section) => (
+                            <button
+                              key={section.name}
+                              onMouseEnter={() => setSelectedSection(section)}
+                              onClick={() => setSelectedSection(section)}
+                              className={`text-left appearance-none border-none rounded-xl font-circular tw-heading-7 px-4 py-6 ${
+                                selectedSection === section
+                                  ? "text-infinite bg-white"
+                                  : "text-[#666] bg-transparent"
+                              }`}
+                            >
+                              {section.name}
+                            </button>
+                          ))}
                         </div>
                       )}
+                      <div className="flex flex-1 pl-8 pr-6 py-6 bg-white">
+                        <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
+                          {selectedSection.items.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
+                            >
+                              <span className="tw-heading-7">{item.name}</span>
+
+                              <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite">
+                                {item.description}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        {selectedSection.featured && (
+                          <div className="flex-1 pl-6">
+                            <Link
+                              style={{
+                                backgroundImage: `url(${selectedSection.featured.image})`,
+                              }}
+                              className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
+                              href={selectedSection.featured.href}
+                            >
+                              <span className="tw-heading-5 text-white flex-1 group-hover/featured:-translate-y-2 transition-transform">
+                                {selectedSection.featured.title}
+                              </span>
+
+                              <FeaturedArrowRight />
+                            </Link>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="bg-[#FAFAFA] py-6 px-10 flex gap-8 items-center">
-                    {item.auxItems.map((item) => (
-                      <Link
-                        className="tw-button-xs whitespace-nowrap flex items-center gap-1"
-                        key={item.name}
-                      >
-                        {item.name}
-                        <LinkArrowUpRight className="w-[14px]" />
-                      </Link>
-                    ))}
+                    <div className="bg-[#FAFAFA] py-6 px-10 flex gap-8 items-center">
+                      {item.auxItems.map((item) => (
+                        <Link
+                          className="tw-button-xs whitespace-nowrap flex items-center gap-1"
+                          key={item.name}
+                        >
+                          {item.name}
+                          <LinkArrowUpRight className="w-[14px]" />
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* right side items: search and hamburger on mobile */}
-        <div className="flex gap-4 items-center">
-          <Search />
-          <button
-            className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[9px] h-10 w-10 p-0 justify-center"
-            onClick={toggleNav}
-          >
-            <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
-            <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
-            <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
-          </button>
+          {/* right side items: search and hamburger on mobile */}
+          <div className="flex gap-4 items-center">
+            <Search />
+            <button
+              className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[9px] h-10 w-10 p-0 justify-center"
+              onClick={toggleNav}
+            >
+              <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
+              <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
+              <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
+            </button>
+          </div>
         </div>
       </nav>
 
