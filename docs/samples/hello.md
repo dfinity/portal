@@ -11,7 +11,7 @@ It is the dapp equivalent of the ubiquitous 'Hello, world!' and can be seen runn
 
 ## Architecture
 
-This sample is based on the default project created by running `dfx new` as described in the quick start documents.
+This sample is based on the default project created by running `dfx new`.
 
 The sample code is available from the [samples](https://github.com/dfinity/examples) repository in both [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello) and [Rust](https://github.com/dfinity/examples/tree/master/rust/hello).
 

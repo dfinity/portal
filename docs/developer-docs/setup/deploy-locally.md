@@ -6,7 +6,7 @@ title: Local deployment
 
 ## Overview
 
-This **quick start** scenario assumes that you are installing the IC SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
+This scenario assumes that you are installing the IC SDK for the first time and want to run a canister in a **local canister execution environment** instead of deploying it to the Internet Computer blockchain.
 
 To get started, let’s build and deploy a simple 'Hello, world!' canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
 
@@ -227,7 +227,7 @@ To stop the local deployment:
 
 ## Conclusion
 
-This **quick start** touched on only a few key steps to introduce the basic workflow for developing dapps of your own. You can find more detailed examples and guides to help you learn about how to use Motoko and how to develop dapps to run on the Internet Computer blockchain throughout the documentation.
+This guide touched on only a few key steps to introduce the basic workflow for developing dapps of your own. You can find more detailed examples and guides to help you learn about how to use Motoko and how to develop dapps to run on the Internet Computer blockchain throughout the documentation.
 
 ## Resources
 Here are some suggestions for where to go next:
