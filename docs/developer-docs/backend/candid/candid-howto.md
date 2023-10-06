@@ -20,7 +20,9 @@ Candid types can be used to describe a service via a Candid service description 
 
 If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use the SDK, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are are auto-generated, it is recommended they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next dfx build.
 
-In other languages, like Rust, you will have to write the Candid interface description manually. With the help of types, we developed tools to automatically generate UI and perform random testing based on the service description file. 
+In other languages, like Rust, you will have to write the Candid interface description manually. However, there is a [community-built script](https://daviddalbusco.com/blog/automatic-candid-generation-in-rust-exploring-the-ic-cdk-v0-10-0-update/) that can automatically generate Candid interface descriptions for Rust.
+
+With the help of types, we developed tools to automatically generate UI and perform random testing based on the service description file. 
 
 ## Interact with a service in a terminal
 
