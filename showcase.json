@@ -2765,5 +2765,28 @@
     "youtube": "",
     "submittableId": "35648608",
     "videoContentType": "video/mp4"
+  },
+  {
+    "id": "fishverse",
+    "name": "FishVerse",
+    "description": "FishVerse is a revolutionary W2E fishing game that is open world, decentralized and built on ICP technology. It brings together fishing and GameFi enthusiasts inside of a vibrant community where people can monetize by catching and utilizing NFT fishes, competing in tournaments, missions, providing services and more...",
+    "website": "https://thefishverse.com/",
+    "logo": "/img/showcase/fishverse_logo.webp",
+    "screenshots": [
+      "/img/showcase/fishverse_screenshot.webp"
+    ],
+    "display": "Normal",
+    "oneLiner": "FishVerse is a W2E fishing game that is built on ICP technology",
+    "stats": "5000",
+    "tags": [
+      "NFT",
+      "Metaverse",
+      "Games"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/mgmetastudio/fishverse_dashboard",
+    "twitter": "https://twitter.com/TheFishverse",
+    "youtube": "https://www.youtube.com/channel/UCdMLfGmuLAsQlVPg9QROfcQ",
+    "submittableId": "32119235"
   }
 ]
