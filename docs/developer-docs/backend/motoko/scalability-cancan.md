@@ -1,8 +1,8 @@
-# 13: Scalable app example
+# 18: Scalable dapp example
 
 ## Overview
 
-The CanCan sample application is a simplified video-sharing service that demonstrates several features that you can use as models for your own applications. For example, here are a few things you can learn by exploring the CanCan sample application:
+The [CanCan sample application](https://github.com/dfinity/cancan) is a simplified video-sharing service that demonstrates several features that you can use as models for your own applications. For example, here are a few things you can learn by exploring the CanCan sample application:
 
 -   How to build a scalable application by splitting content into fragments for upload and storage then using queries to retrieve and reassemble the fragments for efficient streaming.
 
@@ -68,14 +68,16 @@ The application stores information about users and information about videos. To 
 
 User profiles are stored as `profiles/{username}` and are defined using the following data model:
 
-    export interface Profile {
-      username: string;         // maya
-      following: string[];      // [`alice`, `bob]`
-      followers: string[];      // ['palice']
-      uploadedVideos: string[]; // ['profiles/maya/videos/a5b54646-2ea3-4e0e-82d1-da3ab8148df2']
-      likedVideos: string[];    // ['profiles/bob/videos/b74e4eb0-dea8-4a4a-a1ae-d4593dc86930']
-      avatar?: string;          // ?ImageData (TODO)
-    }
+```
+export interface Profile {
+  username: string;         // maya
+  following: string[];      // [`alice`, `bob]`
+  followers: string[];      // ['palice']
+  uploadedVideos: string[]; // ['profiles/maya/videos/a5b54646-2ea3-4e0e-82d1-da3ab8148df2']
+  likedVideos: string[];    // ['profiles/bob/videos/b74e4eb0-dea8-4a4a-a1ae-d4593dc86930']
+  avatar?: string;          // ?ImageData (TODO)
+}
+```
 
 ### Videos
 
@@ -85,13 +87,120 @@ Metadata for videos is stored at `profiles/{username}/videos/{videoId}/metadata`
 
 Videos are stored as `profiles/{username}` and are defined using the following data model:
 
-    export interface Video {
-      src: string;       // 'profiles/maya/videos/f5a44646-2ea3-4e0f-83d2-da3ab8148df2'
-      userId: string;    // 'maya'
-      createdAt: string; // Date.now()
-      caption: string;   // 'cool movie, punk'
-      tags: string[];    // ['outside', 'grilling', 'beveragino']
-      likes: string[];    // ['sam', 'kelly']
-      viewCount: number; // 102
-      name: string; // 'grilling'
-    }
+```
+export interface Video {
+  src: string;       // 'profiles/maya/videos/f5a44646-2ea3-4e0f-83d2-da3ab8148df2'
+  userId: string;    // 'maya'
+  createdAt: string; // Date.now()
+  caption: string;   // 'cool movie, punk'
+  tags: string[];    // ['outside', 'grilling', 'beveragino']
+  likes: string[];    // ['sam', 'kelly']
+  viewCount: number; // 102
+  name: string; // 'grilling'
+}
+```
+
+### Prerequisites
+
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
+
+Additionally, the following packages are required for this guide:
+- [x] Download and install [Node.js](https://nodejs.org).
+- [x] Download and install [Python](https://www.python.org).
+- [x] Download and install [Vessel@0.6.0](https://github.com/dfinity/vessel/releases/tag/v0.6.0).
+
+## Deploying the CanCan dapp
+
+Double-check you have [vessel](https://github.com/dfinity/vessel) installed at version 0.6.*, then clone this repository and navigate to the `cancan` directory.
+
+
+```shell
+vessel --version
+# vessel 0.6.0
+
+git clone git@github.com:dfinity/cancan.git
+cd cancan
+```
+
+Start a local Internet Computer replica by running the following command:
+
+```shell
+dfx start --clean
+```
+
+Then, edit the `dfx.json` file to use the latest version of dfx:
+
+```
+  "dfx": "0.14.1"
+```
+
+Execute the following command in another terminal tab in the same directory:
+
+```shell
+npm install
+```
+
+Replace the contents of the `./bootstrap.sh` script with the following:
+
+```
+#!/bin/bash
+
+set -e
+echo "Running bootstrap script..."
+
+# Support bootstrapping CanCan from any folder
+BASEDIR=$(
+  cd "$(dirname "$0")"
+  pwd
+)
+cd "$BASEDIR"
+
+host="localhost"
+address="http://$host"
+
+echo "dfx build"
+npm run deploy
+
+# echo "Running seed script..."
+# echo "\nThis command may prompt you to install node to run.\nPlease accept and continue."
+# npm run seed -- 2
+
+URL="http://$(dfx canister id cancan_ui).$host:4943/"
+
+echo "Open at $URL"
+
+case $(uname) in
+Linux) xdg-open $URL || true ;;
+*) open $URL || true ;;
+esac
+```
+
+Next, edit the `package-set.dhall` file to update the upstream URL:
+
+```
+let upstream =
+  https://github.com/dfinity/vessel-package-set/releases/download/mo-0.7.5-20230118/package-set.dhall
+```
+
+
+Then, run the bootstrap script:
+
+```
+./bootstrap.sh
+```
+
+This will deploy a local canister called `cancan_ui_backend`. To open the front-end, get the frontend canister id by running `dfx canister id cancan_ui_frontend`. Then open your browser, and navigate to `http://<cancan_ui-canister-id>.localhost:8000/sign-in`.
+
+To run a development server with fast refreshing and hot-reloading, you can use this command in the app's root directory:
+
+```shell
+npm run start
+```
+
+Your default browser will open (or focus) a tab at `localhost:3000`, to which you must then append `/?canisterId=${cancan_ui_canister_id}`, where `cancan_ui_canister_id` is typically (at current) `ryjl3-tyaaa-aaaaa-aaaba-cai`.
+
+Now you can make changes to any frontend code and see instant updates, in many cases not even requiring a page refresh, so UI state is preserved between changes. Occasionally adding a CSS rule won't trigger an update, and the user has to manually refresh to see those changes.
+
+## Next steps
+
+To complete this guide, check out some additional [sample dapps](sample-apps.md).

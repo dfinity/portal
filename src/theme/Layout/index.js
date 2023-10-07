@@ -10,6 +10,8 @@ import Footer from "@theme/Footer";
 import LayoutProvider from "@theme/Layout/Provider";
 import ErrorPageContent from "@theme/ErrorPageContent";
 import styles from "./styles.module.css";
+import { DevDocsSubnav } from "@site/src/theme/Subnav/DevDocsSubnav";
+import { useLocation } from "@docusaurus/router";
 
 export default function Layout(props) {
   const {
@@ -21,6 +23,10 @@ export default function Layout(props) {
     description,
     editPath,
   } = props;
+
+  const location = useLocation();
+  const isDevDocs = location.pathname.startsWith("/docs/") || location.pathname.startsWith("/blog");
+
   useKeyboardNavigation();
 
   return (
@@ -32,6 +38,8 @@ export default function Layout(props) {
       <AnnouncementBar />
 
       <Navbar />
+
+      {isDevDocs && <DevDocsSubnav />}
 
       <div
         className={clsx(

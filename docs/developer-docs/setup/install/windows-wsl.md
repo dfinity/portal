@@ -46,7 +46,7 @@ Once you have WSL installed, you can install `dfx` within your WSL Linux termina
 
 ### Node.js is not properly installed
 
-WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [Node.js](/tutorials/deploy_sample_app.md#nodejs) for more information.
+WSL 2 has node.js `10.x.x` installed by default. But the latest `dfx` requires node.js `16.0.0` or higher, please check [0.3: Developer environment setup](/docs/tutorials/developer-journey/level-0/03-dev-env.md) developer journey tutorial for more information.
 
 ### Permission Denied when running `dfx start`
 

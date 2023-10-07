@@ -80,10 +80,7 @@ function TokenHolders(): JSX.Element {
         <main className="overflow-hidden">
           <ShareMeta image="/img/shareImages/share-icp-tokens.jpg" />
           {isDark && <DarkHeroStyles />}
-          <section
-            className="bg-infinite text-white overflow-hidden"
-            ref={ref}
-          >
+          <section className="bg-infinite text-white overflow-hidden" ref={ref}>
             <AnimateSpawn
               className="container-10 pt-20 md:pt-32 pb-52 md:pb-32 relative "
               variants={transitions.container}
@@ -131,10 +128,11 @@ function TokenHolders(): JSX.Element {
                 className="tw-paragraph md:tw-lead-sm text-black/60 mb-3"
                 variants={transitions.item}
               >
-                The ICP token plays a number of roles on the Internet Computer. Firstly, as a
-                governance token, it can be staked to exercise those governance rights. As a
-                utility token, it can be burned to obtain ‘cycles‘ which serves as gas for
-                computation and storage in canister smart contracts. It can also be minted to reward
+                The ICP token plays a number of roles on the Internet Computer.
+                Firstly, as a governance token, it can be staked to exercise
+                those governance rights. As a utility token, it can be burned to
+                obtain ‘cycles‘ which serves as gas for computation and storage
+                in canister smart contracts. It can also be minted to reward
                 ‘node machine‘ providers for providing that compute and storage.
               </motion.p>
               <motion.p
@@ -162,7 +160,7 @@ function TokenHolders(): JSX.Element {
                 <h3 className="inline-flex items-center gap-3 mb-6">
                   <img
                     src="/img/icp-tokens/icp-token-logo.svg"
-                    alt=""
+                    alt="ICP logo"
                     loading="lazy"
                     className="w-16 h-16"
                   />
@@ -192,6 +190,7 @@ function TokenHolders(): JSX.Element {
                     src="/img/icp-tokens/cycles-logo.svg"
                     className="w-16 h-16"
                     loading="lazy"
+                    alt="Cycles logo"
                   />
                   <span className="flex-1 text-gradient tw-heading-5">
                     Cycles
@@ -293,11 +292,11 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://youtu.be/Ls_FlVERMjg"
+                    href="/nns"
                     className="link-primary link-with-icon items-center"
                   >
                     <LinkArrowRight />
-                    How to stake on the NNS dapp
+                    Participate in governance by staking ICP
                   </Link>
                 </p>
               </AnimateSpawn>
@@ -410,8 +409,7 @@ function TokenHolders(): JSX.Element {
                 >
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
-                  This was made possible on the Internet Computer through  
-                  native{" "}
+                  This was made possible on the Internet Computer through native{" "}
                   <Link
                     className="text-white hover:text-white underline hover:cursor-pointer"
                     href="/bitcoin-integration"
@@ -650,6 +648,12 @@ function TokenHolders(): JSX.Element {
                     description="Store assets in segregated cold storage. An institutional-grade custody solution. "
                     link="https://www.coinbase.com/"
                     icon="/img/showcase/coinbase_logo.webp"
+                  />
+                  <WalletCard
+                    title="Taurus"
+                    description="Banking-grade custody for digital asset management."
+                    link="https://www.taurushq.com/"
+                    icon="/img/showcase/taurus_logo.png"
                   />
                 </div>
               </motion.div>

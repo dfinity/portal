@@ -3,7 +3,6 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
@@ -13,10 +12,9 @@ import IconCommunityOwned from "../../static/img/sns/community-owned.svg";
 import IconScalable from "../../static/img/sns/scalable.svg";
 import IconTokenized from "../../static/img/sns/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import ExternalLinkIcon from "@site/static/img/external-link.svg";
-import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
+import VideoCard from "../components/Common/VideoCard";
 
 const MotionLink = motion(Link);
 
@@ -103,6 +101,7 @@ function SnsPage() {
               <img
                 src="/img/sns/hero.png"
                 className="w-80 sm:w-[480px] md:w-auto max-w-full"
+                alt=""
               />
             </div>
           </motion.section>
@@ -313,7 +312,7 @@ function SnsPage() {
             <MotionLink
               variants={transitions.fadeIn}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/get-sns/get-sns-intro/"
+              href="/docs/current/developer-docs/integrations/sns/launching/launch-summary"
             >
               Launch an SNS DAO
             </MotionLink>
@@ -368,87 +367,18 @@ function SnsPage() {
             </motion.div>
           </AnimateSpawn>
         </section>
-        <section className=" bg-infinite text-white overflow-hidden">
-          <AnimateSpawn
-            className="max-w-page md:mx-auto px-6 md:px-12.5 md:min-h-[600px] pb-20  md:py-24 relative  flex flex-col justify-center"
-            variants={transitions.container}
-          >
-            {/* <CustodyGraphic className="absolute w-[520px] md:w-auto right-[-100px] top-[-160px] md:right-[-200px] md:top-[-120px]"></CustodyGraphic> */}
-            <img
-              className="
-                w-full max-w-[500px] py-20
-                md:absolute 
-                md:w-[640px] md:max-w-none md:left-auto md:translate-x-0 md:right-[-50px] md:top-[-30px]"
-              src="/img/sns/sns.webp"
-            ></img>
-            <div className="md:mx-auto md:w-10/12 relative">
-              <motion.h2
-                className="tw-heading-4 md:tw-heading-3 md:w-5/10 mb-6 md:my-8"
-                variants={transitions.item}
-              >
-                SNS-1: The first of its kind
-              </motion.h2>
-
-              <motion.p
-                variants={transitions.item}
-                className="tw-lead-sm mb-3 md:w-1/2"
-              >
-                SNS-1 was a dress rehearsal that DFINITY ran together with the
-                ICP community to test an SNS decentralization swap on the
-                mainnet. After a successful SNS launch, SNS-1 is now controlled
-                by the community.
-              </motion.p>
-              <motion.p variants={transitions.item}>
-                <Link
-                  className="link-primary-light"
-                  href="https://dscvr.one/p/internet-computer"
-                >
-                  Follow SNS-1 on DSCVR
-                  <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-                </Link>
-              </motion.p>
-            </div>
-            <motion.img
-              src={BlobWhite}
-              className="absolute pointer-events-none max-w-none w-[800px] right-[-250px] top-[-150px] md:w-[1500px]  md:right-[-550px] translate-x-[200px] md:top-[-400px]"
-              alt=""
-            />
-          </AnimateSpawn>
-        </section>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.item}
           className="container-10 mt-24 md:mt-30"
         >
-          <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
-            <Link
-              className="md:w-7/10 h-full flex relative group"
-              href="https://youtu.be/nZBWx6y070Y"
-            >
-              <img
-                src={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
-                alt=""
-                className="w-full h-full object-cover"
-              />
-
-              <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
-                <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
-              </div>
-            </Link>
-            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12">
-              <div className="self-end">
-                <h4 className="text-razzmatazz tw-heading-7 mb-3">
-                  Fully On-chain with DFINITY
-                </h4>
-                <p className="mb-3 tw-heading-6 md:tw-heading-5">
-                  Next Generation DAOs
-                </p>
-                <p className="text-black-60 tw-paragraph md:tw-lead-sm mb-0">
-                  Episode #2 | SNS
-                </p>
-              </div>
-            </div>
-          </div>
+          <VideoCard
+            label="Fully On-chain with DFINITY"
+            title="Next Generation DAOs"
+            description="Episode #2 | SNS"
+            image={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
+            link="https://youtu.be/nZBWx6y070Y"
+          />
         </AnimateSpawn>
         <AnimateSpawn
           el={motion.section}
@@ -469,6 +399,7 @@ function SnsPage() {
               sm:w-[1200px]
               sm:right-[-500px]
             "
+              alt=""
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-1/10">

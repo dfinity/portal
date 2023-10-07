@@ -18,11 +18,18 @@ Both commands provide a flag to specify a ledger canister id (`--ledger-canister
 ### Balance
 
 Get the ICP balance of a specific account:
+
 ``` bash
 dfx ledger --network ic balance <account-id>
 ```
-The `<account-id>` is encoded as a hex string.
-In many cases you want to check the main account balance of a specific principal. You can use the following command for this:
+
+The `<account-id>` is encoded as a hex string. You can print the account id of the current `dfx` identity by running:
+
+```bash
+dfx ledger account-id
+```
+
+In many cases you want to check the main account balance of a specific principal. You can combine the `balance` command with the `account-id` command, while specifying an `--of-principal` argument to yield this helpful command:
 
 ``` bash
 dfx ledger --network ic balance $(dfx ledger account-id --of-principal <principal-id>)
@@ -35,7 +42,6 @@ The transfer function can be used to transfer ICP from your account to another.
 ``` bash
 dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-account-id>
 ```
-
 
 <!-- ## Interact with ICP using Candid UI -->
 
@@ -74,7 +80,7 @@ The following diagram shows a simplified illustration of this pattern:
 
 #### Notification by ICP ledger (currently disabled)
 
-In this pattern the ledger iteself notifies the receiver. Thereby, the receiver can trust the notification immediately. However, this flow is currently disabled because the call to the receiver is not yet implemented as a one-way call. 
+In this pattern the ledger itself notifies the receiver. Thereby, the receiver can trust the notification immediately. However, this flow is currently disabled because the call to the receiver is not yet implemented as a one-way call. 
 
 ```plantuml
     participant Sender
@@ -86,3 +92,21 @@ In this pattern the ledger iteself notifies the receiver. Thereby, the receiver 
     Sender -> "ICP Ledger": notify(blockNumber, receiver)
     "ICP Ledger" -> "Receiver": transaction_notification(details)
 ```
+
+## `icrc-ledger-types` Rust crate
+
+To interact with ICRC-1 and ICRC-2 compatible canisters, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used. 
+
+The crate can be installed with the command:
+
+```
+cargo add icrc-ledger-types
+```
+
+Or, it can be added to the `Cargo.toml` file:
+
+```
+icrc-ledger-types = "0.1.1"
+```
+
+The documentation for this crate can be found [here](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/). 

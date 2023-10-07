@@ -293,4 +293,21 @@ export const communityToolingItems = [
       github: "https://github.com/ic4j/ic4j-maven-plugin",
     },
   }, 
+{
+    title: "icpp-pro",
+    tags: [ "C++", "development", "CDK" ],
+    description: "C++ Canister Development Kit (CDK).",
+    links: {
+      docs: "https://docs.icpp.world/",
+    },
+  },
+{
+    title: "MotokoPilot",
+    tags: [ "development", "service", "testing", "starter" ],
+    description: "Your AI-powered companion for simplifying and streamlining the Motoko coding experience.",
+    links: {
+      external: "https://ai.icpcs.io/",
+      github: "https://github.com/icpcs/motokopilot-vscode",
+    },
+  },
 ];

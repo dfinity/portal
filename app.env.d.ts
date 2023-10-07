@@ -1,3 +1,9 @@
+import {
+  Navbar,
+  NavbarItem,
+} from "@docusaurus/theme-common/src/utils/useThemeConfig";
+import { LinkLikeNavbarItemProps } from "@theme/NavbarItem";
+
 declare module "*.png";
 declare module "*.webp";
 declare module "*.svg";
@@ -32,4 +38,20 @@ declare module "@site/.docusaurus/home-showcase/default/home-showcase.json" {
   import { ShowcaseProject } from "./src/components/ShowcasePage/ShowcaseProject";
   const data: ShowcaseProject[];
   export default data;
+}
+
+declare module "@docusaurus/theme-common" {
+  interface ThemeConfig {
+    subnav: Omit<Navbar, "items" | "type"> & {
+      items: Array<
+        NavbarItem & {
+          sidebarId?: string;
+          docId?: string;
+          readonly type?: "docSidebar" | "doc" | "dropdown";
+          items?: LinkLikeNavbarItemProps[];
+          href?: string;
+        }
+      >;
+    };
+  }
 }

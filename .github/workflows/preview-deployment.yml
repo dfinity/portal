@@ -14,6 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -32,12 +34,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install DFX
-        run: |
-          mkdir dfx
-          cd dfx
-          wget https://github.com/dfinity/sdk/releases/download/0.14.1-beta.0/dfx-0.14.1-beta.0-x86_64-linux.tar.gz
-          tar -xf dfx-0.14.1-beta.0-x86_64-linux.tar.gz
-          echo "`pwd`" >> $GITHUB_PATH
+        run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
       - name: "Build & Deploy"
         run: |
@@ -101,7 +98,7 @@ jobs:
             const comments = require('./.github/workflows/scripts/comments.js');
             const maybeComment = await comments.get(context, github);
             if (maybeComment) {
-              await comments.update(context, github, maybeComment.id,  `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
+              await comments.update(context, github, maybeComment.id,  `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`);
             } else {
-              await comments.create(context, github, `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`);
+              await comments.create(context, github, `🤖 Here's your preview: https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`);
             }

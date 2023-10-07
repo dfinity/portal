@@ -8,8 +8,7 @@ This section is structured as follows:
 
 - This page provides an introduction to the basics of ICP and the ledger. For a more detailed explanation of the complete public interface of the ledger canister head over to the [specification](/docs/current/references/ledger) in the [references section](/docs/current/references/).
 - [Interact with the ICP ledger](interact-with-ledger.md) provides hands on tutorials to interact with the ICP ledger from the command line, JavaScript applications and from canisters.
-- [Ledger local setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
-- [Deploy new token](./deploy-new-token.md) explains how you can create your own token by deploying a custom ledger canister and make it available to exchanges via the [Rosetta API](../rosetta/).
+- [ICP-Ledger local setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
 - [Account trimming](./collecting-dust.md) explains the mechanism to trim the dust accounts from the ledger.
 
 ## Architecture

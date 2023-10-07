@@ -3,16 +3,16 @@
     left: 49vw;
     bottom: 0;
     width: 2vw;
-    z-index: 1900;
     white-space: pre;
+    @apply z-30;
 }
 
 .desktopContainer {
     display: flex;
-    z-index: 1900;
     bottom: 0;
     margin: 0 auto calc(env(safe-area-inset-bottom) + 20px) auto;
     justify-content: center;
+    @apply z-30;
 }
 
 .mobileMenu span {
@@ -71,16 +71,15 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
-    z-index: 5000;
     bottom: 0;
     display: flex;
     padding: 0 60px;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, .5);
     backdrop-filter: blur(20px);
-
     color: white;
     -webkit-backface-visibility: hidden;
+    @apply z-50;
 }
 .borderRadius50 {
     border-radius: 50px;

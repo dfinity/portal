@@ -12,7 +12,7 @@ Canisters consume cycles while they're running. Performing computation costs cyc
 
 Not everyone is allowed to change a canister. Canisters all have a list of controllers that are allowed to update its settings, install/upgrade the running code or even delete the canister. Developers, automated tools, other canisters or nothing at all can be controllers. Depending on the goals for the canister, different combinations of controllers can make sense. The below section [demonstrating trust](#demonstrating-trust) explains more about that.
 
-Once a canister is at the end of its lifecycle, it can be deleted. Before doing so, it is recommended that (one of) its owner(s) withdraws remaining cycles before they delete the canister. Otherwise those cycles are lost. Since withdrawing those cylces is a rather tedious process manually, tools exist to facilitate the process. The other option besides deleting the canister is to just leave it running until it gets deleted automatically.
+Once a canister is at the end of its lifecycle, it can be deleted. Before doing so, it is recommended that (one of) its owner(s) withdraws remaining cycles before they delete the canister. Otherwise those cycles are lost. Since withdrawing those cycles is a rather tedious process manually, tools exist to facilitate the process. The other option besides deleting the canister is to just leave it running until it gets deleted automatically.
 
 ## Deploying code
 
@@ -21,7 +21,7 @@ While canisters can run arbitrary WebAssembly (WASM) modules, the Internet Compu
 To install code in a canister, the `install_code` function of the Internet Computer is used in one of three modes:
 - The `install` mode is the one every canister starts with: it is only callable for canisters without any installed code and populates the canister with the supplied WASM module. Once installation is complete, the aforementioned function `canister_init` (usually exposed as `init` in CDKs) is called if it exists. This allows the code to perform any required setup before any calls arrive.
 - The `reinstall` mode works almost the same as `install`, but if the canister already contains running code, its state is discarded and the running code is deleted. After that, the procedure from mode `install` is followed.
-- The `upgrade` mode is the one used most often. This mode allows canister code to be changed without losing all of its state. In this mode, the canister first has the chance to save any state to stable memory in the `canister_pre_upgrade` (exposed as `pre_upgrade` in CDKs) function. After that, the new code is installed and instead of calling the init function, the `canister_post_upgrade` function (exposed as `post_ugrade` in CDKs) is run so that data can be loaded from stable memory.
+- The `upgrade` mode is the one used most often. This mode allows canister code to be changed without losing all of its state. In this mode, the canister first has the chance to save any state to stable memory in the `canister_pre_upgrade` (exposed as `pre_upgrade` in CDKs) function. After that, the new code is installed and instead of calling the init function, the `canister_post_upgrade` function (exposed as `post_upgrade` in CDKs) is run so that data can be loaded from stable memory.
 
 All three `install_code` modes are atomic. If **anything** goes wrong in one of the described steps, the canister state is reverted to its state before the `install_code` function was called. And in case anything is not clear enough from these explanations, the [IC specification for `install_code`](/references/ic-interface-spec.md#ic-install_code) is the official source of truth.
 
@@ -35,8 +35,8 @@ When upgrading existing canisters, there are a few more things that one should k
 
 ## Things to consider
 
-  * [Funding](#funding)
-  * [Demonstrating trust](#demonstrating-trust)
+  * [Funding](#funding).
+  * [Demonstrating trust](#demonstrating-trust).
 
 ### Funding
 
@@ -44,7 +44,7 @@ Internet Computer canisters are funded using a balance of cycles that will gradu
 
 Here is a checklist of the things you will need to consider:
 
-- [] **What will the canister's source of funds be?**
+- [ ] **What will the canister's source of funds be?**
   * Paid for up-front by the developer.
   * Funded by donations from the community.
   * Funded by ongoing revenue in ICP or cycles.

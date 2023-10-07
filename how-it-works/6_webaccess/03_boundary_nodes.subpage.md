@@ -1,7 +1,7 @@
 ---
 title: Boundary nodes
 abstract:
-shareImage: /img/how-it-works/boundary-nodes.webp
+shareImage: /img/how-it-works/boundary-nodes.jpg
 slug: boundary-nodes
 ---
 

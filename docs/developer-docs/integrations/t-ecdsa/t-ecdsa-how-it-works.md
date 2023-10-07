@@ -55,33 +55,50 @@ We next give an overview of the API for threshold ECDSA. For the authoritative s
 
 Each API call refers to a threshold ECDSA master key by virtue of a 2-part identifier comprising a curve and a key id as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
--   `ecdsa_public_key`: this method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.<br/>
+-   `[ecdsa_public_key](/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)`: this method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.<br/>
 For curve `secp256k1`, the public key is derived using a generalization of BIP32 (see ia.cr/2021/1330, Appendix D). To derive (non-hardened) BIP-0032-compatible public keys, each byte string (blob) in the `derivation_path` must be a 4-byte big-endian encoding of an unsigned integer less than 2<sup>31</sup>.<br/>
 The return result is an extended public key consisting of an ECDSA `public_key`, encoded in SEC1 compressed form, and a `chain_code`, which can be used to deterministically derive child keys of the `public_key`.
 This call requires that the ECDSA feature is enabled, and the `canister_id` meets the requirement of a canister id. Otherwise it will be rejected.
--   `sign_with_ecdsa`: this method returns a new ECDSA signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.<br/>
+-   `[sign_with_ecdsa](/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)`: this method returns a new ECDSA signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.<br/>
 The signatures are encoded as the concatenation of the SEC1 encodings of the two values `r` and `s`. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.<br/>
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
-Note that in case of high system load, a request to compute an ECDSA signature may time out. In this case, the caniste may want to back off and retry the request later.
+An example of the API can be found below:
+
+```
+  ecdsa_public_key : (record {
+    canister_id : opt canister_id;
+    derivation_path : vec blob;
+    key_id : record { curve: ecdsa_curve; name: text };
+  }) -> (record { public_key : blob; chain_code : blob; });
+  sign_with_ecdsa : (record {
+    message_hash : blob;
+    derivation_path : vec blob;
+    key_id : record { curve: ecdsa_curve; name: text };
+  }) -> (record { signature : blob });
+```
+
+Note that in case of high system load, a request to compute an ECDSA signature may time out. In this case, the canister may want to back off and retry the request later.
 
 ## API Fees
 
-The fees for the ECDSA signing API are as follows. We give the fees for a 13-node subnet and a 34-node subnet as example for a high-replication subnet. Note that the high-replication is initially in the order of around 30 nodes and the price scales accordingly to the exact number of nodes of the subnet.
+The fees for the ECDSA signing API are as defined below. The threshold ECDSA test key resides on a regular-sized (13-node) application subnet, while the threshold ECDSA production key resides on an about 30-node-sized fiduciary subnet. The subnet size of the subnet where the threshold signature key resides and the signatures are computed define the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of of November 23, 2022 has been used.
 
-| Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
+:::note
+If a canister using this feature is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
+:::
+
+### Fees for the t-ECDSA Test Key
+
+| Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| *Chain-key signatures*               |                                                                                                                |                             |                             |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10,000,000,000              | 26,153,846,153              |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10,000,000,000              | $0.0130886                  |
 
-Cost per API call in USD (as of the USD/XDR exchange rate of November 23, 2022):
+### Fees for the t-ECDSA Production Key
 
-| Transaction                          | Description                                                                                                    | 13-node Application Subnets | 34-node Application Subnets |
+| Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| *Chain-key signatures*               |                                                                                                                |                             |                             |
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | $0.0130886                  | $0.0342317                  |
-
-If a canister is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26,153,846,153              | $0.0342317                  |
 
 ## Environments
 
@@ -93,10 +110,10 @@ The development of canisters is typically done in the developer's local environm
 
 When the replica of the SDK environment is first started up, a new ECDSA key is generated. This key is then stored in non-volatile memory so that it does not change with every restart of the replica.
 
-For the technically interested readers we want to note that the SDK uses the exact same implementation of threshold ECDSA as mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on the IC.
+For the technically interested readers we want to note that the SDK uses the exact same implementation of threshold ECDSA as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on the IC.
 
 ### Internet Computer
 
 Any canister on any subnet of the IC can call the threshold ECDSA API exposed by the management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dApps using Bitcoin testnet.
 
-As part of the general availability (GA) release of the feature, a production ECDSA key on the `secp256k1` elliptic curve has been deployed to be used for integration with Bitcoin Mainnet and other use cases of interest.
+As part of the general availability (GA) release of the feature, a production ECDSA key on the `secp256k1` elliptic curve has been deployed to be used for integration with the Bitcoin Mainnet and other use cases of interest.

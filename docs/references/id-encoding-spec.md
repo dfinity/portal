@@ -325,68 +325,68 @@ The function `decode` normalizes the input to all-lower-case and then applies th
 
 ## Rationale
 
-- #### **Why is the character set not Base64?**
+#### **Why is the character set not Base64?**
 
-We need case-insensitive IDs because we want to use them in the hostname (i.e. the authority part) of a URL (see **requirement 2: URL-compatibility**).
+- We need case-insensitive IDs because we want to use them in the hostname (i.e. the authority part) of a URL (see **requirement 2: URL-compatibility**).
 
-- #### **Why is the character set not hex?**
+#### **Why is the character set not hex?**
 
-URLs limit the length of hostnames to 63 characters.
+- URLs limit the length of hostnames to 63 characters.
 In hex this would allow to encode a maximum of 31 bytes.
 This is not enough to fit our derived IDs into it.
 A change to the ID specification could make it possible like this: 20 byte hash + 4 bytes freely chooseable + 4 bytes check sequence + 2 bytes version = 30 bytes.
 However, it is nice to have overall shorter IDs and have more space available for future extensions (see **requirement 2: URL-compatibility**).
 
-- #### **Why a check sequence?**
+#### **Why a check sequence?**
 
-The purpose of the check sequence is to detect errors early, right in the user interface, before connecting to the IC, in fact, without necessity to connect to the IC at all (see **requirement 3: user experience**).
+- The purpose of the check sequence is to detect errors early, right in the user interface, before connecting to the IC, in fact, without necessity to connect to the IC at all (see **requirement 3: user experience**).
 
-- #### **Why is the check sequence 4 bytes and not shorter?**
+#### **Why is the check sequence 4 bytes and not shorter?**
 
-We expect that the protocol may accept unregistered (self-generated) IDs.
+- We expect that the protocol may accept unregistered (self-generated) IDs.
 An accidental alteration could lead to financial loss.
 To minimize the total loss incurred by all users combined it is important to reduce this probability as much as possible.
 We think 1:10<sup>9</sup> or better is required.
 If it was only to improve user experience and financial loss was not an issue then 2 bytes would have been enough as, e.g., in onion addresses (see **requirement 1: security**).
 
-- #### **Why is the check sequence calculated before encoding to a character string (i.e. based on binary data as input) and not after (i.e. based on a character string as input)?**
+#### **Why is the check sequence calculated before encoding to a character string (i.e. based on binary data as input) and not after (i.e. based on a character string as input)?**
 
-Calculating the check sequence before encoding makes the check sequence part independent of the encoding part.
+- Calculating the check sequence before encoding makes the check sequence part independent of the encoding part.
 This may reduce code dependencies. 
 
-- #### **Doesn’t a check sequence based on characters provide better detection of errors that come from human typos?**
+#### **Doesn’t a check sequence based on characters provide better detection of errors that come from human typos?**
 
-Yes, but a) we do not design for IDs typed by humans and b) the improvement in detection rate is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
+- Yes, but a) we do not design for IDs typed by humans and b) the improvement in detection rate is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
 
-- #### **Why is the check sequence not based on a cryptographic hash?**
+#### **Why is the check sequence not based on a cryptographic hash?**
 
-A cryptographic hash shortened to 4 bytes is not “cryptographic” anymore, hence it is as good as our CRC function.
+- A cryptographic hash shortened to 4 bytes is not “cryptographic” anymore, hence it is as good as our CRC function.
 
-- #### **Why is the check sequence not based on SHA256?**
+#### **Why is the check sequence not based on SHA256?**
 
-CRC is cheaper computation wise.
+- CRC is cheaper computation wise.
 This may pay off when canister code handles encoded IDs.
 
-- #### **Why wasn’t a better polynomial chosen for the CRC than the standard one?**
+#### **Why wasn’t a better polynomial chosen for the CRC than the standard one?**
 
-It is true that there are polynomials with a better Hamming distance.
+- It is true that there are polynomials with a better Hamming distance.
 At data length of up to 256 bits one can find Hamming distance 6 where our polynomial only has Hamming distance 4.
 As said before, the difference is negligible because the non-detection rate is already so low at 1:2<sup>32</sup>.
 The availability of libraries for the standard polynomial used in CRC32 is more important to us (see **requirement 4: developer experience**).
 
-- #### **Why is the check sequence not based on a BCH code over GF(32)?**
+#### **Why is the check sequence not based on a BCH code over GF(32)?**
 
-The advantage of a BCH code would be that the check sequence can be made character-based to detect human typos.
+- The advantage of a BCH code would be that the check sequence can be made character-based to detect human typos.
 We already answered above why we didn’t choose a character-based check sequence.
 
-- #### **But isn’t BCH shorter code than CRC32? It only requires 5 constants where CRC32 has a table of 256 constants?**
+#### **But isn’t BCH shorter code than CRC32? It only requires 5 constants where CRC32 has a table of 256 constants?**
 
-Yes, but BCH would require custom code where CRC32 is widely available in libraries.
+- Yes, but BCH would require custom code where CRC32 is widely available in libraries.
 This is more important to us (see **requirement 4: developer experience**).
 
-- #### **Why don’t you use capitalization as an implicit check sequence like Ethereum does?**
+#### **Why don’t you use capitalization as an implicit check sequence like Ethereum does?**
 
-Three reasons: 
+- Three reasons: 
   * We want a case-insensitive encoding for use in hostnames (see **requirement 2: URL-compatibility**).
   * This would not provide sufficiently many check bits in all cases.
     Our IDs can be as short as 9 bytes which would be 15 characters without adding a check sequence.

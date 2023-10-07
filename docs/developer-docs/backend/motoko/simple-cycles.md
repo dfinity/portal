@@ -1,4 +1,4 @@
-# 7: Accepting cycles from a wallet
+# 13: Accepting cycles from a wallet
 
 ## Overview
 
@@ -18,178 +18,225 @@ This example consists of the following:
 
 ## Prerequisites
 
-Before starting the guide, verify the following:
-
--   [x] You have downloaded and installed the SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
-
--   [x] You have installed the Visual Studio Code plugin for Motoko as described in [install the language editor plug-in](/developer-docs/setup/deploy-locally.md#install-vscode) if you are using Visual Studio Code as your IDE.
-
--   [x] You have stopped any local canister execution environment running on the local computer.
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
 
 ## Create a new project
 
-To create a new project directory for testing access control and switching user identities:
+To create a new project directory for testing access control and switching user identities, open a terminal shell on your local computer, if you don’t already have one open.
 
-- #### Step 1:  Open a terminal shell on your local computer, if you don’t already have one open.
+Create a new project by running the following command:
 
-- #### Step 2:  Change to the folder you are using for your Internet Computer projects, if you are using one.
+```
+dfx new cycles_hello
+```
 
-- #### Step 3:  Create a new project by running the following command:
+Navigate into your project directory by running the following command:
 
-        dfx new cycles_hello
-
-- #### Step 4:  Change to your project directory by running the following command:
-
-        cd cycles_hello
+```
+cd cycles_hello
+```
 
 ## Modify the default program
 
 For this guide, you are going to modify the template source code to include new functions for accepting cycles and checking the cycle balance.
 
-To modify the default program:
+Open the `src/cycles_hello_backend/main.mo` file in a text editor and delete the existing content.
 
-- #### Step 1:  Open the `src/cycles_hello/main.mo` file in a text editor and delete the existing content.
+Copy and paste this code into the file:
 
-- #### Step 2:  Copy and paste [this code](./_attachments/cycles-main.mo) into the file.
+```
+import Nat64 "mo:base/Nat64";
+import Cycles "mo:base/ExperimentalCycles";
 
-    Let’s take a look at a few key elements of this program:
+shared(msg) actor class HelloCycles (
+   capacity: Nat
+  ) {
 
-    -   The program imports a Motoko base library—`ExperimentalCycles`—that provides basic functions for working with cycles.
+  var balance = 0;
 
-    -   The program uses an `actor class` instead of a single actor so that it can have multiple actor instances to accept different cycle amounts up to a `capacity` for all instances.
+  // Return the current cycle balance
+  public shared(msg) func wallet_balance() : async Nat {
+    return balance;
+  };
 
-    -   The `capacity` is passed as an argument to the actor class.
+  // Return the cycles received up to the capacity allowed
+  public func wallet_receive() : async { accepted: Nat64 } {
+    let amount = Cycles.available();
+    let limit : Nat = capacity - balance;
+    let accepted =
+      if (amount <= limit) amount
+      else limit;
+    let deposit = Cycles.accept(accepted);
+    assert (deposit == accepted);
+    balance += accepted;
+    { accepted = Nat64.fromNat(accepted) };
+  };
 
-    -   The `msg.caller` identifies the principal associated with the call.
+  // Return the greeting
+  public func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
 
-- #### Step 3:  Save your changes and close the `main.mo` file to continue.
+  // Return the principal of the caller/user identity
+  public shared(msg) func owner() : async Principal {
+    let currentOwner = msg.caller;
+    return currentOwner;
+  };
+
+};
+```
+
+Let’s take a look at a few key elements of this program:
+
+-   The program imports a Motoko base library—`ExperimentalCycles`—that provides basic functions for working with cycles.
+
+-   The program uses an `actor class` instead of a single actor so that it can have multiple actor instances to accept different cycle amounts up to a `capacity` for all instances.
+
+-   The `capacity` is passed as an argument to the actor class.
+
+-   The `msg.caller` identifies the principal associated with the call.
+
+Save your changes and close the `main.mo` file to continue.
 
 ## Start the local canister execution environment
 
-Before you can build the `access_hello` project, you need to connect to the canister execution environment running locally in your development environment, or you need to connect to a subnet that you can access.
+Before you can build the `cycles_hello` project, you need to connect to the canister execution environment running locally in your development environment, or you need to connect to a subnet that you can access.
 
-To start the local canister execution environment:
+To start the local canister execution environment, open a new terminal window or tab on your local computer.
 
-- #### Step 1: Open a new terminal window or tab on your local computer.
+Start the local canister execution environment on your machine by running the following command:
 
-- #### Step 2:  Navigate to the root directory for your project, if necessary.
+```
+dfx start --clean --background
+```
 
-- #### Step 3:  Start the local canister execution environment on your machine by running the following command:
+For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
 
-        dfx start --clean --background
+This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 
-    After the local canister execution environment completes its startup operations, you can continue to the next step.
+After the local canister execution environment completes its startup operations, you can continue to the next step.
 
 ## Register, build, and deploy the dapp
 
 After you connect to the local canister execution environment, you can register, build, and deploy your dapp locally.
 
-To deploy the dapp locally:
+Register, build, and deploy your dapp by running the following command in your project's directory:
 
-- #### Step 1:  Check that you are still in the root directory for your project, if needed.
+```
+dfx deploy --argument '(360000000000)' cycles_hello_backend
+```
 
-- #### Step 2:  Register, build, and deploy your dapp by running the following command:
+This example sets the `capacity` for the canister to 360,000,000,000 cycles. The `dfx deploy` command output then displays information about the operations it performs, including the identity associated with the wallet canister created for this local project and the wallet canister identifier.
 
-        dfx deploy --argument '(360000000000)'
+For example:
 
-    This example sets the `capacity` for the canister to 360,000,000,000 cycles. The `dfx deploy` command output then displays information about the operations it performs, including the identity associated with the wallet canister created for this local project and the wallet canister identifier.
-
-    For example:
-
-        Deploying all canisters.
-        Creating canisters...
-        Creating canister "cycles_hello"...
-        Creating the canister using the wallet canister...
-        Creating a wallet canister on the local network.
-        The wallet canister on the "local" network for user "default" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
-        "cycles_hello" canister created with canister id: "rrkah-fqaaa-aaaaa-aaaaq-cai"
-        Creating canister "cycles_hello_assets"...
-        Creating the canister using the wallet canister...
-        "cycles_hello_assets" canister created with canister id: "ryjl3-tyaaa-aaaaa-aaaba-cai"
-        Building canisters...
-        Building frontend...
-        Installing canisters...
-        Installing code for canister cycles_hello, with canister_id rrkah-fqaaa-aaaaa-aaaaq-cai
-        Installing code for canister cycles_hello_assets, with canister_id ryjl3-tyaaa-aaaaa-aaaba-cai
-        Authorizing our identity (default) to the asset canister...
-        Uploading assets to asset canister...
-        Deployed canisters.
+```
+Deploying: cycles_hello_backend
+Creating a wallet canister on the local network.
+The wallet canister on the "local" network for user "ic_admin" is "bnz7o-iuaaa-aaaaa-qaaaa-cai"
+Creating canisters...
+Creating canister cycles_hello_backend...
+cycles_hello_backend canister created with canister id: bkyz2-fmaaa-aaaaa-qaaaq-cai
+Building canisters...
+Installing canisters...
+Creating UI canister on the local network.
+The UI canister on the "local" network is "bd3sg-teaaa-aaaaa-qaaba-cai"
+Installing code for canister cycles_Hello_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
+Deployed canisters.
+URLs:
+Backend canister via Candid interface:
+cycles_hello_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
 
 ## Test the dapp
 
 After you have deployed the dapp on your local canister execution environment, you can experiment with the wallet functions and test your program by using `dfx canister call` commands.
 
-To test the dapp:
+Check the principal for the `default` user identity by running the following command:
 
-- #### Step 1:  Check the principal for the `default` user identity by running the following command:
+```
+dfx canister call cycles_hello_backend owner
+```
 
-        dfx canister call cycles_hello owner
+The command displays output similar to the following for the current identity:
 
-    The command displays output similar to the following for the current identity:
+```
+(principal "g3jww-sbmtm-gxsag-4mecu-72yc4-kef5v-euixq-og2kd-sav2v-p2sb3-pae")
+```
 
-        (principal "g3jww-sbmtm-gxsag-4mecu-72yc4-kef5v-euixq-og2kd-sav2v-p2sb3-pae")
+If you haven’t made changes to the identity you were using to run the `dfx deploy` command, you should get the same principal by running the `dfx identity get-principal` command. This is important because you must be the owner of the wallet canister to perform certain tasks such as sending cycles or granting other **custodian** identities permission to send cycles.
 
-    If you haven’t made changes to the identity you were using to run the `dfx deploy` command, you should get the same principal by running the `dfx identity get-principal` command. This is important because you must be the owner of the wallet canister to perform certain tasks such as sending cycles or granting other **custodian** identities permission to send cycles.
+Check the initial wallet cycle balance by running the following command:
 
-- #### Step 2:  Check the initial wallet cycle balance by running the following command:
+```
+dfx canister call cycles_hello_backend wallet_balance
+```
 
-        dfx canister call cycles_hello wallet_balance
+You haven’t sent any cycles to the canister, so the command displays the following balance:
 
-    You haven’t sent any cycles to the canister, so the command displays the following balance:
+```
+(0 : nat)
+```
 
-        (0)
+Send some cycles from your default wallet canister to the `cycles_hello_backend` canister using the canister principal by running a command similar to the following:
 
-- #### Step 3:  Send some cycles from your default wallet canister to the `cycles_hello` canister using the canister principal by running a command similar to the following:
+```
+dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_send '(record { canister = principal "rrkah-fqaaa-aaaaa-aaaaq-cai"; amount = (256000000000:nat64); } )'
+```
 
-        dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_send '(record { canister = principal "rrkah-fqaaa-aaaaa-aaaaq-cai"; amount = (256000000000:nat64); } )'
+Call the `wallet_balance` function to see that the `cycles_hello_backend` canister has the number of cycles you transferred, if you specified an amount under the allowed capacity, or the `capacity` you specified when you ran the `dfx deploy` command.
 
-- #### Step 4:  Call the `wallet_balance` function to see that the `cycles_hello` canister has the number of cycles you transferred, if you specified an amount under the allowed capacity, or the `capacity` you specified when you ran the `dfx deploy` command.
+```
+dfx canister call cycles_hello_backend wallet_balance
+```
 
-        dfx canister call cycles_hello wallet_balance
+The command displays output similar to the following:
 
-    The command displays output similar to the following:
+```
+(256_000_000_000)
+```
 
-        (256_000_000_000)
+Call the `wallet_balance` function to see the number of cycles in your default wallet by running a command similar to the following:
 
-- #### Step 5:  Call the `wallet_balance` function to see the number of cycles in your default wallet by running a command similar to the following:
+```
+dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_balance
+```
 
-        dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_balance
+The command returns the balance for the wallet canister identifier you specified as a record using Candid format. For example, the command might display a record with an `amount` field (represented by the hash `3_573_748_184`) and a balance of 97,738,624,621,042 cycles like this:
 
-    The command returns the balance for the wallet canister identifier you specified as a record using Candid format. For example, the command might display a record with an `amount` field (represented by the hash `3_573_748_184`) and a balance of 97,738,624,621,042 cycles like this:
+```
+(record { 3_573_748_184 = 97_738_624_621_042 })
+```
 
-        (record { 3_573_748_184 = 97_738_624_621_042 })
+For this simple guide, cycles are only consumed from the balance in the default wallet canister, not from the `cycles_hello` canister.
 
-    For this simple guide, cycles are only consumed from the balance in the default wallet canister, not from the `cycles_hello` canister.
+Call the `greet` function by running a command similar to the following:
 
-- #### Step 6:  Call the `greet` function by running a command similar to the following:
+```
+dfx canister call cycles_hello_backend greet '("from DFINITY")'
+```
 
-        dfx canister call cycles_hello greet '("from DFINITY")'
+Rerun the call to the `wallet_balance` function to see the number of cycles deducted from your default wallet:
 
-- #### Step 7:  Rerun the call to the `wallet_balance` function to see the number of cycles deducted from your default wallet:
+```
+dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_balance
+```
 
-        dfx canister call rwlgt-iiaaa-aaaaa-aaaaa-cai wallet_balance
+For example, you might a result similar to this:
 
-    For example, you might a result similar to this:
-
-        (record { 3_573_748_184 = 97_638_622_179_500 })
-
-## Stop the local canister execution environment
-
-After you finish experimenting with the program, you can stop the local canister execution environment so that it doesn’t continue running in the background.
-
-To stop the local canister execution environment:
-
-- #### Step 1:  In the terminal that displays the operations, press Control-C to interrupt the process.
-
-- #### Step 2:  Stop the local canister execution environment by running the following command:
-
-        dfx stop
+```
+(record { 3_573_748_184 = 97_638_622_179_500 })
+```
 
 ## Resources
 
 If you are looking for more information about working with cycles, check out the following related resources:
 
--   [dfx identity (Command reference)](/references/cli-reference/dfx-identity.md).
--   [ExperimentalCycles (Base module)](/motoko/main/base/ExperimentalCycles.md).
+-   [dfx identity (command reference)](/references/cli-reference/dfx-identity.md).
+-   [ExperimentalCycles (base module)](/motoko/main/base/ExperimentalCycles.md).
 -   [Managing cycles (Motoko language reference)](/motoko/main/cycles.md).
--   [Tokens and cycles (Overview)](/concepts/tokens-cycles.md).
+-   [Tokens and cycles (overview)](/concepts/tokens-cycles.md).
+
+## Next steps
+
+In the next step, we'll cover [querying using an actor](define-an-actor.md).

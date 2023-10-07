@@ -9,34 +9,34 @@ import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 
 const cards = [
   {
-    logo: require("../../../../static/img/basics/ii-logo.png").default,
+    logo: require("../../../../static/img/basics/ii-logo.webp").default,
     title: "Internet Identity",
     oneLiner: "Blockchain authentication system",
     stats: "1,000,000+ users",
   },
 
   {
-    logo: require("../../../../static/img/basics/sonic-logo.png").default,
+    logo: require("../../../../static/img/basics/sonic-logo.webp").default,
     title: "Sonic",
     oneLiner: "Swap built end-to-end DeFi platform",
     stats: "30,000+ users",
   },
 
   {
-    logo: require("../../../../static/img/basics/openchat-logo.png").default,
+    logo: require("../../../../static/img/basics/openchat-logo.webp").default,
     title: "OpenChat",
     oneLiner: "Decentralized alternative to WhatsApp",
     stats: "50,000+ users",
   },
   {
-    logo: require("../../../../static/img/basics/distrikt-logo.png").default,
+    logo: require("../../../../static/img/basics/distrikt-logo.webp").default,
     title: "Distrikt",
     oneLiner: "Professional social media platform",
     stats: "70,000+ users",
   },
 
   {
-    logo: require("../../../../static/img/basics/dscvr-logo.png").default,
+    logo: require("../../../../static/img/basics/dscvr-logo.webp").default,
     title: "DSCVR",
     oneLiner: "Decentralized social news aggregator",
     stats: "40,000+ users",
@@ -78,7 +78,7 @@ const Ecosystem = () => {
         <div className={clsx(styles.cards, styles.cardsDesktop)}>
           {cards.map((card) => (
             <div className={styles.card} key={card.title}>
-              <img src={card.logo} alt="" />
+              <img src={card.logo} alt={`${card.title} logo`} loading="lazy" />
               <h3 className="">{card.title}</h3>
               <p className="">{card.oneLiner}</p>
               <span className={styles.stats}>{card.stats}</span>
@@ -88,7 +88,7 @@ const Ecosystem = () => {
         <div className={clsx(styles.cards, styles.cardsMobile)}>
           {mobileProjects.map((card) => (
             <div className={styles.card} key={card.title}>
-              <img src={card.logo} alt="" />
+              <img src={card.logo} alt={`${card.title} logo`} loading="lazy" />
               <h3 className="">{card.title}</h3>
               <p className="">{card.oneLiner}</p>
               <span className={styles.stats}>{card.stats}</span>

@@ -88,7 +88,7 @@ ICP](#icp), whereby a certain amount of ICP are destroyed.
 The main use case is that of purchasing [cycles](#cycles),
 through which ICP are destroyed while at the same time a corresponding
 amount of cycles is created, using the current exchange rate between ICP
-and ([XDR](#SDR)), in such a way that one XDR corresponds to
+and ([XDR](#XDR)), in such a way that one XDR corresponds to
 one trillion (10E12) cycles. It is represented as a [
 transaction](#transaction) from the source [
 account](#account) to the [ ICP supply
@@ -345,7 +345,7 @@ secret key corresponding to the end-user’s
 #### ingress message history
 
 The **ingress message history** records the current status of every
-[Ingress message](#ingress-message) processed by a
+[ingress message](#ingress-message) processed by a
 [replica](#replica) and keeps track of whether messages were
 successfully included in the [induction
 pool](#induction-pool) and the responses of executed
@@ -437,9 +437,9 @@ reduces this age back to zero. The dissolve delay parameter of a
 non-dissolving (aka "aging") neuron cannot be zero, because such a
 neuron would have to already be dissolved.
 
-#### network nervous system (NNS)
+#### Network Nervous System (NNS)
 
-The **network nervous system** (NNS) is a collection of [system
+The **Network Nervous System** (NNS) is a collection of [system
 canisters](#system-canister) (aka "NNS canisters") assembled
 into a system that governs all aspects of the [Internet
 Computer](#internet-computer-ic).
@@ -496,7 +496,7 @@ A **node operator** (NO) is a non-canister
 [nodes](#node) to/from the
 [IC](#internet-computer-ic-ic).
 
-[node providers](#node-provider) come in possession of
+[Node providers](#node-provider) come in possession of
 Hardware Security Modules (HSM), and register the HSMs with the
 [NNS](#network-nervous-system-(NNS)). (The HSM registration
 process consists essentially in deriving an IC principal ID from the key
@@ -724,3 +724,9 @@ neuron owners.
 
 **WebAssembly** (abbreviated Wasm) is a binary instruction format for a
 stack-based virtual machine.
+
+## X
+
+#### XDR
+
+**XDR** is the currency code for *special drawing rights (SDR)*. SDRs are supplementary foreign exchange assets that are defined and maintained by the International Monetary Fund (IMF). SDRs are not a currency themselves, but represent a claim to a currenty that is held by IMF member countries in which they may be exchanged. The IC developer docs refer to currencies based on their currency codes, therefore SDRs are referenced as its currency code **XDR** in this documentation. 

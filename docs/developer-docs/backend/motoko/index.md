@@ -8,7 +8,7 @@ To get started, one should [install the IC SDK](../../setup/install/index.mdx) w
 
 ## Tutorials and guides
 
-The [deploy your first dapp in 5 minutes](/tutorials/deploy_sample_app.md) quick start provides a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
+The [1.1: Exploring a live demo](/docs/tutorials/developer-journey/level-1/1.1-live-demo.md) developer journey tutorial provides a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
 Next, we’ll explore writing a few simple Motoko programs to give you hands-on experience creating programs that run on the IC.
 
@@ -50,4 +50,4 @@ The following guides introduce the basics for writing dapps that run on the IC:
 
 -   [Add a stylesheet](../../frontend/add-stylesheet.md) illustrates how to add a stylesheet when you use React to create a new frontend for your project. If you already know how to add stylesheets to React, you can skip this tutorial.
 
-Additional guides covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [**Motoko Programming Language Guide**](/motoko/main/about-this-guide.md).
+Additional guides covering more advanced dapps and more detailed examples of how to use the basic building blocks are available in the [examples](https://github.com/dfinity/examples) repository and [**Motoko programming language guide**](/motoko/main/about-this-guide.md).
