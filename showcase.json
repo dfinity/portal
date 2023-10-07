@@ -2746,5 +2746,27 @@
     "twitter": "",
     "youtube": "",
     "submittableId": ""
+  },
+  {
+    "name": "Open Internet Metaverse",
+    "description": "OIM allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
+    "website": "https://vdfyi-uaaaa-aaaai-acptq-cai.ic0.app",
+    "logo": "/img/showcase/open-internet-metaverse_logo.webp",
+    "screenshots": [],
+    "video": "/img/showcase/open-internet-metaverse_video.mp4",
+    "display": "Normal",
+    "id": "open-internet-metaverse",
+    "oneLiner": "Create Your Virtual Space as a 3D-Website on the Internet Computer",
+    "stats": "1st On-Chain 3D-Web",
+    "tags": [
+      "Tools / Infrastructure",
+      "Metaverse"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Bebb-Protocol-and-Apps/PWS",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "35648608",
+    "videoContentType": "video/mp4"
   }
 ]
