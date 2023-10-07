@@ -2788,5 +2788,25 @@
     "twitter": "https://twitter.com/TheFishverse",
     "youtube": "https://www.youtube.com/channel/UCdMLfGmuLAsQlVPg9QROfcQ",
     "submittableId": "32119235"
+  },
+  {
+    "name": "Sama Network",
+    "description": "All data incurred from our daily internet usage are being hijacked, monitored and analyzed by centralized companies.Traditional blockchain systems often construct on-chain assets and contract data for privacy, yet lack of effective privacy and security protection for specific business data. Meanwhile, the emergence of AI and the explosive growth of computation power demand by small and medium AI models in research and commercialization, the trend of anti-globalization has also brought about the division of computational power. That’s when  platforms like BOINC shines as it shares the dividends brought about by the development of the rising distributed computing market. SAMA network, with its original designed consensus and business sharding separation, builds a highly secure and private distributed computational system. It provides data security and computational power for the World Wide Web without altering users’ habits.",
+    "website": "https://sama.network/",
+    "logo": "/img/showcase/sama_network_logo.png",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "sama_network",
+    "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
+    "stats": "Private alpha testnet has been launched; the network and user interface are ready for operation.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/SamaNetwork",
+    "twitter": "https://twitter.com/sama_network",
+    "youtube": "https://www.youtube.com/@sama_network",
+    "submittableId": "40741075"
   }
 ]
