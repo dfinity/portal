@@ -2677,8 +2677,8 @@
     "twitter": "https://twitter.com/nobleblocks",
     "youtube": "",
     "submittableId": "36650737"
-  },
-  {
+},
+{
     "name": "Safenote",
     "description": "Safenote is an open-source service that enables secure exchange of the most sensitive communication and leaves no trace. It enables any user to encrypt their message and forward it to another, potentially unsecure, platform. Safenote can be thought of as a self-destructible sticky notes system.",
     "website": "https://safenote.store",
@@ -2810,5 +2810,29 @@
     "twitter": "https://twitter.com/TheFishverse",
     "youtube": "https://www.youtube.com/channel/UCdMLfGmuLAsQlVPg9QROfcQ",
     "submittableId": "32119235"
-  }
+  },
+ {
+  "name": "221Bravo App",
+  "description": "Home for ICP Data-Detectives. Token Stats, Visual Explorer, Account Searching and more.",
+  "website": "https://221Bravo.app",
+  "logo": "/img/showcase/bravo-app_logo.webp",
+  "screenshots": [
+    "/img/showcase/bravo-app_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "bravo-app",
+  "oneLiner": "Token Stats, Blockchain Visual Explorer, Account Searching and more..",
+  "stats": "1024 Members",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/SaorsaLabs/221BravoApp",
+  "twitter": "https://twitter.com/221BravoApp",
+  "youtube": "",
+  "submittableId": "36556639"
+}
 ]
