@@ -2184,17 +2184,14 @@
     "logo": "/img/showcase/blocklist.png",
     "github": "https://github.com/ICEvent/Escrow"
   },
- 
-
-
   {
     "id": "34886232",
     "name": "Vibeverse",
-    "oneLiner": "A vibrant ecosystem where users can learn about new AI tools, AI content, AI Movies, and more",
-    "website": "https://h5fnl-4iaaa-aaaap-abddq-cai.icp0.io/",
-    "tags": [ "NFT" ],
-    "description": "Our platform is a vibrant ecosystem where users can seamlessly share, discover, and collaborate on AI-generated content in the Film industry and beyond. Users can also discover AI tools to create new content and join new communities like White Mirror",
-    "stats": "Top 100 projects on Buildspace S3 Dubai + San Francisco | 700 filmmakers and content creators enlisted for final demo day on 21th June 2023",
+    "oneLiner": "Where AI magic meets creative play in a universe of endless possibilities",
+    "website": "https://vibeverse.xyz/",
+    "tags": [ "AI" ],
+    "description": "Vibeverse is a vibrant digital playground where creators, filmmakers, and artists harness AI tools to craft, share, and celebrate unique content in a decentralized community.",
+    "stats": "",
     "logo": "/img/showcase/vibeverse_logo.png",
     "usesInternetIdentity": true,
     "github?": "https://github.com/roger-rangel/vibeverse",
@@ -2681,7 +2678,140 @@
   "youtube": "",
   "submittableId": "36650737"
 },
+{
+    "name": "Safenote",
+    "description": "Safenote is an open-source service that enables secure exchange of the most sensitive communication and leaves no trace. It enables any user to encrypt their message and forward it to another, potentially unsecure, platform. Safenote can be thought of as a self-destructible sticky notes system.",
+    "website": "https://safenote.store",
+    "logo": "/img/showcase/safenote_logo.webp",
+    "screenshots": [
+      "/img/showcase/safenote_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "safenote",
+    "oneLiner": "A tool for secure notes exchanging. Built with privacy in mind.",
+    "stats": "1+ user",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/khejit/Safenote",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "35796344"
+  },
   {
+    "name": "John Dao",
+    "description": "John Dao is community controlled twitter/X account. You can post tweet proposals and vote on what the next tweet should be. If your tweet wins you get paid with ICP!",
+    "website": "https://johndao.gg",
+    "logo": "/img/showcase/john-dao_logo.webp",
+    "screenshots": [
+      "/img/showcase/john-dao_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "john-dao",
+    "oneLiner": "A Twitter/X account controlled by a DAO on the Internet Computer",
+    "stats": "25.000+ views",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "github": "",
+    "twitter": "https://twitter.com/JohnDao_gg",
+    "youtube": "",
+    "submittableId": "35119262"
+  },
+  {
+    "name": "Taurus",
+    "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
+    "website": "https://www.taurushq.com/",
+    "logo": "/img/showcase/taurus_logo.png",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "taurus",
+    "oneLiner": "Banking-grade custody for digital asset management.",
+    "stats": "Powering 15+ banks",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": ""
+  },
+  {
+    "name": "aVa",
+    "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
+    "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
+    "logo": "/img/showcase/ava_logo.webp",
+    "screenshots": [
+      "/img/showcase/ava_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "ava",
+    "oneLiner": "aVa: Action-Based Decentralized Reputation Landscape.",
+    "stats": "All II users",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ava-vs",
+    "twitter": "https://twitter.com/ava_projects?t=-ZSMuS6rJLoUucHWynaLeg&s=09",
+    "youtube": "https://www.youtube.com/@aVa_Verification",
+    "submittableId": "41404317"
+  },
+  {
+    "name": "Open Internet Metaverse",
+    "description": "OIM allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
+    "website": "https://vdfyi-uaaaa-aaaai-acptq-cai.ic0.app",
+    "logo": "/img/showcase/open-internet-metaverse_logo.webp",
+    "screenshots": [],
+    "video": "/img/showcase/open-internet-metaverse_video.mp4",
+    "display": "Normal",
+    "id": "open-internet-metaverse",
+    "oneLiner": "Create Your Virtual Space as a 3D-Website on the Internet Computer",
+    "stats": "1st On-Chain 3D-Web",
+    "tags": [
+      "Tools / Infrastructure",
+      "Metaverse"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Bebb-Protocol-and-Apps/PWS",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "35648608",
+    "videoContentType": "video/mp4"
+  },
+  {
+    "id": "fishverse",
+    "name": "FishVerse",
+    "description": "FishVerse is a revolutionary W2E fishing game that is open world, decentralized and built on ICP technology. It brings together fishing and GameFi enthusiasts inside of a vibrant community where people can monetize by catching and utilizing NFT fishes, competing in tournaments, missions, providing services and more...",
+    "website": "https://thefishverse.com/",
+    "logo": "/img/showcase/fishverse_logo.webp",
+    "screenshots": [
+      "/img/showcase/fishverse_screenshot.webp"
+    ],
+    "display": "Normal",
+    "oneLiner": "FishVerse is a W2E fishing game that is built on ICP technology",
+    "stats": "5000",
+    "tags": [
+      "NFT",
+      "Metaverse",
+      "Games"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/mgmetastudio/fishverse_dashboard",
+    "twitter": "https://twitter.com/TheFishverse",
+    "youtube": "https://www.youtube.com/channel/UCdMLfGmuLAsQlVPg9QROfcQ",
+    "submittableId": "32119235"
+  },
+ {
   "name": "221Bravo App",
   "description": "Home for ICP Data-Detectives. Token Stats, Visual Explorer, Account Searching and more.",
   "website": "https://221Bravo.app",
@@ -2704,5 +2834,5 @@
   "twitter": "https://twitter.com/221BravoApp",
   "youtube": "",
   "submittableId": "36556639"
-}
+},
 ]

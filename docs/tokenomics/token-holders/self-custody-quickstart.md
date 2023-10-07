@@ -1,9 +1,9 @@
-# Self-custody quick start
+# Self-custody guide
 
 ## Overview
 Within the Internet Computer ecosystem, Internet Computer Protocol tokens (ICP tokens) are a native utility token. ICP tokens play a key role in both the governance and economics of the Internet Computer.
 
-This self-custody quick start scenario assumes:
+This self-custody guide scenario assumes:
 
 -   You are a new ICP token holder.
 
@@ -15,7 +15,7 @@ If you aren’t yet a token holder, you’ll need to purchase ICP tokens from an
 
 If you are using another application—such as the [Network Nervous System (NNS) application](https://nns.ic0.app) or the user interface provided by a hardware wallet—to interact with your ICP tokens, you should refer to the documentation for that application.
 
-This self-custody quick start focuses solely on interacting with ICP tokens using the SDK command-line interface `dfx`.
+This self-custody guide focuses solely on interacting with ICP tokens using the SDK command-line interface `dfx`.
 
 ## How you can use ICP tokens
 

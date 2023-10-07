@@ -392,7 +392,7 @@ const config = {
   tagline:
     "World Computer blockchain that reimagines the internet as an infinite smart contract platform",
   url: isDeployPreview
-    ? `https://${process.env.PREVIEW_CANISTER_ID}.ic0.app`
+    ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
   baseUrl: "/",
   onBrokenLinks: "throw",

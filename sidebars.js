@@ -102,6 +102,7 @@ const sidebars = {
         "samples/periodic-tasks",
         "samples/persistent-storage",
         "samples/phonebook",
+        "samples/pos",
         "samples/pub-sub",
         "samples/qr-code",
         "samples/quicksort",
@@ -156,6 +157,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          label: "Developer quick start",
+          id: "developer-docs/setup/quickstart",
+        },
+        {
+          type: "doc",
           label: "Installing the IC SDK",
           id: "developer-docs/setup/install/index",
         },
@@ -192,6 +198,11 @@ const sidebars = {
           type: "doc",
           label: "Managing projects",
           id: "developer-docs/setup/manage-projects",
+        },
+        {
+          type: "doc",
+          label: "Motoko playground",
+          id: "developer-docs/setup/playground",
         },
         {
           type: "doc",
