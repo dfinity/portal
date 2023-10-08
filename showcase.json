@@ -534,7 +534,7 @@
       "Tools / Infrastructure"
     ],
     "twitter": "https://twitter.com/junobuild",
-    "github": "https://github.com/buildwithjuno/juno",
+    "github": "https://github.com/junobuild/juno",
     "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
     "display": "Large",
     "usesInternetIdentity": true,
