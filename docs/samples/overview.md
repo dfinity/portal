@@ -113,6 +113,7 @@ This sample code demonstrates how a dapp can transfer ICP to its most active use
 
 - [Documentation](./internet-identity-sample).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/internet_identity_integration).
+- [Unity mobile integration](./native-app-integration).
 
 ## Invoice canister
 
@@ -157,6 +158,14 @@ The example dapp shows how to build a simple dapp in Motoko, which will have per
 This simple dapp is a CRUD-like demo service for storing pieces of related information, such as names and phone numbers.
 - [Documentation](./phonebook).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/phone-book).
+
+## Point of sale (POS)
+
+This app demonstrates a real world use case for [ckBTC](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc/) on the Internet Computer. It is a simple point of sale app that allows users to charge customers using ckBTC. It also demonstrates the [HTTPS outcall](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/) functionality by sending notifications to users when a payment is received.
+
+- [Documentation](./pos).
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+- [See a running example](https://hngac-6aaaa-aaaal-qb6tq-cai.icp0.io/).
 
 ## PubSub
 

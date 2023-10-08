@@ -180,6 +180,8 @@ In addition to the Candid implementations for Motoko, Rust, and JavaScript, ther
 
 -   [AssemblyScript](https://github.com/rckprtr/cdk-as/tree/master/packages/cdk/assembly/candid)
 
+-   [C#/.NET](https://github.com/BoomDAO/ICP.NET/tree/main/src/Candid)
+
 -   [Elm](https://github.com/chenyan2002/ic-elm/)
 
 -   [Haskell](https://hackage.haskell.org/package/candid)

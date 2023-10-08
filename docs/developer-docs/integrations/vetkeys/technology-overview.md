@@ -53,9 +53,26 @@ Another cryptographic primitive with few instantiations is one-time programs tha
 
 ## Proposed system API
 In ongoing development of the vetKeys feature, there is an API descriptions in this [draft MR to extend the Interface Spec](https://github.com/dfinity/interface-spec/pull/158), which contains API descriptions for the two new methods:
-* `vetkd_public_key' ([preview](https://deploy-preview-158--ic-interface-spec.netlify.app/docs/#ic-vetkd_public_key))
-* `vetkd_encrypted_key' ([preview](https://deploy-preview-158--ic-interface-spec.netlify.app/docs/#ic-vetkd_encrypted_key))
-The exact API is then in the [Interface Overview](https://deploy-preview-158--ic-interface-spec.netlify.app/docs/#ic-candid) (in the section “Threshold key derivation”)
+* `vetkd_public_key`.
+* `vetkd_encrypted_key`.
+
+
+Below is an example of the proposed API methods:
+
+```
+  // Threshold key derivation
+  vetkd_public_key : (record {
+    canister_id : opt canister_id;
+    derivation_path : vec blob;
+    key_id : record { curve : vetkd_curve; name : text };
+  }) -> (record { public_key : blob; });
+  vetkd_encrypted_key : (record {
+    public_key_derivation_path : vec blob;
+    derivation_id : blob;
+    key_id : record { curve : vetkd_curve; name : text };
+    encryption_public_key : blob;
+  }) -> (record { encrypted_key : blob; });
+```
 
 ## References
 - [Forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).

@@ -5,6 +5,8 @@ Upgrading a canister allows you to preserve the existing state of a deployed can
 
 Motoko provides high-level support for preserving a canister's state using the Internet Computer's stable memory through a feature known as stable storage. This feature is designed to accommodate changes to both the Motoko compiler and the application data. 
 
+Stable storage is a Motoko-specific feature that uses the IC's stable memory data persistence feature. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 96GiB if the subnet can accomodate it. In comparison, heap storage refers to the regular Wasm data storage for a canister. Heap storage is not persisted across canister upgrades and is limited to 4GiB. 
+
 Consider the following example: you have a dapp that manages professional profiles and social connections. To add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
 
 To preserve state when you are upgrading a canister written in Motoko, be sure to use the stable keyword to identify the variables you want to preserve. For more information about preserving variable state in Motoko, see [stable variables and upgrade methods](https://internetcomputer.org/docs/current/motoko/main/upgrades). 
