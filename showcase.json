@@ -2677,8 +2677,8 @@
     "twitter": "https://twitter.com/nobleblocks",
     "youtube": "",
     "submittableId": "36650737"
-  },
-  {
+},
+{
     "name": "Safenote",
     "description": "Safenote is an open-source service that enables secure exchange of the most sensitive communication and leaves no trace. It enables any user to encrypt their message and forward it to another, potentially unsecure, platform. Safenote can be thought of as a self-destructible sticky notes system.",
     "website": "https://safenote.store",
@@ -2745,6 +2745,28 @@
     "submittableId": ""
   },
   {
+    "name": "aVa",
+    "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
+    "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
+    "logo": "/img/showcase/ava_logo.webp",
+    "screenshots": [
+      "/img/showcase/ava_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "ava",
+    "oneLiner": "aVa: Action-Based Decentralized Reputation Landscape.",
+    "stats": "All II users",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ava-vs",
+    "twitter": "https://twitter.com/ava_projects?t=-ZSMuS6rJLoUucHWynaLeg&s=09",
+    "youtube": "https://www.youtube.com/@aVa_Verification",
+    "submittableId": "41404317"
+  },
+  {
     "name": "Open Internet Metaverse",
     "description": "OIM allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
     "website": "https://vdfyi-uaaaa-aaaai-acptq-cai.ic0.app",
@@ -2808,5 +2830,29 @@
     "twitter": "https://twitter.com/sama_network",
     "youtube": "https://www.youtube.com/@sama_network",
     "submittableId": "40741075"
-  }
+  },
+ {
+  "name": "221Bravo App",
+  "description": "Home for ICP Data-Detectives. Token Stats, Visual Explorer, Account Searching and more.",
+  "website": "https://221Bravo.app",
+  "logo": "/img/showcase/bravo-app_logo.webp",
+  "screenshots": [
+    "/img/showcase/bravo-app_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "bravo-app",
+  "oneLiner": "Token Stats, Blockchain Visual Explorer, Account Searching and more..",
+  "stats": "1024 Members",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/SaorsaLabs/221BravoApp",
+  "twitter": "https://twitter.com/221BravoApp",
+  "youtube": "",
+  "submittableId": "36556639"
+}
 ]
