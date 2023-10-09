@@ -97,8 +97,8 @@ npm install @dfinity/auth-client
 ```
 import {
     createActor,
-    ii_integrationn_backend as ii_integration_backend,
-} from "../../declarations/ii_integrationn_backend";
+    ii_integration_backend,
+} from "../../declarations/ii_integration_backend";
 import { AuthClient } from "@dfinity/auth-client";
 import { HttpAgent } from "@dfinity/agent";
 let actor = ii_integration_backend;
