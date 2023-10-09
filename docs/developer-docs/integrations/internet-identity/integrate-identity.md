@@ -83,7 +83,7 @@ dfx deps pull
 We can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
 
 ```
-dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument '(null)'
+dfx deps init internet_identity --argument '(null)'
 ```
 
 ### Step 6: Install the @dfinity/auth-client package:
