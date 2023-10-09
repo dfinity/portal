@@ -15,7 +15,7 @@ In the future, the `dfx new` command will include the ability to select between 
 
 Before you start your project, verify the following:
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/setup/install/index.md) page.
+- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/setup/install) page.
 
 - [x] Download and install [git](https://git-scm.com/downloads).
 
