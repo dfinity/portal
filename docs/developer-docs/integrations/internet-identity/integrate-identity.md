@@ -231,7 +231,7 @@ Once you save it, select the 'I saved it, continue' button.
 
 ### Local Frontend Development
 
-When modifying this examples frontend try to develop against a deployment on a local development server instead of using the canister deployed frontend. This will enable Hot Module Reloading, allowing you to see any modifications made to your frontend instantaneously.
+When modifying this example's frontend, it is recommended to develop using a local development server instead of using the deployed frontend canister. This is because using a local develop server will enable Hot Module Reloading, allowing you to see any modifications made to your frontend instantaneously, rather than having to redeploy the frontend canister to see the changes. 
 
 To start a local development server run `npm run start`. The output will contain the address the project is running at.
 
