@@ -157,6 +157,11 @@ const sidebars = {
       items: [
         {
           type: "doc",
+          label: "Developer quick start",
+          id: "developer-docs/setup/quickstart",
+        },
+        {
+          type: "doc",
           label: "Installing the IC SDK",
           id: "developer-docs/setup/install/index",
         },
