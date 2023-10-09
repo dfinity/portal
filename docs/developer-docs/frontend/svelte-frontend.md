@@ -19,7 +19,7 @@ Before you start your project, verify the following:
 
 - [x] Download and install [git](https://git-scm.com/downloads).
 
-- [x] Download and install [node.js](https://nodejs.org/en).
+- [x] Download and install [Node.js](https://nodejs.org/en) <v0.12.0.
 
 ### Step 1: Clone the project repository.
 
