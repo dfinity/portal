@@ -460,6 +460,11 @@ const sidebars = {
       label: "Ledgers and tokens",
       items: [
         {
+          type: "doc",
+            label: "Introduction and overview",
+            id: "developer-docs/integrations/ledger/introduction_and_overview",
+          },
+        {
           type: "category",
           label: "ICP ledger",
           link: {
@@ -468,8 +473,8 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
+            "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/icp-index-local-setup",
           ],
         },
@@ -480,7 +485,9 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/icrc-1/index",
           },
-          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+          items: [
+            "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+            "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
           "developer-docs/integrations/icrc-1/icrc1-index-setup"
         ],
         },
