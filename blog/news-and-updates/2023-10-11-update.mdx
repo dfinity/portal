@@ -18,7 +18,7 @@ The ledger, index, and archive canisters for ckBTC have been upgraded to now sup
 You can read the full details on the DFINITY [forum](https://forum.dfinity.org/t/ckbtc-a-canister-issued-bitcoin-twin-token-on-the-ic-1-1-backed-by-btc/17606/166).
 
 
-## Ledger ICP/ICRC breaking changes 
+## ICP/ICRC ledger breaking changes 
 
 Recently, the `ic-js` library has undergone breaking changes. Part of these changes include relocating ICP ledger features previously included in the package `@dfinity/nns` to `@dfinity/ledger-icp` and moving the ICRC ledger features to `@dfinity/ledger-icrc`. The `@dfinity-ledger` package will be deprecated and retired in the future.
 
@@ -31,7 +31,7 @@ The full details can be found on the forum [here](https://forum.dfinity.org/t/br
 
 The subnet storage capacity has been increased from 450GiB to 700GiB as of replica version `76fd768b`. This increase is the first significant milestone in the movement to push the subnet storage capacity toward terabytes rather than gigabytes. 
 
-In addition to this storage increase, a new resource reservation mechanism is designed to enable consistent, long-term use of storage for nodes running on application subnets by making it more expensive for inconsistent, high spikes of usage, and keeping costs the same for consistent, long-term users. This is because system subnets and verified application subnets do not need protection from sudden, unexpected, large spikes in storage usage.
+In addition to this storage increase, a new resource reservation mechanism is designed to enable consistent, long-term use of storage for nodes running on application subnets by making it more expensive for inconsistent, high spikes of usage, and keeping costs the same for consistent, long-term users. This for application subnets only because system subnets and verified application subnets do not need protection from sudden, unexpected, large spikes in storage usage.
 
 This new mechanism has been added to `dfx` through the new fields `reserved_cycles` and `reserved_cycles_limits`. Check out this [forum post](https://forum.dfinity.org/t/increasing-subnet-storage-capacity-and-introducing-resource-reservation-mechanism/23447) for the full information and how these changes work. 
 
