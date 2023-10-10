@@ -42,9 +42,10 @@ dfx new hello_world
 
 This project is a simple 'Hello, world!' project that includes a simple frontend UI. You can see a more detailed look into this project in the guide [here](/docs/current/developer-docs/setup/deploy-locally#test-the-dapp-frontend).
 
-Then, to create, build, and deploy the project, use the command:
+Then, to create, build, and deploy the project, use the `dfx deploy` command in the new project directory:
 
 ```
+cd hello_world
 dfx deploy
 ```
 
