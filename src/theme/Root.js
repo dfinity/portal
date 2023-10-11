@@ -8,7 +8,7 @@ export default function Root({ children }) {
   return (
     <>
       {isDocsPage && (
-        // AI Chatbot Integration via Kapa
+        // AI chatbot integration via Kapa
         <Head>
           <script
             defer
