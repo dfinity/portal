@@ -24,16 +24,28 @@ type Section = {
   featured: FeaturedItem;
 };
 
-export type NavItem = {
+type AuxItem = {
   name: string;
-  auxItems?: {
-    name: string;
-    href: string;
-  }[];
-  sections: Section[];
+  href: string;
 };
 
-export type MarketingNavType = NavItem[];
+type SocialIcon = {
+  label: string;
+  iconUrl: string;
+  href: string;
+};
+
+export type NavItem = {
+  name: string;
+  auxItems?: AuxItem[];
+  sections: Section[];
+  socialIcons?: SocialIcon[];
+};
+
+export type MarketingNavType = {
+  mainItems: NavItem[];
+  auxItems: AuxItem[];
+};
 
 const Arrow: React.FC<{ open: boolean }> = ({ open }) => {
   return (
@@ -149,6 +161,25 @@ const CloseButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   );
 };
 
+const AuxItems: React.FC<{ items: AuxItem[] }> = ({ items }) => {
+  return (
+    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300">
+      {items.map((item) => (
+        <li>
+          <Link
+            href={item.href}
+            className="text-infinite tw-button-sm inline-flex gap-2 items-center hover:no-underline hover:text-black"
+          >
+            {item.name}
+
+            <LinkArrowUpRight className="w-[14px]" />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const MarketingNav = () => {
   const { siteConfig } = useDocusaurusContext();
   const nav = siteConfig.customFields.marketingNav as MarketingNavType;
@@ -157,7 +188,7 @@ const MarketingNav = () => {
     false | number
   >(false);
   const [selectedSection, setSelectedSection] = React.useState<Section | null>(
-    nav[0].sections[0]
+    nav.mainItems[0].sections[0]
   );
 
   const hiddenRef = React.useRef(false);
@@ -165,6 +196,9 @@ const MarketingNav = () => {
   const navbarRef = React.useRef<HTMLElement>(null);
   const hideOnScroll = (siteConfig.themeConfig as any).navbar
     .hideOnScroll as boolean;
+  const footerIcons = (siteConfig.themeConfig as any).footer.links.find(
+    (section) => section.title == "SocialMedia"
+  )!.items;
 
   useEffect(() => {
     function onScroll() {
@@ -217,12 +251,14 @@ const MarketingNav = () => {
     setMobileNavOpen(false);
 
     document.querySelector("body")!.style.overflow = "unset";
+    document.querySelector("body")!.style.touchAction = "unset";
   }
 
   function openNav() {
     setMobileNavOpen(true);
     setSecondaryMobileNavOpen(false);
     document.querySelector("body")!.style.overflow = "hidden";
+    document.querySelector("body")!.style.touchAction = "none";
   }
 
   function toggleNav() {
@@ -250,20 +286,29 @@ const MarketingNav = () => {
         <div className="md:max-w-[1440px] md:w-full md:mx-auto flex items-center justify-between">
           {/* logo */}
           <Link href="/" className="self-center flex items-center">
-            <img src="/img/logo-notext.svg" alt="" className="h-5 md:h-7" />
+            <img
+              src="/img/IC_logo_horizontal_white.svg"
+              alt=""
+              className="h-5 md:h-7 hidden dark-hero:block"
+            />
+            <img
+              src="/img/IC_logo_horizontal.svg"
+              alt=""
+              className="h-5 md:h-7 dark-hero:hidden"
+            />
           </Link>
 
           {/* middle desktop items */}
-          <div className="hidden md:flex gap-4 items-center">
-            {nav.map((item) => (
+          <div className="hidden md:flex gap-0 items-center">
+            {nav.mainItems.map((item) => (
               <div
-                className="border-none bg-transparent px-4 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-infinite hover:text-white hover:dark-hero:bg-white/20 cursor-pointer"
+                className="border-none bg-transparent px-8 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-[#6E52AA] hover:text-white cursor-pointer"
                 key={item.name}
                 onMouseEnter={() => showFlyout(item)}
               >
                 {item.name}
 
-                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
                   <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
                     <div className="flex-1 flex">
                       {item.sections.length > 1 && (
@@ -309,26 +354,37 @@ const MarketingNav = () => {
                               className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
                               href={selectedSection.featured.href}
                             >
-                              <span className="tw-heading-5 text-white flex-1 group-hover/featured:-translate-y-2 transition-transform">
+                              <span className="tw-heading-5 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
                                 {selectedSection.featured.title}
                               </span>
-
-                              <FeaturedArrowRight />
+                              <span className="flex-1 text-right">
+                                <FeaturedArrowRight />
+                              </span>
                             </Link>
                           </div>
                         )}
                       </div>
                     </div>
-                    <div className="bg-[#FAFAFA] py-6 px-10 flex gap-8 items-center">
+                    <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center">
                       {item.auxItems.map((item) => (
                         <Link
-                          className="tw-button-xs whitespace-nowrap flex items-center gap-1"
+                          className="tw-button-xs whitespace-nowrap flex items-center gap-1 hover:no-underline hover:text-black"
                           key={item.name}
+                          href={item.href}
                         >
                           {item.name}
                           <LinkArrowUpRight className="w-[14px]" />
                         </Link>
                       ))}
+                      <div className="flex-1"></div>
+                      <div className="flex gap-7 items-center">
+                        {item.socialIcons &&
+                          item.socialIcons.map((icon) => (
+                            <Link href={icon.href} className="w-5 h-5">
+                              <img src={icon.iconUrl} alt={icon.label} />
+                            </Link>
+                          ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -353,7 +409,7 @@ const MarketingNav = () => {
 
       {/* Level 1 of mobile fly-in menu */}
       <div
-        className={`fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${mobileNavClasses}`}
+        className={`overflow-auto fixed inset-0 bg-white z-[1000] px-6 pt-4 pb-12 transition-transform ${mobileNavClasses}`}
       >
         {/* logo + close button */}
         <div className="flex items-center justify-between ">
@@ -362,8 +418,8 @@ const MarketingNav = () => {
         </div>
 
         {/* top level items */}
-        <ul className="list-none p-0 flex flex-col gap-6 mt-8 mb-0">
-          {nav.map((item, index) => (
+        <ul className="list-none p-0 flex flex-col gap-6 mt-8 mb-6">
+          {nav.mainItems.map((item, index) => (
             <li className="p-0" key={item.name}>
               <button
                 className="border-none bg-transparent p-0 text-infinite m-0 font-circular tw-heading-4"
@@ -374,80 +430,103 @@ const MarketingNav = () => {
             </li>
           ))}
         </ul>
+
+        {/* top level aux items */}
+        <AuxItems items={nav.auxItems} />
+
+        {/* social icons */}
+        <ul className="m-0 p-0 list-none flex flex-wrap gap-6 mt-10">
+          {footerIcons.map((item) => (
+            <li className="" key={item.label}>
+              <Link href={item.href} className={`block w-6 h-6`}>
+                <img src={item.iconLight} alt={item.label}></img>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Level 2 of mobile fly-in menu*/}
       <div
-        className={`overflow-auto touch-none fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${secondaryMobileNavClasses}`}
+        className={`overflow-auto fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${secondaryMobileNavClasses}`}
       >
-        {/* Back button + close button */}
-        <div className="flex items-center justify-between">
-          <button
-            className="flex items-center gap-6 tw-heading-7 font-circular bg-transparent p-0 text-left border-none"
-            onClick={() => setSecondaryMobileNavOpen(false)}
-          >
-            <LinkArrowLeft />
-            Home
-          </button>
-          <CloseButton onClick={closeNav} />
-        </div>
-
         {/* list of sections */}
         {secondaryMobileNavOpen !== false && (
           <>
-            <ul className="list-none p-0 flex flex-col gap-6 mt-8 pb-10 mb-0">
-              {nav[secondaryMobileNavOpen].sections.map((item, index) => (
-                <li className="p-0" key={item.name}>
-                  <Drawer title={item.name} startingState={index === 0}>
-                    {/* list of section items */}
-                    <ul className="list-none p-0 flex flex-col gap-3 mt-5 mb-6">
-                      {item.items.map((item) => (
-                        <li className="p-0" key={item.name}>
-                          <Link
-                            className="border-none bg-transparent p-0 text-infinite m-0 tw-heading-7 hover:no-underline hover:text-black"
-                            href={item.href}
-                          >
-                            {item.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+            {/* Back button + close button */}
+            <div className="flex items-center justify-between">
+              <button
+                className="flex items-center gap-6 tw-heading-7 font-circular bg-transparent p-0 text-left border-none text-black"
+                onClick={() => setSecondaryMobileNavOpen(false)}
+              >
+                <LinkArrowLeft />
+                {nav.mainItems[secondaryMobileNavOpen].name}
+              </button>
+              <CloseButton onClick={closeNav} />
+            </div>
 
-                    {/* featured item */}
-                    {item.featured && (
-                      <Link
-                        href={item.featured.href}
-                        className="mb-6 h-30 w-full bg-center bg-cover relative p-6 no-underline hover:no-underline rounded-xl flex"
-                        style={{
-                          backgroundImage: `url(${item.featured.image})`,
-                        }}
-                      >
-                        <span className="text-white tw-heading-5 flex-1">
-                          {item.featured.title}
-                        </span>
-                        <FeaturedArrowRight />
-                      </Link>
-                    )}
-                  </Drawer>
-                </li>
-              ))}
+            <ul className="list-none p-0 flex flex-col gap-6 mt-8 pb-10 mb-0">
+              {nav.mainItems[secondaryMobileNavOpen].sections.map(
+                (item, index) => (
+                  <li className="p-0" key={item.name}>
+                    <Drawer title={item.name} startingState={index === 0}>
+                      {/* list of section items */}
+                      <ul className="list-none p-0 flex flex-col gap-3 mt-5 mb-6">
+                        {item.items.map((item) => (
+                          <li className="p-0" key={item.name}>
+                            <Link
+                              className="border-none bg-transparent p-0 text-infinite m-0 tw-heading-7 hover:no-underline hover:text-black"
+                              href={item.href}
+                            >
+                              {item.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* featured item */}
+                      {item.featured && (
+                        <Link
+                          href={item.featured.href}
+                          className="mb-6 min-h-[120px] w-full bg-center bg-cover relative group/featured p-6 no-underline hover:no-underline rounded-xl flex"
+                          style={{
+                            backgroundImage: `url(${item.featured.image})`,
+                          }}
+                        >
+                          <span className="text-white tw-heading-5 flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                            {item.featured.title}
+                          </span>
+                          <span className="flex-1 text-right">
+                            <FeaturedArrowRight />
+                          </span>
+                        </Link>
+                      )}
+                    </Drawer>
+                  </li>
+                )
+              )}
             </ul>
 
             {/* aux items */}
-            {nav[secondaryMobileNavOpen].auxItems && (
-              <ul className="relative list-none p-0 flex flex-col gap-3 mt-4 mb-12 pt-6 border-0 border-t border-solid border-grey-300">
-                {nav[secondaryMobileNavOpen].auxItems.map((item) => (
-                  <li>
-                    <Link
-                      href={item.href}
-                      className="text-infinite tw-button-xs inline-flex gap-2 items-center hover:no-underline hover:text-black"
-                    >
-                      {item.name}
+            {nav.mainItems[secondaryMobileNavOpen].auxItems && (
+              <AuxItems
+                items={nav.mainItems[secondaryMobileNavOpen].auxItems}
+              />
+            )}
 
-                      <LinkArrowUpRight className="w-[14px]" />
-                    </Link>
-                  </li>
-                ))}
+            {/* social icons */}
+
+            {nav.mainItems[secondaryMobileNavOpen].socialIcons && (
+              <ul className="m-0 p-0 list-none flex flex-wrap gap-6 mt-10">
+                {nav.mainItems[secondaryMobileNavOpen].socialIcons!.map(
+                  (item) => (
+                    <li className="" key={item.label}>
+                      <Link href={item.href} className={`block w-6 h-6`}>
+                        <img src={item.iconUrl} alt={item.label}></img>
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             )}
           </>
