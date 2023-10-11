@@ -3,7 +3,6 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
-import BlobWhite from "@site/static/img/whiteBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
@@ -13,10 +12,9 @@ import IconCommunityOwned from "../../static/img/sns/community-owned.svg";
 import IconScalable from "../../static/img/sns/scalable.svg";
 import IconTokenized from "../../static/img/sns/tokenized.svg";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import ExternalLinkIcon from "@site/static/img/external-link.svg";
-import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
+import VideoCard from "../components/Common/VideoCard";
 
 const MotionLink = motion(Link);
 
@@ -79,7 +77,7 @@ function SnsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  A Service Nervous Systems (SNS) is an advanced form of a DAO.
+                  A Service Nervous System (SNS) is an advanced form of a DAO.
                   A digital democracy that can run any dapp such as a social
                   network in a fully decentralized way, fully on chain. No
                   corporation, no board of directors, no CEO required.
@@ -374,35 +372,13 @@ function SnsPage() {
           variants={transitions.item}
           className="container-10 mt-24 md:mt-30"
         >
-          <div className="md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden">
-            <Link
-              className="md:w-7/10 h-full flex relative group"
-              href="https://youtu.be/nZBWx6y070Y"
-            >
-              <img
-                src={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
-                alt=""
-                className="w-full h-full object-cover"
-              />
-
-              <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
-                <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
-              </div>
-            </Link>
-            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12">
-              <div className="self-end">
-                <h4 className="text-razzmatazz tw-heading-7 mb-3">
-                  Fully On-chain with DFINITY
-                </h4>
-                <p className="mb-3 tw-heading-6 md:tw-heading-5">
-                  Next Generation DAOs
-                </p>
-                <p className="text-black-60 tw-paragraph md:tw-lead-sm mb-0">
-                  Episode #2 | SNS
-                </p>
-              </div>
-            </div>
-          </div>
+          <VideoCard
+            label="Fully On-chain with DFINITY"
+            title="Next Generation DAOs"
+            description="Episode #2 | SNS"
+            image={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
+            link="https://youtu.be/nZBWx6y070Y"
+          />
         </AnimateSpawn>
         <AnimateSpawn
           el={motion.section}

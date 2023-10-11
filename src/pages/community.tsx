@@ -18,6 +18,7 @@ import Globe from "../components/Community/Globe";
 import { Hub, HubCard } from "../components/Community/Hubs";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import TelegramLogo from "@site/static/img/community/telegram.svg";
 
 const hubs: Hub[] = [
   {
@@ -730,13 +731,20 @@ function CommunityPage() {
               />
             </motion.div>
             <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-0 md:w-8/10 md:mx-auto"
+              className="tw-paragraph md:tw-lead-sm mb-4 md:mb-6 md:w-8/10 md:mx-auto"
               variants={transitions.item}
             >
               ICP communities are forming and taking shape in various regions
               around the globe, bringing entrepreneurs, developers, venture
               capitalists, educators, enthusiasts and experts under one regional
               roof.
+            </motion.p>
+
+            <motion.p className="mb-0" variants={transitions.item}>
+              <Link className="link-white" href="https://t.me/Official_ICP">
+                <TelegramLogo className="inline-block align-text-bottom mr-2" />
+                Join the official ICP Telegram Space
+              </Link>
             </motion.p>
 
             <motion.div
@@ -887,7 +895,7 @@ function CommunityPage() {
                 Join, collaborate and connect
               </motion.h2>
               <motion.p
-                className="tw-paragraph md:tw-lead mb-0"
+                className="tw-paragraph md:tw-lead mb-6 md:mb-10"
                 variants={transitions.item}
               >
                 The ICP community is currently active in around 30 countries and
@@ -895,20 +903,12 @@ function CommunityPage() {
                 32 universities. Haven't joined yet? What are you waiting for?
               </motion.p>
 
-              {/* <p className="mb-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
-                <MotionLink
-                  className="button-outline-white"
-                  variants={transitions.item}
-                >
-                  Subscribe for alerts
-                </MotionLink>
-                <MotionLink
-                  className="link-white link-with-icon"
-                  variants={transitions.item}
-                >
-                  Propose an event <LinkArrowUpRight />
-                </MotionLink>
-              </p> */}
+              <motion.p className="mb-0" variants={transitions.item}>
+                <Link className="link-white" href="https://t.me/Official_ICP">
+                  <TelegramLogo className="inline-block align-text-bottom mr-2" />
+                  Join the official ICP Telegram Space
+                </Link>
+              </motion.p>
             </div>
           </Gallery>
         </section>
