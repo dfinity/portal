@@ -2,7 +2,8 @@ import React from "react";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import { useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
 import NavbarItem from "@theme/NavbarItem";
-import { useLocation } from "@docusaurus/router";
+import { useIsDocs } from "@site/src/hooks/useIsDocs";
+
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
@@ -14,8 +15,8 @@ export default function NavbarMobilePrimaryMenu() {
   // TODO how can the order be defined for mobile?
   // Should we allow providing a different list of items?
   let items = useNavbarItems();
-  const location = useLocation();
-  const isDocsPage = location.pathname.startsWith("/docs/");
+
+  const isDocsPage = useIsDocs();
 
   if (isDocsPage) {
     items = items.filter(
