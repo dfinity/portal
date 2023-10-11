@@ -233,6 +233,7 @@ const MarketingNav = () => {
       if (hideOnScroll) {
         window.removeEventListener("scroll", onScroll);
         document.querySelector("body")!.style.overflow = "unset";
+        document.querySelector("body")!.style.touchAction = "unset";
       }
     };
   }, []);
