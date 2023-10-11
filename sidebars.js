@@ -324,6 +324,10 @@ const sidebars = {
       items: [
         "developer-docs/frontend/custom-frontend",
         "developer-docs/frontend/add-stylesheet",
+        "developer-docs/frontend/javascript-frontend",
+        "developer-docs/frontend/react-frontend",
+        "developer-docs/frontend/svelte-frontend",
+        "developer-docs/frontend/vue-frontend",
       ],
     },
     {
