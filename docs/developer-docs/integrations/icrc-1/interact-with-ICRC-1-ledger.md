@@ -195,7 +195,7 @@ You will receive the block index as a return value:
 ```
 
 ## Interacting with an ICRC-1 ledger from another canister (inter-canister calls via `ic-cdk`)
-You can look at the documentation of [inter-canister calls](/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICRC-1 ledger.
+You can look at the documentation of [inter-canister calls](/docs/current/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICRC-1 ledger.
 
 Here is an example on how fetch the name from the ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from withing a canister:
 You will need the principal of the ICRC-1 ledger. For this guide we will take the canister ID that was used in the previous guide on [deploying an ICRC-1 ledger](./icrc1-ledger-setup.md), which was `mxzaz-hqaaa-aaaar-qaada-cai`.
