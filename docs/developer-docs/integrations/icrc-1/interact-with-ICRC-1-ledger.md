@@ -34,7 +34,7 @@ The ICRC-1 ledger used in this guide also supports the extension ICRC-2:
 )
 ```
 
-The return values as well as the cansiter name `icrc1_ledger_canister` in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose during your [ICRC-1 ledger setup](./icrc1-ledger-setup.md). 
+The return values as well as the canister name `icrc1_ledger_canister` in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose during your [ICRC-1 ledger setup](./icrc1-ledger-setup.md). 
 
 ### ICRC-1 endpoints
 
@@ -147,7 +147,7 @@ This command returns:
 (10_000_000_000 : nat)
 ```
 
-Transfering of tokens (from `DEFAULT` to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
+Transferring of tokens (from `DEFAULT` to the arbitrary principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) on the ICRC-1 ledger:
 
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
@@ -195,7 +195,7 @@ You will receive the block index as a return value:
 ```
 
 ## Interacting with an ICRC-1 ledger from another canister (inter-canister calls via `ic-cdk`)
-You can look at the documentation of [inter-canister calls] (/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICRC-1 ledger.
+You can look at the documentation of [inter-canister calls](/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICRC-1 ledger.
 
 Here is an example on how fetch the name from the ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from withing a canister:
 You will need the principal of the ICRC-1 ledger. For this guide we will take the canister ID that was used in the previous guide on [deploying an ICRC-1 ledger](./icrc1-ledger-setup.md), which was `mxzaz-hqaaa-aaaar-qaada-cai`.
