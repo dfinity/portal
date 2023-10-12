@@ -10,6 +10,7 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 
 function WhatIsIcpPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -280,7 +281,7 @@ function WhatIsIcpPage() {
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Canister smart contracts
               </h2>
-              <p className="tw-lead-sm mb-0">
+              <p className="tw-lead-sm">
                 Smart contracts are a new form of software that runs on
                 blockchain networks, which is tamperproof, unstoppable,
                 optionally autonomous, can process tokens, and is easily
@@ -292,6 +293,15 @@ function WhatIsIcpPage() {
                 simplifying building, and creating a future without firewalls
                 and trust. They offer a compelling alternative to building on
                 centralized traditional IT.
+              </p>
+              <p>
+                <Link
+                  href="https://medium.com/dfinity/webassembly-on-the-internet-computer-a1d0c71c5b94"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowUpRight/>
+                  WebAssembly smart contracts
+                </Link>
               </p>
             </TranslatedLayout>
           </div>
