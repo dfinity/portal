@@ -1,4 +1,4 @@
-# 0.3: Developer environment setup
+# 0.3 Developer environment setup
 
 ## Overview
 
@@ -108,4 +108,4 @@ In future modules, we'll refer to this directory as the **working directory**. E
 We'll use this working directory to contain the projects that we build throughout our developer journey. This will help keep things organized in our local file structure. 
 ## Next steps
 
-- [0.4: Introduction to canisters](04-intro-canisters.md).
+- [0.4 Introduction to canisters](04-intro-canisters.md).
