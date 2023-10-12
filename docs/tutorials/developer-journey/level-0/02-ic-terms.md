@@ -1,4 +1,4 @@
-# 0.2: Internet Computer terminology 
+# 0.2 Internet Computer terminology 
 
 ## Overview
 
