@@ -12,7 +12,7 @@ export default function Root({ children }) {
         <Head>
           <meta
             http-equiv="Content-Security-Policy"
-            content="script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.matomo.cloud https://widget.kapa.ai https://www.google.com https://www.gstatic.com"
+            content="script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.matomo.cloud widget.kapa.ai www.google.com www.gstatic.com"
           />
           <script
             defer
