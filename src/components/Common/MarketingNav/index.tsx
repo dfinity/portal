@@ -14,7 +14,7 @@ type SectionItem = {
 
 type FeaturedItem = {
   title: string;
-  href: string;
+  href?: string;
   image: string;
 };
 
@@ -165,7 +165,7 @@ const AuxItems: React.FC<{ items: AuxItem[] }> = ({ items }) => {
   return (
     <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300">
       {items.map((item) => (
-        <li>
+        <li key={item.name}>
           <Link
             href={item.href}
             className="text-infinite tw-button-sm inline-flex gap-2 items-center hover:no-underline hover:text-black"
@@ -340,7 +340,7 @@ const MarketingNav = () => {
                             >
                               <span className="tw-heading-7">{item.name}</span>
 
-                              <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite">
+                              <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite whitespace-nowrap">
                                 {item.description}
                               </span>
                             </Link>
@@ -381,7 +381,11 @@ const MarketingNav = () => {
                       <div className="flex gap-7 items-center">
                         {item.socialIcons &&
                           item.socialIcons.map((icon) => (
-                            <Link href={icon.href} className="w-5 h-5">
+                            <Link
+                              href={icon.href}
+                              className="w-5 h-5"
+                              key={icon.label}
+                            >
                               <img src={icon.iconUrl} alt={icon.label} />
                             </Link>
                           ))}

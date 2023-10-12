@@ -124,7 +124,8 @@ const marketingNav = {
           name: "ICP Dashboard",
           href: "https://dashboard.internetcomputer.org/",
         },
-        { name: "ICP on Youtube", href: "https://www.youtube.com/c/DFINITY" },
+        { name: "Video Library", href: "/videos" },
+        // { name: "ICP on Youtube", href: "https://www.youtube.com/c/DFINITY" },
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         { name: "Whitepaper", href: "/whitepaper.pdf" },
         {
@@ -140,47 +141,42 @@ const marketingNav = {
             {
               name: "The Basics",
               href: "/basics",
-              description: "You new to ICP? Read this first",
+              description: "New to ICP? Read this first",
             },
             {
               name: "What is ICP",
               href: "/what-is-the-ic",
-              description: "In-depth look into the blockchain",
+              description: "Get to know ",
             },
             {
               name: "How it works",
               href: "/how-it-works",
-              description: "Build almost anything on ICP",
+              description: "Look into the nitty gritty",
             },
             {
               name: "Technical Roadmap",
               href: "/roadmap",
-              description: "Next steps in development",
-            },
-            {
-              name: "Sustainability",
-              href: "/capabilities/sustainability",
-              description: "Building green, efficient tech",
+              description: "Milestones and what’s next",
             },
           ],
           featured: {
             title: "Building green, efficient tech",
             href: "/capabilities/sustainability",
-            image: "/img/nav/featured-sustainability.webp",
+            image: "/img/nav/featured-start-here.webp",
           },
         },
         {
           name: "Capabilities",
           items: [
             {
-              name: "All Capabilities",
+              name: "Capabilities",
               href: "/capabilities",
-              description: "Get to know all possibilities",
+              description: "Transforming the internet",
             },
             {
               name: "Bitcoin <> ICP",
               href: "/bitcoin-integration",
-              description: "Using Bitcoin at the speed of chat",
+              description: "Bringing smart contracts to Bitcoin",
             },
             {
               name: "Ethereum <> ICP",
@@ -195,13 +191,13 @@ const marketingNav = {
             {
               name: "HTTPS Outcalls",
               href: "/https-outcalls",
-              description: "Connecting Smart Contracts to Web2",
+              description: "Connecting smart contracts to Web2",
             },
           ],
           featured: {
-            title: "Full web experience on chain",
+            title: "Web experiences served by smart contracts",
             href: "/https-outcalls",
-            image: "/img/nav/featured-https-outcalls.webp",
+            image: "/img/nav/featured-capabilities.webp",
           },
         },
       ],
@@ -221,9 +217,9 @@ const marketingNav = {
           name: "Step into Web3",
           items: [
             {
-              name: "Ecosystem",
+              name: "ICP Ecosystem",
               href: "/ecosystem",
-              description: "Enter the ICP ecosystem",
+              description: "Try dapps gas free",
             },
             {
               name: "ICP Token",
@@ -231,77 +227,90 @@ const marketingNav = {
               description: "Use native utility token",
             },
             {
-              name: "Staking and Governance (NNS)",
+              name: "Staking and Governance",
               href: "/nns",
-              description: "Govern ICP and get rewards",
+              description: "Govern and get rewards",
             },
             {
               name: "Create an Internet Identity",
               href: "/internet-identity",
-              description: "Securely connect to dapps",
-            },
-            {
-              name: "For Enterprise",
-              href: "/enterprise",
-              description: "The future of cloud is serverless",
+              description: "Web3 Authentication",
             },
           ],
           featured: {
             title: "Enter the ICP ecosystem",
             href: "/ecosystem",
-            image: "/img/nav/featured-ecosystem.webp",
+            image: "/img/nav/featured-web3.webp",
           },
         },
         {
           name: "Use cases",
           items: [
             {
-              name: "Open Internet Services (SNS DAOs)",
-              href: "/sns",
-              description: "Web 3.0 builds on Web3",
-            },
-            {
               name: "Gaming",
               href: "/gaming",
-              description: "Vision of the World Computer",
+              description: "Paradigm shift in Web3 gaming",
             },
             {
-              name: "Social Media Dapps",
+              name: "SoFi",
               href: "/social-media-dapps",
-              description: "Full ownership and control over your profiles",
+              description: "Reclaim social media",
             },
             {
               name: "DeFi",
               href: "/defi",
-              description: "Everything on-chain",
+              description: "On-chain swaps",
             },
             {
               name: "NFTs",
               href: "/nft",
-              description: "Go way beyond “overpriced links to JPGs”",
+              description: "NFT’s live fully on-chain",
             },
             {
-              name: "SNS DAOs",
+              name: "Open Internet Services",
               href: "/sns",
-              description: "A Service Nervous Systems",
+              description: "Community-owned services",
+            },
+            {
+              name: "For Enterprise",
+              href: "/enterprise",
+              description: "Extend Web2 software with blockchain",
             },
           ],
           featured: {
-            title: "Ethereum Integration",
-            href: "/ethereum-integration",
-            image: "/img/nav/featured-eth-integration.webp",
+            title: "Bitcoin for Web3",
+            href: "/ckbtc",
+            image: "/img/nav/featured-use-cases.webp",
           },
         },
+        // {
+        //   name: "Interoperability",
+        //   items: [
+        //     {
+        //       name: "ckBTC",
+        //       href: "/ckbtc",
+        //       description: "Bitcoin on Web3",
+        //     },
+        //   ],
+        //   featured: {
+        //     title: "ckETH coming soon",
+        //     image: "/img/nav/featured-interoperability.webp",
+        //   },
+        // },
       ],
     },
     {
       name: "Develop",
       auxItems: [
         {
-          name: "Help & Support",
-          href: "https://support.dfinity.org/hc/en-us",
+          name: "Feedback Board",
+          href: "https://dx.internetcomputer.org/",
         },
         { name: "Developer grants", href: "https://dfinity.org/grants" },
+        {
+          name: "Free Cycles",
+          href: "/docs/current/developer-docs/setup/cycles/cycles-faucet",
+        },
       ],
 
       sections: [
@@ -311,23 +320,34 @@ const marketingNav = {
             {
               name: "Developer Docs",
               href: "/docs/current/home",
-              description: "The docs for developers",
-            },
-            {
-              name: "Developer Journey Series",
-              href: "",
-              description: "Build step by step",
+              description: "Start coding",
             },
             {
               name: "Sample code",
               href: "/samples",
-              description: "Check out the sample code",
+              description: "Get inspired by existing projects",
+            },
+            {
+              name: "Motoko Playground",
+              href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+              description: "Learn the ICP native language",
+            },
+            {
+              name: "Programming languages",
+
+              description: "ICP supports multiple languages",
+              href: "/docs/current/developer-docs/backend/choosing-language",
+            },
+            {
+              name: "Hackathons",
+              description: "Join like-minded hackers",
+              href: "https://dfinity.org/hackathons",
             },
           ],
           featured: {
             title: "Learn to build step by step",
-            href: "",
-            image: "/img/nav/featured-docs.webp",
+            href: "/docs/current/tutorials/",
+            image: "/img/nav/featured-develop.webp",
           },
         },
       ],
@@ -357,8 +377,10 @@ const marketingNav = {
           name: "Community grants",
           href: "https://dfinity.org/community-grants/",
         },
-        { name: "Feedback board", href: "" },
-        { name: "Blog", href: "https://medium.com/dfinity" },
+        {
+          name: "Help & Support",
+          href: "https://support.dfinity.org/hc/en-us",
+        },
       ],
 
       sections: [
@@ -368,21 +390,26 @@ const marketingNav = {
             {
               name: "ICP community",
               href: "/community",
-              description: "Welcome to our global ICP community",
+              description: "Join the global community",
             },
             {
-              name: "Education",
-              href: "",
-              description: "Content is yet to be defined",
+              name: "Sovereign network",
+              href: "/node-providers",
+              description: "Become a node provider",
             },
             {
-              name: "Events",
-              href: "https://dfinity.org/news-and-events/",
-              description: "Meet tech minded people",
+              name: "Community Blog",
+              href: "/blog",
+              description: "Keep up to date",
+            },
+            {
+              name: "Upcoming events",
+              description: "Meet fellow Web3 enthusiast",
+              href: "https://dfinity.org/events-and-news/",
             },
           ],
           featured: {
-            title: "Join the ICP community",
+            title: "ICP around the world",
             href: "/community",
             image: "/img/nav/featured-community.webp",
           },
@@ -392,7 +419,7 @@ const marketingNav = {
   ],
   auxItems: [
     {
-      name: "Dashboard",
+      name: "ICP Dashboard",
       href: "https://dashboard.internetcomputer.org/",
     },
     {
