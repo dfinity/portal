@@ -10,6 +10,10 @@ export default function Root({ children }) {
       {isDocsPage && (
         // AI chatbot integration via Kapa
         <Head>
+          <meta
+            http-equiv="Content-Security-Policy"
+            content="script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.matomo.cloud https://widget.kapa.ai https://www.google.com https://www.gstatic.com"
+          />
           <script
             defer
             src="https://widget.kapa.ai/kapa-widget.bundle.js"
