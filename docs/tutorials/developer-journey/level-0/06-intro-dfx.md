@@ -1,4 +1,4 @@
-# 0.6: Introduction to dfx
+# 0.6 Introduction to dfx
 
 ## Overview
 
