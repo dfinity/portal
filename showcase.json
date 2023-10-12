@@ -2853,5 +2853,28 @@
   "twitter": "https://twitter.com/221BravoApp",
   "youtube": "",
   "submittableId": "36556639"
+},
+  {
+  "name": "CARMANIA",
+  "description": "Welcome to the adrenaline-fueled world of \"CARMANIA\" the ultimate automotive customization and racing experience!\nIn this immersive game, you can build-customize your dream car and compete against players from around the globe to dominate the leaderboards.",
+  "website": "https://3tnyu-iiaaa-aaaal-aczcq-cai.raw.icp0.io/",
+  "logo": "/img/showcase/carmania_logo.webp",
+  "screenshots": [
+    "/img/showcase/carmania_screenshot.webp"
+  ],
+  "video": "/img/showcase/carmania_video.mp4",
+  "display": "Normal",
+  "id": "carmania",
+  "oneLiner": "The ultimate automotive customization and racing experience!",
+  "stats": "10,000+ users",
+  "tags": [
+    "Games"
+  ],
+  "usesInternetIdentity": false,
+  "github": "",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "41292935",
+  "videoContentType": "video/mp4"
 }
 ]
