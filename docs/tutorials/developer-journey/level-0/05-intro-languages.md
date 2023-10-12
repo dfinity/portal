@@ -1,4 +1,4 @@
-# 0.5: Introduction to languages 
+# 0.5 Introduction to languages 
 
 ## Overview
 
