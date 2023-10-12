@@ -1,4 +1,4 @@
-# 0.1: Overview of the Internet Computer
+# 0.1 Overview of the Internet Computer
 
 ## Overview
 
