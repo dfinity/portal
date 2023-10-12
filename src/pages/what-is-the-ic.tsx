@@ -234,13 +234,22 @@ function WhatIsIcpPage() {
                 Node providers
               </h2>
 
-              <p className="tw-lead-sm mb-0">
+              <p className="tw-lead-sm">
                 Standardized hardware devices called node machines are run by
                 independent parties called node providers, from different data
                 centers, geographies, and jurisdictions around the world. Node
                 providers run their hardware to earn tokenized rewards, rather
                 like independent ISPs and backbone providers operate routing
                 devices to earn peering fees.
+              </p>
+              <p>
+                <Link
+                  href="/node-providers"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  Sovereign hardware network
+                </Link>
               </p>
             </TranslatedLayout>
             <TranslatedLayout
@@ -250,12 +259,21 @@ function WhatIsIcpPage() {
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Subnet blockchains
               </h2>
-              <p className="tw-lead-sm mb-0">
+              <p className="tw-lead-sm">
                 The ICP protocols combine node machines into highly efficient
                 subnet blockchains, which add capacity for hosting tamperproof
                 canisters. The Internet Computer has a permissionless automated
                 governance system called the Network Nervous System, which
                 instructs nodes to join or leave subnets.
+              </p>
+              <p>
+                <Link
+                  href="/how-it-works#Architecture"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  ICP architecture
+                </Link>
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/what-is-the-ic/smart-contracts.webp">
