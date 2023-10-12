@@ -111,4 +111,4 @@ Want to go further into this topic? Check out [this documentation.](https://inte
 
 ## Next steps
 
-- [0.2: Internet Computer terminology](02-ic-terms.md).
+- [0.2 Internet Computer terminology](02-ic-terms.md).
