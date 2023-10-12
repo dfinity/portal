@@ -1,4 +1,4 @@
-# 0.4: Introduction to canisters
+# 0.4 Introduction to canisters
 
 ## Overview
 
