@@ -1,4 +1,4 @@
-# 0.3: Developer environment setup
+# 0.3 Developer environment setup
 
 ## Overview
 
