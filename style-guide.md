@@ -345,7 +345,9 @@ The following bullet point format and standards should be followed:
 - Bullet point lists that contain subtopics or sub-points should use the format:
     - Bullet point 1.
         - Subtopic bullet point.
-    - Bullet point 2.  
+    - Bullet point 2.
+
+Bullet points should end in a period unless otherwise specified. An exception to this is the Developer Journey index pages. Bullet points indicating the title of subpages (0.1 Introduction to the Internet Computer, 0.2 Internet Computer terminology, etc) intentionally do not end in a period.
 
 ## Numbered lists
 The following numbered list format and standards should be followed:

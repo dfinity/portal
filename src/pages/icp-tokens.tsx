@@ -409,8 +409,7 @@ function TokenHolders(): JSX.Element {
                 >
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
-                  This was made possible on the Internet Computer through  
-                  native{" "}
+                  This was made possible on the Internet Computer through native{" "}
                   <Link
                     className="text-white hover:text-white underline hover:cursor-pointer"
                     href="/bitcoin-integration"
@@ -649,6 +648,12 @@ function TokenHolders(): JSX.Element {
                     description="Store assets in segregated cold storage. An institutional-grade custody solution. "
                     link="https://www.coinbase.com/"
                     icon="/img/showcase/coinbase_logo.webp"
+                  />
+                  <WalletCard
+                    title="Taurus"
+                    description="Banking-grade custody for digital asset management."
+                    link="https://www.taurushq.com/"
+                    icon="/img/showcase/taurus_logo.png"
                   />
                 </div>
               </motion.div>

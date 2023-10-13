@@ -77,7 +77,7 @@ function SnsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  A Service Nervous Systems (SNS) is an advanced form of a DAO.
+                  A Service Nervous System (SNS) is an advanced form of a DAO.
                   A digital democracy that can run any dapp such as a social
                   network in a fully decentralized way, fully on chain. No
                   corporation, no board of directors, no CEO required.

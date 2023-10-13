@@ -1,4 +1,4 @@
-# 0.2: Internet Computer terminology 
+# 0.2 Internet Computer terminology 
 
 ## Overview
 
@@ -75,4 +75,4 @@ This page introduces some of the most commonly used terminology that developers 
 
 ## Next steps
 
-- [0.3: Developer environment setup](03-dev-env.md).
+- [0.3 Developer environment setup](03-dev-env.md).
