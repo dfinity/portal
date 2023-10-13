@@ -36,7 +36,7 @@ The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVI
 The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icp_ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did`.
 
 [OPTIONAL]
-If you want to make sure, you have the latest ICRC-1 ledger files you can run the following script. 
+If you want to make sure you have the latest ICP ledger files, you can run the following script: 
 ``` sh
 curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/00a4ab409e6236d4082cee4a47544a2d87b7190d/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
 chmod +x download_latest_icp_ledger.sh
