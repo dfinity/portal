@@ -195,7 +195,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Web experiences served by smart contracts",
+            title: "Connect without oracles",
             href: "/https-outcalls",
             image: "/img/nav/featured-capabilities.webp",
           },
@@ -234,7 +234,7 @@ const marketingNav = {
             {
               name: "Create an Internet Identity",
               href: "/internet-identity",
-              description: "Web3 Authentication",
+              description: "Web3 authentication",
             },
           ],
           featured: {
@@ -404,7 +404,7 @@ const marketingNav = {
             },
             {
               name: "Upcoming events",
-              description: "Meet fellow Web3 enthusiast",
+              description: "Meet fellow Web3 enthusiasts",
               href: "https://dfinity.org/events-and-news/",
             },
           ],

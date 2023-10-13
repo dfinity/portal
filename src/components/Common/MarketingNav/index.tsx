@@ -84,12 +84,17 @@ const FeaturedArrowRight = () => {
   );
 };
 
+/*
+  Regular collapsible drawer
+  Setting alwaysOpen to true will make it work like a regular div
+*/
 const Drawer: React.FC<{
   title: string;
   children?: React.ReactNode;
   startingState?: boolean;
-}> = ({ title, children, startingState = false }) => {
-  const [open, setOpen] = React.useState(startingState);
+  alwaysOpen?: boolean;
+}> = ({ title, children, startingState = false, alwaysOpen = false }) => {
+  const [open, setOpen] = React.useState(startingState || alwaysOpen);
   const ref = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -110,19 +115,23 @@ const Drawer: React.FC<{
 
   return (
     <div className="">
-      <button
-        className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
-        onClick={() => setOpen((o) => !o)}
-      >
-        <div className="tw-heading-4">{title}</div>
+      {alwaysOpen ? (
+        <div className="text-infinite tw-heading-4">{title}</div>
+      ) : (
+        <button
+          className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
+          onClick={() => setOpen((o) => !o)}
+        >
+          <div className="tw-heading-4">{title}</div>
 
-        <Arrow open={open} />
-      </button>
+          <Arrow open={open} />
+        </button>
+      )}
       <div
         ref={ref}
         className={clsx(
           "transition-all overflow-hidden",
-          open ? "max-h-none" : "max-h-0"
+          alwaysOpen || open ? "max-h-none" : "max-h-0"
         )}
       >
         {children}
@@ -229,6 +238,16 @@ const MarketingNav = () => {
       window.addEventListener("scroll", onScroll);
     }
 
+    // preload featured images so they load instantly on hover
+    for (const item of nav.mainItems) {
+      for (const section of item.sections) {
+        if (section.featured) {
+          const img = new Image();
+          img.src = section.featured.image;
+        }
+      }
+    }
+
     return () => {
       if (hideOnScroll) {
         window.removeEventListener("scroll", onScroll);
@@ -303,9 +322,10 @@ const MarketingNav = () => {
           <div className="hidden md:flex gap-0 items-center">
             {nav.mainItems.map((item) => (
               <div
-                className="border-none bg-transparent px-8 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-[#6E52AA] hover:text-white cursor-pointer"
+                className="active:outline active:outline-1 active:outline-white border-none bg-transparent appearance-none font-circular px-8 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-[#6E52AA] hover:text-white cursor-pointer"
                 key={item.name}
                 onMouseEnter={() => showFlyout(item)}
+                tabIndex={0}
               >
                 {item.name}
 
@@ -330,7 +350,7 @@ const MarketingNav = () => {
                           ))}
                         </div>
                       )}
-                      <div className="flex flex-1 pl-8 pr-6 py-6 bg-white">
+                      <div className="flex  flex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
                         <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
                           {selectedSection.items.map((item) => (
                             <Link
@@ -414,7 +434,7 @@ const MarketingNav = () => {
 
       {/* Level 1 of mobile fly-in menu */}
       <div
-        className={`overflow-auto fixed inset-0 bg-white z-[1000] px-6 pt-4 pb-12 transition-transform ${mobileNavClasses}`}
+        className={`md:hidden overflow-auto fixed inset-0 bg-white z-[1000] px-6 pt-4 pb-12 transition-transform ${mobileNavClasses}`}
       >
         {/* logo + close button */}
         <div className="flex items-center justify-between ">
@@ -474,7 +494,11 @@ const MarketingNav = () => {
               {nav.mainItems[secondaryMobileNavOpen].sections.map(
                 (item, index) => (
                   <li className="p-0" key={item.name}>
-                    <Drawer title={item.name} startingState={index === 0}>
+                    <Drawer
+                      title={item.name}
+                      startingState={index === 0}
+                      alwaysOpen
+                    >
                       {/* list of section items */}
                       <ul className="list-none p-0 flex flex-col gap-3 mt-5 mb-6">
                         {item.items.map((item) => (
