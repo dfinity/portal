@@ -1,5 +1,6 @@
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { isLinkExternal } from "@site/plugins/utils/links";
 import Search from "@site/src/theme/SearchBar";
 import clsx from "clsx";
 import React, { useEffect } from "react";
@@ -358,7 +359,13 @@ const MarketingNav = () => {
                               href={item.href}
                               className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
                             >
-                              <span className="tw-heading-7">{item.name}</span>
+                              <span className="tw-heading-7 inline-flex gap-2 items-center">
+                                {item.name}
+
+                                {isLinkExternal(item.href) && (
+                                  <LinkArrowUpRight className="w-[14px] h-[14px]" />
+                                )}
+                              </span>
 
                               <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite whitespace-nowrap">
                                 {item.description}
@@ -389,7 +396,7 @@ const MarketingNav = () => {
                     <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center">
                       {item.auxItems.map((item) => (
                         <Link
-                          className="tw-button-xs whitespace-nowrap flex items-center gap-1 hover:no-underline hover:text-black"
+                          className="tw-button-xs whitespace-nowrap flex items-center gap-2 hover:no-underline hover:text-black"
                           key={item.name}
                           href={item.href}
                         >
@@ -438,7 +445,9 @@ const MarketingNav = () => {
       >
         {/* logo + close button */}
         <div className="flex items-center justify-between ">
-          <img src="/img/logo-notext.svg" alt="" className="h-5" />
+          <Link className="flex items-center" href="/" onClick={closeNav}>
+            <img src="/img/logo-notext.svg" alt="" className="h-5" />
+          </Link>
           <CloseButton onClick={closeNav} />
         </div>
 
@@ -473,7 +482,7 @@ const MarketingNav = () => {
 
       {/* Level 2 of mobile fly-in menu*/}
       <div
-        className={`overflow-auto fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${secondaryMobileNavClasses}`}
+        className={`md:hidden overflow-auto fixed inset-0 bg-white z-[1000] px-6 py-4 transition-transform ${secondaryMobileNavClasses}`}
       >
         {/* list of sections */}
         {secondaryMobileNavOpen !== false && (
@@ -504,10 +513,14 @@ const MarketingNav = () => {
                         {item.items.map((item) => (
                           <li className="p-0" key={item.name}>
                             <Link
-                              className="border-none bg-transparent p-0 text-infinite m-0 tw-heading-7 hover:no-underline hover:text-black"
+                              className="border-none bg-transparent p-0 text-infinite m-0 tw-heading-7 hover:no-underline hover:text-black inline-flex items-center gap-2"
                               href={item.href}
                             >
                               {item.name}
+
+                              {isLinkExternal(item.href) && (
+                                <LinkArrowUpRight className="w-[14px] h-[14px]" />
+                              )}
                             </Link>
                           </li>
                         ))}

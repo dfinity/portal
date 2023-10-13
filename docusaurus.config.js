@@ -399,7 +399,7 @@ const marketingNav = {
             },
             {
               name: "Community Blog",
-              href: "/blog",
+              href: "https://medium.com/dfinity",
               description: "Keep up to date",
             },
             {
