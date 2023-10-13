@@ -117,7 +117,7 @@ const Drawer: React.FC<{
   return (
     <div className="">
       {alwaysOpen ? (
-        <div className="text-infinite tw-heading-4">{title}</div>
+        <div className="text-black tw-heading-5">{title}</div>
       ) : (
         <button
           className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
