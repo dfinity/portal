@@ -268,7 +268,7 @@ const marketingNav = {
             },
             {
               name: "Open Internet Services",
-              href: "/sns",
+              href: "/ois",
               description: "Community-owned services",
             },
             {
