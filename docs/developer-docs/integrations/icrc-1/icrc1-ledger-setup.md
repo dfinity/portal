@@ -173,7 +173,7 @@ Specifying the canister id `mxzaz-hqaaa-aaaar-qaada-cai` is optional. It is set 
 If you want to deploy your ICRC-1 ledger on the mainnet you will have to complete the following steps. 
 -   Remove the argument `--specified-id mxzaz-hqaaa-aaaar-qaada-cai`, you will receive the canister ID upon deployment.
 -   You may want to specify further the initially minted tokens by setting `initial_values = vec {<INITIAL_VALUES>}`. See the ledger.did file for the details of the argument.
--   You will have to set the network option to `ic` -> `dfx deploy --network ic ...` before specifying the rest of the dfx command. This tells dfx that you want to deploy on mainnt.
+-   You will have to set the network option to `ic` -> `dfx deploy --network ic ...` before specifying the rest of the dfx command. This tells dfx that you want to deploy on the mainnet.
 -   Always set the `archive_options` field. If the archiving is disabled, the capacity of your ledger is limited to the memory of a single canister.
 -   Make sure that the ledger canister has plenty of cycles. The canister will need cycles to spawn new instances of the archive canister on demand. The exact number of cycles attached to `create_canister` messages is controlled by the `cycles_for_archive_creation` option.
 :::
