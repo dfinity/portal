@@ -123,7 +123,7 @@ This command returns:
 )
 ```
 
-To fetch the of a account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
+To fetch the balance of an account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
 
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record {owner = principal \"${DEFAULT}\"; })"  
