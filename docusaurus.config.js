@@ -404,6 +404,7 @@ const config = {
   customFields: {
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
   },
+  scripts: [],
   plugins: [
     ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
