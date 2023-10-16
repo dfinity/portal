@@ -62,18 +62,6 @@ This command returns:
 (8 : nat8)
 ```
 
-To fetch the decimals of the ICRC-1 ledger:
-
-```
-dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
-```
-
-This command returns:
-
-```
-(8 : nat8)
-```
-
 To fetch the metadata of the ICRC-1 ledger:
 
 ```
