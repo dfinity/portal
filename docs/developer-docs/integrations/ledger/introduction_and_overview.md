@@ -29,10 +29,10 @@ ICRC-1 on the other hand is a standard, not a specific implementation of some le
 all follow the same standard. The ICRC-1 reference implementation and the ICP ledger share a lot of similarities. However, they do have different endpoints, different transaction and block objects and quite a few other, more subtle, differences. 
 
 
-## Accounts vs `AccountIdentifiers`
+## `Account`s vs `AccountIdentifier`s
 
 The biggest and most important difference between the ICP ledger and the ICRC-1 standard (and thus its reference implementation) is how they define accounts. Both are account-based but the ICRC-1 standard [specifies](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#account) `Accounts` as a struct that contains a `principal` and an optional `subaccount`.
-The ICP ledger uses `AccountIdentifiers` as its account representation. You can find a detailed description of `AccountIdentifier` [here](https://mmapped.blog/posts/13-icp-ledger#account-id). An`AccountIdentifier` essentially is a hash of the ICRC-1 `Account`. An `Account` can thus be converted into an `AccountIdentifier` but not the other
+The ICP ledger uses `AccountIdentifiers` as its account representation. You can find a detailed description of `AccountIdentifier` [here](https://mmapped.blog/posts/13-icp-ledger#account-id). An `AccountIdentifier` essentially is a hash of the ICRC-1 `Account`. An `Account` can thus be converted into an `AccountIdentifier` but not the other
 way around. This provides the benefit of providing a certain degree of anonymity to the ICP ledger, but it also means that the ICP ledger can never have the same internal representation as ICRC-1 ledgers. 
 
 In an attempt to comply with the ICRC-1 standard, the ICP ledger implements all endpoints defined in the ICRC-1 standard. However, this does not mean that the ICP ledger is an ICRC-1 ledger. The ICRC-1 standard clearly defines how accounts should be represented.
@@ -45,5 +45,5 @@ However, if you want to fetch transactions for a specific `Account` or `AccountI
 
 There are two different types of index canisters, one for the [ICP ledger](./icp-index-local-setup.md) and one for [ICRC-1 compatible ledgers](/docs/developer-docs/integrations/icrc-1/icrc1-index-setup.md). Due to the previously mentioned difference between the ICP ledger and ICRC-1 ledgers, these two index canister will not be able to have identical endpoints. Since one uses `Account` and the other uses `AccountIdentifier` as an internal representation of accounts, the returned transactions will differ in this regard. 
 
-The ICP index canister is running on the NNS subnet with the canister ID (qhbym-qaaaa-aaaaa-aaafq-cai)[https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai]. As there are multiple ICRC-1 compatible ledgers, there will also be multiple ICRC-1 index canisters. For example, the ICRC-1 ledger recording ckBTC transactions is running under the canister ID (n5wcd-faaaa-aaaar-qaaea-cai)[https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai]. 
+The ICP index canister is running on the NNS subnet with the canister ID [qhbym-qaaaa-aaaaa-aaafq-cai](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai). As there are multiple ICRC-1 compatible ledgers, there will also be multiple ICRC-1 index canisters. For example, the ICRC-1 ledger recording ckBTC transactions is running under the canister ID [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai). 
 
