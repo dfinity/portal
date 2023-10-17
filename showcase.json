@@ -2853,5 +2853,25 @@
   "twitter": "https://twitter.com/221BravoApp",
   "youtube": "",
   "submittableId": "36556639"
+},
+  {
+  "name": "Tali AI ",
+  "description": "Tali is a Discord Support bot that answers common developer queries.",
+  "website": "https://trytali.com ",
+  "logo": "/img/showcase/tali-ai_logo.webp",
+  "video": "/img/showcase/tali-ai_video.mp4",
+  "display": "Normal",
+  "id": "tali-ai",
+  "oneLiner": "Tali is a Discord Support bot that answers common developer queries.",
+  "stats": "100k+ devs spt. ",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "",
+  "twitter": "https://twitter.com/TryTaliAI",
+  "youtube": "",
+  "submittableId": "38502751",
+  "videoContentType": "video/mp4"
 }
 ]
