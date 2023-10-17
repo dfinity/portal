@@ -14,7 +14,7 @@ This integration allows for a plethora of novel use cases:
 -   **Bitcoin smart contracts:** a canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions using social dApps.
 -   **Trading Bitcoin:** trade Bitcoin directly on decentralized exchanges on the Internet Computer, without requiring any third-party custody of the assets.
 -   **Decentralization swap:** using Bitcoin to buy tokens in a decentralization swap when an SNS-powered DAO decentralizes a service on the IC.
--   **Chain Key Bitcoin (ckBTC):** a Bitcoin analogue on the Internet Computer that is backed 1:1 by bitcoin, will be available on the IC shortly after the Bitcoin mainnet release of the Bitcoin feature. ckBTC will be the easiest way to handle bitcoin on the IC.
+-   **Chain Key Bitcoin (ckBTC):** a Bitcoin analogue on the Internet Computer that is backed 1:1 by bitcoin, is available on the IC. ckBTC is the easiest way to handle bitcoin on the IC.
 
 ## Examples
 These are only a few examples of how one can use the Bitcoin integration feature. Your imagination is the only limit to the endless range of possibilities being opened up by this feature. This documentation explains how to use this feature in your own dApps. Please also note that the Bitcoin integration API is a low-level API that operates on the level of UTXOs and Bitcoin transactions and is non-trivial to use.
