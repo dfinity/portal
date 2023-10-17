@@ -2868,8 +2868,10 @@
   "oneLiner": "Automate interactions between organizations.",
   "stats": "",
   "tags": [
-    "BPMN",
-    "DeFi"
+    "Tools/Infrastructure",
+    "DeFi",
+    "DAO",
+    "SocialFi"
   ],
   "usesInternetIdentity": true,
   "github": "https://github.com/dCentra-io/dflow-icp",
