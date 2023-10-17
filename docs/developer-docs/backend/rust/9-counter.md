@@ -67,7 +67,7 @@ fn set(n: Nat) {
 
 /// Increment the value of the counter.
 #[ic_cdk_macros::update]
-fn inc() {
+fn increment() {
     COUNTER.with(|counter| *counter.borrow_mut() += 1);
 }
 
