@@ -12,6 +12,7 @@ const redirects = `
   /docs/current/references/motoko-ref/* /docs/current/motoko/main/base/:splat
   /features/green /capabilities/sustainability
   /features /capabilities
+  /openchat /ois
   /howitworks /how-it-works
   /showcase /ecosystem
   /docs/videos-tutorials /developers

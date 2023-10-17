@@ -43,7 +43,7 @@ function OpenChatPage() {
   const isDark = useDarkHeaderInHero(heroRef);
   return (
     <Layout
-      title="OpenChat"
+      title="Open Internet Services"
       description="Join the Future of Social Media - Decentralized, Secure, and
       Community-Driven. See how OpenChat got DAO-swapped in less
       than 6 hours."
