@@ -220,7 +220,7 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
             className="tw-paragraph-sm mb-0 pt-3"
           >
             A comparison of the energy consumption per transaction between
-            blockchains
+            blockchains. Comparison source: CCRI Industry Report, January 2022.
           </motion.figcaption>
         </motion.figure>
       </motion.div>
