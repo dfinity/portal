@@ -19,7 +19,7 @@ The developer journey is designed to give both new and existing developers a cle
 ## Level 1: Space cadet
 
 - [1.1 Exploring a live demo](level-1/1.1-live-demo.md)
-- [1.2 Motoko: level 1](level-1/1.2-motoko-lvl1.md)
+- [1.2 Motoko level 1](level-1/1.2-motoko-lvl1.md)
 - [1.3 Developing your first dapp](level-1/1.3-first-dapp.md)
 - [1.4 Acquiring and using cycles](level-1/1.4-using-cycles.md)
 - [1.5 Deploying canisters](level-1/1.5-deploying-canisters.md)
@@ -33,7 +33,7 @@ The developer journey is designed to give both new and existing developers a cle
 - [2.3 Using third-party canisters](level-2/2.3-third-party-canisters.md)
 - [2.4 Introduction to Candid](level-2/2.4-intro-candid.md)
 - [2.5 Unit, integration, and end2end testing](level-2/2.5-unit-testing.md)
-- [2.6 Motoko: level 2](level-2/2.6-motoko-lvl2.md)
+- [2.6 Motoko level 2](level-2/2.6-motoko-lvl2.md)
 
 ## Level 3: Space engineer 
 
@@ -42,7 +42,7 @@ The developer journey is designed to give both new and existing developers a cle
 - 3.3 Certified variables
 - 3.4 Introduction to agents
 - 3.5 Using Quill
-- 3.6 Motoko: level 3
+- 3.6 Motoko level 3
 
 ## Level 4: Space pilot
 
@@ -51,8 +51,8 @@ The developer journey is designed to give both new and existing developers a cle
 - 4.3 ICRC-1 tokens
 - 4.4 ckBTC and Bitcoin integration
 - 4.5 NNS governance and staking
-- 4.6 Motoko: level 4
-
+- 4.6 Motoko level 4
+- 
 ## Level 5: Internet Computer astronaut 
 
 - 5.1 Developing an encrypted notes dapp with vetKD
