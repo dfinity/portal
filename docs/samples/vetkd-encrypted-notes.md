@@ -10,8 +10,6 @@ The difference between the original encrypted-notes-dapp and the this new vetKD 
 
 Currently, the only way to use this dapp is via manual local deployment, as detailed below.
 
-This example is available in both Motoko and Rust. 
-
 Please see the [README of the original encrypted-notes-dapp](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/README.md) for further details.
 
 ## Disclaimer
@@ -21,23 +19,21 @@ This example uses an [**insecure** implementation](https://github.com/dfinity/ex
 ## Prerequisites
 This example requires an installation of:
 
-- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/index.mdx).
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install).
 - [x] Install `node.js` to build the web frontend.
 - [x] Download the following profile files from GitHub: https://github.com/dfinity/examples/
+- [x] Set environmental variable: `export BUILD_ENV=motoko` for Motoko or `export BUILD_ENV=rust` for Rust. 
 - [x] If deploying in Rust, run `rustup target add wasm32-unknown-unknown` before getting started.
-- [x] For **Motoko** deployment set environmental variable: `export BUILD_ENV=motoko`
 
 ### Step 1: Navigate into the folder containing the project's files:
 
-For Motoko:
 ```
 cd examples/motoko/encrypted-notes-dapp-vetkd
 ```
 
-For Rust:
-```
-cd examples/rust/encrypted-notes-dapp-vetkd
-```
+:::info 
+This project folder contains both Motoko and Rust code.
+:::
 
 ### Step 2: To generate `$BUILD_ENV`-specific files (i.e., Motoko or Rust) run:
 

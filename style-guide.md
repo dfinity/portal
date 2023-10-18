@@ -16,6 +16,7 @@ This guide will outline the following:
 - Hints.
 - Links and hyperlinks.
 - Code snippets and code blocks.
+- Command line syntax.
 - FAQ sections.
 - The difference between a tutorial and a guide.
 - How to write a tutorial.
@@ -344,7 +345,9 @@ The following bullet point format and standards should be followed:
 - Bullet point lists that contain subtopics or sub-points should use the format:
     - Bullet point 1.
         - Subtopic bullet point.
-    - Bullet point 2.  
+    - Bullet point 2.
+
+Bullet points should end in a period unless otherwise specified. An exception to this is the Developer Journey index pages. Bullet points indicating the title of subpages (0.1 Introduction to the Internet Computer, 0.2 Internet Computer terminology, etc) intentionally do not end in a period.
 
 ## Numbered lists
 The following numbered list format and standards should be followed:
@@ -401,7 +404,9 @@ The following format should be used for code snippets and code blocks:
     - Example: `ingress_start`
 - Command-line commands that should be run by the user should be listed in their own line using code formatting, such as:
     - #### Step 1:  Install the React module by running the following command:
+  ```
             npm install --save react react-dom
+  ```
 - Code blocks should be prefaced with the language used within the code block where applicable. For example:
 
 ```bash
@@ -409,6 +414,28 @@ cd motoko/threshold_ecdsa
 dfx start --background
 npm install
 dfx deploy
+```
+
+## Command line syntax
+
+For all CLI command examples for `dfx`, flags should always be at the end of the command, such as:
+
+```
+dfx wallet balance --network ic
+```
+
+Additional examples:
+
+```
+dfx deploy --background
+```
+
+```
+dfx identity new Alice --disable-encryption
+````
+
+```
+dfx deploy internet_identity --argument '(null)'
 ```
 
 ## FAQ sections

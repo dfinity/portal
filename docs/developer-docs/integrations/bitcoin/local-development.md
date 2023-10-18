@@ -291,5 +291,7 @@ installed locally.
 
 - #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running, and then run the following to delete the chain you created.
 
+```
     rm -r data
     mkdir data
+```

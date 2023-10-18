@@ -1,4 +1,4 @@
-# 0.2: Internet Computer terminology 
+# 0.2 Internet Computer terminology 
 
 ## Overview
 
@@ -7,6 +7,8 @@ This page introduces some of the most commonly used terminology that developers 
 ## Concepts 
 
 - **Actor:** An actor is a process with an encapsulated state that communicates with other actors that are concurrently running. Actors communicate through asynchronous messages that are received sequentially. Actors can modify their own private state, but can only alter other actors indirectly through messages.  Actors are a part of the actor model, which is used by canisters for concurrent and asynchronous computation. 
+
+- **Agent:** An agent is a library used to make calls to the Internet Computer public interface. Examples of external agents include the JavaScript and Rust agents. 
 
 - **Certified variables:** A certified variable is a piece of data that a canister stores in the subnet's canonical state during the processing of an update or inter-canister call. This data is used when a query call is made, so that the canister can return a certificate to the user to prove the data's value. 
 
@@ -73,4 +75,4 @@ This page introduces some of the most commonly used terminology that developers 
 
 ## Next steps
 
-- [0.3: Developer environment setup](03-dev-env.md).
+- [0.3 Developer environment setup](03-dev-env.md).

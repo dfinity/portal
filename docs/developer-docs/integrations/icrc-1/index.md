@@ -1,7 +1,10 @@
 # ICRC-1 token standard
 
 ## Overview
-The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer.
+
+ICRC-1 is a token standard created by the Internet Computer working group. ICRC stands for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there. 
+
+However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards). 
 
 ## Data
 
@@ -17,7 +20,7 @@ type Account = record { owner : principal; subaccount : opt Subaccount; };
 ```
 
 ## Methods
-
+This section will give you an overview of the ICRC-1 standard methods. If you want to have a more detailed description on how to interact with those endpoints, you can have a look at [the guide on how to interact with an ICRC-1 ledger](./interact-with-ICRC-1-ledger.md).
 ### icrc1_name <span id="name_method"></span>
 
 Returns the name of the token (e.g., `MyToken`).
@@ -218,36 +221,76 @@ variant { Err = variant { BadBurn = record { min_burn_amount = ... } } }
 
 The minting account is also the receiver of the fees burnt in regular transfers.
 
-## Textual representation of accounts
+## Textual encoding of accounts
 
-We specify a **canonical textual format** that all applications should use to display ICRC-1 accounts.
-This format relies on the textual encoding of principals specified in the [Internet Computer interface specification](../../../references/ic-interface-spec.md#textual-ids), referred to as `Principal.toText` and `Principal.fromText` below.
-The format has the following desirable properties:
+Each ICRC-1 account has two components: the owner (up to 29 bytes) and the subaccount (32 bytes). If a subaccount is not included, it is equal to an array comprised of 32 zero bytes. 
 
-- A textual encoding of any non-reserved principal is a valid textual encoding of the default account of that principal on the ledger.
-- The decoding function is injective (i.e., different valid encodings correspond to different accounts).
-   This property enables applications to use text representation as a key.
-- A typo in the textual encoding invalidates it with a high probability.
-
-### Encoding
-
-Applications **should** encode accounts as follows:
-
-- The encoding of the default account (the subaccount is null or a blob with 32 zeros) is the encoding of the owner principal.
-- The encoding of accounts with a non-default subaccount is the textual principal encoding of the concatenation of the owner principal bytes, the subaccount bytes with the leading zeros omitted, the length of the subaccount without the leading zeros (a single byte), and an extra byte `7F`<sub>16</sub>.
-
-In pseudocode:
-
-```sml
-encodeAccount({ owner; subaccount }) = case subaccount of
-  | None ⇒ Principal.toText(owner)
-  | Some([32; 0]) ⇒ Principal.toText(owner)
-  | Some(bytes) ⇒ Principal.toText(owner · shrink(bytes) · [|shrink(bytes)|, 0x7f])
-
-shrink(bytes) = case bytes of
-  | 0x00 :: rest ⇒ shrink(rest)
-  | bytes ⇒ bytes
+```candid
+type Account = { owner : principal; subaccount : opt blob };
 ```
+
+### Default accounts
+
+The account's textual representation coincides with the account owner's principal text encoding if the `subaccount` isn't set or equal to an array comprised of 32 zero bytes. 
+
+```
+Account.toText(record {
+    owner = principal "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae";
+    subaccount = null;
+}) = "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae"
+```
+
+```
+Account.toText(record {
+    owner = principal "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae",
+    subaccount = opt vec {0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0};
+}) = "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae"
+```
+
+### Non-default accounts
+An account with non-default subaccounts consists of the following parts:
+
+```
+<principal>-<checksum>.<compressed-subaccount>
+```
+
+- The textual encoding of the owner's principal (as described in the [IC interface specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#textual-ids)).
+
+- A dash character `-` that separates the principal from the checksum.
+
+- The CRC-32 checksum, containing the concatenated bytes of the principal and the subaccount encoded in [Base 32 encoding](https://datatracker.ietf.org/doc/html/rfc4648#section-6), without padding, and using lower-case letters.
+
+- A period character `.` that separates the checksum from the subaccount.
+
+- The hex-encoded bytes of the subaccount, with all leading '0' characters omitted. 
+
+```
+Account.toText({ owner; ?subaccount }) = {
+  let checksum = bigEndianBytes(crc32(concatBytes(Principal.toBytes(owner), subaccount)));
+  Principal.toText(owner) # '-' # base32LowerCaseNoPadding(checksum) # '.' # trimLeading('0', hex(subaccount))
+}
+```
+
+In the following example, `dfxgiyy` is the checksum and `102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20` is the hex representation of the subaccount with stripped leading zeros:
+
+```
+Account.toText(record {
+    owner = principal "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae",
+    subaccount = opt vec {1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32};
+}) = "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae-dfxgiyy.102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20"
+```
+
+### Examples
+
+| Text | Result | Comment |
+|:----:|:------:|:-------:|
+| `k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae` | OK: `{ owner = "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae", subaccount = null }` | A valid principal is a valid account. |
+| `k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae-q6bn32y.` | Error | The representation is not canonical: default subaccount should be omitted. |
+| `k2t6j2nvnp4zjm3-25dtz6xhaac7boj5gayfoj3xs-i43lp-teztq-6ae` | Error | Invalid principal encoding. |
+| `k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae-6cc627i.1` | OK: `{ owner = "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae", subaccount = opt blob "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01" }` | |
+| `k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae-6cc627i.01` | Error | The representation is not canonical: leading zeros are not allowed in subaccounts. |
+| `k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae.1` | Error | Missing check sum. |
+| `k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae-dfxgiyy.102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20` | OK: `{ owner = "k2t6j-2nvnp-4zjm3-25dtz-6xhaa-c7boj-5gayf-oj3xs-i43lp-teztq-6ae"; subaccount = opt blob "\01\02\03\04\05\06\07\08\09\0a\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f\20" }` | |
 
 ### Decoding
 

@@ -45,7 +45,7 @@ const OpenChatCard: React.FC<{
             </motion.p>
 
             <motion.p className="mb-3" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="/openchat">
+              <Link className="link-primary link-with-icon" href="/ois">
                 <LinkArrowRight />
                 See how OpenChat decentralized, fully on-chain
               </Link>
@@ -57,7 +57,10 @@ const OpenChatCard: React.FC<{
               </Link>
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="/sns/faq#what-is-a-decentralization-swap">
+              <Link
+                className="link-primary link-with-icon"
+                href="/sns/faq#what-is-a-decentralization-swap"
+              >
                 <LinkArrowRight />
                 How to raise funding for an SNS DAO
               </Link>

@@ -445,7 +445,7 @@ Then the resulting metadata will end like this where only the `description` fiel
 
 ## Generic proposals
 
-Each SNS community might have dapp-specific needs.
+Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it but that might be very dapp-specific. Generic proposals, also called generic functions or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
 
 Some examples:
 
@@ -463,7 +463,51 @@ Typically a generic proposal will have the following structure: a developer send
 * [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction).
 * [`ExecuteGenericNervousSystemFunction`](#executegenericnervoussystemfunction).
 
+### Defining a generic proposal
+
+A generic proposal is defined by two parts:
+
+1. **A target method and canister** (respectively called `target_method_name` and `target_canister_id` in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing within a target method on a canister, then registering that target method in a generic proposal.
+
+2. **A validator method and canister** (respectively called `validator_method_name` and `validator_canister_id` in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on a different one). This method is then called whenever such a generic proposal is submitted. If the validator method fails, the proposal will not put to vote in the SNS.
+
+Putting this together, this is how generic proposals work. When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will execute the proposal by calling the target method on the target canister.
+
+Together, this is the type of a generic proposal in the code:
+
+```candid
+  type GenericNervousSystemFunction = record {
+        validator_canister_id : opt principal;
+        target_canister_id : opt principal;
+        validator_method_name : opt text;
+        target_method_name : opt text;
+    };
+```
+
+### Security considerations when designing generic proposals
+
+There are a few important, security-critical considerations to make when adding a generic proposal. We list a few recommendations here:
+
+* **The canisters where the target and validator methods are defined should be controlled by the SNS DAO.** Otherwise, such a method could change the behavior or not be available without the SNS’s control. If you need to call another method, consider the next point.
+* **Make sure that the target and validator methods always return an answer.** If this is not the case, there is a risk that the SNS governance canister has some open call contexts, which in turn means that it cannot be stopped and therefore cannot be upgraded. This is very risky, e.g., if an urgent upgrade of governance is needed. Therefore it is recommended to only call trusted code.
+* **Validate everything that your code relies on again during the execution time.** Even though one method is “validator”, its main purpose is to disregard proposal contents that are obviously wrong. However, due to the fact that a proposal is voted on for multiple days, any validation that you did when the proposal was submitted might have become incorrect by the time the proposal is executed. Therefore it is of utmost importance to repeat any validation in the target method, which is important for the validation of the proposal.
+* **Avoid asynchronous inter-canister calls in the validator and target method to minimize the risk for re-entrancy bugs.** During the execution of inter-canister calls, other execution can happen (thus interleaving with your method) and change the state of the system. The easiest way to avoid this risk is to avoid inter-canister calls.
+* **If inter-canister calls cannot be avoided, try to limit them to the last operation of your validator and target methods.** A prominent source of bugs with inter-canister calls is to check a condition, then apply an inter-canister call, and then execute code that relies on this condition. This is called TOCTOU-bug: the status of the system has changed between the time of check and time of use of a condition. One way to avoid that a checking and using of a condition are separated by an inter-canister call is to defer all inter-canister calls to the very end of the method.
+* **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensures that no method that would change a relevant condition can be executing during the validator and target method.
+
+See more [general security best practices](https://github.com/dfinity/portal/blob/master/docs/developer-docs/security/general-security-best-practices.md).
+
+### Adding/removing generic proposals
+
+**To use a generic proposal, it first needs to be added to the SNS governance system.** This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As we have seen that generic proposals also have security implications it is important to have this explicit approval.
+
+Generic proposals can then also be removed again from SNS governance if they are not needed anymore.
+
+To use a generic proposal, i.e., submit such a proposal, one uses the “execute generic nervous system function” proposal type and specifies which of the registered generic proposals should be used. We next explain how to submit each of these proposals.
+
 ### `AddGenericNervousSystemFunction`
+
+This *native proposal* type is used to **add** a *generic functions* as *generic proposals* to the SNS governance system. Proposers must select and `id` to be used to identify this generic proposal, and this id is then used to follow other neurons on this proposal. Ids 0-999 are reserved for native proposal types that may be added in the future, all other ids are valid.
 
 #### Relevant type signatures
 
@@ -543,8 +587,10 @@ quill send message.json
 
 See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/177).
 
+### `ExecuteGenericNervousSystemFunction`
 
-### `ExecuteGenericNervousSystemFunction` 
+This *native proposal* type is used to **execute** a *generic functions* as *generic proposals* to the SNS governance system.
+
 
 After a generic proposal has been registered with a `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
@@ -593,8 +639,7 @@ quill send message.json
 
 ### `RemoveGenericNervousSystemFunction`
 
-Similarly to how generic proposal are added, they can also be removed again if the SNS DAO thinks that they should no longer be supported. 
-To do so, they can use the proposal `AddGenericNervousSystemFunction` which specifies the ID of the generic nervous system function to be removed.
+This *native proposal* type is used to **remove** a *generic functions* as *generic proposals* to the SNS governance system.
 
 #### Relevant type signatures
 
@@ -620,6 +665,81 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send message.json
 ```
+
+### Case study: Adding a generic proposal
+
+The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister. 
+
+The problem: To commit changes to the asset canister associated with a dapp under SNS control, we need to use generic proposals.
+
+To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
+
+See the code for the `commit_proposed_batch` function [here](https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264):
+
+```rust
+#[update]
+#[candid_method(update)]
+fn validate_commit_proposed_batch(arg: CommitProposedBatchArguments) -> Result<String, String> {
+    STATE.with(|s| s.borrow_mut().validate_commit_proposed_batch(arg))
+}
+```
+
+where `validate_commit_proposed_batch` is [here](https://github.com/dfinity/sdk/blob/f227ac05ea3b2c7f6d10025ee255e222b34b6e3e/src/canisters/frontend/ic-certified-assets/src/state_machine.rs#L650):
+
+```rust
+    pub fn validate_commit_proposed_batch(
+        &self,
+        arg: CommitProposedBatchArguments,
+    ) -> Result<String, String> {
+        self.validate_commit_proposed_batch_args(&arg)?;
+        Ok(format!(
+            "commit proposed batch {} with evidence {}",
+            arg.batch_id,
+            hex::encode(arg.evidence)
+        ))
+    }
+```
+
+Following the steps to add this proposal, the first thing needed is to to submit a new `AddGenericNervousSystemFunction` SNS Proposal to support the `commit_proposed_batch` API. In our case:
+
+* validator_canister_id : opt principal = asset canister principal
+* target_canister_id : opt principal = asset canister principal
+* validator_method_name : opt text = "commit_proposed_batch"
+* target_method_name : opt text = "validate_commit_proposed_batch"
+
+If we assume the principal of a particular asset canister for an SNS is, `iywa7-ayaaa-aaaaf-aemga-cai`, the command line call would be:
+
+```bash
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
+    record {
+        title = "Add a new custom SNS function to the asset canister";          
+        url = "https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264";        
+        summary = "Adding custom function to the asset canister of SNS foo";
+        action = opt variant {
+            AddGenericNervousSystemFunction = record {
+                id = 4_003 : nat64;
+                name = "Add a new custom SNS function to the asset canistery";
+                description = opt "Add a new custom SNS function to the asset canister";
+                function_type = opt variant { 
+                    GenericNervousSystemFunction = record { 
+
+                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+
+                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        
+                        validator_method_name = opt "validate_commit_proposed_batch"; 
+                        
+                        target_method_name = opt "commit_proposed_batch";
+                    } 
+                };
+            }
+        };
+    }
+)' > message.json
+
+quill send message.json
+```
+
 
 <!-- ## SNS Proposal lifecycle
 

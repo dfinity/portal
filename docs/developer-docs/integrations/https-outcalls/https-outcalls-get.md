@@ -5,6 +5,7 @@ A minimal example to make a `GET` HTTPS request. The purpose of this dapp is onl
 
 The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token. 
 
+
 **The main intent of this canister is to show developers how to make idempotent `GET` requests.**
 
 This example takes less than 5 minutes to complete.
@@ -49,7 +50,7 @@ import Types "Types";
 
 actor {
 
-  //method that uses the HTTP outcalls feature and returns a string
+  //0. method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
@@ -72,6 +73,12 @@ actor {
     //6. RETURN RESPONSE OF THE BODY
     response
   };
+
+  //7. CREATE TRANSFORM FUNCTION
+  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload { 
+    ////code for the transform function
+  }
+
 };
 ```
 
@@ -92,12 +99,12 @@ To create a new project:
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new send_http_get
-cd send_http_get
+dfx new send_http_get_motoko
+cd send_http_get_motoko
 npm install
 ```
 
-- #### Step 2:  Open the `src/send_http_get_backend/main.mo` file in a text editor and replace content with:
+- #### Step 2:  Open the `src/send_http_get_motoko_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -152,6 +159,12 @@ actor {
         { name = "User-Agent"; value = "exchange_rate_canister" },
     ];
 
+    // 2.2.1 Transform context
+    let transform_context : Types.TransformContext = {
+      function = transform;
+      context = Blob.fromArray([]);
+    };
+
     // 2.3 The HTTP request
     let http_request : Types.HttpRequestArgs = {
         url = url;
@@ -159,7 +172,7 @@ actor {
         headers = request_headers;
         body = null; //optional for request
         method = #get;
-        transform = null; //optional for request
+        transform = ?transform_context;
     };
 
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
@@ -171,7 +184,7 @@ actor {
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     //"Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
-    Cycles.add(17_000_000_000);
+    Cycles.add(20_949_972_000);
     
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, we can just call the IC management canister with HTTPS outcalls below
@@ -218,14 +231,36 @@ actor {
     decoded_text
   };
 
+  //7. CREATE TRANSFORM FUNCTION
+  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+      let transformed : Types.CanisterHttpResponsePayload = {
+          status = raw.response.status;
+          body = raw.response.body;
+          headers = [
+              {
+                  name = "Content-Security-Policy";
+                  value = "default-src 'self'";
+              },
+              { name = "Referrer-Policy"; value = "strict-origin" },
+              { name = "Permissions-Policy"; value = "geolocation=(self)" },
+              {
+                  name = "Strict-Transport-Security";
+                  value = "max-age=63072000";
+              },
+              { name = "X-Frame-Options"; value = "DENY" },
+              { name = "X-Content-Type-Options"; value = "nosniff" },
+          ];
+      };
+      transformed;
+  };
 };
 ```
 
 - `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
--  The code above adds `17_000_000_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
+- The code above adds `20_949_972_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
-- #### Step 3:  Open the `src/send_http_get_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Open the `src/send_http_get_motoko_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
@@ -275,9 +310,20 @@ module Types {
         context : Blob;
     };
 
-    //2.2 This type describes the arguments the transform function needs
+    //2.2 These types describes the arguments the transform function needs
     public type TransformArgs = {
         response : HttpResponsePayload;
+        context : Blob;
+    };
+
+    public type CanisterHttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    public type TransformContext = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
     };
 
@@ -286,6 +332,7 @@ module Types {
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
+
 }
 ```
 
@@ -304,14 +351,34 @@ If successful, the terminal should return canister URLs you can open:
 Deployed canisters.
 URLs:
   Frontend canister via browser
-    hello_http_frontend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai
+    send_http_get_motoko_frontend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai
   Backend canister via Candid interface:
-    hello_http_backend: http://127.0.0.1:4943/?canisterId=a3shf-5eaaa-aaaaa-qaafa-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
+    send_http_get_motoko_backend: http://127.0.0.1:4943/?canisterId=a3shf-5eaaa-aaaaa-qaafa-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
 ```
 
-Open the candid web UI for the backend (the `hello_http_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
+
+- #### Step 5: Test the dapp on mainnet.
+
+Deploy the dapp locally:
+
+```bash
+dfx deploy --network ic
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    send_http_get_motoko_frontend: https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app/
+  Backend canister via Candid interface:
+    send_http_get_motoko_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+```
 
 ## Rust version
 
@@ -348,9 +415,11 @@ async fn foo() {
         }
     }
 }
+
+// 4. CREATE TRANSFORM FUNCTION 
+#[query]
+fn transform(raw: TransformArgs) -> HttpResponse { }
 ```
-
-
 
 ### Rust: Step by step
 
@@ -359,13 +428,13 @@ To create a new project:
 - #### Step 1:  Create a new project by running the following command:
 
 ```bash
-dfx new --type=rust hello_http_rust
-cd hello_http_rust
+dfx new --type=rust send_http_get_rust
+cd send_http_get_rust
 npm install
 rustup target add wasm32-unknown-unknown
 ```
 
-- #### Step 2: Open the `/src/hello_http_rust_backend/src/lib.rs` file in a text editor and replace content with:
+- #### Step 2: Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
 //1. IMPORT IC MANAGEMENT CANISTER
@@ -374,6 +443,17 @@ use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
     TransformContext,
 };
+
+use ic_cdk_macros::{self, query, update};
+use serde::{Serialize, Deserialize};
+use serde_json::{self, Value};
+
+// This struct is legacy code and is not really used in the code.
+#[derive(Serialize, Deserialize)]
+struct Context {
+    bucket_start_time_index: usize,
+    closing_price_index: usize,
+}
 
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
@@ -406,13 +486,23 @@ async fn get_icp_usd_exchange() -> String {
         },
     ];
 
+
+    // This struct is legacy code and is not really used in the code. Need to be removed in the future
+    // The "TransformContext" function does need a CONTEXT parameter, but this implementation is not necessary
+    // the TransformContext(transform, context) below accepts this "context", but it does nothing with it in this implementation.
+    // bucket_start_time_index and closing_price_index are meaninglesss
+    let context = Context {
+        bucket_start_time_index: 0,
+        closing_price_index: 4,
+    };
+
     //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4
     let request = CanisterHttpRequestArgument {
         url: url.to_string(),
         method: HttpMethod::GET,
         body: None,               //optional for request
         max_response_bytes: None, //optional for request
-        transform: None,          //optional for request
+        transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
         headers: request_headers,
     };
 
@@ -453,6 +543,8 @@ async fn get_icp_usd_exchange() -> String {
             //         5.714, <-- close
             //         243.5678 <-- volume
             //     ],
+            //  ]
+
 
             //Return the body as a string and end the method
             str_body
@@ -466,15 +558,64 @@ async fn get_icp_usd_exchange() -> String {
         }
     }
 }
+
+
+// Strips all data that is not needed from the original response.
+#[query]
+fn transform(raw: TransformArgs) -> HttpResponse {
+
+    let headers = vec![
+        HttpHeader {
+            name: "Content-Security-Policy".to_string(),
+            value: "default-src 'self'".to_string(),
+        },
+        HttpHeader {
+            name: "Referrer-Policy".to_string(),
+            value: "strict-origin".to_string(),
+        },
+        HttpHeader {
+            name: "Permissions-Policy".to_string(),
+            value: "geolocation=(self)".to_string(),
+        },
+        HttpHeader {
+            name: "Strict-Transport-Security".to_string(),
+            value: "max-age=63072000".to_string(),
+        },
+        HttpHeader {
+            name: "X-Frame-Options".to_string(),
+            value: "DENY".to_string(),
+        },
+        HttpHeader {
+            name: "X-Content-Type-Options".to_string(),
+            value: "nosniff".to_string(),
+        },
+    ];
+    
+
+    let mut res = HttpResponse {
+        status: raw.response.status.clone(),
+        body: raw.response.body.clone(),
+        headers,
+        ..Default::default()
+    };
+
+    if res.status == 200 {
+
+        res.body = raw.response.body;
+    } else {
+        ic_cdk::api::print(format!("Received an error from coinbase: err = {:?}", raw));
+    }
+    res
+}
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
+- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
 - The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
-- #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
+- #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
 
-We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`. 
+We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`.
 
 ```
 service : {
@@ -482,7 +623,29 @@ service : {
 }
 ```
 
-- #### Step 4: Test the dapp locally.
+- #### Step 4: Open the `src/send_http_get_rust_backend/Cargo.toml` file in a text editor and replace content with:
+
+```bash
+[package]
+name = "send_http_get_rust_backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = "0.8.2"
+ic-cdk = "0.6.0"
+ic-cdk-macros = "0.6.0"
+serde = "1.0.152"
+serde_json = "1.0.93"
+serde_bytes = "0.11.9"
+```
+
+- #### Step 5: Test the dapp locally.
 
 Deploy the dapp locally:
 
@@ -497,20 +660,38 @@ If successful, the terminal should return canister URLs you can open:
 Deployed canisters.
 URLs:
   Frontend canister via browser
-    hello_http_rust_frontend: http://127.0.0.1:4943/?canisterId=ajuq4-ruaaa-aaaaa-qaaga-cai
+    send_http_get_rust_frontend: http://127.0.0.1:4943/?canisterId=ajuq4-ruaaa-aaaaa-qaaga-cai
   Backend canister via Candid interface:
-    hello_http_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
+    send_http_get_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
 ```
 
-Open the candid web UI for the backend (the `hello_http_rust_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the candid web UI for the backend (the `send_http_get_rust_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
-:::note
-In both the Rust and Motoko minimal examples, we did not create a **transform** function so that it transforms the raw response. This is something we will explore in a future section
-:::
+- #### Step 6: Test the dapp on mainnet.
+
+Deploy the dapp to mainnet:
+
+```bash
+dfx deploy --network ic
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    send_http_get_rust_frontend: https://ff5va-7qaaa-aaaap-qbona-cai.ic0.app/
+  Backend canister via Candid interface:
+    send_http_get_rust_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+```
+
+You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
 
 ## Additional resources
 
-* Sample code of [HTTP GET requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
-* Sample code of [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
+- Sample code of [HTTP GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTP GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
