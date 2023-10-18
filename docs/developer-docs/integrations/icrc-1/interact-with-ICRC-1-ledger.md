@@ -4,7 +4,7 @@
 There are two main ways to interact with an ICRC-1 ledger.
 - `dfx canister`: the generic canister call from `dfx`.
 - `ic-cdk`: inter-canister calls for the ICRC-1 ledger.
-- `ledger-js`: a library for interfacing with ICRC-1 ledger on the Internet Computer.
+- `ledger-icrc-js`: a library for interfacing with ICRC-1 ledger on the Internet Computer.
 ## ICRC-1 and ICRC-1 extension endpoints
 
 Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions of ICRC-1 (ICRC-2, ICRC-3,...). 
@@ -48,18 +48,6 @@ This command returns:
 
 ```
 ("XMTK")
-```
-
-To fetch the decimals of the ICRC-1 ledger:
-
-```
-dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
-```
-
-This command returns:
-
-```
-(8 : nat8)
 ```
 
 To fetch the decimals of the ICRC-1 ledger:
@@ -135,7 +123,7 @@ This command returns:
 )
 ```
 
-To fetch the of a account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
+To fetch the balance of an account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
 
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record {owner = principal \"${DEFAULT}\"; })"  
@@ -227,5 +215,5 @@ icrc-ledger-types = "0.1.1"
 
 The documentation for this crate can be found [here](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/). 
 
-## Interacting with an ICRC-1 ledger from your web application (`ledger-js`)
-You will find specifications and examples on how to use the library to interact with ICRC-1 ledgers [here](https://github.com/dfinity/ic-js/tree/main/packages/ledger).
+## Interacting with an ICRC-1 ledger from your web application (`ledger-icrc-js`)
+You will find specifications and examples on how to use the library to interact with ICRC-1 ledgers [here](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc).
