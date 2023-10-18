@@ -23,12 +23,10 @@ An asset canister must first be deployed before control of it can be handed over
 
 The general overview of deploying an asset canister during an SNS launch is as follows:
 - First, the asset canister must be created with or upgraded to a Wasm file from [dfx 0.14.1+](https://github.com/dfinity/sdk/blob/release-0.14.1/src/distributed/assetstorage.wasm.gz).
-- Then, the dapp should hand control of the asset canister over to the SNS by setting the following permissions:
-    - The SNS governance canister must be granted `Commit` and `ManagePermissions` permissions before handing the canister over, and these permissions must be revoked from any other principal.
-    - Only the SNS root is allowed as a controller of the asset canister. 
-    - A whitelist of principals with `Prepare` permissions is created to give certain individuals the permission to upload changes to the asset canister. Changes must be approved through a proposal before they are applied to the asset canister. 
-    - Developers should remove their own `Commit` and `ManagePermissions` permissions. 
-- Lastly, the SNS's function should be registered to commit the configuration.
+- Then, the dapp developers hand over control of the entire dapp to the NNS, including the asset canister.
+- A single NNS proposal creates the dapp's SNS canisters, initializes them, and hands the dapp canisters over to the SNS. The decentralization swap begins.
+- The SNS community then upgrades the dapp canister through an SNS proposal and sets the privileges in the dapp. 
+- After the SNS is created, the asset canister can be upgraded via upgrade arguments that specify the SNS governance's canister ID. 
 
 :::caution
 It is highly recommended to test this workflow prior to the launch of the SNS. All APIs, including the change permissions methods, should be tested thoroughly. 
