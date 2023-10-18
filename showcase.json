@@ -2875,5 +2875,30 @@
   "twitter": "https://twitter.com/221BravoApp",
   "youtube": "",
   "submittableId": "36556639"
+},
+{
+  "name": "dFlow",
+  "description": "BPMN workflows on ICP. Automate interactions between organizations. Build user forms, define scriptable decisions, schedule payments and more.",
+  "website": "https://dcentra.io/dflow",
+  "logo": "/img/showcase/dflow_logo.png",
+  "screenshots": [
+    "/img/showcase/dflow_screenshot.png"
+  ],
+  "video": "https://youtu.be/Ik9FSpgHREw?t=139",
+  "display": "Normal",
+  "id": "dflow",
+  "oneLiner": "Automate interactions between organizations.",
+  "stats": "",
+  "tags": [
+    "Tools/Infrastructure",
+    "DeFi",
+    "DAO",
+    "SocialFi"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/dCentra-io/dflow-icp",
+  "twitter": "",
+  "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
+  "submittableId": "26384395"
 }
 ]
