@@ -1,4 +1,4 @@
-# 0.6: Introduction to dfx
+# 0.6 Introduction to dfx
 
 ## Overview
 
@@ -202,4 +202,4 @@ We'll explore actor objects, classes, and asynchronous messages in a future tuto
 
 ## Next steps
 
-- 1.1: Exploring a live demo.
+- 1.1 Exploring a live demo.

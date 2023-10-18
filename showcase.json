@@ -1971,7 +1971,7 @@
     "tags": [
       "NFT", "Tools / Infrastructure"
     ],
-    "description": "The most comprehensive browsing experience for NFTs. Brwose any NFT collection on the Internet Computer, sort & filter by price or rarity, expose floors, and much more.",
+    "description": "The most comprehensive browsing experience for NFTs. Browse any NFT collection on the Internet Computer, sort & filter by price or rarity, expose floors, and much more.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/dgdg_logo.webp"
   },
@@ -2764,6 +2764,28 @@
     "submittableId": ""
   },
   {
+    "name": "IC based storage service",
+    "description": "IC-based storage service to store and organize any kind of files that works with platform deployed on the IC.",
+    "website": "https://dcm-swiss.com/",
+    "logo": "/img/showcase/ics2_logo.webp",
+    "screenshots": [
+      "/img/showcase/ics2_screenshot.webp"
+  ],
+    "video": "",
+    "display": "Normal",
+    "id": "ics2",
+    "oneLiner": "store and organize your files in IC ecosystem",
+    "stats": "100+",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/sergeybykov85/ic-storage-service/tree/main/ic-ss",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "41213024"
+  },  
+  {
     "name": "aVa",
     "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
     "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
@@ -2876,5 +2898,29 @@
   "youtube": "",
   "submittableId": "41292935",
   "videoContentType": "video/mp4"
+{
+  "name": "dFlow",
+  "description": "BPMN workflows on ICP. Automate interactions between organizations. Build user forms, define scriptable decisions, schedule payments and more.",
+  "website": "https://dcentra.io/dflow",
+  "logo": "/img/showcase/dflow_logo.png",
+  "screenshots": [
+    "/img/showcase/dflow_screenshot.png"
+  ],
+  "video": "https://youtu.be/Ik9FSpgHREw?t=139",
+  "display": "Normal",
+  "id": "dflow",
+  "oneLiner": "Automate interactions between organizations.",
+  "stats": "",
+  "tags": [
+    "Tools/Infrastructure",
+    "DeFi",
+    "DAO",
+    "SocialFi"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/dCentra-io/dflow-icp",
+  "twitter": "",
+  "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
+  "submittableId": "26384395"
 }
 ]

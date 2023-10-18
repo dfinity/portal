@@ -11,8 +11,9 @@ There are two ways of deploying an ICP ledger locally.
 
 Deploying an ICP ledger locally gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments and you have control over which `wasm` version of the ICP ledger you want to interact with. 
 
-There only exists only ICP ledger on the mainnet and the `wasm` that is running on the mainnet is not meant to be used for other token deployments. It needs to be backwards compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
- If you want to deploy your own token or build an ICRC-1 ledger, have a look at the [guide on setting up an ICRC-1 ledger](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md).
+The ICP ledger only exists on the mainnet and the `wasm` that is running on the mainnet is not meant to be used for other token deployments. It needs to be backwards compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
+
+If you want to deploy your own token or build an ICRC-1 ledger, have a look at the [guide on setting up an ICRC-1 ledger](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md).
 
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
@@ -35,7 +36,7 @@ The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVI
 The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icp_ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did`.
 
 [OPTIONAL]
-If you want to make sure, you have the latest ICRC-1 ledger files you can run the following script. 
+If you want to make sure you have the latest ICP ledger files, you can run the following script: 
 ``` sh
 curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/00a4ab409e6236d4082cee4a47544a2d87b7190d/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
 chmod +x download_latest_icp_ledger.sh

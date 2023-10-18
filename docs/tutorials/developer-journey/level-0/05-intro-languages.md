@@ -1,4 +1,4 @@
-# 0.5: Introduction to languages 
+# 0.5 Introduction to languages 
 
 ## Overview
 
@@ -105,4 +105,4 @@ C++ is available through the [icpp-pro CDK](https://docs.icpp.world/) developed 
 
 ## Next steps
 
-- [0.6: Introduction to dfx](06-intro-dfx.md).
+- [0.6 Introduction to dfx](06-intro-dfx.md).
