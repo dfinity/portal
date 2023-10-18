@@ -2049,8 +2049,6 @@
       "/img/showcase/riseofthemagni_screenshot_0.webp"
     ]
   },
-
-  
   {
     "id": "welcomeintothemetaverse",
     "name": "Welcome Into the Metaverse",
@@ -2625,6 +2623,7 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/id-daniel-mccoy/asset-app"
   },
+  {
     "id":"zondax_unreal",
     "name": "Zondax Unreal",
     "oneLiner": "Enhancing Gaming development on IC.",
@@ -2811,6 +2810,10 @@
     "id": "ava",
     "oneLiner": "aVa: Action-Based Decentralized Reputation Landscape.",
     "stats": "All II users",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
     "github": "https://github.com/ava-vs",
     "twitter": "https://twitter.com/ava_projects?t=-ZSMuS6rJLoUucHWynaLeg&s=09",
     "youtube": "https://www.youtube.com/@aVa_Verification",
