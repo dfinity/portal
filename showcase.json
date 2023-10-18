@@ -394,6 +394,20 @@
   },
 
   {
+    "id": "querio",
+    "name": "Querio",
+    "website": "https://querio.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
+    "logo": "/img/showcase/querio.webp",
+    "screenshots": [
+      "/img/showcase/modclub_screenshot_0.webp"
+    ]
+  },
+
+  {
     "id": "cubetopia",
     "name": "Cubetopia",
     "oneLiner": "Build and own an NFT World on the blockchain",
