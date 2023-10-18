@@ -2900,5 +2900,28 @@
   "twitter": "",
   "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
   "submittableId": "26384395"
+},
+  {
+  "name": "DooCoins",
+  "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.\n",
+  "website": "https://www.doo.co",
+  "logo": "/img/showcase/doocoins_logo.webp",
+  "screenshots": [
+    "/img/showcase/doocoins_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "doocoins",
+  "oneLiner": "Kids rewards dApp",
+  "stats": "PWA",
+  "tags": [
+    "Wallet",
+    "Games"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/jakepeg/doo-coins-parent-mvp",
+  "twitter": "https://twitter.com/DooCoins",
+  "youtube": "https://www.youtube.com/watch?v=erIM8kGC7iU&ab_channel=DooCoins",
+  "submittableId": "20511180"
 }
 ]
