@@ -2937,5 +2937,25 @@
   "twitter": "",
   "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
   "submittableId": "26384395"
-}
+},
+  {
+    "name": "IC WebSocket",
+    "description": "IC WebSocket enables you to establish a WebSocket connection between your canister and any client, such as the user browsers. Finally, you can send updates to your users directly from the canister!",
+    "website": "https://demo.icws.io",
+    "logo": "/img/showcase/ic-websocket_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "ic-websocket",
+    "oneLiner": "Send updates from canisters to your users",
+    "stats": "",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/omnia-network/ic-websocket-gateway",
+    "twitter": "https://twitter.com/ic_websocket",
+    "youtube": "https://www.youtube.com/@omnianetwork2947",
+    "submittableId": "43839848"
+  }
 ]
