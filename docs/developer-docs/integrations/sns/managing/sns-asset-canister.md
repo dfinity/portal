@@ -22,17 +22,7 @@ The term **update** refers to changing or updating the assets stored within an a
 An asset canister must first be deployed before control of it can be handed over to an SNS. When a dapp's control is handed over to an SNS, this is also true for the associated asset canister.
 
 The general overview of deploying an asset canister during an SNS launch is as follows:
-- First, the asset canister must be created with or upgraded to a Wasm file from [dfx 0.14.1+](https://github.com/dfinity/sdk/blob/release-0.14.1/src/distributed/assetstorage.wasm.gz).
-- Then, the dapp developers hand over control of the entire dapp to the NNS, including the asset canister.
-- A single NNS proposal creates the dapp's SNS canisters, initializes them, and hands the dapp canisters over to the SNS. The decentralization swap begins.
-- The SNS community then upgrades the dapp canister through an SNS proposal and sets the privileges in the dapp. 
-- After the SNS is created, the asset canister can be upgraded via upgrade arguments that specify the SNS governance's canister ID. 
-
-:::caution
-It is highly recommended to test this workflow prior to the launch of the SNS. All APIs, including the change permissions methods, should be tested thoroughly. 
-:::
-
-To deploy an asset canister, any canister in the `dfx.json` file can be set as `"type": "assets"`, and dfx will automatically generate the required files, such as an assets.wasm.gz file and a candid/assets.did file once the canister has been built. 
+- First, the asset canister must be created. To deploy an asset canister, any canister in the `dfx.json` file can be set as `"type": "assets"`, and dfx will automatically generate the required files, such as an assets.wasm.gz file and a candid/assets.did file once the canister has been built. 
 
 An example of configuring an asset canister within the `dfx.json` file can be found below:
 
@@ -42,7 +32,14 @@ An example of configuring an asset canister within the `dfx.json` file can be fo
       "type": "assets"
     }
 ```
+- Then, the dapp developers hand over control of the entire dapp to the NNS, including the asset canister.
+- A single NNS proposal creates the dapp's SNS canisters, initializes them, and hands the SNS's dapp canisters over to the SNS. The decentralization swap begins.
+- The SNS community then upgrades the dapp canister through an SNS proposal and sets the privileges in the dapp. 
+- After the SNS is created, the asset canister can be upgraded via upgrade arguments that specify the SNS governance's canister ID. 
 
+:::caution
+It is highly recommended to test this workflow prior to the launch of the SNS. All APIs, including the change permissions methods, should be tested thoroughly. 
+:::
 
 ### Deploying locally for testing
 
