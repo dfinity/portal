@@ -137,7 +137,7 @@ dfx ledger --network ic transfer <destination-account-id> --icp <ICP-amount> --m
 
 For example, assume you have the following accounts:
 
-![accounts](../_attachments/accounts.png)
+![accounts](../_attachments/nns-accounts.png)
 
 If you want to transfer one ICP utility token to the `Main` account, you can run the following command:
 
@@ -195,11 +195,11 @@ To stake ICP utility tokens:
 
 For example:
 
-![dissolve delay](../_attachments/dissolve-delay.png)
+![dissolve delay](../_attachments/nns-dissolve.png)
 
-- #### Step 4:  Click **Yes, I’m sure** to confirm the lock up period, then close the window to review the newly-created neuron properties.
+- #### Step 4:  Click **Confirm and Set Delay** to confirm the lock up period. 
 
-![neuron properties](../_attachments/neuron-properties.png)
+![neuron properties](../_attachments/nns-settings.png)
 
 ## What you can do after creating a neuron
 
@@ -234,13 +234,15 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 - #### Step 5:  Type the amount of ICP utility tokens you want to add to the specified neuron, then click **Continue**.
 
-- #### Step 6:  Verify the transaction details, then click **Confirm and Send**.
+![Increase stake](../_attachments/increase-stake1.png)
 
-![confirm top up](../_attachments/confirm-top-up.png)
+- #### Step 6:  Verify the transaction details, then click **Send Now**.
 
-- #### Step 7:  Verify the completed transaction, then click **Close**.
+![Confirm increase stake](../_attachments/increase-stake2.png)
 
-- #### Step 8:  Click the **Neurons** tab to see the increased stake.
+- #### Step 7:  Once the transaction has completed, you will see the increased stake value.
+
+![Increased stake](../_attachments/increased-stake3.png)
 
 ## Disburse dissolved neurons into an account
 
@@ -248,7 +250,7 @@ When the dissolve delay timer for a neuron reaches zero, you can disburse the ne
 
 To disburse a neuron and return its ICP utility tokens:
 
-- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on the unlocked neuron that has reach the ended of its dissolve delay period. For example:
+- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on an unlocked neuron that has reach the ended of its dissolve delay period. For example:
 
 ![unlocked neuron](../_attachments/unlocked-neuron.png)
 
@@ -256,21 +258,11 @@ To disburse a neuron and return its ICP utility tokens:
 
 ![disburse](../_attachments/disburse.png)
 
-- #### Step 3:  Type an address or select an account to receive the ICP utility tokens. For example, you might select the `dev-projects` linked account:
+- #### Step 3:  Type an address or select an account to receive the ICP utility tokens. 
 
-- #### Step 4:  Verify the transaction information, then click **Confirm and Send**. For example, check that the Destination address matches the intended address of the `dev-projects` linked account:
+![select account](../_attachments/select-account.png)
 
-![confirm send](../_attachments/confirm-send.png)
-
-- #### Step 5:  Verify the completed transaction, then click **Close**.
-
-For example:
-
-![confirmation](../_attachments/confirmation.png)
-
-If you transferred the ICP utility tokens to one of your accounts in the Internet Computer ledger canister, you can click the ICP tab and see your new balance reflected. For example:
-
-![updated icp](../_attachments/updated-icp.png)
+- #### Step 4:  Verify the transaction information, then click **Confirm and Send**. 
 
 ## Spawn new neurons
 
