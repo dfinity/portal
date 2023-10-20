@@ -15,9 +15,9 @@ This section defines the current main constraints regarding resource usage on th
 | Instruction limit per update call/heartbeat/timer | 20B per method invocation |
 | Instruction limit query calls | 5B |
 | Instruction limit for canister install and upgrade | 200B |
-| Subnet capacity | 450GB |
+| Subnet capacity | 700GB |
 | Wasm heap size | 4GB |
-| Wasm stable memory | 64GB |
+| Wasm stable memory | 96GB |
 | Wasm custom sections| 2GB per subnet; 1MB per canister; 16 sections at most (per canister)|
 | Wasm code section | 10MB |
 | Query calls execution threads | 2 per replica node |
@@ -29,7 +29,7 @@ This section defines the current main constraints regarding resource usage on th
 The IC may reject WebAssembly modules for reasons such that:
 
 - They declare more than 50,000 functions.
-- They declare more than 300 globals. 
+- They declare more than 1,000 globals.
 - They declare more than 16 exported custom sections (the custom section names with prefix icp:).
 - The number of all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 1,000.
 - The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20,000.

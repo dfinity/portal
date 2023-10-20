@@ -394,6 +394,20 @@
   },
 
   {
+    "id": "querio",
+    "name": "Querio",
+    "website": "https://querio.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
+    "logo": "/img/showcase/querio.webp",
+    "screenshots": [
+      "/img/showcase/modclub_screenshot_0.webp"
+    ]
+  },
+
+  {
     "id": "cubetopia",
     "name": "Cubetopia",
     "oneLiner": "Build and own an NFT World on the blockchain",
@@ -2944,5 +2958,25 @@
   "twitter": "https://twitter.com/DooCoins",
   "youtube": "https://www.youtube.com/watch?v=erIM8kGC7iU&ab_channel=DooCoins",
   "submittableId": "20511180"
-}
+},
+  {
+    "name": "IC WebSocket",
+    "description": "IC WebSocket enables you to establish a WebSocket connection between your canister and any client, such as the user browsers. Finally, you can send updates to your users directly from the canister!",
+    "website": "https://demo.icws.io",
+    "logo": "/img/showcase/ic-websocket_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "ic-websocket",
+    "oneLiner": "Send updates from canisters to your users",
+    "stats": "",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/omnia-network/ic-websocket-gateway",
+    "twitter": "https://twitter.com/ic_websocket",
+    "youtube": "https://www.youtube.com/@omnianetwork2947",
+    "submittableId": "43839848"
+  }
 ]
