@@ -2855,7 +2855,7 @@
   "submittableId": "36556639"
 },
   {
-  "name": "Tali AI ",
+  "name": "Tali AI",
   "description": "Tali is a Discord Support bot that answers common developer queries.",
   "website": "https://trytali.com ",
   "logo": "/img/showcase/tali-ai_logo.webp",
@@ -2863,7 +2863,7 @@
   "display": "Normal",
   "id": "tali-ai",
   "oneLiner": "Tali is a Discord Support bot that answers common developer queries.",
-  "stats": "100k+ devs spt. ",
+  "stats": "100k+ devs supported",
   "tags": [
     "Tools / Infrastructure"
   ],
