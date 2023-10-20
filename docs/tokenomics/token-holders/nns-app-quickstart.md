@@ -197,9 +197,9 @@ For example:
 
 ![dissolve delay](../_attachments/nns-dissolve.png)
 
-- #### Step 4:  Click **Yes, I’m sure** to confirm the lock up period, then close the window to review the newly-created neuron properties.
+- #### Step 4:  Click **Confirm and Set Delay** to confirm the lock up period. 
 
-![neuron properties](../_attachments/neuron-settings.png)
+![neuron properties](../_attachments/nns-settings.png)
 
 ## What you can do after creating a neuron
 
@@ -242,7 +242,7 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 - #### Step 7:  Once the transaction has completed, you will see the increased stake value.
 
-![Increased stake](../_attachments/increase-stake3.png)
+![Increased stake](../_attachments/increased-stake3.png)
 
 ## Disburse dissolved neurons into an account
 
