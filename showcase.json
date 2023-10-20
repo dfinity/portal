@@ -411,12 +411,13 @@
     "id": "cubetopia",
     "name": "Cubetopia",
     "oneLiner": "Build and own an NFT World on the blockchain",
-    "website": "https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/",
+    "website": "https://kqwp7-2yaaa-aaaah-abyna-cai.raw.ic0.app/",
     "tags": [
-      "Games"
+      "Games",
+      "Metaverse"
     ],
     "twitter": "https://twitter.com/TheCubetopia",
-    "description": "Cubetopia is a Web3 world building game where players can create anything on unique voxel islands also called “worlds”. Each world is a mutable NFT stored on the Internet Computer blockchain. Anyone can visit these islands on chain, while the owner of the NFT can update it by building.",
+    "description": "Cubetopia is a Web3 building game where players can create anything on unique blocky islands. Each island is a mutable NFT stored on the Internet Computer blockchain. Anyone can visit these islands on chain, while the owner of the NFT ownership handles building permissions.",
     "stats": "32,500+ ICP volume",
     "display": "Large",
     "logo": "/img/showcase/cubetopia_logo.webp",
