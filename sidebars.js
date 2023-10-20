@@ -64,6 +64,22 @@ const sidebars = {
             "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
           ],
         },
+        {
+          type: "category",
+          label: "Level 3: Space engineer",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-3/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-3/3.1-package-managers",
+            "tutorials/developer-journey/level-3/3.2-https-outcalls",
+            "tutorials/developer-journey/level-3/3.3-certified-data",
+            "tutorials/developer-journey/level-3/3.4-intro-to-agents",
+            "tutorials/developer-journey/level-3/3.5-identities-and-auth",
+            "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
+          ],
+        },
       ],
     },
     {

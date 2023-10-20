@@ -394,6 +394,20 @@
   },
 
   {
+    "id": "querio",
+    "name": "Querio",
+    "website": "https://querio.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
+    "logo": "/img/showcase/querio.webp",
+    "screenshots": [
+      "/img/showcase/modclub_screenshot_0.webp"
+    ]
+  },
+
+  {
     "id": "cubetopia",
     "name": "Cubetopia",
     "oneLiner": "Build and own an NFT World on the blockchain",
@@ -2764,6 +2778,28 @@
     "submittableId": ""
   },
   {
+    "name": "IC based storage service",
+    "description": "IC-based storage service to store and organize any kind of files that works with platform deployed on the IC.",
+    "website": "https://dcm-swiss.com/",
+    "logo": "/img/showcase/ics2_logo.webp",
+    "screenshots": [
+      "/img/showcase/ics2_screenshot.webp"
+  ],
+    "video": "",
+    "display": "Normal",
+    "id": "ics2",
+    "oneLiner": "store and organize your files in IC ecosystem",
+    "stats": "100+",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/sergeybykov85/ic-storage-service/tree/main/ic-ss",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "41213024"
+  },  
+  {
     "name": "aVa",
     "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
     "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
@@ -2853,5 +2889,94 @@
   "twitter": "https://twitter.com/221BravoApp",
   "youtube": "",
   "submittableId": "36556639"
-}
+},
+  {
+  "name": "CARMANIA",
+  "description": "Welcome to the adrenaline-fueled world of \"CARMANIA\" the ultimate automotive customization and racing experience!\nIn this immersive game, you can build-customize your dream car and compete against players from around the globe to dominate the leaderboards.",
+  "website": "https://3tnyu-iiaaa-aaaal-aczcq-cai.raw.icp0.io/",
+  "logo": "/img/showcase/carmania_logo.webp",
+  "screenshots": [
+    "/img/showcase/carmania_screenshot.webp"
+  ],
+  "video": "/img/showcase/carmania_video.mp4",
+  "display": "Normal",
+  "id": "carmania",
+  "oneLiner": "The ultimate automotive customization and racing experience!",
+  "stats": "10,000+ users",
+  "tags": [
+    "Games"
+  ],
+  "usesInternetIdentity": false,
+  "twitter": "https://twitter.com/Carmania_Game",
+  "youtube": "https://youtu.be/KM5Fc-OjTxU",
+  "discord": "https://discord.gg/YTBhnN3N",
+  "submittableId": "41292935",
+  "videoContentType": "video/mp4"
+  },
+{
+  "name": "dFlow",
+  "description": "BPMN workflows on ICP. Automate interactions between organizations. Build user forms, define scriptable decisions, schedule payments and more.",
+  "website": "https://dcentra.io/dflow",
+  "logo": "/img/showcase/dflow_logo.png",
+  "screenshots": [
+    "/img/showcase/dflow_screenshot.png"
+  ],
+  "video": "https://youtu.be/Ik9FSpgHREw?t=139",
+  "display": "Normal",
+  "id": "dflow",
+  "oneLiner": "Automate interactions between organizations.",
+  "stats": "",
+  "tags": [
+    "Tools/Infrastructure",
+    "DeFi",
+    "DAO",
+    "SocialFi"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/dCentra-io/dflow-icp",
+  "twitter": "",
+  "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
+  "submittableId": "26384395"
+},
+  {
+  "name": "DooCoins",
+  "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.\n",
+  "website": "https://www.doo.co",
+  "logo": "/img/showcase/doocoins_logo.webp",
+  "screenshots": [
+    "/img/showcase/doocoins_screenshot.webp"
+  ],
+  "display": "Normal",
+  "id": "doocoins",
+  "oneLiner": "Kids rewards dApp",
+  "tags": [
+    "Wallet",
+    "Games"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/jakepeg/doo-coins-parent-mvp",
+  "twitter": "https://twitter.com/DooCoins",
+  "youtube": "https://www.youtube.com/watch?v=erIM8kGC7iU&ab_channel=DooCoins",
+  "submittableId": "20511180"
+},
+  {
+    "name": "IC WebSocket",
+    "description": "IC WebSocket enables you to establish a WebSocket connection between your canister and any client, such as the user browsers. Finally, you can send updates to your users directly from the canister!",
+    "website": "https://demo.icws.io",
+    "logo": "/img/showcase/ic-websocket_logo.webp",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "ic-websocket",
+    "oneLiner": "Send updates from canisters to your users",
+    "stats": "",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/omnia-network/ic-websocket-gateway",
+    "twitter": "https://twitter.com/ic_websocket",
+    "youtube": "https://www.youtube.com/@omnianetwork2947",
+    "submittableId": "43839848"
+  }
 ]

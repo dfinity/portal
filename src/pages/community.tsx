@@ -126,7 +126,7 @@ const hubs: Hub[] = [
     description:
       "Focusing on Web3 development, LinkUp is the go-to community hub for dreamers and creators dedicated to growing the awareness of the Internet Computer in Germany.",
     image: "/img/community/icp-hub-germany.webp",
-    link: "https://linktr.ee/icp.hub_germany",
+    link: "https://linktr.ee/icphubgermany",
     coordinates: [51.1657, 10.4515],
   },
   {
@@ -824,7 +824,7 @@ function CommunityPage() {
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
-                  href="https://www.risein.com/bootcamps/internet-computer-rust-bootcamp"
+                  href="https://www.risein.com/courses/build-on-internet-computer-with-icp-rust-cdk"
                 >
                   Apply now <LinkArrowUpRight />
                 </Link>

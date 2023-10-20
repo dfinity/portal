@@ -10,7 +10,7 @@ At a high level, the threshold ECDSA implementation on the IC features multiple 
 -   **Computing pre-signatures, signing:** these protocols compute signatures with the secret-shared private key. A **protocol for computing pre signatures**, i.e., quadruples that are used in the actual signing protocol, is run asynchronously to signing requests to precompute pre signatures. This precomputation protocol computes the vast majority of the steps of creating threshold ECDSA signatures. A **signing protocol** is triggered by a signing request of a canister. A signing protocol consumes one precomputed quadruple to efficiently compute a threshold ECDSA signature.
 -   **Public key retrieval:** allows for retrieving a public key of a canister, including potential BIP-32-like key derivation based on a canister-provided derivation path.
 
-It is crucial to note that the private key never exists in reconstructed, but only in secret-shared, form during its whole lifetime, be it during its generation, the re-sharing of the key within a subnet or from one subnet to another, and when computing signatures.
+It is crucial to note that the private key never exists in a reconstructed form, and only in secret-shared form during its whole lifetime, whether that is the key's generation, the re-sharing of the key within a subnet or from one subnet to another, or when computing signatures.
 
 Various NNS proposals have been implemented to perform key management, i.e., initial key generation and key re-sharing. Those proposals are used to define on which subnet to generate an ECDSA master key, to which subnet to re-share the key to have it available for better availability, and which subnet to enable for answering signing requests.
 
