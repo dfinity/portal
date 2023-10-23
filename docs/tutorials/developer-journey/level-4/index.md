@@ -1,18 +1,87 @@
 # Level 4: Space pilot
 
-- [4.1 Using the ICP ledger.](4.1-icp-ledger.md): 
+- [4.1 Using the ICP ledger](4.1-icp-ledger.md): 
+    - Accounts.
+    - Transaction types.
+    - Deploying the ICP ledger locally.
+        - Prerequisites.
+        - Creating a new project.
+        - Locating the Wasm and Candid files.
+        - Creating a `minting` account.
+        - Deploying the canister.
+    - Interacting with the ICP ledger canister.
+        - Using `dfx ledger`.
+        - Using `dfx canister`.
+        - Using the Candid UI.
+    - Resources.
 
+- [4.2 ICRC-1 tokens](4.2-icrc-tokens.md): 
+    - What’s the difference between the ICP and ICRC-1 ledgers?
+        - `Account`s versus `AccountIdentifier`s.
+        - Endpoints .
+    - Index canisters.
+        - Extensions of the standard.
+        - Metadata.
+    - Deploying the ICRC-1 ledger locally.
+        - Prerequisites.
+        - Creating a new project.
+        - Locating the Wasm and Candid files.
+        - Deploying the ICRC-1 ledger on the mainnet.
+    - Interacting with the ICRC-1 ledger.
+        - Using the `dfx canister` command with ICRC-1 endpoints.
+        - Using ICRC-2 endpoints.
+        - Using the Candid UI.
+    - Resources.
 
-- [4.2 ICRC-1 tokens.](4.2-icrc-tokens.md): 
+- [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md): 
+    - Bitcoin integration architecture.
+    - What is ckBTC?
+    - Bitcoin use-cases on the IC.
+    - Deploying a Bitcoin dapp.
+        - Prerequisites.
+        - Setting up a local Bitcoin network.
+        - Cloning the `basic_bitcoin` example.
+        - Deploying the example canister.
+        - Generating a Bitcoin address.
+        - Receiving BTC.
+        - Checking your BTC balance.
+        - Sending BTC.
+    - Resources.
 
+- [4.4 NNS governance and staking](4.4-nns-governance.md):
+    - What is the NNS?
+        - Neurons.
+        - Proposals.
+    - Why is the NNS important to developers?
+    - Using the NNS dapp .
+        - Transferring ICP tokens into your Internet Identity `Main` account.
+        - Staking ICP in a neuron.
+        - Interacting with NNS proposals.
 
-- [4.3 ckBTC and Bitcoin integration.](4.3-ckbtc-and-bitcoin.md): 
+- [4.5 Using Quill](4.5-using-quill.md): 
+    - What is quill?.
+    - Downloading and installing quill.
+    - Using quill’s basic commands.
+    - Using quill with ckBTC.
+    - Using quill with the NNS.
+    - Resources.
 
-
-- [4.4 NNS governance and staking.](4.4-nns-governance.md):
-
-
-- [4.5 Using Quill.](4.5-using-quill.md): 
-
-
-- [4.6 Motoko level 4.](4.6-motoko-lvl4.md): 
+- [4.6 Motoko level 4](4.6-motoko-lvl4.md): 
+    - Mutable state.
+        - Immutable variables versus mutable variables.
+        - Reading data from mutable memory.
+        - Immutable arrays.
+        - Mutable arrays.
+    - Local objects and classes.
+        - Object classes versus actor classes.
+        - Object types.
+        - Object subtyping.
+        - Object classes.
+        - Data arguments.
+    - Message inspection.
+    - Errors and options.
+        - Error handling best practices.
+        - Error reporting with `Option` values.
+        - Error reporting with `Result` variants .
+        - Asynchronous errors.
+    - Resources.
