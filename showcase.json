@@ -2997,5 +2997,30 @@
     "twitter": "https://twitter.com/ic_websocket",
     "youtube": "https://www.youtube.com/@omnianetwork2947",
     "submittableId": "43839848"
+  },
+
+  {
+    "name": "CCAMP",
+    "description": "An asset management protocol that leverages data-driven strategies to effectively manage and reallocate assets among various parties. It encompasses smart contracts residing on EVM blockchains (and eventually non-EVM blockchains), a trio of interconnected canisters for state maintenance and a bespoke data protocol to behave as inter-system glue.",
+    "website": "https://go.usher.so/ccamp",
+    "logo": "/img/showcase/ccamp_logo.webp",
+    "screenshots": [
+      "/img/showcase/ccamp_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "ccamp",
+    "oneLiner": "Modular, and custom data-driven Cross-chain Asset Management Protocol",
+    "stats": "Cross-chain",
+    "tags": [
+      "Bitcoin",
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/usherlabs/ccamp",
+    "twitter": "https://twitter.com/usher_web3",
+    "youtube": "https://www.youtube.com/@usher_web3",
+    "submittableId": "36108625"
   }
 ]
