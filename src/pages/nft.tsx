@@ -8,6 +8,7 @@ import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const largeNfts: { url: string; title: string; imageUrl: string }[] = [
   { imageUrl: "/img/nft/btcflower.webp", title: "", url: "" },
@@ -90,33 +91,8 @@ const NftShowcase = React.memo(() => {
 });
 
 function NftPage() {
-  const [bgDark, setBgDark] = useState(true);
-  const [headerHeight, setHeaderHeight] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setHeaderHeight(
-      document.querySelector("nav.navbar").getBoundingClientRect().height
-    );
-  }, []);
-
-  useEffect(() => {
-    function onScroll() {
-      if (
-        window.scrollY > heroRef.current.clientHeight - headerHeight &&
-        bgDark
-      ) {
-        setBgDark(false);
-      } else if (
-        window.scrollY < heroRef.current.clientHeight - headerHeight &&
-        !bgDark
-      ) {
-        setBgDark(true);
-      }
-    }
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [bgDark, headerHeight]);
+  const isDark = useDarkHeaderInHero(heroRef);
 
   return (
     <Layout
@@ -144,7 +120,7 @@ function NftPage() {
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
-        {bgDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
         <AnimateSpawn variants={transitions.container}>
           <section
             className="overflow-hidden bg-infinite text-white pt-20"

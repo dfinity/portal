@@ -44,6 +44,7 @@ In this developer journey, we focus on developing canisters and applications usi
 - [2.5 Unit, integration, and end2end testing](level-2/2.5-unit-testing.md)
 - [2.6 Motoko level 2](level-2/2.6-motoko-lvl2.md)
 
+
 ## Level 3: Space engineer 
 
 - [3.1 Motoko package managers](level-3/3.1-package-managers.md)

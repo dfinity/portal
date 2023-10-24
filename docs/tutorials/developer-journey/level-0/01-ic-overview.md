@@ -134,4 +134,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-- [0.2: Internet Computer terminology](02-ic-terms.md).
+- [0.2 Internet Computer terminology](02-ic-terms.md).

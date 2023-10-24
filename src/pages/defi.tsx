@@ -10,37 +10,13 @@ import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 function DefiPage() {
-  const [bgDark, setBgDark] = useState(true);
-  const [headerHeight, setHeaderHeight] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(heroRef);
   const globalData = useGlobalData();
   const icpPrice = globalData["icp-price"]["default"] as number;
-
-  useEffect(() => {
-    setHeaderHeight(
-      document.querySelector("nav.navbar").getBoundingClientRect().height
-    );
-  }, []);
-
-  useEffect(() => {
-    function onScroll() {
-      if (
-        window.scrollY > heroRef.current.clientHeight - headerHeight &&
-        bgDark
-      ) {
-        setBgDark(false);
-      } else if (
-        window.scrollY < heroRef.current.clientHeight - headerHeight &&
-        !bgDark
-      ) {
-        setBgDark(true);
-      }
-    }
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [bgDark, headerHeight]);
 
   return (
     <Layout
@@ -58,7 +34,7 @@ function DefiPage() {
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
-        {bgDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
         <AnimateSpawn variants={transitions.container}>
           <section
             className="overflow-hidden bg-infinite text-white pt-20"
@@ -262,8 +238,8 @@ function DefiPage() {
               EVM on the Internet Computer
             </h3>
             <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-              The Bitfinity EVM allows developers to run Solidity smart-contracts
-              at web-speed, directly on the Internet Computer.
+              The Bitfinity EVM allows developers to run Solidity
+              smart-contracts at web-speed, directly on the Internet Computer.
             </p>
             <Link
               className="link-primary link-with-icon"

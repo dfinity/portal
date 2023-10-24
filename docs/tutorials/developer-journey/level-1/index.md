@@ -43,7 +43,7 @@
     - Acquiring cycles using a cycles coupon.
     - Converting ICP tokens to cycles.
 
-- [1.5 Deploying canisters](1.5-deploying-canisters.md) Once we have acquired some cycles, we can deploy our dapp to the mainnet. This module covers: 
+- [1.5 Deploying canisters](1.5-deploying-canisters.md): Once we have acquired some cycles, we can deploy our dapp to the mainnet. This module covers: 
     - Deploying to the mainnet.
 
 - [1.6 Managing canisters](1.6-managing-canisters.md): Once our dapp is deployed on the mainnet, we need to learn how we can manage the canister. This module covers: 

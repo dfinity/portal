@@ -8,8 +8,7 @@ This section is structured as follows:
 
 - This page provides an introduction to the basics of ICP and the ledger. For a more detailed explanation of the complete public interface of the ledger canister head over to the [specification](/docs/current/references/ledger) in the [references section](/docs/current/references/).
 - [Interact with the ICP ledger](interact-with-ledger.md) provides hands on tutorials to interact with the ICP ledger from the command line, JavaScript applications and from canisters.
-- [Ledger local setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
-- [Deploy new token](./deploy-new-token.md) explains how you can create your own token by deploying a custom ledger canister and make it available to exchanges via the [Rosetta API](../rosetta/).
+- [ICP-Ledger local setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
 - [Account trimming](./collecting-dust.md) explains the mechanism to trim the dust accounts from the ledger.
 
 ## Architecture
@@ -20,15 +19,15 @@ An account belongs to and is controlled by the account owner who must be an Inte
 
 An account owner may control more than one account. In this case, each account corresponds to a pair (account_owner, sub_account). The sub-account is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 
-An account on the ledger is identified by its address, which is derived from the principal ID and sub-account identifier.
+An account on the ledger is identified by its `AccountIdentifier`, which is derived from the principal ID and sub-account identifier.
 
 In this context, you can think of principal identifiers as a rough equivalent to the hash of a user’s public key for Bitcoin or Ethereum. You use the corresponding secret key to sign messages and therefore authenticate to the ledger canister and operate on the principal’s account. Canisters can also have accounts in the ledger canister, in which case the address is derived from the canister’s principal.
 
 The ledger canister is initialized using administrative operations that are internal to the Internet Computer. As part of the initialization process, the canister is created with the set of accounts and associated ICP token balances.
 
-:::info Why does the ledger use Account IDs and not just Principal IDs?
+:::info Why does the ledger use `AccountIdentifier`s and not just Principal IDs?
 
-The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by a the wallet software, this is not possible for canisters.
+The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by a the wallet software, this is not possible for canisters. 
 :::
 
 ### Transaction types
@@ -60,7 +59,7 @@ The ICP token is similar to Bitcoin in the following ways:
 
 -   Tokens are entirely fungible.
 
--   Account identifiers are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
+-   `AccountIdentifier`s are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
 
 The ICP token differs from Bitcoin in the following ways:
 

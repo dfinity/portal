@@ -147,6 +147,7 @@ module.exports = {
       "paragraph-sm": ["14px", "22px"],
 
       caption: ["12px", "16px"],
+      "button-xs": ["12px", "22px"],
     },
   },
   plugins: [
@@ -170,6 +171,7 @@ module.exports = {
     }),
     plugin(function ({ addVariant }) {
       addVariant("docs", "html.docs-doc-page &");
+      addVariant("dark-hero", "html[data-hero-theme='dark'] &");
     }),
     plugin(({ addComponents }) => {
       // prettier-ignore
@@ -187,6 +189,7 @@ module.exports = {
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
                 ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
+                ".tw-button-xs": "@apply text-button-xs font-bold tracking-[0.02em] uppercase",
 
 
                 //
