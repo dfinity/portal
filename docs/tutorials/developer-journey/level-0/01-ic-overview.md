@@ -1,4 +1,6 @@
-# 0.1: Overview of the Internet Computer
+# 0.1 Overview of the Internet Computer
+
+[![ICP Developer Journey 0.1 | Overview of the Internet Computer](https://img.youtube.com/vi/oBUpJ4CqmN0/0.jpg)](https://youtu.be/oBUpJ4CqmN0?si=q5r223tFnWoZTMGz)
 
 ## Overview
 
