@@ -2816,8 +2816,6 @@
     "description": "SAMA network, with its original designed consensus and business sharding separation, builds a highly secure and private distributed computational system. It provides data security and computational power for the World Wide Web without altering users’ habits.",
     "website": "https://sama.network/",
     "logo": "/img/showcase/sama_network_logo.png",
-    "screenshots": [],
-    "video": "",
     "display": "Normal",
     "id": "sama_network",
     "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
