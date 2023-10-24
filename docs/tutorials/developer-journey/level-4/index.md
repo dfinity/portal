@@ -33,7 +33,7 @@
         - Using the Candid UI.
     - Resources.
 
-- [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md) One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. In this tutorial, we take a look at ckBTC and the Internet Computer's Bitcoin integration: 
+- [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. In this tutorial, we take a look at ckBTC and the Internet Computer's Bitcoin integration: 
     - Bitcoin integration architecture.
     - What is ckBTC?
     - Bitcoin use-cases on the IC.
@@ -48,25 +48,25 @@
         - Sending BTC.
     - Resources.
 
-- [4.4 NNS governance and staking](4.4-nns-governance.md) The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully on-chain and is responsible for making protocol-level upgrades to the IC:
+- [4.4 NNS governance and staking](4.4-nns-governance.md): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully on-chain and is responsible for making protocol-level upgrades to the IC:
     - What is the NNS?
         - Neurons.
         - Proposals.
     - Why is the NNS important to developers?
-    - Using the NNS dapp .
+    - Using the NNS dapp.
         - Transferring ICP tokens into your Internet Identity `Main` account.
         - Staking ICP in a neuron.
         - Interacting with NNS proposals.
 
-- [4.5 Using Quill](4.5-using-quill.md) Quill is a ledger and governance toolkit that provides support for self-custody of ICP tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**: 
-    - What is quill?.
+- [4.5 Using quill](4.5-using-quill.md): Quill is a ledger and governance toolkit that provides support for self-custody of ICP tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**: 
+    - What is quill?
     - Downloading and installing quill.
     - Using quill’s basic commands.
     - Using quill with ckBTC.
     - Using quill with the NNS.
     - Resources.
 
-- [4.6 Motoko level 4](4.6-motoko-lvl4.md) In this final Motoko module of the developer journey series, we'll cover the following Motoko concepts and components:
+- [4.6 Motoko level 4](4.6-motoko-lvl4.md): In this final Motoko module of the developer journey series, we'll cover the following Motoko concepts and components:
     - Mutable state.
         - Immutable variables versus mutable variables.
         - Reading data from mutable memory.
