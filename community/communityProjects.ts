@@ -326,7 +326,7 @@ const communityProjects: SampleItem[] = [
     level: "advanced",
     languages: ["typescript"],
     contentType: ["code samples", "community repo", "live demos"],
-    image: "/img/community-projects/deti:-decentralized-time-travel.png",
+    image: "/img/community-projects/deti-decentralized-time-travel.png",
   },
   {
     index: 19,
@@ -383,7 +383,7 @@ const communityProjects: SampleItem[] = [
     languages: ["motoko"],
     contentType: ["code samples", "community repo", "live demos"],
     image:
-      "/img/community-projects/cronacle-+-freeos:-a-cross-chain-oracle-for-a-democratic-ubi.jpg",
+      "/img/community-projects/cronacle-+-freeos-a-cross-chain-oracle-for-a-democratic-ubi.jpg",
   },
   {
     index: 22,
@@ -421,7 +421,7 @@ const communityProjects: SampleItem[] = [
     languages: ["motoko"],
     contentType: ["code samples", "community repo", "live demos"],
     image:
-      "/img/community-projects/bazahei:-the-first-icp-xrp-cross-chain-nft.png",
+      "/img/community-projects/bazahei-the-first-icp-xrp-cross-chain-nft.png",
   },
   {
     index: 24,
@@ -959,7 +959,7 @@ const communityProjects: SampleItem[] = [
     languages: ["motoko"],
     contentType: ["code samples", "community repo"],
     image:
-      "/img/community-projects/meta-yield-liquid-staking-crowdfunding-platform-for-icp..png",
+      "/img/community-projects/meta-yield-liquid-staking-crowdfunding-platform-for-icp.png",
   },
   {
     index: 57,
@@ -1100,7 +1100,7 @@ const communityProjects: SampleItem[] = [
     level: "advanced",
     languages: ["motoko"],
     contentType: ["code samples", "community repo", "live demos"],
-    image: "/img/community-projects/presto:-escrow-title-and-trust-dapp.png",
+    image: "/img/community-projects/presto-escrow-title-and-trust-dapp.png",
   },
   {
     index: 66,

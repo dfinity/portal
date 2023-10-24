@@ -1,6 +1,10 @@
 import React from "react";
 import useGlobalData from "@docusaurus/useGlobalData";
-import { VotingRewardsPluginData } from "../../LandingPage/ICPToken/VotingRewardsPluginData";
+
+type VotingRewardsPluginData = {
+  reward: number;
+  dissolveDelay: number;
+}[];
 
 const HeroGraphic: React.FC<{ className?: string }> = ({ className }) => {
   const globalData = useGlobalData();

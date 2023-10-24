@@ -12,6 +12,7 @@ const redirects = `
   /docs/current/references/motoko-ref/* /docs/current/motoko/main/base/:splat
   /features/green /capabilities/sustainability
   /features /capabilities
+  /openchat /ois
   /howitworks /how-it-works
   /showcase /ecosystem
   /docs/videos-tutorials /developers
@@ -126,7 +127,6 @@ const redirects = `
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
   
   /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
-  /docs/rosetta-api/deploy-new-token /docs/current/developer-docs/integrations/ledger/deploy-new-token
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
   /docs/integration/ledger-quick-start /docs/current/developer-docs/integrations/ledger/
   /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/integrations/ledger/ledger-local-setup
@@ -152,6 +152,30 @@ const redirects = `
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
   /sustainability /capabilities/sustainability
+  /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-journey/
+  /install.sh)" /docs/current/developer-docs/setup/
+  /docs/current/motoko/intro/ /docs/current/motoko/main/motoko
+  /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
+  /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/setup/
+  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/current/motoko/main/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/current/motoko/main/base/IterType
+  /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/agents/
+  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/integrations/internet-identity/overview
+  /docs/quickstart/local-quickstart.html /docs/current/developer-docs/setup/
+  /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
+  /docs/quickstart/network-quickstart.html /docs/current/developer-docs/setup/
+  /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
+  /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/integrations/internet-identity/overview
+  /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
+  /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
+  /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
+  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/
+  /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
+  /docs/current/concepts/what-is-IC /docs/current/concepts/
+  /docs/current/concepts/data-centers /docs/current/concepts/
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

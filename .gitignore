@@ -27,3 +27,5 @@ yarn-error.log*
 docs.json
 stats.py
 unlighthouse.config.ts
+# Local Netlify folder
+.netlify

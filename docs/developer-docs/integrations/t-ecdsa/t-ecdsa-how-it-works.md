@@ -10,7 +10,7 @@ At a high level, the threshold ECDSA implementation on the IC features multiple 
 -   **Computing pre-signatures, signing:** these protocols compute signatures with the secret-shared private key. A **protocol for computing pre signatures**, i.e., quadruples that are used in the actual signing protocol, is run asynchronously to signing requests to precompute pre signatures. This precomputation protocol computes the vast majority of the steps of creating threshold ECDSA signatures. A **signing protocol** is triggered by a signing request of a canister. A signing protocol consumes one precomputed quadruple to efficiently compute a threshold ECDSA signature.
 -   **Public key retrieval:** allows for retrieving a public key of a canister, including potential BIP-32-like key derivation based on a canister-provided derivation path.
 
-It is crucial to note that the private key never exists in reconstructed, but only in secret-shared, form during its whole lifetime, be it during its generation, the re-sharing of the key within a subnet or from one subnet to another, and when computing signatures.
+It is crucial to note that the private key never exists in a reconstructed form, and only in secret-shared form during its whole lifetime, whether that is the key's generation, the re-sharing of the key within a subnet or from one subnet to another, or when computing signatures.
 
 Various NNS proposals have been implemented to perform key management, i.e., initial key generation and key re-sharing. Those proposals are used to define on which subnet to generate an ECDSA master key, to which subnet to re-share the key to have it available for better availability, and which subnet to enable for answering signing requests.
 
@@ -55,13 +55,28 @@ We next give an overview of the API for threshold ECDSA. For the authoritative s
 
 Each API call refers to a threshold ECDSA master key by virtue of a 2-part identifier comprising a curve and a key id as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
--   `ecdsa_public_key`: this method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.<br/>
+-   `[ecdsa_public_key](/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)`: this method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.<br/>
 For curve `secp256k1`, the public key is derived using a generalization of BIP32 (see ia.cr/2021/1330, Appendix D). To derive (non-hardened) BIP-0032-compatible public keys, each byte string (blob) in the `derivation_path` must be a 4-byte big-endian encoding of an unsigned integer less than 2<sup>31</sup>.<br/>
 The return result is an extended public key consisting of an ECDSA `public_key`, encoded in SEC1 compressed form, and a `chain_code`, which can be used to deterministically derive child keys of the `public_key`.
 This call requires that the ECDSA feature is enabled, and the `canister_id` meets the requirement of a canister id. Otherwise it will be rejected.
--   `sign_with_ecdsa`: this method returns a new ECDSA signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.<br/>
+-   `[sign_with_ecdsa](/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)`: this method returns a new ECDSA signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.<br/>
 The signatures are encoded as the concatenation of the SEC1 encodings of the two values `r` and `s`. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.<br/>
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
+
+An example of the API can be found below:
+
+```
+  ecdsa_public_key : (record {
+    canister_id : opt canister_id;
+    derivation_path : vec blob;
+    key_id : record { curve: ecdsa_curve; name: text };
+  }) -> (record { public_key : blob; chain_code : blob; });
+  sign_with_ecdsa : (record {
+    message_hash : blob;
+    derivation_path : vec blob;
+    key_id : record { curve: ecdsa_curve; name: text };
+  }) -> (record { signature : blob });
+```
 
 Note that in case of high system load, a request to compute an ECDSA signature may time out. In this case, the canister may want to back off and retry the request later.
 

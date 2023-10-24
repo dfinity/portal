@@ -6,7 +6,8 @@ export function useDarkHeaderInHero(heroRef: React.RefObject<HTMLDivElement>) {
 
   useEffect(() => {
     setHeaderHeight(
-      document.querySelector("nav.navbar").getBoundingClientRect().height
+      document.querySelector("nav.marketing-navbar").getBoundingClientRect()
+        .height
     );
   }, []);
 

@@ -47,7 +47,7 @@ export default function Home(): JSX.Element {
             {
               caption: "Open Internet Services",
               title: "Web 3.0",
-              link: "/openchat",
+              link: "/ois",
             },
             {
               caption: "Internet Identity",

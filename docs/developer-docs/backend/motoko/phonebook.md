@@ -4,6 +4,52 @@
 
 In this guide, you are going to write a simple dapp that enables you to store and look up telephone numbers. This guide illustrates how to import and use a few basic Motoko library functions.
 
+## Package managers
+
+While we'll be using the Motoko base library in this example, it important to mention that there are hundreds of third-party Motoko libraries that can be downloaded and imported using a package manager. A package manager is a tool used to install, upgrade, and manage libraries. For Motoko, [Mops](https://mops.one) and [Vessel](https://github.com/dfinity/vessel) are supported package managers.
+
+### Mops
+
+Mops can be installed with the `npm` command:
+
+```
+npm i -g ic-mops
+```
+
+Packages can then be installed with the `mops` command, such as:
+
+```
+mops add base
+```
+
+Then, configure `dfx.json` to use Mops as a `packtool`:
+
+```json
+{
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
+}
+```
+
+### Vessel
+
+Vessel can be installed by downloading the Vessel binary from [the GitHub release page](https://github.com/dfinity/vessel/releases).
+
+To install a package using Vessel, edit the `vessel.dhall` file to include what packages your project will import. 
+
+Then, configure `dfx.json` to use Vessel as a `packtool`:
+
+```json
+"defaults": {
+  "build": {
+    "packtool": "vessel sources"
+  }
+}
+```
+
 For this guide, the Motoko base library functions are defined in the `List` and `AssocList` modules and enable you to work with lists as linked key-value pairs. In this example, the **key** is a `name` and the **value** is the `phone` text string associated with that name.
 
 This dapp supports the following function calls:
