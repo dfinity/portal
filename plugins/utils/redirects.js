@@ -174,6 +174,7 @@ const redirects = `
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-IC
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
+  /docs/current/concepts/what-is-IC /docs/current/concepts/
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
