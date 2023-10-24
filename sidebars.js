@@ -150,7 +150,6 @@ const sidebars = {
             id: "concepts/index",
           },
           items: [
-            "concepts/what-is-IC",
             "concepts/canisters-code",
             "concepts/data-centers",
             "developer-docs/gas-cost",
