@@ -34,6 +34,7 @@
 	    - Creating a new project.
 	    - Using `dfx deps`.
 
+
 - [2.4 Introduction to Candid](2.4-intro-candid.md): Candid is an interface description language that has unique support for IC features. This module covers:
     - Candid types and values.
 	    - Candid textual values.
