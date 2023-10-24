@@ -18,10 +18,10 @@
 - [4.2 ICRC-1 tokens](4.2-icrc-tokens.md): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, we'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard: 
     - What’s the difference between the ICP and ICRC-1 ledgers?
         - `Account`s versus `AccountIdentifier`s.
-        - Endpoints .
+        - Endpoints.
     - Index canisters.
-        - Extensions of the standard.
-        - Metadata.
+    - Extensions of the standard.
+    - Metadata.
     - Deploying the ICRC-1 ledger locally.
         - Prerequisites.
         - Creating a new project.
