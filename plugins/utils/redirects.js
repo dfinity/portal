@@ -175,6 +175,7 @@ const redirects = `
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/concepts/what-is-IC /docs/current/concepts/
+  /docs/current/concepts/data-centers /docs/current/concepts/
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

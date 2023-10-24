@@ -151,7 +151,6 @@ const sidebars = {
           },
           items: [
             "concepts/canisters-code",
-            "concepts/data-centers",
             "developer-docs/gas-cost",
             "concepts/governance",
             "concepts/nodes-subnets",
