@@ -1,36 +1,47 @@
-import Layout from "@theme/Layout";
-import React from "react";
-import Ecosystem from "../components/Basics/Ecosystem";
-import Ecosystem2 from "../components/Basics/Ecosystem2";
-import Hero from "../components/Basics/Hero";
-import HostWeb from "../components/Basics/HostWeb";
-import InternetIdentity from "../components/Basics/InternetIdentity";
-import ItsGreen from "../components/Basics/ItsGreen";
-import TrueScaling from "../components/Basics/TrueScaling";
 import Head from "@docusaurus/Head";
-import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import React, { useEffect } from "react";
 import ShareMeta from "../components/Common/ShareMeta";
 
 const IcpNewsletterRedirectPage: React.FC = () => {
+  const metaDescription =
+    "Stay informed with the latest on the Internet Computer. Browse the previous Newsletters for current updates.";
+  const title = "ICP News & Updates Mailing";
+  const { siteConfig } = useDocusaurusContext();
+
+  const redirectTo =
+    "https://us16.campaign-archive.com/home/?u=33c727489e01ff5b6e1fb6cc6&id=7e9469a315";
+
+  useEffect(() => {
+    // redirect with JS as well, just in case...
+    window.location.href = redirectTo;
+  }, []);
+
   return (
-    <Layout
-      title="ICP News & Updates Mailing"
-      description="Stay informed with the latest on the Internet Computer. Browse the previous Newsletters for current updates."
-      editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
-    >
+    <>
       <ShareMeta image="/img/shareImages/share-icp-newsletter.jpg"></ShareMeta>
       <Head>
-        <meta
-          httpEquiv="refresh"
-          content="0; url=https://us16.campaign-archive.com/home/?u=33c727489e01ff5b6e1fb6cc6&id=7e9469a315"
-        />
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
+        <meta name="description" content={metaDescription} />
+
+        <meta name="twitter:site" content={siteConfig.url} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={metaDescription} />
+
+        {/* add a small delay of 1 second to prevent anecdotal security warning */}
+        <meta httpEquiv="refresh" content={`1; url=${redirectTo}`} />
       </Head>
-      <main className="w-full overflow-hidden">
-        <div className="container-10 py-30 md:py-40 tw-lead">
-          Please wait while you are redirected to the ICP Newsletter archive.
+
+      <main className="fixed inset-0 flex justify-center items-center">
+        {/* spinner in the center of screen */}
+        <div className="spinner">
+          <span className="bounce1" />
+          <span className="bounce2" />
+          <span className="bounce3" />
         </div>
       </main>
-    </Layout>
+    </>
   );
 };
 
