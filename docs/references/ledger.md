@@ -34,7 +34,7 @@ The ledger canister keeps track of **accounts**:
         h = sha224(“\x0Aaccount-id” || principal || subaccount_identifier)
 
 
-The following call to the method `account_identifier` on the ledger canister (`ryjl3-tyaaa-aaaaa-aaaba-cai`) can be used to get your account identifier; replace the value `PRINCIPAL` with your account's principal: 
+The following call to the method `account_identifier` on the ledger canister (`ryjl3-tyaaa-aaaaa-aaaba-cai`) can be used to get the account identifier of the first subaccount for your principal; replace the value `PRINCIPAL` with your account's principal: 
 
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_identifier '(record {owner = principal "PRINCIPAL"; subaccount = opt blob "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01" })' --candid rs/rosetta-api/icp_ledger/ledger.did
