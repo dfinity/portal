@@ -3006,18 +3006,16 @@
     "screenshots": [
       "/img/showcase/fpdao_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "fpdao",
     "oneLiner": "The story of blockchain, told in Art.",
-    "stats": "",
     "tags": [
       "NFT",
       "DAO"
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/flowerpowerdao/",
-    "twitter": "https://twitter.com/btcflower",
+    "twitter": "https://twitter.com/btcflower"
   },
     {
     "name": "CCAMP",
