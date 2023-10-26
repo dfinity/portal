@@ -351,12 +351,12 @@ const sidebars = {
         type: "doc",
         id: "developer-docs/production/index",
       },
-      {
+      items: [
+        {
           type: "doc",
           label: "Canister history",
           id: "developer-docs/production/canister-history",
         },
-      items: [
         {
           type: "category",
           label: "Custom domains",
