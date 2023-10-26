@@ -73,35 +73,6 @@ This command calls the `hello_world_backend` canister that has been deployed to 
 Any commands that intend to target a canister deployed to the playground must use the `--playground` or `--network playground` flag in order to target the borrowed canister(s). 
 :::
 
-## Defining a local playground network
-
-Using a custom playground network can be beneficial for several development workflows, such as sharing a canister pool with a development team to avoid managing cycles wallets for developer, or using a canister pool for CI preview deployments without having to continuously create and delete canisters. 
-
-Custom playground networks can be defined in the project's `dfx.json` file in the `network` definition section. The following steps can be used to define a custom playground network:
-
-- #### Step 1: Clone the Motoko playground repo with the command:
-
-```
-git clone https://github.com/dfinity/motoko-playground
-```
-
-- #### Step 2: Add access control if desired.
-
-- #### Step 3: Modify the `install_code` to skip Wasm analysis. This step is important if you plan on using large Wasm files or intend to use calls that are limited by the Wasm analysis.
-
-- #### Step 4: Deploy your canisters.
-
-- #### Step 5: Configure your custom playground network in the `dfx.json` file as shown below:
-
-```
-"<network name>": {
-  "playground": {
-    "playground_canister": "<canister pool id>",
-    "timeout_seconds": <amount of seconds after which a canister is returned to the pool>
-  }
-}
-```
-
 ## Creating a custom playground with separate pool creation
 
 As an alternative to a staging environment or the Motoko mainnet playground, the Motoko playground allows for custom, private playgrounds to be deployed. Using a custom playground allows for extensive customization, such as enabling access control by restricting the playground's usage to only allow certain principals, configuring more generous canister timeouts and the amount of available cycles, and allowing some (or all) of the function calls that the mainnet Motoko playground does not allow, such as sending cycles to other canisters. 
