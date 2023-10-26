@@ -122,6 +122,9 @@ dfx deploy wasm-utils
 
 If the value `<network name>` is set as `playground`, then the command `dfx deploy --playground` will deploy to your custom playground. Otherwise, the command has to use `--network <network name>`.
 
+:::info 
+This network definition can also go into `networks.json` file so it applies to every project, not just the current project, since `dfx.json` files are project-specific. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`. 
+
 ## Motoko playground in the web browser
 
 Motoko playground is also available through the Motoko playground frontend canister, which can be accessed at the following public URL:
