@@ -6,7 +6,7 @@ The Neurons' Fund (NF) facilitates bootstrapping the Internet Computer (IC) ecos
 
 ## Background and motivation
 
-The success of the IC is dependent on the services built on the IC. Similar to Ethereum, we envisage that, in the long run, the value of services built on the IC will collectively be worth more than the IC itself.
+The success of the IC is dependent on the dapps built on the IC. Similar to Ethereum, we envisage that, in the long run, the value of services built on the IC will collectively be worth more than the IC itself.
 The NF introduces the concept of an NNS controlled treasury. This treasury aims to assist in the bootstrapping of the SNS DAO ecosystem. The NNS will decide how the treasury resources are allocated. The NNS treasury can be extended in the future to support additional community-developed governance and fundraising frameworks.
 
 To build this treasury, NNS neurons flagged as NF, will expose their maturity to the risks the NF fund is taking when participating in SNSes. Maturity of NF neurons will be reduced when the NF decides to participate. At a later date NF neurons whose maturity was reduced will be rewarded with maturity increases, dependent on the success of the NF's participation.

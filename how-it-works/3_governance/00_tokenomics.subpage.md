@@ -10,7 +10,7 @@ slug: tokenomics
 
 ### The ICP utility token
 
-The Internet Computer (IC) makes use of a utility token called ICP. This token is used for the following functions on the platform: First, any ICP holder can participate in the governance of the IC by staking ICP in order to vote on proposals and earn voting rewards. Second, you can transform ICP into cycles, which are used as fuel for computation. Third, ICP tokens are used to pay the entities who provide compute capacity by operating node machines. Last but not least, ICP can be used in order to participate in token swaps of decentralized autonomous organizations (DAOs) on the IC. We will elaborate on these four use cases in the following. In addition to the aforementioned platform use cases, ICP can also be used as a medium of exchange, i.e., to pay for goods and services like NFTs, subscriptions, etc.
+The Internet Computer (IC) makes use of a utility token called ICP. This token is used as follows in the protocol: First, any ICP holder can participate in the governance of the IC by staking ICP and then vote on or submit governance proposals and earn voting rewards. Second, ICP can be transformed into cycles and pay for Internet Computer resources. Third, ICP tokens are used to renumerate node providers who operate node machines running the Internet Computer protocol. Last but not least, ICP can be used to participate in token swaps of decentralized autonomous organizations (DAOs) on the IC. These four protocol use cases are eloborated on in the following. However, ICP can of course also be used as a medium of exchange to pay for goods and services such as NFTs, subscriptions, etc.
 
 ### Governance and voting rewards
 
