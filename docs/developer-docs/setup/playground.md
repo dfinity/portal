@@ -106,7 +106,7 @@ git clone https://github.com/dfinity/motoko-playground
 
 As an alternative to a staging environment or the Motoko mainnet playground, the Motoko playground allows for custom, private playgrounds to be deployed. Using a custom playground allows for extensive customization, such as enabling access control by restricting the playground's usage to only allow certain principals, configuring more generous canister timeouts and the amount of available cycles, and allowing some (or all) of the function calls that the mainnet Motoko playground does not allow, such as sending cycles to other canisters. 
 
-Using a custom playground can help simplify development for teams, since the whole team can use a custom playground without needing to manage individual cycle balances. To create a custom playground, **separate pool creation** can be used. 
+Using a custom playground can help simplify development for teams, since the whole team can use a custom playground without needing to manage individual cycle balances.
 
 - #### Step 1: Clone the Motoko playground repo with the command:
 
