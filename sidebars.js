@@ -351,6 +351,11 @@ const sidebars = {
         type: "doc",
         id: "developer-docs/production/index",
       },
+      {
+          type: "doc",
+          label: "Canister history",
+          id: "developer-docs/production/canister-history",
+        },
       items: [
         {
           type: "category",
