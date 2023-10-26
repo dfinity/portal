@@ -18,23 +18,25 @@ Anyone can participate in the governance of the IC by staking ICP tokens in so-c
 
 For participation in governance, neurons receive voting rewards which can be converted into newly minted ICP. Every day, the IC calculates a voting reward pot according to a schedule, which it then divides among all eligible neurons according to their relative voting power. The schedule for voting rewards is designed to incentivize early adoption: Initially at genesis, 10% of the total supply of ICP is distributed in voting rewards on an annualized basis. Over the course of eight years, this number falls to 5%.
 
-As the daily reward amount is independent of the overall amount of staked ICP in the system, participants receive larger rewards if overall staking and participation in governance decreases. This mechanism creates a natural incentive to stake ICP and participate in governance. As of November 2022, 266M ICP is staked, corresponding to 54% of the total supply. A significant part of staked ICP, namely 123M ICP (i.e., 46%), is staked for the maximum time of 8 years expressing the long-term commitment of these stakers.
+As the daily reward amount is independent of the overall amount of staked ICP in the system and is distributed to neurons in proportion to their voting power and ratio of the proposals they voted on. This mehanism creates a natural incentive to stake ICP and participate in governance: the lower participation is the higher the rewards are. As of November 2022, 266M ICP is staked, corresponding to 54% of the total supply. A significant part of staked ICP, namely 123M ICP (i.e., 46%), is staked for the maximum time of 8 years expressing the long-term commitment of these stakers.
 
-Neurons can be configured to vote automatically by following the votes of other neurons, in an advanced form of “liquid democracy.” Neurons that vote automatically still receive their full share of the voting reward, as they enable the IC community to reach decisions securely and quickly.
+Neurons can be configured to vote automatically by following the votes of other neurons, an advanced form of “liquid democracy.” Neurons that vote automatically still receive their full share of the voting rewards, as they enable the IC community to reach decisions securely and quickly.
 
 The following graph depicts annualized voting rewards as a function of the staking time as of November 1, 2022. For current estimates of annualized voting rewards, refer to the IC Dashboard’s [Governance page](https://dashboard.internetcomputer.org/governance).
 
 ![](/img/how-it-works/voting_rewards.png)
 
-### Cycles as fuel for computation
+### Cycles as fuel for computation and other resources
 
-ICP can be used to pay for the usage of the IC. More specifically, ICP tokens can be converted to cycles (i.e., burned), and these cycles are used by developers to pay for installing smart contracts, called “canisters” on the IC, for the resources that canisters use (storage, CPU, and bandwidth). The cycle price is pegged to a basket of fiat currencies, so the conversion rate ICP to cycle fluctuates with the market price of ICP. Hence the cost to developers of acquiring fuel to run their application is predictable.
+ICP can be used to pay for the usage of resources consumed the IC. More specifically, ICP tokens can be converted to cycles (i.e., burned), and these cycles are used by developers to pay for installing smart contracts, called “canisters” on the IC, for the resources that canisters use (storage, CPU, and bandwidth). The cycle price is pegged to a basket of fiat currencies, so the conversion rate ICP to cycle fluctuates with the market price of ICP. Hence the cost to developers of acquiring fuel to run their application is predictable.
 
-In the "reverse gas model" of the IC, developers pre-pay costs by loading canisters with computation cycles. As a consequence, users can interact with a decentralized application (dapp) without having to pay in tokens. Since cycles are stable in cost, developers know in advance how much they will need to spend on computation & storage.
+In this so-called "reverse gas model" of the IC, developers pre-pay costs by loading canisters with computation cycles. As a consequence, users can interact with a decentralized application (dapp) without needing tokens or dealing with seed-phrases. As cycles are stable in cost, developers know in advance how much they will need to spend on computation, storage, and other resources.
 
 ### Node provider rewards
 
-ICP tokens are used to pay the node providers—these are the entities that own and operate the computing nodes that host the IC. Node provider rewards are paid via newly minted ICP and computed on a monthly basis for each node individually. The amount per node depends on two parameters: First, the location of the node, as hosting prices differ between locations. Second, the type of the node, i.e., the hardware and connectivity specifications.
+ICP tokens are used to renumerate node providers—these are the entities that own and operate the computing nodes that run the Internet Computer protocol. Node provider rewards are paid via newly minted ICP. The renumeration they receive is fixed per node and tightly related to their actual costs. It depends on two parameters: First, the location of the node, as hosting prices differ between locations. Second, the type of the node, i.e., the hardware and connectivity specifications.
+
+
 
 To cover the investment & running cost of nodes, which occur in fiat currency terms, node provider rewards are specified in XDR, and are converted into ICP based on the average exchange rate over the last 30 days.
 
