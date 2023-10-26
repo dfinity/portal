@@ -73,7 +73,7 @@ This command calls the `hello_world_backend` canister that has been deployed to 
 Any commands that intend to target a canister deployed to the playground must use the `--playground` or `--network playground` flag in order to target the borrowed canister(s). 
 :::
 
-### Defining custom playground networks
+## Defining a local playground network
 
 Using a custom playground network can be beneficial for several development workflows, such as sharing a canister pool with a development team to avoid managing cycles wallets for developer, or using a canister pool for CI preview deployments without having to continuously create and delete canisters. 
 
@@ -101,6 +101,55 @@ git clone https://github.com/dfinity/motoko-playground
   }
 }
 ```
+
+## Creating a custom playground with separate pool creation
+
+As an alternative to a staging environment or the Motoko mainnet playground, the Motoko playground allows for custom, private playgrounds to be deployed. Using a custom playground allows for extensive customization, such as enabling access control by restricting the playground's usage to only allow certain principals, configuring more generous canister timeouts and the amount of available cycles, and allowing some (or all) of the function calls that the mainnet Motoko playground does not allow, such as sending cycles to other canisters. 
+
+Using a custom playground can help simplify development for teams, since the whole team can use a custom playground without needing to manage individual cycle balances. To create a custom playground, **separate pool creation** can be used. 
+
+- #### Step 1: Clone the Motoko playground repo with the command:
+
+```
+git clone https://github.com/dfinity/motoko-playground
+```
+
+- #### Step 2: To create a separate pool, first use the current Motoko playground pool and `wasm-utils` canisters as the starting point. 
+
+These can be found [here](https://github.com/dfinity/motoko-playground/tree/main/service).
+
+- #### Step 3: Then, edit the `pool/Main.mo` file to  change your custom playground settings, such as:
+
+- Add access control as desired, such as creating an `whitelist` of principals that are permitted to use the custom playground.
+
+- Change the Wasm transformation to fit your desired configuration. In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted, such as:
+
+```motoko
+let wasm = args.wasm_module;
+```
+
+- #### Step 4: Then deploy the pool canister, and if necessary, deploy the `wasm-utils` canister:
+
+```
+dfx deploy pool
+dfx deploy wasm-utils
+```
+
+- #### Step 5: Lastly, define the local playground network in your project's `dfx.json` file. In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
+
+```json
+"<network name>": {
+  "playground": {
+    "playground_canister": "<canister pool id>",
+    "timeout_seconds": <amount of seconds after which a canister is returned to the pool>
+  },
+  "providers": [
+      "https://icp0.io"
+  ]
+}
+```
+
+If the value `<network name>` is set as `playground`, then the command `dfx deploy --playground` will deploy to your custom playground. Otherwise, the command has to use `--network <network name>`.
 
 ## Motoko playground in the web browser
 
@@ -266,3 +315,5 @@ window.addEventListener('message', responseListener)
 :::info
 This example works for `localhost` out of the box. To use this feature in production, please submit a PR to the [Motoko playground](https://github.com/dfinity/motoko-playground.git) repository that adds your application's public URL to the file `src/integrations/allowedOrigins.js`.
 :::
+
+
