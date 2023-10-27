@@ -91,9 +91,11 @@ These can be found [here](https://github.com/dfinity/motoko-playground/tree/main
 
 - #### Step 3: Then, edit the `pool/Main.mo` file to  change your custom playground settings, such as:
 
-- Add access control as desired, such as creating an `whitelist` of principals that are permitted to use the custom playground.
+- Add access control [here](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L134) as desired, such as creating an `whitelist` of principals that are permitted to use the custom playground.
 
-- Change the Wasm transformation to fit your desired configuration. In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted, such as:
+- Configure the canister's time to live [here](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Types.mo#L22).
+
+- Change the Wasm transformation to fit your desired configuration [here](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L150). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted, such as:
 
 ```motoko
 let wasm = args.wasm_module;
