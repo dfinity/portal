@@ -28,11 +28,11 @@ declare module "@site/.docusaurus/roadmap-data/default/roadmap-data.json" {
   export default data;
 }
 
-declare module "@site/.docusaurus/what-is-the-ic-data/default/what-is-the-ic.json" {
+/*declare module "@site/.docusaurus/what-is-the-ic-data/default/what-is-the-ic.json" {
   import { WhatIsIcpTopic } from "./src/components/HowItWorksPage/WhatIsIcpData";
   const data: WhatIsIcpTopic[];
   export default data;
-}
+}*/
 
 declare module "@site/.docusaurus/home-showcase/default/home-showcase.json" {
   import { ShowcaseProject } from "./src/components/ShowcasePage/ShowcaseProject";
