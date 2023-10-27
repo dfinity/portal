@@ -16,6 +16,8 @@ The correct behavior of a canister can be checked in two steps. First, inspect t
 
 Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/developer-docs/backend/reproducible-builds.md).
 
+Additionally, developers can utilize the [canister history](/docs/current/developer-docs/production/canister-history) feature to track changes to the canister's Wasm module hash. 
+
 ## Confidence that the canister behavior will not unexpectedly change
 
 Canister smart contracts are deployed and managed by controllers. A controller's level of decentralization can range from being managed by a single person, or team of people up to being managed by the NNS or another kind of on-chain DAO. Among other capabilities, the controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains. The controllers have complete control over the assets like ICP tokens or Bitcoins held by the canister they manage. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.

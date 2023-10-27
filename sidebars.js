@@ -370,6 +370,11 @@ const sidebars = {
       },
       items: [
         {
+          type: "doc",
+          label: "Canister history",
+          id: "developer-docs/production/canister-history",
+        },
+        {
           type: "category",
           label: "Custom domains",
           link: {
