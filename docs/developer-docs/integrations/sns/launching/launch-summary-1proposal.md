@@ -4,9 +4,10 @@ During an SNS launch, a dapp is handed over to the NNS and the NNS both
 creates the SNS canisters and starts a decentralization swap to decentralize the SNS and
 thereby the dapp (see [here](../introduction/sns-launch.md)).
 
-## SNS launch Stages
+## SNS launch stages
 Handing over a dapp's control to a newly created SNS proceeds in the following high
 level stages.
+
 Note that only the first two stages require manual action from the dapp's developer
 team and the NNS community. All other stages are exectued fully automatically.
 The NNS community's approval is relevant in Stage 3. 
@@ -18,10 +19,10 @@ The NNS community's approval is relevant in Stage 3.
   * The initial token distribution.
   * The conditions for the decentralization swap, including the swap's start date and
     how many ICP tokens should at least and at most be collected.
-    
-  Therefore defining these parameters usually requires a lot of preparation and
-  community engagement already (see [here](../tokenomics/sns-checklist.md) for
-  more information).
+
+Since there are certain methods that should only be triggered by an SNS DAO decision, on the backend there is code that checks the caller of the method to validate the caller is the SNS governance canister. For this to function as expected, the dapp canisters must know the ID of the governance canister. 
+
+Therefore defining these parameters usually requires a lot of preparation and community engagement already (see [here](../tokenomics/sns-checklist.md) for more information).
 
 :::info 
 These parameters also define the initial neurons with which the SNS governance canister will be installed.
@@ -34,7 +35,7 @@ frontend dapp principals will only be visible after a successful launch.
 Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process.
 :::
 
-  What we have at this stage:
+What we have at this stage:
 
 #### Table 1: Canisters
 
@@ -54,7 +55,7 @@ Therefore, the initial neurons must be carefully setup in a way so that enough o
 </table>
 
 
-### 2. Dapp developers add NNS root as co-controller of dapp.
+### 2. Dapp developers hand over control of the entire dapp to the NNS, including the asset canister.
 Shortly before Step 3, the dapp developers hand over the dapp to the NNS by adding the NNS root canister as an additional controller for the dapp canister(s).
 
 This is necessary in order for the rest of the steps to work automatically.
@@ -481,3 +482,7 @@ If successful, at the end of stage, we have:
     <td class="light-orange-text">normal mode</td>
   </tr>
 </table>
+
+## After the SNS has launched
+
+The SNS community then upgrades the dapp's canisters, such as the asset canister, through an SNS proposal and sets the privileges in the dapp.
