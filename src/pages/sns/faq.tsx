@@ -201,10 +201,11 @@ function SnsFaqPage() {
                 unique in that they can fully control (via voting) every aspect
                 of a dapp, since everything is on-chain. Having fully on-chain
                 DAOs is important because it enables all decisions to be
-                executed on the blockchain. This is in contrast to existing DAOs
+                executed on the blockchain and thus facilitates true 
+                decentralization. This is in contrast to existing DAOs
                 on other blockchains where voting takes place on-chain but the
                 execution of the results are often carried out by developers
-                off-chain. This facilitates true decentralization.{" "}
+                off-chain.{" "}
                 <p>
                   Therefore, SNS DAOs serve as a vehicle to deliver fully
                   decentralized online services that are owned and governed by
@@ -364,9 +365,8 @@ function SnsFaqPage() {
               id="how-do-you-get-sns-tokens"
             >
               <p>
-                Each SNS DAO will have its own unique SNS token. For example,
-                OpenChat will have CHAT tokens when they turn their dapp into an
-                SNS DAO.{" "}
+                Each SNS DAO has its own unique SNS token. For example,
+                OpenChat has CHAT tokens.{" "}
               </p>
               <p>There are three main ways of acquiring SNS tokens:</p>
               <ul>
