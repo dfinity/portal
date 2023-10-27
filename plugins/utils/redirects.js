@@ -172,9 +172,8 @@ const redirects = `
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
-  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/
+  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-ic
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
-  /docs/current/concepts/what-is-IC /docs/current/concepts/
   /docs/current/concepts/data-centers /docs/current/concepts/
   `
   .split(/[\r\n]+/)
