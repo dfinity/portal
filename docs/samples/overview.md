@@ -42,7 +42,7 @@ A simple dapp that shows a basic (stable) variable demo.
 
 ## Basic decentralized autonomous organization (DAO)
 
-Decentralized governance is highlight of the IC and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can submit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
+This sample dapp showcases decentralized governance. It demonstrates how to initialize a set of accounts and corresponding tokens, how account owners can submit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
 - [Documentation](./dao).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_dao).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_dao).
