@@ -3,13 +3,12 @@
 ## Overview
 All changes to the configuration and behavior of the Internet Computer are controlled by an algorithmic governance system called the Network Nervous System (NNS). The NNS controls all aspects of the Internet Computer blockchain configuration and is responsible for performing many network management operations. For example, the Network Nervous System (NNS) is responsible for:
 
--   Upgrading the protocol and guest operating system software used by the nodes that provide computing capacity to the network.
--   Inducting new node operators and machines into the network.
+-   Upgrading the protocol and guest operating system software used by the nodes machines.
+-   Inducting new node providers and machines into the network.
 -   Creating new subnets to increase network capacity.
 -   Splitting subnets to balance network load.
--   Configuring parameters that control how much must be paid by users for compute capacity.
--   Monitoring canister activity and node performance for malicious behavior and statistical deviations.
--   De-activating malicious software or under-performing nodes to protect the network.
+-   Configuring parameters that control how much must be paid by canisters for resource usage.
+-   De-activating under-performing nodes to protect the network.
 
 The requests for changes and updates to the network are submitted to the NNS in the form of **proposals**. The NNS decides to adopt or reject proposals based on voting activity by neuron holders.
 
@@ -17,7 +16,7 @@ The requests for changes and updates to the network are submitted to the NNS in 
 
 For network participants to be able to vote on proposals, they need to lock up a stake of ICP utility tokens for a given period of time to create a representative called a **neuron**.
 
-Because neurons represent a stake of ICP utility tokens, they also represent an identity with a **ledger canister account** and a principal that controls the ledger account.
+Because neurons represent a stake of ICP utility tokens, they also represent an identity with a **ICP ledger account** and a principal that controls the  account.
 
 Neurons provide the stability required for responsible governance of the Internet Computer by ensuring that the ICP utility tokens they represent cannot be exchanged for a specific period of time referred to as the **lock-up** period.
 
@@ -27,15 +26,12 @@ The following diagram provides a simplified view of the workflow for creating a 
 
 ### Governance and voting rewards
 
-When a person or organization has ICP utility tokens locked up in a neuron, the neuron holder can propose and vote on governance issues. To encourage participation, neuron holders are also rewarded for voting in proportion to the number of ICP utility tokens they have locked up and the length of the lock-up period up to a maximum of eight years.
+When a person or organization has ICP utility tokens locked up in a neuron, they can propose and vote on governance proposals. To encourage participation, neuron holders are also rewarded for voting in proportion to the number of ICP utility tokens they have locked up, the length of the lock-up period (dissolve delay), and the age of their neuron.
 
 ### Unlocking the stake held by a neuron
 
-After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron. In its **locked** state, the neuron has a fixed non-zero **dissolve delay** equivalent to the lock-up period. For example, assume you have a stake of 100 ICP utility tokens locked up for a period of five years. After successfully created the neuron with these settings, your dissolve delay is five years.
-
-Based on the dissolve delay that decreases as time progresses, a **dissolve timer** determines how long it will take to completely dissolve a neuron.
-
-When the dissolve timer reaches zero, the neuron owner—the ICP utility token holder who created the neuron, or an authenticated custodian, can dissolve the neuron and unlock the balance of ICP utility tokens.
+After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron.
+It's **dissolve delay** determins the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
 
 The dissolved neuron ceases to exist and the stake of ICP utility tokens that the neuron represented is released to the appropriate ledger canister account.
 
