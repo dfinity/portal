@@ -90,7 +90,7 @@ function EthDenverPage() {
   return (
     <Layout
       title="Internet Computer blockchain @ ETHDenver 2023"
-      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain Dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
+      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-ethdenver-2.jpg"></ShareMeta>
@@ -151,7 +151,7 @@ function EthDenverPage() {
                     className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                     variants={transitions.item}
                   >
-                    Lightning fast and fully on-chain Dapps running on the
+                    Lightning fast and fully on-chain d            apps running on the
                     Internet Computer blockchain, the only true World Computer
                     that enables a fully decentralized ecosystem.
                   </motion.p>
