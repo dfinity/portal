@@ -32,10 +32,7 @@ An example of configuring an asset canister within the `dfx.json` file can be fo
       "type": "assets"
     }
 ```
-- Then, the dapp developers hand over control of the entire dapp to the NNS, including the asset canister.
-- A single NNS proposal creates the dapp's SNS canisters, initializes them, and hands the SNS's dapp canisters over to the SNS. The decentralization swap begins.
-- The SNS community then upgrades the dapp canister through an SNS proposal and sets the privileges in the dapp. 
-    - Since there are certain methods that should only be triggered by an SNS DAO decision, on the backend there is code that checks the caller of the method to validate the caller is the SNS governance canister. For this to function as expected, the dapp canisters must know the ID of the governance canister. 
+- Then, the SNS is launched via the [SNS launch steps](/docs/current/developer-docs/integrations/sns/launching). 
 - After the SNS is created, the asset canister can be upgraded via upgrade arguments that specify the SNS governance's canister ID. 
 
 :::caution
