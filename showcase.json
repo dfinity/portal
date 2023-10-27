@@ -103,7 +103,6 @@
     ],
     "description": "ICDex is flagship product by ICLighthouse, an orderbook based DEX that runs 100% on-chain. The world's first orderbook DEX - made possible by advanced ICP smart contracts",
     "usesInternetIdentity": true,
-    "stats": "Supports ckBTC",
     "twitter": "https://twitter.com/ICLighthouse",
     "display": "Normal",
     "logo": "/img/showcase/icdex_logo.webp",
@@ -161,7 +160,7 @@
     "twitter": "https://twitter.com/bitfinitynet",
     "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of is many advantageous DeFi capabilities: HTTP Outcalls, the BTC integration and more.",
     "usesInternetIdentity": true,
-    "stats": "1000+ TPS",
+    "stats": "1,000+ TPS",
     "display": "Large",
     "logo": "/img/showcase/bitfinity_evm.png",
     "screenshots": [
@@ -325,7 +324,7 @@
     "website": "https://boomdao.xyz/",
     "tags": ["Games", "DAO", "Tools / Infrastructure", "NFT", "Metaverse"],
     "description": "BOOM DAO is an all-in-one web3 game platform and protocol running 100% on-chain on the Internet Computer. We are on a mission to build the gaming vertical of the Internet Computer blockchain, power the next generation of fully on-chain games on ICP, and provide a collaborative hub for all things web3 gaming.",
-    "stats": "+23000 DAO Members",
+    "stats": "23,000+ DAO Members",
     "logo": "/img/showcase/boom-dao-logo.webp",
     "display": "Large",
     "usesInternetIdentity": true,
@@ -571,7 +570,7 @@
     "description": "Internet Identity is a privacy-enhancing authentication framework for applications on the Internet Computer. It provides users with a easy-to-use and secure anonymizing login to Web3 services running on ICP without being tracked across dapps.",
     "github": "https://github.com/dfinity/internet-identity",
     "usesInternetIdentity": true,
-    "stats": "1 000 000+ ",
+    "stats": "1,000,000+ users",
     "logo": "/img/showcase/internetidentity_logo.webp",
     "screenshots": [
       "/img/showcase/internetidentity_screenshot_0.gif"
@@ -610,7 +609,7 @@
     "display": "Normal",
     "id": "signals",
     "oneLiner": "A location based app for empowering local communities",
-    "stats": "5,000+",
+    "stats": "5,000+ users",
     "tags": [
       "SocialFi"
     ],
@@ -649,7 +648,7 @@
     ],
     "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
     "github": "https://github.com/Psychedelic/plug",
-    "stats": "100 000 users",
+    "stats": "100,000+ users",
     "display": "Normal",
     "logo": "/img/showcase/plug_logo.webp",
     "video": "/img/showcase/plug_video.mp4",
@@ -771,7 +770,7 @@
     ],
     "description": "Mora allows users to create a unique Web3 space where they can have independent content data, subscription relationships, financial information, and even complex algorithms. From its inception, a planet will be monitored by Launch Trail to ensure compliance with the protocol and establish trust. The Launch Trail will be controlled by the Mora Dao Canister.",
     "usesInternetIdentity": true,
-    "stats": "2000+ articles",
+    "stats": "2,000+ articles",
     "logo": "/img/showcase/mora_logo.png",
     "screenshots": [
       "/img/showcase/mora_banner.jpg"
@@ -958,7 +957,6 @@
     "website": "https://rubaru.app/",
     "tags": ["SocialFi"],
     "description": "RuBaRu aims to create a vibrant 100% On-Chain DAO-based tokenized economy owned & governed by the community, where creators, influencers, consumers, and brands coexist harmoniously. By doing so, we unlock new opportunities, reshape digital creativity, drive economic growth, and foster a thriving ecosystem of shared prosperity.",
-    "stats": "100% On-Chain Data Storage",
     "logo": "/img/showcase/rubaru_logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
@@ -981,7 +979,6 @@
     ],
     "description": "ntagle connects inexpensive physical NFC tags to canisters, giving IC dapp developers the ability to create transferrable HW wallets, Physical NFTs, etc. Any tag can use any integration, meaning dapps can make web3 phygital experiences available to all ntagle owners with a single deploy.",
     "usesInternetIdentity": false,
-    "stats": "Working MVP",
     "logo": "/img/showcase/ntagle_icon.webp",
     "github": "https://github.com/InternetComputerOG/ntagle-core",
     "twitter": "https://twitter.com/ntagled",
@@ -1023,7 +1020,7 @@
     "description": "Kontribute is a web3 creators platform that brings story writing and digital art collectibles together. Features include: decentralized story storage, likes, tipping, polls, NFT marketplace and NFT minting.",
     "github": "https://github.com/teambonsai/bonsai_dapp",
     "usesInternetIdentity": true,
-    "stats": "1000+ users",
+    "stats": "1,000+ users",
     "display": "Normal",
     "logo": "/img/showcase/kontribute_logo.webp",
     "screenshots": [
@@ -1628,7 +1625,6 @@
     ],
     "description": "This Python Agent built for the Internet Computer opens the door for Python developers to more easily become Web3 builders. Featuring basic modules to interact with canisters on the Internet Computer, this Agent, still under development, was a prize winner at the Warpspeed Internet Computer ecosystem hackathon in China.",
     "github": "https://github.com/rocklabs-io/ic-py",
-    "stats": "Warp Speed Hackathon Award",
     "display": "Normal",
     "logo": "/img/showcase/pythonagent_logo.webp",
     "screenshots": [
@@ -1680,7 +1676,6 @@
     "website": "https://obsidiantears.xyz/",
     "tags": ["Games", "NFT", "Metaverse"],
     "description": "Obsidian Tears is a 2D adventure featuring original art, story, music and over 50 collectable NFT artifacts. Our mission is to make a great story after our favorite old time classics, and to empower others to do the same.",
-    "stats": "First 2D RPG on the IC",
     "logo": "/img/showcase/obsidian-tears-logo.webp",
     "display": "Large",
     "usesInternetIdentity": false,
@@ -1829,7 +1824,7 @@
     "display": "Normal",
     "id": "cyqlio",
     "oneLiner": "Curated Internet Computer projects gallery.",
-    "stats": "5000+ users",
+    "stats": "5,000+ users",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -1954,7 +1949,7 @@
     ],
     "description": "IC coins by market cap. Aggregates stats from all Internet Computer based DEXes. Price, Volume & liquidity score charts.",
     "usesInternetIdentity": false,
-    "stats": "1000 users",
+    "stats": "1,000+ users",
     "logo": "/img/showcase/icpcoins_logo.png",
     "github": "https://github.com/vvv-interactive/icpcoins",
     "screenshots": [
@@ -2137,7 +2132,6 @@
       "Games"
     ],
     "usesInternetIdentity": true,
-    "stats": "Play weekly",
     "logo": "/img/showcase/football-god_logo.webp",
     "screenshots": [
       "/img/showcase/football-god_screenshot.webp"
@@ -2241,7 +2235,7 @@
     "website": "https://can1.metaforo.io/",
     "tags": [ "SocialFi"],
     "description": "Metaforo: a Web3 forum prioritizing decentralization, community ownership, and token-gated governance. By shifting the Front-End to IC, we boost reliability, security, and scalability, enabling a seamless user experience without intermediaries.",
-    "stats": "1000+ users after the development of an on-chain voting system using ICP",
+    "stats": "1,000+ users",
     "logo": "/img/showcase/metaforo-icp_logo.png",
     "usesInternetIdentity": true,
     "github": "https://github.com/metaforo/metaforo-icp",
@@ -2263,7 +2257,6 @@
     "display": "Normal",
     "id": "rakeoff",
     "oneLiner": "Rakeoff is a user-friendly crypto staking rewards platform on ICP.",
-    "stats": "Hackathon winner",
     "tags": [
       "Bitcoin",
       "DeFi",
@@ -2295,7 +2288,6 @@
     "website": "https://tswaanda.com",
     "tags": ["DeFi"],
     "description": "Tswaanda is revolutionizing African agriculture by connecting smallholder farmers to profitable markets, empowering growth through trade and financial inclusion.",
-    "stats": "3 users",
     "logo": "/img/showcase/tswaanda_logo.jpg",
     "usesInternetIdentity": true,
     "authOrigins": ["https://4qia7-eaaaa-aaaal-qb34a-cai.icp0.io"],
@@ -2351,7 +2343,6 @@
     "video": "",
     "display": "Normal",
     "oneLiner": "Transparent, tamper-proof voting on blockchain.",
-    "stats": "100% On Chain Data Storage",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2463,7 +2454,6 @@
     "display": "Normal",
     "id": "nacdb-database",
     "oneLiner": "A distributed database that allows seamless scanning",
-    "stats": "0 users",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2485,7 +2475,7 @@
     ],
     "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
     "usesInternetIdentity": false,
-    "stats": "1 000+ websites",
+    "stats": "1,000+ websites",
     "logo": "/img/showcase/fleek_logo.webp",
     "screenshots": [
       "/img/showcase/fleek_screenshot_0.webp"
@@ -2529,7 +2519,7 @@
       "SocialFi"
     ],
     "description": "The uniquely-designed DID is your passport in web3. Your data and assets will be connected to HashKey DID and your private information will be kept in your own hands.",
-    "stats": "Multi-Chain DID, 1,200,000 users, 3,200,000 Credentials, 30 Eco-members",
+    "stats": "1,200,000 users, 3,200,000 Credentials, 30 Eco-members",
     "logo": "/img/showcase/hashkeydid_logo.svg",
     "usesInternetIdentity": false,
     "github": "https://github.com/hashkeydid/hashkeydid-icp",
@@ -2543,7 +2533,6 @@
       "DAO","Tools / Infrastructure","Metaverse"
     ],
     "description": "The boundaryless autonomous organization.",
-    "stats": "7+ Grants Project",
     "logo": "/img/showcase/nnsdao_logo.png",
     "usesInternetIdentity": false,
     "github": "https://github.com/NnsDao",
@@ -2668,7 +2657,7 @@
     "website": "https://web3.motoko-book.dev/",
     "tags": ["Tools / Infrastructure"],
     "description": "This book guides beginners into the world of Web3 programming in Motoko on the Internet Computer. It covers a broad range of concepts from the very basics to advanced async programming.",
-    "stats": "100 monthly users Google Analytics 17-06-2023",
+    "stats": "100 monthly users",
     "logo": "/img/showcase/motoko-book_logo.png", 
     "usesInternetIdentity": "false",
     "github": "https://github.com/Web3NL/motoko-book",
@@ -2682,7 +2671,6 @@
     "website": "https://jqajc-hiaaa-aaaak-qck5a-cai.icp0.io/#/",
     "tags": ["Tools / Infrastructure"],
     "description": "InfinitiNote is an ICP-based AI-Enabled Note taking application, that allows users to create Notebooks, store Notes, and collaboratively edit in real-time with capability for file uploads and enhacned by LLAMA AI.",
-    "stats": "Just Launched",
     "logo": "/img/showcase/in_logo.jpg", 
     "usesInternetIdentity": "true",
     "github": "https://github.com/hafezrouzati/infinitinote",
@@ -2724,7 +2712,6 @@
     "display": "Normal",
     "id": "safenote",
     "oneLiner": "A tool for secure notes exchanging. Built with privacy in mind.",
-    "stats": "1+ user",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2790,7 +2777,7 @@
     "display": "Normal",
     "id": "ics2",
     "oneLiner": "store and organize your files in IC ecosystem",
-    "stats": "100+",
+    "stats": "100+ users",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2812,7 +2799,6 @@
     "display": "Normal",
     "id": "ava",
     "oneLiner": "aVa: Action-Based Decentralized Reputation Landscape.",
-    "stats": "All II users",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2824,7 +2810,7 @@
   },
   {
     "name": "Open Internet Metaverse",
-    "description": "OIM allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
+    "description": "OIM is the 1st On-Chain 3D-Web. It allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
     "website": "https://vdfyi-uaaaa-aaaai-acptq-cai.ic0.app",
     "logo": "/img/showcase/open-internet-metaverse_logo.webp",
     "screenshots": [],
@@ -2832,7 +2818,6 @@
     "display": "Normal",
     "id": "open-internet-metaverse",
     "oneLiner": "Create Your Virtual Space as a 3D-Website on the Internet Computer",
-    "stats": "1st On-Chain 3D-Web",
     "tags": [
       "Tools / Infrastructure",
       "Metaverse"
@@ -2855,7 +2840,7 @@
     ],
     "display": "Normal",
     "oneLiner": "FishVerse is a W2E fishing game that is built on ICP technology",
-    "stats": "5000",
+    "stats": "5,000 players",
     "tags": [
       "NFT",
       "Metaverse",
@@ -2879,7 +2864,7 @@
   "display": "Normal",
   "id": "bravo-app",
   "oneLiner": "Token Stats, Blockchain Visual Explorer, Account Searching and more..",
-  "stats": "1024 Members",
+  "stats": "1,024 members",
   "tags": [
     "NFT",
     "Tools / Infrastructure",
@@ -3011,7 +2996,6 @@
     "display": "Normal",
     "id": "ccamp",
     "oneLiner": "Modular, and custom data-driven Cross-chain Asset Management Protocol",
-    "stats": "Cross-chain",
     "tags": [
       "Bitcoin",
       "Tools / Infrastructure",
