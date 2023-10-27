@@ -3,13 +3,13 @@
 ## Overview
 Stakeholders gain voting power and can earn voting rewards by staking their ICP tokens. 
 
-The Internet Computer is a decentralized platform whose evolution is decided by its stakeholders through voting. This means decision impacting the future of the Internet Computer are made by people vested in the outcome. In return for participation in governance, the Internet Computer gives out voting rewards. Voters can vote actively, or they can use the liquid democracy on the Internet Computer to automatically follow other voters.
+The Internet Computer is a decentralized computer whose evolution is decided by its stakeholders through voting. This means decision impacting the future of the Internet Computer are made by people vested in the outcome. In return for participation in governance, the Internet Computer Procotol provides voting rewards. Voters can vote actively, or they can use a form liquid democracy to automatically follow other voters.
 
 ## Key concepts
 
 ### Neurons
 
-In order to become vested and obtain voting power, ICP tokens must first
+To become vested and obtain voting power, ICP tokens must first
 be staked, and then locked up for a length of time greater than 6
 months to, at most, 8 years.
 
@@ -45,16 +45,14 @@ voting power for the stake committed.
 
 ### Maturity
 
-Maturity represents the voting rewards accumulated in a neuron. Each day
+Maturity of a neuron increases as it collects voting rewards. Each day
 the network rewards participants by allocating to every voting neuron a
 portion of the total reward, based both on its voting power at the time
 proposals were made, and the number of proposals it voted on.
 
-Please note that different tax authorities may take different views on the taxation status of the voting rewards. Neuron owners who receive voting rewards and convert them to ICP should consult appropriate professionals.
-
-For those who wish to compound the voting power in their neuron, the most
-natural activity is to "stake maturity" on a regular basis. If you wish to liquidate rewards you earn from the
-neuron and convert them to ICP, you can "spawn" maturity into a reward neuron.
+For those who wish to compound gained maturity in their neuron, the most
+natural activity is to "stake maturity" on a regular basis. 
+If you wish to liquidate maturity gained, you can use it to produce liquid ICP.  
 
 ## Why staking matters
 
