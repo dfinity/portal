@@ -71,9 +71,9 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
  | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
 | HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
 
-Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
+Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022).
 
-Assuming a 30-day month — 
+The following table shows the calculated storage cost per GB for a 30-day month: 
 
 |                      |                                    | 13-node Application Subnets | 34-node Application Subnets |
 |----------------------|------------------------------------|-----------------------------|-----------------------------|

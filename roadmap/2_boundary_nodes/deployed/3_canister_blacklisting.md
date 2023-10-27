@@ -6,4 +6,4 @@ links:
 eta: October 2022
 is_community: false
 ---
-This feature gives node providers decentralized means to specify a deny-list for canisters. As node providers are the first to be contacted if questionable content is being stored on the Internet Computer, adding a deny-listing feature will allow them to make independent decisions about blocking such content, while users can choose which boundary node to use.
+This feature gives node providers decentralized means to specify a deny-list for canisters. As node providers are the first to be contacted if questionable content is being stored in a canister smart contract on ICP, adding a deny-listing feature will allow them to make independent decisions about blocking such content, while users can choose which boundary node to use.

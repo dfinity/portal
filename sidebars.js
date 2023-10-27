@@ -80,6 +80,22 @@ const sidebars = {
             "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
           ],
         },
+        {
+          type: "category",
+          label: "Level 4: Space pilot",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-4/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-4/4.1-icp-ledger",
+            "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+            "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+            "tutorials/developer-journey/level-4/4.4-nns-governance",
+            "tutorials/developer-journey/level-4/4.5-using-quill",
+            "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+          ],
+        },
       ],
     },
     {
@@ -150,6 +166,7 @@ const sidebars = {
             id: "concepts/index",
           },
           items: [
+            "concepts/what-is-ic",
             "concepts/canisters-code",
             "developer-docs/gas-cost",
             "concepts/governance",

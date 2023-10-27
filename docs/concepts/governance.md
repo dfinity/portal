@@ -1,7 +1,7 @@
 # Neurons and governance
 
 ## Overview 
-As a decentralized blockchain, all changes to the configuration and behavior of the Internet Computer are controlled by a governance body called the Network Nervous System (NNS). The NNS controls many aspects of the Internet Computer blockchain including the following:
+As a decentralized blockchain, all changes to the configuration and behavior of the Internet Computer are controlled by a governance system called the Network Nervous System (NNS). The NNS controls many aspects of the Internet Computer blockchain including:
 
 -   Which data center providers participate in the network.
 
@@ -9,14 +9,10 @@ As a decentralized blockchain, all changes to the configuration and behavior of 
 
 -   Assignment of nodes to subnet blockchains.
 
--   Whether upgrades to canisters or to a new protocol version are allowed or not.
+-   Upgrades to newer protocol versions or upgrades of system canisters.
 
-In addition, only members of the governance body can vote to adopt or reject requests to upgrade Internet Computer replicas or modify the Internet Computer protocol.
+## Who can vote?
 
-## Voting rights for stakeholders
+To favor the long-term sustainability of ICP over short-term interests, only ICP token holders who stake their tokens can participate in the governance process. A staked amount of ICP is called a **neuron**. The amount of ICP staked in a neuron can only be converted back to ICP after the neuron’s lock-up period, called the “dissolve delay”, has elapsed. The longer the dissolve delay of a neuron, the higher the voting power associated with the neuron. 
 
-Because tokens on the Internet Computer are generally liquid, they do not represent a stable enough commitment on the part of their holders for them to be used for governance purposes. To provide the stability required for responsible governance, tokens can be converted to **neurons**. A neuron represents a number of ICP tokens that cannot be exchanged for a minimum period of time (the lock-up period).
-
-When a person or organization has some number of ICP tokens locked up in a neuron, the neuron holder has the right to vote on proposals, and to be paid for voting in proportion to the number of ICP locked up, the length of the lock-up period and the relative number of votes cast.
-
-The Internet Computer blockchain tracks the number of ICP tokens that are locked up in neurons and provides the logic necessary for voting in conjunction with managing ICP token account balances.
+Neuron holders constitute the governing body of the NNS. Through their neurons, they can vote on proposals and thereby govern the ICP. To incentivize governance participation, neuron holders receive voting rewards. These rewards depend on the number of votes cast and the amount of ICP staked in the respective neurons. 
