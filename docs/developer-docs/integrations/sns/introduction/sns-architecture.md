@@ -5,8 +5,8 @@ sidebar_position: 2
 
 ## Overview
 The core architecture of the SNS closely resembles the architecture of the Network Nervous System
-(NNS), the DAO that governs the Internet Computer platform.
-It includes a governance system that enables decentralized decision making and a ledger canister
+(NNS), the DAO that governs the Internet Computer.
+It includes a governance canister that enables decentralized decision making and a ledger canister
 that defines a token unique to each SNS.
 In contrast to the SNS, the NNS contains additional canisters that are important to run the IC
 platform (e.g., the cycles minting canister that is responsible for creating cycles, the registry
