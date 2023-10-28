@@ -488,7 +488,7 @@ parameter.
 
 #### node
 
-A **node** is a physical hardware devices run by independent
+A **node** is a physical hardware device run by independent
 [node providers]. It hosts all the
 hardware, [replica](#replica) software, and configuration
 settings required to participate in the [Internet
