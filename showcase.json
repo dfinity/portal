@@ -2838,6 +2838,36 @@
     "screenshots": [
       "/img/showcase/fishverse_screenshot.webp"
     ],
+    "video": "/img/showcase/canister-store_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "35750450"
+  },
+  {
+    "id": "Faceless",
+    "name": "Faceless Project",
+    "oneLiner": "An infrastructure that brings Web 2.0 user experience to Web 3.0",
+    "tags": [
+      "Tools / Infrastructure",
+      "SocialFi"
+    ],
+    "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
+    "usesInternetIdentity": true,
+    "website": "https://faceless.live/",
+    "github": "https://github.com/HeisenbergLin22/faceless_delivery_May",
+    "youtube": "https://youtu.be/pFgVswCqzdk",
+    "twitter": "https://twitter.com/Faceless_Proj",
+    "display": "Large",
+    "submittableId": "35639090"
+  }, 
+  {
+    "id": "fishverse",
+    "name": "FishVerse",
+    "description": "FishVerse is a revolutionary W2E fishing game that is open world, decentralized and built on ICP technology. It brings together fishing and GameFi enthusiasts inside of a vibrant community where people can monetize by catching and utilizing NFT fishes, competing in tournaments, missions, providing services and more...",
+    "website": "https://thefishverse.com/",
+    "logo": "/img/showcase/fishverse_logo.webp",
+    "screenshots": [
+      "/img/showcase/fishverse_screenshot.webp"
+    ],
     "display": "Normal",
     "oneLiner": "FishVerse is a W2E fishing game that is built on ICP technology",
     "stats": "5,000 players",
