@@ -507,7 +507,7 @@ function SnsFaqPage() {
                   before it concludes. If the maximum ICP is reached, the swap
                   is over and the control of the dapp is turned over to the
                   token holders. As the number of tokens to be sold is fixed, it
-                  is amount of ICP raised that determines the initial price of
+                  is amount of ICP swapped that determines the initial price of
                   the SNS tokens.
                 </li>
                 <li>Minimum and maximum commitment of ICP per participant</li>
@@ -529,10 +529,10 @@ function SnsFaqPage() {
                 tokens on an exchange.
               </p>
               <p>
-                The number of SNS tokens you receive, and the price paid for
-                each token, depends on the amount of ICP raised during the swap.
-                The more ICP raised, the fewer SNS tokens you receive, however
-                their price will be higher.
+                The number of SNS tokens you receive, and the price of for
+                each token, depends on the amount of ICP swapped.
+                The more ICP are swapped, the fewer SNS tokens you receive, 
+                however their price will be higher.
               </p>
             </Faq>
 
@@ -541,29 +541,30 @@ function SnsFaqPage() {
                 SNS tokens can be exchanged for ICP during the decentralization
                 swap. There is a fixed number of tokens distributed during the
                 swap, which means their price is determined by the amount of ICP
-                raised. You can calculate the token price by dividing the amount
-                of ICP raised with the number of tokens sold. Price = ICP raised
-                / number of tokens sold. Note that the final price of SNS tokens
+                swappend. You can calculate the token price by dividing the amount
+                of ICP swappend with the number of tokens distributed. Price = ICP
+                swappend / number of tokens distributed. 
+                Note that the final price of SNS tokens
                 isn't known at the time of the decentralization swap, as it is
-                dependent on the total amount of ICP raised in the swap.
+                dependent on the total amount of ICP swapped.
                 However, you can calculate the minimum and maximum price based
                 on the minimum and maximum ICP that the swap accepts, which you
                 can verify in the swap proposal. A few examples:
               </p>
               <ul>
                 <li>
-                  The decentralization swap raised 1000 ICP by selling 5000
-                  tokens. You contributed with 10 ICP. This means you will have
+                  The decentralization swap distributed 5000 tokens for 1000 ICP.
+                  You participated with 10 ICP. This means you will have
                   50 SNS tokens, each worth 0.2 ICP.
                 </li>
                 <li>
-                  The decentralization swap raised 500,000 ICP by selling 1
-                  million tokens. You contributed with 200 ICP. This means you
+                  The decentralization swap distributed 1 million tokens for
+                  500,000 ICP. You participated with 200 ICP. This means you
                   will have 400 SNS tokens, each worth 0.5 ICP.
                 </li>
                 <li>
-                  The decentralization swap raised 10,000 ICP by selling 100
-                  tokens. You contributed with 5 ICP. This means you will have
+                  The decentralization swap distributed 100 tokens for 10,000 ICP.
+                  You participated with 5 ICP. This means you will have
                   0.05 SNS tokens, where a full token would be worth 100 ICP.
                 </li>
               </ul>
