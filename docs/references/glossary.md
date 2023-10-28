@@ -232,7 +232,7 @@ A **data center** (DC) is a physical site that hosts
 [nodes](#node) which contribute to the [Internet
 Computer](#internet-computer-ic). It includes the hardware and
 software infrastructure required for node deployment. 
-Data centers are node are selected and vetted by the [NNS](#NNS).
+Data centers are nodes that are selected and vetted by the [NNS](#NNS).
 
 #### dissolve delay
 
