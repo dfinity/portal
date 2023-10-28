@@ -400,7 +400,7 @@
       "Tools / Infrastructure"
     ],
     "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
-    "logo": "/img/showcase/querio.webp",
+    "logo": "/img/showcase/querio_logo.webp",
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
     ]
@@ -2646,6 +2646,7 @@
       "Tools / Infrastructure"
     ],
     "description": "Pluton is an HTTP router implemented on the Internet Computer to facilitate working with HTTP. This router is a framework that allows you to write REST API applications on the blockchain in almost the same way as in Web 2",
+    "logo": "/img/showcase/pluto_logo.webp",
     "usesInternetIdentity": false,
     "github": "https://github.com/pu0238/pluto",
     "submittableId": "36517192"
