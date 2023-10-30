@@ -48,9 +48,13 @@ Create the public DER file:
 `openssl pkey -inform pem -outform der -in private.pem -out public.der -pubout`
 
 
-The generated DER files are in a binary format not intended to be readable by humans. But you can get a hex representation of both keys:
+### Hex representation
 
-#### Private key
+The generated DER files are in a binary format not intended to be readable by humans.
+But we can get a hex representation of both keys:
+
+
+### Private key
 
 `xxd -p private.der`
 
@@ -61,7 +65,7 @@ Example output:
 a7a8aade2468c1de0d6630d9f1a69a0c2717
 ```
 
-#### Public key
+### Public key
 
 `xxd -p public.der`
 
@@ -70,7 +74,7 @@ a7a8aade2468c1de0d6630d9f1a69a0c2717
 72dc0fedfd5db353bbdcf67af951
 ```
 
-You need to keep only the last 32 bytes of the public key:
+We need to keep only the last 32 bytes of the public key:
 
 `xxd -s 12 -c 32 -p public.der`
 
