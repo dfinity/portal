@@ -3031,8 +3031,26 @@
     "youtube": "https://www.youtube.com/@omnianetwork2947",
     "submittableId": "43839848"
   },
-
-  {
+    {
+    "name": "Flower Power DAO",
+    "description": "An NFT Trilogy and community-curated garden inspired by the French Artist, Ludo.",
+    "website": "https://fpdao.app",
+    "logo": "/img/showcase/fpdao_logo.png",
+    "screenshots": [
+      "/img/showcase/fpdao_screenshot.png"
+    ],
+    "display": "Normal",
+    "id": "fpdao",
+    "oneLiner": "The story of blockchain, told in Art.",
+    "tags": [
+      "NFT",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/flowerpowerdao/",
+    "twitter": "https://twitter.com/btcflower"
+  },
+    {
     "name": "CCAMP",
     "description": "An asset management protocol that leverages data-driven strategies to effectively manage and reallocate assets among various parties. It encompasses smart contracts residing on EVM blockchains (and eventually non-EVM blockchains), a trio of interconnected canisters for state maintenance and a bespoke data protocol to behave as inter-system glue.",
     "website": "https://go.usher.so/ccamp",
