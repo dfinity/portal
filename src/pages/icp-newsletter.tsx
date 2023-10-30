@@ -19,7 +19,7 @@ const IcpNewsletterRedirectPage: React.FC = () => {
 
   return (
     <>
-      <ShareMeta image="/img/shareImages/share-icp-newsletter.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-icp-newsletter-2.jpg"></ShareMeta>
       <Head>
         <title>{title}</title>
         <meta property="og:title" content={title} />
