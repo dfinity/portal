@@ -254,4 +254,4 @@ In this example, each function accepts an array of text strings. Therefore, you 
 
 ## Next steps
 
-In the next guide, we'll cover [accepting cycles from a wallet.](simple-cycles.md)
+In the next guide, you'll learn about [accepting cycles from a wallet.](simple-cycles.md)

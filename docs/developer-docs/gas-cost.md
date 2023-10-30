@@ -52,7 +52,7 @@ The pricing for HTTPS outcalls is calculated in a slightly different way as the 
 
 The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
-To derive the estimated cost for a GB Storage per month, we assume a 30 day month.
+To derive the estimated cost for a GB Storage per month, a 30 day month is assumed.
 
  | Transaction                          | Description                                                                                                      | Who is responsible for paying the transaction fee? |  13-node Application Subnets | 34-node Application Subnets |
  |--------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------------|---------------------------|-----------------------------|

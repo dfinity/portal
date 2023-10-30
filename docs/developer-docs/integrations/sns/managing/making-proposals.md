@@ -50,11 +50,11 @@ quill send message.json
 * `title` is a short description of the proposal.
 * `url` is a link to a document that describes the proposal in more detail.
 * `summary` is a short summary of the proposal.
-* `action` defines what the proposal does. Depending on the kind of proposal we require to provide different parameters that are defined in this part. As a proposal is just a call to a method, these parameters define with which arguments the target method will be called.
+* `action` defines what the proposal does. Different kinds of proposals are required to provide different parameters that are defined in this part. As a proposal is just a call to a method, these parameters define with which arguments the target method will be called.
 
 #### Concrete example
 
-For example, if we use the candid record for <PROPOSAL_TYPE> `Motion`, the CLI-friendly command to submit a `Motion` proposal is:
+For example, use the candid record for <PROPOSAL_TYPE> `Motion`, the CLI-friendly command to submit a `Motion` proposal:
 
 ```bash
 # helpful definitions (only need to set these once). This is a sample neuron ID.
@@ -82,7 +82,7 @@ quill send message.json
 ```
 
 :::warning
-In this article, we will not repeat the `export PROPOSAL_NEURON_ID` and `export PEM_FILE` lines for each example proposal, but it is recommended you set these variables in your terminal before submitting proposals.
+This guide will not repeat the `export PROPOSAL_NEURON_ID` and `export PEM_FILE` lines for each example proposal, but it is recommended you set these variables in your terminal before submitting proposals.
 :::
 
 ## Proposal types
@@ -397,7 +397,7 @@ Each SNS has metadata that defines the SNS project and includes a URL, e.g., und
 
 #### Putting it together
 
-Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this, but we want to change the `description` field only:
+Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this, but you want to change the `description` field only:
 
 ```
     url = "https://sns-examples.com/proposal/42";
@@ -406,7 +406,7 @@ Sometimes a user wants to change only part of the metadata. Suppose the metadata
     description : "Sample SNS used for educational purposes";
 ```
 
-To update the `description` field, we can use the following command (where untouched fields get marked `null`).
+To update the `description` field, you can use the following command (where untouched fields get marked `null`).
 
 Example in bash:
 
@@ -450,12 +450,12 @@ Each SNS community might have functions that they would like to only execute if 
 Some examples:
 
 * A dapp may have a very complicated procedure to upgrade dapp canisters. For example, they may have a canister for each user, in which case they orchestrate over a “user root canister”. For this workflow, they would have to tell this canister what the user-canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp this should happen via proposal.
-* Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore we need a custom way to update the assets.
+* Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore you need a custom way to update the assets.
 * Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments etc…
 
 For these cases, SNSs have so called "generic proposals". These are custom proposals that each SNS community can define itself.
 
-Here we make use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
+This guide describes the use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
 Typically a generic proposal will have the following structure: a developer send a proposal to add/execute/remove (e.g. `AddGenericNervousSystemFunction`) a "generic" nervous system function. So even though the proposal types below are technically "native proposal types", they are used to manage generic proposals.
 
@@ -486,7 +486,7 @@ Together, this is the type of a generic proposal in the code:
 
 ### Security considerations when designing generic proposals
 
-There are a few important, security-critical considerations to make when adding a generic proposal. We list a few recommendations here:
+There are a few important, security-critical considerations to make when adding a generic proposal. A few recommendations are:
 
 * **The canisters where the target and validator methods are defined should be controlled by the SNS DAO.** Otherwise, such a method could change the behavior or not be available without the SNS’s control. If you need to call another method, consider the next point.
 * **Make sure that the target and validator methods always return an answer.** If this is not the case, there is a risk that the SNS governance canister has some open call contexts, which in turn means that it cannot be stopped and therefore cannot be upgraded. This is very risky, e.g., if an urgent upgrade of governance is needed. Therefore it is recommended to only call trusted code.
@@ -499,11 +499,11 @@ See more [general security best practices](https://github.com/dfinity/portal/blo
 
 ### Adding/removing generic proposals
 
-**To use a generic proposal, it first needs to be added to the SNS governance system.** This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As we have seen that generic proposals also have security implications it is important to have this explicit approval.
+**To use a generic proposal, it first needs to be added to the SNS governance system.** This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As you have seen that generic proposals also have security implications it is important to have this explicit approval.
 
 Generic proposals can then also be removed again from SNS governance if they are not needed anymore.
 
-To use a generic proposal, i.e., submit such a proposal, one uses the “execute generic nervous system function” proposal type and specifies which of the registered generic proposals should be used. We next explain how to submit each of these proposals.
+To use a generic proposal, i.e., submit such a proposal, one uses the “execute generic nervous system function” proposal type and specifies which of the registered generic proposals should be used. Next it is explained how to submit each of these proposals.
 
 ### `AddGenericNervousSystemFunction`
 
@@ -670,7 +670,7 @@ quill send message.json
 
 The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister. 
 
-The problem: To commit changes to the asset canister associated with a dapp under SNS control, we need to use generic proposals.
+The problem: To commit changes to the asset canister associated with a dapp under SNS control, you need to use generic proposals.
 
 To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
 
@@ -707,7 +707,7 @@ Following the steps to add this proposal, the first thing needed is to to submit
 * validator_method_name : opt text = "commit_proposed_batch"
 * target_method_name : opt text = "validate_commit_proposed_batch"
 
-If we assume the principal of a particular asset canister for an SNS is, `iywa7-ayaaa-aaaaf-aemga-cai`, the command line call would be:
+If you assume the principal of a particular asset canister for an SNS is, `iywa7-ayaaa-aaaaf-aemga-cai`, the command line call would be:
 
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(

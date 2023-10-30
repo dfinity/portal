@@ -110,7 +110,7 @@ Start the local canister execution environment on your machine by running the fo
 dfx start --clean --background
 ```
 
-For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
+This guide uses the `--clean` option to start the local canister execution environment in a clean state.
 
 This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 
@@ -239,4 +239,4 @@ If you are looking for more information about working with cycles, check out the
 
 ## Next steps
 
-In the next step, we'll cover [querying using an actor](define-an-actor.md).
+In the next step, you'll learn about [querying using an actor](define-an-actor.md).

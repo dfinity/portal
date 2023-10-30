@@ -4,7 +4,7 @@ sidebar_position: 5
 # SNS rewards
 
 Each SNS can be individually configured with parameters that define, among other things,
-how and SNS uses rewards to incentivice certain behavior for the governance participants
+how and SNS uses rewards to incentivize certain behavior for the governance participants
 and the dapp users.
 
 ## Rewards Overview
@@ -22,7 +22,7 @@ the future value of the tokens and the dapp. This represents the first simple sc
 SNS rewards. Based on the collected experience from developers and the community, this
 can be enhanced in the future.
 
-We consider two categories of rewards:
+There are two categories of rewards:
   * **Voting rewards** to incentivize users to take part in SNS governance.
 
   * **User rewards** to incentivize dapp users to become early adopters and active users of the dapp that is governed by the SNS.
@@ -42,7 +42,7 @@ this works as follows:
 
 * Determination of the total reward pool:
   * For a time t between G (genesis time) and G + 8y the annualized reward as a percentage of total supply is R(t) = 5% + 5% [(G + 8y – t)/8y]²
-  * For a time t after G+8y, we have R(t) = 5%.
+  * For a time t after G+8y, you have R(t) = 5%.
   * The total pool of voting rewards for a given day is calculated as ICP supply (total supply of ICP tokens on that day) * R(t) / 365.25.
 * Voting power of neurons:
   * Only neurons with a dissolve delay of more than 6 months are eligible for voting. The maximum dissolve delay is 8 years.
@@ -64,7 +64,7 @@ this works as follows:
 ### Voting rewards
 
 As highlighted in the background section above, the SNSs leverage the NNS voting reward scheme 
-and allow for flexibility to configure the scheme. Hence, in the following we go through the
+and allow for flexibility to configure the scheme. Hence, in the following this guide goes through the
 features of the NNS and describe how it is adapted and made configurable for the SNS. 
 Unless otherwise stated, the approach and formula are the same as for the NNS. 
 As for the NNS, it is possible to change the SNS configuration by an SNS governance proposal.
@@ -78,7 +78,7 @@ As for the NNS, it is possible to change the SNS configuration by an SNS governa
 * Start time for paying out rewards t<sub>start</sub>: timestamp greater than or equal to genesis time of the SNS. The start time is set to the current time once the reward calculation is switched on.
 * Time length t<sub>delta</sub> which is greater than or equal to 0 and which determines the time transition length between r<sub>max</sub> and r<sub>min</sub>. Default value: 0 years.
 * For a time t between t<sub>start</sub> and t<sub>start</sub>+t<sub>delta</sub> the annualized reward as a percentage of total supply is R(t) = r<sub>min</sub>+ (r<sub>max</sub>-r<sub>min</sub>) [ (t<sub>start</sub>+ t<sub>delta</sub> – t) / t<sub>delta</sub> ]²
-* For a time t after t<sub>start</sub>+t<sub>delta</sub>, we have R(t) = r<sub>min</sub>
+* For a time t after t<sub>start</sub>+t<sub>delta</sub>, you have R(t) = r<sub>min</sub>
 * For the special case r<sub>max</sub> = r<sub>min</sub> the reward function is constant, namely R(t)=r<sub>min</sub>
 * The total pool of voting rewards for a given day is calculated as SNS supply (total supply of SNS tokens) * R(t) / 365.25.
 * Voting rewards are minted, i.e. generating new supply once the according maturity is converted to the SNS token. In case that the SNS would like to stop a token supply increase after t<sub>start</sub>+t<sub>delta</sub> the SNS should set r<sub>min</sub>=0.
@@ -104,7 +104,7 @@ There is a flag which activates the calculation and distribution of voting rewar
 
 Voting reward parameters are defined in the SNS governance canister and can be changed by proposal. Details on the data structure **VotingRewardsParameters** used in the implementation are [here](https://github.com/dfinity/ic/blob/master/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L726).
 
-In the following table we provide an overview of all relevant parameters of **VotingRewardsParameters**, linking the notation of this article to full names used in the implementation.
+The following table provides an overview of all relevant parameters of **VotingRewardsParameters**, linking the notation of this article to full names used in the implementation.
 
 |Parameter|Full name in *VotingRewardsParameters*|
 | --- | --- |
@@ -115,7 +115,7 @@ In the following table we provide an overview of all relevant parameters of **Vo
 
 When **VotingRewardsParameters** is not populated, voting rewards are disabled.
 
-In the following we provide an overview of the relevant parameters for the determination of voting power.
+The following provides an overview of the relevant parameters for the determination of voting power.
 
 |Parameter|Full name in *VotingRewardsParameters*|
 | --- | --- |
@@ -127,6 +127,6 @@ In the following we provide an overview of the relevant parameters for the deter
 
 ### User rewards
 
-* The purpose of user rewards is to foster early adoption and active usage of the SNS. Given that the meaning of usage and the according user rewards can vary greatly across individual SNSs we have a very simple set-up at start.
+* The purpose of user rewards is to foster early adoption and active usage of the SNS. Given that the meaning of usage and the according user rewards can vary greatly across individual SNSs, there is a very simple set-up at start.
 * Some tokens (reserved for user rewards) can be held in an account that is owned by an SNS-controlled canister. This canister can then codify when the rewards are paid out and to whom.
 * This solution allows paying out existing (not newly minted) tokens. If it is required that user rewards trigger minting, this could be added in a later phase.

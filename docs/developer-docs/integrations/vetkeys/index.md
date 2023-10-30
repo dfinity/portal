@@ -2,7 +2,7 @@
 
 ## Technical overview
 
-The VETKeys feature is in ongoing development on the Internet Computer (IC). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind.
+The VETKeys feature is in ongoing development on the Internet Computer (IC). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such the primer is focused with that example in mind. .
 
 To dive into the technical overview, please refer to the:
 
