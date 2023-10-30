@@ -124,7 +124,7 @@ Write tests for canister implementations and frontend code, especially for secur
 
 It is risky to include code paths in production code that are only used for development or testing setups. If something goes wrong (and it sometimes does!), this may introduce security bugs in production.
 
-For example, there have been instances of issues where the public key to verify certification was fetched from an untrusted source, since this is what is done on test networks.
+For example, we have seen issues where the public key to verify certification was fetched from an untrusted source, since this is what is done on test networks.
 
 #### Recommendation
 
