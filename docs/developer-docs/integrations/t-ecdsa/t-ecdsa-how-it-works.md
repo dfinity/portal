@@ -1,7 +1,7 @@
 # Threshold ECDSA: technology overview
 
 ## Overview
-We give a high-level outline of chain-key ECDSA signatures on the IC. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. The IC implements the threshold ECDSA protocol by Groth and Shoup as described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of this distributed signing protocol.
+This page gives a high-level outline of chain-key ECDSA signatures on the IC. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. The IC implements the threshold ECDSA protocol by Groth and Shoup as described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of this distributed signing protocol.
 
 At a high level, the threshold ECDSA implementation on the IC features multiple protocols as outlined next, all of which are crucial for a secure system setup and operation. Note that this goes far beyond just threshold ECDSA signing, which is the reason for calling this a protocol suite for **chain-key ECDSA signatures**.
 -   **Key generation:** this protocol is executed on a specified subnet; it generates a new threshold ECDSA key such that the private key is secret shared over the replicas of this subnet.
@@ -16,7 +16,7 @@ Various NNS proposals have been implemented to perform key management, i.e., ini
 
 ## ECDSA keys
 
-ECDSA-enabled subnets hold what we call threshold ECDSA **master keys**, generated with the key generation protocol on selected subnets of the IC. A master ECDSA key is a key from which canister ECDSA keys can be derived, i.e., a single master key for a given elliptic curve suffices for the derivation of an ECDSA key for each canister on the IC, the *canister root key*, using an extension of the BIP-32 key derivation mechanism with the canister's principal as input. The key derivation is executed transparently by the protocol as part of the signing and public key retrieval APIs. See the level-0 key derivation in the below figure for the derivation of canister root keys from a master key.
+ECDSA-enabled subnets hold what are called threshold ECDSA **master keys**, generated with the key generation protocol on selected subnets of the IC. A master ECDSA key is a key from which canister ECDSA keys can be derived, i.e., a single master key for a given elliptic curve suffices for the derivation of an ECDSA key for each canister on the IC, the *canister root key*, using an extension of the BIP-32 key derivation mechanism with the canister's principal as input. The key derivation is executed transparently by the protocol as part of the signing and public key retrieval APIs. See the level-0 key derivation in the below figure for the derivation of canister root keys from a master key.
 
 From a canister root key, an unlimited number of ECDSA keys can be derived for the canister using a backward-compatible extension of the BIP-32 key derivation mechanism. The extension allows not only 32-bit integers, but arbitrary-length byte arrays, to be used as input for each level of the key derivation function. See the levels 1 and greater in the below figure illustrating the derivation of further canister keys based on the canister root key. This derivation is supported by the ECDSA API through the `ecdsa_public_key` method.
 
@@ -33,7 +33,7 @@ There are currently two master keys deployed, a test and a production key.
 
 ## Deployment
 
-We next outline the deployments for the Chromium (Beta) release and the general availability release.
+Next, this guide outlines the deployments for the Chromium (Beta) release and the general availability release.
 
 ### Chromium release (Beta)
 
@@ -51,7 +51,7 @@ Support for further elliptic curves and additional corresponding master keys may
 
 ## API
 
-We next give an overview of the API for threshold ECDSA. For the authoritative specification, the reader is referred to the corresponding part of the [Internet Computer interface specification](/references/ic-interface-spec.md#ic-ecdsa_public_key). The API comprises two methods, `ecdsa_public_key` for retrieving threshold ECDSA public keys, and `sign_with_ecdsa` for requesting threshold ECDSA signatures to be computed from the subnet holding the secret-shared private threshold ECDSA key.
+Next, this guide gives an overview of the API for threshold ECDSA. For the authoritative specification, the reader is referred to the corresponding part of the [Internet Computer interface specification](/references/ic-interface-spec.md#ic-ecdsa_public_key). The API comprises two methods, `ecdsa_public_key` for retrieving threshold ECDSA public keys, and `sign_with_ecdsa` for requesting threshold ECDSA signatures to be computed from the subnet holding the secret-shared private threshold ECDSA key.
 
 Each API call refers to a threshold ECDSA master key by virtue of a 2-part identifier comprising a curve and a key id as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
@@ -110,7 +110,7 @@ The development of canisters is typically done in the developer's local environm
 
 When the replica of the SDK environment is first started up, a new ECDSA key is generated. This key is then stored in non-volatile memory so that it does not change with every restart of the replica.
 
-For the technically interested readers we want to note that the SDK uses the exact same implementation of threshold ECDSA as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on the IC.
+For the technically interested readers, it is important to note that the SDK uses the exact same implementation of threshold ECDSA as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on the IC.
 
 ### Internet Computer
 

@@ -6,7 +6,7 @@ Up until now, blockchains have been isolated entities and smart contracts have n
 The feature of **canister HTTP(S) requests**, or **HTTP(S) outcalls**, on the Internet Computer enables — for the first time in blockchain history — smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract such that the replicated state can safely be updated using those inputs. So far, the only means of communication of smart contracts with external servers has been through so-called **oracles**. 
 
 :::info
-Note that in the remainder of this documentation we may use **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secured HTTPS these days.
+Note that in the remainder of this documentation uses **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secured HTTPS these days.
 :::
 
 Canister HTTP requests allow for a plethora of use cases and have numerous advantages over the currently used oracle model.
@@ -23,10 +23,10 @@ Canister HTTP requests allow for a plethora of use cases and have numerous advan
 ## Use cases
 There are many use cases for canister HTTPS outcalls, see the following list for some prominent examples.
 * One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data used in DEXs or weather data used in decentralized insurance dApps.
-* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, we may even envision direct interactions of sensors with the IC blockchain.
+* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, the Internet Computer may even envision direct interactions of sensors.
 * Chat services sending push notifications about incoming messages to users.
 
-We expect the majority of HTTP calls to be `GET` calls for reading Web 2.0 data, but `POST` clearly also plays an important role for the interaction with external systems in order to be able to write data to Web 2.0 servers.
+It is expected that the majority of HTTP calls to be `GET` calls for reading Web 2.0 data, but `POST` clearly also plays an important role for the interaction with external systems in order to be able to write data to Web 2.0 servers.
 
 ## Resources
 

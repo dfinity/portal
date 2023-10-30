@@ -74,7 +74,7 @@ module {
 }
 ```
 
-A `src/life/grid` is represented as a simple class constructed from, and maintaining, state. We omit the details here.
+A `src/life/grid` is represented as a simple class constructed from, and maintaining, state. This guide omits the details here.
 
 The main actor in `src/life/main` creates a random state and maintains two grid objects, the current and next grid (`cur` and `nxt`). Life's `next()` method advances the Game of Life to the next generation by updating `nxt` from `cur`, using Grid method call `cur.next(nxt)`. The roles of `cur` and `nxt` are then swapped to re-use `cur`'s space for the next generation (a simple application of double-buffering). This logic is described in the `src/life/main.mo` file:
 

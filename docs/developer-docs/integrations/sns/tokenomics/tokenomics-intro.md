@@ -20,16 +20,16 @@ Tokenomics covers a wide range of topics, such as
 * Incentive mechanisms, e.g., providing tokens to early adopters.   
 
 ### Supply and demand
-We define the supply of a token as the amount which token holders are willing to sell at a given price. Likewise, token demand is the amount of tokens, token buyers are willing to buy for a given price. The following graph depicts the typical relationship between the supply & demand and price for an example good, which in our case could be a token priced in USD. 
+The supply of a token is defined as the amount which token holders are willing to sell at a given price. Likewise, token demand is the amount of tokens, token buyers are willing to buy for a given price. The following graph depicts the typical relationship between the supply & demand and price for an example good, which in our case could be a token priced in USD. 
 
 ![](./_attachments/graph_supply_demand.png)
 (Image source: epthinktank.eu)
 
 Typically supply increases with increasing prices. For example, if the price of Bitcoin increases, typically more Bitcoin holders will be willing to sell at the higher price on the market. On the other hand, demand typically decreases with increasing prices. The intersection of the two curves determines the so-called equilibrium price, called P<sub>2</sub> in the picture.
 
-How do we end up at the equilibrium price ?
-* If P<sub>1</sub> > P<sub>2</sub>: We have a surplus, i.e., more supply than demand. This creates downward pressure on the price. 
-* If P<sub>3</sub> < P<sub>2</sub>: We have a shortage, i.e., more demand than supply. This creates upward pressure on the price. 
+How does it end up at the equilibrium price?
+* If P<sub>1</sub> > P<sub>2</sub>: There is a surplus, i.e., more supply than demand. This creates downward pressure on the price. 
+* If P<sub>3</sub> < P<sub>2</sub>: There is a shortage, i.e., more demand than supply. This creates upward pressure on the price. 
 ### Token emission over time
 A token emission schedule defines the rate at which new tokens are minted over time. The design of a token emission schedule is crucial for the success of a DAO. 
 
@@ -42,11 +42,11 @@ As a consequence, emission schedules are typically designed as follows: Initiall
 ### Token use cases
 Tokens can cover many different (potentially overlapping) use cases. For example 
 * **Governance**: those tokens give holders the right to vote on proposed changes of a DAO. 
-To incentivise long-term thinking and commitment, systems often require staking of tokens. Staking means that token holders lock up a portion of tokens for a period of time. In exchange, stakers can earn rewards.
+To incentivize long-term thinking and commitment, systems often require staking of tokens. Staking means that token holders lock up a portion of tokens for a period of time. In exchange, stakers can earn rewards.
 * **Currency**: form of digital money with usage as medium of exchange, unit of account, store of value. 
 * **Operations**: facilitate operations on the blockchain. For example paying fees to store information and execute transactions.
 * **Decentralized Finance (DeFi)**: financial functions (e.g. lending, saving, trading) on a blockchain. 
-DeFi tokens incentivise users to facilitate these functions, e.g. providing liquidity.
+DeFi tokens incentivize users to facilitate these functions, e.g. providing liquidity.
 * **Social Finance (SoFi)**: tokens underpinning social networks. This includes tokenization of popularity & reputation. For example participants could receive tokens if they have a lot of followers or views.
 
 
@@ -74,7 +74,7 @@ To emphasize the decentralization of the DAO from the start, developers can send
 ### Voting power and decentralization
 The voting power should be distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves.
 
-As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivise long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. The configuration of the voting power should also consider the (initial) allocation of tokens, to ensure decentralization from the start. For example, it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
+As mentioned above, participation in governance typically requires the staking of tokens for a certain amount of time. To incentivize long-term thinking and commitment, DAOs can provide more voting power to those token holders who stake for a longer time period. The configuration of the voting power should also consider the (initial) allocation of tokens, to ensure decentralization from the start. For example, it should be ensured that the voting power of the funding dev team is below 50% of the total voting power. 
 
 On this [page](rewards.md) there is more information on the configuration of voting rewards. 
 

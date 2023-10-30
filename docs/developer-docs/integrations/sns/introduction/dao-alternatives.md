@@ -26,7 +26,7 @@ easier as all SNSs on the SNS subnet run the same cansiter versions that are ver
   NNS community.
 
 ## Build your own DAO / use other DAO frameworks
-  While this is conceptually similar to the above option, we would like to emphasize
+  While this is conceptually similar to the above option, it is important to emphasize
   that there are of course other designs than what the SNS code implements
   that also realize a DAO.
   For most of these, the implications for the communities will be similar: The DAO

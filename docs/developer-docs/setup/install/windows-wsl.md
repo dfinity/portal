@@ -11,7 +11,7 @@ Follow Microsoft's instructions for installing the [Windows Subsystem for Linux]
 
 ### Supported WSL Versions
 
-Theoretically, WSL 1 and WSL 2 should both allow you to run `dfx`. However, we recommend WSL 2. [WSL Comparison](https://docs.microsoft.com/en-us/windows/wsl/compare-versions) explains the differences between WSL1 and WSL 2.
+Theoretically, WSL 1 and WSL 2 should both allow you to run `dfx`. However, it is recommended to use WSL 2. [WSL Comparison](https://docs.microsoft.com/en-us/windows/wsl/compare-versions) explains the differences between WSL1 and WSL 2.
 
 ### Check your WSL version
 

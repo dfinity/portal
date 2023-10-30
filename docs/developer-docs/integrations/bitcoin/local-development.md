@@ -3,8 +3,8 @@
 ## Overview
 
 In the [deploy your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md) tutorial,
-we explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
-Bitcoin. In this guide, we'll explore how we can develop and test a Bitcoin dapp
+you explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
+Bitcoin. In this guide, you'll explore how you can develop and test a Bitcoin dapp
 locally. Testing locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) and
@@ -63,7 +63,7 @@ accordingly.
 Now that you have a local Bitcoin network, you're ready to start
 developing and locally testing your Bitcoin dapps.
 
-For the next steps, we'll be leveraging the example project
+For the next steps,you'll be leveraging the example project
 in the [examples repo](https://github.com/dfinity/examples) to showcase some of the key concepts. Let's clone it and explore
 what it's like to deploy a Bitcoin dapp locally.
 
@@ -150,7 +150,7 @@ that you mine, you get some BTC as a reward for mining it.
 
 :::info
   The one key difference between working with a local Bitcoin network and Bitcoin testnet or
-mainnet, is how we receive Bitcoin.
+mainnet, is how you receive Bitcoin.
 :::
 
 In the same directory as `bitcoind`, you can issue the following command to mine blocks.
@@ -194,7 +194,7 @@ If everything worked well, you should see a balance of 5,000,000,000 Satoshi, wh
 This is the reward you received for mining one block.
 
 :::info
-The BTC we mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
+The BTC you mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
 :::
 
 ### Coinbase maturity
@@ -233,7 +233,7 @@ The BTC your canister owns can now be spent.
 You can send Bitcoin using the `send` endpoint on your canister.
 
 In the Candid UI, add a destination address and an amount to send. In the example
-below, we're sending 1 BTC to the address `n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S`.
+below, you're sending 1 BTC to the address `n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S`.
 
 ![Sending Bitcoin Transaction](../_attachments/bitcoin-local-send-tx.png)
 
@@ -249,7 +249,7 @@ you just sent becomes part of the blockchain. Run the following from the `bitcoi
 
     ./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 mtbZzVBwLnDmhH4pE9QynWAgh6H3aC1E6M
 
-The above command is similar to what we did in the section on [Coinbase maturity](./local-development#coinbase-maturity).
+The above command is similar to what you did in the section on [Coinbase maturity](./local-development#coinbase-maturity).
 And, similarly, you should see the logs in `dfx` updating to indicate the ingestion of this new
 block.
 
