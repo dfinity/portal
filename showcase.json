@@ -3002,9 +3002,9 @@
     "name": "Flower Power DAO",
     "description": "An NFT Trilogy and community-curated garden inspired by the French Artist, Ludo.",
     "website": "https://fpdao.app",
-    "logo": "/img/showcase/fpdao_logo.webp",
+    "logo": "/img/showcase/fpdao_logo.png",
     "screenshots": [
-      "/img/showcase/fpdao_screenshot.webp"
+      "/img/showcase/fpdao_screenshot.png"
     ],
     "display": "Normal",
     "id": "fpdao",
