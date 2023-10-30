@@ -213,6 +213,7 @@ Capitalization within the developer documentation should follow these outlined s
 The following proper nouns should always be capitalized:
 - Blockchain Singularity
 - Candid
+- DFINITY
 - DFINITY Foundation
 - Internet Computer
 - Internet Computer Protocol
@@ -284,6 +285,9 @@ The following language and capitalization of certain terms and phrases should be
 
 ### Spelling, grammar, and word choice
 The following spelling, grammar, and word choice rules should be followed:
+- Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”.
+      - An exeption to this is the Developer Blog; blog posts are written using a different style for a different audience, and using 'we' or 'us' in this context is acceptable.
+- Do not refer to the Internet Computer as a system or a platform. Say "Internet Computer" or "protocol" instead.
 - Regarding spelling and grammar, American spelling and grammar should be used with the exception that all article titles follow British capitalization rules (see details in the Capitalization section.)
 - Assure that the language in the document reads well for non-native English speakers, and avoid phrases or sayings that may be confusing, such as "Dig in."
 - Avoid informal, personal thoughts or otherwise unnecessary language within the developer docs. A few examples of this might be:
@@ -303,10 +307,10 @@ The following spelling, grammar, and word choice rules should be followed:
     - "Here is a checklist of the things you will need to consider:"
 
 ## Numbers
-Numbers should be formatted using the `'` character, and not any other character. For example:
-- 44'760'000
-- 54'000
-- 1'000
+Numbers should be formatted using the `_` character, and not any other character. For example:
+- 44_760_000
+- 54_000
+- 1_000
 
 ## API methods
 
