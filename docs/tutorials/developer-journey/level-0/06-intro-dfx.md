@@ -4,7 +4,7 @@
 
 `dfx` is a command line utility that is used to interact with the IC SDK. It is the primary tool that is used for creating, managing, and deploying dapps onto the Internet Computer. 
 
-The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, we'll take a look at basic usage of the command, then we'll get started creating our first project using dfx. 
+The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at basic usage of the command, then you'll get started creating your first project using dfx. 
 
 ## Basic usage
 
@@ -16,7 +16,7 @@ dfx [subcommand] [flag]
 
 ### Subcommands
 
-The following is a list of the essential `dfx` subcommands that we'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/references/cli-reference/dfx-parent.md).
+The following is a list of the essential `dfx` subcommands that you'll be using throughout the developer journey series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/references/cli-reference/dfx-parent.md).
 
 - `build`: Used to build the canister output from the project's source code. 
 - `canister`: Used to manage deployed canisters. 
@@ -42,7 +42,7 @@ The following is a list of the essential `dfx` subcommands that we'll be using t
 
 ### Options
 
-Below are the essential options that we'll be referencing throughout the developer journey. For the full list of options, see the [reference documentation](/docs/references/cli-reference/dfx-parent.md).
+Below are the essential options that you'll be referencing throughout the developer journey. For the full list of options, see the [reference documentation](/docs/references/cli-reference/dfx-parent.md).
 
 - `--identity <identity>`: Used to specify the user identity to be used with the command.
 - `--logfile <logfile>`: Used to write the command's output logs to a specific file. 
@@ -67,7 +67,7 @@ DFX_VERSION=0.14.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 
 All dapps on the IC start off as **projects**. Projects are created using the `dfx` command and subcommands. 
 
-To get started, we'll use the default sample app to demonstrate how to create a project and explore the default project structure that is generated when a new project is created. 
+To get started, you'll use the default sample app to demonstrate how to create a project and explore the default project structure that is generated when a new project is created. 
 
 ### Step 1: Open a terminal window on your local computer.
 
@@ -81,7 +81,7 @@ dfx new hello_world
 
 When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command. 
 
-In this developer journey, we will be using Motoko for our development language, so we do not need to pass any additional flags with this command. 
+In this developer journey, you will be using Motoko for our development language, so you do not need to pass any additional flags with this command. 
 
 :::info
 When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
@@ -179,7 +179,7 @@ Let's explore these settings a bit further:
 
 ## Reviewing the default program code
 
-Now that we've explored the default project structure, let's take a look at the default program code located in the `main.mo` file. This is located in the `src/hello_world_backend` directory. We will cover frontend development and the default files located in the frontend canister directory in a later tutorial. 
+Now that you've explored the default project structure, let's take a look at the default program code located in the `main.mo` file. This is located in the `src/hello_world_backend` directory. The developer journey will cover frontend development and the default files located in the frontend canister directory in a later tutorial. 
 
 New Motoko projects will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/hello_world_backend/main.mo` file in a code or text editor. The code will resemble the following:
 
@@ -198,7 +198,7 @@ In this simple 'Hello, world' program, there are a few key elements:
 - Then, the program uses an async keyword to indicate that the program will return an async message that consists of text string that is constructed using "Hello, ", the # operator, the name argument, and "!".
 
 
-We'll explore actor objects, classes, and asynchronous messages in a future tutorial. For now, this will wrap up our introduction to `dfx`. 
+You'll explore actor objects, classes, and asynchronous messages in a future tutorial. For now, this will wrap up our introduction to `dfx`. 
 
 ## Need help?
 
