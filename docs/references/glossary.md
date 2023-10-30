@@ -499,7 +499,7 @@ Computer](#internet-computer-ic).
 A **node operator** (NO) is a non-canister
 [principal](#principal) who has the authority to add/remove
 [nodes](#node) to/from the
-[IC](#internet-computer-ic-ic), delegated by 
+[IC](#internet-computer-ic-ic), by delegation of the
 the corresponding [node providers](#node-provider).
 
 #### node provider
