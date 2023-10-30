@@ -2589,9 +2589,7 @@
     "description": "AgorApp is a Codecademy-style interactive coding environment where users can learn to develop smart contracts on ICP and, then, test their skills by participating in web3 CTFs and smart contract optimization contests.",
     "usesInternetIdentity": false,
     "stats": "600+ users",
-    "display": "Large",
     "logo": "/img/showcase/agorapp-logo-small.svg",
-    "video": "https://www.youtube.com/watch?v=0mRinBJbiGU",
     "github": "https://github.com/agorapp-dao/",
     "twitter": "https://twitter.com/agorappDAO",
     "discord": "https://discord.gg/8ZwJZsxXhk",
@@ -2941,7 +2939,8 @@
   "usesInternetIdentity": false,
   "twitter": "https://twitter.com/TryTaliAI",
   "submittableId": "38502751",
-  "videoContentType": "video/mp4"
+  "videoContentType": "video/mp4",
+  "screenshots": []
 },
   {
   "name": "CARMANIA",
