@@ -190,7 +190,7 @@ Or, via the command line:
 
     dfx canister call basic_bitcoin get_balance '("<your-canister-btc-address>")'
 
-If everything worked well, you should see a balance of 5,000,000,000 Satoshi, which is 50 BTC.
+If everything worked well, you should see a balance of 5_000_000_000 Satoshi, which is 50 BTC.
 This is the reward you received for mining one block.
 
 :::info

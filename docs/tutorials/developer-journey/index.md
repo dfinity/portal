@@ -8,7 +8,7 @@ The developer journey is designed to give both new and existing developers a cle
 
 :::info
 
-In this developer journey, we focus on developing canisters and applications using Motoko. In the future, there will be additional variations of the developer journey that focus on different developer paths, such as:
+This developer journey will focus on developing canisters and applications using Motoko. In the future, there will be additional variations of the developer journey that focus on different developer paths, such as:
 
 - Rust development.
 - ckBTC-focused development.

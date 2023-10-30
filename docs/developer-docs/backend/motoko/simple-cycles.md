@@ -126,7 +126,7 @@ Register, build, and deploy your dapp by running the following command in your p
 dfx deploy --argument '(360000000000)' cycles_hello_backend
 ```
 
-This example sets the `capacity` for the canister to 360,000,000,000 cycles. The `dfx deploy` command output then displays information about the operations it performs, including the identity associated with the wallet canister created for this local project and the wallet canister identifier.
+This example sets the `capacity` for the canister to 360_000_000_000 cycles. The `dfx deploy` command output then displays information about the operations it performs, including the identity associated with the wallet canister created for this local project and the wallet canister identifier.
 
 For example:
 

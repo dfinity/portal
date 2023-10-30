@@ -17,7 +17,7 @@ A smart contract on the IC is called *canister smart contract*, or just *caniste
 A canister bundles [*WebAssembly (Wasm)*](https://en.wikipedia.org/wiki/WebAssembly) program code and data storage into a single unit.
 Anyone can deploy a canister on the Internet Computer.
 Canisters are stored and their code executed in a replicated, fault-tolerant manner on multiple machines, that is, the nodes of a subnet. 
-Unlike other blockchains, a smart contract on the IC can respect one of several possible *mutability policies*: it can be completely immutable (cannot be changed by anyone), unilaterally mutable (can be changed unilaterally by the dApp developer), or DAO mutable (it can be changed as authorized by a decentralized autonomous organization).
+Unlike other blockchains, a smart contract on the IC can respect one of several possible *mutability policies*: it can be completely immutable (cannot be changed by anyone), unilaterally mutable (can be changed unilaterally by the dapp developer), or DAO mutable (it can be changed as authorized by a decentralized autonomous organization).
 
 
 Canisters pay, using *cycles*, for the IC resources they consume.
@@ -89,7 +89,7 @@ Both chain-key and chain-evolution technology sets the IC apart from other proje
 
 ## Governance
 
-The IC offers governance at multiple levels, the platform level and the dApp level.
+The IC offers governance at multiple levels, the platform level and the dapp level.
 
 ### Platform governance
 
@@ -99,10 +99,10 @@ The NNS allows holders of the staked ICP to make proposals and vote on those pro
 
 ### Dapp governance
 
-dApps on the IC can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the platform's NNS, but tailored to govern dApps.
-Everyone controlling a dApp can hand over control over their dApp to a tokenized DAO by parameterizing and deploying an instance of the SNS.
-The SNS implements tokenized governance at the dApp level and can be used without the dApp engineers implementing a governance system themselves, which is revolutionary.
-Handing over control of a dApp to an instance of the SNS usually includes running a decentralization swap as an early step where funds can be raised through the swap of the dApp's governance tokens.
+dapps on the IC can be governed by an out-of-the-box deployable governance system, the *Service Nervous System (SNS)*, which is similar to the platform's NNS, but tailored to govern dapps.
+Everyone controlling a dapp can hand over control over their dapp to a tokenized DAO by parameterizing and deploying an instance of the SNS.
+The SNS implements tokenized governance at the dapp level and can be used without the dapp engineers implementing a governance system themselves, which is revolutionary.
+Handing over control of a dapp to an instance of the SNS usually includes running a decentralization swap as an early step where funds can be raised through the swap of the dapp's governance tokens.
 
 ## Go even deeper
 

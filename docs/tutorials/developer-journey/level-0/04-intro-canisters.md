@@ -16,7 +16,7 @@ A canister differs from a container, however, in the fact that a canister also s
 
 Canisters can be developed in a variety of languages, such as Rust, JavaScript, Python, and TypeScript, though the primary language for canister development is **Motoko**, since Motoko has been developed specifically for canister development on the IC. 
 
-We'll dive further into Motoko and other languages in the next section, [introduction to languages](05-intro-languages.md).
+You'll dive further into Motoko and other languages in the next section, [introduction to languages](05-intro-languages.md).
 
 ### Actors
 
