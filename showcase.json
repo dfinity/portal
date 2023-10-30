@@ -507,7 +507,7 @@
     "name": "Orally",
     "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
     "tags": ["Tools / Infrastructure", "DeFi", "Ethereum"],
-    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dApps. Elevate your blockchain journey with us!",
+    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dapps. Elevate your blockchain journey with us!",
     "usesInternetIdentity": false,
     "website": "https://orally.network",
     "github": "https://github.com/orally-network",
@@ -542,7 +542,7 @@
   {
     "id": "juno",
     "name": "Juno",
-    "oneLiner": "Build Web3 dApps like Web2",
+    "oneLiner": "Build Web3 dapps like Web2",
     "website": "https://juno.build",
     "tags": [
       "Tools / Infrastructure"
@@ -1765,7 +1765,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Build scalable DApps on internet computer with ease. Build, manage and ship dApps with just a few clicks",
+    "description": "Build scalable DApps on internet computer with ease. Build, manage and ship dapps with just a few clicks",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/ics_logo.webp",
@@ -1796,7 +1796,7 @@
       "NFT",
       "Wallet"
     ],
-    "description": "Canister Store is a groundbreaking platform that empowers developers/users in the Internet Computer ecosystem and beyond. With its innovative self-deploy feature, users can effortlessly access and deploy canisters, including pre-built images such as Tokens, NFTs, dApps, and various other tools.",
+    "description": "Canister Store is a groundbreaking platform that empowers developers/users in the Internet Computer ecosystem and beyond. With its innovative self-deploy feature, users can effortlessly access and deploy canisters, including pre-built images such as Tokens, NFTs, dapps, and various other tools.",
     "usesInternetIdentity": true,
     "website": "https://canister.app",
     "github": "https://github.com/canister-app",
@@ -2489,7 +2489,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Welcome to IC Hub! Your dApp for connecting with friends, chatting, joining groups, and managing tokens & NFTs. For developers, register your projects easily without seeking permissions. Empowering you to connect, transact, and build in a user-friendly ecosystem.",
+    "description": "Welcome to IC Hub! Your dapp for connecting with friends, chatting, joining groups, and managing tokens & NFTs. For developers, register your projects easily without seeking permissions. Empowering you to connect, transact, and build in a user-friendly ecosystem.",
     "usesInternetIdentity": true,
     "stats": "50+ Projects",
     "logo": "/img/showcase/ichub_logo.png",
@@ -3001,7 +3001,7 @@
   ],
   "display": "Normal",
   "id": "doocoins",
-  "oneLiner": "Kids rewards dApp",
+  "oneLiner": "Kids rewards dapp",
   "tags": [
     "Wallet",
     "Games"
