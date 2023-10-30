@@ -53,7 +53,7 @@
         - Ledger.
         - Motoko.
 
-- [0.3 Developer environment setup](03-dev-env.md): Before we can begin our developer journey, we need to set up our developer environment. A developer environment is comprised of tools and packages that are required to develop code projects. This module covers:
+- [0.3 Developer environment setup](03-dev-env.md): Before you can begin our developer journey, you need to set up our developer environment. A developer environment is comprised of tools and packages that are required to develop code projects. This module covers:
     - Setting up a developer environment:
         - Confirming an internet connection.
         - Confirming access to a CLI.
@@ -78,7 +78,7 @@
     - Canister controllers.
     - Cycles and resource charges.
 
-- [0.5 Introduction to languages](05-intro-languages.md): In this page, we discuss the different languages that can be used to develop dapps, and provide a base-level introduction to the two primarily supported languages: Motoko and Rust. This module covers:
+- [0.5 Introduction to languages](05-intro-languages.md): This page discusses the different languages that can be used to develop dapps, and provide a base-level introduction to the two primarily supported languages: Motoko and Rust. This module covers:
     - Motoko.
         - Motoko's attributes.
     - Rust.
