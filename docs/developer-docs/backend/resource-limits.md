@@ -28,11 +28,11 @@ This section defines the current main constraints regarding resource usage on th
 
 The IC may reject WebAssembly modules for reasons such that:
 
-- They declare more than 50,000 functions.
-- They declare more than 1,000 globals.
+- They declare more than 50_000 functions.
+- They declare more than 1_000 globals.
 - They declare more than 16 exported custom sections (the custom section names with prefix icp:).
-- The number of all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 1,000.
-- The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20,000.
+- The number of all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 1_000.
+- The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20_000.
 - The total size of the exported custom sections exceeds 1MiB.
 
 More information regarding these restrictions can be found in the [Internet Computer interface specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-module).

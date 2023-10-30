@@ -15,15 +15,15 @@ Canister HTTP requests allow for a plethora of use cases and have numerous advan
 * **Closer to the standard programming paradigm**: the paradigm of a smart contract directly making HTTP requests to external servers is much closer to the "normal" programming paradigm engineers are used to when compared to using oracles. Thus, the fact that one programs for a blockchain can be further abstracted away.
 
 #### Why is interfacing with the external world so important for a blockchain?
-* Most real-world dApp use cases need some form of data exchange with off-chain entities.
-* Most of the world's data is currently held in traditional (Web 2.0) services and many dApps build on this data and therefore need access to it.
+* Most real-world dapp use cases need some form of data exchange with off-chain entities.
+* Most of the world's data is currently held in traditional (Web 2.0) services and many dapps build on this data and therefore need access to it.
 * In order to be able to reach **blockchain singularity**, smart contracts need to be able to interact with Web 2.0 services. In our journey towards blockchain singularity, an ever increasing amount of data will be pulled into the blockchain world of Web 3.0 and interactions will increasingly take place between different smart contracts without involving Web 2.0 servers.
 
 
 ## Use cases
 There are many use cases for canister HTTPS outcalls, see the following list for some prominent examples.
-* One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data used in DEXs or weather data used in decentralized insurance dApps.
-* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, we may even envision direct interactions of sensors with the IC blockchain.
+* One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data used in DEXs or weather data used in decentralized insurance dapps.
+* IoT dapps need to obtain sensor data from traditional servers with which the sensors interact. In the future, we may even envision direct interactions of sensors with the IC blockchain.
 * Chat services sending push notifications about incoming messages to users.
 
 We expect the majority of HTTP calls to be `GET` calls for reading Web 2.0 data, but `POST` clearly also plays an important role for the interaction with external systems in order to be able to write data to Web 2.0 servers.

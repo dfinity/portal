@@ -92,13 +92,13 @@ If a canister using this feature is intended to be blackholed, but also for othe
 
 | Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10,000,000,000              | $0.0130886                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10_000_000_000              | $0.0130886                  |
 
 ### Fees for the t-ECDSA Production Key
 
 | Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26,153,846,153              | $0.0342317                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26_153_846_153              | $0.0342317                  |
 
 ## Environments
 
@@ -114,6 +114,6 @@ For the technically interested readers we want to note that the SDK uses the exa
 
 ### Internet Computer
 
-Any canister on any subnet of the IC can call the threshold ECDSA API exposed by the management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dApps using Bitcoin testnet.
+Any canister on any subnet of the IC can call the threshold ECDSA API exposed by the management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dapps using Bitcoin testnet.
 
 As part of the general availability (GA) release of the feature, a production ECDSA key on the `secp256k1` elliptic curve has been deployed to be used for integration with the Bitcoin Mainnet and other use cases of interest.
