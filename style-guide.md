@@ -245,6 +245,7 @@ The following is a list of common abbreviations that are capitalized within the 
 - IC
 - ICP
 - ICRC-1
+- ICRC-2
 - II
 - IOS
 - NFT
@@ -252,12 +253,14 @@ The following is a list of common abbreviations that are capitalized within the 
 - SDK
 - SNS
 - XDR
+- UTXO
 
 ## Language
 The following language and capitalization of certain terms and phrases should be used across the IC developer documentation:
 - Big Tech
 - Bitcoin integration
-- Bitcoin network: should be used in place of "sending bitcoin". 
+- Bitcoin network: should be used in place of "sending bitcoin".
+- bitcoin: should be used when referring to BTC rather than the Bitcoin network.
 - Built on the Internet Computer
 - canister
 - canister smart contract
