@@ -29,7 +29,7 @@ Note that, contrary to some other blockchains, also immutable smart contracts ne
 
 #### Security concern
 
-If a canister depends on another canister smart contract (i.e. makes inter-canister calls to it), it is essential that the canister smart contract that one depends on is owned by a decentralized governance system. Otherwise, i.e. if it has a controller, they could modify the smart contract without others noticing, e.g. to steal assets held by the canister.
+If a canister depends on another canister smart contract (i.e. makes inter-canister calls to it), it is essential that the canister smart contract that one depends on is owned by a decentralized governance system or immutable. Otherwise, i.e. if it has a controller owned by a developer, they could modify the smart contract without others noticing, e.g. to steal assets held by the canister.
 
 #### Recommendation
 
@@ -91,7 +91,7 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 ## Asset certification
 
-### Use HTTP asset certification and avoid serving your dApp through `raw.icp0.io`
+### Use HTTP asset certification and avoid serving your dapp through `raw.icp0.io`
 
 #### Security concern
 
