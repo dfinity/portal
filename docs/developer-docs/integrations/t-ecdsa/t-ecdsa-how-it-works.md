@@ -92,13 +92,13 @@ If a canister using this feature is intended to be blackholed, but also for othe
 
 | Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10,000,000,000              | $0.0130886                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10_000_000_000              | $0.0130886                  |
 
 ### Fees for the t-ECDSA Production Key
 
 | Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26,153,846,153              | $0.0342317                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26_153_846_153              | $0.0342317                  |
 
 ## Environments
 
