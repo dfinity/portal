@@ -354,7 +354,8 @@ function ShowcasePage(): JSX.Element {
           {filteredProjects.map((project, index) =>
             project === "promo" ? (
               <PromoCard key={`promo_${index}`} />
-            ) : project.display === "Large" ? (
+            ) : project.display === "Large" &&
+              (project.video || project.screenshots?.length > 0) ? (
               <LargeCard project={project} key={project.website} />
             ) : (
               <SmallCard project={project} key={project.website} />
