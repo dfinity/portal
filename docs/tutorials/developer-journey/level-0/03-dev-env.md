@@ -95,7 +95,7 @@ Having the latest release version assures that you have all of the newest featur
 
 ### Create a working directory
 
-The last step in setting up our developer environment is to create a new directory for us to build in. You can create a new directory with the command:
+The last step in setting up our developer environment is to create a new directory for you to build in. You can create a new directory with the command:
 
 ```
 mkdir developer_journey
