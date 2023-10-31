@@ -2915,7 +2915,7 @@
   "name": "Tali AI",
   "description": "Tali is a Discord Support bot that answers common developer queries.",
   "website": "https://trytali.com ",
-  "logo": "/img/showcase/tali-ai_logo.webp",
+  "logo": "/img/showcase/tali_logo.webp",
   "video": "/img/showcase/tali-ai_video.mp4",
   "display": "Normal",
   "id": "tali-ai",
