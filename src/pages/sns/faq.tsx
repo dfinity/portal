@@ -413,32 +413,32 @@ function SnsFaqPage() {
               tokens.
             </Faq>
 
-            <Faq title="What is the Community Fund?">
+            <Faq title="What is the Neurons' fund?">
               <p>
-                From the ICP ecosystem's vantage point, the Community Fund aids
-                in bootstrapping the SNS DAO ecosystem, and re-invests in the
-                continued growth of the ecosystem. The Community Fund itself is
+                From the ICP ecosystem's vantage point, the Neurons' fund aids
+                in bootstrapping the SNS DAO ecosystem, supporting the continued growth
+                of ecosystem projects. The Neurons'fund itself is
                 controlled by a DAO (the NNS).
               </p>
               <p>
-                From a user's vantage point, the Community Fund is a way for
+                From a user's vantage point, the Neurons' fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
-                future SNSs, which results in higher diversification. As the NNS
-                decides how the Community Fund is distributed, those
-                participating in it can leverage the broader community's "wisdom
-                of crowds" to decide which SNS tokens to acquire.
+                future SNSs. As the NNS decides how the Neuons' fund contributes to 
+                SNSs, ICP stakers participating in them can leverage the broader community's 
+                "wisdom of crowds" to chose which SNS tokens to acquire. This allows 
+                users to participate automatically in upcoming SNS launches.
               </p>
               <p>
-                ICP neuron holders can opt in or out of the Community Fund at
+                ICP neuron holders can opt in or out of the Neurons' fund at
                 any moment. Neurons will only participate in the
                 decentralization swap if they are opted in at the moment when
-                the proposal to initiate the decentralization swap executes. The
-                propsoal executes right after it gets adopted by ICP neuron
+                the proposal to initiate the SNS decentralization swap executes. The
+                propsoal executes immediately after it gets adopted by ICP neuron
                 holders.
               </p>
               More about the{" "}
-              <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
-                community fund
+              <Link href="https://wiki.internetcomputer.org/wiki/Neurons_Fund">
+                Neurons' fund
               </Link>
               .
             </Faq>
