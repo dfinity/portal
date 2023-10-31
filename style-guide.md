@@ -487,15 +487,15 @@ This section should be used to list any prerequisites that a developer will need
 
 ## Step 1: Description of step (This should describe what the developer will accomplish in this step. Ex: “Create a new project”, “Open the main.mo file”, “Write a function that makes an inter-canister call”, etc.)
 
-Include any context or additional information for the developer to complete this step. Typically this will include the code snippet, command to run, or other information about what the developer must do. 
+Include any context or additional information for the developer to complete this step. Typically this will include the code snippet, command to run, or other information about what the developer must do. It is also beneficial to include the ‘why’ a developer is completing this step to help further their understanding.
 
 ### Subtopic 1 (Subtopics are optional. They can be used to break up tutorials that cover several different concepts, such as an HTTP outcalls tutorial that covers both GET and POST requests; subtopics can be used to break the tutorial into two parts - one for GET and one for POST.)
 
 Include any context or additional information about what the subtopic is and how it relates to the overall theme of the tutorial. 
 
-## Step 2: Description of step (This should describe what the developer will accomplish in this step. Ex: “Create a new project”, “Open the main.mo file”, “Write a function that makes an inter-canister call”, etc.)
+## Step 2: Description of step 
 
-Include any context or additional information for the developer to complete this step. Typically this will include the code snippet, command to run, or other information about what the developer must do. 
+Text
 
 – Repeat above format as necessary for duration of tutorial
 
@@ -505,7 +505,6 @@ Wrap up the tutorial by reiterating what the developer learned about, what they 
 
 ## Resources
 - [Link](link.example)
-
 ```
 
 ### Writing a guide
