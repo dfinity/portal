@@ -237,7 +237,7 @@ function SnsFaqPage() {
               </ul>
             </Faq>
 
-            <Faq title="Are there other existing SNS DAOs?">
+            <Faq title="Are there existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
               handed control over to an SNS DAO in Q1 of 2023. Since then, many 
@@ -706,20 +706,27 @@ function SnsFaqPage() {
           >
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
-                Voting and the creation of SNS proposals can take place in the
-                dapp controlled by the SNS DAO, and soon in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
-                Proposals are listed within the dapps themselves as in this
-                example of OpenChat:
+                Anyone can build a frontend that allows users to create or vote
+                on SNS proposals, which means voting could take place within the dapp
+                the SNS DAO controls, or in any other dapp that integrates with the
+                SNS backend. The{" "}
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link> lists
+                all SNS DAOs and their proposals. Other dapps that allow voting
+                on SNS proposals are{" "}
+                <Link href="https://iclight.io/icsns/proposals">ICLight.house</Link>,{" "}
+                <Link href="https://oc.app/community/dgegb-daaaa-aaaar-arlhq-cai/channel/213879932851725513516678778767199309579">OpenChat</Link>,
+                and partially{" "}
+                <Link href="https://dscvr.one/">DSCVR</Link>.{" "}
+                Example on how SNS proposals appear on OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
               </p>
               <p className="not-prose">
                 <Link
-                  href="https://oc.app/#/vhn7y-siaaa-aaaaf-a7yxa-cai"
+                  href="https://nns.ic0.app/proposals/"
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight></LinkArrowRight>
-                  See SNS-1 proposals on OpenChat
+                  See SNS proposals and vote on the NNS dapp
                 </Link>
               </p>
             </Faq>
