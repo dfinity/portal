@@ -323,14 +323,16 @@ const MarketingNav = () => {
           <div className="hidden md:flex gap-0 items-center">
             {nav.mainItems.map((item) => (
               <div
-                className="active:outline active:outline-1 active:outline-white border-none bg-transparent appearance-none font-circular px-8 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-[#6E52AA] hover:text-white cursor-pointer"
+                className="active:outline active:outline-1 active:outline-white  text-black dark-hero:text-white m-0 tw-heading-7 group  cursor-pointer"
                 key={item.name}
                 onMouseEnter={() => showFlyout(item)}
                 tabIndex={0}
               >
-                {item.name}
+                <div className="rounded-full px-8 py-[2px] group-hover:bg-[#6E52AA] group-hover:text-white">
+                  {item.name}
+                </div>
 
-                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
                   <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
                     <div className="flex-1 flex">
                       {item.sections.length > 1 && (
