@@ -124,7 +124,7 @@ const marketingNav = {
           name: "ICP Dashboard",
           href: "https://dashboard.internetcomputer.org/",
         },
-        { name: "Video on Youtube", href: "https://www.youtube.com/dfinity" },
+        { name: "ICP on YouTube", href: "https://www.youtube.com/dfinity" },
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         { name: "Whitepaper", href: "/whitepaper.pdf" },
         {
