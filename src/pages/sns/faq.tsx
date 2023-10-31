@@ -417,7 +417,7 @@ function SnsFaqPage() {
               <p>
                 From the ICP ecosystem's vantage point, the Neurons' fund aids
                 in bootstrapping the SNS DAO ecosystem, thereby supporting the continued growth
-                of the ecosystem. The Neurons'fund is controlled by a DAO (the NNS).
+                of the ecosystem. The Neurons' fund itself is controlled by a DAO (the NNS).
               </p>
               <p>
                 From a user's vantage point, the Neurons' fund is a way for
