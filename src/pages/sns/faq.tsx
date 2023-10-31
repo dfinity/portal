@@ -706,11 +706,18 @@ function SnsFaqPage() {
           >
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
-                Voting and the creation of SNS proposals can take place in the
-                dapp controlled by the SNS DAO, and in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
-                Proposals are listed within the dapps themselves, as in this
-                example of OpenChat:
+                Anyone can build a frontend that allows users to create or vote
+                on SNS proposals, which means voting could take place within the dapp
+                the SNS DAO controls, or in any other dapp that integrates with the
+                SNS backend. The{" "}
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link> lists
+                all SNS DAOs and their proposals. Other dapps that allow voting
+                on SNS proposals are{" "}
+                <Link href="https://iclight.io/icsns/proposals">ICLight.house</Link>,{" "}
+                <Link href="https://oc.app/community/dgegb-daaaa-aaaar-arlhq-cai/channel/213879932851725513516678778767199309579">OpenChat</Link>,
+                and partially{" "}
+                <Link href="https://dscvr.one/">DSCVR</Link>.{" "}
+                Example on how SNS proposals appear on OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
               </p>
               <p className="not-prose">
