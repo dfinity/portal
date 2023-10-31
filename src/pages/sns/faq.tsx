@@ -244,6 +244,7 @@ function SnsFaqPage() {
               ecosystem projects have followed. Currently, there are 10 SNS DAOs
               on the Internet Computer. Follow their progress on the {" "}
               <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
+            </Faq>
           </FaqSection>
           <FaqSection
             id="participate"
