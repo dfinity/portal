@@ -715,7 +715,7 @@ function SnsFaqPage() {
               </p>
               <p className="not-prose">
                 <Link
-                  href="https://nns.ic0.app/proposals/?u=qoctq-giaaa-aaaaa-aaaea-cai"
+                  href="https://nns.ic0.app/proposals/"
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight></LinkArrowRight>
