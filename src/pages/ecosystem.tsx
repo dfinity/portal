@@ -295,7 +295,7 @@ function ShowcasePage(): JSX.Element {
     let filteredProjects = projects;
     if (queryTagInitialized && queryTag?.length > 0) {
       filteredProjects = filteredProjects.filter((p) =>
-        p.tags.find((tag) => tag == queryTag)
+        (p.tags || []).find((tag) => tag == queryTag)
       );
     }
     setFilteredProjects(sortDesktopProjects(filteredProjects));
@@ -335,7 +335,7 @@ function ShowcasePage(): JSX.Element {
                   {projects.length}
                 </PillSecondaryLabel>
               </Pill>
-              {tags.map(([tag, count]) => (
+              {(tags || []).map(([tag, count]) => (
                 <Pill
                   isActive={tag === queryTag}
                   onClick={() => setQueryTag(tag)}
