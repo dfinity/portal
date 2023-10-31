@@ -297,6 +297,14 @@ const MarketingNav = () => {
   function openSecondaryMobileNav(index: number) {
     setSecondaryMobileNavOpen(index);
   }
+  function isCurrentPage(href: string) {
+    const cleanHref = href
+      .replace(/#.*$/, "") // remove hash
+      .replace(/\?.*$/, "") // remove query string
+      .replace(/\/$/, ""); // remove trailing slash
+
+    return window.location.pathname == cleanHref;
+  }
 
   return (
     <>
@@ -359,7 +367,12 @@ const MarketingNav = () => {
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
+                              className={clsx(
+                                isCurrentPage(item.href)
+                                  ? "text-infinite"
+                                  : "text-black",
+                                "hover:no-underline group/item hover:text-infinite flex flex-col"
+                              )}
                             >
                               <span className="tw-heading-7 inline-flex gap-2 items-center">
                                 {item.name}
@@ -369,7 +382,14 @@ const MarketingNav = () => {
                                 )}
                               </span>
 
-                              <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite whitespace-nowrap">
+                              <span
+                                className={clsx(
+                                  isCurrentPage(item.href)
+                                    ? "text-infinite"
+                                    : "text-black/60",
+                                  "tw-title-navigation-on-page group-hover/item:text-infinite whitespace-nowrap"
+                                )}
+                              >
                                 {item.description}
                               </span>
                             </Link>
