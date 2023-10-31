@@ -237,42 +237,13 @@ function SnsFaqPage() {
               </ul>
             </Faq>
 
-            <Faq title="What is SNS-1?">
-              SNS-1 is the first SNS DAO that DFINITY launched on the mainnet to
-              test an SNS decentralization swap with involvement of the ICP
-              community. The SNS-1 test exposed areas of improvement, which are
-              currently being addressed. The SNS-1 dapp is now controlled by the
-              community of token holders who will collectively determine its
-              future. Since SNS-1 was meant as a test, it is unusual among SNSs
-              in that it was launched as a blank canvas without a product or
-              developer team. Future SNSs will likely be derived from
-              established ICP dapps. SNS-1 tokens are available on{" "}
-              <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex/SNS1/ICP">
-                ICDex
-              </Link>
-              .
-            </Faq>
-
             <Faq title="Are there other existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
-              handed control over to an SNS DAO announced their plans to turn
-              their dapp into an SNS DAO in Q1 of 2023. Dapps such as{" "}
-              <Link href="https://www.sonic.ooo//">Sonic</Link>,{" "}
-              <Link href="https://hotornot.wtf/">Hot or Not</Link>,{" "}
-              <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
-                Kinic
-              </Link>
-              , <Link href="https://distrikt.app/">distrikt</Link>,{" "}
-              <Link href="https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/">
-                Catalyze
-              </Link>
-              , <Link href="https://canistore.io/">Canistore</Link> and{" "}
-              <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
-                Nuance
-              </Link>{" "}
-              are considering creating their own SNSs.
-            </Faq>
+              handed control over to an SNS DAO in Q1 of 2023. Since then, many 
+              ecosystem projects have followed. Currently, there are 10 SNS DAOs
+              on the Internet Computer. Follow their progress on the {" "}
+              <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
           </FaqSection>
           <FaqSection
             id="participate"
