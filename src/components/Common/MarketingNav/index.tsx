@@ -1,4 +1,5 @@
 import Link from "@docusaurus/Link";
+import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { isLinkExternal } from "@site/plugins/utils/links";
 import Search from "@site/src/theme/SearchBar";
@@ -201,6 +202,8 @@ const MarketingNav = () => {
     nav.mainItems[0].sections[0]
   );
 
+  const location = useLocation();
+
   const hiddenRef = React.useRef(false);
   const lastScrollPosRef = React.useRef(0);
   const navbarRef = React.useRef<HTMLElement>(null);
@@ -303,7 +306,7 @@ const MarketingNav = () => {
       .replace(/\?.*$/, "") // remove query string
       .replace(/\/$/, ""); // remove trailing slash
 
-    return window.location.pathname == cleanHref;
+    return location.pathname == cleanHref;
   }
 
   return (
