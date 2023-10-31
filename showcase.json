@@ -2828,19 +2828,7 @@
     "submittableId": "35648608",
     "videoContentType": "video/mp4"
   },
-  {
-    "id": "fishverse",
-    "name": "FishVerse",
-    "description": "FishVerse is a revolutionary W2E fishing game that is open world, decentralized and built on ICP technology. It brings together fishing and GameFi enthusiasts inside of a vibrant community where people can monetize by catching and utilizing NFT fishes, competing in tournaments, missions, providing services and more...",
-    "website": "https://thefishverse.com/",
-    "logo": "/img/showcase/fishverse_logo.webp",
-    "screenshots": [
-      "/img/showcase/fishverse_screenshot.webp"
-    ],
-    "video": "/img/showcase/canister-store_video.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": "35750450"
-  },
+
   {
     "id": "Faceless",
     "name": "Faceless Project",
