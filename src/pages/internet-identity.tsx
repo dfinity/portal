@@ -382,7 +382,7 @@ function InternetIdentityPage() {
               className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
               variants={transitions.item}
             >
-              Learn how to build a user-friendly dApp on the
+              Learn how to build a user-friendly dapp on the
               Internet Computer using Internet Identity, our core identity component.
             </motion.p>
           </AnimateSpawn>

@@ -132,9 +132,9 @@ dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argu
 "
 ```
 
-Take a moment to read the details of the call we made above. Not only are we deploying the ICP ledger canister, we are also:
+Take a moment to read the details of the call made above. Not only are you deploying the ICP ledger canister, you are also:
 - Deploying the canister to the same canister ID as the mainnet ledger canister. This is to make it easier to switch between local and mainnet deployments.
-- Setting the minting account to the account identifier we saved in a previous step (`MINTER_ACCOUNT_ID`).
+- Setting the minting account to the account identifier you saved in a previous step (`MINTER_ACCOUNT_ID`).
 - Minting 100 ICP tokens to the `DEFAULT_ACCOUNT_ID` (1 ICP is equal to 10^8 e8s, hence the name).
 - Setting the transfer fee to 0.0001 ICP.
 - Naming the token `Local ICP / LICP`

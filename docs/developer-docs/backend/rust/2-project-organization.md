@@ -93,7 +93,7 @@ Notice that under the `canisters` key, you have some default settings for the `e
 
 In the root directory, there is a `Cargo.toml` file.
 
-It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here we have one member at `src/example_backend` which is the only Rust canister.
+It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here you have one member at `src/example_backend` which is the only Rust canister.
 
 ``` toml
 [workspace]
@@ -104,7 +104,7 @@ members = [
 
 ### `src/example_backend/`
 
-Now we are in the Rust canister. As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
+Now you are in the Rust canister. As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
 
 #### `src/example_backend/Cargo.toml`
 

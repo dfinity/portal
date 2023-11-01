@@ -34,7 +34,7 @@ This is also relevant for other SNS proposals that can already be used during th
 upgrade the dapp canister(s) or registering custom proposals for that DAO.
 :::
   
-What we have at this stage:
+What you have at this stage:
 
 #### Table 1: Canisters
 
@@ -83,7 +83,7 @@ To ensure that malicious parties cannot simply fill the SNS subnet with un-appro
 canister which is responsible for deploying SNSs, [SNS-W](../introduction/sns-architecture.md#SNS-W), 
 contains a list of principals that are allowed to do so. Therefore, a developer launching an SNS needs to ask the NNS community for approval to be added to this list. If the proposal is adopted, the defined principal is allowed to install exactly one SNS. 
 
-What we have at this stage:
+What you have at this stage:
 
 #### Table 1: Canisters
 
@@ -132,7 +132,7 @@ This is the **first of three** proposals that need to successfully pass.
 If this NNS proposal passes and the developer's principal is added the list of principals that can deploy to the SNS 
 subnet, it does **not** guarantee the rest of the next stages will complete.
 
-If the proposal is adopted successfully, at the end of this step, we have:
+If the proposal is adopted successfully, at the end of this step, you have:
 
 #### Table 1: Canisters
 
@@ -210,7 +210,7 @@ At this point, the SNS ledger has two accounts:
 To ensure that no one can transfer tokens and distribute them, or start token markets prematurely, all remaining initial tokens are locked in neurons.
 Moreover, in pre-decentralization-swap mode, the initial neurons cannot modify the SNS or transfer the treasury tokens.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 
 #### Table 3: Objects
@@ -272,7 +272,7 @@ If successful, at the end of stage, we the following has changed:
   the SNS parameters, as the SNS governance canister is still in
   pre-decentralization-swap mode.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 #### Table 1: NNS proposals
 
@@ -301,7 +301,7 @@ If successful, at the end of stage, we the following has changed:
 
 The initial SNS developer neurons are declared in the initial parameters and available at SNS installation.
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 #### Table 1: Canisters
 
@@ -355,7 +355,7 @@ This proposal defines the conditions for the decentralization swap (e.g. how man
 Note that there can only be one such proposal at a time in the NNS. This means that the time when this proposal can be submitted might depend on other SNS' launch. 
 :::
 
-If successful, at the end of stage, we the following has changed:
+If successful, at the end of stage, the following has changed:
 
 #### Table 1: NNS proposals
 
@@ -450,7 +450,7 @@ If successful, at the end of stage, the following has changed:
   collected ICP are refunded to the swap participants.
 
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, you have:
 
 
 #### Table 2

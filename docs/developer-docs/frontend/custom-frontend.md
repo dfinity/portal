@@ -72,7 +72,7 @@ To install required framework modules:
 
 ## Review the default configuration
 
-Before we make any changes to use React for this guide, let’s review the default frontend settings in the `dfx.json` configuration file for your project.
+Before you make any changes to use React for this guide, let’s review the default frontend settings in the `dfx.json` configuration file for your project.
 
 To review the default `dfx.json` configuration file:
 
@@ -113,7 +113,7 @@ To review the default `dfx.json` configuration file:
 
   -   The `type` setting specifies that the `custom_greeting_frontend` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the IC.
 
-  For this guide, we are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
+  For this guide, you are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
 
 - #### Step 3:  Close the `dfx.json` file to continue.
 
@@ -158,7 +158,7 @@ This file by default will contain the following piece of code:
 #### What this does
 - The `import` statement points to an actor that will allow us to make calls to our `custom_greeting_backend` canister from `"../declarations"`
 
--  The declarations haven’t been created yet, but we will come back to that.
+-  The declarations haven’t been created yet, but this guide will come back to that.
 
 - #### Step 3.  Close the `index.js` file to continue.
 
@@ -177,7 +177,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
         entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // The frontend.entrypoint points to the HTML file for this build, so you need
           // to replace the extension to `.js`.
           index: path.join(__dirname, asset_entry).replace(/\.html$/, ".jsx"),
         },
@@ -216,7 +216,7 @@ module.exports = {
   target: "web",
   mode: isDevelopment ? "development" : "production",
         entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // The frontend.entrypoint points to the HTML file for this build, so you need
           // to replace the extension to `.js`.
           index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
         },
@@ -378,7 +378,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
         entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // The frontend.entrypoint points to the HTML file for this build, so you need
           // to replace the extension to `.js`.
           index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
         },

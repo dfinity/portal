@@ -10,9 +10,9 @@ This article covers connecting to the IC from Node.js in the server environment.
 
 Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to the IC, or to introduce a websocket layer to your application.
 
-In this example, we will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.
+In this example, you will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.
 
-First, we need to get started with a project. Let's take the DIP721 example code at https://github.com/Psychedelic/DIP721, and write a node script that will mint a collection of NFTs.
+First, you need to get started with a project. Let's take the DIP721 example code at https://github.com/Psychedelic/DIP721, and write a node script that will mint a collection of NFTs.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ git clone https://github.com/Psychedelic/DIP721.git
 
 - #### Step 2: Then, `cd` into `DIP721`. 
 
-The project has all of the canister logic already added, so there is only a little more we need to add.
+The project has all of the canister logic already added, so there is only a little more that needs to be added.
 
 - #### Step 3: Add a `package.json` file by running the command:
 
@@ -125,7 +125,7 @@ To `nft`, add a new configuration for `declarations -> node_compatibility`:
 
 This will optimize the auto-generated JavaScript interface for `node.js` projects.
 
-- #### Step 9: Additionally, we will add a new canister, `asset`, which will be used to host the frontend assets for our NFTs.
+- #### Step 9: Additionally, add a new canister, `asset`, which will be used to host the frontend assets for your NFTs.
 
 ```
     "asset": {
@@ -139,7 +139,7 @@ This will optimize the auto-generated JavaScript interface for `node.js` project
 
 - #### Step 10: Finally, remove the `dfx` setting as well as the `defaults` and `networks` settings. 
 
-They will lock the project to a specific and outdated version of `dfx`, and we want to use `dfx` 12 or later.
+They will lock the project to a specific and outdated version of `dfx`, and use `dfx` 12 or later.
 
 After these steps, your `dfx.json` file should look like this:
 
@@ -173,7 +173,7 @@ After these steps, your `dfx.json` file should look like this:
 
 - #### Step 11: Now, you can start up your project. 
 
-We will use an example principal, derived from a seed phrase of the word `"test"` 12 times. This principal will be `rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae`.
+You will use an example principal, derived from a seed phrase of the word `"test"` 12 times. This principal will be `rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae`.
 
 :::caution
 It should go without saying, but this is a testing seed phrase, and any real seed phrase used to deploy or manage a canister should be kept a secret.
@@ -199,11 +199,11 @@ dfx canister call asset authorize "(principal  \"rwbxt-jvr66-qvpbz-2kbh3-u226q-w
 dfx generate nft
 ```
 
-The interface will be placed into `src/declarations/nft`, and we will use that to interact with the canister. Before we setup the actor, we will need to have an identity.
+The interface will be placed into `src/declarations/nft`, and will be used that to interact with the canister. Before you setup the actor, you will need to have an identity.
 
 ### Identity from a seed phrase
 
-- #### Step 13: Since we are running the code using the `--es-module-specifier-resolution=node` flag, we can use `import` syntax in our code. 
+- #### Step 13: Since you are running the code using the `--es-module-specifier-resolution=node` flag, you can use `import` syntax in your code. 
 
 Let's start by setting up an identity that will resolve to the principal that is mentioned above.
 
@@ -228,18 +228,18 @@ Remember to store any seed phrase you use in production in a secure place. Use e
 
 ### Setting up an actor
 
-- #### Step 14: Back in `src > node > index.js` file, we can now set up our actor. 
+- #### Step 14: Back in `src > node > index.js` file, you can now set up your actor. 
 
-We can import a `createActor` utility from the `nft` declarations, as well as a `canisterId` alias, which by default points to `process.env.<canister-id>_CANISTER_ID`.
+You can import a `createActor` utility from the `nft` declarations, as well as a `canisterId` alias, which by default points to `process.env.<canister-id>_CANISTER_ID`.
 
 You can pass the canister id environment variable logic to your application in a number of ways. You could:
 
 - Edit it into the start of your `package.json` scripts `NFT_CANISTER_ID=... node...`. 
 - Install [dotenv](https://www.npmjs.com/package/dotenv) and configure it to read from a hidden `.env` file. 
 
-For the sake of this example, which will focus on local development, we will simply read it from the local `canister_ids.json` file, which can be found in `.dfx/local/canister_ids.json`.
+For the sake of this example, which will focus on local development, you will simply read it from the local `canister_ids.json` file, which can be found in `.dfx/local/canister_ids.json`.
 
-So, to import the canister ID and set up our actor, it will look something like this:
+So, to import the canister ID and set up your actor, it will look something like this:
 
 :::caution
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
@@ -272,7 +272,7 @@ const actor = createActor(effectiveCanisterId, {
 });
 ```
 
-At the end here, the actor is fully set up and ready to make calls to the local canister and the agent we have set up. Since we are focusing on local, the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If we want to talk to the IC mainnet, the `host` should point to `https://icp0.io`.
+At the end here, the actor is fully set up and ready to make calls to the local canister and the agent you have set up. Since this tutorial is focusing on local development the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If you want to talk to the IC mainnet, the `host` should point to `https://icp0.io`.
 
 :::info
 The port `4943` is the default port for the local replica. If you have changed the port, or you are using an older version of `dfx`, you will need to update it here and in the other instances in the code.
@@ -280,7 +280,7 @@ The port `4943` is the default port for the local replica. If you have changed t
 
 ### Minting logic
 
-Now, let's go through and write some logic to mint our NFTs. The steps we will need to go through include:
+Now, let's go through and write some logic to mint your NFTs. The steps will go through:
 
 - 1: Parse a config for the NFTs to be minted.
 - 2: Load assets and metadata for the assets.
@@ -290,7 +290,7 @@ Now, let's go through and write some logic to mint our NFTs. The steps we will n
 
 ### Parse the config
 
-- #### Step 15: To parse the config, we'll store it in a JSON file, using an array of items. 
+- #### Step 15: To parse the config, store it in a JSON file, using an array of items. 
 
 There's the included "asset" name, plus some key-value metadata that can get loaded as well.
 
@@ -309,7 +309,7 @@ Create a new file in the `src/node` directory called `nft.json` and insert the f
 ]
 ```
 
-Then, we can load that in the `src/node/index.js` script:
+Then, load that in the `src/node/index.js` script:
 
 :::caution
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
@@ -372,7 +372,7 @@ main();
 
 ### Prepare thumbnail
 
-- #### Step 17: To prepare the thumbnail, we can use `image-thumbnail`, a utility based on `sharp`.
+- #### Step 17: To prepare the thumbnail, you can use `image-thumbnail`, a utility based on `sharp`.
 
 In the `src/node/index.js` script, add the following:
 
@@ -394,7 +394,7 @@ const thumbnail = await imageThumbnail(filePath, options);
 
 ### Upload assets
 
-- #### Step 18: We can use a community library to simplify uploading to our asset canister. We'll need to get the canister ID, pass our agent, and then upload our two files.
+- #### Step 18: You can use a community library to simplify uploading to your asset canister. You'll need to get the canister ID, pass your agent, and then upload your two files.
 
 In the `src/node/index.js` script, add the following:
 
@@ -429,7 +429,7 @@ async function main() {
 
 ### Assemble the data and mint
 
-- #### Step 19: Then, all we have left to do is assemble the metadata pointing to our uploaded assets, and to mint the NFT.
+- #### Step 19: Then, all you have left to do is assemble the metadata pointing to your uploaded assets, and to mint the NFT.
 
 In the `src/node/index.js` script, add the following:
 
@@ -458,7 +458,7 @@ async function main() {
     ...metadata,
   ];
 
-  // set our minting identity as the recipient - replace if you have airdrops in mind
+  // set your minting identity as the recipient - replace if you have airdrops in mind
   const principal = await (await identity).getPrincipal();
   const mintResult = await actor.mint(principal, BigInt(idx), data);
 

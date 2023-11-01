@@ -2,7 +2,7 @@
 
 ## Overview
 
-Before we can begin our developer journey, we need to set up our developer environment. A developer environment consists of tools and packages that are required to develop code projects. Usually, developer environments are stored and hosted on your local computer, but there are some situations where a virtual, web-based development environment exists. 
+Before you can begin our developer journey, you need to set up our developer environment. A developer environment consists of tools and packages that are required to develop code projects. Usually, developer environments are stored and hosted on your local computer, but there are some situations where a virtual, web-based development environment exists. 
 
 An example of this is the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/), which is a web-based, virtual developer environment that can be used by developers without having to set up a local environment. The Motoko Playground has several restrictions, however, and it isn't recommended to be used for workflows other than simple, small-scale testing. 
 
@@ -22,7 +22,7 @@ Open a command line interface (CLI) window. This may be referred to as 'Terminal
 
 #### Why does this matter?
 
-We will primarily be using CLI-based tools, such as `dfx` and `git`, in this developer journey. 
+You will primarily be using CLI-based tools, such as `dfx` and `git`, in this developer journey. 
 
 #### Options for Windows users
 
@@ -62,7 +62,7 @@ The IC SDK is composed of several components that are required for developing on
 
 To write and edit code, you will need a code editor. macOS and Linux systems come with some basic editors, such as `vi` or `nano`, but these have very limited functionality and can be hard to use. 
 
-We recommend you use [Visual Studio Code](https://code.visualstudio.com/download), as it is a popular choice and there is a [Motoko extension](https://github.com/dfinity/vscode-motoko) that provides additional tools for Motoko development. 
+It is recommended that you use [Visual Studio Code](https://code.visualstudio.com/download), as it is a popular choice and there is a [Motoko extension](https://github.com/dfinity/vscode-motoko) that provides additional tools for Motoko development. 
 
 #### Why does this matter?
 
@@ -74,7 +74,7 @@ Download and install [git](https://git-scm.com/downloads).
 
 #### Why does this matter?
 
-Many of the DFINITY public repositories are hosted on Github, such as our `examples` repository. We will be using code from this repository later in the developer journey, so it is important to install `git` to assure that you can download the sample code pieces and follow along with the later tutorials. 
+Many of the DFINITY public repositories are hosted on Github, such as our `examples` repository. You will be using code from this repository later in the developer journey, so it is important to install `git` to assure that you can download the sample code pieces and follow along with the later tutorials. 
 
 ### Download and install Node.js
 
@@ -82,7 +82,7 @@ Download and install [node.js](https://nodejs.org/en).
 
 #### Why does this matter?
 
-Node.js is used by `dfx` to generate frontend code and dependencies. It is not required for dapps that do not contain a frontend interface, though it is required for you to follow along with this developer journey series, since we will explore frontend canisters in a later tutorial. 
+Node.js is used by `dfx` to generate frontend code and dependencies. It is not required for dapps that do not contain a frontend interface, though it is required for you to follow along with this developer journey series, since you will explore frontend canisters in a later tutorial. 
 
 ### Assure all packages and tools are updated to the latest release versions
 
@@ -95,17 +95,38 @@ Having the latest release version assures that you have all of the newest featur
 
 ### Create a working directory
 
-The last step in setting up our developer environment is to create a new directory for us to build in. You can create a new directory with the command:
+The last step in setting up our developer environment is to create a new directory for you to build in. You can create a new directory with the command:
 
 ```
 mkdir developer_journey
 ```
 
-In future modules, we'll refer to this directory as the **working directory**. Each project that we create will be a *sub-directory* of this working directory.
+In future modules, you'll refer to this directory as the **working directory**. Each project that you create will be a *sub-directory* of this working directory.
 
 #### Why does this matter?
 
-We'll use this working directory to contain the projects that we build throughout our developer journey. This will help keep things organized in our local file structure. 
+You'll use this working directory to contain the projects that you build throughout your developer journey. This will help keep things organized in our local file structure. 
+
+## Need help?
+
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+
+- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+
+- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+
+- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
+
+- [Upcoming hackathons](https://dfinity.org/hackathons/).
+
+- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
 ## Next steps
 
 - [0.4 Introduction to canisters](04-intro-canisters.md).

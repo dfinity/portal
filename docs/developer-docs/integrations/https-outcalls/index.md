@@ -6,7 +6,7 @@ Up until now, blockchains have been isolated entities and smart contracts have n
 The feature of **canister HTTP(S) requests**, or **HTTP(S) outcalls**, on the Internet Computer enables — for the first time in blockchain history — smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract such that the replicated state can safely be updated using those inputs. So far, the only means of communication of smart contracts with external servers has been through so-called **oracles**. 
 
 :::info
-Note that in the remainder of this documentation we may use **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secured HTTPS these days.
+Note that in the remainder of this documentation uses **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secured HTTPS these days.
 :::
 
 Canister HTTP requests allow for a plethora of use cases and have numerous advantages over the currently used oracle model.
@@ -15,18 +15,20 @@ Canister HTTP requests allow for a plethora of use cases and have numerous advan
 * **Closer to the standard programming paradigm**: the paradigm of a smart contract directly making HTTP requests to external servers is much closer to the "normal" programming paradigm engineers are used to when compared to using oracles. Thus, the fact that one programs for a blockchain can be further abstracted away.
 
 #### Why is interfacing with the external world so important for a blockchain?
-* Most real-world dApp use cases need some form of data exchange with off-chain entities.
-* Most of the world's data is currently held in traditional (Web 2.0) services and many dApps build on this data and therefore need access to it.
+* Most real-world dapp use cases need some form of data exchange with off-chain entities.
+* Most of the world's data is currently held in traditional (Web 2.0) services and many dapps build on this data and therefore need access to it.
 * In order to be able to reach **blockchain singularity**, smart contracts need to be able to interact with Web 2.0 services. In our journey towards blockchain singularity, an ever increasing amount of data will be pulled into the blockchain world of Web 3.0 and interactions will increasingly take place between different smart contracts without involving Web 2.0 servers.
 
 
 ## Use cases
 There are many use cases for canister HTTPS outcalls, see the following list for some prominent examples.
+
 * One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data used in DEXs or weather data used in decentralized insurance dApps.
-* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, we may even envision direct interactions of sensors with the IC blockchain.
+* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, the Internet Computer may even envision direct interactions of sensors.
+
 * Chat services sending push notifications about incoming messages to users.
 
-We expect the majority of HTTP calls to be `GET` calls for reading Web 2.0 data, but `POST` clearly also plays an important role for the interaction with external systems in order to be able to write data to Web 2.0 servers.
+It is expected that the majority of HTTP calls to be `GET` calls for reading Web 2.0 data, but `POST` clearly also plays an important role for the interaction with external systems in order to be able to write data to Web 2.0 servers.
 
 ## Resources
 

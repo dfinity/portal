@@ -13,7 +13,7 @@
 	    - Deploying your counter app.
 	    - Stable variables in action.
 
-- [2.2 Advanced canister calls](2.2-advanced-canister-calls.md): Now that we've covered the core functionalities of canisters and using them, let's take a look at advanced canister calls. This module covers:
+- [2.2 Advanced canister calls](2.2-advanced-canister-calls.md): Now that you've covered the core functionalities of canisters and using them, let's take a look at advanced canister calls. This module covers:
     - The IC execution model.
     - Canister query calls.
 	    - Example query call.

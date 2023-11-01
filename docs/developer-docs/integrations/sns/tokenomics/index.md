@@ -8,8 +8,7 @@ steps to be considered before handing over a dapp to an SNS.
 The subsequent pages provide more details on some of these preparations:
 * Before diving into the technical details, you may want to spend some time defining
 non-technical goals of the SNS and the dapp that will be controlled by it.
-To provide some tips on what considerations you should not forget,
-we list a few of them on
+To provide some tips on what considerations you should not forget, a few are listed on
 [this page](predeployment-considerations.md).
 
 * The SNS parameters allow each SNS to define unique settings for tokenomics and how the 

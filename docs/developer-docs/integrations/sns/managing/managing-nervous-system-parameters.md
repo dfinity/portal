@@ -293,7 +293,7 @@ field to disable it. When disabled, this canister will still poll the
 Cycles Minting Canister (CMC), and store the value received therefrom.
 However, the fetched value does not get used when this is set to true.
 
-The reason we call this "disabled" instead of (positive) "enabled" is so
+The reason this is called "disabled" instead of (positive) "enabled" is so
 that the protobuf default (bool fields are false) and our application default
 (enabled) agree.
 
