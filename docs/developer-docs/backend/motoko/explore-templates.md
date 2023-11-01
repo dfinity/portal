@@ -137,7 +137,7 @@ Let’s take a look at a few key elements of this program:
 
 -   The program then uses the `async` keyword to indicate that the program returns an asynchronous message consisting of a concatenated text string constructed using `"Hello, "`, the `#` operator, the `name` argument, and `"!"`.
 
-We’ll explore code that uses `actor` objects and asynchronous message handling more a little later. For now, you can continue to the next section.
+You’ll explore code that uses `actor` objects and asynchronous message handling more a little later. For now, you can continue to the next section.
 
 ## Next steps
 

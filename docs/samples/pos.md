@@ -79,13 +79,13 @@ export OWNER=$(dfx identity get-principal)
 
 The responsibilities of the ledger canister are to keep track of token balances and handle token transfers.
 
-The ckBTC ledger canister is already deployed on the IC mainnet. ckBTC implements the [ICRC-1](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/) token standard. For local development, we deploy the ledger for an ICRC-1 token mimicking the mainnet setup.
+The ckBTC ledger canister is already deployed on the IC mainnet. ckBTC implements the [ICRC-1](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/) token standard. For local development, you can deploy the ledger for an ICRC-1 token mimicking the mainnet setup.
 
-Take a moment to read the details of the call we are making below. Not only are we deploying the ledger canister, we are also:
+Take a moment to read the details of the call you are making below. Not only are you deploying the ledger canister, you are also:
 
 - Deploying the canister to the same canister ID as the mainnet ledger canister. This is to make it easier to switch between local and mainnet deployments.
 - Naming the token `Local ckBTC / LCKBTC`.
-- Setting the owner principal to the principal we saved in the previous step.
+- Setting the owner principal to the principal you saved in the previous step.
 - Minting 100_000_000_000 tokens to the owner principal.
 - Setting the transfer fee to 10 LCKBTC.
 
@@ -157,7 +157,7 @@ npm install
 npm run dev
 ```
 
-Why don't we deploy the frontend as a local canister? Vite uses lazy loading of modules. This does not work when deploying to a local canister. When deploying to the IC mainnet, this is not an issue. Also, running using `npm run dev` allows for hot reloading of the frontend code when making changes.
+You may be wondering, "why don't I deploy the frontend as a local canister?" Vite uses lazy loading of modules. This does not work when deploying to a local canister. When deploying to the IC mainnet, this is not an issue. Also, running using `npm run dev` allows for hot reloading of the frontend code when making changes.
 
 ### Step 10: Make a transfer.
 

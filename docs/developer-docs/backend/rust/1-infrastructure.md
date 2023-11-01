@@ -100,7 +100,7 @@ thread_local! {
 
 It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the System API should go into the main file.
 
-It is also possible to create a thin abstraction for the System API and test your code with a fake but faithful implementation. For example, we could use the following trait to abstract the stable memory API:
+It is also possible to create a thin abstraction for the System API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
 
 ```
 pub trait Memory {

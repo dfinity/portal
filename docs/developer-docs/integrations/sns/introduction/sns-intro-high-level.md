@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Overview
 A Service Nervous Systems (SNS) is an advanced form of a decentralized autonomous organization (DAO).
-We assume that if you are reading this page you know what a DAO is and that you want to learn how
+It is assumed that if you are reading this page you know what a DAO is and that you want to learn how
 you can hand over your dapp to an SNS DAO.
 If this is not (yet) the case, you can learn more about DAOs and SNSs
 [here](../tokenomics/index.md),

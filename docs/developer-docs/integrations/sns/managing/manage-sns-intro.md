@@ -29,10 +29,8 @@ who would like to actively help managing the SNS.
 
 ## Managing an SNS
 
-On this page we will introduce a 
+This page introduces a 
 few aspects that are relevant for **managing** an SNS.
-As we complete more detailed pages for these different 
-topics, we will link to them here.
 
 * As every piece of software, after an
 SNS is launched is has to be **maintained**.
@@ -42,7 +40,8 @@ cycles to continue operating.
 You can find more information on<!--how SNS canisters can be  upgraded to new versions on this page (./upgradeSNS.md)
 and about--> 
 cycle management [on this page](./cycles-usage.md).
-  We especially want to emphasize the following:
+
+It is important to especially emphasize the following:
 
 :::caution
 The SNS communities are responsible for individually topping up the cycles of

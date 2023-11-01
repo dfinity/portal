@@ -94,12 +94,12 @@ URLs:
 Open the `internet_identity` link in the browser. You should be able to create anchors and register devices.
 
 ### Step 4: Make the Internet Identity URL available in the build process.
-We want the sample application to integrate with Internet Identity differently depending on whether we deploy locally or on the mainnet:
+You want the sample application to integrate with Internet Identity differently depending on whether you deploy locally or on the mainnet:
 
 - Locally the application should use the Internet Identity URL http://127.0.0.1:4943/?canisterId=<II_CANISTER_ID>.
 - On the mainnet it should use https://identity.ic0.app.
 
-To do so, we can make an environment variable II_URL available using webpack.
+To do so, you can make an environment variable II_URL available using webpack.
 
 Open the `webpack.config.js` file and replace the contents with the following:
 
@@ -153,7 +153,7 @@ module.exports = {
   target: "web",
   mode: isDevelopment ? "development" : "production",
   entry: {
-    // The frontend.entrypoint points to the HTML file for this build, so we need
+    // The frontend.entrypoint points to the HTML file for this build, so you need
     // to replace the extension to `.js`.
     index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
   },
@@ -272,7 +272,7 @@ Open the `index.html` file and replace the content with the following:
 ```
 
 ### Step 7: Make the login button interact with II.
-In order for the login button to work, we need to give it behavior. Replace the contents of the `src/greet_frontend/src/index.js` file with the following:
+In order for the login button to work, you need to give it behavior. Replace the contents of the `src/greet_frontend/src/index.js` file with the following:
 
 ```
 import {createActor, greet_backend} from "../../declarations/greet_backend";
@@ -312,11 +312,11 @@ loginButton.onclick = async (e) => {
         });
     });
 
-    // At this point we're authenticated, and we can get the identity from the auth client:
+    // At this point you're authenticated, and you can get the identity from the auth client:
     const identity = authClient.getIdentity();
-    // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
+    // Using the identity obtained from the auth client, you can create an agent to interact with the IC.
     const agent = new HttpAgent({identity});
-    // Using the interface description of our webapp, we create an actor that we use to call the service methods.
+    // Using the interface description of our webapp, you create an actor that you use to call the service methods.
     actor = createActor(process.env.GREET_BACKEND_CANISTER_ID, {
         agent,
     });
@@ -326,7 +326,7 @@ loginButton.onclick = async (e) => {
 ```
 
 ### Step 8: Modify the back-end.
-We want our application to greet the caller principal. In order to do so, the back-end Motoko code needs to be changed to:
+You want your application to greet the caller principal. In order to do so, the back-end Motoko code needs to be changed to:
 
 - No longer take a name parameter.
 - Use the `message.caller` for the greeting.

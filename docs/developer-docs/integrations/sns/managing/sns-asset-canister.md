@@ -2,9 +2,9 @@
 
 ## Overview
 
-The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides users with a way to store and retrieve static assets from a canister deployed on the IC. Generally, asset canisters are used to serve HTML, CSS, or JavaScript assets, which are typically part of a dapp's frontend. For this reason, the asset canister is also referred to as the frontend canister. For purposes of this guide, we'll refer to it as the asset canister. 
+The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides users with a way to store and retrieve static assets from a canister deployed on the IC. Generally, asset canisters are used to serve HTML, CSS, or JavaScript assets, which are typically part of a dapp's frontend. For this reason, the asset canister is also referred to as the frontend canister. For purposes of this guide, it will be referred to as the asset canister. 
 
-In the context of the SNS, a dapp's associated asset canister serves the frontend assets related to dapp and may also include a frontend to the SNS DAO, e.g., through which users can vote on governance proposals.  
+In the context of the SNS, a dapp's associated asset canister serves the frontend assets related to the dapp and may also include a frontend to the SNS DAO, e.g., through which users can vote on governance proposals.  
 
 The contents of the asset canister must be configured prior to the launch of the SNS, and any changes afterwards must be made by a principal with the `Prepare` permission. Principals with this `Prepare` permission can make a batch of changes to the asset canister and then 'lock' those changes. To have those changes applied, a proposal must be submitted. Anyone can submit the proposal for the 'locked' changes. Once changes are proposed, they can be voted on by the SNS DAO. If approved, the SNS governance canister is the only one that can commit the approved changes. This configuration assures that changes to the asset canister are only made by approved proposals. These changes are referred to as 'updates' to the asset canister in the remainder of this document. 
 

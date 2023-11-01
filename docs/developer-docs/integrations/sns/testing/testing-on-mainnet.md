@@ -266,7 +266,7 @@ You can also provide a limit and thus only obtain the last few proposals.
 
 As the developer keeps direct control over the registered dapp's canisters during the testflight,
 you can directly manage your dapp's canisters during the testflight if needed.
-However, we strongly encourage you to make sure you can also perform all required operations
+However, it is strongly encouraged that you to make sure you can also perform all required operations
 only via SNS proposals (possibly after upgrading your dapp).
 
 Once you are done with testing all kinds of SNS proposals needed to operate your dapp,

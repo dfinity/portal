@@ -34,7 +34,7 @@ frontend dapp principals will only be visible after a successful launch.
 Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process.
 :::
 
-  What we have at this stage:
+  What you have at this stage:
 
 #### Table 1: Canisters
 
@@ -136,7 +136,7 @@ If these conditions are not met, the proposal will fail immediately and the cont
 given back exclusively to the original dapp developers.
 
 If successful, at the end of this stage the proposal is adopted and the conditions are met.
-This means that we are in the following situation:
+This means that you are in the following situation:
 
 #### Table 2: NNS Proposals
  <table>
@@ -330,7 +330,7 @@ the swap will automatically be started and is open for participations.
 End users can participate in the decentralization swap by transferring ICP tokens to the
 swap canister.
 
-This means, we will have the following situation:
+This means, you will have the following situation:
 #### Table 1: Canisters
 
 <table>
@@ -378,7 +378,7 @@ When this time is reached, the swap automatically ends.
 The swap can also end earlier if the maximum ICP participation is reached before the end 
 time.
 
-This means, we will have the following situation:
+This means, you will have the following situation:
 #### Table 1: Canisters
 
 <table>
@@ -437,7 +437,7 @@ is reverted to the state before the SNS launch attempt, including that the dappâ
 is handed back to the original developers of the dapp, and the
 collected ICP are refunded to the swap participants.
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, you have:
 
 #### Table 1: Canisters
 

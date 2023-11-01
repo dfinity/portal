@@ -47,7 +47,11 @@ You can download and install the latest version of the [IC SDK](https://github.c
 
 The **IC SDK** is natively supported on Linux or macOS 12.\* Monterey or later. 
 
-There is no native support for <code>dfx</code> on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run dfx also on a Windows system as described below.
+There is no native support for <code>dfx</code> on Windows. However, by installing the Windows Subsystem for Linux (WSL 2), you can run dfx on a Windows system as described below.
+
+:::caution
+Not all features of dfx may be supported on WSL 2.
+:::
 
 <Tabs>
   <TabItem value="apple" label="Install on Mac/Linux" default>
@@ -71,7 +75,7 @@ If you are using a machine running Apple silicon, you will need to have
       href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>. Make sure you are
       running Windows 10 (version 2004 or higher) or Windows 11.</p>
     <h3 id="supported-wsl-versions">Supported WSL Versions</h3>
-    <p>Theoretically, WSL 1 and WSL 2 should both allow you to run <code>dfx</code>. However, we recommend WSL 2. <a
+    <p>Theoretically, WSL 1 and WSL 2 should both allow you to run <code>dfx</code>. However, it is recommended to use WSL 2. <a
       href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">WSL Comparison</a> explains the differences
       between WSL1 and WSL 2.</p>
     <h3 id="check-your-wsl-version">Check your WSL version</h3>

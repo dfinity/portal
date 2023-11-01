@@ -237,41 +237,13 @@ function SnsFaqPage() {
               </ul>
             </Faq>
 
-            <Faq title="What is SNS-1?">
-              SNS-1 is the first SNS DAO that DFINITY launched on the mainnet to
-              test an SNS decentralization swap with involvement of the ICP
-              community. The SNS-1 test exposed areas of improvement, which are
-              currently being addressed. The SNS-1 dapp is now controlled by the
-              community of token holders who will collectively determine its
-              future. Since SNS-1 was meant as a test, it is unusual among SNSs
-              in that it was launched as a blank canvas without a product or
-              developer team. Future SNSs will likely be derived from
-              established ICP dapps. SNS-1 tokens are available on{" "}
-              <Link href="https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex/SNS1/ICP">
-                ICDex
-              </Link>
-              .
-            </Faq>
-
-            <Faq title="Are there other existing SNS DAOs?">
+            <Faq title="Are there existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
-              handed control over to an SNS DAO announced their plans to turn
-              their dapp into an SNS DAO in Q1 of 2023. Dapps such as{" "}
-              <Link href="https://www.sonic.ooo//">Sonic</Link>,{" "}
-              <Link href="https://hotornot.wtf/">Hot or Not</Link>,{" "}
-              <Link href="https://74iy7-xqaaa-aaaaf-qagra-cai.icp0.io/">
-                Kinic
-              </Link>
-              , <Link href="https://distrikt.app/">distrikt</Link>,{" "}
-              <Link href="https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/">
-                Catalyze
-              </Link>
-              , <Link href="https://canistore.io/">Canistore</Link> and{" "}
-              <Link href="https://exwqn-uaaaa-aaaaf-qaeaa-cai.raw.ic0.app/">
-                Nuance
-              </Link>{" "}
-              are considering creating their own SNSs.
+              handed control over to an SNS DAO in Q1 of 2023. Since then, many 
+              ecosystem projects have followed. Currently, there are 10 SNS DAOs
+              on the Internet Computer. Follow their progress on the {" "}
+              <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
             </Faq>
           </FaqSection>
           <FaqSection
@@ -413,32 +385,31 @@ function SnsFaqPage() {
               tokens.
             </Faq>
 
-            <Faq title="What is the Community Fund?">
+            <Faq title="What is the Neurons' fund?">
               <p>
-                From the ICP ecosystem's vantage point, the Community Fund aids
-                in bootstrapping the SNS DAO ecosystem, and re-invests in the
-                continued growth of the ecosystem. The Community Fund itself is
-                controlled by a DAO (the NNS).
+                From the ICP ecosystem's vantage point, the Neurons' fund aids
+                in bootstrapping the SNS DAO ecosystem, thereby supporting the continued growth
+                of the ecosystem. The Neurons' fund itself is controlled by a DAO (the NNS).
               </p>
               <p>
-                From a user's vantage point, the Community Fund is a way for
+                From a user's vantage point, the Neurons' fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
-                future SNSs, which results in higher diversification. As the NNS
-                decides how the Community Fund is distributed, those
-                participating in it can leverage the broader community's "wisdom
-                of crowds" to decide which SNS tokens to acquire.
+                future SNSs. As the NNS decides how the Neuons' fund contributes to 
+                SNSs, ICP stakers participating in them can leverage the broader community's 
+                "wisdom of crowds" to chose which SNS tokens to acquire. This allows 
+                users to participate automatically in upcoming SNS launches.
               </p>
               <p>
-                ICP neuron holders can opt in or out of the Community Fund at
+                ICP neuron holders can opt in or out of the Neurons' fund at
                 any moment. Neurons will only participate in the
                 decentralization swap if they are opted in at the moment when
-                the proposal to initiate the decentralization swap executes. The
-                propsoal executes right after it gets adopted by ICP neuron
+                the proposal to initiate the SNS decentralization swap executes. The
+                propsoal executes immediately after it gets adopted by ICP neuron
                 holders.
               </p>
               More about the{" "}
-              <Link href="https://wiki.internetcomputer.org/wiki/Community_Fund">
-                community fund
+              <Link href="https://wiki.internetcomputer.org/wiki/Neurons_Fund">
+                Neurons' fund
               </Link>
               .
             </Faq>
@@ -735,20 +706,27 @@ function SnsFaqPage() {
           >
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
-                Voting and the creation of SNS proposals can take place in the
-                dapp controlled by the SNS DAO, and soon in the{" "}
-                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link>,
-                Proposals are listed within the dapps themselves as in this
-                example of OpenChat:
+                Anyone can build a frontend that allows users to create or vote
+                on SNS proposals, which means voting could take place within the dapp
+                the SNS DAO controls, or in any other dapp that integrates with the
+                SNS backend. The{" "}
+                <Link href="https://nns.ic0.app/">NNS frontend dapp</Link> lists
+                all SNS DAOs and their proposals. Other dapps that allow voting
+                on SNS proposals are{" "}
+                <Link href="https://iclight.io/icsns/proposals">ICLight.house</Link>,{" "}
+                <Link href="https://oc.app/community/dgegb-daaaa-aaaar-arlhq-cai/channel/213879932851725513516678778767199309579">OpenChat</Link>,
+                and partially{" "}
+                <Link href="https://dscvr.one/">DSCVR</Link>.{" "}
+                Example on how SNS proposals appear on OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
               </p>
               <p className="not-prose">
                 <Link
-                  href="https://oc.app/#/vhn7y-siaaa-aaaaf-a7yxa-cai"
+                  href="https://nns.ic0.app/proposals/"
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight></LinkArrowRight>
-                  See SNS-1 proposals on OpenChat
+                  See SNS proposals and vote on the NNS dapp
                 </Link>
               </p>
             </Faq>

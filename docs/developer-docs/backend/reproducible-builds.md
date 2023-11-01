@@ -6,7 +6,7 @@ Thanks to its consensus protocol, the Internet Computer always runs canister cod
 1.  Which WebAssembly (Wasm) code is being executed for a canister?
 2.  The canisters are normally written in a higher-level language, such as Motoko or Rust, and not directly in Wasm. The second question is then: is the Wasm that’s running really the result of compiling the purported source code?
 
-The rest of the document answers these questions. For the first question, we will see how the Internet Computer provides information about canister code. To be able to answer the second question, canister authors should ensure trusted and [reproducible builds](https://reproducible-builds.org/docs/definition/) of the Wasm code from the source. Such builds allow anyone to follow the same steps as the canister authors and yield the exact same Wasm code, which can then be compared to the Wasm code executing in the canister on the Internet Computer.
+The rest of the document answers these questions. For the first question, you will see how the Internet Computer provides information about canister code. To be able to answer the second question, canister authors should ensure trusted and [reproducible builds](https://reproducible-builds.org/docs/definition/) of the Wasm code from the source. Such builds allow anyone to follow the same steps as the canister authors and yield the exact same Wasm code, which can then be compared to the Wasm code executing in the canister on the Internet Computer.
 
 The impatient reader who is familiar with the topic of reproducible builds can skip straight to the [conclusion](#repro-build-summary).
 
@@ -40,7 +40,7 @@ As a canister author, there are a few things you have to provide to your users t
 
 -   Instructions on how to repeat the process of building the Wasm from the source code. Crucially, the process must be deterministic, to ensure that it results in the exact same Wasm. It also has to be trusted, such that the user can be convinced that the Wasm is a faithful translation of the source code, and not an artifact of a malicious build tool. In particular, look for `.dfx`, `node_modules`, and `target` directories that could contain pre-built files.
 
-We next look at each of these points in more detail.
+Next, you will look at each of these points in more detail.
 
 ### Providing source code
 
@@ -62,11 +62,11 @@ Before building your code, you should document the build environment you are usi
 
 -   If your build process depends on any environment variables (such as the time zone or locale), note them down.
 
-You should communicate all of these to your user in the instructions. Ideally, do so by providing an executable recipe to recreate the build environment, using tools such as Docker or Nix. We recommend using Docker, as this allows you to also pinpoint the operating system used for building the software.
+You should communicate all of these to your user in the instructions. Ideally, do so by providing an executable recipe to recreate the build environment, using tools such as Docker or Nix. It is recommended to use Docker, as this allows you to also pinpoint the operating system used for building the software.
 
 ### Build environments using Docker
 
-[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, we recommend installing Docker using [lima](https://github.com/lima-vm/lima), as it proved more stable than Docker Desktop or Docker Machine in our experience (in particular, it avoids some QEMU bugs on Apple M1 machines). 
+[Docker containers](https://docs.docker.com/) are a popular solution for providing build environments. For developers using OS X, it is recommended to install Docker using [lima](https://github.com/lima-vm/lima), as it proves more stable than Docker Desktop or Docker Machine, in particular, it avoids some QEMU bugs on Apple M1 machines. 
 
 After setting Docker up, you can use a `Dockerfile` such as the following to provide the user with a particular version of the operating system, as well as `dfx`, Node.js and the Rust toolchain. Make sure to stick with `x86_64` for running the Docker container, as builds are generally not reproducible across architectures. See [docs](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md) on setting up cross-platform Docker containers in case your host environment is not `x86_64`.
 
@@ -160,7 +160,7 @@ A build script such as the one above can be specified as a custom build script i
 
 
 ### Ensuring the determinism of the build process
-Next, we will investigate what is necessary to make the build deterministic. For the build process to be deterministic:
+Next, investigate what is necessary to make the build deterministic. For the build process to be deterministic:
 
 - #### Step 1:  You will need to ensure that any dependencies of your canister are always resolved in the same way. Most build tools now support a way of pinning dependencies to a particular version.
 
@@ -174,11 +174,11 @@ Next, we will investigate what is necessary to make the build deterministic. For
 Obvious sources of non-determinism include randomness, timestamps, concurrency, or code obfuscators. Less obvious sources include locales, absolute file paths, order of files in a directory, and remote URLs whose content can change. Furthermore, relying on third-party build plug-ins exposes you to any non-determinism introduced by these.
 
 - #### Step 3.  Given the same dependencies and deterministic build scripts, the build tools themselves (`moc` for Motoko, `cargo` for Rust, `webpack` by default for frontend development) must also be deterministic. 
-The good news is that all of these tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is non-trivial. Thus, non-determinism bugs can and do occur. For Rust, see the [list of current potential non-determinism issues in Rust](https://github.com/rust-lang/rust/labels/A-reproducibility). Furthermore, we have observed differences between Rust code compiled to Wasm under Linux and MacOS, and thus recommend pinning the build platform and its version. For webpack, [deterministic naming of module and chunk IDs](https://webpack.js.org/configuration/optimization/) that you should use have been introduced since version 5. The Motoko compiler aims to be deterministic and reproducible; if you find reproducibility issues, please submit a [new issue](https://github.com/dfinity/motoko/issues/new/choose), and we will try to address them to the extent possible.
+The good news is that all of these tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is non-trivial. Thus, non-determinism bugs can and do occur. For Rust, see the [list of current potential non-determinism issues in Rust](https://github.com/rust-lang/rust/labels/A-reproducibility). Furthermore, you have observed differences between Rust code compiled to Wasm under Linux and MacOS, and thus it is recommended to pin the build platform and its version. For webpack, [deterministic naming of module and chunk IDs](https://webpack.js.org/configuration/optimization/) that you should use have been introduced since version 5. The Motoko compiler aims to be deterministic and reproducible; if you find reproducibility issues, please submit a [new issue](https://github.com/dfinity/motoko/issues/new/choose), and the team will try to address them to the extent possible.
 
 ### Testing reproducibility
 
-If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: we have seen real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the **Debian Reproducible Builds** project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, add the following line to your `Dockerfile`:
+If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: there have been real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the **Debian Reproducible Builds** project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, add the following line to your `Dockerfile`:
 
     RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt
 
@@ -202,9 +202,9 @@ Now, from the root directory of your canister project, you can test the reproduc
 
 #### What this does
 - The first command builds the Docker container using the `Dockerfile` provided earlier. 
-- The second one opens an interactive shell (hence the `-it` flags) in the container. We run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). The `--rm` flag will destroy the container after you close its shell. 
-- Once inside of the container, we create a directory for the build artifacts and launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, we assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. 
-- Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, we compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory. We omit the time variation because the Rust compiler uses `jemalloc` for dynamic memory allocation and this library is not [compatible](https://github.com/wolfcw/libfaketime/issues/130) with `faketime` used by `reprotest` to implement the time variation. Nevertheless, we encourage you to compare the artifacts produced by `reprotest` while manually changing your system time.
+- The second one opens an interactive shell (hence the `-it` flags) in the container. You can run this in privileged mode (the `--privileged` flag), as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). The `--rm` flag will destroy the container after you close its shell. 
+- Once inside of the container, create a directory for the build artifacts and launch `reprotest` in verbose mode (the `-vv` flags). You need to give it the build command you want to run as the first argument. Here, assume that it’s `dfx build --network ic` - adjust it if you’re using a different build process. It will then run the build in two different environments. 
+- Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. Here, compare the Wasm code for all canisters, which is found in the `.dfx/ic` directory. This workflow omits the time variation because the Rust compiler uses `jemalloc` for dynamic memory allocation and this library is not [compatible](https://github.com/wolfcw/libfaketime/issues/130) with `faketime` used by `reprotest` to implement the time variation. Nevertheless, it is encouraged that you to compare the artifacts produced by `reprotest` while manually changing your system time.
 
 If the comparison doesn’t find any differences, you will see an output similar to this one:
 
@@ -219,7 +219,7 @@ If the comparison doesn’t find any differences, you will see an output similar
 Congratulations - this is a good indicator that your build is not affected by your environment! 
 
 :::info
-Note that `reprotest` can’t check that your dependencies are pinned properly; use guidelines from the previous section for that. Moreover, we recommend you to run the container `reprotest` builds under several host operating systems and compare the results. If the comparison does find differences between the Wasm code produced in two builds, it will output a diff. You will then likely want to use the `--store-dir` flag of `reprotest` to store the outputs and the diff somewhere where you can analyze them. If you are struggling to achieve reproducibility, consider also using [DetTrace](https://github.com/dettrace/dettrace), which is a container abstraction that tries to make arbitrary builds deterministic.
+Note that `reprotest` can’t check that your dependencies are pinned properly; use guidelines from the previous section for that. Moreover, it is recommended that you to run the container `reprotest` builds under several host operating systems and compare the results. If the comparison does find differences between the Wasm code produced in two builds, it will output a diff. You will then likely want to use the `--store-dir` flag of `reprotest` to store the outputs and the diff somewhere where you can analyze them. If you are struggling to achieve reproducibility, consider also using [DetTrace](https://github.com/dettrace/dettrace), which is a container abstraction that tries to make arbitrary builds deterministic.
 :::
 
 Even after you achieve reproducibility for your builds, there are still other things to consider for the long term.

@@ -8,10 +8,10 @@ In a nut shell, this example code demonstrates "response certification" for a ca
 - Backend (BE) canister logic in Motoko (main.mo).
 - Frontend (FE) logic in JS (index.js).
 
-To detect an attacker in the middle between the FE and the IC and our "true" BE canister running there, we must either:
+To detect an attacker in the middle between the FE and the IC and your "true" BE canister running there, you must either:
 
 - Perform update calls that use "full consensus" (and wait for ~2 sec).
-- Perform (fast) query calls whose responses that we, the client, certify, using the coordination of the IC and our canister running there.
+- Perform (fast) query calls whose responses that you, the client, certify, using the coordination of the IC and your canister running there.
 
 The FE and BE code demonstrates the second approach here, in a minimal setting. The BE holds a single certified variable, as a 32-bit number, and the FE code queries and certifies this number's "current certificate". The BE prepares for the FE certification by giving the FE a "current certificate" within the response; this certificate is signed by the entire IC, using a special system feature.
 
@@ -28,11 +28,11 @@ The `Certificate` class from the `agent-js` library provides a way to access tho
 
 In the case of time and our data, the encodings are each Candid. The IC spec represents time using a LEB128 encoding, and certified data uses little endian.
 
-Ideally, we should use a proper library to decode these numbers. To prevent an extra dependency, we take advantage of the fact that the Candid value encoding of Nat and Nat32 happen to use the same representation.
+Ideally, you should use a proper library to decode these numbers. To prevent an extra dependency, you take advantage of the fact that the Candid value encoding of Nat and Nat32 happen to use the same representation.
 
-Our data we choose to encode the same as a Candid 32-bit Nat (little endian -- see the Motoko canister for details).
+Your data you choose to encode the same as a Candid 32-bit Nat (little endian -- see the Motoko canister for details).
 
-Notably, in an example with more data in the canister than a single number, or a more complex query interface, we would generally do more work to certify each query response:
+Notably, in an example with more data in the canister than a single number, or a more complex query interface, you would generally do more work to certify each query response:
 
 - Use witnesses to re-calculate hash (no witness or hashing needed here.)
 - Check query parameters matches witness (no params, so trivial here.)
@@ -117,7 +117,7 @@ module.exports = {
   target: "web",
   mode: isDevelopment ? "development" : "production",
   entry: {
-    // The frontend.entrypoint points to the HTML file for this build, so we need
+    // The frontend.entrypoint points to the HTML file for this build, so you need
     // to replace the extension to `.js`.
     index: path.join(__dirname, asset_entry).replace(/\.html$/, ".js"),
   },
