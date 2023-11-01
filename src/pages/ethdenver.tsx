@@ -151,7 +151,7 @@ function EthDenverPage() {
                     className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                     variants={transitions.item}
                   >
-                    Lightning fast and fully on-chain d            apps running on the
+                    Lightning fast and fully on-chain dapps running on the
                     Internet Computer blockchain, the only true World Computer
                     that enables a fully decentralized ecosystem.
                   </motion.p>
