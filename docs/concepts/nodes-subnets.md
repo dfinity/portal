@@ -2,9 +2,9 @@
 
 ## Overview
 
-Internet Computer **subnet blockchains** provide physical hardware and resources, like CPU and memory, for performing software operations. Each subnet is a blockchain that consists of some number of decentralized, independently owned and controlled machines, connected peer computers called **nodes**, that run the software components of the Internet Computer blockchain protocol.
+Internet Computer **subnet blockchains** are formed by q some number of independently owned and controlled high-performance hardware devices called **node machines**, that run the Internet Computer Protocol (ICP).
 
-The Internet Computer blockchain software components that run on each node are called a **replica** because they replicate state and computation across all of the nodes in a subnet blockchain.
+The Internet Computer Protocol is implemented by a number of software components that as a bundle are a **replica** because they replicate state and computation across all of the nodes in a subnet blockchain.
 
 ## Replica architecture
 
@@ -28,7 +28,7 @@ As a developer, it isn’t necessary to know the details about how your dapps an
 
 ## Subnet blockchains
 
-A so-called **subnet** is a collection of replicas that run a separate instance of the consensus mechanism in order to create their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain key](/references/glossary.md#chain-key) cryptography to delegate its authority to the various subnets.
+A so-called **subnet** is a collection of interacting replicas that run a separate instance of the consensus mechanism in order to create their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain key](/references/glossary.md#chain-key) cryptography to delegate its authority to the various subnets.
 
 The Internet Computer uses subnets to allow it to scale indefinitely. The problem with traditional blockchains (and individual subnets) is that they are limited by the computing power of a single node machine, because every node has to run everything that happens on the blockchain to participate in the [consensus](/references/glossary.md#consensus) algorithm. Running multiple independent subnets in parallel allows the Internet Computer to break through this single-machine barrier.
 
