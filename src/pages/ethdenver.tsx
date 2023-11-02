@@ -348,8 +348,8 @@ function EthDenverPage() {
                   On-chain Governance for EVM DAOs
                 </h4>
                 <p className="tw-paragraph text-black-60 mb-6">
-                  Challenge: explore ways of using the Internet Computer as a
-                  governance platform for DAOs on Ethereum or another
+                  Challenge: explore ways of using the Internet Computer to
+                  govern DAOs on Ethereum or another
                   EVM-compatible chain as a powerful replacement for Snapshot.
                 </p>
                 <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
@@ -874,7 +874,7 @@ function EthDenverPage() {
                 >
                   Web3 still runs on Big Tech's cloud. Blockchains can host
                   tokens, but only tiny amounts of data and compute, and no web.
-                  But not the Internet Computer blockchain. This platform runs
+                  But not the Internet Computer blockchain. The IC runs
                   it all on-chain, fully decentralized — from simple dapps, to
                   high user-volume social networks and games, to oderbook
                   exchanges and enterprise systems, without the need for
