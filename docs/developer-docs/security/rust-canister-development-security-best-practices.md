@@ -254,7 +254,7 @@ This may e.g. lead to the following issues:
 
 - Generally, there can be bugs where data is not persisted when the developer expected it to be.
 
-Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope on trap. The CDK actually calls into the `ic0.call_on_cleanup` API to release these resources. This helps to prevent some of the above issues, as e.g. it is possible to use Rust's `Drop` implementation to release locked resources, as we discuss in ["Be aware that there is no reliable message ordering"](#be-aware-that-there-is-no-reliable-message-ordering).
+Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope if a callback traps. The CDK actually calls into the `ic0.call_on_cleanup` API to release these resources. This helps to prevent some of the above issues, as e.g. it is possible to use Rust's `Drop` implementation to release locked resources, as we discuss in ["Be aware that there is no reliable message ordering"](#be-aware-that-there-is-no-reliable-message-ordering).
 
 #### Recommendation
 
@@ -287,7 +287,7 @@ See also: "Inter-canister calls" section in [how to audit an Internet Computer c
 
 To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that e.g. a caller (or anyone) can only execute an entire call (which involves several messages) once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above.
 
-The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case.
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Note that the `Drop` function is only executed for callbacks and not all messages in general, as `ic0.call_on_cleanup` is only executed for those. 
 
     pub struct State {
         pending_requests: BTreeSet<Principal>,
