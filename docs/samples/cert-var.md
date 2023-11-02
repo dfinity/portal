@@ -13,13 +13,13 @@ To detect an attacker in the middle between the FE and the IC and your "true" BE
 - Perform update calls that use "full consensus" (and wait for ~2 sec).
 - Perform (fast) query calls whose responses that you, the client, certify, using the coordination of the IC and your canister running there.
 
-The FE and BE code demonstrates the second approach here, in a minimal setting. The BE holds a single certified variable, as a 32-bit number, and the FE code queries and certifies this number's "current certificate". The BE prepares for the FE certification by giving the FE a "current certificate" within the response; this certificate is signed by the entire IC, using a special system feature.
+The FE and BE code demonstrates the second approach here, in a minimal setting. The BE holds a single certified variable, as a 32-bit number, and the FE code queries and certifies this number's "current certificate". The BE prepares for the FE certification by giving the FE a "current certificate" within the response; this certificate is signed by the entire IC, using a special protocol feature.
 
 Before the FE trusts the response from the apparent BE canister, it interrogates it, and verifies its authenticity, the FE does four checks:
 
-- Verify system certificate.
-- Check system certificate timestamp is not "too old".
-- Check canister ID in system certificate.
+- Verify certificate.
+- Check certificate timestamp is not "too old".
+- Check canister ID in certificate.
 - Check response matches witness.
 
 For steps 2, 3 and 4, the FE accesses data from the certificate (Blob).
