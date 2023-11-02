@@ -122,10 +122,10 @@ It’s strongly recommended that developers have a discussion in the forum with 
 
 It is recommended to share:
 
-- [x] The init file that you used. You can find the template [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml).
-- [x] Provide whitepaper with a full description of the decentralization and tokenomics.
-- [x] Provide a technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
-- [x] Explain to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
+- [x] The init file that is planned to be used. You can start from a [template](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml).
+- [x] The whitepaper with a full description of the decentralization and tokenomics.
+- [x] Technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
+- [x] Explaination to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
 
 The idea is to provide the community with information so they can verify what they are supporting from a decentralization standpoint.
 

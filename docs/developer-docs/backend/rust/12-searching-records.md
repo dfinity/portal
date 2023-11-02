@@ -144,7 +144,7 @@ Save your changes and close the file to continue.
 
 ## Start the local execution environment
 
-Before you can build the `rust_profile` project, you need to connect to the local execution environment running in your development environment or the decentralized Internet Computer blockchain mainnet.
+Before you can build the `rust_profile` project, you need to connect to the local execution environment running in your development environment or the Internet Computer blockchain mainnet.
 
 Start the local execution environment on your computer in the background by running the following command:
 
