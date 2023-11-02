@@ -182,7 +182,8 @@ function NnsPage() {
                 locked ICP in neurons and are voting either manually or follow
                 other neurons that vote. Rewards are distributed daily to voting
                 neurons as maturity. This maturity is unrealized ICP that can
-                be spawned. Spawning mints the maturity into a
+                be either staked or spawned. Staking maturity adds to the
+		voting power of the neuron. Spawning mints the maturity into a
                 neuron that becomes liquid after a week so that the ICP
                 contained in the neuron can also be used outside of the NNS.
               </motion.p>
