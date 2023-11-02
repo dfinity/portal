@@ -20,7 +20,7 @@ This section defines the current main constraints regarding resource usage on th
 | Wasm stable memory | 96GB |
 | Wasm custom sections| 2GB per subnet; 1MB per canister; 16 sections at most (per canister)|
 | Wasm code section | 10MB |
-| Query calls execution threads | 2 per replica node |
+| Query calls execution threads | 4 per replica node, max 2 per canister |
 | Update calls execution threads| 4 per subnet |
 
 
