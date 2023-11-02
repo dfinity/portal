@@ -2,7 +2,7 @@
 
 ## Overview
 
-Bitcoin-enabling the IC has required us to solve two advanced engineering challenges: 
+Two advanced engineering challenges needed to be solve to enable Bitcoin smart contracts on the IC: 
 - A protocol-level integration of the IC with the Bitcoin network.
 - A chain-key signatures based on a novel threshold ECDSA protocol.
 
