@@ -1,13 +1,13 @@
 # Ledger canister {#_the_ledger_canister}
 
 ## Overview
-This document is a specification of the public interface of the ledger canister. It provides an overview of the functionality, details some internal aspects, and documents publicly available methods. We also provide an abstract mathematical model which makes precise the expected behavior of the methods implemented by the canister, albeit at a somewhat high level of abstraction.
+This document is a specification of the public interface of the ledger canister. It provides an overview of the functionality, details some internal aspects, and documents publicly available methods. It also provides an abstract mathematical model precisely describing the expected behavior of the methods implemented by the canister, albeit at a somewhat high level of abstraction.
 
 :::info
-Parts of the canister interface are for internal consumption only, and therefore not part of this specification. However, whenever relevant, we do provide some insights into those aspects as well.
+Parts of the canister interface are for canister-internal consumption only, and therefore not part of this specification. However, whenever relevant, some insights into those aspects are shared as well.
 :::
 
-In brief, the ledger canister maintains a set of accounts owned by IC principals; each account has associated a tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the ledger canister also allows minting and burning of tokens, which are additional transactions which are recorded on the transaction ledger.
+In brief, the ledger canister maintains a set of accounts owned by IC principals; each account is associated with a tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the ledger canister also allows minting and burning of tokens, which are additional transactions recorded on the transaction ledger.
 
 ## Terminology
 
@@ -23,7 +23,7 @@ The ledger canister keeps track of **accounts**:
 
 -   Each account has precisely one owner (i.e. no "joint accounts").
 
--   A principal may control more than one account. We distinguish between the different accounts of the same principal via a (32-byte string) subaccount identifier. So, logically, each ledger account corresponds to a pair `(account_owner, subaccount_identifier)`.
+-   A principal may control more than one account. The different accounts of the same principal are distinguished via a (32-byte string) subaccount identifier. So, logically, each ledger account corresponds to a pair `(account_owner, subaccount_identifier)`.
 
 -   The account identifier corresponding to such a pair is a 32-byte string calculated as follows:
 
@@ -52,7 +52,7 @@ On the backend, the method `account_identifier` completes the following steps to
 
 #### Default account {#_default_account}
 
-For any principal, we refer to the account which corresponds to the all-0 subaccount identifier as the **default account** of that principal. The default account of the governance canister plays an important role in minting/burning tokens (see below), and we refer to it as the `minting_account_id`.
+For any principal, the account which corresponds to the all-0 subaccount identifier is referred to as the **default account** of that principal. The default account of the governance canister, called the `minting_account_id` plays an important role in minting/burning tokens (see below).
 
 ### Operations, transactions, blocks , transaction ledger {#_operations_transactions_blocks_transaction_ledger}
 
@@ -178,11 +178,11 @@ The ledger canister executes a `transfer` call as follows:
 
 As explained above, the blocks contained in the ledger are chained by including in a block the hash of the previous block. This enables authenticating the entire ledger by only signing its last block.
 
-In this section we describe the details of the chaining, by specifying how a block is serialized before it is hashed.
+In this section, the details of the chaining are described, by specifying how a block is serialized before it is hashed.
 
 At a high level, the block is serialized using protobuf. However, since protobuf encodings are not necessarily deterministic (and are also not guaranteed to stay fixed) here we provide the specific encoding used, which is guaranteed not to change.
 
-The definition below is recursive. It uses `.` to denote concatenation of byte strings, and two functions that are not defined here, but are well established: we write `len(x)` for the length of bytestring `x`. We also write `varint(s)`, for the variable length encoding of integer `s`. The precise definition of this function can be found in the [protobuf documentation](https://developers.google.com/protocol-buffers/docs/encoding#varints).
+The definition below is recursive. It uses `.` to denote concatenation of byte strings, and two functions that are not defined here, but are well established: `len(x)` is used for the length of bytestring `x`. Moreover, `varint(s)` is used for the variable length encoding of integer `s`. The precise definition of this function can be found in the [protobuf documentation](https://developers.google.com/protocol-buffers/docs/encoding#varints).
 
     encoded_block(Block{parent_hash, timestamp, transaction}) :=
         let encoded_transaction = encode_transaction(transaction)
@@ -451,7 +451,7 @@ Any principal can obtain the balance of an arbitrary account via the method `acc
 
 ## Semantics {#_semantics}
 
-In this section we provide a semantics of the public methods exposed by the ledger. We use somewhat ad-hoc mathematical notation which we keep close to the notation introduced above. We use \" · \" to denote list concatenation. If L is a list then we write \|L\| for the length of a list L and L\[i\] for the i'th element of L. The first element of L is L\[0\].
+In this section, the semantics of the public methods exposed by the ledger are described. Somewhat ad-hoc mathematical notation is used, close to the notation introduced above. List concatenation is denoted by \" · \". If L is a list then \|L\| stands for the length of a list L and L\[i\] for the i'th element of L. The first element of L is L\[0\].
 
 ### Basic types {#_basic_types}
 
@@ -514,7 +514,7 @@ Initially, the ledger is set to the empty list and `last_hash` is set to None:
 
 ### Balances {#_balances}
 
-Given a transaction ledger, we define the `balance` function which associates to a ledger account its ICP balance.
+Given a transaction ledger, the `balance` function associates an ICP balance to a ledger account.
 
     balance: Ledger x AccountIdentifier -> Nat
 
@@ -538,11 +538,11 @@ The function is defined, recursively, as follows:
     otherwise
       balance(OlderBlocks · [B], account_id) = balance(OlderBlocks, account_id)
 
-We describe the semantics of ledger methods as a function which takes as input a ledger state, the call arguments and returns a (potentially) new state and a reply. In the description of the function we use some additional functions which reflect system provided information. These include `caller()` which returns the principal who invoked the method, `now()` which return the IC time and `drift` a constant indicating permissible time drift between IC and external time. We also write `well_formed(.)` for a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
+The semantics of the ledger methods are described as functions which take as input a ledger state, the call arguments and return a (potentially) new state and a reply. In the description of the function some additional functions which reflect system provided information are used. These include `caller()` which returns the principal who invoked the method, `now()` which return the IC time and `drift` a constant indicating permissible time drift between IC and external time.  `well_formed(.)` denotes a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
 
 ### Ledger method: `transfer` {#_ledger_method_transfer}
 
-Below we write `default_subaccount` for the all-0 vector.
+Below `default_subaccount` stands for the all-0 vector.
 
 #### State & arguments:   
 
@@ -600,7 +600,7 @@ Below we write `default_subaccount` for the all-0 vector.
 
 ### Archiving {#_archiving}
 
-The ledger canister periodically archives part of the blocks it holds. In the implementation, the logic is internal to the system. In this abstraction, we model this via two transitions which can be non-deterministically triggered: one to create new archive canisters, and another to archive some blocks held in the ledger canister.
+The ledger canister periodically archives part of the blocks it holds. In the implementation, the logic is internal to the system. In this abstraction, this is modelled via two transitions which can be non-deterministically triggered: one to create new archive canisters, and another to archive some blocks held in the ledger canister.
 
 #### Ledger method: `new_archive` {#_ledger_method_new_archive}
 
@@ -642,7 +642,7 @@ The second, changes the location of up to `len` many blocks to the archive canis
 
 #### Ledger method: `query_blocks` {#_ledger_method_query_blocks}
 
-Given a list of blocks `L=(B0,B1,…​,Bn)` we write `Blocks(index,len)` for the list of blocks `(Bindex, Bindex+1,…​,Bindex+len)`. We also write `Restrict(L,len)` for the restriction of list `L` to the first `len` blocks, i.e. `(B0,B1,…​,Blen-1)`. The description below assumes an unspecified constant, `bound` which specifies an upperbound on the number of blocks the Ledger canister can return in response to `query_blocks`. The description also assumes the existence of a `certificate` which is a signature by the IC on the (encoding) of the last block in the ledger. However, at this level of abstraction we do not specify its properties of this certificate. We also do not go into the details of how the location of the different blocks is concretely provided.
+Given a list of blocks `L=(B0,B1,…​,Bn)`,  `Blocks(index,len)` stands for the list of blocks `(Bindex, Bindex+1,…​,Bindex+len)`. `Restrict(L,len)` is used for the restriction of list `L` to the first `len` blocks, i.e. `(B0,B1,…​,Blen-1)`. The description below assumes an unspecified constant, `bound` which specifies an upperbound on the number of blocks the Ledger canister can return in response to `query_blocks`. The description also assumes the existence of a `certificate` which is a signature by the IC on the (encoding) of the last block in the ledger. However, at this level of abstraction the properties of this certificate are not specified and the details of how the location of the different blocks is concretely provided are omitted.
 
 #### State & arguments:   
 
