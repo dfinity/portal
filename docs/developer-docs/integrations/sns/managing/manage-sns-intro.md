@@ -1,7 +1,7 @@
 # Manage an SNS
 
 ## Overview
-SNSs are system-provided DAOs on the IC that are to some extent maintained by the
+SNSs are protocol-provided DAOs on the IC that are to some extent maintained by the
 NNS community, who for example approve new upgrades of SNS canister code.
 This eliminates much of the maintenance burden from the SNS communities.
 However, there are still some maintenance tasks that have to be performed by an

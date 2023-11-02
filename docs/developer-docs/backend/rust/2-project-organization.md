@@ -162,9 +162,9 @@ This definition specifies that the `greet` function is a `query` method which ta
 
 ### Stable variables vs flexible variables
 
-**Stable variables** are global variables that the system preserves across upgrades. For example, a user database should probably be stable.
+**Stable variables** are global variables that the protocol preserves across upgrades. For example, a user database should probably be stable.
 
-**Flexible variables** are global variables that the system discards on code upgrade. For example, it is reasonable to make a cache flexible if keeping this cache hot is not critical for your product.
+**Flexible variables** are global variables that the protocol discards on code upgrade. For example, it is reasonable to make a cache flexible if keeping this cache hot is not critical for your product.
 
 ### Putting all global variables in one place
 

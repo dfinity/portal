@@ -492,17 +492,6 @@ const MarketingNav = () => {
 
         {/* top level aux items */}
         <AuxItems items={nav.auxItems} />
-
-        {/* social icons */}
-        <ul className="m-0 p-0 list-none flex flex-wrap gap-6 mt-10">
-          {footerIcons.map((item) => (
-            <li className="" key={item.label}>
-              <Link href={item.href} className={`block w-6 h-6`}>
-                <img src={item.iconLight} alt={item.label}></img>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
 
       {/* Level 2 of mobile fly-in menu*/}
