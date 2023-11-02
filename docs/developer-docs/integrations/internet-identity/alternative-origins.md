@@ -22,7 +22,7 @@ For more information, see the [Internet Identity specification](https://github.c
 
 ## Configuring alternative origins
 
-For this example, we will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at https://internetcomputer.org and https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
+For this example, you will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at https://internetcomputer.org and https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
 
 In this example, **A** would be the canister ID, or https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
 
@@ -30,7 +30,7 @@ In this example, **A** would be the canister ID, or https://hwvjt-wqaaa-aaaam-qa
 
 ### Listing origins
 
-For origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid origin. We'll be placing the config files in `src/assets` directory of your frontend canister. If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
+For origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid origin. You'll be placing the config files in `src/assets` directory of your frontend canister. If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
 
 ```json
 "source": [
@@ -69,7 +69,7 @@ Now, your project should look something like this:
 
 ### Configuring your frontend canister
 
-Because the dot syntax in `.well-known` ordinarily will be treated as "hidden" by the file system, the frontend canister will need to be configured to upload your document. To configure the frontend canister, create a new file, `.ic-assets.json`. `.ic-assets.json` needs to be placed inside a directory listed in `sources` for your canister, so we can use `src/assets` again. Your new list of files should look like this:
+Because the dot syntax in `.well-known` ordinarily will be treated as "hidden" by the file system, the frontend canister will need to be configured to upload your document. To configure the frontend canister, create a new file, `.ic-assets.json`. `.ic-assets.json` needs to be placed inside a directory listed in `sources` for your canister, so you can use `src/assets` again. Your new list of files should look like this:
 
 ```
 ├── dfx.json

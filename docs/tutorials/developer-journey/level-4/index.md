@@ -1,6 +1,6 @@
 # Level 4: Space pilot
 
-- [4.1 Using the ICP ledger](4.1-icp-ledger.md): In this tutorial, we'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it: 
+- [4.1 Using the ICP ledger](4.1-icp-ledger.md): In this tutorial, you'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it: 
     - Accounts.
     - Transaction types.
     - Deploying the ICP ledger locally.
@@ -15,7 +15,7 @@
         - Using the Candid UI.
     - Resources.
 
-- [4.2 ICRC-1 tokens](4.2-icrc-tokens.md): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, we'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard: 
+- [4.2 ICRC-1 tokens](4.2-icrc-tokens.md): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, you'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard: 
     - What’s the difference between the ICP and ICRC-1 ledgers?
         - `Account`s versus `AccountIdentifier`s.
         - Endpoints.
@@ -33,7 +33,7 @@
         - Using the Candid UI.
     - Resources.
 
-- [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. In this tutorial, we take a look at ckBTC and the Internet Computer's Bitcoin integration: 
+- [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. This tutorial takes a look at ckBTC and the Internet Computer's Bitcoin integration: 
     - Bitcoin integration architecture.
     - What is ckBTC?
     - Bitcoin use-cases on the IC.

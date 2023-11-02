@@ -133,7 +133,7 @@ Motoko playground is also available through the Motoko playground frontend canis
 
 https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/
 
-In this portion of the guide, we'll explore the frontend canister's UI functionality and how to use it. 
+In this portion of the guide, you'll explore the frontend canister's UI functionality and how to use it. 
 
 When this URL is opened in a web browser, you will see the following welcome screen:
 
@@ -145,7 +145,7 @@ From this welcome menu, you can choose an example project from the 'Example Proj
 
 ![Import from Github](./_attachments/motoko-playground3.png)
 
-For this example, we'll select the 'Hello, world' example from the 'Example Projects' tab.
+For this example, you'll select the 'Hello, world' example from the 'Example Projects' tab.
 
 Once opened, you will see the following screen. Take note of the project's files in the left side bar menu under 'FILES', and the installed packages under the 'PACKAGES' menu.
 

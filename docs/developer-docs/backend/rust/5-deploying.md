@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this guide, we'll cover the steps required to write, compile, deploy, and interact with a Rust backend canister. 
+In this guide, you'll learn the steps required to write, compile, deploy, and interact with a Rust backend canister. 
 
 This guide will showcase a simple 'Hello, world!' example.
 
@@ -49,7 +49,7 @@ For more information on project structure and code organization, review the [pro
 
 ## Writing the `lib.rs` file
 
-We'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step. 
+You'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step. 
 
 Open the `src/hello_world_backend/src/lib.rs` file in a text editor. Replace the existing content with the following:
 

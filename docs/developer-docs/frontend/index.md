@@ -188,7 +188,7 @@ You could then use the module to construct a navigation component similar to the
 
 ## Iterate faster using webpack-dev-server
 
-Starting with `dfx 0.7.7`, we now provide you with webpack-dev-server in our `dfx new` starter.
+Starting with `dfx 0.7.7`, the SDK now provides you with webpack-dev-server in our `dfx new` starter.
 
 The webpack development server, `webpack-dev-server`, provides in-memory access to the webpack assets, enabling you to
 make changes and see them reflected in the browser right away using live reloading.

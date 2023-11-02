@@ -4,7 +4,7 @@
 
 Inter-canister calls can be used to update information between two or more canisters. 
 
-To demonstrate these inter-canister calls, we'll use an example project called "PubSub". 
+To demonstrate these inter-canister calls, you'll use an example project called "PubSub". 
 
 A common problem in both distributed and decentralized systems is keeping separate services (or canisters) synchronized with one another. While there are many potential solutions to this problem, a popular one is the **publisher/subscriber** pattern or "PubSub". PubSub is an especially valuable pattern on the Internet Computer as its primary drawback, message delivery failures, does not apply.
 
@@ -66,7 +66,7 @@ fn subscribe(subscriber: Subscriber) {
 #[update]
 async fn publish(counter: Counter) {
     SUBSCRIBERS.with(|subscribers| {
-        // In this example, we are explicitly ignoring the error.
+        // This example is explicitly ignoring the error.
         for (k, v) in subscribers.borrow().iter() {
             if v.topic == counter.topic {
                 let _call_result: Result<(), _> =
@@ -134,7 +134,7 @@ The third method, `fn get_count() -> u64` allows the `Counter` value to be queri
 
 ## Deploying the canisters
 
-Now that we've taken a look at our canisters, let's deploy them. 
+Now that you've taken a look at your canisters, let's deploy them. 
 
 Open a terminal window on your local computer, if you don’t already have one open.
 
