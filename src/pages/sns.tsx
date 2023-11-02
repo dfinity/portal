@@ -265,16 +265,17 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 Decentralizing dapps through SNSs is the third level of
-                decentralization on the Internet Computer.The first level is the Internet Computer blockchain 
+                decentralization on the Internet Computer.
+                The first level is the Internet Computer blockchain that
                 runs on a network of nodes owned and operated by a growing community of independent node providers 
                 distributed across the globe. The node providers are selected and vetted by the NNS neuron owners.
                 
                 The second level is the Network Nervous System (NNS) that governs the
                 decentralized ICP blockchain. The third level is the SNS-based
                 decentralization of dapps running on the decentrally-governed
-                decentralized platform. Only such decentralization on every
-                level — the platform itself, the platform's governance, and the
-                governance of the individual dapps running on this platform —
+                decentralized network. Only such decentralization on every
+                level — the network itself, the network's governance, and the
+                governance of the individual dapps running on this network —
                 enables truly decentralized apps. Only possible on the Internet
                 Computer.
               </motion.p>
