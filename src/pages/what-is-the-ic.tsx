@@ -89,13 +89,12 @@ function WhatIsIcpPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              The Internet Computer is created by ICP, the most advanced network
-              protocol ever devised. It enables people to build Web3 services
-              and enterprise systems directly on a public decentralized network,
-              which scales even to hosting social networks and media streaming.
-              Hosted services are tamperproof, don’t need firewalls, support
-              Web3 functionality, and can trustlessly interact with the outside
-              world.
+              Web3 services and enterprise systems can be built directly on the
+              Internet Computer — a public decentralized network that scales.
+              <br />
+              Host social networks, media streaming and more, that support Web3
+              functionality, are tamperproof, and can trustlessly interact with
+              the outside world.
             </motion.h2>
           </div>
         </AnimateSpawn>
