@@ -260,6 +260,54 @@ To disburse a neuron and return its ICP utility tokens:
 
 - #### Step 4:  Verify the transaction information, then click **Confirm and Send**. 
 
+## Neuron following
+
+To maximize neuron rewards and vote on every proposal submitted to the NNS, neuron holders can make use of the NNS's liquid democracy. It may be hard for neuron owners to manually vote on every single proposal submitted or neuron owners may not have the necessary level of technical understanding to evaluate proposals themselves. To aid in this, the NNS supports **neuron following**.
+
+A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics, such as governance or subnet management. For example, if the neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals, if the group votes to reject a subnet management proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
+
+:::caution
+It is important to note that when following a group of neurons, your neuron will only cast a vote if more than half of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic, your neuron only votes if at least 6 out of the 10 neurons vote the same way. If only 5 neurons vote, your neuron will not cast a vote. This should be considered when choosing to follow multiple neurons on a topic.
+:::
+
+Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined; however, this catch-all follow rule does not include SNS & neuron's fund or governance proposals. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+
+To configure your neuron to follow the group of another neuron:
+
+- #### Step 1: From the NNS dapp, select 'My Neuron Staking', then select the neuron that you'd like to set a following rule for.
+
+![NNS Neuron following 1](../_attachments/following1.png)
+
+- #### Step 2: In the neuron's details, scroll down to the 'Following' section and select 'Follow Neurons'. 
+
+![NNS Neuron following 2](../_attachments/following2.png)
+
+- #### Step 3: Next, select a topic to follow. 
+
+The topic refers to the different types of proposals; for example, the 'Governance' topic defines a following role for governanc-related proposals, while the 'Subnet Management' topic defines a following role for subnet management proposals. There is also a 'catch-all' rule that can be followed for all proposal types except for governance, SNS, and neurons' fund. 
+
+For this example, select 'Governance'. 
+
+![NNS Neuron following 3](../_attachments/following3.png)
+
+- #### Step 4: Select 'Add Followee'.
+
+![NNS Neuron following 4](../_attachments/following4.png)
+
+- #### Step 5: Enter a Neuron ID to follow, or select a group of neurons from the menu provided. 
+
+In this example, select 'DFINITY Foundation'. 
+
+![NNS Neuron following 5](../_attachments/following5.png)
+
+- #### Step 6: The window will now reflect the following configuration:
+
+![NNS Neuron following 6](../_attachments/following6.png)
+
+The configuration will also now be shown in the neuron's details:
+
+![NNS Neuron following 7](../_attachments/following7.png)
+
 ## Spawn new neurons
 
 As you vote on proposals—either directly or by following the votes of other neurons—the maturity associated with your neuron increases, which in turn increases the rewards you earn for participating in governance. When the maturity for a locked stake reaches a minimum threshold of one ICP, you can spawn a new neuron. The spawn operation creates a new neuron that locks a new balance of ICP on the ledger.
@@ -273,6 +321,13 @@ To spawn new neurons from an existing neuron:
 - #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
 
 - #### Step 2:  Click **Spawn Neuron**.
+
+## Neuron following
+
+
+
+Neuron owners may find it hard to manually vote directly on every proposal submitted to the NNS. Firstly, large volumes of proposals may be submitted to the NNS, often at awkward times, and owners may not be available or have the necessary time to evaluate each one. Secondly, neuron owners may lack the necessary expertise to evaluate proposals themselves. The NNS uses a form of liquid democracy to address these challenges. For any proposal topic, a neuron can be configured to vote automatically by following the votes of a group of neurons, voting to adopt proposals whenever more than half of the followees vote to adopt, and voting to reject whenever at least half of the followees vote to reject. A catch-all follow rule may also be defined to make a neuron vote automatically on proposals with topics for which no follow rule has been defined. It is assumed that neuron owners will manage how their neurons follow other neurons in the best interests of the network, which is also in their own economic interests, owing to their locked ICP balances.
+
 
 ## Vote on proposals 
 
