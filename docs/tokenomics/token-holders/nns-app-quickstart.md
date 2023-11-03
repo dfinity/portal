@@ -288,7 +288,7 @@ To configure your neuron to follow the group of another neuron:
 
 - #### Step 3: Next, select a topic to follow. 
 
-The topic refers to the different types of proposals; for example, the 'Governance' topic defines a following role for governance type proposals, while the 'Subnet Management' topic defines a following role for subnet management proposals. There is also a 'catch-all' rule that can be followed for all proposal types except for governance, SNS, and neurons' fund. 
+The topic refers to the different types of proposals; for example, the 'Governance' topic defines a following role for governanc-related proposals, while the 'Subnet Management' topic defines a following role for subnet management proposals. There is also a 'catch-all' rule that can be followed for all proposal types except for governance, SNS, and neurons' fund. 
 
 For this example, select 'Governance'. 
 
