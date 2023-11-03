@@ -241,7 +241,7 @@ function SnsFaqPage() {
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
               handed control over to an SNS DAO in Q1 of 2023. Since then, many 
-              ecosystem projects have followed. Currently, there are 10 SNS DAOs
+              ecosystem projects have followed. Currently, there are 11 SNS DAOs
               on the Internet Computer. Follow their progress on the {" "}
               <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
             </Faq>
