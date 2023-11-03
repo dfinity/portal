@@ -8,7 +8,7 @@ This documentation might help if you want to deploy a token on the IC that aims 
 ## Set up a Rosetta node
 
 You can set up a Rosetta API-compliant node to interact with the Internet Computer and exchange Internet Computer Protocol (ICP) tokens.
-To keep the instructions simple,you can use a Docker image to create the integration with the Rosetta API.
+To keep the instructions simple, you can use a Docker image to create the integration with the Rosetta API.
 You can also build and run the binary using the source code.
 
 If you don’t already have [Docker](https://docs.docker.com/get-docker/) on your computer, download and install the latest version.
