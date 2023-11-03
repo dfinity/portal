@@ -268,9 +268,13 @@ To disburse a neuron and return its ICP utility tokens:
 
 To maximize neuron rewards and vote on every proposal submitted to the NNS, neuron holders can make use of the NNS's liquid democracy. It may be hard for neuron owners to manually vote on every single proposal submitted or neuron owners may not have the necessary level of technical understanding to evaluate proposals themselves. To aid in this, the NNS supports **neuron following**.
 
-A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. For example, if the neuron follows a group that votes to adopt a proposal with more than half of the followees voting in favorite of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron follows a group that votes to reject a proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
+A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics, such as governance or subnet management. For example, if the neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals, if the group votes to reject a subnet management proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
 
-Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+:::caution
+It is important to note that when following a group of neurons, your neuron will only cast a vote if at least 6 out of 10 of the neurons within the followed group vote the same way. If only 5 neurons vote, your neuron will not cast a vote. Therefore, it is recommended to follow groups with at least 10 followees.
+:::
+
+Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined; however, this catch-all follow rule does not include SNS & neuron's fund or governance proposals. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
 
 To configure your neuron to follow the group of another neuron:
 
