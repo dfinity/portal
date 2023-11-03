@@ -270,7 +270,7 @@ To maximize neuron rewards and vote on every proposal submitted to the NNS, neur
 
 A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. For example, if the neuron follows a group that votes to adopt a proposal with more than half of the followees voting in favorite of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron follows a group that votes to reject a proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
 
-Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined. It is assumed that neuron owners will follow other neurons that support the best interests of the network and their own economic interests.
+Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
 
 To configure your neuron to follow the group of another neuron:
 
