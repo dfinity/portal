@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide will walk you through the process of creating a neuron using the Internet Computer implementation of the [Rosetta API](https://rosetta-api.org). We will transfer funds to the governance canister, create a neuron, and configure the newly created neuron.
+This guide will walk you through the process of creating a neuron using the Internet Computer implementation of the [Rosetta API](https://rosetta-api.org). You will transfer funds to the governance canister, create a neuron, and configure the newly created neuron.
 
 From the Internet Computer point of view, creating a neuron is a multi-step operation that includes the following actions:
 
@@ -89,7 +89,7 @@ curl -0 -X POST http://localhost:8080/construction/derive \
 
 :::info
 
-We set `account_type` to `neuron` in the request metadata to tell the Rosetta node that we want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
+Set `account_type` to `neuron` in the request metadata to tell the Rosetta node that you want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
 
 :::
 
@@ -271,7 +271,7 @@ The `payloads` field of the response contains the list of payloads that need to 
 
 :::info
 
-According to the Rosetta API specification ([Flow of Operations](https://www.rosetta-api.org/docs/construction_api_introduction.html#flow-of-operations)), the client should call `/construction/preprocess` and `/construction/metadata` before calling `/construction/payloads` because there might be some metadata that needs to be attached to the payloads request. Currently, there is no need to do it for the ICP Rosetta node implementation, so we skipped these unnecessary steps.
+According to the Rosetta API specification ([Flow of Operations](https://www.rosetta-api.org/docs/construction_api_introduction.html#flow-of-operations)), the client should call `/construction/preprocess` and `/construction/metadata` before calling `/construction/payloads` because there might be some metadata that needs to be attached to the payloads request. Currently, there is no need to do it for the ICP Rosetta node implementation, so these unnecessary steps were skipped.
 
 :::
 
