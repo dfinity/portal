@@ -127,7 +127,10 @@ const marketingNav = {
         { name: "Video Library", href: "/videos" },
         // { name: "ICP on Youtube", href: "https://www.youtube.com/c/DFINITY" },
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-        { name: "Whitepaper", href: "/whitepaper.pdf" },
+        {
+          name: "Whitepaper",
+          href: "https://internetcomputer.org/whitepaper.pdf",
+        },
         {
           name: "History of ICP",
           href: "https://wiki.internetcomputer.org/wiki/History",
