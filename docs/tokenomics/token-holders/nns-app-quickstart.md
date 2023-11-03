@@ -266,7 +266,7 @@ To disburse a neuron and return its ICP utility tokens:
 
 ## Neuron following
 
-To maximize neuron rewards and fully utilize the NNS's liquid democracy, neuron owners are encouraged to vote on every proposal submitted to the NNS. However, it may be hard for neuron owners to manually vote on every single proposal submitted, since several proposals may be submitted at one time, or neuron owners may not have the necessary level of technical understanding to evaluate proposals themselves. To aid in this, the NNS supports **neuron following**.
+To maximize neuron rewards and vote on every proposal submitted to the NNS, neuron holders can make use of the NNS's liquid democracy. It may be hard for neuron owners to manually vote on every single proposal submitted or neuron owners may not have the necessary level of technical understanding to evaluate proposals themselves. To aid in this, the NNS supports **neuron following**.
 
 A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. For example, if the neuron follows a group that votes to adopt a proposal with more than half of the followees voting in favorite of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron follows a group that votes to reject a proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
 
