@@ -1536,6 +1536,19 @@
     "submittableId": "25140378"
   },
   {
+    "id": "goagent",
+    "name": "Go Agent ",
+    "website": "https://github.com/aviate-labs/agent-go",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Go Agent provides the toolbox needed to interact with the Internet Computer from Go. It is a collection of packages that can be used to build applications that interact with canister smart contracts.",
+    "github": "https://github.com/aviate-labs/agent-go",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/goagent_logo.png",
+    "screenshots": []
+  },
+  {
     "id": "javaagent",
     "name": "Java Agent ",
     "website": "https://github.com/ic4j/ic4j-agent",
