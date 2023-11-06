@@ -16,7 +16,7 @@ The limits depend on the message type as shown in the following table.
 | Maximum cross-net inter-canister message payload                                     | 2MB        |
 | Maximum same-subnet inter-canister message payload (may be deprecated at some point) | 10MB       |
 | Maximum response size                                                                | 2MB        |
-| Instruction limit, instructions per update call/heartbeat/timer                      | 20 bn       |
+| Instruction limit, instructions per update call/heartbeat/timer                      | 20 Billion       |
 | Instruction limit, instructions per query calls                                      | 5 bn        |
 | Instruction limit, instructions per canister install/upgrade                         | 200 Billion      |
 | Subnet capacity (total memory available per subnet)                                  | 700GiB     |
