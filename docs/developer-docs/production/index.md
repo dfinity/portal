@@ -15,7 +15,7 @@ This page is an overview of the topic. For specific steps and troubleshooting in
 * [Deploying and upgrading canisters](./deploying-and-upgrading.md).
 * [Large web assembly modules](./larger-wasm.md).
 * [Custom domains](custom-domain/custom-domain.md).
-* [Instruction limits](./instruction-limits.md).
+* [Resource limits](./resource-limits.md).
 * [Computation and storage cost](../gas-cost.md).
 * [Sharing links on Social Media](./social-sharing.md).
 
