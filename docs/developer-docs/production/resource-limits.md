@@ -18,7 +18,7 @@ The limits depend on the message type as shown in the following table.
 | Maximum response size                                                                | 2MB        |
 | Instruction limit, instructions per update call/heartbeat/timer                      | 20 bn       |
 | Instruction limit, instructions per query calls                                      | 5 bn        |
-| Instruction limit, instructions per canister install/upgrade                         | 200 bn      |
+| Instruction limit, instructions per canister install/upgrade                         | 200 Billion      |
 | Subnet capacity (total memory available per subnet)                                  | 700GiB     |
 | Wasm heap size, per canister                                                         | 4GiB       |
 | Wasm stable memory, per canister                                                     | 96GiB      |
