@@ -1,4 +1,4 @@
-# Resource Limits
+# Resource limits
 
 ## Overview
 
