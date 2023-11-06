@@ -241,7 +241,7 @@ function SnsFaqPage() {
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
               handed control over to an SNS DAO in Q1 of 2023. Since then, many 
-              ecosystem projects have followed. Currently, there are 10 SNS DAOs
+              ecosystem projects have followed. Currently, there are 11 SNS DAOs
               on the Internet Computer. Follow their progress on the {" "}
               <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
             </Faq>
@@ -277,14 +277,6 @@ function SnsFaqPage() {
                   Submit an upgrade proposal to update the code of the dapp that
                   the SNS DAO controls. This allows anyone to contribute code to
                   an SNS DAO.
-                </li>
-                <li>
-                  <strong>Upgrade the asset canister: </strong>
-                  Currently updates to asset canisters don't go through
-                  proposals. However, you can still make changes to the frontend
-                  by upgrading the asset canister controlled by an SNS DAO. To
-                  do so, you have to first create a proposal to add your
-                  principal ID to the list of controllers who can make updates.
                 </li>
                 <li>
                   <strong>Create motion proposals:</strong> Motion proposals
@@ -324,8 +316,9 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How does voting in an SNS DAO work?">
               Once you have acquired SNS tokens, you can lock them into SNS
-              neurons and create a proposal or vote on one. If a proposal gets
-              adopted, the code of the SNS DAO or the dapp it controls is
+              neurons, which allows you to create a proposal, vote directly on one,  
+              delegate voting to trusted parties that have more expertise in certain topics.
+              If a proposal gets adopted, the code of the SNS DAO or the dapp it controls is
               upgraded. Depending on the SNS configuration, users who vote may
               be rewarded with additional tokens for participating in
               governance. If you want to get more deeply involved, you can also
@@ -369,9 +362,12 @@ function SnsFaqPage() {
                   obtain them by receiving airdrops or by engaging with the dapp
                   and thereby earning tokens as reward. In this scenario, tokens
                   are used as an incentive to encourage active engagement with
-                  the dapp which helps grow the active user base. Finally, if
-                  you already have tokens and participate in governance, you can
-                  earn tokens as voting rewards as you would in the NNS.
+                  the dapp which helps grow the active user base. 
+                </li>
+                <li>
+                  <strong>Voting rewards:</strong> If you already have tokens 
+                  and participate in governance, you can earn tokens as voting 
+                  rewards as you would in the NNS.
                 </li>
               </ul>
             </Faq>
@@ -443,7 +439,7 @@ function SnsFaqPage() {
             <div className="blob blob-purple blob-md blob-top-right z-[-1]"></div>
             <Faq title="What is a decentralization swap?">
               A decentralization swap is the process by which an SNS DAO becomes
-              decentralized and where users can purchase SNS tokens by
+              decentralized and where users can exchange ICP for SNS tokens by
               participating. After the swap, each participant receives a basket
               of neurons. These neurons hold SNS tokens and therefore a share of
               the DAO's voting power. It is one of{" "}
@@ -458,9 +454,8 @@ function SnsFaqPage() {
                 swap, from its initiation to execution, is completely
                 decentralized and not controlled by any centralized entity. Even
                 the decision to create the SNS and its token is made by the NNS
-                (a DAO) and not the developer in order to avoid undesirable
-                legal implications for the developer who wants to decentralize
-                their app.
+                (the DAO that controls the Internet Computer) and not the developer 
+                in order to ensure complete decentralizion of the app.
               </p>
               <p>
                 A decentralization swap follows a list of configurable
@@ -637,7 +632,7 @@ function SnsFaqPage() {
               </p>
             </Faq>
             <Faq title="Who starts the decentralization swap?">
-              The developer team first creates an NNS proposal for the
+              First an NNS proposal is created for the
               decentralization swap. The swap itself starts automatically once
               the NNS proposal is adopted.
             </Faq>

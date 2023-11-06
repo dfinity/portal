@@ -9,7 +9,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 **Welcome to edition of the developer blog's team spotlight series! For this issue, we met with members from the Execution team to get insight into how the IC's execution environment works and how it fits within the IC technology stack. Let's start with our usual introduction, what is the purpose of the Execution team?**
           
-*The team’s mission can be summarized as “managing the lifecycle and providing efficient execution of canisters”. We provide the system APIs that canisters can use to run on the IC and interact with other canisters as well as scheduling of messages and cycles accounting.*
+*The team’s mission can be summarized as “managing the lifecycle and providing efficient execution of canisters”. We contribute to the system APIs that canisters can use to run on the IC and interact with other canisters as well as scheduling of messages and cycles accounting.*
 
 **What is the composition of the Execution team?**
  
@@ -36,11 +36,11 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 **Thank you for that description! I think that is very insightful for developers to understand what's happening behind the scenes. How do developers interact with the execution layer through canisters?**
 
-*Developers interact with the execution environment through two sets of APIs: the first is a synchronous one which we call the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on the IC – this API allows canisters to manage other canisters as well as get access to some of the special features of the IC, including tECDSA and HTTP outcalls.*
+*Developers interact with the execution environment through two sets of APIs: the first is a synchronous one, often called the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on the IC – this API allows canisters to manage other canisters as well as get access to some of the special features of the IC, including tECDSA and HTTP outcalls.*
 
 **How does the Execution team work with other teams?**
 
-*The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who are in charge of the lower level Wasm execution engine of the IC, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and Languages teams to expose the APIs provided by the execution environment to the developers.*
+*The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who contribute to the lower level Wasm execution engine of the IC, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and Languages teams to expose the APIs provided by the execution environment to the developers.*
 
 **How does the IC execution environment differ from other forms of execution environments?**
 

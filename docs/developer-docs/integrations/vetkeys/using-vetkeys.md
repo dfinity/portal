@@ -2,7 +2,7 @@
 
 ## Overview
 
-This demo provides a canister (`src/system_api`) that offers the vetKD system API proposed in https://github.com/dfinity/interface-spec/pull/158, implemented in an unsafe manner for demonstration purposes.
+This demo provides a canister (`src/system_api`) that offers the vetKD system API proposed in https://github.com/dfinity/interface-spec/pull/158, implemented demonstration, testing, and initial devlopment purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key. 
 
 This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
 

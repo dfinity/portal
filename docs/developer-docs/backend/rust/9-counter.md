@@ -67,7 +67,7 @@ fn set(n: Nat) {
 
 /// Increment the value of the counter.
 #[ic_cdk_macros::update]
-fn inc() {
+fn increment() {
     COUNTER.with(|counter| *counter.borrow_mut() += 1);
 }
 
@@ -142,6 +142,7 @@ crate-type = ["cdylib"]
 candid = "0.8.2"
 ic-cdk = "0.7.0"
 serde = { version = "1.0", features = ["derive"] }
+ic-cdk-macros = "0.8.0"
 ```
 
 Save the file.

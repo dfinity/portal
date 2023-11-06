@@ -1,4 +1,4 @@
----
+
 sidebar_position: 3
 ---
 # NFT development
@@ -26,7 +26,7 @@ Depending on the architecture, all of these functions may be in one canister or 
 
 ### Top up all canisters very generously
 
-Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so this is typically not a huge investment. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) or some other immutable proxy canister as a controller to the NFT canisters. This allows users to use the [tip jar service](https://k25co-pqaaa-aaaab-aaakq-cai.icp0.io/) to top up the canisters.
+Make sure that all canisters have enough cycles to sustain a few years to begin with. Storage and computation on the IC are magnitudes less expensive than on other platforms, so this is typically not a huge investment. To make it easy for others to top up the canisters you should consider adding the [black hole canister](https://github.com/ninegua/ic-blackhole) or some other immutable proxy canister as a controller to the NFT canisters. This allows users to use the [tip jar](https://k25co-pqaaa-aaaab-aaakq-cai.icp0.io/) to top up the canisters.
 
 
 ### Set a generous freezing threshold

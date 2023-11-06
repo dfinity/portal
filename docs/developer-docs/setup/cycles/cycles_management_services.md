@@ -2,7 +2,7 @@
 
 ## Overview
 
-Once deployed to the Internet Computer, developers need to pay in cycles for the compute and storage utilized by their canisters. The process of burning cycles and transferring them to a canister is referred to as "topping-up" a canister.
+Once a canister is deployed to the Internet Computer, the compute and storage it utilizes must be pre-payed. The process of burning ICP to obtain cycles and transferring them to a canister is referred to as "topping-up" a canister.
 
 Cycles management services provide canister monitoring and automated cycles top-ups to ensure canisters applications remain up and running and do not run out of cycles.
 

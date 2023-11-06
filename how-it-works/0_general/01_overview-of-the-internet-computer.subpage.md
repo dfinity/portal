@@ -43,7 +43,7 @@ Each subnet hosts canister smart contracts, up to a total of hundreds of gigabyt
 A subnet consists of *node machines*, or *nodes*.
 Each node replicates all the canisters, state, and computation of the subnet using blockchain technology.
 This makes a subnet a blockchain-based *replicated state machine*, that is, a virtual machine that holds state in a secure, fault-tolerant, and non-tamperable manner: the computations of the canisters hosted on a subnet will proceed correctly and without stopping, even if some of the nodes on the subnet are faulty (either because they crash, or even worse, are hacked by a malicious party)
-New subnets can be created from nodes added to the IC to scale out the system, analogous to how traditional infrastructures such as public clouds scale out by adding machines.
+New subnets can be created from nodes added to the IC to scale out the protocol, analogous to how traditional infrastructures such as public clouds scale out by adding machines.
 Such a scale-out architecture is rather the exception than the rule in the blockchain space and allows for limitless scaling, i.e., combining the security and resiliency properties of blockchains with the scalability properties enjoyed by the public cloud.
 
 <figure>
