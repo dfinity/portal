@@ -12,13 +12,13 @@ The limits depend on the message type as shown in the following table.
 | Resource                                                                             | Constraint |
 | ------------------------------------------------------------------------------------ | ---------- |
 | Message queue limit, messages per canister                                           | 500        |
-| Maximum ingress message payload                                                      | 2MiB       |
-| Maximum cross-net inter-canister message payload                                     | 2MiB       |
-| Maximum same-subnet inter-canister message payload (may be deprecated at some point) | 10MiB      |
-| Maximum response size                                                                | 2MiB       |
-| Instruction limit, instructions per update call/heartbeat/timer                      | 20B        |
-| Instruction limit, instructions per query calls                                      | 5B         |
-| Instruction limit, instructions per canister install/upgrade                         | 200B       |
+| Maximum ingress message payload                                                      | 2MB        |
+| Maximum cross-net inter-canister message payload                                     | 2MB        |
+| Maximum same-subnet inter-canister message payload (may be deprecated at some point) | 10MB       |
+| Maximum response size                                                                | 2MB        |
+| Instruction limit, instructions per update call/heartbeat/timer                      | 20 bn       |
+| Instruction limit, instructions per query calls                                      | 5 bn        |
+| Instruction limit, instructions per canister install/upgrade                         | 200 bn      |
 | Subnet capacity (total memory available per subnet)                                  | 700GiB     |
 | Wasm heap size, per canister                                                         | 4GiB       |
 | Wasm stable memory, per canister                                                     | 96GiB      |
