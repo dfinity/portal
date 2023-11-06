@@ -3,8 +3,12 @@ import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import LinkArrowUpRight from "@site/src/components/Common/Icons/LinkArrowUpRight";
+import PromoCard from "@site/src/components/Common/PromoCard";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
 import TranslatedLayout from "@site/src/components/Common/TranslatedLayout/TranslatedLayout";
+import VideoCard, {
+  ImageOnlyVideoCard,
+} from "@site/src/components/Common/VideoCard";
 import Gallery from "@site/src/components/Community/Gallery";
 import { communityGallery } from "@site/src/components/Community/gallery-images";
 import Globe from "@site/src/components/Community/Globe";
@@ -14,6 +18,7 @@ import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
+import TelegramLogo from "@site/static/img/community/telegram.svg";
 
 const hubs: Hub[] = [
   {
@@ -151,7 +156,7 @@ function AsiaAlliancePage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="md:w-6/10">
+          <div className="md:w-9/10">
             <motion.h2
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
@@ -229,6 +234,60 @@ function AsiaAlliancePage() {
           ))}
         </AnimateSpawn>
 
+        <AnimateSpawn
+          className="container-10 pt-20 md:pt-40"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="flex flex-col gap-6 md:gap-5 mb-8 md:mb-10 md:flex-row md:w-8/10">
+            <motion.h2
+              className="tw-heading-4 mb-0 md:tw-heading-60 md:flex-1"
+              variants={transitions.item}
+            >
+              Hong Kong in action
+            </motion.h2>
+            <motion.p
+              className="mb-0 tw-paragraph md:flex-1 md:tw-lead-sm md:pt-3"
+              variants={transitions.item}
+            >
+              The ICP Asia Alliance aims to cultivate a dynamic Web3 and AI
+              ecosystem in Asia. Through 8 already well established ICP.Hubs
+              located in the region, the Internet Computer will revolutionize
+              the future of blockchain as we know it.
+            </motion.p>
+          </div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <motion.div
+              variants={transitions.item}
+              className="col-span-1 md:col-span-2"
+            >
+              <VideoCard
+                image="https://img.youtube.com/vi/jOf35jNo26k/maxresdefault.jpg"
+                label="ICP Asia Alliance"
+                title="What’s Next?"
+                link="https://www.youtube.com/watch?v=jOf35jNo26k&list=PLuhDt1vhGcrc4ocJ_WgbuYPXqCw1YYXF4"
+                description="Interviews of ICP.Hubs in Hong Kong @ EDGE Summit 2023"
+                className=""
+              />
+            </motion.div>
+
+            <motion.div variants={transitions.item} className="flex">
+              <ImageOnlyVideoCard
+                href="https://www.youtube.com/watch?v=hbjeL0MDhG4&list=PLuhDt1vhGcrc4ocJ_WgbuYPXqCw1YYXF4"
+                image="https://img.youtube.com/vi/hbjeL0MDhG4/maxresdefault.jpg"
+                className="flex-1"
+              ></ImageOnlyVideoCard>
+            </motion.div>
+            <motion.div variants={transitions.item} className="flex">
+              <PromoCard
+                title="More videos of the ICP Asia Alliance"
+                href="https://www.youtube.com/playlist?list=PLuhDt1vhGcrc4ocJ_WgbuYPXqCw1YYXF4"
+                className="flex-1"
+              ></PromoCard>
+            </motion.div>
+          </div>
+        </AnimateSpawn>
+
         <section className="bg-infinite text-white mt-20 md:mt-40 py-20 md:py-40">
           <Gallery gallery={communityGallery}>
             <div className="blob blob-white blob-md blob-x-10 blob-y-0"></div>
@@ -247,9 +306,16 @@ function AsiaAlliancePage() {
                 collaborates with up to 50 well-known crypto organizations and
                 32 universities. Haven't joined yet? What are you waiting for?
               </motion.p>
-              <motion.p className="mb-0" variants={transitions.item}>
+              <motion.p
+                className="mb-0 flex gap-8 items-center"
+                variants={transitions.item}
+              >
                 <Link className="button-white" href="/community">
                   Explore ICP Community
+                </Link>
+                <Link className="link-white" href="https://t.me/Official_ICP">
+                  <TelegramLogo className="inline-block align-text-bottom mr-2" />
+                  Join the official ICP Telegram Space
                 </Link>
               </motion.p>
             </div>
