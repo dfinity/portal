@@ -124,7 +124,6 @@ const marketingNav = {
           name: "ICP Dashboard",
           href: "https://dashboard.internetcomputer.org/",
         },
-        { name: "ICP on YouTube", href: "https://www.youtube.com/dfinity" },
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         { name: "Whitepaper", href: "/whitepaper.pdf" },
         {
@@ -156,6 +155,11 @@ const marketingNav = {
               name: "Technical Roadmap",
               href: "/roadmap",
               description: "Milestones and what’s next",
+            },
+            {
+              name: "ICP on YouTube",
+              href: "https://www.youtube.com/dfinity",
+              description: "Watch & Learn",
             },
           ],
           featured: {
