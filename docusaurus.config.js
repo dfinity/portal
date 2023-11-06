@@ -124,8 +124,6 @@ const marketingNav = {
           name: "ICP Dashboard",
           href: "https://dashboard.internetcomputer.org/",
         },
-        { name: "Video Library", href: "/videos" },
-        // { name: "ICP on Youtube", href: "https://www.youtube.com/c/DFINITY" },
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         {
           name: "Whitepaper",
@@ -160,6 +158,11 @@ const marketingNav = {
               name: "Technical Roadmap",
               href: "/roadmap",
               description: "Milestones and what’s next",
+            },
+            {
+              name: "ICP on YouTube",
+              href: "https://www.youtube.com/dfinity",
+              description: "Watch & Learn",
             },
           ],
           featured: {
@@ -250,6 +253,16 @@ const marketingNav = {
           name: "Use cases",
           items: [
             {
+              name: "Open Internet Services",
+              href: "/ois",
+              description: "Community-owned services",
+            },
+            {
+              name: "Enterprise Cloud 3.0",
+              href: "/enterprise",
+              description: "Extend Web2 software with blockchain",
+            },
+            {
               name: "Gaming",
               href: "/gaming",
               description: "Paradigm shift in Web3 gaming",
@@ -268,16 +281,6 @@ const marketingNav = {
               name: "NFTs",
               href: "/nft",
               description: "NFT’s live fully on-chain",
-            },
-            {
-              name: "Open Internet Services",
-              href: "/ois",
-              description: "Community-owned services",
-            },
-            {
-              name: "For Enterprise",
-              href: "/enterprise",
-              description: "Extend Web2 software with blockchain",
             },
           ],
           featured: {
