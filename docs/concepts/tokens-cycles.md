@@ -1,7 +1,7 @@
 # Tokens and cycles
 
 ## Overview 
-Within the Internet Computer ecosystem, Internet Computer Protocol tokens (ICP tokens) are a native utility token with a value determined on the open market. ICP tokens play a key role in both the governance and the economics of the Internet Computer.
+Internet Computer Protocol tokens (ICP tokens) are a native utility token with a value determined on the open market. ICP tokens play a key role in both the governance and the economics of the Internet Computer.
 
 ## How to get ICP tokens
 
@@ -9,11 +9,12 @@ There are a few different ways you might acquire ICP tokens. For example, you mi
 
 -   Purchase ICP tokens directly through an exchange that lists ICP tokens available for trade.
 
--   Receive tokens as rewards for participating in the governance of the Internet Computer
+-   Create tokens from rewards (maturity) obtained for participating in the governance of the Internet Computer.
 
--   Receive a grant of tokens through the Internet Computer Association (ICA) or the DFINITY Foundation.
+-   Receive tokens from the protocol as remuneration for being a node provider and operating a Internet Computer node.
 
--   Receive tokens as remuneration for providing computing capacity as a node provider.
+-   Receive a grant of tokens by the DFINITY Foundation.
+
 
 ## How to use ICP tokens
 
@@ -55,7 +56,7 @@ Tokens (ICP) reflect the value of the Internet Computer blockchain and can fluct
 
 Tokens can be exchanged between token holders or locked up in **neurons** to secure voting rights as part of the governance system.
 
-Tokens are used to reward node providers for providing compute capacity and neuron holders for participating in the governance of the Internet Computer by voting and submitting proposals.
+Tokens are used to reward node providers for operating nodes (and thereby providing compute capacity) and indirectly to reward neuron holders for participating in the governance of the Internet Computer by voting and submitting proposals.
 
 ## Payment to node providers
 

@@ -101,7 +101,7 @@ export DEFAULT=$(dfx identity get-principal)
 :::info 
 [OPTIONAL]
 To be able to interact and send some tokens you may want to mint some tokens when you deploy the ledger. 
-We will mint some tokens for the default identity.
+You will mint some tokens for the default identity.
 You can also specify the transfer fee for transferring tokens. 
 :::
 

@@ -22,9 +22,9 @@ If you write a canister in Motoko, for example, the compiler automatically gener
 
 For canisters written in Rust, the Candid extractor tool can be used with the IC CDK version `0.11.0` and newer. You can find the full instructions for using the Candid extractor [here](/docs/current/developer-docs/backend/candid/generating-candid). 
 
-In other languages, you will have to write the Candid interface description manually. With the help of types, we have developed tools to automatically generate UI and perform random testing based on the service description file. 
+In other languages, you will have to write the Candid interface description manually. With the help of types, tools have been developed to automatically generate UI and perform random testing based on the service description file. 
 
-With the help of types, we developed tools to automatically generate UI and perform random testing based on the service description file. 
+With the help of types, tools have been developed to automatically generate UI and perform random testing based on the service description file. 
 
 ## Interact with a service in a terminal
 

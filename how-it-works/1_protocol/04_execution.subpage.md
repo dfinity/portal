@@ -54,7 +54,7 @@ However, all the nodes of the subnet can concurrently execute different queries 
 Query throughput of a subnet thus increases linearly with an increasing number of nodes in the subnet, while the update call performance decreases with an increasing number of nodes.
 
 Queries are similar to read operations on a local or cloud Ethereum node on the Ethereum blockchain.
-A dApp should use queries for non-critical operations only.
+A dapp should use queries for non-critical operations only.
 Whenever an information item to be read is critical, e.g., financial data based on which decisions are made, update calls should be used to obtain such information as the response of an update call is certified by the subnet with a BLS threshold signature and verifiable with the subnet's public key.
 
 ## Deterministic Time Slicing
@@ -80,7 +80,7 @@ The states obtained while executing canisters are certified (i.e. digitally sign
 
 Memory pages representing canister state are persisted to SSD by the execution layer, without canister programmers needing to take care of this.
 Having all memory pages transparently persisted enables _orthogonal persistence_ and frees the smart contract programmers from reading from and writing to storage as on other blockchains or as in traditional IT systems.
-This dramatically simplifies smart contract implementation and helps reduce the TCO of a dApp and go to market faster.
+This dramatically simplifies smart contract implementation and helps reduce the TCO of a dapp and go to market faster.
 Programmers can always have the full canister smart contract state on the heap or in stable memory.
 The difference is that the heap is cleared on updates of the canister code, while stable memory remains stable throughout updates, hence its name.
 Any state on the heap that is to be preserved through a canister update must be transferred to stable memory by a canister programmer before an update and restored from there after the update.

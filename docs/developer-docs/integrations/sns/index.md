@@ -3,7 +3,7 @@
 ## Overview
 These pages introduce instructions needed when considering handing over control of a 
 dapp to a Service Nervous System (SNS) or integrating with an SNS.
-If this is the first time you hear about the SNS, we recommend to take a look at the high level [SNS](/sns)
+If this is the first time you hear about the SNS, it is recommended to take a look at the high level [SNS](/sns)
 and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
 
 This page provides an overview of how the SNS developer documentation is organized and also lists references to other relevant SNS documentation.

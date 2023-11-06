@@ -127,7 +127,7 @@ The following response will be returned:
 ```
 d52f7f2b7277f025bcaa5c90b10d122274faba289
 ```
-We can bring all of these commands together to form a transfer transaction:
+You can bring all of these commands together to form a transfer transaction:
 ```
 export TO_ACCOUNT = "d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d"
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai transfer '(record { to = $(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")'); memo = 1:nat64; amount = record {e8s = 200_000_000 }; fee = record { e8s = 10_000 }; })'
@@ -141,7 +141,7 @@ To get the balance of an `AccountIdentifier` you can call:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")')' })'
 ```
-It returns the the balance in e8s of the `AccountIdentifier` `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should have a balance of 200 million as thats the amount we sent earlier:
+It returns the the balance in e8s of the `AccountIdentifier` `d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d`. It should have a balance of 200 million as thats the amount you sent earlier:
 ```
 (record { e8s = 200_000_000 : nat64 })
 ```

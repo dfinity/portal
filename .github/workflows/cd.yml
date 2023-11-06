@@ -32,7 +32,7 @@ jobs:
           node-version: 16
 
       - name: Install DFX
-      	uses: dfinity/setup-dfx@main
+        uses: dfinity/setup-dfx@main
 
       - name: Dump Identity
         run: |

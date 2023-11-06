@@ -38,7 +38,7 @@ cd rust_counter
 Note: the following steps assume the terminal is still open and the current directory is `rust_counter`.
 :::
 
-Now that you have the files in place for your Rust dapp, we can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead. 
+Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead. 
 
 To replace the default dapp, open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content.
 
@@ -67,7 +67,7 @@ fn set(n: Nat) {
 
 /// Increment the value of the counter.
 #[ic_cdk_macros::update]
-fn inc() {
+fn increment() {
     COUNTER.with(|counter| *counter.borrow_mut() += 1);
 }
 
@@ -142,13 +142,14 @@ crate-type = ["cdylib"]
 candid = "0.8.2"
 ic-cdk = "0.7.0"
 serde = { version = "1.0", features = ["derive"] }
+ic-cdk-macros = "0.8.0"
 ```
 
 Save the file.
 
 ## Update the Cargo.toml dependencies
 
-Since we made changes to the Cargo.toml file, run the following command to update the project's dependencies:
+Since you made changes to the Cargo.toml file, run the following command to update the project's dependencies:
 
 ```
 cargo update

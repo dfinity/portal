@@ -54,7 +54,7 @@ http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai
 ```
 
 The browser then displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file. 
-Note that this field refers to the canister identifier of the canister you would like to interact with (as opposed to the canister identifier for the Candid UI that we used in the last step).
+Note that this field refers to the canister identifier of the canister you would like to interact with (as opposed to the canister identifier for the Candid UI that you used in the last step).
 
 Specify the canister identifier of the canister you would like to test in the **Provide a canister ID** field, then click **Go** to display the service description.
     
@@ -78,4 +78,4 @@ For example, if a function takes an array, you might need to specify the number 
 
 ## Next steps
 
-In the next step, we'll explore a [scalable dapp example](scalability-cancan.md).
+In the next step, you'll explore a [scalable dapp example](scalability-cancan.md).

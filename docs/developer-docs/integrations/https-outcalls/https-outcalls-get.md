@@ -10,11 +10,11 @@ The sample code is in both Motoko and Rust. This sample canister sends a `GET` r
 
 This example takes less than 5 minutes to complete.
 
-## What we are building
+## What you are building
 
 ### Sample dapp
 
-The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, we can interact with its public methods via the Candid web UI, which will look like this:
+The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
 
 
 ![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
@@ -39,7 +39,7 @@ The API response looks like this:
 
 ### Motoko: Structure of the code
 
-Before we dive in, here is the structure of the code we will touch:
+Before you dive in, here is the structure of the code you will touch:
 
 Here is how our main file will look:
 
@@ -82,7 +82,7 @@ actor {
 };
 ```
 
-We will also create some custom types in `Types.mo`. It will look like this:
+You will also create some custom types in `Types.mo`. It will look like this:
 
 ```motoko
 module Types {
@@ -116,14 +116,14 @@ import Nat8 "mo:base/Nat8";
 import Nat64 "mo:base/Nat64";
 import Text "mo:base/Text";
 
-//import the custom types we have in Types.mo
+//import the custom types you have in Types.mo
 import Types "Types";
 
 
 //Actor
 actor {
 
-//This method sends a GET request to a URL with a free API we can test.
+//This method sends a GET request to a URL with a free API you can test.
 //This method returns Coinbase data on the exchange rate between USD and ICP 
 //for a certain day.
 //The API response looks like this:
@@ -141,7 +141,7 @@ actor {
   public func get_icp_usd_exchange() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
-    //We need this so we can use it to make the HTTP request
+    //You need this so you can use it to make the HTTP request
     let ic : Types.IC = actor ("aaaaa-aa");
 
     //2. SETUP ARGUMENTS FOR HTTP GET request
@@ -187,7 +187,7 @@ actor {
     Cycles.add(20_949_972_000);
     
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Since the cycles were added above, we can just call the IC management canister with HTTPS outcalls below
+    //Since the cycles were added above, you can just call the IC management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
     
     //5. DECODE THE RESPONSE
@@ -201,11 +201,11 @@ actor {
     //     body : [Nat8];
     // };
 
-    //We need to decode that [Nat8] array that is the body into readable text. 
-    //To do this, we:
+    //You need to decode that [Nat8] array that is the body into readable text. 
+    //To do this, you:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
-    //  3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
+    //  3. You use a switch to explicitly call out both cases of decoding the Blob into ?Text
     let response_body: Blob = Blob.fromArray(http_response.body);
     let decoded_text: Text = switch (Text.decodeUtf8(response_body)) {
         case (null) { "No value returned" };
@@ -303,8 +303,8 @@ module Types {
 
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a `GET` request, we declare the type for completeness, but 
-    //we do not use this function. We will pass "null" to the HTTP request.
+    //In this minimal example for a `GET` request, you declare the type for completeness, but 
+    //you do not use this function. You will pass "null" to the HTTP request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
@@ -328,7 +328,7 @@ module Types {
     };
 
 
-    //3. Declaring the IC management canister which we use to make the HTTPS outcall
+    //3. Declaring the IC management canister which you use to make the HTTPS outcall
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
@@ -463,7 +463,7 @@ async fn get_icp_usd_exchange() -> String {
     // 2.1 Setup the URL and its query parameters
     type Timestamp = u64;
     let start_timestamp: Timestamp = 1682978460; //May 1, 2023 22:01:00 GMT
-    let seconds_of_time: u64 = 60; //we start with 60 seconds
+    let seconds_of_time: u64 = 60; //start with 60 seconds
     let host = "api.pro.coinbase.com";
     let url = format!(
         "https://{}/products/ICP-USD/candles?start={}&end={}&granularity={}",
@@ -522,10 +522,10 @@ async fn get_icp_usd_exchange() -> String {
             //     pub body: Vec<u8>,
             // }
 
-            //We need to decode that Vec<u8> that is the body into readable text.
-            //To do this, we:
+            //You need to decode that Vec<u8> that is the body into readable text.
+            //To do this:
             //  1. Call `String::from_utf8()` on response.body
-            //  3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
+            //  3. You use a switch to explicitly call out both cases of decoding the Blob into ?Text
             let str_body = String::from_utf8(response.body)
                 .expect("Transformed response is not UTF-8 encoded.");
 
@@ -615,7 +615,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 - #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
 
-We update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`.
+You update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`.
 
 ```
 service : {

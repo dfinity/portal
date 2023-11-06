@@ -16,13 +16,13 @@ In this workflow, a **service provider** configures a canister to be `pullable`,
 
 Then, a **service consumer** can pull the canister as a dependency directly from the mainnet and then deploy the dependency on a local replica. 
 
-In this guide, we'll further describe this workflow and how to use it.
+This guide will further describe this workflow and how to use it.
 
 ## Determining if a canister should be `pullable`
 
 To pull a canister that's been configured as `pullable`, the service consumer only requires the canister ID. 
 
-Before pulling a canister, first the canister must be configured to be `pullable`. Additionally, we must propose the question of *should* the canister be `pullable`?
+Before pulling a canister, first the canister must be configured to be `pullable`. Additionally, you must propose the question of *should* the canister be `pullable`?
 
 #### `Pullable` examples:
 
@@ -252,7 +252,7 @@ Running the command `dfx deps init` will iterate over all dependencies in the `p
 
 Running the command `dfx deps init <CANISTER> --argument <ARGUMENT>` will set the `init` argument for an individual dependency. The init arguments will be recorded in `deps/init.json`.
 
-Using the example above, we can run the following commands:
+Using the example above, you can run the following commands:
 
 - To set the init arguments:
 
@@ -316,7 +316,7 @@ Running the `dfx deps deploy` command will:
 
 You can also specify the name or principal to deploy one particular dependency.
 
-Using the example above, we can run the following command to deploy all dependencies:
+Using the example above, you can run the following command to deploy all dependencies:
 
 ```
 dfx deps deploy
@@ -346,7 +346,7 @@ Installing canister: yhgn4-myaaa-aaaaa-aabta-cai (dep_b)
 
 ## Interactive example
 
-Now that we've explored the concepts and overview of using the `dfx deps` workflow, let's take a look at using an interactive example to demonstrate the functionality. 
+Now that you've explored the concepts and overview of using the `dfx deps` workflow, let's take a look at using an interactive example to demonstrate the functionality. 
 
 This example project will demonstrate an application canister pulling its dependency from the IC mainnet and integrating with it locally. 
 
@@ -417,7 +417,7 @@ The output will resemble the following:
 
 - #### Why download wasm into shared cache instead of a project subfolder?
 
-We don't want to encourage including binary files in version control. On the Internet Computer, every canister only has one latest version running on mainnet. Service consumers should integrate with that latest version. 
+It is not encouraged to include binary files in version control. On the Internet Computer, every canister only has one latest version running on mainnet. Service consumers should integrate with that latest version. 
 
 `dfx deps pull` always gets the latest dependencies instead of locking on a particular run. Every pulled canister has the latest version in the shared cache and can be reused by different projects.
 
