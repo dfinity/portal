@@ -425,7 +425,7 @@ function EnterprisePage() {
             </div>
           </div>
         </section>
-        <section className="container-10 py-30 md:pt-60 pb-60 sm:pb-[320px] md:pb-[550px] relative">
+        <section className="container-10 py-30 md:pt-60 pb-60 sm:pb-[360px] md:pb-40   relative">
           <div className="sm:w-8/10 md:w-6/10">
             <motion.h2
               className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
@@ -447,7 +447,7 @@ function EnterprisePage() {
             className="absolute w-[600px] max-w-none sm:max-w-full sm:w-auto bottom-0 sm:bottom-auto sm:top-5/12 md:top-3/10 sm:-right-3/10"
           />
         </section>
-        <section className="container-12 py-30 md:py-48" id="use-cases">
+        <section className="container-12 pb-30 pt-16 md:py-48" id="use-cases">
           <div className="text-center mb-16 md:mb-30">
             <AnimateSpawn
               className="container-12"
