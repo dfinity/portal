@@ -95,7 +95,7 @@ function EnterprisePage() {
           >
             <div className="md:w-6/10">
               <motion.h2
-                className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+                className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-6 md:mb-8 text-gradient"
                 variants={transitions.item}
               >
                 Legacy tech stacks, increasing development costs and fleeing
@@ -104,13 +104,16 @@ function EnterprisePage() {
                 &mdash; move forward by building on a serverless cloud that's an{" "}
                 <i>everything stack</i> created by an advanced public network.
               </motion.h2>
+              <motion.p className="mb-0" variants={transitions.item}>
+                <Link className="button-primary" href="#use-cases">
+                  To Use cases
+                </Link>
+              </motion.p>
             </div>
           </AnimateSpawn>
         </section>
-        <br />
-        <br />
         <section
-          className="bg-infinite relative overflow-hidden text-white"
+          className="bg-infinite relative overflow-hidden text-white mt-20 md:mt-30"
           id="benefits"
         >
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-0"></div>
