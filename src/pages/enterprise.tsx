@@ -636,13 +636,14 @@ function EnterprisePage() {
             to: "#traditional-it",
           },
           {
-            to: "#why-icp",
-            text: "Why ICP",
-          },
-          {
             to: "#benefits",
             text: "Benefits",
           },
+          {
+            to: "#why-icp",
+            text: "Why ICP",
+          },
+
           {
             to: "#use-cases",
             text: "Use cases",
