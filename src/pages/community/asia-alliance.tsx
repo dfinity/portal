@@ -307,7 +307,7 @@ function AsiaAlliancePage() {
                 32 universities. Haven't joined yet? What are you waiting for?
               </motion.p>
               <motion.p
-                className="mb-0 flex gap-8 items-center"
+                className="mb-0 flex gap-8 flex-col items-start md:flex-row md:items-center"
                 variants={transitions.item}
               >
                 <Link className="button-white" href="/community">
