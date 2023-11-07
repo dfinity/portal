@@ -709,9 +709,9 @@ function SnsFaqPage() {
             }
           >
             <Faq title="What is the SNS treasury?">
-              After a decentralization swap successfully concludes, the ICP acquired through the
+              After a decentralization swap successfully concludes, the ICP collected through the
               swap is allocated to the SNS DAO's treasury. Optionally, the DAO can allocate a number of
-              SNS tokens to be in the DAO's treasury, which all teams so far have done. The SNS treasury
+              SNS tokens to be in the DAO's treasury, which all SNSs so far have done. The SNS treasury
               is controlled by the DAO, and can only be transferred using proposals that SNS token holders
               vote on.
             </Faq>
@@ -827,12 +827,13 @@ function SnsFaqPage() {
             <Faq title="What is neuron following?">
               <p>
                 Following neurons is a way to delegate votes both on the NNS and in SNSs.
-                In this case, each SNS neuron can either manually vote on proposals or
+                Each SNS neuron can either manually vote on proposals or
                 follow another neuron’s voting decisions. Neurons are followed based on
                 various topics, such as making SNS treasury transfers or upgrading the dapp.
                 Neurons can be set to follow other neurons on specific topics or to follow
-                other neurons on ‘All Topics’ – a catch-all is applied for the proposal
-                without any specific following choice.
+                other neurons on ‘All Topics’ – a catch-all which is applied for the proposal
+                without any specific following choice. In both cases, you must trust that
+                the neurons you’re following will make decisions that align with your views.
               </p>
               <p>
                 In both cases, you must trust that the neurons you’re following will make
@@ -843,7 +844,7 @@ function SnsFaqPage() {
             </Faq>
 
             <Faq title="How can I follow or unfollow a neuron on SNS treasury proposals?">
-              If you would like to learn how to follow the SNS developer team on some topics,
+              If you would like to learn how to follow some neuron, for example the SNS developer team, on some topics,
               while manually voting on others, watch this short tutorial:
               <YoutubeVideoEmbed
                 videoId="bgZ2VifhNcU"
