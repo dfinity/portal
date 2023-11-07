@@ -63,7 +63,7 @@ const hubs: Hub[] = [
     description:
       "ISLA Camp is unleashing the potential of Web3 in the Philippines through immersive education, dynamic workshops, and hands-on bootcamps on the Internet Computer.",
     image: "/img/community/icp-hub-philippines.webp",
-    link: "https://linktr.ee/ISLACamp",
+    link: "https://linktr.ee/ICPHubPH",
     coordinates: [12.8797, 121.774],
   },
   {
