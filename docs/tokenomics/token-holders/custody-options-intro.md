@@ -54,7 +54,7 @@ A **paper wallet** is a piece of printed paper that contains your important key 
 
 As a backup to a hardware wallet, however, you might want to create a paper wallet and store it in a secure location such as a safe deposit box.
 
-For more information, see [paper wallets](https://blockgeeks.com/guides/paper-wallet-guide/#Paper_wallets).
+For more information, see [paper wallets](https://www.investopedia.com/terms/p/paper-wallet.asp).
 
 ## Keeping assets safe
 
