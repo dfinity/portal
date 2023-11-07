@@ -1,21 +1,21 @@
-# IOS integration
+# iOS integration
 
 ## Overview
-[IOS integration](https://github.com/dfinity/examples/tree/master/motoko/ios-notifications) is an experimental dapp with a native app integration that showcases a possible solution for integrating a dapp hosted in the Internet Computer with multiple platforms. For this example you'll create an iOS app.
+[iOS integration](https://github.com/dfinity/examples/tree/master/motoko/ios-notifications) is an experimental dapp with a native app integration that showcases a possible solution for integrating a dapp hosted in the Internet Computer with multiple platforms. For this example you'll create an iOS app.
 
-The team aimed to create an example of a simple integration of a dapp running purely on the IC and is using [Internet Identity](/docs/current/references/ii-spec) with a native iOS application that can let the user have a native feel such as authenticating and receive push notifications.
+The goal is to create an example of a simple integration of a dapp running purely on the IC and is using [Internet Identity](/docs/current/references/ii-spec) with a native iOS application that can let the user have a native feel such as authenticating and receive push notifications.
 
-## Architecture 
+## Architecture
 
-The basic functionality of the IOS integration consists of four main components:
+The basic functionality of the iOS integration consists of four main components:
 
-- First, the team created a dapp that is integrated with [Internet Identity](/docs/current/references/ii-spec) and has a basic routing functionality. While the user is not authenticated it can only see the login page and when authenticated can navigate between the about and home page.
+- First, a dapp that is integrated with [Internet Identity](/docs/current/references/ii-spec) and has a basic routing functionality. While the user is not authenticated they can only see the login page and when authenticated can navigate between the "about" and "home" page.
 
-- Second, the team created a new IOS native application that serves as a wrapper for the dapp and creates a native feel for the user.
+- Second, a new IOS native application that serves as a wrapper for the dapp and creates a native feel for the user.
 
-- Third, a proxy page was added in the dapp to enable the user to securely authenticate using [Internet Identity](/docs/current/references/ii-spec) and keep the authenticated session in the webview until it expires, even when the user exits the app and re-opens it the session persists.
+- Third, a proxy page in the dapp to enable the user to securely authenticate using [Internet Identity](/docs/current/references/ii-spec) and keep the authenticated session in the webview until it expires, even across exiting and re-opening the app.
 
-- Fourth, the dapp is configured to receive push notifications from the system and open a specified URL, this allows for notifications to be sent serving as a mechanism to deep link into a specific section of the dapp. 
+- Fourth, push notifications, which are received from the system and open a specified URL allowing to deep link into a specific section of the dapp.
 
 ## Prerequisites
 - [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
@@ -56,16 +56,16 @@ You can now access the dapp at `http://localhost:4943/?canisterId={YOUR_LOCAL_CA
 
 ### Step 5: Using Internet Identity.
 
-The integration of this dapp with the [Internet Identity](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity) enables authentication. To support the IOS integration,  it uses the `delegation` and `key` made available in the browser IndexedDB. 
+The integration of this dapp with [Internet Identity](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity) enables authentication. To support the iOS integration, it uses the `delegation` and `key` made available in the browser IndexedDB.
 
-The steps for IOS authentication are:
+The steps for iOS authentication are:
 
-1. User clicks to authenticate (this triggers the `window.open` to be called).
+1. The user clicks to authenticate (this triggers the `window.open` to be called).
 2. The dapp intercepts the request and opens a new [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession).
     - This show's a confirmation dialog, informing the user that the dapp would like to authenticate using the Internet Identity domain.
-3. After authentication happens, a local callback that only happens inside the device with the [universal link](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app) is made.
+3. After the authentication succeeds, a local callback is made that only happens within the device using the [universal link](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app).
 4. The dapp receives this callback and injects the `delegation` and `key` into the local [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview).
-5. The webview reloads and the user is now authenticated, since authentication uses IndexedDB, it continues to work after the user closes the dapp (expiration time of the session is kept, max is 30 days).
+5. The webview reloads and the user is now authenticated, since authentication uses IndexedDB, it continues to work after the user closes the dapp (expiration time of the session is kept, the maximum is 30 days).
 
 #### An example of how this can be handled:
 
@@ -95,16 +95,16 @@ async handleMultiPlatformLogin(): Promise<void> {
 
 ### Step 6: Notifications
 
-The IOS app is prepared to receive notifications from remote APN servers. For the scope of this example you haven't setup your own notification server. Instead, you can use the `send-notification.sh` script to trigger the notification with your own apple developer keys.
+The iOS app is prepared to receive notifications from remote APN servers. For the scope of this example you haven't setup your own notification server. Instead, you can use the `send-notification.sh` script to trigger the notification with your own Apple developer keys.
 
-These are the steps to show an IOS notification:
+These are the steps to show an iOS notification:
 
-1. When the app starts you use UNUserNotificationCenter to request the user for push notification permissions.
-2. With granted permissions a request to register for remote notifications is made.
+1. When the app starts you use UNUserNotificationCenter to request permission for push notification from the user.
+2. With the granted permissions a request to register for remote notifications is made.
 3. A device ID is made available with the remote call.
     - For development purposes, the dapp prints this value to the xcode console.
 4. Execute the `send-notification.sh` script with the correct `env` variables and the notification will appear in your device.
-    - A physical IOS device is required for this step since the simulator can't register remotely.
+    - A physical iOS device is required for this step since the simulator can't register remotely.
 5. By clicking the notification the dapp will open in the about page.
 
 ## Security considerations
