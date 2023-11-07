@@ -89,13 +89,12 @@ function WhatIsIcpPage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              The Internet Computer is created by ICP, the most advanced network
-              protocol ever devised. It enables people to build Web3 services
-              and enterprise systems directly on a public decentralized network,
-              which scales even to hosting social networks and media streaming.
-              Hosted services are tamperproof, don’t need firewalls, support
-              Web3 functionality, and can trustlessly interact with the outside
-              world.
+              Web3 services and enterprise systems can be built directly on the
+              Internet Computer — a public decentralized network that scales.
+              <br />
+              Host social networks, media streaming and more, that support Web3
+              functionality, are tamperproof, and can trustlessly interact with
+              the outside world.
             </motion.h2>
           </div>
         </AnimateSpawn>
@@ -299,7 +298,7 @@ function WhatIsIcpPage() {
                   href="https://medium.com/dfinity/webassembly-on-the-internet-computer-a1d0c71c5b94"
                   className="link-white link-with-icon"
                 >
-                  <LinkArrowUpRight/>
+                  <LinkArrowUpRight />
                   WebAssembly smart contracts
                 </Link>
               </p>
@@ -376,8 +375,8 @@ function WhatIsIcpPage() {
                 Open Internet Services
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Open internet services are services that run autonomously
-                under the exclusive control of a decentralized governance system
+                Open internet services are services that run autonomously under
+                the exclusive control of a decentralized governance system
                 called a Service Nervous System (SNS), an evolution of DAO
                 technology. This can enable a Web3 service to be transparently
                 run by a community of thousands, allowing services to founderize
@@ -387,10 +386,7 @@ function WhatIsIcpPage() {
                 distribute control over system updates and configuration,
                 greatly increasing security.
               </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="/sns"
-              >
+              <Link className="link-primary link-with-icon" href="/sns">
                 <LinkArrowRight /> User-run Web3
               </Link>
             </TranslatedLayout>
@@ -416,6 +412,65 @@ function WhatIsIcpPage() {
               >
                 <LinkArrowRight /> IT beyond cloud
               </Link>
+            </TranslatedLayout>
+
+            <TranslatedLayout
+              imageUrl="/img/what-is-the-ic/reverse-gas-model.webp"
+              reverse={true}
+            >
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Reverse gas model
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Unlike most EVM compatible blockchains, the Internet Computer
+                uses a reverse gas model. This enables end users to interact
+                with smart contracts without having to setup a wallet, or hold
+                tokens — A standard web browser is all they need. Developers
+                charge their canister smart contracts with 'cycles', the gas on
+                the Internet Computer, which are then burnt to pay for
+                computation, and memory usage. Such a model allows easy user
+                entry to Web3, and gives developers the flexibility to create
+                custom tokenomics models that meet mass adoption strategies.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="/capabilities/reverse-gas"
+              >
+                <LinkArrowRight /> Gas-free Web3
+              </Link>
+            </TranslatedLayout>
+
+            <TranslatedLayout imageUrl="/img/what-is-the-ic/multi-chain.webp">
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Native multi-chain
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Canister smart contracts on the Internet Computer are the glue
+                between the world’s most important blockchains. ICP already
+                integrates with the Bitcoin Network, and native ETH integration
+                is underway. Inter-chain communication and innovations such as
+                chain-key ECDSA allow canister smart contracts to directly hold,
+                receive and send BTC and ETH seamlessly across chains, creating
+                a trustless multi-chain environment that allows end users to
+                transfer crypto assets at the speed of a chat message without
+                bridges or third-party intermediaries.
+              </p>
+              <p className="mb-3">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="/bitcoin-integration"
+                >
+                  <LinkArrowRight /> Bitcoin
+                </Link>
+              </p>
+              <p className="mb-3">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="/ethereum-integration"
+                >
+                  <LinkArrowRight /> Ethereum
+                </Link>
+              </p>
             </TranslatedLayout>
           </div>
         </section>
