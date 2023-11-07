@@ -823,7 +823,7 @@ function SnsFaqPage() {
             <Faq title="What is neuron following?">
               <p>
                 Following neurons is a way to delegate votes both on the NNS and in SNSs.
-                In this case, each SNS neuron can either manually vote on proposals or
+                Each SNS neuron can either manually vote on proposals or
                 follow another neuron’s voting decisions. Neurons are followed based on
                 various topics, such as making SNS treasury transfers or upgrading the dapp.
                 Neurons can be set to follow other neurons on specific topics or to follow
