@@ -749,13 +749,7 @@ function SnsFaqPage() {
               that the original developer team possesses a meaningful portion of the voting
               power, they alone cannot make decisions for the DAO without the approval of
               the majority of SNS token holders.
-            </Faq>            
-
-
-
-
-
-
+            </Faq> 
 
           </FaqSection>
 
