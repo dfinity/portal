@@ -839,7 +839,7 @@ function SnsFaqPage() {
             </Faq>
 
             <Faq title="How can I follow or unfollow a neuron on SNS treasury proposals?">
-              If you would like to learn how to follow the SNS developer team on some topics,
+              If you would like to learn how to follow some neuron, for example the SNS developer team, on some topics,
               while manually voting on others, watch this short tutorial:
               <YoutubeVideoEmbed
                 videoId="bgZ2VifhNcU"
