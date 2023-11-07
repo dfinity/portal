@@ -11,7 +11,6 @@ import transitions from "@site/static/transitions.json";
 import { SmallCardWithDescription } from "@site/src/components/Common/Card";
 import IntraPageNav from "@site/src/components/Common/IntraPageNav";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
-import VideoCard from "@site/src/components/Common/VideoCard";
 import YoutubeVideoEmbed from "@site/src/components/Common/YoutubeVideoEmbed";
 
 function idFromTitle(title: string) {
@@ -498,10 +497,11 @@ function SnsFaqPage() {
                   neurons
                 </Link>{" "}
                 that hold your SNS tokens. Depending on the SNS configuration,
-                the basket may contain multiple neurons, each with a different
-                dissolve delay. You can use your tokens to participate in
-                governance or, once neurons have dissolved, sell the liquid
-                tokens on an exchange.
+                the basket may contain multiple neurons, each with a different{" "}
+                <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
+                  dissolve delay
+                </Link>. You can use your tokens to participate in governance or,
+                once neurons have dissolved, sell the liquid tokens on an exchange.
               </p>
               <p>
                 The number of SNS tokens you receive, and the price paid for
@@ -726,7 +726,7 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   Typically, after an SNS has launched it has an SNS token treasury and an ICP
-                  treasury (from the decentralization swap). An SNS can however also own other
+                  treasury (from the decentralization swap). An SNS can, however, also own other
                   tokens on the Internet Computer.
                 </li>
                 <li>
@@ -737,7 +737,7 @@ function SnsFaqPage() {
             </Faq>
 
             <Faq title="Do I have a say in how the treasury funds are allocated?">
-              Yes, if you are a neuron holder of the respective SNS DAO, and you
+              Yes, if you are a neuron holder of the respective SNS DAO, you
               can actively exercise your voting power to decide on proposals that
               allocate treasury funds.
             </Faq>
@@ -813,7 +813,10 @@ function SnsFaqPage() {
               SNS DAOs have a stake-based governance system. This means the more
               tokens participants stake in their neurons, the more voting power
               their neurons have. In addition to the stake, a neuron's voting power
-              is dependent on the dissolve delay bonus and age bonus. Each SNS DAO
+              is dependent on the{" "}
+              <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
+                  dissolve delay
+              </Link> bonus and age bonus. Each SNS DAO
               decides these bonuses in its parameters.
             </Faq>
             
@@ -836,6 +839,8 @@ function SnsFaqPage() {
             </Faq>
 
             <Faq title="How can I follow or unfollow a neuron on SNS treasury proposals?">
+              If you would like to learn how to follow the SNS developer team on some topics,
+              while manually voting on others, watch this short tutorial:
               <YoutubeVideoEmbed
                 videoId="bgZ2VifhNcU"
                 altText="Neuron following on SNS treasury proposals"
@@ -851,10 +856,13 @@ function SnsFaqPage() {
               </p>
               <p>
                 When receiving your SNS tokens in the form of neurons, the
-                neurons may have dissolve delays, meaning your tokens may not be
-                liquid, i.e. transferable immediately. Rather these tokens
-                become liquid (transferable) in weeks, months, or years’ time,
-                depending on the dissolve delay of the respective neuron.
+                neurons may have{" "}
+                <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
+                  dissolve delays
+                </Link>, meaning your tokens may not be liquid, i.e. transferable
+                immediately. Rather these tokens become liquid (transferable) in
+                weeks, months, or years’ time, depending on the dissolve delay of
+                the respective neuron.
               </p>
             </Faq>
             <Faq title="Is it possible to sell SNS tokens to another person?">
