@@ -114,7 +114,7 @@ function EnterprisePage() {
         </section>
         <section
           className="bg-infinite relative overflow-hidden text-white mt-20 md:mt-30"
-          id="benefits"
+          id="why-icp"
         >
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-0"></div>
           <div className="container-10 mt-20 md:mt-40 md:w-6/10 md:mx-auto">
@@ -334,7 +334,7 @@ function EnterprisePage() {
             </TranslatedLayout>
           </div>
         </section>
-        <section className="mt-20 md:mt-48" id="why-icp">
+        <section className="pt-20 md:pt-48" id="benefits">
           <div className="container-10">
             <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
               Special applications of autonomous cloud
@@ -636,14 +636,13 @@ function EnterprisePage() {
             to: "#traditional-it",
           },
           {
-            to: "#benefits",
-            text: "Benefits",
-          },
-          {
             to: "#why-icp",
             text: "Why ICP",
           },
-
+          {
+            to: "#benefits",
+            text: "Benefits",
+          },
           {
             to: "#use-cases",
             text: "Use cases",
