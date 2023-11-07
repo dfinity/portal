@@ -65,7 +65,7 @@ In this developer journey, we focus on developing canisters and applications usi
 
 ## Level 5: Internet Computer astronaut 
 
-- [5.1 Developing an encrypted notes dapp with vetKD](level-5/5.1-vetKD-tutorial.md)
+- [5.1 Developing an encrypted notes dapp with vetKeys](level-5/5.1-vetKeys-tutorial.md)
 - [5.2 Developing a dapp using the IC Ethereum integration](level-5/5.2-ICP-ETH-tutorial.md)
 - [5.3 Creating a decentralized exchange (DEX)](level-5/5.3-DEX-tutorial.md)
 - [5.4 Creating NFTs on the IC](level-5/5.4-NFT-tutorial.md)
