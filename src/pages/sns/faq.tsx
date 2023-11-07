@@ -745,9 +745,10 @@ function SnsFaqPage() {
             <Faq title="Who has access to the treasury? ">
               Without an adopted SNS proposal that specifies how to allocate funds,
               no one can access the SNS treasury. The SNS DAO only grants access
-              when proposals are adopted through SNS community voting. It can happen
-              that the original developer team possesses a large portion of the voting
-              power, which greatly impacts any decision, including treasury proposals.
+              when proposals are adopted through SNS community voting. While it can happen
+              that the original developer team possesses a meaningful portion of the voting
+              power, they alone cannot make decisions for the DAO without the approval of
+              the majority of SNS token holders.
             </Faq>            
 
 
@@ -811,10 +812,13 @@ function SnsFaqPage() {
             
             <Faq title="What is voting power and how do I get it?">
               SNS DAOs have a stake-based governance system. This means the more
-              tokens participants stake in their neurons, the more voting power
-              their neurons have. In addition to the stake, a neuron's voting power
+              tokens participants stake in their{" "}
+              <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
+                neurons
+              </Link>, the more voting power their neurons have. In addition to
+              the stake, a neuron's voting power
               is dependent on the{" "}
-              <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
+              <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
                   dissolve delay
               </Link> bonus and age bonus. Each SNS DAO
               decides these bonuses in its parameters.
@@ -828,13 +832,13 @@ function SnsFaqPage() {
                 various topics, such as making SNS treasury transfers or upgrading the dapp.
                 Neurons can be set to follow other neurons on specific topics or to follow
                 other neurons on ‘All Topics’ – a catch-all is applied for the proposal
-                without any specific following choice. In both cases, you must trust that
-                the neurons you’re following will make decisions that align with your views.
+                without any specific following choice.
               </p>
               <p>
-                The advantages of neuron following are that you don’t have to spend time
-                manually voting on each proposal, and you can rely on the expertise of
-                other neuron holders for certain topics. 
+                In both cases, you must trust that the neurons you’re following will make
+                decisions that align with your views. The advantages of neuron following
+                are that you don’t have to spend time manually voting on each proposal,
+                and you can rely on the expertise of other neuron holders for certain topics. 
               </p>
             </Faq>
 
