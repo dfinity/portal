@@ -709,7 +709,7 @@ function SnsFaqPage() {
             }
           >
             <Faq title="What is the SNS treasury?">
-              After a decentralization swap successfully concludes, the ICP acquired through the
+              After a decentralization swap successfully concludes, the ICP collected through the
               swap is allocated to the SNS DAO's treasury. Optionally, the DAO can allocate a number of
               SNS tokens to be in the DAO's treasury, which all teams so far have done. The SNS treasury
               is controlled by the DAO, and can only be transferred using proposals that SNS token holders
