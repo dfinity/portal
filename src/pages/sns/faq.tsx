@@ -827,7 +827,7 @@ function SnsFaqPage() {
                 follow another neuron’s voting decisions. Neurons are followed based on
                 various topics, such as making SNS treasury transfers or upgrading the dapp.
                 Neurons can be set to follow other neurons on specific topics or to follow
-                other neurons on ‘All Topics’ – a catch-all is applied for the proposal
+                other neurons on ‘All Topics’ – a catch-all which is applied for the proposal
                 without any specific following choice. In both cases, you must trust that
                 the neurons you’re following will make decisions that align with your views.
               </p>
