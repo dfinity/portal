@@ -835,7 +835,7 @@ function SnsFaqPage() {
                 without any specific following choice.
               </p>
               <p>
-                In both cases, you must trust that the neurons you’re following will make
+                When you use following, you must trust that the neurons you’re following will make
                 decisions that align with your views. The advantages of neuron following
                 are that you don’t have to spend time manually voting on each proposal,
                 and you can rely on the expertise of other neuron holders for certain topics. 
