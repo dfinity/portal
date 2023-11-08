@@ -1,6 +1,6 @@
 # Clang-Supported Languages
 
-Because the IC supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ programming languages and the `Clang` compiler.
+Because the IC supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ and the `Clang` compiler.
 
 ## Using C
 
@@ -8,7 +8,7 @@ To illustrate how to migrate dapps written in C to run on the IC, let’s look a
 
 ### Set up the development environment
 
-To compile the `reverse.c` program into WebAssembly, you need to have the `clang` compiler and standard libraries installed. You can check whether you have `clang` installed on your local computer by running the following command:
+To compile the `reverse.c` program into WebAssembly, you need to have the `Clang` compiler and standard libraries installed. You can check whether you have `clang` installed on your local computer by running the following command:
 
     clang --version
 
@@ -47,7 +47,7 @@ Next, you need to prepare a simple configuration file that identifies the `rever
 
 To prepare a configuration file and build directory:
 
-1.  Create a `dfx.json` file with a canisters key by running the following command:
+1.  Create a `dfx.json` file with a `canisters` key by running the following command:
 
         echo '{"canisters":{"reverse":{"main":"reverse"}}}' > dfx.json
 
@@ -97,7 +97,7 @@ To deploy and test the dapp locally:
 
 1.  Open a new terminal window or tab on your local computer.
 
-    For example, if running Terminal on macOS,click **Shell**, then select **New Tab** to open a new terminal in your current working directory.
+    For example, if running Terminal on macOS, click **Shell**, then select **New Tab** to open a new terminal in your current working directory.
 
 2.  Start the local canister execution environment in your second terminal by running the following command:
 
