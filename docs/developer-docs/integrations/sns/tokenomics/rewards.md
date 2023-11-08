@@ -4,7 +4,7 @@ sidebar_position: 5
 # SNS rewards
 
 Each SNS can be individually configured with parameters that define, among other things,
-how and SNS uses rewards to incentivize certain behavior for the governance participants
+how an SNS uses rewards to incentivize certain behavior for the governance participants
 and the dapp users.
 
 ## Rewards Overview
@@ -12,12 +12,12 @@ and the dapp users.
 The goal of this article is to explain the design of the SNS reward scheme.
 
 The full potential of tokenization can be unlocked by a tokenized open governance system,
-where tokens can be staked to participate in voting. Anyone with staked tokens 
+where tokens can be staked to participate in voting. Anyone with staked tokens
 can submit and vote on governance proposals for the dapp.
 
-By participating in governance, developers, users, and other investors can collectively 
+By participating in governance, developers, users, and other investors can collectively
 decide what new features should be implemented in the dapp that is governed by the SNS.
-As their tokens are stacked, they will be incentivized to vote taking into consideration
+As their tokens are staked, they will be incentivized to vote taking into consideration
 the future value of the tokens and the dapp. This represents the first simple scheme for
 SNS rewards. Based on the collected experience from developers and the community, this
 can be enhanced in the future.
@@ -35,8 +35,8 @@ which however can be flexibly configured by each SNS.
 
 The [NNS](/tokenomics/nns/nns-intro.md) is the DAO that governs the Internet Computer.
 Within the NNS, voting rewards are paid out on a regular basis (currently daily),
-based on an overall reward pool for that time period. 
-Each neuron receives a pro-rata amount of that pool according to the voting power with 
+based on an overall reward pool for that time period.
+Each neuron receives a pro-rata amount of that pool according to the voting power with
 which the neuron voted and in how many proposals the neuron participated. More precisely,
 this works as follows:
 
@@ -57,21 +57,21 @@ this works as follows:
     * Determine the set of proposals that are included in this reward period (typically a day): these are the proposals that are not yet settled with respect to voting rewards, and no longer open for voting.
     * The total voting power by neurons who were eligible for voting is added up.
     * Each neuron is rewarded in proportion to the voting power it contributed to these proposals multiplied by the reward weight of the according proposal category.
-  * When a neuron is rewarded for voting, these rewards are recorded in an attribute of the neuron that is called maturity which is not a tradable asset. If a user wants to generate income from maturity, he/she needs to burn maturity to create new ICP via spawning a neuron which is a non-deterministic process described [here](https://wiki.internetcomputer.org/wiki/Maturity_modulation).
+  * When a neuron is rewarded for voting, these rewards are recorded in an attribute of the neuron that is called maturity, which is not a tradable asset. If a user wants to generate income from maturity, they need to burn maturity to create new ICP via spawning a neuron which is a non-deterministic process described [here](https://wiki.internetcomputer.org/wiki/Maturity_modulation).
 
 ## Design of SNS rewards
 
 ### Voting rewards
 
-As highlighted in the background section above, the SNSs leverage the NNS voting reward scheme 
+As highlighted in the background section above, the SNSs leverage the NNS voting reward scheme
 and allow for flexibility to configure the scheme. Hence, in the following this guide goes through the
-features of the NNS and describe how it is adapted and made configurable for the SNS. 
-Unless otherwise stated, the approach and formula are the same as for the NNS. 
+features of the NNS and describes how it is adapted and made configurable for the SNS.
+Unless otherwise stated, the approach and formulae are the same as for the NNS.
 As for the NNS, it is possible to change the SNS configuration by an SNS governance proposal.
 
 #### Determination of the total reward pool
-  * The impact of changing the parameters of the reward function can be simulated in this [tool](https://docs.google.com/spreadsheets/d/1cTqgjGcG5rEQ5kRGprpdLvBL7ZdTqUDCuCi0QjClbgk/edit#gid=0). 
-  
+  * The impact of changing the parameters of the reward function can be simulated in this [tool](https://docs.google.com/spreadsheets/d/1cTqgjGcG5rEQ5kRGprpdLvBL7ZdTqUDCuCi0QjClbgk/edit#gid=0).
+
   ![](./_attachments/graph_rewards_total_supply.png)
 * Reward minimum r<sub>min</sub>: rational value greater than or equal to 0. Default value: 0.00.
 * Reward maximum r<sub>max</sub>: rational value greater than or equal to r<sub>min</sub>. Default value: 0.00.
