@@ -890,7 +890,7 @@
     "tags": [
       "NFT",
       "SocialFi" ],
-    "description": "Introducing CaniPlay (Can I Play), the pioneering NFT broadcast station that operates fully on-chain, eliminating the need for intermediaries who control content broadcasting within the community. Submit your audio or video content and reach a global audience without relying on any third party. As a creator, receive recognition and rewards from your listeners. As a listener, enjoy airdrops and actively participate by voting for your favourite content in the playlist, influencing its position and prominence. Join CaniPlay today and redefine the way content is shared, appreciated, and rewarded!",
+    "description": "Introducing CaniPlay (Can I Play), the pioneering, fully on-chain NFT broadcast station. Submit your audio or video content, reach a global audience receiving recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
     "usesInternetIdentity": false,
     "website": "https://es7e3-taaaa-aaaan-qakqq-cai.icp0.io",
     "github": "https://github.com/orgs/Canistore",
@@ -1360,7 +1360,7 @@
     "tags": [
       "Ethereum"
     ],
-    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" - Ethereum.org P.S. there is a hidden game in the demo. ",
+    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. P.S. there is a hidden game in the demo. ",
     "display": "Normal",
     "logo": "/img/showcase/evmonicp_logo.webp",
     "screenshots": [
@@ -2393,7 +2393,7 @@
       "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
       "website": "https://joinedafrica.com",
       "tags": ["SocialFi"],
-      "description": "At Joined Africa, we are dedicated to providing a seamless online marketplace that connects sellers and buyers, locally and globally within Africa. Our platform empowers sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers. Meanwhile, buyers can explore a wide range of categories, including properties, electronics, fashion, vehicles, and more. Communication between buyers and sellers is essential, and we've made it convenient through our built-in messaging application. When a seller lists a product on our site, interested buyers can contact them directly using our chat application.",
+      "description": "At Joined Africa, we are providing a seamless online marketplace that connects sellers and buyers within Africa — empowering sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers who can select from a wide range of categories, including electronics, fashion, vehicles, and more.",
       "logo": "/img/showcase/joined-africa_logo.jpg",
       "usesInternetIdentity": true,
       "youtube": "https://www.youtube.com/@JoinedAfrica",
@@ -2593,7 +2593,7 @@
   {
     "id": "agorapp",
     "name": "AgorApp",
-    "oneLiner": "AgorApp is a Codecademy-syle platform that provides a browser-based IDE for all-things-web3-engineering. Learn how to build on the Internet Computer in an interactive environment.",
+    "oneLiner": "Learn how to build on ICP on an interactive platform that provides a browser-based IDE for all-things-web3-engineering.",
     "website": "https://agorapp.dev/",
     "tags": [
       "Tools / Infrastructure",
@@ -2636,7 +2636,7 @@
       "Metaverse",
       "Games"
     ],
-    "description": "This project focuses on the game development community, enabling them to smoothly integrate their C++ native projects with the IC interface on-chain, using our wrapper for seamless interaction. Easy deployment becomes a reality for any C++ projects on IC, welcoming game developers, particularly those using Unreal Engine. Our mission is to bridge the gap, enhancing IC's accessibility and inviting a broader community of creators. Through our innovative solution, game developers can fully unlock IC's potential, fostering collaboration and creativity.",
+    "description": "Enabling game developer communities to integrate their C++ native projects with the IC interface on-chain, using our wrapper for seamless interaction. Easy deployment using Unreal Engine, or other C++ native projects. Our mission is to bridge the gap, enhancing IC's accessibility and inviting a broader community of creators. Using Zondax Unreal, game devs can fully unlock IC's potential. ",
     "logo": "/img/showcase/zondax-unreal_logo.webp",
     "screenshots": [
       "/img/showcase/zondax-unreal_screenshot_0.webp"
