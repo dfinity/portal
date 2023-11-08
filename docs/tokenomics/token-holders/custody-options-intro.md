@@ -12,7 +12,7 @@ For additional information about cold storage and other custody options, you sho
 
 ## Cold storage
 
-Cold storage means that you are keeping private keys stored offline in a device that is not connected to the internet. Cold storage is a popular solution for self-custody of digital assets because it makes it more difficult for your keys to be compromised if there is a software security breach or if your cold storage solution is lost or stolen.
+Cold storage means that you are keeping private keys stored offline in a device that is not connected to the Internet. Cold storage is a popular solution for self-custody of digital assets because it makes it more difficult for your keys to be compromised if there is a software security breach or if your cold storage solution is lost or stolen.
 
 For more information about approaches to cold storage and best practices for securing your private keys, see the following additional resources:
 
@@ -34,7 +34,7 @@ The most common types of cold storage include the following:
 
 ### Hardware wallets
 
-A **hardware wallet** is a physical device that holds your digital assets. Private keys are stored in a secure part of the device that does not come into contact with the internet. The partitioned storage on the physical device reduces the risks that are associated with devices connected to the internet. Because you are relying on a physical device, however, losing the device also means losing access to your digital assets.
+A **hardware wallet** is a physical device that holds your digital assets. Private keys are stored in a secure part of the device that does not come into contact with the Internet. The partitioned storage on the physical device reduces the risks that are associated with devices connected to the Internet. Because you are relying on a physical device, however, losing the device also means losing access to your digital assets.
 
 In most cases, you can recover from the loss of a hardware wallet because the assets stored on hardware wallets are secured using a secret seed phrase. If you copy and secure the seed phrase—for example, by storing it in the form of a [paper wallet](#_paper_wallets)—you can initialize a new device with the seed phrase and regain access to your digital assets.
 
@@ -42,9 +42,9 @@ For more information, see [crypto wallets, explained](https://cointelegraph.com/
 
 ### Air-gapped computers
 
-An **air-gapped computer** is isolated from insecure networks that interact with the internet or unsecured local area networks in your home.
+An **air-gapped computer** is isolated from insecure networks that interact with the Internet or unsecured local area networks in your home.
 
-Converting a standard personal computer or similar device into an air-gapped computer might require you to physically remove network cards, disable certain software, or be prepared to completely wipe the machine before connecting it to the internet again.
+Converting a standard personal computer or similar device into an air-gapped computer might require you to physically remove network cards, disable certain software, or be prepared to completely wipe the machine before connecting it to the Internet again.
 
 Depending on how secure you want your air-gapped computer to be, one option is to use a bootable image that provides a minimal operating system to collect your digital assets then remove any artifacts from that process and reboot the computer normally after completing any transaction. For more information, see [extreme security measures for the extra paranoid](https://www.wired.com/story/extreme-security-measures/) and [the ultimate defense: what is an air gapped computer?](https://www.howtogeek.com/687792the-ultimate-defense-what-is-an-air-gapped-computer/).
 
@@ -64,7 +64,7 @@ Regardless of the type of self-custody solution you select, it is also your resp
 
 With this in mind, you should take note of the following general recommendations:
 
--   Do not use a work computer to configure a digital asset storage solution. Your private personal data could be lost or compromised while hosted on a work computer, especially if that computer is routinely connected to the internet.
+-   Do not use a work computer to configure a digital asset storage solution. Your private personal data could be lost or compromised while hosted on a work computer, especially if that computer is routinely connected to the Internet.
 
 -   Do not leave your cold storage wallet or any private information in a public place where it could be compromised.
 
