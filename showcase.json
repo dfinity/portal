@@ -140,7 +140,7 @@
     "description": "Hot or Not is a decentralized short-form video based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
     "usesInternetIdentity": true,
     "stats": "55,000+ users",
-    "logo": "/img/showcase/hot_or_not_logo.svg",
+    "logo": "/img/showcase/hot_or_not_logo.png",
     "screenshots": [
       "/img/showcase/hot_or_not_screenshot_0.jpg"
     ],
@@ -164,7 +164,7 @@
     "display": "Large",
     "logo": "/img/showcase/bitfinity_evm.png",
     "screenshots": [
-      "/img/showcase/bitfinity_showcase.png"
+      "/img/showcase/bitfinity_showcase.webp"
     ]
   },
 
@@ -516,7 +516,7 @@
     "display": "Large",
     "logo": "/img/showcase/orally-network_logo.png",
     "screenshots": [
-      "/img/showcase/orally-network_screenshot_0.jpg"
+      "/img/showcase/orally-network_screenshot_0.webp"
     ],
     "submittableId": "35782696"
   },
@@ -593,7 +593,7 @@
     "display": "Large",
     "logo": "/img/showcase/arth_logo.png",
     "screenshots": [
-      "/img/showcase/arth_ss.png"
+      "/img/showcase/arth_ss.webp"
     ],
     "submittableId": "36143434"
   },
@@ -2781,10 +2781,8 @@
     "name": "IC based storage service",
     "description": "IC-based storage service to store and organize any kind of files that works with platform deployed on the IC.",
     "website": "https://dcm-swiss.com/",
-    "logo": "/img/showcase/ics2_logo.webp",
-    "screenshots": [
-      "/img/showcase/ics2_screenshot.webp"
-  ],
+    "logo": "/img/showcase/dcm_logo.svg",
+    "screenshots": [],
     "video": "",
     "display": "Normal",
     "id": "ics2",
@@ -2850,13 +2848,13 @@
       "Tools / Infrastructure",
       "SocialFi"
     ],
+    "logo": "/img/showcase/faceless_logo.png",
     "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
     "usesInternetIdentity": true,
     "website": "https://faceless.live/",
     "github": "https://github.com/HeisenbergLin22/faceless_delivery_May",
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/Faceless_Proj",
-    "display": "Large",
     "submittableId": "35639090"
   }, 
   {
