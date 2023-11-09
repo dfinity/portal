@@ -19,7 +19,7 @@ function WhatIsIcpPage() {
   return (
     <Layout
       title="What is ICP"
-      description={`The Internet Computer adds autonomous serverless cloud functionality to the public internet - making it possible to build almost any system or service entirely on a decentralized network using “canister software,” an evolution of smart contracts.`}
+      description={`The Internet Computer adds autonomous serverless cloud functionality to the public Internet - making it possible to build almost any system or service entirely on a decentralized network using “canister software,” an evolution of smart contracts.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-what-is-the-ic.jpg"></ShareMeta>
@@ -42,13 +42,13 @@ function WhatIsIcpPage() {
               className="
               -mt-30 md:-mt-24
               w-[700px] sm:w-[900px] md:w-[1600px]
-              absolute 
-              -left-16 sm:left-auto 
+              absolute
+              -left-16 sm:left-auto
               bottom-0
               translate-y-2/3 md:translate-y-[55%]
 
-              sm:right-0 
-              sm:translate-x-3/10 
+              sm:right-0
+              sm:translate-x-3/10
             "
             >
               <img
@@ -70,7 +70,7 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 The Internet Computer adds autonomous serverless cloud
-                functionality to the public internet – making it possible to
+                functionality to the public Internet – making it possible to
                 build almost any system or service entirely on a decentralized
                 network using “canister software,” an evolution of smart
                 contracts.
@@ -100,10 +100,10 @@ function WhatIsIcpPage() {
         </AnimateSpawn>
 
         <section
-          className="mt-20 md:mt-48 
-          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)] 
-          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)] 
-          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)] 
+          className="mt-20 md:mt-48
+          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
+          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
+          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
           relative "
         >
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
@@ -193,7 +193,7 @@ function WhatIsIcpPage() {
                 <h3 className="tw-lead my-3 md:tw-title-sm">Web3 + OIS</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                   Canisters support more powerful tokenization models that
-                  advance Web3. Autonomous governance can create “open internet
+                  advance Web3. Autonomous governance can create “open Internet
                   services” (OISs) that are exclusively managed by their
                   communities.
                 </p>
@@ -260,7 +260,7 @@ function WhatIsIcpPage() {
                 Subnet blockchains
               </h2>
               <p className="tw-lead-sm">
-                The ICP protocols combine node machines into highly efficient
+                The ICP protocol combines node machines into highly efficient
                 subnet blockchains, which add capacity for hosting tamperproof
                 canisters. The Internet Computer has a permissionless automated
                 governance system called the Network Nervous System, which
@@ -375,7 +375,7 @@ function WhatIsIcpPage() {
                 Open Internet Services
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Open internet services are services that run autonomously under
+                Open Internet services are services that run autonomously under
                 the exclusive control of a decentralized governance system
                 called a Service Nervous System (SNS), an evolution of DAO
                 technology. This can enable a Web3 service to be transparently
