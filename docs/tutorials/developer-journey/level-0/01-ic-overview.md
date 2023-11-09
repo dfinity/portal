@@ -1,4 +1,6 @@
-# 0.1: Overview of the Internet Computer
+# 0.1 Overview of the Internet Computer
+
+[![ICP Developer Journey 0.1 | Overview of the Internet Computer](https://img.youtube.com/vi/oBUpJ4CqmN0/0.jpg)](https://youtu.be/oBUpJ4CqmN0?si=q5r223tFnWoZTMGz)
 
 ## Overview
 
@@ -6,7 +8,7 @@ The **Internet Computer (IC)** is a secure and transparent blockchain-based netw
 
 Dapps are created by the development and deployment of **smart contracts**, which are known as **canisters** on the IC. Each canister is hosted on an independent blockchain network running on **nodes** called a **subnet**.
 
-We'll dive into these terms a bit further in the next section, [Internet Computer terminology](02-ic-terms.md).
+These terms will be explained a bit further in the next section, [Internet Computer terminology](02-ic-terms.md).
 
 In order to understand how to develop dapps on the IC, first let's take a look at the architecture of the IC and how it functions.
 
@@ -109,6 +111,27 @@ II can be integrated with dapps on the IC and helps secure your online identity 
 
 Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/web-authentication-identity/)
 
+## Need help?
+
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+
+- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+
+- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+
+- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
+
+- [Upcoming hackathons](https://dfinity.org/hackathons/).
+
+- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
+
 ## Next steps
 
-- [0.2: Internet Computer terminology](02-ic-terms.md).
+- [0.2 Internet Computer terminology](02-ic-terms.md).

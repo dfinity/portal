@@ -77,7 +77,7 @@ function SnsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  A Service Nervous Systems (SNS) is an advanced form of a DAO.
+                  A Service Nervous System (SNS) is an advanced form of a DAO.
                   A digital democracy that can run any dapp such as a social
                   network in a fully decentralized way, fully on chain. No
                   corporation, no board of directors, no CEO required.
@@ -116,7 +116,7 @@ function SnsPage() {
               variants={transitions.item}
             >
               Developers can now hand over their Web3 service to an SNS. The
-              community can buy governance tokens to take ownership and control
+              community can acquire governance tokens to take ownership and control
               through the SNS DAO and shape the dapp’s future.
             </motion.p>
             <motion.p
@@ -176,8 +176,8 @@ function SnsPage() {
               >
                 The newly-created SNS tokenizes the dapp through an initial
                 decentralization swap: Part of the dapp’s governance tokens
-                (utility tokens) are bought by the community, providing funding
-                the DAO. Part of the dapp’s utility tokens are allocated to the
+                (utility tokens) are swapped by the community for ICP, providing funding
+                for the DAO. Part of the dapp’s utility tokens are allocated to the
                 original developer(s) as a reward for their initial efforts. The
                 rest remains in a treasury the SNS DAO controls, and is used to
                 fund the future development of the dapp.
@@ -265,16 +265,17 @@ function SnsPage() {
                 variants={transitions.item}
               >
                 Decentralizing dapps through SNSs is the third level of
-                decentralization on the Internet Computer. The first level is
-                the ICP blockchain that runs on decentralized node machines
-                distributed throughout the world, operated by independent
-                entities, and hosted in independent data centers. The second
-                level is the Network Nervous System (NNS) that governs the
+                decentralization on the Internet Computer.
+                The first level is the Internet Computer blockchain that
+                runs on a network of nodes owned and operated by a growing community of independent node providers 
+                distributed across the globe. The node providers are selected and vetted by the NNS neuron owners.
+                
+                The second level is the Network Nervous System (NNS) that governs the
                 decentralized ICP blockchain. The third level is the SNS-based
                 decentralization of dapps running on the decentrally-governed
-                decentralized platform. Only such decentralization on every
-                level — the platform itself, the platform's governance, and the
-                governance of the individual dapps running on this platform —
+                decentralized network. Only such decentralization on every
+                level — the network itself, the network's governance, and the
+                governance of the individual dapps running on this network —
                 enables truly decentralized apps. Only possible on the Internet
                 Computer.
               </motion.p>

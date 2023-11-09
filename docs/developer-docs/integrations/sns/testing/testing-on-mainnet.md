@@ -5,40 +5,40 @@ sidebar_position: 3
 
 ## Overview
 
-Once a developer has tested the process of an SNS, it is highly recommended they do an **"SNS testflight" [on the mainnet](./testing-on-mainnet.md)**. An SNS testflight is when a developer deploys their dapp (to the mainnet) and hands control of it to a mock SNS (on the mainnet). 
+Once a developer has tested the process of an SNS, it is highly recommended they do an **"SNS testflight" [on the mainnet](./testing-on-mainnet.md)**. An SNS testflight is when a developer deploys their dapp (to the mainnet) and hands control of it to a mock SNS (on the mainnet).
 
-**The main intent of performing an SNS testflight is for a developer to experience how a dapp works *after* it has been decentralized, so developer can make sure their dapps is ready for decentralization. It does not test the actual process of decentralizing it.**
+**The main intent of performing an SNS testflight is for a developer to experience how a dapp works *after* it has been decentralized, so developers can make sure their dapp is ready for decentralization. It does not test the actual process of decentralizing it.**
 
-:::info 
-A testflight is not a repo or set of tools, but an *activity* (deploying a dapp and handing control of it to a mock SNS), so the instructions for [testing on the mainnet](./testing-on-mainnet.md) utilize various tools, but developers can of course use any tools they wish. 
+:::info
+A testflight is not a repo or set of tools, but an *activity* (deploying a dapp and handing control of it to a mock SNS), so the instructions for [testing on the mainnet](./testing-on-mainnet.md) utilize various tools, but developers can of course use any tools they wish.
 :::
 
-Among other things, here are some examples of issues developers find after running an SNS testflight: 
-* Developers notice they need better pipeline for creating proposals to update a dapp.
+Among other things, here are some examples of issues developers find after running an SNS testflight:
+* Developers notice they need a better pipeline for creating proposals to update a dapp.
 * Developers notice they may have been decentralized prematurely and need to fix some things.
 * Developers notice they may need better monitoring before decentralizing.
 
-The mock SNS used in a SNS testflight gives developers the ability to see what the post-decentralization lifecycle of a dapp looks like, but still provides a way for a developer to keep control of their dapp. **Therefore, developers are encouraged to run perform an SNS testflight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.**
+The mock SNS used in an SNS testflight gives developers the ability to see what the post-decentralization lifecycle of a dapp looks like, but still provides a way for a developer to keep control of their dapp. **Therefore, developers are encouraged to perform an SNS testflight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.**
 
-## SNS Testflight vs SNS production
+## SNS Testflight vs. SNS production
 
-The main differences to production SNS deployment are summarized here:
+The main differences to a production SNS deployment are summarized here:
 
-* Testflight SNS is deployed by the developer instead of NNS; in particular, no NNS proposals are involved.
+* Testflight SNS is deployed by the developer instead of the NNS; in particular, no NNS proposals are involved.
 * No decentralization swap is actually performed; in particular, the developer has full control over the SNS for the entire duration of the testflight.
 * The developer can also keep direct control over the dapp's canisters registered with testflight SNS.
 * When deployed on the mainnet, testflight SNS is deployed to a regular *application subnet* instead of a dedicated *SNS subnet*.
 
 ## Prerequisites
 
-To perform SNS testflight using the instructions that follow, you will need the following tools:
+To perform an SNS testflight using the instructions that follow, you will need the following tools:
 
 - [x] [dfx](https://github.com/dfinity/sdk)
 - [x] [sns-cli](https://github.com/dfinity/ic)
 - [x] [quill](https://github.com/dfinity/quill)
 - [x] [didc](https://github.com/dfinity/candid) (for advanced tests)
 
-:::info 
+:::info
 Developers can use any set of tools that accomplish the goals of a testflight.
 :::
 
@@ -62,7 +62,7 @@ This guide has been tested with the following version of the tools:
 - **quill: v0.4.0**
 - **didc: 0.3.0 (2022-11-17)**
 
-## High-level 
+## High-level
 
 A testflight typically consists of the following steps:
 
@@ -105,7 +105,7 @@ has full control over the testflight SNS.
 The developer neuron ID is the last part of the testflight deployment output, e.g.:
 
 ```
-Developer neuron IDs: 
+Developer neuron IDs:
 ```
 
 ### Step 3. Add SNS root as an additional controller of all SNS managed dapp canisters
@@ -169,7 +169,7 @@ When running the testflight on the mainnet, pass `--network ic` as an additional
 ### Step 5. Test upgrading canisters via SNS proposals
 
 Determine the path to the new wasm binary that you want to upgrade the canister to.
-For projects build with `dfx`, this binary is typically located at
+For projects built with `dfx`, this binary is typically located at
 `.dfx/<network>/canisters/<canister-name>/<canister-name>.wasm`
 under the root directory of your project,
 where `<network>` is the network (e.g., `local` or `ic`) and `<canister-name>` is the name
@@ -218,7 +218,7 @@ You have to assign a distinct numeric identifier to all generic functions regist
 Note that this identifier has to be at least 1000.
 You also have to provide a name and an optional description of the generic functions
 that are rendered in the proposal, but do not directly relate to the functions' names
-in the canister code (the name is `MyGenericFunctions` and the description omitted in the sample code above).
+in the canister code (the name is `MyGenericFunctions` and the description is omitted in the sample code above).
 
 Once the proposal to register generic functions is accepted, you can submit proposals to execute them
 with a given binary payload:
@@ -266,7 +266,7 @@ You can also provide a limit and thus only obtain the last few proposals.
 
 As the developer keeps direct control over the registered dapp's canisters during the testflight,
 you can directly manage your dapp's canisters during the testflight if needed.
-However, we strongly encourage you to make sure you can also perform all required operations
+However, you are strongly encouraged to make sure you can also perform all required operations
 only via SNS proposals (possibly after upgrading your dapp).
 
 Once you are done with testing all kinds of SNS proposals needed to operate your dapp,

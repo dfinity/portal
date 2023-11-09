@@ -24,7 +24,7 @@ function ReverseGasModelPage(): JSX.Element {
     <Layout
       title="Reverse Gas Model"
       description="A browser is all you need to interact with smart contracts on
-      the Internet Computer. Developers pay for gas. End users access and  
+      the Internet Computer. Developers pay for gas. End users access and
       use dapps without tokens."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -198,7 +198,7 @@ function ReverseGasModelPage(): JSX.Element {
               SDR.
             </p>
             <p className="text-black tw-lead-sm mb-6 md:mb-10">
-              Developers just starting out can get 20T free cycles from the{" "}
+              Developers just starting out can get 10T free cycles from the{" "}
               <Link
                 href="/docs/current/developer-docs/setup/cycles/cycles-faucet"
                 className="link-subtle"
@@ -236,8 +236,8 @@ function ReverseGasModelPage(): JSX.Element {
             variants={transitions.item}
             className="
                 bg-white/80 border border-white border-solid rounded-xl px-6 py-8 md:p-16 md:col-span-2
-                bg-[url(/img/icp-tokens/ecosystem-mobile.webp)] sm:bg-[url(/img/icp-tokens/ecosystem.webp)] 
-                bg-[center_bottom_-20px] bg-[length:120%] bg-no-repeat 
+                bg-[url(/img/icp-tokens/ecosystem-mobile.webp)] sm:bg-[url(/img/icp-tokens/ecosystem.webp)]
+                bg-[center_bottom_-20px] bg-[length:120%] bg-no-repeat
 
                 sm:bg-[right_-250px_top_-100px] sm:bg-[length:auto_180%]
                 md:bg-[right_-160px_top_-100px] md:bg-[length:auto_160%]

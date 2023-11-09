@@ -32,7 +32,7 @@ cd rust_hello
 
 ## Starting the local execution environment
 
-Next, before you can build your project, you need to connect to either the local execution environment running in your development environment or the decentralized Internet Computer mainnet. For this guide, we'll deploy locally in our developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.md).
+Next, before you can build your project, you need to connect to either the local execution environment running in your development environment or the decentralized Internet Computer mainnet. For this guide, you'll deploy locally in your developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.md).
 
 To start the local execution environment, first check that you are still in the root directory for your project, if needed.
 
@@ -96,7 +96,7 @@ To access the backend canister (`rust_hello_backend`) you can again open the URL
 Backend canister via Candid interface:
         rust_hello_backend: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=rrkah-fqaaa-aaaaa-aaaaq-cai
 ```
-Using this method, we open the so called [`Candid UI` canister](https://github.com/dfinity/candid/tree/master/tools/ui) that is automatically deployed to our local replica when you first run `dfx deploy`. The `Candid UI` canister fetches the interface from your backend canister and allows you to test and browse your canister's API with a visual web interface.
+Using this method, open the so called [`Candid UI` canister](https://github.com/dfinity/candid/tree/master/tools/ui) that is automatically deployed to your local replica when you first ran `dfx deploy`. The `Candid UI` canister fetches the interface from your backend canister and allows you to test and browse your canister's API with a visual web interface.
 
 To test the deployed `rust_hello_backend` locally from your command line using dfx, you can run the `greet` function by running the following command:
 

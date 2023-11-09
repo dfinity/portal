@@ -189,6 +189,7 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
           className="absolute w-30 md:w-40 -top-30 right-[-30px] md:top-[70px] md:right-[-180px]"
         ></Icon3>
 
+{/*
         <motion.figure
           className="space-y-3 mx-0"
           variants={{
@@ -223,6 +224,7 @@ const ItsGreen: React.FC<{ id?: string }> = ({ id }) => {
             blockchains
           </motion.figcaption>
         </motion.figure>
+*/}
       </motion.div>
     </section>
   );

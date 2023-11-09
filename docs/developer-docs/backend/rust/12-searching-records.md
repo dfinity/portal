@@ -13,7 +13,7 @@ This program supports the following functions:
 
 -   The `search` function performs a more complex query to return the profile matching all or part of the text specified in any profile field. For example, the `search` function can return a profile containing a specific keyword or that matches only part of a name or description.
 
-This guide provides a simple example of how you can use the Rust CDK interfaces and macros to simplify writing dapps in Rust for the Internet Computer blockchain.
+This guide provides a simple example of how you can use the Rust CDK interfaces and macros to simplify writing dapps in Rust for the Internet Computer.
 
 This guide demonstrates: 
 -   How to represent slightly more complex data—in the form of a profile as a `record` and an `array` of keywords—using the Candid interface description language. 
@@ -33,7 +33,7 @@ dfx new --type=rust rust_profile
 cd rust_profile
 ```
 
-Now that you have the files in place for your Rust dapp, we can replace the template `lib.rs` dapp with the Rust dapp we want to deploy on the Internet Computer blockchain.
+Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp with the Rust dapp you want to deploy on the Internet Computer.
 
 To replace the default program, open the `src/rust_profile_backend/Cargo.toml` file in a text editor and add `serde` to dependencies.
 
@@ -144,7 +144,7 @@ Save your changes and close the file to continue.
 
 ## Start the local execution environment
 
-Before you can build the `rust_profile` project, you need to connect to the local execution environment running in your development environment or the decentralized Internet Computer blockchain mainnet.
+Before you can build the `rust_profile` project, you need to connect to the local execution environment running in your development environment or the Internet Computer blockchain mainnet.
 
 Start the local execution environment on your computer in the background by running the following command:
 
@@ -233,7 +233,7 @@ This command finds the matching profile using the `description` and returns the 
 
 ## Adding profiles for new identities
 
-In its current form, the dapp only stores one profile—the one associated with the principal invoking the commands. To test that the `get`, `getSelf`, and `search` functions do what we want them to, we need to add some new identities that can have different profiles.
+In its current form, the dapp only stores one profile—the one associated with the principal invoking the commands. To test that the `get`, `getSelf`, and `search` functions do what you want them to, you need to add some new identities that can have different profiles.
 
 To add identities for testing, first create a new user identity by running the following command, enter a passphrase to secure the identity when prompted:
 
@@ -332,4 +332,4 @@ The command returns the `Dupree` profile:
 ```
 ## Next steps
 
-Next, we'll cover [access control](./13-access-control.md) in Rust canisters.
+Next, you'll cover [access control](./13-access-control.md) in Rust canisters.

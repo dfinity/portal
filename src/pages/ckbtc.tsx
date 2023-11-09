@@ -244,7 +244,7 @@ function CkbtcPage(): JSX.Element {
                   </span>
                 </h3>
                 <p className="tw-lead mb-6">
-                 Send and receive ckBTC value to and from addesses
+                 Send and receive ckBTC value to and from addresses
                   on either network
                 </p>
                 <ul className="checklist space-y-3 mb-0">

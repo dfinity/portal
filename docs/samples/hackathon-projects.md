@@ -4,11 +4,11 @@ Developers from around the world are participating in hackathons, building dapps
 
 ## DFINIHack
 
-Hackathons are a great way to learn, and that’s why we, in addition to external hackathons, run internal hackathons at DFINITY. Everyone from all departments can participate, with or without coding experience. The objective is to explore new use cases, assess the documentation and tools we provide developers, and to promote a builder’s culture internally.
+Hackathons are a great way to learn, and that’s why, in addition to external hackathons, the team runs internal hackathons at DFINITY. Everyone from all departments can participate, with or without coding experience. The objective is to explore new use cases, assess the documentation and tools provided to developers, and to promote a builder’s culture internally.
 
 ### DeFind
 
-DeFind is a staking-based search engine. With the internet today, search engines use web crawlers to feed data into secret algorithms. For advertisers, this creates the wrong incentives; they may be incentivized to trick the web crawler with invisible text, for example, or generate fake traffic through bots.
+DeFind is a staking-based search engine. With the internet today, search engines use web crawlers to feed data into secret algorithms. For advertisers, this creates the wrong incentives; they may be incentivize to trick the web crawler with invisible text, for example, or generate fake traffic through bots.
 
 -   [See code on GitHub](https://github.com/IC-Search/ic-search).
 

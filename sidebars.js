@@ -64,6 +64,38 @@ const sidebars = {
             "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
           ],
         },
+        {
+          type: "category",
+          label: "Level 3: Space engineer",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-3/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-3/3.1-package-managers",
+            "tutorials/developer-journey/level-3/3.2-https-outcalls",
+            "tutorials/developer-journey/level-3/3.3-certified-data",
+            "tutorials/developer-journey/level-3/3.4-intro-to-agents",
+            "tutorials/developer-journey/level-3/3.5-identities-and-auth",
+            "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
+          ],
+        },
+        {
+          type: "category",
+          label: "Level 4: Space pilot",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-4/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-4/4.1-icp-ledger",
+            "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+            "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+            "tutorials/developer-journey/level-4/4.4-nns-governance",
+            "tutorials/developer-journey/level-4/4.5-using-quill",
+            "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+          ],
+        },
       ],
     },
     {
@@ -134,9 +166,8 @@ const sidebars = {
             id: "concepts/index",
           },
           items: [
-            "concepts/what-is-IC",
+            "concepts/what-is-ic",
             "concepts/canisters-code",
-            "concepts/data-centers",
             "developer-docs/gas-cost",
             "concepts/governance",
             "concepts/nodes-subnets",
@@ -222,7 +253,6 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
-        "developer-docs/backend/resource-limits",
       ],
     },
     {
@@ -324,6 +354,10 @@ const sidebars = {
       items: [
         "developer-docs/frontend/custom-frontend",
         "developer-docs/frontend/add-stylesheet",
+        "developer-docs/frontend/javascript-frontend",
+        "developer-docs/frontend/react-frontend",
+        "developer-docs/frontend/svelte-frontend",
+        "developer-docs/frontend/vue-frontend",
       ],
     },
     {
@@ -334,6 +368,11 @@ const sidebars = {
         id: "developer-docs/production/index",
       },
       items: [
+        {
+          type: "doc",
+          label: "Canister history",
+          id: "developer-docs/production/canister-history",
+        },
         {
           type: "category",
           label: "Custom domains",
@@ -350,8 +389,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Instruction limits",
-          id: "developer-docs/production/instruction-limits",
+          label: "Resource limits",
+          id: "developer-docs/production/resource-limits",
         },
         {
           type: "doc",
@@ -460,6 +499,11 @@ const sidebars = {
       label: "Ledgers and tokens",
       items: [
         {
+          type: "doc",
+            label: "Introduction and overview",
+            id: "developer-docs/integrations/ledger/introduction_and_overview",
+          },
+        {
           type: "category",
           label: "ICP ledger",
           link: {
@@ -468,8 +512,8 @@ const sidebars = {
           },
           items: [
             "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/ledger-local-setup",
+            "developer-docs/integrations/ledger/interact-with-ledger",
             "developer-docs/integrations/ledger/icp-index-local-setup",
           ],
         },
@@ -480,7 +524,9 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/icrc-1/index",
           },
-          items: ["developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+          items: [
+            "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
+            "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
           "developer-docs/integrations/icrc-1/icrc1-index-setup"
         ],
         },

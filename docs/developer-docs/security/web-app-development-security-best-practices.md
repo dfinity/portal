@@ -71,7 +71,7 @@ Note that also loading other assets such as CSS from untrusted domains is a secu
 
 #### Recommendation
 
--   Loading JavaScript and other assets from other origins should be avoided. Especially for security critical applications, we can’t assume other domains to be trustworthy.
+-   Loading JavaScript and other assets from other origins should be avoided. Especially for security critical applications, you can’t assume other domains to be trustworthy.
 
 -   Make sure all the content delivered to the browser is served and certified by the canister using asset certification. This holds in particular for any JavaScript, but also for fonts, CSS, etc.
 

@@ -42,9 +42,10 @@ dfx new hello_world
 
 This project is a simple 'Hello, world!' project that includes a simple frontend UI. You can see a more detailed look into this project in the guide [here](/docs/current/developer-docs/setup/deploy-locally#test-the-dapp-frontend).
 
-Then, to create, build, and deploy the project, use the command:
+Then, to create, build, and deploy the project, use the `dfx deploy` command in the new project directory:
 
 ```
+cd hello_world
 dfx deploy
 ```
 
@@ -161,7 +162,5 @@ To develop your own custom application from this point, you will need to determi
 ## Resources
 
 For a more comprehensive series of tutorials on developing on the IC, check out the [developer journey series](../../tutorials/developer-journey/index.md).
-
-For more context on how the IC works, check out the [how it works section](../../concepts/what-is-IC.md).
 
 

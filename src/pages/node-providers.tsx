@@ -33,7 +33,7 @@ function NodeProvidersPage() {
       description="The Internet Computer is hosted by a decentralized collection of node machines — physical hardware devices run by independent node providers distributed across data centers globally"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-node-providers.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-node-providers-2.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"

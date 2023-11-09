@@ -113,7 +113,7 @@ Where the parameters are:
  principal\"$CID1\"; \
  principal\"$CID2\"; \
  principal\"$CID3\" \
-}" where we assume your dapp’s canister principals are encoded as strings and set into variables named `CID2`, `CID2`, `CID3`
+}" where it is assumed your dapp’s canister principals are encoded as strings and set into variables named `CID2`, `CID2`, `CID3`
 
 * `DEVELOPER_NEURON_ID`=`<your-developer-neuron-ID>`
 

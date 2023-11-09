@@ -111,7 +111,7 @@ The output should resemble the following:
 This workflow displays the ability to fetch the value using composite queries with very low latency.
 
 ### Comparing composite queries to calls from update functions
-Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions. To do this, we will use the `get_update` method, which contains the exact same logic, but is implemented based on update calls. Run the following command in your terminal window:
+Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions. To do this, you will use the `get_update` method, which contains the exact same logic, but is implemented based on update calls. Run the following command in your terminal window:
 
 ```bash
 dfx canister call kv_frontend get_update '(1)'
@@ -120,7 +120,7 @@ dfx canister call kv_frontend get_update '(1)'
 The output will resemble the following:
 ```(opt (1_337 : nat))```
 
-We can observe that with update calls we receive the very same result, but the call is at least one order of magnitude slower compared to composite query calls.
+You can observe that with update calls you receive the very same result, but the call is at least one order of magnitude slower compared to composite query calls.
 
 :::note
 The examples repository also contains an equivalent [Motoko example](https://github.com/dfinity/examples/tree/master/motoko/composite_query).

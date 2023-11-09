@@ -90,7 +90,7 @@ function EthDenverPage() {
   return (
     <Layout
       title="Internet Computer blockchain @ ETHDenver 2023"
-      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain Dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
+      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-ethdenver-2.jpg"></ShareMeta>
@@ -151,7 +151,7 @@ function EthDenverPage() {
                     className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                     variants={transitions.item}
                   >
-                    Lightning fast and fully on-chain Dapps running on the
+                    Lightning fast and fully on-chain dapps running on the
                     Internet Computer blockchain, the only true World Computer
                     that enables a fully decentralized ecosystem.
                   </motion.p>
@@ -348,8 +348,8 @@ function EthDenverPage() {
                   On-chain Governance for EVM DAOs
                 </h4>
                 <p className="tw-paragraph text-black-60 mb-6">
-                  Challenge: explore ways of using the Internet Computer as a
-                  governance platform for DAOs on Ethereum or another
+                  Challenge: explore ways of using the Internet Computer to
+                  govern DAOs on Ethereum or another
                   EVM-compatible chain as a powerful replacement for Snapshot.
                 </p>
                 <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
@@ -874,7 +874,7 @@ function EthDenverPage() {
                 >
                   Web3 still runs on Big Tech's cloud. Blockchains can host
                   tokens, but only tiny amounts of data and compute, and no web.
-                  But not the Internet Computer blockchain. This platform runs
+                  But not the Internet Computer blockchain. The IC runs
                   it all on-chain, fully decentralized — from simple dapps, to
                   high user-volume social networks and games, to oderbook
                   exchanges and enterprise systems, without the need for

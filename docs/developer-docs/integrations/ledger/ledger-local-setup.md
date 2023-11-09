@@ -1,7 +1,19 @@
 # ICP ledger local setup
 
 ## Overview
-If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger. 
+
+:::info
+There are two ways of deploying an ICP ledger locally.
+- Use [dfx-nns](/docs/references/cli-reference/dfx-nns.md) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will also install an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straight forward, but also more heavyweight. 
+- Deploy the ICP ledger `wasm` locally. This method is discussed and shown in this guide and it gives you more control over the deployment and also is lightweight.
+:::
+
+Deploying an ICP ledger locally gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments and you have control over which `wasm` version of the ICP ledger you want to interact with. 
+
+The ICP ledger only exists on the mainnet and the `wasm` that is running on the mainnet is not meant to be used for other token deployments. It needs to be backwards compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
+
+If you want to deploy your own token or build an ICRC-1 ledger, have a look at the [guide on setting up an ICRC-1 ledger](/docs/developer-docs/integrations/icrc-1/icrc1-ledger-setup.md).
 
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
@@ -24,7 +36,7 @@ The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVI
 The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icp_ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did`.
 
 [OPTIONAL]
-If you want to make sure, you have the latest ICRC-1 ledger files you can run the following script. 
+If you want to make sure you have the latest ICP ledger files, you can run the following script: 
 ``` sh
 curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/00a4ab409e6236d4082cee4a47544a2d87b7190d/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
 chmod +x download_latest_icp_ledger.sh
@@ -120,9 +132,9 @@ dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argu
 "
 ```
 
-Take a moment to read the details of the call we made above. Not only are we deploying the ICP ledger canister, we are also:
+Take a moment to read the details of the call made above. Not only are you deploying the ICP ledger canister, you are also:
 - Deploying the canister to the same canister ID as the mainnet ledger canister. This is to make it easier to switch between local and mainnet deployments.
-- Setting the minting account to the account identifier we saved in a previous step (`MINTER_ACCOUNT_ID`).
+- Setting the minting account to the account identifier you saved in a previous step (`MINTER_ACCOUNT_ID`).
 - Minting 100 ICP tokens to the `DEFAULT_ACCOUNT_ID` (1 ICP is equal to 10^8 e8s, hence the name).
 - Setting the transfer fee to 0.0001 ICP.
 - Naming the token `Local ICP / LICP`

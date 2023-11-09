@@ -174,7 +174,7 @@ You are now ready to create a new frontend for your program.
 - #### Step 2:  Modify the frontend entry to replace the default index.html with index.jsx.
 
         entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so we need
+          // The frontend.entrypoint points to the HTML file for this build, so you need
           // to replace the extension to `.js`.
           index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
         },

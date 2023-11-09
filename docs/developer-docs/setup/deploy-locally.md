@@ -66,7 +66,7 @@ To verify the IC SDK is ready to use:
 
 Dapps on the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this guide, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [explore the default project](/developer-docs/backend/motoko/explore-templates.md) guide.
+For this guide, you’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. The previous guide covers the template files that make up a project directory in the [explore the default project](/developer-docs/backend/motoko/explore-templates.md) page.
 
 To create a new project for your first application:
 

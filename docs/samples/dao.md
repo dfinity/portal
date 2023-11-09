@@ -186,7 +186,7 @@ Output:
 Note that the transfer fee was deducted from Bob's account.
 :::
 
-- #### Step 9: Let's make a proposal to change the transfer fee. We can call `get_system_params` to learn the current transfer fee:
+- #### Step 9: Let's make a proposal to change the transfer fee. You can call `get_system_params` to learn the current transfer fee:
 
 ```
 dfx canister call basic_dao get_system_params '()';
@@ -204,7 +204,7 @@ Output:
 )
 ```
 
-To change `transfer_fee`, we need to submit a proposal by calling `submit_proposal`, which takes a `ProposalPayload` as an arg:
+To change `transfer_fee`, you need to submit a proposal by calling `submit_proposal`, which takes a `ProposalPayload` as an arg:
 
 ```
 type ProposalPayload = record {
@@ -214,7 +214,7 @@ type ProposalPayload = record {
 };
 ```
 
-We can change `transfer_fee` by calling `basic_dao`'s `update_system_params` method. This method takes a `UpdateSystemParamsPayload` as an arg, which we need to encode into a blob to use in `ProposalPayload`. Use didc to encode a `UpdateSystemParamsPayload`:
+You can change `transfer_fee` by calling `basic_dao`'s `update_system_params` method. This method takes a `UpdateSystemParamsPayload` as an arg, which you need to encode into a blob to use in `ProposalPayload`. Use didc to encode a `UpdateSystemParamsPayload`:
 
 ```
 didc encode '(record { transfer_fee = opt record { amount_e8s = 20_000:nat64; }; })' -f blob
@@ -226,7 +226,7 @@ Output:
 blob "DIDL\03l\01\f2\c7\94\ae\03\01n\02l\01\b9\ef\93\80\08x\01\00\01 N\00\00\00\00\00\00"
 ```
 
-- #### Step 10: We can then submit the proposal:
+- #### Step 10: You can then submit the proposal:
 
 ```
 dfx canister call basic_dao submit_proposal '(record { canister_id = principal "rrkah-fqaaa-aaaaa-aaaaq-cai";
@@ -260,7 +260,7 @@ You should see the following output:
 (variant { Ok = variant { Open } })
 ```
 
-Because we voted as Bob, and Bob does not have enough voting power to pass proposals, the proposal remains Open. To get the proposal accepted, we can vote with Alice:
+Because you voted as Bob, and Bob does not have enough voting power to pass proposals, the proposal remains Open. To get the proposal accepted, you can vote with Alice:
 
 ```
 dfx identity use Alice; dfx canister call basic_dao vote '(record { proposal_id = 0:nat64; vote = variant { Yes };})';

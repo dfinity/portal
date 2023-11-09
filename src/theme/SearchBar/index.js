@@ -56,8 +56,11 @@ const Search = () => {
           outline-offset-2
           absolute right-[64px] md:static
           text-black
+          dark-hero:text-white dark-hero:border-white/50
 
           md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
+          
+          md:hover:dark-hero:text-infinite md:hover:dark-hero:bg-white md:hover:dark-hero:border-white
           "
         onClick={openOverlay}
         aria-label="Search"
@@ -76,10 +79,10 @@ const Search = () => {
           />
         </svg>
 
-        <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block docs:text-black">
+        <span className="tw-title-navigation text-infinite dark-hero:text-white md:group-hover:text-white md:dark-hero:group-hover:text-infinite hidden md:block docs:text-black">
           Search
         </span>
-        <span className="hidden md:block min-w-[53px] text-right text-infinite/70 docs:text-black/50 md:group-hover:text-white">
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/70 dark-hero:text-white/70 md:dark-hero:group-hover:text-infinite docs:text-black/50 md:group-hover:text-white">
           {metaKey && (
             <span className="tw-paragraph-sm relative top-[2px]">
               {metaKey}K

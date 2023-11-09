@@ -19,7 +19,7 @@ dfx start --clean --background
 dfx new ii_integration
 ```
 
-### Step 2: For this project, we'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
+### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
 
 ```motoko
 actor {
@@ -29,7 +29,7 @@ actor {
 };
 ```
 
-In this actor, there is a single method that responds with the caller's principal. This will show if we make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity. 
+In this actor, there is a single method that responds with the caller's principal. This will show if you make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity. 
 
 ### Step 3: Next, open the `dfx.json` file and replace the existing content with the following:
 
@@ -70,7 +70,7 @@ In this actor, there is a single method that responds with the caller's principa
 }
 ```
 
-As mentioned in the introduction, we'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`. 
+As mentioned in the introduction, you'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`. 
 
 ### Step 4: Pull the II canister using `dfx deps`:
 
@@ -80,10 +80,10 @@ dfx deps pull
 
 ### Step 5: Initialize the canister. 
 
-We can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
+You can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
 
 ```
-dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument '(null)'
+dfx deps init internet_identity --argument '(null)'
 ```
 
 ### Step 6: Install the @dfinity/auth-client package:
@@ -100,35 +100,22 @@ import {
     ii_integration_backend,
 } from "../../declarations/ii_integration_backend";
 import { AuthClient } from "@dfinity/auth-client";
-import { HttpAgent, Actor } from "@dfinity/agent";
-
+import { HttpAgent } from "@dfinity/agent";
 let actor = ii_integration_backend;
-
 console.log(process.env.CANISTER_ID_INTERNET_IDENTITY);
-
-const greetButton = document.getElementById("greet");
-greetButton.onclick = async (e) => {
+const whoAmIButton = document.getElementById("whoAmI");
+whoAmIButton.onclick = async (e) => {
     e.preventDefault();
-
-    greetButton.setAttribute("disabled", true);
-
-    const greeting = await actor.greet(
-        (await Actor.agentOf(actor).getPrincipal()).toString()
-    );
-
-    greetButton.removeAttribute("disabled");
-
-    document.getElementById("greeting").innerText = greeting;
-
+    whoAmIButton.setAttribute("disabled", true);
+    const principal = await actor.whoami();
+    whoAmIButton.removeAttribute("disabled");
+    document.getElementById("principal").innerText = principal.toString();
     return false;
 };
-
 const loginButton = document.getElementById("login");
 loginButton.onclick = async (e) => {
     e.preventDefault();
-
     let authClient = await AuthClient.create();
-
     // start the login process and wait for it to finish
     await new Promise((resolve) => {
         authClient.login({
@@ -139,30 +126,28 @@ loginButton.onclick = async (e) => {
             onSuccess: resolve,
         });
     });
-
     const identity = authClient.getIdentity();
     const agent = new HttpAgent({ identity });
     actor = createActor(process.env.CANISTER_ID_II_INTEGRATION_BACKEND, {
         agent,
     });
-
     return false;
 };
 ```
 
 This code does the following:
 
-- Interacts with the backend actor to call the `greet` method.
+- Interacts with the backend actor to call the `whoami` method.
 - Creates an `auth` client.
-- Retrieves the Internet Identity from the `auth` client.
-- Uses the Internet Identity to create an agent that interacts with the IC.
+- Retrieves the identity from the `auth` client.
+- Uses the identity to create an agent that interacts with the IC.
 - Then, uses the interface description of the app to create an actor that's used to call the app's service methods.
 
-### Step 8: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
-
 :::info 
-If you used a project name other than `ii_integration`, you will need to rename the inputs in the code.
+If you used a project name other than `ii_integration`, you will need to rename the imports and environment variable in the code.
 :::
+
+### Step 8: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
 
 ```html
 <!DOCTYPE html>
@@ -185,9 +170,9 @@ If you used a project name other than `ii_integration`, you will need to rename 
       </form>
       <br />
       <form>
-        <button id="greet">Click Me!</button>
+        <button id="whoAmI">Who Am I</button>
       </form>
-      <section id="greeting"></section>
+      <section id="principal"></section>
     </main>
   </body>
 </html>
@@ -212,7 +197,7 @@ dfx deploy
 
 ### Step 9: Then, select 'Log in'. 
 
-You'll be redirected to the II frontend. Since we're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
+You'll be redirected to the II frontend. Since you're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
 ### Step 10: Create a local Internet Identity
 
@@ -243,6 +228,12 @@ Once you save it, select the 'I saved it, continue' button.
 ### Step 12: Your Internet Identity's principal ID will be returned:
 
 ![Local integration 4](../_attachments/II_greet_2.png)
+
+### Local Frontend Development
+
+When modifying this example's frontend, it is recommended to develop using a local development server instead of using the deployed frontend canister. This is because using a local develop server will enable Hot Module Reloading, allowing you to see any modifications made to your frontend instantaneously, rather than having to redeploy the frontend canister to see the changes. 
+
+To start a local development server, run `npm run start`. The output will contain the local address the project is running at, such as `127.0.0.1:8080`. 
 
 ## Resources
 

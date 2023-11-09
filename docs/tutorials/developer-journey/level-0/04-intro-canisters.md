@@ -1,4 +1,4 @@
-# 0.4: Introduction to canisters
+# 0.4 Introduction to canisters
 
 ## Overview
 
@@ -14,9 +14,10 @@ A canister differs from a container, however, in the fact that a canister also s
 
 ### Languages 
 
-Canisters can be developed in a variety of languages, such as Rust, JavaScript, Python, and TypeScript, though the primary language for canister development is **Motoko**, since Motoko has been developed specifically for canister development on the IC. 
+Canisters can be developed in a variety of existsing languages, such as Rust, JavaScript, Python, and TypeScript. 
+There is also an SDK for Motoko, a language specifically for canister development on the Internet Computer with the focus on programming in a distributed asynchronous environment. 
 
-We'll dive further into Motoko and other languages in the next section, [introduction to languages](05-intro-languages.md).
+You'll dive further into Motoko and other languages in the next section, [introduction to languages](05-intro-languages.md).
 
 ### Actors
 
@@ -72,6 +73,26 @@ For network bandwidth, cycles are charged at the time of usage. When a canister 
 
 If a canister runs out of cycles, the canister is uninstalled. The code and state are deleted, but the remainder of the canister's information remains. To avoid unexpected deletion, canisters have a 'freezing threshold'. If a canister's balance dips below this threshold, then the canister will stop processing any new requests. Replies will still be processed. The system will throw an error if the canister attempts to perform any action that would result in the canister's cycles balance dipping below the freezing threshold. 
 
+## Need help?
+
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+
+- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+
+- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+
+- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
+
+- [Upcoming hackathons](https://dfinity.org/hackathons/).
+
+- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
 ## Next steps
 
-- [0.5: Introduction to languages](05-intro-languages.md).
+- [0.5 Introduction to languages](05-intro-languages.md).

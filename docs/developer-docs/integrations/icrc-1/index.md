@@ -1,7 +1,10 @@
 # ICRC-1 token standard
 
 ## Overview
-The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer.
+
+ICRC-1 is a token standard created by the Internet Computer working group. ICRC stands for "Internet Computer Request for Comments", you can find documentation on the working group [here](https://github.com/dfinity/ICRC). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there.
+
+However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards).
 
 ## Data
 
@@ -17,7 +20,7 @@ type Account = record { owner : principal; subaccount : opt Subaccount; };
 ```
 
 ## Methods
-
+This section will give you an overview of the ICRC-1 standard methods. If you want to have a more detailed description on how to interact with those endpoints, you can have a look at [the guide on how to interact with an ICRC-1 ledger](./interact-with-ICRC-1-ledger.md).
 ### icrc1_name <span id="name_method"></span>
 
 Returns the name of the token (e.g., `MyToken`).
@@ -160,7 +163,7 @@ This endpoint returns names of all specifications (e.g., `"ICRC-42"` or `"DIP-20
 ## Metadata
 
 A ledger can expose metadata to simplify integration with wallets and improve user experience.
-The client can use the [`icrc1_metadata`](#metadata_method) method to fetch the metadata entries. 
+The client can use the [`icrc1_metadata`](#metadata_method) method to fetch the metadata entries.
 All the metadata entries are optional.
 
 ### Key format
@@ -205,7 +208,7 @@ If the client did not set the `created_at_time` field, the ledger SHOULD NOT ded
 
 The minting account is a unique account that can create new tokens and acts as the receiver of burnt tokens.
 
-Transfers **from** the minting account act as **min** transactions depositing fresh tokens on the destination account.
+Transfers **from** the minting account act as **mint** transactions depositing fresh tokens on the destination account.
 Mint transactions have no fee.
 
 Transfers **to** the minting account act as **burn** transactions, removing tokens from the token supply.
@@ -220,7 +223,7 @@ The minting account is also the receiver of the fees burnt in regular transfers.
 
 ## Textual encoding of accounts
 
-Each ICRC-1 account has two components: the owner (up to 29 bytes) and the subaccount (32 bytes). If a subaccount is not included, it is equal to an array comprised of 32 zero bytes. 
+Each ICRC-1 account has two components: the owner (up to 29 bytes) and the subaccount (32 bytes). If a subaccount is not included, it is equal to an array comprised of 32 zero bytes.
 
 ```candid
 type Account = { owner : principal; subaccount : opt blob };
@@ -228,7 +231,7 @@ type Account = { owner : principal; subaccount : opt blob };
 
 ### Default accounts
 
-The account's textual representation coincides with the account owner's principal text encoding if the `subaccount` isn't set or equal to an array comprised of 32 zero bytes. 
+The account's textual representation coincides with the account owner's principal text encoding if the `subaccount` isn't set or equal to an array comprised of 32 zero bytes.
 
 ```
 Account.toText(record {
@@ -259,7 +262,7 @@ An account with non-default subaccounts consists of the following parts:
 
 - A period character `.` that separates the checksum from the subaccount.
 
-- The hex-encoded bytes of the subaccount, with all leading '0' characters omitted. 
+- The hex-encoded bytes of the subaccount, with all leading '0' characters omitted.
 
 ```
 Account.toText({ owner; ?subaccount }) = {

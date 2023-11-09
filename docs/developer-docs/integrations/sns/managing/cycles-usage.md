@@ -11,13 +11,13 @@ have sufficient cycles by manually sending cycles when necessary to
    canisters and actively make calls to send additional cycles to them
    when the canisters' cycles balance get low.
    
-- This process has to be repeated for **each indiviudal SNS canister** 
+- This process has to be repeated for **each individual SNS canister** 
 and also for **each dapp canister**.
 
 
    
 At least the latter is not new to developers who built a dapp on the IC.
-Nevertheless, we want to underline the importance of this in the context
+Nevertheless, it should be underlined the importance of this in the context
 of an SNS: **if the SNS governance or SNS ledger canister run out of cycles
 and get deleted, this is of course critical as users lose their
 liquid and staked tokens and as the dapp canisters cannot be governed
@@ -48,7 +48,7 @@ The SNS ledger canister automatically spawns new archive
 canisters.
 When this happens, the cycles balance of these new canisters has
 to be managed. The ledger's cycles balance decreases by a 
-significat amount if a new archive is spawned.
+significant amount if a new archive is spawned.
 If an archive canister runs out of cycles,
 ledger blocks might be lost.
 :::
@@ -63,7 +63,7 @@ To help SNS communities manage cycles, the SNS is initiated as follows:
 
 
 ## How to observe and manage the canisters' cycles
-We next describe in more detail how you can monitor and manage the
+Next, it is described in more detail how you can monitor and manage the
 cycles of the SNS and dapp canisters.
 
 ### Step 1: Find all SNS and governed dapp canisters and their cycle balance.
@@ -79,7 +79,7 @@ low on cycles, you can top up the canister's cycles.
 
 To do this, you need a wallet with sufficient cycles.
 In an SNS, can look for people who donate cycles in this way.
-You can find [here](https://internetcomputer.org/docs/current/developer-docs/production/topping-up-canister/#option-2-if-you-have-cycles-on-your-cycles-wallet) how to transfer cycles from a wallet to any other cansiter (which can be a dapp or SNS canister).
+You can find [here](https://internetcomputer.org/docs/current/developer-docs/production/topping-up-canister/#option-2-if-you-have-cycles-on-your-cycles-wallet) how to transfer cycles from a wallet to any other canister (which can be a dapp or SNS canister).
 
 Otherwise, you can make a proposal that transfers some ICP
 from the SNS treasury to an individual who is trusted to convert these to cycles and make such payments.

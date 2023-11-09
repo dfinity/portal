@@ -1,17 +1,19 @@
 # ICP index local setup
 
 ## Overview
+This guide will show you how to deploy an ICP index canister locally, how to connect it to your local ICP ledger, and how to interact with the ICP index canister.
+
 If you are working in a local development environment, i.e with a local replica instead of the public Internet Computer, you can't access the ICP ledger nor the ICP index canister. If your application is using the ICP index canister and you want to test it, you can setup the ICP index and ICP ledger locally. Neither of the two canisters will have any information about the state of the ICP ledger on the mainnet. You will have to create your own transactions on the ICP ledger so that the ICP index can serve them through its endpoints. 
 
-### Step 1: Deploy a local ICP ledger.
-If you have not done so already, follow the guide to [setup an ICP ledger locally](./ledger-local-setup.md) and then continue with this guide. It is assumed that you have followed the steps required to set up a local ledger and that all prerequisites are fulfilled. 
+### Step 1: Read the guide on deploying a local ICP ledger.
+If you have not done so already, read this guide to [setup an ICP ledger](./ledger-local-setup.md) and then continue with this guide. It is assumed that you have read the steps described in the guide on setting up a local ICP ledger and that all prerequisites are fulfilled. For this guide most steps will assume that there is an ICP ledger running with ledger ID ´ryjl3-tyaaa-aaaaa-aaaba-cai´. If you followed the guide on [setting up an ICP ledger](./ledger-local-setup.md) and chose a different canister ID you will have to replace the ledger ID with that which you received upon deployment. 
 
 ### Step 2 [Optional]: Create a new project folder.
 It is advised you use the same project folder that you created during the local ledger setup. Alternatively, you can create a new one for the ICP index canister using the following command:
 
 ```
-dfx new index_canister
-cd index_canister
+dfx new icp_index_canister
+cd icp_index_canister
 ``` 
 
 **OPTIONAL:**
@@ -117,7 +119,7 @@ Then, check the status with the command:
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```
 
-It should now indicate that an additional block was synced compared to the last time we called the status endpoint. You may have to wait a couple of seconds for the index canister to sync. 
+It should now indicate that an additional block was synced compared to the last time you called the status endpoint. You may have to wait a couple of seconds for the index canister to sync. 
 ```
 (record { num_blocks_synced = 2 : nat64 })
 ```
@@ -163,7 +165,7 @@ Then you can query the transactions for this principal with the default subaccou
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
-The result will include the intial mint operation as well as the transfer that we made.
+The result will include the initial mint operation as well as the transfer that you made.
 
 ```
 (

@@ -3,7 +3,7 @@
 ## Overview
 These pages introduce instructions needed when considering handing over control of a 
 dapp to a Service Nervous System (SNS) or integrating with an SNS.
-If this is the first time you hear about the SNS, we recommend to take a look at the high level [SNS](/sns)
+If this is the first time you hear about the SNS, it is recommended to take a look at the high level [SNS](/sns)
 and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
 
 This page provides an overview of how the SNS developer documentation is organized and also lists references to other relevant SNS documentation.
@@ -17,13 +17,13 @@ You will find
 * [Alternative DAOs](./introduction/dao-alternatives.md) presenting alternative ways how to get a DAO.
 
 ## Preparing an SNS launch
-This section introduces the ideas and tools needed when considering to form a DAO, including less technical aspects, such as planning the tokenomics, as well as more technical aspects, such as how different configuration choices can technically be set in the SNS.
+This section introduces the ideas and tools needed when considering to form a DAO, including less technical aspects, such as designing a tokenomics proposal, as well as more technical aspects, such as how different configuration choices can technically be set in the SNS.
 
 In this documentation you will find
 * [An introduction to SNS preparation](./tokenomics/index.md).
 * [The SNS launch checklist](./tokenomics/sns-checklist.md) providing a summary of what to consider when launching an SNS.
 * [Pre-deployment considerations](./tokenomics/predeployment-considerations.md) introducing some non-technical considerations to take into account when planning an SNS launch.
-* [SNS tokenomics](./tokenomics/tokenomics-intro.md) providing and introduction to tokenomics that can be considered when planning an SNS's tokenomics.
+* [SNS tokenomics](./tokenomics/tokenomics-intro.md) providing and introduction to tokenomics that can be considered when designing an SNS's tokenomics.
 * [SNS rewards](./tokenomics/rewards.md) providing and introduction to SNS rewards that can be considered when planning an SNS's tokenomics.
 * A (technical) introduction how to convert the configurations into [SNS parameters](./tokenomics/preparation.md).
 
