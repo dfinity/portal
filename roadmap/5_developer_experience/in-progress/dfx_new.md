@@ -7,7 +7,7 @@ eta: Q4 2023
 is_community: false
 ---
 
-The current experience of using the dfx new command to bootstrap a new project leaves a lot to be desired - for example,
+The current experience of using the `dfx new` command to bootstrap a new project leaves a lot to be desired - for example,
 there is no ability to choose the project template or CDK - state of the art CLIs typically offer rich workflows when
 bootstrapping a new project. There is an opportunity to improve this command, bringing it up to a standard that is more
 in-line with the current status quo of web development environments.
