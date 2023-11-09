@@ -1,5 +1,5 @@
 ---
-title: DFX Version Manager
+title: dfx Version Manager
 links:
   Forum Post:
   Proposal:
