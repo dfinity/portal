@@ -1,5 +1,5 @@
 ---
-title: DFX Deps
+title: dfx Deps
 links:
   Forum Post:
   Proposal:
