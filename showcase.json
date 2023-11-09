@@ -3074,4 +3074,23 @@
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
   }
+
+  
+  {
+    "id": "Faceless",
+    "name": "Faceless Project",
+    "oneLiner": "A Regulation-Compliant and Privacy-Preserving Infrastructure that Brings Web 2.0 User Experience to Web 3.0",
+    "tags": [
+      "Tools / Infrastructure",
+      "SocialFi"
+    ],
+    "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
+    "usesInternetIdentity": true,
+    "website": "https://faceless.live/",
+    "github": "https://github.com/HeisenbergLin22/dfinity_delivery_nov",
+    "youtube": "https://www.youtube.com/watch?v=xOBkb28XXE0",
+    "twitter": "https://twitter.com/Faceless_Proj",
+    "display": "Large",
+    "submittableId": "39754985"
+  }, 
 ]
