@@ -268,7 +268,7 @@ module.exports = function validateShowcasePlugin() {
 
   if (errorCount > 0) {
     logger.error(
-      `showcase.json validation failed with ${errorCount} error(s).`
+      `showcase.json validation failed with ${errorCount} error(s).\nTo produce a valid asset bundle, you can use https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/`
     );
     process.exit(1);
   }
