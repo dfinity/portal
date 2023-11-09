@@ -16,7 +16,7 @@ The P2P layer thereby is the communication fabric for the IC protocol stack and 
 It is important to note that broadcast artifacts reach all necessary subnet nodes eventually, that is, no upper bound on when this happens can be given.
 This _asynchronous communication network_ assumption is used for the ICP's communication and consensus layers as it reflects the properties of real-world networks.
 
-## Gossip Protocol
+## Gossip protocol
 
 The P2P layer builds upon the basic principle of _gossip_.
 Gossip in communication networks works along the same basic principle as gossip among people: A node in the subnet is connected with a subset of the other nodes of the subnet – its _peers_.
@@ -34,7 +34,7 @@ An advert specifies its corresponding artifact, but is a small message only cont
 A node only pushes adverts for artifacts to its peers.
 After receiving an advert, a node may request the corresponding artifact from one or more of its peers who sent it an advert for that artifact.
 
-## Prioritization of Artifacts
+## Prioritization of artifacts
 
 The P2P layer allows the prioritization of artifacts such that the more crucial artifacts are broadcast throughout the subnet nodes more quickly than the others.
 Prioritizing some artifacts over others is important to ensure that the protocol can always make progress and not be starved of network bandwidth by "less important" traffic.
@@ -42,12 +42,12 @@ This principle is well known from traditional networking and applies equally wel
 
 ## Security
 
-To prevent Denial of Service (DOS) attacks, nodes will only request and accept connections with nodes in
+To prevent Denial of Service (DoS) attacks, nodes will only request and accept connections with nodes in
 the same subnet. Subnet membership is managed by the [Network Nervous System (NNS)](/how-it-works/#Network-Nervous-System).
 Thanks to the information stored in the NNS canisters P2P can guarantee that all the communication between
 two nodes is encrypted and authenticated, by using TLS.
 
-## Go Even Deeper
+## Go even deeper
 
 [P2P on the IC wiki](<https://wiki.internetcomputer.org/wiki/IC_P2P_(peer_to_peer)_layer>)
 

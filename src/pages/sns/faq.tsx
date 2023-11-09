@@ -11,6 +11,7 @@ import transitions from "@site/static/transitions.json";
 import { SmallCardWithDescription } from "@site/src/components/Common/Card";
 import IntraPageNav from "@site/src/components/Common/IntraPageNav";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
+import YoutubeVideoEmbed from "@site/src/components/Common/YoutubeVideoEmbed";
 
 function idFromTitle(title: string) {
   const slug = slugify(title, { strict: true, lower: true });
@@ -245,6 +246,7 @@ function SnsFaqPage() {
               on the Internet Computer. Follow their progress on the {" "}
               <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
             </Faq>
+
           </FaqSection>
           <FaqSection
             id="participate"
@@ -288,7 +290,10 @@ function SnsFaqPage() {
                   <strong>Create SNS parameter update proposals: </strong>
                   You can propose upgrades for many of the DAO's parameters such
                   as maximum staking period, voting rewards and many more. See{" "}
-                  <Link href="https://github.com/dfinity/ic/blob/3da3fac8fcb0c3cbfc4ab7f037f57e83245a828c/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L765">
+                  <Link
+                    href="/docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters"
+                    target="_blank"
+                  >
                     parameters
                   </Link>
                   .
@@ -348,14 +353,17 @@ function SnsFaqPage() {
                   <strong>
                     Purchase tokens on a decentralized exchange (DEX):
                   </strong>{" "}
+
                   After a decentralization swap has concluded, liquid tokens
                   will typically be listed on multiple DEXs, where you can buy
-                  them using the ICP utility token or other tokens, depending on
-                  what token pairs the DEX lists, e.g., also Bitcoin or
+                  them using the ICP utility token or other tokens, depending
+                  on what token pairs the DEX lists, e.g., also Bitcoin or
                   Ethereum. An SNS token in high demand may have a higher price
                   on a DEX than in its decentralization swap.{" "}
-                  <Link href="http://icdex.io/">ICDex</Link> already supports
-                  SNS tokens.
+                  <Link href="http://icdex.io/">ICDex</Link>,{" "}
+                  <Link href="https://sonic.ooo/">Sonic</Link> and{" "}
+                  <Link href="https://icpswap.com/">ICPSwap</Link>{" "}
+                  already supports SNS tokens.
                 </li>
                 <li>
                   <strong>Airdrops:</strong> Besides buying SNS tokens, you can
@@ -489,10 +497,11 @@ function SnsFaqPage() {
                   neurons
                 </Link>{" "}
                 that hold your SNS tokens. Depending on the SNS configuration,
-                the basket may contain multiple neurons, each with a different
-                dissolve delay. You can use your tokens to participate in
-                governance or, once neurons have dissolved, sell the liquid
-                tokens on an exchange.
+                the basket may contain multiple neurons, each with a different{" "}
+                <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
+                  dissolve delay
+                </Link>. You can use your tokens to participate in governance or,
+                once neurons have dissolved, sell the liquid tokens on an exchange.
               </p>
               <p>
                 The number of SNS tokens you receive, and the price paid for
@@ -692,6 +701,59 @@ function SnsFaqPage() {
           </FaqSection>
 
           <FaqSection
+            id="treasury"
+            title={
+              <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
+                SNS DAO treasury
+              </h2>
+            }
+          >
+            <Faq title="What is the SNS treasury?">
+              After a decentralization swap successfully concludes, the ICP collected through the
+              swap is allocated to the SNS DAO's treasury. Optionally, the DAO can allocate a number of
+              SNS tokens to be in the DAO's treasury, which all SNSs so far have done. The SNS treasury
+              is controlled by the DAO, and can only be transferred using proposals that SNS token holders
+              vote on.
+            </Faq>
+
+            <Faq title="What is the purpose of the SNS treasury and how are the funds distributed?">
+              <ul>
+                <li>
+                  The purpose of the treasury is decided by the SNS DAO.
+                </li>
+                <li>
+                  A portion of the treasury can be sent to any address by an SNS proposal.
+                </li>
+                <li>
+                  Typically, after an SNS has launched it has an SNS token treasury and an ICP
+                  treasury (from the decentralization swap). An SNS can, however, also own other
+                  tokens on the Internet Computer.
+                </li>
+                <li>
+                  The treasury funds could, for example, be used to open liquidity pools on
+                  DEXs or to reward users for certain actions in the dapp. 
+                </li>
+              </ul>
+            </Faq>
+
+            <Faq title="Do I have a say in how the treasury funds are allocated?">
+              Yes, if you are a neuron holder of the respective SNS DAO, you
+              can actively exercise your voting power to decide on proposals that
+              allocate treasury funds.
+            </Faq>
+
+            <Faq title="Who has access to the treasury? ">
+              Without an adopted SNS proposal that specifies how to allocate funds,
+              no one can access the SNS treasury. The SNS DAO only grants access
+              when proposals are adopted through SNS community voting. While it can happen
+              that the original developer team possesses a meaningful portion of the voting
+              power, they alone cannot make decisions for the DAO without the approval of
+              the majority of SNS token holders.
+            </Faq> 
+
+          </FaqSection>
+
+          <FaqSection
             id="governance"
             title={
               <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
@@ -741,6 +803,47 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
+            
+            <Faq title="What is voting power and how do I get it?">
+              SNS DAOs have a stake-based governance system. This means the more
+              tokens participants stake in their{" "}
+              <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
+                neurons
+              </Link>, the more voting power their neurons have. In addition to
+              the stake, a neuron's voting power
+              is dependent on the{" "}
+              <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
+                  dissolve delay
+              </Link> bonus and age bonus. Each SNS DAO
+              decides these bonuses in its parameters.
+            </Faq>
+            
+            <Faq title="What is neuron following?">
+              <p>
+                Following neurons is a way to delegate votes both on the NNS and in SNSs.
+                Each SNS neuron can either manually vote on proposals or
+                follow another neuron’s voting decisions. Neurons are followed based on
+                various topics, such as making SNS treasury transfers or upgrading the dapp.
+                Neurons can be set to follow other neurons on specific topics or to follow
+                other neurons on ‘All Topics’ – a catch-all which is applied for the proposal
+                without any specific following choice.
+              </p>
+              <p>
+                When you use following, you must trust that the neurons you’re following will make
+                decisions that align with your views. The advantages of neuron following
+                are that you don’t have to spend time manually voting on each proposal,
+                and you can rely on the expertise of other neuron holders for certain topics. 
+              </p>
+            </Faq>
+
+            <Faq title="How can I follow or unfollow a neuron on SNS treasury proposals?">
+              If you would like to learn how to follow some neuron, for example the SNS developer team, on some topics,
+              while manually voting on others, watch this short tutorial:
+              <YoutubeVideoEmbed
+                videoId="bgZ2VifhNcU"
+                altText="Neuron following on SNS treasury proposals"
+              />
+            </Faq>
 
             <Faq title="Is it possible to transfer SNS tokens to another person?">
               <p>
@@ -751,10 +854,13 @@ function SnsFaqPage() {
               </p>
               <p>
                 When receiving your SNS tokens in the form of neurons, the
-                neurons may have dissolve delays, meaning your tokens may not be
-                liquid, i.e. transferable immediately. Rather these tokens
-                become liquid (transferable) in weeks, months, or years’ time,
-                depending on the dissolve delay of the respective neuron.
+                neurons may have{" "}
+                <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
+                  dissolve delays
+                </Link>, meaning your tokens may not be liquid, i.e. transferable
+                immediately. Rather these tokens become liquid (transferable) in
+                weeks, months, or years’ time, depending on the dissolve delay of
+                the respective neuron.
               </p>
             </Faq>
             <Faq title="Is it possible to sell SNS tokens to another person?">

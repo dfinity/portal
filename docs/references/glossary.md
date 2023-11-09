@@ -62,15 +62,16 @@ account (see [fiduciary](#fiduciary)).
 
 A **blockchain** is a growing list of cryptographically linked blocks,
 agreed upon by [consensus](#consensus). On the [Internet
-Computer](#internet-computer-ic) every [subnet](#subnet) is a blockchain and these blockchains
-interact using [chain key cryptography](#chain-key).
+Computer](#internet-computer-ic), every [subnet](#subnet) maintains its own 
+blockchain with blocks containing messages for the [canisters](#canisters)
+hosted on this subnet. These blockchains interact using [chain key cryptography](#chain-key).
 
 #### boundary nodes
 
-**Boundary nodes** are Nginx gateways to the Internet Computer. These nodes
-act as HTTP routers through which the network’s
-[subnet](#subnet) blockchain nodes can be reached. The
-boundary nodes have several purposes: they aid in discover-ability (the
+**Boundary nodes** are gateways to the Internet Computer. These nodes
+allow users to seamlessly access the [canisters](#canisters) smart contracts
+running on the IC. 
+The boundary nodes have several purposes: they aid in discover-ability (the
 `icp0.io` domain name points to a set of boundary nodes), they are
 geo-aware and can route incoming requests to the nearest subnet
 [node](#node) that hosts the [canister](#canister)
@@ -220,17 +221,18 @@ correspond to one **XDR**.
 
 #### dapp
 
-A **dapp**, or decentralised application, is a
-[canister](#canister) running on the [Internet
-Computer](#internet-computer-ic).
+A **dapp**, or decentralised application, is a software program that runs
+on a decentralised computer network instead of a single computer. On the
+[Internet Computer](#internet-computer-ic) dapps are composed of
+[canister](#canister) smart contracts.
 
 #### data center
 
 A **data center** (DC) is a physical site that hosts
 [nodes](#node) which contribute to the [Internet
 Computer](#internet-computer-ic). It includes the hardware and
-software infrastructure required for node deployment. A DC is identified
-on the Internet Computer by a unique identifier.
+software infrastructure required for node deployment. 
+Data centers are nodes that are selected and vetted by the [NNS](#NNS).
 
 #### dissolve delay
 
@@ -421,7 +423,7 @@ destination [account](#account).
 programming model of the [Internet
 Computer](#internet-computer-ic), making it easier to
 efficiently build applications and take advantage of some of the more
-unusual features of this platform, including the actor model for smart
+unusual features of the IC, including the actor model for smart
 contracts and compilation to WebAssembly.
 
 ## N
@@ -439,17 +441,19 @@ neuron would have to already be dissolved.
 
 #### Network Nervous System (NNS)
 
-The **Network Nervous System** (NNS) is a collection of [system
-canisters](#system-canister) (aka "NNS canisters") assembled
-into a system that governs all aspects of the [Internet
-Computer](#internet-computer-ic).
+The **Network Nervous System** (NNS) is the decentralized autonomous 
+organization (DAO) that governs the [Internet Computer](#internet-computer-ic) 
+by [proposals](#proposal) on which [ICP](#ICP) [neuron](#neuron) owners can vote. 
+Once such a proposal is accepted, it is autonomously executed.
+The NNS consists of a collection of [system
+canisters](#system-canister) (aka "NNS canisters").
 
 #### neuron
 
 A **neuron** is an [IC](#internet-computer-ic) entity that
 can make [proposals](#proposal) and vote on proposals related
 to the governance of the [Internet
-Computer](#internet-computer-ic) platform.
+Computer](#internet-computer-ic).
 
 To provide the stability required for responsible governance, neurons
 need to store ("stake") a certain amount of [ICP](#icp) in
@@ -484,7 +488,8 @@ parameter.
 
 #### node
 
-A **node** is a physical or virtual network endpoint that hosts all the
+A **node** is a physical hardware device run by independent
+[node providers]. It hosts all the
 hardware, [replica](#replica) software, and configuration
 settings required to participate in the [Internet
 Computer](#internet-computer-ic).
@@ -494,20 +499,8 @@ Computer](#internet-computer-ic).
 A **node operator** (NO) is a non-canister
 [principal](#principal) who has the authority to add/remove
 [nodes](#node) to/from the
-[IC](#internet-computer-ic-ic).
-
-[Node providers](#node-provider) come in possession of
-Hardware Security Modules (HSM), and register the HSMs with the
-[NNS](#network-nervous-system-(NNS)). (The HSM registration
-process consists essentially in deriving an IC principal ID from the key
-stored on the HSM, and persisting that ID with the NNS.) NPs hand
-registered HSMs over to legal persons, who now gain the authority to
-physically “operate nodes” (aka install
-[replicas](#replica)). The caveat is that, as opposed to
-"regular" principals, where a great deal of care goes into making sure
-that one principal ID corresponds to only one person, HSMs can routinely
-exchange hands, hence many persons can act as the same NO principal at
-different times.
+[IC](#internet-computer-ic-ic), by delegation of the
+the corresponding [node providers](#node-provider).
 
 #### node provider
 
@@ -519,6 +512,7 @@ provider is the owner of the [node](#node), and may also be
 involved in node operation and related tasks. A node provider may
 receive rewards from multiple nodes in multiple [data
 centers](#data-center).
+Node providers are selected and vetted by the [NNS](#NNS).
 
 ## O
 
@@ -566,12 +560,12 @@ attributes, such as an ID, a URL, a summary etc. Proposals are submitted
 by eligible [neuron](#neuron) owners for the consideration of
 the IC community, and undergo a [voting](#voting) process,
 following which they can be adopted or rejected. Adopted proposals are
-then executed. There are several taxonomies of proposals, the most
+then executed autonomously. There are several taxonomies of proposals, the most
 prominent of which groups proposals into "topics," whose adoption, in
 turn, triggers certain categories of actions, such as the creation of a
-[subnet](#subnet), the addition of a
-[nodes](#node) to a subnet, and the modification of the
-[ICP](#icp) exchange rate.
+[subnet](#subnet), the addition of
+[nodes](#node) to a subnet, or the upgrade to a new [replica](#replica)
+software.
 
 #### proto-node
 
@@ -602,7 +596,8 @@ necessary for a [node](#node) to participate in a
 
 #### registry
 
-The IC **registry** manages the system meta-data maintained on the
+The IC **registry** is a [canister](#canister) that manages 
+the meta-data maintained on the
 network nervous system ([NNS](#network-nervous-system-(NNS)))
 and accessed by all [subnet](#subnet) blockchains.
 

@@ -253,7 +253,6 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
-        "developer-docs/backend/resource-limits",
       ],
     },
     {
@@ -390,8 +389,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Instruction limits",
-          id: "developer-docs/production/instruction-limits",
+          label: "Resource limits",
+          id: "developer-docs/production/resource-limits",
         },
         {
           type: "doc",

@@ -231,7 +231,7 @@ const MarketingNav = () => {
         hiddenRef.current = false;
 
         if (navbarRef.current) {
-          navbarRef.current.style.transform = "translateY(0)";
+          navbarRef.current.style.transform = "unset";
         }
       }
 

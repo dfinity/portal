@@ -266,6 +266,8 @@ The following language and capitalization of certain terms and phrases should be
 - canister smart contract
 - dapp: should be used in place of any reference to an IC app, decentralized application, or 'dApp'.
 - DeFi
+- dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase. 
+      - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
 - HTTP outcalls
@@ -283,6 +285,7 @@ The following language and capitalization of certain terms and phrases should be
 - node provider
 - open internet service
 - reverse gas model
+- vetKeys
 - Web3
 - World Wide Web
 
