@@ -3071,5 +3071,23 @@
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
+  },
+
+  {
+    "id": "reblock",
+    "name": "ReBlock",
+    "website": "https://www.reblock.finance/",
+    "tags": [
+      "DeFi",
+      "Ethereum"
+    ],
+    "twitter": "https://twitter.com/reblock_site",
+    "description": "ReBlock is an earning protocol for investors to earn sustainable passive income, secured by real-world assets, around the globe.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/reblock_logo.png",
+    "screenshots": [
+      "/img/showcase/reblock_screenshot.jpg"
+    ]
   }
 ]
