@@ -75,11 +75,11 @@ const Card: FC<{
   );
 };
 
-const Decks = () => {
+const Decks = ({ className = "" }: { className?: string }) => {
   return (
     <AnimateSpawn
       el={motion.section}
-      className="container-12 flex gap-2 flex-col md:flex-row -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40"
+      className={clsx("flex gap-2 flex-col md:flex-row", className)}
       variants={transitions.container}
     >
       {/* <div className="bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)"> */}
