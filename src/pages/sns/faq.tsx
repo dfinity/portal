@@ -250,8 +250,8 @@ function SnsFaqPage() {
             <Faq title="Were there any security audits on SNS?">
               Yes, the SNS framework has undergone two security audits by{" "}
               <Link href="https://www.trailofbits.com/">Trail of Bits</Link> in
-              2022, and 2023.
-
+              2022, and 2023 with no severe issues found.
+              
               <p className="not-prose">
                 <Link
                   href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
