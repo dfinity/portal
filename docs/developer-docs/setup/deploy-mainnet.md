@@ -80,7 +80,7 @@ To verify the IC SDK is ready to use:
 
 Dapps for the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this guide, we’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [explore the default project](/docs/developer-docs/backend/motoko/explore-templates.md) guide.
+For this guide, you’ll start with the default sample dapp to illustrate creating a dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. The previous guide covers the template files that make up a project directory in the [explore the default project](/docs/developer-docs/backend/motoko/explore-templates.md) guide.
 
 To create a new project for your first dapp:
 
@@ -232,11 +232,11 @@ To validate your cycles wallet:
 
     The first time you access the application, you see a notice that you are using an 'Anonymous Device' and are prompted to authenticate your identity, authorize access to the wallet, and register your device.
 
-- #### Step 3:  Click **Authenticate** to continue to the Internet Identity service.
+- #### Step 3:  Click **Authenticate** to continue to Internet Identity.
 
-- #### Step 4:  Enter your **User Number** if you have previously registered an identity or register with the service as a new user.
+- #### Step 4:  Enter your **internet identity** if you have previously registered or register as a new user.
 
-    For more information about the Internet Identity service and how to register multiple authentication devices and methods, see [how to use the Internet Identity service](../../references/ii-spec.md).
+    For more information about Internet Identity and how to register multiple authentication devices and methods, see [how to use Internet Identity](../../references/ii-spec.md).
 
 - #### Step 5:  Authenticate using your user number and the authentication method—for example, a security key or fingerprint—you have registered.
 
@@ -380,7 +380,7 @@ Here are some suggestions for where to go next:
 
 -   [Building on the IC](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
+-   [Concepts](../../concepts/index.md) to learn about different IC concepts.  
 
 -   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
 

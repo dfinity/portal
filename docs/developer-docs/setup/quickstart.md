@@ -163,6 +163,4 @@ To develop your own custom application from this point, you will need to determi
 
 For a more comprehensive series of tutorials on developing on the IC, check out the [developer journey series](../../tutorials/developer-journey/index.md).
 
-For more context on how the IC works, check out the [how it works section](../../concepts/what-is-IC.md).
-
 

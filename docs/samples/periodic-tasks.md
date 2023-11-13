@@ -245,4 +245,4 @@ As shown in `Example 2`, there might be still very specific use cases for the he
 
 ## Security considerations and security best practices
 
-If you base your application on this example, we recommend you familiarize yourself with and adhere to the [security best practices](https://internetcomputer.org/docs/current/references/security/) for developing on the Internet Computer. This example may not implement all the best practices.
+If you base your application on this example, it is recommended you familiarize yourself with and adhere to the [security best practices](https://internetcomputer.org/docs/current/references/security/) for developing on the Internet Computer. This example may not implement all the best practices.

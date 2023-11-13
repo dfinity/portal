@@ -4,7 +4,7 @@
 
 A minimal example to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
-The sample code is in both Motoko and Rust. This sample canister sends a `POST` request with some JSON to a free API where we can verify the headers and body were sent correctly.
+The sample code is in both Motoko and Rust. This sample canister sends a `POST` request with some JSON to a free API where you can verify the headers and body were sent correctly.
 
 **The main intent of this canister is to show developers how to make idempotent `POST` requests.**
 
@@ -14,15 +14,15 @@ This example takes less than 5 minutes to complete.
 The HTTPS outcalls feature only works for sending HTTP POST requests to servers or API endpoints that support **IPV6**.
 :::
 
-## What we are building
+## What you are building
 
 ### Candid web UI of canister
 
-The canister in this tutorial will have only **one public method** which, when called, will trigger an HTTP `POST` request. The canister will not have a frontend (only a  backend), but like all canisters, we can interact with its public methods via the Candid web UI, which will look like this:
+The canister in this tutorial will have only **one public method** which, when called, will trigger an HTTP `POST` request. The canister will not have a frontend (only a  backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
 
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
-When we call the method, the canister will send an HTTP `POST` request with the following JSON in the response body:
+When you call the method, the canister will send an HTTP `POST` request with the following JSON in the response body:
 
 ```json
 {
@@ -33,13 +33,13 @@ When we call the method, the canister will send an HTTP `POST` request with the 
 
 ### Verifying the HTTP POST request
 
-In order to verify that our canister sent the HTTP request we expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
+In order to verify that your canister sent the HTTP request you expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
 
 ![Public API to inspect POST request](../_attachments/https-post-requestbin-result.webp)
 
 ## Important notes on `POST` requests
 
-Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination. Even if we ignore the Web3 component, multiple identical POST requests is not new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
+Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests is not new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same. 
 
@@ -49,7 +49,7 @@ Developers should be careful that the destination server understand and use idem
 
 ### Motoko: Structure of the code
 
-Before we dive in, here is the structure the code we will touch:
+Before you dive in, here is the structure the code you will touch:
 
 Here is how our main file will look like:
 
@@ -86,7 +86,7 @@ actor {
 };
 ```
 
-We will also create some custom types in `Types.mo`. This will look like this:
+You will also create some custom types in `Types.mo`. This will look like this:
 
 ```motoko
 module Types {
@@ -119,7 +119,7 @@ import Array "mo:base/Array";
 import Nat8 "mo:base/Nat8";
 import Text "mo:base/Text";
 
-//import the custom types we have in Types.mo
+//import the custom types you have in Types.mo
 import Types "Types";
 
 actor {
@@ -148,23 +148,23 @@ actor {
   };
 
 //PUBLIC METHOD
-//This method sends a POST request to a URL with a free API we can test.
+//This method sends a POST request to a URL with a free API you can test.
   public func send_http_post_request() : async Text {
 
     //1. DECLARE IC MANAGEMENT CANISTER
-    //We need this so we can use it to make the HTTP request
+    //You need this so you can use it to make the HTTP request
     let ic : Types.IC = actor ("aaaaa-aa");
 
     //2. SETUP ARGUMENTS FOR HTTP GET request
 
     // 2.1 Setup the URL and its query parameters
-    //This URL is used because it allows us to inspect the HTTP request sent from the canister
+    //This URL is used because it allows you to inspect the HTTP request sent from the canister
     let host : Text = "putsreq.com";
     let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81"; //HTTP that accepts IPV6
 
     // 2.2 prepare headers for the system http_request call
 
-    //idempotency keys should be unique so we create a function that generates them.
+    //idempotency keys should be unique so create a function that generates them.
     let idempotency_key: Text = generateUUID();
     let request_headers = [
         { name = "Host"; value = host # ":443" },
@@ -173,9 +173,9 @@ actor {
         { name= "Idempotency-Key"; value = idempotency_key }
     ];
 
-    // The request body is an array of [Nat8] (see Types.mo) so we do the following:
+    // The request body is an array of [Nat8] (see Types.mo) so do the following:
     // 1. Write a JSON string
-    // 2. Convert ?Text optional into a Blob, which is an intermediate reprepresentation before we cast it as an array of [Nat8]
+    // 2. Convert ?Text optional into a Blob, which is an intermediate reprepresentation before you cast it as an array of [Nat8]
     // 3. Convert the Blob into an array [Nat8]
     let request_body_json: Text = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }";
     let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); 
@@ -193,7 +193,7 @@ actor {
         url = url;
         max_response_bytes = null; //optional for request
         headers = request_headers;
-        //note: type of `body` is ?[Nat8] so we pass it here as "?request_body_as_nat8" instead of "request_body_as_nat8"
+        //note: type of `body` is ?[Nat8] so it is passed here as "?request_body_as_nat8" instead of "request_body_as_nat8"
         body = ?request_body_as_nat8; 
         method = #post;
         transform = ?transform_context;
@@ -210,7 +210,7 @@ actor {
     Cycles.add(21_850_258_000);
     
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Since the cycles were added above, we can just call the IC management canister with HTTPS outcalls below
+    //Since the cycles were added above,youe can just call the IC management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
     
     //5. DECODE THE RESPONSE
@@ -224,11 +224,11 @@ actor {
     //     body : [Nat8];
     // };
 
-    //We need to decode that [Na8] array that is the body into readable text. 
-    //To do this, we:
+    /You need to decode that [Na8] array that is the body into readable text. 
+    //To do this:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
-    //  3. We use Motoko syntax "Let... else" to unwrap what is returned from Text.decodeUtf8()
+    //  3. Use Motoko syntax "Let... else" to unwrap what is returned from Text.decodeUtf8()
     let response_body: Blob = Blob.fromArray(http_response.body);
     let decoded_text: Text = switch (Text.decodeUtf8(response_body)) {
         case (null) { "No value returned" };
@@ -290,8 +290,8 @@ module Types {
     
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a GET request, we declare the type for completeness, but 
-    //we do not use this function. We will pass "null" to the HTTP request.
+    //In this minimal example for a GET request, declare the type for completeness, but 
+    //you do not use this function. You will pass "null" to the HTTP request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
@@ -315,7 +315,7 @@ module Types {
     };
 
 
-    //3. Declaring the IC management canister which we use to make the HTTPS outcall
+    //3. Declaring the IC management canister which is used to make the HTTPS outcall
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
@@ -492,14 +492,14 @@ async fn send_http_post_request() -> String {
     //See: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/enum.HttpMethod.html
 
     //Since the body in HTTP request has type Option<Vec<u8>> it needs to look something like this: Some(vec![104, 101, 108, 108, 111]) ("hello" in ASCII)
-    //where the vector of u8s are the UTF. In order to send JSON via POST we do the following:
+    //where the vector of u8s are the UTF. In order to send JSON via POST, do the following:
     //1. Declare a JSON string to send
     //2. Convert that JSON string to array of UTF8 (u8)
     //3. Wrap that array in an optional
     let json_string : String = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }".to_string();
 
     //note: here, r#""# is used for raw strings in Rust, which allows you to include characters like " and \ without needing to escape them.
-    //We could have used "serde_json" as well.
+    //You could have used "serde_json" as well.
     let json_utf8: Vec<u8> = json_string.into_bytes();
     let request_body: Option<Vec<u8>> = Some(json_utf8);
 
@@ -537,10 +537,10 @@ async fn send_http_post_request() -> String {
             //     pub body: Vec<u8>,
             // }
 
-            //We need to decode that Vec<u8> that is the body into readable text.
-            //To do this, we:
+            //You need to decode that Vec<u8> that is the body into readable text.
+            //To do this:
             //  1. Call `String::from_utf8()` on response.body
-            //  3. We use a switch to explicitly call out both cases of decoding the Blob into ?Text
+            //  3. Use a switch to explicitly call out both cases of decoding the Blob into ?Text
             let str_body = String::from_utf8(response.body)
                 .expect("Transformed response is not UTF-8 encoded.");
             ic_cdk::api::print(format!("{:?}", str_body));
@@ -621,7 +621,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 - #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
 
-We update the Candid interface file so it matches the method `send_http_post_request()` in `lib.rs`.
+Update the Candid interface file so it matches the method `send_http_post_request()` in `lib.rs`.
 
 ```
 service : {

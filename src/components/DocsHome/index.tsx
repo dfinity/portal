@@ -140,8 +140,8 @@ const DocsHomePage: FC = () => {
               <div className="flex-1 flex flex-col">
                 <h4 className="tw-heading-5 mb-6">Motoko</h4>
                 <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Get started with high level programming language designed
-                  specifically for the Internet Computer cdcsd
+                  Get started with a high level programming language designed
+                  specifically for the Internet Computer
                 </p>
                 <p className="mb-0">
                   <Link

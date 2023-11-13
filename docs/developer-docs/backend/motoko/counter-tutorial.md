@@ -201,4 +201,4 @@ To test your code, follow the instructions [here](candid-ui.md).
 
 ## Next steps
 
-In the next guide, we'll cover [passing text arguments to a canister](hello-location.md).
+In the next guide, you'll learn about [passing text arguments to a canister](hello-location.md).

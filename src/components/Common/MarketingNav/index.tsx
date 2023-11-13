@@ -1,4 +1,5 @@
 import Link from "@docusaurus/Link";
+import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { isLinkExternal } from "@site/plugins/utils/links";
 import Search from "@site/src/theme/SearchBar";
@@ -201,6 +202,8 @@ const MarketingNav = () => {
     nav.mainItems[0].sections[0]
   );
 
+  const location = useLocation();
+
   const hiddenRef = React.useRef(false);
   const lastScrollPosRef = React.useRef(0);
   const navbarRef = React.useRef<HTMLElement>(null);
@@ -228,7 +231,7 @@ const MarketingNav = () => {
         hiddenRef.current = false;
 
         if (navbarRef.current) {
-          navbarRef.current.style.transform = "translateY(0)";
+          navbarRef.current.style.transform = "unset";
         }
       }
 
@@ -297,6 +300,14 @@ const MarketingNav = () => {
   function openSecondaryMobileNav(index: number) {
     setSecondaryMobileNavOpen(index);
   }
+  function isCurrentPage(href: string) {
+    const cleanHref = href
+      .replace(/#.*$/, "") // remove hash
+      .replace(/\?.*$/, "") // remove query string
+      .replace(/\/$/, ""); // remove trailing slash
+
+    return location.pathname == cleanHref;
+  }
 
   return (
     <>
@@ -323,14 +334,16 @@ const MarketingNav = () => {
           <div className="hidden md:flex gap-0 items-center">
             {nav.mainItems.map((item) => (
               <div
-                className="active:outline active:outline-1 active:outline-white border-none bg-transparent appearance-none font-circular px-8 py-[2px] text-black dark-hero:text-white m-0 tw-heading-7 rounded-full group hover:bg-[#6E52AA] hover:text-white cursor-pointer"
+                className="active:outline active:outline-1 active:outline-white  text-black dark-hero:text-white m-0 tw-heading-7 group  cursor-pointer"
                 key={item.name}
                 onMouseEnter={() => showFlyout(item)}
                 tabIndex={0}
               >
-                {item.name}
+                <div className="rounded-full px-8 py-[2px] group-hover:bg-[#6E52AA] group-hover:text-white">
+                  {item.name}
+                </div>
 
-                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
                   <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
                     <div className="flex-1 flex">
                       {item.sections.length > 1 && (
@@ -357,7 +370,12 @@ const MarketingNav = () => {
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="text-black hover:no-underline group/item hover:text-infinite flex flex-col"
+                              className={clsx(
+                                isCurrentPage(item.href)
+                                  ? "text-infinite"
+                                  : "text-black",
+                                "hover:no-underline group/item hover:text-infinite flex flex-col"
+                              )}
                             >
                               <span className="tw-heading-7 inline-flex gap-2 items-center">
                                 {item.name}
@@ -367,7 +385,14 @@ const MarketingNav = () => {
                                 )}
                               </span>
 
-                              <span className="tw-title-navigation-on-page text-black/60 group-hover/item:text-infinite whitespace-nowrap">
+                              <span
+                                className={clsx(
+                                  isCurrentPage(item.href)
+                                    ? "text-infinite"
+                                    : "text-black/60",
+                                  "tw-title-navigation-on-page group-hover/item:text-infinite whitespace-nowrap"
+                                )}
+                              >
                                 {item.description}
                               </span>
                             </Link>
@@ -467,17 +492,6 @@ const MarketingNav = () => {
 
         {/* top level aux items */}
         <AuxItems items={nav.auxItems} />
-
-        {/* social icons */}
-        <ul className="m-0 p-0 list-none flex flex-wrap gap-6 mt-10">
-          {footerIcons.map((item) => (
-            <li className="" key={item.label}>
-              <Link href={item.href} className={`block w-6 h-6`}>
-                <img src={item.iconLight} alt={item.label}></img>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
 
       {/* Level 2 of mobile fly-in menu*/}

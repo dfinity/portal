@@ -1,0 +1,73 @@
+.spinner {
+  display: inline-block;
+  span {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    border-radius: 100%;
+    display: inline-block;
+
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .bounce1 {
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both,
+      spinner-color-1 2.8s steps(1) infinite both;
+    animation-delay: -0.32s;
+  }
+
+  .bounce2 {
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both,
+      spinner-color-2 2.8s steps(1) infinite both;
+    animation-delay: -0.16s;
+  }
+
+  .bounce3 {
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both,
+      spinner-color-3 2.8s steps(1) infinite both;
+    background-color: #fbb03b;
+  }
+}
+
+@keyframes spinner-color-1 {
+  100%,
+  0% {
+    background-color: #29abe2;
+  }
+  50% {
+    background-color: #522785;
+  }
+}
+
+@keyframes spinner-color-2 {
+  100%,
+  0% {
+    background-color: #f15a24;
+  }
+  50% {
+    background-color: #ed1e79;
+  }
+}
+
+@keyframes spinner-color-3 {
+  100%,
+  0% {
+    background-color: #fbb03b;
+  }
+  50% {
+    background-color: #29abe2;
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

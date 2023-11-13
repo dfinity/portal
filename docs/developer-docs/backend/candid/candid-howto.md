@@ -16,15 +16,13 @@ Now, let’s explore how to interact with this canister in different scenarios w
 
 ## The `.did` file
 
-Candid types can be used to describe a service via a Candid service description file (`.did` file), which can either be manually written or generated from a service implementation. 
+Candid types can be used to describe a service via a Candid service description file (`.did` file), which can either be manually written or generated from a service implementation.
 
-If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use the SDK, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are are auto-generated, it is recommended they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next dfx build.
+If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use the SDK, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are auto-generated, it is recommended that they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next `dfx build`.
 
-For canisters written in Rust, the Candid extractor tool can be used with the IC CDK version `0.11.0` and newer. You can find the full instructions for using the Candid extractor [here](/docs/current/developer-docs/backend/candid/generating-candid). 
+For canisters written in Rust, the Candid extractor tool can be used with the IC CDK version `0.11.0` and newer. You can find the full instructions for using the Candid extractor [here](/docs/current/developer-docs/backend/candid/generating-candid).
 
-In other languages, you will have to write the Candid interface description manually. With the help of types, we have developed tools to automatically generate UI and perform random testing based on the service description file. 
-
-With the help of types, we developed tools to automatically generate UI and perform random testing based on the service description file. 
+In other languages, you will have to write the Candid interface description manually. With the help of types, tools have been developed to automatically generate UI and perform random testing based on the service description file.
 
 ## Interact with a service in a terminal
 
@@ -124,7 +122,7 @@ actor {
 }
 ```
 
-In this example, when the import dependency on the `counter` canister— the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/references/candid-ref.md) reference section.
+In this example, when the import dependency on the `counter` canister—the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/references/candid-ref.md) reference section.
 
 The Motoko compiler and `dfx build` command also auto-generate the Candid description for the `hello` canister to allow other canisters or tools to interact with the `hello` canister seamlessly. The generated Candid description is located in your project build directory at `.dfx/local/canisters/hello/hello.did`.
 
@@ -147,7 +145,7 @@ async fn greet() -> String {
 }
 ```
 
-When the import macro on the `counter` canister— the `#[import(canister = "counter")]` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively—as if it were a Rust function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/references/candid-ref.md) reference section.
+When the import macro on the `counter` canister—the `#[import(canister = "counter")]` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively—as if it were a Rust function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/references/candid-ref.md) reference section.
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file:
 

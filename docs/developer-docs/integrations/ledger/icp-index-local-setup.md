@@ -119,7 +119,7 @@ Then, check the status with the command:
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```
 
-It should now indicate that an additional block was synced compared to the last time we called the status endpoint. You may have to wait a couple of seconds for the index canister to sync. 
+It should now indicate that an additional block was synced compared to the last time you called the status endpoint. You may have to wait a couple of seconds for the index canister to sync. 
 ```
 (record { num_blocks_synced = 2 : nat64 })
 ```
@@ -165,7 +165,7 @@ Then you can query the transactions for this principal with the default subaccou
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
-The result will include the intial mint operation as well as the transfer that we made.
+The result will include the initial mint operation as well as the transfer that you made.
 
 ```
 (

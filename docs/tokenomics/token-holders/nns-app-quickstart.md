@@ -3,13 +3,12 @@
 ## Overview
 All changes to the configuration and behavior of the Internet Computer are controlled by an algorithmic governance system called the Network Nervous System (NNS). The NNS controls all aspects of the Internet Computer blockchain configuration and is responsible for performing many network management operations. For example, the Network Nervous System (NNS) is responsible for:
 
--   Upgrading the protocol and guest operating system software used by the nodes that provide computing capacity to the network.
--   Inducting new node operators and machines into the network.
+-   Upgrading the protocol and guest operating system software used by the nodes machines.
+-   Inducting new node providers and machines into the network.
 -   Creating new subnets to increase network capacity.
 -   Splitting subnets to balance network load.
--   Configuring parameters that control how much must be paid by users for compute capacity.
--   Monitoring canister activity and node performance for malicious behavior and statistical deviations.
--   De-activating malicious software or under-performing nodes to protect the network.
+-   Configuring parameters that control how much must be paid by canisters for resource usage.
+-   De-activating under-performing nodes to protect the network.
 
 The requests for changes and updates to the network are submitted to the NNS in the form of **proposals**. The NNS decides to adopt or reject proposals based on voting activity by neuron holders.
 
@@ -17,7 +16,7 @@ The requests for changes and updates to the network are submitted to the NNS in 
 
 For network participants to be able to vote on proposals, they need to lock up a stake of ICP utility tokens for a given period of time to create a representative called a **neuron**.
 
-Because neurons represent a stake of ICP utility tokens, they also represent an identity with a **ledger canister account** and a principal that controls the ledger account.
+Because neurons represent a stake of ICP utility tokens, they also represent an identity with a **ICP ledger account** and a principal that controls the  account.
 
 Neurons provide the stability required for responsible governance of the Internet Computer by ensuring that the ICP utility tokens they represent cannot be exchanged for a specific period of time referred to as the **lock-up** period.
 
@@ -27,15 +26,12 @@ The following diagram provides a simplified view of the workflow for creating a 
 
 ### Governance and voting rewards
 
-When a person or organization has ICP utility tokens locked up in a neuron, the neuron holder can propose and vote on governance issues. To encourage participation, neuron holders are also rewarded for voting in proportion to the number of ICP utility tokens they have locked up and the length of the lock-up period up to a maximum of eight years.
+When a person or organization has ICP utility tokens locked up in a neuron, they can propose and vote on governance proposals. To encourage participation, neuron holders are also rewarded for voting in proportion to the number of ICP utility tokens they have locked up, the length of the lock-up period (dissolve delay), and the age of their neuron.
 
 ### Unlocking the stake held by a neuron
 
-After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron. In its **locked** state, the neuron has a fixed non-zero **dissolve delay** equivalent to the lock-up period. For example, assume you have a stake of 100 ICP utility tokens locked up for a period of five years. After successfully created the neuron with these settings, your dissolve delay is five years.
-
-Based on the dissolve delay that decreases as time progresses, a **dissolve timer** determines how long it will take to completely dissolve a neuron.
-
-When the dissolve timer reaches zero, the neuron owner—the ICP utility token holder who created the neuron, or an authenticated custodian, can dissolve the neuron and unlock the balance of ICP utility tokens.
+After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron.
+It's **dissolve delay** determins the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
 
 The dissolved neuron ceases to exist and the stake of ICP utility tokens that the neuron represented is released to the appropriate ledger canister account.
 
@@ -137,7 +133,7 @@ dfx ledger --network ic transfer <destination-account-id> --icp <ICP-amount> --m
 
 For example, assume you have the following accounts:
 
-![accounts](../_attachments/accounts.png)
+![accounts](../_attachments/nns-accounts.png)
 
 If you want to transfer one ICP utility token to the `Main` account, you can run the following command:
 
@@ -195,11 +191,11 @@ To stake ICP utility tokens:
 
 For example:
 
-![dissolve delay](../_attachments/dissolve-delay.png)
+![dissolve delay](../_attachments/nns-dissolve.png)
 
-- #### Step 4:  Click **Yes, I’m sure** to confirm the lock up period, then close the window to review the newly-created neuron properties.
+- #### Step 4:  Click **Confirm and Set Delay** to confirm the lock up period. 
 
-![neuron properties](../_attachments/neuron-properties.png)
+![neuron properties](../_attachments/nns-settings.png)
 
 ## What you can do after creating a neuron
 
@@ -234,13 +230,15 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 - #### Step 5:  Type the amount of ICP utility tokens you want to add to the specified neuron, then click **Continue**.
 
-- #### Step 6:  Verify the transaction details, then click **Confirm and Send**.
+![Increase stake](../_attachments/increase-stake1.png)
 
-![confirm top up](../_attachments/confirm-top-up.png)
+- #### Step 6:  Verify the transaction details, then click **Send Now**.
 
-- #### Step 7:  Verify the completed transaction, then click **Close**.
+![Confirm increase stake](../_attachments/increase-stake2.png)
 
-- #### Step 8:  Click the **Neurons** tab to see the increased stake.
+- #### Step 7:  Once the transaction has completed, you will see the increased stake value.
+
+![Increased stake](../_attachments/increased-stake3.png)
 
 ## Disburse dissolved neurons into an account
 
@@ -248,7 +246,7 @@ When the dissolve delay timer for a neuron reaches zero, you can disburse the ne
 
 To disburse a neuron and return its ICP utility tokens:
 
-- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on the unlocked neuron that has reach the ended of its dissolve delay period. For example:
+- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on an unlocked neuron that has reach the ended of its dissolve delay period. For example:
 
 ![unlocked neuron](../_attachments/unlocked-neuron.png)
 
@@ -256,21 +254,59 @@ To disburse a neuron and return its ICP utility tokens:
 
 ![disburse](../_attachments/disburse.png)
 
-- #### Step 3:  Type an address or select an account to receive the ICP utility tokens. For example, you might select the `dev-projects` linked account:
+- #### Step 3:  Type an address or select an account to receive the ICP utility tokens. 
 
-- #### Step 4:  Verify the transaction information, then click **Confirm and Send**. For example, check that the Destination address matches the intended address of the `dev-projects` linked account:
+![select account](../_attachments/select-account.png)
 
-![confirm send](../_attachments/confirm-send.png)
+- #### Step 4:  Verify the transaction information, then click **Confirm and Send**. 
 
-- #### Step 5:  Verify the completed transaction, then click **Close**.
+## Neuron following
 
-For example:
+To maximize neuron rewards and vote on every proposal submitted to the NNS, neuron holders can make use of the NNS's liquid democracy. It may be hard for neuron owners to manually vote on every single proposal submitted or neuron owners may not have the necessary level of technical understanding to evaluate proposals themselves. To aid in this, the NNS supports **neuron following**.
 
-![confirmation](../_attachments/confirmation.png)
+A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics, such as governance or subnet management. For example, if the neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals, if the group votes to reject a subnet management proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
 
-If you transferred the ICP utility tokens to one of your accounts in the Internet Computer ledger canister, you can click the ICP tab and see your new balance reflected. For example:
+:::caution
+It is important to note that when following a group of neurons, your neuron will only cast a vote if more than half of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic, your neuron only votes if at least 6 out of the 10 neurons vote the same way. If only 5 neurons vote, your neuron will not cast a vote. This should be considered when choosing to follow multiple neurons on a topic.
+:::
 
-![updated icp](../_attachments/updated-icp.png)
+Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined; however, this catch-all follow rule does not include SNS & neuron's fund or governance proposals. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+
+To configure your neuron to follow the group of another neuron:
+
+- #### Step 1: From the NNS dapp, select 'My Neuron Staking', then select the neuron that you'd like to set a following rule for.
+
+![NNS Neuron following 1](../_attachments/following1.png)
+
+- #### Step 2: In the neuron's details, scroll down to the 'Following' section and select 'Follow Neurons'. 
+
+![NNS Neuron following 2](../_attachments/following2.png)
+
+- #### Step 3: Next, select a topic to follow. 
+
+The topic refers to the different types of proposals; for example, the 'Governance' topic defines a following role for governanc-related proposals, while the 'Subnet Management' topic defines a following role for subnet management proposals. There is also a 'catch-all' rule that can be followed for all proposal types except for governance, SNS, and neurons' fund. 
+
+For this example, select 'Governance'. 
+
+![NNS Neuron following 3](../_attachments/following3.png)
+
+- #### Step 4: Select 'Add Followee'.
+
+![NNS Neuron following 4](../_attachments/following4.png)
+
+- #### Step 5: Enter a Neuron ID to follow, or select a group of neurons from the menu provided. 
+
+In this example, select 'DFINITY Foundation'. 
+
+![NNS Neuron following 5](../_attachments/following5.png)
+
+- #### Step 6: The window will now reflect the following configuration:
+
+![NNS Neuron following 6](../_attachments/following6.png)
+
+The configuration will also now be shown in the neuron's details:
+
+![NNS Neuron following 7](../_attachments/following7.png)
 
 ## Spawn new neurons
 
@@ -285,6 +321,13 @@ To spawn new neurons from an existing neuron:
 - #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
 
 - #### Step 2:  Click **Spawn Neuron**.
+
+## Neuron following
+
+
+
+Neuron owners may find it hard to manually vote directly on every proposal submitted to the NNS. Firstly, large volumes of proposals may be submitted to the NNS, often at awkward times, and owners may not be available or have the necessary time to evaluate each one. Secondly, neuron owners may lack the necessary expertise to evaluate proposals themselves. The NNS uses a form of liquid democracy to address these challenges. For any proposal topic, a neuron can be configured to vote automatically by following the votes of a group of neurons, voting to adopt proposals whenever more than half of the followees vote to adopt, and voting to reject whenever at least half of the followees vote to reject. A catch-all follow rule may also be defined to make a neuron vote automatically on proposals with topics for which no follow rule has been defined. It is assumed that neuron owners will manage how their neurons follow other neurons in the best interests of the network, which is also in their own economic interests, owing to their locked ICP balances.
+
 
 ## Vote on proposals 
 

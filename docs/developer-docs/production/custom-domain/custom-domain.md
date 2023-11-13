@@ -3,15 +3,15 @@
 ## Overview
 
 By default all canisters on the Internet Computer are accessible through `icp0.io`
-and their canister ID. In addition to that default domain, one can also host a
-canister under a custom domain. This guide explains how to do that.
+and their canister ID. In addition to that default domain, one can also make a
+canister accessible under a custom domain. This guide explains how to do that.
 
-There are, essentially, two approaches to host a canister under a custom domain:
+There are, essentially, two approaches to make a canister accessible under a custom domain:
 
 - [Register the domain with the boundary nodes](#custom-domains-on-the-boundary-nodes).
 - [Hosting the domain on your own infrastructure](#custom-domains-using-your-own-infrastructure).
 
-For both approaches, you need to acquire a domain through your favorite registrar.
+For both approaches, you need to acquire a domain through any registrar (pick your favorite one).
 
 The two approaches differ in the ease of use and the configurability. When registering
 the domain with the boundary nodes, you simply have to configure the DNS records of
@@ -34,18 +34,18 @@ const agent = new HttpAgent({ host });
 
 ## Custom domains on the boundary nodes
 
-In the following, we first list all the steps necessary to register your
-custom domain with the boundary nodes. Then, we explain how one can update and
+In the following, first all steps necessary to register your
+custom domain with the boundary nodes are listed. Then, it is explained how one can update and
 remove a registration.
 
 ### First registration
 
 By following the steps below, you can host your canister under your custom domain
-using the boundary nodes. We first explain the necessary steps. Then, we provide
+using the boundary nodes. The steps are first outlined, then can be seen through 
 a [concrete example to illustrate these steps](#concrete-example), followed by some
 instructions on [troubleshooting](#troubleshooting).
 
-- #### Step 1: Configure the DNS record of your domain, which we denote with `CUSTOM_DOMAIN`.
+- #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
 Add a `CNAME` entry for your domain pointing to `icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
 Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
 Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
@@ -186,7 +186,7 @@ EOF
 ```
 
 :::info
-In the [following document](dns-setup.md), we provide detailed instructions to configure DNS
+In the [following document](dns-setup.md), this guide provides detailed instructions to configure DNS
 records on the example of two popular domain registrars.
 :::
 
@@ -248,5 +248,5 @@ request for your domain and the boundary node will return the corresponding ID.
 - #### Step 6: Test.
 
 :::caution
-For websites that use Internet Identity (II) to authenticate users: The principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](../../integrations/internet-identity/alternative-origins.md).
+For front-ends that use Internet Identity (II) to authenticate users: the principals provided by II depend on the domain from which the login request was started. So if you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [Alternative Origins](../../integrations/internet-identity/alternative-origins.md).
 :::

@@ -74,7 +74,7 @@
         - Pulling the Internet Identity canister.
         - Interacting with the integration.
 
-- [3.6 Motoko level 3](3.6-motoko-lvl3.md): In this Motoko level, we'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks. This module covers:
+- [3.6 Motoko level 3](3.6-motoko-lvl3.md): In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks. This module covers:
     - Principals and caller identification.
     - Adding access control with identities.
         - Prerequisites.

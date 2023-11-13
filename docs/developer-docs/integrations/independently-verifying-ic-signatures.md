@@ -120,6 +120,44 @@ match result {
 
 You can reference the crate's implementation logic [here](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/validator/src/ingress_validation.rs?L605) for additional context.
 
+## Verifying signatures with the library `@dfinity/standalone-sig-verifier-web`
+
+An `npm` library has been created as a JavaScript/TypeScript wrapper for the [`ic-standalone-sig-verifier`](https://github.com/dfinity/ic/tree/master/rs/crypto/standalone-sig-verifier) Rust crate. 
+
+
+The following is an example of how this library can be used: 
+
+```javascript
+import initSigVerifier, {verifyIcSignature} from '@dfinity/standalone-sig-verifier-web';
+
+async function example(dataRaw, signatureRaw, derPublicKey, root_key) {
+    // load wasm module
+    await initSigVerifier(); 
+    try {
+        // call the signature verification wasm function
+        verifyIcSignature(dataRaw, signatureRaw, derPublicKey, root_key);
+        console.log('signature verified successfully')
+    } catch (error) {
+        // the library throws an error if the signature is invalid
+        console.error('signature verification failed', error)
+    }
+}
+```
+
+:::caution
+
+When using this library, you should keep the following in mind:
+
+- Verifying signatures on the frontend is unsafe, as malicious actors could modify frontend code in order to bypass signature verification. Therefore, it is recommended that this library be used for demos, backends, or other situations where the code either cannot be modified or where modifications do not create a security risk. 
+
+- This library is built from the `ic`'s `master` branch, meaning the API used may change. 
+
+- This library's resulting Wasm module is large (400 kB when gzipped); this should be taken into consideration for your project. 
+
+:::
+
+You can download the library [here](https://www.npmjs.com/package/@dfinity/standalone-sig-verifier-web).
+
 ## Resources
 
 - Rust [ic-validator-ingress-message](https://github.com/dfinity/ic/tree/master/rs/validator) crate.
