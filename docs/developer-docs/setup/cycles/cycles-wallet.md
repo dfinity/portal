@@ -109,12 +109,6 @@ dfx deploy
 dfx canister id wallet
 ```
 
-- #### Step 6: Open the wallet's Candid UI at the URL 
-
-```
-http://localhost:8000/?canisterId=<wallet_canister_id_here>&identityProvider=http://localhost:8000/?canisterId=<internet_identity_id>
-```
-
 ### Creating a cycles wallet on the mainnet
 
 If you are deploying on the Internet Computer mainnet, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (Wasm). 
