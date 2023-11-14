@@ -4,7 +4,7 @@
 
 When developing and deploying canisters on the Internet Computer, developers need to have **cycles** to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management. 
 
-The biggest difference between the cycles ledger and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed locally to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
+The biggest difference between the cycles ledger and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
 
 - Cycles wallets are a complex solution to associate cycles with principal IDs.
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
