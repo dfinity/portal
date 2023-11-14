@@ -89,7 +89,7 @@ dfx cycles balance
 To convert ICP into cycles using the cycles ledger, use the command:
 
 ```
-dfx cycles convert --icp-amount AMOUNT
+dfx cycles convert AMOUNT
 ```
 
 Replace `AMOUNT` with the number of ICP to convert into cycles, such as `2.7`.
