@@ -12,7 +12,7 @@ The biggest difference between the cycles ledger and cycles wallet is that the c
 
 In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
 
-The cycles ledger complies with the ICRC-2 standard. In addition to standard ledger functionality, the cycles ledger canister also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
+The cycles ledger complies with the ICRC-2 standard. In addition to standard ledger functionality, the cycles ledger also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
 
 - Accepting incoming cycles sent from other canisters.
 - Sending cycles to other canisters.
