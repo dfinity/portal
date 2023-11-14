@@ -92,7 +92,7 @@ To convert ICP into cycles using the cycles ledger, use the command:
 dfx cycles convert AMOUNT
 ```
 
-Replace `AMOUNT` with the number of ICP to convert into cycles, such as `2.7`.
+Replace `AMOUNT` with the number of ICP to convert into cycles, such as `2.7`. Alternatively, the amount can be specified in terms of ICP and e8s (where `100,000,000 e8s = 1 ICP`) using the options `--icp` and `--e8s`. For example, `2.7` would be expressed as `--icp 2 --e8s 70_000_000`.
 
 ### Transferring cycles to a principal
 
