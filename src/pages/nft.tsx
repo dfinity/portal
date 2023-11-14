@@ -140,9 +140,9 @@ function NftPage() {
                   variants={transitions.item}
                 >
                   The Internet Computer is the only blockchain storing all
-                  components of an NFT on the blockchain, including assets. This
-                  opens up capabilities for ICP NFTs that go way beyond
-                  “overpriced links to JPGs”.
+                  components of an <abbr title="non-fungible tokens">NFT</abbr> on the blockchain, including assets. This
+                  opens up capabilities for <abbr title="Internet Computer Protocol">ICP</abbr> <abbr title="non-fungible tokens">NFT</abbr>s that go way beyond
+                  “overpriced links to <abbr title="Joint Photographic Experts Group">JPG</abbr>s”.
                 </motion.p>
               </div>
             </div>
@@ -179,14 +179,14 @@ function NftPage() {
               <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 2.6M+
               </span>
-              <span className="tw-paragraph md:tw-lead-sm">Total NFTs</span>
+              <span className="tw-paragraph md:tw-lead-sm">Total <abbr title="non-fungible tokens">NFT</abbr>s</span>
             </div>
             <div className="flex flex-col flex-1 gap-2">
               <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 415
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Total NFT projects
+                Total <abbr title="non-fungible tokens">NFT</abbr> projects
               </span>
             </div>
           </div>
@@ -196,12 +196,12 @@ function NftPage() {
           <div className="container-10 mb-12 md:mb-20">
             <div className="md:w-8/10">
               <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
-                NFT marketplaces
+                <abbr title="non-fungible tokens">NFT</abbr> marketplaces
                 <br />
                 <span className="text-gradient">Trade with zero gas fees</span>
               </h2>
               <p className="mb-0 text-black-60 tw-lead-sm md:tw-lead">
-                Embark on a journey of authentic digital asset ownership. NFT marketplaces on the Internet Computer guarantee full decentralization, where collectors hold 100% of their digital art. Explore and trade with zero gas fees. Collect, own and invest in the future with confidence. 
+                Embark on a journey of authentic digital asset ownership. <abbr title="non-fungible tokens">NFT</abbr> marketplaces on the Internet Computer guarantee full decentralization, where collectors hold 100% of their digital art. Explore and trade with zero gas fees. Collect, own and invest in the future with confidence. 
               </p>
             </div>
           </div>
@@ -222,7 +222,7 @@ function NftPage() {
                     Entrepot
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    The first NFT marketplace on the Internet Computer. This marketplace has  launched 100s of collections with their no-code minting tool, and have over 1TB of assets stored fully on-chain.
+                    The first <abbr title="non-fungible tokens">NFT</abbr> marketplace on the Internet Computer. This marketplace has  launched 100s of collections with their no-code minting tool, and have over 1TB of assets stored fully on-chain.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     $36M+ in trading
@@ -239,7 +239,7 @@ function NftPage() {
                     Yumi
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Yumi is the first fully-decentralized NFT and digital goods marketplace where users can create and trade NFTs. Users are rewarded Yumi credits, which can be seamlessly integrated with Shiku Metaverse. 
+                    Yumi is the first fully-decentralized <abbr title="non-fungible tokens">NFT</abbr> and digital goods marketplace where users can create and trade <abbr title="non-fungible tokens">NFT</abbr>s. Users are rewarded Yumi credits, which can be seamlessly integrated with Shiku Metaverse. 
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     110,000+ users
@@ -253,7 +253,7 @@ function NftPage() {
 
               <Link
                 className="button-primary"
-                href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs"
+                href="/icp-tokens#anchor-wallets"
               >
                 Set up your wallet
               </Link>
@@ -269,31 +269,24 @@ function NftPage() {
             imageClassName="relative"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Make the most out of NFTs
+              Make the most out of <abbr title="non-fungible tokens">NFT</abbr>s
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer allows NFTs of incredible versatility. As
-              NFTs can be data and code, i.e. a canister smart contract, NFTs
-              can be anything on the Internet Computer. Plus, storing data on
-              chain costs 20,000 times less than on Solana and 15,800,000 times
-              less than on Ethereum. At those prices other blockchains are
-              forced to use external storage solutions like AWS or IPFS. NFT
-              projects on these chains could essentially store their assets on
-              ICP without compromising on decentralization or price.
+              The Internet Computer allows <abbr title="non-fungible tokens">NFT</abbr>s incredible versatility. Because all data can be stored on-chain <abbr title="non-fungible tokens">NFT</abbr>s on the Internet Computer can be anything. Storing data on-chain is not only 23,500X more efficient on <abbr title="Internet Computer Protocol">ICP</abbr> compared to the next best, it is practically impossible to store assets like images on Solana or Ethereum.
             </p>
             <p className="mb-0">
               <Link
                 href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"
                 className="button-outline"
               >
-                Become a creator
+                Create your own
               </Link>
             </p>
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/nft/btc-flower.webp">
             <h2 className="md:tw-heading-60 md:mb-6">Dynamic NFTs</h2>
             <p className="md:tw-lead-sm mb-0">
-              Making use of a unique feature of the Internet Computer, NFTs can efficiently communicate with the Web2 world without using oracles. HTTPS outcalls allow NFTs on ICP to query Web2 APIs and change appearance or behave differently depending on the response. For example, BTC Flowers change the color of their paddles based on the last 24 hours of the Bitcoin’s price action.
+              Making use of a unique feature of the Internet Computer, <abbr title="non-fungible tokens">NFT</abbr>s can efficiently communicate with the Web2 world without using oracles. HTTPS outcalls allow NFTs on ICP to query Web2 APIs and change appearance or behave differently depending on the response. For example, <abbr title="Bitcoin">BTC</abbr> Flowers change the color of their paddles based on the last 24 hours of the Bitcoin’s price action.
             </p>
             <a className="link-primary link-with-icon mt-10" href="https://entrepot.app/marketplace/btcflower" target="_blank" rel="noopener noreferrer">
               <svg width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z" fill="currentColor"></path></svg>
@@ -436,11 +429,11 @@ function NftPage() {
           </article>
 
           <div className="flex gap-6 my-8">
-            <article className="rounded-xl bg-white-80 p-8">
+            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/2">
               <img
                 src="/img/nft/julian-opie.webp"
                 alt="Art by Julian Opie"
-                className="object-contain object-center w-1/1"
+                className="object-contain object-center w-1/1 rounded-lg"
               />
               <h3 className="mt-4 tw-heading-3 text-gradient">Co-own fine art</h3>
               <p>
@@ -454,11 +447,11 @@ function NftPage() {
               </Link>
             </article>
             
-            <article className="rounded-xl bg-white-80 p-8">
+            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/2">
               <img
                 src="/img/nft/pets.webp"
                 alt="digital pets"
-                className="object-contain object-center w-1/1"
+                className="object-contain object-center w-1/1 rounded-lg"
               />
               <h3 className="mt-4 tw-heading-3 text-gradient">Collect digital pets</h3>
               <p>
