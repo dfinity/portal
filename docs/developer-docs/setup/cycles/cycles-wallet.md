@@ -72,6 +72,12 @@ If you are doing local development, your local cycles wallet is created when you
 
 Alternatively, a local instance of the cycles wallet can be deployed manually with the following workflow:
 
+### Prerequisites 
+
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/).
+
+- [x] Download and install [Node.js](https://nodejs.org/en/download/current), version 16.x.x and older. Running a version newer than 16.x.x may result in an error. 
+
 - #### Step 1: Clone the cycles wallet repository and navigate into the directory:
 
 ```
