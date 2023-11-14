@@ -109,7 +109,7 @@ Replace `AMOUNT` with the number of cycles, such as `34000000`, and `PRINCIPAL_I
 To transfer cycles into a canister to top it up, use the command:
 
 ```
-dfx cycles transfer `AMOUNT` --top-up `CANISTER_ID`
+dfx cycles top-up `AMOUNT` `CANISTER_ID`
 ```
 
 Replace `AMOUNT` with the number of cycles, such as `34000000`, and `CANISTER_ID` with the canister ID you'd like to transfer the cycles to, such as `gastn-uqaaa-aaaae-aaafq-cai`.
