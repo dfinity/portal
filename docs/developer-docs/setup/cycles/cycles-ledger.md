@@ -10,7 +10,7 @@ The biggest difference between the cycles ledger and cycles wallet is that the c
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
 - Since the cycles wallet canister must be deployed locally, if a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost. 
 
-The cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
+In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
 
 The cycles ledger complies with the ICRC-2 standard. In addition to standard ledger functionality, the cycles ledger canister also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
 
