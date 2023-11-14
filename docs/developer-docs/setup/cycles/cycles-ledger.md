@@ -12,7 +12,7 @@ The biggest difference between the cycles ledger and cycles wallet is that the c
 
 In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
 
-The cycles ledger complies with the ICRC-2 standard. In addition to standard ledger functionality, the cycles ledger also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
+The cycles ledger currently complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, the cycles ledger also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
 
 - Accepting incoming cycles sent from other canisters.
 - Sending cycles to other canisters.
@@ -24,7 +24,9 @@ It is important to note that the cycles ledger does not provide the ability to m
 If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used as before. The cycles ledger can be used to load the cycles wallet with cycles.
 :::
 
-## Obtaining ICP
+## Using the cycles ledger
+
+### Obtaining ICP
 
 To use the cycles ledger, first you need ICP tokens. There are a few different ways to obtain ICP tokens, such as:
 
@@ -34,7 +36,7 @@ To use the cycles ledger, first you need ICP tokens. There are a few different w
 - Receiving a grant of tokens through the Internet Computer Association (ICA) or the DFINITY Foundation.
 - Receiving tokens as remuneration for providing computing capacity as a node provider.
 
-To obtain ICP, you also need to have an account to transfer those tokens into. To get your account ID, first determine which dfx identity you are using with the command:
+Once you have obtained ICP, you also need to have an account controlled via `dfx` to transfer those tokens into. This step is necessary to create cycles and canisters. To get an account ID for an account controlled via `dfx`, first determine which `dfx` identity you are using with the command:
 
 ```
 dfx identity whoami
@@ -72,16 +74,14 @@ Then, to return the principal ID associated with your identity, run the command:
 dfx identity get-principal
 ```
 
-This principal ID will be used when others want to send you cycles using the cycles ledger. 
-
-## Using the cycles ledger
+This principal ID will be where you need to send your ICP tokens to create cycles and canisters. It will also be used when others want to send you cycles using the cycles ledger. 
 
 ### Checking your cycles balance
 
 To check the cycles balance of your user principal ID, use the command:
 
 ```
-dfx cycles balance
+dfx cycles balance --network ic
 ```
 
 ### Converting ICP to cycles
@@ -89,7 +89,7 @@ dfx cycles balance
 To convert ICP into cycles using the cycles ledger, use the command:
 
 ```
-dfx cycles convert AMOUNT
+dfx cycles convert AMOUNT --network ic
 ```
 
 Replace `AMOUNT` with the number of ICP to convert into cycles, such as `2.7`. Alternatively, the amount can be specified in terms of ICP and e8s (where `100,000,000 e8s = 1 ICP`) using the options `--icp` and `--e8s`. For example, `2.7` would be expressed as `--icp 2 --e8s 70_000_000`.
@@ -99,7 +99,7 @@ Replace `AMOUNT` with the number of ICP to convert into cycles, such as `2.7`. A
 To transfer cycles to another principal ID, use the command:
 
 ```
-dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT])
+dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic
 ```
 
 Replace `AMOUNT` with the number of cycles, such as `34000000`, and `PRINCIPAL_ID` with the principal ID you'd like to transfer the cycles to, such as `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe`. Optionally, a subaccount can be provided, in which case the recipient will receive the funds in the provided subaccount.
@@ -109,7 +109,7 @@ Replace `AMOUNT` with the number of cycles, such as `34000000`, and `PRINCIPAL_I
 To transfer cycles into a canister to top it up, use the command:
 
 ```
-dfx cycles top-up `AMOUNT` `CANISTER_ID`
+dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
 ```
 
 Replace `AMOUNT` with the number of cycles, such as `34000000`, and `CANISTER_ID` with the canister ID you'd like to transfer the cycles to, such as `gastn-uqaaa-aaaae-aaafq-cai`.
@@ -121,8 +121,8 @@ New canisters can be created using the cycles ledger by using the `dfx canister 
 Both of these commands have the following options and syntax to create a new canister:
 
 ```
-dfx canister create CANISTER_NAME
-dfx deploy CANISTER_NAME
+dfx canister create CANISTER_NAME --network ic
+dfx deploy CANISTER_NAME --network ic
 ```
 
 Replace `CANISTER_NAME` with a name for the new canister.
@@ -139,13 +139,13 @@ If neither flag is used, the canister will be created on a random subnet using t
 Alternatively, if you want to use ICP instead of cycles for creating a canister, you can use the flag `--using-icp`, which will charge your principal ICP instead of cycles such as:
 
 ```
-dfx create canister CANISTER_NAME --using-icp
+dfx create canister CANISTER_NAME --using-icp --network ic
 ```
 
 Or you can set a specific amount of ICP with the option `--using-icp-amount AMOUNT`, such as:
 
 ```
-dfx create canister CANISTER_NAME --using-icp-amount 2.7
+dfx create canister CANISTER_NAME --using-icp-amount 2.7 --network ic
 ```
 
 
