@@ -26,7 +26,7 @@ const Hero = () => {
           className="tw-paragraph md:tw-lead m-0"
         >
           The Internet Computer (ICP) allows Web3 services to run 100% on-chain,
-          providing the only platform where developers can build and users can
+          being the only protocol on top of which developers can build and users can
           enjoy fully decentralized applications. ICP ditches corporate cloud,
           insecure bridges and expensive oracles.
         </motion.p>

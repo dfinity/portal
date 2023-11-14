@@ -526,6 +526,14 @@ function CkbtcPage(): JSX.Element {
                     addresses either on the Bitcoin network or the Internet
                     Computer, making it the first true multi-chain asset.
                   </p>
+
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  >
+                    <LinkArrowUpRight />
+                    ckBTC security audit
+                  </Link>
                 </div>
 
                 <div>

@@ -3,7 +3,7 @@
 Rust is a powerful and type-sound modern programming language with an active developer community. Because Rust compiles to WebAssembly, it offers a rich development environment for writing dapps to run on the Internet Computer blockchain. 
 
 ## Overview
-To help pave the way for writing dapps in Rust that can be deployed on the Internet Computer blockchain, you can use the [IC SDK](../../setup/install/index.mdx). The IC SDK supports the Rust as well as the Motoko programming language. To create a Rust project using the IC SDK, all one needs to do is add the `--type=rust` flag while creating a new project. For example, here we create a Rust project named `hello_world`:
+To help pave the way for writing dapps in Rust that can be deployed on the Internet Computer blockchain, you can use the [IC SDK](../../setup/install/index.mdx). The IC SDK supports the Rust as well as the Motoko programming language. To create a Rust project using the IC SDK, all one needs to do is add the `--type=rust` flag while creating a new project. For example, here you create a Rust project named `hello_world`:
 
 ```bash
 dfx new --type=rust hello_world

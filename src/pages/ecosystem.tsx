@@ -295,7 +295,7 @@ function ShowcasePage(): JSX.Element {
     let filteredProjects = projects;
     if (queryTagInitialized && queryTag?.length > 0) {
       filteredProjects = filteredProjects.filter((p) =>
-        p.tags.find((tag) => tag == queryTag)
+        (p.tags || []).find((tag) => tag == queryTag)
       );
     }
     setFilteredProjects(sortDesktopProjects(filteredProjects));
@@ -335,7 +335,7 @@ function ShowcasePage(): JSX.Element {
                   {projects.length}
                 </PillSecondaryLabel>
               </Pill>
-              {tags.map(([tag, count]) => (
+              {(tags || []).map(([tag, count]) => (
                 <Pill
                   isActive={tag === queryTag}
                   onClick={() => setQueryTag(tag)}
@@ -354,7 +354,8 @@ function ShowcasePage(): JSX.Element {
           {filteredProjects.map((project, index) =>
             project === "promo" ? (
               <PromoCard key={`promo_${index}`} />
-            ) : project.display === "Large" ? (
+            ) : project.display === "Large" &&
+              (project.video || project.screenshots?.length > 0) ? (
               <LargeCard project={project} key={project.website} />
             ) : (
               <SmallCard project={project} key={project.website} />

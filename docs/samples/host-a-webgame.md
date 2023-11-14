@@ -21,7 +21,7 @@ Let’s create a web game by using Unity or Godot game engine.
   - You can install the package from Unity Package Manager via using the **Add package from git URL...** menu, by inputting the following URL:
     `https://github.com/dfinity/ic-gamekit.git?path=/unity/com.ic.gamekit`
 - #### Step 3: To enable `IC Connector`:
-    - After installing the IC Gamekit package successfully, you can go to `Project Settings -> IC Settings` to config Internet Computer settings. We only support two basic options for now:
+    - After installing the IC Gamekit package successfully, you can go to `Project Settings -> IC Settings` to config Internet Computer settings. The IC only supports two basic options for now:
         - Canister name: this configs the asset canister name in the `dfx.json` file for the generated IC project.
         - Enable IC connector: you can turn on/off the IC Connector. With this checked, a folder named `ic-project` will be generated under the Godot HTML5 export path. Now only Export Project is supported.
 - #### Step 4: Switch to **WebGL** build target in the **Build Settings** window.
@@ -42,7 +42,7 @@ Let’s create a web game by using Unity or Godot game engine.
   - You can install the package from Unity Package Manager via using the **Add package from git URL...** menu, by inputting the following URL:
     `https://github.com/dfinity/ic-gamekit.git?path=/godot/com.ic.gamekit`
 - #### Step 3: To enable `IC Connector`:
-    - After installing the IC Gamekit package successfully, you can go to `Project Settings -> IC Settings` to config Internet Computer settings. We only support two basic options for now:
+    - After installing the IC Gamekit package successfully, you can go to `Project Settings -> IC Settings` to config Internet Computer settings. The IC only supports two basic options for now:
         - Canister name: this configs the asset canister name in the `dfx.json` file for the generated IC project.
         - Enable IC connector: you can turn on/off the IC Connector. With this checked, a folder named `ic-project` will be generated under the Godot HTML5 export path. Now only Export Project is supported.
 - #### Step 4: Switch to `HTML5` preset in the `Export` window
@@ -52,7 +52,7 @@ Let’s create a web game by using Unity or Godot game engine.
 ## Creating a web game manually 
 
 :::info
-You may find generating the web game project manually is tedious and error-prone, we highly recommend you to use [IC GameKit](https://github.com/dfinity/ic-gamekit) to do this automatically. The tool is still in development, let us know if you have any feedback.
+You may find generating the web game project manually is tedious and error-prone, it is highly recommended you to use [IC GameKit](https://github.com/dfinity/ic-gamekit) to do this automatically. The tool is still in development, let us know if you have any feedback.
 :::
 
 Since there is no backend in this sample, there is not any benefit of using the `dfx new project_name` command to set up a template. The `dfx.json` file is all that is needed.

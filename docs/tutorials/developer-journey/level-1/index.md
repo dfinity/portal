@@ -1,13 +1,13 @@
 # Level 1: Space cadet 
 
-- [1.1 Exploring a live demo](1.1-live-demo.md): Before we begin developing our own dapps, let's explore a live, deployed canister that utilizes the Motoko playground through the `dfx deploy --playground` command. This module covers:
+- [1.1 Exploring a live demo](1.1-live-demo.md): Before you begin developing your own dapps, let's explore a live, deployed canister that utilizes the Motoko playground through the `dfx deploy --playground` command. This module covers:
     - Overview of Motoko Playground.
     - An overview of the `dfx deploy --playground` command.
     - Deploying a canister to Motoko Playground using `dfx`.
     - Interacting with the canister via the CLI.
     - Interacting with the canister via the Candid interface.
 
-- [1.2 Motoko level 1](1.2-motoko-lvl1.md): To develop our own dapp, we first need to cover the fundamentals of writing Motoko code. This module covers:
+- [1.2 Motoko level 1](1.2-motoko-lvl1.md): To develop your own dapp, you first need to cover the fundamentals of writing Motoko code. This module covers:
     - Basic concepts and terms.
     - Motoko syntax.
     - Using the base library.
@@ -19,7 +19,7 @@
     - Printing values.
     - Passing text arguments.
 
-- [1.3 Developing your first dapp](1.3-first-dapp.md): Now we're ready to develop our first dapp on the Internet Computer! This module covers: 
+- [1.3 Developing your first dapp](1.3-first-dapp.md): Now you're ready to develop your first dapp on the Internet Computer! This module covers: 
     - Creating a new project.
     - Reviewing the project's file structure.
     - Writing the backend canister code.
@@ -37,16 +37,16 @@
     - Adding pre-developed frontend code.
     - Re-deploying the dapp.
 
-- [1.4 Acquiring and using cycles](1.4-using-cycles.md): To deploy dapps on the IC mainnet, we'll need to acquire cycles. This module covers: 
+- [1.4 Acquiring and using cycles](1.4-using-cycles.md): To deploy dapps on the IC mainnet, you'll need to acquire cycles. This module covers: 
     - Overview of cycles.
     - Creating a developer identity.
     - Acquiring cycles using a cycles coupon.
     - Converting ICP tokens to cycles.
 
-- [1.5 Deploying canisters](1.5-deploying-canisters.md): Once we have acquired some cycles, we can deploy our dapp to the mainnet. This module covers: 
+- [1.5 Deploying canisters](1.5-deploying-canisters.md): Once you have acquired some cycles, you can deploy our dapp to the mainnet. This module covers: 
     - Deploying to the mainnet.
 
-- [1.6 Managing canisters](1.6-managing-canisters.md): Once our dapp is deployed on the mainnet, we need to learn how we can manage the canister. This module covers: 
+- [1.6 Managing canisters](1.6-managing-canisters.md): Once your dapp is deployed on the mainnet, you need to learn how you can manage the canister. This module covers: 
     - Obtaining a canister's ID.
     - Obtaining canister information.
     - Adding an identity as a controller of a canister.

@@ -99,7 +99,7 @@ dfx start --clean
 ```
 
 :::info
-For this guide, we’re using the `--clean` option to start the local canister execution environment in a clean state.
+This guide uses the `--clean` option to start the local canister execution environment in a clean state.
 
 This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 :::
@@ -144,7 +144,7 @@ Then, use the following call, replacing `canisterID` with the principal ID of a 
 dfx canister call canister1 main "canisterID"
 ```
 
-For example, for a canister with the principal ID of `ajuq4-ruaaa-aaaaa-qaaga-cai`, which is the principal ID of `canister2` that we used earlier:
+For example, for a canister with the principal ID of `ajuq4-ruaaa-aaaaa-qaaga-cai`, which is the principal ID of `canister2` that was used earlier:
 
 ```
 dfx canister call canister1 main "ajuq4-ruaaa-aaaaa-qaaga-cai"

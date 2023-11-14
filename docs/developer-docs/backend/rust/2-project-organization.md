@@ -93,7 +93,7 @@ Notice that under the `canisters` key, you have some default settings for the `e
 
 In the root directory, there is a `Cargo.toml` file.
 
-It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here we have one member at `src/example_backend` which is the only Rust canister.
+It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here you have one member at `src/example_backend` which is the only Rust canister.
 
 ``` toml
 [workspace]
@@ -104,7 +104,7 @@ members = [
 
 ### `src/example_backend/`
 
-Now we are in the Rust canister. As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
+Now you are in the Rust canister. As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
 
 #### `src/example_backend/Cargo.toml`
 
@@ -162,9 +162,9 @@ This definition specifies that the `greet` function is a `query` method which ta
 
 ### Stable variables vs flexible variables
 
-**Stable variables** are global variables that the system preserves across upgrades. For example, a user database should probably be stable.
+**Stable variables** are global variables that the protocol preserves across upgrades. For example, a user database should probably be stable.
 
-**Flexible variables** are global variables that the system discards on code upgrade. For example, it is reasonable to make a cache flexible if keeping this cache hot is not critical for your product.
+**Flexible variables** are global variables that the protocol discards on code upgrade. For example, it is reasonable to make a cache flexible if keeping this cache hot is not critical for your product.
 
 ### Putting all global variables in one place
 

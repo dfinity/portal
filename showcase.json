@@ -140,7 +140,7 @@
     "description": "Hot or Not is a decentralized short-form video based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
     "usesInternetIdentity": true,
     "stats": "55,000+ users",
-    "logo": "/img/showcase/hot_or_not_logo.svg",
+    "logo": "/img/showcase/hot_or_not_logo.png",
     "screenshots": [
       "/img/showcase/hot_or_not_screenshot_0.jpg"
     ],
@@ -164,7 +164,7 @@
     "display": "Large",
     "logo": "/img/showcase/bitfinity_evm.png",
     "screenshots": [
-      "/img/showcase/bitfinity_showcase.png"
+      "/img/showcase/bitfinity_showcase.webp"
     ]
   },
 
@@ -400,7 +400,7 @@
       "Tools / Infrastructure"
     ],
     "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
-    "logo": "/img/showcase/querio_logo.webp",
+    "logo": "/img/showcase/Querio_Logo.webp",
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
     ]
@@ -507,7 +507,7 @@
     "name": "Orally",
     "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
     "tags": ["Tools / Infrastructure", "DeFi", "Ethereum"],
-    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dApps. Elevate your blockchain journey with us!",
+    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dapps. Elevate your blockchain journey with us!",
     "usesInternetIdentity": false,
     "website": "https://orally.network",
     "github": "https://github.com/orally-network",
@@ -516,7 +516,7 @@
     "display": "Large",
     "logo": "/img/showcase/orally-network_logo.png",
     "screenshots": [
-      "/img/showcase/orally-network_screenshot_0.jpg"
+      "/img/showcase/orally-network_screenshot_0.webp"
     ],
     "submittableId": "35782696"
   },
@@ -593,7 +593,7 @@
     "display": "Large",
     "logo": "/img/showcase/arth_logo.png",
     "screenshots": [
-      "/img/showcase/arth_ss.png"
+      "/img/showcase/arth_ss.webp"
     ],
     "submittableId": "36143434"
   },
@@ -890,7 +890,7 @@
     "tags": [
       "NFT",
       "SocialFi" ],
-    "description": "Introducing CaniPlay (Can I Play), the pioneering NFT broadcast station that operates fully on-chain, eliminating the need for intermediaries who control content broadcasting within the community. Submit your audio or video content and reach a global audience without relying on any third party. As a creator, receive recognition and rewards from your listeners. As a listener, enjoy airdrops and actively participate by voting for your favourite content in the playlist, influencing its position and prominence. Join CaniPlay today and redefine the way content is shared, appreciated, and rewarded!",
+    "description": "Introducing CaniPlay (Can I Play), the pioneering, fully on-chain NFT broadcast station. Submit your audio or video content, reach a global audience receiving recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
     "usesInternetIdentity": false,
     "website": "https://es7e3-taaaa-aaaan-qakqq-cai.icp0.io",
     "github": "https://github.com/orgs/Canistore",
@@ -898,7 +898,7 @@
     "display": "Large",
     "logo": "/img/showcase/CaniPlay_logo.png",
     "screenshots": [
-      "/img/showcase/CaniPlay_SS.png"
+      "/img/showcase/CaniPlay_SS.webp"
     ],
     "submittableId": "34838526"
   },
@@ -1360,7 +1360,7 @@
     "tags": [
       "Ethereum"
     ],
-    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. \"The Ethereum protocol itself exists solely for the purpose of keeping the continuous, uninterrupted, and immutable operation of this special state machine; It's the environment in which all Ethereum accounts and smart contracts live. At any given block in the chain, Ethereum has one and only one 'canonical' state, and the EVM is what defines the rules for computing a new valid state from block to block.\" - Ethereum.org P.S. there is a hidden game in the demo. ",
+    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. P.S. there is a hidden game in the demo. ",
     "display": "Normal",
     "logo": "/img/showcase/evmonicp_logo.webp",
     "screenshots": [
@@ -1534,6 +1534,19 @@
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
     "logo": "/img/showcase/aviatelabs_logo.webp",
     "submittableId": "25140378"
+  },
+  {
+    "id": "goagent",
+    "name": "Go Agent ",
+    "website": "https://github.com/aviate-labs/agent-go",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Go Agent provides the toolbox needed to interact with the Internet Computer from Go. It is a collection of packages that can be used to build applications that interact with canister smart contracts.",
+    "github": "https://github.com/aviate-labs/agent-go",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/goagent_logo.png",
+    "screenshots": []
   },
   {
     "id": "javaagent",
@@ -1765,7 +1778,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Build scalable DApps on internet computer with ease. Build, manage and ship dApps with just a few clicks",
+    "description": "Build scalable DApps on internet computer with ease. Build, manage and ship dapps with just a few clicks",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/ics_logo.webp",
@@ -1796,7 +1809,7 @@
       "NFT",
       "Wallet"
     ],
-    "description": "Canister Store is a groundbreaking platform that empowers developers/users in the Internet Computer ecosystem and beyond. With its innovative self-deploy feature, users can effortlessly access and deploy canisters, including pre-built images such as Tokens, NFTs, dApps, and various other tools.",
+    "description": "Canister Store is a groundbreaking platform that empowers developers/users in the Internet Computer ecosystem and beyond. With its innovative self-deploy feature, users can effortlessly access and deploy canisters, including pre-built images such as Tokens, NFTs, dapps, and various other tools.",
     "usesInternetIdentity": true,
     "website": "https://canister.app",
     "github": "https://github.com/canister-app",
@@ -2380,7 +2393,7 @@
       "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
       "website": "https://joinedafrica.com",
       "tags": ["SocialFi"],
-      "description": "At Joined Africa, we are dedicated to providing a seamless online marketplace that connects sellers and buyers, locally and globally within Africa. Our platform empowers sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers. Meanwhile, buyers can explore a wide range of categories, including properties, electronics, fashion, vehicles, and more. Communication between buyers and sellers is essential, and we've made it convenient through our built-in messaging application. When a seller lists a product on our site, interested buyers can contact them directly using our chat application.",
+      "description": "At Joined Africa, we are providing a seamless online marketplace that connects sellers and buyers within Africa — empowering sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers who can select from a wide range of categories, including electronics, fashion, vehicles, and more.",
       "logo": "/img/showcase/joined-africa_logo.jpg",
       "usesInternetIdentity": true,
       "youtube": "https://www.youtube.com/@JoinedAfrica",
@@ -2489,7 +2502,7 @@
     "tags": [
       "SocialFi"
     ],
-    "description": "Welcome to IC Hub! Your dApp for connecting with friends, chatting, joining groups, and managing tokens & NFTs. For developers, register your projects easily without seeking permissions. Empowering you to connect, transact, and build in a user-friendly ecosystem.",
+    "description": "Welcome to IC Hub! Your dapp for connecting with friends, chatting, joining groups, and managing tokens & NFTs. For developers, register your projects easily without seeking permissions. Empowering you to connect, transact, and build in a user-friendly ecosystem.",
     "usesInternetIdentity": true,
     "stats": "50+ Projects",
     "logo": "/img/showcase/ichub_logo.png",
@@ -2580,7 +2593,7 @@
   {
     "id": "agorapp",
     "name": "AgorApp",
-    "oneLiner": "AgorApp is a Codecademy-syle platform that provides a browser-based IDE for all-things-web3-engineering. Learn how to build on the Internet Computer in an interactive environment.",
+    "oneLiner": "Learn how to build on ICP on an interactive platform that provides a browser-based IDE for all-things-web3-engineering.",
     "website": "https://agorapp.dev/",
     "tags": [
       "Tools / Infrastructure",
@@ -2589,9 +2602,7 @@
     "description": "AgorApp is a Codecademy-style interactive coding environment where users can learn to develop smart contracts on ICP and, then, test their skills by participating in web3 CTFs and smart contract optimization contests.",
     "usesInternetIdentity": false,
     "stats": "600+ users",
-    "display": "Large",
     "logo": "/img/showcase/agorapp-logo-small.svg",
-    "video": "https://www.youtube.com/watch?v=0mRinBJbiGU",
     "github": "https://github.com/agorapp-dao/",
     "twitter": "https://twitter.com/agorappDAO",
     "discord": "https://discord.gg/8ZwJZsxXhk",
@@ -2625,7 +2636,7 @@
       "Metaverse",
       "Games"
     ],
-    "description": "This project focuses on the game development community, enabling them to smoothly integrate their C++ native projects with the IC interface on-chain, using our wrapper for seamless interaction. Easy deployment becomes a reality for any C++ projects on IC, welcoming game developers, particularly those using Unreal Engine. Our mission is to bridge the gap, enhancing IC's accessibility and inviting a broader community of creators. Through our innovative solution, game developers can fully unlock IC's potential, fostering collaboration and creativity.",
+    "description": "Enabling game developer communities to integrate their C++ native projects with the IC interface on-chain, using our wrapper for seamless interaction. Easy deployment using Unreal Engine, or other C++ native projects. Our mission is to bridge the gap, enhancing IC's accessibility and inviting a broader community of creators. Using Zondax Unreal, game devs can fully unlock IC's potential. ",
     "logo": "/img/showcase/zondax-unreal_logo.webp",
     "screenshots": [
       "/img/showcase/zondax-unreal_screenshot_0.webp"
@@ -2770,10 +2781,8 @@
     "name": "IC based storage service",
     "description": "IC-based storage service to store and organize any kind of files that works with platform deployed on the IC.",
     "website": "https://dcm-swiss.com/",
-    "logo": "/img/showcase/ics2_logo.webp",
-    "screenshots": [
-      "/img/showcase/ics2_screenshot.webp"
-  ],
+    "logo": "/img/showcase/dcm_logo.svg",
+    "screenshots": [],
     "video": "",
     "display": "Normal",
     "id": "ics2",
@@ -2830,19 +2839,7 @@
     "submittableId": "35648608",
     "videoContentType": "video/mp4"
   },
-  {
-    "id": "fishverse",
-    "name": "FishVerse",
-    "description": "FishVerse is a revolutionary W2E fishing game that is open world, decentralized and built on ICP technology. It brings together fishing and GameFi enthusiasts inside of a vibrant community where people can monetize by catching and utilizing NFT fishes, competing in tournaments, missions, providing services and more...",
-    "website": "https://thefishverse.com/",
-    "logo": "/img/showcase/fishverse_logo.webp",
-    "screenshots": [
-      "/img/showcase/fishverse_screenshot.webp"
-    ],
-    "video": "/img/showcase/canister-store_video.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": "35750450"
-  },
+
   {
     "id": "Faceless",
     "name": "Faceless Project",
@@ -2851,13 +2848,13 @@
       "Tools / Infrastructure",
       "SocialFi"
     ],
+    "logo": "/img/showcase/faceless_logo.png",
     "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
     "usesInternetIdentity": true,
     "website": "https://faceless.live/",
     "github": "https://github.com/HeisenbergLin22/faceless_delivery_May",
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/Faceless_Proj",
-    "display": "Large",
     "submittableId": "35639090"
   }, 
   {
@@ -2929,7 +2926,7 @@
   "name": "Tali AI",
   "description": "Tali is a Discord Support bot that answers common developer queries.",
   "website": "https://trytali.com ",
-  "logo": "/img/showcase/tali-ai_logo.webp",
+  "logo": "/img/showcase/tali_logo.webp",
   "video": "/img/showcase/tali-ai_video.mp4",
   "display": "Normal",
   "id": "tali-ai",
@@ -2941,7 +2938,8 @@
   "usesInternetIdentity": false,
   "twitter": "https://twitter.com/TryTaliAI",
   "submittableId": "38502751",
-  "videoContentType": "video/mp4"
+  "videoContentType": "video/mp4",
+  "screenshots": []
 },
   {
   "name": "CARMANIA",
@@ -3001,7 +2999,7 @@
   ],
   "display": "Normal",
   "id": "doocoins",
-  "oneLiner": "Kids rewards dApp",
+  "oneLiner": "Kids rewards dapp",
   "tags": [
     "Wallet",
     "Games"
@@ -3032,8 +3030,26 @@
     "youtube": "https://www.youtube.com/@omnianetwork2947",
     "submittableId": "43839848"
   },
-
-  {
+    {
+    "name": "Flower Power DAO",
+    "description": "An NFT Trilogy and community-curated garden inspired by the French Artist, Ludo.",
+    "website": "https://fpdao.app",
+    "logo": "/img/showcase/fpdao_logo.png",
+    "screenshots": [
+      "/img/showcase/fpdao_screenshot.png"
+    ],
+    "display": "Normal",
+    "id": "fpdao",
+    "oneLiner": "The story of blockchain, told in Art.",
+    "tags": [
+      "NFT",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/flowerpowerdao/",
+    "twitter": "https://twitter.com/btcflower"
+  },
+    {
     "name": "CCAMP",
     "description": "An asset management protocol that leverages data-driven strategies to effectively manage and reallocate assets among various parties. It encompasses smart contracts residing on EVM blockchains (and eventually non-EVM blockchains), a trio of interconnected canisters for state maintenance and a bespoke data protocol to behave as inter-system glue.",
     "website": "https://go.usher.so/ccamp",

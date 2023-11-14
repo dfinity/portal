@@ -17,7 +17,7 @@ The IC supports two types of calls - `queries` and `updates`. Queries are fast a
 As a result of the latency for updates, best practices around modeling your application's performance will have you make updates asynchronously and early. If you can make an update ahead of time and have it already "cached" in your canister's memory, your users will have a better experience requesting that data. Similarly, if your application needs to make an update, it is best to avoid blocking interaction while your update is taking place. Use **optimistic rendering** wherever practical, and proceed with your application as if the call has already succeeded.
 
 ## Prerequisites
-To get started with JavaScript on the Internet Computer, we recommend your development environment includes:
+To get started with JavaScript on the Internet Computer, it is recommended your development environment includes:
 
 - [x] IC SDK for canister creation and management.
 - [x] Node JS (12, 14, or 16).
@@ -26,7 +26,7 @@ To get started with JavaScript on the Internet Computer, we recommend your devel
     - `dfx new` starter project.
     - An example from [dfinity/examples](https://github.com/dfinity/examples).
 
-For this guide, we'll use the project created by the command:
+For this guide, use the project created by the command:
 
 ```
 dfx new hello
@@ -110,7 +110,7 @@ Let's explore each of these `src/declarations` files a bit more.
 
 #### hello_backend.did
 
-`hello_backend.did` defines your interface, as we saw above.
+`hello_backend.did` defines your interface, as seen above.
 
 #### hello.did.d.ts
 
@@ -163,11 +163,11 @@ In the `index.js` file, each of the previously explained pieces are pulled toget
 }
 ```
 
-This constructor first creates a `HTTPAgent`, which is wraps the JS `fetch` API and uses it to encode calls through the public API. We also optionally fetch the root key of the replica, for non-mainnet deployments. Finally, we create an actor using the automatically generated interface for the canister we will call, passing it the `canisterId` and the `HTTPAgent` we have initialized.
+This constructor first creates a `HTTPAgent`, which is wraps the JS `fetch` API and uses it to encode calls through the public API. This code also optionally fetches the root key of the replica, for non-mainnet deployments. Finally, it creates an actor using the automatically generated interface for the canister will call, passing it the `canisterId` and the `HTTPAgent` that have been initialized.
 
-This `actor` instance is now set up to call all of the service methods as methods. Once this is all set up, like it is by default in the `dfx new` template, you can simply run `dfx generate` whenever you make changes to your canister API, and the full interface will automatically stay in sync in your frontend code.
+This `actor` instance is now set up to call all of the service methods as methods. Once this is all set up, you can simply run `dfx generate` whenever you make changes to your canister API, and the full interface will automatically stay in sync in your frontend code.
 
-Since this interface is easily typed, we are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
+Since this interface is easily typed, you are able to automatically generate a JavaScript interface, as well as TypeScript declarations, for this application. This can be done in two ways. You can manually generate an interface using the `didc` tool, download it by going to the [releases](https://github.com/dfinity/candid/releases) tab of the `dfinity/candid` repository.
 
 ## Browser
 
@@ -186,7 +186,7 @@ Updates to the IC may feel slow to your users, at around 2-4 seconds. When you a
 
 ## Bundlers
 
-We recommend using a bundler to assemble your code for convenience and less troubleshooting. We provide a standard Webpack config, but you may also turn to Rollup, Vite, Parcel, or others. For this pattern, we recommend running a script to generate `.env.development` and `.env.production` environment variable files for your canister ids, which is a fairly standard approach for bundlers, and can be easily supported using [dotenv](https://www.npmjs.com/package/dotenv). 
+It is recommended to use a bundler to assemble your code for convenience and less troubleshooting. This guide provides a standard Webpack config, but you may also turn to Rollup, Vite, Parcel, or others. For this pattern, it is recommended to run a script to generate `.env.development` and `.env.production` environment variable files for your canister ids, which is a fairly standard approach for bundlers, and can be easily supported using [dotenv](https://www.npmjs.com/package/dotenv). 
 
 Here is an example script you can run to map those files:
 

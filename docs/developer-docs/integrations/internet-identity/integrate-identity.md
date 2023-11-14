@@ -19,7 +19,7 @@ dfx start --clean --background
 dfx new ii_integration
 ```
 
-### Step 2: For this project, we'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
+### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
 
 ```motoko
 actor {
@@ -29,7 +29,7 @@ actor {
 };
 ```
 
-In this actor, there is a single method that responds with the caller's principal. This will show if we make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity. 
+In this actor, there is a single method that responds with the caller's principal. This will show if you make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity. 
 
 ### Step 3: Next, open the `dfx.json` file and replace the existing content with the following:
 
@@ -70,7 +70,7 @@ In this actor, there is a single method that responds with the caller's principa
 }
 ```
 
-As mentioned in the introduction, we'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`. 
+As mentioned in the introduction, you'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`. 
 
 ### Step 4: Pull the II canister using `dfx deps`:
 
@@ -80,7 +80,7 @@ dfx deps pull
 
 ### Step 5: Initialize the canister. 
 
-We can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
+You can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
 
 ```
 dfx deps init internet_identity --argument '(null)'
@@ -197,7 +197,7 @@ dfx deploy
 
 ### Step 9: Then, select 'Log in'. 
 
-You'll be redirected to the II frontend. Since we're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
+You'll be redirected to the II frontend. Since you're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
 ### Step 10: Create a local Internet Identity
 

@@ -235,7 +235,7 @@ The `canisters/explore_hello_frontend` directory contains similar files to descr
 
 In addition to the files in the `canisters/explore_hello_backend` and the `canisters/explore_hello_frontend` directories, the `dfx build` command creates an `idl` directory.
 
-Verify that a new folder has been created, `src/declarations`. This folder will include copies of the folders from `.dfx/local`, except for the wasm. They do not contain any secrets, and we recommend committing these files along with the rest of your source code.
+Verify that a new folder has been created, `src/declarations`. This folder will include copies of the folders from `.dfx/local`, except for the wasm. They do not contain any secrets, and it is recommended to commit these files along with the rest of your source code.
 
 ## Deploy the project locally
 
@@ -301,7 +301,7 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
 });
 ```
 
-The template `index.js` imports an `explore_hello` agent from our newly created `declarations` directory. The agent is automatically configured to interact with the interface we created in `Main.mo`, and makes calls to our canister using an `AnonymousIdentity` when the user clicks the `greeting` button.
+The template `index.js` imports an `explore_hello` agent from our newly created `declarations` directory. The agent is automatically configured to interact with the interface you created in `Main.mo`, and makes calls to our canister using an `AnonymousIdentity` when the user clicks the `greeting` button.
 
 This file works in conjunction with the template `index.html` file to display an HTML page with an image asset, input field, and button for the `greet` function.
 

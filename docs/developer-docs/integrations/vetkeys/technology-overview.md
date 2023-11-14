@@ -1,7 +1,7 @@
 # vetKeys: technology overview
 
 ## Overview
-vetKeys on the Internet Computer allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on the IC. It is powered by a protocol called **vetKey (Verifiably Encrypted Threshold Key Derivation)** that allows to derive decryption keys on demand.
+vetKeys on the Internet Computer allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on the IC. It is powered by a protocol called **vetKD (Verifiably Encrypted Threshold Key Derivation)** that allows to derive decryption keys on demand.
 
 ## Key derivation on demand
 Blockchains are not known for their privacy capabilities. The goal of vetKeys is to ease the burden of using security and privacy tools on the Internet Computer. 

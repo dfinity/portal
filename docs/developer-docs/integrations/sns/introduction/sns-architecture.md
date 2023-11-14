@@ -59,7 +59,7 @@ When a proposal is adopted, the governance system automatically and autonomously
 ### SNS ledger canister with archive and index
 The **ledger canister** implements the
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
-and contains a unique token that is different for each SNS. We call this _kind_ of tokens **SNS tokens**.
+and contains a unique token that is different for each SNS. These _kinds_ of tokens are called **SNS tokens**.
 In each SNS, this SNS's ledger stores which accounts own how many SNS tokens and
 the history of transactions between them.
 To keep the full ledger history even though a canister has limited

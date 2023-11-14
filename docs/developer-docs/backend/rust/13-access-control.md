@@ -2,10 +2,10 @@
 
 ## Overview
 
-To demonstrate access control using a Rust backend canister, we'll explore access control in the context of NFTs. NFTs (non-fungible tokens) are unique tokens with arbitrary
+To demonstrate access control using a Rust backend canister, you'll explore access control in the context of NFTs. NFTs (non-fungible tokens) are unique tokens with arbitrary
 metadata, usually an image of some kind, to form the digital equivalent of trading cards. 
 
-There are a few different NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs/extendable-token), [IC-NFT](https://github.com/rocklabs-io/ic-nft)), but for the purposes of this example, we use [DIP-721](https://github.com/Psychedelic/DIP721). You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
+There are a few different NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs/extendable-token), [IC-NFT](https://github.com/rocklabs-io/ic-nft)), but for the purposes of this example, you will use [DIP-721](https://github.com/Psychedelic/DIP721). You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
 
 [DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:
 - **Owner**: this person owns an NFT. They can transfer the NFT, add/remove operators, or burn the NFT.
@@ -290,13 +290,13 @@ fn get_metadata_for_user(/* user: Principal */) /* -> Vec<ExtendedMetadataResult
 fn transfer_from_notify(from: Principal, to: Principal, token_id: u64, data: Vec<u8>) -> Result {
     let res = transfer_from(from, to, token_id)?;
     if let Ok(arg) = Encode!(&api::caller(), &from, &token_id, &data) {
-        // Using call_raw ensures we don't need to await the future for the call to be executed.
+        // Using call_raw ensures you don't need to await the future for the call to be executed.
         // Calling an arbitrary function like this means that a malicious recipient could call 
         // transferFromNotifyDip721 in their onDIP721Received function, resulting in an infinite loop.
         // This will trap eventually, but the transfer will have already been completed and the state-change persisted.
         // That means the original transfer must reply before that happens, or the caller will be
-        // convinced that the transfer failed when it actually succeeded. So we don't await the call,
-        // so that we'll reply immediately regardless of how long the notification call takes.
+        // convinced that the transfer failed when it actually succeeded. So you don't await the call,
+        // so that you'll reply immediately regardless of how long the notification call takes.
         let _ = api::call::call_raw(to, "onDIP721Received", arg, 0);
     }
     Ok(res)
@@ -620,7 +620,7 @@ The canister expects a record parameter with the following fields:
 
 ## Interacting with the canister
 
-Now we can interact with the canister. Aside from the standard functions, it has five extra functions:
+Now you can interact with the canister. Aside from the standard functions, it has five extra functions:
 
 - `set_name`, `set_symbol`, `set_logo`, and `set_custodian`: these functions update the collection information of the corresponding field from when it was initialized.
 - `is_custodian`: this function checks whether the specified user is a custodian.
@@ -631,7 +631,7 @@ The canister also supports a certified HTTP interface; going to `/<nft>/<id>` wi
 Remember that query functions are uncertified; the result of functions like `ownerOfDip721` can be modified arbitrarily by a single malicious node. If queried information is depended on, for example if someone might send ICP to the owner of a particular NFT to buy it from them, those calls should be performed as update calls instead. You can force an update call by passing the `--update` flag to `dfx` or using the `Agent::update` function in `agent-rs`.
 :::
 
-To test functionality, we can try to mint an NFT. 
+To test functionality, you can try to mint an NFT. 
 
 Due to size limitations on the length of a terminal command, an image- or video-based NFT would be impossible to send via `dfx`. To that end, there is an experimental [minting tool](https://github.com/dfinity/experimental-minting-tool) you can use to mint a single-file NFT. 
 

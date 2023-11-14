@@ -6,7 +6,7 @@ In this guide, you are going to write a simple dapp that enables you to store an
 
 ## Package managers
 
-While we'll be using the Motoko base library in this example, it important to mention that there are hundreds of third-party Motoko libraries that can be downloaded and imported using a package manager. A package manager is a tool used to install, upgrade, and manage libraries. For Motoko, [Mops](https://mops.one) and [Vessel](https://github.com/dfinity/vessel) are supported package managers.
+While you'll be using the Motoko base library in this example, it important to mention that there are hundreds of third-party Motoko libraries that can be downloaded and imported using a package manager. A package manager is a tool used to install, upgrade, and manage libraries. For Motoko, [Mops](https://mops.one) and [Vessel](https://github.com/dfinity/vessel) are supported package managers.
 
 ### Mops
 

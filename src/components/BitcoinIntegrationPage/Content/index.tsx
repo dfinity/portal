@@ -4,6 +4,7 @@ import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const Content: React.FC = () => {
   return (
@@ -162,6 +163,13 @@ const Content: React.FC = () => {
             >
               <LinkArrowRight></LinkArrowRight>
               Code ckBTC
+            </Link>
+            <Link
+              href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+              className="link-primary link-with-icon"
+            >
+              <LinkArrowUpRight></LinkArrowUpRight>
+              ckBTC security audit
             </Link>
           </p>
         </div>

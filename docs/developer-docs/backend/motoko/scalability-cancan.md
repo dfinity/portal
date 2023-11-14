@@ -34,7 +34,7 @@ BigMap provides a simple, plug-in library for building scalable applications usi
 
 The library offers building blocks for application-specific, in-memory data abstractions that scale using any number of canisters. Each canister still has limited capacity, but the application instantiates the canisters it needs and keeps track of the fragments that make up the full video content for each user’s videos in an index file called the `manifest`.
 
-The code required for the `BigMap` service is much simpler than a traditional distributed hash table because the Internet Computer as a platform provides scalability, replication, failover, and fault tolerance.
+The code required for the `BigMap` service is much simpler than a traditional distributed hash table because the Internet Computer provides scalability, replication, failover, and fault tolerance.
 
 ## Demonstrating interoperability
 
@@ -81,7 +81,7 @@ export interface Profile {
 
 ### Videos
 
-Uploaded videos are identified by a unique identifier stored at `profiles/{username}/videos/{videoId}` and in `public/videos` (an array of all existing videos on the platform).
+Uploaded videos are identified by a unique identifier stored at `profiles/{username}/videos/{videoId}` and in `public/videos` (an array of all existing videos in the dapp).
 
 Metadata for videos is stored at `profiles/{username}/videos/{videoId}/metadata` Individual video fragments are stored at `profiles/{username}/videos/{videoId}/chunks/chunk.{0-10}`.
 

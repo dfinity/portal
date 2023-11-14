@@ -87,7 +87,7 @@ b77ix-eeaaa-aaaaa-qaada-cai
 dzh22-nuaaa-aaaaa-qaaoa-cai
 ```
 
-Below, we'll frequently use `$(dfx identity get-wallet)` and `$(dfx canister id hello_cycles)` to splice canister principals into longer bash commands.
+Below, this guide will frequently use `$(dfx identity get-wallet)` and `$(dfx canister id hello_cycles)` to splice canister principals into longer bash commands.
 
 ### Step 5: Attempt to send 2 trillion cycles from the default wallet to the hello_cycles canister by running the following command:
 
@@ -141,7 +141,7 @@ Output:
 (5_091_657_208_987 : nat)
 ```
 
-In this step, we are passing our own wallet's `wallet_receive` function as the first argument, followed by the amount. We, or a third party, could also pass any another function of the same signature, belonging to any other canister or wallet.
+In this step, you are passing our own wallet's `wallet_receive` function as the first argument, followed by the amount. You, or a third party, could also pass any another function of the same signature, belonging to any other canister or wallet.
 
 :::caution
 Without some additional access control checks (omitted here), a malicious client could abuse our naive transfer function to drain the canister of all of its cycles.

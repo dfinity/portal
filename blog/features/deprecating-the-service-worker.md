@@ -77,9 +77,7 @@ As the Internet Computer network matures, along with the dapps that have been de
 
 ## The solution
 
-Our proposed solution is to make ICX Proxy the primary HTTP Gateway operated by DFINITY, replacing the Service Worker. ICX Proxy would become the default HTTP Gateway used by canisters on ic0.app, icp0.io and custom domains that are hosted on the DFINITY
-
-managed Boundary Nodes. The Service Worker would still be available for community members to host their own HTTP Gateways if they wish to do so, but it would no longer be supported by the DFINITY foundation.
+Our proposed solution is to make ICX Proxy the primary HTTP Gateway operated by DFINITY, replacing the Service Worker. ICX Proxy would become the default HTTP Gateway used by canisters on ic0.app, icp0.io and custom domains that are hosted on the DFINITY-managed Boundary Nodes. The Service Worker would still be available for community members to host their own HTTP Gateways if they wish to do so, but it would no longer be supported by the DFINITY foundation.
 
 ICX Proxy, as a remote HTTP Gateway controlled by DFINITY, can provide a seamless onboarding experience for new users with superior performance and end user experience. For more security and decentralization conscious users however, we propose to continue working on a local HTTP Gateway that end users can run themselves.
 

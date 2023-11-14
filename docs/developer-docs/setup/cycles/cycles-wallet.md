@@ -399,3 +399,4 @@ The output from the command is in Candid format similar to the following:
     )
 
 In this example, there are twelve event records. The `Role` field (represented by the hash `1_269_754_742`) specifies whether a principal is a controller (represented by the hash `4_218_395_836`) or a custodian (represented by the hash `2_494_206_670`). The events in this example also illustrate an amount field (represented by the hash `3_573_748_184`) with a transfer of 10,000,000,000 cycles.
+
