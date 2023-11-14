@@ -102,7 +102,7 @@ To transfer cycles to another principal ID, use the command:
 dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT])
 ```
 
-Replace `AMOUNT` with the number of cycles, such as `34000000`, and `PRINCIPAL_ID` with the principal ID you'd like to transfer the cycles to, such as `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe`.
+Replace `AMOUNT` with the number of cycles, such as `34000000`, and `PRINCIPAL_ID` with the principal ID you'd like to transfer the cycles to, such as `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe`. Optionally, a subaccount can be provided, in which case the recipient will receive the funds in the provided subaccount.
 
 ### Topping up a canister
 
