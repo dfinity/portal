@@ -22,11 +22,11 @@ const CARDS: Array<CarouselCard> = [
     backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
     cta: (
       <Link
-        className="button-transparent button-with-icon"
+        className="button-transparent button-with-icon pl-0"
         href="https://twitter.com/DFINITYDev"
       >
-        <LinkArrowRight />
         Follow now
+        <LinkArrowRight />
       </Link>
     ),
     mainImage: "/img/docs/teaser-cards/main-0.svg",
@@ -43,7 +43,7 @@ const CARDS: Array<CarouselCard> = [
     backgroundImage: "/img/docs/teaser-cards/bg-1.svg",
     cta: (
       <Link
-        className="button-transparent button-with-icon"
+        className="button-transparent button-with-icon pl-0"
         href="/docs/current/tutorials"
       >
         Start tutorials
@@ -60,7 +60,7 @@ const CARDS: Array<CarouselCard> = [
     backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
     cta: (
       <Link
-        className="button-transparent button-with-icon"
+        className="button-transparent button-with-icon pl-0"
         href="https://discord.com/invite/5PJMmmETQB"
       >
         RSVP at #event channel
@@ -79,7 +79,7 @@ const CARDS: Array<CarouselCard> = [
     backgroundImage: "/img/docs/teaser-cards/bg-3.svg",
     cta: (
       <Link
-        className="button-transparent button-with-icon"
+        className="button-transparent button-with-icon pl-0"
         href="https://dfinity.zoom.us/j/99550279424?pwd=SFlDbkRVVTV2bm1XSjFYMWJjanZmdz09"
       >
         Join on Zoom
@@ -122,13 +122,28 @@ export function TeaserCarousel() {
                 ...backgroundStyles,
               }}
             >
-              <div className={"grid grid-cols-2 gap-2 justify-between flex-1"}>
+              <div
+                className={
+                  "grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1"
+                }
+              >
                 <div className={"flex flex-col justify-between"}>
                   <div className={"flex flex-col"}>
                     {card.title}
                     {card.subtitle}
                     {card.cta}
                   </div>
+                  {card.mainImage && (
+                    <img
+                      className={"sm:hidden"}
+                      src={card.mainImage}
+                      alt={
+                        typeof card.title === "string"
+                          ? card.title
+                          : "Card image"
+                      }
+                    />
+                  )}
                   <div className={"flex flex-row gap-1 items-center"}>
                     <Link
                       className="button-transparent button-with-icon cursor-pointer"
@@ -155,6 +170,7 @@ export function TeaserCarousel() {
                 </div>
                 {card.mainImage && (
                   <img
+                    className={"mt-auto hidden sm:block"}
                     src={card.mainImage}
                     alt={
                       typeof card.title === "string" ? card.title : "Card image"

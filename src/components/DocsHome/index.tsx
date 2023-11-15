@@ -40,7 +40,7 @@ const DocsHomePage: FC = () => {
             Start a DAO, create a token, build dapps and host assets with the
             full tech stack entirely 100% on chain.
           </p>
-          <div className={"flex flex-row gap-2"}>
+          <div className={"flex flex-row gap-2 flex-wrap"}>
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
@@ -66,7 +66,7 @@ const DocsHomePage: FC = () => {
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="sm:col-span-2 h-96">
+        <div className="sm:col-span-2 md:h-96">
           <TeaserCarousel />
         </div>
       </section>

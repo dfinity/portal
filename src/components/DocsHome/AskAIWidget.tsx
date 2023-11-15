@@ -26,9 +26,9 @@ export function AskAIWidget() {
             color: "white",
             textTransform: "capitalize",
           }}
-          className="ask-ai-widget-trigger button-round button-fancy border-0 text-white font-semibold capitalize"
+          className="ask-ai-widget-trigger button-round button-fancy border-0 text-white font-semibold capitalize fixed sm:relative bottom-0 my-20 sm:my-0"
         >
-          Ask AI
+          <span>Ask AI</span>
         </button>
       </>
     )

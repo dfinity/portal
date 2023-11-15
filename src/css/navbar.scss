@@ -70,6 +70,12 @@
   .navbar__inner .ic0-item {
     display: none;
   }
+
+  // only display the ask AI widget on mobile when scrolling up
+  nav[class*="navbarHidden_"] .ask-ai-widget-trigger {
+    display: none;
+    transition: 1s display ease;
+  }
 }
 
 .navbar__inner {
