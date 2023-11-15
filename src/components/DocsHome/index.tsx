@@ -6,6 +6,7 @@ import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
 import Blog from "./Blog";
+import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
 
 const queryClient = new QueryClient();
 
@@ -65,8 +66,8 @@ const DocsHomePage: FC = () => {
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2 h-96">
-          <h1>teaser slides</h1>
+        <div className="sm:col-span-2 h-96">
+          <TeaserCarousel />
         </div>
       </section>
       <section className="mt-10">
