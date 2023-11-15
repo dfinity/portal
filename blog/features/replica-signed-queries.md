@@ -53,7 +53,7 @@ The query's signature (whose type is denoted as node-signature) is a [CBOR](http
 
 - `identity (principal)`: the principal of the node producing the signature.
 
-Queries also include a request ID, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.
+The actual parts that are signed include the query response from the execution layer, the timestamp and the request ID of the query, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.
 
 Query response verification is done via agents, such as agent-rs and agent-js, and other agents developed by members of the IC community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
 
