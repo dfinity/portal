@@ -360,16 +360,17 @@ function NftPage() {
               </div>
             </div>
 
-            <p className="tw-lead-sm md:tw-lead md:w-8/12 md:mx-auto mb-16 md:mb-20">
-              The Internet Computer offers unparalleled efficiency that leaves
-              other blockchains orders of magnitudes behind with regards to many
-              metrics, making it the ideal chain to launch complex NFT
-              collections and games. ICP uses the reverse gas model, which means
-              end users can mint and trade NFTs with 0 gas fees.
-
+            <div className="md:w-8/12 md:mx-auto mb-16 md:mb-20">
+              <p className="tw-lead-sm md:tw-lead">
+                The Internet Computer offers unparalleled efficiency that leaves
+                other blockchains orders of magnitudes behind with regards to many
+                metrics, making it the ideal chain to launch complex NFT
+                collections and games. ICP uses the reverse gas model, which means
+                end users can mint and trade NFTs with 0 gas fees.
+              </p>
 
               <a href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"  className="button-outline-white mt-6">Build your own</a>
-            </p>
+            </div>
 
 
             <div className="panel-gradient border border-solid border-white-30 rounded-xl py-12 px-8 flex flex-col gap-6 text-center md:flex-row">
