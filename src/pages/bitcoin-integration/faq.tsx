@@ -338,6 +338,22 @@ function BitcoinFaqPage() {
                 </Link>.
               </p>
             </Faq>
+
+            <Faq title="Were there any security audits done for BTC integration and ckBTC?">
+              Yes, BTC integration and ckBTC have undergone a security audit by{" "}
+              <Link href="https://www.trailofbits.com/">Trail of Bits</Link> in
+              2023 with no severe issues found.
+
+              <p className="not-prose">
+                <Link
+                  href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  More details on the audit
+                </Link>
+              </p>
+            </Faq>
           </FaqSection>
         </section>
         <section id="resource-center">
@@ -391,8 +407,8 @@ function BitcoinFaqPage() {
             title="Code native bitcoin"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/samples?term=bitcoin"
-            title="Sample code"
+            href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+            title="Security audit"
           ></SmallCardWithDescription>
         </AnimateSpawn>
       </main>
