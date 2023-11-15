@@ -1,6 +1,6 @@
 ---
 title: "Announcing replica signed queries"
-description: To enhance the trustworthiness of queries by providing better guarantees against malicious attacks, we're excited to announce the release of replica signed queries!
+description: To enhance the trustworthiness of queries by providing better guarantees against attacks, we're excited to announce the release of replica signed queries!
 tags: [New features]
 image: /img/blog/replica-signed-queries.jpg
 ---
