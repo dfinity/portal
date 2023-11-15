@@ -19,30 +19,43 @@ Having a single replica signature in a query response doesn't completely solve t
 
 ## How do replica signed queries work?
 
-First, a list of node IDs and their corresponding public keys is put into the subnet's state tree so that they can be certified by the subnet.
+First, a list of node IDs and their corresponding public keys is put into the subnet's state tree so that they can be certified by the subnet. Users can obtain the certificate to validate the node's keys through an HTTP `read_state` call that includes a timestamp value. 
 
-Users can obtain the certificate to validate the node's keys through an HTTP `read_state` call that includes a timestamp value. 
-
-To support replica signed queries, the query response format has been changed. Previously, query responses used the following format:
-
-```
-pub enum HttpQueryResponse {
-    Replied {
-        reply: HttpQueryResponseReply,
-    },
-    Rejected {
-        error_code: String,
-        reject_code: u64,
-        reject_message: String,
-    },
-}
-```
+To support replica signed queries, the query response format has been changed. The response to a query call adds a list with one signature for the returned response produced by the IC node that evaluated the query call.
 
 The actual portion of the call that is signed is the HttpQueryResponse from the execution of the call. If the call is replied to, the `reply` field is included. If the call is rejected, the `error_code`, `reject_code`, and `reject_message` fields will be included in the response. 
 
-Queries also include a request ID, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.  Query responses will also include a timestamp value. 
+If the query call resulted in a reply, the response is a CBOR (see [CBOR](https://internetcomputer.org/docs/current/references/ic-interface-spec/#cbor)) map with the following fields:
 
-Query responses will now use the following format:
+- `status (text)`: "replied".
+  
+- `reply`: a CBOR map with the field arg (blob) which contains the reply data.
+  
+- `signatures ([+ node-signature])`: a list containing one node signature for the returned query response.
+
+If the call resulted in a reject, the response is a CBOR map with the following fields:
+
+- `status (text)`: "rejected".
+  
+- `reject_code (nat)`: The reject code (see Reject codes: https://internetcomputer.org/docs/current/references/ic-interface-spec/#reject-codes).
+  
+- `reject_message (text)`: a textual diagnostic message.
+  
+- `error_code (text)`: an optional implementation-specific textual error code (see Error codes: https://internetcomputer.org/docs/current/references/ic-interface-spec/#error-codes).
+  
+- `signatures ([+ node-signature])`: a list containing one node signature for the returned query response.
+
+The query's signature (whose type is denoted as node-signature) is a [CBOR](https://internetcomputer.org/docs/current/references/ic-interface-spec/#cbor) (see CBOR) map with the following fields:
+
+- `timestamp (nat)`: the timestamp of the signature.
+
+- `signature (blob)`: the actual signature.
+
+- `identity (principal)`: the principal of the node producing the signature.
+
+Queries also include a request ID, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.
+
+With replica signed queries, query responses will now use the following format:
 
 ```
 struct  NodeSignature {
@@ -68,64 +81,7 @@ Rejected {
 
 Query response verification is one via agents, such as agent-rs and agent-js, and other agents developed by members of the IC community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
 
-In agent-rs, query response is defined in the file `ic-agent/src/agent/replica_api.rs` as follows:
-
-```
-pub struct CallReply {
-   #[serde(with = "serde_bytes")]
-   pub arg: Vec<u8>,
-   pub signatures: Vec<NodeSignature>,
-}
-#[derive(Debug, Clone, Serialize, Deserialize, Ord, PartialOrd, Eq, PartialEq)]
-pub struct RejectResponse {
-    /// The [reject code] returned by the replica.
-    pub reject_code: RejectCode,
-    /// The rejection message.
-    pub reject_message: String,
-    /// The optional [error code]returned by the replica.
-    #[serde(default)]
-    pub error_code: Option<String>,
-    pub signatures: Vec<NodeSignature>,
-}
-
-#[derive(Debug, Clone, Deserialize, Serialize)]
-#[serde(tag = "status")]
-pub enum QueryResponse {
-   #[serde(rename = "replied")]
-   Replied { reply: CallReply },
-   #[serde(rename = "rejected")]
-   Rejected(RejectResponse),
-}
-```
-
 Replica signed queries are supported in agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer.
-
-In agent-js, query response is defined in the file `agent-js/packages/agent/src/agent/api.ts` as follows:
-
-```
-export type QueryResponse = QueryResponseReplied | QueryResponseRejected;
-	
-	export const enum QueryResponseStatus {
-	 Replied = 'replied',
-	 Rejected = 'rejected',
-	}
-	
-	export interface QueryResponseBase {
-	 	status: QueryResponseStatus;
-               signatures: Array<NodeSignature>;
-	}
-	
-	export interface QueryResponseReplied extends QueryResponseBase {
-	 status: QueryResponseStatus.Replied;
-	 reply: { arg: ArrayBuffer };
-	}
-	
-	export interface QueryResponseRejected extends QueryResponseBase {
-	 status: QueryResponseStatus.Rejected;
-	 reject_code: ReplicaRejectCode;
-	 reject_message: string;
-	}
-```
 
 Replica signed queries are supported in agent-js [versions v0.20.0](https://github.com/dfinity/agent-js/releases) and newer.
 
@@ -134,6 +90,16 @@ Replica signed queries are supported in agent-js [versions v0.20.0](https://gith
 To verify a replica signed query, first the agent requests the path `/subnet` in a read state call that is separate to `/api/v2/canister/<effective_canister_id>/read_state` to get the certificate. A boundary node routes this call to the subnet that hosts the canister. A subnet's state tree only contains the keys of its own nodes. All node keys are cached.
 
 Then, to verify the certificate, the timestamp stored at `/time` of the node keys will be checked to assure that the nodes are still within the subnet. The agent can look up the key of the node that is present in the query response signature, either from the cache or the `read_state` response. Once the node's public key is obtained, the client can verify the signature against the hash of the response's relevant fields. 
+
+## How to use replica signed queries
+
+On the IC, the replica has already begun producing signatures on query responses. 
+
+To use agent-rs, signature verification on query responses is enabled by default on versions v0.30.0 and newer. Tools such as dfx will be updated to use the latest version of agent-rs in the next release (v0.15.2). 
+
+To use agent-js, existing applications will need to update their agent-js version to v0.20.0 and newer. dfx always uses the `@latest` version of agent-js, meaning new applications will automatically have signatre verification enabled on query responses. 
+
+Older versions of the agents will automatically ignore the `signature` field. 
 
 ## Conclusion
 
