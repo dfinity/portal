@@ -272,7 +272,7 @@ function NftPage() {
               Make the most out of <abbr title="non-fungible tokens">NFT</abbr>s
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer allows <abbr title="non-fungible tokens">NFT</abbr>s incredible versatility. Because all data can be stored on-chain <abbr title="non-fungible tokens">NFT</abbr>s on the Internet Computer can be anything. Storing data on-chain is not only 23,500X more efficient on <abbr title="Internet Computer Protocol">ICP</abbr> compared to the next best, it is practically impossible to store assets like images on Solana or Ethereum.
+              The Internet Computer enables a wide variety of unique <abbr title="non-fungible tokens">NFT</abbr>s. Since canister smart contracts can store over 100GB of data, every part of an ICP <abbr title="non-fungible tokens">NFT</abbr> can be hosted on the blockchain giving complete ownership to collectors. All data and code being on-chain allows developers to make any digital object, even full websites, or chat groups into <abbr title="non-fungible tokens">NFT</abbr>s.
             </p>
             <p className="mb-0">
               <Link
