@@ -132,7 +132,7 @@ export function TeaserCarousel() {
                   </div>
                   <div className={"flex flex-row gap-1 items-center"}>
                     <Link
-                      className="button-transparent button-with-icon"
+                      className="button-transparent button-with-icon cursor-pointer"
                       onClick={() => {
                         if (index === 0) {
                           setActiveSlide(CARDS.length - 1);
@@ -147,7 +147,7 @@ export function TeaserCarousel() {
                       {activeSlide + 1} of {CARDS.length}
                     </span>
                     <Link
-                      className="button-transparent button-with-icon"
+                      className="button-transparent button-with-icon cursor-pointer"
                       onClick={() => setActiveSlide((index + 1) % CARDS.length)}
                     >
                       <ArrowRight />
