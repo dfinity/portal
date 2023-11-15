@@ -21,7 +21,13 @@ export function AskAIWidget() {
             data-modal-override-open-class="ask-ai-widget-trigger"
           />
         </Head>
-        <button className="ask-ai-widget-trigger button-round button-fancy border-0 text-white font-semibold capitalize">
+        <button
+          style={{
+            color: "white",
+            textTransform: "capitalize",
+          }}
+          className="ask-ai-widget-trigger button-round button-fancy border-0 text-white font-semibold capitalize"
+        >
           Ask AI
         </button>
       </>
