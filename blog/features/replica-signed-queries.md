@@ -23,7 +23,7 @@ First, a list of node IDs and their corresponding public keys is put into the su
 
 To support replica signed queries, the query response format has been changed. The response to a query call adds a list with one signature for the returned response produced by the IC node that evaluated the query call.
 
-The actual portion of the call that is signed is the HttpQueryResponse from the execution of the call. If the call is replied to, the `reply` field is included. If the call is rejected, the `error_code`, `reject_code`, and `reject_message` fields will be included in the response. 
+If the call is replied to, the `reply` field is included. If the call is rejected, the `error_code`, `reject_code`, and `reject_message` fields will be included in the response. 
 
 If the query call resulted in a reply, the response is a CBOR (see [CBOR](https://internetcomputer.org/docs/current/references/ic-interface-spec/#cbor)) map with the following fields:
 
