@@ -79,7 +79,7 @@ Older versions of the agents will automatically ignore the `signature` field.
 
 ## Conclusion
 
-In conclusion, replica signed queries are a new feature that aims to provide a level of trustworthiness to query calls by preventing malicious attacks that may alter the response of a query call. 
+In conclusion, replica signed queries are a new feature that aims to provide a level of trustworthiness to query calls by preventing attacks that may alter the response of a query call. 
 
 Replica signed queries are available in agent-js [versions v0.20.0](https://github.com/dfinity/agent-js/releases) and newer, agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer, and dfx [versions v0.15.2](https://github.com/dfinity/sdk/releases) and newer. 
 
