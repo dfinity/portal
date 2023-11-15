@@ -139,10 +139,10 @@ function NftPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  The Internet Computer is the only blockchain storing all
-                  components of an <abbr title="non-fungible tokens">NFT</abbr> on the blockchain, including assets. This
-                  opens up capabilities for <abbr title="Internet Computer Protocol">ICP</abbr> <abbr title="non-fungible tokens">NFT</abbr>s that go way beyond
-                  “overpriced links to <abbr title="Joint Photographic Experts Group">JPG</abbr>s”.
+                  The Internet Computer is the only blockchain that stores 100% 
+                  of the <abbr title="non-fungible tokens">NFT</abbr> on the blockchain, 
+                  including all assets. This opens up capabilities for <abbr title="Internet Computer Protocol">ICP</abbr> <abbr title="non-fungible tokens">NFT</abbr>s that go way beyond than just 
+                  “overpriced links to <abbr title="Joint Photographic Experts Group">JPG</abbr>s”. 
                 </motion.p>
               </div>
             </div>
@@ -360,13 +360,17 @@ function NftPage() {
               </div>
             </div>
 
-            <h2 className="tw-lead-sm md:tw-lead md:w-8/12 md:mx-auto mb-16 md:mb-20">
-              The Internet Computer offers unparralleled efficiency that leaves
+            <p className="tw-lead-sm md:tw-lead md:w-8/12 md:mx-auto mb-16 md:mb-20">
+              The Internet Computer offers unparalleled efficiency that leaves
               other blockchains orders of magnitudes behind with regards to many
               metrics, making it the ideal chain to launch complex NFT
               collections and games. ICP uses the reverse gas model, which means
               end users can mint and trade NFTs with 0 gas fees.
-            </h2>
+
+
+              <a href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"  className="button-outline-white mt-6">Build your own</a>
+            </p>
+
 
             <div className="panel-gradient border border-solid border-white-30 rounded-xl py-12 px-8 flex flex-col gap-6 text-center md:flex-row">
               <div className="flex flex-col items-center gap-2 md:flex-1">
@@ -408,11 +412,7 @@ function NftPage() {
                 Own physical gold linked to an NFT
               </h3>
               <p>
-                The Internet Computer offers unparalleled efficiency that leaves
-                other blockchains orders of magnitudes behind with regards to many
-                metrics, making it the ideal chain to launch complex NFT
-                collections and games. ICP uses the reverse gas model, which means
-                end users can mint and trade NFTs with 0 gas fees.
+                With GLD NFTs, customers of all income levels can now own physical gold through NFTs in a secure and simple way. GLD NFTs empower you to take control of your financial future and allows you to join the global movement towards the transparency and accessibility of trading gold.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -428,8 +428,8 @@ function NftPage() {
             />
           </article>
 
-          <div className="flex gap-6 my-8">
-            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/2">
+          <div className="flex flex-wrap md:flex-nowrap gap-6 my-8">
+            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/1 md:basis-1/2 w-1/1 md:w-1/2">
               <img
                 src="/img/nft/julian-opie.webp"
                 alt="Art by Julian Opie"
@@ -447,7 +447,7 @@ function NftPage() {
               </Link>
             </article>
             
-            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/2">
+            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/1 md:basis-1/2 w-1/1 md:w-1/2 mt-6 md:mt-0">
               <img
                 src="/img/nft/pets.webp"
                 alt="digital pets"
