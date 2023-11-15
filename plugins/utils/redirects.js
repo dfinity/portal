@@ -50,7 +50,6 @@ const redirects = `
   /docs/interface-spec /docs/current/references/ic-interface-spec
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
-  #/docs/developers-guide/concepts/what-is-ic /what-is-the-ic
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/setup/install/
   
@@ -72,7 +71,6 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/frontend/#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/setup/install/
-  /docs/current/developer-docs/build/languages/motoko/ /docs/current/motoko/main/motoko-introduction
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/setup/manage-canisters
@@ -158,8 +156,6 @@ const redirects = `
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/setup/
   /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/current/motoko/main/base/Iter
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/current/motoko/main/base/IterType
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/agents/
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/integrations/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/setup/
@@ -178,7 +174,6 @@ const redirects = `
   /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/production/resource-limits
   /docs/current/concepts/data-centers /docs/current/concepts/
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
-  /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

@@ -1,5 +1,4 @@
 import React, { ReactNode, useState } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
 import Link from "@docusaurus/Link";
 
