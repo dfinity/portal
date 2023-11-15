@@ -79,7 +79,7 @@ Rejected {
 }
 ```
 
-Query response verification is one via agents, such as agent-rs and agent-js, and other agents developed by members of the IC community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
+Query response verification is done via agents, such as agent-rs and agent-js, and other agents developed by members of the IC community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
 
 Replica signed queries are supported in agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer.
 
