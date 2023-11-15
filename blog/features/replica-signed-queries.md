@@ -55,30 +55,6 @@ The query's signature (whose type is denoted as node-signature) is a [CBOR](http
 
 Queries also include a request ID, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.
 
-With replica signed queries, query responses will now use the following format:
-
-```
-struct  NodeSignature {
-    // the batch time
-    timestamp: Time,
-    // the actual signature
-    signature: Blob,
-    // the ID of the node that created the signature
-    identity: NodeId
-    }
-pub enum HttpQueryResponse {
-Replied {
-    reply: HttpQueryResponseReply,
-    signatures: Vec<NodeSignature>,
-},
-Rejected {
-    error_code: String,
-    reject_code: u64,
-    signatures: Vec<NodeSignature>,
-},
-}
-```
-
 Query response verification is done via agents, such as agent-rs and agent-js, and other agents developed by members of the IC community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
 
 Replica signed queries are supported in agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer.
