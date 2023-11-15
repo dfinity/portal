@@ -133,16 +133,16 @@ function NftPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Next generation NFTs
+                  Own your <abbr title="non-fungible tokens">NFT</abbr>
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
                   The Internet Computer is the only blockchain storing all
-                  components of an NFT on the blockchain, including assets. This
-                  opens up capabilities for ICP NFTs that go way beyond
-                  “overpriced links to JPGs”.
+                  components of an <abbr title="non-fungible tokens">NFT</abbr> on the blockchain, including assets. This
+                  opens up capabilities for <abbr title="Internet Computer Protocol">ICP</abbr> <abbr title="non-fungible tokens">NFT</abbr>s that go way beyond
+                  “overpriced links to <abbr title="Joint Photographic Experts Group">JPG</abbr>s”.
                 </motion.p>
               </div>
             </div>
@@ -150,7 +150,22 @@ function NftPage() {
           <NftShowcase></NftShowcase>
         </AnimateSpawn>
 
-        <section className="container-12 mt-16 mb-20 md:mt-24 md:mb-48">
+        <AnimateSpawn
+          className="container-8 mt-10 md:mt-40 relative"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="">
+            <motion.h2
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+              variants={transitions.item}
+            >
+              Buying an <abbr title="non-fungible token">NFT</abbr> on other chains is often a link that points to an untraceable source. The Internet Computer ensures true ownership — no intermediaries or central entities.
+            </motion.h2>
+          </div>
+        </AnimateSpawn>
+
+        <section className="container-12 mt-16 mb-20 md:mt-40 md:mb-48">
           <div className="border border-solid border-white bg-white-80 px-8 py-12 rounded-xl flex flex-col md:flex-row gap-12 md:gap-8 text-center">
             <div className="flex flex-col flex-1 gap-2">
               <span className="tw-heading-3 md:tw-heading-60 text-gradient">
@@ -164,30 +179,85 @@ function NftPage() {
               <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 2.6M+
               </span>
-              <span className="tw-paragraph md:tw-lead-sm">Total NFTs</span>
+              <span className="tw-paragraph md:tw-lead-sm">Total <abbr title="non-fungible tokens">NFT</abbr>s</span>
             </div>
             <div className="flex flex-col flex-1 gap-2">
               <span className="tw-heading-3 md:tw-heading-60 text-gradient">
                 415
               </span>
               <span className="tw-paragraph md:tw-lead-sm">
-                Total NFT projects
+                Total <abbr title="non-fungible tokens">NFT</abbr> projects
               </span>
             </div>
           </div>
         </section>
 
-        <section className="container-10 mb-20 md:mb-40">
-          <div className="md:w-6/10">
-            <h2 className="tw-heading-3 md:tw-heading-2 mb-6">Own your NFT</h2>
-            <p className="tw-lead-sm md:tw-lead mb-0">
-              Purchasing an NFT on other chains only buys you a link that points
-              to an asset stored off chain, e.g., on AWS or IPFS. As such, that
-              off-chain asset can be changed or even removed by whoever created
-              it. As the Internet Computer can store the entire NFT inside a
-              smart contract, you truly own and control 100% of your purchased
-              NFT.
-            </p>
+        <section className="mb-30 md:mb-60">
+          <div className="container-10 mb-12 md:mb-20">
+            <div className="md:w-8/10">
+              <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
+                <abbr title="non-fungible tokens">NFT</abbr> marketplaces
+                <br />
+                <span className="text-gradient">Trade with zero gas fees</span>
+              </h2>
+              <p className="mb-0 text-black-60 tw-lead-sm md:tw-lead">
+                Embark on a journey of authentic digital asset ownership. <abbr title="non-fungible tokens">NFT</abbr> marketplaces on the Internet Computer guarantee full decentralization, where collectors hold 100% of their digital art. Explore and trade with zero gas fees. Collect, own and invest in the future with confidence. 
+              </p>
+            </div>
+          </div>
+          <div className="container-12 relative">
+            <div className="hidden md:block blob blob-purple blob-center blob-lg z-[-1]"></div>
+            <div className="flex flex-col md:flex-row gap-3">
+              <Link
+                href="https://entrepot.app"
+                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+              >
+                <img
+                  src="/img/nft/entrepot.webp"
+                  alt=""
+                  className="w-16 md:w-20"
+                />
+                <div className="flex-1">
+                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
+                    Entrepot
+                  </h4>
+                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
+                    The first <abbr title="non-fungible tokens">NFT</abbr> marketplace on the Internet Computer. This marketplace has  launched 100s of collections with their no-code minting tool, and have over 1TB of assets stored fully on-chain.
+                  </p>
+                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
+                    $36M+ in trading
+                  </span>
+                </div>
+              </Link>
+              <Link
+                href="https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/"
+                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+              >
+                <img src="/img/nft/yumi.webp" alt="" className="w-16 md:w-20" />
+                <div className="flex-1">
+                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
+                    Yumi
+                  </h4>
+                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
+                    Yumi is the first fully-decentralized <abbr title="non-fungible tokens">NFT</abbr> and digital goods marketplace where users can create and trade <abbr title="non-fungible tokens">NFT</abbr>s. Users are rewarded Yumi credits, which can be seamlessly integrated with Shiku Metaverse. 
+                  </p>
+                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
+                    110,000+ users
+                  </span>
+                </div>
+              </Link>
+            </div>
+
+            <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
+              <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
+
+              <Link
+                className="button-primary"
+                href="/icp-tokens#anchor-wallets"
+              >
+                Set up your wallet
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -199,39 +269,29 @@ function NftPage() {
             imageClassName="relative"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Make the most out of NFTs
+              Make the most out of <abbr title="non-fungible tokens">NFT</abbr>s
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer allows NFTs of incredible versatility. As
-              NFTs can be data and code, i.e. a canister smart contract, NFTs
-              can be anything on the Internet Computer. Plus, storing data on
-              chain costs 20,000 times less than on Solana and 15,800,000 times
-              less than on Ethereum. At those prices other blockchains are
-              forced to use external storage solutions like AWS or IPFS. NFT
-              projects on these chains could essentially store their assets on
-              ICP without compromising on decentralization or price.
+              The Internet Computer enables a wide variety of unique <abbr title="non-fungible tokens">NFT</abbr>s. Since canister smart contracts can store over 100GB of data, every part of an ICP <abbr title="non-fungible tokens">NFT</abbr> can be hosted on the blockchain giving complete ownership to collectors. All data and code being on-chain allows developers to make any digital object, even full websites, or chat groups into <abbr title="non-fungible tokens">NFT</abbr>s.
             </p>
             <p className="mb-0">
               <Link
                 href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs#nfts-on-the-internet-computer"
                 className="button-outline"
               >
-                Become a creator
+                Create your own
               </Link>
             </p>
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/nft/btc-flower.webp">
             <h2 className="md:tw-heading-60 md:mb-6">Dynamic NFTs</h2>
             <p className="md:tw-lead-sm mb-0">
-              A distinguishing feature of the Internet Computer is that its
-              smart contracts can communicate with the Web2 world without
-              oracles, but rather through existing Web2 APIs using a
-              functionality called HTTPS outcalls. This allows NFTs to be a lot
-              more than simple static assets, meaning they can evolve over time
-              based on events in the world. For example, the petals of BTC
-              Flowers change color based on the last 24 hours of Bitcoin’s price
-              action.
+              Making use of a unique feature of the Internet Computer, <abbr title="non-fungible tokens">NFT</abbr>s can efficiently communicate with the Web2 world without using oracles. HTTPS outcalls allow NFTs on ICP to query Web2 APIs and change appearance or behave differently depending on the response. For example, <abbr title="Bitcoin">BTC</abbr> Flowers change the color of their paddles based on the last 24 hours of the Bitcoin’s price action.
             </p>
+            <a className="link-primary link-with-icon mt-10" href="https://entrepot.app/marketplace/btcflower" target="_blank" rel="noopener noreferrer">
+              <svg width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z" fill="currentColor"></path></svg>
+              See the BTC Flower collection
+            </a>
           </TranslatedLayout>
           <TranslatedLayout
             video={{
@@ -254,6 +314,10 @@ function NftPage() {
               dynamically animating ICP transaction flows. All this is part of
               the NFT and not something stored and accessed off-chain.
             </p>
+            <a className="link-primary link-with-icon mt-10" href="https://entrepot.app/marketplace/genesis-ii" target="_blank" rel="noopener noreferrer">
+              <svg width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z" fill="currentColor"></path></svg>
+              Add a Genesis II NFT to your collection
+            </a>
           </TranslatedLayout>
         </section>
         {/* <BackgroundPanel> */}
@@ -334,10 +398,75 @@ function NftPage() {
           </div>
         </section>
         <section className="container-12 py-30 md:py-48">
-          <h2 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-16 md:mb-30">
+          <h2 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-16 md:mb-30 rounded-xl">
             Your NFT could be anything
           </h2>
-          <div className="flex flex-col gap-16 md:gap-40">
+
+          <article className="flex md:gap-16 bg-white-80 p-6 md:p-14 rounded-xl flex md:flex-row items-start gap-6 flex-col gap-9">
+            <div>
+              <h3 className="tw-heading-3 md:tw-heading-2 text-gradient">
+                Own physical gold linked to an NFT
+              </h3>
+              <p>
+                The Internet Computer offers unparalleled efficiency that leaves
+                other blockchains orders of magnitudes behind with regards to many
+                metrics, making it the ideal chain to launch complex NFT
+                collections and games. ICP uses the reverse gas model, which means
+                end users can mint and trade NFTs with 0 gas fees.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/gold/nfts"
+              >
+                <LinkArrowRight /> Get gold NFTs on Yumi
+              </Link>
+            </div>
+            <img
+              src="/img/nft/gold.webp"
+              alt="nft gold"
+              className="object-contain object-center w-1/1 md:w-1/2"
+            />
+          </article>
+
+          <div className="flex gap-6 my-8">
+            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/2">
+              <img
+                src="/img/nft/julian-opie.webp"
+                alt="Art by Julian Opie"
+                className="object-contain object-center w-1/1 rounded-lg"
+              />
+              <h3 className="mt-4 tw-heading-3 text-gradient">Co-own fine art</h3>
+              <p>
+                Yumi Marketplace uncovers the potential of fractional shares and NFTs with its first release of Julian Opie’s Suzanne Walking in Leather Skirt. This innovative approach democratizes the art market, enabling ownership of artworks accessible to a broader range of art lovers.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/origyn/art/2oqzn-paaaa-aaaaj-azrla-cai"
+              >
+                <LinkArrowRight /> Become a co-owner
+              </Link>
+            </article>
+            
+            <article className="rounded-xl bg-white-80 p-8 md:grow basis-1/2">
+              <img
+                src="/img/nft/pets.webp"
+                alt="digital pets"
+                className="object-contain object-center w-1/1 rounded-lg"
+              />
+              <h3 className="mt-4 tw-heading-3 text-gradient">Collect digital pets</h3>
+              <p>
+                There’s no doubt that people love to foster and collect endearing creatures to inhabit their favorite digital universes. Think of Pokémon, Digimon and Axie Infinity. ToyoWorld is creating an on-chain digi monster universe, so you own and collect fun digital pets. 
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://gi72u-lqaaa-aaaal-ac3ga-cai.raw.icp0.io/"
+              >
+                <LinkArrowRight /> Try the demo
+              </Link>
+            </article>
+          </div>
+
+          <div className="flex flex-col gap-16 md:gap-40 mt-20">
             <TranslatedLayout imageUrl="/img/nft/cubetopia.webp" reverse={true}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 Cubetopia
@@ -359,23 +488,21 @@ function NftPage() {
                 <LinkArrowRight /> Create your own island
               </Link>
             </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/nft/portal.webp" reverse={false}>
+            <TranslatedLayout imageUrl="/img/nft/bioniq.webp" reverse={false}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                Portal
+                Bioniq
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Videos as NFTs where owners receive royalties
+                Bitcoin Ordinals marketplace
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Portal is a Web3 video sharing platform that allows users to
-                mint their videos as NFTs. The owners of these NFTs receive
-                tokens as royalties based on the number of viewers.
+                The first Ordinals marketplace built on the Internet Computer functioning as a Bitcoin L2. A platform for artists, collectors, and enthusiasts to buy, sell, and trade unique digital assets with ease and security using bitcoin. Whether you're looking to invest in digital art, expand your collection, or showcase your creations, Bioniq.io connects you to the pulse of the digital art revolution. Get ready — this marketplace will be open for business soon!
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://app.portal.one/"
+                href="https://bioniq.io/collections"
               >
-                <LinkArrowRight /> Watch videos on Portal
+                <LinkArrowRight /> Browse the Bioniq collections
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/nft/social.webp" reverse={true}>
@@ -401,83 +528,27 @@ function NftPage() {
                 <LinkArrowRight /> Check out the Internet Computer Portal
               </Link>
             </TranslatedLayout>
-          </div>
-        </section>
-        <section className="mb-30 md:mb-60">
-          <div className="container-10 mb-12 md:mb-20">
-            <div className="md:w-6/10">
-              <h2 className="tw-heading-3 md:tw-heading-2 mb-3">
-                Trade NFTs with
-                <br />
-                <span className="text-gradient">zero gas fees</span>
-              </h2>
-              <p className="mb-0 text-black-60 tw-lead-sm md:tw-lead">
-                Featuring a few web3 project teams already reinventing the
-                internet on the ICP blockchain.
+
+            <TranslatedLayout imageUrl="/img/nft/origyn.webp" reverse={false}>
+              <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
+                ORIGYN
+              </div>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                NFTs to protect  valuable assets
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Step into the future with the ORIGYN NFT Certificates. Keep your most important assets — images, PDFs, biometric data, videos, NDAs, intellectual property and more — safe and secure permanently on the blockchain with decentralized certificates of authenticity.
               </p>
-            </div>
-          </div>
-          <div className="container-12 relative">
-            <div className="hidden md:block blob blob-purple blob-center blob-lg z-[-1]"></div>
-            <div className="flex flex-col md:flex-row gap-3">
               <Link
-                href="https://entrepot.app"
-                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
+                className="link-primary link-with-icon"
+                href="https://www.origyn.com/"
               >
-                <img
-                  src="/img/nft/entrepot.webp"
-                  alt=""
-                  className="w-16 md:w-20"
-                />
-                <div className="flex-1">
-                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
-                    Entrepot
-                  </h4>
-                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Entrepot is the first and largest NFT marketplace on the
-                    Internet Computer. They have launched hundreds of
-                    collections with their no-code minting tool and have over
-                    1TB of assets stored fully on-chain.
-                  </p>
-                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
-                    $36M+ in trading
-                  </span>
-                </div>
+                <LinkArrowRight /> Learn about ORIGYN Certificates
               </Link>
-              <Link
-                href="https://tppkg-ziaaa-aaaal-qatrq-cai.raw.ic0.app/"
-                className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
-              >
-                <img src="/img/nft/yumi.webp" alt="" className="w-16 md:w-20" />
-                <div className="flex-1">
-                  <h4 className="tw-heading-6 md:tw-heading-5 mb-1 md:mb-2">
-                    Yumi
-                  </h4>
-                  <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    Yumi is the first fully-decentralized NFT and digital goods
-                    marketplace where users can create and trade NFTs. Users are
-                    rewarded Yumi credits, which can be seamlessly integrated
-                    with Shiku Metaverse.
-                  </p>
-                  <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
-                    110,000+ users
-                  </span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
-              <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
-
-              <Link
-                className="button-primary"
-                href="https://internetcomputer.org/docs/current/developer-docs/use-cases/considerations-for-nft-devs"
-              >
-                Build your own
-              </Link>
-            </div>
+            </TranslatedLayout>
           </div>
         </section>
+
       </main>
     </Layout>
   );
