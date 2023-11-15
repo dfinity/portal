@@ -62,7 +62,7 @@ export default function Home(): JSX.Element {
         className="w-full relative bg-[#F1EEF5] z-[0]"
         style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
       >
-        <Decks />
+        <Decks className="container-12 -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40" />
         <Vision />
         <CommunityStories></CommunityStories>
         <div className="overflow-hidden">

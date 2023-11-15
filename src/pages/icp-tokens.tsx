@@ -478,10 +478,11 @@ function TokenHolders(): JSX.Element {
               variants={transitions.container}
             >
               <motion.h2
+                id="anchor-wallets"
                 className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8"
                 variants={transitions.item}
               >
-                Wallets & custody
+                Wallets &amp; custody
               </motion.h2>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-6 md:mb-8"
