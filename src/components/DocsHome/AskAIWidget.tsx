@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "@docusaurus/Head";
 import { useIsDocs } from "@site/src/hooks/useIsDocs";
+import BrainIcon from "../../../static/img/icon-ai-brain.svg";
 
 export function AskAIWidget() {
   const { isDocsPage, currentPath, docsHome } = useIsDocs();
@@ -21,14 +22,9 @@ export function AskAIWidget() {
             data-modal-override-open-class="ask-ai-widget-trigger"
           />
         </Head>
-        <button
-          style={{
-            color: "white",
-            textTransform: "capitalize",
-          }}
-          className="ask-ai-widget-trigger button-round button-fancy border-0 text-white font-semibold capitalize fixed sm:relative bottom-0 my-20 sm:my-0"
-        >
-          <span>Ask AI</span>
+        <button className="ask-ai-widget-trigger button-white sm:button-with-icon sm:button-small font-bold fixed sm:relative bottom-0 my-20 sm:my-0 flex rounded-full sm:rounded-lg h-12 w-12 sm:h-[unset] sm:w-[unset] items-center p-0 sm:px-3 sm:py-2">
+          <BrainIcon className={"flex-1"} />
+          <span className={"hidden sm:block font-bold"}>Ask ICP.AI</span>
         </button>
       </>
     )

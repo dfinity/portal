@@ -72,9 +72,17 @@
   }
 
   // only display the ask AI widget on mobile when scrolling up
+  .navbar .ask-ai-widget-trigger {
+    opacity: 1;
+    transition: 300ms ease;
+    transform: scale(1.2);
+    visibility: visible;
+  }
   nav[class*="navbarHidden_"] .ask-ai-widget-trigger {
-    display: none;
-    transition: 1s display ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: 300ms ease;
   }
 }
 
