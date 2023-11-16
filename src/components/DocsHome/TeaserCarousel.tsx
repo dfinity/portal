@@ -1,6 +1,9 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useRef } from "react";
 import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
 import Link from "@docusaurus/Link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Swiper as SwiperClass } from "swiper/types";
 
 interface CarouselCard {
   title: ReactNode;
@@ -91,99 +94,190 @@ const CARDS: Array<CarouselCard> = [
 ];
 
 export function TeaserCarousel() {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const swiperRef = useRef<SwiperClass>();
 
   return (
-    <div className={"w-full h-full rounded-lg relative overflow-hidden"}>
-      <div
-        className={
-          "flex transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none w-full h-full"
-        }
-        style={{
-          transform: `translateX(-${activeSlide * 100}%)`,
-        }}
-      >
-        {CARDS.map((card, index) => {
-          const backgroundStyles = card.backgroundImage
-            ? {
-                backgroundImage: `url(${card.backgroundImage})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }
-            : {};
+    <Swiper
+      spaceBetween={10}
+      slidesPerView={1}
+      onSwiper={(swiper: SwiperClass) => (swiperRef.current = swiper)}
+      className={"w-full h-full rounded-lg"}
+    >
+      {CARDS.map((card, index) => {
+        const backgroundStyles = card.backgroundImage
+          ? {
+              backgroundImage: `url(${card.backgroundImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }
+          : {};
 
-          return (
+        return (
+          <SwiperSlide
+            key={index}
+            style={{
+              ...backgroundStyles,
+            }}
+            className={
+              "min-w-full w-full h-full relative py-8 px-8 justify-between flex flex-col rounded-lg"
+            }
+          >
             <div
               className={
-                "min-w-full box-border w-full h-full relative py-8 px-8 justify-between flex flex-col"
+                "grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1 h-full"
               }
-              key={index}
-              style={{
-                ...backgroundStyles,
-              }}
             >
-              <div
-                className={
-                  "grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1"
-                }
-              >
-                <div className={"flex flex-col justify-between"}>
-                  <div className={"flex flex-col"}>
-                    {card.title}
-                    {card.subtitle}
-                    {card.cta}
-                  </div>
-                  {card.mainImage && (
-                    <img
-                      className={"sm:hidden"}
-                      src={card.mainImage}
-                      alt={
-                        typeof card.title === "string"
-                          ? card.title
-                          : "Card image"
-                      }
-                    />
-                  )}
-                  <div className={"flex flex-row gap-1 items-center"}>
-                    <Link
-                      className="button-transparent button-with-icon cursor-pointer"
-                      onClick={() => {
-                        if (index === 0) {
-                          setActiveSlide(CARDS.length - 1);
-                        } else {
-                          setActiveSlide(index - 1);
-                        }
-                      }}
-                    >
-                      <ArrowLeft />
-                    </Link>
-                    <span className={"text-white"}>
-                      {activeSlide + 1} of {CARDS.length}
-                    </span>
-                    <Link
-                      className="button-transparent button-with-icon cursor-pointer"
-                      onClick={() => setActiveSlide((index + 1) % CARDS.length)}
-                    >
-                      <ArrowRight />
-                    </Link>
-                  </div>
+              <div className={"flex flex-col justify-between"}>
+                <div className={"flex flex-col"}>
+                  {card.title}
+                  {card.subtitle}
+                  {card.cta}
                 </div>
                 {card.mainImage && (
                   <img
-                    className={"mt-auto hidden sm:block"}
+                    className={"sm:hidden"}
                     src={card.mainImage}
                     alt={
                       typeof card.title === "string" ? card.title : "Card image"
                     }
                   />
                 )}
+                <div className={"flex flex-row gap-1 items-center"}>
+                  <Link
+                    className="button-transparent button-with-icon cursor-pointer"
+                    onClick={() => {
+                      if (index === 0) {
+                        swiperRef.current?.slideTo(CARDS.length - 1);
+                      } else {
+                        swiperRef.current?.slideTo(index - 1);
+                      }
+                    }}
+                  >
+                    <ArrowLeft />
+                  </Link>
+                  <span className={"text-white"}>
+                    {index + 1} of {CARDS.length}
+                  </span>
+                  <Link
+                    className="button-transparent button-with-icon cursor-pointer"
+                    onClick={() =>
+                      swiperRef.current?.slideTo((index + 1) % CARDS.length)
+                    }
+                  >
+                    <ArrowRight />
+                  </Link>
+                </div>
               </div>
+              {card.mainImage && (
+                <div className={"justify-center hidden sm:flex"}>
+                  <img
+                    className={"mt-auto"}
+                    src={card.mainImage}
+                    alt={
+                      typeof card.title === "string" ? card.title : "Card image"
+                    }
+                  />
+                </div>
+              )}
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
+
+  // return (
+  //   <div className={"w-full h-full rounded-lg relative overflow-hidden"}>
+  //     <div
+  //       className={
+  //         "flex transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none w-full h-full"
+  //       }
+  //       style={{
+  //         transform: `translateX(-${activeSlide * 100}%)`,
+  //       }}
+  //       ref={slideRef}
+  //     >
+  //       {CARDS.map((card, index) => {
+  //         const backgroundStyles = card.backgroundImage
+  //           ? {
+  //               backgroundImage: `url(${card.backgroundImage})`,
+  //               backgroundRepeat: "no-repeat",
+  //               backgroundSize: "cover",
+  //             }
+  //           : {};
+  //
+  //         return (
+  //           <div
+  //             className={
+  //               "min-w-full box-border w-full h-full relative py-8 px-8 justify-between flex flex-col"
+  //             }
+  //             key={index}
+  //             style={{
+  //               ...backgroundStyles,
+  //             }}
+  //           >
+  //             <div
+  //               className={
+  //                 "grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1"
+  //               }
+  //             >
+  //               <div className={"flex flex-col justify-between"}>
+  //                 <div className={"flex flex-col"}>
+  //                   {card.title}
+  //                   {card.subtitle}
+  //                   {card.cta}
+  //                 </div>
+  //                 {card.mainImage && (
+  //                   <img
+  //                     className={"sm:hidden"}
+  //                     src={card.mainImage}
+  //                     alt={
+  //                       typeof card.title === "string"
+  //                         ? card.title
+  //                         : "Card image"
+  //                     }
+  //                   />
+  //                 )}
+  //                 <div className={"flex flex-row gap-1 items-center"}>
+  //                   <Link
+  //                     className="button-transparent button-with-icon cursor-pointer"
+  //                     onClick={() => {
+  //                       if (index === 0) {
+  //                         setActiveSlide(CARDS.length - 1);
+  //                       } else {
+  //                         setActiveSlide(index - 1);
+  //                       }
+  //                     }}
+  //                   >
+  //                     <ArrowLeft />
+  //                   </Link>
+  //                   <span className={"text-white"}>
+  //                     {activeSlide + 1} of {CARDS.length}
+  //                   </span>
+  //                   <Link
+  //                     className="button-transparent button-with-icon cursor-pointer"
+  //                     onClick={() => setActiveSlide((index + 1) % CARDS.length)}
+  //                   >
+  //                     <ArrowRight />
+  //                   </Link>
+  //                 </div>
+  //               </div>
+  //               {card.mainImage && (
+  //                 <img
+  //                   className={"mt-auto hidden sm:block"}
+  //                   src={card.mainImage}
+  //                   alt={
+  //                     typeof card.title === "string" ? card.title : "Card image"
+  //                   }
+  //                 />
+  //               )}
+  //             </div>
+  //           </div>
+  //         );
+  //       })}
+  //     </div>
+  //   </div>
+  // );
 }
 
 const ArrowLeft = () => {
