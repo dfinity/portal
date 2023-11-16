@@ -2,7 +2,7 @@
 title: "Announcing replica signed queries"
 description: To enhance the trustworthiness of queries by providing better guarantees against attacks, we're excited to announce the release of replica signed queries!
 tags: [New features]
-image: /img/blog/replica-signed-queries.jpg
+image: /img/blog/dev-blog-replica-signed-queries.jpg
 ---
 
 When an update call is made to a canister on the Internet Computer, the response to includes a subnet signature that proves the data sent within the request is trustworthy. Query calls, however, are handled by single replicas and don't bear any information that validates their response is trustworthy, since their data could be tampered with by a malicious replica or malicious boundary node. As a workaround, certified data and certified variables can be used, which are embedded in responses to query calls that provide a layer of validation. However, using certified data and variables requires extra work for developers and sometimes does not fit into a developer's workflow seamlessly. 
