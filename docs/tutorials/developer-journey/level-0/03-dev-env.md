@@ -1,5 +1,7 @@
 # 0.3 Developer environment setup
 
+[![ICP Developer Journey 0.3 | Developer Environment Setup](https://img.youtube.com/vi/fDMHUdo7m-k/0.jpg)](https://www.youtube.com/watch?v=fDMHUdo7m-k)
+
 ## Overview
 
 Before we can begin our developer journey, we need to set up our developer environment. A developer environment consists of tools and packages that are required to develop code projects. Usually, developer environments are stored and hosted on your local computer, but there are some situations where a virtual, web-based development environment exists. 
