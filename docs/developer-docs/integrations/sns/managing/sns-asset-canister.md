@@ -113,7 +113,7 @@ To list all principals with the `Prepare` permission:
 dfx canister call --network ic oa7fk-maaaa-aaaam-abgka-cai list_permitted '(record {permission = variant {Commit}})'
 ```
 
-Once the asset canister has been deployed and permissions have been configured, the SNS decentralization swap can be started. You can learn more about launching an SNS [here](../launching/launch-summary.md)
+Once the asset canister has been deployed and permissions have been configured, the SNS decentralization swap can be started. You can learn more about launching an SNS [here](../launching/launch-summary-1proposal.md)
 
 ## SNS GenericNervousSystemFunctions
 
