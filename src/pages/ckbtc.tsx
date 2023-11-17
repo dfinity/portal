@@ -549,7 +549,7 @@ function CkbtcPage(): JSX.Element {
                       TLA+ models
                     </Link> to formally verify some guarantees, several internal
                     and external security assessments. In 2023, both Bitcoin integration and
-                    ckBTC have undergone a security audit conducted by{" "}
+                    ckBTC have undergone an external security audit conducted by{" "}
                     <Link href="https://www.trailofbits.com/">
                       Trail of Bits
                     </Link> with no severe issues found.
