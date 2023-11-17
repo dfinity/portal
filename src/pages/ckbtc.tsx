@@ -542,7 +542,7 @@ function CkbtcPage(): JSX.Element {
                   </h3>
 
                   <p className="tw-paragraph mb-3">
-                    Several layers of security mesasures are taken on critical components of
+                    Several security assessments are taken on critical components of
                     the Internet Computer such as ckBTC to ensure robust security. These
                     include{" "}
                     <Link href="https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24/">
