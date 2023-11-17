@@ -547,7 +547,7 @@ function CkbtcPage(): JSX.Element {
                     include{" "}
                     <Link href="https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24/">
                       TLA+ models
-                    </Link> to provide formal verification, several internal
+                    </Link> to formally verify some guarantees, several internal
                     and external security assessments. In 2023, both Bitcoin integration and
                     ckBTC have undergone a security audit conducted by{" "}
                     <Link href="https://www.trailofbits.com/">
