@@ -379,19 +379,22 @@
 
    {
     "id": "modclub",
-    "name": "MODCLUB",
-    "website": "https://ljyte-qiaaa-aaaah-qaiva-cai.raw.ic0.app/",
+    "name": "Modclub",
+    "oneLiner": "The world's first AI powered Web3 crowdwork platform",
+    "website": "https://modclub.ai",
+    "twitter": "https://twitter.com/ModclubApp",
     "tags": [
       "SocialFi", "Tools / Infrastructure"
     ],
-    "description": "MODCLUB is a decentralized moderation tool based hosted fully on-chain. Built on the Internet Computer, MODCLUB rewards users for effectively moderating content. Currently in beta stages of their solution, users will be rewarded in tokens for moderating their favorite communities.",
+    "stats": "20,000+ tasks completed",
+    "description": "Modclub is an AI-enhanced decentralized crowdwork platform that handles resource-intensive tasks such as moderation, user verification and data labeling.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/modclub_logo.webp",
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
-    ]
+    ],
+    "github": "https://github.com/modclub-app",
   },
-
   {
     "id": "querio",
     "name": "Querio",
