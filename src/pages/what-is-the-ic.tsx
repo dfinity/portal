@@ -86,7 +86,7 @@ function WhatIsIcpPage() {
         >
           <div className="">
             <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-10 text-gradient"
               variants={transitions.item}
             >
               Web3 services and enterprise systems can be built directly on the
@@ -96,6 +96,26 @@ function WhatIsIcpPage() {
               functionality, are tamperproof, and can trustlessly interact with
               the outside world.
             </motion.h2>
+
+            <motion.p
+              className="mb-0 flex flex-col items-start gap-6 md:gap-8"
+              variants={transitions.item}
+            >
+              <Link className="button-primary text-center" href="/capabilities">
+                Internet Computer capabilities
+              </Link>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://wiki.internetcomputer.org/wiki/History"
+              >
+                <span>
+                  <span className="hidden sm:inline">Wiki history </span>
+                  <span className="sm:hidden">History </span>
+                  of the Internet Computer
+                </span>
+                <LinkArrowUpRight />
+              </Link>
+            </motion.p>
           </div>
         </AnimateSpawn>
 
