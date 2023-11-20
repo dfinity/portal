@@ -20,7 +20,7 @@ Since this is now the recommended flow how to launch an SNS, this page and other
 Nevertheless, the old, legacy flow is still available for those projects who started with the old flow and want to continue with this path, for example because they already started testing. These project can find the detailed launch stages according to the old flow [here](../launching/launch-summary.md) and the concrete actions to take to run through these stages [here](../launching/launch-steps.md). 
 :::
 
-# 1. Documentation / Preparation
+# 1. Documentation / preparation
 
 ## 1.1. Tokenomics specification
 
