@@ -104,7 +104,7 @@ const sidebars = {
             id: "tutorials/developer-journey/level-5/index",
         },
           items: [
-            "tutorials/developer-journey/level-5/5.1-vetKD-tutorial",
+            "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
             "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
             "tutorials/developer-journey/level-5/5.3-DEX-tutorial",
             "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
