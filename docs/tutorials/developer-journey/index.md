@@ -69,5 +69,5 @@ In this developer journey, we focus on developing canisters and applications usi
 - [5.2 Developing a dapp using the IC Ethereum integration](level-5/5.2-ICP-ETH-tutorial.md)
 - [5.3 Creating a decentralized exchange (DEX)](level-5/5.3-DEX-tutorial.md)
 - [5.4 Creating NFTs on the IC](level-5/5.4-NFT-tutorial.md)
-- [5.5 Creating an SNS](level-5/5.5-SNS-tutorial.md)
+- [5.5 Launching an SNS](level-5/5.5-SNS-tutorial.md)
 - [5.6 Next steps](level-5/5.6-next-steps.md)

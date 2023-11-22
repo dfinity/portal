@@ -8,6 +8,6 @@
 
 - [5.4 Creating NFTs on the IC](5.4-NFT-tutorial.md)
 
-- [5.5 Creating an SNS](5.5-SNS-tutorial.md)
+- [5.5 Launching an SNS](5.5-SNS-tutorial.md)
 
 - [5.6 Next steps](5.6-next-steps.md)
