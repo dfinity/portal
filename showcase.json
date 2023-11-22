@@ -393,8 +393,9 @@
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
     ],
-    "github": "https://github.com/modclub-app",
+    "github": "https://github.com/modclub-app"
   },
+  
   {
     "id": "querio",
     "name": "Querio",
