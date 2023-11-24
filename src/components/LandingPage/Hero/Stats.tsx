@@ -31,7 +31,7 @@ export const TotalBlocks = () => {
   );
 
   return (
-    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6">
+    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6 hidden md:block">
       <figure className="m-0">
         {/* <div className="mb-2 inline-grid relative left-1"> */}
         {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
@@ -88,7 +88,7 @@ export const EthEquivalentTxRate = () => {
 
   return (
     <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6">
-      <figure className="m-0">
+      <figure className="m-0 flex gap-3 justify-center">
         {/* <div className="mb-2 inline-grid relative left-1"> */}
         {updateTxRate.isFetched && updateTxRate.isSuccess ? (
           <>
@@ -101,7 +101,7 @@ export const EthEquivalentTxRate = () => {
               className="text-left col-start-1 row-start-1"
             ></SpringCounter>
             {/* <span className="col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
-                {getFigureSpacer(Math.floor(blockInfoQuery.data[0]))}
+                {getFigureSpacer(Math.floor(updateTxRate.data[0]))}
               </span> */}
           </>
         ) : (
@@ -109,7 +109,7 @@ export const EthEquivalentTxRate = () => {
         )}
         {/* </div> */}
 
-        <figcaption className="tw-paragraph text-white/50 flex items-center justify-end gap-1">
+        <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center justify-end gap-1">
           ETH eq. TX/s <InfoIcon className="w-4 h-4 text-white" />
         </figcaption>
       </figure>
@@ -119,7 +119,7 @@ export const EthEquivalentTxRate = () => {
 
 export const SmartContractMemory = () => {
   return (
-    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6">
+    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6  hidden md:block">
       <figure className="m-0">
         $5 <span className="tw-lead-sm">/GB/year</span>
         <figcaption className="tw-paragraph text-white/50 flex items-center justify-end gap-1">

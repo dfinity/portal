@@ -26,11 +26,19 @@ const Hero: React.FC<{
 
       <ParticleAnimation />
 
-      <div className="py-30 grid relative">
+      <div className="pt-24 pb-8 md:py-30 md:grid relative">
         <div className="container-10 col-start-1 row-start-1">
-          <div className="w-8/10">
+          <div className="md:w-7/10 lg:w-8/10">
             <h1
-              className="animate-fade-up tw-heading-1 font-black uppercase tracking-[-3.6px] text-gradient-white grid"
+              className="
+                animate-fade-up 
+                font-[1000] uppercase tracking-[-0.03em] leading-none 
+                text-[60px]
+                sm:text-[60px]
+                md:text-[100px] 
+                lg:text-[120px] 
+                text-gradient-white 
+                grid mb-0"
               style={{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
@@ -41,7 +49,7 @@ const Hero: React.FC<{
                 start={fontLoaded}
               ></RotatedHeadline>
             </h1>
-            <div className="w-[71%] mt-8">
+            <div className="w-full md:w-[71%] mt-4 md:mt-8">
               <ChatWidget
                 aiPlaceholders={aiPlaceholders}
                 fontLoaded={fontLoaded}
@@ -49,13 +57,13 @@ const Hero: React.FC<{
             </div>
           </div>
         </div>
-        <div className="container-12 w-full col-start-1 row-start-1 flex justify-end">
+        <div className="container-12 w-full col-start-1 row-start-1 md:flex justify-end mt-8 md:mt-0">
           <div className="md:w-80 flex flex-col gap-1 text-right">
             <EthEquivalentTxRate />
             <TotalBlocks />
             <SmartContractMemory />
 
-            <div className="backdrop-blur-lg py-3 px-6">
+            <div className="backdrop-blur-lg py-3 px-6  hidden md:block">
               <Link
                 href="https://dashboard.internetcomputer.org/"
                 className="text-white tw-lead inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
@@ -73,48 +81,3 @@ const Hero: React.FC<{
 };
 
 export default Hero;
-
-/*
-
-<div className="py-30 container-12 relative">
-        <div className="flex">
-          <div className="flex-[7]">
-            <h1
-              className="animate-fade-up tw-heading-1 font-black uppercase tracking-[-3.6px] text-gradient-white grid"
-              style={{
-                animationPlayState: fontLoaded ? "running" : "paused",
-              }}
-            >
-              <RotatedHeadline
-                interval={3000}
-                lines={headlines}
-                start={fontLoaded}
-              ></RotatedHeadline>
-            </h1>
-            <div className="w-[71%] mt-8">
-              <ChatWidget
-                aiPlaceholders={aiPlaceholders}
-                fontLoaded={fontLoaded}
-              />
-            </div>
-          </div>
-          <div className="flex-[3] flex flex-col gap-1 text-right">
-            <EthEquivalentTxRate />
-            <TotalBlocks />
-            <SmartContractMemory />
-
-            <div className="backdrop-blur-lg py-3 px-6">
-              <Link
-                href="https://dashboard.internetcomputer.org/"
-                className="text-white tw-lead inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
-              >
-                <DashboardIcon />
-                See live stats
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      {children}
-
-      */

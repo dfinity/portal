@@ -34,15 +34,15 @@ export default function Home(): JSX.Element {
             "What is the first step to my ICP dapp?",
           ]}
         >
-          <div className="container-10 grid grid-cols-2 gap-2">
+          <div className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2">
             <CardWithImage
               href="https://deck.internetcomputer.org"
               image="/img/home/deck-astronaut.webp"
             >
-              <div className="tw-heading-6 mb-2">
+              <div className="tw-heading-7 md:tw-heading-6 mb-2">
                 Online Deck [ ICP hosted ]
               </div>
-              <h2 className="tw-heading-4 mb-0">
+              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
                 Cypherspace
                 <br />
                 as cloud 3.0
@@ -52,23 +52,25 @@ export default function Home(): JSX.Element {
               href="/ecosystem"
               image="/img/home/ecosystem-card.webp"
             >
-              <div className="tw-heading-6 mb-2">Ecosystem</div>
-              <h2 className="tw-heading-4 mb-0">Ecosystem links</h2>
+              <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
+              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
+                Ecosystem links
+              </h2>
             </CardWithImage>
             <CardWithImage
               href="https://deck.internetcomputer.org"
               image="/img/home/dashboard.svg"
             >
-              <div className="tw-heading-6 mb-2">
+              <div className="tw-heading-7 md:tw-heading-6 mb-2">
                 dashboard.internetcomputer.org
               </div>
-              <h2 className="tw-heading-4 mb-0">Live stats</h2>
+              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Live stats</h2>
             </CardWithImage>
             <CardWithImage href="/icp-event" image="/img/home/events-card.webp">
-              <div className="tw-heading-6 mb-2">
+              <div className="tw-heading-7 md:tw-heading-6 mb-2">
                 Online Deck [ ICP hosted ]
               </div>
-              <h2 className="tw-heading-4 mb-0">
+              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
                 Cypherspace
                 <br />
                 as cloud 3.0

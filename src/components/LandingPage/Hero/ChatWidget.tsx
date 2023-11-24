@@ -90,17 +90,17 @@ export const ChatWidget: React.FC<{
       `}</style>
 
       <form
-        className="bg-black/60 flex items-center py-3 pl-8 pr-4 gap-6 backdrop-blur-[20px] rounded-xl"
+        className="bg-black/60 flex flex-col md:flex-row md:items-center pt-3 pb-1 md:py-3 px-1 md:pl-8 md:pr-4 gap-3 md:gap-6 backdrop-blur-[20px] rounded-xl"
         onSubmit={onAiSubmit}
       >
         <input
           ref={inputRef}
           type="text"
-          className="flex-1 font-circular tw-heading-7 text-white placeholder:text-white/30 appearance-none border-none bg-transparent w-full active:outline-none focus:outline-none py-3"
+          className="flex-1 font-circular tw-heading-7 text-white text-center md:text-left placeholder:text-white/30 appearance-none border-none bg-transparent w-full active:outline-none focus:outline-none py-3"
           placeholder={aiPlaceholders[0]}
           required
         />
-        <button className="button-fancy-ai button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80">
+        <button className="button-fancy-ai justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80">
           <AiIcon />
           ASK ICP.AI
         </button>
