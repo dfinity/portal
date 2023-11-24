@@ -8,6 +8,7 @@ import Decks from "../components/LandingPage/Decks/Decks";
 import FoundationSection from "../components/LandingPage/Foundation";
 import { CardWithImage } from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
+import { NewsSection } from "../components/LandingPage/Hero/News";
 import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import PreHero from "../components/LandingPage/PreHero";
@@ -77,6 +78,7 @@ export default function Home(): JSX.Element {
               </h2>
             </CardWithImage>
           </div>
+          <NewsSection />
         </Hero>
         {/* <Decks className="container-10" /> */}
       </QueryClientProvider>

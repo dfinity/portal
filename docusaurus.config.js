@@ -33,6 +33,7 @@ const {
 } = require("./plugins/utils/redirects");
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
+const contentfulPlugin = require("./plugins/contentful");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -492,6 +493,7 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
+    contentfulPlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],

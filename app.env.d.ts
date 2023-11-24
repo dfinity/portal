@@ -3,6 +3,7 @@ import {
   NavbarItem,
 } from "@docusaurus/theme-common/src/utils/useThemeConfig";
 import { LinkLikeNavbarItemProps } from "@theme/NavbarItem";
+import { Press } from "./src/components/LandingPage/Hero/News";
 
 declare module "*.png";
 declare module "*.webp";
@@ -10,10 +11,9 @@ declare module "*.svg";
 declare module "*.jpeg";
 declare module "*.jpg";
 
-declare module "@site/.docusaurus/conversations/default/conversations.json" {
-  import { LiveSession } from "@site/src/components/LiveSessionsPage/LiveSession";
-  const conversations: LiveSession[];
-  export default conversations;
+declare module "@site/.docusaurus/contentful/default/press.json" {
+  const press: Press[];
+  export default press;
 }
 
 declare module "@site/.docusaurus/howitworks-cards/default/howitworks-cards.json" {

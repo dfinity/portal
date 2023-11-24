@@ -218,7 +218,7 @@ module.exports = {
                 '.link-subtle': '@apply text-infinite hover:text-black hover:no-underline',
                 '.link-primary': '@apply tw-heading-6 text-infinite hover:text-black hover:no-underline',
                 '.link-primary-disabled': '@apply tw-heading-6 text-black/60 hover:text-black/60 hover:no-underline',
-                '.link-white': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
+                '.link-white': '@apply tw-heading-6 text-white hover:text-white/60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
                 '.link-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
