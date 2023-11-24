@@ -3073,5 +3073,27 @@
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
+  },
+  {
+  "name": "TIKITWORLD - kybra-tikit",
+  "description": "Kybra-Tikit manages the minting and transfers of non-fungible tikits which represent tickets to real-world events. It provides a decentralized framework for event ticketing while still allowing for managed wallets and centralized payment processing.",
+  "website": "https://tikitworld.com/",
+  "logo": "/img/showcase/tikitworld-kybra-tikit_logo.webp",
+  "screenshots": [
+    "/img/showcase/tikitworld-kybra-tikit_screenshot.webp"
+  ],
+  "id": "tikitworld-kybra-tikit",
+  "oneLiner": "Ticketing Smart contract in Kybra for deployment as an IC canister",
+  "stats": "In development",
+  "tags": [
+    "Tools / Infrastructure",
+    "NFT",
+    "Metaverse"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/QubitzAdmin/kybra-tikit",
+  "twitter": "https://twitter.com/tikitworld",
+  "youtube": "https://www.linkedin.com/company/tikitworld/",
+  "submittableId": " 34276993"
   }
 ]
