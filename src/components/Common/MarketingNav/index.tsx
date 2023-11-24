@@ -3,6 +3,7 @@ import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { isLinkExternal } from "@site/plugins/utils/links";
 import Search from "@site/src/theme/SearchBar";
+import { useCollapsible } from "@site/src/utils/use-collapsible";
 import clsx from "clsx";
 import React, { useEffect } from "react";
 import LinkArrowLeft from "../Icons/LinkArrowLeft";
@@ -96,24 +97,10 @@ const Drawer: React.FC<{
   startingState?: boolean;
   alwaysOpen?: boolean;
 }> = ({ title, children, startingState = false, alwaysOpen = false }) => {
-  const [open, setOpen] = React.useState(startingState || alwaysOpen);
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    updateHeight();
-
-    function updateHeight() {
-      if (open) {
-        ref.current.style.maxHeight = ref.current.scrollHeight + "px";
-      } else {
-        ref.current.style.maxHeight = "0px";
-      }
-    }
-    window.addEventListener("resize", updateHeight);
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, [open]);
+  const collapsible = useCollapsible({
+    alwaysOpen,
+    startingState,
+  });
 
   return (
     <div className="">
@@ -122,20 +109,14 @@ const Drawer: React.FC<{
       ) : (
         <button
           className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => collapsible.setOpen((o) => !o)}
         >
           <div className="tw-heading-4">{title}</div>
 
-          <Arrow open={open} />
+          <Arrow open={collapsible.open} />
         </button>
       )}
-      <div
-        ref={ref}
-        className={clsx(
-          "transition-all overflow-hidden",
-          alwaysOpen || open ? "max-h-none" : "max-h-0"
-        )}
-      >
+      <div ref={collapsible.ref} className={collapsible.className}>
         {children}
       </div>
     </div>

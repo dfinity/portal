@@ -9,6 +9,10 @@ import FoundationSection from "../components/LandingPage/Foundation";
 import { CardWithImage } from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
 import { NewsSection } from "../components/LandingPage/Hero/News";
+import {
+  CollapsedVisionSection,
+  VisionSection,
+} from "../components/LandingPage/Hero/VisionSection";
 import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import PreHero from "../components/LandingPage/PreHero";
@@ -28,7 +32,7 @@ export default function Home(): JSX.Element {
     >
       <QueryClientProvider client={queryClient}>
         <Hero
-          headlines={["BUILD THE FUTURE", "CYPHERSPACE AS CLOUD"]}
+          headlines={["BUILD THE FUTURE", "CYPHER-SPACE AS CLOUD"]}
           aiPlaceholders={[
             "Is the Internet Computer decentralized?",
             "What can I do with ICP token?",
@@ -79,6 +83,18 @@ export default function Home(): JSX.Element {
             </CardWithImage>
           </div>
           <NewsSection />
+          <VisionSection>
+            Say hello to infinite blockchain that hosts not just tokens, but the
+            data, computation and user experiences of entire Social media, Game,
+            Metaverse, DeFi and enterprise services, fully on-chain, realizing
+            true Web3 for the very first time.
+            <CollapsedVisionSection>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+              maiores minus id obcaecati similique, deleniti molestias adipisci
+              distinctio odit alias provident velit hic, officia ducimus
+              impedit! Ipsum ut autem facilis!
+            </CollapsedVisionSection>
+          </VisionSection>
         </Hero>
         {/* <Decks className="container-10" /> */}
       </QueryClientProvider>

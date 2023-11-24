@@ -28,7 +28,7 @@ const NewsPageLink = () => {
 
 export const NewsSection = () => {
   return (
-    <div className="container-10 py-20">
+    <div className="container-10 pt-20">
       <div className="flex justify-between mb-8 items-center">
         <h2 className="tw-heading-7-caps mb-0 text-white/60">
           Latest articles

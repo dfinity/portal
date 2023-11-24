@@ -88,7 +88,7 @@ export const EthEquivalentTxRate = () => {
 
   return (
     <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6">
-      <figure className="m-0 flex gap-3 justify-center">
+      <figure className="m-0 flex gap-3 justify-center md:block">
         {/* <div className="mb-2 inline-grid relative left-1"> */}
         {updateTxRate.isFetched && updateTxRate.isSuccess ? (
           <>
