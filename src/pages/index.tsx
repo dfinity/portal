@@ -64,7 +64,7 @@ export default function Home(): JSX.Element {
               </div>
               <h2 className="tw-heading-4 mb-0">Live stats</h2>
             </CardWithImage>
-            <CardWithImage href="/event" image="/img/home/events-card.webp">
+            <CardWithImage href="/icp-event" image="/img/home/events-card.webp">
               <div className="tw-heading-6 mb-2">
                 Online Deck [ ICP hosted ]
               </div>
