@@ -1,13 +1,15 @@
 import React from "react";
 import Head from "@docusaurus/Head";
 import { useIsDocs } from "@site/src/hooks/useIsDocs";
+import { useLocation } from "@docusaurus/router";
 
 export default function Root({ children }) {
   const isDocsPage = useIsDocs();
+  const location = useLocation();
 
   return (
     <>
-      {isDocsPage && (
+      {(isDocsPage || location.pathname === "/") && (
         // AI chatbot integration via Kapa
         <Head>
           <script

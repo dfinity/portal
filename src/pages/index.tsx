@@ -4,16 +4,15 @@ import Layout from "@theme/Layout";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
-import CommunityStories from "../components/LandingPage/CommunityStories/CommunityStories";
 import Decks from "../components/LandingPage/Decks/Decks";
 import FoundationSection from "../components/LandingPage/Foundation";
+import { CardWithImage } from "../components/LandingPage/Hero/Cards";
+import Hero from "../components/LandingPage/Hero/Hero";
 import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import PreHero from "../components/LandingPage/PreHero";
 import SectionsBar from "../components/LandingPage/SectionsBar";
-import ShowcaseSection from "../components/LandingPage/Showcase";
 import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
-import Vision from "../components/LandingPage/Vision/Vision";
 
 const queryClient = new QueryClient();
 
@@ -27,76 +26,60 @@ export default function Home(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <QueryClientProvider client={queryClient}>
-        <PreHero
-          headline={
-            <>
-              Cypherspace
-              <br />
-              as cloud
-            </>
-          }
-          subheadline="INTERNET COMPUTER"
-          cta="Explore The Power Of ICP"
-          ctaLink="/what-is-the-ic"
-          cards={[
-            {
-              caption: "Unstoppable Software",
-              title: "Cloud 3.0",
-              link: "/enterprise",
-            },
-            {
-              caption: "Open Internet Services",
-              title: "Web 3.0",
-              link: "/ois",
-            },
-            {
-              caption: "Internet Identity",
-              title: "Web3 ID",
-              link: "/internet-identity",
-            },
+        <Hero
+          headlines={["BUILD THE FUTURE", "CYPHERSPACE AS CLOUD"]}
+          aiPlaceholders={[
+            "Is the Internet Computer decentralized?",
+            "What can I do with ICP token?",
+            "What is the first step to my ICP dapp?",
           ]}
-        ></PreHero>
+        >
+          <div className="container-10 grid grid-cols-2 gap-2">
+            <CardWithImage
+              href="https://deck.internetcomputer.org"
+              image="/img/home/deck-astronaut.webp"
+            >
+              <div className="tw-heading-6 mb-2">
+                Online Deck [ ICP hosted ]
+              </div>
+              <h2 className="tw-heading-4 mb-0">
+                Cypherspace
+                <br />
+                as cloud 3.0
+              </h2>
+            </CardWithImage>
+            <CardWithImage
+              href="/ecosystem"
+              image="/img/home/ecosystem-card.webp"
+            >
+              <div className="tw-heading-6 mb-2">Ecosystem</div>
+              <h2 className="tw-heading-4 mb-0">Ecosystem links</h2>
+            </CardWithImage>
+            <CardWithImage
+              href="https://deck.internetcomputer.org"
+              image="/img/home/dashboard.svg"
+            >
+              <div className="tw-heading-6 mb-2">
+                dashboard.internetcomputer.org
+              </div>
+              <h2 className="tw-heading-4 mb-0">Live stats</h2>
+            </CardWithImage>
+            <CardWithImage href="/event" image="/img/home/events-card.webp">
+              <div className="tw-heading-6 mb-2">
+                Online Deck [ ICP hosted ]
+              </div>
+              <h2 className="tw-heading-4 mb-0">
+                Cypherspace
+                <br />
+                as cloud 3.0
+              </h2>
+            </CardWithImage>
+          </div>
+        </Hero>
+        {/* <Decks className="container-10" /> */}
       </QueryClientProvider>
 
-      <main
-        className="w-full relative bg-[#F1EEF5] z-[0]"
-        style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
-      >
-        <Decks className="container-12 -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40" />
-        <Vision />
-        <CommunityStories></CommunityStories>
-        <div className="overflow-hidden">
-          {/* 
-            Update the list of showcase projects here: /plugins/home-showcase.js 
-          */}
-          <ShowcaseSection
-            className="pb-[320px]"
-            lines={[
-              "DeFi",
-              "Metaverse",
-              "Social media",
-              "Social networking",
-              "Multi-chain dapps",
-              "Enterprise services",
-              "R&D infrastructure",
-              "Fundraising",
-              "Publishing",
-              "Messaging ",
-              "Gaming",
-              "NFTs",
-            ]}
-            subheading="Featuring a few web3 project teams reinventing the internet on the ICP blockchain."
-            linePostfix="on true Web3"
-          ></ShowcaseSection>
-        </div>
-        <BackgroundPanel
-          panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
-          id="comparison"
-          threshold={0}
-          rootMargin="-30% 0px"
-        >
-          <Highlights />
-        </BackgroundPanel>
+      <main className="w-full relative bg-[#F1EEF5] z-[0]">
         <div className="overflow-hidden">
           <Sustainable id="sustainable"></Sustainable>
           <StartBuildingSection

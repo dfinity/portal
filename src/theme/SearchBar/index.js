@@ -49,7 +49,7 @@ const Search = () => {
         className="
           navbar__search-button group
           border-none md:border-2 md:border-solid md:border-infinite/50 md:rounded-xl md:docs:border-black
-          bg-transparent px-2 md:px-5 py-2
+          bg-transparent px-2 md:px-5 py-1 md:py-2
           font-circular md:text-infinite md:docs:text-black
           flex gap-2 items-center 
           md:order-last md:ml-6 

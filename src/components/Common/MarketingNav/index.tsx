@@ -312,21 +312,21 @@ const MarketingNav = () => {
   return (
     <>
       <nav
-        className="marketing-navbar z-[1000] pl-6 pr-4 py-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
+        className="marketing-navbar z-[1000] !px-0 pt-6 pb-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
         ref={navbarRef}
       >
-        <div className="md:max-w-[1440px] md:w-full md:mx-auto flex items-center justify-between">
+        <div className="container-12 w-full flex items-center justify-between">
           {/* logo */}
           <Link href="/" className="self-center flex items-center">
             <img
               src="/img/IC_logo_horizontal_white.svg"
               alt=""
-              className="h-5 md:h-7 hidden dark-hero:block"
+              className="h-8 md:h-10 hidden dark-hero:block"
             />
             <img
               src="/img/IC_logo_horizontal.svg"
               alt=""
-              className="h-5 md:h-7 dark-hero:hidden"
+              className="h-8 md:h-10 dark-hero:hidden"
             />
           </Link>
 
@@ -453,7 +453,7 @@ const MarketingNav = () => {
           <div className="flex gap-4 items-center">
             <Search />
             <button
-              className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[9px] h-10 w-10 p-0 justify-center"
+              className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[4px] h-8 w-8 p-0 justify-center"
               onClick={toggleNav}
             >
               <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>
