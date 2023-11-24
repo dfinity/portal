@@ -2,11 +2,14 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import Layout from "@theme/Layout";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import Decks from "../components/LandingPage/Decks/Decks";
 import FoundationSection from "../components/LandingPage/Foundation";
-import { CardWithImage } from "../components/LandingPage/Hero/Cards";
+import {
+  CardsSection,
+  CardWithImage,
+} from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
 import { NewsSection } from "../components/LandingPage/Hero/News";
 import {
@@ -19,8 +22,6 @@ import PreHero from "../components/LandingPage/PreHero";
 import SectionsBar from "../components/LandingPage/SectionsBar";
 import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 
-const queryClient = new QueryClient();
-
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
@@ -30,74 +31,30 @@ export default function Home(): JSX.Element {
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <QueryClientProvider client={queryClient}>
-        <Hero
-          headlines={["BUILD THE FUTURE", "CYPHER-SPACE AS CLOUD"]}
-          aiPlaceholders={[
-            "Is the Internet Computer decentralized?",
-            "What can I do with ICP token?",
-            "What is the first step to my ICP dapp?",
-          ]}
-        >
-          <div className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2">
-            <CardWithImage
-              href="https://deck.internetcomputer.org"
-              image="/img/home/deck-astronaut.webp"
-            >
-              <div className="tw-heading-7 md:tw-heading-6 mb-2">
-                Online Deck [ ICP hosted ]
-              </div>
-              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-                Cypherspace
-                <br />
-                as cloud 3.0
-              </h2>
-            </CardWithImage>
-            <CardWithImage
-              href="/ecosystem"
-              image="/img/home/ecosystem-card.webp"
-            >
-              <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
-              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-                Ecosystem links
-              </h2>
-            </CardWithImage>
-            <CardWithImage
-              href="https://deck.internetcomputer.org"
-              image="/img/home/dashboard.svg"
-            >
-              <div className="tw-heading-7 md:tw-heading-6 mb-2">
-                dashboard.internetcomputer.org
-              </div>
-              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Live stats</h2>
-            </CardWithImage>
-            <CardWithImage href="/icp-event" image="/img/home/events-card.webp">
-              <div className="tw-heading-7 md:tw-heading-6 mb-2">
-                Online Deck [ ICP hosted ]
-              </div>
-              <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-                Cypherspace
-                <br />
-                as cloud 3.0
-              </h2>
-            </CardWithImage>
-          </div>
-          <NewsSection />
-          <VisionSection>
-            Say hello to infinite blockchain that hosts not just tokens, but the
-            data, computation and user experiences of entire Social media, Game,
-            Metaverse, DeFi and enterprise services, fully on-chain, realizing
-            true Web3 for the very first time.
-            <CollapsedVisionSection>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              maiores minus id obcaecati similique, deleniti molestias adipisci
-              distinctio odit alias provident velit hic, officia ducimus
-              impedit! Ipsum ut autem facilis!
-            </CollapsedVisionSection>
-          </VisionSection>
-        </Hero>
-        {/* <Decks className="container-10" /> */}
-      </QueryClientProvider>
+      <Hero
+        headlines={["BUILD THE FUTURE", "CYPHER-SPACE AS CLOUD"]}
+        aiPlaceholders={[
+          "Is the Internet Computer decentralized?",
+          "What can I do with ICP token?",
+          "What is the first step to my ICP dapp?",
+        ]}
+      >
+        <CardsSection />
+        <NewsSection />
+        <VisionSection>
+          Say hello to infinite blockchain that hosts not just tokens, but the
+          data, computation and user experiences of entire Social media, Game,
+          Metaverse, DeFi and enterprise services, fully on-chain, realizing
+          true Web3 for the very first time.
+          <CollapsedVisionSection>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+            maiores minus id obcaecati similique, deleniti molestias adipisci
+            distinctio odit alias provident velit hic, officia ducimus impedit!
+            Ipsum ut autem facilis!
+          </CollapsedVisionSection>
+        </VisionSection>
+      </Hero>
+      {/* <Decks className="container-10" /> */}
 
       <main className="w-full relative bg-[#F1EEF5] z-[0]">
         <div className="overflow-hidden">

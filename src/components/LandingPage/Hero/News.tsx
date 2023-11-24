@@ -2,6 +2,11 @@ import React from "react";
 import data from "@site/.docusaurus/contentful/default/press.json";
 import Link from "@docusaurus/Link";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
+import AnimateSpawn from "../../Common/AnimateSpawn";
+import transitions from "@site/static/transitions.json";
+import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 export type Press = {
   id: string;
@@ -28,18 +33,25 @@ const NewsPageLink = () => {
 
 export const NewsSection = () => {
   return (
-    <div className="container-10 pt-20">
-      <div className="flex justify-between mb-8 items-center">
+    <AnimateSpawn
+      className="container-10 pt-20"
+      variants={transitions.container}
+    >
+      <motion.div
+        className="flex justify-between mb-8 items-center"
+        variants={transitions.item}
+      >
         <h2 className="tw-heading-7-caps mb-0 text-white/60">
           Latest articles
         </h2>
         <div className="hidden sm:block">
           <NewsPageLink />
         </div>
-      </div>
+      </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 sm:-mx-6">
         {data.slice(0, 4).map((item) => (
-          <Link
+          <MotionLink
+            variants={transitions.item}
             key={item.id}
             className="
               text-white hover:no-underline hover:text-white/60 hidden 
@@ -59,13 +71,13 @@ export const NewsSection = () => {
             <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-white/30">
               {item.dateHuman}
             </p>
-          </Link>
+          </MotionLink>
         ))}
       </div>
 
-      <div className="sm:hidden mt-6">
+      <motion.div className="sm:hidden mt-6" variants={transitions.item}>
         <NewsPageLink />
-      </div>
-    </div>
+      </motion.div>
+    </AnimateSpawn>
   );
 };

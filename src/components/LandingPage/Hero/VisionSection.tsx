@@ -1,5 +1,7 @@
 import { useCollapsible } from "@site/src/utils/use-collapsible";
 import React from "react";
+import AnimateSpawn from "../../Common/AnimateSpawn";
+import transitions from "@site/static/transitions.json";
 
 export const CollapsedVisionSection: React.FC<{
   children?: React.ReactNode;
@@ -52,8 +54,11 @@ export const VisionSection: React.FC<{
   children?: React.ReactNode;
 }> = ({ children }) => {
   return (
-    <div className="container-10 tw-lead md:tw-title-sm text-white py-24 md:pt-30 md:pb-40">
+    <AnimateSpawn
+      className="container-10 tw-lead md:tw-title-sm text-white py-24 md:pt-30 md:pb-40"
+      variants={transitions.container}
+    >
       <div className="md:w-7/10">{children}</div>
-    </div>
+    </AnimateSpawn>
   );
 };

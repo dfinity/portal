@@ -1,14 +1,21 @@
-import Link from "@docusaurus/Link";
 import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
+import transitions from "@site/static/transitions.json";
 import React, { useRef } from "react";
+import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import RotatedHeadline from "../../LandingPage/PreHero/RotatedHeadline";
-import InfoIcon from "../PreHero/InfoIcon";
 import { ChatWidget } from "./ChatWidget";
-import { DashboardIcon } from "./Dashboardicon";
 import ParticleAnimation from "./ParticleAnimation";
-import { EthEquivalentTxRate, SmartContractMemory, TotalBlocks } from "./Stats";
+import {
+  EthEquivalentTxRate,
+  LiveStats,
+  SmartContractMemory,
+  TotalBlocks,
+} from "./Stats";
+
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 
 const Hero: React.FC<{
   aiPlaceholders: string[];
@@ -26,7 +33,7 @@ const Hero: React.FC<{
 
       <ParticleAnimation />
 
-      <div className="pt-24 pb-8 md:py-30 md:grid relative">
+      <div className="pt-40 pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-106px]">
         <div className="container-10 col-start-1 row-start-1">
           <div className="md:w-7/10 lg:w-8/10">
             <h1
@@ -58,21 +65,17 @@ const Hero: React.FC<{
           </div>
         </div>
         <div className="container-12 w-full col-start-1 row-start-1 md:flex justify-end mt-8 md:mt-0">
-          <div className="md:w-80 flex flex-col gap-1 text-right">
-            <EthEquivalentTxRate />
-            <TotalBlocks />
-            <SmartContractMemory />
-
-            <div className="backdrop-blur-lg py-3 px-6  hidden md:block">
-              <Link
-                href="https://dashboard.internetcomputer.org/"
-                className="text-white tw-lead inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
-              >
-                <DashboardIcon />
-                See live stats
-              </Link>
-            </div>
-          </div>
+          <AnimateSpawn
+            className="md:w-80 flex flex-col gap-1 text-right"
+            variants={transitions.container}
+          >
+            <QueryClientProvider client={queryClient}>
+              <EthEquivalentTxRate />
+              <TotalBlocks />
+              <SmartContractMemory />
+              <LiveStats />
+            </QueryClientProvider>
+          </AnimateSpawn>
         </div>
       </div>
       <div className="relative">{children}</div>

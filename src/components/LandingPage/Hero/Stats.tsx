@@ -8,6 +8,10 @@ import React from "react";
 import { useQuery } from "react-query";
 import { ConstantRateCounter, SpringCounter } from "../PreHero/Counters";
 import InfoIcon from "../PreHero/InfoIcon";
+import { motion } from "framer-motion";
+import Link from "@docusaurus/Link";
+import { DashboardIcon } from "./Dashboardicon";
+import transitions from "@site/static/transitions.json";
 
 function formatNumber(x: number) {
   return x
@@ -31,7 +35,10 @@ export const TotalBlocks = () => {
   );
 
   return (
-    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6 hidden md:block">
+    <motion.div
+      className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6 hidden md:block"
+      variants={transitions.fadeIn}
+    >
       <figure className="m-0">
         {/* <div className="mb-2 inline-grid relative left-1"> */}
         {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
@@ -55,7 +62,7 @@ export const TotalBlocks = () => {
           Blocks processed <InfoIcon className="w-4 h-4 text-white" />
         </figcaption>
       </figure>
-    </div>
+    </motion.div>
   );
 };
 
@@ -87,7 +94,10 @@ export const EthEquivalentTxRate = () => {
   );
 
   return (
-    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6">
+    <motion.div
+      className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6"
+      variants={transitions.fadeIn}
+    >
       <figure className="m-0 flex gap-3 justify-center md:block">
         {/* <div className="mb-2 inline-grid relative left-1"> */}
         {updateTxRate.isFetched && updateTxRate.isSuccess ? (
@@ -113,19 +123,39 @@ export const EthEquivalentTxRate = () => {
           ETH eq. TX/s <InfoIcon className="w-4 h-4 text-white" />
         </figcaption>
       </figure>
-    </div>
+    </motion.div>
   );
 };
 
 export const SmartContractMemory = () => {
   return (
-    <div className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6  hidden md:block">
+    <motion.div
+      className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6  hidden md:block"
+      variants={transitions.fadeIn}
+    >
       <figure className="m-0">
         $5 <span className="tw-lead-sm">/GB/year</span>
         <figcaption className="tw-paragraph text-white/50 flex items-center justify-end gap-1">
           Smart Contract Memory <InfoIcon className="w-4 h-4 text-white" />
         </figcaption>
       </figure>
-    </div>
+    </motion.div>
+  );
+};
+
+export const LiveStats = () => {
+  return (
+    <motion.div
+      className="backdrop-blur-lg py-3 px-6  hidden md:block"
+      variants={transitions.fadeIn}
+    >
+      <Link
+        href="https://dashboard.internetcomputer.org/"
+        className="text-white tw-lead inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
+      >
+        <DashboardIcon />
+        See live stats
+      </Link>
+    </motion.div>
   );
 };
