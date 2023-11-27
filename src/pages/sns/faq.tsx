@@ -562,7 +562,7 @@ function SnsFaqPage() {
                 <Link href="https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration">
                   SNS tokenomics
                 </Link>
-              <p/>
+              </p>
             </Faq>
 
             <Faq title="How do I participate in a swap?">
