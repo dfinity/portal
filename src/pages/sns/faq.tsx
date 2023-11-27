@@ -924,6 +924,15 @@ function SnsFaqPage() {
                   pressure.
                 </li>
               </ul>
+              <p className="not-prose">
+                <Link
+                  href="https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  More on SNS tokenomics
+                </Link>
+              </p>
             </Faq>
           </FaqSection>
         </section>
