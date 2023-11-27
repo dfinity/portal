@@ -2,15 +2,20 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import Layout from "@theme/Layout";
 import React from "react";
+import Gallery from "../components/Community/Gallery";
+import { communityGallery } from "../components/Community/gallery-images";
 
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import Decks from "../components/LandingPage/Decks/Decks";
+import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
 import FoundationSection from "../components/LandingPage/Foundation";
+import GallerySection from "../components/LandingPage/Gallery";
 import {
   CardsSection,
   CardWithImage,
 } from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
+import IntroCards from "../components/LandingPage/Hero/IntroCards";
 import { NewsSection } from "../components/LandingPage/Hero/News";
 import {
   CollapsedVisionSection,
@@ -53,11 +58,13 @@ export default function Home(): JSX.Element {
             Ipsum ut autem facilis!
           </CollapsedVisionSection>
         </VisionSection>
+        <IntroCards />
       </Hero>
-      {/* <Decks className="container-10" /> */}
 
       <main className="w-full relative bg-[#F1EEF5] z-[0]">
         <div className="overflow-hidden">
+          <GallerySection />
+          <FeaturesSection />
           <Sustainable id="sustainable"></Sustainable>
           <StartBuildingSection
             id="startBuilding"
