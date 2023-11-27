@@ -558,6 +558,11 @@ function SnsFaqPage() {
                   0.05 SNS tokens, where a full token would be worth 100 ICP.
                 </li>
               </ul>
+              <p>Visis the ICP Wiki for a more detailed overvire of{" "}
+                <Link href="https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration">
+                  SNS tokenomics
+                </Link>
+              <p/>
             </Faq>
 
             <Faq title="How do I participate in a swap?">
