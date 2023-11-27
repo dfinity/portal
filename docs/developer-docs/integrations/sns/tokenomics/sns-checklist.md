@@ -13,14 +13,7 @@ launch – that is a decision by the NNS DAO. Ultimately, following this guide a
 an SNS is done at your own risk.
 :::
 
-:::info
-The NNS has approved a new flow for how SNSs can be launched that only require one proposal.
-The old flow required two NNS and one SNS proposal.
-Since this is now the recommended flow how to launch an SNS, this page and others focus on the new "one-proposal" flow.
-Nevertheless, the old, legacy flow is still available for those projects who started with the old flow and want to continue with this path, for example because they already started testing. These project can find the detailed launch stages according to the old flow [here](../launching/launch-summary.md) and the concrete actions to take to run through these stages [here](../launching/launch-steps.md). 
-:::
-
-# 1. Documentation / preparation
+# 1. Documentation / Preparation
 
 ## 1.1. Tokenomics specification
 

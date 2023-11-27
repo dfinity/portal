@@ -47,15 +47,17 @@ Never use `agent.fetchRootKey()` in production builds, only in test builds. Not 
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
 
-### Validate input in the frontend
+### Validate input and canister data in the frontend
 
 #### Security concern
 
-Missing input validation of data from untrusted sources (e.g. users) can lead to malformed data being persisted and delivered back to users. This may lead to DoS, injection attacks, phishing, etc.
+Missing input validation of data from untrusted sources (e.g. users or canisters) can lead to malformed data being persisted and/or delivered back to users. This may lead to DoS, injection attacks, phishing, etc.
 
 #### Recommendation
 
--   Perform data validation already in the front end, in addition to data validation in the canister. Data validation should happen as early as possible.
+-   Perform data validation in the front end, in addition to data validation in the canister. Data validation should happen as early as possible.
+
+-   Also validate data from canisters, especially if you don't trust the canister you are interacting with. Even if the canister is trusted, validating the data it serves is a good practice which can serve as a defense in depth mechanism e.g. in presence of security bugs in the canister or in case of a subnet compromise.  
 
 -   See the [OWASP input validation cheat sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#goals-of-input-validation).
 

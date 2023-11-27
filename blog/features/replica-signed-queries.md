@@ -73,7 +73,7 @@ On the IC, the replica has already begun producing signatures on query responses
 
 To use agent-rs, signature verification on query responses is enabled by default on versions v0.30.0 and newer. Tools such as dfx will be updated to use the latest version of agent-rs in the next release (v0.15.2). 
 
-To use agent-js, existing applications will need to update their agent-js version to v0.20.0 and newer. dfx always uses the `@latest` version of agent-js, meaning new applications will automatically have signatre verification enabled on query responses. 
+To use agent-js, existing applications will need to update their agent-js version to v0.20.0 and newer. dfx always uses the `@latest` version of agent-js, meaning new applications will automatically have signature verification enabled on query responses. 
 
 Older versions of the agents will automatically ignore the `signature` field. 
 

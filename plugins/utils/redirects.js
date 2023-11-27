@@ -179,6 +179,9 @@ const redirects = `
   /docs/current/concepts/data-centers /docs/current/concepts/
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
+
+  /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
+  /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
