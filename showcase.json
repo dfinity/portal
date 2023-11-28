@@ -3082,11 +3082,10 @@
     "screenshots": [
       "/img/showcase/inheritx_screenshot.webp"
     ],
-    "video": "",
+    "video": "https://www.youtube.com/watch?v=S-VYBLeOoA0",
     "display": "Normal",
     "id": "inheritx",
     "oneLiner": "Empowers seamless & confident digital asset succession for individuals",
-    "stats": "-",
     "tags": [
       "Bitcoin",
       "DeFi"
@@ -3094,7 +3093,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/mzurs/InheritX",
     "twitter": "https://twitter.com/icpdelta",
-    "youtube": "",
+    "youtube": "https://www.youtube.com/@inheritX_0101",
     "submittableId": "41410724"
   }
 ]
