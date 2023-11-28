@@ -34,7 +34,22 @@
     - Going further.
     - Resources.
 
-- [5.3 Creating a decentralized token swap](5.3-token-swap-tutorial.md): 
+- [5.3 Creating a decentralized token swap](5.3-token-swap-tutorial.md): In this tutorial, you'll deploy a simple token swap canister that demonstrates how to deposit, swap, and withdraw tokens:
+    - Decentralized token swap canister.
+        - Prerequisites.
+        - Cloning the `icrc2-swap` example.
+        - Reviewing the project's files.
+        - Starting a local replica.
+        - Creating identities for `user_a` and `user_b`.
+        - Deploying `token_a`.
+        - Deploying `token_b`.
+        - Exporting the token canister IDs as environmental variables.
+        - Deploying the swap canister.
+        - Depositing tokens into the swap canister.
+        - Performing a token swap.
+        - Withdrawing tokens.
+        - Checking token balances. 
+
 
 - [5.4 Creating NFTs on the IC](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT for another:
     - How do NFTs work?
