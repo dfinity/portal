@@ -34,19 +34,7 @@
     - Going further.
     - Resources.
 
-- [5.3 Creating a decentralized exchange (DEX)](5.3-DEX-tutorial.md): In this tutorial, you will learn how a DEX functions by deploying a sample project that creates a decentralized exchange and allows you to deposit ICP, then trade ICP for two locally created tokens that use the DIP20 token standard:
-    - Decentralized exchange architecture.
-        - Depositing ICP.
-        - Depositing other tokens.
-        - Placing orders.
-        - Withdrawing funds.
-    - Creating a decentralized exchange.
-        - Prerequisites.
-        - Cloning the `defi` example.
-        - Reviewing the project's files.
-        - Starting a local replica.
-        - Deploying the project.
-        - Using the decentralized exchange user interface.
+- [5.3 Creating a decentralized token swap](5.3-token-swap-tutorial.md): 
 
 - [5.4 Creating NFTs on the IC](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT for another:
     - How do NFTs work?
