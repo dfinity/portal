@@ -2390,23 +2390,6 @@
     "submittableId": "31439157"
   },
   {
-      "id": "joined-africa",
-      "name": "Joined Africa",
-      "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
-      "website": "https://joinedafrica.com",
-      "tags": ["SocialFi"],
-      "description": "At Joined Africa, we are providing a seamless online marketplace that connects sellers and buyers within Africa — empowering sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers who can select from a wide range of categories, including electronics, fashion, vehicles, and more.",
-      "logo": "/img/showcase/joined-africa_logo.jpg",
-      "usesInternetIdentity": true,
-      "youtube": "https://www.youtube.com/@JoinedAfrica",
-      "screenshots": ["/img/showcase/joined-africa_screenshot_0.jpeg", "/img/showcase/joined-africa_screenshot_1.png"],
-      "video": "img/showcase/joined-africa_video.mp4",
-      "github": "https://github.com/aginamena/Joinedafrica.com",
-      "videoContentType": "video/mp4",
-      "submittableId": "36375564"
-  },
-
-  {
     "id": "nftstudio",
     "name": "NFT Studio",
     "website": "https://7xw5z-uqaaa-aaaad-qaqcq-cai.raw.ic0.app/",
