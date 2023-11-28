@@ -3056,6 +3056,20 @@
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
+  }, {
+    "id": "icp-explorer",
+    "name": "ICP Explorer",
+    "website": "https://icp.footprint.network/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "1000 users",
+    "usesInternetIdentity": false,
+    "description": "ICP Explorer is a Block Explorer and Analytics Platform for Internet Computer, a decentralized smart contracts platform.",
+    "oneLiner": "Block Explorer for Internet Computer",
+    "display": "Normal",
+    "logo": "/img/showcase/icp-explorer_logo.webp",
+    "screenshots": []
   },
   {
     "id": "reblock",
@@ -3074,5 +3088,4 @@
       "/img/showcase/reblock_screenshot.jpg"
     ]
   }
-
 ]
