@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import BlobBlue from "@site/static/img/purpleBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
@@ -24,7 +25,7 @@ function ThankYouPage(): JSX.Element {
           <motion.img
             src={BlobBlue}
             alt=""
-            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[1000]"
+            className="absolute pointer-events-none max-w-none w-[800px] -right-[370px] top-[-100px] md:w-[1500px]  md:right-[-700px] 2xl:left-1/2 translate-x-[200px] md:top-[-200px] z-[-1]"
             variants={transitions.item}
           />
           <section className="max-w-page relative px-6 pt-20 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-40 ">
@@ -36,10 +37,16 @@ function ThankYouPage(): JSX.Element {
                 Thank you!
               </motion.h1>
               <motion.p
-                className="tw-lead-sm md:tw-lead mb-10"
+                className="tw-lead-sm md:tw-lead mb-6"
                 variants={transitions.item}
               >
                 Thank you for your interest, we’ll keep you updated!
+              </motion.p>
+
+              <motion.p className="pb-20" variants={transitions.item}>
+                <Link href="/" className="button-primary">
+                  Go to Home page
+                </Link>
               </motion.p>
             </div>
           </section>

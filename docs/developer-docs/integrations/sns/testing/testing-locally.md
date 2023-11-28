@@ -5,7 +5,7 @@ sidebar_position: 2
 
 ## Overview
 
-To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the IC execution environment on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary.md) of decentralizing their dapp.
+To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the IC execution environment on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary-1proposal.md) of decentralizing their dapp.
 
 :::info
 `sns-testing` repo might not work for any dapp. It is intended to showcase one example dapp and so one can tweak for their own dapp.

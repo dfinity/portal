@@ -43,6 +43,13 @@
   --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
 }
 
+/* browser resets */
+abbr[title] {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* imports */
 @import "./animate.scss";
 @import "./blog.scss";
 @import "./code.scss";

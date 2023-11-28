@@ -379,19 +379,23 @@
 
    {
     "id": "modclub",
-    "name": "MODCLUB",
-    "website": "https://ljyte-qiaaa-aaaah-qaiva-cai.raw.ic0.app/",
+    "name": "Modclub",
+    "oneLiner": "The world's first AI powered Web3 crowdwork platform",
+    "website": "https://modclub.ai",
+    "twitter": "https://twitter.com/ModclubApp",
     "tags": [
       "SocialFi", "Tools / Infrastructure"
     ],
-    "description": "MODCLUB is a decentralized moderation tool based hosted fully on-chain. Built on the Internet Computer, MODCLUB rewards users for effectively moderating content. Currently in beta stages of their solution, users will be rewarded in tokens for moderating their favorite communities.",
+    "stats": "20,000+ tasks completed",
+    "description": "Modclub is an AI-enhanced decentralized crowdwork platform that handles resource-intensive tasks such as moderation, user verification and data labeling.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/modclub_logo.webp",
     "screenshots": [
       "/img/showcase/modclub_screenshot_0.webp"
-    ]
+    ],
+    "github": "https://github.com/modclub-app"
   },
-
+  
   {
     "id": "querio",
     "name": "Querio",
@@ -401,9 +405,7 @@
     ],
     "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
     "logo": "/img/showcase/Querio_Logo.webp",
-    "screenshots": [
-      "/img/showcase/modclub_screenshot_0.webp"
-    ]
+    "screenshots": []
   },
 
   {
@@ -2388,23 +2390,6 @@
     "submittableId": "31439157"
   },
   {
-      "id": "joined-africa",
-      "name": "Joined Africa",
-      "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
-      "website": "https://joinedafrica.com",
-      "tags": ["SocialFi"],
-      "description": "At Joined Africa, we are providing a seamless online marketplace that connects sellers and buyers within Africa — empowering sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers who can select from a wide range of categories, including electronics, fashion, vehicles, and more.",
-      "logo": "/img/showcase/joined-africa_logo.jpg",
-      "usesInternetIdentity": true,
-      "youtube": "https://www.youtube.com/@JoinedAfrica",
-      "screenshots": ["/img/showcase/joined-africa_screenshot_0.jpeg", "/img/showcase/joined-africa_screenshot_1.png"],
-      "video": "img/showcase/joined-africa_video.mp4",
-      "github": "https://github.com/aginamena/Joinedafrica.com",
-      "videoContentType": "video/mp4",
-      "submittableId": "36375564"
-  },
-
-  {
     "id": "nftstudio",
     "name": "NFT Studio",
     "website": "https://7xw5z-uqaaa-aaaad-qaqcq-cai.raw.ic0.app/",
@@ -3085,5 +3070,22 @@
     "display": "Normal",
     "logo": "/img/showcase/icp-explorer_logo.webp",
     "screenshots": []
+  },
+  {
+    "id": "reblock",
+    "name": "ReBlock",
+    "website": "https://www.reblock.finance/",
+    "tags": [
+      "DeFi",
+      "Ethereum"
+    ],
+    "twitter": "https://twitter.com/reblock_site",
+    "description": "ReBlock is an earning protocol for investors to earn sustainable passive income, secured by real-world assets, around the globe.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/reblock_logo.png",
+    "screenshots": [
+      "/img/showcase/reblock_screenshot.jpg"
+    ]
   }
 ]
