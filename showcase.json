@@ -2390,23 +2390,6 @@
     "submittableId": "31439157"
   },
   {
-      "id": "joined-africa",
-      "name": "Joined Africa",
-      "oneLiner": "Joined Africa is a marketplace where sellers advertise products in crypto currency, connecting buyers directly with sellers within Africa.",
-      "website": "https://joinedafrica.com",
-      "tags": ["SocialFi"],
-      "description": "At Joined Africa, we are providing a seamless online marketplace that connects sellers and buyers within Africa — empowering sellers to advertise their products, expand their reach, and effortlessly connect with potential buyers who can select from a wide range of categories, including electronics, fashion, vehicles, and more.",
-      "logo": "/img/showcase/joined-africa_logo.jpg",
-      "usesInternetIdentity": true,
-      "youtube": "https://www.youtube.com/@JoinedAfrica",
-      "screenshots": ["/img/showcase/joined-africa_screenshot_0.jpeg", "/img/showcase/joined-africa_screenshot_1.png"],
-      "video": "img/showcase/joined-africa_video.mp4",
-      "github": "https://github.com/aginamena/Joinedafrica.com",
-      "videoContentType": "video/mp4",
-      "submittableId": "36375564"
-  },
-
-  {
     "id": "nftstudio",
     "name": "NFT Studio",
     "website": "https://7xw5z-uqaaa-aaaad-qaqcq-cai.raw.ic0.app/",
@@ -3095,5 +3078,37 @@
     "twitter": "https://twitter.com/icpdelta",
     "youtube": "https://www.youtube.com/@inheritX_0101",
     "submittableId": "41410724"
+  }, 
+  {
+    "id": "icp-explorer",
+    "name": "ICP Explorer",
+    "website": "https://icp.footprint.network/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "1000 users",
+    "usesInternetIdentity": false,
+    "description": "ICP Explorer is a Block Explorer and Analytics Platform for Internet Computer, a decentralized smart contracts platform.",
+    "oneLiner": "Block Explorer for Internet Computer",
+    "display": "Normal",
+    "logo": "/img/showcase/icp-explorer_logo.webp",
+    "screenshots": []
+  },
+  {
+    "id": "reblock",
+    "name": "ReBlock",
+    "website": "https://www.reblock.finance/",
+    "tags": [
+      "DeFi",
+      "Ethereum"
+    ],
+    "twitter": "https://twitter.com/reblock_site",
+    "description": "ReBlock is an earning protocol for investors to earn sustainable passive income, secured by real-world assets, around the globe.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/reblock_logo.png",
+    "screenshots": [
+      "/img/showcase/reblock_screenshot.jpg"
+    ]
   }
 ]
