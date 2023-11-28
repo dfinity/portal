@@ -3056,7 +3056,30 @@
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
-  }, {
+  },
+  {
+    "name": "InheritX",
+    "description": "InheritX is a blockchain-based application developed on Internet Computer (ICP) that allows users to create a digital will and bequeath their assets to designated beneficiaries in the event of their death.",
+    "website": "https://inherit-x.vercel.app/",
+    "logo": "/img/showcase/inheritx_logo.webp",
+    "screenshots": [
+      "/img/showcase/inheritx_screenshot.webp"
+    ],
+    "video": "https://www.youtube.com/watch?v=S-VYBLeOoA0",
+    "display": "Normal",
+    "id": "inheritx",
+    "oneLiner": "Empowers seamless & confident digital asset succession for individuals",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/mzurs/InheritX",
+    "twitter": "https://twitter.com/icpdelta",
+    "youtube": "https://www.youtube.com/@inheritX_0101",
+    "submittableId": "41410724"
+  }, 
+  {
     "id": "icp-explorer",
     "name": "ICP Explorer",
     "website": "https://icp.footprint.network/",
