@@ -279,6 +279,6 @@ To delete all canisters for a project:
 
 -   [Building on the IC](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
+-   [Concepts](../../concepts/index.md) to learn about different IC concepts.  
 
 -   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 

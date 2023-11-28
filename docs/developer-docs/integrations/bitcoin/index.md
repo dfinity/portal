@@ -21,7 +21,7 @@ These are only a few examples of how one can use the Bitcoin integration feature
 
 After the Bitcoin mainnet release (general availability release) of the Bitcoin feature, a **chain key Bitcoin (ckBTC)** canister was made available. The ckBTC canister provides on-chain bitcoin on the IC, which looks and feels like wrapped bitcoin but has a much stronger underlying trust model because of its decentralized architecture and using threshold ECDSA instead of bridges. 
 
-We envision that many people will prefer to use ckBTC instead of our native integration for their projects because of some distinct advantages:
+The IC envisions that many people will prefer to use ckBTC instead of our native integration for their projects because of some distinct advantages:
 -   **Easier to integrate:** instead of using the low-level Bitcoin integration API, one can simply access the ckBTC ledger like any other ledger on the Internet Computer. The ckBTC ledger adheres to the ICRC-2 token standard for fungible tokens.
 -   **Faster and cheaper transfers:** ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers can be done at high speed and low cost directly on the IC.
 

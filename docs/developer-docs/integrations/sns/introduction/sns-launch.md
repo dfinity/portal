@@ -15,8 +15,8 @@ to the NNS and ask it to create an SNS and start a decentralization swap for it.
 The decentralization swap collects ICP from participants and distributes the voting
 power of the SNS among participants by swapping the ICP for (staked) SNS tokens.
 
-We next explain this key concept, the decentralization swap, in more detail and refer to
-[this section](../launching/launch-summary.md) for the detailed, technical stages of an SNS launch.
+The decentralization swap is a key concept explained in more detail below. Refer to
+[this section](../launching/launch-summary-1proposal.md) for the detailed, technical stages of an SNS launch.
 
 ## Decentralization swap
 

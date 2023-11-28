@@ -80,6 +80,22 @@ const sidebars = {
             "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
           ],
         },
+        {
+          type: "category",
+          label: "Level 4: Space pilot",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-4/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-4/4.1-icp-ledger",
+            "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+            "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+            "tutorials/developer-journey/level-4/4.4-nns-governance",
+            "tutorials/developer-journey/level-4/4.5-using-quill",
+            "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+          ],
+        },
       ],
     },
     {
@@ -150,8 +166,8 @@ const sidebars = {
             id: "concepts/index",
           },
           items: [
+            "concepts/what-is-ic",
             "concepts/canisters-code",
-            "concepts/data-centers",
             "developer-docs/gas-cost",
             "concepts/governance",
             "concepts/nodes-subnets",
@@ -237,7 +253,6 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
-        "developer-docs/backend/resource-limits",
       ],
     },
     {
@@ -354,6 +369,11 @@ const sidebars = {
       },
       items: [
         {
+          type: "doc",
+          label: "Canister history",
+          id: "developer-docs/production/canister-history",
+        },
+        {
           type: "category",
           label: "Custom domains",
           link: {
@@ -369,8 +389,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Instruction limits",
-          id: "developer-docs/production/instruction-limits",
+          label: "Resource limits",
+          id: "developer-docs/production/resource-limits",
         },
         {
           type: "doc",
@@ -635,8 +655,6 @@ const sidebars = {
           items: [
             "developer-docs/integrations/sns/launching/launch-summary-1proposal",
             "developer-docs/integrations/sns/launching/launch-steps-1proposal",
-            "developer-docs/integrations/sns/launching/launch-summary",
-            "developer-docs/integrations/sns/launching/launch-steps",
           ],
         },
         {

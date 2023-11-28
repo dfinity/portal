@@ -34,7 +34,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install DFX
-        run: sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+        uses: dfinity/setup-dfx@main
 
       - name: "Build & Deploy"
         run: |

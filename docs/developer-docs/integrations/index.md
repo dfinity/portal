@@ -32,7 +32,7 @@ A threshold ECDSA implementation on a blockchain can be viewed as the on-chain p
 
 ## vetKeys
 
-The VETKeys feature is in ongoing development on the Internet Computer (IC). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind.
+The VETKeys feature is in ongoing development on the Internet Computer (IC). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such the focus of this primer has that example in mind.
 
 * [vetKeys technology overview.](https://internetcomputer.org/docs/current/developer-docs/integrations/vetkeys/technology-overview)
 * [vetKeys primer.](https://internetcomputer.org/blog/features/vetkey-primer)

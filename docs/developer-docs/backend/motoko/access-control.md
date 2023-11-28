@@ -215,7 +215,7 @@ Backend canister via Candid interface:
 
 ## Check the current identity context
 
-Before we create any additional identities, let’s review the principal identifiers associated with the `owner` identity and the cycles wallet for your `owner` identity. This `owner` identity is created when your canisters were deployed. 
+Before you create any additional identities, let’s review the principal identifiers associated with the `owner` identity and the cycles wallet for your `owner` identity. This `owner` identity is created when your canisters were deployed. 
 
 On the Internet Computer blockchain, a principal is the internal representative for a user, canister, node, or subnet. The textual representation for a principal is the external identifier you see displayed with working with the principal data type.
 

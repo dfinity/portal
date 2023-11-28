@@ -172,9 +172,16 @@ const redirects = `
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
-  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/
+  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-ic
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
-  /docs/current/concepts/what-is-IC /docs/current/concepts/
+  /docs/current/developer-docs/production/instruction-limits /docs/current/developer-docs/production/resource-limits
+  /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/production/resource-limits
+  /docs/current/concepts/data-centers /docs/current/concepts/
+  /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
+
+  /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
+  /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

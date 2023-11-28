@@ -96,7 +96,9 @@ dfx canister call icrc1_ledger_canister icrc1_transfer '(record { to = record { 
 ```
 dfx canister call icrc1_index_canister status '()'
 ```
-It should now indicate that an additional block was synced compared to the last time we called the status endpoint.
+
+It should now indicate that an additional block was synced compared to the last time you called the status endpoint.
+
 ```
 (record { num_blocks_synced = 2 : nat64 })
 ```
@@ -188,7 +190,7 @@ Then you can query the transactions for this principal with the default subaccou
 dfx canister call icrc1_index_canister get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
-The result will include the initial mint operation as well as the transfer that we made:
+The result will include the initial mint operation as well as the transfer that you made:
 
 ```
 (

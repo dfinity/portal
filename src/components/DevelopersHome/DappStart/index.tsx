@@ -81,7 +81,7 @@ function Index() {
               <p className={styles.informationTitle}>Cycles faucet</p>
               <p className={styles.informationBody}>
                 Get free cycles to use for testing and deployment of your
-                project on the Internet Computer
+                project on the Internet Computer.
               </p>
             </div>
             <RightArrowSVG className={styles.informationIcon} />

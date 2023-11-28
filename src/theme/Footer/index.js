@@ -146,7 +146,7 @@ function Footer({ editPath }) {
             {mediaLinks.map((item) => (
               <div key={item.href || item.to} className={styles.mediaLinks}>
                 <Link to={item.to} aria-label={`Go to ${item.label}`}>
-                  <img src={item.icon} alt="" loading="lazy" />
+                  <img src={item.icon} alt={item.label} loading="lazy" />
                 </Link>
               </div>
             ))}

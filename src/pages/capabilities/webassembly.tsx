@@ -109,8 +109,8 @@ function WebAssemblyPage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
                 The Internet Computer executes the code of an application on
-                multiple decentralized nodes. This is called replicated
-                execution, and it works even in the presence of untrusted and
+                multiple decentralized nodes, which are operated by node providers who are selected and vetted by the NNS token holders. This replicated
+                execution works even in the presence of untrusted and
                 malicious nodes. A critical property for replicated execution is
                 its determinism, which refers to executing identical code with
                 the same inputs, invariably yielding the same result. This

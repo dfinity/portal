@@ -516,7 +516,7 @@ function CkbtcPage(): JSX.Element {
                 </div>
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a wrapped token.
+                    Why it’s not a wrapped token
                   </h3>
 
                   <p className="tw-paragraph mb-3">
@@ -526,11 +526,47 @@ function CkbtcPage(): JSX.Element {
                     addresses either on the Bitcoin network or the Internet
                     Computer, making it the first true multi-chain asset.
                   </p>
+
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  >
+                    <LinkArrowUpRight />
+                    ckBTC security audit
+                  </Link>
                 </div>
 
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    How it differs from Lightning.
+                    How ckBTC's security was assessed
+                  </h3>
+
+                  <p className="tw-paragraph mb-3">
+                    Several security assessments are taken on critical components of
+                    the Internet Computer such as ckBTC to ensure robust security. These
+                    include{" "}
+                    <Link href="https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24/">
+                      TLA+ models
+                    </Link> to formally verify some guarantees, several internal
+                    and external security assessments. In 2023, both Bitcoin integration and
+                    ckBTC have undergone an external security audit conducted by{" "}
+                    <Link href="https://www.trailofbits.com/">
+                      Trail of Bits
+                    </Link> with no severe issues found.
+                  </p>
+
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  >
+                    <LinkArrowUpRight />
+                    ckBTC security audit
+                  </Link>
+                </div>
+
+                <div>
+                  <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
+                    How it differs from Lightning
                   </h3>
 
                   <p className="tw-paragraph mb-3">
