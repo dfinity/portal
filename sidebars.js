@@ -242,6 +242,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          label: "Testing canisters with PocketIC",
+          id: "developer-docs/setup/pocket-ic",
+        },
+        {
+          type: "doc",
           label: "Using Visual Studio Code",
           id: "developer-docs/setup/vs-code",
         },
