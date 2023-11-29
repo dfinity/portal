@@ -54,7 +54,7 @@ This section includes
 * [An introduction to managing an SNS](./managing/manage-sns-intro.md).
 * [An introduction to SNS proposals](./managing/making-proposals.md).
 * [Tips regarding cycles management for the canisters](./managing/cycles-usage.md).
-* [An intorduction to how to use the asset canister with an SNS-controlled dapp](./managing/sns-asset-canister.md).
+* [An introduction to how to use the asset canister with an SNS-controlled dapp](./managing/sns-asset-canister.md).
 
 
 <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->
