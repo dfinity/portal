@@ -51,7 +51,7 @@
         - Checking token balances. 
 
 
-- [5.4 Creating NFTs on the IC](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT for another:
+- [5.4 Creating NFTs on the IC](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another:
     - How do NFTs work?
     - NFT standards.
         - DIP721.
