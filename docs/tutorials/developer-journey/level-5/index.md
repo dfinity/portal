@@ -74,7 +74,15 @@
     - Resources.
 
 - [5.5 Creating an auction dapp](5.5-auction-tutorial.md): 
-
+- How does an auction work?
+- Creating an auction dapp.
+    - Prerequisites.
+    - Cloning the `auction` example.
+    - Reviewing the project's files.
+    - Creating the backend canister.
+    - Starting a local replica.
+    - Deploying the project's canisters.
+    - Using the dapp.
 
 - [5.6 Next steps](5.6-next-steps.md): In this final tutorial, you'll learn about some of the different resources to help guide you further in your personal developer journey:
     - Developer grants.
