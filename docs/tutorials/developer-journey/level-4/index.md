@@ -53,6 +53,10 @@
         - Neurons.
         - Proposals.
     - Why is the NNS important to developers?
+    - What is an SNS?
+        - How an SNS works.
+        - SNS decentralization swaps.
+        - SNS resources.
     - Using the NNS dapp.
         - Transferring ICP tokens into your Internet Identity `Main` account.
         - Staking ICP in a neuron.
