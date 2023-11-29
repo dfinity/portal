@@ -3110,5 +3110,23 @@
     "screenshots": [
       "/img/showcase/reblock_screenshot.jpg"
     ]
+  },
+  {
+    "id": "xpnetwork",
+    "name": "XP.NETWORK",
+    "website": "https://xp.network/",
+    "tags": [
+      "NFT",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/xpnetwork_",
+    "description": "NFT Bridge connecting 30+ EVM and Non-EVM chains",
+    "usesInternetIdentity": false,
+    "authOrigins":"https://bridge.xp.network/",
+    "display": "Normal",
+    "logo": "/img/showcase/xpnetwork_logo.png",
+    "screenshots": [
+      "/img/showcase/xpprintscreen.jpg"
+    ]
   }
 ]
