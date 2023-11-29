@@ -67,31 +67,14 @@
         - Transferring an NFT.
         - Querying the balance of NFTs for your user principal.
         - Querying the maximum amount of NFTs that can be minted.
-        - Querying the NFT”s metadata.
+        - Querying the NFT's metadata.
         - Querying token IDs owned by your user.
         - Querying the NFT’s information.
         - Querying the owner of a specific token ID.
     - Resources.
 
-- [5.5 Launching an SNS](5.5-SNS-tutorial.md): A Service Nervous System (SNS) is an advanced form of a DAO:
-    - How an SNS works.
-        - SNS asset canisters.
-        - Decentralized swaps.
-        - SNS tokenomics and rewards.
-    - Planning an SNS launch.
-    - Stages of an SNS launch.
-        - SNS launch checklist.
-    - Creating a sample SNS.
-        - Prerequisites.
-        - Cloning the `ins-testing` repo.
-        - Setting up the local `ins-testing` repo.
-        - Running a basic SNS scenario. 
-        - Testing your own app’s SNS decentralization.
-        - Testing the operation of the dapp under SNS control locally.
-        - Testing your SNS using SNS testflight.
-    - How to launch your SNS on the mainnet.
-    - Managing an SNS once launched.
-    - Resources.
+- [5.5 Creating an auction dapp](5.5-auction-tutorial.md): 
+
 
 - [5.6 Next steps](5.6-next-steps.md): In this final tutorial, you'll learn about some of the different resources to help guide you further in your personal developer journey:
     - Developer grants.
