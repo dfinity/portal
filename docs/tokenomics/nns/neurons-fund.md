@@ -16,7 +16,7 @@ The NF comprises four main components:
 
 Neurons can join or leave the NF using a checkbox in the NNS front-end application. This action can be taken at any time, even during ongoing voting on SNS proposals. Joining the NF means neurons expose their maturity to the risks associated with participating in SNSes.
 
-### 2: NF's Participation in Decentralization Swaps
+### 2: NF's participation in decentralization swaps
 
 If a proposal to create an SNS is adopted, the decentralization swap, where initial tokens of the SNS are sold, starts. 
 The extent of the NF's involvement in a specific SNS swap is decided by the Matched Funding scheme. This scheme correlates the fund participation with the level of direct participation. For further information see [here](https://wiki.internetcomputer.org/wiki/Matched_Funding). At the beginning of the swap, NF neurons' maturity is reduced proportionally to the maximum possible NF participation (`M`)
