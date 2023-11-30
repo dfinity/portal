@@ -2,7 +2,7 @@
 
 ## Overview
 
-Calls on ICP require that a cryptographic `signature` and `principal` are attached, usually in the form of an identity, be attached to the call. This identity can be anonymous or authenticated using a cryptographic signature. Canisters can use this attached identity to respond to a call, which enables contracts to use those identities for other workflows and purposes. 
+Network calls on ICP require that a cryptographic `signature` and `principal` are attached, usually in the form of an identity, be attached to the call. This identity can be anonymous or authenticated using a cryptographic signature. Canisters can use this attached identity to respond to a call, which enables contracts to use those identities for other workflows and purposes. 
 
 An identity includes both the private and public keys. Because the private key needs to say private, the public key is sent along with a signature signed by the identity encoded as a `Principal`. When a delegation is sent the same workflow is used, except the Delegation Chain is provided as well. 
 
