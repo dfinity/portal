@@ -1,11 +1,11 @@
 ---
 title: Team spotlight - SDK
-description: In this issue, we sat down with the SDK team to talk all things IC SDK and the upcoming Cycles Ledger feature! For most IC devs, IC SDK is at the center of their workflow, so I'm sure many of you have been looking forward to this team spotlight!
+description: In this issue, we sat down with the SDK team to talk all things IC SDK and the upcoming Cycles Ledger feature! For most IC devs, the IC SDK is at the center of their workflow, so I'm sure many of you have been looking forward to this team spotlight!
 tags: [Team spotlight]
 image: /img/blog/dev-update-blog-SDK.jpg
 ---
 
-Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sat down with the SDK team to talk all things IC SDK and the upcoming Cycles Ledger feature! For most IC devs, IC SDK is at the center of their workflow, so I'm sure many of you have been looking forward to this team spotlight! With that, let's dive into the interview. 
+Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sat down with the SDK team to talk all things IC SDK and the upcoming Cycles Ledger feature! For most IC devs, the IC SDK is at the center of their workflow, so I'm sure many of you have been looking forward to this team spotlight! With that, let's dive into the interview. 
 
 **To get started, let's get a brief overview of the team. What is the purpose of the SDK team?**
 
@@ -15,7 +15,7 @@ Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sa
 
 *The SDK team includes six engineers, a technical writer, a research scientist, and an engineering manager.*
 
-**On a fundamental level, what is IC SDK? What are the components of it?**
+**On a fundamental level, what is the IC SDK? What are the components of it?**
 
 *The IC SDK is a command line interface that provides a developer with everything they need to locally run an instance of the internet computer for development purposes. It comes with a copy of the replica, a command line tool to build and install canisters, and many utilities. Some such utilities are:*
 
@@ -33,15 +33,15 @@ Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sa
 
 *The SDK team is also responsible for maintaining the Rust and JavaScript agents, as well as the Rust Canister Development Kit (CDK).*   
 
-**It sounds like the SDK is definitely designed to set up devs with everything they need to get started! How does IC SDK fit into ICP’s stack? What layer does it primarily operate on?**
+**It sounds like the SDK is definitely designed to set up devs with everything they need to get started! How does the IC SDK fit into ICP’s stack? What layer does it primarily operate on?**
 
 *The IC SDK is how most developers will interact with the Internet Computer. Rather than implementing the Internet Computer interface specification from scratch, most applications will use DFX and the Rust or JavaScript agent to make their calls to canisters.*
 
 *SDK team code runs in every ICP website, inside the service worker, in all the Rust canisters running on ICP, and in most Continuous Integration jobs. We depend on builds of the replica, new releases of the Motoko compiler, and any new updates to the internet computer specification.*
 
-**What is the process of creating a project using IC SDK?**
+**What is the process of creating a project using the IC SDK?**
 
-*Once IC SDK has been downloaded and installed, the process of creating a project is simple. You can use the `dfx new` command to guide you through the process of bootstrapping a new project. You can decide on the language you’d like to use, whether or not you’d like to incorporate a frontend (UI), and add a number of supported integrations using the `dfx deps` feature.**
+*Once the IC SDK has been downloaded and installed, the process of creating a project is simple. You can use the `dfx new` command to guide you through the process of bootstrapping a new project. You can decide on the language you’d like to use, whether or not you’d like to incorporate a frontend (UI), and add a number of supported integrations using the `dfx deps` feature.**
 
 **The SDK team has several important projects in the pipeline. What project do you think developers are the most excited about?**
 
@@ -55,13 +55,13 @@ Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sa
 
 *The end of the year. It will be our holiday gift to you :)*
 
-**I'm sure that since IC SDK is such a fundamental part of the developer experience, the SDK team must interact with other teams quite frequently. How does the SDK team work with other teams?**
+**I'm sure that since the IC SDK is such a fundamental part of the developer experience, the SDK team must interact with other teams quite frequently. How does the SDK team work with other teams?**
 
 *There are a number of “sister” teams to SDK, such as Execution and Runtime. We rely on the code shipped by them (replica) and they also rely on us for developer-driven feedback that helps us make the replica (and underlying platform) better in all aspects.*
 
 *We also occasionally work with other teams when there is a cross-functional initiative going on. One example was when the Service Nervous System was developed. SDK worked closely with the SNS team to ensure that the tooling provided met all of the specifications.*
 
-**What feature of IC SDK do developers benefit from the most? What features are solely quality of life features for developers?**
+**What feature of the IC SDK do developers benefit from the most? What features are solely quality of life features for developers?**
 
 *Developers rely on many dfx functions to perform critical tasks and obtain important information. One example is the `dfx deploy` command - this command seems simple, but there is a lot going on beneath the hood that allows your code to be deployed to the mainnet. `dfx ledger` commands are another great example of simple commands that go a long way in terms of impact.**
 
@@ -73,7 +73,7 @@ Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sa
 
 *The Developer Blog is a great place to look for updates 🙂. We also post important updates and discussions in the forum - that is a great place to take part in discussions that shape what we ultimately develop.*
 
-**What is one feature or aspect of IC SDK that the team is the most proud of?**
+**What is one feature or aspect of the IC SDK that the team is the most proud of?**
 
 *We take pride in everything we do, and we go to great lengths to make sure that the code we ship is stable and reliable. I am personally proud of our track record of reliability. We have over 150 checks in our CI workflow, and that includes end to end tests, unit tests, and smoke tests that we run across multiple platforms.*
 
@@ -81,7 +81,7 @@ Hey devs and welcome to this edition of ICP team spotlight! In this issue, we sa
 
 *We are almost entirely remote and spread geographically across 4 time zones. This gives us the unique advantage of being able to interact with our developer community (almost) around the clock.*
  
-A huge thank you to the SDK team for chatting with us today and giving us some great insight into IC SDK! Be sure to tune in next time for another team spotlight post! 
+A huge thank you to the SDK team for chatting with us today and giving us some great insight into the IC SDK! Be sure to tune in next time for another team spotlight post! 
 
 -DFINITY
 
