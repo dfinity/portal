@@ -126,7 +126,7 @@ To test one of the application subnets and install a canister, use the code:
 ```rust
 let app_sub_2 = pic.topology().get_app_subnets()[1];
 let app_can_id = pic.create_canister_on_subnet(..., app_sub_2);
-```
+pic.install_canister(app_can_id, ...);
 
 To create a canister with a specific `canister_id` on a named subnet, in this example the NNS subnet, use the code:
 
