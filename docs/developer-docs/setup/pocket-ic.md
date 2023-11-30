@@ -25,7 +25,7 @@ PocketIC is designed to remedy these pitfalls, resulting in a testing environmen
 - Support for Xnet calls and multiple subnets. 
 
 :::caution
-While PocketIC supports integration with any language, currently Rust and Python are supported and will be covered in this guide.
+While PocketIC can support integration with any language, Rust and Python will be covered in this guide.
 :::
 
 ## PocketIC Rust
