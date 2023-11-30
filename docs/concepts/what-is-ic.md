@@ -76,7 +76,7 @@ The Internet Computer also enables developers to use [cryptographically-secure i
 
 - [Building backend canisters with Rust](/docs/current/developer-docs/backend/rust/).
 
-## Connect with ICP community
+## Connect with the ICP community
 
 - [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
 
