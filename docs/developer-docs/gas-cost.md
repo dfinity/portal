@@ -36,9 +36,9 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
  |                                      |                                                                                                                  |                                       |                                       |                                    |
  | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27,200                     |
-| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside the IC, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
-| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27,200                     |
+| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside ICP, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
+| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
 
 Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
@@ -67,9 +67,9 @@ To derive the estimated cost for a GB Storage per month, a 30 day month is assum
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | $0.00000016622522           | $0.00000043474178           |
  |                                      |                                                                                                                  |                             |                             |
  | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
- | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
-| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
+ | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
+| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022).
 

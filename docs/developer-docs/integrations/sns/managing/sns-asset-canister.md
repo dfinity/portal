@@ -2,7 +2,7 @@
 
 ## Overview
 
-The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides users with a way to store and retrieve static assets from a canister deployed on the IC. Generally, asset canisters are used to serve HTML, CSS, or JavaScript assets, which are typically part of a dapp's frontend. For this reason, the asset canister is also referred to as the frontend canister. For purposes of this guide, it will be referred to as the asset canister. 
+The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides users with a way to store and retrieve static assets from a canister deployed on ICP. Generally, asset canisters are used to serve HTML, CSS, or JavaScript assets, which are typically part of a dapp's frontend. For this reason, the asset canister is also referred to as the frontend canister. For purposes of this guide, it will be referred to as the asset canister. 
 
 In the context of the SNS, a dapp's associated asset canister serves the frontend assets related to the dapp and may also include a frontend to the SNS DAO, e.g., through which users can vote on governance proposals.  
 

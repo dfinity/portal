@@ -7,9 +7,9 @@ sidebar_position: 1
 
 To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is common practice to use an SDK. The [IC SDK](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) is a common entry point. The IC SDK supports a few programming languages out of the box.
 
-Because the Internet Computer blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create IC canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
+Because the Internet Computer blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
 
-In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the IC](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
+In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the ICP](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
 
 In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. 
 
@@ -58,7 +58,7 @@ For a more in-depth comparison, read on.
 | Stable memory support | Automatic, supported by the language. Performance is not ideal yet. Bypassing the language is possible, but error-prone. | Library-supported. Automatic in simple cases, otherwise manual implementations are needed. More predictable than Motoko. |
 | Asynchronous data and control flow support | Native | Native |
 | Actor paradigm support (canister = actor) | Native | Error-prone, conflicts with deep-rooted language features (e.g. the borrow checker). |
-| IC-specific static analysis | Enforces various safety checks. | No static checking. Canisters may trap when violating restrictions. |
+| ICP-specific static analysis | Enforces various safety checks. | No static checking. Canisters may trap when violating restrictions. |
 
 ### WebAssembly considerations:
 

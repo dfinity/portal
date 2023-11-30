@@ -176,7 +176,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "How the IC works",
+          label: "How the ICP works",
           link: {
             type: "doc",
             id: "concepts/index",

@@ -44,7 +44,7 @@ type TransferArgs = record {
     // If the transfer is successful, the balance of this address increases by `amount`.
     to: AccountIdentifier;
     // The point in time when the caller created this request.
-    // If null, the ledger uses current IC time as the timestamp.
+    // If null, the ledger uses current ICP time as the timestamp.
     created_at_time: opt TimeStamp;
 };
 
@@ -169,7 +169,7 @@ type QueryArchiveFn = func (GetBlocksArgs) -> (QueryArchiveResult) query;
 // not have all the blocks that the caller requested: One or more "archive" canisters might
 // store some of the requested blocks.
 //
-// Note: as of Q4 2021 when this interface is authored, the IC doesn't support making nested 
+// Note: as of Q4 2021 when this interface is authored, ICP doesn't support making nested 
 // query calls within a query call.
 type QueryBlocksResponse = record {
     // The total number of blocks in the chain.

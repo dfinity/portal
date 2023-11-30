@@ -184,7 +184,7 @@ Namespace `icrc1` is reserved for keys defined in this standard.
 
 Consider the following scenario:
 
-- An agent sends a transaction to an ICRC-1 ledger hosted on the IC.
+- An agent sends a transaction to an ICRC-1 ledger hosted on ICP.
 - The ledger accepts the transaction.
 - The agent loses the network connection for several minutes and cannot learn about the outcome of the transaction.
 

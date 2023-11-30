@@ -7,19 +7,19 @@ This document is a specification of the public interface of the ledger canister.
 Parts of the canister interface are for canister-internal consumption only, and therefore not part of this specification. However, whenever relevant, some insights into those aspects are shared as well.
 :::
 
-In brief, the ledger canister maintains a set of accounts owned by IC principals; each account is associated with a tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the ledger canister also allows minting and burning of tokens, which are additional transactions recorded on the transaction ledger.
+In brief, the ledger canister maintains a set of accounts owned by ICP principals; each account is associated with a tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the ledger canister also allows minting and burning of tokens, which are additional transactions recorded on the transaction ledger.
 
 ## Terminology
 
 ### Tokens {#_tokens}
 
-There can be multiple utility **tokens** in the IC at once. The **utility tokens** used by the IC governance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of tokens are \"e8\"s: one e8 is 10^-8^ tokens.
+There can be multiple utility **tokens** in ICP at once. The **utility tokens** used by ICP governance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of tokens are \"e8\"s: one e8 is 10^-8^ tokens.
 
 ### Accounts {#_accounts}
 
 The ledger canister keeps track of **accounts**:
 
--   Every account belongs to (and is controlled by) an IC principal.
+-   Every account belongs to (and is controlled by) an ICP principal.
 
 -   Each account has precisely one owner (i.e. no "joint accounts").
 
@@ -144,7 +144,7 @@ The owner of an account can **transfer tokens** from that account to any other a
 
 -   `memo`: this is a 64-bit number chosen by the sender; it can be used in various ways, e.g. to identify specific transfers.
 
--   `created_at_time`: a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller then this is set to the current IC time.
+-   `created_at_time`: a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller then this is set to the current ICP time.
 
 The ledger canister executes a `transfer` call as follows:
 
@@ -152,7 +152,7 @@ The ledger canister executes a `transfer` call as follows:
 
 -   #### Step 2: Checks that the transaction is:
     - Recent enough (has been created within the last 24 hours).
-    - Is not "in the future" (that is, it checks that `created_at_time` is not in the future by more than an allowed time drift, specified by a parameter in the IC, currently set at 60 seconds).
+    - Is not "in the future" (that is, it checks that `created_at_time` is not in the future by more than an allowed time drift, specified by a parameter in ICP, currently set at 60 seconds).
 
 -   #### Step 3: Calculates the source account (using the calling principal and `from_subaccount`) and checks that it holds more than amount+fee ICP.
 
@@ -272,7 +272,7 @@ Additional datatypes & canister methods:
         // If the transfer is successful, the balance of this address increases by `amount`.
         to: AccountIdentifier;
         // The point in time when the caller created this request.
-        // If null, the ledger uses current IC time as the timestamp.
+        // If null, the ledger uses current ICP time as the timestamp.
         created_at_time: opt TimeStamp;
     };
 
@@ -322,7 +322,7 @@ The reply consists of:
 
 -   `length`: the length of the entire transaction ledger at the time when the call was executed.
 
--   `certificate`: an optional certificate. This is a signature of the IC on the hash of the last block in the ledger; the certificate is only returned if the method is invoked as an unreplicated query call.
+-   `certificate`: an optional certificate. This is a signature of ICP on the hash of the last block in the ledger; the certificate is only returned if the method is invoked as an unreplicated query call.
 
 -   `blocks`: a (potentially partial) list of the requested blocks. The range of blocks returned is restricted because a) some blocks may be already stored in an archive and b) the number of blocks that can be returned in a single call is bounded. Specifically, the ledger canister will return the prefix of the requested range of blocks present in the ledger that fits within the size of replies. Currently, the size of replies is limited to 2000 blocks.
 
@@ -374,7 +374,7 @@ For example, assume that at some point blocks forming the ledger are stored in `
         // not have all the blocks that the caller requested: One or more "archive" canisters might
         // store some of the requested blocks.
         //
-        // Note: as of Q4 2021 when this interface is authored, the IC doesn't support making nested
+        // Note: as of Q4 2021 when this interface is authored, ICP doesn't support making nested
         // query calls within a query call.
         type QueryBlocksResponse = record {
             // The total number of blocks in the chain.
@@ -538,7 +538,7 @@ The function is defined, recursively, as follows:
     otherwise
       balance(OlderBlocks · [B], account_id) = balance(OlderBlocks, account_id)
 
-The semantics of the ledger methods are described as functions which take as input a ledger state, the call arguments and return a (potentially) new state and a reply. In the description of the function some additional functions which reflect system provided information are used. These include `caller()` which returns the principal who invoked the method, `now()` which return the IC time and `drift` a constant indicating permissible time drift between IC and external time.  `well_formed(.)` denotes a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
+The semantics of the ledger methods are described as functions which take as input a ledger state, the call arguments and return a (potentially) new state and a reply. In the description of the function some additional functions which reflect system provided information are used. These include `caller()` which returns the principal who invoked the method, `now()` which return ICP time and `drift` a constant indicating permissible time drift between ICP and external time.  `well_formed(.)` denotes a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
 
 ### Ledger method: `transfer` {#_ledger_method_transfer}
 
@@ -642,7 +642,7 @@ The second, changes the location of up to `len` many blocks to the archive canis
 
 #### Ledger method: `query_blocks` {#_ledger_method_query_blocks}
 
-Given a list of blocks `L=(B0,B1,…​,Bn)`,  `Blocks(index,len)` stands for the list of blocks `(Bindex, Bindex+1,…​,Bindex+len)`. `Restrict(L,len)` is used for the restriction of list `L` to the first `len` blocks, i.e. `(B0,B1,…​,Blen-1)`. The description below assumes an unspecified constant, `bound` which specifies an upperbound on the number of blocks the Ledger canister can return in response to `query_blocks`. The description also assumes the existence of a `certificate` which is a signature by the IC on the (encoding) of the last block in the ledger. However, at this level of abstraction the properties of this certificate are not specified and the details of how the location of the different blocks is concretely provided are omitted.
+Given a list of blocks `L=(B0,B1,…​,Bn)`,  `Blocks(index,len)` stands for the list of blocks `(Bindex, Bindex+1,…​,Bindex+len)`. `Restrict(L,len)` is used for the restriction of list `L` to the first `len` blocks, i.e. `(B0,B1,…​,Blen-1)`. The description below assumes an unspecified constant, `bound` which specifies an upperbound on the number of blocks the Ledger canister can return in response to `query_blocks`. The description also assumes the existence of a `certificate` which is a signature by ICP on the (encoding) of the last block in the ledger. However, at this level of abstraction the properties of this certificate are not specified and the details of how the location of the different blocks is concretely provided are omitted.
 
 #### State & arguments:   
 

@@ -93,5 +93,5 @@ The last step is to verify the wallet is setup correctly, by checking its balanc
 
 ## Conclusion
 
-Now you are ready to host a website on the IC or follow one of our dapp tutorials, which can be found [here.](../../../tutorials/index.mdx)
+Now you are ready to host a website on ICP or follow one of our dapp tutorials, which can be found [here.](../../../tutorials/index.mdx)
 

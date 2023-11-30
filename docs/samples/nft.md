@@ -114,7 +114,7 @@ If this is not a new installation, you may need to run `start` with the `--clean
 dfx start --clean --background
 ```
 
-- #### Step 4: Deploy a DIP721 NFT canister to your local IC.
+- #### Step 4: Deploy a DIP721 NFT canister to your local replica.
 This command deploys the DIP721 NFT canister with the following initialization arguments:
 
 ```

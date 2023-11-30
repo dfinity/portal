@@ -4,9 +4,9 @@
 
 This is an experimental app to demonstrate a real world use case for [ckBTC](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc/) on the Internet Computer. It is a simple point of sale app that allows users to accept ckBTC payments.
 
-The Internet Computer [integrates directly with the Bitcoin network](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/). This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. Chain-key Bitcoin (ckBTC) is an ICRC-1-compliant token that is backed 1:1 by Bitcoin held 100% on the IC mainnet.
+The Internet Computer [integrates directly with the Bitcoin network](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/). This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. Chain-key Bitcoin (ckBTC) is an ICRC-1-compliant token that is backed 1:1 by Bitcoin held 100% on the mainnet.
 
-For a deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
+For a deeper understanding of the ICP < > BTC integration, see ICP wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
 
 ## Features
 
@@ -61,7 +61,7 @@ dfx start --clean --background
 
 ### Step 3: Deploy the Internet Identity canister.
 
-Integration with the [Internet Identity](https://internetcomputer.org/internet-identity/) allows store owners to securely setup and manage their store. The Internet Identity canister is already deployed on the IC mainnet. For local development, you need to deploy it to your local instance of the IC.
+Integration with the [Internet Identity](https://internetcomputer.org/internet-identity/) allows store owners to securely setup and manage their store. The Internet Identity canister is already deployed on the mainnet. For local development, you need to deploy it to your local instance of ICP.
 
 ```bash
 dfx deploy --network local internet_identity
@@ -79,7 +79,7 @@ export OWNER=$(dfx identity get-principal)
 
 The responsibilities of the ledger canister are to keep track of token balances and handle token transfers.
 
-The ckBTC ledger canister is already deployed on the IC mainnet. ckBTC implements the [ICRC-1](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/) token standard. For local development, you can deploy the ledger for an ICRC-1 token mimicking the mainnet setup.
+The ckBTC ledger canister is already deployed on the mainnet. ckBTC implements the [ICRC-1](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/) token standard. For local development, you can deploy the ledger for an ICRC-1 token mimicking the mainnet setup.
 
 Take a moment to read the details of the call you are making below. Not only are you deploying the ledger canister, you are also:
 
@@ -134,7 +134,7 @@ dfx deploy --network local icrc1_index --argument '
 
 The icpos canister manages the store configuration and sends notifications when a payment is received.
 
-The `--argument '(0)'` argument is used to initialize the canister with `startBlock` set to 0. This is used to tell the canister to start monitoring the ledger from block 0. When deploying to the IC mainnet, this should be set to the current block height to prevent the canister from processing old transactions.
+The `--argument '(0)'` argument is used to initialize the canister with `startBlock` set to 0. This is used to tell the canister to start monitoring the ledger from block 0. When deploying to the mainnet, this should be set to the current block height to prevent the canister from processing old transactions.
 
 ```bash
 dfx deploy --network local icpos --argument '(0)'
@@ -157,7 +157,7 @@ npm install
 npm run dev
 ```
 
-You may be wondering, "why don't I deploy the frontend as a local canister?" Vite uses lazy loading of modules. This does not work when deploying to a local canister. When deploying to the IC mainnet, this is not an issue. Also, running using `npm run dev` allows for hot reloading of the frontend code when making changes.
+You may be wondering, "why don't I deploy the frontend as a local canister?" Vite uses lazy loading of modules. This does not work when deploying to a local canister. When deploying to the mainnet, this is not an issue. Also, running using `npm run dev` allows for hot reloading of the frontend code when making changes.
 
 ### Step 10: Make a transfer.
 

@@ -37,7 +37,7 @@
     - Adding pre-developed frontend code.
     - Re-deploying the dapp.
 
-- [1.4 Acquiring and using cycles](1.4-using-cycles.md): To deploy dapps on the IC mainnet, you'll need to acquire cycles. This module covers: 
+- [1.4 Acquiring and using cycles](1.4-using-cycles.md): To deploy dapps on the mainnet, you'll need to acquire cycles. This module covers: 
     - Overview of cycles.
     - Creating a developer identity.
     - Acquiring cycles using a cycles coupon.

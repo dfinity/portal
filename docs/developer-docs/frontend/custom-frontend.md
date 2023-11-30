@@ -24,7 +24,7 @@ Before starting the guide, verify the following:
 This guide requires you to use the IC SDK version `0.8.0` or later.
 :::
 
--  [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+-  [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for ICP development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
 -  [x] You have stopped any IC SDK processes running on the local computer.
 
@@ -111,7 +111,7 @@ To review the default `dfx.json` configuration file:
 
   -   The `source` settings specify the path to your `src` and `dist` directories. The `src` setting specifies the directory to use for static assets that will be included in your assets canister when you build your project. If you have custom cascading stylesheet (CSS) or JavaScript files, you would include them in the folder specified by this path. After building the project, the project assets are served from the directory specified by the `dist` setting.
 
-  -   The `type` setting specifies that the `custom_greeting_frontend` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the IC.
+  -   The `type` setting specifies that the `custom_greeting_frontend` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on ICP.
 
   For this guide, you are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
 
