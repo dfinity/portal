@@ -132,7 +132,7 @@ To create a canister with a specific `canister_id` on a named subnet, in this ex
 
 ```rust
 let ledger_canister_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
-pic.create_canister_with_id(..., ledger_canister_id);
+pic.create_canister_with_id(..., ledger_canister_id).unwrap();
 pic.install_canister(ledger_canister_id, ...);
 ```
 
