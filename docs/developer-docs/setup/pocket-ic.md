@@ -273,6 +273,6 @@ python3 examples/counter_canister/counter_canister_test.py
 
 - [PocketIC v2.0.0 release forum post.](https://forum.dfinity.org/t/pocketic-multi-subnet-canister-testing/24901)
 
-- [PocketIC Python repo.](https://github.com/dfinity/pocketic-py/tree/main)
+- [PocketIC Python.](https://pypi.org/project/pocket-ic/)
 
 - [PocketIC Rust repo.](https://github.com/dfinity/ic/tree/fcb42ce1d36de46e079dfb8d4b68f34cd4f60f13/packages/pocket-ic)
