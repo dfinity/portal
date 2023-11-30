@@ -15,7 +15,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 **To get started, let's first dive into the focus and purpose of the NNS team. What would you say the mission of the NNS team is?**
 
-*NNS stands for Network Nervous System. The NNS is the DAO (decentralized autonomous organization) that governs and coordinates the full Internet Computer Protocol. It coordinates, for example, how nodes are assigned to subnets and how the Internet Computer protocol is updated to new versions.*
+*NNS stands for Network Nervous System. The NNS is the DAO (decentralized autonomous organization) that governs and coordinates the full Internet Computer Protocol. It coordinates, for example, how nodes are assigned to subnets and how the Internet Computer Protocol is updated to new versions.*
 *So, as the name suggests, the main mission of the NNS team is to contribute to the design, implementation, and maintenance of the NNS DAO. In addition to this, the NNS team is a key contributor to the design and implementation of the Service Nervous System (SNS), which is a DAO framework provided by ICP that allows individual applications to decentralize their governance.*
 
 **The NNS team has quite the responsibility to manage and contribute to, what an exciting team to be a part of! What is the composition of the NNS team?**
