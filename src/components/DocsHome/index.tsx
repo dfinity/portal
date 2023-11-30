@@ -54,6 +54,9 @@ const DocsHomePage: FC = () => {
               <Link
                 className="button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80 flex items-center"
                 href="/docs/current/tutorials/"
+                style={{
+                  alignItems: "center",
+                }}
               >
                 Learning with Tutorials
                 <LinkArrowRight />
