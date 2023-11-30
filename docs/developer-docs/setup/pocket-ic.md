@@ -142,7 +142,7 @@ Possible types of subnets include:
 
 - Generic application subnets.
 
-- Named subnets with `canister_id` ranges, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets. Named subnets can only be targeted by `install_canister_with_id()`.
+- Named subnets with canister ID ranges like on mainnet, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets.
 
 For a larger, more complex example that uses cross canister calls on two different subnets, see the full code [here](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs#L19).
 
