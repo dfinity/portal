@@ -16,7 +16,7 @@ PocketIC is designed to remedy these pitfalls, resulting in a testing environmen
 
 - Lightweight: Only provides the necessary components, and strips away the consensus and networking layers.
 
-- Concurrent and independent IC instances: Enabled by default, making sharing possible.
+- Concurrent and independent IC instances: Enabling tests to run in parallel
 
 - Multi-language support: Currently supports Rust and Python, but supports integration with any language that is written against the PocketIC REST-API. 
 
