@@ -2,7 +2,7 @@
 
 ## Overview
 
-In the Internet Computer ecosystem, a library that is used to make calls to ICP public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
+In the Internet Computer ecosystem, a library that is used to make calls to the ICP public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
 
 If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
 You can talk to the canister using the v2 API using an **agent** that follows the interface specification, or you can use the canister's HTTP interface.
