@@ -134,6 +134,7 @@
       "Ethereum", "DeFi"
     ],
     "twitter": "https://twitter.com/HelixMarkets",
+    "description": "",
      "usesInternetIdentity": true,
     "logo": "/img/showcase/helix_logo.webp"
   },
