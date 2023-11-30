@@ -8,7 +8,7 @@ The NF introduces the concept of a Network Nervous System (NNS) controlled treas
 
 The NF comprises four main components:
 1. **Joining the NF**
-2. **NF's Participation in Decentralization Swap**
+2. **NF's participation in decentralization swap**
 3. **Participation in SNS governance**
 4. **Maturity increase of NF neurons**
 
