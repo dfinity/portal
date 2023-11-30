@@ -24,7 +24,7 @@ For more information on installing the IC SDK, please see [here](./install/index
 
 ## Start the local replica
 
-To start a local instance of local replica, use the command:
+To start a local replica instance, use the command:
 
 ```
 dfx start --background
