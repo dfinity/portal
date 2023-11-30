@@ -47,11 +47,11 @@ chmod +x pocket-ic
 
 :::info
 On macOS systems, to bypass developer verification from Apple, you may need to run:
-:::
 
 ```
 xattr -dr com.apple.quarantine pocket-ic
 ```
+:::
 
 The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable. 
 
@@ -164,11 +164,11 @@ chmod +x pocket-ic
 
 :::info
 On macOS systems, to bypass developer verification from Apple, you may need to run:
-:::
 
 ```
 xattr -dr com.apple.quarantine pocket-ic
 ```
+:::
 
 The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable. 
 
