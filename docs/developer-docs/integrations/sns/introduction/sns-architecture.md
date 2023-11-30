@@ -21,19 +21,20 @@ is a brief description of alternative ways to use the SNS code or how to create 
 More concretely, this means that the NNS community approved the original SNS canisters' code
 and continuously approves new improved SNS versions.
 
-### SNS wasm modules canister (SNS-W){#SNS-W}
+### SNS Wasm modules canister (SNS-W){#SNS-W}
 All approved SNS canister versions are stored on an NNS canister,
-called the **SNS wasm modules canister (SNS-W)**.
+called the **SNS Wasm modules canister (SNS-W)**.
 When an SNS is created, SNS-W is involved and responsible for deploying the latest version of 
 the SNS canister.
 When the SNS should be updated, this happens by an NNS proposal that adds a new version of the 
 SNS canisters to SNS-W.
 Each SNS community can then simply decide - by SNS proposal - to adopt these new, approved versions in their SNS instance.
 
-### Customizability
+### Customizing the SNS
+
 Individual SNSs can nevertheless be customized by choosing parameters, 
 called nervous system parameters, that
-can be configured to realise different forms of voting and tokenomics.
+can be configured to realize different forms of voting and tokenomics.
 
 ## The SNS subnet
 SNSs are hosted on an _SNS subnet_. Since this subnet exclusively hosts SNSs,

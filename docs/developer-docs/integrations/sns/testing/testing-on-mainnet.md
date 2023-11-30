@@ -20,7 +20,7 @@ Among other things, here are some examples of issues developers find after runni
 
 The mock SNS used in an SNS testflight gives developers the ability to see what the post-decentralization lifecycle of a dapp looks like, but still provides a way for a developer to keep control of their dapp. **Therefore, developers are encouraged to perform an SNS testflight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.**
 
-## SNS Testflight vs. SNS production
+## SNS testflight vs. SNS production
 
 The main differences to a production SNS deployment are summarized here:
 
