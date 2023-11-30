@@ -14,13 +14,13 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 **Does the consensus team only focus on the consensus layer, or are there other responsibilities of the consensus team?**
 
-*We own the consensus layer of ICP stack, develop the node/topology orchestration software and are responsible for DKG (distributed key generation) and tECDSA orchestration.*
+*We own the consensus layer of the ICP stack, develop the node/topology orchestration software and are responsible for DKG (distributed key generation) and tECDSA orchestration.*
 
 **What is the composition of the Consensus team?**
 
 *We have 5 engineers based in Zurich, 1 engineer in Singapore, 1 research lead in the US and 1 team lead in Zurich.*
 
-**Let's dive a bit further into ICP consensus protocol. Could you explain how ICP consensus protocol works?**
+**Let's dive a bit further into the ICP consensus protocol. Could you explain how the ICP consensus protocol works?**
 
 *[The] ICP consists of multiple subnets which in turn consist of replicas mentioned above. Moreover, each subnet is hosting canisters (user deployed software). When these canisters receive messages, the subnet hosting them needs to achieve consensus among its replicas on a subset and [the] order of messages to be passed to the canisters. The ICP consensus protocol works in rounds. In each round replicas agree on a block containing a set of messages to be processed next. This block extends a chain of blocks with previous messages. Blocks are proposed by replicas elected as block makers. Then, every replica tries to validate the proposed block and if the super majority (⅔ of nodes) agrees on one single valid block in a round, the messages from this block get executed. However, if multiple valid blocks are valid (this could happen during sub-optimal network conditions between replicas), the subnet keeps building new blocks until a round is reached where only one block is valid.*
 
@@ -46,7 +46,7 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 **What are the primary benefits of this project?**
 
-*After the Ethereum integration is completed, we hopefully will have a lot of "twin tokens" of many popular ERC20 tokens on ICP. To "bridge" this tokens between ICP and Ethereum, a lot of ECDSA signatures will be required, so it would be very beneficial for the user experience if the waiting times for bridging an asset are as low as possible.*
+*After the Ethereum integration is completed, we hopefully will have a lot of "twin tokens" of many popular ERC20 tokens on ICP. To "bridge" this token between ICP and Ethereum, a lot of ECDSA signatures will be required, so it would be very beneficial for the user experience if the waiting times for bridging an asset are as low as possible.*
 
 **When can we expect the project to be completed?**
 
@@ -56,7 +56,7 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 *The definite source of truth would be the change logs that can be found in the upgrade proposals.*
 
-**To wrap things up, what is one feature or aspect of ICP consensus protocol that the team is the most proud of?**
+**To wrap things up, what is one feature or aspect of the ICP consensus protocol that the team is the most proud of?**
 
 *The current consensus protocol powers a lot of dapps on ICP already and many of them are working as fast as their centralized counterparts.*
 
