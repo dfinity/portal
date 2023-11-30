@@ -274,6 +274,7 @@ python3 examples/counter_canister/counter_canister_test.py
 - [PocketIC forum post.](https://forum.dfinity.org/t/pocketic-fast-and-versatile-canister-testing-in-rust-and-python/23793)
 
 - [PocketIC v2.0.0 release forum post.](https://forum.dfinity.org/t/pocketic-multi-subnet-canister-testing/24901)
+- [Pic JS.](https://www.npmjs.com/package/@hadronous/pic)
 
 - [PocketIC Python.](https://pypi.org/project/pocket-ic/)
 
