@@ -86,8 +86,7 @@
     "twitter": "https://twitter.com/IdentityMaxis",
     "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nfid_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/nfid_logo.webp"
   },
 
 
@@ -129,15 +128,15 @@
   {
     "id": "helix",
     "name": "Helix Markets",
-    "description": "Bringing true ownership and full transparency to crypto trading",
+    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
     "website": "https://t.co/OcdISW1Xww",
     "tags": [
       "Ethereum", "DeFi"
     ],
     "twitter": "https://twitter.com/HelixMarkets",
+    "description": "",
      "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/helix_logo.webp"
   },
 
 
