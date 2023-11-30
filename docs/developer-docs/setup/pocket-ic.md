@@ -151,7 +151,7 @@ For a larger, more complex example that uses cross canister calls on two differe
 To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for MacOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server). 
 
 :::info
-PocketIC is currently not supported on Windows systems.
+PocketIC is currently not supported natively on Windows systems.
 :::
 
 Once the binary file is downloaded, unzip the file and make it executable:
