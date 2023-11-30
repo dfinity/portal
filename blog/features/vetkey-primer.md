@@ -1,6 +1,6 @@
 # VETKeys Primer
 
-The **VETKeys** feature is in ongoing development on the Internet Computer protocol (ICP). It stands for ‘**V**erifiable **E**ncrypted **T**hreshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. 
+The **VETKeys** feature is in ongoing development on the Internet Computer (ICP). It stands for ‘**V**erifiable **E**ncrypted **T**hreshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind. 
 
 One thing less discussed about the VETKeys feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKeys talks, paper, and future posts. Note that understanding these foundations of VETkeys will *not* be necessary to use them for building applications, but we explain for those who are interested to dive deeper and want to understand the background. Let’s start at the start. 
 
