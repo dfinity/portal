@@ -16,7 +16,7 @@ First, you need to get started with a project. Let's take the DIP721 example cod
 
 ## Prerequisites
 
-- [x] This project uses features introduced in dfx 0.11.2. You can install the latest version of IC SDK with the command:
+- [x] This project uses features introduced in dfx 0.11.2. You can install the latest version of the IC SDK with the command:
 
 ```
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
