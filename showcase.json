@@ -1767,10 +1767,9 @@
     "oneLiner": "Superior alternative to Linktree",
     "website": "https://b.ink",
     "tags": ["SocialFi"],
-    "description": "Connect your audience, engage your community and analyse your interaction while owning your data and your identity.",
+    "description": "Connect, engage and inspire your audience while owning your data and your identity.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.webp",
-    "twitter": "https://twitter.com/BinkDapp"
+    "logo": "/img/showcase/bink_logo.webp"
   },
 
 
