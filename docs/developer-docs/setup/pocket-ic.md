@@ -231,7 +231,7 @@ class CounterCanisterTests(unittest.TestCase):
         canister_id = pic.create_canister()
         pic.add_cycles(canister_id, 1_000_000_000_000_000_000)
 
-        with open(os.path.join(script_dir, "counter.wasm"), "rb") as wasm_file:
+        with open("counter.wasm", "rb") as wasm_file:
             wasm_module = wasm_file.read()
         pic.install_code(canister_id, bytes(wasm_module), [])
 
