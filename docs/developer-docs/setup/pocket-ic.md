@@ -14,7 +14,7 @@ PocketIC is designed to remedy these pitfalls, resulting in a testing environmen
 
 - Deterministic: Synchronous control over the local execution environment.
 
-- Lightweight: Only provides the necessary components, such as the consensus and networking layers.
+- Lightweight: Only provides the necessary components, and strips away the consensus and networking layers.
 
 - Concurrent and independent IC instances: Enabled by default, making sharing possible.
 
