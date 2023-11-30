@@ -264,7 +264,7 @@ if __name__ == "__main__":
 To see more examples and run them locally, clone the [PocketIC Python repo](https://github.com/dfinity/pocketic-py/tree/main), then run the following command, replacing the example name with the example you'd like to run. For example, to run the `counter_canister` example, use the command:
 
 ```
-run python3 examples/counter_canister/counter_canister_test.py
+python3 examples/counter_canister/counter_canister_test.py
 ```
 
 ## Resources
