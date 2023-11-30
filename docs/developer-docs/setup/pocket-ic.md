@@ -61,7 +61,7 @@ cargo add pocket-ic
 PocketIC can be imported into your project with the code:
 
 ```rust
-pocket_ic::PocketIc
+use pocket_ic::PocketIc;
 ```
 
 Then, in your code you can create a new PocketIC instance with the code:
