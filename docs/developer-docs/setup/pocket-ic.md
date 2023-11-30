@@ -222,12 +222,6 @@ import sys
 import os
 import unittest
 import ic
-
-# The example needs to have the module in its sys path, so we traverse
-# up until we find the pocket_ic package.
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.dirname(os.path.dirname(script_dir)))
-
 from pocket_ic import PocketIC
 
 
