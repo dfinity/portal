@@ -37,7 +37,13 @@ export default function Home(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Hero
-        headlines={["BUILD THE FUTURE", "CYPHER-SPACE AS CLOUD"]}
+        headline={
+          <>
+            CYPHER
+            <wbr />
+            SPACE AS CLOUD
+          </>
+        }
         aiPlaceholders={[
           "Is the Internet Computer decentralized?",
           "What can I do with ICP token?",
@@ -52,10 +58,16 @@ export default function Home(): JSX.Element {
           Metaverse, DeFi and enterprise services, fully on-chain, realizing
           true Web3 for the very first time.
           <CollapsedVisionSection>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-            maiores minus id obcaecati similique, deleniti molestias adipisci
-            distinctio odit alias provident velit hic, officia ducimus impedit!
-            Ipsum ut autem facilis!
+            A network formed by the IC protocol, created through a relentless
+            R&D operation incorporating hundreds of person-years development
+            effort by an eminent technical team with more than 100,000 academic
+            citations. Today, web3 has become Web 3.0, and full stack
+            decentralization has become easy. For the first time, "open internet
+            services" are being created that run fully on-chain under true
+            community DO control. Today, Al models are running as smart
+            contracts. Native multi-chain crypto delivers World Computer. The
+            battle for the future of the internet, and compute itself, has
+            begun.
           </CollapsedVisionSection>
         </VisionSection>
         <IntroCards />

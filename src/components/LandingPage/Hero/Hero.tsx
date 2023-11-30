@@ -19,9 +19,10 @@ const queryClient = new QueryClient();
 
 const Hero: React.FC<{
   aiPlaceholders: string[];
-  headlines: string[];
+  headline: React.ReactNode;
+  // headlines: string[];
   children?: React.ReactNode;
-}> = ({ aiPlaceholders, headlines, children }) => {
+}> = ({ aiPlaceholders, headline, children }) => {
   const fontLoaded = useFontsLoaded();
 
   const darkRef = useRef<HTMLDivElement>(null);
@@ -50,11 +51,12 @@ const Hero: React.FC<{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
             >
-              <RotatedHeadline
+              {headline}
+              {/* <RotatedHeadline
                 interval={3000}
                 lines={headlines}
                 start={fontLoaded}
-              ></RotatedHeadline>
+              ></RotatedHeadline> */}
             </h1>
             <div className="w-full md:w-[71%] mt-4 md:mt-8">
               <ChatWidget
@@ -66,7 +68,7 @@ const Hero: React.FC<{
         </div>
         <div className="container-12 w-full col-start-1 row-start-1 md:flex justify-end mt-8 md:mt-0">
           <AnimateSpawn
-            className="md:w-80 flex flex-col gap-1 text-right"
+            className="md:w-80 flex flex-col gap-1 text-left"
             variants={transitions.container}
           >
             <QueryClientProvider client={queryClient}>

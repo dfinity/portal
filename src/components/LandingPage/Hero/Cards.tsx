@@ -15,7 +15,7 @@ export const CardWithImage: React.FC<{
     <MotionLink
       variants={transitions.item}
       to={href}
-      className="bg-black/60 backdrop-blur-2xl rounded-xl pl-6 pr-20 md:pl-16 md:pr-40 text-white hover:no-underline transition-all hover:text-white min-h-[160px] md:min-h-[220px] flex flex-col justify-center gap-2 group"
+      className="bg-black/60 hover:bg-black/20 backdrop-blur-2xl rounded-xl pl-6 pr-20 md:pl-16 md:pr-40 text-white hover:no-underline transition-all hover:text-white min-h-[160px] md:min-h-[220px] flex flex-col justify-center gap-2 group"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "contain",

@@ -4,7 +4,7 @@ import {
   getEthEquivTxRateMultiplier,
   getTransactionRateV3,
 } from "@site/src/utils/network-stats";
-import React from "react";
+import React, { ReactNode } from "react";
 import { useQuery } from "react-query";
 import { ConstantRateCounter, SpringCounter } from "../PreHero/Counters";
 import InfoIcon from "../PreHero/InfoIcon";
@@ -36,7 +36,7 @@ export const TotalBlocks = () => {
 
   return (
     <motion.div
-      className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6 hidden md:block"
+      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6 hidden md:block"
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
@@ -58,8 +58,16 @@ export const TotalBlocks = () => {
         )}
         {/* </div> */}
 
-        <figcaption className="tw-paragraph text-white/50 flex items-center justify-end gap-1">
-          Blocks processed <InfoIcon className="w-4 h-4 text-white" />
+        <figcaption className="tw-paragraph text-white/50 flex items-center gap-1">
+          Blocks processed
+          <Info>
+            <h3 className="tw-button-xs mb-1">Throughput</h3>
+            <p className="tw-caption text-white/50 mb-0">
+              Capacity horizontally scales as subnet blockchains are seamlessly
+              combined into one unified blockchain. Blocks and transactions per
+              second are unbounded.
+            </p>
+          </Info>
         </figcaption>
       </figure>
     </motion.div>
@@ -76,6 +84,18 @@ function updateRateWithJitter(): Promise<number> {
     return rate;
   });
 }
+
+const Info: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return (
+    <span className="relative flex cursor-pointer group py-1">
+      <InfoIcon className="w-4 h-4 text-white" />
+
+      <div className="hidden group-hover:block absolute bottom-6 left-1/2 -translate-x-1/2 p-2 bg-[#1b1034] rounded-lg text-white w-60">
+        {children}
+      </div>
+    </span>
+  );
+};
 
 export const EthEquivalentTxRate = () => {
   const multiplierQuery = useQuery(
@@ -95,32 +115,45 @@ export const EthEquivalentTxRate = () => {
 
   return (
     <motion.div
-      className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6"
+      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6"
       variants={transitions.fadeIn}
     >
       <figure className="m-0 flex gap-3 justify-center md:block">
-        {/* <div className="mb-2 inline-grid relative left-1"> */}
-        {updateTxRate.isFetched && updateTxRate.isSuccess ? (
-          <>
-            <SpringCounter
-              target={updateTxRate.data}
-              initialTarget={updateTxRate.data}
-              initialValue={updateTxRate.data}
-              format={formatNumber}
-              springConfig={[3, 1, 1]}
-              className="text-left col-start-1 row-start-1"
-            ></SpringCounter>
-            {/* <span className="col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
-                {getFigureSpacer(Math.floor(updateTxRate.data[0]))}
-              </span> */}
-          </>
-        ) : (
-          <>&nbsp;</>
-        )}
-        {/* </div> */}
+        <div className="mb-2 md:mb-0 inline-grid relative left-1 md:static md:inline">
+          {updateTxRate.isFetched && updateTxRate.isSuccess ? (
+            <>
+              <SpringCounter
+                target={updateTxRate.data}
+                initialTarget={updateTxRate.data}
+                initialValue={updateTxRate.data}
+                format={formatNumber}
+                springConfig={[3, 1, 1]}
+                className="text-left col-start-1 row-start-1"
+              ></SpringCounter>
+              <span className="md:hidden col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
+                {getFigureSpacer(Math.floor(updateTxRate.data))}
+              </span>
+            </>
+          ) : (
+            <>&nbsp;</>
+          )}
+        </div>
 
-        <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center justify-end gap-1">
-          ETH eq. TX/s <InfoIcon className="w-4 h-4 text-white" />
+        <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1">
+          ETH eq. TX/s
+          <Info>
+            <h3 className="tw-button-xs mb-1">ETH-equivalent Transactions</h3>
+            <p className="tw-caption text-white/50 mb-0">
+              Not all Transactions are equal. ICP performs ~80x the amount of
+              computational work of Ethereum per transaction.{" "}
+              <Link
+                className="text-white hover:underline hover:text-white"
+                href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
+              >
+                Learn More
+              </Link>
+            </p>
+          </Info>
         </figcaption>
       </figure>
     </motion.div>
@@ -130,13 +163,21 @@ export const EthEquivalentTxRate = () => {
 export const SmartContractMemory = () => {
   return (
     <motion.div
-      className="backdrop-blur-lg text-white tw-lead-lg py-3 px-6  hidden md:block"
+      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6  hidden md:block"
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
         $5 <span className="tw-lead-sm">/GB/year</span>
-        <figcaption className="tw-paragraph text-white/50 flex items-center justify-end gap-1">
-          Smart Contract Memory <InfoIcon className="w-4 h-4 text-white" />
+        <figcaption className="tw-paragraph text-white/50 flex items-center gap-1">
+          Smart Contract Memory
+          <Info>
+            <h3 className="tw-button-xs mb-1">Memory is $5/GB/year</h3>
+            <p className="tw-caption text-white/50 mb-0">
+              Each canister smart contract running on ICP can make 64 GB of
+              persistent memory pages available to its bytecode (orthogonal
+              persistence allows data structures to be used like databases).
+            </p>
+          </Info>
         </figcaption>
       </figure>
     </motion.div>
@@ -146,12 +187,12 @@ export const SmartContractMemory = () => {
 export const LiveStats = () => {
   return (
     <motion.div
-      className="backdrop-blur-lg py-3 px-6  hidden md:block"
+      className="backdrop-blur-lg rounded-xl py-3 px-6  hidden md:flex"
       variants={transitions.fadeIn}
     >
       <Link
         href="https://dashboard.internetcomputer.org/"
-        className="text-white tw-lead inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
+        className="text-white tw-heading-6 inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
       >
         <DashboardIcon />
         See live stats

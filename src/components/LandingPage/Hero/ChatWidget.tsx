@@ -43,32 +43,32 @@ export const ChatWidget: React.FC<{
       ) as HTMLButtonElement;
       button.click();
 
-      while (!document.querySelector(".mantine-Modal-inner")) {
-        await new Promise((resolve) => setTimeout(resolve, 100));
-      }
+      // while (!document.querySelector(".mantine-Modal-inner")) {
+      //   await new Promise((resolve) => setTimeout(resolve, 100));
+      // }
 
-      // copy input value to widget
-      const inputText = inputRef.current.value;
-      const targetInput = document.querySelector(
-        ".mantine-Modal-inner textarea"
-      ) as HTMLTextAreaElement;
+      // // copy input value to widget
+      // const inputText = inputRef.current.value;
+      // const targetInput = document.querySelector(
+      //   ".mantine-Modal-inner textarea"
+      // ) as HTMLTextAreaElement;
 
-      // make sure react component updates properly
-      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-        window.HTMLTextAreaElement.prototype,
-        "value"
-      ).set;
-      nativeInputValueSetter.call(targetInput, inputText);
-      targetInput.dispatchEvent(new Event("input", { bubbles: true }));
+      // // make sure react component updates properly
+      // const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+      //   window.HTMLTextAreaElement.prototype,
+      //   "value"
+      // ).set;
+      // nativeInputValueSetter.call(targetInput, inputText);
+      // targetInput.dispatchEvent(new Event("input", { bubbles: true }));
 
-      // wait for the component to update
-      // await new Promise((resolve) => setTimeout(resolve, 0));
+      // // wait for the component to update
+      // // await new Promise((resolve) => setTimeout(resolve, 0));
 
-      // submit
-      targetInput.parentElement.querySelector("button").click();
+      // // submit
+      // targetInput.parentElement.querySelector("button").click();
 
-      // reset input
-      inputRef.current.value = "";
+      // // reset input
+      // inputRef.current.value = "";
     }
   }
 
@@ -90,16 +90,12 @@ export const ChatWidget: React.FC<{
       `}</style>
 
       <form
-        className="bg-black/60 flex flex-col md:flex-row md:items-center pt-3 pb-1 md:py-3 px-1 md:pl-8 md:pr-4 gap-3 md:gap-6 backdrop-blur-[20px] rounded-xl"
+        className="bg-black/60 flex flex-col md:flex-row md:items-center pt-6 pb-1 md:py-3 px-1 md:pl-8 md:pr-4 gap-6 md:gap-6 backdrop-blur-[20px] rounded-xl"
         onSubmit={onAiSubmit}
       >
-        <input
-          ref={inputRef}
-          type="text"
-          className="flex-1 font-circular tw-heading-7 text-white text-center md:text-left placeholder:text-white/30 appearance-none border-none bg-transparent w-full active:outline-none focus:outline-none py-3"
-          placeholder={aiPlaceholders[0]}
-          required
-        />
+        <div className="flex-1 tw-heading-7 text-white text-center md:text-left">
+          {aiPlaceholders[0]}
+        </div>
         <button className="button-fancy-ai justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80">
           <AiIcon />
           ASK ICP.AI

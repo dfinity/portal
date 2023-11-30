@@ -3,31 +3,39 @@ import Newsletter from "../../Common/Newsletter/Newsletter";
 
 const NewsletterSection: React.FC = () => {
   return (
-    <section className="mt-30 mb-20  md:mt-52 md:mb-30 " id="subscribe">
-      <Newsletter
-        fields={[
-          {
-            name: "EMAIL",
-            placeholder: "Email",
-            type: "email",
-            required: true,
-          },
-        ]}
-        ctaLabel="Get updates!"
-        postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
-        decoration={
-          <img src="/img/newsletter/email-image-2.webp" alt="" loading="lazy" />
-        }
-        className="mb-20 relative"
-      >
-        <div className="hidden md:block blob blob-infinite blob-lg blob-top-right z-[-1]"></div>
-        <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
-          Sign up{" "}
-          <span className="text-white-60">
-            to stay in the loop with the Internet Computer
-          </span>
-        </h2>
-      </Newsletter>
+    <section
+      className="mt-20 mb-20 md:mt-52 md:mb-30 container-12"
+      id="subscribe"
+    >
+      <div className="bg-gradient-100 from-[#3B00B9] to-[#2586B6DE] rounded-xl md:rounded-[32px] overflow-hidden relative">
+        <div className="pl-6 md:pl-0 md:absolute right-0 top-0 bottom-0 flex ml-auto">
+          <img src="/img/home/newsletter-home.webp" alt="" loading="lazy" />
+        </div>
+        <div className="container-10 flex items-center w-full">
+          <div className="relative mt-6 md:max-w-[600px] mr-auto mb-10 md:my-20">
+            <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
+              Sign up for email updates{" "}
+              <span className="text-white-60">
+                to keep up to date with the Internet Computer
+              </span>
+            </h2>
+            <form
+              method="post"
+              action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+              className=""
+            >
+              <input
+                type="text"
+                placeholder="Email"
+                className="input-text input-text-white w-full mb-3"
+                name="EMAIL"
+                required
+              />
+              <button className="button-white">Get updates</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
