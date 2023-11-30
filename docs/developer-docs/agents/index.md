@@ -67,7 +67,7 @@ Calls to the Internet Computer always need to have a cryptographic identity atta
 
 #### Accepted identities
 
-The ICP accepts calls using the following types of signatures in identities:
+ICP accepts calls using the following types of signatures in identities:
 
 - Ed25519 and ECDSA signatures.
   - Plain signatures are supported for the schemes.
