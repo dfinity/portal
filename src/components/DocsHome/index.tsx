@@ -52,7 +52,7 @@ const DocsHomePage: FC = () => {
             </p>
             <p className="mb-0">
               <Link
-                className="button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80"
+                className="button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80 flex items-center"
                 href="/docs/current/tutorials/"
               >
                 Learning with Tutorials

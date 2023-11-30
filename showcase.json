@@ -86,8 +86,8 @@
     "twitter": "https://twitter.com/IdentityMaxis",
     "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nfid_logo.webp"
-    ]
+    "logo": "/img/showcase/nfid_logo.webp",
+    "screenshots": []
   },
 
 
@@ -129,15 +129,15 @@
   {
     "id": "helix",
     "name": "Helix Markets",
-    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
+    "description": "Bringing true ownership and full transparency to crypto trading",
     "website": "https://t.co/OcdISW1Xww",
     "tags": [
       "Ethereum", "DeFi"
     ],
     "twitter": "https://twitter.com/HelixMarkets",
      "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.webp"
-    ]
+    "logo": "/img/showcase/helix_logo.webp",
+    "screenshots": []
   },
 
 
@@ -284,7 +284,7 @@
     "tags": [
       "DeFi",
       "Wallet",
-      "Bitcoin"
+      "Bitcoin",
       "Ethereum"
     ],
     "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience.",
