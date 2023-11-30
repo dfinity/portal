@@ -10,7 +10,7 @@ The NF comprises four main components:
 1. **Joining the NF**
 2. **NF's Participation in Decentralization Swap**
 3. **Participation in SNS governance**
-4. **Maturity Increase of NF Neurons**
+4. **Maturity increase of NF neurons**
 
 ### 1: Joining and Leaving the NF
 
