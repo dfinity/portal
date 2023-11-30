@@ -67,7 +67,7 @@ use pocket_ic::PocketIc;
 Then, in your code you can create a new PocketIC instance with the code:
 
 ```rust
-let pic = PocketIc::new()
+let pic = PocketIc::new();
 ```
 
 ### Example: Single canister testing on a single subnet
