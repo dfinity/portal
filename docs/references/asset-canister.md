@@ -155,7 +155,7 @@ Here is a sample:
       // Security: The Content Security Policy (CSP) given below aims at working with many apps rather than providing maximal security.
       // We recommend tightening the CSP for your specific application. Some recommendations are as follows:
       // - Use the CSP Evaluator (https://csp-evaluator.withgoogle.com/) to validate the CSP you define.
-      // - Follow the “Strict CSP” recommendations (https://csp.withgoogle.com/docs/strict-csp.html). However, note that in the context of ICP,
+      // - Follow the “Strict CSP” recommendations (https://csp.withgoogle.com/docs/strict-csp.html). However, note that in the context of the mainnet (network=ic),
       //   nonces cannot be used because the response bodies must be static to work well with HTTP asset certification.
       //   Thus, we recommend to include script hashes (in combination with strict-dynamic) in the CSP as described
       //   in https://csp.withgoogle.com/docs/faq.html in section “What if my site is static and I can't add nonces to scripts?”.
