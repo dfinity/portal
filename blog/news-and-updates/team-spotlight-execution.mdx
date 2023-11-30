@@ -1,13 +1,13 @@
 ---
 title: Team spotlight - Execution
-description: For this issue, we met with members from the Execution team to get insight into how ICP's execution environment works and how it fits within ICP technology stack.
+description: For this issue, we met with members from the Execution team to get insight into how the ICP's execution environment works and how it fits within the ICP technology stack.
 tags: [Team spotlight]
 image: /img/blog/dev-update-blog-exe-1.jpg
 ---
 
 ![Execution Team spotlight](../../static/img/blog/dev-update-blog-exe-1.jpg)
 
-**Welcome to edition of the developer blog's team spotlight series! For this issue, we met with members from the Execution team to get insight into how ICP's execution environment works and how it fits within ICP technology stack. Let's start with our usual introduction, what is the purpose of the Execution team?**
+**Welcome to edition of the developer blog's team spotlight series! For this issue, we met with members from the Execution team to get insight into how the ICP's execution environment works and how it fits within the ICP technology stack. Let's start with our usual introduction, what is the purpose of the Execution team?**
           
 *The team’s mission can be summarized as “managing the lifecycle and providing efficient execution of canisters”. We contribute to the system APIs that canisters can use to run on ICP and interact with other canisters as well as scheduling of messages and cycles accounting.*
 
@@ -19,7 +19,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 *The execution environment is responsible for processing messages (either from users or canisters), keeping track of cycles for canisters and updating their state after message execution completes.*            
 
-**Could you explain how the execution layer fits into ICP stack?**
+**Could you explain how the execution layer fits into the ICP stack?**
 
 *The execution layer is the top layer of the core ICP stack. It’s part of what we call the “replicated state machine” which additionally includes message routing. Messages are delivered in batches through consensus to message routing and the execution environment is responsible for processing them.*
 
@@ -42,7 +42,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 *The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who contribute to the lower level Wasm execution engine of ICP, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and Languages teams to expose the APIs provided by the execution environment to the developers.*
 
-**How does ICP execution environment differ from other forms of execution environments?**
+**How does the ICP execution environment differ from other forms of execution environments?**
 
 *Two major differences of ICP’s execution environment are:*
     
@@ -68,11 +68,11 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 - *Allowing to install large Wasm modules which will unblock new CDKs in Python and Azle.*
 
-**Those projects sound extremely exciting and beneficial to ICP dev community, especially unblocking new CDKs for Python and Azle! Where should developers look for the latest Execution updates?**
+**Those projects sound extremely exciting and beneficial to the ICP dev community, especially unblocking new CDKs for Python and Azle! Where should developers look for the latest Execution updates?**
 
 *We typically post updates of our work on the developer forum and give presentations about features/recent work in Global R&D meetings.*
 
-**What is one feature or aspect of ICP execution environment that the team is the most proud of?**
+**What is one feature or aspect of the ICP execution environment that the team is the most proud of?**
 
 *We believe that Orthogonal Persistence is one of the coolest features of ICP and a key differentiator from other Web3 platforms or blockchains. It allows developers to truly focus on their business logic when writing canisters and avoid thinking about state management for the most part.*
 
