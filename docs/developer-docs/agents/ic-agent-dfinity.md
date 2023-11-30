@@ -2,7 +2,7 @@
 sidebar_position: 4
 sidebar_label: "From a Rust agent"
 ---
-# Calling IC from a Rust agent
+# Calling ICP from a Rust agent
 
 ## Overview
 The Rust agent by DFINTY is a simple-to-use library that enables you to build applications and interact with the Internet Computer. It serves as a Rust-based low-level backend for the IC SDK.

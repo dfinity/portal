@@ -62,7 +62,7 @@ Please refer to the [README](https://github.com/dfinity/examples/blob/master/nat
 
 ### Deploying the Unity project
 
-The demo Unity project has [ICP.NET](https://github.com/BoomDAO/ICP.NET) embedded, which is a C# agent that is able to communicate with the IC from C#.
+The demo Unity project has [ICP.NET](https://github.com/BoomDAO/ICP.NET) embedded, which is a C# agent that is able to communicate with ICP from C#.
 
 #### Using Deep Links
 

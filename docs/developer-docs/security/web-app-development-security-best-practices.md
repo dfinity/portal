@@ -9,7 +9,7 @@ This document contains information regarding security best practices for develop
 
 ## Authentication
 
-### Use a well-audited authentication service and client side IC libraries
+### Use a well-audited authentication service and client side ICP libraries
 
 #### Security concern
 
@@ -19,7 +19,7 @@ Implementing user authentication and canister calls yourself in your web app is 
 
 -   Consider using e.g. [Internet Identity](https://github.com/dfinity/internet-identity) for authentication, use [agent-js](https://github.com/dfinity/agent-js) for making canister calls, and the [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) for interacting with internet identity from your dApp.
 
--   It is of course also an option to consider alternative authentication frameworks on the IC for authentication.
+-   It is of course also an option to consider alternative authentication frameworks on ICP for authentication.
 
 ### Set an appropriate session timeout
 

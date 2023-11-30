@@ -4,7 +4,7 @@ The **Internet Computer** is a blockchain that enables developers, organizations
 
 As a dapp developer, you might find it useful to think of the Internet Computer as providing the following key features:
 
--   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the architecture of the IC [here](/how-it-works/architecture-of-the-internet-computer/). 
+-   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the architecture of ICP [here](/how-it-works/architecture-of-the-internet-computer/). 
 
 -   A secure cryptographic protocol (**[Internet Computer protocol](/how-it-works/core-ic-protocol-overview/)**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts. 
 
@@ -66,9 +66,9 @@ The Internet Computer also enables developers to use [cryptographically-secure i
 
 - [Internet Identity](/how-it-works/web-authentication-identity/).
 
-## Get started developing on the IC
+## Get started developing on ICP
 
-- Get started developing on the IC by embarking on your [developer journey](/docs/current/tutorials/developer-journey).
+- Get started developing on ICP by embarking on your [developer journey](/docs/current/tutorials/developer-journey).
 
 - [Designing a dapp](/docs/current/developer-docs/backend/design-dapps).
 
@@ -76,9 +76,9 @@ The Internet Computer also enables developers to use [cryptographically-secure i
 
 - [Building backend canisters with Rust](/docs/current/developer-docs/backend/rust/).
 
-## Connect with the IC community
+## Connect with ICP community
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 

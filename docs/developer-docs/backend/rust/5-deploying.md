@@ -103,7 +103,7 @@ hello_world_backend canister created with canister id: br5f7-7uaaa-aaaaa-qaaca-c
 
 ### Building the canister
 
-Next, you need to compile your program into a WebAssembly module that can be deployed on the IC by building the canister. To build the canister, run the command:
+Next, you need to compile your program into a WebAssembly module that can be deployed on ICP by building the canister. To build the canister, run the command:
 
 ```
 dfx build hello_world_backend
@@ -137,13 +137,13 @@ This command deploys just the `hello_world_backend` canister. To deploy all cani
 dfx deploy
 ```
 
-## Deploying the canister to the IC mainnet
+## Deploying the canister to the mainnet
 
 To deploy to the mainnet, you will need a cycles wallet with a balance of cycles. 
 
 To learn more about setting up a cycles wallet, please review the documentation [here](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet#confirm-your-developer-identity-and-ledger-account). 
 
-Once you have gotten your cycles wallet configured and ready to use, check the status of the IC mainnet to confirm that your local environment can connect to it. You can ping the mainnet with the command:
+Once you have gotten your cycles wallet configured and ready to use, check the status of the mainnet to confirm that your local environment can connect to it. You can ping the mainnet with the command:
 
 ```
 dfx ping ic

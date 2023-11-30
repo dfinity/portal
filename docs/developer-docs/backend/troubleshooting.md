@@ -24,7 +24,7 @@ For example, if you have a project that was created with IC SDK version `0.8.0`,
 
 In some cases, starting the local canister execution environment fails due to stale state. If you encounter issues when running `dfx start` to start the local canister execution environment:
 
-- #### Step 1:  In the terminal that displays the IC emulation the execution environment uses, press Control-C to interrupt the local canister execution environment process.
+- #### Step 1:  In the terminal that displays the ICP emulation the execution environment uses, press Control-C to interrupt the local canister execution environment process.
 
 - #### Step 2:  Stop the local canister execution environment by running the following command:
 
@@ -48,7 +48,7 @@ Keep in mind, however, that if you reset the state information by running `dfx s
 
 ## Removing the canisters directory
 
-If you run into problems building or deploying canisters after successfully connecting to the IC and registering canister identifiers, you should remove the `canisters` directory before attempting to rebuild or redeploy the canisters.
+If you run into problems building or deploying canisters after successfully connecting to the ICP and registering canister identifiers, you should remove the `canisters` directory before attempting to rebuild or redeploy the canisters.
 
 You can remove the `canisters` directory for a project by running the following command in the project’s root directory:
 

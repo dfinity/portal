@@ -14,7 +14,7 @@ To follow this quick start guide, you will need to have the following:
 
 ## Install the IC SDK
 
-The IC SDK includes `dfx`, which is a CLI tool used to create projects on the IC. It can be downloaded with the command:
+The IC SDK includes `dfx`, which is a CLI tool used to create projects on ICP. It can be downloaded with the command:
 
 ```
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -24,7 +24,7 @@ For more information on installing the IC SDK, please see [here](./install/index
 
 ## Start the local replica
 
-To start a local instance of the IC replica, use the command:
+To start a local instance of local replica, use the command:
 
 ```
 dfx start --background
@@ -161,6 +161,6 @@ To develop your own custom application from this point, you will need to determi
 
 ## Resources
 
-For a more comprehensive series of tutorials on developing on the IC, check out the [developer journey series](../../tutorials/developer-journey/index.md).
+For a more comprehensive series of tutorials on developing on ICP, check out the [developer journey series](../../tutorials/developer-journey/index.md).
 
 

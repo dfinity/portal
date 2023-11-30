@@ -11,7 +11,7 @@ The Internet Computer is a blockchain that runs [canister smart contracts](https
 
 Developers can thus build new dapps consisting of multiple canisters running in parallel on different subnets and possibly integrate them with existing canisters already running on the Internet Computer.
 
-See [introduction to ICP blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) on the IC wiki.
+See [introduction to ICP blockchain](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP) on ICP wiki.
 
 ## Developer workflow at a glance
 

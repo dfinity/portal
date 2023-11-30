@@ -21,7 +21,7 @@ During Q2 2023, our SDK and Languages teams shipped a ton of great new features,
 
 ### Motoko’s new certification library: ic-certification
 
-The new [ic-certification library](https://mops.one/ic-certification) released this quarter implements the IC’s certification tree data structure, which underlies the certified access mechanism on the IC. This is used to validate HTTP responses from canisters in order to protect them against malicious nodes. The ic-certification library also underlies the canister signatures mechanism, which is used to let canisters like the Internet Identity canister sign requests that are sent to the IC. The development of the ic-certification library was funded by an icdevs.org bug bounty, with special work by @nomeata!
+The new [ic-certification library](https://mops.one/ic-certification) released this quarter implements ICP’s certification tree data structure, which underlies the certified access mechanism on ICP. This is used to validate HTTP responses from canisters in order to protect them against malicious nodes. The ic-certification library also underlies the canister signatures mechanism, which is used to let canisters like the Internet Identity canister sign requests that are sent to ICP. The development of the ic-certification library was funded by an icdevs.org bug bounty, with special work by @nomeata!
 
 ### VSCode Candid auto-formatting and syntax highlighting
 
@@ -29,7 +29,7 @@ Additional features were added to the Motoko VSCode extension that include synta
 
 ### Developer Feedback Board
 
-This quarter, a new developer feedback tool was launched: the [Developer Feedback Board](https://dx.internetcomputer.org/)! This board was developed in response to feedback derived from internal focus groups with the goal to improve and prioritize enhancing the developer experience. This group determined that one way to best serve the IC developers was to figure out what developers need *right now* to aid in their development. The IC community also provided the insight that they’d prefer to have a single place for this input, rather than across multiple channels like the developer forum or Discord. 
+This quarter, a new developer feedback tool was launched: the [Developer Feedback Board](https://dx.internetcomputer.org/)! This board was developed in response to feedback derived from internal focus groups with the goal to improve and prioritize enhancing the developer experience. This group determined that one way to best serve ICP developers was to figure out what developers need *right now* to aid in their development. The ICP community also provided the insight that they’d prefer to have a single place for this input, rather than across multiple channels like the developer forum or Discord. 
 
 ![Feedback board](../../static/img/blog/feedback_board_1.jpg)
 
@@ -46,7 +46,7 @@ This quarter also saw a new release of dfx - 0.14.1. In this release, the primar
 In addition to these new features, an array of various fixes have shipped with this release as well:
 
 - Fix: If `dfx canister delete` is running on a canister that has not been stopped, dfx will confirm the removal of the canister instead of returning an error as it had in the past.
-- Fix: The documentation of the IC SDK has been cleaned up.
+- Fix: The documentation of IC SDK has been cleaned up.
 - Fix: To account for a more expensive v2 certification calculation, commit batches are now done incrementally to allow larger changes without exceeding the per-message instruction limit.
 - Fix: `dfx deploy`’s behavior previously allowed the same argument to be provided to all canisters; this behavior has been removed and now results in an error.
 - Fix: `dfx canister install`’s behavior previously allowed an empty argument to call all canisters regardless of any specifications; this behavior has been removed and now results in an error.
@@ -64,11 +64,11 @@ In Q2, the developer docs have seen a wide range of changes, updates, and visual
 The development and application of a Developer Docs Style Guide, which has been used to standardize the Developer Docs and assure each page looks, feels, and reads cohesively to one another. 
 Documentation validation and updates, to assure that each current page of the docs is up to date and showcases the most current version of commands, code blocks, and examples. 
 - New HTTP outcalls tutorials, such as:
-    - [HTTPS outcalls: technology overview:](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works) this page covers the overview of how the technology behind HTTP outcalls operates. In summary, when a canister makes an outgoing HTTP request using the management canister API, the request is temporarily stored in the replicated state of the subnet. Then, each replica pushes an instance of the received HTTP response from the external web server through the IC’s consensus layer. Through this, each replica on a subnet can agree on the HTTP response that’s been provided by the canister.
+    - [HTTPS outcalls: technology overview:](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works) this page covers the overview of how the technology behind HTTP outcalls operates. In summary, when a canister makes an outgoing HTTP request using the management canister API, the request is temporarily stored in the replicated state of the subnet. Then, each replica pushes an instance of the received HTTP response from the external web server through ICP’s consensus layer. Through this, each replica on a subnet can agree on the HTTP response that’s been provided by the canister.
     - [How to use HTTP outcalls: Intro:](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use) this page provides a high-level overview of the API used to send HTTP outcalls.
     - [How to use HTTP outcalls: GET:](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get) this page includes a brand new tutorial written by Diego Prats that showcases how to make a GET HTTP request using a sample canister that makes a request to the Coinbase API. This tutorial provides instructions for both Motoko and Rust development workflows.
     - [How to use HTTP outcalls: POST:](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post) this page is another brand new tutorial written by Diego Prats that explains how to make a POST HTTP request using a sample canister that sends a request with JSON information to a free API that is used to verify that the headers and body of the request were sent properly.
-- A new [resource limits and constraints documentation](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits) page that details the IC’s resource constraints and limits for things such as canister queue limit, instruction limit query calls, Wasm stable memory, and subnet capacity. 
+- A new [resource limits and constraints documentation](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits) page that details ICP’s resource constraints and limits for things such as canister queue limit, instruction limit query calls, Wasm stable memory, and subnet capacity. 
 - New [SNS documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/), which includes updated instructions for developing, testing, and launching an SNS, including a page dedicated to [SNS asset canisters](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing-sns/sns-asset-canister) and a new [SNS launch checklist](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/tokenomics/sns-checklist).
 
 ### New Quill release - 0.4.2
