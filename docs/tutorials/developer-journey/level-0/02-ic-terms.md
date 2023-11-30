@@ -1,5 +1,7 @@
 # 0.2 Internet Computer terminology 
 
+[![ICP Developer Journey 0.2 | Internet Computer terminology](https://img.youtube.com/vi/3WpP8ux1zX0/0.jpg)](https://www.youtube.com/watch?v=3WpP8ux1zX0)
+
 ## Overview
 
 This page introduces some of the most commonly used terminology that developers should be aware of when building on the Internet Computer. This page covers many terms, but does not include every single term that is related to the Internet Computer. For the full glossary of terms, please see [here.](/docs/references/glossary.md)

@@ -96,6 +96,22 @@ const sidebars = {
             "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
           ],
         },
+        {
+          type: "category",
+          label: "Level 5: Internet Computer astronaut",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-5/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
+            "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+            "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
+            "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
+            "tutorials/developer-journey/level-5/5.5-auction-tutorial",
+            "tutorials/developer-journey/level-5/5.6-next-steps",
+          ],
+        },
       ],
     },
     {
