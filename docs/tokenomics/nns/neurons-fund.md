@@ -12,7 +12,7 @@ The NF comprises four main components:
 3. **Participation in SNS governance**
 4. **Maturity increase of NF neurons**
 
-### 1: Joining and Leaving the NF
+### 1: Joining and leaving the NF
 
 Neurons can join or leave the NF using a checkbox in the NNS front-end application. This action can be taken at any time, even during ongoing voting on SNS proposals. Joining the NF means neurons expose their maturity to the risks associated with participating in SNSes.
 
