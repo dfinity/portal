@@ -170,7 +170,7 @@ xattr -dr com.apple.quarantine pocket-ic
 
 The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable. 
 
-Then, run the following command to install PocketIC in your Python virtual environment:
+Then, run the following command to install PocketIC:
 
 ```
 pip3 install pocket-ic
