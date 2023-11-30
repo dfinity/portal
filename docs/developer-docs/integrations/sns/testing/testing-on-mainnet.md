@@ -127,7 +127,7 @@ Register all canisters that are supposed to be managed by the testflight SNS
 by submitting an SNS proposal via `quill`.
 
 When running the testflight locally, export the environment variable `IC_URL`
-to point to your local ICP instance, e.g.,
+to point to your local replica instance, e.g.,
 
 ```bash
 export IC_URL="http://localhost:8080/"
