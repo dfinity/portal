@@ -10,20 +10,20 @@ While there are other options for testing canisters, they may come with pitfalls
 
 - Installing and testing canisters on the mainnet provides the 'real' workflow experience, but will cost developers real cycles.
 
-- Testing using the local replica provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight.
+- Testing using the local replica provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight. Additionally, testing with `dfx` can be complex, slow, and require additional boilerplate code to get working. 
 
 PocketIC is designed to remedy these pitfalls, resulting in a testing environment that provides the following benefits:
 
-- Deterministic: Synchronous control over the local execution environment.
+- Deterministic: Synchronous control over the local execution environment. PocketIC removes non-deterministic parts of the replica to make tests fully reproducible.
 
 - Lightweight: Only provides the necessary components, and strips away the consensus and networking layers.
 
 - Concurrent and independent IC instances: Enabling tests to run in parallel
 
-- Multi-language support: Currently supports Rust, Python and Java/TypeScript, but supports integration with any language that is written against the PocketIC REST-API. 
+- Multi-language support: Currently supports Rust, Python and JavaScript/TypeScript, but supports integration with any language that is written against the PocketIC REST-API. 
 
-- Versatile: Runs as a service on the test system and accepts HTTP/JSON. 
-
+- Versatile: Allows for fine-grained control over the canister by providing the ability to set stable memory, control how time passes, and other testing environment variables.
+ 
 - Support for Xnet calls and multiple subnets. 
 
 :::caution
@@ -47,6 +47,7 @@ chmod +x pocket-ic
 
 :::info
 On macOS systems, to bypass developer verification from Apple, you may need to run:
+:::
 
 ```
 xattr -dr com.apple.quarantine pocket-ic
@@ -163,6 +164,7 @@ chmod +x pocket-ic
 
 :::info
 On macOS systems, to bypass developer verification from Apple, you may need to run:
+:::
 
 ```
 xattr -dr com.apple.quarantine pocket-ic
@@ -264,6 +266,8 @@ python3 examples/counter_canister/counter_canister_test.py
 ```
 
 ## Resources
+
+- [PocketIC.](https://github.com/dfinity/pocketic)
 
 - [PocketIC forum post.](https://forum.dfinity.org/t/pocketic-fast-and-versatile-canister-testing-in-rust-and-python/23793)
 
