@@ -18,7 +18,7 @@ PocketIC is designed to remedy these pitfalls, resulting in a testing environmen
 
 - Concurrent and independent IC instances: Enabling tests to run in parallel
 
-- Multi-language support: Currently supports Rust and Python, but supports integration with any language that is written against the PocketIC REST-API. 
+- Multi-language support: Currently supports Rust, Python and Java/TypeScript, but supports integration with any language that is written against the PocketIC REST-API. 
 
 - Versatile: Runs as a service on the test system and accepts HTTP/JSON. 
 
