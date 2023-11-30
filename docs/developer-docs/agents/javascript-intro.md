@@ -2,7 +2,7 @@
 sidebar_position: 1
 sidebar_label: From a JavaScript agent
 ---
-# Calling ICP from a JavaScript agent
+# Making a call from a JavaScript agent
 
 ## Overview
 
