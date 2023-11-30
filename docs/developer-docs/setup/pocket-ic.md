@@ -257,7 +257,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-To see more examples and run them locally, clone the [PocketIC Python repo](https://github.com/dfinity/pocketic-py/tree/main), then run the following command, replacing the example name with the example you'd like to run. For example, to run the `counter_canister` example, use the command:
+To see more examples and run them locally, clone the [PocketIC Python repo](https://github.com/dfinity/pocketic-py), then run the following command, replacing the example name with the example you'd like to run. For example, to run the `counter_canister` example, use the command:
 
 ```
 python3 examples/counter_canister/counter_canister_test.py
