@@ -6,6 +6,7 @@ import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
 import Blog from "./Blog";
+import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
 
 const queryClient = new QueryClient();
 
@@ -39,54 +40,37 @@ const DocsHomePage: FC = () => {
             Start a DAO, create a token, build dapps and host assets with the
             full tech stack entirely 100% on chain.
           </p>
-          <p className="mb-0">
-            <Link
-              className="button-white button-with-icon"
-              href="/docs/current/developer-docs/"
-            >
-              Start building
-              <LinkArrowRight />
-            </Link>
-          </p>
+          <div className={"flex flex-row gap-2 flex-wrap"}>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="/docs/current/developer-docs/"
+              >
+                Start building
+                <LinkArrowRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80 flex items-center"
+                href="/docs/current/tutorials/"
+                style={{
+                  alignItems: "center",
+                }}
+              >
+                Learning with Tutorials
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-1 flex flex-col">
-          <GuidesIcon />
-          <h2 className="tw-heading-5 my-6">Guides</h2>
-          <p className="mb-6 tw-paragraph flex-1">
-            Access all of the documentation guidelines needed to get your
-            project up and running.
-          </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/docs/current/developer-docs/"
-            >
-              Start building
-              <LinkArrowRight />
-            </Link>
-          </p>
-        </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 col-span-1 flex flex-col">
-          <TutorialsIcon />
-          <h2 className="tw-heading-5 my-6">Tutorials</h2>
-          <p className="mb-6 tw-paragraph flex-1">
-            This section will guide developers to create and deploy sample
-            applications in a step-by-step mode.
-          </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/docs/current/tutorials/"
-            >
-              Start learning
-              <LinkArrowRight />
-            </Link>
-          </p>
+        <div className="sm:col-span-2 md:h-96">
+          <TeaserCarousel />
         </div>
       </section>
       <section className="mt-10">
