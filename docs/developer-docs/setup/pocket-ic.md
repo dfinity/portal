@@ -44,7 +44,7 @@ chmod +x pocket-ic
 ```
 
 :::info
-On MacOS systems, to bypass developer verification from Apple, you may need to run:
+On macOS systems, to bypass developer verification from Apple, you may need to run:
 
 ```
 xattr -dr com.apple.quarantine pocket-ic
