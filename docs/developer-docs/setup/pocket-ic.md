@@ -144,7 +144,7 @@ Possible types of subnets include:
 
 - Named subnets with canister ID ranges like on mainnet, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets.
 
-For a larger, more complex example that uses cross canister calls on two different subnets, see the full code [here](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs#L19).
+For a larger, more complex example that uses cross canister calls on two different subnets, see the full code [here](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs#L57).
 
 ## PocketIC Python
 
