@@ -21,11 +21,11 @@ We build and maintain the software used in the decentralized onboarding process,
 
 *The team consists of 4 engineers, 2 researchers, and 1 engineering manager, spread across the United States, Canada, Switzerland and Germany!*
 
-**Could you give us a brief overview of what ICP-OS is?**
+**Could you give us a brief overview of what IC-OS is?**
 
-*ICP-OS is an umbrella term for all [of] the operating systems within ICP, including:*
+*IC-OS is an umbrella term for all [of] the operating systems within ICP, including:*
 
-- *SetupOS (AKA ICP-OS installer), which deploys a new replica node (by installing HostOS and GuestOS).*
+- *SetupOS (AKA IC-OS installer), which deploys a new replica node (by installing HostOS and GuestOS).*
 
 - *HostOS, which runs on the bare metal of a replica node machine. HostOS runs GuestOS in a virtual machine.*
 
@@ -33,7 +33,7 @@ We build and maintain the software used in the decentralized onboarding process,
 
 - *BoundaryOSes, which includes Boundary-GuestOS, Boundary-Api-GuestOS.*
 
-*Readers should view ICP-OS folder in ICP repo where our operating systems reside: https://github.com/dfinity/ic/tree/master/ic-os*
+*Readers should view IC-OS folder in IC repo where our operating systems reside: https://github.com/dfinity/ic/tree/master/ic-os*
 
 *Here is a high-level overview of all the services running on a replica node:*
 
@@ -45,13 +45,13 @@ We build and maintain the software used in the decentralized onboarding process,
 
 **Node providers are an extremely important component of ICP. How does the Node team support node providers?**
 
-*The node team supports node providers during the onboarding procedure (ICP-OS installation), but one of our team priorities is to make the Node Provider onboarding procedure as simple and decentralized as possible so that the Node Team and DFINITY are not a necessary part of the onboarding process.*
+*The node team supports node providers during the onboarding procedure (IC-OS installation), but one of our team priorities is to make the Node Provider onboarding procedure as simple and decentralized as possible so that the Node Team and DFINITY are not a necessary part of the onboarding process.*
 
 **With so many responsibilities, and such an important team initiative, I can imagine that there are several challenges that the team faces. What would you say is the biggest challenge the team has faced so far?**
 
 *Keeping up with dozens of new features that require our assistance while managing our normal workload. There’s always more work to be done!*
 
-**With consistent upgrades and changes to ICP-OS software, how does the Node team contribute to the lifecycle of nodes?**
+**With consistent upgrades and changes to IC-OS software, how does the Node team contribute to the lifecycle of nodes?**
 
 *GuestOS and HostOS are both self-upgrading. Each OS has a mechanism to write to a passive partition set and reboot into its passive partition set, thereby upgrading itself (and making the passive partition set its active partition set). “Replica upgrades” are really GuestOS upgrades, as not only the replica is upgraded, but also the entire GuestOS and GuestOS binaries (including the replica).*
 
@@ -95,7 +95,7 @@ We build and maintain the software used in the decentralized onboarding process,
  
 *Updates will be posted to the developer forum!*
 
-**What is one feature or aspect of ICP-OS that the team is the most proud of?**
+**What is one feature or aspect of IC-OS that the team is the most proud of?**
 
 *In the 100+ upgrades in the history of ICP, not a single one has caused an ICP outage.*
 
