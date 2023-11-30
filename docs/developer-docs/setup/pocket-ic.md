@@ -2,7 +2,9 @@
 
 ## Overview
 
-PocketIC is a lightweight, deterministic testing platform for programmatic testing for canisters written in Rust and Python. It seamlessly integrates with existing testing infrastructure, such as `cargo test`, and runs as a standalone binary that doesn't require additional containers or virtual machines. Currently, PocketIC is supported on MacOS and Linux host systems. 
+PocketIC is a lightweight, deterministic testing solution for programmatic testing of canisters.
+It seamlessly integrates with existing testing infrastructure, such as `cargo test`, and runs as a standalone binary that doesn't require additional containers or virtual machines.
+Currently, PocketIC is supported on macOS and Linux host systems. 
 
 While there are other options for testing canisters, they may come with pitfalls such as:
 
