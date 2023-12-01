@@ -1,6 +1,6 @@
 <img src="https://user-images.githubusercontent.com/15371828/158857061-8fa8d079-d33f-4ed2-88aa-56d452d238d8.svg" align="right" alt="DFINITY logo" width="270">
 
-# Internet Computer Protocol developer portal
+# Internet Computer developer portal
 
 The ICP developer portal brings together all the resources needed for developers to build on the
 Internet Computer.
@@ -191,9 +191,9 @@ Here is a description of how a contribution should be made to the developer port
 1. The contributor creates a fork/branch where the changes are made.
 2. A pull request (PR) is created from this branch to `master`. the preview is generated and the reviewers can directly check
    the preview website.
-3. After the pull request is merged into master, CI/CD will deploy the contents to the Internet Computer Protocol. The changes made will appear
+3. After the pull request is merged into master, CI/CD will deploy the contents to ICP. The changes made will appear
    on the webpage under the version in the dropdown named "Current".
-4. Optional: When a repo maintainer tags a commit on master as $TAG, then CI/CD deploys the contents to the Internet Computer Protocol. The
+4. Optional: When a repo maintainer tags a commit on master as $TAG, then CI/CD deploys the contents to ICP. The
    webpage will default to the new "$TAG" version, visible in the versions dropdown, and allow users to view the
    contents pinned at that tag.
 
