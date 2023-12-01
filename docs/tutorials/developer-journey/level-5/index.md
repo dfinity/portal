@@ -21,7 +21,7 @@
         - Starting the local development server.
         - Using the dapp.
 
-- [5.2: Deploying an ETH starter project on ICP](5.2-ICP-ETH-tutorial.md): In this tutorial, you'll use the DFINITY ICP ETH starter project to deploy a boilerplate dapp that showcases how ICP can query information from the Ethereum network using HTTPS outcalls:
+- [5.2 Developing a dapp using the ICP Ethereum integration](5.2-ICP-ETH-tutorial.md): In this tutorial, you'll use the DFINITY ICP ETH starter project to deploy a boilerplate dapp that showcases how ICP can query information from the Ethereum network using HTTPS outcalls:
     - Deploying the ETH starter project.
         - Project technology stack.
         - Prerequisites.
