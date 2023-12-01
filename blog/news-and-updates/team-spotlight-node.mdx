@@ -21,11 +21,11 @@ We build and maintain the software used in the decentralized onboarding process,
 
 *The team consists of 4 engineers, 2 researchers, and 1 engineering manager, spread across the United States, Canada, Switzerland and Germany!*
 
-**Could you give us a brief overview of what IC-OS is?**
+**Could you give us a brief overview of what the IC-OS is?**
 
 *IC-OS is an umbrella term for all [of] the operating systems within ICP, including:*
 
-- *SetupOS (AKA IC-OS installer), which deploys a new replica node (by installing HostOS and GuestOS).*
+- *SetupOS (AKA the IC-OS installer), which deploys a new replica node (by installing HostOS and GuestOS).*
 
 - *HostOS, which runs on the bare metal of a replica node machine. HostOS runs GuestOS in a virtual machine.*
 
@@ -33,7 +33,7 @@ We build and maintain the software used in the decentralized onboarding process,
 
 - *BoundaryOSes, which includes Boundary-GuestOS, Boundary-Api-GuestOS.*
 
-*Readers should view IC-OS folder in IC repo where our operating systems reside: https://github.com/dfinity/ic/tree/master/ic-os*
+*Readers should view the IC-OS folder in the IC repo where our operating systems reside: https://github.com/dfinity/ic/tree/master/ic-os*
 
 *Here is a high-level overview of all the services running on a replica node:*
 
@@ -51,7 +51,7 @@ We build and maintain the software used in the decentralized onboarding process,
 
 *Keeping up with dozens of new features that require our assistance while managing our normal workload. There’s always more work to be done!*
 
-**With consistent upgrades and changes to IC-OS software, how does the Node team contribute to the lifecycle of nodes?**
+**With consistent upgrades and changes to the IC-OS software, how does the Node team contribute to the lifecycle of nodes?**
 
 *GuestOS and HostOS are both self-upgrading. Each OS has a mechanism to write to a passive partition set and reboot into its passive partition set, thereby upgrading itself (and making the passive partition set its active partition set). “Replica upgrades” are really GuestOS upgrades, as not only the replica is upgraded, but also the entire GuestOS and GuestOS binaries (including the replica).*
 
