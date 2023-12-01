@@ -195,6 +195,54 @@ This will return the output:
 ("Hello there, Bob! This is an example greeting returned from a Rust backend canister!")
 ```
 
+### Testing the canister with PocketIC
+
+[PocketIC](/docs/current/developer-docs/setup/pocket-ic) is a lightweight, deterministic testing solution for programmatic testing of canisters that seamlessly integrates with existing testing infrastructure, such as cargo test. 
+
+You can learn more about PocketIC and how to install it [here](/docs/current/developer-docs/setup/pocket-ic).
+
+For Rust canisters, PocketIC can be imported into your project with the code:
+
+```rust
+use pocket_ic::PocketIc;
+```
+
+Then, in your code you can create a new PocketIC instance with the code:
+
+```
+let pic = PocketIc::new();
+```
+
+The following is a complete example for testing a counter canister:
+
+```rust
+use candid::encode_one;
+use pocket_ic::PocketIc;
+
+ #[test]
+ fn test_counter_canister() {
+    let pic = PocketIc::new();
+    // Create an empty canister as the anonymous principal and add cycles.
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, 2_000_000_000_000);
+    
+    let wasm_bytes = load_counter_wasm(...);
+    pic.install_canister(canister_id, wasm_bytes, vec![], None);
+    // 'inc' is a counter canister method.
+    call_counter_canister(&pic, canister_id, "inc");
+    // Check if it had the desired effect.
+    let reply = call_counter_canister(&pic, canister_id, "read");
+    assert_eq!(reply, WasmResult::Reply(vec![0, 0, 0, 1]));
+ }
+
+fn call_counter_canister(pic: &PocketIc, canister_id: CanisterId, method: &str) -> WasmResult {
+    pic.update_call(canister_id, Principal::anonymous(), method, encode_one(()).unwrap())
+        .expect("Failed to call counter canister")
+}
+```
+
+You can see additional PocketIC testing examples [here](/docs/current/developer-docs/setup/pocket-ic).
+
 ## Interacting with the canister
 
 In addition to testing the canister's functionality, the canister can be interacted with using other `dfx` commands. For example:
