@@ -1,7 +1,21 @@
+import { useMotionTemplate, useScroll, useTransform } from "framer-motion";
 import React from "react";
 import { useEffect, useRef } from "react";
 import SimplexNoise from "simplex-noise";
-import * as THREE from "three";
+import {
+  Scene,
+  PerspectiveCamera,
+  Fog,
+  BufferGeometry,
+  PointsMaterial,
+  AdditiveBlending,
+  Float32BufferAttribute,
+  Points,
+  WebGLRenderer,
+  BufferAttribute,
+  Texture,
+} from "three";
+import { motion } from "framer-motion";
 
 function clamp(number, min, max) {
   return Math.max(min, Math.min(number, max));
@@ -44,10 +58,18 @@ const simplex = new SimplexNoise();
 const ParticleAnimation = () => {
   const canvasContainer = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const scene = new THREE.Scene();
+  const { scrollYProgress } = useScroll({
+    target: canvasContainer,
+    offset: ["start start", "end start"],
+  });
 
-    const camera = new THREE.PerspectiveCamera(
+  const blurSize = useTransform(scrollYProgress, [0.3, 0.66], [0, 12]);
+  const blur = useMotionTemplate`blur(${blurSize}px)`;
+
+  useEffect(() => {
+    const scene = new Scene();
+
+    const camera = new PerspectiveCamera(
       40,
       window.innerWidth / window.innerHeight,
       500,
@@ -58,13 +80,13 @@ const ParticleAnimation = () => {
     const dotSize = 10.5;
 
     // scene.fog = new THREE.FogExp2( 0x1E005D, 0.006 );
-    scene.fog = new THREE.Fog(0x1e005d, 2, 3000);
+    scene.fog = new Fog(0x1e005d, 2, 3000);
     camera.lookAt(scene.position);
 
-    const geometry = new THREE.BufferGeometry();
+    const geometry = new BufferGeometry();
     const vertices = [];
 
-    const pMaterial = new THREE.PointsMaterial({
+    const pMaterial = new PointsMaterial({
       size: dotSize,
       alphaMap: createCanvasMaterial("#ffffff", dotSize * 20),
       //fog: false,
@@ -72,7 +94,7 @@ const ParticleAnimation = () => {
       transparent: true,
       //alphaTest: 0.1,
       vertexColors: true,
-      blending: THREE.AdditiveBlending,
+      blending: AdditiveBlending,
     });
 
     let particlesPerAxis = 30;
@@ -101,7 +123,7 @@ const ParticleAnimation = () => {
       }
     }
 
-    let positions = new THREE.Float32BufferAttribute(vertices, 3);
+    let positions = new Float32BufferAttribute(vertices, 3);
 
     const createColors = (vertices) => {
       const colors = [];
@@ -117,21 +139,21 @@ const ParticleAnimation = () => {
         //colors.push(1, 1, Math.random());
       }
 
-      return new THREE.BufferAttribute(new Float32Array(colors), 4);
+      return new BufferAttribute(new Float32Array(colors), 4);
     };
 
     geometry.setAttribute("color", createColors(vertices));
     //geometry.colorsNeedUpdate = true;
     geometry.setAttribute("position", positions);
 
-    //let material = new THREE.PointsMaterial( { size: 35, sizeAttenuation: true, map: pMaterial, alphaTest: 0.5, transparent: true } );
+    //let material = new PointsMaterial( { size: 35, sizeAttenuation: true, map: pMaterial, alphaTest: 0.5, transparent: true } );
 
-    //pMaterial.color.setHSL( 1.0, 0.3, 0.7, THREE.SRGBColorSpace );
+    //pMaterial.color.setHSL( 1.0, 0.3, 0.7, SRGBColorSpace );
 
-    const particles = new THREE.Points(geometry, pMaterial);
+    const particles = new Points(geometry, pMaterial);
     scene.add(particles);
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     canvasContainer.current.appendChild(renderer.domElement);
@@ -214,7 +236,7 @@ const ParticleAnimation = () => {
       matCanvas.width = matCanvas.height = size;
       var matContext = matCanvas.getContext("2d");
       // create exture object from canvas.
-      var texture = new THREE.Texture(matCanvas);
+      var texture = new Texture(matCanvas);
       // Draw a circle
       var center = size / 2;
       /*
@@ -251,7 +273,15 @@ const ParticleAnimation = () => {
     };
   }, []);
 
-  return <div className="fixed inset-0" ref={canvasContainer}></div>;
+  return (
+    <motion.div
+      className="fixed inset-0"
+      ref={canvasContainer}
+      style={{
+        filter: blur,
+      }}
+    ></motion.div>
+  );
 };
 
 export default ParticleAnimation;

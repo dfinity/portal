@@ -44,7 +44,7 @@ const Hero: React.FC<{
                 text-[60px]
                 sm:text-[60px]
                 md:text-[100px] 
-                lg:text-[120px] 
+                lg:text-[110px] 
                 text-gradient-white 
                 grid mb-0"
               style={{
