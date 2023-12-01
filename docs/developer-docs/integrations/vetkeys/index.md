@@ -2,7 +2,7 @@
 
 ## Technical overview
 
-The vetKeys feature is in ongoing development on the Internet Computer (ICP). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for vetKeys is to facilitate onchain encryption, as such the primer is focused with that example in mind. .
+The vetKeys feature is in ongoing development on the Internet Computer Protocol (ICP). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for vetKeys is to facilitate onchain encryption, as such the primer is focused with that example in mind. .
 
 To dive into the technical overview, please refer to the:
 
