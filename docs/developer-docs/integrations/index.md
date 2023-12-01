@@ -6,7 +6,7 @@ While previous sections guide you to start building canisters on ICP, here you c
 
 ## Composite queries
 
-The Internet Computer (IC) supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. An update can call other updates and queries. However a query cannot make any calls, which can hinder development of scalable decentralized applications (dapps), especially those that shard data across multiple canisters. Composite queries solve this problem. 
+The Internet Computer Protocol supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. An update can call other updates and queries. However a query cannot make any calls, which can hinder development of scalable decentralized applications (dapps), especially those that shard data across multiple canisters. Composite queries solve this problem. 
 
 * [Composite queries](https://internetcomputer.org/docs/current/developer-docs/integrations/composite-query/).
 
@@ -32,7 +32,7 @@ A threshold ECDSA implementation on a blockchain can be viewed as the on-chain p
 
 ## vetKeys
 
-The VETKeys feature is in ongoing development on the Internet Computer (ICP). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for VETKeys is to facilitate onchain encryption, as such the focus of this primer has that example in mind.
+The VETKeys feature is in ongoing development on the Internet Computer Protocol. It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for VETKeys is to facilitate onchain encryption, as such the focus of this primer has that example in mind.
 
 * [vetKeys technology overview.](https://internetcomputer.org/docs/current/developer-docs/integrations/vetkeys/technology-overview)
 * [vetKeys primer.](https://internetcomputer.org/blog/features/vetkey-primer)
