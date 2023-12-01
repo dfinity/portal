@@ -53,7 +53,7 @@ actor {
   //0. method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
-    //1. DECLARE IC MANAGEMENT CANISTER
+    //1. DECLARE ICP MANAGEMENT CANISTER
     let ic : Types.IC = actor ("aaaaa-aa");
 
     //2. SETUP ARGUMENTS FOR HTTP GET request
@@ -87,7 +87,7 @@ You will also create some custom types in `Types.mo`. It will look like this:
 ```motoko
 module Types {
 
-    //type declarations for HTTP requests, HTTP responses, IC management canister, etc...
+    //type declarations for HTTP requests, HTTP responses, ICP management canister, etc...
 
 }
 ```
@@ -140,7 +140,7 @@ actor {
   
   public func get_icp_usd_exchange() : async Text {
 
-    //1. DECLARE IC MANAGEMENT CANISTER
+    //1. DECLARE ICP MANAGEMENT CANISTER
     //You need this so you can use it to make the HTTP request
     let ic : Types.IC = actor ("aaaaa-aa");
 
@@ -178,7 +178,7 @@ actor {
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
 
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
-    //IC management canister will make the HTTP request so it needs cycles
+    //ICP management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
     
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
@@ -187,7 +187,7 @@ actor {
     Cycles.add(20_949_972_000);
     
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Since the cycles were added above, you can just call the IC management canister with HTTPS outcalls below
+    //Since the cycles were added above, you can just call the management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
     
     //5. DECODE THE RESPONSE
@@ -328,7 +328,7 @@ module Types {
     };
 
 
-    //3. Declaring the IC management canister which you use to make the HTTPS outcall
+    //3. Declaring the management canister which you use to make the HTTPS outcall
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
@@ -387,7 +387,7 @@ URLs:
 Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
 
 ```rust
-//1. DECLARE IC MANAGEMENT CANISTER
+//1. DECLARE ICP MANAGEMENT CANISTER
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
     TransformContext,
@@ -437,7 +437,7 @@ rustup target add wasm32-unknown-unknown
 - #### Step 2: Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
-//1. IMPORT IC MANAGEMENT CANISTER
+//1. IMPORT ICP MANAGEMENT CANISTER
 //This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
@@ -610,8 +610,8 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
-- The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
+- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
+- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 - #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
 

@@ -57,8 +57,8 @@ For example, you can change the IP address for the local network by modifying th
 
 ## Resources
 
--   [Building on the IC](../../samples/overview.md) to explore sample dapps.
+-   [Building on ICP](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](../../concepts/index.md) to learn about different IC concepts and services.  
+-   [Concepts](../../concepts/index.md) to learn about different ICP concepts and services.  
 
--   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [ICP glossary](../../references/glossary.md) to learn the definitions of various terms used within ICP. 

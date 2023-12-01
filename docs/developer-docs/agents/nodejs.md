@@ -3,12 +3,12 @@ sidebar_position: 2
 sidebar_label: "From Node.js"
 ---
 
-# Calling the IC from Node.js
+# Making a call from Node.js
 
 ## Overview
-This article covers connecting to the IC from Node.js in the server environment. For more information about calling IC from JavaScript in a web browser, please, refer to [this guide](javascript-intro.md).
+This article covers connecting to ICP from Node.js in the server environment. For more information about calling ICP from JavaScript in a web browser, please, refer to [this guide](javascript-intro.md).
 
-Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to the IC, or to introduce a websocket layer to your application.
+Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to ICP, or to introduce a websocket layer to your application.
 
 In this example, you will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.
 
@@ -220,7 +220,7 @@ const seed = "test test test test test test test test test test test test";
 export const identity = await Secp256k1KeyIdentity.fromSeedPhrase(seed);
 ```
 
-As you can see, the seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to the IC, you should change the seed out for something private.
+As you can see, the seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to ICP, you should change the seed out for something private.
 
 :::caution
 Remember to store any seed phrase you use in production in a secure place. Use environment variables and never commit a real seed phrase in plaintext in your codebase.
@@ -272,7 +272,7 @@ const actor = createActor(effectiveCanisterId, {
 });
 ```
 
-At the end here, the actor is fully set up and ready to make calls to the local canister and the agent you have set up. Since this tutorial is focusing on local development the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If you want to talk to the IC mainnet, the `host` should point to `https://icp-api.io`.
+At the end here, the actor is fully set up and ready to make calls to the local canister and the agent you have set up. Since this tutorial is focusing on local development the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If you want to talk to the mainnet, the `host` should point to `https://icp-api.io`.
 
 :::info
 The port `4943` is the default port for the local replica. If you have changed the port, or you are using an older version of `dfx`, you will need to update it here and in the other instances in the code.

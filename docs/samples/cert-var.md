@@ -8,12 +8,12 @@ In a nut shell, this example code demonstrates "response certification" for a ca
 - Backend (BE) canister logic in Motoko (main.mo).
 - Frontend (FE) logic in JS (index.js).
 
-To detect an attacker in the middle between the FE and the IC and your "true" BE canister running there, you must either:
+To detect an attacker in the middle between the FE and ICP and your "true" BE canister running there, you must either:
 
 - Perform update calls that use "full consensus" (and wait for ~2 sec).
-- Perform (fast) query calls whose responses that you, the client, certify, using the coordination of the IC and your canister running there.
+- Perform (fast) query calls whose responses that you, the client, certify, using the coordination of ICP and your canister running there.
 
-The FE and BE code demonstrates the second approach here, in a minimal setting. The BE holds a single certified variable, as a 32-bit number, and the FE code queries and certifies this number's "current certificate". The BE prepares for the FE certification by giving the FE a "current certificate" within the response; this certificate is signed by the entire IC, using a special protocol feature.
+The FE and BE code demonstrates the second approach here, in a minimal setting. The BE holds a single certified variable, as a 32-bit number, and the FE code queries and certifies this number's "current certificate". The BE prepares for the FE certification by giving the FE a "current certificate" within the response; this certificate is signed by the entire ICP, using a special protocol feature.
 
 Before the FE trusts the response from the apparent BE canister, it interrogates it, and verifies its authenticity, the FE does four checks:
 

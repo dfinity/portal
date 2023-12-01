@@ -176,7 +176,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "How the IC works",
+          label: "How the ICP works",
           link: {
             type: "doc",
             id: "concepts/index",
@@ -255,6 +255,11 @@ const sidebars = {
           type: "doc",
           label: "Pulling canister dependencies",
           id: "developer-docs/setup/pulling-canister-dependencies",
+        },
+        {
+          type: "doc",
+          label: "Testing canisters with PocketIC",
+          id: "developer-docs/setup/pocket-ic",
         },
         {
           type: "doc",

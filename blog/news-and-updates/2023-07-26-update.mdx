@@ -24,7 +24,7 @@ A separate blog post has been published on this subcommand and workflow that goe
 
 ## New sample code: QR code generator 
 
-Thanks to Ulan Degenbaev from the Runtime team, a new Rust example has been added to the `DFINITY/examples` repository. This example demonstrates how dapps on the IC can perform long-running computation tasks, such as image processing, in a single message execution. This functionality is possible to Deterministic Time Slicing (DTS), which is a unique feature on the IC that divides long computational tasks into smaller slices that are then executed across multiple blocks. Using this new feature, developers can write long-running computational code as they normally would, and don't need to perform any special tasks to take advantage of the DTS benefits. 
+Thanks to Ulan Degenbaev from the Runtime team, a new Rust example has been added to the `DFINITY/examples` repository. This example demonstrates how dapps on ICP can perform long-running computation tasks, such as image processing, in a single message execution. This functionality is possible to Deterministic Time Slicing (DTS), which is a unique feature on ICP that divides long computational tasks into smaller slices that are then executed across multiple blocks. Using this new feature, developers can write long-running computational code as they normally would, and don't need to perform any special tasks to take advantage of the DTS benefits. 
 
 This new sample code demonstrates the DTS functionality using a QR code generation application. A live version of this sample can be found [here](https://khpe2-4qaaa-aaaao-a2fnq-cai.icp0.io/) for you to try out.
 
@@ -42,7 +42,7 @@ This sample is written in Rust and utilizes the `image` and `qrcode-generator` c
 
 For our last topic today, we're going to briefly introduce a new upcoming feature: `dfx deploy --playground`!
 
-`dfx deploy --playground` is an upcoming feature that will soon be available in dfx. With this new `--playground` flag, canisters can be immediately deployed to the Motoko playground. When this flag is used, the canisters in the dfx project will be deployed to the IC mainnet and a canister URL will be returned to the developer. This deployment method allows devs to quickly deploy canisters to the mainnet without having to first setup a cycles wallet or acquire cycles. This allows for developers to quickly get started using dfx to help aid in the developer onboarding process. 
+`dfx deploy --playground` is an upcoming feature that will soon be available in dfx. With this new `--playground` flag, canisters can be immediately deployed to the Motoko playground. When this flag is used, the canisters in the dfx project will be deployed to mainnet and a canister URL will be returned to the developer. This deployment method allows devs to quickly deploy canisters to the mainnet without having to first setup a cycles wallet or acquire cycles. This allows for developers to quickly get started using dfx to help aid in the developer onboarding process. 
 
 It is important to note that canisters deployed with the `--playground` flag will be subject to the same restrictions as other canisters deployed to the Motoko playground. These restrictions are:
 

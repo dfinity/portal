@@ -79,14 +79,14 @@ To start, let's set up our development environment. Make sure you have [dfx](htt
 DFX_VERSION=0.15.0-beta.1 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-Then clone the IC sample apps as follows:
+Then clone the ICP sample apps as follows:
 
 ```bash
 git clone https://github.com/dfinity/examples.git
 ```
 
 ## Deploy the example canister
-We first need to start a local IC instance via dfx and then create and build our frontend canister:
+We first need to start a local replica instance via dfx and then create and build our frontend canister:
 
 ```bash
 cd rust/composite_query/src

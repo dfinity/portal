@@ -2,7 +2,7 @@
 
 ## Overview
 
-While previous sections guide you to start building canisters on the IC, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp. From identity to ledger integrations, to integrating with other blockchains, to communicating from the IC to the outside world, and even decentralizing control of your dapp, it's all here.
+While previous sections guide you to start building canisters on ICP, here you can see how to integrate various (sometimes advanced) extra functionality to your dapp. From identity to ledger integrations, to integrating with other blockchains, to communicating from ICP to the outside world, and even decentralizing control of your dapp, it's all here.
 
 ## Composite queries
 
@@ -11,9 +11,9 @@ The Internet Computer (IC) supports two types of messages: updates and queries. 
 * [Composite queries](https://internetcomputer.org/docs/current/developer-docs/integrations/composite-query/).
 
 ## HTTPS Outcalls
-HTTP(S) outcalls on the IC enable canisters to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the canister such that the replicated state can safely be updated using those inputs. A first in blockchain history, and alleviates the need for oracles.
+HTTP(S) outcalls on ICP enable canisters to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the canister such that the replicated state can safely be updated using those inputs. A first in blockchain history, and alleviates the need for oracles.
 
-* [HTTPS outcalls](./https-outcalls/index.md) gives an overview of how the IC can communicate with the world outside.
+* [HTTPS outcalls](./https-outcalls/index.md) gives an overview of how ICP can communicate with the world outside.
 * [How it works](./https-outcalls/https-outcalls-how-it-works.md) to dive further into the details and gives a comparison against oracles.
 
 ## Independently verifying Internet Computer signatures
@@ -32,7 +32,7 @@ A threshold ECDSA implementation on a blockchain can be viewed as the on-chain p
 
 ## vetKeys
 
-The VETKeys feature is in ongoing development on the Internet Computer (IC). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on the IC. The primary motivation for VETKeys is to facilitate onchain encryption, as such the focus of this primer has that example in mind.
+The VETKeys feature is in ongoing development on the Internet Computer (ICP). It stands for ‘Verifiable Encrypted Threshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for VETKeys is to facilitate onchain encryption, as such the focus of this primer has that example in mind.
 
 * [vetKeys technology overview.](https://internetcomputer.org/docs/current/developer-docs/integrations/vetkeys/technology-overview)
 * [vetKeys primer.](https://internetcomputer.org/blog/features/vetkey-primer)

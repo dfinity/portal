@@ -12,7 +12,7 @@ Note that in the remainder of this documentation may use **HTTP** representative
 
 The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations of the canister, without the risk of state divergence between the replicas of the subnet.
 
-### How an HTTPS outcall is processed by the IC
+### How an HTTPS outcall is processed by ICP
 
 The canister HTTPS outcalls feature is implemented as part of the Internet Computer replica and is exposed as an API of the management canister. Next, this guide outlines, in a simplified form, how a request made by a canister is processed. The HTTP request functionality is realized at the level of subnets, i.e., each subnet handles canister HTTP requests of its canisters independently of other subnets and HTTP requests are never routed to other subnets for execution.
 
@@ -26,7 +26,7 @@ The adapter limits the network response size to `max_response_bytes` which defau
 - #### Step 6: An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response. 
 This is done by a component within the replica process.
 - #### Step 7: The transformed response is handed over to consensus on each replica.
-- #### Step 8: IC consensus agrees on a response if at least $2/3$ (to be more precise, $2f+1$, where $f$ is the number of faulty replicas tolerated by the protocol) of the replicas have the same response for the request as input. 
+- #### Step 8: ICP consensus agrees on a response if at least $2/3$ (to be more precise, $2f+1$, where $f$ is the number of faulty replicas tolerated by the protocol) of the replicas have the same response for the request as input. 
 In this case, consensus provides this response back to the management canister API, or an error if no consensus can be reached or in case of other problems.
 - #### Step 9: The management canister API provides the response or error back to the calling canister.
 
@@ -36,16 +36,16 @@ The above figure shows a high-level view of how a canister interacts with the fe
 
 To summarize, to perform an HTTP request, each replica pushes an (optionally-transformed) instance of the received HTTP response from the external web server through the Internet Computer's consensus layer, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are eliminated and the same transformed response is provided to consensus on every (honest) replica. This guarantees that on every replica the exact same response (or none at all) is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
 
-As you can see, the transformation function and IC consensus play a crucial role for this feature: The transformation function ensures that differences in the responses received by the replicas are removed and transformed responses on different replicas will be exactly the same, thus enabling consensus to provide the agreed-upon response to the calling canister. By running the responses received by the replicas through consensus, the Internet Computer ensures that every replica provides the same response to the smart contract Wasm execution environment.
+As you can see, the transformation function and ICP consensus play a crucial role for this feature: The transformation function ensures that differences in the responses received by the replicas are removed and transformed responses on different replicas will be exactly the same, thus enabling consensus to provide the agreed-upon response to the calling canister. By running the responses received by the replicas through consensus, the Internet Computer ensures that every replica provides the same response to the smart contract Wasm execution environment.
 
 ### Trust model and programming Model
 
-The trust model for canister HTTP outcalls is based on the trust model of the called HTTP server and that of the IC:
+The trust model for canister HTTP outcalls is based on the trust model of the called HTTP server and that of ICP:
 * It is assumed that the HTTP service is honest, otherwise, it can provide any responses to any of the calling replicas of the subnet. This is the case also for calls to the service from a Web 2.0 service or an oracle, thus, the situation is the same as in our scenario of a blockchain making the call to the service.
-* The trust model of the IC assumes that at least $2/3$ of the replicas are honest. In this case, the honest replicas will obtain the same response (after optional transformation) and consensus will be able to agree on the response so that the response can be provided back to the calling canister.
+* The trust model of ICP assumes that at least $2/3$ of the replicas are honest. In this case, the honest replicas will obtain the same response (after optional transformation) and consensus will be able to agree on the response so that the response can be provided back to the calling canister.
 A dishonest server can easily make requests fail or provide wrong data. Also, $1/3$ or more of dishonest subnet replicas can make requests fail. For providing wrong data, more than $2/3$ of the replicas need to be compromised.
 
-The programming model for this feature is such that the canister making an HTTP outcall acts as **HTTP client**, i.e., needs to, in the general case, interpret various headers and act accordingly. For use cases such as API requests this is rather straightforward and does not require many specific considerations in the standard case. The IC protocol stack can conceptually be simply seen as a communication pipe between the canister and the conventional HTTP server that makes sure that the HTTP response makes it through consensus and all honest replicas receive the exact same response in execution, i.e., the calling canister receives an agreed-upon response.
+The programming model for this feature is such that the canister making an HTTP outcall acts as **HTTP client**, i.e., needs to, in the general case, interpret various headers and act accordingly. For use cases such as API requests this is rather straightforward and does not require many specific considerations in the standard case. The ICP protocol stack can conceptually be simply seen as a communication pipe between the canister and the conventional HTTP server that makes sure that the HTTP response makes it through consensus and all honest replicas receive the exact same response in execution, i.e., the calling canister receives an agreed-upon response.
 
 ## HTTPS outcalls and oracles compared
 
@@ -61,7 +61,7 @@ Overall, the canister HTTP outcalls feature allows us to achieve what oracles or
 
 ## Benefits for developers
 
-For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to the IC that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls. 
+For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to ICP that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls. 
 
 The cost of the HTTP outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost, thus the Internet Computer has a clear economic advantage to use HTTP calls. Freed from making all those non-trivial trust decisions, a developer can focus on their business logic and simply make the HTTP call they need (and write a corresponding transform function), which is more natural.
 
@@ -70,7 +70,7 @@ The cost of the HTTP outcall is likely much lower than paying an established ora
 End users can benefit from HTTP outcalls in various ways as well.
 * **Stronger trust model:** they get stronger security by not relying on any additional parties which resemble further points of failure and thereby benefit from better decentralization. The decentralization gotten using HTTP outcalls is the best that can be achieved as it only involves the subnet replicas and the external service to be called, but no third parties such as oracle services.
 * **Lower fees:** users typically get a cheaper service as oracle middlemen are cut out in the calculation.
-* **Lower latency:** the latency of direct HTTP calls is lower than making an (Xnet) request to an oracle contract that then gets polled and serviced by an external oracle service, which materializes in a better user experience when interacting with the canister. This is more pronounced for Xnet requests, which are required unless the oracle provider sets up an oracle smart contract on every relevant subnet, which would somewhat contradict the subnet architecture principle of the IC.
+* **Lower latency:** the latency of direct HTTP calls is lower than making an (Xnet) request to an oracle contract that then gets polled and serviced by an external oracle service, which materializes in a better user experience when interacting with the canister. This is more pronounced for Xnet requests, which are required unless the oracle provider sets up an oracle smart contract on every relevant subnet, which would somewhat contradict the subnet architecture principle of ICP.
 
 ## Known limitations
 
@@ -102,17 +102,17 @@ As you have seen, completely removing the impact that dishonest replicas can hav
 
 ### IPv6-only support
 
-Currently, as the IC itself is an IPv6-based system, the canister HTTP outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that the Internet Computer does not have sufficiently many IPv4 addresses such that every replica of the IC could get its own IPv4 address and thus it would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
+Currently, as ICP itself is an IPv6-based system, the canister HTTP outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that the Internet Computer does not have sufficiently many IPv4 addresses such that every replica of ICP could get its own IPv4 address and thus it would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
 
 ### Rate limiting by servers
 
 Most Web servers offering services to the general public implement some sort of rate limiting. Rate limiting means to constrain how many requests can be made from an IPv4 address or IPv6 prefix in a given time interval. Once the quota for an address of prefix is used up, requests from this IP or prefix would not be served, but an according error response would be served instead.
 
-The problem is that all canisters on a subnet share the IPv6 prefixes of the replicas of this subnet and thus the quota at each server that implements rate limiting. Typical quotas of HTTP services for public (unauthenticated) users are in the order of $10$ requests per second. As every replica makes the same request, the IC has an amplification factor of $n$, where $n$ is the number of replicas in the subnet. Thus, the quotas can get consumed quickly and rate limits may lead to throttling or the replicas being (temporarily) blocked.
+The problem is that all canisters on a subnet share the IPv6 prefixes of the replicas of this subnet and thus the quota at each server that implements rate limiting. Typical quotas of HTTP services for public (unauthenticated) users are in the order of $10$ requests per second. As every replica makes the same request, ICP has an amplification factor of $n$, where $n$ is the number of replicas in the subnet. Thus, the quotas can get consumed quickly and rate limits may lead to throttling or the replicas being (temporarily) blocked.
 
 Using a registered user and authorizing the requests with an API key can decouple users on the same server and give each of them their own quota, thereby solving the issue with public APIs. Note, however, that the API key is stored in every replica and may be exposed in case a replica is compromised. This needs to be considered in the security model of the smart contract and is specifically relevant for `POST` operations. See the [discussion on compromised replicas](#compromised-replicas) for further information.
 
-The IC does currently not implement any rate limiting in the IC protocol stack as the use of registered users may resolve many if not most or all of the issues with rate limiting of public APIs and all canisters sharing the service's quota.
+The ICP does currently not implement any rate limiting in ICP protocol stack as the use of registered users may resolve many if not most or all of the issues with rate limiting of public APIs and all canisters sharing the service's quota.
 
 ## Future extensions
 
@@ -134,7 +134,7 @@ Both the body and the headers are important to be considered here. Alternatively
 - #### Step 4: Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it. 
 This often works well for API calls and is important to not overcharge the requesting canister in terms of cycles. The `HEAD` request type can be used to do this if responses change dynamically in response size considerably. If the `max_response_bytes` parameters is not set, the default response size of 2MB is charged, which is extremely expensive.
 - #### Step 5: Implement the request and try it out in the local SDK environment. 
-However, note that the behaviour of the local environment does not reflect that of the IC as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an IC subnet.
+However, note that the behaviour of the local environment does not reflect that of ICP as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an ICP subnet.
 
 :::info
 Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses from passing through consensus.
@@ -146,7 +146,7 @@ If you do not set the optional `max_response_bytes` parameter, a response size o
 
 ### Transformation function
 
-The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s received by different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on the response as part of IC consensus. The transformation function must be provided by the canister programmer and is exposed by the canister as a query. An arbitrary number of transformation functions can be defined by a canister. When making an `http_request` call to the management canister, a transformation function can be optionally provided as input. 
+The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s received by different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on the response as part of ICP consensus. The transformation function must be provided by the canister programmer and is exposed by the canister as a query. An arbitrary number of transformation functions can be defined by a canister. When making an `http_request` call to the management canister, a transformation function can be optionally provided as input. 
 
 Depending on the purpose of the HTTP request being made, there are different approaches to writing the transformation function:
 * **Extract only the information item(s) of interest:** this can, e.g., be a list of pairs each comprising a date and an asset price to be forwarded to the canister, or a single asset price. This approach makes sense if the full HTTP response is not required in the canister, but only specific information items are.
@@ -154,7 +154,7 @@ Depending on the purpose of the HTTP request being made, there are different app
 
 It is recommended to go with the first approach whenever possible as it has multiple advantages. Calls to pricing and many other APIs should mostly work with the first approach.
 * The resulting response is smaller in size.
-* The transformation function may be faster to compute, that is, the function (query) is executing with fewer CPU cycles. Note that queries on the IC are for free currently, but are likely to be charged for in the future.
+* The transformation function may be faster to compute, that is, the function (query) is executing with fewer CPU cycles. Note that queries on ICP are for free currently, but are likely to be charged for in the future.
 * The transformation function is often easier to implement, e.g., through a simple or few simple Json operations on the response body.
 
 ### Errors and debugging
@@ -168,8 +168,8 @@ There are a number of error cases that can happen when using this feature. The m
 * **SysFatal - Transformed http response exceeds limit: 2045952:** this error indicates that the limit for the transformed response size was reached. This is currently a hard response size limit of the HTTPS outcalls functionality. Note that the response size is computed based on response body and headers.
 
 Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the following errors. This page lists the most prominent issues when starting with this feature.
-* **If a specific type of canister HTTP request works in the local dfx environment, it may still not work on the IC because the local environment runs $1$ replica, whereas the IC runs $n=13$ replicas on the regular application subnets:** problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on the IC is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
-* **Receiving a timeout**: if the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an IC block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
+* **If a specific type of canister HTTP request works in the local dfx environment, it may still not work on ICP because the local environment runs $1$ replica, whereas ICP runs $n=13$ replicas on the regular application subnets:** problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on ICP is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
+* **Receiving a timeout**: if the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an ICP block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
 * **Requests consume too many cycles:** canister HTTPS outcalls are charged cycles, but if requests with rather small responses frequently cost very large amounts of cycles, the likely cause is that the `max_response_bytes` parameter is not set in the request. In this case the system assumes and charges for the maximum response size which is $2$ MB. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_bytes` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
 
 ### Pricing

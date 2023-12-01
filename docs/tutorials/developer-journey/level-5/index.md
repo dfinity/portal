@@ -21,7 +21,7 @@
         - Starting the local development server.
         - Using the dapp.
 
-- [5.2 Developing a dapp using the IC Ethereum integration](5.2-ICP-ETH-tutorial.md): In this tutorial, you'll use the DFINITY IC ETH starter project to deploy a boilerplate dapp that showcases how the IC can query information from the Ethereum network using HTTPS outcalls:
+- [5.2: Deploying an ETH starter project on ICP](5.2-ICP-ETH-tutorial.md): In this tutorial, you'll use the DFINITY ICP ETH starter project to deploy a boilerplate dapp that showcases how ICP can query information from the Ethereum network using HTTPS outcalls:
     - Deploying the ETH starter project.
         - Project technology stack.
         - Prerequisites.
@@ -51,7 +51,7 @@
         - Checking token balances. 
 
 
-- [5.4 Creating NFTs on the IC](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another:
+- [5.4 Creating NFTs on ICP](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another:
     - How do NFTs work?
     - NFT standards.
         - DIP721.
@@ -89,7 +89,7 @@
     - Developer bounties.
     - Hackathons.
     - ICP.Hubs.
-    - Contributing to the IC.
+    - Contributing to ICP.
     - Developer resources.
 
 

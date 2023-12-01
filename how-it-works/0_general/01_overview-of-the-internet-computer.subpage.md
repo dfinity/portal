@@ -13,11 +13,11 @@ The Internet Computer intends to become a *World Computer*, an open and secure p
 
 ## Canister smart contracts
 
-A smart contract on the IC is called *canister smart contract*, or just *canister*.
+A smart contract on ICP is called *canister smart contract*, or just *canister*.
 A canister bundles [*WebAssembly (Wasm)*](https://en.wikipedia.org/wiki/WebAssembly) program code and data storage into a single unit.
 Anyone can deploy a canister on the Internet Computer.
 Canisters are stored and their code executed in a replicated, fault-tolerant manner on multiple machines, that is, the nodes of a subnet. 
-Unlike other blockchains, a smart contract on the IC can respect one of several possible *mutability policies*: it can be completely immutable (cannot be changed by anyone), unilaterally mutable (can be changed unilaterally by the dapp developer), or DAO mutable (it can be changed as authorized by a decentralized autonomous organization).
+Unlike other blockchains, a smart contract on ICP can respect one of several possible *mutability policies*: it can be completely immutable (cannot be changed by anyone), unilaterally mutable (can be changed unilaterally by the dapp developer), or DAO mutable (it can be changed as authorized by a decentralized autonomous organization).
 
 
 Canisters pay, using *cycles*, for the IC resources they consume.

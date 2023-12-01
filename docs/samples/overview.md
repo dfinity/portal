@@ -1,6 +1,6 @@
 # Overview
 
-Take a look at some sample dapps below and see the possibilities of building on the IC. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome DFINITY repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
+Take a look at some sample dapps below and see the possibilities of building on ICP. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome DFINITY repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
 
 ## Hello, world!
 
@@ -18,7 +18,7 @@ A sample dapp that shows a dynamic actor (class) instantiation.
 
 ## Actor reference
 
-A simple dapp that hows the IC management canister as an actor (reference).
+A simple dapp that hows the management canister as an actor (reference).
 - [Documentation](./actor-reference).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/actor_reference).
 
@@ -42,7 +42,7 @@ A simple dapp that shows a basic (stable) variable demo.
 
 ## Basic decentralized autonomous organization (DAO)
 
-Decentralized governance is highlight of the IC and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can submit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
+Decentralized governance is highlight of ICP and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can submit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
 - [Documentation](./dao).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_dao).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_dao).
@@ -50,7 +50,7 @@ Decentralized governance is highlight of the IC and is illustrated by the basic 
 
 ## Basic decentralized exchange (DEX)
 
-To enable DeFi applications on the IC, canisters need to interact with token canisters and the ledger canister. This example dapp illustrates these interactions by showing how to enable an Exchange to take custody of funds, update an internal balance book as users trade, and give custody back to the user as funds are withdrawn.  
+To enable DeFi applications on ICP, canisters need to interact with token canisters and the ledger canister. This example dapp illustrates these interactions by showing how to enable an Exchange to take custody of funds, update an internal balance book as users trade, and give custody back to the user as funds are withdrawn.  
 - [Documentation](./dex).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/defi).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/defi).
@@ -59,7 +59,7 @@ To enable DeFi applications on the IC, canisters need to interact with token can
 
 ## Encrypted note-taking dapp
 
-Create, access, modify confidential notes from multiple devices using [Internet Identity](../references/ii-spec) service and end-to-end encryption. The sample code relies upon the **web-serving** and **storage capabilities** of the IC, and highlights two key functionalities: 
+Create, access, modify confidential notes from multiple devices using [Internet Identity](../references/ii-spec) service and end-to-end encryption. The sample code relies upon the **web-serving** and **storage capabilities** of ICP, and highlights two key functionalities: 
 1. Client-side, end-to-end encryption.
 2. Multi-user and multi-device support.  
 
@@ -93,13 +93,13 @@ The example demonstrates a counter dapp and an HTTP interface. It is essentially
 
 ## Hosting a static website
 
-This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to the IC.  
+This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to ICP.  
 - [Documentation](./host-a-website).
 - [YouTube tutorial](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
 
 ## Hosting a web game
 
-The example shows how to deploy a web game on the IC, sample code can be found at [samples repo](https://github.com/dfinity/examples/tree/master/hosting).   
+The example shows how to deploy a web game on ICP, sample code can be found at [samples repo](https://github.com/dfinity/examples/tree/master/hosting).   
 - [Documentation](./host-a-webgame).
 
 ## ICP transfer
@@ -188,7 +188,7 @@ This example shows that an Internet Computer dapp can perform a long-running com
 
 ## Random maze
 
-This sample shows how to create a simple frontend in JavaScript where the previous samples did not provide a frontend, this sample provides both a frontend and a backend. It creates a random maze generation, with IC-based randomness.
+This sample shows how to create a simple frontend in JavaScript where the previous samples did not provide a frontend, this sample provides both a frontend and a backend. It creates a random maze generation, with ICP-based randomness.
 - [Documentation](./random-maze).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/random_maze).
 
@@ -223,7 +223,7 @@ This is a collection of repo-links to additional code samples written in Motoko.
 
 ### Full stack
 
-These samples demonstrate how to build dapps on the IC, with frontends based on React and TypeScript.
+These samples demonstrate how to build dapps on ICP, with frontends based on React and TypeScript.
 
 -   [Auth client demo](https://github.com/krpeacock/auth-client-demo) is a simple authentication with Internet Identity.
 

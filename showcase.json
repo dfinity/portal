@@ -750,6 +750,26 @@
   },
 
   {
+    "id": "autoroyale",
+    "name": "AutoRoyale",
+    "website": "https://cm6iy-sqaaa-aaaam-abmxq-cai.icp0.io/",
+    "tags": [
+      "Games"
+    ],
+    "twitter": "",
+    "description": "Jump into this proof of concept battle royale 2D shooter on ICP. Grab gear, outplay the competition, and stay alive as the battleground shrinks. It's all about thinking a few steps ahead. Upgrade weapons, toss grenades, and pull off sneaky ambushes. Invite your pals for a quick match and make sure you play the tutorial to get used to the mechanics.",
+    "usesInternetIdentity": true,
+    "display": "Large",
+    "stats": "",
+    "logo": "/img/showcase/autoroyale_logo.png",
+    "oneLiner": "A fast-paced 2D multiplayer shooter game",
+    "screenshots": [
+    ],
+    "video":  "/img/showcase/autoroyale_video.mp4",
+    "videoContentType": "video/mp4"
+  },
+
+  {
     "id": "azle",
     "name": "Azle",
     "oneLiner": "TypeScript CDK for the Internet Computer",
@@ -1747,10 +1767,9 @@
     "oneLiner": "Superior alternative to Linktree",
     "website": "https://b.ink",
     "tags": ["SocialFi"],
-    "description": "Connect your audience, engage your community and analyse your interaction while owning your data and your identity.",
+    "description": "Connect, engage and inspire your audience while owning your data and your identity.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.webp",
-    "twitter": "https://twitter.com/BinkDapp"
+    "logo": "/img/showcase/bink_logo.webp"
   },
 
 

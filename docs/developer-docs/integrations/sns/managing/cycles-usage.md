@@ -16,7 +16,7 @@ and also for **each dapp canister**.
 
 
    
-At least the latter is not new to developers who built a dapp on the IC.
+At least the latter is not new to developers who built a dapp on ICP.
 Nevertheless, it should be underlined the importance of this in the context
 of an SNS: **if the SNS governance or SNS ledger canister run out of cycles
 and get deleted, this is of course critical as users lose their
