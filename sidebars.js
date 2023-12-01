@@ -176,7 +176,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "How the ICP works",
+          label: "How the Internet Computer Protocol works",
           link: {
             type: "doc",
             id: "concepts/index",
