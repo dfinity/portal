@@ -66,7 +66,7 @@ This developer journey will focus on developing canisters and applications using
 ## Level 5: Internet Computer astronaut 
 
 - [5.1 Developing an encrypted notes dapp with vetKeys](level-5/5.1-vetKeys-tutorial.md)
-- [5.2 Deploying an ETH starter project on ICP](level-5/5.2-ICP-ETH-tutorial.md)
+- [5.2 Developing a dapp using the ICP Ethereum integration](developer-journey/level-5/5.2-ICP-ETH-tutorial.md)
 - [5.3 Creating a decentralized token swap](level-5/5.3-token-swap-tutorial.md)
 - [5.4 Creating NFTs on ICP](level-5/5.4-NFT-tutorial.md)
 - [5.5 Creating an auction dapp](level-5/5.5-auction-tutorial.md)
