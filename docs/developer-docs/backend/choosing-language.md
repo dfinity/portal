@@ -9,7 +9,7 @@ To create [canister smart contracts](https://internetcomputer.org/how-it-works/a
 
 Because the Internet Computer blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
 
-In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for the ICP](../../references/ic-interface-spec.md) deployable as an ICP smart contract.
+In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for deploying on ICP](../../references/ic-interface-spec.md) as an ICP smart contract.
 
 In practice, the amount of CDK and library support for different languages varies across the ICP developer ecosystem, so this article lays out common paths for entering developers. 
 
