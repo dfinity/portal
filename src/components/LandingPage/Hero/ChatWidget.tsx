@@ -22,7 +22,7 @@ export const ChatWidget: React.FC<{
 
   useEffect(() => {
     function pollWidget() {
-      if (document.querySelector("#kapa-widget-container button")) {
+      if (document.querySelector(".ask-ai-widget-trigger")) {
         setWidgetLoaded(true);
       }
     }
@@ -39,7 +39,7 @@ export const ChatWidget: React.FC<{
     if (widgetLoaded) {
       // trigger modal widget
       const button = document.querySelector(
-        "#kapa-widget-container button"
+        ".ask-ai-widget-trigger"
       ) as HTMLButtonElement;
       button.click();
 
@@ -83,10 +83,10 @@ export const ChatWidget: React.FC<{
       }}
     >
       <style>{`
-        #kapa-widget-container {
-          visibility: hidden;
-          pointer-events: none;
-        }
+        // .ask-ai-widget-trigger {
+        //   visibility: hidden;
+        //   pointer-events: none;
+        // }
       `}</style>
 
       <form
