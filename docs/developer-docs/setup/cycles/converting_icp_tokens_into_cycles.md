@@ -80,7 +80,6 @@ dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
 And the output should look like this:
 
 ```
-Creating a wallet canister on ICP.
 The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
 ```
 
