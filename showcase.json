@@ -3137,7 +3137,29 @@
     "screenshots": [
       "/img/showcase/reblock_screenshot.jpg"
     ]
-  }
+  },
+  {
+  "id": "qstn-surveys-marketplace",
+  "name": "QSTN Surveys Marketplace",
+  "oneLiner": "Unleash the power of your personal information",
+  "website": "https://qstnus.com/",
+  "tags": [
+    "Wallet",
+    "NFT",
+    "SocialFi"
+  ],
+  "github": "https://github.com/QSTN-US/Internet-Computer-QSTN-v1",
+  "twitter": "https://twitter.com/qstnus",
+  "description": "Join QSTN and embark on a journey of engaging surveys and  rewarding participation. Share your insights and collect valuable rewards in the Web3 era.",
+  "usesInternetIdentity": true,
+  "logo": "/img/showcase/qstn-surveys-marketplace_logo.png",
+  "screenshots": [
+    "https://drive.google.com/file/d/1N0P4ym_YQJfNBh3D3jiX9gcC2tyElblW/view?usp=drive_link",
+    "https://drive.google.com/file/d/14rmi3rM6WNPLElrWVrkHSlXZTdyt8CwR/view?usp=drive_link"
+  ],
+  "video": "https://drive.google.com/drive/folders/1snO6DDyGGFlTEk2OxXTJtx9npv12GHbd",
+  "videoContentType": "video/mp4"
+}
 ]
 
 
