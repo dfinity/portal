@@ -26,7 +26,7 @@
     "tags": [
       "SocialFi",
       "Bitcoin",
-      "DAO"    
+      "DAO"
     ],
     "description": "OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
@@ -674,7 +674,7 @@
     ],
     "github": "https://github.com/modclub-app"
   },
-  
+
   {
     "id": "querio",
     "name": "Querio",
@@ -1064,7 +1064,7 @@
     "github": "https://github.com/kawak-org/Kawak-2.0",
     "twitter": "https://twitter.com/KawaK_ICP",
     "youtube": "",
-    "submittableId": "35943161"    
+    "submittableId": "35943161"
   },
 
   {
@@ -1144,10 +1144,10 @@
     "logo": "/img/showcase/rubaru_logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
-    "youtube": "https://youtu.be/CBumSMJRV08", 
+    "youtube": "https://youtu.be/CBumSMJRV08",
     "twitter": "https://twitter.com/RuBaRu_app",
-    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"], 
-    "video": "/img/showcase/rubaru_video.mp4", 
+    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"],
+    "video": "/img/showcase/rubaru_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "39223821"
   },
@@ -1656,7 +1656,7 @@
 
 
 
-  
+
 
 
   {
@@ -1826,7 +1826,7 @@
 
 
 
-  { 
+  {
     "id": "obsidian-tears",
     "name": "Obsidian Tears",
     "oneLiner": "Obsidian Tears is a 2D RPG similar to old-time classics, complete with NFT and blockchain integration on the Internet Computer.",
@@ -2100,7 +2100,7 @@
       "/img/showcase/icpcoins_screenshot_0.jpg"
     ]
   },
-  
+
   {
     "id": "internetcomputerorgwebsite",
     "name": "ICP website",
@@ -2190,7 +2190,7 @@
     ]
   },
 
-  
+
   {
     "id": "welcomeintothemetaverse",
     "name": "Welcome Into the Metaverse",
@@ -2204,7 +2204,7 @@
       "/img/showcase/welcomeintothemetaverse_screenshot_0.webp"
     ]
   },
-  
+
 
   {
     "id": "lo-fiplayer",
@@ -2234,7 +2234,7 @@
       "/img/showcase/reversi_screenshot_0.webp"
     ]
   },
- 
+
   {
     "id": "gooble",
     "name": "Goblin Studio",
@@ -2252,7 +2252,7 @@
     ],
     "twitter": "https://twitter.com/vger_ic"
   },
- 
+
   {
     "id": "football-god",
     "name": "FootballGod",
@@ -2443,8 +2443,8 @@
     "display": "Large",
     "usesInternetIdentity": false,
     "twitter": "https://twitter.com/_scoge_",
-    "screenshots": ["/img/showcase/scoge_screenshots.webp"], 
-    "video": "/img/showcase/scoge_video.mp4", 
+    "screenshots": ["/img/showcase/scoge_screenshots.webp"],
+    "video": "/img/showcase/scoge_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "34276514"
   },
@@ -2693,7 +2693,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/pu0238/pluto",
     "submittableId": "36517192"
-  }, 
+  },
   {
     "id": "motoko-book",
     "name": "The Motoko Programming Language Book",
@@ -2702,7 +2702,7 @@
     "tags": ["Tools / Infrastructure"],
     "description": "This book guides beginners into the world of Web3 programming in Motoko on the Internet Computer. It covers a broad range of concepts from the very basics to advanced async programming.",
     "stats": "100 monthly users",
-    "logo": "/img/showcase/motoko-book_logo.png", 
+    "logo": "/img/showcase/motoko-book_logo.png",
     "usesInternetIdentity": "false",
     "github": "https://github.com/Web3NL/motoko-book",
     "submittableId": "34608505",
@@ -2715,7 +2715,7 @@
     "website": "https://jqajc-hiaaa-aaaak-qck5a-cai.icp0.io/#/",
     "tags": ["Tools / Infrastructure"],
     "description": "InfinitiNote is an ICP-based AI-Enabled Note taking application, that allows users to create Notebooks, store Notes, and collaboratively edit in real-time with capability for file uploads and enhacned by LLAMA AI.",
-    "logo": "/img/showcase/in_logo.jpg", 
+    "logo": "/img/showcase/in_logo.jpg",
     "usesInternetIdentity": "true",
     "github": "https://github.com/hafezrouzati/infinitinote",
     "submittableId": "32966927",
@@ -2808,7 +2808,7 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "41213024"
-  },  
+  },
   {
     "name": "aVa",
     "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
@@ -2868,7 +2868,7 @@
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/Faceless_Proj",
     "submittableId": "35639090"
-  }, 
+  },
   {
     "id": "fishverse",
     "name": "FishVerse",
@@ -3105,7 +3105,7 @@
     "twitter": "https://twitter.com/icpdelta",
     "youtube": "https://www.youtube.com/@inheritX_0101",
     "submittableId": "41410724"
-  }, 
+  },
   {
     "id": "icp-explorer",
     "name": "ICP Explorer",
@@ -3136,6 +3136,25 @@
     "logo": "/img/showcase/reblock_logo.png",
     "screenshots": [
       "/img/showcase/reblock_screenshot.jpg"
+    ]
+  },
+  {
+    "id": "icpsig",
+    "name": "ICPsig",
+    "oneLiner": "Multisig for Internet Computer",
+    "website": "https://icpsig.in/",
+    "tags": [
+      "Wallet",
+      "Bitcoin",
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/premiurly",
+    "description": "ICPsig is multisig dapp for internet computer. ICPsig allows multiple principals to control funds in one address.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icpsig_logo.png",
+    "screenshots": [
+      "/img/showcase/icpsig_screenshot.png"
     ]
   }
 ]
