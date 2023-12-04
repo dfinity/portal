@@ -55,6 +55,11 @@ const colorsLinear = [
 
 const simplex = new SimplexNoise();
 
+// check if the browser is safari
+// too many particles will make safari perform badly
+const isSafari =
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 const ParticleAnimation = () => {
   const canvasContainer = useRef<HTMLDivElement>(null);
 
@@ -77,9 +82,7 @@ const ParticleAnimation = () => {
     );
     camera.position.z = 1000;
 
-    const dotSize = 10.5;
-
-    // scene.fog = new THREE.FogExp2( 0x1E005D, 0.006 );
+    const dotSize = isSafari ? 12 : 10.5;
     scene.fog = new Fog(0x1e005d, 2, 3000);
     camera.lookAt(scene.position);
 
@@ -97,9 +100,6 @@ const ParticleAnimation = () => {
       blending: AdditiveBlending,
     });
 
-    // check if the browser is safari
-    const isSafari =
-      /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     const particlesPerAxis = isSafari ? 20 : 30;
 
@@ -136,23 +136,14 @@ const ParticleAnimation = () => {
         const z = vertices[i + 2];
         const relZ = (400 + z) / 800;
         const color = lerpMultiple(relZ, colorsLinear, lerpArr);
-
-        //colors.push(relZ, 0, 1-relZ);
         colors.push(color[0], color[1], color[2], relZ * 1.5);
-
-        //colors.push(1, 1, Math.random());
       }
 
       return new BufferAttribute(new Float32Array(colors), 4);
     };
 
     geometry.setAttribute("color", createColors(vertices));
-    //geometry.colorsNeedUpdate = true;
     geometry.setAttribute("position", positions);
-
-    //let material = new PointsMaterial( { size: 35, sizeAttenuation: true, map: pMaterial, alphaTest: 0.5, transparent: true } );
-
-    //pMaterial.color.setHSL( 1.0, 0.3, 0.7, SRGBColorSpace );
 
     const particles = new Points(geometry, pMaterial);
     scene.add(particles);
@@ -172,15 +163,10 @@ const ParticleAnimation = () => {
 
       speed += ((1 + simplex.noise2D(0, i)) / 2) * 0.002;
 
-      const time = Date.now() * 0.00005;
-
       for (let index = 0; index < vertices.length; index += 3) {
         let x = vertices[index];
         let y = vertices[index + 1];
         let z = vertices[index + 2];
-
-        //z = simplex.noise3D((x/particlesPerAxis) * ((1 + simplex.noise2D(0, i)) / 2) * .002 + speed, (y/particlesPerAxis) * .04 - speed, (z/particlesPerAxis) * .01) * 400;
-
         z =
           simplex.noise3D(
             (x / particlesPerAxis) * ((1 + simplex.noise2D(0, i)) / 2) * 0.02 +
@@ -243,19 +229,6 @@ const ParticleAnimation = () => {
       var texture = new Texture(matCanvas);
       // Draw a circle
       var center = size / 2;
-      /*
-  
-  const gradient = matContext.createRadialGradient(size, size, size * .3, size, size, size * .7);
-
-  // Add three color stops
-  gradient.addColorStop(0, color);
-  gradient.addColorStop(0.7, "rgba(255,255,255,0)");
-  gradient.addColorStop(1, "black");
-
-  // Set the fill style and draw a rectangle
-  matContext.fillStyle = gradient;
-  matContext.fillRect(0, 0, size, size);
-  */
       matContext.beginPath();
       matContext.arc(center, center, size / 2, 0, 2 * Math.PI, false);
       matContext.closePath();
