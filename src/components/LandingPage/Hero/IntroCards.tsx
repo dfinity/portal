@@ -29,14 +29,16 @@ const IntroCards: React.FC = () => {
                 functionality to the public internet.
               </p>
               <p className="mb-0">
-                <Link className="button-white">Explore The Power of ICP</Link>
+                <Link className="button-white" href="/what-is-the-ic">
+                  Explore The Power of ICP
+                </Link>
               </p>
             </div>
-            <div className="w-full my-4 relative -right-6 md:absolute md:right-0 top-0 md:w-1/2">
+            <div className="w-full my-4 relative -right-6 md:absolute md:right-0 top-0 bottom-0 md:w-1/2 text-right">
               <img
                 src="/img/home/what-is-the-ic.webp"
                 alt=""
-                className="h-full"
+                className="object-contain aspect-[1074/713] max-h-full"
               />
             </div>
           </div>
