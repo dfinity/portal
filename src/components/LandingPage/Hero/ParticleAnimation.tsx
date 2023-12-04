@@ -97,7 +97,11 @@ const ParticleAnimation = () => {
       blending: AdditiveBlending,
     });
 
-    let particlesPerAxis = 30;
+    // check if the browser is safari
+    const isSafari =
+      /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    const particlesPerAxis = isSafari ? 20 : 30;
 
     let i = 0;
 
