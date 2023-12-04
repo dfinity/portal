@@ -55,10 +55,9 @@ const colorsLinear = [
 
 const simplex = new SimplexNoise();
 
-// check if the browser is safari
+// function check if the browser is safari
 // too many particles will make safari perform badly
-const isSafari =
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isSafari = () => /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 const ParticleAnimation = () => {
   const canvasContainer = useRef<HTMLDivElement>(null);
@@ -82,7 +81,7 @@ const ParticleAnimation = () => {
     );
     camera.position.z = 1000;
 
-    const dotSize = isSafari ? 12 : 10.5;
+    const dotSize = isSafari() ? 12 : 10.5;
     scene.fog = new Fog(0x1e005d, 2, 3000);
     camera.lookAt(scene.position);
 
@@ -101,7 +100,7 @@ const ParticleAnimation = () => {
     });
 
 
-    const particlesPerAxis = isSafari ? 16 : 30;
+    const particlesPerAxis = isSafari() ? 16 : 30;
 
     let i = 0;
 
