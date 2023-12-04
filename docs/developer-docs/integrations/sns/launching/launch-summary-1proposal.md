@@ -60,6 +60,9 @@ This is necessary in order for the rest of the steps to work automatically.
 As any eligible NNS neuron can submit the proposal in Stage 3, this is an important step
 where the dapp developers explicity express their intent to hand over their dapp to a DAO.
 
+In this step, the dapp developers also deregister themselves from asset canisters as principals that may change website content without going through a vote.
+If any other canisters in the dapp contain custom access control, these permission lists should also be prepared for decentralization.
+
 If successful, at the end of stage, the following has changed:
 
 #### Table 1: Canisters
