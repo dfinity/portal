@@ -22,7 +22,7 @@ The term **update** refers to changing or updating the assets stored within an a
 The general overview of deploying an asset canister during an SNS launch is as follows:
 - First, the asset canister must be created with or upgraded to a Wasm file from [dfx 0.15.2+](https://github.com/dfinity/sdk/blob/release-0.15.2/src/distributed/assetstorage.wasm.gz).
 - Then, developers should use `revoke_permission` to remove their own permissions (especially `Commit`) that allow them to update the assets arbitrarily.
-- Then, after launching the SNS, the SNS's function should be registered to commit proposed changes.
+- Then, after launching the SNS, the SNS's function should be [registered](#sns-genericnervoussystemfunctions) to commit proposed changes.
 - Last, using upgrade arguments, updated permissions can be set. This is only possible after launching an SNS because before the launch the principal id of SNS governance is not known yet
     - The SNS governance canister is given `Commit` permissions. With `Commit`, SNS governance may apply a batch of proposed asset updates to the assets served by the asset canister.
     - To give certain individuals the permission to upload changes to the asset canister that can then be put to vote, these principals can be granted `Prepare` permissions. Changes created using `Prepare` permissions must be approved through a proposal before they are applied to the asset canister. 
