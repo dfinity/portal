@@ -91,7 +91,7 @@ const ParticleAnimation = () => {
 
     const pMaterial = new PointsMaterial({
       size: dotSize,
-      alphaMap: createCanvasMaterial("#ffffff", dotSize * 20),
+      alphaMap: createCanvasMaterial("#ffffff", dotSize * 10),
       //fog: false,
       //depthWrite: false,
       transparent: true,
@@ -101,7 +101,7 @@ const ParticleAnimation = () => {
     });
 
 
-    const particlesPerAxis = isSafari ? 20 : 30;
+    const particlesPerAxis = isSafari ? 16 : 30;
 
     let i = 0;
 
@@ -230,7 +230,7 @@ const ParticleAnimation = () => {
       // Draw a circle
       var center = size / 2;
       matContext.beginPath();
-      matContext.arc(center, center, size / 2, 0, 2 * Math.PI, false);
+      matContext.arc(center, center, size / 2, 0, 2 * Math.PI);
       matContext.closePath();
       matContext.fillStyle = color;
       matContext.fill();
