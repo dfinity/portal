@@ -42,7 +42,8 @@ They can do so by running the following command:
 dfx sns prepare-canisters add-nns-root $CANISTER_ID
 ```
 
-They also remove themselves from the list of principals that may change frontend canister content on their own.
+Handing over the dapp canisters might include additional actions, for example removing the devs from special permissions that they have prior to the decentralization effort.
+For example, they also remove themselves from the list of principals that may change frontend canister content on their own (see [link to asset canister page] for more details).
 
 ```bash
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
