@@ -104,17 +104,19 @@ const ParticleAnimation = () => {
 
     let i = 0;
 
+    const multiplier = isSafari() ? 1.53 : 1;
+
     for (let x = 0; x < particlesPerAxis; x++) {
       for (let y = 0; y < particlesPerAxis; y++) {
         for (let z = 0; z < particlesPerAxis; z++) {
           vertices.push(
             -1200 +
               (x / particlesPerAxis) * 2400 +
-              simplex.noise2D((x / particlesPerAxis) * 0.1, 1) * 300 +
-              Math.random() * 80,
+              simplex.noise2D((x / particlesPerAxis) * 0.1, 1) * (particlesPerAxis * 10) +
+              Math.random() * (80 * multiplier),
             -1000 +
               (y / particlesPerAxis) * 2000 +
-              simplex.noise2D(1, (y / particlesPerAxis) * 0.1) * 300 +
+              simplex.noise2D(1, (y / particlesPerAxis) * 0.1) * (particlesPerAxis * 10) +
               Math.random() * 70,
             simplex.noise3D(
               x / particlesPerAxis,
@@ -161,7 +163,7 @@ const ParticleAnimation = () => {
       i += 0.0005;
 
       speed += ((1 + simplex.noise2D(0, i)) / 2) * 0.002;
-
+      
       for (let index = 0; index < vertices.length; index += 3) {
         let x = vertices[index];
         let y = vertices[index + 1];
