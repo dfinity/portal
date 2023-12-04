@@ -19,9 +19,12 @@ export const CollapsedVisionSection: React.FC<{
             text-white tw-heading-7 md:tw-heading-6 
             border-none rounded-full 
             backdrop-blur-lg bg-transparent bg-[linear-gradient(251deg,rgba(106,133,241,0.20)_-7.42%,rgba(197,114,239,0.20)_92.38%)]
-            transition-opacity duration-700
+            transition-all
+            hover:text-white/60
             ${
-              collapsible.open ? "opacity-0 pointer-events-none" : "opacity-100"
+              collapsible.open
+                ? "opacity-0 pointer-events-none duration-700"
+                : "opacity-100"
             }
           `}
         onClick={() => collapsible.setOpen(true)}
