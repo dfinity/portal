@@ -49,8 +49,6 @@ For example, they also remove themselves from the list of principals that may ch
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
 ```
 
-If any other canisters in the dapp contain custom access control, these permission lists should also be prepared for decentralization.
-
 ### 2. Dapp developers choose the initial parameters of the SNS for a dapp.
 
 Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
