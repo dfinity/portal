@@ -7,19 +7,19 @@ This document is a specification of the public interface of the ledger canister.
 Parts of the canister interface are for canister-internal consumption only, and therefore not part of this specification. However, whenever relevant, some insights into those aspects are shared as well.
 :::
 
-In brief, the ledger canister maintains a set of accounts owned by ICP principals; each account is associated with a tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the ledger canister also allows minting and burning of tokens, which are additional transactions recorded on the transaction ledger.
+In brief, the ledger canister maintains a set of accounts owned by principals; each account is associated with a tokens balance. Account owners can initiate the transfer of tokens from the accounts they control to any other ledger account. All transfer operations are recorded on an append-only transaction ledger. The interface of the ledger canister also allows minting and burning of tokens, which are additional transactions recorded on the transaction ledger.
 
 ## Terminology
 
 ### Tokens {#_tokens}
 
-There can be multiple utility **tokens** in ICP at once. The **utility tokens** used by ICP governance is the Internet Computer Protocol tokens (ICP). The smallest indivisible unit of tokens are \"e8\"s: one e8 is 10^-8^ tokens.
+There can be multiple utility **tokens** at once. The **utility tokens** used by the Internet Computer Protocol's governance is the ICP token. The smallest indivisible unit of tokens are \"e8\"s: one e8 is 10^-8^ tokens.
 
 ### Accounts {#_accounts}
 
 The ledger canister keeps track of **accounts**:
 
--   Every account belongs to (and is controlled by) an ICP principal.
+-   Every account belongs to (and is controlled by) a principal.
 
 -   Each account has precisely one owner (i.e. no "joint accounts").
 
@@ -322,7 +322,7 @@ The reply consists of:
 
 -   `length`: the length of the entire transaction ledger at the time when the call was executed.
 
--   `certificate`: an optional certificate. This is a signature of ICP on the hash of the last block in the ledger; the certificate is only returned if the method is invoked as an unreplicated query call.
+-   `certificate`: an optional certificate. This is an ICP signature on the hash of the last block in the ledger; the certificate is only returned if the method is invoked as an unreplicated query call.
 
 -   `blocks`: a (potentially partial) list of the requested blocks. The range of blocks returned is restricted because a) some blocks may be already stored in an archive and b) the number of blocks that can be returned in a single call is bounded. Specifically, the ledger canister will return the prefix of the requested range of blocks present in the ledger that fits within the size of replies. Currently, the size of replies is limited to 2000 blocks.
 

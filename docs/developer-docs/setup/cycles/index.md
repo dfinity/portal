@@ -1,7 +1,7 @@
 # Acquiring and managing cycles
 
 ## What are ICP cycles?
-The Internet Computer (ICP) blockchain runs on a network of nodes owned and operated by a growing community of independent node providers (NPs) distributed across the globe. NPs spend money for running nodes, e.g. they purchase hardware and require electricity and network bandwidth. The Internet Computer Protocol compensates NPs on a monthly basis by minting and distributing rewards in the form of ICP tokens.
+The Internet Computer Protocol runs on a network of nodes owned and operated by a growing community of independent node providers (NPs) distributed across the globe. NPs spend money for running nodes, e.g. they purchase hardware and require electricity and network bandwidth. The Internet Computer Protocol compensates NPs on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
 To make ICP sustainable, canister smart contracts are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycle balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens. 
 

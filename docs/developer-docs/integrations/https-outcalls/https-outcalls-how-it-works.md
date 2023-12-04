@@ -36,7 +36,7 @@ The above figure shows a high-level view of how a canister interacts with the fe
 
 To summarize, to perform an HTTP request, each replica pushes an (optionally-transformed) instance of the received HTTP response from the external web server through the Internet Computer's consensus layer, so that the replicas of the subnet can agree on the response provided to the canister, based on all server responses received by the replicas. The optional transformation ensures that, if responses received on different replicas from the server are different in some parts, those differences are eliminated and the same transformed response is provided to consensus on every (honest) replica. This guarantees that on every replica the exact same response (or none at all) is used for canister execution, thereby ensuring that divergence does not happen when using this feature and the replicated state machine properties of the subnet are preserved.
 
-As you can see, the transformation function and ICP consensus play a crucial role for this feature: The transformation function ensures that differences in the responses received by the replicas are removed and transformed responses on different replicas will be exactly the same, thus enabling consensus to provide the agreed-upon response to the calling canister. By running the responses received by the replicas through consensus, the Internet Computer ensures that every replica provides the same response to the smart contract Wasm execution environment.
+As you can see, the transformation function and the Internet Computer Protocol's consensus play a crucial role for this feature: The transformation function ensures that differences in the responses received by the replicas are removed and transformed responses on different replicas will be exactly the same, thus enabling consensus to provide the agreed-upon response to the calling canister. By running the responses received by the replicas through consensus, the Internet Computer ensures that every replica provides the same response to the smart contract Wasm execution environment.
 
 ### Trust model and programming Model
 
@@ -61,7 +61,7 @@ Overall, the canister HTTP outcalls feature allows us to achieve what oracles or
 
 ## Benefits for developers
 
-For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to ICP that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls. 
+For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to the Internet Computer Protocol that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls. 
 
 The cost of the HTTP outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost, thus the Internet Computer has a clear economic advantage to use HTTP calls. Freed from making all those non-trivial trust decisions, a developer can focus on their business logic and simply make the HTTP call they need (and write a corresponding transform function), which is more natural.
 
@@ -134,7 +134,7 @@ Both the body and the headers are important to be considered here. Alternatively
 - #### Step 4: Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it. 
 This often works well for API calls and is important to not overcharge the requesting canister in terms of cycles. The `HEAD` request type can be used to do this if responses change dynamically in response size considerably. If the `max_response_bytes` parameters is not set, the default response size of 2MB is charged, which is extremely expensive.
 - #### Step 5: Implement the request and try it out in the local SDK environment. 
-However, note that the behaviour of the local environment does not reflect that of ICP as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an ICP subnet.
+However, note that the behaviour of the local replica environment does not reflect that of the mainnet, as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an ICP subnet.
 
 :::info
 Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses from passing through consensus.
@@ -146,7 +146,7 @@ If you do not set the optional `max_response_bytes` parameter, a response size o
 
 ### Transformation function
 
-The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s received by different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on the response as part of ICP consensus. The transformation function must be provided by the canister programmer and is exposed by the canister as a query. An arbitrary number of transformation functions can be defined by a canister. When making an `http_request` call to the management canister, a transformation function can be optionally provided as input. 
+The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s received by different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on the response as part of the Internet Computer Protcol's consensus. The transformation function must be provided by the canister programmer and is exposed by the canister as a query. An arbitrary number of transformation functions can be defined by a canister. When making an `http_request` call to the management canister, a transformation function can be optionally provided as input. 
 
 Depending on the purpose of the HTTP request being made, there are different approaches to writing the transformation function:
 * **Extract only the information item(s) of interest:** this can, e.g., be a list of pairs each comprising a date and an asset price to be forwarded to the canister, or a single asset price. This approach makes sense if the full HTTP response is not required in the canister, but only specific information items are.

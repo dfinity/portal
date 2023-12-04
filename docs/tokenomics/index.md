@@ -8,7 +8,7 @@ Membership in a DAO is determined by holding a certain cryptographic asset or to
 
 ## Network Nervous System (NNS)
 
-The Internet Computer Protocol is governed by a DAO known as the Network Nervous System (NNS). The NNS is a fully on-chain, decentralized system that is responsible for making decisions regarding every aspect of the Internet Computer. To participate in the NNS, ICP token holders must stake the ICP token for a certain period of time in an entity known as a neuron. Neurons provide stability required for the responsible governance of ICP by ensuring that the ICP tokens staked within it cannot be exchanged for a specific period of time known as the 'lock-up' period. 
+The Internet Computer Protocol is governed by a DAO known as the Network Nervous System (NNS). The NNS is a fully on-chain, decentralized system that is responsible for making decisions regarding every aspect of the Internet Computer. To participate in the NNS, ICP token holders must stake the ICP token for a certain period of time in an entity known as a neuron. Neurons provide stability required for the responsible governance of the Internet Computer Protocol by ensuring that the ICP tokens staked within it cannot be exchanged for a specific period of time known as the 'lock-up' period. 
 
 Neurons can then vote on proposals, which are proposed changes or upgrades to the protocol. When a proposal has been accepted, it will be autonomously executed. Neurons are encouraged to vote on every proposal, and in return for actively voting, receive voting rewards in the form of ICP tokens. 
 

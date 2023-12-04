@@ -9,7 +9,7 @@ A threshold ECDSA implementation on a blockchain can be viewed as the on-chain c
 
 The availability of threshold ECDSA allows for a multitude of important use cases, as for example:
 -   Canisters natively holding Bitcoin;
--   Integration with Ethereum, e.g., getting the ERC-20 tokens of Ethereum into ICP or signing Ethereum transactions;
+-   Integration with Ethereum, e.g., getting the ERC-20 tokens of Ethereum onto the Internet Computer Protocol or signing Ethereum transactions;
 -   Integrations with other blockchains that use ECDSA as signature scheme for signing transactions;
 -   Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA (this requires a different elliptic curve to the currently implemented curve `secp256k1`, namely `secp256r1`).
 
