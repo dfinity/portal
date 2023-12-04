@@ -260,11 +260,12 @@ The following language and capitalization of certain terms and phrases should be
 - Bitcoin integration
 - Bitcoin network: should be used in place of "sending bitcoin".
 - bitcoin: should be used when referring to BTC rather than the Bitcoin network.
-- Built on the Internet Computer
+- Built on ICP
 - canister
 - canister smart contract
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
+- deployed on ICP
 - dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase. 
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
@@ -272,15 +273,20 @@ The following language and capitalization of certain terms and phrases should be
 - HTTP outcalls
 - ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'. 
     Two exceptions to this are:
+  
         - The IC SDK, which should be referred to as 'the IC SDK'.
+  
         - The IC interface specification, which should be referred to as 'the IC specification' or 'the IC interface specification'.
+  
+    When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
+  
 - IC SDK: should be used in place of any reference to the IC's SDK.
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
     - Other contextual usage:
-        - `The Internet Computer mainnet network.`
+        - `The ICP mainnet network.`
         - `The dapp has been deployed to the mainnet.`
-        - `Before deploying on to the Internet Computer mainnet...`
+        - `Before deploying on to the mainnet...`
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
