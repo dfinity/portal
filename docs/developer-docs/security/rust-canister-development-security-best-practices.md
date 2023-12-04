@@ -10,20 +10,32 @@ This document contains canister development best practices for both Motoko and R
 
 ## Smart contracts canister control
 
-### Use a decentralized governance system like SNS to make a canister have a decentralized controller
+### Use a decentralized governance system like SNS to put dapps under decentralized control
 
 #### Security concern
 
-The controller of a canister can change or update the canister whenever they like. If a canister e.g. stores assets such as ICP, this effectively means that the controller can steal these by updating the canister and transfer the cycles to their account.
+The controller of centralized components of a dapp (such as centrally controlled canisters or cloud services) can change or update these components whenever they like. If a canister or off-chain component e.g. holds assets such as ICP, ckBTC or ckETH on the user's behalf, this effectively means that the controller could decide at any time to steal these funds by e.g. updating the canister and transferring the assets to their account.
 
-#### Recommendation
+Furthermore, the controller of canisters serving web content (such as e.g. the [asset canister](../../references/asset-canister)) could maliciously modify the web application to e.g. steal user funds or perform security sensitive actions on the user's behalf. For example, if [Internet Identity](../../developer-docs/integrations/internet-identity/overview) is used, the user principal's private key for the given origin is stored in the browser storage, and a malicious app can therefore fully control the private key and the user's session and any assets controlled by that key.  
 
-- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP. These SNSs will be available soon. See the roadmap [here](https://dfinity.org/roadmap/) and the design proposal [here](https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224).
-- Another option would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
+#### Recommendations
+
+The following list starts with recommendations for dapps under centralized control, and then provides increasingly stronger recommendations to strengthen the dapp's security in terms of decentralization. 
+1. **The dapp uses central, off-chain components:** The application makes use of centralized components that are e.g. running in the cloud. The owners of these cloud services have full control over the application and assets managed by it. Your application should likely be further decentralized by avoiding central components. But while you have them, [securely manage your keys in the cloud](https://cloudsecurityalliance.org/research/topics/cloud-key-management/). 
+2. **Centralized dapp control by the developer team:** Your project is not controlled by a DAO, for example because it is in an early development stage or does not (yet) hold significant funds. In that case, we recommend managing access to your canisters securely and ideally not letting individuals take full control of the application. To achieve that, consider requiring several individuals or parties to control canisters and to make security sensitive changes on the application level, such as modifying access controls, etc. A helpful tool to achieve this is the [threshold canister](https://github.com/dfinity/threshold). Manage key material using hardware security modules, such as e.g. [YubyHSM](https://www.yubico.com/ch/store/yubihsm-2-series/) and physically protect these. Some of these devices support threshold signature schemes, which can help to further secure the setup. 
+3. **Full decentralization using a DAO**: The dapp is controlled by a decentralized governance system such as the Internet Computer's [Service Nervous System (SNS)](../../developer-docs/integrations/sns), so that any security sensitive changes to the canisters are only executed if the SNS community approves them collectively through a proposal voting mechanism. If an SNS is used:
+   - Make sure voting power is distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves, see [here](../../developer-docs/integrations/sns/tokenomics/tokenomics-intro#voting-power-and-decentralization).
+   - Ensure all components of the dapp are under SNS control, including the canisters serving the web frontends. 
+   - Consider the [SNS preparation checklist](../../developer-docs/integrations/sns/tokenomics/sns-checklist). Important points from a security perspective are e.g. [tokenomics](../../developer-docs/integrations/sns/tokenomics/sns-checklist#11-tokenomics-specification), [disclosing dependencies to off-chain components](../../developer-docs/integrations/sns/tokenomics/sns-checklist#13-disclosure-of-dependencies) and [performing security reviews](../../developer-docs/integrations/sns/tokenomics/sns-checklist#21-security-review).
+   - Use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP.
+
+An alternative to DAO control (3. above) would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
+
 :::info
 Note that, contrary to some other blockchains, also immutable smart contracts need cycles to run, and they can receive cycles.
 :::
-- It is also possible to implement a DAO [decentralized autonomous organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on ICP from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
+
+It is also possible to implement a DAO [decentralized autonomous organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on ICP from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
 
 ### Verify the ownership of smart contracts you depend on
 
