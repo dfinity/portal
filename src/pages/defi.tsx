@@ -27,8 +27,6 @@ function Stats() {
     btc: number;
   };
 
-  console.log(cryptoPrices.btc * 0.0000001);
-
   const stats: RotatingStat[][] = [
     [
       {
