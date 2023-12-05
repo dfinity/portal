@@ -3071,5 +3071,22 @@
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
+  },
+  {
+    "id": "taxlint",
+    "name": "TaxLint",
+    "oneLiner": "Your automated tax reporting IC assistant.", 
+    "website": "https://vresg-vyaaa-aaaag-qcj2q-cai.icp0.io/", 
+    "tags": ["Wallet", "Defi"],
+    "description": "Auto Tax Report, taxLint helps users of ICP to count and manage tax information more easily.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/taxlint_logo.png", 
+    "github": "https://github.com/TaxLintDAO/taxlint",
+    "twitter": "https://twitter.com/taxlint",
+    "display": "Normal",
+    "screenshots": [
+      "/img/showcase/taxlint_screenshot.png"
+    ],
+    "submittableId": "43956470"
   }
 ]
