@@ -451,13 +451,13 @@ function DefiPage() {
           </div>
         </section>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 md:mt-40">
+        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 md:mt-20">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
           >
             <motion.div
-              className="blob blob-purple blob-md blob-x-5 blob-y-10 z-[-1] md:blob-lg"
+              className="blob blob-purple blob-md blob-x-5 blob-y-10 z-[-1] md:blob-lg opacity-80"
               variants={transitions.fadeIn}
             ></motion.div>
             <motion.h2
