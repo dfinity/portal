@@ -372,8 +372,8 @@ function DefiPage() {
                     <img src="/img/defi/plug.webp" alt="" className="w-20" />
                     <h3 className="tw-heading-5 mb-2 mt-4">Plug</h3>
                     <p className="text-white/60 tw-lead-sm mb-0">
-                      Handle digital assets, inlcuding ckBTC and ckETH on a
-                      simple, more traditional browser extension wallet.
+                      Store, swap and manage digital assets, inlcuding ckBTC and ckETH on a
+                      simple mobile app or use your favorite browser.
                     </p>
                   </Link>
                 </motion.div>
