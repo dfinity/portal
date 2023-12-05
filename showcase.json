@@ -856,7 +856,7 @@
     "website": "https://arth.foo",
     "github": "https://github.com/s1dc0des/arth_app",
     "twitter": "https://twitter.com/arth_foo",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/arth_logo.png",
     "screenshots": [
       "/img/showcase/arth_ss.webp"
