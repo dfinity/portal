@@ -110,7 +110,10 @@ Once the asset canister has been deployed and permissions have been configured, 
 
 ### Overwriting permissions
 
-No matter the state of permissions, using upgrade arguments the permissions lists can be set to new values. The upgrade argument is of type `(AssetCanisterArgs)`, where the contained types are:
+Upgrade arguments can be used by the permissions lists to set new values, regardless of the current state of the permissions.
+
+The upgrade argument is of type `(AssetCanisterArgs)`, where the contained types are:
+
 
 ```
   type AssetCanisterArgs = variant {

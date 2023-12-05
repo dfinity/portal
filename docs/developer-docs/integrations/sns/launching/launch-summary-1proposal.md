@@ -61,7 +61,7 @@ As any eligible NNS neuron can submit the proposal in Stage 3, this is an import
 where the dapp developers explicity express their intent to hand over their dapp to a DAO.
 
 In this step, the dapp developers also perform any other preparations for decentralization.
-For example, they deregister themselves from asset canisters as principals that may change website content without going through a vote.
+For example, they remove themselves from the dapp's asset canisters as principals that may change the asset canisters' content without going through a vote.
 
 If successful, at the end of stage, the following has changed:
 
