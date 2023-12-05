@@ -79,7 +79,7 @@ const IntroCards: React.FC = () => {
               Open Internet Services
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-0 flex-1">
-              now internet communities take full and exclusive control and
+              Now internet communities take full and exclusive control and
               ownership of entire internet services –{" "}
               <strong>Create your first DAO on true Web 3.0.</strong>
             </p>
