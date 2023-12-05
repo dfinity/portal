@@ -260,7 +260,7 @@ The following language and capitalization of certain terms and phrases should be
 - Bitcoin integration
 - Bitcoin network: should be used in place of "sending bitcoin".
 - bitcoin: should be used when referring to BTC rather than the Bitcoin network.
-- Built on ICP
+- built on ICP
 - canister
 - canister smart contract
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
@@ -284,7 +284,6 @@ The following language and capitalization of certain terms and phrases should be
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
     - Other contextual usage:
-        - `The ICP mainnet network.`
         - `The dapp has been deployed to the mainnet.`
         - `Before deploying on to the mainnet...`
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
