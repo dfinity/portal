@@ -86,7 +86,7 @@ function DefiPage() {
   return (
     <Layout
       title="DeFi"
-      description="From fully on-chain order book DEXs, to bridgeless cross-chain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
+      description="From fully on-chain order book DEXs, to bridgeless X-chain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
@@ -110,13 +110,13 @@ function DefiPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Cross-chain DeFi
+                  X-chain DeFi
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  From fully on-chain order book DEXs, to bridgeless cross-chain
+                  From fully on-chain order book DEXs, to bridgeless X-chain
                   swaps, the Internet Computer provides an unmatched tech stack
                   for DEXs to thrive on and DeFi to flourish.
                 </motion.p>
@@ -248,10 +248,10 @@ function DefiPage() {
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 Sonic
               </div>
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">A DEX DAO</h3>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">SNS DAO-controlled DEX</h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 One-stop access to decentralized finance and the first DEX on
-                the Internet Computer to become and SNS DAO. Swap tokens, earn
+                the Internet Computer to become an SNS DAO. Swap tokens, earn
                 fees as a liquidity provider and participate in governance and
                 decision-making through Sonic token membership. Now supports
                 ckBTC/ckETH pair.
@@ -315,7 +315,7 @@ function DefiPage() {
                     className="md:tw-lead mb-6 md:mb-6"
                     variants={transitions.item}
                   >
-                    Cross-chain wallets already exist on the Internet Computer
+                    X-chain wallets already exist on the Internet Computer
                     that allow users to store and transfer ckBTC, ckETH and more
                     with ease.
                   </motion.p>
@@ -385,7 +385,7 @@ function DefiPage() {
                 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-7/12 md:mx-auto mb-8"
                 variants={transitions.item}
               >
-                Build cross-chain DeFi
+                Build X-chain DeFi
               </motion.h2>
             </AnimateSpawn>
           </div>
