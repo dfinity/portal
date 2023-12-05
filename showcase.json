@@ -3140,7 +3140,30 @@
       "/img/showcase/icpsig_screenshot.png"
     ],
     "submittableId": "41506799"
-  }
+  },
+  {
+  "name": "Loka",
+  "description": "Loka is a platform that enables retail investors to acquire BTC at better than market prices through co-investing with Bitcoin miners. The arrangement is based on a trustless non-custodial escrow solution, which eliminates any exposure to centralized party risk.",
+  "website": "https://lokamining.com",
+  "logo": "/img/showcase/loka_icon.png",
+  "screenshots": [
+    "/img/showcase/loka_screen.jpg"
+  ],
+  "display": "Normal",
+  "id": "loka",
+  "oneLiner": "Trustless Non-Custodial Bitcoin Mining Platform built on IC",
+  "stats": "100+ users, 10+ global miners",
+  "tags": [
+    "Bitcoin",
+    "Tools / Infrastructure",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/lokaverse",
+  "twitter": "https://twitter.com/lokamining",
+  "youtube": "https://www.youtube.com/@LokaMining",
+  "submittableId": "43890593"
+}
 ]
 
 
