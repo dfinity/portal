@@ -235,7 +235,8 @@ function DefiPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 ICDex provides the world’s first fully on-chain order book DEX.
                 Create limit orders or swap tokens instantly with complete
-                transparency and decentralization. ckBTC/ckETH swaps now possible. 
+                transparency and decentralization. ckBTC/ckETH swaps now
+                possible.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -248,7 +249,9 @@ function DefiPage() {
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
                 Sonic
               </div>
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">SNS DAO-controlled DEX</h3>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                SNS DAO-controlled DEX
+              </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 One-stop access to decentralized finance and the first DEX on
                 the Internet Computer to become an SNS DAO. Swap tokens, earn
@@ -272,8 +275,8 @@ function DefiPage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 ICP.Swap offers the largest number of tokens on the Internet
-                Computer, including ckBTC and ckETH. Trade the latest meme coins or the most successful SNS
-                DAO governance tokens.
+                Computer, including ckBTC and ckETH. Trade the latest meme coins
+                or the most successful SNS DAO governance tokens.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -315,9 +318,9 @@ function DefiPage() {
                     className="md:tw-lead mb-6 md:mb-6"
                     variants={transitions.item}
                   >
-                    X-chain wallets already exist on the Internet Computer
-                    that allow users to store and transfer ckBTC, ckETH and more
-                    with ease.
+                    X-chain wallets already exist on the Internet Computer that
+                    allow users to store and transfer ckBTC, ckETH and more with
+                    ease.
                   </motion.p>
                   <motion.p className="mb-0" variants={transitions.item}>
                     <Link
@@ -379,14 +382,22 @@ function DefiPage() {
           </section>
         </BackgroundPanel>
         <section className="container-12 py-30 md:py-48">
-          <div className="mb-16 md:mb-30">
+          <div className="mb-16 md:mb-30 md:w-7/10 md:mx-auto">
             <AnimateSpawn className="" variants={transitions.container}>
               <motion.h2
-                className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-7/12 md:mx-auto mb-8"
+                className="tw-heading-3 md:tw-heading-2 text-gradient text-center mb-4"
                 variants={transitions.item}
               >
                 Build X-chain DeFi
               </motion.h2>
+
+              <motion.p
+                className="tw-paragraph md:tw-lead text-black mb-0 text-center max-w-[500px] mx-auto"
+                variants={transitions.item}
+              >
+                The Internet Computer offers an array of innovative features to
+                build next-gen DeFi.
+              </motion.p>
             </AnimateSpawn>
           </div>
           <div className="flex flex-col gap-16 md:gap-40">
