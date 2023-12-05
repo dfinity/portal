@@ -235,7 +235,7 @@ function DefiPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 ICDex provides the world’s first fully on-chain order book DEX.
                 Create limit orders or swap tokens instantly with complete
-                transparency and decentralization - 100% on-chain.
+                transparency and decentralization. ckBTC/ckETH swaps now possible. 
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -272,7 +272,7 @@ function DefiPage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 ICP.Swap offers the largest number of tokens on the Internet
-                Computer. Trade the latest meme coins or the most successful SNS
+                Computer, including ckBTC and ckETH. Trade the latest meme coins or the most successful SNS
                 DAO governance tokens.
               </p>
               <Link
@@ -385,7 +385,7 @@ function DefiPage() {
                 className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-7/12 md:mx-auto mb-8"
                 variants={transitions.item}
               >
-                Move between chains on ICP DEXs
+                Build cross-chain DeFi
               </motion.h2>
             </AnimateSpawn>
           </div>
