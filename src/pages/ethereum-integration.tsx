@@ -263,13 +263,27 @@ function EthereumIntegrationPage() {
               interfaces (the fungible token standard of ICP), making it simple
               for all ICP wallets to offer ckETH support. Total value of ckETH
               is fully backed 1:1 by ETH, and can always be verified by viewing
-              the on-chain dashboards and metrics of the canisters. ckERC-20 is
-              coming soon.
+              the on-chain{" "}
+              <Link
+                className="link-subtle"
+                href="https://dashboard.internetcomputer.org/ethereum"
+              >
+                dashboard
+              </Link>{" "}
+              and metrics of the canisters. ckERC-20 is coming soon.
             </p>
-            <p className="mb-0">
+            <p className="mb-0 flex flex-col gap-3 items-start">
               <Link href="/defi" className="link-primary link-with-icon">
                 <LinkArrowRight />
                 Start swapping ckETH
+              </Link>
+
+              <Link
+                href="https://dashboard.internetcomputer.org/ethereum"
+                className="link-primary link-with-icon"
+              >
+                <LinkArrowRight />
+                Go to ckETH dashboard
               </Link>
             </p>
           </TranslatedLayout>
