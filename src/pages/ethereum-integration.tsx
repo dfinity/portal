@@ -251,9 +251,9 @@ function EthereumIntegrationPage() {
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
               In June 2023, average transaction fees for USDC and USDT were
-              $4.21 and $5.46 respectively, making swaps below a certain amount is
-              completely impractical. The Ethereum integration enables the use
-              of chain-key (ck) tokens such as ckETH and ckERC-20 on the
+              $4.21 and $5.46 respectively, making swaps below a certain amount
+              is completely impractical. The Ethereum integration enables the
+              use of chain-key (ck) tokens such as ckETH and ckERC-20 on the
               Internet Computer, including ckUSDC or ckUSDT. This feature allow
               users to send and receive ETH value on ICP DEXs for a few cents
               with 1-2s finality, and no gas fees.
@@ -393,8 +393,9 @@ function EthereumIntegrationPage() {
               title="Interacting with Ethereum"
               description={
                 <>
-                  Interacting with Ethereum on the Internet Computer (Beta) //
-                  Workshop
+                  Interacting with Ethereum on the Internet Computer (Beta)
+                  <br />
+                  // Workshop
                 </>
               }
             />
