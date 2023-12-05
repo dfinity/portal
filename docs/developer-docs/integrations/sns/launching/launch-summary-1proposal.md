@@ -325,6 +325,8 @@ If successful, at the end of stage, the following has changed:
   </tr>
 </table>
 
+At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.md)).
+
 ### 8. (Automatically) SNS swap starts.
 The swap was initialized with a defined start time. 
 Once this start time is reached,

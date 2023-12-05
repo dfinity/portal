@@ -93,6 +93,8 @@ of an adopted proposal in Stage 4.
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
+At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.md)).
+
 ### 8. (Automated) SNS swap starts.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
