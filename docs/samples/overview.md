@@ -173,9 +173,9 @@ This sample shows multiple canisters, with publisher-subscriber inter-canister c
 - [Documentation](./pub-sub).
 - [PubSub](https://github.com/dfinity/examples/tree/master/motoko/pub-sub).
 
-## Quick sort
+## Quicksort
 
-This example shows how to sort an array, via quick sort, in Motoko.
+This example shows how to sort an array, via quicksort, in Motoko.
 - [Documentation](./quicksort).
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/quicksort).
 
@@ -196,7 +196,7 @@ This sample shows how to create a simple frontend in JavaScript where the previo
 
 This sample dapp illustrates how to receive and transfer cycles and check a balance.
 - [Documentation](./sending-and-receiving-cycles).
-- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello_cycles) .
+- [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello_cycles).
 
 ## Simple to-do
 
