@@ -1,9 +1,9 @@
 # Threshold ECDSA: technology overview
 
 ## Overview
-This page gives a high-level outline of chain-key ECDSA signatures on the IC. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. The IC implements the threshold ECDSA protocol by Groth and Shoup as described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of this distributed signing protocol.
+This page gives a high-level outline of chain-key ECDSA signatures on ICP. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. ICP implements the threshold ECDSA protocol by Groth and Shoup as described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of this distributed signing protocol.
 
-At a high level, the threshold ECDSA implementation on the IC features multiple protocols as outlined next, all of which are crucial for a secure system setup and operation. Note that this goes far beyond just threshold ECDSA signing, which is the reason for calling this a protocol suite for **chain-key ECDSA signatures**.
+At a high level, the threshold ECDSA implementation on ICP features multiple protocols as outlined next, all of which are crucial for a secure system setup and operation. Note that this goes far beyond just threshold ECDSA signing, which is the reason for calling this a protocol suite for **chain-key ECDSA signatures**.
 -   **Key generation:** this protocol is executed on a specified subnet; it generates a new threshold ECDSA key such that the private key is secret shared over the replicas of this subnet.
 -   **XNet key re-sharing:** this protocol re-shares an ECDSA key from a source subnet to a target subnet. It results in the same key being secret shared over the replicas of the target subnet using a different random secret sharing (potentially over a different number of replicas than the sharing in the source subnet uses).
 -   **Periodic key re-sharing:** this protocol re-shares an ECDSA key within the subnet it is secret shared on. This helps protect against an adaptive attacker that attempts to compromise replicas over time as every key resharing makes the previously-obtained key shares worthless.
@@ -16,11 +16,11 @@ Various NNS proposals have been implemented to perform key management, i.e., ini
 
 ## ECDSA keys
 
-ECDSA-enabled subnets hold what are called threshold ECDSA **master keys**, generated with the key generation protocol on selected subnets of the IC. A master ECDSA key is a key from which canister ECDSA keys can be derived, i.e., a single master key for a given elliptic curve suffices for the derivation of an ECDSA key for each canister on the IC, the *canister root key*, using an extension of the BIP-32 key derivation mechanism with the canister's principal as input. The key derivation is executed transparently by the protocol as part of the signing and public key retrieval APIs. See the level-0 key derivation in the below figure for the derivation of canister root keys from a master key.
+ECDSA-enabled subnets hold what are called threshold ECDSA **master keys**, generated with the key generation protocol on selected subnets of ICP. A master ECDSA key is a key from which canister ECDSA keys can be derived, i.e., a single master key for a given elliptic curve suffices for the derivation of an ECDSA key for each canister on ICP, the *canister root key*, using an extension of the BIP-32 key derivation mechanism with the canister's principal as input. The key derivation is executed transparently by the protocol as part of the signing and public key retrieval APIs. See the level-0 key derivation in the below figure for the derivation of canister root keys from a master key.
 
 From a canister root key, an unlimited number of ECDSA keys can be derived for the canister using a backward-compatible extension of the BIP-32 key derivation mechanism. The extension allows not only 32-bit integers, but arbitrary-length byte arrays, to be used as input for each level of the key derivation function. See the levels 1 and greater in the below figure illustrating the derivation of further canister keys based on the canister root key. This derivation is supported by the ECDSA API through the `ecdsa_public_key` method.
 
-The derivation of further ECDSA keys from a canister root key can be done without involvement of the IC as well to facilitate certain use cases.
+The derivation of further ECDSA keys from a canister root key can be done without involvement of ICP as well to facilitate certain use cases.
 
 ![Threshold ECDSA Key derivation](../_attachments/key_derivation.png)
 
@@ -102,7 +102,7 @@ If a canister using this feature is intended to be blackholed, but also for othe
 
 ## Environments
 
-In order to facilitate developers throughout the canister development lifecycle on the IC, the feature is available in both the SDK for local development and testing as well as on the IC for pre-production testing and production operation of canisters.
+In order to facilitate developers throughout the canister development lifecycle on ICP, the feature is available in both the SDK for local development and testing as well as on ICP for pre-production testing and production operation of canisters.
 
 ### SDK
 
@@ -110,10 +110,10 @@ The development of canisters is typically done in the developer's local environm
 
 When the replica of the SDK environment is first started up, a new ECDSA key is generated. This key is then stored in non-volatile memory so that it does not change with every restart of the replica.
 
-For the technically interested readers, it is important to note that the SDK uses the exact same implementation of threshold ECDSA as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on the IC.
+For the technically interested readers, it is important to note that the SDK uses the exact same implementation of threshold ECDSA as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on ICP.
 
 ### Internet Computer
 
-Any canister on any subnet of the IC can call the threshold ECDSA API exposed by the management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dapps using Bitcoin testnet.
+Any canister on any subnet of ICP can call the threshold ECDSA API exposed by the management canister. The calls are routed via XNet communication to the ECDSA-enabled subnet that holds the key referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that this test key is hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus it should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dapps using Bitcoin testnet.
 
 As part of the general availability (GA) release of the feature, a production ECDSA key on the `secp256k1` elliptic curve has been deployed to be used for integration with the Bitcoin Mainnet and other use cases of interest.

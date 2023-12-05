@@ -26,7 +26,7 @@
     "tags": [
       "SocialFi",
       "Bitcoin",
-      "DAO"    
+      "DAO"
     ],
     "description": "OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps, while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
@@ -45,7 +45,8 @@
     "tags": [
       "DeFi",
       "Wallet",
-      "Bitcoin"
+      "Bitcoin",
+      "Ethereum"
     ],
     "description": "ICPSwap is DEX built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
     "usesInternetIdentity": true,
@@ -63,7 +64,8 @@
     "tags": [
       "SocialFi",
       "DeFi",
-      "Bitcoin"
+      "Bitcoin",
+      "Ethereum"
     ],
     "twitter": "https://twitter.com/funded_app",
     "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
@@ -73,6 +75,20 @@
     "logo": "/img/showcase/funded_logo.webp",
     "screenshots": []
   },
+
+  {
+    "id": "nfid",
+    "name": "NFID",
+    "oneLiner": "Your digital identity for the modern world.",
+    "website": "https://t.co/FDpvRjszU3/",
+    "tags": ["Wallet", "Ethereum"
+    ],
+    "twitter": "https://twitter.com/IdentityMaxis",
+    "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/nfid_logo.webp"
+  },
+
 
   {
     "id": "dmail",
@@ -108,6 +124,21 @@
     "logo": "/img/showcase/icdex_logo.webp",
     "screenshots": []
   },
+
+  {
+    "id": "helix",
+    "name": "Helix Markets",
+    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
+    "website": "https://t.co/OcdISW1Xww",
+    "tags": [
+      "Ethereum", "DeFi"
+    ],
+    "twitter": "https://twitter.com/HelixMarkets",
+    "description": "",
+     "usesInternetIdentity": true,
+    "logo": "/img/showcase/helix_logo.webp"
+  },
+
 
   {
     "id": "distrikt",
@@ -175,7 +206,8 @@
     "tags": [
       "DeFi",
       "Tools / Infrastructure",
-      "Bitcoin"
+      "Bitcoin",
+      "Ethereum"
     ],
     "website": "https://iclight.house/",
     "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
@@ -251,7 +283,8 @@
     "tags": [
       "DeFi",
       "Wallet",
-      "Bitcoin"
+      "Bitcoin",
+      "Ethereum"
     ],
     "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience.",
     "github": "https://github.com/psychedelic",
@@ -261,6 +294,252 @@
     "screenshots": [
       "/img/showcase/sonic_screenshot_0.webp"
     ]
+  },
+
+  {
+    "id": "orally-network",
+    "name": "Orally",
+    "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
+    "tags": ["Tools / Infrastructure", "DeFi", "Ethereum"],
+    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dapps. Elevate your blockchain journey with us!",
+    "usesInternetIdentity": false,
+    "website": "https://orally.network",
+    "github": "https://github.com/orally-network",
+    "youtube": "https://youtu.be/1ZDEyllqUcA",
+    "twitter": "https://twitter.com/orally_network",
+    "display": "Large",
+    "logo": "/img/showcase/orally-network_logo.png",
+    "screenshots": [
+      "/img/showcase/orally-network_screenshot_0.webp"
+    ],
+    "submittableId": "35782696"
+  },
+
+  {
+    "id": "plug",
+    "name": "Plug",
+    "oneLiner": "Decentralized Wallet for the Internet Computer",
+    "website": "https://plugwallet.ooo/",
+    "tags": [
+      "Wallet",
+      "NFT",
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "Ethereum"
+    ],
+    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
+    "github": "https://github.com/Psychedelic/plug",
+    "stats": "100,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/plug_logo.webp",
+    "video": "/img/showcase/plug_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": [
+      "/img/showcase/plug_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "infinityswap",
+    "name": "InfinitySwap",
+    "website": "https://infinityswap.one/",
+    "tags": [
+      "DeFi",
+      "Wallet",
+      "Ethereum"
+    ],
+    "twitter": "https://twitter.com/infinity_swap",
+    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) - InfinitySwap offers users the ability to swap tokens cheaply with their novel technology, built on the ICP blockchain.",
+    "stats": "$1.5M Invested PolyChain Capital + a16z",
+    "logo": "/img/showcase/infinityswap_logo.webp",
+    "screenshots": [
+      "/img/showcase/infinityswap_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "bitfinitywallet",
+    "name": "Bitfinity Wallet",
+    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
+    "website": "https://wallet.infinityswap.one/",
+    "tags": [
+      "Wallet",
+      "Bitcoin", "Ethereum"
+    ],
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
+    "display": "Large",
+    "logo": "/img/showcase/bitfinitywallet_logo.webp",
+    "videoContentType": "video/mp4",
+    "screenshots": [
+      "/img/showcase/bitfinitywallet_screenshot.webp"
+    ]
+  },
+
+  {
+    "id": "airgap",
+    "name": "AirGap",
+    "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
+    "description": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
+    "website": "https://airgap.it/",
+    "tags": [
+      "Wallet",
+      "Ethereum"
+    ],
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/airgap_logo.webp"
+  },
+
+  {
+    "id": "evmonicp",
+    "name": "EVM on ICP",
+    "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
+    "tags": [
+      "Ethereum"
+    ],
+    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. P.S. there is a hidden game in the demo. ",
+    "display": "Normal",
+    "logo": "/img/showcase/evmonicp_logo.webp",
+    "screenshots": [
+      "/img/showcase/evmonicp_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "stoicwallet",
+    "name": "Stoic Wallet",
+    "website": "https://www.stoicwallet.com/",
+    "tags": [
+      "Wallet",
+      "Ethereum"
+    ],
+    "description": "Stoic Wallet by Toniq Labs allows anyone to create a digital wallet, authenticating users through a variety of methods, one of those being Internet Identity. Create accounts, keep an address book, and more. ",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/stoicwallet_logo.webp",
+    "screenshots": [
+      "/img/showcase/stoicwallet_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "kleverio",
+    "name": "Klever.io",
+    "website": "https://klever.io/",
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Ethereum"
+    ],
+    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in future swap ICP right within Klever.io. Klever has integrated with the Internet Computer's Network Nervous System in order to support staking with voting rewards. ",
+    "logo": "/img/showcase/kleverio_logo.webp",
+    "screenshots": [
+      "/img/showcase/kleverio_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "id": "nnsfront-enddapp",
+    "name": "NNS Dapp",
+    "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
+    "website": "https://nns.ic0.app",
+    "github": "https://github.com/dfinity/nns-dapp",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "Ethereum"
+    ],
+    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
+  },
+
+  {
+    "id": "oisy",
+    "name": "Oisy Wallet",
+    "oneLiner": "A novel Ethereum wallet hosted on the Internet Computer",
+    "website": "https://oisy.com",
+    "github": "https://github.com/dfinity/oisy-wallet",
+    "tags": [
+      "Ethereum",
+      "DeFi",
+      "Wallet"
+    ],
+    "description": "Crafted for the Internet Computer, Oisy is a unique Ethereum wallet that operates directly within your browser. It is entirely on-chain and secured by chain-key cryptography and Internet Identity.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/oisy_logo.svg"
+  },
+
+  {
+    "id": "liquityfrontend",
+    "name": "Liquity Frontend on ICP",
+    "description": "Liquity is a decentralized borrowing protocol that allows users to draw interest-free loans against Ether used as collateral. Liquity now has a fully decentralized, immutable frontend hosted on the Internet Computer.",
+    "website": "https://imtbl.top/#/",
+    "tags": [
+      "Ethereum",
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/LiquityProtocol",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/liquity.webp",
+    "screenshots": []
+  },
+
+  {
+    "id": "w3ns",
+    "name": "W3NS - Multichain",
+    "oneLiner": "An omni-channel notification service on the Internet Computer for any IC, EVM or offchain application",
+    "website": "https://www.argonstudios.xyz",
+    "tags": ["Tools / Infrastructure", "Ethereum"],
+    "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and offchain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today...",
+    "stats": "3 early launch partners sending notifications from Polygon",
+    "logo": "/img/showcase/w3ns_logo.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/miguelToscano/w3ns",
+    "youtube": "https://www.youtube.com/@argonstudios",
+    "twitter": "https://twitter.com/ArgonStudiosXYZ"
+  },
+
+  {
+    "id": "ethereum-canister",
+    "name": "Ethereum Canister",
+    "website": "https://www.eiger.co/",
+    "oneLiner": "A fully trustless access to the Ethereum blockchain data.",
+    "tags": [
+      "Ethereum", "Tools / Infrastructure"
+    ],
+    "description": "The Ethereum canister offers a secure and trustless way to access Ethereum blockchain data within the ICP ecosystem. Behind the scenes, it leverages the helios light Ethereum client which is equipped with the capability to validate the authenticity of fetched data.",
+    "stats": "17M+ blocks",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/eigerco/ethereum-canister",
+    "logo": "/img/ethereum.svg",
+    "screenshots": [],
+    "video": "",
+    "videoContentType": "video/mp4",
+    "submittableId": "40732752"
+  },
+
+  {
+    "name": "Taurus",
+    "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
+    "website": "https://www.taurushq.com/",
+    "logo": "/img/showcase/taurus_logo.png",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "taurus",
+    "oneLiner": "Banking-grade custody for digital asset management.",
+    "stats": "Powering 15+ banks",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure",
+      "Ethereum"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": ""
   },
 
   {
@@ -395,7 +674,7 @@
     ],
     "github": "https://github.com/modclub-app"
   },
-  
+
   {
     "id": "querio",
     "name": "Querio",
@@ -451,23 +730,6 @@
   },
 
   {
-    "id": "portal",
-    "name": "Portal",
-    "oneLiner": "Onchain Video Streaming Infrastructure",
-    "website": "https://app.portal.one",
-    "tags": [
-      "Tools / Infrastructure",
-      "NFT"
-    ],
-    "description": "Portal is a web3 video infrastructure platform built entirely on the Internet Computer blockchain. Portal enables developers to easily replace their current web2 video solutions with a native web3 video service at a fraction of the cost. Portal Channels give creators ownership and control over their video environment whilst offering fans great viewing experiences and real rewards like automatically generated digital collectibles that grant access to private video content.",
-    "github": "https://github.com/NFT-Portal",
-    "logo": "/img/showcase/portal_logo.webp",
-    "video": "/img/showcase/portal_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
-  },
-
-  {
     "id": "taggr",
     "name": "TAGGR",
     "website": "https://taggr.link",
@@ -488,6 +750,26 @@
   },
 
   {
+    "id": "autoroyale",
+    "name": "AutoRoyale",
+    "website": "https://cm6iy-sqaaa-aaaam-abmxq-cai.icp0.io/",
+    "tags": [
+      "Games"
+    ],
+    "twitter": "",
+    "description": "Jump into this proof of concept battle royale 2D shooter on ICP. Grab gear, outplay the competition, and stay alive as the battleground shrinks. It's all about thinking a few steps ahead. Upgrade weapons, toss grenades, and pull off sneaky ambushes. Invite your pals for a quick match and make sure you play the tutorial to get used to the mechanics.",
+    "usesInternetIdentity": true,
+    "display": "Large",
+    "stats": "",
+    "logo": "/img/showcase/autoroyale_logo.png",
+    "oneLiner": "A fast-paced 2D multiplayer shooter game",
+    "screenshots": [
+    ],
+    "video":  "/img/showcase/autoroyale_video.mp4",
+    "videoContentType": "video/mp4"
+  },
+
+  {
     "id": "azle",
     "name": "Azle",
     "oneLiner": "TypeScript CDK for the Internet Computer",
@@ -504,24 +786,6 @@
     ]
   },
 
-  {
-    "id": "orally-network",
-    "name": "Orally",
-    "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
-    "tags": ["Tools / Infrastructure", "DeFi", "Ethereum"],
-    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dapps. Elevate your blockchain journey with us!",
-    "usesInternetIdentity": false,
-    "website": "https://orally.network",
-    "github": "https://github.com/orally-network",
-    "youtube": "https://youtu.be/1ZDEyllqUcA",
-    "twitter": "https://twitter.com/orally_network",
-    "display": "Large",
-    "logo": "/img/showcase/orally-network_logo.png",
-    "screenshots": [
-      "/img/showcase/orally-network_screenshot_0.webp"
-    ],
-    "submittableId": "35782696"
-  },
 
   {
     "id": "catalyze",
@@ -592,7 +856,7 @@
     "website": "https://arth.foo",
     "github": "https://github.com/s1dc0des/arth_app",
     "twitter": "https://twitter.com/arth_foo",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/arth_logo.png",
     "screenshots": [
       "/img/showcase/arth_ss.webp"
@@ -637,28 +901,6 @@
     "screenshots": []
   },
 
-  {
-    "id": "plug",
-    "name": "Plug",
-    "oneLiner": "Decentralized Wallet for the Internet Computer",
-    "website": "https://plugwallet.ooo/",
-    "tags": [
-      "Wallet",
-      "NFT",
-      "Tools / Infrastructure",
-      "Bitcoin"
-    ],
-    "description": "Plug Wallet, built and open sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
-    "github": "https://github.com/Psychedelic/plug",
-    "stats": "100,000+ users",
-    "display": "Normal",
-    "logo": "/img/showcase/plug_logo.webp",
-    "video": "/img/showcase/plug_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": [
-      "/img/showcase/plug_screenshot_0.webp"
-    ]
-  },
 
   {
     "id": "canscale",
@@ -732,23 +974,6 @@
   },
 
   {
-    "id": "infinityswap",
-    "name": "InfinitySwap",
-    "website": "https://infinityswap.one/",
-    "tags": [
-      "DeFi",
-      "Wallet"
-    ],
-    "twitter": "https://twitter.com/infinity_swap",
-    "description": "InfinitySwap is a platform to create, stake, and swap tokens on the Internet Computer. Backed by Polychain Capital and 9YardsCapital (amongst others) - InfinitySwap offers users the ability to swap tokens cheaply with their novel technology, built on the ICP blockchain.",
-    "stats": "$1.5M Invested PolyChain Capital + a16z",
-    "logo": "/img/showcase/infinityswap_logo.webp",
-    "screenshots": [
-      "/img/showcase/infinityswap_screenshot_0.webp"
-    ]
-  },
-
-  {
     "id": "eimolad",
     "name": "Eimolad",
     "description": "This is an amazing world inhabited by humans, dwarves, orcs, elves and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers and incredible adventures. ",
@@ -817,18 +1042,6 @@
     "screenshots": []
   },
 
-  {
-    "id": "airgap",
-    "name": "AirGap",
-    "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
-    "description": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
-    "website": "https://airgap.it/",
-    "tags": [
-      "Wallet"
-    ],
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/airgap_logo.webp"
-  },
 
   {
     "id": "kawak",
@@ -851,7 +1064,7 @@
     "github": "https://github.com/kawak-org/Kawak-2.0",
     "twitter": "https://twitter.com/KawaK_ICP",
     "youtube": "",
-    "submittableId": "35943161"    
+    "submittableId": "35943161"
   },
 
   {
@@ -920,37 +1133,6 @@
     ]
   },
 
-  {
-    "id": "spinnercash",
-    "name": "Spinner.Cash",
-    "description": "Private transactions for ICP and BTC",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure",
-      "Bitcoin"
-    ],
-    "website": "https://spinner.cash/",
-    "github": "https://github.com/spinner-cash/launch-trail",
-    "twitter": "https://twitter.com/spnrapp",
-    "logo": "/img/showcase/spinnercash_logo.webp"
-  },
-  {
-    "id": "bitfinitywallet",
-    "name": "Bitfinity Wallet",
-    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
-    "website": "https://wallet.infinityswap.one/",
-    "tags": [
-      "Wallet",
-      "Bitcoin", "Ethereum"
-    ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
-    "display": "Large",
-    "logo": "/img/showcase/bitfinitywallet_logo.webp",
-    "videoContentType": "video/mp4",
-    "screenshots": [
-      "/img/showcase/bitfinitywallet_screenshot.webp"
-    ]
-  },
 
   {
     "id": "rubaru",
@@ -962,10 +1144,10 @@
     "logo": "/img/showcase/rubaru_logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
-    "youtube": "https://youtu.be/CBumSMJRV08", 
+    "youtube": "https://youtu.be/CBumSMJRV08",
     "twitter": "https://twitter.com/RuBaRu_app",
-    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"], 
-    "video": "/img/showcase/rubaru_video.mp4", 
+    "screenshots": ["/img/showcase/rubaru_dapp_screenshots.png"],
+    "video": "/img/showcase/rubaru_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "39223821"
   },
@@ -1356,21 +1538,6 @@
   },
 
   {
-    "id": "evmonicp",
-    "name": "EVM on ICP",
-    "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
-    "tags": [
-      "Ethereum"
-    ],
-    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. P.S. there is a hidden game in the demo. ",
-    "display": "Normal",
-    "logo": "/img/showcase/evmonicp_logo.webp",
-    "screenshots": [
-      "/img/showcase/evmonicp_screenshot_0.webp"
-    ]
-  },
-
-  {
     "id": "bitshop",
     "name": "Bitshop",
     "oneLiner": "Internet Computer blockchain as a Bitcoin e-shop",
@@ -1489,7 +1656,7 @@
 
 
 
-  
+
 
 
   {
@@ -1600,37 +1767,12 @@
     "oneLiner": "Superior alternative to Linktree",
     "website": "https://b.ink",
     "tags": ["SocialFi"],
-    "description": "Connect your audience, engage your community and analyse your interaction while owning your data and your identity.",
+    "description": "Connect, engage and inspire your audience while owning your data and your identity.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.webp",
-    "twitter": "https://twitter.com/BinkDapp"
+    "logo": "/img/showcase/bink_logo.webp"
   },
-  {
-    "id": "cipherproxy",
-    "name": "cipher proxy",
-    "description": "A web3 research collective and project laboratory developing decentralized projects and protocols",
-    "tags": [
-      "NFT"
-    ],
-    "website": "https://www.cipherproxy.com/",
-    "twitter": "https://twitter.com/CipherProxyLLC",
-    "logo": "/img/showcase/cipherproxy_logo.webp",
-    "submittableId": "21787270"
-  },
-  {
-    "id": "stoicwallet",
-    "name": "Stoic Wallet",
-    "website": "https://www.stoicwallet.com/",
-    "tags": [
-      "Wallet"
-    ],
-    "description": "Stoic Wallet by Toniq Labs allows anyone to create a digital wallet, authenticating users through a variety of methods, one of those being Internet Identity. Create accounts, keep an address book, and more. ",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/stoicwallet_logo.webp",
-    "screenshots": [
-      "/img/showcase/stoicwallet_screenshot_0.webp"
-    ]
-  },
+
+
   {
     "id": "pythonagent",
     "name": "Python Agent",
@@ -1684,7 +1826,7 @@
 
 
 
-  { 
+  {
     "id": "obsidian-tears",
     "name": "Obsidian Tears",
     "oneLiner": "Obsidian Tears is a 2D RPG similar to old-time classics, complete with NFT and blockchain integration on the Internet Computer.",
@@ -1865,20 +2007,7 @@
       "/img/showcase/dank_screenshot_0.webp"
     ]
   },
-  {
-    "id": "kleverio",
-    "name": "Klever.io",
-    "website": "https://klever.io/",
-    "tags": [
-      "Wallet",
-      "DeFi"
-    ],
-    "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer and in future swap ICP right within Klever.io. Klever has integrated with the Internet Computer's Network Nervous System in order to support staking with voting rewards. ",
-    "logo": "/img/showcase/kleverio_logo.webp",
-    "screenshots": [
-      "/img/showcase/kleverio_screenshot_0.webp"
-    ]
-  },
+
   {
     "id": "icmojiorigins",
     "name": "ICmoji Origins",
@@ -1971,7 +2100,7 @@
       "/img/showcase/icpcoins_screenshot_0.jpg"
     ]
   },
-  
+
   {
     "id": "internetcomputerorgwebsite",
     "name": "ICP website",
@@ -2029,21 +2158,7 @@
       "/img/showcase/windowsic_screenshot_0.webp"
     ]
   },
-  {
-    "id": "nnsfront-enddapp",
-    "name": "NNS Dapp",
-    "oneLiner": "Dapp for Staking Neurons + Voting On-Chain",
-    "website": "https://nns.ic0.app",
-    "github": "https://github.com/dfinity/nns-dapp",
-    "tags": [
-      "Wallet",
-      "Tools / Infrastructure",
-      "Bitcoin"
-    ],
-    "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
-  },
+
   {
     "id": "tipjar",
     "name": "Tipjar",
@@ -2075,7 +2190,7 @@
     ]
   },
 
-  
+
   {
     "id": "welcomeintothemetaverse",
     "name": "Welcome Into the Metaverse",
@@ -2089,7 +2204,7 @@
       "/img/showcase/welcomeintothemetaverse_screenshot_0.webp"
     ]
   },
-  
+
 
   {
     "id": "lo-fiplayer",
@@ -2119,7 +2234,7 @@
       "/img/showcase/reversi_screenshot_0.webp"
     ]
   },
- 
+
   {
     "id": "gooble",
     "name": "Goblin Studio",
@@ -2137,7 +2252,7 @@
     ],
     "twitter": "https://twitter.com/vger_ic"
   },
- 
+
   {
     "id": "football-god",
     "name": "FootballGod",
@@ -2281,21 +2396,6 @@
     "github": "https://github.com/rakeoff-labs",
     "twitter": "https://twitter.com/rakeoff_app"
   },
-  {
-    "id": "oisy",
-    "name": "Oisy Wallet",
-    "oneLiner": "A novel Ethereum wallet hosted on the Internet Computer",
-    "website": "https://oisy.com",
-    "github": "https://github.com/dfinity/oisy-wallet",
-    "tags": [
-      "Ethereum",
-      "DeFi",
-      "Wallet"
-    ],
-    "description": "Crafted for the Internet Computer, Oisy is a unique Ethereum wallet that operates directly within your browser. It is entirely on-chain and secured by chain-key cryptography and Internet Identity.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/oisy_logo.svg"
-  },
     {
     "id": "tswaanda",
     "name": "Tswaanda",
@@ -2343,8 +2443,8 @@
     "display": "Large",
     "usesInternetIdentity": false,
     "twitter": "https://twitter.com/_scoge_",
-    "screenshots": ["/img/showcase/scoge_screenshots.webp"], 
-    "video": "/img/showcase/scoge_video.mp4", 
+    "screenshots": ["/img/showcase/scoge_screenshots.webp"],
+    "video": "/img/showcase/scoge_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "34276514"
   },
@@ -2420,28 +2520,6 @@
   },
 
 
-
-
-
-
-  
-  {
-    "id": "liquityfrontend",
-    "name": "Liquity Frontend on ICP",
-    "description": "Liquity is a decentralized borrowing protocol that allows users to draw interest-free loans against Ether used as collateral. Liquity now has a fully decentralized, immutable frontend hosted on the Internet Computer.",
-    "website": "https://imtbl.top/#/",
-    "tags": [
-      "Ethereum",
-      "DeFi"
-    ],
-    "twitter": "https://twitter.com/LiquityProtocol",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/liquity.webp",
-    "screenshots": []
-  },
-
-
   {
     "name": "NacDB",
     "description": "A distributed database that allows seamless scanning of items, because it is split into small databases, each fitting in a canister.",
@@ -2494,20 +2572,6 @@
     "screenshots": [
       "/img/showcase/ichub_screenshot_0.jpeg", "/img/showcase/ichub_screenshot_1.jpeg", "/img/showcase/ichub_screenshot_2.jpeg"
     ]
-  },
-  {
-    "id": "w3ns",
-    "name": "W3NS - Multichain",
-    "oneLiner": "An omni-channel notification service on the Internet Computer for any IC, EVM or offchain application",
-    "website": "https://www.argonstudios.xyz",
-    "tags": ["Tools / Infrastructure", "Ethereum"],
-    "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and offchain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today...",
-    "stats": "3 early launch partners sending notifications from Polygon",
-    "logo": "/img/showcase/w3ns_logo.png",
-    "usesInternetIdentity": false,
-    "github": "https://github.com/miguelToscano/w3ns",
-    "youtube": "https://www.youtube.com/@argonstudios",
-    "twitter": "https://twitter.com/ArgonStudiosXYZ"
   },
   {
     "id": "hashkeydid",
@@ -2593,24 +2657,7 @@
     "discord": "https://discord.gg/8ZwJZsxXhk",
     "submittableId": "35783156"
   },
-  {
-    "id": "ethereum-canister",
-    "name": "Ethereum Canister",
-    "website": "https://www.eiger.co/",
-    "oneLiner": "A fully trustless access to the Ethereum blockchain data.",
-    "tags": [
-      "Ethereum", "Tools / Infrastructure"
-    ],
-    "description": "The Ethereum canister offers a secure and trustless way to access Ethereum blockchain data within the ICP ecosystem. Behind the scenes, it leverages the helios light Ethereum client which is equipped with the capability to validate the authenticity of fetched data.",
-    "stats": "17M+ blocks",
-    "usesInternetIdentity": false,
-    "github": "https://github.com/eigerco/ethereum-canister",
-    "logo": "/img/ethereum.svg",
-    "screenshots": [],
-    "video": "",
-    "videoContentType": "video/mp4",
-    "submittableId": "40732752"
-  },
+
   {
     "id":"zondax_unreal",
     "name": "Zondax Unreal",
@@ -2646,7 +2693,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/pu0238/pluto",
     "submittableId": "36517192"
-  }, 
+  },
   {
     "id": "motoko-book",
     "name": "The Motoko Programming Language Book",
@@ -2655,7 +2702,7 @@
     "tags": ["Tools / Infrastructure"],
     "description": "This book guides beginners into the world of Web3 programming in Motoko on the Internet Computer. It covers a broad range of concepts from the very basics to advanced async programming.",
     "stats": "100 monthly users",
-    "logo": "/img/showcase/motoko-book_logo.png", 
+    "logo": "/img/showcase/motoko-book_logo.png",
     "usesInternetIdentity": "false",
     "github": "https://github.com/Web3NL/motoko-book",
     "submittableId": "34608505",
@@ -2668,7 +2715,7 @@
     "website": "https://jqajc-hiaaa-aaaak-qck5a-cai.icp0.io/#/",
     "tags": ["Tools / Infrastructure"],
     "description": "InfinitiNote is an ICP-based AI-Enabled Note taking application, that allows users to create Notebooks, store Notes, and collaboratively edit in real-time with capability for file uploads and enhacned by LLAMA AI.",
-    "logo": "/img/showcase/in_logo.jpg", 
+    "logo": "/img/showcase/in_logo.jpg",
     "usesInternetIdentity": "true",
     "github": "https://github.com/hafezrouzati/infinitinote",
     "submittableId": "32966927",
@@ -2741,27 +2788,7 @@
     "youtube": "",
     "submittableId": "35119262"
   },
-  {
-    "name": "Taurus",
-    "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
-    "website": "https://www.taurushq.com/",
-    "logo": "/img/showcase/taurus_logo.png",
-    "screenshots": [],
-    "video": "",
-    "display": "Normal",
-    "id": "taurus",
-    "oneLiner": "Banking-grade custody for digital asset management.",
-    "stats": "Powering 15+ banks",
-    "tags": [
-      "Wallet",
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": false,
-    "github": "",
-    "twitter": "",
-    "youtube": "",
-    "submittableId": ""
-  },
+
   {
     "name": "IC based storage service",
     "description": "IC-based storage service to store and organize any kind of files that works with platform deployed on the IC.",
@@ -2781,7 +2808,7 @@
     "twitter": "",
     "youtube": "",
     "submittableId": "41213024"
-  },  
+  },
   {
     "name": "aVa",
     "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
@@ -2841,7 +2868,7 @@
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/Faceless_Proj",
     "submittableId": "35639090"
-  }, 
+  },
   {
     "id": "fishverse",
     "name": "FishVerse",
@@ -3078,7 +3105,7 @@
     "twitter": "https://twitter.com/icpdelta",
     "youtube": "https://www.youtube.com/@inheritX_0101",
     "submittableId": "41410724"
-  }, 
+  },
   {
     "id": "icp-explorer",
     "name": "ICP Explorer",
@@ -3093,5 +3120,26 @@
     "display": "Normal",
     "logo": "/img/showcase/icp-explorer_logo.webp",
     "screenshots": []
+  {
+    "id": "icpsig",
+    "name": "ICPsig",
+    "oneLiner": "Multisig for Internet Computer",
+    "website": "https://icpsig.in/",
+    "tags": [
+      "Wallet",
+      "Bitcoin",
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/premiurly",
+    "description": "ICPsig is multisig dapp for internet computer. ICPsig allows multiple principals to control funds in one address.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icpsig_logo.png",
+    "screenshots": [
+      "/img/showcase/icpsig_screenshot.png"
+    ],
+    "submittableId": "41506799"
   }
 ]
+
+

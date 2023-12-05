@@ -30,7 +30,7 @@ Since Motoko playground is designed for short, small-scale testing, there are li
 
 ## `dfx deploy --playground`
 
-Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the IC mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
+Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
 
 ### Prerequisites
 

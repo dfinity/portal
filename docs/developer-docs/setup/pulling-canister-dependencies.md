@@ -2,17 +2,17 @@
 
 ## Overview
 
-The interoperability of canisters on the IC is a vital feature for many developers and their workflows. `dfx` provides a consistent developer workflow for creating, integrating and testing third-party canisters with local developer environments.
+The interoperability of canisters on ICP is a vital feature for many developers and their workflows. `dfx` provides a consistent developer workflow for creating, integrating and testing third-party canisters with local developer environments.
 
-Third-party canisters include canisters created by DFINITY, such as NNS, ledger, II, and others, but also include canisters that have been created by developers in the IC community. Developers depend on third-party canisters to integrate with and typically need a way to develop and test the integrations locally for things such as:
+Third-party canisters include canisters created by DFINITY, such as NNS, ledger, II, and others, but also include canisters that have been created by developers in ICP community. Developers depend on third-party canisters to integrate with and typically need a way to develop and test the integrations locally for things such as:
 - Testing the accuracy of the integration and other canister code.
 - Performing tests without paying cycles.
 - Performing tests using non-production data and environments.
 - Performing tests with faster completion time when run locally.
 
-To pull these canisters from the IC mainnet to be developed and tested using a local replica, the [`dfx deps`](/docs/references/cli-reference/dfx-deps.md) command and workflow can be used.
+To pull these canisters from the mainnet to be developed and tested using a local replica, the [`dfx deps`](/docs/references/cli-reference/dfx-deps.md) command and workflow can be used.
 
-In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the IC mainnet. A service provider can be any community developer creating a public, third-party canister.
+In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the mainnet. A service provider can be any community developer creating a public, third-party canister.
 
 Then, a **service consumer** can pull the canister as a dependency directly from the mainnet and then deploy the dependency on a local replica.
 
@@ -243,7 +243,7 @@ In this file, you can see there are three dependencies:
 - `yofga-2qaaa-aaaaa-aabsq-cai`: an indirect dependency that both "dep_b" and "dep_c" depend on.
 
 :::caution
-`dfx deps pull` connects to the IC mainnet by default (`--network ic`). You can choose other network as usual, e.g. `--network local`.
+`dfx deps pull` connects to the mainnet by default (`--network ic`). You can choose other network as usual, e.g. `--network local`.
 :::
 
 ### Step 3: Set init arguments using `dfx deps init`
@@ -348,7 +348,7 @@ Installing canister: yhgn4-myaaa-aaaaa-aabta-cai (dep_b)
 
 Now that you've explored the concepts and overview of using the `dfx deps` workflow, let's take a look at using an interactive example to demonstrate the functionality.
 
-This example project will demonstrate an application canister pulling its dependency from the IC mainnet and integrating with it locally.
+This example project will demonstrate an application canister pulling its dependency from the mainnet and integrating with it locally.
 
 In this example, the `app` canister defines a method called `double_service` which makes an inter-canister call to the `service` canister.
 

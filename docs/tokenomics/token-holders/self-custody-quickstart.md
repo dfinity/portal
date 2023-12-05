@@ -171,7 +171,7 @@ dfx identity --network ic deploy-wallet 53zcu-tiaaa-aaaaa-qaaba-cai
 This command displays output similar to the following:
 
 ```
-Creating a wallet canister on the IC network.
+Creating a wallet canister on ICP.
 The wallet canister on the "ic" network for user "default" is "53zcu-tiaaa-aaaaa-qaaba-cai"
 ```
 

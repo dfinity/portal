@@ -2,11 +2,11 @@
 
 ## Overview
 
-The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides users with a way to store and retrieve static assets from a canister deployed on the IC. Generally, asset canisters are used to serve HTML, CSS, or JavaScript assets, which are typically part of a dapp's frontend. For this reason, the asset canister is also referred to as the frontend canister. For purposes of this guide, it will be referred to as the asset canister. 
+The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provides users with a way to store and retrieve static assets from a canister deployed on ICP. Generally, asset canisters are used to serve HTML, CSS, or JavaScript assets, which are typically part of a dapp's frontend. For this reason, the asset canister is also referred to as the frontend canister. For purposes of this guide, it will be referred to as the asset canister. 
 
 In the context of the SNS, a dapp's associated asset canister serves the frontend assets related to the dapp and may also include a frontend to the SNS DAO, e.g., through which users can vote on governance proposals.  
 
-The contents of the asset canister must be configured prior to the launch of the SNS, and any changes afterwards must be made by a principal with the `Prepare` permission. Principals with this `Prepare` permission can make a batch of changes to the asset canister and then 'lock' those changes. To have those changes applied, a proposal must be submitted. Anyone can submit the proposal for the 'locked' changes. Once changes are proposed, they can be voted on by the SNS DAO. If approved, the SNS governance canister is the only one that can commit the approved changes. This configuration assures that changes to the asset canister are only made by approved proposals. These changes are referred to as 'updates' to the asset canister in the remainder of this document. 
+The contents of the asset canister can be configured prior to the launch of the SNS. If configured correctly, any changes afterwards must be made by a principal with the `Prepare` permission. Principals with this `Prepare` permission can make a batch of changes to the asset canister and then 'lock' those changes. To have those changes applied, a proposal must be submitted. Anyone can submit the proposal for the 'locked' changes. Once changes are proposed, they can be voted on by the SNS DAO. If approved, the SNS governance canister is the only one that can commit the approved changes. This configuration assures that changes to the asset canister are only made by approved proposals. These changes are referred to as 'updates' to the asset canister in the remainder of this document. 
 
 This section is relevant if your project contains an asset canister and describes how you can test handing over control of an asset canister to an SNS.
 
@@ -19,15 +19,14 @@ The term **update** refers to changing or updating the assets stored within an a
 
 ## Deploying an asset canister
 
-An asset canister must first be deployed before control of it can be handed over to an SNS. When a dapp's control is handed over to an SNS, this is also true for the associated asset canister.
-
 The general overview of deploying an asset canister during an SNS launch is as follows:
-- First, the asset canister must be created with or upgraded to a Wasm file from [dfx 0.14.1+](https://github.com/dfinity/sdk/blob/release-0.14.1/src/distributed/assetstorage.wasm.gz).
-- Then, the dapp should hand control of the asset canister over to the SNS by setting the following permissions:
-    - The SNS governance canister is given `Commit` permissions. This is done by the previous developer using the `grant_permissions` command (see the granting permissions section below), otherwise the SNS must grant this permission once it is a controller.
-    - A whitelist of principals with `Prepare` permissions is created to give certain individuals the permission to upload changes to the asset canister. Changes must be approved through a proposal before they are applied to the asset canister. 
-    - The user or developer creating the SNS should remove their own personal permissions. 
-- Lastly, the SNS's function should be registered to commit the configuration.
+- First, the asset canister must be created with or upgraded to a Wasm file from [dfx 0.15.2+](https://github.com/dfinity/sdk/blob/release-0.15.2/src/distributed/assetstorage.wasm.gz).
+- Then, developers should use `revoke_permission` to remove their own permissions (especially `Commit`) that allow them to update the assets arbitrarily.
+- Then, after launching the SNS, the SNS's function should be [registered](#sns-genericnervoussystemfunctions) to commit proposed changes.
+- Last, using upgrade arguments, updated permissions can be set. This is only possible after the SNS canisters have been successfully deployed and [initialized](../launching/launch-summary-1proposal.md#7-automatically-sns-w-initializes-sns-canisters-according-to-settings-from-step-1) because before the launch the principal id of SNS governance is not known yet
+    - The SNS governance canister is given `Commit` permissions. With `Commit`, SNS governance may apply a batch of proposed asset updates to the assets served by the asset canister.
+    - To give certain individuals the permission to upload changes to the asset canister that can then be put to vote, these principals can be granted `Prepare` permissions. Changes created using `Prepare` permissions must be approved through a proposal before they are applied to the asset canister. 
+    - To facilitate permission management via custom SNS proposals, it can make sense to grant SNS governance the `ManagePermissions` permission. With this permission, it is not necessary to upgrade the asset canister every time permissions are supposed to change.
 
 To deploy an asset canister, any canister in the `dfx.json` file can be set as `"type": "assets"`, and dfx will automatically generate the required files, such as an assets.wasm.gz file and a candid/assets.did file once the canister has been built. 
 
@@ -46,10 +45,8 @@ An example of configuring an asset canister within the `dfx.json` file can be fo
 To deploy your asset canister locally for testing purposes, the following command can be used:
 
 ```
-dfx deploy assets --network "local" --no-wallet
+dfx deploy assets --network "local"
 ```
-
-The asset canister should be deployed and have permissions configured before the dapp is handed over to an SNS. 
 
 ### Deploying on the mainnet
 
@@ -60,22 +57,18 @@ To deploy to the mainnet, you will need a wallet that contains cycles. For more 
 To deploy your asset canister to the mainnet, the following command can be used:
 
 ```
-dfx deploy assets --network "ic" --wallet <principal>
+dfx deploy assets --network "ic"
 ```
-
-The asset canister should be deployed and have permissions configured before the dapp is handed over to an SNS. 
 
 ## Configuring an asset canister's permissions
 
-When configuring an asset canister, a set of permissions that contains a whitelist of principals must be created. This whitelist details who is allowed to submit changes that update assets in the asset canister. This whitelist must be configured prior to the SNS launch. Principals that are allowed to submit changes are given the `Prepare` permission.
+When configuring an asset canister, a set of permissions that contains a whitelist of principals must be created. This whitelist details who is allowed to submit changes that update assets in the asset canister. Principals that are allowed to submit changes are given the `Prepare` permission.
 
 Once a principal with `Prepare` permissions submits changes to the asset canister, these changes are set in a 'locked' state. Then, anyone can submit a proposal that proposes the 'locked' changes be applied; there is no permission necessary to submit this proposal. 
 
-During the SNS launch, control of the asset canister must be handed over to the SNS. Apart from assigning canister control to SNS root as with all dapp canisters, the SNS' governance canister should be added to the whitelist as a principal with `Commit` rights. Only principals with `Commit` rights may apply proposed changes. 
+Only principals with `Commit` rights may apply proposed changes. 
 
-Once the asset canister has been handed over to the SNS, only the governance canister should have `Commit` rights, and principals in the whitelist should have `Prepare` rights. The developer who configured and deployed the SNS should have their permissions removed during the SNS launch. 
-
-It is recommended that the SNS calls `take_ownership` via a proposal, which must be added as a custom proposal type. This will clear all permissions, and give only the SNS governance canister `Commit` permissions. If the SNS does not call `take_ownership`, a user cannot verify that all changes to the assets have been approved by an SNS proposal. 
+Once the asset canister has been handed over to the SNS, only the governance canister should have `Commit` rights, and principals in the whitelist should have `Prepare` rights. The developer who configured and deployed the SNS should have their permissions removed prior to the SNS launch.
 
 ### Granting permissions
 
@@ -114,6 +107,44 @@ dfx canister call --network ic oa7fk-maaaa-aaaam-abgka-cai list_permitted '(reco
 ```
 
 Once the asset canister has been deployed and permissions have been configured, the SNS decentralization swap can be started. You can learn more about launching an SNS [here](../launching/launch-summary-1proposal.md)
+
+### Overwriting permissions
+
+Upgrade arguments can be used by the permissions lists to set new values, regardless of the current state of the permissions.
+
+The upgrade argument is of type `(AssetCanisterArgs)`, where the contained types are:
+
+
+```
+  type AssetCanisterArgs = variant {
+    Init: InitArgs;
+    Upgrade: UpgradeArgs;
+  };
+  type InitArgs = record {};
+  type UpgradeArgs = record {
+    set_permissions: opt SetPermissions;
+  };
+  /// Sets the list of principals granted each permission.
+  type SetPermissions = record {
+    prepare: vec principal;
+    commit: vec principal;
+    manage_permissions: vec principal;
+  };
+```
+
+Therefore, to set the permissions such that SNS governance has `ManagePermissions` and `Commit` permissions and `principal1` has `Prepare` permissions, the upgrade argument would look like this:
+
+```
+  (variant {
+    Upgrade = record {
+      set_permissions = opt record {
+        prepare = vec { principal "<principal1>"; };
+        commit = vec { principal "<SNS governance>"; };
+        manage_permissions = vec { principal "<SNS governance>"; };
+      }
+    }
+  })
+```
 
 ## SNS GenericNervousSystemFunctions
 
@@ -158,14 +189,13 @@ The computed evidence should match the evidence from step 2.
 Use these asset canister APIs in the proposal:
 
 ```
-   type CommitProposedBatchArguments = record {
+  type CommitProposedBatchArguments = record {
    batch_id: BatchId;
    evidence: blob;
   };
   type ValidationResult = variant { Ok : text; Err : text };
 
-
-    validate_commit_proposed_batch: (CommitProposedBatchArguments) -> (ValidationResult);
+  validate_commit_proposed_batch: (CommitProposedBatchArguments) -> (ValidationResult);
   commit_proposed_batch: (CommitProposedBatchArguments) -> ();
 
 ```

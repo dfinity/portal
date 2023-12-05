@@ -283,3 +283,14 @@ export function getLastEnergyConsumptionRateKwh(): Promise<number> {
     .then((res) => res.json())
     .then((res) => +res.energy_consumption_rate[0][1]);
 }
+
+export function getMaxTransactionsPerSecOver90Days(): Promise<number> {
+  return fetch(
+    `https://ic-api.internetcomputer.org/api/v3/metrics/max-transactions-per-sec-over-90-days`
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{ max_transactions_per_sec: [number, string] }>
+    )
+    .then((res) => +res.max_transactions_per_sec[1]);
+}

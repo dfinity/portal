@@ -140,7 +140,7 @@ There are dapps that can help you convert ICP to cycles and create a new cycles 
 
     This command displays output similar to the following:
 
-        Creating a wallet canister on the IC network.
+        Creating a wallet canister on ICP.
         The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
 
 ## Listing wallets
