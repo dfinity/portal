@@ -5,7 +5,7 @@
     "oneLiner": "Social portals, community airdrops, crypto tipping on chain",
     "website": "https://dscvr.one/",
     "tags": [
-      "SocialFi"
+      "SocialFi", “Ethereum”
     ],
     "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
     "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
@@ -296,24 +296,6 @@
     ]
   },
 
-  {
-    "id": "orally-network",
-    "name": "Orally",
-    "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
-    "tags": ["Tools / Infrastructure", "DeFi", "Ethereum"],
-    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dapps. Elevate your blockchain journey with us!",
-    "usesInternetIdentity": false,
-    "website": "https://orally.network",
-    "github": "https://github.com/orally-network",
-    "youtube": "https://youtu.be/1ZDEyllqUcA",
-    "twitter": "https://twitter.com/orally_network",
-    "display": "Large",
-    "logo": "/img/showcase/orally-network_logo.png",
-    "screenshots": [
-      "/img/showcase/orally-network_screenshot_0.webp"
-    ],
-    "submittableId": "35782696"
-  },
 
   {
     "id": "plug",
@@ -372,35 +354,6 @@
     "videoContentType": "video/mp4",
     "screenshots": [
       "/img/showcase/bitfinitywallet_screenshot.webp"
-    ]
-  },
-
-  {
-    "id": "airgap",
-    "name": "AirGap",
-    "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
-    "description": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
-    "website": "https://airgap.it/",
-    "tags": [
-      "Wallet",
-      "Ethereum"
-    ],
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/airgap_logo.webp"
-  },
-
-  {
-    "id": "evmonicp",
-    "name": "EVM on ICP",
-    "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
-    "tags": [
-      "Ethereum"
-    ],
-    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. P.S. there is a hidden game in the demo. ",
-    "display": "Normal",
-    "logo": "/img/showcase/evmonicp_logo.webp",
-    "screenshots": [
-      "/img/showcase/evmonicp_screenshot_0.webp"
     ]
   },
 
@@ -519,48 +472,6 @@
     "submittableId": "40732752"
   },
 
-  {
-    "name": "Taurus",
-    "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
-    "website": "https://www.taurushq.com/",
-    "logo": "/img/showcase/taurus_logo.png",
-    "screenshots": [],
-    "video": "",
-    "display": "Normal",
-    "id": "taurus",
-    "oneLiner": "Banking-grade custody for digital asset management.",
-    "stats": "Powering 15+ banks",
-    "tags": [
-      "Wallet",
-      "Tools / Infrastructure",
-      "Ethereum"
-    ],
-    "usesInternetIdentity": false,
-    "github": "",
-    "twitter": "",
-    "youtube": "",
-    "submittableId": ""
-  },
-
-  {
-    "id": "omnic",
-    "name": "Omnic",
-    "oneLiner": "Crosschain Messaging Protocol & Token Bridge Between the Internet Computer and EVM Chains",
-    "website": "https://omnic.network",
-    "tags": [
-      "Tools / Infrastructure",
-      "DeFi",
-      "Ethereum"
-    ],
-    "description": "Omnic is a Crosschain messaging protocol built on the Internet Computer, Omnic Token Bridge helps bring liquidity on EVM networks to the Internet Computer",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/omnic_logo.webp",
-    "screenshots": [
-      "/img/showcase/omnic_screenshot_0.webp"
-    ],
-    "videoContentType": "video/mp4",
-    "video": "/img/showcase/omnic_video.mp4"
-  },
 
   {
     "id": "origyn",
@@ -635,6 +546,25 @@
     "screenshots": [
       "/img/showcase/plethora_screenshot.webp"
     ]
+  },
+
+  {
+    "id": "orally-network",
+    "name": "Orally",
+    "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
+    "tags": ["Tools / Infrastructure", "DeFi"],
+    "description": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains. Experience seamless real-world data integration across various blockchains, powering dynamic, secure and efficient dapps. Elevate your blockchain journey with us!",
+    "usesInternetIdentity": false,
+    "website": "https://orally.network",
+    "github": "https://github.com/orally-network",
+    "youtube": "https://youtu.be/1ZDEyllqUcA",
+    "twitter": "https://twitter.com/orally_network",
+    "display": "Large",
+    "logo": "/img/showcase/orally-network_logo.png",
+    "screenshots": [
+      "/img/showcase/orally-network_screenshot_0.webp"
+    ],
+    "submittableId": "35782696"
   },
 
   {
@@ -747,6 +677,75 @@
     "screenshots": [
       "/img/showcase/taggr_screenshot_0.webp"
     ]
+  },
+
+  {
+    "id": "airgap",
+    "name": "AirGap",
+    "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
+    "description": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
+    "website": "https://airgap.it/",
+    "tags": [
+      "Wallet"
+    ],
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/airgap_logo.webp"
+  },
+
+  {
+    "id": "evmonicp",
+    "name": "EVM on ICP",
+    "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
+    "tags": [  "Tools / Infrastructure",
+      "Ethereum"
+    ],
+    "description": "An Ethereum Virtual Machine (EVM) demo built and hosted on the Internet Computer blockchain. P.S. there is a hidden game in the demo. ",
+    "display": "Normal",
+    "logo": "/img/showcase/evmonicp_logo.webp",
+    "screenshots": [
+      "/img/showcase/evmonicp_screenshot_0.webp"
+    ]
+  },
+
+  {
+    "name": "Taurus",
+    "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
+    "website": "https://www.taurushq.com/",
+    "logo": "/img/showcase/taurus_logo.png",
+    "screenshots": [],
+    "video": "",
+    "display": "Normal",
+    "id": "taurus",
+    "oneLiner": "Banking-grade custody for digital asset management.",
+    "stats": "Powering 15+ banks",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": ""
+  },
+
+  {
+    "id": "omnic",
+    "name": "Omnic",
+    "oneLiner": "Crosschain Messaging Protocol & Token Bridge Between the Internet Computer and EVM Chains",
+    "website": "https://omnic.network",
+    "tags": [
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "description": "Omnic is a Crosschain messaging protocol built on the Internet Computer, Omnic Token Bridge helps bring liquidity on EVM networks to the Internet Computer",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/omnic_logo.webp",
+    "screenshots": [
+      "/img/showcase/omnic_screenshot_0.webp"
+    ],
+    "videoContentType": "video/mp4",
+    "video": "/img/showcase/omnic_video.mp4"
   },
 
   {
@@ -3159,5 +3158,4 @@
     "submittableId": "41506799"
   }
 ]
-
 
