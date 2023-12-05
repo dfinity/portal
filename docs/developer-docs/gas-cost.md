@@ -78,3 +78,23 @@ The following table shows the calculated storage cost per GB for a 30-day month:
 |                      |                                    | 13-node Application Subnets | 34-node Application Subnets |
 |----------------------|------------------------------------|-----------------------------|-----------------------------|
 | GB Storage Per Month | For storing a GB of data per month | $0.431                      | $1.127                      |
+
+## Resource reservation mechanism
+
+In order to encourage long-term usage and discourage spiky usage patterns of resources, the Internet Computer uses a *resource reservation mechanism* that was adopted by the community in [NNS proposal 12604](https://dashboard.internetcomputer.org/proposal/126094).
+Every time a canister allocates new storage bytes, the system sets aside some amount of cycles from the main balance of the canister. These reserved cycles are used to cover future payments for the newly allocated bytes. The reserved cycles are not transferable and the amount of reserved cycles depends on how full the subnet is. For example, it may cover days, months, or even years of payments for the newly allocated bytes.
+
+The operations that allocate new bytes are:
+
+- Wasm instruction: `memory.grow`.
+- System API calls: `ic0.stable_grow()` `ic0.stable64_grow()`.
+- Increasing the `memory_allocation` in canister settings.
+
+These operations reserve some amount of cycles by moving them from the main balance of the canister to the reserved cycles balance.
+The amount of reserved cycles depends on how many bytes are allocated and on the current subnet usage:
+
+- If subnet usage is below `450GiB`, then the amount of reserved cycles per allocated byte is `0`.
+- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage from `0` to `10` years worth of storage payments at the subnet capacity (which is currently `750GiB`).
+
+A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in canister settings.
+Such opted-out canisters would not be able to allocate if the subnet usage is above `450GiB` though.
