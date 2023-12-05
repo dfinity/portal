@@ -93,8 +93,8 @@ The operations that allocate new bytes are:
 These operations reserve some amount of cycles by moving them from the main balance of the canister to the reserved cycles balance.
 The amount of reserved cycles depends on how many bytes are allocated and on the current subnet usage:
 
-- If subnet usage is below `450GiB``, then the amount of reserved cycles per allocated byte is `0``.
-- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage from `0` to `10`` years worth of storage payments at the subnet capacity (which is currently `750GiB``).
+- If subnet usage is below `450GiB`, then the amount of reserved cycles per allocated byte is `0`.
+- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage from `0` to `10` years worth of storage payments at the subnet capacity (which is currently `750GiB`).
 
 A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in canister settings.
 Such opted-out canisters would not be able to allocate if the subnet usage is above `450GiB` though.
