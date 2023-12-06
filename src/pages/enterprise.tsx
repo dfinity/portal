@@ -306,7 +306,7 @@ function EnterprisePage() {
         <section className="mt-20 md:mt-48">
           <div className="container-10">
             <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
-              Special applications of autonomous cloud
+              Applications of autonomous cloud
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
               <div className="flex flex-col">
