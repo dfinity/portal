@@ -1,6 +1,21 @@
-[
+[{
+    "id": "motokolearn",
+    "name": "MOTOKOLEARN",
+    "oneLiner": "Motoko package meant to facilitate on-chain training and inference of machine learning models where having a large GPU is not a requirement",
+    "website": "https://github.com/ildefons/motokolearn",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/ildefons",
+    "description": "Motoko package meant to facilitate on-chain training and inference of machine learning models where having a large GPU is not a requirement",
+    "usesInternetIdentity": false,
+    "stats": "",
+    "display": "",
+    "logo": "",
+    "screenshots": []
+  },
   {
-    "id": "dscvr",
+    "id": "motokolearn",
     "name": "DSCVR",
     "oneLiner": "Social portals, community airdrops, crypto tipping on chain",
     "website": "https://dscvr.one/",
