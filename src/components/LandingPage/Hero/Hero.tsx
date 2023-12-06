@@ -4,7 +4,6 @@ import transitions from "@site/static/transitions.json";
 import React, { useRef } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
-import RotatedHeadline from "../../LandingPage/PreHero/RotatedHeadline";
 import { ChatWidget } from "./ChatWidget";
 import ParticleAnimation from "./ParticleAnimation";
 import {
@@ -34,7 +33,7 @@ const Hero: React.FC<{
 
       <ParticleAnimation />
 
-      <div className="pt-40 pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-106px]">
+      <div className="pt-40 pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px]">
         <div className="container-10 col-start-1 row-start-1">
           <div className="md:w-7/10 lg:w-8/10">
             <h1
@@ -52,13 +51,8 @@ const Hero: React.FC<{
               }}
             >
               {headline}
-              {/* <RotatedHeadline
-                interval={3000}
-                lines={headlines}
-                start={fontLoaded}
-              ></RotatedHeadline> */}
             </h1>
-            <div className="w-full md:w-[71%] mt-4 md:mt-8">
+            <div className="w-full md:w-[550px] mt-4 md:mt-8">
               <ChatWidget
                 aiPlaceholders={aiPlaceholders}
                 fontLoaded={fontLoaded}

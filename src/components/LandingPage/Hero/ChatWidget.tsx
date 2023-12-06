@@ -1,22 +1,19 @@
 import clsx from "clsx";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiIcon } from "./AiIcon";
 
 export const ChatWidget: React.FC<{
   aiPlaceholders: string[];
   fontLoaded: boolean;
 }> = ({ aiPlaceholders, fontLoaded }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   useEffect(() => {
-    let index = 0;
     function rotateAiPlaceholder() {
-      index = (index + 1) % aiPlaceholders.length;
-      inputRef.current.placeholder = aiPlaceholders[index];
+      setPlaceholderIndex((prev) => (prev + 1) % aiPlaceholders.length);
     }
     const interval = setInterval(rotateAiPlaceholder, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -42,64 +39,45 @@ export const ChatWidget: React.FC<{
         ".ask-ai-widget-trigger"
       ) as HTMLButtonElement;
       button.click();
-
-      // while (!document.querySelector(".mantine-Modal-inner")) {
-      //   await new Promise((resolve) => setTimeout(resolve, 100));
-      // }
-
-      // // copy input value to widget
-      // const inputText = inputRef.current.value;
-      // const targetInput = document.querySelector(
-      //   ".mantine-Modal-inner textarea"
-      // ) as HTMLTextAreaElement;
-
-      // // make sure react component updates properly
-      // const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-      //   window.HTMLTextAreaElement.prototype,
-      //   "value"
-      // ).set;
-      // nativeInputValueSetter.call(targetInput, inputText);
-      // targetInput.dispatchEvent(new Event("input", { bubbles: true }));
-
-      // // wait for the component to update
-      // // await new Promise((resolve) => setTimeout(resolve, 0));
-
-      // // submit
-      // targetInput.parentElement.querySelector("button").click();
-
-      // // reset input
-      // inputRef.current.value = "";
     }
   }
 
   return (
-    <div
-      className={clsx(
-        "animate-fade-up",
-        widgetLoaded && fontLoaded ? "" : "pointer-events-none"
-      )}
-      style={{
-        animationPlayState: widgetLoaded && fontLoaded ? "running" : "paused",
-      }}
-    >
-      <style>{`
-        // .ask-ai-widget-trigger {
-        //   visibility: hidden;
-        //   pointer-events: none;
-        // }
-      `}</style>
-
+    <div>
       <form
-        className="bg-black/60 flex flex-col md:flex-row md:items-center pt-6 pb-1 md:py-3 px-1 md:pl-8 md:pr-4 gap-6 md:gap-6 backdrop-blur-[20px] rounded-xl"
+        className={clsx(
+          "bg-black/5 flex flex-col md:flex-row md:items-center p-0 md:pr-4 gap-0 md:gap-6 animate-blur-out rounded-xl"
+        )}
         onSubmit={onAiSubmit}
+        style={{
+          animationPlayState: widgetLoaded && fontLoaded ? "running" : "paused",
+        }}
       >
-        <div className="flex-1 tw-heading-7 text-white text-center md:text-left">
-          {aiPlaceholders[0]}
-        </div>
-        <button className="button-fancy-ai justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80">
+        <button
+          className="button-fancy-ai py-3 justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in"
+          style={{
+            animationPlayState:
+              widgetLoaded && fontLoaded ? "running" : "paused",
+          }}
+        >
           <AiIcon />
           ASK ICP.AI
         </button>
+        <div className="flex-1 text-[14px] leading-[24px] font-bold md:tw-heading-7 text-white text-center md:text-left py-3 grid">
+          {aiPlaceholders.map((placeholder, i) => (
+            <span
+              key={i}
+              className={clsx(
+                "row-start-1 col-start-1 transition-opacity duration-500 delay-200",
+                widgetLoaded && placeholderIndex === i
+                  ? "opacity-100"
+                  : "opacity-0"
+              )}
+            >
+              {placeholder}
+            </span>
+          ))}
+        </div>
       </form>
     </div>
   );
