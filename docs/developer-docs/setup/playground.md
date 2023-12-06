@@ -21,7 +21,7 @@ To ensure resources are used fairly by users, proof of work when a user makes a 
 
 Since Motoko playground is designed for short, small-scale testing, there are limitations and restrictions imposed on canisters deployed to the playground. These limitations are:
 
-- Cycle transfer instructions are silently ignored by the system.
+- Cycle transfer instructions are silently ignored by the Motoko playground.
 - Canisters can use at most 1GB of memory.
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
