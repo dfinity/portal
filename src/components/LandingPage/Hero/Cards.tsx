@@ -36,6 +36,13 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
+      <CardWithImage href="" image="/img/home/hello-world.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Dev Wizard</div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
+          Build a ‘Hello World’ in 5min
+        </h2>
+      </CardWithImage>
+
       <CardWithImage
         href="https://deck.internetcomputer.org"
         image="/img/home/deck-astronaut.webp"
@@ -54,19 +61,26 @@ export const CardsSection = () => {
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
       </CardWithImage>
       <CardWithImage
-        href="https://deck.internetcomputer.org"
-        image="/img/home/dashboard.svg"
+        href="https://dashboard.internetcomputer.org"
+        image="/img/home/dashboard.webp"
       >
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
           dashboard.internetcomputer.org
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Live stats</h2>
       </CardWithImage>
-      <CardWithImage href="/icp-event" image="/img/home/events-card.webp">
+      <CardWithImage href="/community" image="/img/home/events-card.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">Global Events</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
           Meet the community worldwide
         </h2>
+      </CardWithImage>
+
+      <CardWithImage href="" image="/img/home/btc-eth.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">
+          Native Multi-chain
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Bitcoin, ETH, ...</h2>
       </CardWithImage>
     </AnimateSpawn>
   );

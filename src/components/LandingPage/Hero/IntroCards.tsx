@@ -19,27 +19,33 @@ const IntroCards: React.FC = () => {
         text-white bg-[linear-gradient(263deg,#C772EF_0%,#6A85F1_100%)]
         "
         >
-          <div className="container-10 w-full">
-            <div className="md:w-1/2 py-8 md:py-20 flex flex-col justify-center gap-4 md:gap-6 items-start">
-              <h2 className="tw-heading-4 md:tw-heading-3 mb-0">
+          <div className="md:container-10 w-full">
+            <div className="px-6 md:w-1/2 pt-12 pb-4 md:py-20 flex flex-col justify-centeritems-start">
+              <h2 className="tw-heading-5 md:tw-heading-3 mb-3 md:mb-6">
                 What is the Internet Computer
               </h2>
-              <p className="tw-lead-sm md:tw-lead mb-0 text-white/60">
+              <p className="tw-paragraph-sm md:tw-lead mb-6 text-white/60">
                 The Internet Computer adds autonomous serverless cloud
                 functionality to the public internet.
               </p>
-              <p className="mb-0">
-                <Link className="button-white" href="/what-is-the-ic">
-                  Explore The Power of ICP
+              <p className="mb-0 self-stretch sm:self-auto">
+                <Link
+                  className="w-full sm:w-auto button-white"
+                  href="/what-is-the-ic"
+                >
+                  <span className="hidden sm:inline">Explore</span> The Power of
+                  ICP
                 </Link>
               </p>
             </div>
-            <div className="w-full my-4 relative -right-6 md:absolute md:right-0 top-0 bottom-0 md:w-1/2 text-right">
-              <img
-                src="/img/home/what-is-the-ic.webp"
-                alt=""
-                className="object-contain aspect-[1074/713] max-h-full"
-              />
+            <div className="relative w-full aspect-[1074/713] overflow-hidden md:overflow-visible md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 bottom-0 md:w-1/2 text-right">
+              <div className="absolute md:static top-0 -left-16 -bottom-10 right-0">
+                <img
+                  src="/img/home/what-is-the-ic.webp"
+                  alt=""
+                  className=" object-contain  max-w-none max-h-none w-full"
+                />
+              </div>
             </div>
           </div>
         </motion.div>
@@ -55,7 +61,7 @@ const IntroCards: React.FC = () => {
           variants={transitions.container}
         >
           <motion.div
-            className="rounded-3xl bg-white p-8 md:p-15 flex flex-col gap-4 md:gap-6"
+            className="rounded-3xl bg-white px-6 py-8 md:p-15 flex flex-col gap-4 md:gap-6"
             variants={transitions.item}
           >
             <h2 className="tw-heading-4 md:tw-heading-3 mb-0">
@@ -72,7 +78,7 @@ const IntroCards: React.FC = () => {
             </p>
           </motion.div>
           <motion.div
-            className="rounded-3xl bg-white p-8 md:p-15 flex flex-col gap-4 md:gap-6"
+            className="rounded-3xl bg-white px-6 py-8 md:p-15 flex flex-col gap-4 md:gap-6"
             variants={transitions.item}
           >
             <h2 className="tw-heading-4 md:tw-heading-3 mb-0">
@@ -90,7 +96,7 @@ const IntroCards: React.FC = () => {
             </p>
           </motion.div>
           <motion.div
-            className="rounded-3xl bg-white p-8 md:p-15 flex flex-col gap-4 md:gap-6"
+            className="rounded-3xl bg-white px-6 py-8 md:p-15 flex flex-col gap-4 md:gap-6"
             variants={transitions.item}
           >
             <h2 className="tw-heading-4 md:tw-heading-3 mb-0">Your Web3 ID</h2>

@@ -12,9 +12,9 @@ const FeaturesSection = () => {
   return (
     <section className="bg-[#1B025A] text-white pt-30 md:pt-56">
       <div className="mb-12 md:mb-30 container-10">
-        <h2 className="tw-title md:tw-title-lg mb-0 md:w-8/10">
+        <h2 className="tw-heading-3 md:tw-title-lg mb-0 md:w-8/10">
           Amazing, you made it this far. Discover more{" "}
-          <span className="text-gradient-purple tw-heading-5 md:tw-heading-60">
+          <span className="text-gradient-purple md:tw-heading-60">
             ICP key features:
           </span>
         </h2>
@@ -41,11 +41,8 @@ const FeaturesSection = () => {
             traditional IT, there are kill switches and backdoors, which deny
             you true sovereignty. Build on the network instead.
           </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/node-providers"
-            >
+          <p className="mb-0 -mx-3">
+            <Link className="link-primary " href="/node-providers">
               <LinkArrowRight />
               Become a Node Provider
             </Link>
@@ -66,8 +63,8 @@ const FeaturesSection = () => {
             Googleable Web experiences served by Smart contracts. True World
             Computer capabilities with Web2 APIs validated by consensus.
           </p>
-          <p className="mb-0">
-            <Link className="link-primary link-with-icon" href="/capabilities">
+          <p className="mb-0  -mx-3">
+            <Link className="link-primary" href="/capabilities">
               <LinkArrowRight />
               ICP Capabilities Overview
             </Link>
@@ -90,18 +87,12 @@ const FeaturesSection = () => {
             web3 integrations, and trustlessness combinations of models and
             data.
           </p>
-          <p className="mb-0 flex flex-col gap-3 items-center">
-            <Link
-              className="link-primary link-with-icon"
-              href="/bitcoin-integration"
-            >
+          <p className="mb-0 -mx-3 flex flex-col gap-3 items-center">
+            <Link className="link-primary" href="/bitcoin-integration">
               <LinkArrowRight />
               Bitcoin on ICP
             </Link>
-            <Link
-              className="link-primary link-with-icon"
-              href="/ethereum-integration"
-            >
+            <Link className="link-primary" href="/ethereum-integration">
               <LinkArrowRight />
               Ethereum on ICP
             </Link>
@@ -124,10 +115,13 @@ const FeaturesSection = () => {
             with ransomware. Because the Internet Computer is created by
             advanced math, there are no backdoors.
           </p>
-          <p className="mb-0">
-            <Link className="link-primary link-with-icon" href="">
+          <p className="mb-0 -mx-3">
+            <Link
+              className="link-primary"
+              href="/how-it-works#Chain-key-technology"
+            >
               <LinkArrowRight />
-              What’s Chain-Key Cryptography
+              What's Chain-Key Cryptography
             </Link>
           </p>
         </motion.div>
@@ -148,7 +142,7 @@ const FeaturesSection = () => {
             empowering communities to run Web3, or securing an enterprise
           </p>
           <p className="mb-0">
-            <Link className="link-primary link-with-icon" href="/nns">
+            <Link className="link-primary" href="/nns">
               <LinkArrowRight />
               Staking & Governance
             </Link>

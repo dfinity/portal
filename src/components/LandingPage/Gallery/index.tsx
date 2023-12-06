@@ -14,7 +14,7 @@ const GallerySection = () => {
     <section
       className="
       bg-infinite
-        md:bg-gradient-to-b from-[#1B025A] to-[#1B025A]
+        bg-gradient-to-b from-[#1B025A] to-[#1B025A]
         bg-bottom bg-no-repeat 
         bg-[length:100%_48px]
         md:bg-[length:100%_104px]
