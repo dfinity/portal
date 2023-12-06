@@ -123,11 +123,9 @@ function EnterprisePage() {
                 Serverless Computing
               </h2>
               <p className="tw-lead-sm">
-                Enterprises and Web3 projects looking for serverless architectures to enable quick and
-                agile development cycles that reduce infrastructure maintenance and
-                operational costs can rely on the Internet Computer. It offers
-                serverless features comparable to existing cloud providers with extra
-                benefits like tamperproof code, decentralization and statefulness.
+               Enterprises and Web3 projects looking for serverless architectures to enable quick and agile
+               development cycles that reduce infrastructure maintenance and operational costs can rely on the 
+               Internet Computer, a decentralized blockchain protocol. 
               </p>
               <p className="tw-lead-sm">
                 The Internet Computer programming model is also similar to that of
