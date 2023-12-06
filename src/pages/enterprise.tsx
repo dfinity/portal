@@ -56,7 +56,9 @@ function EnterprisePage() {
               >
                 <b>The future of cloud is serverless: for enterprise, government and Web3 applications.</b>
                 <span style={{display: "block", height: "0.6em"}}></span>
-                Now imagine an autonomous serverless cloud that hosts 
+                A truly autonomous cloud is one which is not controlled by a company or entity, but 
+                public and decentralized like the internet itself.
+                Now imagine a blockchain protocol that enables an autonomous serverless cloud that hosts 
                 data as well as logic, where software is tamperproof and unstoppable, can scale horizontally,
                 and processes HTTP, where you can build sovereign systems and services 
                 that don't need the protection of firewalls... 
