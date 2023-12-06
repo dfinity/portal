@@ -189,11 +189,11 @@ function EnterprisePage() {
                 frameworks. 
               </p>
               <p className="tw-lead-sm">
-                Simply put, it has no backdoors through which hackers can pass, or hosted 
-                software or data can be attacked by viruses and ransomware. That's because 
-                it's a virtual platform created by advanced math &mdash; fault-tolerant network 
-                protocols and cryptography developed by world class
-                cryptographers, engineers and computer scientists in a project that applied hundreds of person-years effort.          
+              Simply put, the Internet Computer has no backdoors through which hackers can pass, or hosted 
+              software or data can be attacked by viruses and ransomware. That's because it's a virtual 
+              platform created by advanced math &mdash; fault-tolerant network protocols and cryptography 
+              built by world class cryptographers, engineers and computer scientists in a project 
+              developed in hundreds of person-years of effort.          
               </p>
               <p className="tw-lead-sm">
                 Now you can move beyond the security flaws of Legacy IT, to a world in which software is 
