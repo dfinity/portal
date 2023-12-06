@@ -196,9 +196,8 @@ function EnterprisePage() {
               developed in hundreds of person-years of effort.          
               </p>
               <p className="tw-lead-sm">
-                Now you can move beyond the security flaws of Legacy IT, to a world in which software is 
-                tamperproof and unstoppable by building on the 
-                Internet Computer.
+              Now you can move beyond the security flaws of Legacy IT, to a world in which software is tamperproof 
+              and unstoppable by building on the Internet Computer protocol
               </p>              
               <p className="tw-lead-sm">
                 Say goodbye to being hacked and encrypted by ransomware, slash your 
