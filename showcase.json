@@ -40,6 +40,22 @@
   },
 
   {
+    "id": "bioniq",
+    "name": "Bioniq",
+    "oneLiner": "The fastest Ordinals marketplace",
+    "website": "https://bioniq.io/",
+    "tags": [
+      "Bitcoin"
+    ],
+    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near instant finality, and decentralized secure token bridging..",
+    "display": "Large",
+    "logo": "/img/showcase/bioniq-logo.jpeg",
+    "screenshots": [
+      "/img/showcase/bioniq-screenshot-min.png"
+    ]
+  },
+
+  {
     "id": "icpswap",
     "name": "ICPSwap",
     "website": "https://icpswap.com",
