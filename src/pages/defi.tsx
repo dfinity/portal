@@ -4,26 +4,87 @@ import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import RotatingStatPanel, {
+  RotatingStat,
+} from "../components/Common/RotatingStatsPanel";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
+import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+
+const queryClient = new QueryClient();
+
+function Stats() {
+  const globalData = useGlobalData();
+  const cryptoPrices = globalData["crypto-price"]["default"] as {
+    icp: number;
+    btc: number;
+  };
+
+  const stats: RotatingStat[][] = [
+    [
+      {
+        title: "ckBTC/ckETH max TPS",
+        value: 800,
+        format: (v) => `~${v.toFixed(0)} TPS`,
+      },
+      {
+        title: "ckBTC TX fee",
+        value: cryptoPrices.btc * 0.0000001,
+        format: (v) => `$${v.toFixed(4)}`,
+      },
+    ],
+    [
+      {
+        title: "Gas fees",
+        value: 0,
+        format: (v) => `$${v.toFixed(0)}`,
+      },
+      {
+        title: "ckETH TX fee",
+        value: 0.004,
+        format: (v) => `$${v.toFixed(3)}`,
+      },
+    ],
+    [
+      {
+        title: "ICP TX fee",
+        value: cryptoPrices.icp * 0.0001,
+        format: (v) => `$${v.toFixed(4)}`,
+      },
+      {
+        title: "ckBTC/ckETH finality",
+        value: 1,
+        format: (v) =>
+          Math.round(v * 10) == 10
+            ? `1-2s`
+            : `${v.toFixed(1)}-${(v + 1).toFixed(1)}s`,
+      },
+    ],
+  ];
+
+  return (
+    <RotatingStatPanel
+      rotationIndexes={[1, 0, 2]}
+      stats={stats}
+    ></RotatingStatPanel>
+  );
+}
 
 function DefiPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
-  const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
 
   return (
     <Layout
       title="DeFi"
-      description={`From fully on-chain order book DEXs, to bridgeless cross-chain
-      swaps, the Internet Computer provides an unmatched tech stack
-      for DEXs to thrive on and DeFi to flourish.`}
+      description="From fully on-chain order book DEXs, to bridgeless X-chain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
@@ -47,16 +108,15 @@ function DefiPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Next generation DeFi
+                  X-chain DeFi
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Imagine a decentralized order-book exchange built exclusively
-                  using smart contracts that directly serve a web experience
-                  like those of centralized exchanges, that incorporates the
-                  world's digital assets without need for insecure bridges.
+                  From fully on-chain order book DEXs, to bridgeless X-chain
+                  swaps, the Internet Computer provides an unmatched tech stack
+                  for DEXs to thrive on and DeFi to flourish.
                 </motion.p>
               </div>
             </div>
@@ -79,277 +139,89 @@ function DefiPage() {
         >
           <div className="md:w-6/10">
             <motion.h2
-              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-6"
+              className="tw-heading-3 md:tw-heading-2 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
               Everything
-              <br className="hidden md:block" /> on-chain
+              <br className="hidden md:block" /> on chain
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
               variants={transitions.item}
             >
-              2022 revealed the serious risks of trading and holding tokens on
-              centralized exchanges. Even decentralized exchanges with frontends
-              hosted on centralized cloud providers are not safe from hacks or
-              rug pulls. Thanks to the web-serving capability of canister smart
-              contracts on the Internet Computer, and their ability to host
-              large amounts of data, DeFi platforms can exist 100% on the
-              blockchain with no dependency on centralized components.
+              The risks of trading and holding tokens on centralized exchanges
+              is high. Even decentralized exchanges with frontends hosted on
+              centralized cloud providers are not safe from hacks or rug pulls.
+              Thanks to the web-serving capability of canister smart contracts
+              on the Internet Computer, and their ability to host large amounts
+              of data, DeFi platforms can exist 100% on the blockchain with no
+              dependency on centralized components.
             </motion.p>
           </div>
         </AnimateSpawn>
 
         <AnimateSpawn
-          className="container-12 mt-16 mb-20 md:mt-24 md:mb-48"
+          className="container-12 mt-16 md:mt-24"
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="border border-solid border-white bg-white-80 px-8 py-12 rounded-xl flex flex-col md:flex-row gap-12 md:gap-8 justify-between md:px-20 text-center">
-            <motion.div
-              className="flex flex-col gap-2"
-              variants={transitions.item}
-            >
-              <span className="tw-heading-3 lg:tw-heading-60 text-gradient">
-                6,500+ TX/s
-              </span>
-              <span className="tw-paragraph md:tw-lead-sm">
-                Typical network usage
-              </span>
-            </motion.div>
-            <motion.div
-              className="flex flex-col gap-2"
-              variants={transitions.item}
-            >
-              <span className="tw-heading-3 lg:tw-heading-60 text-gradient">
-                $0
-              </span>
-              <span className="tw-paragraph md:tw-lead-sm">Gas fees</span>
-            </motion.div>
-            <motion.div
-              className="flex flex-col gap-2"
-              variants={transitions.item}
-            >
-              <span className="tw-heading-3 lg:tw-heading-60 text-gradient">
-                ${(icpPrice * 0.0001).toFixed(5)}
-              </span>
-              <span className="tw-paragraph md:tw-lead-sm">TX fee</span>
-            </motion.div>
-            <motion.div
-              className="flex flex-col gap-2"
-              variants={transitions.item}
-            >
-              <span className="tw-heading-3 lg:tw-heading-60 text-gradient">
-                1-2s
-              </span>
-              <span className="tw-paragraph md:tw-lead-sm">Finality</span>
-            </motion.div>
+          <QueryClientProvider client={queryClient}>
+            <Stats />
+          </QueryClientProvider>
+        </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-12 mt-6 md:mt-10"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="bg-white/60 relative rounded-xl md:rounded-[32px] ">
+            <div className="ml-auto w-7/10 sm:w-5/10 md:w-5/10 md:absolute top-0 right-0 bottom-0 flex">
+              <img
+                src="/img/defi/x-chain-swaps.webp"
+                alt=""
+                loading="lazy"
+                className="object-contain object-center"
+              />
+            </div>
+
+            <div className="md:container-10 px-8 pb-10 md:py-30 relative">
+              <div className="md:w-1/2">
+                <h2 className="text-gradient tw-heading-4 md:tw-heading-60 md:mb-6">
+                  X-chain swaps
+                </h2>
+                <p className="tw-paragraph md:tw-lead text-black mb-8">
+                  Via Chain-Key Signatures, the Internet Computer has the
+                  ability to sign native transactions on other blockchains
+                  without using risky bridges. Today, users can seamlessly swap
+                  between BTC/ETH in seconds for a few cents with 0 gas fees by
+                  using ckBTC, ckETH, and soon ckERC-20 tokens.{" "}
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="https://dashboard.internetcomputer.org/bitcoin/transactions"
+                    className="link-primary link-with-icon"
+                  >
+                    Track TX activity on the ICP Dashboard
+                    <LinkArrowUpRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
           </div>
         </AnimateSpawn>
 
-        <section className="mb-20 md:mb-40 container-12 flex flex-col gap-16 md:gap-40">
-          <TranslatedLayout reverse={true} imageUrl="/img/defi/image-1.webp">
-            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Native BTC DeFi
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              Via chain-key signatures, the Internet Computer is capable of
-              signing native transactions on other blockchains without using
-              bridges. Today, you can already swap BTC with ICP without ever
-              having to use insecure wrapped tokens. In the near future, this
-              could extent to ETH or even Dogecoin.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/bitcoin-integration"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                More on BTC Integration
-              </Link>
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout imageUrl="/img/defi/image-2.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">
-              Bringing ERC-20 tokens to ICP
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              Building on chain-key signatures and HTTPS outcalls, DEXs are
-              currently working on solutions to support a plethora of ERC-20
-              tokens on ICP. Plugging into Ethereum RPC API providers, ICP smart
-              contracts will sign transactions for any ERC-20 token without
-              relying on insecure bridges. Plans to integrate the Internet
-              Computer with Ethereum network at a protocol level are also
-              underway.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/how-it-works#Chain-key-cryptography"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                More on Chain-key signatures
-              </Link>
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout reverse={true} imageUrl="/img/defi/image-3.webp">
-            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Chain-Key Tokens
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              Imagine being able to pay for a takeaway coffee with BTC or
-              sending satoshis to friends on your favorite Web3 chat app.
-              Chain-key tokens, a cryptographically secure replacement to
-              wrapped tokens, allow end-users to seamlessly transfer tokens
-              between blockchains with speed without relying on third-party
-              bridges or custodians. Chain-key bitcoin (ckBTC) is the first
-              chain-key token on ICP, pioneering the way. Trade BTC on ICP DEXs,
-              use BTC for fundraising and much more.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="/how-it-works#Chain-key-technology"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                More on Chain-key Tokens
-              </Link>
-            </p>
-          </TranslatedLayout>
-
-          <TranslatedLayout imageUrl="/img/defi/image-4.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">SNS DAOs</h2>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              SNS is a powerful tool that allows developers to assign control of
-              their dapp to a DAO whose governance token holders become part
-              owners and contributors of the dapp. Once a dapp has tokenized,
-              DEXs can easily support its governance token as SNS follows the
-              ICRC-1 standard.
-            </p>
-            <p className="mb-0">
-              <Link href="/sns" className="link-primary link-with-icon">
-                <LinkArrowRight />
-                More on SNS DAOs
-              </Link>
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout imageUrl="/img/defi/bitfinity.png" reverse={true}>
-            <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-              EVM on the Internet Computer
-            </h3>
-            <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-              The Bitfinity EVM allows developers to run Solidity
-              smart-contracts at web-speed, directly on the Internet Computer.
-            </p>
-            <Link
-              className="link-primary link-with-icon"
-              href="https://bitfinity.network"
-            >
-              <LinkArrowRight />
-              Check out Bitfinity EVM
-            </Link>
-          </TranslatedLayout>
-        </section>
-        {/* <BackgroundPanel> */}
-        <section className="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0] py-20 md:py-48 text-white">
-          <AnimateSpawn
-            className="container-12"
-            variants={transitions.container}
-          >
-            <div className="md:w-8/12 md:mx-auto">
-              <motion.h2
-                className="tw-heading-4 md:tw-heading-60 text-white mb-6 md:mb-260"
-                variants={transitions.item}
-              >
-                Highest-throughput
-                <br />
-                blockchain
-              </motion.h2>
-              <motion.p
-                className="md:tw-lead mb-6 md:mb-6"
-                variants={transitions.item}
-              >
-                The speed of the Internet Computer alone enables DeFi
-                applications that are simply impossible to build anywhere else
-                without compromising on decentralization or costs.
-              </motion.p>
-              <motion.p className="mb-12 md:mb-20" variants={transitions.item}>
-                <Link
-                  className="button-outline-white"
-                  href="https://dashboard.internetcomputer.org"
-                >
-                  See stats for yourself
-                </Link>
-              </motion.p>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-4">
-              <motion.div
-                className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center panel-gradient"
-                variants={transitions.item}
-              >
-                <h3 className="tw-heading-7-caps mb-0">Internet Computer</h3>
-                <img src="/img/nft/ic-logo.webp" alt="" className="w-20" />
-                <div>
-                  <span className="tw-heading-4 md:tw-heading-3">
-                    550M+ TXs / day
-                  </span>{" "}
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center"
-                variants={transitions.item}
-              >
-                <h3 className="tw-heading-7-caps mb-0">Solana</h3>
-                <img src="/img/nft/solana-logo.webp" alt="" className="w-20" />
-                <div>
-                  <span className="tw-heading-4 md:tw-heading-3">
-                    30M+ TXs / day
-                  </span>{" "}
-                </div>
-              </motion.div>
-              <motion.div
-                className="flex-1 border border-solid border-white-30 rounded-xl flex flex-col gap-4 py-10 items-center"
-                variants={transitions.item}
-              >
-                <h3 className="tw-heading-7-caps mb-0">Ethereum</h3>
-                <img
-                  src="/img/nft/ethereum-logo.webp"
-                  alt=""
-                  className="w-20"
-                />
-                <div>
-                  <span className="tw-heading-4 md:tw-heading-3">1M / day</span>{" "}
-                </div>
-              </motion.div>
-            </div>
-          </AnimateSpawn>
-        </section>
         <section className="container-12 py-30 md:py-48">
-          <div className="text-center mb-16 md:mb-30">
-            <AnimateSpawn
-              className="container-12"
-              variants={transitions.container}
-            >
+          <div className="mb-16 md:mb-30">
+            <AnimateSpawn className="" variants={transitions.container}>
               <motion.h2
-                className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-6/12 md:mx-auto mb-8"
+                className="tw-heading-3 md:tw-heading-2 text-gradient text-center md:w-7/12 md:mx-auto mb-0 md:mb-8"
                 variants={transitions.item}
               >
-                What’s already being built
+                Move between chains on ICP DEXs
               </motion.h2>
-
-              <motion.div variants={transitions.container}>
-                <Link
-                  className="button-outline text-center"
-                  href="/ecosystem?tag=DeFi"
-                >
-                  See more DeFi Dapps
-                </Link>
-              </motion.div>
             </AnimateSpawn>
           </div>
-
           <div className="flex flex-col gap-16 md:gap-40">
             <TranslatedLayout imageUrl="/img/defi/icdex.webp" reverse={true}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
@@ -361,35 +233,35 @@ function DefiPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 ICDex provides the world’s first fully on-chain order book DEX.
                 Create limit orders or swap tokens instantly with complete
-                transparency and decentralization - 100% on-chain.
+                transparency and decentralization. ckBTC/ckETH swaps now
+                possible.
               </p>
               <Link
                 className="link-primary link-with-icon"
                 href="https://icdex.io/"
               >
-                <LinkArrowRight /> Check out ICDex
+                Check out ICDex <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/defi/finterest.webp"
-              reverse={false}
-            >
+            <TranslatedLayout imageUrl="/img/defi/sonic.webp" reverse={false}>
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                Finterest
+                Sonic
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                First-ever bridgeless lending protocol
+                SNS DAO-controlled DEX
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Finterest is a truly decentralized borrowing protocol running on
-                the Internet Computer built to support native Bitcoin borrowing
-                and lending.
+                One-stop access to decentralized finance and the first DEX on
+                the Internet Computer to become an SNS DAO. Swap tokens, earn
+                fees as a liquidity provider and participate in governance and
+                decision-making through Sonic token membership. Now supports
+                ckBTC/ckETH pair.
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://finterest.ooo/"
+                href="https://sonic.ooo/"
               >
-                <LinkArrowRight /> Check out Finterest
+                Participate and swap on Sonic <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/defi/icpswap.webp" reverse={true}>
@@ -401,67 +273,229 @@ function DefiPage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 ICP.Swap offers the largest number of tokens on the Internet
-                Computer. Trade the latest meme coins or the most successful SNS
-                DAO governance tokens.
+                Computer, including ckBTC and ckETH. Trade the latest meme coins
+                or the most successful SNS DAO governance tokens.
               </p>
               <Link
                 className="link-primary link-with-icon"
                 href="https://icpswap.com"
               >
-                <LinkArrowRight />
-                Check out ICP.Swap
+                Check out ICP.Swap <LinkArrowUpRight />
               </Link>
+            </TranslatedLayout>
+
+            <motion.div
+              variants={transitions.container}
+              className="text-center"
+            >
+              <Link
+                className="button-primary text-center"
+                href="/ecosystem?tag=DeFi"
+              >
+                Go to all DeFi Dapps
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+        <BackgroundPanel
+          panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
+          threshold={0}
+          rootMargin="-30% 0px"
+        >
+          <section className="py-0 md:py-0 text-white">
+            <AnimateSpawn className="" variants={transitions.container}>
+              <div className="container-10 mb-16 md:mb-30">
+                <div className="md:w-7/10">
+                  <motion.h2
+                    className="tw-heading-4 md:tw-heading-60 text-white mb-6 md:mb-260"
+                    variants={transitions.item}
+                  >
+                    ckBTC/ckETH wallets
+                  </motion.h2>
+                  <motion.p
+                    className="md:tw-lead mb-6 md:mb-6"
+                    variants={transitions.item}
+                  >
+                    X-chain wallets already exist on the Internet Computer that
+                    allow users to store and transfer ckBTC, ckETH and more with
+                    ease.
+                  </motion.p>
+                  <motion.p className="mb-0" variants={transitions.item}>
+                    <Link
+                      className="button-outline-white"
+                      href="/ecosystem?tag=Wallets"
+                    >
+                      All ICP wallets
+                    </Link>
+                  </motion.p>
+                </div>
+              </div>
+
+              <div className="container-12 flex flex-col md:flex-row gap-4">
+                <motion.div variants={transitions.item} className="flex-1">
+                  <Link
+                    href="https://astrox.me/"
+                    className="block border border-solid border-white-30 rounded-xl p-10 items-center panel-gradient text-center text-white hover:text-white hover:-translate-y-2 transition-all hover:no-underline"
+                  >
+                    <img
+                      src="/img/defi/astroxme.webp"
+                      alt=""
+                      className="w-20"
+                    />
+                    <h3 className="tw-heading-5 mb-2 mt-4">AstroX ME</h3>
+                    <p className="text-white/60 tw-lead-sm mb-0">
+                      Secure assets such as ckBTC and ckETH across all your
+                      devices without the need for a seed phrase.
+                    </p>
+                  </Link>
+                </motion.div>
+                <motion.div variants={transitions.item} className="flex-1">
+                  <Link
+                    href="https://nns.ic0.app/"
+                    className="block border border-solid border-white-30 rounded-xl p-10 items-center panel-gradient text-center text-white hover:text-white hover:-translate-y-2 transition-all hover:no-underline"
+                  >
+                    <img src="/img/defi/nns.webp" alt="" className="w-20" />
+                    <h3 className="tw-heading-5 mb-2 mt-4">NNS </h3>
+                    <p className="text-white/60 tw-lead-sm mb-0">
+                      Chose your ckBTC account to send and receive BTC from the
+                      Bitcoin network. Full ETH functionality coming soon.
+                    </p>
+                  </Link>
+                </motion.div>
+                <motion.div variants={transitions.item} className="flex-1">
+                  <Link
+                    href="https://plugwallet.ooo/"
+                    className="block border border-solid border-white-30 rounded-xl p-10 items-center panel-gradient text-center text-white hover:text-white hover:-translate-y-2 transition-all hover:no-underline"
+                  >
+                    <img src="/img/defi/plug.webp" alt="" className="w-20" />
+                    <h3 className="tw-heading-5 mb-2 mt-4">Plug</h3>
+                    <p className="text-white/60 tw-lead-sm mb-0">
+                      Store, swap and manage digital assets, inlcuding ckBTC and ckETH on a
+                      simple mobile app or use your favorite browser.
+                    </p>
+                  </Link>
+                </motion.div>
+              </div>
+            </AnimateSpawn>
+          </section>
+        </BackgroundPanel>
+        <section className="container-12 py-30 md:py-48">
+          <div className="mb-16 md:mb-30 md:w-7/10 md:mx-auto">
+            <AnimateSpawn className="" variants={transitions.container}>
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-2 text-gradient text-center mb-4"
+                variants={transitions.item}
+              >
+                Build X-chain DeFi
+              </motion.h2>
+
+              <motion.p
+                className="tw-paragraph md:tw-lead text-black mb-0 text-center max-w-[500px] mx-auto"
+                variants={transitions.item}
+              >
+                The Internet Computer offers an array of innovative features to
+                build next-gen DeFi.
+              </motion.p>
+            </AnimateSpawn>
+          </div>
+          <div className="flex flex-col gap-16 md:gap-40">
+            <TranslatedLayout imageUrl="/img/defi/image-2.webp">
+              <h2 className="md:tw-heading-60 md:mb-6">
+                Bringing ERC-20 tokens to ICP
+              </h2>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                Building on Chain-Key Signatures and HTTPS outcalls, Oisy, a
+                browser-based Ethereum wallet secured by the Internet Computer,
+                can already natively support a plethora of ERC-20 tokens.
+                Plugging into services such as Infura and the like, ICP smart
+                contracts sign transactions for any ERC-20 token without relying
+                on insecure bridges.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="https://oisy.com/"
+                  className="link-primary link-with-icon"
+                >
+                  Build a fully on-chain ETH wallet
+                  <LinkArrowUpRight />
+                </Link>
+              </p>
+            </TranslatedLayout>
+            <TranslatedLayout
+              imageUrl="/img/defi/https-outcalls.webp"
+              reverse={true}
+            >
+              <h2 className="md:tw-heading-60 md:mb-6">
+                Access Web2 without Oracles
+              </h2>
+              <p className="tw-lead-sm mb-6 md:mb-10">
+                Blockchains today have to rely on oracles if they want to access
+                price data from Web2 APIs. Using HTTPS outcalls, the Internet
+                Computer can query up-to-date prices from any traditional Web2
+                API without oracles, which reduces costs and increases speed.
+                Making calls to the Exchange Rate Canister, you can already
+                query price data.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/https-outcalls"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight />
+                  More on HTTPS Outcalls
+                </Link>
+              </p>
             </TranslatedLayout>
           </div>
         </section>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
+        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 md:mt-20">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
           >
             <motion.div
-              className="blob blob-purple blob-md blob-center z-[-1] md:blob-xl"
+              className="blob blob-purple blob-md blob-x-5 blob-y-10 z-[-1] md:blob-lg opacity-80"
               variants={transitions.fadeIn}
             ></motion.div>
             <motion.h2
-              className="tw-heading-5 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-8/12"
+              className="tw-heading-3 text-center mb-0 w-full mx-auto md:tw-heading-60 lg:w-8/12"
               variants={transitions.item}
             >
-              Build the future of DeFi
+              More tools
             </motion.h2>
-            <motion.p
-              className="tw-lead-sm mb-0 text-center mx-auto md:w-6/12"
+            {/* <motion.p
+              className="tw-lead-sm mb-0 mt-2 md:mt-6 text-center mx-auto md:w-6/12"
               variants={transitions.item}
             >
               The Internet Computer offers a plethora of out-of-the-box features
               you can use in your DeFi application.
-            </motion.p>
+            </motion.p> */}
           </AnimateSpawn>
           <AnimateSpawn
             className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
             variants={transitions.container}
           >
             <CardWithDescription
-              title="About HTTPS outcalls"
+              title="ETH starter tutorial"
               description=""
-              href="/https-outcalls"
+              href="/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial"
             />
 
             <CardWithDescription
-              title="Sample code"
+              title="Code ckETH"
+              description=""
+              href="https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh"
+            />
+            <CardWithDescription
+              title="DeFi sample code"
               description=""
               href="/samples?selectedDomains=Asynchronous+DeFi"
             />
             <CardWithDescription
-              title="Dev docs"
+              title="Code ckBTC"
               description=""
-              href="/docs/current/home"
-            />
-            <CardWithDescription
-              title="Code Bitcoin"
-              description=""
-              href="/bitcoin-integration"
+              href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
             />
           </AnimateSpawn>
         </section>

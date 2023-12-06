@@ -6,7 +6,7 @@ This is an experimental app to demonstrate a real world use case for [ckBTC](htt
 
 The Internet Computer [integrates directly with the Bitcoin network](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/). This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. Chain-key Bitcoin (ckBTC) is an ICRC-1-compliant token that is backed 1:1 by Bitcoin held 100% on the mainnet.
 
-For a deeper understanding of the ICP < > BTC integration, see ICP wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
+For a deeper understanding of the ICP < > BTC integration, see the ICP wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
 
 ## Features
 

@@ -15,7 +15,7 @@ This section is structured as follows:
 
 ### Accounts
 
-An account belongs to and is controlled by the account owner who must be an Internet Computer (ICP) principal. No account can be owned by two or more ICP principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
+An account belongs to and is controlled by the account owner who must be a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
 
 An account owner may control more than one account. In this case, each account corresponds to a pair (account_owner, sub_account). The sub-account is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 

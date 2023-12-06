@@ -10,7 +10,7 @@ const lightCodeTheme = require("./codeblock-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
-const icpPricePlugin = require("./plugins/icp-price");
+const cryptoPricePlugin = require("./plugins/crypto-price");
 const xdrPricePlugin = require("./plugins/xdr-price");
 const icpXdrPricePlugin = require("./plugins/icp-xdr-price");
 const tailwindPlugin = require("./plugins/tailwind");
@@ -482,7 +482,7 @@ const config = {
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
-    icpPricePlugin,
+    cryptoPricePlugin,
     icpXdrPricePlugin,
     xdrPricePlugin,
     homeShowcaseProjectsPlugin,

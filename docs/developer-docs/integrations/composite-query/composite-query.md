@@ -1,6 +1,6 @@
 # Composite queries
 ## Overview
-The Internet Computer (ICP) supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. It is possible to execute a query message as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes and the result of execution goes through consensus. This “query-as-update” execution mode is also known as replicated query.
+The Internet Computer Protocol supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. It is possible to execute a query message as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes and the result of execution goes through consensus. This “query-as-update” execution mode is also known as replicated query.
 
 An update can call other updates and queries. However a query cannot make any calls, which can hinder development of scalable decentralized applications (dapps), especially those that shard data across multiple canisters.
 

@@ -30,7 +30,7 @@ The API response looks like this:
          5.718, <-- highest price during range
          5.714, <-- price at open
          5.714, <-- price at close
-         243.5678 <-- volume of ICP traded
+         243.5678 <-- volume of  traded
      ],
 ]
 ```
@@ -53,7 +53,7 @@ actor {
   //0. method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
-    //1. DECLARE ICP MANAGEMENT CANISTER
+    //1. DECLARE MANAGEMENT CANISTER
     let ic : Types.IC = actor ("aaaaa-aa");
 
     //2. SETUP ARGUMENTS FOR HTTP GET request
@@ -87,7 +87,7 @@ You will also create some custom types in `Types.mo`. It will look like this:
 ```motoko
 module Types {
 
-    //type declarations for HTTP requests, HTTP responses, ICP management canister, etc...
+    //type declarations for HTTP requests, HTTP responses, management canister, etc...
 
 }
 ```
@@ -140,7 +140,7 @@ actor {
   
   public func get_icp_usd_exchange() : async Text {
 
-    //1. DECLARE ICP MANAGEMENT CANISTER
+    //1. DECLARE MANAGEMENT CANISTER
     //You need this so you can use it to make the HTTP request
     let ic : Types.IC = actor ("aaaaa-aa");
 
@@ -178,7 +178,7 @@ actor {
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
 
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
-    //ICP management canister will make the HTTP request so it needs cycles
+    //The management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
     
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
@@ -387,7 +387,7 @@ URLs:
 Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
 
 ```rust
-//1. DECLARE ICP MANAGEMENT CANISTER
+//1. DECLARE MANAGEMENT CANISTER
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
     TransformContext,
@@ -437,7 +437,7 @@ rustup target add wasm32-unknown-unknown
 - #### Step 2: Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
-//1. IMPORT ICP MANAGEMENT CANISTER
+//1. IMPORT MANAGEMENT CANISTER
 //This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,

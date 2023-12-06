@@ -9,7 +9,7 @@ An NFT or **non-fungible token** is a record on a blockchain that is associated 
 
 ## NFTs on the Internet Computer
 
-The Internet Computer (ICP) brings a lot of potential for NFTs. For digital assets like images, sound clips, or videos, the entire assets can live on-chain and can be included in on-chain games or metaverse experiences. Furthermore, you can imagine dynamic NFTs that change based on ICP-internal and external data via [HTTPS outcalls](/https-outcalls).
+The Internet Computer Protocol brings a lot of potential for NFTs. For digital assets like images, sound clips, or videos, the entire assets can live on-chain and can be included in on-chain games or metaverse experiences. Furthermore, you can imagine dynamic NFTs that change based on ICP-internal and external data via [HTTPS outcalls](/https-outcalls).
 
 For many applications, the defining characteristic is their permanence and immutability (or evolution according to predefined rules). Some of the design decisions of ICP, such as the reverse gas model and the upgradeability of canister smart contracts, require the NFT developer to be particularly aware.
 
@@ -31,7 +31,7 @@ Make sure that all canisters have enough cycles to sustain a few years to begin 
 
 ### Set a generous freezing threshold
 
-The ICP has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](/references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The ICP dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat and timer, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
+ICP has a useful mechanism to save your canister from running out of cycles. Canisters have a configurable [`freezing_threshold`](/references/ic-interface-spec.md#ic-create_canister). The `freezing_threshold` can be set by the controller of a canister and is given in seconds. The ICP dynamically evaluates this as a threshold value in cycles. The value is such that the canister will be able to pay for its idle resources for at least the time given in `freezing_threshold`. To guarantee that, the canister is frozen when the cycle balance reaches the threshold, and all update calls, including the heartbeat and timer, are immediately rejected and won’t affect the canister’s cycle balance. The default value is approximately 30 days, but for NFTs, developers should set the `freezing_threshold` to at least 90 days, preferably 180 days. This makes sure that NFT developers and their users have enough time to react and top up the canisters before they finally run out of cycles.
 
 
 ### Make sure your canisters can be monitored

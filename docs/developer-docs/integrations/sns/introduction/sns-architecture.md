@@ -8,15 +8,15 @@ The core architecture of the SNS closely resembles the architecture of the Netwo
 (NNS), the DAO that governs the Internet Computer.
 It includes a governance canister that enables decentralized decision making and a ledger canister
 that defines a token unique to each SNS.
-In contrast to the SNS, the NNS contains additional canisters that are important to run ICP
-platform (e.g., the cycles minting canister that is responsible for creating cycles, the registry
+In contrast to the SNS, the NNS contains additional canisters that are important to run on the Internet Computer Protocol.
+(e.g., the cycles minting canister that is responsible for creating cycles, the registry
 that stores the network topology etc.).
 There are also a few canisters that only exist on the SNS, most notably the decentralization 
 swap canister that is used during the launch process of an SNS.
 
 ## SNS as a system functionality (connection to the NNS community)
-SNSs are provided as a system functionality by ICP in that the code for the SNS canisters
-is maintained by ICP. ([Here](dao-alternatives.md)
+SNSs are provided as a system functionality by the Internet Computer Protocol in that the code for the SNS canisters
+is maintained by the Internet Computer Protocol. ([Here](dao-alternatives.md)
 is a brief description of alternative ways to use the SNS code or how to create a DAO.)
 More concretely, this means that the NNS community approved the original SNS canisters' code
 and continuously approves new improved SNS versions.
