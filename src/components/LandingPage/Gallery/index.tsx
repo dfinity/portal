@@ -12,6 +12,7 @@ const MotionLink = motion(Link);
 const GallerySection = () => {
   return (
     <section
+      id="community"
       className="
       bg-infinite
         bg-gradient-to-b from-[#1B025A] to-[#1B025A]

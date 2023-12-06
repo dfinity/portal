@@ -10,7 +10,7 @@ import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 
 const FeaturesSection = () => {
   return (
-    <section className="bg-[#1B025A] text-white pt-30 md:pt-56">
+    <section className="bg-[#1B025A] text-white pt-30 md:pt-56" id="technology">
       <div className="mb-12 md:mb-30 container-10">
         <h2 className="tw-heading-3 md:tw-title-lg mb-0 md:w-8/10">
           Amazing, you made it this far. Discover more{" "}

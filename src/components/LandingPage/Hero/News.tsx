@@ -36,6 +36,7 @@ export const NewsSection = () => {
     <AnimateSpawn
       className="container-10 pt-20"
       variants={transitions.container}
+      id="news"
     >
       <motion.div
         className="flex justify-between mb-8 items-center"
