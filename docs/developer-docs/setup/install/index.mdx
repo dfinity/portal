@@ -174,25 +174,56 @@ The `base` directory in the versioned subdirectory of the SDK contains the Motok
 
 The `bootstrap` directory contains web server code that is deprecated. Beginning with version 0.7.0, agents can call an HTTP middleware server instead of the `bootstrap` code. This change enables canisters to respond to HTTP requests directly and operate more like traditional web-based applications.
 
-## Upgrading to the latest version
+## Using the dfx version manager
 
-If a new version of the IC SDK is available for download after your initial installation, you should install the updated version at your earliest convenience to get the latest fixes and enhancements as soon as possible. 
+To upgrade or install a specific version of dfx, the dfx version manager (`dfxvm`) can be used. 
 
-You can use the `dfx upgrade` command to compare the version you have currently installed against the latest version available for download. If a newer version of `dfx` is available, the `dfx upgrade` command automatically downloads and installs the latest version.
+First, install `dfxvm` using the following `curl` command:
 
-:::info
-You don't need to uninstall the software before installing the new version. However, if you want to perform a clean installation rather than an upgrade, you can first uninstall the software as described in [removing the software](#remove), then re-run the download and installation command.
-:::
+```
+sh -ci "$(curl -fsSL https://raw.githubusercontent.com/dfinity/sdk/dfxvm-install-script/install.sh)"
+```
 
-For information about the features and fixes in the latest release, see the [release notes](/other/updates/release-notes/release-notes.md).
+Upon installation, you will be prompted to select which version of dfx you'd like to install. Alternatively, you can pass the intended version using an environmental variable, such as:
 
-## Installing a specific version
+```
+DFX_VERSION=0.15.1 sh -ci "$(curl -fsSL https://raw.githubusercontent.com/dfinity/sdk/dfxvm-install-script/install.sh)"
+```
 
-The install script looks for the environment variable `DFX_VERSION` to check if it is supposed to install a specific version of the IC SDK or to simply install the latest version.
-If you want to install e.g. version `0.11.1` specifically, you can run the command:
+### Installing a specific version
 
-``` bash
-DFX_VERSION=0.11.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+Once `dfxvm` is installed, you can install other specific versions of dfx using the command:
+
+```
+dfxvm install [VERSION_NUMBER]
+```
+
+For example, you can install `0.15.0` with the command:
+
+```
+dfxvm install 0.15.0
+```
+
+### Uninstalling a specific version
+
+To uninstall a version of dfx using `dfxvm`, use the command:
+
+```
+dfxvm uninstall [VERSION_NUMBER]
+```
+
+For example, to uninstall version `0.14.4`, use the command:
+
+```
+dfxvm uninstall 0.14.4
+```
+
+### Upgrading to the latest version
+
+To update dfx to the latest version, use the command:
+
+```
+dfxvm update
 ```
 
 ### Setting a default version
@@ -201,7 +232,9 @@ If defined, the IC SDK will always run the version specified in the project's `d
 For example, if your `dfx.json` contains `"dfx": "0.11.1"`, any `dfx` command you run within this project's directory will be executed by `dfx` of version `0.11.1`.
 Should the defined version not be installed (e.g. because you cloned a repo that was created for a different version than you have installed locally), `dfx` will report an error.
 
-To set a **global** default (that gets overwritten by project-specific settings from the project's `dfx.json`), run the install script with the desired version, even if it is already installed.
+:::info
+You can learn more about `dfxvm` [here](https://github.com/dfinity/dfxvm/tree/main).
+:::
 
 ## Building from source
 
