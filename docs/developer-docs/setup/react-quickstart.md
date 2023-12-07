@@ -4,13 +4,13 @@
 
 On ICP, frontend UIs for decentralized applications can be hosted in a canister, often referred to as the dapp's frontend canister or asset canister. Frontend canisters host the code and assets for a dapp's user interface, which typically includes HTML, CSS, JavaScript, or React code. 
 
-One key feature of ICP is it's ability to serve canister assets directly in a web browser using the canister's mainnet URL. This means that when a frontend canister is deployed on the mainnet, users from around the world can access it using only the canister's URL, without requiring that the developer set up a domain name or other web service configuration.
+One key feature of ICP is its ability to serve canister assets directly in a web browser using the canister's mainnet URL. This means that when a frontend canister is deployed on the mainnet, users from around the world can access it using only the canister's URL, without requiring that the developer set up a domain name or other web service configuration.
 
-When developing on ICP, the primary tool used by developers is the [IC SDK](./install/index.mdx). The IC SDK includes the tool `dfx`, which is a CLI tool used to create, manage, and deploy dapps. When a new project is created with `dfx`, by default the project includes a frontend and backend canister that creates a simple 'Hello, World!' dapp. You can learn more about `dfx` in the documentation [here](/docs/current/tutorials/developer-journey/level-0/intro-dfx).
+When developing on ICP, the primary tool used by developers is the [IC SDK](./install/index.mdx). The IC SDK includes the tool `dfx`, which is a CLI tool used to create, manage, and deploy dapps. When a new project is created with `dfx`, by default the project includes a frontend and backend canister that creates a simple 'Hello, world!' dapp. You can learn more about `dfx` in the documentation [here](/docs/current/tutorials/developer-journey/level-0/intro-dfx).
 
 ## Creating a new ICP project  
 
-To create your own dapp, you can either edit the default template created by `dfx`, which provides a framework for a backend canister and frontend canister, use an example or boilerplate project repository, or create a project from scratch. 
+To create your own dapp, you can either edit the default template created by `dfx` which provides a framework for a backend canister and frontend canister, use an example or boilerplate project repository, or create a project from scratch. 
 
 To create a new project with `dfx`, first assure you have downloaded and installed the [IC SDK](./install/index.mdx). Then, you can run the command:
 
@@ -51,7 +51,7 @@ By default, the dapp's frontend assets are stored in the `src/my_project_fronten
 
 By default, the frontend template `dfx` uses for new projects includes a template `index.js` file and `webpack.config.js` file. The `index.js` file is used to import an agent located in the `src/declarations/my_project_frontend` directory, which will be generated when the command `dfx deploy` is run. 
 
-The generated code for this agent, stored in the `src/declarations/my_project_frontend/index.js` file will use the following default content:
+The generated code for this agent, stored in the `src/declarations/my_project_frontend/index.js` file, will use the following default content:
 
 ```javascript
 import { Actor, HttpAgent } from "@dfinity/agent";
@@ -97,9 +97,12 @@ export const createActor = (canisterId, options = {}) => {
 };
 
 export const my_project_frontend = createActor(canisterId);
-Then, if you look at the src/my_project_frontend/src/index.js file, you can see that it takes the generated actor, and uses it to make a call to the hello canister’s greet method:
+```
 
-import { hello_backend } from "../../declarations/hello_backend";
+Then, in the `src/my_project_frontend/src/index.js` file, you can see that the agent takes the generated actor and uses it to make a call to the backend canister’s `greet` method:
+
+```
+import { my_project_backend } from "../../declarations/my_project_backend";
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -110,7 +113,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   button.setAttribute("disabled", true);
 
   // Interact with foo actor, calling the greet method
-  const greeting = await hello_backend.greet(name);
+  const greeting = await my_project_backend.greet(name);
 
   button.removeAttribute("disabled");
 
@@ -120,7 +123,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 });
 ```
 
-For many projects, the code stored in the `src/declarations/hello_frontend/index.js` file can be used without making any edits or changes. However, some projects may have additional requirements, which may require editing the default webpack configuration. 
+For many projects, the code stored in the `src/declarations/hello_frontend/index.js` file can be used without making any edits or changes. However, some projects may have additional requirements, which may require editing the default Webpack configuration. 
 
 Webpack is a popular and highly-customizable module bundler for JavaScript applications. By default, new projects created with `dfx` have a default `webpack.config.js` file that makes it easy to add different modules, such as React or Markdown, that the project uses.
 
@@ -152,7 +155,7 @@ On ICP, there are several boilerplate dapp templates that use React, such as the
 
 ## Installing the React framework
 
-To use React in your frontend canister, first you need to install the React framework. Install the React module with the command:
+To use React in your frontend canister, first you need to install the React framework with the command:
 
 ```
 npm install --save react react-dom
