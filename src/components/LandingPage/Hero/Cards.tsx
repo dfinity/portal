@@ -36,12 +36,12 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage href="" image="/img/home/hello-world.webp">
+      {/* <CardWithImage href="/docs/current/samples/hello" image="/img/home/hello-world.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">Dev Wizard</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
           Build a ‘Hello World’ in 5min
         </h2>
-      </CardWithImage>
+      </CardWithImage> */}
 
       <CardWithImage
         href="https://deck.internetcomputer.org"
@@ -76,11 +76,18 @@ export const CardsSection = () => {
         </h2>
       </CardWithImage>
 
-      <CardWithImage href="" image="/img/home/btc-eth.webp">
+      <CardWithImage href="/bitcoin-integration" image="/img/home/btc-icp.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Bitcoin, ETH, ...</h2>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Bitcoin &lt;&gt; ICP </h2>
+      </CardWithImage>
+
+      <CardWithImage href="/ethereum-integration" image="/img/home/eth-icp.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">
+          Native Multi-chain
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ethereum &lt;&gt; ICP </h2>
       </CardWithImage>
     </AnimateSpawn>
   );
