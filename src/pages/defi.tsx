@@ -238,9 +238,9 @@ function DefiPage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://icdex.io/"
+                href="https://iclight.io/ICDex/ckETH/ICP"
               >
-                Check out ICDex <LinkArrowUpRight />
+                Get ckBTC/ckETH on ICDex <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/defi/sonic.webp" reverse={false}>
@@ -259,9 +259,9 @@ function DefiPage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://sonic.ooo/"
+                href="https://app.sonic.ooo/swap"
               >
-                Participate and swap on Sonic <LinkArrowUpRight />
+                Swap ckBTC/ckETH on Sonic <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/defi/icpswap.webp" reverse={true}>
@@ -278,9 +278,9 @@ function DefiPage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://icpswap.com"
+                href="https://app.icpswap.com/swap"
               >
-                Check out ICP.Swap <LinkArrowUpRight />
+                Get ckBTC/ckETH on ICP.Swap <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
 
