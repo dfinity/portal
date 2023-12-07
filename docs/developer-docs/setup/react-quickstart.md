@@ -492,10 +492,6 @@ You will notice that the styling of the page has remained the same, despite the 
 }
 ```
 
-The local development server will automatically refresh the frontend, which will resemble the following:
-
-![Motoko React template 5](./_attachments/motoko-react-5.png)
-
 ## Creating a React dapp with user input
 
 In this project, you will use JavaScript to create a React frontend dapp on ICP that uses a simple `greet` method that takes a user's input and returns a greeting using that input.
