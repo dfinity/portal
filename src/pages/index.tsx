@@ -2,20 +2,30 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import Layout from "@theme/Layout";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import Gallery from "../components/Community/Gallery";
+import { communityGallery } from "../components/Community/gallery-images";
+
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
-import CommunityStories from "../components/LandingPage/CommunityStories/CommunityStories";
 import Decks from "../components/LandingPage/Decks/Decks";
+import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
 import FoundationSection from "../components/LandingPage/Foundation";
+import GallerySection from "../components/LandingPage/Gallery";
+import {
+  CardsSection,
+  CardWithImage,
+} from "../components/LandingPage/Hero/Cards";
+import Hero from "../components/LandingPage/Hero/Hero";
+import IntroCards from "../components/LandingPage/Hero/IntroCards";
+import { NewsSection } from "../components/LandingPage/Hero/News";
+import {
+  CollapsedVisionSection,
+  VisionSection,
+} from "../components/LandingPage/Hero/VisionSection";
 import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
 import PreHero from "../components/LandingPage/PreHero";
 import SectionsBar from "../components/LandingPage/SectionsBar";
-import ShowcaseSection from "../components/LandingPage/Showcase";
 import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
-import Vision from "../components/LandingPage/Vision/Vision";
-
-const queryClient = new QueryClient();
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -26,78 +36,47 @@ export default function Home(): JSX.Element {
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <QueryClientProvider client={queryClient}>
-        <PreHero
-          headline={
-            <>
-              Cypherspace
-              <br />
-              as cloud
-            </>
-          }
-          subheadline="INTERNET COMPUTER"
-          cta="Explore The Power Of ICP"
-          ctaLink="/what-is-the-ic"
-          cards={[
-            {
-              caption: "Unstoppable Software",
-              title: "Cloud 3.0",
-              link: "/enterprise",
-            },
-            {
-              caption: "Open Internet Services",
-              title: "Web 3.0",
-              link: "/ois",
-            },
-            {
-              caption: "Internet Identity",
-              title: "Web3 ID",
-              link: "/internet-identity",
-            },
-          ]}
-        ></PreHero>
-      </QueryClientProvider>
-
-      <main
-        className="w-full relative bg-[#F1EEF5] z-[0]"
-        style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
+      <Hero
+        headline={
+          <>
+            CYPHER
+            <wbr />
+            SPACE AS CLOUD
+          </>
+        }
+        aiPlaceholders={[
+          "Is the Internet Computer decentralized?",
+          "What can I do with ICP token?",
+          "What is the first step to my ICP dapp?",
+        ]}
       >
-        <Decks className="container-12 -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40" />
-        <Vision />
-        <CommunityStories></CommunityStories>
+        <CardsSection />
+        <NewsSection />
+        <VisionSection>
+        Say hello to super advanced blockchain, reimagined as an infinite smart contract cloud, 
+        hosting not just tokens, but all the data, content, logic, computation and user experiences 
+        of web3 social media, game, metaverse and DeFi, alongside enterprise services, fully on-chain, 
+        realizing World Computer "full stack decentralization" on a public network for the first time.
+          <CollapsedVisionSection>
+            A network formed by the IC protocol, created through a relentless
+            R&D operation incorporating hundreds of person-years development
+            effort by an eminent technical team with more than 100,000 academic
+            citations. Today, web3 has become Web 3.0, and full stack
+            decentralization has become easy. For the first time, "open internet
+            services" are being created that run fully on-chain under true
+            community DO control. Today, Al models are running as smart
+            contracts. Native multi-chain crypto delivers World Computer. The
+            battle for the future of the internet, and compute itself, has
+            begun.
+          </CollapsedVisionSection>
+        </VisionSection>
+        <IntroCards />
+      </Hero>
+
+      <main className="w-full relative bg-[#F1EEF5] z-[0]">
         <div className="overflow-hidden">
-          {/* 
-            Update the list of showcase projects here: /plugins/home-showcase.js 
-          */}
-          <ShowcaseSection
-            className="pb-[320px]"
-            lines={[
-              "DeFi",
-              "Metaverse",
-              "Social media",
-              "Social networking",
-              "Multi-chain dapps",
-              "Enterprise services",
-              "R&D infrastructure",
-              "Fundraising",
-              "Publishing",
-              "Messaging ",
-              "Gaming",
-              "NFTs",
-            ]}
-            subheading="Featuring a few web3 project teams reinventing the internet on the ICP blockchain."
-            linePostfix="on true Web3"
-          ></ShowcaseSection>
-        </div>
-        <BackgroundPanel
-          panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
-          id="comparison"
-          threshold={0}
-          rootMargin="-30% 0px"
-        >
-          <Highlights />
-        </BackgroundPanel>
-        <div className="overflow-hidden">
+          <GallerySection />
+          <FeaturesSection />
           <Sustainable id="sustainable"></Sustainable>
           <StartBuildingSection
             id="startBuilding"

@@ -2,12 +2,14 @@ import React from "react";
 import Head from "@docusaurus/Head";
 import { useIsDocs } from "@site/src/hooks/useIsDocs";
 import BrainIcon from "../../../static/img/icon-ai-brain.svg";
+import { useLocation } from "@docusaurus/router";
 
 export function AskAIWidget() {
   const { isDocsPage, currentPath, docsHome } = useIsDocs();
+  const location = useLocation();
 
   return (
-    isDocsPage && (
+    (isDocsPage || location.pathname == "/") && (
       // AI chatbot integration via Kapa
       <>
         <Head>
@@ -23,7 +25,7 @@ export function AskAIWidget() {
           />
         </Head>
         <button
-          className="ask-ai-widget-trigger button-white sm:button-with-icon sm:button-small font-bold fixed sm:relative bottom-0 my-20 sm:my-0 flex rounded-full sm:rounded-lg h-12 w-12 sm:h-[unset] sm:w-[unset] items-center p-0 sm:px-3 sm:py-2"
+          className="ask-ai-widget-trigger invisible pointer-events-none docs:visible docs:pointer-events-auto button-white sm:button-with-icon sm:button-small font-bold fixed sm:relative bottom-0 my-20 sm:my-0 flex rounded-full sm:rounded-lg h-12 w-12 sm:h-[unset] sm:w-[unset] items-center p-0 sm:px-3 sm:py-2"
           style={{
             display: "flex",
             alignItems: "center",

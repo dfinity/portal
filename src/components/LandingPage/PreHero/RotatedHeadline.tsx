@@ -47,13 +47,16 @@ function animateTextCollapse(
   return () => clearInterval(handle);
 }
 
-const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
-  lines,
-  interval,
-}) => {
+const RotatedHeadline: React.FC<{
+  lines: string[];
+  interval: number;
+  start?: boolean;
+}> = ({ lines, interval, start = true }) => {
   const [index, setIndex] = useState(0);
   const el = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
+    if (!start) return;
+
     let abortTextCollapse: () => void = null;
     const handle = setInterval(() => {
       if (!document.hidden) {
@@ -70,7 +73,7 @@ const RotatedHeadline: React.FC<{ lines: string[]; interval: number }> = ({
       clearInterval(handle);
       abortTextCollapse && abortTextCollapse();
     };
-  }, [interval, index, setIndex]);
+  }, [interval, index, setIndex, start]);
 
   return (
     <>
