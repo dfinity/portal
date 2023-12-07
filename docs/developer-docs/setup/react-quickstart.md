@@ -719,7 +719,7 @@ const MyHello = () => {
       </div>
       <div>
         Greeting is: "
-        <span style={{ color: "blue" }}>{message}</span>"
+        <span>{message}</span>"
       </div>
     </div>
   );
