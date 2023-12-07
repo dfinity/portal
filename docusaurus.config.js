@@ -462,7 +462,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "World Computer blockchain that reimagines the internet as an infinite smart contract platform",
+    "Say hello to super advanced blockchain, reimagined as an infinite smart contract cloud, hosting not just tokens, but all kind of data and user experiences of Web3, such as Social Media, DeFi, Gaming, Enterprise services, etc.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
