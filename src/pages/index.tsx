@@ -53,10 +53,10 @@ export default function Home(): JSX.Element {
         <CardsSection />
         <NewsSection />
         <VisionSection>
-          Say hello to infinite blockchain that hosts not just tokens, but the
-          data, computation and user experiences of entire Social media, Game,
-          Metaverse, DeFi and enterprise services, fully on-chain, realizing
-          true Web3 for the very first time.
+        Say hello to super advanced blockchain, reimagined as an infinite smart contract cloud, 
+        hosting not just tokens, but all the data, content, logic, computation and user experiences 
+        of web3 social media, game, metaverse and DeFi, alongside enterprise services, fully on-chain, 
+        realizing World Computer "full stack decentralization" on a public network for the first time.
           <CollapsedVisionSection>
             A network formed by the IC protocol, created through a relentless
             R&D operation incorporating hundreds of person-years development
