@@ -47,13 +47,11 @@ export default function Home(): JSX.Element {
         <CardsSection />
         <NewsSection />
         <VisionSection>
-          Say hello to super advanced blockchain, reimagined as an infinite
-          smart contract cloud, hosting not just tokens, but all the data,
-          content, logic, computation and user experiences of web3 social media,
-          game, metaverse and DeFi, alongside enterprise services, fully
-          on-chain, realizing World Computer "full stack decentralization" on a
-          public network for the first time.
-          <CollapsedVisionSection>
+        Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: data, content, 
+        computations, and user experiences. Forget legacy IT and build tamperproof and unstoppable Web3 social media, gaming, 
+        virtual reality, decentralized finance, and enterprise infrastructure. 
+        Realize the game-changing Internet Computer paradigm of full stack decentralization and seamless multi-chain today.
+          {/* <CollapsedVisionSection>
             A network formed by the IC protocol, created through a relentless
             R&D operation incorporating hundreds of person-years development
             effort by an eminent technical team with more than 100,000 academic
@@ -64,7 +62,7 @@ export default function Home(): JSX.Element {
             contracts. Native multi-chain crypto delivers World Computer. The
             battle for the future of the internet, and compute itself, has
             begun.
-          </CollapsedVisionSection>
+          </CollapsedVisionSection> */}
         </VisionSection>
         <IntroCards />
       </Hero>
