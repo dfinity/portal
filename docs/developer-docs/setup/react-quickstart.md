@@ -47,104 +47,6 @@ my_project/
 
 By default, the dapp's frontend assets are stored in the `src/my_project_frontend` subdirectory, which contains an `assets` directory used to store frontend assets and a `src` directory used to store the frontend code. To customize your dapp's frontend, you can make changes to the files in the `src/my_project_frontend/assets` and `src/my_project_frontend/src` subdirectories.
 
-### Using `dfx`'s default frontend templates
-
-By default, the frontend template `dfx` uses for new projects includes a template `index.js` file and `webpack.config.js` file. The `index.js` file is used to import an agent located in the `src/declarations/my_project_frontend` directory, which will be generated when the command `dfx deploy` is run. 
-
-The generated code for this agent, stored in the `src/declarations/my_project_frontend/index.js` file, will use the following default content:
-
-```javascript
-import { Actor, HttpAgent } from "@dfinity/agent";
-
-// Imports and re-exports candid interface
-import { idlFactory } from "./my_project_frontend.did.js";
-export { idlFactory } from "./my_project_frontend.did.js";
-
-/* CANISTER_ID is replaced by webpack based on node environment
- * Note: canister environment variable will be standardized as
- * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
- * beginning in dfx 0.15.0
- */
-export const canisterId =
-  process.env.CANISTER_ID_my_project_frontend ||
-  process.env.my_project_frontend_CANISTER_ID;
-
-export const createActor = (canisterId, options = {}) => {
-  const agent = options.agent || new HttpAgent({ ...options.agentOptions });
-
-  if (options.agent && options.agentOptions) {
-    console.warn(
-      "Detected both agent and agentOptions passed to createActor. Ignoring agentOptions and proceeding with the provided agent."
-    );
-  }
-
-  // Fetch root key for certificate validation during development
-  if (process.env.DFX_NETWORK !== "ic") {
-    agent.fetchRootKey().catch((err) => {
-      console.warn(
-        "Unable to fetch root key. Check to ensure that your local replica is running"
-      );
-      console.error(err);
-    });
-  }
-
-  // Creates an actor with using the candid interface and the HttpAgent
-  return Actor.createActor(idlFactory, {
-    agent,
-    canisterId,
-    ...options.actorOptions,
-  });
-};
-
-export const my_project_frontend = createActor(canisterId);
-```
-
-Then, in the `src/my_project_frontend/src/index.js` file, you can see that the agent takes the generated actor and uses it to make a call to the backend canister’s `greet` method:
-
-```
-import { my_project_backend } from "../../declarations/my_project_backend";
-
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const button = e.target.querySelector("button");
-
-  const name = document.getElementById("name").value.toString();
-
-  button.setAttribute("disabled", true);
-
-  // Interact with foo actor, calling the greet method
-  const greeting = await my_project_backend.greet(name);
-
-  button.removeAttribute("disabled");
-
-  document.getElementById("greeting").innerText = greeting;
-
-  return false;
-});
-```
-
-For many projects, the code stored in the `src/declarations/hello_frontend/index.js` file can be used without making any edits or changes. However, some projects may have additional requirements, which may require editing the default Webpack configuration. 
-
-Webpack is a popular and highly-customizable module bundler for JavaScript applications. By default, new projects created with `dfx` have a default `webpack.config.js` file that makes it easy to add different modules, such as React or Markdown, that the project uses.
-
-The default `webpack.config.js` file can be used without any modification, or you can modify it to add modules, plugins, or other custom configuration to suit the needs of your project. Changes made will depend on the frameworks and tools your project uses. 
-
-For example, to add the React module to your project, you can modify the `webpack.config.js` file to include the following configuration:
-
-```javascript
-module: {
-  rules: [
-    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-    { test: /\.css$/, use: ['style-loader','css-loader'] }
-  ]
-}
-```
-
-:::caution
-Since `dfx` projects rely on Webpack to provide the default frontend configuration, you must have [Node.js](https://nodejs.org/en) installed in your development environment.
-:::
-
-
 ## Creating custom frontend code and assets
 
 When developing frontend UIs, there are several frontend frameworks that can be used, such as [JavaScript](https://internetcomputer.org/docs/current/developer-docs/frontend/javascript-frontend), [Svelte](https://internetcomputer.org/docs/current/developer-docs/frontend/svelte-frontend), and [Vue](https://internetcomputer.org/docs/current/developer-docs/frontend/vue-frontend).
@@ -522,6 +424,104 @@ const Navigation = () => {
 
 export default Navigation;
 ```
+
+### Using `dfx`'s default frontend templates
+
+By default, the frontend template `dfx` uses for new projects includes a template `index.js` file and `webpack.config.js` file. The `index.js` file is used to import an agent located in the `src/declarations/my_project_frontend` directory, which will be generated when the command `dfx deploy` is run. 
+
+The generated code for this agent, stored in the `src/declarations/my_project_frontend/index.js` file, will use the following default content:
+
+```javascript
+import { Actor, HttpAgent } from "@dfinity/agent";
+
+// Imports and re-exports candid interface
+import { idlFactory } from "./my_project_frontend.did.js";
+export { idlFactory } from "./my_project_frontend.did.js";
+
+/* CANISTER_ID is replaced by webpack based on node environment
+ * Note: canister environment variable will be standardized as
+ * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
+ * beginning in dfx 0.15.0
+ */
+export const canisterId =
+  process.env.CANISTER_ID_my_project_frontend ||
+  process.env.my_project_frontend_CANISTER_ID;
+
+export const createActor = (canisterId, options = {}) => {
+  const agent = options.agent || new HttpAgent({ ...options.agentOptions });
+
+  if (options.agent && options.agentOptions) {
+    console.warn(
+      "Detected both agent and agentOptions passed to createActor. Ignoring agentOptions and proceeding with the provided agent."
+    );
+  }
+
+  // Fetch root key for certificate validation during development
+  if (process.env.DFX_NETWORK !== "ic") {
+    agent.fetchRootKey().catch((err) => {
+      console.warn(
+        "Unable to fetch root key. Check to ensure that your local replica is running"
+      );
+      console.error(err);
+    });
+  }
+
+  // Creates an actor with using the candid interface and the HttpAgent
+  return Actor.createActor(idlFactory, {
+    agent,
+    canisterId,
+    ...options.actorOptions,
+  });
+};
+
+export const my_project_frontend = createActor(canisterId);
+```
+
+Then, in the `src/my_project_frontend/src/index.js` file, you can see that the agent takes the generated actor and uses it to make a call to the backend canister’s `greet` method:
+
+```
+import { my_project_backend } from "../../declarations/my_project_backend";
+
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const button = e.target.querySelector("button");
+
+  const name = document.getElementById("name").value.toString();
+
+  button.setAttribute("disabled", true);
+
+  // Interact with foo actor, calling the greet method
+  const greeting = await my_project_backend.greet(name);
+
+  button.removeAttribute("disabled");
+
+  document.getElementById("greeting").innerText = greeting;
+
+  return false;
+});
+```
+
+For many projects, the code stored in the `src/declarations/hello_frontend/index.js` file can be used without making any edits or changes. However, some projects may have additional requirements, which may require editing the default Webpack configuration. 
+
+Webpack is a popular and highly-customizable module bundler for JavaScript applications. By default, new projects created with `dfx` have a default `webpack.config.js` file that makes it easy to add different modules, such as React or Markdown, that the project uses.
+
+The default `webpack.config.js` file can be used without any modification, or you can modify it to add modules, plugins, or other custom configuration to suit the needs of your project. Changes made will depend on the frameworks and tools your project uses. 
+
+For example, to add the React module to your project, you can modify the `webpack.config.js` file to include the following configuration:
+
+```javascript
+module: {
+  rules: [
+    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+    { test: /\.css$/, use: ['style-loader','css-loader'] }
+  ]
+}
+```
+
+:::caution
+Since `dfx` projects rely on Webpack to provide the default frontend configuration, you must have [Node.js](https://nodejs.org/en) installed in your development environment.
+:::
+
 
 ### Going further
 
