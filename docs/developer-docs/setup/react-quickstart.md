@@ -55,23 +55,6 @@ Another popular choice is React. React is a library used for creating native or 
 
 On ICP, there are several boilerplate dapp templates that use React, such as the [React frontend example](/docs/current/developer-docs/frontend/react-frontend). In this guide, you will explore two other boilerplate templates that can be used for creating frontend UIs with React.
 
-## Installing the React framework
-
-To use React in your frontend canister, first you need to install the React framework with the command:
-
-```
-npm install --save react react-dom
-```
-
-Then, install the TypeScript language compiler with the command:
-
-```
-npm install --save-dev typescript ts-loader
-```
-
-Alternatively, you can edit your project's default `package.json` file to add dependencies to your project as seen [here](https://internetcomputer.org/assets/files/custom-frontend-package-bc1a4e8d2fe5016fe559f39aceec7a16.json). 
-
-
 ## Creating a React dapp with a button
 
 In this example project, you will use the Motoko React TypeScript template to create a React frontend dapp on ICP that uses a simple `counter` method to increment a value when a button on the frontend UI is clicked. 
