@@ -47,22 +47,18 @@ export default function Home(): JSX.Element {
         <CardsSection />
         <NewsSection />
         <VisionSection>
-        Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: data, content, 
-        computations, and user experiences. Forget legacy IT and build tamperproof and unstoppable Web3 social media, gaming, 
-        virtual reality, decentralized finance, and enterprise infrastructure. 
-        Realize the game-changing Internet Computer paradigm of full stack decentralization and seamless multi-chain today.
-          {/* <CollapsedVisionSection>
-            A network formed by the IC protocol, created through a relentless
-            R&D operation incorporating hundreds of person-years development
-            effort by an eminent technical team with more than 100,000 academic
-            citations. Today, web3 has become Web 3.0, and full stack
-            decentralization has become easy. For the first time, "open internet
-            services" are being created that run fully on-chain under true
-            community DAO control. Today, Al models are running as smart
-            contracts. Native multi-chain crypto delivers World Computer. The
-            battle for the future of the internet, and compute itself, has
-            begun.
-          </CollapsedVisionSection> */}
+        Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: 
+        data, content, computations, and user experiences. Forget legacy IT and build tamperproof and unstoppable 
+        Web3 social media, gaming, virtual reality, decentralized finance, and enterprise infrastructure. 
+        Join the movement and realize the game-changing Internet Computer paradigm of full stack decentralization 
+        and seamless multi-chain today.
+          <CollapsedVisionSection>
+          You will be in good company. The Internet Computer network's ICP protocol was created by the 
+          crypto industry’s largest R&D operation in a multi-year international effort – it’s the product 
+          of more than 1,000 person years of research and development at the DFINITY Foundation, including work 
+          by world famous cryptographers and engineers focused on a singular vision: deliver infinite blockchain 
+          that can be used as an alternative to traditional IT.
+          </CollapsedVisionSection>
         </VisionSection>
         <IntroCards />
       </Hero>
