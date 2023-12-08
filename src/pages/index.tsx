@@ -37,13 +37,7 @@ export default function Home(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Hero
-        headline={
-          <>
-            CYPHER
-            <wbr />
-            SPACE AS CLOUD
-          </>
-        }
+        headline={<>CYPHER&#8203;SPACE AS CLOUD</>}
         aiPlaceholders={[
           "Is the Internet Computer decentralized?",
           "What can I do with ICP token?",
@@ -53,10 +47,12 @@ export default function Home(): JSX.Element {
         <CardsSection />
         <NewsSection />
         <VisionSection>
-        Say hello to super advanced blockchain, reimagined as an infinite smart contract cloud, 
-        hosting not just tokens, but all the data, content, logic, computation and user experiences 
-        of web3 social media, game, metaverse and DeFi, alongside enterprise services, fully on-chain, 
-        realizing World Computer "full stack decentralization" on a public network for the first time.
+          Say hello to super advanced blockchain, reimagined as an infinite
+          smart contract cloud, hosting not just tokens, but all the data,
+          content, logic, computation and user experiences of web3 social media,
+          game, metaverse and DeFi, alongside enterprise services, fully
+          on-chain, realizing World Computer "full stack decentralization" on a
+          public network for the first time.
           <CollapsedVisionSection>
             A network formed by the IC protocol, created through a relentless
             R&D operation incorporating hundreds of person-years development
