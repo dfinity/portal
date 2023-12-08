@@ -34,7 +34,7 @@ const Hero: React.FC<{
       <ParticleAnimation />
 
       <div className="pt-40 pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px]">
-        <div className="container-10 col-start-1 row-start-1">
+        <div className="container-10 col-start-1 row-start-1 w-full">
           <div className="md:w-7/10 lg:w-8/10">
             <h1
               className="
