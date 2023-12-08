@@ -20,6 +20,22 @@
   },
 
   {
+    "id": "bioniq",
+    "name": "Bioniq",
+    "oneLiner": "The fastest Ordinals marketplace",
+    "website": "https://bioniq.io/",
+    "tags": [
+      "Bitcoin"
+    ],
+    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near instant finality, and decentralized secure token bridging..",
+    "display": "Large",
+    "logo": "/img/showcase/bioniq-logo.jpeg",
+    "screenshots": [
+      "/img/showcase/bioniq-screenshot-min.png"
+    ]
+  },
+
+  {
     "id": "openchat",
     "name": "OpenChat",
     "oneLiner": "Decentralized alternative to WhatsApp",
@@ -36,22 +52,6 @@
     "logo": "/img/showcase/openchat_logo.webp",
     "screenshots": [
       "/img/showcase/openchat-screenshot.webp"
-    ]
-  },
-
-  {
-    "id": "bioniq",
-    "name": "Bioniq",
-    "oneLiner": "The fastest Ordinals marketplace",
-    "website": "https://bioniq.io/",
-    "tags": [
-      "Bitcoin"
-    ],
-    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near instant finality, and decentralized secure token bridging..",
-    "display": "Large",
-    "logo": "/img/showcase/bioniq-logo.jpeg",
-    "screenshots": [
-      "/img/showcase/bioniq-screenshot-min.png"
     ]
   },
 
