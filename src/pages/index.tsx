@@ -64,7 +64,7 @@ export default function Home(): JSX.Element {
             citations. Today, web3 has become Web 3.0, and full stack
             decentralization has become easy. For the first time, "open internet
             services" are being created that run fully on-chain under true
-            community DO control. Today, Al models are running as smart
+            community DAO control. Today, Al models are running as smart
             contracts. Native multi-chain crypto delivers World Computer. The
             battle for the future of the internet, and compute itself, has
             begun.
