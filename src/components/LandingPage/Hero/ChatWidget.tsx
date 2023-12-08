@@ -69,7 +69,7 @@ export const ChatWidget: React.FC<{
               key={i}
               className={clsx(
                 "row-start-1 col-start-1 transition-opacity duration-500 delay-200",
-                widgetLoaded && placeholderIndex === i
+                fontLoaded && widgetLoaded && placeholderIndex === i
                   ? "opacity-100"
                   : "opacity-0"
               )}
