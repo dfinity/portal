@@ -1,8 +1,8 @@
 # 1: What is the Internet Computer?
 
-## Vision of the Internet Computer Protocol
+## Vision of the Internet Computer 
 
-The Internet Computer Protocol is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as canisters on ICP. Each canister is hosted on an independent blockchain network running on nodes called a subnet.
+The Internet Computer is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as canisters on ICP. Each canister is hosted on an independent blockchain network running on nodes called a subnet.
 
 The Internet Computer's vision is to create a blockchain so powerful, it plays the role of Cloud 3.0. ICP extends the public internet with serverless cloud functionality. 
 
@@ -109,6 +109,8 @@ ICP is designed with features that strive to make it future-proof. Some key comp
 ## Canisters smart contracts
 
 The term canister refers to a smart contract on ICP that is a computational unit that bundles together both smart contract code and state. Canister smart contracts can define functions that can be called by external services or other canisters. Canisters communicate with one another through asynchronous messages. Each message is executed in isolation, allowing for increased levels of concurrent execution.
+
+At a high level, a canister is used to expose methods. A method is a piece of code specifying a task which declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
 
 Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/developer-docs/setup/install/index.mdx), and there are several community-developed canister development kits such as Python and Typescript.
 
