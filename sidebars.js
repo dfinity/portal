@@ -204,7 +204,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer quick start",
+          label: "Developer quickstart",
           id: "developer-docs/setup/quickstart",
         },
         {
@@ -255,6 +255,11 @@ const sidebars = {
           type: "doc",
           label: "Pulling canister dependencies",
           id: "developer-docs/setup/pulling-canister-dependencies",
+        },
+                {
+          type: "doc",
+          label: "Quickstart for React developers",
+          id: "developer-docs/setup/react-quickstart",
         },
         {
           type: "doc",
