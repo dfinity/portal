@@ -119,7 +119,7 @@ export const EthEquivalentTxRate = () => {
       variants={transitions.fadeIn}
     >
       <figure className="m-0 flex gap-3 justify-center md:block">
-        <div className="mb-2 md:mb-0 inline-grid relative left-1 md:static md:inline">
+        <div className="inline-grid relative left-1 md:static md:inline">
           {updateTxRate.isFetched && updateTxRate.isSuccess ? (
             <>
               <SpringCounter
