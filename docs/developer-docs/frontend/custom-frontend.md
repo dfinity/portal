@@ -194,7 +194,7 @@ The following example is a **code snippet** that is part of a larger code file. 
           ]
         },
 
-    This setting enables the project to use the `ts-loader` compiler for a React JavaScript `index.jsx` file. Note that there’s a commented section in the default `webpack.config.js` file that you can modify to add the `module` key.
+This setting enables the project to use the `ts-loader` compiler for a React JavaScript `index.jsx` file. Note that there’s a commented section in the default `webpack.config.js` file that you can modify to add the `module` key.
 
 When finished, your `webpack.config.js` file should contain the following content:
 

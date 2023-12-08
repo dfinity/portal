@@ -1,5 +1,8 @@
 # 0.5 Introduction to languages 
 
+[![ICP Developer Journey 0.5 | Introduction to Languages](https://img.youtube.com/vi/sZxbRAwYYMw/0.jpg)](https://www.youtube.com/watch?v=sZxbRAwYYMw)
+
+
 ## Overview
 
 When developing canisters, the most common development workflow is to use a software development kit (SDK). The Internet Computer SDK is the most commonly used, which natively supports Motoko and Rust out of the box. 
