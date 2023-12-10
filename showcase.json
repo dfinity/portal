@@ -3118,6 +3118,7 @@
     "screenshots": ["/img/showcase/taxlint_screenshot.png"],
     "submittableId": "43956470"
   },
+  {
     "name": "InheritX",
     "description": "InheritX is a blockchain-based application developed on Internet Computer (ICP) that allows users to create a digital will and bequeath their assets to designated beneficiaries in the event of their death.",
     "website": "https://inherit-x.vercel.app/",
