@@ -1,5 +1,7 @@
 # 0.3 Developer environment setup
 
+[![ICP Developer Journey 0.3 | Developer Environment Setup](https://img.youtube.com/vi/fDMHUdo7m-k/0.jpg)](https://www.youtube.com/watch?v=fDMHUdo7m-k)
+
 ## Overview
 
 Before you can begin our developer journey, you need to set up our developer environment. A developer environment consists of tools and packages that are required to develop code projects. Usually, developer environments are stored and hosted on your local computer, but there are some situations where a virtual, web-based development environment exists. 
@@ -54,7 +56,7 @@ This command should output information about the latest version of `dfx`. This o
 
 The IC SDK is composed of several components that are required for developing on the Internet Computer. These components are:
 
-- `dfx`: The CLI tool used to interact with and develop canisters on the IC. Motoko is included in the installation of dfx. 
+- `dfx`: The CLI tool used to interact with and develop canisters on ICP. Motoko is included in the installation of dfx. 
 - `moc`: The Motoko runtime compiler. 
 - `replica`: The Internet Computer's local network binary. 
 
@@ -109,9 +111,9 @@ You'll use this working directory to contain the projects that you build through
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 

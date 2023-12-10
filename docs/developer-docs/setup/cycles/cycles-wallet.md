@@ -64,30 +64,107 @@ A principal assigned to the **custodian** role can only perform a subset of cycl
 
 Authorizing a principal as a custodian does not automatically grant the principal access to a cycles wallet. The identity assigned to the custodian role must also be assigned a cycles wallet principal. For example, if you authorize the identity `alice_custodian` as a custodian of a cycles wallet (`rwlgt-iiaaa-aaaaa-aaaaa-cai`) in a local project, that user would also need to be assigned to use that wallet with the `dfx identity set-wallet rwlgt-iiaaa-aaaaa-aaaaa-cai` command.
 
-## Create a cycles wallet
+## Creating a cycles wallet
 
-If you are doing local development, your cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
+### Creating a local cycles wallet
 
-If you are deploying on the Internet Computer mainnet, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (WASM). [Convert ICP to cycles](/developer-docs/setup/deploy-mainnet.md#creating-a-cycles-wallet) shows how to do this.
+If you are doing local development, your local cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
+
+Alternatively, a local instance of the cycles wallet can be deployed manually with the following workflow:
+
+### Prerequisites 
+
+- [x] Install the [IC SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install/).
+
+- [x] Download and install [Node.js](https://nodejs.org/en/download/current), version 16.x.x and older. Running a version newer than 16.x.x may result in an error. 
+
+- #### Step 1: Clone the cycles wallet repository and navigate into the directory:
+
+```
+git clone https://github.com/dfinity/cycles-wallet.git
+cd cycles-wallet
+```
+
+- #### Step 2: Install the dependencies with the command:
+
+```
+npm ci
+```
+
+- #### Step 3: Start a local replica if one is not already running:
+
+```
+dfx start --background --clean
+```
+
+- #### Step 4: Deploy the cycles wallet canister locally:
+
+```
+dfx deploy
+```
+
+- #### Step 5: Get the canister ID of the cycles wallet:
+
+```
+dfx canister id wallet
+```
+
+### Creating a cycles wallet on the mainnet
+
+If you are deploying on the Internet Computer mainnet, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (Wasm). 
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](../../../tokenomics/token-holders/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
+- #### Step 1:  Create a new canister with cycles by transferring ICP tokens from your ledger account. You can do so by running a command similar to the following:
+
+        dfx ledger --network ic create-canister <principal-identifier> --amount <icp-tokens>
+
+    This command converts the number of ICP tokens you specify for the `--amount` argument into cycles, and associates the cycles with a new canister identifier controlled by the principal you specify.
+
+    For example, the following command converts .25 ICP tokens into cycles and specifies the principal identifier for the default identity as the controller of the new canister:
+
+        dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount .25
+
+    If the transaction is successful, the ledger records the event and you should see output similar to the following:
+
+        Transfer sent at BlockHeight: 20
+        Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
+
+- #### Step 2:  Install the cycles wallet code in the newly-created canister ID by running a command similar to the following:
+
+        dfx identity --network ic deploy-wallet <canister-identifier>
+
+    For example:
+
+        dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
+
+    This command displays output similar to the following:
+
+        Creating a wallet canister on ICP.
+        The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
+
+## Listing wallets
+
+You can use the following command to display the wallet's principal and role (contact, custodian, or controller). If the wallet has a name or a kind associated with it, this information will be returned from the following command as well:
+
+```
+dfx wallet addresses
+``` 
+
+This command displays output similar to the following:
+
+```
+Id: hoqq7-3eo6j-dee4s-aiabk-6rqxw-kwgyo-rhru7-bdgmk-k5ipv-chkhx-cqe, Kind: Unknown, Role: Controller, Name: No name set.
+```
+
+
 ## Check the cycle balance
 
-In the local canister execution environment or with a cycles wallet on the Internet Computer, you can use the:
-
+In the local canister execution environment or with a cycles wallet on the Internet Computer, you can use the following command to check the current cycles balance:
 
 ```
 dfx wallet balance
 ```
-
-or 
-
-```
-wallet_balance
-``` 
-
-commands to check the current cycle balance.
 
 ### Check your cycles balance when developing locally
 
@@ -111,25 +188,25 @@ To check the cycles balance in a local project:
 
 ### Check the cycles balance when deploying on the mainnet
 
-If you have deployed a cycles wallet on the Internet Computer, you can use the `dfx wallet balance` command to check the current cycles balance on the network.
+If you have deployed a cycles wallet on the mainnet, you can use the `dfx wallet balance --network ic` command to check the current cycles balance on the network.
 
-To check the cycles balance on the Internet Computer:
+To check the cycles balance on the mainnet:
 
 - #### Step 1:  Open a terminal and navigate to a directory that contains a `dfx.json` configuration file.
 
-- #### Step 2:  Check your connection to the Internet Computer by running the following command:
+- #### Step 2:  Check your connection to the mainnet by running the following command:
 
         dfx ping ic
 
 - #### Step 3:  Display the cycle balance from the cycles wallet associated with the currently-selected identity by running the following command:
 
-        dfx wallet --network ic balance
+        dfx wallet balance --network ic
 
     The command displays output similar to the following:
 
         67.992 TC (trillion cycles).
 
-#### Call the cycles `wallet_balance` method
+### Call the cycles `wallet_balance` method
 
 You can also check the cycles balance by calling the `wallet_balance` method in the cycles wallet canister directly. For example, if your principal is a controller for the `h5aet-waaaa-aaaab-qaamq-cai` cycles wallet, you can check the current cycle balance by running the following command:
 
@@ -138,18 +215,6 @@ You can also check the cycles balance by calling the `wallet_balance` method in 
 The command returns the balance using Candid format as a record with an amount field (represented by the hash 3\_573\_748\_184) and a balance of 6,895,656,625,450 cycles like this:
 
     (record { 3_573_748_184 = 6_895_656_625_450 })
-
-command to create a cycles wallet canister tied to an identity. You can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
-
-## Listing wallets
-
-You can use the:
-
-```
-dfx wallet addresses
-``` 
-
-command to display the wallet's principal and role (contact, custodian, or controller), and might contain a name, and kind (unknown, user, or canister) associated with the address.
 
 ## Using your wallet
 
@@ -175,20 +240,20 @@ dfx wallet send --help
 
 For reference information and examples that illustrate using dfx wallet commands, select an appropriate command.
 
-- `add-controller`: add a controller using the selected identity's principal.
-- `addresses`: displays the address book of the cycles wallet.
-- `authorize`: authorize a custodian by principal for the selected identity's cycles wallet
-- `balance`: displays the cycles wallet balance of the selected identity.
-- `controllers`: displays a list of the selected identity's cycles wallet controllers.
-- `custodians`:	displays a list of the selected identity's cycles wallet custodians.
-- `deauthorize`: deauthorize a cycles wallet custodian using the custodian's principal.
-- `help`: displays a usage message and the help of the given subcommand(s).
-- `name`: returns the name of the cycles wallet if you've used the dfx wallet set-name command.
-- `redeem-faucet-coupon`: redeem a code at the cycles faucet.
-- `remove-controller`: removes a specified controller from the selected identity's cycles wallet.
-- `send`: sends a specified amount of cycles from the selected identity's cycles wallet to another cycles wallet using the destination wallet canister ID.
-- `set-name`: specify a name for your cycles wallet.
-- `upgrade`: upgrade the cycles wallet's Wasm module to the current Wasm bundled with DFX.
+- [`add-controller`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-add-controller): add a controller using the selected identity's principal.
+- [`addresses`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-addresses): displays the address book of the cycles wallet.
+- [`authorize`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-authorize): authorize a custodian by principal for the selected identity's cycles wallet
+- [`balance`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-balance): displays the cycles wallet balance of the selected identity.
+- [`controllers`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-controllers): displays a list of the selected identity's cycles wallet controllers.
+- [`custodians`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-custodians):	displays a list of the selected identity's cycles wallet custodians.
+- [`deauthorize`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-deauthorize): deauthorize a cycles wallet custodian using the custodian's principal.
+- [`help`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-help): displays a usage message and the help of the given subcommand(s).
+- [`name`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-name): returns the name of the cycles wallet if you've used the dfx wallet set-name command.
+- [`redeem-faucet-coupon`](/docs/current/references/cli-reference/dfx-wallet#dfx-wallet-redeem-faucet-coupon): redeem a code at the cycles faucet.
+- [`remove-controller`](/docs/current/references/cli-reference/dfx-wallet#remove-controller): removes a specified controller from the selected identity's cycles wallet.
+- [`send`](/docs/current/references/cli-reference/dfx-wallet#send): sends a specified amount of cycles from the selected identity's cycles wallet to another cycles wallet using the destination wallet canister ID.
+- [`set-name`](/docs/current/references/cli-reference/dfx-wallet#set-name): specify a name for your cycles wallet.
+- [`upgrade`](/docs/current/references/cli-reference/dfx-wallet#upgrade): upgrade the cycles wallet's Wasm module to the current Wasm bundled with DFX.
 
 ### Adding a controller
 An identity assigned the role of controller has the most privileges and can perform the following actions on the selected identity's cycles wallet. Identities that are added as controllers are also listed as custodians. 
@@ -327,4 +392,5 @@ The output from the command is in Candid format similar to the following:
       vec { record { 23_515 = 0; 1_191_829_844 = variant { 4_271_600_268 = record { 23_515 = principal "tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe"; 1_224_700_491 = null; 1_269_754_742 = variant { 4_218_395_836 };} }; 2_781_795_542 = 1_621_456_688_636_513_683;}; record { 23_515 = 1; 1_191_829_844 = variant { 4_271_600_268 = record { 23_515 = principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe"; 1_224_700_491 = null; 1_269_754_742 = variant { 2_494_206_670 };} }; 2_781_795_542 = 1_621_461_468_638_569_551;}; record { 23_515 = 2; 1_191_829_844 = variant { 1_205_528_161 = record { 2_190_693_645 = 11_000_000_000_000; 2_631_180_839 = principal "gvvca-vyaaa-aaaae-aaaga-cai";} }; 2_781_795_542 = 1_621_462_573_993_647_258;}; record { 23_515 = 3; 1_191_829_844 = variant { 1_205_528_161 = record { 2_190_693_645 = 11_000_000_000_000; 2_631_180_839 = principal "gsueu-yaaaa-aaaae-aaagq-cai";} }; 2_781_795_542 = 1_621_462_579_193_578_440;}; record { 23_515 = 4; 1_191_829_844 = variant { 1_955_698_212 = record { 2_190_693_645 = 0; 2_374_371_241 = "install_code"; 2_631_180_839 = principal "aaaaa-aa";} }; 2_781_795_542 = 1_621_462_593_047_590_026;}; record { 23_515 = 5; 1_191_829_844 = variant { 1_955_698_212 = record { 2_190_693_645 = 0; 2_374_371_241 = "install_code"; 2_631_180_839 = principal "aaaaa-aa";} }; 2_781_795_542 = 1_621_462_605_779_157_885;}; record { 23_515 = 6; 1_191_829_844 = variant { 1_955_698_212 = record { 2_190_693_645 = 0; 2_374_371_241 = "authorize"; 2_631_180_839 = principal "gsueu-yaaaa-aaaae-aaagq-cai";} }; 2_781_795_542 = 1_621_462_609_036_146_536;}; record { 23_515 = 7; 1_191_829_844 = variant { 1_955_698_212 = record { 2_190_693_645 = 0; 2_374_371_241 = "greet"; 2_631_180_839 = principal "gvvca-vyaaa-aaaae-aaaga-cai";} }; 2_781_795_542 = 1_621_463_144_066_333_270;}; record { 23_515 = 8; 1_191_829_844 = variant { 4_271_600_268 = record { 23_515 = principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe"; 1_224_700_491 = null; 1_269_754_742 = variant { 2_494_206_670 };} }; 2_781_795_542 = 1_621_463_212_828_477_570;}; record { 23_515 = 9; 1_191_829_844 = variant { 1_955_698_212 = record { 2_190_693_645 = 0; 2_374_371_241 = "wallet_balance"; 2_631_180_839 = principal "gastn-uqaaa-aaaae-aaafq-cai";} }; 2_781_795_542 = 1_621_878_637_071_884_946;}; record { 23_515 = 10; 1_191_829_844 = variant { 4_271_600_268 = record { 23_515 = principal "b5quc-npdph-l6qp4-kur4u-oxljq-7uddl-vfdo6-x2uo5-6y4a6-4pt6v-7qe"; 1_224_700_491 = null; 1_269_754_742 = variant { 4_218_395_836 };} }; 2_781_795_542 = 1_621_879_473_916_547_313;}; record { 23_515 = 11; 1_191_829_844 = variant { 313_999_214 = record { 1_136_829_802 = principal "gastn-uqaaa-aaaae-aaafq-cai"; 3_573_748_184 = 10_000_000_000;} }; 2_781_795_542 = 1_621_977_470_023_492_664;}; record { 23_515 = 12; 1_191_829_844 = variant { 2_171_739_429 = record { 25_979 = principal "gastn-uqaaa-aaaae-aaafq-cai"; 3_573_748_184 = 10_000_000_000; 4_293_698_680 = 0;} }; 2_781_795_542 = 1_621_977_470_858_839_320;};},
     )
 
-In this example, there are twelve event records. The `Role` field (represented by the hash `1_269_754_742`) specifies whether a principal is a controller (represented by the hash `4_218_395_836`) or a custodian (represented by the hash `2_494_206_670`). The events in this example also illustrate an amount field (represented by the hash `3_573_748_184`) with a transfer of 10_000_000_000 cycles.
+In this example, there are twelve event records. The `Role` field (represented by the hash `1_269_754_742`) specifies whether a principal is a controller (represented by the hash `4_218_395_836`) or a custodian (represented by the hash `2_494_206_670`). The events in this example also illustrate an amount field (represented by the hash `3_573_748_184`) with a transfer of 10,000,000,000 cycles.
+

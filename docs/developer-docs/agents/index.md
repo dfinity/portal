@@ -1,8 +1,8 @@
-# Integrating external agents with the IC
+# Integrating external agents with ICP
 
 ## Overview
 
-In the Internet Computer ecosystem, a library that is used to make calls to the IC public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
+In the Internet Computer ecosystem, a library that is used to make calls to the ICP public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
 
 If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
 You can talk to the canister using the v2 API using an **agent** that follows the interface specification, or you can use the canister's HTTP interface.
@@ -53,13 +53,13 @@ A `call` to the Internet Computer can take two common forms - an `update` or a `
 
 By knowing the Candid interface of the canister, the **agent** will assemble the `"arg"` with data from the client application, ensuring it matches the Candid interface for the method it will be calling. All of the above components are then assembled into a certificate, which is transformed into a CBOR-encoded buffer.
 
-For update requests, the agent also hashes the rest of the fields, and passes it in as a unique `request_id`. That `request_id` is used for polling while the IC reaches consensus on the update.
+For update requests, the agent also hashes the rest of the fields, and passes it in as a unique `request_id`. That `request_id` is used for polling while ICP reaches consensus on the update.
 
 The **agent** takes the CBOR-encoded certificate and attaches it to the body of the `POST` request. The canister will work on that request asynchronously, and then the **agent** can begin polling with `read_state` requests, until the canister response is ready.
 
 ### Decoding data
 
-Once the data has been returned from the IC, the **agent** takes the certificate from the payload and verifies it. The certificate can be verified as genuine using the public `rootKey` of the NNS subnet. The network will respond with a CBOR-encoded buffer, which the **agent** can then decode, and transform into a useful structure using semantic language-specific types. For example, if the type returned from the canister is `text`, that will get turned into a JavaScript `string`, and so on.
+Once the data has been returned from ICP, the **agent** takes the certificate from the payload and verifies it. The certificate can be verified as genuine using the public `rootKey` of the NNS subnet. The network will respond with a CBOR-encoded buffer, which the **agent** can then decode, and transform into a useful structure using semantic language-specific types. For example, if the type returned from the canister is `text`, that will get turned into a JavaScript `string`, and so on.
 
 ### Managing authentication
 
@@ -67,7 +67,7 @@ Calls to the Internet Computer always need to have a cryptographic identity atta
 
 #### Accepted identities
 
-The IC accepts calls using the following types of signatures in identities:
+ICP accepts calls using the following types of signatures in identities:
 
 - Ed25519 and ECDSA signatures.
   - Plain signatures are supported for the schemes.

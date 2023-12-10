@@ -16,12 +16,12 @@ The decentralization swap collects ICP from participants and distributes the vot
 power of the SNS among participants by swapping the ICP for (staked) SNS tokens.
 
 The decentralization swap is a key concept explained in more detail below. Refer to
-[this section](../launching/launch-summary.md) for the detailed, technical stages of an SNS launch.
+[this section](../launching/launch-summary-1proposal.md) for the detailed, technical stages of an SNS launch.
 
 ## Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that
-is owned and run by the IC.
+is owned and run by the Internet Computer Protocol.
 In more detail, it is controlled by the NNS root canister.
 
 * The swap canister is set up at the start with a defined amount of SNS tokens to be

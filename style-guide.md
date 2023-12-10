@@ -112,7 +112,7 @@ Text
 
 ## Page headings
 
-There are 4 types of headings used throughout the IC developer docs:
+There are 4 types of headings used throughout the ICP developer docs:
 
 - Heading size 1: `#`
 - Heading size 2: `##`
@@ -242,7 +242,6 @@ The following is a list of common abbreviations that are capitalized within the 
 - DeFi
 - ECDSA
 - HTTP/HTTPS
-- IC
 - ICP
 - ICRC-1
 - ICRC-2
@@ -256,28 +255,37 @@ The following is a list of common abbreviations that are capitalized within the 
 - UTXO
 
 ## Language
-The following language and capitalization of certain terms and phrases should be used across the IC developer documentation:
+The following language and capitalization of certain terms and phrases should be used across the ICP developer documentation:
 - Big Tech
 - Bitcoin integration
 - Bitcoin network: should be used in place of "sending bitcoin".
 - bitcoin: should be used when referring to BTC rather than the Bitcoin network.
-- Built on the Internet Computer
+- built on ICP
 - canister
 - canister smart contract
-- dapp: should be used in place of any reference to an IC app, decentralized application, or 'dApp'.
+- dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
+- deployed on ICP
 - dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase. 
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
 - HTTP outcalls
+- ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'. 
+    Two exceptions to this are:
+  
+        - The IC SDK, which should be referred to as 'the IC SDK'.
+  
+        - The IC interface specification, which should be referred to as 'the IC specification' or 'the IC interface specification'.
+  
+    When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
+  
 - IC SDK: should be used in place of any reference to the IC's SDK.
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
     - Other contextual usage:
-        - `The Internet Computer mainnet network.`
-        - `The dapp has been deployed to the IC mainnet.`
-        - `Before deploying on to the Internet Computer mainnet...`
+        - `The dapp has been deployed to the mainnet.`
+        - `Before deploying on to the mainnet...`
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
@@ -373,15 +381,15 @@ The following standards for bold text should be followed:
 
 - Bullet point lists that are used to list and define terms should bold the term(s) being defined.
     - **Term**: definition of the term.
-- Terms that are important for the reader to understand, such as a term found in the IC glossary, should be bolded for emphasis.
+- Terms that are important for the reader to understand, such as a term found in the ICP glossary, should be bolded for emphasis.
 - When describing steps for a user to follow in a guide or tutorial, if the user is expected to interact with a button or GUI interface, the button's name should be bolded and follow the capitalization format found on the GUI.
     - Example: Click on the **Save** button.
 
 ## Italic text
-Italic text is not used within the IC developer documentation. Bold text should be used to emphasis terms or phrases that are important.
+Italic text is not used within the ICP developer documentation. Bold text should be used to emphasis terms or phrases that are important.
 
 ## Hints
-The IC developer documentation uses two forms of hints provided by the Docusaurus framework:
+The ICP developer documentation uses two forms of hints provided by the Docusaurus framework:
 - **Info**: the info hint is used to provide important information that the reader should be prompted to read. This hint can be used to provide additional context, resources, or add important notes that the reader should be aware of before continuing.
 - **Caution**: the caution hint is used to provide a warning to readers about the consequences of certain steps or actions as indicated in the guide, doc, or tutorial.
 

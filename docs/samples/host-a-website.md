@@ -49,7 +49,7 @@ Let’s start with index.html.
        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-       <h1>My First IC Website</h1>
+       <h1>My First ICP Website</h1>
        <p>Styles are loaded from a stylesheet</p>
        <p id="dynamic-content"></p>
        <a href="page-2.html">Page 2</a>
@@ -98,7 +98,7 @@ Let’s start with index.html.
 
 ## Configure dfx to deploy
 
-### Step 8: To host and run this website live on the IC, you will need to configure `dfx` to upload your files to a certified asset canister. 
+### Step 8: To host and run this website live on ICP, you will need to configure `dfx` to upload your files to a certified asset canister. 
 In the root directory of your project, static-ic-website, create a new file, `dfx.json`. Then, add the following content:
 
 **dfx.json**

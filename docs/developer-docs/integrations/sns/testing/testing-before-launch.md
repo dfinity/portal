@@ -10,7 +10,7 @@ Before SNS creation, it is advisable to thoroughly test the process.
 
 ### On a local machine
 
-Developers can **[test on a local machine](./testing-locally.md)**. The [sns-testing repository](https://github.com/dfinity/sns-testing) contains scripts that help developers test the SNS creation process. They can deploy the dapp in a local canister development environment and run through [the stages of decentralizing their dapp](../launching/launch-summary.md). 
+Developers can **[test on a local machine](./testing-locally.md)**. The [sns-testing repository](https://github.com/dfinity/sns-testing) contains scripts that help developers test the SNS creation process. They can deploy the dapp in a local canister development environment and run through [the stages of decentralizing their dapp](../launching/launch-summary-1proposal.md). 
 
 **The main intent of `sns-testing` repo is for a developer to test the actual process of decentralizing their dapp.**
 

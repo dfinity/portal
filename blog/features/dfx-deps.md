@@ -13,7 +13,7 @@ Today we're excited to announce a new dfx feature: dfx deps!
 
 ## What is `dfx deps`?
 
-`dfx deps` is a new set of subcommands designed to provide a consistent developer workflow for integrating and testing third-party canisters within local environments. Third-party canisters can be canisters created by DFINITY, such as the Internet Identity or NNS canisters, or they can be canisters created by members of the IC community that provide a public service at a *static canister ID*. 
+`dfx deps` is a new set of subcommands designed to provide a consistent developer workflow for integrating and testing third-party canisters within local environments. Third-party canisters can be canisters created by DFINITY, such as the Internet Identity or NNS canisters, or they can be canisters created by members of the ICP community that provide a public service at a *static canister ID*. 
 
 Testing third-party canister integrations locally is important to verify the third-party canister's integration functionality without paying cycles or using production environments. 
 
@@ -93,7 +93,7 @@ For example, the following `dfx.json` file configures two dependencies for the c
 }
 ```
 
-Then, these dependencies can be pulled using the `dfx deps pull` command. By default, the `dfx deps pull` connects to the IC mainnet. To deploy locally, the `--network local` flag can be used. 
+Then, these dependencies can be pulled using the `dfx deps pull` command. By default, the `dfx deps pull` connects to the mainnet. To deploy locally, the `--network local` flag can be used. 
 
 When this command is called, several things happen in the background, including:
 

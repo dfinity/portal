@@ -13,7 +13,6 @@ This section gives a high level overview of the SNS lifecycle, including the arc
 You will find 
 * [SNS introduction](./introduction/sns-intro-high-level.md) giving a quick introduction.
 * [SNS architecture](./introduction/sns-architecture.md) explaining how SNSs are deployed and upgraded and what canisters are involved.
-* [SNS launch](./launching/launch-summary.md) explaining on a high level how and SNS is launched.
 * [Alternative DAOs](./introduction/dao-alternatives.md) presenting alternative ways how to get a DAO.
 
 ## Preparing an SNS launch
@@ -45,11 +44,9 @@ This section provides
 ## Launching an SNS
 This section of documentation explains the SNS launch in detail.
 It contains:
-* An [introduction of how to read the launch pages](./launching/index.md) as there are currently two supported methods how to launch an SNS.
-* A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md) for the recommended launch flow that was adopted by the NNS in August 2023 and only includes one proposal.
-* [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md) for this recommended launch flow that only includes one proposal. 
-* A detailed [description of all stages included in an SNS launch](./launching/launch-summary.md) for the old, legacy launch flow that is still available for those who started testing with this flow but might be deprecated at some point.
- * [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps.md) for the old, legacy launch flow that is still available for those who started testing with this flow but might be deprecated at some point but.
+* An [introduction of how to read the launch pages](./launching/index.md).
+* A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.md).
+* [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.md).
 
 ## Managing an SNS
 After an SNS is launched, the SNS community needs to manage it, including ensuring that the canisters have enough cycles, govern the dapp, and manage SNS canister upgrades.
@@ -57,7 +54,7 @@ This section includes
 * [An introduction to managing an SNS](./managing/manage-sns-intro.md).
 * [An introduction to SNS proposals](./managing/making-proposals.md).
 * [Tips regarding cycles management for the canisters](./managing/cycles-usage.md).
-* [An intorduction to how to use the asset canister with an SNS-controlled dapp](./managing/sns-asset-canister.md).
+* [An introduction to how to use the asset canister with an SNS-controlled dapp](./managing/sns-asset-canister.md).
 
 
 <!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.md); Information on how SNS are upgraded (managing-sns/upgradeSNS.md)-->
@@ -79,7 +76,7 @@ The **Wiki** contains more information about
 * [SNS decentralization swap trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust).
 
 The Wiki also contains guides for the following topics:
-* [How to: get a DAO on the IC](https://wiki.internetcomputer.org/wiki/How_to_get_a_DAO_on_the_IC) providing a summary of how someone can get a DAO on the IC, but this is largely subsumed by the developer documentation here.
+* [How to: get a DAO on ICP](https://wiki.internetcomputer.org/wiki/How_to_get_a_DAO_on_the_IC) providing a summary of how someone can get a DAO on ICP, but this is largely subsumed by the developer documentation here.
 * [How to: SNS tokenomics configuration](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) providing material enabling teams to choose a tokenomics set-up for their SNS DAO.
 * [How to: verify SNS decentralization swap proposal](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal) which is a guide how to verify the NNS proposal that starts a SNS decentralization swap.
 * [How to: interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters) which is a guide on how to interact with SNS canisters.

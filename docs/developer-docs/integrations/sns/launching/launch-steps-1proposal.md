@@ -33,13 +33,20 @@ ls bazel-bin/rs/sns/cli/sns
 ### 1. Dapp developers add NNS root as co-controller of dapp.
 
 :::info
-this article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
+This article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
 :::
 
 They can do so by running the following command:
 
 ```bash
 dfx sns prepare-canisters add-nns-root $CANISTER_ID
+```
+
+Handing over the dapp's canisters might require additional actions; for example, removing any special permissions that the dapp's developers may have had prior to the decentralization effort.
+One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) documentation for more details.
+
+```bash
+dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
 ```
 
 ### 2. Dapp developers choose the initial parameters of the SNS for a dapp.
@@ -85,6 +92,8 @@ of an adopted proposal in Stage 4.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
+
+At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.md)).
 
 ### 8. (Automated) SNS swap starts.
 
