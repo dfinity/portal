@@ -3101,6 +3101,24 @@
     "submittableId": "36108625"
   },
   {
+    "id": "taxlint",
+    "name": "TaxLint",
+    "oneLiner": "Your automated tax reporting IC assistant.",
+    "website": "https://vresg-vyaaa-aaaag-qcj2q-cai.icp0.io/",
+    "tags": [
+      "Wallet", 
+       "DeFi"
+    ],
+    "description": "Auto Tax Report, taxLint helps users of ICP to count and manage tax information more easily.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/taxlint_logo.png",
+    "github": "https://github.com/TaxLintDAO/taxlint",
+    "twitter": "https://twitter.com/taxlint",
+    "display": "Normal",
+    "screenshots": ["/img/showcase/taxlint_screenshot.png"],
+    "submittableId": "43956470"
+  },
+  {
     "name": "InheritX",
     "description": "InheritX is a blockchain-based application developed on Internet Computer (ICP) that allows users to create a digital will and bequeath their assets to designated beneficiaries in the event of their death.",
     "website": "https://inherit-x.vercel.app/",
