@@ -2,12 +2,12 @@
 title: Candid upgrade required due to important security advisory
 description: This important update details a recently discovered security vulnerability that should be addressed by upgrading the Candid Rust library to the latest version as soon as possible. 
 tags: [Security advisory]
-image: /img/blog/candid-security-advisory.jpg
+image: /img/blog/dev-blog-candid-security-advisory.jpg
 ---
 
 # Candid upgrade required due to important security advisory
 
-![Candid security advisory](../../static/img/blog/candid-security-advisory.jpg)
+![Candid security advisory](../../static/img/blog/dev-blog-candid-security-advisory.jpg)
 
 Hello developers,
 
