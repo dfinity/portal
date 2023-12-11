@@ -178,43 +178,27 @@ You can learn more about Candid in the documentation [here](/docs/current/tutori
 
 ## Canister upgrades
 
-Upgrading canisters
 Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
 
-Upgrading a canister is a key feature of ICP, since it allows canister smart contracts to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved while there are changes being made to the canister's code.
+The ability to upgrade a canister is a key feature of ICP, since it allows canister smart contracts to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved the canister's code is changed.
 
-Motoko stable memory workflow
-For canisters written in Motoko, stable memory can be utilized through the Motoko stable storage and stable variable features. These features are most notably used in the canister upgrade process. The upgrade process for Motoko canisters is as follows:
-
-First, the canister must be stopped so it does not accept any new incoming requests.
-A pre_upgrade hook is executed if one is defined. This hook can be used for functions such as creating a backup of data. Note: Having a pre_upgrade hook is not recommended, since the pre_upgrade hook is run in the current Wasm. If there are any bugs or errors, the canister will trap.
-Then, the system discards the canister's heap memory and initializes a new version of the canister's Wasm module. Stable memory is preserved and made available to the new Wasm module.
-Next, the new canister code is installed using the --mode upgrade flag.
-Then, the canister is started, now running the newly upgraded code.
-Any stable variables are re-loaded as part of the post_upgrade hook. After the stable variables are re-loaded, the stable memory bytes that stored those variables are overwritten with zeroes to minimize stable memory costs for the canister.
+You can learn more about upgrading canisters in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence#upgrading-canisters).
 
 ## Stable memory
 
-Memory types and terms
-There are several terms associated with memory and storage on ICP. To avoid confusion between them, let's define them here.
+Stable memory refers to the Internet Computer's long-term data storage feature. Stable memory is not language specific, and can be utilized by canisters written in Motoko, Rust, or any other language. Stable memory can hold up to 96GiB if the subnet can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade. 
 
-Stable memory: Stable memory refers to the Internet Computer's long-term data storage feature. Stable memory is not language specific, and can be utilized by canisters written in Motoko, Rust, or any other language. Stable memory can hold up to 96GiB if the subnet can accommodate it.
+In contrast to stable memory, there is heap storage. Heap storage refers to the regular Wasm memory data store for each canister. This storage is temporary and is not persisted across canister upgrades. Data stored in heap storage is removed when the canister is upgraded or reinstalled. Heap storage is limited to 4GiB.
 
-Heap storage: Heap storage refers to the regular Wasm memory data store for each canister. This storage is temporary and is not persisted across canister upgrades. Data stored in heap storage is removed when the canister is upgraded or reinstalled. Heap storage is limited to 4GiB.
+Stable storage is a Motoko-specific term that refers to the Motoko stable storage feature. Stable storage uses ICP's stable memory to persist data across canister upgrades.
 
-Stable storage: Stable storage is a Motoko-specific term that refers to the Motoko stable storage feature. Stable storage uses ICP's stable memory to persist data across canister upgrades.
+Stable variables are a Motoko-specific feature that refers to variables defined in Motoko that use the stable modifier which indicates that the value of the variable should be persisted across canister upgrades. An example of this was shown earlier in this tutorial, with the stable variable defined in the backend canister code, `stable var counter = 0;`. 
 
-Stable variables: Stable variables are a Motoko-specific feature that refers to variables defined in Motoko that use the stable modifier which indicates that the value of the variable should be persisted across canister upgrades.
-
-To further understand stable memory and how to use it, let's learn about upgrading canisters.
-
-Stable storage and stable variables
 Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as stable storage, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's stable memory feature that was discussed previously.
 
-Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. For more information on Rust upgrades, see the documentation here.
+Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. For more information on Rust upgrades, see the documentation [here](/docs/current/developer-docs/backend/rust/upgrading).
 
-A stable variable is a variable defined within an actor which uses the stable keyword as a modifier in the variable's declaration. This indicates that the data stored in the variable should be stored using stable storage. If this stable keyword is not used, the variable is defined as flexible by default, which means it's data does not persist across canister upgrades.
-
+You can learn more about storage and data persistence in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence)
 
 ## Importing external canisters
 
