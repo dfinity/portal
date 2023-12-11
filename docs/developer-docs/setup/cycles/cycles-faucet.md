@@ -25,11 +25,11 @@ will need to put in a request for cycles on the [DFINITY dev official Discord](h
 
 ## Step 4: After you send this message, you are prompted to fill out a survey. 
 
+## Step 5: Once completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
+
 :::caution
 Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
-
-## Step 5: Once completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
 
 ## Step 6: Head back to the <https://faucet.dfinity.org> webpage. 
 
