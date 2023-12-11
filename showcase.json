@@ -3197,6 +3197,29 @@
   "twitter": "https://twitter.com/lokamining",
   "youtube": "https://www.youtube.com/@LokaMining",
   "submittableId": "43890593"
+},
+  {
+  "name": "icRouter",
+  "description": "icRouter is a cross-chain network of assets based on threshold signature technology, with no off-chain bridges, supporting Bitcoin, IC, and EVM networks (e.g., Ethereum).",
+  "website": "https://iclight.io/account",
+  "logo": "/img/showcase/icrouter_logo.webp",
+  "screenshots": [
+    "/img/showcase/icrouter_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "icrouter",
+  "oneLiner": "icRouter: A cross-chain network of assets",
+  "stats": "",
+  "tags": [
+    "Bitcoin",
+    "DeFi"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/iclighthouse/icRouter",
+  "twitter": "https://twitter.com/ICLighthouse",
+  "youtube": "https://youtu.be/Z92o1oCH598",
+  "submittableId": "41203767"
 }
 ]
 
