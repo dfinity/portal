@@ -30,7 +30,15 @@ ls bazel-bin/rs/sns/cli/sns
 
 ## Stages
 
-### 1. Dapp developers add NNS root as co-controller of dapp.
+
+### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
+
+Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
+
+:::info 
+These parameters also define the initial neurons with which the SNS governance canister will be installed. Before being fully launched, the SNS governance canister is in a pre-decentralization-swap mode and only few proposals are allowed (see Step 7). However, some SNS proposals might already be used during this time, for example upgrades to the dapp canister(s) while the launch is ongoing or registering custom proposals for that DAO. Such operations require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched and thus neurons controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process. 
+:::
+### 2. Dapp developers add NNS root as co-controller of dapp.
 
 :::info
 This article assumes if you start with adding the NNS root co-controller, that you have already tested the SNS process.
@@ -48,14 +56,6 @@ One example of a special permission might be the ability to change the frontend 
 ```bash
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
 ```
-
-### 2. Dapp developers choose the initial parameters of the SNS for a dapp.
-
-Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
-
-:::info 
-These parameters also define the initial neurons with which the SNS governance canister will be installed. Before being fully launched, the SNS governance canister is in a pre-decentralization-swap mode and only few proposals are allowed (see Step 7). However, some SNS proposals might already be used during this time, for example upgrades to the dapp canister(s) while the launch is ongoing or registering custom proposals for that DAO. Such operations require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched and thus neurons controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process. 
-:::
 
 ### 3. Submit NNS proposal to create SNS.
 
