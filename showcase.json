@@ -869,9 +869,8 @@
     ],
     "description": "Introducing Arth - the mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes. more features coming soon",
     "usesInternetIdentity": true,
-    "website": "https://arth.foo",
+    "website": "https://play.google.com/store/apps/details?id=com.foo.arth&pli=1",
     "github": "https://github.com/s1dc0des/arth_app",
-    "twitter": "https://twitter.com/arth_foo",
     "display": "Normal",
     "logo": "/img/showcase/arth_logo.png",
     "screenshots": [
@@ -1279,7 +1278,7 @@
   {
     "id": "icdrive",
     "name": "IC Drive",
-    "website": "https://rglue-kyaaa-aaaah-qakca-cai.ic0.app/#/",
+    "website": "https://rglue-kyaaa-aaaah-qakca-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -1290,19 +1289,6 @@
       "/img/showcase/icdrive_screenshot_0.webp",
       "/img/showcase/icdrive_screenshot_1.webp"
     ]
-  },
-
-  {
-    "id": "argonstudio",
-    "name": "Argon Studio",
-    "description": "We'll be your end-to-end partner, whether managing your project from ideation to implementation, or filling gaps in your current team.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "website": "https://argonstudios.xyz/",
-    "twitter": "https://twitter.com/ArgonStudiosXYZ",
-    "logo": "/img/showcase/argonstudio_logo.webp",
-    "submittableId": "34524251"
   },
 
   {
