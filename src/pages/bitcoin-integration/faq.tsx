@@ -113,7 +113,10 @@ function BitcoinFaqPage() {
               },
             ]}
           ></Breadcrumbs>
-          <motion.h1 className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10">
+          <motion.h1
+            id="bitcoin-integration"
+            className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10"
+          >
             What you need to know about Bitcoin integration and ckBTC
           </motion.h1>
         </AnimateSpawn>
@@ -316,6 +319,15 @@ function BitcoinFaqPage() {
                 cryptography integrations.
               </p>
             </Faq>
+            </FaqSection>
+            <FaqSection
+              id="security"
+              title={
+                <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
+                  Security
+                </h2>
+              }
+            >
 
             <Faq title="Does ckBTC incorporate KYT?">
               <p>
@@ -416,20 +428,16 @@ function BitcoinFaqPage() {
         hasHome={false}
         links={[
           {
-            text: "Introduction",
-            to: "#introduction",
+            text: "Bitcoin integration",
+            to: "#bitcoin-integration",
           },
           {
-            to: "#participate",
-            text: "Participate",
+            to: "#ckbtc",
+            text: "ckBTC",
           },
           {
-            to: "#decentralization-swap",
-            text: "Decentralization swap",
-          },
-          {
-            to: "#governance",
-            text: "Governance",
+            to: "#security",
+            text: "Security",
           },
           {
             to: "#resource-center",
