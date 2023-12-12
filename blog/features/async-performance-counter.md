@@ -8,7 +8,7 @@ image: /img/blog/async-performance-counter.webp
 
 # Async-friendly performance counter
 
-![Async-friendly performance counter](/static/img/blog/async-performance-counter.webp)
+![Async-friendly performance counter](/img/blog/async-performance-counter.webp)
 
 *This article was originally published on the DFINITY Medium blog [here](https://medium.com/dfinity/async-friendly-performance-counter-dcf928226c2b) by Andriy Berestovskyy.*
 
@@ -57,7 +57,7 @@ The function ❶ makes two nested calls, ❷ awaits them, and finally ❸ replie
 
 From the developer’s point of view, it’s just one function. From the user’s perspective, it’s just one call. But in fact, under the hood, there are three message executions:
 
-![Performance counter](/static/img/blog/performance-counter-1.webp)
+![Performance counter](/img/blog/performance-counter-1.webp)
 
 
 1. The original call is executed up until the first await point.
