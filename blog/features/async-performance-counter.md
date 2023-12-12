@@ -111,7 +111,7 @@ async fn example() -> u64 {
 
 But in this case there is no need to instrument every single await point in the nested functions or libraries. There is just one place, right before the counter is returned. It’s a huge step forward to fully automate the code instrumentation and profiling in the future.
 
-## Using performance counters\
+## Using performance counters
 
 To quickly run the performance counters example (assuming the Internet Computer SDK is [already installed](/docs/current/developer-docs/setup/install/)):
 
