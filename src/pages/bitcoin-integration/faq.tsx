@@ -277,6 +277,43 @@ function BitcoinFaqPage() {
                 />
               </p>
             </Faq>
+            <Faq title="How do I convert ckBTC to BTC using the NNS wallet?">
+              <p className="tw-paragraph mb-3">
+                Easy steps to getting ckBTC via your NNS wallet:
+              </p>
+              <p>
+                <strong>
+                  1. Go to the NNS frontend dapp and sign in with your Internet Identity.
+                </strong>
+                If you don't have one, you will be prompted to create one. Any device that supports
+                WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or
+                a Ledger device.
+                <img
+                  src="/img/bitcoin-integration/ckbtc-1.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+              <p>
+                <strong>2. Navigate to "My Tokens" and select ckBTC.</strong>
+                If you have ckBTC in a different wallet, send it it to your NNS principal
+              </p>
+              <p>
+                <strong>3. Click on "Receive" on the bottom of the screen.</strong>
+              </p>
+              <p>
+                <strong>4. Paste a valid BTC address that you control into the "Destination" field</strong>
+              </p>
+              <p>
+                <strong>5. Select Bitcoin from the "Network" dropdown</strong>
+              </p>
+              <p>
+                <strong>6. Type in the amount you want to send or click "Max"</strong>
+              </p>
+              <p>
+                <strong>7. Click continue, then confirm the stransaction.</strong>
+              </p>
+            </Faq>
             <Faq title="Is ckBTC wrapped?">
               <p className="tw-paragraph mb-3">
                 ckBTC isn't considered a wrapped token because it doesn't involve
