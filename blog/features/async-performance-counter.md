@@ -1,6 +1,6 @@
 ---
 title: Async-friendly performance counter
-description: Introducing a new performance counter on the Internet Computer to easily optimize async canister code
+description: Introducing a new performance counter on the Internet Computer to easily optimize async canister code.
 tags: [Technology]
 author: Andriy Berestovskyy
 image: /img/blog/async-performance-counter.webp
@@ -9,6 +9,7 @@ image: /img/blog/async-performance-counter.webp
 # Async-friendly performance counter
 
 ![Async-friendly performance counter](/img/blog/async-performance-counter.webp)
+
 
 *This article was originally published on the DFINITY Medium blog [here](https://medium.com/dfinity/async-friendly-performance-counter-dcf928226c2b) by Andriy Berestovskyy.*
 
