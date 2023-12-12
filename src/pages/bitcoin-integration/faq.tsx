@@ -299,7 +299,12 @@ function BitcoinFaqPage() {
                 If you have ckBTC in a different wallet, send it it to your NNS principal
               </p>
               <p>
-                <strong>3. Click on "Receive" on the bottom of the screen.</strong>
+                <strong>3. Click on "Send" on the bottom of the screen.</strong>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-btc1.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
               <p>
                 <strong>4. Paste a valid BTC address that you control into the "Destination" field</strong>
@@ -312,6 +317,11 @@ function BitcoinFaqPage() {
               </p>
               <p>
                 <strong>7. Click continue, then confirm the stransaction.</strong>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-btc2.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </p>
             </Faq>
             <Faq title="Is ckBTC wrapped?">
