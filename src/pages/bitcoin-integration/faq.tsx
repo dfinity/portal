@@ -295,7 +295,7 @@ function BitcoinFaqPage() {
                 />
               </p>
               <p>
-                <strong>2. Navigate to "My Tokens" and select ckBTC.</strong>
+                <strong>2. Navigate to "My Tokens" and select ckBTC.</strong>{" "}
                 If you have ckBTC in a different wallet, send it it to your NNS principal
               </p>
               <p>
@@ -316,7 +316,7 @@ function BitcoinFaqPage() {
                 <strong>6. Type in the amount you want to send or click "Max"</strong>
               </p>
               <p>
-                <strong>7. Click continue, then confirm the stransaction.</strong>
+                <strong>7. Click "Continue", then confirm the transaction.</strong>
                 <img
                   src="/img/bitcoin-integration/ckbtc-btc2.webp"
                   alt=""
