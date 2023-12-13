@@ -269,6 +269,17 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
+        {
+          type: "category",
+          label: "Subnet types",
+          link: {
+            type: "doc",
+            id: "developer-docs/backend/subnet-types",
+          },
+          items: [
+            "developer-docs/backend/eu-subnets",
+          ],
+        },
       ],
     },
     {
