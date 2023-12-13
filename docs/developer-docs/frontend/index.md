@@ -29,6 +29,8 @@ Here are some quick links to tutorials with example code for various stages of d
 
 - Using [React and TypeScript](./add-stylesheet.md) to import CSS properties from an external file.
 
+- Deploying an [existing React application](./existing-frontend.md) as a frontend canister.
+
 ## How the default templates are used
 
 As you might have noticed in the tutorials, guides, or sample code projects, by default each project created with `dfx` includes a template `index.js` and `webpack.config.js` file.
