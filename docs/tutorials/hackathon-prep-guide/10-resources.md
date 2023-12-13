@@ -1,9 +1,14 @@
-## Resources to learn more 
+# 10: Resources to learn more 
 
-Developer documentation.
-Full Developer Journey.
-Video links.
-Awesome Internet Computer
+To learn more about ICP, a specific feature or workflow, or get help from other developers, check out the following resources:
+
+- [ICP developer documentation.](/docs/current/home)
+
+- [ICP developer journey tutorial series.](https://internetcomputer.org/docs/current/tutorials/developer-journey/)
+
+- [ICP developer journey video series.](https://www.youtube.com/watch?v=oBUpJ4CqmN0)
+
+- [Awesome Internet Computer repo.](/docs/current/home)
 
 - [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
 

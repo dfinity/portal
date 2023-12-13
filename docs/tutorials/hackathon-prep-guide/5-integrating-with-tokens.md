@@ -1,6 +1,6 @@
 # 5: Integrating with tokens
 
-## ICP
+## ICP 
 
 ## Fungible and non-fungible tokens
 

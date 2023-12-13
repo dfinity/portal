@@ -115,13 +115,54 @@ You can learn more about Motoko in the following resources:
 - [Motoko documentation](/docs/current/motoko/main/motoko).
 
 
-## Single versus multi-canister projects
+## Learning more about backend canisters
+
+To further understand and develop your own backend canisters, let's review a few fundamental features, concepts, and workflows that pertain to backend canisters.
+
+### Single versus multi-canister projects
 
 When you design a dapp to be deployed on ICP, one of the first decisions you will make is how your dapp should be structured. Dapps can consist of a single canister, such as only the backend canister, they can consist of a single backend canister and a single frontend canister, as this sample `vite-react-motoko` starter project does, or they can consist of several canisters. 
 
 Typically, service-based dapps that don't include a frontend UI work well as single canister projects, while projects that involve several reusable services can work well as a multi-canister project. 
 
-## Query and update calls
+### Importing external canisters
+
+When developing a project, certain third-party canisters may be beneficial to integrate within your project. Third-party canisters refer to canisters created by DFINITY or canisters created by developers in the ICP community. One popular third-party canister that many developers choose to integrate into their project is the Internet Identity canister, which provides ICP's native authentication service. 
+
+When integrating with third-party canisters, it is important to test the integration locally to assure that the integration is accurate and correct. Performing tests locally is beneficial since tests executed in a local developer environment do not cost cycles, use non-production data, and have a faster completion time when run locally. 
+
+To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the `dfx deps` workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling, then defining the pullable canister as type `pull`, and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
+
+
+```json
+{
+    "canisters": {
+        "example_backend": {
+            "type": "motoko",
+            "main": "src/example_backend/main.mo",
+            "dependencies": [
+                "internet_identity"
+            ]
+        },
+        "internet_identity": {
+            "type": "pull",
+            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+For more information on using third-party canisters, check out the documentation [here](../developer-journey/level-2/2.3-third-party-canisters.md).
+
+### Query and update calls
 
 When calls are made on ICP, there are two primary types: query calls and update calls. 
 
@@ -154,9 +195,9 @@ Additionally, there are several other terms regarding calls that you will come a
 
 You can learn more about canister calls in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.2-advanced-canister-calls).
 
-## Candid
+### Candid service descriptions
 
-Candid is an interface description language that is used to describe the public interface of a service. On ICP, a service an application deployed as a canister. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister methods, regardless of the manner used to interact with the canister. Candid is used on ICP since it supports the unique features and functions of the protocol. 
+Candid is an interface description language that is used to describe the public interface of a service. On ICP, a service is an application deployed as a canister. The public interfaces of a canister are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister methods, regardless of the manner used to interact with the canister. Candid is used on ICP since it supports the unique features and functions of the protocol. 
 
 For example, a simple service description that defines a service without any public methods would look like this:
 
@@ -174,98 +215,61 @@ service : {
 
 In this `ping` method, there are no arguments passed to the method and there are no results returned, so the empty sequence of () is used for both the arguments and the results.
 
+To interact with the service descriptions defined by Candid, you can make calls directly to the canister's defined method, interact with the method through a frontend service (such as an agent), or you can use the CandidUI. CandidUI is a user interface that can be used to interact with a canister's public methods through the web browser. When a backend canister is deployed, the backend canister URL that is returned in the terminal window is the CandidUI URL, indicated by 'via Candid interface':
+
+```
+URLs:
+  Frontend canister via browser
+    frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+  Backend canister via Candid interface:
+    backend: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+For example, in this `vite-react-motoko` example, the CandidUI resembles the following:
+
+![Candid UI](_attachments/CandidUI.png)
+
 You can learn more about Candid in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.4-intro-candid).
 
-## Canister upgrades
+### Canister upgrades
 
 Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
 
-The ability to upgrade a canister is a key feature of ICP, since it allows canister smart contracts to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved the canister's code is changed.
+The ability to upgrade a canister is a key feature of ICP, since it allows canister smart contracts to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](8-managing-canisters.md).
 
 You can learn more about upgrading canisters in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence#upgrading-canisters).
 
-## Stable memory
+### Stable memory
 
-Stable memory refers to the Internet Computer's long-term data storage feature. Stable memory is not language specific, and can be utilized by canisters written in Motoko, Rust, or any other language. Stable memory can hold up to 96GiB if the subnet can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade. 
+Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 96GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade. 
 
-In contrast to stable memory, there is heap storage. Heap storage refers to the regular Wasm memory data store for each canister. This storage is temporary and is not persisted across canister upgrades. Data stored in heap storage is removed when the canister is upgraded or reinstalled. Heap storage is limited to 4GiB.
+In contrast to stable memory, heap storage refers to the regular Wasm data storage for a canister. Heap storage is temporary and does not persist across canister upgrades. When a canister is upgraded or reinstalled, the heap storage is cleared. Heap storage is limited to 4GiB. 
 
-Stable storage is a Motoko-specific term that refers to the Motoko stable storage feature. Stable storage uses ICP's stable memory to persist data across canister upgrades.
+A few other important terms regarding memory on ICP include:
 
-Stable variables are a Motoko-specific feature that refers to variables defined in Motoko that use the stable modifier which indicates that the value of the variable should be persisted across canister upgrades. An example of this was shown earlier in this tutorial, with the stable variable defined in the backend canister code, `stable var counter = 0;`. 
+- **Stable storage**: A Motoko-specific term referring to the Motoko stable storage feature. Stable storage uses the stable memory feature to persist data across canister upgrades. Stable storage is designed to accommodate changes to both the application data and the Motoko compiler.
 
-Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as stable storage, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's stable memory feature that was discussed previously.
+- **Stable variables**: A Motoko-specific feature referring to variables defined using the `stable` modifier in a Motoko canister. The value of a stable variable is persisted across canister upgrades. An example of this was shown earlier in this tutorial, with the stable variable defined in the backend canister code, `stable var counter = 0;`. 
 
-Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. For more information on Rust upgrades, see the documentation [here](/docs/current/developer-docs/backend/rust/upgrading).
+You can learn more about storage and data persistence in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence).
 
-You can learn more about storage and data persistence in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence)
+### Mops
 
-## Importing external canisters
+Mops is a package manager for Motoko, supporting over 60 libraries that include different functionalities such as utility, encoding, cryptography, data structure libraries, and more. A package manager is a collection of tools that automates installing, upgrading, configuring, or removing software libraries or packages to help efficiently manage a project's dependencies. 
 
-Third-party canisters include canisters created by DFINITY, such as NNS, ledger, II, and others, but also include canisters that have been created by developers in ICP community. Developers depend on third-party canisters to integrate with and typically need a way to develop and test the integrations locally for things such as:
+In this `vite-react-motoko` example, you saw that the project's files include a file called `mops.toml`. This file is used to specify the packages that the project uses. In this project, the `mops.toml` file includes the following dependency:
 
-Testing the accuracy of the integration and other canister code.
-Performing tests without paying cycles.
-Performing tests using non-production data and environments.
-Performing tests with faster completion time when run locally.
-To pull these canisters from the mainnet to be developed and tested using a local replica, the dfx deps command and workflow can be used.
+```
+# Motoko dependencies (https://mops.one/)
 
-In this workflow, a service provider configures a canister to be pullable, then deploys the canister to the mainnet. A service provider can be any community developer creating a public, third-party canister.
+[dependencies]
+base = "0.7.4"
+```
 
-Then, a service consumer can pull the canister as a dependency directly from the mainnet and then deploy the dependency on a local replica.
+Additionally, Mops is defined as the project's package manager in the project's `dfx.json` file, using the `packtool` definition of `mops sources`:
 
-This guide will further describe this workflow and how to use it.
-
-Determining if a canister should be pullable
-To pull a canister that's been configured as pullable, the service consumer only requires the canister ID.
-
-Before pulling a canister, first the canister must be configured to be pullable. Additionally, you must ask yourself question whether the canister should be pullable?
-
-Pullable examples:
-If a canister is providing a public service at a static canister ID, then it makes sense for the canister to be pullable.
-
-If a service canister also depends on other canisters, those dependencies should also be pullable.
-
-Non-pullable examples:
-If the canister is meant for personal use and not intended for others to use, it does not make sense for the canister to be pullable.
-
-If a canister Wasm is published for other developers to use for deploying their own instance, it does not make sense for the canister to be pullable since the canister ID of the instance is not static; users can test integrations locally and deploy them directly. An example of this canister type is the asset canister generated by dfx.
-
-Pullable dfx.json example
-For a canister to be pullable, the dfx.json file must include a pullable definition. Below is an example:
-
-{
-  "canisters": {
-    "service": {
-      "type": "motoko",
-      "main": "src/pullable/main.mo",
-      "pullable": {
-        "dependencies": [],
-        "wasm_url": "https://github.com/lwshang/pullable/releases/latest/download/service.wasm",
-        "init_guide": "A natural number, e.g. 1"
-      }
-    }
-  }
-}
-
-
-
-## MOPS
-
-A package manager is a collection of tools that automates installing, upgrading, configuring, and removing software packages or libraries. They help efficiently manage the dependencies of a project. In relation to Motoko, Mops and Vessel provide workflows for libraries to be downloaded, upgraded, and imported into Motoko code files. Mops supports over 60 libraries for Motoko, spanning several different functionalities such as utility, encoding, cryptography, data structure libraries, and more.
-
-
-
-Using Mops
-Creating a new project
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (developer_journey), then use the commands:
-
-dfx start --clean --background
-dfx new mops_example
-cd mops_example
-Configuring your project to use Mops
-Then, open the dfx.json file within your project. Add Mops as a packtool in the file by adding the following line:
-
+```json
+...
 {
   "defaults": {
     "build": {
@@ -273,38 +277,22 @@ Then, open the dfx.json file within your project. Add Mops as a packtool in the 
     }
   }
 }
-Initializing Mops
-Then, initialize the Mops configuration with the command:
+...
+```
 
-mops init
-You'll be prompted to choose whether you plan to use Mops to pull packages or publish packages:
+To add additional packages to your project's dependencies, you can use the command `maps add` then the package name:
 
-? Select type: › - Use arrow-keys. Return to submit.
-❯   Project (I just want to use mops packages in my project)
-    Package (I plan to publish this package on mops)
-In this case, select 'Project'. For more information about publishing packages, see the publishing a package section.
-
-You will also be prompted to choose if you'd like to use a GitHub workflow. This is optional.
-
-Adding packages to mops.toml.
-To install a package with Mops, you need to specify the package in the mops.toml file within your project. To add a package to this file, you can use the command maps add then the package name:
-
+```
 mops add base
-Or, you can add packages directly from GitHub by specifying the repository's URL:
+```
 
-mops add https://github.com/dfinity/motoko-base
-You can also specify the branch, commit hash, or tag by adding #<branch/tag/hash>:
+Then, to install all packages specified in the `mops.toml` file, use the command:
 
-mops add https://github.com/dfinity/motoko-base#moc-0.9.1
-If you have a locally stored package, you can put the source files inside your project's directory, then add them by specifying the path:
-
-mops add ./local-package
-Using any of these workflows will add the package to the mops.toml file.
-
-Then, to install all packages specified in this file, use the command:
-
+```
 mops install
+```
 
+You can learn more about Mops in the documentation [here](../developer-journey/level-3/3.1-package-managers.md).
 
 ## Next steps
 

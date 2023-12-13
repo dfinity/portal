@@ -1,5 +1,5 @@
-## 6:  Authentication
-
+# 6:  Authentication
+ 
 ## Internet Identity
 
 ## Adding Internet Identity to a project

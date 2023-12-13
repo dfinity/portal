@@ -71,23 +71,23 @@ This template project uses the following project structure:
 
 This project contains the following files and directories:
 
-- `backend/`: the subdirectory used to store the project's backend canister source code.
+- `backend/`: The subdirectory used to store the project's backend canister source code.
 
-- `backend/Backend.mo`: the backend canister source code file written in Motoko.
+- `backend/Backend.mo`: The backend canister source code file written in Motoko.
 
-- `dfx.json`: the project's configuration file. This file details which canisters are part of the project and which source code files each canister uses.
+- `dfx.json`: The project's configuration file. This file details which canisters are part of the project and which source code files each canister uses.
 
-- `mops.toml`: the package manager configuration file for the project, using the Mops package manager. 
+- `mops.toml`: The package manager configuration file for the project, using the Mops package manager. You will learn more about Mops in the next module, [3: Exploring the backend](3-exploring-the-backend.md).
 
-- `src/`: the subdirectory used to store the frontend canister's assets.
+- `src/`: The subdirectory used to store the frontend canister's assets.
 
-- `src/App.tsx`: the frontend canister's source code. 
+- `src/App.tsx`: The frontend canister's source code. 
 
-- `App.css`: the CSS stylesheet for the frontend UI. 
+- `App.css`: The CSS stylesheet for the frontend UI. 
 
-- `src/assets`: the subdirectory for assets used by the frontend UI.
+- `src/assets`: The subdirectory for assets used by the frontend UI.
 
-- `src/index.html`: the HTML code for the frontend UI. 
+- `src/index.html`: The HTML code for the frontend UI. 
 
 You can learn more about the project structure of Motoko dapps in the video lecture [here](https://www.youtube.com/watch?v=_T7GgPxxSKo).
 

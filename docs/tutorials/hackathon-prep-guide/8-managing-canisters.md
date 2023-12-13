@@ -1,7 +1,7 @@
 # 8: Managing canisters
 
 ## Obtaining a canister's ID
-
+ 
 ## Obtaining canister information
 
 ## Adding an identity as a controller of a canister
@@ -19,3 +19,5 @@
 ## Deleting a canister
 
 ## Next steps
+
+- [9: Sample starter projects](9-sample-starter-projects.md)
