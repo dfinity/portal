@@ -100,6 +100,7 @@ There are the following types:
 * [`RegisterDappCanisters`](#registerdappcanisters).
 * [`DeregisterDappCanisters`](#deregisterdappcanisters).
 * [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
+* [`MintSnsTokens`](#mintsnstokens)
 * [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister).
 * [`ManageSnsMetadata`](#managesnsmetadata).
 
@@ -344,6 +345,61 @@ quill send message.json
 ```
 
 See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/202).
+
+### `MintSnsTokens`
+
+The SNS DAO can also mint its own token via the `MintSnsTokens` proposal.
+
+#### Relevant type signatures
+
+```candid
+    type MintSnsTokens = record {
+        to_principal : opt principal;
+        to_subaccount : opt Subaccount;
+        memo : opt nat64;
+        amount_e8s : opt nat64;
+    };
+
+    type Subaccount = record { subaccount : vec nat8 };
+```
+
+#### Putting it together
+
+```candid
+    type MintSnsTokens = record {
+        to_principal : opt principal;
+        to_subaccount : opt record { subaccount : vec nat8 };
+        memo : opt nat64;
+        amount_e8s : opt nat64;
+    };
+
+```
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Mint 41100 ICP to Foo Labs";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Mint 411 ICP to Foo Labs";
+        action = opt variant {
+            MintSnsTokens = record {
+                
+                to_principal = opt principal "ozcnp-xcxhg-inakz-sg3bi-nczm3-jhg6y-idt46-cdygl-ebztx-iq4ft-vae";
+                
+                to_subaccount = null;
+                
+                memo = null;
+                
+                amount_e8s = 4_110_000_000_000 : nat64;
+            };
+        };
+    };
+)' > message.json
+
+quill send message.json
+```
 
 ### `UpgradeSnsControlledCanister` 
 
