@@ -62,6 +62,7 @@ When deploying on the Internet Computer, these static files are not public to an
 :::
 
 ### Step 2: Create a dfx.json file
+
 In the top-level directory of your repository, at the source of add a ```dfx.json``` file and add the following:
 
 ```
@@ -121,4 +122,5 @@ dfx deploy --network ic
 After running this command, you will see a generated link where you can navigate to your Next.js application. 
 
 ### Step 5: Navigate to the frontend canister to view the React frontend.
+
 Navigate to the frontend canister using the URL http://127.0.0.1:4943/?canisterId=<canister-id>.
