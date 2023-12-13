@@ -348,7 +348,7 @@ See example [proposal of an active SNS](https://dashboard.internetcomputer.org/s
 
 ### `MintSnsTokens`
 
-The SNS DAO can also mint its own token via the `MintSnsTokens` proposal.
+An SNS DAO can also mint its own token via the `MintSnsTokens` proposal.
 
 #### Relevant type signatures
 
