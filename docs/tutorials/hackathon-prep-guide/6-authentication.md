@@ -47,7 +47,6 @@ To integrate II into your dapp, you can **pull** the Internet Identity canister 
 Using the same `vite-motoko-react` example project directory, edit your `dfx.json` file to reflect the following content:
 
 ```json
-
 {
   "canisters": {
     "backend": {
@@ -88,6 +87,8 @@ Then, you need to initialize the canister. By running the `dfx deps init` comman
 ```
 dfx deps init
 ```
+
+This command will return an error showing the following:
 
 ```
 WARN: The following canister(s) require an init argument. Please run `dfx deps init <NAME/PRINCIPAL>` to set them individually:
