@@ -160,27 +160,17 @@ This definition specifies that the `greet` function is a `query` method which ta
 
 ## Declaring global variables
 
-### Stable variables vs flexible variables
+### Static variables vs flexible variables
 
-**Stable variables** are global variables that the protocol preserves across upgrades. For example, a user database should probably be stable.
+**Static variables** are global variables that the protocol preserves across upgrades. For example, a user database should probably be static.
 
 **Flexible variables** are global variables that the protocol discards on code upgrade. For example, it is reasonable to make a cache flexible if keeping this cache hot is not critical for your product.
 
-### Putting all global variables in one place
-
-It is best practice to store all global variables privately in a single file; the canister main file. This approach is considered the best practice because:
-
-- Testing your code is easier since the majority of your code won't interact with the global variables directly. 
-- It is easier to understand how the global state is being used by the canister. 
-
-It is also recommended that you add comments that within your code that specify which variables are stable, such as:
+For example:
 
 ```rust
 thread_local! {
-    // static
     static USERS: RefCell<Users> = ... ;
-    // flexible
-    static LAST_ACTIVE: Cell<UserId> = ...;
 }
 ```
 
