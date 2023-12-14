@@ -1,8 +1,8 @@
-# European subnets
+# The European subnet
 
 ## Overview
 
-The 'European' type subnet indicates that a subnet is comprised of only node machines located in the European geographic region. This type of subnet allows for developers and enterprises to build applications that require a GDPR-aligned infrastructure and leverage blockchain decentralization with regional data sovereignty needs.
+The 'European' type subnet indicates that the subnet is comprised of only node machines located in the European geographic region. This type of subnet allows for developers and enterprises to build applications that require a GDPR-aligned infrastructure and leverage blockchain decentralization with regional data sovereignty needs.
 
 :::caution
 The European subnet enables applications to be GDPR-compliant, but developers and enterprises must take further measures to ensure that their applications meet all GDPR requirements.
@@ -22,9 +22,9 @@ This should return the output:
 ["european", "fiduciary"]
 ```
 
-## Creating and using a developer identity with a European subnet
+## Creating developer identity for the European subnet
 
-This is an optional step; it is not required to create a new separate identity in order to use a European subnet.
+This is an optional step; it is not required to create a new separate identity in order to use the European subnet.
 
 To create a new identity, use the `dfx identity new` command:
 
@@ -38,23 +38,31 @@ Then, to use this identity, run the `dfx identity use` command:
 dfx identity use ic-european
 ```
 
+## Using a developer identity on the European subnet
+
 To use this identity as a controller of a canister, get the identity's principal with the command:
 
 ```
 dfx identity get-principal
 ```
 
+Save this principal ID to be used as the `CONTROLLER` value in a future step.
+
 You can check the current balance for that principal by running the command:
 
+```
 dfx ledger --network=ic balance
+```
 
-To top up your principal's balance, 
+To top up your principal's balance, you can send cycles to the principal using the [NNS dapp](https://nns.ic0.app/wallet/), or convert ICP tokens into cycles using the steps outlined [here](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#converting-icp-tokens-to-cycles).
 
-To create a new wallet on the european subnet, run the following `dfx ledger` command:
+Then, to create a new wallet on the European subnet, run the following `dfx ledger` command:
 
 ```
-dfx ledger --network ic create-canister --amount 0.5 --subnet-type european <CONTROLLER>
+dfx ledger --network ic create-canister --amount 0.5 --subnet-type european CONTROLLER
 ```
+
+Replace `CONTROLLER` with the prinicpal ID that you took note of earlier after running the `dfx identity get-principal` command.
 
 Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/current/references/cli-reference/dfx-ledger/#options). 
 
@@ -92,12 +100,12 @@ The current wallet settings are stored in your local file system in the file `$H
 }
 ```
 
-## Important notes about deploying to European subnets
+## Important notes about deploying to the European subnet
 
 When deploying a project to the mainnet using dfx:
 
 - If your canisters have already been created, dfx will continue to deploy the canisters on the same subnet that they are already located on.
 
-- If your canisters do not exist yet, when they are created dfx will create them on the same subnet as your wallet canister. It is recommended to consistently use the wallet on the European subnet. 
+- If your canisters do not exist yet, when they are created dfx will create them on the same subnet as your wallet canister. It is recommended to consistently use the same wallet on the European subnet. 
 
 - If your canisters do not exist yet, you can specify the wallet canister that should be used to create them by using the `dfx deploy --wallet <WALLET_CANISTER_ID>`. This will create the new canisters on the same subnet where the specified `<WALLET_CANISTER_ID>` is located.
