@@ -80,11 +80,11 @@ In the top-level directory of your repository, at the source of add a `dfx.json`
 }
 ```
 
-`dfx.json` is the configuration file for deploying all of your code to canister smart contracts on the Internet Computer.
+`dfx.json` is the configuration file for deploying all of your code to canister smart contracts on the ICP.
 
 Please note that you can adjust the following:
 
-`app` - name of the canister smart contract
+`app`: Refers to the name of the canister smart contract.
 
 Also, make sure that these do point to the correct file:
 
@@ -100,7 +100,7 @@ and folder:
 
 ### Step 3: Generate Candid definitions 
 
-Run the following command to generate the correct types.
+Run the following command to generate the correct types:
 
 ```
 dfx generate
