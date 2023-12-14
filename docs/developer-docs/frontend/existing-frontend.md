@@ -58,7 +58,7 @@ This should now generate an `out` folder which consists of the static assets tha
 In the next step, we will instruct the Internet Computer to deploy the website on-chain using these static files. 
 
 :::info
-When deploying on the Internet Computer, these static files are not public to anyone including the nodes. Only the WASM file which is a binary instruction file which does not leak any of your code is public to nodes. 
+When deploying on ICP, these static files are not public to anyone including the nodes. Only the Wasm file which is a binary instruction file which does not leak any of your code is public to nodes. 
 :::
 
 ### Step 2: Create a dfx.json file
