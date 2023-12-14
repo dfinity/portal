@@ -16,7 +16,7 @@ Application subnets are the most common type of subnet on ICP. Almost all canist
 
 System subnets are reserved for running canisters that provide a system functionality to ICP, such as the NNS canisters. System subnets have special configurations, such as not charging cycles to any of the canisters running on the subnet since system canisters need to be available at all times. System subnets also have a more generous per-call instruction limit and a more generous Wasm module size limit.
 
-## [The European subnet](/docs/current/concepts/eu-subnets)
+## [The European subnet](eu-subnets)
 
 The European subnet is comprised of only node machines located in the European geographic region. This type of subnet allows for developers and enterprises to build applications that require a GDPR-aligned infrastructure and leverage blockchain decentralization with regional data sovereignty needs.
 
