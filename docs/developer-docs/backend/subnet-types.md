@@ -6,7 +6,7 @@ A subnet on ICP is a collection of interacting replicas that run their own, sepa
 
 You can learn more about subnets and how they work [here](/docs/current/concepts/nodes-subnets).
 
-There are three primary types of subnets: system, application, and European subnets. 
+There are three primary types of subnets: system, application, and the European subnet. 
 
 ## Application subnets
 
@@ -16,9 +16,9 @@ Application subnets are the most common type of subnet on ICP. Almost all canist
 
 System subnets are reserved for running canisters that provide a system functionality to ICP, such as the NNS canisters. System subnets have special configurations, such as not charging cycles to any of the canisters running on the subnet since system canisters need to be available at all times. System subnets also have a more generous per-call instruction limit and a more generous Wasm module size limit.
 
-## [European subnets](/docs/current/concepts/eu-subnets)
+## [The European subnet](/docs/current/concepts/eu-subnets)
 
-European subnets are comprised of only node machines located in the European geographic region. This type of subnet allows for developers and enterprises to build applications that require a GDPR-aligned infrastructure and leverage blockchain decentralization with regional data sovereignty needs.
+The European subnet is comprised of only node machines located in the European geographic region. This type of subnet allows for developers and enterprises to build applications that require a GDPR-aligned infrastructure and leverage blockchain decentralization with regional data sovereignty needs.
 
 
 
