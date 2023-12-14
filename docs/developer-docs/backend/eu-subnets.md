@@ -98,6 +98,6 @@ When deploying a project to the mainnet using dfx:
 
 - If your canisters have already been created, dfx will continue to deploy the canisters on the same subnet that they are already located on.
 
-- If your canisters do not exist yet, when they are created dfx will create them on the same subnet as your wallet canister. It is recommended to consistently use a wallet on a European subnet. 
+- If your canisters do not exist yet, when they are created dfx will create them on the same subnet as your wallet canister. It is recommended to consistently use the wallet on the European subnet. 
 
 - If your canisters do not exist yet, you can specify the wallet canister that should be used to create them by using the `dfx deploy --wallet <WALLET_CANISTER_ID>`. This will create the new canisters on the same subnet where the specified `<WALLET_CANISTER_ID>` is located.
