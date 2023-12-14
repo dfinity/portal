@@ -143,7 +143,7 @@ This is an NFT wallet example dapp that utilizes minted NFTs from the Rust dip72
 ## Periodic tasks
 
 This example demonstrates different ways of scheduling periodic tasks on the Internet Computer: timers and heartbeats. The example shows the difference between the two, and helps to decide which method suits you the best.
-- [Documentation](/docs/current/samples/periodic-tasks.md).
+- [Documentation](/docs/current/samples/periodic-tasks).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks).
 
 ## Persistent storage
