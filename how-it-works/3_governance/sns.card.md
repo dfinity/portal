@@ -8,7 +8,10 @@ coverImage: /img/how-it-works/network-nervous-system.webp
 
 # Service Nervous System (SNS)
 
-Similarly to how the Internet Computer is controlled by the Network Nervous System, a decentralized application on the IC can be controlled by a community. The Internet Computer’s built-in solution for a DAO (decentralized autonomous organization) that *tokenizes* and *decentralizes* a dapp is called the Service Nervous System (SNS). In the process of creating an SNS, new tokens are minted and swapped. The dapp’s control is handed over to the SNS and everyone who holds SNS tokens can contribute to the decisions on how the dapp evolves going forward.
-This allows distributing the power and ownership of the dapp over a number of parties, thereby eliminating single points of failure and gaining censorship resistance. Moreover, the newly created tokens can be used to create incentives to foster user adoption and participation.
+The Service Nervous System (SNS) are the Internet Computer's built-in solution for decentralized autonomous organizations (DAOs) to govern dapps.
+An SNS consists of an open, permissionless governance system and of a built-in governance token that is unique to each SNS.
+The SNS framework includes a process on how to launch a new SNS which includes raising initial funds for the DAO and decentralizing the DAO’s voting power.
+Any dapp can be tokenized and decentralized by handing it over to a new SNS DAO.
+
 
 [Go deeper](/sns/)
