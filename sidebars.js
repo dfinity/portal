@@ -384,6 +384,7 @@ const sidebars = {
         "developer-docs/frontend/react-frontend",
         "developer-docs/frontend/svelte-frontend",
         "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/existing-frontend",
       ],
     },
     {
