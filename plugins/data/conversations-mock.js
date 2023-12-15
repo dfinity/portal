@@ -679,7 +679,7 @@ module.exports = [
     title: "Community Conversation - SNS initial token swap",
     speaker: "Lara Schmid & Peter Lidwell ",
     description:
-      '<p>An SNS must be decentralised from the beginning, before any tokens can be transferred. We thus require a mechanism by which the developers can, in one step, hand over the control of their dapp to an already decentralized SNS.\nIn this talk we presents a design for a SNS launch pad that can be used for this purpose. Initially, the launch pad consists of an initial token swap where participants can exchange ICP tokens for SNS tokens to provide funding for a dapp.\nJoin discussion on forum <a href="https://forum.dfinity.org/t/sns-initial-token-swap/13591">here</a></p>\n',
+      '<p>An SNS must be decentralised from the beginning, before any tokens can be transferred. We thus require a mechanism by which the developers can, in one step, hand over the control of their dapp to an already decentralized SNS.\nIn this talk we presents a design for a SNS launchpad that can be used for this purpose. Initially, the launchpad consists of an initial token swap where participants can exchange ICP tokens for SNS tokens to provide funding for a dapp.\nJoin discussion on forum <a href="https://forum.dfinity.org/t/sns-initial-token-swap/13591">here</a></p>\n',
     startTimeUtc: 1654794000000,
     startTimePt: 1654761600000,
     startTimeEu: 1654794000000,
@@ -716,7 +716,7 @@ module.exports = [
     title: "Community Conversation - SNS initial token swap",
     speaker: "Lara Schmid & Peter Lidwell ",
     description:
-      '<p>An SNS must be decentralised from the beginning, before any tokens can be transferred. We thus require a mechanism by which the developers can, in one step, hand over the control of their dapp to an already decentralized SNS.\nIn this talk we presents a design for a SNS launch pad that can be used for this purpose. Initially, the launch pad consists of an initial token swap where participants can exchange ICP tokens for SNS tokens to provide funding for a dapp.\nJoin discussion on forum <a href="https://forum.dfinity.org/t/sns-initial-token-swap/13591">here</a></p>\n',
+      '<p>An SNS must be decentralised from the beginning, before any tokens can be transferred. We thus require a mechanism by which the developers can, in one step, hand over the control of their dapp to an already decentralized SNS.\nIn this talk we presents a design for a SNS launchpad that can be used for this purpose. Initially, the launchpad consists of an initial token swap where participants can exchange ICP tokens for SNS tokens to provide funding for a dapp.\nJoin discussion on forum <a href="https://forum.dfinity.org/t/sns-initial-token-swap/13591">here</a></p>\n',
     startTimeUtc: new Date("2022-08-10T16:00Z").getTime(),
     startTimePt: new Date("2022-08-10T16:00Z").getTime(),
     startTimeEu: new Date("2022-08-10T16:00Z").getTime(),
@@ -727,7 +727,7 @@ module.exports = [
     title: "Community Conversation - SNS initial token swap 2",
     // speaker: "Lara Schmid & Peter Lidwell ",
     description:
-      '<p>An SNS must be decentralised from the beginning, before any tokens can be transferred. We thus require a mechanism by which the developers can, in one step, hand over the control of their dapp to an already decentralized SNS.\nIn this talk we presents a design for a SNS launch pad that can be used for this purpose. Initially, the launch pad consists of an initial token swap where participants can exchange ICP tokens for SNS tokens to provide funding for a dapp.\nJoin discussion on forum <a href="https://forum.dfinity.org/t/sns-initial-token-swap/13591">here</a></p>\n',
+      '<p>An SNS must be decentralised from the beginning, before any tokens can be transferred. We thus require a mechanism by which the developers can, in one step, hand over the control of their dapp to an already decentralized SNS.\nIn this talk we presents a design for a SNS launchpad that can be used for this purpose. Initially, the launchpad consists of an initial token swap where participants can exchange ICP tokens for SNS tokens to provide funding for a dapp.\nJoin discussion on forum <a href="https://forum.dfinity.org/t/sns-initial-token-swap/13591">here</a></p>\n',
     startTimeUtc: new Date("2022-08-11T16:00Z").getTime(),
     startTimePt: new Date("2022-08-11T16:00Z").getTime(),
     startTimeEu: new Date("2022-08-11T16:00Z").getTime(),

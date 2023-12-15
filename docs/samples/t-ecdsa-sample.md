@@ -12,7 +12,7 @@ More specifically:
 - The sample canister hashes the message and uses the key derivation string for the derivation path. 
 -  The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
 
-This tutorial gives a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the IC mainnet.
+This tutorial gives a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the mainnet.
 
 :::info
 This walkthrough focuses on the version of the sample canister code written in [Motoko](../developer-docs/backend/motoko/index.md) programming language, but no specific knowledge of Motoko is needed to follow along. There is also a [Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) version available in the same repo and follows the same commands for deploying.
@@ -38,8 +38,8 @@ dfx deploy
 ```
 
 #### What this does
-- `dfx start --background` starts a local instance of the IC via the IC SDK
-- `dfx deploy` deploys the code in the user's directory as a canister on the local version of the IC
+- `dfx start --background` starts a local instance of ICP via the IC SDK
+- `dfx deploy` deploys the code in the user's directory as a canister on the local version of ICP
 
 If successful, you should see something like this:
 
@@ -55,9 +55,9 @@ If you open the URL in a web browser, you will see a web UI that shows the publi
  ![Candid UI](./_attachments/tecdsa-candid-ui.png)
 
 
-## Step 2: Deploying the canister on the IC mainnet
+## Step 2: Deploying the canister on the mainnet
 
-To deploy this canister on the IC mainnet, one needs to do two things:
+To deploy this canister on the mainnet, one needs to do two things:
 
 - Acquire cycles (equivalent of "gas" in other blockchains). This is necessary for all canisters.
 - Update the sample source code to have the right key ID. This is unique to this canister.
@@ -99,7 +99,7 @@ let { signature } = await ic.sign_with_ecdsa({
 ```
 
 :::caution
-To deploy to the IC mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
+To deploy to the mainnet, one needs to replace the value in `key_id` fields with the values `"dfx_test_key"` to instead have either `"test_key_1"` or `"key_1"` depending on the desired intent.
 :::
 
 ### Deploy to the mainnet via IC SDK
@@ -174,11 +174,11 @@ Open the file `main.mo`, which will show the following Motoko code that demonstr
   };
 ```
 
-In the code above, the canister calls the `ecdsa_public_key` method of the [IC management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). 
+In the code above, the canister calls the `ecdsa_public_key` method of the [ICP management canister](../references/ic-interface-spec/#ic-management-canister) (`aaaaa-aa`). 
 
 
 :::info
-The [IC management canister](../references/ic-interface-spec/#ic-management-canister) is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). It is an ergonomic way for canisters to call the system API of the IC (as if it were a single canister). In the code below, you will use the management canister to create an ECDSA public key. `let ic : IC = actor("aaaaa-aa")` declares the IC management canister in the code above.
+The [ICP management canister](../references/ic-interface-spec/#ic-management-canister) is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). It is an ergonomic way for canisters to call the system API of ICP (as if it were a single canister). In the code below, you will use the management canister to create an ECDSA public key. `let ic : IC = actor("aaaaa-aa")` declares the management canister in the code above.
 :::
 
 ### Canister root public key

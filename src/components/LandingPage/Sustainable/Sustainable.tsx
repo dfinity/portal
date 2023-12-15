@@ -6,10 +6,13 @@ import Link from "@docusaurus/Link";
 const Sustainable: React.FC<{ id?: string }> = ({ id }) => {
   return (
     <section
-      className="md:container-12 py-20 md:pt-40 md:pb-30"
+      className="py-20 md:pt-20 md:pb-30 bg-[linear-gradient(180deg,#1B025A_0%,#1B025A_50%,transparent_50%,transparent_100%)]"
       id="sustainable"
     >
-      <AnimateSpawn className="" variants={transitions.container}>
+      <AnimateSpawn
+        className="md:container-12"
+        variants={transitions.container}
+      >
         <div
           className="flex flex-col md:flex-row py-20 md:py-30 md:rounded-[32px] px-6 md:px-1/12 text-white"
           style={{

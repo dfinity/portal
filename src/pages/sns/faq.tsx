@@ -361,7 +361,7 @@ function SnsFaqPage() {
                   an SNS launches, it has to go through a decentralization swap.
                   You can participate on the NNS frontend dapp under the{" "}
                   <Link href="https://nns.ic0.app/launchpad/">
-                    Launch Pad tab
+                    Launchpad tab
                   </Link>
                   . During the swap you can buy SNS tokens with ICP.
                 </li>
@@ -558,6 +558,11 @@ function SnsFaqPage() {
                   0.05 SNS tokens, where a full token would be worth 100 ICP.
                 </li>
               </ul>
+              <p>Visis the ICP Wiki for a more detailed overvire of{" "}
+                <Link href="https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration">
+                  SNS tokenomics
+                </Link>
+              </p>
             </Faq>
 
             <Faq title="How do I participate in a swap?">
@@ -577,7 +582,7 @@ function SnsFaqPage() {
               </p>
               <p>
                 <strong>
-                  1. Go to the NNS frontend dapp and click on the “Launch Pad”
+                  1. Go to the NNS frontend dapp and click on the “Launchpad”
                   in the sidebar to see all ongoing SNS decentralization swap.
                 </strong>
               </p>
@@ -652,7 +657,7 @@ function SnsFaqPage() {
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight></LinkArrowRight>
-                  Go to the Launch Pad
+                  Go to the Launchpad
                 </Link>
               </p>
             </Faq>
@@ -691,7 +696,7 @@ function SnsFaqPage() {
               <ul>
                 <li>
                   <strong>Swap parameters:</strong> You can verify what the
-                  parameters of the decentralization swap are in the Launch Pad
+                  parameters of the decentralization swap are in the Launchpad
                   or in the decentralization swap NNS proposal.
                 </li>
                 <li>
@@ -919,6 +924,15 @@ function SnsFaqPage() {
                   pressure.
                 </li>
               </ul>
+              <p className="not-prose">
+                <Link
+                  href="https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  More on SNS tokenomics
+                </Link>
+              </p>
             </Faq>
           </FaqSection>
         </section>

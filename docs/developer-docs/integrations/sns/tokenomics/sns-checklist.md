@@ -32,7 +32,9 @@ It is considered to be best practice that swap participants have the majority of
 The minimum and maximum funding target must be defined for the decentralization swap. Add information about the planned usage of the funds, e.g. plans of ramping up the team.
 
 ### 1.1.5. SNS tokenomics tool
-Use the [SNS tokenomics tool](https://docs.google.com/spreadsheets/u/0/d/1eSxkJl94jPt63CdOXH6ROy-WSkacW6P4qcAKMLrfBPc/edit) to analyze and document the chosen amount of tokens, initial distribution of tokens, dissolve delays etc. Both the tool and a training deck can be found in [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
+Use the [SNS Tokenomics Analyzer](https://github.com/dfinity/sns-testing/tree/main/sns_tokenomics_analyzer) to analyze the tokenomics and the resulting voting power distribution. You can find more information on [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
+
+The analyzer uses the [SNS configuration file](https://github.com/dfinity/sns-testing/blob/main/sns_tokenomics_analyzer/sns_init.yaml) as a basis that you'll later use to create the proposal for the SNS DAO.
 
 ## 1.2. Technical architecture / whitepaper / project roadmap
 
@@ -74,12 +76,12 @@ Include relevant information like tokenomics (token distribution, governance, de
 For details about the preparation process, see the [documentation](./preparation.md) and for details about how the launch works, see [this documentation](../launching/index.md). 
 The documentation page [SNS predeployment considerations](./predeployment-considerations.md) has a list of topics that should be covered in the whitepaper/proposal. See this [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) for information about DFINITY’s voting.
 
-# 2. Technical Prep & Testing
+# 2. Technical prep & testing
 
 ## 2.1. Security review
 In general, it is considered best practice to conduct a security review including the fixing of risky findings. Guidance on security best practices is [here](../../../security/index.md). It should be explained to which extent security reviews are relevant for the dapp and what kind of security reviews have been conducted for the dapp if applicable.
 
-## 2.2. Open Sourcing
+## 2.2. Open sourcing
 If the dapp is not already open sourced, it should be open sourced before the SNS launch - actually before the decentralization proposals are created. A dapp is not truly decentralized if the source code is not shared with the community. Open sourcing the code gives the community an opportunity to evaluate the dapp before the SNS launch, and after the launch, where upgrades must be voted on. It’s hard to make a meaningful voting decision without having full visibility into the code, and without the visibility it will also not be possible to verify the code and assess the impact it will have, before voting.
 
 ## 2.3. Create reproducible build
@@ -87,7 +89,7 @@ It should be possible to create a reproducible build from the open sourced code,
 
 Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The documentation [here](../../../backend/reproducible-builds.md) provides more information how reproducible builds can be created using Docker.
 
-## 2.4. Test dapp operations under SNS on mainnet with SNS Testflight
+## 2.4. Test dapp operations under SNS on mainnet with SNS testflight
 Before requesting an SNS launch in production, developers are strongly encouraged to test their deployed dapp’s operation (e.g., upgrading the dapp’s canisters) via SNS proposals, as if the live version of the dapp was managed by SNS.
 
 Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing/cycles-usage.md), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
@@ -105,7 +107,7 @@ Developers can choose to integrate a frontend for the SNS functionality in the d
 ## 2.6. Test the SNS launch locally
 In addition to performing comprehensive testing of all dapp operations using the SNS (as explained in section 2.4), it is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. Detailed instructions on how to set up SNS locally for testing are available [here 1](https://github.com/dfinity/sns-testing).
 
-# 3. Community Consultation
+# 3. Community consultation
 
 ## 3.1. Publish tokenomics / whitepaper / roadmap / architecture
 The documentation prepared in section 1.1 and 1.2 should be made publicly available ahead of the SNS launch. This provides transparency about the dapp, future plans with the dapp, the technical architecture and the tokenomics. This information can be shared on the dapp’s website, GitHub or where it would make sense.
@@ -118,13 +120,13 @@ It is recommended to share:
 - [x] The init file that is planned to be used. You can start from a [template](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml).
 - [x] The whitepaper with a full description of the decentralization and tokenomics.
 - [x] Technical decomposition of the dapp architecture in terms of canisters, source code and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
-- [x] Explaination to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
+- [x] Explanation to which extent security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.
 
 The idea is to provide the community with information so they can verify what they are supporting from a decentralization standpoint.
 
 This [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) provides some initial thoughts from the perspective of DFINITY when voting. 
 
-## 4. SNS Launch Workflow
+## 4. SNS launch workflow
 Please find all stages included in an SNS launch [here](../launching/launch-summary-1proposal.md) and a more detailed descriptions of the actions needed to enable these stages [here](../launching/launch-steps-1proposal.md).
 
 ## 4.1. Dapp control handover

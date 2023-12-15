@@ -128,3 +128,18 @@
   animation: fade-in 300ms ease-out;
   animation-fill-mode: backwards;
 }
+
+@keyframes blur-out {
+  from {
+    backdrop-filter: blur(0px);
+  }
+  to {
+    backdrop-filter: blur(20px);
+  }
+}
+
+.animate-blur-out {
+  animation: blur-out 500ms ease;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}

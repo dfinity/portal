@@ -2,7 +2,7 @@
 
 ## Overview
 
-Motoko is extensively documented in the [references](../../../motoko/main/basic-concepts) section of the IC developer documentation. For this reason, this fundamentals page will redirect you to many of those documentation pages for in-depth explanations and examples of Motoko's concepts, design, and components. 
+Motoko is extensively documented in the [references](../../../motoko/main/basic-concepts) section of ICP developer documentation. For this reason, this fundamentals page will redirect you to many of those documentation pages for in-depth explanations and examples of Motoko's concepts, design, and components. 
 
 ## Motoko developer guide
 - [Motoko version](../../../motoko/version).

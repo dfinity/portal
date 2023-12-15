@@ -2,7 +2,7 @@
 
 # Overview
 
-As discussed in the [Candid concepts](./candid-concepts.md) page, Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with the IC from a terminal using the IC SDK, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
+As discussed in the [Candid concepts](./candid-concepts.md) page, Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with ICP from a terminal using the IC SDK, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
 
 As a concrete example, let’s assume there is a `counter` canister already deployed on the network with the following Candid interface:
 
@@ -26,7 +26,7 @@ In other languages, you will have to write the Candid interface description manu
 
 ## Interact with a service in a terminal
 
-One of the most common ways you interact with canisters and the IC is by using the IC SDK.
+One of the most common ways you interact with canisters and the ICP is by using the IC SDK.
 
 Within the IC SDK, the `dfx` tool provides the `dfx canister call` command to call a specific deployed canister—essentially a smart contract that runs on the IC—and, if applicable, a method of the service provided by the smart contract.
 
