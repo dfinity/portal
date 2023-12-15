@@ -6,6 +6,10 @@ slug: network-nervous-system-nns
 ---
 
 # The Network Nervous System (NNS)
+
+[![Watch youtube video](https://i.ytimg.com/vi/hWnsluxmRqc/maxresdefault.jpg)](https://www.youtube.com/watch?v=hWnsluxmRqc)
+
+
 The Network Nervous System (NNS) is the DAO that controls the Internet Computer blockchain.
 It is an open, permissionless governance system, where everyone can participate by staking ICP utility tokens in so-called _neurons_.
 Decisions are made by voting on _proposals_, which can be submitted by anyone.
