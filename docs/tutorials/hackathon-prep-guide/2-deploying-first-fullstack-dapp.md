@@ -1,10 +1,10 @@
 # 2: Deploying your first full-stack dapp
 
-## Deploying your first full-stack Motoko dapp 
+## Overview
 
-To get started developing on ICP, there are several sample projects, boilerplate templates, and other resources to help you get started. In this tutorial, you'll learn how to deploy your first full-stack dapp using a boilerplate sample. This sample dapp uses the frameworks Vite and React to create a frontend user interface that makes calls to a simple counter method in the backend canister. When the button in the UI is clicked, the counter function increases the value of the count by an increment of 1. The updated count value is then reflected in the UI. 
+To get started developing on ICP, there are several sample projects, boilerplate templates, and other resources to help you get started. In this tutorial, you'll learn how to deploy your first full-stack dapp using a boilerplate sample. This sample dapp uses Motoko for the backend canister and the frameworks Vite and React to create a frontend user interface (UI) that makes calls to a simple counter method in the backend canister. When the button in the UI is clicked, the counter function increases the value of the count by an increment of 1. The updated count value is then reflected in the UI. 
 
-This sample is a great place to start since it provides an easy to understand example of how a frontend canister can create a UI that interacts with a method stored in a backend canister. This project can easily be edited, expanded, and further developed to suit the needs of your own project. 
+This sample is a great place to start since it provides an easy to understand example of how a frontend canister can create a UI that interacts with a method stored in the backend canister. This project can easily be edited, expanded, and further developed to suit the needs of your own project. 
 
 :::info
 This sample uses Motoko for the backend canister. A similar example using Rust for the backend source code can be found [here](https://github.com/b3hr4d/ic-rust-nextjs). 
@@ -12,25 +12,25 @@ This sample uses Motoko for the backend canister. A similar example using Rust f
 
 ### Architecture overview
 
-For this tutorial, the Vite, React, and Motoko sample found [here](https://github.com/rvanasa/vite-react-motoko) will be used.
+For this tutorial, the `vite-react-motoko` sample found [here](https://github.com/rvanasa/vite-react-motoko) will be used.
 
 This sample uses the following project architecture:
 
-- Vite: a frontend web development tool known for its high performance.
+- Vite: A frontend web development tool known for its high performance.
 
-- React:  a component-based UI library. 
+- React: A component-based UI library. 
 
 - TypeScript: JavaScript with an extended syntax for types.
 
 - Motoko: ICP's native programming language.
 
-- Mops: an on-chain package managed for Motoko.
+- Mops: An on-chain package manager for Motoko.
 
-- mo-dev: a development server for Motoko that features live-reload functionality. 
+- mo-dev: A development server for Motoko that features live-reload functionality. 
 
-- Sass: extended syntax for CSS. 
+- Sass: Extended syntax for CSS. 
 
-- Prettier: a code formatting package for several supported languages. 
+- Prettier: A code formatting package for that supports several languages. 
 
 ### Project structure
 
@@ -69,13 +69,13 @@ This template project uses the following project structure:
 └── vite.config.ts
 ```
 
-This project contains the following files and directories:
+In this project structure, the following files and directories are notable:
 
-- `backend/`: The subdirectory used to store the project's backend canister source code.
+- `backend/`: The subdirectory used to store the project's backend canister's source code.
 
-- `backend/Backend.mo`: The backend canister source code file written in Motoko.
+- `backend/Backend.mo`: The backend canister's source code file; written in Motoko.
 
-- `dfx.json`: The project's configuration file. This file details which canisters are part of the project and which source code files each canister uses.
+- `dfx.json`: The project's configuration file. This file details which canisters are part of the project and specifies which source code files each canister uses.
 
 - `mops.toml`: The package manager configuration file for the project, using the Mops package manager. You will learn more about Mops in the next module, [3: Exploring the backend](3-exploring-the-backend.md).
 
@@ -97,21 +97,21 @@ A backend canister is the backend of an application. This is typically the porti
 
 ### Frontend canisters
 
-A frontend canister hosts the portion of an application that is used to interact with the application's functions using a user interface. Frontend canisters contain the files and assets used to create the frontend interface used by end-users. These assets typically contain things such as CSS, HTML, JavaScript, or React elements. Since the frontend canister contains assets, it is can also be referred to as the asset canister. In this project, the frontend canister's code is located at `src/App.tsx`, `src/App.css`, and `src/index.html`, and uses TypeScript source code. You will explore the frontend canister further in a future module, [4: Exploring the frontend](4-exploring-the-frontend.md).
+A frontend canister hosts the portion of an application that is used to interact with the application's functions through a user interface. Frontend canisters contain the files and assets used to create the interface used by end-users. These assets typically contain things such as CSS, HTML, JavaScript, or React elements. Since the frontend canister contains assets, it is can also be referred to as the asset canister. In this project, the frontend canister's code is located at `src/App.tsx`, `src/App.css`, and `src/index.html`, and uses TypeScript source code. You will explore the frontend canister further in a future module, [4: Exploring the frontend](4-exploring-the-frontend.md).
 
 ### Identities and principals
 
 Before continuing, it is important to learn about the several different types of identities and authentication methods that you'll encounter while developing on ICP. 
 
-- **Developer identity**: an identity created using dfx, which contains a private/public key pair, and has a principal data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
+- **Developer identity**: An identity created using dfx, which contains a private/public key pair, and has a principal data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
 
-- **Principals**: a generic identifier that can be used for users, canisters, and potentially other future concepts.
+- **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts.
 
-- **Principal identifiers**: a principal associated with a user principal ID. Principal identifiers are related to account identifiers, but use a different format. Each principal identity can control multiple accounts in the ICP (and other) ledgers.
+- **Principal identifiers**: A principal associated with a user principal ID. Principal identifiers are related to account identifiers, but use a different format. Each principal identity can control multiple accounts in the ICP (and other) ledgers.
 
-- **Account identifier**: the identifier associated with your ICP ledger account, as specified in the ledger specification.
+- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the ledger specification.
 
-- **Wallets**: used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use a cycles wallet to send cycles to and from canisters.
+- **Wallets**: Wallets are used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use a cycles wallet to send cycles to and from canisters.
 
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead it uses a passkey that is stored in your local device's hardware.
 
@@ -123,7 +123,7 @@ Cycles are used to measure and pay for the resources that are used by a canister
 
 To get cycles, you can convert ICP tokens into cycles, or you can obtain a [cycles coupon](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#acquiring-cycles-using-a-cycles-coupon) if you haven't previously received one before. 
 
-You will learn how to obtain and use cycles in the upcoming tutorial, [7: Obtaining cycles and deploying to the mainnet](7-obtaining-cycles.md).
+You will learn how to obtain and use cycles in the upcoming module, [7: Obtaining cycles and deploying to the mainnet](7-obtaining-cycles.md).
 
 ## Deploying the project using Gitpod
 
@@ -133,7 +133,7 @@ Navigate to the [Gitpod URL](https://gitpod.io/#https://github.com/rvanasa/vite-
 
 ![Gitpod example](../_attachments/gitpod-example-1.png)
 
-Then, Gitpod will automatically run all the commands and processes necessary to start the project. In the 'Terminal' window, you will see the output of these processes. When the terminal shows the output of:
+Then, Gitpod will automatically run all the commands and processes necessary to start the project. In the 'Terminal' section of the window, you will see the output of these processes. When the terminal shows the output of:
 
 ```
 VITE v4.3.9  ready in 206 ms
@@ -146,13 +146,13 @@ VITE v4.3.9  ready in 206 ms
 
 ![Gitpod example](../_attachments/gitpod-example-2.png)
 
-Then your dapp is ready to use. Click on the `http://localhost:3000/` URL in the terminal window to open the Gitpod hosted dapp:
+Then your dapp is ready to use. Click on the `http://localhost:3000/` URL in the Terminal output to open the Gitpod hosted dapp:
 
 ![Gitpod example](../_attachments/gitpod-example-3.png)
 
 ## Deploying the project locally
 
-Now that you've explored the project's structure, code, and components, you can deploy the project locally. 
+Alternatively, you can deploy the project locally. 
 
 ### Downloading and setting up the project
 
@@ -174,7 +174,7 @@ Before you can deploy your first dapp on ICP, you will need to set up your devel
 
 - [x] Download and install [Node.js](https://nodejs.org/en).
 
-Then, to download the template project, first create a new, empty directory, then download the project template using the commands:
+Then, to download the template project, first create a new directory, then download the project template using the commands:
 
 ```
 mkdir react-project
@@ -182,7 +182,7 @@ cd react-project
 npx degit rvanasa/vite-react-motoko
 ```
 
-First, you will need to start a local replica with `dfx` using the command:
+Then you will need to start a local replica with `dfx` using the command:
 
 ```
 dfx start --clean --background

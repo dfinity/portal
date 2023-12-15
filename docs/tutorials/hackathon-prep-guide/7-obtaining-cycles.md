@@ -1,6 +1,6 @@
 # 7: Obtaining cycles and deploying your dapp to the mainnet
  
-## What are cycles?
+## Overview
 
 Cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a canister. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs. 
 
@@ -10,13 +10,7 @@ Since cycles are not a currency and are only used to pay for a canister's consum
 
 ## Creating a developer identity
 
-To obtain cycles and deploy a cycles wallet, you'll need to create a new identity principal with dfx. First, assure that dfx is running; if not, use the following command to start it:
-
-```
-dfx start --background
-```
-
-Next, create a new developer identity with the command:
+To obtain cycles and deploy a cycles wallet, you'll need to create a new identity principal with dfx. First, assure that dfx is running. Then, create a new developer identity with the command:
 
 ```
 dfx identity new MyIdentity
@@ -34,19 +28,13 @@ Then, you need to get the principal ID of this identity with the command:
 dfx identity get-principal
 ```
 
-The principal will resemble the following format:
-
-```
-tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
-```
-
-Save this principal value. 
+Save the returned output of this command. 
 
 ## Acquiring cycles using a cycles coupon
 
 For new developers, a free cycles coupon can be obtained and redeemed for 10T free cycles that can be used to get started with dapp deployment. This coupon is good for new developers since it doesn't require that you transfer ICP tokens into cycles, and doesn't require a purchase of tokens to get started.
 
-To obtain this coupon, first, navigate to the website https://faucet.dfinity.org. To obtain a coupon code to use the cycles faucet, you need to put in a written request for the coupon via the DFINITY dev official Discord server.
+To obtain this coupon, first, navigate to the website https://faucet.dfinity.org. To obtain a coupon code to use the cycles faucet, you need to put in a written request for the coupon via the DFINITY official developer Discord server.
 
 Click on the `REQUEST CYCLES` button on the faucet web page to join the Discord server.
 
@@ -62,19 +50,15 @@ In this channel, execute the following slash command:
 /request
 ```
 
-This command will make a call to the IC Cycles Faucet Bot. This bot will send you a survey link via direct message. 
+This command will call the IC Cycles Faucet Bot. This bot will send you a survey that will need to be filled out and submitted. Once the survey has been completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
 
 :::info
 Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
 
-Once the survey has been completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
-
 Once you have your coupon code, head back to the <https://faucet.dfinity.org> webpage. 
 
-Now, click **NEXT STEP** to continue.
-
-Now that you have a coupon code, enter your coupon code within the faucet UI.
+Now, click **NEXT STEP** to continue. Once you have a coupon code, enter your coupon code within the faucet UI.
 
 ![Enter Coupon](../_attachments/faucet_step_3.png)
 
@@ -87,13 +71,11 @@ dfx start --background
 dfx identity use MyIdentity
 ```
 
-Then, redeem your coupon with the command:
+Then, redeem your coupon with the command, replacing **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY faucet bot:
 
 ```sh
 dfx wallet --network ic redeem-faucet-coupon COUPON_CODE
 ```
-
-Replace **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY faucet bot.
 
 Verify your cycles balance with the command:
 
@@ -107,28 +89,14 @@ This should return an output showing 10T cycles in your wallet. To get the canis
 dfx identity --network ic get-wallet
 ```
 
-The output of this command should resemble the following:
-
-```
-gastn-uqaaa-aaaae-aaafq-cai
-```
-
 ## Converting ICP tokens to cycles
 
-If you've already redeemed a cycles coupon in the past, or if you've already used the cycles from your coupon, you can convert ICP tokens into cycles.
-
-Before you can convert ICP tokens into cycles, first you need to obtain ICP tokens. ICP tokens can be purchased through a crypto exchange, or they can be received through other activities such as participating in the NNS governance and receiving grants from the DFINITY foundation.
+If you've already redeemed a cycles coupon in the past, you can convert ICP tokens into cycles. Before you can convert ICP tokens into cycles, first you need to obtain ICP tokens. ICP tokens can be purchased through a crypto exchange, or they can be received through other activities such as participating in the NNS governance and receiving grants from the DFINITY foundation.
 
 To get your account ID so you know where to send your ICP tokens, run the command:
 
 ```
 dfx ledger account-id
-```
-
-This will display your account number on the ICP ledger, which will resemble the following:
-
-```
-e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
 ```
 
 Once you have sent some ICP to this account ID, you can verify that they were received by checking the balance with the command:
@@ -137,68 +105,28 @@ Once you have sent some ICP to this account ID, you can verify that they were re
 dfx ledger --network ic balance
 ```
 
-This will output something like this:
-
-```
-12.49840000 ICP
-```
-
-Once you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. This will require your identity principal, which you can obtain by running the command:
+After you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. This will require your identity principal, which you can obtain by running the command:
 
 ```
 dfx identity get-principal
 ```
 
-Then, to create a cycles wallet, run the following command:
+Then, to create a cycles wallet, run the following command, replacing the `PRINCIPAL_ID` with your identity's principal value that was returned from the `dfx identity get-principal` command, then replace `ICP_TOKENS` with the amount of tokens you'd like to convert into cycles:
 
 ```
 dfx ledger --network ic create-canister <PRINCIPAL_ID> --amount <ICP_TOKENS>
 ```
 
-Replace the `PRINCIPAL_ID` with your identity's principal value that was returned from the `dfx identity get-principal` command, then replace `ICP_TOKENS` with the amount of tokens you'd like to convert into cycles.
-
-For example, if your principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and you want to convert 3.5 ICP tokens into cycles, the command would be:
-
-```
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 3.5
-```
-
-This command will process for a few moments, and will output something that resembles:
-
-```
-Transfer sent at BlockHeight: 351220
-Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-The ID in this output is the address of the canister where your wallet will live. In this example, it would be `gastn-uqaaa-aaaae-aaafq-cai`. Now that your cycles wallet canister has been created, you need to install the wallet code with the command:
+The ID in this output is the address of the canister where your wallet will live. Now that your cycles wallet canister has been created, you need to install the wallet code with the following command, replacing the `CANISTER_ID` with the value you received in the output of the previous command:
 
 ```
 dfx identity --network ic deploy-wallet <CANISTER_ID>
 ```
 
-Replace the `CANISTER_ID` with the value you received in the output of the previous command, such as:
-
-```
-dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
-```
-
-The output of this command will resemble the following:
-
-```
-Creating a wallet canister on ICP.
-The wallet canister on the "ic" network for user "MyIdentity" is "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-To verify that your wallet is now configured and ready to use, query the balance of the wallet with the command:
+To verify that your wallet is now configured and ready to use, query the balance of the wallet with the following command, which should return your balance in cycles:
 
 ```
 dfx wallet --network ic balance
-```
-
-This should return your balance in cycles:
-
-```
-6.951 TC (trillion cycles).
 ```
 
 ## Deploying your dapp to the mainnet
@@ -225,9 +153,7 @@ Now, you can deploy your dapp to the mainnet by running the following command:
 dfx deploy --network ic
 ```
 
-In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. 
-
-Using the flag --network ic is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
+In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
 
 :::caution
 If you manually converted ICP tokens into cycles, and your cycles wallet doesn't contain enough cycles to complete this deployment, you can add more cycles to your wallet with a command such as:

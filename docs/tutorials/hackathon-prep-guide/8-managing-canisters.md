@@ -13,13 +13,6 @@ To get the canister ID of the `backend` canister that's been deployed on the mai
 ```sh
 dfx canister id backend --network ic
 ```
-
-This command will return the canister's ID, which will look something like this:
-
-```
-bkyz2-fmaaa-aaaaa-qaaaq-cai
-```
-
 If you want to get the canister ID for a locally deployed canister, simply omit the `--network ic` flag, such as:
 
 ```sh
@@ -32,13 +25,6 @@ To obtain information about the canister, such as the canister's controller(s) a
 
 ```sh
 dfx canister info backend
-```
-
-The output will be returned, such as:
-
-```
-Controllers: bnz7o-iuaaa-aaaaa-qaaaa-cai x4d3z-ufpaj-lpxs4-v7gmt-v56ze-aub3k-bvifl-y4lsq-soafd-d3i4k-fqe
-Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
 
 ## Adding an identity as a controller of a canister
@@ -56,13 +42,7 @@ dfx identity use ControllerExample
 dfx identity get-principal
 ```
 
-The output will resemble the following:
-
-```
-lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
-```
-
-Copy this value. You'll then use the `dfx canister update-settings` command to add this principal to be a controller of your `backend` canister, but first, you need to switch back to your previously created identity, since only existing controllers can add new controllers:
+Then, use the `dfx canister update-settings` command to add the returned principal to be a controller of your `backend` canister, but first, you need to switch back to your previously created identity, since only existing controllers can add new controllers:
 
 ```sh
 dfx identity use MyIdentity
@@ -74,24 +54,6 @@ Then, use the `dfx canister update-settings` command:
 dfx canister update-settings backend --add-controller PRINCIPAL_ID
 ```
 
-For example, to use your principal value from above:
-
-```sh
-dfx canister update-settings backend --add-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
-```
-
-This command adds the principal `lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae` as an additional controller of your `backend` canister. To confirm that this principal has been added, you can run the `dfx canister info` command again:
-
-```sh
-dfx canister info backend
-```
-
-Now you can see this principal listed as a controller:
-
-```
-Controllers: bnz7o-iuaaa-aaaaa-qaaaa-cai lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae x4d3z-ufpaj-lpxs4-v7gmt-v56ze-aub3k-bvifl-y4lsq-soafd-d3i4k-fqe
-Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
-```
 
 ## Removing an identity as a controller of a canister
 
@@ -104,16 +66,7 @@ dfx canister update-settings backend --remove-controller PRINCIPAL_ID
 Alternatively, you can use the `--set-controller` flag instead of the `--add-controller` flag. If any controllers are set using the `--set-controller` flag, any other existing controllers will be removed. For example, re-run the command above, but use the `--set-controller` flag instead:
 
 ```sh
-dfx canister update-settings backend --set-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
-```
-
-You will be warned that you'll be removing yourself as a controller, since you're setting the `ControllerExample` identity as the sole controller, while you're using the `MyIdentity` identity. Accept this warning.
-
-Then, rerun the `dfx canister info backend` command. The output should now be:
-
-```
-Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
-Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
+dfx canister update-settings backend --set-controller PRINCIPAL_ID
 ```
 
 
@@ -161,32 +114,6 @@ Or, to stop all canisters, use the command:
 dfx canister stop --network ic --all
 ```
 
-This command displays output similar to the following:
-
-```
-Stopping code for canister backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-Stopping code for canister frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
-```
-
-Then you can verify that the canisters have been stopped by rerunning the `dfx canister status` command:
-
-```sh
-dfx canister status --network ic backend
-```
-
-Which should return:
-
-```
-Canister status call result for backend.
-Status: Stopped
-Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
-Memory allocation: 0
-Compute allocation: 0
-Freezing threshold: 2_592_000
-Memory Size: Nat(2363181)
-Balance: 3_100_000_000_000 Cycles
-Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
-```
 
 ## Starting a canister
 
@@ -196,26 +123,19 @@ Then to start the canister again, run the command:
 dfx canister start --network ic --all
 ```
 
-This will return a confirmation such as:
-
-```
-Starting code for canister backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-Starting code for canister frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
-```
-
 
 ## Checking the cycles balance of a canister
 
 To check a canister's cycles balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
 
 ```sh
-dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai --network ic
+dfx canister status backend --network ic
 ```
 
 The output will resemble the following, where the value `Balance` refers to the cycles balance:
 
 ```
-Canister status call result for 5o6tz-saaaa-aaaaa-qaacq-cai.
+Canister status call result for backend.
 Status: Stopped
 Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 Memory allocation: 0
@@ -245,7 +165,7 @@ There are a few ways to top up a canister:
 If you currently have a balance of ICP tokens within your dfx ledger account ID, you can use the `dfx ledger top-up` command to automatically convert that ICP into cycles and deposit it into the specified canister, for example:
 
 ```sh
-dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --amount 2.7 --network ic
+dfx ledger top-up backend --amount 2.7 --network ic
 ```
 
 ### Using a cycles wallet
@@ -253,7 +173,7 @@ dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --amount 2.7 --network ic
 If you already have converted some ICP into cycles and filled a cycles wallet, you can send cycles from that wallet to the canister with the `dfx canister deposit-cycles` command, such as:
 
 ```sh
-dfx canister deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai --network ic
+dfx canister deposit-cycles 1000000 backend --network ic
 ```
 
 ## Getting cycles back from a canister
@@ -263,14 +183,14 @@ To withdraw cycles from a canister, the canister must be deleted. The cycles wil
 You can stop and delete the canister with the commands:
 
 ```sh
-dfx canister stop jqylk-byaaa-aaaal-qbymq-cai --network ic
-dfx canister delete jqylk-byaaa-aaaal-qbymq-cai --network ic
+dfx canister stop backend --network ic
+dfx canister delete backend --network ic
 ```
 
 The output of the `dfx canister delete` command will return information regarding the cycles withdraw:
 
 ```
-Beginning withdrawal of cycles to canister jqylk-byaaa-aaaal-qbymq-cai; on failure try --no-wallet --no-withdrawal.
+Beginning withdrawal of cycles to canister backend; on failure try --no-wallet --no-withdrawal.
 Setting the controller to identity principal.
 Installing temporary wallet in canister backend to enable transfer of cycles.
 Attempting to transfer 3089393970000 cycles to canister jqylk-byaaa-aaaal-qbymq-cai.

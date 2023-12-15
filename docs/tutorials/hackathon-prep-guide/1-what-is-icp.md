@@ -1,27 +1,21 @@
 # 1: What is the Internet Computer?
 
+## Overview
+
+The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters** on ICP. Canisters are highly scalable to directly serve user experiences. Each canister on the Internet Computer is hosted on an independent version of the blockchain network called a **subnet**.
+
 ## Vision of the Internet Computer 
 
-The Internet Computer is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as canisters on ICP. Each canister is hosted on an independent blockchain network running on nodes called a subnet.
+The Internet Computer's vision is to extend the public internet with serverless cloud functionality to create a blockchain so powerful, it plays the role of 'Cloud 3.0'. 
 
-The Internet Computer's vision is to create a blockchain so powerful, it plays the role of Cloud 3.0. ICP extends the public internet with serverless cloud functionality. 
+Developers can build almost anything using ICP's advanced smart contract capabilities without using traditional IT infrastructure. Users can interact with decentralized applications deployed on ICP directly in their web browser without needing a crypto wallet. 
 
-Developers can build almost anything using advanced smart contract software without using traditional IC infrastructure. Users can interact with decentralized applications without needing a crypto wallet, and smart contracts are scalable to directly serve user experiences. 
-
-You can learn more about the ICP vision in the [ICP deck](https://deck.internetcomputer.org/). 
+You can learn more about the vision of the Internet Computer in the [ICP deck](https://deck.internetcomputer.org/). 
 
 ## Architecture of the Internet Computer Protocol
-
-ICP's architecture is has four layers:
-
-1. [Peer-to-peer.](https://internetcomputer.org/how-it-works/peer-to-peer-p2p/)
-2. [Consensus.](https://internetcomputer.org/how-it-works/consensus/)
-3. [Message routing.](https://internetcomputer.org/how-it-works/message-routing/)
-4. [Execution.](https://internetcomputer.org/how-it-works/execution-layer/)
-
 ### Subnets
 
-An subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with it's state and computation, is replicated across every node on the subnet.
+An subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
 
 Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets, but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
 
@@ -35,15 +29,15 @@ You can read more about deterministic decentralization on the [Internet Computer
 
 A core component of ICP is the protocol's advanced cryptographic mechanisms, which are collectively referred to as chain-key cryptography. Chain-key cryptographic methods provide the ability for ICP to achieve functionalities and scalability that other networks can't. 
 
-Chain-key cryptography uses a threshold signature schemes, which uses a secret signing key in a threshold signature scheme that is distributed across all replicas in a subnet. 
+Chain-key cryptography uses a secret signing key in a [threshold signature scheme](/how-it-works/chain-key-technology) that is distributed across all replicas in a subnet. 
 
 Chain-key cryptography enables the following functionalities:
 
-- Content received from the Internet Computer can be verified through validating a signature, without needing to sync the entire network. 
+- Content received from the Internet Computer can be verified through validating a signature without needing to sync the entire network. 
 
 - New subnets and nodes can be added to the network autonomously. Faulty nodes can be recovered autonomously as well.
 
-- Pseudo-randomness through chain-key cryptography can be used by canisters that require randomness. 
+- Pseudo-randomness through chain-key cryptography can be used within dapps that require randomness.  
 
 - Transactions that are targeted at other blockchain networks can be computed fully on-chain, allowing for integrations with chains such as Bitcoin and Ethereum. 
 
@@ -54,7 +48,7 @@ To learn more about chain-key cryptography, check out [this documentation.](/how
 
 ### Seamless user onboarding
 
-Users can be onboarded into the ICP ecosystem seamlessly through dozens of different educational resources in all different formats, lengths, and focuses. Seamless onboarding helps developers get started building on ICP quickly, and provide resources for connecting with other developers to ask questions or help others. Onboarding also helps facilitate widespread adoption and advocation for ICP. A few onboarding resources include:
+Users can be onboarded into the ICP ecosystem seamlessly through dozens of different educational resources in all different formats, lengths, and focuses. Seamless onboarding helps developers get started building on ICP quickly, and provides resources for connecting with other developers to ask questions or help others. Onboarding also helps facilitate widespread adoption and advocation for ICP. A few onboarding resources include:
 
 - [ICP.Hubs](https://internetcomputer.org/community): Local communities dedicated to promoting adoption and awareness of ICP through education, strategic partnerships, and project acceleration. You can learn more about ICP.Hubs [here]. 
 
@@ -74,7 +68,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 - [ICP Community Discord](https://discord.gg/jnjVVQaE2C).
 
-- [DFINITY community forum](https://forum.dfinity.org/)
+- [DFINITY community forum](https://forum.dfinity.org/).
 
 - [ICP Crash course video](https://www.youtube.com/watch?v=Zmm-oo3ibPA&t=3411s).
 
@@ -89,7 +83,7 @@ Infinite scalability is especially beneficial for hosting large scale projects o
 
 ICP is able to directly integrate with other blockchain networks without using bridges through the ICP's advanced cryptography. Through threshold ECDSA, coupled with chain-key cryptography, ICP can natively create signed transactions on other blockchains like Ethereum and Bitcoin. This allows for dapps deployed on ICP to interact directly with other networks and their smart contracts, tokens, and other digital assets. 
 
-ICP is integrated with the Bitcoin network using chain-key ECDSA signatures and a protocol-level integration, allowing for a canister to create a Bitcoin address, then send or receive bitcoin directly ias if they were a regular Bitcoin user. ICP will also use chain-key ECDSA to facilitate an upcoming integration with Ethereum that will allow Ethereum smart contracts and digital assets like ERC-20 tokens to be used in ICP canisters. 
+ICP is integrated with the Bitcoin network using chain-key ECDSA signatures and a protocol-level integration, allowing for a canister to create a Bitcoin address, then send or receive bitcoin directly as if they were a regular Bitcoin user. ICP will also use chain-key ECDSA to facilitate an upcoming integration with Ethereum that will allow Ethereum smart contracts and digital assets like ERC-20 tokens to be used in ICP canisters. 
 
 Using Bitcoin or Ethereum through ICP is faster, cheaper, and more performant than using the other networks directly. You can learn more about cross-chain integrations, such as the Bitcoin integration, in the documentation [here](https://internetcomputer.org/bitcoin-integration/).
 
@@ -106,15 +100,15 @@ ICP is designed with features that strive to make it future-proof. Some key comp
 
 - Interoperability: Through chain-key cryptography, ICP is able to directly interact with other blockchains without using bridges. This interoperability contributes to ICP's ability to adapt and change in the blockchain ecosystem. 
 
-## Canisters smart contracts
+## Canister smart contracts
 
-The term canister refers to a smart contract on ICP that is a computational unit that bundles together both smart contract code and state. Canister smart contracts can define functions that can be called by external services or other canisters. Canisters communicate with one another through asynchronous messages. Each message is executed in isolation, allowing for increased levels of concurrent execution.
+The term **canister** refers to a smart contract on ICP. Canisters are a computational unit that bundles together both smart contract code and state. They can define functions that can be called by external services or other canisters. Canisters communicate with one another through asynchronous messages. Each message is executed in isolation, allowing for increased levels of concurrent execution.
 
-At a high level, a canister is used to expose methods. A method is a piece of code specifying a task which declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
+At a high level, a canister is used to expose methods. A **method** is a piece of code specifying a task which declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
 
 Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/developer-docs/setup/install/index.mdx), and there are several community-developed canister development kits such as Python and Typescript.
 
-A canister is managed by a controller, which can be a centralized entity, a decentralized entity such as a DAO, or a canister can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister.
+A canister is managed by a **controller**, which can be a centralized entity, a decentralized entity such as a DAO, or a canister can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister.
 
 You can learn more about canister smart contracts in [this documentation.](https://internetcomputer.org/how-it-works/canister-lifecycle/)
 
@@ -134,7 +128,7 @@ Canister smart contracts can be used for almost any workflow, use-case, or proje
 
 - Hosting application servers.
 
-- Connect Web2 services to Web3 without using oracles.
+- Connecting Web2 services to Web3 services without using oracles.
 
 - Hosting failover and backups.
 
@@ -150,26 +144,26 @@ Canister smart contracts can be used for almost any workflow, use-case, or proje
 
 - Hosting live auctions.
 
-- Cross-chain infrastructure. 
+- Facilitating cross-chain infrastructure. 
 
 Want some inspiration? Check out the [Awesome ICP repo](https://github.com/dfinity/awesome-internet-computer) to see some projects in the ecosystem.
 
 
 ### Cycles
 
-Controllers are also responsible for assuring that a canister contains sufficient **cycles** to pay for the canister's resources, which include network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles.
+In addition to managing a canister, controllers are also responsible for assuring that a canister contains sufficient **cycles** to pay for the canister's resources, such as used network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles.
 
-Cycles are used to pay for the resources, such as memory, storage, and compute power, that are used by a canister using the Internet Computer Protocol's reverse gas model. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
+Cycles are used to pay for the resources, such as memory, storage, and compute power, that are used by a canister using the Internet Computer Protocol's reverse gas model. When a canister is deployed on the mainnet, cycles are 'charged' for the creation of the canister, then for every action that a canister performs.
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
 ### Languages 
 
-To develop a canister smart contract, many developers use the IC SDK, which natively supports Motoko and Rust. However, canister smart contracts can be deployed in any language if the code has been compiled into WebAssembly (Wasm) modules using a canister development kit (CDK). A CDK is an adapter used by the IC SDK that provides programming languages with the necessary tools and features required to create and manage canisters. There are several community contributed CDKs for languages such as Python and TypeScript.
+To develop a canister, many developers use the IC SDK, which natively supports Motoko and Rust. However, canisters can be deployed in any language if the code has been compiled into WebAssembly (Wasm) modules using a canister development kit (CDK). A CDK is an adapter used by the IC SDK that provides programming languages with the necessary tools and features required to create and manage canisters. There are several community contributed CDKs for languages such as Python and TypeScript.
 
-It is possible to create a dapp that uses multiple canister smart contracts written in different languages. Canisters written in different languages use Candid, an interface description language (IDL) to share and exchange information. 
+It is possible to create a dapp that uses multiple canisters written in different languages. Canisters that are written in different languages utilize Candid, an interface description language (IDL), to share and exchange information. 
 
-Languages that can be used to develop on ICP currently include:
+Languages that are supported via the IC SDK and community CDKs currently include:
 
 - **Motoko**: Designed by DFINITY specifically for ICP canister development. It supports ICP's unique features and workflows while providing a robust yet familiar programming environment. Motoko is easy to learn and use for application development. It is similar to languages such as JavaScript, Ruby, Python, or Solidity. 
 

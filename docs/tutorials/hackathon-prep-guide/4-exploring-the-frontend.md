@@ -1,10 +1,14 @@
 # 4: Exploring the frontend
 
+## Overview
+
+Recall that a frontend canister is used to contain an application's user interface assets. In this tutorial, you will explore the frontend canister code to learn more.
+
 ## Exploring the `vite-motoko-react` frontend code
 
 In this sample, there is a frontend canister that provides a UI using React code stored in the `src/App.tsx` file, CSS styling code stored in `src/App.css`, and an index page stored at `src/index.html`.
 
-The `src/App.tsx` file by default contains the following content:
+The `src/App.tsx` file by default contains the following content, which has been annotated to explain the code's functionality:
 
 ```typescript
 
@@ -177,7 +181,9 @@ The `src/App.css` file by default contains the following content, which is used 
 }
 ```
 
-Then, the `src/index.html` file by default contains the following content, which refers to the `src/main.tsx` file:
+You can learn more about CSS [here](https://www.w3schools.com/css/).
+
+Then, the `src/index.html` file by default contains the following content, which imports and refers to the `src/main.tsx` file:
 
 ```html
 <!DOCTYPE html>
@@ -209,6 +215,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   </React.StrictMode>,
 );
 ```
+
+Together, these files enable the frontend canister's user interface, as seen in [2: Deploying your first fullstack dapp](./2-deploying-first-fullstack-dapp.md).
 
 ## Learning more about frontend canisters
 
@@ -286,9 +294,9 @@ On ICP, canisters can communicate directly with external servers or other blockc
 
 HTTPS outcalls allow smart contract canisters on ICP to make calls directly to external HTTPS servers. Then, the response of these HTTPS calls can be used by the smart contract in a safe way that doesn't result in the a replica state divergence. 
 
-HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries, such as an oracle, required for the canister to communicate with external servers, and using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional, 'Web 2', services.
+HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries required for the canister to communicate with external servers. Using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional 'Web 2' services.
 
-Currently, the ICP HTTPS outcalls feature supports the GET, HEAD, and POST methods for HTTPS requests. 
+Currently, the ICP HTTPS outcalls feature supports the `GET`, `HEAD`, and `POST` methods for HTTPS requests. 
 
 You can learn more about HTTPS outcalls in the documentation [here](developer-journey/level-3/3.2-https-outcalls.md).
 

@@ -1,11 +1,12 @@
 # 3: Exploring the backend code
 
+## Overview
+
+In the previous tutorial, you deployed a sample full-stack dapp using the `vite-react-motoko` example boilerplate. This tutorial builds off of that previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](2-deploying-first-fullstack-dapp.md), it is recommended that you complete it prior to starting this tutorial.
+
+Previously, you learned that the frontend UI interacts with the backend canister's method `counter`. When the UI button is clicked, the backend canister's method `counter` increases the value of `count` by an increment of 1. In this tutorial, you'll explore the backend code to learn more about the `counter` method.
+
 ## Exploring the `vite-motoko-react` backend code
-
-In the previous tutorial, you deployed a sample full-stack dapp built using Vite, React, and Motoko. This tutorial builds off of the previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](2-deploying-first-fullstack-dapp.md), it is recommended that you complete it prior to starting this tutorial.
-
-
-In the sample fullstack dapp, you learned that the frontend UI interacts with the backend canister's method `counter`. When the UI button is clicked, the backend canister's method `counter` increases the value of `count` by an increment of 1. In this tutorial, you'll explore the backend code to learn more about the `counter` method.
 
 Recall that the `vite-motoko-react` project includes the following files and subdirectories:
 
@@ -76,7 +77,7 @@ Next, the code defines a variable (`var`) called `counter` with a value of `0`. 
 stable var counter = 0;
 ```
 
-Next, the code defines a public function called `get()`. The function is modified with the keyword `query`, which defines that calls to this function will use a query call. A query call is used for querying information from a canister's method. This tutorial will go into further detail on query calls in the section [query and update calls](#query-and-update-calls). This function simply returns the value of the `counter` variable. 
+Next, the code defines a public function called `get()`. The function is modified with the keyword `query`, which defines calls to this function will use a query call. A query call is used for querying information from a canister's method. This tutorial will go into further detail on query calls in the section [query and update calls](#query-and-update-calls). This function simply returns the value of the `counter` variable. 
 
 ```motoko
 public query func get() : async Nat {
@@ -92,7 +93,7 @@ public func inc() : async () {
 };
 ```
 
-Lastly, the `add(n : Nat)` function is defined. This function adds `n` to the current count, where `n` is a numerical value passed to the function when it is called. In the frontend UI, the button used to increase the counter value does not used this function, however it can be called manually from the CLI or Candid interface of the backend canister. This tutorial will go into further detail on Candid in the section [Candid](#candid).
+Lastly, the `add(n : Nat)` function is defined. This function adds `n` to the current count, where `n` is a numerical value passed to the function when it is called. In the frontend UI, the button used to increase the counter value does not use this function, however it can be called manually from the command line or Candid interface of the backend canister. This tutorial will go into further detail on Candid in the section [Candid](#candid).
 
 ```motoko
 public func add(n : Nat) : async () {
@@ -127,11 +128,11 @@ Typically, service-based dapps that don't include a frontend UI work well as sin
 
 ### Importing external canisters
 
-When developing a project, certain third-party canisters may be beneficial to integrate within your project. Third-party canisters refer to canisters created by DFINITY or canisters created by developers in the ICP community. One popular third-party canister that many developers choose to integrate into their project is the Internet Identity canister, which provides ICP's native authentication service. 
+When developing a project, certain third-party canisters may be beneficial to integrate within your project. Third-party canisters refer to canisters created by DFINITY or canisters created by developers in the ICP community that are designed to provide a reusable service. One popular third-party canister that many developers choose to integrate into their project is the Internet Identity canister, which provides ICP's native authentication service. 
 
 When integrating with third-party canisters, it is important to test the integration locally to assure that the integration is accurate and correct. Performing tests locally is beneficial since tests executed in a local developer environment do not cost cycles, use non-production data, and have a faster completion time when run locally. 
 
-To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the `dfx deps` workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling, then defining the pullable canister as type `pull`, and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
+To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the `dfx deps` workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
 
 
 ```json
@@ -174,7 +175,7 @@ public query func get() : async Nat {
 };
 ```
 
-**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet, since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously. This is because update calls must go through consensus on the subnet to return the result of the call. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true'. 
+**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet, since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true'. 
 
 ```motoko
 actor countCharacters {
@@ -197,7 +198,7 @@ You can learn more about canister calls in the documentation [here](/docs/curren
 
 ### Candid service descriptions
 
-Candid is an interface description language that is used to describe the public interface of a service. On ICP, a service is an application deployed as a canister. The public interfaces of a canister are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister methods, regardless of the manner used to interact with the canister. Candid is used on ICP since it supports the unique features and functions of the protocol. 
+Candid is an interface description language that is used to describe the public interface of a service. On ICP, a service is an application deployed as a canister. The public interfaces of a canister are used to interact with the canister. Candid is used on ICP since it supports the unique features and functions of the protocol. 
 
 For example, a simple service description that defines a service without any public methods would look like this:
 
@@ -235,7 +236,7 @@ You can learn more about Candid in the documentation [here](/docs/current/tutori
 
 Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
 
-The ability to upgrade a canister is a key feature of ICP, since it allows canister smart contracts to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](8-managing-canisters.md).
+The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](8-managing-canisters.md).
 
 You can learn more about upgrading canisters in the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence#upgrading-canisters).
 
