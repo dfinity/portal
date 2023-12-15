@@ -3101,6 +3101,28 @@
     "submittableId": "36108625"
   },
   {
+    "name": "Isotopic Game Store",
+    "description": "A new, Open and Cross-Platform Game Store, where games become own-able assets that can be traded, lended, resold, or otherwise repurposed. Find unlimited games that can be browsed, downloaded, and played, on the Isotopic Game Store.",
+    "website": "https://isotopic.io/game-store",
+    "logo": "/img/showcase/isotopic-game-store_logo.webp",
+    "screenshots": [
+      "/img/showcase/isotopic-game-store_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "isotopic-game-store",
+    "oneLiner": "The first Decentralized & Cross-Platform Game Store.",
+    "tags": [
+      "NFT",
+      "Games"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/IsotopicIO/icp-store",
+    "twitter": "https://twitter.com/isotopic12",
+    "youtube": "https://www.youtube.com/channel/UCrCMtg7PhCHX1tKpw5NIU7g",
+    "submittableId": "44034269"
+  },
+  {
     "id": "taxlint",
     "name": "TaxLint",
     "oneLiner": "Your automated tax reporting IC assistant.",
