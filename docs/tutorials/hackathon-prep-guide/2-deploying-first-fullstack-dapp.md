@@ -235,15 +235,15 @@ VITE v4.3.9  ready in 206 ms
 
 If you open this URL in a web browser, you will see the template Motoko React frontend interface:
 
-![Motoko React template 1](./_attachments/motoko-react-1.png)
+![Motoko React template 1](_attachments/motoko-react-1.png)
 
 If you click on the 'count is 0' button, you can increase the counter value:
 
-![Motoko React template 2](./_attachments/motoko-react-2.png)
+![Motoko React template 2](_attachments/motoko-react-2.png)
 
 For example, if you click the button 3 times, the count value will be `3`:
 
-![Motoko React template 3](./_attachments/motoko-react-3.png)
+![Motoko React template 3](_attachments/motoko-react-3.png)
 
 ## Going further: additional starter projects
 
