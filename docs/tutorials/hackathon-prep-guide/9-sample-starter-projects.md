@@ -10,4 +10,4 @@
 
 ## Next steps
 
-- [10: Resources to learn more](10-resources.md)
+- [10: Resources to learn more](10-resources.md).

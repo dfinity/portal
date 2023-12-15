@@ -158,7 +158,7 @@ There are a few ways to top up a canister:
 - Using ICP in your account.
 - Using cycles in your cycles wallet.
 - Using the NNS dapp web UI. 
-- Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](../../../developer-docs/setup/cycles/cycles_management_services).
+- Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](/docs/current/developer-docs/setup/cycles/cycles_management_services).
 
 ### Using ICP
 
@@ -252,4 +252,4 @@ dfx canister --network ic delete --all
 
 ## Next steps
 
-- [9: Sample starter projects](9-sample-starter-projects.md)
+- [9: Sample starter projects](9-sample-starter-projects.md).
