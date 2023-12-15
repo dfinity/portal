@@ -119,7 +119,7 @@ const sidebars = {
       label: "Hackathon prep guide",
       link: {
         type: "doc",
-        id: "tutorials/hackathon-prep-guide",
+        id: "tutorials/hackathon-prep-guide/index",
       },
       items: [
         "tutorials/hackathon-prep-guide/what-is-icp",
