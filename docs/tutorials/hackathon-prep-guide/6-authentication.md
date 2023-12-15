@@ -12,19 +12,19 @@ To create an Internet Identity, navigate to the II frontend URL: https://identit
 
 Select 'Create New' from the UI.
 
-![Internet Identity 1](../_attachments/II_1.png)
+![Internet Identity 1](_attachments/II_1.png)
 
 Next, select 'Create Passkey'.
 
-![Internet Identity 2](../_attachments/II_2.png)
+![Internet Identity 2](_attachments/II_2.png)
 
 When prompted, choose how to create your passkey, either on your current device or you can use another device. 
 
-![Internet Identity 3](../_attachments/II_3.png)
+![Internet Identity 3](_attachments/II_3.png)
 
 Then, enter the CAPTCHA to continue.
 
-![Internet Identity 4](../_attachments/II_4.png)
+![Internet Identity 4](_attachments/II_4.png)
 
 Your Internet Identity has been created! It'll be shown on the screen, and it is recommended that you write it down in a safe location to save it. 
 
@@ -32,15 +32,15 @@ This number is your Internet Identity. With this number and your passkey, you wi
 
 Once you save it, select the 'I saved it, continue' button.
 
-![Internet Identity 5](../_attachments/II_5.png)
+![Internet Identity 5](_attachments/II_5.png)
 
 Then, you can connect your Internet Identity to dapps, shown in the Dapps Explorer:
 
-![Internet Identity 6](../_attachments/II_6.png)
+![Internet Identity 6](_attachments/II_6.png)
 
 If you scroll down, you will see an option to add another passkey, and you will see options to enable recovery methods. **It is highly recommended to enable the recovery methods so that you can recover your Internet Identity if the hardware passkey is ever lost.**
 
-![Internet Identity 7](../_attachments/II_7.png)
+![Internet Identity 7](_attachments/II_7.png)
 
 ## Integrating Internet Identity into your dapp
 

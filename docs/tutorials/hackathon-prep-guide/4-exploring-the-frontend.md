@@ -298,7 +298,7 @@ HTTPS outcalls provide the ability for different use cases and have several adva
 
 Currently, the ICP HTTPS outcalls feature supports the `GET`, `HEAD`, and `POST` methods for HTTPS requests. 
 
-You can learn more about HTTPS outcalls in the documentation [here](developer-journey/level-3/3.2-https-outcalls.md).
+You can learn more about HTTPS outcalls in the documentation [here](/docs/current/tutorials/developer-journey/level-3/3.2-https-outcalls).
 
 ## Next steps
 

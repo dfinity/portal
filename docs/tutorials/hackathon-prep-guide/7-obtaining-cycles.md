@@ -38,11 +38,11 @@ To obtain this coupon, first, navigate to the website https://faucet.dfinity.org
 
 Click on the `REQUEST CYCLES` button on the faucet web page to join the Discord server.
 
-![Getting Coupon](../_attachments/faucet_step_1.png)
+![Getting Coupon](_attachments/faucet_step_1.png)
 
 Once inside the Discord server, navigate into the `#cycles-faucet` channel. 
 
-![Cycles-faucet](../_attachments/cycles-faucet.png)
+![Cycles-faucet](_attachments/cycles-faucet.png)
 
 In this channel, execute the following slash command:
 
@@ -60,7 +60,7 @@ Once you have your coupon code, head back to the <https://faucet.dfinity.org> we
 
 Now, click **NEXT STEP** to continue. Once you have a coupon code, enter your coupon code within the faucet UI.
 
-![Enter Coupon](../_attachments/faucet_step_3.png)
+![Enter Coupon](_attachments/faucet_step_3.png)
 
 Click **NEXT STEP** to continue.
 

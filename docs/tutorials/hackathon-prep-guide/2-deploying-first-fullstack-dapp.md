@@ -162,7 +162,7 @@ Before you can deploy your first dapp on ICP, you will need to set up your devel
 
 - [x] A command line interface (CLI) window open. This window is also referred to as the 'terminal' window.
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](./../../setup/install/index.mdx) page. The IC SDK includes the CLI tool `dfx`, which is the primary tool used to creating, managing, and deploying canisters. It also includes Motoko, which is ICP's native programming language. 
+- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/setup/install/) page. The IC SDK includes the CLI tool `dfx`, which is the primary tool used to creating, managing, and deploying canisters. It also includes Motoko, which is ICP's native programming language. 
 
 - [x] A code editor installed. The [VSCode IDE](https://code.visualstudio.com/download) is a popular choice.
 
