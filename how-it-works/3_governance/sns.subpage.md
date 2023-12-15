@@ -16,7 +16,7 @@ An SNS consists of an open, permissionless governance system governing a dapp, a
 ## SNS DAO
 An SNS is an open, permissionless governance system.
 Generally, for each dapp that is under SNS DAO control, there is one SNS DAO.
-The governance system is very similar to the [NNS that governs the full ICP](./01_network-nervous-system-nns.subpage.md), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions how to evolve the dapp that are called _proposals_.
+The governance system is very similar to the [NNS that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions how to evolve the dapp that are called _proposals_.
 Each SNS community can choose its own unique tokenomics and governance rules by parameters that can be set for each SNS DAO.
 
 
@@ -60,7 +60,7 @@ With very few exceptions, proposals are executed automatically and fully on-chai
 
 ### SNS canisters
 Each SNS DAO consists of a set of _canisters smart contracts_ that run _Wasm code_.
-The most central canisters closely resemble the [Network Nervous System](./01_network-nervous-system-nns.subpage.md) (NNS) which is the DAO that governs the full ICP.
+The most central canisters closely resemble the [Network Nervous System](/how-it-works/network-nervous-system-nns/) (NNS) which is the DAO that governs the full ICP.
 The _governance canister_ that implements the governance system and the _ledger canister_ that implements an SNS specific governance token.
 The _swap canister_ implements the initial decentralization swap that is used during the launch process to raise initial funds in the form of ICP and swap them for newly minted SNS tokens.
 These canisters, together with a few additional ones, form one SNS DAO that governs one dapp.
@@ -70,7 +70,7 @@ These canisters, together with a few additional ones, form one SNS DAO that gove
 The SNS DAOs are hosted on the _SNS subnet_.
 
 
-The Wasms run on SNS canister are approved by the [NNS](./01_network-nervous-system-nns.subpage.md) and published on an NNS canister called the _SNS wasm modules canister (SNS-W)_.
+The Wasms run on SNS canister are approved by the [NNS](/how-it-works/network-nervous-system-nns/) and published on an NNS canister called the _SNS wasm modules canister (SNS-W)_.
 If an SNS community decides, by DAO decision, to update the SNS, then the DAO will automatically fetch the new version from SNS-W and update the canisters accordingly.
 This means that all the SNS DAOs run code that is pre-approved by the NNS and they all run the same code (some of the SNS might be a few versions behind).
 The fact that this is built into the platform makes it easy for SNS DAO communities to maintain the code. Moreover, it is easy for users to verify different SNS DAOs as they all run the same, pre-approved code.

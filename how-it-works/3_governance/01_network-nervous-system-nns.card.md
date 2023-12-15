@@ -10,4 +10,4 @@ The Network Nervous System (NNS) is the DAO that controls the Internet Computer 
 The NNS governs all aspects of the Internet Computer, including its tokenomics, the rules of the NNS governance itself, the topology of the node machines, and the software that is run on the node machines. All these decisions are executed fully on-chain, which eliminates the need for trusted third parties.
 
 
-[Go deeper](/nns/)
+[Go deeper](/how-it-works/network-nervous-system-nns/)

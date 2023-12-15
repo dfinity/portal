@@ -14,4 +14,4 @@ The SNS framework includes a process on how to launch a new SNS which includes r
 Any dapp can be tokenized and decentralized by handing it over to a new SNS DAO.
 
 
-[Go deeper](/sns/)
+[Go deeper](/how-it-works/sns/)
