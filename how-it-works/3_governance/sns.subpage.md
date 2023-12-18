@@ -48,7 +48,7 @@ Most proposals are adopted if
 2) more than 50% of the total voting power are in favor of the proposal. At this point, the proposal's result cannot be changed anymore even if all remaining voters vote against the proposal and therefore the proposal is executed without awaiting the end of the voting period.
 
 
-For _critical_ proposals, these rules are more strict and passing a proposal requires two thirds of the votes to be in favor of it and at least 20% of the totally available voting power voted in favor of the proposal (enough participation).
+For _critical_ proposals, these rules are more strict and passing a proposal requires two thirds of the votes to be in favor of it and at least 20% of the totally available voting power in favor of the proposal (enough participation).
 
 
 ### Proposal execution
