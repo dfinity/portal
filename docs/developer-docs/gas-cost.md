@@ -6,7 +6,7 @@ The Internet Computer requires computation operations and storage to be supporte
 
 Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer leverages “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
 
-1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+1 XDR is equal to 1 Trillion cycles. As of December 18, 2022, the exchange rate for 1 XDR = $1.336610, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
 In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launched with a replication factor in the order of 30, different sizes may become available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The pricing mechanics for the Bitcoin Mainnet API is slightly different, see the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md) for details.
 
@@ -38,7 +38,7 @@ For a single canister that provides a service or function that is called by othe
 
 - 1_000 ingress messages received per month with 1_000 bytes per message: 3_200_000_000 cycles. 
 
-**Approximate monthly cost:** 13_812_225_000_000 cycles; 13.812225152 XDR. At the exchange rate of 1.308860, this would cost $18.08 USD.
+**Approximate monthly cost:** 13_812_225_000_000 cycles; 13.812225152 XDR. At the exchange rate of 1.336610, this would cost $18.46 USD.
 
 ### Simple static website with a frontend and backend canister 
 
@@ -46,11 +46,29 @@ For a simple static website that uses two canisters (one for the website's backe
 
 - Canister creation for two canisters (one-time fee): 200_000_000_000 cycles.
 
-- Storing 8GB of data (across both canisters): 1_016_000 cycles per second, 2_670_340_600_000 cycles per month.
+- Storing 4GB of data (across both canisters): 508_000 cycles per second, 1_335_170_300_000 cycles per month.
 
-- Using 2% compute resources: 20_000_000 cycles per second; 52_565_760_000_000 cycles per month.
+- Using 1% compute resources: 10_000_000 cycles per second; 26_282_880_000_000 cycles per month.
 
-**Approximate monthly cost:** 55_236_101_000_000 cycles; 55.2361006 XDR. At the exchange rate of 1.308860, this would cost $72.30 USD.
+**Approximate monthly cost:** 27_618_050_000_000 cycles; 27.6180503 XDR. At the exchange rate of 1.336610, this would cost $36.91 USD.
+
+:::caution
+When considering developing a website on ICP, the estimated cost above might appear higher than the 'free tier' of a traditional Web2 service. However, there are several important benefits to consider that traditional Web2 web hosting services often hold behind additional paywalls, such as:
+
+- Fees for multiple developers.
+
+- Fees for access to workflows that use third-party services such as Github or Gitlab.
+
+- Fees to enable advanced frontend functionality, like developing submittable forms, certain web assets, or streaming content.
+
+- Fees to view site analysis.
+
+- Fees to upload large media files. 
+
+- Fees for advanced security functions or features.
+
+On ICP, the fees broken down in this document are the only fees that are charged for developing. Developers only pay for exactly what is used by their project's canisters in terms of resources, and no features are restricted behind additional paywalls. Developers can integrate any aspect of ICP into their dapp (such as Internet Identity or chain-key cryptography) without being charged additional fees. Development teams can exist of any size, use any workflow they desire, and do not have to worry about fitting within certain resource limits to stay under a certain paid tier. 
+:::
 
 ### Social media dapp with two canisters
 
@@ -64,7 +82,7 @@ For a project that creates a social media dapp using two canisters with around 2
 
 - 500_000 ingress messages with 1_000 bytes per message (2_500 per active user, per month): 600_002_000_000 cycles.
 
-**Approximate monthly cost:** 140_359_220_000_000 cycles; 140.3592164 XDR. At the exchange rate of 1.308860, this would cost $107.24 USD.
+**Approximate monthly cost:** 140_359_220_000_000 cycles; 140.3592164 XDR. At the exchange rate of 1.336610, this would cost $187.61 USD.
 
 ### Decentralized service using threshold ECDSA and HTTPS outcalls
 
@@ -84,7 +102,13 @@ For a project that creates a decentralized service that makes several thousand H
 
 - 45_000 HTTPS outcalls responses with 800 bytes per message: 468_000_000 cycles.
 
-**Approximate monthly cost:** 445_878_920_000_000 cycles; 445.87892 XDR. At the exchange rate of 1.308860, this would cost $583.59 USD.
+**Approximate monthly cost:** 445_878_920_000_000 cycles; 445.87892 XDR. At the exchange rate of 1.336610, this would cost $595.97 USD.
+
+::caution
+This example resembles that of an enterprise-level project that expects the application will make about 1500 HTTPS outcalls per day. For reference, the [Orally](https://orally.network/) enterprise application on ICP averages between 35_000 and 46_000 HTTPS outcalls per month. 
+
+An enterprise-level project of this size could potentially cost several thousands of dollars if deployed on a traditional Web2 platform. Web2 infrastructure services often charge additional fees that scale with the amount of requests that your project serves per day/per month. Traditional Web2 infrastructure services also frequently charge high fees for additional features or 'add-ons' into your application. Such fees do not exist on ICP; the fees listed in this document are the only fees associated with developing on ICP. Therefore, it is possible to run large, enterprise applications on ICP at a fraction of what the cost would be if deploying on a Web2 service.
+:::
 
 ### Instant messaging dapp with thousands of canisters
 
@@ -98,7 +122,7 @@ For a project that creates a messaging dapp where each user's data is stored in 
 
 - 15_000_000 ingress messages with 1_000 bytes per message: 3_915_000_000_000 cycles. 
 
-**Approximate monthly cost:** 1_305_574_600_000_000 cycles; 1305.57463 XDR. At the exchange rate of 1.308860, this would cost $1708.81 USD.
+**Approximate monthly cost:** 1_305_574_600_000_000 cycles; 1305.57463 XDR. At the exchange rate of 1.336610, this would cost $1745.04 USD.
 
 :::caution
 In this example, a new canister is created for each user. That means, each time a new user signs up for the dapp, a cost of 100_000_000_000 is charged. This additional cost should be considered if choosing an architecture similar to this, as it can become expensive quickly.
@@ -143,34 +167,34 @@ Pricing for the **Chain-key signing API** is available in the [Chain-key signing
 
 The pricing for HTTPS outcalls is calculated in a slightly different way as the prices for other resources: The feature has a quadratic component in its implementation, which is reflected through the formula `(3_000_000 + 60_000 * n) * n` for the base fee and `400 * n` each request byte and `800 * n` for each response byte. Those formulas have been used in the table to obtain the concrete values for subnets of sizes 13 and 34.
 
-The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.336610, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
 To derive the estimated cost for a GB Storage per month, a 30 day month is assumed.
 
  | Transaction                          | Description                                                                                                      | Who is responsible for paying the transaction fee? |  13-node Application Subnets | 34-node Application Subnets |
  |--------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------------|---------------------------|-----------------------------|
-| Canister Created                     | For creating canisters on a subnet                                                                               | Created canister | $0.130886                   | $0.342317                   |
-| Compute Percent Allocated Per Second | For each percent of the reserved compute allocation (a scarce resource).                                         | Canister with allocation | $0.0000130886               | $0.0000342317               |
-| Update Message Execution             | For every update message executed                                                                                | Target canister | $0.0000007722274            | $0.0000020196705            |
-| Ten Update Instructions Execution    | For every 10 instructions executed when executing update type messages                                           | Canister executing instructions | $0.000000000005235          | $0.000000000013089          |
-| Xnet Call                            | For every inter-canister call performed (includes the cost for sending the request and receiving the response)   | Sending canister | $0.0000003403036            | $0.0000008900248            |
-| Xnet Byte Transmission               | For every byte sent in an inter-canister call (for bytes sent in the request and response)                       | Sending canister | $0.00000000130886           | $0.00000000342267           |
-| Ingress Message Reception            | For every ingress message received                                                                               | Receiving canister | $0.000001570632             | $0.000004107806             |
-| Ingress Byte Reception               | For every byte received in an ingress message                                                                    | Receiving canister | $0.00000000261772           | $0.00000000684534           |
-| GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | $0.00000016622522           | $0.00000043474178           |
+| Canister Created                     | For creating canisters on a subnet                                                                               | Created canister | $0.133661                   | $0.34957492307                  |
+| Compute Percent Allocated Per Second | For each percent of the reserved compute allocation (a scarce resource).                                         | Canister with allocation | $0.0000133661               | $0.00000511056               |
+| Update Message Execution             | For every update message executed                                                                                | Target canister | $0.0000007885999           | $0.000000301523491            |
+| Ten Update Instructions Execution    | For every 10 instructions executed when executing update type messages                                           | Canister executing instructions | $0.00000000000534644          | $0.0000000000020442271        |
+| Xnet Call                            | For every inter-canister call performed (includes the cost for sending the request and receiving the response)   | Sending canister | $0.0000003475186            | $0.000000132874759            |
+| Xnet Byte Transmission               | For every byte sent in an inter-canister call (for bytes sent in the request and response)                       | Sending canister | $0.00000000133661           | $0.00000000051105676           |
+| Ingress Message Reception            | For every ingress message received                                                                               | Receiving canister | $0.00000160393             | $0.000000613268118             |
+| Ingress Byte Reception               | For every byte received in an ingress message                                                                    | Receiving canister | $0.00000000267322           | $0.00000000102211353          |
+| GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | $0.00000016974947           | $0.000000649042091           |
  |                                      |                                                                                                                  |                             |                             |
  | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
- | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
-| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | $0.00006568101               | $0.00022904148 |
+ | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per request byte (http_request)	| Sending canister | $0.000000006950372 |	$0.000000018177896 |
+| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request) | Sending canister | $0.000000013900744	| $0.000000036355792 |
 
-Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022).
+Cost per transaction in USD (XDR/USD exchange rate as of December 18, 2022).
 
 The following table shows the calculated storage cost per GB for a 30-day month: 
 
 |                      |                                    | 13-node Application Subnets | 34-node Application Subnets |
 |----------------------|------------------------------------|-----------------------------|-----------------------------|
-| GB Storage Per Month | For storing a GB of data per month | $0.431                      | $1.127                      |
+| GB Storage Per Month | For storing a GB of data per month | $0.446150495                      | $1.70                      |
 
 ## Resource reservation mechanism
 
