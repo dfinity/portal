@@ -23,14 +23,14 @@ Neurons are created by locking ICP utility tokens for a specified period of time
 The NNS is a stake-based governance system, where a neuron's voting power is depending on three main factors:
 1) the amount of ICP tokens the neuron stakes
 2) the neuron's _dissolve delay_ which is the duration of the staking period
-3) the neuron's _age_, which is the time since the tokens have been staked.
+3) the neuron's _age_, which on a high level is the time since the tokens have been staked.
 
 
 This incentivises neurons to vote in the long-term interest of the ICP as those neurons who are more committed have more voting power.
 
 
 Governance participation is incentivised by _voting rewards_ to neurons.
-They are distributed from newly minted ICP tokens, and are proportional to a neuron's voting power and how much voting decisions a neuron participated in.
+They are proportional to a neuron's voting power and how much voting decisions a neuron participated in.
 
 
 ## Proposals
@@ -68,9 +68,10 @@ For example, the NNS makes decisions on the following topics.
 * *Software run on the nodes*: The NNS decides which software is run by the nodes that form the blockchain. This allows the NNS to upgrade the protocol without manual intervention of the individual node operators.
 * *Tokenomics*: The NNS decides how many rewards node operators and governance participants get and the costs of computation and storage on the Internet Computer.
 * *Governance*: The NNS decides on the rules of the governance itself, e.g. how many votes are needed for a proposal to be adopted, how long the voting period is, etc.
+* *Motion*: These proposals allow for opinion polls and are the only proposals that do not have a direct effect. 
 
 
-All these decisions are executed fully on-chain and at low cost compared to other chains. Therefore, decisions can be made efficiently and frequently allowing the NNS to adapt the ICP platform to the community's needs.
+With the exception of motion proposals, all these decisions are executed fully on-chain and at low cost compared to other chains. Therefore, decisions can be made efficiently and frequently allowing the NNS to adapt the ICP platform to the community's needs.
 
 
 ## The Architecture of the NNS
@@ -83,7 +84,7 @@ In addition, there are other canisters for special purposes, for example the _cy
 
 
 To allow for flexible governance evolution, the NNS canisters are _mutable smart contracts_.
-Two canisters, called _root_ (written in Rust) and _lifeline_ (written in Motoko), are responsible for upgrading the NNS canisters. As NNS canisters control each other, it is ensured that they can only be changed by an NNS DAO decision.
+Two canisters, called _root_ and _lifeline_, are responsible for upgrading the NNS canisters. As NNS canisters control each other, it is ensured that they can only be changed by an NNS DAO decision.
 
 
 

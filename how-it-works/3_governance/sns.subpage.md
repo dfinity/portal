@@ -14,9 +14,8 @@ An SNS consists of an open, permissionless governance system governing a dapp, a
 
 
 ## SNS DAO
-An SNS is an open, permissionless governance system, also called decentralized autonomous organization (DAO).
 Generally, for each dapp that is under SNS DAO control, there is one SNS DAO.
-The governance system works very similarly to the [NNS DAO that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions how to evolve the dapp that are called _proposals_.
+The SNS DAO works very similarly to the [NNS DAO that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions how to evolve the dapp that are called _proposals_.
 Each SNS community can choose its own unique tokenomics and governance rules by parameters that can be set for each SNS DAO.
 
 
@@ -42,7 +41,7 @@ The main idea of wait-for-quiet is that proposals where all voters agree can be 
 Each SNS can decide on the initial and maximal voting period of proposals.
 
 
-For proposal adoption, SNSs distinguish between normal and _critical_ proposals.
+For proposal adoption, SNSs distinguish between normal and _critical_ proposals, which include for example treasury transfer proposals.
 Most proposals are adopted if
 1) the voting period has elapsed, there are more votes in favor than against the proposal (simple majority), and at least 3% of the totally available voting power voted in favor of the proposal (enough participation).
 2) more than 50% of the total voting power are in favor of the proposal. At this point, the proposal's result cannot be changed anymore even if all remaining voters vote against the proposal and therefore the proposal is executed without awaiting the end of the voting period.
@@ -82,7 +81,7 @@ To decentralize a dapp, the dapp is handed over to the Internet Computer togethe
 If the NNS community approves this proposal, the following steps are executed fully automatically:
 * The NNS creates a new set of SNS canisters and initializes them as defined in the NNS proposal.
 * The NNS hands over the dapp's control to the newly created SNS.
-* The NNS starts an _initial decentralization swap_ for the SNS. The purpose of this is to raise initial funds for the DAO and to decentralize the voting power. This is done by an open swap where users can contribute ICP tokens as initial funding and get in return (staked) SNS tokens and thereby a share of the DAO's voting power.
+* The NNS starts an [_initial decentralization swap_](https://internetcomputer.org/sns/faq#what-is-a-decentralization-swap) for the SNS. The purpose of this is to raise initial funds for the DAO and to decentralize the voting power. This is done by an open swap where users can contribute ICP tokens as initial funding and get in return (staked) SNS tokens and thereby a share of the DAO's voting power.
 * If the decentralization swap is successful, the SNS launch was successful and turns into a fully functional DAO.
 
 
