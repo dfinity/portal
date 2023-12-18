@@ -2,7 +2,7 @@
 title: Neurons' Fund Enhancements
 links:
   Forum Post: https://forum.dfinity.org/t/suggested-enhancements-to-the-community-fund/20411
-eta: Q3 23
+eta: Q4 23
 is_community: false
 ---
 Based on collected experience and community feedback from recent SNS launches and forum discussions, we propose four enhancements to the Community Fund framework:
