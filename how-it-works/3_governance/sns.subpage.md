@@ -31,7 +31,7 @@ In addition, each SNS can define _custom proposals_ that are specific to the dap
 
 ### Liquid democracy
 The SNS implements a form of _liquid democracy_, which means that neurons can either vote directly on proposals, or delegate their voting power to other neurons, called _following_.
-Following is done on the basis of proposal _types_.
+In the SNS, following is done on the basis of proposal _types_.
 This facilitates following different experts on different proposals kinds.
 The voting delegations can be changed at any point in time.
 
