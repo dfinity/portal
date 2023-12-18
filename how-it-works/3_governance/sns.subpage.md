@@ -81,7 +81,7 @@ To decentralize a dapp, the dapp is handed over to the Internet Computer togethe
 If the NNS community approves this proposal, the following steps are executed fully automatically:
 * The NNS creates a new set of SNS canisters and initializes them as defined in the NNS proposal.
 * The NNS hands over the dapp's control to the newly created SNS.
-* The NNS starts an [_initial decentralization swap_](https://internetcomputer.org/sns/faq#what-is-a-decentralization-swap) for the SNS. The purpose of this is to raise initial funds for the DAO and to decentralize the voting power. This is done by an open swap where users can contribute ICP tokens as initial funding and get in return (staked) SNS tokens and thereby a share of the DAO's voting power.
+* The NNS starts an [_initial decentralization swap_](/sns/faq#what-is-a-decentralization-swap) for the SNS. The purpose of this is to raise initial funds for the DAO and to decentralize the voting power. This is done by an open swap where users can contribute ICP tokens as initial funding and get in return (staked) SNS tokens and thereby a share of the DAO's voting power.
 * If the decentralization swap is successful, the SNS launch was successful and turns into a fully functional DAO.
 
 
