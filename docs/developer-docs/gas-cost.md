@@ -36,9 +36,9 @@ For a single canister that provides a service or function that is called by othe
 
 - Using 0.5% compute resources: 5_000_000 cycles per second; 13_141_440_000_000 cycles per month.
 
-- 1_000 ingress messages received per month: 260_000_000 cycles.
+- 1_000 ingress messages received per month with 1_000 bytes per message: 3_200_000_000 cycles. 
 
-**Approximate monthly cost:** 13_208_225_000_000 cycles; 13.208255 XDR. At the exchange rate of 1.308860, this would cost $17.28 USD.
+**Approximate monthly cost:** 13_812_225_000_000 cycles; 13.812225152 XDR. At the exchange rate of 1.308860, this would cost $18.08 USD.
 
 ### Simple static website with a frontend and backend canister 
 
