@@ -4,15 +4,107 @@
 
 The Internet Computer requires computation operations and storage to be supported by cycles. Cycles are generated from the conversion of Internet Computer (ICP) utility tokens.
 
-### The role of the Network Nervous System (NNS) in defining costs
+Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer leverages “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
+
+1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+
+In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launched with a replication factor in the order of 30, different sizes may become available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The pricing mechanics for the Bitcoin Mainnet API is slightly different, see the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md) for details.
+
+## The role of the Network Nervous System (NNS) in defining costs
 
 The Internet Computer is a decentralized public utility, controlled by the NNS – the network’s open, algorithmic governance system. The NNS fundamentally controls how many cycles are required for low-level computation actions for computation and storage. The number of cycles needed for individual computations will vary based on a number of factors considered by the NNS, including proposals from the community.
 
-### Details: Cost of compute and storage transactions on the Internet Computer
+## Overview: Estimated cost of sample project architectures
 
-Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer leverages “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
+To get a rough estimate of how much your project may cost, below are a few common project architectures and their estimated monthly cost in cycles. For detailed breakdowns of each cycles cost, please refer to the chart below in [Details: Cost of compute and storage transactions on the Internet Computer](#details-cost-of-compute-and-storage-transactions-on-the-internet-computer).
 
-In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launched with a replication factor in the order of 30, different sizes may become available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The pricing mechanics for the Bitcoin Mainnet API is slightly different, see the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md) for details.
+:::info
+The estimates below are simply for demonstrating what different sample architectures may cost. The actual cost of your project will vary based on the exact number of resources and canister calls that are used. Therefore, the estimates below should only be used for gaining an idea of what a project may cost, but should not be used for budgeting exact costs. For exact costs, you can calculate using the chart below for more details: [Details: Cost of compute and storage transactions on the Internet Computer](#details-cost-of-compute-and-storage-transactions-on-the-internet-computer).
+:::
+
+:::info
+These estimates use a 13-node subnet. Costs will be different if deployed on a 34-node subnet. Please refer to the chart below for more details: [Details: Cost of compute and storage transactions on the Internet Computer](#details-cost-of-compute-and-storage-transactions-on-the-internet-computer).
+:::
+
+### Single canister
+
+For a single canister that provides a service or function that is called by other canisters through inter-canister calls the following approximate cycles costs would be incurred:
+
+- Canister creation (one-time fee charged when the canister is deployed): 100_000_000_000 cycles.
+
+- Storing 2GB of data: 254_000 cycles per second; 667_585_152_000 per month.
+
+- Using 0.5% compute resources: 5_000_000 cycles per second; 13_141_440_000_000 cycles per month.
+
+- 1_000 ingress messages received per month: 260_000_000 cycles.
+
+**Approximate monthly cost:** 13_208_225_000_000 cycles; 13.208255 XDR. At the exchange rate of 1.308860, this would cost $17.28 USD.
+
+### Simple static website with a frontend and backend canister 
+
+For a simple static website that uses two canisters (one for the website's backend functionality, one for the frontend assets), that is not called by other canisters or performs HTTPS outcalls, the following approximate cycles costs would be incurred:
+
+- Canister creation for two canisters (one-time fee): 200_000_000_000 cycles.
+
+- Storing 8GB of data (across both canisters): 1_016_000 cycles per second, 2_670_340_600_000 cycles per month.
+
+- Using 2% compute resources: 20_000_000 cycles per second; 52_565_760_000_000 cycles per month.
+
+**Approximate monthly cost:** 55_236_101_000_000 cycles; 55.2361006 XDR. At the exchange rate of 1.308860, this would cost $72.30 USD.
+
+### Social media dapp with two canisters
+
+For a project that creates a social media dapp using two canisters with around 200 active user accounts that interact with the dapp monthly, the following approximate cycles costs would be incurred:
+
+- Canister creation for two canisters (one-time fee): 200_000_000_000 cycles.
+
+- Storing 25GB of data: 3_175_000 cycles per second; 8_344_814_400_000 cycles per month.
+
+- Using 5% compute resources: 50_000_000 cycles per second; 131_414_400_000_000 cycles per month.
+
+- 500_000 ingress messages with 1_000 bytes per message (2_500 per active user, per month): 600_002_000_000 cycles.
+
+**Approximate monthly cost:** 140_359_220_000_000 cycles; 140.3592164 XDR. At the exchange rate of 1.308860, this would cost $107.24 USD.
+
+### Decentralized service using threshold ECDSA and HTTPS outcalls
+
+For a project that creates a decentralized service that makes several thousand HTTPS outcalls to services outside ICP, utilizes the threshold ECDSA feature on ICP, and makes several thousand inter-canister calls, the following approximate cycles costs would be incurred:
+
+- Canister creation for ten canisters (one-time fee): 1_000_000_000_000 cycles.
+
+- Storing 150GB of data: 19_050_000 cycles per second; 50_068_886_000_000 cycles per month. 
+
+- Using 10% compute resources: 100_000_000 cycles per second; 262_828_800_000_000 cycles per month.
+
+- 100_000 ingress messages with 1_000 bytes per message: 320_000_000_000 cycles.
+
+- [5_000 threshold ECDSA signature keys](/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works#fees-for-the-t-ecdsa-production-key) per month: 130_769_230_000_000 cycles. 
+
+- 45_000 HTTPS outcalls requests with 800 bytes per message: 2_211_534_000_000 cycles.
+
+- 45_000 HTTPS outcalls responses with 800 bytes per message: 468_000_000 cycles.
+
+**Approximate monthly cost:** 445_878_920_000_000 cycles; 445.87892 XDR. At the exchange rate of 1.308860, this would cost $583.59 USD.
+
+### Instant messaging dapp with thousands of canisters
+
+For a project that creates a messaging dapp where each user's data is stored in its own canister, there are potentially thousands of canisters that each make thousands of inter-canister calls to facilitate messaging between two or more users. In this example, there are 15_000 active users, and the dapp uses only inter-canister calls, and no HTTPS outcalls:
+
+- Canister creation for 15_000 canisters (one-time fee): 1_500_000_000_000_000 cycles.
+
+- Storing 750GB of data: 95_250_000 cycles per second; 250_344_430_000_000 cycles per month. 
+
+- Using 40% compute resources: 400_000_000 cycles per second; 1_051_315_200_000_000 cycles per month.
+
+- 15_000_000 ingress messages with 1_000 bytes per message: 3_915_000_000_000 cycles. 
+
+**Approximate monthly cost:** 1_305_574_600_000_000 cycles; 1305.57463 XDR. At the exchange rate of 1.308860, this would cost $1708.81 USD.
+
+:::caution
+In this example, a new canister is created for each user. That means, each time a new user signs up for the dapp, a cost of 100_000_000_000 is charged. This additional cost should be considered if choosing an architecture similar to this, as it can become expensive quickly.
+:::
+
+## Details: Cost of compute and storage transactions on the Internet Computer
 
 The following tables provide pricing in cycles and USD for the 13-node baseline and the example of 34-node subnets. The linear scaling for a transaction is computed using the following formula, where *n* is the size of the subnet to compute the price for, **13_node_price** is the price for the transaction on the reference-size subnet with 13 nodes, and **DIV** is integer division:
 
@@ -36,13 +128,13 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
  |                                      |                                                                                                                  |                                       |                                       |                                    |
  | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27,200                     |
-| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside the IC, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
-| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27_200                     |
+| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside the IC, per request byte (http_request) | Sending canister |	400	| 5_200	| 13_600 |
+| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	Sending canister | 800	| 10_400	| 27_200 |
 
 Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
-Pricing for the **Chain-Key Signing API** is available in the [Chain-Key Signing / threshold ECDSA documentation](./integrations/t-ecdsa/t-ecdsa-how-it-works.md).
+Pricing for the **Chain-key signing API** is available in the [Chain-key signing / threshold ECDSA documentation](./integrations/t-ecdsa/t-ecdsa-how-it-works.md).
 
 :::note
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
