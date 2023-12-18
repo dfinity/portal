@@ -30,13 +30,13 @@ This incentivises neurons to vote in the long-term interest of the ICP as those 
 
 
 Governance participation is incentivised by _voting rewards_ to neurons.
-They are distributed from newly minted ICP tokens, and are proportional to the neuron's voting power and how much voting decisions a neuron participated in.
+They are distributed from newly minted ICP tokens, and are proportional to a neuron's voting power and how much voting decisions a neuron participated in.
 
 
 ## Proposals
 _Proposals_ are suggestions on how to change the ICP protocol.
 Any neuron can submit a proposal, and all other neurons can then vote on it.
-Neurons can vote with the voting power they have at the time of the proposal's creation.
+Neurons can vote with the voting power they have at the time of the proposal's submission.
 
 
 ## Liquid democracy
@@ -47,10 +47,10 @@ The voting delegations can be changed at any point in time.
 
 
 ## Voting rules
-Voting on NNS proposals follows a special algorithm, called _wait-for-quiet_.
-The main idea of wait-for-quiet is that proposals where all voters seem to agree can be executed quickly, while strongly contested proposals should have a longer voting period. This allows voters to have enough time to react if a proposal result is turned all of a sudden.
+Voting on NNS proposals follows an algorithm called _wait-for-quiet_.
+The main idea of wait-for-quiet is that proposals where all voters agree can be executed quickly, while strongly contested proposals have a longer voting period. This allows voters to have enough time to react if a proposal result is turned all of a sudden.
 Currently, most proposals start with an initial voting period of 4 days that can be extended up to a total of 8 days.
-A proposal is adopted if
+A proposal is adopted if either of the two conditions are met:
 1) the voting period has elapsed, there are more votes in favor than against the proposal (simple majority), and at least 3% of the totally available voting power voted in favor of the proposal (enough participation).
 2) more than 50% of the total voting power are in favor of the proposal. At this point, the proposal's result cannot be changed anymore even if all remaining voters vote against the proposal and therefore the proposal is executed without awaiting the end of the voting period.
 
@@ -66,7 +66,7 @@ The NNS governs the full Internet Computer blockchain.
 For example, the NNS makes decisions on the following topics.
 * *Network topology*: The NNS decides which node machines can join the network and how these nodes are organized into _subnets_.
 * *Software run on the nodes*: The NNS decides which software is run by the nodes that form the blockchain. This allows the NNS to upgrade the protocol without manual intervention of the individual node operators.
-* *Tokenomics*: The NNS decides how many rewards node operators and governance participants will get and the costs of computation and storage on the Internet Computer.
+* *Tokenomics*: The NNS decides how many rewards node operators and governance participants get and the costs of computation and storage on the Internet Computer.
 * *Governance*: The NNS decides on the rules of the governance itself, e.g. how many votes are needed for a proposal to be adopted, how long the voting period is, etc.
 
 
@@ -78,8 +78,8 @@ The NNS is implemented as a set of _canister smart contracts_ on a dedicated _NN
 Facilitated by the low computation and storage costs on the ICP, and since the NNS subnet is cross-subsidized by other subnets, voting on proposals is free of charge and a high volume of votes and proposals can be processed and stored on-chain.
 
 
-Two important canisters are the _governance canister_ that manages neurons, proposals, and the voting process, and the _ICP ledger canister_ that implements the ICP token that is used as the NNS governance token.
-In addition, there are other canisters for special purposes, for example the _cycles minting canister (CMC)_ that is responsible to mint _cycles_ (the "gas" used for computation and storage on the ICP).
+Two important canisters are the _governance canister_ that manages neurons, proposals, and the voting process, and the _ICP ledger canister_ that implements the ICP token which is the NNS governance token.
+In addition, there are other canisters for special purposes, for example the _cycles minting canister (CMC)_ that is responsible to mint _cycles_ - the "gas" used for computation and storage on the ICP.
 
 
 To allow for flexible governance evolution, the NNS canisters are _mutable smart contracts_.
