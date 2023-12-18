@@ -346,10 +346,10 @@ const RotatingStatPanel: React.FC<{}> = () => {
   const statsToDisplay = activeIndexes.map((index, i) => stats[i][index]);
 
   return (
-    <StatsPanel>
+    <StatsPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10">
       {statsToDisplay.map((stat, index) => (
         <Stat
-          key={index}
+          key={stat.title}
           title={<FadeInOutTitle title={stat.title} />}
           titleClassName="whitespace-nowrap"
           value={

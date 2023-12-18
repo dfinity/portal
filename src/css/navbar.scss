@@ -70,6 +70,20 @@
   .navbar__inner .ic0-item {
     display: none;
   }
+
+  // only display the ask AI widget on mobile when scrolling up
+  .navbar .ask-ai-widget-trigger {
+    opacity: 1;
+    transition: 300ms ease;
+    transform: scale(1.2);
+    visibility: visible;
+  }
+  nav[class*="navbarHidden_"] .ask-ai-widget-trigger {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: 300ms ease;
+  }
 }
 
 .navbar__inner {

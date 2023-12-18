@@ -313,7 +313,7 @@ function OpenChatPage() {
             <MotionLink
               variants={transitions.fadeIn}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/launching/launch-steps"
+              href="/docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal"
             >
               Launch an SNS DAO
             </MotionLink>

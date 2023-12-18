@@ -140,7 +140,7 @@ This code does the following:
 - Interacts with the backend actor to call the `whoami` method.
 - Creates an `auth` client.
 - Retrieves the identity from the `auth` client.
-- Uses the identity to create an agent that interacts with the IC.
+- Uses the identity to create an agent that interacts with ICP.
 - Then, uses the interface description of the app to create an actor that's used to call the app's service methods.
 
 :::info 
