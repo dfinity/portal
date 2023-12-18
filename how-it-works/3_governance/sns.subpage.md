@@ -23,7 +23,7 @@ Each SNS community can choose its own unique tokenomics and governance rules by 
 ### What an SNS governs
 On a high level an SNS DAO governs a dapp, that is decides on the code of that dapp and how it is evolved. On the Internet Computer this can also include the dapp's data and frontend.
 Moreover, the SNS DAO makes decisions on the DAO itself, for example on how to change tokenomics.
-More technically, there are _native proposals_ that are common to all SNS, such as proposals to upgrade the DAO-controlled dapp canisters, change governance rules, or making transfers from the treasury to open a liquidity pool on a DEX.
+More technically, there are _native proposals_ that are common to all SNSs, such as proposals to upgrade the DAO-controlled dapp canisters, change governance rules, or making transfers from the treasury to open a liquidity pool on a DEX.
 In addition, each SNS can define _custom proposals_ that are specific to the dapp's needs. A proposal can be defined to call any method on any canister. This allows, for example to define proposals that orchestrate upgrades of dapps with many canisters.
 
 
