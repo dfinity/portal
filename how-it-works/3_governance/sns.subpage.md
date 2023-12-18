@@ -78,9 +78,9 @@ The fact that this is built into the platform makes it easy for SNS DAO communit
 
 ## SNS Launch process
 The SNS framework includes a process how to launch a new SNS.
-If a dapp is decentralized, it is handed over to the Internet Computer together with an NNS proposal defining the details of the SNS launch and the initial configuration of the SNS DAO to be created. The proposal details, for example, the initial token distribution.
+To decentralize a dapp, the dapp is handed over to the Internet Computer together with an NNS proposal defining the details of the SNS launch and the initial configuration of the SNS DAO to be created. The proposal details, for example, the initial token distribution.
 If the NNS community approves this proposal, the following steps are executed fully automatically:
-* The NNS creates new set of SNS canister and initializes them as defined in the NNS proposal.
+* The NNS creates a new set of SNS canisters and initializes them as defined in the NNS proposal.
 * The NNS hands over the dapp's control to the newly created SNS.
 * The NNS starts an _initial decentralization swap_ for the SNS. The purpose of this is to raise initial funds for the DAO and to decentralize the voting power. This is done by an open swap where users can contribute ICP tokens as initial funding and get in return (staked) SNS tokens and thereby a share of the DAO's voting power.
 * If the decentralization swap is successful, the SNS launch was successful and turns into a fully functional DAO.
