@@ -61,7 +61,7 @@ With very few exceptions, proposals are executed automatically and fully on-chai
 ### SNS canisters
 Each SNS DAO consists of a set of _canisters smart contracts_ that run _Wasm code_.
 The most central canisters closely resemble the [Network Nervous System](/how-it-works/network-nervous-system-nns/) (NNS) which is the DAO that governs the full ICP.
-The _governance canister_ that implements the governance system and the _ledger canister_ that implements an SNS specific governance token.
+The _governance canister_ implements the governance system and the _ledger canister_ implements an SNS specific governance token.
 The _swap canister_ implements the initial decentralization swap that is used during the launch process to raise initial funds in the form of ICP and swap them for newly minted SNS tokens.
 These canisters, together with a few additional ones, form one SNS DAO that governs one dapp.
 
