@@ -40,17 +40,17 @@ For a single canister that provides a service or function that is called by othe
 
 **Approximate monthly cost:** 13_812_225_000_000 cycles; 13.812225152 XDR. At the exchange rate of 1.336610, this would cost $18.46 USD.
 
-### Simple static website with a frontend and backend canister 
+### Simple static website using a frontend canister
 
-For a simple static website that uses two canisters (one for the website's backend functionality, one for the frontend assets), that is not called by other canisters or performs HTTPS outcalls, the following approximate cycles costs would be incurred:
+For a simple static website that uses a single frontend canister for the website's assets, that is not called by other canisters or performs HTTPS outcalls, 
 
-- Canister creation for two canisters (one-time fee): 200_000_000_000 cycles.
+- Canister creation (one-time fee charged when the canister is deployed): 100_000_000_000 cycles.
 
-- Storing 4GB of data (across both canisters): 508_000 cycles per second, 1_335_170_300_000 cycles per month.
+- Storing 4GB of data: 508_000 cycles per second, 1_335_170_300_000 cycles per month.
 
-- Using 1% compute resources: 10_000_000 cycles per second; 26_282_880_000_000 cycles per month.
+- Using 0.5% compute resources: 5_000_000 cycles per second; 13_141_440_000_000 cycles per month.
 
-**Approximate monthly cost:** 27_618_050_000_000 cycles; 27.6180503 XDR. At the exchange rate of 1.336610, this would cost $36.91 USD.
+**Approximate monthly cost:** 14_476_610_000_000 cycles; 14.4766103 XDR. At the exchange rate of 1.336610, this would cost $19.35 USD.
 
 :::caution
 When considering developing a website on ICP, the estimated cost above might appear higher than the 'free tier' of a traditional Web2 service. However, there are several important benefits to consider that traditional Web2 web hosting services often hold behind additional paywalls, such as:
@@ -69,6 +69,18 @@ When considering developing a website on ICP, the estimated cost above might app
 
 On ICP, the fees broken down in this document are the only fees that are charged for developing. Developers only pay for exactly what is used by their project's canisters in terms of resources, and no features are restricted behind additional paywalls. Developers can integrate any aspect of ICP into their dapp (such as Internet Identity or chain-key cryptography) without being charged additional fees. Development teams can exist of any size, use any workflow they desire, and do not have to worry about fitting within certain resource limits to stay under a certain paid tier. 
 :::
+
+### Simple smart contract web dapp using a frontend canister and backend canister
+
+For a simple smart contract powered web dapp that uses two canisters (a backend canister for the dapp's functionality and a frontend canister for the user interface), the following approximate cycles costs would be incurred:
+
+- Canister creation for two canisters (one-time fee): 200_000_000_000 cycles.
+
+- Storing 4GB of data (across both canisters): 508_000 cycles per second, 1_335_170_300_000 cycles per month.
+
+- Using 1% compute resources: 10_000_000 cycles per second; 26_282_880_000_000 cycles per month.
+
+**Approximate monthly cost:** 27_618_050_000_000 cycles; 27.6180503 XDR. At the exchange rate of 1.336610, this would cost $36.91 USD.
 
 ### Social media dapp with two canisters
 
