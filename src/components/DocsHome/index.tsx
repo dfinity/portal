@@ -6,6 +6,7 @@ import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
 import Blog from "./Blog";
+import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
 
 const queryClient = new QueryClient();
 
@@ -39,54 +40,37 @@ const DocsHomePage: FC = () => {
             Start a DAO, create a token, build dapps and host assets with the
             full tech stack entirely 100% on chain.
           </p>
-          <p className="mb-0">
-            <Link
-              className="button-white button-with-icon"
-              href="/docs/current/developer-docs/"
-            >
-              Start building
-              <LinkArrowRight />
-            </Link>
-          </p>
+          <div className={"flex flex-row gap-2 flex-wrap"}>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="/docs/current/developer-docs/"
+              >
+                Start building
+                <LinkArrowRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80 flex items-center"
+                href="/docs/current/tutorials/"
+                style={{
+                  alignItems: "center",
+                }}
+              >
+                Learning with Tutorials
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-1 flex flex-col">
-          <GuidesIcon />
-          <h2 className="tw-heading-5 my-6">Guides</h2>
-          <p className="mb-6 tw-paragraph flex-1">
-            Access all of the documentation guidelines needed to get your
-            project up and running.
-          </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/docs/current/developer-docs/"
-            >
-              Start building
-              <LinkArrowRight />
-            </Link>
-          </p>
-        </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 col-span-1 flex flex-col">
-          <TutorialsIcon />
-          <h2 className="tw-heading-5 my-6">Tutorials</h2>
-          <p className="mb-6 tw-paragraph flex-1">
-            This section will guide developers to create and deploy sample
-            applications in a step-by-step mode.
-          </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/docs/current/tutorials/"
-            >
-              Start learning
-              <LinkArrowRight />
-            </Link>
-          </p>
+        <div className="sm:col-span-2 md:h-96">
+          <TeaserCarousel />
         </div>
       </section>
       <section className="mt-10">
@@ -96,7 +80,7 @@ const DocsHomePage: FC = () => {
           grid 
           grid-cols-1
           sm:grid-cols-2 
-          md:grid-cols-[1.25fr_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] 
+          md:grid-cols-6 
           px-0
           pb-5 sm:pb-10
         "
@@ -154,6 +138,34 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
+            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/solidity.png"
+                  alt="Motoko docs"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Solidity</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Bitfinity allows you to build Internet apps on the Internet
+                  Computer with Solidity, a popular language for DeFi
+                  applications.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="https://bitfinity.network"
+                    className="link-primary"
+                    title="Go to Motoko docs"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-r-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img

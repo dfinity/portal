@@ -25,9 +25,9 @@ export const SpringCounter: React.FC<{
     function paint() {
       if (spring.current) {
         spring.current.update(60);
-        const nextValue = format(Math.round(spring.current.x));
+        const nextValue = format(spring.current.x);
         if (lastValue !== nextValue) {
-          ref.current.innerText = format(Math.round(spring.current.x));
+          ref.current.innerText = format(spring.current.x);
           lastValue = nextValue;
         }
       }
@@ -39,7 +39,7 @@ export const SpringCounter: React.FC<{
     return () => {
       lastHandle >= 0 && cancelAnimationFrame(lastHandle);
     };
-  }, []);
+  }, [format, target, initialValue, initialTarget]);
 
   useEffect(() => {
     if (!spring.current) {

@@ -14,7 +14,7 @@
 	    - Stable variables in action.
 
 - [2.2 Advanced canister calls](2.2-advanced-canister-calls.md): Now that you've covered the core functionalities of canisters and using them, let's take a look at advanced canister calls. This module covers:
-    - The IC execution model.
+    - The ICP execution model.
     - Canister query calls.
 	    - Example query call.
     - Canister update calls.
@@ -35,7 +35,7 @@
 	    - Using `dfx deps`.
 
 
-- [2.4 Introduction to Candid](2.4-intro-candid.md): Candid is an interface description language that has unique support for IC features. This module covers:
+- [2.4 Introduction to Candid](2.4-intro-candid.md): Candid is an interface description language that has unique support for ICP features. This module covers:
     - Candid types and values.
 	    - Candid textual values.
     - Candid service descriptions.

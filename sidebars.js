@@ -96,6 +96,22 @@ const sidebars = {
             "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
           ],
         },
+        {
+          type: "category",
+          label: "Level 5: Internet Computer astronaut",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-5/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
+            "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+            "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
+            "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
+            "tutorials/developer-journey/level-5/5.5-auction-tutorial",
+            "tutorials/developer-journey/level-5/5.6-next-steps",
+          ],
+        },
       ],
     },
     {
@@ -160,7 +176,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "How the IC works",
+          label: "How the Internet Computer Protocol works",
           link: {
             type: "doc",
             id: "concepts/index",
@@ -188,7 +204,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer quick start",
+          label: "Developer quickstart",
           id: "developer-docs/setup/quickstart",
         },
         {
@@ -239,6 +255,16 @@ const sidebars = {
           type: "doc",
           label: "Pulling canister dependencies",
           id: "developer-docs/setup/pulling-canister-dependencies",
+        },
+                {
+          type: "doc",
+          label: "Quickstart for React developers",
+          id: "developer-docs/setup/react-quickstart",
+        },
+        {
+          type: "doc",
+          label: "Testing canisters with PocketIC",
+          id: "developer-docs/setup/pocket-ic",
         },
         {
           type: "doc",
@@ -358,6 +384,7 @@ const sidebars = {
         "developer-docs/frontend/react-frontend",
         "developer-docs/frontend/svelte-frontend",
         "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/existing-frontend",
       ],
     },
     {
@@ -918,6 +945,7 @@ const sidebars = {
         "motoko/main/pattern-matching",
         "motoko/main/sharing",
         "motoko/main/stablememory",
+        "motoko/main/stable-regions",
         "motoko/main/structural-equality",
         "motoko/main/timers",
         "motoko/main/upgrades",
@@ -968,6 +996,7 @@ const sidebars = {
         "motoko/main/base/Principal",
         "motoko/main/base/Random",
         "motoko/main/base/RBTree",
+        "motoko/main/base/Region",
         "motoko/main/base/Result",
         "motoko/main/base/Stack",
         "motoko/main/base/Text",

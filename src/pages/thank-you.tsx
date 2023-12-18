@@ -29,7 +29,7 @@ function ThankYouPage(): JSX.Element {
             variants={transitions.item}
           />
           <section className="max-w-page relative px-6 pt-20 mb-20 md:mb-40 md:px-12.5 md:mx-auto  md:pt-40 ">
-            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-[1001]">
+            <div className="md:w-7/10 lg:w-6/10 md:ml-1/12 relative z-0">
               <motion.h1
                 className="tw-heading-3 md:tw-heading-2 mb-10"
                 variants={transitions.item}

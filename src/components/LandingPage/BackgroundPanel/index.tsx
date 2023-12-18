@@ -27,16 +27,16 @@ const BackgroundPanel: React.FC<{
       {inView && <DarkHeroStyles bgColor="transparent" />}
       <div
         className={clsx(
-          "fixed z-[10] inset-0 pointer-events-none transition-opacity duration-500",
+          "fixed z-[10] inset-0 transition-opacity duration-500",
           className,
-          inView ? "opacity-100" : "opacity-0"
+          inView ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       ></div>
-      <div ref={ref} className="relative z-[13] " id={id}>
+      <div ref={ref} className="relative z-[13] pointer-events-none" id={id}>
         <BackgroundPanelContext.Provider value={inView}>
           <div
             style={{ opacity: inView ? 1 : 0 }}
-            className="transition-opacity"
+            className="transition-opacity pointer-events-auto"
           >
             {children}
           </div>

@@ -3,7 +3,7 @@
 ## Overview
 
 [Rosetta](https://www.rosetta-api.org/) is an open standard introduced by Coinbase to simplify the integration of blockchain-based tokens in exchanges, block explorers, and wallets.
-This documentation might help if you want to deploy a token on the IC that aims to be tradable on CeFi exchanges or if you are working on a block explorer or wallet. Currently there only exists a Rosetta implementation for the ICP ledger. ICRC-1 compatible ledgers cannot be used with the Rosetta API implementation that is shown in this guide. 
+This documentation might help if you want to deploy a token on ICP that aims to be tradable on CeFi exchanges or if you are working on a block explorer or wallet. Currently there only exists a Rosetta implementation for the ICP ledger. ICRC-1 compatible ledgers cannot be used with the Rosetta API implementation that is shown in this guide. 
 
 ## Set up a Rosetta node
 

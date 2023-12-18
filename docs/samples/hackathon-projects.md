@@ -1,6 +1,6 @@
 # Hackathon projects
 
-Developers from around the world are participating in hackathons, building dapps, tools and other types of projects on the IC. Get inspired, and see the source code of some of the winning projects.
+Developers from around the world are participating in hackathons, building dapps, tools and other types of projects on ICP. Get inspired, and see the source code of some of the winning projects.
 
 ## DFINIHack
 

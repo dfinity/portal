@@ -18,7 +18,10 @@ const MotionLink = motion(Link);
 
 const NnsTvl: React.FC = () => {
   const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
+  const cryptoPrice = globalData["crypto-price"]["default"] as {
+    icp: number;
+    btc: number;
+  };
   const stakingMetricsQuery = useQuery("staking-metrics", getStakingMetrics);
 
   let tvl = <>&nbsp;</>;
@@ -30,7 +33,11 @@ const NnsTvl: React.FC = () => {
       )?.samples[0]?.value;
 
     if (maybeMetric) {
-      tvl = <>${((maybeMetric * icpPrice) / 100000000000000000).toFixed(1)}B</>;
+      tvl = (
+        <>
+          ${((maybeMetric * cryptoPrice.icp) / 100000000000000000).toFixed(1)}B
+        </>
+      );
     }
   }
 
@@ -65,7 +72,10 @@ const WalletCard: React.FC<{
 
 function TokenHolders(): JSX.Element {
   const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
+  const cryptoPrice = globalData["crypto-price"]["default"] as {
+    icp: number;
+    btc: number;
+  };
 
   const ref = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(ref);
@@ -230,7 +240,7 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.item}
               >
                 <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
-                  ${(icpPrice * 0.0001).toFixed(5)}
+                  ${(cryptoPrice.icp * 0.0001).toFixed(5)}
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
                   Ledger TX Fee

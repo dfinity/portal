@@ -32,7 +32,9 @@ It is considered to be best practice that swap participants have the majority of
 The minimum and maximum funding target must be defined for the decentralization swap. Add information about the planned usage of the funds, e.g. plans of ramping up the team.
 
 ### 1.1.5. SNS tokenomics tool
-Use the [SNS tokenomics tool](https://docs.google.com/spreadsheets/u/0/d/1eSxkJl94jPt63CdOXH6ROy-WSkacW6P4qcAKMLrfBPc/edit) to analyze and document the chosen amount of tokens, initial distribution of tokens, dissolve delays etc. Both the tool and a training deck can be found in [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
+Use the [SNS Tokenomics Analyzer](https://github.com/dfinity/sns-testing/tree/main/sns_tokenomics_analyzer) to analyze the tokenomics and the resulting voting power distribution. You can find more information on [this wiki page](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration).
+
+The analyzer uses the [SNS configuration file](https://github.com/dfinity/sns-testing/blob/main/sns_tokenomics_analyzer/sns_init.yaml) as a basis that you'll later use to create the proposal for the SNS DAO.
 
 ## 1.2. Technical architecture / whitepaper / project roadmap
 
