@@ -6,14 +6,14 @@ import { useWindowSize } from "@docusaurus/theme-common";
 import clsx from "clsx";
 
 const SectionsLinks = [
-  { text: "Stats", to: "#stats" },
+  { text: "News", to: "#news" },
+  { text: "About ICP", to: "#about-icp" },
   { text: "Community", to: "#community" },
-  { text: "Dapps", to: "#dapps" },
-  { text: "The Vision", to: "#vision" },
   { text: "Technology", to: "#technology" },
-  { text: "Sustainable", to: "#sustainable" },
+  { text: "Sustainability", to: "#sustainable" },
   { text: "Start Building", to: "#startBuilding" },
   { text: "Foundation", to: "#foundation" },
+  { text: "Subscribe", to: "#subscribe" },
 ];
 const container = {
   hidden: {

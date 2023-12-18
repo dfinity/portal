@@ -21,7 +21,7 @@ To ensure resources are used fairly by users, proof of work when a user makes a 
 
 Since Motoko playground is designed for short, small-scale testing, there are limitations and restrictions imposed on canisters deployed to the playground. These limitations are:
 
-- Cycle transfer instructions are silently ignored by the system.
+- Cycle transfer instructions are silently ignored by the Motoko playground.
 - Canisters can use at most 1GB of memory.
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
@@ -30,7 +30,7 @@ Since Motoko playground is designed for short, small-scale testing, there are li
 
 ## `dfx deploy --playground`
 
-Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the IC mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
+Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
 
 ### Prerequisites
 

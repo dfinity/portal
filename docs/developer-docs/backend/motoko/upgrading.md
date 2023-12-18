@@ -5,7 +5,7 @@ Upgrading a canister allows you to preserve the existing state of a deployed can
 
 Motoko provides high-level support for preserving a canister's state using the Internet Computer's stable memory through a feature known as stable storage. This feature is designed to accommodate changes to both the Motoko compiler and the application data. 
 
-Stable storage is a Motoko-specific feature that uses the IC's stable memory data persistence feature. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 96GiB if the subnet can accomodate it. In comparison, heap storage refers to the regular Wasm data storage for a canister. Heap storage is not persisted across canister upgrades and is limited to 4GiB. 
+Stable storage is a Motoko-specific feature that uses ICP's stable memory data persistence feature. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 96GiB if the subnet can accomodate it. In comparison, heap storage refers to the regular Wasm data storage for a canister. Heap storage is not persisted across canister upgrades and is limited to 4GiB. 
 
 Consider the following example: you have a dapp that manages professional profiles and social connections. To add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
 
@@ -30,7 +30,7 @@ dfx start --clean --background
 ```
 
 :::info
-If you were registering canisters to run on a remote execution environment, e.g. the IC blockchain, you would include the --network command-line option to perform tasks on the environment specified under this parameter.
+If you were registering canisters to run on a remote execution environment, e.g. ICP blockchain, you would include the --network command-line option to perform tasks on the environment specified under this parameter.
 :::
 
 

@@ -1,10 +1,10 @@
 # Clang-Supported Languages
 
-Because the IC supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ and the `Clang` compiler.
+Because ICP supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ and the `Clang` compiler.
 
 ## Using C
 
-To illustrate how to migrate dapps written in C to run on the IC, let’s look at the simple `reverse.c` program in the [examples](https://github.com/dfinity/examples/tree/master/c) repository. The `reverse.c` program contains one function—named `go`—that reverses a string in place.
+To illustrate how to migrate dapps written in C to run on ICP, let’s look at the simple `reverse.c` program in the [examples](https://github.com/dfinity/examples/tree/master/c) repository. The `reverse.c` program contains one function—named `go`—that reverses a string in place.
 
 ### Set up the development environment
 
@@ -43,7 +43,7 @@ To compile to WebAssembly on macOS:
 
 ### Create a minimal configuration file
 
-Next, you need to prepare a simple configuration file that identifies the `reverse` dapp binary as a package that can be installed on the IC and a `build` directory so that you can use the `dfx` command-line interface to install and run the package as a canister.
+Next, you need to prepare a simple configuration file that identifies the `reverse` dapp binary as a package that can be installed on ICP and a `build` directory so that you can use the `dfx` command-line interface to install and run the package as a canister.
 
 To prepare a configuration file and build directory:
 
@@ -89,7 +89,7 @@ To create a Candid interface description file for this program:
 
 Before you can deploy and test your dapp, you need to do the following:
 
--   Connect to either the local canister execution environment, or to the IC blockchain mainnet.
+-   Connect to either the local canister execution environment, or to ICP blockchain mainnet.
 
 -   Register a network-specific identifier for the application.
 

@@ -1,7 +1,7 @@
 import Link from "@docusaurus/Link";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import clsx from "clsx";
-import React from "react";
+import React, { ReactNode } from "react";
 
 export const PlayButton: React.FC<{}> = ({}) => {
   return (
@@ -33,7 +33,7 @@ export const ImageOnlyVideoCard: React.FC<{
 const VideoCard: React.FC<{
   title: string;
   label: string;
-  description?: string;
+  description?: ReactNode;
   image: string;
   link: string;
   withPlayButton?: boolean;

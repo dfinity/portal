@@ -1,6 +1,6 @@
 # How to use HTTP outcalls: Intro
 
-This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
+This guide shoes how to use the [HTTPS outcalls](../index.md) feature of ICP. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
 
 ## Key concepts
 
@@ -8,11 +8,11 @@ This guide shoes how to use the [HTTPS outcalls](../index.md) feature of the IC.
 
 The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
 
-### IC management canister
-* [The IC management canister](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of the IC. Canisters can call into the system API by sending messages to the **IC management canister**. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
+### ICP management canister
+* [The ICP management canister](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-management-canister) - In order for a canister to use HTTPS outcalls, it needs to call into the system API of ICP. Canisters can call into the system API by sending messages to the **ICP management canister**. The intent is to make using the system API as simple as if it were just another canister. Management canister is evoked by using the identifier `"aaaaa-aa"`.
 
 :::info
-The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
+The ICP management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.). 
 :::
 
 ### Cycles

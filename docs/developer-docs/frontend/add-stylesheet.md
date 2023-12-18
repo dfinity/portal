@@ -22,7 +22,7 @@ Before starting the guide, verify the following:
 This guide requires you to use the IC SDK version `0.8.0` or later.
 :::
 
-- [x]   You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+- [x]   You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for ICP development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
 - [x]   You have stopped any local canister execution environment processes running on the local computer.
 
@@ -451,7 +451,7 @@ To deploy the dapp:
 
     Keep in mind that because you are running the canister execution environment locally, the identifiers displayed when you run the `dfx deploy` command are only valid on your machine.
 
-    To deploy canisters on the IC, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
+    To deploy canisters on ICP, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
 
         dfx deploy --network=ic
 

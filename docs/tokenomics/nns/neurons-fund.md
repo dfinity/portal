@@ -28,6 +28,8 @@ If the decentralization swap is successful, the NNS mints an amount of `X` ICP a
 
 If the decentralization swap is not successful, the maturity of NF neurons is increased again by the amount it was decreased by earlier.
 
+Please note: In the Matched Funding framework, the minimum and maximum funding targets of an SNS swap are specifically set for direct participation. This means that the success of a swap only depends on the level of direct participation, not the contributions from the Neurons’ Fund.
+
 ### 3: Participation in SNS governance
 
 Participation in voting on the SNS proposals is passed through to the NF neurons via hotkeys on the SNS neurons owned by the NNS. This means, that NF neurons are owned by NNS but permission is given to the principals that exposed maturity to NF neurons to vote on SNS proposals.
