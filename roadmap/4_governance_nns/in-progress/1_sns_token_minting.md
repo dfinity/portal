@@ -1,7 +1,7 @@
 ---
 title: Ability to mint SNS tokens and revised thresholds for voting
-links: https://forum.dfinity.org/t/new-sns-ability-to-mint-sns-tokens-revised-thresholds-for-voting/23382
-  Forum Post: 
+links:
+  Forum Post: https://forum.dfinity.org/t/new-sns-ability-to-mint-sns-tokens-revised-thresholds-for-voting/23382
 eta: Q4 23
 is_community: false
 ---
