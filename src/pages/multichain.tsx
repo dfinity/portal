@@ -594,20 +594,20 @@ function MultichainPage() {
                   <p className="flex flex-col gap-6 items-start mb-0">
                     <Link
                       className="link-primary"
-                      href="https://internetcomputer.org/ecosystem?tag=Ethereum"
+                      href="/ecosystem?tag=Ethereum"
                     >
                       <LinkArrowRight /> Open source projects with Ethereum
                       integration
                     </Link>
                     <Link
                       className="link-primary"
-                      href="https://internetcomputer.org/bitcoin-integration/faq"
+                      href="/bitcoin-integration/faq"
                     >
                       <LinkArrowRight /> FAQ about Bitcoin integration and ckBTC
                     </Link>
                     <Link
                       className="link-primary"
-                      href="https://internetcomputer.org/samples?selectedDomains=Asynchronous+DeFi"
+                      href="/samples?selectedDomains=Asynchronous+DeFi"
                     >
                       <LinkArrowRight /> Sample codes of DeFi projects
                     </Link>
