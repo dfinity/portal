@@ -264,10 +264,6 @@ with your bundler, the following steps should get you going:
 
 If you'd like to deploy a frontend asset canister without building the node or npm dependency packages, you can manually download the Wasm module dfx uses for its default frontend canister and install the canister manually.
 
-:::info
-This method may be useful for certain testing workflows, but is not recommended for production environments.
-:::
-
 - #### Step 1: Download the frontend asset canister's Wasm module.
 
 ```
