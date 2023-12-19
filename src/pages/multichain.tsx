@@ -150,11 +150,11 @@ function MultichainPage() {
 
   return (
     <Layout
-      title="Ethereum Integration"
-      description="A true World Computer enables a multi-chain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. ICP already integrates with the Bitcoin Network, and native ETH integration is underway."
+      title="Trustless multi-chain on ICP"
+      description="Decentralized applications and services can delight users by incorporating the assets and functionality of multiple blockchains. Using the Internet Computer, developers gain the technical superpowers necessary to deliver such game-changing experiences, while preserving user safety and convenience."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-ethereum-integration.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
 
       <main
         className="text-black relative "
