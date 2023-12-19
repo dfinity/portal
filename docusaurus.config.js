@@ -10,7 +10,7 @@ const lightCodeTheme = require("./codeblock-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
-const icpPricePlugin = require("./plugins/icp-price");
+const cryptoPricePlugin = require("./plugins/crypto-price");
 const xdrPricePlugin = require("./plugins/xdr-price");
 const icpXdrPricePlugin = require("./plugins/icp-xdr-price");
 const tailwindPlugin = require("./plugins/tailwind");
@@ -33,6 +33,7 @@ const {
 } = require("./plugins/utils/redirects");
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
+const contentfulPlugin = require("./plugins/contentful");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -461,7 +462,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "World Computer blockchain that reimagines the internet as an infinite smart contract platform",
+    "Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: data, content, computations, and user experiences.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -481,7 +482,7 @@ const config = {
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
-    icpPricePlugin,
+    cryptoPricePlugin,
     icpXdrPricePlugin,
     xdrPricePlugin,
     homeShowcaseProjectsPlugin,
@@ -492,6 +493,7 @@ const config = {
     whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
+    contentfulPlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],

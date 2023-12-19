@@ -113,7 +113,10 @@ function BitcoinFaqPage() {
               },
             ]}
           ></Breadcrumbs>
-          <motion.h1 className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10">
+          <motion.h1
+            id="bitcoin-integration"
+            className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10"
+          >
             What you need to know about Bitcoin integration and ckBTC
           </motion.h1>
         </AnimateSpawn>
@@ -274,6 +277,53 @@ function BitcoinFaqPage() {
                 />
               </p>
             </Faq>
+            <Faq title="How do I convert ckBTC to BTC using the NNS wallet?">
+              <p className="tw-paragraph mb-3">
+                Easy steps to getting ckBTC via your NNS wallet:
+              </p>
+              <p>
+                <strong>
+                  1. Go to the NNS frontend dapp and sign in with your Internet Identity.
+                </strong>
+                If you don't have one, you will be prompted to create one. Any device that supports
+                WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or
+                a Ledger device.
+                <img
+                  src="/img/bitcoin-integration/ckbtc-1.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+              <p>
+                <strong>2. Navigate to "My Tokens" and select ckBTC.</strong>{" "}
+                If you have ckBTC in a different wallet, send it it to your NNS principal
+              </p>
+              <p>
+                <strong>3. Click on "Send" on the bottom of the screen.</strong>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-btc1.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+              <p>
+                <strong>4. Paste a valid BTC address that you control into the "Destination" field</strong>
+              </p>
+              <p>
+                <strong>5. Select Bitcoin from the "Network" dropdown</strong>
+              </p>
+              <p>
+                <strong>6. Type in the amount you want to send or click "Max"</strong>
+              </p>
+              <p>
+                <strong>7. Click "Continue", then confirm the transaction.</strong>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-btc2.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+            </Faq>
             <Faq title="Is ckBTC wrapped?">
               <p className="tw-paragraph mb-3">
                 ckBTC isn't considered a wrapped token because it doesn't involve
@@ -316,6 +366,15 @@ function BitcoinFaqPage() {
                 cryptography integrations.
               </p>
             </Faq>
+            </FaqSection>
+            <FaqSection
+              id="security"
+              title={
+                <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
+                  Security
+                </h2>
+              }
+            >
 
             <Faq title="Does ckBTC incorporate KYT?">
               <p>
@@ -416,20 +475,16 @@ function BitcoinFaqPage() {
         hasHome={false}
         links={[
           {
-            text: "Introduction",
-            to: "#introduction",
+            text: "Bitcoin integration",
+            to: "#bitcoin-integration",
           },
           {
-            to: "#participate",
-            text: "Participate",
+            to: "#ckbtc",
+            text: "ckBTC",
           },
           {
-            to: "#decentralization-swap",
-            text: "Decentralization swap",
-          },
-          {
-            to: "#governance",
-            text: "Governance",
+            to: "#security",
+            text: "Security",
           },
           {
             to: "#resource-center",

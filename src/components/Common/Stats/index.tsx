@@ -16,9 +16,17 @@ const Fallback: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-export const StatsPanel: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const StatsPanel: React.FC<{
+  children: ReactNode;
+  className?: string;
+}> = ({ children, className }) => {
   return (
-    <div className="mt-20 backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl py-12 px-6 md:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10">
+    <div
+      className={clsx(
+        "mt-20 backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl py-12 px-6 md:px-20 ",
+        className
+      )}
+    >
       {children}
     </div>
   );

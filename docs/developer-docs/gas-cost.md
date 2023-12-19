@@ -36,9 +36,9 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
  |                                      |                                                                                                                  |                                       |                                       |                                    |
  | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27,200                     |
-| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside the IC, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
-| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27,200                     |
+| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside ICP, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
+| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
 
 Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
@@ -67,9 +67,9 @@ To derive the estimated cost for a GB Storage per month, a 30 day month is assum
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | $0.00000016622522           | $0.00000043474178           |
  |                                      |                                                                                                                  |                             |                             |
  | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
- | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
-| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
+ | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
+| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
 
 Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022).
 
@@ -78,3 +78,23 @@ The following table shows the calculated storage cost per GB for a 30-day month:
 |                      |                                    | 13-node Application Subnets | 34-node Application Subnets |
 |----------------------|------------------------------------|-----------------------------|-----------------------------|
 | GB Storage Per Month | For storing a GB of data per month | $0.431                      | $1.127                      |
+
+## Resource reservation mechanism
+
+In order to encourage long-term usage and discourage spiky usage patterns of resources, the Internet Computer uses a *resource reservation mechanism* that was adopted by the community in [NNS proposal 12604](https://dashboard.internetcomputer.org/proposal/126094).
+Every time a canister allocates new storage bytes, the system sets aside some amount of cycles from the main balance of the canister. These reserved cycles are used to cover future payments for the newly allocated bytes. The reserved cycles are not transferable and the amount of reserved cycles depends on how full the subnet is. For example, it may cover days, months, or even years of payments for the newly allocated bytes.
+
+The operations that allocate new bytes are:
+
+- Wasm instruction: `memory.grow`.
+- System API calls: `ic0.stable_grow()` `ic0.stable64_grow()`.
+- Increasing the `memory_allocation` in canister settings.
+
+These operations reserve some amount of cycles by moving them from the main balance of the canister to the reserved cycles balance.
+The amount of reserved cycles depends on how many bytes are allocated and on the current subnet usage:
+
+- If subnet usage is below `450GiB`, then the amount of reserved cycles per allocated byte is `0`.
+- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage from `0` to `10` years worth of storage payments at the subnet capacity (which is currently `750GiB`).
+
+A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in canister settings.
+Such opted-out canisters would not be able to allocate if the subnet usage is above `450GiB` though.

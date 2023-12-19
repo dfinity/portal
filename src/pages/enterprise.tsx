@@ -56,7 +56,9 @@ function EnterprisePage() {
               >
                 <b>The future of cloud is serverless: for enterprise, government and Web3 applications.</b>
                 <span style={{display: "block", height: "0.6em"}}></span>
-                Now imagine an autonomous serverless cloud that hosts 
+                A truly <i>autonomous cloud</i> is one which is not controlled by a company or entity, but 
+                is public and decentralized like the internet itself.
+                Now imagine a blockchain protocol that enables an autonomous serverless cloud that hosts 
                 data as well as logic, where software is tamperproof and unstoppable, can scale horizontally,
                 and processes HTTP, where you can build sovereign systems and services 
                 that don't need the protection of firewalls... 
@@ -121,11 +123,9 @@ function EnterprisePage() {
                 Serverless Computing
               </h2>
               <p className="tw-lead-sm">
-                Enterprises and Web3 projects looking for serverless architectures to enable quick and
-                agile development cycles that reduce infrastructure maintenance and
-                operational costs can rely on the Internet Computer. It offers
-                serverless features comparable to existing cloud providers with extra
-                benefits like tamperproof code, decentralization and statefulness.
+               Enterprises and Web3 projects looking for serverless architectures to enable quick and agile
+               development cycles that reduce infrastructure maintenance and operational costs can rely on the 
+               Internet Computer, a decentralized blockchain protocol. 
               </p>
               <p className="tw-lead-sm">
                 The Internet Computer programming model is also similar to that of
@@ -189,16 +189,15 @@ function EnterprisePage() {
                 frameworks. 
               </p>
               <p className="tw-lead-sm">
-                Simply put, it has no backdoors through which hackers can pass, or hosted 
-                software or data can be attacked by viruses and ransomware. That's because 
-                it's a virtual platform created by advanced math &mdash; fault-tolerant network 
-                protocols and cryptography developed by world class
-                cryptographers, engineers and computer scientists in a project that applied hundreds of person-years effort.          
+              Simply put, the Internet Computer has no backdoors through which hackers can pass, or hosted 
+              software or data can be attacked by viruses and ransomware. That's because it's a virtual 
+              platform created by advanced math &mdash; fault-tolerant network protocols and cryptography 
+              built by world class cryptographers, engineers and computer scientists in a project 
+              developed in hundreds of person-years of effort.          
               </p>
               <p className="tw-lead-sm">
-                Now you can move beyond the security flaws of Legacy IT, to a world in which software is 
-                tamperproof and unstoppable by building on the 
-                Internet Computer.
+              Now you can move beyond the security flaws of Legacy IT, to a world in which software is tamperproof 
+              and unstoppable by building on the Internet Computer protocol
               </p>              
               <p className="tw-lead-sm">
                 Say goodbye to being hacked and encrypted by ransomware, slash your 
@@ -307,7 +306,7 @@ function EnterprisePage() {
         <section className="mt-20 md:mt-48">
           <div className="container-10">
             <h2 className="tw-heading-3 md:tw-heading-60 text-black md:w-6/10 md:mx-auto text-center mb-10 md:mb-16">
-              Special applications of autonomous cloud
+              Applications of autonomous cloud
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-20">
               <div className="flex flex-col">

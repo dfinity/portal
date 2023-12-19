@@ -176,7 +176,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "How the IC works",
+          label: "How the Internet Computer Protocol works",
           link: {
             type: "doc",
             id: "concepts/index",
@@ -204,7 +204,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer quick start",
+          label: "Developer quickstart",
           id: "developer-docs/setup/quickstart",
         },
         {
@@ -256,6 +256,16 @@ const sidebars = {
           label: "Pulling canister dependencies",
           id: "developer-docs/setup/pulling-canister-dependencies",
         },
+                {
+          type: "doc",
+          label: "Quickstart for React developers",
+          id: "developer-docs/setup/react-quickstart",
+        },
+        {
+          type: "doc",
+          label: "Testing canisters with PocketIC",
+          id: "developer-docs/setup/pocket-ic",
+        },
         {
           type: "doc",
           label: "Using Visual Studio Code",
@@ -269,6 +279,17 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
+        {
+          type: "category",
+          label: "Subnet types",
+          link: {
+            type: "doc",
+            id: "developer-docs/backend/subnet-types",
+          },
+          items: [
+            "developer-docs/backend/eu-subnets",
+          ],
+        },
       ],
     },
     {
@@ -374,6 +395,7 @@ const sidebars = {
         "developer-docs/frontend/react-frontend",
         "developer-docs/frontend/svelte-frontend",
         "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/existing-frontend",
       ],
     },
     {
@@ -934,6 +956,7 @@ const sidebars = {
         "motoko/main/pattern-matching",
         "motoko/main/sharing",
         "motoko/main/stablememory",
+        "motoko/main/stable-regions",
         "motoko/main/structural-equality",
         "motoko/main/timers",
         "motoko/main/upgrades",
@@ -984,6 +1007,7 @@ const sidebars = {
         "motoko/main/base/Principal",
         "motoko/main/base/Random",
         "motoko/main/base/RBTree",
+        "motoko/main/base/Region",
         "motoko/main/base/Result",
         "motoko/main/base/Stack",
         "motoko/main/base/Text",

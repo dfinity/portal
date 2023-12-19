@@ -487,6 +487,14 @@ div[class^="announcementBarContent"] {
   background-color: #b8eda8;
 }
 
+.link-primary:not(.link-with-icon) {
+  svg,
+  img {
+    vertical-align: text-bottom;
+    margin-right: 8px;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
