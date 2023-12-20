@@ -1,5 +1,8 @@
 # 0.6 Introduction to dfx
 
+[![ICP Developer Journey 0.6 | Introduction to dfx](https://img.youtube.com/vi/J5rhdzjuq6k/0.jpg)](https://www.youtube.com/watch?v=J5rhdzjuq6k)
+
+
 ## Overview
 
 `dfx` is a command line utility that is used to interact with the IC SDK. It is the primary tool that is used for creating, managing, and deploying dapps onto the Internet Computer. 
