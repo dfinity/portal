@@ -144,7 +144,7 @@ New Wasm instrumentation:
 
 As the block instruction is neither the beginning nor the end of the “straight-line code” in the new algorithm, there are no more decrements after each block instruction, and hence the number of memory accesses for this example just halved. This might seem like a subtle difference, but many language interpreters use quite entangled match/switch statements in the very heart of the interpreting loop.
 
-More details can be found in the `instrument()` function source code on [github.com/dfinity/ic](github.com/dfinity/ic).
+More details can be found in the `instrument()` function source code on [github.com/dfinity/ic](https://github.com/dfinity/ic).
 
 ## Adjustments of costs
 
@@ -154,13 +154,13 @@ This leads to a non-uniform instruction cost model and could affect the total cy
 
 To assign each Wasm instruction a correct weight, most instructions were benchmarked. The benchmarks provide a good estimation of the actual time the CPU spends on each Wasm instruction.
 
-More details can be found in the `wasm_instructions_bench()` function on [github.com/dfinity/ic](github.com/dfinity/ic).
+More details can be found in the `wasm_instructions_bench()` function on [github.com/dfinity/ic](https://github.com/dfinity/ic).
 
 The [results for the benchmarks](https://github.com/dfinity/ic/blob/09c3000df0a54c470994ceb5bc33bd8457b02fe7/rs/execution_environment/benches/wasm_instructions/WASM_INSTRUCTIONS.md) correlate pretty closely with the [CPU instruction tables](https://www.agner.org/optimize/instruction_tables.pdf)web, which confirms that the benchmarks make sense and pose no surprises for developers. A short summary of the costs adjustments:
 
 ![Cost table](/img/blog/webassembly-instru-3.webp)
 
-More details can be found in the `instruction_to_cost_new()` function on [github.com/dfinity/ic](github.com/dfinity/ic).
+More details can be found in the `instruction_to_cost_new()` function on [github.com/dfinity/ic](https://github.com/dfinity/ic).
 
 ## Results
 
