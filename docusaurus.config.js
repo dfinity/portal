@@ -286,8 +286,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Bitcoin for Web3",
-            href: "/ckbtc",
+            title: "Trustless multi-chain",
+            href: "/multichain",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
