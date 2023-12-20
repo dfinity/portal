@@ -624,10 +624,7 @@ function MultichainPage() {
                     Multi-chain sample code
                   </h3>
                   <p className="flex flex-col gap-6 items-start mb-0">
-                    <Link
-                      className="link-primary"
-                      href="/samples?selectedDomains=Multi-chain"
-                    >
+                    <Link className="link-primary" href="/samples">
                       <LinkArrowRight /> More Sample codes
                     </Link>
                   </p>
