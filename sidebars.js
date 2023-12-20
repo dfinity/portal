@@ -412,6 +412,11 @@ const sidebars = {
           id: "developer-docs/production/canister-history",
         },
         {
+        type: "doc",
+        label: "Canister recovery",
+        id: "developer-docs/production/canister-recovery",
+        },
+        {
           type: "category",
           label: "Custom domains",
           link: {
