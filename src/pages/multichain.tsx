@@ -603,7 +603,7 @@ function MultichainPage() {
                       className="link-primary"
                       href="/bitcoin-integration/faq"
                     >
-                      <LinkArrowRight /> FAQ about Bitcoin integration and ckBTC
+                      <LinkArrowRight /> FAQ about BTC integration & ckBTC
                     </Link>
                     <Link
                       className="link-primary"
@@ -615,7 +615,7 @@ function MultichainPage() {
                       className="link-primary"
                       href="https://medium.com/dfinity/hackathon-winners-put-top-icp-features-into-practice-90c9abeef342"
                     >
-                      <LinkArrowRight /> Hackathon Projects for Multi-chain
+                      <LinkArrowRight /> Multi-chain Hackathon Projects
                     </Link>
                   </p>
                 </ContentCard>
@@ -624,8 +624,8 @@ function MultichainPage() {
                     Multi-chain sample code
                   </h3>
                   <p className="flex flex-col gap-6 items-start mb-0">
-                    <Link className="link-primary" href="">
-                      <LinkArrowRight /> More multi-chain Sample codes
+                    <Link className="link-primary" href="/samples">
+                      <LinkArrowRight /> More Sample codes
                     </Link>
                   </p>
                   <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
