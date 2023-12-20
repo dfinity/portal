@@ -35,7 +35,7 @@ Consider a single canister that provides a service or function that is used by v
 - Number of daily active users: 5
 - Number of daily messages per active user: 100
 - Number of request and response bytes per message: 351
-- Number of instructions executed per message: 7787
+- Number of instructions executed per message: 778713
 - Number of calls per message: 1
 - Number of request and response bytes per call: 300
 - Number of instructions per call: 10000
@@ -50,7 +50,7 @@ Consider a single canister that provides a service or function that is used by v
 The estimated cost monthly in USD for a project with these metrics would be:
 
 - Storage	$2.05 USD (= 1.53e+12 cycles).
-- Execution	$1.87 USD (= 1.39e+12 cycles).
+- Execution	$1.88 USD (= 1.40e+12 cycles).
 - Messaging	$0.03 USD (= 1.90e+10 cycles).
 - HTTP outcalls	$0 USD (= 0.00e+0 cycles).
 
@@ -64,7 +64,7 @@ Consider a simple static website that uses a single frontend canister for the we
 - Number of daily active users: 10
 - Number of daily messages per active user: 50
 - Number of request and response bytes per message: 350
-- Number of instructions executed per message: 77000
+- Number of instructions executed per message: 778713
 - Number of calls per message: 0
 - Number of request and response bytes per call: 0
 - Number of instructions per call: 0
@@ -78,8 +78,8 @@ Consider a simple static website that uses a single frontend canister for the we
 
 The estimated cost monthly in USD for a project with these metrics would be:
 - Storage	$2.05 USD (= 1.53e+12 cycles).
-- Execution	$0.02 USD (= 1.23e+10 cycles).
-- Messaging	$0.01 USD (= 1.05e+10 cycles).
+- Execution	$0.02 USD (= 1.65e+10 cycles).
+- Messaging	$0.01 USD (= 1.06e+10 cycles).
 - HTTP outcalls	$0 USD (= 0.00e+0 cycles).
 
 :::caution
@@ -109,7 +109,7 @@ Consider a simple smart contract powered web dapp that uses two canisters (a bac
 - Number of daily active users: 10
 - Number of daily messages per active user: 1000
 - Number of request and response bytes per message: 350
-- Number of instructions executed per message: 77000
+- Number of instructions executed per message: 778713
 - Number of calls per message: 5
 - Number of request and response bytes per call: 1000
 - Number of instructions per call: 77000
@@ -123,7 +123,7 @@ Consider a simple smart contract powered web dapp that uses two canisters (a bac
 
 The estimated cost monthly in USD for a project with these metrics would be:
 - Storage	$4.11 USD (= 3.07e+12 cycles).
-- Execution	$1.68 USD (= 1.26e+12 cycles).
+- Execution	$1.79 USD (= 1.34e+12 cycles).
 - Messaging	$1.21 USD (= 9.01e+11 cycles).
 - HTTP outcalls	$0 USD (= 0.00e+0 cycles).
 
@@ -136,7 +136,7 @@ Consider a project that creates a social media dapp using two canisters with aro
 - Number of daily active users: 50
 - Number of daily messages per active user: 6127
 - Number of request and response bytes per message: 245
-- Number of instructions executed per message: 144218
+- Number of instructions executed per message: 1442185
 - Number of calls per message: 5
 - Number of request and response bytes per call: 1000
 - Number of instructions per call: 7
@@ -150,7 +150,7 @@ Consider a project that creates a social media dapp using two canisters with aro
 
 The estimated cost monthly in USD for a project with these metrics would be:
 - Storage	$10.28 USD (= 7.67e+12 cycles).
-- Execution	$44.35 USD (= 3.31e+13 cycles).
+- Execution	$50.74 USD (= 3.79e+13 cycles).
 - Messaging	$34.38 USD (= 2.57e+13 cycles).
 - HTTP outcalls	$4.26 USD (= 3.18e+12 cycles).
 
@@ -163,7 +163,7 @@ Consider a project that creates a decentralized service that makes several thous
 - Number of daily active users: 100
 - Number of daily messages per active user: 4400
 - Number of request and response bytes per message: 500
-- Number of instructions executed per message: 43725
+- Number of instructions executed per message: 437253
 - Number of calls per message: 50
 - Number of request and response bytes per call: 1000
 - Number of instructions per call: 10000
@@ -177,7 +177,7 @@ Consider a project that creates a decentralized service that makes several thous
 
 The estimated cost monthly in USD for a project with these metrics would be:
 - Storage	$61.83 USD (= 4.61e+13 cycles).
-- Execution	$536.12 USD (= 4.00e+14 cycles).
+- Execution	$538.90 USD (= 4.02e+14 cycles).
 - Messaging	$265.36 USD (= 1.98e+14 cycles).
 - HTTP outcalls	$8.06 USD (= 6.01e+12 cycles).
 
@@ -210,7 +210,7 @@ Consider a project that creates a messaging dapp where each user's data is store
 
 The estimated cost monthly in USD for a project with these metrics would be:
 - Storage	$369.73 USD (= 2.76e+14 cycles).
-- Execution	$419.11 USD (= 3.13e+14 cycles).
+- Execution	$511.89 USD (= 3.82e+14 cycles).
 - Messaging	$622.12 USD (= 4.64e+14 cycles).
 - HTTP outcalls	$0 USD (= 0.00e+0 cycles).
 
