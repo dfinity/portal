@@ -89,6 +89,12 @@ export const createActor = (canisterId, options = {}) => {
 export const hello_frontend = createActor(canisterId);
 ```
 
+:::caution
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally. 
+
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
+:::
+
 Then, if you look at the `src/hello_frontend/src/index.js` file, you can see that it takes the generated actor, and uses it to make a call to the hello canister’s greet method:
 
 ```

@@ -163,6 +163,12 @@ In the `index.js` file, each of the previously explained pieces are pulled toget
 }
 ```
 
+:::caution
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally. 
+
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
+:::
+
 This constructor first creates a `HTTPAgent`, which is wraps the JS `fetch` API and uses it to encode calls through the public API. This code also optionally fetches the root key of the replica, for non-mainnet deployments. Finally, it creates an actor using the automatically generated interface for the canister will call, passing it the `canisterId` and the `HTTPAgent` that have been initialized.
 
 This `actor` instance is now set up to call all of the service methods as methods. Once this is all set up, you can simply run `dfx generate` whenever you make changes to your canister API, and the full interface will automatically stay in sync in your frontend code.
