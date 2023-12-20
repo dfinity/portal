@@ -630,10 +630,16 @@ function MultichainPage() {
                   </p>
                   <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
                     {[
-                      "NFT Minting",
-                      "Hello World",
-                      "Static Website",
-                      "Basic Dex",
+                      "IC ETH Starter",
+                      "Add ERC-20 to IC ETH Starter",
+                      "OISY",
+                      "PoS app for ckBTC",
+                      "ICRC2 Swap Demo",
+                      "Multi-subnet Bitcoin Custody",
+                      "ETH Payment Tutorials",
+                      "B3 Wallet",
+                      "ckBTC",
+                      "ckETH",
                     ]
                       .map((title) =>
                         sampleItems.find(
