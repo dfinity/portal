@@ -212,7 +212,7 @@ The estimated cost monthly in USD for a project with these metrics would be:
 - Storage	$369.73 USD (= 2.76e+14 cycles).
 - Execution	$419.11 USD (= 3.13e+14 cycles).
 - Messaging	$622.12 USD (= 4.64e+14 cycles).
-- HTTP outcalls	$0 (= 0.00e+0 cycles).
+- HTTP outcalls	$0 USD (= 0.00e+0 cycles).
 
 :::caution
 In this example, a new canister is created for each user. That means, each time a new user signs up for the dapp, a cost of 100_000_000_000 is charged. This additional cost should be considered if choosing an architecture similar to this, as it can become expensive quickly.
