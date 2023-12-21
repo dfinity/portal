@@ -8,7 +8,7 @@ Membership in a DAO is determined by holding a certain cryptographic asset or to
 
 ## Network Nervous System (NNS)
 
-The Internet Computer Protocol is governed by a DAO known as the Network Nervous System (NNS). The NNS is a fully on-chain, decentralized system that is responsible for making decisions regarding every aspect of the Internet Computer. To participate in the NNS, ICP token holders must stake the ICP token for a certain period of time in an entity known as a neuron. Neurons provide stability required for the responsible governance of the IC by ensuring that the ICP tokens staked within it cannot be exchanged for a specific period of time known as the 'lock-up' period. 
+The Internet Computer Protocol is governed by a DAO known as the Network Nervous System (NNS). The NNS is a fully on-chain, decentralized system that is responsible for making decisions regarding every aspect of the Internet Computer. To participate in the NNS, ICP token holders must stake the ICP token for a certain period of time in an entity known as a neuron. Neurons provide stability required for the responsible governance of the Internet Computer Protocol by ensuring that the ICP tokens staked within it cannot be exchanged for a specific period of time known as the 'lock-up' period. 
 
 Neurons can then vote on proposals, which are proposed changes or upgrades to the protocol. When a proposal has been accepted, it will be autonomously executed. Neurons are encouraged to vote on every proposal, and in return for actively voting, receive voting rewards in the form of ICP tokens. 
 
@@ -36,7 +36,7 @@ Start participating in the NNS app by checking out the [NNS Intro](token-holders
 
 ## Service Nervous System (SNS)
 
-Another feature of the Internet Computer is the ability for on-chain dapps to be governed by a DAO through a Service Nervous System (SNS). An SNS is a DAO for a specific dapp that uses the same format and architecture that the NNS uses to govern the IC. A dapp's SNS uses proposals to vote on changes to the dapp, and the dapp's native token can be staked within a neuron in return for voting rights for that SNS. 
+Another feature of the Internet Computer is the ability for on-chain dapps to be governed by a DAO through a Service Nervous System (SNS). An SNS is a DAO for a specific dapp that uses the same format and architecture that the NNS uses to govern ICP. A dapp's SNS uses proposals to vote on changes to the dapp, and the dapp's native token can be staked within a neuron in return for voting rights for that SNS. 
 
 To learn more about SNSs, check out the documentation [here](https://internetcomputer.org/sns).
 

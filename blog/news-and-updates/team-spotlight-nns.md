@@ -9,20 +9,20 @@ image: /img/blog/dev-update-blog-nns-1.jpeg
 
 Hello devs and welcome to a new blog post series: team spotlight! 
 
-Every two weeks, we're going to be showcasing one of the DFINITY teams to learn what they're working on and dive deeper into how the team fits into the IC ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
+Every two weeks, we're going to be showcasing one of the DFINITY teams to learn what they're working on and dive deeper into how the team fits into the ICP ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
 
 For the first installment of this series, we sat down with the Network Nervous System team to learn more about the NNS, the SNS initiative, and the current goals the team is focused on.
 
 **To get started, let's first dive into the focus and purpose of the NNS team. What would you say the mission of the NNS team is?**
 
-*NNS stands for Network Nervous System. The NNS is the DAO (decentralized autonomous organization) that governs and coordinates the full Internet Computer Protocol. It coordinates, for example, how nodes are assigned to subnets and how the Internet Computer protocol is updated to new versions.*
-*So, as the name suggests, the main mission of the NNS team is to contribute to the design, implementation, and maintenance of the NNS DAO. In addition to this, the NNS team is a key contributor to the design and implementation of the Service Nervous System (SNS), which is a DAO framework provided by the IC platform that allows individual applications to decentralize their governance.*
+*NNS stands for Network Nervous System. The NNS is the DAO (decentralized autonomous organization) that governs and coordinates the full Internet Computer Protocol. It coordinates, for example, how nodes are assigned to subnets and how the Internet Computer Protocol is updated to new versions.*
+*So, as the name suggests, the main mission of the NNS team is to contribute to the design, implementation, and maintenance of the NNS DAO. In addition to this, the NNS team is a key contributor to the design and implementation of the Service Nervous System (SNS), which is a DAO framework provided by ICP that allows individual applications to decentralize their governance.*
 
 **The NNS team has quite the responsibility to manage and contribute to, what an exciting team to be a part of! What is the composition of the NNS team?**
 
 *The team consists of 6 engineers, 1 engineering manager, and 2 researchers spread across Switzerland and USA.*
 
-**What products or features on the IC are the primary focus of the NNS team?**
+**What products or features on ICP are the primary focus of the NNS team?**
 
 *There are two main products that the NNS team works on:*
 
@@ -50,7 +50,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 *We usually work on different projects in parallel (combining NNS and SNS features). One project that we currently work on is making the SNS launch process more user friendly. At the moment, launching an SNS includes 2 NNS proposals and quite some manual steps from the developer team that is handing over their dapp to a new SNS.*
 
-*As the name suggests, once the  “1-proposal” feature is implemented, this full process will be done in one single NNS proposal. This means that there is one NNS proposal where the IC community decides whether an SNS should be launched for a given dapp and if this proposal is adopted the full SNS launch is triggered and executed automatically.*
+*As the name suggests, once the  “1-proposal” feature is implemented, this full process will be done in one single NNS proposal. This means that there is one NNS proposal where the ICP community decides whether an SNS should be launched for a given dapp and if this proposal is adopted the full SNS launch is triggered and executed automatically.*
 
 **That sounds like it will drastically improve the SNS launch process! Could you give some insight into what pieces or components are being developed to achieve this goal?**
 

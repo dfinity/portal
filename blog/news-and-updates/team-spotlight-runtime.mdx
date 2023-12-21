@@ -1,29 +1,29 @@
 ---
 title: Team spotlight - Runtime 
-description: This week, we sat down with the Runtime team to dig deeper into the team's role on the IC, their current roadmap, plus some of the features and improvements they've developed in response of direct developer feedback.
+description: This week, we sat down with the Runtime team to dig deeper into the team's role on ICP, their current roadmap, plus some of the features and improvements they've developed in response of direct developer feedback.
 tags: [Team spotlight]
 image: /img/blog/dev-update-blog-runtime-1.jpg
 ---
 
 ![Runtime Team spotlight](../../static/img/blog/dev-update-blog-runtime-1.jpg)
 
-Hello developers and welcome to the second installment of the dev blog's new series team spotlight! This week, we sat down with the Runtime team to dig deeper into the team's role on the IC, their current roadmap, plus some of the features and improvements they've developed in response of direct developer feedback. 
+Hello developers and welcome to the second installment of the dev blog's new series team spotlight! This week, we sat down with the Runtime team to dig deeper into the team's role on ICP, their current roadmap, plus some of the features and improvements they've developed in response of direct developer feedback. 
 
 **Let's get started. To kick things off, could you describe the mission of the Runtime team?**
 
-*Our mission is “secure and efficient runtime for smart contracts”. In computer science, the word “runtime” refers to an environment in which programs run. The Internet Computer (IC) runs smart contracts using WebAssembly, which is one of the strengths of the IC as a blockchain because WebAssembly is an open standard that supports a wide range of programming languages. Our team strives to enhance the security and performance of WebAssembly execution and everything related to it.*
+*Our mission is “secure and efficient runtime for smart contracts”. In computer science, the word “runtime” refers to an environment in which programs run. The Internet Computer (ICP) runs smart contracts using WebAssembly, which is one of the strengths of ICP as a blockchain because WebAssembly is an open standard that supports a wide range of programming languages. Our team strives to enhance the security and performance of WebAssembly execution and everything related to it.*
 
 **I think that's a great way to describe the team's mission! What an insightful explanation. What is the composition of the Runtime team?**
 
 *The team consists of four software engineers: Adam, Andriy, Maciej, Ulan and two researchers: Alex and Stefan.*
 
-**What product or feature on the IC is the primary focus of the Runtime team?**
+**What product or feature on ICP is the primary focus of the Runtime team?**
 
 *The main focus is WebAssembly execution and everything around it. Most of our projects are about optimizing performance, memory usage and improving security. We also work on more developer-facing features like timers, performance counter, and composite queries.*
 
-**Could you give a brief overview of how the IC runtime environment is structured and how it operates?**
+**Could you give a brief overview of how the ICP runtime environment is structured and how it operates?**
 
-*The runtime environment is part of the more general execution environment of the IC. The execution environment receives messages from the message routing layer of the IC. The scheduler in the execution environment decides which messages to run. Each message specifies the target WebAssembly method of the target canister that needs to be invoked in order to process the message. That information is passed to the runtime environment, whose job is to execute the requested WebAssembly method and return the result along with the state changes of the canister.*
+*The runtime environment is part of the more general execution environment of ICP. The execution environment receives messages from the message routing layer of ICP. The scheduler in the execution environment decides which messages to run. Each message specifies the target WebAssembly method of the target canister that needs to be invoked in order to process the message. That information is passed to the runtime environment, whose job is to execute the requested WebAssembly method and return the result along with the state changes of the canister.*
 
 *WebAssembly execution happens inside a canister sandbox process. This is an example of improving security, because it protects the system and other canisters against bugs in the WebAssembly runtime that may be exploited by a malicious canister.*
 
@@ -37,7 +37,7 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 
 **Thank you for such a detailed summary, and I really appreciate the inclusion of some of the problems regarding WebAssembly that the runtime environment solves. I think this insight into these specific problems is very educational and beneficial to be aware of!**
 
-**What’s the biggest challenge the team has faced with developing the IC runtime environment?**
+**What’s the biggest challenge the team has faced with developing the ICP runtime environment?**
 
 *One of the largest projects so far was deterministic time slicing. The idea is to suspend and resume WebAssembly execution such that canisters can do long-running computations without reducing the block rate of the blockchain.*
 
@@ -61,7 +61,7 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 
 *Right now we are finishing three large projects:*
 
-*- File-based page allocator enables doubling the number of query threads. This means that IC canisters can handle more queries concurrently at peak loads.*
+*- File-based page allocator enables doubling the number of query threads. This means that ICP canisters can handle more queries concurrently at peak loads.*
 
 *- Wasm-native stable memory improves performance of the stable memory. This means that developers can move the data from small Wasm memory to a much larger and safer stable memory.*
 
@@ -87,7 +87,7 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 
 **What is one feature or aspect of the runtime that the team is the most proud of?**
 
-*If we have to choose one, then it is probably WebAssembly itself. It is an amazing technology that’s gaining wide adoption. WebAssembly is an open standard that was designed to be secure, safe, and fast. Right now IC supports only two programming languages at the production level: Motoko and Rust. Folks from Demergent Labs are working on bringing TypeScript and Python to the IC. There are many more languages that compile to WebAssembly. If the community or DFINITY would provide high-quality CDKs for the most popular languages, then we would reach the full potential of WebAssembly.*
+*If we have to choose one, then it is probably WebAssembly itself. It is an amazing technology that’s gaining wide adoption. WebAssembly is an open standard that was designed to be secure, safe, and fast. Right now ICP supports only two programming languages at the production level: Motoko and Rust. Folks from Demergent Labs are working on bringing TypeScript and Python to ICP. There are many more languages that compile to WebAssembly. If the community or DFINITY would provide high-quality CDKs for the most popular languages, then we would reach the full potential of WebAssembly.*
 
 **This has been incredibly informative on the Runtime team and their developments on the runtime environment, thank you for such educational answers! To wrap things up, what would you say makes the Runtime team unique compared to some of the other dev teams at DFINITY?**
 

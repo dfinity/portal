@@ -36,7 +36,7 @@
 - [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. This tutorial takes a look at ckBTC and the Internet Computer's Bitcoin integration: 
     - Bitcoin integration architecture.
     - What is ckBTC?
-    - Bitcoin use-cases on the IC.
+    - Bitcoin use-cases on ICP.
     - Deploying a Bitcoin dapp.
         - Prerequisites.
         - Setting up a local Bitcoin network.
@@ -48,7 +48,7 @@
         - Sending BTC.
     - Resources.
 
-- [4.4 NNS governance and staking](4.4-nns-governance.md): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully on-chain and is responsible for making protocol-level upgrades to the IC:
+- [4.4 NNS governance and staking](4.4-nns-governance.md): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully on-chain and is responsible for making protocol-level upgrades to ICP:
     - What is the NNS?
         - Neurons.
         - Proposals.

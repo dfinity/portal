@@ -2,20 +2,21 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import Layout from "@theme/Layout";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
-import CommunityStories from "../components/LandingPage/CommunityStories/CommunityStories";
-import Decks from "../components/LandingPage/Decks/Decks";
-import FoundationSection from "../components/LandingPage/Foundation";
-import Highlights from "../components/LandingPage/Highlights/Highlights";
-import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
-import PreHero from "../components/LandingPage/PreHero";
-import SectionsBar from "../components/LandingPage/SectionsBar";
-import ShowcaseSection from "../components/LandingPage/Showcase";
-import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
-import Vision from "../components/LandingPage/Vision/Vision";
 
-const queryClient = new QueryClient();
+import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
+import FoundationSection from "../components/LandingPage/Foundation";
+import GallerySection from "../components/LandingPage/Gallery";
+import { CardsSection } from "../components/LandingPage/Hero/Cards";
+import Hero from "../components/LandingPage/Hero/Hero";
+import IntroCards from "../components/LandingPage/Hero/IntroCards";
+import { NewsSection } from "../components/LandingPage/Hero/News";
+import {
+  CollapsedVisionSection,
+  VisionSection,
+} from "../components/LandingPage/Hero/VisionSection";
+import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
+import SectionsBar from "../components/LandingPage/SectionsBar";
+import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -26,78 +27,41 @@ export default function Home(): JSX.Element {
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <QueryClientProvider client={queryClient}>
-        <PreHero
-          headline={
-            <>
-              Cypherspace
-              <br />
-              as cloud
-            </>
-          }
-          subheadline="INTERNET COMPUTER"
-          cta="Explore The Power Of ICP"
-          ctaLink="/what-is-the-ic"
-          cards={[
-            {
-              caption: "Unstoppable Software",
-              title: "Cloud 3.0",
-              link: "/enterprise",
-            },
-            {
-              caption: "Open Internet Services",
-              title: "Web 3.0",
-              link: "/ois",
-            },
-            {
-              caption: "Internet Identity",
-              title: "Web3 ID",
-              link: "/internet-identity",
-            },
-          ]}
-        ></PreHero>
-      </QueryClientProvider>
-
-      <main
-        className="w-full relative bg-[#F1EEF5] z-[0]"
-        style={{ marginTop: "calc(var(--ifm-navbar-height) * -1)" }}
+      <Hero
+        headline={<>CYPHER&#8203;SPACE AS CLOUD</>}
+        aiPlaceholders={[
+          "Is the Internet Computer decentralized?",
+          "What can I do with ICP token?",
+          "What is the first step to my ICP dapp?",
+        ]}
       >
-        <Decks className="container-12 -translate-y-1/4 md:-translate-y-1/2 -mb-30 md:-mb-40" />
-        <Vision />
-        <CommunityStories></CommunityStories>
+        <CardsSection />
+        <NewsSection />
+        <VisionSection>
+          Step into the era of blockchain as a limitless smart contract cloud
+          that hosts everything on-chain: data, content, computations, and user
+          experiences. Forget legacy IT and build tamperproof and unstoppable
+          Web3 social media, gaming, virtual reality, decentralized finance, and
+          enterprise infrastructure. Join the movement and realize the
+          game-changing Internet Computer paradigm of full stack
+          decentralization and seamless multi-chain today.
+          <CollapsedVisionSection>
+            You will be in good company. The Internet Computer network's ICP
+            protocol was created by the crypto industry’s largest R&D operation
+            in a multi-year international effort – it’s the product of more than
+            1,000 person years of research and development at the DFINITY
+            Foundation, including work by world famous cryptographers and
+            engineers focused on a singular vision: deliver infinite blockchain
+            that can be used as an alternative to traditional IT.
+          </CollapsedVisionSection>
+        </VisionSection>
+        <IntroCards />
+      </Hero>
+
+      <main className="w-full relative bg-[#F1EEF5] z-[0]">
         <div className="overflow-hidden">
-          {/* 
-            Update the list of showcase projects here: /plugins/home-showcase.js 
-          */}
-          <ShowcaseSection
-            className="pb-[320px]"
-            lines={[
-              "DeFi",
-              "Metaverse",
-              "Social media",
-              "Social networking",
-              "Multi-chain dapps",
-              "Enterprise services",
-              "R&D infrastructure",
-              "Fundraising",
-              "Publishing",
-              "Messaging ",
-              "Gaming",
-              "NFTs",
-            ]}
-            subheading="Featuring a few web3 project teams reinventing the internet on the ICP blockchain."
-            linePostfix="on true Web3"
-          ></ShowcaseSection>
-        </div>
-        <BackgroundPanel
-          panelClassName="bg-gradient-to-bl from-[#e07934] via-[#964680] to-[#4421a0]"
-          id="comparison"
-          threshold={0}
-          rootMargin="-30% 0px"
-        >
-          <Highlights />
-        </BackgroundPanel>
-        <div className="overflow-hidden">
+          <GallerySection />
+          <FeaturesSection />
           <Sustainable id="sustainable"></Sustainable>
           <StartBuildingSection
             id="startBuilding"

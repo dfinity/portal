@@ -32,7 +32,7 @@ cd ..
 ./deploy.sh
 ```
 
-### Step 2: If you'd like to deploy on the IC network run the command:
+### Step 2: If you'd like to deploy on ICP run the command:
 
 ```bash
 ./deploy.sh --network ic

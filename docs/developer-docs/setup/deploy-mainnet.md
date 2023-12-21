@@ -58,7 +58,7 @@ To download and install:
 
 ## Verify the IC SDK is ready to use
 
-If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
+If the installation script runs without any errors, everything you need to start developing programs that run on ICP will be available on your local computer.
 
 To verify the IC SDK is ready to use:
 
@@ -98,19 +98,19 @@ To create a new project for your first dapp:
 
         cd hello
 
-## Check the connection to the IC mainnet
+## Check the connection to the mainnet
 
 There is a reserved network alias that you can use to access the Internet Computer blockchain mainnet. The network alias is a system setting that’s defined internally, so there’s nothing you need to configure in your projects by default.
 
-To check your connection to the IC:
+To check your connection to ICP:
 
 - #### Step 1:  Check that you are in the root directory for your project, if needed.
 
-- #### Step 2:  Check the current status of the IC and your ability to connect to it by running the following command for the network alias `ic`:
+- #### Step 2:  Check the current status of ICP and your ability to connect to it by running the following command for the network alias `ic`:
 
         dfx ping ic
 
-- #### Step 3:  Verify that the `dfx ping ic` command returns information about the IC.
+- #### Step 3:  Verify that the `dfx ping ic` command returns information about ICP.
 
     For example, you should see output similar to the following:
 
@@ -201,7 +201,7 @@ To transfer ICP tokens to create a cycles wallet:
 
     This command displays output similar to the following:
 
-        Creating a wallet canister on the IC network.
+        Creating a wallet canister on ICP.
         The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
 
 ## Validate your cycles wallet
@@ -248,7 +248,7 @@ To validate your cycles wallet:
 
         dfx canister --network ic call "gastn-uqaaa-aaaae-aaafq-cai" authorize '(principal "ejta3-neil3-qek6c-i7rdw-sxreh-lypfe-v6hjg-6so7x-5ugze-3iohr-2qe")'
 
-    Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on the IC, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
+    Be sure that the command you copy has the correct network (`ic`) alias. You should recognize the canister identifier—in this example, `gastn-uqaaa-aaaae-aaafq-cai`—as the cycles wallet associated with your identity. If this is your first wallet on ICP, however, you might not recognize the principal being authorized. The use of a different principal is the expected behavior in this case.
 
     When the browser refreshes after running the `authorize` command, the cycles wallet for your principal account is displayed.
 
@@ -378,11 +378,11 @@ You can find more detailed examples and guides to help you learn about how to us
 
 Here are some suggestions for where to go next:
 
--   [Building on the IC](../../samples/overview.md) to explore sample dapps.
+-   [Building on ICP](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](../../concepts/index.md) to learn about different IC concepts.  
+-   [Concepts](../../concepts/index.md) to learn about different ICP concepts.  
 
--   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [ICP glossary](../../references/glossary.md) to learn the definitions of various terms used within ICP. 
 
 -   [Motoko overview](/motoko/main/overview.md) to learn about the features and syntax for using Motoko.
 

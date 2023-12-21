@@ -55,7 +55,7 @@ echo "yes" | dfx canister update-settings <...>.
 
 In addition to these new features, an array of various fixes have shipped with this release as well:
 - Fix: If `dfx canister delete` is running on a canister that has not been stopped, dfx will confirm the removal of the canister instead of returning an error as it had in the past. 
-- Fix: The documentation of the IC SDK has been cleaned up.
+- Fix: The documentation of IC SDK has been cleaned up.
 - Fix: To account for a more expensive v2 certification calculation, commit batches are now done incrementally to allow larger changes without exceeding the per-message instruction limit. 
 - Fix: `dfx deploy`’s behavior previously allowed the same argument to be provided to all canisters; this behavior has been removed and now results in an error. 
 - Fix: `dfx canister install`’s behavior previously allowed an empty argument to call all canisters regardless of any specifications; this behavior has been removed and now results in an error. 
@@ -78,12 +78,12 @@ Based on benchmark tests, the Incremental GC allows for allocations of up to 3x 
 This not only means that the new Incremental GC is scalable, but it is able to perform with low latency and be extremely powerful for enhancing the Motoko developer experience through increased performance. 
 
 ## Developer documentation 
-In the recent weeks, the developer docs have undergone a series of changes and updates as part of a large, long-term project designed to improve the resources available to developers on the IC. Let’s discuss some of the most important and impactful improvements to the dev docs.
+In the recent weeks, the developer docs have undergone a series of changes and updates as part of a large, long-term project designed to improve the resources available to developers on ICP. Let’s discuss some of the most important and impactful improvements to the dev docs.
 
 ### Cohesive format and style guide
 The developer documentation has been updated so that each page follows a cohesive, uniform style and format. This includes consistent heading sizes, code block formats, use of language, capitalization, and punctuation. Other general housekeeping tasks like fixing typos, broken links, and updating document links in the side navigation bar were also part of this update. 
 
-In the coming weeks, the documentation will continue to be revised and updated to assure that each page is up to date and accurate according to the latest releases of the IC infrastructure, such as updates to dfx, Motoko, and SNS. 
+In the coming weeks, the documentation will continue to be revised and updated to assure that each page is up to date and accurate according to the latest releases of ICP infrastructure, such as updates to dfx, Motoko, and SNS. 
 
 Another addition to the documentation is the new [developer documentation style guide](https://github.com/dfinity/portal/blob/master/style-guide.md). This document describes in detail the parameters that should be followed when new documentation is contributed. It includes standards such as heading size, word choice, how to structure tutorials and guides, and how to format bullet points, code snippets, lists, and hyperlinks. When creating new documentation, this style guide should be followed to ensure that each page within the dev docs is cohesive and uniform with one another. 
 
@@ -93,7 +93,7 @@ New documentation pages have been created for each piece of sample code that exi
 - [Decentralized exchange (DEX).](https://internetcomputer.org/docs/current/samples/dex)
 - [Deploying your first Bitcoin dapp.](https://internetcomputer.org/docs/current/samples/deploying-your-first-bitcoin-dapp)
 - [Game of Life.](https://internetcomputer.org/docs/current/samples/game-of-life)
-- [Hosting a web game on the IC.](https://internetcomputer.org/docs/current/samples/host-a-webgame)
+- [Hosting a web game on ICP.](https://internetcomputer.org/docs/current/samples/host-a-webgame)
 - [ICP token transfer.](https://internetcomputer.org/docs/current/samples/token-transfer)
 
 ### New SNS documentation pages

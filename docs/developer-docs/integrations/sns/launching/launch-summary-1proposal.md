@@ -60,6 +60,9 @@ This is necessary in order for the rest of the steps to work automatically.
 As any eligible NNS neuron can submit the proposal in Stage 3, this is an important step
 where the dapp developers explicity express their intent to hand over their dapp to a DAO.
 
+In this step, the dapp developers also perform any other preparations for decentralization.
+For example, they remove themselves from the dapp's asset canisters as principals that may change the asset canisters' content without going through a vote.
+
 If successful, at the end of stage, the following has changed:
 
 #### Table 1: Canisters
@@ -321,6 +324,8 @@ If successful, at the end of stage, the following has changed:
     <td class="light-orange-text">pre-decentralization swap mode</td>
   </tr>
 </table>
+
+At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.md)).
 
 ### 8. (Automatically) SNS swap starts.
 The swap was initialized with a defined start time. 

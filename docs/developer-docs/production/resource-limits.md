@@ -49,7 +49,7 @@ The limits depend on the message type as shown in the following table.
 
 ## Additional notes
 
-ICP may reject WebAssembly modules for reasons such that:
+The Internet Computer Protocol may reject WebAssembly modules for reasons such that:
 
 - They declare more than 50_000 functions.
 - They declare more than 1_000 globals.
