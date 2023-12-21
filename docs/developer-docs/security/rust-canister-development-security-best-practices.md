@@ -10,26 +10,50 @@ This document contains canister development best practices for both Motoko and R
 
 ## Smart contracts canister control
 
-### Use a decentralized governance system like SNS to make a canister have a decentralized controller
+### Use a decentralized governance system like SNS to put dapps under decentralized control
 
-#### Security concern
+#### Security concerns
 
-The controller of a canister can change or update the canister whenever they like. If a canister e.g. stores assets such as ICP, this effectively means that the controller can steal these by updating the canister and transfer the cycles to their account.
+If single entities or small groups control canisters, they can apply changes or updates whenever they like. If a canister e.g. holds assets such as ICP, ckBTC or ckETH on a user's behalf, this effectively means that the controller could decide at any time to steal these funds by e.g. updating the canister and transferring the assets to their account.
 
-#### Recommendation
+Furthermore, the controller of canisters serving web content (such as e.g. the [asset canister](../../references/asset-canister)) could maliciously modify the web application to e.g. steal user funds or perform security sensitive actions on the user's behalf. For example, if [Internet Identity](../../developer-docs/integrations/internet-identity/overview) is used, the user principal's private key for the given origin is stored in the browser storage, and a malicious app can therefore fully control the private key and the user's session and any assets controlled by that key.  
 
-- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP. These SNSs will be available soon. See the roadmap [here](https://dfinity.org/roadmap/) and the design proposal [here](https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224).
-- Another option would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
+Dapps are commonly reachable over their own custom domain name instead of ic0.app. These domains are registered with a DNS registrar by one of the developers. The developer can choose to have this domain point at a completely different web application. Even one not hosted on the IC. Users will trust this domain and the app it serves. This could allow such a developer to steal funds, leak data, etc.
+
+A dapp might have privileged features which are only accessible to principals that are on an allow list. For example, minting new tokens, debug functions, permissions management, removing NFTs for digital rights violations, etc. This means that whoever controls that principal (this could e.g. be dapp developers) may have central control over these privileged features.
+
+For performance or privacy reasons, some components of a dapp may be hosted off-chain, e.g. in the cloud. These off-chain components often control principals used to interact with the on-chain components, and are usually controlled by a developer holding credentials to the off-chain cloud environment. On top of that, cloud providers can inspect and manipulate data in this environment if they choose. They could take IC principal private keys out of this environment and call privileged operations on the canisters. Off-chain components can quickly lead to many additional centrally trusted parties. Depending on the value managed by a dapp, these parties could be tempted to act maliciously.
+
+#### Recommendations
+
+In the following list, we first provide recommendations for centralized dapp control, and then move to recommendations for increasingly decentralized settings. From a security perspective, more decentralization is favorable. The following list could also be used as a basis for assessing a dapp's level of decentralization. This is just a set of recommendations and may not be complete. 
+1. **The dapp uses central, off-chain components:** The application makes use of centralized components that are e.g. running in the cloud. The owners of these cloud services have full control over the application and assets managed by it. Your application should likely be further decentralized by avoiding central components. But while you have them, [securely manage your keys in the cloud](https://cloudsecurityalliance.org/research/topics/cloud-key-management/). 
+2. **The dapp is controlled by the developer team:** Your project is not under decentralized control, for example because it is in an early development stage or does not (yet) hold significant funds. In that case, it is recommended to manage access to your canisters securely and ideally not letting individuals control the application. To achieve that, consider the following: 
+    - Require approval by several individuals or parties to perform any canister controller operations. 
+    - Also require approval by several individuals or parties for any security sensitive changes at the application level that are restricted to privileged principals, such as admin operations including  e.g. permissions management, minting new tokens, removing NFTs for digital rights violations, etc.
+    - A helpful tool to achieve either of the above two points is the [threshold canister](https://github.com/dfinity/threshold). Individuals should manage their key material using hardware security modules, such as e.g. [YubyHSM](https://www.yubico.com/ch/store/yubihsm-2-series/) and physically protect these e.g. using safes at different geographical locations. Some of HSMs support threshold signature schemes, which can help to further secure the setup. To increase transparency about the changes made to a dapp, consider using a tool like [LaunchTrail](https://github.com/spinner-cash/launchtrail). 
+3. **Full decentralization using a DAO**: The dapp is controlled by a decentralized governance system such as the Internet Computer's [Service Nervous System (SNS)](../../developer-docs/integrations/sns), so that any security sensitive changes to the canisters are only executed if the SNS community approves them collectively through a proposal voting mechanism. If an SNS is used:
+   - Make sure voting power is distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves, see [here](../../developer-docs/integrations/sns/tokenomics/tokenomics-intro#voting-power-and-decentralization).
+   - Ensure all components of the dapp are under SNS control, including the canisters serving the web frontends, see [SNS asset canisters](../../developer-docs/integrations/sns/managing/sns-asset-canister). 
+   - Consider the [SNS preparation checklist](../../developer-docs/integrations/sns/tokenomics/sns-checklist). Important points from a security perspective are e.g. [tokenomics](../../developer-docs/integrations/sns/tokenomics/sns-checklist#11-tokenomics-specification), [disclosing dependencies to off-chain components](../../developer-docs/integrations/sns/tokenomics/sns-checklist#13-disclosure-of-dependencies) and [performing security reviews](../../developer-docs/integrations/sns/tokenomics/sns-checklist#21-security-review).
+   - Rather than [self-deploying the SNS code](../../developer-docs/integrations/sns/introduction/dao-alternatives#self-deploy-the-sns-code) or [building your own DAO](../../developer-docs/integrations/sns/introduction/dao-alternatives#build-your-own-dao--use-other-dao-frameworks), consider using the official SNS on the SNS subnet, as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP.
+   - See also [Verification and trust in a (launched) SNS](https://wiki.internetcomputer.org/wiki/Verification_and_trust_in_a_(launched)_SNS) and [SNS decentralization swap trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_swap_trust).
+
+An alternative to DAO control (3. above) would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
+
 :::info
 Note that, contrary to some other blockchains, also immutable smart contracts need cycles to run, and they can receive cycles.
 :::
-- It is also possible to implement a DAO [decentralized autonomous organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on ICP from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
 
-### Verify the ownership of smart contracts you depend on
+It is also possible to implement a DAO [decentralized autonomous organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on ICP from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
+
+### Verify the control and level of decentralization of smart contracts you depend on
 
 #### Security concern
 
-If a canister depends on another canister smart contract (i.e. makes inter-canister calls to it), it is essential that the canister smart contract that one depends on is owned by a decentralized governance system. Otherwise, i.e. if it has a controller, they could modify the smart contract without others noticing, e.g. to steal assets held by the canister.
+If a dapp depends on a third-party canister smart contract (e.g. by making inter-canister calls to it), it is important to verify that the callee satisfies an appropriate level of decentralization. For example: 
+* If funds or cycles are transferred to a third-party canister, one might require the canister to be controlled by a decentralized governance system, as otherwise these funds are centrally controlled. 
+* If inter-canister calls are made to a centrally controlled and potentially malicious canister, that canister could DoS the caller or even trigger functional bugs, see [Only make inter-canister calls to trustworthy canisters](#only-make-inter-canister-calls-to-trustworthy-canisters). 
 
 #### Recommendation
 
