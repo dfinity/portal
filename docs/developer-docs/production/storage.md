@@ -68,7 +68,7 @@ In Motoko, the default garbage collection process uses a copying approach, which
   },
 ```
 
-Both of these garbage collectors, however, are unable to garbage collection the entire heap memory pool due to the instruction limit per message on ICP. Since these garbage collectors cannot collect the entire heap memory pool, canisters do not benefit from fully utilizing the entire 4GiB memory pool, as there must be some heap memory space left for the garbage collector to operate.
+Both of these garbage collectors, however, are unable to collect the entire heap memory pool due to the instruction limit per message on ICP. Since these garbage collectors cannot collect the entire heap memory pool, canisters do not benefit from fully utilizing the entire 4GiB memory pool, as there must be some heap memory space left for the garbage collector to operate.
 
 A beta incremental garbage collection process is available, which uses incremental messages that distributes the garbage collection work across multiple messages when needed. This form of garbage collection allows for the allocation of up to 3x more heap space after it has been run, while consuming less cycles on average. Using this garbage collection service, canisters can benefit from using the entire 4GiB of heap memory, as it can garbage collect the entire heap memory pool. 
 
