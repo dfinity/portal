@@ -133,6 +133,7 @@ const sidebars = {
         "samples/deploying-your-first-bitcoin-dapp",
         "samples/echo",
         "samples/encrypted-notes",
+        "samples/persistent-storage",
         "samples/factorial",
         "samples/game-of-life",
         "samples/hackathon-projects",
@@ -148,7 +149,6 @@ const sidebars = {
         "samples/nft",
         "samples/nft-wallet",
         "samples/periodic-tasks",
-        "samples/persistent-storage",
         "samples/phonebook",
         "samples/pos",
         "samples/pub-sub",
@@ -415,6 +415,11 @@ const sidebars = {
         type: "doc",
         label: "Canister recovery",
         id: "developer-docs/production/canister-recovery",
+        },
+        {
+          type: "doc",
+          label: "Canister storage",
+          id: "developer-docs/production/storage",
         },
         {
           type: "category",
