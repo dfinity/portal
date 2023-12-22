@@ -3233,7 +3233,7 @@
   "id": "vault-k8s",
   "name": "Vault k8s Canister",
   "website": "https://github.com/Zondax/vault-k8s-canister",
-  "oneLiner": "IC-based secret sharing, ensuring flexible, secure management.",
+  "oneLiner": "IC-based secret sharing,ensuring flexible, secure management.",
   "tags": [
       "Tools / Infrastructure"
     ],
