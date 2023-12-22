@@ -3228,6 +3228,24 @@
   "twitter": "https://twitter.com/ICLighthouse",
   "youtube": "https://youtu.be/Z92o1oCH598",
   "submittableId": "41203767"
-}
+},
+  {
+  "id": "vault-k8s",
+  "name": "Vault k8s Canister",
+  "website": "https://github.com/Zondax/vault-k8s-canister",
+  "oneLiner": "IC-based secret sharing, ensuring flexible, secure management.",
+  "tags": [
+      "Tools / Infrastructure"
+    ],
+  "description":"POC of a decentralized secret management solution that leverages Internet Computer (IC) technology. It aims to provide means for services to share secrets in a flexible, transparent and secure way. It simplifies the flow of secret management between consumers in the cluster as well as rotate secrets based on config for added security.",
+  "stats": "100% on chain ACL",
+  "usesInternetIdentity": true,
+  "github": "https://github.com/Zondax/vault-k8s-canister",
+  "youtube": "https://youtu.be/99MahI1SO7c",
+  "twitter": "https://twitter.com/_zondax_",
+  "logo": "/img/showcase/vault-k8s_logo.jpg",
+  "screenshots": ["/img/showcase/vault-k8s.jpg"],
+  "submittableId": "40715473"
+ }
 ]
 
