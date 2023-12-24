@@ -3228,6 +3228,26 @@
   "twitter": "https://twitter.com/ICLighthouse",
   "youtube": "https://youtu.be/Z92o1oCH598",
   "submittableId": "41203767"
+},
+{
+  "name": "Ping",
+  "description": "Ping is a notification service that boosts ecosystem engagement by creating a direct communication channel between dapp developers and their respective users.",
+  "website": "https://h7jna-pqaaa-aaaak-afgiq-cai.icp0.io/",
+  "logo": "/img/showcase/ping_logo.webp",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "ping",
+  "oneLiner": "Stay updated on ICP dapps with Ping!",
+  "stats": "5 and counting!",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/QuezarHQ/pingICP",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "41431540"
 }
 ]
 
