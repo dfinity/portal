@@ -293,26 +293,26 @@
   },
 
     {
-    "id": "sonic",
-    "name": "Sonic",
-    "oneLiner": "Swap-built end-to-end DeFi platform",
+    "id": "sonic-dex",
+    "name": "Sonic DEX",
+    "oneLiner": "Sonic DEX is an AMM and Perpetual trading platform"",
     "website": "https://sonic.ooo/",
     "tags": [
+      "Ethereum",
       "DeFi",
-      "Wallet",
-      "Bitcoin",
-      "Ethereum"
+      "DAO"
     ],
-    "description": "Sonic is a DEX built end-to-end on-chain, on the Internet Computer. Sonic, built by PsychedelicDAO, currently run by Meme Cake enables users to swap tokens, earn fees as a liquidity provider, & build on the Internet Computer's AMM. Sonic takes advantage of the ICP blockchain's low fees, high-scalability, and reverse-gas model to deliver a seamless Web3 experience.",
-    "github": "https://github.com/psychedelic",
-    "stats": "$360,000+ TVL",
+    "description": "Sonic DEX, a multichain decentralized exchange built on the Internet Computer Protocol (ICP), offers a wide range of DeFi services. Users can easily trade tokens and perpetuals, provide liquidity, and participate in LBP token sale. Users can engage in DAO governance, stake for rewards, and vote on platform decisions.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/sonicdex/sonic-v1",
+    "twitter": "https://twitter.com/sonic_ooo",
+    "stats": "$10M+ Trade Volume",
     "display": "Normal",
-    "logo": "/img/showcase/sonic_logo.webp",
+    "logo": "/img/showcase/sonic-dex_logo.webp",
     "screenshots": [
-      "/img/showcase/sonic_screenshot_0.webp"
+      "/img/showcase/sonic-dex_screenshot.webp"
     ]
   },
-
 
   {
     "id": "plug",
