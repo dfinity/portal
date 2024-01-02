@@ -3246,6 +3246,29 @@
   "logo": "/img/showcase/zondax-logo.jpg",
   "screenshots": ["/img/showcase/vault-k8s.jpg"],
   "submittableId": "40715473"
- }
+ },
+  {
+  "name": "BitBasel Art Marketplace",
+  "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol",
+  "website": "https://bitbasel.com/",
+  "logo": "/img/showcase/bitbasel-art-marketplace_logo.webp",
+  "screenshots": [
+    "/img/showcase/bitbasel-art-marketplace_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "bitbasel-art-marketplace",
+  "oneLiner": "A curated marketplace for buying and selling digital artwork.",
+  "stats": "100+ artworks",
+  "tags": [
+    "Bitcoin",
+    "NFT"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/BitBasel",
+  "twitter": "https://twitter.com/bitbaselart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+  "youtube": "",
+  "submittableId": ""
+}
 ]
 
