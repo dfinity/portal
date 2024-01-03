@@ -170,19 +170,7 @@ To prepare the frontend files:
 
 - #### Step 1:  Open the webpack configuration file (`webpack.config.js`) in a text editor.
 
-- #### Step 2:  Modify the frontend entry to replace the default `index.html` with `index.jsx`.
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
-:::
-
-        entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so you need
-          // to replace the extension to `.js`.
-          index: path.join(__dirname, asset_entry).replace(/\.html$/, ".jsx"),
-        },
-
-- #### Step 3:  Add the following `module` key above the `plugins` section:
+- #### Step 2:  Add the following `module` key above the `plugins` section:
 
 :::caution
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
@@ -301,9 +289,9 @@ module.exports = {
 };
 ```
 
-- #### Step 4:  Create a new file named `tsconfig.json` in the root directory for your project.
+- #### Step 3:  Create a new file named `tsconfig.json` in the root directory for your project.
 
-- #### Step 5:  Open the `tsconfig.json` file in a text editor, then copy and paste this code into the file:
+- #### Step 4:  Open the `tsconfig.json` file in a text editor, then copy and paste this code into the file:
 
 ```
 {
@@ -317,11 +305,11 @@ module.exports = {
 }
 ```
 
-- #### Step 6:  Save your changes and close the `tsconfig.json` file to continue.
+- #### Step 5:  Save your changes and close the `tsconfig.json` file to continue.
 
-- #### Step 7:  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete everything in that file.
+- #### Step 6:  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete everything in that file.
 
-- #### Step 8:  Copy and paste this code into the `index.js` file.
+- #### Step 7:  Copy and paste this code into the `index.js` file.
 
 ```
 import * as React from "react";
@@ -366,24 +354,12 @@ const MyHello = () => {
 render(<MyHello />, document.getElementById("app"));
 ```
 
-- #### Step 9:  Rename the modified `index.js` file as `index.jsx` by running the following command:
+- #### Step 8:  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
         mv src/custom_greeting_frontend/src/index.js src/custom_greeting_frontend/src/index.jsx
     
-    
-- #### Step 10: Change the entry point in `webpack.config.js` to the following:
 
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
-:::
-
-        entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so you need
-          // to replace the extension to `.js`.
-          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
-        },
-
-- #### Step 11: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
+- #### Step 9: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
 
         <!doctype html>
         <html lang="en">
