@@ -1,5 +1,6 @@
 import SearchOverlay from "@site/src/components/Common/Search/Search";
 import React, { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
 
 const Search = () => {
@@ -106,9 +107,11 @@ const Search = () => {
         id="ios-tmp-input"
         ref={focusHelperInputRef}
       />
-      {isOverlayOpen && (
-        <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
-      )}
+      {isOverlayOpen &&
+        createPortal(
+          <SearchOverlay onClose={() => setIsOverlayOpen(false)} />,
+          document.body
+        )}
     </>
   );
 };
