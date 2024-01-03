@@ -3246,6 +3246,22 @@
   "logo": "/img/showcase/zondax-logo.jpg",
   "screenshots": ["/img/showcase/vault-k8s.jpg"],
   "submittableId": "40715473"
- }
+ },
+     {
+        "name": "The Asset App",
+        "description": "The Asset App allows any user to generate their own file canister smart contract and visually manage their files on the Internet Computer without requiring any code.",
+        "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
+        "logo": "/img/showcase/asset-app_logo.png",
+        "screenshots": [
+            "/img/showcase/asset-app.jpg"
+        ],
+        "id": "asset-app",
+        "oneLiner": "Allows any user to generate their own file canister smart contract and visually manage their files on the Internet Computer without requiring any code",
+        "tags": [
+            "Tools / Infrastructure"
+        ],
+        "usesInternetIdentity": true,
+        "github": "https://github.com/id-daniel-mccoy/asset-app"
+    }
 ]
 
