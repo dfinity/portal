@@ -235,7 +235,7 @@
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
   overflow: scroll;
-  @apply z-20;
+  z-index: 1001;
 }
 .mobileFilterBar__show {
 }

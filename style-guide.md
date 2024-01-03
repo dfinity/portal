@@ -1,8 +1,8 @@
 # Internet Computer developer documentation: style, format, and language guide
 
-## Overview 
+## Overview
 
-This guide outlines the format, language, and style that should be used when contributing pages to the Internet Computer developer documentation. This is designed to assist with standardizing the documentation to create a cohesive, uniform look and feel across all pages of documentation that have been contributed by multiple individuals and teams. 
+This guide outlines the format, language, and style that should be used when contributing pages to the Internet Computer developer documentation. This is designed to assist with standardizing the documentation to create a cohesive, uniform look and feel across all pages of documentation that have been contributed by multiple individuals and teams.
 
 This guide will outline the following:
 - Page structure.
@@ -24,7 +24,7 @@ This guide will outline the following:
 
 ## Page structure
 
-The developers docs contain a wide variety of different document types, such as tutorials, guides, informational pages, and reference pages. For this reason, the page structure will vary based on what type of document the page is. 
+The developers docs contain a wide variety of different document types, such as tutorials, guides, informational pages, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
 
 The following page structure should be followed for informational pages and guides:
 
@@ -84,7 +84,7 @@ The following page structure should be followed for tutorials:
 
 Text
 
-## Prerequisites 
+## Prerequisites
 
 - [x] Prerequisite 1.
 - [x] Prerequisite 2.
@@ -112,7 +112,7 @@ Text
 
 ## Page headings
 
-There are 4 types of headings used throughout the IC developer docs:
+There are 4 types of headings used throughout the ICP developer docs:
 
 - Heading size 1: `#`
 - Heading size 2: `##`
@@ -143,11 +143,11 @@ This document describes basic file management workflows.
 
 The following workflows are covered:
 - Creating a file.
-- Saving a file. 
+- Saving a file.
 
 ## Prerequisites
 
-- [x] Download and install a text editor program. 
+- [x] Download and install a text editor program.
 
 ## Creating a file
 
@@ -155,7 +155,7 @@ To create a new file:
 
 - #### Step 1: Open the text editor program.
 - #### Step 2: From the navigation bar, select **File** then **New File**.
-- #### Step 3: Enter text into the new, blank file. 
+- #### Step 3: Enter text into the new, blank file.
 
 ## Saving a file
 
@@ -177,7 +177,7 @@ For guides or tutorials that include a prerequisites section that contains tasks
 
 ## Prerequisites
 
-- [x] Download and install a program. 
+- [x] Download and install a program.
 - [x] Download and install a package.
 - [x] Download and install a framework.
 
@@ -193,13 +193,13 @@ Capitalization within the developer documentation should follow these outlined s
     - Example: Overview
     - Example: Register, build, and deploy the dapp
     - Example: Using Motoko canisters
-- Titles of links to other documentation pages or external articles, such as blog posts, should not be capitalized except for the proper nouns within the title. 
+- Titles of links to other documentation pages or external articles, such as blog posts, should not be capitalized except for the proper nouns within the title.
     - Example: Check out the blog post on [how to use the Internet Computer](link).
     - Example: Reference the guide on [using the Internet Identity in a dapp](link).
 - Any reference to specific GUI buttons or other visual aids that are capitalized within the referenced interface should be capitalized to match the format shown on the GUI.
     - Example: Open your account and navigate to **My Products**.
     - Example: Click on the **Save** button.
-    - Example: Select **Add site** to save the configuration. 
+    - Example: Select **Add site** to save the configuration.
 - When a bullet point list begins with a sentence, the first word in the sentence should be capitalized:
     - Example: Step 1: First, you need to look up the IP addresses of the boundary nodes.
 - When a bullet point list is used to define terms, the first word after the term should not be capitalized:
@@ -213,6 +213,7 @@ Capitalization within the developer documentation should follow these outlined s
 The following proper nouns should always be capitalized:
 - Blockchain Singularity
 - Candid
+- DFINITY
 - DFINITY Foundation
 - Internet Computer
 - Internet Computer Protocol
@@ -230,9 +231,9 @@ The following proper nouns should always be capitalized:
 - World Computer
 - YouTube
 
-This is not an exhaustive list, and other proper nouns such as tool names, company names, or project names should be capitalized. Examples of these are Unity, Godot, Namecheap, GoDaddy, and GitHub. 
+This is not an exhaustive list, and other proper nouns such as tool names, company names, or project names should be capitalized. Examples of these are Unity, Godot, Namecheap, GoDaddy, and GitHub.
 
-### Abbreviations and acronyms  
+### Abbreviations and acronyms
 The following is a list of common abbreviations that are capitalized within the developer docs:
 - BTC
 - CDK
@@ -241,9 +242,9 @@ The following is a list of common abbreviations that are capitalized within the 
 - DeFi
 - ECDSA
 - HTTP/HTTPS
-- IC
 - ICP
 - ICRC-1
+- ICRC-2
 - II
 - IOS
 - NFT
@@ -251,27 +252,40 @@ The following is a list of common abbreviations that are capitalized within the 
 - SDK
 - SNS
 - XDR
+- UTXO
 
 ## Language
-The following language and capitalization of certain terms and phrases should be used across the IC developer documentation:
+The following language and capitalization of certain terms and phrases should be used across the ICP developer documentation:
 - Big Tech
 - Bitcoin integration
-- Bitcoin network: should be used in place of "sending bitcoin". 
-- Built on the Internet Computer
+- Bitcoin network: should be used in place of "sending bitcoin".
+- bitcoin: should be used when referring to BTC rather than the Bitcoin network.
+- built on ICP
 - canister
 - canister smart contract
-- dapp: should be used in place of any reference to an IC app, decentralized application, or 'dApp'. 
+- dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
+- deployed on ICP
+- dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase. 
+      - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
-- Ethereum: should be used in place of ETH or ETH token. 
+- Ethereum: should be used in place of ETH or ETH token.
 - HTTP outcalls
+- ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'. 
+    Two exceptions to this are:
+  
+        - The IC SDK, which should be referred to as 'the IC SDK'.
+  
+        - The IC interface specification, which should be referred to as 'the IC specification' or 'the IC interface specification'.
+  
+    When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
+  
 - IC SDK: should be used in place of any reference to the IC's SDK.
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
     - Other contextual usage:
-        - `The Internet Computer mainnet network.`
-        - `The dapp has been deployed to the IC mainnet.`
-        - `Before deploying on to the Internet Computer mainnet...`
+        - `The dapp has been deployed to the mainnet.`
+        - `Before deploying on to the mainnet...`
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
@@ -279,40 +293,44 @@ The following language and capitalization of certain terms and phrases should be
 - node provider
 - open internet service
 - reverse gas model
+- vetKeys
 - Web3
 - World Wide Web
 
 ### Spelling, grammar, and word choice
 The following spelling, grammar, and word choice rules should be followed:
+- Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”. This is to help make clear that ICP is a protocol that is community-controlled and autonomously governed. 
+      - An exception to this is the Developer Blog; blog posts are written using a different style for a different audience, and using 'we' or 'us' in this context is acceptable.
+- Do not refer to the Internet Computer as a system or a platform. Say "Internet Computer" or "protocol" instead.
 - Regarding spelling and grammar, American spelling and grammar should be used with the exception that all article titles follow British capitalization rules (see details in the Capitalization section.)
 - Assure that the language in the document reads well for non-native English speakers, and avoid phrases or sayings that may be confusing, such as "Dig in."
 - Avoid informal, personal thoughts or otherwise unnecessary language within the developer docs. A few examples of this might be:
     - Referring to the default configuration as the 'boring default configuration'.
     - Making a joke within the document, then using parentheses to acknowledge the joke such as "(Get it? heh)".
-  
-    - Avoid speaking directly to the reader, unless within a tutorial that is designed to be an interactive, onboarding experience. 
-    
+
+    - Avoid speaking directly to the reader, unless within a tutorial that is designed to be an interactive, onboarding experience.
+
     For example, avoid the following:
     - "Get it? heh."
     - "Take a deep dive."
     - "Go down the rabbit hole."
     - "Dig in."
-    
-    Where as, the following are acceptable in certain contexts:
+
+    Whereas, the following are acceptable in certain contexts:
     - "Ready to get started? Let's go!"
     - "Here is a checklist of the things you will need to consider:"
 
 ## Numbers
-Numbers should be formatted using the `'` character, and not any other character. For example:
-- 44'760'000
-- 54'000
-- 1'000
+Numbers should be formatted using the `_` character, and not any other character. For example:
+- 44_760_000
+- 54_000
+- 1_000
 
 ## API methods
 
 For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API method requests, they should be formatted as such:
 
-- In headings, they should be capitalized without additional formatting. 
+- In headings, they should be capitalized without additional formatting.
     - Example: "Using HTTP GET calls."
     - Example: "Using HTTP PUT calls."
 - In the body of documents, they should be formatted as in-line code, such as:
@@ -324,20 +342,20 @@ For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API
 
 The following punctuation standards should be followed:
 - All sentences end in a period.
-- Exclamation points can be used where appropriate, but should not be used excessively. 
-- Question marks can be used where appropriate. 
-- Semicolons (;) should be used to indicate a pause within a sentence. 
-- Parentheses should be used to include additional context where appropriate. 
+- Exclamation points can be used where appropriate, but should not be used excessively.
+- Question marks can be used where appropriate.
+- Semicolons (;) should be used to indicate a pause within a sentence.
+- Parentheses should be used to include additional context where appropriate.
 - All bullet point lists should be prefaced with introduction text followed by a colon.
 - All items within a bullet point list should end in a period, regardless if the entry is a full sentence or not.
-- All numbered lists should use the format `1.` for numbering each list entry. 
-- All user steps for guides and tutorials should use the format `Step 1:` to preface each step's contents. 
+- All numbered lists should use the format `1.` for numbering each list entry.
+- All user steps for guides and tutorials should use the format `Step 1:` to preface each step's contents.
 
 ## Bulleted lists
 
 The following bullet point format and standards should be followed:
 
-- Bullet point lists can be written using either the `-` character or the `*` character; they both display the same on the webpage. 
+- Bullet point lists can be written using either the `-` character or the `*` character; they both display the same on the webpage.
 - Bullet point lists that define a term or technology should follow the format:
     - **Term**: definition of the term.
 - Bullet point lists that are used to indicate user steps for a guide should use the format:
@@ -351,8 +369,8 @@ Bullet points should end in a period unless otherwise specified. An exception to
 
 ## Numbered lists
 The following numbered list format and standards should be followed:
-- Numbered lists should be used to outline architecture steps that describe what happens within the backend or frontend of a tool or service, where it does not describe steps that a user interacts with directly. 
-    - For example, steps that detail how a service interacts with a client application should be explained using a numbered list, where as steps detailing how a user can interact with the client application should be listed as guide or tutorial steps that use the correct heading sizes and format. 
+- Numbered lists should be used to outline architecture steps that describe what happens within the backend or frontend of a tool or service, where it does not describe steps that a user interacts with directly.
+    - For example, steps that detail how a service interacts with a client application should be explained using a numbered list, whereas steps detailing how a user can interact with the client application should be listed as guide or tutorial steps that use the correct heading sizes and format.
 - Numbered lists should also be used when presenting a list of questions to the reader to provoke their thoughts. For example:
     1. Which WebAssembly (Wasm) code is being executed for a canister?
     2. The canisters are normally written in a higher-level language, such as Motoko or Rust, and not directly in Wasm. The second question is then: is the Wasm that’s running really the result of compiling the purported source code?
@@ -361,19 +379,19 @@ The following numbered list format and standards should be followed:
 
 The following standards for bold text should be followed:
 
-- Bullet point lists that are used to list and define terms should bold the term(s) being defined. 
+- Bullet point lists that are used to list and define terms should bold the term(s) being defined.
     - **Term**: definition of the term.
-- Terms that are important for the reader to understand, such as a term found in the IC glossary, should be bolded for emphasis.
-- When describing steps for a user to follow in a guide or tutorial, if the user is expected to interact with a button or GUI interface, the button's name should be bolded and follow the capitalization format found on the GUI. 
+- Terms that are important for the reader to understand, such as a term found in the ICP glossary, should be bolded for emphasis.
+- When describing steps for a user to follow in a guide or tutorial, if the user is expected to interact with a button or GUI interface, the button's name should be bolded and follow the capitalization format found on the GUI.
     - Example: Click on the **Save** button.
 
 ## Italic text
-Italic text is not used within the IC developer documentation. Bold text should be used to emphasis terms or phrases that are important. 
+Italic text is not used within the ICP developer documentation. Bold text should be used to emphasis terms or phrases that are important.
 
 ## Hints
-The IC developer documentation uses two forms of hints provided by the Docusaurus framework:
+The ICP developer documentation uses two forms of hints provided by the Docusaurus framework:
 - **Info**: the info hint is used to provide important information that the reader should be prompted to read. This hint can be used to provide additional context, resources, or add important notes that the reader should be aware of before continuing.
-- **Caution**: the caution hint is used to provide a warning to readers about the consequences of certain steps or actions as indicated in the guide, doc, or tutorial. 
+- **Caution**: the caution hint is used to provide a warning to readers about the consequences of certain steps or actions as indicated in the guide, doc, or tutorial.
 
 Hints can be used with the following markdown format:
 
@@ -389,7 +407,7 @@ Caution hint
 Links that are referenced within the developer docs should use the following format and structure:
 - Capitalization of link titles should follow the same format and rules as described in the previous capitalization section; only the first word and proper nouns are capitalized. For example:
     - [Read Roman’s blog post on effective Rust canisters](link.example).
-    - [Demonstrating trust](link.example). 
+    - [Demonstrating trust](link.example).
 - In-line links should not capitalize the title of the page or section that is being linked. For example:
     - The below section [demonstrating trust](#demonstrating-trust).
     - The Wiki [contains some ideas](https://wiki.internetcomputer.org/wiki/Dealing_with_cycles_limit_exceeded_errors) how one can work around the cycles limit.
@@ -446,7 +464,7 @@ Frequently asked question (FAQ) sections should use the following structure and 
 ## Frequently asked questions
 
 - #### Question 1?
-Answer 
+Answer
 
 - #### Question 2?
 Answer
@@ -454,56 +472,55 @@ Answer
 
 ## Difference between tutorials and guides
 
-Tutorials should be stand-alone projects that a user can follow A-Z that may build off of an example code, may use a variety of different concepts, tools, or assets, and ultimately results in a working example project. 
 
-In contrast, guides should be more focused on individual concepts or workflows and then building off of those. For example, the guides for building a smart contract backend with Motoko each focus and build upon individual concepts within Motoko, such as using integers in calculator functions or querying using an actor.
+Tutorials should be either stand-alone projects that a user can follow A-Z that may build off of an example code, may use a variety of different concepts, tools, or assets, and ultimately results in a working example project, or should be a comprehensive, intentional collection or series that is meant to be followed from start to finish (such as the Developer Journey). 
+
+In contrast, guides should be more focused on individual concepts or workflows and then building off of those. Guides should not need to be followed in a specific order or be part of a series for the reader to utilize and benefit from them. For example, the guides for building a smart contract backend with Motoko each focus and build upon individual concepts within Motoko, such as using integers in calculator functions or querying using an actor.
 
 ### Writing a tutorial
-When contributing a tutorial, the following general format and structure should be used. It is important to note that the content of tutorials will vary, and this format can be expanded and elaborated on to include more detailed workflows or content. 
+When contributing a tutorial, the following general format and structure should be used. It is important to note that the content of tutorials will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
+
+An exeption to this format is the Developer Journey tutorial series, which uses a slightly different standardized format due to the unique nature of the Developer Journey series. All other tutorials should follow this format. 
 
 ```
-# Page title
+# Page title (Title that should be displayed on the sidebar)
 
 ## Overview
 
-Text
+This section should contain an overview of what the tutorial will teach the developer. This information includes what technology features are being highlighted (HTTPS outcalls, Bitcoin integration, ledger, etc) and should explain why these features are important to the developer. This section should also provide an overview of what is being built (DEX, NFT example, etc). 
 
-## Prerequisites 
+## Prerequisites
+
+This section should be used to list any prerequisites that a developer will need to follow this tutorial, assuming they have not followed any other tutorial. Common prerequisites include installing the IC SDK, installing an IDE, and installing Node.js. 
 
 - [x] Prerequisite 1.
 - [x] Prerequisite 2.
 - [x] Prerequisite 3.
 
-## Step 1: Description of step
+## Step 1: Description of step (This should describe what the developer will accomplish in this step. Ex: “Create a new project”, “Open the main.mo file”, “Write a function that makes an inter-canister call”, etc.)
+
+Include any context or additional information for the developer to complete this step. Typically this will include the code snippet, command to run, or other information about what the developer must do. It is also beneficial to include the ‘why’ a developer is completing this step to help further their understanding.
+
+### Subtopic 1 (Subtopics are optional. They can be used to break up tutorials that cover several different concepts, such as an HTTP outcalls tutorial that covers both GET and POST requests; subtopics can be used to break the tutorial into two parts - one for GET and one for POST.)
+
+Include any context or additional information about what the subtopic is and how it relates to the overall theme of the tutorial. 
+
+## Step 2: Description of step 
 
 Text
 
-### Subtopic 1
-
-Text
-
-## Step 2: Description of step
-
-Text
-
-### Subtopic 2
-
-Text
-
-## Step 3: Description of step
-
-Text
+– Repeat above format as necessary for duration of tutorial
 
 ## Conclusion
 
-Text
+Wrap up the tutorial by reiterating what the developer learned about, what they accomplished, and what they are able to do with the result of this tutorial (continue building, enhance example by adding additional features, etc.)
 
 ## Resources
 - [Link](link.example)
 ```
 
 ### Writing a guide
-When contributing a guide, the following general format and structure should be used. It is important to note that the content of guides will vary, and this format can be expanded and elaborated on to include more detailed workflows or content. 
+When contributing a guide, the following general format and structure should be used. It is important to note that the content of guides will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
 
 ```
 # Page title

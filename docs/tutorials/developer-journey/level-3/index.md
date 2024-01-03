@@ -13,7 +13,7 @@
     - Using Vessel.
     - Importing packages into your Motoko code.
 
-- [3.2 Using HTTPS outcalls](3.2-https-outcalls.md): HTTPS outcalls are a feature of canisters on the IC that allow smart contracts to directly make calls to HTTPS servers that are external to the IC. This module covers:
+- [3.2 Using HTTPS outcalls](3.2-https-outcalls.md): HTTPS outcalls are a feature of canisters on ICP that allow smart contracts to directly make calls to HTTPS servers that are external to ICP. This module covers:
     - Supported HTTPS methods.
     - Cycles.
     - HTTPS outcalls API.
@@ -46,7 +46,7 @@
         - Interacting with certified variables.
     - Resources.
 
-- [3.4 Introduction to agents](3.4-intro-to-agents.md): On the Internet Computer, an **agent** is a library used to make calls to the IC's public interface. This module covers:
+- [3.4 Introduction to agents](3.4-intro-to-agents.md): On the Internet Computer, an **agent** is a library used to make calls to ICP's public interface. This module covers:
     - What does an agent do?
         - Structuring data.
         - Decoding data.
@@ -74,7 +74,7 @@
         - Pulling the Internet Identity canister.
         - Interacting with the integration.
 
-- [3.6 Motoko level 3](3.6-motoko-lvl3.md): In this Motoko level, we'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks. This module covers:
+- [3.6 Motoko level 3](3.6-motoko-lvl3.md): In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks. This module covers:
     - Principals and caller identification.
     - Adding access control with identities.
         - Prerequisites.

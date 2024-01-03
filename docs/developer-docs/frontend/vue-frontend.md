@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Vue frontend example
 
 ## Overview

@@ -2,17 +2,17 @@
 
 ## Overview
 
-Calls on the IC require that a cryptographic `signature` and `principal` are attached, usually in the form of an identity, be attached to the call. This identity can be anonymous or authenticated using a cryptographic signature. Canisters can use this attached identity to respond to a call, which enables contracts to use those identities for other workflows and purposes. 
+Network calls on ICP require that a cryptographic `signature` and `principal` are attached, usually in the form of an identity, be attached to the call. This identity can be anonymous or authenticated using a cryptographic signature. Canisters can use this attached identity to respond to a call, which enables contracts to use those identities for other workflows and purposes. 
 
 An identity includes both the private and public keys. Because the private key needs to say private, the public key is sent along with a signature signed by the identity encoded as a `Principal`. When a delegation is sent the same workflow is used, except the Delegation Chain is provided as well. 
 
-Sometimes, it is beneficial to verify the identity's signature independently from the automatic verification done on the IC as an additional layer of validation. 
+Sometimes, it is beneficial to verify the identity's signature independently from the automatic verification done on ICP as an additional layer of validation. 
 
 When a canister call is made via the HTTPS interface, the following fields are present in the content map for all cases:
 
 - `nonce` (`blob`, optional): Randomly generated user-provided data; can be used to create distinct calls with otherwise identical fields.
 
-- `ingress_expiry` (`nat`, required): An upper limit on the calls's validity; expressed in nanoseconds, which avoids replay attacks since the IC will not accept calls or transition calls if their expiry date is in the past. Additionally, calls may be refused with an ingress expiry date too far in the future. 
+- `ingress_expiry` (`nat`, required): An upper limit on the calls's validity; expressed in nanoseconds, which avoids replay attacks since ICP will not accept calls or transition calls if their expiry date is in the past. Additionally, calls may be refused with an ingress expiry date too far in the future. 
 
 - `sender` (`Principal`, required): The user who issued the call.
 
@@ -52,7 +52,7 @@ The first delegation in the array has a signature created using the public key c
 
 The `sender_sig` field is calculated by signing concatenating the domain separator, `\x0Aic-request`, which is 11 bytes, with the 32 byte request ID, using the secret key that belongs to the key specified in the last delegation. If no delegations are present, the public key specified in `sender_pubkey` is used.  If the delegation field is present, it should contain no more than 20 delegations.
 
-When a canister call is executed on the IC, the signature of the call is validated automatically. As an additional layer of validation, these calls can be verified independently through a Rust crate. 
+When a canister call is executed on ICP, the signature of the call is validated automatically. As an additional layer of validation, these calls can be verified independently through a Rust crate. 
 
 ## Verifying signatures with agent
 
@@ -119,6 +119,44 @@ match result {
 ```
 
 You can reference the crate's implementation logic [here](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/validator/src/ingress_validation.rs?L605) for additional context.
+
+## Verifying signatures with the library `@dfinity/standalone-sig-verifier-web`
+
+An `npm` library has been created as a JavaScript/TypeScript wrapper for the [`ic-standalone-sig-verifier`](https://github.com/dfinity/ic/tree/master/rs/crypto/standalone-sig-verifier) Rust crate. 
+
+
+The following is an example of how this library can be used: 
+
+```javascript
+import initSigVerifier, {verifyIcSignature} from '@dfinity/standalone-sig-verifier-web';
+
+async function example(dataRaw, signatureRaw, derPublicKey, root_key) {
+    // load wasm module
+    await initSigVerifier(); 
+    try {
+        // call the signature verification wasm function
+        verifyIcSignature(dataRaw, signatureRaw, derPublicKey, root_key);
+        console.log('signature verified successfully')
+    } catch (error) {
+        // the library throws an error if the signature is invalid
+        console.error('signature verification failed', error)
+    }
+}
+```
+
+:::caution
+
+When using this library, you should keep the following in mind:
+
+- Verifying signatures on the frontend is unsafe, as malicious actors could modify frontend code in order to bypass signature verification. Therefore, it is recommended that this library be used for demos, backends, or other situations where the code either cannot be modified or where modifications do not create a security risk. 
+
+- This library is built from the `ic`'s `master` branch, meaning the API used may change. 
+
+- This library's resulting Wasm module is large (400 kB when gzipped); this should be taken into consideration for your project. 
+
+:::
+
+You can download the library [here](https://www.npmjs.com/package/@dfinity/standalone-sig-verifier-web).
 
 ## Resources
 

@@ -33,7 +33,7 @@ function NodeProvidersPage() {
       description="The Internet Computer is hosted by a decentralized collection of node machines — physical hardware devices run by independent node providers distributed across data centers globally"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-node-providers.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-node-providers-2.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -104,9 +104,10 @@ function NodeProvidersPage() {
               Decentralized computing{" "}
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-4 md:mb-6">
-              The Internet Computer blockchain operates on a network of nodes
-              owned and managed by a growing community of independent, vetted
-              node providers distributed across the globe.{" "}
+              The Internet Computer blockchain runs on a network of nodes
+              owned and operated by a growing community of independent, node
+              providers distributed across the globe. The node providers are
+              selected and vetted by the NNS.{" "}
             </p>
             <p className="mb-0">
               <Link
@@ -174,7 +175,7 @@ function NodeProvidersPage() {
             <h2 className="md:tw-heading-60 md:mb-6">Node Providers</h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               To preserve the decentralization of the network, each node
-              provider is voted in by token-holders via the NNS, the DAO that
+              provider is vetted and accepted by token-holders via the NNS, the DAO that
               governs the Internet Computer. Becoming a node provider entails
               submitting a proposal along with a self-declaration document that
               state provision of node machines, intent and proof of identity.

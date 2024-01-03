@@ -9,7 +9,7 @@ This document contains information regarding security best practices for develop
 
 ## Authentication
 
-### Use a well-audited authentication service and client side IC libraries
+### Use a well-audited authentication service and client side ICP libraries
 
 #### Security concern
 
@@ -19,7 +19,7 @@ Implementing user authentication and canister calls yourself in your web app is 
 
 -   Consider using e.g. [Internet Identity](https://github.com/dfinity/internet-identity) for authentication, use [agent-js](https://github.com/dfinity/agent-js) for making canister calls, and the [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) for interacting with internet identity from your dApp.
 
--   It is of course also an option to consider alternative authentication frameworks on the IC for authentication.
+-   It is of course also an option to consider alternative authentication frameworks on ICP for authentication.
 
 ### Set an appropriate session timeout
 
@@ -47,15 +47,17 @@ Never use `agent.fetchRootKey()` in production builds, only in test builds. Not 
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
 
-### Validate input in the frontend
+### Validate input and canister data in the frontend
 
 #### Security concern
 
-Missing input validation of data from untrusted sources (e.g. users) can lead to malformed data being persisted and delivered back to users. This may lead to DoS, injection attacks, phishing, etc.
+Missing input validation of data from untrusted sources (e.g. users or canisters) can lead to malformed data being persisted and/or delivered back to users. This may lead to DoS, injection attacks, phishing, etc.
 
 #### Recommendation
 
--   Perform data validation already in the front end, in addition to data validation in the canister. Data validation should happen as early as possible.
+-   Perform data validation in the front end, in addition to data validation in the canister. Data validation should happen as early as possible.
+
+-   Also validate data from canisters, especially if you don't trust the canister you are interacting with. Even if the canister is trusted, validating the data it serves is a good practice which can serve as a defense in depth mechanism e.g. in presence of security bugs in the canister or in case of a subnet compromise.  
 
 -   See the [OWASP input validation cheat sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#goals-of-input-validation).
 
@@ -71,7 +73,7 @@ Note that also loading other assets such as CSS from untrusted domains is a secu
 
 #### Recommendation
 
--   Loading JavaScript and other assets from other origins should be avoided. Especially for security critical applications, we can’t assume other domains to be trustworthy.
+-   Loading JavaScript and other assets from other origins should be avoided. Especially for security critical applications, you can’t assume other domains to be trustworthy.
 
 -   Make sure all the content delivered to the browser is served and certified by the canister using asset certification. This holds in particular for any JavaScript, but also for fonts, CSS, etc.
 

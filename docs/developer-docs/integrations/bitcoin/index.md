@@ -13,17 +13,17 @@ This integration allows for a plethora of novel use cases:
 
 -   **Bitcoin smart contracts:** a canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions using social dApps.
 -   **Trading Bitcoin:** trade Bitcoin directly on decentralized exchanges on the Internet Computer, without requiring any third-party custody of the assets.
--   **Decentralization swap:** using Bitcoin to buy tokens in a decentralization swap when an SNS-powered DAO decentralizes a service on the IC.
--   **Chain Key Bitcoin (ckBTC):** a Bitcoin analogue on the Internet Computer that is backed 1:1 by bitcoin, will be available on the IC shortly after the Bitcoin mainnet release of the Bitcoin feature. ckBTC will be the easiest way to handle bitcoin on the IC.
+-   **Decentralization swap:** using Bitcoin to buy tokens in a decentralization swap when an SNS-powered DAO decentralizes a service on ICP.
+-   **Chain Key Bitcoin (ckBTC):** a Bitcoin analogue on the Internet Computer that is backed 1:1 by bitcoin, is available on ICP. ckBTC is the easiest way to handle bitcoin on ICP.
 
 ## Examples
 These are only a few examples of how one can use the Bitcoin integration feature. Your imagination is the only limit to the endless range of possibilities being opened up by this feature. This documentation explains how to use this feature in your own dApps. Please also note that the Bitcoin integration API is a low-level API that operates on the level of UTXOs and Bitcoin transactions and is non-trivial to use.
 
-After the Bitcoin mainnet release (general availability release) of the Bitcoin feature, a **Chain Key Bitcoin (ckBTC)** canister will be made available. The ckBTC canister will provide on-chain bitcoin on the IC, which looks and feels like wrapped bitcoin but has a much stronger underlying trust model because of its decentralized architecture and using threshold ECDSA instead of bridges. 
+After the Bitcoin mainnet release (general availability release) of the Bitcoin feature, a **chain key Bitcoin (ckBTC)** canister was made available. The ckBTC canister provides on-chain bitcoin on ICP, which looks and feels like wrapped bitcoin but has a much stronger underlying trust model because of its decentralized architecture and using threshold ECDSA instead of bridges. 
 
-We envision that many people will prefer to use ckBTC instead of our native integration for their projects because of some distinct advantages:
--   **Easier to integrate:** instead of using the low-level Bitcoin integration API, one can simply access the ckBTC ledger like any other ledger on the Internet Computer. The ckBTC ledger will adhere to the ICRC-1 token standard for fungible tokens.
--   **Faster and cheaper transfers:** ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers can be done at high speed and low cost directly on the IC.
+The ICP envisions that many people will prefer to use ckBTC instead of our native integration for their projects because of some distinct advantages:
+-   **Easier to integrate:** instead of using the low-level Bitcoin integration API, one can simply access the ckBTC ledger like any other ledger on the Internet Computer. The ckBTC ledger adheres to the ICRC-2 token standard for fungible tokens.
+-   **Faster and cheaper transfers:** ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers can be done at high speed and low cost directly on ICP.
 
 ## Resources
 

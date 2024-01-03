@@ -4,10 +4,10 @@
 
 Unlike other blockchains, the Internet Computer can automatically execute canister smart contracts after a specified delay or periodically.
 
-There are two ways to schedule an automatic canister execution on the IC:
+There are two ways to schedule an automatic canister execution on ICP:
 
 1. **Timers**: one-shot or periodic canister calls with specified minimum timeout or interval.
-2. **Heartbeats**: legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by the IC for backward compatibility and some very special use cases. Newly developed canisters should prefer using timers over the heartbeats.
+2. **Heartbeats**: legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by ICP for backward compatibility and some very special use cases. Newly developed canisters should prefer using timers over the heartbeats.
 
 This example demonstrates different ways of scheduling periodic tasks on the Internet Computer: timers and heartbeats. The example shows the difference between the two, and helps to decide which method suits you the best.
 
@@ -245,4 +245,4 @@ As shown in `Example 2`, there might be still very specific use cases for the he
 
 ## Security considerations and security best practices
 
-If you base your application on this example, we recommend you familiarize yourself with and adhere to the [security best practices](https://internetcomputer.org/docs/current/references/security/) for developing on the Internet Computer. This example may not implement all the best practices.
+If you base your application on this example, it is recommended you familiarize yourself with and adhere to the [security best practices](https://internetcomputer.org/docs/current/references/security/) for developing on the Internet Computer. This example may not implement all the best practices.

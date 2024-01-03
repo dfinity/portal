@@ -12,7 +12,7 @@ This guide assumes you have an existing canister that you'd like to optimize. To
 ## Reducing cycle consumption
 The first step towards an optimized system is profiling. Start by measuring the number of instructions your endpoints consume.
 
-The `instruction_counter` API will tell you the number of instructions your code has consumed since the last entry point. Instructions are the internal currency of the IC runtime; one IC instruction is the quantum of work that the system can do, such as loading a 32-bit integer from a memory address. The system assigns an instruction cost equivalent to each Wasm instruction and system call. It also defines all its limits in terms of instructions. For a detailed breakdown of the current instruction and Wasm limitations on the IC, please review [this page](../../backend/resource-limits.md).
+The `instruction_counter` API will tell you the number of instructions your code has consumed since the last entry point. Instructions are the internal currency of the runtime; one ICP instruction is the quantum of work that the protocol can do, such as loading a 32-bit integer from a memory address. The protocol assigns an instruction cost equivalent to each Wasm instruction and system call. It also defines all its limits in terms of instructions. For a detailed breakdown of the current instruction and Wasm limitations on ICP, please review [this page](../../production/resource-limits.md).
 
 
 The following is an example method that can be used to measures the number of instructions:
@@ -76,7 +76,7 @@ Os
 Each optimization preserves the Internet Computer specific metadata sections of each canister. Additionally, the name sections in your Wasm module can be preserved by directly invoking `ic-wasm` with the `--keep-name-section` flag.
 
 :::info
-Note that in certain cases the optimizations can increase the complexity of certain functions in your Wasm module such that they are rejected by the replica. If you run into this issue, we recommend using a less aggressive optimization level such that you do not exceed the complexity limit.
+Note that in certain cases the optimizations can increase the complexity of certain functions in your Wasm module such that they are rejected by the replica. If you run into this issue, it is recommended to use a less aggressive optimization level such that you do not exceed the complexity limit.
 :::
 
 More information on canister optimization and information on `wasm-opt` benchmark testing can be found [on this forum post](https://forum.dfinity.org/t/canister-optimizer-available-in-dfx-0-14-0/21157).

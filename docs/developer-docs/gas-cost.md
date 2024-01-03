@@ -6,11 +6,11 @@ The Internet Computer requires computation operations and storage to be supporte
 
 ### The role of the Network Nervous System (NNS) in defining costs
 
-The Internet Computer is a decentralized public utility, controlled by the NNS –– the network’s open, algorithmic governance system. The NNS fundamentally controls how many cycles are required for low-level computation actions for computation and storage. The number of cycles needed for individual computations will vary based on a number of factors considered by the NNS, including proposals from the community.
+The Internet Computer is a decentralized public utility, controlled by the NNS – the network’s open, algorithmic governance system. The NNS fundamentally controls how many cycles are required for low-level computation actions for computation and storage. The number of cycles needed for individual computations will vary based on a number of factors considered by the NNS, including proposals from the community.
 
 ### Details: Cost of compute and storage transactions on the Internet Computer
 
-Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer and “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
+Canister smart contract computations running on the Internet Computer blockchain are fueled by “cycles”, which play a similar role to “gas” on Ethereum. There are several major differences however. One of the most fundamental differences is that Ethereum leverages “user pays” and the Internet Computer leverages “smart contract pays” (sometimes called “reverse gas”) model. Whereas the Ethereum blockchain requires end users to send payments for the gas smart contracts consume with every transaction, on the Internet Computer, canister smart contracts are pre-charged with cycles, such that contracts effectively pay for their own computation - freeing users from the responsibility.
 
 In late November 2022, high-replication application subnets have been made available on the Internet Computer. The first such subnets launched with a replication factor in the order of 30, different sizes may become available in the future. Cycles prices for the new high-replication subnets are scaled linearly based on the number of nodes from the base prices for 13-node subnets. The pricing mechanics for the Bitcoin Mainnet API is slightly different, see the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md) for details.
 
@@ -36,9 +36,9 @@ A thorough example how the cost of running a canister on a 13-node app subnet is
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | 127K / 13                             | 127K                                  | 127K / 13 * 34                     |
  |                                      |                                                                                                                  |                                       |                                       |                                    |
  | _HTTPS outcalls_                     |                                                                                                                  |                                       |                                       |                                    |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | 3,060,000                             | 49,140,000                                  | 171,360,000                                        | 27,200                     |
-| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside the IC, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
-| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | 3_060_000                             | 49_140_000                                  | 171_360_000                                        | 27,200                     |
+| HTTPS outcall request message size (per byte)|	For sending an HTTPS outcall to a server outside ICP, per request byte (http_request) | Sending canister |	400	| 5,200	| 13,600 |
+| HTTPS outcall response message size (per byte) |	For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request)|	Sending canister | 800	| 10,400	| 27,200 |
 
 Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](./integrations/bitcoin/bitcoin-how-it-works.md).
 
@@ -48,11 +48,11 @@ Pricing for the **Chain-Key Signing API** is available in the [Chain-Key Signing
 * System API calls are just like normal function calls from the WebAssembly stand point. The number of instructions each call takes depends on the work done.
 :::
 
-The pricing for HTTPS outcalls is calculated in a slightly different way as the prices for other resources: The feature has a quadratic component in its implementation, which is reflected through the formula `(3,000,000 + 60,000 * n) * n` for the base fee and `400 * n` each request byte and `800 * n` for each response byte. Those formulas have been used in the table to obtain the concrete values for subnets of sizes 13 and 34.
+The pricing for HTTPS outcalls is calculated in a slightly different way as the prices for other resources: The feature has a quadratic component in its implementation, which is reflected through the formula `(3_000_000 + 60_000 * n) * n` for the base fee and `400 * n` each request byte and `800 * n` for each response byte. Those formulas have been used in the table to obtain the concrete values for subnets of sizes 13 and 34.
 
 The USD cost for transactions below is based on the above cycle costs. 1 XDR is equal to 1 Trillion cycles. As of November 23, 2022, the exchange rate for 1 XDR = $1.308860, which is used on this page. The exchange rate for USD/XDR may vary and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
-To derive the estimated cost for a GB Storage per month, we assume a 30 day month.
+To derive the estimated cost for a GB Storage per month, a 30 day month is assumed.
 
  | Transaction                          | Description                                                                                                      | Who is responsible for paying the transaction fee? |  13-node Application Subnets | 34-node Application Subnets |
  |--------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------------|---------------------------|-----------------------------|
@@ -67,14 +67,34 @@ To derive the estimated cost for a GB Storage per month, we assume a 30 day mont
 | GB Storage Per Second                | For storing a GB of data per second                                                                              | Canister with storage | $0.00000016622522           | $0.00000043474178           |
  |                                      |                                                                                                                  |                             |                             |
  | *HTTPS outcalls*                     |                                                                                                                  |                             |                             |
- | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
- | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
-| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside the IC, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
+ | HTTPS outcall (per call)                | For sending an HTTPS outcall to a server outside ICP, per message (`http_request`)                            | Sending canister | $0.0000643173804               | $0.0002242862496 |
+ | HTTPS outcall request message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per request byte (http_request)	| Sending canister | $0.000000006806072 |	$0.000000017800496 |
+| HTTPS outcall response message size (per byte)	| For sending an HTTPS outcall to a server outside ICP, per reserved response byte (http_request) | Sending canister | $0.000000013612144	| $0.000000035600992 |
 
-Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022):
+Cost per Transaction in USD (XDR/USD exchange rate as of November 23, 2022).
 
-Assuming a 30-day month — 
+The following table shows the calculated storage cost per GB for a 30-day month: 
 
 |                      |                                    | 13-node Application Subnets | 34-node Application Subnets |
 |----------------------|------------------------------------|-----------------------------|-----------------------------|
 | GB Storage Per Month | For storing a GB of data per month | $0.431                      | $1.127                      |
+
+## Resource reservation mechanism
+
+In order to encourage long-term usage and discourage spiky usage patterns of resources, the Internet Computer uses a *resource reservation mechanism* that was adopted by the community in [NNS proposal 12604](https://dashboard.internetcomputer.org/proposal/126094).
+Every time a canister allocates new storage bytes, the system sets aside some amount of cycles from the main balance of the canister. These reserved cycles are used to cover future payments for the newly allocated bytes. The reserved cycles are not transferable and the amount of reserved cycles depends on how full the subnet is. For example, it may cover days, months, or even years of payments for the newly allocated bytes.
+
+The operations that allocate new bytes are:
+
+- Wasm instruction: `memory.grow`.
+- System API calls: `ic0.stable_grow()` `ic0.stable64_grow()`.
+- Increasing the `memory_allocation` in canister settings.
+
+These operations reserve some amount of cycles by moving them from the main balance of the canister to the reserved cycles balance.
+The amount of reserved cycles depends on how many bytes are allocated and on the current subnet usage:
+
+- If subnet usage is below `450GiB`, then the amount of reserved cycles per allocated byte is `0`.
+- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage from `0` to `10` years worth of storage payments at the subnet capacity (which is currently `750GiB`).
+
+A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in canister settings.
+Such opted-out canisters would not be able to allocate if the subnet usage is above `450GiB` though.

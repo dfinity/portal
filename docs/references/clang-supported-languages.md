@@ -1,14 +1,14 @@
 # Clang-Supported Languages
 
-Because the IC supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ programming languages and the `Clang` compiler.
+Because ICP supports dapps compiled to standard WebAssembly modules, you can use standard compilers and toolchains to build applications in languages such as C, C++, Objective-C, and Objective-C++ and the `Clang` compiler.
 
 ## Using C
 
-To illustrate how to migrate dapps written in C to run on the IC, let’s look at the simple `reverse.c` program in the [examples](https://github.com/dfinity/examples/tree/master/c) repository. The `reverse.c` program contains one function—named `go`—that reverses a string in place.
+To illustrate how to migrate dapps written in C to run on ICP, let’s look at the simple `reverse.c` program in the [examples](https://github.com/dfinity/examples/tree/master/c) repository. The `reverse.c` program contains one function—named `go`—that reverses a string in place.
 
 ### Set up the development environment
 
-To compile the `reverse.c` program into WebAssembly, you need to have the `clang` compiler and standard libraries installed. You can check whether you have `clang` installed on your local computer by running the following command:
+To compile the `reverse.c` program into WebAssembly, you need to have the `Clang` compiler and standard libraries installed. You can check whether you have `clang` installed on your local computer by running the following command:
 
     clang --version
 
@@ -43,11 +43,11 @@ To compile to WebAssembly on macOS:
 
 ### Create a minimal configuration file
 
-Next, you need to prepare a simple configuration file that identifies the `reverse` dapp binary as a package that can be installed on the IC and a `build` directory so that you can use the `dfx` command-line interface to install and run the package as a canister.
+Next, you need to prepare a simple configuration file that identifies the `reverse` dapp binary as a package that can be installed on ICP and a `build` directory so that you can use the `dfx` command-line interface to install and run the package as a canister.
 
 To prepare a configuration file and build directory:
 
-1.  Create a `dfx.json` file with a canisters key by running the following command:
+1.  Create a `dfx.json` file with a `canisters` key by running the following command:
 
         echo '{"canisters":{"reverse":{"main":"reverse"}}}' > dfx.json
 
@@ -89,7 +89,7 @@ To create a Candid interface description file for this program:
 
 Before you can deploy and test your dapp, you need to do the following:
 
--   Connect to either the local canister execution environment, or to the IC blockchain mainnet.
+-   Connect to either the local canister execution environment, or to ICP blockchain mainnet.
 
 -   Register a network-specific identifier for the application.
 
@@ -97,7 +97,7 @@ To deploy and test the dapp locally:
 
 1.  Open a new terminal window or tab on your local computer.
 
-    For example, if running Terminal on macOS,click **Shell**, then select **New Tab** to open a new terminal in your current working directory.
+    For example, if running Terminal on macOS, click **Shell**, then select **New Tab** to open a new terminal in your current working directory.
 
 2.  Start the local canister execution environment in your second terminal by running the following command:
 

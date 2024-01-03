@@ -6,6 +6,15 @@ Are you ready to get started developing on the Internet Computer, but not sure w
 
 The developer journey is designed to give both new and existing developers a clear learning path to develop on the Internet Computer. Starting at level 0 with an introduction to the Internet Computer, terminology, and setting up a developer environment, to level 5 that details building complex dapps, the Developer Journey contains essential information for developers of all skill levels. 
 
+:::info
+
+This developer journey will focus on developing canisters and applications using Motoko. In the future, there will be additional variations of the developer journey that focus on different developer paths, such as:
+
+- Rust development.
+- Bitcoin-focused development.
+- Ethereum-focused development.
+
+:::
 
 ## Level 0: Pre-flight operations
 
@@ -35,29 +44,30 @@ The developer journey is designed to give both new and existing developers a cle
 - [2.5 Unit, integration, and end2end testing](level-2/2.5-unit-testing.md)
 - [2.6 Motoko level 2](level-2/2.6-motoko-lvl2.md)
 
+
 ## Level 3: Space engineer 
 
-- 3.1 Using libraries with MOPS
-- 3.2 Using HTTPS outcalls
-- 3.3 Certified variables
-- 3.4 Introduction to agents
-- 3.5 Using Quill
-- 3.6 Motoko level 3
+- [3.1 Motoko package managers](level-3/3.1-package-managers.md)
+- [3.2 Using HTTPS outcalls](level-3/3.2-https-outcalls.md)
+- [3.3 Certified data](level-3/3.3-certified-data.md)
+- [3.4 Introduction to agents](level-3/3.4-intro-to-agents.md)
+- [3.5 Identities and authentication](level-3/3.5-identities-and-auth.md)
+- [3.6 Motoko level 3](level-3/3.6-motoko-lvl3.md)
 
 ## Level 4: Space pilot
 
-- 4.1 Identities and authentication
-- 4.2 Using the ICP ledger
-- 4.3 ICRC-1 tokens
-- 4.4 ckBTC and Bitcoin integration
-- 4.5 NNS governance and staking
-- 4.6 Motoko level 4
-- 
+- [4.1 Using the ICP ledger](level-4/4.1-icp-ledger.md)
+- [4.2 ICRC-1 tokens](level-4/4.2-icrc-tokens.md)
+- [4.3 ckBTC and Bitcoin integration](level-4/4.3-ckbtc-and-bitcoin.md)
+- [4.4 NNS governance and staking](level-4/4.4-nns-governance.md)
+- [4.5 Using quill](level-4/4.5-using-quill.md)
+- [4.6 Motoko level 4](level-4/4.6-motoko-lvl4.md)
+
 ## Level 5: Internet Computer astronaut 
 
-- 5.1 Developing an encrypted notes dapp with vetKD
-- 5.2 Developing a dapp using the IC Ethereum integration
-- 5.3 Creating a DEX
-- 5.4 Creating NFTs on the IC
-- 5.5 Creating an SNS
-- 5.6 Next steps
+- [5.1 Developing an encrypted notes dapp with vetKeys](level-5/5.1-vetKeys-tutorial.md)
+- [5.2 Developing a dapp using the ICP Ethereum integration](level-5/5.2-ICP-ETH-tutorial.md)
+- [5.3 Creating a decentralized token swap](level-5/5.3-token-swap-tutorial.md)
+- [5.4 Creating NFTs on ICP](level-5/5.4-NFT-tutorial.md)
+- [5.5 Creating an auction dapp](level-5/5.5-auction-tutorial.md)
+- [5.6 Next steps](level-5/5.6-next-steps.md)

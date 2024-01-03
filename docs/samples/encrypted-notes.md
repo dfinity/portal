@@ -4,23 +4,23 @@
 
 [Encrypted notes](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp) is an experimental dapp for authoring and storing confidential information in the form of short pieces of text. The user can access their notes via any number of automatically synchronized devices authenticated via [Internet Identity](https://internetcomputer.org/internet-identity). Thanks to the end-to-end encryption performed by the dapp’s frontend, the user does not need to trust the dapp’s backend.
 
-You can play around with the [dapp deployed on the IC](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.icp0.io/) and see a quick introduction on [YouTube](https://youtu.be/DZQmtPSxvbs).
+You can play around with the [dapp deployed on ICP](https://cvhrw-2yaaa-aaaaj-aaiqa-cai.icp0.io/) and see a quick introduction on [YouTube](https://youtu.be/DZQmtPSxvbs).
 
-We wanted to build an example of a simple (but not too simple) dapp running purely on the IC. This example relies upon the **web-serving** and **storage capabilities** of the IC. We focused on the following two key features for our example dapp: 
+The team wanted to build an example of a simple (but not too simple) dapp running purely on ICP. This example relies upon the **web-serving** and **storage capabilities** of ICP. The team focused on the following two key features for our example dapp: 
 1. Client-side **end-to-end encryption**. 
 2. **Multi-user** and **multi-device** support.
 
-To demonstrate the potential of the IC as a platform for developing such dapps, we implemented this example using two distinct canister development kits (CDKs). The Motoko CDK allows developers to implement actor-based dapps using the [Motoko](/motoko/main/motoko.md) language. The Rust CDK allows implementing dapps in [Rust](/developer-docs/backend/rust/index.md). In both cases, canisters are compiled into WebAssembly files that are then deployed onto the IC.
+To demonstrate the potential of ICP as a platform for developing such dapps, the team implemented this example using two distinct canister development kits (CDKs). The Motoko CDK allows developers to implement actor-based dapps using the [Motoko](/motoko/main/motoko.md) language. The Rust CDK allows implementing dapps in [Rust](/developer-docs/backend/rust/index.md). In both cases, canisters are compiled into WebAssembly files that are then deployed onto ICP.
 
 ## Architecture
 
 The basic functionality of the encrypted notes consists of two main components.
 
-First, we re-used the code of a non-encrypted dapp called [IC Notes](https://github.com/pattad/ic_notes). In particular IC Notes relies on the Internet Identity (II) canister for user authentication, an approach that is also inherited by the encrypted notes dapp. For development purposes, we deploy a local instance of the II canister, along with a local instance of encrypted notes. When deploying the encrypted notes dapp onto the mainnet, the real-world instance of II is used for authentication.
+First, the team re-used the code of a non-encrypted dapp called [IC Notes](https://github.com/pattad/ic_notes). In particular IC Notes relies on the Internet Identity (II) canister for user authentication, an approach that is also inherited by the encrypted notes dapp. For development purposes, the team deployed a local instance of the II canister, along with a local instance of encrypted notes. When deploying the encrypted notes dapp onto the mainnet, the real-world instance of II is used for authentication.
 
-Second, we enabled client-side, end-to-end encryption for the note contents, borrowing the solution from another existing dapp called [IC Vault](https://github.com/timohanke/icvault). Our encrypted notes dapp follows the approach of IC Vault to support managing multiple devices.
+Second, the team enabled client-side, end-to-end encryption for the note contents, borrowing the solution from another existing dapp called [IC Vault](https://github.com/timohanke/icvault). Our encrypted notes dapp follows the approach of IC Vault to support managing multiple devices.
 
-In the context of the canisters discussed in this document, a device is not necessarily a separate physical device but a logical instance device, e.g., a web browser, with its own local data storage. For example, we consider two web browsers running on the same laptop as two independent devices, since these browsers generate their own encryption keys. In contrast, the II canister relies on hardware-generated encryption keys, distinguishing only hardware devices.
+In the context of the canisters discussed in this document, a device is not necessarily a separate physical device but a logical instance device, e.g., a web browser, with its own local data storage. For example, the team considered two web browsers running on the same laptop as two independent devices, since these browsers generate their own encryption keys. In contrast, the II canister relies on hardware-generated encryption keys, distinguishing only hardware devices.
 
 To support multiple devices per user, IC Vault employs a device manager; a canister that securely synchronizes device-specific keys across all the devices that are associated with a user. The remainder of this document focuses on the encrypted notes dapp canister that implements a device manager in a similar way but as part of its main canister.
 
@@ -32,7 +32,7 @@ For further details and user stories, please refer to the [README file](https://
 
 -   Users are linked to II in the frontend, getting the user a principal that can be used for calling API queries and updates.
 
--   Internally, we store the map of the form `Principal → [Notes]` and a `counter`.
+-   Internally, the dapp stores the map of the form `Principal → [Notes]` and a `counter`.
 
 -   `counter` stores the number of notes the canister has created across all principals.
 
@@ -40,7 +40,7 @@ For further details and user stories, please refer to the [README file](https://
 
 -   Method `update` pulls a note, for the caller’s principal and for the provided `note_id` and replaces it with the provided `text` (this `text` is assumed to be encrypted by the frontend).
 
--   Method `delete` finds the note with the given `note_id` in the map and removes it. To ensure that note IDs are always globally unique, we do not decrease `counter`.
+-   Method `delete` finds the note with the given `note_id` in the map and removes it. To ensure that note IDs are always globally unique, the dapp does not decrease `counter`.
 
 ## Cryptography
 
@@ -56,7 +56,7 @@ This dapp uses three different kinds of keys:
 
 -   **Device RSA-OAEP private key**: used to decrypt the symmetric AES **secret key** stored in the encrypted notes canister for a given principal. Once the frontend decrypts the secret key, it can use this key for decrypting the notes stored in the encrypted notes canister.
 
-We store a map of the form:
+The map is stored in the form:
 
         Principal → (DeviceAlias → PublicKey,
                      DeviceAlias → CipherText)
@@ -285,7 +285,7 @@ dfx canister --network ic install www --mode=upgrade
 - #### Step 1: Open the main page of the `Encrypted Notes` dapp. You will see a **Login** button.
 
    - If deployed locally, visit the following link: http://localhost:4943?canisterId=rkp4c-7iaaa-aaaaa-aaaca-cai
-   - If deployed to the mainnet IC, visit the corresponding canister URL.
+   - If deployed to the mainnet, visit the corresponding canister URL.
 
    At this moment, only one `deviceAlias` variable is stored in the local storage. 
 
@@ -328,7 +328,7 @@ One subtle difference that you might observe on Device B is that the message "Sy
 - #### Step 1: Login into the dapp with the same anchor on two or more devices.
 - #### Step 2: On each device, navigate to "Devices" item in the menu.
 - #### Step 3: Observe that the list of registered devices contains as many entries as the number of logged in devices.
-- #### Step 4: Assuming we are using Device A, click "remove" for some other device, say, Device B.
+- #### Step 4: Assuming you are using Device A, click "remove" for some other device, say, Device B.
 - #### Step 5: While still on Device A, observe that Device B is deleted from the list of devices. 
 
 :::info
@@ -402,7 +402,7 @@ Some errors like `Could not initialize crypto service` might occur due to browse
 Some browsers may block local resources based on invalid SSL certificates. If while testing a locally deployed version of the encrypted notes dapp you observe certificate issues in your browser's console, please change the browser settings to **ignore certificates for resources loaded from localhost**. For example, this can be done in Google Chrome via [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost).
 
 ## dfx.json file structure
-`dfx.json` is the configuration of the project when deploying to either the local replica or to the IC, it assists in the creation of the `.dfx` directory (which contains `canister_ids.json` — which merely maps canister by name to their id on both local replica and the IC). There are various configuration options here and this is not exhaustive. This will primarily discuss target types for canisters (which all exist under the `canisters` key).
+`dfx.json` is the configuration of the project when deploying to either the local replica or to ICP, it assists in the creation of the `.dfx` directory (which contains `canister_ids.json` — which merely maps canister by name to their id on both local replica and ICP). There are various configuration options here and this is not exhaustive. This will primarily discuss target types for canisters (which all exist under the `canisters` key).
 
 ```sh
 {
@@ -442,12 +442,12 @@ Some browsers may block local resources based on invalid SSL certificates. If wh
 ```
 
 #### **encrypted_notes_motoko**:
-Motoko is the IC-specific language for building and deploying canisters. Two keys are necessary:
+Motoko is the ICP-specific language for building and deploying canisters. Two keys are necessary:
 `main`: The directory location of the entrypoint file of your canister.
 `type`: needs to be "motoko", informing dfx of how to properly build the canister.
 
 #### **encrypted_notes_rust**:
-Rust natively supports WebAssembly — the binary format of the Internet Computer, and there is a crate ic_cdk which allows hooks into the IC. Unlike motoko, dfx does not yet have a native Rust target that infers as much as motoko canisters. So the keys that need to be provided are:
+Rust natively supports WebAssembly — the binary format of the Internet Computer, and there is a crate ic_cdk which allows hooks into ICP. Unlike motoko, dfx does not yet have a native Rust target that infers as much as motoko canisters. So the keys that need to be provided are:
 `type`: custom (letting dfx know that it's going to need to do some user-defined work)
 `build`: whatever command needed to turn your project into a wasm binary. In this repo it's:
 
@@ -460,14 +460,14 @@ cargo build --package encrypted_notes_rust --target wasm32-unknown-unknown --rel
 
 
 #### **www**:
-frontend www canister (an "asset" canister) is the way we describe a set of files or a static website that we are deploying to the IC. Our project frontend is built in [Svelte](https://svelte.dev/). The keys we used are as follows:
+frontend www canister (an "asset" canister) is the way used to describe a set of files or a static website that are deployed to ICP. This project frontend is built in [Svelte](https://svelte.dev/). The keys used are as follows:
 `dependencies`: an array of whatever canisters are being used to serve your app, to ensure that dfx builds and deploys them before your app.
 `frontend: { entrypoint: ""}`: This set of keys tells dfx to build it as a frontend canister, and entrypoint is wherever your app entrypoint winds up residing at the end of an npm build
 `source`: where the rest of your app resides at the end of npm build
 `type`: "assets" for an assets or static canister.  
 
 #### **Binary targets**:
-You can also just deploy arbitrary binary targets as long as they're wasm binaries. For that we use the keys:
+You can also just deploy arbitrary binary targets as long as they're wasm binaries. For that, use the keys:
 `wasm`: a wasm file.
 `candid`: a candidfile representing all interfaces in the wasm file.
 
@@ -489,6 +489,6 @@ A symmetric key for encrypting/decrypting the notes is stored in RAM (this key i
 
 
 ## Acknowledgments
-We thank the author of [IC Notes](https://github.com/pattad/ic_notes) whose code was the starting point for the frontend component used in this project.
+This guide thanks the author of [IC Notes](https://github.com/pattad/ic_notes) whose code was the starting point for the frontend component used in this project.
 
-We thank the authors of [IC Vault](https://github.com/timohanke/icvault) whose code was the starting point for this project's backend, browser-based encryption, and device management.
+This guide thanks the authors of [IC Vault](https://github.com/timohanke/icvault) whose code was the starting point for this project's backend, browser-based encryption, and device management.

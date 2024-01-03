@@ -2,7 +2,7 @@
 
 This example demonstrates implementing an NFT canister. NFTs (non-fungible tokens) are unique tokens with arbitrary
 metadata, usually an image of some kind, to form the digital equivalent of trading cards. There are a few different
-NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs/extendable-token), [IC-NFT](https://github.com/rocklabs-io/ic-nft)), but for the purposes of this tutorial we use [DIP-721](https://github.com/Psychedelic/DIP721). You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
+NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs/extendable-token), [IC-NFT](https://github.com/rocklabs-io/ic-nft)), but for the purposes of this tutorial the standard [DIP-721](https://github.com/Psychedelic/DIP721) is used. You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
 
 The canister is a basic implementation of the standard, with support for the minting, burning, and notification interface extensions.
 
@@ -13,7 +13,7 @@ there is a [command-line minting tool](https://github.com/dfinity/experimental-m
 
 ## Overview
 The NFT canister is not very complicated since the [DIP-721](https://github.com/Psychedelic/DIP721) standard specifies most [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations,
-but we can still use it to explain three important concepts concerning dapp development for the Internet Computer:
+but it can still be used to explain three important concepts concerning dapp development for the Internet Computer:
 
 - #### 1. Stable memory for canister upgrades.
 The Internet Computer employs [orthogonal persistence](/motoko/main/motoko.md#orthogonal-persistence), so developers generally do not need to think a lot about storing their data.
@@ -33,7 +33,7 @@ The NFT canister example contains all those cases and shows how it can be done.
 Since the basic functions required in [DIP-721](https://github.com/Psychedelic/DIP721) are very straightforward to implement, this section only discusses how the above ideas are handled and implemented.
 
 ### Stable storage for canister upgrades
-During canister code upgrades, any data stored in a canister's heap storage is not persisted between different canister calls. Only memory in stable memory is carried over.
+During canister code upgrades, any data stored in a canister's heap memory is not persisted between different canister calls. Only memory in stable memory is carried over.
 Because of that it is necessary to write all data to stable memory before the upgrade happens. After the upgrade, it is normal to load data from stable memory into memory
 during the `post_upgrade` function. The `post_upgrade` function is called by the system after the upgrade happened.
 In case an error occurs during any part of the upgrade (including `post_upgdrade`), the entire upgrade is reverted.
@@ -77,7 +77,7 @@ The NFT example canister keeps access control in these three levels very simple:
 Burning an NFT is a special case. To burn an NFT means to either delete the NFT (not intended in DIP-721) or to set ownership to `null` (or a similar value).
 On the Internet Computer, this non-existing principal is called the [management canister](https://smartcontracts.org/docs/current/references/ic-interface-spec.md#ic-management-canister).
 Quote from the link: "The IC management canister is just a facade; it does not actually exist as a canister (with isolated state, Wasm code, etc.)." and its address is `aaaaa-aa`.
-Using this management canister address, we can construct its principal and set the management canister as the owner of a burned NFT.
+Using this management canister address, you can construct its principal and set the management canister as the owner of a burned NFT.
 
 ## NFT sample code tutorial
 
@@ -114,7 +114,7 @@ If this is not a new installation, you may need to run `start` with the `--clean
 dfx start --clean --background
 ```
 
-- #### Step 4: Deploy a DIP721 NFT canister to your local IC.
+- #### Step 4: Deploy a DIP721 NFT canister to your local replica.
 This command deploys the DIP721 NFT canister with the following initialization arguments:
 
 ```

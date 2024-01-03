@@ -2,7 +2,7 @@
 
 ## Overview
 
-When developing on the IC, there are currently two primary languages to build backend canisters with; Motoko and Rust. This guide provides an introduction to using Rust to developer backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability. 
+When developing on ICP, there are currently two primary languages to build backend canisters with; Motoko and Rust. This guide provides an introduction to using Rust to developer backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability. 
 
 ## Rust CDK
 
@@ -81,7 +81,7 @@ registered_users_total {}",
 
 ## Globally mutable states
 
-By design, canisters on the IC are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to global mutable variables. This results in Rust developers needing to choose a method of code organization that takes the IC's design into consideration. This guide will cover a few of those code organization options. 
+By design, canisters on ICP are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to global mutable variables. This results in Rust developers needing to choose a method of code organization that takes ICP's design into consideration. This guide will cover a few of those code organization options. 
 
 ### Using `thread_local!` with `Cell/RefCell` for state variables
 
@@ -100,7 +100,7 @@ thread_local! {
 
 It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the System API should go into the main file.
 
-It is also possible to create a thin abstraction for the System API and test your code with a fake but faithful implementation. For example, we could use the following trait to abstract the stable memory API:
+It is also possible to create a thin abstraction for the System API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
 
 ```
 pub trait Memory {

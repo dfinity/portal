@@ -5,11 +5,11 @@ This tutorial will walk you through how to deploy a sample [canister smart contr
 
 ## Architecture
 
-We will be relying on the "Basic Bitcoin" example in the [examples repository](https://github.com/dfinity/examples/),
+This guide will be relying on the "Basic Bitcoin" example in the [examples repository](https://github.com/dfinity/examples/),
 which internally leverages the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key)
 and [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin-api) of the Internet Computer.
 
-For deeper understanding of the ICP < > BTC integration, see the IC wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
+For deeper understanding of the ICP < > BTC integration, see ICP wiki article on [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration).
 
 ## Prerequisites
 
@@ -50,18 +50,18 @@ Deploying to the Internet Computer requires [cycles](../developer-docs/setup/cyc
 ### Deploy the smart contract to the Internet Computer
 
 ```bash
-dfx deploy --network=ic basic_bitcoin --argument '(variant { Testnet })'
+dfx deploy --network=ic basic_bitcoin --argument '(variant { testnet })'
 ```
 
 #### What this does
 - `dfx deploy` tells the command line interface to `deploy` the smart contract
 - `--network=ic` tells the command line to deploy the smart contract to the mainnet ICP blockchain
-- `--argument '(variant { Testnet })'` passes the argument `Testnet` to initialize the smart contract, telling it to connect to the Bitcoin testnet
+- `--argument '(variant { testnet })'` passes the argument `testnet` to initialize the smart contract, telling it to connect to the Bitcoin testnet
 
 :::info
-We're initializing the canister with `variant { Testnet }`, so that the canister connects to the the [Bitcoin testnet](https://en.bitcoin.it/wiki/Testnet). To be specific, this connects to `Testnet3`, which is the current Bitcoin test network used by the Bitcoin community. 
+You're initializing the canister with `variant { testnet }`, so that the canister connects to the the [Bitcoin testnet](https://en.bitcoin.it/wiki/Testnet). To be specific, this connects to `Testnet3`, which is the current Bitcoin test network used by the Bitcoin community. 
 
-To connect to the **Bitcoin mainnet**, one should use `variant { Mainnet }`
+To connect to the **Bitcoin mainnet**, one should use `variant { mainnet }`
 :::
 
 
@@ -103,7 +103,7 @@ Or, if you prefer the command line:
 * The Bitcoin address you see will be different from the one above, because the
   ECDSA public key your canister retrieves is unique.
 
-* We are generating a Bitcoin testnet address, which can only be
+* You are generating a Bitcoin testnet address, which can only be
 used for sending/receiving Bitcoin on the Bitcoin testnet.
 :::
 
@@ -113,7 +113,7 @@ Now that the canister is deployed and you have a Bitcoin address, it's time to r
 some testnet Bitcoin. You can use one of the Bitcoin faucets, such as [coinfaucet.eu](https://coinfaucet.eu),
 to receive some bitcoin.
 
-Enter your address and click on "Send testnet Bitcoins". In the example below we will use bitcoin address `n31eU1K11m1r58aJMgTyxGonu7wSMoUYe7`, but you would use your own address. The canister will be receiving 0.011 test BTC on the Bitcoin Testnet.
+Enter your address and click on "Send testnet Bitcoins". In the example below, this guide will use bitcoin address `n31eU1K11m1r58aJMgTyxGonu7wSMoUYe7`, but you would use your own address. The canister will be receiving 0.011 test BTC on the Bitcoin Testnet.
 
 ![Bitcoin Testnet Faucet](_attachments/bitcoin-testnet-faucet.png)
 
@@ -146,7 +146,7 @@ Checking the balance of a Bitcoin address relies on the [bitcoin_get_balance](ht
 You can send Bitcoin using the `send` endpoint on your canister.
 
 In the Candid UI, add a destination address and an amount to send. In the example
-below, we're sending 4'321 Satoshi (0.00004321 BTC) back to the testnet faucet.
+below, you're sending 4'321 Satoshi (0.00004321 BTC) back to the testnet faucet.
 
 ![Sending Bitcoin](_attachments/bitcoin-send-transaction.png)
 

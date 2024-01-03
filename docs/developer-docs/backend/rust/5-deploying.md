@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this guide, we'll cover the steps required to write, compile, deploy, and interact with a Rust backend canister. 
+In this guide, you'll learn the steps required to write, compile, deploy, and interact with a Rust backend canister. 
 
 This guide will showcase a simple 'Hello, world!' example.
 
@@ -49,7 +49,7 @@ For more information on project structure and code organization, review the [pro
 
 ## Writing the `lib.rs` file
 
-We'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step. 
+You'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step. 
 
 Open the `src/hello_world_backend/src/lib.rs` file in a text editor. Replace the existing content with the following:
 
@@ -103,7 +103,7 @@ hello_world_backend canister created with canister id: br5f7-7uaaa-aaaaa-qaaca-c
 
 ### Building the canister
 
-Next, you need to compile your program into a WebAssembly module that can be deployed on the IC by building the canister. To build the canister, run the command:
+Next, you need to compile your program into a WebAssembly module that can be deployed on ICP by building the canister. To build the canister, run the command:
 
 ```
 dfx build hello_world_backend
@@ -137,13 +137,13 @@ This command deploys just the `hello_world_backend` canister. To deploy all cani
 dfx deploy
 ```
 
-## Deploying the canister to the IC mainnet
+## Deploying the canister to the mainnet
 
 To deploy to the mainnet, you will need a cycles wallet with a balance of cycles. 
 
 To learn more about setting up a cycles wallet, please review the documentation [here](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet#confirm-your-developer-identity-and-ledger-account). 
 
-Once you have gotten your cycles wallet configured and ready to use, check the status of the IC mainnet to confirm that your local environment can connect to it. You can ping the mainnet with the command:
+Once you have gotten your cycles wallet configured and ready to use, check the status of the mainnet to confirm that your local environment can connect to it. You can ping the mainnet with the command:
 
 ```
 dfx ping ic
@@ -194,6 +194,54 @@ This will return the output:
 ```
 ("Hello there, Bob! This is an example greeting returned from a Rust backend canister!")
 ```
+
+### Testing the canister with PocketIC
+
+[PocketIC](/docs/current/developer-docs/setup/pocket-ic) is a lightweight, deterministic testing solution for programmatic testing of canisters that seamlessly integrates with existing testing infrastructure, such as cargo test. 
+
+You can learn more about PocketIC and how to install it [here](/docs/current/developer-docs/setup/pocket-ic).
+
+For Rust canisters, PocketIC can be imported into your project with the code:
+
+```rust
+use pocket_ic::PocketIc;
+```
+
+Then, in your code you can create a new PocketIC instance with the code:
+
+```
+let pic = PocketIc::new();
+```
+
+The following is a complete example for testing a counter canister:
+
+```rust
+use candid::encode_one;
+use pocket_ic::PocketIc;
+
+ #[test]
+ fn test_counter_canister() {
+    let pic = PocketIc::new();
+    // Create an empty canister as the anonymous principal and add cycles.
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, 2_000_000_000_000);
+    
+    let wasm_bytes = load_counter_wasm(...);
+    pic.install_canister(canister_id, wasm_bytes, vec![], None);
+    // 'inc' is a counter canister method.
+    call_counter_canister(&pic, canister_id, "inc");
+    // Check if it had the desired effect.
+    let reply = call_counter_canister(&pic, canister_id, "read");
+    assert_eq!(reply, WasmResult::Reply(vec![0, 0, 0, 1]));
+ }
+
+fn call_counter_canister(pic: &PocketIc, canister_id: CanisterId, method: &str) -> WasmResult {
+    pic.update_call(canister_id, Principal::anonymous(), method, encode_one(()).unwrap())
+        .expect("Failed to call counter canister")
+}
+```
+
+You can see additional PocketIC testing examples [here](/docs/current/developer-docs/setup/pocket-ic).
 
 ## Interacting with the canister
 

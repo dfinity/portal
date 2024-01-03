@@ -80,6 +80,38 @@ const sidebars = {
             "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
           ],
         },
+        {
+          type: "category",
+          label: "Level 4: Space pilot",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-4/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-4/4.1-icp-ledger",
+            "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+            "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+            "tutorials/developer-journey/level-4/4.4-nns-governance",
+            "tutorials/developer-journey/level-4/4.5-using-quill",
+            "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+          ],
+        },
+        {
+          type: "category",
+          label: "Level 5: Internet Computer astronaut",
+          link: {
+            type: "doc",
+            id: "tutorials/developer-journey/level-5/index",
+        },
+          items: [
+            "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
+            "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+            "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
+            "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
+            "tutorials/developer-journey/level-5/5.5-auction-tutorial",
+            "tutorials/developer-journey/level-5/5.6-next-steps",
+          ],
+        },
       ],
     },
     {
@@ -101,6 +133,7 @@ const sidebars = {
         "samples/deploying-your-first-bitcoin-dapp",
         "samples/echo",
         "samples/encrypted-notes",
+        "samples/persistent-storage",
         "samples/factorial",
         "samples/game-of-life",
         "samples/hackathon-projects",
@@ -116,7 +149,6 @@ const sidebars = {
         "samples/nft",
         "samples/nft-wallet",
         "samples/periodic-tasks",
-        "samples/persistent-storage",
         "samples/phonebook",
         "samples/pos",
         "samples/pub-sub",
@@ -144,15 +176,14 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "How the IC works",
+          label: "How the Internet Computer Protocol works",
           link: {
             type: "doc",
             id: "concepts/index",
           },
           items: [
-            "concepts/what-is-IC",
+            "concepts/what-is-ic",
             "concepts/canisters-code",
-            "concepts/data-centers",
             "developer-docs/gas-cost",
             "concepts/governance",
             "concepts/nodes-subnets",
@@ -173,7 +204,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer quick start",
+          label: "Developer quickstart",
           id: "developer-docs/setup/quickstart",
         },
         {
@@ -225,6 +256,16 @@ const sidebars = {
           label: "Pulling canister dependencies",
           id: "developer-docs/setup/pulling-canister-dependencies",
         },
+                {
+          type: "doc",
+          label: "Quickstart for React developers",
+          id: "developer-docs/setup/react-quickstart",
+        },
+        {
+          type: "doc",
+          label: "Testing canisters with PocketIC",
+          id: "developer-docs/setup/pocket-ic",
+        },
         {
           type: "doc",
           label: "Using Visual Studio Code",
@@ -238,7 +279,17 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
-        "developer-docs/backend/resource-limits",
+        {
+          type: "category",
+          label: "Subnet types",
+          link: {
+            type: "doc",
+            id: "developer-docs/backend/subnet-types",
+          },
+          items: [
+            "developer-docs/backend/eu-subnets",
+          ],
+        },
       ],
     },
     {
@@ -344,6 +395,7 @@ const sidebars = {
         "developer-docs/frontend/react-frontend",
         "developer-docs/frontend/svelte-frontend",
         "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/existing-frontend",
       ],
     },
     {
@@ -354,6 +406,21 @@ const sidebars = {
         id: "developer-docs/production/index",
       },
       items: [
+        {
+          type: "doc",
+          label: "Canister history",
+          id: "developer-docs/production/canister-history",
+        },
+        {
+        type: "doc",
+        label: "Canister recovery",
+        id: "developer-docs/production/canister-recovery",
+        },
+        {
+          type: "doc",
+          label: "Canister storage",
+          id: "developer-docs/production/storage",
+        },
         {
           type: "category",
           label: "Custom domains",
@@ -370,8 +437,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Instruction limits",
-          id: "developer-docs/production/instruction-limits",
+          label: "Resource limits",
+          id: "developer-docs/production/resource-limits",
         },
         {
           type: "doc",
@@ -636,8 +703,6 @@ const sidebars = {
           items: [
             "developer-docs/integrations/sns/launching/launch-summary-1proposal",
             "developer-docs/integrations/sns/launching/launch-steps-1proposal",
-            "developer-docs/integrations/sns/launching/launch-summary",
-            "developer-docs/integrations/sns/launching/launch-steps",
           ],
         },
         {
@@ -901,6 +966,7 @@ const sidebars = {
         "motoko/main/pattern-matching",
         "motoko/main/sharing",
         "motoko/main/stablememory",
+        "motoko/main/stable-regions",
         "motoko/main/structural-equality",
         "motoko/main/timers",
         "motoko/main/upgrades",
@@ -951,6 +1017,7 @@ const sidebars = {
         "motoko/main/base/Principal",
         "motoko/main/base/Random",
         "motoko/main/base/RBTree",
+        "motoko/main/base/Region",
         "motoko/main/base/Result",
         "motoko/main/base/Stack",
         "motoko/main/base/Text",

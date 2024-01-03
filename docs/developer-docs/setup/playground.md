@@ -21,7 +21,7 @@ To ensure resources are used fairly by users, proof of work when a user makes a 
 
 Since Motoko playground is designed for short, small-scale testing, there are limitations and restrictions imposed on canisters deployed to the playground. These limitations are:
 
-- Cycle transfer instructions are silently ignored by the system.
+- Cycle transfer instructions are silently ignored by the Motoko playground.
 - Canisters can use at most 1GB of memory.
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
@@ -30,7 +30,7 @@ Since Motoko playground is designed for short, small-scale testing, there are li
 
 ## `dfx deploy --playground`
 
-Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the IC mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
+Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
 
 ### Prerequisites
 
@@ -73,11 +73,11 @@ This command calls the `hello_world_backend` canister that has been deployed to 
 Any commands that intend to target a canister deployed to the playground must use the `--playground` or `--network playground` flag in order to target the borrowed canister(s). 
 :::
 
-### Defining custom playground networks
+## Creating a custom playground with separate pool creation
 
-Using a custom playground network can be beneficial for several development workflows, such as sharing a canister pool with a development team to avoid managing cycles wallets for developer, or using a canister pool for CI preview deployments without having to continuously create and delete canisters. 
+As an alternative to a staging environment or the Motoko mainnet playground, the Motoko playground allows for custom, private playgrounds to be deployed. Using a custom playground allows for extensive customization, such as enabling access control by restricting the playground's usage to only allow certain principals, configuring more generous canister timeouts and the amount of available cycles, and allowing some (or all) of the function calls that the mainnet Motoko playground does not allow, such as sending cycles to other canisters. 
 
-Custom playground networks can be defined in the project's `dfx.json` file in the `network` definition section. The following steps can be used to define a custom playground network:
+Using a custom playground can help simplify development for teams, since the whole team can use a custom playground without needing to manage individual cycle balances.
 
 - #### Step 1: Clone the Motoko playground repo with the command:
 
@@ -85,22 +85,47 @@ Custom playground networks can be defined in the project's `dfx.json` file in th
 git clone https://github.com/dfinity/motoko-playground
 ```
 
-- #### Step 2: Add access control if desired.
+- #### Step 2: To create a separate pool, first use the current Motoko playground pool and `wasm-utils` canisters as the starting point. 
 
-- #### Step 3: Modify the `install_code` to skip Wasm analysis. This step is important if you plan on using large Wasm files or intend to use calls that are limited by the Wasm analysis.
+These can be found [here](https://github.com/dfinity/motoko-playground/tree/main/service).
 
-- #### Step 4: Deploy your canisters.
+- #### Step 3: Then, edit the `pool/Main.mo` file to  change your custom playground settings, such as:
 
-- #### Step 5: Configure your custom playground network in the `dfx.json` file as shown below:
+- Add access control [here](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L134) as desired, such as creating an `whitelist` of principals that are permitted to use the custom playground.
+
+- Configure the canister's time to live [here](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Types.mo#L22).
+
+- Change the Wasm transformation to fit your desired configuration [here](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L150). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted, such as:
+
+```motoko
+let wasm = args.wasm_module;
+```
+
+- #### Step 4: Then deploy the pool canister, and if necessary, deploy the `wasm-utils` canister:
 
 ```
+dfx deploy pool
+dfx deploy wasm-utils
+```
+
+- #### Step 5: Lastly, define the local playground network in your project's `dfx.json` file. In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
+
+```json
 "<network name>": {
   "playground": {
     "playground_canister": "<canister pool id>",
     "timeout_seconds": <amount of seconds after which a canister is returned to the pool>
-  }
+  },
+  "providers": [
+      "https://icp0.io"
+  ]
 }
 ```
+
+If the value `<network name>` is set as `playground`, then the command `dfx deploy --playground` will deploy to your custom playground. Otherwise, the command has to use `--network <network name>`.
+
+:::info 
+This network definition can also go into `networks.json` file so it applies to every project, not just the current project, since `dfx.json` files are project-specific. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`. 
 
 ## Motoko playground in the web browser
 
@@ -108,7 +133,7 @@ Motoko playground is also available through the Motoko playground frontend canis
 
 https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/
 
-In this portion of the guide, we'll explore the frontend canister's UI functionality and how to use it. 
+In this portion of the guide, you'll explore the frontend canister's UI functionality and how to use it. 
 
 When this URL is opened in a web browser, you will see the following welcome screen:
 
@@ -120,7 +145,7 @@ From this welcome menu, you can choose an example project from the 'Example Proj
 
 ![Import from Github](./_attachments/motoko-playground3.png)
 
-For this example, we'll select the 'Hello, world' example from the 'Example Projects' tab.
+For this example, you'll select the 'Hello, world' example from the 'Example Projects' tab.
 
 Once opened, you will see the following screen. Take note of the project's files in the left side bar menu under 'FILES', and the installed packages under the 'PACKAGES' menu.
 
@@ -266,3 +291,5 @@ window.addEventListener('message', responseListener)
 :::info
 This example works for `localhost` out of the box. To use this feature in production, please submit a PR to the [Motoko playground](https://github.com/dfinity/motoko-playground.git) repository that adds your application's public URL to the file `src/integrations/allowedOrigins.js`.
 :::
+
+

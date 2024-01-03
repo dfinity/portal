@@ -10,11 +10,11 @@ To get started, one should [install the IC SDK](../../setup/install/index.mdx) w
 
 The [1.1: Exploring a live demo](/docs/tutorials/developer-journey/level-1/1.1-live-demo.md) developer journey tutorial provides a simplified introduction to the basic work flow for creating and deploying a new project without exploring the contents of the project directory or sample code.
 
-Next, we’ll explore writing a few simple Motoko programs to give you hands-on experience creating programs that run on the IC.
+Next, you’ll explore writing a few simple Motoko programs to give you hands-on experience creating programs that run on ICP.
 
 These guides illustrate how to write dapps using the Motoko programming language. For additional examples of dapps written in other languages, see the DFINITY [examples](https://github.com/dfinity/examples) repository.
 
-The following guides introduce the basics for writing dapps that run on the IC:
+The following guides introduce the basics for writing dapps that run on ICP:
 
 ### Getting started with Motoko
 

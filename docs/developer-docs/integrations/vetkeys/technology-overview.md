@@ -1,14 +1,14 @@
 # vetKeys: technology overview
 
 ## Overview
-vetKeys on the Internet Computer allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on the IC. It is powered by a protocol called **vetKey (Verifiably Encrypted Threshold Key Derivation)** that allows to derive decryption keys on demand.
+vetKeys on the Internet Computer allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on ICP. It is powered by a protocol called **vetKD (Verifiably Encrypted Threshold Key Derivation)** that allows to derive decryption keys on demand.
 
 ## Key derivation on demand
 Blockchains are not known for their privacy capabilities. The goal of vetKeys is to ease the burden of using security and privacy tools on the Internet Computer. 
 Encrypting information locally on a device and storing it on a blockchain is easy as the secret key material always remains on the local device and is not exposed.
 The difficulty arises when a user may want to retrieve the encrypted information from a different device, or share with a different user as there is no straightforward way to pass secret key material across public channels in a privacy-friendly way. 
 
-vetKeys leverages the fact that BLS signatures, the native signature scheme on the IC, are unique, and therefore ideally suited (under the right conditions) to be used as cryptographic decryption keys. As BLS signatures are computed in a distributed way on the IC, there is no central authority deriving keys for users. Furthermore, following standard practices in [IBE schemes](https://internetcomputer.org/blog/features/vetkey-primer#identity-based-encryption-ibe) the derived key can be transported to the user in an encrypted manner. As such, nodes and the network never have access to a user’s keys.
+vetKeys leverages the fact that BLS signatures, the native signature scheme on ICP, are unique, and therefore ideally suited (under the right conditions) to be used as cryptographic decryption keys. As BLS signatures are computed in a distributed way on ICP, there is no central authority deriving keys for users. Furthermore, following standard practices in [IBE schemes](https://internetcomputer.org/blog/features/vetkey-primer#identity-based-encryption-ibe) the derived key can be transported to the user in an encrypted manner. As such, nodes and the network never have access to a user’s keys.
 
 The availability of vetKeys allows for a series of applications including but not limited to those covered in the following sections.
 

@@ -43,7 +43,7 @@ that can, in contrast to the other parameters listed here, be changed later by S
 - **Fallback controllers of the dapp**: if a decentralization swap fails, for example because the targeted minimum number of ICP tokens could not be collected, the control of the dapp canister(s) is handed back to the principals defined in these parameters. Normally, this will be set to principals owned by the developers that controlled the dapp before the attempt to decentralize it.
       
 All developer and airdrop tokens are distributed to neurons.
-We call them **developer neurons** and **airdrop neurons**,
+They are called **developer neurons** and **airdrop neurons**,
 respectively, and refer to all these neurons as the **initial neurons**.
 
 :::caution
@@ -53,7 +53,7 @@ the dapp's control is handed over to the SNS and during the
 decentralization swap.
 At this point, the dapp canister(s) are already controlled by the SNS.
 Even though the governance canister is in a special pre-decentralization mode, some proposals can already be used, for example to upgrade the dapp canister(s) or to register new kinds of proposals. 
-Therefore, **if you want to use SNS proposals at this stage, for example to ensure that the dapp can be upgraded at any time, you must make sure that enough of the initial neurons can vote to reach a decison.**
+Therefore, **if you want to use SNS proposals at this stage, for example to ensure that the dapp can be upgraded at any time, you must make sure that enough of the initial neurons can vote to reach a decision.**
 See [stage 1 of the launch](../launching/launch-summary-1proposal.md) for more details of this. 
 :::
 

@@ -6,9 +6,9 @@ registrars: [Namecheap](#namecheap), [GoDaddy](#godaddy), and [Amazon Route 53](
 
 ## Namecheap
 
-In the following, we outline the steps required to configure the apex of a domain and
-a subdomain on Namecheap to be used as a custom domain. To illustrate the required
-configuration, we use the domain `ic-domain.live` and the subdomain `example.ic-domain.live`
+In the following, the steps to configure the apex of a domain and
+a subdomain on Namecheap to be used as a custom domain are listed. To illustrate the required
+configuration, the domain `ic-domain.live` and the subdomain `example.ic-domain.live` are used
 by configuring it to point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 - #### Step 1: After purchasing your domain on Namecheap, open the management pane of your domain in the Namecheap dashboard.
@@ -39,9 +39,9 @@ Now, you are all set to register your custom domain with the boundary nodes and 
 
 ## GoDaddy
 
-In the following, we explain how you can configure your domain on GoDaddy to
+In the following, it is explained how you can configure your domain on GoDaddy to
 be used to point to a canister hosted on the Internet Computer. As an illustration,
-we configure the domain `ic-domain.online` and the subdomain `example.ic-domain.online`
+this guide shows how to configure the domain `ic-domain.online` and the subdomain `example.ic-domain.online`
 to point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 - #### Step 1: After purchasing your domain on GoDaddy, open your account and navigate to **My Products**.
@@ -52,7 +52,7 @@ to point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 ### Apex
 
-Unfortunately, GoDaddy does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain, we need to make use of a workaround.
+Unfortunately, GoDaddy does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain, you need to make use of a workaround.
 
   There are mainly two approaches:
 
@@ -60,12 +60,12 @@ Unfortunately, GoDaddy does not support to configure a `CNAME` record (or one of
   - [Directly configuring the IP addresses of the boundary nodes.](#directly-configure-the-ip-addresses)
 
 Directly configuring the IP addresses is simpler compared to relying on another
-DNS provider, but is less resilient and performant. Therefore, we advise you to use
+DNS provider, but is less resilient and performant. Therefore, it is advised you to use
 a different DNS provider (e.g., Cloudflare or Route 53).
 
 #### Rely on an alternative DNS provider (_recommended_)
 
-We explain this approach using Cloudflare as DNS provider. It works similar
+It is explained in this approach using Cloudflare as DNS provider. It works similar
 with any other DNS provider that supports `CNAME`, `ALIAS`, or `ANAME` records
 for the apex of a domain.
 
@@ -148,14 +148,14 @@ Now, you are all set to register your custom domain with the boundary nodes and 
 
 ## Amazon Route 53
 
-In the following, we explain how you can configure your domain on Amazon Route 53
-to point to a canister hosted on the Internet Computer. As an illustration, we
+In the following, it is explained how you can configure your domain on Amazon Route 53
+to point to a canister hosted on the Internet Computer. As an illustration, this guide showcases how to 
 configure the domain `ic-domain.net` and the subdomain `example.ic-domain.net` to
 point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 ### Apex
 
-Unfortunately, Amazon Route 53 does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain. We need to make use of a workaround.
+Unfortunately, Amazon Route 53 does not support to configure a `CNAME` record (or one of its alternatives, `ALIAS` or `ANAME`) for the apex of the domain. You need to make use of a workaround.
 For instructions take a look at the steps outlined for GoDaddy under ["Rely on an alternative DNS provider"](#rely-on-an-alternative-dns-provider-recommended).
 
 ### Subdomain

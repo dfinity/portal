@@ -14,13 +14,15 @@ The answer to this question has two separate dimensions:
 
 The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected/claimed functionality, and only this functionality. 
 
-Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by the IC. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/developer-docs/backend/reproducible-builds.md).
+Second, ensure that the Wasm module the canister runs, has indeed been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/developer-docs/backend/reproducible-builds.md).
+
+Additionally, developers can utilize the [canister history](/docs/current/developer-docs/production/canister-history) feature to track changes to the canister's Wasm module hash. 
 
 ## Confidence that the canister behavior will not unexpectedly change
 
 Canister smart contracts are deployed and managed by controllers. A controller's level of decentralization can range from being managed by a single person, or team of people up to being managed by the NNS or another kind of on-chain DAO. Among other capabilities, the controllers can change the code for the canisters which they control so canister code is **mutable**, unlike smart contracts on other blockchains. The controllers have complete control over the assets like ICP tokens or Bitcoins held by the canister they manage. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
 
-For critical applications like those used in DeFi, centralized mutability can be dangerous; the controller could change a benign canister into a canister that steals assets. Below we outline some options available to developers on how to verifiably decentralize the control of a canister's mutations.
+For critical applications like those used in DeFi, centralized mutability can be dangerous; the controller could change a benign canister into a canister that steals assets. Below are some options available to developers on how to verifiably decentralize the control of a canister's mutations.
 
 :::info
 Canister controllers, if not voluntarily decentralized, have complete control over the user assets held by the canister, for example, any ICP Tokens or Bitcoin held by the canister on the user's behalf. The controller, if malicious, can steal all the assets. In other words, as a user, if you interact with a canister that deals with your assets, inspect the canister to know how it handles them. If you determine that the canister is storing the assets in its subaccounts, ensure that the canister controller is decentralized.

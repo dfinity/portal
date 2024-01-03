@@ -34,7 +34,7 @@ call. (There are a few more cases where such an error can occur: see
 details [here](https://github.com/dfinity/motoko/pull/3630)).
 
 Instead of trapping, these errors are now thrown as an `Error`! Specifically, they are thrown with
-new `ErrorCode #call_error { err_code = n }`, where `n` is the error code returned by the underlying platform.
+new `ErrorCode #call_error { err_code = n }`, where `n` is the error code returned.
 
 Thus, these errors can be caught and handled with `try catch` expressions, letting you recover or gracefully fail from
 these messages as you see fit!

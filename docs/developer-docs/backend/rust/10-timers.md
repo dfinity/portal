@@ -54,7 +54,7 @@ Save the file.
 
 ## Update the Cargo.toml dependencies
 
-Since we made changes to the Cargo.toml file, run the following command to update the project's dependencies:
+Since you made changes to the Cargo.toml file, run the following command to update the project's dependencies:
 
 ```
 cargo update

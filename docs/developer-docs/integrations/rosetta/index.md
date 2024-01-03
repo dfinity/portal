@@ -3,12 +3,12 @@
 ## Overview
 
 [Rosetta](https://www.rosetta-api.org/) is an open standard introduced by Coinbase to simplify the integration of blockchain-based tokens in exchanges, block explorers, and wallets.
-This documentation might help if you want to deploy a token on the IC that aims to be tradable on CeFi exchanges or if you are working on a block explorer or wallet. Currently there only exists a Rosetta implementation for the ICP ledger. ICRC-1 compatible ledgers cannot be used with the Rosetta API implementation that is shown in this guide. 
+This documentation might help if you want to deploy a token on ICP that aims to be tradable on CeFi exchanges or if you are working on a block explorer or wallet. Currently there only exists a Rosetta implementation for the ICP ledger. ICRC-1 compatible ledgers cannot be used with the Rosetta API implementation that is shown in this guide. 
 
 ## Set up a Rosetta node
 
 You can set up a Rosetta API-compliant node to interact with the Internet Computer and exchange Internet Computer Protocol (ICP) tokens.
-To keep the instructions simple, we use a Docker image to create the integration with the Rosetta API.
+To keep the instructions simple, you can use a Docker image to create the integration with the Rosetta API.
 You can also build and run the binary using the source code.
 
 If you don’t already have [Docker](https://docs.docker.com/get-docker/) on your computer, download and install the latest version.
@@ -134,8 +134,8 @@ docker run \
 ```
 
 - #### Is the Rosetta node versioned?
-Yes, we regularly publish new versions on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
-We recommend using a specific version in production settings, e.g., `dfinity/rosetta-api:v1.7.0`
+Yes, new versions are regularly published on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
+It is recommended to use a specific version in production settings, e.g., `dfinity/rosetta-api:v1.7.0`
 You can query the version of a running rosetta node using the `/network/options` endpoint.
 
 ```console
@@ -203,7 +203,7 @@ Failed calls always have `500` response status code, with a JSON payload contain
 You can find all possible Rosetta error codes and their text descriptions in the [`/network/options`](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) call result.
 
 - #### How do I send Mint or Burn transactions?
-Mint is a privileged operation; we don’t support Burn through Rosetta API calls at the moment.
+Mint is a privileged operation; it does not support Burn through Rosetta API calls at the moment.
 
 - #### What happens if the same signed transaction is submitted multiple times?
 The ledger rejects duplicate transactions.
@@ -211,7 +211,7 @@ Only the first transaction will make it to the chain; the [`/construction/submit
 
 - #### How to sign a transaction without calling Rosetta API?
 The JavaScript SDK contains an [implementation](https://github.com/dfinity/rosetta-client/blob/master/lib/construction_combine.js) of the offline signing logic.
-This functionality is unstable because it is coupled with internal implementation details, so we strongly advise you to call [`/construction/combine`](https://www.rosetta-api.org/docs/ConstructionApi.html#constructioncombine) to sign transactions if possible.
+This functionality is unstable because it is coupled with internal implementation details, so it is strongly advised you to call [`/construction/combine`](https://www.rosetta-api.org/docs/ConstructionApi.html#constructioncombine) to sign transactions if possible.
 
 - #### How to configure the ingress time period?
 In the `/construction/payloads` call, you can add one or all of the `ingress_start` / `ingress_end` fields to specify the ingress time period.

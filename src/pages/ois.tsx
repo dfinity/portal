@@ -120,7 +120,7 @@ function OpenChatPage() {
             className="tw-heading-5 sm:tw-heading-4 md:tw-heading-60 mb-8 md:mb-12"
             variants={transitions.item}
           >
-            OpenChat was the first OIS &mdash; imagine a messaging service were
+            OpenChat was the first OIS &mdash; imagine a messaging service where
             bitcoin can be instantly transferred in chat messages, with
             functionality allowing it to provide an alternative to Slack.
           </motion.p>
@@ -313,7 +313,7 @@ function OpenChatPage() {
             <MotionLink
               variants={transitions.fadeIn}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/launching/launch-steps"
+              href="/docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal"
             >
               Launch an SNS DAO
             </MotionLink>

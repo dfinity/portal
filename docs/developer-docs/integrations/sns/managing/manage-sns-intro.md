@@ -1,7 +1,7 @@
 # Manage an SNS
 
 ## Overview
-SNSs are system-provided DAOs on the IC that are to some extent maintained by the
+SNSs are protocol-provided DAOs on ICP that are to some extent maintained by the
 NNS community, who for example approve new upgrades of SNS canister code.
 This eliminates much of the maintenance burden from the SNS communities.
 However, there are still some maintenance tasks that have to be performed by an
@@ -29,10 +29,8 @@ who would like to actively help managing the SNS.
 
 ## Managing an SNS
 
-On this page we will introduce a 
+This page introduces a 
 few aspects that are relevant for **managing** an SNS.
-As we complete more detailed pages for these different 
-topics, we will link to them here.
 
 * As every piece of software, after an
 SNS is launched is has to be **maintained**.
@@ -42,7 +40,8 @@ cycles to continue operating.
 You can find more information on<!--how SNS canisters can be  upgraded to new versions on this page (./upgradeSNS.md)
 and about--> 
 cycle management [on this page](./cycles-usage.md).
-  We especially want to emphasize the following:
+
+It is important to especially emphasize the following:
 
 :::caution
 The SNS communities are responsible for individually topping up the cycles of
@@ -72,4 +71,4 @@ by proposal.-->
 regarding how proposals can be used and how an SNS community can define
 their own kinds of proposals.
   
-* A dapp might have an associated The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) that stores and retrieves static assets from a canister deployed on the IC. Once a dapp is under SNS DAO control, the SNS DAO must also be able to control the associated asset canister. More details on how this works can be found on [this page](./sns-asset-canister.md).
+* A dapp might have an associated The [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) that stores and retrieves static assets from a canister deployed on ICP. Once a dapp is under SNS DAO control, the SNS DAO must also be able to control the associated asset canister. More details on how this works can be found on [this page](./sns-asset-canister.md).

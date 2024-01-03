@@ -4,7 +4,7 @@
 There are two main ways to interact with an ICRC-1 ledger.
 - `dfx canister`: the generic canister call from `dfx`.
 - `ic-cdk`: inter-canister calls for the ICRC-1 ledger.
-- `ledger-js`: a library for interfacing with ICRC-1 ledger on the Internet Computer.
+- `ledger-icrc-js`: a library for interfacing with ICRC-1 ledger on the Internet Computer.
 ## ICRC-1 and ICRC-1 extension endpoints
 
 Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions of ICRC-1 (ICRC-2, ICRC-3,...). 
@@ -48,18 +48,6 @@ This command returns:
 
 ```
 ("XMTK")
-```
-
-To fetch the decimals of the ICRC-1 ledger:
-
-```
-dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
-```
-
-This command returns:
-
-```
-(8 : nat8)
 ```
 
 To fetch the decimals of the ICRC-1 ledger:
@@ -135,10 +123,10 @@ This command returns:
 )
 ```
 
-To fetch the of a account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
+To fetch the balance of an account (DEFAULT account in this case, with no subaccount set) on the ICRC-1 ledger:
 
 ```
-dfx canister call icrc1_ledger_canister icrc1_transfer "(record {owner = principal \"${DEFAULT}\"; })"  
+dfx canister call icrc1_ledger_canister icrc1_balance_of "(record {owner = principal \"${DEFAULT}\"; })"  
 ```
 
 This command returns:
@@ -161,7 +149,7 @@ This command returns:
 
 ### ICRC-2 endpoints
 
-To approve tokens to a certain spender (in this guide we again choose the principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) you can call:
+To approve tokens to a certain spender (this guide uses the principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`) you can call:
 ```
 dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 100_000; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"  
 ```
@@ -177,13 +165,13 @@ To check the allowance of the spender `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm
 dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { account = record{owner = principal \"${DEFAULT}\";}; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"  
 ```
 
-This command will return the allowance of `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe` for tokens approved by the `DEFAULT` principal. We expect this to be the `100_000` tokens we approved earlier:
+This command will return the allowance of `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe` for tokens approved by the `DEFAULT` principal. You should expect this to be the `100_000` tokens you approved earlier:
 ```
 (record { allowance = 100_000 : nat; expires_at = null })
 ```
 Alternatively, you can also set the expiration date for an approval. For specifics on see the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve).
 
-If the spender now wants to transfer tokens that were previously approve for the spender to a certain principal (in this case we use the arbitrary principal `7tmcj-ukheu-y6dvi-fhmxv-7qs5t-lwgh2-qzojr-vzt6m-maqv4-hvzlg-5qe`) you can call: 
+If the spender now wants to transfer tokens that were previously approve for the spender to a certain principal (in this case, use the arbitrary principal `7tmcj-ukheu-y6dvi-fhmxv-7qs5t-lwgh2-qzojr-vzt6m-maqv4-hvzlg-5qe`) you can call: 
 ```
 dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 90_000; from = record{owner = principal \"${DEFAULT}\"}; to= record{owner = principal \"${DEFAULT}\"}; })"  
 ```
@@ -198,7 +186,7 @@ You will receive the block index as a return value:
 You can look at the documentation of [inter-canister calls](/docs/current/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICRC-1 ledger.
 
 Here is an example on how fetch the name from the ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from withing a canister:
-You will need the principal of the ICRC-1 ledger. For this guide we will take the canister ID that was used in the previous guide on [deploying an ICRC-1 ledger](./icrc1-ledger-setup.md), which was `mxzaz-hqaaa-aaaar-qaada-cai`.
+You will need the principal of the ICRC-1 ledger. For this guide,  take the canister ID that was used in the previous guide on [deploying an ICRC-1 ledger](./icrc1-ledger-setup.md), which was `mxzaz-hqaaa-aaaar-qaada-cai`.
 ```
 let ledger_id = Principal::from_text("mxzaz-hqaaa-aaaar-qaada-cai").unwrap();
 // The request object of the `icrc1_name` endpoint is empty.
@@ -227,5 +215,5 @@ icrc-ledger-types = "0.1.1"
 
 The documentation for this crate can be found [here](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/). 
 
-## Interacting with an ICRC-1 ledger from your web application (`ledger-js`)
-You will find specifications and examples on how to use the library to interact with ICRC-1 ledgers [here](https://github.com/dfinity/ic-js/tree/main/packages/ledger).
+## Interacting with an ICRC-1 ledger from your web application (`ledger-icrc-js`)
+You will find specifications and examples on how to use the library to interact with ICRC-1 ledgers [here](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc).

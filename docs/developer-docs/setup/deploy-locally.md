@@ -44,7 +44,7 @@ To download and install:
 
 ## Verify the IC SDK is ready to use
 
-If the installation script runs without any errors, everything you need to start developing programs that run on the IC will be available on your local computer.
+If the installation script runs without any errors, everything you need to start developing programs that run on ICP will be available on your local computer.
 
 To verify the IC SDK is ready to use:
 
@@ -66,7 +66,7 @@ To verify the IC SDK is ready to use:
 
 Dapps on the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
 
-For this guide, we’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. We cover the template files that make up a project directory in the [explore the default project](/developer-docs/backend/motoko/explore-templates.md) guide.
+For this guide, you’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. The previous guide covers the template files that make up a project directory in the [explore the default project](/developer-docs/backend/motoko/explore-templates.md) page.
 
 To create a new project for your first application:
 
@@ -232,13 +232,13 @@ This guide touched on only a few key steps to introduce the basic workflow for d
 ## Resources
 Here are some suggestions for where to go next:
 
--   [Building on the IC](../../samples/overview.md) to explore sample dapps.
+-   [Building on ICP](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](../../concepts/index.md) to learn about different IC concepts and services. 
+-   [Concepts](../../concepts/index.md) to learn about different ICP concepts and services. 
 
 -   [Convert ICP tokens to cycles](./deploy-mainnet.md#convert-icp) if you have ICP tokens that you want to convert to cycles to enable you to deploy dapp to the Internet Computer blockchain.
 
--   [IC glossary](../../references/glossary.md) to learn the definitions of various terms used within the IC. 
+-   [ICP glossary](../../references/glossary.md) to learn the definitions of various terms used within ICP. 
 
 -   [On-chain deployment](./deploy-mainnet.md) if you have cycles and are ready to deploy an application to the Internet Computer blockchain mainnet.
 

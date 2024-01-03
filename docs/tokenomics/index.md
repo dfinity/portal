@@ -1,36 +1,50 @@
---- 
-hide_table_of_contents: true
----
+# DAOs and tokenomics 
 
-# DAOs and Tokenomics
+## What is a decentralized autonomous organization (DAO)?
 
-When building our documentation we tried to include the natural guides for developers; how to [get started](/tutorials/index.mdx) with canister smart contract development, how to [make progress]/developer-docs/build/index.md), how to [deploy]/developer-docs/production/index.md), update and manage apps. There were some remarks about cycles and their use in computation and about [integrating various features]/developer-docs/integrations/index.md) of the IC. Yet, somehow it still felt like something was lacking in the documentation. Building on the IC is about more than just the code. 
+A decentralized autonomous organization, often abbreviated to DAO, is a form of governance without a central governing body. In a DAO, no member or group of members has authority over one another, and each member shares the same goal of acting in the best interest of the organization. DAOs can be used to govern projects, applications, systems, or any other entity in a decentralized manner. DAOs that are deployed on decentralized systems, such as blockchains, are able to provide members with a transparent, verifiable record of all decisions made on-chain by the DAO through the blockchain's transaction records.
 
-Decentralized applications inherently require us to open our minds to new ways of thinking and coding, but also of interacting, controlling, funding and planning. This category of documentation aims to capture the more *entrepreneurial* considerations that will likely arise in a move towards a more open internet. This is done both via noting considerations that should be made by developers, builders and founders, but also by users of dapps, as, after all, in the read-write-own model of web 3, users play a key role in the development of dapps. 
-
-Welcome to our DAO docs. If there's anything in particular you'd like to see here, it's open, feel free to contribute.
+Membership in a DAO is determined by holding a certain cryptographic asset or token, such as an NFT or a system-native token. These ownership of these assets can be verified through a cryptographic . With token-based membership, members may receive voting rights within the DAO by staking the system token. 
 
 ## Network Nervous System (NNS)
-The NNS is the open tokenized DAO that controls the IC. As we move to more and more decentralization, it is crucial to learn more about the IC components that facilitate community governance. The NNS allows users to participate the governance of the IC by staking tokens and voting (or delegating votes - liquid democracy ftw) and to earn rewards over time. 
-- A more detailed introduction to the NNS can be [found here](./nns/nns-intro.md)
-- Proposals, voting and rewards are [explained here](./nns/nns-staking-voting-rewards.md) can be explored in the [Governance section](https://dashboard.internetcomputer.org/governance) on the dashboard
-- You can read about the neurons' fund [here](./nns/neurons-fund.md)
-- Start participating in the NNS app by checking out the [NNS Intro](token-holders/nns-app-quickstart.md)
+
+The Internet Computer Protocol is governed by a DAO known as the Network Nervous System (NNS). The NNS is a fully on-chain, decentralized system that is responsible for making decisions regarding every aspect of the Internet Computer. To participate in the NNS, ICP token holders must stake the ICP token for a certain period of time in an entity known as a neuron. Neurons provide stability required for the responsible governance of the Internet Computer Protocol by ensuring that the ICP tokens staked within it cannot be exchanged for a specific period of time known as the 'lock-up' period. 
+
+Neurons can then vote on proposals, which are proposed changes or upgrades to the protocol. When a proposal has been accepted, it will be autonomously executed. Neurons are encouraged to vote on every proposal, and in return for actively voting, receive voting rewards in the form of ICP tokens. 
+
+Some examples of proposals for changes that the NNS is responsible for deciding are: 
+
+- Upgrading the protocol and guest operating system software used by the nodes machines.
+
+- Configuring parameters that control how much must be paid by canisters for resource usage.
+
+- De-activating under-performing nodes to protect the network.
+
+- Inducting new node providers and machines into the network.
+
+- Creating new subnets to increase network capacity.
+
+- Splitting subnets to balance network load.
+
+You can learn more about the NNS [here](/docs/current/tokenomics/nns/nns-intro).
+
+Proposals, voting and rewards are [explained here](./nns/nns-staking-voting-rewards.md) can be explored in the [Governance section](https://dashboard.internetcomputer.org/governance) on the dashboard
+
+You can read about the neurons' fund [here](./nns/neurons-fund.md)
+
+Start participating in the NNS app by checking out the [NNS Intro](token-holders/nns-app-quickstart.md)
 
 ## Service Nervous System (SNS)
-As the NNS is to the IC, an SNS is to services running on the IC. If you are a developer or founder who would like to tokenize and decentralize the governance of your dapp, this is the place to start. Governance of a service or dapp can operate in a decentralized manner by getting an SNS. 
-- [Dive into the SNS and DAOs](/developer-docs/integrations/sns/tokenomics/index.md)
-- See the [tokenomics of a DAO](/developer-docs/integrations/sns/tokenomics/tokenomics-intro.md)
-- Think about the numerous [considerations](/developer-docs/integrations/sns/tokenomics//predeployment-considerations.md) that should be made if you plan to get an SNS
 
+Another feature of the Internet Computer is the ability for on-chain dapps to be governed by a DAO through a Service Nervous System (SNS). An SNS is a DAO for a specific dapp that uses the same format and architecture that the NNS uses to govern ICP. A dapp's SNS uses proposals to vote on changes to the dapp, and the dapp's native token can be staked within a neuron in return for voting rights for that SNS. 
 
-## Identity & Authentication
-One of the advantages of building apps on the Internet Computer is that users can interact and authenticate without the need for holding tokens. This is facilitated by Internet Identity. 
+To learn more about SNSs, check out the documentation [here](https://internetcomputer.org/sns).
 
-- [What is Internet Identity](https://internetcomputer.org/internet-identity)
-- [How to get started with Internet Identity](https://internetidentity.zendesk.com/hc/en-us/articles/15430677359124-How-Do-I-Create-an-Internet-Identity-on-My-Mobile-Device-)
+To learn how to create an SNS, see the documentation [here](/docs/current/developer-docs/integrations/sns/).
 
-## Token Holders
-There are multiple ways to obtain token; purchasing via an exchange, earning as a node provider, receiving from a friend, or otherwise. Learn about some options for how to hold tokens, and how you can set up self-custody. Follow the quickstart to take control of your tokens. 
-- [Custody Options](token-holders/custody-options-intro.md)
-- [Self Custody Quickstart](token-holders/self-custody-quickstart.md)
+## Tokens 
+
+To obtain ICP tokens, they can be purchased through an exchange, earned through being a node provider or received as a staking reward, or received through developer grants. To learn more about token custody, such as self-custody options, check out the documentation below:
+
+- [Custody options](token-holders/custody-options-intro.md)
+- [Self custody quickstart](token-holders/self-custody-quickstart.md)

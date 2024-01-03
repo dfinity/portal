@@ -5,35 +5,36 @@ sidebar_position: 2
 
 ## Overview
 The core architecture of the SNS closely resembles the architecture of the Network Nervous System
-(NNS), the DAO that governs the Internet Computer platform.
-It includes a governance system that enables decentralized decision making and a ledger canister
+(NNS), the DAO that governs the Internet Computer.
+It includes a governance canister that enables decentralized decision making and a ledger canister
 that defines a token unique to each SNS.
-In contrast to the SNS, the NNS contains additional canisters that are important to run the IC
-platform (e.g., the cycles minting canister that is responsible for creating cycles, the registry
+In contrast to the SNS, the NNS contains additional canisters that are important to run on the Internet Computer Protocol.
+(e.g., the cycles minting canister that is responsible for creating cycles, the registry
 that stores the network topology etc.).
 There are also a few canisters that only exist on the SNS, most notably the decentralization 
 swap canister that is used during the launch process of an SNS.
 
 ## SNS as a system functionality (connection to the NNS community)
-SNSs are provided as a system functionality by the IC in that the code for the SNS canisters
-is maintained by the IC. ([Here](dao-alternatives.md)
+SNSs are provided as a system functionality by the Internet Computer Protocol in that the code for the SNS canisters
+is maintained by the Internet Computer Protocol. ([Here](dao-alternatives.md)
 is a brief description of alternative ways to use the SNS code or how to create a DAO.)
 More concretely, this means that the NNS community approved the original SNS canisters' code
 and continuously approves new improved SNS versions.
 
-### SNS wasm modules canister (SNS-W){#SNS-W}
+### SNS Wasm modules canister (SNS-W){#SNS-W}
 All approved SNS canister versions are stored on an NNS canister,
-called the **SNS wasm modules canister (SNS-W)**.
+called the **SNS Wasm modules canister (SNS-W)**.
 When an SNS is created, SNS-W is involved and responsible for deploying the latest version of 
 the SNS canister.
 When the SNS should be updated, this happens by an NNS proposal that adds a new version of the 
 SNS canisters to SNS-W.
 Each SNS community can then simply decide - by SNS proposal - to adopt these new, approved versions in their SNS instance.
 
-### Customizability
+### Customizing the SNS
+
 Individual SNSs can nevertheless be customized by choosing parameters, 
 called nervous system parameters, that
-can be configured to realise different forms of voting and tokenomics.
+can be configured to realize different forms of voting and tokenomics.
 
 ## The SNS subnet
 SNSs are hosted on an _SNS subnet_. Since this subnet exclusively hosts SNSs,
@@ -59,7 +60,7 @@ When a proposal is adopted, the governance system automatically and autonomously
 ### SNS ledger canister with archive and index
 The **ledger canister** implements the
 [ICRC-1 standard](https://github.com/dfinity/ICRC-1)
-and contains a unique token that is different for each SNS. We call this _kind_ of tokens **SNS tokens**.
+and contains a unique token that is different for each SNS. These _kinds_ of tokens are called **SNS tokens**.
 In each SNS, this SNS's ledger stores which accounts own how many SNS tokens and
 the history of transactions between them.
 To keep the full ledger history even though a canister has limited

@@ -10,26 +10,50 @@ This document contains canister development best practices for both Motoko and R
 
 ## Smart contracts canister control
 
-### Use a decentralized governance system like SNS to make a canister have a decentralized controller
+### Use a decentralized governance system like SNS to put dapps under decentralized control
 
-#### Security concern
+#### Security concerns
 
-The controller of a canister can change or update the canister whenever they like. If a canister e.g. stores assets such as ICP, this effectively means that the controller can steal these by updating the canister and transfer the cycles to their account.
+If single entities or small groups control canisters, they can apply changes or updates whenever they like. If a canister e.g. holds assets such as ICP, ckBTC or ckETH on a user's behalf, this effectively means that the controller could decide at any time to steal these funds by e.g. updating the canister and transferring the assets to their account.
 
-#### Recommendation
+Furthermore, the controller of canisters serving web content (such as e.g. the [asset canister](../../references/asset-canister)) could maliciously modify the web application to e.g. steal user funds or perform security sensitive actions on the user's behalf. For example, if [Internet Identity](../../developer-docs/integrations/internet-identity/overview) is used, the user principal's private key for the given origin is stored in the browser storage, and a malicious app can therefore fully control the private key and the user's session and any assets controlled by that key.  
 
-- Consider passing canister control to a decentralized governance system such as the Internet Computer's Service Nervous System (SNS), so that changes to the canister are only executed if the SNS community approves them collectively through voting. If an SNS is used, use an SNS on the SNS subnet as this guarantees that the SNS is running an NNS-blessed version and maintained as part of the IC. These SNSs will be available soon. See the roadmap [here](https://dfinity.org/roadmap/) and the design proposal [here](https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224).
-- Another option would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
+Dapps are commonly reachable over their own custom domain name instead of ic0.app. These domains are registered with a DNS registrar by one of the developers. The developer can choose to have this domain point at a completely different web application. Even one not hosted on the IC. Users will trust this domain and the app it serves. This could allow such a developer to steal funds, leak data, etc.
+
+A dapp might have privileged features which are only accessible to principals that are on an allow list. For example, minting new tokens, debug functions, permissions management, removing NFTs for digital rights violations, etc. This means that whoever controls that principal (this could e.g. be dapp developers) may have central control over these privileged features.
+
+For performance or privacy reasons, some components of a dapp may be hosted off-chain, e.g. in the cloud. These off-chain components often control principals used to interact with the on-chain components, and are usually controlled by a developer holding credentials to the off-chain cloud environment. On top of that, cloud providers can inspect and manipulate data in this environment if they choose. They could take IC principal private keys out of this environment and call privileged operations on the canisters. Off-chain components can quickly lead to many additional centrally trusted parties. Depending on the value managed by a dapp, these parties could be tempted to act maliciously.
+
+#### Recommendations
+
+In the following list, we first provide recommendations for centralized dapp control, and then move to recommendations for increasingly decentralized settings. From a security perspective, more decentralization is favorable. The following list could also be used as a basis for assessing a dapp's level of decentralization. This is just a set of recommendations and may not be complete. 
+1. **The dapp uses central, off-chain components:** The application makes use of centralized components that are e.g. running in the cloud. The owners of these cloud services have full control over the application and assets managed by it. Your application should likely be further decentralized by avoiding central components. But while you have them, [securely manage your keys in the cloud](https://cloudsecurityalliance.org/research/topics/cloud-key-management/). 
+2. **The dapp is controlled by the developer team:** Your project is not under decentralized control, for example because it is in an early development stage or does not (yet) hold significant funds. In that case, it is recommended to manage access to your canisters securely and ideally not letting individuals control the application. To achieve that, consider the following: 
+    - Require approval by several individuals or parties to perform any canister controller operations. 
+    - Also require approval by several individuals or parties for any security sensitive changes at the application level that are restricted to privileged principals, such as admin operations including  e.g. permissions management, minting new tokens, removing NFTs for digital rights violations, etc.
+    - A helpful tool to achieve either of the above two points is the [threshold canister](https://github.com/dfinity/threshold). Individuals should manage their key material using hardware security modules, such as e.g. [YubyHSM](https://www.yubico.com/ch/store/yubihsm-2-series/) and physically protect these e.g. using safes at different geographical locations. Some of HSMs support threshold signature schemes, which can help to further secure the setup. To increase transparency about the changes made to a dapp, consider using a tool like [LaunchTrail](https://github.com/spinner-cash/launchtrail). 
+3. **Full decentralization using a DAO**: The dapp is controlled by a decentralized governance system such as the Internet Computer's [Service Nervous System (SNS)](../../developer-docs/integrations/sns), so that any security sensitive changes to the canisters are only executed if the SNS community approves them collectively through a proposal voting mechanism. If an SNS is used:
+   - Make sure voting power is distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves, see [here](../../developer-docs/integrations/sns/tokenomics/tokenomics-intro#voting-power-and-decentralization).
+   - Ensure all components of the dapp are under SNS control, including the canisters serving the web frontends, see [SNS asset canisters](../../developer-docs/integrations/sns/managing/sns-asset-canister). 
+   - Consider the [SNS preparation checklist](../../developer-docs/integrations/sns/tokenomics/sns-checklist). Important points from a security perspective are e.g. [tokenomics](../../developer-docs/integrations/sns/tokenomics/sns-checklist#11-tokenomics-specification), [disclosing dependencies to off-chain components](../../developer-docs/integrations/sns/tokenomics/sns-checklist#13-disclosure-of-dependencies) and [performing security reviews](../../developer-docs/integrations/sns/tokenomics/sns-checklist#21-security-review).
+   - Rather than [self-deploying the SNS code](../../developer-docs/integrations/sns/introduction/dao-alternatives#self-deploy-the-sns-code) or [building your own DAO](../../developer-docs/integrations/sns/introduction/dao-alternatives#build-your-own-dao--use-other-dao-frameworks), consider using the official SNS on the SNS subnet, as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP.
+   - See also [Verification and trust in a (launched) SNS](https://wiki.internetcomputer.org/wiki/Verification_and_trust_in_a_(launched)_SNS) and [SNS decentralization swap trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_swap_trust).
+
+An alternative to DAO control (3. above) would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
+
 :::info
 Note that, contrary to some other blockchains, also immutable smart contracts need cycles to run, and they can receive cycles.
 :::
-- It is also possible to implement a DAO [decentralized autonomous organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on the IC from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
 
-### Verify the ownership of smart contracts you depend on
+It is also possible to implement a DAO [decentralized autonomous organization](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) on ICP from scratch. If you decide to do this (e.g. along the lines of the [basic DAO example](https://internetcomputer.org/docs/current/samples/dao)), be aware that this is security critical and must be security reviewed carefully. Furthermore, users will need to verify that the DAO is controlled by itself.
+
+### Verify the control and level of decentralization of smart contracts you depend on
 
 #### Security concern
 
-If a canister depends on another canister smart contract (i.e. makes inter-canister calls to it), it is essential that the canister smart contract that one depends on is owned by a decentralized governance system. Otherwise, i.e. if it has a controller, they could modify the smart contract without others noticing, e.g. to steal assets held by the canister.
+If a dapp depends on a third-party canister smart contract (e.g. by making inter-canister calls to it), it is important to verify that the callee satisfies an appropriate level of decentralization. For example: 
+* If funds or cycles are transferred to a third-party canister, one might require the canister to be controlled by a decentralized governance system, as otherwise these funds are centrally controlled. 
+* If inter-canister calls are made to a centrally controlled and potentially malicious canister, that canister could DoS the caller or even trigger functional bugs, see [Only make inter-canister calls to trustworthy canisters](#only-make-inter-canister-calls-to-trustworthy-canisters). 
 
 #### Recommendation
 
@@ -95,7 +119,7 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 #### Security concern
 
-Dapps on the IC can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.icp0.io` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+Dapps on ICP can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.icp0.io` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
 
 If an app is served through `raw.icp0.io` in addition to `icp0.io`, an adversary may trick users (phishing) into using the insecure raw.icp0.io.
 
@@ -199,7 +223,7 @@ A canister could be rendered unusable so it could never be upgraded again e.g. d
 
 To understand the issues around async inter-canister calls, one needs to understand a few properties about message execution. This is also explained in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
 
-We fist provide a few definitions. A **call** is a canister's implementation of either an [update](/references/ic-interface-spec.md#http-call) or [query call](/references/ic-interface-spec.md#http-query) that it exposes. For example, if the Rust CDK is used, these are usually annotated with `#[query]` or `#[update]`, respectively. A **message** is a set of consecutive instructions that a subnet executes for a canister. We'll see in the following that a call can be split into several messages if inter-canister calls are made. The following properties are essential:
+A **call** is a canister's implementation of either an [update](/references/ic-interface-spec.md#http-call) or [query call](/references/ic-interface-spec.md#http-query) that it exposes. For example, if the Rust CDK is used, these are usually annotated with `#[query]` or `#[update]`, respectively. A **message** is a set of consecutive instructions that a subnet executes for a canister. A call can be split into several messages if inter-canister calls are made. The following properties are essential:
 
 - **Property 1**: only a single message is processed at a time per canister. So message execution is sequential, and never parallel.
 
@@ -213,7 +237,7 @@ For example, consider the following Motoko code:
 
 ![example_highlighted_code](./_attachments/example_highlighted_code.png)
 
-The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message executes lines 3-5: when the inter-canister call returns (blue box). We call this part the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially.
+The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message executes lines 3-5: when the inter-canister call returns (blue box). This part is called the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially.
 :::
 
 - **Property 3**: successfully delivered requests are received in the order in which they were sent. In particular, if a canister A sends `m1` and `m2` to canister B in that order, then, if both are accepted, `m1` is executed before `m2`.
@@ -224,7 +248,7 @@ Note that this property only gives a guarantee on when the messages are executed
 
 - **Property 4**: messages from interleaving calls have no reliable execution ordering.
 
-Property 3 provides a guarantee on the execution order of messages on a target canister. However, if multiple calls interleave, one cannot assume additional ordering guarantees for these interleaving calls. To illustrate this, let's consider the above example code again, and assume the method `example` is called twice in parallel, the resulting calls being Call 1 and Call 2. The following illustration shows two possible message orderings. On the left, the first call's messages are scheduled first, and only then the second call's messages are executed. On the right, we see another possible message scheduling, where the first messages of each call are executed first. Your code should result in a correct state regardless of the message ordering.
+Property 3 provides a guarantee on the execution order of messages on a target canister. However, if multiple calls interleave, one cannot assume additional ordering guarantees for these interleaving calls. To illustrate this, let's consider the above example code again, and assume the method `example` is called twice in parallel, the resulting calls being Call 1 and Call 2. The following illustration shows two possible message orderings. On the left, the first call's messages are scheduled first, and only then the second call's messages are executed. On the right, you can see another possible message scheduling, where the first messages of each call are executed first. Your code should result in a correct state regardless of the message ordering.
 
 ![example_orderings](./_attachments/example_orderings.png)
 
@@ -234,9 +258,9 @@ For example, if a trap in the second message (blue box) of the above example occ
 
 - **Property 6**: inter-canister calls are not guaranteed to make it to the destination canister, and if a call does reach the destination canister, the destination canister can trap or return a reject response while processing the call. 
 
-Every inter-canister call is guaranteed to receive a response, either from the canister, or synthetically produced by the protocol. However, the response does not have to be successful, but can also be a reject response. The reject may come from the called canister, but it may also be generated by the Internet Computer. Such system-generated rejects can occur at any time before the call reaches the callee-canister, as well as once the call does reach the callee-canister if the callee-canister traps while processing the call. If the call reaches the callee-canister, the callee-canister can produce a reply or reject response and the system guarantees that the callee-canister's generated reply or reject response gets back to the caller-canister. Thus, it's important that the calling canister handles reject responses as well. A reject response means that the message hasn't been successfully processed by the receiver but doesn't guarantee that the receivers state wasn't changed. 
+Every inter-canister call is guaranteed to receive a response, either from the canister, or synthetically produced by the protocol. However, the response does not have to be successful, but can also be a reject response. The reject may come from the called canister, but it may also be generated by the Internet Computer. Such protocol-generated rejects can occur at any time before the call reaches the callee-canister, as well as once the call does reach the callee-canister if the callee-canister traps while processing the call. If the call reaches the callee-canister, the callee-canister can produce a reply or reject response and the protocol guarantees that the callee-canister's generated reply or reject response gets back to the caller-canister. Thus, it's important that the calling canister handles reject responses as well. A reject response means that the message hasn't been successfully processed by the receiver but doesn't guarantee that the receivers state wasn't changed. 
 
-For more details, refer to the Interface Specification [section on ordering guarantees](/references/ic-interface-spec.md#ordering_guarantees) and the section on [abstract behaviour](/references/ic-interface-spec.md#abstract-behavior) which defines message execution in more detail.
+For more details, refer to the Interface Specification [section on ordering guarantees](/references/ic-interface-spec.md#ordering_guarantees) and the section on [abstract behavior](/references/ic-interface-spec.md#abstract-behavior) which defines message execution in more detail.
 
 ### Avoid traps after await
 
@@ -254,7 +278,7 @@ This may e.g. lead to the following issues:
 
 - Generally, there can be bugs where data is not persisted when the developer expected it to be.
 
-Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope on trap. The CDK actually calls into the `ic0.call_on_cleanup` API to release these resources. This helps to prevent some of the above issues, as e.g. it is possible to use Rust's `Drop` implementation to release locked resources, as we discuss in ["Be aware that there is no reliable message ordering"](#be-aware-that-there-is-no-reliable-message-ordering).
+Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope if a callback traps. The CDK actually calls into the `ic0.call_on_cleanup` API to release these resources. This helps to prevent some of the above issues, as e.g. it is possible to use Rust's `Drop` implementation to release locked resources, as we discuss in ["Be aware that there is no reliable message ordering"](#be-aware-that-there-is-no-reliable-message-ordering).
 
 #### Recommendation
 
@@ -273,21 +297,21 @@ Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out
 
 As described in the [message execution basics](#message-execution-basics) above, messages (but not entire calls) are processed atomically. In particular, as described in Property 4 above, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'Reentrancy bugs' (see e.g. the [Ethereum best practices on reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note however that the messaging guarantees (and thus the bugs) on the Internet Computer are different from Ethereum.
 
-We provide two concrete and somewhat similar types of bugs to illustrate potential reentrancy security issues:
+Here are two concrete and somewhat similar types of bugs to illustrate potential reentrancy security issues:
 
 - **Time-of-check time-of-use issues:** these occur when some condition on global state is checked before an inter-canister call, and then wrongly assuming the condition still holds when the call returns. For example, one might check if there is sufficient balance on some account, then issue an inter-canister call and finally make a transfer as part of the callback message. When the second inter-canister call starts, it is possible that the condition which was checked initially no longer holds, because other ledger transfers may have happened before the callback of the first call is executed (see also Property 4 above).
 
-- **Double-Spending issues.**: such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose we check if a caller is eligible for a refund and if so, transfer some refund amount to them. When the refund ledger call returns successfully, we set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
+- **Double-Spending issues.**: such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose you check if a caller is eligible for a refund and if so, transfer some refund amount to them. When the refund ledger call returns successfully, you set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
 
 #### Recommendation
 
-We highly recommend to carefully review any canister code that makes async inter-canister calls (`await`). If two messages access (read or write) the same state, review if there is a possible scheduling of these messages that leads to illegal transactions or inconsistent state.
+It is highly recommended to carefully review any canister code that makes async inter-canister calls (`await`). If two messages access (read or write) the same state, review if there is a possible scheduling of these messages that leads to illegal transactions or inconsistent state.
 
 See also: "Inter-canister calls" section in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
 
 To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that e.g. a caller (or anyone) can only execute an entire call (which involves several messages) once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above.
 
-The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case.
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Note that the `Drop` function is only executed for callbacks and not all messages in general, as `ic0.call_on_cleanup` is only executed for those. 
 
     pub struct State {
         pending_requests: BTreeSet<Principal>,
@@ -326,7 +350,7 @@ The locks would usually be released in the callback. That bears the risk that th
     #[candid_method(update)]
     async fn example_call_with_locking_per_caller() -> Result<(), String> {
         let caller = ic_cdk::caller();
-        // using `?`, we return an error immediately if there is already a call in progress for `caller`.
+        // using `?`, return an error immediately if there is already a call in progress for `caller`.
         let _ = CallerGuard::new(caller)?;
         // do anything, call other canisters
         Ok(())
@@ -640,7 +664,7 @@ Since canisters interact with the system API, it is harder to test the code beca
 
 #### Security concern
 
-It should be possible to verify that a canister does what it claims to do. the IC provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
+It should be possible to verify that a canister does what it claims to do. ICP provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
 
 #### Recommendation
 
@@ -680,7 +704,7 @@ Canisters pay for their cycles which makes them inherently vulnerable to attacks
 
 * Expensive calls that only need to be called from other canisters can require some amount of cycles to be sent along with the call to compensate for the cycles consumed by the execution.  
 
-* Finally, it is also an option to charge for ingress messages, but that is not currently supported by the platform itself and a custom solution would need to be designed. 
+* Finally, it is also an option to charge for ingress messages, but that is not currently supported by the protocol itself and a custom solution would need to be designed. 
 
 ### Do not rely on ingress message inspection
 

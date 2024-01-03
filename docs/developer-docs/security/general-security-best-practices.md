@@ -16,7 +16,7 @@ The responses to [query calls](/references/ic-interface-spec.md#https-interface)
 
 ### Recommendation
 
--   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by the IC using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/library/ic-certified-map). The data certification must be validated in the frontend.
+-   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by ICP using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/library/ic-certified-map). The data certification must be validated in the frontend.
 
 -   Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance: it takes a few seconds. Note that every query can also be issued as an update by the caller.
 
@@ -124,7 +124,7 @@ Write tests for canister implementations and frontend code, especially for secur
 
 It is risky to include code paths in production code that are only used for development or testing setups. If something goes wrong (and it sometimes does!), this may introduce security bugs in production.
 
-For example, we have seen issues where the public key to verify certification was fetched from an untrusted source, since this is what is done on test networks.
+For example, there have been issues where the public key to verify certification was fetched from an untrusted source, since this is what is done on test networks.
 
 #### Recommendation
 

@@ -1,15 +1,13 @@
 # Acquiring and managing cycles
 
 ## What are ICP cycles?
-The Internet Computer blockchain (IC) provides an execution environment for canisters. The Internet Computer consists of hundreds of nodes that are run by node providers. Node providers use infrastructure (CPUs, RAM, and storage) and resources (electricity and network bandwidth) to run the platform. To make the Internet Computer sustainable, developers need to pay for the resources consumed by their canisters. Cycles are used to pay for the resources used by canisters. 
+The Internet Computer Protocol runs on a network of nodes owned and operated by a growing community of independent node providers (NPs) distributed across the globe. NPs spend money for running nodes, e.g. they purchase hardware and require electricity and network bandwidth. The Internet Computer Protocol compensates NPs on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
-Cycles are not currency. You can use ICP tokens to purchase cycles and transfer them to a container called a "cycles wallet."
-
-When a canister needs more cycles, a developer can transfer them from the wallet to the canister. Active canisters deployed to the IC continuously burn cycles and need to be "topped-up" to keep working.
+To make ICP sustainable, canister smart contracts are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycle balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens. 
 
 ## Why are cycles different from ICP tokens? 
 
-Cycles are different from ICP tokens to ensure that the price of hosting a canister is not volatile. This helps decrease the risk of building dapps becoming economically infeasible if the ICP token price increases.
+While the value of an ICP token is volatile, cycles are not. They are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a basket of fiat currencies. This has the benefit that resource consumption, e.g. smart contract executions, on ICP has a somewhat stable price. 
 
 :::info
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.

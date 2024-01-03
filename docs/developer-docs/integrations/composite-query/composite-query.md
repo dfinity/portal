@@ -1,6 +1,6 @@
 # Composite queries
 ## Overview
-The Internet Computer (IC) supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. It is possible to execute a query message as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes and the result of execution goes through consensus. This “query-as-update” execution mode is also known as replicated query.
+The Internet Computer Protocol supports two types of messages: updates and queries. An update message is executed on all nodes and persists canister state changes. A query message discards state changes and typically executes on a single node. It is possible to execute a query message as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes and the result of execution goes through consensus. This “query-as-update” execution mode is also known as replicated query.
 
 An update can call other updates and queries. However a query cannot make any calls, which can hinder development of scalable decentralized applications (dapps), especially those that shard data across multiple canisters.
 
@@ -111,7 +111,7 @@ The output should resemble the following:
 This workflow displays the ability to fetch the value using composite queries with very low latency.
 
 ### Comparing composite queries to calls from update functions
-Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions. To do this, we will use the `get_update` method, which contains the exact same logic, but is implemented based on update calls. Run the following command in your terminal window:
+Let’s now compare the performance of composite query calls with those of an equivalent implementation that leverages calls from update functions. To do this, you will use the `get_update` method, which contains the exact same logic, but is implemented based on update calls. Run the following command in your terminal window:
 
 ```bash
 dfx canister call kv_frontend get_update '(1)'
@@ -120,7 +120,7 @@ dfx canister call kv_frontend get_update '(1)'
 The output will resemble the following:
 ```(opt (1_337 : nat))```
 
-We can observe that with update calls we receive the very same result, but the call is at least one order of magnitude slower compared to composite query calls.
+You can observe that with update calls you receive the very same result, but the call is at least one order of magnitude slower compared to composite query calls.
 
 :::note
 The examples repository also contains an equivalent [Motoko example](https://github.com/dfinity/examples/tree/master/motoko/composite_query).

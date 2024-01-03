@@ -34,7 +34,7 @@ frontend dapp principals will only be visible after a successful launch.
 Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process.
 :::
 
-  What we have at this stage:
+  What you have at this stage:
 
 #### Table 1: Canisters
 
@@ -59,6 +59,9 @@ Shortly before Step 3, the dapp developers hand over the dapp to the NNS by addi
 This is necessary in order for the rest of the steps to work automatically.
 As any eligible NNS neuron can submit the proposal in Stage 3, this is an important step
 where the dapp developers explicity express their intent to hand over their dapp to a DAO.
+
+In this step, the dapp developers also perform any other preparations for decentralization.
+For example, they remove themselves from the dapp's asset canisters as principals that may change the asset canisters' content without going through a vote.
 
 If successful, at the end of stage, the following has changed:
 
@@ -136,7 +139,7 @@ If these conditions are not met, the proposal will fail immediately and the cont
 given back exclusively to the original dapp developers.
 
 If successful, at the end of this stage the proposal is adopted and the conditions are met.
-This means that we are in the following situation:
+This means that you are in the following situation:
 
 #### Table 2: NNS Proposals
  <table>
@@ -322,6 +325,8 @@ If successful, at the end of stage, the following has changed:
   </tr>
 </table>
 
+At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.md)).
+
 ### 8. (Automatically) SNS swap starts.
 The swap was initialized with a defined start time. 
 Once this start time is reached,
@@ -330,7 +335,7 @@ the swap will automatically be started and is open for participations.
 End users can participate in the decentralization swap by transferring ICP tokens to the
 swap canister.
 
-This means, we will have the following situation:
+This means, you will have the following situation:
 #### Table 1: Canisters
 
 <table>
@@ -378,7 +383,7 @@ When this time is reached, the swap automatically ends.
 The swap can also end earlier if the maximum ICP participation is reached before the end 
 time.
 
-This means, we will have the following situation:
+This means, you will have the following situation:
 #### Table 1: Canisters
 
 <table>
@@ -437,7 +442,7 @@ is reverted to the state before the SNS launch attempt, including that the dappâ
 is handed back to the original developers of the dapp, and the
 collected ICP are refunded to the swap participants.
 
-If successful, at the end of stage, we have:
+If successful, at the end of stage, you have:
 
 #### Table 1: Canisters
 

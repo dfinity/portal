@@ -5,7 +5,7 @@ sidebar_position: 2
 
 ## Overview
 
-To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the Internet Computer on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary.md) of decentralizing their dapp.
+To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the ICP execution environment on their local machine, deploy their dapp locally and run through [the stages](../launching/launch-summary-1proposal.md) of decentralizing their dapp.
 
 :::info
 `sns-testing` repo might not work for any dapp. It is intended to showcase one example dapp and so one can tweak for their own dapp.
@@ -47,7 +47,7 @@ To use the `sns-testing` commands and their arguments properly, you need to firs
 
 ### Testing stages of the SNS launch process
 
-For simplicity, next we map the stages introduced in the [SNS launch stages documentation](../launching/launch-summary-1proposal.md) and in the documentation [commands and actions to go through SNS launch](../launching/launch-steps-1proposal.md) to the relevant scripts in the `sns-testing` repo so you can learn what part of the launch is tested in which script.
+For simplicity, next the stages introduced in the [SNS launch stages documentation](../launching/launch-summary-1proposal.md) in the documentation [commands and actions to go through SNS launch](../launching/launch-steps-1proposal.md) are mapped to the relevant scripts in the `sns-testing` repo so you can learn what part of the launch is tested in which script.
 Note that some developers have dapps that do not match the narrow cases of `sns-testing` so the table also includes a column for what other developers have experienced.
 
 ## Stages
