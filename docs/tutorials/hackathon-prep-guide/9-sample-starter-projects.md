@@ -4,7 +4,7 @@
 
 [Insert new tutorial]
 
-## Creating an NFT marketplace
+## Creating an NFT launchpad
 
 [Insert new tutorial]
 
