@@ -125,15 +125,31 @@
     "id": "golddao",
     "name": "Gold DAO",
     "oneLiner": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
-    "website": "https://twitter.com/gldrwa",
+    "website": "https://www.gold-dao.org/",
     "tags": [
       "DeFi",
       "DAO"
     ],
-    "twitter": "https://www.gold-dao.org/",
+    "twitter": "https://twitter.com/gldrwa",
     "description": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
     "logo": "/img/showcase/golddao_logo.png"
   },
+
+  {
+    "id": "dragginz",
+    "name": "dragginz",
+    "oneLiner": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures.",
+    "website": "https://dragginz.io/",
+    "tags": [
+      "SocialFi",
+      "Games",
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/dragginzgame",
+    "description": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures..",
+    "logo": "/img/showcase/dragginz_logo.png"
+  },
+
 
 
   {
