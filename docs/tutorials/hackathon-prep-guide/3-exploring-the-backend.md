@@ -206,7 +206,7 @@ For example, a simple service description that defines a service without any pub
 service : {}
 ```
 
-A service description that does not have any pubic methods is not very useful. To add a public method, you can add a simple `ping` method:
+A service description that does not have any public methods is not very useful. To add a public method, you can add a simple `ping` method:
 
 ```
 service : {
