@@ -83,7 +83,19 @@ Once you have sent some ICP to this account ID, you can verify that they were re
 dfx ledger --network ic balance
 ```
 
-After you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. This will require your identity principal, which you can obtain by running the command:
+After you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. To check and see if your identity already has a cycles wallet on the mainnet, you can use the following command to retrieve the current wallet addresses for your identity:
+
+```
+dfx wallet --network ic addresses
+```
+
+If your identity has a cycles wallet already, it will be returned in the output:
+
+```
+Id: lsa7b-dlc2s-vmdhm-skjw6-gv2p7-v7kjz-yppyo-mvwmg-ju6fc-k2kpm-dqe, Kind: Unknown, Role: Controller, Name: No name set.
+```
+
+Creating a new cycles wallet will require your identity principal, which you can obtain by running the command:
 
 ```
 dfx identity get-principal

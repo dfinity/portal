@@ -84,12 +84,53 @@ To transfer ICP tokens from one account to another, use the following command, r
 dfx ledger transfer --amount AMOUNT --memo MEMO RECEIVER_ACCOUNT_ID
 ```
 
-## Deploying an ICRC token
+## ICRC-1 tokens
+
+ICRC-1 is a fungible token standard used to create custom fungible tokens on ICP. It was designed to create a universally accepted standard for creating and recording token transactions. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1)
+
+In comparison to ICP tokens, the ICP and ICRC-1 ledgers use different endpoints, different transactions, different block objects, in addition to other subtle differences.
+
+### AccountIdentifiers
+
+The ICP ledger uses `AccountIdentifier`s to represent accounts, which are essentially a hash of the ICRC-1 `Account` value.
+
+An `Account` can be converted into an `AccountIdentifier`, but an `AccountIdentifier` cannot be converted into an `Account`. This factor provides the ICP ledger with a level of anonymity, though it means the ICP ledger cannot have the same internal representation as an ICRC-1 ledger.
+
+### Extensions of the standard
+
+The ICRC-1 standard intentionally excludes certain ledger functions that are necessary for building diverse DeFi applications, such as transaction notifications for smart contracts, an interface and structure for fetching blocks, and pre-signed transactions.
+
+The ICRC-1 standard defines the `icrc1_supported_standards` endpoint to accommodate these functions through extensions of the standard. This endpoint returns all specifications implemented by the ledger, such as `ICRC-2` or `DIP-20`. 
+
+### Metadata
+
+The ICRC-1 token standard allows for several optional metadata fields to be specified. Metadata can be used to help improve the user experience and simplify the token's integration with wallets. Each metadata key is an arbitrary Unicode string that uses the format `<namespace>:<key>`, where the namespace `icrc1` is reserved for metadata defined for the ICRC-1 standard. Metadata entries include:
+
+- `icrc1:symbol`: The token's currency code, such as `variant { Text = "XTKN" }`. 
+
+- `icrc1:name`: The token's name, such as `variant { Text = "Test Token" }`.
+
+- `icrc1:decimals`: The number of decimals used by the token, such as `variant { Nat = 8 }`
+
+- `icrc1:fee`: The token's default transfer fee, such as `variant { Nat = 10_000 }`. 
+
+### Transaction types
+
+Within the ICRC-1 ledger canister, there are three types of transactions:
+
+- **Minting**: A minting transaction generates a new token for an account.
+
+- **Burning**: A burning transaction eliminates a token from existence.
+
+- **Approve**: An approve transaction can be used to authorize a token transfer to a third-party. 
+
+- **Transferring**: A transferring transaction transfers ICP between accounts.
+
+## Deploying an ICRC-1 ledger locally
 
 To learn how to deploy your own token using one of the ICRC standards, you can check out the following documentation tutorial:
 
 - [ICRC-1 ledger setup](/docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup)
-
 
 ## Making payments with ICRC-2
 

@@ -111,6 +111,72 @@ From this error message, you can see that the `(null)` value can be passed to th
 dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument null
 ```
 
+Then, you'll need to edit your frontend canister's JavaScript code to include some logic to interact with the II canister. First, import the `AuthClient` from `@dfinity/auth-client`:
+
+```javascript
+import { AuthClient } from "@dfinity/auth-client";
+import { handleAuthenticated, renderIndex } from "./views";
+```
+
+Then, define some variables to define a day in nanoseconds:
+
+```javascript
+// One day in nanoseconds
+const days = BigInt(1);
+const hours = BigInt(24);
+const nanoseconds = BigInt(3600000000000);
+```
+
+Next, set some default options, including the `loginOptions`, which will allow the `identityProvider` to be either the II mainnet canister if you are using the local environmental variable `DFX_NETWORK` set to `ic`, or the locally deployed II canister. Your local replica will not accept signatures from the mainnet canister. 
+
+```javascript
+export const defaultOptions = {
+  createOptions: {
+    idleOptions: {
+      // Set to true if you do not want idle functionality
+      disableIdle: true,
+    },
+  },
+  loginOptions: {
+    identityProvider:
+      process.env.DFX_NETWORK === "ic"
+        ? "https://identity.ic0.app/#authorize"
+        : `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize`,
+    // Maximum authorization expiration is 8 days
+    maxTimeToLive: days * hours * nanoseconds,
+  },
+};
+```
+
+Next, initialize the AuthClient. Then, check to see if the user has previously logged in. If so, their previous identity is verified:
+
+```javascript
+const init = async () => {
+  const authClient = await AuthClient.create(defaultOptions.createOptions);
+
+  if (await authClient.isAuthenticated()) {
+    handleAuthenticated(authClient);
+  }
+  renderIndex();
+  setupToast();
+};
+```
+
+Lastly, define a function that listens for the button on the frontend to be clicked and initialize the client:
+
+```javascript
+async function setupToast() {
+  const status = document.getElementById("status");
+  const closeButton = status?.querySelector("button");
+  closeButton?.addEventListener("click", () => {
+    status?.classList.add("hidden");
+  });
+}
+
+
+init();
+```
+
 Then, you can deploy the II canister and the other canisters in the project with the command:
 
 ```

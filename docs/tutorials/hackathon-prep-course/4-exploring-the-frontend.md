@@ -288,7 +288,13 @@ In this code, the constructor first creates an `HTTPAgent` which wraps the JavaS
 
 You can learn more about agents in the documentation [here](/docs/current/developer-docs/agents/).
 
-### HTTPS interfaces
+### Serving HTTP content
+
+Smart contract canisters are able to serve HTTP content natively, allowing for dapp frontends to be served directly in a web browser using the canister's URL at `http://<canister id>.ic0.app` and `http://<canister id>.raw.ic0.app`. Frontend canisters can be used to deliver  HTML, CSS and JavaScript pages, and answer API requests.
+
+If a canister wants to serve HTTP content, it should implement a method that consumes a HTTP request, which contains a URL, HTTP method and headers, then outputs a HTTP response  that contains a status, headers and the response body. The canister method can return HTML, CSS and JavaScript content as part of the HTTP response. 
+
+### HTTPS outcalls
 
 On ICP, canisters can communicate directly with external servers or other blockchains through the use of HTTPS outcalls. This is a unique feature of ICP, since traditionally, other blockchain networks are only able to communicate with external servers through blockchain oracles, or third-party entities that relay calls from the blockchain to an external server, then route the response back to the blockchain. 
 

@@ -228,6 +228,16 @@ Balance: 3_100_000_000_000 Cycles
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
 
+The values returned in this output refer to the following:
+
+- Status: The canister's current status, such as `Running` or `Stopped`. 
+- [Controllers](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#adding-an-identity-as-a-controller-of-a-canister): The principal IDs of the canister's configured controllers. Controllers are able to perform operations such as deploying or stopping a canister. 
+- [Memory allocation](/docs/current/developer-docs/gas-cost): The current amount of memory allocated by the canister.
+- [Compute allocation](/docs/current/developer-docs/gas-cost): The current amount of compute resources allocated by the canister.
+- [Freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold): The cycles freezing threshold, which indicates how many cycles the canister must maintain. The canister will deny requests if they would result in the canister's cycles balance falling below this threshold. 
+- Memory size: The size of the memory used by the canister.
+- Balance: The canister's current cycles balance. 
+- Module hash: The canister's Wasm module hash. 
 
 ## Deleting a canister
 
