@@ -15,7 +15,7 @@ You can learn more about the vision of the Internet Computer in the [ICP deck](h
 ## Architecture of the Internet Computer Protocol
 ### Subnets
 
-An subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
+A subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
 
 Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets, but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
 
