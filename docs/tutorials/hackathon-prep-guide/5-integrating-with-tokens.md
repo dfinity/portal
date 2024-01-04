@@ -24,7 +24,7 @@ The ICP ledger can only be used to interact with ICP tokens; to interact with ot
 
 ### Accounts
 
-An account on the ICP ledger is identified by the `AccountIdentifier` value, which is a value derived from the account owner's ICP principal and subaccount identifier. Accounts can only be owned by one principal; however, since a principal can refer to a canister, joint accounts can be implemented as a canister. 
+An account on the ICP ledger is identified by the `AccountIdentifier` value, which is a value derived from the account owner's ICP principal and subaccount. Accounts can only be owned by one principal; however, since a principal can refer to a canister, joint accounts can be implemented as a canister. 
 
 If you are familiar with an Ethereum or Bitcoin user's public key, a principal identifier can be thought of as the ICP equivalent. When you use a principal, your corresponding secret key is used to sign messages, authenticate with the ledger, and execute transactions on your account.
 
