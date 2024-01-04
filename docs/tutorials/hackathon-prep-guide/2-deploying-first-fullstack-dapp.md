@@ -105,9 +105,7 @@ Before continuing, it is important to learn about the several different types of
 
 - **Developer identity**: An identity created using dfx, which contains a private/public key pair, and has a principal derived from the public key.
 
-- **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts.
-
-- **Principal identifiers**: A principal associated with a user principal ID. Principal identifiers are related to account identifiers, but use a different format. Each principal identity can control multiple accounts in the ICP (and other) ledgers.
+- **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts. It can be compared to a Bitcoin or Ethereum wallet address. Each principal can control multiple accounts in the ICP (and other) ledgers.
 
 - **Account identifier**: The identifier associated with your ICP ledger account, as specified in the ledger specification.
 
