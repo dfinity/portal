@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters** on ICP. Canisters are highly scalable to directly serve user experiences. Each canister on the Internet Computer is hosted on an independent version of the blockchain network called a **subnet**.
+The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters** on ICP. Canisters are highly scalable to directly serve user experiences. Each canister on the Internet Computer is hosted on an independent version of the blockchain network called a **subnet**. **Subnets** can seamlessly communicate with each other.
 
 ## Vision of the Internet Computer 
 
