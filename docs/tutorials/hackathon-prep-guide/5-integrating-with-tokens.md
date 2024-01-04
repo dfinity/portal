@@ -19,7 +19,7 @@ ICP is the native token of the Internet Computer Protocol. ICP tokens have three
 To interact with ICP tokens, you will need to use a specialized canister known as the ICP ledger. The ledger canister is used to hold ledger accounts and record a traceable history of all ICP transactions.
 
 :::info
-The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, the ICRC ledger will need to be used. 
+The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, the respective ICRC ledger will need to be used. 
 :::
 
 ### Accounts
