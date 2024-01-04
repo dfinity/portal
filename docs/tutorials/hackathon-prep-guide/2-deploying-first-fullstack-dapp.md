@@ -175,9 +175,7 @@ Before you can deploy your first dapp on ICP, you will need to set up your devel
 Then, to download the template project, first create a new directory, then download the project template using the commands:
 
 ```
-mkdir react-project
-cd react-project
-npx degit rvanasa/vite-react-motoko
+npx degit rvanasa/vite-react-motoko react-project
 ```
 
 Then you will need to start a local replica with `dfx` using the command:
