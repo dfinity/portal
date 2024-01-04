@@ -107,7 +107,7 @@ Before continuing, it is important to learn about the several different types of
 
 - **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts. It can be compared to a Bitcoin or Ethereum wallet address. Each principal can control multiple accounts in the ICP (and other) ledgers.
 
-- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the ledger specification.
+- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the [ledger specification](https://internetcomputer.org/docs/current/references/ledger#_accounts).
 
 - **Wallets**: Wallets are used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use a cycles wallet to send cycles to and from canisters.
 
