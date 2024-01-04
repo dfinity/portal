@@ -284,7 +284,7 @@ export const createActor = (canisterId, options = {}) => {
 export const frontend = createActor(canisterId);
 ```
 
-In this code, the constructor first creates an HTTPAgent which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the mainnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the HTTPAgent.
+In this code, the constructor first creates an `HTTPAgent` which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the local testnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
 
 You can learn more about agents in the documentation [here](/docs/current/developer-docs/agents/).
 
