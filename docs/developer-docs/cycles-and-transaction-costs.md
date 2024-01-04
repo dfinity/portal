@@ -220,5 +220,3 @@ The amount of reserved cycles depends on how many bytes are allocated and on the
 
 A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in canister settings.
 Such opted-out canisters would not be able to allocate if the subnet usage is above `450GiB` though.
-
-## Cost estimations and examples
