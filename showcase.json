@@ -3101,18 +3101,17 @@
     "submittableId": "36108625"
   },
   {
-  "name": "TIKITWORLD - kybra-tikit",
-  "description": "Kybra-Tikit manages the minting and transfers of non-fungible tikits which represent tickets to real-world events. It provides a decentralized framework for event ticketing while still allowing for managed wallets and centralized payment processing.",
+  "name": "TIKITWORLD",
+  "description": "TikitWorld is a decentralized first-class tamper-proof tikitig platform and ecosystem that opens new possibilities for event owners, customers, and brands while also putting a stop to the present unjust and unsafe secondary market.",
   "website": "https://tikitworld.com/",
-  "logo": "/img/showcase/tikitworld-kybra-tikit_logo.webp",
+  "logo": "/img/showcase/tikitworld-logo.svg",
   "screenshots": [
     "/img/showcase/tikitworld-kybra-tikit_screenshot.webp"
   ],
   "id": "tikitworld-kybra-tikit",
-  "oneLiner": "Ticketing Smart contract in Kybra for deployment as an IC canister",
+  "oneLiner": "NFT ticketing platform",
   "stats": "In development",
   "tags": [
-    "Tools / Infrastructure",
     "NFT",
     "Metaverse"
   ],
