@@ -43,6 +43,15 @@ export const CardsSection = () => {
         </h2>
       </CardWithImage> */}
 
+      <CardWithImage href="/multichain" image="/img/home/btc-eth.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">
+          Native Multi-chain
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
+          Trustless multi-chain on ICP
+        </h2>
+      </CardWithImage>
+
       <CardWithImage
         href="https://deck.internetcomputer.org"
         image="/img/home/deck-astronaut.webp"
@@ -69,26 +78,32 @@ export const CardsSection = () => {
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Live stats</h2>
       </CardWithImage>
+
+      <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Developer Docs</div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Start coding</h2>
+      </CardWithImage>
+
       <CardWithImage href="/community" image="/img/home/events-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Global Events</div>
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">ICP.Hubs</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Meet the community worldwide
+          ICP Community around the world
         </h2>
       </CardWithImage>
 
-      <CardWithImage href="/bitcoin-integration" image="/img/home/btc-icp.webp">
+      {/* <CardWithImage href="/bitcoin-integration" image="/img/home/btc-icp.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Bitcoin &lt;&gt; ICP </h2>
-      </CardWithImage>
+      </CardWithImage> */}
 
-      <CardWithImage href="/ethereum-integration" image="/img/home/eth-icp.webp">
+      {/* <CardWithImage href="/ethereum-integration" image="/img/home/eth-icp.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ethereum &lt;&gt; ICP </h2>
-      </CardWithImage>
+      </CardWithImage> */}
     </AnimateSpawn>
   );
 };

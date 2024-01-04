@@ -197,13 +197,19 @@ function DefiPage() {
                   between BTC/ETH in seconds for a few cents with 0 gas fees by
                   using ckBTC, ckETH, and soon ckERC-20 tokens.{" "}
                 </p>
-                <p className="mb-0">
+                <p className="mb-0 flex flex-col gap-6 items-start">
+                  <Link
+                    href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
+                    className="link-primary"
+                  >
+                    <LinkArrowRight />
+                    BTC &lt;&gt; ICP user guide
+                  </Link>
                   <Link
                     href="https://dashboard.internetcomputer.org/bitcoin/transactions"
-                    className="link-primary link-with-icon"
+                    className="button-primary"
                   >
-                    Track TX activity on the ICP Dashboard
-                    <LinkArrowUpRight />
+                    Track TX activity
                   </Link>
                 </p>
               </div>
@@ -370,8 +376,8 @@ function DefiPage() {
                     <img src="/img/defi/plug.webp" alt="" className="w-20" />
                     <h3 className="tw-heading-5 mb-2 mt-4">Plug</h3>
                     <p className="text-white/60 tw-lead-sm mb-0">
-                      Store, swap and manage digital assets, inlcuding ckBTC and ckETH on a
-                      simple mobile app or use your favorite browser.
+                      Store, swap and manage digital assets, inlcuding ckBTC and
+                      ckETH on a simple mobile app or use your favorite browser.
                     </p>
                   </Link>
                 </motion.div>

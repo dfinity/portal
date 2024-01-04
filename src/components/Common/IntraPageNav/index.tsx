@@ -26,7 +26,8 @@ const IntraPageNav: React.FC<{
   links: SectionLink[];
   label?: string;
   hasHome?: boolean;
-}> = ({ links, label = "Scroll To Section", hasHome = true }) => {
+  className?: string;
+}> = ({ links, label = "Scroll To Section", hasHome = true, className }) => {
   const [display, setDisplay] = useState(false);
   const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -53,7 +54,7 @@ const IntraPageNav: React.FC<{
   }, [windowSize]);
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, className)}>
       {display && isMobile ? (
         <div className={styles.desktopContainer}>
           <div

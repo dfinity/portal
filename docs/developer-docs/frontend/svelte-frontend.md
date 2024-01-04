@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+---
+
+
 # Svelte frontend example
 
 ## Overview

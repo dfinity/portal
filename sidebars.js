@@ -133,6 +133,7 @@ const sidebars = {
         "samples/deploying-your-first-bitcoin-dapp",
         "samples/echo",
         "samples/encrypted-notes",
+        "samples/persistent-storage",
         "samples/factorial",
         "samples/game-of-life",
         "samples/hackathon-projects",
@@ -148,7 +149,6 @@ const sidebars = {
         "samples/nft",
         "samples/nft-wallet",
         "samples/periodic-tasks",
-        "samples/persistent-storage",
         "samples/phonebook",
         "samples/pos",
         "samples/pub-sub",
@@ -204,7 +204,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer quick start",
+          label: "Developer quickstart",
           id: "developer-docs/setup/quickstart",
         },
         {
@@ -256,6 +256,11 @@ const sidebars = {
           label: "Pulling canister dependencies",
           id: "developer-docs/setup/pulling-canister-dependencies",
         },
+                {
+          type: "doc",
+          label: "Quickstart for React developers",
+          id: "developer-docs/setup/react-quickstart",
+        },
         {
           type: "doc",
           label: "Testing canisters with PocketIC",
@@ -274,6 +279,17 @@ const sidebars = {
       items: [
         "developer-docs/backend/choosing-language",
         "developer-docs/backend/design-dapps",
+        {
+          type: "category",
+          label: "Subnet types",
+          link: {
+            type: "doc",
+            id: "developer-docs/backend/subnet-types",
+          },
+          items: [
+            "developer-docs/backend/eu-subnets",
+          ],
+        },
       ],
     },
     {
@@ -379,6 +395,7 @@ const sidebars = {
         "developer-docs/frontend/react-frontend",
         "developer-docs/frontend/svelte-frontend",
         "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/existing-frontend",
       ],
     },
     {
@@ -393,6 +410,16 @@ const sidebars = {
           type: "doc",
           label: "Canister history",
           id: "developer-docs/production/canister-history",
+        },
+        {
+        type: "doc",
+        label: "Canister recovery",
+        id: "developer-docs/production/canister-recovery",
+        },
+        {
+          type: "doc",
+          label: "Canister storage",
+          id: "developer-docs/production/storage",
         },
         {
           type: "category",
@@ -939,6 +966,7 @@ const sidebars = {
         "motoko/main/pattern-matching",
         "motoko/main/sharing",
         "motoko/main/stablememory",
+        "motoko/main/stable-regions",
         "motoko/main/structural-equality",
         "motoko/main/timers",
         "motoko/main/upgrades",
@@ -989,6 +1017,7 @@ const sidebars = {
         "motoko/main/base/Principal",
         "motoko/main/base/Random",
         "motoko/main/base/RBTree",
+        "motoko/main/base/Region",
         "motoko/main/base/Result",
         "motoko/main/base/Stack",
         "motoko/main/base/Text",

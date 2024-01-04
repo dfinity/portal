@@ -1,5 +1,8 @@
 # 0.5 Introduction to languages 
 
+[![ICP Developer Journey 0.5 | Introduction to Languages](https://img.youtube.com/vi/sZxbRAwYYMw/0.jpg)](https://www.youtube.com/watch?v=sZxbRAwYYMw)
+
+
 ## Overview
 
 When developing canisters, the most common development workflow is to use a software development kit (SDK). The Internet Computer SDK is the most commonly used, which natively supports Motoko and Rust out of the box. 
@@ -113,7 +116,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -122,6 +127,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
 - [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
+- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+
 
 ## Next steps
 

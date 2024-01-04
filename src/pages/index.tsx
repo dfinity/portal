@@ -2,18 +2,11 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import Layout from "@theme/Layout";
 import React from "react";
-import Gallery from "../components/Community/Gallery";
-import { communityGallery } from "../components/Community/gallery-images";
 
-import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
-import Decks from "../components/LandingPage/Decks/Decks";
 import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
 import FoundationSection from "../components/LandingPage/Foundation";
 import GallerySection from "../components/LandingPage/Gallery";
-import {
-  CardsSection,
-  CardWithImage,
-} from "../components/LandingPage/Hero/Cards";
+import { CardsSection } from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
 import IntroCards from "../components/LandingPage/Hero/IntroCards";
 import { NewsSection } from "../components/LandingPage/Hero/News";
@@ -21,9 +14,7 @@ import {
   CollapsedVisionSection,
   VisionSection,
 } from "../components/LandingPage/Hero/VisionSection";
-import Highlights from "../components/LandingPage/Highlights/Highlights";
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
-import PreHero from "../components/LandingPage/PreHero";
 import SectionsBar from "../components/LandingPage/SectionsBar";
 import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 
@@ -47,17 +38,21 @@ export default function Home(): JSX.Element {
         <CardsSection />
         <NewsSection />
         <VisionSection>
-        Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: 
-        data, content, computations, and user experiences. Forget legacy IT and build tamperproof and unstoppable 
-        Web3 social media, gaming, virtual reality, decentralized finance, and enterprise infrastructure. 
-        Join the movement and realize the game-changing Internet Computer paradigm of full stack decentralization 
-        and seamless multi-chain today.
+          Step into the era of blockchain as a limitless smart contract cloud
+          that hosts everything on-chain: data, content, computations, and user
+          experiences. Forget legacy IT and build tamperproof and unstoppable
+          Web3 social media, gaming, virtual reality, decentralized finance, and
+          enterprise infrastructure. Join the movement and realize the
+          game-changing Internet Computer paradigm of full stack
+          decentralization and seamless multi-chain today.
           <CollapsedVisionSection>
-          You will be in good company. The Internet Computer network's ICP protocol was created by the 
-          crypto industry’s largest R&D operation in a multi-year international effort – it’s the product 
-          of more than 1,000 person years of research and development at the DFINITY Foundation, including work 
-          by world famous cryptographers and engineers focused on a singular vision: deliver infinite blockchain 
-          that can be used as an alternative to traditional IT.
+            You will be in good company. The Internet Computer network's ICP
+            protocol was created by the crypto industry’s largest R&D operation
+            in a multi-year international effort – it’s the product of more than
+            1,000 person years of research and development at the DFINITY
+            Foundation, including work by world famous cryptographers and
+            engineers focused on a singular vision: deliver infinite blockchain
+            that can be used as an alternative to traditional IT.
           </CollapsedVisionSection>
         </VisionSection>
         <IntroCards />

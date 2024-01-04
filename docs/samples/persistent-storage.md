@@ -1,4 +1,4 @@
-# Persistent storage
+# Example: Dapp using persistent storage
 
 ## Overview
 The example dapp shows how to build a simple dapp in Motoko, which will have persistent storage. The dapp is a simple counter, which will increment a counter, retrieve the counter value and reset the counter value by calling backend functions. The functions are exposed through a Candid interface.
