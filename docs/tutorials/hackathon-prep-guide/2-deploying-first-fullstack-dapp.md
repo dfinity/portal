@@ -103,7 +103,7 @@ A frontend canister hosts the portion of an application that is used to interact
 
 Before continuing, it is important to learn about the several different types of identities and authentication methods that you'll encounter while developing on ICP. 
 
-- **Developer identity**: An identity created using dfx, which contains a private/public key pair, and has a principal data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
+- **Developer identity**: An identity created using dfx, which contains a private/public key pair, and has a principal derived from the public key.
 
 - **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts.
 
