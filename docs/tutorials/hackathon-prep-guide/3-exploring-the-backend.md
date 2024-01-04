@@ -281,7 +281,7 @@ Additionally, Mops is defined as the project's package manager in the project's 
 ...
 ```
 
-To add additional packages to your project's dependencies, you can use the command `maps add` then the package name:
+To add additional packages to your project's dependencies, you can use the command `mops add` then the package name:
 
 ```
 mops add base
