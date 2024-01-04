@@ -54,16 +54,16 @@ Using the same `vite-motoko-react` example project directory, edit your `dfx.jso
     "backend": {
       "type": "motoko",
       "main": "backend/Backend.mo",
-    "dependencies": [
-        "internet_identity"
-        ]
     },
     "internet_identity": {
         "type": "pull",
         "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
     },
     "frontend": {
-      "dependencies": ["backend"],
+      "dependencies": [
+        "backend",
+        "internet_identity"
+      ],
       "type": "assets",
       "source": ["dist/"]
     }
