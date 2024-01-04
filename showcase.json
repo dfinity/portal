@@ -106,6 +106,51 @@
     "logo": "/img/showcase/nfid_logo.webp"
   },
 
+  {
+    "id": "trax",
+    "name": "Trax",
+    "oneLiner": "Trax is the world's first artist and fan-owned music platform.",
+    "website": "https://trax.so/",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/onlyontrax",
+    "description": "Trax is the world's first artist and fan-owned music platform.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/trax_logo.jpeg"
+  },
+
+  {
+    "id": "golddao",
+    "name": "Gold DAO",
+    "oneLiner": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
+    "website": "https://www.gold-dao.org/",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/gldrwa",
+    "description": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
+    "logo": "/img/showcase/golddao_logo.png"
+  },
+
+  {
+    "id": "dragginz",
+    "name": "dragginz",
+    "oneLiner": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures.",
+    "website": "https://dragginz.io/",
+    "tags": [
+      "SocialFi",
+      "Games",
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/dragginzgame",
+    "description": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures..",
+    "logo": "/img/showcase/dragginz_logo.png"
+  },
+
+
 
   {
     "id": "dmail",
