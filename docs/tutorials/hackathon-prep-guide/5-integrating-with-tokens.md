@@ -135,7 +135,7 @@ dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 
 The principal making this call has to be the spender, since they are the once that received the approval.
 
 :::info
-The entire allowance cannot be transferred as there is a fee for making the transfer that must be subtracted from the transferred amount; this fee is 10_000 tokens.
+The entire allowance cannot be transferred as there is a fee for making the transfer that must be subtracted from the transferred amount; this fee is set to 0.0001 tokens in our example.
 :::
 
 
