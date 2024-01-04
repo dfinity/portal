@@ -236,7 +236,7 @@ In this `vite-react-motoko` example, a JavaScript agent is used. An agent is a l
 
 In addition to the JavaScript agent, DFINITY has developed and maintains a Rust agent, and the ICP community supports several agents for .NET, Go, Python, Ruby, and more.
 
-In your `vite-react-motoko` example, the JavaScript agent file is scored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command, and contains the following content:
+In your `vite-react-motoko` example, the JavaScript agent file is stored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command, and contains the following content:
 
 ```javascript
 import { Actor, HttpAgent } from "@dfinity/agent";
