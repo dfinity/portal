@@ -236,7 +236,7 @@ In this `vite-react-motoko` example, a JavaScript agent is used. An agent is a l
 
 In addition to the JavaScript agent, DFINITY has developed and maintains a Rust agent, and the ICP community supports several agents for .NET, Go, Python, Ruby, and more.
 
-In your `vite-react-motoko` example, the JavaScript agent file is scored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command, and contains the following content:
+In your `vite-react-motoko` example, the JavaScript agent file is stored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command, and contains the following content:
 
 ```javascript
 import { Actor, HttpAgent } from "@dfinity/agent";
@@ -284,7 +284,7 @@ export const createActor = (canisterId, options = {}) => {
 export const frontend = createActor(canisterId);
 ```
 
-In this code, the constructor first creates an HTTPAgent which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the mainnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the HTTPAgent.
+In this code, the constructor first creates an `HTTPAgent` which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the local testnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
 
 You can learn more about agents in the documentation [here](/docs/current/developer-docs/agents/).
 
@@ -292,7 +292,7 @@ You can learn more about agents in the documentation [here](/docs/current/develo
 
 On ICP, canisters can communicate directly with external servers or other blockchains through the use of HTTPS outcalls. This is a unique feature of ICP, since traditionally, other blockchain networks are only able to communicate with external servers through blockchain oracles, or third-party entities that relay calls from the blockchain to an external server, then route the response back to the blockchain. 
 
-HTTPS outcalls allow smart contract canisters on ICP to make calls directly to external HTTPS servers. Then, the response of these HTTPS calls can be used by the smart contract in a safe way that doesn't result in the a replica state divergence. 
+HTTPS outcalls allow smart contract canisters on ICP to make calls directly to external HTTPS servers. Then, the response of these HTTPS calls can be used by the smart contract in a safe way that doesn't result in a replica state divergence. 
 
 HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries required for the canister to communicate with external servers. Using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional 'Web 2' services.
 

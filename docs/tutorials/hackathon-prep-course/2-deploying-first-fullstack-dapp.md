@@ -103,13 +103,11 @@ A frontend canister hosts the portion of an application that is used to interact
 
 Before continuing, it is important to learn about the several different types of identities and authentication methods that you'll encounter while developing on ICP. 
 
-- **Developer identity**: An identity created using dfx, which contains a private/public key pair, and has a principal data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
+- **Developer identity**: An identity created using dfx, which contains a private/public key pair, and has a principal derived from the public key.
 
-- **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts.
+- **Principals**: A generic identifier that can be used for users, canisters, and potentially other future concepts. It can be compared to a Bitcoin or Ethereum wallet address. Each principal can control multiple accounts in the ICP (and other) ledgers.
 
-- **Principal identifiers**: A principal associated with a user principal ID. Principal identifiers are related to account identifiers, but use a different format. Each principal identity can control multiple accounts in the ICP (and other) ledgers.
-
-- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the ledger specification.
+- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the [ledger specification](https://internetcomputer.org/docs/current/references/ledger#_accounts).
 
 - **Wallets**: Wallets are used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use a cycles wallet to send cycles to and from canisters.
 

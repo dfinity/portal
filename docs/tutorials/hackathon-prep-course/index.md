@@ -1,4 +1,4 @@
-# Hackathon prep guide
+# Hackathon prep course
 
 - [1: What is the Internet Computer?](1-what-is-icp.md).
 

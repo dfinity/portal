@@ -2,9 +2,9 @@
 
 ## Overview
 
-For end-users to interact with the frontend of applications on ICP, Internet Identity can be used. Internet Identity is ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local computer's hardware. 
+For end-users to interact with the frontend of applications on ICP, Internet Identity can be used. Internet Identity is ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local device's hardware. 
 
-This allows you to authenticate your Internet Identity using methods that unlock your device, such as TouchID, FaceID, or another method. Through this simple and flexible authentication method, developers can provide end-users with a frictionless way to authenticate and use their application.
+This allows you to authenticate to your Internet Identity using methods that unlock your device, such as TouchID, FaceID, or another method. Through this simple and flexible authentication method, developers can provide end-users with a frictionless way to authenticate and use their application.
 
 ## Creating an Internet Identity
 
@@ -54,16 +54,16 @@ Using the same `vite-motoko-react` example project directory, edit your `dfx.jso
     "backend": {
       "type": "motoko",
       "main": "backend/Backend.mo",
-    "dependencies": [
-        "internet_identity"
-        ]
     },
     "internet_identity": {
         "type": "pull",
         "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
     },
     "frontend": {
-      "dependencies": ["backend"],
+      "dependencies": [
+        "backend",
+        "internet_identity"
+      ],
       "type": "assets",
       "source": ["dist/"]
     }

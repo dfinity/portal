@@ -71,7 +71,7 @@ First, the code defines an actor called `Backend`. In Motoko, programs consist o
 actor class Backend() {
 ```
 
-Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor which uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be stored using stable storage. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
+Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor which uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be persisted during canister upgrades. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
 
 ```motoko
 stable var counter = 0;
@@ -132,7 +132,7 @@ When developing a project, certain third-party canisters may be beneficial to in
 
 When integrating with third-party canisters, it is important to test the integration locally to assure that the integration is accurate and correct. Performing tests locally is beneficial since tests executed in a local developer environment do not cost cycles, use non-production data, and have a faster completion time when run locally. 
 
-To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the `dfx deps` workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
+To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the [`dfx deps`](https://fnoix-mqaaa-aaaam-abtca-cai.icp0.io/docs/current/developer-docs/setup/pulling-canister-dependencies) workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
 
 
 ```json
@@ -206,7 +206,7 @@ For example, a simple service description that defines a service without any pub
 service : {}
 ```
 
-A service description that does not have any pubic methods is not very useful. To add a public method, you can add a simple `ping` method:
+A service description that does not have any public methods is not very useful. To add a public method, you can add a simple `ping` method:
 
 ```
 service : {
@@ -281,7 +281,7 @@ Additionally, Mops is defined as the project's package manager in the project's 
 ...
 ```
 
-To add additional packages to your project's dependencies, you can use the command `maps add` then the package name:
+To add additional packages to your project's dependencies, you can use the command `mops add` then the package name:
 
 ```
 mops add base

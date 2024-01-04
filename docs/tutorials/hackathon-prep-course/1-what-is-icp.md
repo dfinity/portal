@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters** on ICP. Canisters are highly scalable to directly serve user experiences. Each canister on the Internet Computer is hosted on an independent version of the blockchain network called a **subnet**.
+The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters** on ICP. Canisters are highly scalable to directly serve user experiences. Each canister on the Internet Computer is hosted on an independent version of the blockchain network called a **subnet**. **Subnets** can seamlessly communicate with each other.
 
 ## Vision of the Internet Computer 
 
@@ -15,7 +15,7 @@ You can learn more about the vision of the Internet Computer in the [ICP deck](h
 ## Architecture of the Internet Computer Protocol
 ### Subnets
 
-An subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
+A subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
 
 Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets, but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
 
@@ -60,7 +60,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 - [Developer Journey video series](https://www.youtube.com/watch?v=3WpP8ux1zX0).
 
-- [ICP Zero to Dapp workshop series](https://www.youtube.com/watch?v=P3ngpMedCTE).
+- [ICP Zero to Dapp workshop series](https://youtube.com/playlist?list=PLfEHHr3qexv8hKOJBV1XR10XhUKkyPIBp&si=KqnDuEgJZt51q4e4).
 
 - [Motoko Bootcamp](https://www.motokobootcamp.com/).
 

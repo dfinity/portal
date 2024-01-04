@@ -2,7 +2,7 @@
 
 ## Overview
 
-When building dapps on the Internet Computer, integrating tokens into your dapp may necessary for enabling DeFi, governance, marketplace, or other tokenomic functions. There are several types of tokens in the Internet Computer ecosystem, such as the protocol's native token ICP, fungible tokens that use the ICRC-1 or ICRC-2 standards, and soon non-fungible tokens that will use the upcoming ICRC-7 standard. 
+When building dapps on the Internet Computer, integrating tokens into your dapp may be necessary for enabling DeFi, governance, marketplace, or other tokenomic functions. There are several types of tokens in the Internet Computer ecosystem, such as the protocol's native token ICP, fungible tokens that use the ICRC-1 or ICRC-2 standards, and soon non-fungible tokens that will use the upcoming ICRC-7 standard. 
 
 This tutorial will cover the different types of tokens and how to interact with them. 
 
@@ -37,12 +37,12 @@ To interact with ICP tokens, you will need to use a specialized canister known a
 The ICP ledger supports the ICRC-1 and ICRC-2 standards, but also implements it's own standard that has significant differences when compared to the ICRC-1 and ICRC-2 standards, most notably around the notion of an `Account`. 
 
 :::info
-The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, the ICRC ledger will need to be used. 
+The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, the respective ICRC ledger will need to be used. 
 :::
 
 ### Accounts
 
-An account on the ICP ledger is identified by the `AccountIdentifier` value, which is a value derived from the account owner's ICP principal and subaccount identifier. Accounts can only be owned by one principal; however, since a principal can refer to a canister, joint accounts can be implemented as a canister. 
+An account on the ICP ledger is identified by the `AccountIdentifier` value, which is a value derived from the account owner's ICP principal and subaccount. Accounts can only be owned by one principal; however, since a principal can refer to a canister, joint accounts can be implemented as a canister. 
 
 If you are familiar with an Ethereum or Bitcoin user's public key, a principal identifier can be thought of as the ICP equivalent. When you use a principal, your corresponding secret key is used to sign messages, authenticate with the ledger, and execute transactions on your account.
 
@@ -133,7 +133,7 @@ dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 
 The principal making this call has to be the spender, since they are the once that received the approval.
 
 :::info
-The entire allowance cannot be transferred as there is a fee for making the transfer that must be subtracted from the transferred amount; this fee is 10_000 tokens.
+The entire allowance cannot be transferred as there is a fee for making the transfer that must be subtracted from the transferred amount; this fee is set to 0.0001 tokens in our example.
 :::
 
 
@@ -147,7 +147,7 @@ dfx canister call icrc1_ledger_canister icrc2_approve "(record { spender = recor
 
 You can learn more about the ICRC-2 standard [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2).
 
-## Switching between tokens
+## Swapping between tokens
 
 To switch between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH, you can use a tool such as [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/).
 
