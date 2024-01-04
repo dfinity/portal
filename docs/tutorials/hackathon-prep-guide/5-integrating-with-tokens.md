@@ -2,7 +2,7 @@
 
 ## Overview
 
-When building dapps on the Internet Computer, integrating tokens into your dapp may necessary for enabling DeFi, governance, marketplace, or other tokenomic functions. There are several types of tokens in the Internet Computer ecosystem, such as the protocol's native token ICP, fungible tokens that use the ICRC-1 or ICRC-2 standards, and soon non-fungible tokens that will use the upcoming ICRC-7 standard. 
+When building dapps on the Internet Computer, integrating tokens into your dapp may be necessary for enabling DeFi, governance, marketplace, or other tokenomic functions. There are several types of tokens in the Internet Computer ecosystem, such as the protocol's native token ICP, fungible tokens that use the ICRC-1 or ICRC-2 standards, and soon non-fungible tokens that will use the upcoming ICRC-7 standard. 
 
 This tutorial will cover the different types of tokens and how to interact with them. 
 
