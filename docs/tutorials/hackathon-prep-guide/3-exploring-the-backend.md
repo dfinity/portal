@@ -71,7 +71,7 @@ First, the code defines an actor called `Backend`. In Motoko, programs consist o
 actor class Backend() {
 ```
 
-Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor which uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be stored using stable storage. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
+Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor which uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be persisted during canister upgrades. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
 
 ```motoko
 stable var counter = 0;
