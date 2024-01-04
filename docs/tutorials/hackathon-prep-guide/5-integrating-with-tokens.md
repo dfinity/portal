@@ -149,7 +149,7 @@ dfx canister call icrc1_ledger_canister icrc2_approve "(record { spender = recor
 
 You can learn more about the ICRC-2 standard [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2).
 
-## Switching between tokens
+## Swapping between tokens
 
 To switch between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH, you can use a tool such as [ICPSwap.](https://app.icpswap.com/swap)
 
