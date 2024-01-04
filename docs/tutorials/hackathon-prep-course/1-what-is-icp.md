@@ -19,6 +19,8 @@ An subnet is a collection of nodes that run their own instance of the Internet C
 
 Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets, but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
 
+![Subnets](./_attachments/subnets.png)
+
 ### Deterministic decentralization
 
 The term deterministic decentralization refers to a concept used to maximize the decentralization and diversity of each subnet on ICP. Deterministic decentralization measures and maximizes the decentralization of every layer of the ICP infrastructure by maximizing the number of different node providers, data centers, geographies, and jurisdictions. The purpose of deterministic decentralization is to ensure that the network remains diverse and decentralized.

@@ -167,7 +167,7 @@ For more information on using third-party canisters, check out the documentation
 
 When calls are made on ICP, there are two primary types: query calls and update calls. 
 
-**Query calls** are calls that do not alter the state of a canister, making them 'read-only' operations. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
+**Query calls** are calls that do not alter the state of a canister, making them 'read-only' operations. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. Query methods can be called in replicated mode as update calls. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
 
 ```motoko
 public query func get() : async Nat {

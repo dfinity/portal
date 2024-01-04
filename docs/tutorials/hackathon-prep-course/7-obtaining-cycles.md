@@ -6,29 +6,7 @@ Cycles are used to measure the resources, such as memory, storage, and compute p
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in XDR in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
-Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a special canister called a cycles wallet. When a canister needs to use the cycles stored in the cycles wallet, the canister's operations are executed using the canister principal of the cycles wallet, rather than your user principal.
-
-## Creating a developer identity
-
-To obtain cycles and deploy a cycles wallet, you'll need to create a new identity principal with dfx. First, assure that dfx is running. Then, create a new developer identity with the command:
-
-```
-dfx identity new MyIdentity
-```
-
-This command will return a seed phrase, which will be required to recover your identity if you ever need to. This seed phrase should be backed up, so that any cycles associated with your identity are not lost. Set this identity as the one to be used by dfx in the current terminal session with the command:
-
-```
-dfx identity use MyIdentity
-```
-
-Then, you need to get the principal ID of this identity with the command:
-
-```
-dfx identity get-principal
-```
-
-Save the returned output of this command. 
+Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a special canister called a cycles wallet. When a canister needs to use cycles, the canister's operations are executed using the cycles wallet's principal. 
 
 ## Acquiring cycles using a cycles coupon
 
@@ -64,7 +42,7 @@ Now, click **NEXT STEP** to continue. Once you have a coupon code, enter your co
 
 Click **NEXT STEP** to continue.
 
-Return to your terminal window. If you closed the window in the process, run the following commands to start `dfx` and use your previously created identity:
+Return to your terminal window. If you closed the window in the process, run the following commands to start `dfx` and use your identity. Replace `MyIdentity` with the name of your developer identity:
 
 ```sh
 dfx start --background
@@ -162,7 +140,7 @@ If you manually converted ICP tokens into cycles, and your cycles wallet doesn't
 dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --network ic --amount 1.005
 ```
 
-This command converts an additional 1.005 ICP tokens to cycles for the 5o6tz-saaaa-aaaaa-qaacq-cai cycles wallet identifier. The command will return output such as:
+This command converts an additional 1.005 ICP tokens to cycles for the 5o6tz-saaaa-aaaaa-qaacq-cai cycles wallet identifier.
 :::
 
 Now, let's use your dapp! To access the dapp's frontend, first you need to get the canister's URL. To get this, run the command:

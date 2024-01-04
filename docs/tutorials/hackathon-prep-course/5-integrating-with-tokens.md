@@ -6,6 +6,22 @@ When building dapps on the Internet Computer, integrating tokens into your dapp 
 
 This tutorial will cover the different types of tokens and how to interact with them. 
 
+## Fungible and non-fungible tokens
+
+A **fungible token** is a type of token that can always be transferred 1:1 for another token of the same type.
+
+A **non-fungible token** (NFT) is a tokenized asset that is assigned a unique identifier and cannot be exchanged 1:1 for another token of the same time, as the value of each non-fungible token may vary. 
+
+For example, 1 USD can always be exchanged for 1 USD. However, 1 unique painting cannot be exchanged for another unique painting, since the value of the two paintings will be different. On the Internet Computer, ICP is a fungible token that can always be exchanged for ICP of equal value. However, an non-fungible token deployed on ICP cannot be traded 1:1 with another NFT token deployed on ICP.
+
+On the Internet Computer, there are several different token standards for both fungible tokens and non-fungible tokens. Some of these standards include:
+
+- **ICRC-1:** A fungible token standard used to create custom fungible tokens on the Internet Computer. The ICRC-1 standard was designed to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1)
+
+- **ICRC-2:** The ICRC-2 standard is an extension of the ICRC-1 standard that enables the approve-transfer-from pattern that became popular in the Ethereum ecosystem with the ERC-20 token standard. It specifies a way for an account owner to delegate token transfers to a third party, usually a canister, on the owner's behalf. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)
+
+- **ICRC-7:** A new standard for non-fungible tokens on the Internet Computer. It is designed to be a minimal standard for allowing an NFT collection to be deployed on ICP. In an NFT collection, each NFT may have unique metadata information. This metadata may include a unique image, traits or tags, or a description describing the NFT. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md)
+
 ## ICP 
 
 ICP is the native token of the Internet Computer Protocol. ICP tokens have three key functionalities on the protocol:
@@ -17,6 +33,8 @@ ICP is the native token of the Internet Computer Protocol. ICP tokens have three
 - Rewarding NNS participants by providing ICP tokens to users that stake ICP in neurons and actively participate in voting on proposals. 
 
 To interact with ICP tokens, you will need to use a specialized canister known as the ICP ledger. The ledger canister is used to hold ledger accounts and record a traceable history of all ICP transactions.
+
+The ICP ledger supports the ICRC-1 and ICRC-2 standards, but also implements it's own standard that has significant differences when compared to the ICRC-1 and ICRC-2 standards, most notably around the notion of an `Account`. 
 
 :::info
 The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, the ICRC ledger will need to be used. 
@@ -37,26 +55,6 @@ Within the ICP ledger canister, there are three types of transactions:
 - **Burning**: A burning transaction eliminates a token from existence.
 
 - **Transferring**: A transferring transaction transfers ICP between accounts.
-
-## Fungible and non-fungible tokens
-
-A **fungible token** is a type of token that can always be transferred 1:1 for another token of the same type.
-
-A **non-fungible token** (NFT) is a tokenized asset that is assigned a unique identifier and cannot be exchanged 1:1 for another token of the same time, as the value of each non-fungible token may vary. 
-
-For example, 1 USD can always be exchanged for 1 USD. However, 1 unique painting cannot be exchanged for another unique painting, since the value of the two paintings will be different. On the Internet Computer, ICP is a fungible token that can always be exchanged for ICP of equal value. However, an non-fungible token deployed on ICP cannot be traded 1:1 with another NFT token deployed on ICP.
-
-On the Internet Computer, there are several different token standards for both fungible tokens and non-fungible tokens. Some of these standards include:
-
-- **ICRC-1:** A fungible token standard used to create custom fungible tokens on the Internet Computer. The ICRC-1 standard was designed to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1)
-
-- **ICRC-2:** The ICRC-2 standard is an extension of the ICRC-1 standard that enables the approve-transfer-from pattern that became popular in the Ethereum ecosystem with the ERC-20 token standard. It specifies a way for an account owner to delegate token transfers to a third party, usually a canister, on the owner's behalf. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)
-
-- **ICRC-7:** A new standard for non-fungible tokens on the Internet Computer. It is designed to be a minimal standard for allowing an NFT collection to be deployed on ICP. In an NFT collection, each NFT may have unique metadata information. This metadata may include a unique image, traits or tags, or a description describing the NFT. A detailed account of the standard can be found [here.](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md)
-
-:::info
-An ICRC standard can be used for creating anything on the Internet Computer, not just fungible tokens such as the ICRC-1 and ICRC-2 token standards.
-:::
 
 ### Deploying the ICP ledger locally
 
@@ -151,7 +149,7 @@ You can learn more about the ICRC-2 standard [here](https://github.com/dfinity/I
 
 ## Switching between tokens
 
-To switch between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH, you can use a tool such as [ICPSwap.](https://app.icpswap.com/swap)
+To switch between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH, you can use a tool such as [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/).
 
 On ICPSwap, you can connect to the dapp with several different wallet types, such as Internet Identity, NFID, Bitfinity and more:
 

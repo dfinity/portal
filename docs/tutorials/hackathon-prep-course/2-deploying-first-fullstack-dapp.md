@@ -119,7 +119,7 @@ You can learn more about identities and principals [here](/docs/current/tutorial
 
 ### Cycles and cycles wallets
 
-Cycles are used to measure and pay for the resources that are used by a canister, such as the memory, storage, and compute power. For canisters deployed locally, cycles are not charged for the resources used to run that canister on your local hardware. However, once a canister is deployed to the mainnet, cycles are charged to pay for the resources being used on the network. This is known as the ICP's 'reverse gas model', which enables developers to pay for the gas costs of their dapp, rather than end-users having to pay gas fees when using a dapp.
+Cycles are used to measure and pay for the resources that are used by a canister, such as the memory, storage, and compute power. For canisters deployed locally, cycles can be fabricated. However, once a canister is deployed to the mainnet, real cycles are charged to pay for the resources being used on the network. This is known as the ICP's 'reverse gas model', which enables developers to pay for the gas costs of their dapp, rather than end-users having to pay gas fees when using a dapp. This helps aid in onboarding new users onto dapps deployed on ICP, since there aren't prerequisites such as needing a cryptowallet containing tokens to interact with a dapp. 
 
 To get cycles, you can convert ICP tokens into cycles, or you can obtain a [cycles coupon](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#acquiring-cycles-using-a-cycles-coupon) if you haven't previously received one before. 
 
@@ -168,10 +168,6 @@ Before you can deploy your first dapp on ICP, you will need to set up your devel
 
 - [x] Download and install [git](https://git-scm.com/downloads).
 
-- [x] Download and install the React framework with the command `npm install --save react react-dom`. 
-
-- [x] Download and install the TypeScript language compiler with the command `npm install --save-dev typescript ts-loader`.
-
 - [x] Download and install [Node.js](https://nodejs.org/en).
 
 Then, to download the template project, first create a new directory, then download the project template using the commands:
@@ -179,7 +175,7 @@ Then, to download the template project, first create a new directory, then downl
 ```
 mkdir react-project
 cd react-project
-npx degit rvanasa/vite-react-motoko
+npx degit rvanasa/vite-react-motoko react-project
 ```
 
 Then you will need to start a local replica with `dfx` using the command:
@@ -214,6 +210,10 @@ URLs:
   Backend canister via Candid interface:
     backend: http://127.0.0.1:4943/?canisterId=a4tbr-q4aaa-aaaaa-qaafq-cai&id=asrmz-lmaaa-aaaaa-qaaeq-cai
 ```
+
+In this example, the frontend of the dapp is deployed to a canister locally. To make changes to the frontend canister, the canister must be redeployed each time a change is made to see the changes reflected at the canister's web browser URL. For quicker feedback loops for changes, this example uses a local development server that features hot module reloading. 
+
+For backend canisters, [`mo-dev`](https://github.com/dfinity/motoko-dev-server) enables hot module reloading for backend canisters, which removes the need to redeploy a backend canister to see changes reflected. 
 
 Before interacting with the React interface running in the frontend canister, start the local development server with the command:
 

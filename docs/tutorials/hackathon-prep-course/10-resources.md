@@ -4,6 +4,8 @@ To learn more about ICP, a specific feature or workflow, or get help from other 
 
 - [ICP developer documentation.](/docs/current/home)
 
+- [ICP Zero to Dapp Hackathon.](https://www.encode.club/zero-to-dapp-hackathon)
+
 - [ICP developer journey tutorial series.](https://internetcomputer.org/docs/current/tutorials/developer-journey/)
 
 - [ICP developer journey video series.](https://www.youtube.com/watch?v=oBUpJ4CqmN0)
@@ -16,7 +18,9 @@ To learn more about ICP, a specific feature or workflow, or get help from other 
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

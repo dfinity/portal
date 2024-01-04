@@ -158,6 +158,7 @@ There are a few ways to top up a canister:
 - Using ICP in your account.
 - Using cycles in your cycles wallet.
 - Using the NNS dapp web UI. 
+- Using a fiat option through [Cycle.express](https://cycle.express/).
 - Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](/docs/current/developer-docs/setup/cycles/cycles_management_services).
 
 ### Using ICP
