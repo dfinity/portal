@@ -58,7 +58,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 - [Developer Journey video series](https://www.youtube.com/watch?v=3WpP8ux1zX0).
 
-- [ICP Zero to Dapp workshop series](https://www.youtube.com/watch?v=P3ngpMedCTE).
+- [ICP Zero to Dapp workshop series](https://youtube.com/playlist?list=PLfEHHr3qexv8hKOJBV1XR10XhUKkyPIBp&si=KqnDuEgJZt51q4e4).
 
 - [Motoko Bootcamp](https://www.motokobootcamp.com/).
 
