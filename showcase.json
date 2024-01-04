@@ -111,13 +111,28 @@
     "name": "Trax",
     "oneLiner": "Trax is the world's first artist and fan-owned music platform.",
     "website": "https://trax.so/",
-    "tags": 
-      ["SocialFi"
+    "tags": [
+      "SocialFi",
+      "DAO"
     ],
     "twitter": "https://twitter.com/onlyontrax",
     "description": "Trax is the world's first artist and fan-owned music platform.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/trax_logo.jpeg"
+  },
+
+  {
+    "id": "golddao",
+    "name": "Gold DAO",
+    "oneLiner": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
+    "website": "https://twitter.com/gldrwa",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "twitter": "https://www.gold-dao.org/",
+    "description": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
+    "logo": "/img/showcase/golddao_logo.png"
   },
 
 
