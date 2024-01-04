@@ -292,7 +292,7 @@ You can learn more about agents in the documentation [here](/docs/current/develo
 
 On ICP, canisters can communicate directly with external servers or other blockchains through the use of HTTPS outcalls. This is a unique feature of ICP, since traditionally, other blockchain networks are only able to communicate with external servers through blockchain oracles, or third-party entities that relay calls from the blockchain to an external server, then route the response back to the blockchain. 
 
-HTTPS outcalls allow smart contract canisters on ICP to make calls directly to external HTTPS servers. Then, the response of these HTTPS calls can be used by the smart contract in a safe way that doesn't result in the a replica state divergence. 
+HTTPS outcalls allow smart contract canisters on ICP to make calls directly to external HTTPS servers. Then, the response of these HTTPS calls can be used by the smart contract in a safe way that doesn't result in a replica state divergence. 
 
 HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries required for the canister to communicate with external servers. Using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional 'Web 2' services.
 
