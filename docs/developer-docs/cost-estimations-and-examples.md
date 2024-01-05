@@ -1,22 +1,24 @@
-# Cost estimations and examples
+# Cycles cost estimations and examples
 
-### Cost estimation and examples
-Briefly explain the generic parameters that are used for estimating cycle usage. Group them as per the “transaction groups” above: Messaging, Execution, Storage, Special features.
-Explain how you compute an amount of cycles based on the input parameters. Now, they seem to be falling from the sky.
-Introduce the example projects. What are their cost drivers? What are important considerations?
-I would not show the endless list of parameters for every project but rather add a table summarizing transaction costs vs. example projects with the total cost per project and year. Now, no total is provided. It would be nice if we could keep the Storage / Execution / Messaging / Outcalls sub-sections in the table.
-(subsection) Local development and instruction count
-In the table we talk about local development but actually there is no cycle cost there, isn’t it? Let’s explain that. We should also point to tools and best practices for counting instructions and optimizing cost.
+## Overview
 
-Considerations:
-Where does the resource reservation mechanism fit it? Under storage transactions?
-As a developer, I would expect a pointer to instructions for topping up canisters, monitoring cycle usage, etc. I don’t think this is content for the page we are discussing here but at least we should point to such related information.
+To get a rough estimate of how much your project may cost, below are a few common project architectures and their estimated monthly cost in cycles. These estimates are broken down into the following transaction groups:
 
+- **Messaging**: A message transaction refers to calls that are made to a canister's methods. Messaging costs depend on the type of call being sent (query, update, inter-canister, etc), the size of the message's request and response bytes, and the total amount of messages a canister sends and receives. 
 
+- **Execution**: An execution transaction refers to tasks that a canister executes and the number of instructions executed per task and per call.
 
+- **Storage**: A storage transaction refers to the amount of data the canister stores. 
+
+- **Special features**: Special feature transactions include HTTPS outcalls, transactions using the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md), and transactions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md). 
+
+For detailed information on these different transaction types and what their contributing cost drivers are, please see the [cycles and transaction costs](cycles-and-transaction-costs.md) documentation page. It is recommended that you read that page  as a prerequisite to reading this page.
 
 ## Units and fiat value
-Key message: 1 T cycles cost 1 XDR
+
+The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where **1 trillion cycles equals 1 XDR**. 
+
+This documentation will use the following units to measure and calculate the number of cycles and their associated fiat value:
 
 | Abbr.  | Name      | In numbers   | Cycles XDR value  | Cycles USD value  |
 |---------------------------------------------------------------------------|
@@ -27,74 +29,70 @@ Key message: 1 T cycles cost 1 XDR
 | –      | (one)     | 1                 | 0.000000000001 | 0.00000000000134|
 
 
+## How are the amount of cycles charged to a canister computed?
 
-## Overview: Estimated cost of sample project architectures
+When a canister is deployed on ICP, the amount of cycles charged to the canister are computed using the following input parameters:
 
-To get a rough estimate of how much your project may cost, below are a few common project architectures and their estimated monthly cost in cycles. For detailed breakdowns of each cycles cost, please refer to the chart below in [Details: Cost of compute and storage transactions on the Internet Computer](#details-cost-of-compute-and-storage-transactions-on-the-internet-computer).
+- Nodes in the subnet the canister is deployed to: If deployed locally, this number is 1. If deployed on the mainnet, this number is either 13 or 34.
+- Amount of users: The total number of users that interact with the canister. 
+- Daily active users: The total number of users that interact with the canister daily.
+- Daily messages per active user: The total number of messages sent to the canister that each active user generates.
+- Request and response bytes per message: The size of the request and response bytes per message. 
+- Instructions executed per message: The number of instructions that are executed in response to each message. 
+- Calls per message: The number of calls that are triggered per message. 
+- Request and response bytes per call: The size of the request and response bytes per call.
+- Instructions per call: The number of instructions that are executed per call.
+- Daily tasks: The number of daily tasks that the canister executes. 
+- Instructions executed per task: The number of instructions that are executed per daily task.
+- Daily HTTPS outcalls: The number of daily HTTPS outcalls the canister makes.
+- Request bytes per HTTPS outcall: The size of the request bytes per HTTPS outcall.
+- Response bytes per HTTPS outcall: The size of the response bytes per HTTPS outcall.
+- Storage bytes per user: The amount of data that is stored for each user.
+- User-independent storage bytes: The amount of data the canister stores, independent from the storage used per user. 
 
-:::info
-The estimates below are simply for demonstrating what different sample architectures may cost. The actual cost of your project will vary based on the exact number of resources and canister calls that are used. Therefore, the estimates below should only be used for gaining an idea of what a project may cost, but should not be used for budgeting exact costs. For exact costs, you can calculate using the chart below for more details: [Details: Cost of compute and storage transactions on the Internet Computer](#details-cost-of-compute-and-storage-transactions-on-the-internet-computer).
+HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md) or makes transactions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md), there are additional cycles costs for these special feature transactions.
+
+
+
+Introduce the example projects. What are their cost drivers? What are important considerations?
+I would not show the endless list of parameters for every project but rather add a table summarizing transaction costs vs. example projects with the total cost per project and year. Now, no total is provided. It would be nice if we could keep the Storage / Execution / Messaging / Outcalls sub-sections in the table.
+(subsection) 
+In the table we talk about local development but actually there is no cycle cost there, isn’t it? Let’s explain that. We should also point to tools and best practices for counting instructions and optimizing cost.
+
+
+## Estimated cost of sample project architectures
+
+
+:::caution
+The estimates below are simply for demonstrating what different sample architectures may cost. The actual cost of your project will vary based on the exact number of resources and canister calls that are used. Therefore, the estimates below should only be used for gaining an idea of what a project may cost, but should not be used for budgeting exact costs. For exact costs, you can calculate using the chart here for more details: [Cycles and transaction costs](cycles-and-transaction-costs.md).
 :::
 
 :::info
-These estimates use a 13-node subnet. Costs will be different if deployed on a 34-node subnet. Please refer to the chart below for more details: [Details: Cost of compute and storage transactions on the Internet Computer](#details-cost-of-compute-and-storage-transactions-on-the-internet-computer).
+These estimates use a 13-node subnet. Costs will be different if deployed on a 34-node subnet. Please refer to the chart here for more details: [Cycles and transaction costs](cycles-and-transaction-costs.md).
 :::
+
 
 ### Single canister
 
-Consider a single canister that provides a service or function that is used by very few users called by other canisters through inter-canister calls with the following metrics:
+The following is the cost estimate for a single canister that provides a service or function that is used by 5 users that each stores 100KB of data, is called by other canisters through inter-canister calls, and stores 5GB of data. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 778_713, with 100 daily messages generated per user per day. This canister also performs 10_000 daily tasks, with 1_0000_000 instructions executed per task. This project does not use HTTPS outcalls or other special features.
 
-- Nodes in the subnet the canister is deployed to: 13
-- Amount of users: 5
-- Daily active users: 5
-- Daily messages per active user: 100
-- Request and response bytes per message: 351
-- Instructions executed per message: 778713
-- Calls per message: 1
-- Request and response bytes per call: 300
-- Instructions per call: 10000
-- Daily tasks: 10000
-- Instructions executed per task: 10000000
-- Daily HTTP outcalls: 0
-- Request bytes per HTTP outcall: 0
-- Response bytes per HTTP outcall: 0
-- Storage bytes per user: 100000
-- User-independent storage bytes: 5000000000
-
-The estimated cost monthly in USD for a project with these metrics would be:
-
-- Storage	$2.05 USD (= 1.53e+12 cycles).
-- Execution	$1.88 USD (= 1.40e+12 cycles).
-- Messaging	$0.03 USD (= 1.90e+10 cycles).
-- HTTP outcalls	$0 USD (= 0.00e+0 cycles).
-
+| Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
+| ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
+| Messaging         | 19B                      | $0.03 USD             | 228B                    | $0.36 USD            |
+| Execution         | 1.40T                    | $1.88 USD             | 16.8T                   | $22.56 USD           |
+| Storage           | 1.53T                    | $2.05 USD             | 18.36T                  | $24.60 USD           |
+| HTTPS outcalls    | 0                        | $0 USD                | 0                       | $0 USD               |
 
 ### Simple static website using a frontend canister
 
-Consider a simple static website that uses a single frontend canister for the website's assets, that is not called by other canisters or performs HTTPS outcalls, with the following metrics: 
+The following is the cost estimate for a simple static website that uses a single frontend canister for the website's assets that is not called by other canisters or performs HTTPS outcalls. It stores 5GB of data, has 100 total users and 10 daily active users, that each generate 50 messages per day. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 778_713. This project does not use HTTPS outcalls or other special features.
 
-- Number of nodes in the subnet the canister is deployed to: 13
-- Number of all users: 100
-- Number of daily active users: 10
-- Number of daily messages per active user: 50
-- Number of request and response bytes per message: 350
-- Number of instructions executed per message: 778713
-- Number of calls per message: 0
-- Number of request and response bytes per call: 0
-- Number of instructions per call: 0
-- Number of daily tasks: 100
-- Number of instructions executed per task: 1000000
-- Number of daily HTTP outcalls: 0
-- Number of request bytes per HTTP outcall: 0
-- Number of response bytes per HTTP outcall: 0
-- Number of storage bytes per user: 0
-- Number of user-independent storage bytes: 5000000000
-
-The estimated cost monthly in USD for a project with these metrics would be:
-- Storage	$2.05 USD (= 1.53e+12 cycles).
-- Execution	$0.02 USD (= 1.65e+10 cycles).
-- Messaging	$0.01 USD (= 1.06e+10 cycles).
-- HTTP outcalls	$0 USD (= 0.00e+0 cycles).
+| Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
+| ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
+| Messaging         | 1.06B                    | $0.01 USD             | 12.72B                  | $0.12 USD            |
+| Execution         | 1.65B                    | $0.02 USD             | 19.8B                   | $0.24 USD            |
+| Storage           | 1.53T                    | $2.05 USD             | 18.36T                  | $24.60 USD           |
+| HTTPS outcalls    | 0                        | $0 USD                | 0                       | $0 USD               |
 
 :::caution
 When considering developing a website on ICP, the estimated cost above might appear higher than the 'free tier' of a traditional Web2 service. However, there are several important benefits to consider that traditional Web2 web hosting services often hold behind additional paywalls, such as:
@@ -116,84 +114,39 @@ On ICP, the fees broken down in this document are the only fees that are charged
 
 ### Simple smart contract web dapp using a frontend canister and backend canister
 
-Consider a simple smart contract powered web dapp that uses two canisters (a backend canister for the dapp's functionality and a frontend canister for the user interface) with the following metrics:
+The following is the cost estimate for a simple smart contract powered web dapp that uses two canisters: a backend canister for the dapp's functionality and a frontend canister for the user interface. This dapp has 100 users, 10 of which are daily active users that generate 1_000 messages each per day. The average number of request and response bytes per message is 245, and the number of instructions executed per message is 1_442_185. The dapp stores 100KB of data per user, and stores 10GB of user-independent data. This project does not use HTTPS outcalls or other special features.
 
-- Number of nodes in the subnet the canister is deployed to: 13
-- Number of all users: 100
-- Number of daily active users: 10
-- Number of daily messages per active user: 1000
-- Number of request and response bytes per message: 350
-- Number of instructions executed per message: 778713
-- Number of calls per message: 5
-- Number of request and response bytes per call: 1000
-- Number of instructions per call: 77000
-- Number of daily tasks: 1000
-- Number of instructions executed per task: 10000000
-- Number of daily HTTP outcalls: 0
-- Number of request bytes per HTTP outcall: 0
-- Number of response bytes per HTTP outcall: 0
-- Number of storage bytes per user: 100000
-- Number of user-independent storage bytes: 10000000000
+| Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
+| ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
+| Messaging         | 901B                     | $1.21 USD             | 1.0812T                 | $14.52 USD           |
+| Execution         | 1.34T                    | $1.79 USD             | 16.08T                  | $21.48 USD           |
+| Storage           | 3.07T                    | $4.11 USD             | 36.84T                  | $49.32 USD           |
+| HTTPS outcalls    | 0                        | $0 USD                | 0                       | $0 USD               |
 
-The estimated cost monthly in USD for a project with these metrics would be:
-- Storage	$4.11 USD (= 3.07e+12 cycles).
-- Execution	$1.79 USD (= 1.34e+12 cycles).
-- Messaging	$1.21 USD (= 9.01e+11 cycles).
-- HTTP outcalls	$0 USD (= 0.00e+0 cycles).
 
 ### Social media dapp with two canisters
 
-Consider a project that creates a social media dapp using two canisters with around 200 monthly active user accounts that interact with the dapp monthly with the following metrics:
+The following is the cost estimate for a project that creates a social media dapp using two canisters with 200 user accounts, 50 of which are active daily and generate 6_127 messages each per day. The average number of request and response bytes per message is 245, and the number of instructions executed per message is 1_442_185. This project also uses 2000 HTTPS outcalls per day, with an average of 250 request and response bytes per outcall. Furthermore, the project stores 100KB of data per user 25GB of user-independent storage. 
 
-- Number of nodes in the subnet the canister is deployed to: 13
-- Number of all users: 200
-- Number of daily active users: 50
-- Number of daily messages per active user: 6127
-- Number of request and response bytes per message: 245
-- Number of instructions executed per message: 1442185
-- Number of calls per message: 5
-- Number of request and response bytes per call: 1000
-- Number of instructions per call: 7
-- Number of daily tasks: 1000
-- Number of instructions executed per task: 1000000
-- Number of daily HTTP outcalls: 2000
-- Number of request bytes per HTTP outcall: 250
-- Number of response bytes per HTTP outcall: 250
-- Number of storage bytes per user: 100000
-- Number of user-independent storage bytes: 25000000000
 
-The estimated cost monthly in USD for a project with these metrics would be:
-- Storage	$10.28 USD (= 7.67e+12 cycles).
-- Execution	$50.74 USD (= 3.79e+13 cycles).
-- Messaging	$34.38 USD (= 2.57e+13 cycles).
-- HTTP outcalls	$4.26 USD (= 3.18e+12 cycles).
+| Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
+| ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
+| Messaging         | 25.7T                    | $34.38 USD            | 308.4T                  | $412.56 USD          |
+| Execution         | 3.79T                    | $50.74 USD            | 45.48T                  | $608.88 USD          |
+| Storage           | 7.67T                    | $10.28 USD            | 92.04T                  | $123.36 USD          |
+| HTTPS outcalls    | 3.18T                    | $4.26 USD             | 38.16T                  | $51.12 USD           |
+
 
 ### Decentralized service using threshold ECDSA and HTTPS outcalls
 
-Consider a project that creates a decentralized service that makes several thousand HTTPS outcalls to services outside ICP with the following metrics:
+The following is the cost estimate for a project that creates a decentralized service with 5_000 users, 100 of which are active daily and generate 4_400 messages each per day. The average number of request and response bytes per message is 500, and the number of instructions executed per message is 437_253. This project also uses 3691 HTTPS outcalls per day, with an average of 332 request and response bytes per outcall. Furthermore, the project stores 100KB of data per user 150GB of user-independent storage. 
 
-- Number of nodes in the subnet the canister is deployed to: 13
-- Number of all users: 5000
-- Number of daily active users: 100
-- Number of daily messages per active user: 4400
-- Number of request and response bytes per message: 500
-- Number of instructions executed per message: 437253
-- Number of calls per message: 50
-- Number of request and response bytes per call: 1000
-- Number of instructions per call: 10000
-- Number of daily tasks: 1000
-- Number of instructions executed per task: 1000000
-- Number of daily HTTP outcalls: 3691
-- Number of request bytes per HTTP outcall: 332
-- Number of response bytes per HTTP outcall: 332
-- Number of storage bytes per user: 100000
-- Number of user-independent storage bytes: 150000000000
-
-The estimated cost monthly in USD for a project with these metrics would be:
-- Storage	$61.83 USD (= 4.61e+13 cycles).
-- Execution	$538.90 USD (= 4.02e+14 cycles).
-- Messaging	$265.36 USD (= 1.98e+14 cycles).
-- HTTP outcalls	$8.06 USD (= 6.01e+12 cycles).
+| Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
+| ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
+| Messaging         | 198T                     | $265.36 USD           | 2_376T                  | $3_184.32 USD        |
+| Execution         | 402T                     | $538.90 USD           | 4_824T                  | $6_466.80 USD        |
+| Storage           | 46.1T                    | $61.83 USD            | 553.2T                  | $741.96 USD          |
+| HTTPS outcalls    | 6.01T                    | $8.06 USD             | 72.12T                  | $96.72 USD           |
 
 ::caution
 This example resembles that of an enterprise-level project that expects the application will make about 1500 HTTPS outcalls per day. For reference, the [Orally](https://orally.network/) enterprise application on ICP averages between 35_000 and 46_000 HTTPS outcalls per month. 
@@ -203,30 +156,15 @@ An enterprise-level project of this size could potentially cost several thousand
 
 ### Instant messaging dapp with thousands of canisters
 
-Consider a project that creates a messaging dapp where each user's data is stored in its own canister, there are potentially thousands of canisters that each make thousands of inter-canister calls to facilitate messaging between two or more users with the following metrics:
+The following is the cost estimate for a project that creates a messaging dapp where each user's data is stored in its own canister with 15_000 total users. 1_500 of these users are active daily, generating 5_700 messages each per day. The average number of request and response bytes per message is 624, and the number of instructions executed per message is 74_983. This project does not use HTTPS outcalls or other special features. Furthermore, the project stores 10MB of data per user 750GB of user-independent storage. 
 
-- Number of nodes in the subnet: 13
-- Number of all users: 15000
-- Number of daily active users: 1500
-- Number of daily messages per active user: 5700
-- Number of request and response bytes per message: 624
-- Number of instructions executed per message: 74983
-- Number of calls per message: 1
-- Number of request and response bytes per call: 300
-- Number of instructions per call: 10000
-- Number of daily tasks: 10000
-- Number of instructions executed per task: 10000000
-- Number of daily HTTP outcalls: 0
-- Number of request bytes per HTTP outcall: 0
-- Number of response bytes per HTTP outcall: 0
-- Number of storage bytes per user: 10000000
-- Number of user-independent storage bytes: 750000000000
 
-The estimated cost monthly in USD for a project with these metrics would be:
-- Storage	$369.73 USD (= 2.76e+14 cycles).
-- Execution	$511.89 USD (= 3.82e+14 cycles).
-- Messaging	$622.12 USD (= 4.64e+14 cycles).
-- HTTP outcalls	$0 USD (= 0.00e+0 cycles).
+| Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
+| ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
+| Messaging         | 464T                     | $622.12 USD           | 5_568T                  | $7_465.44 USD        |
+| Execution         | 382T                     | $511.89 USD           | 4_584T                  | $6_142.68 USD        |
+| Storage           | 276T                     | $369.73 USD           | 3_312T                  | $4_436.76 USD        |
+| HTTPS outcalls    | 0                        | $0.00 USD             | 0                       | $0.00 USD            |
 
 :::caution
 In this example, a new canister is created for each user. That means, each time a new user signs up for the dapp, a cost of 100_000_000_000 is charged. This additional cost should be considered if choosing an architecture similar to this, as it can become expensive quickly.
