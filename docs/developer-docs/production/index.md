@@ -16,7 +16,7 @@ This page is an overview of the topic. For specific steps and troubleshooting in
 * [Large web assembly modules](./larger-wasm.md).
 * [Custom domains](custom-domain/custom-domain.md).
 * [Resource limits](./resource-limits.md).
-* [Computation and storage cost](../gas-cost.md).
+* [Computation and storage cost](../cycles-and-transaction-costs.md).
 * [Sharing links on Social Media](./social-sharing.md).
 
 ## Demonstrating trust

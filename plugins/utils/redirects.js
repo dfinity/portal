@@ -177,6 +177,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
+  /docs/current/developer-docs/gas-cost /docs/current/developer-docs/cycles-and-transaction-costs
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

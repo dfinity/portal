@@ -35,4 +35,4 @@ ICP can always be converted to cycles using the current price of ICP measured in
 
 **Storing one GB of data costs around 5$ per year, and for just one cent you can perform around 10_000 transactions. **
 
-To see the full cost table, go [here](./gas-cost.md).
+To see the full cost table, go [here](./cycles-and-transaction-costs.md).

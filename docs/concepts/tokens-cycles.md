@@ -48,7 +48,7 @@ The costs associated with communication, computation, and storage are more likel
 
 Cycles are not a currency; in particular cycles cannot be converted back to value in the form of Internet Computer Protocol tokens, but can be transferred between canisters to enable canisters to pay for operations.
 
-For exact costs see the tables in [computation and storage costs](/developer-docs/gas-cost.md).
+For exact costs see the tables in [computation and storage costs](/developer-docs/cycles-and-transaction-costs.md).
 
 ## Token value and volatility
 

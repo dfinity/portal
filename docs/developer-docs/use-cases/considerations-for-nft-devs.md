@@ -62,7 +62,7 @@ There are a few foot guns that could make your canister more expensive than you�
 
 Another must-read is the general article on [good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). 
 
-To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://forum.dfinity.org/t/introducing-performance-counter-on-the-internet-computer/14027) to profile your canisters even before going live. Furthermore, a list of all costs on ICP can be found [here](../gas-cost.md). 
+To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://forum.dfinity.org/t/introducing-performance-counter-on-the-internet-computer/14027) to profile your canisters even before going live. Furthermore, a list of all costs on ICP can be found [here](../cycles-and-transaction-costs.md). 
 
 
 ### Implement mechanisms to backup and restore state
