@@ -74,9 +74,9 @@ In the top-level directory of your repository, at the source of add a `dfx.json`
         },
         "source": ["out"],
         "type": "assets"
-      },
-      "output_env_file": ".env"
-    }
+      }
+    },
+    "output_env_file": ".env"
 }
 ```
 
