@@ -3307,6 +3307,26 @@
         ],
         "usesInternetIdentity": true,
         "github": "https://github.com/id-daniel-mccoy/asset-app"
-    }
+    },
+  {
+    "name": "Hobbi",
+    "description": "With Hobbi, you can create a profile and record all the multimedia content you consume. Whether it's a movie, a book, or even a video game, register and share your profile with whomever you want.",
+    "website": "https://hobbi.me",
+    "logo": "/img/showcase/hobbi_logo.png",
+    "screenshots": [
+      "/img/showcase/hobbi_screenshot.png"
+    ],
+    "display": "Normal",
+    "id": "hobbi",
+    "oneLiner": "Hobbi, the web3 social platform",
+    "stats": "100% on chain",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Zona-Tres/Hobbi/",
+    "submittableId": "36099620"
+  }
 ]
 
