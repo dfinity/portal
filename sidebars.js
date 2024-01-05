@@ -116,26 +116,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Hackathon prep course",
-      link: {
-        type: "doc",
-        id: "tutorials/hackathon-prep-course/index",
-      },
-      items: [
-        "tutorials/hackathon-prep-course/what-is-icp",
-        "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
-        "tutorials/hackathon-prep-course/exploring-the-backend",
-        "tutorials/hackathon-prep-course/exploring-the-frontend",
-        "tutorials/hackathon-prep-course/integrating-with-tokens",
-        "tutorials/hackathon-prep-course/authentication",
-        "tutorials/hackathon-prep-course/obtaining-cycles",
-        "tutorials/hackathon-prep-course/managing-canisters",
-        "tutorials/hackathon-prep-course/sample-starter-projects",
-        "tutorials/hackathon-prep-course/resources",
-      ],
-    },
-    {
-      type: "category",
       label: "Sample projects",
       link: {
         type: "doc",
