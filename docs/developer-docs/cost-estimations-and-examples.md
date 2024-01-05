@@ -52,16 +52,7 @@ When a canister is deployed on ICP, the amount of cycles charged to the canister
 
 HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md) or makes transactions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md), there are additional cycles costs for these special feature transactions.
 
-
-
-Introduce the example projects. What are their cost drivers? What are important considerations?
-I would not show the endless list of parameters for every project but rather add a table summarizing transaction costs vs. example projects with the total cost per project and year. Now, no total is provided. It would be nice if we could keep the Storage / Execution / Messaging / Outcalls sub-sections in the table.
-(subsection) 
-In the table we talk about local development but actually there is no cycle cost there, isn’t it? Let’s explain that. We should also point to tools and best practices for counting instructions and optimizing cost.
-
-
 ## Estimated cost of sample project architectures
-
 
 :::caution
 The estimates below are simply for demonstrating what different sample architectures may cost. The actual cost of your project will vary based on the exact number of resources and canister calls that are used. Therefore, the estimates below should only be used for gaining an idea of what a project may cost, but should not be used for budgeting exact costs. For exact costs, you can calculate using the chart here for more details: [Cycles and transaction costs](cycles-and-transaction-costs.md).
