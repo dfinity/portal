@@ -20,8 +20,8 @@ const redirects = `
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
-  /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
-  /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/gas-cost
+  /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/cycles-and-transaction-costs
+  /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/cycles-and-transaction-costs
   /docs/current/ic-overview  /docs/current/home
   /docs/download /docs/current/developer-docs/setup/install/
   /docs/http-middleware /docs/current/home
@@ -48,7 +48,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
-  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
+  /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/cycles-and-transaction-costs
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/setup/install/
@@ -177,7 +177,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
-  /docs/current/developer-docs/cycles-and-transaction-costs /docs/current/developer-docs/gas-cost 
+  /docs/current/developer-docs/gas-cost /docs/current/developer-docs/cycles-and-transaction-costs 
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
