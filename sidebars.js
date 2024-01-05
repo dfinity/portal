@@ -184,7 +184,8 @@ const sidebars = {
           items: [
             "concepts/what-is-ic",
             "concepts/canisters-code",
-            "developer-docs/gas-cost",
+            "developer-docs/cycles-and-transaction-costs",
+            "developer-docs/cost-estimations-and-examples",
             "concepts/governance",
             "concepts/nodes-subnets",
             "concepts/tokens-cycles",
