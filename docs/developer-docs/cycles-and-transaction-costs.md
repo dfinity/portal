@@ -21,6 +21,7 @@ Understanding how cycles costs are incurred and what the associated fiat value o
 - [Monitoring canister cycle usage](#monitoring-canister-cycle-usage)
 - [Getting cycles back from a canister](#getting-cycles-back-from-a-canister)
 - [Topping up canisters](#topping-up-canisters)
+- [Counting instructions](#counting-instructions)
 - [Cost estimations and examples](cost-estimations-and-examples.md)
 
 ## Units and fiat value
