@@ -4,18 +4,18 @@
 
 When a smart contract canister is deployed to ICP, the resources that the canister uses are paid for using cycles. These resources include storage, messaging, and execution. To obtain cycles, ICP tokens can be converted into cycles.
 
-Understanding how cycle costs are incurred and what the associated fiat value of these costs is is important for developers to understand so they can budget or plan accordingly for their application. This guide will cover the following topics:
+Understanding how cycle costs are incurred and the associated fiat value of these costs is important for developers to understand so they can budget and plan accordingly for their application. This guide will cover the following topics:
 
 - [Units and fiat value](#units-and-fiat-value)
 - [The ICP reverse gas model](#the-icp-reverse-gas-model)
-- [How do ICP costs compare to the EVM gas model?](#how-do-icp-costs-compare-to-the-evm-gas-model)
+    - [How do ICP costs compare to the EVM gas model?](#how-do-icp-costs-compare-to-the-evm-gas-model)
 - [Transactions](#transactions)
-- [Canister creation](#canister-creation)
-- [Messaging](#messaging)
-- [Execution](#execution)
-- [Storage](#storage)
-- [Special features](#special-features)
-- [Replication](#replication)
+    - [Canister creation](#canister-creation)
+    - [Messaging](#messaging)
+    - [Execution](#execution)
+    - [Storage](#storage)
+    - [Special features](#special-features)
+        - [Replication](#replication)
 - [Who is responsible for paying cycles?](#who-is-responsible-for-paying-cycles)
 - [Cycles price breakdown](#cycles-price-breakdown)
 - [Monitoring canister cycle usage](#monitoring-canister-cycle-usage)
@@ -32,20 +32,20 @@ This documentation will use the following units to measure and calculate the num
 
 | Abbreviation  | Name      | In numbers   | Cycles XDR value  | Cycles USD value |
 |-------------- | --------- | ------------ | ----------------- | ---------------- |
-| T             | Trillion  | 1_000_000_000_000 | 1            | 1.34             |
-| B             | Billion   | 1_000_000_000| 0.001             | 0.00134          |
-| M             | Million   | 1_000_000    | 0.000001          | 0.00000134       |
-| k             | Thousand  | 1_000        | 0.000000001       | 0.00000000134    |
-| –             | (one)     | 1            | 0.000000000001    | 0.00000000000134 |
+| T             | Trillion  | 1_000_000_000_000 | 1            | 1.336610         |
+| B             | Billion   | 1_000_000_000| 0.001             | 0.001336610      |
+| M             | Million   | 1_000_000    | 0.000001          | 0.000001336610   |
+| k             | Thousand  | 1_000        | 0.000000001       | 0.000000001336610 |
+| –             | (one)     | 1            | 0.000000000001    | 0.000000000001336610 |
 
 
 ## The ICP reverse gas model
 
-Smart contract canisters deployed on ICP are charged for the resources that they use. Cycles are withdrawn from the canister's cycles wallet whenever the canister performs an action that incurs a charge, such as sending an HTTPS outcall, receiving a message, or executing an instruction. This cost model is sometimes referred to as ICP's 'reverse gas model', since the smart contract canister is responsible for paying the cycles cost rather than the user.
+Smart contract canisters deployed on ICP are charged for the resources that they use. Cycles are withdrawn from the canister's cycles balance whenever the canister performs an action that incurs a charge, such as sending an HTTPS outcall, receiving a message, or executing an instruction. This cost model is sometimes referred to as ICP's 'reverse gas model', since the smart contract canister is responsible for paying the cycles cost rather than the application's end-user.
 
 :::info
 While this may be referred to as the ICP reverse 'gas' model, it is important to note that ICP does not use 'gas' -- it uses cycles.
-::
+:::
 
 You can learn more about the ICP reverse gas model [here](https://internetcomputer.org/capabilities/reverse-gas).
 
@@ -56,7 +56,7 @@ You can learn how to query a canister's cycles balance [here](/docs/current/tuto
 
 ### How do ICP costs compare to the EVM gas model?
 
-On other blockchain platforms, such as Ethereum, users are responsible for paying the 'gas' charge for every on-chain interaction they incur. For some dapps, that means the user must pay a gas fee for doing tasks as simple as commenting on or liking a video. ICP removes this expensive barrier for users by allowing them to interact with dapps deployed on the network without paying gas fees, instead charging the canisters themselves for the resources used.
+On other blockchain platforms, such as Ethereum, users are responsible for paying the 'gas' charge for every on-chain interaction they perform. For some dapps, that means the user must pay a gas fee for doing tasks as simple as commenting on or liking a video. ICP removes this expensive barrier for users by allowing them to interact with dapps deployed on the network without paying gas fees, instead charging the canisters themselves for the resources used.
 
 Additionally, gas fees on Ethereum can fluctuate in price unpredictably, resulting in drastically different gas fees based on the current price of ETH and the current network conditions. This can make using dapps on Ethereum difficult and expensive, as one day it may cost significantly more than the day prior, or vice versa. Since ICP uses cycles, which have a fixed price based on XDR, the price is predictable and stable.
 
@@ -73,7 +73,7 @@ For information on transactions regarding **ledgers and tokens**, such as mintin
 
 At a high level, transactions can be visualized using the following diagram:
 
-[Transaction overview](./_attachments/transaction-overview.png)
+![Transaction overview](./_attachments/transaction-overview.png)
 
 Each type of transaction has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of transaction.
 
@@ -90,10 +90,10 @@ Additional factors of cost include the number of nodes in the subnet the caniste
 Messaging cost drivers include:
 
 - Message type:
-- Query calls: Query data and perform a 'read-only' operation. (There is currently no cost for query calls).
-- Update calls: Makes changes to the canister's state and must go through consensus.
-- Inter-canister calls: Calls made between canisters.
-- [Calls made by timers and heartbeats](/docs/current/developer-docs/backend/periodic-tasks): Periodic calls that are reoccurring.
+    - Query calls: Query data and perform a 'read-only' operation. (There is currently no cost for query calls).
+    - Update calls: Makes changes to the canister's state and must go through consensus.
+    - Inter-canister calls: Calls made between canisters.
+    - [Calls made by timers and heartbeats](/docs/current/developer-docs/backend/periodic-tasks): Periodic calls that are reoccurring.
 - Calls made daily per active user.
 - Size of each message's request bytes.
 - Instructions executed per message.
@@ -157,7 +157,7 @@ Replication refers to the number of times a canister is replicated, which will d
 
 #### Local development
 
-When a canister is deployed to a local development environment, the canister is deployed to a single node (the local replica). Cycles charged to locally deployed canisters have a cost that is 1/13th the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using dfx.
+When a canister is deployed to a local development environment, the canister is deployed to a single node (the locally running instance of the replica). Cycles charged to locally deployed canisters have a cost that is 1/13th the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using dfx.
 
 #### Mainnet development
 
@@ -169,7 +169,7 @@ If you intend to deploy canisters on high-replication subnets, your canister sho
 
 Canisters are responsible for paying cycles for their own canister creation, compute resources, storage resources, and execution resources. For certain canister calls, however, the canister responsible for paying the cycles may vary.
 
-For example, for inter-canister calls and the associated bytes, the canister sending this call is responsible for paying the required cycles. If there is an inter-canister call chain, for example, canister A → canister B → canister C, then canister A pays for the sending request-response pair between canister A and canister B, and canister B pays for sending the request-response pair between canister B and canister C. Additionally, each canister pays for processing that happens locally, meaning canister A pays for processing the response from canister B while canister B pays for processing the request from canister A.
+For inter-canister calls and the associated bytes, the canister sending this call is responsible for paying the required cycles. If there is an inter-canister call chain, for example, canister A → canister B → canister C, then canister A pays for the sending request-response pair between canister A and canister B, and canister B pays for sending the request-response pair between canister B and canister C. Additionally, each canister pays for processing that happens locally, meaning canister A pays for processing the response from canister B while canister B pays for processing the request from canister A.
 
 In contrast, for ingress messages, the receiving canister is responsible for paying for the consumed cycles.
 
