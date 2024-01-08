@@ -270,11 +270,10 @@ const DocsHomePage: FC = () => {
             </div>
             <div className="flex-1 flex flex-col">
               <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                Whether you're new to coding or an experienced developer, our
-                documentation portal has everything you need. We provide
-                easy-to-follow guides, tutorials, code samples, and API
-                references for multiple languages like JavaScript, Python, Java,
-                Go, Rust, C++ and more.
+                If you're a seasoned developer looking to deploy code on ICP, 
+                getting started is easy. Our developer Quick Start guides are designed 
+                to jumpstart your developer experience on the Internet Computer Protocol
+                using your preferred programming language.
               </p>
               <p className="mb-0">
                 <Link
