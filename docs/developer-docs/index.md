@@ -25,7 +25,7 @@ At a high-level, there are two main possible workflows for developing dapps that
 
 Regardless of the development workflow you choose, keep in mind that when you deploy a canister for the first time, either on a local execution environment or on the Internet Computer, a unique [principal identifier](/references/glossary.md#principal) is created for your canister. For example, if you start developing your canister locally and then deploy it to the Internet Computer, then your canister will generally have a different identifier on the local execution environment and on the Internet Computer blockchain mainnet. Note that it is also possible for you to register a principal identifier for your new canister before deploying it or even writing any line of code.
 
-## Gas cost and pricing
+## Cycles cost and pricing
 
 The Internet Computer is one of the cheapest blockchains that exist today. 
 
