@@ -22,6 +22,7 @@ export function AskAIWidget() {
             data-project-logo="https://s3.coinmarketcap.com/static-gravity/image/2fb1bc84c1494178beef0822179d137d.png"
             data-button-hide="true"
             data-modal-override-open-class="ask-ai-widget-trigger"
+            data-modal-ask-ai-input-placeholder="Ask me a question about the Internet Computer Protocol"
           />
         </Head>
         <button
