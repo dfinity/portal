@@ -154,22 +154,18 @@ const Content: React.FC = () => {
             on ICP.
           </p>
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
-            <Link className="button-outline" href="/ckbtc">
-              More on ckBTC
-            </Link>
             <Link
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
-              className="link-primary link-with-icon"
+              href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              className="button-outline"
             >
-              <LinkArrowRight></LinkArrowRight>
               Code ckBTC
             </Link>
             <Link
-              href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+              href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
               className="link-primary link-with-icon"
             >
-              <LinkArrowUpRight></LinkArrowUpRight>
-              ckBTC security audit
+              <LinkArrowRight></LinkArrowRight>
+              BTC &lt;&gt; ICP user guide
             </Link>
           </p>
         </div>

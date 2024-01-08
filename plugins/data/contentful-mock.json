@@ -1,6 +1,215 @@
 {
   "press": [
     {
+      "id": "6YR7IJMlAPLn8zpY8LhV7U",
+      "title": "A game-changing subnet launches on the Internet Computer to help devs build GDPR-compliant dApps",
+      "date": "2023-12-18",
+      "dateHuman": "Dec 18, 2023",
+      "press": "tech.eu",
+      "url": "https://tech.eu/2023/12/18/dfinity-launches-a-game-changing-subnet-to-help-devs-build-gdpr-compliant-dapps/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "4IU98BRSqQAhNRkhH3gMYB",
+      "title": "Dfinity founder says blockchain can bolster efforts to fight climate change",
+      "date": "2023-12-13",
+      "dateHuman": "Dec 13, 2023",
+      "press": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/dfinity-founder-blockchain-recycling-waste-management",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "29XFhQhXhZwUJjZMJIEOrt",
+      "title": "Manipur Education Adopts Internet Computer Blockchain",
+      "date": "2023-12-11",
+      "dateHuman": "Dec 11, 2023",
+      "press": "Crypto Times",
+      "url": "https://www.cryptotimes.io/manipur-education-adopts-internet-computer-blockchain/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "7JoLN4ewGVBjcpK5iS15c9",
+      "title": "COP28: Coalition launches “world’s first” blockchain-based Voluntary Recycling Credits initiative",
+      "date": "2023-12-11",
+      "dateHuman": "Dec 11, 2023",
+      "press": "Packaging Insights",
+      "url": "https://www.packaginginsights.com/news/cop28-coalition-launches-worlds-first-blockchain-based-voluntary-recycling-credits-initiative.html",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "rLiGE5wZEwn4r8jISCMjb",
+      "title": "Global Consortium Launches Pioneering Voluntary Recycling Credits (VRC) Initiative at COP28",
+      "date": "2023-12-10",
+      "dateHuman": "Dec 10, 2023",
+      "press": "The Emirates Times",
+      "url": "https://theemiratestimes.com/voluntary-recycling-credits-vrc-initiative-at-cop28/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "4CcLqsuTzmg2YdplbEkk7N",
+      "title": "Manipur Embraces Blockchain Technology on the Internet Computer",
+      "date": "2023-12-08",
+      "dateHuman": "Dec 8, 2023",
+      "press": "Hindustan Times",
+      "url": "https://www.hindustantimes.com/brand-stories/manipur-embraces-blockchain-technology-on-the-internet-computer-101701950596686.html",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1M9pcrSGg0nf1JhHsOmwjh",
+      "title": "Dfinity founder says blockchain can bolster efforts to fight climate change",
+      "date": "2023-12-08",
+      "dateHuman": "Dec 8, 2023",
+      "press": "CRYPTO NEWS BTC",
+      "url": "https://cryptonewsbtc.org/2023/12/13/dfinity-founder-says-blockchain-can-bolster-efforts-to-fight-climate-change/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "Am9W8QGDlbj2bMxdqsGlQ",
+      "title": "Sustainability and Green IT Services News for Technology Partners: 08 December 2023",
+      "date": "2023-12-08",
+      "dateHuman": "Dec 8, 2023",
+      "press": "sustainabletechpartner.com",
+      "url": "https://sustainabletechpartner.com/news/sustainability-and-green-it-services-news-for-technology-partners-08-december-2023/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "3T73nupEAVTqlaVpj8BnC5",
+      "title": "Manipur Education Department Embraces Blockchain Technology on ICP",
+      "date": "2023-12-07",
+      "dateHuman": "Dec 7, 2023",
+      "press": "aninews.in",
+      "url": "https://www.aninews.in/news/business/business/manipur-education-department-embraces-blockchain-technology-on-icp20231207183043/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1s5OD8qQQ7jspzVFlNHeUq",
+      "title": "MANIPUR LEADS INDIA IN ADOPTING BLOCKCHAIN FOR ACADEMIC CREDENTIALING",
+      "date": "2023-12-07",
+      "dateHuman": "Dec 7, 2023",
+      "press": "Cryptopolitan",
+      "url": "https://www.cryptopolitan.com/manipur-blockchain-academic-credentialing/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "61xMlBwjbQ5uqstgxmrvRb",
+      "title": "COP28 unveils voluntary recycling credits initiative",
+      "date": "2023-12-07",
+      "dateHuman": "Dec 7, 2023",
+      "press": "fastcompanyme.com",
+      "url": "https://fastcompanyme.com/news/cop28-unveils-voluntary-recycling-credits-initiative/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "AaSdxWde8Qz1gvV57y6Bf",
+      "title": "COP28: World’s First VRC Initiative Launch by BEEAH Coalition Revolutionises Recycling",
+      "date": "2023-12-07",
+      "dateHuman": "Dec 7, 2023",
+      "press": "mepmiddleeast.com",
+      "url": "https://www.mepmiddleeast.com/news/cop28-vrc-initiative-beeah-coalition-recycling",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1FoCi28W3XMlaoRpTSe7c8",
+      "title": "COP28: World’s first Voluntary Recycling Credits (VRC) initiative revealed",
+      "date": "2023-12-07",
+      "dateHuman": "Dec 7, 2023",
+      "press": "truckandfleetme.com",
+      "url": "https://truckandfleetme.com/magazines/cop28-worlds-first-voluntary-recycling-credits-vrc-initiative-revealed/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "3fhouZEk88WDWLZe5kMjyR",
+      "title": "Launch of the voluntary recycling credits initiative at COP28",
+      "date": "2023-12-06",
+      "dateHuman": "Dec 6, 2023",
+      "press": "zawya.com",
+      "url": "https://www.zawya.com/en/press-release/companies-news/launch-of-the-voluntary-recycling-credits-initiative-at-cop28-f3ibi0se",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "3kDWd0DrymN0bPTP9dDUvs",
+      "title": "COP28: Voluntary recycling credits initiative launched, first global standard to incentivise recycling",
+      "date": "2023-12-06",
+      "dateHuman": "Dec 6, 2023",
+      "press": "Gulf Business",
+      "url": "https://gulfbusiness.com/cop28-voluntary-recycling-credits-initiative/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1Z6ssiIctmX0tvBmtI7OlV",
+      "title": "THE FIRST NO-GAS ORDINALS MARKETPLACE GOES LIVE ON INTERNET COMPUTER (ICP)",
+      "date": "2023-12-02",
+      "dateHuman": "Dec 2, 2023",
+      "press": "Cryptopolitan",
+      "url": "https://www.cryptopolitan.com/the-first-no-gas-ordinals-marketplace-goes-live-on-internet-computer-icp/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "2kQ6PtQN0uWIB9xKVolO6V",
+      "title": "Bitcoin NFT marketplace Bioniq eyes lofty goal of alleviating network congestion",
+      "date": "2023-11-29",
+      "dateHuman": "Nov 29, 2023",
+      "press": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/bitcoin-nft-marketplace-bioniq-congestion",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "Y6kkMxs3ugpz2Dzd3CPa2",
+      "title": "Bitcoin Ordinals Marketplace Bioniq Launches—On Internet Computer",
+      "date": "2023-11-29",
+      "dateHuman": "Nov 29, 2023",
+      "press": "Decrypt.co",
+      "url": "https://decrypt.co/207823/bitcoin-ordinals-marketplace-bioniq-launches-internet-computer",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "Olw5eFHtYSHguzp5HCYqC",
+      "title": "Polychain Capital-backed Bioniq to leverage Internet Computer with new Bitcoin Ordinals marketplace",
+      "date": "2023-11-29",
+      "dateHuman": "Nov 29, 2023",
+      "press": "TheBlock",
+      "url": "https://www.theblock.co/post/265171/polygon-capital-backed-bioniq-to-leverage-internet-computer-with-new-bitcoin-ordinals-marketplace",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
       "id": "6AHzYFGim2XuziqeUpmmNt",
       "title": "Dfinity Foundation and Singularitynet Partner to Transform Decentralized AI with Blockchain Integration",
       "date": "2023-11-21",
@@ -868,177 +1077,6 @@
       "dateHuman": "Mar 1, 2022",
       "press": "The Coin Republic",
       "url": "https://www.thecoinrepublic.com/2022/03/19/unusual-250-million-scheme-by-the-founder-of-internet-computer-to-help-ukraine/",
-      "tags": []
-    },
-    {
-      "id": "4fuA5j7FEXl8k0HNY5EcfV",
-      "title": "Internet Computer founder‘s $250M plan to help end the war in Ukraine",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "CoinTelegraph",
-      "url": "https://cointelegraph.com/news/internet-computer-founder-s-250m-plan-to-help-end-the-war-in-ukraine",
-      "tags": []
-    },
-    {
-      "id": "7LfQfNcA3lk6LLykXHX18L",
-      "title": "Decentralization is the Future of Software",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "Forbes",
-      "url": "https://www.forbes.com/sites/amirhusain/2022/03/08/decentralization-is-the-future-of-software/?sh=235f4d7b1b1a",
-      "tags": []
-    },
-    {
-      "id": "2R6yh6WlOeLUnWohSHtDoQ",
-      "title": "Blockchain Direct HTTP Requests via the Internet Computer",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "The New Stack",
-      "url": "https://thenewstack.io/blockchain-direct-http-requests-via-the-internet-computer/",
-      "tags": []
-    },
-    {
-      "id": "6XeAakwIIHhImGGbW01Tkr",
-      "title": "DFINITY, The Spiritual Ancestor of the World",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "iTech Post",
-      "url": "http://www.itechpost.com/articles/109411/20220304/dfinity-the-spiritual-ancestor-of-the-world.htm",
-      "tags": []
-    },
-    {
-      "id": "QvCNpDMs6fNLQ0wb0N4R3",
-      "title": "What Big Changes Are Coming to Bitcoin Over the Next Year?",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "CryptoVantage",
-      "url": "https://www.cryptovantage.com/news/what-big-changes-are-coming-to-bitcoin-over-the-next-year/",
-      "tags": []
-    },
-    {
-      "id": "6vu5Nf4aHbwdF9nQR49GkF",
-      "title": "Internet Computer (ICP) Is Bringing Smart Contracts to Bitcoin",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "CryptoVantage",
-      "url": "https://www.cryptovantage.com/news/internet-computer-icp-is-bringing-smart-contracts-to-bitcoin/",
-      "tags": []
-    },
-    {
-      "id": "51GDOdTmCst3JyDEHzGxRR",
-      "title": "How Web3 and the Metaverse Are Decentralizing on Blockchain",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "Tech Bullion",
-      "url": "https://techbullion.com/how-web3-and-the-metaverse-are-decentralizing-on-blockchain/",
-      "tags": []
-    },
-    {
-      "id": "3oeX6jGmdVzRpRTEnAQjsA",
-      "title": "A Blockchain Answer to Moxie’s ‘Impressions of Web3’",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "Hacker Noon",
-      "url": "https://hackernoon.com/a-blockchain-answer-to-moxies-impressions-of-web3",
-      "tags": []
-    },
-    {
-      "id": "xaMnOqRn73LLgTkPQpd2A",
-      "title": "Expect to see Bitcoin traded on DEXs, says DFINITY’s Josh Drake",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "Coin Rivet",
-      "url": "https://coinrivet.com/expect-to-see-bitcoin-traded-on-dexs-says-dfinitys-josh-drake/",
-      "tags": []
-    },
-    {
-      "id": "6uKxzdC6X1zCVQ58YySTYS",
-      "title": "How we can finally evolve from Web2 to Web3",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "Venture Beat",
-      "url": "https://venturebeat.com/2022/02/13/how-we-can-finally-evolve-from-web-2-0-to-web-3-0/",
-      "tags": []
-    },
-    {
-      "id": "6KMyEdNAGSDviO1D577F4T",
-      "title": "Internet Computer: Where We’re Going, We Don’t Need Clouds",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "The New Stack",
-      "url": "https://thenewstack.io/internet-computer-where-were-going-we-dont-need-clouds/",
-      "tags": []
-    },
-    {
-      "id": "2PbN29IE4KBUeI2WoXpqGg",
-      "title": "No Bridge: What Bitcoin Smart Contracts Will Mean for DeFi",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "Use the Bitcoin",
-      "url": "https://usethebitcoin.com/what-bitcoin-smart-contracts-will-mean-for-defi/",
-      "tags": []
-    },
-    {
-      "id": "011O3saRfVlgwvFnxhWHxR",
-      "title": "Huobi Incubator announces groundbreaking strategic partnership with DFINITY to boost Web3 development to new heights using the Internet Computer",
-      "date": "2022-02-01",
-      "dateHuman": "Feb 1, 2022",
-      "press": "CryptoSlate",
-      "url": "https://cryptoslate.com/press-releases/huobi-incubator-announces-groundbreaking-strategic-partnership-with-dfinity-to-boost-web3-development-to-new-heights-using-the-internet-computer/",
-      "tags": []
-    },
-    {
-      "id": "7zZ4VYPfeRjcd7FsR9iF0a",
-      "title": "Internet Computer plans to roll out BTC and ETH integrations by year-end",
-      "date": "2022-01-01",
-      "dateHuman": "Jan 1, 2022",
-      "press": "Coin Telegraph",
-      "url": "https://cointelegraph.com/news/internet-computer-plans-to-roll-out-btc-and-eth-integrations-by-year-end",
-      "tags": []
-    },
-    {
-      "id": "MjkIUWg65rsyA32ypQC7Z",
-      "title": "The NFT Art World Wouldn’t Be the Same Without This Woman’s ‘Wide-Awake Hallucinations’",
-      "date": "2022-01-01",
-      "dateHuman": "Jan 1, 2022",
-      "press": "Rolling Stone",
-      "url": "https://www.rollingstone.com/culture/culture-features/seneca-bored-ape-yacht-club-digital-art-nfts-1280341/",
-      "tags": []
-    },
-    {
-      "id": "6H4oywZSz2FEesrc4b37ar",
-      "title": "First DEX on Internet Computer launches, others coming soon",
-      "date": "2022-01-01",
-      "dateHuman": "Jan 1, 2022",
-      "press": "CoinTelegraph",
-      "url": "https://cointelegraph.com/news/first-dex-on-internet-computer-launches-others-coming-soon?utm_content=buffer9913d&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer",
-      "tags": []
-    },
-    {
-      "id": "2YHMJ9lcahsnVxRNnUtPI4",
-      "title": "Speed and Scalability: Comparing Ethereum, Solana, Avalanche, Cardano, and the Internet Computer",
-      "date": "2022-01-01",
-      "dateHuman": "Jan 1, 2022",
-      "press": "Cryptopolitan",
-      "url": "https://www.cryptopolitan.com/speed-and-scalability-comparing-ethereum-solana-avalanche-cardano-and-the-internet-computer/",
-      "tags": []
-    },
-    {
-      "id": "606t41efYtIpKIAwMAqpyl",
-      "title": "Polychain Capital, Paris Hilton and Others Invest $20M in Swiss-based ORIGYN Foundation",
-      "date": "2021-11-01",
-      "dateHuman": "Nov 1, 2021",
-      "press": "Blockworks",
-      "url": "https://blockworks.co/polychain-capital-paris-hilton-and-others-invest-20m-in-swiss-based-origyn-foundation/",
-      "tags": []
-    },
-    {
-      "id": "1fw0R0NYWXgUWDM4o9uYQX",
-      "title": "How Blockchain is the Endgame with Dominic Williams of Dfinity",
-      "date": "2021-02-01",
-      "dateHuman": "Feb 1, 2021",
-      "press": "Crypto 101",
-      "url": "https://soundcloud.com/crypto101podcast/ep-416-how-blockchain-is-the-endgame-with-dominic-williams-of-dfinity",
       "tags": []
     }
   ]

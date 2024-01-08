@@ -80,7 +80,7 @@ const DocsHomePage: FC = () => {
           grid 
           grid-cols-1
           sm:grid-cols-2 
-          md:grid-cols-[1.25fr_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] 
+          md:grid-cols-6 
           px-0
           pb-5 sm:pb-10
         "
@@ -138,6 +138,34 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
+            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/solidity.png"
+                  alt="Motoko docs"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Solidity</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Bitfinity allows you to build Internet apps on the Internet
+                  Computer with Solidity, a popular language for DeFi
+                  applications.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="https://bitfinity.network"
+                    className="link-primary"
+                    title="Go to Motoko docs"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-r-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
@@ -210,6 +238,74 @@ const DocsHomePage: FC = () => {
                     href="https://demergent-labs.github.io/kybra"
                     className="link-primary"
                     title="Go to Kybra docs"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <div
+          className="
+          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-6
+          px-0
+          pb-5 sm:pb-10
+        "
+        >
+          <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
+            <div className="h-[100px] md:h-[200px] flex-1">
+              <h3 className="tw-heading-6 mb-10 sm:mb-0">
+                Quick Start
+                <br />
+                Guides
+              </h3>
+            </div>
+            <div className="flex-1 flex flex-col">
+              <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                If you're a seasoned developer looking to deploy code on ICP, 
+                getting started is easy. Our developer Quick Start guides are designed 
+                to jumpstart your developer experience on the Internet Computer Protocol
+                using your preferred programming language.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/docs/current/developer-docs/backend/choosing-language"
+                  className="link-primary link-with-icon"
+                >
+                  View all <LinkArrowRight />
+                </Link>
+              </p>
+            </div>
+          </div>
+          <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
+            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/react.svg"
+                  alt="React quick start"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">React</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Start here if you're coming to the Internet Computer Protocol
+                  as a React developer.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/setup/react-quickstart"
+                    className="link-primary"
+                    title="Go to Quickstart for React Devs"
                   >
                     <LinkArrowRight />
                   </Link>
