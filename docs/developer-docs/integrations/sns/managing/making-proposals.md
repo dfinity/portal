@@ -102,6 +102,7 @@ There are the following types:
 * [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
 * [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister).
 * [`ManageSnsMetadata`](#managesnsmetadata).
+* [`MintSnsTokens`](#mintsnstokens).
 
 All of the proposals used to manage an SNS are executed on the SNS governance canister so it helps to have for reference, what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
 
@@ -443,6 +444,52 @@ Then the resulting metadata will end like this where only the `description` fiel
     description : "UPDATED Sample SNS used for educational purposes";
 ```
 
+### `MintSnsTokens`
+
+Each SNS can have SNS tokens in its treasury, but it also has the ability to mint new SNS tokens to a particular user. This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
+
+#### Relevant type signatures
+
+```candid
+    type MintSnsTokens = record {
+      to_principal : opt principal;
+      to_subaccount : opt Subaccount;
+      memo : opt nat64;
+      amount_e8s : opt nat64;
+    };
+
+    type Subaccount = record { subaccount : vec nat8 };
+```
+
+#### Putting it together
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Mint 41100 ICP to Foo Labs";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Mint 411 ICP to Foo Labs";
+        action = opt variant {
+            MintSnsTokens = record {
+                
+                to_principal = opt principal "ozcnp-xcxhg-inakz-sg3bi-nczm3-jhg6y-idt46-cdygl-ebztx-iq4ft-vae";
+                
+                to_subaccount = null;
+                
+                memo = null;
+                
+                amount_e8s = opt 4_110_000_000_000 : opt nat64;
+            };
+        };
+    };
+)' > message.json
+
+quill send message.json
+```
+
+
 ## Generic proposals
 
 Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it but that might be very dapp-specific. Generic proposals, also called generic functions or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
@@ -741,6 +788,20 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
+
+## Critical proposals
+
+Some proposal types are considered "critical". These are DeregisterDappCanisters, TransferSnsTreasuryFunds, and MintSnsTokens. Critical proposal types are handled differently to ensure they are only passed with broad community consensus.
+
+1. Voting Thresholds
+
+   Non-critical proposals types can be passed if 3% of the total voting power votes yes and 50% of the exercised voting power votes yes.
+
+   Critical proposals types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes. 
+
+2. Catchall following
+
+   Users must set following explicitly for critical proposal types.
 
 <!-- ## SNS Proposal lifecycle
 
