@@ -23,7 +23,7 @@ Internally the CDK timers library does the following:
 1. The library keeps a global list of multiple and periodic tasks inside the canister.
 2. Calls the `ic0.global_timer_set()` system API to schedule the next task from the list.
 3. Implements the `canister_global_timer` method with the following logic:
-   * For each expired task, the handler initiates a self canister call to isolate the tasks from each other and from the library code. Note, the [normal inter-canister call costs](../cycles-and-transaction-costs.md) costs apply.
+   * For each expired task, the handler initiates a self canister call to isolate the tasks from each other and from the library code. Note, the [normal inter-canister call costs](../gas-cost.md) costs apply.
    * Reschedules periodic tasks at the end of their execution.
    * Calls the `ic0.global_timer_set()` system API to schedule the next task.
 
@@ -41,7 +41,7 @@ Despite its superiority over the heartbeats, the CDK timers library has a few kn
 
 - **Canister upgrades:** the library keeps a global list of multiple and periodic tasks inside the canister heap. During the canister upgrade, a fresh WebAssembly state is created, all the timers are deactivated and the list of timers is cleared. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate them in the `canister_post_upgrade` method if needed.
 - **Self canister calls:** to isolate the tasks from each other and from the scheduling logic, CDK timers library initiates a self canister call to execute each task. There are a few implications:
-   * Normal [inter-canister call costs](../cycles-and-transaction-costs.md) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
+   * Normal [inter-canister call costs](../gas-cost.md) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
    * The tasks to execute are added at the end of the canister input queue. Depending on the canister and subnet load, the actual execution might be delayed.
    * As the canister output queue is limited in size (500 messages at the moment), this implicitly limits the number of tasks which might be scheduled in one round.
 - **Advanced scheduling:** the CDK timers library uses relative time to schedule tasks. To use an absolute time, canister developers should calculate the duration between now and the point in time, or use a third party library.

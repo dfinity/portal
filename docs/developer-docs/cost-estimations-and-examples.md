@@ -3,19 +3,16 @@
 
 ## Overview
 
-To get a rough estimate of how much your project may cost, below are a few common project architectures and their estimated monthly cost in cycles. These estimates are broken down into the following transaction groups:
+To get a rough estimate of how much your project may cost, below are a few common project architectures and their estimated monthly cost in cycles. These estimates are broken down into the following  groups:
 
 
-- **Messaging**: A message transaction refers to calls that are made to a canister's methods. Messaging costs depend on the type of call being sent (query, update, inter-canister, etc), the size of the message's request and response bytes, and the total amount of messages a canister sends and receives.
+- **Messaging**: A message transmission refers to calls that are made to a canister's methods. Messaging costs depend on the type of call being sent (query, update, inter-canister, etc), the size of the message's request and response bytes, and the total amount of messages a canister sends and receives.
 
-- **Execution**: An execution transaction refers to tasks that a canister executes and the number of instructions executed per task and per call.
+- **Execution**: This refers to cycles charged during execution of message and tasks. There is a fixed fee for starting execution and fee per each executed instruction.
 
-- **Storage**: A storage transaction refers to the amount of data the canister stores.
+- **Storage**: This refers to cycles charged for canister storage. Note that it includes both the Wasm memory and the stable memory.
 
-- **Special features**: Special feature transactions include HTTPS outcalls, transactions using the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md), and transactions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md).
-
-For detailed information on these different transaction types and what their contributing cost drivers are, please see the [cycles and transaction costs](cycles-and-transaction-costs.md) documentation page. It is recommended that you read that page as a prerequisite to reading this page.
-
+- **Special features**: Special feature transmissions include HTTPS outcalls, transmissions using the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md), and transmissions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md).
 
 ## Units and fiat value
 
@@ -33,9 +30,9 @@ This documentation will use the following units to measure and calculate the num
 | – | (one) | 1 | 0.000000000001 | 0.00000000000134|
 
 
-## How is the number of cycles charged to a canister computed?
+## How is the number of cycles charged to a canister estimated?
 
-When a canister is deployed on ICP, the number of cycles charged to the canister is computed using the following input parameters:
+The number of cycles charged to the canister can be estimated using the following parameters:
 
 - Nodes in the subnet the canister is deployed to: If deployed locally, this number is 1. If deployed on the mainnet, this number is either 13 or 34.
 - Amount of users: The total number of users that interact with the canister.
@@ -54,17 +51,17 @@ When a canister is deployed on ICP, the number of cycles charged to the canister
 - Storage bytes per user: The amount of data that is stored for each user.
 - User-independent storage bytes: The amount of data the canister stores, independent of the storage used per user.
 
-HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md) or makes transactions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md), there are additional cycle costs for these special feature transactions.
+HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md) or makes transmissions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md), there are additional cycle costs for these special feature transmissions.
 
 
 ## Estimated cost of sample project architectures
 
 :::caution
-The estimates below are simply to demonstrate what different sample architectures may cost. The actual cost of your project will vary based on the exact number of resources and canister calls that are used. Therefore, the estimates below should only be used for gaining an idea of what a project may cost but should not be used for budgeting exact costs. For exact costs, you can calculate them using the chart here: [Cycles and transaction costs](cycles-and-transaction-costs.md).
+The estimates below are simply to demonstrate what different sample architectures may cost. The actual cost of your project will vary based on the exact number of resources and canister calls that are used. Therefore, the estimates below should only be used for gaining an idea of what a project may cost but should not be used for budgeting exact costs. For exact costs, you can calculate them using the chart here: [Cycles and transmission costs](gas-cost.md).
 :::
 
 :::info
-These estimates use a 13-node subnet. Costs will be different if deployed on a 34-node subnet. Please refer to the chart here for more details: [Cycles and transaction costs](cycles-and-transaction-costs.md).
+These estimates use a 13-node subnet. Costs will be different if deployed on a 34-node subnet. Please refer to the chart here for more details: [Cycles and transmission costs](gas-cost.md).
 :::
 
 

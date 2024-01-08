@@ -1,4 +1,4 @@
-# Cycles and transaction costs
+# Cycles and transmission costs
 
 ## Overview
 
@@ -9,7 +9,7 @@ Understanding how cycle costs are incurred and the associated fiat value of thes
 - [Units and fiat value](#units-and-fiat-value)
 - [The ICP reverse gas model](#the-icp-reverse-gas-model)
     - [How do ICP costs compare to the EVM gas model?](#how-do-icp-costs-compare-to-the-evm-gas-model)
-- [Transactions](#transactions)
+- [Canister calls](#canister-calls)
     - [Canister creation](#canister-creation)
     - [Messaging](#messaging)
     - [Execution](#execution)
@@ -63,19 +63,15 @@ Additionally, gas fees on Ethereum can fluctuate in price unpredictably, resulti
 One downside of the ICP cycles model in comparison to the EVM gas model is that it requires prerequisite steps and ongoing maintenance for developers. ICP tokens must be converted into cycles, then cycles must be deposited into a canister's cycles balance. Canisters must have their cycles balances maintained and regularly topped up as they continuously use resources; otherwise, the canister will be removed from the network if it runs out of cycles. However, a [freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount, and there are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
 
 
-## Canister transactions
+## Canister calls
 
-A canister transaction on ICP refers to invoking a function within a smart contract. Transactions can come in the form of messages, executions, data storage, or they can use special features such as HTTPS outcalls, chain-key signing cryptography, and the Bitcoin API integration.
+A canister call on ICP refers to invoking a function within a smart contract. Calls can come in the form of messages, executions, data storage, or they can use special features such as HTTPS outcalls, chain-key signing cryptography, and the Bitcoin API integration.
 
-:::caution
-For information on transactions regarding **ledgers and tokens**, such as minting and burning transactions, please see the documentation [here](/docs/current/developer-docs/integrations/ledger/#transaction-types).
-:::
+At a high level, canister calls can be visualized using the following diagram:
 
-At a high level, transactions can be visualized using the following diagram:
+![Canister calls overview](./_attachments/transaction-overview.png)
 
-![Transaction overview](./_attachments/transaction-overview.png)
-
-Each type of transaction has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of transaction.
+Each type of canister call has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of call.
 
 ### Canister creation
 
@@ -177,11 +173,11 @@ Canisters that are created from another canister (child canisters) are responsib
 
 ## Cycles price breakdown
 
-The chart below details the cost of compute and storage transactions as well as management canister calls. A thorough example of how the cost of running a canister on a 13-node app subnet is computed can be found [here](https://wiki.internetcomputer.org/wiki/Comparing_Canister_Cycles_vs_Performance_Counter).
+The chart below details the cost of compute and storage transmissions as well as management canister calls. A thorough example of how the cost of running a canister on a 13-node app subnet is computed can be found [here](https://wiki.internetcomputer.org/wiki/Comparing_Canister_Cycles_vs_Performance_Counter).
 
-The USD cost for transactions below is based on the cycle costs indicated for 13-node and 34-node subnets. 1 XDR is equal to 1 trillion cycles. The cost per transaction is shown in USD (XDR/USD exchange rate as of December 18, 2023). The exchange rate for USD/XDR may vary, and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+The USD cost for canister transmissions below is based on the cycle costs indicated for 13-node and 34-node subnets. 1 XDR is equal to 1 trillion cycles. The cost is shown in USD (XDR/USD exchange rate as of December 18, 2023). The exchange rate for USD/XDR may vary, and it will impact the conversion rate. You can view XDR exchange rates [here](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
-| Transaction | Description | Who is responsible for paying the transaction fee? | Local development ([IC SDK](./setup/index.md)) | 13-node application subnets cycles cost | 13-node application subnets USD cost | 34-node application subnets | 34-node application subnets USD cost |
+| Canister transmission | Description | Who is responsible for paying the cycles fee? | Local development ([IC SDK](./setup/index.md)) | 13-node application subnets cycles cost | 13-node application subnets USD cost | 34-node application subnets | 34-node application subnets USD cost |
 | ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
 | Canister creation | For creating canisters on a subnet. | Created canister | 100B / 13 | 100B | $0.133661 | 100B / 13 * 34 | $0.34957492307 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M / 13 | 10M | $0.0000133661 | 10M / 13 * 34 | $0.00000511056 |

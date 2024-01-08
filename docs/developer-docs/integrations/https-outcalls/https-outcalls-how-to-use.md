@@ -17,7 +17,7 @@ The ICP management canister is just a facade; it does not actually exist as a ca
 
 ### Cycles
 
-* [Cycles](../../cycles-and-transaction-costs.md) used to pay for the call must be explicitly transferred with the call, i.e., they are not deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+* [Cycles](../../gas-cost.md) used to pay for the call must be explicitly transferred with the call, i.e., they are not deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
 ## The API for sending HTTP outcalls
 
