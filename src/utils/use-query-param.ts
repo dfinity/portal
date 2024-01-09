@@ -12,24 +12,20 @@ function setQueryParam(
     params.set(name, value);
   }
   const paramsString = params.toString();
-  // react router history.replace will reset the scroll position to the top
-  window.history.replaceState("", "", "?" + paramsString);
+
+  if (paramsString) {
+    // react router history.replace will reset the scroll position to the top
+    window.history.replaceState("", "", "?" + paramsString);
+  } else {
+    // remove trailing ? if there are no query params
+    window.history.replaceState("", "", location.pathname);
+  }
 }
 
-export type QueryParamConfig<T> = T extends undefined
-  ? {
-      serialize?: (t: T) => string;
-      deserialize?: (s: string) => T;
-    }
-  : T extends string
-  ? {
-      serialize?: (t: T) => string;
-      deserialize?: (s: string) => T;
-    }
-  : {
-      serialize: (t: T) => string;
-      deserialize: (s: string) => T;
-    };
+export type QueryParamConfig<T> = {
+  serialize: (t: T) => string;
+  deserialize: (s: string) => T;
+};
 export function useQueryParam<T>(
   name: string,
   defaultValue?: T,
@@ -76,4 +72,36 @@ export function useQueryParam<T>(
     },
     isInitialized,
   ];
+}
+
+export function serializeNumber(n: number) {
+  return n.toString();
+}
+
+export function deserializeNumber(s: string) {
+  return parseInt(s);
+}
+
+export function serializeBoolean(b: boolean) {
+  return b ? "true" : undefined;
+}
+
+export function deserializeBoolean(s: string) {
+  return s === "true";
+}
+
+export function serializeString(s: string) {
+  return !s ? undefined : s;
+}
+
+export function deserializeString(s: string) {
+  return s;
+}
+
+export function serializeStringList(a: string[]) {
+  return a.length === 0 ? undefined : a.join(",");
+}
+
+export function deserializeStringList<T extends string>(s: string): T[] {
+  return s.trim().length > 0 ? (s.split(",") as T[]) : [];
 }
