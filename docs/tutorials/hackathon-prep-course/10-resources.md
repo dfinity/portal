@@ -4,7 +4,7 @@ To learn more about ICP, a specific feature or workflow, or get help from other 
 
 - [ICP developer documentation.](/docs/current/home)
 
-- [ICP Zero to Dapp Hackathon.](https://www.encode.club/zero-to-dapp-hackathon)
+- [ICP Zero to Dapp Educate Series.](https://www.youtube.com/playlist?list=PLfEHHr3qexv8hKOJBV1XR10XhUKkyPIBp)
 
 - [ICP developer journey tutorial series.](https://internetcomputer.org/docs/current/tutorials/developer-journey/)
 
