@@ -149,7 +149,7 @@ In this command, the `--network` flag specifies which network the dapp should be
 If you manually converted ICP tokens into cycles, and your cycles wallet doesn't contain enough cycles to complete this deployment, you can add more cycles to your wallet with a command such as:
 
 ```
-dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --network ic --amount 1.005
+dfx ledger top-up <CYCLE_WALLET_CANISTER_ID> --network ic --amount 1.005
 ```
 
 This command converts an additional 1.005 ICP tokens to cycles for the 5o6tz-saaaa-aaaaa-qaacq-cai cycles wallet identifier.
