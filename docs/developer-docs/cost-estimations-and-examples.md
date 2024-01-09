@@ -29,31 +29,6 @@ This documentation will use the following units to measure and calculate the num
 | k | Thousand | 1_000 | 0.000000001 | 0.00000000134 |
 | – | (one) | 1 | 0.000000000001 | 0.00000000000134|
 
-
-## How is the number of cycles charged to a canister estimated?
-
-The number of cycles charged to the canister can be estimated using the following parameters:
-
-- Nodes in the subnet the canister is deployed to: If deployed locally, this number is 1. If deployed on the mainnet, this number is either 13 or 34.
-- Amount of users: The total number of users that interact with the canister.
-- Daily active users: The total number of users that interact with the canister daily.
-- Daily messages per active user: The total number of messages sent to the canister that each active user generates.
-- Request and response bytes per message: The size of the request and response bytes per message.
-- Instructions executed per message: The number of instructions that are executed in response to each message.
-- Calls per message: The number of calls that are triggered per message.
-- Request and response bytes per call: The size of the request and response bytes per call.
-- Instructions per call: The number of instructions that are executed per call.
-- Daily tasks: The number of daily tasks that the canister executes.
-- Instructions executed per task: The number of instructions that are executed per daily task.
-- Daily HTTPS outcalls: The number of daily HTTPS outcalls the canister makes.
-- Request bytes per HTTPS outcall: The size of the request bytes per HTTPS outcall.
-- Response bytes per HTTPS outcall: The size of the response bytes per HTTPS outcall.
-- Storage bytes per user: The amount of data that is stored for each user.
-- User-independent storage bytes: The amount of data the canister stores, independent of the storage used per user.
-
-HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md) or makes transmissions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md), there are additional cycle costs for these special feature transmissions.
-
-
 ## Estimated cost of sample project architectures
 
 :::caution
@@ -171,3 +146,25 @@ The following is the cost estimate for a project that creates a messaging dapp w
 In this example, a new canister is created for each user. That means, each time a new user signs up for the dapp, a cost of 100_000_000_000 is charged. This additional cost should be considered when choosing an architecture similar to this, as it can become expensive quickly.
 :::
 
+## How is the number of cycles charged to a canister estimated?
+
+The number of cycles charged to the canister can be estimated using the following parameters:
+
+- Nodes in the subnet the canister is deployed to: If deployed locally, this number is 1. If deployed on the mainnet, this number is either 13 or 34.
+- Amount of users: The total number of users that interact with the canister.
+- Daily active users: The total number of users that interact with the canister daily.
+- Daily messages per active user: The total number of messages sent to the canister that each active user generates.
+- Request and response bytes per message: The size of the request and response bytes per message.
+- Instructions executed per message: The number of instructions that are executed in response to each message.
+- Calls per message: The number of calls that are triggered per message.
+- Request and response bytes per call: The size of the request and response bytes per call.
+- Instructions per call: The number of instructions that are executed per call.
+- Daily tasks: The number of daily tasks that the canister executes.
+- Instructions executed per task: The number of instructions that are executed per daily task.
+- Daily HTTPS outcalls: The number of daily HTTPS outcalls the canister makes.
+- Request bytes per HTTPS outcall: The size of the request bytes per HTTPS outcall.
+- Response bytes per HTTPS outcall: The size of the response bytes per HTTPS outcall.
+- Storage bytes per user: The amount of data that is stored for each user.
+- User-independent storage bytes: The amount of data the canister stores, independent of the storage used per user.
+
+HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](./integrations/bitcoin/bitcoin-how-it-works.md) or makes transmissions using the [chain-key signing API](./integrations/t-ecdsa/t-ecdsa-how-it-works.md), there are additional cycle costs for these special feature transmissions.
