@@ -30,6 +30,8 @@ Regarding transaction fees, the **transaction sender** is responsible for coveri
 
 ## Cycles
 
+Cycles are burned by canisters to pay for the resources they consume such as execution, storage, and messaging. Cycles have a fixed price where 1 trillion cycles is equal to 1 XDR, an official group of currencies maintained by [IMF](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). This means that running costs of canisters are decoupled from price fluctuations of ICP.
+
 For developers, ICP tokens are important because they can be converted to cycles that, in turn, are used to pay for resource consumption. Cycles reflect the real costs of operations for applications hosted in the Internet Computer blockchain including resources such physical hardware, rack space, energy, storage devices, and bandwidth.
 
 Canister smart contracts must be able to pay for complete execution (all or nothing), but the platform sets limits on how many cycles a canister can hold and consume to prevent malicious code from draining resources.
