@@ -89,11 +89,7 @@ After you have your ICP tokens ready, you will need to create a cycles wallet if
 dfx wallet --network ic addresses
 ```
 
-If your identity has a cycles wallet already, it will be returned in the output:
-
-```
-Id: lsa7b-dlc2s-vmdhm-skjw6-gv2p7-v7kjz-yppyo-mvwmg-ju6fc-k2kpm-dqe, Kind: Unknown, Role: Controller, Name: No name set.
-```
+If your identity has a cycles wallet already, it will be returned in the output, otherwise you'll see an error.
 
 Creating a new cycles wallet will require your identity principal, which you can obtain by running the command:
 
