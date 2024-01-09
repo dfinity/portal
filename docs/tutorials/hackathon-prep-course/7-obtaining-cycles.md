@@ -6,7 +6,7 @@ Cycles are used to measure the resources, such as memory, storage, and compute p
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in XDR in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
-Cycles cannot be held by self-authenticating principals, meaning developers must manage the distribution of cycles through a special canister called a cycles wallet. When a canister needs to use cycles, canister's operations are executed using the canister principal of the cycles wallet instead of a user principal.
+Unlike ICP tokens, cycles are only associated with canisters and not with user or developer principals. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
 ## Acquiring cycles using a cycles coupon
 
