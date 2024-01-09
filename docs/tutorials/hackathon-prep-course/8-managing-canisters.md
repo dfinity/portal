@@ -234,7 +234,7 @@ The values returned in this output refer to the following:
 - [Controllers](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#adding-an-identity-as-a-controller-of-a-canister): The principal IDs of the canister's configured controllers. Controllers are able to perform operations such as deploying or stopping a canister. 
 - [Memory allocation](/docs/current/developer-docs/gas-cost): The current amount of memory allocated by the canister.
 - [Compute allocation](/docs/current/developer-docs/gas-cost): The current amount of compute resources allocated by the canister.
-- [Freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold): The cycles freezing threshold, which indicates how many cycles the canister must maintain. The canister will deny requests if they would result in the canister's cycles balance falling below this threshold. 
+- [Freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold): The cycles freezing threshold, defined in seconds, indicates when the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass. This is estimated using the canister's current cost for storage and the canister's current size. 
 - Memory size: The size of the memory used by the canister.
 - Balance: The canister's current cycles balance. 
 - Module hash: The canister's Wasm module hash. 
