@@ -190,7 +190,7 @@ You can learn more about the ICRC-2 standard [here](https://github.com/dfinity/I
 
 ## Swapping between tokens
 
-To switch between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH, you can use a tool such as [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/).
+To swap between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH, you can use a tool such as [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/).
 
 On ICPSwap, you can connect to the dapp with several different wallet types, such as Internet Identity, NFID, Bitfinity and more:
 
