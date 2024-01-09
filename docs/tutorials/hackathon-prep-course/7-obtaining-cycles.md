@@ -83,7 +83,7 @@ Once you have sent some ICP to this account ID, you can verify that they were re
 dfx ledger --network ic balance
 ```
 
-After you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. To check and see if your identity already has a cycles wallet on the mainnet, you can use the following command to retrieve the current wallet addresses for your identity:
+After you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. To check and see if your identity already has a cycles wallet on the mainnet, you can use the following command:
 
 ```
 dfx identity --ic get-wallet
