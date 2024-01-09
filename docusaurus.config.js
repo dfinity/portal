@@ -412,14 +412,14 @@ const marketingNav = {
               description: "Become a node provider",
             },
             {
+              name: "Events",
+              href: "/events",
+              description: "Meet fellow Web3 enthusiasts",
+            },
+            {
               name: "Community Blog",
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
-            },
-            {
-              name: "Upcoming events",
-              description: "Meet fellow Web3 enthusiasts",
-              href: "https://dfinity.org/events-and-news/",
             },
           ],
           featured: {
