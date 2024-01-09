@@ -142,7 +142,7 @@ dfx deploy --network ic
 In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
 
 :::caution
-If you manually converted ICP tokens into cycles, and your cycles wallet doesn't contain enough cycles to complete this deployment, you can add more cycles to your wallet with a command such as:
+If you manually converted ICP tokens into cycles, and your cycles wallet doesn't contain enough cycles to complete this deployment, you can add more cycles to your wallet by replacing `<CYCLE_WALLET_CANISTER_ID>` with the output from `dfx identity --ic get-wallet` in the following command:
 
 ```
 dfx ledger top-up <CYCLE_WALLET_CANISTER_ID> --network ic --amount 1.005
