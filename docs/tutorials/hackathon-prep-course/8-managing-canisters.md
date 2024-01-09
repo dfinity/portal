@@ -230,7 +230,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 The values returned in this output refer to the following:
 
-- Status: The canister's current status, such as `Running` or `Stopped`. 
+- Status: The canister's [current status](https://github.com/dfinity/interface-spec/blob/master/spec/index.md#canister-lifecycle-canister-lifecycle), such as `Running`, `Stopping` or `Stopped`. 
 - [Controllers](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#adding-an-identity-as-a-controller-of-a-canister): The principal IDs of the canister's configured controllers. Controllers are able to perform operations such as deploying or stopping a canister. 
 - [Memory allocation](/docs/current/developer-docs/gas-cost): The current amount of memory allocated by the canister.
 - [Compute allocation](/docs/current/developer-docs/gas-cost): The current amount of compute resources allocated by the canister.
