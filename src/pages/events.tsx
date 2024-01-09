@@ -71,12 +71,12 @@ function GlobalEventsPage() {
     }
     const today = new Date().toISOString().slice(0, 10);
 
-    console.log({
-      selectedLocations,
-      selectedTopic,
-      showPastEvents,
-      today,
-    });
+    // console.log({
+    //   selectedLocations,
+    //   selectedTopic,
+    //   showPastEvents,
+    //   today,
+    // });
 
     const filtered: (AirtableEvent | "promo")[] = events.filter((event) => {
       if (
@@ -127,7 +127,7 @@ function GlobalEventsPage() {
       description="Join global community events with latest insights to the Internet Computer blockchain technology. Engage with experts, share ideas, and learn about emerging trends in the dynamic ICP ecosystem."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-global-events.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-events.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -194,6 +194,7 @@ function GlobalEventsPage() {
               .map((eventOrPromo) =>
                 eventOrPromo === "promo" ? (
                   <PromoCard
+                    key="promo"
                     label="Is your event missing from ICP's global calendar?"
                     href="https://airtable.com/appBKNYn6DaFccnno/shrJj7M98SaobaQM4"
                     ctaLabel="Submit your event"
