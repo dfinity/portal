@@ -4,8 +4,6 @@
 
 Canisters pay for consumed resources by burning cycles. These resources include storage, messaging, and execution. To obtain cycles, ICP tokens can be converted into cycles.
 
-Understanding how cycle costs are incurred and the associated fiat value of these costs is important for developers to understand so they can budget and plan accordingly for their application. This guide will cover the following topics:
-
 - [Units and fiat value](#units-and-fiat-value)
 - [The ICP reverse gas model](#the-icp-reverse-gas-model)
     - [How do ICP costs compare to the EVM gas model?](#how-do-icp-costs-compare-to-the-evm-gas-model)
@@ -36,12 +34,11 @@ This documentation will use the following units to measure and calculate the num
 | B             | Billion   | 1_000_000_000| 0.001             | 0.001336610      |
 | M             | Million   | 1_000_000    | 0.000001          | 0.000001336610   |
 | k             | Thousand  | 1_000        | 0.000000001       | 0.000000001336610 |
-| –             | (one)     | 1            | 0.000000000001    | 0.000000000001336610 |
 
 
 ## The ICP reverse gas model
 
-Smart contract canisters deployed on ICP are charged for the resources that they use. Cycles are withdrawn from the canister's cycles balance whenever the canister performs an action that incurs a charge, such as sending an HTTPS outcall, receiving a message, or executing an instruction. This cost model is sometimes referred to as ICP's 'reverse gas model', since the smart contract canister is responsible for paying the cycles cost rather than the application's end-user.
+In contrast to other blockchains where users pay for their transactions, ICP charges the smart contract canister for the resources it consumes. This allows developers to provide a smoother user experience, as users are free from tedious tasks such as signing and approving every transaction they perform within the application. This cost model is known as ICP's 'reverse gas model'.
 
 :::info
 While this may be referred to as the ICP reverse 'gas' model, it is important to note that ICP does not use 'gas' -- it uses cycles.
@@ -49,58 +46,48 @@ While this may be referred to as the ICP reverse 'gas' model, it is important to
 
 You can learn more about the ICP reverse gas model [here](https://internetcomputer.org/capabilities/reverse-gas).
 
-Each canister deployed on ICP has a cycles balance. When a canister is first deployed, it must be deployed with an amount of cycles that covers the cost of creating the canister and then provides enough cycles for the canister's operations. If a canister's cycles balance becomes depleted and it cannot cover the cost of the canister's operations, the canister must be 'topped up', which refers to depositing additional cycles into the canister's cycles balance.
+One downside of the ICP reverse gas model in comparison to other models, such as the EVM gas model, is that it requires prerequisite steps and ongoing maintenance for developers. Canisters must have their cycles balances maintained and regularly topped up as they continuously use resources; otherwise, the canister will be removed from the network if it runs out of cycles. However, a [freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount, and there are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
 
 You can learn how to query a canister's cycles balance [here](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#checking-the-cycles-balance-of-a-canister), and you can learn how to top up a canister [here](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#topping-up-a-canisters-cycles-balance).
 
 
-### How do ICP costs compare to the EVM gas model?
+## Canister operations
 
-On other blockchain platforms, such as Ethereum, users are responsible for paying the 'gas' charge for every on-chain interaction they perform. For some dapps, that means the user must pay a gas fee for doing tasks as simple as commenting on or liking a video. ICP removes this expensive barrier for users by allowing them to interact with dapps deployed on the network without paying gas fees, instead charging the canisters themselves for the resources used.
+A canister operation on ICP refers to invoking a function within a smart contract. Operations can come in the form of messages, executions, data storage, or they can use special features such as HTTPS outcalls, chain-key signing cryptography, and the Bitcoin API integration.
 
-Additionally, gas fees on Ethereum can fluctuate in price unpredictably, resulting in drastically different gas fees based on the current price of ETH and the current network conditions. This can make using dapps on Ethereum difficult and expensive, as one day it may cost significantly more than the day prior, or vice versa. Since ICP uses cycles, which have a fixed price based on XDR, the price is predictable and stable.
-
-One downside of the ICP cycles model in comparison to the EVM gas model is that it requires prerequisite steps and ongoing maintenance for developers. ICP tokens must be converted into cycles, then cycles must be deposited into a canister's cycles balance. Canisters must have their cycles balances maintained and regularly topped up as they continuously use resources; otherwise, the canister will be removed from the network if it runs out of cycles. However, a [freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount, and there are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
-
-
-## Canister calls
-
-A canister call on ICP refers to invoking a function within a smart contract. Calls can come in the form of messages, executions, data storage, or they can use special features such as HTTPS outcalls, chain-key signing cryptography, and the Bitcoin API integration.
-
-At a high level, canister calls can be visualized using the following diagram:
+At a high level, canister operations can be visualized using the following diagram:
 
 ![Canister calls overview](./_attachments/transaction-overview.png)
 
-Each type of canister call has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of call.
+Each type of canister operation has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of operation.
 
 ### Canister creation
 
-An initial fee is charged when a canister is first created. Canisters are created by deploying a project onto an instance of the IC replica (locally or on the mainnet), or a canister can be created by another canister that is already running on a replica instance. Canisters created by another canister are referred to as 'child canisters'. The cycles charge for creating a canister is charged to the canister that is being created.
+Canister creation costs 100B cycles or approximately $0.133661 USD. Canisters can be created by users or other canisters.
 
 ### Messaging
 
-Messaging refers to calls that are made to a canister's methods. A canister's messaging costs depend on the type of message, the size of the message's request and response bytes, and the number of messages.
+A canister can receive messages from users and other canisters. In canister-to-canister messages, the sending canister pays message transmission costs. In user-to-canister messages, the receiving canister covers the message transmission costs (see [reverse gas model](#the-icp-reverse-gas-model). User-to-canister messages are also referred to as ingress messages.
 
-Additional factors of cost include the number of nodes in the subnet the canister is deployed on, the total number of users interacting with the canister, and the number of daily active users.
+The message transmission cost consists of a fixed baseline fee and per-byte-fee charged for each byte of the message: `base-fee` + `per-byte-fee` * `size-in-bytes`.
 
-Messaging cost drivers include:
+The current fees are:
 
-- Message type:
-    - Query calls: Query data and perform a 'read-only' operation. (There is currently no cost for query calls).
-    - Update calls: Makes changes to the canister's state and must go through consensus.
-    - Inter-canister calls: Calls made between canisters.
-    - [Calls made by timers and heartbeats](/docs/current/developer-docs/backend/periodic-tasks): Periodic calls that are reoccurring.
-- Calls made daily per active user.
-- Size of each message's request bytes.
-- Instructions executed per message.
-- Calls per message.
-- Size of the message's request and response bytes per call.
+| Message type | Base fee | Per byte fee |
+|--------------|----------|--------------|
+| Canister-to-canister | 260K | 1K |
+| User-to-canister (ingress) | 1.2M | 2K |
+
+
+An additional factor of cost includes the number of nodes in the subnet the canister is deployed on.
+
+Note that query messages are currently free, but this may change in the future.
 
 ### Execution
 
-Execution refers to the tasks that the canister executes and the number of instructions executed per task and per call. These tasks use compute resources and rely on 'best-effort compute', meaning they do not pre-allocate compute resources unless otherwise specified, as compute resources are scarce and expensive.
+In order to handle an incoming message, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee that is charged for each executed WebAssembly instruction: `base-fee` + `per-instruction-fee` * `number-of-instructions`. The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.000534644 USD for 1B instructions).
 
-For canisters that specifically request compute resources, the priority of allocating those resources is achieved through a scheduling strategy. Priority is determined based on the canister's `compute_allocation` setting and the amount of time the canister has been waiting to be scheduled. A non-zero `compute_allocation` will give a canister a higher priority but does not guarantee execution in a given round. However, you will have to pay a fee in every round for this higher priority.
+By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. In other words, it will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
 
 Execution cost drivers include:
 
@@ -109,12 +96,7 @@ Execution cost drivers include:
 - Instructions executed per daily task.
 
 ### Storage
-Storage refers to the amount of data the canister stores.
-
-Storage cost drivers include:
-
-- Storage bytes per user.
-- User-independent storage bytes.
+Canisters pay for storage consumed by their Wasm memory and stable memory. The storage cost depends on the number of consumed bytes and the time duration. The current fee is 127K cycles per second (or $0.00000016974947 USD).
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 
@@ -182,7 +164,7 @@ The USD cost for canister transmissions below is based on the cycle costs indica
 | Canister creation | For creating canisters on a subnet. | Created canister | 100B / 13 | 100B | $0.133661 | 100B / 13 * 34 | $0.34957492307 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M / 13 | 10M | $0.0000133661 | 10M / 13 * 34 | $0.00000511056 |
 | Update message execution | For every update message executed. | Target canister | 590K / 13 | 590K | $0.0000007885999 | 590K / 13 * 34 | $0.000000301523491 |
-| Ten update instructions execution | For every 10 instructions executed when executing update type messages. | Canister executing instructions | 4 / 13 | 4 | $0.00000000000534644 | 4 / 13 * 34 | $0.0000000000020442271 |
+| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M / 13 | 400M | 0.000534644 | 400M / 13 * 34 | $0.00001572482 |
 | Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K / 13 | 260K | $0.0000003475186 | 260K / 13 * 34 | $0.000000132874759 |
 | Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K / 13 | 1K | $0.00000000133661 | 1K / 13 * 34 | $0.00000000051105676 |
 | Ingress message reception | For every ingress message received. | Receiving canister | 1.2M / 13 | 1.2M | $0.00000160393 | 1.2M / 13 * 34 | $0.000000613268118 |
