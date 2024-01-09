@@ -2,7 +2,7 @@
 
 ## Overview
 
-When a smart contract canister is deployed to ICP, the resources that the canister uses are paid for using cycles. These resources include storage, messaging, and execution. To obtain cycles, ICP tokens can be converted into cycles.
+Canisters pay for consumed resources by burning cycles. These resources include storage, messaging, and execution. To obtain cycles, ICP tokens can be converted into cycles.
 
 Understanding how cycle costs are incurred and the associated fiat value of these costs is important for developers to understand so they can budget and plan accordingly for their application. This guide will cover the following topics:
 
