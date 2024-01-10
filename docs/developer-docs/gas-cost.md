@@ -51,23 +51,21 @@ One downside of the ICP reverse gas model in comparison to other models, such as
 You can learn how to query a canister's cycles balance [here](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#checking-the-cycles-balance-of-a-canister), and you can learn how to top up a canister [here](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#topping-up-a-canisters-cycles-balance).
 
 
-## Canister operations
+## Canister operations and resources
 
-A canister operation on ICP refers to invoking a function within a smart contract. Operations can come in the form of messages, executions, data storage, or they can use special features such as HTTPS outcalls, chain-key signing cryptography, and the Bitcoin API integration.
-
-At a high level, canister operations can be visualized using the following diagram:
+Canisters pay for consumed resources as well as for performed operations using features such as HTTPS outcalls, ECDSA signing, and the Bitcoin integration API. At a high level this can be visualized using the following diagram:
 
 ![Canister calls overview](./_attachments/transaction-overview.png)
 
-Each type of canister operation has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of operation.
+Each type of canister operation and resource has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of operation.
 
 ### Canister creation
 
-Canister creation costs 100B cycles or approximately $0.133661 USD. Canisters can be created by users or other canisters.
+Canister creation costs 100B cycles or approximately $0.13 USD. Canisters can be created by users or other canisters.
 
 ### Messaging
 
-A canister can receive messages from users and other canisters. In canister-to-canister messages, the sending canister pays message transmission costs. In user-to-canister messages, the receiving canister covers the message transmission costs (see [reverse gas model](#the-icp-reverse-gas-model). User-to-canister messages are also referred to as ingress messages.
+A canister can receive messages from users and other canisters. In canister-to-canister messages, the sending canister pays message transmission costs. In user-to-canister messages, the receiving canister covers the message transmission costs (see [reverse gas model](#the-icp-reverse-gas-model)). User-to-canister messages are also referred to as ingress messages.
 
 The message transmission cost consists of a fixed baseline fee and per-byte-fee charged for each byte of the message: `base-fee` + `per-byte-fee` * `size-in-bytes`.
 
@@ -85,9 +83,9 @@ Note that query messages are currently free, but this may change in the future.
 
 ### Execution
 
-In order to handle an incoming message, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee that is charged for each executed WebAssembly instruction: `base-fee` + `per-instruction-fee` * `number-of-instructions`. The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.000534644 USD for 1B instructions).
+In order to handle an incoming message, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee that is charged for each executed WebAssembly instruction: `base-fee` + `per-instruction-fee` * `number-of-instructions`. The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
 
-By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. In other words, it will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
+By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. In other words, it will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
 
 Execution cost drivers include:
 
@@ -164,7 +162,7 @@ The USD cost for canister transmissions below is based on the cycle costs indica
 | Canister creation | For creating canisters on a subnet. | Created canister | 100B / 13 | 100B | $0.133661 | 100B / 13 * 34 | $0.34957492307 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M / 13 | 10M | $0.0000133661 | 10M / 13 * 34 | $0.00000511056 |
 | Update message execution | For every update message executed. | Target canister | 590K / 13 | 590K | $0.0000007885999 | 590K / 13 * 34 | $0.000000301523491 |
-| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M / 13 | 400M | 0.000534644 | 400M / 13 * 34 | $0.00001572482 |
+| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M / 13 | 400M | $0.0053 | 400M / 13 * 34 | $0.00001572482 |
 | Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K / 13 | 260K | $0.0000003475186 | 260K / 13 * 34 | $0.000000132874759 |
 | Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K / 13 | 1K | $0.00000000133661 | 1K / 13 * 34 | $0.00000000051105676 |
 | Ingress message reception | For every ingress message received. | Receiving canister | 1.2M / 13 | 1.2M | $0.00000160393 | 1.2M / 13 * 34 | $0.000000613268118 |
