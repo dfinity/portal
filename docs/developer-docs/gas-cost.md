@@ -55,7 +55,7 @@ You can learn how to query a canister's cycles balance [here](/docs/current/tuto
 
 Canisters pay for consumed resources as well as for performed operations using features such as HTTPS outcalls, ECDSA signing, and the Bitcoin integration API. At a high level this can be visualized using the following diagram:
 
-![Canister calls overview](./_attachments/transaction-overview.png)
+![Canister calls overview](./_attachments/transaction-overview.svg)
 
 Each type of canister operation and resource has a different cycles cost associated with it, and the canister responsible for paying the cycles varies based on the type of operation.
 
