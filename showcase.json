@@ -2339,7 +2339,8 @@
   },
   {
     "name": "Rakeoff",
-    "description": "Rakeoff is a user-friendly crypto staking rewards platform on ICP, with options to convert rewards into ckBTC or pool them for a chance to win a no-loss prize pool. Pooling staking rewards allows users to potentially amplify their ICP earnings while preserving their principal investment.",
+    "description": "Rakeoff is a cryptocurrency staking rewards application built on the ICP blockchain. It offers an ICP wallet with simplified staking, real-time asset tracking, and a no-loss prize pool for staking rewards. Enhance your staking experience with achievement-based ICP bonuses, all within a compact, user-friendly application.",
+    "stats": "$100k+ TVL",
     "website": "https://rakeoff.io/",
     "logo": "/img/showcase/rakeoff_logo.webp",
     "screenshots": [
@@ -2347,9 +2348,8 @@
     ],
     "display": "Normal",
     "id": "rakeoff",
-    "oneLiner": "Rakeoff is a user-friendly crypto staking rewards platform on ICP.",
+    "oneLiner": "Rakeoff is a cryptocurrency staking rewards application built on the ICP blockchain.",
     "tags": [
-      "Bitcoin",
       "DeFi",
       "Wallet"
     ],
