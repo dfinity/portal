@@ -83,15 +83,9 @@ Note that query messages are currently free, but this may change in the future.
 
 ### Execution
 
-In order to handle an incoming message, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee that is charged for each executed WebAssembly instruction: `base-fee` + `per-instruction-fee` * `number-of-instructions`. The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
+In order to handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee that is charged for each executed WebAssembly instruction: `base-fee` + `per-instruction-fee` * `number-of-instructions`. The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
 
 By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. In other words, it will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
-
-Execution cost drivers include:
-
-- Instructions executed per call.
-- Daily tasks the canister performs.
-- Instructions executed per daily task.
 
 ### Storage
 Canisters pay for storage consumed by their Wasm memory and stable memory. The storage cost depends on the number of consumed bytes and the time duration. The current fee is 127K cycles per second (or $0.00000016974947 USD).
