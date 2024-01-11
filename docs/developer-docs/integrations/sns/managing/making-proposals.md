@@ -156,7 +156,7 @@ In the following we list all differences to non-critical proposals.
    
    The voting period for critical proposal types is 5-10 days and cannot be changed by the SNS. In contrast, for non-critical proposals the default is 4-8 days and this can be adjusted by each SNS DAO.
 
-   Critical proposal have a longer voting period to as they require a larger voting participation and it is therefore beneficial to give voters a bit more time to participate.
+   Critical proposal have a longer voting period as they require a larger voting participation and it is therefore beneficial to give voters a bit more time to participate.
 
    As with all proposals, the [wait-for-quiet algorithm](https://wiki.internetcomputer.org/wiki/NNS_Canisters#Proposal_decision_and_wait-for-quiet) ensures that controversial proposals will have a longer voting period (up to 10 days for critical proposals) while proposals where everyone agrees on have a shorter voting period (5 days for critical proposals).
 
