@@ -800,7 +800,7 @@ In the following we list all differences to non-critical proposals.
 
    Critical proposals types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes. 
 
-2. Catchall following
+2. Catch-all following
 
    Users must set following explicitly for critical proposal types.
 
