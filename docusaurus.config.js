@@ -479,7 +479,6 @@ const config = {
   },
   scripts: [],
   plugins: [
-    ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
