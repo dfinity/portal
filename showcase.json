@@ -2272,9 +2272,9 @@
     "github": "https://github.com/ICEvent/Escrow"
   },
   {
-    "id": "34886232",
+    "id": "41394313",
     "name": "Vibeverse",
-    "oneLiner": "Where AI magic meets creative play in a universe of endless possibilities",
+    "oneLiner": "a learning mobile app that teaches ppl how to be creative with ai",
     "website": "https://vibeverse.xyz/",
     "tags": [
       "AI"
@@ -2283,14 +2283,14 @@
     "stats": "",
     "logo": "/img/showcase/vibeverse_logo.png",
     "usesInternetIdentity": true,
-    "github?": "https://github.com/roger-rangel/vibeverse",
-    "youtube?": "https://www.youtube.com/watch?v=-Gug7qZq4AM%E2%80%9D",
-    "twitter?": "https://twitter.com/vibeversexyz",
-    "screenshots?": [
+    "github": "https://github.com/vibeverse-team/vibeverse",
+    "youtube": "https://youtu.be/8__wlPEDhWw",
+    "twitter": "https://twitter.com/vibeverse_ai",
+    "screenshots": [
       "/img/showcase/vibeverse_screenshot_0.jpg",
       "/img/showcase/vibeverse_screenshot_1.jpg"
     ],
-    "submittableId?": "34886232"
+    "submittableId": "41394313"
   },
   {
     "name": "DSign",
