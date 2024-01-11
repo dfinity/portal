@@ -116,20 +116,20 @@ Below are the most important types for the purpose of this article:
 
     //proposals types for managing an SNS
     type Action = variant {
-      ManageNervousSystemParameters : NervousSystemParameters;
-      AddGenericNervousSystemFunction : NervousSystemFunction;
-      RemoveGenericNervousSystemFunction : nat64;
-      UpgradeSnsToNextVersion : record {};
-      RegisterDappCanisters : RegisterDappCanisters;
-      TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
-      UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
-      DeregisterDappCanisters : DeregisterDappCanisters;
-      MintSnsTokens : MintSnsTokens;
-      Unspecified : record {};
-      ManageSnsMetadata : ManageSnsMetadata;
-      ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
-      ManageLedgerParameters : ManageLedgerParameters;
-      Motion : Motion;
+        ManageNervousSystemParameters : NervousSystemParameters;
+        AddGenericNervousSystemFunction : NervousSystemFunction;
+        RemoveGenericNervousSystemFunction : nat64;
+        UpgradeSnsToNextVersion : record {};
+        RegisterDappCanisters : RegisterDappCanisters;
+        TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
+        UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
+        DeregisterDappCanisters : DeregisterDappCanisters;
+        MintSnsTokens : MintSnsTokens;
+        Unspecified : record {};
+        ManageSnsMetadata : ManageSnsMetadata;
+        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
+        ManageLedgerParameters : ManageLedgerParameters;
+        Motion : Motion;
     };
 ```
 
