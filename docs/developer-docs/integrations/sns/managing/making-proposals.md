@@ -791,7 +791,8 @@ quill send message.json
 
 ## Critical proposals
 
-Some proposal types are considered "critical". These are DeregisterDappCanisters, TransferSnsTreasuryFunds, and MintSnsTokens. Critical proposal types are handled differently to ensure they are only passed with broad community consensus.
+Some proposal types are considered "critical". These are DeregisterDappCanisters, TransferSnsTreasuryFunds, and MintSnsTokens. Critical proposal types have a bit more strict rules to ensure they are only passed with broad community consensus.
+In the following we list all differences to non-critical proposals.
 
 1. Voting Thresholds
 
