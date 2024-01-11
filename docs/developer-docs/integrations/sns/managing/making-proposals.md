@@ -116,24 +116,49 @@ Below are the most important types for the purpose of this article:
 
     //proposals types for managing an SNS
     type Action = variant {
-        ManageNervousSystemParameters : NervousSystemParameters;
-        AddGenericNervousSystemFunction : NervousSystemFunction;
-        RemoveGenericNervousSystemFunction : nat64;
-        UpgradeSnsToNextVersion : record {};
-        RegisterDappCanisters : RegisterDappCanisters;
-        TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
-        UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
-        DeregisterDappCanisters : DeregisterDappCanisters;
-        Unspecified : record {};
-        ManageSnsMetadata : ManageSnsMetadata;
-        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
-        Motion : Motion;
+      ManageNervousSystemParameters : NervousSystemParameters;
+      AddGenericNervousSystemFunction : NervousSystemFunction;
+      RemoveGenericNervousSystemFunction : nat64;
+      UpgradeSnsToNextVersion : record {};
+      RegisterDappCanisters : RegisterDappCanisters;
+      TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
+      UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
+      DeregisterDappCanisters : DeregisterDappCanisters;
+      MintSnsTokens : MintSnsTokens;
+      Unspecified : record {};
+      ManageSnsMetadata : ManageSnsMetadata;
+      ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
+      ManageLedgerParameters : ManageLedgerParameters;
+      Motion : Motion;
     };
 ```
 
 :::info
 See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405) - they are called “action” in the code.
 :::
+
+### Critical proposal types
+
+Some proposal types are considered "critical". These are DeregisterDappCanisters, TransferSnsTreasuryFunds, and MintSnsTokens. Critical proposal types have a bit more strict rules to ensure they are only passed with broad community consensus.
+In the following we list all differences to non-critical proposals.
+
+1. Voting Thresholds
+
+   Non-critical proposals types can be passed if 3% of the total voting power votes yes and 50% of the exercised voting power votes yes.
+
+   Critical proposals types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes. 
+
+2. Catch-all following
+
+   Voters can follow other neurons on critical proposal types, but each neuron has to make an active decision of following for each critical proposals type as the “All topics”-following is not applied to critical proposal types. Users who have multiple neurons can actively vote with just one of them and follow this one neuron with all their other neurons
+
+3. Voting period
+   
+   The voting period for critical proposal types is 5-10 days and cannot be changed by the SNS. In contrast, for non-critical proposals the default is 4-8 days and this can be adjusted by each SNS DAO.
+
+   Critical proposal have a longer voting period to as they require a larger voting participation and it is therefore beneficial to give voters a bit more time to participate.
+
+   As with all proposals, the [wait-for-quiet algorithm](https://wiki.internetcomputer.org/wiki/NNS_Canisters#Proposal_decision_and_wait-for-quiet) ensures that controversial proposals will have a longer voting period (up to 10 days for critical proposals) while proposals where everyone agrees on have a shorter voting period (5 days for critical proposals).
 
 ### `Motion`
 
@@ -250,6 +275,8 @@ The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanist
 If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so.
 To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
 
+This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
+
 #### Relevant type signatures
 
 ```candid
@@ -287,8 +314,9 @@ quill send message.json
 
 ### `TransferSnsTreasuryFunds`
 
-The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals.
-To do so, one has to define the following arguments.
+The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals. 
+
+This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
 
 #### Relevant type signatures
 
@@ -446,7 +474,9 @@ Then the resulting metadata will end like this where only the `description` fiel
 
 ### `MintSnsTokens`
 
-Each SNS can have SNS tokens in its treasury, but it also has the ability to mint new SNS tokens to a particular user. This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
+Each SNS can have SNS tokens in its treasury, but it also has the ability to mint new SNS tokens to a particular user.
+
+This is a ["critical" proposal type](#criticalproposaltypes), which means it is subject to higher voting thresholds before it is accepted.
 
 #### Relevant type signatures
 
@@ -488,7 +518,6 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 
 quill send message.json
 ```
-
 
 ## Generic proposals
 
@@ -787,22 +816,6 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send message.json
 ```
-
-
-## Critical proposals
-
-Some proposal types are considered "critical". These are DeregisterDappCanisters, TransferSnsTreasuryFunds, and MintSnsTokens. Critical proposal types have a bit more strict rules to ensure they are only passed with broad community consensus.
-In the following we list all differences to non-critical proposals.
-
-1. Voting Thresholds
-
-   Non-critical proposals types can be passed if 3% of the total voting power votes yes and 50% of the exercised voting power votes yes.
-
-   Critical proposals types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes. 
-
-2. Catch-all following
-
-   Users must set following explicitly for critical proposal types.
 
 <!-- ## SNS Proposal lifecycle
 
