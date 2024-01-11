@@ -24,7 +24,9 @@
     "oneLiner": "The fastest Ordinals marketplace",
     "website": "https://bioniq.io/",
     "tags": [
-      "Bitcoin"
+      "Bitcoin",
+      "Enterprise",
+      "NFT"
     ],
     "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
     "display": "Large",
@@ -765,7 +767,8 @@
     "stats": "Powering 15+ banks",
     "tags": [
       "Wallet",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "usesInternetIdentity": false,
     "github": "",
@@ -1671,7 +1674,8 @@
     "name": "Aviate Labs",
     "description": "Stop worrying about system failures and slow performance. Our data center standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "website": "https://www.aviatelabs.co/",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
@@ -2839,7 +2843,8 @@
     "oneLiner": "An infrastructure that brings Web 2.0 user experience to Web 3.0",
     "tags": [
       "Tools / Infrastructure",
-      "SocialFi"
+      "SocialFi",
+      "Enterprise"
     ],
     "logo": "/img/showcase/faceless_logo.png",
     "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
@@ -2883,10 +2888,9 @@
     "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
     "stats": "Private alpha testnet has been launched; the network and user interface are ready for operation.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure", "Enterprise"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/SamaNetwork",
     "twitter": "https://twitter.com/sama_network",
     "youtube": "https://www.youtube.com/@sama_network",
     "submittableId": "40741075"
@@ -2974,7 +2978,8 @@
       "Tools / Infrastructure",
       "DeFi",
       "DAO",
-      "SocialFi"
+      "SocialFi",
+      "Enterprise"
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/dCentra-io/dflow-icp",
