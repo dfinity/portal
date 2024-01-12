@@ -3251,7 +3251,7 @@
     "id": "ic-mind-body-canister",
     "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "oneLiner": "tooling for uploading and accessing mind and body data from a firebase API onto ICP canister, blueberry data as a reference example",
-    "logo": "https://github.com/blueberryxtech/ic-mind-body-canister/blob/master/src/mind_body_assets/assets/logo.svg",
+    "logo": "/img/showcase/ic-mind-body-canister.png",
     "tags": [
         "Tools / Infrastructure"
       ],
