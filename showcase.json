@@ -3247,17 +3247,17 @@
     "github": "https://github.com/id-daniel-mccoy/asset-app"
   },
   {
-    "name": "user controlled mind and body canister”,
+    "name": "user controlled mind and body canister",
     "id": "ic-mind-body-canister",
-    "website": "https://github.com/blueberryxtech/ic-mind-body-canister”,
+    "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "oneLiner": "tooling for uploading and accessing mind and body data from a firebase API onto ICP canister, blueberry data as a reference example",
     "logo": "https://github.com/blueberryxtech/ic-mind-body-canister/blob/master/src/mind_body_assets/assets/logo.svg",
     "tags": [
         "Tools / Infrastructure"
       ],
-    "description": "POC of a decentralized mind and body data management tooling that leverages Internet Computer (IC) technology. This POC provides methods and interface to submit HTTP Outcall requests to a proxy API that interfaces with a Firebase FIrestore database. It provides an example front end react application that interacts with a motoko backend.”,
+    "description": "POC of a decentralized mind and body data management tooling that leverages Internet Computer (IC) technology. This POC provides methods and interface to submit HTTP Outcall requests to a proxy API that interfaces with a Firebase FIrestore database. It provides an example front end react application that interacts with a motoko backend.",
     "usesInternetIdentity": true,
-    "github": "https://github.com/blueberryxtech/ic-mind-body-canister”,
+    "github": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "submittableId": "44190088"
  }
 ]
