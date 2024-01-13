@@ -441,7 +441,7 @@ rustup target add wasm32-unknown-unknown
 //This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
-    TransformContext,
+TransformContext,TransformFunc
 };
 
 use ic_cdk_macros::{self, query, update};
@@ -449,11 +449,7 @@ use serde::{Serialize, Deserialize};
 use serde_json::{self, Value};
 
 // This struct is legacy code and is not really used in the code.
-#[derive(Serialize, Deserialize)]
-struct Context {
-    bucket_start_time_index: usize,
-    closing_price_index: usize,
-}
+
 
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
@@ -487,14 +483,8 @@ async fn get_icp_usd_exchange() -> String {
     ];
 
 
-    // This struct is legacy code and is not really used in the code. Need to be removed in the future
-    // The "TransformContext" function does need a CONTEXT parameter, but this implementation is not necessary
-    // the TransformContext(transform, context) below accepts this "context", but it does nothing with it in this implementation.
-    // bucket_start_time_index and closing_price_index are meaninglesss
-    let context = Context {
-        bucket_start_time_index: 0,
-        closing_price_index: 4,
-    };
+    
+    
 
     //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4
     let request = CanisterHttpRequestArgument {
@@ -502,15 +492,29 @@ async fn get_icp_usd_exchange() -> String {
         method: HttpMethod::GET,
         body: None,               //optional for request
         max_response_bytes: None, //optional for request
-        transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
+        transform: Some(
+            TransformContext {
+                // The "method" parameter needs to the same name as the function name of your transform function
+                function:TransformFunc(candid::Func { principal: ic_cdk::api::id(), method: "transform".to_string() }),
+                // The "TransformContext" function does need a context parameter, it can be empty
+                context:vec![]
+          
+    
+            }
+    
+           
+        ),
         headers: request_headers,
     };
 
     //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
 
-    //Note: in Rust, `http_request()` already sends the cycles needed
-    //so no need for explicit Cycles.add() as in Motoko
-    match http_request(request).await {
+    //Note: in Rust, `http_request()` needs to pass cycles if you are using ic_cdk: ^0.9.0
+    let cycles = 230_949_972_000;
+
+    
+   
+    match http_request(request,cycles).await {
         //4. DECODE AND RETURN THE RESPONSE
 
         //See:https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
