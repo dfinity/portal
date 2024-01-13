@@ -537,7 +537,7 @@ async fn get_icp_usd_exchange() -> String {
 
             // ("[[1682978460,5.714,5.718,5.714,5.714,243.5678]]")
 
-            //Which can be formatted as this
+            //Which can be formatted as this 
             //  [
             //     [
             //         1682978460, <-- start/timestamp
