@@ -2272,9 +2272,9 @@
     "github": "https://github.com/ICEvent/Escrow"
   },
   {
-    "id": "34886232",
+    "id": "vibeverse",
     "name": "Vibeverse",
-    "oneLiner": "Where AI magic meets creative play in a universe of endless possibilities",
+    "oneLiner": "a learning mobile app that teaches ppl how to be creative with ai",
     "website": "https://vibeverse.xyz/",
     "tags": [
       "AI"
@@ -2283,14 +2283,14 @@
     "stats": "",
     "logo": "/img/showcase/vibeverse_logo.png",
     "usesInternetIdentity": true,
-    "github?": "https://github.com/roger-rangel/vibeverse",
-    "youtube?": "https://www.youtube.com/watch?v=-Gug7qZq4AM%E2%80%9D",
-    "twitter?": "https://twitter.com/vibeversexyz",
-    "screenshots?": [
+    "github": "https://github.com/vibeverse-team/vibeverse",
+    "youtube": "https://youtu.be/8__wlPEDhWw",
+    "twitter": "https://twitter.com/vibeverse_ai",
+    "screenshots": [
       "/img/showcase/vibeverse_screenshot_0.jpg",
       "/img/showcase/vibeverse_screenshot_1.jpg"
     ],
-    "submittableId?": "34886232"
+    "submittableId": "41394313"
   },
   {
     "name": "DSign",
@@ -2339,7 +2339,8 @@
   },
   {
     "name": "Rakeoff",
-    "description": "Rakeoff is a user-friendly crypto staking rewards platform on ICP, with options to convert rewards into ckBTC or pool them for a chance to win a no-loss prize pool. Pooling staking rewards allows users to potentially amplify their ICP earnings while preserving their principal investment.",
+    "description": "Rakeoff is a cryptocurrency staking rewards application built on the ICP blockchain. It offers an ICP wallet with simplified staking, real-time asset tracking, and a no-loss prize pool for staking rewards. Enhance your staking experience with achievement-based ICP bonuses, all within a compact, user-friendly application.",
+    "stats": "$100k+ TVL",
     "website": "https://rakeoff.io/",
     "logo": "/img/showcase/rakeoff_logo.webp",
     "screenshots": [
@@ -2347,9 +2348,8 @@
     ],
     "display": "Normal",
     "id": "rakeoff",
-    "oneLiner": "Rakeoff is a user-friendly crypto staking rewards platform on ICP.",
+    "oneLiner": "Rakeoff is a cryptocurrency staking rewards application built on the ICP blockchain.",
     "tags": [
-      "Bitcoin",
       "DeFi",
       "Wallet"
     ],
@@ -3265,4 +3265,18 @@
 
     "submittableId": "35224577"
   },
+  {
+    "name": "user controlled mind and body canister",
+    "id": "ic-mind-body-canister",
+    "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
+    "oneLiner": "tooling for uploading and accessing mind and body data from a firebase API onto ICP canister, blueberry data as a reference example",
+    "logo": "/img/showcase/ic-mind-body-canister.png",
+    "tags": [
+        "Tools / Infrastructure"
+      ],
+    "description": "POC of a decentralized mind and body data management tooling that leverages Internet Computer (IC) technology. This POC provides methods and interface to submit HTTP Outcall requests to a proxy API that interfaces with a Firebase FIrestore database. It provides an example front end react application that interacts with a motoko backend.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/blueberryxtech/ic-mind-body-canister",
+    "submittableId": "44190088"
+ }
 ]
