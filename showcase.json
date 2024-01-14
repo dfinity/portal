@@ -3245,24 +3245,22 @@
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/id-daniel-mccoy/asset-app"
-  }
-   {
-    "id": "Outank NFT Rarity" ,
+  },
+  {
+    "id": "Outank NFT Rarity",
     "name": "Outrank",
-    "oneLiner":"OutRank is a working group with a vision to develop correct rarity metrics for all types of NFTs, making these easily accessible and widely available to improve the efficiency of NFT markets." ,
+    "oneLiner": "OutRank is a working group with a vision to develop correct rarity metrics for all types of NFTs, making these easily accessible and widely available to improve the efficiency of NFT markets." ,
     "website": "https://www.outrank.io",
-
-    "tags": ["NFTs / Rarity / Tooling "],
+    "tags": [
+      "NFTs", 
+      "Tools / Infrastructure"
+    ],
     "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity.",
-    "stats": "2 open source repos, 100% onchain rarity calculator, code for pulling rarity data from ICP canisters",
     "logo": "/img/showcase/Outrank.png",
-    
-    "usesInternetIdentity": "False",
-
+    "usesInternetIdentity": false,
     "github": "https://github.com/OutRankNFT",
     "youtube": "https://youtu.be/N8ap_FPNQv8",
     "twitter": "https://twitter.com/OutRankNFT",
-
     "submittableId": "35224577"
   },
   {
