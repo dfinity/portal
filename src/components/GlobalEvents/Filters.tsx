@@ -94,11 +94,7 @@ const Filters: React.FC<{
   }
 
   return (
-    <div
-      className="
-    
-    container-12"
-    >
+    <div className="container-12 relative md:z-1 ">
       <div className="md:hidden pt-10">
         <button
           className="font-circular border-none appearance-none bg-transparent text-black tw-heading-6 inline-flex items-center gap-2.5"
@@ -181,10 +177,10 @@ const Filters: React.FC<{
 
       <div
         className="
-        hidden
-        px-6 pb-4 pt-16
-        md:flex justify-between gap-2 items-start
-    "
+          hidden
+          pb-4 pt-16
+          md:flex justify-between gap-2 items-start
+        "
       >
         <div className="flex md:flex-wrap gap-2 items-start md:gap-2.5">
           <ComboSelect

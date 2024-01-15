@@ -28,8 +28,6 @@ import {
   useQueryParam,
 } from "../utils/use-query-param";
 
-const MotionLink = motion(Link);
-
 const { events, topics, regions } = data;
 const DEFAULT_MAX_EVENTS = 12;
 

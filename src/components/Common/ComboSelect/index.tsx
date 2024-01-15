@@ -52,7 +52,7 @@ const ComboSelect: React.FC<{
     <details className="relative group" role="combobox" ref={ref}>
       <summary
         className={clsx(
-          "inline-flex items-center gap-2 tw-title-navigation border-white border border-solid bg-white/50 backdrop-blur-2xl rounded-xl py-2 px-4 cursor-pointer hover:bg-white transition-colors select-none",
+          "[&::-webkit-details-marker]:hidden inline-flex items-center gap-2 tw-title-navigation border-white border border-solid bg-white/50 backdrop-blur-2xl rounded-xl py-2 px-4 cursor-pointer hover:bg-white transition-colors select-none",
 
           selectedValues.length > 0 ? "text-infinite" : "text-black"
         )}
