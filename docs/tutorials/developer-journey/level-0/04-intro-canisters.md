@@ -16,7 +16,7 @@ A canister differs from a container, however, in the fact that a canister also s
 
 ### Languages 
 
-Canisters can be developed in a variety of existsing languages, such as Rust, JavaScript, Python, and TypeScript. 
+Canisters can be developed in a variety of existing languages, such as Rust, JavaScript, Python, and TypeScript. 
 There is also an SDK for Motoko, a language specifically for canister development on the Internet Computer with the focus on programming in a distributed asynchronous environment. 
 
 You'll dive further into Motoko and other languages in the next section, [introduction to languages](05-intro-languages.md).
@@ -85,7 +85,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
