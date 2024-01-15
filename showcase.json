@@ -3279,5 +3279,25 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "submittableId": "44190088"
- }
+ },
+ {
+    "id": "icgpt",
+    "name": "icgpt",
+    "description": "on chain LLMs"
+    "website": "https://icgpt.icpp.world/",
+    "logo": "",
+    "screenshots": [], 
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "ICGPT - on chain LLMs",
+    "stats": "",
+    "tags": [
+      "DeAI / on chain LLMs / C++"
+    ],    
+    "usesInternetIdentity": true,
+    "github": "https://github.com/icppWorld/icgpt",
+    "twitter": "https://twitter.com/icpp_pro",
+    "youtube": "https://youtu.be/2DhTpYrs-f0",
+    "submittableId": "43877997"
+ } 
 ]
