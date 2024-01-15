@@ -7,7 +7,7 @@ import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import EventCard from "../components/GlobalEvents/EventCard";
@@ -61,6 +61,15 @@ function GlobalEventsPage() {
     (AirtableEvent | "promo")[] | null
   >(null);
 
+  const filteredCount = useMemo(
+    () =>
+      filteredEvents?.reduce(
+        (acc, event) => (event === "promo" ? acc : acc + 1),
+        0
+      ),
+    [filteredEvents]
+  );
+
   useEffect(() => {
     if (
       !locationsInitialized ||
@@ -70,13 +79,6 @@ function GlobalEventsPage() {
       return;
     }
     const today = new Date().toISOString().slice(0, 10);
-
-    // console.log({
-    //   selectedLocations,
-    //   selectedTopic,
-    //   showPastEvents,
-    //   today,
-    // });
 
     const filtered: (AirtableEvent | "promo")[] = events.filter((event) => {
       if (
@@ -184,11 +186,12 @@ function GlobalEventsPage() {
             onLocationsChange={setSelectedLocations}
             selectedTopic={selectedTopic}
             onTopicChange={setSelectedTopic}
+            filteredCount={filteredCount}
           />
         </AnimateSpawn>
 
         <AnimateSpawn variants={transitions.container}>
-          <div className="container-12 grid grid-cols-1 md:grid-cols-3 gap-5 mt-16">
+          <div className="container-12 grid grid-cols-1 md:grid-cols-3 gap-5 mt-8 md:mt-16">
             {filteredEvents
               ?.slice(0, showMaxEvents)
               .map((eventOrPromo) =>

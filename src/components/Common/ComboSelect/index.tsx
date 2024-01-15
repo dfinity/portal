@@ -3,7 +3,7 @@ import React, { ReactNode, useEffect } from "react";
 import CheckBox from "../Checkbox";
 import LinkArrowDown from "../Icons/LinkArrowDown";
 
-const ComboSelectItem: React.FC<{
+export const ComboSelectItem: React.FC<{
   onChange: (checked: boolean) => void;
   children?: ReactNode;
   checked: boolean;
@@ -75,6 +75,37 @@ const ComboSelect: React.FC<{
         </div>
       </div>
     </details>
+  );
+};
+
+export const ComboSelectUnrolled: React.FC<{
+  options: {
+    label: string;
+    value: string;
+  }[];
+  selectedValues: string[];
+  onChange: (options: string[]) => void;
+}> = ({ options, selectedValues, onChange }) => {
+  const toggleOption = (option: string) => {
+    if (selectedValues.includes(option)) {
+      onChange(selectedValues.filter((v) => v !== option));
+    } else {
+      onChange([...selectedValues, option]);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-3">
+      {options.map((option) => (
+        <ComboSelectItem
+          onChange={() => toggleOption(option.value)}
+          checked={selectedValues.includes(option.value)}
+          key={option.value}
+        >
+          {option.label}
+        </ComboSelectItem>
+      ))}
+    </div>
   );
 };
 
