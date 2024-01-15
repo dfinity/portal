@@ -3283,21 +3283,18 @@
  {
     "id": "icgpt",
     "name": "icgpt",
-    "description": "on chain LLMs"
+    "oneLiner": "A fun dApp to demonstrate on-chain LLMs",
     "website": "https://icgpt.icpp.world/",
-    "logo": "",
-    "screenshots": [], 
-    "video": "",
-    "display": "Normal",
-    "oneLiner": "ICGPT - on chain LLMs",
-    "stats": "",
+    "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
+    "stats": "15M parameter llama2",
     "tags": [
-      "DeAI / on chain LLMs / C++"
+      "Tools / Infrastructure"
     ],    
+    "logo": "",
     "usesInternetIdentity": true,
     "github": "https://github.com/icppWorld/icgpt",
-    "twitter": "https://twitter.com/icpp_pro",
     "youtube": "https://youtu.be/2DhTpYrs-f0",
+    "twitter": "https://twitter.com/icpp_pro",
     "submittableId": "43877997"
- } 
+ }
 ]
