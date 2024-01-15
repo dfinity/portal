@@ -3252,7 +3252,7 @@
     "oneLiner": "OutRank is a working group with a vision to develop correct rarity metrics for all types of NFTs, making these easily accessible and widely available to improve the efficiency of NFT markets." ,
     "website": "https://www.outrank.io",
     "tags": [
-      "NFTs", 
+      "NFT", 
       "Tools / Infrastructure"
     ],
     "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity.",
