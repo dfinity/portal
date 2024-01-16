@@ -117,7 +117,7 @@ dfx wallet --network ic balance
 
 ## Deploying your dapp to the mainnet
 
-Now that you've obtained some cycles and created a cycles wallet, you can deploy your [`vite-motoko-react`](/docs/current/tutorials/hackathon-prep-course/2-deploying-first-fullstack-dapp) sample project to the mainnet. 
+Now that you've obtained some cycles and created a cycles wallet, you can deploy your [`vite-motoko-react`](/docs/current/tutorials/hackathon-prep-course/2-deploying-first-fullstack-dapp.md) sample project to the mainnet. 
 
 First, make sure you have an active connection to the mainnet. In your terminal window, run the command:
 
