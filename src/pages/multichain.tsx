@@ -173,9 +173,7 @@ function MultichainPage() {
             <div className="blob blob-purple blob-xl md:blob-xl md:blob-x-8 md:blob-y-10 opacity-75"></div>
             <div className="md:w-7/10 relative">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 animate-fade-up">
-                Trustless multi-chain
-                <br />
-                on ICP
+                Trustless multi-chain on ICP
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
                 Decentralized applications and services can delight users by
