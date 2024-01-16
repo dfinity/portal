@@ -294,18 +294,6 @@ Smart contract canisters are able to serve HTTP content natively, allowing for d
 
 If a canister wants to serve HTTP content, it should implement a method that consumes a HTTP request, which contains a URL, HTTP method and headers, then outputs a HTTP response  that contains a status, headers and the response body. The canister method can return HTML, CSS and JavaScript content as part of the HTTP response. 
 
-### HTTPS outcalls
-
-On ICP, canisters can communicate directly with external servers or other blockchains through the use of HTTPS outcalls. This is a unique feature of ICP, since traditionally, other blockchain networks are only able to communicate with external servers through blockchain oracles, or third-party entities that relay calls from the blockchain to an external server, then route the response back to the blockchain. 
-
-HTTPS outcalls allow smart contract canisters on ICP to make calls directly to external HTTPS servers. Then, the response of these HTTPS calls can be used by the smart contract in a safe way that doesn't result in a replica state divergence. 
-
-HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries required for the canister to communicate with external servers. Using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional 'Web 2' services.
-
-Currently, the ICP HTTPS outcalls feature supports the `GET`, `HEAD`, and `POST` methods for HTTPS requests. 
-
-You can learn more about HTTPS outcalls in the documentation [here](/docs/current/tutorials/developer-journey/level-3/3.2-https-outcalls).
-
 ## Next steps
 
 - [5: Integrating with tokens](5-integrating-with-tokens.md).
