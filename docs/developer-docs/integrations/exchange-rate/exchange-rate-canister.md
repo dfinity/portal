@@ -64,7 +64,7 @@ If you need to get your wallet canister ID, you can run the `dfx wallet addresse
 Then, you can send a request, such as one to get the BTC/USD rate, with the following command:
 
 ```
-dfx canister call --wallet $WALLET --with-cycles 10000000000 xrc get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
+dfx canister call --wallet $WALLET --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
 ```
 
 ## Exchange rate canister demo

@@ -3,6 +3,7 @@ import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { isLinkExternal } from "@site/plugins/utils/links";
 import Search from "@site/src/theme/SearchBar";
+import { useCollapsible } from "@site/src/utils/use-collapsible";
 import clsx from "clsx";
 import React, { useEffect } from "react";
 import LinkArrowLeft from "../Icons/LinkArrowLeft";
@@ -96,24 +97,10 @@ const Drawer: React.FC<{
   startingState?: boolean;
   alwaysOpen?: boolean;
 }> = ({ title, children, startingState = false, alwaysOpen = false }) => {
-  const [open, setOpen] = React.useState(startingState || alwaysOpen);
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    updateHeight();
-
-    function updateHeight() {
-      if (open) {
-        ref.current.style.maxHeight = ref.current.scrollHeight + "px";
-      } else {
-        ref.current.style.maxHeight = "0px";
-      }
-    }
-    window.addEventListener("resize", updateHeight);
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, [open]);
+  const collapsible = useCollapsible({
+    alwaysOpen,
+    startingState,
+  });
 
   return (
     <div className="">
@@ -122,20 +109,14 @@ const Drawer: React.FC<{
       ) : (
         <button
           className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => collapsible.setOpen((o) => !o)}
         >
           <div className="tw-heading-4">{title}</div>
 
-          <Arrow open={open} />
+          <Arrow open={collapsible.open} />
         </button>
       )}
-      <div
-        ref={ref}
-        className={clsx(
-          "transition-all overflow-hidden",
-          alwaysOpen || open ? "max-h-none" : "max-h-0"
-        )}
-      >
+      <div ref={collapsible.ref} className={collapsible.className}>
         {children}
       </div>
     </div>
@@ -312,21 +293,21 @@ const MarketingNav = () => {
   return (
     <>
       <nav
-        className="marketing-navbar z-[1000] pl-6 pr-4 py-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent sticky top-0 transition-transform"
+        className="marketing-navbar z-[1000] !px-0 pt-6 pb-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent dark-hero:backdrop-blur-sm sticky top-0 transition-transform"
         ref={navbarRef}
       >
-        <div className="md:max-w-[1440px] md:w-full md:mx-auto flex items-center justify-between">
+        <div className="container-12 w-full flex items-center justify-between">
           {/* logo */}
           <Link href="/" className="self-center flex items-center">
             <img
               src="/img/IC_logo_horizontal_white.svg"
               alt=""
-              className="h-5 md:h-7 hidden dark-hero:block"
+              className="h-8 md:h-10 hidden dark-hero:block"
             />
             <img
               src="/img/IC_logo_horizontal.svg"
               alt=""
-              className="h-5 md:h-7 dark-hero:hidden"
+              className="h-8 md:h-10 dark-hero:hidden"
             />
           </Link>
 
@@ -453,7 +434,7 @@ const MarketingNav = () => {
           <div className="flex gap-4 items-center">
             <Search />
             <button
-              className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[9px] h-10 w-10 p-0 justify-center"
+              className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[4px] h-8 w-8 p-0 justify-center"
               onClick={toggleNav}
             >
               <span className="bg-black dark-hero:bg-white h-[2px] w-full shrink-0"></span>

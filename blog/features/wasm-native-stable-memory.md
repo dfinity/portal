@@ -80,7 +80,7 @@ fn insert_many(entries: Vec<(u128, u128)>) {
 }
 ```
 
-After deploying this dapp to the IC, we then execute multiple messages that bulk insert many key-value pairs (close to maxing out the ingress message size limit). The following graphs show the execution time for each of these messages.
+After deploying this dapp to ICP, we then execute multiple messages that bulk insert many key-value pairs (close to maxing out the ingress message size limit). The following graphs show the execution time for each of these messages.
 
 First, without Wasm-native stable memory:
 

@@ -30,7 +30,7 @@ The API response looks like this:
          5.718, <-- highest price during range
          5.714, <-- price at open
          5.714, <-- price at close
-         243.5678 <-- volume of ICP traded
+         243.5678 <-- volume of  traded
      ],
 ]
 ```
@@ -53,7 +53,7 @@ actor {
   //0. method that uses the HTTP outcalls feature and returns a string
   public func foo() : async Text {
 
-    //1. DECLARE IC MANAGEMENT CANISTER
+    //1. DECLARE MANAGEMENT CANISTER
     let ic : Types.IC = actor ("aaaaa-aa");
 
     //2. SETUP ARGUMENTS FOR HTTP GET request
@@ -87,7 +87,7 @@ You will also create some custom types in `Types.mo`. It will look like this:
 ```motoko
 module Types {
 
-    //type declarations for HTTP requests, HTTP responses, IC management canister, etc...
+    //type declarations for HTTP requests, HTTP responses, management canister, etc...
 
 }
 ```
@@ -140,7 +140,7 @@ actor {
   
   public func get_icp_usd_exchange() : async Text {
 
-    //1. DECLARE IC MANAGEMENT CANISTER
+    //1. DECLARE MANAGEMENT CANISTER
     //You need this so you can use it to make the HTTP request
     let ic : Types.IC = actor ("aaaaa-aa");
 
@@ -178,7 +178,7 @@ actor {
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
 
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
-    //IC management canister will make the HTTP request so it needs cycles
+    //The management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
     
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
@@ -187,7 +187,7 @@ actor {
     Cycles.add(20_949_972_000);
     
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Since the cycles were added above, you can just call the IC management canister with HTTPS outcalls below
+    //Since the cycles were added above, you can just call the management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
     
     //5. DECODE THE RESPONSE
@@ -328,7 +328,7 @@ module Types {
     };
 
 
-    //3. Declaring the IC management canister which you use to make the HTTPS outcall
+    //3. Declaring the management canister which you use to make the HTTPS outcall
     public type IC = actor {
         http_request : HttpRequestArgs -> async HttpResponsePayload;
     };
@@ -387,7 +387,7 @@ URLs:
 Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
 
 ```rust
-//1. DECLARE IC MANAGEMENT CANISTER
+//1. DECLARE MANAGEMENT CANISTER
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
     TransformContext,
@@ -437,26 +437,19 @@ rustup target add wasm32-unknown-unknown
 - #### Step 2: Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
-//1. IMPORT IC MANAGEMENT CANISTER
+//1. IMPORT MANAGEMENT CANISTER
 //This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
-    TransformContext,
+    TransformContext, TransformFunc,
 };
 
-use ic_cdk_macros::{self, query, update};
-use serde::{Serialize, Deserialize};
-use serde_json::{self, Value};
+use ic_cdk_macros::{query, update};
 
 // This struct is legacy code and is not really used in the code.
-#[derive(Serialize, Deserialize)]
-struct Context {
-    bucket_start_time_index: usize,
-    closing_price_index: usize,
-}
 
 //Update method using the HTTPS outcalls feature
-#[ic_cdk::update]
+#[update]
 async fn get_icp_usd_exchange() -> String {
     //2. SETUP ARGUMENTS FOR HTTP GET request
 
@@ -467,10 +460,7 @@ async fn get_icp_usd_exchange() -> String {
     let host = "api.pro.coinbase.com";
     let url = format!(
         "https://{}/products/ICP-USD/candles?start={}&end={}&granularity={}",
-        host,
-        start_timestamp.to_string(),
-        start_timestamp.to_string(),
-        seconds_of_time.to_string()
+        host, start_timestamp, start_timestamp, seconds_of_time
     );
 
     // 2.2 prepare headers for the system http_request call
@@ -486,31 +476,30 @@ async fn get_icp_usd_exchange() -> String {
         },
     ];
 
-
-    // This struct is legacy code and is not really used in the code. Need to be removed in the future
-    // The "TransformContext" function does need a CONTEXT parameter, but this implementation is not necessary
-    // the TransformContext(transform, context) below accepts this "context", but it does nothing with it in this implementation.
-    // bucket_start_time_index and closing_price_index are meaninglesss
-    let context = Context {
-        bucket_start_time_index: 0,
-        closing_price_index: 4,
-    };
-
     //note "CanisterHttpRequestArgument" and "HttpMethod" are declared in line 4
     let request = CanisterHttpRequestArgument {
         url: url.to_string(),
         method: HttpMethod::GET,
         body: None,               //optional for request
         max_response_bytes: None, //optional for request
-        transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
+        transform: Some(TransformContext {
+            // The "method" parameter needs to the same name as the function name of your transform function
+            function: TransformFunc(candid::Func {
+                principal: ic_cdk::api::id(),
+                method: "transform".to_string(),
+            }),
+            // The "TransformContext" function does need a context parameter, it can be empty
+            context: vec![],
+        }),
         headers: request_headers,
     };
 
     //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
 
-    //Note: in Rust, `http_request()` already sends the cycles needed
-    //so no need for explicit Cycles.add() as in Motoko
-    match http_request(request).await {
+    //Note: in Rust, `http_request()` needs to pass cycles if you are using ic_cdk: ^0.9.0
+    let cycles = 230_949_972_000;
+
+    match http_request(request, cycles).await {
         //4. DECODE AND RETURN THE RESPONSE
 
         //See:https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
@@ -526,8 +515,6 @@ async fn get_icp_usd_exchange() -> String {
             //To do this:
             //  1. Call `String::from_utf8()` on response.body
             //  3. You use a switch to explicitly call out both cases of decoding the Blob into ?Text
-            let str_body = String::from_utf8(response.body)
-                .expect("Transformed response is not UTF-8 encoded.");
 
             //The API response will looks like this:
 
@@ -545,9 +532,8 @@ async fn get_icp_usd_exchange() -> String {
             //     ],
             //  ]
 
-
             //Return the body as a string and end the method
-            str_body
+            String::from_utf8(response.body).expect("Transformed response is not UTF-8 encoded.")
         }
         Err((r, m)) => {
             let message =
@@ -559,11 +545,9 @@ async fn get_icp_usd_exchange() -> String {
     }
 }
 
-
 // Strips all data that is not needed from the original response.
 #[query]
 fn transform(raw: TransformArgs) -> HttpResponse {
-
     let headers = vec![
         HttpHeader {
             name: "Content-Security-Policy".to_string(),
@@ -590,17 +574,14 @@ fn transform(raw: TransformArgs) -> HttpResponse {
             value: "nosniff".to_string(),
         },
     ];
-    
 
     let mut res = HttpResponse {
         status: raw.response.status.clone(),
         body: raw.response.body.clone(),
         headers,
-        ..Default::default()
     };
 
-    if res.status == 200 {
-
+    if res.status == 200u64 {
         res.body = raw.response.body;
     } else {
         ic_cdk::api::print(format!("Received an error from coinbase: err = {:?}", raw));
@@ -610,8 +591,8 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 ```
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the IC management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
-- The Rust CDK method `http_request` used above wraps the IC management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
+- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
+- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 - #### Step 3: Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
 
@@ -637,12 +618,9 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-candid = "0.8.2"
-ic-cdk = "0.6.0"
-ic-cdk-macros = "0.6.0"
-serde = "1.0.152"
-serde_json = "1.0.93"
-serde_bytes = "0.11.9"
+candid = "0.10.2"
+ic-cdk = "0.12.1"
+ic-cdk-macros = "0.8.4"
 ```
 
 - #### Step 5: Test the dapp locally.

@@ -1,6 +1,6 @@
 # Level 0: Pre-flight operations
 
-- [0.1 Overview of the Internet Computer](01-ic-overview.md): In order to understand how to develop dapps on the IC, the first step in the developer journey is to take a look at the architecture of the IC and how it functions. This module covers:
+- [0.1 Overview of the Internet Computer](01-ic-overview.md): In order to understand how to develop dapps on ICP, the first step in the developer journey is to take a look at the architecture of ICP and how it functions. This module covers:
     - Overview of The Internet Computer Protocol:
         - Protocol stack:
             - Peer-to peer layer.

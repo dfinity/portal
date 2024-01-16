@@ -374,15 +374,15 @@ If you want to start submitting proposals right away, however, you can access a 
 
 ## SNS decentralization swaps
 
-You can participate in SNS decentralization swaps from the NNS dapp using the 'Launch Pad' tab. An SNS is an advanced version of a decentralized autonomous organization, where the participants of the SNS can vote on proposals, such as a new feature, roadmap item, or allocation of SNS funds. 
+You can participate in SNS decentralization swaps from the NNS dapp using the 'Launchpad' tab. An SNS is an advanced version of a decentralized autonomous organization, where the participants of the SNS can vote on proposals, such as a new feature, roadmap item, or allocation of SNS funds. 
 
 You can learn more about SNS [here](https://internetcomputer.org/sns)
 
 To view current and past SNS decentralization swaps from the NNS dapp:
 
-- #### Step 1:  From the NNS dapp, click **Launch pad** from the left navigation bar.
+- #### Step 1:  From the NNS dapp, click **Launchpad** from the left navigation bar.
 
-![Launch pad](../_attachments/nns15.png)
+![Launchpad](../_attachments/nns15.png)
 
 - #### Step 2: Select any SNS swap to view the details, such as the status, total participants, token supply, and when the swap ended.
 

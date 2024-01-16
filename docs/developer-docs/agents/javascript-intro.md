@@ -2,17 +2,17 @@
 sidebar_position: 1
 sidebar_label: From a JavaScript agent
 ---
-# Calling the IC from a JavaScript agent
+# Making a call from a JavaScript agent
 
 ## Overview
 
-This guide covers connecting to the IC from JavaScript in a web browser. For more information about calling IC from Node.js, please, refer to [this guide](nodejs.md).
+This guide covers connecting to ICP from JavaScript in a web browser. For more information about calling ICP from Node.js, please, refer to [this guide](nodejs.md).
 
 If you are looking for an explanation of what an agent does, see the [agent overview](../index.md).
 
 Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
 
-The IC supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
+ICP supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
 
 As a result of the latency for updates, best practices around modeling your application's performance will have you make updates asynchronously and early. If you can make an update ahead of time and have it already "cached" in your canister's memory, your users will have a better experience requesting that data. Similarly, if your application needs to make an update, it is best to avoid blocking interaction while your update is taking place. Use **optimistic rendering** wherever practical, and proceed with your application as if the call has already succeeded.
 
@@ -34,7 +34,7 @@ dfx new hello
 
 ## A simple call
 
-Talking to the IC from your application starts with the canister interface. Let's take a very simple one to begin with.
+Talking to ICP from your application starts with the canister interface. Let's take a very simple one to begin with.
 
 In most cases, it is easier to configure your project to have a canister defined in `dfx.json`, and to generate your declarations automatically using the `dfx generate` command. 
 
@@ -135,7 +135,7 @@ export const idlFactory = ({ IDL }) => {
 
 ```
 
-Unlike our `did.d.ts` declarations, this `idlFactory` needs to be available during runtime. The `idlFactory` gets loaded by an [actor](https://agent-js.icp.host/agent/interfaces/Actor.html) interface, which is what will handle structuring the network calls according to the IC API and the provided candid spec.
+Unlike our `did.d.ts` declarations, this `idlFactory` needs to be available during runtime. The `idlFactory` gets loaded by an [actor](https://agent-js.icp.host/agent/interfaces/Actor.html) interface, which is what will handle structuring the network calls according to the ICP API and the provided candid spec.
 
 This factory again represents a service with a `greet` method, and the same arguments as before. You may notice, however, that the `IDL.Func` has a third argument, which here is an empty array. That represents any additional annotations the function may be tagged with, which most commonly will be `"query"`.
 
@@ -163,6 +163,12 @@ In the `index.js` file, each of the previously explained pieces are pulled toget
 }
 ```
 
+:::caution
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally. 
+
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
+:::
+
 This constructor first creates a `HTTPAgent`, which is wraps the JS `fetch` API and uses it to encode calls through the public API. This code also optionally fetches the root key of the replica, for non-mainnet deployments. Finally, it creates an actor using the automatically generated interface for the canister will call, passing it the `canisterId` and the `HTTPAgent` that have been initialized.
 
 This `actor` instance is now set up to call all of the service methods as methods. Once this is all set up, you can simply run `dfx generate` whenever you make changes to your canister API, and the full interface will automatically stay in sync in your frontend code.
@@ -177,7 +183,7 @@ When you are building apps that run in the browser, here are some things to cons
 
 ### Performance
 
-Updates to the IC may feel slow to your users, at around 2-4 seconds. When you are building your application, take that latency into consideration, and consider following some best practices:
+Updates to ICP may feel slow to your users, at around 2-4 seconds. When you are building your application, take that latency into consideration, and consider following some best practices:
 
 * Avoid blocking UI interactions while you wait for the result of your update. Instead, allow users to continuing to make other updates and interactions, and inform your users of success asynchronously. 
 * Try to avoid making inter-canister calls. If the backend needs to talk to other canisters, the duration can add up quickly.

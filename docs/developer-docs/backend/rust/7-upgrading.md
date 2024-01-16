@@ -16,9 +16,9 @@ When a canister needs to be upgraded, the following workflow is used:
 
 ### Versioning stable memory
 
-Stable memory is a data persistence feature on the IC. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 96GiB if the subnet can accomodate it. 
+Stable memory is a data persistence feature on ICP. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 96GiB if the subnet can accommodate it. 
 
-In comparison, heap storage refers to the regular Wasm data storage for a canister. Heap storage is not persisted across canister upgrades and is limited to 4GiB. 
+In comparison, heap memory (also referred to as "main memory") refers to the regular Wasm data storage for a canister. Heap memory is not persisted across canister upgrades and is limited to 4GiB. 
 
 Stable memory can be viewed as the communication channel between old and new versions of a canister. As good practice, communication protocols should be versioned. In some cases, developers may want to radically change something such as the serialization format or the stable data layout of their canister. In radical changes like these, the stable memory decoding mechanism may need to guess the data's format, which can become messy and complicated. To make this process easier, stable memory versioning should be planned for. It can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number. 
 

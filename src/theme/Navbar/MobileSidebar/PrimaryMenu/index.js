@@ -16,7 +16,7 @@ export default function NavbarMobilePrimaryMenu() {
   // Should we allow providing a different list of items?
   let items = useNavbarItems();
 
-  const isDocsPage = useIsDocs();
+  const { isDocsPage } = useIsDocs();
 
   if (isDocsPage) {
     items = items.filter(

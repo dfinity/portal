@@ -6,7 +6,7 @@
 
 Smart contracts on the Internet Computer are known as **canisters**. A canister contains both the source code and software state. A canister's source code is compiled into a WebAssembly module and is associated with a module of stable memory. 
 
-When a dapp is written to be deployed on the IC, the source code is compiled into a WebAssembly module. Then, that WebAssembly module is deployed and executed inside of the canister.  Once a canister is deployed, end-users can interact with the canister through the CLI or through a frontend client such as a web browser. 
+When a dapp is written to be deployed on ICP, the source code is compiled into a WebAssembly module. Then, that WebAssembly module is deployed and executed inside of the canister.  Once a canister is deployed, end-users can interact with the canister through the CLI or through a frontend client such as a web browser. 
 
 ## Architecture
 
@@ -16,7 +16,7 @@ A canister differs from a container, however, in the fact that a canister also s
 
 ### Languages 
 
-Canisters can be developed in a variety of existsing languages, such as Rust, JavaScript, Python, and TypeScript. 
+Canisters can be developed in a variety of existing languages, such as Rust, JavaScript, Python, and TypeScript. 
 There is also an SDK for Motoko, a language specifically for canister development on the Internet Computer with the focus on programming in a distributed asynchronous environment. 
 
 You'll dive further into Motoko and other languages in the next section, [introduction to languages](05-intro-languages.md).
@@ -29,7 +29,7 @@ Each canister includes the compiled code for one actor and may also include addi
 
 ### Why code is compiled into WebAssembly
 
-WebAssembly is a low-level computer instruction format. It abstracts a program's execution cleanly over most modern hardware. WebAssembly is portable and broadly supported for programs that run on the internet, making it a natural fit for dapps intended to run on the IC. 
+WebAssembly is a low-level computer instruction format. It abstracts a program's execution cleanly over most modern hardware. WebAssembly is portable and broadly supported for programs that run on the internet, making it a natural fit for dapps intended to run on ICP. 
 
 ## Types of canisters
 
@@ -61,7 +61,7 @@ Canisters are managed by **controllers**, which may be a centralized entity, dec
 
 Controllers are responsible for deploying and maintaining the canister that it is a controller of. A controller is the only entity that has permission to update and manage the canister through workflows like deploying the canister to the mainnet or starting and stopping the canister. Controllers can also change the canister's parameters, add or remove additional controllers, or delete the canister. 
 
-Additionally, controllers can update the canister code by submitting a new Wasm module to replace the current, existing module. By default, when the Wasm module of a canister is updated, the canister clears out the Wasm's memory, but the content of the canister's stable memory remains the same. On the IC, the upgrade mechanism includes three actions that are atomically executed. These are the serializing of the Wasm memory and writing it to the stable memory, installing the new Wasm code, then deserializing the content of the stable memory. It is good practice that any data that needs to be persisted across upgrades should be stored in stable memory. 
+Additionally, controllers can update the canister code by submitting a new Wasm module to replace the current, existing module. By default, when the Wasm module of a canister is updated, the canister clears out the Wasm's memory, but the content of the canister's stable memory remains the same. On ICP, the upgrade mechanism includes three actions that are atomically executed. These are the serializing of the Wasm memory and writing it to the stable memory, installing the new Wasm code, then deserializing the content of the stable memory. It is good practice that any data that needs to be persisted across upgrades should be stored in stable memory. 
 
 ## Cycles and resource charges
 
@@ -69,7 +69,7 @@ A canister's controller is responsible for ensuring the canister contains enough
 
 For memory usage, the system keeps track of all memory used by the canister and regularly charges the canister's cycles account. This charging happens at regular intervals for efficiency. 
 
-For computational power, cycles are charged at the time computation is performed. Each canister contains instrumental code that allows the IC to count the number of instructions executed during the processing of a message. Each round, there is a limit on the number of executions that can be performed during that round. If that number is exceeded, the execution is paused and continued in the following round. Cycles for the computation are charged at the end of the round. For security and efficiency reasons, there is a limit on the total number of rounds the execution can use.
+For computational power, cycles are charged at the time computation is performed. Each canister contains instrumental code that allows ICP to count the number of instructions executed during the processing of a message. Each round, there is a limit on the number of executions that can be performed during that round. If that number is exceeded, the execution is paused and continued in the following round. Cycles for the computation are charged at the end of the round. For security and efficiency reasons, there is a limit on the total number of rounds the execution can use.
 
 For network bandwidth, cycles are charged at the time of usage. When a canister goes to send a request to another canister, the system automatically calculates the total number of cycles that sending the message will cost. This cost consists of a fixed component and a component that varies based on the size of the message's payload. This cost is then deducted from the canister's cycles account. A charge is also deducted for sending a maximum sized reply to a callee, since for inter-canister messages, the caller pays for the reply. Any cost difference between the maximum size and the actual size of the reply are refunded to the canister when the reply arrives. 
 
@@ -77,15 +77,17 @@ If a canister runs out of cycles, the canister is uninstalled. The code and stat
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -94,6 +96,8 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
 - [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
+- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 
 ## Next steps
 

@@ -2,28 +2,28 @@
 
 ## Overview
 Ledgers are used to record transactions in a chain of blocks. One block references its parent block forming a blockchain that is immutable without changing all previous blocks in the chain. 
-The Internet Computer utilizes two different types of ledgers. The first ledger is the ICP ledger. It is part of the [NNS](/tokenomics/nns/nns-intro.md) and the canister that implements
+The Internet Computer Protocol utilizes two different types of ledgers. The first ledger is the ICP ledger. It is part of the [NNS](/tokenomics/nns/nns-intro.md) and the canister that implements
 the ICP ledger is running on the NNS subnet. The second type of ledger are the ICRC-1 ledgers. In this overview, both ledger types
 will be explained and their differences will be highlighted. 
 
 ## ICP ledger
-The main purpose of the ICP ledger is to record `burn`, `mint` and most commonly `transfer` transactions with regards to the IC's native [token](/docs/concepts/tokens-cycles.md) `ICP`.
+The main purpose of the ICP ledger is to record `burn`, `mint` and most commonly `transfer` transactions with regards to ICP's native [token](/docs/concepts/tokens-cycles.md) `ICP`.
 The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
 There is only one ICP ledger on the Internet Computer. 
 
 ## ICRC-1 ledgers
 
 ICRC stands for `Internet Computer request for comments` and is a working group for various topics on the Internet Computer. The documentation of ICRC can be found [here](https://github.com/dfinity/ICRC).
-The working group has released a standard for new tokens on the IC. To create a new token, one requires a ledger to record all transactions made with this token. This is where the ICRC-1 standard comes in. 
-ICRC-1 is a standard created by the IC working group that defines the general functionalities of ledgers. All tokens and their corresponding ledgers that wish to support this standard have to fulfill all requirements
+The working group has released a standard for new tokens on the Internet Computer Protocol. To create a new token, one requires a ledger to record all transactions made with this token. This is where the ICRC-1 standard comes in. 
+ICRC-1 is a standard created by the Internet Computer Protocol working group that defines the general functionalities of ledgers. All tokens and their corresponding ledgers that wish to support this standard have to fulfill all requirements
 specified in the standard. You can find a detailed description of the ICRC-1 standard [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md).
 
 In addition to the ICRC-1 standard, there have been discussions around further specifications and functionalities. As the result of these discussions,  an extension of the ICRC-1 standard called [ICRC-2](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2) has been created. It deals with `approve` and `transfer_from` transactions, which is a concept that has seen wide adoption among other token standards. 
 There may be further standards that serve as extensions to the ICRC-1 standard, however, not all ICRC standards necessarily have to be extensions of ICRC-1. 
 
-The purpose of the ICRC-1 ledger is to create a universally accepted standard for making and recording transactions for tokens on the IC. 
+The purpose of the ICRC-1 ledger is to create a universally accepted standard for making and recording transactions for tokens on the Internet Computer Protocol. 
 
-## The difference between ICP and ICRC-1 ledgers
+## The difference between the ICP ledger and ICRC-1 ledgers
 The biggest difference between the ICP and ICRC-1 ledgers is that the ICP ledger is a specific implementation of a ledger, which at first followed no official standard. It had existed before ICRC-1 had been discussed or created. 
 ICRC-1 on the other hand is a standard, not a specific implementation of some ledger. There is a [reference implementation](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icrc1/ledger) created by the DFINITY Foundation, but there may be different ICRC-1 ledgers with different implementations that
 all follow the same standard. The ICRC-1 reference implementation and the ICP ledger share a lot of similarities. However, they do have different endpoints, different transaction and block objects and quite a few other, more subtle, differences. 

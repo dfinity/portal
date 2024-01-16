@@ -9,7 +9,7 @@ SNSs are protocol-provided DAOs on the Internet Computer.
 There are of course also other alternatives to getting a DAO.
 
 These possibilities allow communities to choose between using DAOs that are provided
-as a service by the IC, where maintenance is as automated as possible, and DAOs
+as a service by ICP, where maintenance is as automated as possible, and DAOs
 that have full flexibility of how they can evolve.
 
 

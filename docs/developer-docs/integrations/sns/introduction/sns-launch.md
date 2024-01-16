@@ -21,7 +21,7 @@ The decentralization swap is a key concept explained in more detail below. Refer
 ## Decentralization swap
 
 The launch of each SNS includes a separate **decentralization swap canister** that
-is owned and run by the IC.
+is owned and run by the Internet Computer Protocol.
 In more detail, it is controlled by the NNS root canister.
 
 * The swap canister is set up at the start with a defined amount of SNS tokens to be

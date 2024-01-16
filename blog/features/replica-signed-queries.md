@@ -21,7 +21,7 @@ Having a single replica signature in a query response doesn't completely solve t
 
 First, a list of node IDs and their corresponding public keys is put into the subnet's state tree so that they can be certified by the subnet. Users can obtain the certificate to validate the node's keys through an HTTP `read_state` call that includes a timestamp value. 
 
-To support replica-signed queries, the query response format has been changed. The response to a query call adds a list with one signature for the returned response produced by the IC node that evaluated the query call.
+To support replica-signed queries, the query response format has been changed. The response to a query call adds a list with one signature for the returned response produced by the ICP node that evaluated the query call.
 
 If the call is replied to, the `reply` field is included. If the call is rejected, the `error_code`, `reject_code`, and `reject_message` fields will be included in the response. 
 
@@ -55,7 +55,7 @@ The query's signature (whose type is denoted as node-signature) is a [CBOR](http
 
 The actual parts that are signed include the query response from the execution layer, the timestamp and the request ID of the query, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.
 
-Query response verification is done via agents, such as agent-rs and agent-js, and other agents developed by members of the IC community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
+Query response verification is done via agents, such as agent-rs and agent-js, and other agents developed by members of the ICP community. Agents now introduce a new `AgentError` type that indicates a verification failure. 
 
 replica-signed queries are supported in agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer.
 
@@ -69,7 +69,7 @@ Then, to verify the certificate, the timestamp stored at `/time` of the node key
 
 ## How to use replica-signed queries
 
-On the IC, the replica has already begun producing signatures on query responses. 
+On ICP, the replica has already begun producing signatures on query responses. 
 
 To use agent-rs, signature verification on query responses is enabled by default on versions v0.30.0 and newer. Tools such as dfx will be updated to use the latest version of agent-rs in the next release (v0.15.2). 
 

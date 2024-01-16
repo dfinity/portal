@@ -33,7 +33,7 @@ The NFT canister example contains all those cases and shows how it can be done.
 Since the basic functions required in [DIP-721](https://github.com/Psychedelic/DIP721) are very straightforward to implement, this section only discusses how the above ideas are handled and implemented.
 
 ### Stable storage for canister upgrades
-During canister code upgrades, any data stored in a canister's heap storage is not persisted between different canister calls. Only memory in stable memory is carried over.
+During canister code upgrades, any data stored in a canister's heap memory is not persisted between different canister calls. Only memory in stable memory is carried over.
 Because of that it is necessary to write all data to stable memory before the upgrade happens. After the upgrade, it is normal to load data from stable memory into memory
 during the `post_upgrade` function. The `post_upgrade` function is called by the system after the upgrade happened.
 In case an error occurs during any part of the upgrade (including `post_upgdrade`), the entire upgrade is reverted.
@@ -114,7 +114,7 @@ If this is not a new installation, you may need to run `start` with the `--clean
 dfx start --clean --background
 ```
 
-- #### Step 4: Deploy a DIP721 NFT canister to your local IC.
+- #### Step 4: Deploy a DIP721 NFT canister to your local replica.
 This command deploys the DIP721 NFT canister with the following initialization arguments:
 
 ```

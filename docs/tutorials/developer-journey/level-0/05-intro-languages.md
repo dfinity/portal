@@ -1,18 +1,21 @@
 # 0.5 Introduction to languages 
 
+[![ICP Developer Journey 0.5 | Introduction to Languages](https://img.youtube.com/vi/sZxbRAwYYMw/0.jpg)](https://www.youtube.com/watch?v=sZxbRAwYYMw)
+
+
 ## Overview
 
 When developing canisters, the most common development workflow is to use a software development kit (SDK). The Internet Computer SDK is the most commonly used, which natively supports Motoko and Rust out of the box. 
 
-Since the IC supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for canister development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community created CDKs for additional languages, such as Python and TypeScript, that can be installed separately. 
+Since ICP supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for canister development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community created CDKs for additional languages, such as Python and TypeScript, that can be installed separately. 
 
-It is possible to use multiple languages within a single dapp's development. Different canisters can communicate to one another using the Candid language, which is an interface description language (IDL) used by IC canisters, allowing for multiple canisters in different languages to share and exchange information. 
+It is possible to use multiple languages within a single dapp's development. Different canisters can communicate to one another using the Candid language, which is an interface description language (IDL) used by ICP canisters, allowing for multiple canisters in different languages to share and exchange information. 
 
 ## Motoko
 
-Motoko is a language that has been specifically designed by DFINITY for canister development on the IC. It supports the unique features and workflows on the IC while providing a robust yet familiar programming environment.  Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers that have a background with application-layer languages, such as JavaScript, Ruby, Python, or Solidity. 
+Motoko is a language that has been specifically designed by DFINITY for canister development on ICP. It supports the unique features and workflows on ICP while providing a robust yet familiar programming environment.  Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers that have a background with application-layer languages, such as JavaScript, Ruby, Python, or Solidity. 
 
-Since Motoko has been developed and designed for the IC, this developer journey series will use Motoko for all tutorials and code walkthroughs. 
+Since Motoko has been developed and designed for ICP, this developer journey series will use Motoko for all tutorials and code walkthroughs. 
 
 ### Motoko attributes:
 
@@ -24,7 +27,7 @@ Since Motoko has been developed and designed for the IC, this developer journey 
 
 - **Actor paradigm support:** Natively supported.
 
-- **IC-specific static analysis:** Enforced through multiple safety checks. 
+- **ICP-specific static analysis:** Enforced through multiple safety checks. 
 
 - **Wasm binary size:** Wasm binary size is very small. 
 
@@ -38,7 +41,7 @@ Since Motoko has been developed and designed for the IC, this developer journey 
 
 ## Rust
 
-Rust is supported on the IC through the IC SDK and the DFINITY Rust CDK. The IC SDK automatically comes with the Rust CDK as part of the software, but the Rust CDK can be installed separately if the IC SDK is not installed. Rust is a good choice for developers who are already familiar with Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem. 
+Rust is supported on ICP through the IC SDK and the DFINITY Rust CDK. The IC SDK automatically comes with the Rust CDK as part of the software, but the Rust CDK can be installed separately if the IC SDK is not installed. Rust is a good choice for developers who are already familiar with Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem. 
 
 Many of the tutorials in this developer journey series are available in a Rust version that displays identical functionality. These will be linked where applicable for those that want to follow along with Rust, though not all tutorials will have a Rust version. 
 
@@ -52,7 +55,7 @@ Many of the tutorials in this developer journey series are available in a Rust v
 
 - **Actor paradigm support:** Conflicts with some language features, resulting in being error-prone. 
 
-- **IC-specific static analysis:** Does not include static checking, which may result in canisters trapping when violating restrictions.  
+- **ICP-specific static analysis:** Does not include static checking, which may result in canisters trapping when violating restrictions.  
 
 - **Wasm binary size:** Wasm binary is very large and requires compression through tools. 
 
@@ -66,22 +69,22 @@ Many of the tutorials in this developer journey series are available in a Rust v
 
 ## Candid
 
-Candid is an interface description language with the primary purpose to describe the public interface of a service. In reference to the IC, a service is a program deployed in the form of a canister.  Each canister has a Candid file that defines the interface description for the service. 
+Candid is an interface description language with the primary purpose to describe the public interface of a service. In reference to ICP, a service is a program deployed in the form of a canister.  Each canister has a Candid file that defines the interface description for the service. 
 
 Candid is language-agnostic, allowing for interoperability between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
 
-A Candid interface description defines the public methods for a service. Every method has a sequence of argument and result types, and can include annotations that are specific to the IC. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
+A Candid interface description defines the public methods for a service. Every method has a sequence of argument and result types, and can include annotations that are specific to ICP. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
 
 Candid has a variety of features that make it a particularly good choice for developing dapps on the Internet Computer. These features include:
 
 - Candid's implementations map the Candid value directly to the values and types of the host language, meaning developers do not construct or deconstruct some abstract Candid value. 
 - Candid defines rules for how series and their associated interface can be upgraded in a simple manner. 
 - Candid is a higher-order language, meaning it can receive more than plain data such as references to methods and services. 
-- Candid has native support for specific IC features, such as query annotation. 
+- Candid has native support for specific ICP features, such as query annotation. 
 
 ## Community developed CDKs
 
-There are several CDKs that have been contributed by the IC community. 
+There are several CDKs that have been contributed by the ICP community. 
 
 ### Python
 
@@ -97,7 +100,7 @@ TypeScript is available through the [Azle CDK](https://demergent-labs.github.io/
 
 Solidity is an object-oriented language used for writing and implementing smart contracts on blockchain platforms, with the most widely known being the Ethereum network. 
 
-Solidity is supported on the IC through [Bitfinity](https://docs.bitfinity.network/), developed by the [Bitfinity EVM team](https://bitfinity.network/), which provides a way to create EVM-based smart contracts. 
+Solidity is supported on ICP through [Bitfinity](https://docs.bitfinity.network/), developed by the [Bitfinity EVM team](https://bitfinity.network/), which provides a way to create EVM-based smart contracts. 
 
 ### C++
 
@@ -105,15 +108,17 @@ C++ is available through the [icpp-pro CDK](https://docs.icpp.world/) developed 
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko. 
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -122,6 +127,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
 - [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
+- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+
 
 ## Next steps
 

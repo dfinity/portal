@@ -24,7 +24,7 @@ Before starting the guide, verify the following:
 This guide requires you to use the IC SDK version `0.8.0` or later.
 :::
 
--  [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for IC development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
+-  [x] You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for ICP development](/developer-docs/setup/vs-code.md) if you are using Visual Studio Code as your IDE.
 
 -  [x] You have stopped any IC SDK processes running on the local computer.
 
@@ -111,7 +111,7 @@ To review the default `dfx.json` configuration file:
 
   -   The `source` settings specify the path to your `src` and `dist` directories. The `src` setting specifies the directory to use for static assets that will be included in your assets canister when you build your project. If you have custom cascading stylesheet (CSS) or JavaScript files, you would include them in the folder specified by this path. After building the project, the project assets are served from the directory specified by the `dist` setting.
 
-  -   The `type` setting specifies that the `custom_greeting_frontend` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on the IC.
+  -   The `type` setting specifies that the `custom_greeting_frontend` should use the [certified asset canister](https://github.com/dfinity/certified-assets), which comes with everything you need to host static assets on ICP.
 
   For this guide, you are going to add React JavaScript in an `index.jsx` file, but that won’t require any changes to the default settings in the `dfx.json` file.
 
@@ -170,19 +170,7 @@ To prepare the frontend files:
 
 - #### Step 1:  Open the webpack configuration file (`webpack.config.js`) in a text editor.
 
-- #### Step 2:  Modify the frontend entry to replace the default `index.html` with `index.jsx`.
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
-:::
-
-        entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so you need
-          // to replace the extension to `.js`.
-          index: path.join(__dirname, asset_entry).replace(/\.html$/, ".jsx"),
-        },
-
-- #### Step 3:  Add the following `module` key above the `plugins` section:
+- #### Step 2:  Add the following `module` key above the `plugins` section:
 
 :::caution
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
@@ -194,7 +182,7 @@ The following example is a **code snippet** that is part of a larger code file. 
           ]
         },
 
-    This setting enables the project to use the `ts-loader` compiler for a React JavaScript `index.jsx` file. Note that there’s a commented section in the default `webpack.config.js` file that you can modify to add the `module` key.
+This setting enables the project to use the `ts-loader` compiler for a React JavaScript `index.jsx` file. Note that there’s a commented section in the default `webpack.config.js` file that you can modify to add the `module` key.
 
 When finished, your `webpack.config.js` file should contain the following content:
 
@@ -301,9 +289,9 @@ module.exports = {
 };
 ```
 
-- #### Step 4:  Create a new file named `tsconfig.json` in the root directory for your project.
+- #### Step 3:  Create a new file named `tsconfig.json` in the root directory for your project.
 
-- #### Step 5:  Open the `tsconfig.json` file in a text editor, then copy and paste this code into the file:
+- #### Step 4:  Open the `tsconfig.json` file in a text editor, then copy and paste this code into the file:
 
 ```
 {
@@ -317,11 +305,11 @@ module.exports = {
 }
 ```
 
-- #### Step 6:  Save your changes and close the `tsconfig.json` file to continue.
+- #### Step 5:  Save your changes and close the `tsconfig.json` file to continue.
 
-- #### Step 7:  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete everything in that file.
+- #### Step 6:  Open the default `src/custom_greeting_frontend/src/index.js` file in a text editor and delete everything in that file.
 
-- #### Step 8:  Copy and paste this code into the `index.js` file.
+- #### Step 7:  Copy and paste this code into the `index.js` file.
 
 ```
 import * as React from "react";
@@ -366,24 +354,12 @@ const MyHello = () => {
 render(<MyHello />, document.getElementById("app"));
 ```
 
-- #### Step 9:  Rename the modified `index.js` file as `index.jsx` by running the following command:
+- #### Step 8:  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
         mv src/custom_greeting_frontend/src/index.js src/custom_greeting_frontend/src/index.jsx
     
-    
-- #### Step 10: Change the entry point in `webpack.config.js` to the following:
 
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
-:::
-
-        entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so you need
-          // to replace the extension to `.js`.
-          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
-        },
-
-- #### Step 11: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
+- #### Step 9: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
 
         <!doctype html>
         <html lang="en">
