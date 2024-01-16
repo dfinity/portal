@@ -12,8 +12,7 @@ const OpenChatCard: React.FC<{
 }> = ({ className }) => {
   return (
     <AnimateSpawn
-      className={clsx("md:container-12 pt-30 md:pt-40", className)}
-      el={motion.section}
+      className={clsx("md:container-12 pt-20 md:pt-30", className)}
       variants={transitions.container}
     >
       <div className="md:rounded-[32px] backdrop-blur-2xl bg-white-60 relative flex flex-col md:flex-row md:gap-10 lg:gap-0 px-6 md:px-0">
@@ -38,31 +37,14 @@ const OpenChatCard: React.FC<{
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              Open Chat is an early "open internet service." An SNS DAO assumed
-              control of its smart contracts, and swapped $ICP for its
-              governance tokens, placing its community in control, and creating
-              a powerful community treasury.
+              OpenChat was the first project to launch an SNS DAO on the
+              Internet Computer, marking a significant milestone in the world of
+              blockchain and social media as an open internet service.
             </motion.p>
 
-            <motion.p className="mb-3" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="/ois">
-                <LinkArrowRight />
-                See how OpenChat decentralized, fully on-chain
-              </Link>
-            </motion.p>
-            <motion.p className="mb-3" variants={transitions.item}>
-              <Link className="link-primary link-with-icon" href="/sns">
-                <LinkArrowRight />
-                What is an SNS DAO
-              </Link>
-            </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link
-                className="link-primary link-with-icon"
-                href="/sns/faq#what-is-a-decentralization-swap"
-              >
-                <LinkArrowRight />
-                How to raise funding for an SNS DAO
+              <Link className="button-primary" href="https://oc.app">
+                Join the oc community
               </Link>
             </motion.p>
           </div>

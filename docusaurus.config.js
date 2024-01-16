@@ -34,6 +34,7 @@ const {
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
+const snsDataPlugin = require("./plugins/sns-data");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -494,6 +495,7 @@ const config = {
     matomoPlugin,
     blogPostsPlugin,
     contentfulPlugin,
+    snsDataPlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
