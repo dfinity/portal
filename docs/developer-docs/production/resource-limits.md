@@ -31,7 +31,7 @@ The limits depend on the message type as shown in the following table.
 | Memory resource limits                                                               | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
 | Wasm heap memory, per canister                                                       | 4GiB        |
-| Wasm stable memory, per canister                                                     | 96GiB       |
+| Wasm stable memory, per canister                                                     | 400GiB      |
 | Wasm custom sections, per subnet                                                     | 2GiB        |
 | Wasm custom sections, per canister                                                   | 1MiB        |
 | Wasm custom sections, sections per canister                                          | 16          |
