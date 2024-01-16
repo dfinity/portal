@@ -3296,8 +3296,8 @@
     "github": "https://github.com/QuezarHQ/pingICP",
     "twitter": "https://twitter.com/quezarHQ",
     "submittableId": "41431540"
-  }
-{
+  },
+  {
   "name": "Alphaday",
   "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services and much more into one customizable UI.",
   "website": "https://app.alphaday.com/b/dfinity/",
@@ -3320,5 +3320,5 @@
   "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
   "submittableId": "",
   "videoContentType": "video/mp4"
-}
+  }
 ]
