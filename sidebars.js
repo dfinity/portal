@@ -186,51 +186,25 @@ const sidebars = {
   ],
 
   guides: [
-    {
-      type: "category",
-      label: "Introduction",
-      link: {
-        type: "doc",
-        id: "developer-docs/index",
-      },
-      items: [
-        {
-          type: "category",
-          label: "How the Internet Computer Protocol works",
-          link: {
-            type: "doc",
-            id: "concepts/index",
-          },
-          items: [
-            "concepts/what-is-ic",
-            "concepts/canisters-code",
-            "developer-docs/gas-cost",
-            "concepts/governance",
-            "concepts/nodes-subnets",
-            "concepts/tokens-cycles",
-            "concepts/trust-in-canisters",
-            "references/glossary",
-          ],
-        },
-      ],
-    },
+      "developer-docs/index",
     {
       type: "category",
       label: "Getting started",
-      link: {
-        type: "doc",
-        id: "developer-docs/setup/index",
-      },
       items: [
         {
           type: "doc",
-          label: "Developer quickstart",
-          id: "developer-docs/setup/quickstart",
+          label: "What is the Internet Computer?",
+          id: "concepts/what-is-ic",
         },
         {
           type: "doc",
           label: "Installing the IC SDK",
           id: "developer-docs/setup/install/index",
+        },
+        {
+          type: "doc",
+          label: "Creating a developer account",
+          id: "developer-docs/setup/accounts",
         },
         {
           type: "category",
@@ -240,11 +214,15 @@ const sidebars = {
             id: "developer-docs/setup/cycles/index",
           },
           items: [
+            "developer-docs/setup/cycles/cycles-faucet",
             "developer-docs/setup/cycles/cycles-wallet",
             "developer-docs/setup/cycles/converting_icp_tokens_into_cycles",
-            "developer-docs/setup/cycles/cycles-faucet",
-            "developer-docs/setup/cycles/cycles_management_services",
           ],
+        }, 
+        {
+          type: "doc",
+          label: "Creating your first canister",
+          id: "developer-docs/setup/first-canister",
         },
         {
           type: "doc",
@@ -258,47 +236,54 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Managing canisters",
-          id: "developer-docs/setup/manage-canisters",
+          label: "Sharing links to canisters",
+          id: "developer-docs/production/social-sharing",
+        },
+        {
+          type: "doc",
+          label: "Using Motoko playground",
+          id: "developer-docs/setup/playground",
         },
         {
           type: "doc",
           label: "Managing projects",
           id: "developer-docs/setup/manage-projects",
-        },
-        {
-          type: "doc",
-          label: "Motoko playground",
-          id: "developer-docs/setup/playground",
-        },
-        {
-          type: "doc",
-          label: "Pulling canister dependencies",
-          id: "developer-docs/setup/pulling-canister-dependencies",
-        },
-                {
-          type: "doc",
-          label: "Quickstart for React developers",
-          id: "developer-docs/setup/react-quickstart",
-        },
-        {
-          type: "doc",
-          label: "Testing canisters with PocketIC",
-          id: "developer-docs/setup/pocket-ic",
-        },
+        }, 
         {
           type: "doc",
           label: "Using Visual Studio Code",
           id: "developer-docs/setup/vs-code",
         },
+      ], 
+    },
+    {
+      type: "category",
+      label: "Quickstart guides",
+      items: [
+        {
+          type: "doc",
+          label: "Developer quickstart",
+          id: "developer-docs/setup/quickstart",
+        },
+        {
+          type: "doc",
+          label: "Quickstart for React developers",
+          id: "developer-docs/setup/react-quickstart",
+        },
       ],
     },
     {
       type: "category",
-      label: "Designing a dapp",
+      label: "Core concepts",
+      link: {
+        type: "doc",
+        id: "concepts/index",
+      },
       items: [
-        "developer-docs/backend/choosing-language",
-        "developer-docs/backend/design-dapps",
+        "concepts/canisters-code",
+        "developer-docs/gas-cost",
+        "concepts/governance",
+        "concepts/nodes-subnets",
         {
           type: "category",
           label: "Subnet types",
@@ -310,15 +295,64 @@ const sidebars = {
             "developer-docs/backend/eu-subnets",
           ],
         },
+        "concepts/tokens-cycles",
+        "concepts/trust-in-canisters",
+        "references/glossary",
       ],
     },
     {
       type: "category",
-      label: "Building backend canisters",
+      label: "Canister smart contracts",
       items: [
         {
+          type: "doc",
+          label: "Deploying and upgrading canisters",
+          id: "developer-docs/production/deploying-and-upgrading",
+        },
+        {
+          type: "doc",
+          label: "Managing canisters",
+          id: "developer-docs/setup/manage-canisters",
+        },
+        {
           type: "category",
-          label: "Building canisters with Motoko",
+          label: "Topping up canisters",
+          link: {
+            type: "doc",
+            id: "developer-docs/production/topping-up-canister",
+          },
+          items: [
+            "developer-docs/setup/cycles/cycles_management_services",
+          ],
+        },
+        {
+          type: "doc",
+          label: "Canister history",
+          id: "developer-docs/production/canister-history",
+        },
+        {
+        type: "doc",
+        label: "Canister recovery",
+        id: "developer-docs/production/canister-recovery",
+        },
+        {
+          type: "doc",
+          label: "Canister storage",
+          id: "developer-docs/production/storage",
+        },
+        {
+          type: "doc",
+          label: "Pulling canister dependencies",
+          id: "developer-docs/setup/pulling-canister-dependencies",
+        },
+        {
+          type: "doc",
+          label: "Composite queries",
+          id: "developer-docs/integrations/composite-query/composite-query",
+        },
+        {
+          type: "category",
+          label: "Building with Motoko",
           link: {
             type: "doc",
             id: "developer-docs/backend/motoko/index",
@@ -348,7 +382,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Building canisters with Rust",
+          label: "Building with Rust",
           link: {
             type: "doc",
             id: "developer-docs/backend/rust/index",
@@ -371,200 +405,22 @@ const sidebars = {
             "developer-docs/backend/rust/samples",
           ],
         },
-        {
-          type: "category",
-          label: "Candid UI",
-          link: {
-            type: "doc",
-            id: "developer-docs/backend/candid/index",
-          },
-          items: [
-            "developer-docs/backend/candid/candid-concepts",
-            "developer-docs/backend/candid/candid-howto",
-            "developer-docs/backend/candid/generating-candid",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Periodic tasks",
-          id: "developer-docs/backend/periodic-tasks",
-        },
-        {
-          type: "doc",
-          label: "Reproducible canister builds",
-          id: "developer-docs/backend/reproducible-builds",
-        },
-        {
-          type: "doc",
-          label: "Troubleshooting resources",
-          id: "developer-docs/backend/troubleshooting",
-        },
       ],
     },
     {
       type: "category",
-      label: "Building frontend canisters",
-      link: {
-        type: "doc",
-        id: "developer-docs/frontend/index",
-      },
+      label: "Dapp developers",
       items: [
-        "developer-docs/frontend/custom-frontend",
-        "developer-docs/frontend/add-stylesheet",
-        "developer-docs/frontend/javascript-frontend",
-        "developer-docs/frontend/react-frontend",
-        "developer-docs/frontend/svelte-frontend",
-        "developer-docs/frontend/vue-frontend",
-        "developer-docs/frontend/existing-frontend",
+        "developer-docs/backend/choosing-language",
+        "developer-docs/backend/design-dapps",
+        "developer-docs/backend/periodic-tasks",
+        "developer-docs/production/resource-limits",
+        "developer-docs/production/larger-wasm",
       ],
     },
     {
       type: "category",
-      label: "Running in production",
-      link: {
-        type: "doc",
-        id: "developer-docs/production/index",
-      },
-      items: [
-        {
-          type: "doc",
-          label: "Canister history",
-          id: "developer-docs/production/canister-history",
-        },
-        {
-        type: "doc",
-        label: "Canister recovery",
-        id: "developer-docs/production/canister-recovery",
-        },
-        {
-          type: "doc",
-          label: "Canister storage",
-          id: "developer-docs/production/storage",
-        },
-        {
-          type: "category",
-          label: "Custom domains",
-          link: {
-            type: "doc",
-            id: "developer-docs/production/custom-domain/custom-domain",
-          },
-          items: ["developer-docs/production/custom-domain/dns-setup"],
-        },
-        {
-          type: "doc",
-          label: "Deploying and upgrading canisters",
-          id: "developer-docs/production/deploying-and-upgrading",
-        },
-        {
-          type: "doc",
-          label: "Resource limits",
-          id: "developer-docs/production/resource-limits",
-        },
-        {
-          type: "doc",
-          label: "Large web assembly modules",
-          id: "developer-docs/production/larger-wasm",
-        },
-        {
-          type: "doc",
-          label: "Sharing links to dapps",
-          id: "developer-docs/production/social-sharing",
-        },
-        {
-          type: "doc",
-          label: "Staging environments",
-          id: "developer-docs/production/staging-environment",
-        },
-        {
-          type: "doc",
-          label: "Topping up canisters",
-          id: "developer-docs/production/topping-up-canister",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Using external agents",
-      link: {
-        type: "doc",
-        id: "developer-docs/agents/index",
-      },
-      items: [
-        "developer-docs/agents/javascript-intro",
-        "developer-docs/agents/nodejs",
-        "developer-docs/agents/ic-agent-dfinity",
-      ],
-    },
-    {
-      type: "category",
-      label: "Advanced features",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/index",
-      },
-      items: [
-        {
-          type: "doc",
-          label: "Composite queries",
-          id: "developer-docs/integrations/composite-query/composite-query",
-        },
-        {
-          type: "category",
-          label: "HTTPS outcalls",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/https-outcalls/index",
-          },
-          items: [
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-            "developer-docs/integrations/https-outcalls/https-outcalls-get",
-            "developer-docs/integrations/https-outcalls/https-outcalls-post",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Independently verifying Internet Computer signatures",
-          id: "developer-docs/integrations/independently-verifying-ic-signatures",
-        },
-        {
-          type: "category",
-          label: "Internet Identity (II)",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/internet-identity/overview",
-          },
-          items: [
-            "developer-docs/integrations/internet-identity/alternative-origins",
-            "developer-docs/integrations/internet-identity/integrate-identity",
-          ],
-        },
-        {
-          type: "category",
-          label: "Threshold ECDSA",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/t-ecdsa/index",
-          },
-          items: ["developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works"],
-        },
-        {
-          type: "category",
-          label: "vetKeys",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/vetkeys/index",
-          },
-          items: [
-            "developer-docs/integrations/vetkeys/technology-overview",
-            "developer-docs/integrations/vetkeys/using-vetkeys",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Ledgers and tokens",
+      label: "Exchanges and token developers",
       items: [
         {
           type: "doc",
@@ -627,6 +483,127 @@ const sidebars = {
           },
           items: ["tokenomics/token-holders/self-custody-quickstart"],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "NFT developers",
+      items: [
+        "developer-docs/use-cases/considerations-for-nft-devs",
+      ],
+    },
+    {
+      type: "category",
+      label: "Candid UI",
+      link: {
+        type: "doc",
+        id: "developer-docs/backend/candid/index",
+      },
+      items: [
+        "developer-docs/backend/candid/candid-concepts",
+        "developer-docs/backend/candid/candid-howto",
+        "developer-docs/backend/candid/generating-candid",
+      ],
+    },
+    {
+      type: "category",
+      label: "Application frontends",
+      link: {
+        type: "doc",
+        id: "developer-docs/frontend/index",
+      },
+      items: [
+        "developer-docs/frontend/custom-frontend",
+        "developer-docs/frontend/add-stylesheet",
+        "developer-docs/frontend/javascript-frontend",
+        "developer-docs/frontend/react-frontend",
+        "developer-docs/frontend/svelte-frontend",
+        "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/existing-frontend",
+      ],
+    },
+    {
+      type: "category",
+      label: "Custom domains",
+      link: {
+        type: "doc",
+        id: "developer-docs/production/custom-domain/custom-domain",
+      },
+      items: ["developer-docs/production/custom-domain/dns-setup"],
+    },
+    {
+      type: "category",
+      label: "Using external agents",
+      link: {
+        type: "doc",
+        id: "developer-docs/agents/index",
+      },
+      items: [
+        "developer-docs/agents/javascript-intro",
+        "developer-docs/agents/nodejs",
+        "developer-docs/agents/ic-agent-dfinity",
+      ],
+    },
+    {
+      type: "category",
+      label: "HTTPS outcalls",
+      link: {
+        type: "doc",
+        id: "developer-docs/integrations/https-outcalls/index",
+      },
+      items: [
+        "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+        "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+        "developer-docs/integrations/https-outcalls/https-outcalls-get",
+        "developer-docs/integrations/https-outcalls/https-outcalls-post",
+      ],
+    },
+    {
+      type: "category",
+      label: "Encryption and signatures",
+      link: {
+        type: "doc",
+        id: "developer-docs/integrations/index",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Verifying signatures",
+          id: "developer-docs/integrations/independently-verifying-ic-signatures",
+        },
+        {
+          type: "category",
+          label: "Threshold ECDSA",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/t-ecdsa/index",
+          },
+          items: ["developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works"],
+        },
+        {
+          type: "category",
+          label: "vetKeys",
+          link: {
+            type: "doc",
+            id: "developer-docs/integrations/vetkeys/index",
+          },
+          items: [
+            "developer-docs/integrations/vetkeys/technology-overview",
+            "developer-docs/integrations/vetkeys/using-vetkeys",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Internet Identity (II)",
+      link: {
+        type: "doc",
+        id: "developer-docs/integrations/internet-identity/overview",
+      },
+      items: [
+        "developer-docs/integrations/internet-identity/alternative-origins",
+        "developer-docs/integrations/internet-identity/integrate-identity",
       ],
     },
     {
@@ -743,21 +720,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Use cases",
-      link: {
-        type: "doc",
-        id: "developer-docs/use-cases/index",
-      },
-      items: [
-        {
-          type: "doc",
-          label: "NFT development",
-          id: "developer-docs/use-cases/considerations-for-nft-devs",
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Security best practices",
       link: {
         type: "doc",
@@ -781,8 +743,17 @@ const sidebars = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "Testing and troubleshooting",
+      items: [
+        "developer-docs/setup/pocket-ic",
+        "developer-docs/production/staging-environment",
+        "developer-docs/backend/reproducible-builds",
+        "developer-docs/backend/troubleshooting",
+      ],
+    },
   ],
-
   references: [
     "references/index",
     {

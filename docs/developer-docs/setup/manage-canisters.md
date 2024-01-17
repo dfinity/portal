@@ -1,4 +1,4 @@
-# Managing canisters
+# Interacting with canisters
 
 ## Overview
 
