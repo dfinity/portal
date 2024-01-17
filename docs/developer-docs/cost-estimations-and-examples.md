@@ -22,7 +22,7 @@ This documentation will use the following units to measure and calculate the num
 
 
 | Abbr. | Name | In numbers | Cycles XDR value | Cycles USD value |
-|---------------------------------------------------------------------------|
+|-------|------|------------|------------------|------------------|
 | T | Trillion | 1_000_000_000_000 | 1 | 1.34 |
 | B | Billion | 1_000_000_000 | 0.001 | 0.00134 |
 | M | Million | 1_000_000 | 0.000001 | 0.00000134 |
@@ -123,7 +123,7 @@ The following is the cost estimate for a project that creates a decentralized se
 | Storage | 46.1T | $61.83 USD | 553.2T | $741.96 USD |
 | HTTPS outcalls | 6.01T | $8.06 USD | 72.12T | $96.72 USD |
 
-::caution
+:::caution
 This example resembles that of an enterprise-level project that expects the application will make about 1500 HTTPS outcalls per day. For reference, the [Orally](https://orally.network/) enterprise application on ICP averages between 35_000 and 46_000 HTTPS outcalls per month.
 
 An enterprise-level project of this size could potentially cost several thousands of dollars if deployed on a traditional Web2 platform. Web2 infrastructure services often charge additional fees that scale with the number of requests that your project serves per day or per month. Traditional Web2 infrastructure services also frequently charge high fees for additional features or 'add-ons' to your application. Such fees do not exist on ICP; the fees listed in this document are the only fees associated with developing on ICP. Therefore, it is possible to run large enterprise applications on ICP at a fraction of what the cost would be if deploying on a Web2 service.
