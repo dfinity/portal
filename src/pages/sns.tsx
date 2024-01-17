@@ -447,7 +447,7 @@ function SnsPage() {
                 autoPlay
                 muted
                 playsInline
-                className="w-full"
+                className="rounded-2xl w-full md:h-[300px] object-cover object-center"
                 aria-label="Gold DAO SNS"
               >
                 <source src="/img/sns/gold-dao.mp4" type="video/mp4" />
@@ -479,7 +479,7 @@ function SnsPage() {
                 src="/img/sns/sonic.webp"
                 alt="Sonic SNS DAO"
                 loading="lazy"
-                className="rounded-2xl w-full"
+                className="rounded-2xl w-full md:h-[300px] object-cover object-center"
               />
               <div className="md:pr-20">
                 <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
