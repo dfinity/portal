@@ -42,20 +42,20 @@ These estimates use a 13-node subnet. Costs will be different if deployed on a 3
 
 ### Single canister
 
-The following is the cost estimate for a single canister that provides a service or function that is used by 5 users that each stores 100KB of data, is called by other canisters through inter-canister calls, and stores 5GB of data. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 778_713, with 100 daily messages generated per user per day. This canister also performs 10_000 daily tasks, with 1_0000_000 instructions executed per task. This project does not use HTTPS outcalls or other special features.
+The following is the cost estimate for a single canister that provides a service or function that is used by 5 users that each stores 100KB of data, is called by other canisters through inter-canister calls, and stores 5GB of data. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 1_000_000, with 100 daily messages generated per user per day. This canister also performs 50 daily tasks, with 1_000_000 instructions executed per task. This project does not use HTTPS outcalls or other special features.
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
 | ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
 | Messaging | 19B | $0.03 USD | 228B | $0.36 USD |
-| Execution | 1.40T | $1.88 USD | 16.8T | $22.56 USD |
+| Execution | 25.2B | $0.03 USD | 302.4B | $0.36 USD |
 | Storage | 1.53T | $2.05 USD | 18.36T | $24.60 USD |
 | HTTPS outcalls | 0 | $0 USD | 0 | $0 USD |
 
 
 ### Simple static website using a frontend canister
 
-The following is the cost estimate for a simple static website that uses a single frontend canister for the website's assets that is not called by other canisters or performs HTTPS outcalls. It stores 5GB of data, has 100 total users, and has 10 daily active users that each generate 50 messages per day. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 778_713. This project does not use HTTPS outcalls or other special features.
+The following is the cost estimate for a simple static website that uses a single frontend canister for the website's assets that is not called by other canisters or performs HTTPS outcalls. It stores 5GB of data, has 100 total users, and has 10 daily active users that each generate 50 messages per day. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 1_000_000. This project does not use HTTPS outcalls or other special features.
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
