@@ -6,7 +6,7 @@ As discussed in the [Candid concepts](./candid-concepts.md) page, Candid provide
 
 As a concrete example, let’s assume there is a `counter` canister already deployed on the network with the following Candid interface:
 
-``` candid
+```candid
 service Counter : {
   inc : (step: nat) -> (nat);
 }

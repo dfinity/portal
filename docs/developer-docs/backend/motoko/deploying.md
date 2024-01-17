@@ -32,7 +32,7 @@ Open the `dfx.json` configuration file in a text editor to review the default se
 
 It may look like this:
 
-```
+```json
 {
 "canisters": {
     "explore_hello_backend": {
@@ -90,7 +90,7 @@ Let’s take a look at the sample program in the default `main.mo` template file
 
 Open the `src/explore_hello_backend/main.mo` file in a text editor and review the code in the template:
 
-```
+```motoko
 actor {
     public func greet(name : Text) : async Text {
         return "Hello, " # name # "!";
@@ -141,8 +141,6 @@ Leave the terminal that displays network operations open and switch your focus t
 
 After you connect to the local canister execution environment, you can register with the network to generate unique, network-specific **canister identifiers** for your project.
 
-In the [1.3: Deploying your first dapp](/docs/tutorials/developer-journey/level-1/1.3-first-dapp.md) developer journey tutorial, this step was performed as part of the `dfx deploy` command work flow. This guide demonstrates how to perform each of the operations independently.
-
 To register canister identifiers for the local network, register unique canister identifiers for the canisters in the project by running the following command:
 
 ```
@@ -162,7 +160,7 @@ Because you are connected to the local canister execution environment, these can
 
 For example:
 
-```
+```json
 {
 "explore_hello_backend": {
     "local": "br5f7-7uaaa-aaaaa-qaaca-cai"
@@ -289,7 +287,7 @@ Open a terminal window on your local computer, if you don’t already have one o
 
 Open the `src/explore_hello_frontend/src/index.js` file in a text editor and review the code in the template script:
 
-```
+```javascript
 import { explore_hello } from "../../declarations/explore_hello_backend";
 
 document.getElementById("clickMeBtn").addEventListener("click", async () => {
