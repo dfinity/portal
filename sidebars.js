@@ -239,32 +239,12 @@ const sidebars = {
           label: "Sharing links to canisters",
           id: "developer-docs/production/social-sharing",
         },
-        {
-          type: "doc",
-          label: "Using Motoko playground",
-          id: "developer-docs/setup/playground",
-        },
-        {
-          type: "doc",
-          label: "Managing projects",
-          id: "developer-docs/setup/manage-projects",
-        }, 
-        {
-          type: "doc",
-          label: "Using Visual Studio Code",
-          id: "developer-docs/setup/vs-code",
-        },
       ], 
     },
     {
       type: "category",
       label: "Quickstart guides",
       items: [
-        {
-          type: "doc",
-          label: "Developer quickstart",
-          id: "developer-docs/setup/quickstart",
-        },
         {
           type: "doc",
           label: "Quickstart for React developers",
@@ -503,6 +483,15 @@ const sidebars = {
         "developer-docs/backend/candid/candid-concepts",
         "developer-docs/backend/candid/candid-howto",
         "developer-docs/backend/candid/generating-candid",
+      ],
+    },
+    {
+      type: "category",
+      label: "Developer tools",
+      items: [
+        "developer-docs/setup/playground",
+        "developer-docs/setup/manage-projects",
+        "developer-docs/setup/vs-code",
       ],
     },
     {
