@@ -41,8 +41,74 @@ const smallSnsCards = snsData.filter(
 );
 
 const extraMetadata: Record<string, Partial<DaoCardProps>> = {
+  "tw2vt-hqaaa-aaaaq-aab6a-cai": {
+    // Gold DAO
+    twitter: "",
+  },
+
+  "qtooy-2yaaa-aaaaq-aabvq-cai": {
+    // Sonic
+    twitter: "",
+  },
+
+  "3e3x2-xyaaa-aaaaq-aaalq-cai": {
+    // OpenChat
+    twitter: "",
+  },
+
   "zxeu2-7aaaa-aaaaq-aaafa-cai": {
+    // Dragginz
     twitter: "https://twitter.com/dragginzgame",
+  },
+
+  "7jkta-eyaaa-aaaaq-aaarq-cai": {
+    // Kinic
+    twitter: "https://twitter.com/kinic_app",
+  },
+
+  "67bll-riaaa-aaaaq-aaauq-cai": {
+    // Hot or Not
+    twitter: "https://twitter.com/hotornot_dapp",
+  },
+
+  "4m6il-zqaaa-aaaaq-aaa2a-cai": {
+    // IC Ghost
+    twitter: "https://twitter.com/ghost_icp",
+  },
+
+  "x4kx5-ziaaa-aaaaq-aabeq-cai": {
+    // Modclub
+    twitter: "https://twitter.com/ModclubApp",
+  },
+
+  "xjngq-yaaaa-aaaaq-aabha-cai": {
+    // BOOM DAO
+    twitter: "https://twitter.com/boomdaosns",
+  },
+
+  "uly3p-iqaaa-aaaaq-aabma-cai": {
+    // Catalyze
+    twitter: "https://twitter.com/catalyze_one",
+  },
+
+  "u67kc-jyaaa-aaaaq-aabpq-cai": {
+    // ICX
+    twitter: "https://twitter.com/icxdao",
+  },
+
+  "rzbmc-yiaaa-aaaaq-aabsq-cai": {
+    // Nuance
+    twitter: "https://twitter.com/nuancedapp",
+  },
+
+  "extk7-gaaaa-aaaaq-aacda-cai": {
+    // Neutrinite
+    // twitter: ""
+  },
+
+  "ecu3s-hiaaa-aaaaq-aacaq-cai": {
+    // Trax
+    twitter: "https://twitter.com/onlyontrax",
   },
 };
 
