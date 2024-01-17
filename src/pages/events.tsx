@@ -206,7 +206,7 @@ function GlobalEventsPage() {
               )}
           </div>
 
-          {filteredEvents?.length > DEFAULT_MAX_EVENTS && (
+          {filteredEvents?.length > showMaxEvents && (
             <div className="container-10 py-20 text-center">
               <button
                 className="button-primary"
