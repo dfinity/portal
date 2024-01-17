@@ -3301,11 +3301,11 @@
   "name": "Alphaday",
   "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services and much more into one customizable UI.",
   "website": "https://app.alphaday.com/b/dfinity/",
-  "logo": "/img/showcase/alphaday_logo.webp",
+  "logo": "/img/showcase/Alphaday_logo.png",
   "screenshots": [
-    "/img/showcase/alphaday_screenshot.webp"
+    "/img/showcase/Alphaday_screenshot.png"
   ],
-  "video": "/img/showcase/alphaday_video.mp4",
+  "video": "Alphaday_video.mp4",
   "display": "Normal",
   "id": "alphaday",
   "oneLiner": "The one tool you need to stay up to date and with crypto.",
