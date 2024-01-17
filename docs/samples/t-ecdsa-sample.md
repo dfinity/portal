@@ -12,19 +12,19 @@ More specifically:
 - The sample canister hashes the message and uses the key derivation string for the derivation path. 
 -  The sample canister uses the above to request a signature from the threshold ECDSA [subnet](https://wiki.internetcomputer.org/wiki/Subnet_blockchain) (the threshold ECDSA is a subnet specializing in generating threshold ECDSA signatures).
 
-This tutorial gives a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/index.md), up to the deployment and trying out of the code on the mainnet.
+This tutorial gives a complete overview of the development, starting with downloading of the [IC SDK](../developer-docs/setup/install/index.mdx), up to the deployment and trying out of the code on the mainnet.
 
 :::info
 This walkthrough focuses on the version of the sample canister code written in [Motoko](../developer-docs/backend/motoko/index.md) programming language, but no specific knowledge of Motoko is needed to follow along. There is also a [Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) version available in the same repo and follows the same commands for deploying.
 :::
 
 ## Prerequisites
--   [x] Download and [install the IC SDK](../developer-docs/setup/index.md) if you do not already have it.
+-   [x] Download and [install the IC SDK](../developer-docs/setup/install/index.mdx) if you do not already have it.
 -   [x] Clone the [examples repository](https://github.com/dfinity/examples).
 
 ## Step 1: Getting started
 
-Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/index.md) version 0.11.0 for local development.
+Sample code for `threshold-ecdsa` is provided in the [examples repository](https://github.com/dfinity/examples), under either [`/motoko`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa) or [`/rust`](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa) sub-directories. It requires at least [IC SDK](../developer-docs/setup/install/index.mdx) version 0.11.0 for local development.
 
 ### Deploy and test the canister locally 
 
