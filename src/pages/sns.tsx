@@ -144,7 +144,7 @@ const benefits = [
     description: (
       <>
         Services run on a fully decentralized network governed by their
-        communities.
+        users, and without having to depend on a single party. 
       </>
     ),
   },
@@ -164,7 +164,7 @@ const benefits = [
     description: (
       <>
         Community-approved proposals initiate autonomous execution of updates.
-        No single entity can stop the process.
+        No single entity alone can choose or stop the process.
       </>
     ),
   },
@@ -343,7 +343,7 @@ function SnsPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-0">
                 An Open Internet Service or OIS runs entirely on the Internet
                 Computer blockchain, and is governed by a Service Nervous System
-                (SNS) - an advanced community DAO responsible for controlling
+                (SNS) - an advanced community DAO framework responsible for controlling
                 and updating the code of an online service. SNS DAOs take over
                 the traditional role of a company, so there’s no CEO, board of
                 directors or developers in control, just thousands of community
@@ -359,7 +359,7 @@ function SnsPage() {
                 Creating an open internet service involves a decentralization
                 swap where participants exchange ICP tokens for SNS DAO
                 governance tokens. The proceeds of the swap are then held in the
-                treasury of the SNS DAO under the decentralized control of its
+                treasury of each individual SNS DAO under the decentralized control of its
                 governing community members. Governance tokens of open internet
                 services or SNS DAOs can also be granted to those who help with
                 tasks such as advocacy, creating viral content, and content
@@ -486,7 +486,7 @@ function SnsPage() {
                   Sonic
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-5">
-                  The open DeFi suite on Internet Computer blockchain governed
+                  The open DeFi suite on the Internet Computer blockchain governed
                   by the people for the people. Sonic unleashes the potential of
                   crypto trading through innovative DeFi products.
                 </p>
