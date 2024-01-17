@@ -160,7 +160,7 @@ const benefits = [
   },
   {
     icon: "/img/sns/icon-autonomous.svg",
-    title: "Autonomous Updates",
+    title: "Autonomous updates",
     description: (
       <>
         Community-approved proposals initiate autonomous execution of updates.
@@ -524,10 +524,10 @@ function SnsPage() {
             variants={transitions.item}
           >
             <div className="flex flex-col gap-2">
-              <h3 className="tw-title-sm mb-0">SNS DAO Launchpad</h3>
+              <h3 className="tw-title-sm mb-0">SNS DAO launchpad</h3>
               <p className="tw-paragraph text-white/60 flex-1 mb-12">
-                Join the SNS DAO launch, participate in decentralized swaps and
-                NNS FE dapp governance.
+                Join an SNS DAO launch, participate in decentralized swaps and
+                dapp governance.
               </p>
               <Link
                 className="button-white text-center"
@@ -560,7 +560,7 @@ function SnsPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="SNS DAO Dashboard"
+              title="SNS DAO dashboard"
               description=""
               href="https://dashboard.internetcomputer.org/sns"
             />
