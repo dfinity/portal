@@ -3288,6 +3288,23 @@
     "github": "https://github.com/id-daniel-mccoy/asset-app"
   },
   {
+    "id": "Outank NFT Rarity",
+    "name": "Outrank",
+    "oneLiner": "Working group with a vision to develop correct rarity metrics for all types of NFTs",
+    "website": "https://www.outrank.io",
+    "tags": [
+      "NFT", 
+      "Tools / Infrastructure"
+    ],
+    "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity",
+    "logo": "/img/showcase/Outrank_logo.jpg",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/OutRankNFT",
+    "youtube": "https://youtu.be/N8ap_FPNQv8",
+    "twitter": "https://twitter.com/OutRankNFT",
+    "submittableId": "35224577"
+  },
+  {
     "name": "user controlled mind and body canister",
     "id": "ic-mind-body-canister",
     "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
