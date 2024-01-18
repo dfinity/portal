@@ -1,7 +1,6 @@
 # 0.5 Introduction to languages 
 
-[![ICP Developer Journey 0.5 | Introduction to Languages](https://img.youtube.com/vi/sZxbRAwYYMw/0.jpg)](https://www.youtube.com/watch?v=sZxbRAwYYMw)
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sZxbRAwYYMw?si=GufwOp4xBqa2F4JA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 
