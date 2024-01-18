@@ -3249,13 +3249,13 @@
   {
     "id": "Outank NFT Rarity",
     "name": "Outrank",
-    "oneLiner": "OutRank is a working group with a vision to develop correct rarity metrics for all types of NFTs, making these easily accessible and widely available to improve the efficiency of NFT markets." ,
+    "oneLiner": "Working group with a vision to develop correct rarity metrics for all types of NFTs",
     "website": "https://www.outrank.io",
     "tags": [
       "NFT", 
       "Tools / Infrastructure"
     ],
-    "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity.",
+    "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity",
     "logo": "/img/showcase/Outrank.png",
     "usesInternetIdentity": false,
     "github": "https://github.com/OutRankNFT",
