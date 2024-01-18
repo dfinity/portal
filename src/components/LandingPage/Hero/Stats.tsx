@@ -173,7 +173,7 @@ export const SmartContractMemory = () => {
           <Info>
             <h3 className="tw-button-xs mb-1">Memory is $5/GB/year</h3>
             <p className="tw-caption text-white/50 mb-0">
-              Each canister smart contract running on ICP can make 64 GB of
+              Each canister smart contract running on ICP can make 400 GiB of
               persistent memory pages available to its bytecode (orthogonal
               persistence allows data structures to be used like databases).
             </p>
