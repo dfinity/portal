@@ -3305,7 +3305,7 @@
   "screenshots": [
     "/img/showcase/Alphaday_screenshot.png"
   ],
-  "video": "Alphaday_video.mp4",
+  "video": "/img/showcase/Alphaday_video.mp4",
   "display": "Normal",
   "id": "alphaday",
   "oneLiner": "The one tool you need to stay up to date and with crypto.",
@@ -3318,7 +3318,7 @@
   "github": "https://github.com/AlphadayHQ ",
   "twitter": "https://twitter.com/AlphadayHQ ",
   "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
-  "submittableId": "",
+  "submittableId": "34117398",
   "videoContentType": "video/mp4"
   }
 ]
