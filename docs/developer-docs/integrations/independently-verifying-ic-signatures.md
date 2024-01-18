@@ -1,4 +1,4 @@
-# Independently verifying Internet Computer signatures
+# Verifying signatures
 
 ## Overview
 
