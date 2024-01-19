@@ -53,7 +53,7 @@ It is also possible to implement a DAO [decentralized autonomous organization](h
 
 If a dapp depends on a third-party canister smart contract (e.g. by making inter-canister calls to it), it is important to verify that the callee satisfies an appropriate level of decentralization. For example: 
 * If funds or cycles are transferred to a third-party canister, one might require the canister to be controlled by a decentralized governance system, as otherwise these funds are centrally controlled. 
-* If inter-canister calls are made to a centrally controlled and potentially malicious canister, that canister could DoS the caller or even trigger functional bugs, see [Only make inter-canister calls to trustworthy canisters](#only-make-inter-canister-calls-to-trustworthy-canisters). 
+* If inter-canister calls are made to a centrally controlled and potentially malicious canister, that canister could DoS the caller or even trigger functional bugs, see [Be aware of the risks involved in calling untrustworthy canisters](#be-aware-of-the-risks-involved-in-calling-untrustworthy-canisters). 
 
 #### Recommendation
 
@@ -262,7 +262,146 @@ Every inter-canister call is guaranteed to receive a response, either from the c
 
 For more details, refer to the Interface Specification [section on ordering guarantees](/references/ic-interface-spec.md#ordering_guarantees) and the section on [abstract behavior](/references/ic-interface-spec.md#abstract-behavior) which defines message execution in more detail.
 
+### Securely handle traps in callbacks
+
+#### Security Concern
+
+Traps / panics roll back the canister state, as described in Property 5 above. So any state change followed by a trap or panic can be risky. This is an important concern when inter-canister calls are made. If a trap occurs after an await to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call’s callback invocation, and not to the state before the entire call.
+
+More precisely, suppose some state changes are applied and then an inter-canister call is issued. Also, assume that these state changes leave the canister in an inconsistent state, and that state is only made consistent again in the callback. Now if there is a trap in the callback, this leaves the canister in an inconsistent state.
+
+Here are two example security issues that can arise because of this:
+
+- Assume an inter-canister call is issued to transfer funds. In the callback, the canister accounts for having made that transfer by updating the balances in the canister storage. However, suppose the callback also updates some usage statistics data, which eventually leads to a trap when some data structure becomes full. As soon as that is the case, the canister ends up in an inconsistent state because the state changes in the callback are no longer applied and thus the transfers are not correctly accounted for.
+  ![example_highlighted_code](./_attachments/example_trap_after_await.png)
+  This example is also discussed in this [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s). 
+
+- Suppose part of the canister state is locked before an inter-canister call and released in the callback. Then the lock may never be released if the callback traps.
+Note that in canisters implemented in Rust with Rust CDK version 0.5.1, any local variables still go out of scope if a callback traps. The CDK actually calls into the ic0.call_on_cleanup API to release these resources. This helps to prevent issues with locks not being released, as it is possible to use Rust's Drop implementation to release locked resources, as we discuss in [Be aware that there is no reliable message ordering](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices#be-aware-that-there-is-no-reliable-message-ordering).
+
+#### Recommendation
+
+Recall that the responses to inter-canister calls are processed in the corresponding callback. If the callback traps, the cleanup (ic0.call_on_cleanup) is executed. When making an inter-canister call, the ICP reserves sufficiently many cycles to execute the response callback or cleanup (up to the instruction limit). A fixed fraction of the reservation is for the cleanup. Thus, a response or cleanup execution can never “run out of cycles”, but they can run into the instruction limit and trap.
+
+The naïve recommendation to address the security concern described above would be to avoid traps. However, that can be very difficult to achieve due to the following reasons: 
+
+- The implementation can be involved and could panic due to bugs, such as index out-of-bounds errors or panics (expect, unwrap) that should supposedly never happen.
+
+- It is hard to make sure the callback or cleanup doesn’t run into the instruction limit (and thus trap), because the number of instructions required can in general not be predicted and may e.g. depend on the data being processed. 
+
+Due to these reasons, while it is easy to recommend “avoiding traps”, this is actually hard to achieve in practice. So in our view, code should be written so that it can deal even with unexpected traps due to bugs or hitting the instruction limits. We discuss two approaches:
+
+1. Do simple cleanups 
+1. Do “journaling”
+
+In the first approach, the cleanup callback is used to recover from unexpected panics. This can work, but has several drawbacks: 
+- The cleanup itself could panic, in which case one is in the initial problematic situation again. The risk may be acceptable for simple cleanups, but as discussed above it is hard to write code that never panics, especially if it is somewhat complex. 
+- Currently, Motoko does not allow setting custom cleanup callbacks. Cleanup is used internally by Motoko to do some cleanups.
+- As discussed above, the Rust CDK has a feature that automatically releases local variables in cleanup, which [can be used to release locks](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices#be-aware-that-there-is-no-reliable-message-ordering). Since only one cleanup callback can be defined, any custom cleanup would currently have to implement that feature itself if needed, making this currently hard to use and understand.
+
+We proceed to discuss “journaling”, which is currently our recommended way of addressing the problem at hand. 
+
+### Journaling
+
+Journaling can be used for ensuring that tasks are completed correctly in an asynchronous context, where any instruction or async task can fail. Journaling is generally useful in any security critical application canister on the IC. The journaling concept we describe here is inspired and adapted from journaling in file systems.
+
+A journal is a chronological list of the records and is kept in the canister’s storage. It keeps track of tasks before they begin and when they are completed. Before each failable task, the journal records the intent to execute the task, and after the task, the journal records the result. Creating a record in the journal is called “journaling”.  For example, to make an unreliable async call to a ledger:
+
+1. Check the journal to ensure the transfer is not already in progress. If it is already in progress, go into recovery (see Recovery section below). Otherwise, journal the intent to call a ledger to transfer 1 token from A to B. The journaled intent should contain sufficient context to later identify what happened to the call.
+
+   - An “in progress” transfer would show in the journal as an entry containing intent to do the transfer without an entry containing the result of the transfer call.
+
+1. Call ledger to transfer 1 token from A to B.
+
+1. Journal the result of the transfer.
+
+   - On failure, record the error.
+
+   - On success, record success.
+
+1. Continue onto the next blocked task.
+
+   - “Blocked tasks” are those that require that step 3 has been completed before execution.
+
+   - A blocked task may depend on the success or failure recorded in step 3.
+
+   - Examples of blocked tasks:
+
+     - On failure, log the failure in a user-visible log, and if less than 5 failures have occurred, make a new transfer outcall with the same parameters.
+
+     - On success, update the internal accounting of assets to conform to the result of the transfer.
+
+   - Note that any independent task does not need to wait for any part of this flow.
+
+The critical property of the journal is that at any point, if there is a failure, the journal is sufficient to determine what the next safe step should be. If, after step 1 (journal the intent),
+there is a failure in step 2 or 3, and step 3 (record the result) has not been completed, then the application should complete step 3 by finding out what happened to the call in step 2.
+The fact that the intent has been journaled and the app knows not to reenter the flow until the result has been recorded means the journal acts as a lock on the critical section containing
+the ledger outcall. The lock will not get stuck assuming the application can always find out what happened to a call. Enough context about the call should be recorded in the intent to ensure
+that this is the case. For the ICP ledger, an ID can be generated and recorded in the journaled intent and the ledger can be called with the ID included in the memo so that the result of the
+call can be queried later.
+
+#### Journaling is Robust to Panics
+
+Continuing the above example, let us consider a panic at any point. 
+1. If there is panic before the async outcall, then the journaled intent will be lost, but no state change occurred internally and no outcalls were made so the app is in a safe state. The next step is to record a new intent.
+1. If there is a panic after the async outcall, then the journaled result (step 3) will be lost. This means the app will need to determine the result and journal it before continuing to step 4. As long as it is possible to determine the result, the app is in a safe state even.
+
+#### Journaling And Audit Events
+
+The journal can be used to augment the audit trail for recent events. However, it is probably too detailed for long term storage. After a while, journal entries could be compressed and incorporated into long term audit events. The process for creating audit events could itself be journaled.
+
+#### Recovery
+
+The journal ensures the application knows that recovery from an error is needed, and aids in making recovery decisions. In order to support the recovery process, the journal should support querying all unresolved tasks of a certain type, and tasks of a certain type that resulted in an error. Given an intent, the journal should also be able to return the result if it exists and indicate if it does not exist.
+
+Extending the ledger example above, the recovery process can look like the following
+
+1. There is a panic and the status of the ledger call is unknown. However, the journal has recorded that a call to transfer with particular parameters and memo has been made, and the deduplication timestamp of the transfer. 
+1. The app calls the ledger to determine whether a transaction with the journaled parameters has succeeded on the ledger. Note that with the ICP ledger, there is a small possibility the transaction is stuck in the message queue, so one needs to wait 24 hours from the deduplication time stamp to ensure the message has either succeeded or failed and is not in transit. Therefore if the ledger does not contain the transaction and it is still within 24 hours of the deduplication timestamp, this step must be repeated.
+1. The app journals the result of the transfer call.
+1. The app journals the intention to update internal state according to the result of the transfer call, then updates the internal state, and finally journals the result of the attempt to update the internal state. (Journaling this step is still useful even if it does not contain outcalls, because outcalls may be introduced later, and the step could conflict with other processes that are not atomic.)
+
+Note that recovery can be complex in many cases. Therefore, it may be expedient to rely on manual recovery, then progressively implement automated recovery.
+
+#### Example Journaling Structures
+
+The journaling data structures should support the following queries.
+- What are the unresolved actions for a particular user and action type?
+- What are the unresolved actions that have been open for longer than some time T?
+
+Map: Journal by caller
+- Key: (caller, action type) – e.g. (Alice, Withdraw)
+- Value: Transaction journal struct
+
+Map: Transactions by timestamp (ordered map, could use an additional list for the ordering in Motoko)
+- Key: timestamp 
+- Value: list of references to Transaction journal structs
+
+Transaction journal struct
+- Meta data
+  - transaction, including memo
+  - timestamp
+- List of events, e.g. initialized, returned/success, returned/error with error condition
+- Number of times attempted and failed to progress
+
+#### Example Journaling Flows
+
+New transaction
+- Lookup in journal by caller, don’t allow new transaction if transaction is ongoing
+- Add to journal by caller
+- Add to transactions by timestamp
+
+Transaction finished
+- Remove transaction from both Maps
+- Consider creating an audit log event
+
+Find transactions in unfinished state: 
+- Iterate through Transactions by timestamp map (oldest first)
+- Transactions older than e.g. 10min back can be considered to be in error state
+
 ### Avoid traps after await
+
+*This section is deprecated in favor of [Securely handle traps in callbacks](#Securely-handle-traps-in-callbacks)*
 
 #### Security concern
 
@@ -408,25 +547,28 @@ Not handling the error cases correctly is risky: for example, if a ledger transf
 
 When making inter-canister calls, always handle the error cases (rejects) correctly. These errors imply that the message has not been successfully executed.
 
-### Only make inter-canister calls to trustworthy canisters
+### Be aware of the risks involved in calling untrustworthy canisters
 
 #### Security concern
 
 - If inter-canister calls are made to potentially malicious canisters, this can lead to DoS issues or there could be issues related to candid decoding. Also, the data returned from a canister call could be assumed to be trustworthy when it is not.
 
-- If a canister is called with a callback, the receiver can stall indefinitely if the peer does not respond, resulting in DoS. A canister can no longer be upgraded if it is in that state. Recovery would involve reinstalling, wiping the state of the canister.
+- If a canister is called with a callback, the receiver can stall indefinitely if the peer does not respond, resulting in DoS. A canister can no longer be upgraded if it is in that state. Recovery would involve reinstalling, wiping the state of the canister. Note that even a trustworthy canister could have a bug causing it to stall indefinitely. However, such a bug seems rather unlikely to occur. 
 
 - In summary, this can DoS a canister, consume an excessive amount of resources, or lead to logic bugs if the behavior of the canister depends on the inter-canister call response.
 
 #### Recommendation
 
-- Only make inter-canister calls to trustworthy canisters.
+- Making inter-canister calls to trustworthy canisters is safe, except for the rather unlikely case that there is a bug in the callee that makes it stall forever. 
+
+- If you still want to call untrustworthy canisters, it’s possible to use a state-free proxy canister which could easily be re-installed if it is attacked as described above and is stuck. When the proxy is reinstalled, the caller obtains an error response to the open calls.
 
 - Sanitize data returned from inter-canister calls.
 
 - See "Talking to malicious canisters" section in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
 
 - See [current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), section "Calling potentially malicious or buggy canisters can prevent canisters from upgrading".
+
 
 ### Make sure there are no loops in call graphs
 
