@@ -76,7 +76,7 @@ The cost of API calls for the Bitcoin testnet and Bitcoin mainnet APIs is presen
 
 Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of replication. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached as the charged cost is independent of the replication factor of the subnet.
 
-The price of cycles is fixed against the price of XDR. [Learn more about cycles and XDR.](/docs/current/developer-docs/gas-cost.md)
+The price of cycles is fixed against the price of XDR. [Learn more about cycles and XDR.](/docs/current/developer-docs/gas-cost)
 
 ### Bitcoin testnet
 
