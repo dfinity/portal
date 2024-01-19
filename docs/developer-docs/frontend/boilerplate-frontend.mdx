@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating a frontend using a boilerplate
+# Using a frontend boilerplate
 
 ## Overview
 
@@ -19,7 +19,7 @@ Before you start your project, verify the following:
 
 ### Step 1: Clone the project repository.
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```bash
@@ -55,7 +55,7 @@ git clone https://github.com/MioQuispe/create-ic-app.git
 
 ### Step 2: Create a new app with the command:
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```bash
@@ -90,7 +90,7 @@ npx create-ic-app@latest
 
 This command will prompt you to provide a project name, then choose a project template. 
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 Choose 'Vanilla'.
@@ -145,7 +145,7 @@ This will create a project using the selected frontend template and a simple Mot
 ### Step 3: Once your project has been created, navigate into the project's directory:
 
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```
@@ -207,7 +207,7 @@ npm install
 
 Next, generate the Candid definition for the backend canister.
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```
@@ -271,7 +271,7 @@ Edit the `networks` portion of the `dfx.json` file to reflect using port `4943`:
 
 Next, generate the Candid definition for the backend canister.
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```json
@@ -331,7 +331,7 @@ Next, generate the Candid definition for the backend canister.
 
 ### Step 6: Deploy the project:
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```
@@ -367,7 +367,7 @@ dfx deploy
 
 ### Step 7: Start the local development server for the frontend:
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 ```
@@ -403,7 +403,7 @@ npm run dev
 
 ### Step 8: Navigate to the frontend canister to view the frontend.
 
-<Tabs>
+<Tabs groupId="frontend-frameworks">
 <TabItem value="javascript" label="JavaScript" default>
 
 Navigate to the frontend canister using the URL `http://127.0.0.1:4943/?canisterId=<canister-id>`, such as:
