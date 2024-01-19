@@ -2,38 +2,26 @@
 
 ## Overview
 
-Two advanced engineering challenges needed to be solve to enable Bitcoin smart contracts on ICP: 
-- A protocol-level integration of ICP with the Bitcoin network.
-- A chain-key signatures based on a novel threshold ECDSA protocol.
 
-This page provides a general overview of the Bitcoin integration technology. For a deeper technical explanation of ckBTC, please see the [wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
-
-## Protocol-level integration of ICP with the Bitcoin network
-
-Through the protocol-level integration of ICP with the Bitcoin network, ICP can obtain Bitcoin blocks directly from the Bitcoin network and process the contained transactions. This integration makes it possible to maintain the full Bitcoin UTXO set on-chain on ICP. Canisters can run queries against the full Bitcoin UTXO set. This allows canisters to know about the held UTXOs, and thus balance, of any Bitcoin address, including their own addresses.
-
-## Chain-key ECDSA signatures
-
-Canisters themselves can have ECDSA keys using a novel chain-key ECDSA signature protocol suite for threshold ECDSA, and so can receive and hold Bitcoin. Canisters also can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA functionality to request threshold ECDSA signatures to spend UTXOs in a transaction to be submitted to the Bitcoin network. Chain-key ECDSA signatures are a new member of ICP's chain-key cryptography toolbox of protocols. Chain-key ECDSA signatures are much more than just a threshold ECDSA implementation as they for example also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key ECDSA signature protocol can be found on the corresponding documentation page [here](../t-ecdsa/t-ecdsa-how-it-works.md).
-
-The protocol-level Bitcoin integration and chain-key ECDSA signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on ICP. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions and are non-trivial to use and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA signature API is also generically useful for any ECDSA use case, e.g., integration with other blockchains such as Ethereum.
-
-This page gives a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](../t-ecdsa/t-ecdsa-how-it-works.md).
-
-## Protocol-level integration of ICP with the Bitcoin network
-
-The Internet Computer Protocol has been integrated with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated on any number of Internet Computer subnets. At the beginning, there will only be one dedicated Bitcoin-activated subnet and requests to the Bitcoin API from canisters on any subnet will be routed to this single Bitcoin-activated subnet using ICP's XNet communication capabilities. The integration serves two key purposes:
-
--   Obtaining the Bitcoin UTXO set and keeping it on chain in the replicated state of the Internet Computer to be able to answer queries for UTXO sets and balances of Bitcoin accounts issued by canisters.
--   Accepting signed Bitcoin transactions of canisters and submitting them to the Bitcoin network.
+The Internet Computer Protocol has been integrated with the Bitcoin network to obtain a direct technical integration between the two. 
 
 ![Bitcoin Integration](../_attachments/bitcoin_integration.png)
 
-### Components
+The basis of this integration includes:
 
-On a Bitcoin-activated subnet, a **BTC canister** (Bitcoin canister), implemented as a regular NNS-managed Wasm canister is made accessible to canisters via an API of the management canister, i.e, the interface is implemented as part of the replica. The BTC canister holds the on-chain Bitcoin-related state: the UTXO set, the most recent Bitcoin blocks to allow for fork resolution ("unstable blocks"), and outgoing transactions.
+- A protocol-level integration of ICP with the Bitcoin network: ICP obtains Bitcoin blocks and transactions directly from the Bitcoin network, making it possible to maintain the full Bitcoin UTXO set on ICP. Canisters can run queries against the full Bitcoin UTXO set, allowing them to know about the held UTXOs, and thus balance, of any Bitcoin address, including their own.
 
-A **Bitcoin adapter** process at the networking layer connects to nodes of the Bitcoin network, much like a regular Bitcoin node does.
+- A chain-key signatures based on a novel threshold ECDSA protocol: Canisters can have ECDSA keys using a novel [chain-key ECDSA signature protocol](../t-ecdsa/t-ecdsa-how-it-works.md) suite for threshold ECDSA. This enables them create Bitcoin transactions, submit them via the Bitcoin API to the Bitcoin network, and receive and hold bitcoin. Chain-key ECDSA is used to request threshold ECDSA signatures to spend UTXOs in a Bitcoin transaction. 
+
+The integration and chain-key ECDSA signature protocols each expose an API on the management canister which are used by engineers to write Bitcoin smart contracts on ICP. These APIs are low-level and designed around the concepts of Bitcoin UTXOs and transactions. They are non-trivial and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA signature API can be used for integrations with other blockchains.
+
+## Components
+
+The following components are used on subnets that have activated the Bitcoin integration:
+
+- BTC canister: Implemented as a regular NNS-managed Wasm canister is made accessible to other canisters via an API of the management canister. It holds the on-chain Bitcoin-related state (the UTXO set, the most recent Bitcoin blocks, and outgoing transactions).
+
+- Bitcoin adapter: Connects to nodes of the Bitcoin network, much like a regular Bitcoin node does.
 
 ### Maintaining the Bitcoin UTXO set
 
