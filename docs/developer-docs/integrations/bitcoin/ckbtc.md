@@ -1,4 +1,4 @@
-# Chain-key Bitcoin (ckBTC)
+# Chain-key Bitcoin (ckBTC) API reference
 
 ## Overview
 
@@ -8,35 +8,32 @@ The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
 - The **ckBTC ledger**.
 
-The ckBTC ledger is responsible for keeping account balances and for transferring ckBTC between accounts. It provides the following functionality:
-- It enables the ckBTC minter to mint and burn ckBTC.
-- It enables the transfer of ckBTC among users.
+The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts. It provides the following functionality:
+- Enables the ckBTC minter to mint and burn ckBTC.
+- Facilitates the transfer of ckBTC among users.
 
-The ckBTC minter is responsible for the minting and burning of ckBTC tokens. Tokens are minted when a user transfers bitcoins to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins, making it possible for the ckBTC minter to associate the minted ckBTC funds with the correct owner. The ckBTC minter waits for a large number of
-confirmations for all Bitcoin transactions that affect the total supply of ckBTC because of the lack of finality in Bitcoin. When handling Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
+The **ckBTC minter** is responsible for the minting and burning of ckBTC tokens. It uses the following workflow:
+- Tokens are minted when a user transfers bitcoins to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins.
+- The ckBTC minter waits for confirmations of all Bitcoin transactions that affect the total supply of ckBTC (because of the lack of finality in Bitcoin). 
+- For Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
 
 A detailed description of the ckBTC minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
 A simplified overview of the process to mint and transfer ckBTC is depicted in the following figure.
 
-![ckBTC overview](../../../samples/_attachments/ckbtc-overview.png)
+![ckBTC overview](../_attachments/ckbtc-overview.png)
 
-For a deeper technical overview, please see [here](bitcoin-how-it-works.md).
+Learn more in the [Bitcoin integration technical overview](bitcoin-how-it-works.md).
 
 This page details the API endpoints that can be used to interact with the ckBTC minter canister.
 
-## ckBTC ledger
-The ckBTC ledger accepts minting and burning requests from the ckBTC minter and records the ckBTC balances of every account with a positive balance. Additionally, the ckBTC ledger handles the ckBTC transactions.
+## ckBTC minter API endpoints
+The ckBTC minter canister is controlled by the NNS and running on the [pzp6e](https://dashboard.internetcomputer.org/subnet/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) subnet. In the configuration of the ckBTC minter canister, the following are set:
 
-The ckBTC ledger adheres to the ICRC-1 token standard. Technical details can be found on the GitHub repository of the used [ICRC-1 ledger implementation](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icrc1).
-
-## ckBTC minter
-The ckBTC minter is a canister that is controlled by the NNS and running on the [pzp6e](https://dashboard.internetcomputer.org/subnet/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) subnet. In the configuration of the ckBTC minter canister, the following configurations are set:
-
-- `retrieve_btc_min_amount`: This is the minimum ckBTC amount that can be burned and, correspondingly, the minimum BTC amount that can be withdrawn. The parameter is set to 0.001 BTC, or 100_000 Satoshi.
-- `max_time_in_queue_nanos`: Any BTC retrieval request should be kept in a queue for at most this time. Caching requests rather than handling them right away has the advantage that multiple requests can be served in a single transaction, saving Bitcoin miner fees. The parameter is set to 10 minutes, which corresponds to the expected time between Bitcoin blocks.
-- `min_confirmations`: The number of confirmations required for the ckBTC minter to accept a Bitcoin transaction. In particular, the ckBTC minter does not mint ckBTC before a transaction transferring BTC to a Bitcoin address managed by the ckBTC minter reaches this number of transactions. The parameter was initially set to 72 but has been reduced to 12 in the meantime.
-- `kyt_fee`: The fee that must be paid for KYT checks. It is currently set to 2000 satoshi.
+- `retrieve_btc_min_amount`: The minimum ckBTC amount that can be burned and, correspondingly, the minimum BTC amount that can be withdrawn. The parameter is set to 0.001 BTC, or 100_000 Satoshi.
+- `max_time_in_queue_nanos`: Any BTC retrieval request should be kept in a queue for, at most, this time. Caching requests rather than handling them right away has the advantage that multiple requests can be served in a single transaction, saving Bitcoin miner fees. The parameter is set to 10 minutes, which corresponds to the expected time between Bitcoin blocks.
+- `min_confirmations`: The number of confirmations required for the ckBTC minter to accept a Bitcoin transaction. The ckBTC minter does not mint ckBTC before a transaction transferring BTC reaches this number of transactions. The parameter is set to 12.
+- `kyt_fee`: The fee that must be paid for KYT checks, set to 2_000 Satoshi.
 
 There are other parameters that are self-explanatory and can be found in the [ckBTC minter Candid file](https://github.com/dfinity/ic/blob/master/rs/bitcoin/ckbtc/minter/ckbtc_minter.did).
 
@@ -118,11 +115,17 @@ The ckBTC minter tracks the events that change its internal state. Given a start
 
 Note that this endpoint is used for debugging purposes and there is no guarantee that the endpoint will continue to exist in this form.
 
-## Resources
+## Further reading
 
-To start building your own apps with Bitcoin see the following tutorials:
+- [Bitcoin integration: technology overview](bitcoin-how-it-works.md).
 
-- [ckBTC wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
-- [Deploying your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md).
 - [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
-- [Local development](./local-development.md).
+
+- [Local development workflow](local-development.md).
+
+- [Developer journey: ckBTC and Bitcoin integration](/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin).
+
+- [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+
+- [Creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+

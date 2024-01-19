@@ -1,11 +1,11 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Developing Bitcoin dapps locally
 
 ## Overview
 
-In the [deploy your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md) tutorial,
-you explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
-Bitcoin. In this guide, you'll explore how you can develop and test a Bitcoin dapp
-locally. Testing locally allows you to iterate and improve your dapp more quickly.
+In this guide, you'll explore how you can develop and test a Bitcoin dapp locally. Testing locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) and
 the [Bitcoin API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin-api)
@@ -14,9 +14,8 @@ so that you can locally test out your dapp before deploying it to the Internet C
 ## Setting up a local Bitcoin network
 
 To develop Bitcoin dapps locally, you'll need to set up a local Bitcoin network on your machine.
-Having your own local Bitcoin network allows you to mine blocks quickly and at-will, which
-facilitates testing various cases without having to rely on the (slow) Bitcoin testnet
-or the (even slower) Bitcoin mainnet.
+
+Having your own local Bitcoin network allows you to mine blocks quickly and at-will, which facilitates testing various cases without having to rely on the Bitcoin testnet or mainnet.
 
 - #### Step 1: Download [Bitcoin core](https://bitcoin.org/en/download).  Mac users are recommended to download the `.tar.gz` version.
 - #### Step 2: Unpack the `.tar.gz` file.
@@ -60,12 +59,7 @@ accordingly.
 
 ## Deploying your Bitcoin dapp
 
-Now that you have a local Bitcoin network, you're ready to start
-developing and locally testing your Bitcoin dapps.
-
-For the next steps,you'll be leveraging the example project
-in the [examples repo](https://github.com/dfinity/examples) to showcase some of the key concepts. Let's clone it and explore
-what it's like to deploy a Bitcoin dapp locally.
+For the next steps,you'll be leveraging the [example project](https://github.com/dfinity/examples) to showcase some of the key concepts. 
 
 - #### Step 1: Clone the `examples` repo.
 
@@ -73,11 +67,22 @@ what it's like to deploy a Bitcoin dapp locally.
 
 - #### Step 2: Go to the `basic_bitcoin` example in the language of your choice:
 
-        # For motoko
-        cd examples/motoko/basic_bitcoin
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
 
-        # For rust
-        cd examples/rust/basic_bitcoin
+```
+cd examples/motoko/basic_bitcoin
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```
+cd examples/rust/basic_bitcoin
+```
+
+</TabItem>
+</Tabs>
 
 - #### Step 3: Initialize the git submodules.
 
@@ -95,11 +100,11 @@ You can now deploy your canister and configure it to connect to your local `regt
 - #### Step 1: Run `dfx start --clean`:
 
 :::info
-If when running `dfx start` you see errors like
+If when running `dfx start` you see errors like:
 
     Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 
-that means that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin
+This means that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin
 node is up and running, and that you're setting the correct port (default is `18444`).
 The port used can be changed in `dfx.json`.
 :::
@@ -119,7 +124,7 @@ The port used can be changed in `dfx.json`.
                 basic_bitcoin: http://127.0.0.1:4943/?canisterId=...
 
 Your canister is live and ready to use! You can interact with it using either the command line,
-or using the Candid UI, which is the link you see in the output above.
+or with the Candid UI using the link you see in the output above.
 
 ## Generating a Bitcoin address
 
@@ -149,8 +154,8 @@ In order to receive BTC on your local Bitcoin network, you need to mine blocks. 
 that you mine, you get some BTC as a reward for mining it.
 
 :::info
-  The one key difference between working with a local Bitcoin network and Bitcoin testnet or
-mainnet, is how you receive Bitcoin.
+The one key difference between working with a local Bitcoin network and Bitcoin testnet or
+mainnet is how you receive Bitcoin.
 :::
 
 In the same directory as `bitcoind`, you can issue the following command to mine blocks.
@@ -164,7 +169,7 @@ For example, let's mine a block and have the block reward be given to your canis
 where `<your-canister-btc-address>` is the address you obtained from calling the `get_p2pkh_address`
 endpoint on your canister.
 
-If successful, you'll see an output that looks similar, but not identical, to this:
+If successful, you'll see an output that looks similar to this:
 
     [
         "5eaf0bb0947bc5c3348749b7e194e000f6d93902235e7422b6472a1edfa5a821"
@@ -179,7 +184,7 @@ you should see something like this:
 These logs indicate that your local `dfx` project has ingested the block you just mined.
 
 :::info
-Syncing the first bitcoin block can take up to 30 seconds. Subsequent blocks sync nearly instantly.
+Syncing the first block can take up to 30 seconds. Subsequent blocks sync nearly instantly.
 :::
 
 Now, check your BTC balance:
@@ -190,8 +195,7 @@ Or, via the command line:
 
     dfx canister call basic_bitcoin get_balance '("<your-canister-btc-address>")'
 
-If everything worked well, you should see a balance of 5_000_000_000 Satoshi, which is 50 BTC.
-This is the reward you received for mining one block.
+You should see a balance of 5_000_000_000 Satoshi, which is 50 BTC. This is the reward you received for mining one block.
 
 :::info
 The BTC you mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
@@ -199,20 +203,17 @@ The BTC you mine is valid only in your local bitcoin network and cannot be spent
 
 ### Coinbase maturity
 
-In the previous step, you mined one block, giving your canister a reward of 50 BTC in the process.
-
 One caveat of these block rewards is that they are subject to the [Coinbase maturity rule](https://github.com/bitcoin/bitcoin/blob/bace615ba31cedec50afa4f296934a186b9afae6/src/consensus/consensus.h#L19),
-which states that, in order for you to spend them, you will first need to mine 100
-additional blocks.
+which states that, in order for you to spend them, you will first need to mine 100 additional blocks.
 
-Let's mine 100 additional blocks by running the following command:
+Mine 100 additional blocks by running the following command:
 
     ./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 100 mtbZzVBwLnDmhH4pE9QynWAgh6H3aC1E6M
 
 The above command will mine 100 blocks, giving the block rewards to a random address. By doing so,
 the 50 BTC in rewards that your canister already has will now be spendable.
 
-If successful, you'll see an output that looks similar, but not identical, to this:
+If successful, you'll see an output that looks similar to this:
 
     [
         "0e70a5e8a56f1799e13fd7a52b445023c2d857a5d4b508971390dc9ae010dedc",
@@ -220,7 +221,7 @@ If successful, you'll see an output that looks similar, but not identical, to th
         "3e0410961a3b144d16dcdc95d73c262e0ec09e9812ce33835b2a55606d2be84b"
     ]
 
-In the logs of `dfx`, you should see something like this within a few seconds:
+In the logs of `dfx`, you should see something like this:
 
     INFO .../blockchainmanager Added headers: Height = 101, Active chain's tip = 3e0410961a3b144d16dcdc95d73c262e0ec09e9812ce33835b2a55606d2be84b
     DEBG .../ic_btc_canister/heartbeat New Bitcoin tip height: 101
@@ -295,3 +296,20 @@ installed locally.
     rm -r data
     mkdir data
 ```
+
+## Further reading
+
+- [Bitcoin integration: technology overview](bitcoin-how-it-works.md).
+
+- [ckBTC API reference](ckbtc.md).
+
+- [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
+
+- [Local development workflow](local-development.md).
+
+- [Developer journey: ckBTC and Bitcoin integration](/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin).
+
+- [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+
+- [Creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+
