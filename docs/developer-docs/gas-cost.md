@@ -16,7 +16,6 @@ Canisters pay for consumed resources by burning cycles. These resources include 
     - [Execution](#execution)
     - [Storage](#storage)
     - [Special features](#special-features)
-        - [Replication](#replication)
 - [Who is responsible for paying cycles?](#who-is-responsible-for-paying-cycles)
 - [Cycles price breakdown](#cycles-price-breakdown)
 - [Further readings](#further-readings)
@@ -174,20 +173,21 @@ The following table shows the calculated storage cost per GB for a 30-day month:
 
 ## Further readings
 
-- Monitoring cycles usage
-      - [Check your canister's cycles balance](/docs/current/developer-docs/setup/cycles/cycles-wallet#check-the-cycle-balance).
-      - [Monitor your canister's cycles usage](/docs/current/developer-docs/setup/cycles/cycles_management_services).
-      - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
-- Getting cycles back from a canister
-      - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
+Monitoring cycles usage
+   - [Check your canister's cycles balance](/docs/current/developer-docs/setup/cycles/cycles-wallet#check-the-cycle-balance).
+   - [Monitor your canister's cycles usage](/docs/current/developer-docs/setup/cycles/cycles_management_services).
+   - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
-- Topping up canisters
-      - [Top up your canisters](/docs/current/developer-docs/production/topping-up-canister).
-      - [Cycles management services](/docs/current/developer-docs/setup/cycles/cycles_management_services).
-      - [Cycle.express](https://cycle.express/).
+Getting cycles back from a canister
+   - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
 
-- Counting instructions
-      - [Motoko function `countInstructions`](/docs/current/motoko/main/base/ExperimentalInternetComputer#function-countinstructions).
-      - [IC interface specification](/docs/current/references/ic-interface-spec#system-api-performance-counter).
+Topping up canisters
+   - [Top up your canisters](/docs/current/developer-docs/production/topping-up-canister).
+   - [Cycles management services](/docs/current/developer-docs/setup/cycles/cycles_management_services).
+   - [Cycle.express](https://cycle.express/).
+
+Counting instructions
+   - [Motoko function `countInstructions`](/docs/current/motoko/main/base/ExperimentalInternetComputer#function-countinstructions).
+   - [IC interface specification](/docs/current/references/ic-interface-spec#system-api-performance-counter).
 
