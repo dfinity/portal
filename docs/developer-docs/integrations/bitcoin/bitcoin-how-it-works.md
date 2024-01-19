@@ -108,7 +108,7 @@ The `bitcoin_get_utxos` call is charged through a baseline fee that amortizes pa
 
 - [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
-- [Local development workflow](local-development.md).
+- [Local development workflow](local-development.mdx).
 
 - [Developer journey: ckBTC and Bitcoin integration](/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin).
 
