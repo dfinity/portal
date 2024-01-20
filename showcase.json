@@ -3363,9 +3363,9 @@
   "name": "Datanome",
   "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
   "website": "https://app.datanome.com",
-  "logo": "/img/showcase/datanome_logo.png",
+  "logo": "/img/showcase/datanome-logo.png",
   "screenshots": [
-    "/img/showcase/datanome_screenshot.png"
+    "/img/showcase/datanome-screenshot.png"
   ],
   "video": "",
   "display": "Normal",
