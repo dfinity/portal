@@ -3358,5 +3358,29 @@
   "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
   "submittableId": "34117398",
   "videoContentType": "video/mp4"
+  },
+  {
+  "name": "Datanome",
+  "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
+  "website": "https://app.datanome.com",
+  "logo": "/img/showcase/datanome_logo.png",
+  "screenshots": [
+    "/img/showcase/datanome_screenshot.png"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "datanome",
+  "oneLiner": "Decentralized data marketplace",
+  "stats": "Alpha phase",
+  "tags": [
+    "NFT",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/datanomeproject",
+  "twitter": "https://twitter.com/datanomeproject",
+  "youtube": "",
+  "submittableId": "39687036",
+  "videoContentType": "video/mp4"
   }
 ]
