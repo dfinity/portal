@@ -3358,5 +3358,29 @@
   "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
   "submittableId": "34117398",
   "videoContentType": "video/mp4"
+  },
+  {
+  "name": "Metaversity1",
+  "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
+  "website": "https://sunshineluyao.github.io/icp-nns/",
+  "logo": "/img/showcase/metaversity1_logo.png",
+  "screenshots": [
+    "/img/showcase/metaversity1_screenshot.png"
+  ],
+  "display": "Normal",
+  "id": "metaversity1",
+  "oneLiner": "Empowering Web3 Literacy and Inclusivity Through Streamlined Data Pipelines and Interactive Visualizations.",
+  "tags": [
+    "Education",
+    "Web3",
+    "Diversity and Inclusion",
+    "Academia",
+    "Database"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/sunshineluyao/icp-nns ",
+  "twitter": "https://twitter.com/sunshineluyao ",
+  "youtube": "TBA",
+  "submittableId": "34624410",
   }
 ]
