@@ -14,7 +14,7 @@ image: /img/blog/async-performance-counter.webp
 
 ## Background
 
-The Internet Computer can host a full dapp — frontend, backend and data. Users can deploy their dapp as a canister (smart contract) on the Internet Computer. Each canister can store up to 96 GB of data and execute up to 20 Billion WebAssembly instructions per transaction.
+The Internet Computer can host a full dapp — frontend, backend and data. Users can deploy their dapp as a canister (smart contract) on the Internet Computer. Each canister can store up to 400 GB of data and execute up to 20 Billion WebAssembly instructions per transaction.
 
 Unlike other blockchains, the Internet Computer offers developers [enormous amounts of resources](/docs/current/developer-docs/production/resource-limits). This poses a real challenge for canister developers: writing efficient canister code. The more efficient a canister is, the less cycles it pays.
 

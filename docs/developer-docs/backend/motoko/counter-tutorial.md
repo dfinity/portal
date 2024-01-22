@@ -70,7 +70,7 @@ To modify the default template source code, open the `src/my_counter_backend/inc
 
 Copy and paste this code into the `increment_counter.mo` file:
 
-```
+```motoko
 // Create a simple Counter actor.
 actor Counter {
 stable var currentValue : Nat = 0;

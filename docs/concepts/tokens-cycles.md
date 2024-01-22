@@ -1,4 +1,4 @@
-# Tokens and cycles
+# ICP tokens
 
 ## Overview 
 Internet Computer Protocol tokens (ICP tokens) are a native utility token with a value determined on the open market. ICP tokens play a key role in both the governance and the economics of the Internet Computer.
@@ -28,27 +28,17 @@ As this diagram suggests, how you use ICP tokens depends primarily on your goals
 Regarding transaction fees, the **transaction sender** is responsible for covering any/all transaction fees.
 :::
 
-## How cycles work
+## Cycles
 
-For developers, ICP tokens are important because they can be converted to cycles that, in turn, are used to pay for resource consumption.
+Cycles are burned by canisters to pay for the resources they consume such as execution, storage, and messaging. Cycles have a fixed price where 1 trillion cycles is equal to 1 XDR, an official group of currencies maintained by [IMF](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). This means that running costs of canisters are decoupled from price fluctuations of ICP.
 
-As an example, imagine you have a house where propane is used for a water heater, kitchen stove, dryer, and space heater. As you use these appliances, you deplete the supply of gas you have on hand, so periodically you contact a provider to refill your supply so you can continue to use your appliances without interruption. This is similar to canisters in that each canister must have an account with cycles available to pay for the communication, computation, and storage that the canister’s application consumes.
-
-To learn more about cycles and how to use them, see [here](/docs/developer-docs/setup/cycles/converting_icp_tokens_into_cycles.md).
-
-## Cost of computation
-
-Cycles reflect the real costs of operations for applications hosted in the Internet Computer blockchain including resources such physical hardware, rack space, energy, storage devices, and bandwidth.
+For developers, ICP tokens are important because they can be converted to cycles that, in turn, are used to pay for resource consumption. Cycles reflect the real costs of operations for applications hosted in the Internet Computer blockchain including resources such physical hardware, rack space, energy, storage devices, and bandwidth.
 
 Canister smart contracts must be able to pay for complete execution (all or nothing), but the platform sets limits on how many cycles a canister can hold and consume to prevent malicious code from draining resources.
 
-The relative stability of operational costs makes it easier to predict the cycles required to process, for example, a million messages.
+To learn more about cycles and how to use them, see [here](/docs/developer-docs/setup/cycles/converting_icp_tokens_into_cycles.md).
 
-The costs associated with communication, computation, and storage are more likely to decrease than to increase over time. For example, because disk space becomes cheaper and hardware becomes more efficient, the Internet Computer protocol will also improve over time to make better use of the resources.
-
-Cycles are not a currency; in particular cycles cannot be converted back to value in the form of Internet Computer Protocol tokens, but can be transferred between canisters to enable canisters to pay for operations.
-
-For exact costs see the tables in [computation and storage costs](/developer-docs/gas-cost.md).
+For more information on cycles costs, see the tables in [computation and storage costs](/developer-docs/gas-cost.md).
 
 ## Token value and volatility
 

@@ -73,7 +73,7 @@ Then, open the `src/calc_backend/calc_main.mo` file in a text editor and delete 
 
 Copy and paste this code into the `calc_main.mo` file:
 
-```
+```motoko
 // This single-cell calculator defines one calculator instruction per
 // public entry point (add, sub, mul, div).
 

@@ -1,7 +1,6 @@
 # 0.6 Introduction to dfx
 
-[![ICP Developer Journey 0.6 | Introduction to dfx](https://img.youtube.com/vi/J5rhdzjuq6k/0.jpg)](https://www.youtube.com/watch?v=J5rhdzjuq6k)
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J5rhdzjuq6k?si=3o1NdIWr0TeNYSkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 

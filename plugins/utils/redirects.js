@@ -177,6 +177,10 @@ const redirects = `
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
+  /docs/current/developer-docs/frontend/javascript-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
+  /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
+  /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
+  /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

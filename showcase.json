@@ -92,7 +92,7 @@
     "id": "nfid",
     "name": "NFID",
     "oneLiner": "Your digital identity for the modern world.",
-    "website": "https://t.co/FDpvRjszU3/",
+    "website": "https://nfid.one/",
     "tags": [
       "Wallet",
       "Ethereum"
@@ -3165,6 +3165,27 @@
     "submittableId": "41506799"
   },
   {
+  "name": "BitBasel Art Marketplace",
+  "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol",
+  "website": "https://bitbasel.com/",
+  "logo": "/img/showcase/bitbasel-art-marketplace_logo.webp",
+  "screenshots": [
+    "/img/showcase/bitbasel-art-marketplace_screenshot.webp"
+  ],
+  "display": "Normal",
+  "id": "bitbasel-art-marketplace",
+  "oneLiner": "A curated marketplace for buying and selling digital artwork.",
+  "stats": "100+ artworks",
+  "tags": [
+    "Bitcoin",
+    "NFT"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/BitBasel",
+  "twitter": "https://twitter.com/bitbaselart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+  "submittableId": "41349769"
+ }, 
+ {
     "name": "Hobbi",
     "description": "With Hobbi, you can create a profile and record all the multimedia content you consume. Whether it's a movie, a book, or even a video game, register and share your profile with whomever you want.",
     "website": "https://hobbi.me",
@@ -3267,6 +3288,23 @@
     "github": "https://github.com/id-daniel-mccoy/asset-app"
   },
   {
+    "id": "Outank NFT Rarity",
+    "name": "Outrank",
+    "oneLiner": "Working group with a vision to develop correct rarity metrics for all types of NFTs",
+    "website": "https://www.outrank.io",
+    "tags": [
+      "NFT", 
+      "Tools / Infrastructure"
+    ],
+    "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity",
+    "logo": "/img/showcase/Outrank_logo.jpg",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/OutRankNFT",
+    "youtube": "https://youtu.be/N8ap_FPNQv8",
+    "twitter": "https://twitter.com/OutRankNFT",
+    "submittableId": "35224577"
+  },
+  {
     "name": "user controlled mind and body canister",
     "id": "ic-mind-body-canister",
     "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
@@ -3296,5 +3334,29 @@
     "github": "https://github.com/QuezarHQ/pingICP",
     "twitter": "https://twitter.com/quezarHQ",
     "submittableId": "41431540"
+  },
+  {
+  "name": "Alphaday",
+  "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services and much more into one customizable UI.",
+  "website": "https://app.alphaday.com/b/dfinity/",
+  "logo": "/img/showcase/Alphaday_logo.png",
+  "screenshots": [
+    "/img/showcase/Alphaday_screenshot.png"
+  ],
+  "video": "/img/showcase/Alphaday_video.mp4",
+  "display": "Normal",
+  "id": "alphaday",
+  "oneLiner": "The one tool you need to stay up to date and with crypto.",
+  "stats": "15,000+ Active Users",
+  "tags": [
+    "SocialFi",
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/AlphadayHQ ",
+  "twitter": "https://twitter.com/AlphadayHQ ",
+  "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
+  "submittableId": "34117398",
+  "videoContentType": "video/mp4"
   }
 ]
