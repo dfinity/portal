@@ -27,7 +27,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   >({});
   const [loading, setLoading] = useState(false);
 
-  useLockBodyScroll(dialogRef);
+  useLockBodyScroll();
 
   useEffect(() => {
     actorRefPromise.current = import("./actor").then(({ createActor }) => {

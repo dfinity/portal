@@ -219,6 +219,7 @@ module.exports = {
                 ".tw-caption": "@apply text-caption font-book",
                 '.button-primary': '@apply text-center inline-block bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors border-none',
                 '.button-white': '@apply text-center inline-block bg-white rounded-xl text-infinite tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-white-80 hover:text-infinite transition-colors border-none',
+                '.button-ghost': '@apply text-center inline-block bg-transparent rounded-xl border-none text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-black/20 transition-colors',
                 '.button-outline': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
                 '.button-outline-white': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-transparent': "@apply button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80",
