@@ -149,7 +149,7 @@ const airtablePlugin = async function () {
                 );
                 try {
                   await sharp(tempFilePath)
-                    .resize(700, 400, {
+                    .resize(960, 440, {
                       fit: "outside",
                       withoutEnlargement: true,
                     })
