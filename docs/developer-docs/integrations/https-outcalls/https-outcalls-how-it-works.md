@@ -2,97 +2,27 @@
 
 ## Overview
 
-The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conventional Web 2.0 HTTP servers. The response of the request can be safely used in computations of the canister, without the risk of state divergence between the replicas of the subnet.
-
+The HTTPS outcalls feature allows canisters to make outgoing HTTP calls to conventional HTTP servers. The response of the request can be safely used in computations of the canister without the risk of state divergence between the replicas of the subnet.
 
 :::info
 This documentation may use **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. 
 :::
 
-The canister HTTPS outcalls feature is implemented as part of the Internet Computer replica and is exposed as an API of the management canister. The HTTP request functionality is realized at the level of subnets, such that each subnet handles the HTTP requests of its canisters independently of other subnets. HTTP requests are never routed to other subnets for execution.
+The canister HTTPS outcalls feature is implemented as part of the ICP replica and is exposed as an API. The HTTP request functionality is realized at the level of subnets, such that each subnet handles the HTTP requests of its canisters independently of other subnets. HTTP requests are never routed to other subnets for execution.
 
 HTTP outcalls are processed by ICP using the following workflow:
 
 ![HTTPS outcalls high-level architecture](../_attachments/HTTPS_outcalls_HL_architecture.jpg)
 
-- #### Step 1: A canister makes an outgoing HTTP request by calling the management canister API using the `http_request` method.
+- #### Step 1: A canister makes an outgoing HTTP request by calling the API using the `http_request` method.
 - #### Step 2: The request is stored temporarily in the replicated state of the subnet.
 - #### Step 3: Periodically (each round) an **adapter** at the networking layer in each replica fetches the pending HTTP outcalls from replicated state. 
 - #### Step 4: The adapter on each replica executes the HTTP request by sending it to the target server.
-- #### Step 5: The corresponding HTTP response from the server is received by the adapter on each replica of the subnet and provided to a component in the replica process. 
-The adapter limits the network response size to `max_response_bytes` which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response as it affects the price of the request. The price increases with the size `max_response_bytes` and the actual response size is not considered -- only the maximum.
-- #### Step 6: An optional transformation function implemented as part of the canister is invoked on the respective response. 
+- #### Step 5: The corresponding HTTP response from the server is received by the adapter on each replica of the subnet.
+- #### Step 6: An optional transformation function implemented as part of the canister is invoked on the response. 
 - #### Step 7: The transformed response is handed over to consensus on each replica.
-- #### Step 8: ICP consensus agrees on a response if at least $2/3$ of the replicas have the same response for the request as input. 
-In this case, consensus provides this response back to the management canister API.
-- #### Step 9: The management canister API provides the response or error back to the calling canister.
-
-
-Each replica pushes an instance of the received HTTP response from the external web server through the Internet Computer's consensus layer so that the replicas of the subnet can agree on the response provided to the canister.
-
-The optional transformation ensures that if responses differs across multiple replicas, those differences are eliminated and the same response is provided to consensus. This guarantees that on every replica the same response is used for canister execution. This ensures that divergence does not occur and the replicated state machine properties of the subnet are preserved.
-
-### Trust model and programming model
-
-The trust model for HTTP outcalls is based on the model of the called HTTP server and that of ICP:
-* It is assumed that the HTTP service is honest. Otherwise, it can provide any responses to any of the calling replicas of the subnet. 
-* The trust model assumes that at least $2/3$ of the replicas are honest. The honest replicas will obtain the same response and agree on it through consensus.
-
-A dishonest server or $1/3$ or more of dishonest subnet replicas can make requests fail. To provide wrong data, more than $2/3$ of the replicas need to be compromised.
-
-The canister making an HTTP outcall acts as **HTTP client** and needs to interpret various headers and act accordingly. For use cases such as API requests, this is rather straightforward and does not require many specific considerations in the standard case. The ICP protocol stack can be seen as a communication pipe between the canister and the conventional HTTP server that makes sure the HTTP response makes it through consensus with an agreed-upon response. 
-
-## HTTPS outcalls and oracles compared
-
-**Blockchain oracles** are external parties that interact with a blockchain by making queries or sending ingress messages. Oracles typically use the following architecture:
-
-- An oracle smart contract is deployed on-chain. 
-
-- Users make requests to this oracle contract, which stores the requests temporarily. 
-
-- An oracle service obtains the stored request from the oracle smart contract through queries and update calls. 
-
-- The oracle executes the request in the Web 2.0 world by means of a regular HTTP call and provides back the response to the oracle smart contract.
-
-- The oracle smart contract provides back the response to the calling smart contract using a standard on-chain interaction.
-
-A single oracle may fulfill the original request or a decentralized network of oracles may each issue the request and then provide an agreed-upon response to the oracle contract and ultimately to the calling canister. The oracle would effectively achieve the same result as HTTP outcalls, but with a more complex architecture.
-
-HTTP outcalls can replace oracles for many relevant use cases, and do so in a stronger trust model with lower fees and lower request execution latency.
-
-## Benefits for developers
-
-Canister HTTP requests do not need to make a decision on which party they want to trust other than ICP. A developer can focus on their business logic and simply make the HTTP call they need. 
-
-The cost of the HTTP outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost. 
-
-## Benefits for end users
-
-End users can benefit from HTTP outcalls in various ways:
-
-* **Stronger trust model:** Stronger security by not relying on any additional parties which resemble further points of failure and thereby benefit from better decentralization. 
-* **Lower fees:** Users typically get a cheaper service.
-* **Lower latency:** Latency of direct HTTP calls is lower than making an Xnet request to an oracle contract that then gets polled and serviced by an external oracle service. This is more pronounced for Xnet requests, which are required unless the oracle provider sets up an oracle smart contract on every relevant subnet.
-
-## Known limitations
-
-Some limitations that engineers need to know are:
-
-- **Responses must be similar** in the sense that each response can be subjected to the same transformation function and the outcome of the transformation will be equal on every replica. The core information must be equal in all responses and other parts may differ, but are not relevant for the response. This may be that the responses are structurally equivalent, but contain certain fields that differ in the responses.
-
-- **`POST` requests must be idempotent.** Idempotency does not apply to `POST` requests, meaning that without further precautions, a `POST` made from a canister could result in the request leading to an update on the called server $n$ times, with $n$ the number of replicas in the subnet. One standard solution is the use of an **idempotency key** in the request, which is a unique random string in a header sent along with all resulting requests by the different replicas. The server identifies all but one of the requests as duplicates and those are not considered for changing the state on the server, only one of them is. This results in exactly the intended behavior of the `POST` being applied exactly once by the server. However, note that this single request being processed by the server can actually be the request made by a compromised replica and thus not be the intended request. Also, the compromised replica may change the idempotency key and thus lead to its request and the actual intended request getting processed by the server.
-
-- **Compromised replicas:** A replica can at any point in time make arbitrary `POST` requests to the service. If you have an API key or password stored for authenticating to the external server, you run into the problem that a compromised replica can use the stored plaintext credentials to authenticate to the server. One solution is to sign `POST` requests with a subnet signature using chain key cryptography and have the server check the signature. Such approach requires adaptation of the server, but can resolve the remaining security problems of dishonest replicas making arbitrary requests.
-
-- **IPv6-only support:** ICP itself is an IPv6-based system, and therefore the canister HTTP outcalls feature only supports IPv6. 
-
-- **Rate limiting by servers:** Rate limiting means to constrain how many requests can be made from an Ipv4 address or IPv6 prefix in a given time interval. Once the quota for an address of prefix is used up, requests from this IP or prefix would not be served, but an according error response would be served instead. All canisters on a subnet share the IPv6 prefixes of the replicas of this subnet and the quotas can get consumed quickly and rate limits may lead to throttling or the replicas being (temporarily) blocked. Using a registered user and authorizing the requests with an API key can decouple users on the same server and give each of them their own quota can solve this issue with public APIs. 
-
-## Future extensions
-
-There are multiple possible extensions under consideration to be implemented in the future such as:
-* **IPv4 support:** Allow canisters to reach servers that are not available on IPv6.
-* **Reduced quorum:** Allow canisters to define a reduced quorum should be used for a request such as only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests.
+- #### Step 8: Consensus agrees on a response if at least $2/3$ of the replicas have the same response for the request as input. 
+- #### Step 9: The API provides the response or error back to the calling canister.
 
 ## Creating HTTPS outcalls
 
@@ -136,6 +66,50 @@ It is recommended to go with the first approach whenever possible as it has mult
 * The transformation function may be faster to compute (the function (query) is executing with fewer CPU cycles). Note that queries on ICP are for currently free currently.
 
 * The transformation function is often easier to implement, such as through simple JSON operation(s) on the response body.
+
+## Trust and programming models
+
+The trust model for HTTP outcalls is based on the model of the called HTTP server and that of ICP:
+* It is assumed that the HTTP service is honest. Otherwise, it can provide any responses to any of the calling replicas of the subnet. 
+* The trust model assumes that at least $2/3$ of the replicas are honest. The honest replicas will obtain the same response and agree on it through consensus.
+
+A dishonest server or $1/3$ or more of dishonest subnet replicas can make requests fail. To provide wrong data, more than $2/3$ of the replicas need to be compromised.
+
+The canister making an HTTP outcall acts as **HTTP client** and needs to interpret various headers and act accordingly. For use cases such as API requests, this is rather straightforward and does not require many specific considerations in the standard case. The ICP protocol stack can be seen as a communication pipe between the canister and the conventional HTTP server that makes sure the HTTP response makes it through consensus with an agreed-upon response. 
+
+## Benefits for developers
+
+Canister HTTP requests do not need to make a decision on which party they want to trust other than ICP. A developer can focus on their business logic and simply make the HTTP call they need. 
+
+The cost of the HTTP outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost. 
+
+## Benefits for end users
+
+End users can benefit from HTTP outcalls in various ways:
+
+* **Stronger trust model:** Stronger security by not relying on any additional parties which resemble further points of failure and thereby benefit from better decentralization. 
+* **Lower fees:** Users typically get a cheaper service.
+* **Lower latency:** Latency of direct HTTP calls is lower than making an Xnet request to an oracle contract that then gets polled and serviced by an external oracle service. This is more pronounced for Xnet requests, which are required unless the oracle provider sets up an oracle smart contract on every relevant subnet.
+
+## Known limitations
+
+Some limitations that engineers need to know are:
+
+- **Responses must be similar** in the sense that each response can be subjected to the same transformation function and the outcome of the transformation will be equal on every replica. The core information must be equal in all responses and other parts may differ, but are not relevant for the response. This may be that the responses are structurally equivalent, but contain certain fields that differ in the responses.
+
+- **`POST` requests must be idempotent.** Idempotency does not apply to `POST` requests, meaning that without further precautions, a `POST` made from a canister could result in the request leading to an update on the called server $n$ times, with $n$ the number of replicas in the subnet. One standard solution is the use of an **idempotency key** in the request, which is a unique random string in a header sent along with all resulting requests by the different replicas. The server identifies all but one of the requests as duplicates and those are not considered for changing the state on the server, only one of them is. This results in exactly the intended behavior of the `POST` being applied exactly once by the server. However, note that this single request being processed by the server can actually be the request made by a compromised replica and thus not be the intended request. Also, the compromised replica may change the idempotency key and thus lead to its request and the actual intended request getting processed by the server.
+
+- **Compromised replicas:** A replica can at any point in time make arbitrary `POST` requests to the service. If you have an API key or password stored for authenticating to the external server, you run into the problem that a compromised replica can use the stored plaintext credentials to authenticate to the server. One solution is to sign `POST` requests with a subnet signature using chain key cryptography and have the server check the signature. Such approach requires adaptation of the server, but can resolve the remaining security problems of dishonest replicas making arbitrary requests.
+
+- **IPv6-only support:** ICP itself is an IPv6-based system, and therefore the canister HTTP outcalls feature only supports IPv6. 
+
+- **Rate limiting by servers:** Rate limiting means to constrain how many requests can be made from an Ipv4 address or IPv6 prefix in a given time interval. Once the quota for an address of prefix is used up, requests from this IP or prefix would not be served, but an according error response would be served instead. All canisters on a subnet share the IPv6 prefixes of the replicas of this subnet and the quotas can get consumed quickly and rate limits may lead to throttling or the replicas being (temporarily) blocked. Using a registered user and authorizing the requests with an API key can decouple users on the same server and give each of them their own quota can solve this issue with public APIs. 
+
+## Future extensions
+
+There are multiple possible extensions under consideration to be implemented in the future such as:
+* **IPv4 support:** Allow canisters to reach servers that are not available on IPv6.
+* **Reduced quorum:** Allow canisters to define a reduced quorum should be used for a request such as only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests.
 
 ## Errors 
 
