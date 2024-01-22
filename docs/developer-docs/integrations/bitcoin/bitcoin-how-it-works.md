@@ -31,7 +31,7 @@ The BTC canister and adapter communicate with each other via ICP's protocol stac
 
 - The adapter on each replica of the subnet obtains the requested blocks from the Bitcoin network. A block-making replica provides the requested block to the Bitcoin canister.
 
-- The Bitcoin canister processes blocks by validating them, extracting the transactions and UTXOs, and updating the UTXO set maintained in the replica. 
+- The Bitcoin canister processes blocks by validating them, extracting the transactions and UTXOs, and updating the UTXO set it maintains. 
 
 This implementation securely resolves forks and protects against various kinds of attacks by maintaining a certain number of Bitcoin blocks which are not yet absorbed into the maintained UTXO set. 
 
