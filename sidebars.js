@@ -612,11 +612,11 @@ const sidebars = {
             id: "developer-docs/integrations/rosetta/index",
           },
           items: [
-            "developer-docs/integrations/rosetta/hotkeys",
-            "developer-docs/integrations/rosetta/neuron-lifecycle",
-            "developer-docs/integrations/rosetta/staking-support",
-            "developer-docs/integrations/rosetta/staking-tutorial",
-            "developer-docs/integrations/rosetta/transfers",
+            //"developer-docs/integrations/rosetta/hotkeys",
+            //"developer-docs/integrations/rosetta/neuron-lifecycle",
+            //"developer-docs/integrations/rosetta/staking-support",
+            //"developer-docs/integrations/rosetta/staking-tutorial",
+            //"developer-docs/integrations/rosetta/transfers",
           ],
         },
         {
