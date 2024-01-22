@@ -11,7 +11,7 @@ The basis of this integration includes:
 
 - A protocol-level integration of ICP with the Bitcoin network: ICP obtains Bitcoin blocks and transactions directly from the Bitcoin network, making it possible to maintain the full Bitcoin UTXO set on ICP. Canisters can run queries against the full Bitcoin UTXO set, allowing them to know about the held UTXOs, and thus balance, of any Bitcoin address, including their own.
 
-- A chain-key signatures: Canisters can have ECDSA keys using a novel [chain-key ECDSA signature protocol](../t-ecdsa/t-ecdsa-how-it-works.md) suite for threshold ECDSA. This enables them create Bitcoin transactions, submit them via the Bitcoin API to the Bitcoin network, and receive and hold bitcoin. Chain-key ECDSA is used to request threshold ECDSA signatures to spend UTXOs in a Bitcoin transaction. 
+- A chain-key signature: Canisters can have ECDSA keys using a novel [chain-key ECDSA signature protocol](../t-ecdsa/t-ecdsa-how-it-works.md) suite for threshold ECDSA. This enables them to create Bitcoin transactions, submit them via the Bitcoin API to the Bitcoin network, and receive and hold bitcoin. Chain-key ECDSA is used to request threshold ECDSA signatures to spend UTXOs in a Bitcoin transaction. 
 
 The integration and chain-key ECDSA signature protocols each expose an API on the management canister which are used by engineers to write Bitcoin smart contracts on ICP. These APIs are low-level and designed around the concepts of Bitcoin UTXOs and transactions. They are non-trivial and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA signature API can be used for integrations with other blockchains.
 
