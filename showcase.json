@@ -3358,5 +3358,30 @@
   "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
   "submittableId": "34117398",
   "videoContentType": "video/mp4"
+  },
+  {
+    "name": "glue",
+    "description": "A easy to use solution for community leaders and members to perform holder verification of NFTs and tokens on discord.",
+    "website": "https://github.com/glue-org",
+    "logo": "/img/showcase/glue_logo.webp",
+    "screenshots": [
+      "/img/showcase/glue_screenshot.webp"
+    ],
+    "video": "/img/showcase/glue_video.mp4",
+    "display": "Normal",
+    "id": "glue",
+    "oneLiner": "Holder verification for tokens and NFTs for discord.",
+    "stats": "9000+ users",
+    "tags": [
+      "NFT",
+      "Tools / Infrastructure",
+      "DAO"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/glue-org",
+    "twitter": "https://twitter.com/glue_org",
+    "youtube": "",
+    "submittableId": "28043953",
+    "videoContentType": "video/mp4"
   }
 ]
