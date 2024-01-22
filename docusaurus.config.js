@@ -256,8 +256,8 @@ const marketingNav = {
           name: "Use cases",
           items: [
             {
-              name: "Open Internet Services",
-              href: "/ois",
+              name: "DAOs on ICP",
+              href: "/sns",
               description: "Community-owned services",
             },
             {
