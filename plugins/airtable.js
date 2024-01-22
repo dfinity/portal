@@ -174,6 +174,7 @@ const airtablePlugin = async function () {
       }
 
       const topics = new Set(); // event.topic is a string array
+      const types = new Set(); // string
       const regions = new Set(); // string
       const countries = new Set(); // string
       const cities = new Set(); // string
@@ -184,6 +185,12 @@ const airtablePlugin = async function () {
           for (const t of rec.topic) {
             topics.add(t);
           }
+        }
+
+        if (rec.type) {
+          types.add(rec.type);
+        } else {
+          logger.warn("Invalid event, no type: " + rec.eventName);
         }
 
         if (rec.regions) {
@@ -206,6 +213,7 @@ const airtablePlugin = async function () {
       return {
         events: records,
         topics: Array.from(topics),
+        types: Array.from(types),
         regions: Array.from(regions),
         countries: Array.from(countries),
         cities: Array.from(cities),

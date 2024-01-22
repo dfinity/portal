@@ -24,28 +24,28 @@ const PastEventsToggle = ({ showPastEvents, onShowPastEventsChange }) => {
 };
 
 const FilterPills: React.FC<{
-  onTopicChange: (topic: string) => void;
-  topics: string[];
-  selectedTopic: string;
+  onTypeChange: (type: string) => void;
+  types: string[];
+  selectedType: string;
   className?: string;
-}> = ({ onTopicChange, selectedTopic, topics, className }) => {
+}> = ({ onTypeChange, selectedType, types, className }) => {
   return (
     <div className={clsx("flex gap-2 items-center", className)}>
       <Pill
-        isActive={!selectedTopic}
-        onClick={() => onTopicChange("")}
+        isActive={!selectedType}
+        onClick={() => onTypeChange("")}
         variant="dark"
       >
         All
       </Pill>
-      {topics.map((topic) => (
+      {types.map((type) => (
         <Pill
-          isActive={topic === selectedTopic}
-          onClick={() => onTopicChange(topic)}
+          isActive={type === selectedType}
+          onClick={() => onTypeChange(type)}
           variant="dark"
-          key={topic}
+          key={type}
         >
-          {topic}
+          {type}
         </Pill>
       ))}
     </div>
@@ -63,21 +63,21 @@ const TotalCount: React.FC<{ children: ReactNode }> = ({ children }) => {
 const Filters: React.FC<{
   showPastEvents: boolean;
   onShowPastEventsChange: (show: boolean) => void;
-  topics: string[];
+  types: string[];
   locations: string[];
-  selectedTopic: string;
+  selectedType: string;
   selectedLocations: string[];
-  onTopicChange: (topic: string) => void;
+  onTypeChange: (type: string) => void;
   onLocationsChange: (locations: string[]) => void;
   filteredCount: number;
 }> = ({
   showPastEvents,
   onShowPastEventsChange,
-  topics,
+  types,
   locations,
-  selectedTopic,
+  selectedType,
   selectedLocations,
-  onTopicChange,
+  onTypeChange,
   onLocationsChange,
   filteredCount,
 }) => {
@@ -87,7 +87,7 @@ const Filters: React.FC<{
   const selectableLocations = locations.map((l) => ({ label: l, value: l }));
 
   function clearFilters() {
-    onTopicChange("");
+    onTypeChange("");
     onLocationsChange([]);
     onShowPastEventsChange(false);
     setShowMobileFilterDrawer(false);
@@ -111,12 +111,12 @@ const Filters: React.FC<{
             clone={(data) => ({ ...data })}
             data={{
               showPastEvents,
-              selectedTopic,
+              selectedType,
               selectedLocations,
             }}
-            onApply={({ showPastEvents, selectedTopic, selectedLocations }) => {
+            onApply={({ showPastEvents, selectedType, selectedLocations }) => {
               onShowPastEventsChange(showPastEvents);
-              onTopicChange(selectedTopic);
+              onTypeChange(selectedType);
               onLocationsChange(selectedLocations);
               setShowMobileFilterDrawer(false);
             }}
@@ -137,17 +137,17 @@ const Filters: React.FC<{
                   }}
                 ></ComboSelectUnrolled>
 
-                <h3 className="tw-heading-5 mb-3 mt-6">Topics</h3>
+                <h3 className="tw-heading-5 mb-3 mt-6">Types</h3>
                 <FilterPills
                   className="flex-wrap"
-                  onTopicChange={(newData) => {
+                  onTypeChange={(newData) => {
                     setClonedData({
                       ...clonedData,
-                      selectedTopic: newData,
+                      selectedType: newData,
                     });
                   }}
-                  selectedTopic={clonedData.selectedTopic}
-                  topics={topics}
+                  selectedType={clonedData.selectedType}
+                  types={types}
                 ></FilterPills>
 
                 <h3 className="tw-heading-5 mb-3 mt-6">Past events</h3>
@@ -191,9 +191,9 @@ const Filters: React.FC<{
           />
           <FilterPills
             className="md:contents"
-            onTopicChange={onTopicChange}
-            selectedTopic={selectedTopic}
-            topics={topics}
+            onTypeChange={onTypeChange}
+            selectedType={selectedType}
+            types={types}
           ></FilterPills>
         </div>
         <PastEventsToggle

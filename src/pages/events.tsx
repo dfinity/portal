@@ -28,7 +28,7 @@ import {
   useQueryParam,
 } from "../utils/use-query-param";
 
-const { events, topics, regions } = data;
+const { events, types, regions } = data;
 const DEFAULT_MAX_EVENTS = 12;
 
 const featuredEvent = getFeaturedEvent(events);
@@ -44,8 +44,8 @@ function GlobalEventsPage() {
       serialize: serializeStringList,
       deserialize: deserializeStringList,
     });
-  const [selectedTopic, setSelectedTopic, topicInitialized] =
-    useQueryParam<string>("topic", undefined, {
+  const [selectedType, setSelectedType, typeInitialized] =
+    useQueryParam<string>("type", undefined, {
       serialize: serializeString,
       deserialize: deserializeString,
     });
@@ -71,7 +71,7 @@ function GlobalEventsPage() {
   useEffect(() => {
     if (
       !locationsInitialized ||
-      !topicInitialized ||
+      !typeInitialized ||
       !showPastEventsInitialized
     ) {
       return;
@@ -93,7 +93,7 @@ function GlobalEventsPage() {
         return false;
       }
 
-      if (selectedTopic && !event.topic?.includes(selectedTopic)) {
+      if (selectedType && event.type !== selectedType) {
         return false;
       }
 
@@ -113,10 +113,10 @@ function GlobalEventsPage() {
     setFilteredEvents(filtered);
   }, [
     selectedLocations,
-    selectedTopic,
+    selectedType,
     showPastEvents,
     locationsInitialized,
-    topicInitialized,
+    typeInitialized,
     showPastEventsInitialized,
     setFilteredEvents,
   ]);
@@ -178,12 +178,12 @@ function GlobalEventsPage() {
           <Filters
             showPastEvents={showPastEvents}
             onShowPastEventsChange={setShowPastEvents}
-            topics={topics}
+            types={types}
             locations={regions}
             selectedLocations={selectedLocations}
             onLocationsChange={setSelectedLocations}
-            selectedTopic={selectedTopic}
-            onTopicChange={setSelectedTopic}
+            selectedType={selectedType}
+            onTypeChange={setSelectedType}
             filteredCount={filteredCount}
           />
         </AnimateSpawn>
