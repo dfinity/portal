@@ -16,7 +16,7 @@ API calls from canisters to the Bitcoin API are routed via XNet communication. T
 
 To read information from the Bitcoin state, you can make a call to the Bitcoin API endpoints `get_balance`, `get_utxos`, and `get_current_fee_percentiles`.
 
-[Learn more about how to use the Bitcoin API.](/docs/current/developer-docs/integrations/bitcoin/local-development#generating-a-bitcoin-address)
+[Learn more about how to use the Bitcoin API.](/docs/current/references/ic-interface-spec/#ic-bitcoin-api)
 
 ## Submitting transactions
 
@@ -28,7 +28,7 @@ Canisters can submit Bitcoin transactions to the Bitcoin canister using the corr
 
 This results in efficient and quick distribution of Bitcoin transactions as every replica of the subnet submits transactions via multiple connections to the Bitcoin network.
 
-[Learn more about how to submit transactions.](/docs/current/developer-docs/integrations/bitcoin/local-development#sending-bitcoin)
+[Learn more about how to submit transactions.](/docs/current/references/ic-interface-spec/#ic-bitcoin-api)
 
 ## API fees & pricing
 
