@@ -14,7 +14,7 @@ API calls from canisters to the Bitcoin API are routed via XNet communication. T
 
 ## Reading the Bitcoin state
 
-To read information from the Bitcoin state, you can make a call to the Bitcoin API endpoints `get_balance`, `get_utxos`, and `get_current_fee_percentiles`.
+To read information from the Bitcoin state, you can make a call to the Bitcoin API endpoints `bitcoin_get_balance`, `bitcoin_get_utxos`, and `bitcoin_get_current_fee_percentiles`.
 
 [Learn more about how to use the Bitcoin API.](/docs/current/references/ic-interface-spec/#ic-bitcoin-api)
 
