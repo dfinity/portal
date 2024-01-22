@@ -139,7 +139,10 @@ const airtablePlugin = async function () {
 
                 rec.eventBanner.url = `/assets/images/events/${tempFileName}`;
 
-                const webpFileName = `${rec.eventBanner.id}.webp`;
+                const webpFileName =
+                  fileExt === "webp"
+                    ? `${rec.eventBanner.id}-processed.webp`
+                    : `${rec.eventBanner.id}.webp`;
                 const webpFilePath = path.join(
                   uniqueDirUnderTemp,
                   webpFileName
@@ -161,8 +164,9 @@ const airtablePlugin = async function () {
                   fs.unlinkSync(tempFilePath);
 
                   return webpFileName;
-                } catch {
+                } catch (e) {
                   logger.warn("failed to convert to webp: " + tempFilePath);
+                  logger.warn(e);
                   try {
                     fs.unlinkSync(webpFilePath);
                   } catch {}
