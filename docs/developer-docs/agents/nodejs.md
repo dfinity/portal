@@ -1,7 +1,3 @@
----
-sidebar_position: 2
-sidebar_label: "From Node.js"
----
 
 # Making a call from Node.js
 

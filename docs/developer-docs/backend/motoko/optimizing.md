@@ -14,7 +14,7 @@ Before getting started, assure you have set up your developer environment accord
 
 `Wasm-opt` can be used to enable canister optimizations through a configuration option in the project's `dfx.json` file, such as:
 
-```
+```json
 {
   "canisters": {
     "my_canister": {
