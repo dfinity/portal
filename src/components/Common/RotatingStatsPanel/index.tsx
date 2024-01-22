@@ -46,9 +46,9 @@ const FadeInOutTitle: React.FC<{
 };
 
 const layoutClasses = {
-  2: "grid grid-cols-1 sm:grid-cols-2 md:justify-between gap-10",
-  3: "grid grid-cols-1 md:grid-cols-3 md:justify-between gap-10",
-  4: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10",
+  2: "mt-20 grid grid-cols-1 sm:grid-cols-2 md:justify-between gap-10",
+  3: "mt-20 grid grid-cols-1 md:grid-cols-3 md:justify-between gap-10",
+  4: "mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10",
 };
 
 const RotatingStatPanel: React.FC<{

@@ -95,7 +95,7 @@ function SnsFaqPage() {
       description="All you need to know about DAOs on the Internet Computer and how to participate in them."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-sns-faq.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-sns.jpg"></ShareMeta>
 
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn
