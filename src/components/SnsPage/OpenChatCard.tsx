@@ -1,15 +1,14 @@
-import Link from "@docusaurus/Link";
-import ArrowRight from "@site/static/img/arrow-right.svg";
 import transitions from "@site/static/transitions.json";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
-import AnimateSpawn from "../../Common/AnimateSpawn";
-import LinkArrowRight from "../Icons/LinkArrowRight";
+import AnimateSpawn from "../Common/AnimateSpawn";
+import { DaoCardButtons, DaoCardProps } from "./DaoCard";
 
 const OpenChatCard: React.FC<{
   className?: string;
-}> = ({ className }) => {
+  data: DaoCardProps;
+}> = ({ className, data }) => {
   return (
     <AnimateSpawn
       className={clsx("md:container-12 pt-20 md:pt-30", className)}
@@ -31,22 +30,20 @@ const OpenChatCard: React.FC<{
               className=" text-transparent bg-clip-text gradient-text tw-heading-3 md:tw-heading-60 mb-6"
               variants={transitions.item}
             >
-              OpenChat raised 1M ICP in 6 hours
+              {data.name}
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             >
-              OpenChat was the first project to launch an SNS DAO on the
-              Internet Computer, marking a significant milestone in the world of
-              blockchain and social media as an open internet service.
+              {data.description}
             </motion.p>
 
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link className="button-primary" href="https://oc.app">
-                Join the oc community
-              </Link>
-            </motion.p>
+            <DaoCardButtons
+              twitter={data.twitter}
+              url={data.url}
+              dashboardUrl={data.dashboardUrl}
+            />
           </div>
         </div>
       </div>

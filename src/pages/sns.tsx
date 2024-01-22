@@ -1,4 +1,3 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import snsDataJson from "@site/.docusaurus/sns-data/default/sns-data.json";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
@@ -8,15 +7,34 @@ import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card/index";
-import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
-import OpenChatCard from "../components/Common/OpenChatCard/OpenChatCard";
 import ShareMeta from "../components/Common/ShareMeta/index";
 import { Stat, StatsPanel } from "../components/Common/Stats/index";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import VideoCard from "../components/Common/VideoCard";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
-import DaoCard, { DaoCardProps } from "../components/SnsPage/DaoCard";
+import {
+  DaoCardProps,
+  MediumDaoCard,
+  MediumDaoCardContainer,
+  SmallDaoCard,
+} from "../components/SnsPage/DaoCard";
+import OpenChatCard from "../components/SnsPage/OpenChatCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+
+/*
+
+  This page pulls data dynamically from  multiple sources via a plugin at /plugins/sns-data.js:
+    * the SNS Aggregator (used by the NNS dapp as well)
+    * swap canisters for decentralization swap data (participant count, ICP raised)
+    * dashboard API for proposal count
+
+  Not all SNS data is availabe via API's (eg. X URL), so this page allows for extra metadata to be added via the extraMetadata object below.
+
+  Some SNS information is overridden via the extraMetadata object below, eg. the description to better suite the page.
+
+  This page will display new DAO's automatically as they are picked up by the SNS Aggregator, and will use original data until extraMetadata is added.
+
+*/
 
 const snsData = snsDataJson as any as {
   name: string;
@@ -29,11 +47,21 @@ const snsData = snsDataJson as any as {
   participants: number;
 }[];
 
+const openChatDao = snsData.find(
+  (dao) => dao.rootCanisterId === "3e3x2-xyaaa-aaaaq-aaalq-cai"
+);
+const sonicDao = snsData.find(
+  (dao) => dao.rootCanisterId === "qtooy-2yaaa-aaaaq-aabvq-cai"
+);
+const goldDao = snsData.find(
+  (dao) => dao.rootCanisterId === "tw2vt-hqaaa-aaaaq-aab6a-cai"
+);
+
 // these are displayed as large cards above the small card grid
 const excludedFromSmallCards = [
-  "tw2vt-hqaaa-aaaaq-aab6a-cai", // Gold DAO
-  "qtooy-2yaaa-aaaaq-aabvq-cai", // Sonic
-  "3e3x2-xyaaa-aaaaq-aaalq-cai", // OpenChat
+  goldDao.rootCanisterId,
+  sonicDao.rootCanisterId,
+  openChatDao.rootCanisterId,
 ];
 
 const smallSnsCards = snsData.filter(
@@ -43,72 +71,165 @@ const smallSnsCards = snsData.filter(
 const extraMetadata: Record<string, Partial<DaoCardProps>> = {
   "tw2vt-hqaaa-aaaaq-aab6a-cai": {
     // Gold DAO
-    twitter: "",
+    twitter: "https://twitter.com/gldrwa",
+    description: (
+      <>
+        The Gold DAO represents a groundbreaking fusion of traditional gold and
+        modern blockchain technology, allowing anyone in the world to access
+        physical gold instantaneously, without depending on banks.
+      </>
+    ),
   },
 
   "qtooy-2yaaa-aaaaq-aabvq-cai": {
     // Sonic
-    twitter: "",
+    name: "Sonic",
+    twitter: "https://twitter.com/sonic_ooo",
+    description: (
+      <>
+        The open DeFi suite on the Internet Computer blockchain governed by the
+        people for the people. Sonic unleashes the potential of crypto trading
+        through innovative DeFi products.
+      </>
+    ),
   },
 
   "3e3x2-xyaaa-aaaaq-aaalq-cai": {
     // OpenChat
-    twitter: "",
+    twitter: "https://twitter.com/OpenChat",
+    name: "OpenChat raises 1M ICP in 6 hours",
+    description: (
+      <>
+        OpenChat was the first project to launch an SNS DAO on the Internet
+        Computer, marking a significant milestone in the world of blockchain and
+        social media as an open internet service.{" "}
+      </>
+    ),
   },
 
   "zxeu2-7aaaa-aaaaq-aaafa-cai": {
     // Dragginz
     twitter: "https://twitter.com/dragginzgame",
+    description: (
+      <>
+        A virtual pets game from the creators of Neopets. Non-profit, 100%
+        on-chain baby dragons, crowdsourced world building, magic spells, and a
+        prince in disguise!
+      </>
+    ),
   },
 
   "7jkta-eyaaa-aaaaq-aaarq-cai": {
     // Kinic
     twitter: "https://twitter.com/kinic_app",
+    description: (
+      <>
+        The first and only dedicated search engine for Web3 content that runs on
+        100% on-chain. Trustless SEO backed by ZKML enables transparent results,
+        instead of ad-based content .
+      </>
+    ),
   },
 
   "67bll-riaaa-aaaaq-aaauq-cai": {
     // Hot or Not
     twitter: "https://twitter.com/hotornot_dapp",
+    description: (
+      <>
+        A decentralized short-video social media platform governed by the people
+        for the people. Monetized time on social media.
+      </>
+    ),
   },
 
   "4m6il-zqaaa-aaaaq-aaa2a-cai": {
     // IC Ghost
     twitter: "https://twitter.com/ghost_icp",
+    description: (
+      <>
+        The first decentralized meme coin on the Internet Computer. GHOST is
+        powered by the community and owd by the community.
+      </>
+    ),
   },
 
   "x4kx5-ziaaa-aaaaq-aabeq-cai": {
     // Modclub
     twitter: "https://twitter.com/ModclubApp",
+    description: (
+      <>
+        A decentralized crowdwork platform that supports dapps by handling
+        resource-intensive tasks such as content moderation, user verification
+        and data labeling.
+      </>
+    ),
   },
 
   "xjngq-yaaaa-aaaaq-aabha-cai": {
     // BOOM DAO
     twitter: "https://twitter.com/boomdaosns",
+    description: (
+      <>
+        A collaborative hub for all things Web3 gaming. Plus an all-in-one web3
+        game platform and protocol running 100% on-chain on the Internet
+        Computer.
+      </>
+    ),
   },
 
   "uly3p-iqaaa-aaaaq-aabma-cai": {
     // Catalyze
     twitter: "https://twitter.com/catalyze_one",
+    description: (
+      <>
+        A one-stop social-fi application for organising Web3 experiences and
+        building community. Event management, crowdsourcing, chat function, and
+        reward tooling.
+      </>
+    ),
   },
 
   "u67kc-jyaaa-aaaaq-aabpq-cai": {
     // ICX
     twitter: "https://twitter.com/icxdao",
+    description: (
+      <>
+        A decentralized social network with the functionalities you love on
+        platforms like Twitter, but with privacy, ownership, and
+        community-driven governance.
+      </>
+    ),
   },
 
   "rzbmc-yiaaa-aaaaq-aabsq-cai": {
     // Nuance
     twitter: "https://twitter.com/nuancedapp",
+    description: (
+      <>
+        The world's first publishing platform built entirely on-chain. In the
+        same way DeFi has taken the middleman out of finance, Nuance does the
+        same for the written word.
+      </>
+    ),
   },
 
   "extk7-gaaaa-aaaaq-aacda-cai": {
     // Neutrinite
-    // twitter: ""
+    twitter: "https://twitter.com/ICPCoins",
+    description: (
+      <>
+        Neutrinite SNS DAO for ICPCoins. This platform is dedicated to securely
+        sourcing data from DEXes, DAOs, and other DeFi applications.
+      </>
+    ),
   },
 
   "ecu3s-hiaaa-aaaaq-aacaq-cai": {
     // Trax
     twitter: "https://twitter.com/onlyontrax",
+    description: (
+      <>A decentralised music platform own and governed by artists and fans.</>
+    ),
   },
 };
 
@@ -143,8 +264,8 @@ const benefits = [
     title: "Decentralization",
     description: (
       <>
-        Services run on a fully decentralized network governed by their
-        users, and without having to depend on a single party. 
+        Services run on a fully decentralized network governed by their users,
+        and without having to depend on a single party.
       </>
     ),
   },
@@ -193,12 +314,19 @@ const benefits = [
     title: "Security",
     description: (
       <>
-        The SNS DAO framework has undergone security audits by Trail of Bits,
-        with no severe issues found.
+        The SNS DAO framework has undergone security audits by{" "}
+        <Link href="https://www.trailofbits.com/" className="link-subtle">
+          Trail of Bits
+        </Link>
+        , with no severe issues found.
       </>
     ),
   },
 ];
+
+function dashboardUrlFromRootCanisterId(rootCanisterId: string) {
+  return `https://dashboard.internetcomputer.org/sns/${rootCanisterId}`;
+}
 
 function SnsPage() {
   const [startCountup, setStartCountup] = React.useState(false);
@@ -343,12 +471,12 @@ function SnsPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-0">
                 An Open Internet Service or OIS runs entirely on the Internet
                 Computer blockchain, and is governed by a Service Nervous System
-                (SNS) - an advanced community DAO framework responsible for controlling
-                and updating the code of an online service. SNS DAOs take over
-                the traditional role of a company, so there’s no CEO, board of
-                directors or developers in control, just thousands of community
-                members whose wishes are mediated through digital democracy
-                algorithms.
+                (SNS) - an advanced community DAO framework responsible for
+                controlling and updating the code of an online service. SNS DAOs
+                take over the traditional role of a company, so there’s no CEO,
+                board of directors or developers in control, just thousands of
+                community members whose wishes are mediated through digital
+                democracy algorithms.
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/sns/image-3.webp" reverse={true}>
@@ -359,14 +487,14 @@ function SnsPage() {
                 Creating an open internet service involves a decentralization
                 swap where participants exchange ICP tokens for SNS DAO
                 governance tokens. The proceeds of the swap are then held in the
-                treasury of each individual SNS DAO under the decentralized control of its
-                governing community members. Governance tokens of open internet
-                services or SNS DAOs can also be granted to those who help with
-                tasks such as advocacy, creating viral content, and content
-                moderation. This form of co-ownership has the potential to
-                unlock a giant industrious virtual team of millions, all with
-                align incentives and a collective goal to shape internet
-                services into something they love.
+                treasury of each individual SNS DAO under the decentralized
+                control of its governing community members. Governance tokens of
+                open internet services or SNS DAOs can also be granted to those
+                who help with tasks such as advocacy, creating viral content,
+                and content moderation. This form of co-ownership has the
+                potential to unlock a giant industrious virtual team of
+                millions, all with align incentives and a collective goal to
+                shape internet services into something they love.
               </p>
             </TranslatedLayout>
           </div>
@@ -383,7 +511,7 @@ function SnsPage() {
             variants={transitions.container}
           >
             {benefits.map((benefit) => (
-              <motion.div className="flex flex-col">
+              <motion.div className="flex flex-col" key={benefit.title}>
                 <img
                   src={benefit.icon}
                   alt={benefit.title}
@@ -429,77 +557,40 @@ function SnsPage() {
           </StatsPanel>
         </AnimateSpawn>
         <section className="" id="sns-dapps">
-          <OpenChatCard className="" />
+          <OpenChatCard
+            className=""
+            data={{
+              ...openChatDao,
+              ...extraMetadata[openChatDao.rootCanisterId],
+              dashboardUrl: dashboardUrlFromRootCanisterId(
+                openChatDao.rootCanisterId
+              ),
+            }}
+          />
         </section>
+        <AnimateSpawn el={motion.section} variants={transitions.container}>
+          <MediumDaoCardContainer>
+            <MediumDaoCard
+              dashboardUrl={dashboardUrlFromRootCanisterId(
+                goldDao.rootCanisterId
+              )}
+              {...goldDao}
+              {...(extraMetadata[goldDao.rootCanisterId] ?? {})}
+              media={{
+                videoUrl: "/img/sns/gold-dao.mp4",
+                videoType: "video/mp4",
+              }}
+            ></MediumDaoCard>
 
-        <AnimateSpawn
-          el={motion.section}
-          className="md:container-12 md:mt-5"
-          variants={transitions.container}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10 bg-white/60 backdrop-blur-2xl md:bg-transparent md:backdrop-blur-none pb-24 md:pb-0">
-            <motion.div
-              variants={transitions.item}
-              className="md:rounded-[32px] md:bg-white/60 md:backdrop-blur-2xl p-6 pb-16 md:p-12"
-            >
-              <video
-                loop
-                autoPlay
-                muted
-                playsInline
-                className="rounded-2xl w-full md:h-[300px] object-cover object-center"
-                aria-label="Gold DAO SNS"
-              >
-                <source src="/img/sns/gold-dao.mp4" type="video/mp4" />
-              </video>
-              <div className="md:pr-20">
-                <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
-                  Gold DAO
-                </h3>
-                <p className="tw-paragraph md:tw-lead-sm mb-5">
-                  The Gold DAO represents a groundbreaking fusion of traditional
-                  gold and modern blockchain technology, allowing anyone in the
-                  world to access physical gold instantaneously, without
-                  depending on banks.
-                </p>
-                <Link
-                  className="link-primary link-with-icon"
-                  href="https://nns.ic0.app/project/?project=tw2vt-hqaaa-aaaaq-aab6a-cai"
-                >
-                  <LinkArrowRight />
-                  Learn more about decentralized gold
-                </Link>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={transitions.item}
-              className="md:rounded-[32px] md:bg-white/60 md:backdrop-blur-2xl p-6 md:p-12"
-            >
-              <img
-                src="/img/sns/sonic.webp"
-                alt="Sonic SNS DAO"
-                loading="lazy"
-                className="rounded-2xl w-full md:h-[300px] object-cover object-center"
-              />
-              <div className="md:pr-20">
-                <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
-                  Sonic
-                </h3>
-                <p className="tw-paragraph md:tw-lead-sm mb-5">
-                  The open DeFi suite on the Internet Computer blockchain governed
-                  by the people for the people. Sonic unleashes the potential of
-                  crypto trading through innovative DeFi products.
-                </p>
-                <Link
-                  className="link-primary link-with-icon"
-                  href="https://nns.ic0.app/project/?project=qtooy-2yaaa-aaaaq-aabvq-cai"
-                >
-                  <LinkArrowRight />
-                  Get the details on this trustless DEX
-                </Link>
-              </div>
-            </motion.div>
-          </div>
+            <MediumDaoCard
+              dashboardUrl={dashboardUrlFromRootCanisterId(
+                sonicDao.rootCanisterId
+              )}
+              {...sonicDao}
+              {...(extraMetadata[sonicDao.rootCanisterId] ?? {})}
+              media={{ imageUrl: "/img/sns/sonic.webp" }}
+            ></MediumDaoCard>
+          </MediumDaoCardContainer>
         </AnimateSpawn>
 
         <AnimateSpawn
@@ -508,8 +599,8 @@ function SnsPage() {
           el={motion.section}
         >
           {smallSnsCards.map((sns) => (
-            <DaoCard
-              dashboardUrl={`https://dashboard.internetcomputer.org/sns/${sns.rootCanisterId}`}
+            <SmallDaoCard
+              dashboardUrl={dashboardUrlFromRootCanisterId(sns.rootCanisterId)}
               description={sns.description}
               key={sns.name}
               logo={sns.logo}
