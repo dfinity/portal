@@ -242,7 +242,7 @@ You can learn more about upgrading canisters in the documentation [here](/docs/c
 
 ### Stable memory
 
-Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 96GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade. 
+Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 400GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade. 
 
 In contrast to stable memory, heap storage refers to the regular Wasm data storage for a canister. Heap storage is temporary and does not persist across canister upgrades. When a canister is upgraded or reinstalled, the heap storage is cleared. Heap storage is limited to 4GiB. 
 
