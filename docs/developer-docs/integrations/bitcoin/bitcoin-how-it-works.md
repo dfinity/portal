@@ -19,7 +19,7 @@ The integration and chain-key ECDSA signature protocols each expose an API on th
 
 The following components are used on subnets that have activated the Bitcoin integration:
 
-- BTC canister: Implemented as a regular NNS-managed Wasm canister is made accessible to other canisters via an API of the management canister. It holds the on-chain Bitcoin-related state (the UTXO set, the most recent Bitcoin blocks, and outgoing transactions).
+- BTC canister: Implemented as a regular NNS-controlled Wasm canister and made accessible to other canisters via an API of the management canister. It holds the on-chain Bitcoin-related state (the UTXO set, the most recent Bitcoin blocks, and outgoing transactions).
 
 - Bitcoin adapter: Connects to nodes of the Bitcoin network, much like a regular Bitcoin node does.
 
