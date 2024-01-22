@@ -10,7 +10,7 @@ The threshold ECDSA implementation on ICP features multiple protocols that are c
 -   **Computing pre-signatures, signing:** Compute signatures with the secret-shared private key. A **protocol for computing pre signatures**, i.e., quadruples that are used in the actual signing protocol, is run asynchronously to signing requests to precompute pre-signatures. This precomputation protocol computes the vast majority of the steps of creating threshold ECDSA signatures. A **signing protocol** is triggered by a signing request of a canister. A signing protocol consumes one precomputed quadruple to efficiently compute a threshold ECDSA signature.
 -   **Public key retrieval:** Allows for retrieving a public key of a canister, including potential BIP-32-like key derivation based on a canister-provided derivation path.
 
-It is crucial to note that the private key never exists in a reconstructed form. It only in secret-shared form during its whole lifetime.
+It is crucial to note that the private key never exists in a reconstructed form. It only exists in secret-shared form during its lifetime.
 
 ## ECDSA keys
 
