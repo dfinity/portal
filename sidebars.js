@@ -630,8 +630,11 @@ const sidebars = {
                   items: [
                     "developer-docs/integrations/rosetta/icp_rosetta/data_api/network",
                    "developer-docs/integrations/rosetta/icp_rosetta/data_api/balances",
-                   "developer-docs/integrations/rosetta/icp_rosetta/data_api/transactions",
                    "developer-docs/integrations/rosetta/icp_rosetta/data_api/blocks",
+                   "developer-docs/integrations/rosetta/icp_rosetta/data_api/transactions",
+                   "developer-docs/integrations/rosetta/icp_rosetta/data_api/list_known_neurons",
+                   "developer-docs/integrations/rosetta/icp_rosetta/data_api/get_pending_proposals",
+                   "developer-docs/integrations/rosetta/icp_rosetta/data_api/get_proposal_info",
                   ],
                 }
               ],

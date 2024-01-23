@@ -1,6 +1,5 @@
 # How to fetch network information
 For most endpoints you will require some information about the network represented as a [NetworkIdentifier](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
-
 For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 ## Fetch Network List
@@ -28,7 +27,7 @@ The response will look something like this:
 You can use this NetworkIdentifer with other endpoints which will require you to provide it in the data section of your `HTTP` call. 
 
 ## Fetch Network Options
-This endpoint returns the version information and allowed network-specific types for a NetworkIdentifier.
+This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a NetworkIdentifier.
 
 ```bash
 curl --location '0.0.0.0:8081/network/options' --header 'Content-Type: application/json' --data '{
@@ -163,7 +162,7 @@ The response will give you information on the error types, the supported operati
 ```
 
 ## Fetch Network Status
-This endpoint returns the current status of the network requested.
+This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkstatus) returns the current status of the network requested.
 
 ```bash
 curl --location '0.0.0.0:8081/network/status'  --header 'Content-Type: application/json' --data '{

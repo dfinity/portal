@@ -1,8 +1,8 @@
 # How to fetch account balances
-This endpoint allows you to fetch the balances for a certain account. 
+This endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard. 
 For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/network). For this example an arbitrary AccountIdentifier [220c3a33f90601896e26f76fa619fe288742df1fa75426edfaf759d39f2455a5](https://dashboard.internetcomputer.org/account/220c3a33f90601896e26f76fa619fe288742df1fa75426edfaf759d39f2455a5) was used. 
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/network). For this example an arbitrary AccountIdentifier [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used. 
 
 ```bash
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{
@@ -11,7 +11,7 @@ curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: applicat
         "network":"00000000000000020101"
     },
     "account_identifier": {
-        "address": "220c3a33f90601896e26f76fa619fe288742df1fa75426edfaf759d39f2455a5"
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
     }
 }'
 ```
