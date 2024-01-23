@@ -698,7 +698,7 @@ function MultichainPage() {
               href="/ecosystem"
             />
             <CardWithDescription
-              title="X-chain DeFi"
+              title="Multi-chain DeFi"
               description=""
               href="/defi"
             />
