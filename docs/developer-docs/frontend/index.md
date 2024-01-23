@@ -1,12 +1,8 @@
----
-sidebar_position: 1
----
-
-# Building frontend canisters
+# Frontend canisters
 
 ## Overview
 
-A frontend canister, also referred to as an *asset canister**, is a type of canister used to host an application's frontend assets, such as the user interface, webpage, or dashboard for the dapp. 
+A frontend canister, also referred to as an **asset canister**, is a type of canister used to host an application's frontend assets, such as the user interface, webpage, or dashboard for the dapp. 
 
 Frontend canisters utilize the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) as a communication layer. By using
 the [default frontend canister](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) provided by `dfx` to upload static files to ICP,

@@ -28,10 +28,6 @@ const sidebars = {
         {
           type: "category",
           label: "Acquiring and managing cycles",
-          link: {
-            type: "doc",
-            id: "developer-docs/setup/cycles/index",
-          },
           items: [
             "developer-docs/setup/cycles/cycles-faucet",
             "developer-docs/setup/cycles/cycles-wallet",
@@ -74,26 +70,13 @@ const sidebars = {
     {
       type: "category",
       label: "Core concepts",
-      link: {
-        type: "doc",
-        id: "concepts/index",
-      },
       items: [
         "concepts/canisters-code",
         "developer-docs/gas-cost",
+        "developer-docs/cost-estimations-and-examples",
         "concepts/governance",
         "concepts/nodes-subnets",
-        {
-          type: "category",
-          label: "Subnet types",
-          link: {
-            type: "doc",
-            id: "developer-docs/backend/subnet-types",
-          },
-          items: [
-            "developer-docs/backend/eu-subnets",
-          ],
-        },
+        "developer-docs/backend/subnet-types",
         "concepts/tokens-cycles",
         "concepts/trust-in-canisters",
         "references/glossary",
@@ -215,6 +198,7 @@ const sidebars = {
         "developer-docs/backend/periodic-tasks",
         "developer-docs/production/resource-limits",
         "developer-docs/production/larger-wasm",
+        "samples/overview",
       ],
     },
     {
@@ -228,12 +212,9 @@ const sidebars = {
           },
         {
           type: "category",
-          label: "ICP ledger",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/ledger/index",
-          },
+          label: "ICP tokens",
           items: [
+            "developer-docs/integrations/ledger/index",
             "developer-docs/integrations/ledger/collecting-dust",
             "developer-docs/integrations/ledger/ledger-local-setup",
             "developer-docs/integrations/ledger/interact-with-ledger",
@@ -242,12 +223,9 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "ICRC-1 token standard",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/icrc-1/index",
-          },
+          label: "ICRC-1 tokens",
           items: [
+            "developer-docs/integrations/icrc-1/index",
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
             "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
           "developer-docs/integrations/icrc-1/icrc1-index-setup"
@@ -275,28 +253,51 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Self-custody for digital assets",
-          link: {
-            type: "doc",
-            id: "tokenomics/token-holders/custody-options-intro",
-          },
-          items: ["tokenomics/token-holders/self-custody-quickstart"],
+          label: "Asset custody",
+          items: [
+            "tokenomics/token-holders/custody-options-intro",
+            "tokenomics/token-holders/self-custody-quickstart"],
         },
       ],
     },
     {
       type: "category",
       label: "Candid UI",
-      link: {
-        type: "doc",
-        id: "developer-docs/backend/candid/index",
-      },
       items: [
         "developer-docs/backend/candid/candid-concepts",
         "developer-docs/backend/candid/candid-howto",
         "developer-docs/backend/candid/generating-candid",
       ],
     },
+    {
+      type: "category",
+      label: "Application frontends",
+      items: [
+        "developer-docs/frontend/index",
+        "developer-docs/frontend/custom-frontend",
+        "developer-docs/frontend/add-stylesheet",
+        "developer-docs/frontend/boilerplate-frontend",
+        "developer-docs/frontend/existing-frontend",
+      ],
+    },
+    {
+      type: "category",
+      label: "Agents",
+      items: [
+        "developer-docs/agents/index",
+        "developer-docs/agents/javascript-intro",
+        "developer-docs/agents/nodejs",
+        "developer-docs/agents/ic-agent-dfinity",
+      ],
+    },
+    {
+      type: "category",
+      label: "Custom domains",
+      items: [
+        "developer-docs/production/custom-domain/custom-domain",
+        "developer-docs/production/custom-domain/dns-setup"],
+    },
+
     {
       type: "category",
       label: "Developer tools",
@@ -440,52 +441,39 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Application frontends",
-      link: {
-        type: "doc",
-        id: "developer-docs/frontend/index",
-      },
+      label: "Security best practices",
       items: [
-        "developer-docs/frontend/custom-frontend",
-        "developer-docs/frontend/add-stylesheet",
-        "developer-docs/frontend/javascript-frontend",
-        "developer-docs/frontend/react-frontend",
-        "developer-docs/frontend/svelte-frontend",
-        "developer-docs/frontend/vue-frontend",
-        "developer-docs/frontend/existing-frontend",
+        {
+          type: "doc",
+          label: "General",
+          id: "developer-docs/security/general-security-best-practices",
+        },
+        {
+          type: "doc",
+          label: "General",
+          id: "developer-docs/security/rust-canister-development-security-best-practices",
+        },
+        {
+          type: "doc",
+          label: "General",
+          id: "developer-docs/security/web-app-development-security-best-practices",
+        },
       ],
     },
     {
       type: "category",
-      label: "Custom domains",
-      link: {
-        type: "doc",
-        id: "developer-docs/production/custom-domain/custom-domain",
-      },
-      items: ["developer-docs/production/custom-domain/dns-setup"],
-    },
-    {
-      type: "category",
-      label: "Using external agents",
-      link: {
-        type: "doc",
-        id: "developer-docs/agents/index",
-      },
+      label: "Testing and troubleshooting",
       items: [
-        "developer-docs/agents/javascript-intro",
-        "developer-docs/agents/nodejs",
-        "developer-docs/agents/ic-agent-dfinity",
+        "developer-docs/setup/pocket-ic",
+        "developer-docs/production/staging-environment",
+        "developer-docs/backend/reproducible-builds",
+        "developer-docs/backend/troubleshooting",
       ],
     },
     {
       type: "category",
       label: "HTTPS outcalls",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/https-outcalls/index",
-      },
       items: [
-        "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
         "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
         "developer-docs/integrations/https-outcalls/https-outcalls-get",
         "developer-docs/integrations/https-outcalls/https-outcalls-post",
@@ -494,10 +482,6 @@ const sidebars = {
     {
       type: "category",
       label: "Encryption and signatures",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/index",
-      },
       items: [
         {
           type: "doc",
@@ -511,17 +495,13 @@ const sidebars = {
             type: "doc",
             id: "developer-docs/integrations/t-ecdsa/index",
           },
-          items: ["developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works"],
+          items: [],
         },
         {
           type: "category",
           label: "vetKeys",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/vetkeys/index",
-          },
           items: [
-            "developer-docs/integrations/vetkeys/technology-overview",
+            "developer-docs/integrations/vetkeys/index",
             "developer-docs/integrations/vetkeys/using-vetkeys",
           ],
         },
@@ -530,11 +510,8 @@ const sidebars = {
     {
       type: "category",
       label: "Internet Identity (II)",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/internet-identity/overview",
-      },
       items: [
+        "developer-docs/integrations/internet-identity/overview",
         "developer-docs/integrations/internet-identity/alternative-origins",
         "developer-docs/integrations/internet-identity/integrate-identity",
       ],
@@ -542,12 +519,8 @@ const sidebars = {
     {
       type: "category",
       label: "Bitcoin integration",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/bitcoin/index",
-      },
       items: [
-        "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+        "developer-docs/integrations/bitcoin/index",
         "developer-docs/integrations/bitcoin/ckbtc",
         "developer-docs/integrations/bitcoin/local-development",
       ],
@@ -555,11 +528,8 @@ const sidebars = {
     {
       type: "category",
       label: "Network Nervous System (NNS)",
-      link: {
-        type: "doc",
-        id: "tokenomics/nns/nns-intro",
-      },
       items: [
+        "tokenomics/nns/nns-intro",
         "tokenomics/token-holders/nns-app-quickstart",
         "tokenomics/nns/neurons-fund",
         "tokenomics/nns/nns-staking-voting-rewards",
@@ -651,42 +621,6 @@ const sidebars = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Security best practices",
-      link: {
-        type: "doc",
-        id: "developer-docs/security/index",
-      },
-      items: [
-        {
-          type: "doc",
-          label: "General",
-          id: "developer-docs/security/general-security-best-practices",
-        },
-        {
-          type: "doc",
-          label: "General",
-          id: "developer-docs/security/rust-canister-development-security-best-practices",
-        },
-        {
-          type: "doc",
-          label: "General",
-          id: "developer-docs/security/web-app-development-security-best-practices",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Testing and troubleshooting",
-      items: [
-        "developer-docs/setup/pocket-ic",
-        "developer-docs/production/staging-environment",
-        "developer-docs/backend/reproducible-builds",
-        "developer-docs/backend/troubleshooting",
-      ],
-    },
- 
   ],
   references: [
     "references/index",
@@ -854,7 +788,16 @@ const sidebars = {
         },
       ],
     },
-
+    {
+      type: "category",
+      label: "Feature references",
+      items: [
+    "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+    "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+    "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+    "developer-docs/integrations/vetkeys/technology-overview",
+      ],
+    },
     "references/glossary",
   ],
   motoko: [

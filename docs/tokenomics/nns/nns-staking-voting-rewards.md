@@ -1,4 +1,4 @@
-# Staking and voting rewards on the NNS
+# Staking and voting rewards
 
 ## Overview
 Stakeholders gain voting power and can earn voting rewards by staking their ICP tokens. 

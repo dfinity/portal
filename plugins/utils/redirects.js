@@ -181,6 +181,14 @@ const redirects = `
   /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
+  /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/setup/cycles/cycles-faucet
+  /docs/current/concepts/index /docs/current/concepts/canisters-code
+  /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/backend/candid/candid-concepts
+  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/integrations/index /docs/current/developer-docs/
+  /docs/current/tutorials/ /docs/current/developer-docs/
+  /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

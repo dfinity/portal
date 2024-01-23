@@ -1,4 +1,4 @@
-# How to use HTTP outcalls: GET
+# HTTP outcalls: GET
 ## Overview
 
 A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.

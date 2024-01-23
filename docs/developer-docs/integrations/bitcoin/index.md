@@ -1,12 +1,4 @@
-# Bitcoin integration
-
-## Overview
-
-The Internet Computer integrates directly with the Bitcoin network. This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. Canisters can act exactly like regular users holding bitcoin on the Bitcoin network. All of this is made possible by:
--  The Internet Computer integrating with Bitcoin at the protocol level 
--  Canisters being able to securely hold (and use) ECDSA keys by means of a novel protocol for chain-key signatures, based on threshold ECDSA. 
-
-The Internet Computer is among the first blockchain networks performing such direct integration with other blockchains and has built a novel technology foundation for this purpose.
+# Overview
 
 ## Use cases
 This integration allows for a plethora of novel use cases:

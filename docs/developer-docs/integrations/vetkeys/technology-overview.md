@@ -1,4 +1,4 @@
-# vetKeys: technology overview
+# vetKeys
 
 ## Overview
 vetKeys on the Internet Computer allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on ICP. It is powered by a protocol called **vetKD (Verifiably Encrypted Threshold Key Derivation)** that allows to derive decryption keys on demand.

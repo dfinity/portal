@@ -1,15 +1,5 @@
 # What is the Internet Computer?
 
-The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **[canisters](/how-it-works/canister-lifecycle/)**, an evolution of **smart contracts**.
-
-As a dapp developer, you might find it useful to think of the Internet Computer as providing the following key features:
-
--   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the architecture of ICP [here](/how-it-works/architecture-of-the-internet-computer/). 
-
--   A secure cryptographic protocol (**[Internet Computer protocol](/how-it-works/core-ic-protocol-overview/)**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts. 
-
--   A **network of independent blockchains**, known as [subnets](./nodes-subnets.md), connected using [chain-key cryptography](/how-it-works/#Chain-key-cryptography) that can [scale out](/how-it-works/scalability/) its capacity as required.
-
 ## An open blockchain
 
 The Internet Computer is a blockchain hosted on node machines operated by independent parties and located in geographically distributed data centers. The nodes run the [Internet Computer protocol](/how-it-works/core-ic-protocol-overview/), an advanced cryptographic fault-tolerant protocol which ensures that smart contracts running on the blockchain cannot be tampered with or stopped. The Internet Computer is composed of individual subnet blockchains running in parallel and connected using [chain-key cryptography](/how-it-works/#Chain-key-cryptography). This means that canisters running on a subnet can seamlessly call canisters hosted in any other subnet of the Internet Computer blockchain.
@@ -42,17 +32,13 @@ The Internet Computer also enables developers to use [cryptographically-secure i
 
 ## Learn more 
 
-- [Architecture of the Internet Computer](/how-it-works/architecture-of-the-internet-computer/).
+- [Architecture](/how-it-works/architecture-of-the-internet-computer/).
 
-- [The Internet Computer Protocol](/how-it-works/core-ic-protocol-overview/).
+- [Protocol overview](/how-it-works/core-ic-protocol-overview/).
 
-- [Peer-to-peer layer](/how-it-works/peer-to-peer-p2p/).
+- [Canisters](/how-it-works/canister-lifecycle/).
 
-- [Consensus layer](/how-it-works/consensus/).
-
-- [Message routing layer](/how-it-works/message-routing/).
-
-- [Execution layer](/how-it-works/execution-layer/).
+- [Internet Identity](/how-it-works/web-authentication-identity/).
 
 - [Chain-key cryptography](/how-it-works/chain-key-technology/).
 
@@ -61,10 +47,6 @@ The Internet Computer also enables developers to use [cryptographically-secure i
 - [The Network Nervous System](https://internetcomputer.org/nns/).
 
 - [Service Nervous Systems](https://internetcomputer.org/sns/).
-
-- [Canisters](/how-it-works/canister-lifecycle/).
-
-- [Internet Identity](/how-it-works/web-authentication-identity/).
 
 ## Get started developing on ICP
 

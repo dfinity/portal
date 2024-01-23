@@ -1,4 +1,4 @@
-# 4: Rust quick start
+# 4: Rust quickstart
 
 ## Overview
 
