@@ -10,7 +10,7 @@ const sharp = require("sharp");
 const downloadFile = require("./utils/download-file");
 
 // const dotenv = require("dotenv");
-// const isDev = process.env.NODE_ENV === "development";
+const isDev = (process.env.NODE_ENV || "development") === "development";
 // dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const { AIRTABLE_KEY } = process.env;
@@ -228,11 +228,13 @@ const airtablePlugin = async function () {
       const { createData } = actions;
       createData("airtable-events.json", JSON.stringify(content, null, 2));
 
-      // save mock file
-      fs.writeFileSync(
-        path.join(__dirname, "data", "airtable-mock.json"),
-        JSON.stringify(content, null, 2)
-      );
+      if (isDev) {
+        // save mock file
+        fs.writeFileSync(
+          path.join(__dirname, "data", "airtable-mock.json"),
+          JSON.stringify(content, null, 2)
+        );
+      }
     },
 
     async postBuild({ outDir }) {

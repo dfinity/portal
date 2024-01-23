@@ -36,6 +36,7 @@ const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
 const snsDataPlugin = require("./plugins/sns-data");
 const airtablePlugin = require("./plugins/airtable");
+const youtubePlugin = require("./plugins/youtube");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -418,6 +419,11 @@ const marketingNav = {
               description: "Meet fellow Web3 enthusiasts",
             },
             {
+              name: "News",
+              href: "/news",
+              description: "Stay up to date",
+            },
+            {
               name: "Community Blog",
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
@@ -497,6 +503,7 @@ const config = {
     contentfulPlugin,
     snsDataPlugin,
     airtablePlugin,
+    youtubePlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
