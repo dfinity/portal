@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 
-type PillVariant = "light" | "dark";
+export type PillVariant = "light" | "dark";
 
 const baseStyles: Record<PillVariant, string> = {
   light:
@@ -35,9 +35,6 @@ export const Pill: React.FC<{
         "whitespace-nowrap rounded-full inline-flex group gap-2 px-4 py-2 appearance-none border-solid border tw-title-navigation font-circular",
         baseStyles[variant],
         isActive ? activeStyles[variant].active : activeStyles[variant].inactive
-        // isActive
-        //   ? "text-infinite bg-white border-transparent"
-        //   : "text-white bg-transparent border-white"
       )}
       onClick={onClick}
     >
