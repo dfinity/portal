@@ -1,6 +1,6 @@
 # 0.2 Internet Computer terminology 
 
-[![ICP Developer Journey 0.2 | Internet Computer terminology](https://img.youtube.com/vi/3WpP8ux1zX0/0.jpg)](https://www.youtube.com/watch?v=3WpP8ux1zX0)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3WpP8ux1zX0?si=PGD9uM-hR0WPYt5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 

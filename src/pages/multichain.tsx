@@ -379,7 +379,7 @@ function MultichainPage() {
                     decentralization model, which can be augmented by placing
                     the service under the control of an SNS DAO to automate its
                     maintenance. This is because canister smart contracts can
-                    hold up to 96GB of memory each, and run in parallel with
+                    hold up to 400GiB of memory each, and run in parallel with
                     great efficiency. Moreover, they can directly serve
                     interactive web-based user experiences to users by
                     processing HTTP requests, thanks to ICP’s reverse-gas model
@@ -698,7 +698,7 @@ function MultichainPage() {
               href="/ecosystem"
             />
             <CardWithDescription
-              title="X-chain DeFi"
+              title="Multi-chain DeFi"
               description=""
               href="/defi"
             />

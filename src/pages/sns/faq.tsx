@@ -95,7 +95,7 @@ function SnsFaqPage() {
       description="All you need to know about DAOs on the Internet Computer and how to participate in them."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-sns-faq.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-sns.jpg"></ShareMeta>
 
       <main className="text-black relative overflow-hidden">
         <AnimateSpawn
@@ -734,7 +734,8 @@ function SnsFaqPage() {
               swap is allocated to the SNS DAO's treasury. Optionally, the DAO can allocate a number of
               SNS tokens to be in the DAO's treasury, which all SNSs so far have done. The SNS treasury
               is controlled by the DAO, and can only be transferred using proposals that SNS token holders
-              vote on.
+              vote on. It is also possible to mint new SNS tokens at any point after the SNS launch, which
+              can also only be done if the SNS DAO agrees to do so by proposal vote.
             </Faq>
 
             <Faq title="What is the purpose of the SNS treasury and how are the funds distributed?">
@@ -768,8 +769,11 @@ function SnsFaqPage() {
               no one can access the SNS treasury. The SNS DAO only grants access
               when proposals are adopted through SNS community voting. While it can happen
               that the original developer team possesses a meaningful portion of the voting
-              power, they alone cannot make decisions for the DAO without the approval of
-              the majority of SNS token holders.
+              power, they alone cannot make decisions for the DAO without the approval of 
+              SNS token holders. In particular, treasury proposals are considered to be
+              critical proposals, which have a higher bar to be adopted, including that
+              they require a higher voting participation and support of a supermajority of
+              the DAO voters.
             </Faq> 
 
           </FaqSection>

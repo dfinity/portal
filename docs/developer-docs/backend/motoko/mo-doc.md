@@ -2,7 +2,7 @@
 
 `mo-doc` is a command-line tool for generating documentation for Motoko source code. It processes source files and generates documentation in various formats. 
 
-## Quick start
+## Quickstart
 
 Download `mo-doc` from Motoko's [GitHub releases page](https://github.com/dfinity/motoko/releases) or simply use the binary included in your [dfx](https://internetcomputer.org/docs/current/developer-docs/setup/install) installation:
 
@@ -65,6 +65,6 @@ func factorial(n : Nat) : ?Nat {
 ```
 
 ## Resources
-Check out Motoko's [base library souce code](https://github.com/dfinity/motoko-base/tree/master/src) for additional examples and best practices. 
+Check out Motoko's [base library source code](https://github.com/dfinity/motoko-base/tree/master/src) for additional examples and best practices. 
 
 The source code for `mo-doc` is available in the [dfinity/motoko](https://github.com/dfinity/motoko/tree/master/src/docs) GitHub repository. Contributions are welcome!

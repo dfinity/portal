@@ -34,6 +34,8 @@ const {
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
+const snsDataPlugin = require("./plugins/sns-data");
+const airtablePlugin = require("./plugins/airtable");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -249,8 +251,8 @@ const marketingNav = {
           name: "Use cases",
           items: [
             {
-              name: "Open Internet Services",
-              href: "/ois",
+              name: "DAOs on ICP",
+              href: "/sns",
               description: "Community-owned services",
             },
             {
@@ -405,14 +407,14 @@ const marketingNav = {
               description: "Become a node provider",
             },
             {
+              name: "Events",
+              href: "/events",
+              description: "Meet fellow Web3 enthusiasts",
+            },
+            {
               name: "Community Blog",
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
-            },
-            {
-              name: "Upcoming events",
-              description: "Meet fellow Web3 enthusiasts",
-              href: "https://dfinity.org/events-and-news/",
             },
           ],
           featured: {
@@ -472,7 +474,6 @@ const config = {
   },
   scripts: [],
   plugins: [
-    ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
@@ -488,6 +489,8 @@ const config = {
     matomoPlugin,
     blogPostsPlugin,
     contentfulPlugin,
+    snsDataPlugin,
+    airtablePlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],

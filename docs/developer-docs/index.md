@@ -16,16 +16,4 @@
 ### Quickstart guides
 - [Quickstart for React developers](/docs/current/developer-docs/setup/react-quickstart)
 
-### Core concepts
-- [Canisters and code](/docs/current/concepts/canisters-code)
-- Paying for resources in cycles
-- Cycles cost estimations and examples
-- Neurons and governance
-- Nodes and subnet blockchains
-- Subnet types
-    - The European subnet
-- Tokens and cycles
-- Trust in canisters
-- Glossary
-
 

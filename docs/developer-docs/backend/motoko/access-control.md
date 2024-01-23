@@ -48,7 +48,7 @@ Open the `src/access_hello_backend/main.mo` file in a text editor and delete the
 
 Copy and paste this code into the file:
 
-```
+```motoko
 // Import base modules
 import AssocList "mo:base/AssocList";
 import Error "mo:base/Error";
@@ -56,36 +56,46 @@ import List "mo:base/List";
 
 shared({ caller = initializer }) actor class() {
 
-    // Establish role-based greetings to display
+    // Establish the role-based greetings to display
     public shared({ caller }) func greet(name : Text) : async Text {
+
+        // If an identity with admin rights calls the method, display this greeting:
         if (has_permission(caller, #assign_role)) {
             return "Hello, " # name # ". You have a role with administrative privileges."
+
+        // If an identity with the authorized user rights calls the method, display this greeting:
         } else if (has_permission(caller, #lowest)) {
             return "Welcome, " # name # ". You have an authorized account. Would you like to play a game?";
+
+        // If the identity is not an admin or authorized user, display this greeting:
         } else {
             return "Greetings, " # name # ". Nice to meet you!";
         }
     };
 
-    // Define custom types
+    // Define the custom types used for each user type
     public type Role = {
         #owner;
         #admin;
         #authorized;
     };
 
+    // Define the custom types for assigning the permissions 
     public type Permission = {
         #assign_role;
         #lowest;
     };
 
+    // Create two stable variables to store the roles associated with each principal
     private stable var roles: AssocList.AssocList<Principal, Role> = List.nil();
     private stable var role_requests: AssocList.AssocList<Principal, Role> = List.nil();
 
+    // Return the caller's principal
     func principal_eq(a: Principal, b: Principal): Bool {
         return a == b;
     };
 
+    // Get the principal's current role
     func get_role(pal: Principal) : ?Role {
         if (pal == initializer) {
             ?#owner;
@@ -163,7 +173,7 @@ Let's take a look at a few key elements of this dapp:
 
 - You might notice that the `greet` function is a variation on the `greet` function you have seen in previous guides. In this dapp, however, the `greet` function uses a message caller to determine the permissions that should be applied and, based on the permissions associated with the caller, which greeting to display.
 
-- The dapp defines two custom types—one for `Roles` and one for `Permissions`.
+- The dapp defines two custom types, one for `Roles` and one for `Permissions`.
 
 - The `assign_roles` function enables the message caller to assign a role to the principal associated with an identity.
 

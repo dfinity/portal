@@ -1,6 +1,6 @@
 # 0.3 Developer environment setup
 
-[![ICP Developer Journey 0.3 | Developer Environment Setup](https://img.youtube.com/vi/fDMHUdo7m-k/0.jpg)](https://www.youtube.com/watch?v=fDMHUdo7m-k)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fDMHUdo7m-k?si=FM4z1NwVGYUUyH1t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 

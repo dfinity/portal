@@ -1,6 +1,105 @@
 {
   "press": [
     {
+      "id": "5IhITSSs3EKCXC8DO4cArn",
+      "title": "Web3 Gamer: 1 trillion Notcoins farmed, Neopets meets ICP, Trickshot Blitz is awesome",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "Cointelegraph Magazine",
+      "url": "https://cointelegraph.com/magazine/web3-gamer-notcoin-neopets-icp-trickshot-blitz/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "2d4bgyO0Pz9TcyIOFcPyDm",
+      "title": "Bitfinity Network Raises $7M for Bitcoin Integration with Internet Computer",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "alexablockchain.com",
+      "url": "https://alexablockchain.com/bitfinity-network-raises-7m-funding/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1w86h8amwTE7xLo8fBPk4O",
+      "title": "Bitfinity to create a Bitcoin sidechain solution on Internet Computer",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "invezz.com",
+      "url": "https://invezz.com/news/2024/01/11/bitfinity-to-create-a-bitcoin-sidechain-solution-on-internet-computer/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "5RaJh55xqPGFWxZHEIhFKG",
+      "title": "Bitfinity Secures $7M for Bitcoin Sidechain Solution On Internet Computer",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "nftgators.com",
+      "url": "https://www.nftgators.com/bitfinity-secures-7m-for-bitcoin-sidechain-solution-on-internet-computer/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "57AvMm2F4VfbYbxhzPkOQ1",
+      "title": "Bitfinity Network Raises $7M for Bitcoin Sidechain Development on Internet Computer",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "Metaverse Post",
+      "url": "https://mpost.io/bitfinity-network-raises-7m-for-bitcoin-sidechain-development-on-internet-computer",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1qwxc3XOKb8dKibOGrfMjD",
+      "title": "Bitfinity raises $7M to advance Bitcoin and Ordinal assets' on-chain security",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "tech.eu",
+      "url": "https://tech.eu/2024/01/11/bitfinity-raises-7m-to-advance-bitcoin-and-ordinal-assets-on-chain-security/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "1uIFJXPfhhnn0jWfKjTE5U",
+      "title": "Bitfinity Aims to Enhance Bitcoin Ordinals With An Ethereum Virtual Machine On ICP",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "Decrypt",
+      "url": "https://decrypt.co/212411/bitfinity-aims-to-enhance-bitcoin-ordinals-with-ethereum-virtual-machine-integration-on-icp",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "21Ng4kpYLvlzG9X8TOslZM",
+      "title": "Bitcoin Layer 2 Bitfinity raises token round at $130 million valuation",
+      "date": "2024-01-11",
+      "dateHuman": "Jan 11, 2024",
+      "press": "TheBlock",
+      "url": "https://www.theblock.co/post/271885/bitcoin-l2-bitfinity-token-round",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "2X2KHhHxGAhL0I754oMcXt",
+      "title": "DFINITY’s Dominic Williams Says Enterprises Will Be Key for ICP's Growth",
+      "date": "2024-01-10",
+      "dateHuman": "Jan 10, 2024",
+      "press": "The Defiant",
+      "url": "https://thedefiant.io/dfinity-s-dominic-williams-says-enterprises-will-be-key-for-icp-s-growth",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
       "id": "6YR7IJMlAPLn8zpY8LhV7U",
       "title": "A game-changing subnet launches on the Internet Computer to help devs build GDPR-compliant dApps",
       "date": "2023-12-18",
@@ -990,93 +1089,12 @@
       "tags": []
     },
     {
-      "id": "1FYird2MBPJzsJnpW8GYOq",
-      "title": "DAOs could revolutionize how startups are run",
-      "date": "2022-04-01",
-      "dateHuman": "Apr 1, 2022",
-      "press": "VentureBeat",
-      "url": "https://venturebeat.com/2022/04/02/daos-could-revolutionize-how-startups-are-run/",
-      "tags": []
-    },
-    {
-      "id": "fqKWEbKY6CMCSXCenWxNk",
-      "title": "XR Foundation: Building a cross-chain gaming engine on Web3",
-      "date": "2022-04-01",
-      "dateHuman": "Apr 1, 2022",
-      "press": "AMB Crypto",
-      "url": "https://ambcrypto.com/xr-foundation-building-a-cross-chain-gaming-engine-on-web3/",
-      "tags": []
-    },
-    {
-      "id": "5L3g5EtBedis4Yiw3S9MEr",
-      "title": "The Internet Computer: We Have Restarted the Internet. Here’s Why.",
-      "date": "2022-04-01",
-      "dateHuman": "Apr 1, 2022",
-      "press": "BeIn Crypto",
-      "url": "https://beincrypto.com/the-internet-computer-we-have-restarted-the-internet-heres-why/",
-      "tags": []
-    },
-    {
-      "id": "7i6PSaeOMjETDJb1OH3VAR",
-      "title": "ICP Crypto: Can Embracing NFTs Help Internet Computer Climb to the Top?",
-      "date": "2022-04-01",
-      "dateHuman": "Apr 1, 2022",
-      "press": "Investor Place",
-      "url": "https://investorplace.com/2022/04/icp-crypto-can-embracing-nfts-help-internet-computer-climb-to-the-top/",
-      "tags": []
-    },
-    {
-      "id": "7xlZyqlTpdNGqN8e4pynDX",
-      "title": "Better Blockchain Interoperability will Attract Users, Developers, Traders",
-      "date": "2022-04-01",
-      "dateHuman": "Apr 1, 2022",
-      "press": "BeIn Crypto",
-      "url": "https://beincrypto.com/better-blockchain-interoperability-will-attract-users-developers-traders/",
-      "tags": []
-    },
-    {
       "id": "2NeQ6WoPH3A9NqDJ0Z7kGD",
       "title": "Bridgeless Crypto: Promise of Direct Blockchain Integrations",
       "date": "2022-03-01",
       "dateHuman": "Mar 1, 2022",
       "press": "Coinspeaker",
       "url": "https://www.coinspeaker.com/bridgeless-crypto-blockchain-integrations/",
-      "tags": []
-    },
-    {
-      "id": "2wW3A8XBrasUgQhvWR7Vx7",
-      "title": "Internet Computer (ICP) A General-Purpose Blockchain for Building Applications.",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "Binance Research",
-      "url": "https://research.binance.com/en/projects/dfinity",
-      "tags": []
-    },
-    {
-      "id": "66Thhqowm8fiNJO30UUcKx",
-      "title": "SocialFi: Social DApps Meet Bitcoin and Crypto",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "CoinPedia",
-      "url": "https://coinpedia.org/news/socialfi-social-dapps-meet-bitcoin-and-crypto/",
-      "tags": []
-    },
-    {
-      "id": "6CCQTSIZeuMhkEXa3YDuOd",
-      "title": "OpenChat Instant Messaging Allows Crypto Transfers",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "Tech Times",
-      "url": "https://www.techtimes.com/articles/273458/20220324/openchat-instant-messaging-allows-crypto-transfers.htm",
-      "tags": []
-    },
-    {
-      "id": "78XyGsAdOaGCAfcyW4uRZd",
-      "title": "Unusual $250 million scheme by the founder of Internet Computer to help Ukraine",
-      "date": "2022-03-01",
-      "dateHuman": "Mar 1, 2022",
-      "press": "The Coin Republic",
-      "url": "https://www.thecoinrepublic.com/2022/03/19/unusual-250-million-scheme-by-the-founder-of-internet-computer-to-help-ukraine/",
       "tags": []
     }
   ]

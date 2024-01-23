@@ -44,7 +44,7 @@ Open the `src/cycles_hello_backend/main.mo` file in a text editor and delete the
 
 Copy and paste this code into the file:
 
-```
+```motoko
 import Nat64 "mo:base/Nat64";
 import Cycles "mo:base/ExperimentalCycles";
 

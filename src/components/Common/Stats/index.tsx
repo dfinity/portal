@@ -23,7 +23,7 @@ export const StatsPanel: React.FC<{
   return (
     <div
       className={clsx(
-        "mt-20 backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl py-12 px-6 md:px-20 ",
+        "backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl py-12 px-6 md:px-20 ",
         className
       )}
     >
@@ -35,11 +35,23 @@ export const StatsPanel: React.FC<{
 export const Stat: React.FC<{
   title: ReactNode;
   value: ReactNode | null;
-  fallbackValue: string;
+  style?: React.CSSProperties;
+  fallbackValue?: string;
   titleClassName?: string;
-}> = ({ title, value, fallbackValue, titleClassName }) => {
+  className?: string;
+}> = ({
+  title,
+  value,
+  fallbackValue = "",
+  titleClassName,
+  style = {},
+  className,
+}) => {
   return (
-    <figure className="m-0 flex flex-col gap-2 items-center">
+    <figure
+      className={clsx("m-0 flex flex-col gap-2 items-center", className)}
+      style={style}
+    >
       {value !== null ? (
         <span className="tw-heading-60 text-gradient">{value}</span>
       ) : (
