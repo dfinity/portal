@@ -189,6 +189,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/index /docs/current/developer-docs/
   /docs/current/tutorials/ /docs/current/developer-docs/
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
+  /docs/current/samples/* /docs/current/samples/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
