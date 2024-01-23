@@ -511,9 +511,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
                 memo = null;
                 
                 amount_e8s = opt 4_110_000_000_000 : opt nat64;
-            };
-        };
-    };
+            }
+        }
+    }
 )' > message.json
 
 quill send message.json
