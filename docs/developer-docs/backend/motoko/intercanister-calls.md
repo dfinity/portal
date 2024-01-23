@@ -1,7 +1,7 @@
 # 7: Making inter-canister calls
 
 ## Overview
-One of the most important features of the Internet Computer blockchain for developers is the ability to call functions in one canister from another canister. This capability to make calls between canisters—also sometimes referred to as **inter-canister calls**—enables you to reuse and share functionality in multiple dapps.
+One of the most important features of the Internet Computer blockchain for developers is the ability to call functions in one canister from another canister. This capability to make calls between canisters, also sometimes referred to as **inter-canister calls**, enables you to reuse and share functionality in multiple dapps.
 
 For example, you might want to create a dapp for professional networking, organizing community events, or hosting fundraising activities. Each of these dapps might have a social component that enables users to identify social relationships based on some criteria or shared interest, such as friends and family or current and former colleagues.
 
@@ -40,7 +40,7 @@ Create a new file, `src/canister1/main.mo`.
 
 In this file, insert the following code:
 
-```
+```motoko
 import Canister2 "canister:canister2";
 
 actor {
@@ -54,7 +54,7 @@ Then, create another new file, `src/canister2/main.mo`.
 
 In this file, insert the following code:
 
-```
+```motoko
 import Prim "mo:prim";
 
 actor {
@@ -67,7 +67,7 @@ actor {
 
 Open the `dfx.json` file and delete the existing content. Then, insert the following code:
 
-```
+```json
 {
  "canisters": {
   "canister1": {
@@ -129,7 +129,7 @@ The output should resemble the following:
 
 Alternatively, you can also use a canister id to access a previously deployed canister by using the following piece of code in the `src/canister1/main.mo` file:
 
-```
+```motoko
 actor {
     public func main(canisterId: Text) : async Nat {
         let canister2 = actor(canisterId): actor { getValue: () -> async Nat };

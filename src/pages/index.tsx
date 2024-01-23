@@ -94,7 +94,12 @@ export default function Home(): JSX.Element {
           />
           <FoundationSection></FoundationSection>
 
-          <NewsletterSection />
+          <NewsletterSection formUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0">
+            Sign up for email updates{" "}
+            <span className="text-white-60">
+              to keep up to date with the Internet Computer
+            </span>
+          </NewsletterSection>
         </div>
       </main>
       <SectionsBar />

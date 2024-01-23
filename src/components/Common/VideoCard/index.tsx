@@ -32,7 +32,7 @@ export const ImageOnlyVideoCard: React.FC<{
 
 const VideoCard: React.FC<{
   title: string;
-  label: string;
+  label?: string;
   description?: ReactNode;
   image: string;
   link: string;
@@ -61,7 +61,9 @@ const VideoCard: React.FC<{
       </Link>
       <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12 backdrop-blur-2xl">
         <div className="self-end">
-          <h4 className="text-razzmatazz tw-heading-7 mb-0">{label}</h4>
+          {label && (
+            <h4 className="text-razzmatazz tw-heading-7 mb-0">{label}</h4>
+          )}
           <p className="mb-0 tw-heading-6 md:tw-heading-5">{title}</p>
           {description && (
             <p className="text-black-60 tw-paragraph md:tw-lead-sm mb-0 mt-3">

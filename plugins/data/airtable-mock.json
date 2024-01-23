@@ -1,0 +1,3288 @@
+{
+  "events": [
+    {
+      "id": "recRdTx3tNCG10sO6",
+      "eventName": "Web3Conf India",
+      "description": null,
+      "eventBanner": {
+        "id": "attWvAWS3iX4W582A",
+        "url": "/assets/images/events/attWvAWS3iX4W582A.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://web3confindia.xyz/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-08-11",
+      "endDate": "2023-08-14",
+      "regions": "Asia",
+      "country": "India",
+      "city": "Goa",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recmeVL0pCgUrkLvy",
+      "eventName": "ETH Toronto / Blockchain Futurist Conference",
+      "description": null,
+      "eventBanner": {
+        "id": "att5gCrfTG0X145uN",
+        "url": "/assets/images/events/att5gCrfTG0X145uN.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.ethtoronto.ca/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-08-14",
+      "endDate": "2023-08-16",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Toronto",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recWMplyEp6Yqx10k",
+      "eventName": "Devpost Hackathon",
+      "description": null,
+      "topic": [
+        "Web3",
+        "BTC",
+        "Gaming"
+      ],
+      "startDate": "2023-08-14",
+      "endDate": "2023-10-31",
+      "regions": "Online",
+      "country": "Online",
+      "city": "Online",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recImZjYe63nBnqr9",
+      "eventName": "ICP Meetup @ ETH Toronto",
+      "description": null,
+      "eventLink": "https://lu.ma/3q0l6w1g",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2023-08-16",
+      "endDate": "2023-08-16",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Toronto",
+      "type": "Official Side Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec0zrvO9TQ6nYBct",
+      "eventName": "Istanbul Blockchain Week",
+      "description": null,
+      "eventBanner": {
+        "id": "attzZ5jsaIqcKr0dc",
+        "url": "/assets/images/events/attzZ5jsaIqcKr0dc.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://istanbulblockchainweek.com/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-08-22",
+      "endDate": "2023-08-23",
+      "regions": "Asia",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec6OkXIVyMUs2sOy",
+      "eventName": "Coinfest Asia 2023",
+      "description": null,
+      "eventBanner": {
+        "id": "att86PmS7pLtusjSH",
+        "url": "/assets/images/events/att86PmS7pLtusjSH.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://coinfest.asia/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-08-24",
+      "endDate": "2023-08-25",
+      "regions": "Asia",
+      "country": "Indonesia",
+      "city": "Bali",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recCC7rEotO33q7s1",
+      "eventName": "Building the Web3 Future: Turning the Dream into Reality",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/building-the-web3-future-turning-the-dream-into-reality-tickets-691434939517?aff=ebdsoporgprofile",
+      "topic": [
+        "Metaverse"
+      ],
+      "startDate": "2023-08-24",
+      "endDate": "2023-08-24",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recMY7EoSMj4uF5dg",
+      "eventName": "DEMO TECH DAY: Step into the Future!",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/demo-tech-day-step-into-the-future-tickets-704278755717?aff=oddtdtcreator",
+      "topic": [
+        "Artificial Intelligence",
+        "Metaverse",
+        "NFT"
+      ],
+      "startDate": "2023-08-25",
+      "endDate": "2023-09-20",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recq45N0wIYSYufZy",
+      "eventName": "Side Event @ ETH Warsaw",
+      "description": null,
+      "eventLink": "https://www.meetup.com/pl-PL/degen-house/events/295548264/",
+      "topic": [
+        "ETH",
+        "Blockchain"
+      ],
+      "startDate": "2023-09-02",
+      "endDate": "2023-09-02",
+      "regions": "Europe",
+      "country": "Poland",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recACyYIbZV9wUa0S",
+      "eventName": "ICP World NFTs",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/icp-world-nfts-tickets-699449049937?aff=oddtdtcreator",
+      "topic": [
+        "NFT"
+      ],
+      "startDate": "2023-09-02",
+      "endDate": "2023-09-02",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recsBE369r3MV2zPW",
+      "eventName": "ICP Meetup @ Korea Blockchain Week",
+      "description": null,
+      "eventBanner": {
+        "id": "attPikS165jtSs6rp",
+        "url": "/assets/images/events/attPikS165jtSs6rp.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://lu.ma/icpkorea",
+      "topic": [
+        "Tech",
+        "Mainstream",
+        "Web3"
+      ],
+      "startDate": "2023-09-05",
+      "endDate": "2023-09-05",
+      "regions": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recfQzCqhpItqbp2b",
+      "eventName": "NFT FEST LUGANO",
+      "description": null,
+      "eventBanner": {
+        "id": "attbqMMZTCnc79KZ0",
+        "url": "/assets/images/events/attbqMMZTCnc79KZ0.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://nft-fest.ch/",
+      "topic": [
+        "NFT"
+      ],
+      "startDate": "2023-09-07",
+      "endDate": "2023-09-11",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Lugano",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec7e8UVXkXvGNOXt",
+      "eventName": "\"Web3 Wave: The Future of the Internet\"",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/web3-wave-the-future-of-the-internet-tickets-689801814797?aff=ebdsoporgprofile",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-09-08",
+      "endDate": "2023-09-08",
+      "regions": "Asia",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur ",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recMpW9oWftN43cBf",
+      "eventName": "Dmail x ICP Networking ",
+      "description": null,
+      "eventLink": "https://lu.ma/ldil72on",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-08",
+      "endDate": "2023-09-08",
+      "regions": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recChdBVNZej6m7VC",
+      "eventName": "SWISS WEB3 FEST",
+      "description": null,
+      "eventLink": "https://lu.ma/cvcoecosystemfestival",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-09-12",
+      "endDate": "2023-09-17",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Zürich & Zug",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recOI7vtFcqiyJpu9",
+      "eventName": "2023 Brand Launch Conference",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/coinstore-brand-launch-conference-2023-tickets-689973969717",
+      "topic": [
+        "Blockchain",
+        "Web3"
+      ],
+      "startDate": "2023-09-12",
+      "endDate": "2023-09-12",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Official Side Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reckmN3mwvUP9OCnR",
+      "eventName": "Blockchain Security in Singapore",
+      "description": null,
+      "eventBanner": {
+        "id": "attyeQNssYy4d4LcU",
+        "url": "/assets/images/events/attyeQNssYy4d4LcU.avif",
+        "type": "image/avif"
+      },
+      "eventLink": "https://lu.ma/ygba1i77",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-12",
+      "endDate": "2023-09-12",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recSq05yMfZXh8gid",
+      "eventName": "Meta Era Summit",
+      "description": null,
+      "eventLink": "https://www.metaerasummit.com/",
+      "topic": [
+        "Web3",
+        "Metaverse"
+      ],
+      "startDate": "2023-09-12",
+      "endDate": "2023-09-12",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recsQCI2ILEBx9cPg",
+      "eventName": "ICP.Lab 5.0  Gaming & Metaverse Meetup",
+      "description": null,
+      "eventLink": "https://lu.ma/i44ygfys",
+      "topic": [
+        "Gaming",
+        "Metaverse",
+        "NFT"
+      ],
+      "startDate": "2023-09-13",
+      "endDate": "2023-09-13",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "DFINITY HQ",
+      "type": "Office Events",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjvnum68E8dXnPm",
+      "eventName": "Web3preneur: Singapore Edition",
+      "description": null,
+      "eventBanner": {
+        "id": "attA58jvOMOv4uaJU",
+        "url": "/assets/images/events/attA58jvOMOv4uaJU.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.web3preneur.events",
+      "topic": [
+        "Web3",
+        "Tech"
+      ],
+      "startDate": "2023-09-15",
+      "endDate": "2023-09-15",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recD9BDwYutwUCRhI",
+      "eventName": "Offchain Vancouver Web 3.0 Meetup",
+      "description": null,
+      "eventLink": "https://www.eventbrite.hk/e/offchain-vancouver-web3-meetup-sept-2023-tickets-710157679737?aff=oddtdtcreator",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-15",
+      "endDate": "2023-09-15",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Vancouver",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reciiNkjD3HfLEeDg",
+      "eventName": "ICP DAPP CONNECT: Unleashing the potential of decentralized applications in Ghana",
+      "description": null,
+      "eventLink": "https://twitter.com/abdulazizkarma/status/1700181486102581556?s=46&t=e2vY0quvhLVFxEIiQY902Q",
+      "topic": [
+        "Online Identity",
+        "DAO",
+        "Blockchain"
+      ],
+      "startDate": "2023-09-16",
+      "endDate": "2023-09-16",
+      "regions": "Africa",
+      "country": "Ghana",
+      "city": "Tamale",
+      "type": "University/Academic Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recx3jIkIT9HWzng7",
+      "eventName": "Web3 Dev Summit SH 2023",
+      "description": null,
+      "eventLink": "https://www.huodongxing.com/event/6715197112600?td=8884644468197",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-17",
+      "endDate": "2023-09-17",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Shanghai",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recopevoGqrbl77em",
+      "eventName": "EthSafari",
+      "description": null,
+      "eventLink": "https://ethsafari.xyz/",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2023-09-18",
+      "endDate": "2023-09-24",
+      "regions": "Africa",
+      "country": "Kenya",
+      "city": "Nairobi",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recSfc5kqxLH5Yq3y",
+      "eventName": "PBW 2023",
+      "description": null,
+      "eventLink": "https://philblockchainweek.com/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-19",
+      "endDate": "2023-09-21",
+      "regions": "Asia",
+      "country": "Philippines",
+      "city": "Manila",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reccPbbF3s2zjhdtq",
+      "eventName": "The 9th Global Blockchain Summit",
+      "description": null,
+      "eventLink": "https://www.blockchainlabs.org/week2023/home?lang=en-US",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-19",
+      "endDate": "2023-09-20",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Shanghai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recwbwsPJwcORasqc",
+      "eventName": "Philippine Blockchain Week Official Side Event:  ICP Meetup",
+      "description": null,
+      "eventLink": "https://lu.ma/iaa3z77g",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-09-19",
+      "endDate": "2023-09-19",
+      "regions": "Asia",
+      "country": "Philippines",
+      "city": "Quezon City",
+      "type": "Official Side Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reclVTk08TgJdevEQ",
+      "eventName": "w3.vision x DMEXCO",
+      "description": null,
+      "eventLink": "https://www.w3.vision",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-20",
+      "endDate": "2023-09-21",
+      "regions": "Europe",
+      "country": "Germany",
+      "city": "Cologne",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recx1hRzUSansiNmq",
+      "eventName": "Regenerative Chains - From Carbon Negative to Community Positive",
+      "description": null,
+      "eventBanner": {
+        "id": "att1cosRn2PvGevy5",
+        "url": "/assets/images/events/att1cosRn2PvGevy5.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://lu.ma/Regenerativechains",
+      "topic": [
+        "Sustainability"
+      ],
+      "startDate": "2023-09-21",
+      "endDate": "2023-09-21",
+      "regions": "Europe",
+      "country": "Portugal",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reciwVCDnQkJBkaNS",
+      "eventName": "TUM BLOCKCHAIN CONFERENCE",
+      "description": null,
+      "eventBanner": {
+        "id": "attVQYhcWow08xS7y",
+        "url": "/assets/images/events/attVQYhcWow08xS7y.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.tum-blockchain.com/conference",
+      "topic": [
+        "Web3",
+        "Blockchain",
+        "Tech"
+      ],
+      "startDate": "2023-09-22",
+      "endDate": "2023-09-23",
+      "regions": "Europe",
+      "country": "Germany",
+      "city": "Munich",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec0XPlZqZpDu60hm",
+      "eventName": "The Edge - Global AI & Web3 Investment Summit",
+      "description": null,
+      "eventLink": "https://edgesummit.io/#/index",
+      "topic": [
+        "Artificial Intelligence",
+        "Blockchain"
+      ],
+      "startDate": "2023-09-25",
+      "endDate": "2023-09-27",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recaNrbiHTtHXPgeu",
+      "eventName": "ICP Asia Alliance Launch Event",
+      "description": null,
+      "eventLink": "https://lu.ma/icphk",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-28",
+      "endDate": "2023-09-28",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recTNfm1PmszjMGXO",
+      "eventName": "CV Summit 2023",
+      "description": null,
+      "eventLink": "https://www.cvsummit.ch/events/cv-summit-2023 ",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-03",
+      "endDate": "2023-10-04",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Zug",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recZfFayU9ik2rHAY",
+      "eventName": "Swiss Blockchain Capital Day",
+      "description": null,
+      "eventLink": "https://lu.ma/SwissBlockchainCapitalDay",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-04",
+      "endDate": "2023-10-06",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Zürich",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recPUfOx7KB2CoJXR",
+      "eventName": "ETH Milan",
+      "description": null,
+      "eventLink": "https://www.ethmilan.xyz/",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2023-10-05",
+      "endDate": "2023-10-06",
+      "regions": "Europe",
+      "country": "Italy",
+      "city": "Milan",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reco9hryhMkOCbfhb",
+      "eventName": "ETH Riyadh",
+      "description": null,
+      "eventLink": "https://ethriyadh.com/",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2023-10-12",
+      "endDate": "2023-10-12",
+      "regions": "Online",
+      "country": "Online",
+      "city": "Riyadh",
+      "type": "Conference",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recOPJgzF1JP7vA6j",
+      "eventName": "DubHacks",
+      "description": null,
+      "eventLink": "https://dubhacks.co/",
+      "topic": [
+        "Blockchain",
+        "Tech",
+        "Gaming",
+        "Web3"
+      ],
+      "startDate": "2023-10-14",
+      "endDate": "2023-10-15",
+      "regions": "North America",
+      "country": "United States of America",
+      "city": "Seattle",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recQBT7yuvmdigX1i",
+      "eventName": "Future Blockchain Summit",
+      "description": null,
+      "eventLink": "https://www.futureblockchainsummit.com/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-15",
+      "endDate": "2023-10-18",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recfgLXiKE9W0I4hK",
+      "eventName": "ICP.Hub GCC x Cypher Capital Hub",
+      "description": null,
+      "eventLink": "https://lu.ma/ICPxCypher",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-15",
+      "endDate": "2023-10-15",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Official Side Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recPeU7OWGYnd2dfx",
+      "eventName": "NewTribe Gathering",
+      "description": null,
+      "eventLink": "https://lu.ma/zaclig7h",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-10-16",
+      "endDate": "2023-10-16",
+      "regions": "North America",
+      "country": "United States of America",
+      "city": "Dubai",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recT0vzGlfuLy26y5",
+      "eventName": "Bohemian FBS Kickoff Night",
+      "description": null,
+      "eventLink": "https://lu.ma/boho_kickoff_night_dubai",
+      "topic": [
+        "Mainstream",
+        "Blockchain"
+      ],
+      "startDate": "2023-10-16",
+      "endDate": "2023-10-16",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Official Side Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec9IrKkbatAH1I8H",
+      "eventName": "CoinAgenda EMEA",
+      "description": null,
+      "eventLink": "https://coinagenda.com/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-17",
+      "endDate": "2023-10-20",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recyE0Ax5ccyHwc7o",
+      "eventName": "TODA arte Talks",
+      "description": null,
+      "eventLink": "https://lu.ma/arteTalks",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-10-17",
+      "endDate": "2023-10-17",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recek7ou1gABzvKT4",
+      "eventName": "Web3preneur - Dubai Edition",
+      "description": null,
+      "eventBanner": {
+        "id": "attMcMPN3YqUzgfbX",
+        "url": "/assets/images/events/attMcMPN3YqUzgfbX.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.web3preneur.events/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-10-19",
+      "endDate": "2023-10-19",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recYRiOTFnlPfX4Vg",
+      "eventName": "RAK DAO Launch Event",
+      "description": null,
+      "eventLink": "https://lu.ma/kw0499tw",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-10-19",
+      "endDate": "2023-10-19",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Ras al Khaimah",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec9QBpzE0C4wNnQd",
+      "eventName": "ICP Ideathon - Chiang Mai",
+      "description": null,
+      "eventBanner": {
+        "id": "attlLCFM6p0IGs3rU",
+        "url": "/assets/images/events/attlLCFM6p0IGs3rU.avif",
+        "type": "image/avif"
+      },
+      "eventLink": "https://lu.ma/j4exzurs",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-10-19",
+      "endDate": "2023-10-19",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Chiang Mai",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recRr2M27sXKGNqyR",
+      "eventName": "The Triple Helix: Unraveling AI, Digital Assets & the Future of Data",
+      "description": null,
+      "eventLink": "https://lu.ma/upb6i8fo",
+      "topic": [
+        "Artificial Intelligence"
+      ],
+      "startDate": "2023-10-20",
+      "endDate": "2023-10-20",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Abu Dhabi",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec2eYK3NT1W8HRm6",
+      "eventName": "ETH Mexico",
+      "description": null,
+      "eventLink": "https://ethmexico.org/",
+      "topic": [
+        "ETH",
+        "Tech"
+      ],
+      "startDate": "2023-10-20",
+      "endDate": "2023-10-23",
+      "regions": "South America",
+      "country": "Mexico",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recLYrRxuYEtUfUC9",
+      "eventName": "The ICP Gateway in Korea",
+      "marketingText": "🌟 Join us at ICP.Hub Korea's year-end event: 'The ICP Gateway in Korea'! A must-attend for Governors, VCs, Exchanges, Investors, #WEB3 Entrepreneurs, and Developers.\n\n🚀 Network with top industry experts, get the latest update on #ICP.\n\n🔗 Register now: https://lu.ma/icpgateway\n",
+      "description": "🌟 Join us at ICP.Hub Korea's year-end event: 'The ICP Gateway in Korea'! A must-attend for Governors, VCs, Exchanges, Investors, #WEB3 Entrepreneurs, and Developers.\n🚀 Network with top industry experts, get the latest update on #ICP.\n🔗 Register now: https://lu.ma/icpgateway",
+      "eventLink": "https://lu.ma/icpgateway",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-20",
+      "endDate": "2023-12-04",
+      "regions": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec2k0boS6ccxeyyM",
+      "eventName": "ICP & AI ",
+      "description": null,
+      "eventLink": "https://hdxu.cn/5FVaS",
+      "topic": [
+        "Artificial Intelligence"
+      ],
+      "startDate": "2023-10-22",
+      "endDate": "2023-10-22",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Wuhan ",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recMRaVd869jMIuiG",
+      "eventName": "Blockchain Life 2023",
+      "description": null,
+      "eventLink": "https://blockchain-life.com/asia/en/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-24",
+      "endDate": "2023-10-25",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recyhotYE2YwtlHdz",
+      "eventName": "ICP Ideathon - SPU",
+      "description": null,
+      "eventLink": "https://twitter.com/IcpSynergylabs/status/1715240615120924870",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-24",
+      "endDate": "2023-10-27",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "type": "University/Academic Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec5WcqtWCnJSK2MB",
+      "eventName": "IEEE 9th World Forum on Internet of Things (WF-IoT) 2023",
+      "description": null,
+      "eventLink": "https://wfiot2023.iot.ieee.org/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-10-24",
+      "endDate": "2023-10-24",
+      "regions": "Online",
+      "country": "Online",
+      "type": "Conference",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjI0Af0SLfhqeKX",
+      "eventName": "NU FAIRVIEW IOT SYMPOSIUM 2023 CO-PRESENTED BY ICP.HUB PHILIPPINES",
+      "description": null,
+      "eventLink": "https://www.facebook.com/people/NU-FV-IoT-Symposium-2023/61551725918472/",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-10-24",
+      "endDate": "2023-10-24",
+      "regions": "Asia",
+      "country": "Philippines",
+      "city": "QUEZON CITY",
+      "type": "University/Academic Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recnprqEEOIToNE0L",
+      "eventName": "AI meets Web3: Shaping the future Freelance Careers",
+      "description": null,
+      "eventLink": "https://pages.malt.de/en-de/ai-meets-web3-shaping-future-freelance-careers",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-10-25",
+      "endDate": "2023-10-25",
+      "regions": "Europe",
+      "country": "Germany",
+      "city": "Berlin",
+      "type": "Meetups",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recTbVY2Uxdy22IF5",
+      "eventName": "Africa Blockchain Summit",
+      "description": null,
+      "eventLink": "https://blockchainsummit.africa/index",
+      "topic": [
+        "BTC",
+        "Tech",
+        "Blockchain",
+        "Sustainability"
+      ],
+      "startDate": "2023-10-27",
+      "endDate": "2023-10-28",
+      "regions": "Africa",
+      "country": "Ghana",
+      "city": "Accra",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recCabqgwaJYL9Vpt",
+      "eventName": "HK FinTech Week",
+      "description": null,
+      "eventBanner": {
+        "id": "attCwu3idZhf6qkTG",
+        "url": "/assets/images/events/attCwu3idZhf6qkTG.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.fintechweek.hk",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-10-30",
+      "endDate": "2023-11-05",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recRnHHlLruhWGkmI",
+      "eventName": "ICP Q&A Event ",
+      "description": null,
+      "eventLink": "https://lu.ma/icpAMA",
+      "topic": [
+        "Web3",
+        "Blockchain"
+      ],
+      "startDate": "2023-11-01",
+      "endDate": "2023-11-01",
+      "regions": "Online",
+      "country": "Online",
+      "city": "İt is online. ",
+      "type": "Meetups",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjhEasjeAwxvnBO",
+      "eventName": "Connect Dots by SynergyLabs ICP.Hub ",
+      "marketingText": "Join Connect Dots as we present to you an interesting curated program to bring you a journey of discovery into the building on blockchain with ICP & connect with meaningful industry associates.\n\nThis event will be unlike most events as every part of it will require communication and interaction between participants. Learn, Share & Connect amongst each other.\n​​Don't miss this exclusive opportunity to explore the thriving Malaysia Web3 Builders Ecosystem & build meaningful support system\n",
+      "description": "Join Connect Dots as we present to you an interesting curated program to bring you a journey of discovery into the building on blockchain with ICP & connect with meaningful industry associates.\nThis event will be unlike most events as every part of it will require communication and interaction between participants. Learn, Share & Connect amongst each other.\n\n​​Don't miss this exclusive opportunity to explore the thriving Malaysia Web3 Builders Ecosystem & build meaningful support system",
+      "eventLink": "https://lu.ma/pi62kqqq",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-11-01",
+      "endDate": "2023-11-29",
+      "regions": "Asia",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec8KUcmTOJpS9F4i",
+      "eventName": "Island Innovation Sprint: ICP Ideathon Phuket, Thailand",
+      "marketingText": " Attention Innovators in Phuket! Shape the Future of Decentralized Innovation at ICP Ideathon 🌐\n​​💡 Ready to immerse yourself in a world of groundbreaking ideas and collaborate with like-minded visionaries?\n​Join us FOR FREE on November 30th at 6:00 pm!\n​​🍹 Enjoy FREE drinks and snacks for a comfortable experience.\n​​\n​​🏆 Have an idea? Win a reward!\n​​1st place $200\n​​2nd place $150\n​​3d place $50\n​​\n​​💡 We're looking for ideas in these areas:\n- ​​Web3 & Blockchain\n- ​​Web2 & Web3\n- ​​Mass adoption for Crypto & NFT\n- ​​Real World & Web3\n- ​​Gaming & Entertainment\n- ​​Social Impact & Sustainability\n- ​​Technology & Software Development\n- ​​Open Innovations\n- ​​Security & Cloud\n- ​​Health & Wellness\n- ​​FinTech & E-commerce\n\n",
+      "description": "Attention Innovators in Phuket! Shape the Future of Decentralized Innovation at ICP Ideathon 🌐\n\n​​💡 Ready to immerse yourself in a world of groundbreaking ideas and collaborate with like-minded visionaries?\n\n​Join us FOR FREE on November 30th at 6:00 pm!\n\n​​🍹 Enjoy FREE drinks and snacks for a comfortable experience.\n\n​​\n\n​​🏆 Have an idea? Win a reward!\n\n​​1st place $200\n\n​​2nd place $150\n\n​​3d place $50\n\n​​\n\n​​💡 We're looking for ideas in these areas:\n- ​​Web3 & Blockchain\n- ​​Web2 & Web3\n- ​​Mass adoption for Crypto & NFT\n- ​​Real World & Web3\n- ​​Gaming & Entertainment\n- ​​Social Impact & Sustainability\n- ​​Technology & Software Development\n- ​​Open Innovations\n- ​​Security & Cloud\n- ​​Health & Wellness\n- ​​FinTech & E-commerce",
+      "eventLink": "https://lu.ma/j5c7yvtf",
+      "topic": [
+        "Web3",
+        "Tech",
+        "Blockchain",
+        "Metaverse"
+      ],
+      "startDate": "2023-11-01",
+      "endDate": "2023-11-30",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Phuket, Thailand",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec0WoeGq9HoZdIkb",
+      "eventName": "IC BUIDL CAMP: THINK Hackathon",
+      "description": null,
+      "eventLink": "https://lu.ma/uq9dnvtn",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-01",
+      "endDate": "2023-12-15",
+      "regions": "Asia",
+      "country": "Philippines",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "receko7Em6AOOmRTT",
+      "eventName": "Internet Computer Python Bootcamp",
+      "description": null,
+      "eventLink": "https://lu.ma/mnpjevl3?tk=urh1Ib",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-03",
+      "endDate": "2023-11-18",
+      "regions": "Online",
+      "country": "Online",
+      "city": "Online",
+      "type": "University/Academic Event",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recRFL85v0hFVKQQC",
+      "eventName": "Google Devfest",
+      "description": null,
+      "eventLink": "https://gdg.community.dev/gdg-nairobi/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-04",
+      "endDate": "2023-11-04",
+      "regions": "Africa",
+      "country": "Kenya",
+      "city": "Nairobi",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recdKulxGRt2hBCOW",
+      "eventName": "HK Web3 Month Conference",
+      "description": null,
+      "eventLink": "https://www.hkweb3month.com/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-11-06",
+      "endDate": "2023-11-07",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reconQlVZ4fGJbOUt",
+      "eventName": "Island Innovation Sprint: ICP Ideathon Phuket, Thailand",
+      "marketingText": "🚀 Attention Innovators in Phuket! 🌐 Join the ICP Ideathon and Shape the Future of Decentralized Innovation\nReady to dive into a world where your ideas could redefine the technological landscape? Come, collaborate, and connect with fellow visionaries!\n📅 Mark your calendar: November 30th, 6:00 PM - A transformative experience awaits!\nIndulge in complimentary refreshments 🍹 while you brainstorm and build – your comfort fuels creativity!\nGot a game-changing idea? Pitch it and stand a chance to win:\n🥇 1st place: $200\n🥈 2nd place: $150\n🥉 3rd place: $50\nWe're on the hunt for revolutionary ideas across various domains:\n- Bridging gaps between Web2 and Web3\n- Fostering mass adoption of Crypto & NFTs\n- Integrating the Real World with Web3\n- Innovating in Gaming & Entertainment\n- Driving Social Impact & Sustainability\n- Advancing Technology & Software Development\n- Pioneering in Open Innovations\n- Enhancing Security & Cloud Solutions\n- Promoting Health & Wellness\n- Revolutionizing FinTech & E-commerce\nDon't miss this chance to ignite change and win rewards! Register now for an evening of ideation, innovation, and inspiration - all at no cost!\n",
+      "description": "🚀 Attention Innovators in Phuket! 🌐 Join the ICP Ideathon and Shape the Future of Decentralized Innovation\n\nReady to dive into a world where your ideas could redefine the technological landscape? Come, collaborate, and connect with fellow visionaries!\n\n📅 Mark your calendar: November 30th, 6:00 PM - A transformative experience awaits!\n\nIndulge in complimentary refreshments 🍹 while you brainstorm and build – your comfort fuels creativity!\n\nGot a game-changing idea? Pitch it and stand a chance to win:\n\n🥇 1st place: $200\n\n🥈 2nd place: $150\n\n🥉 3rd place: $50\n\nWe're on the hunt for revolutionary ideas across various domains:\n- Bridging gaps between Web2 and Web3\n- Fostering mass adoption of Crypto & NFTs\n- Integrating the Real World with Web3\n- Innovating in Gaming & Entertainment\n- Driving Social Impact & Sustainability\n- Advancing Technology & Software Development\n- Pioneering in Open Innovations\n- Enhancing Security & Cloud Solutions\n- Promoting Health & Wellness\n- Revolutionizing FinTech & E-commerce\n\nDon't miss this chance to ignite change and win rewards! Register now for an evening of ideation, innovation, and inspiration - all at no cost!",
+      "eventLink": "https://lu.ma/j5c7yvtf",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-06",
+      "endDate": "2023-11-30",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Phuket, Thailand",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reckpoKzmHqrYXuuT",
+      "eventName": "ChainShift Workshop",
+      "description": null,
+      "eventLink": "https://lu.ma/chainshift-workshop",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-07",
+      "endDate": "2023-11-09",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Online",
+      "type": "University/Academic Event",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recHZUAzyr560Je0L",
+      "eventName": "Innovation at The Ocean",
+      "description": null,
+      "eventLink": "https://startmeup.jumpstartmag.com/agenda/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-11-08",
+      "endDate": "2023-11-08",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong ",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recUN75AzYrNwf7f7",
+      "eventName": "StartmeupHK HEALTHTECH 020",
+      "description": null,
+      "eventLink": "https://www.startmeup.hk/startmeuphk-festival-2019/healthtech-020/",
+      "topic": [
+        "Mainstream"
+      ],
+      "startDate": "2023-11-09",
+      "endDate": "2023-11-09",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recXGdsARgF23luKK",
+      "eventName": "Windsor University Workshop",
+      "marketingText": "Step into the intriguing world of blockchain as we welcome you to the orientation of the Blockchain Club at the University of Windsor, proudly organized by ICP.Hub North America!\n​Get ready for an immersive session on 10th November at University of Windsor, where we'll unravel the mysteries of blockchain technology. From an engaging introduction to the latest club activities, exciting networking opportunities, to a dynamic Q&A session, this orientation is designed to spark your curiosity and fuel your passion for blockchain. Join us in this unique journey Whether you're a seasoned enthusiast or a newcomer, this event promises to be a gateway to a world of possibilities within the University of Windsor's vibrant Blockchain Club. Embrace the adventure, and let's explore the boundless potential of blockchain technology together!\n",
+      "description": "Step into the intriguing world of blockchain as we welcome you to the orientation of the Blockchain Club at the University of Windsor, proudly organized by ICP.Hub North America!\n\n​Get ready for an immersive session on 10th November at University of Windsor, where we'll unravel the mysteries of blockchain technology. From an engaging introduction to the latest club activities, exciting networking opportunities, to a dynamic Q&A session, this orientation is designed to spark your curiosity and fuel your passion for blockchain. Join us in this unique journey Whether you're a seasoned enthusiast or a newcomer, this event promises to be a gateway to a world of possibilities within the University of Windsor's vibrant Blockchain Club. Embrace the adventure, and let's explore the boundless potential of blockchain technology together!",
+      "eventLink": "https://lu.ma/7pficbsr",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-11",
+      "endDate": "2023-11-11",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Windsor",
+      "type": "University/Academic Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec9DdInagQevkCCS",
+      "eventName": "DevConnect Istanbul 2023",
+      "description": null,
+      "eventLink": "https://devconnect.org/",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-11-13",
+      "endDate": "2023-11-19",
+      "regions": "Middle East",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recd1geud9h6bNIDn",
+      "eventName": "CryptoMondays x ICP x Newconomics Party: Building Human-Centric Ecosystems",
+      "description": null,
+      "eventLink": "https://lu.ma/CryptoMondaysNewconomics",
+      "topic": [
+        "Sustainability",
+        "Mainstream"
+      ],
+      "startDate": "2023-11-13",
+      "endDate": "2023-11-13",
+      "regions": "Europe",
+      "country": "Portugal",
+      "city": "Lisbon",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recOzmjPw31FYLCVU",
+      "eventName": "ChainShift Hackathon",
+      "description": null,
+      "eventLink": "https://dorahacks.io/hackathon/ucbs-chainshift/detail",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-13",
+      "endDate": "2023-11-17",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Calgary",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rectwterdzVic1bli",
+      "eventName": "SAWADEE WEB3!",
+      "description": null,
+      "eventLink": "https://twitter.com/pukecast/status/1721383220061905111",
+      "topic": [
+        "NFT"
+      ],
+      "startDate": "2023-11-13",
+      "endDate": "2023-11-13",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recyhIMWA3I10byPx",
+      "eventName": "1.5°C Summit - The Defining Decade for Impact with Tech",
+      "description": null,
+      "eventLink": "https://onepointfivesummit.com/",
+      "topic": [
+        "Tech",
+        "Blockchain"
+      ],
+      "startDate": "2023-11-13",
+      "endDate": "2023-11-13",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recaBkmUh6ho0Xmbz",
+      "eventName": "Benzinga Future of Crypto Conference",
+      "description": null,
+      "eventLink": "https://www.benzinga.com/events/digital-assets/",
+      "topic": [
+        "DeFi"
+      ],
+      "startDate": "2023-11-14",
+      "endDate": "2023-11-14",
+      "regions": "North America",
+      "country": "United States of America",
+      "city": "New York",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recG4s3UsLHvtvU7J",
+      "eventName": "Encode - ICP Education series",
+      "description": null,
+      "eventLink": "Not built yet",
+      "topic": [
+        "BTC"
+      ],
+      "startDate": "2023-11-14",
+      "endDate": "2024-01-31",
+      "regions": "Online",
+      "country": "Online",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec8nj5nDIziPNzxQ",
+      "eventName": "Sustainable Web3 SG 2023",
+      "description": null,
+      "eventLink": "https://sussblockchain.com/events/sustainable-web3-sg-2023/",
+      "topic": [
+        "Sustainability"
+      ],
+      "startDate": "2023-11-14",
+      "endDate": "2023-11-14",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reckN8BcsUdNAC3qy",
+      "eventName": "Empowering Web3 Developers & Creators in Portugal with ICP",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/newconomics-join-world-tech-leaders-to-build-the-future-nov-14-15-lisbon-tickets-728263404447?aff=oddtdtcreator",
+      "topic": [
+        "Mainstream"
+      ],
+      "startDate": "2023-11-14",
+      "endDate": "2023-11-14",
+      "regions": "Europe",
+      "country": "Portugal",
+      "city": "Lisbon",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recoHFeqkcViEIUYj",
+      "eventName": "Internet Computer (ICP) Web3 Hackathon",
+      "description": null,
+      "eventLink": "https://dorahacks.io/hackathon/234/buidl",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-15",
+      "endDate": "2023-12-17",
+      "regions": "Asia",
+      "country": "South Korea",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "receNNhHLGiDeq0xB",
+      "eventName": "ETHGlobal Pragma",
+      "description": null,
+      "eventBanner": {
+        "id": "attqfj0kHSONmTfWw",
+        "url": "/assets/images/events/attqfj0kHSONmTfWw.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://ethglobal.com/events/pragma-istanbul",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2023-11-16",
+      "endDate": "2023-11-16",
+      "regions": "Middle East",
+      "country": "Turkey",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recFLZc7ByYko9WtQ",
+      "eventName": "Unveiling Portugal's Blockchain Revolution: CV VC Portugal Blockchain Report",
+      "description": null,
+      "eventLink": "https://lu.ma/3ef07982",
+      "topic": [
+        "DeFi",
+        "Blockchain"
+      ],
+      "startDate": "2023-11-16",
+      "endDate": "2023-11-16",
+      "regions": "Europe",
+      "country": "Portugal",
+      "city": "Lisbon",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recraGEBKnmfLdTck",
+      "eventName": "Game On 2023!",
+      "description": null,
+      "eventLink": "https://www.gameon.io/",
+      "topic": [
+        "DeFi",
+        "Blockchain",
+        "Gaming",
+        "Web3"
+      ],
+      "startDate": "2023-11-16",
+      "endDate": "2023-11-16",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recxBJU6YlICvDUKZ",
+      "eventName": "ICP.Hub HK Launch ",
+      "description": null,
+      "eventLink": "https://lu.ma/icphubhk",
+      "topic": [
+        "Blockchain",
+        "Gaming",
+        "DeFi",
+        "Web3"
+      ],
+      "startDate": "2023-11-16",
+      "endDate": "2023-11-16",
+      "regions": "Africa",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reclfPucVvNhuG6t1",
+      "eventName": "ETHGlobal Istanbul",
+      "description": null,
+      "eventLink": "https://ethglobal.com/events/istanbul",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2023-11-17",
+      "endDate": "2023-11-19",
+      "regions": "Middle East",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recSB2YicC4qA2y34",
+      "eventName": "Building Web3 in Portugal with CV Labs, ICP, Offchain",
+      "description": null,
+      "eventLink": "https://lu.ma/web3lisbon",
+      "topic": [
+        "Mainstream",
+        "Blockchain"
+      ],
+      "startDate": "2023-11-17",
+      "endDate": "2023-11-17",
+      "regions": "Europe",
+      "country": "Portugal",
+      "city": "Lisbon",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec00zrmCA5JKgiiw",
+      "eventName": "ICP and RISA Hackathon",
+      "description": null,
+      "eventLink": "https://lu.ma/j89h3bn1",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-20",
+      "endDate": "2023-12-07",
+      "regions": "Africa",
+      "country": "Rwanda",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec9tamQWQwNTUcRp",
+      "eventName": "Chiang Mai University Web3 Ideathon",
+      "marketingText": "```\nAnnouncement! For innovators Web3.0 startups in Chiang Mai join in shaping the future of decentralized innovation. (Decentralized innovation) today at the ICP Ideathon\n\n​​​​​​​💡 Ready to dive into a world of unconventional ideas and join the journey of people who share your vision and goals?\n\nJoin for free on December 12th at 1:00 PM!\n```\n🚀 ประกาศ! สำหรับนักสร้างนวัตกรรม เหล่าสตาร์ทอัพ web3.0 ในเชียงใหม่ ร่วมเป็นส่วนหนึ่งในการกำหนดอนาคตของนวัตกรรมกระจายศูนย์ (Decentralized innovation) ได้แล้ววันนี้ ที่งาน ICP Ideathon\n​​​💡 พร้อมที่จะดำดิ่งสู่โลกแห่งความคิดที่แหวกแนวและร่วมเดินทางไปกับเหล่าผู้คนที่มีวิสัยทัศน์และเป้าหมายเหมือนกันกับคุณแล้วหรือยัง?\n​เข้าร่วมฟรีในวันที่ 12 ธันวาคม เวลา 13.00 น.!\n",
+      "description": "Announcement! For innovators Web3.0 startups in Chiang Mai join in shaping the future of decentralized innovation. (Decentralized innovation) today at the ICP Ideathon\n\n​​​​​​​💡 Ready to dive into a world of unconventional ideas and join the journey of people who share your vision and goals?\n\nJoin for free on December 12th at 1:00 PM!🚀 ประกาศ! สำหรับนักสร้างนวัตกรรม เหล่าสตาร์ทอัพ web3.0 ในเชียงใหม่ ร่วมเป็นส่วนหนึ่งในการกำหนดอนาคตของนวัตกรรมกระจายศูนย์ (Decentralized innovation) ได้แล้ววันนี้ ที่งาน ICP Ideathon\n\n​​​💡 พร้อมที่จะดำดิ่งสู่โลกแห่งความคิดที่แหวกแนวและร่วมเดินทางไปกับเหล่าผู้คนที่มีวิสัยทัศน์และเป้าหมายเหมือนกันกับคุณแล้วหรือยัง?\n\n​เข้าร่วมฟรีในวันที่ 12 ธันวาคม เวลา 13.00 น.!",
+      "eventLink": "https://lu.ma/qm64iww5",
+      "topic": [
+        "Tech",
+        "Blockchain"
+      ],
+      "startDate": "2023-11-21",
+      "endDate": "2023-12-12",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Chiang Mai",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recBReo5xYco4HmFF",
+      "eventName": "ICP Campus Decahack (Virtual Bootcamp)",
+      "description": null,
+      "eventLink": "https://www.hackathon.africa/hackathon/icp-campus-decahack",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-22",
+      "endDate": "2023-12-22",
+      "regions": "Africa",
+      "country": "Nigeria",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recoisDTLFzXgOrla",
+      "eventName": "Crypto Fest ",
+      "description": null,
+      "eventLink": "https://cryptofest.co.za/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-24",
+      "endDate": "2023-11-24",
+      "regions": "Africa",
+      "country": "South Africa",
+      "city": "Cape Town",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjn2lwsgQSkHNVr",
+      "eventName": "Build on Internet Computer At MKSU Hackfest",
+      "description": null,
+      "eventLink": "https://lu.ma/dwddd785",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-11-29",
+      "endDate": "2023-12-01",
+      "regions": "Africa",
+      "country": "Kenya",
+      "city": "Machakos",
+      "type": "Hackathon",
+      "mode": [
+        "IRL",
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recfIJdghh6Jw7gLN",
+      "eventName": "DEV3Con Global",
+      "description": null,
+      "eventLink": "https://www.dev3con.com/",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-11-30",
+      "endDate": "2023-12-01",
+      "regions": "Online",
+      "country": "Online",
+      "city": "online",
+      "type": "Conference",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recsKglenTD2IAQwZ",
+      "eventName": "Dakar Bitcoin Days",
+      "description": null,
+      "eventLink": "https://dakarbitcoindays.com/",
+      "topic": [
+        "BTC"
+      ],
+      "startDate": "2023-12-01",
+      "endDate": "2023-12-02",
+      "regions": "Africa",
+      "country": "Senegal",
+      "city": "Dakar",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "reclnlbtZ2kY2OeVW",
+      "eventName": "Astro Online Hackathon",
+      "marketingText": "Este Hackathon es organizado por ICP Hub Latam y Zona Tres. Internet Computer es un ecosistema Blockchain que se destaca por el desarrollo de Canisters en JavaScript, Python, Motoko y Rust, almacenamiento de información on-chain.\nSi ya tienes experiencia desarrollando en alguno de estos lenguajes, esta oportunidad es para ti!!\nAlgunos de los premios:\n🏆 Premios:\n- Primer premio de 1500 USD\n- Segundo premio de 1000 USD\n- Tercer premio de 500 USD\n- Premios bono a mejores integraciones, incluyendo premios a los mejores proyectos que integren ckBTC y el ckETH.\nHaz click aquí para inscribirte: <https://lu.ma/Astro>\n\n",
+      "description": "Este Hackathon es organizado por ICP Hub Latam y Zona Tres. Internet Computer es un ecosistema Blockchain que se destaca por el desarrollo de Canisters en JavaScript, Python, Motoko y Rust, almacenamiento de información on-chain.\n\nSi ya tienes experiencia desarrollando en alguno de estos lenguajes, esta oportunidad es para ti!!\n\nAlgunos de los premios:\n\n🏆 Premios:\n- Primer premio de 1500 USD\n- Segundo premio de 1000 USD\n- Tercer premio de 500 USD\n- Premios bono a mejores integraciones, incluyendo premios a los mejores proyectos que integren ckBTC y el ckETH.\n\nHaz click aquí para inscribirte: https://lu.ma/Astro",
+      "eventLink": "https://lu.ma/Astro",
+      "topic": [
+        "Blockchain",
+        "BTC",
+        "ETH"
+      ],
+      "startDate": "2023-12-04",
+      "endDate": "2023-12-08",
+      "regions": "South America",
+      "country": "Mexico",
+      "city": "Virtual",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recIaojmjyV6yecgj",
+      "eventName": "ICP Builder Mixer",
+      "marketingText": "Join us for an exhilarating event by Social3 X ICP that delves deep into the revolutionary Internet Computer Protocol (ICP).\n\nThis immersive experience is designed for enthusiasts, developers, and innovators eager to unlock the power of decentralized applications and smart contracts on the Internet Computer.\n",
+      "description": "Join us for an exhilarating event by Social3 X ICP that delves deep into the revolutionary Internet Computer Protocol (ICP).\nThis immersive experience is designed for enthusiasts, developers, and innovators eager to unlock the power of decentralized applications and smart contracts on the Internet Computer.",
+      "eventLink": "https://lu.ma/iq017rnp",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-12-04",
+      "endDate": "2023-12-04",
+      "regions": "Asia",
+      "country": "India",
+      "city": "Bengaluru",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rechV7BTXA74cJL9B",
+      "eventName": "The Green Block Talks",
+      "description": null,
+      "eventLink": "https://lu.ma/thegreenblocktalks",
+      "topic": [
+        "Sustainability"
+      ],
+      "startDate": "2023-12-04",
+      "endDate": "2023-12-04",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rechvgxUg0J4y5Zkk",
+      "eventName": "Start2Star ICP HK Hackathon",
+      "marketingText": "​Start2Star Series is ICP Hong Kong's inaugural hackathon!\n​Comprised of comprehensive open course learning, development courses, workshops, Incubated ICP project talks, ideathons & hackathon, Start2Star ICP Hackathon series is designed to propel your creative projects to new heights!\n",
+      "description": "​Start2Star Series is ICP Hong Kong's inaugural hackathon!\n\n​Comprised of comprehensive open course learning, development courses, workshops, Incubated ICP project talks, ideathons & hackathon, Start2Star ICP Hackathon series is designed to propel your creative projects to new heights!",
+      "eventLink": "https://lu.ma/1xohr6zk",
+      "topic": [
+        "Gaming",
+        "DeFi",
+        "Metaverse",
+        "NFT"
+      ],
+      "startDate": "2023-12-04",
+      "endDate": "2023-12-30",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Hackathon",
+      "mode": [
+        "IRL",
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recDrm0GgkHUCq5xu",
+      "eventName": "Namasté ICP | On-Chain Night",
+      "description": null,
+      "eventLink": "https://lu.ma/NamasteICP",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-12-06",
+      "endDate": "2023-12-06",
+      "regions": "Asia",
+      "country": "India",
+      "city": "Banglore",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rechSIuWyidKaFdln",
+      "eventName": "India Blockchain Week (Conference)",
+      "description": null,
+      "eventLink": "https://indiablockchainweek.com/",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2023-12-06",
+      "endDate": "2023-12-07",
+      "regions": "Asia",
+      "country": "India",
+      "city": "Banglore",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recwzpQ5JCxPGbJp5",
+      "eventName": "AI x Web3",
+      "marketingText": "📣 To all Hackers, Innovators and Tech Enthusiasts 📣\n\n💥 Let's finish the year with a **bang & j**oin us for our **Online-Hackathon** in December 2023, where** [AI meets Web3](https://lu.ma/a8q8pj9r?utm_source=f-groups)[.](https://lu.ma/a8q8pj9r)**\n\n\n🔥 This time, [DeArk](https://www.deark.io/) (ICP.Hub Germany) will join forces with [Internet Computer](https://internetcomputer.org/) & [Dacade.](https://dacade.org/) \n\nTopics:\n\n🔹 Build awesome blockchain-powered AI solutions on the Internet Computer Protocol (ICP) and explore new Horizons.\n\n🔹 This hackathon will reward the best projects and incubate them within Internet Computers ecosystems.\n\n🤩 [Register now](https://lu.ma/a8q8pj9r?utm_source=f-groups)[ ](https://lu.ma/a8q8pj9r)and hack away!\n\n🕔 Location: Online\n   Kicking-Off-Event: 8.12.2023\n   Submission: 15.12.2023\n\nWe looking forward to meeting you!\n\nMoritz, Emil, Victor & Fabian\n——————————————————\n👨‍🚀 More about** ICP.Hub Germany** (Twitter)** [here.](https://twitter.com/icphubgermany)**\n",
+      "description": "📣 To all Hackers, Innovators and Tech Enthusiasts 📣\n💥 Let's finish the year with a bang & join us for our Online-Hackathon in December 2023, where AI meets Web3.\n🔥 This time, DeArk (ICP.Hub Germany) will join forces with Internet Computer & Dacade. \nTopics:\n🔹 Build awesome blockchain-powered AI solutions on the Internet Computer Protocol (ICP) and explore new Horizons.\n🔹 This hackathon will reward the best projects and incubate them within Internet Computers ecosystems.\n🤩 Register now and hack away!\n🕔 Location: Online\n\n   Kicking-Off-Event: 8.12.2023\n\n   Submission: 15.12.2023\nWe looking forward to meeting you!\nMoritz, Emil, Victor & Fabian\n\n——————————————————\n\n👨‍🚀 More about ICP.Hub Germany (Twitter) here.",
+      "eventLink": "https://lu.ma/a8q8pj9r",
+      "topic": [
+        "Artificial Intelligence",
+        "Web3"
+      ],
+      "startDate": "2023-12-08",
+      "endDate": "2023-12-16",
+      "regions": "Europe",
+      "country": "Germany",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjmjQjrIveSqXV1",
+      "eventName": "WEB3PRENEUR INDIA EDITION",
+      "marketingText": "ICP is co-host at the Web3preneur India Edition event\n",
+      "description": "ICP is co-host at the Web3preneur India Edition event",
+      "eventLink": "https://www.web3preneur.events/rsvp/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-12-09",
+      "endDate": "2023-12-09",
+      "regions": "Asia",
+      "country": "India",
+      "city": "Bangalore",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recHPo86JuFVoJOVp",
+      "eventName": "Web3.Re:Invent 2023 ",
+      "description": null,
+      "eventLink": "https://lu.ma/web3reinvent?tk=sNvZxE",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-12-09",
+      "endDate": "2023-12-09",
+      "regions": "Asia",
+      "country": "India",
+      "city": "Bengaluru",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjUHvpPlJ6e8yey",
+      "eventName": "Taipei Blockchain Week",
+      "description": null,
+      "eventBanner": {
+        "id": "attO7eYEtC7zkRm8c",
+        "url": "/assets/images/events/attO7eYEtC7zkRm8c.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.taipeiblockchainweek.com/",
+      "topic": [
+        "Blockchain",
+        "BTC",
+        "NFT"
+      ],
+      "startDate": "2023-12-11",
+      "endDate": "2023-12-16",
+      "regions": "Asia",
+      "country": "Taiwan",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recbcVm5iCPfqxfRX",
+      "eventName": "NOAH Conference Zurich 2023",
+      "description": null,
+      "eventLink": "https://www.noah-conference.com/noah-zurich-conference-2023/",
+      "topic": [
+        "Sustainability",
+        "Tech"
+      ],
+      "startDate": "2023-12-13",
+      "endDate": "2023-12-14",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Zurich",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recjgqRHjhPKm0oKS",
+      "eventName": "TBW Official 'Scale' Party",
+      "marketingText": "Join us for an insightful exploration of Building the Multi-chain Metaverse and Gamefi Economy at this official side event during Taipei Blockchain Week, held at The Frank in Taipei's iconic 101 building. Distinguished thought leaders, VCs, ICP, ABGA, NFT platforms, marketplaces, and various other sectors will come together to engage in insightful discussions on the transformative power of Web 3 in challenging the dominance of Web 2 giants and shaping a new future!\n",
+      "description": "Join us for an insightful exploration of Building the Multi-chain Metaverse and Gamefi Economy at this official side event during Taipei Blockchain Week, held at The Frank in Taipei's iconic 101 building. Distinguished thought leaders, VCs, ICP, ABGA, NFT platforms, marketplaces, and various other sectors will come together to engage in insightful discussions on the transformative power of Web 3 in challenging the dominance of Web 2 giants and shaping a new future!",
+      "eventBanner": {
+        "id": "attpHAKIuoJ68GsF6",
+        "url": "/assets/images/events/attpHAKIuoJ68GsF6.avif",
+        "type": "image/avif"
+      },
+      "eventLink": "https://lu.ma/tbwscaleparty",
+      "topic": [
+        "Gaming",
+        "Metaverse",
+        "Web3"
+      ],
+      "startDate": "2023-12-15",
+      "endDate": "2023-12-15",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Taipei",
+      "type": "Official Side Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recBq3vuj1wfs9bU0",
+      "eventName": "SuperChain - AI Online Summit",
+      "description": null,
+      "eventLink": "https://hopin.com/events/superchain/registration",
+      "topic": [
+        "Artificial Intelligence",
+        "Blockchain",
+        "Tech"
+      ],
+      "startDate": "2023-12-17",
+      "endDate": "2023-12-17",
+      "regions": "Online",
+      "country": "Online",
+      "city": "Online",
+      "type": "Conference",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recvkv31PJWehMbwq",
+      "eventName": "ICP Con",
+      "marketingText": "Are you ready for the ICP CON hybrid event in Malaysia? Let's get connected and experience the synergy of innovation and community! Expect an evening filled with laughter, insightful discussions, and opportunities to build lasting relationships. Share experiences, exchange ideas, and create valuable connections that could potentially shape your future endeavors.\nDon't miss out on this chance to connect, collaborate, and have a great time! Mark your calendars and invite your friends. Together, let's make this event an unforgettable experience!\n",
+      "description": "Are you ready for the ICP CON hybrid event in Malaysia? Let's get connected and experience the synergy of innovation and community! Expect an evening filled with laughter, insightful discussions, and opportunities to build lasting relationships. Share experiences, exchange ideas, and create valuable connections that could potentially shape your future endeavors.\n\nDon't miss out on this chance to connect, collaborate, and have a great time! Mark your calendars and invite your friends. Together, let's make this event an unforgettable experience!",
+      "eventBanner": {
+        "id": "attL53etXnrebzd7p",
+        "url": "/assets/images/events/attL53etXnrebzd7p.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://lu.ma/vk0zo3c5",
+      "topic": [
+        "Blockchain",
+        "Web3",
+        "Tech"
+      ],
+      "startDate": "2024-01-01",
+      "endDate": "2024-01-20",
+      "regions": "Asia",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recrGUMct0sazBWRA",
+      "eventName": "ICP 2024 New Years Meet Up ",
+      "marketingText": "Celebrate the New Year 🎉✨ with our in-real-life Web3 ICP Meetup Party, hosted by ICP.hub HK and 852Web3.\n\nJoin us as we come together to enjoy delicious food and drinks. 🌍💻🥂 It's the perfect opportunity to meet new friends who share an interest in Web3 and discuss the recent small bull market in a relaxed and friendly atmosphere. Immerse yourself in the festive vibes and experience the joy of the holiday season combined with the exciting world of Web3 technology.🤩🎁\n\nIt's going to be a night of festive fun and great conversations Don't miss out on this fantastic event! Reserve your spot now and get ready to have a great time in a welcoming and easy-to-understand environment.\n",
+      "description": "Celebrate the New Year 🎉✨ with our in-real-life Web3 ICP Meetup Party, hosted by ICP.hub HK and 852Web3.\nJoin us as we come together to enjoy delicious food and drinks. 🌍💻🥂 It's the perfect opportunity to meet new friends who share an interest in Web3 and discuss the recent small bull market in a relaxed and friendly atmosphere. Immerse yourself in the festive vibes and experience the joy of the holiday season combined with the exciting world of Web3 technology.🤩🎁\nIt's going to be a night of festive fun and great conversations Don't miss out on this fantastic event! Reserve your spot now and get ready to have a great time in a welcoming and easy-to-understand environment.",
+      "eventBanner": {
+        "id": "attKIhZae8N2TojG6",
+        "url": "/assets/images/events/attKIhZae8N2TojG6.avif",
+        "type": "image/avif"
+      },
+      "eventLink": "https://lu.ma/icpnewyear2024",
+      "topic": [
+        "Blockchain",
+        "Web3"
+      ],
+      "startDate": "2024-01-05",
+      "endDate": "2024-01-05",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec5M2Zya6ZlBeEGB",
+      "eventName": "Buidling Real Value Fully On Chain",
+      "marketingText": "\n​During the Fireside Chat, esteemed speakers from ICP.HUB HK will share their expertise and insights on the practical applications of Web3 technologies in Hong Kong. They will discuss the transformative power of decentralized blockchain systems and other cutting-edge applications at how they are reshaping industries. \n\nModerator:\nKate Wong @STFIL\n​Panel Speakers:\nRyan He @ICP.HUB HK\nMonin @MUNG\nMiffy Chan @Ozaru\nChris Fung @Yuliverse\n​Don't miss out on this unique opportunity to learn from industry experts, celebrate the spirit of innovation, and connect with fellow enthusiasts.\n\nAbout [Dynasty. ICP.HUB HK​](https://twitter.com/dynasty_icp)\nDynasty is ICP's official Hong Kong hub, created to incubate and accelerate the next wave of locally grown web3 protocols.\n\nAbout [852Web3](https://twitter.com/852web3)\n852Web3 is taking the first step in leading the cultural and community development in Hong Kong, and also a leading Web3 marketing agency in Asia.\n\n​About [Ooosh Tech Lab​​](https://www.linkedin.com/company/ooosh-tech-lab/?originalSubdomain=hk)\nOoosh Tech Lab is an Integrated Venture Capital firm investing into the future of web and work. They build ecosystems with Co-working Space and Incubator for early-stage startups.\n",
+      "description": "​During the Fireside Chat, esteemed speakers from ICP.HUB HK will share their expertise and insights on the practical applications of Web3 technologies in Hong Kong. They will discuss the transformative power of decentralized blockchain systems and other cutting-edge applications at how they are reshaping industries. \nModerator:\n\nKate Wong @STFIL\n\n​Panel Speakers:\n\nRyan He @ICP.HUB HK\n\nMonin @MUNG\n\nMiffy Chan @Ozaru\n\nChris Fung @Yuliverse\n\n​Don't miss out on this unique opportunity to learn from industry experts, celebrate the spirit of innovation, and connect with fellow enthusiasts.\nAbout Dynasty. ICP.HUB HK​\n\nDynasty is ICP's official Hong Kong hub, created to incubate and accelerate the next wave of locally grown web3 protocols.\nAbout 852Web3\n\n852Web3 is taking the first step in leading the cultural and community development in Hong Kong, and also a leading Web3 marketing agency in Asia.\n​About Ooosh Tech Lab​​\n\nOoosh Tech Lab is an Integrated Venture Capital firm investing into the future of web and work. They build ecosystems with Co-working Space and Incubator for early-stage startups.",
+      "eventBanner": {
+        "id": "attkjqNHkyy95INkw",
+        "url": "/assets/images/events/attkjqNHkyy95INkw.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://lu.ma/icp-fireside-chat",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2024-01-05",
+      "endDate": "2024-01-05",
+      "regions": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec9c90Rz3FOJwxaK",
+      "eventName": "ICP Make Internet Great Again - AMA with ChainFeeds",
+      "description": null,
+      "eventLink": "https://twitter.com/ChainFeedsxyz ",
+      "topic": [
+        "Web3",
+        "Blockchain"
+      ],
+      "startDate": "2024-01-10",
+      "endDate": "2024-01-10",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Online",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rect6ic2Fc9teasFi",
+      "eventName": "CFC ST. MORITZ",
+      "description": null,
+      "eventLink": "https://cfc-stmoritz.com/",
+      "topic": [
+        "Blockchain",
+        "DeFi",
+        "Tech"
+      ],
+      "startDate": "2024-01-11",
+      "endDate": "2024-01-16",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "St. Moritz",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recQpXGTuF763xboD",
+      "eventName": "ICP Meetup Shenzhen",
+      "description": null,
+      "eventLink": "https://www.huodongxing.com/event/2736705709000?td=8204956644482",
+      "topic": [
+        "Blockchain",
+        "Tech"
+      ],
+      "startDate": "2024-01-11",
+      "endDate": "2024-01-11",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Shenzhen",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec3FOtEaUcLRW2fM",
+      "eventName": "BYDAO ICP Meetup",
+      "description": null,
+      "eventLink": "https://www.huodongxing.com/event/2737020466600",
+      "topic": [
+        "Blockchain",
+        "Web3"
+      ],
+      "startDate": "2024-01-13",
+      "endDate": "2024-01-13",
+      "regions": "Asia",
+      "country": "People's Republic of China",
+      "city": "Xiamen",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec7kzisOceaanPAZ",
+      "eventName": "CV VC Top 50 Report Dinner",
+      "description": null,
+      "eventLink": "https://lu.ma/g54xvb0k",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2024-01-15",
+      "endDate": "2024-01-15",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Davos",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec6Mb3Xc27kp6lhH",
+      "eventName": "ICP Zero to Dapp Hackathon",
+      "description": null,
+      "eventLink": "https://www.encode.club/zero-to-dapp-hackathon",
+      "topic": [
+        "BTC",
+        "ETH",
+        "Ordinals"
+      ],
+      "startDate": "2024-01-16",
+      "endDate": "2024-02-11",
+      "regions": "Online",
+      "country": "Online",
+      "type": "Hackathon",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "rec67BtVjZJrVB26M",
+      "eventName": "Web3 Investor Gathering Davos - 2024, Blockchain Founders",
+      "description": null,
+      "eventLink": "https://lu.ma/twm10ymv",
+      "topic": [
+        "Web3",
+        "Artificial Intelligence"
+      ],
+      "startDate": "2024-01-16",
+      "endDate": "2024-01-16",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Davos",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec5PtJxpbWsV124l",
+      "eventName": "The Hub Davos 2024 - Here to Stay: How Blockchains are Reshaping Our World",
+      "description": null,
+      "eventLink": "https://thehubdavos.com/events/wednesday-17",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2024-01-17",
+      "endDate": "2024-01-17",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Davos",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recRdPPDcKiBqUoFQ",
+      "eventName": "B2GC: Blockchain to Government Conference",
+      "description": null,
+      "eventLink": "https://b2gc.finstable.co.th/en",
+      "topic": [
+        "Blockchain",
+        "Web3"
+      ],
+      "startDate": "2024-01-17",
+      "endDate": "2024-01-19",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Phuket",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rec26zEmfz3iTJoUs",
+      "eventName": "Web3 Hub Davos 2024",
+      "description": null,
+      "eventLink": "https://web3hubdavos.com/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2024-01-18",
+      "endDate": "2024-01-18",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Davos",
+      "type": "VIP Exclusive Event",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recQjIQ2O5bOmUVrs",
+      "eventName": "Web3 Asian Pacific Night",
+      "description": null,
+      "eventLink": "https://lu.ma/sp6kybqc",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2024-01-18",
+      "endDate": "2024-01-18",
+      "regions": "Asia",
+      "country": "Thailand",
+      "city": "Phuket",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "rectiZAapBNR1u8xm",
+      "eventName": "ICP Con ",
+      "marketingText": "Are you ready for the ICP CON hybrid event in Malaysia? Let's get connected and experience the synergy of innovation and community!\n​Agenda:\n​4:30pm\nDoor Open & Networking Segment\n​6:00pm\nLive Twitter Spaces with ICP Builders\n1\\. Building on ICP\n​7:30pm\n2\\. Creator/Builder Economy in ICP\n​9:00pm\n3\\. ICP in real life \n​10:30pm\n4\\. On Ramp Solutions\n\n",
+      "description": "Are you ready for the ICP CON hybrid event in Malaysia? Let's get connected and experience the synergy of innovation and community!\n\n​Agenda:\n\n​4:30pm\n\nDoor Open & Networking Segment\n\n​6:00pm\n\nLive Twitter Spaces with ICP Builders\n\n1. Building on ICP\n\n​7:30pm\n\n2. Creator/Builder Economy in ICP\n\n​9:00pm\n\n3. ICP in real life \n\n​10:30pm\n\n4. On Ramp Solutions",
+      "eventBanner": {
+        "id": "attlpZCG9FOYgoRF2",
+        "url": "/assets/images/events/attlpZCG9FOYgoRF2.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://lu.ma/vk0zo3c5",
+      "topic": [
+        "Web3",
+        "Blockchain"
+      ],
+      "startDate": "2024-01-20",
+      "endDate": "2024-01-20",
+      "regions": "Asia",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "type": "Meetups",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "recKHUuML3qGEierD",
+      "eventName": "Swiss NFT Association - NFTs are Dead?",
+      "description": null,
+      "eventLink": "https://www.swissnftassociation.ch/event-details-registration/nfts-are-dead",
+      "topic": [
+        "NFT"
+      ],
+      "startDate": "2024-01-25",
+      "endDate": "2024-01-25",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Zurich",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "reco3WIJRphHswzjD",
+      "eventName": "ICP Developer bootcamp",
+      "marketingText": "We started with bootcamps focused on learning to develop with the Motoko language and building applications with Internet Computer. These bootcamps organized by the DEDICA foundation and supported by @icphublatam.\n",
+      "description": "We started with bootcamps focused on learning to develop with the Motoko language and building applications with Internet Computer. These bootcamps organized by the DEDICA foundation and supported by @icphublatam.",
+      "eventBanner": {
+        "id": "attpJDfC37unN5e7l",
+        "url": "/assets/images/events/attpJDfC37unN5e7l.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://lu.ma/icp-developer-enero",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2024-01-29",
+      "endDate": "2024-02-02",
+      "country": "Mexico",
+      "city": "Mexico",
+      "type": "University/Academic Event",
+      "mode": [
+        "Virtual"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "rec15M5c1jlU16mwC",
+      "eventName": "ICP.Hub - Web3 Builder Afterwork",
+      "marketingText": "​​**Join us for a first edition of web3 builder afterwork.**\n​**17:00 - **We are hosting the first ICP.Hub builder afterwork at our office in central Lisbon. \n",
+      "description": "​​Join us for a first edition of web3 builder afterwork.\n\n​17:00 - We are hosting the first ICP.Hub builder afterwork at our office in central Lisbon.",
+      "eventBanner": {
+        "id": "attolEFtLWmaRuMZU",
+        "url": "/assets/images/events/attolEFtLWmaRuMZU.jpeg",
+        "type": "image/jpeg"
+      },
+      "eventLink": "https://lu.ma/icpbuilder",
+      "topic": [
+        "Mainstream"
+      ],
+      "startDate": "2024-02-02",
+      "endDate": "2024-02-02",
+      "regions": "Europe",
+      "country": "Portugal",
+      "city": "Lisbon",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "rechTikoQeOfDD44I",
+      "eventName": "Eth cinco de mayo",
+      "marketingText": "Attention!! @icphublatam will be present as a partnership at the great ETH Cinco de Mayo event in Puebla, Mexico. +600 hackers and +20 communities will be present. ICP Hub LATAM to the moon!🚀\n",
+      "description": "Attention!! @icphublatam will be present as a partnership at the great ETH Cinco de Mayo event in Puebla, Mexico. +600 hackers and +20 communities will be present. ICP Hub LATAM to the moon!🚀",
+      "eventBanner": {
+        "id": "attSy5v8u1nyorZ9J",
+        "url": "/assets/images/events/attSy5v8u1nyorZ9J.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://ethcincodemayo.com",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2024-02-02",
+      "endDate": "2024-01-04",
+      "country": "Mexico",
+      "city": "Puebla",
+      "type": "Hackathon",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "rec0tZOp2C2NjO2pJ",
+      "eventName": "Africa Tech Summit",
+      "marketingText": "Africa Tech Summit Nairobi connects tech leaders from the African ecosystem and international players under one roof. Network with key stakeholders including tech corporates, mobile operators, fintechs, DeFi & crypto ventures, investors, leading start-ups, regulators and industry stakeholders driving business and investment forward. Following two sold out years, the sixth edition will convene in Nairobi, Kenya 2024.\n\n",
+      "description": "Africa Tech Summit Nairobi connects tech leaders from the African ecosystem and international players under one roof. Network with key stakeholders including tech corporates, mobile operators, fintechs, DeFi & crypto ventures, investors, leading start-ups, regulators and industry stakeholders driving business and investment forward. Following two sold out years, the sixth edition will convene in Nairobi, Kenya 2024.",
+      "eventBanner": {
+        "id": "attBUX881MaFbZY0R",
+        "url": "/assets/images/events/attBUX881MaFbZY0R.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.africatechsummit.com/",
+      "topic": [
+        "Mainstream"
+      ],
+      "startDate": "2024-02-14",
+      "endDate": "2024-02-15",
+      "regions": "Africa",
+      "country": "Kenya",
+      "city": "Nairobi",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recqal9Vnj9uOEWvJ",
+      "eventName": "Websummit Doha 2024",
+      "description": null,
+      "eventLink": "https://qatar.websummit.com/",
+      "topic": [
+        "Mainstream"
+      ],
+      "startDate": "2024-02-26",
+      "endDate": "2024-02-29",
+      "regions": "Middle East",
+      "country": "Qatar",
+      "city": "Doha",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recWTkAWfUzXDYLuz",
+      "eventName": "CryptoMondays ETH Denver",
+      "marketingText": "Are you looking to meet, connect with, and have fun with like-minded people who share the same passion for digital currency and blockchain technology? Then this is the right place for you!\n",
+      "description": "Are you looking to meet, connect with, and have fun with like-minded people who share the same passion for digital currency and blockchain technology? Then this is the right place for you!",
+      "eventBanner": {
+        "id": "attmuW5fhcCMPMi00",
+        "url": "/assets/images/events/attmuW5fhcCMPMi00-processed.webp",
+        "type": "image/webp"
+      },
+      "eventLink": "https://www.meetup.com/cryptomondays-denver/events/298354132/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link",
+      "topic": [
+        "ETH",
+        "Web3"
+      ],
+      "startDate": "2024-02-26",
+      "endDate": "2024-02-26",
+      "regions": "North America",
+      "country": "United States of America",
+      "city": "Denver",
+      "type": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recHHbmfHgEbay8ww",
+      "eventName": "ETH Denver",
+      "description": null,
+      "eventLink": "https://www.ethdenver.com/",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2024-02-29",
+      "endDate": "2024-03-03",
+      "regions": "North America",
+      "country": "United States of America",
+      "city": "Denver",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recuo27fqxtgmOkct",
+      "eventName": "B U I D L A S I A  2 0 2 4",
+      "description": null,
+      "eventLink": "https://www.buidl.asia/",
+      "topic": [
+        "Web3",
+        "ETH",
+        "Blockchain",
+        "Mainstream"
+      ],
+      "startDate": "2024-03-27",
+      "endDate": "2024-03-28",
+      "regions": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recX0QuJDqPUb2R6L",
+      "eventName": "ETH Seoul ",
+      "description": null,
+      "eventLink": "https://www.ethseoul.org/",
+      "topic": [
+        "ETH"
+      ],
+      "startDate": "2024-03-29",
+      "endDate": "2024-03-31",
+      "regions": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recDY7SoYAGjiwo4F",
+      "eventName": "Blockchain Life 2024",
+      "description": null,
+      "eventLink": "https://blockchain-life.com/asia/en/?utm_source=google&utm_medium=organic",
+      "topic": [
+        "Blockchain"
+      ],
+      "startDate": "2024-04-15",
+      "endDate": "2024-04-16",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "rec264koArrKxuijW",
+      "eventName": "The Global Blockchain Show: Pioneering the Future",
+      "description": null,
+      "eventLink": "www.globalblockchainshow.com ",
+      "topic": [
+        "BTC"
+      ],
+      "startDate": "2024-04-16",
+      "endDate": "2024-04-17",
+      "regions": "Middle East",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recO55Ge3yPM6tOOV",
+      "eventName": "TOKEN2049 Dubai",
+      "description": null,
+      "eventLink": "https://www.dubai.token2049.com/",
+      "topic": [
+        "Mainstream"
+      ],
+      "startDate": "2024-04-18",
+      "endDate": "2024-04-19",
+      "regions": "Asia",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    },
+    {
+      "id": "recfW1U4ktzVWaYbD",
+      "eventName": "Proof of Talk",
+      "description": null,
+      "eventLink": "https://www.proofoftalk.io/",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2024-06-10",
+      "endDate": "2024-06-11",
+      "regions": "Europe",
+      "country": "France",
+      "city": "Paris",
+      "type": "Conference",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed"
+    }
+  ],
+  "topics": [
+    "Web3",
+    "Blockchain",
+    "BTC",
+    "Gaming",
+    "ETH",
+    "Metaverse",
+    "Artificial Intelligence",
+    "NFT",
+    "Tech",
+    "Mainstream",
+    "Online Identity",
+    "DAO",
+    "Sustainability",
+    "DeFi",
+    "Ordinals"
+  ],
+  "types": [
+    "Conference",
+    "Meetups",
+    "Hackathon",
+    "Official Side Event",
+    "Office Events",
+    "University/Academic Event",
+    "VIP Exclusive Event"
+  ],
+  "regions": [
+    "Asia",
+    "North America",
+    "Online",
+    "Europe",
+    "Africa",
+    "Middle East",
+    "South America"
+  ],
+  "countries": [
+    "India",
+    "Canada",
+    "Online",
+    "Turkey",
+    "Indonesia",
+    "Thailand",
+    "Poland",
+    "South Korea",
+    "Switzerland",
+    "Malaysia",
+    "Singapore",
+    "Ghana",
+    "People's Republic of China",
+    "Kenya",
+    "Philippines",
+    "Germany",
+    "Portugal",
+    "Hong Kong",
+    "Italy",
+    "United States of America",
+    "United Arab Emirates",
+    "Mexico",
+    "Rwanda",
+    "Nigeria",
+    "South Africa",
+    "Senegal",
+    "Taiwan",
+    "Qatar",
+    "France"
+  ],
+  "cities": [
+    "Goa",
+    "Toronto",
+    "Online",
+    "Istanbul",
+    "Bali",
+    "Bangkok",
+    "Seoul",
+    "Lugano",
+    "Kuala Lumpur ",
+    "Zürich & Zug",
+    "Singapore",
+    "DFINITY HQ",
+    "Vancouver",
+    "Tamale",
+    "Shanghai",
+    "Nairobi",
+    "Manila",
+    "Quezon City",
+    "Cologne",
+    "Munich",
+    "Hong Kong",
+    "Zug",
+    "Zürich",
+    "Milan",
+    "Riyadh",
+    "Seattle",
+    "Dubai",
+    "Ras al Khaimah",
+    "Chiang Mai",
+    "Abu Dhabi",
+    "Wuhan ",
+    "QUEZON CITY",
+    "Berlin",
+    "Accra",
+    "İt is online. ",
+    "Kuala Lumpur",
+    "Phuket, Thailand",
+    "Hong Kong ",
+    "Windsor",
+    "Lisbon",
+    "Calgary",
+    "New York",
+    "Cape Town",
+    "Machakos",
+    "online",
+    "Dakar",
+    "Virtual",
+    "Bengaluru",
+    "Banglore",
+    "Bangalore",
+    "Zurich",
+    "Taipei",
+    "St. Moritz",
+    "Shenzhen",
+    "Xiamen",
+    "Davos",
+    "Phuket",
+    "Mexico",
+    "Puebla",
+    "Doha",
+    "Denver",
+    "Paris"
+  ],
+  "modes": [
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL",
+      "Virtual"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL",
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ]
+  ]
+}

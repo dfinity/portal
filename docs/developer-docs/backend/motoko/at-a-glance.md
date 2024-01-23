@@ -1,10 +1,8 @@
-# 4: Motoko quick start
+# 4: Motoko quickstart
 
 ## Overview
 
-The [1.3: Deploying your first dapp](/docs/tutorials/developer-journey/level-1/1.3-first-dapp.md) developer journey tutorial provides a fast path to deploying a simple default application without stopping to admire the scenery along the way. Individual tutorials in this section walk through specific scenarios, pointing out details about what you’re doing in each step.
-
-If the quick start and tutorials are not quite your style, this at-a-glance cheat sheet summarizes the steps to follow for quick reference.
+This at-a-glance cheat sheet summarizes the steps to follow for quick reference.
 
 ## Prerequisites
 
@@ -34,7 +32,13 @@ Start the Internet Computer for local development or check your connection to th
 
 ## Register, build, and deploy locally or on the mainnet 
 
-For the mainnet, use: `--network ic`.
+To deploy locally, use the command:
+
+```
+dfx deploy
+```
+
+For deploying to the mainnet, use: `--network ic`.
 
 ```
 dfx deploy --network <network>

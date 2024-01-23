@@ -86,7 +86,7 @@ To modify the default template, open the `src/phonebook_backend/main.mo` file in
 
 Copy and paste the following code into the `main.mo` file:
 
-```
+```motoko
 // Import standard library functions for lists
 
 import L "mo:base/List";

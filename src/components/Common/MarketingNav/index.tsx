@@ -6,6 +6,7 @@ import Search from "@site/src/theme/SearchBar";
 import { useCollapsible } from "@site/src/utils/use-collapsible";
 import clsx from "clsx";
 import React, { useEffect } from "react";
+import CloseButton from "../CloseButton";
 import LinkArrowLeft from "../Icons/LinkArrowLeft";
 import LinkArrowUpRight from "../Icons/LinkArrowUpRight";
 
@@ -123,36 +124,6 @@ const Drawer: React.FC<{
   );
 };
 
-const CloseButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
-  return (
-    <button
-      className="appearance-none border-none bg-transparent w-10 h-10 -mr-2"
-      onClick={onClick}
-    >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M2 2L18 18"
-          stroke="black"
-          strokeWidth="2"
-          strokeLinecap="square"
-        />
-        <path
-          d="M18.5 2L2.5 18"
-          stroke="black"
-          strokeWidth="2"
-          strokeLinecap="square"
-        />
-      </svg>
-    </button>
-  );
-};
-
 const AuxItems: React.FC<{ items: AuxItem[] }> = ({ items }) => {
   return (
     <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300">
@@ -190,9 +161,6 @@ const MarketingNav = () => {
   const navbarRef = React.useRef<HTMLElement>(null);
   const hideOnScroll = (siteConfig.themeConfig as any).navbar
     .hideOnScroll as boolean;
-  const footerIcons = (siteConfig.themeConfig as any).footer.links.find(
-    (section) => section.title == "SocialMedia"
-  )!.items;
 
   useEffect(() => {
     function onScroll() {
@@ -454,7 +422,7 @@ const MarketingNav = () => {
           <Link className="flex items-center" href="/" onClick={closeNav}>
             <img src="/img/logo-notext.svg" alt="" className="h-5" />
           </Link>
-          <CloseButton onClick={closeNav} />
+          <CloseButton onClick={closeNav} className="-mr-2" />
         </div>
 
         {/* top level items */}
@@ -491,7 +459,7 @@ const MarketingNav = () => {
                 <LinkArrowLeft />
                 {nav.mainItems[secondaryMobileNavOpen].name}
               </button>
-              <CloseButton onClick={closeNav} />
+              <CloseButton onClick={closeNav} className="-mr-2" />
             </div>
 
             <ul className="list-none p-0 flex flex-col gap-6 mt-8 pb-10 mb-0">

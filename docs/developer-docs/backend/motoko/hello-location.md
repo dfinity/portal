@@ -49,7 +49,7 @@ Modify the default source code to replace the `greet` function with a `location`
 
 For example, you can replace the file's existing code with the following:
 
-```
+```motoko
 actor {
 public func location(city : Text) : async Text {
     return "Hello, " # city # "!";
@@ -150,7 +150,7 @@ Open the `dfx.json` configuration file in a text editor and change the default `
 
 For this step, you should modify both the canister name and the path to the main program for the canister to use `favorite_cities`. Your `dfx.json` file should look like this:
 
-```
+```json
 {
 "canisters": {
     "favorite_cities": {
@@ -179,7 +179,7 @@ cp -r src/location_hello_backend src/favorite_cities
 
 Open the `src/favorite_cities/main.mo` file in a text editor. Copy and paste the following code sample to replace the `location` function with two new functions:
 
-```
+```motoko
 actor {
 
 public func location(cities : [Text]) : async Text {
@@ -201,7 +201,7 @@ You might notice that `Text` in this code example is enclosed by square (`[ ]`) 
 
 The code sample also uses the basic format of an `apply` operation for the array, which can be abstracted as:
 
-```
+```motoko
 public func apply<A, B>(fs : [A -> B], xs : [A]) : [B] {
     var ys : [B] = [];
     for (f in fs.vals()) {
