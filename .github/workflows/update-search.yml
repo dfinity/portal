@@ -12,7 +12,7 @@ jobs:
       - run: git submodule update --init
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - name: Dump Identity
         run: |
           mkdir -p ~/.config/dfx/identity/default
