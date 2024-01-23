@@ -1866,21 +1866,6 @@
     "logo": "/img/showcase/usergeek_logo.webp"
   },
   {
-    "id": "glue",
-    "name": "glue",
-    "oneLiner": "collab.land on the Internet Computer",
-    "website": "https://r53d5-wyaaa-aaaae-qacxa-cai.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "NFT holder verification on Ethereum is commonplace, but was missing on the Internet Computer until now — glue is an easy-to-use solution for community leaders and members to perform NFT holder verification.",
-    "usesInternetIdentity": false,
-    "stats": "3,000+ users",
-    "logo": "/img/showcase/glue_logo.png",
-    "github": "https://github.com/glue-org",
-    "twitter": "https://twitter.com/glue_org"
-  },
-  {
     "id": "configeek",
     "name": "Configeek",
     "oneLiner": "Remote configuration tool",
@@ -3366,7 +3351,7 @@
   },
   {
     "name": "glue",
-    "description": "A easy to use solution for community leaders and members to perform holder verification of NFTs and tokens on discord.",
+    "description": "An easy-to-use solution for community leaders and members to perform holder verification of NFTs and tokens on Discord.",
     "website": "https://github.com/glue-org",
     "logo": "/img/showcase/glue_logo.webp",
     "screenshots": [
