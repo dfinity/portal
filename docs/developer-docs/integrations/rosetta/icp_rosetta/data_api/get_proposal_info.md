@@ -5,7 +5,7 @@
 This endpoint allows you to fetch more detailed information about a specific proposal from the NNS.  It is the implementation of the [/call endpoint](https://www.rosetta-api.org/docs/BlockApi.html#call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta it is used to fetch various custom information that is not covered by the Rosetta API standard.
 For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/network). 
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/network.md). 
 Pedning proposals are all proposals which not yet have come to a conclusion and may be voted on. It is a direct call to the `get_proposal_info` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_proposal_info) of the Governance canister.
 
 :::info

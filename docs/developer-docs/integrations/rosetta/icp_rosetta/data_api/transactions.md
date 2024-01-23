@@ -8,7 +8,7 @@ while the hash of the transaction is not.
 
 For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/network). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/network.md). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
 ```bash
 "block_identifier": {
         "index": 9890652,
