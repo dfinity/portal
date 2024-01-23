@@ -116,6 +116,26 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Hackathon prep course",
+      link: {
+        type: "doc",
+        id: "tutorials/hackathon-prep-course/index",
+      },
+      items: [
+        "tutorials/hackathon-prep-course/what-is-icp",
+        "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
+        "tutorials/hackathon-prep-course/exploring-the-backend",
+        "tutorials/hackathon-prep-course/exploring-the-frontend",
+        "tutorials/hackathon-prep-course/integrating-with-tokens",
+        "tutorials/hackathon-prep-course/authentication",
+        "tutorials/hackathon-prep-course/obtaining-cycles",
+        "tutorials/hackathon-prep-course/managing-canisters",
+        "tutorials/hackathon-prep-course/sample-starter-projects",
+        "tutorials/hackathon-prep-course/resources",
+      ],
+    },
+    {
+      type: "category",
       label: "Sample projects",
       link: {
         type: "doc",
@@ -185,6 +205,7 @@ const sidebars = {
             "concepts/what-is-ic",
             "concepts/canisters-code",
             "developer-docs/gas-cost",
+            "developer-docs/cost-estimations-and-examples",
             "concepts/governance",
             "concepts/nodes-subnets",
             "concepts/tokens-cycles",
@@ -391,10 +412,7 @@ const sidebars = {
       items: [
         "developer-docs/frontend/custom-frontend",
         "developer-docs/frontend/add-stylesheet",
-        "developer-docs/frontend/javascript-frontend",
-        "developer-docs/frontend/react-frontend",
-        "developer-docs/frontend/svelte-frontend",
-        "developer-docs/frontend/vue-frontend",
+        "developer-docs/frontend/boilerplate-frontend",
         "developer-docs/frontend/existing-frontend",
       ],
     },

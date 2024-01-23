@@ -1,7 +1,6 @@
 # 2: Project organization
 
 ## Overview
-If you started your tour of the IC SDK with the [0.6: Introduction to dfx](/docs/tutorials/developer-journey/level-0/06-intro-dfx.md) developer journey tutorial, you have already seen the basic work flow for creating dapps that run on the Internet Computer. Now, let’s take a closer look at that work flow by exploring the default files and folders that are added to your workspace when you create a new project.
 
 As a preview, the following diagram illustrates the development work flow when running the Internet Computer locally on you computer.
 
@@ -68,7 +67,7 @@ To review the default configuration file for your project, open the `dfx.json` c
 
 The contents of the file should resemble the following:
 
-```
+```json
 {
   "canisters": {
     "explore_hello_backend": {
@@ -119,7 +118,7 @@ Let’s take a look at the sample program in the default `main.mo` template file
 
 To review the default sample program for your project, open the `src/explore_hello_backend/main.mo` file in a text editor and review the code in the template:
 
-```
+```motoko
 actor {
   public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";

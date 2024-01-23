@@ -24,7 +24,9 @@
     "oneLiner": "The fastest Ordinals marketplace",
     "website": "https://bioniq.io/",
     "tags": [
-      "Bitcoin"
+      "Bitcoin",
+      "Enterprise",
+      "NFT"
     ],
     "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
     "display": "Large",
@@ -92,7 +94,7 @@
     "id": "nfid",
     "name": "NFID",
     "oneLiner": "Your digital identity for the modern world.",
-    "website": "https://t.co/FDpvRjszU3/",
+    "website": "https://nfid.one/",
     "tags": [
       "Wallet",
       "Ethereum"
@@ -765,7 +767,8 @@
     "stats": "Powering 15+ banks",
     "tags": [
       "Wallet",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "usesInternetIdentity": false,
     "github": "",
@@ -1671,7 +1674,8 @@
     "name": "Aviate Labs",
     "description": "Stop worrying about system failures and slow performance. Our data center standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "website": "https://www.aviatelabs.co/",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
@@ -2839,7 +2843,8 @@
     "oneLiner": "An infrastructure that brings Web 2.0 user experience to Web 3.0",
     "tags": [
       "Tools / Infrastructure",
-      "SocialFi"
+      "SocialFi",
+      "Enterprise"
     ],
     "logo": "/img/showcase/faceless_logo.png",
     "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
@@ -2883,10 +2888,9 @@
     "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
     "stats": "Private alpha testnet has been launched; the network and user interface are ready for operation.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure", "Enterprise"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/SamaNetwork",
     "twitter": "https://twitter.com/sama_network",
     "youtube": "https://www.youtube.com/@sama_network",
     "submittableId": "40741075"
@@ -2974,7 +2978,8 @@
       "Tools / Infrastructure",
       "DeFi",
       "DAO",
-      "SocialFi"
+      "SocialFi",
+      "Enterprise"
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/dCentra-io/dflow-icp",
@@ -3165,6 +3170,27 @@
     "submittableId": "41506799"
   },
   {
+  "name": "BitBasel Art Marketplace",
+  "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol",
+  "website": "https://bitbasel.com/",
+  "logo": "/img/showcase/bitbasel-art-marketplace_logo.webp",
+  "screenshots": [
+    "/img/showcase/bitbasel-art-marketplace_screenshot.webp"
+  ],
+  "display": "Normal",
+  "id": "bitbasel-art-marketplace",
+  "oneLiner": "A curated marketplace for buying and selling digital artwork.",
+  "stats": "100+ artworks",
+  "tags": [
+    "Bitcoin",
+    "NFT"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/BitBasel",
+  "twitter": "https://twitter.com/bitbaselart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+  "submittableId": "41349769"
+ }, 
+ {
     "name": "Hobbi",
     "description": "With Hobbi, you can create a profile and record all the multimedia content you consume. Whether it's a movie, a book, or even a video game, register and share your profile with whomever you want.",
     "website": "https://hobbi.me",
@@ -3267,6 +3293,23 @@
     "github": "https://github.com/id-daniel-mccoy/asset-app"
   },
   {
+    "id": "Outank NFT Rarity",
+    "name": "Outrank",
+    "oneLiner": "Working group with a vision to develop correct rarity metrics for all types of NFTs",
+    "website": "https://www.outrank.io",
+    "tags": [
+      "NFT", 
+      "Tools / Infrastructure"
+    ],
+    "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity",
+    "logo": "/img/showcase/Outrank_logo.jpg",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/OutRankNFT",
+    "youtube": "https://youtu.be/N8ap_FPNQv8",
+    "twitter": "https://twitter.com/OutRankNFT",
+    "submittableId": "35224577"
+  },
+  {
     "name": "user controlled mind and body canister",
     "id": "ic-mind-body-canister",
     "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
@@ -3290,11 +3333,76 @@
     "tags": [
       "Tools / Infrastructure"
     ],    
-    "logo": "",
+    "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
     "usesInternetIdentity": true,
     "github": "https://github.com/icppWorld/icgpt",
     "youtube": "https://youtu.be/2DhTpYrs-f0",
     "twitter": "https://twitter.com/icpp_pro",
     "submittableId": "43877997"
  }
+    "name": "Ping",
+    "description": "Ping is a notification service that boosts ecosystem engagement by creating a direct communication channel between dapp developers and their respective users.",
+    "website": "https://h7jna-pqaaa-aaaak-afgiq-cai.icp0.io/",
+    "logo": "/img/showcase/ping_logo.webp",
+    "display": "Normal",
+    "id": "ping",
+    "oneLiner": "Stay updated on ICP dapps with Ping!",
+    "stats": "5 and counting!",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/QuezarHQ/pingICP",
+    "twitter": "https://twitter.com/quezarHQ",
+    "submittableId": "41431540"
+  },
+  {
+  "name": "Alphaday",
+  "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services and much more into one customizable UI.",
+  "website": "https://app.alphaday.com/b/dfinity/",
+  "logo": "/img/showcase/Alphaday_logo.png",
+  "screenshots": [
+    "/img/showcase/Alphaday_screenshot.png"
+  ],
+  "video": "/img/showcase/Alphaday_video.mp4",
+  "display": "Normal",
+  "id": "alphaday",
+  "oneLiner": "The one tool you need to stay up to date and with crypto.",
+  "stats": "15,000+ Active Users",
+  "tags": [
+    "SocialFi",
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/AlphadayHQ ",
+  "twitter": "https://twitter.com/AlphadayHQ ",
+  "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
+  "submittableId": "34117398",
+  "videoContentType": "video/mp4"
+  },
+  {
+    "name": "glue",
+    "description": "A easy to use solution for community leaders and members to perform holder verification of NFTs and tokens on discord.",
+    "website": "https://github.com/glue-org",
+    "logo": "/img/showcase/glue_logo.webp",
+    "screenshots": [
+      "/img/showcase/glue_screenshot.webp"
+    ],
+    "video": "/img/showcase/glue_video.mp4",
+    "display": "Normal",
+    "id": "glue",
+    "oneLiner": "Holder verification for tokens and NFTs for discord.",
+    "stats": "9000+ users",
+    "tags": [
+      "NFT",
+      "Tools / Infrastructure",
+      "DAO"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/glue-org",
+    "twitter": "https://twitter.com/glue_org",
+    "youtube": "",
+    "submittableId": "28043953",
+    "videoContentType": "video/mp4"
+  }
 ]

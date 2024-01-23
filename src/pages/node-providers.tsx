@@ -282,15 +282,14 @@ function NodeProvidersPage() {
               className="tw-lead-sm mb-6 md:mb-10"
               variants={transitions.item}
             >
-              The growing ICP community of node providers includes independent
-              entities across the globe, including...
+              The ICP community of node providers consists of independent
+              entities evenly distributed across the globe, including...
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="https://forum.dfinity.org/t/new-node-provider-proposals/16643"
-                className="button-primary"
+                href="https://forum.dfinity.org/t/ic-topology-node-diversification-part-ii/23553"
               >
-                Join the NP community
+                Read about node diversification
               </Link>
             </motion.p>
           </AnimateSpawn>

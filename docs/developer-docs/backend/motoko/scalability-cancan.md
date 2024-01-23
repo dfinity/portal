@@ -12,37 +12,13 @@ The [CanCan sample application](https://github.com/dfinity/cancan) is a simplifi
 
 -   How to build a frontend that implements more sophisticated user interface features for desktop or mobile apps.
 
-## Splitting uploaded content into multiple canisters
+This dapp is designed with the following architecture and design choices:
 
-Because canisters are compiled WebAssembly modules, they have certain known limitations. For example, currently WebAssembly modules have a maximum of 4GB for memory and an upper limit on the number of object calls allowed.
+- Splitting uploaded content into multiple canisters: Canisters on ICP are compiled into WebAssembly modules which have certain known limitations. For example, currently WebAssembly modules have a maximum of 4GB for memory and an upper limit on the number of object calls allowed. For a video-sharing sample applications like CanCan, these limitations mean that multiple canisters are required and that data must be broken into smaller chunks for storage and retrieval.
 
-For a video-sharing sample applications like CanCan, these limitations mean that multiple canisters are required and that data must be broken into smaller chunks for storage and retrieval.
+- Simplifying scalability: Because the Internet Computer protocol relies on replicated state across nodes in a subnet, it provides certain guarantees about fault tolerance and failover natively. The BigMap library provides a simple, plug-in library for building scalable applications using key-value storage on the Internet Computer. By using the BigMap library as a backend service, the CanCan sample application can dynamically chunk, serialize, and distribute data to multiple canisters.
 
-### Implementing a distributed hash table
-
-The initial attempt to build a scalable video-sharing service for the Internet Computer used a distributed hash table (DHT) as a backend service with simple get and put functions that distributed data—chunks of the video to be uploaded or streamed—into a predefined set of canisters. In the early phases of the project, this approach was sufficient for a proof-of-concept and verifying that the video data could be properly transcoded for storage and retrieval.
-
-However, the scalability of the application was limited because the distributed hash table relied on a specific number of canisters that it could populate with data for storage and retrieve data from for viewing. In addition, the original implementation of the distributed hash table backend service included code to accommodate common network connectivity issues that could cause nodes to be unavailable or lose data.
-
-## Simplifying scalability
-
-Because the Internet Computer protocol relies on replicated state across nodes in a subnet, it provides certain guarantees about fault tolerance and failover natively that are not generally available to applications running on other platforms or protocols.
-
-With the realization that the Internet Computer could ensure that canisters were available to receive and respond to requests,the original distributed hash table backend service was replaced with a simpler but more scalable backend service called BigMap.
-
-BigMap provides a simple, plug-in library for building scalable applications using key-value storage on the Internet Computer. By using the BigMap library as a backend service, the CanCan sample application can dynamically chunk, serialize, and distribute data to multiple canisters.
-
-The library offers building blocks for application-specific, in-memory data abstractions that scale using any number of canisters. Each canister still has limited capacity, but the application instantiates the canisters it needs and keeps track of the fragments that make up the full video content for each user’s videos in an index file called the `manifest`.
-
-The code required for the `BigMap` service is much simpler than a traditional distributed hash table because the Internet Computer provides scalability, replication, failover, and fault tolerance.
-
-## Demonstrating interoperability
-
-The BigMap service included in the CanCan sample application repository is written in the Rust programming language. However, the CanCan sample application also demonstrates interoperability between canisters written in different languages.
-
-In this case, the `BigMap` functionality is implemented using the Rust programming language and other services—such as encoding and decoding of video content and the management of user principals for authentication—are implemented using Motoko.
-
-By deploying different parts of the sample application as canisters, the interaction between them provides a seamless user experience.
+- Demonstrating interoperability: The BigMap service included in the CanCan sample application repository is written in the Rust programming language. However, the CanCan sample application also demonstrates interoperability between canisters written in different languages. By deploying different parts of the sample application as canisters, the interaction between them provides a seamless user experience.
 
 Although the `BigMap` service you see in the CanCan repository is written in Rust, the service was actually implemented in both Rust and Motoko programming languages to demonstrate the following:
 
@@ -52,17 +28,13 @@ Although the `BigMap` service you see in the CanCan repository is written in Rus
 
 -   Both language implementation work seamlessly because the Candid language provides a common language for describing the BigMap API, independent of JavaScript, Rust, or Motoko.
 
-## Authentication model
+- Authentication model: This CanCan sample application uses the public-private key pair, browser-based local storage, and the `Principal` data type to authenticate users.
 
-Much like the LinkedUp sample application, the CanCan sample application uses the public-private key pair, browser-based local storage, and the `Principal` data type to authenticate users.
+- Implementing frontend features: The CanCan sample application uses the React library in combination with TypeScript to implement frontend user interface.
 
-## Implementing frontend features
+## Data model overview
 
-The CanCan sample application uses the React library in combination with TypeScript to implement frontend user interface.
-
-### Data model overview
-
-The application stores information about users and information about videos. To support most browsers, the videos are serialized into byte arrays with video data stored in 500kb segments of bytes that are referred to as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) objects. When a video is requested, the manifest loads the list of chunks required to play the video and concatenates the chunks before displaying the video in a standard `<video>` element.
+The application stores information about users and information about videos. To support most browsers, the videos are serialized into byte arrays with video data stored in 500KB segments of bytes that are referred to as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) objects. When a video is requested, the manifest loads the list of chunks required to play the video and concatenates the chunks before displaying the video in a standard `<video>` element.
 
 ### User profiles
 
@@ -100,7 +72,7 @@ export interface Video {
 }
 ```
 
-### Prerequisites
+## Prerequisites
 
 Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
 
@@ -142,7 +114,7 @@ npm install
 
 Replace the contents of the `./bootstrap.sh` script with the following:
 
-```
+```bash
 #!/bin/bash
 
 set -e

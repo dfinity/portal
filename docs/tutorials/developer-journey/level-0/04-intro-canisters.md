@@ -1,6 +1,6 @@
 # 0.4 Introduction to canisters
 
-[![ICP Developer Journey 0.4 | Introduction to Canisters](https://img.youtube.com/vi/mwbRRk9T5Nw/0.jpg)](https://www.youtube.com/watch?v=mwbRRk9T5Nw)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mwbRRk9T5Nw?si=NtENTs0fdoAZ_abL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 

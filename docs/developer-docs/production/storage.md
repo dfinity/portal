@@ -18,7 +18,7 @@ Stable memory is a feature unique to the Internet Computer Protocol that provide
 
 To use stable memory, you must anticipate which portions of the canister's data that you want to persist across upgrades by indicating within the canister code. More information about this can be found in the section below, [Storage handling in different languages](#storage-handling-in-different-languages).
 
-By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 96GiB if the subnet the canister is deployed on can accommodate it. If a canister uses more than 96GiB of stable memory, the canister will trap and become unrecoverable. 
+By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 400GiB if the subnet the canister is deployed on can accommodate it. If a canister uses more than 400GiB of stable memory, the canister will trap and become unrecoverable. 
 
 ## Storage cost
 

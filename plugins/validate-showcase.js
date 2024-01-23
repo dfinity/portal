@@ -22,6 +22,7 @@ const tags = [
   "Metaverse",
   "Games",
   "DAO",
+  "Enterprise"
 ];
 
 function isString(value) {
