@@ -51,19 +51,13 @@ const subnavItems = [
     type: "doc",
     position: "left",
     docId: "home",
-    label: "Docs",
+    label: "Home",
   },
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "tutorials",
-    label: "Tutorials",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "guides",
-    label: "Guides",
+    sidebarId: "build",
+    label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
   {
