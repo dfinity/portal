@@ -3350,28 +3350,52 @@
   "videoContentType": "video/mp4"
   },
   {
-    "name": "glue",
-    "description": "An easy-to-use solution for community leaders and members to perform holder verification of NFTs and tokens on Discord.",
-    "website": "https://github.com/glue-org",
-    "logo": "/img/showcase/glue_logo.webp",
-    "screenshots": [
-      "/img/showcase/glue_screenshot.webp"
-    ],
-    "video": "/img/showcase/glue_video.mp4",
-    "display": "Normal",
-    "id": "glue",
-    "oneLiner": "Holder verification for tokens and NFTs for discord.",
-    "stats": "9000+ users",
-    "tags": [
-      "NFT",
-      "Tools / Infrastructure",
-      "DAO"
-    ],
-    "usesInternetIdentity": false,
-    "github": "https://github.com/glue-org",
-    "twitter": "https://twitter.com/glue_org",
-    "youtube": "",
-    "submittableId": "28043953",
-    "videoContentType": "video/mp4"
+  "name": "Datanome",
+  "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
+  "website": "https://app.datanome.com",
+  "logo": "/img/showcase/datanome-logo.png",
+  "screenshots": [
+    "/img/showcase/datanome-screenshot.png"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "datanome",
+  "oneLiner": "Decentralized data marketplace",
+  "stats": "Alpha phase",
+  "tags": [
+    "NFT",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/datanomeproject",
+  "twitter": "https://twitter.com/datanomeproject",
+  "youtube": "",
+  "submittableId": "39687036",
+  "videoContentType": "video/mp4"
+  },
+  {
+  "name": "glue",
+  "description": "An easy-to-use solution for community leaders and members to perform holder verification of NFTs and tokens on Discord.",
+  "website": "https://github.com/glue-org",
+  "logo": "/img/showcase/glue_logo.webp",
+  "screenshots": [
+    "/img/showcase/glue_screenshot.webp"
+  ],
+  "video": "/img/showcase/glue_video.mp4",
+  "display": "Normal",
+  "id": "glue",
+  "oneLiner": "Holder verification for tokens and NFTs for discord.",
+  "stats": "9000+ users",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DAO"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/glue-org",
+  "twitter": "https://twitter.com/glue_org",
+  "youtube": "",
+  "submittableId": "28043953",
+  "videoContentType": "video/mp4"
   }
 ]
