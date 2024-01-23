@@ -227,6 +227,12 @@ const airtablePlugin = async function () {
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
       createData("airtable-events.json", JSON.stringify(content, null, 2));
+
+      // save mock file
+      fs.writeFileSync(
+        path.join(__dirname, "data", "airtable-mock.json"),
+        JSON.stringify(content, null, 2)
+      );
     },
 
     async postBuild({ outDir }) {
