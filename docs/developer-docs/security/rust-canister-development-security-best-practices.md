@@ -115,7 +115,7 @@ In authenticated calls, make sure the caller is not anonymous and return an erro
 
 ## Asset certification
 
-### Use HTTP asset certification and avoid serving your dApp through `raw.icp0.io`
+### Use HTTP asset certification and avoid serving your dapp through `raw.icp0.io`
 
 #### Security concern
 
@@ -786,4 +786,4 @@ If an update or query call is expensive e.g. in terms of memory used or cycles c
 
 #### Recommendation
 
-If the dApp offers such operations, consider bot prevention techniques such as adding Captchas or proof of work. There is e.g. a captcha implementation in [Internet Identity](https://github.com/dfinity/internet-identity).
+If the dapp offers such operations, consider bot prevention techniques such as adding Captchas or proof of work. There is e.g. a captcha implementation in [Internet Identity](https://github.com/dfinity/internet-identity).
