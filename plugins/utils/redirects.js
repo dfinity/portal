@@ -37,8 +37,8 @@ const redirects = `
   /docs/samples/codelabs/simple-nft /samples
   /docs/samples/codelabs/static-website /samples
   /docs/samples/* /samples
-  /docs/security-best-practices/introduction /docs/current/developer-docs/security/
-  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
+  /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
@@ -90,7 +90,7 @@ const redirects = `
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/concepts-intro /docs/current/concepts/what-is-ic
   /docs/developers-guide/customize-projects /docs/current/developer-docs/setup/manage-projects
-  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles/
+  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/setup/install/
@@ -105,7 +105,6 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
-  /docs/current/samples/overview/host-a-website /docs/current/samples/host-a-website
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
@@ -133,7 +132,7 @@ const redirects = `
   /base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
-  /docs/current/references/security/* /docs/current/developer-docs/security/:splat
+  /docs/current/references/security/* /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
@@ -144,7 +143,7 @@ const redirects = `
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/rosetta-api/* /docs/current/developer-docs/integrations/rosetta/:splat
   /docs/rust-guide/* /docs/current/developer-docs/backend/rust/:splat
-  /docs/security-best-practices/* /docs/current/developer-docs/security/:splat
+  /docs/security-best-practices/* /docs/current/developer-docs/security/general-security-best-practices
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
@@ -181,7 +180,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
-  /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/setup/cycles/cycles-faucet
+  /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/concepts/index /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
@@ -190,7 +189,7 @@ const redirects = `
   /docs/current/tutorials/ /docs/current/developer-docs/
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
-  /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install
+  /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
