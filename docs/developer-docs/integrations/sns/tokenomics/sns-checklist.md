@@ -42,7 +42,7 @@ The analyzer uses the [SNS configuration file](https://github.com/dfinity/sns-te
 The technical architecture should give an overview of the dapp and illustrate how the dapp works. Some dapps rely on off-chain components, either developed and maintained by the team, or 3rd party components. The use of components that will not be controlled by the DAO should also be included to show the dependencies.
 
 ### 1.2.2. Whitepaper
-The whitepaper should provide information about the dapp, the architecture, the goal with launching the SNS, tokenomics and other information relevant to the community to vote on the decentralization proposal. It should be clear what the dapp will gain from the SNS launch. For inspiration,  see OpenChat’s whitepaper it [here](https://oc.app/whitepaper), and Hot or Not’s whitepaper [here](https://hotornot.notion.site/hotornot/Hot-or-Not-Whitepaper-c539179e51f44867979f4372e4635f59).
+The whitepaper should provide information about the dapp, the architecture, the goal with launching the SNS, tokenomics and other information relevant to the community to vote on the decentralization proposal. It should be clear what the dapp will gain from the SNS launch. For inspiration,  see [OpenChat’s whitepaper](https://oc.app/whitepaper), and [Hot or Not’s whitepaper](https://hotornot.notion.site/hotornot/Hot-or-Not-Whitepaper-c539179e51f44867979f4372e4635f59).
 
 ### 1.2.3. Project roadmap
 The roadmap should show what the plan is with the dapp, also past the SNS launch. The roadmap should show the vision the team/developers behind the dapp have for the dapp, and what they would like to work on, also after the SNS launch. See [OpenChat’s roadmap](https://oc.app/roadmap) for inspiration.
@@ -56,8 +56,8 @@ If the dapp does have dependencies of some kind that cannot be managed by the DA
 The SNS is initialized using an NNS proposal that defines the initial parameters, thus the initial configuration is approved by the NNS DAO.
 The proposal can be created from a .yaml configuration file and defines things like the token name, token supply, token distribution, transaction fees, dissolve delays and more. 
 
-The initial parameters are explained more [here](./preparation.md).
-You can find a template with all parameters that need to be defined [here](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml) and an example of a filled in file [here](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).
+The initial parameters are explained more in the [preparation page](./preparation.md).
+You can find a [template with all parameters](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml) and [an example that is filled out](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).
 Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
 
 Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]`. 
@@ -79,7 +79,7 @@ The documentation page [SNS predeployment considerations](./predeployment-consid
 # 2. Technical prep & testing
 
 ## 2.1. Security review
-In general, it is considered best practice to conduct a security review including the fixing of risky findings. Guidance on security best practices is [here](../../../security/index.md). It should be explained to which extent security reviews are relevant for the dapp and what kind of security reviews have been conducted for the dapp if applicable.
+In general, it is considered best practice to conduct a security review including the fixing of risky findings. Guidance on [security best practices](/docs/current/developer-docs/security/general-security-best-practices). It should be explained to which extent security reviews are relevant for the dapp and what kind of security reviews have been conducted for the dapp if applicable.
 
 ## 2.2. Open sourcing
 If the dapp is not already open sourced, it should be open sourced before the SNS launch - actually before the decentralization proposals are created. A dapp is not truly decentralized if the source code is not shared with the community. Open sourcing the code gives the community an opportunity to evaluate the dapp before the SNS launch, and after the launch, where upgrades must be voted on. It’s hard to make a meaningful voting decision without having full visibility into the code, and without the visibility it will also not be possible to verify the code and assess the impact it will have, before voting.
@@ -87,7 +87,7 @@ If the dapp is not already open sourced, it should be open sourced before the SN
 ## 2.3. Create reproducible build
 It should be possible to create a reproducible build from the open sourced code, for the same reasons as open sourcing the code. Providing the build and deploy instructions enables the community to evaluate the dapp and the code before voting on the SNS launch proposal, and after the decentralization, where upgrades must be voted on, the upgrades can be verified and tested by the community before voting.
 
-Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The documentation [here](../../../backend/reproducible-builds.md) provides more information how reproducible builds can be created using Docker.
+Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The [documentation](../../../backend/reproducible-builds.md) provides more information how reproducible builds can be created using Docker.
 
 ## 2.4. Test dapp operations under SNS on mainnet with SNS testflight
 Before requesting an SNS launch in production, developers are strongly encouraged to test their deployed dapp’s operation (e.g., upgrading the dapp’s canisters) via SNS proposals, as if the live version of the dapp was managed by SNS.
@@ -127,7 +127,7 @@ The idea is to provide the community with information so they can verify what th
 This [forum post](https://forum.dfinity.org/t/dfinitys-voting-on-upcoming-sns-launch-proposals/19543) provides some initial thoughts from the perspective of DFINITY when voting. 
 
 ## 4. SNS launch workflow
-Please find all stages included in an SNS launch [here](../launching/launch-summary-1proposal.md) and a more detailed descriptions of the actions needed to enable these stages [here](../launching/launch-steps-1proposal.md).
+Please find all stages included in an SNS launch [here](../launching/launch-summary-1proposal.md) and a more detailed descriptions of the [actions needed to enable these stages](../launching/launch-steps-1proposal.md).
 
 ## 4.1. Dapp control handover
 Together with the submission of the NNS proposal to launch an SNS, the dapp developers hand over their dapp to the NNS by setting the NNS root canister as an additional controller of the dapp. 

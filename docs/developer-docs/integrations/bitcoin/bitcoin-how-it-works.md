@@ -118,6 +118,6 @@ Note that the `bitcoin_get_utxos` call is charged through a baseline fee that am
 
 To start building your own apps with Bitcoin see the following tutorials:
 
-- [Deploying your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md).
+- [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
 
 - [Local development](./local-development.md).

@@ -84,5 +84,3 @@ The returned response (and the response provided to the `transform` function, if
     * Sample code for making [HTTP GET requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_get) 
     * Sample code for making [HTTP POST requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post) 
     * Sample code for making [HTTP POST requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_post)
-
-This guide shoes how to use the [HTTPS outcalls](../index.md) feature of ICP. This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.

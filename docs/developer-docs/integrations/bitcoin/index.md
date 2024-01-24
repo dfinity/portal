@@ -23,4 +23,4 @@ The ICP envisions that many people will prefer to use ckBTC instead of our nativ
 - If you want to go even deeper, have a look at the [chain-key ECDSA documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa).
 - [Bitcoin integration Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration).
 - If you are interested in experimenting with Bitcoin integration locally, see the [local development guide](local-development.md).
-- In the [examples repo](https://github.com/dfinity/examples) you can find sample code in [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) from which you can start to build following the [sample code walk-through](../../../samples/deploying-your-first-bitcoin-dapp.md).
+- In the [examples repo](https://github.com/dfinity/examples) you can find sample code in [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
