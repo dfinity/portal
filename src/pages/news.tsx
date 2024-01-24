@@ -1,6 +1,6 @@
 import Link from "@docusaurus/Link";
 import newsData from "@site/.docusaurus/contentful/default/press.json";
-import { mostRecentVideo } from "@site/.docusaurus/youtube/default/youtube.json";
+import youtubeData from "@site/.docusaurus/youtube/default/youtube.json";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
@@ -30,7 +30,7 @@ import DocumentIcon from "@site/static/img/svgIcons/document.svg";
 import MailIcon from "@site/static/img/svgIcons/mail.svg";
 
 const MotionLink = motion(Link);
-
+const { mostRecentVideo } = youtubeData;
 const newsItems = newsData as Press[];
 
 const newsTypes = Array.from(
