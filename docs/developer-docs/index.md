@@ -1,20 +1,20 @@
 # Introduction 
 
-The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **[canisters](/docs/current/how-it-works/canister-lifecycle)**, an evolution of **smart contracts**.
+The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **[canisters](/how-it-works/canister-lifecycle)**, an evolution of **smart contracts**.
 
 As a dapp developer, you might find it useful to think of the Internet Computer as providing the following key features:
 
--   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the [architecture of ICP](/docs/current/how-it-works/architecture-of-the-internet-computer). 
+-   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the [architecture of ICP](/how-it-works/architecture-of-the-internet-computer). 
 
--   A secure cryptographic protocol (**[Internet Computer protocol](/docs/current//how-it-works/core-ic-protocol-overview)**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts. 
+-   A secure cryptographic protocol (**[Internet Computer protocol](/how-it-works/core-ic-protocol-overview)**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts. 
 
--   A **network of independent blockchains**, known as [subnets](/docs/current/concepts/nodes-subnets), connected using [chain-key cryptography](/docs/current/how-it-works) that can [scale out](/docs/current/how-it-works/scalability) its capacity as required.
+-   A **network of independent blockchains**, known as [subnets](/docs/current/concepts/nodes-subnets), connected using [chain-key cryptography](/how-it-works) that can [scale out](/how-it-works/scalability) its capacity as required.
 
 #### Getting started
 - [What is the Internet Computer?](/docs/current/concepts/what-is-ic)
 - [Installing the IC SDK](/docs/current/developer-docs/setup/install/)
 - [Creating a developer account](/docs/current/developer-docs/setup/accounts)
-- [Acquiring and managing cycles](/docs/current/developer-docs/setup/cycles)
+- Acquiring and managing cycles
     - [Getting started with free cycles](/docs/current/developer-docs/setup/cycles/cycles-faucet)
     - [Using a cycles wallet](/docs/current/developer-docs/setup/cycles/cycles-wallet)
     - [Converting ICP tokens into cycles](/docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles)
