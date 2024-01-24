@@ -3397,5 +3397,27 @@
   "youtube": "",
   "submittableId": "28043953",
   "videoContentType": "video/mp4"
+  },
+  {
+  "name": "Mapz",
+  "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
+  "website": "https://onzmk-taaaa-aaaal-acw4a-cai.icp0.io/",
+  "logo": "/img/showcase/Mapz_logo.png",
+  "screenshots": [
+    "/img/showcase/Mapz_screenshot.png"
+  ],
+  "display": "Normal",
+  "id": "mapz",
+  "oneLiner": "Airbnb for EV charging powered by Blockchain",
+  "stats": "3000+ users",
+  "tags": [
+    "NFT",
+    "Utility"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/nbelthan/Mapz-navigator",
+  "twitter": "https://twitter.com/Mapzlive",
+  "youtube": "",
+  "submittableId": "43548962"
   }
 ]
