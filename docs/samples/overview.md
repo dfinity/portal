@@ -1,6 +1,6 @@
 # Sample projects
 
-Take a look at some sample dapps below and see the possibilities of building on ICP. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome DFINITY repo](https://github.com/dfinity/awesome-dfinity) (a curated set of open-source projects and examples from our community) or [Hackathon projects](hackathon-projects)!
+Take a look at some sample dapps below and see the possibilities of building on ICP. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome DFINITY repo](https://github.com/dfinity/awesome-dfinity), a curated set of open-source projects and examples from our community.
 
 ## Hello, world!
 
@@ -96,7 +96,6 @@ This sample code demonstrates how a dapp can transfer ICP to its most active use
 ## Internet Identity integration
 
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/internet_identity_integration).
-- [Unity mobile integration](./native-app-integration).
 
 ## Invoice canister
 

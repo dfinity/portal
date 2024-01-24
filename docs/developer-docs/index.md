@@ -1,20 +1,20 @@
 # Introduction 
 
-The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **[canisters](/docs/current/how-it-works/canister-lifecycle/)**, an evolution of **smart contracts**.
+The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **[canisters](/docs/current/how-it-works/canister-lifecycle)**, an evolution of **smart contracts**.
 
 As a dapp developer, you might find it useful to think of the Internet Computer as providing the following key features:
 
--   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the [architecture of ICP](/docs/current/how-it-works/architecture-of-the-internet-computer/). 
+-   A **globally-accessible, public blockchain** for running smart contracts at web speed, that can serve interactive web content to users. You can read more about the [architecture of ICP](/docs/current/how-it-works/architecture-of-the-internet-computer). 
 
--   A secure cryptographic protocol (**[Internet Computer protocol](/docs/current//how-it-works/core-ic-protocol-overview/)**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts. 
+-   A secure cryptographic protocol (**[Internet Computer protocol](/docs/current//how-it-works/core-ic-protocol-overview)**) run by nodes machines operated by independent node providers in independent data centers all over the world. This guarantees the secure execution of smart contracts. 
 
--   A **network of independent blockchains**, known as [subnets](/docs/current/concepts/nodes-subnets), connected using [chain-key cryptography](/docs/current/how-it-works/#Chain-key-cryptography) that can [scale out](/docs/current/how-it-works/scalability/) its capacity as required.
+-   A **network of independent blockchains**, known as [subnets](/docs/current/concepts/nodes-subnets), connected using [chain-key cryptography](/docs/current/how-it-works) that can [scale out](/docs/current/how-it-works/scalability) its capacity as required.
 
 #### Getting started
 - [What is the Internet Computer?](/docs/current/concepts/what-is-ic)
 - [Installing the IC SDK](/docs/current/developer-docs/setup/install/)
 - [Creating a developer account](/docs/current/developer-docs/setup/accounts)
-- [Acquiring and managing cycles](/docs/current/developer-docs/setup/cycles/)
+- [Acquiring and managing cycles](/docs/current/developer-docs/setup/cycles)
     - [Getting started with free cycles](/docs/current/developer-docs/setup/cycles/cycles-faucet)
     - [Using a cycles wallet](/docs/current/developer-docs/setup/cycles/cycles-wallet)
     - [Converting ICP tokens into cycles](/docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles)
@@ -91,6 +91,8 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 - [Resource limits](/docs/current/developer-docs/production/resource-limits)
 - [Large web assembly modules](/docs/current/developer-docs/production/larger-wasm)
 - [Sample projects](/docs/current/samples/overview)
+- [Host a website](/docs/current/samples/host-a-website)
+- [Host a webgame](/docs/current/samples/host-a-webgame)
 
 #### Exchanges and token developers
 - [Introduction and overview](/docs/current/developer-docs/integrations/ledger/introduction_and_overview)
@@ -153,12 +155,12 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 ##### Developer journey
 
 - Level 0: Pre-flight operations
-    - [0.1 Overview of the Internet Computer](/docs/current/tutorials/developer-journey/level-0/01-ic-overview)
-    - [0.2 Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/02-ic-terms)
-    - [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/03-dev-env)
-    - [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/04-intro-canisters)
-    - [0.5 Introduction to languages](/docs/current/tutorials/developer-journey/level-0/05-intro-languages)
-    - [0.6 Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/06-intro-dfx)
+    - [0.1 Overview of the Internet Computer](/docs/current/tutorials/developer-journey/level-0/ic-overview)
+    - [0.2 Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/ic-terms)
+    - [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env)
+    - [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/intro-canisters)
+    - [0.5 Introduction to languages](/docs/current/tutorials/developer-journey/level-0/intro-languages)
+    - [0.6 Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx)
 
 - Level 1: Space cadet
     - [1.1 Exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo)
@@ -202,16 +204,16 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
     - [5.6 Next steps](/docs/current/tutorials/developer-journey/level-5/5.6-next-steps)
 
 ##### Hackathon prep course
-- [1: What is the Internet Computer?](/docs/current/tutorials//hackathon-prep-course/1-what-is-icp)
-- [2: Deploying your first fullstack dapp](/docs/current/tutorials//hackathon-prep-course/2-deploying-first-fullstack-dapp)
-- [3: Exploring the backend](/docs/current/tutorials//hackathon-prep-course/3-exploring-the-backend)
-- [4: Exploring the frontend](/docs/current/tutorials//hackathon-prep-course/4-exploring-the-frontend)
-- [5: Integrating with tokens](/docs/current/tutorials//hackathon-prep-course/5-integrating-with-tokens)
-- [6: Authentication](/docs/current/tutorials//hackathon-prep-course/6-authentication)
-- [7: Obtaining cycles](/docs/current/tutorials//hackathon-prep-course/7-obtaining-cycles)
-- [8: Managing canisters](/docs/current/tutorials//hackathon-prep-course/8-managing-canisters)
-- [9: Sample starter projects](/docs/current/tutorials//hackathon-prep-course/9-sample-starter-projects)
-- [10: Resources to learn more](/docs/current/tutorials//hackathon-prep-course/10-resources)
+- [1: What is the Internet Computer?](/docs/current/tutorials//hackathon-prep-course/what-is-icp)
+- [2: Deploying your first fullstack dapp](/docs/current/tutorials//hackathon-prep-course/deploying-first-fullstack-dapp)
+- [3: Exploring the backend](/docs/current/tutorials//hackathon-prep-course/exploring-the-backend)
+- [4: Exploring the frontend](/docs/current/tutorials//hackathon-prep-course/exploring-the-frontend)
+- [5: Integrating with tokens](/docs/current/tutorials//hackathon-prep-course/integrating-with-tokens)
+- [6: Authentication](/docs/current/tutorials//hackathon-prep-course/authentication)
+- [7: Obtaining cycles](/docs/current/tutorials//hackathon-prep-course/obtaining-cycles)
+- [8: Managing canisters](/docs/current/tutorials//hackathon-prep-course/managing-canisters)
+- [9: Sample starter projects](/docs/current/tutorials//hackathon-prep-course/sample-starter-projects)
+- [10: Resources to learn more](/docs/current/tutorials//hackathon-prep-course/resources)
 
 #### Security best practices
 
