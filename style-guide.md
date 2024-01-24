@@ -18,8 +18,6 @@ This guide will outline the following:
 - Code snippets and code blocks.
 - Command line syntax.
 - FAQ sections.
-- The difference between a tutorial and a guide.
-- How to write a tutorial.
 - How to write a guide.
 
 ## Page structure
@@ -263,6 +261,8 @@ The following language and capitalization of certain terms and phrases should be
 - built on ICP
 - canister
 - canister smart contract
+- chain-key signature
+- chain-key cryptography
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
 - deployed on ICP
@@ -293,6 +293,8 @@ The following language and capitalization of certain terms and phrases should be
 - node provider
 - open internet service
 - reverse gas model
+- Sybil resistance
+- Sybil attack
 - vetKeys
 - Web3
 - World Wide Web
@@ -411,6 +413,8 @@ Links that are referenced within the developer docs should use the following for
 - In-line links should not capitalize the title of the page or section that is being linked. For example:
     - The below section [demonstrating trust](#demonstrating-trust).
     - The Wiki [contains some ideas](https://wiki.internetcomputer.org/wiki/Dealing_with_cycles_limit_exceeded_errors) how one can work around the cycles limit.
+- Links should not use the format of 'See the documentation [here](link)'. 
+    - All links should use the format '[Learn more about ICP](link)'.
 
 ## Code snippets and code blocks
 The following format should be used for code snippets and code blocks:
@@ -450,7 +454,7 @@ dfx deploy --background
 
 ```
 dfx identity new Alice --disable-encryption
-````
+```
 
 ```
 dfx deploy internet_identity --argument '(null)'
@@ -468,55 +472,6 @@ Answer
 
 - #### Question 2?
 Answer
-```
-
-## Difference between tutorials and guides
-
-
-Tutorials should be either stand-alone projects that a user can follow A-Z that may build off of an example code, may use a variety of different concepts, tools, or assets, and ultimately results in a working example project, or should be a comprehensive, intentional collection or series that is meant to be followed from start to finish (such as the Developer Journey). 
-
-In contrast, guides should be more focused on individual concepts or workflows and then building off of those. Guides should not need to be followed in a specific order or be part of a series for the reader to utilize and benefit from them. For example, the guides for building a smart contract backend with Motoko each focus and build upon individual concepts within Motoko, such as using integers in calculator functions or querying using an actor.
-
-### Writing a tutorial
-When contributing a tutorial, the following general format and structure should be used. It is important to note that the content of tutorials will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
-
-An exeption to this format is the Developer Journey tutorial series, which uses a slightly different standardized format due to the unique nature of the Developer Journey series. All other tutorials should follow this format. 
-
-```
-# Page title (Title that should be displayed on the sidebar)
-
-## Overview
-
-This section should contain an overview of what the tutorial will teach the developer. This information includes what technology features are being highlighted (HTTPS outcalls, Bitcoin integration, ledger, etc) and should explain why these features are important to the developer. This section should also provide an overview of what is being built (DEX, NFT example, etc). 
-
-## Prerequisites
-
-This section should be used to list any prerequisites that a developer will need to follow this tutorial, assuming they have not followed any other tutorial. Common prerequisites include installing the IC SDK, installing an IDE, and installing Node.js. 
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Step 1: Description of step (This should describe what the developer will accomplish in this step. Ex: “Create a new project”, “Open the main.mo file”, “Write a function that makes an inter-canister call”, etc.)
-
-Include any context or additional information for the developer to complete this step. Typically this will include the code snippet, command to run, or other information about what the developer must do. It is also beneficial to include the ‘why’ a developer is completing this step to help further their understanding.
-
-### Subtopic 1 (Subtopics are optional. They can be used to break up tutorials that cover several different concepts, such as an HTTP outcalls tutorial that covers both GET and POST requests; subtopics can be used to break the tutorial into two parts - one for GET and one for POST.)
-
-Include any context or additional information about what the subtopic is and how it relates to the overall theme of the tutorial. 
-
-## Step 2: Description of step 
-
-Text
-
-– Repeat above format as necessary for duration of tutorial
-
-## Conclusion
-
-Wrap up the tutorial by reiterating what the developer learned about, what they accomplished, and what they are able to do with the result of this tutorial (continue building, enhance example by adding additional features, etc.)
-
-## Resources
-- [Link](link.example)
 ```
 
 ### Writing a guide

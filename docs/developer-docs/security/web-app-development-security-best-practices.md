@@ -17,7 +17,7 @@ Implementing user authentication and canister calls yourself in your web app is 
 
 #### Recommendation
 
--   Consider using e.g. [Internet Identity](https://github.com/dfinity/internet-identity) for authentication, use [agent-js](https://github.com/dfinity/agent-js) for making canister calls, and the [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) for interacting with internet identity from your dApp.
+-   Consider using e.g. [Internet Identity](https://github.com/dfinity/internet-identity) for authentication, use [agent-js](https://github.com/dfinity/agent-js) for making canister calls, and the [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) for interacting with internet identity from your dapp.
 
 -   It is of course also an option to consider alternative authentication frameworks on ICP for authentication.
 

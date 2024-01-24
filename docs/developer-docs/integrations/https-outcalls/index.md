@@ -23,8 +23,8 @@ Canister HTTP requests allow for a plethora of use cases and have numerous advan
 ## Use cases
 There are many use cases for canister HTTPS outcalls, see the following list for some prominent examples.
 
-* One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data used in DEXs or weather data used in decentralized insurance dApps.
-* IoT dApps need to obtain sensor data from traditional servers with which the sensors interact. In the future, the Internet Computer may even envision direct interactions of sensors.
+* One of the most important use cases is reading data from external HTTP APIs, e.g., pricing data used in DEXs or weather data used in decentralized insurance dapps.
+* IoT dapps need to obtain sensor data from traditional servers with which the sensors interact. In the future, the Internet Computer may even envision direct interactions of sensors.
 
 * Chat services sending push notifications about incoming messages to users.
 
