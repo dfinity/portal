@@ -199,6 +199,8 @@ const sidebars = {
         "developer-docs/production/resource-limits",
         "developer-docs/production/larger-wasm",
         "samples/overview",
+        "samples/host-a-website",
+        "samples/host-a-webgame"
       ],
     },
     {
