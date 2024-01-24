@@ -2,9 +2,7 @@
 
 ## Overview
 
-In the [deploy your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md) tutorial,
-you explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
-Bitcoin. In this guide, you'll explore how you can develop and test a Bitcoin dapp
+In this guide, you'll explore how you can develop and test a Bitcoin dapp
 locally. Testing locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) and
