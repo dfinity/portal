@@ -78,7 +78,7 @@ The Bitcoin adapter of the single replica running the local SDK environment conn
 
 ### Bitcoin testnet on ICP
 
-Once a smart contract is ready for acceptance testing, it is deployed on the mainnet (recall, there is no public ICP testnet), still using the Bitcoin API set to connect to the Bitcoin testnet. This is the same setting as used in local development. This setup is used to perform the acceptance testing of the dApp, using the Bitcoin testnet and a test chain-key ECDSA key, i.e., no real value is at stake.
+Once a smart contract is ready for acceptance testing, it is deployed on the mainnet (recall, there is no public ICP testnet), still using the Bitcoin API set to connect to the Bitcoin testnet. This is the same setting as used in local development. This setup is used to perform the acceptance testing of the dapp, using the Bitcoin testnet and a test chain-key ECDSA key, i.e., no real value is at stake.
 
 ### Bitcoin mainnet on ICP
 
