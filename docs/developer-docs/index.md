@@ -1,3 +1,7 @@
+--- 
+hide_table_of_contents: true
+---
+
 # Introduction 
 
 The **Internet Computer** is a blockchain that enables developers, organizations, and entrepreneurs to build and deploy secure, autonomous, and tamper-proof **[canisters](/how-it-works/canister-lifecycle)**, an evolution of **smart contracts**.
