@@ -79,6 +79,7 @@ const sidebars = {
         "developer-docs/backend/subnet-types",
         "concepts/tokens-cycles",
         "concepts/trust-in-canisters",
+        "developer-docs/production/resource-limits",
         "references/glossary",
       ],
     },
@@ -92,21 +93,21 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "Candid",
-              items: [
-                "developer-docs/backend/candid/candid-concepts",
-                "developer-docs/backend/candid/candid-howto",
-                "developer-docs/backend/candid/generating-candid",
-              ],
-            },
-            {
-              type: "category",
               label: "Agents",
               items: [
                 "developer-docs/agents/index",
                 "developer-docs/agents/javascript-intro",
                 "developer-docs/agents/nodejs",
                 "developer-docs/agents/ic-agent-dfinity",
+              ],
+            },
+            {
+              type: "category",
+              label: "Candid",
+              items: [
+                "developer-docs/backend/candid/candid-concepts",
+                "developer-docs/backend/candid/candid-howto",
+                "developer-docs/backend/candid/generating-candid",
               ],
             },
           ],
@@ -364,7 +365,6 @@ const sidebars = {
         },
         "developer-docs/backend/design-dapps",
         "developer-docs/production/larger-wasm",
-        "developer-docs/production/resource-limits",
         "developer-docs/production/larger-wasm",
         {
           type: "category",
