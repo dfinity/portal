@@ -38,11 +38,9 @@ There’s also an easy way to host existing static web apps (even those built us
 
 The browser only communicates with HTTP(s) protocol and doesn’t know how to query a canister. To fill the gap between the browser and Internet Computer protocols, we utilize a [HTTP Gateway](/docs/current/references/ic-interface-spec/#http-gateway), which is a software that sits in between the browser and the Internet Computer. The browser sends a http request to the http gateway. The gateway first interprets the URL in the http request and extracts the corresponding canister id. It then converts the http request into a canister query and sends it to the boundary nodes. When the canister sends back a response, the http gateway interprets the response, verifies the signatures, converts into a http response and sends it to the browser.
 
-There are many ways to implement the HTTP Gateway protocol. Currently, there are 2 implementations.
+There are many ways to implement the HTTP Gateway protocol. Currently, there is one main implementation on the boundary nodesn called `icx-proxy`. When the user enters a URL such as https://\<canister id\>.ic0.app or https://\<canister id\>.raw.ic0.app, the browser sends the HTTP request to the boundary node, which acts as a HTTP gateway.
 
-- The gateway protocol is implemented as a [service worker](https://web.dev/learn/pwa/service-workers/). When the user enters a URL such as http://\<canister id\>.ic0.app, the browser calls the DNS service to resolve the query. Currently, the DNS maps the ic0.app domain to the [boundary nodes](/how-it-works/boundary-nodes/) of the Internet Computer. When the browser makes a request to a boundary node, it responds with a service worker that implements HTTP Gateway protocol. The browser then installs the service worker. From then on, whenever the user makes a request to http://\<canister id\>.ic0.app, the browser passes on the request to the service worker.
-- Boundary nodes also implement the HTTP Gateway protocol. When the user enters a URL such as http://\<canister id\>.raw.ic0.app, the browser sends the http request to the boundary node, which acts as a http gateway.
-  There are a few other ways of implementing the HTTP Gateway protocol. The gateway can be implemented as a browser extension. The chromium browser could also be modified to include HTTP Gateway as part of the browser.
+There are many other ways of implementing the HTTP Gateway protocol. The gateway can be implemented as a browser extension or as a [service worker](https://web.dev/learn/pwa/service-workers/). The chromium browser could also be modified to include HTTP Gateway as part of the browser.
 
 ## SEO
 

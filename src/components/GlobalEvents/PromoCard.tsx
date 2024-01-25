@@ -1,11 +1,12 @@
 import Link from "@docusaurus/Link";
+import clsx from "clsx";
 import React from "react";
 
 const PromoCard: React.FC<{
   label: string;
   description?: string;
 
-  href: string;
+  href?: string;
   ctaLabel: string;
 }> = ({ label, description, href, ctaLabel }) => {
   return (
@@ -17,7 +18,12 @@ const PromoCard: React.FC<{
         )}
         <div className="flex-1"></div>
         <p className="mt-12 mb-0">
-          <Link className="button-white text-center" href={href}>
+          <Link
+            className={clsx("button-white text-center", {
+              "bg-grey-300 text-black/70 pointer-events-none": !href,
+            })}
+            href={href}
+          >
             {ctaLabel}
           </Link>
         </p>
