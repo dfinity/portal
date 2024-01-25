@@ -4,7 +4,7 @@ Solidity is an object-oriented, high-level language for implementing smart contr
 
 ## Bitfinity EVM
 
-The Bitfinity EVM is an EVM implementation based on [REVM](https://github.com/bluealloy/revm), and provides an RPC interface that is compatible with the Ethereum JSON-RPC API. This means that existing Ethereum tools and libraries, such as [MetaMask](https://metamask.io/), [Hardhat](https://hardhat.org/) and [Foundry](https://getfoundry.sh/), can be used to interact with the EVM, and provide a similar developer and user experience as Ethereum.
+The Bitfinity EVM is an EVM implementation based on [REVM](https://github.com/bluealloy/revm). It provides an RPC interface that is compatible with the Ethereum JSON-RPC API. This means that existing Ethereum tools and libraries, such as [MetaMask](https://metamask.io/), [Hardhat](https://hardhat.org/) and [Foundry](https://getfoundry.sh/), can be used to interact with the EVM and provide a similar developer and user experience. 
 
 The Bitfinity EVM is currently at Testnet stage, and is not yet ready for production use. It is available for experimentation and testing purposes only.
 
