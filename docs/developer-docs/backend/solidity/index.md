@@ -8,5 +8,5 @@ The Bitfinity EVM is an EVM implementation based on [REVM](https://github.com/bl
 
 The Bitfinity EVM is currently at Testnet stage, and is not yet ready for production use. It is available for experimentation and testing purposes only.
 
-For more information, please refer to the official [Bitfinity EVM documentation](https://docs.bitfinity.network/)
+For more information, please refer to the official [Bitfinity EVM documentation](https://docs.bitfinity.network/).
 
