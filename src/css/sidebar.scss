@@ -27,7 +27,7 @@ aside[class*="docSidebarContainer_"] {
   .theme-doc-sidebar-item-category-level-1 {
     &:after {
       display: block;
-      content: "\A";
+      content: " ";
       white-space: pre-wrap;
       border-bottom: 1px solid rgba(0, 0, 0, 0.15);
       line-height: 0.75rem;
