@@ -16,11 +16,11 @@ For both approaches, you need to acquire a domain through any registrar (pick yo
 The two approaches differ in the ease of use and the configurability. When registering
 the domain with the boundary nodes, you simply have to configure the DNS records of
 the custom domain and the boundary nodes take care of obtaining a certificate,
-renewing the certificate before its expiration, SEO and serving the service worker.
+renewing the certificate before its expiration, and SEO.
 When hosting the domain on your own infrastructure, you need to obtain and renew
-the certificates, and provide your own infrastructure that serves the service worker.
-However, you are also more flexible in how you configure your domain (e.g., you
-can serve a custom service worker).
+the certificates, and provide your own infrastructure that serves the service worker
+or implements an other form of the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md).
+However, you are also more flexible in how you configure your domain.
 
 :::info
 You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `ic0.app`. To configure your agent, it will look something like this:
@@ -41,7 +41,7 @@ remove a registration.
 ### First registration
 
 By following the steps below, you can host your canister under your custom domain
-using the boundary nodes. The steps are first outlined, then can be seen through 
+using the boundary nodes. The steps are first outlined, then can be seen through
 a [concrete example to illustrate these steps](#concrete-example), followed by some
 instructions on [troubleshooting](#troubleshooting).
 
@@ -53,7 +53,7 @@ Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.
 :::info
 In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
 
-In some cases (like AWS:Route53), the format of the `TXT` record can depend on whether it is APEX or not. 
+In some cases (like AWS:Route53), the format of the `TXT` record can depend on whether it is APEX or not.
 For APEX, the name has to be empty, with the value containing the key-value pair: "_canister-id:CANISTER_ID".
 For non-apex (e.g. www), the name should be the standard “_canister-id.www” and value "CANISTER_ID".
 :::
@@ -238,7 +238,7 @@ request for your domain and the boundary node will return the corresponding ID.
 ## Custom domains using your own infrastructure
 
 - #### Step 1: Deploy your canister to ICP and note the canister id.
-- #### Step 2: Clone the [official ICP repo](https://github.com/dfinity/ic) and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/master/typescript/service-worker) located under `ic/typescript/service-worker`.
+- #### Step 2: Clone the [official ICP repo](https://github.com/dfinity/ic), checkout the following commit `2304690ca1d241d9ce6e19a427a18de9aac95b82` and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/master/typescript/service-worker) located under `ic/typescript/service-worker`.
 - #### Step 3: Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file [`service-worker/src/sw/domains/static.ts`](https://github.com/dfinity/ic/blob/master/typescript/service-worker/src/sw/domains/static.ts).
 - #### Step 4: Build the service worker according to the instructions in `service-worker/README.md`. The output should be:
     - an `index.html`,

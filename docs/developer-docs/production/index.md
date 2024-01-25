@@ -17,7 +17,6 @@ This page is an overview of the topic. For specific steps and troubleshooting in
 * [Custom domains](custom-domain/custom-domain.md).
 * [Resource limits](./resource-limits.md).
 * [Computation and storage cost](../gas-cost.md).
-* [Sharing links on Social Media](./social-sharing.md).
 
 ## Demonstrating trust
 
