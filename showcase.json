@@ -3399,6 +3399,27 @@
   "videoContentType": "video/mp4"
   },
   {
+  "name": "ICSoccerWorld",
+  "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
+  "website": "https://github.com/ktimam/ICSimpleSoccer",
+  "logo": "/img/showcase/ICSoccerWorld.png",
+  "display": "Normal",
+  "id": "ICSoccerWorld",
+  "oneLiner": "Physics Based Soccer Simulation.",
+  "stats": "Community Dev Demo",
+  "tags": [
+    "NFT",
+    "Metaverse",
+    "Games"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/ktimam/ICSimpleSoccer",
+  "twitter": "https://twitter.com/ICSoccerWorld",
+  "youtube": "",
+  "submittableId": "44414655",
+  "videoContentType": "video/mp4"
+  },
+  {
   "name": "Mapz",
   "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
   "website": "https://onzmk-taaaa-aaaal-acw4a-cai.icp0.io/",
