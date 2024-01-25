@@ -190,20 +190,19 @@ function GlobalEventsPage() {
 
         <AnimateSpawn variants={transitions.container}>
           <div className="container-12 grid grid-cols-1 md:grid-cols-3 gap-5 mt-8 md:mt-16">
-            {filteredEvents
-              ?.slice(0, showMaxEvents)
-              .map((eventOrPromo) =>
-                eventOrPromo === "promo" ? (
-                  <PromoCard
-                    key="promo"
-                    label="Is your event missing from ICP's global calendar?"
-                    href="https://airtable.com/appBKNYn6DaFccnno/shrJj7M98SaobaQM4"
-                    ctaLabel="Submit your event"
-                  />
-                ) : (
-                  <EventCard key={eventOrPromo.id} event={eventOrPromo} />
-                )
-              )}
+            {filteredEvents?.slice(0, showMaxEvents).map((eventOrPromo) =>
+              eventOrPromo === "promo" ? (
+                <PromoCard
+                  key="promo"
+                  label="Is your event missing from ICP's global calendar?"
+                  // Add href and change the ctaLabel when the form is ready
+                  href=""
+                  ctaLabel="Coming soon"
+                />
+              ) : (
+                <EventCard key={eventOrPromo.id} event={eventOrPromo} />
+              )
+            )}
           </div>
 
           {filteredEvents?.length > showMaxEvents && (
@@ -225,17 +224,17 @@ function GlobalEventsPage() {
                 <p className="mb-3 text-black/60">
                   No events match your filters.{" "}
                 </p>
-                <p className="mb-8  text-black/60">
+                {/* <p className="mb-8  text-black/60">
                   Is your event missing from ICP's global calendar?
                 </p>
                 <p className="mb-0">
                   <Link
                     className="button-primary"
-                    href="https://airtable.com/appBKNYn6DaFccnno/shrJj7M98SaobaQM4"
+                    href=""
                   >
                     Submit your event
                   </Link>
-                </p>
+                </p> */}
               </div>
             </div>
           )}
@@ -284,13 +283,16 @@ function GlobalEventsPage() {
                 and form lasting bonds with fellow visionaries.
               </p>
               <p className="mb-0">
-                <Link
-                  href="https://airtable.com/appBKNYn6DaFccnno/shrJj7M98SaobaQM4"
+                {/* change to the Link when form is ready */}
+                <span className="tw-heading-6 text-black/60">Coming soon</span>
+
+                {/* <Link
+                  href=""
                   className="link-primary link-with-icon"
                 >
                   Submit your event
                   <LinkArrowUpRight />
-                </Link>
+                </Link> */}
               </p>
             </motion.div>
             <motion.div
