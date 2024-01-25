@@ -53,7 +53,7 @@ const subnavItems = [
     type: "doc",
     position: "left",
     docId: "home",
-    label: "Docs",
+    label: "Home",
   },
   {
     type: "docSidebar",
