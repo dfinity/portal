@@ -138,34 +138,7 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/solidity.png"
-                  alt="Motoko docs"
-                  className="w-10 h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Solidity</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Bitfinity allows you to build Internet apps on the Internet
-                  Computer with Solidity, a popular language for DeFi
-                  applications.
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="https://bitfinity.network"
-                    className="link-primary"
-                    title="Go to Motoko docs"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-
+          
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-r-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
@@ -218,6 +191,7 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
+            
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10  md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
@@ -238,6 +212,34 @@ const DocsHomePage: FC = () => {
                     href="https://demergent-labs.github.io/kybra"
                     className="link-primary"
                     title="Go to Kybra docs"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+
+            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/solidity.png"
+                  alt="Motoko docs"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Solidity</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Bitfinity allows you to deploy smart contracts on the Internet
+                  Computer written in Solidity, a popular language for DeFi
+                  applications.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/backend/solidity/"
+                    className="link-primary"
+                    title="Go to Solidity"
                   >
                     <LinkArrowRight />
                   </Link>
