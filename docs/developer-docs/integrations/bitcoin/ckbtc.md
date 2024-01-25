@@ -123,6 +123,6 @@ Note that this endpoint is used for debugging purposes and there is no guarantee
 To start building your own apps with Bitcoin see the following tutorials:
 
 - [ckBTC wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
-- [Deploying your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md).
+- [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
 - [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 - [Local development](./local-development.md).

@@ -1,4 +1,4 @@
-# Making a call from a Rust agent
+# Rust agent
 
 ## Overview
 

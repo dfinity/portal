@@ -1,5 +1,5 @@
 
-# Making a call from a JavaScript agent
+# JavaScript agent
 
 ## Overview
 

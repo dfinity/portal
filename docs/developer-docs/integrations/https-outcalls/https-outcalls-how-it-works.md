@@ -1,4 +1,4 @@
-# HTTPS outcalls: technology overview
+# HTTPS outcalls
 
 ## Overview
 

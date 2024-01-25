@@ -1,4 +1,4 @@
-# Quick start for React developers
+# Quickstart for React developers
 
 ## Overview
 

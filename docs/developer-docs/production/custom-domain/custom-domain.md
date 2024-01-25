@@ -1,4 +1,4 @@
-# Custom domains
+# Using custom domains
 
 ## Overview
 

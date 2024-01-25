@@ -1,4 +1,4 @@
-# Managing canisters
+# Interacting with canisters
 
 ## Overview
 
@@ -279,6 +279,6 @@ To delete all canisters for a project:
 
 -   [Building on ICP](../../samples/overview.md) to explore sample dapps.
 
--   [Concepts](../../concepts/index.md) to learn about different ICP concepts.  
+-   [Concepts](../../concepts/what-is-ic.md) to learn about different ICP concepts.  
 
 -   [ICP glossary](../../references/glossary.md) to learn the definitions of various terms used within ICP. 

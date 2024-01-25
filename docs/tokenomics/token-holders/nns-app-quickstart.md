@@ -1,4 +1,4 @@
-# Network Nervous System (NNS) dapp quick start 
+# NNS quickstart
 
 ## Overview
 All changes to the configuration and behavior of the Internet Computer are controlled by an algorithmic governance system called the Network Nervous System (NNS). The NNS controls all aspects of the Internet Computer blockchain configuration and is responsible for performing many network management operations. For example, the Network Nervous System (NNS) is responsible for:

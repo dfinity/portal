@@ -126,6 +126,7 @@ If the value `<network name>` is set as `playground`, then the command `dfx depl
 
 :::info 
 This network definition can also go into `networks.json` file so it applies to every project, not just the current project, since `dfx.json` files are project-specific. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`. 
+:::
 
 ## Motoko playground in the web browser
 
