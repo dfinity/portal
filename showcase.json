@@ -3400,7 +3400,7 @@
   },
   {
   "name": "ICSoccerWorld",
-  "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book "AI Game Programming by Example". Demo is built in C++ and uses Jolt physics Engine.",
+  "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
   "website": "https://github.com/ktimam/ICSimpleSoccer",
   "logo": "/img/showcase/ICSoccerWorld.png",
   "display": "Normal",
