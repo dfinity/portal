@@ -1,4 +1,4 @@
-# Sample projects
+# Examples
 
 Take a look at some sample dapps below and see the possibilities of building on ICP. All samples and further projects can be found in the [samples repo](https://github.com/dfinity/examples). Additional resources can be found in the [awesome DFINITY repo](https://github.com/dfinity/awesome-dfinity), a curated set of open-source projects and examples from our community.
 
