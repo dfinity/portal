@@ -24,9 +24,14 @@ aside[class*="docSidebarContainer_"] {
     font-weight: 900;
   }
 
-  .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0;
+  .theme-doc-sidebar-item-category-level-1 {
+    &:after {
+      display: block;
+      content: "\A";
+      white-space: pre-wrap;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      line-height: 0.75rem;
+    }
   }
 
   .menu__link,
