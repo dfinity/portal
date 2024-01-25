@@ -39,8 +39,19 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 - [Subnet types](/docs/current/developer-docs/backend/subnet-types)
 - [ICP tokens](/docs/current/concepts/tokens-cycles)
 - [Trust in canisters](/docs/current/concepts/trust-in-canisters)
+- [Resource limits](/docs/current/developer-docs/production/resource-limits)
 - [Glossary](/docs/current/references/glossary)
-#### Canister smart contracts
+#### Using canisters
+- Calling canisters
+    - Agents
+        - [Using external agents](/docs/current/developer-docs/agents/)
+        - [JavaScript agent](/docs/current/developer-docs/agents/javascript-intro)
+        - [NodeJS](/docs/current/developer-docs/agents/nodejs)
+        - [Rust agent](/docs/current/developer-docs/agents/ic-agent-dfinity)
+    - Candid
+        - [What is Candid?](/docs/current/developer-docs/backend/candid/candid-concepts)
+        - [Using Candid](/docs/current/developer-docs/backend/candid/candid-howto)
+        - [Generating Candid files for Rust canisters](/docs/current/developer-docs/backend/candid/generating-candid)
 - [Deploying and upgrading canisters](/docs/current/developer-docs/production/deploying-and-upgrading)
 - [Managing canisters](/docs/current/developer-docs/setup/manage-canisters)
 - [Topping up canisters](/docs/current/developer-docs/production/topping-up-canister)
@@ -49,56 +60,50 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 - [Canister recovery](/docs/current/developer-docs/production/canister-recovery)
 - [Canister storage](/docs/current/developer-docs/production/storage)
 - [Pulling canister dependencies](/docs/current/developer-docs/setup/pulling-canister-dependencies)
+
+
+#### Developer tools
+- [Internet Computer SDK](/docs/current/references/cli-reference/)
+- [Motoko playground](/docs/current/developer-docs/setup/playground)
+- [Managing projects](/docs/current/developer-docs/setup/manage-projects)
+- [Using Visual Studio Code](/docs/current/developer-docs/setup/vs-code)
+
+#### Features
+- Bitcoin integration
+    - [Overview](/docs/current/developer-docs/integrations/bitcoin/)
+    - [Chain-key Bitcoin (ckBTC)](/docs/current/developer-docs/integrations/bitcoin/ckbtc)
+    - [Developing Bitcoin dapps locally](/docs/current/developer-docs/integrations/bitcoin/local-development)
 - [Composite queries](/docs/current/developer-docs/integrations/composite-query/)
-- [Building with Motoko](/docs/current/developer-docs/backend/motoko/)
-    - [1: Motoko fundamentals](/docs/current/developer-docs/backend/motoko/infrastructure)
-    - [2: Project organization](/docs/current/developer-docs/backend/motoko/explore-templates)
-    - [3: Developer environment](/docs/current/developer-docs/backend/motoko/dev-env)
-    - [4: Motoko quickstart](/docs/current/developer-docs/backend/motoko/at-a-glance)
-    - [5: Writing and deploying canisters](/docs/current/developer-docs/backend/motoko/deploying)
-    - [6: Upgrading canisters](/docs/current/developer-docs/backend/motoko/upgrading)
-    - [7: Making inter-canister calls](/docs/current/developer-docs/backend/motoko/intercanister-calls)
-    - [8: Optimizing canisters](/docs/current/developer-docs/backend/motoko/optimizing)
-    - [9: Importing library modules](/docs/current/developer-docs/backend/motoko/phonebook)
-    - [10: Using integers in calculator functions](/docs/current/developer-docs/backend/motoko/calculator)
-    - [11: Incrementing a natural number](/docs/current/developer-docs/backend/motoko/counter-tutorial)
-    - [12: Passing text arguments](/docs/current/developer-docs/backend/motoko/hello-location)
-    - [13: Accepting cycles from a wallet](/docs/current/developer-docs/backend/motoko/simple-cycles)
-    - [14: Querying using an actor](/docs/current/developer-docs/backend/motoko/define-an-actor)
-    - [15: Using multiple actors](/docs/current/developer-docs/backend/motoko/multiple-actors)
-    - [16: Add access control with identities](/docs/current/developer-docs/backend/motoko/access-control)
-    - [17: Using the Candid UI to test functions in a browser](/docs/current/developer-docs/backend/motoko/candid-ui)
-    - [18: Scalable dapp example](/docs/current/developer-docs/backend/motoko/scalability-cancan)
-    - [Motoko sample code and applications](/docs/current/developer-docs/backend/motoko/sample-apps)
-    - [Generating Motoko documentation](/docs/current/developer-docs/backend/motoko/mo-doc)
-- [Building with Rust](/docs/current/developer-docs/backend/rust/)
-    - [1: Rust backend canister infrastructure](/docs/current/developer-docs/backend/rust/infrastructure)
-    - [2: Project organization](/docs/current/developer-docs/backend/rust/project-organization)
-    - [3: Developer environment](/docs/current/developer-docs/backend/rust/dev-env)
-    - [4: Rust quickstart](/docs/current/developer-docs/backend/rust/quickstart)
-    - [5: Writing and deploying canisters](/docs/current/developer-docs/backend/rust/deploying)
-    - [6: Inter-canister calls](/docs/current/developer-docs/backend/rust/intercanister)
-    - [7: Upgrading a canister](/docs/current/developer-docs/backend/rust/upgrading)
-    - [8: Optimizing Rust canisters](/docs/current/developer-docs/backend/rust/optimizing)
-    - [9: Incrementing a counter](/docs/current/developer-docs/backend/rust/counter)
-    - [10: Using periodic timers](/docs/current/developer-docs/backend/rust/timers)
-    - [11: Stable structures](/docs/current/developer-docs/backend/rust/stable-structures)
-    - [12: Adding and searching simple records](/docs/current/developer-docs/backend/rust/searching-records)
-    - [13: Access control](/docs/current/developer-docs/backend/rust/access-control)
-    - [14: Using the Candid UI with a Rust canister](/docs/current/developer-docs/backend/rust/candid)
-    - [Rust sample code and applications](/docs/current/developer-docs/backend/rust/samples)
-
-#### Dapp developers
-- [Choosing a programming language](/docs/current/developer-docs/backend/choosing-language)
-- [Dapp design considerations](/docs/current/developer-docs/backend/design-dapps)
+- HTTPS outcalls
+    - [Overview](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use)
+    - [HTTP outcalls: GET](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get)
+    - [HTTP outcalls: POST](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post)
 - [Periodic tasks and timers](/docs/current/developer-docs/backend/periodic-tasks)
-- [Resource limits](/docs/current/developer-docs/production/resource-limits)
-- [Large web assembly modules](/docs/current/developer-docs/production/larger-wasm)
-- [Sample projects](/docs/current/samples/overview)
-- [Host a website](/docs/current/samples/host-a-website)
-- [Host a webgame](/docs/current/samples/host-a-webgame)
+- Encryption and signatures 
+    - [Verifying signatures](/docs/current/developer-docs/integrations/independently-verifying-ic-signatures)
+    - [Threshold ECDSA](/docs/current/developer-docs/integrations/t-ecdsa/)
+    - vetKeys
+        - [vetKeys API demo](/docs/current/developer-docs/integrations/vetkeys/using-vetkeys)
 
-#### Exchanges and token developers
+#### Web apps
+- Application frontends
+    - [Frontend canisters](/docs/current/developer-docs/frontend/)
+    - [Customizing a frontend](/docs/current/developer-docs/frontend/custom-frontend)
+    - [Adding a stylesheet](/docs/current/developer-docs/frontend/add-stylesheet)
+    - [Using a frontend boilerplate](/docs/current/developer-docs/frontend/boilerplate-frontend)
+    - [Deploy an existing frontend](/docs/current/developer-docs/frontend/existing-frontend)
+- [Choosing a programming language](/docs/current/developer-docs/backend/choosing-language)
+- Custom domains
+    - [Using custom domains](/docs/current/developer-docs/production/custom-domain/)
+    - [DNS configuration guide](/docs/current/developer-docs/production/custom-domain/dns-setup)
+- [Dapp design considerations](/docs/current/developer-docs/backend/design-dapps)
+- [Large web assembly modules](/docs/current/developer-docs/production/larger-wasm)
+- Sample apps
+    - [Sample projects](/docs/current/samples/overview)
+    - [Host a website](/docs/current/samples/host-a-website)
+    - [Host a webgame](/docs/current/samples/host-a-webgame)
+
+#### DeFi
 - [Introduction and overview](/docs/current/developer-docs/integrations/ledger/introduction_and_overview)
 - ICP tokens
     - [ICP ledger](/docs/current/developer-docs/integrations/ledger/)
@@ -121,38 +126,6 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 - Asset custody
     - [Self-custody for digital assets](/docs/current/tokenomics/token-holders/custody-options-intro)
     - [Self-custody guide](/docs/current/tokenomics/token-holders/self-custody-quickstart)
-
-#### Candid UI
-
-- [What is Candid?](/docs/current/developer-docs/backend/candid/candid-concepts)
-- [Using Candid](/docs/current/developer-docs/backend/candid/candid-howto)
-- [Generating Candid files for Rust canisters](/docs/current/developer-docs/backend/candid/generating-candid)
-
-#### Application frontends
-
-- [Frontend canisters](/docs/current/developer-docs/frontend/)
-- [Customizing a frontend](/docs/current/developer-docs/frontend/custom-frontend)
-- [Adding a stylesheet](/docs/current/developer-docs/frontend/add-stylesheet)
-- [Using a frontend boilerplate](/docs/current/developer-docs/frontend/boilerplate-frontend)
-- [Deploy an existing frontend](/docs/current/developer-docs/frontend/existing-frontend)
-
-#### Agents
-
-- [Using external agents](/docs/current/developer-docs/agents/)
-- [JavaScript agent](/docs/current/developer-docs/agents/javascript-intro)
-- [NodeJS](/docs/current/developer-docs/agents/nodejs)
-- [Rust agent](/docs/current/developer-docs/agents/ic-agent-dfinity)
-
-#### Custom domains
-
-- [Using custom domains](/docs/current/developer-docs/production/custom-domain/)
-- [DNS configuration guide](/docs/current/developer-docs/production/custom-domain/dns-setup)
-
-#### Developer tools
-
-- [Motoko playground](/docs/current/developer-docs/setup/playground)
-- [Managing projects](/docs/current/developer-docs/setup/manage-projects)
-- [Using Visual Studio Code](/docs/current/developer-docs/setup/vs-code)
 
 #### Bootcamps 
 
@@ -232,31 +205,11 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 - [Creating reproducible canister builds](/docs/current/developer-docs/backend/reproducible-builds)
 - [Troubleshooting resources](/docs/current/developer-docs/backend/troubleshooting)
 
-#### HTTPS outcalls
-
-- [Overview](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use)
-- [HTTP outcalls: GET](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get)
-- [HTTP outcalls: POST](/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post)
-
-#### Encryption and signatures 
-
-- [Verifying signatures](/docs/current/developer-docs/integrations/independently-verifying-ic-signatures)
-- [Threshold ECDSA](/docs/current/developer-docs/integrations/t-ecdsa/)
-- vetKeys
-    - [vetKeys API demo](/docs/current/developer-docs/integrations/vetkeys/using-vetkeys)
-
 #### Internet Identity (II)
 
 - [Overview](/docs/current/developer-docs/integrations/internet-identity/overview)
 - [Alternative frontend origins](/docs/current/developer-docs/integrations/internet-identity/alternative-origins)
 - [Internet Identity integration](/docs/current/developer-docs/integrations/internet-identity/integrate-identity)
-
-
-#### Bitcoin integration
-
-- [Overview](/docs/current/developer-docs/integrations/bitcoin/)
-- [Chain-key Bitcoin (ckBTC)](/docs/current/developer-docs/integrations/bitcoin/ckbtc)
-- [Developing Bitcoin dapps locally](/docs/current/developer-docs/integrations/bitcoin/local-development)
 
 #### Network Nervous System (NNS)
 
@@ -298,3 +251,46 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
     - [SNS cycle management](/docs/current/developer-docs/integrations/sns/managing/cycles-usage)
     - [SNS asset canisters](/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister)
     - [Managing nervous system parameters](/docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters)
+
+#### Motoko
+
+- [Building with Motoko](/docs/current/developer-docs/backend/motoko/)
+    - [1: Motoko fundamentals](/docs/current/developer-docs/backend/motoko/infrastructure)
+    - [2: Project organization](/docs/current/developer-docs/backend/motoko/explore-templates)
+    - [3: Developer environment](/docs/current/developer-docs/backend/motoko/dev-env)
+    - [4: Motoko quickstart](/docs/current/developer-docs/backend/motoko/at-a-glance)
+    - [5: Writing and deploying canisters](/docs/current/developer-docs/backend/motoko/deploying)
+    - [6: Upgrading canisters](/docs/current/developer-docs/backend/motoko/upgrading)
+    - [7: Making inter-canister calls](/docs/current/developer-docs/backend/motoko/intercanister-calls)
+    - [8: Optimizing canisters](/docs/current/developer-docs/backend/motoko/optimizing)
+    - [9: Importing library modules](/docs/current/developer-docs/backend/motoko/phonebook)
+    - [10: Using integers in calculator functions](/docs/current/developer-docs/backend/motoko/calculator)
+    - [11: Incrementing a natural number](/docs/current/developer-docs/backend/motoko/counter-tutorial)
+    - [12: Passing text arguments](/docs/current/developer-docs/backend/motoko/hello-location)
+    - [13: Accepting cycles from a wallet](/docs/current/developer-docs/backend/motoko/simple-cycles)
+    - [14: Querying using an actor](/docs/current/developer-docs/backend/motoko/define-an-actor)
+    - [15: Using multiple actors](/docs/current/developer-docs/backend/motoko/multiple-actors)
+    - [16: Add access control with identities](/docs/current/developer-docs/backend/motoko/access-control)
+    - [17: Using the Candid UI to test functions in a browser](/docs/current/developer-docs/backend/motoko/candid-ui)
+    - [18: Scalable dapp example](/docs/current/developer-docs/backend/motoko/scalability-cancan)
+    - [Motoko sample code and applications](/docs/current/developer-docs/backend/motoko/sample-apps)
+    - [Generating Motoko documentation](/docs/current/developer-docs/backend/motoko/mo-doc)
+
+#### Rust
+
+- [Building with Rust](/docs/current/developer-docs/backend/rust/)
+    - [1: Rust backend canister infrastructure](/docs/current/developer-docs/backend/rust/infrastructure)
+    - [2: Project organization](/docs/current/developer-docs/backend/rust/project-organization)
+    - [3: Developer environment](/docs/current/developer-docs/backend/rust/dev-env)
+    - [4: Rust quickstart](/docs/current/developer-docs/backend/rust/quickstart)
+    - [5: Writing and deploying canisters](/docs/current/developer-docs/backend/rust/deploying)
+    - [6: Inter-canister calls](/docs/current/developer-docs/backend/rust/intercanister)
+    - [7: Upgrading a canister](/docs/current/developer-docs/backend/rust/upgrading)
+    - [8: Optimizing Rust canisters](/docs/current/developer-docs/backend/rust/optimizing)
+    - [9: Incrementing a counter](/docs/current/developer-docs/backend/rust/counter)
+    - [10: Using periodic timers](/docs/current/developer-docs/backend/rust/timers)
+    - [11: Stable structures](/docs/current/developer-docs/backend/rust/stable-structures)
+    - [12: Adding and searching simple records](/docs/current/developer-docs/backend/rust/searching-records)
+    - [13: Access control](/docs/current/developer-docs/backend/rust/access-control)
+    - [14: Using the Candid UI with a Rust canister](/docs/current/developer-docs/backend/rust/candid)
+    - [Rust sample code and applications](/docs/current/developer-docs/backend/rust/samples)

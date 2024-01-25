@@ -325,7 +325,7 @@ const sidebars = {
                 "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
-            "developer-docs/backend/periodic-tasks",
+          "developer-docs/backend/periodic-tasks",
           ],
         },
         {
@@ -364,7 +364,6 @@ const sidebars = {
             "developer-docs/production/custom-domain/dns-setup"],
         },
         "developer-docs/backend/design-dapps",
-        "developer-docs/production/larger-wasm",
         "developer-docs/production/larger-wasm",
         {
           type: "category",
