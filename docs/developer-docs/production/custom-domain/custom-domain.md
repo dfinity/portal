@@ -238,7 +238,7 @@ request for your domain and the boundary node will return the corresponding ID.
 ## Custom domains using your own infrastructure
 
 - #### Step 1: Deploy your canister to ICP and note the canister id.
-- #### Step 2: Clone the [official ICP repo](https://github.com/dfinity/ic), checkout the following commit `2304690ca1d241d9ce6e19a427a18de9aac95b82` and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/master/typescript/service-worker) located under `ic/typescript/service-worker`.
+- #### Step 2: Clone the [official ICP repo](https://github.com/dfinity/ic), checkout the following commit `2304690ca1d241d9ce6e19a427a18de9aac95b82` and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/2304690ca1d241d9ce6e19a427a18de9aac95b82/typescript/service-worker) located under `ic/typescript/service-worker`.
 - #### Step 3: Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file [`service-worker/src/sw/domains/static.ts`](https://github.com/dfinity/ic/blob/master/typescript/service-worker/src/sw/domains/static.ts).
 - #### Step 4: Build the service worker according to the instructions in `service-worker/README.md`. The output should be:
     - an `index.html`,

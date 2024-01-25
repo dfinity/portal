@@ -465,11 +465,6 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Sharing links to dapps",
-          id: "developer-docs/production/social-sharing",
-        },
-        {
-          type: "doc",
           label: "Staging environments",
           id: "developer-docs/production/staging-environment",
         },

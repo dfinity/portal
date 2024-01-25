@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update September 13, 2023
-description: In this week's dev weekly update, we talk about the new 0.10.0 Motoko release, plus some new resources for developers on our dev docs. 
+description: In this week's dev weekly update, we talk about the new 0.10.0 Motoko release, plus some new resources for developers on our dev docs.
 tags: [Devs]
 image: /img/blog/dev-update-blog-sept-13.jpg
 ---
@@ -13,13 +13,13 @@ This week, we have a new `moc` release, version `0.10.0`, which introduces the n
 
 ## `moc 0.10.0` - Motoko stable regions
 
-This past week, a new version of the Motoko compiler has been released - `0.10.0`. This release includes a new, highly anticipated feature: Motoko stable regions! This feature has been a long-running project that encompasses effort from several team members to continue developing Motoko to be a powerful, yet safe language, targeted toward ambitious developers and their projects. 
+This past week, a new version of the Motoko compiler has been released - `0.10.0`. This release includes a new, highly anticipated feature: Motoko stable regions! This feature has been a long-running project that encompasses effort from several team members to continue developing Motoko to be a powerful, yet safe language, targeted toward ambitious developers and their projects.
 
 Stable regions are a type of dynamically allocated, isolated, and independently growable regions of stable memory. Let's take a closer look at what this new stable regions feature is and how developers can use it.
 
-### What is a "region"? 
+### What is a "region"?
 
-A `Region` is a new Motoko abstract data type that uses an API which exposes low-level canister stable memory. `Region`s are unique since they use distinct portions of stable memory that never interfere with one another. New `Region`s can be created dynamically, and any old regions that are marked for garbage collection will be removed and reused for new `Region`s afterwards. 
+A `Region` is a new Motoko abstract data type that uses an API which exposes low-level canister stable memory. `Region`s are unique since they use distinct portions of stable memory that never interfere with one another. New `Region`s can be created dynamically, and any old regions that are marked for garbage collection will be removed and reused for new `Region`s afterwards.
 
 ### How to use Motoko stable regions
 
@@ -33,23 +33,21 @@ Be sure to check out the documentation for the feature [here](https://github.com
 
 ## Motoko interactive course
 
-[Agorapp](https://agorapp.dev/) has designed a web-based IDE and corresponding Motoko introduction tutorial. We've embedded this tutorial into our developer docs, meaning you can write and run Motoko code in-browser without even having to leave our documentation! This is a great way to get started using Motoko with an interactive, hands-on tutorial. 
+[Agorapp](https://agorapp.dev/) has designed a web-based IDE and corresponding Motoko introduction tutorial. We've embedded this tutorial into our developer docs, meaning you can write and run Motoko code in-browser without even having to leave our documentation! This is a great way to get started using Motoko with an interactive, hands-on tutorial.
 
 Want to get started? The interactive tutorial can be found in our Motoko documentation [here](https://internetcomputer.org/docs/current/motoko/tutorial).
 
-## New documentation 
+## New documentation
 
 Over the past few weeks, we've had some great new pages added to our developer documentation. Let's take a look at some of the new additions!
 
-- [Developer journey level 0](/docs/current/tutorials/developer-journey/level-0/): Start your developer journey at the very beginning by following the level 0 module. In level 0, we cover the fundamentals of what the Internet Computer is, what terms you should be familiar with, and what tools we'll be using throughout our journey. 
+- [Developer journey level 0](/docs/current/tutorials/developer-journey/level-0/): Start your developer journey at the very beginning by following the level 0 module. In level 0, we cover the fundamentals of what the Internet Computer is, what terms you should be familiar with, and what tools we'll be using throughout our journey.
 
 - [Developer journey level 1](/docs/current/tutorials/developer-journey/level-1/): In the next stage of the developer journey, become a space cadet by getting comfortable creating your first dapp, managing your canisters, and acquiring and using cycles.
 
-- [Pulling canister dependencies](/docs/current/developer-docs/setup/pulling-canister-dependencies): Learn how to use the new `dfx deps` feature to pull third-party canister dependencies. 
+- [Pulling canister dependencies](/docs/current/developer-docs/setup/pulling-canister-dependencies): Learn how to use the new `dfx deps` feature to pull third-party canister dependencies.
 
-- [Sharing links to dapps](/docs/current/developer-docs/production/social-sharing): Want to learn the best way to share your dapp with others? Check out this documentation to find out. 
-
-- [Service Nervous System (SNS) documentation](/docs/current/developer-docs/integrations/sns/): Over the past few months, our documentation on SNSs has been greatly expanded. New docs include a pre-flight checklist, guidelines on integrating with the ledger and index canisters, and guides for testing your SNS before deploying it. 
+- [Service Nervous System (SNS) documentation](/docs/current/developer-docs/integrations/sns/): Over the past few months, our documentation on SNSs has been greatly expanded. New docs include a pre-flight checklist, guidelines on integrating with the ledger and index canisters, and guides for testing your SNS before deploying it.
 
 That'll wrap things up for this week, see you all next week!
 
