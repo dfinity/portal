@@ -150,15 +150,15 @@ const DocsHomePage: FC = () => {
               <div className="flex-1 flex flex-col">
                 <h4 className="tw-heading-5 mb-6">Solidity</h4>
                 <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Bitfinity allows you to build Internet apps on the Internet
-                  Computer with Solidity, a popular language for DeFi
+                  Bitfinity allows you to deploy smart contracts on the Internet
+                  Computer written in Solidity, a popular language for DeFi
                   applications.
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://bitfinity.network"
+                    href="/docs/current/developer-docs/backend/solidity/"
                     className="link-primary"
-                    title="Go to Motoko docs"
+                    title="Go to Solidity"
                   >
                     <LinkArrowRight />
                   </Link>
