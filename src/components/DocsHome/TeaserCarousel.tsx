@@ -47,7 +47,7 @@ const CARDS: Array<CarouselCard> = [
     cta: (
       <Link
         className="button-transparent button-with-icon pl-0"
-        href="/docs/current/tutorials"
+        href="/docs/current/tutorials/developer-journey/"
       >
         Start tutorials
         <LinkArrowRight />

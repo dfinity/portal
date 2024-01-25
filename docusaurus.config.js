@@ -359,7 +359,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Learn to build step by step",
-            href: "/docs/current/tutorials/",
+            href: "/docs/current/tutorials/developer-journey/",
             image: "/img/nav/featured-develop.webp",
           },
         },

@@ -325,7 +325,6 @@ const sidebars = {
                 "developer-docs/integrations/vetkeys/using-vetkeys",
               ],
             },
-          "developer-docs/backend/periodic-tasks",
           ],
         },
         {
@@ -337,7 +336,7 @@ const sidebars = {
             "developer-docs/integrations/https-outcalls/https-outcalls-post",
           ],
         },
-       
+        "developer-docs/backend/periodic-tasks",
       ],
     },
     {
