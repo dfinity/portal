@@ -62,7 +62,7 @@ account (see [fiduciary](#fiduciary)).
 
 A **blockchain** is a growing list of cryptographically linked blocks,
 agreed upon by [consensus](#consensus). On the [Internet
-Computer](#internet-computer-ic), every [subnet](#subnet) maintains its own 
+Computer](#internet-computer-ic), every [subnet](#subnet) maintains its own
 blockchain with blocks containing messages for the [canisters](#canisters)
 hosted on this subnet. These blockchains interact using [chain key cryptography](#chain-key).
 
@@ -70,7 +70,7 @@ hosted on this subnet. These blockchains interact using [chain key cryptography]
 
 **Boundary nodes** are gateways to the Internet Computer. These nodes
 allow users to seamlessly access the [canisters](#canisters) smart contracts
-running on ICP. 
+running on ICP.
 The boundary nodes have several purposes: they aid in discover-ability (the
 `icp0.io` domain name points to a set of boundary nodes), they are
 geo-aware and can route incoming requests to the nearest subnet
@@ -79,8 +79,7 @@ involved, they can help load balance query
 [transactions](#transaction), they can cache
 cryptographically verified data in the role of a content distribution
 network, they can throttle excessive interactions from an outside IP
-address, bootstrapping/installing the service worker, and they can help
-protect subnets from DDoS attacks.
+address, and they can help protect subnets from DDoS attacks.
 
 #### burning transaction
 
@@ -121,7 +120,7 @@ account is a ledger account whose fiduciary is a non-canister
 
 #### canister development kit (CDK)
 
-A **canister development kit** is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice. 
+A **canister development kit** is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice.
 
 #### canister identifier
 
@@ -231,7 +230,7 @@ on a decentralised computer network instead of a single computer. On the
 A **data center** (DC) is a physical site that hosts
 [nodes](#node) which contribute to the [Internet
 Computer](#internet-computer-ic). It includes the hardware and
-software infrastructure required for node deployment. 
+software infrastructure required for node deployment.
 Data centers are nodes that are selected and vetted by the [NNS](#NNS).
 
 #### dissolve delay
@@ -441,9 +440,9 @@ neuron would have to already be dissolved.
 
 #### Network Nervous System (NNS)
 
-The **Network Nervous System** (NNS) is the decentralized autonomous 
-organization (DAO) that governs the [Internet Computer](#internet-computer-ic) 
-by [proposals](#proposal) on which [ICP](#ICP) [neuron](#neuron) owners can vote. 
+The **Network Nervous System** (NNS) is the decentralized autonomous
+organization (DAO) that governs the [Internet Computer](#internet-computer-ic)
+by [proposals](#proposal) on which [ICP](#ICP) [neuron](#neuron) owners can vote.
 Once such a proposal is accepted, it is autonomously executed.
 The NNS consists of a collection of [system
 canisters](#system-canister) (aka "NNS canisters").
@@ -596,7 +595,7 @@ necessary for a [node](#node) to participate in a
 
 #### registry
 
-The ICP **registry** is a [canister](#canister) that manages 
+The ICP **registry** is a [canister](#canister) that manages
 the meta-data maintained on the
 network nervous system ([NNS](#network-nervous-system-(NNS)))
 and accessed by all [subnet](#subnet) blockchains.
@@ -665,7 +664,7 @@ maintain the [Internet Computer](#internet-computer-ic).
 
 A ledger account **transaction** is the process of transferring
 [ICP](#icp) from one [account](#account) to
-another; it can be of three types: 
+another; it can be of three types:
 - Regular transfer transaction.
 - [Burning](#burning) transaction
 - [Minting](#minting) transaction.
@@ -705,7 +704,7 @@ the induction pool.
 implementation. Its direct participants are the
 [neurons](#neuron), who both:
 -  Submit proposals.
--  Vote on proposals. 
+-  Vote on proposals.
 The voting process is a rather intricate undertaking,
 involving aspects such as neuron eligibility, voting power, chains of
 neuron followees etc. This has been designed with security and
@@ -724,4 +723,4 @@ stack-based virtual machine.
 
 #### XDR
 
-**XDR** is the currency code for *special drawing rights (SDR)*. SDRs are supplementary foreign exchange assets that are defined and maintained by the International Monetary Fund (IMF). SDRs are not a currency themselves, but represent a claim to a currency that is held by IMF member countries in which they may be exchanged. The ICP developer docs refer to currencies based on their currency codes, therefore SDRs are referenced as its currency code **XDR** in this documentation. 
+**XDR** is the currency code for *special drawing rights (SDR)*. SDRs are supplementary foreign exchange assets that are defined and maintained by the International Monetary Fund (IMF). SDRs are not a currency themselves, but represent a claim to a currency that is held by IMF member countries in which they may be exchanged. The ICP developer docs refer to currencies based on their currency codes, therefore SDRs are referenced as its currency code **XDR** in this documentation.
