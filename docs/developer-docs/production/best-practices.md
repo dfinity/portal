@@ -37,7 +37,7 @@ Use [canister timers](../backend/periodic-tasks.md) over plain heartbeats for re
  * Use `Blob` instead of `[Nat8]` for storing large binary assets.
  * Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
 
-4. Store large Blobs in stable memory for efficient manual management:
+4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
 
 #### Rust 
