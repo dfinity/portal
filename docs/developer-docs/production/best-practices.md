@@ -57,4 +57,4 @@ Implement backup mechanisms within canisters for state protection against deallo
 
 #### 6. Transaction History Storage
 
-If your application needs to store transaction history, consider using dedicated services like [CAP](https://cap.ooo/) for maintaining transaction logs, especially for NFT collections. This facilitates integration with explorers and wallets and aids in ownership state reconstruction if the main NFT canister is compromised. Be mindful of additional costs associated with inter-canister calls.
+If your application needs to store transaction history, consider using dedicated services like [CAP](https://cap.ooo/) for maintaining transaction logs. This facilitates integration with explorers and wallets and aids in ownership state reconstruction if the main canister is compromised. Be mindful of additional costs associated with inter-canister calls.
