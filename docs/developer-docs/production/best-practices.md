@@ -40,7 +40,7 @@ Use [canister timers](../backend/periodic-tasks.md) over plain heartbeats for re
 4. Store large Blobs in stable memory for efficient manual management:
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
 
-#### Rust developers:
+#### Rust 
 1. Exercise caution with Vec<u8> and String types for state serialization.
 2. Refer to recommended blogs and articles for effective Rust canister development.
 
