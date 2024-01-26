@@ -185,7 +185,6 @@ const redirects = `
   /docs/current/concepts/index /docs/current/concepts/what-is-ic
   /docs/current/concepts /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/backend/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
