@@ -18,7 +18,7 @@ Refer to the [cycles estimate](../gas-cost.md) page to estimate cycle usage.
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, especially for NFTs, ensuring at least 90 to 180 days' worth of cycles for proactive management.
 
-Refer to [this resource](../../tutorials/developer-journey/level-1/1.6-managing-canisters.md) to learn how to configure the `freezing_threshold` of a canister. 
+Refer to [this resource](../../tutorials/developer-journey/level-1/1.6-managing-canisters.md/#setting-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister. 
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](../../../blog/features/async-performance-counter.md) to profile your canisters even before going live.
 
