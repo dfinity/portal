@@ -14,7 +14,7 @@ Refer to [topping up cycles page](../production/topping-up-canister.md) to learn
 
 Refer to the [cycles estimate](../gas-cost.md) page to estimate cycle usage. 
 
-### 2. Managing Cycle Depletion
+### 2. Managing cycle depletion
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, especially for NFTs, ensuring at least 90 to 180 days' worth of cycles for proactive management.
 
