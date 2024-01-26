@@ -10,7 +10,7 @@ This guide outlines essential development best practices for building on the Int
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
 
-Refer to [topping up cycles page](../production/topping-up-canister.md) to learn how to top up cycles effectively.
+Refer to [topping up cycles page](../production/topping-up-canister.md) to learn how to top-up cycles effectively.
 
 Refer to the [cycles estimate](../gas-cost.md) page to estimate cycle usage. 
 
