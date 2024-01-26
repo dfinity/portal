@@ -44,7 +44,7 @@ Use [canister timers](../backend/periodic-tasks.md) over plain heartbeats for re
 1. Exercise caution with Vec<u8> and String types for state serialization.
 2. Refer to recommended blogs and articles for effective Rust canister development.
 
-#### Resources:
+#### Resources
 
 Several resources on efficient implementations include: 
 
