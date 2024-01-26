@@ -194,11 +194,10 @@ const redirects = `
   /docs/current/developer-docs/setup/index /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
+  /docs/current/tutorials/index /docs/current/developer-docs/
   /docs/current/tutorials/ /docs/current/developer-docs/
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
-  /docs/current/tutorials/developer-journey/level-5/index /docs/current/tutorials/developer-journey/level-5/5.1-vetKeys-tutorial
-  /docs/current/tutorials/developer-journey/level-5 /docs/current/tutorials/developer-journey/level-5/5.1-vetKeys-tutorial
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
