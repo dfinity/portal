@@ -1,4 +1,4 @@
-# Development Best Practices 
+# Developer best practices 
 
 ## Overview
 
