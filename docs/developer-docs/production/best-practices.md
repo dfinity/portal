@@ -6,7 +6,7 @@ This guide outlines essential development best practices for building on the Int
 
 ## Best practices
 
-### 1. Generous Canister Top-Up
+### 1. Generous canister top-up
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
 
