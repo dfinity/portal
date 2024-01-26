@@ -181,15 +181,25 @@ const redirects = `
   /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/setup/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/concepts/index /docs/current/concepts/what-is-ic
+  /docs/current/concepts /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/backend/candid/candid-concepts
+  /docs/current/developer-docs/backend/candid /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/security /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/integrations/index /docs/current/developer-docs/
+  /docs/current/developer-docs/integrations /docs/current/developer-docs/
+  /docs/current/developer-docs/setup/index /docs/current/developer-docs/setup/install/
+  /docs/current/developer-docs/setup /docs/current/developer-docs/setup/install/
+  /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
   /docs/current/tutorials/ /docs/current/developer-docs/
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
-  /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
+  /docs/current/tutorials/developer-journey/level-5/index /docs/current/tutorials/developer-journey/level-5/5.1-vetKeys-tutorial
+  /docs/current/tutorials/developer-journey/level-5 /docs/current/tutorials/developer-journey/level-5/5.1-vetKeys-tutorial
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
