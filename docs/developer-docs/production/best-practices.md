@@ -4,7 +4,7 @@
 
 This guide outlines essential development best practices for building on the Internet Computer Protocol (ICP).
 
-## Best Practices
+## Best practices
 
 ### 1. Generous Canister Top-Up
 
