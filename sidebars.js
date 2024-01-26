@@ -80,6 +80,7 @@ const sidebars = {
         "concepts/tokens-cycles",
         "concepts/trust-in-canisters",
         "developer-docs/production/resource-limits",
+        "developer-docs/production/best-practices",
         "references/glossary",
       ],
     },

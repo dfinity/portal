@@ -40,6 +40,7 @@ As a dapp developer, you might find it useful to think of the Internet Computer 
 - [ICP tokens](/docs/current/concepts/tokens-cycles)
 - [Trust in canisters](/docs/current/concepts/trust-in-canisters)
 - [Resource limits](/docs/current/developer-docs/production/resource-limits)
+- [Best Practices](/docs/current/developer-docs/production/best-practices)
 - [Glossary](/docs/current/references/glossary)
 #### Using canisters
 - Calling canisters
