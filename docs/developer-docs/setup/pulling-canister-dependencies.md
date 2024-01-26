@@ -1,4 +1,4 @@
-# Import a canister
+# Import
 
 ## Overview
 
