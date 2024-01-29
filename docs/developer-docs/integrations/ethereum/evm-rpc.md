@@ -49,6 +49,25 @@ To specify the RPC provider you'd like to use, change the `Url` value:
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Url="https://ethereum.publicnode.com"},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
+You can also specify an RPC provider within your Candid file:
+
+```
+type JsonRpcSource = variant {
+  Chain : nat64;
+  Service : record { hostname : text; chainId : opt nat64, headers: opt vec (text, text) };
+  Provider : nat64;
+  Custom : record { url : text; headers : vec (text, text) };
+};
+
+request : (
+  source : JsonRpcSource,
+  jsonRequest : text,
+  maxResponseBytes : nat64
+) -> (
+  Result<text, RpcError>
+);
+```
+
 ### Registering your own provider
 
 To register your own RPC provider, you can use the following command:
