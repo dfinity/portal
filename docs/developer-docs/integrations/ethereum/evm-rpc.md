@@ -86,7 +86,7 @@ Note that when deploying your own canister, you may encounter API rate limits. R
 NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
-WALLET=$(dfx identity get-wallet --network=$NETWORK --identity=$IDENTITY)
+WALLET=$(dfx identity get-wallet)
 RPC_SOURCE=EthMainnet
 JSON_RPC_SOURCE=Chain=1
 RPC_CONFIG=null
@@ -148,9 +148,21 @@ request : (
 
 ## Caveats
 
+### HTTP outcall consensus
+
 Make sure to verify that RPC requests work as expected on the ICP mainnet! HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
 
 If you encounter an issue with consensus, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
+
+### Response size estimates
+
+In some cases, it's necessary to perform multiple HTTP outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
+
+```bash
+dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSizeEstimate = 5000}, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=1000000000 --wallet=$(dfx identity get-wallet)
+```
+
+If the response is larger than the estimate, the canister will double the max response size and retry until either receiving a response or running out of cycles given by the `--with-cycles` flag.
 
 
 ### Registering your own provider
