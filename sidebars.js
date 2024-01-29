@@ -432,6 +432,13 @@ const sidebars = {
             "tokenomics/token-holders/custody-options-intro",
             "tokenomics/token-holders/self-custody-quickstart"],
         },
+        {
+          type: "category",
+          label: "NFTs",
+          items: [
+            "developer-docs/use-cases/considerations-for-nft-devs.md",
+          ]
+        },
       ],
     },
     {
