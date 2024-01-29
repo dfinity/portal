@@ -153,7 +153,7 @@ The table below details the cost of compute, storage transmissions and canister 
 | Canister creation | For creating canisters on a subnet. | Created canister | 100B | $0.133661 | 100B / 13 * 34 | $0.34957492307 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.0000133661 | 10M / 13 * 34 | $0.00000511056 |
 | Update message execution | For every update message executed. | Target canister | 590K | $0.0000007885999 | 590K / 13 * 34 | $0.000000301523491 |
-| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M | $0.0053 | 400M / 13 * 34 | $0.00001572482 |
+| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M | $0.00053 | 400M / 13 * 34 | $0.0002044224 |
 | Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K | $0.0000003475186 | 260K / 13 * 34 | $0.000000132874759 |
 | Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K | $0.00000000133661 | 1K / 13 * 34 | $0.00000000051105676 |
 | Ingress message reception | For every ingress message received. | Receiving canister | 1.2M | $0.00000160393 | 1.2M / 13 * 34 | $0.000000613268118 |
