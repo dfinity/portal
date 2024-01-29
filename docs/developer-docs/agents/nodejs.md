@@ -1,5 +1,4 @@
-
-# Making a call from Node.js
+# NodeJS
 
 ## Overview
 This article covers connecting to ICP from Node.js in the server environment. For more information about calling ICP from JavaScript in a web browser, please, refer to [this guide](javascript-intro.md).

@@ -37,8 +37,8 @@ const redirects = `
   /docs/samples/codelabs/simple-nft /samples
   /docs/samples/codelabs/static-website /samples
   /docs/samples/* /samples
-  /docs/security-best-practices/introduction /docs/current/developer-docs/security/
-  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/
+  /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
@@ -88,9 +88,9 @@ const redirects = `
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
-  /docs/developers-guide/concepts/concepts-intro /docs/current/concepts/
+  /docs/developers-guide/concepts/concepts-intro /docs/current/concepts/what-is-ic
   /docs/developers-guide/customize-projects /docs/current/developer-docs/setup/manage-projects
-  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles/
+  /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/setup/install/
@@ -105,7 +105,6 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/backend/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/setup/manage-canisters
-  /docs/current/samples/overview/host-a-website /docs/current/samples/host-a-website
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
@@ -133,46 +132,46 @@ const redirects = `
   /base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
-  /docs/current/references/security/* /docs/current/developer-docs/security/:splat
+  /docs/current/references/security/* /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
-  /docs/developers-guide/concepts/* /docs/current/concepts/:splat
+  /docs/developers-guide/concepts/* /docs/current/concepts/what-is-ic
   /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/current/motoko/main/:splat
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/rosetta-api/* /docs/current/developer-docs/integrations/rosetta/:splat
   /docs/rust-guide/* /docs/current/developer-docs/backend/rust/:splat
-  /docs/security-best-practices/* /docs/current/developer-docs/security/:splat
+  /docs/security-best-practices/* /docs/current/developer-docs/security/general-security-best-practices
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
   /sustainability /capabilities/sustainability
   /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-journey/
-  /install.sh)" /docs/current/developer-docs/setup/
+  /install.sh)" /docs/current/developer-docs/setup/install/
   /docs/current/motoko/intro/ /docs/current/motoko/main/motoko
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
-  /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/setup/
+  /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/setup/install/
   /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/agents/
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/integrations/internet-identity/overview
-  /docs/quickstart/local-quickstart.html /docs/current/developer-docs/setup/
+  /docs/quickstart/local-quickstart.html /docs/current/developer-docs/setup/install/
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
-  /docs/quickstart/network-quickstart.html /docs/current/developer-docs/setup/
+  /docs/quickstart/network-quickstart.html /docs/current/developer-docs/setup/install/
   /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/integrations/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
-  /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/
+  /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/install/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-ic
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/production/instruction-limits /docs/current/developer-docs/production/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/production/resource-limits
-  /docs/current/concepts/data-centers /docs/current/concepts/
+  /docs/current/concepts/data-centers /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
@@ -181,6 +180,25 @@ const redirects = `
   /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
+  /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/setup/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/setup/cycles/cycles-wallet
+  /docs/current/concepts/index /docs/current/concepts/what-is-ic
+  /docs/current/concepts /docs/current/concepts/what-is-ic
+  /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/backend/candid/candid-concepts
+  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/security /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/integrations/index /docs/current/developer-docs/
+  /docs/current/developer-docs/integrations /docs/current/developer-docs/
+  /docs/current/developer-docs/setup/index /docs/current/developer-docs/setup/install/
+  /docs/current/developer-docs/setup /docs/current/developer-docs/setup/install/
+  /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
+  /docs/current/tutorials/index /docs/current/developer-docs/
+  /docs/current/tutorials/ /docs/current/developer-docs/
+  /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
+  /docs/current/samples/* /docs/current/samples/overview
+  /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/setup/deploy
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

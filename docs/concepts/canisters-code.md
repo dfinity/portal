@@ -23,10 +23,8 @@ This concept of a canister consisting of both program and state is an important 
 - Non-committing **query calls** (any state change is discarded).
 - Committing **update calls** (state changes are persisted).
 
-
-| Type      | Key points to remember|
-|-----------|-----------------------|
 |**Query calls**|**Update calls**   |
+|-----------|-----------------------|
 |Allow the user to query the current state of a canister or call a function that operates on the canister’s state **without changing it**.|Allow the user to change the state of the canister and have **changes persisted**.|
 |Are synchronous and answered immediately.|Are answered asynchronously.|
 |Can be made to any node that holds the canister; the result does not go through consensus. That is, there is an inherent tradeoff between security and performance: the reply from a single node is fast, but might be untrustworthy or inaccurate.|Must pass through consensus to return the result. Because consensus is required, changing the state of a canister, and returning the result can take time. There is an inherent tradeoff between security and performance: the result is trustworthy because two-thirds of the replicas in a subnet must agree on the result, but the call is slow.|

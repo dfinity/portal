@@ -1,4 +1,4 @@
-# The ICP ledger
+# ICP ledger
 
 ## Overview
 

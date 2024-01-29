@@ -29,7 +29,7 @@ Now that more dapps are being built on ICP, it becomes apparent that several fun
 For those who want to understand the intricacies of the Internet Computer’s behavior in detail, we refer you to the [Internet Computer interface specification](ic-interface-spec.md).
 
 ## Security best practices
-We also include here various suggestions for [security best practices](../developer-docs/security/index.md). There is information useful for developing with a security mindset when building on ICP, but also more generally.
+We also include here various suggestions for [security best practices](/docs/current/developer-docs/security/general-security-best-practices). There is information useful for developing with a security mindset when building on ICP, but also more generally.
 
 ## Resources
 For other references, feel free to check out:

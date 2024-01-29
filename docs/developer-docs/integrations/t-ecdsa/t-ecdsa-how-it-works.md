@@ -1,4 +1,4 @@
-# Threshold ECDSA: technology overview
+# Threshold ECDSA
 
 ## Overview
 This page gives a high-level outline of chain-key ECDSA signatures on ICP. Some of the information in this section is not required to use the feature, but may be of interest to the technically inclined reader for obtaining background information on the technology. ICP implements the threshold ECDSA protocol by Groth and Shoup as described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of this distributed signing protocol.

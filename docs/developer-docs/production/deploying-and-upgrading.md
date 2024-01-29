@@ -1,4 +1,4 @@
-# Deploying and upgrading canisters
+# Development lifecycle
 
 ## Overview
 

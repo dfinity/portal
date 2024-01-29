@@ -53,32 +53,36 @@ const subnavItems = [
     type: "doc",
     position: "left",
     docId: "home",
-    label: "Docs",
+    label: "Home",
   },
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "tutorials",
-    label: "Tutorials",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "guides",
-    label: "Guides",
+    sidebarId: "build",
+    label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "references",
-    label: "References",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "motoko",
     label: "Motoko",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "rust",
+    label: "Rust",
+  },
+  {
+    position: "left",
+    to: "https://demergent-labs.github.io/azle/",
+    label: "TypeScript",
+  },
+  {
+    position: "left",
+    to: "https://demergent-labs.github.io/kybra/",
+    label: "Python",
   },
   {
     position: "left",
@@ -101,8 +105,7 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer Grants", href: "https://dfinity.org/grants" },
-      {
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },      {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
       },
@@ -356,7 +359,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Learn to build step by step",
-            href: "/docs/current/tutorials/",
+            href: "/docs/current/tutorials/developer-journey/",
             image: "/img/nav/featured-develop.webp",
           },
         },

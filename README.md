@@ -23,7 +23,7 @@ The developer documentation must follow the provided style guide in order to be 
 
 #### Requirements
 
-- [Node v16](https://nodejs.org/en/blog/release/v16.16.0) **(v18 not recommended)**.
+- [Node v18](https://nodejs.org/en/blog/release/v18.17.0)
 
 #### Install and run locally
 

@@ -1,4 +1,4 @@
-# Integrating external agents with ICP
+# Using external agents
 
 ## Overview
 

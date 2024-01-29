@@ -1,8 +1,4 @@
----
-sidebar_position: 7
----
-
-# Deploy an existing frontend application
+# Deploy an existing frontend
 
 ## Overview
 

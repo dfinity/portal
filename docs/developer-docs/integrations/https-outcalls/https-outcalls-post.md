@@ -1,4 +1,4 @@
-# How to use HTTP outcalls: POST
+# HTTP outcalls: POST
 
 ## Overview
 
@@ -224,7 +224,7 @@ actor {
     //     body : [Nat8];
     // };
 
-    /You need to decode that [Na8] array that is the body into readable text. 
+    //You need to decode that [Na8] array that is the body into readable text. 
     //To do this:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
