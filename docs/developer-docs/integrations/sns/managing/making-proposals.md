@@ -514,7 +514,7 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             }
         }
     }
-)' > message.json
+)'  --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE>  > message.json
 
 quill send message.json
 ```
