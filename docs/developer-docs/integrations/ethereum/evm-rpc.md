@@ -28,11 +28,11 @@ Other RPC methods (including those specific to non-Ethereum networks) may be acc
 
 The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC providers](https://ethereum.org/developers/docs/apis/json-rpc):
 
-- [Alchemy](https://docs.alchemy.com/docs/how-to-read-data-with-json-rpc)
-- [Ankr](https://www.ankr.com/infrastructure/build-on-ethereum/)
-- [BlockPI](https://blockpi.io/)
-- [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/)
-- [Public Node](https://www.publicnode.com/)
+- [Alchemy](https://docs.alchemy.com/docs/how-to-read-data-with-json-rpc): Ethereum mainnet, Sepolia testnet
+- [Ankr](https://www.ankr.com/infrastructure/build-on-ethereum/): Ethereum mainnet, Sepolia testnet
+- [BlockPI](https://blockpi.io/): Ethereum mainnet, Sepolia testnet
+- [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/): Ethereum mainnet
+- [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet
 
 Likewise, many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method. 
 
