@@ -17,6 +17,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          label: "Hello, world!",
+          id: "developer-docs/setup/hello-world",
+        },
+        {
+          type: "doc",
           label: "Installing the IC SDK",
           id: "developer-docs/setup/install/index",
         },
