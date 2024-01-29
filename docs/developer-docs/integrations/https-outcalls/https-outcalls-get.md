@@ -260,7 +260,7 @@ actor {
 - The code above adds `20_949_972_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
-- #### Step 3:  Open the `src/send_http_get_motoko_backend/Types.mo` file in a text editor and replace content with:
+- #### Step 3:  Create the `src/send_http_get_motoko_backend/Types.mo` file in a text editor and replace content with:
 
 ```motoko
 module Types {
