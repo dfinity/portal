@@ -43,20 +43,10 @@ To read unspent transaction outputs from the Bitcoin network, make a call to the
 <TabItem value="rust" label="Rust" default>
 
 ```rust
-pub async fn get_utxos(network: BitcoinNetwork, address: String) -> GetUtxosResponse {
-    let utxos_res: Result<(GetUtxosResponse,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_utxos",
-        (GetUtxosRequest {
-            address,
-            network: network.into(),
-            filter: None,
-        },),
-        GET_UTXOS_COST_CYCLES,
-    )
-    .await;
-
-    utxos_res.unwrap().0
+#[update]
+pub async fn get_utxos(address: String) -> GetUtxosResponse {
+    let network = NETWORK.with(|n| n.get());
+    bitcoin_api::get_utxos(network, address).await
 }
 ```
 
@@ -90,20 +80,10 @@ To read the current balance of a Bitcoin address, make a call to the `bitcoin_ge
 <TabItem value="rust" label="Rust" default>
 
 ```rust
-pub async fn get_balance(network: BitcoinNetwork, address: String) -> u64 {
-    let balance_res: Result<(Satoshi,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_balance",
-        (GetBalanceRequest {
-            address,
-            network: network.into(),
-            min_confirmations: None,
-        },),
-        GET_BALANCE_COST_CYCLES,
-    )
-    .await;
-
-    balance_res.unwrap().0
+#[update]
+pub async fn get_balance(address: String) -> u64 {
+    let network = NETWORK.with(|n| n.get());
+    bitcoin_api::get_balance(network, address).await
 }
 ```
 
@@ -134,18 +114,10 @@ Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with you
 <TabItem value="rust" label="Rust" default>
 
 ```rust
-pub async fn get_current_fee_percentiles(network: BitcoinNetwork) -> Vec<MillisatoshiPerByte> {
-    let res: Result<(Vec<MillisatoshiPerByte>,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_current_fee_percentiles",
-        (GetCurrentFeePercentilesRequest {
-            network: network.into(),
-        },),
-        GET_CURRENT_FEE_PERCENTILES_CYCLES,
-    )
-    .await;
-
-    res.unwrap().0
+#[update]
+pub async fn get_current_fee_percentiles() -> Vec<MillisatoshiPerByte> {
+    let network = NETWORK.with(|n| n.get());
+    bitcoin_api::get_current_fee_percentiles(network).await
 }
 ```
 

@@ -27,22 +27,21 @@ To send transactions to the Bitcoin network, make a call to the `bitcoin_send_tr
 <TabItem value="rust" label="Rust" default>
 
 ```rust
-pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
-    let transaction_fee = SEND_TRANSACTION_BASE_CYCLES
-        + (transaction.len() as u64) * SEND_TRANSACTION_PER_BYTE_CYCLES;
-
-    let res: Result<(), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_send_transaction",
-        (SendTransactionRequest {
-            network: network.into(),
-            transaction,
-        },),
-        transaction_fee,
+#[update]
+pub async fn send(request: types::SendRequest) -> String {
+    let derivation_path = DERIVATION_PATH.with(|d| d.clone());
+    let network = NETWORK.with(|n| n.get());
+    let key_name = KEY_NAME.with(|kn| kn.borrow().to_string());
+    let tx_id = bitcoin_wallet::send(
+        network,
+        derivation_path,
+        key_name,
+        request.destination_address,
+        request.amount_in_satoshi,
     )
     .await;
 
-    res.unwrap();
+    tx_id.to_string()
 }
 ```
 
