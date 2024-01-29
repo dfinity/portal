@@ -45,7 +45,7 @@ View the [full list of RPC providers for each EVM network.](https://chainlist.or
 
 ### Custom JSON-RPC requests
 
-Send a raw request to a custom JSON-RPC API with the `request` method:
+Send a raw JSON-RPC request to a custom URL with the `request` method:
 
 ```
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Custom={url = "https://ethereum.publicnode.com"}},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
@@ -69,21 +69,23 @@ request : (
 );
 ```
 
+Note that calling the `request` method may not reach HTTP outcall consensus depending on the provider. If you encounter a consensus issue, [please let us know](https://github.com/internet-computer-protocol/ic-eth-rpc) and we will look into whether it's possible to add official support for your use case. 
+
 ### Registering your own provider
 
-To register your own RPC provider, you can use the following command:
+To register your own RPC provider in your local replica, you can use the following command:
 
 ```
-dfx canister call evm_rpc register_provider '(record { chain_id=1; base_url="https://cloudflare-eth.com"; credential_path="/v1/mainnet"; cycles_per_call=10; cycles_per_message_byte=1; })'
+dfx canister call evm_rpc registerProvider '(record { chainId=1; hostname="cloudflare-eth.com"; credentialPath="/v1/mainnet"; cyclesPerCall=1000; cyclesPerMessageByte=100; })'
 ```
 
 In this command, the following configuration parameters are set:
 
-- `chain_id`: The ID of the blockchain network.
-- `base_url`: The JSON-RPC base URL. 
-- `credential_path`: The path to the RPC authentication.
-- `cycles_per_call`: The amount of cycles charged per RPC call.
-- `cycles_per_message_byte`: The amount of cycles charged per message byte. 
+- `chainId`: The ID of the blockchain network.
+- `baseUrl`: The JSON-RPC base URL. 
+- `credentialPath`: The path to the RPC authentication.
+- `cyclesPerCall`: The amount of cycles charged per RPC call.
+- `cyclesPerMessageByte`: The amount of cycles charged per message byte. 
 
 
 Then, to authorize with this provider in your local environment, run the commands:
@@ -91,7 +93,6 @@ Then, to authorize with this provider in your local environment, run the command
 ```
 PRINCIPAL=$(dfx identity get-principal)
 dfx canister call evm_rpc authorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
-dfx canister call evm_rpc get_authorized '(variant { RegisterProvider })'
 ```
 
 To deauthorize the provider locally, run the command:
@@ -103,7 +104,7 @@ dfx canister call evm_rpc deauthorize "(principal \"$PRINCIPAL\", variant { Regi
 
 ### Using a specific EVM chain
 
-To use a specific EVM chain, specify the chain's ID in the `Chain` parameter:
+To use a specific EVM chain, specify the chain's ID in the `Chain` variant:
 
 ```
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Chain=0x1},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
@@ -112,17 +113,42 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 6000
 
 ## Using the EVM RPC canister 
 
-To use the canister locally, start the local replica and deploy the canister locally with `13` subnets to simulate deployment on the mainnet:
+To use include the EVM RPC canister in a dfx project, add the following to your `dfx.json` file:
+
+```
+{
+  "canisters": {
+    "evm_rpc": {
+      "type": "custom",
+      "candid": "https://github.com/internet-computer-protocol/ic-eth-rpc/releases/latest/download/evm_rpc.did",
+      "wasm": "https://github.com/internet-computer-protocol/ic-eth-rpc/releases/latest/download/evm_rpc_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "a6d44-nyaaa-aaaap-abp7q-cai"
+        }
+      }
+    }
+  }
+}
+```
+
+Next, start the local replica and deploy the canister locally with 13 or 28 subnet nodes to simulate deployment on the mainnet:
 
 ```
 dfx start --background
 dfx deploy evm_rpc --argument '(record { nodesInSubnet = 13 })'
 ```
 
+Another option is to create a fork of the EVM RPC canister:
+
+```
+git clone https://github.com/internet-computer-protocol/ic-eth-rpc
+```
+
 To use the canister on the mainnet, deploy it with the `--network ic` flag:
 
 ```
-dfx deploy evm_rpc --network ic
+dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 13 })'
 ```
 
 ## eth_gasPrice
