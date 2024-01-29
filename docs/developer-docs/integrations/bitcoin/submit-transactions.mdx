@@ -17,8 +17,21 @@ To send transactions to the Bitcoin network, make a call to the `bitcoin_send_tr
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-  public func send(request : SendRequest) : async Text {
-    Utils.bytesToText(await BitcoinWallet.send(NETWORK, DERIVATION_PATH, KEY_NAME, request.destination_address, request.amount_in_satoshi))
+ type ManagementCanisterActor = actor {
+      bitcoin_send_transaction : SendTransactionRequest -> async ();
+  };
+
+  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+
+  public func send_transaction(network : Network, transaction : [Nat8]) : async () {
+    let transaction_fee =
+        SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
+
+    ExperimentalCycles.add(transaction_fee);
+    await management_canister_actor.bitcoin_send_transaction({
+        network;
+        transaction;
+    })
   };
 ```
 
@@ -27,21 +40,27 @@ To send transactions to the Bitcoin network, make a call to the `bitcoin_send_tr
 <TabItem value="rust" label="Rust" default>
 
 ```rust
-#[update]
-pub async fn send(request: types::SendRequest) -> String {
-    let derivation_path = DERIVATION_PATH.with(|d| d.clone());
-    let network = NETWORK.with(|n| n.get());
-    let key_name = KEY_NAME.with(|kn| kn.borrow().to_string());
-    let tx_id = bitcoin_wallet::send(
-        network,
-        derivation_path,
-        key_name,
-        request.destination_address,
-        request.amount_in_satoshi,
+use ic_cdk::api::management_canister::bitcoin::{
+    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
+    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
+};
+
+pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
+    let transaction_fee = SEND_TRANSACTION_BASE_CYCLES
+        + (transaction.len() as u64) * SEND_TRANSACTION_PER_BYTE_CYCLES;
+
+    let res: Result<(), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_send_transaction",
+        (SendTransactionRequest {
+            network: network.into(),
+            transaction,
+        },),
+        transaction_fee,
     )
     .await;
 
-    tx_id.to_string()
+    res.unwrap();
 }
 ```
 
