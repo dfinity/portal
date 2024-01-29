@@ -33,7 +33,7 @@ Learn more in the [Bitcoin integration technical overview](bitcoin-how-it-works.
 
 - [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
-- [Local development workflow](local-development.mdx).
+- [Local development workflow](local-development.md).
 
 - [Developer journey: ckBTC and Bitcoin integration](/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin).
 
