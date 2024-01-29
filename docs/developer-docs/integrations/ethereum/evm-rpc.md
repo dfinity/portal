@@ -21,18 +21,14 @@ To use the EVM RPC canister, you can import it into your project's `dfx.json` fi
 
 ## Supported RPC methods
 
-- `eth_gasPrice`: Queries the current ETH gas price.
+- `eth_feeHistory`: Queries the historical fee data to estimate gas prices for transactions.
 - `eth_getLogs`: Queries the logs of a specified block or transaction.
 - `eth_getBlockByNumber`: Queries information about a given block.
-- `eth_getTransactionReceipt`: Queries details about a submitted transaction.
-- `eth_feeHistory`: Queries the historical fee data to estimate gas prices for transactions.
-- `eth_sendRawTransaction`: Submits a signed transaction to the Ethereum network.
 - `eth_getTransactionCount`: Queries the number of transactions for a specified address.
-- `eth_call`: Calls a smart contract function without changing the blockchain's state.
-- `eth_getStorageAt`: Queries the value of a storage position at a given address.
-- `eth_estimateGas`: Provides an estimate for the gas consumption of a transaction before it is mined.
-- `eth_blockNumber`: Queries the number of the most recent block.
-- `eth_getCode`: Queries the bytecode of a specified contract.
+- `eth_getTransactionReceipt`: Queries details about a submitted transaction.
+- `eth_sendRawTransaction`: Submits a signed transaction to the Ethereum network.
+
+Other JSON-RPC methods (including those specific to non-Ethereum networks) may be accessed using the canister's `request` method.
 
 
 ## Supported RPC providers
