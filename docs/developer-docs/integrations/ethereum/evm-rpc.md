@@ -33,6 +33,8 @@ Other JSON-RPC methods (including those specific to non-Ethereum networks) may b
 
 ## Supported RPC providers
 
+The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC providers](https://ethereum.org/developers/docs/apis/json-rpc):
+
 - Alchemy: `https://eth-mainnet.g.alchemy.com/v2/`
 - Ankr: `https://rpc.ankr.com/eth/`
 - BlockPI: `https://ethereum.blockpi.network/v1/rpc/`
@@ -41,12 +43,12 @@ Other JSON-RPC methods (including those specific to non-Ethereum networks) may b
 
 View the [full list of RPC providers for each EVM network.](https://chainlist.org/)
 
-### Specifying an RPC provider
+### Custom JSON-RPC requests
 
-To specify the RPC provider you'd like to use, change the `Url` value:
+Send a raw request to a custom JSON-RPC API with the `request` method:
 
 ```
-dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Custom="https://ethereum.publicnode.com"},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
+dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Custom={url = "https://ethereum.publicnode.com"}},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
 You can also specify an RPC provider using a specific EVM chain or RPC provider:
