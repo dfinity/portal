@@ -1,0 +1,170 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Reading the Bitcoin state 
+
+## Overview
+
+To read information from the Bitcoin network's state, the Bitcoin integration API exposes the following methods:
+
+- `bitcoin_get_utxos`: Returns the unspent transaction outputs (UTXOs) of a Bitcoin address.
+
+- `bitcoin_get_balance`: Returns the balance of a Bitcoin address.
+
+- `bitcoin_get_current_fee_percentiles`: Returns the percentiles of the fees for the last 10_000 transactions. Returns the fee in Satoshi per virtual byte.
+
+Bitcoin addresses can be in any of the following formats:
+
+- P2PKH
+
+- P2SH
+
+- P2WPKH
+
+- P2WSH
+
+- P2TR
+
+## Reading unspent transaction outputs
+
+To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` Bitcoin API method. You can create a function in your canister to call this method such as:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+  public func get_utxos(address : BitcoinAddress) : async GetUtxosResponse {
+    await BitcoinApi.get_utxos(NETWORK, address)
+  };
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+pub async fn get_utxos(network: BitcoinNetwork, address: String) -> GetUtxosResponse {
+    let utxos_res: Result<(GetUtxosResponse,), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_get_utxos",
+        (GetUtxosRequest {
+            address,
+            network: network.into(),
+            filter: None,
+        },),
+        GET_UTXOS_COST_CYCLES,
+    )
+    .await;
+
+    utxos_res.unwrap().0
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+Then make a call to this canister's function with the command:
+
+```
+dfx canister --network=ic call CANISTER_NAME get_utxos '("ADDRESS")'
+```
+
+Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
+
+## Reading current balance
+
+To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` Bitcoin API method. You can create a function in your canister to call this method such as:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+  public func get_balance(address : BitcoinAddress) : async Satoshi {
+    await BitcoinApi.get_balance(NETWORK, address)
+  };
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+pub async fn get_balance(network: BitcoinNetwork, address: String) -> u64 {
+    let balance_res: Result<(Satoshi,), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_get_balance",
+        (GetBalanceRequest {
+            address,
+            network: network.into(),
+            min_confirmations: None,
+        },),
+        GET_BALANCE_COST_CYCLES,
+    )
+    .await;
+
+    balance_res.unwrap().0
+}
+```
+
+</TabItem>
+</Tabs>
+
+Then make a call to this canister's function with the command:
+
+```
+dfx canister --network=ic call CANISTER_NAME get_balance '("ADDRESS")'
+```
+
+Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
+
+## Reading the fee percentile 
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+  public func get_current_fee_percentiles() : async [MillisatoshiPerVByte] {
+    await BitcoinApi.get_current_fee_percentiles(NETWORK)
+  };
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+pub async fn get_current_fee_percentiles(network: BitcoinNetwork) -> Vec<MillisatoshiPerByte> {
+    let res: Result<(Vec<MillisatoshiPerByte>,), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_get_current_fee_percentiles",
+        (GetCurrentFeePercentilesRequest {
+            network: network.into(),
+        },),
+        GET_CURRENT_FEE_PERCENTILES_CYCLES,
+    )
+    .await;
+
+    res.unwrap().0
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+Then make a call to this canister's function with the command:
+
+```
+dfx canister --network=ic call CANISTER_NAME get_current_fee_percentiles 
+```
+
+Replace `CANISTER_NAME` with your canister's name.
+
+## Resources
+
+- [Basic Bitcoin example dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+
+- [Motoko Bitcoin integration algorithms](https://github.com/tgalal/motoko-bitcoin/tree/10cf7f2efbba9bb4d077013db1b990143f193844).
+
+- [Basic Bitcoin example dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).

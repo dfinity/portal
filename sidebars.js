@@ -468,7 +468,15 @@ const sidebars = {
       items: [
         "developer-docs/integrations/bitcoin/index",
         "developer-docs/integrations/bitcoin/ckbtc",
-        "developer-docs/integrations/bitcoin/local-development",
+        {
+          type: "category",
+          label: "Advanced",
+          items: [
+            "developer-docs/integrations/bitcoin/read-state",
+            "developer-docs/integrations/bitcoin/submit-transactions",
+            "developer-docs/integrations/bitcoin/local-development",
+          ]
+        }
       ],
     },
     {
@@ -768,10 +776,11 @@ const sidebars = {
           type: "category",
           label: "Feature references",
           items: [
-        "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
-        "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-        "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-        "developer-docs/integrations/vetkeys/technology-overview",
+            "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+            "developer-docs/integrations/bitcoin/ckbtc-reference",
+            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+            "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+            "developer-docs/integrations/vetkeys/technology-overview",
           ],
         },
       ],
