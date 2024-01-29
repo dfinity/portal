@@ -69,103 +69,15 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Core concepts",
-      items: [
-        "concepts/canisters-code",
-        "developer-docs/gas-cost",
-        "developer-docs/cost-estimations-and-examples",
-        "concepts/governance",
-        "concepts/nodes-subnets",
-        "developer-docs/backend/subnet-types",
-        "concepts/tokens-cycles",
-        "concepts/trust-in-canisters",
-        "developer-docs/production/resource-limits",
-        "references/glossary",
-      ],
-    },
-    {
-      type: "category",
-      label: "Using canisters",
-      items: [
-        {
-          type: "category",
-          label: "Calling canisters",
-          items: [
-            {
-              type: "category",
-              label: "Agents",
-              items: [
-                "developer-docs/agents/index",
-                "developer-docs/agents/javascript-intro",
-                "developer-docs/agents/nodejs",
-                "developer-docs/agents/ic-agent-dfinity",
-              ],
-            },
-            {
-              type: "category",
-              label: "Candid",
-              items: [
-                "developer-docs/backend/candid/candid-concepts",
-                "developer-docs/backend/candid/candid-howto",
-                "developer-docs/backend/candid/generating-candid",
-              ],
-            },
-          ],
-        },
-        {
-          type: "doc",
-          label: "Canister history",
-          id: "developer-docs/production/canister-history",
-        },
-        {
-        type: "doc",
-        label: "Canister recovery",
-        id: "developer-docs/production/canister-recovery",
-        },
-        {
-          type: "doc",
-          label: "Canister storage",
-          id: "developer-docs/production/storage",
-        },
-        {
-          type: "doc",
-          label: "Deploying and upgrading canisters",
-          id: "developer-docs/production/deploying-and-upgrading",
-        },
-        {
-          type: "doc",
-          label: "Managing canisters",
-          id: "developer-docs/setup/manage-canisters",
-        },
-        {
-          type: "doc",
-          label: "Pulling canister dependencies",
-          id: "developer-docs/setup/pulling-canister-dependencies",
-        },
-        {
-          type: "category",
-          label: "Topping up canisters",
-          link: {
-            type: "doc",
-            id: "developer-docs/production/topping-up-canister",
-          },
-          items: [
-            "developer-docs/setup/cycles/cycles_management_services",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Developer tools",
       items: [
         {
           type: "category",
-          label: "Internet Computer SDK",
+          label: "Command line",
           items: [
             {
               type: "category",
-              label: "dfx command line tool",
+              label: "dfx",
               link: {
                 type: "doc",
                 id: "references/cli-reference/index",
@@ -195,11 +107,12 @@ const sidebars = {
                 "references/cli-reference/dfx-upgrade",
                 "references/cli-reference/dfx-wallet",
                 "references/cli-reference/dfx-envars",
+                "references/dfx-json-reference",
               ],
             },
             {
               type: "category",
-              label: "quill command line tool",
+              label: "quill",
               link: {
                 type: "doc",
                 id: "references/quill-cli-reference/index",
@@ -269,76 +182,168 @@ const sidebars = {
                 "references/quill-cli-reference/quill-update-node-provider",
               ],
             },
-            {
-              type: "doc",
-              label: "dfx.json schema",
-              id: "references/dfx-json-reference",
-            },
-          ],
-        },
-        "developer-docs/setup/playground",
-        "developer-docs/setup/manage-projects",
-        "developer-docs/setup/vs-code",
-      ],
-    },
-    {
-      type: "category",
-      label: "Features",
-      items: [
-        {
-          type: "category",
-          label: "Bitcoin integration",
-          items: [
-            "developer-docs/integrations/bitcoin/index",
-            "developer-docs/integrations/bitcoin/ckbtc",
-            "developer-docs/integrations/bitcoin/local-development",
           ],
         },
         {
-          type: "doc",
-          label: "Composite queries",
-          id: "developer-docs/integrations/composite-query/composite-query",
-        },
-        {
           type: "category",
-          label: "Encryption and signatures",
+          label: "Off-chain libraries",
           items: [
             {
-              type: "doc",
-              label: "Verifying signatures",
-              id: "developer-docs/integrations/independently-verifying-ic-signatures",
-            },
-            {
               type: "category",
-              label: "Threshold ECDSA",
-              link: {
-                type: "doc",
-                id: "developer-docs/integrations/t-ecdsa/index",
-              },
-              items: [],
-            },
-            {
-              type: "category",
-              label: "vetKeys",
+              label: "Agents",
               items: [
-                "developer-docs/integrations/vetkeys/index",
-                "developer-docs/integrations/vetkeys/using-vetkeys",
+                "developer-docs/agents/index",
+                "developer-docs/agents/javascript-intro",
+                "developer-docs/agents/nodejs",
+                "developer-docs/agents/ic-agent-dfinity",
               ],
             },
           ],
         },
         {
           type: "category",
-          label: "HTTPS outcalls",
+          label: "IDE",
           items: [
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-            "developer-docs/integrations/https-outcalls/https-outcalls-get",
-            "developer-docs/integrations/https-outcalls/https-outcalls-post",
-          ],
-        },
-        "developer-docs/backend/periodic-tasks",
+            "developer-docs/setup/playground",
+            "developer-docs/setup/vs-code",
+          ]
+        }
       ],
     },
+    {
+      type: "category",
+      label: "Smart contracts",
+      items: [
+        {
+          type: "doc",
+          label: "Build",
+          id: "developer-docs/setup/build",
+        },
+        {
+          type: "category",
+          label: "Call",
+          items: [
+            {
+              type: "category",
+              label: "Candid",
+              items: [
+                "developer-docs/backend/candid/candid-concepts",
+                "developer-docs/backend/candid/candid-howto",
+                "developer-docs/backend/candid/generating-candid",
+              ],
+            },
+          ],
+        },
+        {
+          type: "doc",
+          label: "Deploy",
+          id: "developer-docs/setup/deploy",
+        },
+        {
+          type: "category",
+          label: "Maintain",
+          items:[
+            "developer-docs/setup/delete",
+             "developer-docs/production/canister-history",
+             "developer-docs/setup/pulling-canister-dependencies",
+             "developer-docs/production/canister-recovery",
+             "developer-docs/setup/state",
+             "developer-docs/setup/manage-canisters",
+             "developer-docs/production/storage",
+             "developer-docs/setup/upgrade",
+             {
+              type: "category",
+              label: "Cost",
+              items: [
+             "developer-docs/gas-cost",
+             "developer-docs/cost-estimations-and-examples",
+              ],
+            },
+            {
+              type: "category",
+              label: "Topping up canisters",
+              items: [
+                "developer-docs/production/topping-up-canister",
+                "developer-docs/setup/cycles/cycles_management_services",
+              ],
+            },
+          ]
+        },
+        {
+          type: "category",
+          label: "Test",
+          items: [
+            "developer-docs/setup/pocket-ic",
+            "developer-docs/production/staging-environment",
+            "developer-docs/backend/reproducible-builds",
+            "developer-docs/backend/troubleshooting",
+          ],
+        },
+        {
+          type: "category",
+          label: "Advanced features",
+          items: [
+            {
+              type: "doc",
+              label: "Composite queries",
+              id: "developer-docs/integrations/composite-query/composite-query",
+            },
+            {
+              type: "category",
+              label: "Encryption and signatures",
+              items: [
+                {
+                  type: "doc",
+                  label: "Verifying signatures",
+                  id: "developer-docs/integrations/independently-verifying-ic-signatures",
+                },
+                {
+                  type: "category",
+                  label: "Threshold ECDSA",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/integrations/t-ecdsa/index",
+                  },
+                  items: [],
+                },
+                {
+                  type: "category",
+                  label: "vetKeys",
+                  items: [
+                    "developer-docs/integrations/vetkeys/index",
+                    "developer-docs/integrations/vetkeys/using-vetkeys",
+                  ],
+                },
+              ],
+            },
+            "developer-docs/backend/periodic-tasks",
+            "developer-docs/production/larger-wasm",
+          ],
+        },
+        {
+          type: "category",
+          label: "Best practices",
+          items: [
+            {
+              type: "doc",
+              label: "General",
+              id: "developer-docs/security/general-security-best-practices",
+            },
+            {
+              type: "doc",
+              label: "Rust",
+              id: "developer-docs/security/rust-canister-development-security-best-practices",
+            },
+            {
+              type: "doc",
+              label: "Web apps",
+              id: "developer-docs/security/web-app-development-security-best-practices",
+            },
+          ],
+        },
+      ],
+    },
+
     {
       type: "category",
       label: "Web apps",
@@ -363,7 +368,30 @@ const sidebars = {
             "developer-docs/production/custom-domain/dns-setup"],
         },
         "developer-docs/backend/design-dapps",
-        "developer-docs/production/larger-wasm",
+        {
+          type: "category",
+          label: "HTTPS outcalls",
+          items: [
+            "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+            "developer-docs/integrations/https-outcalls/https-outcalls-get",
+            "developer-docs/integrations/https-outcalls/https-outcalls-post",
+          ],
+        },
+        {
+          type: "category",
+          label: "User sign-up and login",
+          items: [
+            {
+              type: "category",
+              label: "Internet Identity (II)",
+              items: [
+                "developer-docs/integrations/internet-identity/overview",
+                "developer-docs/integrations/internet-identity/alternative-origins",
+                "developer-docs/integrations/internet-identity/integrate-identity",
+              ],
+            },
+          ],
+        },
         {
           type: "category",
           label: "Sample apps",
@@ -381,7 +409,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-            label: "Introduction and overview",
+            label: "Overview",
             id: "developer-docs/integrations/ledger/introduction_and_overview",
           },
         {
@@ -443,6 +471,15 @@ const sidebars = {
             "developer-docs/use-cases/considerations-for-nft-devs.md",
           ]
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Bitcoin",
+      items: [
+        "developer-docs/integrations/bitcoin/index",
+        "developer-docs/integrations/bitcoin/ckbtc",
+        "developer-docs/integrations/bitcoin/local-development",
       ],
     },
     {
@@ -579,62 +616,22 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Security best practices",
-      items: [
-        {
-          type: "doc",
-          label: "General",
-          id: "developer-docs/security/general-security-best-practices",
-        },
-        {
-          type: "doc",
-          label: "General",
-          id: "developer-docs/security/rust-canister-development-security-best-practices",
-        },
-        {
-          type: "doc",
-          label: "General",
-          id: "developer-docs/security/web-app-development-security-best-practices",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Testing and troubleshooting",
-      items: [
-        "developer-docs/setup/pocket-ic",
-        "developer-docs/production/staging-environment",
-        "developer-docs/backend/reproducible-builds",
-        "developer-docs/backend/troubleshooting",
-      ],
-    },
-    {
-      type: "category",
-      label: "Internet Identity (II)",
-      items: [
-        "developer-docs/integrations/internet-identity/overview",
-        "developer-docs/integrations/internet-identity/alternative-origins",
-        "developer-docs/integrations/internet-identity/integrate-identity",
-      ],
-    },
-    {
-      type: "category",
-      label: "Network Nervous System (NNS)",
-      items: [
-        "tokenomics/nns/nns-intro",
-        "tokenomics/token-holders/nns-app-quickstart",
-        "tokenomics/nns/neurons-fund",
-        "tokenomics/nns/nns-staking-voting-rewards",
-      ],
-    },
-    {
-      type: "category",
-      label: "Service Nervous System (SNS)",
+      label: "DAOs",
       link: {
         type: "doc",
         id: "developer-docs/integrations/sns/index",
       },
       items: [
+        {
+          type: "category",
+          label: "Network Nervous System (NNS)",
+          items: [
+            "tokenomics/nns/nns-intro",
+            "tokenomics/token-holders/nns-app-quickstart",
+            "tokenomics/nns/neurons-fund",
+            "tokenomics/nns/nns-staking-voting-rewards",
+          ],
+        },
         {
           type: "category",
           label: "Introduction to the SNS",
@@ -711,6 +708,20 @@ const sidebars = {
             "developer-docs/integrations/sns/managing/managing-nervous-system-parameters",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Core concepts",
+      items: [
+        "concepts/canisters-code",
+        "concepts/governance",
+        "concepts/nodes-subnets",
+        "developer-docs/backend/subnet-types",
+        "concepts/tokens-cycles",
+        "concepts/trust-in-canisters",
+        "developer-docs/production/resource-limits",
+        "references/glossary",
       ],
     },
     {

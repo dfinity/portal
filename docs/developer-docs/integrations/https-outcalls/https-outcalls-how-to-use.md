@@ -53,7 +53,7 @@ As per the [Internet Computer interface specification](https://internetcomputer.
 ### The request
 The following parameters should be supplied for in the request:
 
--   `url`: the requested URL. The URL must be valid according to https://www.ietf.org/rfc/rfc3986.txt[RFC-3986] and its length must not exceed `8192`. The URL may specify a custom port number.
+-   `url`: the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt) and its length must not exceed `8192`. The URL may specify a custom port number.
 
 -   `max_response_bytes`: optional; specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2_000_000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 

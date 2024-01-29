@@ -1,4 +1,4 @@
-# Canister recovery
+# Recovery
 
 ## Overview
 
