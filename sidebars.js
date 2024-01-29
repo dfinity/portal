@@ -435,6 +435,10 @@ const sidebars = {
         {
           type: "category",
           label: "NFTs",
+          link: {
+            type: "doc",
+            id: "developer-docs/use-cases/considerations-for-nft-devs.md",
+          },
           items: [
             "developer-docs/use-cases/considerations-for-nft-devs.md",
           ]
