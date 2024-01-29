@@ -150,7 +150,7 @@ request : (
 
 Make sure to verify that RPC requests work as expected on the ICP mainnet! HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
 
-If you encounter a consensus issue, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
+If you encounter an issue with consensus, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
 
 
 ### Registering your own provider
