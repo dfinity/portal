@@ -399,6 +399,10 @@ Find transactions in unfinished state:
 - Iterate through Transactions by timestamp map (oldest first)
 - Transactions older than e.g. 10min back can be considered to be in error state
 
+#### Example implementation of journaling
+
+GoldDAO's GLDT-swap has an implementation of journaling. See https://github.com/GoldDAO/gldt-swap/blob/develop/canister/gldt_core/src/lib.rs#L654. In their case the journal entries are recorded in the "registry". Note that in GLDT-swap there is also a separate concept of "record" which is a permanent audit trail, and is not used for journaling.
+
 ### Avoid traps after await
 
 *This section is deprecated in favor of [Securely handle traps in callbacks](#Securely-handle-traps-in-callbacks)*
