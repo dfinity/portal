@@ -46,15 +46,14 @@ View the [full list of RPC providers for each EVM network.](https://chainlist.or
 To specify the RPC provider you'd like to use, change the `Url` value:
 
 ```
-dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Url="https://ethereum.publicnode.com"},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
+dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 600000000 request '(variant {Custom="https://ethereum.publicnode.com"},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
-You can also specify an RPC provider within your Candid file:
+You can also specify an RPC provider using a specific EVM chain or RPC provider:
 
 ```
 type JsonRpcSource = variant {
   Chain : nat64;
-  Service : record { hostname : text; chainId : opt nat64, headers: opt vec (text, text) };
   Provider : nat64;
   Custom : record { url : text; headers : vec (text, text) };
 };
