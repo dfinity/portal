@@ -3309,6 +3309,23 @@
     "submittableId": "44190088"
  },
  {
+    "id": "icgpt",
+    "name": "icgpt",
+    "oneLiner": "A fun dApp to demonstrate on-chain LLMs",
+    "website": "https://icgpt.icpp.world/",
+    "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
+    "stats": "15M parameter llama2",
+    "tags": [
+      "Tools / Infrastructure"
+    ],    
+    "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/icppWorld/icgpt",
+    "youtube": "https://youtu.be/2DhTpYrs-f0",
+    "twitter": "https://twitter.com/icpp_pro",
+    "submittableId": "43877997"
+ },
+ {
     "name": "Ping",
     "description": "Ping is a notification service that boosts ecosystem engagement by creating a direct communication channel between dapp developers and their respective users.",
     "website": "https://h7jna-pqaaa-aaaak-afgiq-cai.icp0.io/",
