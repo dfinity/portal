@@ -13,17 +13,17 @@ To read information from the Bitcoin network's state, the Bitcoin integration AP
 
 - `bitcoin_get_current_fee_percentiles`: Returns the percentiles of the fees for the last 10_000 transactions. Returns the fee in Satoshi per virtual byte.
 
-Bitcoin addresses can be in any of the following formats:
+Standard Bitcoin addresses (P2PKH, P2SH, P2WPKH, etc) are supported. 
 
-- P2PKH
+## Bitcoin networks
 
-- P2SH
+Both the Bitcoin testnet and mainnet networks are supposed. The network can be specified as a parameter in each function.
 
-- P2WPKH
+## API costs 
 
-- P2WSH
+Each call to the API has a cost of cycles, therefore a sufficent amount of cycles must be sent with each call.
 
-- P2TR
+Cycles costs will vary between the Bitcoin testnet and mainnet. For a breakdown of the costs, see [Bitcoin API costs](bitcoin-how-it-works.md)
 
 ## Reading unspent transaction outputs
 
@@ -150,6 +150,11 @@ dfx canister --network=ic call CANISTER_NAME get_balance '("ADDRESS")'
 Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
 
 ## Reading the fee percentile 
+
+The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. In order to get fee percentiles for the last few blocks (4 - 10), call `bitcoin_get_current_fee_percentiles`.
+
+The function returns 101 numbers that are fees measured in millisatoshi per virtual byte. The `i`-th element of the result corresponds to the `i`-th percentile fee. For example, to get the median fee over the last few blocks, look at the `50`-th element of the result.
+
 
 <Tabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
