@@ -150,7 +150,7 @@ In the following we list all differences to non-critical proposals.
 
 2. Catch-all following
 
-   Voters can follow other neurons on critical proposal types, but each neuron has to make an active decision of following for each critical proposals type as the catch-all following “All topics” is not applied to critical proposal types. Users who have multiple neurons can actively vote with just one of them and follow this one neuron with all their other neurons.
+   Voters can follow other neurons on critical proposal types, but each neuron has to make an active decision of following for each critical proposals type, as the catch-all following “All topics” is not applied to critical proposal types. Users who have multiple neurons can actively vote with just one of them and follow this one neuron with all their other neurons.
 
 3. Voting period
    
