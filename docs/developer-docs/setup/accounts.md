@@ -24,6 +24,38 @@ dfx identity new <identity_name>
 
 Identities created with dfx are global; they are not confined to a specific project's context. Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
 
+## Getting your account principal
+
+To obtain the principal identifier for your account, use the commands:
+
+```
+dfx identity use <identity_name>
+dfx identity get-principal
+```
+
+The principal will looks something like this:
+
+```
+itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe
+```
+
+You can also inspect the corresponding private key by running:
+
+```
+dfx identity export default
+```
+
+The result may look something like this:
+
+```
+-----BEGIN EC PRIVATE KEY-----
+MHQCAQEEIIGTvo7+8q+dRVoDWPVp1hBziKUEOffo1PDkY2Vn8sKMoAcGBSuBBAAK
+oUQDQgAEXFFBa0oxGdamv537nusjtgVuzElEMtEbbj4dQ1xyu2WMa+PU9q9LIK26
+Ar821EwGwp1Qc9Vv93FGPTvRb4HVXQ==
+-----END EC PRIVATE KEY-----
+```
+
+
 ### Storing the account's keys
 
 When a new identity is created with dfx, the private key is stored in the `~/.config/dfx/identity/<identity_name>/identity.pem` file. This file should be backed up to a secure location.
@@ -38,15 +70,6 @@ or:
 
 ```
 dfx identity new <identity_name> --storage-mode plaintext
-```
-
-## Getting your account principal
-
-To obtain the principal identifier for your account, use the commands:
-
-```
-dfx identity use <identity_name>
-dfx identity get-principal
 ```
 
 ## Import an existing account

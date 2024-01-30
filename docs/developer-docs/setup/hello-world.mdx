@@ -6,11 +6,13 @@ This guide shows how to get started developing on ICP quickly by deploying your 
 
 ### Install the IC SDK (v0.15.2 and newer)
 
+Download and install the latest version of [dfx](install/index.mdx). dfx is a CLI tool used for developing and deploying ICP smart contracts:
+
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-### Install Node.js
+### Install [Node.js](https://nodejs.org/en/download)
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
@@ -22,6 +24,19 @@ nvm install 18
 ```bash
 dfx start
 ```
+
+This command starts a local instance of the ICP replica using a single node testnet. ICP does not have a public testnet for deployment. The output will return a dashboard URL that can be used to view information about the local replica:
+
+```
+Running dfx start for version 0.15.2
+Initialized replica.
+Dashboard: http://localhost:35375/_/dashboard
+```
+
+:::info
+While `dfx start` is running, you will not be able to run other commands in the terminal window. You can open another window, or start dfx in the background with the `dfx start --background` flag. 
+:::
+
 
 ## Create a new project
 
@@ -85,6 +100,10 @@ pip install kybra
 </TabItem>
 </Tabs>
 
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+
+The `npm install` command is used to install libraries and dependencies..
+
 For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
  
 ## Smart contract code
@@ -94,7 +113,11 @@ For information about project structure and default configuration, [learn more a
 
 ```motoko
 // src/hello_backend/main.mo
+
+// Motoko is an Actor-based language and it represents the smart contract as an actor with various method that the users and other smart contract can call.
 actor {
+// This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. 
+// The function accepts a name as input and returns a greetings text.
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
 };
@@ -106,6 +129,10 @@ public query func greet(name : Text) : async Text {
 
 ```rust
 // src/hello_world_backend/src/lib.rs
+
+// This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
+// The function accepts a name as input and returns a greetings text.
+
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
@@ -120,16 +147,16 @@ fn greet(name: String) -> String {
 // azle_hello/src/index.ts
 import { Canister, query, text, update, Void } from 'azle';
 
-// This is a global variable that is stored on the heap
+// This is a global variable that is stored on the heap.
 let message = '';
 
 export default Canister({
-    // Query calls complete quickly because they do not go through consensus
+    // Query calls complete quickly because they do not go through consensus.
     getMessage: query([], text, () => {
         return message;
     }),
-    // Update calls take a few seconds to complete
-    // This is because they persist state changes and go through consensus
+    // Update calls take a few seconds to complete.
+    // This is because they persist state changes and go through consensus.
     setMessage: update([text], Void, (newMessage) => {
         message = newMessage; // This change will be persisted
     })
@@ -147,16 +174,16 @@ Create the project directory and file structure:
 
 from kybra import query, update, void
 
-# This is a global variable that is stored on the heap
+# This is a global variable that is stored on the heap.
 message: str = ''
 
-# Query calls complete quickly because they do not go through consensus
+# Query calls complete quickly because they do not go through consensus.
 @query
 def get_message() -> str:
     return message
 
-# Update calls take a few seconds to complete
-# This is because they persist state changes and go through consensus
+# Update calls take a few seconds to complete.
+# This is because they persist state changes and go through consensus.
 @update
 def set_message(new_message: str) -> void:
     global message
@@ -175,7 +202,17 @@ Deploy the project's canisters locally:
 dfx deploy
 ```
 
-## Call the canister
+This command performs several functions in the background:
+
+- It sets up a special `cycle-wallet` smart contract for storing cycles. All operations require payments in cycles. In your local testnet, this wallet comes prefilled with cycles.
+
+- It builds the smart contracts defined in the `dfx.json` file into Wasm binaries.
+
+- It creates smart contracts on the local testnet and saves their addresses in the file `./.dfx/local/canister_ids.json`.
+
+- It installs the Wasm binaries onto the new smart contracts.
+
+## Call the smart contracts from the CLI
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -190,6 +227,22 @@ Output:
 ("Hello, world!")
 ```
 
+This command performs several functions in the background: 
+
+- First, it looks up the smart contract's address (known as the canister id) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
+
+- Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`. 
+
+- It looks up the signature of function greet in the interface.
+
+- It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
+
+- It signs the message with the private key of the [developer account](accounts.md).
+
+- It sends the message to the local testnet (replica). 
+
+- Once the message has been executed, the result was decoded using the interface file and printed to the terminal window. 
+
 </TabItem>
 <TabItem value="rust" label="Rust">
 
@@ -203,6 +256,22 @@ Output:
 ("Hello, world!")
 ```
 
+This call performs several functions in the background: 
+
+- First, it looks up the smart contract's address (known as the canister id) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
+
+- Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`. 
+
+- It looks up the signature of function greet in the interface.
+
+- It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
+
+- It signs the message with the private key of the [developer account](accounts.md).
+
+- It sends the message to the local testnet (replica). 
+
+- Once the message has been executed, the result was decoded using the interface file and printed to the terminal window. 
+
 </TabItem>
 
 <TabItem value="typescript" label="TypeScript">
@@ -211,11 +280,15 @@ Output:
 dfx canister call azle_hello setMessage '("Hello, world!")'
 ```
 
+This command sends an update call to the smart contract's `setMessage` function to store the value 'Hello, world!' in the smart contract's memory. 
+
 Then, call the `getMessage` function:
 
 ```
 dfx canister call azle_hello getMessage
 ```
+
+This command sends a query call to the smart contract's `getMessage` function to return the value stored by the `setMessage` function. 
 
 Output:
 
@@ -231,11 +304,15 @@ Output:
 dfx canister call kybra_hello set_message '("Hello, world!")'
 ```
 
+This command sends an update call to the smart contract's `setMessage` function to store the value 'Hello, world!' in the smart contract's memory. 
+
 Then, call the `getMessage` function:
 
 ```
 dfx canister call kybra_hello getMessage
 ```
+
+This command sends a query call to the smart contract's `getMessage` function to return the value stored by the `setMessage` function. 
 
 Output:
 
@@ -246,8 +323,12 @@ Output:
 </TabItem>
 </Tabs>
 
+Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](deploy-locally.md)
+
 
 ## Next steps
+
+- [Create a developer account](accounts.md).
 
 - [Acquire cycles](cycles/cycles-faucet.md).
 
