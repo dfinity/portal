@@ -25,7 +25,7 @@ nvm install 18
 dfx start
 ```
 
-This command starts a local instance of the ICP replica using a single node testnet. ICP does not have a public testnet for deployment. The output will return a dashboard URL that can be used to view information about the local replica:
+This command starts a local instance of the ICP replica using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
 
 ```
 Running dfx start for version 0.15.2
@@ -49,6 +49,12 @@ cd hello
 npm install
 ```
 
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+
+The `npm install` command is used to install libraries and dependencies.
+
+For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
+
 </TabItem>
 <TabItem value="rust" label="Rust">
 
@@ -57,6 +63,12 @@ dfx new hello --type=rust
 cd hello
 npm install
 ```
+
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+
+The `npm install` command is used to install libraries and dependencies.
+
+For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
 
 </TabItem>
 
@@ -99,25 +111,19 @@ pip install kybra
 
 </TabItem>
 </Tabs>
-
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
-
-The `npm install` command is used to install libraries and dependencies..
-
-For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
  
 ## Smart contract code
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
+Motoko is an Actor-based language and it represents the smart contract as an actor with various method that the users and other smart contract can call.
+
+This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor.  The function accepts a name as input and returns a greetings text.
+
 ```motoko
 // src/hello_backend/main.mo
-
-// Motoko is an Actor-based language and it represents the smart contract as an actor with various method that the users and other smart contract can call.
 actor {
-// This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. 
-// The function accepts a name as input and returns a greetings text.
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
 };
@@ -127,12 +133,11 @@ public query func greet(name : Text) : async Text {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
+This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
+The function accepts a name as input and returns a greetings text.
+
 ```rust
 // src/hello_world_backend/src/lib.rs
-
-// This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
-// The function accepts a name as input and returns a greetings text.
-
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
