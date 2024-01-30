@@ -28,4 +28,4 @@ The Bitcoin API allows smart contracts to read the Bitcoin state (UTXOs and bala
 
 ## Next steps
 
-- Learn how to use [ckBTC](ckbtc.md)
+- Learn how to use [Chain-key Bitcoin (ckBTC)](ckbtc.md)
