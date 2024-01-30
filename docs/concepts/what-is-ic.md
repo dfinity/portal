@@ -5,7 +5,7 @@ Smart contracts on ICP are expressive and scalable like traditional apps, but be
 
 ICP is designed for a practical balance in the tradeoff between scalability and decentralization.
 
-<img src="/img/docs/icp-tradeoffs.png" alt="ICP in the tradeoff space" width="400"/>
+<img src="/img/docs/icp-tradeoffs.png" alt="ICP in the tradeoff space" align="center" width="600"/>
 
 In the conceptual diagram above, decentralization increases going from centralized servers to Ethereum, but that happens at the expense of scalability.
 ICP is located in the middle of this spectrum.
@@ -30,7 +30,7 @@ The following diagram shows the flow of the message on ICP:
 Note that steps 3-5 are asynchronous and decoupled from each other, which may be unusual for developers who are used to Ethereum-style atomic transactions that are executed when they are added to a block.
 The motivation for this design is scalability.
 
-<img src="/img/docs/icp-overview.png" alt="Flow of a message on ICP" width="400"/>
+<img src="/img/docs/icp-overview.png" alt="Flow of a message on ICP" align="center" width="700"/>
 
 Subnets can have different sizes, i.e. replication factors, which determines the cost of running smart contracts on that subnet.
 It also impacts the time to finality and security.
@@ -51,7 +51,7 @@ This feature has profound implications and use cases:
 - Smart contracts [can have their own secret keys](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846) and can sign transactions for other blockchains such as Bitcoin and Ethereum.
   This enables trustless interaction with those blockchains.
 
-<img src="/img/docs/icp-threshold-signature.png" alt="Threshold signature" width="400"/>
+<img src="/img/docs/icp-threshold-signature.png" alt="Threshold signature" align="center" width="600"/>
 
 :::info
 This feature is called **Chain-Key Cryptography** on ICP.
@@ -89,7 +89,7 @@ In the context of ICP, smart contracts are referred to as **canisters**.
 ICP derives the address of a user account from the user’s public key by hashing it.
 
 
-<img src="/img/docs/icp-keys.png" alt="Accounts, keys, principals" width="400"/>
+<img src="/img/docs/icp-keys.png" alt="Accounts, keys, principals" align="center" width="600"/>
 
 The textual encoding of an address includes a checksum that looks something like this:
 
