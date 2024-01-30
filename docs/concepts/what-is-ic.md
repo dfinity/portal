@@ -169,108 +169,110 @@ Currently, subnets contain between 13 and 40 nodes, and most of them are geograp
   <th> Ethereum </th>
   <th> ICP </th>
 </tr>
+</thead>
 
+<tbody>
 <tr>
   <td> virtual machine </td>
   <td> EVM </td>
   <td> WebAssembly </td>
-</td>
+</tr>
 
 <tr>
   <td> on-chain Web3 </td>
   <td> - </td>
   <td> yes </td>
-</td>
+</tr>
 
 <tr>
   <td> bridgeless Bitcoin </td>
   <td> - </td>
   <td> yes </td>
-</td>
+</tr>
 
 <tr>
   <td> smart contracts can sign messages </td>
   <td> - </td>
   <td> yes </td>
-</td>
+</tr>
 
 <tr>
   <td> HTTP calls to Web2 from smart contracts </td>
   <td> -  </td>
   <td> yes </td>
-</td>
+</tr>
 
 <tr>
   <td> languages </td>
   <td> Solidity, Vyper, Yul </td>
   <td> JS, Python, Rust, Solidity, Motoko, and more </td>
-</td>
+</tr>
 
 <tr>
   <td> programming model </td>
   <td> atomic transactions </td>
   <td> async message passing </td>
-</td>
+</tr>
 
 <tr>
   <td> gas model </td>
   <td> user pays </td>
   <td> smart contract pays </td>
-</td>
+</tr>
 
 <tr>
   <td> gas price </td>
   <td> variable </td>
   <td> fixed </td>
-</td>
+</tr>
 
 <tr>
   <td> compute </td>
   <td> few million instructions per block (based on the 30 million gas limit) </td>
   <td> 2 billion instructions per block (per subnet) </td>
-</td>
+</tr>
 
 <tr>
   <td> finality </td>
   <td> ~15min  </td>
   <td> ~1.4s </td>
-</td>
+</tr>
 
 <tr>
   <td> average tx/msg fee </td>
   <td> ~$1  </td>
   <td> ~$0.000001 </td>
-</td>
+</tr>
 
 <tr>
   <td>stack size</td>
   <td> 32KB (1024 of 256-bit values) </td>
   <td> 5MB </td>
-</td>
+</tr>
 
 <tr>
   <td> code size </td>
   <td> 24KB (more with code sharing) </td>
   <td> 10MB </td>
-</td>
+</tr>
 
 <tr>
   <td> memory size </td>
   <td> few KB </td>
   <td> 404GB (4GB Wasm memory + 400GB of stable memory) </td>
-</td>
+</tr>
 
 <tr>
   <td> storage cost </td>
   <td> $18M per GB (based on 640K gas per KB) </td>
   <td> $5 per GB per year </td>
-</td>
+</tr>
 
 <tr>
   <td> number of nodes </td>
   <td> ~7K </td>
   <td> ~500 in total, 13-40 per subnet </td>
-</td>
+</tr>
 
-</thead>
+</tbody>
 </table>
