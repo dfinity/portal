@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Hello, world!
 
 This guide shows how to get started developing on ICP quickly by deploying your first 'Hello, world!' smart contract. 
@@ -56,6 +59,7 @@ The `npm install` command is used to install libraries and dependencies.
 For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
 
 </TabItem>
+
 <TabItem value="rust" label="Rust">
 
 ```bash
@@ -115,6 +119,7 @@ pip install kybra
 ## Smart contract code
 
 <Tabs groupId="language">
+
 <TabItem value="motoko" label="Motoko" default>
 
 Motoko is an Actor-based language and it represents the smart contract as an actor with various method that the users and other smart contract can call.
@@ -131,6 +136,7 @@ public query func greet(name : Text) : async Text {
 ```
 
 </TabItem>
+
 <TabItem value="rust" label="Rust">
 
 This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
@@ -220,6 +226,7 @@ This command performs several functions in the background:
 ## Call the smart contracts from the CLI
 
 <Tabs groupId="language">
+
 <TabItem value="motoko" label="Motoko" default>
 
 ```bash
