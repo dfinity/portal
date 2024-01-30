@@ -1,7 +1,5 @@
 # EVM RPC canister
 
-## Overview
-
 **EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API. 
 
 The source code for this project is available on GitHub ([dfinity/evm-rpc-canister](https://github.com/dfinity/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
