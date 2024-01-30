@@ -142,7 +142,7 @@ See the types in the code [here](https://sourcegraph.com/github.com/dfinity/ic@4
 Some proposal types are considered "critical". These are DeregisterDappCanisters, TransferSnsTreasuryFunds, and MintSnsTokens. Critical proposal types have more strict rules to ensure they are only passed with broad community consensus.
 In the following we list all differences to non-critical proposals.
 
-1. Voting Thresholds
+1. Voting thresholds
 
    Non-critical proposals types can be passed if 3% of the total voting power votes yes and 50% of the exercised voting power votes yes.
 
