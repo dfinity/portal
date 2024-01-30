@@ -1,4 +1,4 @@
-# What is the Internet Computer Protocol?
+# What is the Internet Computer?
 
 The Internet Computer Protocol (ICP) bridges the gap between traditional programming and blockchain-based development.
 Smart contracts on ICP are expressive and scalable like traditional apps, but benefit from the trustless and decentralized execution of a blockchain.
@@ -54,7 +54,7 @@ This feature has profound implications and use cases:
 <img src="/img/docs/icp-threshold-signature.png" alt="Threshold signature" width="400"/>
 
 :::info
-This feature is called Chain-Key Cryptography on ICP.
+This feature is called **Chain-Key Cryptography** on ICP.
 :::
 
 
@@ -81,7 +81,7 @@ The difference between the two memories is important for upgradable smart contra
 For immutable smart contracts, there is no observable difference between the two memories except for the size and functions to access it.
 
 :::info
-In the context of ICP, smart contracts are referred to as canisters.
+In the context of ICP, smart contracts are referred to as **canisters**.
 :::
 
 ## Accounts and Keys
@@ -106,7 +106,7 @@ Since smart contracts can have private keys, they can provide user accounts as a
 You can also use hardware and browser-extension wallets.
 
 :::info
-In the context of ICP, addresses are referred to as principals.
+In the context of ICP, addresses are referred to as **principals**.
 :::
 
 ## Tokens
