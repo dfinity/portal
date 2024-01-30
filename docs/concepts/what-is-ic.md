@@ -5,7 +5,7 @@ Smart contracts on ICP are expressive and scalable like traditional apps, but be
 
 ICP is designed for a practical balance in the tradeoff between scalability and decentralization.
 
-<div style="text-align: center;">
+<div class="text--center">
 <img src="/img/docs/icp-tradeoffs.png" alt="ICP in the tradeoff space" width="500"/>
 </div>
 
@@ -32,7 +32,7 @@ The following diagram shows the flow of the message on ICP:
 Note that steps 3-5 are asynchronous and decoupled from each other, which may be unusual for developers who are used to Ethereum-style atomic transactions that are executed when they are added to a block.
 The motivation for this design is scalability.
 
-<div style="text-align: center;">
+<div class="text--center">
 <img src="/img/docs/icp-overview.png" alt="Flow of a message on ICP" width="600"/>
 </div>
 
@@ -55,7 +55,7 @@ This feature has profound implications and use cases:
 - Smart contracts [can have their own secret keys](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846) and can sign transactions for other blockchains such as Bitcoin and Ethereum.
   This enables trustless interaction with those blockchains.
 
-<div style="text-align: center;">
+<div class="text--center">
 <img src="/img/docs/icp-threshold-signature.png" alt="Threshold signature" width="500"/>
 </div>
 
@@ -94,7 +94,7 @@ In the context of ICP, smart contracts are referred to as **canisters**.
 
 ICP derives the address of a user account from the user’s public key by hashing it.
 
-<div style="text-align: center;">
+<div class="text--center">
 <img src="/img/docs/icp-keys.png" alt="Accounts, keys, principals" width="500"/>
 </div>
 
