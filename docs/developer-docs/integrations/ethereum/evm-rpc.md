@@ -4,10 +4,6 @@
 
 **EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API. 
 
-This canister facilitates API requests to JSON-RPC services such as [CloudFlare](https://www.cloudflare.com/en-gb/web3/), [Alchemy](https://www.alchemy.com/), [Ankr](https://www.ankr.com/), [BlockPI](https://blockpi.io/), or [Public Node](https://www.publicnode.com/) using [HTTPS outcalls](https://internetcomputer.org/https-outcalls). This enables functionality similar to traditional Ethereum dApps, including querying Ethereum smart contract states and submitting raw transactions.
-
-Beyond the Ethereum blockchain, this canister also has partial support for Polygon, Avalanche, and other popular EVM networks. Check out [ChainList.org](https://chainlist.org/?testnets=true) for an extensive list of compatible networks and RPC providers.
-
 The source code for this project is available on GitHub ([dfinity/evm-rpc-canister](https://github.com/dfinity/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
 
 ## Supported RPC methods
@@ -23,21 +19,20 @@ The following JSON-RPC methods are available as part of the canister's [Candid i
 
 Other RPC methods (including those specific to non-Ethereum networks) may be accessed using the canister's `request` method.
 
-
 ## Supported RPC providers
 
 The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC providers](https://ethereum.org/developers/docs/apis/json-rpc):
 
-- [Alchemy](https://docs.alchemy.com/docs/how-to-read-data-with-json-rpc): Ethereum mainnet, Sepolia testnet
-- [Ankr](https://www.ankr.com/infrastructure/build-on-ethereum/): Ethereum mainnet, Sepolia testnet
-- [BlockPI](https://blockpi.io/): Ethereum mainnet, Sepolia testnet
-- [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/): Ethereum mainnet
-- [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet
+- [Alchemy](https://docs.alchemy.com/docs/how-to-read-data-with-json-rpc): Ethereum mainnet, Sepolia testnet.
+- [Ankr](https://www.ankr.com/infrastructure/build-on-ethereum/): Ethereum mainnet, Sepolia testnet.
+- [BlockPI](https://blockpi.io/): Ethereum mainnet, Sepolia testnet.
+- [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/): Ethereum mainnet.
+- [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet.
 
-Likewise, many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method. 
+Many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method. 
 
 
-## Getting started
+## Importing or deploying the EVM RPC canister
 
 To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/current/references/cli-reference/dfx-parent) project, add the following to your `dfx.json` file:
 
@@ -77,9 +72,9 @@ To deploy your own canister on the mainnet, run the `dfx deploy` command with th
 dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 13 })'
 ```
 
-Note that when deploying your own canister, you may encounter API rate limits. Refer to the "Replacing API keys" section to learn how to configure API credentials.
+Note that when deploying your own canister, you may encounter API rate limits. Refer to the [Replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
 
-## Examples
+## Example usage
 
 ```bash
 # Configuration
@@ -114,7 +109,7 @@ dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\"
 ```
 
 
-### Custom JSON-RPC requests
+## Custom JSON-RPC requests
 
 Send a raw JSON-RPC request to a custom URL with the `request` method:
 
@@ -122,13 +117,17 @@ Send a raw JSON-RPC request to a custom URL with the `request` method:
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 100000000 request '(variant {Custom={url = "https://ethereum.publicnode.com"}},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
+## Specifying an EVM chain
+
 To use a specific EVM chain, specify the chain's ID in the `Chain` variant:
 
 ```
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 100000000 request '(variant {Chain=0x1},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
-You can also specify an RPC provider using a specific EVM chain or RPC provider:
+## Specifying an RPC provider
+
+You can also specify an RPC provider:
 
 ```candid
 type JsonRpcSource = variant {
@@ -146,26 +145,7 @@ request : (
 );
 ```
 
-## Caveats
-
-### HTTP outcall consensus
-
-Make sure to verify that RPC requests work as expected on the ICP mainnet! HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
-
-If you encounter an issue with consensus, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
-
-### Response size estimates
-
-In some cases, it's necessary to perform multiple HTTP outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
-
-```bash
-dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSizeEstimate = 5000}, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=1000000000 --wallet=$(dfx identity get-wallet)
-```
-
-If the response is larger than the estimate, the canister will double the max response size and retry until either receiving a response or running out of cycles given by the `--with-cycles` flag.
-
-
-### Registering your own provider
+## Registering your own provider
 
 To register your own RPC provider in your local replica, you can use the following commands:
 
@@ -227,3 +207,21 @@ Some RPC services expect the API key in a request header instead of a URI path. 
 ```bash
 dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHeaders = opt vec { record { name = "HEADER_NAME"; value = "HEADER_VALUE" } } })'
 ```
+
+## Important notes
+
+### HTTP outcall consensus
+
+Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
+
+If you encounter an issue with consensus, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
+
+### Response size estimates
+
+In some cases, it's necessary to perform multiple HTTP outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
+
+```bash
+dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSizeEstimate = 5000}, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=1000000000 --wallet=$(dfx identity get-wallet)
+```
+
+If the response is larger than the estimate, the canister will double the max response size and retry until either receiving a response or running out of cycles given by the `--with-cycles` flag.
