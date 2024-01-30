@@ -1,4 +1,4 @@
-# Canister history
+# History
 
 ## Overview
 

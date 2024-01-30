@@ -1,8 +1,4 @@
----
-sidebar_position: 1
----
-
-# Customizing the frontend
+# Customizing a frontend
 
 ## Overview
 

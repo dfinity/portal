@@ -1,23 +1,15 @@
-# Bitcoin integration
-
-## Overview
-
-The Internet Computer integrates directly with the Bitcoin network. This allows canisters on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network. Canisters can act exactly like regular users holding bitcoin on the Bitcoin network. All of this is made possible by:
--  The Internet Computer integrating with Bitcoin at the protocol level 
--  Canisters being able to securely hold (and use) ECDSA keys by means of a novel protocol for chain-key signatures, based on threshold ECDSA. 
-
-The Internet Computer is among the first blockchain networks performing such direct integration with other blockchains and has built a novel technology foundation for this purpose.
+# Overview
 
 ## Use cases
 This integration allows for a plethora of novel use cases:
 
--   **Bitcoin smart contracts:** a canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions using social dApps.
+-   **Bitcoin smart contracts:** a canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions using social dapps.
 -   **Trading Bitcoin:** trade Bitcoin directly on decentralized exchanges on the Internet Computer, without requiring any third-party custody of the assets.
 -   **Decentralization swap:** using Bitcoin to buy tokens in a decentralization swap when an SNS-powered DAO decentralizes a service on ICP.
 -   **Chain Key Bitcoin (ckBTC):** a Bitcoin analogue on the Internet Computer that is backed 1:1 by bitcoin, is available on ICP. ckBTC is the easiest way to handle bitcoin on ICP.
 
 ## Examples
-These are only a few examples of how one can use the Bitcoin integration feature. Your imagination is the only limit to the endless range of possibilities being opened up by this feature. This documentation explains how to use this feature in your own dApps. Please also note that the Bitcoin integration API is a low-level API that operates on the level of UTXOs and Bitcoin transactions and is non-trivial to use.
+These are only a few examples of how one can use the Bitcoin integration feature. Your imagination is the only limit to the endless range of possibilities being opened up by this feature. This documentation explains how to use this feature in your own dapps. Please also note that the Bitcoin integration API is a low-level API that operates on the level of UTXOs and Bitcoin transactions and is non-trivial to use.
 
 After the Bitcoin mainnet release (general availability release) of the Bitcoin feature, a **chain key Bitcoin (ckBTC)** canister was made available. The ckBTC canister provides on-chain bitcoin on ICP, which looks and feels like wrapped bitcoin but has a much stronger underlying trust model because of its decentralized architecture and using threshold ECDSA instead of bridges. 
 
@@ -31,4 +23,4 @@ The ICP envisions that many people will prefer to use ckBTC instead of our nativ
 - If you want to go even deeper, have a look at the [chain-key ECDSA documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa).
 - [Bitcoin integration Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration).
 - If you are interested in experimenting with Bitcoin integration locally, see the [local development guide](local-development.md).
-- In the [examples repo](https://github.com/dfinity/examples) you can find sample code in [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) from which you can start to build following the [sample code walk-through](../../../samples/deploying-your-first-bitcoin-dapp.md).
+- In the [examples repo](https://github.com/dfinity/examples) you can find sample code in [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).

@@ -1,4 +1,4 @@
-# Network Nervous System (NNS) intro
+# NNS intro
 
 The NNS is the decentralized autonomous organization (DAO) that governs the Internet Computer Protocol. It is a fully on-chain, decentralized organization and is, for instance, responsible for making protocol level upgrades to continuously improve the Internet Computer Protocol. It does this via an implementation of liquid democracy in which ICP neuron holders vote on proposals that shape the development of the Internet Computer. Once such a proposal is accepted, it is autonomously executed.
 

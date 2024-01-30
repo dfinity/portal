@@ -1,6 +1,6 @@
 import { useSpawnAnimation } from "@site/src/utils/use-spawn-animation";
 import { ForwardRefComponent, motion, Variants } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 
 type Props<A, B> = {
   el?: ForwardRefComponent<A, B>;
@@ -8,7 +8,8 @@ type Props<A, B> = {
   variants: Variants;
   className?: string;
   id?: string;
-
+  onShow?: () => void;
+  threshold?: number;
   // todo: fix this hack
   src?: string;
   alt?: string;
@@ -19,10 +20,20 @@ function AnimateSpawn<A, B>({
   children,
   variants,
   className,
+  onShow,
   id,
+  threshold = 0,
   ...rest
 }: Props<A, B>) {
-  const { controls, ref } = useSpawnAnimation();
+  const { controls, ref, inView } = useSpawnAnimation({ threshold });
+  const [started, setStarted] = React.useState(false);
+
+  useEffect(() => {
+    if (inView && !started) {
+      setStarted(true);
+      onShow?.();
+    }
+  }, [inView]);
 
   const El = el as any; // todo: fix this hack
 

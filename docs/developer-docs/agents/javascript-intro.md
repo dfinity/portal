@@ -1,8 +1,5 @@
----
-sidebar_position: 1
-sidebar_label: From a JavaScript agent
----
-# Making a call from a JavaScript agent
+
+# JavaScript agent
 
 ## Overview
 

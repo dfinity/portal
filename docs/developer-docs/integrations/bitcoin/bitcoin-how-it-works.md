@@ -1,4 +1,4 @@
-# Bitcoin integration: technology overview
+# Bitcoin integration
 
 ## Overview
 
@@ -78,13 +78,13 @@ The Bitcoin adapter of the single replica running the local SDK environment conn
 
 ### Bitcoin testnet on ICP
 
-Once a smart contract is ready for acceptance testing, it is deployed on the mainnet (recall, there is no public ICP testnet), still using the Bitcoin API set to connect to the Bitcoin testnet. This is the same setting as used in local development. This setup is used to perform the acceptance testing of the dApp, using the Bitcoin testnet and a test chain-key ECDSA key, i.e., no real value is at stake.
+Once a smart contract is ready for acceptance testing, it is deployed on the mainnet (recall, there is no public ICP testnet), still using the Bitcoin API set to connect to the Bitcoin testnet. This is the same setting as used in local development. This setup is used to perform the acceptance testing of the dapp, using the Bitcoin testnet and a test chain-key ECDSA key, i.e., no real value is at stake.
 
 ### Bitcoin mainnet on ICP
 
 The final stage of development of a Bitcoin smart contract is its deployment on ICP with the Bitcoin API set to use Bitcoin Mainnet. This is the final production environment for the smart contract and is now available.
 
-## API fees & Pricing
+## API fees &  pricing
 
 The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mainnet APIs is presented in the following tables. As a general principle for the Bitcoin API, some API calls must have a minimum amount of cycles attached to the call as indicated in the column *Minimum cycles to send with call*. Cycles not consumed by the call are returned to the caller. Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of replication factor in the future. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached as the charged cost is independent of the replication factor of the subnet.
 
@@ -118,6 +118,6 @@ Note that the `bitcoin_get_utxos` call is charged through a baseline fee that am
 
 To start building your own apps with Bitcoin see the following tutorials:
 
-- [Deploying your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md).
+- [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
 
 - [Local development](./local-development.md).

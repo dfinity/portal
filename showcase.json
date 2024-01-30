@@ -24,7 +24,9 @@
     "oneLiner": "The fastest Ordinals marketplace",
     "website": "https://bioniq.io/",
     "tags": [
-      "Bitcoin"
+      "Bitcoin",
+      "Enterprise",
+      "NFT"
     ],
     "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
     "display": "Large",
@@ -765,7 +767,8 @@
     "stats": "Powering 15+ banks",
     "tags": [
       "Wallet",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "usesInternetIdentity": false,
     "github": "",
@@ -1671,7 +1674,8 @@
     "name": "Aviate Labs",
     "description": "Stop worrying about system failures and slow performance. Our data center standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "website": "https://www.aviatelabs.co/",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
@@ -1860,21 +1864,6 @@
     "twitter": "https://twitter.com/theUSERGEEK",
     "discord": "https://discord.gg/CvTpv2TeKs",
     "logo": "/img/showcase/usergeek_logo.webp"
-  },
-  {
-    "id": "glue",
-    "name": "glue",
-    "oneLiner": "collab.land on the Internet Computer",
-    "website": "https://r53d5-wyaaa-aaaae-qacxa-cai.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "NFT holder verification on Ethereum is commonplace, but was missing on the Internet Computer until now — glue is an easy-to-use solution for community leaders and members to perform NFT holder verification.",
-    "usesInternetIdentity": false,
-    "stats": "3,000+ users",
-    "logo": "/img/showcase/glue_logo.png",
-    "github": "https://github.com/glue-org",
-    "twitter": "https://twitter.com/glue_org"
   },
   {
     "id": "configeek",
@@ -2839,7 +2828,8 @@
     "oneLiner": "An infrastructure that brings Web 2.0 user experience to Web 3.0",
     "tags": [
       "Tools / Infrastructure",
-      "SocialFi"
+      "SocialFi",
+      "Enterprise"
     ],
     "logo": "/img/showcase/faceless_logo.png",
     "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
@@ -2883,10 +2873,9 @@
     "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
     "stats": "Private alpha testnet has been launched; the network and user interface are ready for operation.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure", "Enterprise"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/SamaNetwork",
     "twitter": "https://twitter.com/sama_network",
     "youtube": "https://www.youtube.com/@sama_network",
     "submittableId": "40741075"
@@ -2974,7 +2963,8 @@
       "Tools / Infrastructure",
       "DeFi",
       "DAO",
-      "SocialFi"
+      "SocialFi",
+      "Enterprise"
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/dCentra-io/dflow-icp",
@@ -3319,6 +3309,23 @@
     "submittableId": "44190088"
  },
  {
+    "id": "icgpt",
+    "name": "icgpt",
+    "oneLiner": "A fun dApp to demonstrate on-chain LLMs",
+    "website": "https://icgpt.icpp.world/",
+    "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
+    "stats": "15M parameter llama2",
+    "tags": [
+      "Tools / Infrastructure"
+    ],    
+    "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/icppWorld/icgpt",
+    "youtube": "https://youtu.be/2DhTpYrs-f0",
+    "twitter": "https://twitter.com/icpp_pro",
+    "submittableId": "43877997"
+ },
+ {
     "name": "Ping",
     "description": "Ping is a notification service that boosts ecosystem engagement by creating a direct communication channel between dapp developers and their respective users.",
     "website": "https://h7jna-pqaaa-aaaak-afgiq-cai.icp0.io/",
@@ -3382,5 +3389,96 @@
   "twitter": "https://twitter.com/sunshineluyao ",
   "youtube": "https://youtu.be/_Oftr6GrokY",
   "submittableId": "34624410"
+  },
+  {
+  "name": "Datanome",
+  "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
+  "website": "https://app.datanome.com",
+  "logo": "/img/showcase/datanome-logo.png",
+  "screenshots": [
+    "/img/showcase/datanome-screenshot.png"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "datanome",
+  "oneLiner": "Decentralized data marketplace",
+  "stats": "Alpha phase",
+  "tags": [
+    "NFT",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/datanomeproject",
+  "twitter": "https://twitter.com/datanomeproject",
+  "youtube": "",
+  "submittableId": "39687036",
+  "videoContentType": "video/mp4"
+  },
+  {
+  "name": "glue",
+  "description": "An easy-to-use solution for community leaders and members to perform holder verification of NFTs and tokens on Discord.",
+  "website": "https://github.com/glue-org",
+  "logo": "/img/showcase/glue_logo.webp",
+  "screenshots": [
+    "/img/showcase/glue_screenshot.webp"
+  ],
+  "video": "/img/showcase/glue_video.mp4",
+  "display": "Normal",
+  "id": "glue",
+  "oneLiner": "Holder verification for tokens and NFTs for discord.",
+  "stats": "9000+ users",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DAO"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/glue-org",
+  "twitter": "https://twitter.com/glue_org",
+  "youtube": "",
+  "submittableId": "28043953",
+  "videoContentType": "video/mp4"
+  },
+  {
+  "name": "ICSoccerWorld",
+  "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
+  "website": "https://github.com/ktimam/ICSimpleSoccer",
+  "logo": "/img/showcase/ICSoccerWorld.png",
+  "display": "Normal",
+  "id": "ICSoccerWorld",
+  "oneLiner": "Physics Based Soccer Simulation.",
+  "stats": "Community Dev Demo",
+  "tags": [
+    "NFT",
+    "Metaverse",
+    "Games"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/ktimam/ICSimpleSoccer",
+  "twitter": "https://twitter.com/ICSoccerWorld",
+  "youtube": "",
+  "submittableId": "44414655",
+  "videoContentType": "video/mp4"
+  },
+  {
+  "name": "Mapz",
+  "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
+  "website": "https://onzmk-taaaa-aaaal-acw4a-cai.icp0.io/",
+  "logo": "/img/showcase/Mapz_logo.png",
+  "screenshots": [
+    "/img/showcase/Mapz_screenshot.png"
+  ],
+  "display": "Normal",
+  "id": "mapz",
+  "oneLiner": "Airbnb for EV charging powered by Blockchain",
+  "stats": "3000+ users",
+  "tags": [
+    "NFT"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/nbelthan/Mapz-navigator",
+  "twitter": "https://twitter.com/Mapzlive",
+  "youtube": "",
+  "submittableId": "43548962"
   }
 ]

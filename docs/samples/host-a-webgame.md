@@ -1,4 +1,4 @@
-# Hosting a web game on the Internet Computer
+# Hosting a web game 
 
 ## Overview 
 This sample project demonstrates how to deploy a web game on the [Internet Computer](https://internetcomputer.org/) through [Unity](https://unity.com/) and [Godot](https://godotengine.org/) game engines.

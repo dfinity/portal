@@ -34,6 +34,8 @@ const {
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
+const snsDataPlugin = require("./plugins/sns-data");
+const airtablePlugin = require("./plugins/airtable");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -51,32 +53,42 @@ const subnavItems = [
     type: "doc",
     position: "left",
     docId: "home",
-    label: "Docs",
+    label: "Home",
   },
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "tutorials",
-    label: "Tutorials",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "guides",
-    label: "Guides",
+    sidebarId: "build",
+    label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "references",
-    label: "References",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "motoko",
     label: "Motoko",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "rust",
+    label: "Rust",
+  },
+  {
+    position: "left",
+    to: "https://demergent-labs.github.io/azle/",
+    label: "TypeScript",
+  },
+  {
+    position: "left",
+    to: "https://demergent-labs.github.io/kybra/",
+    label: "Python",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "solidity",
+    label: "Solidity",
   },
   {
     position: "left",
@@ -99,8 +111,7 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer Grants", href: "https://dfinity.org/grants" },
-      {
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },      {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
       },
@@ -255,8 +266,8 @@ const marketingNav = {
           name: "Use cases",
           items: [
             {
-              name: "Open Internet Services",
-              href: "/ois",
+              name: "DAOs on ICP",
+              href: "/sns",
               description: "Community-owned services",
             },
             {
@@ -354,7 +365,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Learn to build step by step",
-            href: "/docs/current/tutorials/",
+            href: "/docs/current/tutorials/developer-journey/",
             image: "/img/nav/featured-develop.webp",
           },
         },
@@ -411,14 +422,14 @@ const marketingNav = {
               description: "Become a node provider",
             },
             {
+              name: "Events",
+              href: "/events",
+              description: "Meet fellow Web3 enthusiasts",
+            },
+            {
               name: "Community Blog",
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
-            },
-            {
-              name: "Upcoming events",
-              description: "Meet fellow Web3 enthusiasts",
-              href: "https://dfinity.org/events-and-news/",
             },
           ],
           featured: {
@@ -478,7 +489,6 @@ const config = {
   },
   scripts: [],
   plugins: [
-    ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
@@ -494,6 +504,8 @@ const config = {
     matomoPlugin,
     blogPostsPlugin,
     contentfulPlugin,
+    snsDataPlugin,
+    airtablePlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],

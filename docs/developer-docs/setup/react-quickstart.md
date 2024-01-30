@@ -1,4 +1,4 @@
-# Quick start for React developers
+# Quickstart for React developers
 
 ## Overview
 
@@ -53,7 +53,7 @@ When developing frontend UIs, there are several frontend frameworks that can be 
 
 Another popular choice is React. React is a library used for creating native or web user interfaces. It uses JavaScript functions to facilitate the creation of React components, which can be used to receive data from an app's backend and return the output to the frontend UI. React is designed to create a framework for seamlessly combining components written by all different people, organizations, or teams. It is a popular choice for building the frontend of dapps, as it is versatile and has a rich ecosystem of packages that can be utilized by developers.
 
-On ICP, there are several boilerplate dapp templates that use React, such as the [React frontend example](/docs/current/developer-docs/frontend/react-frontend). In this guide, you will explore two other boilerplate templates that can be used for creating frontend UIs with React.
+On ICP, there are several boilerplate dapp templates that use React, such as the [React frontend example](/docs/current/developer-docs/frontend/boilerplate-frontend). In this guide, you will explore two other boilerplate templates that can be used for creating frontend UIs with React.
 
 ## Creating a React dapp with a button
 
@@ -462,7 +462,7 @@ export const my_project_frontend = createActor(canisterId);
 
 Then, in the `src/my_project_frontend/src/index.js` file, you can see that the agent takes the generated actor and uses it to make a call to the backend canister’s `greet` method:
 
-```
+```js
 import { my_project_backend } from "../../declarations/my_project_backend";
 
 document.querySelector("form").addEventListener("submit", async (e) => {
@@ -510,7 +510,7 @@ Since `dfx` projects rely on Webpack to provide the default frontend configurati
 
 To change the style of the frontend, such as the font family or font size, you can edit the `index.jsx` file such as:
 
-```
+```js
   return (
     <div style={{ "fontFamily": "sans-serif" }}>
       <div style={{ "fontSize": "30px" }}>

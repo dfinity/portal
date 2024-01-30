@@ -45,7 +45,7 @@ Open the `dfx.json` configuration file in a text editor, then change the default
 
 For example, under the `canisters` key:
 
-```
+```json
 "assistant": {
   "main": "src/assistant/main.mo",
   "type": "motoko"
@@ -60,7 +60,7 @@ Add a new canister name, source code location, and canister type for the `rock_p
 
 After making the changes, the `canisters` section of the `dfx.json` file should look similar to this:
 
-```
+```json
 {
   "canisters": {
     "assistant": {
@@ -113,7 +113,7 @@ Open the `src/assistant/main.mo` file in a text editor and delete the existing c
 
 Copy and paste this code into the file:
 
-```
+```motoko
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
 
@@ -168,22 +168,26 @@ Open the `src/rock_paper_scissors/main.mo` file in a text editor and delete the 
 
 Copy and paste this code into the file:
 
-```
+```motoko
 import I "mo:base/Iter"; 
 
+// Define an actor 
 actor RockPaperScissors {
 
+  // Define stable variables
   stable var alice_score : Nat = 0;
   stable var bob_score : Nat = 0;
   stable var alice_last : Choice = #scissors;
   stable var bob_last : Choice = #rock;
 
+  // Define custom types for the player's choice
   type Choice = {
     #rock;
     #paper;
     #scissors;
   };
 
+  // Define a function to return the winner of the game
   public func contest() : async Text {
     for (i in I.range(0, 99)) {
       battle_round();
@@ -194,6 +198,7 @@ actor RockPaperScissors {
     return (winner);
   };
 
+  // Define the function for the game
   func battle_round() : () {
     let a = alice(bob_last);
     let b = bob(alice_last);
@@ -233,7 +238,7 @@ Open the `src/daemon/main.mo` file in a text editor and delete the existing cont
 
 Copy and paste this code into the file:
 
-```
+```motoko
 actor Daemon {
   stable var running = false;
 

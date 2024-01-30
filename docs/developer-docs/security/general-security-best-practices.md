@@ -6,7 +6,20 @@ sidebar_label: General
 
 ## Overview
 
-This document contains information regarding general security best practices.
+This document provides security best practices for developing canisters and web apps served by canisters on the Internet Computer. These best practices are mostly inspired by issues found in security reviews.
+
+The goal of these best practices is to enable developers to identify and address potential issues early during development of new dapps, and not only in the end when (if at all) a security review is done. Ideally, this will make the development of secure dapps more efficient.
+
+Some excellent canister best practices linked here are from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html) and [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister). The relevant sections are linked in the individual best practices.
+
+## Target audience
+
+This document was initially intended for internal use at DFINITY. However, it has now been published to the community so every developer can benefit. The target audience are any developers working on canisters or web apps for the Internet Computer. This is also of interest to anyone doing reviews of such code.
+
+## Disclaimers and limitations
+
+The collection of best practices may grow over time. While it is useful to improve security of dapps on the Internet Computer, such a list will never be complete and will never cover all potential security concerns. For example, there will always be attack vectors very specific to a dapps use cases that cannot be covered by general best practices. Thus, following the best practices can complement, but not replace security reviews. Especially for security critical dapps it is recommended to perform security reviews/audits. Furthermore, please note that the best practices are currently not ordered according to risk or priority.
+
 
 ## Certify query responses if they are relevant for security
 
@@ -16,7 +29,7 @@ The responses to [query calls](/references/ic-interface-spec.md#https-interface)
 
 ### Recommendation
 
--   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dApp) should be certified by ICP using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/library/ic-certified-map). The data certification must be validated in the frontend.
+-   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dapp) should be certified by ICP using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/library/ic-certified-map). The data certification must be validated in the frontend.
 
 -   Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance: it takes a few seconds. Note that every query can also be issued as an update by the caller.
 

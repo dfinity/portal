@@ -2,91 +2,63 @@
 
 ## Overview
 
-Since service workers are not supported in all settings (especially on mobile),
-it is important to use the `raw` links (e.g., [oa7fk-maaaa-aaaam-abgka-cai.raw.icp0.io](https://oa7fk-maaaa-aaaam-abgka-cai.raw.icp0.io))
-when sharing links on different platforms (e.g., LinkedIn or Twitter/X). This guide
-provides the necessary background and explains how to configure your asset
-canister correctly, such that you can share links to your dapp without hiccups.
+Once a dapp has been deployed to the mainnet, the canister serves the dapp's frontend via a URL. This URL can be shared with anyone, allowing them to view and interact with your dapp without you needing to configure domain names, DNS records, or other networking configurations. 
 
-## Context
+## Sharing links to dapps
 
-To directly access dapps hosted on the Internet Computer via a browser,
-an HTTP gateway is required. This gateway translates browser HTTP requests into 
-API canister calls. Currently, there are two instances of this HTTP gateway, providing
-users with two ways to access dapps on ICP through their browsers:
+When a canister is deployed to the mainnet (with a command such as `dfx deploy --network ic`), the canister's ID will be returned in the output. For example, when deploying a project with two canisters, the output will resemble:
 
-1. `non-raw`: upon the initial dapp access, a service worker is loaded
-into the user's browser, which performs the translation locally. `non-raw` is available
-through the `<canister_id>.icp0.io` domains (e.g., [oa7fk-maaaa-aaaam-abgka-cai.icp0.io](https://oa7fk-maaaa-aaaam-abgka-cai.raw.icp0.io))
-or a custom domain (e.g., [internetcomputer.org](https://internetcomputer.org)).
+```
+Deploying all canisters.
+Creating canisters...
+Creating canister "poll_backend"...
+"poll_backend" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
+Creating canister "poll_frontend"...
+"poll_frontend" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
+Building canisters...
+Building frontend...
+Installing canisters...
+Installing code for canister poll_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
+Installing code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
+Authorizing our identity (default) to the asset canister...
+Uploading assets to asset canister...
+/index.html 1/1 (472 bytes)
+/index.html (gzip) 1/1 (314 bytes)
+/index.js 1/1 (260215 bytes)
+/index.js (gzip) 1/1 (87776 bytes)
+/main.css 1/1 (484 bytes)
+/main.css (gzip) 1/1 (263 bytes)
+/sample-asset.txt 1/1 (24 bytes)
+/logo.png 1/1 (25397 bytes)
+/index.js.map 1/1 (842511 bytes)
+/index.js.map (gzip) 1/1 (228404 bytes)
+/index.js.LICENSE.txt 1/1 (499 bytes)
+/index.js.LICENSE.txt (gzip) 1/1 (285 bytes)
+Deployed canisters.
+```
 
-2. `raw`: the translation happens remotely on the boundary nodes and is transparent
-to the user. `raw` access is available through the `<canister_id>.raw.icp0.io` domains
-(e.g., [oa7fk-maaaa-aaaam-abgka-cai.raw.icp0.io](https://oa7fk-maaaa-aaaam-abgka-cai.raw.icp0.io)).
+There are two canisters deployed, identified by their ids:
 
-Service workers are not universally supported, especially on mobile devices.
-In-App Web-Views, Firefox Privacy Mode, and Google translate, for example, do not
-function with service workers and thus do not support `non-raw` dapp access.
+```
+"poll_backend" canister created on network "ic" with canister id: "5o6tz-saaaa-aaaaa-qaacq-cai"
+...
+"poll_frontend" canister created on network "ic" with canister id: "5h5yf-eiaaa-aaaaa-qaada-cai"
+```
 
-This is relevant when sharing dapp links on other platforms like
-LinkedIn or Twitter. When users try to open a `non-raw` link, for example, from
-within the LinkedIn dapp, it is opened in an In-App Web-View, which does not
-support service workers and therefore simply displays an error message.
+You can use the following URL format to access your canister in the web browser:
 
-:::caution
-For custom domains there is no `raw` equivalent. If you want to share a link,
-you should use the corresponding `<canister_id>.raw.icp0.io` domain.
+```
+https://<canister_id>.icp0.io
+```
+
+For example, to access a canister with a canister id of `5h5yf-eiaaa-aaaaa-qaada-cai`:
+
+```
+https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
+```
+
+:::info
+If you are sharing a link to a frontend (asset) canister, the frontend of the dapp will be displayed.
+
+If you are sharing a link to a backend canisters, the [CandidUI](/docs/current/developer-docs/backend/candid/candid-concepts) will be displayed.
 :::
-
-
-## Solution
-
-To enable universal dapp access through a shared link, it is
-essential to share the `raw` version (i.e., `<canister_id>.raw.icp0.io`) to bypass
-the service worker.
-
-However, two key details must be noted:
-
-1. Starting from dfx version `0.13.1` until `0.14.3`, asset canisters redirect requests for `raw` to
-`non-raw` by default. This redirection must to be disabled in order for the `raw` links to work anywhere.
-1. The `raw` domain needs to be registered as an alternative frontend origin for
-Internet Identity such that users can seamlessly login across both the `non-raw` and `raw` version with the same principal.
-
-### Disable automatic `raw` redirect
-
-If you are using dfx version `0.13.1` to `0.14.3`, your asset canister automatically redirects
-all `raw` requests to `non-raw`, preventing service worker bypassing.
-
-You can either upgrade your dfx version or explicitly enable raw access:
-
-#### Upgrading dfx (recommended)
-
-Simply run the following command:
-
-```
-dfx upgrade
-```
-
-
-#### Enabling `raw` access
-
-To enable raw access, add the following snippet to your `.ic-assets.json` file:
-
-```
-[
-    {
-        "match": "**/*",
-        "allow_raw_access": true
-    }
-]
-```
-
-This file must be present in every single source directory specified within your
-asset canister's `dfx.json`
-
-### Internet Identity alternative frontend origins
-
-To facilitate seamless user account access across both `non-raw` and `raw`,
-register the domains as alternative frontend origins for Internet
-Identity. Follow these instructions to configure alternative origins:
-[Configuring alternative origins](../integrations/internet-identity/alternative-origins.md)

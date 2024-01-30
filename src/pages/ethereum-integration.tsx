@@ -122,7 +122,7 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               Canister smart contracts on ICP are the glue between blockchains
-              and the gateway to X-chain advantages.
+              and the gateway to multi-chain advantages.
             </motion.h2>
             {/* <motion.p className="tw-paragraph mb-0" variants={transitions.item}>
               <Link href="#subscribe" className="button-primary">
@@ -148,7 +148,7 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               Ethereum is the world’s top blockchain for DeFi with TVL in the
-              billions. Integrating with ICP offers X-chain benefits such as
+              billions. Integrating with ICP offers multi-chain benefits such as
               increased asset liquidity, expanded market access, improved
               scalability and throughput. Plus, access to ICP’s unique
               capabilities:
@@ -247,7 +247,7 @@ function EthereumIntegrationPage() {
             imageUrl="/img/ethereum-integration/image-2.webp"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              X-chain DeFi
+              Multi-chain DeFi
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
               In June 2023, average transaction fees for USDC and USDT were
@@ -390,7 +390,7 @@ function EthereumIntegrationPage() {
             <h2 className="mb-8 tw-heading-60">
               Build your own Ethereum
               <br />
-              X-chain solution
+              multi-chain solution
             </h2>
 
             <VideoCard

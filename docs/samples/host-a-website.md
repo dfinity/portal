@@ -1,4 +1,4 @@
-# Hosting a static website on the Internet Computer
+# Hosting a static website
 
 ## Overview
 

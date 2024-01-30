@@ -43,7 +43,7 @@ The sample canister for this guide doesn’t use any frontend assets, so you can
 For example, if you remove the `actor_hello_assets` section, the configuration file looks like this:
 
 
-```
+```json
     {
     "canisters": {
         "actor_hello": {
@@ -78,7 +78,7 @@ The next step is to write a canister that prints a statement like the traditiona
 
 Copy and paste this code into the `main.mo` file:
 
-```
+```motoko
 import Debug "mo:base/Debug";
 actor HelloActor {
    public query func hello() : async () {
@@ -205,7 +205,7 @@ The `dfx canister create` command also stores the connection-specific canister i
 
 For example:
 
-```
+```json
 {
 "actor_hello_backend": {
     "local": "dzh22-nuaaa-aaaaa-qaaoa-cai"

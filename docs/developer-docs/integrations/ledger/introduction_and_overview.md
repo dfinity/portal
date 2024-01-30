@@ -1,6 +1,4 @@
-# Introduction and overview
-
-## Overview
+# Overview
 Ledgers are used to record transactions in a chain of blocks. One block references its parent block forming a blockchain that is immutable without changing all previous blocks in the chain. 
 The Internet Computer Protocol utilizes two different types of ledgers. The first ledger is the ICP ledger. It is part of the [NNS](/tokenomics/nns/nns-intro.md) and the canister that implements
 the ICP ledger is running on the NNS subnet. The second type of ledger are the ICRC-1 ledgers. In this overview, both ledger types

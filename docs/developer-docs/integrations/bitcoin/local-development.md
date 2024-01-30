@@ -2,9 +2,7 @@
 
 ## Overview
 
-In the [deploy your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp.md) tutorial,
-you explored how to deploy a Bitcoin dapp on the Internet Computer that can receive and send
-Bitcoin. In this guide, you'll explore how you can develop and test a Bitcoin dapp
+In this guide, you'll explore how you can develop and test a Bitcoin dapp
 locally. Testing locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-ecdsa_public_key) and
@@ -242,7 +240,7 @@ Via command line, the same call would look like this:
     dfx canister call basic_bitcoin send '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
 
 The command above creates a transaction and sends it out to your local Bitcoin node.
-For more details on how the `send` endpoint works, see the [deploying your first Bitcoin dapp](../../../samples/deploying-your-first-bitcoin-dapp#sending-bitcoin) tutorial.
+For more details on how the `send` endpoint works, see the [deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) tutorial.
 
 There still remains one additional step, which is to mine a block so that the transaction
 you just sent becomes part of the blockchain. Run the following from the `bitcoind` directory:
