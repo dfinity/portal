@@ -1,14 +1,14 @@
 # Overview
 
-Canisters deployed on ICP are able to communicate with the Ethereum blockchain and other EVM-compatible networks using the EVM RPC canister. The EVM RPC canister implements an on-chain API that facilitates API requests to JSON-RPC services like Alchemy, Ankr, and Cloudflare WEb3. It also supports BlockPI requests using the ICP feature HTTPS outcalls. 
+Canisters deployed on ICP are able to communicate with the Ethereum blockchain and other EVM-compatible networks using the EVM RPC canister. This canister facilitates API requests to JSON-RPC services such as [CloudFlare](https://www.cloudflare.com/en-gb/web3/), [Alchemy](https://www.alchemy.com/), [Ankr](https://www.ankr.com/), [BlockPI](https://blockpi.io/), or [Public Node](https://www.publicnode.com/) using [HTTPS outcalls](https://internetcomputer.org/https-outcalls). 
 
-This integration enables canisters to use Ethereum similar to dapps deployed directly on Ethereum. ICP canisters can query info such as Ethereum smart contract states and submit raw transactions to the Ethereum network. 
+This enables functionality similar to traditional Ethereum dapps, including querying Ethereum smart contract states and submitting raw transactions.
 
-The EVM-RPC canister supports [other EVM chains](https://chainlist.org/?testnets=true) such as Polygon and Avalanche. 
+Beyond the Ethereum blockchain, this canister also has partial support for Polygon, Avalanche, and other popular EVM networks. Check out [ChainList.org](https://chainlist.org/?testnets=true) for an extensive list of compatible networks and RPC providers.
 
 This integration allows for the implementation of ckETH, a chain-key twin of the ETH token. 
 
-You can [learn how to use the EVM RPC canister](evm-rpc.md)
+You can [learn how to use the EVM RPC canister](evm-rpc.md).
 
 ## Costs
 
