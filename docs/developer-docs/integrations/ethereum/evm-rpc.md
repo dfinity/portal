@@ -208,6 +208,16 @@ dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHe
 
 ## Important notes
 
+### RPC result consistency
+
+When calling RPC methods directly through the Candid interface (rather than via the `request` method), the canister will compare results from several JSON-RPC APIs and return a `Consistent` or `Inconsistent` variant based on whether the APIs agree on the result.
+
+By default, the canister uses three different RPC providers, which may change depending on availability. It's possible to specify which providers to use for this consistency check. For example:
+
+```bash
+dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt vec {Cloudflare; PublicNode}}, record {address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; block = variant {Tag = variant {Latest}}})' --with-cycles 100000000000 --wallet=$(dfx identity get-wallet)
+```
+
 ### HTTP outcall consensus
 
 Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
