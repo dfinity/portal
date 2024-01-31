@@ -5,7 +5,7 @@
 
 This guide covers connecting to ICP from JavaScript in a web browser. For more information about calling ICP from Node.js, please, refer to [this guide](nodejs.md).
 
-If you are looking for an explanation of what an agent does, see the [agent overview](../index.md).
+If you are looking for an explanation of what an agent does, see the [agent overview](index.md).
 
 Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
 

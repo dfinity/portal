@@ -104,3 +104,31 @@ You can also top up any canister via the [NNS frontend dapp](https://nns.ic0.app
 - #### Step 3: Add a canister principal (it is not necessary for the user to actually control said canister).
 - #### Step 4: Once canister is added, click on that canister.
 - #### Step 5: Click `add cycles` to add cycles using the ICP in your NNS frontend dapp.
+
+## Managing cycle depletion with freezing threshold
+
+ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles.
+
+In the output of the `dfx canister status` command, you may have noticed the `freezing threshold` value. The freezing threshold is a value defined in seconds, which is used to calculate how many cycles a canister must retain in its cycles balance. This calculation is based off of the canister's memory consumption. The default freezing threshold value is `2_592_000s`, which corresponds to 30 days. 
+
+The freezing threshold is important because if a canister runs out of cycles, it will be uninstalled. The freezing threshold protects it from deletion, since if the cycles balance dips below the threshold, the canister will stop processing any new requests; however, it will continue to reply to existing requests. 
+
+For example, to set a freezing threshold for your `poll_backend` canister, use the command:
+
+```sh
+dfx canister update-settings poll_backend --freezing-threshold 3472000 
+```
+
+Then, you can confirm that this threshold has been set by running the `dfx canister status poll_backend --network ic ` command again:
+
+```
+Canister status call result for poll_backend.
+Status: Stopped
+Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
+Memory allocation: 0
+Compute allocation: 0
+Freezing threshold: 3_472_000
+Memory Size: Nat(2363181)
+Balance: 3_100_000_000_000 Cycles
+Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
+```

@@ -98,7 +98,9 @@ It is recommended to follow the [creating your first canister](./first-canister)
 
     If you created a project with a different name, however, your canister names will match your project name instead of `hello_backend` and `hello_frontend`.
 
-- #### Step 4:  Call the `hello_backend` canister and the predefined `greet` function by running the following command:
+## Call the canister from the CLI
+
+Call the `hello_backend` canister and the predefined `greet` function by running the following command:
 
         dfx canister call hello_backend greet everyone
 
@@ -114,31 +116,79 @@ It is recommended to follow the [creating your first canister](./first-canister)
 
     Remember, however, that if you created a project with a different name, the canister name will match your project name and you’ll need to modify the command line to match the name you used instead of `hello_backend`. If you were to choose `test` as the projects name, your backend canister would be called `test_backend` and the frontend canister `test_frontend`.
 
-- #### Step 5:  Verify the command displays the return value of the `greet` function.
+Verify the command displays the return value of the `greet` function.
 
     For example:
 
         ("Hello, everyone!")
 
-## Test the dapp frontend
+## Call the canister from browser
 
-Now that you have verified that your dapp has been deployed and tested its operation using the command line, let’s verify that you can access the frontend using your web browser.
+It is possible to access the frontend canister directly from the browser. You will need to navigate to the URL that was printed in the output of the `dfx deploy` command (your URL might differ):
 
-- #### Step 1:  Open a browser.
+```
+Frontend canister via browser
+    hello_frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+```
 
-- #### Step 2:  Navigate to the URL output by the `dfx deploy` command in the previous step. 
+This will render a webpage with a form that accepts a string and sends it to the backend canister.
 
-Use the URL after `Frontend canister via browser`; in our case that's `http://127.0.0.1:4943/?canisterId=ryjl3-tyaaa-aaaaa-aaaba-cai`.
+The source code of the webpage is defined in the `src/hello_frontend/src/index.{html,js}` files.
 
-Navigating to this URL displays a basic HTML page with a sample asset image file, an input field, and a button. For example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>hello</title>
+    <base href="/" />
+    <link rel="icon" href="favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <main>
+      <img src="logo2.svg" alt="DFINITY logo" />
+      <br />
+      <br />
+      <form action="#">
+        <label for="name">Enter your name: &nbsp;</label>
+        <input id="name" alt="Name" type="text" />
+        <button type="submit">Click Me!</button>
+      </form>
+      <section id="greeting"></section>
+    </main>
+  </body>
+</html>
+```
 
-![Sample HTML page](_attachments/frontend-prompt.png)
+```javascript
+import { hello_backend } from "../../declarations/hello_backend";
 
-- #### Step 3:  Type a greeting, then click **Click Me** button to return the greeting.
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const button = e.target.querySelector("button");
 
-    For example:
+  const name = document.getElementById("name").value.toString();
 
-    ![Hello](_attachments/frontend-result.png)
+  button.setAttribute("disabled", true);
+
+  // Interact with foo actor, calling the greet method
+  const greeting = await hello_backend.greet(name);
+
+  button.removeAttribute("disabled");
+
+  document.getElementById("greeting").innerText = greeting;
+
+  return false;
+});
+```
+
+The JavaScript code running in browser uses the [`agent-js`](/docs/current/developer-docs/agents/javascript-intro) library to interact with the backend canister. The library creates a wrapper JavaScript object based on the interface of the canister. That wrapper object provides convenience methods for calling the canister functions as if they were JavaScript functions:
+
+```
+const greeting = await hello_backend.greet(name);
+```
 
 ## Stop the local canister execution environment
 

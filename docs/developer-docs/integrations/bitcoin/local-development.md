@@ -1,4 +1,4 @@
-# Developing Bitcoin dapps locally
+# Developing locally
 
 ## Overview
 

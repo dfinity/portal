@@ -5,7 +5,6 @@ const sidebars = {
     
 
   build: [
-      "developer-docs/index",
     {
       type: "category",
       label: "Getting started",
@@ -14,6 +13,11 @@ const sidebars = {
           type: "doc",
           label: "What is the Internet Computer?",
           id: "concepts/what-is-ic",
+        },
+        {
+          type: "doc",
+          label: "Hello, world!",
+          id: "developer-docs/setup/hello-world",
         },
         {
           type: "doc",
@@ -327,6 +331,11 @@ const sidebars = {
             {
               type: "doc",
               label: "General",
+              id: "developer-docs/production/best-practices",
+            },
+            {
+              type: "doc",
+              label: "General",
               id: "developer-docs/security/general-security-best-practices",
             },
             {
@@ -460,6 +469,13 @@ const sidebars = {
             "tokenomics/token-holders/custody-options-intro",
             "tokenomics/token-holders/self-custody-quickstart"],
         },
+        {
+          type: "category",
+          label: "NFTs",
+          items: [
+            "developer-docs/use-cases/considerations-for-nft-devs",
+          ]
+        },
       ],
     },
     {
@@ -468,7 +484,15 @@ const sidebars = {
       items: [
         "developer-docs/integrations/bitcoin/index",
         "developer-docs/integrations/bitcoin/ckbtc",
-        "developer-docs/integrations/bitcoin/local-development",
+        {
+          type: "category",
+          label: "Advanced",
+          items: [
+            "developer-docs/integrations/bitcoin/read-state",
+            "developer-docs/integrations/bitcoin/submit-transactions",
+            "developer-docs/integrations/bitcoin/local-development",
+          ]
+        }
       ],
     },
     {
@@ -768,10 +792,11 @@ const sidebars = {
           type: "category",
           label: "Feature references",
           items: [
-        "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
-        "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-        "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-        "developer-docs/integrations/vetkeys/technology-overview",
+            "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+            "developer-docs/integrations/bitcoin/ckbtc-reference",
+            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+            "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
+            "developer-docs/integrations/vetkeys/technology-overview",
           ],
         },
       ],
