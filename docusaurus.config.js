@@ -85,6 +85,12 @@ const subnavItems = [
     label: "Python",
   },
   {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "solidity",
+    label: "Solidity",
+  },
+  {
     position: "left",
     to: "blog",
     label: "Blog",

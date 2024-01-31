@@ -150,20 +150,20 @@ The table below details the cost of compute, storage transmissions and canister 
 
 | Canister transmission | Description | Who is responsible for paying the cycles fee? | 13-node subnets cycles cost | 13-node subnets USD cost | 34-node subnets | 34-node subnets USD cost |
 | ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
-| Canister creation | For creating canisters on a subnet. | Created canister | 100B | $0.133661 | 100B / 13 * 34 | $0.34957492307 |
-| Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.0000133661 | 10M / 13 * 34 | $0.00000511056 |
-| Update message execution | For every update message executed. | Target canister | 590K | $0.0000007885999 | 590K / 13 * 34 | $0.000000301523491 |
-| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M | $0.0053 | 400M / 13 * 34 | $0.00001572482 |
-| Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K | $0.0000003475186 | 260K / 13 * 34 | $0.000000132874759 |
-| Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K | $0.00000000133661 | 1K / 13 * 34 | $0.00000000051105676 |
-| Ingress message reception | For every ingress message received. | Receiving canister | 1.2M | $0.00000160393 | 1.2M / 13 * 34 | $0.000000613268118 |
-| Ingress byte reception | For every byte received in an ingress message. | Receiving canister | 2K | $0.00000000267322 | 2K / 13 * 34 | $0.00000000102211353 |
-| GB storage per second | For storing a GB of data per second. | Canister with storage | 127K | $0.00000016974947 | 127K / 13 * 34 | $0.000000649042091 |
+| Canister creation | For creating canisters on a subnet. | Created canister | 100B | $0.133661000000 | 100B / 13 * 34 | $0.349574923077 |
+| Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.000013366100 | 10M / 13 * 34 | $0.000034957492 |
+| Update message execution | For every update message executed. | Target canister | 590K | $0.000000788600 | 590K / 13 * 34 | $0.000002062492 |
+| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M | $0.000534644000 | 400M / 13 * 34 | $0.001398299692 |
+| Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K | $0.000000347519 | 260K / 13 * 34 | $0.000000908895 |
+| Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K | $0.000000001337 | 1K / 13 * 34 | $0.000000003496 |
+| Ingress message reception | For every ingress message received. | Receiving canister | 1.2M | $0.000001603932 | 1.2M / 13 * 34 | $0.000004194899 |
+| Ingress byte reception | For every byte received in an ingress message. | Receiving canister | 2K | $0.000000002673 | 2K / 13 * 34 | $0.000000006991 |
+| GB storage per second | For storing a GB of data per second. | Canister with storage | 127K | $0.000000169749 | 127K / 13 * 34 | $0.000000443960 |
 | | | | | | | | |
 | _HTTPS outcalls_ | | | | | | | |
-| HTTPS outcall (per call) | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`). | Sending canister | 49_140_000 | $0.00006568101 | 171_360_000 | $0.00022904148 |
-| HTTPS outcall request message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`). | Sending canister | 5_200 | $0.000000006950372 | 13_600 | $0.000000018177896 |
-| HTTPS outcall response message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`). | Sending canister | 10_400 | $0.000000013900744 | 27_200 | $0.000000036355792 |
+| HTTPS outcall (per call) | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`). | Sending canister | 49_140_000 | $0.000065681015 | 171_360_000 | $0.000229041490 |
+| HTTPS outcall request message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`). | Sending canister | 5_200 | $0.000000006950 | 13_600 | $0.000000018178 |
+| HTTPS outcall response message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`). | Sending canister | 10_400 | $0.000000013901 | 27_200 | $0.000000036356 |
 
 The following table shows the calculated storage cost per GB for a 30-day month:
 

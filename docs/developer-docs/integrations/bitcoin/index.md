@@ -1,26 +1,30 @@
 # Overview
 
-## Use cases
-This integration allows for a plethora of novel use cases:
+Smart contracts running on ICP can directly interact with the Bitcoin network without using bridges.
+This is possible because ICP nodes can fetch and validate the Bitcoin network's blocks, and then make them available for smart contracts to query and read.
+Smart contracts can also sign and send Bitcoin transactions, allowing them to directly hold BTC.
 
--   **Bitcoin smart contracts:** a canister can directly hold Bitcoin on the Bitcoin network, which allows engineers to implement powerful Bitcoin smart contracts using canisters. Any canister smart contract can now offer Bitcoin smart contract functionality. For example on-chain Bitcoin wallets with biometric authentication without the user being required to manage the private key, or Social-Fi, where users can do peer-to-peer Bitcoin transactions using social dapps.
--   **Trading Bitcoin:** trade Bitcoin directly on decentralized exchanges on the Internet Computer, without requiring any third-party custody of the assets.
--   **Decentralization swap:** using Bitcoin to buy tokens in a decentralization swap when an SNS-powered DAO decentralizes a service on ICP.
--   **Chain Key Bitcoin (ckBTC):** a Bitcoin analogue on the Internet Computer that is backed 1:1 by bitcoin, is available on ICP. ckBTC is the easiest way to handle bitcoin on ICP.
+This direct Bitcoin integration is based on two features:
 
-## Examples
-These are only a few examples of how one can use the Bitcoin integration feature. Your imagination is the only limit to the endless range of possibilities being opened up by this feature. This documentation explains how to use this feature in your own dapps. Please also note that the Bitcoin integration API is a low-level API that operates on the level of UTXOs and Bitcoin transactions and is non-trivial to use.
+- **Threshold ECDSA**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography.
+  This key can be used to digitally sign messages.
+  One of the supported signing algorithms, ECDSA is compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
+- **Bitcoin adapter**: ICP has one subnet whose nodes participate in the Bitcoin network.
+  These nodes are used to fetch the Bitcoin state and blocks and send transactions to the network.
 
-After the Bitcoin mainnet release (general availability release) of the Bitcoin feature, a **chain key Bitcoin (ckBTC)** canister was made available. The ckBTC canister provides on-chain bitcoin on ICP, which looks and feels like wrapped bitcoin but has a much stronger underlying trust model because of its decentralized architecture and using threshold ECDSA instead of bridges. 
+The diagram below shows the flow of interacting with the Bitcoin network from a smart contract.
 
-The ICP envisions that many people will prefer to use ckBTC instead of our native integration for their projects because of some distinct advantages:
--   **Easier to integrate:** instead of using the low-level Bitcoin integration API, one can simply access the ckBTC ledger like any other ledger on the Internet Computer. The ckBTC ledger adheres to the ICRC-2 token standard for fungible tokens.
--   **Faster and cheaper transfers:** ckBTC can be transferred with the low finality time of the Internet Computer (within seconds) and for a fraction of the cost of a Bitcoin transfer on the Bitcoin network. Using this scheme, only the settlement transfers with the Bitcoin network need to be done on the Bitcoin network, the majority of transfers can be done at high speed and low cost directly on ICP.
+<div class="text--center">
+<img src="/img/docs/bitcoin-overview.png" alt="Bitcoin overview" width="500"/>
+</div>
 
-## Resources
+ICP also implements a smart contract that uses these two features to provide a **ckBTC** token (chain-key BTC) that is backed 1:1 by BTC.
+Using the ckBTC token is easier and more convenient compared to using the two features directly.
+The main value of ckBTC is that it can be transferred with the low finality time of ICP (within seconds) and for a fraction of the cost of a bitcoin transfer on the Bitcoin network.
 
-- If you want to dive deeper into how Bitcoin integration works, see the [how it works](bitcoin-how-it-works.md) page to get an overview of the protocol-level Bitcoin integration, our novel chain-key ECDSA implementation based on a threshold ECDSA protocol, the API, and more. 
-- If you want to go even deeper, have a look at the [chain-key ECDSA documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa).
-- [Bitcoin integration Wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration).
-- If you are interested in experimenting with Bitcoin integration locally, see the [local development guide](local-development.md).
-- In the [examples repo](https://github.com/dfinity/examples) you can find sample code in [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) and [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+The ckBTC token is suitable for the common use cases of holding, transferring, and trading BTC.
+Developers that need more advanced interaction with the Bitcoin network need to use the lower-level threshold ECDSA and Bitcoin APIs.
+An example of such an advanced use case would be working with Bitcoin inscriptions.
+The threshold ECDSA API provides a way for smart contracts to sign transactions with their secret keys.
+The Bitcoin API allows smart contracts to read the Bitcoin state (UTXOs and balances) and send signed transactions.
+
