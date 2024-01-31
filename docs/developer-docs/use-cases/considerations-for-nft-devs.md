@@ -28,17 +28,17 @@ For developers seeking to store assets and mint NFTs directly on the Internet Co
 
 - [DIP-721](https://github.com/Psychedelic/DIP721) is an [ERC-721](https://eips.ethereum.org/EIPS/eip-721) style non-fungible token standard built mirroring its Ethereum counterpart and adapting it to the Internet Computer, maintaining the same interface.
 
-Refer to the [Creating NFTs on ICP](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.4-NFT-tutorial#icrc-7) tutorial for more information.
+Refer to the [creating NFTs on ICP](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.4-NFT-tutorial#icrc-7) tutorial for more information.
 
-- [ICRC-7](https://github.com/dfinity/ICRC/tree/54d98a82a626daad6f674f1b8e6b815785f6c8c5/ICRCs/ICRC-7) is a standard for the base implementaion of Non-Fungible Tokens (NFTs) on the Internet Computer.
+- [ICRC-7](https://github.com/dfinity/ICRC/tree/54d98a82a626daad6f674f1b8e6b815785f6c8c5/ICRCs/ICRC-7) is a standard for the base implementation of non-fungible tokens (NFTs) on the Internet Computer.
 
 :::caution
 The ICRC-7 standard is still currently in the drafting stages and is not yet live in production.
 :::
 
-#### NFT marketplaces and launchpads
+### NFT marketplaces and launchpads
 
-Additionally, you have the option to utilize various platforms for minting your NFTs.
+Additionally, you have the option to utilize various platforms for minting your NFTs, such as:
 
 - [Entrepot](https://entrepot.app/).
 - [Jelly](https://jelly.xyz/).
