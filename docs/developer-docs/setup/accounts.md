@@ -33,7 +33,7 @@ dfx identity use <identity_name>
 dfx identity get-principal
 ```
 
-The principal will looks something like this:
+The principal will look something like this:
 
 ```
 itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe
