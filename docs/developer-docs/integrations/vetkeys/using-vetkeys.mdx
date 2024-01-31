@@ -1,8 +1,11 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vetKeys API demo
 
 ## Overview
 
-This demo provides a canister (`src/system_api`) that offers the vetKD system API proposed in https://github.com/dfinity/interface-spec/pull/158, implemented demonstration, testing, and initial devlopment purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key. 
+This demo provides a canister (`src/system_api`) that offers the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158), implemented demonstration, testing, and initial development purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key. 
 
 This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
 
@@ -15,23 +18,25 @@ This demo uses files found in [this repository](https://github.com/dfinity/examp
 
 ### Step 1: Begin by cloning the Github repository containing this project:
 
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
 ```
 git clone https://github.com/dfinity/examples/
-```
-
-Then navigate into the directory specifically for this project:
-
-For Motoko deployment:
-
-```
 cd examples/motoko/vetkd
 ```
 
-For Rust deployment:
+</TabItem>
+
+<TabItem value="rust" label="rust" default>
 
 ```
+git clone https://github.com/dfinity/examples/
 cd examples/rust/vetkd
 ```
+
+</TabItem>
+</Tabs>
 
 ### Step 2: Then, start a local instance of the Internet Computer:
 
@@ -39,15 +44,15 @@ cd examples/rust/vetkd
 dfx start --clean --background
 ```
 
-### Step 3: Ensure the Canister SDK (dfx) uses the canister IDs that are hard-coded in the Rust source code:
+### Step 3: Ensure the dfx uses the canister IDs that are hard-coded in the source code:
 
 ```sh
 dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
 ```
 
-Without this, the Canister SDK (dfx) may use different canister IDs for the `system_api` and `app_backend` canisters in your local environment.
+Without this, the dfx may use different canister IDs for the `system_api` and `app_backend` canisters.
 
-### Step 4: Ensure that the required node modules are available in your project directory, if needed, by running the following command:
+### Step 4: Ensure that the required node modules are available in your project directory:
 
 ```sh
 npm install
