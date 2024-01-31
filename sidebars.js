@@ -754,7 +754,7 @@ const sidebars = {
             {
               type: "doc",
               label: "ICRC-1 token standard",
-              id: "/docs/current/developer-docs/integrations/icrc-1/index"
+              id: "developer-docs/integrations/icrc-1/index"
             },
             {
               type: "doc",
