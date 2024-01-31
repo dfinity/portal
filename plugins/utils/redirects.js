@@ -19,7 +19,7 @@ const redirects = `
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
-  /docs/current/developer-docs/ic-overview /docs/current/developer-docs/
+  /docs/current/developer-docs/ic-overview /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
@@ -195,10 +195,12 @@ const redirects = `
   /docs/current/developer-docs/setup /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
   /docs/current/tutorials/index /docs/current/developer-docs/
-  /docs/current/tutorials/ /docs/current/developer-docs/
+  /docs/current/tutorials/ /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/setup/deploy
+  /docs/current/developer-docs/index /docs/current/concepts/what-is-ic
+  /docs/current/developer-docs /docs/current/concepts/what-is-ic
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
