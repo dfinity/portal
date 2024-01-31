@@ -20,7 +20,7 @@ ICP features a mechanism to prevent canisters from running out of cycles. Canist
 
 Refer to [this resource](../production/topping-up-canister.md#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister. 
 
-To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](../../../blog/features/async-performance-counter.md) to profile your canisters even before going live.
+To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
 
 ### 3. Efficient implementations
 
@@ -41,7 +41,7 @@ Use [canister timers](../backend/periodic-tasks.md) over plain heartbeats for re
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
 
 #### Rust 
-1. Exercise caution with Vec<u8> and String types for state serialization.
+1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message
 2. Refer to recommended blogs and articles for effective Rust canister development.
 
 #### Resources
