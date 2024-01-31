@@ -1,18 +1,13 @@
 # Threshold ECDSA: chain-key signatures
 ## Overview
-The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by designated parties, namely the replicas of a threshold-ECDSA-enabled subnet on ICP. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. At least one third of the replicas are required to generate a threshold signature using their respective key shares. 
+The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by nodes. Secret shares are shards of the ECDSA private key. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. More than one third of the nodes are required to generate a threshold signature using their respective key shares. 
 
-Besides the actual threshold signing protocol, chain-key ECDSA also comprises of protocols for secure key distributed key generation and periodic key resharing. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
+Besides the actual threshold signing protocol, chain-key ECDSA also comprises of protocols for secure, distributed key generation and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for ECDSA keys to be re-shared within the subnet. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
 
-Each canister on a subnet has control over a unique ECDSA public key and can request signatures for this public key. A signature is only issued to the eligible canister. Each canister can only obtain signatures for its own ECDSA keys. 
+Each canister on a subnet has control over a unique ECDSA public key and can request signatures for this public key. Canisters do not hold any private ECDSA keys or key shares themselves. 
 
-:::caution
-Canisters do not hold any private ECDSA keys or key shares themselves. Threshold cryptography can help enable functionality in the trust model of a blockchain that would be impossible to achieve with conventional cryptography alone.
-:::
+Threshold ECDSA enables many important use cases:
 
-The threshold ECDSA implementation on ICP can be viewed as the on-chain counterpart to a hardware security module (HSM) that stores private keys securely and issues signatures on request of the eligible entities.
-
-The availability of threshold ECDSA allows for a multitude of important use cases:
 -   Canisters natively holding bitcoin.
 
 -   Integration with Ethereum and other EVM chains, such as getting ERC-20 tokens onto ICP and signing Ethereum transactions.
