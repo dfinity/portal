@@ -12,11 +12,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "What is the Internet Computer?",
-          id: "concepts/what-is-ic",
-        },
-        {
-          type: "doc",
           label: "Installing the IC SDK",
           id: "developer-docs/setup/install/index",
         },

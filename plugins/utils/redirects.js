@@ -88,7 +88,7 @@ const redirects = `
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
-  /docs/developers-guide/concepts/concepts-intro /docs/current/concepts/what-is-ic
+  /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs
   /docs/developers-guide/customize-projects /docs/current/developer-docs/setup/manage-projects
   /docs/developers-guide/default-wallet /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
@@ -136,7 +136,7 @@ const redirects = `
   /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/references/cli-reference/:splat
-  /docs/developers-guide/concepts/* /docs/current/concepts/what-is-ic
+  /docs/developers-guide/concepts/* /docs/current/developer-docs
   /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/current/motoko/main/:splat
@@ -167,11 +167,11 @@ const redirects = `
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/setup/install/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
-  /docs/developers-guide/concepts/what-is-ic /docs/current/concepts/what-is-ic
+  /docs/developers-guide/concepts/what-is-ic /docs/current/developer-docs
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/production/instruction-limits /docs/current/developer-docs/production/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/production/resource-limits
-  /docs/current/concepts/data-centers /docs/current/concepts/what-is-ic
+  /docs/current/concepts/data-centers /docs/current/developer-docs
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
@@ -182,8 +182,8 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
   /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/setup/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/setup/cycles/cycles-wallet
-  /docs/current/concepts/index /docs/current/concepts/what-is-ic
-  /docs/current/concepts /docs/current/concepts/what-is-ic
+  /docs/current/concepts/index /docs/current/developer-docs
+  /docs/current/concepts /docs/current/developer-docs
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/backend/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
@@ -199,6 +199,7 @@ const redirects = `
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/setup/deploy
+  /docs/current/concepts/what-is-ic /docs/current/developer-docs
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
