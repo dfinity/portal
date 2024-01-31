@@ -11,7 +11,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "What is the Internet Computer?",
+          label: "Overview of ICP",
           id: "concepts/what-is-ic",
         },
         {
