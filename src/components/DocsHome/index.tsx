@@ -44,7 +44,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/developer-docs/"
+                href="/docs/current/concepts/what-is-ic"
               >
                 Start building
                 <LinkArrowRight />

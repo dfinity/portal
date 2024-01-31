@@ -189,12 +189,12 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/security /docs/current/developer-docs/security/general-security-best-practices
-  /docs/current/developer-docs/integrations/index /docs/current/developer-docs/
-  /docs/current/developer-docs/integrations /docs/current/developer-docs/
+  /docs/current/developer-docs/integrations/index /docs/current/concepts/what-is-ic
+  /docs/current/developer-docs/integrations /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/setup/index /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup /docs/current/developer-docs/setup/install/
   /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/setup/install/
-  /docs/current/tutorials/index /docs/current/developer-docs/
+  /docs/current/tutorials/index /docs/current/concepts/what-is-ic
   /docs/current/tutorials/ /docs/current/concepts/what-is-ic
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
