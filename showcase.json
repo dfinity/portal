@@ -3309,6 +3309,23 @@
     "submittableId": "44190088"
  },
  {
+    "id": "icgpt",
+    "name": "icgpt",
+    "oneLiner": "A fun dApp to demonstrate on-chain LLMs",
+    "website": "https://icgpt.icpp.world/",
+    "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
+    "stats": "15M parameter llama2",
+    "tags": [
+      "Tools / Infrastructure"
+    ],    
+    "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/icppWorld/icgpt",
+    "youtube": "https://youtu.be/2DhTpYrs-f0",
+    "twitter": "https://twitter.com/icpp_pro",
+    "submittableId": "43877997"
+ },
+ {
     "name": "Ping",
     "description": "Ping is a notification service that boosts ecosystem engagement by creating a direct communication channel between dapp developers and their respective users.",
     "website": "https://h7jna-pqaaa-aaaak-afgiq-cai.icp0.io/",
@@ -3349,6 +3366,30 @@
   "submittableId": "34117398",
   "videoContentType": "video/mp4"
   },
+  {
+  "name": "Metaversity1",
+  "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
+  "website": "https://sunshineluyao.github.io/icp-nns/",
+  "logo": "/img/showcase/Metaversity_logo.webp",
+  "screenshots": [
+    "/img/showcase/Metaversity_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "Metaversity",
+  "oneLiner": "Boosting Web3 Skills & Inclusion with Clear Data & Visuals",
+  "stats": "Web3 for All",
+  "tags": [
+    "AI",
+    "Tools / Infrastructure",
+    "DAO"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/sunshineluyao/icp-nns",
+  "twitter": "https://twitter.com/sunshineluyao",
+  "youtube": "https://youtu.be/_Oftr6GrokY",
+  "submittableId": " 34624410"
+},
   {
   "name": "Datanome",
   "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",

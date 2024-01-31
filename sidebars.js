@@ -940,6 +940,13 @@ const sidebars = {
       ],
     },
   ],
+solidity: [
+    {
+      type: "doc",
+      label: "Solidity",
+      id: "developer-docs/backend/solidity/index",
+    },
+],
 };
 
 module.exports = sidebars;
