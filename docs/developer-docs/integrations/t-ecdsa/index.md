@@ -21,7 +21,7 @@ Threshold ECDSA enables many important use cases:
 
 Threshold ECDSA can be used by making calls to the Threshold ECDSA API. 
 
-[Learn how to use Threshold ECDSA to sign transactions](./signing-transactions.md).
+[Learn how to use Threshold ECDSA to sign transactions](./signing-transactions.mdx).
 
 ## Resources
 - [Chain-key ECDSA signatures: technology overview](./t-ecdsa-how-it-works.md).
