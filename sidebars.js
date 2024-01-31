@@ -826,6 +826,13 @@ const sidebars = {
         "developer-docs/backend/rust/access-control",
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
+        {
+          type: "category",
+          label: "Sample projects",
+          items: [
+            "submodules/samples/rust/basic_bitcoin/README",
+          ],
+        },
       ],
     },
   ],
