@@ -3370,26 +3370,26 @@
   "name": "Metaversity1",
   "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
   "website": "https://sunshineluyao.github.io/icp-nns/",
-  "logo": "/img/showcase/metaversity1_logo.png",
+  "logo": "/img/showcase/Metaversity_logo.webp",
   "screenshots": [
-    "/img/showcase/metaversity1_screenshots.png"
+    "/img/showcase/Metaversity_screenshot.webp"
   ],
+  "video": "",
   "display": "Normal",
-  "id": "metaversity1",
-  "oneLiner": "Empowering Web3 Literacy and Inclusivity Through Streamlined Data Pipelines and Interactive Visualizations.",
+  "id": "Metaversity",
+  "oneLiner": "Boosting Web3 Skills & Inclusion with Clear Data & Visuals",
+  "stats": "Web3 for All",
   "tags": [
-    "Education",
-    "Web3",
-    "Diversity and Inclusion",
-    "Academia",
-    "Database"
+    "AI",
+    "Tools / Infrastructure",
+    "DAO"
   ],
   "usesInternetIdentity": false,
   "github": "https://github.com/sunshineluyao/icp-nns",
-  "twitter": "https://twitter.com/sunshineluyao ",
+  "twitter": "https://twitter.com/sunshineluyao",
   "youtube": "https://youtu.be/_Oftr6GrokY",
-  "submittableId": "34624410"
-  },
+  "submittableId": " 34624410"
+},
   {
   "name": "Datanome",
   "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
