@@ -1,4 +1,7 @@
-# HTTP outcalls: POST
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# How to use HTTP outcalls: POST
 
 ## Overview
 
@@ -13,8 +16,6 @@ This example takes less than 5 minutes to complete.
 :::caution
 The HTTPS outcalls feature only works for sending HTTP POST requests to servers or API endpoints that support **IPV6**.
 :::
-
-## What you are building
 
 ### Candid web UI of canister
 
@@ -45,13 +46,12 @@ The recommended way for HTTP `POST` requests is to add the idempotency keys in t
 
 Developers should be careful that the destination server understand and use idempotency keys. A canister can be coded to be send idempotency keys, but it is ultimately up to the recipient server to know what to do with then. Here is an [example of an API service that uses idempotency keys](https://stripe.com/docs/api/idempotent_requests).
 
-## Motoko version
+## Code structure
 
-### Motoko: Structure of the code
+Before you dive in, here is the structure of the code you will touch:
 
-Before you dive in, here is the structure the code you will touch:
-
-Here is how our main file will look like:
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
 
 ```motoko
 
@@ -96,11 +96,48 @@ module Types {
 }
 ```
 
-### Motoko: Step by step
+</TabItem>
+<TabItem value="rust" label="Rust">
 
-To create a new project:
+```rust
+//1. DECLARE MANAGEMENT CANISTER
+use ic_cdk::api::management_canister::http_request::{
+    http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
+    TransformContext,
+};
+
+//Update method using the HTTPS outcalls feature
+#[ic_cdk::update]
+async fn foo() {
+    //2. SETUP ARGUMENTS FOR HTTP GET request
+    let request = CanisterHttpRequestArgument {
+        //instantiate the request
+    };
+
+    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //so no need for explicit Cycles.add() as in Motoko
+    match http_request(request).await {
+        
+        //4. DECODE AND RETURN THE RESPONSE
+        Ok((response,)) => {
+            //Ok case 
+        }
+        Err((r, m)) => {
+            //error case
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
 
 - #### Step 1:  Create a new project by running the following command:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
 
 ```bash
 dfx new send_http_post_motoko
@@ -108,8 +145,27 @@ cd send_http_post_motoko
 npm install
 ```
 
-- #### Step 2:  Open the `src/send_http_post_motoko_backend/main.mo` file in a text editor and replace content with:
+</TabItem>
+<TabItem value="rust" label="Rust">
 
+```bash
+dfx new --type=rust send_http_post_rust
+cd send_http_post_rust
+npm install
+rustup target add wasm32-unknown-unknown
+```
+
+</TabItem>
+</Tabs>
+
+
+
+- #### Step 2: Edit the backend canister's code.
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+Open the `src/send_http_post_motoko_backend/main.mo` file in a text editor and replace content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -224,7 +280,7 @@ actor {
     //     body : [Nat8];
     // };
 
-    //You need to decode that [Na8] array that is the body into readable text. 
+    /You need to decode that [Na8] array that is the body into readable text. 
     //To do this:
     //  1. Convert the [Nat8] into a Blob
     //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
@@ -250,174 +306,10 @@ actor {
 };
 ```
 
-- #### Step 3:  Create the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
+</TabItem>
+<TabItem value="rust" label="Rust">
 
-```motoko
-module Types {
-
-    //1. Type that describes the Request arguments for an HTTPS outcall
-    //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
-    public type HttpRequestArgs = {
-        url : Text;
-        max_response_bytes : ?Nat64;
-        headers : [HttpHeader];
-        body : ?[Nat8];
-        method : HttpMethod;
-        transform : ?TransformRawResponseFunction;
-    };
-
-    public type HttpHeader = {
-        name : Text;
-        value : Text;
-    };
-
-    public type HttpMethod = {
-        #get;
-        #post;
-        #head;
-    };
-
-    public type HttpResponsePayload = {
-        status : Nat;
-        headers : [HttpHeader];
-        body : [Nat8];
-    };
-
-    //2. HTTPS outcalls have an optional "transform" key. These two types help describe it.
-    //"The transform function may, for example, transform the body in any way, add or remove headers, 
-    //modify headers, etc. "
-    //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
-    
-    //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
-    //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a GET request, declare the type for completeness, but 
-    //you do not use this function. You will pass "null" to the HTTP request.
-    public type TransformRawResponseFunction = {
-        function : shared query TransformArgs -> async HttpResponsePayload;
-        context : Blob;
-    };
-
-    //2.2 This type describes the arguments the transform function needs
-    public type TransformArgs = {
-        response : HttpResponsePayload;
-        context : Blob;
-    };
-
-    public type CanisterHttpResponsePayload = {
-        status : Nat;
-        headers : [HttpHeader];
-        body : [Nat8];
-    };
-
-    public type TransformContext = {
-        function : shared query TransformArgs -> async HttpResponsePayload;
-        context : Blob;
-    };
-
-
-    //3. Declaring the management canister which is used to make the HTTPS outcall
-    public type IC = actor {
-        http_request : HttpRequestArgs -> async HttpResponsePayload;
-    };
-
-}
-
-```
-
-- #### Step 4: Test the dapp locally.
-
-Deploy the dapp locally:
-
-```bash
-dfx start --background
-dfx deploy
-```
-
-If successful, the terminal should return canister URLs you can open:
-
-```bash
-Deployed canisters.
-URLs:
-  Backend canister via Candid interface:
-    send_http_post_motoko_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
-```
-
-Open the candid web UI for backend and call the `send_http_post_motoko_request()` method:
-
-![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
-
-- #### Step 5: Test the dapp on mainnet.
-
-Deploy the dapp to mainnet:
-
-```bash
-dfx deploy --network ic
-```
-
-If successful, the terminal should return canister URLs you can open:
-
-```bash
-Committing batch.
-Deployed canisters.
-URLs:
-  Frontend canister via browser
-    send_http_post_motoko_frontend: https://fx3cz-taaaa-aaaap-qbooa-cai.ic0.app/
-  Backend canister via Candid interface:
-    send_http_post_motoko_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai
-```
-
-You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai).
-
-
-## Rust version
-
-### Rust: Structure of the code
-
-Here is how the management canister is declared in a Rust canister (e.g. `lib.rs`):
-
-```rust
-//1. DECLARE MANAGEMENT CANISTER
-use ic_cdk::api::management_canister::http_request::{
-    http_request, CanisterHttpRequestArgument, HttpHeader, HttpMethod, HttpResponse, TransformArgs,
-    TransformContext,
-};
-
-//Update method using the HTTPS outcalls feature
-#[ic_cdk::update]
-async fn foo() {
-    //2. SETUP ARGUMENTS FOR HTTP GET request
-    let request = CanisterHttpRequestArgument {
-        //instantiate the request
-    };
-
-    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Note: in Rust, `http_request()` already sends the cycles needed 
-    //so no need for explicit Cycles.add() as in Motoko
-    match http_request(request).await {
-        
-        //4. DECODE AND RETURN THE RESPONSE
-        Ok((response,)) => {
-            //Ok case 
-        }
-        Err((r, m)) => {
-            //error case
-        }
-    }
-}
-```
-
-### Rust: Step by step
-
-- #### Step 1:  Create a new project by running the following command:
-
-```bash
-dfx new --type=rust send_http_post_rust
-cd send_http_post_rust
-npm install
-rustup target add wasm32-unknown-unknown
-```
-
-- #### Step 2: Open the `/src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace content with:
+Open the `/src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace content with:
 
 ```rust
 //1. IMPORT MANAGEMENT CANISTER
@@ -619,7 +511,94 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 - The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
 - The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
-- #### Step 3: Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
+</TabItem>
+</Tabs>
+
+
+
+- #### Step 3:  Edit the Type or Candid files.
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+Create the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
+
+```motoko
+module Types {
+
+    //1. Type that describes the Request arguments for an HTTPS outcall
+    //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
+    public type HttpRequestArgs = {
+        url : Text;
+        max_response_bytes : ?Nat64;
+        headers : [HttpHeader];
+        body : ?[Nat8];
+        method : HttpMethod;
+        transform : ?TransformRawResponseFunction;
+    };
+
+    public type HttpHeader = {
+        name : Text;
+        value : Text;
+    };
+
+    public type HttpMethod = {
+        #get;
+        #post;
+        #head;
+    };
+
+    public type HttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    //2. HTTPS outcalls have an optional "transform" key. These two types help describe it.
+    //"The transform function may, for example, transform the body in any way, add or remove headers, 
+    //modify headers, etc. "
+    //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
+    
+    //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
+    //"If provided, the calling canister itself must export this function." 
+    //In this minimal example for a GET request, declare the type for completeness, but 
+    //you do not use this function. You will pass "null" to the HTTP request.
+    public type TransformRawResponseFunction = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
+        context : Blob;
+    };
+
+    //2.2 This type describes the arguments the transform function needs
+    public type TransformArgs = {
+        response : HttpResponsePayload;
+        context : Blob;
+    };
+
+    public type CanisterHttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    public type TransformContext = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
+        context : Blob;
+    };
+
+
+    //3. Declaring the management canister which is used to make the HTTPS outcall
+    public type IC = actor {
+        http_request : HttpRequestArgs -> async HttpResponsePayload;
+    };
+
+}
+
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a text editor and replace content with:
 
 Update the Candid interface file so it matches the method `send_http_post_request()` in `lib.rs`.
 
@@ -629,7 +608,7 @@ service : {
 }
 ```
 
-- #### Step 4: Open the `src/send_http_post_rust_backend/Cargo.toml` file in a text editor and replace content with:
+Open the `src/send_http_post_rust_backend/Cargo.toml` file in a text editor and replace content with:
 
 ```bash
 [package]
@@ -652,7 +631,38 @@ serde_bytes = "0.11.9"
 
 ```
 
-- #### Step 5: Test the dapp locally.
+</TabItem>
+</Tabs>
+
+
+
+- #### Step 4: Test the dapp locally.
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+Deploy the dapp locally:
+
+```bash
+dfx start --background
+dfx deploy
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    send_http_post_motoko_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
+```
+
+Open the candid web UI for backend and call the `send_http_post_motoko_request()` method:
+
+![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
+
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 Deploy the dapp locally:
 
@@ -674,7 +684,36 @@ Open the candid web UI for backend and call the `send_http_post_request()` metho
 
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
-- #### Step 6: Test the dapp on mainnet.
+</TabItem>
+</Tabs>
+
+- #### Step 5: Test the dapp on mainnet.
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+Deploy the dapp to mainnet:
+
+```bash
+dfx deploy --network ic
+```
+
+If successful, the terminal should return canister URLs you can open:
+
+```bash
+Committing batch.
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    send_http_post_motoko_frontend: https://fx3cz-taaaa-aaaap-qbooa-cai.ic0.app/
+  Backend canister via Candid interface:
+    send_http_post_motoko_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai
+```
+
+You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai).
+
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 Deploy the dapp to mainnet:
 
@@ -695,6 +734,10 @@ URLs:
 ```
 
 You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
+
+</TabItem>
+</Tabs>
+
 
 ## Additional resources
 
