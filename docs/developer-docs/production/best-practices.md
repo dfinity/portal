@@ -22,7 +22,7 @@ Refer to [this resource](../production/topping-up-canister.md#managing-cycle-dep
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](../../../blog/features/async-performance-counter.md) to profile your canisters even before going live.
 
-### 3. Efficient Implementations
+### 3. Efficient implementations
 
 Optimize canister implementation to avoid unnecessary costs. 
 
