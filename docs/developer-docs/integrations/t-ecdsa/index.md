@@ -4,7 +4,7 @@ The Internet Computer implements a novel threshold ECDSA protocol as part of its
 
 Besides the actual threshold signing protocol, chain-key ECDSA also comprises of protocols for secure, distributed key generation and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for ECDSA keys to be re-shared within the subnet. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
 
-Each canister on a subnet has control over a unique ECDSA public key and can request signatures for this public key. Canisters do not hold any private ECDSA keys or key shares themselves. 
+Each canister on a subnet has control over a unique ECDSA public key and can request signatures for this public key. Canisters do not have access to their private ECDSA keys. They can only request signatures. This is because the private key is never stored in a single place. 
 
 Threshold ECDSA enables many important use cases:
 
