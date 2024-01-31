@@ -332,6 +332,11 @@ const sidebars = {
             {
               type: "doc",
               label: "General",
+              id: "developer-docs/production/best-practices",
+            },
+            {
+              type: "doc",
+              label: "General",
               id: "developer-docs/security/general-security-best-practices",
             },
             {
