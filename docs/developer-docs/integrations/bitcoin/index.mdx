@@ -1,3 +1,5 @@
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Overview
 
 Smart contracts running on ICP can directly interact with the Bitcoin network without using bridges.
@@ -15,7 +17,11 @@ This direct Bitcoin integration is based on two features:
 The diagram below shows the flow of interacting with the Bitcoin network from a smart contract.
 
 <div class="text--center">
-<img src="/img/docs/bitcoin-overview.png" alt="Bitcoin overview" width="500"/>
+  <img
+    src={useBaseUrl("/img/docs/bitcoin-overview.png")}
+    alt="Bitcoin overview"
+    width="500"
+  />
 </div>
 
 ICP also implements a smart contract that uses these two features to provide a **ckBTC** token (chain-key BTC) that is backed 1:1 by BTC.
