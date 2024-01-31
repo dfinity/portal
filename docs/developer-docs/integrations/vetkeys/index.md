@@ -9,7 +9,7 @@ To dive into the technical overview, please refer to:
 
 ## Using vetKeys
 
-As this feature is still in development, a [brief demo for using the API exists](using-vetkeys.md).
+As this feature is still in development, a [brief demo for using the API exists](using-vetkeys.mdx).
 
 ## References
 - [Forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
