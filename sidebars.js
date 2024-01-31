@@ -5,7 +5,6 @@ const sidebars = {
     
 
   build: [
-      "developer-docs/index",
     {
       type: "category",
       label: "Getting started",
