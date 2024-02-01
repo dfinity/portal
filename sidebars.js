@@ -326,7 +326,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "On-chain signatures: vetKeys",
+                  label: "On-chain encryption: vetKeys",
                   items: [
                     "developer-docs/integrations/vetkeys/index",
                     "developer-docs/integrations/vetkeys/using-vetkeys",
