@@ -11,7 +11,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "What is the Internet Computer?",
+          label: "Overview of ICP",
           id: "concepts/what-is-ic",
         },
         {
@@ -450,10 +450,9 @@ const sidebars = {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
-            "developer-docs/integrations/icrc-1/index",
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
             "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
-          "developer-docs/integrations/icrc-1/icrc1-index-setup"
+            "developer-docs/integrations/icrc-1/icrc1-index-setup"
         ],
         },
         {
@@ -507,6 +506,14 @@ const sidebars = {
             "developer-docs/integrations/bitcoin/local-development",
           ]
         }
+      ],
+    },
+    {
+      type: "category",
+      label: "Ethereum",
+      items: [
+        "developer-docs/integrations/ethereum/overview",
+        "developer-docs/integrations/ethereum/evm-rpc",
       ],
     },
     {
@@ -696,7 +703,7 @@ const sidebars = {
             "references/samples/rust/vetkd/README",
           ],
         },
-      ],
+       ],
     },
     {
       type: "category",
@@ -884,6 +891,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "ICRC-1 token standard",
+              id: "developer-docs/integrations/icrc-1/index"
+            },
+            {
+              type: "doc",
               label: "Internet Identity",
               id: "references/ii-spec",
             },
@@ -892,7 +904,7 @@ const sidebars = {
               label: "Ledger canister",
               id: "references/ledger",
             },
-          ],
+        ],
         },
         {
           type: "category",
