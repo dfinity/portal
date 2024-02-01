@@ -317,7 +317,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "Threshold ECDSA",
+                  label: "On-chain encryption: Threshold ECDSA",
                   link: {
                     type: "doc",
                     id: "developer-docs/integrations/t-ecdsa/index",
@@ -326,7 +326,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "vetKeys",
+                  label: "On-chain signatures: vetKeys",
                   items: [
                     "developer-docs/integrations/vetkeys/index",
                     "developer-docs/integrations/vetkeys/using-vetkeys",
