@@ -12,12 +12,6 @@ You can [learn how to use the EVM RPC canister](evm-rpc.md).
 
 ## Costs
 
-An approximate cost breakdown in USD can be found below. These costs are estimated using the Cloudflare RPC with a 13-node subnet:
+JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD. 
 
-- JSON-RPC API request: $0.0001 USD
-- HTTPS outcalls: $0.001 USD (This assumes 1KiB request and 1KiB response)
-- Base cost: $0.0008 USD
-- JSON Request: $0.00008 USD per KiB
-- JSON Response: $0.00008 USD per KiB
-
-These costs are paid by sending cycles with each RPC call using the `--with-cycles` flag. Learn more about [cycles](/docs/current/developer-docs/gas-cost).
+These costs are paid by sending cycles with each RPC call, such as by using the `--with-cycles` flag when calling a canister with [dfx](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister#dfx-canister-call). Learn more about [cycles](/docs/current/developer-docs/gas-cost).
