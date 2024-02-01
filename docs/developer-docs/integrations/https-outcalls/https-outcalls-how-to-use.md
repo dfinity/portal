@@ -49,5 +49,5 @@ The returned response (and the response provided to the `transform` function, if
 
 Examples of making `GET` and `POST`requests in Motoko and Rust:
 
-* [Minimal sample code of making a `GET` request](./https-outcalls-get.md).
-* [Minimal sample code of making a `POST` request](./https-outcalls-post.md).
+* [Minimal sample code of making a `GET` request](./https-outcalls-get.mdx).
+* [Minimal sample code of making a `POST` request](./https-outcalls-post.mdx).
