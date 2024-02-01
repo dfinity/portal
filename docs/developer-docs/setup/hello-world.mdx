@@ -72,6 +72,12 @@ For projects created with `dfx new` (Motoko and Rust) the command automatically 
 
 The `npm install` command is used to install libraries and dependencies.
 
+In order to build Rust projects for ICP you need to add the following target to your Rust toolchain:
+
+``` bash
+rustup target add wasm32-unknown-unknown
+```
+
 For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
 
 </TabItem>
@@ -80,7 +86,7 @@ For information about project structure and default configuration, [learn more a
 
 ```bash
 npx azle new azle_hello
-cd hello
+cd azle_hello
 npm install
 ```
 
