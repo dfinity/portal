@@ -43,7 +43,7 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
       "wasm": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc_dev.wasm.gz",
       "remote": {
         "id": {
-          "ic": "a6d44-nyaaa-aaaap-abp7q-cai"
+          "ic": "7hfb6-caaaa-aaaar-qadga-cai"
         }
       }
     }
@@ -207,6 +207,16 @@ dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHe
 ```
 
 ## Important notes
+
+### RPC result consistency
+
+When calling RPC methods directly through the Candid interface (rather than via the `request` method), the canister will compare results from several JSON-RPC APIs and return a `Consistent` or `Inconsistent` variant based on whether the APIs agree on the result.
+
+By default, the canister uses three different RPC providers, which may change depending on availability. It's possible to specify which providers to use for this consistency check. For example:
+
+```bash
+dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt vec {Cloudflare; PublicNode}}, record {address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; block = variant {Tag = variant {Latest}}})' --with-cycles 100000000000 --wallet=$(dfx identity get-wallet)
+```
 
 ### HTTP outcall consensus
 
