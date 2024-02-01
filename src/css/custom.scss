@@ -12,6 +12,7 @@
 :root {
   font-family: "CircularXX", sans-serif;
   --ifm-font-family-base: "CircularXX", sans-serif;
+  --ifm-font-size-base: 125%;
   --ifm-color-primary: #3b00b9;
   --ifm-color-primary-dark: #3500a7;
   --ifm-color-primary-darker: #32009d;
@@ -162,7 +163,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       div[class*="docItemContainer_"],
       div.blog-post-content-layout {
         // padding around article content
-        padding: 40px 100px;
+        padding: 40px 80px;
       }
     }
 
