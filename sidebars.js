@@ -436,10 +436,9 @@ const sidebars = {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
-            "developer-docs/integrations/icrc-1/index",
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
             "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
-          "developer-docs/integrations/icrc-1/icrc1-index-setup"
+            "developer-docs/integrations/icrc-1/icrc1-index-setup"
         ],
         },
         {
@@ -778,6 +777,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "ICRC-1 token standard",
+              id: "developer-docs/integrations/icrc-1/index"
+            },
+            {
+              type: "doc",
               label: "Internet Identity",
               id: "references/ii-spec",
             },
@@ -786,7 +790,7 @@ const sidebars = {
               label: "Ledger canister",
               id: "references/ledger",
             },
-          ],
+        ],
         },
         {
           type: "category",
