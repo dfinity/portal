@@ -496,6 +496,14 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Ethereum",
+      items: [
+        "developer-docs/integrations/ethereum/overview",
+        "developer-docs/integrations/ethereum/evm-rpc",
+      ],
+    },
+    {
+      type: "category",
       label: "Bootcamps",
       items: [
     {
