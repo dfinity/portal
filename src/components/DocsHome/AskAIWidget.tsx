@@ -2,14 +2,12 @@ import React from "react";
 import Head from "@docusaurus/Head";
 import { useIsDocs } from "@site/src/hooks/useIsDocs";
 import BrainIcon from "../../../static/img/icon-ai-brain.svg";
-import { useLocation } from "@docusaurus/router";
 
 export function AskAIWidget() {
-  const { isDocsPage, currentPath, docsHome } = useIsDocs();
-  const location = useLocation();
+  const { isDocsPage, currentPath } = useIsDocs();
 
   return (
-    (isDocsPage || location.pathname == "/") && (
+    (isDocsPage || currentPath === "/") && (
       // AI chatbot integration via Kapa
       <>
         <Head>
@@ -26,15 +24,16 @@ export function AskAIWidget() {
           />
         </Head>
         <button
-          className="ask-ai-widget-trigger invisible pointer-events-none docs:visible docs:pointer-events-auto button-white sm:button-with-icon sm:button-small font-bold fixed sm:relative bottom-0 my-20 sm:my-0 flex rounded-full sm:rounded-lg h-12 w-12 sm:h-[unset] sm:w-[unset] items-center p-0 sm:px-3 sm:py-2"
+          // className="ask-ai-widget-trigger button-fancy-ai py-1.5 justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in invisible pointer-events-none docs:visible docs:pointer-events-auto"
+          className="ask-ai-widget-trigger invisible pointer-events-none docs:visible docs:pointer-events-auto button-white sm:button-fancy-ai sm:button-with-icon border-none transition-all sm:bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in sm:button-small font-bold fixed sm:relative bottom-0 my-20 sm:my-0 flex rounded-full sm:rounded-xl h-12 w-12 sm:h-[unset] sm:w-[unset] items-center p-0 sm:px-3 sm:py-2"
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <span className={"flex-1"}>
-            <BrainIcon />
+          <span className={"flex-1 flex flex-col items-center"}>
+            <BrainIcon className={"md:text-white"} />
           </span>
           <span className={"hidden sm:block font-bold"}>Ask ICP.AI</span>
         </button>
