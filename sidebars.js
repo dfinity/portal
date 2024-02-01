@@ -317,7 +317,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "On-chain encryption: Threshold ECDSA",
+                  label: "On-chain signatures: Threshold ECDSA",
                   link: {
                     type: "doc",
                     id: "developer-docs/integrations/t-ecdsa/index",
