@@ -21,17 +21,17 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Installing the IC SDK",
+          label: "Install the IC SDK",
           id: "developer-docs/setup/install/index",
         },
         {
           type: "doc",
-          label: "Creating a developer account",
+          label: "Developer accounts",
           id: "developer-docs/setup/accounts",
         },
         {
           type: "category",
-          label: "Acquiring and managing cycles",
+          label: "Cycles",
           items: [
             "developer-docs/setup/cycles/cycles-faucet",
             "developer-docs/setup/cycles/cycles-wallet",
@@ -40,25 +40,26 @@ const sidebars = {
         }, 
         {
           type: "doc",
-          label: "Creating your first canister",
+          label: "Build your first smart contract",
           id: "developer-docs/setup/first-canister",
         },
         {
-          type: "doc",
-          label: "Local deployment",
-          id: "developer-docs/setup/deploy-locally",
+          type: "category",
+          label: "Deploy smart contracts",
+          items: [
+            {
+              type: "doc",
+              label: "Local deployment",
+              id: "developer-docs/setup/deploy-locally",
+            },
+            {
+              type: "doc",
+              label: "Mainnet deployment",
+              id: "developer-docs/setup/deploy-mainnet",
+            },
+          ],
         },
-        {
-          type: "doc",
-          label: "Mainnet deployment",
-          id: "developer-docs/setup/deploy-mainnet",
-        },
-        {
-          type: "doc",
-          label: "Sharing links to canisters",
-          id: "developer-docs/production/social-sharing",
-        },
-      ], 
+      ],
     },
     {
       type: "category",
@@ -210,22 +211,22 @@ const sidebars = {
           items: [
             "developer-docs/setup/playground",
             "developer-docs/setup/vs-code",
-          ]
-        }
+          ],
+        },
       ],
     },
     {
       type: "category",
       label: "Smart contracts",
       items: [
-        [
+        {
           type: "category",
           label: "Overview",
           items:
           [
             "developer-docs/backend/choosing-language",
-          ]
-        ]
+          ],
+        },
         {
           type: "doc",
           label: "Build",
@@ -247,9 +248,13 @@ const sidebars = {
           ],
         },
         {
-          type: "doc",
+          type: "category",
           label: "Deploy",
-          id: "developer-docs/setup/deploy",
+          items: [
+            "developer-docs/setup/deploy",
+            "developer-docs/production/larger-wasm",
+            "developer-docs/production/social-sharing",
+          ],
         },
         {
           type: "category",
@@ -263,6 +268,7 @@ const sidebars = {
              "developer-docs/setup/manage-canisters",
              "developer-docs/production/storage",
              "developer-docs/setup/upgrade",
+             "developer-docs/production/resource-limits",
              {
               type: "category",
               label: "Cost",
@@ -329,7 +335,6 @@ const sidebars = {
               ],
             },
             "developer-docs/backend/periodic-tasks",
-            "developer-docs/production/larger-wasm",
           ],
         },
         {
@@ -345,7 +350,6 @@ const sidebars = {
         },
       ],
     },
-
     {
       type: "category",
       label: "Web apps",
@@ -836,7 +840,6 @@ const sidebars = {
         "developer-docs/backend/subnet-types",
         "concepts/tokens-cycles",
         "concepts/trust-in-canisters",
-        "developer-docs/production/resource-limits",
         "references/glossary",
       ],
     },
@@ -903,7 +906,7 @@ const sidebars = {
           ],
         },
       ],
-    }
+    },
   ],
   rust: [
     {
