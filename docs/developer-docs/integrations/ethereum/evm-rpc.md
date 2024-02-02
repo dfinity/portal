@@ -51,11 +51,11 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
 }
 ```
 
-Next, start the local replica and deploy the canister locally with a specified number of nodes (`13` for a standard ICP subnet):
+Next, start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](https://internetcomputer.org/docs/current/developer-docs/backend/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --background
-dfx deploy evm_rpc --argument '(record { nodesInSubnet = 13 })'
+dfx deploy evm_rpc --argument '(record { nodesInSubnet = 28 })'
 ```
 
 Another option is to create a fork of the EVM RPC canister:
@@ -67,7 +67,7 @@ git clone https://github.com/internet-computer-protocol/evm-rpc-canister
 To deploy your own canister on the mainnet, run the `dfx deploy` command with the `--network ic` flag:
 
 ```
-dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 13 })'
+dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 28 })'
 ```
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [Replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
