@@ -72,7 +72,6 @@ html.plugin-blog {
   --ifm-color-primary: #791e94;
   --ifm-navbar-link-hover-color: #791e94;
   --ifm-navbar-x-padding: 50px;
-  --ifm-font-size-base: 125%;
 
   @media (max-width: 996px) {
     --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
@@ -116,6 +115,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
   // style the article body
   main[class*="docMainContainer_"] {
     background: var(--ic0-article-background);
+    font-size: 1.1rem;
 
     a {
       font-weight: 500;
