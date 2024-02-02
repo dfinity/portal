@@ -374,8 +374,8 @@ function MultichainPage() {
                     Call into Ethereum smart contracts from ICP using EVM RPC
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Ethereum Virtual Machine Remote Procedural Call (EVM RPC) 
-                    canister makes it possible for Internet Computer canister
+                    Ethereum Virtual Machine Remote Procedural Calls (EVM RPC)
+                    make it possible for Internet Computer canister
                     smart contracts to interact with smart contracts on any
                     blockchain which supports the Ethereum JSON-RPC protocol. 
                     Advanced fully decentralized Web3 services can be created that
