@@ -9,7 +9,7 @@ image: /img/blog/deprecating-the-service-worker.png
 
 ![Deprecation of the Service Worker](/img/blog/deprecating-the-service-worker.png)
 
-In September, DFINITY proposed to deprecate the Internet Computer Service Worker in favorite of ICX Proxy, a service hosted on the DFINITY Boundary Nodes. This proposal has been adopted, and as of December 7, 2023, the Service Worker has been deprecated. 
+In September, DFINITY proposed to deprecate the Internet Computer Service Worker in favour of ICX Proxy, a service hosted on the DFINITY Boundary Nodes. This proposal has been adopted, and as of December 7, 2023, the Service Worker has been deprecated. 
 
 Beginning December 7, 2023, the new version of boundary nodes which uses icx-proxy to verify HTTP responses on the boundary node itself has begun to gradually roll out.
 
