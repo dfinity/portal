@@ -11,7 +11,7 @@ Examples of proposals include:
 1. upgrade the protocol and software used by the node machines that host the network
 2. create new subnet blockchains to increase network capacity
 3. split subnets to divide their load
-4. configure economic parameters that control how much must be  paid by users for compute capacity
+4. configure economic parameters that determine the cost for compute capacity
 5. In extreme situations, it can freeze malicious canister smart contract software to protect the network; and many other things. 
 
 A proposal passes based on either:
