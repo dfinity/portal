@@ -20,7 +20,7 @@ A proposal passes based on either:
 - **Simple Majority** - When the voting period ends, if a simple majority (more than half of the cast votes) has voted "yes" and the number of these yes votes constitutes at least 3% of the total voting power, then the proposal is adopted. Otherwise, the proposal is rejected.
 
 For determining how long proposals are open for voting, the governance uses a so called "Wait-for-quiet" algorithm. This ensures that proposals are decided quickly if all voters agree, but have a longer voting period if they are controversial. Most proposals start with 4 days of voting period that can be extended up to 8 days.
-Once such a proposal is accepted, it is autonomously executed.
+Once a proposal is adopted, it is autonomously executed on-chain.
 
 While other blockchains take weeks or months to upgrade (sometimes called hard fork) and typically require substantial manual work and coordination to do so, ICP upgrades itself every week (https://dashboard.internetcomputer.org/releases). Its ability to upgrade and iterate is a comparative "superpower."
 
