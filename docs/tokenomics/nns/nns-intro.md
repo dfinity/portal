@@ -46,7 +46,8 @@ For more information on staking rewards, refer to [Staking and Voting Rewards](h
 
 ## Participation
 
-Neuron owners face challenges in manually voting on every NNS proposal due to high submission volumes and a potential lack of expertise. The NNS allows automatic voting through delegation where neurons automatically vote by following others for all proposals or a specific proposal topic. This ensures efficient decision-making without requiring constant manual input.
+Neurons can manually vote on all proposals. 
+If they cannot manually vote on all proposals due to high submission volumes or a lack of expertise, neurons can delegate their vote, called _following_, for specific proposal topic. This ensures efficient decision-making without requiring constant manual input.
 
 It is expected that a large proportion of the overall supply of ICP will be locked to earn rewards. This secures the Internet Computer’s network governance, by making it both difficult and exorbitantly expensive for an attacker to acquire a sufficiently large stake to gain significant influence. Since neuron owners may wish to maximize their rewards by voting on all proposals, most neurons will either be actively managed or configured to follow other neurons so that they can vote automatically.
 
