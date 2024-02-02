@@ -123,24 +123,31 @@ To use a specific EVM chain, specify the chain's ID in the `Chain` variant:
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 100000000 request '(variant {Chain=0x1},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
-## Specifying an RPC provider
+## Specifying RPC services
 
-You can also specify an RPC provider:
+There are several ways to choose a specific JSON-RPC service:
 
 ```candid
-type JsonRpcSource = variant {
+// Used for "Candid-RPC" canister methods
+type RpcServices = variant {
+  EthMainnet : opt vec EthMainnetService;
+  EthSepolia : opt vec EthSepoliaService;
+  ...
+  Custom : record {
+    chainId : nat64;
+    services : vec record { url : text; headers : vec (text, text) };
+  }
+};
+
+// Used for the `request` method
+type RpcService = variant {
+  EthMainnet : EthMainnetService;
+  EthSepolia : EthSepoliaService;
+  ...
   Chain : nat64;
   Provider : nat64;
   Custom : record { url : text; headers : vec (text, text) };
 };
-
-request : (
-  source : JsonRpcSource,
-  jsonRequest : text,
-  maxResponseBytes : nat64
-) -> (
-  Result<text, RpcError>
-);
 ```
 
 ## Registering your own provider
