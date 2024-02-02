@@ -269,3 +269,20 @@ In other languages, like Rust or C, you can still develop your service using the
 For examples of how to write Candid service descriptions for Rust programs, see the [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../rust/index.md).
 
 Regardless of the host language you use, it is important to know the mapping between host language types and Candid types. In the [supported types](/references/candid-ref.md) reference section, you’ll find Candid type mapping described for Motoko, Rust, and JavaScript.
+
+## Best practices
+
+It is recommended to use Candid records with descriptive names for types:
+
+```candid
+type Recycler = 
+ record {
+   identity: principal;
+   location: record {
+               Country__1; // <-- Use descriptive names for types,
+               text; // <----- Rather than generic terms.
+             };
+   name: text;
+   nick: text;
+ };
+```
