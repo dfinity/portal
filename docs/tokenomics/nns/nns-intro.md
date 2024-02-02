@@ -31,7 +31,7 @@ Proposals are adopted or rejected based on voting activity by “neurons” that
 
 ## Participation Rewards
 Network governance on the Internet Computer is incentivized through a system called "neurons".
-ICP token holders can create a “neuron” by locking balances of ICP up to eight years that are hosted on a ledger inside the NNS. 
+ICP token holders can create a “neuron” by staking ICP up to eight years. 
 
 When a user creates a neuron, the locked balance of ICP can only be unlocked by disbursing (“destroying”) the neuron. Each neuron is configured with “dissolve delay.” or setting that determines the minimum amount of time that you have to wait before you can unlock your original locked ICP utility tokens. Once a neuron has been placed into “dissolve mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP. 
 
