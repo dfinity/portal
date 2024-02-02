@@ -1,6 +1,6 @@
 # How to use HTTP outcalls: Intro
 
-This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need of oracles.
+This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need for oracles.
 
 ## Key concepts
 
