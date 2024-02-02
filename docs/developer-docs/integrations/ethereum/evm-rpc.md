@@ -2,18 +2,18 @@
 
 **EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API. 
 
-The source code for this project is available on GitHub ([dfinity/evm-rpc-canister](https://github.com/dfinity/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
+The source code for this project is available on GitHub ([internet-computer-protocol/evm-rpc-canister](https://github.com/internet-computer-protocol/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
 
 ## Supported RPC methods
 
 The following JSON-RPC methods are available as part of the canister's [Candid interface](https://github.com/dfinity/candid#readme):
 
-- `eth_feeHistory`: Queries the historical fee data to estimate gas prices for transactions.
-- `eth_getLogs`: Queries the logs of a specified block or transaction.
-- `eth_getBlockByNumber`: Queries information about a given block.
-- `eth_getTransactionCount`: Queries the number of transactions for a specified address.
-- `eth_getTransactionReceipt`: Queries details about a submitted transaction.
-- `eth_sendRawTransaction`: Submits a signed transaction to the Ethereum network.
+- [`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory): Queries the historical fee data to estimate gas prices for transactions.
+- [`eth_getLogs`](https://docs.alchemy.com/reference/eth-getlogs): Queries the logs of a specified block or transaction.
+- [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-getblockbynumber): Queries information about a given block.
+- [`eth_getTransactionCount`](https://docs.alchemy.com/reference/eth-gettransactioncount): Queries the number of transactions for a specified address.
+- [`eth_getTransactionReceipt`](https://docs.alchemy.com/reference/eth-gettransactionreceipt): Queries details about a submitted transaction.
+- [`eth_sendRawTransaction`](https://docs.alchemy.com/reference/eth-sendrawtransaction): Submits a signed transaction to the Ethereum network.
 
 Other RPC methods (including those specific to non-Ethereum networks) may be accessed using the canister's `request` method.
 
@@ -39,8 +39,8 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
   "canisters": {
     "evm_rpc": {
       "type": "custom",
-      "candid": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc.did",
-      "wasm": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc_dev.wasm.gz",
+      "candid": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc.did",
+      "wasm": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc_dev.wasm.gz",
       "remote": {
         "id": {
           "ic": "7hfb6-caaaa-aaaar-qadga-cai"
@@ -51,23 +51,23 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
 }
 ```
 
-Next, start the local replica and deploy the canister locally with a specified number of nodes (`13` for a standard ICP subnet):
+Next, start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](https://internetcomputer.org/docs/current/developer-docs/backend/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --background
-dfx deploy evm_rpc --argument '(record { nodesInSubnet = 13 })'
+dfx deploy evm_rpc --argument '(record { nodesInSubnet = 28 })'
 ```
 
 Another option is to create a fork of the EVM RPC canister:
 
 ```
-git clone https://github.com/dfinity/evm-rpc-canister
+git clone https://github.com/internet-computer-protocol/evm-rpc-canister
 ```
 
 To deploy your own canister on the mainnet, run the `dfx deploy` command with the `--network ic` flag:
 
 ```
-dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 13 })'
+dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 28 })'
 ```
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [Replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
@@ -222,7 +222,7 @@ dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt ve
 
 Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
 
-If you encounter an issue with consensus, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
+If you encounter an issue with consensus, [please let us know](https://github.com/internet-computer-protocol/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
 
 ### Response size estimates
 
