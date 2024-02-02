@@ -125,7 +125,7 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 
 ## Specifying RPC services
 
-There are several ways to choose a specific JSON-RPC service:
+There are several ways to choose specific JSON-RPC services:
 
 ```candid
 // Used for "Candid-RPC" canister methods
