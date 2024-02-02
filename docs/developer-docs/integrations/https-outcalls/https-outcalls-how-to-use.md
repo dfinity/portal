@@ -33,7 +33,15 @@ The following parameters should be supplied within the request:
 
 -   `body`: Optional; The content of the request's body.
 
--   `transform`: An optional function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function.
+-   `transform`: An optional function that transforms raw responses to [sanitized responses](https://en.wikipedia.org/wiki/HTML_sanitization), and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function. An example written in Rust is shown below:
+
+```rust
+async fn transform(raw: CanisterHttpResponsePayload) -> CanisterHttpResponsePayload {
+    let mut sanitized = raw.clone();
+    sanitized.headers = vec![];
+    sanitized
+}
+```
 
 ### The response
 
