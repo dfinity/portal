@@ -12,7 +12,6 @@
 :root {
   font-family: "CircularXX", sans-serif;
   --ifm-font-family-base: "CircularXX", sans-serif;
-  --ifm-font-size-base: 125%;
   --ifm-color-primary: #3b00b9;
   --ifm-color-primary-dark: #3500a7;
   --ifm-color-primary-darker: #32009d;
@@ -73,6 +72,7 @@ html.plugin-blog {
   --ifm-color-primary: #791e94;
   --ifm-navbar-link-hover-color: #791e94;
   --ifm-navbar-x-padding: 50px;
+  --ifm-font-size-base: 125%;
 
   @media (max-width: 996px) {
     --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
