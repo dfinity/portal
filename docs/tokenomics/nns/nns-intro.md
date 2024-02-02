@@ -35,7 +35,7 @@ ICP token holders can create a “neuron” by staking ICP up to eight years.
 
 When a user creates a neuron, the locked balance of ICP can only be unlocked by disbursing (“destroying”) the neuron. Each neuron is configured with “dissolve delay.” or setting that determines the minimum amount of time that you have to wait before you can unlock your original locked ICP utility tokens. Once a neuron has been placed into “dissolve mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP. 
 
-Neuron owners are economically incentivized to vote in the best interests of the network by locking their ICP tokens for longer periods.  
+Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.  
 
 The number of rewards disbursed to a neuron derives from such factors as the size of the locked balance, the minimum lockup period remaining (the “dissolve delay”), the neuron’s “age,” the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards disbursed is capped and must be divided between voters.
 
