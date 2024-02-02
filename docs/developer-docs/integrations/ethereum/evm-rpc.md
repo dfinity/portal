@@ -2,7 +2,7 @@
 
 **EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API. 
 
-The source code for this project is available on GitHub ([dfinity/evm-rpc-canister](https://github.com/dfinity/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
+The source code for this project is available on GitHub ([internet-computer-protocol/evm-rpc-canister](https://github.com/internet-computer-protocol/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
 
 ## Supported RPC methods
 
@@ -39,8 +39,8 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
   "canisters": {
     "evm_rpc": {
       "type": "custom",
-      "candid": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc.did",
-      "wasm": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc_dev.wasm.gz",
+      "candid": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc.did",
+      "wasm": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc_dev.wasm.gz",
       "remote": {
         "id": {
           "ic": "7hfb6-caaaa-aaaar-qadga-cai"
@@ -61,7 +61,7 @@ dfx deploy evm_rpc --argument '(record { nodesInSubnet = 13 })'
 Another option is to create a fork of the EVM RPC canister:
 
 ```
-git clone https://github.com/dfinity/evm-rpc-canister
+git clone https://github.com/internet-computer-protocol/evm-rpc-canister
 ```
 
 To deploy your own canister on the mainnet, run the `dfx deploy` command with the `--network ic` flag:
@@ -222,7 +222,7 @@ dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt ve
 
 Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
 
-If you encounter an issue with consensus, [please let us know](https://github.com/dfinity/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
+If you encounter an issue with consensus, [please let us know](https://github.com/internet-computer-protocol/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
 
 ### Response size estimates
 
