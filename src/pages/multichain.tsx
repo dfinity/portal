@@ -365,41 +365,27 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="ckRPC">
+                <ContentCard id="evm-rpc">
                   <img
                     src="/img/multichain/card-cketh.webp"
-                    alt="Call into Ethereum smart contracts from ICP using ckRPC"
+                    alt="Call into Ethereum smart contracts from ICP using EVM RPC"
                   />
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Call into Ethereum smart contracts from ICP using ckRPC
+                    Call into Ethereum smart contracts from ICP using EVM RPC
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer makes it possible to build almost any
-                    online service fully on-chain, in a full stack
-                    decentralization model, which can be augmented by placing
-                    the service under the control of an SNS DAO to automate its
-                    maintenance. This is because canister smart contracts can
-                    hold up to 400GiB of memory each, and run in parallel with
-                    great efficiency. Moreover, they can directly serve
-                    interactive web-based user experiences to users by
-                    processing HTTP requests, thanks to ICP’s reverse-gas model
-                    (canister smart contracts pay for their own execution using
-                    “cycles” that they have been charged with). Now they can
-                    also be trustlessly combined with DeFi and other
-                    functionality Ethereum hosts in a World Computer paradigm.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Chain key remote procedure calls (ckRPCs) make it possible
-                    for Internet Computer canister smart contracts to directly
-                    call into Ethereum smart contracts. Advanced fully
-                    decentralized Web3 services can be created that maintain the
-                    UX and heavy data storage and processing on the Internet
-                    Computer, while relying on Ethereum DeFi where financial
-                    rails are needed.
+                    The Ethereum Virtual Machine Remote Procedural Call (EVM RPC) 
+                    canister makes it possible for Internet Computer canister
+                    smart contracts to interact with smart contracts on any
+                    blockchain which supports the Ethereum JSON-RPC protocol. 
+                    Advanced fully decentralized Web3 services can be created that
+                    maintain the UX and heavy data storage and processing on the
+                    Internet Computer, while relying on Ethereum DeFi where
+                    financial rails are needed.
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">ckRPC is pending</Status>
+                    <Status type="pending">EVM RPC in beta testing</Status>
                   </p>
                 </ContentCard>
 
@@ -506,7 +492,7 @@ function MultichainPage() {
                     The Internet Computer provides a solution. Canister smart
                     contracts have an API that allows them to schedule their
                     secure automatic execution for as long as needed into the
-                    future. Using ckRPC, canisters can be used to initiate
+                    future. Using EVM RPC, canisters can be used to initiate
                     time-based calls into Ethereum smart contracts too – without
                     a private key being made vulnerable.
                   </p>
