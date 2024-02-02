@@ -12,7 +12,7 @@ Each proposal submitted to the NNS has the following fields:
 
 * **Summary:** text providing a short description of the proposal, composed using a maximum of 280 bytes.
 * **URL:** the web address of additional content required to evaluate the proposal, specified using HTTPS. For example, the address might describe content supporting the assignment of a DCID (data center id) to a new data center.
-* **Proposer:** the ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. So the balance needs to be big enough to pay the charge on (all) rejection(s). We require a neuron to have a dissolve delay of ≥ 6 months to vote, and this applies to submitting proposals too.
+* **Proposer:** the ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. So the balance needs to be big enough to pay the charge on (all) rejection(s). The NNS requires a neuron to have a dissolve delay of ≥ 6 months to vote, and this applies to submitting proposals too.
 * **Proposal Type:** the type of the proposal. This infers what topic it belongs to (e.g., #NodeAdmin), the system function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function.
 * **Parameters:** the parameters that will be passed to the system function that will be invoked if the proposal is adopted, as determined by its type. When a proposal is submitted, the NNS checks the parameters.
 
