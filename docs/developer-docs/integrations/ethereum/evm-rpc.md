@@ -8,12 +8,12 @@ The source code for this project is available on GitHub ([internet-computer-prot
 
 The following JSON-RPC methods are available as part of the canister's [Candid interface](https://github.com/dfinity/candid#readme):
 
-- `eth_feeHistory`: Queries the historical fee data to estimate gas prices for transactions.
-- `eth_getLogs`: Queries the logs of a specified block or transaction.
-- `eth_getBlockByNumber`: Queries information about a given block.
-- `eth_getTransactionCount`: Queries the number of transactions for a specified address.
-- `eth_getTransactionReceipt`: Queries details about a submitted transaction.
-- `eth_sendRawTransaction`: Submits a signed transaction to the Ethereum network.
+- [`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory): Queries the historical fee data to estimate gas prices for transactions.
+- [`eth_getLogs`](https://docs.alchemy.com/reference/eth-getlogs): Queries the logs of a specified block or transaction.
+- [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-getblockbynumber): Queries information about a given block.
+- [`eth_getTransactionCount`](https://docs.alchemy.com/reference/eth-gettransactioncount): Queries the number of transactions for a specified address.
+- [`eth_getTransactionReceipt`](https://docs.alchemy.com/reference/eth-gettransactionreceipt): Queries details about a submitted transaction.
+- [`eth_sendRawTransaction`](https://docs.alchemy.com/reference/eth-sendrawtransaction): Submits a signed transaction to the Ethereum network.
 
 Other RPC methods (including those specific to non-Ethereum networks) may be accessed using the canister's `request` method.
 
