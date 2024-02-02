@@ -37,7 +37,7 @@ When a user creates a neuron, the locked balance of ICP can only be unlocked by 
 
 Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.  
 
-The number of rewards disbursed to a neuron derives from such factors as the size of the locked balance, the minimum lockup period remaining (the “dissolve delay”), the neuron’s “age,” the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards disbursed is capped and must be divided between voters.
+The number of rewards that neuron receives derive from factors as the amount of staked tokens, the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards are capped and must be divided between voters.
 
 It is expected that a large proportion of the overall supply of ICP will be locked to earn rewards to secure the Internet Computer’s network governance from attacker to acquire a sufficiently large stake to gain significant influence. 
 
