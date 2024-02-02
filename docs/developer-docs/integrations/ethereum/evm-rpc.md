@@ -128,7 +128,7 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 There are several ways to choose specific JSON-RPC services:
 
 ```candid
-// Used for "Candid-RPC" canister methods
+// Used for Candid-RPC canister methods (`eth_getLogs`, `eth_getBlockByNumber`, etc.)
 type RpcServices = variant {
   EthMainnet : opt vec EthMainnetService;
   EthSepolia : opt vec EthSepoliaService;
@@ -139,7 +139,7 @@ type RpcServices = variant {
   }
 };
 
-// Used for the `request` method
+// Used for the JSON-RPC `request` canister method
 type RpcService = variant {
   EthMainnet : EthMainnetService;
   EthSepolia : EthSepoliaService;
