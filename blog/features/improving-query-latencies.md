@@ -68,7 +68,7 @@ One way to improve cache invalidations is to determine whether the query executi
 
 With the query execution tracking, the cache hit ratio has increased from around 10% to 50%:
 
-![Results](/img/blog/query-results.webp)
+![Results](/img/blog/query-graph.webp)
 
 Also, the median query latency is also improved from around 1.2ms down to 0.4ms. When the cache hit ratio reaches above 50%, the median goes down to just 0.1ms:
 
