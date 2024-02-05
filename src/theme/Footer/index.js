@@ -12,6 +12,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import styles from "./styles.module.css";
 import IconExternalLink from "@theme/IconExternalLink";
+import IconDownload from "@site/static/img/svgIcons/download.svg";
 import { EditIcon } from "./EditIcon";
 
 function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
@@ -19,8 +20,30 @@ function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
   const normalizedHref = useBaseUrl(href, {
     forcePrependBaseUrl: true,
   });
+
+  let markup = null;
+
+  if (href && !isInternalUrl(href)) {
+    markup = (
+      <span className="lg:inline-flex items-center gap-1">
+        {label}
+        <IconExternalLink />
+      </span>
+    );
+  } else if (props && props.isDownload) {
+    markup = (
+      <span className="lg:inline-flex items-center gap-1">
+        {label}
+        <IconDownload className="w-5 h-5 align-text-bottom" />
+      </span>
+    );
+  } else {
+    markup = label;
+  }
+
   return (
     <Link
+      target="_blank"
       className="footer__link-item"
       style={{
         color: "white",
@@ -35,14 +58,7 @@ function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
           })}
       {...props}
     >
-      {href && !isInternalUrl(href) ? (
-        <span>
-          {label}
-          <IconExternalLink />
-        </span>
-      ) : (
-        label
-      )}
+      {markup}
     </Link>
   );
 }
