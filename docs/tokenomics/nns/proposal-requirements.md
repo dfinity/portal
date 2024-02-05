@@ -31,7 +31,7 @@ Each type of proposal belongs to a specific “proposal topic,” such as “#No
 * **#NetworkCanisterManagement:** Installing and upgrading “system” [[NNS Canisters|canisters]] that belong to the network — for example, upgrading the voting rules in the NNS DAO itself.
 * **#NodeProviderRewards:** Topic for proposals to reward node providers.
 
-### Types
+## Proposal types
 
 Each proposal is an instance of a specific “proposal type”, which determines what information it contains. For each type of proposal, the NNS maintains a corresponding system function, which it invokes whenever a proposal of that type is adopted. When a proposal is adopted by the NNS, it invokes the corresponding system function by drawing information from the proposal’s content to fill the parameters. 
 
