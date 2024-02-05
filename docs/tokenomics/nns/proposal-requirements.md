@@ -90,7 +90,7 @@ Each proposal submitted to the NNS has the following fields:
 
 The NNS assigns a unique identity to each proposal that it receives.
 
-## Proposal Topics
+## Proposal topics
 
 Each type of proposal belongs to a specific “proposal topic,” such as “#NodeAdmin” or “#NetworkEconomics,” which determines details about how it will be processed. 
 
