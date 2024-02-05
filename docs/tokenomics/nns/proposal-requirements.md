@@ -4,7 +4,7 @@
 
 ### Submit a Proposal
 
-Only neurons with at least 10 ICP and 6 months of dissolve delay can submit proposals to the NNS. To learn more on how to submit a proposal, refer to the [How to Create an NNS motion proposal](https://wiki.internetcomputer.org/wiki/How-To:_Create_an_NNS_motion_proposal). 
+Only neurons with at least 10 ICP and 6 months of dissolve delay can submit proposals to the NNS. To learn more on how to submit a proposal, refer to the [how to create an NNS motion proposal](https://wiki.internetcomputer.org/wiki/How-To:_Create_an_NNS_motion_proposal). 
 
 ### Proposal Format
 
