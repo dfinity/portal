@@ -112,7 +112,8 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Tools", to: "/tooling" },
-      { label: "Developer Grants", href: "https://dfinity.org/grants" },      {
+      { label: "Developer Grants", href: "https://dfinity.org/grants" },
+      {
         label: "Motoko Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
       },
@@ -656,6 +657,11 @@ const config = {
               {
                 label: "Brand Materials",
                 href: "https://dfinity.frontify.com/d/pD7yZhsmpqos",
+              },
+              {
+                label: "Press Kit",
+                href: "/press-kit.zip",
+                isDownload: true,
               },
             ],
           },
