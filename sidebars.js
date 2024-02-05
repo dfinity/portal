@@ -122,6 +122,21 @@ const sidebars = {
             },
             {
               type: "category",
+              label: "dfxvm",
+              items: [
+                "references/dfxvm/docs/cli-reference/dfx/dfx",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-default",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-install",
+                "references/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-list",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-uninstall",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-update",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-uninstall",
+                "references/dfxvm/docs/cli-reference/dfxvm/dfxvm-update",
+              ],
+            },
+            {
+              type: "category",
               label: "quill",
               link: {
                 type: "doc",
