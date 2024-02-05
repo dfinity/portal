@@ -1,4 +1,4 @@
-# Submitting a Proposal
+# Submitting a proposal
 
 ## Overview 
 
