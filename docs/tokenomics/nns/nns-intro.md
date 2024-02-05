@@ -17,33 +17,32 @@ A proposal passes based on either:
 For determining how long proposals are open for voting, the governance uses a so called "Wait-for-quiet" algorithm. This ensures that proposals are decided quickly if all voters agree, but have a longer voting period if they are controversial. Most proposals start with 4 days of voting period that can be extended up to 8 days.
 Once a proposal is adopted, it is autonomously executed on-chain.
 
-While other blockchains take weeks or months to upgrade (sometimes called hard fork) and typically require substantial manual work and coordination to do so, ICP upgrades itself every week (https://dashboard.internetcomputer.org/releases). Its ability to upgrade and iterate is a comparative "superpower."
+While other blockchains take weeks or months to upgrade and typically require substantial manual work and coordination to do so, ICP upgrades itself every week (https://dashboard.internetcomputer.org/releases). Its ability to upgrade and iterate is a comparative "superpower."
+
+## Participation Rewards
+Network governance on the Internet Computer is incentivized through a system called "neurons".
+ICP token holders can create a “neuron” by staking ICP up to eight years. 
+
+When a user creates a neuron, the staked ICP can only be taken out of the neuron again by disbursing the neuron. Each neuron is configured with a “dissolve delay” that determines the minimum amount of time that you have to wait before you can unlock your staked ICP utility tokens. Once a neuron has been placed into “dissolving mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP. 
+
+Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.  
+
+The number of rewards that neuron receives derive from factors as the amount of staked tokens, the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards are capped and must be divided between voters.
+
+For more information on neurons, refer to the [What are Neurons section in the NNS quickstart](https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart).
+For more information on staking rewards, refer to [Staking and Voting Rewards](https://internetcomputer.org/docs/current/tokenomics/nns/nns-staking-voting-rewards).
 
 ## Proposals 
 Participants submit proposals to the NNS. Refer to the proposal submission requirements and types at [Proposal Requirements](./proposal-requirements.md).
 
 Proposals are adopted or rejected based on voting activity by “neurons” that network participants have created.
 
-## Participation Rewards
-Network governance on the Internet Computer is incentivized through a system called "neurons".
-ICP token holders can create a “neuron” by staking ICP up to eight years. 
-
-When a user creates a neuron, the locked balance of ICP can only be unlocked by disbursing (“destroying”) the neuron. Each neuron is configured with “dissolve delay.” or setting that determines the minimum amount of time that you have to wait before you can unlock your original locked ICP utility tokens. Once a neuron has been placed into “dissolve mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP. 
-
-Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.  
-
-The number of rewards that neuron receives derive from factors as the amount of staked tokens, the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards are capped and must be divided between voters.
-
-It is expected that a large proportion of the overall supply of ICP will be locked to earn rewards to secure the Internet Computer’s network governance from attacker to acquire a sufficiently large stake to gain significant influence. 
-
-For more information on neurons, refer to the [What are Neurons section in the NNS quickstart](https://internetcomputer.org/docs/current/tokenomics/token-holders/nns-app-quickstart).
-For more information on staking rewards, refer to [Staking and Voting Rewards](https://internetcomputer.org/docs/current/tokenomics/nns/nns-staking-voting-rewards).
-
 ## Participation
 
 Neurons can manually vote on all proposals. 
+
 If they cannot manually vote on all proposals due to high submission volumes or a lack of expertise, neurons can delegate their vote, called _following_, for specific proposal topic. This ensures efficient decision-making without requiring constant manual input.
 
-It is expected that a large proportion of the overall supply of ICP will be locked to earn rewards. This secures the Internet Computer’s network governance, by making it both difficult and exorbitantly expensive for an attacker to acquire a sufficiently large stake to gain significant influence. Since neuron owners may wish to maximize their rewards by voting on all proposals, most neurons will either be actively managed or configured to follow other neurons so that they can vote automatically.
+Since the incentive to stake ICP in a neuron is high, it is difficult and exorbitantly expensive for an attacker to acquire a sufficiently large stake to gain significant influence. 
 
 To participate, navigate to the [NNS app](https://nns.ic0.app/).
