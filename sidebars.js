@@ -391,8 +391,9 @@ const sidebars = {
               label: "Internet Identity (II)",
               items: [
                 "developer-docs/integrations/internet-identity/overview",
-                "developer-docs/integrations/internet-identity/alternative-origins",
+                "developer-docs/integrations/internet-identity/creating-ii",
                 "developer-docs/integrations/internet-identity/integrate-identity",
+                "developer-docs/integrations/internet-identity/alternative-origins",
               ],
             },
           ],
