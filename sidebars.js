@@ -16,6 +16,11 @@ const sidebars = {
         },
         {
           type: "doc",
+          label: "Development workflow",
+          id: "developer-docs/setup/development-workflow",
+        },
+        {
+          type: "doc",
           label: "Hello, world!",
           id: "developer-docs/setup/hello-world",
         },
