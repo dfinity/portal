@@ -1,18 +1,13 @@
 # Network Nervous System (NNS)
 
 ## Overview​
-The [NNS](https://nns.ic0.app/) is the decentralized autonomous organization (DAO) that governs the Internet Computer Protocol. 
+The NNS is the decentralized autonomous organization (DAO) that governs the Internet Computer Protocol. You can access the on-chain frontend that allows you to interact with it [here](https://nns.ic0.app/).
 
 It is a fully on-chain, decentralized organization and is, for instance, responsible for making protocol-level upgrades to continuously improve the Internet Computer Protocol. 
 
-It operates under a liquid democracy in which those who have staked their ICP or [ICP neuron holders vote](../../concepts/governance.md) vote on proposals that shape the development of the Internet Computer. 
+It operates under a liquid democracy in which those who have [staked their ICP in a neuron vote](../../concepts/governance.md) on proposals that shape the development of the Internet Computer. 
 
-Examples of proposals include:
-1. upgrade the protocol and software used by the node machines that host the network
-2. create new subnet blockchains to increase network capacity
-3. split subnets to divide their load
-4. configure economic parameters that determine the cost for compute capacity
-5. In extreme situations, it can freeze malicious canister smart contract software to protect the network; and many other things. 
+Some proposal examples include upgrading the protocol and software used by the node machines that host the network and creating new subnet blockchains to increase network capacity
 
 A proposal passes based on either:
 - **Absolute Majority** - At any point, even before the voting period ends, if an absolute majority (more than half of the total voting power) has voted "yes," then the proposal is adopted. If an absolute majority has voted "no," then the proposal is rejected.
