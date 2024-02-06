@@ -12,7 +12,6 @@ Kybra allows developers to bring their existing Python skills and workflows to I
 Kybra is a community contributed project and is not maintained by DFINITY. Kybra is developed by [Demergent Labs](https://github.com/demergent-labs), a for-profit company that receives a grant from DFINITY for development of Kybra. 
 :::
 
-
 ## Documentation
 
 - [Kybra Python CDK documentation](https://demergent-labs.github.io/kybra/).
