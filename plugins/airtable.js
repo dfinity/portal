@@ -88,6 +88,7 @@ const airtablePlugin = async function () {
             country: r.fields["Country"],
             city: r.fields["City"],
             type: r.fields["Type"],
+            websiteCategory: r.fields["Website Category"],
             mode: r.fields["Mode"],
             status: r.fields["Status"],
           }))
@@ -179,6 +180,7 @@ const airtablePlugin = async function () {
 
       const topics = new Set(); // event.topic is a string array
       const types = new Set(); // string
+      const websiteCategory = new Set(); // string
       const regions = new Set(); // string
       const countries = new Set(); // string
       const cities = new Set(); // string
@@ -189,6 +191,10 @@ const airtablePlugin = async function () {
           for (const t of rec.topic) {
             topics.add(t);
           }
+        }
+
+        if (rec.websiteCategory) {
+          websiteCategory.add(rec.websiteCategory);
         }
 
         if (rec.type) {
@@ -222,6 +228,7 @@ const airtablePlugin = async function () {
         countries: Array.from(countries),
         cities: Array.from(cities),
         modes: Array.from(modes),
+        websiteCategory: Array.from(websiteCategory),
       };
     },
     async contentLoaded({ content, actions }) {

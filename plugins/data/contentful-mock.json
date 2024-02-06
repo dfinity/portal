@@ -1,8 +1,30 @@
 {
   "press": [
     {
-      "id": "21Ng4kpYLvlzG9X8TOslZM",
-      "title": "Bitcoin Layer 2 Bitfinity raises token round at $130 million valuation",
+      "id": "4DCXDfoq5SyXGQNMm6ZAcr",
+      "title": "TRAX, A WEB3 MUSIC STARTUP FOR ‘SUPERFANS’, RAISES $2.9M IN DECENTRALIZED FUNDING ROUND",
+      "date": "2024-01-18",
+      "dateHuman": "Jan 18, 2024",
+      "press": "Music Business World",
+      "url": "https://www.musicbusinessworldwide.com/trax-a-web3-music-startup-for-superfans-raises-2-9m-in-decentralized-funding-round/",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "P8310ZjB3rttGvFHN2SnA",
+      "title": "Internet Computer Protocol: il reverse gas per un’adozione a prova di utente",
+      "date": "2024-01-16",
+      "dateHuman": "Jan 16, 2024",
+      "press": "criptovaluta.it",
+      "url": "https://www.criptovaluta.it/81355/internet-computer-protocol-il-reverse-gas-per-unadozione-a-prova-di-utente",
+      "tags": [
+        "Press Coverage"
+      ]
+    },
+    {
+      "id": "5IhITSSs3EKCXC8DO4cArn",
+      "title": "Web3 Gamer: 1 trillion Notcoins farmed, Neopets meets ICP, Trickshot Blitz is awesome",
       "date": "2024-01-11",
       "dateHuman": "Jan 11, 2024",
       "press": "TheBlock",
