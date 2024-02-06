@@ -36,7 +36,7 @@ For developers, ICP tokens are important because they can be converted to cycles
 
 Canister smart contracts must be able to pay for complete execution (all or nothing), but the platform sets limits on how many cycles a canister can hold and consume to prevent malicious code from draining resources.
 
-To learn more about cycles and how to use them, see [here](/docs/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles.md).
+To learn more about cycles and how to use them, see [here](/docs/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles).
 
 For more information on cycles costs, see the tables in [computation and storage costs](/developer-docs/gas-cost.md).
 

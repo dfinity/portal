@@ -17,8 +17,8 @@ If you want to deploy your own token or build an ICRC-1 ledger, have a look at t
 
 Follow the steps below to deploy your copy of the ledger canister to a local replica.
 
-### Step 1: Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx).
-If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
+### Step 1: Make sure you use a recent version of the [IC SDK](/docs/current/developer-docs/getting-started/install/).
+If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) section to install it.
 
 ### Step 2: Create a new dfx project with the command:
 

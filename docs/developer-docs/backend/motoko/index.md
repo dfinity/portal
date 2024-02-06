@@ -4,7 +4,7 @@
 
 [Motoko](/motoko/main/motoko.md) was [specifically designed](https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/) by DFINITY to support the unique features of the Internet Computer and to provide a familiar yet robust programming environment.
 
-To get started, one should [install the IC SDK](../../setup/install/index.mdx) which supports building Motoko [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts).
+To get started, one should [install the IC SDK](/docs/current/developer-docs/getting-started/install/) which supports building Motoko [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts).
 
 ## Tutorials and guides
 

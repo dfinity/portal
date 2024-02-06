@@ -13,7 +13,7 @@ This example covers:
 
 ## Prerequisites 
 
-- [x] Install the [IC SDK](../developer-docs/setup/install/index.mdx).
+- [x] Install the [IC SDK](/docs/current/developer-docs/getting-started/install/).
 - [x] Have a cycles wallet that contains cycles, either from the [faucet quick start](/docs/current/developer-docs/getting-started/cycles/cycles-faucet) or by purchasing ICP and following our [mainnet deployment](/docs/current/developer-docs/getting-started/deploy/mainnet) guide.
 
 ## Set up your project

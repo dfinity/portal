@@ -12,7 +12,7 @@ Before starting the guide, verify the following:
 
 - [x]   You have `node.js` installed for frontend development and can install packages using `npm install` in your project. For information about installing node for your local operating system and package manager, see the [Node](https://nodejs.org/en/) website.
 
-- [x]   You have downloaded and installed the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+- [x]   You have downloaded and installed the IC SDK package as described in the [download and install](/docs/current/developer-docs/getting-started/install/) page.
 
 :::info
 This guide requires you to use the IC SDK version `0.8.0` or later.

@@ -6,13 +6,13 @@ On ICP, frontend UIs for decentralized applications can be hosted in a canister,
 
 One key feature of ICP is its ability to serve canister assets directly in a web browser using the canister's mainnet URL. This means that when a frontend canister is deployed on the mainnet, users from around the world can access it using only the canister's URL, without requiring that the developer set up a domain name or other web service configuration.
 
-When developing on ICP, the primary tool used by developers is the [IC SDK](./install/index.mdx). The IC SDK includes the tool `dfx`, which is a CLI tool used to create, manage, and deploy dapps. When a new project is created with `dfx`, by default the project includes a frontend and backend canister that creates a simple 'Hello, world!' dapp. You can learn more about `dfx` in the documentation [here](/docs/current/tutorials/developer-journey/level-0/intro-dfx).
+When developing on ICP, the primary tool used by developers is the [IC SDK](/docs/current/developer-docs/getting-started/install/). The IC SDK includes the tool `dfx`, which is a CLI tool used to create, manage, and deploy dapps. When a new project is created with `dfx`, by default the project includes a frontend and backend canister that creates a simple 'Hello, world!' dapp. You can learn more about `dfx` in the documentation [here](/docs/current/tutorials/developer-journey/level-0/intro-dfx).
 
 ## Creating a new ICP project  
 
 To create your own dapp, you can either edit the default template created by `dfx` which provides a framework for a backend canister and frontend canister, use an example or boilerplate project repository, or create a project from scratch. 
 
-To create a new project with `dfx`, first assure you have downloaded and installed the [IC SDK](./install/index.mdx). Then, you can run the command:
+To create a new project with `dfx`, first assure you have downloaded and installed the [IC SDK](/docs/current/developer-docs/getting-started/install/). Then, you can run the command:
 
 ```
 dfx new my_project
