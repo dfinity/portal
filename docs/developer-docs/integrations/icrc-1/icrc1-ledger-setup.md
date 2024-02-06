@@ -134,7 +134,7 @@ Check the set variables:
 For each variable, the exported environment variable will be used unless otherwise specified:
 -   The `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
 -   The `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
--   The `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/getting-started/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
+-   The `ARCHIVE_CONTROLLER` is the [controller principal](/docs/current/developer-docs/getting-started/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
 -   The `TRIGGER_THRESHOLD` is the number of blocks to archive when trigger threshold is exceeded.
 -   The `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
 -   The `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
