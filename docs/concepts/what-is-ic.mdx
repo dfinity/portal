@@ -76,7 +76,7 @@ This feature has profound implications and use cases:
 This feature is called **Chain-Key Cryptography** on ICP.
 :::
 
-## Smart Contracts
+## Smart contracts
 
 ICP uses [WebAssembly](https://internetcomputer.org/capabilities/webassembly) as the virtual machine for executing smart contracts.
 This means developers can write smart contracts in popular programming languages such as JavaScript, TypeScript, Rust, Python, and Motoko, which is specifically designed for ICP.
@@ -102,7 +102,7 @@ For immutable smart contracts, there is no observable difference between the two
 In the context of ICP, smart contracts are referred to as **canisters**.
 :::
 
-## Accounts and Keys
+## Accounts and keys
 
 ICP derives the address of a user account from the user’s public key by hashing it.
 
@@ -195,106 +195,106 @@ Currently, subnets contain between 13 and 40 nodes, and most of them are geograp
 
 <tbody>
 <tr>
-  <td> virtual machine </td>
+  <td> Virtual machine </td>
   <td> EVM </td>
   <td> WebAssembly </td>
 </tr>
 
 <tr>
-  <td> on-chain Web3 </td>
+  <td> On-chain Web3 </td>
   <td> - </td>
-  <td> yes </td>
+  <td> Yes </td>
 </tr>
 
 <tr>
-  <td> bridgeless Bitcoin </td>
+  <td> Bridgeless Bitcoin </td>
   <td> - </td>
-  <td> yes </td>
+  <td> Yes </td>
 </tr>
 
 <tr>
-  <td> smart contracts can sign messages </td>
+  <td> Smart contracts can sign messages </td>
   <td> - </td>
-  <td> yes </td>
+  <td> Yes </td>
 </tr>
 
 <tr>
   <td> HTTP calls to Web2 from smart contracts </td>
   <td> - </td>
-  <td> yes </td>
+  <td> Yes </td>
 </tr>
 
 <tr>
-  <td> languages </td>
+  <td> Languages </td>
   <td> Solidity, Vyper, Yul </td>
   <td> JS, Python, Rust, Solidity, Motoko, and more </td>
 </tr>
 
 <tr>
-  <td> programming model </td>
-  <td> atomic transactions </td>
-  <td> async message passing </td>
+  <td> Programming model </td>
+  <td> Atomic transactions </td>
+  <td> Async message passing </td>
 </tr>
 
 <tr>
-  <td> gas model </td>
-  <td> user pays </td>
-  <td> smart contract pays </td>
+  <td> Gas model </td>
+  <td> User pays </td>
+  <td> Smart contract pays </td>
 </tr>
 
 <tr>
-  <td> gas price </td>
-  <td> variable </td>
-  <td> fixed </td>
+  <td> Gas price </td>
+  <td> Variable </td>
+  <td> Fixed </td>
 </tr>
 
 <tr>
-  <td> compute </td>
+  <td> Compute </td>
   <td>
     {" "}
-    few million instructions per block (based on the 30 million gas limit){" "}
+    Few million instructions per block (based on the 30 million gas limit){" "}
   </td>
   <td> 2 billion instructions per block (per subnet) </td>
 </tr>
 
 <tr>
-  <td> finality </td>
+  <td> Finality </td>
   <td> ~15min </td>
   <td> ~1.4s </td>
 </tr>
 
 <tr>
-  <td> average tx/msg fee </td>
+  <td> Average tx/msg fee </td>
   <td> ~$1 </td>
   <td> ~$0.000001 </td>
 </tr>
 
 <tr>
-  <td>stack size</td>
+  <td>Stack size</td>
   <td> 32KB (1024 of 256-bit values) </td>
   <td> 5MB </td>
 </tr>
 
 <tr>
-  <td> code size </td>
+  <td> Code size </td>
   <td> 24KB (more with code sharing) </td>
   <td> 10MB </td>
 </tr>
 
 <tr>
-  <td> memory size </td>
-  <td> few KB </td>
+  <td> Memory size </td>
+  <td> Few KB </td>
   <td> 404GB (4GB Wasm memory + 400GB of stable memory) </td>
 </tr>
 
 <tr>
-  <td> storage cost </td>
+  <td> Storage cost </td>
   <td> $18M per GB (based on 640K gas per KB) </td>
   <td> $5 per GB per year </td>
 </tr>
 
 <tr>
-  <td> number of nodes </td>
+  <td> Number of nodes </td>
   <td> ~7K </td>
   <td> ~500 in total, 13-40 per subnet </td>
 </tr>
