@@ -1,5 +1,5 @@
 import Link from "@docusaurus/Link";
-import data from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
+import roadmapData from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 import completedRoadmapItems from "@site/roadmap/completed";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
@@ -13,8 +13,11 @@ import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
+import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
 
 const MotionLink = motion(Link);
+
+const data = roadmapData as RoadmapDomain[];
 
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);

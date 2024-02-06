@@ -1,3 +1,5 @@
+# Considerations for NFT developers
+
 ## Overview
 
 An NFT or **non-fungible token** is a record on a blockchain that is associated with a particular digital or physical asset. The unique digital representation on a blockchain allows the proving of ownership as well as their trading.

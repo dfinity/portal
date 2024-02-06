@@ -8,17 +8,6 @@ import { motion } from "framer-motion";
 
 const MotionLink = motion(Link);
 
-export type Press = {
-  id: string;
-  title: string;
-  details: string;
-  date: string;
-  dateHuman: string;
-  press: string;
-  url: string;
-  tags: string[];
-};
-
 const NewsPageLink = () => {
   return (
     <Link

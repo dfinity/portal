@@ -12,7 +12,7 @@ The `dfx` parent command has several flags and subcommands that can be used to p
 
 The syntax for using dfx is as follows:
 
-```
+```bash
 dfx [subcommand] [flag]
 ```
 
@@ -61,7 +61,7 @@ If there is a specific release of `dfx` you'd like to use, you can set the `DFX_
 
 To set the `DFX_VERSION` variable and install a specific version of `dfx`, run the command:
 
-```
+```bash
 DFX_VERSION=0.14.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 ```
 
@@ -77,7 +77,7 @@ Assure that you are in your working directory, `developer_journey`.
 
 ### Step 2: Create a new project with the name 'hello_world' with the command:
 
-```
+```bash
 dfx new hello_world
 ```
 
@@ -93,7 +93,7 @@ This command will create a new project directory called `hello_world` that conta
 
 ### Step 3: Then, navigate into the project's directory with the command:
 
-```
+```bash
 cd hello_world
 ```
 
@@ -101,7 +101,7 @@ cd hello_world
 
 By default, the project structure will resemble the following:
 
-```
+```bash
 hello_world/
 ├── README.md      # Default project documentation
 ├── dfx.json       # Project configuration file
@@ -137,7 +137,7 @@ By default, the `dfx.json` file will contain some automatically generated config
 
 To review the default configuration file for the project, open the `dfx.json` file in a code or text editor. The contents will resemble the following:
 
-```
+```json
 {
   "canisters": {
     "hello_world_backend": {
@@ -185,7 +185,7 @@ Now that you've explored the default project structure, let's take a look at the
 
 New Motoko projects will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/hello_world_backend/main.mo` file in a code or text editor. The code will resemble the following:
 
-```
+```motoko
 actor {
   public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
