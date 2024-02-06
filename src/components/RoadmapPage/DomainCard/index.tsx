@@ -1,8 +1,9 @@
-import transitions from "@site/static/transitions.json";
 import React from "react";
 import OpenOverlayIcon from "../../../../static/img/plus.svg";
-import AnimateSpawn from "../../Common/AnimateSpawn";
+import AnimateSpawn from "../../Common/AnimateSpawn/index";
+import RoadmapCard from "../../RoadmapCard/index";
 import { RoadmapDomain } from "../RoadmapTypes";
+import transitions from "@site/static/transitions.json";
 
 const DomainCard: React.FC<{
   domain: RoadmapDomain;
@@ -10,19 +11,12 @@ const DomainCard: React.FC<{
   index: number;
 }> = ({ domain, onOpen, index }) => {
   return (
-    <AnimateSpawn
-      variants={transitions.item}
-      className="relative bg-white-80 backdrop-blur-2xl flex flex-col md:flex-row items-stretch md:items-center rounded-xl overflow-hidden"
-      key={domain.name}
-    >
-      <img
-        src={domain.image?.card}
-        className={`h-[200px] object-cover md:h-auto md:w-[400px] ${
-          index % 2 == 1 ? "md:order-1" : ""
-        }`}
-        alt={`${domain.name} roadmap`}
-      ></img>
-      <div className="px-6 pt-6 pb-8 md:py-0 md:px-12 flex-1">
+    <AnimateSpawn variants={transitions}>
+      <RoadmapCard
+        reverse={index % 2 == 1}
+        imgAlt={`${domain.name} roadmap`}
+        imgUrl={domain.image?.card}
+      >
         <h2 className="tw-heading-5 md:tw-heading-3 mb-3">{domain.name}</h2>
         <div
           className="tw-paragraph-sm md:tw-lead-sm text-black-60 mb-6"
@@ -97,7 +91,7 @@ const DomainCard: React.FC<{
           <OpenOverlayIcon />
           See feature list
         </button>
-      </div>
+      </RoadmapCard>
     </AnimateSpawn>
   );
 };

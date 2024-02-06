@@ -10,7 +10,7 @@ const sharp = require("sharp");
 const downloadFile = require("./utils/download-file");
 
 // const dotenv = require("dotenv");
-// const isDev = process.env.NODE_ENV === "development";
+const isDev = (process.env.NODE_ENV || "development") === "development";
 // dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const { AIRTABLE_KEY } = process.env;
@@ -88,6 +88,7 @@ const airtablePlugin = async function () {
             country: r.fields["Country"],
             city: r.fields["City"],
             type: r.fields["Type"],
+            websiteCategory: r.fields["Website Category"],
             mode: r.fields["Mode"],
             status: r.fields["Status"],
           }))
@@ -179,6 +180,7 @@ const airtablePlugin = async function () {
 
       const topics = new Set(); // event.topic is a string array
       const types = new Set(); // string
+      const websiteCategory = new Set(); // string
       const regions = new Set(); // string
       const countries = new Set(); // string
       const cities = new Set(); // string
@@ -189,6 +191,10 @@ const airtablePlugin = async function () {
           for (const t of rec.topic) {
             topics.add(t);
           }
+        }
+
+        if (rec.websiteCategory) {
+          websiteCategory.add(rec.websiteCategory);
         }
 
         if (rec.type) {
@@ -222,17 +228,20 @@ const airtablePlugin = async function () {
         countries: Array.from(countries),
         cities: Array.from(cities),
         modes: Array.from(modes),
+        websiteCategory: Array.from(websiteCategory),
       };
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
       createData("airtable-events.json", JSON.stringify(content, null, 2));
 
-      // save mock file
-      fs.writeFileSync(
-        path.join(__dirname, "data", "airtable-mock.json"),
-        JSON.stringify(content, null, 2)
-      );
+      if (isDev) {
+        // save mock file
+        fs.writeFileSync(
+          path.join(__dirname, "data", "airtable-mock.json"),
+          JSON.stringify(content, null, 2)
+        );
+      }
     },
 
     async postBuild({ outDir }) {

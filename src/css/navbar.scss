@@ -30,6 +30,10 @@
   @apply z-50;
 }
 
+.navbar__items--right {
+  gap: 1rem;
+}
+
 .dropdown--hoverable .dropdown__menu {
   transform: translateX(-50%) translateY(-0.625rem);
 }

@@ -32,7 +32,7 @@ export default function Logo(props) {
     >
       {logo && (
         <div className={imageClassName}>
-          <img src={logo.src} alt={alt} className="!h-8 md:!h-10" />
+          <img src={logo.src} alt={alt} className="!h-[32px] md:!h-[40px]" />
         </div>
       )}
       {navbarTitle != null && <b className={titleClassName}>{navbarTitle}</b>}

@@ -223,13 +223,13 @@ By default, the `dfx.json` file will contain automatically generated configurati
 
 ## Reviewing the default program code
 
-The backend canister's code will be located in the `src/hello_world_backend` subdirectory. 
+The backend canister's code will be located in the `src/hello_backend` subdirectory. 
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-///src/hello_world_backend/main.mo
+///src/hello_backend/main.mo
 actor {
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
@@ -241,7 +241,7 @@ public query func greet(name : Text) : async Text {
 <TabItem value="rust" label="Rust">
 
 ```rust
-///src/hello_world_backend/src/lib.rs
+///src/hello_backend/src/lib.rs
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
