@@ -76,13 +76,15 @@ const subnavItems = [
     label: "Rust",
   },
   {
+    type: "docSidebar",
     position: "left",
-    to: "typescript",
-    label: "TypeScript",
+    sidebarId: "typescript",
+    label: "Typescript",
   },
   {
+    type: "docSidebar",
     position: "left",
-    to: "python",
+    sidebarId: "python",
     label: "Python",
   },
   {
