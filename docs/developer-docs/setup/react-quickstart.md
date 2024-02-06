@@ -67,7 +67,7 @@ Before you start, verify the following:
 
 - [x] You have a command line interface (CLI) window open. This window is also referred to as the 'terminal' window.
 
-- [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](./install/index.mdx) page.
+- [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) page.
 
 - [x] You have a code editor installed. The [VSCode IDE](https://code.visualstudio.com/download) is a popular choice.
 
