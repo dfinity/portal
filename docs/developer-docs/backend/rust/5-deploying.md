@@ -141,7 +141,7 @@ dfx deploy
 
 To deploy to the mainnet, you will need a cycles wallet with a balance of cycles. 
 
-To learn more about setting up a cycles wallet, please review the documentation [here](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet#confirm-your-developer-identity-and-ledger-account). 
+To learn more about setting up a cycles wallet, please review the documentation [here](/docs/current/developer-docs/getting-started/deploy/mainnet). 
 
 Once you have gotten your cycles wallet configured and ready to use, check the status of the mainnet to confirm that your local environment can connect to it. You can ping the mainnet with the command:
 
