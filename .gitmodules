@@ -21,9 +21,3 @@
 [submodule "submodules/dfxvm"]
 	path = submodules/dfxvm
 	url = https://github.com/dfinity/dfxvm.git
-[submodule "interface-spec"]
-	ignore = untracked
-[submodule "samples"]
-	ignore = untracked
-[submodule "sdk"]
-	ignore = untracked
