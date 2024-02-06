@@ -170,7 +170,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://demergent-labs.github.io/azle"
+                    href="/docs/current/developer-docs/backend/typescript/"
                     className="link-primary"
                     title="Go to Azle docs"
                   >
@@ -197,7 +197,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://demergent-labs.github.io/kybra"
+                    href="/docs/current/developer-docs/backend/python/"
                     className="link-primary"
                     title="Go to Kybra docs"
                   >
