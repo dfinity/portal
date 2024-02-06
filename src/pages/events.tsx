@@ -9,7 +9,6 @@ import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
-import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import EventCard from "../components/GlobalEvents/EventCard";
 import FeaturedCard, {
   getFeaturedEvent,
@@ -28,7 +27,7 @@ import {
   useQueryParam,
 } from "../utils/use-query-param";
 
-const { events, types, regions } = data;
+const { events, websiteCategory, regions } = data;
 const DEFAULT_MAX_EVENTS = 12;
 
 const featuredEvent = getFeaturedEvent(events);
@@ -93,7 +92,7 @@ function GlobalEventsPage() {
         return false;
       }
 
-      if (selectedType && event.type !== selectedType) {
+      if (selectedType && event.websiteCategory !== selectedType) {
         return false;
       }
 
@@ -178,7 +177,7 @@ function GlobalEventsPage() {
           <Filters
             showPastEvents={showPastEvents}
             onShowPastEventsChange={setShowPastEvents}
-            types={types}
+            types={websiteCategory}
             locations={regions}
             selectedLocations={selectedLocations}
             onLocationsChange={setSelectedLocations}
