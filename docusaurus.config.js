@@ -77,12 +77,12 @@ const subnavItems = [
   },
   {
     position: "left",
-    to: "https://demergent-labs.github.io/azle/",
+    to: "typescript",
     label: "TypeScript",
   },
   {
     position: "left",
-    to: "https://demergent-labs.github.io/kybra/",
+    to: "python",
     label: "Python",
   },
   {

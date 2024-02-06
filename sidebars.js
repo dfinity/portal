@@ -1098,6 +1098,21 @@ solidity: [
       id: "developer-docs/backend/solidity/index",
     },
 ],
-};
+python: [
+  {
+    type: "doc",
+    label: "Python",
+    id: "developer-docs/backend/python/index",
+  },
+],
+typescript: [
+  {
+    type: "doc",
+    label: "TypeScript",
+    id: "developer-docs/backend/typescript/index",
+  },
+],
 
+
+};
 module.exports = sidebars;
