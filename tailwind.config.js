@@ -134,8 +134,8 @@ module.exports = {
       "heading-7": ["16px", "26px"],
       "heading-7-caps": ["16px", "22px"],
       // medium
-      navigation: ["20px", "26px"],
-      "navigation-on-page": ["18px", "26px"],
+      navigation: ["16px", "22px"],
+      "navigation-on-page": ["14px", "22px"],
 
       // book
       "title-lg": ["60px", "70px"],
@@ -143,8 +143,8 @@ module.exports = {
       "lead-lg": ["32px", "42px"],
       lead: ["24px", "34px"],
       "lead-sm": ["18px", "28px"],
-      paragraph: ["20px", "28px"],
-      "paragraph-sm": ["18px", "26px"],
+      paragraph: ["16px", "24px"],
+      "paragraph-sm": ["14px", "22px"],
 
       caption: ["12px", "16px"],
       "button-xs": ["12px", "22px"],
