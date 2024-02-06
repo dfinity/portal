@@ -41,6 +41,7 @@
 
   --ic0-nav-border: 1px solid white;
   --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
+  --ic0-docs-background: white;
 }
 
 /* browser resets */
@@ -69,7 +70,7 @@ html.plugin-blog {
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
   --ifm-subnav-height: 54px;
-  --ifm-color-primary: #791e94;
+  --ifm-color-primary: #3b00b9;;
   --ifm-navbar-link-hover-color: #791e94;
   --ifm-navbar-x-padding: 50px;
 
@@ -114,7 +115,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
 
   // style the article body
   main[class*="docMainContainer_"] {
-    background: var(--ic0-article-background);
+    background: var(--ic0-docs-background);
     font-size: 1.1rem;
 
     a {
