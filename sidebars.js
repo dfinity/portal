@@ -84,7 +84,7 @@ const sidebars = {
         {
           type: "doc",
           label: "Overview",
-          id: "developer-docs/references/dev-tools-overview",
+          id: "references/dev-tools-overview",
         },
         {
           type: "category",
