@@ -1,5 +1,7 @@
 # Delete
 
+## Overview
+
 If you want to permanently delete a specific canister or all canisters for a specific project on a given deployment (either local, or remote), you can do so by running the command:
  
 ```

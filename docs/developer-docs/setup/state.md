@@ -1,5 +1,7 @@
 # State
 
+## Overview
+
 After you deploy a canister, it can begin receiving and processing requests from users and from other canisters. Canisters that are available to send requests and receive replies are considered in be in a **Running** state.
 
 Although canisters are normally placed in the Running state by default, there are cases where you might want to temporarily or permanently stop a canister. For example, you might want to stop a canister before upgrading it. Stopping a canister helps to ensure proper handling of any messages that are in progress and need to either run to completion or be rolled back. You might also want to stop a canister to clear its message queue cleanly as a prerequisite to deleting the canister.

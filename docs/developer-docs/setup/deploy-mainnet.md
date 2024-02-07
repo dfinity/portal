@@ -1,8 +1,4 @@
----
-title: Mainnet deployment
----
-
-# Deploying to the Internet Computer mainnet 
+# Mainnet deployment
 
 ## Overview
 
