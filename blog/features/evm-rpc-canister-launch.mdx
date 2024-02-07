@@ -166,7 +166,7 @@ Locally deploy the `evm_rpc` canister
 dfx deps deploy evm_rpc
 ```
 
-Now, use `dfx` to get the current Ethereum gas price
+Now, use `dfx` to get the current Ethereum gas price:
 
 ```bash
 dfx canister call evm_rpc request '(variant {Custom=record {url="https://ethereum.publicnode.com"}},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)' --wallet $(dfx identity get-wallet) --with-cycles 1000000000
