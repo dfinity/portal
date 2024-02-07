@@ -1,6 +1,6 @@
 ---
 title: Don’t trust, verify — New node metrics on the Internet Computer
-description: TWith the release of new metrics, node performance is fully transparent and verifiable.
+description: With the release of new metrics, node performance is fully transparent and verifiable.
 tags: [Technology]
 author: DFINITY
 image: /img/blog/node-metrics.webp
