@@ -18,7 +18,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
   width={300}
 />
 
-# TL;DR
+# Summary
 
 The
 [EVM RPC Canister](https://github.com/internet-computer-protocol/evm-rpc-canister/releases/tag/release-2024-01-31)
@@ -56,9 +56,9 @@ multiple RPC providers with each outbound request.
 ## The problem
 
 Building an integration between a canister and the Ethereum network currently
-requires the use of HTTPS outcalls. These calls are facilitated by a service
-that requires the use of subscription-based API keys. This presents developers
-with the following challenges:
+requires the use of HTTPS outcalls. These calls are facilitated by services
+(often called RPC Node Providers) that require the use of subscription-based API
+keys. This presents developers with a few non-trivial challenges:
 
 ### Management of API keys
 
@@ -79,11 +79,12 @@ The problem is further compounded if we start to take cost into account. There
 are a number of factors that go into the calculation a developer makes when
 deciding to build something. How much engineering effort will this take? How
 much do I need to pay for third-party services (e.g. Ethereum RPC providers)?
-How important is trust / security to my users? If managing API keys
-independently, the total cost begins to balloon as usage scales and the need for
-additional layers of consensus becomes more important - the latter requires
-querying multiple RPC providers, which each require an individual subscription /
-API key / management / etc.
+How important is trust / security to my users?
+
+If managing API keys independently, the total cost begins to balloon as usage
+scales and the need for additional layers of consensus becomes more important -
+the latter requires querying multiple RPC providers, which each require an
+individual subscription / API key / management / etc.
 
 ## What the EVM RPC canister solves
 
@@ -93,7 +94,7 @@ an easy to use, on-chain API. It performs automatic consensus inference by
 sending requests to multiple providers in parallel and ensuring the responses
 agree. It also lets you send requests to other EVM chains through a generic
 `request` interface. Overall, it simplifies what you as a developer need to
-think about when setting up your integrations with Ethereum.
+think about when setting up your Ethereum integrations.
 
 ## How to use
 
@@ -101,9 +102,11 @@ Below is a quick start to getting an integration with the EVM RPC canister up
 and running. It's a simplified example that omits many complexities, but
 hopefully it still shows you how easy it is to get started.
 
+<!-- prettier-ignore-start -->
 :::info
 Please ensure you [install](/docs/current/developer-docs/setup/install/) `dfx` before proceeding with the steps below.
 :::
+<!-- prettier-ignore-end -->
 
 ### Start a new project
 
@@ -126,17 +129,6 @@ as a dependency under the "canisters" key:
     "evm_rpc": {
       "type": "pull",
       "id": "7hfb6-caaaa-aaaar-qadga-cai"
-    },
-    "evm_rpc_example_frontend": {
-      "dependencies": ["evm_rpc"],
-      "frontend": {
-        "entrypoint": "src/evm_rpc_example_frontend/src/index.html"
-      },
-      "source": [
-        "src/evm_rpc_example_frontend/assets",
-        "dist/evm_rpc_example_frontend/"
-      ],
-      "type": "assets"
     }
   },
   "defaults": {
@@ -186,6 +178,8 @@ The response:
 (variant { Ok = "{\"id\":1,\"jsonrpc\":\"2.0\",\"result\":\"0x8ca25b481\"}" })
 ```
 
+#### Raw RPC
+
 You might be asking why the gas price is returned as a hex value. This endpoint
 was reached using the generic `request` method expose by the EVM RPC canister.
 This endpoint does not offer the same conveniences as the typed Candid RPC
@@ -193,13 +187,23 @@ endpoints, nor does it perform automatic consensus inference. This method is
 exposed mainly to give you access to any Ethereum RPC API method in case the
 typed Candid RPC endpoints are not sufficient.
 
+<!-- prettier-ignore-start -->
+:::info
+In the coming months, more tooling and improvements to the EVM RPC Canister are expected to land that will make it much easier to process raw Ethereum RPC data.
+:::
+<!-- prettier-ignore-end -->
+
+#### Candid RPC
+
 Let's see what it looks like to call a typed Candid RPC method.
 
 ```bash
 dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt vec {variant {Cloudflare}}}, null, record {address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; block = variant {Latest}})' --with-cycles 1000000000 --wallet=$(dfx identity get-wallet)
 ```
 
-Here, we call the `eth_getTransactionCount` method using Cloudflare as a provider. This will return the number of transactions for the given contract (i.e. address `0xdAC17F958D2ee523a2206206994597C13D831ec7`)
+Here, we call the `eth_getTransactionCount` method using Cloudflare as a
+provider. This will return the number of transactions for the given contract
+(i.e. address `0xdAC17F958D2ee523a2206206994597C13D831ec7`)
 
 We get back the following, which tells us there is one transaction:
 
@@ -207,5 +211,17 @@ We get back the following, which tells us there is one transaction:
 (variant { Consistent = variant { Ok = 1 : nat } })
 ```
 
-## Concluding remarks
+## Conclusion
 
+The EVM RPC Canister is designed to help you build integrations with Ethereum
+smart contracts quickly, easily, and in a cost-effective manner. While it is
+still early (and there are many improvements to come), this is a good chance to
+get ahead and build slick ICP cross-chain dapps!
+
+If you have any feedback, or feel that the EVM RPC Canister is missing any
+features or functionality, please write on
+[GitHub](https://github.com/internet-computer-protocol/evm-rpc-canister), on the
+[Developer Forum](https://forum.dfinity.org), or on the
+[Feedback Board](https://dx.internetcomputer.org).
+
+Looking forward to your comments!
