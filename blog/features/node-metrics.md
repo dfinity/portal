@@ -28,7 +28,7 @@ In the long run, the availability of verifiable node metrics will lead to furthe
 
 ## ICP architecture for trustworthy node metrics
 
-![Node metrics diagram](/img/blog/node-metrics-diagram.wepb)
+![Node metrics diagram](/img/blog/node-metrics-diagram.webp)
 
 ## How consensus has always worked
 
