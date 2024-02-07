@@ -45,7 +45,7 @@ const sidebars = {
         }, 
         {
           type: "doc",
-          label: "Build your first smart contract",
+          label: "Default project template",
           id: "developer-docs/setup/first-canister",
         },
         {
@@ -1098,6 +1098,21 @@ solidity: [
       id: "developer-docs/backend/solidity/index",
     },
 ],
-};
+python: [
+  {
+    type: "doc",
+    label: "Python",
+    id: "developer-docs/backend/python/index",
+  },
+],
+typescript: [
+  {
+    type: "doc",
+    label: "TypeScript",
+    id: "developer-docs/backend/typescript/index",
+  },
+],
 
+
+};
 module.exports = sidebars;
