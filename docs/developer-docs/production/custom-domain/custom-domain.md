@@ -46,12 +46,12 @@ a [concrete example to illustrate these steps](#concrete-example), followed by s
 instructions on [troubleshooting](#troubleshooting).
 
 - #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
-Add a `CNAME` entry for your domain pointing to `icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
+Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
 Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
 Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
 
 :::info
-In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
+In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `CUSTOM_DOMAIN.icp1.io`.
 
 In some cases (like AWS:Route53), the format of the `TXT` record can depend on whether it is APEX or not.
 For APEX, the name has to be empty, with the value containing the key-value pair: "_canister-id:CANISTER_ID".
@@ -146,7 +146,7 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 
 | Record Type   | Host                        | Value                               |
 |---------------|-----------------------------|-------------------------------------|
-| `CNAME`       | foo.bar.com                 | icp1.io                             |
+| `CNAME`       | foo.bar.com                 | foo.bar.com.icp1.io                 |
 | `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
 | `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
 
