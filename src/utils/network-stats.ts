@@ -182,10 +182,7 @@ export function getCpuCoreCount(): Promise<number> {
 */
 export type StakingMetric = {
   name: "governance_total_locked_e8s";
-  samples: {
-    timestamp: number;
-    value: number;
-  }[];
+  subsets: [{ metric: {}; value: [timestamp: number, value: string] }];
 };
 
 export type StakingMetrics = { metrics: StakingMetric[] };
