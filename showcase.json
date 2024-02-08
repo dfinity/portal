@@ -3516,5 +3516,28 @@
   "twitter": "https://twitter.com/icdragoneyes",
   "youtube": "",
   "submittableId": ""
+  },
+  {
+  "name": "Constellation Book",
+  "description": "Unlock the Depths of Internet Computer Technology Through a Book. And Learn how to Develop a SocialFi Dapp.",
+  "website": "https://neutronstardao.github.io/constellation.github.io",
+  "logo": "/img/showcase/constellation-book_logo.webp",
+  "screenshots": [
+    "/img/showcase/constellation-book_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "constellation-book",
+  "oneLiner": "Your Journey to the Internet Computer",
+  "stats": "1000+ users",
+  "tags": [
+    "Education",
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/NeutronStarDAO/ConstellationBook-English",
+  "twitter": "https://twitter.com/neutronstardao",
+  "youtube": "",
+  "submittableId": "35732294"
   }
 ]
