@@ -418,6 +418,27 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: "category",
+          label: "HTTP compatible canisters",
+          items: [
+            {
+              type: "doc",
+              id: "developer-docs/http-compatible-canisters/custom-http-canisters",
+              label: "Custom HTTP canisters",
+            },
+            {
+              type: "doc",
+              id: "developer-docs/http-compatible-canisters/serving-json-over-http",
+              label: "Serving JSON over HTTP",
+            },
+            {
+              type: "doc",
+              id: "developer-docs/http-compatible-canisters/serving-static-assets-over-http",
+              label: "Serving static assets over HTTP",
+            }
+          ]
+        }
       ],
     },
     {

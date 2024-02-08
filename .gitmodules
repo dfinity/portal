@@ -21,3 +21,6 @@
 [submodule "submodules/dfxvm"]
 	path = submodules/dfxvm
 	url = https://github.com/dfinity/dfxvm.git
+[submodule "submodules/response-verfication"]
+	path = submodules/response-verfication
+	url = https://github.com/dfinity/response-verification
