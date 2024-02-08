@@ -22,15 +22,17 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Today we're excited to announce that the
 [EVM RPC canister](https://github.com/internet-computer-protocol/evm-rpc-canister/releases/tag/release-2024-01-31)
-is now available for use! It is currently in beta, and will be while we iron out any kinks
-to ensure that it meets all the demands of your dapps safely and performantly.
-Test it out yourself and let us know if you run into any issues by either
+is now available for use! It is currently in beta, and will be while we iron out
+any kinks to ensure that it meets all the demands of your dapps safely and
+performantly. Test it out yourself and let us know if you run into any issues by
+either
 [opening up an issue on GitHub](https://github.com/internet-computer-protocol/evm-rpc-canister/issues/new)
-or submitting feedback on the [ICP Feedback Board](https://dx.internetcomputer.org).
+or submitting feedback on the
+[ICP Feedback Board](https://dx.internetcomputer.org).
 
 <div className={"flex flex-row gap-2"}>
   <a
-    className={"button button-white"}
+    className={"button button-outline bg-black text-white"}
     href={"https://github.com/internet-computer-protocol/evm-rpc-canister"}
   >
     View on GitHub
@@ -50,8 +52,8 @@ The EVM RPC canister is a service that lets you easily build integrations
 between ICP canister smart contracts and Ethereum smart contracts. It simplifies
 the process of procuring, managing, and paying for API keys for various
 [EVM RPC providers](https://www.alchemy.com/best/rpc-node-providers). It also
-helps keep dapps secure by automatically inferring consensus among
-multiple RPC providers with each outbound request.
+helps keep dapps secure by automatically inferring consensus among multiple RPC
+providers with each outbound request.
 
 ## The problem
 
@@ -63,18 +65,18 @@ keys. This presents developers with a few non-trivial challenges:
 ### Management of API keys
 
 RPC providers for Ethereum typically charge a subscription-based fee in order to
-use their services. While some offer
-free tiers, the quotas can be exhausted quickly in a production setting.
+use their services. While some offer free tiers, the quotas can be exhausted
+quickly in a production setting.
 
-Furthermore, it is not straightforward to manage an API key (let alone
-multiple) in the context of a canister. There are a number of challenges to
-overcome: 
+Furthermore, it is not straightforward to manage an API key (let alone multiple)
+in the context of a canister. There are a number of challenges to overcome:
 
-- How do you ensure that a single developer managing API keys does not pose a centralization risk to the users of the dapp? 
+- How do you ensure that a single developer managing API keys does not pose a
+  centralization risk to the users of the dapp?
 
-- What if you just want to kick the tires? 
+- What if you just want to kick the tires?
 
-- What if you want to build something quickly? 
+- What if you want to build something quickly?
 
 - How do you keep your API keys secret?
 
@@ -84,9 +86,10 @@ The problem is further compounded if we start to take cost into account. There
 are a number of factors that go into the calculation a developer makes when
 deciding to build something:
 
-- How much engineering effort will this take? 
+- How much engineering effort will this take?
 
-- How much do I need to pay for third-party services (e.g. Ethereum RPC providers)?
+- How much do I need to pay for third-party services (e.g. Ethereum RPC
+  providers)?
 
 - How important is trust and security to my users?
 
@@ -220,6 +223,12 @@ We get back the following, which tells us there is one transaction:
 (variant { Consistent = variant { Ok = 1 : nat } })
 ```
 
+## Bonus
+
+The indomitable @rvanasa put together a small example that shows how to call the
+EVM RPC canister from a Motoko canister. Check it out:
+[Motoko EVM RPC](https://github.com/rvanasa/vite-react-motoko/tree/evm-rpc)
+
 ## Conclusion
 
 The EVM RPC canister is designed to help you build integrations with Ethereum
@@ -234,3 +243,10 @@ features or functionality, please write on
 [Feedback Board](https://dx.internetcomputer.org).
 
 Looking forward to your comments!
+
+## Credits
+
+This project would not have been possible without all the hard work and tireless
+dedication from a truly world-class team. Big thank you to Manu, Thomas,
+Grégory, and most of all Ryan for their contributions to this project. Ryan
+really put his heart into this project and it shows. Thank you, Ryan!
