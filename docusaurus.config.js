@@ -76,13 +76,15 @@ const subnavItems = [
     label: "Rust",
   },
   {
+    type: "docSidebar",
     position: "left",
-    to: "https://demergent-labs.github.io/azle/",
-    label: "TypeScript",
+    sidebarId: "typescript",
+    label: "Typescript",
   },
   {
+    type: "docSidebar",
     position: "left",
-    to: "https://demergent-labs.github.io/kybra/",
+    sidebarId: "python",
     label: "Python",
   },
   {
