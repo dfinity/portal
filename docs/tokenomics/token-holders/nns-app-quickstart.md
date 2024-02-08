@@ -242,7 +242,7 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 ## Disburse dissolved neurons into an account
 
-When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify. After you take this step, the neuron identifier and its ledger history are permanently removed from the governance canister.
+When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify.
 
 To disburse a neuron and return its ICP utility tokens:
 
