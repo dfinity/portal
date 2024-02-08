@@ -1,0 +1,131 @@
+# Developer tool overview
+
+## Overview
+
+Developer tools are used to create, manage, and interact with canisters. They can come in several formats, such as command line tools, on-chain and off-chain libraries, and integrated development environments. For ICP developers, there are tools within each of these categories available for you to utilize when developing your ICP canisters. 
+
+## Command line
+
+### `dfx`
+
+[`dfx`](/docs/current/references/cli-reference/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
+
+`dfx` supports [local development](/docs/current/developer-docs/setup/deploy-locally) and deployment through the [`dfx start`](/docs/current/references/cli-reference/dfx-start) command, which runs a local instance of the ICP replica that can be used to deploy and test canisters on your local machine. 
+
+To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands. 
+
+- [Install `dfx`](/docs/current/developer-docs/setup/install/).
+
+- [`dfx` documentation](/docs/current/references/cli-reference/).
+
+- [IC SDK GitHub repo](https://github.com/dfinity/sdk).
+
+
+### `dfxvm`
+
+[`dfxvm`](/docs/current/references/dfxvm/docs/cli-reference/dfxvm/dfxvm-install) is a command-line tool used to installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions. 
+
+- [Install `dfxvm`](/docs/current/references/dfxvm/docs/cli-reference/dfxvm/dfxvm-install).
+
+- [`dfxvm` documentation](/docs/current/references/dfxvm/docs/cli-reference/dfxvm/dfxvm-install).
+
+- [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
+
+### `quill`
+
+[`quill`](/docs/current/references/quill-cli-reference/index) is a command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/current/tokenomics/nns/nns-intro) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
+
+- [Install `quill`](https://github.com/dfinity/quill?tab=readme-ov-file#download--install).
+
+- [`quill` documentation](/docs/current/references/quill-cli-reference/index).
+
+- [`quill` GitHub repo](https://github.com/dfinity/quill).
+
+## Off-chain libraries
+
+### Agents
+
+An **agent** refers to an off-chain library that is used to make calls to the public interface of a canister. Agents communicate with the canister's `v2` API endpoints. 
+
+The following agents are currently developed and maintained by DFINITY:
+
+- [JavaScript/TypeScript agent (@dfinity/agent)](/docs/current/developer-docs/agents/javascript-intro)
+
+- [Node.js, supported through the JavaScript agent](/docs/current/developer-docs/agents/nodejs)
+  
+- [Rust agent (ic-agent)](/docs/current/developer-docs/agents/ic-agent-dfinity)
+
+Additionally, there are several community-developed and maintained agents:
+
+- .NET [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
+
+- Dart agents:
+  - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
+  - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
+
+- Go agents:
+  - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+  - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
+
+- Java [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
+
+- Python [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
+
+- C [`agent-c` by Zondax](https://github.com/Zondax/icp-client-cpp) (C Wrapper for IC Rust Agent)
+
+- Ruby [`ic_agent` by Terry.Tu](https://github.com/tuminfei/ic_agent)
+
+## On-chain libraries
+
+### Canister development kits (CDKs)
+
+A canister development kit (CDK) is an adapter used by the IC SDK to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters. By default, the IC SDK comes with the CDKs for Motoko and Rust, which can be utilized through `dfx`. 
+
+There are several community contributed and maintained CDKs for other languages such as:
+
+- [Kybra: Python CDK](/docs/current/developer-docs/backend/python).
+
+- [Azle: TypeScript CDK](/docs/current/developer-docs/backend/typescript). 
+
+- [Bitfinity EVM for Solidity](/docs/current/developer-docs/backend/solidity).
+
+- [C++ CDK](https://docs.icpp.world/).
+
+## Integrated development environments (IDEs)
+
+:::caution
+The IDEs listed below are not the only supported IDEs; any IDE can be used to develop canister code.
+:::
+
+### Gitpod 
+
+Gitpod is a cloud development environment that is able to run within a web browser. Gitpod can be configured to run `dfx` and a local replica instance to support canister development, and there are several example canister projects have been configured to run in Gitpod. This IDE provide a simple and easy way to get started developing on ICP without downloading any tools or setting up an environment. 
+
+- [Gitpod dashboard](https://gitpod.io/).
+
+- [Gitpod documentation](gitpod.md).
+
+### Motoko playground
+
+Motoko playground is a web-based sandbox environment that can be used with `dfx` using the `dfx deploy --playground` command. Canisters deployed to Motoko playground borrow resources from a shared canister pool. Because the resources are borrowed, all canisters deployed to the playground will be deleted after 20 minutes. Motoko playground is designed for small-scale, temporary testing without configuring other developmental parameters. Motoko playgrounds supports testing canisters written in any language, not just Motoko. 
+
+- [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/).
+
+- [Motoko playground documentation](/docs/current/developer-docs/setup/playground).
+
+
+### Visual Studio Code
+
+Visual Studio Code (VS Code) is a popular IDE used for writing code in hundreds of languages. VS Code supports Motoko development through the Motoko VS Code extension that includes type checking, autocompletion, code snippets, and formatting. 
+
+The Motoko extension is also available to [VSCodium](https://vscodium.com/) users, who can download it from [OpenVSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko).
+
+- [VS Code documentation](/docs/current/developer-docs/setup/vs-code).
+
+- [Motoko VS Code extension](https://github.com/dfinity/vscode-motoko).
+
+
+
+
+
+
