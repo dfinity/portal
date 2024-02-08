@@ -1,7 +1,7 @@
 ---
-title: The EVM RPC Canister beta is live!
+title: The EVM RPC canister beta is live!
 description:
-  The EVM RPC Canister allows you to integrate your canisters with Ethereum
+  The EVM RPC canister allows you to integrate your canisters with Ethereum
   smart contracts.
 tags: [Technology, Cross-chain]
 author: DFINITY
@@ -10,7 +10,7 @@ image: /img/blog/evm-rpc-canister.webp
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# EVM RPC Canister (Beta)
+# EVM RPC canister (beta)
 
 <img
   src={useBaseUrl("/img/blog/evm-rpc-canister.webp")}
@@ -20,13 +20,13 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Summary
 
-The
-[EVM RPC Canister](https://github.com/internet-computer-protocol/evm-rpc-canister/releases/tag/release-2024-01-31)
-is now available for use. It is in beta, and will be while we iron out any kinks
-and ensure that it meets all the demands of your dapps safely and performantly.
-Give it a run and let us know if you run into any issues, by either
-[opening up an issue on GitHub](https://github.com/internet-computer-protocol/evm-rpc-canister/issues/new),
-or on the [Feedback Board](https://dx.internetcomputer.org).
+Today we're excited to announce that the
+[EVM RPC canister](https://github.com/internet-computer-protocol/evm-rpc-canister/releases/tag/release-2024-01-31)
+is now available for use! It is currently in beta, and will be while we iron out any kinks
+to ensure that it meets all the demands of your dapps safely and performantly.
+Test it out yourself and let us know if you run into any issues by either
+[opening up an issue on GitHub](https://github.com/internet-computer-protocol/evm-rpc-canister/issues/new)
+or submitting feedback on the [ICP Feedback Board](https://dx.internetcomputer.org).
 
 <div className={"flex flex-row gap-2"}>
   <a
@@ -40,51 +40,60 @@ or on the [Feedback Board](https://dx.internetcomputer.org).
     className={"button button-primary"}
     href={"https://internetcomputer.org/docs/current/developer-docs/integrations/ethereum/evm-rpc"}
   >
-    View Docs
+    View the documentation
   </a>
 </div>
 
 ## What is it?
 
-The EVM RPC Canister is a service that lets you easily build integrations
+The EVM RPC canister is a service that lets you easily build integrations
 between ICP canister smart contracts and Ethereum smart contracts. It simplifies
 the process of procuring, managing, and paying for API keys for various
-[EVM RPC Providers](https://www.alchemy.com/best/rpc-node-providers). It also
-helps you keep your dapps more secure by automatically inferring consensus among
+[EVM RPC providers](https://www.alchemy.com/best/rpc-node-providers). It also
+helps keep dapps secure by automatically inferring consensus among
 multiple RPC providers with each outbound request.
 
 ## The problem
 
 Building an integration between a canister and the Ethereum network currently
 requires the use of HTTPS outcalls. These calls are facilitated by services
-(often called RPC Node Providers) that require the use of subscription-based API
+(often called RPC node providers) that require the use of subscription-based API
 keys. This presents developers with a few non-trivial challenges:
 
 ### Management of API keys
 
 RPC providers for Ethereum typically charge a subscription-based fee in order to
-use their services to communicate with the Ethereum network. While some offer
+use their services. While some offer
 free tiers, the quotas can be exhausted quickly in a production setting.
 
-Furthermore, it is not straight forward to manage an API key (let alone
+Furthermore, it is not straightforward to manage an API key (let alone
 multiple) in the context of a canister. There are a number of challenges to
-overcome. How do you ensure that a single developer managing API keys does not
-pose a centralization risk to the users of the dapp? What if you just want to
-kick the tires? What if you want to build something quickly? How do you keep
-your API keys secret?
+overcome: 
 
-### Cost, Complexity, and Consensus
+- How do you ensure that a single developer managing API keys does not pose a centralization risk to the users of the dapp? 
+
+- What if you just want to kick the tires? 
+
+- What if you want to build something quickly? 
+
+- How do you keep your API keys secret?
+
+### Cost, complexity, and consensus
 
 The problem is further compounded if we start to take cost into account. There
 are a number of factors that go into the calculation a developer makes when
-deciding to build something. How much engineering effort will this take? How
-much do I need to pay for third-party services (e.g. Ethereum RPC providers)?
-How important is trust / security to my users?
+deciding to build something:
+
+- How much engineering effort will this take? 
+
+- How much do I need to pay for third-party services (e.g. Ethereum RPC providers)?
+
+- How important is trust and security to my users?
 
 If managing API keys independently, the total cost begins to balloon as usage
 scales and the need for additional layers of consensus becomes more important -
 the latter requires querying multiple RPC providers, which each require an
-individual subscription / API key / management / etc.
+individual subscription, API key, management, etc.
 
 ## What the EVM RPC canister solves
 
@@ -115,7 +124,7 @@ dfx new evm_rpc_example
 cd evm_rpc_example
 ```
 
-### Add the EVM RPC Canister as a Dependency
+### Add the EVM RPC canister as a dependency
 
 Using `dfx deps` we can automatically install the EVM RPC canister wasm into our
 local environment.
@@ -142,31 +151,31 @@ as a dependency under the "canisters" key:
 }
 ```
 
-Next, from your terminal, run the following command to fetch all dependencies.
+Next, from your terminal, run the following command to fetch all dependencies:
 
 ```bash
 dfx deps pull
 ```
 
-Start the local replica
+Start the local replica:
 
 ```bash
 dfx start --background
 ```
 
-Set the init args for the EVM RPC canister
+Set the init args for the EVM RPC canister:
 
 ```bash
 dfx deps init evm_rpc --argument '(record { nodesInSubnet = 28 })'
 ```
 
-Locally deploy the `evm_rpc` canister
+Locally deploy the `evm_rpc` canister:
 
 ```bash
 dfx deps deploy evm_rpc
 ```
 
-Now, use `dfx` to get the current Ethereum gas price
+Now, use `dfx` to get the current Ethereum gas price:
 
 ```bash
 dfx canister call evm_rpc request '(variant {Custom=record {url="https://ethereum.publicnode.com"}},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)' --wallet $(dfx identity get-wallet) --with-cycles 1000000000
@@ -184,12 +193,12 @@ You might be asking why the gas price is returned as a hex value. This endpoint
 was reached using the generic `request` method expose by the EVM RPC canister.
 This endpoint does not offer the same conveniences as the typed Candid RPC
 endpoints, nor does it perform automatic consensus inference. This method is
-exposed mainly to give you access to any Ethereum RPC API method in case the
+exposed primarily to give you access to any Ethereum RPC API method in case the
 typed Candid RPC endpoints are not sufficient.
 
 <!-- prettier-ignore-start -->
 :::info
-In the coming months, more tooling and improvements to the EVM RPC Canister are expected to land that will make it much easier to process raw Ethereum RPC data.
+In the coming months, more tooling and improvements to the EVM RPC canister are expected to be released that will make it much easier to process raw Ethereum RPC data.
 :::
 <!-- prettier-ignore-end -->
 
@@ -213,12 +222,12 @@ We get back the following, which tells us there is one transaction:
 
 ## Conclusion
 
-The EVM RPC Canister is designed to help you build integrations with Ethereum
+The EVM RPC canister is designed to help you build integrations with Ethereum
 smart contracts quickly, easily, and in a cost-effective manner. While it is
 still early (and there are many improvements to come), this is a good chance to
 get ahead and build slick ICP cross-chain dapps!
 
-If you have any feedback, or feel that the EVM RPC Canister is missing any
+If you have any feedback, or feel that the EVM RPC canister is missing any
 features or functionality, please write on
 [GitHub](https://github.com/internet-computer-protocol/evm-rpc-canister), on the
 [Developer Forum](https://forum.dfinity.org), or on the
