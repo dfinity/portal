@@ -22,7 +22,7 @@ Neurons provide the stability required for responsible governance of the Interne
 
 The following diagram provides a simplified view of the workflow for creating a neuron and the relationship between the neuron and ledger canisters.
 
-![create dissolve neuron api](../_attachments/create-dissolve-neuron-api.svg)
+![neuron dissolve](./_attachments/distribute-neurons-diagram.png)
 
 ### Governance and voting rewards
 
@@ -242,7 +242,7 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 ## Disburse dissolved neurons into an account
 
-When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify. After you take this step, the neuron identifier and its ledger history are permanently removed from the governance canister.
+When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify. 
 
 To disburse a neuron and return its ICP utility tokens:
 
