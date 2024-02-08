@@ -22,7 +22,7 @@ Neurons provide the stability required for responsible governance of the Interne
 
 The following diagram provides a simplified view of the workflow for creating a neuron and the relationship between the neuron and ledger canisters.
 
-![neuron dissolve](./_attachments/distribute-neurons-diagram.png)
+![neuron dissolve](../_attachments/distribute-neurons-diagram.png)
 
 ### Governance and voting rewards
 
