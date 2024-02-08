@@ -244,9 +244,9 @@ const sidebars = {
           type: "category",
           label: "IDE",
           items: [
-            "references/gitpod",
-            "developer-docs/setup/playground",
             "developer-docs/setup/vs-code",
+            "developer-docs/setup/playground",
+            "references/gitpod",
           ],
         },
       ],
