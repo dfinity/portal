@@ -7,9 +7,9 @@ This guide shows how to get started developing on ICP quickly by deploying your 
 
 ## Install dependencies
 
-### Install the IC SDK (v0.15.2 and newer)
+### Install `dfx`
 
-Download and install the latest version of [dfx](install/index.mdx). dfx is a CLI tool used for developing and deploying ICP smart contracts:
+Download and install the latest version of [dfx](install/index.mdx). `dfx` is a CLI tool used for developing and deploying ICP smart contracts:
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -37,7 +37,7 @@ Dashboard: http://localhost:35375/_/dashboard
 ```
 
 :::info
-While `dfx start` is running, you will not be able to run other commands in the terminal window. You can open another window, or start dfx in the background with the `dfx start --background` flag. 
+While `dfx start` is running, you will not be able to run other commands in the terminal window. You can open another window, or start `dfx` in the background with the `dfx start --background` flag.
 :::
 
 
@@ -72,6 +72,12 @@ For projects created with `dfx new` (Motoko and Rust) the command automatically 
 
 The `npm install` command is used to install libraries and dependencies.
 
+In order to build Rust projects for ICP you need to add the following target to your Rust toolchain:
+
+``` bash
+rustup target add wasm32-unknown-unknown
+```
+
 For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
 
 </TabItem>
@@ -80,7 +86,7 @@ For information about project structure and default configuration, [learn more a
 
 ```bash
 npx azle new azle_hello
-cd hello
+cd azle_hello
 npm install
 ```
 
@@ -346,3 +352,11 @@ Alternatively, you can interact with the smart contract via the web browser if a
 - [Acquire cycles](cycles/cycles-faucet.md).
 
 - [Deploy to the mainnet](deploy-mainnet.md).
+
+- [Sample dapps](/docs/current/samples/overview).
+
+- [Basic DAO example](/docs/current/references/samples/motoko/basic_dao/).
+
+- [Token swap example](/docs/current/references/samples/motoko/icrc2-swap/).
+
+- [IC POS example](/docs/current/references/samples/motoko/ic-pos/).

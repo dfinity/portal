@@ -29,6 +29,7 @@ jobs:
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
       - name: Update search index
         run: |

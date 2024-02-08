@@ -34,7 +34,7 @@ You will primarily be using CLI-based tools, such as `dfx` and `git`, in this de
 
 To download and install the IC SDK, first open a terminal window. Then, run the following command in that window:
 
-```
+```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
@@ -46,7 +46,7 @@ If you are using a machine running Apple silicon, you will need to have Rosetta 
 
 Then, to verify that the IC SDK is ready to use, run the following command:
 
-```
+```bash
 dfx --version
 ```
 
@@ -99,7 +99,7 @@ Having the latest release version assures that you have all of the newest featur
 
 The last step in setting up our developer environment is to create a new directory for you to build in. You can create a new directory with the command:
 
-```
+```bash
 mkdir developer_journey
 ```
 

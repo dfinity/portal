@@ -3480,5 +3480,41 @@
   "twitter": "https://twitter.com/Mapzlive",
   "youtube": "",
   "submittableId": "43548962"
+  },
+  {
+  "id": "IcpKit",
+  "name": "IcpKit",
+  "oneLiner": "A Swift package for interacting with the IC on iOS and MacOS",
+  "website": "https://github.com/kosta-bity/IcpKit",
+  "tags": ["Wallet", "Tools / Infrastructure"],
+  "description": "A comprehensive iOS package for writing mobile applications that interact with the Internet Computer Protocol (ICP), written in Swift. IcpKit aims at facilitating the interaction between iOS apps and the ICP blockchain.",
+  "stats": "1 iOS app",
+  "logo": "/img/showcase/icpkit_logo.png",
+  "usesInternetIdentity": false,
+  "github": "https://github.com/kosta-bity/IcpKit",
+  "youtube": "https://youtu.be/vavGeUkNF8g",
+  "twitter": "https://twitter.com/kosta__g/status/1752691646150455584",
+  "submittableId": "40467179"
+  },
+  {
+  "name": "🐲 Dragon Eyes 👀",
+  "description": "Provably fair dice rolling game as a testament that randomness can be obtained on-chain",
+  "website": "https://icdragon.xyz/",
+  "logo": "/img/showcase/icdragon_logo.png",
+  "screenshots": [
+    "/img/showcase/icdragon_screenshot.png"
+  ],
+  "display": "Normal",
+  "id": "dragon-eyes",
+  "oneLiner": "Provably fair and fun dice rolling game with a quirk",
+  "stats": "1500+ transactions",
+  "tags": [
+    "Games"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/lokaverse/icdragon",
+  "twitter": "https://twitter.com/icdragoneyes",
+  "youtube": "",
+  "submittableId": ""
   }
 ]

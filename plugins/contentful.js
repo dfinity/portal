@@ -65,7 +65,26 @@ const contentfulPlugin = async function () {
           tags: item.fields.tags || [],
         };
       });
-      press.sort((a, b) => b.date.localeCompare(a.date));
+
+      // from oldest to newest
+      press.sort((a, b) => a.date.localeCompare(b.date));
+
+      // enumerate images in ../static/img/news, with pattern press-*.webp
+      const pressImageUrls = fs
+        .readdirSync(path.join(__dirname, "..", "static", "img", "news"))
+        .filter(
+          (filename) =>
+            filename.startsWith("press-") && filename.endsWith(".webp")
+        )
+        .map((filename) => `/img/news/${filename}`);
+
+      // assign images to press articles, old articles keep their images, new articles get new images
+      press.forEach((news, i) => {
+        news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+      });
+
+      // reverse the order, so that newest articles get the newest images
+      press.reverse();
 
       const data = {
         press,

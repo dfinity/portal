@@ -1,4 +1,4 @@
-# Chain-key Bitcoin (ckBTC) API reference
+# Chain-key Bitcoin (ckBTC) 
 
 ## Overview
 

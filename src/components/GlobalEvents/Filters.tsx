@@ -1,8 +1,7 @@
 import FilterIcon from "@site/static/img/svgIcons/filter.svg";
-import clsx from "clsx";
 import React, { ReactNode } from "react";
 import ComboSelect, { ComboSelectUnrolled } from "../Common/ComboSelect";
-import { Pill } from "../Common/Pills/Pills";
+import FilterPills from "../Common/Pills/PillFilter";
 import SideDrawer from "../Common/SideDrawer/index";
 import StageModifications from "../Common/StageModifications/index";
 import Toggle from "../Common/Toggle";
@@ -20,35 +19,6 @@ const PastEventsToggle = ({ showPastEvents, onShowPastEventsChange }) => {
       ></Toggle>
       Past Events
     </label>
-  );
-};
-
-const FilterPills: React.FC<{
-  onTypeChange: (type: string) => void;
-  types: string[];
-  selectedType: string;
-  className?: string;
-}> = ({ onTypeChange, selectedType, types, className }) => {
-  return (
-    <div className={clsx("flex gap-2 items-center", className)}>
-      <Pill
-        isActive={!selectedType}
-        onClick={() => onTypeChange("")}
-        variant="dark"
-      >
-        All
-      </Pill>
-      {types.map((type) => (
-        <Pill
-          isActive={type === selectedType}
-          onClick={() => onTypeChange(type)}
-          variant="dark"
-          key={type}
-        >
-          {type}
-        </Pill>
-      ))}
-    </div>
   );
 };
 
@@ -140,14 +110,15 @@ const Filters: React.FC<{
                 <h3 className="tw-heading-5 mb-3 mt-6">Types</h3>
                 <FilterPills
                   className="flex-wrap"
-                  onTypeChange={(newData) => {
+                  onValueChange={(newData) => {
                     setClonedData({
                       ...clonedData,
                       selectedType: newData,
                     });
                   }}
-                  selectedType={clonedData.selectedType}
-                  types={types}
+                  selectedValue={clonedData.selectedType}
+                  values={types}
+                  variant="dark"
                 ></FilterPills>
 
                 <h3 className="tw-heading-5 mb-3 mt-6">Past events</h3>
@@ -191,9 +162,10 @@ const Filters: React.FC<{
           />
           <FilterPills
             className="md:contents"
-            onTypeChange={onTypeChange}
-            selectedType={selectedType}
-            types={types}
+            onValueChange={onTypeChange}
+            selectedValue={selectedType}
+            values={types}
+            variant="dark"
           ></FilterPills>
         </div>
         <PastEventsToggle

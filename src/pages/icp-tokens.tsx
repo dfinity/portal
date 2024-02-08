@@ -27,15 +27,15 @@ const NnsTvl: React.FC = () => {
   let tvl = <>&nbsp;</>;
 
   if (stakingMetricsQuery.isFetched && stakingMetricsQuery.isSuccess) {
-    const maybeMetric: number | undefined =
+    const maybeMetric: string | undefined =
       stakingMetricsQuery.data.metrics.find(
         (d) => d.name === "governance_total_locked_e8s"
-      )?.samples[0]?.value;
+      )?.subsets[0]?.value[1];
 
     if (maybeMetric) {
       tvl = (
         <>
-          ${((maybeMetric * cryptoPrice.icp) / 100000000000000000).toFixed(1)}B
+          ${((+maybeMetric * cryptoPrice.icp) / 100000000000000000).toFixed(1)}B
         </>
       );
     }
