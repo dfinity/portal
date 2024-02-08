@@ -535,6 +535,7 @@ const sidebars = {
       items: [
         "developer-docs/integrations/ethereum/overview",
         "developer-docs/integrations/ethereum/evm-rpc",
+        "developer-docs/integrations/ethereum/siwe",
       ],
     },
     {
