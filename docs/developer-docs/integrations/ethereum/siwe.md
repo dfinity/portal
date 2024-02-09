@@ -14,7 +14,7 @@ The goal of the `ic_siwe` project is to enhance the interoperability between Eth
 - **Direct Ethereum Address to Principal Mapping**: Creates a one-to-one correlation between Ethereum addresses and Principals within the scope of the current application.
 - **Timebound Sessions**: Allows developers to set expiration times for sessions, enhancing security and control.
 
-## Prebuilt `ic_siwe_provider` canister
+## Pre-built `ic_siwe_provider` canister
 
 While the `ic_siwe` library can be integrated with any Rust based ICP project, using the pre built [ic-siwe-provider](https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic_siwe_provider) canister is the easiest way to integrate Ethereum wallet authentication into an ICP app built using any language.
 
