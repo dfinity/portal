@@ -8,7 +8,7 @@ When a canister needs to have additional cycles deposited into it to pay for the
 
 Anyone can top up any canister deployed to the Internet Computer; you do not need to be the author or controller of the canister.
 
-There are a few different ways to top up canisters, such as via `dfx`, [NNS frontend dapp](https://nns.ic0.app), or [third-party service](/docs/developer-docs/setup/cycles/cycles_management_services.md)(e.g. https://cycleops.dev). All one needs is the canister's principal.
+There are a few different ways to top up canisters, such as via `dfx`, [NNS frontend dapp](https://nns.ic0.app), or [third-party service](/docs/current/developer-docs/getting-started/cycles/cycles_management_services)(e.g. https://cycleops.dev). All one needs is the canister's principal.
 
 In the following examples, you will try to top up canister `jqylk-byaaa-aaaal-qbymq-cai`  with a million cycles (1000000). These instructions can work for any canister principal or any cycles amount.
 

@@ -56,7 +56,7 @@ For projects created with `dfx new` (Motoko and Rust) the command automatically 
 
 The `npm install` command is used to install libraries and dependencies.
 
-For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
+For information about project structure and default configuration, [learn more about the default project structure and configuration](default-template.mdx).
 
 </TabItem>
 
@@ -78,7 +78,7 @@ In order to build Rust projects for ICP you need to add the following target to 
 rustup target add wasm32-unknown-unknown
 ```
 
-For information about project structure and default configuration, [learn more about deploying your first canister](first-canister.mdx).
+For information about project structure and default configuration, [learn more about the default project structure and configuration](default-template.mdx).
 
 </TabItem>
 
@@ -256,7 +256,7 @@ This command performs several functions in the background:
 
 - It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
 
-- It signs the message with the private key of the [developer account](accounts.md).
+- It signs the message with the private key of the [developer account](/docs/current/developer-docs/getting-started/accounts).
 
 - It sends the message to the local testnet (replica). 
 
@@ -285,7 +285,7 @@ This call performs several functions in the background:
 
 - It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
 
-- It signs the message with the private key of the [developer account](accounts.md).
+- It signs the message with the private key of the [developer account](/docs/current/developer-docs/getting-started/accounts).
 
 - It sends the message to the local testnet (replica). 
 
@@ -342,21 +342,13 @@ Output:
 </TabItem>
 </Tabs>
 
-Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](deploy-locally.md)
+Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local)
 
 
 ## Next steps
 
-- [Create a developer account](accounts.md).
+- [Create a developer account](/docs/current/developer-docs/getting-started/accounts).
 
-- [Acquire cycles](cycles/cycles-faucet.md).
+- [Acquire cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
 
-- [Deploy to the mainnet](deploy-mainnet.md).
-
-- [Sample dapps](/docs/current/samples/overview).
-
-- [Basic DAO example](/docs/current/references/samples/motoko/basic_dao/).
-
-- [Token swap example](/docs/current/references/samples/motoko/icrc2-swap/).
-
-- [IC POS example](/docs/current/references/samples/motoko/ic-pos/).
+- [Deploy to the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet).

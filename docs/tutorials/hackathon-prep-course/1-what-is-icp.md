@@ -108,7 +108,7 @@ The term **canister** refers to a smart contract on ICP. Canisters are a computa
 
 At a high level, a canister is used to expose methods. A **method** is a piece of code specifying a task which declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
 
-Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/developer-docs/setup/install/index.mdx), and there are several community-developed canister development kits such as Python and Typescript.
+Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/current/developer-docs/getting-started/install/), and there are several community-developed canister development kits such as Python and Typescript.
 
 A canister is managed by a **controller**, which can be a centralized entity, a decentralized entity such as a DAO, or a canister can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister.
 
