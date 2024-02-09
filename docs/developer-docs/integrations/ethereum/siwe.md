@@ -26,4 +26,4 @@ A demo application that uses the `ic_siwe_provider` canister to demonstrate the 
 - [ic-siwe-react-demo-rust](https://github.com/kristoferlund/ic-siwe-react-demo-rust)
 - [ic-siwe-react-demo-ts](https://github.com/kristoferlund/ic-siwe-react-demo-ts)
 
-The demo uses another package from the `ic-siwe` project, [ic-use-siwe-identity](https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic-use-siwe-identity), a React hook and context provider for easy frontend integration with SIWE enabled Internet Computer canisters.
+The demo uses another package from the `ic-siwe` project, [ic-use-siwe-identity](https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic-use-siwe-identity), a React hook and context provider for easy frontend integration with SIWE enabled ICP canisters.
