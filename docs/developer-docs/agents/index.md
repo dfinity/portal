@@ -1,11 +1,15 @@
-# Using external agents
-
-## Overview
+# Overview
 
 In the Internet Computer ecosystem, a library that is used to make calls to the ICP public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
 
 If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
 You can talk to the canister using the v2 API using an **agent** that follows the interface specification, or you can use the canister's HTTP interface.
+
+Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
+
+ICP supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
+
+As a result of the latency for updates, best practices around modeling your application's performance will have you make updates asynchronously and early. If you can make an update ahead of time and have it already "cached" in your canister's memory, your users will have a better experience requesting that data. Similarly, if your application needs to make an update, it is best to avoid blocking interaction while your update is taking place. Use **optimistic rendering** wherever practical, and proceed with your application as if the call has already succeeded.
 
 ## Available agents
 

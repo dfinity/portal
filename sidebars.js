@@ -82,6 +82,11 @@ const sidebars = {
       label: "Developer tools",
       items: [
         {
+          type: "doc",
+          label: "Overview",
+          id: "references/dev-tools-overview",
+        },
+        {
           type: "category",
           label: "Command line",
           items: [
@@ -227,10 +232,21 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "On-chain libraries",
+          items: [
+            {
+              type: "doc",
+              id: "references/cdks",
+              },
+          ],
+        },
+        {
+          type: "category",
           label: "IDE",
           items: [
-            "developer-docs/setup/playground",
             "developer-docs/setup/vs-code",
+            "developer-docs/setup/playground",
+            "references/gitpod",
           ],
         },
       ],

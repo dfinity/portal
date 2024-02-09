@@ -41,9 +41,9 @@ const votingRewardsPlugin = async function () {
       }
 
       const lastRewardsEventIcp =
-        +lastRewardEventE8s.subsets[0].value / 100000000;
+        +lastRewardEventE8s.subsets[0].value[1] / 100000000;
       const totalVotingPowerIcp =
-        +totalVotingPowerE8s.subsets[0].value / 100000000;
+        +totalVotingPowerE8s.subsets[0].value[1] / 100000000;
 
       return [0.5, 1, 2, 3, 4, 5, 6, 7, 8].map((dissolveDelay) => {
         const dissolveDelayBonus = 1 + dissolveDelay / 8;

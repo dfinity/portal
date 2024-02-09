@@ -17,7 +17,7 @@ by configuring it to point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-
 
 ### Apex
 To configure the apex of the domain (e.g., `ic-domain.live`), add the following records by clicking on **Add new record**:
-  * Create an `ALIAS` record for which you set the host field to `@` and the target field to `icp1.io`;
+  * Create an `ALIAS` record for which you set the host field to `@` and the target field to `ic-domain.live.icp1.io`;
   * Create a `CNAME` record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`;
   * Create a `TXT` record for which you set the host field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -27,7 +27,7 @@ To configure the apex of the domain (e.g., `ic-domain.live`), add the following 
 
 ### Subdomain
 To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `example.ic-domain.live.icp1.io`;
   * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.live.icp2.io`;
   * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -98,7 +98,7 @@ for the apex of a domain.
 
   - #### Step 10: On Cloudflare, add the following records to configure your domain:
     * Create a `CNAME` record for which you set the name field to `@` and the
-    target field to `icp1.io`;
+    target field to `ic-domain.online.icp1.io`;
     * Create a `CNAME` record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.online.icp2.io`;
     * Create a `TXT` record for which you set the name field to `_canister-id` and the content field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -106,7 +106,7 @@ for the apex of a domain.
 
   ![DNS Configuration for `ic-domain.online` on Cloudflare](cloudflare-apex.png)
 
-#### Directly configure the IP addresses (at your own risk)
+#### Directly configure the IP addresses (not recommended -- at your own risk)
 
 :::caution
 By directly configuring the IP addresses of the boundary nodes, you always need to make sure
@@ -136,7 +136,7 @@ your dapp becomes inaccessible.
 
 ### Subdomain
 To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `example.ic-domain.online.icp1.io`;
   * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.online.icp2.io`;
   * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -149,7 +149,7 @@ Now, you are all set to register your custom domain with the boundary nodes and 
 ## Amazon Route 53
 
 In the following, it is explained how you can configure your domain on Amazon Route 53
-to point to a canister hosted on the Internet Computer. As an illustration, this guide showcases how to 
+to point to a canister hosted on the Internet Computer. As an illustration, this guide showcases how to
 configure the domain `ic-domain.net` and the subdomain `example.ic-domain.net` to
 point to the canister with the ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
@@ -166,7 +166,7 @@ For instructions take a look at the steps outlined for GoDaddy under ["Rely on a
 
 - #### Step 3: Configure your DNS records.
 To configure a subdomain (e.g., `example.ic-domain.net`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` record for which you set the host field to `example` and the target field to `icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `example.ic-domain.net.icp1.io`;
   * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.net.icp2.io`;
   * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
   The resulting configuration should look similar to the following screenshot:

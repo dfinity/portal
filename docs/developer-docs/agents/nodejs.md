@@ -1,9 +1,11 @@
-# NodeJS
+# Node.js
 
 ## Overview
-This article covers connecting to ICP from Node.js in the server environment. For more information about calling ICP from JavaScript in a web browser, please, refer to [this guide](javascript-intro.md).
+
 
 Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to ICP, or to introduce a websocket layer to your application.
+
+[More information about calling ICP from JavaScript in a web browser](javascript-intro.md).
 
 In this example, you will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.
 
@@ -17,7 +19,7 @@ First, you need to get started with a project. Let's take the DIP721 example cod
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-- [x] Also, you will need Node.js. This guide was written for Node version 16 and up. Follow instructions to get set up with [nvm](https://github.com/nvm-sh/nvm) if you have not yet.
+- [x] Download and install [Node.js v0.16.0+](https://nodejs.org/en).
 
 - [x] Install the following packages:
 

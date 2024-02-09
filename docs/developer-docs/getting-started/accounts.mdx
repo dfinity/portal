@@ -1,5 +1,7 @@
 # Creating a developer account
 
+## Overview
+
 On ICP developers accounts, or **identities**, use a private/public key pair for authentication. Accounts are identified by a **principal** which is a generic identifier value that is used for users, canisters, and potentially other future concepts. Each developer account's principal value is derived from the account's public key from the private/public key pair. 
 
 ICP developer accounts can be compared to a Bitcoin or Ethereum wallet address. One primary difference, however, is that ICP accounts do not have an initial balance. 
