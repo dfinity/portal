@@ -125,7 +125,7 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 
 ## Specifying RPC services
 
-There are several ways to choose specific JSON-RPC services:
+There are several ways to use specific JSON-RPC services:
 
 ```candid
 // Used for Candid-RPC canister methods (`eth_getLogs`, `eth_getBlockByNumber`, etc.)
@@ -135,7 +135,7 @@ type RpcServices = variant {
   ...
   Custom : record {
     chainId : nat64;
-    services : vec record { url : text; headers : vec (text, text) };
+    services : vec record { url : text; headers : opt vec (text, text) };
   }
 };
 
@@ -146,8 +146,14 @@ type RpcService = variant {
   ...
   Chain : nat64;
   Provider : nat64;
-  Custom : record { url : text; headers : vec (text, text) };
+  Custom : record { url : text; headers : opt vec (text, text) };
 };
+```
+
+Here is an example command to submit an RPC request to the [Arbitrum](https://arbitrum.io/) L2 network:
+
+```bash
+dfx canister call evm_rpc eth_getBlockByNumber '(variant {Custom = record {chainId = 42161; services = vec {record {url = "https://1rpc.io/arb"}}}}, null, variant {Latest})' --with-cycles 10000000000 --wallet=$(dfx identity get-wallet)
 ```
 
 ## Registering your own provider
