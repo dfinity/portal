@@ -4,7 +4,7 @@ The [SIWE](https://eips.ethereum.org/EIPS/eip-4361) standard defines a protocol 
 
 By integrating the third party library [ic_siwe](https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic_siwe) or adding the pre-built [ic_siwe_provider](https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic_siwe_provider) canister to your project, you can enable users to sign into your application using their Ethereum wallets. 
 
-The goal of the `ic_siwe` project is to enhance the interoperability between Ethereum and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.
+The goal of the `ic_siwe` project is to enhance the interoperability between Ethereum and ICP, enabling developers to build applications that leverage the strengths of both platforms.
 
 ### Key Features
 
