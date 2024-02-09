@@ -52,13 +52,13 @@ Note that as of writing, ICP doesn’t have an official public testnet.
 
 In order to deploy smart contracts on the mainnet, the developer needs either ICP tokens or cycles.
 When using ICP tokens, `dfx` automatically converts the necessary amount of tokens to cycles since all operations with smart contracts require payment in cycles.
-See this [guide](https://internetcomputer.org/docs/current/developer-docs/getting-started/cycles/cycles-faucet) for more information on how to obtain cycles.
+See this [guide](/docs/current/developer-docs/getting-started/cycles/cycles-faucet) for more information on how to obtain cycles.
 
 The command for deploying smart contracts is `dfx deploy`.
 It automatically builds the source code into Wasm binaries and deploys them to the target network.
 By default the command targets the local testnet.
 Passing an additional `--network ic` parameter instructs commands to use the mainnet.
-There is no need to specify the URL of a node to connect to because `dfx` is already preconfigured with URLs of the boundary (RPC) nodes of the mainnet.
+There is no need to specify the URL of a node to connect to because `dfx` is already pre-configured with URLs of the boundary (RPC) nodes of the mainnet.
 However, it is possible to change the URL by editing the dfx configuration file.
 
 ## Calling smart contracts
