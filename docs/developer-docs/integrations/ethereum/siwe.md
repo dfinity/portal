@@ -6,7 +6,7 @@ By integrating the third party library [ic_siwe](https://github.com/kristoferlun
 
 The goal of the `ic_siwe` project is to enhance the interoperability between Ethereum and ICP, enabling developers to build applications that leverage the strengths of both platforms.
 
-### Key Features
+### Key features
 
 - **Ethereum Wallet Sign-In**: Enables Ethereum wallet sign-in for ICP applications. Sign in with any eth wallet to generate an ICP identity and session.
 - **Session Identity Uniqueness**: Ensures that session identities are specific to each application's context, preventing cross-app identity misuse.
