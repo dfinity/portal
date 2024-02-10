@@ -175,8 +175,8 @@ The following table shows the calculated storage cost per GB for a 30-day month:
 
 
 Monitoring cycles usage
-   - [Check your canister's cycles balance](/docs/current/developer-docs/setup/cycles/cycles-wallet#check-the-cycle-balance).
-   - [Monitor your canister's cycles usage](/docs/current/developer-docs/setup/cycles/cycles_management_services).
+   - [Check your canister's cycles balance](/docs/current/developer-docs/getting-started/cycles/cycles-wallet#check-the-cycle-balance).
+   - [Monitor your canister's cycles usage](/docs/current/developer-docs/getting-started/cycles/cycles_management_services).
    - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
 Getting cycles back from a canister
@@ -184,7 +184,7 @@ Getting cycles back from a canister
 
 Topping up canisters
    - [Top up your canisters](/docs/current/developer-docs/production/topping-up-canister).
-   - [Cycles management services](/docs/current/developer-docs/setup/cycles/cycles_management_services).
+   - [Cycles management services](/docs/current/developer-docs/getting-started/cycles/cycles_management_services).
    - [Cycle.express](https://cycle.express/).
 
 Counting instructions

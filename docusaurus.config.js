@@ -332,7 +332,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Free Cycles",
-          href: "/docs/current/developer-docs/setup/cycles/cycles-faucet",
+          href: "/docs/current/developer-docs/getting-started/cycles/cycles-faucet",
         },
       ],
 

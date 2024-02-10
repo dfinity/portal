@@ -3,18 +3,23 @@
 
 ## Overview
 
-This guide covers connecting to ICP from JavaScript in a web browser. For more information about calling ICP from Node.js, please, refer to [this guide](nodejs.md).
+The JavaScript agent (`agent-js`) is used to interact with the public API endpoints of ICP and canisters deployed on ICP from a JavaScript program. 
 
-If you are looking for an explanation of what an agent does, see the [agent overview](index.md).
+The JavaScript agent supports both JavaScript and TypeScript languages.
 
-Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
+## Installing `agent-js`
 
-ICP supports two types of calls - `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus, and will take around 2-4 seconds to complete. 
+To install the JavaScript agent, run the following command:
 
-As a result of the latency for updates, best practices around modeling your application's performance will have you make updates asynchronously and early. If you can make an update ahead of time and have it already "cached" in your canister's memory, your users will have a better experience requesting that data. Similarly, if your application needs to make an update, it is best to avoid blocking interaction while your update is taking place. Use **optimistic rendering** wherever practical, and proceed with your application as if the call has already succeeded.
+```
+npm i --save @dfinity/agent
+```
 
-## Prerequisites
-To get started with JavaScript on the Internet Computer, it is recommended your development environment includes:
+
+## Using `agent-js`
+
+### Prerequisites
+To get started with agent-js, it is recommended your development environment includes:
 
 - [x] IC SDK for canister creation and management.
 - [x] Node JS (12, 14, or 16).
@@ -29,7 +34,9 @@ For this guide, use the project created by the command:
 dfx new hello
 ```
 
-## A simple call
+### Simple call
+
+This guide covers connecting to ICP from JavaScript in a web browser. For more information about calling ICP from Node.js, please, refer to [this guide](nodejs.md).
 
 Talking to ICP from your application starts with the canister interface. Let's take a very simple one to begin with.
 
@@ -37,7 +44,7 @@ In most cases, it is easier to configure your project to have a canister defined
 
 For our 'Hello, world!' example, the `dfx.json` file looks like this:
 
-```
+```jason
 {
   "canisters": {
     "hello_backend": {
@@ -92,7 +99,7 @@ By running this command, dfx will automatically write the following to your `src
 
 Then, you can view the contents of the Candid interface file for the `hello_backend` canister:
 
-```
+```candid
 # src/declarations/hello_backend/hello_backend.did
 service : {
   greet: (text) -> (text);
@@ -101,7 +108,7 @@ service : {
 
 This is a Candid interface. It defines no new special types and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
 
-In JS, `text` maps to a type of `string`. You can see a full list of Candid types and their JS equivalents at the [Candid types](../../references/candid-ref.md) reference.
+In JavaScript, `text` maps to a type of `string`. You can see a full list of Candid types and their JavaScript equivalents at the [Candid types](../../references/candid-ref.md) reference.
 
 Let's explore each of these `src/declarations` files a bit more. 
 
@@ -262,3 +269,11 @@ if (prodCanisters) {
 ```
 
 Then, you can add `"prestart"` and `"prebuild"` commands of `dfx generate; node setupEnv.js`. Follow documentation for your preferred bundler on how to work with environment variables.
+
+## Resources
+
+- [`agent-js` GitHub repo](https://github.com/dfinity/agent-js.git).
+
+- [`agent-js` documentation](https://agent-js.icp.xyz/agent/modules.html).
+
+- [`agent-js` npm package](https://www.npmjs.com/package/@dfinity/agent).

@@ -8,7 +8,7 @@ This section provides information to help you troubleshoot and resolve or work a
 
 -   Creating, building, or deploying canisters.
 
--   Using the [IC SDK](../setup/install/index.mdx).
+-   Using the [IC SDK](/docs/current/developer-docs/getting-started/install/).
 
 -   Running the local canister execution environment.
 

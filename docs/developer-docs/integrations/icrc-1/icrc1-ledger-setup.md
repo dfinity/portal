@@ -4,8 +4,8 @@
 This guide will show you how to deploy an ICRC-1 ledger locally and on the mainnet, how to interact with the ICRC-1 ledger and how to test it. ICRC-1 is a token standard which you can read up on [here](https://github.com/dfinity/ICRC-1). Thus, deploying a new token that is ICRC-1 compatible is synonymous with deploying an ICRC-1 ledger. 
 The ICRC-1 ledger used in this guide is a reference implementation. This guide aims at showing you how to setup an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself. 
 
-### Step 1:  Make sure you use a recent version of the [IC SDK](/developer-docs/setup/install/index.mdx).
-If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/developer-docs/setup/install/index.mdx) section to install it.
+### Step 1:  Make sure you use a recent version of the [IC SDK](/docs/current/developer-docs/getting-started/install/).
+If you don’t have the IC SDK installed, follow instructions on the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) section to install it.
 
 ### Step 2: Create a new dfx project with the command:
 
@@ -134,7 +134,7 @@ Check the set variables:
 For each variable, the exported environment variable will be used unless otherwise specified:
 -   The `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
 -   The `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
--   The `ARCHIVE_CONTROLLER` is the [controller principal](/developer-docs/setup/cycles/cycles-wallet.md#controller-and-custodian-roles) of the archive canisters.
+-   The `ARCHIVE_CONTROLLER` is the [controller principal](/docs/current/developer-docs/getting-started/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
 -   The `TRIGGER_THRESHOLD` is the number of blocks to archive when trigger threshold is exceeded.
 -   The `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
 -   The `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.

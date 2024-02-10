@@ -20,7 +20,7 @@ You’ll need the following to complete this guide:
 
 -  [x] An existing Next.js application.
 
--  [x] Complete download and configuration of DFX, the command-line execution environment that serves as the primary tool for creating, deploying, and managing dapps on the Internet Computer. You can reference how to download and configure DFX by reviewing the [install DFX section](/docs/developer-docs/setup/install/index.mdx).
+-  [x] Complete download and configuration of DFX, the command-line execution environment that serves as the primary tool for creating, deploying, and managing dapps on the Internet Computer. You can reference how to download and configure dfx by reviewing the [install DFX section](/docs/current/developer-docs/getting-started/install/).
 
 
 ### Step 1: Create an application build

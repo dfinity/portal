@@ -1,5 +1,7 @@
 # Build
 
+## Overview
+
 After you have written source code for your project, you need to compile it into a WebAssembly module before deploying it as a canister.
 
 If you are only compiling your project for local debugging, you can generate a locally-defined identifier for your project.

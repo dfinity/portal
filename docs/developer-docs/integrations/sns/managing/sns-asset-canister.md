@@ -51,7 +51,7 @@ dfx deploy assets --network "local"
 ### Deploying on the mainnet
 
 :::info 
-To deploy to the mainnet, you will need a wallet that contains cycles. For more information on cycles wallets, please see [here](../../../setup/cycles/cycles-wallet.md).
+To deploy to the mainnet, you will need a wallet that contains cycles. For more information on cycles wallets, please see [here](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
 :::
 
 To deploy your asset canister to the mainnet, the following command can be used:

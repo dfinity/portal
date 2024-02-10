@@ -8,7 +8,7 @@ Let’s create a web game by using Unity or Godot game engine.
 ## Creating a web game automatically using IC GameKit
 
 ## Prerequisites
-- [x] Before you begin, make sure you have the [IC SDK](/developer-docs/setup/install/index.mdx) installed.
+- [x] Before you begin, make sure you have the [IC SDK](/docs/current/developer-docs/getting-started/install/) installed.
 - [x] Download and install [git.](https://git-scm.com/downloads)
 
 ### Option 1: Unity

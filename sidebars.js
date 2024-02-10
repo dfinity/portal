@@ -12,41 +12,41 @@ const sidebars = {
         {
           type: "doc",
           label: "Overview of ICP",
-          id: "concepts/what-is-ic",
+          id: "developer-docs/getting-started/overview-of-icp",
         },
         {
           type: "doc",
           label: "Development workflow",
-          id: "developer-docs/setup/development-workflow",
+          id: "developer-docs/getting-started/development-workflow",
         },
         {
           type: "doc",
           label: "Hello, world!",
-          id: "developer-docs/setup/hello-world",
+          id: "developer-docs/getting-started/hello-world",
         },
         {
           type: "doc",
           label: "Install the IC SDK",
-          id: "developer-docs/setup/install/index",
+          id: "developer-docs/getting-started/install/index",
         },
         {
           type: "doc",
           label: "Developer accounts",
-          id: "developer-docs/setup/accounts",
+          id: "developer-docs/getting-started/accounts",
         },
         {
           type: "category",
           label: "Cycles",
           items: [
-            "developer-docs/setup/cycles/cycles-faucet",
-            "developer-docs/setup/cycles/cycles-wallet",
-            "developer-docs/setup/cycles/converting_icp_tokens_into_cycles",
+            "developer-docs/getting-started/cycles/cycles-faucet",
+            "developer-docs/getting-started/cycles/cycles-wallet",
+            "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
         }, 
         {
           type: "doc",
-          label: "Default project template",
-          id: "developer-docs/setup/first-canister",
+          label: "Build your first smart contract",
+          id: "developer-docs/getting-started/default-template",
         },
         {
           type: "category",
@@ -55,12 +55,12 @@ const sidebars = {
             {
               type: "doc",
               label: "Local deployment",
-              id: "developer-docs/setup/deploy-locally",
+              id: "developer-docs/getting-started/deploy/local",
             },
             {
               type: "doc",
               label: "Mainnet deployment",
-              id: "developer-docs/setup/deploy-mainnet",
+              id: "developer-docs/getting-started/deploy/mainnet",
             },
           ],
         },
@@ -81,6 +81,11 @@ const sidebars = {
       type: "category",
       label: "Developer tools",
       items: [
+        {
+          type: "doc",
+          label: "Overview",
+          id: "references/dev-tools-overview",
+        },
         {
           type: "category",
           label: "Command line",
@@ -227,10 +232,21 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "On-chain libraries",
+          items: [
+            {
+              type: "doc",
+              id: "references/cdks",
+              },
+          ],
+        },
+        {
+          type: "category",
           label: "IDE",
           items: [
-            "developer-docs/setup/playground",
             "developer-docs/setup/vs-code",
+            "developer-docs/setup/playground",
+            "references/gitpod",
           ],
         },
       ],
@@ -302,7 +318,7 @@ const sidebars = {
               label: "Topping up canisters",
               items: [
                 "developer-docs/production/topping-up-canister",
-                "developer-docs/setup/cycles/cycles_management_services",
+                "developer-docs/getting-started/cycles/cycles_management_services",
               ],
             },
           ]
