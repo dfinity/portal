@@ -123,24 +123,37 @@ To use a specific EVM chain, specify the chain's ID in the `Chain` variant:
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 100000000 request '(variant {Chain=0x1},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
 
-## Specifying an RPC provider
+## Specifying RPC services
 
-You can also specify an RPC provider:
+There are several ways to use specific JSON-RPC services:
 
 ```candid
-type JsonRpcSource = variant {
-  Chain : nat64;
-  Provider : nat64;
-  Custom : record { url : text; headers : vec (text, text) };
+// Used for Candid-RPC canister methods (`eth_getLogs`, `eth_getBlockByNumber`, etc.)
+type RpcServices = variant {
+  EthMainnet : opt vec EthMainnetService;
+  EthSepolia : opt vec EthSepoliaService;
+  ...
+  Custom : record {
+    chainId : nat64;
+    services : vec record { url : text; headers : opt vec (text, text) };
+  }
 };
 
-request : (
-  source : JsonRpcSource,
-  jsonRequest : text,
-  maxResponseBytes : nat64
-) -> (
-  Result<text, RpcError>
-);
+// Used for the JSON-RPC `request` canister method
+type RpcService = variant {
+  EthMainnet : EthMainnetService;
+  EthSepolia : EthSepoliaService;
+  ...
+  Chain : nat64;
+  Provider : nat64;
+  Custom : record { url : text; headers : opt vec (text, text) };
+};
+```
+
+Here is an example command to submit an RPC request to the [Arbitrum](https://arbitrum.io/) L2 network:
+
+```bash
+dfx canister call evm_rpc eth_getBlockByNumber '(variant {Custom = record {chainId = 42161; services = vec {record {url = "https://1rpc.io/arb"}}}}, null, variant {Latest})' --with-cycles 10000000000 --wallet=$(dfx identity get-wallet)
 ```
 
 ## Registering your own provider
