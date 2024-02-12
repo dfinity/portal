@@ -265,7 +265,7 @@ Smart contracts on the Internet Computer, also known as canisters, can provide a
 
 3. **Access to System APIs**: Dapps get access to system APIs uncommon in Ethereum smart contracts, such as public randomness.
 
-4. **Integration with Other Blockchains**: Canisters will be able to have Bitcoin addresses in the future.
+4. **Integration with other blockchains**: Canisters will be able to have Bitcoin addresses in the future.
 
 5. **Multi-block Transactions**: The Internet Computer blockchain can stretch the execution of a single transaction across multiple blocks, allowing very-long running smart contract computations to be initiated.
 
