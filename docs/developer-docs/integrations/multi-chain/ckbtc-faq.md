@@ -27,7 +27,7 @@ ckBTC, or Chain Key Bitcoin, is a solution developed by the Internet Computer Pr
 
 2. **Intermediary dependence**: Bitcoin-based commerce traditionally requires transactions to be processed through a traditional bridge or anonymous fiduciary. ckBTC eliminates the need for an intermediary by allowing the Internet Computer to manage the holding, redemption, and transacting of BTC.
 
-3. **Limited Integration with DeFi**: Bitcoin has been largely unable to integrate smoothly with decentralized finance (DeFi) applications. ckBTC, being an ICP-native token backed 1:1 with real BTC and governed on chain by Internet Computer smart contracts, facilitates Bitcoin holders to participate in the DeFi ecosystem.
+3. **Limited integration with DeFi**: Bitcoin has been largely unable to integrate smoothly with decentralized finance (DeFi) applications. ckBTC, being an ICP-native token backed 1:1 with real BTC and governed on chain by ICP smart contracts, facilitates bitcoin holders to participate in the DeFi ecosystem.
 
 4. **High Latency and Fees**: Every Bitcoin transaction is processed with the same low throughput, high latency, and high fees native to the Bitcoin network. ckBTC, being a digital bitcoin twin created by chain-key cryptography and a pair of canister smart contracts, can be sent with 2–5 second finality and negligible fees.
 
