@@ -2,7 +2,9 @@
 
 ## How do I write a smart contract that uses ckBTC?
 
-WIP
+:::info
+This answer is a work in progress. Please check back later for an updated response.
+:::
 
 ## What is the purpose of ckBTC?
 
