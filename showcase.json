@@ -951,6 +951,18 @@
     "submittableId": "34140445"
   },
   {
+    "id": "cycleops",
+    "name": "CycleOps",
+    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://cycleops.dev",
+    "twitter": "https://twitter.com/CycleOps",
+    "logo": "/img/showcase/cycleops_logo.png",
+    "submittableId": "36320431"
+  },
+  {
     "id": "canistergeek",
     "name": "Canistergeek",
     "oneLiner": "IC canister management tool",
@@ -2468,18 +2480,6 @@
     "video": "/img/showcase/nftstudio_video.mp4",
     "videoContentType": "video/mp4",
     "screenshots": []
-  },
-  {
-    "id": "cycleops",
-    "name": "CycleOps",
-    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "website": "https://cycleops.dev",
-    "twitter": "https://twitter.com/CycleOps",
-    "logo": "/img/showcase/cycleops_logo.png",
-    "submittableId": "36320431"
   },
   {
     "name": "NacDB",
