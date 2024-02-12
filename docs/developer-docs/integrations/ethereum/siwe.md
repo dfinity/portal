@@ -9,7 +9,7 @@ The goal of the `ic_siwe` project is to enhance the interoperability between Eth
 ### Key features
 
 - **Ethereum Wallet Sign-In**: Enables Ethereum wallet sign-in for ICP applications. Sign in with any Ethereum wallet to generate an ICP identity and session.
-- **Session Identity Uniqueness**: Ensures that session identities are specific to each application's context, preventing cross-app identity misuse.
+- **Session identity uniqueness**: Ensures that session identities are specific to each application's context, preventing cross-app identity misuse.
 - **Consistent principal generation**: Guarantees that logging in with an Ethereum wallet consistently produces the same principal, irrespective of the client used.
 - **Direct Ethereum address to principal mapping**: Creates a 1:1 correlation between Ethereum addresses and principals within the scope of the current application.
 - **Timebound sessions**: Allows developers to set expiration times for sessions, enhancing security and control.
