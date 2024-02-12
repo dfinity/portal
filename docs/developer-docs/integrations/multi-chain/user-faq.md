@@ -2,7 +2,11 @@
 
 The following questions and answers are from the POV of a user using consumer applications like NNS Frontend dapp or others. For questions from the POV of a developer who wants to know things such as "how does a canister send ckBTC?", please see the other FAQs.
 
-## How do I convert ckBTC to BTC and vice versa?
+## ckBTC User Questions
+
+Questions about ckBTC from a user's POV.
+
+### How do I convert ckBTC to BTC and vice versa?
 
 To convert Bitcoin (BTC) to Chain-key Bitcoin (ckBTC), follow these steps:
 
@@ -24,7 +28,7 @@ For more details, you can refer to this [wiki page](https://wiki.internetcompute
 
 Please note that every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges and no traditional cloud providers that could act as attack vectors. Issuing and redeeming ckBTC goes through Know Your Transaction (KYT) checks to ensure no bitcoin enters the Internet Computer that is associated with criminal activity.
 
-## How do I receive CKBTC or BTC in my wallet?
+### How do I receive ckBTC or BTC in my wallet?
 
 To receive Chain-key Bitcoin (ckBTC) or Bitcoin (BTC) in your wallet, you can follow these steps:
 
@@ -48,8 +52,7 @@ Sources:
 - [Bitcoin-integration FAQ](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
 - [Chain-key Bitcoin Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
-
-## How do I send ckBTC?
+### How do I send ckBTC?
 
 As a user, to send ckBTC, you can follow these steps using your NNS wallet:
 
@@ -61,13 +64,51 @@ As a user, to send ckBTC, you can follow these steps using your NNS wallet:
 6. Type in the amount you want to send or click "Max".
 7. Click "Continue", then confirm the transaction.
 
-For more details, you can refer to the [source](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration).
+For more details, you can refer to the [support documentation](https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC#h_01HE64A4QKANB6JX8VERRP5Y80).
 
-## How do I send BTC?
+### Can I convert ICP to ckBTC?
 
-WIP
+ICP and ckBTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
-## How do I convert ckETH to ETH and vice versa?
+### Can I convert ICP to BTC?
+
+ICP and BTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
+
+### How high are the fees?
+
+The transaction fees for ckBTC on the Internet Computer (ICP) are designed to be minimal. It is set at 0.0000001 ckBTC, which is equivalent to less than a cent or 10 satoshis. Users only need to pay the transaction fees of the Bitcoin network when converting Bitcoins to ckBTC or vice versa[^1^].
+
+When calling `retrieve_btc`, the formula for the ckBTC minter fee is determined as follows:
+```
+246*in + 7*out + 52 satoshi
+```
+This formula is used to determine the ckBTC minter’s fee in satoshi. Since every transaction has at least one input and one output, the fee is at least 305 satoshi[^2^].
+
+There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, when converting BTC to ckBTC and vice versa[^3^].
+
+[^1^]: [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847)
+[^2^]: [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
+[^3^]: [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
+
+### Where and how can I see the transactions for CKBTC or BTC transactions on ICP?
+
+You can view the transactions for ckBTC or BTC on the Internet Computer through the Internet Computer Dashboard. 
+
+For ckBTC transactions, you can get this information directly from the respective index canister. The ckBTC Index Canister can be accessed through this link: [Canister: ckBTC Index - ICP Dashboard](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)[^1^].
+
+For ICP transactions, the [ICP Transactions](https://dashboard.internetcomputer.org/transactions) page provides a real-time log of all purchases and transfers of ICP. Each transaction is given its own specific hash, and is logged with the appropriate sender ID, receiver ID, amount, fee, and timestamp[^2^].
+
+Furthermore, all ckBTC transactions are transparent and can be verified through a [real-time dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions), offering users and developers immediate insight into the flow of assets and the integrity of the conversion process[^3^].
+
+[^1^]: [Source](https://forum.dfinity.org/t/25504)
+[^2^]: [Source](https://support.dfinity.org/hc/en-us/articles/6188295625748-What-is-the-Internet-Computer-Dashboard)
+[^3^]: [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
+
+## ckETH User Questions
+
+Questions about ckETH from a user's POV.
+
+### How do I convert ckETH to ETH and vice versa?
 
 To convert ETH to ckETH and vice versa, you can follow these steps:
 
@@ -86,70 +127,11 @@ Please note that with the current ckETH integration, you will not be able to wit
 
 For more information, you can check out these sources: [source 1](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc#e10f), [source 2](https://medium.com/dfinity/a-data-driven-exploration-of-cketh-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978), [source 3](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#cketh-now-live).
 
-## Can I convert ICP to ckBTC?
-
-ICP and ckBTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
-
-## Can I convert ICP to ckETH?
+### Can I convert ICP to ckETH?
 
 ICP and ckETH are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
-## Can I convert ICP to BTC?
-
-ICP and BTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
-
-## How high are the fees?
-
-The transaction fees for ckBTC on the Internet Computer (ICP) are designed to be minimal. It is set at 0.0000001 ckBTC, which is equivalent to less than a cent or 10 satoshis. Users only need to pay the transaction fees of the Bitcoin network when converting Bitcoins to ckBTC or vice versa[^1^].
-
-When calling `retrieve_btc`, the formula for the ckBTC minter fee is determined as follows:
-```
-246*in + 7*out + 52 satoshi
-```
-This formula is used to determine the ckBTC minter’s fee in satoshi. Since every transaction has at least one input and one output, the fee is at least 305 satoshi[^2^].
-
-There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, when converting BTC to ckBTC and vice versa[^3^].
-
-[^1^]: [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847)
-[^2^]: [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-[^3^]: [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-
-## Where and how can I see the transactions for CKBTC or BTC transactions on ICP?
-
-You can view the transactions for ckBTC or BTC on the Internet Computer through the Internet Computer Dashboard. 
-
-For ckBTC transactions, you can get this information directly from the respective index canister. The ckBTC Index Canister can be accessed through this link: [Canister: ckBTC Index - ICP Dashboard](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)[^1^].
-
-For ICP transactions, the [ICP Transactions](https://dashboard.internetcomputer.org/transactions) page provides a real-time log of all purchases and transfers of ICP. Each transaction is given its own specific hash, and is logged with the appropriate sender ID, receiver ID, amount, fee, and timestamp[^2^].
-
-Furthermore, all ckBTC transactions are transparent and can be verified through a [real-time dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions), offering users and developers immediate insight into the flow of assets and the integrity of the conversion process[^3^].
-
-[^1^]: [Source](https://forum.dfinity.org/t/25504)
-[^2^]: [Source](https://support.dfinity.org/hc/en-us/articles/6188295625748-What-is-the-Internet-Computer-Dashboard)
-[^3^]: [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
-
-## How does ICP enable seamless transactions across different blockchains like CKBTC, CKETH, and Bitcoin integration?
-
-The Internet Computer (ICP) enables seamless transactions across different blockchains like ckBTC, ckETH, and Bitcoin through a combination of advanced cryptography and protocol-level integration.
-
-1. **Protocol-Level Integration**: ICP integrates with other blockchain networks at a protocol level. This means ICP canister smart contracts can create Bitcoin addresses as well as send and receive bitcoin directly on the Bitcoin network[^1^]. This integration allows for dapps deployed on ICP to interact directly with other networks and their smart contracts, tokens, and other digital assets[^2^].
-
-2. **Chain-Key Cryptography**: Through threshold ECDSA, coupled with chain-key cryptography, ICP can natively create signed transactions on other blockchains like Ethereum and Bitcoin[^2^]. Chain key crypto enables blockchains to create public "chain keys", for which their nodes can create corresponding signatures[^3^].
-
-3. **Chain-Key Tokens**: The Internet Computer has the ability to sign native transactions on other blockchains without using risky bridges. Users can seamlessly swap between BTC/ETH in seconds for a few cents with 0 gas fees by using ckBTC, ckETH, and soon ckERC-20 tokens[^4^].
-
-4. **Multi-chain DeFi**: The Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish. DeFi platforms can exist 100% on the blockchain with no dependency on centralized components[^4^].
-
-5. **Future Integration with Ethereum**: ICP is also working on an integration with Ethereum that will allow Ethereum smart contracts and digital assets like ERC-20 tokens to be used in ICP canisters[^2^]. This integration will include capabilities such as interacting with Ethereum smart contracts from canisters on ICP, creating ckETH and ckERC-20 tokens, which can be swapped with negligible fees[^5^].
-
-[^1^]: [Source](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
-[^2^]: [Source](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/what-is-icp#cross-chain-interoperability)
-[^3^]: [Source](https://wiki.internetcomputer.org/wiki/Introduction_to_ICP#firstHeading)
-[^4^]: [Source](https://internetcomputer.org/defi)
-[^5^]: [Source](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview)
-
-
-## Can I use ICP to perform cross-chain atomic swaps or transfers between CKBTC and ETH?
+### Can I use ICP to perform cross-chain atomic swaps or transfers between CKBTC and ETH?
 
 Yes, you can perform cross-chain swaps or transfers between ckBTC and ETH using the Internet Computer (ICP). ICP has integrated with the Bitcoin network and is in the process of integrating with the Ethereum network. This integration allows for seamless communication between these networks and ICP, enabling multi-chain functionality.
 
@@ -166,15 +148,17 @@ Sources:
 - [Internet Computer Ethereum Integration](https://internetcomputer.org/ethereum-integration)
 - [Internet Computer Developer Journey](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview)
 
-## Is there a user interface for managing my multichain assets on the Internet Computer?
+## General multi-chain questions
 
-The extracts provided do not specifically mention a user interface for managing multichain assets on the Internet Computer. However, they do mention that the Internet Computer enables the creation of decentralized applications and services that can interact with multiple blockchains. These applications could potentially provide a user interface for managing multichain assets.
+### Is there a user interface for managing my multi-chain assets on the Internet Computer?
 
-For example, canister smart contracts on the Internet Computer can interact with other blockchains like Bitcoin and Ethereum, and process their tokens. They can also create accounts on any other blockchain and sign transactions that can run on their networks. This functionality could be used to build a user interface for managing multichain assets.
+The extracts provided do not specifically mention a user interface for managing multi-chain assets on the Internet Computer. However, they do mention that the Internet Computer enables the creation of decentralized applications and services that can interact with multiple blockchains. These applications could potentially provide a user interface for managing multi-chain assets.
+
+For example, canister smart contracts on the Internet Computer can interact with other blockchains like Bitcoin and Ethereum, and process their tokens. They can also create accounts on any other blockchain and sign transactions that can run on their networks. This functionality could be used to build a user interface for managing multi-chain assets.
 
 However, without more specific information, it's not possible to provide a definitive answer. For more details, you may want to check the [Internet Computer documentation](https://internetcomputer.org/docs) or ask on the [DFINITY forum](https://forum.dfinity.org).
 
-## How does ICP ensure the security and privacy of my cross-chain transactions?
+### How does ICP ensure the security and privacy of my cross-chain transactions?
 
 Internet Computer (ICP) ensures the security and privacy of your cross-chain transactions through several mechanisms:
 
@@ -196,23 +180,23 @@ Internet Computer (ICP) ensures the security and privacy of your cross-chain tra
 [^6^]: [Internet Computer Ethereum Integration](https://internetcomputer.org/ethereum-integration)
 [^7^]: [Dfinity Blog - The Internet Computer Blockchains Privacy Advantages](https://medium.com/dfinity/the-internet-computer-blockchains-privacy-advantages-73340c6c42db#6ec2)
 
-##  Can I track the status of my multichain transactions on the Internet Computer dashboard?
+### Can I track the status of my multi-chain transactions on the Internet Computer dashboard?
 
 Yes, you can track the status of your transactions on the Internet Computer dashboard. The [ICP Transactions](https://dashboard.internetcomputer.org/transactions) page provides a real-time log of all purchases and transfers of ICP. When you purchase ICP through an exchange or transfer ICP between hardware wallets, this page will populate with that transaction information. Each transaction is given its own specific hash, and is logged with the appropriate sender ID, receiver ID, amount, fee, and timestamp. This information is easily accessible and crucial for transparency.
 
-However, the extracts provided do not specify whether the dashboard supports tracking of multichain transactions. For more detailed information, you may want to refer to the [Internet Computer Dashboard](https://dashboard.internetcomputer.org/) directly.
+However, the extracts provided do not specify whether the dashboard supports tracking of  multi-chain transactions. For more detailed information, you may want to refer to the [Internet Computer Dashboard](https://dashboard.internetcomputer.org/) directly.
 
 Sources:
 - [What is the Internet Computer Dashboard?](https://support.dfinity.org/hc/en-us/articles/6188295625748-What-is-the-Internet-Computer-Dashboard)
 - [The Internet Computer Dashboard: Decentralization, Governance, Tokenomics, and More](https://medium.com/dfinity/the-internet-computer-dashboard-decentralization-governance-tokenomics-and-more-da4abb36f15f#ec91)
 
-##  What are the steps involved in setting up a multichain wallet on the Internet Computer?
+### What are the steps involved in setting up a multi-chain wallet on the Internet Computer?
 
-Hmm, I don't know enough to give you a confident answer yet. The extracts provided do not contain specific steps on setting up a multichain wallet on the Internet Computer. However, they do mention the possibility of creating on-chain or hybrid multi-signature wallets that control assets not only on the IC, but also on other platforms using the Bitcoin integration. 
+Hmm, I don't know enough to give you a confident answer yet. The extracts provided do not contain specific steps on setting up a multi-chain wallet on the Internet Computer. However, they do mention the possibility of creating on-chain or hybrid multi-signature wallets that control assets not only on the IC, but also on other platforms using the Bitcoin integration. 
 
 For more detailed information, I recommend checking out the [Internet Computer Developer Documentation](https://smartcontracts.org/docs/current/developer-docs/quickstart/hello10mins) or the [Internet Computer Ecosystem](https://internetcomputer.org/ecosystem) page.
 
-##  How does ICP handle the conversion of tokens between different chains, such as converting ICP to CKBTC?
+### How does ICP handle the conversion of tokens between different chains, such as converting ICP to ckBTC?
 
 The Internet Computer (ICP) provides a mechanism to swap between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH. Tools like [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/) can be used for this purpose. On ICPSwap, for instance, you can connect to the dapp with several different wallet types, such as Internet Identity, NFID, Bitfinity and more. Then, you can select the type of token you'd like to swap for another, such as ICP, and enter the value you'd like to swap. Finally, select the token you'd like to receive in return for your ICP[^1^].
 
@@ -232,7 +216,7 @@ In the future, when the Internet Computer blockchain integrates with additional 
 [^4^]: [Source](https://internetcomputer.org/how-it-works/chain-key-tokens#the-future-chain-key-erc-20-tokens)
 [^5^]: [Source](https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24#3a8b)
 
-##  Are there any fees associated with cross-chain transactions on the Internet Computer?
+### Are there any fees associated with cross-chain transactions on the Internet Computer?
 
 Yes, there are fees associated with cross-chain transactions on the Internet Computer. However, these fees are described as negligible. For instance, users can seamlessly swap between BTC/ETH in seconds for a few cents with 0 gas fees by using ckBTC, ckETH, and soon ckERC-20 tokens. Additionally, ckBTC can be sent with 2–5 second finality and negligible fees. 
 
@@ -245,7 +229,7 @@ Hmm, I don't know enough to give you a confident answer yet. The extracts provid
 
 For more detailed information, you might find it helpful to review the [Internet Computer's documentation](https://internetcomputer.org/docs) or ask your question in the [Dfinity Developer Forum](https://forum.dfinity.org).
 
-## Is there a guide or tutorial on how to use multichain features on the Internet Computer for beginners?
+### Is there a guide or tutorial on how to use multi-chain features on the Internet Computer for beginners?
 
 Yes, there are several resources available for beginners who want to use the multi-chain features on the Internet Computer. 
 
@@ -261,7 +245,7 @@ Yes, there are several resources available for beginners who want to use the mul
 
 Remember, the Internet Computer allows you to create smart contracts that directly interact with other blockchains without the need for trusted centralized bridges. This is made possible using chain key cryptography. You can learn more about this in the [wiki](https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC#firstHeading).
 
-## How does ICP handle the integration of smart contracts across different chains?
+### How does ICP handle the integration of smart contracts across different chains?
 
 Internet Computer Protocol (ICP) handles the integration of smart contracts across different chains through a process known as cross-chain interoperability. This is achieved through advanced cryptography, specifically threshold ECDSA and chain-key cryptography. 
 
@@ -277,8 +261,8 @@ In the future, ICP aims to become fully compatible with the Ethereum Virtual Mac
 [^4^]: [DFINITY Wows the Crowd at ETHDenver](https://medium.com/dfinity/dfinity-wows-the-crowd-at-ethdenver-7389f265e0dd#ae85)
 [^5^]: [Full protocol integration](https://internetcomputer.org/ethereum-integration)
 
-##  Can I use my existing hardware wallets or mobile apps to manage my multichain assets on the Internet Computer?
+### Can I use my existing hardware wallets or mobile apps to manage my multi-chain assets on the Internet Computer?
 
-The information extracts provided do not specifically mention the use of existing hardware wallets or mobile apps to manage multichain assets on the Internet Computer. However, the Internet Computer does support the creation of on-chain or hybrid multi-signature wallets that can control assets not only on the Internet Computer, but also on other platforms using Bitcoin integration [source](https://support.dfinity.org/hc/en-us/articles/6080909704212-What-kind-of-asynchronous-DeFi-projects-can-I-create-on-the-IC-). 
+The information extracts provided do not specifically mention the use of existing hardware wallets or mobile apps to manage  multi-chain assets on the Internet Computer. However, the Internet Computer does support the creation of on-chain or hybrid multi-signature wallets that can control assets not only on the Internet Computer, but also on other platforms using Bitcoin integration [source](https://support.dfinity.org/hc/en-us/articles/6080909704212-What-kind-of-asynchronous-DeFi-projects-can-I-create-on-the-IC-). 
 
 For more specific information about hardware wallets or mobile apps compatibility, you may want to refer to the official documentation or forums of the Internet Computer.
