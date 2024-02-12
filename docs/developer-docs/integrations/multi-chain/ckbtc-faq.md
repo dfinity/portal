@@ -14,7 +14,7 @@ ckBTC facilitates bitcoin holders to participate in the DeFi ecosystem, activati
 
 ckBTC is not a bridged or wrapped token; it is a direct link between the Bitcoin network and the Internet Computer, reducing the risks tied to bridges. This approach not only tackles security concerns but also launches Bitcoin into a world of better adaptability and user experiences.
 
-ckBTC also offers the first bonafide use case for bringing smart contracts to BTC. All of DeFi will soon begin building on ICP, where processing is more secure, faster, environmentally friendly, and cost-effective.
+ckBTC also offers the first bonafide use case for bringing smart contracts to BTC. Building DeFi on ICP is more secure, faster, environmentally friendly, and cost-effective.
 
 : [Source](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
 : [Source](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#08ea)
