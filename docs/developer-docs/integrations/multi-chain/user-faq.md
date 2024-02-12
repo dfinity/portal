@@ -117,10 +117,6 @@ ICP and ckETH are two separate tokens so there is no protocol way to convert one
 
 ### Can I use ICP to perform cross-chain atomic swaps or transfers between ckBTC and ETH?
 
-Yes, you can perform cross-chain swaps or transfers between ckBTC and ETH using the Internet Computer (ICP). ICP has integrated with the Bitcoin network and is in the process of integrating with the Ethereum network. This integration allows for seamless communication between these networks and ICP, enabling multi-chain functionality.
-
-ICP uses advanced cryptography, including chain-key cryptography and threshold ECDSA, to create signed transactions on other blockchains like Ethereum and Bitcoin. This allows for dapps deployed on ICP to interact directly with other networks and their smart contracts, tokens, and other digital assets. 
-
 For swapping between tokens such as ckBTC and ETH, you can use tools like [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/). On these platforms, you can select the type of token you'd like to swap and the token you'd like to receive in return.
 
 Furthermore, ICP's Ethereum integration will include the creation of ckETH and ckERC-20 tokens, which can be swapped with negligible fees. This integration will also allow Ethereum smart contracts and digital assets like ERC-20 tokens to be used in ICP canisters.

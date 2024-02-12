@@ -540,6 +540,7 @@ const sidebars = {
             "developer-docs/integrations/multi-chain/ckbtc-faq",
             "developer-docs/integrations/multi-chain/cketh-faq",
             "developer-docs/integrations/multi-chain/ckerc20-faq",
+            "developer-docs/integrations/multi-chain/signatures-faq",
           ],
         },
         {
