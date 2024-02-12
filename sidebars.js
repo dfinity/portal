@@ -532,7 +532,6 @@ const sidebars = {
       type: "category",
       label: "Multi-chain",
       items: [
-         //FAQs
          {
           type: "category",
           label: "FAQs",
@@ -543,7 +542,6 @@ const sidebars = {
             "developer-docs/integrations/multi-chain/ckerc20-faq",
           ],
         },
-        //Bitcoin
         {
           type: "category",
           label: "Bitcoin",
@@ -561,7 +559,6 @@ const sidebars = {
             }
           ],
         },
-        //Ethereum
         {
           type: "category",
           label: "Ethereum",
