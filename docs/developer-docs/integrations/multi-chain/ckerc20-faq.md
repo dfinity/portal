@@ -7,4 +7,6 @@ This project is still under development. Please check back later for updated inf
 
 ## What is the purpose of CK-ERC20?
 
+This project is still under development. Please check back later for updated information.
+
 
