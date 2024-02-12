@@ -8,7 +8,7 @@ This answer is a work in progress. Please check back later for an updated respon
 
 ## What is the purpose of ckBTC?
 
-Chain Key Bitcoin (ckBTC) is a token on the Internet Computer that is backed 1:1 by bitcoin (BTC). It is designed to integrate Bitcoin with the Internet Computer Protocol (ICP) and decentralized finance (DeFi) applications. ckBTC is an ICP-native token that uses chain key cryptography to own and control all underlying Bitcoin, extending the ICP protocol stack so the blockchain behaves like a faster, less expensive, and more environmentally sustainable solution than the Bitcoin network.
+Chain-key Bitcoin (ckBTC) is a token on the Internet Computer that is backed 1:1 by bitcoin (BTC). It is designed to integrate Bitcoin with the Internet Computer Protocol (ICP) and decentralized finance (DeFi) applications. ckBTC is an ICP-native token that uses chain-key cryptography to own and control all underlying bitcoin, extending the ICP protocol stack so the blockchain behaves like a faster, less expensive, and more environmentally sustainable solution than the Bitcoin network.
 
 ckBTC facilitates Bitcoin holders to participate in the DeFi ecosystem, activating the world’s largest crypto economy. It offers a secure and scalable environment to use bitcoin in DeFi applications, including lending, borrowing, asset management, decentralized exchanges, and more. 
 
