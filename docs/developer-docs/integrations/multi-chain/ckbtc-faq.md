@@ -21,7 +21,7 @@ ckBTC also offers the first bonafide use case for bringing smart contracts to BT
 
 ## What specific problem does ckBTC aim to solve within the Bitcoin ecosystem?
 
-ckBTC, or Chain Key Bitcoin, is a solution developed by the Internet Computer Protocol (ICP) to address several limitations within the Bitcoin ecosystem. Here are the specific problems it aims to solve:
+ckBTC aims to solve the following problems:
 
 1. **Lack of programmability**: The Bitcoin blockchain lacks a programmable layer as complex as other blockchains, such as Ethereum, and does not offer the capability to support complex smart contracts and build decentralized applications. ckBTC activates programming capabilities for Bitcoin, extending its properties to build decentralized applications on the most secure and proven cryptographic infrastructure.
 
@@ -29,9 +29,9 @@ ckBTC, or Chain Key Bitcoin, is a solution developed by the Internet Computer Pr
 
 3. **Limited integration with DeFi**: Bitcoin has been largely unable to integrate smoothly with decentralized finance (DeFi) applications. ckBTC, being an ICP-native token backed 1:1 with real BTC and governed on chain by ICP smart contracts, facilitates bitcoin holders to participate in the DeFi ecosystem.
 
-4. **High Latency and Fees**: Every Bitcoin transaction is processed with the same low throughput, high latency, and high fees native to the Bitcoin network. ckBTC, being a digital bitcoin twin created by chain-key cryptography and a pair of canister smart contracts, can be sent with 2–5 second finality and negligible fees.
+4. **High latency and fees**: Every Bitcoin transaction is processed with the same low throughput, high latency, and high fees native to the Bitcoin network. ckBTC, being a digital bitcoin twin created by chain-key cryptography and a pair of canister smart contracts, can be sent with 2–5 second finality and negligible fees.
 
-5. **Security Concerns with Bridges**: ckBTC gets rid of the need for bridges, reducing the risks tied to them. This approach not only tackles security concerns but also launches Bitcoin into a world of better adaptability and user experiences.
+5. **Security concerns with bridges**: ckBTC gets rid of the need for bridges, reducing the risks tied to them. This approach not only tackles security concerns but also launches Bitcoin into a world of better adaptability and user experiences.
 
 Sources:
 : [How ckBTC Solves the Dilemma of Blockchain Bridges Part 2](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
@@ -157,7 +157,7 @@ ckBTC ensures the security of the funds it handles through several measures:
 5. **Decentralized process**: Every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges and no traditional cloud providers that could act as attack vectors.
 
 6. **1:1 pegging**: Securing ckBTC 1:1 with BTC is crucial as it eliminates the risk of depegging.
-
+Sources:
 7. **Bitcoin integration at the protocol level**: ckBTC on the Internet Computer is part of a native integration with the Bitcoin network at the protocol level. This means that transactions occur directly between the two networks without any intermediary bridges.
 Sources:
 : [Taking security seriously: two top ICP features assessed by Trail of Bits](https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68#8e43)
