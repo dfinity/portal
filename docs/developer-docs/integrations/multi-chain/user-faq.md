@@ -16,7 +16,6 @@ In terms of usage, ckBTC can be used in applications on the Internet Computer. F
 
 Sources:
 - [Chain-key Bitcoin Overview](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-- [Point of sale (POS) app for ckBTC](https://internetcomputer.org/docs/current/samples/pos#overview)
 
 ### How do I convert ckBTC to BTC and vice versa?
 
