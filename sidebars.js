@@ -434,6 +434,17 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: "category",
+          label: "Multi-chain",
+          items: [
+            "developer-docs/multi-chain/user-facing-faq",
+            "developer-docs/multi-chain/ckbtc-faq",
+            "developer-docs/multi-chain/cketh-faq",
+            "developer-docs/multi-chain/signatures-faq",
+            "developer-docs/multi-chain/ckerc20-faq",
+          ],
+        },
       ],
     },
     {
