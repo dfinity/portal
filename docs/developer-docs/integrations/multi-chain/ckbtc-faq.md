@@ -271,7 +271,7 @@ Smart contracts on the Internet Computer, also known as canisters, can provide a
 
 6. **Daemon contracts**: Canister smart contracts can be configured so that they are automatically activated by the network itself at specified block intervals.
 
-7. **Serve Web Content**: Canister smart contracts can process HTTP requests, enabling them to host frontends of dapps, making them directly accessible through web browsers.
+7. **Serve web content**: Canister smart contracts can process HTTP requests, enabling them to host frontends of dapps, making them directly accessible through web browsers.
 
 8. **Interoperability with Ethereum**: Canisters can directly call into smart contracts on Ethereum, and Ethereum smart contracts can directly call into canisters.
 
