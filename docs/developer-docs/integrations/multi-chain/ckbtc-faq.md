@@ -23,7 +23,7 @@ ckBTC also offers the first bonafide use case for bringing smart contracts to BT
 
 ckBTC, or Chain Key Bitcoin, is a solution developed by the Internet Computer Protocol (ICP) to address several limitations within the Bitcoin ecosystem. Here are the specific problems it aims to solve:
 
-1. **Lack of Programmability**: The Bitcoin blockchain lacks a programmable layer as complex as other blockchains, such as Ethereum, and does not offer the capability to support complex smart contracts and build decentralized applications. ckBTC activates programming capabilities for Bitcoin, extending its properties to build decentralized applications on the most secure and proven cryptographic infrastructure.
+1. **Lack of programmability**: The Bitcoin blockchain lacks a programmable layer as complex as other blockchains, such as Ethereum, and does not offer the capability to support complex smart contracts and build decentralized applications. ckBTC activates programming capabilities for Bitcoin, extending its properties to build decentralized applications on the most secure and proven cryptographic infrastructure.
 
 2. **Intermediary Dependence**: Bitcoin-based commerce traditionally requires transactions to be processed through a traditional bridge or anonymous fiduciary. ckBTC eliminates the need for an intermediary by allowing the Internet Computer to manage the holding, redemption, and transacting of BTC.
 
