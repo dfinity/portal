@@ -28,7 +28,7 @@ One of the most important decisions when designing a dapp is the determining the
     
     - Upgrading individual services may be easier. 
 
-    - Canisters providing a reusable service can be configured as ['pullable'](/docs/current/developer-docs/setup/best-practices/pulling-canister-dependencies) and re-used in other projects through [`dfx deps`](/docs/current/references/cli-reference/dfx/dfx-deps). 
+    - Canisters providing a reusable service can be configured as ['pullable'](/docs/current/developer-docs/setup/pulling-canister-dependencies) and re-used in other projects through [`dfx deps`](/docs/current/references/cli-reference/dfx-deps). 
 
     Example use cases:
 
@@ -75,7 +75,7 @@ One of the most important decisions when designing a dapp is the determining the
 
 ### Recommendation: Serve reusable services in their own canisters 
 
-Serving individual services in their own canisters makes it easy to call, manage, and reuse those services. For example, a social media application may have functionality for creating user profiles, sending messages, or uploading photos. If these three services are separated into three separate canisters, managing, upgrading, and using those services is simplified. Additionally, these canisters can each be published as ['pullable'](/docs/current/developer-docs/setup/best-practices/pulling-canister-dependencies) canisters, then reused in another dapps, preventing developers from having to redeploy the same code in different projects.
+Serving individual services in their own canisters makes it easy to call, manage, and reuse those services. For example, a social media application may have functionality for creating user profiles, sending messages, or uploading photos. If these three services are separated into three separate canisters, managing, upgrading, and using those services is simplified. Additionally, these canisters can each be published as ['pullable'](/docs/current/developer-docs/setup/pulling-canister-dependencies) canisters, then reused in another dapps, preventing developers from having to redeploy the same code in different projects.
 
 ### Recommendation: End-users should interact with a dapp from a frontend application
 
