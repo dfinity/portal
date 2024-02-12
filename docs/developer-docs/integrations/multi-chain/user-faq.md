@@ -94,13 +94,13 @@ To convert ETH to ckETH and vice versa, you can follow these steps:
 **To convert ETH to ckETH:**
 
 1. Obtain an ICP principal or wallet address.
-2. Deposit your ETH: Ethereum holders can deposit Ether to the deposit function in the ckETH helper contract on Ethereum 0x7574eB42cA208A4f6960ECCAfDF186D627dCC175 and specify their ICP principal or wallet address where they want their minted ckETH to appear.
+2. Deposit your ETH: Ethereum holders can deposit Ether to the deposit function in the ckETH helper contract on Ethereum `0x7574eB42cA208A4f6960ECCAfDF186D627dCC175` and specify their ICP principal or wallet address where they want their minted ckETH to appear.
 3. Mint ckETH: The ICP ckETH canister smart contract will then mint the same amount of ckETH to the indicated ICP principal or wallet address.
 4. Use ckETH: The ICP principal or wallet address can now use ckETH natively on the Internet Computer.
 
 **To convert ckETH back to ETH:**
 
-1. When the ICP principal wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH. The wallet address 0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80 will send the ETH to the wallet address noted here.
+1. When the ICP principal wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH. The wallet address `0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80` will send the ETH to the wallet address noted here.
 
 Please note that with the current ckETH integration, you will not be able to withdraw to ETH directly from the ICRC-1 wallet. This is because the ICRC-1 wallet does not support the withdrawal process (withdraws are supported in the ICRC-2 standard). To withdraw ckETH for ETH, you can send your ckETH to your dfx principal, then withdraw from there following [these steps](https://github.com/timohanke/ic/blob/d34903fc2c41e2cff5df86248628f5d0b4fd7168/rs/ethereum/cketh/minter/README.adoc#withdrawal-cketh-to-eth).
 

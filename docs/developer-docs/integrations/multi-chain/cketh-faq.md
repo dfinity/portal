@@ -234,6 +234,7 @@ For more information on the governance and tokenomics of the Internet Computer, 
 
 
 # What is the current state of ckETH project?
+
 As of the latest updates from the provided extracts, ckETH is live on the Internet Computer mainnet[^1^]. It has been added to the ICP dashboard[^1^] and is also supported in the ICRC-1 wallet[^1^]. However, with the current ckETH integration, you cannot withdraw to ETH directly from the ICRC-1 wallet[^1^]. 
 
 The DFINITY R&D teams and members of the ecosystem are working on enhancing the Ethereum with Internet Computer capabilities[^2^]. The integration is being carried out in phases. Phase 0, which enables chain-key signing and HTTPS outcalls, is already complete[^2^]. Phase 1 is being built to allow ETH API calls by accessing Web-2 based API providers through HTTPS outcalls[^2^]. This phase also includes designing and building ckETH and ckERC-20 tokens[^2^]. The final phase, Phase 2, will revolve around native ETH integration[^2^].
