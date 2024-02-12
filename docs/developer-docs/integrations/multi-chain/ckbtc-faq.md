@@ -74,35 +74,9 @@ ckBTC, or Chain-key Bitcoin, is an Internet Computer native token that represent
 
 ## Can I use ckBTC just like I would use Bitcoin?
 
-Hmm, I don't know enough to give you a confident answer yet. The extracts provided do not contain specific information about using ckBTC like Bitcoin. However, you can find more information about ckBTC and its usage in the [technical overview of ckBTC](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckBTC) and the [blog about ckBTC](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e).
-What are the benefits of using ckBTC over traditional Bitcoin transactions?
-ckBTC, or Chain-Key Bitcoin, offers several advantages over traditional Bitcoin transactions:
+Yes. As a Twin to Bitcoin, you can use ckBTC as a Bitcoin, or convert it back to Bitcoin whenever one wishes. 
 
-1. **Faster and Cheaper Transfers**: Unlike traditional Bitcoin transactions that can take roughly an hour and incur high fees, ckBTC transactions are finalized within seconds and cost 0.0000001 ckBTC, which is approximately two orders of magnitude lower than traditional Bitcoin miner fees.
-
-2. **No Need for Third-Party Bridges**: ckBTC does not rely on a third-party bridge for conversion between BTC and ckBTC, making it a more secure alternative to other tokens pegged to Bitcoin.
-
-3. **Programmable Bitcoin**: ckBTC allows for the development of fully on-chain Layer-2 applications for Bitcoin, which is not possible using the Lightning Network. This makes Bitcoin programmable, facilitating Bitcoin holders to participate in the DeFi ecosystem.
-
-4. **Fixed Transaction Fees**: ckBTC transaction fees are fixed and not dependent on the transaction amount, variable intermediate forwarding, or unexpected channel funding fees.
-
-5. **Integration with Other Networks**: In the future, ckBTC will be available on other networks like Ethereum – also directly, and without bridges, thanks to chain-key cryptography integrations.
-
-6. **Decentralized Issuance and Redemption**: Every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges, and no traditional cloud providers that could act as attack vectors.
-
-7. **1:1 Backing with Bitcoin**: ckBTC is backed 1:1 by Bitcoin, eliminating the risk of depegging.
-
-8. **Integration with Web3 Services**: ckBTC implements ICRC-1, the fungible token standard on the Internet Computer, and can be integrated easily by any Web3 service running on ICP.
-
-9. **Elimination of Intermediary Risks**: Chain-key tokens eliminate the risks associated with the traditional intermediary-based token wrapping.
-
-: [Bitcoin-integration > What you need to know about Bitcoin integration and ckBTC > How does ckBTC compare to the Lightning Network?](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
-: [Wiki > Chain-key Bitcoin > Overview](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-: [Docs > Current > Tutorials > Developer-journey > Level-4 > 4.3 ckBTC and Bitcoin integration > What is ckBTC?](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin#what-is-ckBTC)
-: [Dfinity > ckBTC Sparks a New Era on the Internet Computer Part 4](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
-: [Dfinity > Unlocks Bitcoin-Based Web 3](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#08ea)
-: [Dfinity > Chain-Key Bitcoin: A Decentralized Bitcoin Twin > No Middle Person Part 2](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
-: [Bitcoin + ICP > Chain-key bitcoin](https://internetcomputer.org/bitcoin-integration
+The conversion of ckBTC back to BTC and vice versa is controlled at the Internet Computer protocol-level, ensuring that no central authority has the power to restrict or censor these conversions. All transactions are transparent and can be verified through a real-time dashboard.
 
 ## Why should I choose ckBTC for my application or service?
 

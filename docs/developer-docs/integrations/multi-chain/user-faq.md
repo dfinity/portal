@@ -172,9 +172,7 @@ Sources:
 
 ### What are the steps involved in setting up a multi-chain wallet on the Internet Computer?
 
-Hmm, I don't know enough to give you a confident answer yet. The extracts provided do not contain specific steps on setting up a multi-chain wallet on the Internet Computer. However, they do mention the possibility of creating on-chain or hybrid multi-signature wallets that control assets not only on the IC, but also on other platforms using the Bitcoin integration. 
-
-For more detailed information, I recommend checking out the [Internet Computer Developer Documentation](https://smartcontracts.org/docs/current/developer-docs/quickstart/hello10mins) or the [Internet Computer Ecosystem](https://internetcomputer.org/ecosystem) page.
+The NNS frontend dapp serves as a multi-chain wallet so one can hold many types of tokens such as ICP, ckBTC, ckETH, etc.
 
 ### How does ICP handle the conversion of tokens between different chains, such as converting ICP to ckBTC?
 
@@ -196,19 +194,6 @@ In the future, when the Internet Computer blockchain integrates with additional 
 - [Source](https://internetcomputer.org/how-it-works/chain-key-tokens#the-future-chain-key-erc-20-tokens)
 - [Source](https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24#3a8b)
 
-### Are there any fees associated with cross-chain transactions on the Internet Computer?
-
-Yes, there are fees associated with cross-chain transactions on the Internet Computer. However, these fees are described as negligible. For instance, users can seamlessly swap between BTC/ETH in seconds for a few cents with 0 gas fees by using ckBTC, ckETH, and soon ckERC-20 tokens. Additionally, ckBTC can be sent with 2–5 second finality and negligible fees. 
-
-Sources:
-- [X-chain DeFi](https://internetcomputer.org/defi)
-- [Why Bitcoin needs smart contracts](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
-
-How do I resolve discrepancies or disputes related to cross-chain transactions?
-Hmm, I don't know enough to give you a confident answer yet. The extracts provided do not contain specific information on resolving discrepancies or disputes related to cross-chain transactions. However, they do highlight the security and trustworthiness of the Internet Computer's approach to cross-chain transactions, particularly with the use of Chain Key Bitcoin (ckBTC) and JSON-RPC calls.
-
-For more detailed information, you might find it helpful to review the [Internet Computer's documentation](https://internetcomputer.org/docs) or ask your question in the [Dfinity Developer Forum](https://forum.dfinity.org).
-
 ### Is there a guide or tutorial on how to use multi-chain features on the Internet Computer for beginners?
 
 Yes, there are several resources available for beginners who want to use the multi-chain features on the Internet Computer. 
@@ -227,7 +212,7 @@ Remember, the Internet Computer allows you to create smart contracts that direct
 
 ### How does ICP handle the integration of smart contracts across different chains?
 
-Internet Computer Protocol (ICP) handles the integration of smart contracts across different chains through a process known as cross-chain interoperability. This is achieved through advanced cryptography, specifically threshold ECDSA and chain-key cryptography. 
+Internet Computer Protocol (ICP) handles the integration of smart contracts across different chains through a process known as cross-chain interoperability. This is achieved through advanced cryptography, specifically threshold ECDSA and chain-key cryptography.
 
 For instance, ICP can natively create signed transactions on other blockchains like Ethereum and Bitcoin, allowing decentralized applications (dapps) deployed on ICP to interact directly with other networks and their smart contracts, tokens, and other digital assets.
 
@@ -243,6 +228,4 @@ In the future, ICP aims to become fully compatible with the Ethereum Virtual Mac
 
 ### Can I use my existing hardware wallets or mobile apps to manage my multi-chain assets on the Internet Computer?
 
-The information extracts provided do not specifically mention the use of existing hardware wallets or mobile apps to manage  multi-chain assets on the Internet Computer. However, the Internet Computer does support the creation of on-chain or hybrid multi-signature wallets that can control assets not only on the Internet Computer, but also on other platforms using Bitcoin integration [source](https://support.dfinity.org/hc/en-us/articles/6080909704212-What-kind-of-asynchronous-DeFi-projects-can-I-create-on-the-IC-). 
-
-For more specific information about hardware wallets or mobile apps compatibility, you may want to refer to the official documentation or forums of the Internet Computer.
+WIP

@@ -120,17 +120,7 @@ Also, remember that the Internet Computer makes it possible to build almost any 
 
 ## What are the technical requirements for developers to work with ckETH?
 
-Hmm, I don't know enough to give you a confident answer yet. The extracts provided do not contain specific technical requirements for developers to work with ckETH. However, they do provide a general process of how Ethereum holders can acquire and use ckETH. 
-
-Here's a brief overview based on the extracts:
-
-1. Obtain an ICP principal or wallet address.
-2. Deposit your ETH to the deposit function in the ckETH helper contract on Ethereum and specify your ICP principal or wallet address where you want your minted ckETH to appear.
-3. The ICP ckETH canister smart contract will then mint the same amount of ckETH to your ICP principal or wallet address.
-4. You can now use ckETH natively on the Internet Computer.
-5. You can convert ckETH back to ETH any time by requesting the ckETH canister smart contract with the ETH amount and Ethereum address to which you want to send the ETH.
-
-For more detailed information, you might want to check out the [DFINITY forum post](https://forum.dfinity.org/t/ckETH-a-canister-issued-ether-twin-token-on-the-ic/22819) mentioned in the extracts.
+WIP
 
 ## How does ckETH ensure the security of the funds it handles?
 
