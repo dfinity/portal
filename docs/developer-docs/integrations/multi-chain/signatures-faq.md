@@ -1,8 +1,8 @@
 # Signatures FAQ
 
-## Does ICP support Threshold ECDSA signatures?
+## Does ICP support ECDSA signatures?
 
-Yes, the Internet Computer (ICP) does support Threshold ECDSA signatures. It implements a novel threshold ECDSA protocol as part of its chain-key signatures toolbox. In this protocol, the private ECDSA key exists only as secret shares held by designated parties, namely the replicas of a threshold-ECDSA-enabled subnet on ICP. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. At least one third of the replicas are required to generate a threshold signature using their respective key shares.
+Yes, the Internet Computer (ICP) does support ECDSA signatures. It implements a novel threshold ECDSA protocol as part of its chain-key signatures toolbox. In this protocol, the private ECDSA key exists only as secret shares held by designated parties, namely the replicas of a threshold-ECDSA-enabled subnet on ICP. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. At least one third of the replicas are required to generate a threshold signature using their respective key shares.
 
 The threshold ECDSA protocol on ICP also includes protocols for secure distributed key generation and periodic key resharing, which are crucial parts of the protocol. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
 
@@ -26,11 +26,9 @@ Yes, the Internet Computer Protocol (ICP) does support BLS (Boneh-Lynn-Shacham) 
 
 For more information, you can refer to the [ICP documentation](https://internetcomputer.org/docs) or the [ICP wiki](https://wiki.internetcomputer.org/wiki).
 
-## Does ICP support Multi-Signature (MuSig)?
+## Does ICP support Multi-Signature (Multi-sig)?
 
-Not currently.
-
-For more detailed information on ICP's cryptographic mechanisms, you may want to refer to the [ICP documentation](https://internetcomputer.org/docs) or the [ICP wiki](https://wiki.internetcomputer.org/wiki).
+Not currently in the protocol, but there are projects like: [https://github.com/ICPsig/icpsig](https://github.com/ICPsig/icpsig) working on it.
 
 ## Does ICP support Hash Time Locked Contracts (HTLCs)?
 
