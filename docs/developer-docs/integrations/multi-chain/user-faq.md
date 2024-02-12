@@ -39,30 +39,6 @@ For more details, you can refer to this [wiki page](https://wiki.internetcompute
 
 Please note that every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges and no traditional cloud providers that could act as attack vectors. Issuing and redeeming ckBTC goes through Know Your Transaction (KYT) checks to ensure no bitcoin enters the Internet Computer that is associated with criminal activity.
 
-### How do I receive ckBTC or BTC in my wallet?
-
-To receive Chain-key Bitcoin (ckBTC) or Bitcoin (BTC) in your wallet, you can follow these steps:
-
-For ckBTC:
-1. You can acquire ckBTC by swapping it for ICP on decentralized exchanges running on the Internet Computer, such as [ICDex](http://icdex.io/) or [ICPSwap](https://icpswap.com/).
-2. Alternatively, you can convert BTC to ckBTC by simply sending BTC to your NNS wallet. This functionality is also available on [ICDex](http://icdex.io/) and [ICPSwap](https://icpswap.com/), where you can convert your BTC to ckBTC directly using the ckBTC canisters.
-
-For BTC:
-1. To convert ckBTC to BTC using the NNS wallet, follow these steps:
-   - Go to the NNS frontend dapp and sign in with your Internet Identity. If you don't have one, you will be prompted to create one. Any device that supports WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or a Ledger device.
-   - Navigate to "My Tokens" and select ckBTC. If you have ckBTC in a different wallet, send it to your NNS principal.
-   - Click on "Send" on the bottom of the screen.
-   - Paste a valid BTC address that you control into the "Destination" field.
-   - Select Bitcoin from the "Network" dropdown.
-   - Type in the amount you want to send or click "Max".
-   - Click "Continue", then confirm the transaction.
-
-Please note that ckBTC is a token on the Internet Computer that is backed 1:1 by bitcoin (BTC) such that 1 ckBTC can always be redeemed for 1 BTC and vice versa. It does not rely on a third-party bridge for the conversion between BTC and ckBTC, making it a substantially more secure alternative to “wrapped” tokens.
-
-Sources:
-- [Bitcoin-integration FAQ](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
-- [Chain-key Bitcoin Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-
 ### How do I send ckBTC?
 
 As a user, to send ckBTC, you can follow these steps using your NNS wallet:
@@ -76,6 +52,10 @@ As a user, to send ckBTC, you can follow these steps using your NNS wallet:
 7. Click "Continue", then confirm the transaction.
 
 For more details, you can refer to the [support documentation](https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC#h_01HE64A4QKANB6JX8VERRP5Y80).
+
+### How do I receive ckBTC?
+
+WIP
 
 ### Can I convert ICP to ckBTC?
 
@@ -135,7 +115,7 @@ For more information, you can check out these sources: [source 1](https://medium
 
 ICP and ckETH are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
-### Can I use ICP to perform cross-chain atomic swaps or transfers between CKBTC and ETH?
+### Can I use ICP to perform cross-chain atomic swaps or transfers between ckBTC and ETH?
 
 Yes, you can perform cross-chain swaps or transfers between ckBTC and ETH using the Internet Computer (ICP). ICP has integrated with the Bitcoin network and is in the process of integrating with the Ethereum network. This integration allows for seamless communication between these networks and ICP, enabling multi-chain functionality.
 
