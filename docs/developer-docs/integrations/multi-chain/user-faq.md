@@ -1,7 +1,8 @@
 # User facing FAQ
 
+The following questions and answers are from the POV of a user using consumer applications like NNS Frontend dapp or others. For questions from the POV of a developer who wants to know things such as "how does a canister send ckBTC?", please see the other FAQs.
 
-## How do I convert CKBTC to BTC and vice versa?
+## How do I convert ckBTC to BTC and vice versa?
 
 To convert Bitcoin (BTC) to Chain-key Bitcoin (ckBTC), follow these steps:
 
@@ -22,7 +23,6 @@ To convert ckBTC back to BTC, follow these steps:
 For more details, you can refer to this [wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading).
 
 Please note that every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges and no traditional cloud providers that could act as attack vectors. Issuing and redeeming ckBTC goes through Know Your Transaction (KYT) checks to ensure no bitcoin enters the Internet Computer that is associated with criminal activity.
-
 
 ## How do I receive CKBTC or BTC in my wallet?
 
@@ -49,9 +49,9 @@ Sources:
 - [Chain-key Bitcoin Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
 
-## How do I send CKBTC?
+## How do I send ckBTC?
 
-To send ckBTC, you can follow these steps using your NNS wallet:
+As a user, to send ckBTC, you can follow these steps using your NNS wallet:
 
 1. Go to the NNS frontend dapp and sign in with your Internet Identity. If you don't have one, you will be prompted to create one. Any device that supports WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or a Ledger device.
 2. Navigate to "My Tokens" and select ckBTC. If you have ckBTC in a different wallet, send it to your NNS principal.
@@ -63,29 +63,9 @@ To send ckBTC, you can follow these steps using your NNS wallet:
 
 For more details, you can refer to the [source](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration).
 
-## How do I send BTC  ?
+## How do I send BTC?
 
-You can send Bitcoin (BTC) using the `send` endpoint on your canister. Here's a step-by-step guide:
-
-1. In the Candid UI, add a destination address and an amount to send. 
-
-2. Via command line, the same call would look like this:
-```bash
-dfx canister --network=ic call basic_bitcoin send '(record { destination_address = "tb1ql7w62elx9ucw4pj5lgw4l028hmuw80sndtntxt"; amount_in_satoshi = 4321; })'  
-```
-This command sends 4'321 Satoshi (0.00004321 BTC) to the specified address.
-
-The `send` endpoint works by:
-
-- Getting the percentiles of the most recent fees on the Bitcoin network using the `bitcoin_get_current_fee_percentiles` API.
-- Fetching your unspent transaction outputs (UTXOs), using the `bitcoin_get_utxos` API.
-- Building a transaction, using some of the UTXOs from step 2 as input and the destination address and amount to send as output. The fee percentiles obtained from step 1 is used to set an appropriate fee.
-- Signing the inputs of the transaction using the `sign_with_ecdsa` API.
-- Sending the signed transaction to the Bitcoin network using the `bitcoin_send_transaction` API.
-
-The `send` endpoint returns the ID of the transaction it sent to the network. You can track the status of this transaction using a block explorer. Once the transaction has at least one confirmation, you should be able to see it reflected in your current balance.
-
-For more details, you can refer to the [Internet Computer documentation](https://internetcomputer.org/docs/current/samples/deploying-your-first-bitcoin-dapp#step-5-sending-bitcoin).
+WIP
 
 ## How do I convert ckETH to ETH and vice versa?
 
@@ -106,40 +86,17 @@ Please note that with the current ckETH integration, you will not be able to wit
 
 For more information, you can check out these sources: [source 1](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc#e10f), [source 2](https://medium.com/dfinity/a-data-driven-exploration-of-cketh-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978), [source 3](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#cketh-now-live).
 
-## Can I convert ICP to CKBTC?
+## Can I convert ICP to ckBTC?
 
-Yes, you can convert ICP to ckBTC. There are two main ways of acquiring ckBTC:
+ICP and ckBTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
-1. **Swap on DEXs:** If you have ICP, you can swap it for ckBTC on decentralized exchanges running on the Internet Computer, including [ICDex](http://icdex.io/) or [ICPSwap](https://icpswap.com/).
+## Can I convert ICP to ckETH?
 
-2. **Convert directly on the protocol:** You can also convert ICP to ckBTC directly using the ckBTC canisters on the protocol.
+ICP and ckETH are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
-For more details, you can refer to the [source](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration).
+## Can I convert ICP to BTC?
 
-Can I convert ICP to CKETH?
-
-Based on the information provided in the extracts, there are no direct instructions on how to convert ICP to ckETH. However, Ethereum holders can acquire ckETH by following these steps:
-
-1. Deposit your ETH: Ethereum holders can deposit Ether to the deposit function in the ckETH helper contract on Ethereum and specify their ICP principal or wallet address where they want their minted ckETH to appear.
-2. Mint ckETH: The ICP ckETH canister smart contract will then mint the same amount of ckETH to the indicated ICP principal or wallet address.
-3. Use ckETH: The ICP principal or wallet address can now use ckETH natively on the Internet Computer.
-4. Convert back to ETH any time: When the ICP principal wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH.
-
-For more details, you can refer to these sources: [source 1](https://medium.com/dfinity/a-data-driven-exploration-of-cketh-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978), [source 2](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc#e10f).
-
-Please note that you should have Ethereum (ETH) to acquire ckETH. If you have ICP and want to convert it to ckETH, you may need to first convert your ICP to ETH through a cryptocurrency exchange that supports ICP to ETH trading.
-
-Can I convert ICP to BTC?
-
-The Internet Computer (ICP) is integrated with the Bitcoin network at the protocol level, allowing canister smart contracts to create Bitcoin addresses and send and receive bitcoin directly on the Bitcoin network. However, the extracts do not provide specific information on converting ICP tokens directly to BTC. 
-
-You might be able to trade ICP for BTC on a decentralized exchange (DEX) running on the Internet Computer, such as ICDex. ICDex supports ICP's native Bitcoin integration, allowing you to buy ICP using your BTC. However, the reverse operation (selling ICP for BTC) is not explicitly mentioned in the extracts.
-
-For more detailed information, you may want to refer to the official documentation or forums of the Internet Computer project.
-
-Sources:
-- [Bitcoin Integration on ICP](https://internetcomputer.org/bitcoin-integration)
-- [ICDex](https://icdex.io)
+ICP and BTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
 ## How high are the fees?
 
@@ -157,7 +114,7 @@ There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, 
 [^2^]: [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 [^3^]: [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
-##  Where and how can I see the transactions for CKBTC or BTC transactions on ICP?
+## Where and how can I see the transactions for CKBTC or BTC transactions on ICP?
 
 You can view the transactions for ckBTC or BTC on the Internet Computer through the Internet Computer Dashboard. 
 
@@ -171,7 +128,7 @@ Furthermore, all ckBTC transactions are transparent and can be verified through 
 [^2^]: [Source](https://support.dfinity.org/hc/en-us/articles/6188295625748-What-is-the-Internet-Computer-Dashboard)
 [^3^]: [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
 
-##  How does ICP enable seamless transactions across different blockchains like CKBTC, CKETH, and Bitcoin integration?
+## How does ICP enable seamless transactions across different blockchains like CKBTC, CKETH, and Bitcoin integration?
 
 The Internet Computer (ICP) enables seamless transactions across different blockchains like ckBTC, ckETH, and Bitcoin through a combination of advanced cryptography and protocol-level integration.
 
@@ -192,7 +149,7 @@ The Internet Computer (ICP) enables seamless transactions across different block
 [^5^]: [Source](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview)
 
 
-##  Can I use ICP to perform cross-chain atomic swaps or transfers between CKBTC and ETH?
+## Can I use ICP to perform cross-chain atomic swaps or transfers between CKBTC and ETH?
 
 Yes, you can perform cross-chain swaps or transfers between ckBTC and ETH using the Internet Computer (ICP). ICP has integrated with the Bitcoin network and is in the process of integrating with the Ethereum network. This integration allows for seamless communication between these networks and ICP, enabling multi-chain functionality.
 
@@ -288,7 +245,7 @@ Hmm, I don't know enough to give you a confident answer yet. The extracts provid
 
 For more detailed information, you might find it helpful to review the [Internet Computer's documentation](https://internetcomputer.org/docs) or ask your question in the [Dfinity Developer Forum](https://forum.dfinity.org).
 
-##  Is there a guide or tutorial on how to use multichain features on the Internet Computer for beginners?
+## Is there a guide or tutorial on how to use multichain features on the Internet Computer for beginners?
 
 Yes, there are several resources available for beginners who want to use the multi-chain features on the Internet Computer. 
 
