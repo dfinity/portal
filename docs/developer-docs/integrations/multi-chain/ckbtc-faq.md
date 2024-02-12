@@ -269,7 +269,7 @@ Smart contracts on the Internet Computer, also known as canisters, can provide a
 
 5. **Multi-block Transactions**: The Internet Computer blockchain can stretch the execution of a single transaction across multiple blocks, allowing very-long running smart contract computations to be initiated.
 
-6. **Daemon Contracts**: Canister smart contracts can be configured so that they are automatically activated by the network itself at specified block intervals.
+6. **Daemon contracts**: Canister smart contracts can be configured so that they are automatically activated by the network itself at specified block intervals.
 
 7. **Serve Web Content**: Canister smart contracts can process HTTP requests, enabling them to host frontends of dapps, making them directly accessible through web browsers.
 
