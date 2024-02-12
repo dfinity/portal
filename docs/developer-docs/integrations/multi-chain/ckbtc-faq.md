@@ -1,4 +1,4 @@
-# CKBTC FAQ
+# ckBTC FAQ
 
 ## How do I write a smart contract that uses CKBTC?
 

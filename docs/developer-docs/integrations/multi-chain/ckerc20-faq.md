@@ -24,7 +24,7 @@
 
 ## How can I integrate CK-ERC20 into my existing applications or platforms?
 
-## What are the technical requirements for developers to work with CKETH?
+## What are the technical requirements for developers to work with ckETH?
 
 ## Security and Trustlessness
 
@@ -62,4 +62,4 @@
 
 ## How is CKBC being adopted in various industries or services?
 
-## State of CKETH process?
+## State of ckETH process?

@@ -434,17 +434,6 @@ const sidebars = {
             },
           ],
         },
-        {
-          type: "category",
-          label: "Multi-chain",
-          items: [
-            "developer-docs/multi-chain/user-facing-faq",
-            "developer-docs/multi-chain/ckbtc-faq",
-            "developer-docs/multi-chain/cketh-faq",
-            "developer-docs/multi-chain/signatures-faq",
-            "developer-docs/multi-chain/ckerc20-faq",
-          ],
-        },
       ],
     },
     {
@@ -541,29 +530,49 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Bitcoin",
+      label: "Multi-chain",
       items: [
-        "developer-docs/integrations/bitcoin/index",
-        "developer-docs/integrations/bitcoin/ckbtc",
+         //FAQs
+         {
+          type: "category",
+          label: "FAQs",
+          items: [
+            "developer-docs/integrations/multi-chain/user-faq",
+            "developer-docs/integrations/multi-chain/ckbtc-faq",
+            "developer-docs/integrations/multi-chain/cketh-faq",
+            "developer-docs/integrations/multi-chain/ckerc20-faq",
+          ],
+        },
+        //Bitcoin
         {
           type: "category",
-          label: "Advanced",
+          label: "Bitcoin",
           items: [
-            "developer-docs/integrations/bitcoin/read-state",
-            "developer-docs/integrations/bitcoin/submit-transactions",
-            "developer-docs/integrations/bitcoin/local-development",
-          ]
-        }
+            "developer-docs/integrations/bitcoin/index",
+            "developer-docs/integrations/bitcoin/ckbtc",
+            {
+              type: "category",
+              label: "Advanced",
+              items: [
+                "developer-docs/integrations/bitcoin/read-state",
+                "developer-docs/integrations/bitcoin/submit-transactions",
+                "developer-docs/integrations/bitcoin/local-development",
+              ]
+            }
+          ],
+        },
+        //Ethereum
+        {
+          type: "category",
+          label: "Ethereum",
+          items: [
+            "developer-docs/integrations/ethereum/overview",
+            "developer-docs/integrations/ethereum/evm-rpc",
+          ],
+        },
       ],
     },
-    {
-      type: "category",
-      label: "Ethereum",
-      items: [
-        "developer-docs/integrations/ethereum/overview",
-        "developer-docs/integrations/ethereum/evm-rpc",
-      ],
-    },
+   
     {
       type: "category",
       label: "DAOs",

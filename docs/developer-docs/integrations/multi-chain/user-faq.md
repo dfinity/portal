@@ -1,4 +1,4 @@
-# USER FACING FAQ
+# User facing FAQ
 
 
 ## How do I convert CKBTC to BTC and vice versa?
@@ -87,7 +87,7 @@ The `send` endpoint returns the ID of the transaction it sent to the network. Yo
 
 For more details, you can refer to the [Internet Computer documentation](https://internetcomputer.org/docs/current/samples/deploying-your-first-bitcoin-dapp#step-5-sending-bitcoin).
 
-## 5. How do I convert CKETH to ETH and vice versa?
+## How do I convert ckETH to ETH and vice versa?
 
 To convert ETH to ckETH and vice versa, you can follow these steps:
 
