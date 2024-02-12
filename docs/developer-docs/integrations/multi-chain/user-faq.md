@@ -6,6 +6,18 @@ The following questions and answers are from the POV of a user using consumer ap
 
 Questions about ckBTC from a user's POV.
 
+## What is ckBTC?
+
+Chain-key Bitcoin (ckBTC) is a token on the Internet Computer that is backed 1:1 by bitcoin (BTC). This means that 1 ckBTC can always be redeemed for 1 BTC and vice versa. Unlike other tokens pegged to bitcoin, the ckBTC token does not rely on a third-party bridge for the conversion between BTC and ckBTC, making it a substantially more secure alternative to “wrapped” tokens.
+
+One of the main advantages of ckBTC over regular bitcoin is its speed and cost of transfers. A transfer of ckBTC is finalized within a few seconds, which is significantly faster compared to transfers on the Bitcoin blockchain when waiting for 6 confirmations. Additionally, the cost of a ckBTC transfer is only 0.0000001 ckBTC, which is approximately two orders of magnitude lower than the Bitcoin miner fees.
+
+In terms of usage, ckBTC can be used in applications on the Internet Computer. For example, there is a point of sale app that allows users to accept ckBTC payments. This is made possible because the Internet Computer integrates directly with the Bitcoin network, allowing canisters (akin to smart contracts) on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network.
+
+Sources:
+- [Chain-key Bitcoin Overview](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
+- [Point of sale (POS) app for ckBTC](https://internetcomputer.org/docs/current/samples/pos#overview)
+
 ### How do I convert ckBTC to BTC and vice versa?
 
 To convert Bitcoin (BTC) to Chain-key Bitcoin (ckBTC), follow these steps:
