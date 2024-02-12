@@ -275,7 +275,7 @@ Smart contracts on the Internet Computer, also known as canisters, can provide a
 
 8. **Interoperability with Ethereum**: Canisters can directly call into smart contracts on Ethereum, and Ethereum smart contracts can directly call into canisters.
 
-9. **Interact with Bitcoin Network**: Canisters can read and write the state of the Bitcoin network without introducing new trust assumptions beyond the protocol itself.
+9. **Interact with the Bitcoin network**: Canisters can read and write the state of the Bitcoin network without introducing new trust assumptions beyond the protocol itself.
 
 : [Source](https://wiki.internetcomputer.org/wiki/Internet_Computer_overview#firstHeading)
 : [Source](https://internetcomputer.org/capabilities/multi-block-transactions)
