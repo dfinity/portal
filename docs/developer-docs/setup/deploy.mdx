@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Deploy
 
 ## Overview
@@ -86,4 +89,88 @@ If an init argument is set in `dfx.json` and set with the CLI command, the argum
 
 ## Setting tasks to execute once a canister has been deployed
 
+For certain workflows, it may be important to have a canister execute a task or call as soon as the canister is deployed or started. For this workflow, using timers can be useful.
 
+Here is an example:
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+This example uses a global timer that gets called immediately after the canister starts:
+
+```motoko
+
+system func timer(setGlobalTimer : Nat64 -> ()) : async () {
+  let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
+  setGlobalTimer(next); // absolute time in nanoseconds
+  print("Tick!");
+}
+```
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+This example creates a periodic timer that gets called immediately after the canister starts:
+
+```rust
+#[ic_cdk::init]
+fn init(timer_interval_secs: u64) {
+    let interval = std::time::Duration::from_secs(timer_interval_secs);
+    ic_cdk::println!("Starting a periodic task with interval {interval:?}");
+    ic_cdk_timers::set_timer_interval(interval, || {
+        COUNTER.fetch_add(1, Ordering::Relaxed);
+    });
+}
+```
+
+</TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { Canister, Duration, ic, TimerId, Tuple, update } from 'azle';
+
+export default Canister({
+    setTimers: update([Duration], Tuple(TimerId, TimerId), (delay) => {
+        const functionTimerId = ic.setTimer(delay, callback);
+
+        const capturedValue = '🚩';
+
+        const closureTimerId = ic.setTimer(delay, () => {
+            console.log(`closure called and captured value ${capturedValue}`);
+        });
+
+        return [functionTimerId, closureTimerId];
+    })
+});
+
+function callback() {
+    console.log('callback called');
+}
+```
+
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+from kybra import (
+    Duration,
+    ic,
+    TimerId,
+    update,
+)
+
+
+@update
+def set_timer(delay: Duration) -> TimerId:
+    return ic.set_timer(delay, timer_callback)
+
+
+def timer_callback():
+    ic.print("timer_callback")
+
+```
+
+</TabItem>
