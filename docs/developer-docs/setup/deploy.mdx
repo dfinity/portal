@@ -134,7 +134,7 @@ export default Canister({
     setTimers: update([Duration], Tuple(TimerId, TimerId), (delay) => {
         const functionTimerId = ic.setTimer(delay, callback);
 
-        const capturedValue = '🚩';
+        const capturedValue = '';
 
         const closureTimerId = ic.setTimer(delay, () => {
             console.log(`closure called and captured value ${capturedValue}`);
@@ -148,7 +148,6 @@ function callback() {
     console.log('callback called');
 }
 ```
-
 
 </TabItem>
 
