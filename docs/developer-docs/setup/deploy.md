@@ -38,6 +38,39 @@ dfx deploy --network ic
 
 Deploying canisters to the mainnet will cost cycles. [Learn more about cycles and how to acquire them](/docs/current/developer-docs/setup/cycles/cycles-faucet).
 
+## Setting a canister's init arguments
+
+You can set a canister's init arguments when the canister is deployed by passing the `--argument` flag in either the `dfx install` or `dfx deploy` commands:
+
+```
+dfx canister install <CANISTER_NAME> --argument "(arg in candid)"
+```
+
+```
+dfx deploy <CANISTER_NAME> --argument "(arg in candid)"
+```
+
+If several arguments should be used, an argument file can be defined with the `--argument-file` flag instead:
+
+```
+dfx deploy <CANISTER_NAME> --argument-file file.txt
+```
+
+Alternatively, init arguments can be set in `dfx.json` in `dfx` versions `v0.17.0` and newer:
+
+```json
+"canisters": {
+    "hello_backend": {
+      "candid": "src/hello_backend/hello_backend.did",
+      "package": "hello_backend",
+      "type": "rust",
+      "init_arg": "(arg in candid)"
+    },
+```
+
+If an init argument is set in `dfx.json` and set with the CLI command, the argument set in the CLI command is used.
+
+
 ## Resources
 
 - [Local deployment](/docs/current/developer-docs/setup/deploy-locally).
