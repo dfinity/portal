@@ -30,6 +30,12 @@ dfx deploy hello_backend
 
 These commands both deploy to the local network since they do not include a `--network` flag. 
 
+For more information on deploying to the local or mainnet networks:
+
+- [Local deployment](/docs/current/developer-docs/setup/deploy-locally).
+
+- [Mainnet deployment](/docs/current/developer-docs/setup/deploy-mainnet).
+
 - #### Step 5: To deploy your canisters to the mainnet, use the `--network ic` flag:
 
 ```
@@ -37,6 +43,14 @@ dfx deploy --network ic
 ```
 
 Deploying canisters to the mainnet will cost cycles. [Learn more about cycles and how to acquire them](/docs/current/developer-docs/setup/cycles/cycles-faucet).
+
+## Use a custom Motoko version with `dfx deploy`
+
+To use a custom Motoko version with `dfx deploy`, export the following environment variable:
+
+```
+DFX_MOC_PATH="$(vessel bin)/moc" dfx deploy
+```
 
 ## Setting a canister's init arguments
 
@@ -70,9 +84,6 @@ Alternatively, init arguments can be set in `dfx.json` in `dfx` versions `v0.17.
 
 If an init argument is set in `dfx.json` and set with the CLI command, the argument set in the CLI command is used.
 
+## Setting tasks to execute once a canister has been deployed
 
-## Resources
 
-- [Local deployment](/docs/current/developer-docs/setup/deploy-locally).
-
-- [Mainnet deployment](/docs/current/developer-docs/setup/deploy-mainnet).
