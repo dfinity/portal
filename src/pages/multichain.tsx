@@ -591,6 +591,12 @@ function MultichainPage() {
                     Additional resources
                   </h3>
                   <p className="flex flex-col gap-6 items-start mb-0">
+                  <Link
+                      className="link-primary"
+                      href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
+                    >
+                      <LinkArrowRight /> Multi-chain FAQs
+                    </Link>
                     <Link
                       className="link-primary"
                       href="/ecosystem?tag=Ethereum"
