@@ -3523,11 +3523,8 @@
   "oneLiner": "Digital identity + scores protocol and dapp", 
   "website": "https://relinkd.xyz/",
   "tags": [
-    "DID", 
-    "SSI", 
-    "Identity", 
-    "SocialFi", 
-    "Scores"
+    "Tools / Infrastructure", 
+    "SocialFi"
   ],
   "description": "Digital identity + scores protocol and dapp. We're building a decentralized identity protocol, aggregating on-chain and off-chain credentials into the scores for creating trustworthy self-sovereign identity and personal brand profiles.",
   "stats": "1000 users",
