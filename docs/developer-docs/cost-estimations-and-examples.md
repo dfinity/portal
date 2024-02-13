@@ -41,7 +41,7 @@ These estimates use a 13-node subnet. Costs will be different if deployed on a 3
 
 ### Single canister
 
-The cost estimate for a single canister that provides a service used by 5 users, each stores 100KB of data per user, uses inter-canister calls, and stores 5GB of data. The average number of request and response bytes per message is 351 and the number of instructions executed per message is 1_000_000. There are 100 daily messages generated per user. The canister performs 50 daily tasks, with 1_000_000 instructions executed per task. 
+The cost estimate for a single canister that provides a service used by 5 users, each stores 100KB of data per user, uses inter-canister calls, and stores 5GiB of data. The average number of request and response bytes per message is 351 and the number of instructions executed per message is 1_000_000. There are 100 daily messages generated per user. The canister performs 50 daily tasks, with 1_000_000 instructions executed per task. 
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
@@ -54,7 +54,7 @@ The cost estimate for a single canister that provides a service used by 5 users,
 
 ### Simple static website 
 
-The cost estimate for a simple static website using a single canister for the website's assets. It is not called by other canisters or performs HTTPS outcalls. It stores 5GB of data, has 100 total users, and has 10 daily active users that each generate 50 messages per day. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 1_000_000. 
+The cost estimate for a simple static website using a single canister for the website's assets. It is not called by other canisters or performs HTTPS outcalls. It stores 5GiB of data, has 100 total users, and has 10 daily active users that each generate 50 messages per day. The average number of request and response bytes per message is 351, and the number of instructions executed per message is 1_000_000. 
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
@@ -74,7 +74,7 @@ On ICP, the fees broken down in this document are the only fees that are charged
 
 ### Smart contract web dapp 
 
-The cost estimate for a simple smart contract-powered web dapp that uses two canisters. This dapp has 100 total users, 10 daily users that generate 1_000 messages per day. The average number of request and response bytes per message is 245, and the number of instructions executed per message is 1_442_185. The dapp stores 100KB of data per user and stores 10GB of user-independent data. 
+The cost estimate for a simple smart contract-powered web dapp that uses two canisters. This dapp has 100 total users, 10 daily users that generate 1_000 messages per day. The average number of request and response bytes per message is 245, and the number of instructions executed per message is 1_442_185. The dapp stores 100KB of data per user and stores 10GiB of user-independent data. 
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
@@ -87,7 +87,7 @@ The cost estimate for a simple smart contract-powered web dapp that uses two can
 
 ### Social media dapp with two canisters
 
-The cost estimate for a project that creates a social media dapp using two canisters with 200 total users, 50 daily users that generate 6_127 messages per day. The average number of request and response bytes per message is 245, and the number of instructions executed per message is 1_442_185. This project also uses 2000 HTTPS outcalls per day, with an average of 250 request and response bytes per outcall. The project stores 100KB of data per user and 25GB of user-independent storage.
+The cost estimate for a project that creates a social media dapp using two canisters with 200 total users, 50 daily users that generate 6_127 messages per day. The average number of request and response bytes per message is 245, and the number of instructions executed per message is 1_442_185. This project also uses 2000 HTTPS outcalls per day, with an average of 250 request and response bytes per outcall. The project stores 100KB of data per user and 25GiB of user-independent storage.
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
@@ -100,7 +100,7 @@ The cost estimate for a project that creates a social media dapp using two canis
 
 ### Decentralized service using threshold ECDSA and HTTPS outcalls
 
-The cost estimate for a project that creates a decentralized service with 5_000 total users, 100 daily users that generate 4_400 messages per day. The average number of request and response bytes per message is 500, and the number of instructions executed per message is 437_253. This project also uses 3691 HTTPS outcalls per day, with an average of 332 request and response bytes per outcall. The project stores 100KB of data per user and 150GB of user-independent storage.
+The cost estimate for a project that creates a decentralized service with 5_000 total users, 100 daily users that generate 4_400 messages per day. The average number of request and response bytes per message is 500, and the number of instructions executed per message is 437_253. This project also uses 3691 HTTPS outcalls per day, with an average of 332 request and response bytes per outcall. The project stores 100KB of data per user and 150GiB of user-independent storage.
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
 | ----------------- | ------------------------ | --------------------- | ----------------------- | -------------------- |
@@ -118,7 +118,7 @@ An enterprise-level project of this size could potentially cost several thousand
 
 ### Instant messaging dapp with thousands of canisters
 
-The cost estimate for a project that creates a messaging dapp where each user's data is stored in its own canister with 15_000 total users. 1_500 of these users are active daily, generating 5_700 messages each per day. The average number of request and response bytes per message is 624, and the number of instructions executed per message is 74_983. The project stores 10MB of data per user and 750GB of user-independent storage.
+The cost estimate for a project that creates a messaging dapp where each user's data is stored in its own canister with 15_000 total users. 1_500 of these users are active daily, generating 5_700 messages each per day. The average number of request and response bytes per message is 624, and the number of instructions executed per message is 74_983. The project stores 10MB of data per user and 750GiB of user-independent storage.
 
 
 | Transaction group | Cost per month in cycles | Cost per month in USD | Cost per year in cycles | Cost per year in USD |
