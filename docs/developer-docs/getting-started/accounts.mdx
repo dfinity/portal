@@ -16,6 +16,14 @@ Other ICP identity-related terms you may come across include:
 
 - Internet Identity: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead it uses a passkey that is stored in your local device's hardware.
 
+### Difference between a ledger and a wallet
+
+On ICP, a **ledger** is a system canister used to store accounts and their transactions. Users have a **ledger account identifier**. Ledger accounts are used to hold ICP tokens. To get information on your ledger account, you need to query the ledger system canister.
+
+A **wallet** on ICP is used to store cycles that can be sent to canisters to pay for their consumed resources. 
+
+In a typical developer workflow, a developer will receive ICP tokens to their ledger account, then convert those tokens into cycles, which are stored in a cycles wallet. 
+
 ## Creating your account
 
 To create a new developer account, use the [IC SDK](/docs/current/developer-docs/getting-started/install/) tool dfx:

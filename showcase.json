@@ -3516,5 +3516,29 @@
   "twitter": "https://twitter.com/icdragoneyes",
   "youtube": "",
   "submittableId": ""
+  },
+  {
+    "name": "EA Kazi",
+    "description": "A decentralized synergy of Fiver and Udemy providing a verifiable and trust system for the Web3 GIG Economy built on ICP.",
+    "website": "https://eakazi.africa",
+    "logo": "/img/showcase/ea-kazi_logo.webp",
+    "screenshots": [
+      "/img/showcase/ea-kazi_screenshot.webp"
+    ],
+    "video": "/img/showcase/ea-kazi_video.mp4",
+    "display": "Normal",
+    "id": "ea-kazi",
+    "oneLiner": "Elevating freelancing with trust and verifiability",
+    "stats": "4000",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/vinayakkalra/eakazi-jobs-icp, https://github.com/vinayakkalra/eakazi-backend",
+    "twitter": "https://twitter.com/eakazijobs",
+    "youtube": "https://youtu.be/hQprbPa5VF8",
+    "submittableId": "34907742",
+    "videoContentType": "video/mp4"
   }
 ]
