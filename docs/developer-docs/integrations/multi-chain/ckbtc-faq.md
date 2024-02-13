@@ -1,5 +1,9 @@
 # ckBTC FAQ
 
+The following questions and answers are from the POV developer who wants to know things such as "how does a canister send ckBTC?" or how to write code for smart contracts to hold, send, or receive, please see the other FAQs.
+
+For questions from the POV of a user who wishes to know how to hold, send, receive these tokens, please see the user FAQs.
+
 ## How do I write a smart contract that uses ckBTC?
 
 :::info
@@ -25,7 +29,7 @@ ckBTC aims to solve the following problems:
 
 1. **Lack of programmability**: The Bitcoin blockchain lacks a programmable layer as complex as other blockchains, such as Ethereum, and does not offer the capability to support complex smart contracts and build decentralized applications. ckBTC activates programming capabilities for Bitcoin, extending its properties to build decentralized applications on the most secure and proven cryptographic infrastructure.
 
-2. **Intermediary dependence**: Bitcoin-based commerce traditionally requires transactions to be processed through a traditional bridge or anonymous fiduciary. ckBTC eliminates the need for an intermediary by allowing the Internet Computer to manage the holding, redemption, and transacting of BTC.
+2. **Intermediary dependence**: Bitcoin-based commerce traditionally requires transactions to be processed through a traditional bridge or anonymous fiduciary. ckBTC eliminates the need for an intermediary by allowing a decentralized canister, running on the Internet Computer Protocol to manage the holding, redemption, and transacting of BTC in a decentralized an trustless manner.
 
 3. **Limited integration with DeFi**: Bitcoin has been largely unable to integrate smoothly with decentralized finance (DeFi) applications. ckBTC, being an ICP-native token backed 1:1 with real BTC and governed on chain by ICP smart contracts, facilitates bitcoin holders to participate in the DeFi ecosystem.
 
@@ -75,7 +79,7 @@ Sources:
 
 ## Can I use ckBTC just like I would use Bitcoin?
 
-Yes. As a Twin to Bitcoin, you can use ckBTC as a Bitcoin, or convert it back to Bitcoin whenever one wishes. 
+Yes. As a Twin to Bitcoin, you can use ckBTC in many decentralized apps and services with low fees and instant finality, while simultaneously ensuring the ckBTC is redeemable for the underlying Bitcoin.
 
 The conversion of ckBTC back to BTC and vice versa is controlled at the Internet Computer protocol-level, ensuring that no central authority has the power to restrict or censor these conversions. All transactions are transparent and can be verified through a real-time dashboard.
 
@@ -83,10 +87,7 @@ The conversion of ckBTC back to BTC and vice versa is controlled at the Internet
 
 Choosing ckBTC for your application or service comes with several advantages:
 
-1. **Trustless Bitcoin-based commerce**: ckBTC allows Bitcoin-based commerce to run natively on Internet Computer Protocol (ICP) smart contracts, eliminating the need for BTC transactions to be processed through a traditional bridge or anonymous fiduciary. 
-
-
-
+1. **Trustless Bitcoin-based commerce**: ckBTC allows Bitcoin-based commerce to run natively on Internet Computer Protocol (ICP) smart contracts, eliminating the need for BTC transactions to be processed through a traditional bridge or anonymous fiduciary.
 
 2. **Security**: ckBTC is truly decentralized, potentially reversing the negative DeFi trend caused by large scale hacks and rug pulls.
 
@@ -94,10 +95,7 @@ Choosing ckBTC for your application or service comes with several advantages:
 
 4. **Easy integration**: Compatible with the ICRC-1 token standard, and now also ICRC-2, ckBTC is easy to integrate into dapps running on the Internet Computer.
 
-
-
 5. **Programming capabilities**: With the integration of Bitcoin on ICP, canisters (highly capable smart contracts) have the ability to perform actions such as send, receive, and hold Bitcoins natively.
-
 
 6. **Low-latency payment solutions**: With ckBTC, a smart contract controlled 1:1 bitcoin-backed IC-native token, you can create low-latency payment solutions with fees of only a fraction of a cent.
 

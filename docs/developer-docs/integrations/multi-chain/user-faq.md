@@ -1,6 +1,8 @@
 # User facing FAQ
 
-The following questions and answers are from the POV of a user using consumer applications like NNS Frontend dapp or others. For questions from the POV of a developer who wants to know things such as "how does a canister send ckBTC?", please see the other FAQs.
+The following questions and answers are from the POV of a user using consumer applications like NNS Frontend dapp or others. They are meant to help consumers who want to hold, send, receive tokens.
+
+For questions from the POV of a developer who wants to know things such as "how does a canister send ckBTC?" or how to write code for smart contracts to hold, send, or receive, please see the other FAQs.
 
 ## ckBTC User Questions
 
@@ -27,6 +29,11 @@ To convert Bitcoin (BTC) to Chain-key Bitcoin (ckBTC), follow these steps:
 4. Send BTC to your NNS BTC address. Once you see this pop up window, you can copy your NNS BTC address, and send BTC there. Note, that since this is a real bitcoin transaction, it will take roughly an hour, and have the Bitcoin network's transaction fees. Once you acquire ckBTC, you can take advantage of its near instant finality (1-2s) and negligible transaction fees (10 satoshis).
 
 For more details, you can refer to this [support document](https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC#h_01HE64A4QKANB6JX8VERRP5Y80).
+
+:::caution
+Important: Please note that when converting BTC to ckBTC in the NNS dapp, there is an estimated inter-network fee of 0.00002 BTC. Sending less than 0.00002 BTC for conversion to ckBTC can result in loss of funds. 
+:::
+
 
 To convert ckBTC back to BTC, follow these steps:
 
@@ -55,7 +62,11 @@ For more details, you can refer to the [support documentation](https://support.d
 
 ### How do I receive ckBTC?
 
-WIP
+In order to send ckBTC to your nns dapp wallet  perform the following steps: 
+
+1. Connect to nns.ic0.app
+2. On the main wallet page, click on ckBTC QR Code Icon. A popup will appear. Scan this from the device that you are sending the ckBTC from. Alternatively you can copy the ckBTC address and send the ckBTC to this address. 
+3. On the third party service where you currently have ckBTC stored, select send and then paste the address you copied in the previous step.
 
 ### Can I convert ICP to ckBTC?
 
@@ -65,9 +76,9 @@ ICP and ckBTC are two separate tokens so there is no protocol way to convert one
 
 ICP and BTC are two separate tokens so there is no protocol way to convert one to another. Typically people who want to exchange one for the other use exchanges.
 
-### How high are the fees to send ckBTC?
+### What are the average ckBTC transfer fees?
 
-The transaction fees for ckBTC on the Internet Computer (ICP) are designed to be minimal. It is set at 0.0000001 ckBTC, which is equivalent to less than a cent or 10 satoshis. Users only need to pay the transaction fees of the Bitcoin network when converting Bitcoins to ckBTC or vice versa.
+The transaction fees for ckBTC on the Internet Computer (ICP) are designed to be minimal. It is currently configured to at 0.0000001 ckBTC, which is equivalent to less than a cent or 10 satoshis.
 
 When calling `retrieve_btc`, the formula for the ckBTC minter fee is determined as follows:
 ```
@@ -80,7 +91,7 @@ There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, 
 - [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847)
 - [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
-### Where and how can I see the transactions for ckBTC transactions?
+### How can I view the entire history of ckBTC transactions?
 
 You can view the transactions for ckBTC or BTC on the Internet Computer through the Internet Computer Dashboard.
 
@@ -132,11 +143,9 @@ Sources:
 
 ### Is there a user interface for managing my multi-chain assets on the Internet Computer?
 
-The extracts provided do not specifically mention a user interface for managing multi-chain assets on the Internet Computer. However, they do mention that the Internet Computer enables the creation of decentralized applications and services that can interact with multiple blockchains. These applications could potentially provide a user interface for managing multi-chain assets.
+Yes, Internet Computer enables the creation of decentralized applications and services that can interact with multiple blockchains. The [NNS Frontend dapp](https://nns.ic0.app/) is an example decentralized application built on the Internet Computer featuring a wallet to allow users to manage chain key tokens such as ckBTC and ckETH on the IC.
 
-For example, canister smart contracts on the Internet Computer can interact with other blockchains like Bitcoin and Ethereum, and process their tokens. They can also create accounts on any other blockchain and sign transactions that can run on their networks. This functionality could be used to build a user interface for managing multi-chain assets.
-
-However, without more specific information, it's not possible to provide a definitive answer. For more details, you may want to check the [Internet Computer documentation](https://internetcomputer.org/docs) or ask on the [DFINITY forum](https://forum.dfinity.org).
+For more details, you may want to check the [Internet Computer documentation](https://internetcomputer.org/docs) or ask on the [DFINITY forum](https://forum.dfinity.org).
 
 ### How does ICP ensure the security and privacy of my cross-chain transactions?
 
@@ -164,7 +173,7 @@ Internet Computer (ICP) ensures the security and privacy of your cross-chain tra
 
 Yes, you can track the status of your transactions on the Internet Computer dashboard. The [ICP Transactions](https://dashboard.internetcomputer.org/transactions) page provides a real-time log of all purchases and transfers of ICP. When you purchase ICP through an exchange or transfer ICP between hardware wallets, this page will populate with that transaction information. Each transaction is given its own specific hash, and is logged with the appropriate sender ID, receiver ID, amount, fee, and timestamp. This information is easily accessible and crucial for transparency.
 
-However, the extracts provided do not specify whether the dashboard supports tracking of  multi-chain transactions. For more detailed information, you may want to refer to the [Internet Computer Dashboard](https://dashboard.internetcomputer.org/) directly.
+For more detailed information, you may want to refer to the [Internet Computer Dashboard](https://dashboard.internetcomputer.org/) directly.
 
 Sources:
 - [What is the Internet Computer Dashboard?](https://support.dfinity.org/hc/en-us/articles/6188295625748-What-is-the-Internet-Computer-Dashboard)
@@ -172,19 +181,11 @@ Sources:
 
 ### What are the steps involved in setting up a multi-chain wallet on the Internet Computer?
 
-The NNS frontend dapp serves as a multi-chain wallet so one can hold many types of tokens such as ICP, ckBTC, ckETH, etc.
+The [NNS frontend dapp](https://nns.ic0.app/) serves as a multi-chain wallet enabling users to hold many types of tokens such as ICP, ckBTC, ckETH, etc.
 
 ### How does ICP handle the conversion of tokens between different chains, such as converting ICP to ckBTC?
 
-The Internet Computer (ICP) provides a mechanism to swap between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH. Tools like [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/) can be used for this purpose. On ICPSwap, for instance, you can connect to the dapp with several different wallet types, such as Internet Identity, NFID, Bitfinity and more. Then, you can select the type of token you'd like to swap for another, such as ICP, and enter the value you'd like to swap. Finally, select the token you'd like to receive in return for your ICP.
-
-Chain-key tokens are a more secure alternative to traditional wrapping of tokens. A chain-key token, like Chain-Key Bitcoin (ckBTC), is a token on ICP with a 1:1 backing with real bitcoin held 100% on chain on ICP by a smart contract.
-
-To convert ckBTC to and from BTC, end users interact with a different smart contract, namely the ckBTC minter. The conversion from BTC to ckBTC operates as follows:
-1. An end user first transfers some BTC to a user-specific Bitcoin deposit address. 
-2. The end user notifies the ckBTC minter smart contract of the new deposited UTXO, by asking the minter to update the user’s balance.
-3. The minter smart contract then uses the Internet Computer’s Bitcoin integration to retrieve all the UTXOs owned by the minter-controlled, but user-specific deposit address. 
-4. Finally, the minter instructs the ledger to mint new ckBTC for all new UTXOs at a 1:1 ratio.
+The Internet Computer (ICP) has a rich ecosystem of DeFi apps and services such as AMM's and Decentralized exchanges which enable swapping between tokens, such as ICP, an ICRC-1 token, or a chain-key token such as ckBTC or ckETH. Tools like [ICPSwap](https://app.icpswap.com/swap), [Sonic](https://www.sonic.ooo/), and [ICLight](https://iclight.io/) can be used for this purpose. On ICPSwap, for instance, you can connect to the dapp with several different wallet types, such as Internet Identity, NFID, Bitfinity and more. Then, you can select the type of token you'd like to swap for another, such as ICP, and enter the value you'd like to swap. Finally, select the token you'd like to receive in return for your ICP.
 
 In the future, when the Internet Computer blockchain integrates with additional blockchains, more chain-key tokens will become available on ICP.
 
@@ -228,4 +229,4 @@ In the future, ICP aims to become fully compatible with the Ethereum Virtual Mac
 
 ### Can I use my existing hardware wallets or mobile apps to manage my multi-chain assets on the Internet Computer?
 
-WIP
+You can see documenation here on using Ledger nanos and other hardware wallets: [hardware wallets](https://support.dfinity.org/hc/en-us/articles/8760495850900-How-do-I-use-my-Ledger-Nano-with-the-Internet-Computer).

@@ -1,9 +1,10 @@
 # ckETH FAQ
 
+The following questions and answers are from the POV developer who wants to know things such as "how does a canister send ckBTC?" or how to write code for smart contracts to hold, send, or receive, please see the other FAQs.
+
+For questions from the POV of a user who wishes to know how to hold, send, receive these tokens, please see the user FAQs.
 
 ## How do I write a smart contract that uses ckETH?
-
-
 
 For detailed information and potential code examples, check out out the [ICP documentation](https://internetcomputer.org/docs), the [DFINITY forum](https://forum.dfinity.org), and the [ckETH minter documentation](https://github.com/dfinity/ic/blob/master/rs/ethereum/ckETH/minter/README.adoc).
 
@@ -22,9 +23,7 @@ Sources:
 - [A Data-Driven Exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197)
 - [The Purposes of the Internet Computer](https://medium.com/dfinity/announcing-internet-computer-mainnet-and-a-20-year-roadmap-790e56cbe04a#0289)
 
-
 ## How does ckETH relate to ETH? How is ckETH different from a regular ETH transaction? Can I use ckETH just like I would use ETH?
-
 
 The main difference between a ckETH transaction and a regular ETH transaction lies in the transaction fees and the blockchain they operate on. Regular ETH transactions occur on the Ethereum network and are subject to Ethereum's gas fees, which can be quite high. On the other hand, ckETH transactions occur on the Internet Computer blockchain, which has significantly lower transaction fees.
 
