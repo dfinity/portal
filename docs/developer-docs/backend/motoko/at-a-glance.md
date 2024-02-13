@@ -27,8 +27,8 @@ Edit the `src/<project_name>_frontend` files with HTML, JavaScript, and CSS that
 ## Starting the deployment environment
 
 Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment:
-- [Local deployment](../../setup/deploy-locally.md).
-- [Mainnet deployment](../../setup/deploy-mainnet.md).
+- [Local deployment](/docs/current/developer-docs/getting-started/deploy/local).
+- [Mainnet deployment](/docs/current/developer-docs/getting-started/deploy/mainnet).
 
 ## Register, build, and deploy locally or on the mainnet 
 

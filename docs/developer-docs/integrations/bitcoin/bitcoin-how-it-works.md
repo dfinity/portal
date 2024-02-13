@@ -70,7 +70,7 @@ The Bitcoin functionality including ECDSA chain-key signatures is available in a
 
 ### Local SDK
 
-In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](../../setup/install/index.mdx) during their development. Thus, IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA management canister APIs.
+In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](/docs/current/developer-docs/getting-started/install/) during their development. Thus, IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA management canister APIs.
 
 In contrast to ICP deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally-running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, the Internet Computer has integrated IC SDK with `bitcoind` in regtest mode to bring the best Bitcoin development experience to ICP. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
