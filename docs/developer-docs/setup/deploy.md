@@ -46,7 +46,7 @@ Deploying canisters to the mainnet will cost cycles. [Learn more about cycles an
 
 ## Use a custom Motoko version with `dfx deploy`
 
-To use a custom Motoko version with `dfx deploy`, export the following environment variable:
+To use a custom Motoko version with `dfx deploy`, export the following environment variable that indicates which Motoko base version you'd like `dfx` to use:
 
 ```
 DFX_MOC_PATH="$(vessel bin)/moc" dfx deploy
