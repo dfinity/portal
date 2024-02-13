@@ -3516,5 +3516,23 @@
   "twitter": "https://twitter.com/icdragoneyes",
   "youtube": "",
   "submittableId": ""
-  }
+  },
+  {
+    "id": "ic_siwe",
+    "name": "ic_siwe (Sign-In with Ethereum)",
+    "oneLiner": "Use your Ethereum wallet to sign in to the Internet Computer!",
+    "website": "https://github.com/kristoferlund/ic-siwe",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Rust support library and canister to enable Ethereum users to easily sign in to the Internet Computer. ic_siwe enhances the interoperability between Ethereum and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.",
+    "stats": "",
+    "logo": "/img/showcase/ic_siwe_logo.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/kristoferlund/ic-siwe",
+    "screenshots": [
+      "/img/showcase/ic_siwe_screenshot.png"
+    ],
+    "submittableId": "44265779"
+  }  
 ]
