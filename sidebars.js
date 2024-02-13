@@ -64,9 +64,7 @@ const sidebars = {
             },
           ],
         },
-      ],
-    },
-    {
+      {
       type: "category",
       label: "Quickstart guides",
       items: [
@@ -75,6 +73,8 @@ const sidebars = {
           label: "Quickstart for React developers",
           id: "developer-docs/setup/react-quickstart",
         },
+      ],
+    },
       ],
     },
     {
