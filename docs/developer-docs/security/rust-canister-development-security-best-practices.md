@@ -301,7 +301,7 @@ In the first approach, the cleanup callback is used to recover from unexpected p
 
 We proceed to discuss “journaling”, which is currently our recommended way of addressing the problem at hand. 
 
-### Journaling
+#### Journaling
 
 Journaling can be used for ensuring that tasks are completed correctly in an asynchronous context, where any instruction or async task can fail. Journaling is generally useful in any security critical application canister on the IC. The journaling concept we describe here is inspired and adapted from journaling in file systems.
 
