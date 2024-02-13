@@ -287,7 +287,7 @@ The naïve recommendation to address the security concern described above would 
 
 - The implementation can be involved and could panic due to bugs, such as index out-of-bounds errors or panics (expect, unwrap) that should supposedly never happen.
 
-- It is hard to make sure the callback or cleanup doesn’t run into the instruction limit (and thus trap), because the number of instructions required can in general not be predicted and may e.g. depend on the data being processed. 
+- It is hard to make sure the callback or cleanup doesn’t run into the instruction limit (and thus traps), because the number of instructions required can in general not be predicted and may e.g. depend on the data being processed. 
 
 Due to these reasons, while it is easy to recommend “avoiding traps”, this is actually hard to achieve in practice. So in our view, code should be written so that it can deal even with unexpected traps due to bugs or hitting the instruction limits. We discuss two approaches:
 
