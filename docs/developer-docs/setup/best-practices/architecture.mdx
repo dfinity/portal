@@ -32,8 +32,6 @@ One of the most important decisions when designing a dapp is determining the pro
 
     - Canisters providing a reusable service can be configured as ['pullable'](/docs/current/developer-docs/setup/pulling-canister-dependencies) and re-used in other projects through [`dfx deps`](/docs/current/references/cli-reference/dfx-deps). 
 
-    - Multi-canister projects utilize [inter-canister calls](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-2/2.2-advanced-canister-calls/), which are calls made between two or more canisters. 
-
     Example use cases:
 
     - A fullstack dapp with a frontend application and several backend functionality canisters.
@@ -52,30 +50,14 @@ One of the most important decisions when designing a dapp is determining the pro
 
     An example multi-canister project can be found in the [DFINITY examples repo](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
 
-- **Personal canister projects**: Uses automatic canister generation and deployment for each user that registers with the application. This architecture often also includes several specific-purpose canisters that provide the application's functionality, but each user has their own canister with their personal user data. In some applications, the user has ownership and control of their personal canisters, though in other instances they do not. Benefits of using a personal canister architecture include:
-
-    - Highly scalable due to optimizations regarding usable memory, transactions per second, and total inter-canister calls. 
-
-    - For applications where the user owns their canister, this architecture enables user empowerment and increased data ownership. 
-
-    This approach can become costly quickly. If an application has an influx of user sign-ups, the developer is responsible for the gas cost of deploying hundreds or thousands of canisters. 
-
-    Example use cases:
-
-    - A chat dapp where the user owns their conversation history.
-
-    - A social media dapp where the user owns their profile. 
-
-    - A file storage dapp where the user owns their uploaded data. 
-
 ## Architectures compared 
 
-| Feature | Single | Multi | Personal | 
-|---------|--------|-------|----------|
-| Management | Single canister to manage. | Multiple canisters to manage, but each canister has a specific function. | Complex, canister management needs to be automated with another canister.|
-| Scalability | Hard to scale for large projects. | Better scalability than single projects. | Highly scalable and optimizable. |
-| Reusability | Typically can't be reused. | Service-specific canisters can be reused in other projects. | User data canisters cannot be reused for different applications.|
-| Cost | Typically relatively low, but will depend on total number of resources used. | Larger cost than single canister, but will vary drastically based on total number of canisters and resources used. | Traditionally the most expensive architecture, and costs increase in correlation with number of users on the application. |
+| Feature | Single | Multi | 
+|---------|--------|-------|
+| Management | Single canister to manage. | Multiple canisters to manage, but each canister has a specific function. |
+| Scalability | Hard to scale for large projects. | Better scalability than single projects. | 
+| Reusability | Typically can't be reused. | Service-specific canisters can be reused in other projects. | 
+| Cost | Typically relatively low, but will depend on total number of resources used. | Larger cost than single canister, but will vary drastically based on total number of canisters and resources used. | 
 
 ## Architecture best practices
 
@@ -86,10 +68,6 @@ Serving individual services in their own canisters makes it easy to call, manage
 ### Recommendation: End-users should interact with a dapp from a frontend application
 
 For the best user experience, end-users should interact with dapps from a frontend application. Using a frontend application provides users with a familiar interface to interact with dapps, while the alternative (calling the canister via the CLI or Candid) can be difficult for non-technical users and lead to a poor user experience. 
-
-### Recommendation: For better data ownership, separate each user's data into their own canister
-
-Developers that use the **personal canister** architecture can enable users to own their data by providing them ownership of their canister. If the user doesn't own their own canister, they do not have full ownership of their data. 
 
 ### Recommendation: Use multiple keys to further secure assets
 
