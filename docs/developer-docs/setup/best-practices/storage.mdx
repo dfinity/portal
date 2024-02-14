@@ -21,7 +21,7 @@ There are two forms of storage available to ICP canisters: **heap memory** and *
 
 ### Recommendation: Use stable memory directly.
 
-It is recommended to use stable memory directly, such as through stable structures, for any data that is important. Linking data to your canister's Wasm binary and using pre/post upgrade hooks can be extremely risky. There are several areas for potential errors or bugs that can result in data loss. 
+It is recommended to use stable memory directly, such as through [stable structures](https://github.com/dfinity/stable-structures), for any data that is important. Linking data to your canister's Wasm binary and using pre/post upgrade hooks can be extremely risky. There are several areas for potential errors or bugs that can result in data loss. 
 
 ### Recommendation: Use heap memory for small datasets.
 
