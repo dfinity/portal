@@ -370,7 +370,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "HTTP Requests",
+                  label: "Making HTTP requests",
                   link: {
                     type: "doc",
                     id: "developer-docs/integrations/https-outcalls-overview",
