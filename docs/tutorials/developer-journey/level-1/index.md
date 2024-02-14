@@ -1,6 +1,6 @@
 # Level 1: Space cadet 
 
-- [1.1 Exploring a live demo](/docs/current/tutorials/developer-journey/level-0/1.1-live-demo): Before you begin developing your own dapps, let's explore a live, deployed canister that utilizes the Motoko playground through the `dfx deploy --playground` command. This module covers:
+- [1.1 Exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo): Before you begin developing your own dapps, let's explore a live, deployed canister that utilizes the Motoko playground through the `dfx deploy --playground` command. This module covers:
     - Overview of Motoko Playground.
     - An overview of the `dfx deploy --playground` command.
     - Deploying a canister to Motoko Playground using `dfx`.
