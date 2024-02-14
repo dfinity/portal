@@ -12,7 +12,7 @@ For detailed information on how it works, please refer to the [HTTPS outcalls - 
 
 ## How to Make a Request
 
-For detailed information on how to utilize this feature, please refer to the [HTTPS Outcalls - How to Use](./https-outcalls-how-to-use.md) page.
+For detailed information on how to utilize this feature, please refer to the [HTTPS outcalls - How to use](./https-outcalls-how-to-use.md) page.
 
 The documentation includes examples demonstrating how to make the following types of requests:
 - [GET Request](./https-outcalls-get.mdx)
