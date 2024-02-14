@@ -6,7 +6,7 @@ There are two forms of storage available to ICP canisters: **heap memory** and *
 
 **Heap memory** is a canister's Wasm memory. This memory does not store data long-term. The heap memory is cleared each time a canister is upgraded. Heap memory is limited to 4GiB. It is used by default for data such as variable values, arguments passed to a canister, and the result of a method's execution.
 
-**Stable memory** is a secondary storage type that is used to store data long-term. Stable memory data is persisted across all canister processes, including canister upgrades. Stable memory is limited to 400GiB. To use stable memory, you must anticipate which data you want to persist across different canister processes and states. 
+**Stable memory** is a secondary storage type that is used to store data long-term. Stable memory data is persisted throughout the canister's lifetime, including canister upgrades. Stable memory is limited to 400GiB. To use stable memory, you must anticipate which data you want to persist across different canister processes and states. 
 
 | Memory feature | Heap memory | Stable memory |
 |----------------|-------------|---------------|
