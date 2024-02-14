@@ -276,7 +276,7 @@ const sidebars = {
               type: "category",
               label: "Arguments",
               items: [
-                "developer-docs/backend/arguments/variants",
+                "developer-docs/backend/arguments",
               ],
             },
             {
