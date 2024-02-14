@@ -274,6 +274,13 @@ const sidebars = {
           items: [
             {
               type: "category",
+              label: "Arguments",
+              items: [
+                "developer-docs/backend/arguments/variants",
+              ],
+            },
+            {
+              type: "category",
               label: "Candid",
               items: [
                 "developer-docs/backend/candid/candid-concepts",
