@@ -273,11 +273,9 @@ const sidebars = {
           label: "Call",
           items: [
             {
-              type: "category",
-              label: "Arguments",
-              items: [
-                "developer-docs/backend/arguments",
-              ],
+              type: "doc",
+              label: "Passing in arguments",
+                id: "developer-docs/backend/arguments",
             },
             {
               type: "category",
