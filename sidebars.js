@@ -373,7 +373,7 @@ const sidebars = {
                   label: "Make an HTTP request",
                   link: {
                     type: "doc",
-                    id: "developer-docs/integrations/https-outcalls-overview",
+                    id: "developer-docs/integrations/https-outcalls/https-outcalls-overview",
                   },
                   items: [],
                 },
