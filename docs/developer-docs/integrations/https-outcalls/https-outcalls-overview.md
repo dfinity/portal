@@ -1,4 +1,4 @@
-# Make an HTTP Request
+# Make an HTTP request
 
 ## Overview 
 
