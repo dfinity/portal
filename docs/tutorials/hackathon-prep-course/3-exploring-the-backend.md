@@ -293,7 +293,7 @@ Then, to install all packages specified in the `mops.toml` file, use the command
 mops install
 ```
 
-You can learn more about Mops in the documentation [here](../developer-journey/level-3/3.1-package-managers.md).
+You can learn more about Mops in the documentation [here](/docs/current/tutorials/developer-journey/level-3/3.1-package-managers).
 
 ## Next steps
 
