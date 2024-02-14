@@ -4,7 +4,7 @@
 
 Canister smart contracts can make a request to a URL using [HTTPS Outcalls](https://internetcomputer.org/https-outcalls). Canister smart contracts can make HTTPS outcalls to specified URLs to directly obtain off-chain data, or to interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure.
 
-An HTTPS outcall mechanism for smart contracts enables a wide range of applications. For example, oracle services can directly integrate with ICP in a trustless manner, and dapps can provide user notifications and anything else that requires communication with servers on the Internet.
+HTTPS outcalls enable a wide range of applications. For example, oracle services can directly integrate with ICP in a trustless manner, and dapps can provide user notifications or anything else that requires communication with servers on the Internet.
 
 ## How it works
 
