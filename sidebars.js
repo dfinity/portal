@@ -388,8 +388,18 @@ const sidebars = {
           items: [
             {
               type: "doc",
+              label: "Architecture",
+              id: "developer-docs/setup/best-practices/architecture",
+            },
+            {
+              type: "doc",
               label: "General",
               id: "developer-docs/production/best-practices",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/setup/best-practices/storage",
             },
           ],
         },
