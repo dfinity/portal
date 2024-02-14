@@ -22,7 +22,7 @@ By default, a canister's stable memory is empty. The maximum storage limit for s
 
 ## Storage cost
 
-Storage cost is calculated on the GB of storage used by a canister per second, costing `127_000` cycles on a 13-node subnet and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.431 and $1.127 respectively for storing 1 GB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both. 
+Storage cost is calculated on the GiB of storage used by a canister per second, costing `127_000` cycles on a 13-node subnet and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.431 and $1.127 respectively for storing 1 GiB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both. 
 
 You can learn more about storage costs [here](/docs/current/developer-docs/gas-cost).
 

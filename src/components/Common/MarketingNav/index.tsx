@@ -143,6 +143,128 @@ const AuxItems: React.FC<{ items: AuxItem[] }> = ({ items }) => {
   );
 };
 
+const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
+  const [selectedSectionIndex, setSelectedSectionIndex] =
+    React.useState<number>(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (isActive) {
+      setSelectedSectionIndex(0);
+    }
+  }, [isActive]);
+
+  return (
+    <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+      <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
+        <div className="flex-1 flex">
+          {item.sections.length > 1 && (
+            <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
+              {item.sections.map((section, index) => (
+                <button
+                  key={section.name}
+                  onMouseEnter={() => setSelectedSectionIndex(index)}
+                  onClick={() => setSelectedSectionIndex(index)}
+                  className={`text-left appearance-none border-none rounded-xl font-circular tw-heading-7 px-4 py-6 ${
+                    selectedSectionIndex === index
+                      ? "text-infinite bg-white"
+                      : "text-[#666] bg-transparent"
+                  }`}
+                >
+                  {section.name}
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="flex  flex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
+            <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
+              {item.sections[selectedSectionIndex].items.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={clsx(
+                    isCurrentPage(item.href, location.pathname)
+                      ? "text-infinite"
+                      : "text-black",
+                    "hover:no-underline group/item hover:text-infinite flex flex-col"
+                  )}
+                >
+                  <span className="tw-heading-7 inline-flex gap-2 items-center">
+                    {item.name}
+
+                    {isLinkExternal(item.href) && (
+                      <LinkArrowUpRight className="w-[14px] h-[14px]" />
+                    )}
+                  </span>
+
+                  <span
+                    className={clsx(
+                      isCurrentPage(item.href, location.pathname)
+                        ? "text-infinite"
+                        : "text-black/60",
+                      "tw-title-navigation-on-page group-hover/item:text-infinite whitespace-nowrap"
+                    )}
+                  >
+                    {item.description}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            {item.sections[selectedSectionIndex].featured && (
+              <div className="flex-1 pl-6">
+                <Link
+                  style={{
+                    backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
+                  }}
+                  className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
+                  href={item.sections[selectedSectionIndex].featured.href}
+                >
+                  <span className="tw-heading-5 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                    {item.sections[selectedSectionIndex].featured.title}
+                  </span>
+                  <span className="flex-1 text-right">
+                    <FeaturedArrowRight />
+                  </span>
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center">
+          {item.auxItems.map((item) => (
+            <Link
+              className="tw-button-xs whitespace-nowrap flex items-center gap-2 hover:no-underline hover:text-black"
+              key={item.name}
+              href={item.href}
+            >
+              {item.name}
+              <LinkArrowUpRight className="w-[14px]" />
+            </Link>
+          ))}
+          <div className="flex-1"></div>
+          <div className="flex gap-7 items-center">
+            {item.socialIcons &&
+              item.socialIcons.map((icon) => (
+                <Link href={icon.href} className="w-5 h-5" key={icon.label}>
+                  <img src={icon.iconUrl} alt={icon.label} />
+                </Link>
+              ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+function isCurrentPage(href: string, pathname: string) {
+  const cleanHref = href
+    .replace(/#.*$/, "") // remove hash
+    .replace(/\?.*$/, "") // remove query string
+    .replace(/\/$/, ""); // remove trailing slash
+
+  return pathname == cleanHref;
+}
+
 const MarketingNav = () => {
   const { siteConfig } = useDocusaurusContext();
   const nav = siteConfig.customFields.marketingNav as MarketingNavType;
@@ -150,11 +272,9 @@ const MarketingNav = () => {
   const [secondaryMobileNavOpen, setSecondaryMobileNavOpen] = React.useState<
     false | number
   >(false);
-  const [selectedSection, setSelectedSection] = React.useState<Section | null>(
-    nav.mainItems[0].sections[0]
-  );
-
-  const location = useLocation();
+  const [selectedFlyoutIndex, setSelectedFlyoutIndex] = React.useState<
+    number | null
+  >(null);
 
   const hiddenRef = React.useRef(false);
   const lastScrollPosRef = React.useRef(0);
@@ -242,20 +362,12 @@ const MarketingNav = () => {
     }
   }
 
-  function showFlyout(item: NavItem) {
-    setSelectedSection(item.sections[0]);
+  function showFlyout(index) {
+    setSelectedFlyoutIndex(index);
   }
 
   function openSecondaryMobileNav(index: number) {
     setSecondaryMobileNavOpen(index);
-  }
-  function isCurrentPage(href: string) {
-    const cleanHref = href
-      .replace(/#.*$/, "") // remove hash
-      .replace(/\?.*$/, "") // remove query string
-      .replace(/\/$/, ""); // remove trailing slash
-
-    return location.pathname == cleanHref;
   }
 
   return (
@@ -281,119 +393,18 @@ const MarketingNav = () => {
 
           {/* middle desktop items */}
           <div className="hidden md:flex gap-0 items-center">
-            {nav.mainItems.map((item) => (
+            {nav.mainItems.map((item, index) => (
               <div
                 className="active:outline active:outline-1 active:outline-white  text-black dark-hero:text-white m-0 tw-heading-7 group  cursor-pointer"
                 key={item.name}
-                onMouseEnter={() => showFlyout(item)}
+                onMouseEnter={() => showFlyout(index)}
                 tabIndex={0}
               >
                 <div className="rounded-full px-8 py-[2px] group-hover:bg-[#6E52AA] group-hover:text-white">
                   {item.name}
                 </div>
 
-                <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
-                  <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
-                    <div className="flex-1 flex">
-                      {item.sections.length > 1 && (
-                        <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
-                          {item.sections.map((section) => (
-                            <button
-                              key={section.name}
-                              onMouseEnter={() => setSelectedSection(section)}
-                              onClick={() => setSelectedSection(section)}
-                              className={`text-left appearance-none border-none rounded-xl font-circular tw-heading-7 px-4 py-6 ${
-                                selectedSection === section
-                                  ? "text-infinite bg-white"
-                                  : "text-[#666] bg-transparent"
-                              }`}
-                            >
-                              {section.name}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                      <div className="flex  flex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
-                        <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
-                          {selectedSection.items.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className={clsx(
-                                isCurrentPage(item.href)
-                                  ? "text-infinite"
-                                  : "text-black",
-                                "hover:no-underline group/item hover:text-infinite flex flex-col"
-                              )}
-                            >
-                              <span className="tw-heading-7 inline-flex gap-2 items-center">
-                                {item.name}
-
-                                {isLinkExternal(item.href) && (
-                                  <LinkArrowUpRight className="w-[14px] h-[14px]" />
-                                )}
-                              </span>
-
-                              <span
-                                className={clsx(
-                                  isCurrentPage(item.href)
-                                    ? "text-infinite"
-                                    : "text-black/60",
-                                  "tw-title-navigation-on-page group-hover/item:text-infinite whitespace-nowrap"
-                                )}
-                              >
-                                {item.description}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                        {selectedSection.featured && (
-                          <div className="flex-1 pl-6">
-                            <Link
-                              style={{
-                                backgroundImage: `url(${selectedSection.featured.image})`,
-                              }}
-                              className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
-                              href={selectedSection.featured.href}
-                            >
-                              <span className="tw-heading-5 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
-                                {selectedSection.featured.title}
-                              </span>
-                              <span className="flex-1 text-right">
-                                <FeaturedArrowRight />
-                              </span>
-                            </Link>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center">
-                      {item.auxItems.map((item) => (
-                        <Link
-                          className="tw-button-xs whitespace-nowrap flex items-center gap-2 hover:no-underline hover:text-black"
-                          key={item.name}
-                          href={item.href}
-                        >
-                          {item.name}
-                          <LinkArrowUpRight className="w-[14px]" />
-                        </Link>
-                      ))}
-                      <div className="flex-1"></div>
-                      <div className="flex gap-7 items-center">
-                        {item.socialIcons &&
-                          item.socialIcons.map((icon) => (
-                            <Link
-                              href={icon.href}
-                              className="w-5 h-5"
-                              key={icon.label}
-                            >
-                              <img src={icon.iconUrl} alt={icon.label} />
-                            </Link>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <Flyout item={item} isActive={selectedFlyoutIndex === index} />
               </div>
             ))}
           </div>

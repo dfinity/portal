@@ -951,6 +951,18 @@
     "submittableId": "34140445"
   },
   {
+    "id": "cycleops",
+    "name": "CycleOps",
+    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://cycleops.dev",
+    "twitter": "https://twitter.com/CycleOps",
+    "logo": "/img/showcase/cycleops_logo.png",
+    "submittableId": "36320431"
+  },
+  {
     "id": "canistergeek",
     "name": "Canistergeek",
     "oneLiner": "IC canister management tool",
@@ -2470,18 +2482,6 @@
     "screenshots": []
   },
   {
-    "id": "cycleops",
-    "name": "CycleOps",
-    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "website": "https://cycleops.dev",
-    "twitter": "https://twitter.com/CycleOps",
-    "logo": "/img/showcase/cycleops_logo.png",
-    "submittableId": "36320431"
-  },
-  {
     "name": "NacDB",
     "description": "A distributed database that allows seamless scanning of items, because it is split into small databases, each fitting in a canister.",
     "website": "https://github.com/vporton/NacDB",
@@ -3531,6 +3531,48 @@
   "logo": "/img/showcase/relinkdxyz.png",
   "usesInternetIdentity": false,
   "github": "https://github.com/relinkd",
-  "twitter": "https://twitter.com/relinkdxyz",
+  "twitter": "https://twitter.com/relinkdxyz"
+},
+{
+    "id": "ic_siwe",
+    "name": "ic_siwe (Sign-In with Ethereum)",
+    "oneLiner": "Use your Ethereum wallet to sign in to the Internet Computer!",
+    "website": "https://github.com/kristoferlund/ic-siwe",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Rust support library and canister to enable Ethereum users to easily sign in to the Internet Computer. ic_siwe enhances the interoperability between Ethereum and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.",
+    "stats": "",
+    "logo": "/img/showcase/ic_siwe_logo.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/kristoferlund/ic-siwe",
+    "screenshots": [
+      "/img/showcase/ic_siwe_screenshot.png"
+    ],
+    "submittableId": "44265779"
+  },  
+  {
+    "name": "EA Kazi",
+    "description": "A decentralized synergy of Fiver and Udemy providing a verifiable and trust system for the Web3 GIG Economy built on ICP.",
+    "website": "https://eakazi.africa",
+    "logo": "/img/showcase/ea-kazi_logo.webp",
+    "screenshots": [
+      "/img/showcase/ea-kazi_screenshot.webp"
+    ],
+    "video": "/img/showcase/ea-kazi_video.mp4",
+    "display": "Normal",
+    "id": "ea-kazi",
+    "oneLiner": "Elevating freelancing with trust and verifiability",
+    "stats": "4000",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/vinayakkalra/eakazi-jobs-icp, https://github.com/vinayakkalra/eakazi-backend",
+    "twitter": "https://twitter.com/eakazijobs",
+    "youtube": "https://youtu.be/hQprbPa5VF8",
+    "submittableId": "34907742",
+    "videoContentType": "video/mp4"
   }
 ]

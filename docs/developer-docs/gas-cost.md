@@ -102,7 +102,7 @@ To handle an incoming message or task such as a timer or heartbeat, the canister
 By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. It will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
 
 ### Storage
-Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/production/storage#heap-memory) and [stable memory](/docs/current/developer-docs/production/storage#stable-memory) per time. Storing 1 byte for 1 second costs 127k cycles, which amounts to 3.684B cycles (or $5.35 USD) for storing 1 MB for 1 year.
+Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/production/storage#heap-memory) and [stable memory](/docs/current/developer-docs/production/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to 3.684B cycles (or $5.35 USD) for storing 1 GiB for 1 year.
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 
@@ -158,18 +158,18 @@ The table below details the cost of compute, storage transmissions and canister 
 | Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K | $0.000000001337 | 1K / 13 * 34 | $0.000000003496 |
 | Ingress message reception | For every ingress message received. | Receiving canister | 1.2M | $0.000001603932 | 1.2M / 13 * 34 | $0.000004194899 |
 | Ingress byte reception | For every byte received in an ingress message. | Receiving canister | 2K | $0.000000002673 | 2K / 13 * 34 | $0.000000006991 |
-| GB storage per second | For storing a GB of data per second. | Canister with storage | 127K | $0.000000169749 | 127K / 13 * 34 | $0.000000443960 |
+| GiB storage per second | For storing a GiB of data per second. | Canister with storage | 127K | $0.000000169749 | 127K / 13 * 34 | $0.000000443960 |
 | | | | | | | | |
 | _HTTPS outcalls_ | | | | | | | |
 | HTTPS outcall (per call) | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`). | Sending canister | 49_140_000 | $0.000065681015 | 171_360_000 | $0.000229041490 |
 | HTTPS outcall request message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`). | Sending canister | 5_200 | $0.000000006950 | 13_600 | $0.000000018178 |
 | HTTPS outcall response message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`). | Sending canister | 10_400 | $0.000000013901 | 27_200 | $0.000000036356 |
 
-The following table shows the calculated storage cost per GB for a 30-day month:
+The following table shows the calculated storage cost per GiB for a 30-day month:
 
 | | | 13-node subnets | 34-node subnets |
 |----------------------|------------------------------------|-----------------------------|-----------------------------|
-| GB Storage Per Month | For storing a GB of data per month | $0.446150495 | $1.70 |
+| GiB Storage Per Month | For storing a GiB of data per month | $0.446150495 | $1.70 |
 
 ## Further readings
 
