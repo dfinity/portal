@@ -45,15 +45,14 @@ To learn more about arrays in Motoko, refer to the [Motoko language quick refere
 Rust uses the `vec` type to represent vectors (sequences, lists, arrays)
 
 ```
-vec { 0, 1, 2, 3 };
+let numbers = vec![0, 1, 2, 3 ];
 
 #[query]
-fn return_vector(vec: Vec<u32>) -> Vec<u32> {
-    vec
+fn return_vector(numbers: Vec<u32>) -> Vec<u32> {
+    numbers
 }
 
 ```
-To learn more about arrays in Rust, refer to the [Type array reference in Rust](../../references/candid-ref.md#type-variant--n--t--).
 
 </TabItem>
 
