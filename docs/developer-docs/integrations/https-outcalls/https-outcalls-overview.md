@@ -17,3 +17,11 @@ For detailed information on how to utilize this feature, please refer to the [HT
 The documentation includes examples demonstrating how to make the following types of requests:
 - [GET Request](./https-outcalls-get.mdx)
 - [POST Request](./https-outcalls-post.mdx)
+
+## Examples
+
+Refer to the following examples of HTTP Outcalls implementations in canister smart contracts:
+
+- Fetch price information for DeFi protocols using the [Exchange Rate Canister](https://github.com/dfinity/exchange-rate-canister)
+- Communicate with other chains using the [EVM RPC Canister](https://github.com/internet-computer-protocol/evm-rpc-canister)
+- Fetch information about Bitcoin Ordinals and Bitcoin Meta-Protocols using the [Ordinals Canister](https://github.com/sardariuss/ordinals_canister)
