@@ -1,0 +1,95 @@
+# Pass an array as an argument
+
+## Overview 
+
+This document aims to provide examples of passing in an array as a function argument.
+
+An `array` is a collection of items of the same data type.
+
+The following example defines an array of numbers and a function that returns the array.
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+Motoko differentiates between immutable arrays, which cannot be altered, and mutable arrays, which can be modified.
+
+To declare an immutable array (default):
+
+```
+let a : [Nat] = [0, 1, 2, 3];
+
+```
+
+To declare a mutable array, the [var _] syntax is used:
+
+```
+let a : [var Nat] = [var 0, 1, 2, 3] ;
+```
+
+To declare a function that returns an array:
+
+```
+public func returnArray(a: [Nat]) : [Nat] {
+    return a;
+}
+```
+
+The `Array` Motoko base library provides utility functions on arrays. To learn more about the `Array   ` Motoko base library, refer to the [Motoko base library reference on Array](https://internetcomputer.org/docs/current/motoko/main/base/Array). 
+
+To learn more about arrays in Motoko, refer to the [Motoko language quick reference on Arrays](https://internetcomputer.org/docs/current/motoko/main/language-manual/#arrays).
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+Rust uses the `vec` type to represent vectors (sequences, lists, arrays)
+
+```
+vec { 0, 1, 2, 3 };
+
+#[query]
+fn return_vector(vec: Vec<u32>) -> Vec<u32> {
+    vec
+}
+
+```
+To learn more about arrays in Rust, refer to the [Type array reference in Rust](../../references/candid-ref.md#type-variant--n--t--).
+
+</TabItem>
+
+<TabItem value="typescript" label="Typescript" default>
+
+Azle refers to the `Vec` type to represent the equivalent of an `array` in Typescript. This is because `Vec` aligns with the Candid type.
+
+```
+import { Canister, int32, Vec, query } from 'azle';
+
+let numbers = [0,1,2,3];
+
+export default Canister({
+    getNumbers: query([], Vec(int32), () => {
+        return numbers;
+    })
+});
+```
+To learn more about the `Vec` object in Typescript via Azle, refer to [The Azle book reference on Vec](https://demergent-labs.github.io/azle/reference/candid/vec.html?highlight=array#vec);
+
+</TabItem>
+
+<TabItem value="python" label="Python" default>
+
+Kybra refers to the `Vec` type to represent the equivalent of an `array` in Python. This is because `Vec` aligns with the Candid type.
+
+```
+from kybra import int32, query, Vec
+
+numbers = [0, 1, 2, 3]
+
+@query
+def get_numbers() -> Vec[int32]:
+    return numbers
+```
+To learn more about `Vec` in Python via Kybra, refer to [The Kybra book reference on Vec](https://demergent-labs.github.io/kybra/reference/candid/vec.html);
+
+</TabItem>
+</Tabs>
