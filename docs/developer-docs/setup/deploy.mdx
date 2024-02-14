@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-After you have built a canister, you can deploy it either on the local execution environment or on the mainnet. Your canister must be deployed before you can make calls to it and execute methods. 
+After you have built a canister, you can deploy it either on the [local execution environment](/docs/current/developer-docs/getting-started/deploy/local), a sandbox environment such as the [Motoko playground](/docs/current/developer-docs/setup/playground) or [on the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet). Your canister must be deployed before you can make calls to it and execute methods. 
 
 - #### Step 1:  Open a new terminal and navigate to your project directory.
 
@@ -19,16 +19,34 @@ dfx start
 
 An example `dfx.json` file can be found in the [default project template document](/docs/current/developer-docs/setup/first-canister)
 
-- #### Step 4:  Deploy all of the canisters within your project by running the following command:
+- #### Step 4:  Deploy all of the canisters within your project.
+
+To deploy locally, use the command:
 
 ```
 dfx deploy 
 ```
 
+To deploy to the [Motoko playground](/docs/current/developer-docs/setup/playground), use the command:
+
+```
+dfx deploy --playground
+```
+
+To deploy to the mainnet, use the command:
+
+```
+dfx deploy --network ic
+```
+
+Deploying canisters to the mainnet will cost cycles. [Learn more about cycles and how to acquire them](/docs/current/developer-docs/setup/cycles/cycles-faucet).
+
 This command deploys all canisters configured in your `dfx.json` file. To deploy just one canister, specify the canister's name:
 
 ```
-dfx deploy hello_backend
+dfx deploy hello_backend ## Deploy locally
+dfx deploy hello_backend --playground ## Deploy to the playground
+dfx deploy hello_backend --network ic ## Deploy to the mainnet
 ```
 
 These commands both deploy to the local network since they do not include a `--network` flag. 
@@ -37,15 +55,9 @@ For more information on deploying to the local or mainnet networks:
 
 - [Local deployment](/docs/current/developer-docs/setup/deploy-locally).
 
+- [Motoko playground](/docs/current/developer-docs/setup/playground).
+
 - [Mainnet deployment](/docs/current/developer-docs/setup/deploy-mainnet).
-
-- #### Step 5: To deploy your canisters to the mainnet, use the `--network ic` flag:
-
-```
-dfx deploy --network ic
-```
-
-Deploying canisters to the mainnet will cost cycles. [Learn more about cycles and how to acquire them](/docs/current/developer-docs/setup/cycles/cycles-faucet).
 
 ## Use a custom Motoko version with `dfx deploy`
 
@@ -89,7 +101,7 @@ If an init argument is set in `dfx.json` and set with the CLI command, the argum
 
 ## Setting tasks to execute once a canister has been deployed
 
-For certain workflows, it may be important to have a canister execute a task or call as soon as the canister is deployed or started. For this workflow, using timers can be useful.
+For certain workflows, it may be important to have a canister execute a task or call as soon as the canister is deployed or started. For this workflow, using [timers](/docs/current/developer-docs/backend/periodic-tasks) can be useful.
 
 Here is an example:
 
@@ -106,6 +118,8 @@ system func timer(setGlobalTimer : Nat64 -> ()) : async () {
   print("Tick!");
 }
 ```
+
+You can learn more in the [Motoko Timer library documentation](/docs/current/motoko/main/base/Timer).
 </TabItem>
 
 <TabItem value="rust" label="Rust">
