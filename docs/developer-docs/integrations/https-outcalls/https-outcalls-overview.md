@@ -10,7 +10,7 @@ An HTTPS outcall mechanism for smart contracts enables a wide range of applicati
 
 For detailed information on how it works, please refer to the [HTTPS outcalls - How it works](./https-outcalls-how-it-works.md).
 
-## How to Make a Request
+## How to make a request
 
 For detailed information on how to utilize this feature, please refer to the [HTTPS outcalls - How to use](./https-outcalls-how-to-use.md) page.
 
