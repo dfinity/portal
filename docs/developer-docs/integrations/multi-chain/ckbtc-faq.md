@@ -20,8 +20,10 @@ ckBTC is not a bridged or wrapped token; it is a direct link between the Bitcoin
 
 ckBTC also offers the first bonafide use case for bringing smart contracts to BTC. Building DeFi on ICP is more secure, faster, environmentally friendly, and cost-effective.
 
-: [Source](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
-: [Source](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#08ea)
+**Additional reading**
+
+- [ckBTC sparks a new era on the Internet Computer](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
+- [How ckBTC solves the dilemma of blockchain bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#08ea)
 
 ## What specific problem does ckBTC aim to solve within the Bitcoin ecosystem?
 
@@ -37,20 +39,18 @@ ckBTC aims to solve the following problems:
 
 5. **Security concerns with bridges**: ckBTC gets rid of the need for bridges, reducing the risks tied to them. This approach not only tackles security concerns but also launches Bitcoin into a world of better adaptability and user experiences.
 
-Sources:
-: [How ckBTC Solves the Dilemma of Blockchain Bridges Part 2](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
-: [ckBTC Sparks a New Era on the Internet Computer Part 4](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
-: [Unlocks Bitcoin-Based Web 3](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#08ea)
-: [ckBTC Sparks a New Era on the Internet Computer Part 1](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
-: [Why Bitcoin needs smart contracts > The Internet Computer Part 3](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
-: [Why Bitcoin needs smart contracts > The Internet Computer Part 2](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
+**Additional reading**
+
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
+- [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
+- [Why Bitcoin needs smart contracts > The Internet Computer](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
 
 ## How does ckBTC relate to Bitcoin?
 
-
 The Internet Computer integrates with the Bitcoin network at a protocol level, allowing ICP canister smart contracts to create Bitcoin addresses and send and receive bitcoin directly on the Bitcoin network. This integration is made up of two key building blocks: network integration and chain-key ECDSA. With these building blocks, canisters can directly and securely hold, receive, and send bitcoin seamlessly as if the Internet Computer and the Bitcoin network were one blockchain [source](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration).
 
-Sources:
+**Additional reading**
+
 - [Code Bitcoin on the Internet Computer](https://internetcomputer.org/bitcoin-integration)
 - [Chain-key tokens](https://internetcomputer.org/how-it-works/chain-key-tokens/)
 - [Chain-key Bitcoin developer documents](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckBTC) [source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading).
@@ -70,12 +70,14 @@ ckBTC is different from regular Bitcoin transactions in several ways:
 5. **Security**: ckBTC is cryptographically secured 1:1 by real bitcoin, and is issued and redeemed via canister smart contracts that are verifiable by anyone at any time. This eliminates the risk of depegging, a risk that exists with regular Bitcoin transactions.
 
 6. **Decentralization**: Every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges, and no traditional cloud providers that could act as attack vectors.
-Sources:
-: [Bitcoin-integration](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
-: [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
-: [Why Bitcoin needs smart contracts](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
-: [Bitcoin + ICP](https://internetcomputer.org/bitcoin-integration)
-: [What is ckBTC?](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin#what-is-ckBTC)
+
+**Additional reading**
+
+- [Bitcoin-integration](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
+- [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
+- [Why Bitcoin needs smart contracts](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
+- [Bitcoin + ICP](https://internetcomputer.org/bitcoin-integration)
+- [What is ckBTC?](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin#what-is-ckBTC)
 
 ## Can I use ckBTC just like I would use Bitcoin?
 
@@ -100,7 +102,9 @@ Choosing ckBTC for your application or service comes with several advantages:
 6. **Low-latency payment solutions**: With ckBTC, a smart contract controlled 1:1 bitcoin-backed IC-native token, you can create low-latency payment solutions with fees of only a fraction of a cent.
 
 7. **Verifiable**: All transfer activity and metrics of the two canister smart contracts are verifiable on chain. Issuing and redeeming ckBTC also goes through Know Your Transaction (KYT) checks to protect end users by ensuring no tainted bitcoin enters the Internet Computer blockchain or is transferred out to tainted Bitcoin addresses.
-Sources:
+
+**Additional reading**
+
 - [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
 - [Chain-key bitcoin: A decentralized bitcoin twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f
 
@@ -137,7 +141,6 @@ If you need further assistance, you can also ask questions in the [Internet Comp
 
 ## What are the technical requirements for developers to work with ckBTC?
 
-
 For more specific technical requirements, developers may want to refer to the [ckBTC API reference](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckBTC-reference) and the [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckBTC/minter) for ckBTC. They might also find it helpful to follow the [developer journey for ckBTC and Bitcoin integration](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin) and to look at examples of [deploying a Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) and [creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
 
 ## How does ckBTC ensure the security of the funds it handles?
@@ -157,13 +160,14 @@ ckBTC ensures the security of the funds it handles through several measures:
 6. **1:1 pegging**: Securing ckBTC 1:1 with BTC is crucial as it eliminates the risk of depegging.
 Sources:
 7. **Bitcoin integration at the protocol level**: ckBTC on the Internet Computer is part of a native integration with the Bitcoin network at the protocol level. This means that transactions occur directly between the two networks without any intermediary bridges.
-Sources:
-: [Taking security seriously: two top ICP features assessed by Trail of Bits](https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68#8e43)
-: [What you need to know about Bitcoin integration and ckBTC](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
-: [Trustless](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
-: [Architecture Part 2](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-: [No Middle Person](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
-: [How ckBTC Solves the Dilemma of Blockchain Bridges Part 1](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
+
+**Additional reading**
+
+- [Taking security seriously: two top ICP features assessed by Trail of Bits](https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68#8e43)
+- [What you need to know about Bitcoin integration and ckBTC](https://internetcomputer.org/bitcoin-integration/faq#bitcoin-integration)
+- [Chain-key_Bitcoin](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
+- [Chain key Bitcoin: a decentralized bitcoin twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
 
 ## Can I trust that my funds are safe when using ckBTC?
 
@@ -175,17 +179,13 @@ The ckBTC minter interacts with the KYT canister for "know-your-transaction" (KY
 
 ckBTC has been assessed for potential security risks, covering key areas such as double-spending of funds, denial-of-service attacks, and insufficient access controls.
 
-
 Every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges, and no traditional cloud providers that could act as attack vectors.
-
 
 The ckBTC smart contracts have been analyzed using TLA+ to eliminate potential bugs.
 
 However, it's important to note that while these measures significantly enhance the security of ckBTC, no system can be 100% immune from risks. Always exercise caution and due diligence when dealing with cryptocurrencies.
 
-
 ## How does ckBTC handle transactions across multiple blockchains?
-
 
 ICP nodes communicate with Bitcoin nodes to download the Bitcoin network’s blocks and maintain its Unspent Transaction Output (UTXO) set. Using this information, the Internet Computer acts as a sidechain and hosts a trustless “bitcoin twin” called ckBTC that can be directly processed by canister smart contract logic and transferred with 1 second finality at near zero cost.
 
@@ -193,8 +193,10 @@ To create ckBTC, a user transfers their bitcoin to a ckBTC address provided by t
 
 In the future, ckBTC will be available on other networks like Ethereum – also directly, and without bridges, thanks to chain-key cryptography integrations.
 
-: [Source](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
-: [Source](https://internetcomputer.org/multichain)
+**Additional reading**
+
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
+- [ICP multi-chain](https://internetcomputer.org/multichain)
 
 ## Are there any specific integrations with other blockchains like Ethereum that I should be aware of?
 
@@ -216,9 +218,11 @@ The Internet Computer's native Bitcoin integration allows you to build innovativ
 
 Developers can immediately begin writing canister smart contracts that make use of the Internet Computer’s new Bitcoin integration. Rather than “bridging” BTC into the Internet Computer, the integration implements Chain Key cryptography to establish a secure, direct interface with the Bitcoin ledger, making it “trustless” rather than reliant on an intermediary. This enables developers to build canister smart contracts that communicate with the Bitcoin network.
 
-: [Source](https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24#3a8b)
-: [Source](https://medium.com/dfinity/announcing-the-internet-computer-buidl-bitcoin-hackathon-powered-by-encode-club-70081b8d0406#8889)
-: [Source](https://medium.com/dfinity/bitcoin-smart-contracts-are-coming-to-internet-computer-defi-projects-dd6786078853#e28c)
+**Additional reading**
+
+- [Eliminating Smart Contract Bugs with TLA+](https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24#3a8b)
+- [Announcing the Internet Computer BUIDL Bitcoin Hackathon, powered by Encode Club](https://medium.com/dfinity/announcing-the-internet-computer-buidl-bitcoin-hackathon-powered-by-encode-club-70081b8d0406#8889)
+- [Bitcoin Smart Contracts Are Coming to Internet Computer DeFi Projects](https://medium.com/dfinity/bitcoin-smart-contracts-are-coming-to-internet-computer-defi-projects-dd6786078853#e28c)
 
 ## What kind of functionalities can these smart contracts provide?
 
@@ -245,7 +249,7 @@ Smart contracts on ICP, also known as canisters, can provide a wide range of fun
 
 ## What are the transaction fees associated with ckBTC?
 
-The transaction fees for ckBTC on the Internet Computer are designed to be minimal. It is set at 0.0000001 ckBTC, which is equivalent to less than a cent or 10 satoshis. Users only need to pay the transaction fees of the Bitcoin network when converting Bitcoins to ckBTC or vice versa [source](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847).
+The transaction fees for ckBTC on the Internet Computer are designed to be minimal. It is set at 0.0000001 ckBTC, which is equivalent to less than a cent or 10 satoshis. Users only need to pay the transaction fees of the Bitcoin network when converting Bitcoins to ckBTC or vice versa. See: [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847).
 
 In addition, there is a fee when bitcoins are retrieved. The formula for the ckBTC minter fee when calling `retrieve_btc` is determined as follows:
 
@@ -256,9 +260,9 @@ In addition, there is a fee when bitcoins are retrieved. The formula for the ckB
 &lt; 246*in + 7*out + 52 satoshi.
 ```
 
-The formula `246*in + 7*out + 52` is used to determine the ckBTC minter’s fee in satoshi. Since every transaction has at least one input and one output, the fee is at least 305 satoshi [source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading).
+The formula `246*in + 7*out + 52` is used to determine the ckBTC minter’s fee in satoshi. Since every transaction has at least one input and one output, the fee is at least 305 satoshi. See [Chain-key_Bitcoin wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading).
 
-There is also a Know Your Transaction (KYT) fee (currently 2000 satoshi) when converting BTC to ckBTC and vice versa [source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading).
+There is also a Know Your Transaction (KYT) fee (currently 2000 satoshi) when converting BTC to ckBTC and vice versa. See [Chain-key_Bitcoin wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading).
 
 ## How quickly can ckBTC transactions be finalized?
 
@@ -273,9 +277,11 @@ The ckBTC ledger is a canister, controlled by the NNS (specifically, the NNS roo
 
 The conversion of ckBTC back to BTC and vice versa is controlled at the Internet Computer protocol-level. This process is completely trustless and managed by automated software programs (smart contracts).
 
-: [Wiki > Governance of the Internet Computer](https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer#firstHeading)
-: [Wiki > Chain-key Bitcoin > Technical Details > ckBTC Ledger](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
-: [Dfinity > Trustless](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
+**Additional reading**
+
+- [Governance of the Internet Computer](https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer#firstHeading)
+- [ckBTC Ledger](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
 
 ## Is there a community-driven approach to decision-making?
 
@@ -285,7 +291,9 @@ Each node provider is verified and voted in by token holders via the NNS. This m
 
 This approach ensures that the Internet Computer remains decentralized and that decisions are made collectively by the community, rather than being controlled by a single entity.
 
-: [Medium > The Internet Computer blockchain takes a first step towards digital sovereignty in Europe](https://medium.com/dfinity/the-internet-computer-blockchain-takes-a-first-step-towards-digital-sovereignty-in-europe-782531894780#6f0c)
+**Additional reading**
+
+- [The Internet Computer blockchain takes a first step towards digital sovereignty in Europe](https://medium.com/dfinity/the-internet-computer-blockchain-takes-a-first-step-towards-digital-sovereignty-in-europe-782531894780#6f0c)
 
 ## Can you provide examples of current applications that utilize ckBTC?
 
@@ -302,13 +310,12 @@ Yes, there are several decentralized applications (dapps) on the Internet Comput
 
 You can follow these projects on Twitter to stay updated on their latest developments. 
 
-For more information about ckBTC and its integration with the Internet Computer, you can refer to the following resources:
+**Additional reading**
 
 - [Native Bitcoin on ICP](https://internetcomputer.org/bitcoin-integration)
 - [Chain-Key Technology](https://internetcomputer.org/how-it-works#Chain-key-technology)
 - [Native Bitcoin & ckBTC Developer Docs](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works)
-
-Source: [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#2f6e)
+- [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#2f6e)
 
 # Does ckBTC incorporate KYT?
 

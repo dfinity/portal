@@ -16,7 +16,8 @@ One of the main advantages of ckBTC over regular bitcoin is its speed and cost o
 
 In terms of usage, ckBTC can be used in applications on the Internet Computer. For example, there is a point of sale app that allows users to accept ckBTC payments. This is made possible because the Internet Computer integrates directly with the Bitcoin network, allowing canisters (akin to smart contracts) on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network.
 
-Sources:
+**Additional reading**
+
 - [Chain-key Bitcoin Overview](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
 ### How do I convert ckBTC to BTC and vice versa?
@@ -33,7 +34,6 @@ For more details, you can refer to this [support document](https://support.dfini
 :::caution
 Important: Please note that when converting BTC to ckBTC in the NNS dapp, there is an estimated inter-network fee of 0.00002 BTC. Sending less than 0.00002 BTC for conversion to ckBTC can result in loss of funds. 
 :::
-
 
 To convert ckBTC back to BTC, follow these steps:
 
@@ -58,7 +58,9 @@ As a user, to send ckBTC, you can follow these steps using your NNS wallet:
 6. Type in the amount you want to send or click "Max".
 7. Click "Continue", then confirm the transaction.
 
-For more details, you can refer to the [support documentation](https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC#h_01HE64A4QKANB6JX8VERRP5Y80).
+**Additional reading**
+
+- [How do I convert BTC to ckBTC in the NNS dapp?](https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC#h_01HE64A4QKANB6JX8VERRP5Y80)
 
 ### How do I receive ckBTC?
 
@@ -88,6 +90,8 @@ This formula is used to determine the ckBTC minter’s fee in satoshi. Since eve
 
 There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, when converting BTC to ckBTC and vice versa.
 
+**Additional reading**
+
 - [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847)
 - [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
@@ -96,6 +100,8 @@ There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, 
 You can view the transactions for ckBTC or BTC on the Internet Computer through the Internet Computer Dashboard.
 
 Furthermore, all ckBTC transactions are transparent and can be verified through a [real-time dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions), offering users and developers immediate insight into the flow of assets and the integrity of the conversion process.
+
+**Additional reading**
 
 - [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
 
@@ -134,7 +140,8 @@ Furthermore, ICP's Ethereum integration will include the creation of ckETH and c
 
 Please note that the Ethereum integration is still in development, and the full functionality may not be available yet. You can learn more about cross-chain integrations in the [documentation](https://internetcomputer.org/bitcoin-integration/).
 
-Sources:
+**Additional reading**
+
 - [Internet Computer Documentation](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/integrating-with-tokens#swapping-between-tokens)
 - [Internet Computer Ethereum Integration](https://internetcomputer.org/ethereum-integration)
 - [Internet Computer Developer Journey](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview)
@@ -161,7 +168,9 @@ Internet Computer (ICP) ensures the security and privacy of your cross-chain tra
 
 5. **Platform Privacy**: The Internet Computer runs a decentralized network, where data and computation are replicated across nodes in data centers located around the world. This decentralized structure ensures availability and integrity. Communication with the Internet Computer relies on a set of boundary nodes, which can see the IP address of the sending user, as well as which canister the user is sending it to and the payload. All communication to the Internet Computer and within it is encrypted.
 
-- [Internet Computer Docs](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/what-is-icp#cross-chain-interoperability)
+**Additional reading**
+
+- [Cross chain interoperability](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/what-is-icp#cross-chain-interoperability)
 - [Dfinity Blog - How ICP’s Bitcoin Integration Secures Private Keys Part 1](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846#6a5c)
 - [Dfinity Blog - How ICP’s Bitcoin Integration Secures Private Keys Part 2](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846#6a5c)
 - [Dfinity Blog - Securing cross-chain communication from Ethereum to the Internet Computer with an on-chain Light Client](https://medium.com/dfinity/securing-cross-chain-communication-from-ethereum-to-the-internet-computer-with-an-on-chain-light-fedfb4fb24b4#1329)
@@ -175,7 +184,8 @@ Yes, you can track the status of your transactions on the Internet Computer dash
 
 For more detailed information, you may want to refer to the [Internet Computer Dashboard](https://dashboard.internetcomputer.org/) directly.
 
-Sources:
+**Additional reading**
+
 - [What is the Internet Computer Dashboard?](https://support.dfinity.org/hc/en-us/articles/6188295625748-What-is-the-Internet-Computer-Dashboard)
 - [The Internet Computer Dashboard: Decentralization, Governance, Tokenomics, and More](https://medium.com/dfinity/the-internet-computer-dashboard-decentralization-governance-tokenomics-and-more-da4abb36f15f#ec91)
 
@@ -223,8 +233,9 @@ ICP is also working on an integration with Ethereum that will allow Ethereum sma
 
 In the future, ICP aims to become fully compatible with the Ethereum Virtual Machine (EVM), enabling developers to deploy Ethereum smart contracts directly on the ICP network. This will be achieved through a protocol-level ETH integration, which will initially use HTTPS outcalls to interact with Ethereum APIs to securely query and send transactions to the Ethereum network. These HTTPS outcalls will eventually be replaced by an on-chain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
 
+**Additional reading**
+
 - [Cross-chain interoperability](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/what-is-icp#cross-chain-interoperability)
-- [DFINITY Wows the Crowd at ETHDenver](https://medium.com/dfinity/dfinity-wows-the-crowd-at-ethdenver-7389f265e0dd#ae85)
 - [Full protocol integration](https://internetcomputer.org/ethereum-integration)
 
 ### Can I use my existing hardware wallets or mobile apps to manage my multi-chain assets on the Internet Computer?
