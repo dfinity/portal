@@ -2,7 +2,7 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-    
+
 
   build: [
     {
@@ -42,7 +42,7 @@ const sidebars = {
             "developer-docs/getting-started/cycles/cycles-wallet",
             "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
-        }, 
+        },
         {
           type: "doc",
           label: "Build your first smart contract",
@@ -237,7 +237,7 @@ const sidebars = {
             {
               type: "doc",
               id: "references/cdks",
-              },
+            },
           ],
         },
         {
@@ -256,12 +256,9 @@ const sidebars = {
       label: "Smart contracts",
       items: [
         {
-          type: "category",
+          type: "doc",
           label: "Overview",
-          items:
-          [
-            "developer-docs/backend/choosing-language",
-          ],
+          id: "developer-docs/smart-contracts/overview.mdx",
         },
         {
           type: "doc",
@@ -295,22 +292,22 @@ const sidebars = {
         {
           type: "category",
           label: "Maintain",
-          items:[
+          items: [
             "developer-docs/setup/delete",
-             "developer-docs/production/canister-history",
-             "developer-docs/setup/pulling-canister-dependencies",
-             "developer-docs/production/canister-recovery",
-             "developer-docs/setup/state",
-             "developer-docs/setup/manage-canisters",
-             "developer-docs/production/storage",
-             "developer-docs/setup/upgrade",
-             "developer-docs/production/resource-limits",
-             {
+            "developer-docs/production/canister-history",
+            "developer-docs/setup/pulling-canister-dependencies",
+            "developer-docs/production/canister-recovery",
+            "developer-docs/setup/state",
+            "developer-docs/setup/manage-canisters",
+            "developer-docs/production/storage",
+            "developer-docs/setup/upgrade",
+            "developer-docs/production/resource-limits",
+            {
               type: "category",
               label: "Cost",
               items: [
-             "developer-docs/gas-cost",
-             "developer-docs/cost-estimations-and-examples",
+                "developer-docs/gas-cost",
+                "developer-docs/cost-estimations-and-examples",
               ],
             },
             {
@@ -440,27 +437,27 @@ const sidebars = {
       type: "category",
       label: "Security",
       items: [
-          {
-            type: "category",
-            label: "Security best practices",
-            items: [
-              {
-                type: "doc",
-                label: "General",
-                id: "developer-docs/security/general-security-best-practices",
-              },
-              {
-                type: "doc",
-                label: "Rust",
-                id: "developer-docs/security/rust-canister-development-security-best-practices",
-              },
-              {
-                type: "doc",
-                label: "Web apps",
-                id: "developer-docs/security/web-app-development-security-best-practices",
-              },
-            ],
-          },
+        {
+          type: "category",
+          label: "Security best practices",
+          items: [
+            {
+              type: "doc",
+              label: "General",
+              id: "developer-docs/security/general-security-best-practices",
+            },
+            {
+              type: "doc",
+              label: "Rust",
+              id: "developer-docs/security/rust-canister-development-security-best-practices",
+            },
+            {
+              type: "doc",
+              label: "Web apps",
+              id: "developer-docs/security/web-app-development-security-best-practices",
+            },
+          ],
+        },
       ],
     },
     {
@@ -469,9 +466,9 @@ const sidebars = {
       items: [
         {
           type: "doc",
-            label: "Overview",
-            id: "developer-docs/integrations/ledger/introduction_and_overview",
-          },
+          label: "Overview",
+          id: "developer-docs/integrations/ledger/introduction_and_overview",
+        },
         {
           type: "category",
           label: "ICP tokens",
@@ -490,7 +487,7 @@ const sidebars = {
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
             "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
             "developer-docs/integrations/icrc-1/icrc1-index-setup"
-        ],
+          ],
         },
         {
           type: "doc",
@@ -532,7 +529,7 @@ const sidebars = {
       type: "category",
       label: "Multi-chain",
       items: [
-         {
+        {
           type: "category",
           label: "FAQs",
           items: [
@@ -570,7 +567,7 @@ const sidebars = {
         },
       ],
     },
-   
+
     {
       type: "category",
       label: "DAOs",
@@ -754,44 +751,44 @@ const sidebars = {
             "references/samples/rust/vetkd/README",
           ],
         },
-       ],
+      ],
     },
     {
       type: "category",
       label: "Bootcamps",
       items: [
-    {
-      type: "category",
-      label: "Developer journey",
-      link: {
-        type: "doc",
-        id: "tutorials/developer-journey/index",
-      },
-      items: [
         {
           type: "category",
-          label: "Level 0: Pre-flight operations",
+          label: "Developer journey",
           link: {
             type: "doc",
-            id: "tutorials/developer-journey/level-0/index",
+            id: "tutorials/developer-journey/index",
           },
           items: [
-            "tutorials/developer-journey/level-0/ic-overview",
-            "tutorials/developer-journey/level-0/ic-terms",
-            "tutorials/developer-journey/level-0/dev-env",
-            "tutorials/developer-journey/level-0/intro-canisters",
-            "tutorials/developer-journey/level-0/intro-languages",
-            "tutorials/developer-journey/level-0/intro-dfx",
-          ],
-        },
-        {
-          type: "category",
-          label: "Level 1: Space cadet",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-1/index",
-          },
-          items: [
+            {
+              type: "category",
+              label: "Level 0: Pre-flight operations",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-0/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-0/ic-overview",
+                "tutorials/developer-journey/level-0/ic-terms",
+                "tutorials/developer-journey/level-0/dev-env",
+                "tutorials/developer-journey/level-0/intro-canisters",
+                "tutorials/developer-journey/level-0/intro-languages",
+                "tutorials/developer-journey/level-0/intro-dfx",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 1: Space cadet",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-1/index",
+              },
+              items: [
                 "tutorials/developer-journey/level-1/1.1-live-demo",
                 "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
                 "tutorials/developer-journey/level-1/1.3-first-dapp",
@@ -800,93 +797,93 @@ const sidebars = {
                 "tutorials/developer-journey/level-1/1.6-managing-canisters",
               ],
             },
-        {
-          type: "category",
-          label: "Level 2: Space explorer",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-2/index",
-        },
-          items: [
-            "tutorials/developer-journey/level-2/2.1-storage-persistence",
-            "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
-            "tutorials/developer-journey/level-2/2.3-third-party-canisters",
-            "tutorials/developer-journey/level-2/2.4-intro-candid",
-            "tutorials/developer-journey/level-2/2.5-unit-testing",
-            "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+            {
+              type: "category",
+              label: "Level 2: Space explorer",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-2/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-2/2.1-storage-persistence",
+                "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+                "tutorials/developer-journey/level-2/2.3-third-party-canisters",
+                "tutorials/developer-journey/level-2/2.4-intro-candid",
+                "tutorials/developer-journey/level-2/2.5-unit-testing",
+                "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 3: Space engineer",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-3/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-3/3.1-package-managers",
+                "tutorials/developer-journey/level-3/3.2-https-outcalls",
+                "tutorials/developer-journey/level-3/3.3-certified-data",
+                "tutorials/developer-journey/level-3/3.4-intro-to-agents",
+                "tutorials/developer-journey/level-3/3.5-identities-and-auth",
+                "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 4: Space pilot",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-4/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-4/4.1-icp-ledger",
+                "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+                "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+                "tutorials/developer-journey/level-4/4.4-nns-governance",
+                "tutorials/developer-journey/level-4/4.5-using-quill",
+                "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 5: Internet Computer astronaut",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-5/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
+                "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+                "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
+                "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
+                "tutorials/developer-journey/level-5/5.5-auction-tutorial",
+                "tutorials/developer-journey/level-5/5.6-next-steps",
+              ],
+            },
           ],
         },
         {
           type: "category",
-          label: "Level 3: Space engineer",
+          label: "Hackathon prep course",
           link: {
             type: "doc",
-            id: "tutorials/developer-journey/level-3/index",
-        },
+            id: "tutorials/hackathon-prep-course/index",
+          },
           items: [
-            "tutorials/developer-journey/level-3/3.1-package-managers",
-            "tutorials/developer-journey/level-3/3.2-https-outcalls",
-            "tutorials/developer-journey/level-3/3.3-certified-data",
-            "tutorials/developer-journey/level-3/3.4-intro-to-agents",
-            "tutorials/developer-journey/level-3/3.5-identities-and-auth",
-            "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
-          ],
-        },
-        {
-          type: "category",
-          label: "Level 4: Space pilot",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-4/index",
-        },
-          items: [
-            "tutorials/developer-journey/level-4/4.1-icp-ledger",
-            "tutorials/developer-journey/level-4/4.2-icrc-tokens",
-            "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
-            "tutorials/developer-journey/level-4/4.4-nns-governance",
-            "tutorials/developer-journey/level-4/4.5-using-quill",
-            "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
-          ],
-        },
-        {
-          type: "category",
-          label: "Level 5: Internet Computer astronaut",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-5/index",
-        },
-          items: [
-            "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
-            "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
-            "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
-            "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
-            "tutorials/developer-journey/level-5/5.5-auction-tutorial",
-            "tutorials/developer-journey/level-5/5.6-next-steps",
+            "tutorials/hackathon-prep-course/what-is-icp",
+            "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
+            "tutorials/hackathon-prep-course/exploring-the-backend",
+            "tutorials/hackathon-prep-course/exploring-the-frontend",
+            "tutorials/hackathon-prep-course/integrating-with-tokens",
+            "tutorials/hackathon-prep-course/authentication",
+            "tutorials/hackathon-prep-course/obtaining-cycles",
+            "tutorials/hackathon-prep-course/managing-canisters",
+            "tutorials/hackathon-prep-course/sample-starter-projects",
+            "tutorials/hackathon-prep-course/resources",
           ],
         },
       ],
-    },
-    {
-      type: "category",
-      label: "Hackathon prep course",
-      link: {
-        type: "doc",
-        id: "tutorials/hackathon-prep-course/index",
-      },
-      items: [
-        "tutorials/hackathon-prep-course/what-is-icp",
-        "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
-        "tutorials/hackathon-prep-course/exploring-the-backend",
-        "tutorials/hackathon-prep-course/exploring-the-frontend",
-        "tutorials/hackathon-prep-course/integrating-with-tokens",
-        "tutorials/hackathon-prep-course/authentication",
-        "tutorials/hackathon-prep-course/obtaining-cycles",
-        "tutorials/hackathon-prep-course/managing-canisters",
-        "tutorials/hackathon-prep-course/sample-starter-projects",
-        "tutorials/hackathon-prep-course/resources",
-      ],
-    },
-    ],
     },
     {
       type: "category",
@@ -955,7 +952,7 @@ const sidebars = {
               label: "Ledger canister",
               id: "references/ledger",
             },
-        ],
+          ],
         },
         {
           type: "category",
@@ -1125,27 +1122,27 @@ const sidebars = {
       ],
     },
   ],
-solidity: [
+  solidity: [
     {
       type: "doc",
       label: "Solidity",
       id: "developer-docs/backend/solidity/index",
     },
-],
-python: [
-  {
-    type: "doc",
-    label: "Python",
-    id: "developer-docs/backend/python/index",
-  },
-],
-typescript: [
-  {
-    type: "doc",
-    label: "TypeScript",
-    id: "developer-docs/backend/typescript/index",
-  },
-],
+  ],
+  python: [
+    {
+      type: "doc",
+      label: "Python",
+      id: "developer-docs/backend/python/index",
+    },
+  ],
+  typescript: [
+    {
+      type: "doc",
+      label: "TypeScript",
+      id: "developer-docs/backend/typescript/index",
+    },
+  ],
 
 
 };
