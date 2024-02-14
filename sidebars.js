@@ -258,10 +258,7 @@ const sidebars = {
         {
           type: "doc",
           label: "Overview",
-          items:
-          [
-            "developer-docs/smart-contracts/overview",
-          ],
+          id: "developer-docs/smart-contracts/overview",
         },
         {
           type: "doc",
