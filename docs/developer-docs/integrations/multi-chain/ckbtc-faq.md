@@ -6,9 +6,7 @@ For questions from the POV of a user who wishes to know how to hold, send, recei
 
 ## How do I write a smart contract that uses ckBTC?
 
-:::info
-This answer is a work in progress. Please check back later for an updated response.
-:::
+The best place to start is to follow the [ckBTC and Bitcoin integration developer tutorial](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin). This tutorial will guide you through the process of creating a smart contract that uses ckBTC or integrates with Bitcoin.
 
 ## What is the purpose of ckBTC?
 
