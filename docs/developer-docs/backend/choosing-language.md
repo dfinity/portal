@@ -22,7 +22,7 @@ The most common languages to use are:
   - You can get a sense of Motoko by using the web-based [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app).
 - **Rust**
   - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](/docs/current/developer-docs/getting-started/install/).
-  - See [introduction to developing canisters in Rust](./rust/index.md).
+  - See [introduction to developing canisters in Rust](./rust/index.mdx).
 - **Python**
   - Python is a readable, versatile language for web development, data analysis, and AI.
   - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by [Demergent Labs](https://github.com/demergent-labs).

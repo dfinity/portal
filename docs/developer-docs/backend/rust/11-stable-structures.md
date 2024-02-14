@@ -10,4 +10,4 @@ For more information about stable structures, please see the [stable structures 
 
 ## Next steps
 
-For the next step, let's dive into [storing and searching records](12-searching-records.md).
+For the next step, let's dive into [storing and searching records](12-searching-records.mdx).

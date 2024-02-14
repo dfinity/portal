@@ -1,80 +1,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating your first canister
+# Default project template
 
 ## Overview
 
-To get started, let’s build and deploy a simple 'Hello, world!' canister that has just one function—called `greet`. The `greet` function accepts one text argument and returns the result with a greeting similar to **Hello, everyone!** in a terminal if you run the canister using the command-line or in an HTML page if you access the canister in a browser.
-
-## Prerequisites
-
-Before you create your first canister, verify the following:
-
--   [x] You have an internet connection and access to a shell terminal on your local computer.
-
--   [x] You have `node.js` installed if you want to include the default template files for frontend development in your project.
-
--   [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) page.
-
-## Create a new project
-
-Dapps on the Internet Computer start as **projects**. You create projects using the `dfx` parent command and its subcommands.
-
-For this guide, you’ll start with the default sample dapp to illustrate creating dapp using the starter files in a project. When you create a new project, the `dfx` command-line interface adds a default project directory structure to your workspace. The previous guide covers the template files that make up a project directory in the [explore the default project](/developer-docs/backend/motoko/explore-templates.md) page.
-
-### Step 1:  Open a terminal shell on your local computer.
-
-### Step 2:  Create a new project named `hello` by running the following command:
-
-<Tabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```bash
-dfx new hello
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```bash
-dfx new hello --type=rust
-```
-
-</TabItem>
-</Tabs>
-        
-
-The `dfx new hello` command creates a new `hello` project directory, template files, and a new `hello` Git repository for your project.
-
-:::info
-When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command. 
+The `dfx new <project_name>` command creates a new project directory, template files, and a new `<project_name>` Git repository for your project.
 
 When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
-:::
-
-If you use a different project name instead of `hello`, make note of the name you used. You’ll need to use that project name in place of the `hello` project name throughout these instructions.
-
-### Step 3:  Change to your project directory by running the following command:
-
-<Tabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```bash
-cd hello
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```bash
-cd hello
-```
-
-</TabItem>
-</Tabs>
-
-This command will create a new project directory called `hello` that contains the project's default template files and a new git repository for your project. 
 
 ## Exploring the default project structure
 
@@ -132,6 +65,70 @@ hello/
 ```
 
 </TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```bash
+hello/
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
+├── package-lock.json
+├── package.json
+├── src            # Source files directory
+│   ├── hello_backend
+│   │   └── package.json
+│   │   └── hello_backend.did
+│   │   └── src
+│       │   ├── index.ts 
+│   ├── hello_frontend
+│       ├── assets
+|       |── index.html
+|       |── package.json
+│       └── src
+│           ├── App.js
+│           ├── index.scss 
+│           ├── logo2.svg 
+│           ├── main.js
+│           └── vite-env.d.ts
+|       |── tsconfig.json
+|       |── vite.config.js
+└── tsconfig.json
+```
+
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```
+hello/
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
+├── package-lock.json
+├── package.json
+├── src            # Source files directory
+│   ├── hello_backend
+│   │   └── hello_backend.did
+│   │   └── src
+│       │   ├── main.py
+│   ├── hello_frontend
+│       ├── assets
+|       |── index.html
+|       |── package.json
+│       └── src
+│           ├── App.js
+│           ├── index.scss 
+│           ├── logo2.svg 
+│           ├── main.js
+│           └── vite-env.d.ts
+|       |── tsconfig.json
+|       |── vite.config.js
+└── tsconfig.json
+```
+
+</TabItem>
 </Tabs>
 
 In this directory, the following files and directories are notable:
@@ -182,6 +179,7 @@ By default, the `dfx.json` file will contain automatically generated configurati
 ```
 
 </TabItem>
+
 <TabItem value="rust" label="Rust">
 
 ```json
@@ -218,6 +216,81 @@ By default, the `dfx.json` file will contain automatically generated configurati
 ```
 
 </TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```json
+{
+  "canisters": {
+    "hello_backend": {
+      "build": "npx azle hello_backend",
+      "candid": "src/hello_backend/hello_backend.did",
+      "gzip": true,
+      "main": "src/hello_backend/src/index.ts",
+      "type": "custom",
+      "wasm": ".azle/hello_backend/hello_backend.wasm"
+    },
+    "hello_frontend": {
+      "dependencies": [
+        "hello_backend"
+      ],
+      "source": [
+        "src/hello_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+} 
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```json
+{
+  "canisters": {
+    "hello_backend": {
+      "build": "python -m kybra hello_backend src/hello_backend/src/main.py src/hello_backend/hello_backend.did",
+      "candid": "src/hello_backend/hello_backend.did",
+      "gzip": true,
+      "post_install": ".kybra/hello_backend/post_install.sh",
+      "type": "custom",
+      "wasm": ".kybra/hello_backend/hello_backend.wasm"
+    },
+    "hello_frontend": {
+      "dependencies": [
+        "hello_backend"
+      ],
+      "source": [
+        "src/hello_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+
+</TabItem>
 </Tabs>
 
 
@@ -247,6 +320,33 @@ fn greet(name: String) -> String {
     format!("Hello, {}!", name)
 }
 ```
+
+</TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { Canister, query, text } from 'azle';
+
+export default Canister({
+    greet: query([text], text, (name) => {
+        return `Hello, ${name}!`;
+    })
+})
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+from kybra import query
+
+@query
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+```
+
 
 </TabItem>
 </Tabs>

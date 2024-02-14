@@ -101,4 +101,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-- [0.5 Introduction to languages](05-intro-languages.md).
+- [0.5 Introduction to languages](/docs/current/tutorials/developer-journey/level-0/intro-languages).

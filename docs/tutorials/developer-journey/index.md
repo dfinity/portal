@@ -20,56 +20,56 @@ This developer journey will focus on developing canisters and applications using
 
 ## Level 0: Pre-flight operations
 
-- [0.1 Overview of the Internet Computer](level-0/01-ic-overview.md)
-- [0.2 Internet Computer terminology](level-0/02-ic-terms.md)
-- [0.3 Developer environment setup](level-0/03-dev-env.md)
-- [0.4 Introduction to canisters](level-0/04-intro-canisters.md)
-- [0.5 Introduction to languages](level-0/05-intro-languages.md)
-- [0.6 Introduction to dfx](level-0/06-intro-dfx.md)
+- [0.1 Overview of the Internet Computer](/docs/current/tutorials/developer-journey/level-0/01-ic-overview )
+- [0.2 Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/02-ic-terms )
+- [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/03-dev-env )
+- [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/04-intro-canisters )
+- [0.5 Introduction to languages](/docs/current/tutorials/developer-journey/level-0/05-intro-languages )
+- [0.6 Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/06-intro-dfx )
 
 ## Level 1: Space cadet
 
-- [1.1 Exploring a live demo](level-1/1.1-live-demo.md)
-- [1.2 Motoko level 1](level-1/1.2-motoko-lvl1.md)
-- [1.3 Developing your first dapp](level-1/1.3-first-dapp.md)
-- [1.4 Acquiring and using cycles](level-1/1.4-using-cycles.md)
-- [1.5 Deploying canisters](level-1/1.5-deploying-canisters.md)
-- [1.6 Managing canisters](level-1/1.6-managing-canisters.md)
+- [1.1 Exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo )
+- [1.2 Motoko level 1](/docs/current/tutorials/developer-journey/level-1/1.2-motoko-lvl1 )
+- [1.3 Developing your first dapp](/docs/current/tutorials/developer-journey/level-1/1.3-first-dapp )
+- [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles )
+- [1.5 Deploying canisters](/docs/current/tutorials/developer-journey/level-1/1.5-deploying-canisters )
+- [1.6 Managing canisters](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters )
 
 
 ## Level 2: Space explorer
 
-- [2.1 Canister upgrades, storage, and persistence](level-2/2.1-storage-persistence.md)
-- [2.2 Advanced canister calls](level-2/2.2-advanced-canister-calls.md)
-- [2.3 Using third-party canisters](level-2/2.3-third-party-canisters.md)
-- [2.4 Introduction to Candid](level-2/2.4-intro-candid.md)
-- [2.5 Unit, integration, and end2end testing](level-2/2.5-unit-testing.md)
-- [2.6 Motoko level 2](level-2/2.6-motoko-lvl2.md)
+- [2.1 Canister upgrades, storage, and persistence](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence )
+- [2.2 Advanced canister calls](/docs/current/tutorials/developer-journey/level-2/2.2-advanced-canister-calls )
+- [2.3 Using third-party canisters](/docs/current/tutorials/developer-journey/level-2/2.3-third-party-canisters )
+- [2.4 Introduction to Candid](/docs/current/tutorials/developer-journey/level-2/2.4-intro-candid )
+- [2.5 Unit, integration, and end2end testing](/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing )
+- [2.6 Motoko level 2](/docs/current/tutorials/developer-journey/level-2/2.6-motoko-lvl2 )
 
 
 ## Level 3: Space engineer 
 
-- [3.1 Motoko package managers](level-3/3.1-package-managers.md)
-- [3.2 Using HTTPS outcalls](level-3/3.2-https-outcalls.md)
-- [3.3 Certified data](level-3/3.3-certified-data.md)
-- [3.4 Introduction to agents](level-3/3.4-intro-to-agents.md)
-- [3.5 Identities and authentication](level-3/3.5-identities-and-auth.md)
-- [3.6 Motoko level 3](level-3/3.6-motoko-lvl3.md)
+- [3.1 Motoko package managers](/docs/current/tutorials/developer-journey/level-3/3.1-package-managers )
+- [3.2 Using HTTPS outcalls](/docs/current/tutorials/developer-journey/level-3/3.2-https-outcalls )
+- [3.3 Certified data](/docs/current/tutorials/developer-journey/level-3/3.3-certified-data )
+- [3.4 Introduction to agents](/docs/current/tutorials/developer-journey/level-3/3.4-intro-to-agents )
+- [3.5 Identities and authentication](/docs/current/tutorials/developer-journey/level-3/3.5-identities-and-auth )
+- [3.6 Motoko level 3](/docs/current/tutorials/developer-journey/level-3/3.6-motoko-lvl3 )
 
 ## Level 4: Space pilot
 
-- [4.1 Using the ICP ledger](level-4/4.1-icp-ledger.md)
-- [4.2 ICRC-1 tokens](level-4/4.2-icrc-tokens.md)
-- [4.3 ckBTC and Bitcoin integration](level-4/4.3-ckbtc-and-bitcoin.md)
-- [4.4 NNS governance and staking](level-4/4.4-nns-governance.md)
-- [4.5 Using quill](level-4/4.5-using-quill.md)
-- [4.6 Motoko level 4](level-4/4.6-motoko-lvl4.md)
+- [4.1 Using the ICP ledger](/docs/current/tutorials/developer-journey/level-4/4.1-icp-ledger )
+- [4.2 ICRC-1 tokens](/docs/current/tutorials/developer-journey/level-4/4.2-icrc-tokens )
+- [4.3 ckBTC and Bitcoin integration](/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin )
+- [4.4 NNS governance and staking](/docs/current/tutorials/developer-journey/level-4/4.4-nns-governance )
+- [4.5 Using quill](/docs/current/tutorials/developer-journey/level-4/4.5-using-quill )
+- [4.6 Motoko level 4](/docs/current/tutorials/developer-journey/level-4/4.6-motoko-lvl4 )
 
 ## Level 5: Internet Computer astronaut 
 
-- [5.1 Developing an encrypted notes dapp with vetKeys](level-5/5.1-vetKeys-tutorial.md)
-- [5.2 Developing a dapp using the ICP Ethereum integration](level-5/5.2-ICP-ETH-tutorial.md)
-- [5.3 Creating a decentralized token swap](level-5/5.3-token-swap-tutorial.md)
-- [5.4 Creating NFTs on ICP](level-5/5.4-NFT-tutorial.md)
-- [5.5 Creating an auction dapp](level-5/5.5-auction-tutorial.md)
-- [5.6 Next steps](level-5/5.6-next-steps.md)
+- [5.1 Developing an encrypted notes dapp with vetKeys](/docs/current/tutorials/developer-journey/level-5/5.1-vetKeys-tutorial )
+- [5.2 Developing a dapp using the ICP Ethereum integration](/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial )
+- [5.3 Creating a decentralized token swap](/docs/current/tutorials/developer-journey/level-5/5.3-token-swap-tutorial )
+- [5.4 Creating NFTs on ICP](/docs/current/tutorials/developer-journey/level-5/5.4-NFT-tutorial )
+- [5.5 Creating an auction dapp](/docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial )
+- [5.6 Next steps](/docs/current/tutorials/developer-journey/level-5/5.6-next-steps )
