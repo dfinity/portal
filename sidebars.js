@@ -368,6 +368,15 @@ const sidebars = {
                     "developer-docs/integrations/vetkeys/using-vetkeys",
                   ],
                 },
+                {
+                  type: "category",
+                  label: "HTTP Requests",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/integrations/https-outcalls-overview",
+                  },
+                  items: [],
+                },
               ],
             },
             "developer-docs/backend/periodic-tasks",
