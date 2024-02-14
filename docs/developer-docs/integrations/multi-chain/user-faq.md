@@ -92,8 +92,8 @@ There is also a Know Your Transaction (KYT) fee, currently set at 2000 satoshi, 
 
 **Additional reading**
 
-- [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847)
-- [Source](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
+- [How ckBTC solves the dilemma of blockchain bridges](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#f847)
+- [Chain key Bitcoin](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin#firstHeading)
 
 ### How can I view the entire history of ckBTC transactions?
 
@@ -103,7 +103,7 @@ Furthermore, all ckBTC transactions are transparent and can be verified through 
 
 **Additional reading**
 
-- [Source](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
+- [How ckBTC solves the dilemma of blockchain bridges](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#7ee8)
 
 ## ckETH User Questions
 
@@ -126,7 +126,11 @@ To convert ETH to ckETH and vice versa, you can follow these steps:
 
 Please note that with the current ckETH integration, you will not be able to withdraw to ETH directly from the ICRC-1 wallet. This is because the ICRC-1 wallet does not support the withdrawal process (withdraws are supported in the ICRC-2 standard). To withdraw ckETH for ETH, you can send your ckETH to your dfx principal, then withdraw from there following [these steps](https://github.com/timohanke/ic/blob/d34903fc2c41e2cff5df86248628f5d0b4fd7168/rs/ethereum/cketh/minter/README.adoc#withdrawal-cketh-to-eth).
 
-For more information, you can check out these sources: [source 1](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc#e10f), [source 2](https://medium.com/dfinity/a-data-driven-exploration-of-cketh-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978), [source 3](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#cketh-now-live).
+**Additional reading**
+
+-[How to acquire ckETH ](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc#e10f)
+- [Exploring data on ckETH, the digital twin of ETH on ICP](https://medium.com/dfinity/a-data-driven-exploration-of-cketh-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978) 
+- [https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#cketh-now-live](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#cketh-now-live).
 
 ### Can I convert ICP to ckETH?
 
@@ -171,12 +175,12 @@ Internet Computer (ICP) ensures the security and privacy of your cross-chain tra
 **Additional reading**
 
 - [Cross chain interoperability](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/what-is-icp#cross-chain-interoperability)
-- [Dfinity Blog - How ICP’s Bitcoin Integration Secures Private Keys Part 1](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846#6a5c)
-- [Dfinity Blog - How ICP’s Bitcoin Integration Secures Private Keys Part 2](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846#6a5c)
-- [Dfinity Blog - Securing cross-chain communication from Ethereum to the Internet Computer with an on-chain Light Client](https://medium.com/dfinity/securing-cross-chain-communication-from-ethereum-to-the-internet-computer-with-an-on-chain-light-fedfb4fb24b4#1329)
-- [Dfinity Blog - Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
+- [How ICP’s Bitcoin Integration Secures Private Keys Part 1](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846#6a5c)
+- [How ICP’s Bitcoin Integration Secures Private Keys Part 2](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846#6a5c)
+- [Securing cross-chain communication from Ethereum to the Internet Computer with an on-chain Light Client](https://medium.com/dfinity/securing-cross-chain-communication-from-ethereum-to-the-internet-computer-with-an-on-chain-light-fedfb4fb24b4#1329)
+- [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
 - [Internet Computer Ethereum Integration](https://internetcomputer.org/ethereum-integration)
-- [Dfinity Blog - The Internet Computer Blockchains Privacy Advantages](https://medium.com/dfinity/the-internet-computer-blockchains-privacy-advantages-73340c6c42db#6ec2)
+- [The Internet Computer Blockchains Privacy Advantages](https://medium.com/dfinity/the-internet-computer-blockchains-privacy-advantages-73340c6c42db#6ec2)
 
 ### Can I track the status of my multi-chain transactions on the Internet Computer dashboard?
 
@@ -199,11 +203,11 @@ The Internet Computer (ICP) has a rich ecosystem of DeFi apps and services such 
 
 In the future, when the Internet Computer blockchain integrates with additional blockchains, more chain-key tokens will become available on ICP.
 
-- [Source](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/integrating-with-tokens#swapping-between-tokens)
-- [Source](https://internetcomputer.org/how-it-works/chain-key-tokens)
-- [Source](https://internetcomputer.org/blog/news-and-updates/team-spotlight-fi)
-- [Source](https://internetcomputer.org/how-it-works/chain-key-tokens#the-future-chain-key-erc-20-tokens)
-- [Source](https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24#3a8b)
+- [Swapping between tokens](https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/integrating-with-tokens#swapping-between-tokens)
+- [Chain-Key Tokens](https://internetcomputer.org/how-it-works/chain-key-tokens)
+- [Team spotlight - Financial integration](https://internetcomputer.org/blog/news-and-updates/team-spotlight-fi)
+- [SourThe Future: Chain-Key ERC-20 Tokens](https://internetcomputer.org/how-it-works/chain-key-tokens#the-future-chain-key-erc-20-tokens)
+- [Eliminating Smart Contract Bugs with TLA+](https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24#3a8b)
 
 ### Is there a guide or tutorial on how to use multi-chain features on the Internet Computer for beginners?
 
@@ -240,4 +244,4 @@ In the future, ICP aims to become fully compatible with the Ethereum Virtual Mac
 
 ### Can I use my existing hardware wallets or mobile apps to manage my multi-chain assets on the Internet Computer?
 
-You can see documenation here on using Ledger nanos and other hardware wallets: [hardware wallets](https://support.dfinity.org/hc/en-us/articles/8760495850900-How-do-I-use-my-Ledger-Nano-with-the-Internet-Computer).
+Yes! Please see documentation here on using Ledger Nanos and other hardware wallets: [hardware wallets](https://support.dfinity.org/hc/en-us/articles/8760495850900-How-do-I-use-my-Ledger-Nano-with-the-Internet-Computer).
