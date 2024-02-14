@@ -16,7 +16,7 @@ As a result of the latency for updates, best practices around modeling your appl
 This section of the docs covers the following agents, ordered by languages:
 
 - JavaScript / TypeScript
-  - [JavaScript/TypeScript agent by DFINITY](./javascript-intro.md)
+  - [JavaScript/TypeScript agent by DFINITY](./javascript-intro.mdx)
 - Rust
   - [Rust agent by DFINITY](./ic-agent-dfinity.md)
 

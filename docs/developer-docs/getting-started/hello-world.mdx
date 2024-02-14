@@ -43,50 +43,71 @@ While `dfx start` is running, you will not be able to run other commands in the 
 
 ## Create a new project
 
+<Tabs groupId="version">
+<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
+
+Use `dfx new <project_name>` to create a new project:
+
+```
+dfx new hello
+```
+
+You will be prompted to select a language that your backend canister will use:
+
+```
+? Select a backend language: ›  
+❯ Motoko
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
+```
+
+Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+
+```
+  ? Select a frontend framework: ›  
+❯ SvelteKit
+  React
+  Vue
+  Vanilla JS
+  No JS template
+  No frontend canister
+```
+
+Lastly, you can include extra features to be added to your project:
+
+```
+  ? Add extra features (space to select, enter to confirm) ›
+⬚ Internet Identity
+⬚ Bitcoin (Regtest)
+⬚ Frontend tests
+```
+
+</TabItem>
+
+<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
+
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```bash
 dfx new hello
-cd hello
-npm install
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
-
-The `npm install` command is used to install libraries and dependencies.
-
-For information about project structure and default configuration, [learn more about the default project structure and configuration](default-template.mdx).
-
 </TabItem>
-
 <TabItem value="rust" label="Rust">
 
 ```bash
 dfx new hello --type=rust
-cd hello
-npm install
 ```
-
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
-
-The `npm install` command is used to install libraries and dependencies.
-
-In order to build Rust projects for ICP you need to add the following target to your Rust toolchain:
-
-``` bash
-rustup target add wasm32-unknown-unknown
-```
-
-For information about project structure and default configuration, [learn more about the default project structure and configuration](default-template.mdx).
 
 </TabItem>
 
 <TabItem value="typescript" label="TypeScript">
 
 ```bash
-npx azle new azle_hello
-cd azle_hello
+npx azle new hello
+cd hello
 npm install
 ```
 
@@ -97,8 +118,8 @@ npm install
 Create the project directory and file structure:
 
 ```bash
-mkdir kybra_hello
-cd kybra_hello
+mkdir hello
+cd hello
 
 mkdir src
 
@@ -121,8 +142,10 @@ pip install kybra
 
 </TabItem>
 </Tabs>
-
+</TabItem>
+</Tabs>
  
+
 ## Smart contract code
 
 
@@ -150,7 +173,7 @@ This Rust smart contract has a single function called greet. It is marked as que
 The function accepts a name as input and returns a greetings text.
 
 ```rust
-// src/hello_world_backend/src/lib.rs
+// src/hello_backend/src/lib.rs
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
@@ -162,23 +185,15 @@ fn greet(name: String) -> String {
 <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-// azle_hello/src/index.ts
-import { Canister, query, text, update, Void } from 'azle';
+// src/hello_backend/src/index.ts
 
-// This is a global variable that is stored on the heap.
-let message = '';
+import { Canister, query, text } from 'azle';
 
 export default Canister({
-    // Query calls complete quickly because they do not go through consensus.
-    getMessage: query([], text, () => {
-        return message;
-    }),
-    // Update calls take a few seconds to complete.
-    // This is because they persist state changes and go through consensus.
-    setMessage: update([text], Void, (newMessage) => {
-        message = newMessage; // This change will be persisted
+    greet: query([text], text, (name) => {
+        return `Hello, ${name}!`;
     })
-});
+})
 ```
 
 </TabItem>
@@ -188,24 +203,13 @@ export default Canister({
 Create the project directory and file structure:
 
 ```python
-# kybra_hello/src/main.py
+# src/hello_backend/src/main.py
 
-from kybra import query, update, void
+from kybra import query
 
-# This is a global variable that is stored on the heap.
-message: str = ''
-
-# Query calls complete quickly because they do not go through consensus.
 @query
-def get_message() -> str:
-    return message
-
-# Update calls take a few seconds to complete.
-# This is because they persist state changes and go through consensus.
-@update
-def set_message(new_message: str) -> void:
-    global message
-    message = new_message # This change will be persisted
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
 ```
 
 </TabItem>
@@ -233,7 +237,6 @@ This command performs several functions in the background:
 ## Call the smart contracts from the CLI
 
 <Tabs groupId="language">
-
 <TabItem value="motoko" label="Motoko" default>
 
 ```bash
@@ -246,21 +249,6 @@ Output:
 ("Hello, world!")
 ```
 
-This command performs several functions in the background: 
-
-- First, it looks up the smart contract's address (known as the canister id) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
-
-- Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`. 
-
-- It looks up the signature of function greet in the interface.
-
-- It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
-
-- It signs the message with the private key of the [developer account](/docs/current/developer-docs/getting-started/accounts).
-
-- It sends the message to the local testnet (replica). 
-
-- Once the message has been executed, the result was decoded using the interface file and printed to the terminal window. 
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -274,6 +262,38 @@ Output:
 ```
 ("Hello, world!")
 ```
+
+</TabItem>
+
+<TabItem value="typescript" label="TypeScript">
+
+```bash
+dfx canister call hello_backend greet world
+```
+
+Output:
+
+```
+("Hello, world!")
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```bash
+dfx canister call hello_backend greet world
+```
+
+Output:
+
+```
+("Hello, world!")
+```
+
+</TabItem>
+</Tabs>
+
 
 This call performs several functions in the background: 
 
@@ -290,57 +310,6 @@ This call performs several functions in the background:
 - It sends the message to the local testnet (replica). 
 
 - Once the message has been executed, the result was decoded using the interface file and printed to the terminal window. 
-
-</TabItem>
-
-<TabItem value="typescript" label="TypeScript">
-
-```bash
-dfx canister call azle_hello setMessage '("Hello, world!")'
-```
-
-This command sends an update call to the smart contract's `setMessage` function to store the value 'Hello, world!' in the smart contract's memory. 
-
-Then, call the `getMessage` function:
-
-```
-dfx canister call azle_hello getMessage
-```
-
-This command sends a query call to the smart contract's `getMessage` function to return the value stored by the `setMessage` function. 
-
-Output:
-
-```
-("Hello, world!")
-```
-
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```bash
-dfx canister call kybra_hello set_message '("Hello, world!")'
-```
-
-This command sends an update call to the smart contract's `setMessage` function to store the value 'Hello, world!' in the smart contract's memory. 
-
-Then, call the `getMessage` function:
-
-```
-dfx canister call kybra_hello getMessage
-```
-
-This command sends a query call to the smart contract's `getMessage` function to return the value stored by the `setMessage` function. 
-
-Output:
-
-```
-("Hello, world!")
-```
-
-</TabItem>
-</Tabs>
 
 Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local)
 

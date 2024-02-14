@@ -61,4 +61,4 @@ More information on canister optimization and information on `wasm-opt` benchmar
 
 ## Next steps
 
-Next, let's take a look at [importing library modules](phonebook.md).
+Next, let's take a look at [importing library modules](phonebook.mdx).

@@ -15,7 +15,7 @@ When writing a canister in Rust, the `dfx build` command will ensure that the ca
 The following example code displays how a simple Counter application can use a Candid interface to interact with a Rust canister. 
 
 :::info
-This example assumes you have a project made with the `dfx new` command, as described in the [quick start](4-quickstart.md) or [deploying canisters](5-deploying.md) pages.
+This example assumes you have a project made with the `dfx new` command, as described in the [quick start](4-quickstart.mdx) or [deploying canisters](5-deploying.mdx) pages.
 :::
 
 `src/counter_backend/src/lib.rs`:
@@ -73,7 +73,7 @@ dfx deploy
 ```
 
 :::info
-If you need to create a new dfx project to insert these files into, please see the [deploying canisters page](5-deploying.md).
+If you need to create a new dfx project to insert these files into, please see the [deploying canisters page](5-deploying.mdx).
 :::
 
 The output of the `dfx deploy` command will resemble:
@@ -134,7 +134,7 @@ There is also an experimental feature to generate a Candid service description a
 
 ## References
 
-For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../rust/index.md).
+For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](../rust/index.mdx).
 
 ## Next steps
 

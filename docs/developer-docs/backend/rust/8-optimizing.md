@@ -83,4 +83,4 @@ More information on canister optimization and information on `wasm-opt` benchmar
 
 ## Next steps
 
-Next, let's take a look at [incrementing a counter.](9-counter.md)
+Next, let's take a look at [incrementing a counter.](9-counter.mdx)

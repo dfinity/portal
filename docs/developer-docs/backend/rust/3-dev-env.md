@@ -40,4 +40,4 @@ Before you start your project, verify the following:
 
 ## Next steps
 
-After following the steps above, you're ready to get started developing backend canisters with Rust! To get started, check out the [Rust quick start guide](./4-quickstart.md).
+After following the steps above, you're ready to get started developing backend canisters with Rust! To get started, check out the [Rust quick start guide](./4-quickstart.mdx).

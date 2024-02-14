@@ -1,0 +1,117 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 4: Motoko quickstart
+
+## Overview
+
+This at-a-glance cheat sheet summarizes the steps to follow for quick reference.
+
+## Prerequisites
+
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
+
+## Creating a new project
+
+Open a terminal window on your local computer, if you don’t already have one open.
+
+Create a new project and change to the project directory.
+
+<Tabs groupId="version">
+<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
+
+Use `dfx new <project_name>` to create a new project:
+
+```
+dfx new hello_world
+```
+
+You will be prompted to select a language that your backend canister will use:
+
+```
+? Select a backend language: ›  
+❯ Motoko
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
+```
+
+Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+
+```
+  ? Select a frontend framework: ›  
+❯ SvelteKit
+  React
+  Vue
+  Vanilla JS
+  No JS template
+  No frontend canister
+```
+
+Lastly, you can include extra features to be added to your project:
+
+```
+  ? Add extra features (space to select, enter to confirm) ›
+⬚ Internet Identity
+⬚ Bitcoin (Regtest)
+⬚ Frontend tests
+```
+
+</TabItem>
+
+<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
+
+```bash
+dfx new hello
+cd hello
+npm install
+```
+
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+
+</TabItem>
+</Tabs>
+
+## Editing the default files
+
+Edit the `src/<project_name>_backend` files to define your service or application.
+
+Edit the `src/<project_name>_frontend` files with HTML, JavaScript, and CSS that provides the frontend for your service or application.
+
+## Starting the deployment environment
+
+Start the Internet Computer for local development or check your connection to the Internet Computer for network deployment:
+- [Local deployment](/docs/current/developer-docs/getting-started/deploy/local).
+- [Mainnet deployment](/docs/current/developer-docs/getting-started/deploy/mainnet).
+
+## Register, build, and deploy locally or on the mainnet 
+
+To deploy locally, use the command:
+
+```
+dfx deploy
+```
+
+For deploying to the mainnet, use: `--network ic`.
+
+```
+dfx deploy --network <network>
+```
+
+## View your service or application in a browser, using the URLS in the output of the `dfx deploy` command:
+
+```
+...
+Committing batch.
+Committing batch with 18 operations.
+Deployed canisters.
+URLs:
+Frontend canister via browser
+        access_hello_frontend: http://127.0.0.1:8080/?canisterId=cuj6u-c4aaa-aaaaa-qaajq-cai
+Backend canister via Candid interface:
+        access_hello_backend: http://127.0.0.1:8080/?canisterId=cbopz-duaaa-aaaaa-qaaka-cai&id=ctiya-peaaa-aaaaa-qaaja-cai
+```
+
+## Next steps
+
+For a more detailed look at writing and deploying canisters, move onto the [writing and deploying canisters page](deploying.mdx).

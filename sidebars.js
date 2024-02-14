@@ -45,7 +45,7 @@ const sidebars = {
         }, 
         {
           type: "doc",
-          label: "Build your first smart contract",
+          label: "Default project template",
           id: "developer-docs/getting-started/default-template",
         },
         {
