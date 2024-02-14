@@ -161,7 +161,7 @@ To test the integration with a third-party canister locally, dfx supports pullin
 }
 ```
 
-For more information on using third-party canisters, check out the documentation [here](../developer-journey/level-2/2.3-third-party-canisters.md).
+For more information on using third-party canisters, check out the documentation [here](/docs/current/tutorials/developer-journey/level-2/2.3-third-party-canisters).
 
 ### Query and update calls
 
