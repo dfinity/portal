@@ -163,6 +163,8 @@ Yes, you can build smart contracts that interact with ckETH on the Internet Comp
 
 Please note that the ICP ETH integration is still in development, and more functionalities will be added in the future.
 
+**Additional reading**
+
 - [A data driven exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978).
 - [Developer Journey: 5.2: ICP ETH tutorial](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview).
 - [ICP Ethereum integration explained](https://medium.com/dfinity/internet-computer-ethereum-integration-explained-6967456e35f9#58f6).
@@ -194,7 +196,9 @@ The governance of the Internet Computer, and by extension ckETH, is decentralize
 
 For more information on the governance and tokenomics of the Internet Computer, you can refer to the [Internet Computer Wiki](https://wiki.internetcomputer.org/wiki/NNS_Canisters) and [Tokenomics of a DAO](https://wiki.internetcomputer.org/wiki/Tokenomics_of_a_DAO).
 
-: [Internet Computer Wiki - Decentralization](https://wiki.internetcomputer.org/wiki/Decentralization#firstHeading)
+**Additional reading**
+
+- [Internet Computer Wiki - Decentralization](https://wiki.internetcomputer.org/wiki/Decentralization#firstHeading)
 
 ## Can you provide examples of current applications that utilize ckETH?
 :::info
@@ -208,6 +212,8 @@ ckETH is live on the Internet Computer mainnet. It has been added to the ICP das
 The integration is being carried out in phases. Phase 0, which enables chain-key signing and HTTPS outcalls, is already complete. Phase 1 is being built to allow ETH API calls by accessing Web-2 based API providers through HTTPS outcalls. This phase also includes designing and building ckETH and ckERC-20 tokens. The final phase, Phase 2, will revolve around native ETH integration.
 
 For more information on the current state of the ckETH project, you can join the forum discussion or check out the Ethereum integration page on the ICP website.
+
+**Additional reading**
 
 - [Internet Computer Blog - ckETH: now live!](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#ckETH-now-live).
 - [Dfinity - Global R&D: May 2023 Edition - ETH Integration: Status update](https://medium.com/dfinity/global-r-d-may-2023-edition-d96859039ca6#a28d).
