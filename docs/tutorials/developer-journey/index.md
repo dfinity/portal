@@ -20,12 +20,12 @@ This developer journey will focus on developing canisters and applications using
 
 ## Level 0: Pre-flight operations
 
-- [0.1 Overview of the Internet Computer](/docs/current/tutorials/developer-journey/level-0/01-ic-overview )
-- [0.2 Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/02-ic-terms )
-- [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/03-dev-env )
-- [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/04-intro-canisters )
-- [0.5 Introduction to languages](/docs/current/tutorials/developer-journey/level-0/05-intro-languages )
-- [0.6 Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/06-intro-dfx )
+- [0.1 Overview of the Internet Computer](/docs/current/tutorials/developer-journey/level-0/ic-overview )
+- [0.2 Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/ic-terms )
+- [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env )
+- [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/intro-canisters )
+- [0.5 Introduction to languages](/docs/current/tutorials/developer-journey/level-0/intro-languages )
+- [0.6 Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx )
 
 ## Level 1: Space cadet
 
