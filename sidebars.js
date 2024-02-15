@@ -380,6 +380,7 @@ const sidebars = {
               ],
             },
             "developer-docs/backend/periodic-tasks",
+            "developer-docs/production/system-canisters",
           ],
         },
         {
