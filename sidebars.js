@@ -256,9 +256,15 @@ const sidebars = {
       label: "Smart contracts",
       items: [
         {
-          type: "doc",
+                  link: {
+                        type: "doc",
+                        id: "developer-docs/smart-contracts/overview",
+                  },
           label: "Overview",
-          id: "developer-docs/smart-contracts/overview",
+                   items:
+          [
+            "developer-docs/backend/choosing-language",
+          ],
         },
         {
           type: "doc",
