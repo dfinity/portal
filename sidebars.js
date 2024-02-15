@@ -368,6 +368,15 @@ const sidebars = {
                     "developer-docs/integrations/vetkeys/using-vetkeys",
                   ],
                 },
+                {
+                  type: "category",
+                  label: "Make an HTTP request",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/integrations/https-outcalls/https-outcalls-overview",
+                  },
+                  items: [],
+                },
               ],
             },
             "developer-docs/backend/periodic-tasks",
@@ -379,8 +388,18 @@ const sidebars = {
           items: [
             {
               type: "doc",
+              label: "Architecture",
+              id: "developer-docs/setup/best-practices/architecture",
+            },
+            {
+              type: "doc",
               label: "General",
               id: "developer-docs/production/best-practices",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/setup/best-practices/storage",
             },
           ],
         },
