@@ -212,6 +212,7 @@ const redirects = `
   /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/getting-started/default-template
   /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy/local
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/setup/best-practices/general
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
