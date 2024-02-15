@@ -121,8 +121,9 @@ const sidebars = {
                 "references/cli-reference/dfx-stop",
                 "references/cli-reference/dfx-upgrade",
                 "references/cli-reference/dfx-wallet",
-                "references/cli-reference/dfx-envars",
                 "references/dfx-json-reference",
+                "references/cli-reference/dfx-envars",
+                "references/networks-json",
               ],
             },
             {
