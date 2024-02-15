@@ -1,6 +1,6 @@
 # Level 4: Space pilot
 
-- [4.1 Using the ICP ledger](4.1-icp-ledger.md): In this tutorial, you'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it: 
+- [4.1 Using the ICP ledger](/docs/current/tutorials/developer-journey/level-4/4.1-icp-ledger): In this tutorial, you'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it: 
     - Accounts.
     - Transaction types.
     - Deploying the ICP ledger locally.
@@ -15,7 +15,7 @@
         - Using the Candid UI.
     - Resources.
 
-- [4.2 ICRC-1 tokens](4.2-icrc-tokens.md): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, you'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard: 
+- [4.2 ICRC-1 tokens](/docs/current/tutorials/developer-journey/level-4/4.2-icrc-tokens): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, you'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard: 
     - What’s the difference between the ICP and ICRC-1 ledgers?
         - `Account`s versus `AccountIdentifier`s.
         - Endpoints.
@@ -33,7 +33,7 @@
         - Using the Candid UI.
     - Resources.
 
-- [4.3 ckBTC and Bitcoin integration](4.3-ckbtc-and-bitcoin.md): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. This tutorial takes a look at ckBTC and the Internet Computer's Bitcoin integration: 
+- [4.3 ckBTC and Bitcoin integration](/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. This tutorial takes a look at ckBTC and the Internet Computer's Bitcoin integration: 
     - Bitcoin integration architecture.
     - What is ckBTC?
     - Bitcoin use-cases on ICP.
@@ -48,7 +48,7 @@
         - Sending BTC.
     - Resources.
 
-- [4.4 NNS governance and staking](4.4-nns-governance.md): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully on-chain and is responsible for making protocol-level upgrades to ICP:
+- [4.4 NNS governance and staking](/docs/current/tutorials/developer-journey/level-4/4.4-nns-governance): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully on-chain and is responsible for making protocol-level upgrades to ICP:
     - What is the NNS?
         - Neurons.
         - Proposals.
@@ -62,7 +62,7 @@
         - Staking ICP in a neuron.
         - Interacting with NNS proposals.
 
-- [4.5 Using quill](4.5-using-quill.md): Quill is a ledger and governance toolkit that provides support for self-custody of ICP tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**: 
+- [4.5 Using quill](/docs/current/tutorials/developer-journey/level-4/4.5-using-quill): Quill is a ledger and governance toolkit that provides support for self-custody of ICP tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**: 
     - What is quill?
     - Downloading and installing quill.
     - Using quill’s basic commands.
@@ -70,7 +70,7 @@
     - Using quill with the NNS.
     - Resources.
 
-- [4.6 Motoko level 4](4.6-motoko-lvl4.md): In this final Motoko module of the developer journey series, we'll cover the following Motoko concepts and components:
+- [4.6 Motoko level 4](/docs/current/tutorials/developer-journey/level-4/4.6-motoko-lvl4): In this final Motoko module of the developer journey series, we'll cover the following Motoko concepts and components:
     - Mutable state.
         - Immutable variables versus mutable variables.
         - Reading data from mutable memory.

@@ -38,4 +38,4 @@ Motoko is extensively documented in the [references](../../../motoko/main/basic-
 
 ## Next steps
 
-Next, let's review the [code organization](./explore-templates.md) of a Motoko project. 
+Next, let's review the [code organization](./explore-templates.mdx) of a Motoko project. 

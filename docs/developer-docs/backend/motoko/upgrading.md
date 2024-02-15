@@ -64,4 +64,4 @@ dfx canister install [canister-id] --mode upgrade
 
 ## Next steps
 
-Next, let's take a look at [inter-canister calls](intercanister-calls.md).
+Next, let's take a look at [inter-canister calls](intercanister-calls.mdx).

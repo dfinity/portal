@@ -132,4 +132,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-- [0.6 Introduction to dfx](06-intro-dfx.md).
+- [0.6 Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx).

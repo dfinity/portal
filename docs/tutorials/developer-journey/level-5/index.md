@@ -1,6 +1,6 @@
 # Level 5: Internet Computer astronaut 
 
-- [5.1 Developing an encrypted notes dapp with vetKeys](5.1-vetKeys-tutorial.md): The Internet Computer vetKeys feature provides developers with more enhanced privacy, encryption, threshold decryption, and security capabilities for their projects and dapps:
+- [5.1 Developing an encrypted notes dapp with vetKeys](/docs/current/tutorials/developer-journey/level-5/5.1-vetKeys-tutorial): The Internet Computer vetKeys feature provides developers with more enhanced privacy, encryption, threshold decryption, and security capabilities for their projects and dapps:
     - What is vetKeys?
         - Crypto primitives.
         - Public key encryption (PKE).
@@ -21,7 +21,7 @@
         - Starting the local development server.
         - Using the dapp.
 
-- [5.2 Developing a dapp using the ICP Ethereum integration](5.2-ICP-ETH-tutorial.md): In this tutorial, you'll use the DFINITY ICP ETH starter project to deploy a boilerplate dapp that showcases how ICP can query information from the Ethereum network using HTTPS outcalls:
+- [5.2 Developing a dapp using the ICP Ethereum integration](/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial): In this tutorial, you'll use the DFINITY ICP ETH starter project to deploy a boilerplate dapp that showcases how ICP can query information from the Ethereum network using HTTPS outcalls:
     - Deploying the ETH starter project.
         - Project technology stack.
         - Prerequisites.
@@ -34,7 +34,7 @@
     - Going further.
     - Resources.
 
-- [5.3 Creating a decentralized token swap](5.3-token-swap-tutorial.md): In this tutorial, you'll deploy a simple token swap canister that demonstrates how to deposit, swap, and withdraw tokens:
+- [5.3 Creating a decentralized token swap](/docs/current/tutorials/developer-journey/level-5/5.3-token-swap-tutorial): In this tutorial, you'll deploy a simple token swap canister that demonstrates how to deposit, swap, and withdraw tokens:
     - Decentralized token swap canister.
         - Prerequisites.
         - Cloning the `icrc2-swap` example.
@@ -51,7 +51,7 @@
         - Checking token balances. 
 
 
-- [5.4 Creating NFTs on ICP](5.4-NFT-tutorial.md): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another:
+- [5.4 Creating NFTs on ICP](/docs/current/tutorials/developer-journey/level-5/5.4-NFT-tutorial): A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another:
     - How do NFTs work?
     - NFT standards.
         - DIP721.
@@ -73,7 +73,7 @@
         - Querying the owner of a specific token ID.
     - Resources.
 
-- [5.5 Creating an auction dapp](5.5-auction-tutorial.md): 
+- [5.5 Creating an auction dapp](/docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial): 
 - How does an auction work?
 - Creating an auction dapp.
     - Prerequisites.
@@ -84,7 +84,7 @@
     - Deploying the project's canisters.
     - Using the dapp.
 
-- [5.6 Next steps](5.6-next-steps.md): In this final tutorial, you'll learn about some of the different resources to help guide you further in your personal developer journey:
+- [5.6 Next steps](/docs/current/tutorials/developer-journey/level-5/5.6-next-steps): In this final tutorial, you'll learn about some of the different resources to help guide you further in your personal developer journey:
     - Developer grants.
     - Developer bounties.
     - Hackathons.

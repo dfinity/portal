@@ -19,4 +19,4 @@ Before you start your project, verify the following:
 - [x] Assure that all packages and tools above are updated to the latest release versions. 
 
 ## Next steps
-After following the steps above, you're ready to get started developing backend canisters with Motoko! To get started, check out the [Motoko quick start guide](./at-a-glance.md).
+After following the steps above, you're ready to get started developing backend canisters with Motoko! To get started, check out the [Motoko quick start guide](./at-a-glance.mdx).
