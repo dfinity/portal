@@ -101,4 +101,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-- [0.3 Developer environment setup](03-dev-env.md).
+- [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).

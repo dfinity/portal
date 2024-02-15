@@ -135,4 +135,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-- [0.4 Introduction to canisters](04-intro-canisters.md).
+- [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/intro-canisters).

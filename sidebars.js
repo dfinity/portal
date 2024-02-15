@@ -45,7 +45,7 @@ const sidebars = {
         }, 
         {
           type: "doc",
-          label: "Build your first smart contract",
+          label: "Default project template",
           id: "developer-docs/getting-started/default-template",
         },
         {
@@ -64,9 +64,7 @@ const sidebars = {
             },
           ],
         },
-      ],
-    },
-    {
+      {
       type: "category",
       label: "Quickstart guides",
       items: [
@@ -75,6 +73,8 @@ const sidebars = {
           label: "Quickstart for React developers",
           id: "developer-docs/setup/react-quickstart",
         },
+      ],
+    },
       ],
     },
     {
@@ -368,6 +368,15 @@ const sidebars = {
                     "developer-docs/integrations/vetkeys/using-vetkeys",
                   ],
                 },
+                {
+                  type: "category",
+                  label: "Make an HTTP request",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/integrations/https-outcalls/https-outcalls-overview",
+                  },
+                  items: [],
+                },
               ],
             },
             "developer-docs/backend/periodic-tasks",
@@ -379,8 +388,18 @@ const sidebars = {
           items: [
             {
               type: "doc",
+              label: "Architecture",
+              id: "developer-docs/setup/best-practices/architecture",
+            },
+            {
+              type: "doc",
               label: "General",
               id: "developer-docs/production/best-practices",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/setup/best-practices/storage",
             },
           ],
         },

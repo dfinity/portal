@@ -5,7 +5,7 @@
 
 Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to ICP, or to introduce a websocket layer to your application.
 
-[More information about calling ICP from JavaScript in a web browser](javascript-intro.md).
+[More information about calling ICP from JavaScript in a web browser](javascript-intro.mdx).
 
 In this example, you will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.
 
