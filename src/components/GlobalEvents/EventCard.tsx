@@ -6,7 +6,7 @@ import Link from "@docusaurus/Link";
 import LinkArrowUpRight from "../Common/Icons/LinkArrowUpRight";
 
 export function eventBannerUrl(event: AirtableEvent): string {
-  return event.eventBanner?.url || "/img/events/placeholder.webp";
+  return event.imageUrl || "/img/events/placeholder.webp";
 }
 
 export function eventLocation(event: AirtableEvent): string {
