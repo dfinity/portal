@@ -209,13 +209,13 @@ To learn more about variants in Typescript via Azle, refer to [the Azle book ref
 from kybra import nat32, Variant, query
 
 class Day(Variant, total=False):
-    Sun;
-    Mon;
-    Tue;
-    Wed;
-    Thu;
-    Fri;
-    Sat;
+    Sun: str
+    Mon: str
+    Tue: str
+    Wed: str
+    Thu: str
+    Fri: str
+    Sat: str
 
 @query
 def get_text(d: Day) -> str:
