@@ -2,7 +2,7 @@
 
 ## Overview
 
-A canister has a basic permission model of a list of controllers which have administrative rights over the canister. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. A canister can have multiple controllers, and each controller has the same administrative rights over the canister. A canister can also have no controller, in which case the canister becomes immutable and cannot be upgraded or deleted. 
+A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it have no controller, in which case the canister becomes immutable and cannot be upgraded or deleted. 
 
 ## Setting the controllers of a canister
 
