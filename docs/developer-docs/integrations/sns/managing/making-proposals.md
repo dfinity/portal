@@ -46,7 +46,7 @@ quill send message.json
 
 * `<PATH_TO_CANISTER_IDS_JSON_FILE>` is the file path to a canister IDs JSON file. See example [sns_canister_ids.json](https://github.com/dfinity/quill/blob/master/e2e/assets/sns_canister_ids.json).
 * `PROPOSAL_NEURON_ID` is the neuron ID of the neuron that is submitting the proposal.
-* `<PATH_TO_PEM_FILE>` is the path to the PEM file of the identity that owns the neuron that is submitting the proposal. To generate a PEM file, see [here](https://internetcomputer.org/docs/current/references/quill-cli-reference/quill-generate).
+* `<PATH_TO_PEM_FILE>` is the path to the PEM file of the identity that owns the neuron that is submitting the proposal. To generate a PEM file, see [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate).
 * `title` is a short description of the proposal.
 * `url` is a link to a document that describes the proposal in more detail.
 * `summary` is a short summary of the proposal.

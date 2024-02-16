@@ -32,7 +32,7 @@ Many of the providers on [ChainList.org](https://chainlist.org/) can be called u
 
 ## Importing or deploying the EVM RPC canister
 
-To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/current/references/cli-reference/dfx-parent) project, add the following to your `dfx.json` file:
+To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/current/developer-tools/cli-tools/cli-reference/dfx-parent) project, add the following to your `dfx.json` file:
 
 ```json
 {

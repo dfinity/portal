@@ -6,7 +6,7 @@ The Internet Computer Protocol (ICP) implements management of its utility token 
 
 This section is structured as follows:
 
-- This page provides an introduction to the basics of ICP and the ledger. For a more detailed explanation of the complete public interface of the ledger canister head over to the [specification](/docs/current/references/ledger) in the [references section](/docs/current/references/).
+- This page provides an introduction to the basics of ICP and the ledger. For a more detailed explanation of the complete public interface of the ledger canister head over to the [specification](/docs/current/references/ledger).
 - [Interact with the ICP ledger](interact-with-ledger.md) provides hands on tutorials to interact with the ICP ledger from the command line, JavaScript applications and from canisters.
 - [ICP-Ledger local setup](./ledger-local-setup.md) walks you through the steps to deploy a ledger canister to your local replica for development.
 - [Account trimming](./collecting-dust.md) explains the mechanism to trim the dust accounts from the ledger.

@@ -86,7 +86,7 @@ dfx ledger --network ic create-canister --amount 0.5 --subnet-type european CONT
 
 Replace `CONTROLLER` with the prinicpal ID that you took note of earlier after running the `dfx identity get-principal` command.
 
-Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/current/references/cli-reference/dfx-ledger/#options). 
+Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/current/developer-tools/cli-tools/cli-reference/dfx-ledger/#options). 
 
 This command will return a canister ID. Using that canister ID, you can deploy the wallet canister code to the new canister with the command:
 

@@ -112,7 +112,7 @@ cargo update
 
 Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of canister interfaces.
 
-To see details about the Candid interface description language syntax, see the [Candid guide](../candid/) or the [Candid crate documentation](https://docs.rs/candid/).
+To see details about the Candid interface description language syntax, see the [Candid guide](/docs/current/developer-docs/smart-contracts/candid) or the [Candid crate documentation](https://docs.rs/candid/).
 
 Start by opening the `src/my_timers_backend/my_timers_backend.did` file in a code editor and replace its content with the following:
 
@@ -188,7 +188,7 @@ This code establishes the following:
 ## Implementing canister upgrade
 
 :::info
-Note: As described in the [periodic tasks and timers](../periodic-tasks) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+Note: As described in the [periodic tasks and timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
 :::
 
 For the sake of simplicity, in this guide the `canister_post_upgrade` method just calls `canister_init` to reinitialize the timer.
