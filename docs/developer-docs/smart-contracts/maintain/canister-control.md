@@ -2,11 +2,11 @@
 
 ## Overview
 
-A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it have no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted. 
+A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it has no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted. 
 
 ## Setting the controllers of a canister
 
-The controllers of a canister are set when the canister is created. If no explicit controller settings are specified, the default controller is the principal that created the canister. If the canister is created with `dfx` then the default controller list contains the developer identity and the principial of the associated cycles wallet canister.
+The controllers of a canister are set when the canister is created. If no explicit controller settings are specified, the default controller is the principal that created the canister. If the canister is created with `dfx` then the default controller list contains the developer identity and the principal of the associated cycles wallet canister.
 
 ## Update the controllers of a canister
 
@@ -37,9 +37,9 @@ dfx canister update-settings CANISTER_NAME --set-controller CONTROLLER
 - Stopping and starting the canister.
 - Installing code in the canister.
 - Upgrading the canister.
-- Getting the status of the canister which includes its cycles balance, memeory usage, and list of controllers.
+- Getting the status of the canister which includes its cycles balance, memory usage, and list of controllers.
 - Deleting the canister.
-- Updating settings like the freezing threshold, resource acllocation, and controllers.
+- Updating settings like the freezing threshold, resource allocation, and controllers.
 
 ## Common control models
 
@@ -49,7 +49,7 @@ A canister is controlled by a single developer or a team of developers. Each dev
 
 ### MultiSig
 
-A canister is controlled by a multi-signature canister. The multi-signature canister is controlled by a list of developers, and requires a threshold number of signatures to perform administrative actions on the canister. This model is more secure than the single developer model, as it requires multiple developers to agree on an action before it can be performed. 
+A canister is controlled by a multi-signature canister. The multi-signature canister is controlled by a list of developers and requires a threshold number of signatures to perform administrative actions on the canister. This model is more secure than the single developer model, as it requires multiple developers to agree on an action before it can be performed. 
 
 A canister that can be used for this purpose is the [Threshold canister](https://github.com/dfinity/threshold).
 
@@ -67,4 +67,4 @@ Developers can also add the NNS root canister as a controller of their canister,
 
 ### No controller
 
-A canister has no controller, and is immutable. On ICP this model is often called a blackholed canister. This is the model used by smart contracts on Ethereum.
+A canister has no controller and is immutable. On ICP this model is often called a blackholed canister. This is the model used by smart contracts on Ethereum.
