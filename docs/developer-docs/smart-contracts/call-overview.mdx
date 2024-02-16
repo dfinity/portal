@@ -70,6 +70,10 @@ def set_message(new_message: str) -> void:
 
 Query calls are executed on a single node and return a synchronous response. Since they execute on a single node, they do not go through consensus and can be much faster than update calls.
 
+:::warning
+The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a certified query (see below) should be used for security-critical calls.
+:::
+
 ### Example query call
 
 <Tabs groupId="language">
@@ -122,8 +126,9 @@ def get_message() -> str:
 ## Comparison of update calls vs query calls
 
 | Update calls | Query Calls |
-| :----------------: | :------: |
-| Slow | Fast |
+| :----------: | :------: |
+| Slow (1-2s) | Fast (200-400ms) |
+| Can modify state | Can't modify state |
 | Goes through consensus | Does not go through consensus |
 | Asynchronous response | Synchronous response |
 | Executed on all nodes of a subnet | Executed on a single node |
@@ -143,9 +148,9 @@ Learn more about the properties of ICP message executions.
 
 Composite queries are query calls that can call other queries (on the same subnet). They can only be invoked by end users, and not by other canisters.
 
-### Certified variables
+### Certified queries
 
-Certified variables are verifiable pieces of data that come along with a certificate to prove the data's authenticity. Certified variables can be set via an update call and can then be read via a query call.
+Certified queries use certified variables to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call and can then be read via a query call.
 
 ### Inter-canister calls
 
