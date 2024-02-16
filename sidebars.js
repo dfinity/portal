@@ -275,6 +275,10 @@ const sidebars = {
         {
           type: "category",
           label: "Call",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/call-overview",
+	  },
           items: [
             {
               type: "category",
