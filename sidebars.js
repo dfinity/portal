@@ -372,6 +372,15 @@ const sidebars = {
               label: "Composite queries",
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/integrations/https-outcalls/https-outcalls-get",
+                "developer-docs/integrations/https-outcalls/https-outcalls-post",
+              ],
+            },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
           ],
         },
@@ -426,15 +435,7 @@ const sidebars = {
             "developer-docs/production/custom-domain/dns-setup"],
         },
         "developer-docs/backend/design-dapps",
-        {
-          type: "category",
-          label: "HTTPS outcalls",
-          items: [
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-            "developer-docs/integrations/https-outcalls/https-outcalls-get",
-            "developer-docs/integrations/https-outcalls/https-outcalls-post",
-          ],
-        },
+        "developer-docs/integrations/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
