@@ -19,3 +19,21 @@ To generate a locally-defined identifier:
         dfx build --check
 
     Note that you must register unique canister identifiers to replace your locally-defined identifier before you can deploy the project on ICP blockchain.
+
+:::info
+When a canister is deployed with [`dfx deploy`](/docs/current/developer-docs/setup/deploy), the `dfx build` command is run in the background as part of the deployment process. 
+:::
+
+## Next steps
+
+- [Deploy canisters](/docs/current/developer-docs/setup/deploy)
+
+- [Delete canisters](/docs/current/developer-docs/setup/delete)
+
+- [Canister history](/docs/current/developer-docs/production/canister-history)
+
+- [Import canisters](/docs/current/developer-docs/setup/pulling-canister-dependencies)
+
+- [Recover canisters](/docs/current/developer-docs/production/canister-recovery)
+
+- [Canister settings](/docs/current/developer-docs/setup/manage-canisters)

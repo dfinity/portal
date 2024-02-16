@@ -12,7 +12,7 @@ Ensure all canisters have sufficient cycles to sustain operations for several ye
 
 Refer to [topping up cycles page](/docs/current/developer-docs/production/topping-up-canister) to learn how to top-up cycles effectively.
 
-Refer to the [cycles estimate](/docs/current/gas-cost) page to estimate cycle usage. 
+Refer to the [cycles estimate](/docs/current/developer-docs/gas-cost) page to estimate cycle usage. 
 
 ### Recommendation: Manage cycle depletion.
 
@@ -39,6 +39,7 @@ Use [canister timers](/docs/current/developer-docs/backend/periodic-tasks) over 
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
+6. Be mindful of calling an [actor class]((https://internetcomputer.org/docs/current/motoko/main/actor-classes), as the overhead is similar to that of installing a fresh canister.
 
 #### Rust 
 1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message
