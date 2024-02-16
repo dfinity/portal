@@ -256,54 +256,62 @@ const sidebars = {
       label: "Smart contracts",
       items: [
         {
-          type: "category",
+	  type: "category",
           label: "Overview",
-          items:
-          [
-            "developer-docs/backend/choosing-language",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/overview",
+          },
+          items: [
+            "developer-docs/smart-contracts/development-cycle",
+            "developer-docs/smart-contracts/choosing-language",
           ],
         },
         {
           type: "doc",
           label: "Build",
-          id: "developer-docs/setup/build",
+          id: "developer-docs/smart-contracts/build",
+        },
+        {
+          type: "category",
+          label: "Deploy",
+          items: [
+            "developer-docs/smart-contracts/deploy/overview",
+            "developer-docs/smart-contracts/deploy/larger-wasm",
+            "developer-docs/smart-contracts/deploy/sharing",
+          ],
         },
         {
           type: "category",
           label: "Call",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/call-overview",
+	  },
           items: [
             {
               type: "category",
               label: "Candid",
               items: [
-                "developer-docs/backend/candid/candid-concepts",
-                "developer-docs/backend/candid/candid-howto",
+                "developer-docs/smart-contracts/candid/candid-concepts",
+                "developer-docs/smart-contracts/candid/candid-howto",
               ],
             },
           ],
         },
         {
           type: "category",
-          label: "Deploy",
-          items: [
-            "developer-docs/setup/deploy",
-            "developer-docs/production/larger-wasm",
-            "developer-docs/production/social-sharing",
-          ],
-        },
-        {
-          type: "category",
           label: "Maintain",
           items:[
-            "developer-docs/setup/delete",
-             "developer-docs/production/canister-history",
-             "developer-docs/setup/pulling-canister-dependencies",
-             "developer-docs/production/canister-recovery",
-             "developer-docs/setup/state",
-             "developer-docs/setup/manage-canisters",
-             "developer-docs/production/storage",
-             "developer-docs/setup/upgrade",
-             "developer-docs/production/resource-limits",
+            "developer-docs/smart-contracts/maintain/delete",
+             "developer-docs/smart-contracts/maintain/history",
+             "developer-docs/smart-contracts/maintain/import",
+             "developer-docs/smart-contracts/maintain/recovery",
+             "developer-docs/smart-contracts/maintain/state",
+             "developer-docs/smart-contracts/maintain/settings",
+             "developer-docs/smart-contracts/maintain/storage",
+             "developer-docs/smart-contracts/maintain/upgrade",
+             "developer-docs/smart-contracts/maintain/resource-limits",
              {
               type: "category",
               label: "Cost",
@@ -316,8 +324,8 @@ const sidebars = {
               type: "category",
               label: "Topping up canisters",
               items: [
-                "developer-docs/production/topping-up-canister",
-                "developer-docs/getting-started/cycles/cycles_management_services",
+                "developer-docs/smart-contracts/topping-up/topping-up-canister",
+                "developer-docs/smart-contracts/topping-up/cycles_management_services",
               ],
             },
           ]
@@ -326,10 +334,33 @@ const sidebars = {
           type: "category",
           label: "Test",
           items: [
-            "developer-docs/setup/pocket-ic",
-            "developer-docs/production/staging-environment",
-            "developer-docs/backend/reproducible-builds",
-            "developer-docs/backend/troubleshooting",
+            "developer-docs/smart-contracts/test/pocket-ic",
+            "developer-docs/smart-contracts/test/staging-environment",
+            "developer-docs/smart-contracts/test/reproducible-builds",
+            "developer-docs/smart-contracts/test/troubleshooting",
+          ],
+        },
+        {
+          type: "category",
+          label: "Encryption and signatures",
+          items: [
+            {
+              type: "category",
+              label: "On-chain signatures: Threshold ECDSA",
+              items: [
+                "developer-docs/smart-contracts/encryption/t-ecdsa",
+                "developer-docs/smart-contracts/encryption/signing-transactions"
+              ],
+            },
+            "developer-docs/integrations/https-outcalls/https-outcalls-overview",
+            {
+              type: "category",
+              label: "On-chain encryption: vetKeys",
+              items: [
+                "developer-docs/smart-contracts/encryption/vetkeys",
+                "developer-docs/smart-contracts/encryption/using-vetkeys",
+              ],
+            },
           ],
         },
         {
@@ -339,46 +370,9 @@ const sidebars = {
             {
               type: "doc",
               label: "Composite queries",
-              id: "developer-docs/integrations/composite-query/composite-query",
+              id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
-            {
-              type: "category",
-              label: "Encryption and signatures",
-              items: [
-                {
-                  type: "doc",
-                  label: "Verifying signatures",
-                  id: "developer-docs/integrations/independently-verifying-ic-signatures",
-                },
-                {
-                  type: "category",
-                  label: "On-chain signatures: Threshold ECDSA",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/integrations/t-ecdsa/index",
-                  },
-                  items: [],
-                },
-                {
-                  type: "category",
-                  label: "On-chain encryption: vetKeys",
-                  items: [
-                    "developer-docs/integrations/vetkeys/index",
-                    "developer-docs/integrations/vetkeys/using-vetkeys",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Make an HTTP request",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-                  },
-                  items: [],
-                },
-              ],
-            },
-            "developer-docs/backend/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/periodic-tasks",
           ],
         },
         {
@@ -388,22 +382,22 @@ const sidebars = {
             {
               type: "doc",
               label: "Architecture",
-              id: "developer-docs/setup/best-practices/architecture",
+              id: "developer-docs/smart-contracts/best-practices/architecture",
             },
             {
               type: "doc",
               label: "General",
-              id: "developer-docs/setup/best-practices/general",
+              id: "developer-docs/smart-contracts/best-practices/general",
             },
             {
               type: "doc",
               label: "Storage",
-              id: "developer-docs/setup/best-practices/storage",
+              id: "developer-docs/smart-contracts/best-practices/storage",
             },
             {
               type: "doc",
               label: "Troubleshooting latency",
-              id: "developer-docs/setup/best-practices/troubleshooting",
+              id: "developer-docs/smart-contracts/best-practices/troubleshooting",
             },
           ],
         },
@@ -1018,7 +1012,7 @@ const sidebars = {
         "developer-docs/backend/rust/access-control",
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
-        "developer-docs/backend/candid/generating-candid",
+        "developer-docs/backend/rust/generating-candid",
       ],
     },
   ],

@@ -27,7 +27,7 @@ To create a reproducible canister build, there are two popular workflows: Linux 
 
 It is the canister developer’s responsibility to provide a reproducible way of building a WebAssembly module from the published sources. If your code is still within development, it can help to provide users or other developers with module hashes that correlate to each released version of the project's source code. 
 
-For more information on reproducible canister builds, check out [here](../reproducible-builds.md)
+[More information on reproducible canister builds](/docs/current/developer-docs/smart-contracts/test/reproducible-builds).
 
 ## Observability
 Metrics can be used to gain insight into a wide range of information regarding your canister's production services. This data is important to learn about your canister's statistics and productivity. 

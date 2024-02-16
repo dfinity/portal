@@ -668,7 +668,7 @@ It should be possible to verify that a canister does what it claims to do. ICP p
 
 #### Recommendation
 
-Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/developer-docs/backend/reproducible-builds.md).
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/docs/current/developer-docs/smart-contracts/test/reproducible-builds).
 
 ### Expose metrics from your canister
 

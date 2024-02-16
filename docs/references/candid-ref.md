@@ -559,7 +559,7 @@ The supported annotations are:
 
 -   `oneway` indicates that this function returns no response, intended for fire-and-forget scenarios.
 
-For more information about parameter naming, see [Naming arguments and results](/developer-docs/backend/candid/candid-concepts.md#service-naming).
+For more information about parameter naming, see [Naming arguments and results](/docs/current/developer-docs/smart-contracts/candid/candid-concepts#service-naming).
 
 #### Type syntax  
 ``` candid
@@ -580,7 +580,7 @@ func "aaaaa-aa".create_canister
 ```
 
 #### Subtypes  
-The following modifications to a function type change it to a subtype as discussed in the rules for [service upgrades](/developer-docs/backend/candid/candid-concepts.md#upgrades):
+The following modifications to a function type change it to a subtype as discussed in the rules for [service upgrades](/docs/current/developer-docs/smart-contracts/candid/candid-concepts#upgrades):
 
 -   The result type list may be extended.
 
@@ -636,7 +636,7 @@ type F4 = shared query () -> async Text;
 
 Services may want to pass around references to not just individual functions (using the [`func` type](#type-func)), but references to whole services. In this case, Candid types can be used to declare the complete interface of such a service.
 
-See [Candid service descriptions](/developer-docs/backend/candid/candid-concepts.md#candid-service-descriptions) for more details on the syntax of a service type.
+See [Candid service descriptions](/docs/current/developer-docs/smart-contracts/candid/candid-concepts#candid-service-descriptions) for more details on the syntax of a service type.
 
 #### Type syntax  
 ``` candid
@@ -658,7 +658,7 @@ service: "aaaaa-aa"
 #### Subtypes  
 The subtypes of a service type are those service types that possibly have additional methods, and where the type of an existing method is changed to a subtype.
 
-This is exactly the same principle as discussed for upgrade rules in [service upgrades](/developer-docs/backend/candid/candid-concepts.md#upgrades).
+This is exactly the same principle as discussed for upgrade rules in [service upgrades](/docs/current/developer-docs/smart-contracts/candid/candid-concepts#upgrades).
 
 #### Supertypes  
 The supertypes of a service type are those service types that may have some methods removed, and the type of existing methods are changed to a supertype.

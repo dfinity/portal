@@ -26,7 +26,7 @@ Before you start your project, verify the following:
 
 - [x]  You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) page.
 
-    The [IC SDK setup guide](/docs/current/developer-docs/getting-started/install/) provides tools, sample code, and documentation to help you create [Rust smart contracts](../choosing-language.md) and dapps to run on the Internet Computer mainnet. The setup guide assumes that you are installing the IC SDK for the first time.
+    The [IC SDK setup guide](/docs/current/developer-docs/getting-started/install/) provides tools, sample code, and documentation to help you create [Rust smart contracts](/docs/current/developer-docs/smart-contracts/choosing-language) and dapps to run on the Internet Computer mainnet. The setup guide assumes that you are installing the IC SDK for the first time.
 
     To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs). 
 
