@@ -939,7 +939,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Message Execution Properties",
+          label: "Message execution properties",
           id: "references/message-execution-properties",
 	},
         {

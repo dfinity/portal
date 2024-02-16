@@ -2,10 +2,14 @@
 
 There are a few key properties that one needs to understand about the execution model on ICP. Let's walk through them.
 
-**Property 1**: Message execution is sequential, i.e. only a single message per canister is processed at a time.
+### Property 1
+
+Message execution is sequential, i.e. only a single message per canister is processed at a time.
 
 
-**Property 2**: Each call (update or query) triggers a message. If an inter-canister call is involved, the code after the call (i.e. the callback code) is executed as a separate message.
+### Property 2
+
+ Each call (update or query) triggers a message. If an inter-canister call is involved, the code after the call (i.e. the callback code) is executed as a separate message.
 
 Let's look at an example to further clarify this point:
 
@@ -22,14 +26,18 @@ func example(): async Result {
 In this example, there are two message executions involved to process a single call to the `example()` method of the canister. The first one involves “block 1” up to and including the point where the inter-canister call is made while the second message execution involves “block 2” until the end of the function declaration. The two message executions will always be scheduled sequentially.
 
 
-**Property 3**: Successfully delivered requests are received in the order in which they were sent. In particular, if canister A sends m1 and m2 in that order to canister B, then, if both are accepted, m1 will be executed before m2.
+### Property 3
+
+Successfully delivered requests are received in the order in which they were sent. In particular, if canister A sends m1 and m2 in that order to canister B, then, if both are accepted, m1 will be executed before m2.
 
 :::info
 Note that this property only gives a guarantee on when the messages are executed, but there is no guarantee on the ordering of the responses received.
 :::
 
 
-**Property 4**: Messages from interleaving calls have no reliable execution ordering.
+### Property 4
+
+Messages from interleaving calls have no reliable execution ordering.
 
 Property 3 provides a guarantee on the execution order of messages on a target canister. If multiple calls interleave, one cannot assume additional ordering guarantees for these interleaving calls. Your code should result in a correct state regardless of the message ordering.
 
@@ -40,12 +48,16 @@ To illustrate this, let's consider the above example code again, and assume the 
 </div>
 
 
-**Property 5**: On a trap, modifications to the canister's state for the current message are not applied.
+### Property 5
+
+On a trap, modifications to the canister's state for the current message are not applied.
 
 For example, if a trap in the second message (dotted circle) of the above example occurs, canister state changes resulting from that message are discarded. However, note that any state changes that happened in the first message (solid circle) have been applied if that message executed successfully.
 
 
-**Property 6**: Inter-canister calls are not guaranteed to make it to the destination canister. If the call does reach the destination canister, the destination canister can trap or return a **reject** response while processing the call.
+### Property 6
+
+Inter-canister calls are not guaranteed to make it to the destination canister. If the call does reach the destination canister, the destination canister can trap or return a **reject** response while processing the call.
 
 Every inter-canister call is guaranteed to receive a response, either from the callee canister, or synthetically produced by ICP. However, the response does not need to be successful. It can be a **reject** response. A **reject** response means that the message hasn’t been successfully processed by the receiver, but it does not guarantee that the receiver’s state hasn’t been modified. 
 
