@@ -2746,5 +2746,48 @@
     "twitter": "",
     "youtube": "",
     "submittableId": ""
+  },
+  {
+    "name": "John Dao",
+    "description": "John Dao is community controlled twitter/X account. You can post tweet proposals and vote on what the next tweet should be. If your tweet wins you get paid with ICP!",
+    "website": "https://johndao.gg",
+    "logo": "/img/showcase/john-dao_logo.webp",
+    "screenshots": [
+      "/img/showcase/john-dao_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "john-dao",
+    "oneLiner": "A Twitter/X account controlled by a DAO on the Internet Computer",
+    "stats": "25.000+ views",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "github": "",
+    "twitter": "https://twitter.com/JohnDao_gg",
+    "youtube": "",
+    "submittableId": "35119262"
+  },
+  {
+    "name": "aVa Reputation",
+    "description": "aVa: Action-Based Decentralized Reputation Landscape.",
+    "website": "https://ava.capetown/en",
+    "logo": "/img/showcase/ava_logo.svg",
+    "screenshots": ["/img/showcase/ava-screenshot.png"],
+    "video": "https://www.youtube.com/watch?v=_Hpmj_I67Yg",
+    "display": "Normal",
+    "id": "ava",
+    "oneLiner": "Issue digital soulbound NFT certificates with ruputation to your customers using Internet Identity",
+    "stats": "All II users",
+    "tags": [
+        "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ava-vs/reputation",
+    "twitter": "",
+    "youtube": "https://www.youtube.com/watch?v=_Hpmj_I67Yg",
+    "submittableId": "44317310"
   }
 ]
