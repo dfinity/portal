@@ -256,10 +256,13 @@ const sidebars = {
       label: "Smart contracts",
       items: [
         {
-          type: "category",
+	  type: "category",
           label: "Overview",
-          items:
-          [
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/overview",
+          },
+          items: [
             "developer-docs/backend/choosing-language",
           ],
         },
@@ -271,6 +274,10 @@ const sidebars = {
         {
           type: "category",
           label: "Call",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/call-overview",
+	  },
           items: [
             {
               type: "category",

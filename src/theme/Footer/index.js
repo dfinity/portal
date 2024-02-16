@@ -15,7 +15,14 @@ import IconExternalLink from "@theme/IconExternalLink";
 import IconDownload from "@site/static/img/svgIcons/download.svg";
 import { EditIcon } from "./EditIcon";
 
-function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
+function FooterLink({
+  to,
+  href,
+  label,
+  prependBaseUrlToHref,
+  isDownload,
+  ...props
+}) {
   const toUrl = useBaseUrl(to);
   const normalizedHref = useBaseUrl(href, {
     forcePrependBaseUrl: true,
@@ -30,7 +37,7 @@ function FooterLink({ to, href, label, prependBaseUrlToHref, ...props }) {
         <IconExternalLink />
       </span>
     );
-  } else if (props && props.isDownload) {
+  } else if (isDownload) {
     markup = (
       <span className="lg:inline-flex items-center gap-1">
         {label}
