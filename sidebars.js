@@ -281,6 +281,11 @@ const sidebars = {
 	  },
           items: [
             {
+              type: "doc",
+              label: "Passing in arguments",
+                id: "developer-docs/backend/arguments",
+            },
+            {
               type: "category",
               label: "Candid",
               items: [
