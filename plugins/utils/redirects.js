@@ -53,12 +53,12 @@ const redirects = `
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/getting-started/install/
   
-  /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid
+  /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid
+  /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
-  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid
+  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto 
   
   /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/choosing-language 
