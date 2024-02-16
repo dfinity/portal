@@ -246,7 +246,7 @@ const sidebars = {
           items: [
             "developer-docs/developer-tools/ide/vs-code",
             "developer-docs/developer-tools/ide/playground",
-            "developer-tools/ide/gitpod",
+            "developer-docs/developer-tools/ide/gitpod",
           ],
         },
       ],
@@ -278,7 +278,6 @@ const sidebars = {
               items: [
                 "developer-docs/backend/candid/candid-concepts",
                 "developer-docs/backend/candid/candid-howto",
-                "developer-docs/backend/candid/generating-candid",
               ],
             },
           ],
@@ -1019,6 +1018,7 @@ const sidebars = {
         "developer-docs/backend/rust/access-control",
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
+        "developer-docs/backend/candid/generating-candid",
       ],
     },
   ],

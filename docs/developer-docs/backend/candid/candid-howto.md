@@ -41,7 +41,7 @@ $ dfx canister call counter inc '(42)'
 (43)
 ```
 
-To figure out how to create more complex Candid arguments, please refer to the [Candid reference](/references/candid-ref.md). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](/references/cli-reference/dfx-canister.md#dfx-canister-call).
+To figure out how to create more complex Candid arguments, please refer to the [Candid reference](/references/candid-ref.md). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
 
 You can also omit the arguments and let the IC SDK generate a random value that matches the method type. For example:
 
@@ -53,7 +53,7 @@ Unspecified argument, sending the following random argument:
 (1_543_454_454)
 ```
 
-For more information about using `dfx` and the `dfx canister call` command, see [command-line reference](/references/cli-reference/index.md) and [dfx canister](/references/cli-reference/dfx-canister.md) documentation.
+For more information about using `dfx` and the `dfx canister call` command, see [command-line reference](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index) and [dfx canister](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister) documentation.
 
 ## Interact with a service from a browser
 

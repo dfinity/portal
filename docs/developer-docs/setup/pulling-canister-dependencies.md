@@ -10,7 +10,7 @@ Third-party canisters include canisters created by DFINITY or by developers in I
 - Using non-production data and environments.
 - Faster completion time when run locally.
 
-To pull these canisters from the mainnet to be tested using a local replica, the [`dfx deps`](/docs/references/cli-reference/dfx-deps.md) command and workflow can be used.
+To pull these canisters from the mainnet to be tested using a local replica, the [`dfx deps`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps) command and workflow can be used.
 
 In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the mainnet. A service provider can be any community developer creating a public, third-party canister.
 

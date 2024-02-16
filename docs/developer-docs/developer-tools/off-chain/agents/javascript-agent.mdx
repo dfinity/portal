@@ -35,7 +35,7 @@ For this guide, use the project created by the command:
 
 ### Simple call
 
-This guide covers connecting to ICP from JavaScript in a web browser. For more information about calling ICP from Node.js, please, refer to [this guide](nodejs.md).
+This guide covers connecting to ICP from JavaScript in a web browser. [Learn more about calling ICP from Node.js](/docs/current/developer-docs/developer-tools/off-chain/agents/nodejs).
 
 Talking to ICP from your application starts with the canister interface. Let's take a very simple one to begin with.
 
@@ -107,7 +107,7 @@ service : {
 
 This is a Candid interface. It defines no new special types and defines a `service` interface with a single method, `greet`. Greet accepts a single argument, of type `text`, and responds with `text`. Unless labeled as a `query`, all calls are treated as updates by default.
 
-In JavaScript, `text` maps to a type of `string`. You can see a full list of Candid types and their JavaScript equivalents at the [Candid types](../../references/candid-ref.md) reference.
+In JavaScript, `text` maps to a type of `string`. You can see a full list of Candid types and their JavaScript equivalents at the [Candid types](/docs/current/references/candid-ref) reference.
 
 Let's explore each of these `src/declarations` files a bit more. 
 
