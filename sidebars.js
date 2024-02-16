@@ -306,6 +306,7 @@ const sidebars = {
           type: "category",
           label: "Maintain",
           items:[
+            "developer-docs/smart-contracts/maintain/control",
             "developer-docs/smart-contracts/maintain/delete",
              "developer-docs/smart-contracts/maintain/history",
              "developer-docs/smart-contracts/maintain/import",
