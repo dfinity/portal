@@ -938,6 +938,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Message Execution Properties",
+          id: "developer-docs/references/message-execution-properties",
+	},
+        {
           type: "category",
           label: "Languages",
           items: [
