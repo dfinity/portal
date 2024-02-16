@@ -95,9 +95,10 @@ You can pass a vector as an argument by explicitly specifying the canister name 
 ```bash
     dfx canister call canister_name method_name '(vec {})'
 ```
+Assuming you have a method named `get_numbers` that accepts a `Vec` parameter, as exemplified in other examples:
 
 ```bash
-    dfx canister call canister_name get_numbers '(vec [0,1,2,3)'
+    dfx canister call canister_name get_numbers '(vec {1; 2; 3})'
 ```
 To learn more about calling a method from a canister in bash, refer to the DFX reference on the [dfx canister call command](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister#dfx-canister-call). 
 
@@ -234,6 +235,7 @@ def get_text(d: Day) -> str:
     elif d == Day.Sat:
         return "Saturday"
 ```
+
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html);
 
 </TabItem>
@@ -245,9 +247,10 @@ You can pass a variant as an argument by explicitly specifying the canister name
 ```bash
     dfx canister call canister_name method_name '(variant {})'
 ```
+Assuming you have a method named `get_text` that accepts a `Variant` parameter, as exemplified in other examples:
 
 ```bash
-    dfx canister call canister_name get_text '(variant {Sun;Mon;Tue;Wed;Thu;Fri;Sat})'
+    dfx canister call canister_name get_text '(variant {Sun})'
 ```
 To learn more about calling a method from a canister in bash, refer to the DFX reference on the [dfx canister call command](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister#dfx-canister-call). 
 
