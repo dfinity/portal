@@ -2775,10 +2775,10 @@
     "description": "aVa: Action-Based Decentralized Reputation Landscape.",
     "website": "https://ava.capetown/en",
     "logo": "/img/showcase/ava_logo.svg",
-    "screenshots": ["/img/showcase/ava-screenshot.png"],
-    "video": "https://www.youtube.com/watch?v=_Hpmj_I67Yg",
+    "screenshots": ["/img/showcase/ava-screenshot.jpg"],
+    "video": "",
     "display": "Normal",
-    "id": "ava",
+    "id": "ava-reputation",
     "oneLiner": "Issue digital soulbound NFT certificates with ruputation to your customers using Internet Identity",
     "stats": "All II users",
     "tags": [
