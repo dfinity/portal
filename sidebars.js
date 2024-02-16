@@ -619,82 +619,88 @@ const sidebars = {
             "tokenomics/nns/nns-staking-voting-rewards",
           ],
         },
-        {
+	{
           type: "category",
-          label: "Introduction to the SNS",
+          label: "Service Nervous Systems (SNS)",
           items: [
-            "developer-docs/integrations/sns/introduction/sns-intro-high-level",
-            "developer-docs/integrations/sns/introduction/sns-architecture",
-            "developer-docs/integrations/sns/introduction/sns-launch",
-            "developer-docs/integrations/sns/introduction/dao-alternatives",
-          ],
-        },
-        {
-          type: "category",
-          label: "Preparing an SNS launch",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/tokenomics/index",
-          },
-          items: [
-            "developer-docs/integrations/sns/tokenomics/sns-checklist",
-            "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
-            "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-            "developer-docs/integrations/sns/tokenomics/rewards",
-            "developer-docs/integrations/sns/tokenomics/preparation",
-          ],
-        },
-        {
-          type: "category",
-          label: "Integrating with an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/integrating/index",
-          },
-          items: [
-            "developer-docs/integrations/sns/integrating/ledger-integration",
-            "developer-docs/integrations/sns/integrating/index-integration",
-            "developer-docs/integrations/sns/integrating/frontend-integration",
-          ],
-        },
-        {
-          type: "category",
-          label: "Testing an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/testing/testing-before-launch",
-          },
-          items: [
-            "developer-docs/integrations/sns/testing/testing-locally",
-            "developer-docs/integrations/sns/testing/testing-on-mainnet",
-          ],
-        },
-        {
-          type: "category",
-          label: "Launching an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/launching/index",
-          },
-          items: [
-            "developer-docs/integrations/sns/launching/launch-summary-1proposal",
-            "developer-docs/integrations/sns/launching/launch-steps-1proposal",
-          ],
-        },
-        {
-          type: "category",
-          label: "Managing an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/managing/manage-sns-intro",
-          },
-          items: [
-            "developer-docs/integrations/sns/managing/making-proposals",
-            "developer-docs/integrations/sns/managing/cycles-usage",
-            "developer-docs/integrations/sns/managing/sns-asset-canister",
-            "developer-docs/integrations/sns/managing/managing-nervous-system-parameters",
-          ],
-        },
+          {
+	          type: "category",
+	          label: "Introduction to the SNS",
+	          items: [
+	            "developer-docs/integrations/sns/introduction/sns-intro-high-level",
+	            "developer-docs/integrations/sns/introduction/sns-architecture",
+	            "developer-docs/integrations/sns/introduction/sns-launch",
+	            "developer-docs/integrations/sns/introduction/dao-alternatives",
+	          ],
+	        },
+	        {
+	          type: "category",
+	          label: "Preparing an SNS launch",
+	          link: {
+	            type: "doc",
+	            id: "developer-docs/integrations/sns/tokenomics/index",
+	          },
+	          items: [
+	            "developer-docs/integrations/sns/tokenomics/sns-checklist",
+	            "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
+	            "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
+	            "developer-docs/integrations/sns/tokenomics/rewards",
+	            "developer-docs/integrations/sns/tokenomics/preparation",
+	          ],
+	        },
+	        {
+	          type: "category",
+	          label: "Integrating with an SNS",
+	          link: {
+	            type: "doc",
+	            id: "developer-docs/integrations/sns/integrating/index",
+	          },
+	          items: [
+	            "developer-docs/integrations/sns/integrating/ledger-integration",
+	            "developer-docs/integrations/sns/integrating/index-integration",
+	            "developer-docs/integrations/sns/integrating/frontend-integration",
+	          ],
+	        },
+	        {
+	          type: "category",
+	          label: "Testing an SNS",
+	          link: {
+	            type: "doc",
+	            id: "developer-docs/integrations/sns/testing/testing-before-launch",
+	          },
+	          items: [
+	            "developer-docs/integrations/sns/testing/testing-locally",
+	            "developer-docs/integrations/sns/testing/testing-on-mainnet",
+	          ],
+	        },
+	        {
+	          type: "category",
+	          label: "Launching an SNS",
+	          link: {
+	            type: "doc",
+	            id: "developer-docs/integrations/sns/launching/index",
+	          },
+	          items: [
+	            "developer-docs/integrations/sns/launching/launch-summary-1proposal",
+	            "developer-docs/integrations/sns/launching/launch-steps-1proposal",
+	          ],
+	        },
+	        {
+	          type: "category",
+	          label: "Managing an SNS",
+	          link: {
+	            type: "doc",
+	            id: "developer-docs/integrations/sns/managing/manage-sns-intro",
+	          },
+	          items: [
+	            "developer-docs/integrations/sns/managing/making-proposals",
+	            "developer-docs/integrations/sns/managing/cycles-usage",
+	            "developer-docs/integrations/sns/managing/sns-asset-canister",
+	            "developer-docs/integrations/sns/managing/managing-nervous-system-parameters",
+	          ],
+	        },
+	],
+	},
       ],
     },
     {
