@@ -29,8 +29,9 @@ dfx canister update-settings CANISTER_NAME --remove-controller CONTROLLER
 The following command sets only the specified controller and removes all other controllers:
 
 ```sh
-dfx canister update-settings CANISTER_NAME --set-controller NEW_CONTROLLER_LIST
+dfx canister update-settings CANISTER_NAME --set-controller CONTROLLER
 ```
+
 ## Actions available only to controllers
 
 - Stopping and starting the canister.
