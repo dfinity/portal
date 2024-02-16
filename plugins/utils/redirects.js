@@ -76,9 +76,9 @@ const redirects = `
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/setup/manage-canisters
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/backend/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/backend/troubleshooting
-  /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/agents/
-  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/agents/javascript-intro
-  /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/agents/javascript-intro
+  /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
+  /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
   /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/backend/candid/:splat
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
@@ -155,7 +155,7 @@ const redirects = `
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/getting-started/install/
   /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
-  /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/agents/
+  /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/integrations/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/getting-started/install/
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
@@ -213,6 +213,19 @@ const redirects = `
   /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy/local
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/setup/best-practices/general
+  docs/current/references/dev-tools-overview /docs/current/developer-docs/developer-tools/dev-tools-overview
+/docs/current/references/cdks /docs/current/developer-docs/developer-tools/on-chain/cdks
+/docs/current/developer-docs/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
+/docs/current/developer-docs/agents/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
+/docs/current/developer-docs/agents/nodejs /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs
+/docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent
+/docs/current/references/gitpod /docs/current/developer-docs/developer-tools/ide/gitpod
+/docs/current/developer-docs/setup/playground /docs/current/developer-docs/developer-tools/ide/playground
+/docs/current/developer-docs/setup/vs-code /docs/current/developer-docs/developer-tools/ide/vs-code
+/docs/current/developer-docs/setup/react-quickstart /docs/current/developer-docs/getting-started/quickstart/react-quickstart
+/docs/current/references/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index
+/docs/current/references/dfxvm/* /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/dfx
+/docs/current/references/quill-cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
