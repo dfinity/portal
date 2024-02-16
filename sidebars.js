@@ -69,7 +69,7 @@ const sidebars = {
             {
               type: "doc",
               label: "Quickstart for React developers",
-              id: "developer-docs/setup/react-quickstart",
+              id: "developer-docs/getting-started/quickstart/react-quickstart",
             },
           ],
         },
