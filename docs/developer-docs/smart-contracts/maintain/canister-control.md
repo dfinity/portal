@@ -2,7 +2,7 @@
 
 ## Overview
 
-A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it have no controller, in which case the canister becomes immutable and cannot be upgraded or deleted. 
+A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it have no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted. 
 
 ## Setting the controllers of a canister
 
@@ -67,9 +67,4 @@ Developers can also add the NNS root canister as a controller of their canister,
 
 ### No controller
 
-A canister has no controller, and is immutable. This is the model used by smart contracts on Ethereum. 
-
-
-
-
-
+A canister has no controller, and is immutable. On ICP this model is often called a blackholed canister. This is the model used by smart contracts on Ethereum.
