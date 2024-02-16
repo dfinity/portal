@@ -14,13 +14,13 @@ An `array` is a collection of items of the same data type.
 The following example defines an array of numbers and a function that returns the array.
 
 <Tabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
+<TabItem value="motoko" label="Motoko"t>
 
 Motoko differentiates between immutable arrays, which cannot be altered, and mutable arrays, which can be modified.
 
 To declare an immutable array (default):
 
-```
+```motoko
 let a : [Nat] = [0, 1, 2, 3];
 ```
 
@@ -33,7 +33,7 @@ let a : [var Nat] = [var 0, 1, 2, 3] ;
 To declare a function that returns an array:
 
 ```
-public func returnArray(a: [Nat]) : [Nat] {
+public func get_numbers(a: [Nat]) : [Nat] {
     return a;
 }
 ```
@@ -42,29 +42,29 @@ The `Array` Motoko base library provides utility functions on arrays. To learn m
 
 </TabItem>
 
-<TabItem value="rust" label="Rust" default>
+<TabItem value="rust" label="Rust">
 
 Rust uses the `vec` type to represent vectors (sequences, lists, arrays)
 
-```
+```rust
 let numbers = vec![0, 1, 2, 3 ];
 #[query]
-fn return_vector(numbers: Vec<u32>) -> Vec<u32> {
+fn get_numbers(numbers: Vec<u32>) -> Vec<u32> {
     numbers
 }
 ```
 
 </TabItem>
 
-<TabItem value="typescript" label="Typescript" default>
+<TabItem value="typescript" label="Typescript">
 
 Azle refers to the `Vec` type to represent the equivalent of an `array` in Typescript. This is because `Vec` aligns with the Candid type.
 
-```
+```typescript
 import { Canister, int32, Vec, query } from 'azle';
 let numbers = [0,1,2,3];
 export default Canister({
-    getNumbers: query([], Vec(int32), () => {
+    get_numbers: query([Vec(int32], Vec(int32), () => {
         return numbers;
     })
 });
@@ -73,18 +73,33 @@ To learn more about the `Vec` object in Typescript via Azle, refer to [the Azle 
 
 </TabItem>
 
-<TabItem value="python" label="Python" default>
+<TabItem value="python" label="Python">
 
 Kybra refers to the `Vec` type to represent the equivalent of an `array` in Python. This is because `Vec` aligns with the Candid type.
 
-```
+```python
 from kybra import int32, query, Vec
 numbers = [0, 1, 2, 3]
 @query
-def get_numbers() -> Vec[int32]:
+def get_numbers(Vec[int32]) -> Vec[int32]:
     return numbers
 ```
 To learn more about `Vec` in Python via Kybra, refer to [the Kybra book reference on Vec](https://demergent-labs.github.io/kybra/reference/candid/vec.html);
+
+</TabItem>
+
+<TabItem value="bash" label="bash">
+
+You can pass a vector as an argument by explicitly specifying the canister name and method name using the `dfx` tool in the following format:
+
+```bash
+    dfx canister call canister_name method_name '(vec {})'
+```
+
+```bash
+    dfx canister call canister_name get_numbers '(vec [0,1,2,3)'
+```
+To learn more about calling a method from a canister in bash, refer to the DFX reference on the [dfx canister call command](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister#dfx-canister-call). 
 
 </TabItem>
 </Tabs>
@@ -98,10 +113,10 @@ The following example defines a `Day` type representing a day of the week. It ut
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```
+```motoko
 type Day = {#sun; #mon; #tue; #wed; #thu; #fri; #sat};
 
-public query func toText(d : Day) : Text {
+public query func get_text(d : Day) : Text {
   switch d {
      case (#sun) "Sunday";
      case (#mon) "Monday";
@@ -119,9 +134,9 @@ To learn more about variants in Motoko, refer to Kai Peacock's blog on [using Mo
 
 </TabItem>
 
-<TabItem value="rust" label="Rust" default>
+<TabItem value="rust" label="Rust">
 
-```
+```rust
 type Day = variant {
     Sun;
     Mon;
@@ -133,7 +148,7 @@ type Day = variant {
 }
 
 [query]
-fn to_text(d: Day) -> &'static str {
+fn get_text(d: Day) -> &'static str {
     match d {
         Day::Sun => "Sunday",
         Day::Mon => "Monday",
@@ -148,9 +163,9 @@ fn to_text(d: Day) -> &'static str {
 
 </TabItem>
 
-<TabItem value="typescript" label="Typescript" default>
+<TabItem value="typescript" label="Typescript">
 
-```
+```typescript
 import { Canister,  query, Variant } from 'azle';
 
 const Day = Variant({
@@ -164,7 +179,7 @@ const Day = Variant({
 });
 
 export default Canister({
-    toText: query([Day], Day, (d)) => {
+    get_text: query([Day], Day, (d)) => {
         switch (d) {
             case Day.Sun:
                 return "Sunday";
@@ -188,9 +203,9 @@ To learn more about variants in Typescript via Azle, refer to [the Azle book ref
 
 </TabItem>
 
-<TabItem value="python" label="Python" default>
+<TabItem value="python" label="Python">
 
-```
+```python
 from kybra import nat32, Variant, query
 
 class Day(Variant, total=False):
@@ -203,7 +218,7 @@ class Day(Variant, total=False):
     Sat;
 
 @query
-def to_text(d: Day) -> str:
+def get_text(d: Day) -> str:
     if d == Day.Sun:
         return "Sunday"
     elif d == Day.Mon:
@@ -222,4 +237,20 @@ def to_text(d: Day) -> str:
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html);
 
 </TabItem>
+
+<TabItem value="bash" label="bash">
+
+You can pass a variant as an argument by explicitly specifying the canister name and method name using the `dfx` tool in the following format:
+
+```bash
+    dfx canister call canister_name method_name '(variant {})'
+```
+
+```bash
+    dfx canister call canister_name get_text '(variant {Sun;Mon;Tue;Wed;Thu;Fri;Sat})'
+```
+To learn more about calling a method from a canister in bash, refer to the DFX reference on the [dfx canister call command](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister#dfx-canister-call). 
+
+</TabItem>
+</Tabs>
 </Tabs>
