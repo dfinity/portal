@@ -402,12 +402,17 @@ const sidebars = {
             {
               type: "doc",
               label: "General",
-              id: "developer-docs/production/best-practices",
+              id: "developer-docs/setup/best-practices/general",
             },
             {
               type: "doc",
               label: "Storage",
               id: "developer-docs/setup/best-practices/storage",
+            },
+            {
+              type: "doc",
+              label: "Troubleshooting latency",
+              id: "developer-docs/setup/best-practices/troubleshooting",
             },
           ],
         },

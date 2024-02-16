@@ -6,27 +6,27 @@ This guide outlines essential development best practices for building on the Int
 
 ## Best practices
 
-### 1. Generous canister top-up
+### Recommendation: Generous canister top-up.
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
 
-Refer to [topping up cycles page](../production/topping-up-canister.md) to learn how to top-up cycles effectively.
+Refer to [topping up cycles page](/docs/current/developer-docs/production/topping-up-canister) to learn how to top-up cycles effectively.
 
-Refer to the [cycles estimate](../gas-cost.md) page to estimate cycle usage. 
+Refer to the [cycles estimate](/docs/current/developer-docs/gas-cost) page to estimate cycle usage. 
 
-### 2. Managing cycle depletion
+### Recommendation: Manage cycle depletion.
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, ensuring at least 90 to 180 days' worth of cycles for proactive management.
 
-Refer to [this resource](../production/topping-up-canister.md#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister. 
+Refer to [this resource](/docs/current/developer-docs/production/topping-up-canister#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister. 
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
 
-### 3. Efficient implementations
+### Recommendation: Efficient implementations.
 
 Optimize canister implementation to avoid unnecessary costs. 
 
-Use [canister timers](../backend/periodic-tasks.md) over plain heartbeats for reduced daily costs.
+Use [canister timers](/docs/current/developer-docs/backend/periodic-tasks) over plain heartbeats for reduced daily costs.
 
 #### Motoko
 
@@ -39,6 +39,7 @@ Use [canister timers](../backend/periodic-tasks.md) over plain heartbeats for re
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
+6. Be mindful of calling an [actor class]((https://internetcomputer.org/docs/current/motoko/main/actor-classes), as the overhead is similar to that of installing a fresh canister.
 
 #### Rust 
 1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message
@@ -51,10 +52,10 @@ Several resources on efficient implementations include:
 - [Blog post on effective Rust canisters by Roman Kashitsyn](https://mmapped.blog/posts/01-effective-rust-canisters.html)
 - [Good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
 
-### 5. State Backup and Restoration
+### Recommendation: State backup and restoration.
 
 Implement backup mechanisms within canisters for state protection against deallocation or upgrade issues. Explore [backup strategies](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) like those employed by [Distrikt](https://distrikt.app/).
 
-#### 6. Transaction History Storage
+### Recommendation: Transaction history storage.
 
 If your application needs to store transaction history, consider using dedicated services like [CAP](https://cap.ooo/) for maintaining transaction logs. This facilitates integration with explorers and wallets and aids in ownership state reconstruction if the main canister is compromised. Be mindful of additional costs associated with inter-canister calls.
