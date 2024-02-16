@@ -94,7 +94,7 @@ const redirects = `
   /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
-  /docs/developers-guide/lang-service-ide /docs/current/developer-docs/setup/vs-code
+  /docs/developers-guide/lang-service-ide /docs/current/developer-docs/developer-tools/ide/vs-code
   /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/getting-started/install/
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/getting-started/install/
