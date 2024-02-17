@@ -3584,7 +3584,7 @@
     "id": "virtuaseal",
     "oneLiner": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain.",
     "tags": [
-      "Tool / Infrastructure"
+      "Tools / Infrastructure"
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
