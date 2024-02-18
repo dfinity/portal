@@ -14,4 +14,4 @@ You can [learn how to use the EVM RPC canister](evm-rpc.md).
 
 JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD. 
 
-These costs are paid by sending cycles with each RPC call, such as by using the `--with-cycles` flag when calling a canister with [dfx](https://internetcomputer.org/docs/current/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call). Learn more about [cycles](/docs/current/developer-docs/gas-cost).
+These costs are paid by sending cycles with each RPC call, such as by using the `--with-cycles` flag when calling a canister with [dfx](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call). Learn more about [cycles](/docs/current/developer-docs/gas-cost).

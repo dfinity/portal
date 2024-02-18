@@ -135,7 +135,7 @@ const redirects = `
   /docs/current/references/security/* /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
-  /docs/developers-guide/cli-reference/* /docs/current/developer-tools/cli-tools/cli-reference/:splat
+  /docs/developers-guide/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat

@@ -11,7 +11,7 @@ Unlike ICP tokens, cycles are only associated with canisters and not with user o
 
 For the purposes of using the local canister execution environment, the SDK automatically creates a default cycles wallet for you in every project and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local canister execution environment.
 
-In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about how to use `dfx wallet` [here](https://internetcomputer.org/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet).
+In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about how to use `dfx wallet` [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet).
 
 You should keep in mind, however, that calls to the cycles wallet canister are executed using the cycles wallet principal associated with the currently selected user identity. Depending on your currently selected identity and whether the principal associated with that identity has been added as a controller or a custodian for a wallet, you might see different results or be denied access to a specific method.
 
@@ -220,7 +220,7 @@ The command returns the balance using Candid format as a record with an amount f
 
 After you have used the `dfx identity deploy-wallet` command to create a cycles wallet canister tied to an identity, you can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
 
-For more details on each supported method, see the [dfx wallet reference](../../../references/cli-reference/dfx-wallet).
+For more details on each supported method, see the [dfx wallet reference](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet).
 
 ### `dfx` wallet functions
 
@@ -240,20 +240,20 @@ dfx wallet send --help
 
 For reference information and examples that illustrate using dfx wallet commands, select an appropriate command.
 
-- [`add-controller`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-add-controller): add a controller using the selected identity's principal.
-- [`addresses`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-addresses): displays the address book of the cycles wallet.
-- [`authorize`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-authorize): authorize a custodian by principal for the selected identity's cycles wallet
-- [`balance`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-balance): displays the cycles wallet balance of the selected identity.
-- [`controllers`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-controllers): displays a list of the selected identity's cycles wallet controllers.
-- [`custodians`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-custodians):	displays a list of the selected identity's cycles wallet custodians.
-- [`deauthorize`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-deauthorize): deauthorize a cycles wallet custodian using the custodian's principal.
-- [`help`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-help): displays a usage message and the help of the given subcommand(s).
-- [`name`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-name): returns the name of the cycles wallet if you've used the dfx wallet set-name command.
-- [`redeem-faucet-coupon`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-redeem-faucet-coupon): redeem a code at the cycles faucet.
-- [`remove-controller`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#remove-controller): removes a specified controller from the selected identity's cycles wallet.
-- [`send`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#send): sends a specified amount of cycles from the selected identity's cycles wallet to another cycles wallet using the destination wallet canister ID.
-- [`set-name`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#set-name): specify a name for your cycles wallet.
-- [`upgrade`](/docs/current/developer-tools/cli-tools/cli-reference/dfx-wallet#upgrade): upgrade the cycles wallet's Wasm module to the current Wasm bundled with DFX.
+- [`add-controller`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-add-controller): add a controller using the selected identity's principal.
+- [`addresses`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-addresses): displays the address book of the cycles wallet.
+- [`authorize`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-authorize): authorize a custodian by principal for the selected identity's cycles wallet
+- [`balance`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-balance): displays the cycles wallet balance of the selected identity.
+- [`controllers`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-controllers): displays a list of the selected identity's cycles wallet controllers.
+- [`custodians`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-custodians):	displays a list of the selected identity's cycles wallet custodians.
+- [`deauthorize`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-deauthorize): deauthorize a cycles wallet custodian using the custodian's principal.
+- [`help`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-help): displays a usage message and the help of the given subcommand(s).
+- [`name`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-name): returns the name of the cycles wallet if you've used the dfx wallet set-name command.
+- [`redeem-faucet-coupon`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#dfx-wallet-redeem-faucet-coupon): redeem a code at the cycles faucet.
+- [`remove-controller`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#remove-controller): removes a specified controller from the selected identity's cycles wallet.
+- [`send`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#send): sends a specified amount of cycles from the selected identity's cycles wallet to another cycles wallet using the destination wallet canister ID.
+- [`set-name`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#set-name): specify a name for your cycles wallet.
+- [`upgrade`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#upgrade): upgrade the cycles wallet's Wasm module to the current Wasm bundled with DFX.
 
 ### Adding a controller
 An identity assigned the role of controller has the most privileges and can perform the following actions on the selected identity's cycles wallet. Identities that are added as controllers are also listed as custodians. 
