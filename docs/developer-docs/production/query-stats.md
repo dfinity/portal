@@ -1,6 +1,6 @@
 # Query stats
 
-## Benefits for programmers
+## Overview
 
 It is important for programmers to understand how users interact with their dapps.
 This includes information on the use of query calls.
