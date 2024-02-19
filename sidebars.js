@@ -346,25 +346,18 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Encryption and signatures",
+          label: "On-chain signatures: Threshold ECDSA",
           items: [
-            {
-              type: "category",
-              label: "On-chain signatures: Threshold ECDSA",
-              items: [
-                "developer-docs/smart-contracts/encryption/t-ecdsa",
-                "developer-docs/smart-contracts/encryption/signing-transactions"
-              ],
-            },
-            "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-            {
-              type: "category",
-              label: "On-chain encryption: vetKeys",
-              items: [
-                "developer-docs/smart-contracts/encryption/vetkeys",
-                "developer-docs/smart-contracts/encryption/using-vetkeys",
-              ],
-            },
+            "developer-docs/smart-contracts/encryption/t-ecdsa",
+            "developer-docs/smart-contracts/encryption/signing-transactions"
+          ],
+        },
+        {
+          type: "category",
+          label: "On-chain encryption: vetKeys",
+          items: [
+            "developer-docs/smart-contracts/encryption/vetkeys",
+            "developer-docs/smart-contracts/encryption/using-vetkeys",
           ],
         },
         {
@@ -380,6 +373,7 @@ const sidebars = {
               type: "category",
               label: "HTTPS outcalls",
               items: [
+                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
                 "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
                 "developer-docs/integrations/https-outcalls/https-outcalls-get",
                 "developer-docs/integrations/https-outcalls/https-outcalls-post",
