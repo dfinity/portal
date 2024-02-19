@@ -52,7 +52,7 @@ Total query response payload size (bytes): 0
 Query stats are available via `dfx` since XXXXX.
 
 
-## Retrieve query stats from canister itself
+## Use query stats programatically
 
 It's also possible to programatically retrieve query stats from within the canister via the same canister status method. The following is an example of how to do this
 in Rust:
