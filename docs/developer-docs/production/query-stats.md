@@ -54,7 +54,7 @@ Query stats are available via `dfx` since XXXXX.
 
 ## Use query stats programatically
 
-It's also possible to programatically retrieve query stats from within the canister via the same canister status method. The following is an example of how to do this
+It's also possible to programatically retrieve query stats from within the canister via the canister status method. The following is an example of how to do this
 in Rust:
 
 ```
