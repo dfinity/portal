@@ -14,7 +14,7 @@ Query stats are incremented periodically by the system and therefore lack behind
 
 Query stats currently do not include cached query calls. 
 
-## New entries in canister status
+## Canister status entries
 
 The feature adds a new field to the canister status which includes:
 
