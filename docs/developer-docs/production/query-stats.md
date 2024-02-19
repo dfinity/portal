@@ -57,7 +57,7 @@ Query stats are available via `dfx` since XXXXX.
 It's also possible to programatically retrieve query stats from within the canister via the canister status method. The following is an example of how to do this
 in Rust:
 
-```
+```rust
 let canister_status = canister_status(CanisterIdRecord {
     canister_id: ic_cdk::id(),
 })
