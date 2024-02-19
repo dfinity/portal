@@ -74,5 +74,5 @@ If there are no await points in the timer handler, the periodic timer will be re
 
 ### Tutorials and examples using Rust
 
-- **Backend tutorial:** [Using timers](rust/10-timers.md).
+- **Backend tutorial:** [Using timers](rust/10-timers.mdx).
 - **Example:** [Periodic tasks and timers](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) (compares the costs of timers and heartbeats).

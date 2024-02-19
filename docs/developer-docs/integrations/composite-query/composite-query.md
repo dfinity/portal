@@ -62,7 +62,7 @@ fn get(key: u128) -> Option<u128> {
 
 ## Using composite queries
 ### Prerequisites
- - [x] [Download and install the IC SDK.](https://internetcomputer.org/docs/current/developer-docs/setup/install/)
+ - [x] [Download and install the IC SDK.](/docs/current/developer-docs/getting-started/install/)
  - [x] [Download and install git.](https://git-scm.com/downloads)
 
 ### Setting up the canisters

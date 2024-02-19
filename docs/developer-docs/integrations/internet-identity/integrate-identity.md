@@ -14,24 +14,58 @@ Before you start, verify that you have:
 
 ### Step 1: To get started, open a terminal window and create a new project:
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="version">
+<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
+
+Use `dfx new <project_name>` to create a new project:
+
 ```
-dfx start --clean --background
 dfx new ii_integration
 ```
 
-### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
+You will be prompted to select a language that your backend canister will use. Select 'Motoko':
 
-```motoko
-actor {
-    public shared (msg) func whoami() : async Principal {
-        msg.caller
-    };
-};
+```
+? Select a backend language: ›  
+❯ Motoko
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
 ```
 
-In this actor, there is a single method that responds with the caller's principal. This will show if you make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity. 
+Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
 
-### Step 3: Next, open the `dfx.json` file and replace the existing content with the following:
+```
+  ? Select a frontend framework: ›  
+  SvelteKit
+  React
+  Vue
+❯ Vanilla JS
+  No JS template
+  No frontend canister
+```
+
+Lastly, you can include extra features to be added to your project. Select 'Internet Identity'.
+
+```
+  ? Add extra features (space to select, enter to confirm) ›
+x Internet Identity
+⬚ Bitcoin (Regtest)
+⬚ Frontend tests
+```
+
+</TabItem>
+
+<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
+
+```bash
+dfx new ii_integration
+```
+
+Open the `dfx.json` file and replace the existing content with the following:
 
 
 ```json
@@ -69,6 +103,28 @@ In this actor, there is a single method that responds with the caller's principa
   "version": 1
 }
 ```
+
+</TabItem>
+</Tabs>
+
+
+### Step 2: Start `dfx`:
+
+```
+dfx start --clean --background
+```
+
+### Step 3: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
+
+```motoko
+actor {
+    public shared (msg) func whoami() : async Principal {
+        msg.caller
+    };
+};
+```
+
+In this actor, there is a single method that responds with the caller's principal. This will show if you make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity. 
 
 As mentioned in the introduction, you'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`. 
 

@@ -22,7 +22,7 @@ To ensure resources are used fairly by users, proof of work when a user makes a 
 Since Motoko playground is designed for short, small-scale testing, there are limitations and restrictions imposed on canisters deployed to the playground. These limitations are:
 
 - Cycle transfer instructions are silently ignored by the Motoko playground.
-- Canisters can use at most 1GB of memory.
+- Canisters can use at most 1GiB of memory.
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
 - Wasm files can't be gzipped.
@@ -40,7 +40,7 @@ Before you start, verify the following:
 
 - [x] You have a command line interface (CLI) window open. This window is also referred to as the 'terminal' window.
 
-- [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](./install/index.mdx) page.
+- [x] You have downloaded and installed the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) page.
 
 
 :::info

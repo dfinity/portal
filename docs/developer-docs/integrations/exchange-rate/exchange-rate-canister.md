@@ -77,7 +77,7 @@ It is worth noting that this sample dapp is very simple. If there is an error, i
 
 ### Prerequisites
 
--   [x] Download and install the IC SDK package as described in the [download and install](/developer-docs/setup/install/index.mdx) page.
+-   [x] Download and install the IC SDK package as described in the [download and install](/docs/current/developer-docs/getting-started/install/) page.
 
 -   [x] Download and install [Nodejs and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 

@@ -2,8 +2,6 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-    
-
   build: [
     {
       type: "category",
@@ -12,41 +10,41 @@ const sidebars = {
         {
           type: "doc",
           label: "Overview of ICP",
-          id: "concepts/what-is-ic",
+          id: "developer-docs/getting-started/overview-of-icp",
         },
         {
           type: "doc",
           label: "Development workflow",
-          id: "developer-docs/setup/development-workflow",
+          id: "developer-docs/getting-started/development-workflow",
         },
         {
           type: "doc",
           label: "Hello, world!",
-          id: "developer-docs/setup/hello-world",
+          id: "developer-docs/getting-started/hello-world",
         },
         {
           type: "doc",
           label: "Install the IC SDK",
-          id: "developer-docs/setup/install/index",
+          id: "developer-docs/getting-started/install/index",
         },
         {
           type: "doc",
           label: "Developer accounts",
-          id: "developer-docs/setup/accounts",
+          id: "developer-docs/getting-started/accounts",
         },
         {
           type: "category",
           label: "Cycles",
           items: [
-            "developer-docs/setup/cycles/cycles-faucet",
-            "developer-docs/setup/cycles/cycles-wallet",
-            "developer-docs/setup/cycles/converting_icp_tokens_into_cycles",
+            "developer-docs/getting-started/cycles/cycles-faucet",
+            "developer-docs/getting-started/cycles/cycles-wallet",
+            "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
-        }, 
+        },
         {
           type: "doc",
           label: "Default project template",
-          id: "developer-docs/setup/first-canister",
+          id: "developer-docs/getting-started/default-template",
         },
         {
           type: "category",
@@ -55,12 +53,23 @@ const sidebars = {
             {
               type: "doc",
               label: "Local deployment",
-              id: "developer-docs/setup/deploy-locally",
+              id: "developer-docs/getting-started/deploy/local",
             },
             {
               type: "doc",
               label: "Mainnet deployment",
-              id: "developer-docs/setup/deploy-mainnet",
+              id: "developer-docs/getting-started/deploy/mainnet",
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Quickstart guides",
+          items: [
+            {
+              type: "doc",
+              label: "Quickstart for React developers",
+              id: "developer-docs/setup/react-quickstart",
             },
           ],
         },
@@ -68,19 +77,13 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Quickstart guides",
+      label: "Developer tools",
       items: [
         {
           type: "doc",
-          label: "Quickstart for React developers",
-          id: "developer-docs/setup/react-quickstart",
+          label: "Overview",
+          id: "references/dev-tools-overview",
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Developer tools",
-      items: [
         {
           type: "category",
           label: "Command line",
@@ -116,8 +119,9 @@ const sidebars = {
                 "references/cli-reference/dfx-stop",
                 "references/cli-reference/dfx-upgrade",
                 "references/cli-reference/dfx-wallet",
-                "references/cli-reference/dfx-envars",
                 "references/dfx-json-reference",
+                "references/cli-reference/dfx-envars",
+                "references/networks-json",
               ],
             },
             {
@@ -227,10 +231,21 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "On-chain libraries",
+          items: [
+            {
+              type: "doc",
+              id: "references/cdks",
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "IDE",
           items: [
-            "developer-docs/setup/playground",
             "developer-docs/setup/vs-code",
+            "developer-docs/setup/playground",
+            "references/gitpod",
           ],
         },
       ],
@@ -242,10 +257,11 @@ const sidebars = {
         {
           type: "category",
           label: "Overview",
-          items:
-          [
-            "developer-docs/backend/choosing-language",
-          ],
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/overview",
+          },
+          items: ["developer-docs/backend/choosing-language"],
         },
         {
           type: "doc",
@@ -255,7 +271,16 @@ const sidebars = {
         {
           type: "category",
           label: "Call",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/call-overview",
+          },
           items: [
+            {
+              type: "doc",
+              label: "Passing in arguments",
+                id: "developer-docs/backend/arguments",
+            },
             {
               type: "category",
               label: "Candid",
@@ -279,22 +304,23 @@ const sidebars = {
         {
           type: "category",
           label: "Maintain",
-          items:[
+          items: [
+            "developer-docs/smart-contracts/maintain/canister-control",
             "developer-docs/setup/delete",
-             "developer-docs/production/canister-history",
-             "developer-docs/setup/pulling-canister-dependencies",
-             "developer-docs/production/canister-recovery",
-             "developer-docs/setup/state",
-             "developer-docs/setup/manage-canisters",
-             "developer-docs/production/storage",
-             "developer-docs/setup/upgrade",
-             "developer-docs/production/resource-limits",
-             {
+            "developer-docs/production/canister-history",
+            "developer-docs/setup/pulling-canister-dependencies",
+            "developer-docs/production/canister-recovery",
+            "developer-docs/setup/state",
+            "developer-docs/setup/manage-canisters",
+            "developer-docs/production/storage",
+            "developer-docs/setup/upgrade",
+            "developer-docs/production/resource-limits",
+            {
               type: "category",
               label: "Cost",
               items: [
-             "developer-docs/gas-cost",
-             "developer-docs/cost-estimations-and-examples",
+                "developer-docs/gas-cost",
+                "developer-docs/cost-estimations-and-examples",
               ],
             },
             {
@@ -302,10 +328,10 @@ const sidebars = {
               label: "Topping up canisters",
               items: [
                 "developer-docs/production/topping-up-canister",
-                "developer-docs/setup/cycles/cycles_management_services",
+                "developer-docs/getting-started/cycles/cycles_management_services",
               ],
             },
-          ]
+          ],
         },
         {
           type: "category",
@@ -352,9 +378,19 @@ const sidebars = {
                     "developer-docs/integrations/vetkeys/using-vetkeys",
                   ],
                 },
+                {
+                  type: "category",
+                  label: "Make an HTTP request",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/integrations/https-outcalls/https-outcalls-overview",
+                  },
+                  items: [],
+                },
               ],
             },
             "developer-docs/backend/periodic-tasks",
+            "developer-docs/production/system-canisters",
           ],
         },
         {
@@ -363,8 +399,23 @@ const sidebars = {
           items: [
             {
               type: "doc",
+              label: "Architecture",
+              id: "developer-docs/setup/best-practices/architecture",
+            },
+            {
+              type: "doc",
               label: "General",
-              id: "developer-docs/production/best-practices",
+              id: "developer-docs/setup/best-practices/general",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/setup/best-practices/storage",
+            },
+            {
+              type: "doc",
+              label: "Troubleshooting latency",
+              id: "developer-docs/setup/best-practices/troubleshooting",
             },
           ],
         },
@@ -390,7 +441,8 @@ const sidebars = {
           label: "Custom domains",
           items: [
             "developer-docs/production/custom-domain/custom-domain",
-            "developer-docs/production/custom-domain/dns-setup"],
+            "developer-docs/production/custom-domain/dns-setup",
+          ],
         },
         "developer-docs/backend/design-dapps",
         {
@@ -445,27 +497,27 @@ const sidebars = {
       type: "category",
       label: "Security",
       items: [
-          {
-            type: "category",
-            label: "Security best practices",
-            items: [
-              {
-                type: "doc",
-                label: "General",
-                id: "developer-docs/security/general-security-best-practices",
-              },
-              {
-                type: "doc",
-                label: "Rust",
-                id: "developer-docs/security/rust-canister-development-security-best-practices",
-              },
-              {
-                type: "doc",
-                label: "Web apps",
-                id: "developer-docs/security/web-app-development-security-best-practices",
-              },
-            ],
-          },
+        {
+          type: "category",
+          label: "Security best practices",
+          items: [
+            {
+              type: "doc",
+              label: "General",
+              id: "developer-docs/security/general-security-best-practices",
+            },
+            {
+              type: "doc",
+              label: "Rust",
+              id: "developer-docs/security/rust-canister-development-security-best-practices",
+            },
+            {
+              type: "doc",
+              label: "Web apps",
+              id: "developer-docs/security/web-app-development-security-best-practices",
+            },
+          ],
+        },
       ],
     },
     {
@@ -474,9 +526,9 @@ const sidebars = {
       items: [
         {
           type: "doc",
-            label: "Overview",
-            id: "developer-docs/integrations/ledger/introduction_and_overview",
-          },
+          label: "Overview",
+          id: "developer-docs/integrations/ledger/introduction_and_overview",
+        },
         {
           type: "category",
           label: "ICP tokens",
@@ -494,8 +546,8 @@ const sidebars = {
           items: [
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
             "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
-            "developer-docs/integrations/icrc-1/icrc1-index-setup"
-        ],
+            "developer-docs/integrations/icrc-1/icrc1-index-setup",
+          ],
         },
         {
           type: "doc",
@@ -522,42 +574,60 @@ const sidebars = {
           label: "Asset custody",
           items: [
             "tokenomics/token-holders/custody-options-intro",
-            "tokenomics/token-holders/self-custody-quickstart"],
+            "tokenomics/token-holders/self-custody-quickstart",
+          ],
         },
         {
           type: "category",
           label: "NFTs",
-          items: [
-            "developer-docs/use-cases/considerations-for-nft-devs",
-          ]
+          items: ["developer-docs/use-cases/considerations-for-nft-devs"],
         },
       ],
     },
     {
       type: "category",
-      label: "Bitcoin",
+      label: "Multi-chain",
       items: [
-        "developer-docs/integrations/bitcoin/index",
-        "developer-docs/integrations/bitcoin/ckbtc",
         {
           type: "category",
-          label: "Advanced",
+          label: "FAQs",
           items: [
-            "developer-docs/integrations/bitcoin/read-state",
-            "developer-docs/integrations/bitcoin/submit-transactions",
-            "developer-docs/integrations/bitcoin/local-development",
-          ]
-        }
+            "developer-docs/integrations/multi-chain/user-faq",
+            "developer-docs/integrations/multi-chain/ckbtc-faq",
+            "developer-docs/integrations/multi-chain/cketh-faq",
+            "developer-docs/integrations/multi-chain/ckerc20-faq",
+            "developer-docs/integrations/multi-chain/signatures-faq",
+          ],
+        },
+        {
+          type: "category",
+          label: "Bitcoin",
+          items: [
+            "developer-docs/integrations/bitcoin/index",
+            "developer-docs/integrations/bitcoin/ckbtc",
+            {
+              type: "category",
+              label: "Advanced",
+              items: [
+                "developer-docs/integrations/bitcoin/read-state",
+                "developer-docs/integrations/bitcoin/submit-transactions",
+                "developer-docs/integrations/bitcoin/local-development",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Ethereum",
+          items: [
+            "developer-docs/integrations/ethereum/overview",
+            "developer-docs/integrations/ethereum/evm-rpc",
+            "developer-docs/integrations/ethereum/siwe",
+          ],
+        },
       ],
     },
-    {
-      type: "category",
-      label: "Ethereum",
-      items: [
-        "developer-docs/integrations/ethereum/overview",
-        "developer-docs/integrations/ethereum/evm-rpc",
-      ],
-    },
+
     {
       type: "category",
       label: "DAOs",
@@ -741,44 +811,44 @@ const sidebars = {
             "references/samples/rust/vetkd/README",
           ],
         },
-       ],
+      ],
     },
     {
       type: "category",
       label: "Bootcamps",
       items: [
-    {
-      type: "category",
-      label: "Developer journey",
-      link: {
-        type: "doc",
-        id: "tutorials/developer-journey/index",
-      },
-      items: [
         {
           type: "category",
-          label: "Level 0: Pre-flight operations",
+          label: "Developer journey",
           link: {
             type: "doc",
-            id: "tutorials/developer-journey/level-0/index",
+            id: "tutorials/developer-journey/index",
           },
           items: [
-            "tutorials/developer-journey/level-0/ic-overview",
-            "tutorials/developer-journey/level-0/ic-terms",
-            "tutorials/developer-journey/level-0/dev-env",
-            "tutorials/developer-journey/level-0/intro-canisters",
-            "tutorials/developer-journey/level-0/intro-languages",
-            "tutorials/developer-journey/level-0/intro-dfx",
-          ],
-        },
-        {
-          type: "category",
-          label: "Level 1: Space cadet",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-1/index",
-          },
-          items: [
+            {
+              type: "category",
+              label: "Level 0: Pre-flight operations",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-0/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-0/ic-overview",
+                "tutorials/developer-journey/level-0/ic-terms",
+                "tutorials/developer-journey/level-0/dev-env",
+                "tutorials/developer-journey/level-0/intro-canisters",
+                "tutorials/developer-journey/level-0/intro-languages",
+                "tutorials/developer-journey/level-0/intro-dfx",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 1: Space cadet",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-1/index",
+              },
+              items: [
                 "tutorials/developer-journey/level-1/1.1-live-demo",
                 "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
                 "tutorials/developer-journey/level-1/1.3-first-dapp",
@@ -787,93 +857,93 @@ const sidebars = {
                 "tutorials/developer-journey/level-1/1.6-managing-canisters",
               ],
             },
-        {
-          type: "category",
-          label: "Level 2: Space explorer",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-2/index",
-        },
-          items: [
-            "tutorials/developer-journey/level-2/2.1-storage-persistence",
-            "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
-            "tutorials/developer-journey/level-2/2.3-third-party-canisters",
-            "tutorials/developer-journey/level-2/2.4-intro-candid",
-            "tutorials/developer-journey/level-2/2.5-unit-testing",
-            "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+            {
+              type: "category",
+              label: "Level 2: Space explorer",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-2/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-2/2.1-storage-persistence",
+                "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+                "tutorials/developer-journey/level-2/2.3-third-party-canisters",
+                "tutorials/developer-journey/level-2/2.4-intro-candid",
+                "tutorials/developer-journey/level-2/2.5-unit-testing",
+                "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 3: Space engineer",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-3/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-3/3.1-package-managers",
+                "tutorials/developer-journey/level-3/3.2-https-outcalls",
+                "tutorials/developer-journey/level-3/3.3-certified-data",
+                "tutorials/developer-journey/level-3/3.4-intro-to-agents",
+                "tutorials/developer-journey/level-3/3.5-identities-and-auth",
+                "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 4: Space pilot",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-4/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-4/4.1-icp-ledger",
+                "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+                "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+                "tutorials/developer-journey/level-4/4.4-nns-governance",
+                "tutorials/developer-journey/level-4/4.5-using-quill",
+                "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+              ],
+            },
+            {
+              type: "category",
+              label: "Level 5: Internet Computer astronaut",
+              link: {
+                type: "doc",
+                id: "tutorials/developer-journey/level-5/index",
+              },
+              items: [
+                "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
+                "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+                "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
+                "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
+                "tutorials/developer-journey/level-5/5.5-auction-tutorial",
+                "tutorials/developer-journey/level-5/5.6-next-steps",
+              ],
+            },
           ],
         },
         {
           type: "category",
-          label: "Level 3: Space engineer",
+          label: "Hackathon prep course",
           link: {
             type: "doc",
-            id: "tutorials/developer-journey/level-3/index",
-        },
+            id: "tutorials/hackathon-prep-course/index",
+          },
           items: [
-            "tutorials/developer-journey/level-3/3.1-package-managers",
-            "tutorials/developer-journey/level-3/3.2-https-outcalls",
-            "tutorials/developer-journey/level-3/3.3-certified-data",
-            "tutorials/developer-journey/level-3/3.4-intro-to-agents",
-            "tutorials/developer-journey/level-3/3.5-identities-and-auth",
-            "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
-          ],
-        },
-        {
-          type: "category",
-          label: "Level 4: Space pilot",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-4/index",
-        },
-          items: [
-            "tutorials/developer-journey/level-4/4.1-icp-ledger",
-            "tutorials/developer-journey/level-4/4.2-icrc-tokens",
-            "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
-            "tutorials/developer-journey/level-4/4.4-nns-governance",
-            "tutorials/developer-journey/level-4/4.5-using-quill",
-            "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
-          ],
-        },
-        {
-          type: "category",
-          label: "Level 5: Internet Computer astronaut",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/level-5/index",
-        },
-          items: [
-            "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
-            "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
-            "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
-            "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
-            "tutorials/developer-journey/level-5/5.5-auction-tutorial",
-            "tutorials/developer-journey/level-5/5.6-next-steps",
+            "tutorials/hackathon-prep-course/what-is-icp",
+            "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
+            "tutorials/hackathon-prep-course/exploring-the-backend",
+            "tutorials/hackathon-prep-course/exploring-the-frontend",
+            "tutorials/hackathon-prep-course/integrating-with-tokens",
+            "tutorials/hackathon-prep-course/authentication",
+            "tutorials/hackathon-prep-course/obtaining-cycles",
+            "tutorials/hackathon-prep-course/managing-canisters",
+            "tutorials/hackathon-prep-course/sample-starter-projects",
+            "tutorials/hackathon-prep-course/resources",
           ],
         },
       ],
-    },
-    {
-      type: "category",
-      label: "Hackathon prep course",
-      link: {
-        type: "doc",
-        id: "tutorials/hackathon-prep-course/index",
-      },
-      items: [
-        "tutorials/hackathon-prep-course/what-is-icp",
-        "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
-        "tutorials/hackathon-prep-course/exploring-the-backend",
-        "tutorials/hackathon-prep-course/exploring-the-frontend",
-        "tutorials/hackathon-prep-course/integrating-with-tokens",
-        "tutorials/hackathon-prep-course/authentication",
-        "tutorials/hackathon-prep-course/obtaining-cycles",
-        "tutorials/hackathon-prep-course/managing-canisters",
-        "tutorials/hackathon-prep-course/sample-starter-projects",
-        "tutorials/hackathon-prep-course/resources",
-      ],
-    },
-    ],
     },
     {
       type: "category",
@@ -901,6 +971,11 @@ const sidebars = {
             "references/id-encoding-spec",
           ],
         },
+        {
+          type: "doc",
+          label: "Message execution properties",
+          id: "references/message-execution-properties",
+	},
         {
           type: "category",
           label: "Languages",
@@ -930,7 +1005,7 @@ const sidebars = {
             {
               type: "doc",
               label: "ICRC-1 token standard",
-              id: "developer-docs/integrations/icrc-1/index"
+              id: "developer-docs/integrations/icrc-1/index",
             },
             {
               type: "doc",
@@ -942,7 +1017,7 @@ const sidebars = {
               label: "Ledger canister",
               id: "references/ledger",
             },
-        ],
+          ],
         },
         {
           type: "category",
@@ -1112,28 +1187,26 @@ const sidebars = {
       ],
     },
   ],
-solidity: [
+  solidity: [
     {
       type: "doc",
       label: "Solidity",
       id: "developer-docs/backend/solidity/index",
     },
-],
-python: [
-  {
-    type: "doc",
-    label: "Python",
-    id: "developer-docs/backend/python/index",
-  },
-],
-typescript: [
-  {
-    type: "doc",
-    label: "TypeScript",
-    id: "developer-docs/backend/typescript/index",
-  },
-],
-
-
+  ],
+  python: [
+    {
+      type: "doc",
+      label: "Python",
+      id: "developer-docs/backend/python/index",
+    },
+  ],
+  typescript: [
+    {
+      type: "doc",
+      label: "TypeScript",
+      id: "developer-docs/backend/typescript/index",
+    },
+  ],
 };
 module.exports = sidebars;

@@ -5,9 +5,9 @@ sidebar_position: 1
 
 ## Overview
 
-To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is common practice to use an SDK. The [IC SDK](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) is a common entry point. The IC SDK supports a few programming languages out of the box.
+To create [canister smart contracts](https://internetcomputer.org/how-it-works/architecture-of-the-internet-computer/#canister-smart-contracts) it is common practice to use an SDK. The [IC SDK](/docs/current/developer-docs/getting-started/install/) is a common entry point. The IC SDK supports a few programming languages out of the box.
 
-Because the Internet Computer blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](../setup/install/index.mdx#sdk-vs-cdk-vs-dfx) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
+Because the Internet Computer blockchain supports dapps compiled to standard WebAssembly modules, one can use many different programming languages to create ICP canister smart contracts. To build a canister with a particular programming language, one needs a [canister development kit (CDK)](/docs/current/developer-docs/getting-started/install/) for their particular language. A CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. To make starting easier, the IC SDK already comes with CDK for multiple languages.
 
 In theory, any language that can be compiled into a WebAssembly module, can produce modules [tailored for deploying on ICP](../../references/ic-interface-spec.md) as an ICP smart contract.
 
@@ -21,8 +21,8 @@ The most common languages to use are:
   - See [introduction to developing canisters in Motoko](./motoko/index.md).
   - You can get a sense of Motoko by using the web-based [Motoko playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app).
 - **Rust**
-  - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](../setup/install/index.mdx##SDK-vs-CDK).
-  - See [introduction to developing canisters in Rust](./rust/index.md).
+  - One can use Rust via the either the [IC SDK](https://github.com/dfinity/sdk) (typical path for developers) or use the [Rust CDK](https://github.com/dfinity/cdk-rs) by DFINITY. To see difference between SDK and CDK, see: [SDK vs CDK](/docs/current/developer-docs/getting-started/install/).
+  - See [introduction to developing canisters in Rust](./rust/index.mdx).
 - **Python**
   - Python is a readable, versatile language for web development, data analysis, and AI.
   - You can use Python via the [Kybra](https://demergent-labs.github.io/kybra) CDK by [Demergent Labs](https://github.com/demergent-labs).

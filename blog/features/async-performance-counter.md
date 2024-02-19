@@ -113,7 +113,7 @@ But in this case there is no need to instrument every single await point in the 
 
 ## Using performance counters
 
-To quickly run the performance counters example (assuming the Internet Computer SDK is [already installed](/docs/current/developer-docs/setup/install/)):
+To quickly run the performance counters example (assuming the Internet Computer SDK is [already installed](/docs/current/developer-docs/getting-started/install/)):
 
 ```
 $ git clone git@github.com:dfinity/examples.git
