@@ -51,5 +51,16 @@ Query stats are available via `dfx` since XXXXX.
 
 
 ## Retrieve query stats from canister itself
-// Basic example + rates with timers
-// Pre-requisites: Do we need extra crates? Versions.
+
+It's also possible to programatically retrieve query stats from within the canister via the same canister status method. The following is an example of how to do this
+in Rust:
+
+```
+let canister_status = canister_status(CanisterIdRecord {
+    canister_id: ic_cdk::id(),
+})
+.await.unwrap();
+let query_stats = canister_status.0.query_stats;
+```
+
+This is supported from `ic-cdk` commit `c01fc1741eb3fec2df0bb4e5c5ff54fa027a6091` and higher.
