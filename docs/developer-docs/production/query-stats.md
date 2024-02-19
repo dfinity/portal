@@ -1,4 +1,4 @@
-# Query Stats
+# Query stats
 
 ## Benefits for programmers
 
