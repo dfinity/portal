@@ -35,7 +35,7 @@ Rates for those values an be calculated from multiple calls to the canister stat
 Retriving query stats from `dfx` is straight forward:
 
 ```
-./dfx canister status sample_canister
+dfx canister status sample_canister
 Canister status call result for sample_canister.
 Status: Running
 [..]
