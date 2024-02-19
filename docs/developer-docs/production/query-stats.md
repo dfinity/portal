@@ -36,6 +36,10 @@ Retriving query stats from `dfx` is straight forward:
 
 ```
 dfx canister status sample_canister
+
+This will return output such as:
+
+
 Canister status call result for sample_canister.
 Status: Running
 [..]
@@ -43,7 +47,7 @@ Number of queries: 0
 Instructions spent in queries: 0
 Total query request paylod size (bytes): 0
 Total query response payload size (bytes): 0
-```
+
 
 Query stats are available via `dfx` since XXXXX.
 
