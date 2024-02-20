@@ -401,7 +401,7 @@ Find transactions in unfinished state:
 
 #### Example implementation of journaling
 
-GoldDAO's GLDT-swap has an implementation of journaling. See https://github.com/GoldDAO/gldt-swap/blob/develop/canister/gldt_core/src/lib.rs#L654. In their case the journal entries are recorded in the "registry". Note that in GLDT-swap there is also a separate concept of "record" which is a permanent audit trail, and is not used for journaling.
+GoldDAO's GLDT-swap has an implementation of journaling. See https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L654. In their case the journal entries are recorded in the "registry". Note that in GLDT-swap there is also a separate concept of "record" which is a permanent audit trail, and is not used for journaling.
 
 ### Avoid traps after await
 
