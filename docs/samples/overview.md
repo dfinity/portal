@@ -16,7 +16,7 @@ A sample dapp that shows a dynamic actor (class) instantiation.
 
 ## Actor reference
 
-A simple dapp that hows the management canister as an actor (reference).
+A simple dapp that shows how to import the IC management canister as an actor reference.
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/actor_reference).
 
 ## Calculator
