@@ -84,15 +84,15 @@ const sidebars = {
           label: "Overview",
           items: [
             "developer-docs/smart-contracts/overview/introduction",
-            "developer-docs/smart-contracts/development-cycle",
+            "developer-docs/smart-contracts/overview/development-cycle",
           ],
         },
         {
           type: "category",
-          label: "Build",
+          label: "Write",
           items: [
-            "developer-docs/smart-contracts/build/overview",
-            "developer-docs/smart-contracts/choosing-language",
+            
+            "developer-docs/smart-contracts/write/choosing-language",
           ]
         },
         {
