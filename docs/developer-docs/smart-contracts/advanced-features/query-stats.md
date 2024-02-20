@@ -16,23 +16,16 @@ Query stats currently do not include cached query calls.
 
 The feature adds a new field to the canister status which includes:
 
- - A counter for the total number of query calls executed by that canister
- - The sum of all instructions executed by the canister for query calls
- - The sum of the payload sizes of all query requests to the canister
- - The sum of the payload sizes of all query responses from the canister
+ - A counter for the total number of query calls executed by that canister.
+ - The sum of all instructions executed by the canister for query calls.
+ - The sum of the payload sizes of all query requests to the canister.
+ - The sum of the payload sizes of all query responses from the canister.
 
-All values are monotonically increasing, i.e. the values in those counters never decrease.
-The value represents the total count since the canister has been created.
+Each value represents the total count since the canister has been created. Rates for these values can be calculated from multiple calls to the canister status and observing the difference between the values in different calls. All values are monotonically increasing.
 
-Rates for those values an be calculated from multiple calls to the canister status and observing the difference between the values in different calls.
+## Retrieve query stats using `dfx`
 
-// When is the canister status reset?
-
-// Link to cycle cost pages or resource limits page (if needed)
-
-## Retrieve query stats from SDK
-
-Retriving query stats from `dfx` is straight forward:
+`dfx` can be used to return a canister's query stats:
 
 ```
 dfx canister status sample_canister
