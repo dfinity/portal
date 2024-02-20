@@ -81,7 +81,7 @@ If you chose to download the ICP ledger files with the script you need to replac
   ...
 ```
 
-In an existing project, you would only need to add the `icp_ledger_canister` canister to the `canisters` section.
+In an existing project you would only need to add the `icp_ledger_canister` canister to the `canisters` section.
 
 ### Step 5: Start a local replica.
 
