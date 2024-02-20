@@ -43,7 +43,6 @@ chmod +x download_latest_icp_ledger.sh
 ./download_latest_icp_ledger.sh
 ```
 
-
 ### Step 4: Configure the `dfx.json` file.
 
 Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
