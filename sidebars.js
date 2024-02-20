@@ -380,6 +380,7 @@ const sidebars = {
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/query-stats",
           ],
         },
         {
