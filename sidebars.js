@@ -126,8 +126,6 @@ const sidebars = {
                 "developer-docs/smart-contracts/candid/candid-howto",
               ],
             },
-              ],
-            },
           ],
         },
         {
@@ -236,6 +234,8 @@ const sidebars = {
             },
           ],
         },
+        ],
+    },
     {
       type: "category",
       label: "Developer tools",
