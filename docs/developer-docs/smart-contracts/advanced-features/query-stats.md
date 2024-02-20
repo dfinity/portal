@@ -2,7 +2,7 @@
 
 ## Overview
 
-When users interact with a dapp, query calls may be used. Query calls cannot modify a canister's state, making it impossible to track query calls from the canister's code. 
+When users interact with a dapp, query calls may be used. Query calls cannot modify a canister's state, making it impossible to track them from the canister's code. 
 
 The **query stats** feature gives developers information about the use of each canister's query call endpoints. With this feature, an approximation of some statistics related to query stats are made available to developers as part of the existing canister status API.
 
