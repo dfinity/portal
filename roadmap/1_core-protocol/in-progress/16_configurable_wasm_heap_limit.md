@@ -3,7 +3,7 @@ title: Configurable Wasm Heap Limit
 links:
   Forum Link: https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794
   Proposal: https://dashboard.internetcomputer.org/proposal/105322
-eta: 2023
+eta: 2024
 is_community: true
 ---
 

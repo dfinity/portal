@@ -3,7 +3,7 @@ title: Cycles Ledger
 links:
   Forum Post:
   Proposal:
-eta: Q4 23
+eta: 2024
 is_community: true
 ---
 

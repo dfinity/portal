@@ -2,7 +2,7 @@
 title: ckETH Token
 links:
   Forum Link: https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382
-eta: 2023
+eta: 2024
 is_community: true
 ---
 
