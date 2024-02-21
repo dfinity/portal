@@ -282,6 +282,14 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars",
                 "developer-docs/developer-tools/cli-tools/dfx-json-reference",
+                {
+                  type: "category",
+                  label: "Advanced dfx workflows",
+                  items: [
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json",
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/specifying-replica-version",
+                  ],
+                },
               ],
             },
             {
