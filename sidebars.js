@@ -116,7 +116,7 @@ const sidebars = {
             {
               type: "doc",
               label: "Passing in arguments",
-                id: "developer-docs/backend/arguments",
+                id: "developer-docs/smart-contracts/call/arguments",
             },
             {
               type: "category",
@@ -206,6 +206,7 @@ const sidebars = {
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
         },
         {
@@ -426,23 +427,24 @@ const sidebars = {
           type: "category",
           label: "Application frontends",
           items: [
-            "developer-docs/frontend/index",
-            "developer-docs/frontend/custom-frontend",
-            "developer-docs/frontend/add-stylesheet",
-            "developer-docs/frontend/boilerplate-frontend",
-            "developer-docs/frontend/existing-frontend",
+            "developer-docs/web-apps/application-frontends/overview",
+            "developer-docs/web-apps/application-frontends/custom-frontend",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/boilerplate-frontend",
+            "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
         },
         {
           type: "category",
           label: "Custom domains",
           items: [
-            "developer-docs/production/custom-domain/custom-domain",
-            "developer-docs/production/custom-domain/dns-setup",
+            "developer-docs/web-apps/custom-domains/using-custom-domains",
+            "developer-docs/web-apps/custom-domains/dns-setup",
           ],
         },
-        "developer-docs/backend/design-dapps",
-	"developer-docs/integrations/independently-verifying-ic-signatures",
+        "developer-docs/web-apps/design-dapps",
+	      "developer-docs/web-apps/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
@@ -451,10 +453,10 @@ const sidebars = {
               type: "category",
               label: "Internet Identity (II)",
               items: [
-                "developer-docs/integrations/internet-identity/overview",
-                "developer-docs/integrations/internet-identity/creating-ii",
-                "developer-docs/integrations/internet-identity/integrate-identity",
-                "developer-docs/integrations/internet-identity/alternative-origins",
+                "developer-docs/web-apps/user-login/internet-identity/overview",
+                "developer-docs/web-apps/user-login/internet-identity/creating-ii",
+                "developer-docs/web-apps/user-login/internet-identity/integrate-identity",
+                "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
           ],
@@ -465,12 +467,12 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              id: "developer-docs/http-compatible-canisters/custom-http-canisters",
+              id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
               label: "Custom HTTP canisters",
             },
             {
               type: "doc",
-              id: "developer-docs/http-compatible-canisters/serving-json-over-http",
+              id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
               label: "Serving JSON over HTTP",
             },
             {
