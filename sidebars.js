@@ -24,7 +24,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Install the IC SDK",
+          label: "Installing tools",
           id: "developer-docs/getting-started/install/index",
         },
         {
@@ -74,6 +74,167 @@ const sidebars = {
           ],
         },
       ],
+    },
+    {
+      type: "category",
+      label: "Smart contracts",
+      items: [
+        {
+          type: "category",
+          label: "Overview",
+          items: [
+            "developer-docs/smart-contracts/overview/introduction",
+            "developer-docs/smart-contracts/overview/development-cycle",
+          ],
+        },
+        {
+          type: "category",
+          label: "Write",
+          items: [
+            
+            "developer-docs/smart-contracts/write/choosing-language",
+          ]
+        },
+        {
+          type: "category",
+          label: "Deploy",
+          items: [
+            "developer-docs/smart-contracts/deploy/overview",
+            "developer-docs/smart-contracts/deploy/larger-wasm",
+            "developer-docs/smart-contracts/deploy/sharing",
+          ],
+        },
+        {
+          type: "category",
+          label: "Call",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/smart-contracts/call/overview",
+            },
+            {
+              type: "doc",
+              label: "Passing in arguments",
+                id: "developer-docs/backend/arguments",
+            },
+            {
+              type: "category",
+              label: "Candid",
+              items: [
+                "developer-docs/smart-contracts/candid/candid-concepts",
+                "developer-docs/smart-contracts/candid/candid-howto",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Maintain",
+          items:[
+            "developer-docs/smart-contracts/maintain/control",
+            "developer-docs/smart-contracts/maintain/delete",
+             "developer-docs/smart-contracts/maintain/history",
+             "developer-docs/smart-contracts/maintain/import",
+             "developer-docs/smart-contracts/maintain/recovery",
+             "developer-docs/smart-contracts/maintain/state",
+             "developer-docs/smart-contracts/maintain/settings",
+             "developer-docs/smart-contracts/maintain/storage",
+             "developer-docs/smart-contracts/maintain/upgrade",
+             "developer-docs/smart-contracts/maintain/resource-limits",
+             {
+              type: "category",
+              label: "Cost",
+              items: [
+                "developer-docs/gas-cost",
+                "developer-docs/cost-estimations-and-examples",
+              ],
+            },
+            {
+              type: "category",
+              label: "Topping up canisters",
+              items: [
+                "developer-docs/smart-contracts/topping-up/topping-up-canister",
+                "developer-docs/smart-contracts/topping-up/cycles_management_services",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Test",
+          items: [
+            "developer-docs/smart-contracts/test/pocket-ic",
+            "developer-docs/smart-contracts/test/staging-environment",
+            "developer-docs/smart-contracts/test/reproducible-builds",
+            "developer-docs/smart-contracts/test/troubleshooting",
+          ],
+        },
+        {
+          type: "category",
+          label: "Advanced features",
+          items: [
+            {
+              type: "doc",
+              label: "Composite queries",
+              id: "developer-docs/smart-contracts/advanced-features/composite-query",
+            },
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
+                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/integrations/https-outcalls/https-outcalls-get",
+                "developer-docs/integrations/https-outcalls/https-outcalls-post",
+              ],
+            },
+            {
+              type: "category",
+              label: "On-chain signatures: Threshold ECDSA",
+              items: [
+                "developer-docs/smart-contracts/encryption/t-ecdsa",
+                "developer-docs/smart-contracts/encryption/signing-transactions"
+              ],
+            },
+            {
+              type: "category",
+              label: "On-chain encryption: vetKeys",
+              items: [
+                "developer-docs/smart-contracts/encryption/vetkeys",
+                "developer-docs/smart-contracts/encryption/using-vetkeys",
+              ],
+            },
+            "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+          ],
+        },
+        {
+          type: "category",
+          label: "Best practices",
+          items: [
+            {
+              type: "doc",
+              label: "Architecture",
+              id: "developer-docs/smart-contracts/best-practices/architecture",
+            },
+            {
+              type: "doc",
+              label: "General",
+              id: "developer-docs/smart-contracts/best-practices/general",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/smart-contracts/best-practices/storage",
+            },
+            {
+              type: "doc",
+              label: "Troubleshooting latency",
+              id: "developer-docs/smart-contracts/best-practices/troubleshooting",
+            },
+          ],
+        },
+        ],
     },
     {
       type: "category",
@@ -251,167 +412,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Smart contracts",
-      items: [
-        {
-          type: "category",
-          label: "Overview",
-          link: {
-            type: "doc",
-            id: "developer-docs/smart-contracts/overview",
-          },
-          items: [
-            "developer-docs/smart-contracts/development-cycle",
-            "developer-docs/smart-contracts/choosing-language",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Build",
-          id: "developer-docs/smart-contracts/build",
-        },
-        {
-          type: "category",
-          label: "Deploy",
-          items: [
-            "developer-docs/smart-contracts/deploy/overview",
-            "developer-docs/smart-contracts/deploy/larger-wasm",
-            "developer-docs/smart-contracts/deploy/sharing",
-          ],
-        },
-        {
-          type: "category",
-          label: "Call",
-          link: {
-            type: "doc",
-            id: "developer-docs/smart-contracts/call-overview",
-          },
-          items: [
-            {
-              type: "doc",
-              label: "Passing in arguments",
-                id: "developer-docs/backend/arguments",
-            },
-            {
-              type: "category",
-              label: "Candid",
-              items: [
-                "developer-docs/smart-contracts/candid/candid-concepts",
-                "developer-docs/smart-contracts/candid/candid-howto",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Maintain",
-          items:[
-            "developer-docs/smart-contracts/maintain/control",
-            "developer-docs/smart-contracts/maintain/delete",
-             "developer-docs/smart-contracts/maintain/history",
-             "developer-docs/smart-contracts/maintain/import",
-             "developer-docs/smart-contracts/maintain/recovery",
-             "developer-docs/smart-contracts/maintain/state",
-             "developer-docs/smart-contracts/maintain/settings",
-             "developer-docs/smart-contracts/maintain/storage",
-             "developer-docs/smart-contracts/maintain/upgrade",
-             "developer-docs/smart-contracts/maintain/resource-limits",
-             {
-              type: "category",
-              label: "Cost",
-              items: [
-                "developer-docs/gas-cost",
-                "developer-docs/cost-estimations-and-examples",
-              ],
-            },
-            {
-              type: "category",
-              label: "Topping up canisters",
-              items: [
-                "developer-docs/smart-contracts/topping-up/topping-up-canister",
-                "developer-docs/smart-contracts/topping-up/cycles_management_services",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Test",
-          items: [
-            "developer-docs/smart-contracts/test/pocket-ic",
-            "developer-docs/smart-contracts/test/staging-environment",
-            "developer-docs/smart-contracts/test/reproducible-builds",
-            "developer-docs/smart-contracts/test/troubleshooting",
-          ],
-        },
-        {
-          type: "category",
-          label: "On-chain signatures: Threshold ECDSA",
-          items: [
-            "developer-docs/smart-contracts/encryption/t-ecdsa",
-            "developer-docs/smart-contracts/encryption/signing-transactions"
-          ],
-        },
-        {
-          type: "category",
-          label: "On-chain encryption: vetKeys",
-          items: [
-            "developer-docs/smart-contracts/encryption/vetkeys",
-            "developer-docs/smart-contracts/encryption/using-vetkeys",
-          ],
-        },
-        {
-          type: "category",
-          label: "Advanced features",
-          items: [
-            {
-              type: "doc",
-              label: "Composite queries",
-              id: "developer-docs/smart-contracts/advanced-features/composite-query",
-            },
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              items: [
-                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                "developer-docs/integrations/https-outcalls/https-outcalls-post",
-              ],
-            },
-            "developer-docs/smart-contracts/advanced-features/periodic-tasks",
-          ],
-        },
-        {
-          type: "category",
-          label: "Best practices",
-          items: [
-            {
-              type: "doc",
-              label: "Architecture",
-              id: "developer-docs/smart-contracts/best-practices/architecture",
-            },
-            {
-              type: "doc",
-              label: "General",
-              id: "developer-docs/smart-contracts/best-practices/general",
-            },
-            {
-              type: "doc",
-              label: "Storage",
-              id: "developer-docs/smart-contracts/best-practices/storage",
-            },
-            {
-              type: "doc",
-              label: "Troubleshooting latency",
-              id: "developer-docs/smart-contracts/best-practices/troubleshooting",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Web apps",
       items: [
         {
@@ -434,7 +434,7 @@ const sidebars = {
           ],
         },
         "developer-docs/backend/design-dapps",
-        "developer-docs/integrations/independently-verifying-ic-signatures",
+	"developer-docs/integrations/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
@@ -451,9 +451,9 @@ const sidebars = {
             },
           ],
         },
-        {
+	{
           type: "category",
-          label: "HTTP compatible canisters",
+          label: "Using HTTP certification",
           items: [
             {
               type: "doc",
@@ -956,7 +956,7 @@ const sidebars = {
           type: "doc",
           label: "Message execution properties",
           id: "references/message-execution-properties",
-	},
+	      },
         {
           type: "category",
           label: "Languages",

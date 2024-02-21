@@ -44,7 +44,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
-  /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/choosing-language 
+  /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
@@ -61,11 +61,11 @@ const redirects = `
   /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto 
   
-  /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/choosing-language 
+  /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/choosing-language 
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/choosing-language 
-  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/choosing-language 
+  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
@@ -89,7 +89,7 @@ const redirects = `
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/build
+  /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/build/overview
   /docs/developers-guide/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
@@ -103,7 +103,7 @@ const redirects = `
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
-  /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/choosing-language 
+  /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
   
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
@@ -226,7 +226,7 @@ const redirects = `
   /docs/current/references/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index
   /docs/current/references/dfxvm/* /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/dfx
   /docs/current/references/quill-cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index
-  /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/choosing-language 
+  /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto 
@@ -236,7 +236,7 @@ const redirects = `
   /docs/current/developer-docs/production/social-sharing /docs/current/developer-docs/smart-contracts/deploy/sharing
   /docs/current/developer-docs/setup/delete /docs/current/developer-docs/smart-contracts/maintain/delete
   /docs/current/developer-docs/production/canister-history /docs/current/developer-docs/smart-contracts/maintain/history
-  /docs/current/developer-docs/setup/build /docs/current/developer-docs/smart-contracts/build
+  /docs/current/developer-docs/setup/build /docs/current/developer-docs/smart-contracts/build/overview
   /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/current/developer-docs/smart-contracts/maintain/import
   /docs/current/developer-docs/production/canister-recovery /docs/current/developer-docs/smart-contracts/maintain/recovery
   /docs/current/developer-docs/setup/state /docs/current/developer-docs/smart-contracts/maintain/state
@@ -244,7 +244,7 @@ const redirects = `
   /docs/current/developer-docs/production/storage /docs/current/developer-docs/smart-contracts/maintain/storage
   /docs/current/developer-docs/setup/upgrade /docs/current/developer-docs/smart-contracts/maintain/upgrade
   /docs/current/developer-docs/production/resource-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
-  /docs/current/developer-docs/setup/manage-projects /docs/current/developer-docs/smart-contracts/build
+  /docs/current/developer-docs/setup/manage-projects /docs/current/developer-docs/smart-contracts/build/overview
   /docs/current/developer-docs/production/topping-up-canister /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services
   /docs/current/developer-docs/setup/pocket-ic /docs/current/developer-docs/smart-contracts/test/pocket-ic
