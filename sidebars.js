@@ -370,6 +370,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
             {
+              type: "doc",
+              label: "Management Canister",
+              id: "developer-docs/smart-contracts/advanced-features/management-canister",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
