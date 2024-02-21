@@ -371,7 +371,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Management Canister",
+              label: "Management canister",
               id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
             {
