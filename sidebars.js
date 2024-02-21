@@ -434,7 +434,7 @@ const sidebars = {
           ],
         },
         "developer-docs/backend/design-dapps",
-
+	"developer-docs/integrations/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
