@@ -582,6 +582,7 @@ const sidebars = {
           items: [
             "developer-docs/integrations/ethereum/overview",
             "developer-docs/integrations/ethereum/evm-rpc",
+            "developer-docs/integrations/ethereum/siwe",
           ],
         },
       ],
@@ -930,6 +931,11 @@ const sidebars = {
             "references/id-encoding-spec",
           ],
         },
+        {
+          type: "doc",
+          label: "Message execution properties",
+          id: "references/message-execution-properties",
+	      },
         {
           type: "category",
           label: "Languages",
