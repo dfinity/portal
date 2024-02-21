@@ -91,7 +91,7 @@ const DocsHomePage: FC = () => {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/smart-contracts/choosing-language"
+                  href="/docs/current/developer-docs/smart-contracts/write/choosing-language"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
