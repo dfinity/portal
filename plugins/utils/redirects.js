@@ -260,6 +260,22 @@ const redirects = `
   /docs/current/developer-docs/setup/best-practices/general /docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/setup/best-practices/storage /docs/current/developer-docs/smart-contracts/best-practices/storage
   /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting
+  /docs/current/developer-docs/frontend/ /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
+  /docs/current/developer-docs/frontend/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
+  /docs/current/developer-docs/frontend/boilerplate-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/frontend/existing-frontend /docs/current/developer-docs/web-apps/application-frontends/existing-frontend
+  /docs/current/developer-docs/production/custom-domain/ /docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
+  /docs/current/developer-docs/production/custom-domain/dns-setup /docs/current/developer-docs/web-apps/custom-domains/dns-setup
+  /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/web-apps/design-dapps
+  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures 
+  /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
+  /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii
+  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity
+  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins 
+  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
+  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
+  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

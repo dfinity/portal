@@ -1,1 +1,1 @@
-../../../submodules/response-verfication/examples/http-certification/custom-assets/README.md
+../../../../submodules/response-verfication/examples/http-certification/custom-assets/README.md

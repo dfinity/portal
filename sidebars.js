@@ -430,7 +430,6 @@ const sidebars = {
             "developer-docs/web-apps/application-frontends/overview",
             "developer-docs/web-apps/application-frontends/custom-frontend",
             "developer-docs/web-apps/application-frontends/add-stylesheet",
-            "developer-docs/web-apps/application-frontends/boilerplate-frontend",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
@@ -477,7 +476,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              id: "developer-docs/http-compatible-canisters/serving-static-assets-over-http",
+              id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
               label: "Serving static assets over HTTP",
             }
           ]

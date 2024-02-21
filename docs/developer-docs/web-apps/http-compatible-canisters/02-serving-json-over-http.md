@@ -1,1 +1,1 @@
-../../../submodules/response-verfication/examples/http-certification/json-api/README.md
+../../../../submodules/response-verfication/examples/http-certification/json-api/README.md
