@@ -12,9 +12,10 @@ function fetchAggregatorPage(page) {
  * Fetches all aggregator pages and returns a list of all dao data
  * @returns {Promise<Array>}
  */
-async function fetchAllAggregatorPages() {
+async function fetchAllAggregatorPages(maxRetries = 5) {
   const allDaos = [];
   let page = 0;
+  let retriesLeft = maxRetries;
   while (true) {
     try {
       const pageData = await fetchAggregatorPage(page);
@@ -24,9 +25,17 @@ async function fetchAllAggregatorPages() {
         break;
       }
       page++;
-    } catch {
-      // reached page which doesn't exist
-      break;
+      retriesLeft = maxRetries;
+    } catch (e) {
+      if (retriesLeft > 0) {
+        logger.error(`Failed to fetch aggregator page ${page}, retrying...`);
+        await new Promise((r) => setTimeout(r, 60 * 1000));
+        retriesLeft--;
+        continue;
+      } else {
+        logger.error(`Failed to fetch aggregator page ${page}, giving up.`);
+        throw e;
+      }
     }
   }
   return allDaos;
