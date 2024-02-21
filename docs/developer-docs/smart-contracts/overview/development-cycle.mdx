@@ -28,7 +28,7 @@ A canister's lifecycle follows this general outline:
 
 ## Installing canister code
 
-While canisters can run arbitrary WebAssembly (WASM) modules, ICP has a few conventions that make it easier to get the most out of its capabilities. For example, the function `canister_init` is the first function that gets called after the code is installed for the first time. To facilitate adhering to those conventions, Canister Development Kits (CDKs) exist for [many different languages](/docs/current/developer-docs/developer-tools/dev-tools-overview).
+While canisters can run arbitrary WebAssembly (Wasm) modules, ICP has a few conventions that make it easier to get the most out of its capabilities. For example, the function `canister_init` is the first function that gets called after the code is installed for the first time. To facilitate adhering to those conventions, Canister Development Kits (CDKs) exist for [many different languages](/docs/current/developer-docs/developer-tools/dev-tools-overview).
 
 To install code in a canister, the `install_code` function of ICP is used in one of three modes:
 - The `install` mode is the one every canister starts with: it is only callable for canisters without any installed code and populates the canister with the supplied Wasm module. Once installation is complete, the aforementioned function `canister_init` (usually exposed as `init` in CDKs) is called if it exists. This allows the code to perform any required setup before any calls arrive.
