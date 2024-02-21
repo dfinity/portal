@@ -3574,5 +3574,21 @@
     "youtube": "https://youtu.be/hQprbPa5VF8",
     "submittableId": "34907742",
     "videoContentType": "video/mp4"
+  },
+  {
+    "name": "Virtuaseal",
+    "description": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain. Users can create documents from a template or from scratch, verify the robustness and authenticity of the document using hashes, sign documents in a secured manner, and share documents with other parties",
+    "website": "https://p3cwv-2aaaa-aaaap-abwba-cai.icp0.io/",
+    "logo": "/img/showcase/virtuaseal.jpg",
+    "display": "Normal",
+    "id": "virtuaseal",
+    "oneLiner": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
+    "twitter": "https://twitter.com/kovachtech",
+    "submittableId": "44337954"
   }
 ]
