@@ -45,7 +45,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/choosing-language 
-  /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
+  /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
@@ -68,13 +68,13 @@ const redirects = `
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
-  /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
-  /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/frontend/#modifying-the-webpack-configuration
+  /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
+  /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
-  /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/backend/design-dapps
+  /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/web-apps/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
@@ -91,7 +91,7 @@ const redirects = `
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/build/overview
   /docs/developers-guide/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
-  /docs/developers-guide/design-apps /docs/current/developer-docs/backend/design-dapps
+  /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
   /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
   /docs/developers-guide/lang-service-ide /docs/current/developer-docs/developer-tools/ide/vs-code
@@ -100,9 +100,9 @@ const redirects = `
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/getting-started/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
   /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/motoko/
-  /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/frontend/custom-frontend
-  /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/frontend/add-stylesheet
-  /docs/developers-guide/webpack-config /docs/current/developer-docs/frontend/
+  /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
+  /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
+  /docs/developers-guide/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
   
@@ -156,14 +156,14 @@ const redirects = `
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/getting-started/install/
   /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/developer-tools/off-chain/agents/overview
-  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/integrations/internet-identity/overview
+  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/getting-started/install/
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
   /docs/quickstart/network-quickstart.html /docs/current/developer-docs/getting-started/install/
   /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
-  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/integrations/internet-identity/overview
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/getting-started/install/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
@@ -176,10 +176,10 @@ const redirects = `
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
-  /docs/current/developer-docs/frontend/javascript-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
-  /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
-  /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
-  /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/frontend/boilerplate-frontend
+  /docs/current/developer-docs/frontend/javascript-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/current/concepts/index /docs/current/developer-docs/getting-started/overview-of-icp
