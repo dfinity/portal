@@ -214,48 +214,55 @@ const sidebars = {
           label: "Off-chain libraries",
           items: [
             {
+              type: "doc",
+              label: "Composite queries",
+              id: "developer-docs/smart-contracts/advanced-features/composite-query",
+            },
+            {
+              type: "doc",
+              label: "Management canister",
+              id: "developer-docs/smart-contracts/advanced-features/management-canister",
+            },
+            {
               type: "category",
-              label: "Agents",
+              label: "On-chain signatures: Threshold ECDSA",
               items: [
-                "developer-docs/agents/index",
-                "developer-docs/agents/javascript-intro",
-                "developer-docs/agents/nodejs",
-                "developer-docs/agents/ic-agent-dfinity",
+                "developer-docs/smart-contracts/encryption/t-ecdsa",
+                "developer-docs/smart-contracts/encryption/signing-transactions"
               ],
             },
+            {
+              type: "category",
+              label: "On-chain encryption: vetKeys",
+              items: [
+                "developer-docs/smart-contracts/encryption/vetkeys",
+                "developer-docs/smart-contracts/encryption/using-vetkeys",
+              ],
+            },
+            "developer-docs/smart-contracts/advanced-features/making-http-requests",
+            "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
         },
         {
           type: "category",
-          label: "IDE",
+          label: "Best practices",
           items: [
-            "developer-docs/setup/playground",
-            "developer-docs/setup/vs-code",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Smart contracts",
-      items: [
-        {
-          type: "category",
-          label: "Overview",
-          items:
-          [
-            "developer-docs/backend/choosing-language",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Build",
-          id: "developer-docs/setup/build",
-        },
-        {
-          type: "category",
-          label: "Call",
-          items: [
+            {
+              type: "doc",
+              label: "Architecture",
+              id: "developer-docs/smart-contracts/best-practices/architecture",
+            },
+            {
+              type: "doc",
+              label: "General",
+              id: "developer-docs/smart-contracts/best-practices/general",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/smart-contracts/best-practices/storage",
+            },
             {
               type: "category",
               label: "Candid",
@@ -378,11 +385,12 @@ const sidebars = {
           type: "category",
           label: "Application frontends",
           items: [
-            "developer-docs/frontend/index",
-            "developer-docs/frontend/custom-frontend",
-            "developer-docs/frontend/add-stylesheet",
-            "developer-docs/frontend/boilerplate-frontend",
-            "developer-docs/frontend/existing-frontend",
+            "developer-docs/web-apps/application-frontends/overview",
+            "developer-docs/web-apps/application-frontends/serving-static-assets",
+            "developer-docs/web-apps/application-frontends/custom-frontend",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
         },
         {
@@ -400,6 +408,24 @@ const sidebars = {
             "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
             "developer-docs/integrations/https-outcalls/https-outcalls-get",
             "developer-docs/integrations/https-outcalls/https-outcalls-post",
+          ],
+        },
+        "developer-docs/web-apps/design-dapps",
+	      "developer-docs/web-apps/independently-verifying-ic-signatures",
+        {
+          type: "category",
+          label: "On-chain backend",
+          items: [
+            "developer-docs/web-apps/on-chain-backend/handling-get-post-requests",
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-get",
+                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-post",
+              ],
+            },
           ],
         },
         {
