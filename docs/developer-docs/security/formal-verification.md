@@ -10,13 +10,13 @@ The proof is always relative to the model and the specification. Any simplificat
 
 For a concrete example, when verifying the ckBTC minter canister, the DFINITY team used models that exclude the possibility of calling the `update_balance` canister method more than 2 times concurrently. This potentially misses attacks that require 3 or more concurrent calls to `update_balance` to trigger a bug. But we considered such bugs highly unlikely and, in return, we were able to run a fully automatic verification process, which was much cheaper than other verification methods.
 
-There are many existing formal verification tools. While none of them take into account the specifics of ICP yet, many of them are general enough that they can be applied to canisters. In particular, the DFINITY team has made good use of the TLA+ toolkit to eliminate reentrancy bugs, a type of concurrency bug where one method of a particular canister is called while another one is still executing.
+There are many existing formal verification tools. While none of them take into account the specifics of ICP yet, many of them are general enough that they can be applied to canisters. In particular, the DFINITY team has made good use of the TLA+ toolkit to combat reentrancy bugs, a type of concurrency bug where one method of a particular canister is called while another one is still executing.
 
 These bugs are particularly difficult to find, as they can involve unexpected interactions of code scattered throughout a canister, or even in different canisters. The number of such code interactions may be huge, and thus difficult for humans to detect. These interactions are usually difficult to test automatically and systematically, which TLA+ can do.
 
 ## TLA+
 
-The Temporal Logic of Actions (TLA+) is a language for specifying and verifying complex systems. TLA+ comes with a set of tools for lightweight formal verification in the form of so-called model checking. Through model checking, it exhaustively explores all possible concurrent interactions of a model of the code — exactly the domain that is difficult to test — and finds bugs.
+The Temporal Logic of Actions (TLA+) is a language for specifying and verifying complex systems. TLA+ comes with a set of tools for lightweight formal verification in the form of so-called model checking. Through model checking, it exhaustively (within bounds, such as the aforementioned 2 concurrent calls bound) explores all possible concurrent interactions of a model of the code (with  — exactly the domain that is difficult to test — and finds bugs.
 
 Importantly, after building the model of the code, model checking runs with virtually no further human input, making it highly cost-effective. To illustrate with some made-up numbers: if the industry standard practices (such as testing and security reviews) eliminate 80% of the bugs, and “heavyweight” formal verification eliminates 99.99%, with TLA+ you can eliminate 90% with a fraction of the effort of the heavyweight verification.
 
