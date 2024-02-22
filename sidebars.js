@@ -180,6 +180,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
             {
+              type: "doc",
+              label: "Management canister",
+              id: "developer-docs/smart-contracts/advanced-features/management-canister",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
