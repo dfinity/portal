@@ -52,9 +52,13 @@ service : {
 
 [Learn more about supported data types in the Candid reference documentation](/docs/current/references/candid-ref#supported-types).
 
-### Splitting interface descriptions across multiple files
+### Splitting interface descriptions across multiple files (Motoko)
 
 In some workflows, it may be beneficial to split interface descriptions across multiple `.did` files. For example, one file may be used to define type definitions that are used by several canisters, while another file is used to define the main service for one of those canisters. 
+
+:::caution
+This workflow is for Motoko projects.
+:::
 
 You can import both interface descriptions into your canister with two import statements:
 
