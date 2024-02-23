@@ -276,6 +276,10 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
+  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json
+  /docs/current/developer-docs/production/system-canisters /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters
+  /docs/current/developer-docs/backend/arguments /docs/current/developer-docs/smart-contracts/call/arguments
+  /docs/current/developer-docs/frontend/index /docs/current/developer-docs/web-apps/application-frontends/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
