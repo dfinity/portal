@@ -185,7 +185,7 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
             {
-              type: "category",
+              type: "doc",
               label: "Serving an HTTP request",
               items: [
                 "developer-docs/smart-contracts/advanced-features/http-request",
