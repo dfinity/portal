@@ -11,7 +11,7 @@ This guide will discuss the different ways to interact with the ICP ledger. In t
 
 ## Interacting with ICP ledger via `dfx ledger`
 
-`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/references/cli-reference/dfx-ledger.md) or just enter the following command into your console:
+`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger.md) or just enter the following command into your console:
 
 ``` bash
 dfx ledger --help

@@ -1143,8 +1143,8 @@
       "SocialFi"
     ],
     "description": "Introducing CaniPlay (Can I Play), the pioneering, fully on-chain NFT broadcast station. Submit your audio or video content, reach a global audience, and receive recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
-    "usesInternetIdentity": false,
-    "website": "https://es7e3-taaaa-aaaan-qakqq-cai.icp0.io",
+    "usesInternetIdentity": true,
+    "website": "https://u6i3f-pyaaa-aaaao-a2hca-cai.icp0.io",
     "github": "https://github.com/orgs/Canistore",
     "twitter": "https://twitter.com/canistore",
     "display": "Large",
@@ -1152,7 +1152,7 @@
     "screenshots": [
       "/img/showcase/CaniPlay_SS.webp"
     ],
-    "submittableId": "34838526"
+    "submittableId": "41319392"
   },
   {
     "id": "nuance",
@@ -2296,7 +2296,7 @@
   {
     "name": "DSign",
     "description": "Collaborative Product Design Innovation Hub",
-    "website": "https://www.dsign.ooo",
+    "website": "https://dsign.ooo",
     "logo": "/img/showcase/dsign_logo.webp",
     "screenshots": [
       "/img/showcase/dsign_screenshot.webp"
@@ -3512,7 +3512,7 @@
     "Games"
   ],
   "usesInternetIdentity": false,
-  "github": "https://github.com/lokaverse/icdragon",
+  "github": "https://github.com/icdragoneyes/dragon_canister",
   "twitter": "https://twitter.com/icdragoneyes",
   "youtube": "",
   "submittableId": ""
@@ -3574,5 +3574,21 @@
     "youtube": "https://youtu.be/hQprbPa5VF8",
     "submittableId": "34907742",
     "videoContentType": "video/mp4"
+  },
+  {
+    "name": "Virtuaseal",
+    "description": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain. Users can create documents from a template or from scratch, verify the robustness and authenticity of the document using hashes, sign documents in a secured manner, and share documents with other parties",
+    "website": "https://p3cwv-2aaaa-aaaap-abwba-cai.icp0.io/",
+    "logo": "/img/showcase/virtuaseal.png",
+    "display": "Normal",
+    "id": "virtuaseal",
+    "oneLiner": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
+    "twitter": "https://twitter.com/kovachtech",
+    "submittableId": "44337954"
   }
 ]

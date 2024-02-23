@@ -91,7 +91,7 @@ const DocsHomePage: FC = () => {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/backend/choosing-language"
+                  href="/docs/current/developer-docs/smart-contracts/write/choosing-language"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
@@ -267,7 +267,7 @@ const DocsHomePage: FC = () => {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/backend/choosing-language"
+                  href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
@@ -293,7 +293,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="/docs/current/developer-docs/setup/react-quickstart"
+                    href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
                     className="link-primary"
                     title="Go to Quickstart for React Devs"
                   >

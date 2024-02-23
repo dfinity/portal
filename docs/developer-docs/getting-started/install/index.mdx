@@ -1,57 +1,39 @@
----
-sidebar_position: 1
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
-# Installing the IC SDK
-
 ## Overview
 
-The [IC SDK](https://github.com/dfinity/sdk) is a **software development kit** used for creating and managing canister smart contracts on the ICP blockchain. The IC SDK supports [Motoko](../../backend/choosing-language) and [Rust](../../backend/choosing-language) programming languages by default, but [developers can use other languages as well](../../backend/choosing-language).
+When developing on ICP, there are two primary tools used: `dfx`, a CLI tool used to create, deploy, and manage canisters, and a **canister development kit** (CDK) which provides an environment for writing canister code in different programming languages while supporting ICP features. 
 
-## Components of the IC SDK
+Currently supported CDKs include:
 
-The IC SDK installation script installs several components in default locations on your local computer. The following table describes the development environment components that the installation script installs:
+- [Motoko](/docs/current/motoko/main/motoko): ICP's native programming language.
 
-| Component    | Description                                                                                        | Default location                              |
-|--------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| dfx          | Command-line interface (CLI)                                                     | `/usr/local/bin/dfx`                          |
-| moc          | Motoko runtime compiler                                                                            | `~/.cache/dfinity/versions/<VERSION>/moc`     |
-| replica      | Internet Computer local network binary                                                             | `~/.cache/dfinity/versions/<VERSION>/replica` |
-| uninstall.sh | Script to remove the SDK and all of its components                                    | `~/.cache/dfinity/uninstall.sh`               |
-| versions     | Cache directory that contains a subdirectory for each version of the SDK you install. | `~/.cache/dfinity/versions`                   |
+- [Rust CDK](https://github.com/dfinity/cdk-rs).
 
-### IC SDK vs CDK vs `dfx`
+- [Kybra: Python CDK (Beta)](/docs/current/developer-docs/backend/python).
 
-There are a few components worth expanding on:
+- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript). 
 
-1. **IC SDK**: this is the SDK created by DFINITY for creating and managing canisters. This is just one SDK in the ICP community and a common entry point for developers.
+- [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity).
 
-2. **Canister Development Kit (CDK)**: a CDK is an adapter used by the IC SDK that provides a programming language with the features necessary to create and manage canisters. 
-The IC SDK comes with a few CDKs already installed for you so you can use them in the language of your choice. For example, the IC SDK comes with the [Rust CDK](https://github.com/dfinity/cdk-rs) already installed. 
-CDKs that are not installed but available for developers include the:
-  - [Python CDK](https://demergent-labs.github.io/kybra/).
-  - [TypeScript CDK](https://demergent-labs.github.io/azle/). 
-  - [C++ CDK](https://docs.icpp.world/).
-  
-Since CDKs are components used by the SDK, some developers choose to use the CDK directly (without the IC SDK), but typically are used as part of the whole IC SDK.
+- [C++ CDK](https://docs.icpp.world/).
 
-3. **dfx**: `dfx` is the command-line interface for the IC SDK. This is why many commands for the IC SDK start with the command "`dfx ..`" such as `dfx new` or `dfx stop`.
 
-## Installing the IC SDK
+## Installing `dfx`
 
-You can download and install the latest version of the [IC SDK](https://github.com/dfinity/sdk) for creating and managing canister smart contracts by running the command below. The following topics provide additional information about installing, upgrading, and removing the IC SDK.
+`dfx` is part of the [IC SDK](https://github.com/dfinity/sdk).
 
-The **IC SDK** is natively supported on Linux or macOS 12.\* Monterey or later. 
+`dfx` is natively supported on Linux or macOS 12.\* Monterey or later. 
 
-There is no native support for <code>dfx</code> on Windows. However, by installing the Windows Subsystem for Linux (WSL 2), you can run dfx on a Windows system as described below.
+There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL 2), you can run `dfx` on a Windows system as described below.
 
 :::caution
-Not all features of dfx may be supported on WSL 2.
+Not all features of `dfx` may be supported on WSL 2.
 :::
+
+You can download and install the latest version of the [`dfx`](https://github.com/dfinity/sdk) by running the command below:
 
 <Tabs>
   <TabItem value="apple" label="Install on Mac/Linux" default>
@@ -143,9 +125,9 @@ generateResolvConf = false`}
   </TabItem>
 </Tabs>
 
-## Core components in a versioned directory
+### Core components in a versioned directory
 
-The `~/.cache/dfinity/versions` directory stores one or more versioned subdirectories of the SDK. Each versioned subdirectory contains the all of the directories and files required for a specific version of the SDK. For example, if you list the contents of the `~/.cache/dfinity/versions/0.9.3` directory you would see the following core components:
+The `~/.cache/dfinity/versions` directory stores one or more versioned subdirectories of `dfx`. Each versioned subdirectory contains the all of the directories and files required for a specific version of `dfx`. For example, if you list the contents of the `~/.cache/dfinity/versions/0.9.3` directory you would see the following core components:
 
     total 349192
     drwxr-xr-x  17 pubs  staff       544 Mar 15 11:55 .
@@ -166,17 +148,13 @@ The `~/.cache/dfinity/versions` directory stores one or more versioned subdirect
     -r-x------   1 pubs  staff  15111508 Dec 31  1969 moc
     -r-x------   1 pubs  staff  49404128 Dec 31  1969 replica
 
-### Motoko base directory
+#### Motoko base directory
 
-The `base` directory in the versioned subdirectory of the SDK contains the Motoko base library modules that are compatible with that version of the SDK. Because the Motoko base library is evolving rapidly, you should only use the base modules that are packaged with the version of the SDK that you have installed.
+The `base` directory in the versioned subdirectory of `dfx` contains the Motoko base library modules that are compatible with that version of `dfx`. Because the Motoko base library is evolving rapidly, you should only use the base modules that are packaged with the version of `dfx` that you have installed.
 
-### Bootstrap directory
+### Using the `dfx` version manager
 
-The `bootstrap` directory contains web server code that is deprecated. Beginning with version 0.7.0, agents can call an HTTP middleware server instead of the `bootstrap` code. This change enables canisters to respond to HTTP requests directly and operate more like traditional web-based applications.
-
-## Using the dfx version manager
-
-Alteratively, you can upgrade or install a specific version of dfx, the dfx version manager (`dfxvm`) can be used. 
+Alteratively, to upgrade or install a specific version of `dfx` the dfx version manager (`dfxvm`) can be used. 
 
 First, install `dfxvm` using the following `curl` command:
 
@@ -184,15 +162,15 @@ First, install `dfxvm` using the following `curl` command:
 sh -ci "$(curl -fsSL https://raw.githubusercontent.com/dfinity/sdk/dfxvm-install-script/install.sh)"
 ```
 
-Upon installation, you will be prompted to select which version of dfx you'd like to install. Alternatively, you can pass the intended version using an environment variable, such as:
+Upon installation, you will be prompted to select which version of `dfx` you'd like to install. You can also pass the intended version using an environment variable, such as:
 
 ```
 DFX_VERSION=0.15.1 sh -ci "$(curl -fsSL https://raw.githubusercontent.com/dfinity/sdk/dfxvm-install-script/install.sh)"
 ```
 
-### Installing a specific version
+#### Installing a specific version
 
-Once `dfxvm` is installed, you can install other specific versions of dfx using the command:
+Once `dfxvm` is installed, you can install other specific versions of `dfx` using the command:
 
 ```
 dfxvm install [VERSION_NUMBER]
@@ -204,7 +182,7 @@ For example, you can install `0.15.0` with the command:
 dfxvm install 0.15.0
 ```
 
-### Uninstalling a specific version
+#### Uninstalling a specific version
 
 To uninstall a version of dfx using `dfxvm`, use the command:
 
@@ -218,7 +196,7 @@ For example, to uninstall version `0.14.4`, use the command:
 dfxvm uninstall 0.14.4
 ```
 
-### Upgrading to the latest version
+#### Upgrading to the latest version
 
 To update dfx to the latest version, use the command:
 
@@ -226,9 +204,9 @@ To update dfx to the latest version, use the command:
 dfxvm update
 ```
 
-### Setting a default version
+#### Setting a default version
 
-If defined, the IC SDK will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
+If defined, `dfx` will always run the version specified in the project's `dfx.json` in the key `"dfx"`.
 For example, if your `dfx.json` contains `"dfx": "0.11.1"`, any `dfx` command you run within this project's directory will be executed by `dfx` of version `0.11.1`.
 Should the defined version not be installed (e.g. because you cloned a repo that was created for a different version than you have installed locally), `dfx` will report an error.
 
@@ -238,11 +216,11 @@ You can learn more about `dfxvm` [here](https://github.com/dfinity/dfxvm/tree/ma
 
 ## Building from source
 
-If you would like to compile dfx by yourself, head over to the [IC SDK repo](https://github.com/dfinity/sdk). The README contains the instructions how you can build it on your own.
+If you would like to compile `dfx` by yourself, head over to the [IC SDK repo](https://github.com/dfinity/sdk). The README contains the instructions how you can build it on your own.
 
-## Uninstalling the IC SDK
+### Uninstalling `dfx`
 
-When you install the IC SDK, the installation script puts the required binary files in a local directory and creates a cache. You can remove the IC SDK binaries and cache from your local computer by running the `uninstall` script located in the `.cache` folder.
+When you install `dfx`, the installation script puts the required binary files in a local directory and creates a cache. You can remove the `dfx` binaries and cache from your local computer by running the `uninstall` script located in the `.cache` folder.
 
 For example:
 
@@ -255,3 +233,110 @@ If you are uninstalling because you want to immediately reinstall a clean versio
 ``` bash
 ~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 ```
+
+## Installing a CDK
+
+### Motoko
+
+By default, Motoko is installed with `dfx`. Alternatively, you can build it from source following [these instructions](https://github.com/dfinity/motoko/blob/master/Building.md). 
+
+### Rust
+
+By default, the Rust CDK is installed with `dfx`. Alternatively, you can install it yourself by adding the following dependency in your `Cargo.toml` file:
+
+```rust
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ic-cdk = "0.12"
+# Only necessary if you want to define Candid data types
+candid = "0.10" 
+```
+
+Below is a brief example on how to use the Rust CDK:
+
+```rust
+#[ic_cdk::query]
+fn hello() -> String {
+    "world".to_string()
+}
+```
+
+
+### TypeScript / JavaScript 
+
+The TypeScript and JavaScript CDK, known as Azle, can be installed with `dfx` in versions `v0.16.1` and newer. To install it manually, you can follow [these steps](https://github.com/demergent-labs/azle/tree/main/examples/hello_world). 
+
+:::caution
+Azle is currently in beta and should be used with caution.
+:::
+
+
+### Python
+
+The Python CDK, known as Kybra, can be installed by following these steps:
+
+- #### Step 1: Install `pyenv`
+
+```
+curl https://pyenv.run | bash
+```
+
+- #### Step 2: Install Python 3.10.7:
+
+```
+~/.pyenv/bin/pyenv install 3.10.7
+```
+
+- #### Step 3: Install `dfx` v0.14.2:
+
+```
+DFX_VERSION=0.14.2 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+```
+
+- #### Step 4: Add `$HOME/bin` to your path:
+
+```
+echo 'export PATH="$PATH:$HOME/bin"' >> "$HOME/.bashrc"
+```
+
+:::caution
+Kybra is currently in beta and should be used with caution.
+:::
+
+### Solidity
+
+Solidity smart contracts can be created using the Bitfinity EVM. To use the Bitfinity EVM, you can make calls to the [Bitfinity mainnet or testnet.](https://docs.bitfinity.network/getting-started/network-endpoints).
+
+[Learn more about how to use the Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview)
+
+:::caution
+Bitfinity EVM is currently in beta and should be used with caution.
+:::
+
+### C++ 
+
+C++ is supported through the ICPP-pro CDK, which can be installed with the following steps:
+
+- #### Step 1: Install `icpp-pro` with `pip`:
+
+```
+pip install icpp-pro
+```
+
+- #### Step 2: Install `wasi-sdk`:
+
+```
+icpp install-wasi-sdk
+```
+
+- #### Step 3: Install the latest version of `dfx`:
+
+```
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+## Next steps
+
+- [Learn about developer accounts](/docs/current/developer-docs/getting-started/accounts).

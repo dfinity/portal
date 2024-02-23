@@ -10,7 +10,7 @@ This guide illustrates how to pass arguments on the command-line in a terminal u
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](/docs/current/developer-docs/backend/motoko/dev-env).
 
 ## Create a new project
 
@@ -277,7 +277,7 @@ Call the `location` method in the program and pass your `city` argument using th
 dfx canister call favorite_cities location '(vec {"San Francisco";"Paris";"Rome"})'
 ```
 
-The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](../candid/index.md) language guide.
+The command uses the Candid interface description syntax `(vec { val1; val2; val3; })` to return a vector of values. For more information about the Candid interface description language, see the [Candid](/docs/current/developer-docs/smart-contracts/candid/index) language guide.
 
 This command displays output similar to the following:
 
@@ -299,11 +299,11 @@ The command displays output similar to the following:
 
 Test your code using the Candid UI.
 
-To test your code, follow the instructions [here](candid-ui.md).
+To test your code, [follow the instructions](/docs/current/developer-docs/backend/motoko/candid-ui).
 In this example, each function accepts an array of text strings. Therefore, you first select the length of the array, then set values for each item before clicking **Call**.
 
 ![Specifying an array](_attachments/candid-favorite-cities-result.png)
 
 ## Next steps
 
-In the next guide, you'll learn about [accepting cycles from a wallet.](simple-cycles.mdx)
+In the next guide, you'll learn about [accepting cycles from a wallet.](./simple-cycles.mdx)

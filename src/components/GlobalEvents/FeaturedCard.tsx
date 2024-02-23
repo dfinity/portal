@@ -5,8 +5,6 @@ import { AirtableEvent } from "./types";
 import { eventBannerUrl, eventDate, eventLocation } from "./EventCard";
 
 const FeaturedCard: React.FC<{ event: AirtableEvent }> = ({ event }) => {
-  const image = eventBannerUrl(event);
-
   const formattedEventDate = useMemo(() => eventDate(event), [event]);
   const formattedEventLocation = useMemo(() => eventLocation(event), [event]);
 
@@ -17,7 +15,7 @@ const FeaturedCard: React.FC<{ event: AirtableEvent }> = ({ event }) => {
         href={event.eventLink}
       >
         <img
-          src={image}
+          src="/img/events/featured.webp"
           alt={event.eventName}
           className="w-full h-full object-cover"
         />
