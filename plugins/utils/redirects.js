@@ -39,10 +39,10 @@ const redirects = `
   /docs/samples/* /samples
   /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
-  /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
-  /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works
-  /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
-  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
+  /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/
+  /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
+  /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/daos/sns/tokenomics/
+  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/choosing-language 
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
@@ -123,18 +123,18 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install/windows-wsl
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
   
-  /docs/rosetta-api/ledger /docs/current/developer-docs/integrations/ledger/
-  /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/integrations/ledger/ledger-local-setup
-  /docs/integration/ledger-quick-start /docs/current/developer-docs/integrations/ledger/
-  /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/integrations/ledger/ledger-local-setup
+  /docs/rosetta-api/ledger /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
   /docs/current/references/security/* /docs/current/developer-docs/security/general-security-best-practices
-  /docs/current/tokenomics/nns/community-fund /docs/current/tokenomics/nns/neurons-fund
-  /docs/current/tokenomics/sns/* /docs/current/developer-docs/integrations/sns/tokenomics/:splat
+  /docs/current/tokenomics/nns/community-fund /docs/current/developer-docs/daos/nns/neurons-fund
+  /docs/current/tokenomics/sns/* /docs/current/developer-docs/daos/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
@@ -174,8 +174,8 @@ const redirects = `
   /docs/current/concepts/data-centers /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
-  /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal
-  /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal
+  /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal
+  /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/daos/sns/launching/launch-steps-1proposal
   /docs/current/developer-docs/frontend/javascript-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
@@ -185,8 +185,8 @@ const redirects = `
   /docs/current/concepts/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/concepts /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
-  /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-how-to-use
+  /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-how-to-use
   /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/security /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/integrations/index /docs/current/developer-docs/getting-started/overview-of-icp
