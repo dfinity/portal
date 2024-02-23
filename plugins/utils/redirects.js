@@ -276,6 +276,75 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
+  /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
+  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/icp-tokens/icp-index-local-setup
+  /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
+  /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup
+  /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup
+  /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
+  /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
+  /docs/current/developer-docs/integrations/rosetta/hotkeys /docs/current/developer-docs/defi/rosetta/hotkeys
+  /docs/current/developer-docs/integrations/rosetta/neuron-lifecycle /docs/current/developer-docs/defi/rosetta/neuron-lifecycle
+  /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/staking-support
+  /docs/current/developer-docs/integrations/rosetta/staking-tutorial /docs/current/developer-docs/defi/rosetta/staking-tutorial
+  /docs/current/developer-docs/integrations/rosetta/transfers /docs/current/developer-docs/defi/rosetta/transfers
+  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/asset-custody/custody-options
+  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart
+  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs
+  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/introduction/sns-intro-high-level
+  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/introduction/sns-architecture
+  /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/introduction/sns-launch
+  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/introduction/dao-alternatives
+  /docs/current/developer-docs/integrations/sns/tokenomics/ /docs/current/developer-docs/daos/sns/tokenomics/
+  /docs/current/developer-docs/integrations/sns/tokenomics/sns-checklist /docs/current/developer-docs/daos/sns/tokenomics/sns-checklist
+  /docs/current/developer-docs/integrations/sns/tokenomics/predeployment-considerations  /docs/current/developer-docs/daos/sns/tokenomics/predeployment-considerations
+  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro  /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
+  /docs/current/developer-docs/integrations/sns/tokenomics/rewards /docs/current/developer-docs/daos/sns/tokenomics/rewards
+  /docs/current/developer-docs/integrations/sns/tokenomics/preparation /docs/current/developer-docs/daos/sns/tokenomics/preparation
+  /docs/current/developer-docs/integrations/sns/integrating/ /docs/current/developer-docs/daos/sns/integrating/
+  /docs/current/developer-docs/integrations/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/integrating/ledger-integration
+  /docs/current/developer-docs/integrations/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/integrating/index-integration
+  /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/integrating/frontend-integration
+  /docs/current/developer-docs/integrations/sns/testing/testing-before-launch /docs/current/developer-docs/daos/sns/testing/testing-before-launch
+  /docs/current/developer-docs/integrations/sns/testing/testing-locally /docs/current/developer-docs/daos/sns/testing/testing-locally
+  /docs/current/developer-docs/integrations/sns/testing/testing-on-mainnet /docs/current/developer-docs/daos/sns/testing/testing-on-mainnet
+  /docs/current/developer-docs/integrations/sns/launching/ /docs/current/developer-docs/daos/sns/launching/
+  /docs/current/developer-docs/integrations/sns/launching/launch-summary-1proposal  /docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal
+  /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal /docs/current/developer-docs/daos/sns/launching/launch-steps-1proposal
+  /docs/current/developer-docs/integrations/sns/managing/manage-sns-intro /docs/current/developer-docs/daos/sns/managing/manage-sns-intro
+  /docs/current/developer-docs/integrations/sns/managing/making-proposals /docs/current/developer-docs/daos/sns/managing/making-proposals
+  /docs/current/developer-docs/integrations/sns/managing/cycles-usage /docs/current/developer-docs/daos/sns/managing/cycles-usage
+  /docs/current/developer-docs/integrations/sns/managing/sns-asset-canister /docs/current/developer-docs/daos/sns/managing/sns-asset-canister
+  /docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters /docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters
+  /docs/current/tokenomics/nns/nns-intro /docs/current/developer-docs/daos/nns/overview
+  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/current/developer-docs/daos/nns/nns-app-quickstart
+  /docs/current/tokenomics/nns/neurons-fund /docs/current/developer-docs/daos/nns/neurons-fund
+  /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/staking-voting-rewards
+  /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/proposal-requirements
+  /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
+  /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/developer-docs/multi-chain/faq/user-faq
+  /docs/current/developer-docs/integrations/multi-chain/ckbtc-faq /docs/current/developer-docs/multi-chain/faq/ckbtc-faq
+  /docs/current/developer-docs/integrations/multi-chain/cketh-faq /docs/current/developer-docs/multi-chain/faq/cketh-faq
+  /docs/current/developer-docs/integrations/multi-chain/ckerc20-faq /docs/current/developer-docs/multi-chain/faq/ckerc20-faq
+  /docs/current/developer-docs/integrations/multi-chain/signatures-faq /docs/current/developer-docs/multi-chain/faq/signatures-faq
+  /docs/current/developer-docs/integrations/bitcoin/ /docs/current/developer-docs/multi-chain/bitcoin/overview
+  /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc
+  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/read-state
+  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions
+  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/local-development
+  /docs/current/developer-docs/integrations/ethereum/overview /docs/current/developer-docs/multi-chain/ethereum/overview
+  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc
+  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/siwe
+  /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
+  /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference
+  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works /docs/current/references/https-outcalls-how-it-works
+  /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/current/references/t-ecdsa-how-it-works
+  /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/current/references/vetkeys-overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
