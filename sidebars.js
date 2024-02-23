@@ -187,9 +187,7 @@ const sidebars = {
             {
               type: "doc",
               label: "Serving an HTTP request",
-              items: [
-                "developer-docs/smart-contracts/advanced-features/http-request",
-              ],
+              id: "developer-docs/smart-contracts/advanced-features/http-request",
             },
             {
               type: "category",
