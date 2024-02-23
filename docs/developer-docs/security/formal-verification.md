@@ -16,7 +16,7 @@ These bugs are particularly difficult to find, as they can involve unexpected in
 
 ## TLA+
 
-The Temporal Logic of Actions (TLA+) is a language for specifying and verifying complex systems. TLA+ comes with a set of tools for lightweight formal verification in the form of so-called model checking. Through model checking, it exhaustively (within bounds, such as the aforementioned 2 concurrent calls bound) explores all possible concurrent interactions of a model of the code (with  — exactly the domain that is difficult to test — and finds bugs.
+The Temporal Logic of Actions (TLA+) is a language for specifying and verifying complex systems. TLA+ comes with a set of tools for lightweight formal verification in the form of so-called model checking. Through model checking, it exhaustively (within bounds, such as the aforementioned 2 concurrent calls bound) explores all possible concurrent interactions of a model of the code — exactly the domain that is difficult to test — and finds bugs.
 
 Importantly, after building the model of the code, model checking runs with virtually no further human input, making it highly cost-effective. To illustrate with some made-up numbers: if the industry standard practices (such as testing and security reviews) eliminate 80% of the bugs, and “heavyweight” formal verification eliminates 99.99%, with TLA+ you can eliminate 90% with a fraction of the effort of the heavyweight verification.
 
