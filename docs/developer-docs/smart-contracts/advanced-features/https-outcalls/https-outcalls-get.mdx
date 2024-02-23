@@ -19,7 +19,7 @@ This example takes less than 5 minutes to complete.
 The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
 
 
-![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
+![Candid web UI](../_attachments/https-get.webp)
 
 The `get_icp_usd_exchange()` method returns Coinbase data on the exchange rate between USD and ICP for a certain day. The data will look like this:
 
@@ -634,7 +634,7 @@ URLs:
 
 Open the candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
 
-![Candid web UI](../_attachments/https-get-candid-2-motoko.webp)
+![Candid web UI](../_attachments/https-get.webp)
 
 </TabItem>
 <TabItem value="rust" label="Rust">

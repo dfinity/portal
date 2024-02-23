@@ -91,7 +91,6 @@ const sidebars = {
           type: "category",
           label: "Write",
           items: [
-            
             "developer-docs/smart-contracts/write/choosing-language",
           ]
         },
@@ -188,10 +187,10 @@ const sidebars = {
               type: "category",
               label: "HTTPS outcalls",
               items: [
-                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                "developer-docs/integrations/https-outcalls/https-outcalls-post",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
               ],
             },
             {
