@@ -186,6 +186,13 @@ const sidebars = {
             },
             {
               type: "category",
+              label: "Serving an HTTP request",
+              items: [
+                "developer-docs/smart-contracts/advanced-features/http-request",
+              ],
+            },
+            {
+              type: "category",
               label: "HTTPS outcalls",
               items: [
                 "developer-docs/integrations/https-outcalls/https-outcalls-overview",
