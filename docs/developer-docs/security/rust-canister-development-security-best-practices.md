@@ -718,6 +718,16 @@ Your canisters should not rely on the correct execution of `canister_inspect_mes
 
 Also note that for inter-canister calls `canister_inspect_message` is not invoked which is another reason to execute the code as part of the update call by using a guard.
 
+### Do not publicly reveal canister's cycles balance
+
+#### Security concern
+
+Publicly revealing the canister's cycles balance allows an attacker to measure the number of instructions spent by executing the canister methods on the attacker's input. Then the attacker might be able to learn which code paths were taken during execution and derive secret information based on that. Moreover, the attacker can learn which methods and their inputs consume a lot of cycles to mount a cycles draining attack (see also [protect against draining the cycles balance](#protect-against-draining-the-cycles-balance)).
+
+#### Recommendation
+
+Your canisters should not publicly expose their cycles balance (available through the system API), i.e., they should only expose their cycles balance to their controllers or other trusted principals.
+
 ## Nonspecific to the Internet Computer
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
