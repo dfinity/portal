@@ -482,12 +482,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/http-compatible-canisters/serving-static-assets-over-http",
               label: "Serving static assets over HTTP",
-            }          {
-                type: "doc",
-                label: "Formal verification",
-                id: "developer-docs/security/formal-verification",
-            },
-
+            }
           ]
         }
       ],
@@ -516,6 +511,11 @@ const sidebars = {
               id: "developer-docs/security/web-app-development-security-best-practices",
             },
           ],
+        },
+        {
+            type: "doc",
+            label: "Formal verification",
+            id: "developer-docs/security/formal-verification",
         },
       ],
     },
