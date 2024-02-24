@@ -39,8 +39,8 @@ ckBTC aims to solve the following problems:
 
 **Additional reading**
 
-- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
-- [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckBTC-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59#6164)
+- [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/ckBTC-sparks-a-new-era-on-the-internet-computer-86463a7be20f#4690)
 - [Why Bitcoin needs smart contracts > The Internet Computer](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
 
 ## How does ckBTC relate to Bitcoin?
