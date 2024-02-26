@@ -202,7 +202,7 @@ function SnsFaqPage() {
                 unique in that they can fully control (via voting) every aspect
                 of a dapp, since everything is on-chain. Having fully on-chain
                 DAOs is important because it enables all decisions to be
-                executed on the blockchain and thus facilitates true 
+                executed on the blockchain and thus facilitates true
                 decentralization. This is in contrast to existing DAOs
                 on other blockchains where voting takes place on-chain but the
                 execution of the results are often carried out by developers
@@ -241,7 +241,7 @@ function SnsFaqPage() {
             <Faq title="Are there existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
-              handed control over to an SNS DAO in Q1 of 2023. Since then, many 
+              handed control over to an SNS DAO in Q1 of 2023. Since then, many
               ecosystem projects have followed. Currently, there are 11 SNS DAOs
               on the Internet Computer. Follow their progress on the {" "}
               <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
@@ -251,7 +251,7 @@ function SnsFaqPage() {
               Yes, the SNS framework has undergone two security audits by{" "}
               <Link href="https://www.trailofbits.com/">Trail of Bits</Link> in
               2022, and 2023 with no severe issues found.
-              
+
               <p className="not-prose">
                 <Link
                   href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
@@ -307,7 +307,7 @@ function SnsFaqPage() {
                   You can propose upgrades for many of the DAO's parameters such
                   as maximum staking period, voting rewards and many more. See{" "}
                   <Link
-                    href="/docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters"
+                    href="/docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters"
                     target="_blank"
                   >
                     parameters
@@ -337,7 +337,7 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How does voting in an SNS DAO work?">
               Once you have acquired SNS tokens, you can lock them into SNS
-              neurons, which allows you to create a proposal, vote directly on one,  
+              neurons, which allows you to create a proposal, vote directly on one,
               delegate voting to trusted parties that have more expertise in certain topics.
               If a proposal gets adopted, the code of the SNS DAO or the dapp it controls is
               upgraded. Depending on the SNS configuration, users who vote may
@@ -386,11 +386,11 @@ function SnsFaqPage() {
                   obtain them by receiving airdrops or by engaging with the dapp
                   and thereby earning tokens as reward. In this scenario, tokens
                   are used as an incentive to encourage active engagement with
-                  the dapp which helps grow the active user base. 
+                  the dapp which helps grow the active user base.
                 </li>
                 <li>
-                  <strong>Voting rewards:</strong> If you already have tokens 
-                  and participate in governance, you can earn tokens as voting 
+                  <strong>Voting rewards:</strong> If you already have tokens
+                  and participate in governance, you can earn tokens as voting
                   rewards as you would in the NNS.
                 </li>
               </ul>
@@ -414,9 +414,9 @@ function SnsFaqPage() {
               <p>
                 From a user's vantage point, the Neurons' fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
-                future SNSs. As the NNS decides how the Neuons' fund contributes to 
-                SNSs, ICP stakers participating in them can leverage the broader community's 
-                "wisdom of crowds" to chose which SNS tokens to acquire. This allows 
+                future SNSs. As the NNS decides how the Neuons' fund contributes to
+                SNSs, ICP stakers participating in them can leverage the broader community's
+                "wisdom of crowds" to chose which SNS tokens to acquire. This allows
                 users to participate automatically in upcoming SNS launches.
               </p>
               <p>
@@ -478,7 +478,7 @@ function SnsFaqPage() {
                 swap, from its initiation to execution, is completely
                 decentralized and not controlled by any centralized entity. Even
                 the decision to create the SNS and its token is made by the NNS
-                (the DAO that controls the Internet Computer) and not the developer 
+                (the DAO that controls the Internet Computer) and not the developer
                 in order to ensure complete decentralizion of the app.
               </p>
               <p>
@@ -753,7 +753,7 @@ function SnsFaqPage() {
                 </li>
                 <li>
                   The treasury funds could, for example, be used to open liquidity pools on
-                  DEXs or to reward users for certain actions in the dapp. 
+                  DEXs or to reward users for certain actions in the dapp.
                 </li>
               </ul>
             </Faq>
@@ -769,12 +769,12 @@ function SnsFaqPage() {
               no one can access the SNS treasury. The SNS DAO only grants access
               when proposals are adopted through SNS community voting. While it can happen
               that the original developer team possesses a meaningful portion of the voting
-              power, they alone cannot make decisions for the DAO without the approval of 
+              power, they alone cannot make decisions for the DAO without the approval of
               SNS token holders. In particular, treasury proposals are considered to be
               critical proposals, which have a higher bar to be adopted, including that
               they require a higher voting participation and support of a supermajority of
               the DAO voters.
-            </Faq> 
+            </Faq>
 
           </FaqSection>
 
@@ -828,7 +828,7 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
-            
+
             <Faq title="What is voting power and how do I get it?">
               SNS DAOs have a stake-based governance system. This means the more
               tokens participants stake in their{" "}
@@ -842,7 +842,7 @@ function SnsFaqPage() {
               </Link> bonus and age bonus. Each SNS DAO
               decides these bonuses in its parameters.
             </Faq>
-            
+
             <Faq title="What is neuron following?">
               <p>
                 Following neurons is a way to delegate votes both on the NNS and in SNSs.
@@ -857,7 +857,7 @@ function SnsFaqPage() {
                 When you use following, you must trust that the neurons you’re following will make
                 decisions that align with your views. The advantages of neuron following
                 are that you don’t have to spend time manually voting on each proposal,
-                and you can rely on the expertise of other neuron holders for certain topics. 
+                and you can rely on the expertise of other neuron holders for certain topics.
               </p>
             </Faq>
 
@@ -991,7 +991,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/developer-docs/integrations/sns/"
+            href="/docs/current/developer-docs/daos/sns/"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>

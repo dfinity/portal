@@ -73,7 +73,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
 
-            }        
+            }
         };
     }
 )' > message.json
@@ -109,9 +109,9 @@ All of the proposals used to manage an SNS are executed on the SNS governance ca
 Below are the most important types for the purpose of this article:
 
 ```candid
-    type Account = record { 
-        owner : opt principal; 
-        subaccount : opt Subaccount 
+    type Account = record {
+        owner : opt principal;
+        subaccount : opt Subaccount
     };
 
     //proposals types for managing an SNS
@@ -146,14 +146,14 @@ In the following we list all differences to non-critical proposals.
 
    Non-critical proposals types can be passed if 3% of the total voting power votes yes and 50% of the exercised voting power votes yes.
 
-   Critical proposals types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes. 
+   Critical proposals types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes.
 
 2. Catch-all following
 
    Voters can follow other neurons on critical proposal types, but each neuron has to make an active decision of following for each critical proposals type, as the catch-all following “All topics” is not applied to critical proposal types. Users who have multiple neurons can actively vote with just one of them and follow this one neuron with all their other neurons.
 
 3. Voting period
-   
+
    The voting period for critical proposal types is 5-10 days and cannot be changed by the SNS. In contrast, for non-critical proposals the default is 4-8 days and this can be adjusted by each SNS DAO.
 
    Critical proposal have a longer voting period as they require a larger voting participation and it is therefore beneficial to give voters a bit more time to participate.
@@ -162,7 +162,7 @@ In the following we list all differences to non-critical proposals.
 
 ### `Motion`
 
-A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. For example, it can be used for opinion polls before even starting certain features.  
+A motion proposal is the only kind of proposal that does not have any immediate effect, i.e., it does not trigger the execution of a method as other proposals do. For example, it can be used for opinion polls before even starting certain features.
 
 #### Relevant type signature
 
@@ -185,7 +185,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
                 motion_text = "I hereby raise the motion that the use of the SNS shall commence";
 
-            }        
+            }
         };
     }
 )' > message.json
@@ -260,7 +260,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
             RegisterDappCanisters = record {
 
                 canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
-                
+
             };
         };
     }
@@ -300,9 +300,9 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "This proposal gives up the control of a canister";
         action = opt variant {
             DeregisterDappCanisters = record {
-                
+
                 canister_ids = vec {principal "ltyfs-qiaaa-aaaak-aan3a-cai", principal "ltyfs-qiaaa-aaaak-aan3a-cai"};
-                
+
                 new_controllers = vec {principal "rymrc-piaaa-aaaao-aaljq-cai", principal "suaf3-hqaaa-aaaaf-bfyob-cai"};
             };
         };
@@ -314,7 +314,7 @@ quill send message.json
 
 ### `TransferSnsTreasuryFunds`
 
-The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals. 
+The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals.
 
 This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
 
@@ -356,13 +356,13 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
             TransferSnsTreasuryFunds = record {
 
                 from_treasury = 1 : int32;
-                
+
                 to_principal = opt principal "ozcnp-xcxhg-inakz-sg3bi-nczm3-jhg6y-idt46-cdygl-ebztx-iq4ft-vae";
-                
+
                 to_subaccount = null;
-                
+
                 memo = null;
-                
+
                 amount_e8s = 4_110_000_000_000 : nat64;
             };
         };
@@ -374,9 +374,9 @@ quill send message.json
 
 See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/202).
 
-### `UpgradeSnsControlledCanister` 
+### `UpgradeSnsControlledCanister`
 
-The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm. 
+The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm.
 
 #### Relevant type signatures
 
@@ -447,13 +447,13 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
         summary = "lorem ipsum";
         action = opt variant {
             ManageSnsMetadata = record {
-                
+
                 url = null;
-                
+
                 logo = null;
-                
+
                 name = null;
-                
+
                 description = "UPDATED Sample SNS used for educational purposes";
             };
         };
@@ -503,13 +503,13 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
         summary = "Mint 411 ICP to Foo Labs";
         action = opt variant {
             MintSnsTokens = record {
-                
+
                 to_principal = opt principal "ozcnp-xcxhg-inakz-sg3bi-nczm3-jhg6y-idt46-cdygl-ebztx-iq4ft-vae";
-                
+
                 to_subaccount = null;
-                
+
                 memo = null;
-                
+
                 amount_e8s = opt 4_110_000_000_000 : opt nat64;
             }
         }
@@ -634,25 +634,25 @@ Example in bash:
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
-        title = "Add a new custom SNS function to \"Import proposals group into community\"";          
-        url = "https://github.com/open-chat-labs/open-chat/blob/252b85a1877240dfea17512647ac42ac36e969db/backend/canisters/proposals_bot/impl/src/updates/import_proposals_group_into_community.rs";        
+        title = "Add a new custom SNS function to \"Import proposals group into community\"";
+        url = "https://github.com/open-chat-labs/open-chat/blob/252b85a1877240dfea17512647ac42ac36e969db/backend/canisters/proposals_bot/impl/src/updates/import_proposals_group_into_community.rs";
         summary = "Adding a new generic proposal that allows to change the background colour of the dapp. Specifically, proposals of this kind will trigger a call to the method change_colour on canister dapp_canister.";
         action = opt variant {
             AddGenericNervousSystemFunction = record {
                 id = 4_003 : nat64;
                 name = "Import proposals group into community";
                 description = opt "Import the specified proposals group into the specified community.";
-                function_type = opt variant { 
-                    GenericNervousSystemFunction = record { 
+                function_type = opt variant {
+                    GenericNervousSystemFunction = record {
 
-                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai";
 
-                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
-                        
-                        validator_method_name = opt "import_proposals_group_into_community_validate"; 
-                        
+                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai";
+
+                        validator_method_name = opt "import_proposals_group_into_community_validate";
+
                         target_method_name = opt "import_proposals_group_into_community";
-                    } 
+                    }
                 };
             }
         };
@@ -696,18 +696,18 @@ export TEXT="${1:-Hoi}"
 export BLOB="$(didc encode --format blob "(hello)" )"
 
 quill sns  --canister-ids-file ./sns_canister_ids.json  --pem-file $PEM_FILE  make-proposal $DEVELOPER_NEURON_ID --proposal '(
-    record { 
-        title = "Execute generic functions for test canister."; 
-        url = "https://example.com"; 
-        summary = "This proposal executes generic functions for test canister."; 
+    record {
+        title = "Execute generic functions for test canister.";
+        url = "https://example.com";
+        summary = "This proposal executes generic functions for test canister.";
         action = opt variant {
             ExecuteGenericNervousSystemFunction = record {
 
-                function_id = 2000:nat64; 
-                
+                function_id = 2000:nat64;
+
                 payload = ${BLOB}
             }
-        }    
+        }
     }
 )' > msg.json
 
@@ -745,11 +745,11 @@ quill send message.json
 
 ### Case study: Adding a generic proposal
 
-The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister. 
+The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/daos/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister.
 
 The problem: To commit changes to the asset canister associated with a dapp under SNS control, you need to use generic proposals.
 
-To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
+To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/daos/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
 
 See the code for the `commit_proposed_batch` function [here](https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264):
 
@@ -789,25 +789,25 @@ If you assume the principal of a particular asset canister for an SNS is, `iywa7
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
-        title = "Add a new custom SNS function to the asset canister";          
-        url = "https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264";        
+        title = "Add a new custom SNS function to the asset canister";
+        url = "https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264";
         summary = "Adding custom function to the asset canister of SNS foo";
         action = opt variant {
             AddGenericNervousSystemFunction = record {
                 id = 4_003 : nat64;
                 name = "Add a new custom SNS function to the asset canistery";
                 description = opt "Add a new custom SNS function to the asset canister";
-                function_type = opt variant { 
-                    GenericNervousSystemFunction = record { 
+                function_type = opt variant {
+                    GenericNervousSystemFunction = record {
 
-                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
+                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai";
 
-                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai"; 
-                        
-                        validator_method_name = opt "validate_commit_proposed_batch"; 
-                        
+                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai";
+
+                        validator_method_name = opt "validate_commit_proposed_batch";
+
                         target_method_name = opt "commit_proposed_batch";
-                    } 
+                    }
                 };
             }
         };
@@ -820,20 +820,20 @@ quill send message.json
 <!-- ## SNS Proposal lifecycle
 
 
-(not only how generic ones are added but also how a normal proposal works (who can submit it, what they 
+(not only how generic ones are added but also how a normal proposal works (who can submit it, what they
 have to pay, when is it adopted and under which conditions etc): "At any time (even if the deadline has
-not been reached), a proposal is adopted if strictly more than half of the votes are ‘yes’ and rejected 
+not been reached), a proposal is adopted if strictly more than half of the votes are ‘yes’ and rejected
 if at least half of the votes are ‘no’. The idea is that at this point the result cannot be turned around,
 so there is no reason for waiting.” "
-if the voting deadline is reached, there are more yes than no votes, and at least a minimum number of 
-votes have been sent (This minimum of votes is expressed as a ratio of the used voting power in favor 
+if the voting deadline is reached, there are more yes than no votes, and at least a minimum number of
+votes have been sent (This minimum of votes is expressed as a ratio of the used voting power in favor
 of the proposal divided by the total available voting power and is a constant that is now set to 0.03)”
 
 When voting:
 WARNING
 Overall careful w/ calls to unknown canisters   (for generic proposals, registering dapp etc)?
 
-If SNSs can upgrade dapp canisters that are not registered, we might want to say that those canisters 
+If SNSs can upgrade dapp canisters that are not registered, we might want to say that those canisters
 not necessarily trusted, also we might want to make a recommendation “to the SNS” that calling untrusted
 canisters is dangerous, so they might want to verify it first (which could then be done by registering it)
 
@@ -858,16 +858,16 @@ Some notes: for generic proposals: only call things that you trust (anyways true
 could be immutable canister / SNS controlled / controlled by s.b. you trust not to change things arbitraty. this must be verified on adding new proposal type.
 
 They consist of verification canister & method and of target canister & method
-why we need both: governance cannot interpret meaning of the proposals 
+why we need both: governance cannot interpret meaning of the proposals
 
-the “Verification” method is just about filtering out 
-proposals that cannot be valid anyways/ rendering => cannot put security check in the validate (just checks 
+the “Verification” method is just about filtering out
+proposals that cannot be valid anyways/ rendering => cannot put security check in the validate (just checks
 that the input is “valid proposal at the time of proposal not at the time of the execution”); for actual
 validation at the time of execution: you have to add those checks to the target method called by the proposal
 
 should include how to add and remove them.
 
- 
+
 
 ### Register a new generic proposal
 ### Submit a generic proposal  -->

@@ -41,10 +41,10 @@ const redirects = `
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
-  /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/daos/sns/tokenomics/
+  /docs/current/developer-docs/daos/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
-  /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/choosing-language
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
@@ -52,20 +52,20 @@ const redirects = `
   /docs/current/developer-docs/updates/release-notes/ /docs/current/other/updates/release-notes/
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/getting-started/install/
-  
+
   /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid/
   /docs/candid-guide/candid /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid/
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
   /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/
-  /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto 
-  
-  /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
+
+  /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/choosing-language
   /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/choosing-language 
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language 
-  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/choosing-language
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
@@ -83,7 +83,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
-  
+
   /docs/developers-guide/ /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
@@ -103,9 +103,9 @@ const redirects = `
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview
-  /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
-  
+
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/3-quickstart /docs/current/tutorials/developer-journey/
@@ -122,12 +122,12 @@ const redirects = `
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/cycles/cycles-faucet
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install/windows-wsl
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
-  
+
   /docs/rosetta-api/ledger /docs/current/developer-docs/defi/icp-tokens/overview
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/icp-tokens/overview
   /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
-  
+
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
@@ -161,7 +161,7 @@ const redirects = `
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
   /docs/quickstart/network-quickstart.html /docs/current/developer-docs/getting-started/install/
-  /docs/token-holders/nns-app-quickstart.html /docs/current/tokenomics/token-holders/nns-app-quickstart
+  /docs/token-holders/nns-app-quickstart.html /docs/current/developer-docs/daos/nns/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
@@ -198,7 +198,7 @@ const redirects = `
   /docs/current/tutorials/ /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
-  /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/choosing-language 
+  /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/choosing-language
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/smart-contracts/deploy/overview
   /docs/current/developer-docs/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs /docs/current/developer-docs/getting-started/overview-of-icp
@@ -302,8 +302,9 @@ const redirects = `
   /docs/current/references/quill-cli-reference/quill-transfer /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer
   /docs/current/references/quill-cli-reference/quill-update-node-provider /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/
-  /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto 
+  /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/overview
+  /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
   /docs/current/developer-docs/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
   /docs/current/developer-docs/setup/deploy /docs/current/developer-docs/smart-contracts/deploy/overview
   /docs/current/developer-docs/production/larger-wasm /docs/current/developer-docs/smart-contracts/deploy/larger-wasm
@@ -342,11 +343,11 @@ const redirects = `
   /docs/current/developer-docs/production/custom-domain/ /docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/current/developer-docs/web-apps/custom-domains/dns-setup
   /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/web-apps/design-dapps
-  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures 
+  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii
   /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity
-  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins 
+  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
@@ -357,11 +358,13 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/icp-tokens/icp-index-local-setup
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
+  /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger
   /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
+  /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/hotkeys /docs/current/developer-docs/defi/rosetta/hotkeys
   /docs/current/developer-docs/integrations/rosetta/neuron-lifecycle /docs/current/developer-docs/defi/rosetta/neuron-lifecycle
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/staking-support
@@ -401,12 +404,14 @@ const redirects = `
   /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/staking-voting-rewards
   /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/proposal-requirements
   /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
+  /docs/current/tokenomics/ /docs/current/developer-docs/daos/overview
   /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/developer-docs/multi-chain/faq/user-faq
   /docs/current/developer-docs/integrations/multi-chain/ckbtc-faq /docs/current/developer-docs/multi-chain/faq/ckbtc-faq
   /docs/current/developer-docs/integrations/multi-chain/cketh-faq /docs/current/developer-docs/multi-chain/faq/cketh-faq
   /docs/current/developer-docs/integrations/multi-chain/ckerc20-faq /docs/current/developer-docs/multi-chain/faq/ckerc20-faq
   /docs/current/developer-docs/integrations/multi-chain/signatures-faq /docs/current/developer-docs/multi-chain/faq/signatures-faq
   /docs/current/developer-docs/integrations/bitcoin/ /docs/current/developer-docs/multi-chain/bitcoin/overview
+  /docs/current/developer-docs/integrations/bitcoin/index /docs/current/developer-docs/multi-chain/bitcoin/overview
   /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc
   /docs/current/developer-docs/integrations/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/read-state
   /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions
