@@ -355,7 +355,7 @@ const redirects = `
   /docs/current/developer-docs/backend/arguments /docs/current/developer-docs/smart-contracts/call/arguments
   /docs/current/developer-docs/frontend/index /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/integrations/bitcoin/ckBTC-reference /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference
-  /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
+  /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin /docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
