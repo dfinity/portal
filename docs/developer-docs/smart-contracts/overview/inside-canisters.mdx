@@ -1,13 +1,13 @@
 # Inside canisters
 
 Canisters are WebAssembly (Wasm) programs with additional features that allow them to store persistent data, communicate with users and other canisters, and be managed by entities such as DAOs.
-This means that in addition to the standard Wasm components such as Wasm code and Wasm memory, canisters also have other components that are explained in the rest of this page.
+To enable these functionalities, canisters have additional components alongside the the standard Wasm code and memory. These components are outlined in the diagram below. 
 
 <div class="text--center">
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
 </div>
 
-## Canister Id
+## Canister id
 A canister has a unique identifier that is often referred to as the address of the canister or the principal of the canister.
 When a user or a canister sends a message to another canister, they specify the target canister by its id in the header of the message.
 The system then routes the message to the target canister and puts it in the input queue of that canister.
