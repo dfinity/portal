@@ -84,6 +84,7 @@ const sidebars = {
           label: "Overview",
           items: [
             "developer-docs/smart-contracts/overview/introduction",
+            "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/overview/development-cycle",
           ],
         },
@@ -516,6 +517,11 @@ const sidebars = {
               id: "developer-docs/security/web-app-development-security-best-practices",
             },
           ],
+        },
+        {
+            type: "doc",
+            label: "Formal verification",
+            id: "developer-docs/security/formal-verification",
         },
       ],
     },

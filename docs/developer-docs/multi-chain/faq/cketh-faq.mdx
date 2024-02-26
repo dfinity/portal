@@ -6,7 +6,19 @@ For questions from the POV of a user who wishes to know how to hold, send, recei
 
 ## How do I write a smart contract that uses ckETH?
 
-For detailed information and potential code examples, check out out the [ICP documentation](https://internetcomputer.org/docs), the [DFINITY forum](https://forum.dfinity.org), and the [ckETH minter documentation](https://github.com/dfinity/ic/blob/master/rs/ethereum/ckETH/minter/README.adoc).
+ckETH is the digital twin of ETH on the Internet Computer (ICP). It allows Ethereum holders to interact with the Internet Computer blockchain with significantly lower transaction fees.
+
+The process of acquiring ckETH involves depositing ETH to a specific function in the ckETH helper contract on Ethereum, which then triggers the ICP ckETH canister smart contract to mint the same amount of ckETH to the specified ICP principal or wallet address. This ckETH can then be used natively on the Internet Computer, and can be converted back to ETH at any time.
+
+## The best place to start to write contracts that handle ckETH are:
+
+* [High level technical summary](https://forum.dfinity.org/t/cketh-a-canister-issued-ether-twin-token-on-the-ic/22819)
+
+## Examples of using the dfx CLI to
+
+* [Deposit: ETH to ckETH](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/cketh.adoc#deposit-eth-to-cketh)
+
+* [Withdrawal: ckETH to ETH](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/cketh.adoc#withdrawal-cketh-to-eth)
 
 ## What is the purpose of ckETH? What specific problem does ckETH aim to solve within the ETH ecosystem?
 
