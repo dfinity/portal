@@ -269,7 +269,7 @@ A neuron can be configured to vote automatically by following the voting decisio
  Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics, such as governance or subnet management. For example, if the neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals, if the group votes to reject a subnet management proposal with at least half of the followees voting to reject, the neuron following the group will vote to reject the proposal.
 
 :::caution
-Your neuron will follow when there are enough votes to make a call (whether it is a ADOPT or REJECT). Your neuron will only cast a vote if more than half of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic:
+Your neuron will follow when there are enough votes to make a call (whether it is a ADOPT or REJECT). Your neuron will only cast a vote if **more than half** of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic:
 
 a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt
 
@@ -277,7 +277,7 @@ b. Your neuron only votes to adopt to reject a proposal if at least 5 out of the
 
 c. If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote.
 
-This should be considered when choosing to follow multiple neurons on a topic.
+This should be considered when choosing to follow multiple neurons on a topic and why following odd number of neurons may be better than even numbers.
 :::
 
 Additionally, neurons may also define a catch-all follow rule which is triggered for proposals with topics for which no other explicit follow rule has been defined.
