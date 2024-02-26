@@ -519,6 +519,11 @@ const sidebars = {
             },
           ],
         },
+        {
+            type: "doc",
+            label: "Formal verification",
+            id: "developer-docs/security/formal-verification",
+        },
       ],
     },
     {
