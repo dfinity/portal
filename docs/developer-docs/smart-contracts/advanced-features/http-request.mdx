@@ -62,6 +62,8 @@ public query func http_request(req: HttpRequest): async (HttpResponse) {
 <TabItem value="rust" label="Rust">
 
 ```rust
+type HeaderField = (String, String);
+
 struct HttpResponse {
     status_code: u16,
     headers: Vec<HeaderField>,
