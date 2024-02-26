@@ -32,11 +32,11 @@ In the following list, we first provide recommendations for centralized dapp con
     - Require approval by several individuals or parties to perform any canister controller operations.
     - Also require approval by several individuals or parties for any security sensitive changes at the application level that are restricted to privileged principals, such as admin operations including  e.g. permissions management, minting new tokens, removing NFTs for digital rights violations, etc.
     - A helpful tool to achieve either of the above two points is the [threshold canister](https://github.com/dfinity/threshold). Individuals should manage their key material using hardware security modules, such as e.g. [YubyHSM](https://www.yubico.com/ch/store/yubihsm-2-series/) and physically protect these e.g. using safes at different geographical locations. Some of HSMs support threshold signature schemes, which can help to further secure the setup. To increase transparency about the changes made to a dapp, consider using a tool like [LaunchTrail](https://github.com/spinner-cash/launchtrail).
-3. **Full decentralization using a DAO**: The dapp is controlled by a decentralized governance system such as the Internet Computer's [Service Nervous System (SNS)](../../developer-docs/integrations/sns), so that any security sensitive changes to the canisters are only executed if the SNS community approves them collectively through a proposal voting mechanism. If an SNS is used:
-   - Make sure voting power is distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves, see [here](../../developer-docs/integrations/sns/tokenomics/tokenomics-intro#voting-power-and-decentralization).
-   - Ensure all components of the dapp are under SNS control, including the canisters serving the web frontends, see [SNS asset canisters](../../developer-docs/integrations/sns/managing/sns-asset-canister).
-   - Consider the [SNS preparation checklist](../../developer-docs/integrations/sns/tokenomics/sns-checklist). Important points from a security perspective are e.g. [tokenomics](../../developer-docs/integrations/sns/tokenomics/sns-checklist#11-tokenomics-specification), [disclosing dependencies to off-chain components](../../developer-docs/integrations/sns/tokenomics/sns-checklist#13-disclosure-of-dependencies) and [performing security reviews](../../developer-docs/integrations/sns/tokenomics/sns-checklist#21-security-review).
-   - Rather than [self-deploying the SNS code](../../developer-docs/integrations/sns/introduction/dao-alternatives#self-deploy-the-sns-code) or [building your own DAO](../../developer-docs/integrations/sns/introduction/dao-alternatives#build-your-own-dao--use-other-dao-frameworks), consider using the official SNS on the SNS subnet, as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP.
+3. **Full decentralization using a DAO**: The dapp is controlled by a decentralized governance system such as the Internet Computer's [Service Nervous System (SNS)](/docs/current/developer-docs/daos/sns), so that any security sensitive changes to the canisters are only executed if the SNS community approves them collectively through a proposal voting mechanism. If an SNS is used:
+   - Make sure voting power is distributed over many, independent entities such that there is not one single or a few entities that can decide by themselves how the DAO evolves, see [here](/docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro#voting-power-and-decentralization).
+   - Ensure all components of the dapp are under SNS control, including the canisters serving the web frontends, see [SNS asset canisters](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister).
+   - Consider the [SNS preparation checklist](/docs/current/developer-docs/daos/sns/tokenomics/sns-checklist). Important points from a security perspective are e.g. [tokenomics](/docs/current/developer-docs/daos/sns/tokenomics/sns-checklist#11-tokenomics-specification), [disclosing dependencies to off-chain components](/docs/current/developer-docs/daos/sns/tokenomics/sns-checklist#13-disclosure-of-dependencies) and [performing security reviews](/docs/current/developer-docs/daos/sns/tokenomics/sns-checklist#21-security-review).
+   - Rather than [self-deploying the SNS code](/docs/current/developer-docs/daos/sns/introduction/dao-alternatives#self-deploy-the-sns-code) or [building your own DAO](/docs/current/developer-docs/daos/sns/introduction/dao-alternatives#build-your-own-dao--use-other-dao-frameworks), consider using the official SNS on the SNS subnet, as this guarantees that the SNS is running an NNS-blessed version and maintained as part of ICP.
    - See also [Verification and trust in a (launched) SNS](https://wiki.internetcomputer.org/wiki/Verification_and_trust_in_a_(launched)_SNS) and [SNS decentralization swap trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_swap_trust).
 
 An alternative to DAO control (3. above) would be to create an immutable canister smart contract by removing the canister controller completely. However, note that this implies that the canister cannot be upgraded, which may have severe implications in case e.g. a bug were found. The option to use a decentralized governance system and thus being able to upgrade smart contracts is a big advantage of the Internet Computer ecosystem compared to other blockchains.
@@ -502,7 +502,7 @@ By default, the data stored inside your canister is unencrypted. Therefore if yo
 
 Make sure you don’t store sensitive data inside your canister.
 
-[More information.](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#compromised-replicas)
+[More information.](/docs/current/references/https-outcalls-how-it-works#compromised-replicas)
 
 [Data confidentiality security recommendations.](general-security-best-practices#data-confidentiality-on-the-internet-computer)
 
@@ -518,7 +518,7 @@ Most web servers implement some sort of rate limiting; this is a mechanism used 
 
 You should consider such rate limits when designing and implementing your canisters. Rate limits are enforced using different time granularities, e.g., seconds or minutes. For second-granularity enforcement, make sure that the simultaneous requests by all subnet replicas do not violate the quota. Violations may lead to temporary or permanent bans.
 
-[More information.](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#rate-limiting-by-servers)
+[More information.](/docs/current/references/https-outcalls-how-it-works#rate-limiting-by-servers)
 
 ### Only make HTTP outcall requests to idempotent endpoints
 
@@ -532,7 +532,7 @@ Make sure the endpoints, called by an HTTP outcall, are idempotent, i.e. the que
 
 Some servers support the use of idempotency keys. These keys are random unique strings submitted in the HTTP request as headers. If used with the HTTP outcalls feature, all requests sent by each (honest) replica will contain the same idempotency key. This allows the server to recognize duplicated requests (i.e requests with the same idempotency key), handle just one and modify the server state only once. Note that this is a feature that must be supported by the server.
 
-[More information.](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#post-requests-must-be-idempotent)
+[More information.](/docs/current/references/https-outcalls-how-it-works#post-requests-must-be-idempotent)
 
 ### Ensure HTTP responses are identical
 
@@ -544,17 +544,17 @@ When replicas of a subnet receive HTTP responses, these responses must be identi
 
 Make sure the HTTP responses sent to the consensus layer are identical.
 
-Ideally the HTTP responses returned by the queried endpoint would always be the same. However, most of the time this is not possible to control and the responses include random data (e.g the response includes timestamps, cookie values or some sort of identifiers). In those cases make sure to use the [transformation functions](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#transformation-function) to guarantee that the responses received by each replica are identical by removing any random data or extracting only the relevant data.
+Ideally the HTTP responses returned by the queried endpoint would always be the same. However, most of the time this is not possible to control and the responses include random data (e.g the response includes timestamps, cookie values or some sort of identifiers). In those cases make sure to use the [transformation functions](/docs/current/references/https-outcalls-how-it-works#transformation-function) to guarantee that the responses received by each replica are identical by removing any random data or extracting only the relevant data.
 
 This applies to the HTTP response body and headers. Make sure to consider both when applying the transformation functions. Response headers are often overlooked and lead to failure because of failed consensus.
 
-[More information.](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#responses-must-be-similar)
+[More information.](/docs/current/references/https-outcalls-how-it-works#responses-must-be-similar)
 
 ### Be aware of HTTP request and response sizes
 
 #### Security concern
 
-The [pricing](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#pricing) of HTTPS outcalls is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
+The [pricing](/docs/current/references/https-outcalls-how-it-works#pricing) of HTTPS outcalls is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
 
 #### Recommendation
 
@@ -564,7 +564,7 @@ When making an HTTP outcall it is possible – and highly recommended – to def
 
 Finally, be aware that users may incur cycles costs for HTTP outcalls in case these calls can be triggered by user actions.
 
-[More information.](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
+[More information.](/docs/current/references/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
 
 ### Perform input validation in HTTP outcalls
 
