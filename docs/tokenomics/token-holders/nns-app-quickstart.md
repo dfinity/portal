@@ -273,7 +273,7 @@ Your neuron will follow when there are enough votes to make a call (whether it i
 
 a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt
 
-b. Your neuron only votes to adopt to reject a proposal if at least 5 out of the 10 reject the proposal
+b. Your neuron only votes to reject a proposal if at least 5 out of the 10 reject the proposal
 
 c. If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote
 
