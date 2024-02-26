@@ -275,7 +275,7 @@ a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to a
 
 b. Your neuron only votes to reject a proposal if at least 5 out of the 10 reject the proposal
 
-c. If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote
+c. If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote.
 
 This should be considered when choosing to follow multiple neurons on a topic and why following an odd number of neurons may be better than even numbers.
 :::
