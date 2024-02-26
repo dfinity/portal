@@ -75,7 +75,7 @@ ckBTC is different from regular Bitcoin transactions in several ways:
 - [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e#99f9)
 - [Why Bitcoin needs smart contracts](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
 - [Bitcoin + ICP](https://internetcomputer.org/bitcoin-integration)
-- [What is ckBTC?](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin#what-is-ckBTC)
+- [What is ckBTC?](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin#what-is-ckBTC)
 
 ## Can I use ckBTC just like I would use Bitcoin?
 
@@ -125,7 +125,7 @@ To integrate ckBTC into your existing applications or platforms, you can follow 
 
 1. [ckBTC developer documentation page](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckBTC): This page provides detailed information about ckBTC, including its functionality and how it works.
 
-2. [Bitcoin integration GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckBTC/minter): This repository contains the code for the ckBTC minter, which is responsible for minting and burning ckBTC.
+2. [Bitcoin integration GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter): This repository contains the code for the ckBTC minter, which is responsible for minting and burning ckBTC.
 
 3. [Local development workflow](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/local-development): This page provides a guide on how to set up a local development environment for Bitcoin integration.
 
@@ -139,7 +139,7 @@ If you need further assistance, you can also ask questions in the [Internet Comp
 
 ## What are the technical requirements for developers to work with ckBTC?
 
-For more specific technical requirements, developers may want to refer to the [ckBTC API reference](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckBTC-reference) and the [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckBTC/minter) for ckBTC. They might also find it helpful to follow the [developer journey for ckBTC and Bitcoin integration](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin) and to look at examples of [deploying a Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) and [creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+For more specific technical requirements, developers may want to refer to the [ckBTC API reference](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc-reference) and the [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter) for ckBTC. They might also find it helpful to follow the [developer journey for ckBTC and Bitcoin integration](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin) and to look at examples of [deploying a Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) and [creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
 
 ## How does ckBTC ensure the security of the funds it handles?
 

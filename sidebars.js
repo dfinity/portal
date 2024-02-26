@@ -184,6 +184,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
             {
+              type: "doc",
+              label: "Serving an HTTP request",
+              id: "developer-docs/smart-contracts/advanced-features/http-request",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
