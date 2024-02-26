@@ -391,6 +391,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider",
               ],
             },
+            "developer-docs/developer-tools/cli-tools/ic-admin",
           ],
         },
         {
