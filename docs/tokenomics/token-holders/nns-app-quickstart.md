@@ -271,7 +271,7 @@ Following is done on the basis of topics, such that a neuron can choose to follo
 :::caution
 Your neuron will follow when there are enough votes to make a call (whether it is a ADOPT or REJECT). Your neuron will only cast a vote if **more than half** of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic:
 
-a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt
+a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt.
 
 b. Your neuron only votes to reject a proposal if at least 5 out of the 10 reject the proposal
 
