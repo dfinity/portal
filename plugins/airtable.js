@@ -157,7 +157,7 @@ const airtablePlugin = async function () {
       }
 
       // from oldest to newest
-      records.sort((a, b) => a.startDate.localeCompare(b.startDate));
+      records.sort((a, b) => b.startDate.localeCompare(a.startDate));
 
       // enumerate images in ../static/img/news, with pattern event-*.webp
       const eventImageUrls = fs
