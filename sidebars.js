@@ -11,31 +11,25 @@ const sidebars = {
           type: "doc",
           label: "Overview of ICP",
           id: "developer-docs/getting-started/overview-of-icp",
-          id: "developer-docs/getting-started/overview-of-icp",
         },
         {
           type: "doc",
           label: "Development workflow",
-          id: "developer-docs/getting-started/development-workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
         {
           type: "doc",
           label: "Hello, world!",
           id: "developer-docs/getting-started/hello-world",
-          id: "developer-docs/getting-started/hello-world",
         },
         {
           type: "doc",
-          label: "Installing tools",
-          id: "developer-docs/getting-started/install/index",
           label: "Installing tools",
           id: "developer-docs/getting-started/install/index",
         },
         {
           type: "doc",
           label: "Developer accounts",
-          id: "developer-docs/getting-started/accounts",
           id: "developer-docs/getting-started/accounts",
         },
         {
@@ -45,16 +39,10 @@ const sidebars = {
             "developer-docs/getting-started/cycles/cycles-faucet",
             "developer-docs/getting-started/cycles/cycles-wallet",
             "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
-            "developer-docs/getting-started/cycles/cycles-faucet",
-            "developer-docs/getting-started/cycles/cycles-wallet",
-            "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
-        },
         },
         {
           type: "doc",
-          label: "Default project template",
-          id: "developer-docs/getting-started/default-template",
           label: "Default project template",
           id: "developer-docs/getting-started/default-template",
         },
@@ -66,26 +54,14 @@ const sidebars = {
               type: "doc",
               label: "Local deployment",
               id: "developer-docs/getting-started/deploy/local",
-              id: "developer-docs/getting-started/deploy/local",
             },
             {
               type: "doc",
               label: "Mainnet deployment",
               id: "developer-docs/getting-started/deploy/mainnet",
-              id: "developer-docs/getting-started/deploy/mainnet",
             },
           ],
         },
-        {
-          type: "category",
-          label: "Quickstart guides",
-          items: [
-            {
-              type: "doc",
-              label: "Quickstart for React developers",
-              id: "developer-docs/getting-started/quickstart/react-quickstart",
-            },
-          ],
         {
           type: "category",
           label: "Quickstart guides",
@@ -102,14 +78,13 @@ const sidebars = {
     {
       type: "category",
       label: "Smart contracts",
-      label: "Smart contracts",
       items: [
         {
           type: "category",
           label: "Overview",
-          label: "Overview",
           items: [
             "developer-docs/smart-contracts/overview/introduction",
+            "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/overview/development-cycle",
           ],
         },
@@ -211,6 +186,21 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
             {
+              type: "doc",
+              label: "Serving an HTTP request",
+              id: "developer-docs/smart-contracts/advanced-features/http-request",
+            },
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
+                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/integrations/https-outcalls/https-outcalls-get",
+                "developer-docs/integrations/https-outcalls/https-outcalls-post",
+              ],
+            },
+            {
               type: "category",
               label: "On-chain signatures: Threshold ECDSA",
               items: [
@@ -226,7 +216,6 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
             },
-            "developer-docs/smart-contracts/advanced-features/making-http-requests",
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
@@ -340,37 +329,7 @@ const sidebars = {
               items: [
                 "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent",
                 "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance",
                 {
-                  type: "category",
-                  label: "quill ckbtc",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc",
-                  },
-                  items: [
-                    "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance",
-                    "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc",
-                    "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status",
-                    "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-transfer",
-                    "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-update-balance",
-                    "developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address",
-                  ],
-                },
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-claim-neurons",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-neuron-info",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-proposal-info",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-neurons",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-proposals",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-manage",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-public-ids",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-qr-code",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-replace-node-provider-id",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-scanner-qr-code",
-                "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-send",
                   type: "category",
                   label: "quill ckbtc",
                   link: {
@@ -402,10 +361,8 @@ const sidebars = {
                 {
                   type: "category",
                   label: "quill sns",
-                  label: "quill sns",
                   link: {
                     type: "doc",
-                    id: "developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns",
                     id: "developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns",
                   },
                   items: [
@@ -434,6 +391,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider",
               ],
             },
+            "developer-docs/developer-tools/cli-tools/ic-admin",
           ],
         },
         {
@@ -455,23 +413,11 @@ const sidebars = {
         {
           type: "category",
           label: "On-chain libraries",
-          label: "On-chain libraries",
           items: [
             {
               type: "doc",
               id: "developer-docs/developer-tools/on-chain/cdks",
               },
-              id: "developer-docs/developer-tools/on-chain/cdks",
-              },
-          ],
-        },
-        {
-          type: "category",
-          label: "IDE",
-          items: [
-            "developer-docs/developer-tools/ide/vs-code",
-            "developer-docs/developer-tools/ide/playground",
-            "developer-docs/developer-tools/ide/gitpod",
           ],
         },
         {
@@ -494,7 +440,6 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
-            "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
             "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
@@ -513,24 +458,6 @@ const sidebars = {
 	      "developer-docs/web-apps/independently-verifying-ic-signatures",
         {
           type: "category",
-          label: "On-chain backend",
-          items: [
-            "developer-docs/web-apps/on-chain-backend/handling-get-post-requests",
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              items: [
-                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-get",
-                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-post",
-              ],
-            },
-          ],
-        },
-        "developer-docs/web-apps/design-dapps",
-	      "developer-docs/web-apps/independently-verifying-ic-signatures",
-        {
-          type: "category",
           label: "User sign-up and login",
           items: [
             {
@@ -541,35 +468,10 @@ const sidebars = {
                 "developer-docs/web-apps/user-login/internet-identity/creating-ii",
                 "developer-docs/web-apps/user-login/internet-identity/integrate-identity",
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
-                "developer-docs/web-apps/user-login/internet-identity/overview",
-                "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-                "developer-docs/web-apps/user-login/internet-identity/integrate-identity",
-                "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
           ],
         },
-	{
-          type: "category",
-          label: "Using HTTP certification",
-          items: [
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
-              label: "Custom HTTP canisters",
-            },
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
-              label: "Serving JSON over HTTP",
-            },
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
-              label: "Serving static assets over HTTP",
-            }
-          ]
-        }
 	{
           type: "category",
           label: "Using HTTP certification",
@@ -618,6 +520,11 @@ const sidebars = {
             },
           ],
         },
+        {
+            type: "doc",
+            label: "Formal verification",
+            id: "developer-docs/security/formal-verification",
+        },
       ],
     },
     {
@@ -626,9 +533,6 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Overview",
-          id: "developer-docs/integrations/ledger/introduction_and_overview",
-        },
           label: "Overview",
           id: "developer-docs/integrations/ledger/introduction_and_overview",
         },
@@ -649,8 +553,6 @@ const sidebars = {
           items: [
             "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
             "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
-            "developer-docs/integrations/icrc-1/icrc1-index-setup",
-          ],
             "developer-docs/integrations/icrc-1/icrc1-index-setup",
           ],
         },
@@ -681,61 +583,14 @@ const sidebars = {
             "tokenomics/token-holders/custody-options-intro",
             "tokenomics/token-holders/self-custody-quickstart",
           ],
-            "tokenomics/token-holders/self-custody-quickstart",
-          ],
         },
         {
           type: "category",
           label: "NFTs",
           items: ["developer-docs/use-cases/considerations-for-nft-devs"],
-          items: ["developer-docs/use-cases/considerations-for-nft-devs"],
         },
       ],
     },
-    {
-      type: "category",
-      label: "Multi-chain",
-      items: [
-        {
-          type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/integrations/multi-chain/user-faq",
-            "developer-docs/integrations/multi-chain/ckbtc-faq",
-            "developer-docs/integrations/multi-chain/cketh-faq",
-            "developer-docs/integrations/multi-chain/ckerc20-faq",
-            "developer-docs/integrations/multi-chain/signatures-faq",
-          ],
-        },
-        {
-          type: "category",
-          label: "Bitcoin",
-          items: [
-            "developer-docs/integrations/bitcoin/index",
-            "developer-docs/integrations/bitcoin/ckbtc",
-            {
-              type: "category",
-              label: "Advanced",
-              items: [
-                "developer-docs/integrations/bitcoin/read-state",
-                "developer-docs/integrations/bitcoin/submit-transactions",
-                "developer-docs/integrations/bitcoin/local-development",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Ethereum",
-          items: [
-            "developer-docs/integrations/ethereum/overview",
-            "developer-docs/integrations/ethereum/evm-rpc",
-            "developer-docs/integrations/ethereum/siwe",
-          ],
-        },
-      ],
-    },
-
     {
       type: "category",
       label: "Multi-chain",
@@ -964,44 +819,11 @@ const sidebars = {
           ],
         },
       ],
-      ],
     },
     {
       type: "category",
       label: "Bootcamps",
       items: [
-        {
-          type: "category",
-          label: "Developer journey",
-          link: {
-            type: "doc",
-            id: "tutorials/developer-journey/index",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Level 0: Pre-flight operations",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-0/index",
-              },
-              items: [
-                "tutorials/developer-journey/level-0/ic-overview",
-                "tutorials/developer-journey/level-0/ic-terms",
-                "tutorials/developer-journey/level-0/dev-env",
-                "tutorials/developer-journey/level-0/intro-canisters",
-                "tutorials/developer-journey/level-0/intro-languages",
-                "tutorials/developer-journey/level-0/intro-dfx",
-              ],
-            },
-            {
-              type: "category",
-              label: "Level 1: Space cadet",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-1/index",
-              },
-              items: [
         {
           type: "category",
           label: "Developer journey",
@@ -1129,93 +951,6 @@ const sidebars = {
           ],
         },
       ],
-            {
-              type: "category",
-              label: "Level 2: Space explorer",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-2/index",
-              },
-              items: [
-                "tutorials/developer-journey/level-2/2.1-storage-persistence",
-                "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
-                "tutorials/developer-journey/level-2/2.3-third-party-canisters",
-                "tutorials/developer-journey/level-2/2.4-intro-candid",
-                "tutorials/developer-journey/level-2/2.5-unit-testing",
-                "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
-              ],
-            },
-            {
-              type: "category",
-              label: "Level 3: Space engineer",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-3/index",
-              },
-              items: [
-                "tutorials/developer-journey/level-3/3.1-package-managers",
-                "tutorials/developer-journey/level-3/3.2-https-outcalls",
-                "tutorials/developer-journey/level-3/3.3-certified-data",
-                "tutorials/developer-journey/level-3/3.4-intro-to-agents",
-                "tutorials/developer-journey/level-3/3.5-identities-and-auth",
-                "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
-              ],
-            },
-            {
-              type: "category",
-              label: "Level 4: Space pilot",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-4/index",
-              },
-              items: [
-                "tutorials/developer-journey/level-4/4.1-icp-ledger",
-                "tutorials/developer-journey/level-4/4.2-icrc-tokens",
-                "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
-                "tutorials/developer-journey/level-4/4.4-nns-governance",
-                "tutorials/developer-journey/level-4/4.5-using-quill",
-                "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
-              ],
-            },
-            {
-              type: "category",
-              label: "Level 5: Internet Computer astronaut",
-              link: {
-                type: "doc",
-                id: "tutorials/developer-journey/level-5/index",
-              },
-              items: [
-                "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
-                "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
-                "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
-                "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
-                "tutorials/developer-journey/level-5/5.5-auction-tutorial",
-                "tutorials/developer-journey/level-5/5.6-next-steps",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Hackathon prep course",
-          link: {
-            type: "doc",
-            id: "tutorials/hackathon-prep-course/index",
-          },
-          items: [
-            "tutorials/hackathon-prep-course/what-is-icp",
-            "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
-            "tutorials/hackathon-prep-course/exploring-the-backend",
-            "tutorials/hackathon-prep-course/exploring-the-frontend",
-            "tutorials/hackathon-prep-course/integrating-with-tokens",
-            "tutorials/hackathon-prep-course/authentication",
-            "tutorials/hackathon-prep-course/obtaining-cycles",
-            "tutorials/hackathon-prep-course/managing-canisters",
-            "tutorials/hackathon-prep-course/sample-starter-projects",
-            "tutorials/hackathon-prep-course/resources",
-          ],
-        },
-      ],
     },
     {
       type: "category",
@@ -1243,11 +978,6 @@ const sidebars = {
             "references/id-encoding-spec",
           ],
         },
-        {
-          type: "doc",
-          label: "Message execution properties",
-          id: "references/message-execution-properties",
-	      },
         {
           type: "doc",
           label: "Message execution properties",
@@ -1283,7 +1013,6 @@ const sidebars = {
               type: "doc",
               label: "ICRC-1 token standard",
               id: "developer-docs/integrations/icrc-1/index",
-              id: "developer-docs/integrations/icrc-1/index",
             },
             {
               type: "doc",
@@ -1295,7 +1024,6 @@ const sidebars = {
               label: "Ledger canister",
               id: "references/ledger",
             },
-          ],
           ],
         },
         {
@@ -1336,7 +1064,6 @@ const sidebars = {
         "developer-docs/backend/rust/access-control",
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
-        "developer-docs/backend/rust/generating-candid",
         "developer-docs/backend/rust/generating-candid",
       ],
     },
@@ -1469,27 +1196,11 @@ const sidebars = {
     },
   ],
   solidity: [
-  solidity: [
     {
       type: "doc",
       label: "Solidity",
       id: "developer-docs/backend/solidity/index",
     },
-  ],
-  python: [
-    {
-      type: "doc",
-      label: "Python",
-      id: "developer-docs/backend/python/index",
-    },
-  ],
-  typescript: [
-    {
-      type: "doc",
-      label: "TypeScript",
-      id: "developer-docs/backend/typescript/index",
-    },
-  ],
   ],
   python: [
     {
