@@ -8,7 +8,7 @@ HTTPS outcalls enable a wide range of applications. For example, oracle services
 
 ## How it works
 
-For detailed information on how it works, please refer to the [HTTPS outcalls - How it works](./https-outcalls-how-it-works.md).
+For detailed information on how it works, please refer to the [HTTPS outcalls - How it works](/docs/current/references/https-outcalls-how-it-works).
 
 ## How to make a request
 
