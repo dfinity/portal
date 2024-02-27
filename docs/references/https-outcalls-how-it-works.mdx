@@ -18,15 +18,15 @@ The canister HTTPS outcalls feature is implemented as part of the Internet Compu
 
 - #### Step 1: A canister makes an outgoing HTTP request by calling the management canister API using the `http_request` method.
 - #### Step 2: The request is stored temporarily in the replicated state of the subnet.
-- #### Step 3: Periodically (each round) an **adapter** at the networking layer in each replica fetches the pending HTTP outcalls from replicated state. 
+- #### Step 3: Periodically (each round) an **adapter** at the networking layer in each replica fetches the pending HTTP outcalls from replicated state.
 (In fact, a &lsquo;shim&rsquo; layer of the adapter that is inside the replica process does so as the adapter itself is sandboxed into a separate OS-level process for security reasons.)
 - #### Step 4: The adapter on each replica executes the HTTP request by sending it to the target server.
-- #### Step 5: The corresponding HTTP response from the server is received by the adapter on each replica of the subnet and provided to a component in the replica process. 
+- #### Step 5: The corresponding HTTP response from the server is received by the adapter on each replica of the subnet and provided to a component in the replica process.
 The adapter limits the network response size to `max_response_bytes` which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response as it affects the price of the request: The price increases with the size `max_response_bytes` and the actual response size is not considered, only the maximum.
-- #### Step 6: An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response. 
+- #### Step 6: An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response.
 This is done by a component within the replica process.
 - #### Step 7: The transformed response is handed over to consensus on each replica.
-- #### Step 8: ICP consensus agrees on a response if at least $2/3$ (to be more precise, $2f+1$, where $f$ is the number of faulty replicas tolerated by the protocol) of the replicas have the same response for the request as input. 
+- #### Step 8: ICP consensus agrees on a response if at least $2/3$ (to be more precise, $2f+1$, where $f$ is the number of faulty replicas tolerated by the protocol) of the replicas have the same response for the request as input.
 In this case, consensus provides this response back to the management canister API, or an error if no consensus can be reached or in case of other problems.
 - #### Step 9: The management canister API provides the response or error back to the calling canister.
 
@@ -61,7 +61,7 @@ Overall, the canister HTTP outcalls feature allows us to achieve what oracles or
 
 ## Benefits for developers
 
-For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to the Internet Computer Protocol that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls. 
+For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to the Internet Computer Protocol that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls.
 
 The cost of the HTTP outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost, thus the Internet Computer has a clear economic advantage to use HTTP calls. Freed from making all those non-trivial trust decisions, a developer can focus on their business logic and simply make the HTTP call they need (and write a corresponding transform function), which is more natural.
 
@@ -128,25 +128,25 @@ Next, this guide provides important information for engineers who want to use ca
 
 The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle the implementation of a new canister HTTP outcall type.
 - #### Step 1:&ldquo;Manually,&rdquo; e.g., using the `curl` tool, make the same HTTP request of interest twice within a short time frame (1-2 seconds) to emulate what would be done by the replicas of a subnet, just with a smaller $n$.
-- #### Step 2: Diff the two responses to find all the items that differ in the two requests. 
+- #### Step 2: Diff the two responses to find all the items that differ in the two requests.
 Both the body and the headers are important to be considered here. Alternatively, identify the core information of interest and how it can be extracted as the response.
 - #### Step 3: Implement a **transformation function** that transforms responses such that they are equal on each replica based on the observed diff of the responses or the intended response.
-- #### Step 4: Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it. 
+- #### Step 4: Determine the maximum response size of the server's response for this type of request to populate the `max_response_bytes` parameter with it.
 This often works well for API calls and is important to not overcharge the requesting canister in terms of cycles. The `HEAD` request type can be used to do this if responses change dynamically in response size considerably. If the `max_response_bytes` parameters is not set, the default response size of 2MB is charged, which is extremely expensive.
-- #### Step 5: Implement the request and try it out in the local SDK environment. 
+- #### Step 5: Implement the request and try it out in the local SDK environment.
 However, note that the behaviour of the local replica environment does not reflect that of the mainnet, as there is only one replica in the local environment and $n$, e.g., $n=13$, replicas on an ICP subnet.
 
 :::info
 Do not forget to consider response headers when identifying the variable parts of your response because headers sometimes contain variable items such as timestamps which may prevent the responses from passing through consensus.
 :::
 
-:::caution 
+:::caution
 If you do not set the optional `max_response_bytes` parameter, a response size of 2MB will be assumed and charged, which is *extremely expensive*. It is recommended to always set the parameter to a reasonable upper bound of the expected network response size to reduce cycles cost of the call. If you are unsure of the response size to be expected, you can make a HEAD request upfront to determine the response size.
 :::
 
 ### Transformation function
 
-The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s received by different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on the response as part of the Internet Computer Protcol's consensus. The transformation function must be provided by the canister programmer and is exposed by the canister as a query. An arbitrary number of transformation functions can be defined by a canister. When making an `http_request` call to the management canister, a transformation function can be optionally provided as input. 
+The purpose of the transformation function is to transform each response $r_i$ received by a replica $i$, where the $r_i$ s received by different replicas may be different. The transformation function transforms a response $r_i$ to a transformed response $r'_i$ with the intention that all $r'_i$ s of honest replicas be equal in order to be able to agree on the response as part of the Internet Computer Protcol's consensus. The transformation function must be provided by the canister programmer and is exposed by the canister as a query. An arbitrary number of transformation functions can be defined by a canister. When making an `http_request` call to the management canister, a transformation function can be optionally provided as input.
 
 Depending on the purpose of the HTTP request being made, there are different approaches to writing the transformation function:
 * **Extract only the information item(s) of interest:** this can, e.g., be a list of pairs each comprising a date and an asset price to be forwarded to the canister, or a single asset price. This approach makes sense if the full HTTP response is not required in the canister, but only specific information items are.
@@ -174,14 +174,14 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-The cycles cost for a HTTP outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a HTTP outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. The current prices can be found [here](../../gas-cost.md).
+The cycles cost for a HTTP outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a HTTP outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. The current prices can be found [here](/docs/current/developer-docs/gas-cost.md).
 
-**Formula:** 
+**Formula:**
 ```
 header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
 request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
 http_outcall_cost = per_call_cost + per_request_byte_cost * request_size + per_response_byte_cost * max_response_size
-scaling_factor = subnet_size / 13 
+scaling_factor = subnet_size / 13
 total_cost = scaling_factor * http_outcall_cost
 ```
 
