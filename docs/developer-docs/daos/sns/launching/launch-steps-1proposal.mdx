@@ -2,11 +2,11 @@
 
 ## Overview
 
-At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary-1proposal.mdx).
+At a high level, the stages for launching an SNS in production are explained [here](../launching/launch-summary-1proposal.md).
 
 This article lists the technical commands and steps a developer needs to complete the stages for an SNS launch.
 
-At a low level, the [SNS local testing repository](../testing/testing-locally.mdx) guides you
+At a low level, the [SNS local testing repository](../testing/testing-locally.md) guides you
 through the same, with the difference that the commands here target the canisters on the mainnet.
 
 ## Prerequisites:
@@ -51,7 +51,7 @@ dfx sns prepare-canisters add-nns-root $CANISTER_ID
 ```
 
 Handing over the dapp's canisters might require additional actions; for example, removing any special permissions that the dapp's developers may have had prior to the decentralization effort.
-One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister) documentation for more details.
+One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) documentation for more details.
 
 ```bash
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
@@ -93,7 +93,7 @@ of an adopted proposal in Stage 4.
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.mdx)).
+At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.md)).
 
 ### 8. (Automated) SNS swap starts.
 
