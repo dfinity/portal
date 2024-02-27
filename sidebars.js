@@ -1040,7 +1040,7 @@ const sidebars = {
           items: [
             "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
             "developer-docs/integrations/bitcoin/ckbtc-reference",
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
+            "references/https-outcalls-how-it-works",
             "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
             "developer-docs/integrations/vetkeys/technology-overview",
           ],
