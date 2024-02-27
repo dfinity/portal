@@ -192,16 +192,6 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "HTTPS outcalls",
-              items: [
-                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                "developer-docs/integrations/https-outcalls/https-outcalls-post",
-              ],
-            },
-            {
-              type: "category",
               label: "On-chain signatures: Threshold ECDSA",
               items: [
                 "developer-docs/smart-contracts/encryption/t-ecdsa",
