@@ -40,7 +40,7 @@ const redirects = `
   /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/
-  /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works
+  /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/integrations/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
@@ -185,8 +185,8 @@ const redirects = `
   /docs/current/concepts/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/concepts /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
-  /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use
+  /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/security /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/integrations/index /docs/current/developer-docs/getting-started/overview-of-icp
