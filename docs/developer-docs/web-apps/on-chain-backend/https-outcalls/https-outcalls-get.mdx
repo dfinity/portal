@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
-The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token. 
+The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token.
 
 
 **The main intent of this canister is to show developers how to make idempotent `GET` requests.**
@@ -28,7 +28,7 @@ The API response looks like this:
   [
      [
          1682978460, <-- start timestamp
-         5.714, <-- lowest price during time range 
+         5.714, <-- lowest price during time range
          5.718, <-- highest price during range
          5.714, <-- price at open
          5.714, <-- price at close
@@ -37,7 +37,7 @@ The API response looks like this:
 ]
 ```
 
-## Code structure 
+## Code structure
 
 Before you dive in, here is the structure of the code you will touch:
 
@@ -76,7 +76,7 @@ actor {
   };
 
   //7. CREATE TRANSFORM FUNCTION
-  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload { 
+  public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
     ////code for the transform function
   }
 
@@ -114,13 +114,13 @@ async fn foo() {
     };
 
     //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //Note: in Rust, `http_request()` already sends the cycles needed
     //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
-        
+
         //4. DECODE AND RETURN THE RESPONSE
         Ok((response,)) => {
-            //Ok case 
+            //Ok case
         }
         Err((r, m)) => {
             //error case
@@ -128,7 +128,7 @@ async fn foo() {
     }
 }
 
-// 4. CREATE TRANSFORM FUNCTION 
+// 4. CREATE TRANSFORM FUNCTION
 #[query]
 fn transform(raw: TransformArgs) -> HttpResponse { }
 ```
@@ -188,20 +188,20 @@ import Types "Types";
 actor {
 
 //This method sends a GET request to a URL with a free API you can test.
-//This method returns Coinbase data on the exchange rate between USD and ICP 
+//This method returns Coinbase data on the exchange rate between USD and ICP
 //for a certain day.
 //The API response looks like this:
 //  [
 //     [
 //         1682978460, <-- start timestamp
-//         5.714, <-- lowest price during time range 
+//         5.714, <-- lowest price during time range
 //         5.718, <-- highest price during range
 //         5.714, <-- price at open
 //         5.714, <-- price at close
 //         243.5678 <-- volume of ICP traded
 //     ],
 // ]
-  
+
   public func get_icp_usd_exchange() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
@@ -244,31 +244,31 @@ actor {
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
     //The management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
-    
+
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     //"Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     Cycles.add(20_949_972_000);
-    
+
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, you can just call the management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
-    
+
     //5. DECODE THE RESPONSE
 
-    //As per the type declarations in `src/Types.mo`, the BODY in the HTTP response 
+    //As per the type declarations in `src/Types.mo`, the BODY in the HTTP response
     //comes back as [Nat8s] (e.g. [2, 5, 12, 11, 23]). Type signature:
-    
+
     //public type HttpResponsePayload = {
     //     status : Nat;
     //     headers : [HttpHeader];
     //     body : [Nat8];
     // };
 
-    //You need to decode that [Nat8] array that is the body into readable text. 
+    //You need to decode that [Nat8] array that is the body into readable text.
     //To do this, you:
     //  1. Convert the [Nat8] into a Blob
-    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
+    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional
     //  3. You use a switch to explicitly call out both cases of decoding the Blob into ?Text
     let response_body: Blob = Blob.fromArray(http_response.body);
     let decoded_text: Text = switch (Text.decodeUtf8(response_body)) {
@@ -485,7 +485,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
 - The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node subnet in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
-- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
+- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](/docs/current/references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 </TabItem>
 </Tabs>
@@ -503,7 +503,7 @@ Open the `src/send_http_get_motoko_backend/Types.mo` file in a text editor and r
 module Types {
 
   public type Timestamp = Nat64;
-  
+
   //1. Type that describes the Request arguments for an HTTPS outcall
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     public type HttpRequestArgs = {
@@ -533,14 +533,14 @@ module Types {
     };
 
     //2. HTTPS outcalls have an optional "transform" key. These two types help describe it.
-    //"The transform function may, for example, transform the body in any way, add or remove headers, 
+    //"The transform function may, for example, transform the body in any way, add or remove headers,
     //modify headers, etc. "
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
-    
+
 
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
-    //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a `GET` request, you declare the type for completeness, but 
+    //"If provided, the calling canister itself must export this function."
+    //In this minimal example for a `GET` request, you declare the type for completeness, but
     //you do not use this function. You will pass "null" to the HTTP request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;

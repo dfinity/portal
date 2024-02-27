@@ -502,7 +502,7 @@ By default, the data stored inside your canister is unencrypted. Therefore if yo
 
 Make sure you don’t store sensitive data inside your canister.
 
-[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#compromised-replicas)
+[More information.](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#compromised-replicas)
 
 [Data confidentiality security recommendations.](general-security-best-practices#data-confidentiality-on-the-internet-computer)
 
@@ -518,7 +518,7 @@ Most web servers implement some sort of rate limiting; this is a mechanism used 
 
 You should consider such rate limits when designing and implementing your canisters. Rate limits are enforced using different time granularities, e.g., seconds or minutes. For second-granularity enforcement, make sure that the simultaneous requests by all subnet replicas do not violate the quota. Violations may lead to temporary or permanent bans.
 
-[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#rate-limiting-by-servers)
+[More information.](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#rate-limiting-by-servers)
 
 ### Only make HTTP outcall requests to idempotent endpoints
 
@@ -532,7 +532,7 @@ Make sure the endpoints, called by an HTTP outcall, are idempotent, i.e. the que
 
 Some servers support the use of idempotency keys. These keys are random unique strings submitted in the HTTP request as headers. If used with the HTTP outcalls feature, all requests sent by each (honest) replica will contain the same idempotency key. This allows the server to recognize duplicated requests (i.e requests with the same idempotency key), handle just one and modify the server state only once. Note that this is a feature that must be supported by the server.
 
-[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#post-requests-must-be-idempotent)
+[More information.](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#post-requests-must-be-idempotent)
 
 ### Ensure HTTP responses are identical
 
@@ -544,17 +544,17 @@ When replicas of a subnet receive HTTP responses, these responses must be identi
 
 Make sure the HTTP responses sent to the consensus layer are identical.
 
-Ideally the HTTP responses returned by the queried endpoint would always be the same. However, most of the time this is not possible to control and the responses include random data (e.g the response includes timestamps, cookie values or some sort of identifiers). In those cases make sure to use the [transformation functions](../integrations/https-outcalls/https-outcalls-how-it-works#transformation-function) to guarantee that the responses received by each replica are identical by removing any random data or extracting only the relevant data.
+Ideally the HTTP responses returned by the queried endpoint would always be the same. However, most of the time this is not possible to control and the responses include random data (e.g the response includes timestamps, cookie values or some sort of identifiers). In those cases make sure to use the [transformation functions](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#transformation-function) to guarantee that the responses received by each replica are identical by removing any random data or extracting only the relevant data.
 
 This applies to the HTTP response body and headers. Make sure to consider both when applying the transformation functions. Response headers are often overlooked and lead to failure because of failed consensus.
 
-[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#responses-must-be-similar)
+[More information.](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#responses-must-be-similar)
 
 ### Be aware of HTTP request and response sizes
 
 #### Security concern
 
-The [pricing](../integrations/https-outcalls/https-outcalls-how-it-works#pricing) of HTTPS outcalls is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
+The [pricing](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#pricing) of HTTPS outcalls is determined by, among other variables, the size of the HTTP request and the maximal response size. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky e.g. if HTTP outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
 
 #### Recommendation
 
@@ -564,7 +564,7 @@ When making an HTTP outcall it is possible – and highly recommended – to def
 
 Finally, be aware that users may incur cycles costs for HTTP outcalls in case these calls can be triggered by user actions.
 
-[More information.](../integrations/https-outcalls/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
+[More information.](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
 
 ### Perform input validation in HTTP outcalls
 

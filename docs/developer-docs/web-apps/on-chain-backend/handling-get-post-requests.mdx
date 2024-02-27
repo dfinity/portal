@@ -5,23 +5,23 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-Canisters running on ICP can use HTTP requests in two ways: incoming and outgoing. Incoming HTTP requests refer to HTTP requests that are sent to a canister and can be used to retrieve data from a canister or send new data to the canister. Outgoing HTTP requests refer to HTT requests that the canister sends to other canisters or external services to retrieve data or send new data. 
+Canisters running on ICP can use HTTP requests in two ways: incoming and outgoing. Incoming HTTP requests refer to HTTP requests that are sent to a canister and can be used to retrieve data from a canister or send new data to the canister. Outgoing HTTP requests refer to HTT requests that the canister sends to other canisters or external services to retrieve data or send new data.
 
-For outgoing HTTP requests, the [HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-how-to-use) feature should be used. 
+For outgoing HTTP requests, the [HTTP outcalls](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use) feature should be used.
 
 - [Making HTTP requests](/docs/current/developer-docs/smart-contracts/advanced-features/making-http-requests)
 
-- [How to use HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-how-to-use)
+- [How to use HTTP outcalls](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use)
 
-- [HTTP outcalls: `GET`](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-get)
+- [HTTP outcalls: `GET`](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-get)
 
-- [HTTP outcalls: `POST`](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-post)
+- [HTTP outcalls: `POST`](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-post)
 
 - [HTTP outcalls: technology overview](/docs/current/references/https-outcalls-how-it-works)
 
-To handle incoming HTTP requests, canisters must define methods for `http_requests` and `http_requests_update` for `GET` and `POST` requests respectively. 
+To handle incoming HTTP requests, canisters must define methods for `http_requests` and `http_requests_update` for `GET` and `POST` requests respectively.
 
-## `GET` requests 
+## `GET` requests
 
 HTTP `GET` requests are used to retrieve and return existing data from an endpoint. To handle a canister's incoming `GET` requests, the `http_request` method can be exposed. Users and other services can call this method using a `query` call. To return HTTP response data, the following examples display how to configure the `http_request` to return an HTTP `GET` request.
 
@@ -66,7 +66,7 @@ Check out the [certified cache](https://github.com/krpeacock/certified-cache) ex
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust 
+```rust
 use http::{Request, Response, StatusCode};
 
 #[query]
@@ -251,7 +251,7 @@ In Motoko, a `case` configuration can be used to return different `POST` respons
           status_code = 201;
           headers = [ ("content-type", "text/plain"), ("content-encoding", "gzip") ];
           body = "\1f\8b\08\00\37\02\1b\62\00\03\2b\2d\48\49\2c\49\e5\02\00\a8\da\91\6c\07\00\00\00";
-          
+
           streaming_strategy = null;
           upgrade = null;
         }
@@ -419,15 +419,15 @@ Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.
 </TabItem>
 </Tabs>
 
-## Resources 
+## Resources
 
 - [Making HTTP requests](/docs/current/developer-docs/smart-contracts/advanced-features/making-http-requests)
 
-- [How to use HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-how-to-use)
+- [How to use HTTP outcalls](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use)
 
-- [HTTP outcalls: `GET`](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-get)
+- [HTTP outcalls: `GET`](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-get)
 
-- [HTTP outcalls: `POST`](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls-post)
+- [HTTP outcalls: `POST`](/docs/current/developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-post)
 
 - [HTTP outcalls: technology overview](/docs/current/references/https-outcalls-how-it-works)
 

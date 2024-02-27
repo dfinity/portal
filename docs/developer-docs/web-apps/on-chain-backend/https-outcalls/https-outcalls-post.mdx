@@ -42,7 +42,7 @@ In order to verify that your canister sent the HTTP request you expected, this c
 
 Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests is not new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
 
-The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same. 
+The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same.
 
 Developers should be careful that the destination server understand and use idempotency keys. A canister can be coded to be send idempotency keys, but it is ultimately up to the recipient server to know what to do with then. Here is an [example of an API service that uses idempotency keys](https://stripe.com/docs/api/idempotent_requests).
 
@@ -115,13 +115,13 @@ async fn foo() {
     };
 
     //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
-    //Note: in Rust, `http_request()` already sends the cycles needed 
+    //Note: in Rust, `http_request()` already sends the cycles needed
     //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
-        
+
         //4. DECODE AND RETURN THE RESPONSE
         Ok((response,)) => {
-            //Ok case 
+            //Ok case
         }
         Err((r, m)) => {
             //error case
@@ -234,7 +234,7 @@ actor {
     // 2. Convert ?Text optional into a Blob, which is an intermediate reprepresentation before you cast it as an array of [Nat8]
     // 3. Convert the Blob into an array [Nat8]
     let request_body_json: Text = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }";
-    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); 
+    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json);
     let request_body_as_nat8: [Nat8] = Blob.toArray(request_body_as_Blob); // e.g [34, 34,12, 0]
 
 
@@ -250,7 +250,7 @@ actor {
         max_response_bytes = null; //optional for request
         headers = request_headers;
         //note: type of `body` is ?[Nat8] so it is passed here as "?request_body_as_nat8" instead of "request_body_as_nat8"
-        body = ?request_body_as_nat8; 
+        body = ?request_body_as_nat8;
         method = #post;
         transform = ?transform_context;
         // transform = null; //optional for request
@@ -260,30 +260,30 @@ actor {
 
     //The management canister will make the HTTP request so it needs cycles
     //See: https://internetcomputer.org/docs/current/motoko/main/cycles
-    
+
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
     Cycles.add(21_850_258_000);
-    
+
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, you can just call the management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
-    
+
     //5. DECODE THE RESPONSE
 
-    //As per the type declarations in `Types.mo`, the BODY in the HTTP response 
+    //As per the type declarations in `Types.mo`, the BODY in the HTTP response
     //comes back as [Nat8s] (e.g. [2, 5, 12, 11, 23]). Type signature:
-    
+
     //public type HttpResponsePayload = {
     //     status : Nat;
     //     headers : [HttpHeader];
     //     body : [Nat8];
     // };
 
-    // You need to decode that [Na8] array that is the body into readable text. 
+    // You need to decode that [Na8] array that is the body into readable text.
     //To do this:
     //  1. Convert the [Nat8] into a Blob
-    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
+    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional
     //  3. Use Motoko syntax "Let... else" to unwrap what is returned from Text.decodeUtf8()
     let response_body: Blob = Blob.fromArray(http_response.body);
     let decoded_text: Text = switch (Text.decodeUtf8(response_body)) {
@@ -488,7 +488,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
             value: "nosniff".to_string(),
         },
     ];
-    
+
 
     let mut res = HttpResponse {
         status: raw.response.status.clone(),
@@ -508,8 +508,8 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 ```
 
 - `send_http_post_request() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
-- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed. 
-- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](../../../references/ic-interface-spec#ic-http_request), but it is not strictly the same.
+- The `lib.rs` file used [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node subnet and most cases. If your HTTPS outcall needs more cycles, you should use [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
+- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](/docs/current/references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 </TabItem>
 </Tabs>
@@ -555,13 +555,13 @@ module Types {
     };
 
     //2. HTTPS outcalls have an optional "transform" key. These two types help describe it.
-    //"The transform function may, for example, transform the body in any way, add or remove headers, 
+    //"The transform function may, for example, transform the body in any way, add or remove headers,
     //modify headers, etc. "
     //See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
-    
+
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
-    //"If provided, the calling canister itself must export this function." 
-    //In this minimal example for a GET request, declare the type for completeness, but 
+    //"If provided, the calling canister itself must export this function."
+    //In this minimal example for a GET request, declare the type for completeness, but
     //you do not use this function. You will pass "null" to the HTTP request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
