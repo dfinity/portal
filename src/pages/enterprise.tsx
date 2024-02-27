@@ -434,6 +434,27 @@ function EnterprisePage() {
           </div>
 
           <div className="flex flex-col gap-16 md:gap-40">
+          <TranslatedLayout
+              imageUrl="/img/enterprise/docutrack.webp"
+              reverse={true}
+            >
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Secure document exchange with DocuTrack
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+              DocuTrack, an open-source dapp co-developed with a Swiss private bank, 
+              transforms encrypted document exchange for enterprises and their clients.
+              It assures privacy and security by leveraging blockchain technology and advanced cryptography, bypassing the vulnerabilities of manual privacy policies.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="#"
+              >
+                <LinkArrowRight /> Discover secure transfer
+              </Link>
+            </TranslatedLayout>
+            
+
             <TranslatedLayout imageUrl="/img/enterprise/italy-large.webp">
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
                 100% made in Italy
@@ -453,6 +474,7 @@ function EnterprisePage() {
                 <LinkArrowRight /> See press release
               </Link>
             </TranslatedLayout>
+
             <TranslatedLayout
               imageUrl="/img/enterprise/nft-large.webp"
               reverse={true}
@@ -478,6 +500,7 @@ function EnterprisePage() {
                 <LinkArrowRight /> More on the X Collection
               </Link>
             </TranslatedLayout>
+
             <AnimateSpawn
               className="container-12"
               variants={transitions.container}
