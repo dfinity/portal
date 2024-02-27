@@ -356,6 +356,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/index /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/integrations/bitcoin/ckBTC-reference /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference
   /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin /docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
+  /docs/current/developer-docs/setup/ic-admin /docs/current/developer-docs/developer-tools/cli-tools/ic-admin
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
