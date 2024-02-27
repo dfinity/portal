@@ -16,7 +16,7 @@ This document contains canister development best practices for both Motoko and R
 
 If single entities or small groups control canisters, they can apply changes or updates whenever they like. If a canister e.g. holds assets such as ICP, ckBTC or ckETH on a user's behalf, this effectively means that the controller could decide at any time to steal these funds by e.g. updating the canister and transferring the assets to their account.
 
-Furthermore, the controller of canisters serving web content (such as e.g. the [asset canister](../../references/asset-canister)) could maliciously modify the web application to e.g. steal user funds or perform security sensitive actions on the user's behalf. For example, if [Internet Identity](../../developer-docs/integrations/internet-identity/overview) is used, the user principal's private key for the given origin is stored in the browser storage, and a malicious app can therefore fully control the private key and the user's session and any assets controlled by that key.
+Furthermore, the controller of canisters serving web content (such as e.g. the [asset canister](../../references/asset-canister)) could maliciously modify the web application to e.g. steal user funds or perform security sensitive actions on the user's behalf. For example, if [Internet Identity](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview) is used, the user principal's private key for the given origin is stored in the browser storage, and a malicious app can therefore fully control the private key and the user's session and any assets controlled by that key.
 
 Dapps are commonly reachable over their own custom domain name instead of ic0.app. These domains are registered with a DNS registrar by one of the developers. The developer can choose to have this domain point at a completely different web application. Even one not hosted on the IC. Users will trust this domain and the app it serves. This could allow such a developer to steal funds, leak data, etc.
 
@@ -668,7 +668,7 @@ It should be possible to verify that a canister does what it claims to do. ICP p
 
 #### Recommendation
 
-Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/developer-docs/backend/reproducible-builds.md).
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/docs/current/developer-docs/smart-contracts/test/reproducible-builds).
 
 ### Expose metrics from your canister
 
@@ -717,6 +717,16 @@ The correct execution of [canister_inspect_message](../../references/ic-interfac
 Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security critical code, such as [access control checks](#make-sure-any-action-that-only-a-specific-user-should-be-able-to-do-requires-authentication), should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function.
 
 Also note that for inter-canister calls `canister_inspect_message` is not invoked which is another reason to execute the code as part of the update call by using a guard.
+
+### Do not publicly reveal canister's cycles balance
+
+#### Security concern
+
+Publicly revealing the canister's cycles balance allows an attacker to measure the number of instructions spent by executing the canister methods on the attacker's input. Then the attacker might be able to learn which code paths were taken during execution and derive secret information based on that. Moreover, the attacker can learn which methods and their inputs consume a lot of cycles to mount a cycles draining attack (see also [protect against draining the cycles balance](#protect-against-draining-the-cycles-balance)).
+
+#### Recommendation
+
+Your canisters should not publicly expose their cycles balance (available through the system API), i.e., they should only expose their cycles balance to their controllers or other trusted principals.
 
 ## Nonspecific to the Internet Computer
 

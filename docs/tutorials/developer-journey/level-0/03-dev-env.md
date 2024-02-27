@@ -28,7 +28,7 @@ You will primarily be using CLI-based tools, such as `dfx` and `git`, in this de
 
 #### Options for Windows users
 
-`dfx` is not natively supported on Windows. To download `dfx` on Windows, you will need to download the Windows Subsystem for Linux. You can learn more [here](/docs/developer-docs/setup/install/index.mdx).
+`dfx` is not natively supported on Windows. To download `dfx` on Windows, you will need to download the Windows Subsystem for Linux. You can learn more [here](/docs/current/developer-docs/getting-started/install/).
 
 ### Download and install the IC SDK
 
@@ -135,4 +135,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-- [0.4 Introduction to canisters](04-intro-canisters.md).
+- [0.4 Introduction to canisters](/docs/current/tutorials/developer-journey/level-0/intro-canisters).

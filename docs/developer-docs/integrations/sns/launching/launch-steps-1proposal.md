@@ -11,9 +11,9 @@ through the same, with the difference that the commands here target the canister
 
 ## Prerequisites:
 
-- [x] Install the IC SDK. See: [installing the IC SDK](../../../setup/install).
+- [x] Install the IC SDK. See: [installing the IC SDK](/docs/current/developer-docs/getting-started/install).
 
-- [x] Install `ic-admin`. See: [installing the `ic-admin`](../../../setup/ic-admin.md).
+- [x] Install `ic-admin`. See: [installing the `ic-admin`](/docs/current/developer-docs/developer-tools/cli-tools/ic-admin).
 
 - [x] Install `sns` CLI.
 

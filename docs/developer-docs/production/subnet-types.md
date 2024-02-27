@@ -1,5 +1,7 @@
 # Subnet types
 
+## Overview
+
 There are different subnet types available on the Internet Computer. These types are related to properties of the
 subnets which make them suitable for different use cases.
 

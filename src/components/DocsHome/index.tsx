@@ -44,7 +44,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/concepts/what-is-ic"
+                href="/docs/current/developer-docs/getting-started/overview-of-icp"
               >
                 Start building
                 <LinkArrowRight />
@@ -91,7 +91,7 @@ const DocsHomePage: FC = () => {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/backend/choosing-language"
+                  href="/docs/current/developer-docs/smart-contracts/write/choosing-language"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
@@ -170,7 +170,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://demergent-labs.github.io/azle"
+                    href="/docs/current/developer-docs/backend/typescript/"
                     className="link-primary"
                     title="Go to Azle docs"
                   >
@@ -197,7 +197,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://demergent-labs.github.io/kybra"
+                    href="/docs/current/developer-docs/backend/python/"
                     className="link-primary"
                     title="Go to Kybra docs"
                   >
@@ -267,7 +267,7 @@ const DocsHomePage: FC = () => {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/backend/choosing-language"
+                  href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
@@ -293,7 +293,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="/docs/current/developer-docs/setup/react-quickstart"
+                    href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
                     className="link-primary"
                     title="Go to Quickstart for React Devs"
                   >

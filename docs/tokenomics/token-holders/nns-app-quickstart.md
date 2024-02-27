@@ -22,7 +22,7 @@ Neurons provide the stability required for responsible governance of the Interne
 
 The following diagram provides a simplified view of the workflow for creating a neuron and the relationship between the neuron and ledger canisters.
 
-![create dissolve neuron api](../_attachments/create-dissolve-neuron-api.svg)
+![neuron dissolve](../_attachments/distribute-neurons-diagram.png)
 
 ### Governance and voting rewards
 
@@ -157,7 +157,7 @@ The destination address can be an address in the ledger canister running on the 
 
 If you transfer the ICP utility tokens to an account in the [Network Nervous System dapp](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
-For more information about using the `dfx ledger` command-line options, see [dfx ledger](/references/cli-reference/dfx-ledger.md).
+For more information about using the `dfx ledger` command-line options, see [dfx ledger](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger).
 
 ### Using the NNS dapp
 
@@ -242,7 +242,7 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 ## Disburse dissolved neurons into an account
 
-When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify. After you take this step, the neuron identifier and its ledger history are permanently removed from the governance canister.
+When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify.
 
 To disburse a neuron and return its ICP utility tokens:
 
@@ -261,16 +261,27 @@ To disburse a neuron and return its ICP utility tokens:
 - #### Step 4:  Verify the transaction information, then click **Confirm and Send**. 
 
 ## Neuron following
+Neuron owners may find it hard to manually vote on every proposal submitted to the NNS. For example,neuron owners may not have the time or necessary expertise to evaluate each individual proposal. 
+The NNS uses a form of liquid democracy to address these challenges.
+To aid in this, the NNS supports **neuron following **.
+A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons.
 
-To maximize neuron rewards and vote on every proposal submitted to the NNS, neuron holders can make use of the NNS's liquid democracy. It may be hard for neuron owners to manually vote on every single proposal submitted or neuron owners may not have the necessary level of technical understanding to evaluate proposals themselves. To aid in this, the NNS supports **neuron following**.
-
-A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons. Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics, such as governance or subnet management. For example, if the neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals, if the group votes to reject a subnet management proposal with more than half of the followees voting to reject, the neuron following the group will vote to reject the proposal. 
+Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics like governance or subnet management. For example, if a neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals and the group votes to reject a subnet management proposal with at least half of the followees voting to reject, the neuron following the group will vote to reject the proposal.
 
 :::caution
-It is important to note that when following a group of neurons, your neuron will only cast a vote if more than half of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic, your neuron only votes if at least 6 out of the 10 neurons vote the same way. If only 5 neurons vote, your neuron will not cast a vote. This should be considered when choosing to follow multiple neurons on a topic.
+Your neuron will follow when there are enough votes to make a call (whether it is a ADOPT or REJECT). Your neuron will only cast a vote if **more than half** of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic:
+
+a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt.
+
+b. Your neuron only votes to reject a proposal if at least 5 out of the 10 reject the proposal.
+
+c. If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote.
+
+This should be considered when choosing to follow multiple neurons on a topic and why following an odd number of neurons may be better than even numbers.
 :::
 
-Additionally, there is a catch-all follow rule that may be defined for a neuron to automatically vote on proposals for which no follow rule has been defined; however, this catch-all follow rule does not include SNS & neuron's fund or governance proposals. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+Additionally, neurons may also define a catch-all follow rule which is triggered for proposals with topics for which no other explicit follow rule has been defined.
+However, the catch-all follow rule does not include SNS & neuron's fund or governance proposals. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
 
 To configure your neuron to follow the group of another neuron:
 
@@ -321,12 +332,6 @@ To spawn new neurons from an existing neuron:
 - #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
 
 - #### Step 2:  Click **Spawn Neuron**.
-
-## Neuron following
-
-
-
-Neuron owners may find it hard to manually vote directly on every proposal submitted to the NNS. Firstly, large volumes of proposals may be submitted to the NNS, often at awkward times, and owners may not be available or have the necessary time to evaluate each one. Secondly, neuron owners may lack the necessary expertise to evaluate proposals themselves. The NNS uses a form of liquid democracy to address these challenges. For any proposal topic, a neuron can be configured to vote automatically by following the votes of a group of neurons, voting to adopt proposals whenever more than half of the followees vote to adopt, and voting to reject whenever at least half of the followees vote to reject. A catch-all follow rule may also be defined to make a neuron vote automatically on proposals with topics for which no follow rule has been defined. It is assumed that neuron owners will manage how their neurons follow other neurons in the best interests of the network, which is also in their own economic interests, owing to their locked ICP balances.
 
 
 ## Vote on proposals 

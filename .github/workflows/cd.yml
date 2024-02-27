@@ -36,9 +36,7 @@ jobs:
 
       - name: Dump Identity
         run: |
-          mkdir ~/.config/dfx
-          mkdir ~/.config/dfx/identity
-          mkdir ~/.config/dfx/identity/default
+          mkdir -p ~/.config/dfx/identity/default
           echo $DFX_IDENTITY_DESIGN_TEAM | base64 -d > ~/.config/dfx/identity/default/identity.pem
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
         env:

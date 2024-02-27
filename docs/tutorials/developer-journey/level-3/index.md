@@ -1,6 +1,6 @@
 # Level 3: Space engineer 
 
-- [3.1 Motoko package managers](3.1-package-managers.md): To use packages developed outside of the Motoko base library, a Motoko package manager can be used. This module covers:
+- [3.1 Motoko package managers](/docs/current/tutorials/developer-journey/level-3/3.1-package-managers): To use packages developed outside of the Motoko base library, a Motoko package manager can be used. This module covers:
     - What is a package manager?
     - Installing Mops.
     - Installing Vessel.
@@ -13,7 +13,7 @@
     - Using Vessel.
     - Importing packages into your Motoko code.
 
-- [3.2 Using HTTPS outcalls](3.2-https-outcalls.md): HTTPS outcalls are a feature of canisters on ICP that allow smart contracts to directly make calls to HTTPS servers that are external to ICP. This module covers:
+- [3.2 Using HTTPS outcalls](/docs/current/tutorials/developer-journey/level-3/3.2-https-outcalls): HTTPS outcalls are a feature of canisters on ICP that allow smart contracts to directly make calls to HTTPS servers that are external to ICP. This module covers:
     - Supported HTTPS methods.
     - Cycles.
     - HTTPS outcalls API.
@@ -29,7 +29,7 @@
         - Calling the HTTP `POST` request.
 
 
-- [3.3 Certified data](3.3-certified-data.md): Certified data utilizes **chain-key cryptography** at the canister level to generate a digital signature that can be validated using a permanent, public key that belongs to the Internet Computer, whose private key counterpart is constantly distributed across many different nodes on the network. This module covers:
+- [3.3 Certified data](/docs/current/tutorials/developer-journey/level-3/3.3-certified-data): Certified data utilizes **chain-key cryptography** at the canister level to generate a digital signature that can be validated using a permanent, public key that belongs to the Internet Computer, whose private key counterpart is constantly distributed across many different nodes on the network. This module covers:
     - How data is certified.
         - Data certificates.
         - How canisters certify data.
@@ -46,7 +46,7 @@
         - Interacting with certified variables.
     - Resources.
 
-- [3.4 Introduction to agents](3.4-intro-to-agents.md): On the Internet Computer, an **agent** is a library used to make calls to ICP's public interface. This module covers:
+- [3.4 Introduction to agents](/docs/current/tutorials/developer-journey/level-3/3.4-intro-to-agents): On the Internet Computer, an **agent** is a library used to make calls to ICP's public interface. This module covers:
     - What does an agent do?
         - Structuring data.
         - Decoding data.
@@ -60,7 +60,7 @@
         - Creating the JavaScript agent.
         - Using the agent.
 
-- [3.5 Identities and authentication](3.5-identities-and-auth.md): When developing on the Internet Identity, there are several types of identities and methods of authentication that you'll encounter. This module covers: 
+- [3.5 Identities and authentication](/docs/current/tutorials/developer-journey/level-3/3.5-identities-and-auth): When developing on the Internet Identity, there are several types of identities and methods of authentication that you'll encounter. This module covers: 
     - Types of identity.
     - Internet Identity.
        - Internet Identity architecture.
@@ -74,7 +74,7 @@
         - Pulling the Internet Identity canister.
         - Interacting with the integration.
 
-- [3.6 Motoko level 3](3.6-motoko-lvl3.md): In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks. This module covers:
+- [3.6 Motoko level 3](/docs/current/tutorials/developer-journey/level-3/3.6-motoko-lvl3): In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks. This module covers:
     - Principals and caller identification.
     - Adding access control with identities.
         - Prerequisites.

@@ -76,13 +76,15 @@ const subnavItems = [
     label: "Rust",
   },
   {
+    type: "docSidebar",
     position: "left",
-    to: "https://demergent-labs.github.io/azle/",
-    label: "TypeScript",
+    sidebarId: "typescript",
+    label: "Typescript",
   },
   {
+    type: "docSidebar",
     position: "left",
-    to: "https://demergent-labs.github.io/kybra/",
+    sidebarId: "python",
     label: "Python",
   },
   {
@@ -330,7 +332,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Free Cycles",
-          href: "/docs/current/developer-docs/setup/cycles/cycles-faucet",
+          href: "/docs/current/developer-docs/getting-started/cycles/cycles-faucet",
         },
       ],
 

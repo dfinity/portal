@@ -12,7 +12,7 @@ This guide assumes you have an existing canister that you'd like to optimize. To
 ## Reducing cycle consumption
 The first step towards an optimized system is profiling. Start by measuring the number of instructions your endpoints consume.
 
-The `instruction_counter` API will tell you the number of instructions your code has consumed since the last entry point. Instructions are the internal currency of the runtime; one ICP instruction is the quantum of work that the protocol can do, such as loading a 32-bit integer from a memory address. The protocol assigns an instruction cost equivalent to each Wasm instruction and system call. It also defines all its limits in terms of instructions. For a detailed breakdown of the current instruction and Wasm limitations on ICP, please review [this page](../../production/resource-limits.md).
+The `instruction_counter` API will tell you the number of instructions your code has consumed since the last entry point. Instructions are the internal currency of the runtime; one ICP instruction is the quantum of work that the protocol can do, such as loading a 32-bit integer from a memory address. The protocol assigns an instruction cost equivalent to each Wasm instruction and system call. It also defines all its limits in terms of instructions. For a detailed breakdown of the current instruction and Wasm limitations on ICP, please review [this page](/docs/current/developer-docs/smart-contracts/maintain/resource-limits).
 
 
 The following is an example method that can be used to measures the number of instructions:
@@ -83,4 +83,4 @@ More information on canister optimization and information on `wasm-opt` benchmar
 
 ## Next steps
 
-Next, let's take a look at [incrementing a counter.](9-counter.md)
+Next, let's take a look at [incrementing a counter.](9-counter.mdx)

@@ -1,13 +1,9 @@
 const logger = require("@docusaurus/logger");
 const fetch = require("node-fetch");
-const chunkedParallel = require("./utils/chunked-parallel");
 const markdownToPlainText = require("./utils/markdown-to-plain-text");
-const mime = require("mime");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
-const sharp = require("sharp");
-const downloadFile = require("./utils/download-file");
 
 // const dotenv = require("dotenv");
 const isDev = (process.env.NODE_ENV || "development") === "development";
@@ -79,7 +75,6 @@ const airtablePlugin = async function () {
             description: !!r.fields["Marketing Text"]
               ? markdownToPlainText(r.fields["Marketing Text"])
               : null,
-            eventBanner: transformEventBanner(r.fields["Event Banner"]),
             eventLink: r.fields["Event Link"],
             topic: r.fields["Topic"],
             startDate: r.fields["Start date"],
@@ -118,65 +113,6 @@ const airtablePlugin = async function () {
 
         return true;
       });
-
-      records.sort((a, b) => {
-        return a.startDate.localeCompare(b.startDate);
-      });
-
-      if (isProd) {
-        // download event banner images, resize them and convert to webp, and update the url
-        await chunkedParallel(
-          records
-            .filter((r) => r.eventBanner)
-            .map((rec) => {
-              return async () => {
-                const fileExt = mime.getExtension(rec.eventBanner.type);
-                const tempFileName = `${rec.eventBanner.id}.${fileExt}`;
-                const tempFilePath = path.join(
-                  uniqueDirUnderTemp,
-                  tempFileName
-                );
-                await downloadFile(rec.eventBanner.url, tempFilePath);
-
-                rec.eventBanner.url = `/assets/images/events/${tempFileName}`;
-
-                const webpFileName =
-                  fileExt === "webp"
-                    ? `${rec.eventBanner.id}-processed.webp`
-                    : `${rec.eventBanner.id}.webp`;
-                const webpFilePath = path.join(
-                  uniqueDirUnderTemp,
-                  webpFileName
-                );
-                try {
-                  await sharp(tempFilePath)
-                    .resize(960, 440, {
-                      fit: "outside",
-                      withoutEnlargement: true,
-                    })
-                    .toFormat("webp", {
-                      quality: 90,
-                    })
-                    .toFile(webpFilePath);
-
-                  rec.eventBanner.url = `/assets/images/events/${webpFileName}`;
-                  rec.eventBanner.type = "image/webp";
-
-                  fs.unlinkSync(tempFilePath);
-
-                  return webpFileName;
-                } catch (e) {
-                  logger.warn("failed to convert to webp: " + tempFilePath);
-                  logger.warn(e);
-                  try {
-                    fs.unlinkSync(webpFilePath);
-                  } catch {}
-                }
-              };
-            }),
-          5
-        );
-      }
 
       const topics = new Set(); // event.topic is a string array
       const types = new Set(); // string
@@ -219,6 +155,26 @@ const airtablePlugin = async function () {
           modes.add(rec.mode);
         }
       }
+
+      // from oldest to newest
+      records.sort((a, b) => b.startDate.localeCompare(a.startDate));
+
+      // enumerate images in ../static/img/news, with pattern event-*.webp
+      const eventImageUrls = fs
+        .readdirSync(path.join(__dirname, "..", "static", "img", "events"))
+        .filter(
+          (filename) =>
+            filename.startsWith("event-") && filename.endsWith(".webp")
+        )
+        .map((filename) => `/img/events/${filename}`);
+
+      // assign images to event articles, old articles keep their images, new articles get new images
+      records.forEach((news, i) => {
+        news.imageUrl = eventImageUrls[i % eventImageUrls.length];
+      });
+
+      // reverse the order, so that newest articles get the newest images
+      records.reverse();
 
       return {
         events: records,
