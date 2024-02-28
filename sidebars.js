@@ -215,7 +215,8 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
             },
-	    "developer-docs/smart-contracts/advanced-features/making-http-requests",
+            "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
+	          "developer-docs/smart-contracts/advanced-features/making-http-requests",
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
@@ -440,7 +441,7 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
-	    "developer-docs/web-apps/application-frontends/serving-static-assets",
+	          "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
             "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
@@ -455,24 +456,15 @@ const sidebars = {
             "developer-docs/web-apps/custom-domains/dns-setup",
           ],
         },
-	{
+        {
           type: "category",
-          label: "On-chain backend",
+          label: "Browser JS",
           items: [
-            "developer-docs/web-apps/on-chain-backend/handling-get-post-requests",
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              items: [
-                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-get",
-                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-post",
-              ],
-            },
+            "developer-docs/web-apps/browser-js/juno",
           ],
         },
         "developer-docs/web-apps/design-dapps",
-	"developer-docs/web-apps/independently-verifying-ic-signatures",
+	      "developer-docs/web-apps/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
