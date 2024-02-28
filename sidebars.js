@@ -187,7 +187,7 @@ const sidebars = {
            {
               type: "doc",
               label: "Handling GET/POST requests",
-              id: "developer-docs/smart-contracts/advanced-features/making-http-requests",
+              id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
             },
             {
               type: "doc",
