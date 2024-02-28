@@ -375,28 +375,6 @@ actor {
 
     decoded_text
 
-    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
-      let transformed : Types.CanisterHttpResponsePayload = {
-          status = raw.response.status;
-          body = raw.response.body;
-          headers = [
-              {
-                  name = "Content-Security-Policy";
-                  value = "default-src 'self'";
-              },
-              { name = "Referrer-Policy"; value = "strict-origin" },
-              { name = "Permissions-Policy"; value = "geolocation=(self)" },
-              {
-                  name = "Strict-Transport-Security";
-                  value = "max-age=63072000";
-              },
-              { name = "X-Frame-Options"; value = "DENY" },
-              { name = "X-Content-Type-Options"; value = "nosniff" },
-          ];
-      };
-      transformed;
-  };
-
 };
 ```
 

@@ -1,5 +1,8 @@
 # 2.1 Canister upgrades, storage, and persistence
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=-aXjKSz_oXc&list=PLuhDt1vhGcrdR2h6nPNylXKS4u8L-efvD&index=13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 ## Overview
 
 The Internet Computer handles persistent data storage using a feature known as **stable memory**. **Stable memory** is a unique feature of the Internet Computer that defines a data store separate from the canister's regular Wasm memory data store, which is known as **heap memory**. A canister's heap memory is not persistent storage and does not persist across canister upgrades; canister data and state stored in heap memory is removed when a canister is upgraded or reinstalled. For immutable canisters that use less than the heap memory limit of 4GiB, heap memory can be used. For larger canisters, and especially those that intend to be upgraded and changed over time, stable memory is important since it persists across canister upgrades, has a much larger storage capacity than heap memory, and is very beneficial for vertically scaling a dapp.
