@@ -92,7 +92,6 @@ const sidebars = {
           type: "category",
           label: "Write",
           items: [
-            
             "developer-docs/smart-contracts/write/choosing-language",
           ]
         },
@@ -185,7 +184,7 @@ const sidebars = {
               label: "Management canister",
               id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
-            {
+           {
               type: "doc",
               label: "Serving an HTTP request",
               id: "developer-docs/smart-contracts/advanced-features/http-request",
@@ -194,10 +193,10 @@ const sidebars = {
               type: "category",
               label: "HTTPS outcalls",
               items: [
-                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                "developer-docs/integrations/https-outcalls/https-outcalls-post",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
               ],
             },
             {
@@ -216,6 +215,7 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
             },
+	    "developer-docs/smart-contracts/advanced-features/making-http-requests",
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
@@ -440,6 +440,7 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
+	    "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
             "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
@@ -454,8 +455,24 @@ const sidebars = {
             "developer-docs/web-apps/custom-domains/dns-setup",
           ],
         },
+	{
+          type: "category",
+          label: "On-chain backend",
+          items: [
+            "developer-docs/web-apps/on-chain-backend/handling-get-post-requests",
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-get",
+                "developer-docs/web-apps/on-chain-backend/https-outcalls/https-outcalls-post",
+              ],
+            },
+          ],
+        },
         "developer-docs/web-apps/design-dapps",
-	      "developer-docs/web-apps/independently-verifying-ic-signatures",
+	"developer-docs/web-apps/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
@@ -470,6 +487,8 @@ const sidebars = {
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
+            "developer-docs/web-apps/user-login/nfid",
+            "developer-docs/web-apps/user-login/email-password",
           ],
         },
 	{
@@ -534,60 +553,60 @@ const sidebars = {
         {
           type: "doc",
           label: "Overview",
-          id: "developer-docs/integrations/ledger/introduction_and_overview",
+          id: "developer-docs/defi/overview",
         },
         {
           type: "category",
           label: "ICP tokens",
           items: [
-            "developer-docs/integrations/ledger/index",
-            "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/ledger-local-setup",
-            "developer-docs/integrations/ledger/interact-with-ledger",
-            "developer-docs/integrations/ledger/icp-index-local-setup",
+            "developer-docs/defi/icp-tokens/overview",
+            "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/icp-tokens/using-the-ledger",
+            "developer-docs/defi/icp-tokens/icp-index-local-setup",
+            "developer-docs/defi/icp-tokens/account-trimming",
           ],
         },
         {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
-            "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
-            "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
-            "developer-docs/integrations/icrc-1/icrc1-index-setup",
+            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+            "developer-docs/defi/icrc-1/using-icrc1-ledger",
+            "developer-docs/defi/icrc-1/icrc1-index-setup",
           ],
         },
         {
           type: "doc",
           label: "Exchange rate canister",
-          id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+          id: "developer-docs/defi/exchange-rate-canister",
         },
         {
           type: "category",
           label: "Rosetta API",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/rosetta/index",
+            id: "developer-docs/defi/rosetta/overview",
           },
           items: [
-            "developer-docs/integrations/rosetta/hotkeys",
-            "developer-docs/integrations/rosetta/neuron-lifecycle",
-            "developer-docs/integrations/rosetta/staking-support",
-            "developer-docs/integrations/rosetta/staking-tutorial",
-            "developer-docs/integrations/rosetta/transfers",
+            "developer-docs/defi/rosetta/hotkeys",
+            "developer-docs/defi/rosetta/neuron-lifecycle",
+            "developer-docs/defi/rosetta/staking-support",
+            "developer-docs/defi/rosetta/staking-tutorial",
+            "developer-docs/defi/rosetta/transfers",
           ],
         },
         {
           type: "category",
           label: "Asset custody",
           items: [
-            "tokenomics/token-holders/custody-options-intro",
-            "tokenomics/token-holders/self-custody-quickstart",
+            "developer-docs/defi/asset-custody/custody-options",
+            "developer-docs/defi/asset-custody/self-custody-quickstart",
           ],
         },
         {
           type: "category",
           label: "NFTs",
-          items: ["developer-docs/use-cases/considerations-for-nft-devs"],
+          items: ["developer-docs/defi/nfts/considerations-for-nft-devs"],
         },
       ],
     },
@@ -599,26 +618,26 @@ const sidebars = {
           type: "category",
           label: "FAQs",
           items: [
-            "developer-docs/integrations/multi-chain/user-faq",
-            "developer-docs/integrations/multi-chain/ckbtc-faq",
-            "developer-docs/integrations/multi-chain/cketh-faq",
-            "developer-docs/integrations/multi-chain/ckerc20-faq",
-            "developer-docs/integrations/multi-chain/signatures-faq",
+            "developer-docs/multi-chain/faq/user-faq",
+            "developer-docs/multi-chain/faq/ckbtc-faq",
+            "developer-docs/multi-chain/faq/cketh-faq",
+            "developer-docs/multi-chain/faq/ckerc20-faq",
+            "developer-docs/multi-chain/faq/signatures-faq",
           ],
         },
         {
           type: "category",
           label: "Bitcoin",
           items: [
-            "developer-docs/integrations/bitcoin/index",
-            "developer-docs/integrations/bitcoin/ckbtc",
+            "developer-docs/multi-chain/bitcoin/overview",
+            "developer-docs/multi-chain/bitcoin/ckbtc",
             {
               type: "category",
               label: "Advanced",
               items: [
-                "developer-docs/integrations/bitcoin/read-state",
-                "developer-docs/integrations/bitcoin/submit-transactions",
-                "developer-docs/integrations/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/read-state",
+                "developer-docs/multi-chain/bitcoin/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/local-development",
               ],
             },
           ],
@@ -627,40 +646,44 @@ const sidebars = {
           type: "category",
           label: "Ethereum",
           items: [
-            "developer-docs/integrations/ethereum/overview",
-            "developer-docs/integrations/ethereum/evm-rpc",
-            "developer-docs/integrations/ethereum/siwe",
+            "developer-docs/multi-chain/ethereum/overview",
+            "developer-docs/multi-chain/ethereum/evm-rpc",
+            "developer-docs/multi-chain/ethereum/siwe",
           ],
         },
       ],
     },
-
     {
       type: "category",
       label: "DAOs",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/sns/index",
-      },
       items: [
         {
           type: "category",
           label: "Network Nervous System (NNS)",
           items: [
-            "tokenomics/nns/nns-intro",
-            "tokenomics/token-holders/nns-app-quickstart",
-            "tokenomics/nns/neurons-fund",
-            "tokenomics/nns/nns-staking-voting-rewards",
+            "developer-docs/daos/nns/overview",
+            "developer-docs/daos/nns/nns-app-quickstart",
+            "developer-docs/daos/nns/neurons-fund",
+            "developer-docs/daos/nns/staking-voting-rewards",
+            "developer-docs/daos/nns/proposal-requirements"
           ],
         },
+        {
+        type: "category",
+        label: "Service Nervous System (SNS)",
+        link: {
+          type: "doc",
+          id: "developer-docs/daos/sns/index",
+        },
+        items: [
         {
           type: "category",
           label: "Introduction to the SNS",
           items: [
-            "developer-docs/integrations/sns/introduction/sns-intro-high-level",
-            "developer-docs/integrations/sns/introduction/sns-architecture",
-            "developer-docs/integrations/sns/introduction/sns-launch",
-            "developer-docs/integrations/sns/introduction/dao-alternatives",
+            "developer-docs/daos/sns/introduction/sns-intro-high-level",
+            "developer-docs/daos/sns/introduction/sns-architecture",
+            "developer-docs/daos/sns/introduction/sns-launch",
+            "developer-docs/daos/sns/introduction/dao-alternatives",
           ],
         },
         {
@@ -668,14 +691,14 @@ const sidebars = {
           label: "Preparing an SNS launch",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/sns/tokenomics/index",
+            id: "developer-docs/daos/sns/tokenomics/index",
           },
           items: [
-            "developer-docs/integrations/sns/tokenomics/sns-checklist",
-            "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
-            "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-            "developer-docs/integrations/sns/tokenomics/rewards",
-            "developer-docs/integrations/sns/tokenomics/preparation",
+            "developer-docs/daos/sns/tokenomics/sns-checklist",
+            "developer-docs/daos/sns/tokenomics/predeployment-considerations",
+            "developer-docs/daos/sns/tokenomics/tokenomics-intro",
+            "developer-docs/daos/sns/tokenomics/rewards",
+            "developer-docs/daos/sns/tokenomics/preparation",
           ],
         },
         {
@@ -683,12 +706,12 @@ const sidebars = {
           label: "Integrating with an SNS",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/sns/integrating/index",
+            id: "developer-docs/daos/sns/integrating/index",
           },
           items: [
-            "developer-docs/integrations/sns/integrating/ledger-integration",
-            "developer-docs/integrations/sns/integrating/index-integration",
-            "developer-docs/integrations/sns/integrating/frontend-integration",
+            "developer-docs/daos/sns/integrating/ledger-integration",
+            "developer-docs/daos/sns/integrating/index-integration",
+            "developer-docs/daos/sns/integrating/frontend-integration",
           ],
         },
         {
@@ -696,11 +719,11 @@ const sidebars = {
           label: "Testing an SNS",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/sns/testing/testing-before-launch",
+            id: "developer-docs/daos/sns/testing/testing-before-launch",
           },
           items: [
-            "developer-docs/integrations/sns/testing/testing-locally",
-            "developer-docs/integrations/sns/testing/testing-on-mainnet",
+            "developer-docs/daos/sns/testing/testing-locally",
+            "developer-docs/daos/sns/testing/testing-on-mainnet",
           ],
         },
         {
@@ -708,11 +731,11 @@ const sidebars = {
           label: "Launching an SNS",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/sns/launching/index",
+            id: "developer-docs/daos/sns/launching/index",
           },
           items: [
-            "developer-docs/integrations/sns/launching/launch-summary-1proposal",
-            "developer-docs/integrations/sns/launching/launch-steps-1proposal",
+            "developer-docs/daos/sns/launching/launch-summary-1proposal",
+            "developer-docs/daos/sns/launching/launch-steps-1proposal",
           ],
         },
         {
@@ -720,15 +743,17 @@ const sidebars = {
           label: "Managing an SNS",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/sns/managing/manage-sns-intro",
+            id: "developer-docs/daos/sns/managing/manage-sns-intro",
           },
           items: [
-            "developer-docs/integrations/sns/managing/making-proposals",
-            "developer-docs/integrations/sns/managing/cycles-usage",
-            "developer-docs/integrations/sns/managing/sns-asset-canister",
-            "developer-docs/integrations/sns/managing/managing-nervous-system-parameters",
+            "developer-docs/daos/sns/managing/making-proposals",
+            "developer-docs/daos/sns/managing/cycles-usage",
+            "developer-docs/daos/sns/managing/sns-asset-canister",
+            "developer-docs/daos/sns/managing/managing-nervous-system-parameters",
           ],
         },
+      ],
+    },
       ],
     },
     {
@@ -1012,7 +1037,7 @@ const sidebars = {
             {
               type: "doc",
               label: "ICRC-1 token standard",
-              id: "developer-docs/integrations/icrc-1/index",
+              id: "references/icrc1-standard",
             },
             {
               type: "doc",
@@ -1030,11 +1055,11 @@ const sidebars = {
           type: "category",
           label: "Feature references",
           items: [
-            "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
-            "developer-docs/integrations/bitcoin/ckbtc-reference",
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-            "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-            "developer-docs/integrations/vetkeys/technology-overview",
+            "references/bitcoin-how-it-works",
+            "references/ckbtc-reference",
+            "references/https-outcalls-how-it-works",
+            "references/t-ecdsa-how-it-works",
+            "references/vetkeys-overview",
           ],
         },
       ],

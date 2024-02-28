@@ -4,7 +4,7 @@ Take a look at some sample dapps below and see the possibilities of building on 
 
 ## Hello, world!
 
-The dapp equivalent of 'Hello, World!' with a separate backend and frontend canister serving a web page. 
+The dapp equivalent of 'Hello, World!' with a separate backend and frontend canister serving a web page.
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/hello).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/hello).
 - [See a running example](https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/).
@@ -36,14 +36,14 @@ A simple dapp that shows a basic (stable) variable demo.
 
 ## Basic decentralized autonomous organization (DAO)
 
-Decentralized governance is highlight of ICP and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can submit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.  
+Decentralized governance is highlight of ICP and is illustrated by the basic DAO sample code. It illustrates how to initialize a set of accounts and corresponding tokens, how account owners can submit proposals for other account owners to vote on, and how a proposal is executed given enough favorable votes.
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_dao).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_dao).
 - [YouTube tutorial](https://youtu.be/3IcYlieA-EE).
 
 ## Basic decentralized exchange (DEX)
 
-To enable DeFi applications on ICP, canisters need to interact with token canisters and the ledger canister. This example dapp illustrates these interactions by showing how to enable an Exchange to take custody of funds, update an internal balance book as users trade, and give custody back to the user as funds are withdrawn.  
+To enable DeFi applications on ICP, canisters need to interact with token canisters and the ledger canister. This example dapp illustrates these interactions by showing how to enable an Exchange to take custody of funds, update an internal balance book as users trade, and give custody back to the user as funds are withdrawn.
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/defi).
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/defi).
 - [See a running example](https://gzz56-daaaa-aaaal-qai2a-cai.ic0.app/).
@@ -51,9 +51,9 @@ To enable DeFi applications on ICP, canisters need to interact with token canist
 
 ## Encrypted note-taking dapp
 
-Create, access, modify confidential notes from multiple devices using [Internet Identity](../references/ii-spec) service and end-to-end encryption. The sample code relies upon the **web-serving** and **storage capabilities** of ICP, and highlights two key functionalities: 
+Create, access, modify confidential notes from multiple devices using [Internet Identity](../references/ii-spec) service and end-to-end encryption. The sample code relies upon the **web-serving** and **storage capabilities** of ICP, and highlights two key functionalities:
 1. Client-side, end-to-end encryption.
-2. Multi-user and multi-device support.  
+2. Multi-user and multi-device support.
 
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_motoko).
 - [Rust](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp/src/encrypted_notes_rust).
@@ -80,18 +80,18 @@ The example demonstrates a counter dapp and an HTTP interface. It is essentially
 
 ## Hosting a static website
 
-This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to ICP.  
+This tutorial shows how to quickly set up a static website structure, add content and basic styling, and deploy to ICP.
 - [YouTube tutorial](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
 
 ## Hosting a web game
 
-The example shows how to deploy a web game on ICP, sample code can be found at [samples repo](https://github.com/dfinity/examples/tree/master/hosting). 
+The example shows how to deploy a web game on ICP, sample code can be found at [samples repo](https://github.com/dfinity/examples/tree/master/hosting).
 
 ## ICP transfer
 
-This sample code demonstrates how a dapp can transfer ICP to its most active users.  
+This sample code demonstrates how a dapp can transfer ICP to its most active users.
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer).
-- [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer). 
+- [Rust](https://github.com/dfinity/examples/tree/master/rust/tokens_transfer).
 
 ## Internet Identity integration
 
@@ -109,12 +109,12 @@ The example dapp shows how to build a very basic dapp with both backend and fron
 
 ## NFT minting
 
-This NFT minting dapp showcases how easy it can be to create a user generated NFT and share it. This dapp uses the [DIP721](https://github.com/Psychedelic/DIP721) NFT standard.  
+This NFT minting dapp showcases how easy it can be to create a user generated NFT and share it. This dapp uses the [DIP721](https://github.com/Psychedelic/DIP721) NFT standard.
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/dip721-nft-container).
 - [YouTube tutorial](https://youtu.be/1po3udDADp4).
 
 ## NFT wallet
-This is an NFT wallet example dapp that utilizes minted NFTs from the Rust dip721-nft-container. Among some of its essential features, the wallet can register NFTs, transfer out NFTs and check how many NFTs it contains. This dapp includes a frontend UI for interaction. 
+This is an NFT wallet example dapp that utilizes minted NFTs from the Rust dip721-nft-container. Among some of its essential features, the wallet can register NFTs, transfer out NFTs and check how many NFTs it contains. This dapp includes a frontend UI for interaction.
 
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/nft-wallet).
 
@@ -136,7 +136,7 @@ This simple dapp is a CRUD-like demo service for storing pieces of related infor
 
 ## Point of sale (POS)
 
-This app demonstrates a real world use case for [ckBTC](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc/) on the Internet Computer. It is a simple point of sale app that allows users to charge customers using ckBTC. It also demonstrates the [HTTPS outcall](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/) functionality by sending notifications to users when a payment is received.
+This app demonstrates a real world use case for [ckBTC](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc/) on the Internet Computer. It is a simple point of sale app that allows users to charge customers using ckBTC. It also demonstrates the [HTTPS outcall](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/) functionality by sending notifications to users when a payment is received.
 
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
 - [See a running example](https://hngac-6aaaa-aaaal-qb6tq-cai.icp0.io/).
@@ -153,7 +153,7 @@ This example shows how to sort an array, via quicksort, in Motoko.
 
 ## QR code generator
 
-This example shows that an Internet Computer dapp can perform a long-running computation, like image processing, in a single message execution which is possible due to a unique feature called Deterministic Time Slicing (DTS) that automatically divides long computations into smaller slices executed across multiple blocks. 
+This example shows that an Internet Computer dapp can perform a long-running computation, like image processing, in a single message execution which is possible due to a unique feature called Deterministic Time Slicing (DTS) that automatically divides long computations into smaller slices executed across multiple blocks.
 
 - [Rust](https://github.com/dfinity/examples/tree/master/rust/qrcode).
 
@@ -174,7 +174,7 @@ This sample is a CRUD-like demo service, sans a front end; see also: phone book 
 
 ## Superheros
 
-This example is a simple CRUD dapp. 
+This example is a simple CRUD dapp.
 - [Motoko](https://github.com/dfinity/examples/tree/master/motoko/superheroes).
 
 ## Who am I?
