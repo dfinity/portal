@@ -3590,5 +3590,19 @@
     "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
     "twitter": "https://twitter.com/kovachtech",
     "submittableId": "44337954"
-  }
+  },
+  {
+    "id": "formyfi",
+    "name": "FormyFi",
+    "oneLiner": "Decentralized and Fully On-chain Forms",
+    "website": "https://formyfi.io",
+    "github": "https://github.com/talentum/formify",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "Decentralized and Fully On-chain Forms Application, that revolutionizes the way you ask and answer questions by leveraging blockchain technology to ensure transparency, security, and fairness.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/formyfi.png",
+    "submittableId": "44539692"
+  },
 ]
