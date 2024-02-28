@@ -443,7 +443,7 @@ function EnterprisePage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
               DocuTrack, an open-source dapp co-developed with a Swiss private bank, 
-              transforms encrypted document exchange for enterprises and their clients.
+              simplifies document exchange for enterprises and their clients.
               It assures privacy and security by leveraging blockchain technology and advanced cryptography.
               </p>
               <Link
