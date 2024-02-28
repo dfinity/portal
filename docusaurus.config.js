@@ -66,7 +66,7 @@ const subnavItems = [
   {
     type: "dropdown",
     position: "right",
-    label: "Programming Languages",
+    label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
       { label: "Motoko", href: "/docs/current/developer-docs/backend/motoko/" },
