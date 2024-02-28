@@ -63,17 +63,35 @@ const subnavItems = [
     label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
-  {
-    type: "dropdown",
+ {
+    type: "docSidebar",
     position: "left",
-    label: "Programming Languages",
-    items: [
-      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      { label: "Motoko", href: "/docs/current/developer-docs/backend/motoko/" },
-      { label: "TypeScript", href: "/docs/current/developer-docs/backend/typescript/" },
-      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      { label: "Solidity", href: "/docs/current/developer-docs/backend/solidity/" },
-    ],
+    sidebarId: "motoko",
+    label: "Motoko",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "rust",
+    label: "Rust",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "typescript",
+    label: "Typescript",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "python",
+    label: "Python",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "solidity",
+    label: "Solidity",
   },
   {
     type: "dropdown",
