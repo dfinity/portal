@@ -4,7 +4,7 @@
 
 ## Overview
 
-This page introduces some of the most commonly used terminology that developers should be aware of when building on the Internet Computer. This page covers many terms, but does not include every single term that is related to the Internet Computer. For the full glossary of terms, please see [here.](/docs/docs/current/concepts/glossary)
+This page introduces some of the most commonly used terminology that developers should be aware of when building on the Internet Computer. This page covers many terms, but does not include every single term that is related to the Internet Computer. For the full glossary of terms, please see [here.](/docs/current/concepts/glossary)
 
 ## Concepts
 
