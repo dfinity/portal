@@ -2,10 +2,10 @@
 sidebar_position: 3
 ---
 # Using a cycles wallet
- 
+
 ## Overview
 
-As discussed in [tokens and cycles](/concepts/tokens-cycles.md), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
 Unlike ICP tokens, cycles are only associated with canisters and not with user or developer principals. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
@@ -72,11 +72,11 @@ If you are doing local development, your local cycles wallet is created when you
 
 Alternatively, a local instance of the cycles wallet can be deployed manually with the following workflow:
 
-### Prerequisites 
+### Prerequisites
 
 - [x] Install the [IC SDK](/docs/current/developer-docs/getting-started/install/).
 
-- [x] Download and install [Node.js](https://nodejs.org/en/download/current), version 16.x.x and older. Running a version newer than 16.x.x may result in an error. 
+- [x] Download and install [Node.js](https://nodejs.org/en/download/current), version 16.x.x and older. Running a version newer than 16.x.x may result in an error.
 
 - #### Step 1: Clone the cycles wallet repository and navigate into the directory:
 
@@ -111,7 +111,7 @@ dfx canister id wallet
 
 ### Creating a cycles wallet on the mainnet
 
-If you are deploying on the Internet Computer mainnet, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (Wasm). 
+If you are deploying on the Internet Computer mainnet, you typically create your cycles wallet by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (Wasm).
 
 There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](/docs/current/developer-docs/daos/nns/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
@@ -149,7 +149,7 @@ You can use the following command to display the wallet's principal and role (co
 
 ```
 dfx wallet addresses
-``` 
+```
 
 This command displays output similar to the following:
 
@@ -256,7 +256,7 @@ For reference information and examples that illustrate using dfx wallet commands
 - [`upgrade`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet#upgrade): upgrade the cycles wallet's Wasm module to the current Wasm bundled with DFX.
 
 ### Adding a controller
-An identity assigned the role of controller has the most privileges and can perform the following actions on the selected identity's cycles wallet. Identities that are added as controllers are also listed as custodians. 
+An identity assigned the role of controller has the most privileges and can perform the following actions on the selected identity's cycles wallet. Identities that are added as controllers are also listed as custodians.
 
 To add a controller, the following command can be used:
 
