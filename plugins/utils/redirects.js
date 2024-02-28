@@ -435,6 +435,10 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/ckBTC-reference /docs/current/references/ckbtc-reference
   /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin /docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
   /docs/current/developer-docs/setup/ic-admin /docs/current/developer-docs/developer-tools/cli-tools/ic-admin
+  /docs/current/developer-docs/backend/subnet-types /docs/current/concepts/subnet-types
+  /docs/current/references/glossary /docs/current/concepts/glossary
+  /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/README
+  /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/README
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
