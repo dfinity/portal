@@ -449,7 +449,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "frameworks",
+          label: "Frameworks",
           items: [
             "developer-docs/web-apps/frameworks/juno",
           ],
