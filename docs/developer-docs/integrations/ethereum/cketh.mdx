@@ -29,7 +29,7 @@ It uses the following workflow:
 - The ckETH minter listens to the `ReceivedEth` event by periodically fetching
   logs from multiple Ethereum JSON RPC cloud providers and mints the
   corresponding amount of ckETH to the receiver's account on the ckETH ledger.
-- Users can withdraw by creating an ICRC-2 approval on the ledger and calling `withdraw_eth` with a receiver ETH address as an argument on the minter.
+- Users can withdraw ETH by creating an ICRC-2 approval on the ledger and calling `withdraw_eth` with a receiver ETH address as an argument on the minter.
 - The minter will then burn the ckETH on the ledger and create an Ethereum transaction and submit it to the Ethereum network.
 
 The **ckETH ledger** and **ckETH index** canisters are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [Interacting with an ICRC-1 ledger](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger) section.
