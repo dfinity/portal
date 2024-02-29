@@ -38,7 +38,7 @@ Canister smart contracts must be able to pay for complete execution (all or noth
 
 To learn more about cycles and how to use them, see [here](/docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles).
 
-For more information on cycles costs, see the tables in [computation and storage costs](/developer-docs/gas-cost.md).
+For more information on cycles costs, see the tables in [computation and storage costs](/docs/current/developer-docs/gas-cost).
 
 ## Token value and volatility
 

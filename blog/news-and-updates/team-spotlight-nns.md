@@ -7,9 +7,9 @@ image: /img/blog/dev-update-blog-nns-1.jpeg
 
 ![NNS Team spotlight](../../static/img/blog/dev-update-blog-nns-1.jpeg)
 
-Hello devs and welcome to a new blog post series: team spotlight! 
+Hello devs and welcome to a new blog post series: team spotlight!
 
-Every two weeks, we're going to be showcasing one of the DFINITY teams to learn what they're working on and dive deeper into how the team fits into the ICP ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series. 
+Every two weeks, we're going to be showcasing one of the DFINITY teams to learn what they're working on and dive deeper into how the team fits into the ICP ecosystem. Through this new series, developers will get updates and insight into teams other than the SDK and Motoko teams, which are regularly covered on this blog through the 'Developer weekly update' series.
 
 For the first installment of this series, we sat down with the Network Nervous System team to learn more about the NNS, the SNS initiative, and the current goals the team is focused on.
 
@@ -44,7 +44,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 **Does the NNS DAO have a role that it plays in the SNS initiative and the launching of new SNSs?**
 
-*The NNS DAO approves and initiates the launch of new SNSs. This means that if someone wants to hand over a dapp’s control to a new SNS, then this process needs approval from the NNS community. You can read more details about this process [here](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/launching/launch-summary).*
+*The NNS DAO approves and initiates the launch of new SNSs. This means that if someone wants to hand over a dapp’s control to a new SNS, then this process needs approval from the NNS community. You can read more details about this process [here](https://internetcomputer.org/docs/current/developer-docs/daos/sns/launching/launch-summary).*
 
 **Let's talk about the team's roadmap. What is the primary project that the NNS team is working on or focused on currently?**
 
@@ -60,7 +60,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 *It will tremendously simplify the SNS launch flow for developers who want to hand over their dapp to an SNS. Moreover, it will simplify the process for the NNS community who now only have to understand and verify one NNS proposal to make a decision for whether an SNS should be launched.*
 
-**Are there any other major roadmap items currently planned for the NNS team?** 
+**Are there any other major roadmap items currently planned for the NNS team?**
 
 *It’s hard to talk about specific features as the environment we operate in is a bit dynamic. Instead, here are the high level goals we have:*
 
@@ -68,7 +68,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 *- For SNS, the focus is on improving the project experience when launching an SNS, improving the DAO member experience once an SNS is launched, and extending the framework to support 10x projects.*
 
-**For developers who want to stay up to date with the latest NNS team updates, where should they be looking?** 
+**For developers who want to stay up to date with the latest NNS team updates, where should they be looking?**
 
 *We publish regular updates for proposals submitted for both the NNS and the SNS canisters on the official DFINITY forum. There users can stay up to date with upcoming API changes and new functionality that we are working on. [Here](https://forum.dfinity.org/t/nns-updates-june-12-2023/20670) is an example forum post.*
 
@@ -86,6 +86,6 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 *We are a pretty “new” team - many team members joined in the last year. The engineers in our team are spread pretty evenly between the US and CH.*
 
-Thank you so much to the NNS team for sitting down with us and diving into all things NNS! We hope that you learned as much as we did. Be sure to check in later in the month for another team spotlight blog post! 
+Thank you so much to the NNS team for sitting down with us and diving into all things NNS! We hope that you learned as much as we did. Be sure to check in later in the month for another team spotlight blog post!
 
 -DFINITY
