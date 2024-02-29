@@ -449,9 +449,9 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Browser JS",
+          label: "frameworks",
           items: [
-            "developer-docs/web-apps/browser-js/juno",
+            "developer-docs/web-apps/frameworks/juno",
           ],
         },
         {
