@@ -454,6 +454,13 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Frameworks",
+          items: [
+            "developer-docs/web-apps/frameworks/juno",
+          ],
+        },
+        {
+          type: "category",
           label: "Custom domains",
           items: [
             "developer-docs/web-apps/custom-domains/using-custom-domains",
