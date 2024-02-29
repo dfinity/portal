@@ -460,8 +460,6 @@ const sidebars = {
             "developer-docs/web-apps/custom-domains/dns-setup",
           ],
         },
-        ],
-        },
         "developer-docs/web-apps/design-dapps",
 	      "developer-docs/web-apps/independently-verifying-ic-signatures",
         {
@@ -482,7 +480,7 @@ const sidebars = {
             "developer-docs/web-apps/user-login/email-password",
           ],
         },
-	{
+	    {
           type: "category",
           label: "Using HTTP certification",
           items: [
@@ -503,6 +501,8 @@ const sidebars = {
             }
           ]
         },
+      ],
+    },
     {
       type: "category",
       label: "Security",
