@@ -32,7 +32,7 @@ It uses the following workflow:
 - Users can withdraw ETH by creating an [ICRC-2 approval](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve) on the ledger and calling `withdraw_eth` with a receiver ETH address as an argument on the minter.
 - The minter will then burn the ckETH on the ledger and create an Ethereum transaction and submit it to the Ethereum network.
 
-The **ckETH ledger** and **ckETH index** canisters are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [interacting with an ICRC-1 ledger](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger) section.
+The **ckETH ledger** and **ckETH index** canisters are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [using the ICRC-1 ledger](/docs/developer-docs/defi/icrc-1/using-icrc1-ledger.mdx) section.
 
 ## Minting ckETH
 
@@ -61,7 +61,7 @@ A simplified overview of the process to witthdraw ETH from ckETH is as follows:
 
 ## Integrating ckETH into a project
 
-For integrating ckETH into a dapp, you can follow the [generic instructions for ICRC-1 tokens](/docs/developer-docs/integrations/icrc-1/index.md).
+For integrating ckETH into a dapp, you can follow the [generic instructions for ICRC-1 tokens](/docs/developer-docs/defi/icrc-1/icrc1-ledger-setup.mdx).
 To integrate with ckETH, the configuration of a project in the `dfx.json` file will include the following `canisters` section:
 
 ```json
