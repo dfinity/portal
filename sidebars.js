@@ -973,10 +973,10 @@ const sidebars = {
         "concepts/canisters-code",
         "concepts/governance",
         "concepts/nodes-subnets",
-        "developer-docs/backend/subnet-types",
+        "concepts/subnet-types",
         "concepts/tokens-cycles",
         "concepts/trust-in-canisters",
-        "references/glossary",
+        "concepts/glossary",
       ],
     },
     {

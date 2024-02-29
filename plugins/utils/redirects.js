@@ -92,7 +92,7 @@ const redirects = `
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/build/overview
   /docs/developers-guide/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
-  /docs/developers-guide/glossary /docs/current/references/glossary
+  /docs/developers-guide/glossary /docs/current/concepts/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
   /docs/developers-guide/lang-service-ide /docs/current/developer-docs/developer-tools/ide/vs-code
   /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/getting-started/install/
@@ -196,7 +196,7 @@ const redirects = `
   /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/getting-started/install/
   /docs/current/tutorials/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/tutorials/ /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/developer-docs/backend/eu-subnets /docs/current/developer-docs/backend/subnet-types
+  /docs/current/developer-docs/backend/eu-subnets /docs/current/concepts/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
   /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/choosing-language
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/smart-contracts/deploy/overview
@@ -435,6 +435,10 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/ckBTC-reference /docs/current/references/ckbtc-reference
   /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin /docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
   /docs/current/developer-docs/setup/ic-admin /docs/current/developer-docs/developer-tools/cli-tools/ic-admin
+  /docs/current/developer-docs/backend/subnet-types /docs/current/concepts/subnet-types
+  /docs/current/references/glossary /docs/current/concepts/glossary
+  /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/
+  /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
