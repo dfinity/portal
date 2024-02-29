@@ -6,9 +6,16 @@ For questions from the POV of a user who wishes to know how to hold, send, recei
 
 ## How do I write a smart contract that uses ckETH?
 
-ckETH is the digital twin of ETH on the Internet Computer (ICP). It allows Ethereum holders to interact with the Internet Computer blockchain with significantly lower transaction fees.
+At high-level:
 
-The process of acquiring ckETH involves depositing ETH to a specific function in the ckETH helper contract on Ethereum, which then triggers the ICP ckETH canister smart contract to mint the same amount of ckETH to the specified ICP principal or wallet address. This ckETH can then be used natively on the Internet Computer, and can be converted back to ETH at any time.
+1. ckETH is only a special case of the [ICRC-1 ledger token standard](https://internetcomputer.org/docs/current/developer-docs/defi/overview/#icrc-1-ledgers)
+2. ICRC-1 standard is a special case of calling another canister on IC
+
+More detail:
+
+You can write a smart contract that works with ckETH just like you would for any other `ICRC-1`-compliant token. You can find all the ICRC-1 ledger endpoints [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). Requests for balances and transfers must be sent to the ckETH ledger, which has the canister ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
+
+For detailed information and potential code examples, check out out th [ICP documentation](https://internetcomputer.org/docs), the [DFINITY forum](https://forum.dfinity.org), and the [ckETH minter documentation](https://github.com/dfinity/ic/blob/master/rs/ethereum/ckETH/minter/README.adoc).
 
 ## The best place to start to write contracts that handle ckETH are:
 
