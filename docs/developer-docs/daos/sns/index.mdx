@@ -1,7 +1,11 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Service Nervous System (SNS)
 
+<MarkdownChipRow labels={["Advanced", "Governance" ]} />
+
 ## Overview
-These pages introduce instructions needed when considering handing over control of a 
+These pages introduce instructions needed when considering handing over control of a
 dapp to a Service Nervous System (SNS) or integrating with an SNS.
 If this is the first time you hear about the SNS, it is recommended to take a look at the high level [SNS](/sns)
 and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
@@ -10,7 +14,7 @@ This page provides an overview of how the SNS developer documentation is organiz
 
 ## Introduction to the SNS
 This section gives a high level overview of the SNS lifecycle, including the architecture and how an SNS is launched.
-You will find 
+You will find
 * [SNS introduction](./introduction/sns-intro-high-level.mdx) giving a quick introduction.
 * [SNS architecture](./introduction/sns-architecture.mdx) explaining how SNSs are deployed and upgraded and what canisters are involved.
 * [Alternative DAOs](./introduction/dao-alternatives.mdx) presenting alternative ways how to get a DAO.
@@ -36,7 +40,7 @@ It includes
 
 ## Testing an SNS
 An important part of preparing an SNS launch, integrating with an SNS, and managing an SNS, is testing.
-This section provides 
+This section provides
 * [An introduction to SNS testing](./testing/testing-before-launch.mdx).
 * [Guidelines how to test an SNS locally](./testing/testing-locally.mdx), including the SNS launch.
 * [Guidelines how to test the operation of the dapp under SNS control](./testing/testing-on-mainnet.mdx), including on the mainnet.

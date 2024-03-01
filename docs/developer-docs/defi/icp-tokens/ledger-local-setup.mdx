@@ -1,15 +1,19 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # ICP ledger local setup
 
+<MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
+
 ## Overview
-If you are working in a local development environment, i.e. with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger. 
+If you are working in a local development environment, i.e. with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
 
 :::info
 There are two ways of deploying an ICP ledger locally.
-- Use [dfx-nns](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-nns) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will also install an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straightforward, but also more heavyweight. 
+- Use [dfx-nns](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-nns) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will also install an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straightforward, but also more heavyweight.
 - Deploy the ICP ledger `wasm` locally. This method is discussed and shown in this guide and it gives you more control over the deployment and also is lightweight.
 :::
 
-Deploying an ICP ledger locally gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments and you have control over which `wasm` version of the ICP ledger you want to interact with. 
+Deploying an ICP ledger locally gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments and you have control over which `wasm` version of the ICP ledger you want to interact with.
 
 The ICP ledger only exists on the mainnet and the `wasm` that is running on the mainnet is not meant to be used for other token deployments. It needs to be backward compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
 
@@ -144,7 +148,7 @@ Take a moment to read the details of the call made above. Not only are you deplo
 You can interact with the canister by running CLI commands, such as:
 
 ```
-dfx canister call icp_ledger_canister name 
+dfx canister call icp_ledger_canister name
 ```
 
 This command will return the token's name, such as:

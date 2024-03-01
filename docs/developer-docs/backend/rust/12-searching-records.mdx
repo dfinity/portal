@@ -1,4 +1,8 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 12: Adding and searching simple records
+
+<MarkdownChipRow labels={["Intermediate", "Rust", "Tutorial"]} />
 
 ## Overview
 In this guide, you are going to write a dapp that provides a few basic functions to add and retrieve simple profile records that consist of a name, description, and an array of keywords.
@@ -15,14 +19,14 @@ This program supports the following functions:
 
 This guide provides a simple example of how you can use the Rust CDK interfaces and macros to simplify writing dapps in Rust for the Internet Computer.
 
-This guide demonstrates: 
--   How to represent slightly more complex data—in the form of a profile as a `record` and an `array` of keywords—using the Candid interface description language. 
--   How to write a simple search function with partial string matching. 
+This guide demonstrates:
+-   How to represent slightly more complex data—in the form of a profile as a `record` and an `array` of keywords—using the Candid interface description language.
+-   How to write a simple search function with partial string matching.
 -   How profiles are associated with a specific principal.
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Creating a new project
 
@@ -41,7 +45,7 @@ dfx new rust_profile
 You will be prompted to select a language that your backend canister will use. Select 'Rust':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
@@ -51,7 +55,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -295,7 +299,7 @@ dfx identity new Miles
 ```
 
 The following output will be returned:
-    
+
 ```
 Your seed phrase for identity 'Miles': recycle  ...
 This can be used to reconstruct your key in case of emergency, so write it down in a safe place.
@@ -385,4 +389,4 @@ The command returns the `Dupree` profile:
 ```
 ## Next steps
 
-Next, you'll cover [access control](./13-access-control.md) in Rust canisters.
+Next, you'll cover [access control](./13-access-control.mdx) in Rust canisters.

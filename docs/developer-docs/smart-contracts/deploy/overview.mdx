@@ -1,7 +1,10 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Overview
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 After you have built a canister, you can deploy it either on the [local execution environment](/docs/current/developer-docs/getting-started/deploy/local), a sandbox environment such as the [Motoko playground](/docs/current/developer-docs/setup/playground) or [on the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet). Your canister must be deployed before you can make calls to it and execute methods. 
 

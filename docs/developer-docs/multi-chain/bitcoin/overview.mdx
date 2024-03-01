@@ -1,6 +1,9 @@
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Overview
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
 Smart contracts running on ICP can directly interact with the Bitcoin network without using bridges.
 This is possible because ICP nodes can fetch and validate the Bitcoin network's blocks, and then make them available for smart contracts to query and read.

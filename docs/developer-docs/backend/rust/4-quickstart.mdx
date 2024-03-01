@@ -1,7 +1,11 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 4: Rust quickstart
+
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
 ## Overview
 
@@ -9,7 +13,7 @@ Applications for the Internet Computer blockchain start as **projects**. You can
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Creating a new Rust project
 
@@ -27,7 +31,7 @@ dfx new rust_hello
 You will be prompted to select a language that your backend canister will use. Select 'Rust':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
@@ -37,7 +41,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -124,7 +128,7 @@ Backend canister via Candid interface:
 
 ## Testing the dapp
 
-There are several ways to interact with your canisters. Let's talk about access from the browser first. 
+There are several ways to interact with your canisters. Let's talk about access from the browser first.
 
 To access the frontend canister (`rust_hello_frontend`) you can simply follow the link that was printed in the terminal in the previous step.
 ```
@@ -159,7 +163,7 @@ To stop the local execution environment running on your computer, run the follow
 dfx stop
 ```
 
-When dfx is started again in the future, it should be started with the `dfx start --clean` command to wipe the previous state. 
+When dfx is started again in the future, it should be started with the `dfx start --clean` command to wipe the previous state.
 
 ## Next steps
 

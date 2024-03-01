@@ -1,17 +1,21 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Exchange rate canister
+
+<MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
 
 ## Overview
 
-The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates. 
+The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates.
 
 The XRC canister can be used by dapps such as decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the NNS uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
 
-The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp. 
+The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp.
 
-An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default. 
+An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default.
 
 ## Usage
-The canister ID of the XRC is `uf6dk-hyaaa-aaaaq-qaaaq-cai`. 
+The canister ID of the XRC is `uf6dk-hyaaa-aaaaq-qaaaq-cai`.
 
 The exchange rate canister offers a single endpoint:
 
@@ -19,13 +23,13 @@ The exchange rate canister offers a single endpoint:
 "get_exchange_rate": (GetExchangeRateRequest) -> (GetExchangeRateResult)
 ```
 
-To make a request to the XRC, the following request form can be used: 
+To make a request to the XRC, the following request form can be used:
 ```
 type GetExchangeRateRequest = record {
    base_asset: Asset;
    quote_asset: Asset;
    timestamp: opt nat64;
-}; 
+};
 ```
 
 Once this form has been sent to the XRC, the following response is returned:
@@ -37,7 +41,7 @@ type GetExchangeRateResult = variant {
 };
 ```
 
-## Cycles cost 
+## Cycles cost
 Each request to the XRC costs 10B cycles to submit the request, otherwise an `ExchangeRateError::NotEnoughCycles` error will be returned. The actual cycles cost of the request call will depend on two factors: the requested asset types and the state of the internal exchange rate cache. These parameters are as follows:
 
 - If the request can be served from the cache, the actual cost is 20M cycles.
@@ -48,10 +52,10 @@ Each request to the XRC costs 10B cycles to submit the request, otherwise an `Ex
 The remaining cycles are returned to the requesting canister. Note that at least 1M cycles are charged even in case of an error in order to mitigate the risk of a denial-of-service attack.
 
 :::info
-Note: The cycles cost of these requests are expected to be decreased in the next upgrade of the XRC. 
+Note: The cycles cost of these requests are expected to be decreased in the next upgrade of the XRC.
 :::
 
-## Calling the XRC directly 
+## Calling the XRC directly
 
 To call the XRC directly, first export your wallet canister ID as an environment variable with the command:
 
@@ -59,7 +63,7 @@ To call the XRC directly, first export your wallet canister ID as an environment
 export WALLET=[wallet-canister-id]
 ```
 
-If you need to get your wallet canister ID, you can run the `dfx wallet addresses` command to return your wallet's canister ID. 
+If you need to get your wallet canister ID, you can run the `dfx wallet addresses` command to return your wallet's canister ID.
 
 Then, you can send a request, such as one to get the BTC/USD rate, with the following command:
 
@@ -69,7 +73,7 @@ dfx canister call --wallet $WALLET --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-q
 
 ## Exchange rate canister demo
 
-Alternatively, you can run a local XRC demo application to test the functionality locally. 
+Alternatively, you can run a local XRC demo application to test the functionality locally.
 
 :::caution
 It is worth noting that this sample dapp is very simple. If there is an error, it always returns `0` because the return value is simply a float.
@@ -106,7 +110,7 @@ Then, deploy the canisters with the command:
 dfx deploy --with-cycles 10000000000
 ```
 
-Note that the `--with-cycles` parameter is required since cycles must be sent with every request to the exchange rate canister. For more information on the cycles cost, review the [cycles cost](#cycles-cost) section above. 
+Note that the `--with-cycles` parameter is required since cycles must be sent with every request to the exchange rate canister. For more information on the cycles cost, review the [cycles cost](#cycles-cost) section above.
 
 The output of this command will resemble the following:
 

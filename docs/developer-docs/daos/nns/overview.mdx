@@ -1,8 +1,12 @@
-# Overview​
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Overview
+
+<MarkdownChipRow labels={["Beginner", "Governance" ]} />
 
 The NNS is the decentralized autonomous organization (DAO) that governs the Internet Computer Protocol. You can access the [on-chain frontend](https://nns.ic0.app/).
 
-It is a fully on-chain, decentralized organization and is, for instance, responsible for making protocol-level upgrades to continuously improve the Internet Computer Protocol. 
+It is a fully on-chain, decentralized organization and is, for instance, responsible for making protocol-level upgrades to continuously improve the Internet Computer Protocol.
 
 It operates under a liquid democracy in which those who have [staked their ICP in a neuron vote](/docs/current/concepts/governance) on proposals that shape the development of the Internet Computer.
 
@@ -20,28 +24,28 @@ While other blockchains take weeks or months to upgrade and typically require su
 
 ## Participation rewards
 Network governance on the Internet Computer is incentivized through a system called "neurons".
-ICP token holders can create a “neuron” by staking ICP up to eight years. 
+ICP token holders can create a “neuron” by staking ICP up to eight years.
 
-When a user creates a neuron, the staked ICP can only be taken out of the neuron again by disbursing the neuron. Each neuron is configured with a “dissolve delay” that determines the minimum amount of time that you have to wait before you can unlock your staked ICP utility tokens. Once a neuron has been placed into “dissolving mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP. 
+When a user creates a neuron, the staked ICP can only be taken out of the neuron again by disbursing the neuron. Each neuron is configured with a “dissolve delay” that determines the minimum amount of time that you have to wait before you can unlock your staked ICP utility tokens. Once a neuron has been placed into “dissolving mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP.
 
-Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.  
+Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.
 
 The number of rewards that neuron receives derive from factors as the amount of staked tokens, the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards are capped and must be divided between voters.
 
 For more information on neurons, refer to the [What are Neurons section in the NNS quickstart](/docs/current/developer-docs/daos/nns/nns-app-quickstart).
 For more information on staking rewards, refer to [Staking and Voting Rewards](/docs/current/developer-docs/daos/nns/staking-voting-rewards).
 
-## Proposals 
+## Proposals
 Participants submit proposals to the NNS. Refer to the proposal submission requirements and types at [proposal requirements](/docs/current/developer-docs/daos/nns/proposal-requirements).
 
 Proposals are adopted or rejected based on voting activity by “neurons” that network participants have created.
 
 ## Participation
 
-Neurons can manually vote on all proposals. 
+Neurons can manually vote on all proposals.
 
 If they cannot manually vote on all proposals due to high submission volumes or a lack of expertise, neurons can delegate their vote, called _following_, for specific proposal topic. This ensures efficient decision-making without requiring constant manual input.
 
-Since the incentive to stake ICP in a neuron is high, it is difficult and exorbitantly expensive for an attacker to acquire a sufficiently large stake to gain significant influence. 
+Since the incentive to stake ICP in a neuron is high, it is difficult and exorbitantly expensive for an attacker to acquire a sufficiently large stake to gain significant influence.
 
 To participate, navigate to the [NNS app](https://nns.ic0.app/).
