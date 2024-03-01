@@ -78,6 +78,14 @@ const subnavItems = [
   {
     type: "dropdown",
     position: "right",
+    label: "Frameworks",
+    items: [
+      { label: "Juno", href: "/docs/current/developer-docs/web-apps/frameworks/juno" },
+    ],
+  },
+  {
+    type: "dropdown",
+    position: "right",
     label: "Additional Resources",
     items: [
       {
