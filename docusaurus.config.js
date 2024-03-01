@@ -63,6 +63,12 @@ const subnavItems = [
     label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
+ {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "motoko",
+    label: "Motoko",
+  },
   {
     type: "dropdown",
     position: "right",

@@ -2,9 +2,9 @@
 
 ## Overview
 
-Candid is an **interface description language** with the primary purpose of describing the public interface of a service. A service is usually in the form of a program deployed as a canister. Candid is language-agnostic, meaning that it allows for the inter-operation between services and frontends written in different programming languages, including Rust. 
+Candid is an **interface description language** with the primary purpose of describing the public interface of a service. A service is usually in the form of a program deployed as a canister. Candid is language-agnostic, meaning that it allows for the inter-operation between services and frontends written in different programming languages, including Rust.
 
-## Prerequisites 
+## Prerequisites
 
 Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
 
@@ -12,7 +12,7 @@ Before getting started, assure you have set up your developer environment accord
 
 When writing a canister in Rust, the `dfx build` command will ensure that the canister's service description is correctly referenced. The Candid service description, however, will need to be manually written following the writing conventions described in the [Candid specification](https://github.com/dfinity/candid/blob/master/spec/Candid.md#core-grammar).
 
-The following example code displays how a simple Counter application can use a Candid interface to interact with a Rust canister. 
+The following example code displays how a simple Counter application can use a Candid interface to interact with a Rust canister.
 
 :::info
 This example assumes you have a project made with the `dfx new` command, as described in the [quick start](4-quickstart.mdx) or [deploying canisters](5-deploying.mdx) pages.
@@ -91,7 +91,7 @@ To use the Candid UI, navigate to the link specified as the 'Backend canister vi
 
 [Candid UI](../rust/_attachments/CandidUI.png)
 
-This UI interface can be used to call the functions of the `counter` canister. 
+This UI interface can be used to call the functions of the `counter` canister.
 
 ## Using Candid for interactions between canisters
 
@@ -114,11 +114,11 @@ async fn greet() -> String {
 
 ### What this code does
 
-When the import macro on the `counter` canister (the `#[import(canister = "counter")]` declaration) is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. 
+When the import macro on the `counter` canister (the `#[import(canister = "counter")]` declaration) is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly.
 
-The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively, as if it were a Rust function, even if the `counter` canister is implemented in a different language or if you do not have the source code for the imported canister. 
+The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively, as if it were a Rust function, even if the `counter` canister is implemented in a different language or if you do not have the source code for the imported canister.
 
-For additional information on the type mapping between Candid and Rust, you can consult the [supported types](../../../references/candid-ref.md) reference section.
+For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/docs/current/references/candid-ref) reference section.
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file with the content:
 
@@ -138,4 +138,4 @@ For additional information and libraries to help you create Candid services or c
 
 ## Next steps
 
-To finish the developing backend canisters with Rust guide, check out other [sample](15-samples.md) projects. 
+To finish the developing backend canisters with Rust guide, check out other [sample](15-samples.md) projects.
