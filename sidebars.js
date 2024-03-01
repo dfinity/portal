@@ -643,6 +643,7 @@ const sidebars = {
           label: "Ethereum",
           items: [
             "developer-docs/multi-chain/ethereum/overview",
+            "developer-docs/multi-chain/ethereum/cketh",
             "developer-docs/multi-chain/ethereum/evm-rpc",
             "developer-docs/multi-chain/ethereum/siwe",
           ],
