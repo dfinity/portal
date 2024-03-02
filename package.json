@@ -20,6 +20,7 @@
     "@dfinity/agent": "^0.15.4",
     "@dfinity/candid": "^0.15.4",
     "@dfinity/principal": "^0.15.4",
+    "@floating-ui/react": "^0.26.9",
     "chart.js": "^3.8.0",
     "chartjs-plugin-datalabels": "^2.0.0",
     "clsx": "^1.1.1",

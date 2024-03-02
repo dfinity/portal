@@ -63,7 +63,7 @@ const subnavItems = [
     label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
- {
+  {
     type: "docSidebar",
     position: "left",
     sidebarId: "motoko",
@@ -123,6 +123,13 @@ const subnavItems = [
         href: "https://discord.gg/jnjVVQaE2C",
       },
     ],
+  },
+  /**
+   * Add UI tests in development mode
+   */
+  process.env.NODE_ENV === "development" && {
+    label: "UI Tests",
+    href: "/docs/current/tests/all",
   },
 ];
 
