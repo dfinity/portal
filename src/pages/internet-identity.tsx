@@ -46,7 +46,7 @@ function InternetIdentityPage() {
         <section className="bg-infinite text-white pt-20" ref={heroRef}>
           {bgDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
 
-          <div className="container-10 pt-20 pb-40 md:pb-40 md:pt-36 relative">
+          <div className="container-10 pt-20 pb-12 sm:pb-0 md:pb-40 md:pt-36 relative">
             <div className="blob blob-white blob-xl md:blob-xl md:blob-x-8 md:blob-y-10 opacity-100"></div>
             <motion.h1
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
@@ -64,15 +64,15 @@ function InternetIdentityPage() {
                 sovereignty.
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
-                <Link className="link-white link-with-icon">
-                  Build with Internet Identity
+                <Link className="link-white link-with-icon" href="">
                   <LinkArrowRight />
+                  Build with Internet Identity
                 </Link>
               </motion.p>
             </div>
           </div>
           <div className="container-12 relative">
-            <div className="text-center md:w-5/10 relative md:absolute top-30 sm:top-40 md:top-0 -translate-y-1/2 right-0 -mt-30 md:-mt-30">
+            <div className="text-center md:w-5/10 relative md:absolute top-0 sm:top-40 md:top-0 translate-y-24 sm:translate-y-10 md:-translate-y-1/2 right-0 -mt-30 md:-mt-30">
               <img
                 src="/img/internet-identity/internet-identity-hero.webp"
                 alt=""
@@ -82,7 +82,7 @@ function InternetIdentityPage() {
           </div>
         </section>
 
-        <section className="container-10 relative mt-24 md:mt-40">
+        <section className="container-10 relative mt-24 sm:mt-52 md:mt-40">
           <AnimateSpawn className="md:w-6/12" variants={transitions.container}>
             <motion.h2
               className="tw-heading-4 text-gradient md:tw-heading-60 mb-0"
