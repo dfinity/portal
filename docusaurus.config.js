@@ -42,14 +42,14 @@ const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
 
-const navbarItems = [
+let navbarItems = [
   {
     type: "search",
     position: "right",
   },
 ];
 
-const subnavItems = [
+let subnavItems = [
   {
     type: "doc",
     position: "left",
@@ -124,14 +124,18 @@ const subnavItems = [
       },
     ],
   },
-  /**
-   * Add UI tests in development mode
-   */
-  process.env.NODE_ENV === "development" && {
-    label: "UI Tests",
-    href: "/docs/current/tests/all",
-  },
 ];
+
+/**
+ * Add UI tests in development mode
+ */
+if (process.env.NODE_ENV === "development") {
+  subnavItems.push({
+    label: "UI Tests",
+    // @ts-ignore
+    href: "/docs/current/tests/all",
+  });
+}
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
