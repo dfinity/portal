@@ -1,92 +1,16 @@
-import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import Breadcrumbs from "@site/src/components/Common/Breadcrumbs";
-import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
-import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
-import React, { ReactNode } from "react";
-import slugify from "slugify";
-import transitions from "@site/static/transitions.json";
 import { SmallCardWithDescription } from "@site/src/components/Common/Card";
+import { Faq, FaqSection } from "@site/src/components/Common/Faq/Faq";
+import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
 import IntraPageNav from "@site/src/components/Common/IntraPageNav";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
 import YoutubeVideoEmbed from "@site/src/components/Common/YoutubeVideoEmbed";
-
-function idFromTitle(title: string) {
-  const slug = slugify(title, { strict: true, lower: true });
-  if (slug.match(/^\d/)) {
-    return "sns-faq-" + slug;
-  }
-  return slug;
-}
-
-const Faq: React.FC<{ title: string; children: ReactNode; id?: string }> = ({
-  children,
-  title,
-  id,
-}) => {
-  return (
-    <article
-      id={id || slugify(title, { lower: true, strict: true })}
-      className="scroll-m-[110px]"
-    >
-      <AnimateSpawn variants={transitions.item}>
-        <motion.h2
-          className="tw-heading-5 md:tw-heading-3 mb-6 relative group"
-          variants={transitions.item}
-        >
-          {title}
-          <a
-            className="text-infinite absolute -left-6 md:-left-8 top-0 hidden group-hover:inline-block hover:text-infinite-60 hover:no-underline md:pr-3"
-            href={`#${idFromTitle(title)}`}
-          >
-            #
-          </a>
-        </motion.h2>
-        <motion.div
-          variants={transitions.item}
-          className="
-          tw-paragraph md:tw-lead-sm
-          prose
-          max-w-none
-          prose-h3:tw-heading-6 prose-h3:md:tw-heading-5 prose-h3:mb-4
-          prose-p:tw-paragraph md:prose-p:tw-lead-sm prose-p:mb-3
-          prose-img:mb-0 prose-img:mt-2 prose-img:w-full prose-img:aspect-video prose-img:object-contain prose-img:object-center
-          prose-a:font-normal hover:prose-a:text-infinite hover:prose-a:no-underline
-          prose-ul:mb-4 prose-ul:list-none prose-ul:pl-0 prose-ul:tw-paragraph md:prose-ul:tw-lead-sm
-          prose-li:bg-[url('/img/checkmark.svg')] prose-li:bg-no-repeat prose-li:bg-left-top prose-li:pl-8 prose-li:my-3 prose-li:tw-paragraph prose-li:md:tw-lead-sm
-      "
-        >
-          {children}
-        </motion.div>
-      </AnimateSpawn>
-    </article>
-  );
-};
-
-const FaqSection: React.FC<{
-  title: ReactNode;
-  children: ReactNode;
-  id?: string;
-}> = ({ children, title, id }) => {
-  return (
-    <div
-      className="flex flex-col md:flex-row md:gap-1/12 scroll-m-[110px]"
-      id={id}
-    >
-      <div className="md:w-4/12 flex-shrink-0">
-        <AnimateSpawn
-          variants={transitions.item}
-          className="md:sticky md:top-10"
-        >
-          {title}
-        </AnimateSpawn>
-      </div>
-      <div className="flex flex-col gap-12 md:gap-20 relative">{children}</div>
-    </div>
-  );
-};
+import transitions from "@site/static/transitions.json";
+import Layout from "@theme/Layout";
+import { motion } from "framer-motion";
+import React from "react";
 
 function SnsFaqPage() {
   return (
@@ -202,11 +126,10 @@ function SnsFaqPage() {
                 unique in that they can fully control (via voting) every aspect
                 of a dapp, since everything is on-chain. Having fully on-chain
                 DAOs is important because it enables all decisions to be
-                executed on the blockchain and thus facilitates true 
-                decentralization. This is in contrast to existing DAOs
-                on other blockchains where voting takes place on-chain but the
-                execution of the results are often carried out by developers
-                off-chain.{" "}
+                executed on the blockchain and thus facilitates true
+                decentralization. This is in contrast to existing DAOs on other
+                blockchains where voting takes place on-chain but the execution
+                of the results are often carried out by developers off-chain.{" "}
                 <p>
                   Therefore, SNS DAOs serve as a vehicle to deliver fully
                   decentralized online services that are owned and governed by
@@ -241,17 +164,19 @@ function SnsFaqPage() {
             <Faq title="Are there existing SNS DAOs?">
               The ICP community has expressed much interest and enthusiasm for
               the launch of the SNS technology. OpenChat was the first dapp that
-              handed control over to an SNS DAO in Q1 of 2023. Since then, many 
+              handed control over to an SNS DAO in Q1 of 2023. Since then, many
               ecosystem projects have followed. Currently, there are 11 SNS DAOs
-              on the Internet Computer. Follow their progress on the {" "}
-              <Link href="https://dashboard.internetcomputer.org/sns">SNS dashboard</Link>.
+              on the Internet Computer. Follow their progress on the{" "}
+              <Link href="https://dashboard.internetcomputer.org/sns">
+                SNS dashboard
+              </Link>
+              .
             </Faq>
 
             <Faq title="Were there any security audits on SNS?">
               Yes, the SNS framework has undergone two security audits by{" "}
               <Link href="https://www.trailofbits.com/">Trail of Bits</Link> in
               2022, and 2023 with no severe issues found.
-              
               <p className="not-prose">
                 <Link
                   href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
@@ -262,7 +187,6 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
-
           </FaqSection>
           <FaqSection
             id="participate"
@@ -337,22 +261,22 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How does voting in an SNS DAO work?">
               Once you have acquired SNS tokens, you can lock them into SNS
-              neurons, which allows you to create a proposal, vote directly on one,  
-              delegate voting to trusted parties that have more expertise in certain topics.
-              If a proposal gets adopted, the code of the SNS DAO or the dapp it controls is
-              upgraded. Depending on the SNS configuration, users who vote may
-              be rewarded with additional tokens for participating in
-              governance. If you want to get more deeply involved, you can also
-              suggest feature updates through proposals to improve the dapp
-              controlled by the DAO.
+              neurons, which allows you to create a proposal, vote directly on
+              one, delegate voting to trusted parties that have more expertise
+              in certain topics. If a proposal gets adopted, the code of the SNS
+              DAO or the dapp it controls is upgraded. Depending on the SNS
+              configuration, users who vote may be rewarded with additional
+              tokens for participating in governance. If you want to get more
+              deeply involved, you can also suggest feature updates through
+              proposals to improve the dapp controlled by the DAO.
             </Faq>
             <Faq
               title="How can I get SNS Tokens?"
               id="how-do-you-get-sns-tokens"
             >
               <p>
-                Each SNS DAO has its own unique SNS token. For example,
-                OpenChat has CHAT tokens.{" "}
+                Each SNS DAO has its own unique SNS token. For example, OpenChat
+                has CHAT tokens.{" "}
               </p>
               <p>There are three main ways of acquiring SNS tokens:</p>
               <ul>
@@ -369,28 +293,27 @@ function SnsFaqPage() {
                   <strong>
                     Purchase tokens on a decentralized exchange (DEX):
                   </strong>{" "}
-
                   After a decentralization swap has concluded, liquid tokens
                   will typically be listed on multiple DEXs, where you can buy
-                  them using the ICP utility token or other tokens, depending
-                  on what token pairs the DEX lists, e.g., also Bitcoin or
+                  them using the ICP utility token or other tokens, depending on
+                  what token pairs the DEX lists, e.g., also Bitcoin or
                   Ethereum. An SNS token in high demand may have a higher price
                   on a DEX than in its decentralization swap.{" "}
                   <Link href="http://icdex.io/">ICDex</Link>,{" "}
                   <Link href="https://sonic.ooo/">Sonic</Link> and{" "}
-                  <Link href="https://icpswap.com/">ICPSwap</Link>{" "}
-                  already supports SNS tokens.
+                  <Link href="https://icpswap.com/">ICPSwap</Link> already
+                  supports SNS tokens.
                 </li>
                 <li>
                   <strong>Airdrops:</strong> Besides buying SNS tokens, you can
                   obtain them by receiving airdrops or by engaging with the dapp
                   and thereby earning tokens as reward. In this scenario, tokens
                   are used as an incentive to encourage active engagement with
-                  the dapp which helps grow the active user base. 
+                  the dapp which helps grow the active user base.
                 </li>
                 <li>
-                  <strong>Voting rewards:</strong> If you already have tokens 
-                  and participate in governance, you can earn tokens as voting 
+                  <strong>Voting rewards:</strong> If you already have tokens
+                  and participate in governance, you can earn tokens as voting
                   rewards as you would in the NNS.
                 </li>
               </ul>
@@ -408,23 +331,25 @@ function SnsFaqPage() {
             <Faq title="What is the Neurons' fund?">
               <p>
                 From the ICP ecosystem's vantage point, the Neurons' fund aids
-                in bootstrapping the SNS DAO ecosystem, thereby supporting the continued growth
-                of the ecosystem. The Neurons' fund itself is controlled by a DAO (the NNS).
+                in bootstrapping the SNS DAO ecosystem, thereby supporting the
+                continued growth of the ecosystem. The Neurons' fund itself is
+                controlled by a DAO (the NNS).
               </p>
               <p>
                 From a user's vantage point, the Neurons' fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
-                future SNSs. As the NNS decides how the Neuons' fund contributes to 
-                SNSs, ICP stakers participating in them can leverage the broader community's 
-                "wisdom of crowds" to chose which SNS tokens to acquire. This allows 
-                users to participate automatically in upcoming SNS launches.
+                future SNSs. As the NNS decides how the Neuons' fund contributes
+                to SNSs, ICP stakers participating in them can leverage the
+                broader community's "wisdom of crowds" to chose which SNS tokens
+                to acquire. This allows users to participate automatically in
+                upcoming SNS launches.
               </p>
               <p>
-                ICP neuron holders can opt in or out of the Neurons' fund at
-                any moment. Neurons will only participate in the
-                decentralization swap if they are opted in at the moment when
-                the proposal to initiate the SNS decentralization swap executes. The
-                propsoal executes immediately after it gets adopted by ICP neuron
+                ICP neuron holders can opt in or out of the Neurons' fund at any
+                moment. Neurons will only participate in the decentralization
+                swap if they are opted in at the moment when the proposal to
+                initiate the SNS decentralization swap executes. The propsoal
+                executes immediately after it gets adopted by ICP neuron
                 holders.
               </p>
               More about the{" "}
@@ -478,8 +403,8 @@ function SnsFaqPage() {
                 swap, from its initiation to execution, is completely
                 decentralized and not controlled by any centralized entity. Even
                 the decision to create the SNS and its token is made by the NNS
-                (the DAO that controls the Internet Computer) and not the developer 
-                in order to ensure complete decentralizion of the app.
+                (the DAO that controls the Internet Computer) and not the
+                developer in order to ensure complete decentralizion of the app.
               </p>
               <p>
                 A decentralization swap follows a list of configurable
@@ -516,8 +441,9 @@ function SnsFaqPage() {
                 the basket may contain multiple neurons, each with a different{" "}
                 <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
                   dissolve delay
-                </Link>. You can use your tokens to participate in governance or,
-                once neurons have dissolved, sell the liquid tokens on an exchange.
+                </Link>
+                . You can use your tokens to participate in governance or, once
+                neurons have dissolved, sell the liquid tokens on an exchange.
               </p>
               <p>
                 The number of SNS tokens you receive, and the price paid for
@@ -558,7 +484,8 @@ function SnsFaqPage() {
                   0.05 SNS tokens, where a full token would be worth 100 ICP.
                 </li>
               </ul>
-              <p>Visis the ICP Wiki for a more detailed overvire of{" "}
+              <p>
+                Visis the ICP Wiki for a more detailed overvire of{" "}
                 <Link href="https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration">
                   SNS tokenomics
                 </Link>
@@ -582,8 +509,8 @@ function SnsFaqPage() {
               </p>
               <p>
                 <strong>
-                  1. Go to the NNS frontend dapp and click on the “Launchpad”
-                  in the sidebar to see all ongoing SNS decentralization swap.
+                  1. Go to the NNS frontend dapp and click on the “Launchpad” in
+                  the sidebar to see all ongoing SNS decentralization swap.
                 </strong>
               </p>
               <p>
@@ -662,9 +589,9 @@ function SnsFaqPage() {
               </p>
             </Faq>
             <Faq title="Who starts the decentralization swap?">
-              First an NNS proposal is created for the
-              decentralization swap. The swap itself starts automatically once
-              the NNS proposal is adopted.
+              First an NNS proposal is created for the decentralization swap.
+              The swap itself starts automatically once the NNS proposal is
+              adopted.
             </Faq>
             <Faq title="As a participant in the SNS decentralization swap, what do I need to trust?">
               <p>
@@ -730,52 +657,56 @@ function SnsFaqPage() {
             }
           >
             <Faq title="What is the SNS treasury?">
-              After a decentralization swap successfully concludes, the ICP collected through the
-              swap is allocated to the SNS DAO's treasury. Optionally, the DAO can allocate a number of
-              SNS tokens to be in the DAO's treasury, which all SNSs so far have done. The SNS treasury
-              is controlled by the DAO, and can only be transferred using proposals that SNS token holders
-              vote on. It is also possible to mint new SNS tokens at any point after the SNS launch, which
-              can also only be done if the SNS DAO agrees to do so by proposal vote.
+              After a decentralization swap successfully concludes, the ICP
+              collected through the swap is allocated to the SNS DAO's treasury.
+              Optionally, the DAO can allocate a number of SNS tokens to be in
+              the DAO's treasury, which all SNSs so far have done. The SNS
+              treasury is controlled by the DAO, and can only be transferred
+              using proposals that SNS token holders vote on. It is also
+              possible to mint new SNS tokens at any point after the SNS launch,
+              which can also only be done if the SNS DAO agrees to do so by
+              proposal vote.
             </Faq>
 
             <Faq title="What is the purpose of the SNS treasury and how are the funds distributed?">
               <ul>
+                <li>The purpose of the treasury is decided by the SNS DAO.</li>
                 <li>
-                  The purpose of the treasury is decided by the SNS DAO.
+                  A portion of the treasury can be sent to any address by an SNS
+                  proposal.
                 </li>
                 <li>
-                  A portion of the treasury can be sent to any address by an SNS proposal.
+                  Typically, after an SNS has launched it has an SNS token
+                  treasury and an ICP treasury (from the decentralization swap).
+                  An SNS can, however, also own other tokens on the Internet
+                  Computer.
                 </li>
                 <li>
-                  Typically, after an SNS has launched it has an SNS token treasury and an ICP
-                  treasury (from the decentralization swap). An SNS can, however, also own other
-                  tokens on the Internet Computer.
-                </li>
-                <li>
-                  The treasury funds could, for example, be used to open liquidity pools on
-                  DEXs or to reward users for certain actions in the dapp. 
+                  The treasury funds could, for example, be used to open
+                  liquidity pools on DEXs or to reward users for certain actions
+                  in the dapp.
                 </li>
               </ul>
             </Faq>
 
             <Faq title="Do I have a say in how the treasury funds are allocated?">
-              Yes, if you are a neuron holder of the respective SNS DAO, you
-              can actively exercise your voting power to decide on proposals that
+              Yes, if you are a neuron holder of the respective SNS DAO, you can
+              actively exercise your voting power to decide on proposals that
               allocate treasury funds.
             </Faq>
 
             <Faq title="Who has access to the treasury? ">
-              Without an adopted SNS proposal that specifies how to allocate funds,
-              no one can access the SNS treasury. The SNS DAO only grants access
-              when proposals are adopted through SNS community voting. While it can happen
-              that the original developer team possesses a meaningful portion of the voting
-              power, they alone cannot make decisions for the DAO without the approval of 
-              SNS token holders. In particular, treasury proposals are considered to be
-              critical proposals, which have a higher bar to be adopted, including that
-              they require a higher voting participation and support of a supermajority of
-              the DAO voters.
-            </Faq> 
-
+              Without an adopted SNS proposal that specifies how to allocate
+              funds, no one can access the SNS treasury. The SNS DAO only grants
+              access when proposals are adopted through SNS community voting.
+              While it can happen that the original developer team possesses a
+              meaningful portion of the voting power, they alone cannot make
+              decisions for the DAO without the approval of SNS token holders.
+              In particular, treasury proposals are considered to be critical
+              proposals, which have a higher bar to be adopted, including that
+              they require a higher voting participation and support of a
+              supermajority of the DAO voters.
+            </Faq>
           </FaqSection>
 
           <FaqSection
@@ -789,16 +720,20 @@ function SnsFaqPage() {
             <Faq title="How do I see and vote for SNS proposals?">
               <p>
                 Anyone can build a frontend that allows users to create or vote
-                on SNS proposals, which means voting could take place within the dapp
-                the SNS DAO controls, or in any other dapp that integrates with the
-                SNS backend. The{" "}
+                on SNS proposals, which means voting could take place within the
+                dapp the SNS DAO controls, or in any other dapp that integrates
+                with the SNS backend. The{" "}
                 <Link href="https://nns.ic0.app/">NNS frontend dapp</Link> lists
                 all SNS DAOs and their proposals. Other dapps that allow voting
                 on SNS proposals are{" "}
-                <Link href="https://iclight.io/icsns/proposals">ICLight.house</Link>,{" "}
-                <Link href="https://oc.app/community/dgegb-daaaa-aaaar-arlhq-cai/channel/213879932851725513516678778767199309579">OpenChat</Link>,
-                and partially{" "}
-                <Link href="https://dscvr.one/">DSCVR</Link>.{" "}
+                <Link href="https://iclight.io/icsns/proposals">
+                  ICLight.house
+                </Link>
+                ,{" "}
+                <Link href="https://oc.app/community/dgegb-daaaa-aaaar-arlhq-cai/channel/213879932851725513516678778767199309579">
+                  OpenChat
+                </Link>
+                , and partially <Link href="https://dscvr.one/">DSCVR</Link>.{" "}
                 Example on how SNS proposals appear on OpenChat:
                 <img src="/img/sns/openchat-1.webp" alt="" loading="lazy" />
               </p>
@@ -828,42 +763,46 @@ function SnsFaqPage() {
                 </Link>
               </p>
             </Faq>
-            
+
             <Faq title="What is voting power and how do I get it?">
               SNS DAOs have a stake-based governance system. This means the more
               tokens participants stake in their{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
                 neurons
-              </Link>, the more voting power their neurons have. In addition to
-              the stake, a neuron's voting power
-              is dependent on the{" "}
+              </Link>
+              , the more voting power their neurons have. In addition to the
+              stake, a neuron's voting power is dependent on the{" "}
               <Link href="https://wiki.internetcomputer.org/wiki/Neurons_101">
-                  dissolve delay
-              </Link> bonus and age bonus. Each SNS DAO
-              decides these bonuses in its parameters.
+                dissolve delay
+              </Link>{" "}
+              bonus and age bonus. Each SNS DAO decides these bonuses in its
+              parameters.
             </Faq>
-            
+
             <Faq title="What is neuron following?">
               <p>
-                Following neurons is a way to delegate votes both on the NNS and in SNSs.
-                Each SNS neuron can either manually vote on proposals or
-                follow another neuron’s voting decisions. Neurons are followed based on
-                various topics, such as making SNS treasury transfers or upgrading the dapp.
-                Neurons can be set to follow other neurons on specific topics or to follow
-                other neurons on ‘All Topics’ – a catch-all which is applied for the proposal
+                Following neurons is a way to delegate votes both on the NNS and
+                in SNSs. Each SNS neuron can either manually vote on proposals
+                or follow another neuron’s voting decisions. Neurons are
+                followed based on various topics, such as making SNS treasury
+                transfers or upgrading the dapp. Neurons can be set to follow
+                other neurons on specific topics or to follow other neurons on
+                ‘All Topics’ – a catch-all which is applied for the proposal
                 without any specific following choice.
               </p>
               <p>
-                When you use following, you must trust that the neurons you’re following will make
-                decisions that align with your views. The advantages of neuron following
-                are that you don’t have to spend time manually voting on each proposal,
-                and you can rely on the expertise of other neuron holders for certain topics. 
+                When you use following, you must trust that the neurons you’re
+                following will make decisions that align with your views. The
+                advantages of neuron following are that you don’t have to spend
+                time manually voting on each proposal, and you can rely on the
+                expertise of other neuron holders for certain topics.
               </p>
             </Faq>
 
             <Faq title="How can I follow or unfollow a neuron on SNS treasury proposals?">
-              If you would like to learn how to follow some neuron, for example the SNS developer team, on some topics,
-              while manually voting on others, watch this short tutorial:
+              If you would like to learn how to follow some neuron, for example
+              the SNS developer team, on some topics, while manually voting on
+              others, watch this short tutorial:
               <YoutubeVideoEmbed
                 videoId="bgZ2VifhNcU"
                 altText="Neuron following on SNS treasury proposals"
@@ -882,10 +821,11 @@ function SnsFaqPage() {
                 neurons may have{" "}
                 <Link href="https://support.dfinity.org/hc/en-us/articles/4404298574612-What-is-dissolve-delay-#:~:text=The%20dissolve%20delay%20is%20a,or%20lock%20up%20your%20ICP.">
                   dissolve delays
-                </Link>, meaning your tokens may not be liquid, i.e. transferable
+                </Link>
+                , meaning your tokens may not be liquid, i.e. transferable
                 immediately. Rather these tokens become liquid (transferable) in
-                weeks, months, or years’ time, depending on the dissolve delay of
-                the respective neuron.
+                weeks, months, or years’ time, depending on the dissolve delay
+                of the respective neuron.
               </p>
             </Faq>
             <Faq title="Is it possible to sell SNS tokens to another person?">

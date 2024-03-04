@@ -48,7 +48,7 @@ const youtubePlugin = async function () {
   return {
     name: "youtube",
     async loadContent() {
-      if (!YOUTUBE_API_KEY) {
+      if (!YOUTUBE_API_KEY || isDev) {
         logger.warn(
           "Warning: no env variables found for Youtube integration. Using mock youtube data."
         );
