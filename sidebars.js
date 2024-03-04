@@ -315,7 +315,6 @@ const sidebars = {
               type: "category",
               label: "dfxvm",
               items: [
-              items: [
                 "developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/dfx",
                 "developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-default",
                 "developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install",
