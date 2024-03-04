@@ -18,19 +18,26 @@ const MotionLink = motion(Link);
 
 const NnsTvl: React.FC = () => {
   const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
+  const cryptoPrice = globalData["crypto-price"]["default"] as {
+    icp: number;
+    btc: number;
+  };
   const stakingMetricsQuery = useQuery("staking-metrics", getStakingMetrics);
 
   let tvl = <>&nbsp;</>;
 
   if (stakingMetricsQuery.isFetched && stakingMetricsQuery.isSuccess) {
-    const maybeMetric: number | undefined =
+    const maybeMetric: string | undefined =
       stakingMetricsQuery.data.metrics.find(
         (d) => d.name === "governance_total_locked_e8s"
-      )?.samples[0]?.value;
+      )?.subsets[0]?.value[1];
 
     if (maybeMetric) {
-      tvl = <>${((maybeMetric * icpPrice) / 100000000000000000).toFixed(1)}B</>;
+      tvl = (
+        <>
+          ${((+maybeMetric * cryptoPrice.icp) / 100000000000000000).toFixed(1)}B
+        </>
+      );
     }
   }
 
@@ -65,7 +72,10 @@ const WalletCard: React.FC<{
 
 function TokenHolders(): JSX.Element {
   const globalData = useGlobalData();
-  const icpPrice = globalData["icp-price"]["default"] as number;
+  const cryptoPrice = globalData["crypto-price"]["default"] as {
+    icp: number;
+    btc: number;
+  };
 
   const ref = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(ref);
@@ -230,7 +240,7 @@ function TokenHolders(): JSX.Element {
                 variants={transitions.item}
               >
                 <span className="tw-heading-3 lg:tw-heading-60 text-gradient mb-2">
-                  ${(icpPrice * 0.0001).toFixed(5)}
+                  ${(cryptoPrice.icp * 0.0001).toFixed(5)}
                 </span>
                 <figcaption className="tw-paragraph md:tw-lead-sm">
                   Ledger TX Fee
@@ -292,11 +302,11 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://youtu.be/Ls_FlVERMjg"
+                    href="/nns"
                     className="link-primary link-with-icon items-center"
                   >
                     <LinkArrowRight />
-                    How to stake on the NNS dapp
+                    Participate in governance by staking ICP
                   </Link>
                 </p>
               </AnimateSpawn>
@@ -409,8 +419,7 @@ function TokenHolders(): JSX.Element {
                 >
                   Directly fund a ckBTC wallet with BTC and swap it for ICP
                   using any of these DEXs — all without centralized exchanges.
-                  This was made possible on the Internet Computer through  
-                  native{" "}
+                  This was made possible on the Internet Computer through native{" "}
                   <Link
                     className="text-white hover:text-white underline hover:cursor-pointer"
                     href="/bitcoin-integration"
@@ -479,10 +488,11 @@ function TokenHolders(): JSX.Element {
               variants={transitions.container}
             >
               <motion.h2
+                id="anchor-wallets"
                 className="tw-heading-3 md:tw-heading-60 mb-6 md:mb-8"
                 variants={transitions.item}
               >
-                Wallets & custody
+                Wallets &amp; custody
               </motion.h2>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-6 md:mb-8"
@@ -649,6 +659,12 @@ function TokenHolders(): JSX.Element {
                     description="Store assets in segregated cold storage. An institutional-grade custody solution. "
                     link="https://www.coinbase.com/"
                     icon="/img/showcase/coinbase_logo.webp"
+                  />
+                  <WalletCard
+                    title="Taurus"
+                    description="Banking-grade custody for digital asset management."
+                    link="https://www.taurushq.com/"
+                    icon="/img/showcase/taurus_logo.png"
                   />
                 </div>
               </motion.div>

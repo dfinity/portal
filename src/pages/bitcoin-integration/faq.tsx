@@ -113,7 +113,10 @@ function BitcoinFaqPage() {
               },
             ]}
           ></Breadcrumbs>
-          <motion.h1 className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10">
+          <motion.h1
+            id="bitcoin-integration"
+            className="tw-heading-3 md:tw-heading-2 mt-12 md:mt-32 md:w-8/10"
+          >
             What you need to know about Bitcoin integration and ckBTC
           </motion.h1>
         </AnimateSpawn>
@@ -135,11 +138,11 @@ function BitcoinFaqPage() {
             <Faq title="What is Bitcoin integration?">
               <p>
                 The Internet Computer (ICP) integrates with the Bitcoin network
-                at a protocol level. This means ICP canister smart contracts can create   
-                Bitcoin addresses as well as send and receive bitcoin directly on the 
+                at a protocol level. This means ICP canister smart contracts can create
+                Bitcoin addresses as well as send and receive bitcoin directly on the
                 Bitcoin network. And, Bitcoin can easily and securely be incorporated
                 into DeFi and Web3 services on the Internet Computer blockchain,
-                without having to trust centralized bridging services, which are 
+                without having to trust centralized bridging services, which are
                 at high risk of being taken down or hacked.
               </p>
               <p>
@@ -174,7 +177,7 @@ function BitcoinFaqPage() {
                 The real innovation behind Bitcoin integration is chain-key ECDSA
                 signing — advanced threshold cryptography build into the Internet Computer.
                 In short, chain-key ECDSA is a set of cryptographic protocols that
-                allow ICP nodes to cooperatively create ECDSA signatures, 
+                allow ICP nodes to cooperatively create ECDSA signatures,
                 which can be used to sign bitcoin transactions, using
                 a highly fault-tolerant, decentralized network that is resilient
                 to attacks by malicious nodes. The secret key is never stored in
@@ -205,7 +208,7 @@ function BitcoinFaqPage() {
               <p>There are two main ways of acquiring ckBTC:</p>
               <ul>
                 <li>
-                  <strong>Swap on DEXs:</strong> If you have ICP, you can 
+                  <strong>Swap on DEXs:</strong> If you have ICP, you can
                   swap it for ckBTC on decentralized exchanges running on the Internet
                   Computer, including{" "}
                   <Link href="http://icdex.io/">
@@ -219,7 +222,7 @@ function BitcoinFaqPage() {
                   <strong>
                     Convert directly on the protocol:
                   </strong>{" "}
-                  You can convert BTC to ckBTC by simply sending BTC to you NNS wallet (for more details, see
+                  You can convert BTC to ckBTC by simply sending BTC to your NNS wallet (for more details, see
                   next question).{" "}
                   <Link href="http://icdex.io/">
                     ICDex
@@ -232,7 +235,7 @@ function BitcoinFaqPage() {
                 </li>
               </ul>
             </Faq>
-            <Faq title="How do I convert BTC to ckBTC using the NNS?">
+            <Faq title="How do I convert BTC to ckBTC using the NNS wallet?">
               <p className="tw-paragraph mb-3">
                 Easy steps to getting ckBTC via your NNS wallet:
               </p>
@@ -259,12 +262,12 @@ function BitcoinFaqPage() {
                   alt=""
                   loading="lazy"
                 />
-              
+
               <p>
                 <strong>
                   4. Send BTC to your NNS BTC address.
                 </strong> Once you see this pop up window, you can copy your NNS BTC address, and send BTC there.
-                Note, that since this is a real bitcoin transaction, so it will take roughly an hour, and have the Bitcoin network's
+                Note, that since this is a real bitcoin transaction, it will take roughly an hour, and have the Bitcoin network's
                 transaction fees. Once you acquired ckBTC, you can take advantage of its near instant finality (1-2s) and
                 negligible transaction fees (10 satoshis).
                 <img
@@ -274,9 +277,56 @@ function BitcoinFaqPage() {
                 />
               </p>
             </Faq>
+            <Faq title="How do I convert ckBTC to BTC using the NNS wallet?">
+              <p className="tw-paragraph mb-3">
+                Easy steps to getting ckBTC via your NNS wallet:
+              </p>
+              <p>
+                <strong>
+                  1. Go to the NNS frontend dapp and sign in with your Internet Identity.
+                </strong>
+                If you don't have one, you will be prompted to create one. Any device that supports
+                WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or
+                a Ledger device.
+                <img
+                  src="/img/bitcoin-integration/ckbtc-1.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+              <p>
+                <strong>2. Navigate to "My Tokens" and select ckBTC.</strong>{" "}
+                If you have ckBTC in a different wallet, send it it to your NNS principal
+              </p>
+              <p>
+                <strong>3. Click on "Send" on the bottom of the screen.</strong>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-btc1.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+              <p>
+                <strong>4. Paste a valid BTC address that you control into the "Destination" field</strong>
+              </p>
+              <p>
+                <strong>5. Select Bitcoin from the "Network" dropdown</strong>
+              </p>
+              <p>
+                <strong>6. Type in the amount you want to send or click "Max"</strong>
+              </p>
+              <p>
+                <strong>7. Click "Continue", then confirm the transaction.</strong>
+                <img
+                  src="/img/bitcoin-integration/ckbtc-btc2.webp"
+                  alt=""
+                  loading="lazy"
+                />
+              </p>
+            </Faq>
             <Faq title="Is ckBTC wrapped?">
               <p className="tw-paragraph mb-3">
-                ckBTC isn't considered a wrapped token because it doesn't involve 
+                ckBTC isn't considered a wrapped token because it doesn't involve
                 centralized custodians or bridges to work. More than a token, while
                 ckBTC implements the ICRC-1 fungible token standard, it is a pair of
                 canister smart contracts that allow bitcoin to be freely sent between
@@ -316,19 +366,28 @@ function BitcoinFaqPage() {
                 cryptography integrations.
               </p>
             </Faq>
+            </FaqSection>
+            <FaqSection
+              id="security"
+              title={
+                <h2 className="tw-heading-3 text-gradient mb-12 md:mb-0 md:tw-heading-60">
+                  Security
+                </h2>
+              }
+            >
 
             <Faq title="Does ckBTC incorporate KYT?">
               <p>
                 Yes, cross-chain transactions go through KYT checks to protect honest users.
-                Know Your Transaction (KYT) is a process that monitors and tracks financial 
-                transactions in order to detect and prevent fraudulent or criminal activity, 
-                such as money laundering or terrorist financing. 
+                Know Your Transaction (KYT) is a process that monitors and tracks financial
+                transactions in order to detect and prevent fraudulent or criminal activity,
+                such as money laundering or terrorist financing.
               </p>
               <p>
                 If ckBTC were to operate without a KYT implementation, there would be a risk
                 of 'tainted' bitcoin entering the Internet Computer, that an honest
-                user could unknowingly withdraw. Such bitcoin may be rejected by CEXs, which 
-                means honest users could potentially lose their bitcoin when tryng to sell.
+                user could unknowingly withdraw. Such bitcoin may be rejected by CEXs, which
+                means honest users could potentially lose their bitcoin when trying to sell.
               </p>
               <p>
                 KYT is an important security component of ckBTC. Read more about how ckBTC
@@ -336,6 +395,22 @@ function BitcoinFaqPage() {
                 <Link href="https://forum.dfinity.org/t/ckbtc-and-kyt-compliance/18754">
                   forum post
                 </Link>.
+              </p>
+            </Faq>
+
+            <Faq title="Were there any security audits done for BTC integration and ckBTC?">
+              Yes, BTC integration and ckBTC have undergone a security audit by{" "}
+              <Link href="https://www.trailofbits.com/">Trail of Bits</Link> in
+              2023 with no severe issues found.
+
+              <p className="not-prose">
+                <Link
+                  href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  More details on the audit
+                </Link>
               </p>
             </Faq>
           </FaqSection>
@@ -391,8 +466,8 @@ function BitcoinFaqPage() {
             title="Code native bitcoin"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/samples?term=bitcoin"
-            title="Sample code"
+            href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+            title="Security audit"
           ></SmallCardWithDescription>
         </AnimateSpawn>
       </main>
@@ -400,20 +475,16 @@ function BitcoinFaqPage() {
         hasHome={false}
         links={[
           {
-            text: "Introduction",
-            to: "#introduction",
+            text: "Bitcoin integration",
+            to: "#bitcoin-integration",
           },
           {
-            to: "#participate",
-            text: "Participate",
+            to: "#ckbtc",
+            text: "ckBTC",
           },
           {
-            to: "#decentralization-swap",
-            text: "Decentralization swap",
-          },
-          {
-            to: "#governance",
-            text: "Governance",
+            to: "#security",
+            text: "Security",
           },
           {
             to: "#resource-center",

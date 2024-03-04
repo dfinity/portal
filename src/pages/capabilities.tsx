@@ -23,35 +23,35 @@ const SplitCard: React.FC<{
   imageSideClassName,
   contentSideClassName,
 }) => {
-    return (
-      <AnimateSpawn
+  return (
+    <AnimateSpawn
+      className={clsx(
+        "bg-white-50 rounded-xl overflow-hidden flex flex-col md:flex-row items-start",
+        imageSide === "right"
+          ? "flex-row"
+          : "flex-col-reverse md:flex-row-reverse",
+        className
+      )}
+      variants={transitions.container}
+    >
+      <div
         className={clsx(
-          "bg-white-50 rounded-xl overflow-hidden flex flex-col md:flex-row items-start",
-          imageSide === "right"
-            ? "flex-row"
-            : "flex-col-reverse md:flex-row-reverse",
-          className
+          "flex-[4] p-6 md:p-16",
+          imageSide === "right" ? "md:pr-0" : "md:pl-0",
+          contentSideClassName
         )}
-        variants={transitions.container}
       >
-        <div
-          className={clsx(
-            "flex-[4] p-6 md:p-16",
-            imageSide === "right" ? "md:pr-0" : "md:pl-0",
-            contentSideClassName
-          )}
-        >
-          {children}
-        </div>
-        <motion.div
-          className={clsx("flex-[6] self-center text-[0px]", imageSideClassName)}
-          variants={transitions.fadeIn}
-        >
-          {image}
-        </motion.div>
-      </AnimateSpawn>
-    );
-  };
+        {children}
+      </div>
+      <motion.div
+        className={clsx("flex-[6] self-center text-[0px]", imageSideClassName)}
+        variants={transitions.fadeIn}
+      >
+        {image}
+      </motion.div>
+    </AnimateSpawn>
+  );
+};
 
 const SingleCard: React.FC<{
   children: React.ReactNode;
@@ -259,7 +259,7 @@ function FeaturesPage() {
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
-                  href="https://internetcomputer.org/internet-identity?source=nav"
+                  href="/internet-identity"
                   className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
                 >
                   <RightPointer className="w-6 h-6"></RightPointer>
@@ -387,7 +387,7 @@ function FeaturesPage() {
               having to buy and hold tokens to interact with the blockchain to
               pay for gas fees. The Internet Computer has been designed with
               mass adoption in mind from the ground up. Developers charge up
-              their smart contracts with cycles (the IC analogon to gas), so
+              their smart contracts with cycles (the IC analogue to gas), so
               users don’t have to pay when interacting with the smart contracts.
               This removes a major barrier of entry for end users.
             </motion.p>
@@ -519,11 +519,12 @@ function FeaturesPage() {
               variants={transitions.item}
             >
               Threshold ECDSA, coupled with chain-key cryptography is the main
-              innovation behind direct integration with other blockchains without
-              the use of bridges. It allows the Internet Computer to natively create
-              signed transactions on other blockchains such as Bitcoin and Ethereum.
-              The Internet Computer implements secure threshold ECDSA signing, which is 
-              the signature scheme used by most blockchains.
+              innovation behind direct integration with other blockchains
+              without the use of bridges. It allows the Internet Computer to
+              natively create signed transactions on other blockchains such as
+              Bitcoin and Ethereum. The Internet Computer implements secure
+              threshold ECDSA signing, which is the signature scheme used by
+              most blockchains.
               <Link
                 href="https://internetcomputer.org/how-it-works/#Chain-key-technology"
                 className="tw-heading-6 flex gap-2 items-center mt-10"
@@ -737,8 +738,8 @@ function FeaturesPage() {
             </h3>
             <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
               Use any language that compiles to Wasm to write canister smart
-              contracts. SDKs are available for Motoko, Rust, TypeScript,
-              Python and C++. Any other language that compiles to Wasm can be used as
+              contracts. SDKs are available for Motoko, Rust, TypeScript, Python
+              and C++. Any other language that compiles to Wasm can be used as
               well.
             </p>
           </SmallCard>

@@ -10,6 +10,7 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 
 function WhatIsIcpPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,7 @@ function WhatIsIcpPage() {
   return (
     <Layout
       title="What is ICP"
-      description={`The Internet Computer adds autonomous serverless cloud functionality to the public internet - making it possible to build almost any system or service entirely on a decentralized network using “canister software,” an evolution of smart contracts.`}
+      description={`The Internet Computer adds autonomous serverless cloud functionality to the public Internet - making it possible to build almost any system or service entirely on a decentralized network using “canister software,” an evolution of smart contracts.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-what-is-the-ic.jpg"></ShareMeta>
@@ -41,13 +42,13 @@ function WhatIsIcpPage() {
               className="
               -mt-30 md:-mt-24
               w-[700px] sm:w-[900px] md:w-[1600px]
-              absolute 
-              -left-16 sm:left-auto 
+              absolute
+              -left-16 sm:left-auto
               bottom-0
               translate-y-2/3 md:translate-y-[55%]
 
-              sm:right-0 
-              sm:translate-x-3/10 
+              sm:right-0
+              sm:translate-x-3/10
             "
             >
               <img
@@ -69,7 +70,7 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 The Internet Computer adds autonomous serverless cloud
-                functionality to the public internet – making it possible to
+                functionality to the public Internet – making it possible to
                 build almost any system or service entirely on a decentralized
                 network using “canister software,” an evolution of smart
                 contracts.
@@ -85,25 +86,44 @@ function WhatIsIcpPage() {
         >
           <div className="">
             <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
+              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-10 text-gradient"
               variants={transitions.item}
             >
-              The Internet Computer is created by ICP, the most advanced network
-              protocol ever devised. It enables people to build Web3 services
-              and enterprise systems directly on a public decentralized network,
-              which scales even to hosting social networks and media streaming.
-              Hosted services are tamperproof, don’t need firewalls, support
-              Web3 functionality, and can trustlessly interact with the outside
-              world.
+              Web3 services and enterprise systems can be built directly on the
+              Internet Computer — a public decentralized network that scales.
+              <br />
+              Host social networks, media streaming and more, that support Web3
+              functionality, are tamperproof, and can trustlessly interact with
+              the outside world.
             </motion.h2>
+
+            <motion.p
+              className="mb-0 flex flex-col items-start gap-6 md:gap-8"
+              variants={transitions.item}
+            >
+              <Link className="button-primary text-center" href="/capabilities">
+                Internet Computer capabilities
+              </Link>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://wiki.internetcomputer.org/wiki/History"
+              >
+                <span>
+                  <span className="hidden sm:inline">Wiki history </span>
+                  <span className="sm:hidden">History </span>
+                  of the Internet Computer
+                </span>
+                <LinkArrowUpRight />
+              </Link>
+            </motion.p>
           </div>
         </AnimateSpawn>
 
         <section
-          className="mt-20 md:mt-48 
-          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)] 
-          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)] 
-          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)] 
+          className="mt-20 md:mt-48
+          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
+          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
+          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
           relative "
         >
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
@@ -193,7 +213,7 @@ function WhatIsIcpPage() {
                 <h3 className="tw-lead my-3 md:tw-title-sm">Web3 + OIS</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                   Canisters support more powerful tokenization models that
-                  advance Web3. Autonomous governance can create “open internet
+                  advance Web3. Autonomous governance can create “open Internet
                   services” (OISs) that are exclusively managed by their
                   communities.
                 </p>
@@ -234,13 +254,22 @@ function WhatIsIcpPage() {
                 Node providers
               </h2>
 
-              <p className="tw-lead-sm mb-0">
+              <p className="tw-lead-sm">
                 Standardized hardware devices called node machines are run by
                 independent parties called node providers, from different data
                 centers, geographies, and jurisdictions around the world. Node
                 providers run their hardware to earn tokenized rewards, rather
                 like independent ISPs and backbone providers operate routing
                 devices to earn peering fees.
+              </p>
+              <p>
+                <Link
+                  href="/node-providers"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  Sovereign hardware network
+                </Link>
               </p>
             </TranslatedLayout>
             <TranslatedLayout
@@ -250,19 +279,28 @@ function WhatIsIcpPage() {
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Subnet blockchains
               </h2>
-              <p className="tw-lead-sm mb-0">
-                The ICP protocols combine node machines into highly efficient
+              <p className="tw-lead-sm">
+                The ICP protocol combines node machines into highly efficient
                 subnet blockchains, which add capacity for hosting tamperproof
                 canisters. The Internet Computer has a permissionless automated
                 governance system called the Network Nervous System, which
                 instructs nodes to join or leave subnets.
+              </p>
+              <p>
+                <Link
+                  href="/how-it-works#Architecture"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight />
+                  ICP architecture
+                </Link>
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/what-is-the-ic/smart-contracts.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Canister smart contracts
               </h2>
-              <p className="tw-lead-sm mb-0">
+              <p className="tw-lead-sm">
                 Smart contracts are a new form of software that runs on
                 blockchain networks, which is tamperproof, unstoppable,
                 optionally autonomous, can process tokens, and is easily
@@ -274,6 +312,15 @@ function WhatIsIcpPage() {
                 simplifying building, and creating a future without firewalls
                 and trust. They offer a compelling alternative to building on
                 centralized traditional IT.
+              </p>
+              <p>
+                <Link
+                  href="https://medium.com/dfinity/webassembly-on-the-internet-computer-a1d0c71c5b94"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowUpRight />
+                  WebAssembly smart contracts
+                </Link>
               </p>
             </TranslatedLayout>
           </div>
@@ -348,8 +395,8 @@ function WhatIsIcpPage() {
                 Open Internet Services
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Open internet services are services that run autonomously
-                under the exclusive control of a decentralized governance system
+                Open Internet services are services that run autonomously under
+                the exclusive control of a decentralized governance system
                 called a Service Nervous System (SNS), an evolution of DAO
                 technology. This can enable a Web3 service to be transparently
                 run by a community of thousands, allowing services to founderize
@@ -359,10 +406,7 @@ function WhatIsIcpPage() {
                 distribute control over system updates and configuration,
                 greatly increasing security.
               </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="/sns"
-              >
+              <Link className="link-primary link-with-icon" href="/sns">
                 <LinkArrowRight /> User-run Web3
               </Link>
             </TranslatedLayout>
@@ -388,6 +432,65 @@ function WhatIsIcpPage() {
               >
                 <LinkArrowRight /> IT beyond cloud
               </Link>
+            </TranslatedLayout>
+
+            <TranslatedLayout
+              imageUrl="/img/what-is-the-ic/reverse-gas-model.webp"
+              reverse={true}
+            >
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Reverse gas model
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Unlike most EVM compatible blockchains, the Internet Computer
+                uses a reverse gas model. This enables end users to interact
+                with smart contracts without having to setup a wallet, or hold
+                tokens — A standard web browser is all they need. Developers
+                charge their canister smart contracts with 'cycles', the gas on
+                the Internet Computer, which are then burnt to pay for
+                computation, and memory usage. Such a model allows easy user
+                entry to Web3, and gives developers the flexibility to create
+                custom tokenomics models that meet mass adoption strategies.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="/capabilities/reverse-gas"
+              >
+                <LinkArrowRight /> Gas-free Web3
+              </Link>
+            </TranslatedLayout>
+
+            <TranslatedLayout imageUrl="/img/what-is-the-ic/multi-chain.webp">
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                Native multi-chain
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Canister smart contracts on the Internet Computer are the glue
+                between the world’s most important blockchains. ICP already
+                integrates with the Bitcoin Network, and native ETH integration
+                is underway. Inter-chain communication and innovations such as
+                chain-key ECDSA allow canister smart contracts to directly hold,
+                receive and send BTC and ETH seamlessly across chains, creating
+                a trustless multi-chain environment that allows end users to
+                transfer crypto assets at the speed of a chat message without
+                bridges or third-party intermediaries.
+              </p>
+              <p className="mb-3">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="/bitcoin-integration"
+                >
+                  <LinkArrowRight /> Bitcoin
+                </Link>
+              </p>
+              <p className="mb-3">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="/ethereum-integration"
+                >
+                  <LinkArrowRight /> Ethereum
+                </Link>
+              </p>
             </TranslatedLayout>
           </div>
         </section>

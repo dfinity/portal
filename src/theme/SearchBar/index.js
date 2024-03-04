@@ -1,5 +1,7 @@
 import SearchOverlay from "@site/src/components/Common/Search/Search";
 import React, { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
 
 const Search = () => {
   const [metaKey, setMetaKey] = useState(null);
@@ -45,19 +47,23 @@ const Search = () => {
 
   return (
     <>
+      <AskAIWidget />
       <button
         className="
           navbar__search-button group
           border-none md:border-2 md:border-solid md:border-infinite/50 md:rounded-xl md:docs:border-black
-          bg-transparent px-2 md:px-5 py-2
+          bg-transparent px-2 md:px-5 py-1 md:py-2
           font-circular md:text-infinite md:docs:text-black
-          flex gap-2 items-center 
-          md:order-last md:ml-6 
+          flex gap-2 items-center
+          md:order-last
           outline-offset-2
           absolute right-[64px] md:static
           text-black
+          dark-hero:text-white dark-hero:border-white/50
 
           md:hover:bg-infinite md:hover:text-white md:docs:hover:bg-black md:docs:hover:text-white
+
+          md:hover:dark-hero:text-infinite md:hover:dark-hero:bg-white md:hover:dark-hero:border-white
           "
         onClick={openOverlay}
         aria-label="Search"
@@ -76,10 +82,10 @@ const Search = () => {
           />
         </svg>
 
-        <span className="tw-title-navigation text-infinite md:group-hover:text-white hidden md:block docs:text-black">
+        <span className="tw-title-navigation text-infinite dark-hero:text-white md:group-hover:text-white md:dark-hero:group-hover:text-infinite hidden md:block docs:text-black">
           Search
         </span>
-        <span className="hidden md:block min-w-[53px] text-right text-infinite/70 docs:text-black/50 md:group-hover:text-white">
+        <span className="hidden md:block min-w-[53px] text-right text-infinite/70 dark-hero:text-white/70 md:dark-hero:group-hover:text-infinite docs:text-black/50 md:group-hover:text-white">
           {metaKey && (
             <span className="tw-paragraph-sm relative top-[2px]">
               {metaKey}K
@@ -100,10 +106,12 @@ const Search = () => {
         }}
         id="ios-tmp-input"
         ref={focusHelperInputRef}
-      ></input>
-      {isOverlayOpen && (
-        <SearchOverlay onClose={() => setIsOverlayOpen(false)} />
-      )}
+      />
+      {isOverlayOpen &&
+        createPortal(
+          <SearchOverlay onClose={() => setIsOverlayOpen(false)} />,
+          document.body
+        )}
     </>
   );
 };

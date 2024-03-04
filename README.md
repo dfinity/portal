@@ -2,7 +2,7 @@
 
 # Internet Computer developer portal
 
-The IC developer portal brings together all the resources needed for developers to build on the
+The ICP developer portal brings together all the resources needed for developers to build on the
 Internet Computer.
 
 https://internetcomputer.org
@@ -11,7 +11,7 @@ https://internetcomputer.org
 
 ## Contributing
 
-The IC developer portal uses [Docusaurus](https://docusaurus.io/docs).
+The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
 ## Format and style guidelines
 
@@ -23,7 +23,7 @@ The developer documentation must follow the provided style guide in order to be 
 
 #### Requirements
 
-- [Node v16](https://nodejs.org/en/blog/release/v16.16.0) **(v18 not recommended)**.
+- [Node v18](https://nodejs.org/en/blog/release/v18.17.0)
 
 #### Install and run locally
 
@@ -172,7 +172,7 @@ it does not always exist.
 
 > More information about document creation on [Docusaurus's docs](https://docusaurus.io/docs/create-doc).
 
-### Deployed Previews
+### Deployed previews
 
 Whenever a Pull Request is created on the repository, a CI job will appear and deploy a Preview on Netlify so that
 reviewers can easily check the changes made the way the end users will.
@@ -191,9 +191,9 @@ Here is a description of how a contribution should be made to the developer port
 1. The contributor creates a fork/branch where the changes are made.
 2. A pull request (PR) is created from this branch to `master`. the preview is generated and the reviewers can directly check
    the preview website.
-3. After the pull request is merged into master, CI/CD will deploy the contents to the IC. The changes made will appear
+3. After the pull request is merged into master, CI/CD will deploy the contents to ICP. The changes made will appear
    on the webpage under the version in the dropdown named "Current".
-4. Optional: When a repo maintainer tags a commit on master as $TAG, then CI/CD deploys the contents to the IC. The
+4. Optional: When a repo maintainer tags a commit on master as $TAG, then CI/CD deploys the contents to ICP. The
    webpage will default to the new "$TAG" version, visible in the versions dropdown, and allow users to view the
    contents pinned at that tag.
 
@@ -231,7 +231,7 @@ We therefore invite other projects to:
 
 ## Community-created developer tools
 
-We invite developers to add their IC-focused developer tools to
+We invite developers to add their ICP-focused developer tools to
 the [developer tools page](https://internetcomputer.org/tooling) by appending an entry to the `communityToolingItems`
 array in `src/components/Common/toolingItems.ts`.
 

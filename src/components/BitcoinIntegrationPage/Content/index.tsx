@@ -4,6 +4,7 @@ import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const Content: React.FC = () => {
   return (
@@ -26,18 +27,19 @@ const Content: React.FC = () => {
             Internet Computer blockchain, without having to trust wrapped
             bitcoin from centralized bridging services, which are at high risk
             of being taken down or hacked. Between 2021 and 2022, more than 2
-            billion dollars was stolen by exploiting unsecure blockchain bridges.
+            billion dollars was stolen by exploiting unsecure blockchain
+            bridges.
           </p>
           <p className="tw-paragraph mb-3">
             The ICP x BTC integration comprises two key building blocks (and
             APIs): Network integration & chain-key ECDSA
           </p>
           <p className="tw-paragraph mb-3">
-            Combining these building blocks, canisters can directly and
-            securely hold, receive, and send bitcoin seamlessly as if the
-            Internet Computer and the Bitcoin network were one blockchain.
-            Another way of looking at it, is that the Bitcoin integration
-            is the same as running a Bitcoin node on chain.
+            Combining these building blocks, canisters can directly and securely
+            hold, receive, and send bitcoin seamlessly as if the Internet
+            Computer and the Bitcoin network were one blockchain. Another way of
+            looking at it, is that the Bitcoin integration is the same as
+            running a Bitcoin node on chain.
           </p>
           <p className="mb-0 mt-8">
             <Link
@@ -60,12 +62,12 @@ const Content: React.FC = () => {
               directly send and receive bitcoin is inter-chain communication. As
               the ICP blockchain creates transactions for the Bitcoin
               blockchain, its nodes directly transmit the transaction to the
-              nodes of the Bitcoin network, without any need for intermediaries that
-              might censor them. ICP nodes also directly pull blocks from the
-              Bitcoin network to maintain Bitcoin's current UTXO set, allowing
-              canisters to query the balance of Bitcoin addresses and their UTXOs.
-              Creating bitcoin transactions and querying UTXO sets are made available
-              to canisters by the Bitcoin API.
+              nodes of the Bitcoin network, without any need for intermediaries
+              that might censor them. ICP nodes also directly pull blocks from
+              the Bitcoin network to maintain Bitcoin's current UTXO set,
+              allowing canisters to query the balance of Bitcoin addresses and
+              their UTXOs. Creating bitcoin transactions and querying UTXO sets
+              are made available to canisters by the Bitcoin API.
             </p>
           </div>
           <div className="bg-white rounded-xl p-6 md:p-8">
@@ -73,20 +75,21 @@ const Content: React.FC = () => {
               Chain-key ECDSA
             </h3>
             <p className="tw-paragraph mb-0">
-              The real innovation behind Bitcoin integration is {" "}
+              The real innovation behind Bitcoin integration is{" "}
               <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
-                chain-key ECDSA              
+                chain-key ECDSA
               </Link>{" "}
-              signing — advanced threshold cryptography integrated with ICP. In short,
-              chain-key ECDSA is a set of cryptographic protocols that allow Internet
-              Computer nodes to cooperatively create ECDSA signatures, which can be used
-              to sign bitcoin transactions, using a highly fault-tolerant, decentralized
-              network that is resilient to attacks by malicious nodes. The secret key is
-              never stored in one place, instead it is broken down into key shares held by
-              ICP nodes that are re-shared periodically. When requested, nodes use their
-              key shares to collectively sign BTC transactions without recreating the
-              original secret key. This signing protocol assumes a threshold of nodes to
-              be honest.
+              signing — advanced threshold cryptography integrated with ICP. In
+              short, chain-key ECDSA is a set of cryptographic protocols that
+              allow Internet Computer nodes to cooperatively create ECDSA
+              signatures, which can be used to sign bitcoin transactions, using
+              a highly fault-tolerant, decentralized network that is resilient
+              to attacks by malicious nodes. The secret key is never stored in
+              one place, instead it is broken down into key shares held by ICP
+              nodes that are re-shared periodically. When requested, nodes use
+              their key shares to collectively sign BTC transactions without
+              recreating the original secret key. This signing protocol assumes
+              a threshold of nodes to be honest.
             </p>
           </div>
         </motion.div>
@@ -101,10 +104,10 @@ const Content: React.FC = () => {
             Chain-key bitcoin
           </h2>
           <p className="tw-lead-sm md:tw-lead mb-0">
-            Chain-key Bitcoin (ckBTC) can be sent with 1-2 second finality and negligible fees
-            — a multi-chain bitcoin twin, trustlessly created by chain-key cryptography and a
-            pair of canister smart contracts that directly hold raw bitcoin without relying
-            on intermediaries.
+            Chain-key Bitcoin (ckBTC) can be sent with 1-2 second finality and
+            negligible fees — a multi-chain bitcoin twin, trustlessly created by
+            chain-key cryptography and a pair of canister smart contracts that
+            directly hold raw bitcoin without relying on intermediaries.
           </p>
         </div>
         <div className="md:w-8/10 md:mx-auto flex my-6 md:my-8">
@@ -126,43 +129,43 @@ const Content: React.FC = () => {
             Bitcoin as legal tender. However, as bitcoin transactions are slow
             and have high fees, they are not practical for daily economic
             activities such as buying groceries or getting a coffee.
-          </p>  
+          </p>
           <p className="tw-paragraph mb-3">
             The Bitcoin network integration on the Internet Computer is
             extremely powerful in terms of security and interoperability, but
             every bitcoin transaction still suffers the same low throughput,
-            high latency, and high fees native to the Bitcoin network.
-            Recent surge in popularity of Bitcoin Ordinals and BRC-20 tokens
-            resulted in Bitcoin's network to be highly congested. This pushed
-            transaction fees above $30, rendering casual every-day transactions
-            completely impractical.
+            high latency, and high fees native to the Bitcoin network. Recent
+            surge in popularity of Bitcoin Ordinals and BRC-20 tokens resulted
+            in Bitcoin's network to be highly congested. This pushed transaction
+            fees above $30, rendering casual every-day transactions completely
+            impractical.
           </p>
           <p className="tw-paragraph mb-3">
-            Chain-key Bitcoin (ckBTC), a multi-chain bitcoin
-            twin on ICP introduces layer 2 functionality fuelled by ICP
-            properties like speed, scalability and low transaction fees to
-            bitcoin. ckBTC helps reduce the load on the Bitcoin network, while
-            making every-day bitcoin transactions feasible, which realizes a key
-            part of Satoshi's original vision.
+            Chain-key Bitcoin (ckBTC), a multi-chain bitcoin twin on ICP
+            introduces layer 2 functionality fuelled by ICP properties like
+            speed, scalability and low transaction fees to bitcoin. ckBTC helps
+            reduce the load on the Bitcoin network, while making every-day
+            bitcoin transactions feasible, which realizes a key part of
+            Satoshi's original vision.
           </p>
           <p className="tw-paragraph mb-3">
             ckBTC implements ICRC-1, the fungible token standard on the Internet
-            Computer, and can be integrated easily by any Web3 service running on
-            ICP.
+            Computer, and can be integrated easily by any Web3 service running
+            on ICP.
           </p>
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
             <Link
+              href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
               className="button-outline"
-              href="/ckbtc"
             >
-              More on ckBTC
+              Code ckBTC
             </Link>
             <Link
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
               className="link-primary link-with-icon"
             >
               <LinkArrowRight></LinkArrowRight>
-              Code ckBTC
+              BTC &lt;&gt; ICP user guide
             </Link>
           </p>
         </div>
@@ -214,9 +217,9 @@ const Content: React.FC = () => {
               <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-black-60">
                 Funded is an alternative to Kickstarter and other traditional
                 crowdfunding platforms. Running 100% on the Internet Computer,
-                it uses NFTs to provide ‘proof of ownership’ in the projects
-                you help crowdfund. Plus, you can now fund the projects you
-                love in ICP and BTC.
+                it uses NFTs to provide ‘proof of ownership’ in the projects you
+                help crowdfund. Plus, you can now fund the projects you love in
+                ICP and BTC.
               </p>
             </div>
           </Link>
@@ -234,11 +237,12 @@ const Content: React.FC = () => {
                 DSCVR
               </h3>
               <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-black-60">
-                DSCVR is an end-to-end decentralized Web3 social media platform that
-                allows communities to form into groups called Portals. These Portals
-                can be NFT gated, airdrop fungible and non-fungible tokens to their
-                members and much more. DSCVR also allows for tipping posts in a
-                growing number of cryptos, including ckBTC.
+                DSCVR is an end-to-end decentralized Web3 social media platform
+                that allows communities to form into groups called Portals.
+                These Portals can be NFT gated, airdrop fungible and
+                non-fungible tokens to their members and much more. DSCVR also
+                allows for tipping posts in a growing number of cryptos,
+                including ckBTC.
               </p>
             </div>
           </Link>
@@ -256,12 +260,12 @@ const Content: React.FC = () => {
                 OpenChat
               </h3>
               <p className="tw-paragraph-sm md:tw-lead-sm mb-0 text-black-60">
-                What if you could own a piece of WhatsApp and vote on what features
-                get added? OpenChat is a fully decentralized real-time messaging
-                service that is indistinguishable from Web2 chat apps, while living
-                100% on the blockchain. This allows people to send crypto to their
-                friends - including Bitcoin with TX fees at only $0.0029 and OpenChat's
-                own governance token, CHAT.
+                What if you could own a piece of WhatsApp and vote on what
+                features get added? OpenChat is a fully decentralized real-time
+                messaging service that is indistinguishable from Web2 chat apps,
+                while living 100% on the blockchain. This allows people to send
+                crypto to their friends - including Bitcoin with TX fees at only
+                $0.0029 and OpenChat's own governance token, CHAT.
               </p>
             </div>
           </Link>
@@ -269,10 +273,7 @@ const Content: React.FC = () => {
         <div className="pt-20 text-center flex flex-col items-center gap-8 relative">
           <div className="md:hidden blob blob-purple blob-center blob-md z-[-1]"></div>
 
-          <Link
-            className="button-primary"
-            href="/ecosystem?source=nav&tag=Bitcoin"
-          >
+          <Link className="button-primary" href="/ecosystem?tag=Bitcoin">
             More projects using bitcoin
           </Link>
         </div>

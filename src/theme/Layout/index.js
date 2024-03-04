@@ -12,6 +12,7 @@ import ErrorPageContent from "@theme/ErrorPageContent";
 import styles from "./styles.module.css";
 import { DevDocsSubnav } from "@site/src/theme/Subnav/DevDocsSubnav";
 import { useLocation } from "@docusaurus/router";
+import MarketingNav from "@site/src/components/Common/MarketingNav";
 
 export default function Layout(props) {
   const {
@@ -25,7 +26,9 @@ export default function Layout(props) {
   } = props;
 
   const location = useLocation();
-  const isDevDocs = location.pathname.startsWith("/docs/") || location.pathname.startsWith("/blog");
+  const isDevDocs =
+    location.pathname.startsWith("/docs/") ||
+    location.pathname.startsWith("/blog");
 
   useKeyboardNavigation();
 
@@ -37,7 +40,7 @@ export default function Layout(props) {
 
       <AnnouncementBar />
 
-      <Navbar />
+      {isDevDocs ? <Navbar /> : <MarketingNav />}
 
       {isDevDocs && <DevDocsSubnav />}
 
@@ -53,7 +56,6 @@ export default function Layout(props) {
         </ErrorBoundary>
       </div>
       {!noFooter && <Footer editPath={editPath} />}
-      <div id="search-overlay-portal"></div>
     </LayoutProvider>
   );
 }

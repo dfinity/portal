@@ -7,7 +7,7 @@ slug: web-authentication-identity
 
 # Internet Identity
 
-[Internet Identity](https://identity.ic0.app/) is a privacy-enhancing blockchain based authentication framework to built on the Internet Computer. It integrates with the APIs of WebAuthn, a widely used, secure authentication framework supported by modern browsers and operating systems. Users can connect passkeys to their Internet Identity, and use the secure TPM chip inside these devices for authentication instead of passwords or clunky 2FAs. Alternatively, Internet Identity supports devices like YubiKeys or Ledger hardware wallets.
+[Internet Identity](https://identity.ic0.app/) is a privacy-enhancing blockchain based authentication framework built on the Internet Computer. It integrates with the APIs of WebAuthn, a widely used, secure authentication framework supported by modern browsers and operating systems. Users can connect passkeys to their Internet Identity, and use the secure TPM chip inside these devices for authentication instead of passwords or clunky 2FAs. Alternatively, Internet Identity supports devices like YubiKeys or Ledger hardware wallets.
 
 ## Privacy
 

@@ -6,4 +6,6 @@ links:
 eta: Q4 22
 is_community: false
 ---
-We are working on adding (purely opt-in) telemetry collection to the Internet Computer SDK to improve the platform's developer experience based on insights derived from behavioral data. 
+
+Work is being conducted on adding (purely opt-in) telemetry collection to the Internet Computer SDK to improve the
+platform's developer experience based on insights derived from behavioral data. 

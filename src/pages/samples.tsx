@@ -20,7 +20,11 @@ import communityProjects from "@site/community/communityProjects";
 
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import clsx from "clsx";
-import { useQueryParam } from "../utils/use-query-param";
+import {
+  deserializeStringList,
+  serializeStringList,
+  useQueryParam,
+} from "../utils/use-query-param";
 import ShareMeta from "../components/Common/ShareMeta";
 
 const CommunityProjectCard: React.FC<{ project: SampleItem }> = ({
@@ -78,16 +82,11 @@ function filterSamples(
   return samples;
 }
 
-const serializeStringList = (a: string[]) =>
-  a.length === 0 ? undefined : a.join(",");
-function deserializeStringList<T extends string>(s: string): T[] {
-  return s.trim().length > 0 ? (s.split(",") as T[]) : [];
-}
-
 function Samples(): React.ReactNode {
   const [searchTerm, setSearchTerm, queryParamInitialized] =
     useQueryParam<string>("term", "", {
       serialize: (a) => (a === "" ? undefined : a),
+      deserialize: (s) => s,
     });
   const [selectedLanguages, setSelectedLanguages] = useQueryParam<
     SampleLanguage[]
