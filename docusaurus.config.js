@@ -124,18 +124,14 @@ let subnavItems = [
       },
     ],
   },
-];
-
-/**
- * Add UI tests in development mode
- */
-if (process.env.NODE_ENV === "development") {
-  subnavItems.push({
+  /**
+   * Add UI tests in development mode
+   */
+  process.env.NODE_ENV === "development" && {
     label: "UI Tests",
-    // @ts-ignore
     href: "/docs/current/tests/all",
-  });
-}
+  },
+].filter(Boolean);
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
