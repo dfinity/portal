@@ -104,6 +104,8 @@ dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic
 
 Replace `AMOUNT` with the number of cycles, such as `34000000`, and `PRINCIPAL_ID` with the principal ID you'd like to transfer the cycles to, such as `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe`. Optionally, a subaccount can be provided, in which case the recipient will receive the funds in the provided subaccount.
 
+Using suffixes such as `500k` or `5TC` is supported. [View the full list of suffix options](https://github.com/dfinity/sdk/blob/master/CHANGELOG.md#feat-accept-more-ways-to-specify-cycle-and-e8s-amounts).
+
 ### Topping up a canister
 
 To transfer cycles into a canister to top it up, use the command:
@@ -132,13 +134,15 @@ With these two commands, there are two **optional** flags that can be used:
 - `dfx create canister CANISTER_NAME --next-to CANISTER_ID:` The new canister will be installed on the same subnet as the canister provided.
 - `dfx create canister CANISTER_NAME --subnet SUBNET_ID`: The new canister will be installed on the given subnet.
 
-If neither flag is used, the canister will be created on a random subnet using the user principal’s cycles.
+If no flag is specified and there aren't any canisters that exist in the project, a random subnet is used.
 
+If no flag is specified and the project contains canisters on a single subnet, then that subnet is used.
 
+If no flag is specified and the project contains canisters on multiple subnets, `dfx` will prompt you to specify a subnet. 
 
 ## Fees
 
-Certain functions of the cycle ledger incur a fee. The full breakdown of fees can be found below:
+Most functions of the cycle ledger incur a fee. The full breakdown of fees can be found below:
 
 - To transfer cycles between different principal IDs using the cycles ledger, the transfer fee is 100m cycles per transaction.
 - To send cycles from the cycles ledger to another canister, the fee is 100m cycles.  
