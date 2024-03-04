@@ -1,7 +1,10 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 9: Incrementing a counter
+
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
 ## Overview
 
@@ -19,7 +22,7 @@ This guide provides a simple example of how you can increment a counter by calli
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Create the counter dapp project
 
@@ -39,7 +42,7 @@ dfx new rust_counter
 You will be prompted to select a language that your backend canister will use. Select 'Rust':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
@@ -49,7 +52,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -88,7 +91,7 @@ cd rust_counter
 Note: the following steps assume the terminal is still open and the current directory is `rust_counter`.
 :::
 
-Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead. 
+Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead.
 
 To replace the default dapp, open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content.
 
@@ -212,7 +215,7 @@ Before you can build the `rust_counter` project, you need to connect to the loca
 Start the local canister execution environment on your computer in the background by running the following command:
 
 ``` bash
-dfx start --clean --background 
+dfx start --clean --background
 ```
 
 Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click **Allow**.

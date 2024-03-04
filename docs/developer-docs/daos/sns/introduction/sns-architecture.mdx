@@ -1,7 +1,8 @@
----
-sidebar_position: 2
----
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # SNS architecture
+
+<MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
 ## Overview
 The core architecture of the SNS closely resembles the architecture of the Network Nervous System
@@ -11,7 +12,7 @@ that defines a token unique to each SNS.
 In contrast to the SNS, the NNS contains additional canisters that are important to run on the Internet Computer Protocol.
 (e.g., the cycles minting canister that is responsible for creating cycles, the registry
 that stores the network topology etc.).
-There are also a few canisters that only exist on the SNS, most notably the decentralization 
+There are also a few canisters that only exist on the SNS, most notably the decentralization
 swap canister that is used during the launch process of an SNS.
 
 ## SNS as a system functionality (connection to the NNS community)
@@ -23,15 +24,15 @@ and continuously approves new improved SNS versions.
 ### SNS Wasm modules canister (SNS-W){#SNS-W}
 All approved SNS canister versions are stored on an NNS canister,
 called the **SNS Wasm modules canister (SNS-W)**.
-When an SNS is created, SNS-W is involved and responsible for deploying the latest version of 
+When an SNS is created, SNS-W is involved and responsible for deploying the latest version of
 the SNS canister.
-When the SNS should be updated, this happens by an NNS proposal that adds a new version of the 
+When the SNS should be updated, this happens by an NNS proposal that adds a new version of the
 SNS canisters to SNS-W.
 Each SNS community can then simply decide - by SNS proposal - to adopt these new, approved versions in their SNS instance.
 
 ### Customizing the SNS
 
-Individual SNSs can nevertheless be customized by choosing parameters, 
+Individual SNSs can nevertheless be customized by choosing parameters,
 called nervous system parameters, that
 can be configured to realize different forms of voting and tokenomics.
 
@@ -75,7 +76,7 @@ and the dapp canisters that the SNS governs.
 
 ### SNS (decentralization) swap canister
 The **decentralization swap canister**, or swap canister for short, is the main canister involved
-in the SNS launch. Users can provide ICP tokens to the swap and, if the swap is successful, they get staked SNS tokens (in SNS neurons) in return. 
+in the SNS launch. Users can provide ICP tokens to the swap and, if the swap is successful, they get staked SNS tokens (in SNS neurons) in return.
 Hence, the ICP and the SNS tokens are "swapped".
 This facilitates that 1) the SNS can collect initial funding and
 2) the distribution of neurons and thus of voting power to many different participants, which makes the governance decentralized.

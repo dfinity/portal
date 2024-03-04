@@ -1,7 +1,10 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 2: Project organization
+
+<MarkdownChipRow labels={["Beginner", "Rust" ]} />
 
 ## Overview
 
@@ -13,7 +16,7 @@ When a new Rust project is created with the command:
 ```
 dfx new example
 
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
@@ -31,7 +34,7 @@ dfx new --type rust example
 </TabItem>
 </Tabs>
 
-the following project structure is generated: 
+the following project structure is generated:
 
 ```
 Cargo.lock
@@ -61,8 +64,8 @@ In this structure, you can see the backend canister, in this case `example_backe
 src/example_backend:
 ```
 │   ├── Cargo.toml //
-│   ├── example_backend.did // The backend canister's Candid file. 
-│   └── src 
+│   ├── example_backend.did // The backend canister's Candid file.
+│   └── src
 │       └── lib.rs // The file containing your Rust smart contract.
 ```
 
@@ -198,7 +201,7 @@ thread_local! {
 ```
 
 ## Canister interfaces
-In comparison to Motoko, where the compiler automatically generates the corresponding Candid file, a different approach is recommended to Rust development. 
+In comparison to Motoko, where the compiler automatically generates the corresponding Candid file, a different approach is recommended to Rust development.
 
 ### Making the .did file the canister's source of truth
 Your Candid file should be the main source of documentation for people who want to interact with your canister, including your colleagues who work on the front end portion. The interface should be stable, easy to find, and well documented, which is not something you can get automatically.
@@ -220,7 +223,7 @@ service {
 }
 ```
 
-For more information on Candid and to see the Rust equivalent of Candid types, please see the [Candid reference documentation](https://internetcomputer.org/docs/current/references/candid-ref). 
+For more information on Candid and to see the Rust equivalent of Candid types, please see the [Candid reference documentation](https://internetcomputer.org/docs/current/references/candid-ref).
 
 To make sure that your .did file and your implementation are in sync with one another, use the Candid tooling. There are macros in the Rust CDK that allow you to annotate your Canister methods and extract the .did file.
 
@@ -249,4 +252,4 @@ If a service method returns a result type, it can still reject the call. Therefo
 :::
 
 ## Next steps
-Now let's get started setting up the Rust [developer environment](./3-dev-env.md).
+Now let's get started setting up the Rust [developer environment](./3-dev-env.mdx).

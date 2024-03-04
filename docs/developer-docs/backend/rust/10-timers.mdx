@@ -1,14 +1,17 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 10: Using periodic timers
 
-## Overview 
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
+
+## Overview
 This guide demonstrates how to create a small dapp with a periodic task. The task is triggered automatically by the Internet Computer with a specified interval.
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Create the timer dapp project
 
@@ -26,7 +29,7 @@ dfx new my_timers
 You will be prompted to select a language that your backend canister will use. Select 'Rust':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
@@ -36,7 +39,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -98,7 +101,7 @@ ic-cdk-timers = "0.1"
 serde = { version = "1.0", features = ["derive"] }
 ```
 
-Save the file. 
+Save the file.
 
 ## Update the Cargo.toml dependencies
 
@@ -127,7 +130,7 @@ This code establishes the following:
 - `service : (nat64) -> {...}` declares a new service which accepts a single integer argument.
 - `"counter": () -> (nat64) query` declares a canister query entry point named `counter`. The `counter` query takes no arguments `()` and returns an integer `(nat64)`.
 
-Save the file. 
+Save the file.
 
 ## Implementing the `counter` query
 
@@ -152,7 +155,7 @@ This code establishes the following:
 - `#[ic_cdk::query]` marks the following `counter` function as a `query` entry point, so the function will be exported as `canister_query counter`.
 - `fn counter() -> u64 {...}` defines the query. Just like in the `.did` definition, it takes no arguments and returns `u64`.
 - `COUNTER.load(...)` loads and returns the global `COUNTER` value.
-- 
+-
 
 :::info
 It is important to note that `Ordering` in this code is a shorter, but equivalent alternative to `thread_local!` wrapping a `Cell<u64>`.

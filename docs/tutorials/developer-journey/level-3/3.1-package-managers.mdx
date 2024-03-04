@@ -1,18 +1,22 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 3.1 Motoko package managers
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 ## Overview
 
-[Mops](https://mops.one) and [Vessel](https://github.com/dfinity/vessel) are package managers for Motoko. In this guide, you'll explore how to download and install Mops and Vessel, then how to import and use different libraries that have been downloaded through a package manager. 
+[Mops](https://mops.one) and [Vessel](https://github.com/dfinity/vessel) are package managers for Motoko. In this guide, you'll explore how to download and install Mops and Vessel, then how to import and use different libraries that have been downloaded through a package manager.
 
 ## What is a package manager?
 
-A **package manager** is a collection of tools that automates installing, upgrading, configuring, and removing software packages or libraries. They help efficiently manage the dependencies of a project. In relation to Motoko, Mops and Vessel provide workflows for libraries to be downloaded, upgraded, and imported into Motoko code files. Mops supports over 60 libraries for Motoko, spanning several different functionalities such as utility, encoding, cryptography, data structure libraries, and more. 
+A **package manager** is a collection of tools that automates installing, upgrading, configuring, and removing software packages or libraries. They help efficiently manage the dependencies of a project. In relation to Motoko, Mops and Vessel provide workflows for libraries to be downloaded, upgraded, and imported into Motoko code files. Mops supports over 60 libraries for Motoko, spanning several different functionalities such as utility, encoding, cryptography, data structure libraries, and more.
 
-Package managers help simplify things such as update management, since they provide an easy way to update all libraries within your project. 
+Package managers help simplify things such as update management, since they provide an easy way to update all libraries within your project.
 
 ## Installing Mops
 
-Mops utilizes a fully on-chain package registry. To install Mops, first be sure to have set up your developer environment and installed the IC SDK and Node.js, as described in the previous module, [0.3: Developer environment setup](../level-0/03-dev-env.md). Mops is supported in `dfx` versions `0.10.0` and higher. 
+Mops utilizes a fully on-chain package registry. To install Mops, first be sure to have set up your developer environment and installed the IC SDK and Node.js, as described in the previous module, [0.3: Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env). Mops is supported in `dfx` versions `0.10.0` and higher.
 
 Then, to install Mops, run the command:
 
@@ -40,7 +44,7 @@ Change the file's permissions to include execute permissions:
 chmod +x vessel
 ```
 
-Finally, to initialize Vessel, run `vessel init` in your project's root folder. 
+Finally, to initialize Vessel, run `vessel init` in your project's root folder.
 
 ## Using Mops
 
@@ -64,7 +68,7 @@ dfx new mops_example
 You will be prompted to select a language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -74,7 +78,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
@@ -143,11 +147,11 @@ You'll be prompted to choose whether you plan to use Mops to pull packages or pu
     Package (I plan to publish this package on mops)
 ```
 
-In this case, select 'Project'. For more information about publishing packages, see the [publishing a package](#publishing-a-package) section. 
+In this case, select 'Project'. For more information about publishing packages, see the [publishing a package](#publishing-a-package) section.
 
-You will also be prompted to choose if you'd like to use a GitHub workflow. This is optional. 
+You will also be prompted to choose if you'd like to use a GitHub workflow. This is optional.
 
-### Adding packages to `mops.toml`. 
+### Adding packages to `mops.toml`.
 
 To install a package with Mops, you need to specify the package in the `mops.toml` file within your project. To add a package to this file, you can use the command `maps add` then the package name:
 
@@ -187,7 +191,7 @@ If you develop a package that you'd like to publish so other developers can use 
 
 ## Using Vessel
 
-To pull a package using Vessel, edit the `vessel.dhall` file to include what packages your project will import. 
+To pull a package using Vessel, edit the `vessel.dhall` file to include what packages your project will import.
 
 Then, edit your `dfx.json` file to use the `packtool` of `vessel sources`:
 
@@ -222,7 +226,7 @@ actor characterCount {
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 

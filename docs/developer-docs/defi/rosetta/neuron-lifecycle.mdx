@@ -1,4 +1,8 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Neuron lifecycle
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta", "Concept"]} />
 
 ## Overview
 
@@ -8,7 +12,7 @@ A neuron is a type of asset managed by the Internet Computer governance canister
 
 Creating a neuron involves 2 steps:
 
--   Transfering some **amount** of ICPs from any ledger account to the neuron’s address. Neuron address on the ledger that belongs to the Governance canister. The caller computes the neuron address from two parts:
+-   Transferring some **amount** of ICPs from any ledger account to the neuron’s address. Neuron address on the ledger that belongs to the Governance canister. The caller computes the neuron address from two parts:
 
     -   The principal of the governance canister.
 

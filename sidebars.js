@@ -661,8 +661,8 @@ const sidebars = {
           items: [
             "developer-docs/daos/nns/overview",
             "developer-docs/daos/nns/nns-app-quickstart",
-            "developer-docs/daos/nns/neurons-fund",
             "developer-docs/daos/nns/staking-voting-rewards",
+            "developer-docs/daos/nns/neurons-fund",
             "developer-docs/daos/nns/proposal-requirements"
           ],
         },
