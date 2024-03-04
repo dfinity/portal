@@ -274,7 +274,7 @@ const sidebars = {
                 type: "doc",
                 id: "developer-docs/developer-tools/cli-tools/cli-reference/index",
               },
-		items: [
+	      items: [
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-bootstrap",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
