@@ -63,7 +63,7 @@ const subnavItems = [
     label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
-  {
+ {
     type: "docSidebar",
     position: "left",
     sidebarId: "motoko",
@@ -92,11 +92,6 @@ const subnavItems = [
     position: "left",
     sidebarId: "solidity",
     label: "Solidity",
-  },
-  {
-    position: "left",
-    to: "blog",
-    label: "Blog",
   },
   {
     type: "dropdown",

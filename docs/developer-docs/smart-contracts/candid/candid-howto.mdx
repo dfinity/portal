@@ -1,4 +1,8 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Using Candid
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 # Overview
 
@@ -18,11 +22,54 @@ Now, let’s explore how to interact with this canister in different scenarios w
 
 Candid types can be used to describe a service via a Candid service description file (`.did` file), which can either be manually written or generated from a service implementation.
 
-If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use the SDK, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are auto-generated, it is recommended that they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next `dfx build`.
+### Auto-generated `.did` files
+
+If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use `dfx`, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are auto-generated, it is recommended that they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next `dfx build`.
 
 For canisters written in Rust, the Candid extractor tool can be used with the IC CDK version `0.11.0` and newer. You can find the full instructions for using the Candid extractor [here](/docs/current/developer-docs/backend/candid/generating-candid).
 
-In other languages, you will have to write the Candid interface description manually. With the help of types, tools have been developed to automatically generate UI and perform random testing based on the service description file.
+### Writing `.did` files
+
+In other languages, you will have to write the Candid interface description manually. The most simple interface description can be found below, which defines a service with no public methods:
+
+```
+service : {}
+```
+
+To add a public method, add the method's name, followed by the data types that the method accepts and returns:
+
+```
+service : {
+  ping : () -> ();
+}
+```
+
+In this `ping` method, it does not accept any types and does not return any types.
+
+Here is an example that defines the public method `greet`, which accepts type `text` and returns type `text` using a query call.
+
+```
+service : {
+    "greet" : (text) -> (text) query;
+};
+```
+
+[Learn more about supported data types in the Candid reference documentation](/docs/current/references/candid-ref#supported-types).
+
+### Splitting interface descriptions across multiple files (Motoko)
+
+In some workflows, it may be beneficial to split interface descriptions across multiple `.did` files. For example, one file may be used to define type definitions that are used by several canisters, while another file is used to define the main service for one of those canisters.
+
+:::caution
+This workflow is for Motoko projects.
+:::
+
+You can import both interface descriptions into your canister with two import statements:
+
+```
+import A "a.did";  // Imports only type definitions
+import service B "b.did";  // Imports both type definitions and main service
+```
 
 ## Interact with a service in a terminal
 
@@ -41,7 +88,7 @@ $ dfx canister call counter inc '(42)'
 (43)
 ```
 
-To figure out how to create more complex Candid arguments, please refer to the [Candid reference](/references/candid-ref.md). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
+To figure out how to create more complex Candid arguments, please refer to the [Candid reference](/docs/current/references/candid-ref). And for Candid arguments too long to fit the command line, please use the `--argument-file` flag of [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
 
 You can also omit the arguments and let the IC SDK generate a random value that matches the method type. For example:
 
@@ -122,7 +169,7 @@ actor {
 }
 ```
 
-In this example, when the import dependency on the `counter` canister—the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/references/candid-ref.md) reference section.
+In this example, when the import dependency on the `counter` canister—the `import Counter "canister:Counter"` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the `inc` method natively—as if it were a Motoko function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/docs/current/references/candid-ref) reference section.
 
 The Motoko compiler and `dfx build` command also auto-generate the Candid description for the `hello` canister to allow other canisters or tools to interact with the `hello` canister seamlessly. The generated Candid description is located in your project build directory at `.dfx/local/canisters/hello/hello.did`.
 
@@ -132,7 +179,7 @@ If you write a canister in Rust, the `dfx build` command ensures that the servic
 
 For example, if you want to write a `hello` canister that calls the `counter` canister in Rust:
 
-``` rust
+```rust
 use ic_cdk_macros::*;
 
 #[import(canister = "counter")]
@@ -145,7 +192,7 @@ async fn greet() -> String {
 }
 ```
 
-When the import macro on the `counter` canister—the `#[import(canister = "counter")]` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively—as if it were a Rust function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/references/candid-ref.md) reference section.
+When the import macro on the `counter` canister—the `#[import(canister = "counter")]` declaration—is processed by the `dfx build` command, the `dfx build` command ensures that the `counter` canister identifier and the Candid description are passed to the Rust CDK correctly. The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively—as if it were a Rust function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/docs/current/references/candid-ref) reference section.
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file:
 
@@ -174,7 +221,7 @@ import BigNumber from 'bignumber.js';
 })();
 ```
 
-When the import dependency of counter canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js`, by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the `inc` method natively—as if it were a JavaScript function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and JavaScript, you can consult the [supported types](/references/candid-ref.md) reference section.
+When the import dependency of counter canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js`, by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the `inc` method natively—as if it were a JavaScript function—even if the `counter` canister is implemented in a different language and even if you do not have the source code for the imported canister. For additional information on the type mapping between Candid and JavaScript, you can consult the [supported types](/docs/current/references/candid-ref) reference section.
 
 ## Create a new Candid implementation
 

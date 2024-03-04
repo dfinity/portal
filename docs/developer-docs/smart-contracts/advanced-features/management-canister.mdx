@@ -1,7 +1,10 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # ICP management canister
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
 
 ## Overview
 
@@ -121,7 +124,7 @@ One of the special features of ICP is its direct integration with the [Bitcoin](
 
 ### HTTPS outcalls
 
-One more special feature of ICP is the ability for canisters to make http requests to off-chain systems using the [HTTPS outcalls](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview) feature. This is available through the management canister's [http_request](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request) API. HTTPS outcalls enable canisters to obtain off-chain data, call RPC services of other blockchain networks, or interact with Web2 services and enterprise IT systems off-chain.
+One more special feature of ICP is the ability for canisters to make http requests to off-chain systems using the [HTTPS outcalls](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) feature. This is available through the management canister's [http_request](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request) API. HTTPS outcalls enable canisters to obtain off-chain data, call RPC services of other blockchain networks, or interact with Web2 services and enterprise IT systems off-chain.
 
 ### Retrieving randomness
 

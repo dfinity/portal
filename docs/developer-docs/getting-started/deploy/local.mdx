@@ -1,9 +1,13 @@
 
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Local deployment
+
+<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
 ## Overview
 
-When developing canisters and projects, it is recommended to first deploy your project to the local development environment. This is so you can fabricate cycles in your local development environment, which you cannot do on the mainnet. Cycles are charged for the resources used by your canister. You can learn more about cycles [here](/docs/developer-docs/gas-cost.md).
+When developing canisters and projects, it is recommended to first deploy your project to the local development environment. This is so you can fabricate cycles in your local development environment, which you cannot do on the mainnet. Cycles are charged for the resources used by your canister. You can learn more about cycles [here](/docs/current/developer-docs/gas-cost).
 
 Deploying to your local development environment is similar to deploying to a testnet. ICP does not have a testnet available for developers to deploy to. Instead, the IC SDK runs a local version of the ICP node software known as the **replica** and provides a single-node environment on your local machine for you to deploy canisters to. 
 

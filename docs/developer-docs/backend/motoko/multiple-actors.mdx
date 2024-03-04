@@ -1,7 +1,10 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 15: Using multiple actors
+
+<MarkdownChipRow labels={["Intermediate", "Motoko", "Tutorial"]} />
 
 ## Overview
 In this guide, you are going to create a project with multiple actors. Currently, you can only define one actor in a Motoko file and a single actor is always compiled to a single canister. You can, however, create **projects** that have multiple actors and can build multiple canisters from the same `dfx.json` configuration file.

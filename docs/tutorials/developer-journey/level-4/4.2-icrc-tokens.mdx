@@ -1,4 +1,8 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 4.2 ICRC-1 tokens
+
+<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
@@ -8,21 +12,21 @@ For developers to create their own fungible tokens on the Internet Computer, the
 Standards defined within the ICRC group are not specific to tokens; anything can be standardized using an ICRC standard. Some examples may be the standardization of metadata fields or digital assets other than tokens.
 :::
 
-The purpose of the ICRC-1 standard is to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. A detailed account of the standard can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). 
+The purpose of the ICRC-1 standard is to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. A detailed account of the standard can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
-There are several extensions of the ICRC-1 standard, such as the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Not all ICRC standards must be extensions of the ICRC-1 standard, though. This tutorial will focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard's endpoints. 
+There are several extensions of the ICRC-1 standard, such as the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Not all ICRC standards must be extensions of the ICRC-1 standard, though. This tutorial will focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard's endpoints.
 
 ## What's the difference between the ICP and ICRC-1 ledgers?
 
-The ICP ledger is a specific implementation of a ledger, which initially did not follow a standard. The ICP ledger existed prior to the ideation and creation of the ICRC-1 standard. 
+The ICP ledger is a specific implementation of a ledger, which initially did not follow a standard. The ICP ledger existed prior to the ideation and creation of the ICRC-1 standard.
 
-ICRC-1 is an official standard and is not a specific implementation of a ledger. There are several different ICRC-1 ledgers with different implementations, but all follow the same standard. 
+ICRC-1 is an official standard and is not a specific implementation of a ledger. There are several different ICRC-1 ledgers with different implementations, but all follow the same standard.
 
 The ICP and ICRC-1 ledger use different endpoints, different transactions, different block objects, in addition to other subtle differences.
 
-### `Account`s versus `AccountIdentifier`s? 
+### `Account`s versus `AccountIdentifier`s?
 
-The most important difference between the ICP ledger and the ICRC-1 standard is their implementation of accounts. The ICRC-1 standard specifies `Account`s as a `struct` data type that contains a principal and an optional subaccount. 
+The most important difference between the ICP ledger and the ICRC-1 standard is their implementation of accounts. The ICRC-1 standard specifies `Account`s as a `struct` data type that contains a principal and an optional subaccount.
 
 
 ```candid
@@ -34,15 +38,15 @@ In contrast, the ICP ledger uses `AccountIdentifier`s to represent accounts, whi
 
 An `Account` can be converted into an `AccountIdentifier`, but an `AccountIdentifier` cannot be converted into an `Account`. This factor provides the ICP ledger with a level of anonymity, though it means the ICP ledger cannot have the same internal representation as an ICRC-1 ledger.
 
-### Endpoints 
+### Endpoints
 
-The ICP ledger implements all ICRC-1 endpoints, but is not an implementation of an ICRC-1 ledger due to the ICP ledger's use of `AccountIdentifier`s. 
+The ICP ledger implements all ICRC-1 endpoints, but is not an implementation of an ICRC-1 ledger due to the ICP ledger's use of `AccountIdentifier`s.
 
 ## Index canisters
 
-If you want to find information about a transaction for a specific `Account` or `AccountIdentifier`, you could query all of the transactions within the ICP or ICRC-1 ledger, then parse through the transaction records for the results you're looking for. If you're querying a local ledger canister, the transaction history may not be very long and this process may have low latency. However, if you're using the mainnet ledgers, parsing the transaction history may be a hassle. 
+If you want to find information about a transaction for a specific `Account` or `AccountIdentifier`, you could query all of the transactions within the ICP or ICRC-1 ledger, then parse through the transaction records for the results you're looking for. If you're querying a local ledger canister, the transaction history may not be very long and this process may have low latency. However, if you're using the mainnet ledgers, parsing the transaction history may be a hassle.
 
-As an alternative, an **index** canister can be queried. The index canister provides an endpoint for querying the transaction list for a specific account, as well as other information such as an account's current balance. Since the ICP and ICRC-1 ledgers use different account representations (`Account` and `AccountIdentifier`), the ICP and ICRC-1 index canisters do not use the same endpoints. 
+As an alternative, an **index** canister can be queried. The index canister provides an endpoint for querying the transaction list for a specific account, as well as other information such as an account's current balance. Since the ICP and ICRC-1 ledgers use different account representations (`Account` and `AccountIdentifier`), the ICP and ICRC-1 index canisters do not use the same endpoints.
 
 On the mainnet, the ICP index canister runs on the NNS subnet and has the canister ID [qhbym-qaaaa-aaaaa-aaafq-cai](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai).
 
@@ -58,19 +62,19 @@ The ICRC-1 standard intentionally excludes certain ledger functions that are nec
 
 - Pre-signed transactions.
 
-The ICRC-1 standard defines the `icrc1_supported_standards` endpoint to accommodate these functions through extensions of the standard. This endpoint returns all specifications implemented by the ledger, such as `ICRC-2` or `DIP-20`. 
+The ICRC-1 standard defines the `icrc1_supported_standards` endpoint to accommodate these functions through extensions of the standard. This endpoint returns all specifications implemented by the ledger, such as `ICRC-2` or `DIP-20`.
 
 ## Metadata
 
 The ICRC-1 token standard allows for several optional metadata fields to be specified. Metadata can be used to help improve the user experience and simplify the token's integration with wallets. Each metadata key is an arbitrary Unicode string that uses the format `<namespace>:<key>`, where the namespace `icrc1` is reserved for metadata defined for the ICRC-1 standard. Metadata entries include:
 
-- `icrc1:symbol`: The token's currency code, such as `variant { Text = "XTKN" }`. 
+- `icrc1:symbol`: The token's currency code, such as `variant { Text = "XTKN" }`.
 
 - `icrc1:name`: The token's name, such as `variant { Text = "Test Token" }`.
 
 - `icrc1:decimals`: The number of decimals used by the token, such as `variant { Nat = 8 }`
 
-- `icrc1:fee`: The token's default transfer fee, such as `variant { Nat = 10_000 }`. 
+- `icrc1:fee`: The token's default transfer fee, such as `variant { Nat = 10_000 }`.
 
 ## Deploying a ICRC-1 ledger locally
 
@@ -78,7 +82,7 @@ Deploying an ICRC-1 ledger canister locally uses the same steps that you used in
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ### Creating a new project
 
@@ -100,7 +104,7 @@ dfx new icrc1_ledger_canister
 You will be prompted to select a language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -110,7 +114,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
@@ -153,7 +157,7 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 ### Locating the Wasm and Candid files
 
-You can access the Wasm and Candid files in the same way that you located the ICP ledger files. Remember that you'll need the latest replica version, which can be found on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect new replica binary revision** field. 
+You can access the Wasm and Candid files in the same way that you located the ICP ledger files. Remember that you'll need the latest replica version, which can be found on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect new replica binary revision** field.
 
 Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. In this tutorial you'll use the URL https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz.
 
@@ -188,7 +192,7 @@ dfx identity use minter
 export MINTER_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
-The environment variable `MINTER_ACCOUNT_ID` is the principal ID responsible for minting and burning tokens. 
+The environment variable `MINTER_ACCOUNT_ID` is the principal ID responsible for minting and burning tokens.
 
 Then, export the name and symbol of your token:
 
@@ -213,9 +217,9 @@ export PRE_MINTED_TOKENS=10_000_000_000
 export TRANSFER_FEE=10_000
 ```
 
-The environment variable `PRE_MINTED_TOKENS` is the number of tokens minted during the ledger's initial deployment. These are held by the account that deploys the ledger canister. 
+The environment variable `PRE_MINTED_TOKENS` is the number of tokens minted during the ledger's initial deployment. These are held by the account that deploys the ledger canister.
 
-The environment variable `TRANSFER_FEE` is the fee that users will pay whenever they make a transfer using the ledger. 
+The environment variable `TRANSFER_FEE` is the fee that users will pay whenever they make a transfer using the ledger.
 
 Next, set the values for the ledger's archiving options. The values you're setting in this tutorial are the recommended values, but you can alter them to fit your project's needs:
 
@@ -228,13 +232,13 @@ export NUM_OF_BLOCK_TO_ARCHIVE=1000
 export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
 ```
 
-In these commands, the following environment variables are set: 
+In these commands, the following environment variables are set:
 
-- `ARCHIVE_CONTROLLER`: Principal of the archive canister's controller. 
+- `ARCHIVE_CONTROLLER`: Principal of the archive canister's controller.
 
 - `TRIGGER_THRESHOLD`: The number of blocks to archive once the trigger threshold is exceeded.
 
-- `NUM_OF_BLOCK_TO_ARCHIVE`: The amount of blocks to be archived. 
+- `NUM_OF_BLOCK_TO_ARCHIVE`: The amount of blocks to be archived.
 
 - `CYCLE_FOR_ARCHIVE_CREATION`: The amount of cycles to be sent to the archive canister when it is deployed.
 
@@ -253,7 +257,7 @@ export FEATURE_FLAGS=true
 Now, let's deploy the ICRC-1 ledger canister locally using the environment variables that you've set using the command:
 
 ```bash
-dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init = 
+dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init =
 record {
      token_symbol = \"${TOKEN_SYMBOL}\";
      token_name = \"${TOKEN_NAME}\";
@@ -280,15 +284,15 @@ Specifying the canister ID as `mxzaz-hqaaa-aaaar-qaada-cai` is an optional step 
 
 To deploy an instance of the ICRC-1 ledger on the mainnet, there are several important things to note:
 
-- You will need to remove the argument `--specified-id mxzaz-hqaaa-aaaar-qaada-cai`, since you will receive a unique canister ID when the canister is deployed. 
+- You will need to remove the argument `--specified-id mxzaz-hqaaa-aaaar-qaada-cai`, since you will receive a unique canister ID when the canister is deployed.
 
-- You will need to use the argument `--network ic` to specify deploying to the mainnet. 
+- You will need to use the argument `--network ic` to specify deploying to the mainnet.
 
 - You can specify the amount of initially minted tokens by setting `initial_values = vec {<INITIAL_VALUES>}`.
 
 - Always set the `archive_options` field, otherwise the ledger's capacity is limited to the memory of a single canister.
 
-- Assure that the ledger canister has sufficient cycles, since it will require cycles to create new instances of the archive canister on demand. 
+- Assure that the ledger canister has sufficient cycles, since it will require cycles to create new instances of the archive canister on demand.
 
 ## Interacting with the ICRC-1 ledger
 
@@ -296,12 +300,12 @@ Like the ICP ledger, the ICRC-1 ledger can be interacted with using the `dfx can
 
 ### Using the `dfx canister` command with ICRC-1 endpoints
 
-This tutorial will cover the endpoints for the ICRC-1 ledger canister and the endpoints for the ICRC-2 extension. For the ICRC-2 endpoints, you will need to have set `FEATURE_FLAGS=true` in the previous step before the canister was deployed. 
+This tutorial will cover the endpoints for the ICRC-1 ledger canister and the endpoints for the ICRC-2 extension. For the ICRC-2 endpoints, you will need to have set `FEATURE_FLAGS=true` in the previous step before the canister was deployed.
 
 To confirm that your local canister supports the ICRC-2 extension, you can check the list of supported standards with the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_supported_standards '()' 
+dfx canister call icrc1_ledger_canister icrc1_supported_standards '()'
 ```
 
 This should return the following output:
@@ -325,7 +329,7 @@ This should return the following output:
 To get the token symbol of the ICRC-1 ledger, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_symbol '()' 
+dfx canister call icrc1_ledger_canister icrc1_symbol '()'
 ```
 
 This command returns:
@@ -337,7 +341,7 @@ This command returns:
 To return the token's decimals of the ICRC-1 ledger, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_decimals '()' 
+dfx canister call icrc1_ledger_canister icrc1_decimals '()'
 ```
 
 This command returns:
@@ -349,7 +353,7 @@ This command returns:
 To return the token's metadata of the ICRC-1 ledger, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_metadata '()' 
+dfx canister call icrc1_ledger_canister icrc1_metadata '()'
 ```
 
 This command returns:
@@ -369,7 +373,7 @@ This command returns:
 To return the total token supply of the ICRC-1 ledger, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_total_supply '()' 
+dfx canister call icrc1_ledger_canister icrc1_total_supply '()'
 ```
 
 This command should return the amount of tokens that you minted using the `PRE_MINTED_TOKENS` variable:
@@ -381,7 +385,7 @@ This command should return the amount of tokens that you minted using the `PRE_M
 To return the token's transfer fee of the ICRC-1 ledger, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_fee '()' 
+dfx canister call icrc1_ledger_canister icrc1_fee '()'
 ```
 
 This command returns:
@@ -393,7 +397,7 @@ This command returns:
 To return the minting account principal of the ICRC-1 ledger, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_minting_account '()' 
+dfx canister call icrc1_ledger_canister icrc1_minting_account '()'
 ```
 
 This command returns:
@@ -410,7 +414,7 @@ This command returns:
 To fetch the balance of an account, in this tutorial the `DEPLOY_ID` account, use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc1_balance_of "(record {owner = principal \"${DEPLOY_ID}\"; })" 
+dfx canister call icrc1_ledger_canister icrc1_balance_of "(record {owner = principal \"${DEPLOY_ID}\"; })"
 ```
 
 Since you haven't transferred any tokens, this command returns the amount that you minted in the `PRE_MINTED_TOKENS` variable:
@@ -439,7 +443,7 @@ The [ICRC-2 standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC
 For example, to approve 100_000 tokens for the principal `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe`, you can use the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 100_000; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"  
+dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 100_000; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"
 ```
 
 This command will return the block index of the transaction, such as:
@@ -451,7 +455,7 @@ This command will return the block index of the transaction, such as:
 Then, to confirm that this command worked correctly, you check the principal's allowance by running the command:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc2_allowance "(record { account = record{owner = principal \"${DEPLOY_ID}\";}; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"  
+dfx canister call icrc1_ledger_canister icrc2_allowance "(record { account = record{owner = principal \"${DEPLOY_ID}\";}; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"
 ```
 
 This command should reflect the 100_000 tokens you approved previously:
@@ -463,7 +467,7 @@ This command should reflect the 100_000 tokens you approved previously:
 An expiration date can be sent for the approval, such as:
 
 ```bash
-dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 90_000; from = record{owner = principal \"${DEPLOY_ID}\"}; to= record{owner = principal \"${DEPLOY_ID}\"}; })"  
+dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 90_000; from = record{owner = principal \"${DEPLOY_ID}\"}; to= record{owner = principal \"${DEPLOY_ID}\"}; })"
 ```
 
 This command will return the block index of the transaction, such as:
@@ -494,7 +498,7 @@ This URL will display the following Candid UI:
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 

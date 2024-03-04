@@ -1,4 +1,8 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # What is Candid?
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 ## Overview
 Candid is an **interface description language**. Its primary purpose is to describe the public interface of a **service**, usually in the form of a program deployed as a **canister** that runs on the Internet Computer. One of the key benefits of Candid is that it is language-agnostic, and allows inter-operation between services and frontends written in different programming languages, including Motoko, Rust, and JavaScript.
@@ -16,9 +20,9 @@ service counter : {
 
 In this example, the described service `counter` consists of the following public methods:
 
-- The `add` and `subtract` methods change the value of a counter. 
+- The `add` and `subtract` methods change the value of a counter.
 
-- The `get` method reads the current value of a counter. 
+- The `get` method reads the current value of a counter.
 
 - The `subscribe` method can be used to invoke another function, for example, to invoke a notification callback method each time the counter value changes.
 
@@ -62,7 +66,7 @@ Candid is a strongly typed system with a set of types that canonically cover mos
 
 -   The special `null`, `reserved` and `empty` types.
 
-All types are described in detail in the [reference](/references/candid-ref.md) section.
+All types are described in detail in the [reference](/docs/current/references/candid-ref) section.
 
 The philosophy behind this set of types is that they are sufficient to describe the **structure** of data, so that information can be encoded, passed around and decoded, but intentionally do not describe **semantic** constraints beyond what’s needed to describe the representation. For example, there’s no way to express that a number should be even, that a vector has a certain length, or that the elements of a vector are sorted.
 
@@ -149,7 +153,7 @@ service address_book : {
 }
 ```
 
-This annotation indicates that the `get_address` method can be invoked as an ICP **query call**. As discussed in [query and update methods](/concepts/canisters-code.md#query-and-update-methods), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with ICP.
+This annotation indicates that the `get_address` method can be invoked as an ICP **query call**. As discussed in [query and update methods](/docs/current/concepts/canisters-code#query-and-update-methods), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with ICP.
 
 ## Encoding and decoding
 
@@ -187,7 +191,7 @@ Services can safely evolve in the following ways:
 
 -   Existing result types may be *changed*, but only to a *subtype* of the previous type.
 
-For information about the supertypes and subtypes of a given type, see the corresponding [reference](/references/candid-ref.md) section for that type.
+For information about the supertypes and subtypes of a given type, see the corresponding [reference](/docs/current/references/candid-ref) section for that type.
 
 Let’s look at a concrete example of how a service might evolve. Consider a service with the following API:
 
@@ -232,7 +236,7 @@ The syntax is similar to that for Candid types. For example, a typical textual p
 })
 ```
 
-:::info 
+:::info
 The Candid **binary** format does not include the actual field names, merely numeric **hashes**. So pretty-printing such a value without knowledge of the expected type will not include the field names of records and variants. The above value might then be printed as follows:
 
 ``` candid
@@ -268,14 +272,14 @@ In other languages, like Rust or C, you can still develop your service using the
 
 For examples of how to write Candid service descriptions for Rust programs, see the [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](/docs/current/developer-docs/backend/rust/index).
 
-Regardless of the host language you use, it is important to know the mapping between host language types and Candid types. In the [supported types](/references/candid-ref.md) reference section, you’ll find Candid type mapping described for Motoko, Rust, and JavaScript.
+Regardless of the host language you use, it is important to know the mapping between host language types and Candid types. In the [supported types](/docs/current/references/candid-ref) reference section, you’ll find Candid type mapping described for Motoko, Rust, and JavaScript.
 
 ## Best practices
 
 It is recommended to use Candid records with descriptive names for types:
 
 ```candid
-type Recycler = 
+type Recycler =
  record {
    identity: principal;
    location: record {

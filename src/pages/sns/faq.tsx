@@ -127,9 +127,10 @@ function SnsFaqPage() {
                 of a dapp, since everything is on-chain. Having fully on-chain
                 DAOs is important because it enables all decisions to be
                 executed on the blockchain and thus facilitates true
-                decentralization. This is in contrast to existing DAOs on other
-                blockchains where voting takes place on-chain but the execution
-                of the results are often carried out by developers off-chain.{" "}
+                decentralization. This is in contrast to existing DAOs
+                on other blockchains where voting takes place on-chain but the
+                execution of the results are often carried out by developers
+                off-chain.{" "}
                 <p>
                   Therefore, SNS DAOs serve as a vehicle to deliver fully
                   decentralized online services that are owned and governed by
@@ -231,7 +232,7 @@ function SnsFaqPage() {
                   You can propose upgrades for many of the DAO's parameters such
                   as maximum staking period, voting rewards and many more. See{" "}
                   <Link
-                    href="/docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters"
+                    href="/docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters"
                     target="_blank"
                   >
                     parameters
@@ -261,14 +262,14 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="How does voting in an SNS DAO work?">
               Once you have acquired SNS tokens, you can lock them into SNS
-              neurons, which allows you to create a proposal, vote directly on
-              one, delegate voting to trusted parties that have more expertise
-              in certain topics. If a proposal gets adopted, the code of the SNS
-              DAO or the dapp it controls is upgraded. Depending on the SNS
-              configuration, users who vote may be rewarded with additional
-              tokens for participating in governance. If you want to get more
-              deeply involved, you can also suggest feature updates through
-              proposals to improve the dapp controlled by the DAO.
+              neurons, which allows you to create a proposal, vote directly on one,
+              delegate voting to trusted parties that have more expertise in certain topics.
+              If a proposal gets adopted, the code of the SNS DAO or the dapp it controls is
+              upgraded. Depending on the SNS configuration, users who vote may
+              be rewarded with additional tokens for participating in
+              governance. If you want to get more deeply involved, you can also
+              suggest feature updates through proposals to improve the dapp
+              controlled by the DAO.
             </Faq>
             <Faq
               title="How can I get SNS Tokens?"
@@ -338,18 +339,17 @@ function SnsFaqPage() {
               <p>
                 From a user's vantage point, the Neurons' fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
-                future SNSs. As the NNS decides how the Neuons' fund contributes
-                to SNSs, ICP stakers participating in them can leverage the
-                broader community's "wisdom of crowds" to chose which SNS tokens
-                to acquire. This allows users to participate automatically in
-                upcoming SNS launches.
+                future SNSs. As the NNS decides how the Neuons' fund contributes to
+                SNSs, ICP stakers participating in them can leverage the broader community's
+                "wisdom of crowds" to chose which SNS tokens to acquire. This allows
+                users to participate automatically in upcoming SNS launches.
               </p>
               <p>
-                ICP neuron holders can opt in or out of the Neurons' fund at any
-                moment. Neurons will only participate in the decentralization
-                swap if they are opted in at the moment when the proposal to
-                initiate the SNS decentralization swap executes. The propsoal
-                executes immediately after it gets adopted by ICP neuron
+                ICP neuron holders can opt in or out of the Neurons' fund at
+                any moment. Neurons will only participate in the
+                decentralization swap if they are opted in at the moment when
+                the proposal to initiate the SNS decentralization swap executes. The
+                propsoal executes immediately after it gets adopted by ICP neuron
                 holders.
               </p>
               More about the{" "}
@@ -403,8 +403,8 @@ function SnsFaqPage() {
                 swap, from its initiation to execution, is completely
                 decentralized and not controlled by any centralized entity. Even
                 the decision to create the SNS and its token is made by the NNS
-                (the DAO that controls the Internet Computer) and not the
-                developer in order to ensure complete decentralizion of the app.
+                (the DAO that controls the Internet Computer) and not the developer
+                in order to ensure complete decentralizion of the app.
               </p>
               <p>
                 A decentralization swap follows a list of configurable
@@ -682,9 +682,13 @@ function SnsFaqPage() {
                   Computer.
                 </li>
                 <li>
-                  The treasury funds could, for example, be used to open
-                  liquidity pools on DEXs or to reward users for certain actions
-                  in the dapp.
+                  Typically, after an SNS has launched it has an SNS token treasury and an ICP
+                  treasury (from the decentralization swap). An SNS can, however, also own other
+                  tokens on the Internet Computer.
+                </li>
+                <li>
+                  The treasury funds could, for example, be used to open liquidity pools on
+                  DEXs or to reward users for certain actions in the dapp.
                 </li>
               </ul>
             </Faq>
@@ -696,16 +700,15 @@ function SnsFaqPage() {
             </Faq>
 
             <Faq title="Who has access to the treasury? ">
-              Without an adopted SNS proposal that specifies how to allocate
-              funds, no one can access the SNS treasury. The SNS DAO only grants
-              access when proposals are adopted through SNS community voting.
-              While it can happen that the original developer team possesses a
-              meaningful portion of the voting power, they alone cannot make
-              decisions for the DAO without the approval of SNS token holders.
-              In particular, treasury proposals are considered to be critical
-              proposals, which have a higher bar to be adopted, including that
-              they require a higher voting participation and support of a
-              supermajority of the DAO voters.
+              Without an adopted SNS proposal that specifies how to allocate funds,
+              no one can access the SNS treasury. The SNS DAO only grants access
+              when proposals are adopted through SNS community voting. While it can happen
+              that the original developer team possesses a meaningful portion of the voting
+              power, they alone cannot make decisions for the DAO without the approval of
+              SNS token holders. In particular, treasury proposals are considered to be
+              critical proposals, which have a higher bar to be adopted, including that
+              they require a higher voting participation and support of a supermajority of
+              the DAO voters.
             </Faq>
           </FaqSection>
 
@@ -791,11 +794,10 @@ function SnsFaqPage() {
                 without any specific following choice.
               </p>
               <p>
-                When you use following, you must trust that the neurons you’re
-                following will make decisions that align with your views. The
-                advantages of neuron following are that you don’t have to spend
-                time manually voting on each proposal, and you can rely on the
-                expertise of other neuron holders for certain topics.
+                When you use following, you must trust that the neurons you’re following will make
+                decisions that align with your views. The advantages of neuron following
+                are that you don’t have to spend time manually voting on each proposal,
+                and you can rely on the expertise of other neuron holders for certain topics.
               </p>
             </Faq>
 
@@ -931,7 +933,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/developer-docs/integrations/sns/"
+            href="/docs/current/developer-docs/daos/sns/"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>

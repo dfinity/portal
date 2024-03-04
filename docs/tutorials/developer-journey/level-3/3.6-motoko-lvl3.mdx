@@ -1,8 +1,12 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 3.6 Motoko level 3
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 ## Overview
 
-In the previous module, [3.5: Identities and authentication](3.5-identities-and-auth.md) you covered different forms of identities and authentication on ICP. In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks.
+In the previous module, [3.5: Identities and authentication](/docs/current/tutorials/developer-journey/level-3/3.5-identities-and-auth) you covered different forms of identities and authentication on ICP. In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity related functionalities such as pattern matching and periodic tasks.
 
 ## Principals and caller identification
 
@@ -72,7 +76,7 @@ Only the `principal` that initialized the canister is assigned the `owner` role,
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ### Creating a new project
 
@@ -94,7 +98,7 @@ dfx new access_hello
 You will be prompted to select a language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -104,7 +108,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
