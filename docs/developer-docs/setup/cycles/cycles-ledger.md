@@ -134,19 +134,6 @@ With these two commands, there are two **optional** flags that can be used:
 
 If neither flag is used, the canister will be created on a random subnet using the user principal’s cycles.
 
-### Using ICP instead of cycles for canister creation
-
-Alternatively, if you want to use ICP instead of cycles for creating a canister, you can use the flag `--using-icp`, which will charge your principal ICP instead of cycles such as:
-
-```
-dfx create canister CANISTER_NAME --using-icp --network ic
-```
-
-Or you can set a specific amount of ICP with the option `--using-icp-amount AMOUNT`, such as:
-
-```
-dfx create canister CANISTER_NAME --using-icp-amount 2.7 --network ic
-```
 
 
 ## Fees
