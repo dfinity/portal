@@ -1,10 +1,12 @@
----
-sidebar_position: 3
----
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # SNS index canister
+
+<MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
+
 ## Overview
 The index canister fetches transactions from the [ledger canister](ledger-integration.mdx) and indexes them by **account**.
-It allows to query the transactions of an account in descending order from the ledger chain, and the list of accounts that belongs to a **principal**. 
+It allows to query the transactions of an account in descending order from the ledger chain, and the list of accounts that belongs to a **principal**.
 An index canister is always deployed as part of an SNS project.
 
 This canister is useful for applications that want to show the transactions of a specific account.
