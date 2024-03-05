@@ -1,3 +1,7 @@
+---
+keywords: [beginner, tutorial, candid, using candid, .did]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Using Candid
@@ -6,7 +10,15 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Overview
 
-As discussed in the [Candid concepts](./candid-concepts.mdx) page, Candid provides a language-agnostic way to interact with canisters. By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with ICP from a terminal using the IC SDK, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language. Now that you are familiar with what Candid is and how it works, this section provides instructions for how to use it in some common scenarios.
+As discussed in the [Candid concepts](./candid-concepts.mdx) page, Candid provides a language-agnostic way to interact with canisters.
+
+:::info
+While Candid is a robust, type safe, and future-proof way to facilitate communication between canisters, it is not required. Arbitrary bytes can be exchanged if all canisters that are part of the communication stream are designed to understand them (such that they are using the same underlying protocol, written in the same language, etc.).
+
+[Learn more in the Candid reference documentation](/docs/current/references/candid-ref).
+:::
+
+By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with ICP from a terminal using the IC SDK, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language.
 
 As a concrete example, let’s assume there is a `counter` canister already deployed on the network with the following Candid interface:
 

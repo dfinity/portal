@@ -55,56 +55,63 @@ function getItems(baseDir) {
   });
 }
 
+let cache;
+
 /** @type {import('@docusaurus/types').PluginModule} */
 const whatIsIcpDataPlugin = async function () {
   return {
     name: "what-is-the-ic-data",
     async loadContent() {
-      const domains = [];
+      if (!cache) {
+        const domains = [];
 
-      const dirs = fs
-        .readdirSync(path.resolve(__dirname, "..", "what-is-the-ic"), {
-          withFileTypes: true,
-        })
-        .filter((d) => d.isDirectory());
+        const dirs = fs
+          .readdirSync(path.resolve(__dirname, "..", "what-is-the-ic"), {
+            withFileTypes: true,
+          })
+          .filter((d) => d.isDirectory());
 
-      for (const dir of dirs) {
-        const indexPath = path.resolve(
-          __dirname,
-          "..",
-          "what-is-the-ic",
-          dir.name,
-          "index.md"
-        );
-
-        if (!fs.existsSync(indexPath)) {
-          logger.warn(
-            `Warning: no index.md file for what-is-the-ic topic "${dir.name}"`
+        for (const dir of dirs) {
+          const indexPath = path.resolve(
+            __dirname,
+            "..",
+            "what-is-the-ic",
+            dir.name,
+            "index.md"
           );
-          continue;
+
+          if (!fs.existsSync(indexPath)) {
+            logger.warn(
+              `Warning: no index.md file for what-is-the-ic topic "${dir.name}"`
+            );
+            continue;
+          }
+
+          const meta = matter(
+            fs.readFileSync(indexPath, { encoding: "utf-8" })
+          );
+
+          const baseDir = path.resolve(
+            __dirname,
+            "..",
+            "what-is-the-ic",
+            dir.name
+          );
+
+          domains.push({
+            name: meta.data.title,
+            description: marked.parse(meta.content, { renderer }),
+            cardImageFit: meta.data.cardImageFit,
+            image: {
+              card: meta.data.card,
+              overlay: meta.data.overlay,
+            },
+          });
         }
 
-        const meta = matter(fs.readFileSync(indexPath, { encoding: "utf-8" }));
-
-        const baseDir = path.resolve(
-          __dirname,
-          "..",
-          "what-is-the-ic",
-          dir.name
-        );
-
-        domains.push({
-          name: meta.data.title,
-          description: marked.parse(meta.content, { renderer }),
-          cardImageFit: meta.data.cardImageFit,
-          image: {
-            card: meta.data.card,
-            overlay: meta.data.overlay,
-          },
-        });
+        cache = domains;
       }
-
-      return domains;
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
