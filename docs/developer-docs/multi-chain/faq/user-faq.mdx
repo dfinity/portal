@@ -16,7 +16,7 @@ Questions about ckBTC from a user's POV.
 
 Chain-key Bitcoin (ckBTC) is a token on the Internet Computer that is backed 1:1 by bitcoin (BTC). This means that 1 ckBTC can always be redeemed for 1 BTC and vice versa. Unlike other tokens pegged to bitcoin, the ckBTC token does not rely on a third-party bridge for the conversion between BTC and ckBTC, making it a substantially more secure alternative to “wrapped” tokens.
 
-One of the main advantages of ckBTC over regular bitcoin is its speed and cost of transfers. A transfer of ckBTC is finalized within a few seconds, which is significantly faster compared to transfers on the Bitcoin blockchain when waiting for 6 confirmations. Additionally, the cost of a ckBTC transfer is only 0.0000001 ckBTC, which is approximately two orders of magnitude lower than the Bitcoin miner fees.
+One of the main advantages of ckBTC over regular bitcoin is its speed and cost of transfers. A transfer of ckBTC is finalized within a few seconds, which is significantly faster compared to transfers on the Bitcoin blockchain where even one confirmation can take minutes (and typically people wait for 5-7 confirmations). Additionally, the cost of a ckBTC transfer is only 0.0000001 ckBTC, which is approximately two orders of magnitude lower than the Bitcoin miner fees.
 
 In terms of usage, ckBTC can be used in applications on the Internet Computer. For example, there is a point of sale app that allows users to accept ckBTC payments. This is made possible because the Internet Computer integrates directly with the Bitcoin network, allowing canisters (akin to smart contracts) on the Internet Computer to receive, hold, and send Bitcoin, all directly with transactions on the Bitcoin network.
 
@@ -31,15 +31,25 @@ To convert Bitcoin (BTC) to Chain-key Bitcoin (ckBTC), follow these steps:
 1. Go to the NNS frontend dapp and sign in with your Internet Identity. If you don't have one, you will be prompted to create one. Any device that supports WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or a Ledger device.
 2. Navigate to My Tokens and select ckBTC.
 3. Click on Receive on the bottom of the screen.
-4. Send BTC to your NNS BTC address. Once you see this pop up window, you can copy your NNS BTC address, and send BTC there. Note, that since this is a real bitcoin transaction, it will take roughly an hour, and have the Bitcoin network's transaction fees. Once you acquire ckBTC, you can take advantage of its near instant finality (1-2s) and negligible transaction fees (10 satoshis).
+4. Send BTC to displayed Bitcoin address. Once you see this pop up window, you can copy your NNS BTC address, and send BTC there. Note, that since this is a real bitcoin transaction, it will take roughly two hours (because the minting process happens after the transaction has reached 12 confirmations), and have the Bitcoin network's transaction fees. Once you acquire ckBTC, you can take advantage of its near instant finality (1-2s) and negligible transaction fees (10 satoshis).
 
 For more details, you can refer to this [support document](https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC#h_01HE64A4QKANB6JX8VERRP5Y80).
 
 :::caution
-Important: Please note that when converting BTC to ckBTC in the NNS dapp, there is an estimated inter-network fee of 0.00002 BTC. Sending less than 0.00002 BTC for conversion to ckBTC can result in loss of funds. 
+Important: Please note that when converting BTC to ckBTC in the NNS dapp, there is an inter-network fee of 0.00002 BTC. Sending less than 0.00002 BTC for conversion to ckBTC will result in loss of funds. 
 :::
 
 To convert ckBTC back to BTC, follow these steps:
+
+1. Go to the NNS frontend dapp and sign in with your Internet Identity. If you don't have one, you will be prompted to create one. Any device that supports WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or a Ledger device.
+2. Navigate to "My Tokens" and select ckBTC. If you have ckBTC in a different wallet, send it to your NNS principal.
+3. Click on "Send" on the bottom of the screen.
+4. Paste a valid BTC address that you control into the "Destination" field.
+5. Select "Bitcoin" from the "Network" dropdown.
+6. Type in the amount you want to send or click "Max".
+7. Click "Continue", then confirm the transaction.
+
+Under the hood it works like this:
 
 1. The user makes the desired ckBTC amount available to the ckBTC minter and requests a conversion. The destination Bitcoin address undergoes a KYT check. If the check is successful, the request is accepted and put into a queue.
 2. The ckBTC minter periodically attempts to submit transactions for validated transfer requests.
@@ -50,15 +60,15 @@ For more details, you can refer to this [wiki page](https://wiki.internetcompute
 
 Please note that every step of converting BTC to ckBTC and back is decentralized, meaning there are no centralized custodians, no bridges and no traditional cloud providers that could act as attack vectors. Issuing and redeeming ckBTC goes through Know Your Transaction (KYT) checks to ensure no bitcoin enters the Internet Computer that is associated with criminal activity.
 
-### How do I send ckBTC?
+### How do I transfer ckBTC from one account to another?
 
-As a user, to send ckBTC, you can follow these steps using your NNS wallet:
+As a user, to send ckBTC, you can follow these steps:
 
 1. Go to the NNS frontend dapp and sign in with your Internet Identity. If you don't have one, you will be prompted to create one. Any device that supports WebAuthn can be used as a passkey for II. Alternatively, you can use a YubiKey or a Ledger device.
 2. Navigate to "My Tokens" and select ckBTC. If you have ckBTC in a different wallet, send it to your NNS principal.
 3. Click on "Send" on the bottom of the screen.
 4. Paste a valid BTC address that you control into the "Destination" field.
-5. Select Bitcoin from the "Network" dropdown.
+5. Select "Internet Computer" from the "Network" dropdown.
 6. Type in the amount you want to send or click "Max".
 7. Click "Continue", then confirm the transaction.
 
