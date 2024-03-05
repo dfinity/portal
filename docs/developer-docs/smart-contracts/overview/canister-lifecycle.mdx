@@ -4,7 +4,14 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-## Create
+## Write
+
+The ICP accepts and executes canister code in the WebAssembly (Wasm) binary format.
+Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be deployed into a canister.
+
+## Deploy
+
+### Create
 
 A developer can create an empty canister on ICP by calling the system canister.
 It can be done using the `NNS frontend dapp` in the browser or `dfx` in the command line.
@@ -15,18 +22,15 @@ Once the canister is created, the developer gets its canister ID and becomes the
 <img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
 </div>
 
+### Install
 
-## Install
-
-The next step after canister creation is installing code.
-Typically, the developer writes the code in a high-level language and compiles it into a Wasm binary.
-The actual installation happens when the developer calls the `install_code` endpoint of the system canister passing the canister ID and the Wasm binary to it.
+The next step after writing the code and creating a canister is installing the code.
+This can be done by calling the `install_code` endpoint of the system canister and passing the canister ID and the Wasm binary to it.
 The `dfx` tool has a command for making this call.
 
 <div class="text--center">
 <img src="/img/docs/install-canister.png" alt="Install canister" width="600"/>
 </div>
-
 
 ## Call
 
