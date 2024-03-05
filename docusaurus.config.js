@@ -354,7 +354,7 @@ const marketingNav = {
               name: "Programming languages",
 
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/backend/choosing-language",
+              href: "/docs/current/developer-docs/smart-contracts/write/choosing-language",
             },
             {
               name: "Hackathons",
