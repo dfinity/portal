@@ -40,7 +40,9 @@ const youtubePlugin = require("./plugins/youtube");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
-console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+if (process.env.PREVIEW_CANISTER_ID) {
+  console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+}
 
 const navbarItems = [
   {
