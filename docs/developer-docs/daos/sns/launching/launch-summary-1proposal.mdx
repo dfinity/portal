@@ -1,3 +1,7 @@
+---
+keywords: [advanced, governance, concept, sns, launch stages, launch]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Stages of an SNS launch
@@ -13,7 +17,7 @@ thereby the dapp (see [here](../introduction/sns-launch.mdx)).
 Handing over a dapp's control to a newly created SNS proceeds in the following high
 level stages.
 Note that only the first two stages require manual action from the dapp's developer
-team and the NNS community. All other stages are exectued fully automatically.
+team and the NNS community. All other stages are executed fully automatically.
 The NNS community's approval is relevant in Stage 3.
 
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
@@ -63,7 +67,7 @@ Therefore, the initial neurons must be carefully setup in a way so that enough o
 Shortly before Step 3, the dapp developers hand over the dapp to the NNS by adding the NNS root canister as an additional controller for the dapp canister(s).
 This is necessary in order for the rest of the steps to work automatically.
 As any eligible NNS neuron can submit the proposal in Stage 3, this is an important step
-where the dapp developers explicity express their intent to hand over their dapp to a DAO.
+where the dapp developers explicitly express their intent to hand over their dapp to a DAO.
 
 In this step, the dapp developers also perform any other preparations for decentralization.
 For example, they remove themselves from the dapp's asset canisters as principals that may change the asset canisters' content without going through a vote.
@@ -137,7 +141,7 @@ to the original dapp developers.
 
 For the proposal's execution to be successful, the following conditions must also be met:
 * NNS root has been added as a co-controller of the dapp to be decentralized (Stage 2
-was executed succesfully)
+was executed successfully)
 * The SNS-W canister has sufficient cycles.
 
 If these conditions are not met, the proposal will fail immediately and the control is
@@ -227,7 +231,7 @@ In detail, this includes two steps:
 * If this transition worked successfully, SNS-W asks the NNS root canister to
   remove itself as controller.
 
-A succesful stage results in the following situation:
+A successful stage results in the following situation:
 
 #### Table 1: Canisters
 <table>
@@ -335,7 +339,7 @@ At this point, the SNS canisters exist and the dapp canisters are under SNS DAO 
 ### 8. (Automatically) SNS swap starts.
 The swap was initialized with a defined start time.
 Once this start time is reached,
-the swap will automatically be started and is open for participations.
+the swap will automatically be started and is open for participation.
 
 End users can participate in the decentralization swap by transferring ICP tokens to the
 swap canister.

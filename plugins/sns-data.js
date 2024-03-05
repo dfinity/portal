@@ -8,6 +8,8 @@ function fetchAggregatorPage(page) {
   ).then((res) => res.json());
 }
 
+let cache;
+
 /**
  * Fetches all aggregator pages and returns a list of all dao data
  * @returns {Promise<Array>}
@@ -65,51 +67,55 @@ const snsDataPlugin = async function (context, options) {
   return {
     name: "sns-data",
     async loadContent() {
-      // get all sns daos from aggregator
-      const snsList = await fetchAllAggregatorPages();
+      if (!cache) {
+        // get all sns daos from aggregator
+        const snsList = await fetchAllAggregatorPages();
 
-      // keep only launched daos
-      const completedDaos = snsList.filter(
-        (dao) => dao.lifecycle.lifecycle === 3
-      );
+        // keep only launched daos
+        const completedDaos = snsList.filter(
+          (dao) => dao.lifecycle.lifecycle === 3
+        );
 
-      logger.info(
-        `Loaded ${snsList.length} daos from the aggregator, out of which ${completedDaos.length} are launched.`
-      );
+        logger.info(
+          `Loaded ${snsList.length} daos from the aggregator, out of which ${completedDaos.length} are launched.`
+        );
 
-      const websiteDaoData = completedDaos.map((dao) => ({
-        name: dao.meta.name,
-        description: dao.meta.description,
-        url: dao.meta.url,
-        logo: dao.meta.logo,
-        rootCanisterId: dao.canister_ids.root_canister_id,
-        swapCanisterId: dao.canister_ids.swap_canister_id,
-        icpRaised: Math.floor(dao.derived_state.buyer_total_icp_e8s / 1e8),
-        participants: dao.derived_state.direct_participant_count,
-        proposalCount: 0,
-      }));
+        const websiteDaoData = completedDaos.map((dao) => ({
+          name: dao.meta.name,
+          description: dao.meta.description,
+          url: dao.meta.url,
+          logo: dao.meta.logo,
+          rootCanisterId: dao.canister_ids.root_canister_id,
+          swapCanisterId: dao.canister_ids.swap_canister_id,
+          icpRaised: Math.floor(dao.derived_state.buyer_total_icp_e8s / 1e8),
+          participants: dao.derived_state.direct_participant_count,
+          proposalCount: 0,
+        }));
 
-      // some DAO's have missing sale participants, get those from swap canister metrics
-      const missingBuyersPromises = websiteDaoData
-        .filter((dao) => dao.participants === null)
-        .map(
+        // some DAO's have missing sale participants, get those from swap canister metrics
+        const missingBuyersPromises = websiteDaoData
+          .filter((dao) => dao.participants === null)
+          .map(
+            (dao) => () =>
+              getBuyersFromSwapMetrics(dao.swapCanisterId).then(
+                (buyers) => (dao.participants = buyers)
+              )
+          );
+        await chunkedParallel(missingBuyersPromises, 5);
+
+        // get proposal count for all daos
+        const proposalFillPromises = websiteDaoData.map(
           (dao) => () =>
-            getBuyersFromSwapMetrics(dao.swapCanisterId).then(
-              (buyers) => (dao.participants = buyers)
+            getProposalCount(dao.rootCanisterId).then(
+              (count) => (dao.proposalCount = count)
             )
         );
-      await chunkedParallel(missingBuyersPromises, 5);
+        await chunkedParallel(proposalFillPromises, 5);
 
-      // get proposal count for all daos
-      const proposalFillPromises = websiteDaoData.map(
-        (dao) => () =>
-          getProposalCount(dao.rootCanisterId).then(
-            (count) => (dao.proposalCount = count)
-          )
-      );
-      await chunkedParallel(proposalFillPromises, 5);
+        cache = websiteDaoData;
+      }
 
-      return websiteDaoData;
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
