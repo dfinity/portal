@@ -137,7 +137,8 @@ The user can call `retrieve_eth_status` on the ckEH minter to check the status o
 https://github.com/timohanke/ic/blob/d34903fc2c41e2cff5df86248628f5d0b4fd7168/rs/ethereum/cketh/minter/README.adoc#withdrawal-cketh-to-eth
 
 
-1. When the user wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH. The wallet address `0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80` will send the ETH to the wallet address noted here.
+1. When the user wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH. 
+The wallet address `0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80` will send the ETH to the wallet address noted here.
 
 **Additional reading**
 - [Withdrawing ckETH](https://github.com/timohanke/ic/blob/d34903fc2c41e2cff5df86248628f5d0b4fd7168/rs/ethereum/cketh/minter/README.adoc#withdrawal-cketh-to-eth)
@@ -222,7 +223,7 @@ Internet Computer Protocol (ICP) handles the integration of smart contracts acro
 
 For instance, ICP can natively create signed transactions on other blockchains like Ethereum and Bitcoin, allowing decentralized applications (dapps) deployed on ICP to interact directly with other networks and their smart contracts, tokens, and other digital assets.
 
-ICP has already integrated with the Bitcoin network using chain-key ECDSA signatures and a protocol-level integration. This allows a canister (a computational unit on the ICP) to create a Bitcoin address, then send or receive bitcoin directly as if they were a regular Bitcoin user.
+ICP has integrated with Bitcoin at the protocol level. This integration coupled with the chain-key threshold ECDSA feature allows a canister (a computational unit on the ICP) to create a Bitcoin address, then send or receive bitcoin directly as if they were a regular Bitcoin user.
 
 ICP is also working on an integration with Ethereum that will allow Ethereum smart contracts and digital assets like ERC-20 tokens to be used in ICP canisters. This integration is being worked on.
 
