@@ -1,0 +1,59 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Canister lifecycle
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+## Create
+
+A developer can create an empty canister on ICP by calling the system canister.
+It can be done using the `NNS frontend dapp` in the browser or `dfx` in the command line.
+The developer can specify the initial canister settings and choose the target subnet.
+Once the canister is created, the developer gets its canister ID and becomes the controller of the canister.
+
+<div class="text--center">
+<img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
+</div>
+
+
+## Install
+
+The next step after canister creation is installing code.
+Typically, the developer writes the code in a high-level language and compiles it into a Wasm binary.
+The actual installation happens when the developer calls the `install_code` endpoint of the system canister passing the canister ID and the Wasm binary to it.
+The `dfx` tool has a command for making this call.
+
+<div class="text--center">
+<img src="/img/docs/install-canister.png" alt="Install canister" width="600"/>
+</div>
+
+
+## Call
+
+After installation, the canister accepts and processes messages (calls) from users and other canisters.
+Only the public endpoints of the canister can be called.
+These endpoints correspond to exported Wasm functions that are annotated with `canister_update` or `canister_query` in their names.
+
+<div class="text--center">
+<img src="/img/docs/call-canister.png" alt="Call canister" width="600"/>
+</div>
+
+
+## Maintain
+
+Certain system operations that change the state of the canister can be performed only by the controllers of the canister.
+The most important operation is upgrading the canister by installing different Wasm binary.
+In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly.
+As the canister becomes mature and production ready, the control over it should move to a DAO in order to make the canister secure and trustworthy.
+[Learn more about different types of controllers](/docs/current/developer-docs/smart-contracts/maintain/control).
+
+<div class="text--center">
+<img src="/img/docs/manage-canister.png" alt="Manage canister" width="600"/>
+</div>
+
+Since ICP has the reverse gas model, the canister pays with cycles for its execution, storage, and other operations.
+This means that controllers and/or users of the canister have to ensure that the canister does not run out of cycles.
+If the canister runs out of cycles, then it will be uninstalled by dropping its Wasm binary and its storage.
+
+If the canister is no longer used or needed, a controller of the canister can delete it.
+ICP guarantees that the canister ID will not be reused for another canister.
