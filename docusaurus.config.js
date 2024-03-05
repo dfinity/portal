@@ -66,14 +66,8 @@ const subnavItems = [
     activeBasePath: "/docs/current/developer-docs/",
   },
   {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "motoko",
-    label: "Motoko",
-  },
-  {
     type: "dropdown",
-    position: "right",
+    position: "left",
     label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
@@ -85,7 +79,7 @@ const subnavItems = [
   },
   {
     type: "dropdown",
-    position: "right",
+    position: "left",
     label: "Frameworks",
     items: [
       { label: "Juno", href: "/docs/current/developer-docs/web-apps/frameworks/juno" },
@@ -93,7 +87,7 @@ const subnavItems = [
   },
   {
     type: "dropdown",
-    position: "right",
+    position: "left",
     label: "Additional Resources",
     items: [
       {
