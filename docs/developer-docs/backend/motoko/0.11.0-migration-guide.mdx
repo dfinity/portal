@@ -22,7 +22,7 @@ Motoko uses a simple capability-based type system which selectively enables lang
 
 In Motoko v0.11.0 and newer, this capability system is expanded to restrict calls to functions including `Timer.setTimer` and `ExperimentalCycles.add`. To accomplish this, Motoko introduces and uses the pseudo-type parameter `system` and corresponding pseudo-type argument (also `system`) for both functions and classes.
 
-Another change in v0.11.0 and newer is a revision of `ExperimentalCycles.add`, which has been changed from `Nat -> ()` to `<system>Nat -> ()`. This change supports the system capability requirement of the special type parameter `<system>`.
+Another change in v0.11.0 and newer is a revision of `ExperimentalCycles.add`, whose type has been changed from `Nat -> ()` to `<system>Nat -> ()`. This change reflects the additional  `system` capability requirement using the type parameter `<system>`.
 
 :::info
 The `system` type parameter must be the first parameter of any function, class constructor or function type, e.g. `<system, T, U>` is valid but `<T, system, U>` is not.
