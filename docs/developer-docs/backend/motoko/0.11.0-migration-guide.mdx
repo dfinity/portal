@@ -30,7 +30,7 @@ The `system` type parameter must be the first parameter of any function, class c
 
 ## Migrations for existing workflows
 
-User-defined functions must now declare an explicit system pseudo-type parameter if they require system capabilities. If a caller wants to grant system capabilities to a callee, the caller must already have system capabilities either (implicitly) by virtue of the callsite's progam context or (explicitly) because the callsite resides within a function or class that itself declares the new `system`  type parameter.
+User-defined functions must now declare an explicit system pseudo-type parameter if they require system capabilities. If a caller wants to grant system capabilities to a callee, the caller must already have system capabilities either (implicitly) by virtue of the callsite's program context or (explicitly) because the callsite resides within a function or class that itself declares the new `system`  type parameter.
 
 For example, in previous Motoko versions the following could be used:
 
