@@ -7,6 +7,23 @@ draft: true
 
 import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
-Hello, I'm a markdown page. And
+Hello, I'm a markdown page. And <Tooltip text="You hovered over me! Great">I'm a
+tooltip</Tooltip>.
 
-<Tooltip text="You hovered over me! Great">I'm</Tooltip> a tooltip.
+I am a paragraph. <Tooltip text="I show up on the right side"
+placement={"right"}>Hover over me</Tooltip>.
+
+I am a paragraph. <Tooltip text="I show up on the left side"
+placement={"left"}>Hover over me</Tooltip>.
+
+I am a paragraph. <Tooltip text="I show up on the bottom side"
+placement={"bottom"}>Hover over me</Tooltip>.
+
+I am a paragraph. <Tooltip text="I show up on the top side. This is the default"
+placement={"top"}>Hover over me</Tooltip>.
+
+Keep <Tooltip text="I will close when you press esc">hovering over me and press
+the esc key</Tooltip>.
+
+I also come with a safe polygon. <Tooltip text="Now try and select the text
+inside the tooltip bubble">Try it out</Tooltip>.
