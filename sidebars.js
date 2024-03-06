@@ -1130,6 +1130,7 @@ const sidebars = {
         "developer-docs/backend/motoko/scalability-cancan",
         "developer-docs/backend/motoko/sample-apps",
         "developer-docs/backend/motoko/mo-doc",
+        "developer-docs/backend/motoko/0.11.0-migration-guide"
       ],
     },
     {
