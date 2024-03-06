@@ -84,12 +84,11 @@ const DocsHomePage: FC = () => {
                 Whether you're new to coding or an experienced developer, our
                 documentation portal has everything you need. We provide
                 easy-to-follow guides, tutorials, code samples, and API
-                references for multiple languages like JavaScript, Python, Java,
-                Go, Rust, C++ and more.
+                references for multiple languages like Rust, Motoko, TypeScript, Python.
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/smart-contracts/write/choosing-language"
+                  href="/docs/current/developer-docs/smart-contracts/write/overview"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
