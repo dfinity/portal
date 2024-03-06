@@ -51,7 +51,7 @@ const navbarItems = [
   },
 ];
 
-let subnavItems = [
+const subnavItems = [
   {
     type: "doc",
     position: "left",
