@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Motoko v0.11.0 and newer introduces a new safety feature that could cause breaking changes to existing code.
 
-In previous Motoko versions, third-party library functions could make calls to sensitive functions such as `ExperimentalCycles.add(...)` and `Timer.setTimer(...)` without providing indication that to the caller that sensitive system functionality was being used.
+In previous Motoko versions, third-party library functions could make calls to sensitive functions such as `ExperimentalCycles.add(...)` and `Timer.setTimer(...)` without providing any indication to the caller that sensitive system functionality was being used.
 
 In Motoko 0.11.0 and newer, the type system is used to detect and prevent this scenario while still allowing developers to grant access to sensitive functions.
 
