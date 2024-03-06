@@ -21,12 +21,14 @@ export interface TooltipProps {
   text: string;
   children: ReactNode;
   placement?: Placement;
+  showArrow?: boolean;
 }
 
 export function Tooltip({
   text = "",
   children,
   placement = "top",
+  showArrow = true,
 }: TooltipProps) {
   const arrowRef = useRef(null);
 
@@ -38,10 +40,11 @@ export function Tooltip({
     placement,
     whileElementsMounted: autoUpdate,
     middleware: [
-      arrow({
-        element: arrowRef,
-      }),
-      offset(5),
+      showArrow &&
+        arrow({
+          element: arrowRef,
+        }),
+      offset(10),
       flip({
         fallbackAxisSideDirection: "start",
       }),
@@ -85,11 +88,13 @@ export function Tooltip({
             style={floatingStyles}
             {...getFloatingProps()}
           >
-            <FloatingArrow
-              ref={arrowRef}
-              context={context}
-              fill={tooltipColor}
-            />
+            {showArrow && (
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                fill={tooltipColor}
+              />
+            )}
             <div
               style={{
                 background: tooltipColor,

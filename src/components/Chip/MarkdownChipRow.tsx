@@ -10,7 +10,7 @@ export function MarkdownChipRow(props: MarkdownChipRowProps) {
   return (
     <ChipRow>
       {props.labels.map((label, index) => (
-        <Chip>{label}</Chip>
+        <Chip key={index}>{label}</Chip>
       ))}
     </ChipRow>
   );
