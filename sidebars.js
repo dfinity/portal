@@ -621,17 +621,6 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/multi-chain/faq/user-faq",
-            "developer-docs/multi-chain/faq/ckbtc-faq",
-            "developer-docs/multi-chain/faq/cketh-faq",
-            "developer-docs/multi-chain/faq/ckerc20-faq",
-            "developer-docs/multi-chain/faq/signatures-faq",
-          ],
-        },
-        {
-          type: "category",
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
@@ -1066,6 +1055,17 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+          ],
+        },
+	{
+          type: "category",
+          label: "FAQs",
+          items: [
+            "developer-docs/multi-chain/faq/user-faq",
+            "developer-docs/multi-chain/faq/ckbtc-faq",
+            "developer-docs/multi-chain/faq/cketh-faq",
+            "developer-docs/multi-chain/faq/ckerc20-faq",
+            "developer-docs/multi-chain/faq/signatures-faq",
           ],
         },
       ],
