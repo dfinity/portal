@@ -22,7 +22,7 @@ const tags = [
   "Metaverse",
   "Games",
   "DAO",
-  "Enterprise"
+  "Enterprise",
 ];
 
 function isString(value) {
@@ -134,147 +134,158 @@ function UniqueValue() {
 
 const showcase = require("../showcase.json");
 
+let validationPassed = false;
+
 /** @type {import('@docusaurus/types').PluginModule} */
 module.exports = function validateShowcasePlugin() {
-  const ids = new UniqueValue();
-  const githubs = new UniqueValue();
-  const websites = new UniqueValue();
+  if (!validationPassed) {
+    const ids = new UniqueValue();
+    const githubs = new UniqueValue();
+    const websites = new UniqueValue();
 
-  let errorCount = 0;
+    let errorCount = 0;
 
-  for (const project of showcase) {
-    try {
-      validate(project.name, [[isString, "missing project name"]]);
+    for (const project of showcase) {
+      try {
+        validate(project.name, [[isString, "missing project name"]]);
 
-      validate(project.description, [
-        [isString, "missing project description"],
-        [
-          (value) => value.length <= maximumDescriptionLength,
-          `project description too long, should be <= ${maximumDescriptionLength} characters`,
-        ],
-      ]);
-
-      !project.github &&
-        validate(project.website, [
-          [isExternalUrl, "missing project website"],
-          [websites.ensureUnique, "duplicate project website"],
-        ]);
-
-      validate(project.id, [
-        [isString, "missing project id"],
-        [ids.ensureUnique, "duplicate project id"],
-      ]);
-
-      validate(project.tags, [
-        [isArray, "missing project tags"],
-        [(value) => value.length > 0, "missing project tags"],
-        [(value) => isArrayOfValues(value, tags), "invalid project tag"],
-      ]);
-
-      project.oneLiner &&
-        validate(project.oneLiner, [
-          [isString, "invalid project oneLiner"],
+        validate(project.description, [
+          [isString, "missing project description"],
           [
-            (value) => value.length <= maximumOneLinerLength,
-            `project oneLiner too long, should be <= ${maximumOneLinerLength} characters`,
+            (value) => value.length <= maximumDescriptionLength,
+            `project description too long, should be <= ${maximumDescriptionLength} characters`,
           ],
         ]);
 
-      project.stats &&
-        validate(project.stats, [
-          [isString, "missing project stats"],
-          [
-            (value) => value.length <= maximumStatsLength,
-            `project stats too long should be <= ${maximumStatsLength} characters`,
-          ],
+        !project.github &&
+          validate(project.website, [
+            [isExternalUrl, "missing project website"],
+            [websites.ensureUnique, "duplicate project website"],
+          ]);
+
+        validate(project.id, [
+          [isString, "missing project id"],
+          [ids.ensureUnique, "duplicate project id"],
         ]);
 
-      validate(project.logo, [
-        [isString, "missing project logo"],
-        [fileExists, "project logo file does not exist"],
-        [
-          (value) => fileMaxSize(value, maximumLogoSize),
-          `project logo file too big, should be <= ${
-            maximumLogoSize / 1024
-          } kb`,
-        ],
-      ]);
-
-      project.display &&
-        validate(project.display, [
-          [
-            (v) => isOneOf(v, ["Large", "Normal"]),
-            "invalid project display mode",
-          ],
+        validate(project.tags, [
+          [isArray, "missing project tags"],
+          [(value) => value.length > 0, "missing project tags"],
+          [(value) => isArrayOfValues(value, tags), "invalid project tag"],
         ]);
 
-      project.display === "Large" &&
-        !project.video &&
-        validate(project.screenshots, [
+        project.oneLiner &&
+          validate(project.oneLiner, [
+            [isString, "invalid project oneLiner"],
+            [
+              (value) => value.length <= maximumOneLinerLength,
+              `project oneLiner too long, should be <= ${maximumOneLinerLength} characters`,
+            ],
+          ]);
+
+        project.stats &&
+          validate(project.stats, [
+            [isString, "missing project stats"],
+            [
+              (value) => value.length <= maximumStatsLength,
+              `project stats too long should be <= ${maximumStatsLength} characters`,
+            ],
+          ]);
+
+        validate(project.logo, [
+          [isString, "missing project logo"],
+          [fileExists, "project logo file does not exist"],
           [
-            (value) => value !== null && value !== undefined,
-            "a project with display: Large must have either a video or a screenshot",
-          ],
-          [
-            isArray,
-            "project screenshots must be an array of paths to local images under /img/showcase/",
-          ],
-          [(value) => value.length > 0, "missing project screenshots"],
-          [(value) => value.every(isLocalImage), "invalid project screenshot"],
-          [
-            (value) =>
-              value.every((value) => fileMaxSize(value, maximumScreenshotSize)),
-            `project screenshot file too big, should be <= ${
-              maximumScreenshotSize / 1024
+            (value) => fileMaxSize(value, maximumLogoSize),
+            `project logo file too big, should be <= ${
+              maximumLogoSize / 1024
             } kb`,
           ],
-          [
-            (value) => value.every(fileExists),
-            "project screenshot file does not exist",
-          ],
         ]);
 
-      project.display === "Large" &&
-        !project.screenshots &&
-        validate(project.video, [
-          [
-            isString,
-            "a project with display: Large must have either a video or a screenshot",
-          ],
-          [isLocalVideo, "invalid project video"],
-          [fileExists, "project video file does not exist"],
-          [
-            (value) => fileMaxSize(value, maximumVideoSize),
-            `project video file too big, should be <= ${
-              maximumVideoSize / 1024 / 1024
-            } mb`,
-          ],
-          [
-            (value) => value.videoContentType === "video/mp4",
-            "project video file must be of type video/mp4",
-          ],
-        ]);
+        project.display &&
+          validate(project.display, [
+            [
+              (v) => isOneOf(v, ["Large", "Normal"]),
+              "invalid project display mode",
+            ],
+          ]);
 
-      (!project.website || project.github) &&
-        validate(project.github, [
-          [isString, "a project must have a website or a github URL"],
-          [isExternalUrl, "invalid project github URL"],
-          [githubs.ensureUnique, "duplicate project github URL"],
-        ]);
-    } catch (e) {
-      logger.error(`${e.message}\n${JSON.stringify(project, null, 2)}`);
-      errorCount++;
+        project.display === "Large" &&
+          !project.video &&
+          validate(project.screenshots, [
+            [
+              (value) => value !== null && value !== undefined,
+              "a project with display: Large must have either a video or a screenshot",
+            ],
+            [
+              isArray,
+              "project screenshots must be an array of paths to local images under /img/showcase/",
+            ],
+            [(value) => value.length > 0, "missing project screenshots"],
+            [
+              (value) => value.every(isLocalImage),
+              "invalid project screenshot",
+            ],
+            [
+              (value) =>
+                value.every((value) =>
+                  fileMaxSize(value, maximumScreenshotSize)
+                ),
+              `project screenshot file too big, should be <= ${
+                maximumScreenshotSize / 1024
+              } kb`,
+            ],
+            [
+              (value) => value.every(fileExists),
+              "project screenshot file does not exist",
+            ],
+          ]);
+
+        project.display === "Large" &&
+          !project.screenshots &&
+          validate(project.video, [
+            [
+              isString,
+              "a project with display: Large must have either a video or a screenshot",
+            ],
+            [isLocalVideo, "invalid project video"],
+            [fileExists, "project video file does not exist"],
+            [
+              (value) => fileMaxSize(value, maximumVideoSize),
+              `project video file too big, should be <= ${
+                maximumVideoSize / 1024 / 1024
+              } mb`,
+            ],
+            [
+              (value) => value.videoContentType === "video/mp4",
+              "project video file must be of type video/mp4",
+            ],
+          ]);
+
+        (!project.website || project.github) &&
+          validate(project.github, [
+            [isString, "a project must have a website or a github URL"],
+            [isExternalUrl, "invalid project github URL"],
+            [githubs.ensureUnique, "duplicate project github URL"],
+          ]);
+      } catch (e) {
+        logger.error(`${e.message}\n${JSON.stringify(project, null, 2)}`);
+        errorCount++;
+      }
     }
+
+    if (errorCount > 0) {
+      logger.error(
+        `showcase.json validation failed with ${errorCount} error(s).\nTo produce a valid asset bundle, you can use https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/`
+      );
+      process.exit(1);
+    }
+
+    logger.info("showcase.json validation passed");
   }
 
-  if (errorCount > 0) {
-    logger.error(
-      `showcase.json validation failed with ${errorCount} error(s).\nTo produce a valid asset bundle, you can use https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/`
-    );
-    process.exit(1);
-  }
-
-  logger.info("showcase.json validation passed");
+  validationPassed = true;
 
   return {
     name: "validate-showcase",

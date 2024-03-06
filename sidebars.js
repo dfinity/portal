@@ -455,6 +455,14 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Browser JS",
+          items: [
+            "developer-docs/web-apps/browser-js/js-frameworks",
+            "developer-docs/web-apps/browser-js/js-request-api",
+          ],
+        },
+        {
+          type: "category",
           label: "Frameworks",
           items: [
             "developer-docs/web-apps/frameworks/juno",
