@@ -20,7 +20,7 @@ In Motoko 0.11.0 and newer, the type system is used to detect and prevent this s
 
 Motoko uses a simple capability-based type system which selectively enables language constructs depending on their context. One example is only `async` expressions can contain `await` expressions, or only some asynchronous contexts can call shared functions.
 
-In Motoko v0.11.0 and newer, this capability system is expanded to restrict calls to functions including `Timer.setTimer` and `ExperimentalCycles.add`. To accomplish this, Motoko introduces and uses the pseudo-type parameter `system` and corresponding pseudo-type argument (also system) for both functions and classes.
+In Motoko v0.11.0 and newer, this capability system is expanded to restrict calls to functions including `Timer.setTimer` and `ExperimentalCycles.add`. To accomplish this, Motoko introduces and uses the pseudo-type parameter `system` and corresponding pseudo-type argument (also `system`) for both functions and classes.
 
 Another change in v0.11.0 and newer is a revision of `ExperimentalCycles.add`, which has been changed from `Nat -> ()` to `<system>Nat -> ()`. This change supports the system capability requirement of the special type parameter `<system>`.
 
