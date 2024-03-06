@@ -443,7 +443,6 @@ const redirects = `
   /docs/current/references/security/general-security-best-practices /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
   /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
-  /docs/current/references/samples/motoko/cert-var/#security-considerations-and-best-practices
   /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/references/security/general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security /docs/current/developer-docs/security/general-security-best-practices#certify-query-responses-if-they-are-relevant-for-security
   /docs/current/references/security/rust-canister-development-security-best-practices/#validate-inputs /docs/current/developer-docs/security/general-security-best-practices#validate-inputs
