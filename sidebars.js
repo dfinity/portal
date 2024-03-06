@@ -833,7 +833,7 @@ const sidebars = {
             "references/samples/rust/canister-info/README",
             "references/samples/rust/composite_query/README",
             "references/samples/rust/counter/README",
-            "references/samples/rust/defi/src/frontend/README",
+            "references/samples/rust/defi/README",
             "references/samples/rust/dip721-nft-container/README",
             "references/samples/rust/encrypted-notes-dapp-vetkd/README",
             "references/samples/rust/encrypted-notes-dapp/README",
