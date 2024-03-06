@@ -85,7 +85,7 @@ const sidebars = {
           items: [
             "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
-            "developer-docs/smart-contracts/overview/development-cycle",
+            "developer-docs/smart-contracts/overview/canister-lifecycle",
           ],
         },
         {
@@ -449,6 +449,14 @@ const sidebars = {
             "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/webpack-dev-server",
+          ],
+        },
+        {
+          type: "category",
+          label: "Browser JS",
+          items: [
+            "developer-docs/web-apps/browser-js/js-frameworks",
+            "developer-docs/web-apps/browser-js/js-request-api",
           ],
         },
         {
