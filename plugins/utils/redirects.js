@@ -439,6 +439,11 @@ const redirects = `
   /docs/current/references/glossary /docs/current/concepts/glossary
   /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/
   /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/
+  /docs/current/references/security/general-security-best-practices/ /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/references/security/general-security-best-practices /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
+  /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
+  /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   `
   .split(/[\r\n]+/)
