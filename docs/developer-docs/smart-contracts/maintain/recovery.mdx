@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, maintain canisters, recovery, canister recovery]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Recovery
 
@@ -10,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-A canister is managed and maintained by **controllers**. A controller can be a single developer identity, a list of developer identities, or another canister. If a canister does not have a controller, it cannot be upgraded, deleted, or otherwise maintained. Canisters can have several controllers. If access to a canister's controller(s) is lost, the canister cannot be upgraded or further maintained. If a canister's code traps with an unrecoverable error and cannot be upgraded, the canister can potentially be recovered using an NNS proposal. 
+A <Tooltip text="A smart contract on ICP.">canister</Tooltip> is managed and maintained by **controllers**. A controller can be a single developer identity, a list of developer identities, or another canister. If a canister does not have a controller, it cannot be upgraded, deleted, or otherwise maintained. Canisters can have several controllers. If access to a canister's controller(s) is lost, the canister cannot be upgraded or further maintained. If a canister's code traps with an unrecoverable error and cannot be upgraded, the canister can potentially be recovered using an NNS proposal.
 
 ## Recovering a canister
 

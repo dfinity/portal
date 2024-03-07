@@ -5,6 +5,7 @@ keywords: [beginner, getting started, tutorial, hello world]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Hello, world!
 
@@ -35,7 +36,7 @@ nvm install 18
 dfx start
 ```
 
-This command starts a local instance of the ICP replica using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
+This command starts a local instance of the ICP <Tooltip text="The ICP software used to run a node.">replica</Tooltip> using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
 
 ```
 Running dfx start for version 0.15.2
@@ -59,7 +60,7 @@ Use `dfx new <project_name>` to create a new project:
 dfx new hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select a language that your backend <Tooltip text="A smart contract on ICP.">canister</Tooltip> will use:
 
 ```
 ? Select a backend language: ›  
@@ -69,7 +70,7 @@ You will be prompted to select a language that your backend canister will use:
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend <Tooltip text="A smart contract on ICP.">canister</Tooltip>, or select 'No frontend canister':
 
 ```
   ? Select a frontend framework: ›  
@@ -242,7 +243,7 @@ def greet(name: str) -> str:
 
 ## Deploy locally 
 
-Deploy the project's canisters locally:
+Deploy the project's <Tooltip text="A smart contract on ICP.">canisters</Tooltip> locally:
 
 ```
 dfx deploy
@@ -250,7 +251,7 @@ dfx deploy
 
 This command performs several functions in the background:
 
-- It sets up a special `cycle-wallet` smart contract for storing cycles. All operations require payments in cycles. In your local testnet, this wallet comes prefilled with cycles.
+- It sets up a special `cycle-wallet` smart contract for storing <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip>. All operations require payments in cycles. In your local testnet, this wallet comes prefilled with cycles.
 
 - It builds the smart contracts defined in the `dfx.json` file into Wasm binaries.
 
@@ -331,7 +332,7 @@ This call performs several functions in the background:
 
 - It signs the message with the private key of the [developer account](/docs/current/developer-docs/getting-started/accounts).
 
-- It sends the message to the local testnet (replica). 
+- It sends the message to the local testnet (<Tooltip text="The ICP software used to run a node.">replica</Tooltip>).
 
 - Once the message has been executed, the result was decoded using the interface file and printed to the terminal window. 
 

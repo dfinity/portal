@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-When developing projects on ICP, there are two primary forms of data storage that your canisters can utilize. The first type of storage is the canister's **heap memory**, sometimes referred to as the canister's *main memory*. Heap memory is **temporary**, and any data stored in a canister's heap memory is cleared whenever the canister is stopped or upgraded. 
+When developing projects on ICP, there are two primary forms of data storage that your <Tooltip text="A smart contract on ICP.">canisters</Tooltip> can utilize. The first type of storage is the canister's **heap memory**, sometimes referred to as the canister's *main memory*. Heap memory is **temporary**, and any data stored in a canister's heap memory is cleared whenever the canister is stopped or upgraded.
 
 The second type of storage available to a canister is **stable memory**. Stable memory is a unique feature of ICP that  defines a separate data store aside from a canister's regular Wasm heap memory data storage. It is a secondary storage type that can be used to store data long-term, since all data stored in stable memory will persist across all canister processes.
 
@@ -26,11 +26,11 @@ Stable memory is a feature unique to the Internet Computer Protocol that provide
 
 To use stable memory, you must anticipate which portions of the canister's data that you want to persist across upgrades by indicating within the canister code. More information about this can be found in the section below, [Storage handling in different languages](#storage-handling-in-different-languages).
 
-By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 400GiB if the subnet the canister is deployed on can accommodate it. If a canister uses more than 400GiB of stable memory, the canister will trap and become unrecoverable. 
+By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 400GiB if the <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnet</Tooltip> the canister is deployed on can accommodate it. If a canister uses more than 400GiB of stable memory, the canister will trap and become unrecoverable.
 
 ## Storage cost
 
-Storage cost is calculated on the GiB of storage used by a canister per second, costing `127_000` cycles on a 13-node subnet and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.431 and $1.127 respectively for storing 1 GiB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both. 
+Storage cost is calculated on the GiB of storage used by a canister per second, costing `127_000` <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip> on a 13-node subnet and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.431 and $1.127 respectively for storing 1 GiB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both.
 
 You can learn more about storage costs [here](/docs/current/developer-docs/gas-cost).
 

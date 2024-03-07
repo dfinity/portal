@@ -1,4 +1,11 @@
+---
+keywords: [intermediate, test, tutorial, staging environment, staging]
+---
+
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
+
 
 # Staging environment
 
@@ -6,7 +13,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment can be helpful. While local deployments mirror the live mainnet as closely as possible, it is not the same. The local instance only runs as a single subnet. If you want to test canisters of two different subnets connecting to each other, you cannot do this locally. Other benefits of using a staging environment include being able to test an integration with other services, deployment workflows, and estimating costs before setting a feature live.
+Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment can be helpful. While local deployments mirror the live mainnet as closely as possible, it is not the same. The local instance only runs as a single subnet. If you want to test <Tooltip text="A smart contract on ICP.">canisters</Tooltip> of two different <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnets</Tooltip> connecting to each other, you cannot do this locally. Other benefits of using a staging environment include being able to test an integration with other services, deployment workflows, and estimating costs before setting a feature live.
 
 ## Setting up a staging environment
 

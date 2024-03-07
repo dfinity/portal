@@ -251,13 +251,6 @@ const redirects = `
   /docs/current/references/cli-reference/dfx-envars /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars
   /docs/current/references/cli-reference/dfx-json-reference /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference
   /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-default
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-list
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-uninstall
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-update
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-uninstall
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-update
   /docs/current/references/quill-cli-reference/ /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent
   /docs/current/references/quill-cli-reference/quill-account-balance /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance
   /docs/current/references/quill-cli-reference/ckbtc/quill-ckbtc /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc
@@ -303,7 +296,6 @@ const redirects = `
   /docs/current/references/quill-cli-reference/quill-transfer /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer
   /docs/current/references/quill-cli-reference/quill-update-node-provider /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
   /docs/current/developer-docs/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
@@ -434,8 +426,6 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post
-  /docs/current/developer-docs/integrations/bitcoin/ckBTC-reference /docs/current/references/ckbtc-reference
-  /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin /docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
   /docs/current/developer-docs/setup/ic-admin /docs/current/developer-docs/developer-tools/cli-tools/ic-admin
   /docs/current/developer-docs/backend/subnet-types /docs/current/concepts/subnet-types
   /docs/current/references/glossary /docs/current/concepts/glossary

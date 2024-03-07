@@ -4,6 +4,7 @@ keywords: [beginner, tutorial, cycles]
 
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Converting ICP tokens into cycles
 
@@ -11,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 ## Overview
-To convert ICP tokens into cycles, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
+To convert ICP tokens into <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip>, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
 
 ``` bash
 dfx ledger account-id
@@ -58,9 +59,11 @@ With those ICP tokens ready, you can start creating your cycles wallet. To start
 dfx ledger --network ic create-canister <your-principal-identifier> --amount <icp-tokens>
 ```
 
-The two values you have to substitute are your own principal and the amount of tokens you want to convert. 
+The two values you have to substitute are your own <Tooltip text="An entity that can be authenticated by ICP - user, canister, etc.">principal</Tooltip> and the amount of tokens you want to convert.
 
-To figure out your own principal, use the output of `dfx identity get-principal`. If my principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and I want to convert 2.3 ICP into cycles, the command looks like this:
+To figure out your own principal, use the output of the command `dfx identity get-principal`.
+
+For example, if your principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and you want to convert 2.3 ICP into cycles, the command would be:
 
 ``` bash
 dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 2.3

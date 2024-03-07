@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, maintain canisters, settings, canister settings]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Settings
 
@@ -10,11 +11,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-If you have experimented with using the IC SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
+If you have experimented with using the IC SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as <Tooltip text="A smart contract on ICP.">canisters</Tooltip>s. This section provides additional information about the canister lifecycle and how to manage canisters.
 
 ## Obtaining a canister identifier
 
-Depending on your preferred development workflow, you can obtain a unique identifier for your canister, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister on a subnet before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
+Depending on your preferred development workflow, you can obtain a unique identifier for your canister, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister on a <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnet</Tooltip> before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
 
 To obtain a unique identifier for a canister:
 

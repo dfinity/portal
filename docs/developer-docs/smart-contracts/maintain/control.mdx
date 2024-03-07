@@ -4,6 +4,8 @@ keywords: [beginner, tutorial, maintain canisters, access control, controllers]
 
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
+
 
 # Control
 
@@ -11,7 +13,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it has no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted.
+A <Tooltip text="A smart contract on ICP.">canister</Tooltip> is managed by a list of controllers. A controller is specified by a <Tooltip text="An entity that can be authenticated by ICP - user, canister, etc.">principal</Tooltip>, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it has no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted.
 
 ## Setting the controllers of a canister
 
@@ -46,7 +48,7 @@ dfx canister update-settings CANISTER_NAME --set-controller CONTROLLER
 - Stopping and starting the canister.
 - Installing code in the canister.
 - Upgrading the canister.
-- Getting the status of the canister which includes its cycles balance, memory usage, and list of controllers.
+- Getting the status of the canister which includes its <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip> balance, memory usage, and list of controllers.
 - Deleting the canister.
 - Updating settings like the freezing threshold, resource allocation, and controllers.
 

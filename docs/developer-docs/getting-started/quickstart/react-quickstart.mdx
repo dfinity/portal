@@ -5,6 +5,8 @@ keywords: [beginner, getting started, quickstart, react]
 
 import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
+
 
 # Quickstart for React developers
 
@@ -12,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-On ICP, frontend UIs for decentralized applications can be hosted in a canister, often referred to as the dapp's frontend canister or asset canister. Frontend canisters host the code and assets for a dapp's user interface, which typically includes HTML, CSS, JavaScript, or React code. 
+On ICP, frontend UIs for decentralized applications can be hosted in a <Tooltip text="A smart contract on ICP.">canister</Tooltip>, often referred to as the dapp's frontend canister or asset canister. Frontend canisters host the code and assets for a dapp's user interface, which typically includes HTML, CSS, JavaScript, or React code.
 
 One key feature of ICP is its ability to serve canister assets directly in a web browser using the canister's mainnet URL. This means that when a frontend canister is deployed on the mainnet, users from around the world can access it using only the canister's URL, without requiring that the developer set up a domain name or other web service configuration.
 
@@ -179,7 +181,7 @@ actor class Backend() {
 };
 ```
 
-### Step 2: Start a local replica.
+### Step 2: Start a local <Tooltip text="The ICP software used to run a node.">replica</Tooltip>.
 
 Start a local replica with `dfx` using the command:
 
@@ -201,7 +203,7 @@ In the background, this command runs the following processes:
 npm i && dfx canister create backend && dfx generate backend && dfx deploy
 ```
 
-The output of this command will return the local canister URLs for the frontend and backend canisters:
+The output of this command will return the local <Tooltip text="A smart contract on ICP.">canister</Tooltip> URLs for the frontend and backend canisters:
 
 ```
 Deployed canisters.

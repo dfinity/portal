@@ -1,4 +1,10 @@
+---
+keywords: [intermediate, test, tutorial, test code, test canister, pocket ic, pocketic]
+---
+
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # PocketIC
 
@@ -6,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-PocketIC is a lightweight, deterministic testing solution for programmatic testing of canisters.
+PocketIC is a lightweight, deterministic testing solution for programmatic testing of <Tooltip text="A smart contract on ICP.">canisters</Tooltip>.
 It seamlessly integrates with existing testing infrastructure, such as `cargo test`, and runs as a standalone binary that doesn't require additional containers or virtual machines.
 Currently, PocketIC is supported on macOS and Linux host systems. 
 
@@ -14,7 +20,7 @@ While there are other options for testing canisters, they may come with pitfalls
 
 - Installing and testing canisters on the mainnet provides the 'real' workflow experience, but will cost developers real cycles.
 
-- Testing using the local replica provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight. Additionally, testing with `dfx` can be complex, slow, and require additional boilerplate code to get working. 
+- Testing using the local <Tooltip text="The ICP software used to run a node.">replica</Tooltip> provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight. Additionally, testing with `dfx` can be complex, slow, and require additional boilerplate code to get working.
 
 PocketIC is designed to remedy these pitfalls, resulting in a testing environment that provides the following benefits:
 
@@ -189,7 +195,7 @@ To import PocketIC into your Python code, use the line:
 from pocket_ic import PocketIC
 ```
 
-### Example: create a canister with cycles
+### Example: create a canister with <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip>
 
 ```python
 from pocket_ic import PocketIC

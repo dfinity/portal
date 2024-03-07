@@ -3,6 +3,8 @@ keywords: [beginner, tutorial, maintain canisters, delete canisters, delete]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
+
 
 # Delete
 
@@ -10,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-If you want to permanently delete a specific canister or all canisters for a specific project on a given deployment (either local, or remote), you can do so by running the command:
+If you want to permanently delete a specific <Tooltip text="A smart contract on ICP.">canister</Tooltip> or all canisters for a specific project on a given deployment (either local, or remote), you can do so by running the command:
  
 ```
 dfx canister delete <canister-name>

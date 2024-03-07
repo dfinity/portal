@@ -5,6 +5,7 @@ keywords: [beginner, concept, call]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Overview
 
@@ -12,7 +13,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Introduction 
 
-To interact with a canister smart contract's methods, there are two primary types of calls that can be used: update calls and query calls.
+To interact with a <Tooltip text="A smart contract on ICP.">canister's</Tooltip> methods, there are two primary types of calls that can be used: update calls and query calls.
 
 Canisters implement methods that can be called via update or query calls. A query method can be called as both an update and a query, whereas update methods can be called only as an update.
 
@@ -24,7 +25,7 @@ Canisters implement methods that can be called via update or query calls. A quer
 
 ## Update calls
 
-Update calls are executed on all nodes of a subnet since the result must go through consensus. This makes them slower compared to query calls. They are submitted and answered asynchronously.
+Update calls are executed on all nodes of a <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnet</Tooltip> since the result must go through consensus. This makes them slower compared to query calls. They are submitted and answered asynchronously.
 
 ### Example update call
 
@@ -155,7 +156,7 @@ Learn more about the properties of ICP message executions.
 
 ### Composite queries
 
-Composite queries are query calls that can call other queries (on the same subnet). They can only be invoked by end users, and not by other canisters.
+Composite queries are query calls that can call other queries (on the same <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnet</Tooltip>). They can only be invoked by end users, and not by other canisters.
 
 ### Certified queries
 

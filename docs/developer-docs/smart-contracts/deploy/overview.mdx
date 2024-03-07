@@ -5,12 +5,13 @@ keywords: [beginner, tutorial, deploy, deploy canisters]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Overview
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-After you have built a canister, you can deploy it either on the [local execution environment](/docs/current/developer-docs/getting-started/deploy/local), a sandbox environment such as the [Motoko playground](/docs/current/developer-docs/setup/playground) or [on the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet). Your canister must be deployed before you can make calls to it and execute methods. 
+After you have built a <Tooltip text="A smart contract on ICP.">canister</Tooltip>, you can deploy it either on the [local execution environment](/docs/current/developer-docs/getting-started/deploy/local), a sandbox environment such as the [Motoko playground](/docs/current/developer-docs/setup/playground) or [on the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet). Your canister must be deployed before you can make calls to it and execute methods.
 
 - #### Step 1:  Open a new terminal and navigate to your project directory.
 
@@ -24,7 +25,7 @@ dfx start
 
 Need to create a project? Check out the [Hello, world!](/docs/current/developer-docs/getting-started/hello-world) sample project.
 
-An example `dfx.json` file can be found in the [default project template document](/docs/current/developer-docs/setup/first-canister)
+An example `dfx.json` file can be found in the [default project template document](/docs/current/developer-docs/setup/first-canister).
 
 - #### Step 4:  Deploy all of the canisters within your project.
 
@@ -149,7 +150,7 @@ fn init(timer_interval_secs: u64) {
 
 <TabItem value="typescript" label="TypeScript">
 
-This example creates a timer function that must be manually called once a cansiter starts:
+This example creates a timer function that must be manually called once a canister starts:
 
 ```typescript
 import {

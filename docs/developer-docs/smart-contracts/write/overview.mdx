@@ -1,4 +1,5 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 # Overview 
 
@@ -6,7 +7,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 ICP supports a wide range of application and architecture types.
-Apps can range from single smart contracts to complex, multi-canister projects that are controlled by a DAO, and everything in between.
+Apps can range from single smart contracts to complex, multi-<Tooltip text="A smart contract on ICP.">canister</Tooltip> projects that are controlled by a DAO, and everything in between.
 To begin writing and structuring your smart application, there are a few different workflows you can follow. 
 - **Standard workflow**:
   The developer writes both the frontend code and the backend code.
@@ -58,7 +59,7 @@ This means that web assets can be stored fully on-chain and developers don’t n
 The typical development workflow of the frontend is:
 
 1. The developer writes HTML, JS, CSS code.
-1. The developer uses the default asset canister created by `dfx` or writes their own custom canister to store the web assets on-chain. 
+1. The developer uses the default asset <Tooltip text="A smart contract on ICP.">canister</Tooltip> created by `dfx` or writes their own custom canister to store the web assets on-chain.
 1. Users open the application in the browser by navigating to the URL `https://<canister-id>.ic0.app` or a custom domain that the developer has registered for the canister.
 1. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
 1. When the JS code runs in the browser, it can call the backend canister endpoints using the [agent-js](docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
@@ -84,18 +85,18 @@ The recommended practice is to use already existing libraries, such as the Rust 
 
 Another question that developers should ask is how to structure their application’s canisters.
 It is possible to build an application consisting of multiple canisters that communicate with each other.
-A common pitfall for new developers is architecting the application for millions of users from the get go without understanding the underlying trade-offs of the system.
+A common pitfall for new developers is designing the application for millions of users from the get go without understanding the underlying trade-offs of the system.
 It is better to start with the simplest possible architecture and iteratively improve it with user growth.
 
 ### Single canister architecture
 This is the simplest possible architecture and the recommended starting point for most developers.
-A single canister can host the entire application stack including its web assets, core logic, and data.
+A single <Tooltip text="A smart contract on ICP.">canister</Tooltip> can host the entire application stack including its web assets, core logic, and data.
 Note that by default, `dfx` generates a dual canister project where one canister is the backend canister and the other canister is the frontend canister that stores web assets.
 Since the frontend canister is read-only and all state and logic is in the backend canister, this dual canister architecture is effectively the same as the single canister architecture.
 Even though this architecture is simple, it can scale to thousands of users and gigabytes of data. 
 
 ### Canister per subnet architecture
-ICP scales horizontally via subnets, so smart contracts can also scale by utilizing more subnets.
+ICP scales horizontally via <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnets</Tooltip>, so smart contracts can also scale by utilizing more subnets.
 One way to achieve this is to have one or multiple canisters per subnet and then shard data over these canisters to distribute the load.
 This is the most scalable architecture and could, in theory, support millions of users and terabytes of data.
 Since the application data and logic is distributed over multiple subnets, this requires expert knowledge of distributed programming.
