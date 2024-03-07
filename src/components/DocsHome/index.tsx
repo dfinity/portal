@@ -274,7 +274,7 @@ const DocsHomePage: FC = () => {
                 <img
                   src="/img/docs/juno.svg"
                   alt="Juno"
-                  className="w-10 h-10"
+                  className="h-10"
                   loading="lazy"
                 />
               </div>
