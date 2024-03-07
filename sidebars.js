@@ -91,7 +91,10 @@ const sidebars = {
         {
           type: "category",
           label: "Write",
-          items: ["developer-docs/smart-contracts/write/overview"],
+          items: [
+            "developer-docs/smart-contracts/write/overview",
+            "developer-docs/smart-contracts/write/resources",
+          ],
         },
         {
           type: "category",
