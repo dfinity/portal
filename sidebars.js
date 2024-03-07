@@ -91,7 +91,7 @@ const sidebars = {
         {
           type: "category",
           label: "Write",
-          items: ["developer-docs/smart-contracts/write/choosing-language"],
+          items: ["developer-docs/smart-contracts/write/overview"],
         },
         {
           type: "category",
@@ -227,11 +227,6 @@ const sidebars = {
           type: "category",
           label: "Best practices",
           items: [
-            {
-              type: "doc",
-              label: "Architecture",
-              id: "developer-docs/smart-contracts/best-practices/architecture",
-            },
             {
               type: "doc",
               label: "General",
@@ -617,17 +612,6 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/multi-chain/faq/user-faq",
-            "developer-docs/multi-chain/faq/ckbtc-faq",
-            "developer-docs/multi-chain/faq/cketh-faq",
-            "developer-docs/multi-chain/faq/ckerc20-faq",
-            "developer-docs/multi-chain/faq/signatures-faq",
-          ],
-        },
-        {
-          type: "category",
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
@@ -829,7 +813,7 @@ const sidebars = {
             "references/samples/rust/canister-info/README",
             "references/samples/rust/composite_query/README",
             "references/samples/rust/counter/README",
-            "references/samples/rust/defi/README",
+            "references/samples/rust/defi/src/frontend/README",
             "references/samples/rust/dip721-nft-container/README",
             "references/samples/rust/encrypted-notes-dapp-vetkd/README",
             "references/samples/rust/encrypted-notes-dapp/README",
@@ -1064,6 +1048,17 @@ const sidebars = {
             "references/vetkeys-overview",
           ],
         },
+        {
+          type: "category",
+          label: "FAQs",
+          items: [
+            "developer-docs/multi-chain/faq/user-faq",
+            "developer-docs/multi-chain/faq/ckbtc-faq",
+            "developer-docs/multi-chain/faq/cketh-faq",
+            "developer-docs/multi-chain/faq/ckerc20-faq",
+            "developer-docs/multi-chain/faq/signatures-faq",
+          ],
+        },
       ],
     },
   ],
@@ -1126,6 +1121,7 @@ const sidebars = {
         "developer-docs/backend/motoko/scalability-cancan",
         "developer-docs/backend/motoko/sample-apps",
         "developer-docs/backend/motoko/mo-doc",
+        "developer-docs/backend/motoko/0.11.0-migration-guide",
       ],
     },
     {
@@ -1137,17 +1133,16 @@ const sidebars = {
       },
       items: [
         "motoko/version",
-        "motoko/main/overview",
+        "motoko/main/motoko-introduction",
         "motoko/main/basic-concepts",
-        "motoko/main/base-intro",
+        "motoko/main/overview",
         "motoko/main/language-manual",
         "motoko/main/style",
-        "motoko/main/motoko-grammar",
+        "motoko/main/base-intro",
         "motoko/main/actors-async",
         "motoko/main/actor-classes",
         "motoko/main/caller-id",
         "motoko/main/compatibility",
-        "motoko/main/compiler-ref",
         "motoko/main/control-flow",
         "motoko/main/cycles",
         "motoko/main/errors",
@@ -1157,12 +1152,15 @@ const sidebars = {
         "motoko/main/modules-and-imports",
         "motoko/main/mutable-state",
         "motoko/main/pattern-matching",
+        "motoko/main/pipes",
         "motoko/main/sharing",
-        "motoko/main/stablememory",
         "motoko/main/stable-regions",
+        "motoko/main/stablememory",
         "motoko/main/structural-equality",
         "motoko/main/timers",
         "motoko/main/upgrades",
+        "motoko/main/compiler-ref",
+        "motoko/main/motoko-grammar",
       ],
     },
     {

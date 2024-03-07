@@ -226,7 +226,7 @@ for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/backend/choosing-language.md`).
+  in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/smart-contracts/write/overview.mdx`).
 - Add their own documentation as a folder under `Agents` or `CDKs`.
 
 ## Community-created developer tools
