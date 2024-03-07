@@ -90,6 +90,11 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Compile",
+          items: ["developer-docs/smart-contracts/compile"],
+        },
+        {
+          type: "category",
           label: "Write",
           items: ["developer-docs/smart-contracts/write/overview"],
         },
