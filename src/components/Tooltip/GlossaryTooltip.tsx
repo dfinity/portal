@@ -23,7 +23,17 @@ export function GlossaryTooltip(props: GlossaryTooltipProps) {
   }, []);
 
   const term = props.children;
-  const definition = glossary.get(term);
+
+  // even though we use typescript, a lot of content is MDX, which will
+  // still attempt to render the component with invalid props
+  if (!term || typeof term !== "string") {
+    console.warn(
+      "Attempted to render a tooltip with invalid content. Rendering null instead."
+    );
+    return null;
+  }
+
+  const definition = glossary.get(term.toLowerCase());
 
   if (definition) {
     return <Tooltip text={definition}>{props.children}</Tooltip>;
