@@ -229,11 +229,6 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "Architecture",
-              id: "developer-docs/smart-contracts/best-practices/architecture",
-            },
-            {
-              type: "doc",
               label: "General",
               id: "developer-docs/smart-contracts/best-practices/general",
             },
