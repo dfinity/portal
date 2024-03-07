@@ -136,12 +136,12 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/backend/choosing-language"
+              description="Learch about programming languages on the ICP."
+              href="/docs/current/developer-docs/smart-contracts/write/overview"
             />
             <CardWithDescription
               title="Community Conversation"
-              description="Learn about performance and scalabilty of the IC."
+              description="Learn about performance and scalabilty of the ICP."
               href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription

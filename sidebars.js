@@ -92,7 +92,7 @@ const sidebars = {
           type: "category",
           label: "Write",
           items: [
-            "developer-docs/smart-contracts/write/choosing-language",
+            "developer-docs/smart-contracts/write/overview",
           ]
         },
         {
@@ -229,11 +229,6 @@ const sidebars = {
           type: "category",
           label: "Best practices",
           items: [
-            {
-              type: "doc",
-              label: "Architecture",
-              id: "developer-docs/smart-contracts/best-practices/architecture",
-            },
             {
               type: "doc",
               label: "General",
