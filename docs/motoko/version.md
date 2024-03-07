@@ -8,5 +8,4 @@ it shipped with.
 
 Consult the
 [forum for vessel](https://forum.dfinity.org/t/dfx-deploy-with-custom-motoko-version/7665)
-or the [mops documentation](https://docs.mops.one/cli/toolchain) for details
-(https://forum.dfinity.org/t/dfx-deploy-with-custom-motoko-version/7665).
+or the [mops documentation](https://docs.mops.one/cli/toolchain) for details.
