@@ -71,7 +71,7 @@ const subnavItems = [
     label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      { label: "Motoko", href: "/docs/current/developer-docs/backend/motoko/" },
+      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
       { label: "TypeScript", href: "/docs/current/developer-docs/backend/typescript/" },
       { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
       { label: "Solidity", href: "/docs/current/developer-docs/backend/solidity/" },
@@ -346,7 +346,7 @@ const marketingNav = {
               name: "Programming languages",
 
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/smart-contracts/write/choosing-language",
+              href: "/docs/current/developer-docs/smart-contracts/write/overview",
             },
             {
               name: "Hackathons",

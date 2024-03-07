@@ -165,8 +165,8 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
-              description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/backend/choosing-language"
+              description="Learch about programming languages on the ICP."
+              href="/docs/current/developer-docs/smart-contracts/write/overview"
             />
             <CardWithDescription
               title="Sample Code"
