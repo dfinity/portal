@@ -482,7 +482,7 @@ const sidebars = {
               items: [
                 "developer-docs/web-apps/user-login/internet-identity/overview",
                 "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-                "developer-docs/web-apps/user-login/internet-identity/integrate-identity",
+                "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
