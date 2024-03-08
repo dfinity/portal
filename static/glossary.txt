@@ -1,0 +1,2 @@
+canister=A smart contract on ICP.
+cycles=Currency unit used to pay for ICP gas fees.
