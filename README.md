@@ -69,12 +69,12 @@ docs
 ├── tutorials // tutorial series (developer journey, hackathon prep course, etc). 
 ```
 
-## Contributing to the dev docs 
+## Contributing to the Dev Docs 
 
-### Contributions' musts:
+### Contributions must:
 
 - Must follow the [developer docs style guide](style-guide.md).
-- - Must include [document tags](#document-tags).
+- Must include [document tags](#document-tags).
 - Must include [SEO keywords](#seo-keywords).
 - Must be in `.mdx` file format to support the previous two components. 
 - Must be registered in [`/sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js), otherwise, it will not appear in the
@@ -113,22 +113,34 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 Documentation pages should include two types of keywords:
 
 - Document skill level:
-      - Beginner
-      - Intermediate
-      - Advanced
+
+	- Beginner
+
+	- Intermediate
+
+	- Advanced
 
 - Document type:
-      - Concept
-      - Tutorial
-      - Getting started
-      - Reference (Reference pages do not require a skill level tag)
+
+	- Concept
+
+	- Tutorial
+
+	- Getting started
+
+	- Reference (Reference pages do not require a skill level tag)
 
 Additional, optional (but recommended) tags include:
-    - Language
-        - Motoko / Rust / Python / Typescript / Solidity
-    - Multi-chain integration
-        - Bitcoin / Ethereum
-    - Governance (for NNS/SNS docs)
+
+	- Language
+
+		- Motoko / Rust / Python / Typescript / Solidity
+  
+  	- Multi-chain integration
+		
+  		- Bitcoin / Ethereum
+
+ 	- Governance (for NNS/SNS docs)
 
 ### SEO keywords
 
