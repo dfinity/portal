@@ -3663,7 +3663,7 @@
     "name": "IC-Mnist",
     "description": "IC-Mnist provides a frontend for drawing a digit and a backend that performs an inference using a pretrained MNIST model to predict the drawn digit.",
     "website": "https://jsi2g-jyaaa-aaaam-abnia-cai.icp0.io/",
-    "logo": "/img/showcase/accelar_logo.png",
+    "logo": "/img/showcase/mnist.png",
     "display": "Normal",
     "id": "icmnist",
     "oneLiner": "IC-Mnist provides a frontend for drawing a digit and a backend that performs an inference using a pretrained MNIST model to predict the drawn digit.",
