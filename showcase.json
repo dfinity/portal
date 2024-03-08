@@ -622,7 +622,8 @@
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure",
-      "DAO"
+      "DAO",
+      "AI"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
     "description": "The world’s first Web3 search engine indexing all Internet Computer-based dapps.",
@@ -3316,7 +3317,8 @@
     "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
     "stats": "15M parameter llama2",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],    
     "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
     "usesInternetIdentity": true,
@@ -3590,5 +3592,103 @@
     "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
     "twitter": "https://twitter.com/kovachtech",
     "submittableId": "44337954"
+  },
+  {
+    "name": "UncensoredGreats",
+    "description": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
+    "website": "https://www.uncensoredgreats.com/",
+    "logo": "/img/showcase/UncensoredGreatsLogo.png",
+    "display": "Normal",
+    "id": "UncensoredGreats",
+    "oneLiner": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
+    "tags": [
+      "SocialFi",
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/UncensoredGreats",
+    "twitter": "https://twitter.com/UCG_DAO",
+    "submittableId": "43861229"
+  },
+  {
+    "name": "ArcMind",
+    "description": "ArcMind AI is a LLM-powered autonomous agent running that uses Chain of thoughts for reasoning, taking actions and completing goals. It orchestrates with web agents to interact with the world in real time, and Vector DB for long term memory store.",
+    "website": "https://arcmindai.app",
+    "logo": "/img/showcase/arcmind_logo.svg",
+    "display": "Normal",
+    "id": "ArcMind",
+    "oneLiner": "A LLM-powered autonomous agent running that uses Chain of thoughts for reasoning, taking actions and completing goals.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/arcmindai/arcmindai",
+    "twitter": "https://twitter.com/arcmindai",
+    "submittableId": "39060710"
+  },
+  {
+    "name": "DeVinci AI Assistant",
+    "description": "DeVinci AI Assistant is a personalized AI assistant that redefines the paradigm of digital privacy and trust and powered by an open-source AI model that operates directly within your browser.",
+    "website": "https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/",
+    "logo": "/img/showcase/DeVinci_logo.png",
+    "display": "Normal",
+    "id": "DevinciAI",
+    "oneLiner": "Browser-based personalized AI assistant that redefines the paradigm of digital privacy and trust.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/patnorris/DecentralizedAIonIC"
+  },
+  {
+    "name": "Accelar",
+    "description": "Accelar is a unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP. Create canisters, workflows, identities, and interact with dApps through a non-custodial wallet.",
+    "website": "https://www.accelar.io",
+    "logo": "/img/showcase/accelar_logo.png",
+    "display": "Normal",
+    "id": "Accelar",
+    "oneLiner": "A unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Accelar-labs",
+    "twitter": "https://twitter.com/accelarlabs",
+    "submittableId": "44378832"
+  },
+  {
+    "name": "IC-Mnist",
+    "description": "IC-Mnist provides a frontend for drawing a digit and a backend that performs an inference using a pretrained MNIST model to predict the drawn digit.",
+    "website": "https://jsi2g-jyaaa-aaaam-abnia-cai.icp0.io/",
+    "logo": "/img/showcase/accelar_logo.png",
+    "display": "Normal",
+    "id": "icmnist",
+    "oneLiner": "IC-Mnist provides a frontend for drawing a digit and a backend that performs an inference using a pretrained MNIST model to predict the drawn digit.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/smallstepman/ic-mnist"
+  },
+  {
+    "name": "ELNA.ai",
+    "description": "ELNA.ai is the world's first fully on-chain decentralized GenAI Companion.",
+    "website": "https://www.elna.ai/",
+    "logo": "/img/showcase/elnaai_logo.png",
+    "display": "Normal",
+    "id": "elnaai",
+    "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/elna-ai",
+    "twitter": "https://twitter.com/elna_live",
+    "submittableId": "44027684"
   }
 ]
