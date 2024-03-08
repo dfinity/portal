@@ -76,7 +76,7 @@ export function Tooltip({
         {...getReferenceProps()}
         style={{
           textDecoration: "underline",
-          cursor: "pointer",
+          cursor: "default",
         }}
       >
         {children}
