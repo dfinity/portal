@@ -12,7 +12,7 @@ import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 
 ## Overview
-To convert ICP tokens into <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip>, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
+To convert ICP tokens into <GlossaryTooltip>cycles</GlossaryTooltip>, you first need to obtain some ICP and transfer to the right account. You can get ICP tokens on exchanges, or ask someone you know to send you some. To figure out which account to transfer the ICP tokens to, run the following:
 
 ``` bash
 dfx ledger account-id
@@ -28,7 +28,7 @@ e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
 
 There are a few different ways you might acquire ICP tokens. For example, you might:
 
-- Purchase ICP tokens directly through an exchange that lists ICP tokens available for trade. To see all available places to purchase ICP tokens, check out this [page](https://coinmarketcap.com/currencies/internet-computer/markets/). 
+- Purchase ICP tokens directly through an exchange that lists ICP tokens available for trade. To see all available places to purchase ICP tokens, check out this [page](https://coinmarketcap.com/currencies/internet-computer/markets/).
 
 - Receive tokens as rewards for participating in the governance of the Internet Computer.
 
@@ -36,7 +36,7 @@ There are a few different ways you might acquire ICP tokens. For example, you mi
 
 - Receive tokens as remuneration for providing computing capacity as a node provider.
 
-$5-$10 USD worth of tokens should be enough to get started. Depending on your workflows and use-case, you may need more. 
+$5-$10 USD worth of tokens should be enough to get started. Depending on your workflows and use-case, you may need more.
 
 ### Checking the balance
 
@@ -59,7 +59,7 @@ With those ICP tokens ready, you can start creating your cycles wallet. To start
 dfx ledger --network ic create-canister <your-principal-identifier> --amount <icp-tokens>
 ```
 
-The two values you have to substitute are your own <Tooltip text="An entity that can be authenticated by ICP - user, canister, etc.">principal</Tooltip> and the amount of tokens you want to convert.
+The two values you have to substitute are your own <GlossaryTooltip>principal</GlossaryTooltip> and the amount of tokens you want to convert.
 
 To figure out your own principal, use the output of the command `dfx identity get-principal`.
 

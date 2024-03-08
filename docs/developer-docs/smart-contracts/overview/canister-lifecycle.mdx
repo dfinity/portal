@@ -12,7 +12,7 @@ import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 ## Write
 
-The ICP accepts and executes <Tooltip text="A smart contract on ICP.">canister</Tooltip> code in the WebAssembly (Wasm) binary format.
+The ICP accepts and executes <GlossaryTooltip>canister</GlossaryTooltip> code in the WebAssembly (Wasm) binary format.
 Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be deployed into a canister.
 
 ## Deploy
@@ -20,8 +20,8 @@ Usually, developers write code in a higher-level language and then compile the c
 ### Create
 
 A developer can create an empty canister on ICP by calling the system canister.
-It can be done using the [<Tooltip text="The DAO that governs ICP.">NNS</Tooltip> frontend dapp](/docs/current/developer-docs/daos/nns/nns-app-quickstart#deploying-and-managing-canisters-from-the-nns-dapp) in the browser or [`dfx`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/) in the command line.
-The developer can specify the initial canister settings and choose the target <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnet</Tooltip>.
+It can be done using the [<GlossaryTooltip>NNS</GlossaryTooltip> frontend dapp](/docs/current/developer-docs/daos/nns/nns-app-quickstart#deploying-and-managing-canisters-from-the-nns-dapp) in the browser or [`dfx`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/) in the command line.
+The developer can specify the initial canister settings and choose the target <GlossaryTooltip>subnet</GlossaryTooltip>.
 Once the canister is created, the developer gets its canister ID and becomes the controller of the canister.
 
 <div class="text--center">
@@ -51,7 +51,7 @@ These endpoints correspond to exported Wasm functions that are annotated with `c
 
 ## Maintain
 
-Certain system operations that change the state of the <Tooltip text="A smart contract on ICP.">canister</Tooltip> can be performed only by the controllers of the canister.
+Certain system operations that change the state of the <GlossaryTooltip>canister</GlossaryTooltip> can be performed only by the controllers of the canister.
 The most important operation is upgrading the canister by installing a different Wasm binary.
 In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly.
 As the canister becomes mature and production ready, the control over it could move to a DAO in order to make the canister secure and trustworthy.
@@ -61,7 +61,7 @@ As the canister becomes mature and production ready, the control over it could m
 <img src="/img/docs/manage-canister.png" alt="Manage canister" width="600"/>
 </div>
 
-Since ICP uses a reverse gas model, the canister pays for its execution, storage, and other operations with <Tooltip text="Currency unit used to pay for ICP gas fees.">cycles</Tooltip>.
+Since ICP uses a reverse gas model, the canister pays for its execution, storage, and other operations with <GlossaryTooltip>cycles</GlossaryTooltip>.
 This means that controllers and/or users of the canister have to ensure that the canister does not run out of cycles.
 If the canister runs out of cycles, it will be uninstalled by removing its Wasm binary and its storage.
 

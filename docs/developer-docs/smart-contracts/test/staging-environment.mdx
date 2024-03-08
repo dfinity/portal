@@ -13,13 +13,13 @@ import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 ## Overview
 
-Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment can be helpful. While local deployments mirror the live mainnet as closely as possible, it is not the same. The local instance only runs as a single subnet. If you want to test <Tooltip text="A smart contract on ICP.">canisters</Tooltip> of two different <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">subnets</Tooltip> connecting to each other, you cannot do this locally. Other benefits of using a staging environment include being able to test an integration with other services, deployment workflows, and estimating costs before setting a feature live.
+Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment can be helpful. While local deployments mirror the live mainnet as closely as possible, it is not the same. The local instance only runs as a single subnet. If you want to test <GlossaryTooltip>canisters</GlossaryTooltip> of two different <GlossaryTooltip>subnets</GlossaryTooltip> connecting to each other, you cannot do this locally. Other benefits of using a staging environment include being able to test an integration with other services, deployment workflows, and estimating costs before setting a feature live.
 
 ## Setting up a staging environment
 
-In a staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myStaging` instead. `myStaging` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`. 
+In a staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myStaging` instead. `myStaging` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`.
 
-Networks are defined in two ways: assumed and explicitly configured. dfx only contains the `ic` network as an assumed environment. The flag `--network ic` can be used to run any command on the mainnet. 
+Networks are defined in two ways: assumed and explicitly configured. dfx only contains the `ic` network as an assumed environment. The flag `--network ic` can be used to run any command on the mainnet.
 
 All other networks are explicitly configured in `dfx.json`. The `"networks"` section should contain at least the `local` network, which gets chosen by default if no other network is specified with the `--network` flag.
 

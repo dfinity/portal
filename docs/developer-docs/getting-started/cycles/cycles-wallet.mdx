@@ -11,9 +11,9 @@ import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 ## Overview
 
-As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power <Tooltip text="A smart contract on ICP.">canister</Tooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
-Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <Tooltip text="An entity that can be authenticated by ICP - user, canister, etc.">principals</Tooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
+Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
 For the purposes of using the local canister execution environment, the SDK automatically creates a default cycles wallet for you in every project and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local canister execution environment.
 
@@ -30,7 +30,7 @@ To check the identity you are currently using, run the following command:
 A user principal or canister principal can be assigned to a **controller** or **custodian** role.
 
 :::info
-The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a <Tooltip text="An entity that can be authenticated by ICP - user, canister, etc.">principal</Tooltip> that controls a canister. Here, a controller is a **wallet-internal** role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
+The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a <GlossaryTooltip>principal</GlossaryTooltip> that controls a canister. Here, a controller is a **wallet-internal** role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
 :::
 
 ### Controllers
@@ -97,7 +97,7 @@ cd cycles-wallet
 npm ci
 ```
 
-- #### Step 3: Start a local <Tooltip text="The ICP software used to run a node.">replica</Tooltip> if one is not already running:
+- #### Step 3: Start a local <GlossaryTooltip>replica</GlossaryTooltip> if one is not already running:
 
 ```
 dfx start --background --clean
