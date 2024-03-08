@@ -1,0 +1,114 @@
+---
+keywords: [intermediate, governance, concept, nns]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Neuron management
+
+<MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
+
+## Overview 
+This page describes the technical APIs and details to manage neurons on the NNS governance canister.
+If you are building a project that offers neuron staking or custody support, this is the page for you.
+
+You can find the most up-to-date `candid` definition for the NNS governance canister [here](https://github.com/dfinity/ic/blob/master/rs/nns/governance/canister/governance.did).
+We will here focus on the neuron interactions and copy some of the relevant definitions from this file to explain them.
+
+## Neuron attributes
+Before explaining how to modify a neuron, let us first understand the most important parts of a neuron.
+Every user can stake ICP utility tokens into a neuron and pariticipate in the NNS DAO with this neuron.  
+
+* **Neuron ID**: Each neuron has an identity selected by NNS governance at neuron creation.
+* **Account**: Each neuron has an associated account on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister and therefore a user cannot move staked tokens.
+* **Controller**: The principal that controls the neuron. The principal must identify a public key pair, which acts as a “master key,” such that the corresponding secret key should be kept very secure. The principal might control many neurons.
+
+* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified time, called the _dissolve delay_. This can be thought of like a timer.
+  * A neuron can be _non-dissolving_ which means that the timer is stopped and the neuron's dissolve delay remains the same. 
+  * A neuron can be _dissolving_ which means that the timer is decreasing the neuron's dissolve delay as time passes. 
+  * Once the timer is all the way down a neuron is _dissolved_ and the ICP tokens can be unstaked again.
+* **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state. 
+A neuron's dissolve delay and age increases the neuron's voting power. 
+
+* **Maturity (positive number – percent)**:  When neurons vote, over time the NNS increases their so called maturity to reward them. Maturity can be converted into ICP by spawning (see below).
+
+### Interacting with neurons
+All interactions with a neuron go through the following API on the NNS governance cansiter. This includes everything in a neuron's lifetime such as the neuron's creation, modifications and voting, and finally unstaking the ICP tokens again from the neuron.
+```
+type ManageNeuron = record {
+  id : opt NeuronId;
+  command : opt Command;
+  neuron_id_or_subaccount : opt NeuronIdOrSubaccount;
+};
+```
+We will next to through a few important commands and how they can be used.
+
+
+### Creating a neuron and topping it up
+Staking ICP utility tokens in a neuron involves two commands:
+1. Sending ICP utility tokens to the neuron's subaccount.
+2. Claiming the neuron on the NNS governance canister, which basically means telling the governance canister that the transfer in 1. happened upon which NNS governance will create a new neuron.
+
+TODO: ADD DETAILS HOW THE SUBACCOUNT MUST BE COMPUTED!
+
+For the ledger transfer, the relevant `candid` interface can be found [here](https://github.com/dfinity/ic/blob/master/rs/rosetta-api/icp_ledger/ledger.did#L25) and contains the following details for a transaction:
+```
+type Transaction = record {
+    memo : Memo;
+    icrc1_memo: opt blob;
+    operation : opt Operation;
+    created_at_time : TimeStamp;
+}; 
+```
+To then claim the neuron, you can use the following command:
+TODO: WHICH WAY IS RECOMMENDED?
+```
+type ClaimOrRefresh = record { by : opt By };
+type By = variant {
+  NeuronIdOrSubaccount : record {};
+  MemoAndController : ClaimOrRefreshNeuronFromAccount;
+  Memo : nat64;
+};
+type ClaimOrRefreshNeuronFromAccount = record {
+  controller : opt principal;
+  memo : nat64;
+};
+```
+Refresh
+
+
+### Modifying a neuron's state
+
+* **Start dissolving**: The dissolve delay is like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on dissolve mode and counting down. The neuron can be instructed to start “dissolving.” When the neuron is dissolving, its dissolve delay falls over time until it is either stopped or reaches zero. A neuron cannot vote (or earn rewards for voting) when its dissolve delay falls below six months. Once the dissolve delay reaches zero, it stops falling and the controlling principal can instruct the neuron to disburse.
+
+* **Stop dissolving**: A neuron that is dissolving can be instructed to stop, whereupon its dissolve delay stops falling with time.
+* **Increase dissolve delay**: The dissolve delay of a neuron can be increased up to a maximum of eight years.
+
+### Managing permissions of a neuron
+* **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
+
+* **Add hot key**: Add a new hot key that can be used to manage the neuron. This provides an alternative to using the principal’s cold key to manage the neuron, which might be onerous and difficult to keep secure, especially if it is used regularly. A hot key might be a WebAuthn key that is maintained inside a user device, such as a smartphone.
+
+* **Remove hot key**: Temove a hot key that has been previously assigned to the neuron.
+
+
+### Voting with a neuron
+* **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
+
+* **Recent votes**: A record of recent votes is maintained. This can provide a guide for those wishing to evaluate whether to follow a neuron or how their followers are voting.
+
+
+* **Vote**: Have the neuron vote to either adopt or reject a proposal with a specified ID.
+* **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
+    - Distribute control over voting power amongst multiple entities.
+    - Have a neuron vote automatically when its owner lacks time to evaluate newly submitted proposals.
+    - Have a neuron vote automatically when its own lacks the expertise to evaluate newly submitted proposals.
+    - For other purposes.
+
+A follow rule specifies a set of followers. Once a majority of the followers vote to adopt or reject a proposal belonging to the specified topic, the neuron votes the same way. If it becomes impossible for a majority of the followers to adopt (for example, because they are split 50–50 between adopt and reject), then the neuron votes to reject. If a rule is specified where the proposal topic is null, then it becomes a catch-all-follow rule, which will be used to vote automatically on proposals belonging to topics for which no specific rule has been specified. If the list of followers is empty, this effectively removes the following rule.
+
+### Spwaning a neuron's rewards
+* **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity falls to zero.
+
+### Disbursing / unstaking a neuron
+* **Disburse**: When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
