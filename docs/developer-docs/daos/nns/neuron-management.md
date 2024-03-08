@@ -61,7 +61,7 @@ type Transaction = record {
 }; 
 ```
 To then claim the neuron, you can use the following command:
-TODO: WHICH WAY IS RECOMMENDED?
+TODO: WHICH WAY IS RECOMMENDED? ADD ARGUMENT EXPLANATION
 ```
 type ClaimOrRefresh = record { by : opt By };
 type By = variant {
@@ -74,8 +74,9 @@ type ClaimOrRefreshNeuronFromAccount = record {
   memo : nat64;
 };
 ```
-Refresh
+Topping up an exising neuron with more tokens is called _refreshing_ a neuron and works in the same way. In a first step, additional tokens are sent to the neuron's account. In the second step, the NNS governance cansiter is informed so that it can update the neuron's stake after confirming with the ledger that there are new tokens. Note that refreshing of a neuron will also update the neuron's age to account for the fact that the newly added tokens have no age.
 
+TODO: ADD ARGUMENT EXPLANATION AND WHAT TO DO DIFFERENTLY FOR THE REFRESHING
 
 ### Modifying a neuron's state
 
@@ -83,6 +84,21 @@ Refresh
 
 * **Stop dissolving**: A neuron that is dissolving can be instructed to stop, whereupon its dissolve delay stops falling with time.
 * **Increase dissolve delay**: The dissolve delay of a neuron can be increased up to a maximum of eight years.
+```
+type Configure = record { operation : opt Operation };
+type Operation = variant {
+  ...
+  StopDissolving : record {};
+  StartDissolving : record {};
+  IncreaseDissolveDelay : IncreaseDissolveDelay;
+  ...
+  SetDissolveTimestamp : SetDissolveTimestamp;
+};
+type IncreaseDissolveDelay = record {
+  additional_dissolve_delay_seconds : nat32;
+};
+type SetDissolveTimestamp = record { dissolve_timestamp_seconds : nat64 };
+```
 
 ### Managing permissions of a neuron
 * **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
@@ -91,12 +107,21 @@ Refresh
 
 * **Remove hot key**: Temove a hot key that has been previously assigned to the neuron.
 
+```
+type Configure = record { operation : opt Operation };
+type Operation = variant {
+  RemoveHotKey : RemoveHotKey;
+  AddHotKey : AddHotKey;
+  ...
+};
+type AddHotKey = record { new_hot_key : opt principal };
+type RemoveHotKey = record { hot_key_to_remove : opt principal };
+```
 
 ### Voting with a neuron
 * **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
 
 * **Recent votes**: A record of recent votes is maintained. This can provide a guide for those wishing to evaluate whether to follow a neuron or how their followers are voting.
-
 
 * **Vote**: Have the neuron vote to either adopt or reject a proposal with a specified ID.
 * **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
@@ -107,8 +132,29 @@ Refresh
 
 A follow rule specifies a set of followers. Once a majority of the followers vote to adopt or reject a proposal belonging to the specified topic, the neuron votes the same way. If it becomes impossible for a majority of the followers to adopt (for example, because they are split 50–50 between adopt and reject), then the neuron votes to reject. If a rule is specified where the proposal topic is null, then it becomes a catch-all-follow rule, which will be used to vote automatically on proposals belonging to topics for which no specific rule has been specified. If the list of followers is empty, this effectively removes the following rule.
 
+TODO: HOW TO GET THE ID OF TOPICS BEFORE DOING THIS?
+
+```
+type RegisterVote = record { vote : int32; proposal : opt NeuronId };
+type Follow = record { topic : int32; followees : vec NeuronId };
+```
+
+
 ### Spwaning a neuron's rewards
 * **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity falls to zero.
 
+```
+type Spawn = record {
+  percentage_to_spawn : opt nat32;
+  new_controller : opt principal;
+  nonce : opt nat64;
+};
+```
 ### Disbursing / unstaking a neuron
 * **Disburse**: When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
+```
+type Disburse = record {
+  to_account : opt AccountIdentifier;
+  amount : opt Amount;
+};
+```
