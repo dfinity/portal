@@ -4,6 +4,7 @@ keywords: [beginner, getting started, development workflow]
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Development workflow
 
@@ -25,12 +26,12 @@ It is a command line multi-tool that assists the developer throughout the entire
   />
 </div>
 
-By default, `dfx` generates a project structure consisting of two smart contracts: the **frontend canister** and the **backend canister**.
+By default, `dfx` generates a project structure consisting of two smart contracts: the **frontend <GlossaryTooltip>canister</GlossaryTooltip>** and the **backend <GlossaryTooltip>canister</GlossaryTooltip>**.
 The frontend canister contains web assets such as JavaScript, HTML, CSS, and images that are served to the browser.
 The actual program logic of the smart contract is defined in the backend canister.
 
 :::info
-The configuration with a frontend and a backend canisters is just a convention.
+The configuration with a frontend and a backend canister is just a convention.
 It is possible to write a single canister that contains both the program logic and hosts the web assets.
 :::
 
@@ -57,7 +58,7 @@ The local testnet comes built-in with `dfx` and can be run with the `dfx start` 
 The local testnet consists of a single node – the local machine.
 Note that as of writing, ICP doesn’t have an official public testnet.
 
-In order to deploy smart contracts on the mainnet, the developer needs either ICP tokens or cycles.
+In order to deploy smart contracts on the mainnet, the developer needs either ICP tokens or <Tooltip text="Used to pay for ICP gas fees.">cycles</Tooltip>.
 When using ICP tokens, `dfx` automatically converts the necessary amount of tokens to cycles since all operations with smart contracts require payment in cycles.
 See this [guide](/docs/current/developer-docs/getting-started/cycles/cycles-faucet) for more information on how to obtain cycles.
 
@@ -72,7 +73,7 @@ However, it is possible to change the URL by editing the dfx configuration file.
 
 There are three ways to call the functions of the backend smart contract:
 
-1. Use the browser to load the webpage hosted in the frontend canister and use the UI of the webpage to interact with the backend canister.
+1. Use the browser to load the webpage hosted in the frontend <GlossaryTooltip>canister</GlossaryTooltip> and use the UI of the webpage to interact with the backend <GlossaryTooltip>canister</GlossaryTooltip>.
    Under the hood, the UI uses JavaScript and `agent-js` to send messages to the backend smart contract.
    This is the standard way to interact with the smart contract that regular users would also use.
 1. Use the `dfx canister call` command and pass the input arguments as command line arguments.

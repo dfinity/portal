@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, cycles, cycles wallet]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Using a cycles wallet
 
@@ -10,13 +11,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power canister operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
-Unlike ICP tokens, cycles are only associated with canisters and not with user or developer principals. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
+Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
 For the purposes of using the local canister execution environment, the SDK automatically creates a default cycles wallet for you in every project and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local canister execution environment.
 
-In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about how to use `dfx wallet` [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet).
+In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about [how to use `dfx wallet`](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet).
 
 You should keep in mind, however, that calls to the cycles wallet canister are executed using the cycles wallet principal associated with the currently selected user identity. Depending on your currently selected identity and whether the principal associated with that identity has been added as a controller or a custodian for a wallet, you might see different results or be denied access to a specific method.
 
@@ -29,7 +30,7 @@ To check the identity you are currently using, run the following command:
 A user principal or canister principal can be assigned to a **controller** or **custodian** role.
 
 :::info
-The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a principal that controls a canister. Here, a controller is a **wallet-internal** role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
+The controller role this document talks about is NOT the same controller role usually meant when talking about the Internet Computer. Typically, the controller refers to a <GlossaryTooltip>principal</GlossaryTooltip> that controls a canister. Here, a controller is a **wallet-internal** role that happens to have the same name. For a more detailed differentiation, see [this forum post](https://forum.dfinity.org/t/why-is-my-cycles-wallet-canister-slowly-losing-cycles/13190/11).
 :::
 
 ### Controllers
@@ -96,7 +97,7 @@ cd cycles-wallet
 npm ci
 ```
 
-- #### Step 3: Start a local replica if one is not already running:
+- #### Step 3: Start a local <GlossaryTooltip>replica</GlossaryTooltip> if one is not already running:
 
 ```
 dfx start --background --clean
