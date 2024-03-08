@@ -340,7 +340,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii
-  /docs/current/developer-docs/integrations/internet-identity/integrate-internet-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
+  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
@@ -436,6 +436,7 @@ const redirects = `
   /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
   /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
