@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Tooltip } from "./Tooltip";
+import { useGlossary } from "@site/src/context/GlossaryProvider";
 
 export interface GlossaryTooltipProps {
   children: string;
 }
 
 export function GlossaryTooltip(props: GlossaryTooltipProps) {
-  const [glossary, setGlossary] = useState<Map<string, string>>(new Map());
-
-  useEffect(() => {
-    fetch("/glossary.txt")
-      .then((res) => res.text())
-      .then((glossary) => {
-        const lines = glossary.split("\n");
-        const map = new Map();
-        for (const line of lines) {
-          const [term, definition] = line.split("=");
-          map.set(term.trim().toLowerCase(), definition.trim());
-        }
-        setGlossary(map);
-      });
-  }, []);
+  const glossary = useGlossary();
 
   const term = props.children;
 
