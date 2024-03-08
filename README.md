@@ -197,6 +197,7 @@ The following submoules and their corresponding repos are currently used:
 - Sample projects
     - `/docs/current/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
+    - Note: This submodule intentionally uses `.md` files instead of `.mdx` files. Therefore, these pages do not support components such as tags and tooltips.
 
 - dfxvm
     - `/docs/current/developer-docs/developer-tools/cli-tools/dfxvm`
