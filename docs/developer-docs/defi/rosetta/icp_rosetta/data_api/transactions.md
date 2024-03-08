@@ -35,7 +35,7 @@ curl --location '0.0.0.0:8081/block/transaction'  --header 'Content-Type: applic
                 }
 }
 ```
-The response is similar to that of the block [endpoint](/docs/developer-docs/integrations/rosetta/icp_rosetta/data_api/blocks.md) as there is only one transaction withing a block.
+The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/blocks.md) as there is only one transaction withing a block.
 
 ```bash
 {
