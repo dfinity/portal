@@ -393,7 +393,7 @@ function InternetIdentityPage() {
             <CardWithDescription
               title="Dev toolkits"
               description="See the docs, get building."
-              href="/docs/current/developer-docs/integrations/internet-identity/integrate-internet-identity"
+              href="/docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity"
             />
             <CardWithDescription
               title="GitHub repo"
