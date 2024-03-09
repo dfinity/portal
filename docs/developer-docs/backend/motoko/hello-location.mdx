@@ -34,26 +34,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new location_hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -70,10 +70,10 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new location_hello
+dfx new location_hello --no-frontend
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts.
 
 </TabItem>
 </Tabs>

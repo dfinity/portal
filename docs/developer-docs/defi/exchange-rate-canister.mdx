@@ -3,6 +3,7 @@ keywords: [intermediate, tutorial, exchange rate canister]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Exchange rate canister
 
@@ -102,10 +103,10 @@ dfx canister create xrc_demo
 
 ### Deployment
 
-To test the XRC demo locally, first start the local execution environment with the command:
+To test the XRC demo locally, first start the local <GlossaryTooltip>replica</GlossaryTooltip> with the command:
 
 ```
-dfx start --background
+dfx start --clean --background
 ```
 
 Then, deploy the canisters with the command:
@@ -124,8 +125,8 @@ Installing code for canister xrc_demo, with canister ID be2us-64aaa-aaaaa-qaabq-
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    xrc: http://127.0.0.1:8080/?canisterId=bw4dl-smaaa-aaaaa-qaacq-cai&id=br5f7-7uaaa-aaaaa-qaaca-cai
-    xrc_demo: http://127.0.0.1:8080/?canisterId=bw4dl-smaaa-aaaaa-qaacq-cai&id=be2us-64aaa-aaaaa-qaabq-cai
+    xrc: http://127.0.0.1:4943/?canisterId=bw4dl-smaaa-aaaaa-qaacq-cai&id=br5f7-7uaaa-aaaaa-qaaca-cai
+    xrc_demo: http://127.0.0.1:4943/?canisterId=bw4dl-smaaa-aaaaa-qaacq-cai&id=be2us-64aaa-aaaaa-qaabq-cai
 ```
 
 Open the link for the `xrc_demo` canister in a web browser to view the Candid interface. You will see the following Candid UI:

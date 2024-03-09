@@ -6,6 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 4: Rust quickstart
 
@@ -32,7 +33,7 @@ Use `dfx new <project_name>` to create a new project:
 dfx new rust_hello
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Rust':
+You will be prompted to select the language that your backend canister will use. Select 'Rust':
 
 ```
 ? Select a backend language: ›
@@ -81,16 +82,16 @@ Next, navigate into your project directory by running the following command:
 cd rust_hello
 ```
 
-## Starting the local execution environment
+## Starting the local canister execution environment
 
-Next, before you can build your project, you need to connect to either the local execution environment running in your development environment or the decentralized Internet Computer mainnet. For this guide, you'll deploy locally in your developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.mdx).
+Next, before you can build your project, you need to connect to either the local <GlossaryTooltip>replica</GlossaryTooltip> running in your development environment or the decentralized Internet Computer mainnet. For this guide, you'll deploy locally in your developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.mdx).
 
-To start the local execution environment, first check that you are still in the root directory for your project, if needed.
+To start the local canister execution environment, first check that you are still in the root directory for your project, if needed.
 
-Then, start the local execution environment on your computer in the background by running the following command:
+Then, start the local <GlossaryTooltip>replica</GlossaryTooltip> on your computer in the background by running the following command:
 
 ```
-dfx start --background
+dfx start --clean --background
 ```
 
 :::info
@@ -99,7 +100,7 @@ Depending on your platform and local security settings, you might see a warning 
 
 ## Register, build, and deploy your project
 
-After you connect to the local execution environment running in your development environment, you can register, build, and deploy your project locally.
+After you connect to the local replica running in your development environment, you can register, build, and deploy your project locally.
 
 Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
 
@@ -157,11 +158,11 @@ dfx canister call rust_hello_backend greet world
 
 Then, verify that the call to the `rust_hello_backend` canister `greet` function returns a text message `("Hello, world!")`.
 
-## Stopping the local execution environment
+## Stopping the local canister execution environment
 
-After testing the application, you can stop the local execution environment so that it doesn’t continue running in the background.
+After testing the application, you can stop the local replicaso that it doesn’t continue running in the background.
 
-To stop the local execution environment running on your computer, run the following command:
+To stop the local replicarunning on your computer, run the following command:
 
 ```
 dfx stop

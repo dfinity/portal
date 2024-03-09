@@ -34,7 +34,7 @@ Use `dfx new <project_name>` to create a new project:
 dfx new actor_hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -44,16 +44,16 @@ You will be prompted to select a language that your backend canister will use:
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
   ? Select a frontend framework: ›
-❯ SvelteKit
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -70,7 +70,7 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new actor_hello
+dfx new actor_hello --no-frontend
 ```
 
 For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts.
@@ -106,8 +106,8 @@ For example, if you remove the `actor_hello_assets` section, the configuration f
 ```json
     {
     "canisters": {
-        "actor_hello": {
-        "main": "src/actor_hello/main.mo",
+        "actor_hello_backend": {
+        "main": "src/actor_hello_backend/main.mo",
         "type": "motoko"
         }
     },
@@ -178,10 +178,6 @@ WARN: Building canisters to check they build ok. Canister IDs might be hard code
 Building canisters...
 Building frontend...
 WARN: Building canisters before generate for Motoko
-Generating type declarations for canister actor_hello_frontend:
-src/declarations/actor_hello_frontend/actor_hello_frontend.did.d.ts
-src/declarations/actor_hello_frontend/actor_hello_frontend.did.js
-src/declarations/actor_hello_frontend/actor_hello_frontend.did
 Generating type declarations for canister actor_hello_backend:
 src/declarations/actor_hello_backend/actor_hello_backend.did.d.ts
 src/declarations/actor_hello_backend/actor_hello_backend.did.js
@@ -204,16 +200,6 @@ The command displays output similar to the following:
 │   ├── actor_hello_backend.did
 │   ├── actor_hello_backend.most
 │   ├── actor_hello_backend.wasm
-│   ├── constructor.did
-│   ├── index.js
-│   ├── init_args.txt
-│   ├── service.did
-│   ├── service.did.d.ts
-│   └── service.did.js
-├── actor_hello_frontend
-│   ├── actor_hello_frontend.wasm.gz
-│   ├── assetstorage.did
-│   ├── assetstorage.wasm.gz
 │   ├── constructor.did
 │   ├── index.js
 │   ├── init_args.txt
@@ -243,7 +229,7 @@ To deploy this project locally, open a terminal and navigate to your project dir
 Start the local canister execution environment on your local computer by running the following command:
 
 ```
-dfx start --background
+dfx start --clean --background
 ```
 
 For this guide, you can use the `--background` option to start the local canister execution environment as background processes. With this option, you can continue to the next step without opening another terminal shell on your local computer.
@@ -286,10 +272,8 @@ Committing batch.
 Committing batch with 18 operations.
 Deployed canisters.
 URLs:
-Frontend canister via browser
-    actor_hello_frontend: http://127.0.0.1:8080/?canisterId=d6g4o-amaaa-aaaaa-qaaoq-cai
 Backend canister via Candid interface:
-    actor_hello_backend: http://127.0.0.1:8080/?canisterId=dxfxs-weaaa-aaaaa-qaapa-cai&id=dzh22-nuaaa-aaaaa-qaaoa-cai
+    actor_hello_backend: http://127.0.0.1:4943/?canisterId=dxfxs-weaaa-aaaaa-qaapa-cai&id=dzh22-nuaaa-aaaaa-qaaoa-cai
 ```
 
 ## Query the canister

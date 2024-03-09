@@ -243,11 +243,11 @@ To create an NNS proposal to remove a node from the network, use the command:
 
 ### Submit proposals to the local network
 
-To create and submit a proposal to your local network rather than the mainnet, use the `nns-url` value of `http://localhost:8080` rather than `https://ic0.app/`. For example, this proposal sets an application subnet as authorized on the local network:
+To create and submit a proposal to your local network rather than the mainnet, use the `nns-url` value of `http://localhost:4943` rather than `https://ic0.app/`. For example, this proposal sets an application subnet as authorized on the local network:
 
 ```
 ./ic-admin  \
-   --nns-url http://localhost:8080 propose-to-set-authorized-subnetworks  \
+   --nns-url http://localhost:4943 propose-to-set-authorized-subnetworks  \
    --test-neuron-proposer  \
    --proposal-title "Set authorized subnets"  \
    --proposal-url "https://forum.dfinity.org"  \
@@ -278,7 +278,7 @@ Replace `NODE_ID` with the node's principal ID. This command will return output 
 ```
 Fetching the most recent value for key: "node_record_ebih2-65fto-thxfj-knxfn-xxdmq-z42dj-oty4c-n3fbj-qry6f-g3oe2-nqe"
 Most recent version is 41233. Value:
-NodeRecord { xnet: Some(ConnectionEndpoint { ip_addr: "2400:a240:0:2:6801:63ff:fe71:6299", port: 2497, protocol: Unspecified }), http: Some(ConnectionEndpoint { ip_addr: "2400:a240:0:2:6801:63ff:fe71:6299", port: 8080, protocol: Unspecified }), p2p_flow_endpoints: [], prometheus_metrics_http: None, public_api: [], private_api: [], prometheus_metrics: [], xnet_api: [], node_operator_id: [29, 176, 153, 226, 186, 19, 197, 234, 173, 3, 118, 16, 214, 109, 168, 0, 32, 75, 232, 171, 67, 238, 42, 223, 204, 191, 230, 205, 2], chip_id: [] }
+NodeRecord { xnet: Some(ConnectionEndpoint { ip_addr: "2400:a240:0:2:6801:63ff:fe71:6299", port: 2497, protocol: Unspecified }), http: Some(ConnectionEndpoint { ip_addr: "2400:a240:0:2:6801:63ff:fe71:6299", port: 4943, protocol: Unspecified }), p2p_flow_endpoints: [], prometheus_metrics_http: None, public_api: [], private_api: [], prometheus_metrics: [], xnet_api: [], node_operator_id: [29, 176, 153, 226, 186, 19, 197, 234, 173, 3, 118, 16, 214, 109, 168, 0, 32, 75, 232, 171, 67, 238, 42, 223, 204, 191, 230, 205, 2], chip_id: [] }
 ```
 
 ### Using `ic-admin` as a node provider
