@@ -40,9 +40,6 @@ Open a terminal window on your local computer, if you don’t already have one o
 
 Create a new project by running the following command:
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 <Tabs groupId="version">
   <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
@@ -250,7 +247,7 @@ Save your changes and close the `main.mo` file to continue.
 
 ## Start the local canister execution environment
 
-Before you can build the `access_hello` project, you need to connect to the local canister execution environment running in your development environment or to the Internet Computer blockchain mainnet.
+Before you can build the `access_hello` project, you need to connect to the local replica running in your development environment or to the Internet Computer blockchain mainnet.
 
 Open a new terminal window or tab on your local computer.
 
@@ -264,7 +261,7 @@ After the local canister execution environment completes its startup operations,
 
 ## Register, build, and deploy the dapp
 
-After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy) command.
+After you connect to the local replica running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy) command.
 
 You can also perform each of these steps independently using separate [`dfx canister create`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx_canister_create), [`dfx build`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build), and [`dfx canister install`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx_canister_install) commands.
 
