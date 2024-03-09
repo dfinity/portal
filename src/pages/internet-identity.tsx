@@ -84,16 +84,16 @@ function InternetIdentityPage() {
                 variants={transitions.item}
               >
                 <b>
-                Web 2.0 relies on usernames and passwords for authentication, in a paradigm that 
+                Web 2.0 relies on usernames and passwords for authentication, in a paradigm that
                 is insecure, inconvenient and fails to protect privacy.
                 </b>
                 <span style={{display: "block", height: "0.6em"}}></span>
-                Web3 often builds on centralized Web 2.0 infrastructure, and keeps associated tokens and NFTs 
+                Web3 often builds on centralized Web 2.0 infrastructure, and keeps associated tokens and NFTs
                 on blockchains, which are controlled using cumbersome cryptographic wallets like MetaMask.
                 <span style={{display: "block", height: "0.6em"}}></span>
                 Internet Identity is an authentication system for both Web3 amalgams and full Web 3.0 combining public
                 standards such as WebAuthn and FIDO with chain key crypto technology &mdash; users conveniently create secure
-                sessions using fingerprint sensors and Face ID systems on their personal computing devices, or 
+                sessions using fingerprint sensors and Face ID systems on their personal computing devices, or
                 using external hardware wallets.
               </motion.p>
             </div>
@@ -393,7 +393,7 @@ function InternetIdentityPage() {
             <CardWithDescription
               title="Dev toolkits"
               description="See the docs, get building."
-              href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
+              href="/docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity"
             />
             <CardWithDescription
               title="GitHub repo"

@@ -140,7 +140,7 @@ When developing a project, certain third-party canisters may be beneficial to in
 
 When integrating with third-party canisters, it is important to test the integration locally to assure that the integration is accurate and correct. Performing tests locally is beneficial since tests executed in a local developer environment do not cost cycles, use non-production data, and have a faster completion time when run locally.
 
-To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the [`dfx deps`](/docs/current/developer-docs/setup/pulling-canister-dependencies) workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
+To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the [`dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import) workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
 
 
 ```json
