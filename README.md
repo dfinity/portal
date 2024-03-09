@@ -464,7 +464,7 @@ commands.
 ```bash
 cd portal/
 git submodule update --init
-npm install
+npm ci
 npm start
 ```
 
