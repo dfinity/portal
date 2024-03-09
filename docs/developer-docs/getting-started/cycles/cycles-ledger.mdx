@@ -8,7 +8,7 @@ The biggest difference between the cycles ledger and cycles wallet is that the c
 
 - Cycles wallets are a complex solution to associate cycles with principal IDs.
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
-- Since the cycles wallet canister must be deployed separately, if a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost. 
+- Since the cycles wallet canister must be deployed separately if a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost. 
 
 In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
 
@@ -28,7 +28,7 @@ If you need to make arbitrary calls to other canisters with cycles, a cycles wal
 
 ### Obtaining ICP
 
-To use the cycles ledger, first you need ICP tokens. There are a few different ways to obtain ICP tokens, such as:
+To use the cycles ledger, first, you need ICP tokens. There are a few different ways to obtain ICP tokens, such as:
 
 - Purchasing ICP tokens directly through an exchange that lists ICP tokens available for trade. To see all available places to purchase ICP tokens, check out this [page](https://coinmarketcap.com/currencies/internet-computer/markets/).
 - Trading other tokens for ICP on a decentralized exchange.
@@ -36,7 +36,7 @@ To use the cycles ledger, first you need ICP tokens. There are a few different w
 - Receiving a grant of tokens through the Internet Computer Association (ICA) or the DFINITY Foundation.
 - Receiving tokens as remuneration for providing computing capacity as a node provider.
 
-Once you have obtained ICP, you also need to have an account controlled via `dfx` to transfer those tokens into. This step is necessary to create cycles and canisters. To get an account ID for an account controlled via `dfx`, first determine which `dfx` identity you are using with the command:
+Once you have obtained ICP, you also need to have an account controlled via `dfx` to transfer those tokens. This step is necessary to create cycles and canisters. To get an account ID for an account controlled via `dfx`, first determine which `dfx` identity you are using with the command:
 
 ```
 dfx identity whoami
@@ -48,7 +48,7 @@ If you're using the default identity, you should create a new identity with the 
 dfx identity new IDENTITY_NAME
 ```
 
-Replace `IDENTITY_NAME` with the an identity name of your choice, such as 'MyIdentity`.
+Replace `IDENTITY_NAME` with the identity name of your choice, such as 'MyIdentity`.
 
 Your identity's seed phrase will be returned. Be sure to save this in a secure location. Then, set this identity to be used by the current session:
 
@@ -68,13 +68,15 @@ This will display your account number on the ICP ledger. It looks similar to thi
 e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
 ```
 
+This account number will be where you need to send your ICP tokens to create cycles and canisters.
+
 Then, to return the principal ID associated with your identity, run the command:
 
 ```
 dfx identity get-principal
 ```
 
-This principal ID will be where you need to send your ICP tokens to create cycles and canisters. It will also be used when others want to send you cycles using the cycles ledger. 
+Your cycles on the cycles ledger will be stored under this principal ID.
 
 ### Checking your cycles balance
 
