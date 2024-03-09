@@ -52,7 +52,7 @@ import TabItem from "@theme/TabItem";
     dfx new access_hello
     ```
 
-    You will be prompted to select the language that your backend canister will use:
+    You will be prompted to select the language that your backend canister will use. Select 'Motoko:
 
     ```
     ? Select a backend language: ›
@@ -62,7 +62,7 @@ import TabItem from "@theme/TabItem";
     Python (Kybra)
     ```
 
-    Then, select a frontend framework for your frontend canister. In this example, select:
+    Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
     ```
     ? Select a frontend framework: ›
@@ -93,8 +93,8 @@ import TabItem from "@theme/TabItem";
     npm install
     ```
 
-    For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default
-    configuration and two default smart contracts.
+    For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 
   </TabItem>
 </Tabs>
