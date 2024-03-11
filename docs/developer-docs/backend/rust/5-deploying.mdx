@@ -4,6 +4,7 @@ keywords: [beginner, rust, tutorial, deploying canisters, deploying]
 
 import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 5: Writing and deploying canisters
 
@@ -91,7 +92,7 @@ ic-cdk = "0.7.0"
 
 Save the file.
 
-## Deploying the canister to your local execution environment
+## Deploying the canister to your local canister execution environment
 
 ## Creating the canister
 
@@ -126,7 +127,7 @@ dfx canister install hello_world_backend
 
 ### Deploying to the execution environment
 
-To deploy the canister, start the dfx local execution environment with the command:
+To deploy the canister, start the dfx local <GlossaryTooltip>replica</GlossaryTooltip> with the command:
 
 ```
 dfx start --clean --background

@@ -165,7 +165,7 @@ dfx start --clean --background
 dfx new e2e_tests
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -208,7 +208,7 @@ cd e2e_tests
 
 ```bash
 dfx start --clean --background
-dfx new e2e_tests
+dfx new e2e_tests --no-frontend
 cd e2e_tests
 ```
 
@@ -304,7 +304,7 @@ export const createActor = async (canisterId, options) => {
 export const e2e_tests_backendCanister = canisterIds.e2e_tests_backend.local;
 
 export const e2e_tests_backend = await createActor(e2e_tests_backendCanister, {
-  agentOptions: { host: "http://127.0.0.1:8080", fetch },
+  agentOptions: { host: "http://127.0.0.1:4943", fetch },
 });
 ```
 
@@ -433,7 +433,7 @@ Before you upload your code to Github, first edit the `package.json` file. In th
 
 ```json
 "ci": "vitest run",
-"preci": "dfx stop; dfx start --background --clean; dfx deploy; dfx generate"
+"preci": "dfx stop; dfx start --clean --background; dfx deploy; dfx generate"
 ```
 
 This tells the code to automatically start dfx and deploy the project's canister.
