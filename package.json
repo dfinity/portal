@@ -1,5 +1,5 @@
 {
-  "name": "portal",
+  "name": "@dfinity/portal",
   "version": "0.0.0",
   "private": true,
   "scripts": {
