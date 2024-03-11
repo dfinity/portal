@@ -71,6 +71,11 @@ const sidebars = {
               label: "Quickstart for React developers",
               id: "developer-docs/getting-started/quickstart/react-quickstart",
             },
+            {
+              type: "doc",
+              label: "Juno quickstart",
+              id: "developer-docs/getting-started/quickstart/juno-quickstart",
+            },
           ],
         },
       ],
