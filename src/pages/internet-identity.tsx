@@ -158,7 +158,7 @@ function InternetIdentityPage() {
                 An "internet identity" (II) transparently links cryptographic
                 passkeys securely stored inside its owner's various phones and
                 laptops using FIDO Alliance and W3C standards. Private keys
-                remain locked inside TPM chips inside the devices, profoundly
+                remain locked in TPM chips inside the devices, profoundly
                 improving security, since even users cannot access them directly.
                 In essence, possession and control of devices provides the means
                 to authenticate.
@@ -174,7 +174,7 @@ function InternetIdentityPage() {
                 and services they use by single sign-on (SSO) services. Meanwhile, in
                 Web3 environments involving blockchain, users can be publicly tracked by
                 their public key. Internet Identity prevents users being tracked in
-                both environments by using different cryptographic psuedonyms for each
+                both environments by using different cryptographic pseudonyms for each
                 service they interact with.
               </p>
             </CardWithIcon>
@@ -289,7 +289,7 @@ function InternetIdentityPage() {
               <p className="tw-paragraph text-black-60 md:tw-lead-sm mb-3">
                 Internet Identity is an out-of-the-box authentication framework
                 for any Web3 developer to integrate with, or build their own
-                web3 identity solution on top of.
+                Web3 identity solution on top of.
               </p>
               <p className="mb-0">
                 <Link
