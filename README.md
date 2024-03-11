@@ -238,7 +238,7 @@ git checkout <your branch>
 git add * # especially submodules
 ```
 
-## Embedding YouTube videos
+### Embedding YouTube videos
 
 You can embed YouTube videos by adding the following iframe code, replacing the `src=` link with the YouTube link you'd like to embed:
 
@@ -246,7 +246,7 @@ You can embed YouTube videos by adding the following iframe code, replacing the 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b9_PsPQ24tE?si=0w2pIVuSJFhRWAeX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
 
-### Contribution workflow
+## Contribution workflow
 
 Here is a description of how a contribution should be made to the developer portal:
 
@@ -260,7 +260,7 @@ Whenever a Pull Request for a branch is created on the repository, a GitHub bot 
 
 You can view the status of the preview build job by navigating to the bottom of the PR and viewing the 'Build deployment preview' job. If this job fails, the preview will not be shown. Any errors in the build must be resolved before the PR can be approved and merged.
 
-### Best practices
+## Best practices
 
 The portal repo uses git submodules to distribute content authoring across several repositories. This can prove
 challenging if you want to make updates to docs that refer to stale content in other repos. Here are some best practices
