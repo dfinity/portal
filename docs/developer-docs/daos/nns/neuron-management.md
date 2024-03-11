@@ -79,34 +79,28 @@ type Operation = variant {
 ```
 To make a transfer to the correct subaccount, choose the `memo` equal your chosen nonce and `operation` to be a transfer. You can make the transfer from any `from` account that you control. The `to` account should be the computed subaccount for the neuron. To later stake a neuron, the `amount` must be at least 1 ICP. Set the `fee` to the standard fee of the ICP ledger canister.
 
-To complete the second step, claim the neuron using the following command. 
-
-
-To claim the neuron, use the following command:
-TODO: WHICH WAY IS RECOMMENDED? ADD ARGUMENT EXPLANATION
+To complete the second step, claim the neuron using the following `ManageNeuron` command.
 ```
-type ClaimOrRefresh = record { by : opt By };
-type By = variant {
-  NeuronIdOrSubaccount : record {};
-  MemoAndController : ClaimOrRefreshNeuronFromAccount;
-  Memo : nat64;
-};
 type ClaimOrRefreshNeuronFromAccount = record {
   controller : opt principal;
   memo : nat64;
 };
 ```
-Topping up an existing neuron with more tokens is called _refreshing_ a neuron and works in the same way.
+The `controller` is the princpal controller chosen in the beginning that will control the neuron and the `memo` is again the chosen nonce. 
+Note that anyone can make this call and claim this neuron for the specified controller.
 
-First, additional tokens are sent to the neuron's account. 
-Then, the NNS governance canister is informed so that it can update the neuron's stake after confirming with the ledger that there are new tokens.
+
+Topping up an existing neuron with more tokens is called _refreshing_ a neuron and works similarly to claiming a neuron.
+1. Send additional ICP utility tokens to the (existing) neuron's subaccount.
+2. Refresh the neuron on the NNS governance canister, which tells the governance canister tht the transfer in (1) happened, upon which the NNs governance will update the neuron's stake. 
 
 :::info
 Note that refreshing of a neuron will also update the neuron's age to account for the fact that the newly added tokens have no age.
 
 :::
 
-TODO: ADD ARGUMENT EXPLANATION AND WHAT TO DO DIFFERENTLY FOR THE REFRESHING
+These steps happen analogusly to the above description. 
+When `ClaimOrRefreshNeuronFromAccount` is used, the NNS governance canister will automatically either claim the neuron if it doesn't exist yet or top it up if it exists. 
 
 ### Modifying a neuron's state
 
