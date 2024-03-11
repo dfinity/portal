@@ -23,7 +23,7 @@ Every user can stake ICP utility tokens into a neuron and pariticipate in the NN
 * **Account**: Each neuron has an associated account on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister and therefore a user cannot move staked tokens.
 * **Controller**: The principal that controls the neuron. The principal must identify a public key pair, which acts as a “master key,” such that the corresponding secret key should be kept very secure. A principal can control many neurons.
 
-* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified time, called the _dissolve delay_. This can be thought of like a timer.
+* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified time, called the _dissolve delay_. This can be thought of like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on the countdown and waiting for the time to pass. A neuron is eligible to vote if it has a dissolve delay of at least 6 months.
   * A neuron can be _non-dissolving_ which means that the timer is stopped and the neuron's dissolve delay remains the same. 
   * A neuron can be _dissolving_ which means that the timer is decreasing the neuron's dissolve delay as time passes. 
   * Once the timer has counted down, a neuron is _dissolved_ and the ICP tokens can be unstaked again.
@@ -32,7 +32,7 @@ A neuron's dissolve delay and age increases the neuron's voting power.
 
 * **Maturity (positive number – percent)**:  When neurons vote, over time the NNS increases their maturity to reward them. Maturity can be converted into ICP by spawning (see below).
 
-### Interacting with neurons
+## Interacting with neurons
 All interactions with a neuron go through the following API on the NNS governance canister. This includes everything in a neuron's lifetime such as the neuron's creation, modifications and voting, and unstaking the ICP tokens.
 ```
 type ManageNeuron = record {
@@ -87,7 +87,8 @@ type ClaimOrRefreshNeuronFromAccount = record {
 };
 ```
 The `controller` is the princpal controller chosen in the beginning that will control the neuron and the `memo` is again the chosen nonce. 
-Note that anyone can make this call and claim this neuron for the specified controller.
+
+**Required permissions:** Anyone can make this call and claim a neuron for the specified controller.
 
 
 Topping up an existing neuron with more tokens is called _refreshing_ a neuron and works similarly to claiming a neuron.
@@ -100,14 +101,13 @@ Note that refreshing of a neuron will also update the neuron's age to account fo
 :::
 
 These steps happen analogusly to the above description. 
-When `ClaimOrRefreshNeuronFromAccount` is used, the NNS governance canister will automatically either claim the neuron if it doesn't exist yet or top it up if it exists. 
+When `ClaimOrRefreshNeuronFromAccount` is used, the NNS governance canister will automatically either claim the neuron if it doesn't exist yet or top it up if it exists.
+
+**Required permissions:** Anyone can make this call and top up a neuron, even if they do not have any permissions on the neuron.
 
 ### Modifying a neuron's state
-
-* **Start dissolving**: The neuron dissolve delay is like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on dissolve mode and counting down. When the neuron is dissolving, its dissolve delay falls over time until it is either stopped or reaches zero. A neuron cannot vote (or earn rewards for voting) when its dissolve delay falls below six months. Once the dissolve delay reaches zero, it stops falling and the controlling principal can instruct the neuron to disburse.
-
-* **Stop dissolving**: A neuron that is dissolving can be instructed to stop, whereupon its dissolve delay stops falling with time.
-* **Increase dissolve delay**: The dissolve delay of a neuron can be increased up to a maximum of eight years.
+Recall from the section Neuron attributes, that a neuron has a dissolve delay and can be non-dissolving, dissolving, or dissolved.
+To switch between the diffent dissolve states or to increase the dissolve delay, use the `ManageNeuron` command `Configure`. 
 ```
 type Configure = record { operation : opt Operation };
 type Operation = variant {
@@ -123,6 +123,21 @@ type IncreaseDissolveDelay = record {
 };
 type SetDissolveTimestamp = record { dissolve_timestamp_seconds : nat64 };
 ```
+
+To move a neuron from non-dissovling into dissovling state, and start the timer, use `StartDissolving`. No additional argument are required.
+
+To move a neuron from dissolving into non-dissolving state, and stop the timer at the dissolve state that the neuron has, use `StopDissolving`.
+
+No matter in which dissolve state a neuron is, its dissolve delay can be increased up to a maximum of eight years.
+To do so, there are two options.
+You can use `IncreaseDissolveDelay` and specify by the argument `additional_dissolve_delay_seconds` by how many seconds the current remaining dissolve delay should be increased. For example, if a neuron has 6 months dissolve delay, using 2 months (in seconds) as an argument to `IncreaseDissolveDelay`, would result in a neuron with 8 months dissolve delay. 
+Alternatively, you can specify how much dissolve delay a neuron should have after the operation by using `SetDissolveTimestamp` and setting a target time stamp `dissolve_timestamp_seconds` in seconds from the Unix epoch.
+To achieve the same as above, compute the timestamp of now plus 8 months and provide this as the input `dissolve_timestamp_seconds`. 
+In both cases, the dissolve delay can be increased but never decreased.
+
+**Required permissions:**
+Only a neuron's controller can start or stop dissolving a neuron or increase its dissolve delay.
+
 
 ### Managing permissions of a neuron
 * **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
@@ -141,6 +156,9 @@ type Operation = variant {
 type AddHotKey = record { new_hot_key : opt principal };
 type RemoveHotKey = record { hot_key_to_remove : opt principal };
 ```
+
+**Required permissions:**
+
 
 ### Voting with a neuron
 * **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
@@ -163,6 +181,7 @@ type RegisterVote = record { vote : int32; proposal : opt NeuronId };
 type Follow = record { topic : int32; followees : vec NeuronId };
 ```
 
+**Required permissions:**
 
 ### Spwaning a neuron's rewards
 * **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity falls to zero.
@@ -174,6 +193,9 @@ type Spawn = record {
   nonce : opt nat64;
 };
 ```
+
+**Required permissions:**
+
 ### Disbursing / unstaking a neuron
 * **Disburse**: When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
 ```
@@ -182,3 +204,5 @@ type Disburse = record {
   amount : opt Amount;
 };
 ```
+
+**Required permissions:** 
