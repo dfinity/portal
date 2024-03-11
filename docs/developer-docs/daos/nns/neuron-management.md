@@ -47,6 +47,18 @@ Staking ICP utility tokens in a neuron involves two commands:
 1. Sending ICP utility tokens to the neuron's subaccount.
 2. Claiming the neuron on the NNS governance canister, which tells the governance canister that the transfer in (1) happened, upon which the NNS governance will create a new neuron.
 
+The subaccount is computed based on the controller principal and a nonce.
+View for example the method [`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount from a controller's principal ID and a nonce. Make sure you are using an up-to-date version of this code in your application.
+
+:::info
+It is of utmost importance to ensure that the subaccount is computed correctly in the first step and remembered so that it can be reused in the second step.
+If this fails, funds could be sent to a dead account and be unrecoverable.
+
+:::
+
+
+
+It is
 TODO: ADD DETAILS HOW THE SUBACCOUNT MUST BE COMPUTED!
 
 For the ledger transfer, view the [relevant `candid` interface](https://github.com/dfinity/ic/blob/master/rs/rosetta-api/icp_ledger/ledger.did#L25) which contains the following details for a transaction:
