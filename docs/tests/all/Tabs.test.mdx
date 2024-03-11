@@ -1,0 +1,51 @@
+---
+title: Tabs Test
+description: Testing integration of the custom Tabs component
+draft: true
+---
+
+import { ICTabs } from "../../../src/components/Tabs/ICTabs";
+import { ICTabItem } from "../../../src/components/Tabs/ICTabItem";
+
+You can add a beta badge to any tab by adding the value of the tab to the `betaBadgeValueIds` array on the ICTabs
+parent component. Make sure you use ICTabs for the parent component. You can use either ICTabItem or the TabItem
+component provided by Docusaurus; they are the same component. The value provided to `betaBadgeValueIds` should match the value provided to the TabItem value prop.
+
+<ICTabs groupId="tab-group" betaBadgeValueIds={["3"]}>
+  <ICTabItem value="1" label="First tab" default>
+    This is the content contained in the first tab. The MDX parser is quite sensitive to formatting, for example white
+    spaces are important. Any content past the first line is rendered in a code block.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere augue viverra consequat tincidunt. Cras
+    quis lectus condimentum, dignissim metus imperdiet, auctor tortor. Aenean laoreet pellentesque tincidunt. Etiam
+    scelerisque urna quis consequat euismod. Phasellus congue lectus quis luctus malesuada. Morbi ultricies semper
+    pellentesque. Sed nec sem tempus, egestas odio sed, porta lorem. Aenean nec massa a dolor viverra lacinia.
+    Suspendisse condimentum ut est sed aliquet. Etiam ornare lorem ut dui rutrum scelerisque. Ut mollis placerat
+    molestie.
+
+  </ICTabItem>
+
+  <ICTabItem value="2" label="Second tab">
+    Another tab.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere augue viverra consequat tincidunt. Cras
+    quis lectus condimentum, dignissim metus imperdiet, auctor tortor. Aenean laoreet pellentesque tincidunt. Etiam
+    scelerisque urna quis consequat euismod. Phasellus congue lectus quis luctus malesuada. Morbi ultricies semper
+    pellentesque. Sed nec sem tempus, egestas odio sed, porta lorem. Aenean nec massa a dolor viverra lacinia.
+    Suspendisse condimentum ut est sed aliquet. Etiam ornare lorem ut dui rutrum scelerisque. Ut mollis placerat
+    molestie.
+
+  </ICTabItem>
+
+  <ICTabItem value="3" label="Beta tab">
+    A tab with a beta badge.
+
+
+    <ICTabs groupId="tab-group" betaBadgeValueIds={["1", 2, "three"]}>
+      <ICTabItem value={"1"} label="First tab" />
+      <ICTabItem value={2} label="Second tab" />
+      <ICTabItem value={"three"} label="Third tab" />
+      <ICTabItem value={"four"} label="Third tab" />
+    </ICTabs>
+  </ICTabItem>
+</ICTabs>
