@@ -160,28 +160,7 @@ type RemoveHotKey = record { hot_key_to_remove : opt principal };
 **Required permissions:**
 
 
-### Voting with a neuron
-* **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
 
-* **Recent votes**: A record of recent votes is maintained. This can provide a guide for those wishing to evaluate whether to follow a neuron or how their followers are voting.
-
-* **Vote**: Have the neuron vote to either adopt or reject a proposal with a specified ID.
-* **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
-    - Distribute control over voting power amongst multiple entities.
-    - Have a neuron vote automatically when its owner lacks time to evaluate newly submitted proposals.
-    - Have a neuron vote automatically when its owner lacks the expertise to evaluate newly submitted proposals.
-    - For other purposes.
-
-A follow rule specifies a set of followers. Once a majority of the followers vote to adopt or reject a proposal belonging to the specified topic, the neuron votes the same way. If it becomes impossible for a majority of the followers to adopt (for example, because they are split 50–50 between adopt and reject), then the neuron votes to reject. If a rule is specified where the proposal topic is null, then it becomes a catch-all-follow rule, which will be used to vote automatically on proposals belonging to topics for which no specific rule has been specified. If the list of followers is empty, this effectively removes the following rule.
-
-TODO: HOW TO GET THE ID OF TOPICS BEFORE DOING THIS?
-
-```
-type RegisterVote = record { vote : int32; proposal : opt NeuronId };
-type Follow = record { topic : int32; followees : vec NeuronId };
-```
-
-**Required permissions:**
 
 ### Spwaning a neuron's rewards
 * **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity falls to zero.
@@ -205,4 +184,27 @@ type Disburse = record {
 };
 ```
 
-**Required permissions:** 
+**Required permissions:**
+
+### Voting with a neuron
+* **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
+
+* **Recent votes**: A record of recent votes is maintained. This can provide a guide for those wishing to evaluate whether to follow a neuron or how their followers are voting.
+
+* **Vote**: Have the neuron vote to either adopt or reject a proposal with a specified ID.
+* **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
+  - Distribute control over voting power amongst multiple entities.
+  - Have a neuron vote automatically when its owner lacks time to evaluate newly submitted proposals.
+  - Have a neuron vote automatically when its owner lacks the expertise to evaluate newly submitted proposals.
+  - For other purposes.
+
+A follow rule specifies a set of followers. Once a majority of the followers vote to adopt or reject a proposal belonging to the specified topic, the neuron votes the same way. If it becomes impossible for a majority of the followers to adopt (for example, because they are split 50–50 between adopt and reject), then the neuron votes to reject. If a rule is specified where the proposal topic is null, then it becomes a catch-all-follow rule, which will be used to vote automatically on proposals belonging to topics for which no specific rule has been specified. If the list of followers is empty, this effectively removes the following rule.
+
+TODO: HOW TO GET THE ID OF TOPICS BEFORE DOING THIS?
+
+```
+type RegisterVote = record { vote : int32; proposal : opt NeuronId };
+type Follow = record { topic : int32; followees : vec NeuronId };
+```
+
+**Required permissions:**
