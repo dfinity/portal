@@ -16,12 +16,6 @@ import {
 } from "../components/Common/TranslatedCards/TranslatedCards";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import VideoCard from "../components/Common/VideoCard";
-import OpenChatCard from "../components/SnsPage/OpenChatCard";
-import {
-  dashboardUrlFromRootCanisterId,
-  extraMetadata,
-  openChatDao,
-} from "../data/sns";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const MotionLink = motion(Link);
@@ -33,7 +27,7 @@ function InternetIdentityPage() {
   return (
     <Layout
       title="Internet Identity"
-      description="A Web3 authentication framework providing a Web2 login experience with blockchain security."
+      description="Internet Identity redefines user experiences by removing friction from the authentication journey and enabling data sovereignty."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.jpg"></ShareMeta>
 
@@ -52,7 +46,7 @@ function InternetIdentityPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
               variants={transitions.item}
             >
-              Unlock the full potential of digital identity
+              A fully decentralized digital identity solution
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
@@ -64,9 +58,12 @@ function InternetIdentityPage() {
                 sovereignty.
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
-                <Link className="link-white link-with-icon" href="">
+                <Link
+                  className="link-white link-with-icon"
+                  href="/docs/current/references/ii-spec/"
+                >
                   <LinkArrowRight />
-                  Build with Internet Identity
+                  Start building
                 </Link>
               </motion.p>
             </div>
@@ -75,8 +72,9 @@ function InternetIdentityPage() {
             <div className="text-center md:w-5/10 relative md:absolute top-0 sm:top-40 md:top-0 translate-y-24 sm:translate-y-10 md:-translate-y-1/2 right-0 -mt-30 md:-mt-30">
               <img
                 src="/img/internet-identity/internet-identity-hero.webp"
-                alt=""
+                alt="Start building on Internet Identity"
                 className="w-full max-w-sm sm:max-w-[720px] md:max-w-none"
+                loading="lazy"
               />
             </div>
           </div>
@@ -104,23 +102,23 @@ function InternetIdentityPage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
                 Internet Identity is fully decentralized because apps built on
-                ICP store data entirely on-chain. It's more secure and
-                fault-tolerant than digital identity solutions hosted on
-                protocols that rely on centralized cloud providers like Amazon
-                Web Services.
+                ICP store data entirely on-chain. It's more secure and fault
+                tolerant than digital identity solutions hosted on protocols
+                that rely on centralized cloud providers like Amazon Web
+                Services.
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/internet-identity/image-2.webp">
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                User-friendly
+                User friendly
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
                 Instead of using passwords to sign in to apps, users simply
-                unlock their devices to access their accounts. By unlocking
-                their devices with FaceID, TouchID or passcodes, users authorize
-                the use of a passkey. Passkeys are built on standardized
-                technology, making Internet Identity more convenient than
-                traditional authentication methods.
+                unlock their devices with FaceID, TouchID or passcodes to access
+                their accounts. By unlocking their devices, users authorize the
+                use of a passkey. Passkeys are built on standardized technology,
+                making Internet Identity more convenient than traditional
+                authentication methods.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
@@ -145,41 +143,47 @@ function InternetIdentityPage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-0">
                 Every time a user creates an account with an app using Internet
-                Identity, a new pair of keys are generated and managed for that
-                app. This means users can interact with an app without worrying
-                that it will share their data (like Big Tech's Single Sign-On).
+                Identity, a new key pair is generated and managed for that app.
+                This means users can interact with an app without worrying that
+                it will share their data (like Big Tech's Single Sign-On).
               </p>
             </TranslatedLayout>
             <TranslatedLayout
               imageUrl="/img/internet-identity/image-5.webp"
               reverse={true}
             >
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Multi-chain
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">Multichain</h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-3">
                 Once ICP completes its integration with the Ethereum Virtual
                 Machine, decentralized apps built on the Ethereum protocol will
                 be able to integrate Internet Identity and offer users from both
-                ecosystems a convenient, secure and private way to log in and
+                ecosystems a convenient, secure, and private way to log in and
                 share verifiable credentials.
+              </p>
+              <p className="tw-paragraph md:tw-lead-sm mb-0">
+                ICP is compatible with the Ethereum Virtual Machine. Developers
+                building decentralized apps on the Ethereum protocol can
+                integrate Internet Identity and offer users from both ecosystems
+                a convenient, secure, and private way to log in and share
+                verifiable credentials.
               </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/internet-identity/image-6.webp">
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Easy Integration
+                Easy integration
               </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
+              <p className="tw-paragraph md:tw-lead-sm mb-3 md:mb-6">
                 Internet Identity seamlessly integrates with Web2 and Web3 apps.
                 It deploys canister smart contracts to request authentication
-                and verify the identity of the user.
-                <br />
+                and verify user identities.
+              </p>
+              <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity"
+                  href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
                   className="link-primary"
                 >
                   <LinkArrowRight />
-                  Integrating with Internet Identity.
+                  Integrating with Internet Identity
                 </Link>
               </p>
             </TranslatedLayout>
@@ -207,8 +211,9 @@ function InternetIdentityPage() {
                 <div className="blob blob-purple blob-md blob-x-2 blob-y-3 z-0 opacity-50"></div>
                 <img
                   src="/img/internet-identity/astronaut-2.webp"
-                  alt=""
+                  alt="Seamless authentication"
                   className="relative"
+                  loading="lazy"
                 />
               </motion.div>
               <div className="mt-12 md:mt-0 flex-[5] self-end">
@@ -216,7 +221,7 @@ function InternetIdentityPage() {
                   className="tw-heading-4 mb-6 md:tw-heading-3"
                   variants={transitions.item}
                 >
-                  Seamless Authentication
+                  Seamless authentication
                 </motion.h2>
                 <motion.div variants={transitions.item}>
                   <p className="mb-0 tw-lead-sm md:tw-lead text-white/80">
@@ -224,9 +229,9 @@ function InternetIdentityPage() {
                     authentication standard and a key part of the FIDO
                     framework. It removes the need for usernames and passwords
                     and replaces them with passkeys: registered devices like
-                    phones, laptops and hardware wallets such as YubiKey or
-                    Ledger. To authenticate their identity, users simply connect
-                    with Internet Identity and unlock their device.
+                    smartphones or laptops and hardware wallets such as YubiKey
+                    or Ledger. To authenticate their identity, users simply
+                    connect with Internet Identity and unlock their device.
                   </p>
                 </motion.div>
               </div>
@@ -239,8 +244,12 @@ function InternetIdentityPage() {
                 className="relative flex-[5] max-w-sm md:max-w-none md:order-2"
                 variants={transitions.fadeIn}
               >
-                <div className="blob blob-white blob-md blob-x-8 blob-y-7 z-0 opacity-50"></div>
-                <img src="/img/internet-identity/astronaut-3.webp" alt="" />
+                <div className="blob blob-white blob-md blob-x-8 blob-y-8 z-0 opacity-70"></div>
+                <img
+                  src="/img/internet-identity/astronaut-3.webp"
+                  alt="Verifiable credentials"
+                  loading="lazy"
+                />
               </motion.div>
 
               <div className="mt-6 md:mt-0 flex-[5] md:order-1">
@@ -248,7 +257,7 @@ function InternetIdentityPage() {
                   className="tw-heading-4 mb-6 md:tw-heading-3"
                   variants={transitions.item}
                 >
-                  Verifiable Credentials
+                  Verifiable credentials
                 </motion.h2>
                 <motion.div variants={transitions.item}>
                   <p className="mb-8 tw-lead-sm md:tw-lead text-white/80">
@@ -261,8 +270,9 @@ function InternetIdentityPage() {
                   </p>
                   <p className="mb-0">
                     <Link
-                      href="https://github.com/dfinity/wg-identity-authentication/blob/main/topics/attribute-sharing.md"
-                      className="button-white"
+                      href=""
+                      className="button-white pointer-events-none !text-black/30"
+                      aria-disabled
                     >
                       COMING SOON
                     </Link>
@@ -274,35 +284,18 @@ function InternetIdentityPage() {
 
           <AnimateSpawn
             variants={transitions.container}
-            className="
-              mt-20 md:mt-20
-              bg-[linear-gradient(180deg,transparent_0%,transparent_66%,#F1EEF5_66%,#F1EEF5_100%)]
-              md:bg-[linear-gradient(180deg,transparent_0%,transparent_50%,#F1EEF5_50%,#F1EEF5_100%)]"
+            className="py-20 md:py-30"
           >
             <div className="container-10 grid gap-4 grid-cols-2 md:grid-cols-4">
               <motion.div
                 variants={transitions.item}
                 className="flex-1 rounded-3xl bg-white/90 backdrop-blur-2xl text-center p-5 md:p-10 flex flex-col gap-5 items-center"
               >
-                <img src="/img/internet-identity/icon-1.svg" alt="" />
-                <h3 className="tw-lead-sm text-black/80 mb-0">
-                  Proof of humanity
-                </h3>
-              </motion.div>
-              <motion.div
-                variants={transitions.item}
-                className="flex-1 rounded-3xl bg-white/90 backdrop-blur-2xl text-center p-5 md:p-10 flex flex-col gap-5 items-center"
-              >
-                <img src="/img/internet-identity/icon-2.svg" alt="" />
-                <h3 className="tw-lead-sm text-black/80 mb-0">
-                  Academic transcripts
-                </h3>
-              </motion.div>
-              <motion.div
-                variants={transitions.item}
-                className="flex-1 rounded-3xl bg-white/90 backdrop-blur-2xl text-center p-5 md:p-10 flex flex-col gap-5 items-center"
-              >
-                <img src="/img/internet-identity/icon-3.svg" alt="" />
+                <img
+                  src="/img/internet-identity/icon-3.svg"
+                  alt="Age verification"
+                  loading="lazy"
+                />
                 <h3 className="tw-lead-sm text-black/80 mb-0">
                   Age verification
                 </h3>
@@ -311,9 +304,39 @@ function InternetIdentityPage() {
                 variants={transitions.item}
                 className="flex-1 rounded-3xl bg-white/90 backdrop-blur-2xl text-center p-5 md:p-10 flex flex-col gap-5 items-center"
               >
-                <img src="/img/internet-identity/icon-4.svg" alt="" />
+                <img
+                  src="/img/internet-identity/icon-4.svg"
+                  alt="Know your customer"
+                  loading="lazy"
+                />
                 <h3 className="tw-lead-sm text-black/80 mb-0">
                   Know your customer
+                </h3>
+              </motion.div>
+              <motion.div
+                variants={transitions.item}
+                className="flex-1 rounded-3xl bg-white/90 backdrop-blur-2xl text-center p-5 md:p-10 flex flex-col gap-5 items-center"
+              >
+                <img
+                  src="/img/internet-identity/icon-1.svg"
+                  alt="Proof of humanity"
+                  loading="lazy"
+                />
+                <h3 className="tw-lead-sm text-black/80 mb-0">
+                  Proof of humanity
+                </h3>
+              </motion.div>
+              <motion.div
+                variants={transitions.item}
+                className="flex-1 rounded-3xl bg-white/90 backdrop-blur-2xl text-center p-5 md:p-10 flex flex-col gap-5 items-center"
+              >
+                <img
+                  src="/img/internet-identity/icon-2.svg"
+                  alt="Academic transcripts"
+                  loading="lazy"
+                />
+                <h3 className="tw-lead-sm text-black/80 mb-0">
+                  Academic transcripts
                 </h3>
               </motion.div>
             </div>
@@ -327,7 +350,7 @@ function InternetIdentityPage() {
               variants={transitions.item}
             >
               A versatile solution <br className="hidden md:block" />
-              for any app
+              for all providers
             </motion.h2>
           </AnimateSpawn>
         </section>
@@ -338,6 +361,7 @@ function InternetIdentityPage() {
               icon={
                 <img
                   src="/img/internet-identity/icon-5.svg"
+                  loading="lazy"
                   aria-hidden="true"
                 />
               }
@@ -356,6 +380,7 @@ function InternetIdentityPage() {
               icon={
                 <img
                   src="/img/internet-identity/icon-6.svg"
+                  loading="lazy"
                   aria-hidden="true"
                 />
               }
@@ -374,6 +399,7 @@ function InternetIdentityPage() {
               icon={
                 <img
                   src="/img/internet-identity/icon-7.svg"
+                  loading="lazy"
                   aria-hidden="true"
                 />
               }
@@ -383,7 +409,7 @@ function InternetIdentityPage() {
                 variants={transitions.item}
               >
                 Ensure the integrity and accuracy of academic records by issuing
-                digital copies of degrees, qualifications and certificates
+                digital copies of degrees, qualifications, and certificates
               </motion.p>
             </TranslatedCard>
             <TranslatedCard
@@ -391,6 +417,7 @@ function InternetIdentityPage() {
               icon={
                 <img
                   src="/img/internet-identity/icon-8.svg"
+                  loading="lazy"
                   aria-hidden="true"
                 />
               }
@@ -428,8 +455,9 @@ function InternetIdentityPage() {
               <div className=" flex-1 md:order-2 flex rounded-xl overflow-hidden md:max-w-5/10">
                 <img
                   src="/img/internet-identity/helix.webp"
-                  alt=""
+                  alt="Helix Markets"
                   className="w-full relative object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="md:flex-1 md:order-1 md:p-16 md:max-w-5/10 mt-10 md:mt-0">
@@ -456,9 +484,9 @@ function InternetIdentityPage() {
                 One of Helix's biggest obstacles to adoption was the complexity
                 of the authentication process, a common challenge across the
                 Web3 ecosystem. Users need different wallets to log into
-                different dapps, meaning they have to manage multiple pairs of
-                keys. This friction deterred traders accustomed to the less
-                secure but more convenient Web2 experience.
+                different dapps, meaning they have to manage multiple key pairs.
+                This friction deterred traders accustomed to the less secure but
+                more convenient Web2 experience.
               </p>
             </motion.div>
             <motion.div
@@ -478,44 +506,18 @@ function InternetIdentityPage() {
                 cryptography eliminates the risk and burden of managing password
                 databases.
               </p>
-              <p className="tw-paragraph md:tw-lead-sm mb-0 text-black/60">
+              <p className="tw-paragraph md:tw-lead-sm mb-3 text-black/60">
                 <strong>
-                  ‘Internet Identity allows Helix to deliver a Web2 experience
-                  to users of Web3 dapps' Gorazd Ocvirk, Co-Founder
+                  ”Internet Identity allows Helix to deliver a Web2 experience
+                  to users of Web3 dapps”
                 </strong>
+              </p>
+              <p className="tw-paragraph md:tw-lead-sm mb-0 text-black/60">
+                <strong>– Gorazd Ocvirk, Co-Founder</strong>
               </p>
             </motion.div>
           </div>
         </AnimateSpawn>
-
-        <section className="container-10 relative mt-20 md:mt-30">
-          <AnimateSpawn className="md:w-6/12" variants={transitions.container}>
-            <motion.h2
-              className="tw-heading-4 text-gradient md:tw-heading-60 mb-10"
-              variants={transitions.item}
-            >
-              Enter the ICP ecosystem
-            </motion.h2>
-            <p className="mb-0">
-              <Link href="/ecosystem" className="button-primary">
-                Check out the Internet identity ecosystem
-              </Link>
-            </p>
-          </AnimateSpawn>
-        </section>
-
-        <section className="">
-          <OpenChatCard
-            className=""
-            data={{
-              ...openChatDao,
-              ...extraMetadata[openChatDao.rootCanisterId],
-              dashboardUrl: dashboardUrlFromRootCanisterId(
-                openChatDao.rootCanisterId
-              ),
-            }}
-          />
-        </section>
 
         <AnimateSpawn
           className="container-10 pt-20 md:pt-30"
