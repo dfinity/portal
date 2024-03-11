@@ -1,6 +1,10 @@
+---
+keywords: [intermediate, governance, concept, nns]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Submitting a proposal
+# Neuron and proposal details
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
@@ -26,12 +30,9 @@ Neurons have the following attributes:
 
 * **DissolveState**: At any time, at most one of WhenDissolved and DissolveDelay are specified.
 
-** WhenDissolved (timestamp)
+* **WhenDissolved (timestamp)**: When the dissolve timer is running, this stores the timestamp in seconds from the Unix epoch, at which point the neuron becomes dissolved. At any time while the neuron is dissolving, the neuron owner may pause dissolving, in which case DissolveDelay will get assigned to WhenDissolved minus the timestamp when the action is taken.
 
-When the dissolve timer is running, this stores the timestamp in seconds from the Unix epoch, at which point the neuron becomes dissolved. At any time while the neuron is dissolving, the neuron owner may pause dissolving, in which case DissolveDelay will get assigned to WhenDissolved minus the timestamp when the action is taken.
-
-** DissolveDelay (duration)
-When the dissolve timer is stopped, this stores how much time the dissolve timer will be started with. It can be eight years at most. At any time while in this state, the neuron owner may (re)start dissolving, in which case WhenDissolved will get assigned to the timestamp when the action is taken plus DissolveDelay.
+* **DissolveDelay (duration)**: When the dissolve timer is stopped, this stores how much time the dissolve timer will be started with. It can be eight years at most. At any time while in this state, the neuron owner may (re)start dissolving, in which case WhenDissolved will get assigned to the timestamp when the action is taken plus DissolveDelay.
 
 * **Maturity (positive number – percent)**: The maturity of a neuron, which determines its ability to spawn a new neuron and corresponding locked balance of newly minted ICP in expectation equal to this value in percent of the stake of the spawning neuron. When new neurons are created, their maturity is zero. When neurons vote, over time the NNS increases their maturity to reward them.
 
@@ -51,7 +52,7 @@ The following attributes can be computed:
     - Dissolved: In the dissolved state, the neuron’s stake can be disbursed using the disburse method. It cannot vote as its dissolve delay is considered to be zero. If the method `increase_dissolve_delay` is called in this state, the neuron will become non-dissolving with the specified dissolve delay and start aging again. Neuron holders have an incentive not to keep neurons in the dissolved state for a long time: if the holders want to make their tokens liquid, they disburse the neuron’s stake, and if they want to earn voting rewards, they increase the dissolve delay. If these incentives turn out to be insufficient, the NNS may decide to impose further restrictions on dissolved neurons.
 
 ### Commands
-The principal that controls a neuron may instruct it to perform some of these popular actions below. All of the possible actions are listed [here](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/nns/governance/proto/ic_nns_governance/pb/v1/governance.proto?L829).
+The principal that controls a neuron may instruct it to perform some of these popular actions below. [View all possible actions](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/nns/governance/proto/ic_nns_governance/pb/v1/governance.proto?L829).
 
 * **Start dissolving**: The dissolve delay is like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on dissolve mode and counting down. The neuron can be instructed to start “dissolving.” When the neuron is dissolving, its dissolve delay falls over time until it is either stopped or reaches zero. A neuron cannot vote (or earn rewards for voting) when its dissolve delay falls below six months. Once the dissolve delay reaches zero, it stops falling and the controlling principal can instruct the neuron to disburse.
 

@@ -1,14 +1,25 @@
+---
+keywords: [beginner, getting started, tutorial, hello world]
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Hello, world!
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-This guide shows how to get started developing on ICP quickly by deploying your first 'Hello, world!' smart contract. 
+This guide shows how to get started developing on ICP quickly by deploying your first 'Hello, world!' smart contract.
 
 ## Install dependencies
+
+:::info
+If you use GitHub Codespaces or [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your project, installing these dependencies is not necessary.
+
+Links to available Codespaces and Gitpod examples can be found in [create a new project](#create-a-new-project).
+:::
 
 ### Install `dfx`
 
@@ -31,7 +42,7 @@ nvm install 18
 dfx start
 ```
 
-This command starts a local instance of the ICP replica using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
+This command starts a local instance of the ICP <GlossaryTooltip>replica</GlossaryTooltip> using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
 
 ```
 Running dfx start for version 0.15.2
@@ -55,20 +66,20 @@ Use `dfx new <project_name>` to create a new project:
 dfx new hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select a language that your backend <GlossaryTooltip>canister</GlossaryTooltip> will use:
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend <GlossaryTooltip>canister</GlossaryTooltip>, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -97,12 +108,20 @@ Lastly, you can include extra features to be added to your project:
 dfx new hello
 ```
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
+
 </TabItem>
 <TabItem value="rust" label="Rust">
 
 ```bash
 dfx new hello --type=rust
 ```
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
 
 </TabItem>
 
@@ -147,7 +166,7 @@ pip install kybra
 </Tabs>
 </TabItem>
 </Tabs>
- 
+
 
 ## Smart contract code
 
@@ -156,6 +175,10 @@ pip install kybra
 <TabItem value="motoko" label="Motoko" default>
 
 Motoko is an Actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
 
 This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor.  The function accepts a name as input and returns a greetings text.
 
@@ -172,7 +195,12 @@ public query func greet(name : Text) : async Text {
 
 <TabItem value="rust" label="Rust">
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
+
 This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
+
 The function accepts a name as input and returns a greetings text.
 
 ```rust
@@ -219,9 +247,9 @@ def greet(name: str) -> str:
 </Tabs>
 
 
-## Deploy locally 
+## Deploy locally
 
-Deploy the project's canisters locally:
+Deploy the project's <GlossaryTooltip>canisters</GlossaryTooltip> locally:
 
 ```
 dfx deploy
@@ -229,7 +257,7 @@ dfx deploy
 
 This command performs several functions in the background:
 
-- It sets up a special `cycle-wallet` smart contract for storing cycles. All operations require payments in cycles. In your local testnet, this wallet comes prefilled with cycles.
+- It sets up a special `cycle-wallet` smart contract for storing <GlossaryTooltip>cycles</GlossaryTooltip>. All operations require payments in cycles. In your local testnet, this wallet comes prefilled with cycles.
 
 - It builds the smart contracts defined in the `dfx.json` file into Wasm binaries.
 
@@ -298,11 +326,11 @@ Output:
 </Tabs>
 
 
-This call performs several functions in the background: 
+This call performs several functions in the background:
 
 - First, it looks up the smart contract's address (known as the canister id) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
 
-- Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`. 
+- Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`.
 
 - It looks up the signature of function greet in the interface.
 
@@ -310,9 +338,9 @@ This call performs several functions in the background:
 
 - It signs the message with the private key of the [developer account](/docs/current/developer-docs/getting-started/accounts).
 
-- It sends the message to the local testnet (replica). 
+- It sends the message to the local testnet (<GlossaryTooltip>replica</GlossaryTooltip>).
 
-- Once the message has been executed, the result was decoded using the interface file and printed to the terminal window. 
+- Once the message has been executed, the result was decoded using the interface file and printed to the terminal window.
 
 Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local)
 

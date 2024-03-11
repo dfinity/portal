@@ -1,3 +1,7 @@
+---
+keywords: [advanced, ethereum, faq, cketh]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # ckETH FAQ
@@ -50,7 +54,7 @@ Sources:
 
 The main difference between a ckETH transaction and a regular ETH transaction lies in the transaction fees and the blockchain they operate on. Regular ETH transactions occur on the Ethereum network and are subject to Ethereum's gas fees, which can be quite high. On the other hand, ckETH transactions occur on the Internet Computer blockchain, which has significantly lower transaction fees.
 
-Yes, you can use ckETH just like you would use ETH, but within the Internet Computer ecosystem. You can deposit your ETH to a specific function in the ckETH helper contract on Ethereum, which then triggers the ICP ckETH canister smart contract to mint the same amount of ckETH to the specified ICP principal or wallet address. This ckETH can then be used natively on the Internet Computer, and can be converted back to ETH at any time.
+Yes, you can use ckETH just like you would use ETH, but within the Internet Computer ecosystem. You can deposit your ETH to a specific function in the ckETH helper contract on Ethereum, which then triggers the ICP ckETH canister smart contract to mint the same amount of ckETH to the specified ICP principal. This ckETH can then be used natively on the Internet Computer, and can be converted back to ETH at any time.
 
 However, it's important to note that while ckETH can be used in a similar manner to ETH, the platforms and services that accept ckETH might be different from those that accept ETH, as they are operating on different blockchains.
 Sources:
@@ -59,19 +63,19 @@ Sources:
 - [How to Acquire ckETH](https://medium.com/dfinity/how-to-acquire-ckETH-02d863c835fc#e10f)
 - [Ethereum + ICP > Multi-chain DeFi](https://internetcomputer.org/ethereum-integration)
 
-## What are the benefits of using ckETH over traditional Bitcoin transactions? 
+## What are the benefits of using ckETH over traditional Ethereum transactions? 
 
-The benefits of using ckETH over traditional Bitcoin transactions primarily revolve around transaction speed, cost, and interoperability with the ICP ecosystem.
+The benefits of using ckETH over traditional Ethereum transactions primarily revolve around transaction speed, cost, and interoperability with the ICP ecosystem.
 
-1. **Lower transaction fees**: One of the main advantages of using ckETH is the significantly lower transaction fees compared to Bitcoin. Bitcoin transactions can sometimes be expensive, especially during periods of high network congestion. On the other hand, ckETH transactions occur on the Internet Computer blockchain, which has significantly lower transaction fees.
+1. **Lower transaction fees**: One of the main advantages of using ckETH is the significantly lower transaction fees compared to Ethereum. Ethereum transactions can sometimes be expensive, especially during periods of high network congestion. On the other hand, ckETH transactions occur on the Internet Computer blockchain, which has significantly lower transaction fees.
 
-2. **Faster transaction speed**: The ICP blockchain has a faster transaction speed compared to the Bitcoin network. This means that transactions using ckETH can be processed more quickly, providing a smoother and more efficient user experience.
+2. **Faster transaction speed**: The ICP blockchain has a faster transaction speed compared to the Ethereum network. This means that transactions using ckETH can be processed more quickly, providing a smoother and more efficient user experience.
 
 3. **Interoperability**: ckETH allows for seamless interaction between the Ethereum and ICP ecosystems. This interoperability can potentially unlock new use cases and applications, such as decentralized finance (DeFi) platforms that span multiple blockchains.
 
 4. **Usability**: The process of acquiring and using ckETH is designed to be straightforward and user-friendly, removing many of the barriers that can deter people from engaging with blockchain technology.
 
-However, it's important to note that while ckETH provides these benefits, it's not a direct replacement for Bitcoin or ETH. Each has its own unique features and use cases, and the choice between them will depend on your specific needs and circumstances.
+However, it's important to note that while ckETH provides these benefits, it's not a direct replacement for ETH. Each has its own unique features and use cases, and the choice between them will depend on your specific needs and circumstances.
 
 Sources:
 - [A Data-Driven Exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197)
@@ -109,7 +113,7 @@ ckETH offers several advantages in terms of speed, fees, and security:
 
 2. **Fees:** Ethereum holders can interact with ckETH on ICP, which has significantly lower gas fees than on Ethereum. Users can swap tokens for a few cents with 0 gas fees .
 
-3. **Security:** ckETH bypasses attack vectors by directly calling Ethereum RPCs through HTTPS outcalls, a feature that enables ICP canister smart contracts to call API requests directly. This minimizes the risk of data leaks, hacks, and breaches . Additionally, issuing and redeeming ckETH goes through Know Your Transaction (KYT) checks to ensure no tainted bitcoin enters the Internet Computer blockchain or is transferred out to tainted Bitcoin addresses .
+3. **Security:** ckETH bypasses attack vectors by directly calling Ethereum RPCs through HTTPS outcalls, a feature that enables ICP canister smart contracts to call API requests directly. This minimizes the risk of data leaks, hacks, and breaches.
 
 4. **Integration:** ckETH can be directly processed by smart contracts hosted on ICP, and can be seamlessly converted back to ETH anytime .
 
@@ -120,7 +124,6 @@ Sources:
 - [Trustless multi-chain on ICP](https://internetcomputer.org/multichain)
 - [Ethereum &lt;&gt; ICP](https://internetcomputer.org/ethereum-integration)
 - [Multi-chain DeFi](https://internetcomputer.org/defi)
-- [Why Bitcoin needs smart contracts](https://medium.com/dfinity/why-bitcoin-needs-smart-contracts-5191fbec294a#acf6)
 
 ## How can I integrate ckETH into my existing applications or platforms?
 

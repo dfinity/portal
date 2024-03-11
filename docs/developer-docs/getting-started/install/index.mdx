@@ -1,7 +1,13 @@
+---
+keywords: [beginner, getting started, tutorial, tools]
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Installing tools
 
@@ -9,7 +15,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-When developing on ICP, there are two primary tools used: `dfx`, a CLI tool used to create, deploy, and manage canisters, and a **canister development kit** (CDK) which provides an environment for writing canister code in different programming languages while supporting ICP features. 
+When developing on ICP, there are two primary tools used: `dfx`, a CLI tool used to create, deploy, and manage <GlossaryTooltip>canisters</GlossaryTooltip>, and a **canister development kit** (CDK) which provides an environment for writing canister code in different programming languages while supporting ICP features.
 
 Currently supported CDKs include:
 
@@ -19,18 +25,25 @@ Currently supported CDKs include:
 
 - [Kybra: Python CDK (Beta)](/docs/current/developer-docs/backend/python).
 
-- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript). 
+- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript).
 
 - [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity).
 
 - [C++ CDK](https://docs.icpp.world/).
+
+## Gitpod and GitHub Codespaces
+
+If you use GitHub Codespaces or [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your project, installing these dependencies is not necessary.
+
+Links to available Codespaces and Gitpod examples can be found in the [hello world example](/docs/current/developer-docs/getting-started/hello-world#create-a-new-project).
+:::
 
 
 ## Installing `dfx`
 
 `dfx` is part of the [IC SDK](https://github.com/dfinity/sdk).
 
-`dfx` is natively supported on Linux or macOS 12.\* Monterey or later. 
+`dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
 
 There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL 2), you can run `dfx` on a Windows system as described below.
 
@@ -89,7 +102,7 @@ If you are using a machine running Apple silicon, you will need to have
     <h2 id="running-linux">Running Linux</h2>
     <p>After you have WSL installed, you can launch the Linux distributions by name.</p>
     <p>For example, run the command:
-    <code>Ubuntu.exe</code> 
+    <code>Ubuntu.exe</code>
     to start the <code>Ubuntu</code> distribution from the command line.</p>
     <h2 id="installing-dfx">Installing dfx</h2>
     <p>Once you have WSL installed, you can install <code>dfx</code> by running:
@@ -159,7 +172,7 @@ The `base` directory in the versioned subdirectory of `dfx` contains the Motoko 
 
 ### Using the `dfx` version manager
 
-Alteratively, to upgrade or install a specific version of `dfx` the dfx version manager (`dfxvm`) can be used. 
+Alteratively, to upgrade or install a specific version of `dfx` the dfx version manager (`dfxvm`) can be used.
 
 First, install `dfxvm` using the following `curl` command:
 
@@ -243,7 +256,7 @@ If you are uninstalling because you want to immediately reinstall a clean versio
 
 ### Motoko
 
-By default, Motoko is installed with `dfx`. Alternatively, you can build it from source following [these instructions](https://github.com/dfinity/motoko/blob/master/Building.md). 
+By default, Motoko is installed with `dfx`. Alternatively, you can build it from source following [these instructions](https://github.com/dfinity/motoko/blob/master/Building.md).
 
 ### Rust
 
@@ -256,7 +269,7 @@ crate-type = ["cdylib"]
 [dependencies]
 ic-cdk = "0.12"
 # Only necessary if you want to define Candid data types
-candid = "0.10" 
+candid = "0.10"
 ```
 
 Below is a brief example on how to use the Rust CDK:
@@ -269,9 +282,9 @@ fn hello() -> String {
 ```
 
 
-### TypeScript / JavaScript 
+### TypeScript / JavaScript
 
-The TypeScript and JavaScript CDK, known as Azle, can be installed with `dfx` in versions `v0.16.1` and newer. To install it manually, you can follow [these steps](https://github.com/demergent-labs/azle/tree/main/examples/hello_world). 
+The TypeScript and JavaScript CDK, known as Azle, can be installed with `dfx` in versions `v0.16.1` and newer. To install it manually, you can follow [these steps](https://github.com/demergent-labs/azle/tree/main/examples/hello_world).
 
 :::caution
 Azle is currently in beta and should be used with caution.
@@ -320,7 +333,7 @@ Solidity smart contracts can be created using the Bitfinity EVM. To use the Bitf
 Bitfinity EVM is currently in beta and should be used with caution.
 :::
 
-### C++ 
+### C++
 
 C++ is supported through the ICPP-pro CDK, which can be installed with the following steps:
 

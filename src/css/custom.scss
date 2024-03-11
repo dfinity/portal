@@ -70,7 +70,7 @@ html.plugin-blog {
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
   --ifm-subnav-height: 54px;
-  --ifm-color-primary: #3b00b9;;
+  --ifm-color-primary: #3b00b9;
   --ifm-navbar-link-hover-color: #791e94;
   --ifm-navbar-x-padding: 50px;
 
@@ -190,6 +190,10 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       border-radius: 16px;
       border: 1px solid #cecece;
       background: #fdfdfd;
+    }
+
+    .ic-chip-row + p:first-of-type {
+      margin-top: 1rem;
     }
   }
 }

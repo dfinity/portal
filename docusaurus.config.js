@@ -40,7 +40,9 @@ const youtubePlugin = require("./plugins/youtube");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
-console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+if (process.env.PREVIEW_CANISTER_ID) {
+  console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+}
 
 const navbarItems = [
   {
@@ -63,35 +65,25 @@ const subnavItems = [
     label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
- {
-    type: "docSidebar",
+  {
+    type: "dropdown",
     position: "left",
-    sidebarId: "motoko",
-    label: "Motoko",
+    label: "Languages",
+    items: [
+      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
+      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
+      { label: "TypeScript", href: "/docs/current/developer-docs/backend/typescript/" },
+      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
+      { label: "Solidity", href: "/docs/current/developer-docs/backend/solidity/" },
+    ],
   },
   {
-    type: "docSidebar",
+    type: "dropdown",
     position: "left",
-    sidebarId: "rust",
-    label: "Rust",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "typescript",
-    label: "Typescript",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "python",
-    label: "Python",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "solidity",
-    label: "Solidity",
+    label: "Frameworks",
+    items: [
+      { label: "Juno", href: "/docs/current/developer-docs/web-apps/frameworks/juno" },
+    ],
   },
   {
     type: "dropdown",
@@ -124,7 +116,14 @@ const subnavItems = [
       },
     ],
   },
-];
+  /**
+   * Add UI tests in development mode
+   */
+  process.env.NODE_ENV === "development" && {
+    label: "UI Tests",
+    href: "/docs/current/tests/all",
+  },
+].filter(Boolean);
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
@@ -354,7 +353,7 @@ const marketingNav = {
               name: "Programming languages",
 
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/backend/choosing-language",
+              href: "/docs/current/developer-docs/smart-contracts/write/overview",
             },
             {
               name: "Hackathons",

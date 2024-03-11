@@ -1,3 +1,7 @@
+---
+keywords: [beginner, concept, gas cost, cycles cost, cycles gas]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Paying for resources in cycles
@@ -106,7 +110,7 @@ To handle an incoming message or task such as a timer or heartbeat, the canister
 By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. It will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
 
 ### Storage
-Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/production/storage#heap-memory) and [stable memory](/docs/current/developer-docs/production/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to 3.684B cycles (or $5.35 USD) for storing 1 GiB for 1 year.
+Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/production/storage#heap-memory) and [stable memory](/docs/current/developer-docs/production/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 

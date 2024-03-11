@@ -1,18 +1,24 @@
+---
+keywords: [beginner, concept, inside canisters, canister components]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Inside canisters
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-Canisters are WebAssembly (Wasm) programs with additional features that allow them to store persistent data, communicate with users and other canisters, and be managed by entities such as DAOs.
-To enable these functionalities, canisters have additional components alongside the the standard Wasm code and memory. These components are outlined in the diagram below. 
+<Tooltip text="A smart contract on ICP."placement={"bottom"}>Canisters</Tooltip> are WebAssembly (Wasm) programs with additional features that allow them to store persistent data, communicate with users and other canisters, and be managed by entities such as DAOs.
+To enable these functionalities, canisters have additional components alongside the the standard Wasm code and memory. These components are outlined in the diagram below.
 
 <div class="text--center">
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
 </div>
 
-## Canister id
-A canister has a unique identifier that is often referred to as the address of the canister or the principal of the canister.
+## Canister ID
+A canister has a unique identifier that is often referred to as the address of the canister or the <GlossaryTooltip>principal</GlossaryTooltip> of the canister.
 When a user or a canister sends a message to another canister, they specify the target canister by its id in the header of the message.
 The system then routes the message to the target canister and adds it to the input queue of that canister.
 
@@ -25,6 +31,7 @@ During execution, the function reads the payload of the message and modifies dat
 :::info
 The order of messages in the queue depends on the implementation and it is not necessarily FIFO (first-in first-out).
 :::
+
 ## Canister storage
 There are two [storages](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/storage) available to the canister: the Wasm memory and the stable memory.
 The function doesn’t need to do anything special to use the Wasm memory since this memory type is automatically used for heap-allocated objects.

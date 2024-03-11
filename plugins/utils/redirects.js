@@ -44,7 +44,8 @@ const redirects = `
   /docs/current/developer-docs/daos/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
-  /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
@@ -61,11 +62,11 @@ const redirects = `
   /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
 
-  /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/choosing-language
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language
-  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
@@ -103,7 +104,7 @@ const redirects = `
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview
-  /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
 
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
@@ -154,7 +155,7 @@ const redirects = `
   /docs/current/motoko/intro/ /docs/current/motoko/main/motoko
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/getting-started/install/
-  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-identity/
+  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-internet-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/getting-started/install/
@@ -198,7 +199,7 @@ const redirects = `
   /docs/current/tutorials/ /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/eu-subnets /docs/current/concepts/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
-  /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/choosing-language
+  /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/smart-contracts/deploy/overview
   /docs/current/developer-docs/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs /docs/current/developer-docs/getting-started/overview-of-icp
@@ -250,13 +251,6 @@ const redirects = `
   /docs/current/references/cli-reference/dfx-envars /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars
   /docs/current/references/cli-reference/dfx-json-reference /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference
   /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-default
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-list
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-uninstall
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-update
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-uninstall
-  /docs/current/references/dfxvm/ /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-update
   /docs/current/references/quill-cli-reference/ /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent
   /docs/current/references/quill-cli-reference/quill-account-balance /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance
   /docs/current/references/quill-cli-reference/ckbtc/quill-ckbtc /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc
@@ -302,7 +296,6 @@ const redirects = `
   /docs/current/references/quill-cli-reference/quill-transfer /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer
   /docs/current/references/quill-cli-reference/quill-update-node-provider /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/
   /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
   /docs/current/developer-docs/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
@@ -331,7 +324,8 @@ const redirects = `
   /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys
   /docs/current/developer-docs/integrations/composite-query /docs/current/developer-docs/smart-contracts/advanced-features/composite-query
   /docs/current/developer-docs/backend/periodic-tasks /docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks
-  /docs/current/developer-docs/setup/best-practices/architecture /docs/current/developer-docs/smart-contracts/best-practices/architecture
+  /docs/current/developer-docs/setup/best-practices/architecture /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/smart-contracts/best-practices/architecture /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/setup/best-practices/general /docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/setup/best-practices/storage /docs/current/developer-docs/smart-contracts/best-practices/storage
   /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting
@@ -346,7 +340,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii
-  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity
+  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
@@ -432,13 +426,17 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post
-  /docs/current/developer-docs/integrations/bitcoin/ckBTC-reference /docs/current/references/ckbtc-reference
-  /docs/current/tutorials/developer-journey/level-4/4.3-ckBTC-and-bitcoin /docs/current/tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin
   /docs/current/developer-docs/setup/ic-admin /docs/current/developer-docs/developer-tools/cli-tools/ic-admin
   /docs/current/developer-docs/backend/subnet-types /docs/current/concepts/subnet-types
   /docs/current/references/glossary /docs/current/concepts/glossary
   /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/
   /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/
+  /docs/current/references/security/general-security-best-practices/ /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
+  /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
+  /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

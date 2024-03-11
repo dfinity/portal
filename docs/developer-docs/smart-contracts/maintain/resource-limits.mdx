@@ -1,4 +1,9 @@
+---
+keywords: [beginner, tutorial, maintain canisters, limits, resource limits]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Resource limits
 
@@ -15,10 +20,10 @@ The limits depend on the message type as shown in the following table.
 
 | Message resource limits                                                              | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
-| Message queue limit, messages per canister                                           | 500         |
+| Message queue limit, messages per <GlossaryTooltip>canister</GlossaryTooltip>                                           | 500         |
 | Maximum ingress message payload                                                      | 2MB         |
 | Maximum cross-net inter-canister message payload                                     | 2MB         |
-| Maximum same-subnet inter-canister message payload (may be deprecated at some point) | 10MB        |
+| Maximum same-<GlossaryTooltip>subnet</GlossaryTooltip> inter-canister message payload (may be deprecated at some point) | 10MB        |
 | Maximum response size (replicated execution)                                         | 2MB         |
 | Maximum response size (non-replicated execution, i.e. in query calls)                | 3MB         |
 
@@ -29,7 +34,7 @@ The limits depend on the message type as shown in the following table.
 | Instruction limit, instructions per canister install/upgrade                         | 200 Billion |
 | Instruction limit, instructions per inspect_message                                  | 200 Million |
 
-| Subnet limits                                                                        | Constraint  |
+| <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
 | Subnet capacity (total memory available per subnet)                                  | 700GiB      |
 
