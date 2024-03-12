@@ -31,8 +31,13 @@ Before using the `dfx build` command, first you need to [create the canister](/d
 Then, [compile your canister code](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build) with the command:
 
 ```
-dfx build
+dfx build // build locally
+dfx build --network ic // build on the mainnet
 ```
+
+:::caution
+Compiling a canister on the mainnet will cost [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
+:::
 
 This command must be run from within the project's directory.
 
@@ -43,7 +48,6 @@ When this command is executed, the following steps happen:
 - If a canister being built is written in Motoko, type declarations are automatically generated using Candid.
 
 - If a canister being built is written in Rust, the build process checks for Rust vulnerabilities.
-
 
 :::info
 When a canister is deployed with [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy), the `dfx build` command is run in the background as part of the deployment process.
