@@ -21,7 +21,6 @@ WebAssembly (Wasm) is platform independent and designed to run on a stack-based 
 This generated Wasm module includes a runtime system which implements a garbage collector function and uses the Wasm heap storage. Then, this module is implemented when the canister's code is installed. 
 
 On ICP, [Wasmtime](https://docs.wasmtime.dev/) is supported to run canister smart contracts. 
-- 
 
 ## Compiling your canister
 
@@ -50,7 +49,7 @@ When this command is executed, the following steps happen:
 When a canister is deployed with [`dfx deploy`](/docs/current/developer-docs/setup/deploy), the `dfx build` command is run in the background as part of the deployment process.
 :::
 
-Once your canister has been built, it is ready to be deployed.
+Once your canister has been compiled, it is ready to be deployed.
 
 
 ## Next steps
