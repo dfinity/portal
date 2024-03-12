@@ -14,27 +14,20 @@ After you have written the code for your project's canisters, you need to compil
 
 Check out the [default project template](/docs/current/developer-docs/getting-started/default-template) for more information on `dfx.json`.
 
-Before using the `dfx build` command, first you need to create the canister with the `dfx canister create <canister name>` command:
+## How code is compiled to Wasm
 
-```
-dfx canister create hello_world
-```
+WebAssembly (Wasm) is platform independent and designed to run on a stack-based virtual machine. Wasm itself is not a programming language; it is the result of a programming language being comnpiled and converted into executable machine code. When canister code is compiled into Wasm, the system compiler creates a Wasm module in either a binary format (.wasm) or a compressed binary (.wasm.gz).
 
-Alternatively, you can create all canisters in a project with the `--all` flag:
+This generated Wasm module includes a runtime system which implements a garbage collector function and uses the Wasm heap storage. Then, this module is implemented when the canister's code is installed. 
 
-```
-dfx canister create --all
-```
+On ICP, [Wasmtime](https://docs.wasmtime.dev/) is supported to run canister smart contracts. 
+- 
 
-When this command is executed, the following steps happen:
+## Compiling your canister
 
-- The canister is created locally using the source code file listed in the project's `dfx.json` file for that canister name.
+Before using the `dfx build` command, first you need to [create the canister](/docs/current/developer-docs/smart-contracts/create).
 
-- A cycles wallet canister is created on the local network for the user principal that executed the command if one does not exist. This wallet canister's ID is returned in the command line output.
-
-- The canister you created is assigned a canister ID, which is returned in the command line output.
-
-Before building your canister code using `dfx build`, first verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
+Verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
 
 Then, [build your canister](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build) with the command:
 
