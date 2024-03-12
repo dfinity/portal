@@ -5,6 +5,7 @@ keywords: [beginner, motoko, tutorial, inter-canister, calls]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 
 # 7: Making inter-canister calls
@@ -18,13 +19,13 @@ For example, you might want to create a dapp for professional networking, organi
 
 To address this social component, you might want to create a single canister for storing user relationships then write your professional networking, community organizing, or fundraising application to import and call functions that are defined in the canister for social connections. You could then build additional applications to use the social connections canister or extend the features provided by the social connections canister to make it useful to an even broader community of other developers.
 
-This example will showcase a simple way to configure inter-canister calls that can be used as the foundation for more elaborate projects and use-cases such as those mentioned above. 
+This example will showcase a simple way to configure inter-canister calls that can be used as the foundation for more elaborate projects and use-cases such as those mentioned above.
 
 ## Prerequisites
 
 Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](/docs/current/developer-docs/backend/motoko/dev-env).
 
-## Create a new dfx project 
+## Create a new dfx project
 
 Open a terminal window on your local computer, if you don’t already have one open.
 
@@ -39,26 +40,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new intercanister
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -75,10 +76,11 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new intercanister
+dfx new intercanister --no-frontend
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+    For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 
 </TabItem>
 </Tabs>
@@ -150,12 +152,12 @@ Open the `dfx.json` file and delete the existing content. Then, insert the follo
 }
 ```
 
-## Starting the local canister execution environment 
+## Starting the local canister execution environment
 
-To start the local execution environment on your local computer, run the following command:
+To start the local <GlossaryTooltip>replica</GlossaryTooltip> on your local computer, run the following command:
 
 ```
-dfx start --clean
+dfx start --clean --background
 ```
 
 :::info
@@ -164,7 +166,7 @@ This guide uses the `--clean` option to start the local canister execution envir
 This option removes any orphan background processes or canister identifiers that might disrupt normal operations. For example, if you forgot to issue a `dfx stop` when moving between projects, you might have a process running in the background or in another terminal. The `--clean` option ensures that you can start the local canister execution environment and continue to the next step without manually finding and terminating any running processes.
 :::
 
-## Deploy your project 
+## Deploy your project
 
 Deploy your new canisters with the command in your project's directory:
 
@@ -177,7 +179,7 @@ dfx deploy
 Use the following command to make a call from `canister1` to `canister2`:
 
 ```
-dfx canister call canister1 main 
+dfx canister call canister1 main
 ```
 
 The output should resemble the following:

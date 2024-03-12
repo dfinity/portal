@@ -60,10 +60,10 @@ Use `dfx new <project_name>` to create a new project:
 dfx new custom_greeting
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use:
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -73,7 +73,7 @@ You will be prompted to select a language that your backend canister will use:
 Then, select a frontend framework for your frontend canister. Select 'React':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
 ❯ React
   Vue
@@ -396,7 +396,7 @@ render(<MyHello />, document.getElementById("app"));
 - #### Step 8:  Rename the modified `index.js` file as `index.jsx` by running the following command:
 
         mv src/custom_greeting_frontend/src/index.js src/custom_greeting_frontend/src/index.jsx
-    
+
 
 - #### Step 9: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
 
@@ -426,7 +426,7 @@ To start the environment locally:
 
 - #### Step 3:  Start the local canister execution environment on your local computer by running the following command:
 
-        dfx start --background
+        dfx start --clean --background
 
 After the local canister execution environment completes its startup operations, you can continue to the next step.
 
@@ -474,7 +474,7 @@ After viewing the frontend, you might want to make some changes.
 
 To modify the frontend:
 
-- #### Step 1:  Open the `index.jsx` file in a text editor and modify its style settings. 
+- #### Step 1:  Open the `index.jsx` file in a text editor and modify its style settings.
 For example, you might want to change the font family and use a placeholder for the input field by making changes similar to this:
 
 ```

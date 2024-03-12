@@ -23,7 +23,7 @@ description: Testing integration of the Tooltip component in a markdown document
 draft: true
 ---
 
-import { Tooltip } from "/src/components/Tooltip/Tooltip";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Hello, I'm a markdown page. And
 

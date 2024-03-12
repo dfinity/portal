@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, maintain canisters, import, pullable canisters]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Import
 
@@ -10,11 +11,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-The interoperability of canisters is a vital feature for many developers. `dfx` provides a consistent developer workflow for creating, integrating and testing third-party canisters with local developer environments.
+The interoperability of <GlossaryTooltip>canisters</GlossaryTooltip> is a vital feature for many developers. `dfx` provides a consistent developer workflow for creating, integrating and testing third-party canisters with local developer environments.
 
-Third-party canisters include canisters created by DFINITY or by developers in ICP community. Developers depend on third-party canisters to integrate with. They typically need a way to develop and test the integrations locally for: 
+Third-party canisters include canisters created by DFINITY or by developers in ICP community. Developers depend on third-party canisters to integrate with. They typically need a way to develop and test the integrations locally for:
 - Validating the accuracy of the integration and other canister code.
-- Testing without paying cycles.
+- Testing without paying <GlossaryTooltip>cycles</GlossaryTooltip>.
 - Using non-production data and environments.
 - Faster completion time when run locally.
 
@@ -318,7 +319,7 @@ Running the `dfx deps deploy` command will:
 1. First, create the dependencies on the local replica with the same mainnet canister ID.
 2. Then, it will install the downloaded Wasm with the init arguments in the `init.json` file.
 
-You can also specify the name or principal to deploy one particular dependency.
+You can also specify the name or <GlossaryTooltip>principal</GlossaryTooltip> to deploy one particular dependency.
 
 Using the example above, you can run the following command to deploy all dependencies:
 

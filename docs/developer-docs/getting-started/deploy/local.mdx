@@ -4,6 +4,8 @@ keywords: [beginner, tutorial, local deployment, deploy]
 
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Local deployment
 
@@ -11,9 +13,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-When developing canisters and projects, it is recommended to first deploy your project to the local development environment. This is so you can fabricate cycles in your local development environment, which you cannot do on the mainnet. Cycles are charged for the resources used by your canister. You can learn more about cycles [here](/docs/current/developer-docs/gas-cost).
+When developing <GlossaryTooltip>canisters</GlossaryTooltip> and projects, it is recommended to first deploy your project to the local development environment. This is so you can fabricate <GlossaryTooltip>cycles</GlossaryTooltip> in your local development environment, which you cannot do on the mainnet. Cycles are charged for the resources used by your canister. You can learn more about cycles [here](/docs/current/developer-docs/gas-cost).
 
-Deploying to your local development environment is similar to deploying to a testnet. ICP does not have a testnet available for developers to deploy to. Instead, the IC SDK runs a local version of the ICP node software known as the **replica** and provides a single-node environment on your local machine for you to deploy canisters to. 
+Deploying to your local development environment is similar to deploying to a testnet. ICP does not have a testnet available for developers to deploy to. Instead, the IC SDK runs a local version of the ICP node software known as the **replica** and provides a single-node environment on your local machine for you to deploy canisters to.
 
 ## Prerequisites
 
@@ -27,7 +29,7 @@ Before you create your first canister, verify the following:
 
 ## Start the local deployment
 
-Before you can build your first project, you need to connect to the local replica. As a best practice, this step requires you to have **two terminal shells** open, so that you can start and see canister execution operations in one terminal and manage your project in another.
+Before you can build your first project, you need to connect to the local <GlossaryTooltip>replica</GlossaryTooltip>. As a best practice, this step requires you to have **two terminal shells** open, so that you can start and see canister execution operations in one terminal and manage your project in another.
 
 To prepare the local replica:
 
@@ -55,7 +57,7 @@ To deploy your first canister locally:
 
 - #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
-It is recommended to follow the [creating your first canister](/docs/current/developer-docs/getting-started/default-template) guide to have a simple 'Hello, world!' canister ready to deploy. 
+It is recommended to follow the [creating your first canister](/docs/current/developer-docs/getting-started/default-template) guide to have a simple 'Hello, world!' canister ready to deploy.
 
 - #### Step 2:  Ensure that `node` modules are available in your project directory, if needed, by running the following command:
 
@@ -210,7 +212,7 @@ To stop the local deployment:
 
 - #### Step 2:  In the terminal that displays canister execution operations, press Control-C to interrupt the local network process.
 
-- #### Step 3:  Stop the local canister execution environment running on your local computer by running the following command:
+- #### Step 3:  Stop the local replica running on your local computer by running the following command:
 
         dfx stop
 

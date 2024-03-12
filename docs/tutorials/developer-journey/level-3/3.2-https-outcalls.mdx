@@ -85,7 +85,7 @@ dfx start --clean --background
 dfx new https_get
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -128,7 +128,7 @@ cd https_get
 
 ```bash
 dfx start --clean --background
-dfx new https_get
+dfx new https_get --no-frontend
 cd https_get
 ```
 
@@ -471,7 +471,7 @@ The code above is annotated with detailed notes and explanations. Take a moment 
 Now, you can deploy the canister locally with the commands:
 
 ```bash
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy
 ```
 
@@ -814,7 +814,7 @@ The code above is annotated with detailed notes and explanations. Take a moment 
 Now, you can deploy the canister locally with the commands:
 
 ```bash
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy
 ```
 

@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, cycles, free cycles, cycles coupon]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Getting started with free cycles
 
@@ -11,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## What are ICP cycles?
 The Internet Computer Protocol runs on a network of nodes owned and operated by a growing community of independent node providers (NPs) distributed across the globe. NPs spend money for running nodes, e.g. they purchase hardware and require electricity and network bandwidth. The Internet Computer Protocol compensates NPs on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
-To make ICP sustainable, canister smart contracts are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycle balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens.
+To make ICP sustainable, <GlossaryTooltip>canisters</GlossaryTooltip> are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens.
 
 ## Why are cycles different from ICP tokens?
 
@@ -68,9 +69,9 @@ Next, confirm your computer has `dfx` installed. Run this command to check the v
 
     dfx --version
 
-If your dfx version is below 0.12.0, please run this command:
+If your `dfx` version is below 0.12.0, please run this command:
 
-    sudo dfx upgrade
+    dfx upgrade
 
 ![Setup SDK](_attachments/faucet_step_4.png)
 

@@ -67,7 +67,7 @@ export function Tooltip({
     role,
   ]);
 
-  const tooltipColor = "rgba(24, 24, 24, 0.6)";
+  const tooltipColor = "rgba(24, 24, 24, 0.9)";
 
   return (
     <>
@@ -76,7 +76,7 @@ export function Tooltip({
         {...getReferenceProps()}
         style={{
           textDecoration: "underline",
-          cursor: "pointer",
+          cursor: "default",
         }}
       >
         {children}

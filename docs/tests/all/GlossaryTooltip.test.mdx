@@ -1,0 +1,25 @@
+---
+title: Glossary Tooltip Test
+description:
+  Testing integration of the GlossaryTooltip component in a markdown document
+draft: true
+---
+
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+To add definitions to GlossaryTooltip, find the `glossary.txt` file in the
+`static` directory at the root of the project. Please make sure you put an `=`
+equal sign between the term and the definition, and keep each term + definition
+pair on a single line. Failing to do will break the code that autopopulates the
+Tooltip with the appropriate definition.
+
+Example
+```text
+canister=A smart contract on ICP.
+cycles=Currency unit used to pay for ICP gas fees.
+```
+
+I'm a <GlossaryTooltip>canister</GlossaryTooltip> deployed on
+ICP.
+
+I describe <GlossaryTooltip>cycles</GlossaryTooltip>.

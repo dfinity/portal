@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
 
 ## Overview
-This guide will show you how to deploy an ICRC-1 ledger locally and on the mainnet, how to interact with the ICRC-1 ledger and how to test it. ICRC-1 is a token standard which you can read up on [here](https://github.com/dfinity/ICRC-1). Thus, deploying a new token that is ICRC-1 compatible is synonymous with deploying an ICRC-1 ledger.
+This guide will show you how to deploy an ICRC-1 ledger locally and on the mainnet, how to interact with the ICRC-1 ledger and how to test it. ICRC-1 is a [token standard](https://github.com/dfinity/ICRC-1). Thus, deploying a new token that is ICRC-1 compatible is synonymous with deploying an ICRC-1 ledger.
 The ICRC-1 ledger used in this guide is a reference implementation. This guide aims at showing you how to setup an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself.
 
 ### Step 1:  Make sure you use a recent version of the [IC SDK](/docs/current/developer-docs/getting-started/install/).
@@ -76,7 +76,7 @@ In an existing project you would only need to add the `icrc1_ledger_canister` ca
 ### Step 5: Start a local replica.
 
 ``` sh
-dfx start --background --clean
+dfx start --clean --background
 ```
 
 ### Step 6: Create the required identities and export initialization arguments:
@@ -143,7 +143,7 @@ For each variable, the exported environment variable will be used unless otherwi
 -   The `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
 -   The `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
 -   The `ARCHIVE_CONTROLLER` is the [controller principal](/docs/current/developer-docs/getting-started/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
--   The `TRIGGER_THRESHOLD` is the number of blocks to archive when trigger threshold is exceeded.
+-   The `TRIGGER_THRESHOLD` is the number of blocks to archive when the trigger threshold is exceeded.
 -   The `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
 -   The `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
 -   The `TOKEN_SYMBOL` is the ticker symbol of your new token.
