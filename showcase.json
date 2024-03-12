@@ -3690,5 +3690,27 @@
     "github": "https://github.com/elna-ai",
     "twitter": "https://twitter.com/elna_live",
     "submittableId": "44027684"
+  },
+  {
+    "id": "vaultbet",
+    "name": "VaultBet",
+    "oneLiner": "Redefining online betting on the Internet Computer.",
+    "website": "https://vault-bet.com",
+    "tags": [
+      "Games",
+      "DeFi",
+      "Bitcoin",
+      "Ethereum",
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/VaultBet",
+    "discord": "https://discord.gg/qmr92dup3J",
+    "description": "VaultBet is redefining online betting on the Internet Computer. Hosted completely on-chain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
+    "usesInternetIdentity": false,
+    "stats": "1000+ Monthly Users",
+    "display": "Normal",
+    "logo": "/img/showcase/vaultbet_logo.webp",
+    "screenshots": [],
+    "submittableId": ""
   }
 ]
