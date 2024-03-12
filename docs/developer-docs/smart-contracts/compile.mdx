@@ -10,9 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-After you have written the code for your project's canisters, you need to compile the code into a WebAssembly module before it can be deployed on ICP. To build your canister's Wasm module, you can use the `dfx build` command. The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to build a specific canister or all canisters defined in the project's [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file.
-
-Check out the [default project template](/docs/current/developer-docs/getting-started/default-template) for more information on `dfx.json`.
+After you have written the code for your project's canisters, you need to compile the code into a WebAssembly module before it can be deployed on ICP. 
 
 ## How code is compiled to Wasm
 
@@ -24,9 +22,11 @@ On ICP, [Wasmtime](https://docs.wasmtime.dev/) is supported to run canister smar
 
 ## Compiling your canister
 
-Before using the `dfx build` command, first you need to [create the canister](/docs/current/developer-docs/smart-contracts/create).
+To compile your canister's Wasm module, you can use the `dfx build` command. The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to compile a specific canister or all canisters defined in the project's [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file.
 
-Verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
+Check out the [default project template](/docs/current/developer-docs/getting-started/default-template) for more information on `dfx.json`.
+
+Before using the `dfx build` command, first you need to [create the canister](/docs/current/developer-docs/smart-contracts/create) and verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
 
 Then, [compile your canister code](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build) with the command:
 
