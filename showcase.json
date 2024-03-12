@@ -3709,8 +3709,6 @@
     "usesInternetIdentity": false,
     "stats": "1000+ Monthly Users",
     "display": "Normal",
-    "logo": "/img/showcase/vaultbet_logo.webp",
-    "screenshots": [],
-    "submittableId": ""
+    "logo": "/img/showcase/vaultbet_logo.webp"
   }
 ]
