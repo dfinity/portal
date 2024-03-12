@@ -90,7 +90,7 @@ const redirects = `
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/build/overview
+  /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/compile
   /docs/developers-guide/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
   /docs/developers-guide/glossary /docs/current/concepts/glossary
@@ -304,7 +304,7 @@ const redirects = `
   /docs/current/developer-docs/production/social-sharing /docs/current/developer-docs/smart-contracts/deploy/sharing
   /docs/current/developer-docs/setup/delete /docs/current/developer-docs/smart-contracts/maintain/delete
   /docs/current/developer-docs/production/canister-history /docs/current/developer-docs/smart-contracts/maintain/history
-  /docs/current/developer-docs/setup/build /docs/current/developer-docs/smart-contracts/build/overview
+  /docs/current/developer-docs/setup/build /docs/current/developer-docs/smart-contracts/compile
   /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/current/developer-docs/smart-contracts/maintain/import
   /docs/current/developer-docs/production/canister-recovery /docs/current/developer-docs/smart-contracts/maintain/recovery
   /docs/current/developer-docs/setup/state /docs/current/developer-docs/smart-contracts/maintain/state
@@ -312,7 +312,7 @@ const redirects = `
   /docs/current/developer-docs/production/storage /docs/current/developer-docs/smart-contracts/maintain/storage
   /docs/current/developer-docs/setup/upgrade /docs/current/developer-docs/smart-contracts/maintain/upgrade
   /docs/current/developer-docs/production/resource-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
-  /docs/current/developer-docs/setup/manage-projects /docs/current/developer-docs/smart-contracts/build/overview
+  /docs/current/developer-docs/setup/manage-projects /docs/current/developer-docs/smart-contracts/compile
   /docs/current/developer-docs/production/topping-up-canister /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services
   /docs/current/developer-docs/setup/pocket-ic /docs/current/developer-docs/smart-contracts/test/pocket-ic

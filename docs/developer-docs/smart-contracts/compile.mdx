@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, tutorial, build]
+keywords: [beginner, tutorial, compile]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -10,9 +10,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-After you have written the code for your project's canisters, you need to compile the code into a WebAssembly module before it can be deployed on ICP. To build your canister's Wasm module, you can use the `dfx build` command. The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to build a specific canister or all canisters defined in the project's `dfx.json` file.
+After you have written the code for your project's canisters, you need to compile the code into a WebAssembly module before it can be deployed on ICP. To build your canister's Wasm module, you can use the `dfx build` command. The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to build a specific canister or all canisters defined in the project's [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file.
 
-Before using the `dfx build` command, first you need to create the canister with the `dfx canister create <canister name> command:
+Check out the [default project template](/docs/current/developer-docs/getting-started/default-template) for more information on `dfx.json`.
+
+Before using the `dfx build` command, first you need to create the canister with the `dfx canister create <canister name>` command:
 
 ```
 dfx canister create hello_world
@@ -34,7 +36,7 @@ When this command is executed, the following steps happen:
 
 Before building your canister code using `dfx build`, first verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
 
-Then, build your canister with the command:
+Then, [build your canister](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build) with the command:
 
 ```
 dfx build
