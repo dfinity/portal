@@ -227,6 +227,11 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
             },
+            {
+              type: "doc",
+              label: "On-chain randomness",
+              id: "developer-docs/smart-contracts/advanced-features/randomness",
+            },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
