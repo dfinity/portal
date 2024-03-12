@@ -1,30 +1,30 @@
 ---
 title: Team spotlight - Execution
-description: For this issue, we met with members from the Execution team to get insight into how the IC's execution environment works and how it fits within the IC technology stack.
+description: For this issue, we met with members from the Execution team to get insight into how the ICP's execution environment works and how it fits within the ICP technology stack.
 tags: [Team spotlight]
 image: /img/blog/dev-update-blog-exe-1.jpg
 ---
 
 ![Execution Team spotlight](../../static/img/blog/dev-update-blog-exe-1.jpg)
 
-**Welcome to edition of the developer blog's team spotlight series! For this issue, we met with members from the Execution team to get insight into how the IC's execution environment works and how it fits within the IC technology stack. Let's start with our usual introduction, what is the purpose of the Execution team?**
+**Welcome to edition of the developer blog's team spotlight series! For this issue, we met with members from the Execution team to get insight into how the ICP's execution environment works and how it fits within the ICP technology stack. Let's start with our usual introduction, what is the purpose of the Execution team?**
           
-*The team’s mission can be summarized as “managing the lifecycle and providing efficient execution of canisters”. We provide the system APIs that canisters can use to run on the IC and interact with other canisters as well as scheduling of messages and cycles accounting.*
+*The team’s mission can be summarized as “managing the lifecycle and providing efficient execution of canisters”. We contribute to the system APIs that canisters can use to run on ICP and interact with other canisters as well as scheduling of messages and cycles accounting.*
 
 **What is the composition of the Execution team?**
  
 *The team consists of 5 engineers: Alexandra, Dimitris, Dragoljub, Islam, Maksym and 1 researcher: Bogdan. All team members are based in Switzerland.*
 
-**Let's dive a bit into how execution on the IC works. On a fundamental level, what is the IC’s execution environment? What happens in it?**
+**Let's dive a bit into how execution on ICP works. On a fundamental level, what is ICP’s execution environment? What happens in it?**
 
 *The execution environment is responsible for processing messages (either from users or canisters), keeping track of cycles for canisters and updating their state after message execution completes.*            
 
-**Could you explain how the execution layer fits into the IC stack?**
+**Could you explain how the execution layer fits into the ICP stack?**
 
-*The execution layer is the top layer of the core IC stack. It’s part of what we call the “replicated state machine” which additionally includes message routing. Messages are delivered in batches through consensus to message routing and the execution environment is responsible for processing them.*
+*The execution layer is the top layer of the core ICP stack. It’s part of what we call the “replicated state machine” which additionally includes message routing. Messages are delivered in batches through consensus to message routing and the execution environment is responsible for processing them.*
 
 
-**What is the process of an execution round on the IC?**
+**What is the process of an execution round on ICP?**
 
 *An execution round proceeds in several phases.*
 
@@ -36,15 +36,15 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 **Thank you for that description! I think that is very insightful for developers to understand what's happening behind the scenes. How do developers interact with the execution layer through canisters?**
 
-*Developers interact with the execution environment through two sets of APIs: the first is a synchronous one which we call the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on the IC – this API allows canisters to manage other canisters as well as get access to some of the special features of the IC, including tECDSA and HTTP outcalls.*
+*Developers interact with the execution environment through two sets of APIs: the first is a synchronous one, often called the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on ICP – this API allows canisters to manage other canisters as well as get access to some of the special features of ICP, including tECDSA and HTTP outcalls.*
 
 **How does the Execution team work with other teams?**
 
-*The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who are in charge of the lower level Wasm execution engine of the IC, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and Languages teams to expose the APIs provided by the execution environment to the developers.*
+*The Execution team works with several other teams within DFINITY. We work pretty closely with the Runtime team who contribute to the lower level Wasm execution engine of ICP, the Message Routing team who are responsible for routing of messages to the appropriate subnet for execution and state management as well as the SDK and Languages teams to expose the APIs provided by the execution environment to the developers.*
 
-**How does the IC execution environment differ from other forms of execution environments?**
+**How does the ICP execution environment differ from other forms of execution environments?**
 
-*Two major differences of the IC’s execution environment are:*
+*Two major differences of ICP’s execution environment are:*
     
 *1. Orthogonal persistence which allows canisters to transparently persist data that lives on their heap.*
 
@@ -52,7 +52,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 **What’s the biggest challenge the team has faced?**
 
-*One of the biggest challenges for the team is the constant struggle to prioritize all the features and requests we receive to add or improve things on the IC. It’s a good problem to have and we’re glad that through some of the discussions with developers on the forum or ICP.Lab sessions we have managed to identify some of the most important things to tackle and adjusted our priorities to match this feedback.*
+*One of the biggest challenges for the team is the constant struggle to prioritize all the features and requests we receive to add or improve things on ICP. It’s a good problem to have and we’re glad that through some of the discussions with developers on the forum or ICP.Lab sessions we have managed to identify some of the most important things to tackle and adjusted our priorities to match this feedback.*
 
 **Have there been any improvements made as a direct result of node provider or developer feedback?**
        
@@ -68,17 +68,17 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 - *Allowing to install large Wasm modules which will unblock new CDKs in Python and Azle.*
 
-**Those projects sound extremely exciting and beneficial to the IC dev community, especially unblocking new CDKs for Python and Azle! Where should developers look for the latest Execution updates?**
+**Those projects sound extremely exciting and beneficial to the ICP dev community, especially unblocking new CDKs for Python and Azle! Where should developers look for the latest Execution updates?**
 
 *We typically post updates of our work on the developer forum and give presentations about features/recent work in Global R&D meetings.*
 
-**What is one feature or aspect of the IC execution environment that the team is the most proud of?**
+**What is one feature or aspect of the ICP execution environment that the team is the most proud of?**
 
-*We believe that Orthogonal Persistence is one of the coolest features of the IC and a key differentiator from other Web3 platforms or blockchains. It allows developers to truly focus on their business logic when writing canisters and avoid thinking about state management for the most part.*
+*We believe that Orthogonal Persistence is one of the coolest features of ICP and a key differentiator from other Web3 platforms or blockchains. It allows developers to truly focus on their business logic when writing canisters and avoid thinking about state management for the most part.*
 
 **To wrap things up, what makes the Execution team unique compared to some of the other dev teams at DFINITY?**
 
-*Compared to other teams, the execution team is interfacing a lot with developers given our work on the APIs that canisters have access to. In a sense, we act as a bridge between the core protocol and the user facing aspects of the IC.*
+*Compared to other teams, the execution team is interfacing a lot with developers given our work on the APIs that canisters have access to. In a sense, we act as a bridge between the core protocol and the user facing aspects of ICP.*
 
 **A huge thank you to the Execution team for chatting with us today and providing a great look into what the Execution team is up to! Be sure to check in next time another team spotlight!**
 

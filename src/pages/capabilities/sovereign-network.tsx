@@ -22,10 +22,10 @@ function FeaturePage() {
                 Sovereign Network
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The Internet Computer blockchain network is hosted by special
+                The Internet Computer blockchain network is formed by special
                 node machines, which are hardware devices that are dedicated to
-                the task (thus creating a sovereign network). This is
-                conceptually similar to how the internet is hosted by network
+                the task of running the Internet Computer Protocol (thus creating a sovereign network). This is
+                conceptually similar to how the Internet is formed by interconnected network
                 routing devices.
               </p>
             </div>
@@ -90,7 +90,7 @@ function FeaturePage() {
 
             <p>
               Every node in the Internet Computer network is a dedicated
-              physical device, called a node machine, which is run by an
+              physical device, called a node machine, which is owned and run by an
               independent node provider, typically from rack space in an
               independent data center. The nodes cannot therefore be switched
               off or tampered with by a small number of corporate cloud
@@ -100,12 +100,12 @@ function FeaturePage() {
             <p>
               While this is an important advantage, there are other technical
               reasons that special node machines are required to participate in
-              hosting the Internet Computer network. The node machines are built
+              the Internet Computer network. The node machines are built
               to standardized public hardware specifications. This means that
               when the network is under load, they do not fall behind other
-              nodes inside the same subnet blockchain, which statistical
-              deviation the network's decentralized governance DAO might notice,
-              and sanction them for.
+              nodes inside the same subnet blockchain and stay within the statistical
+              deviation that the network's decentralized governance DAO monitors,
+              and sanctions for.
             </p>
 
             <p className="mb-3 mt-6">
@@ -133,7 +133,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/backend/choosing-language"
+              href="/docs/current/developer-docs/smart-contracts/write/overview"
             />
             <CardWithDescription
               title="Sample Code"

@@ -7,4 +7,4 @@ eta:
 is_community: true
 ---
 
-This feature solves the problem of short-lived cache queries by giving assets (HTML pages, JS sources, images, etc.) time-to-live information (expiration times) and exposing them to Nginx on the boundary nodes as well as the service worker.
+This feature improves the user experience by enabling developers to specify caching information (e.g., time-to-live) on their assets (HTML pages, JS sources, images, etc.) and exposing them to the HTTP gateways (e.g., `icx-proxy`` on the boundary nodes). This feature relies on the certified headers.

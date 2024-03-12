@@ -104,9 +104,10 @@ function NodeProvidersPage() {
               Decentralized computing{" "}
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-4 md:mb-6">
-              The Internet Computer blockchain operates on a network of nodes
-              owned and managed by a growing community of independent, vetted
-              node providers distributed across the globe.{" "}
+              The Internet Computer blockchain runs on a network of nodes
+              owned and operated by a growing community of independent, node
+              providers distributed across the globe. The node providers are
+              selected and vetted by the NNS.{" "}
             </p>
             <p className="mb-0">
               <Link
@@ -174,7 +175,7 @@ function NodeProvidersPage() {
             <h2 className="md:tw-heading-60 md:mb-6">Node Providers</h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               To preserve the decentralization of the network, each node
-              provider is voted in by token-holders via the NNS, the DAO that
+              provider is vetted and accepted by token-holders via the NNS, the DAO that
               governs the Internet Computer. Becoming a node provider entails
               submitting a proposal along with a self-declaration document that
               state provision of node machines, intent and proof of identity.
@@ -281,15 +282,14 @@ function NodeProvidersPage() {
               className="tw-lead-sm mb-6 md:mb-10"
               variants={transitions.item}
             >
-              The growing ICP community of node providers includes independent
-              entities across the globe, including...
+              The ICP community of node providers consists of independent
+              entities evenly distributed across the globe, including...
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="https://forum.dfinity.org/t/new-node-provider-proposals/16643"
-                className="button-primary"
+                href="https://forum.dfinity.org/t/ic-topology-node-diversification-part-ii/23553"
               >
-                Join the NP community
+                Read about node diversification
               </Link>
             </motion.p>
           </AnimateSpawn>

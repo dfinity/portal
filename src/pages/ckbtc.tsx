@@ -78,9 +78,10 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC — a multi-chain bitcoin twin, trustlessly created by chain-key
-                  cryptography and Internet Computer smart contracts that directly hold 
-                  raw bitcoin. Send and receive ckBTC with 1-2 second finality and negligible fees.
+                  ckBTC — a multi-chain bitcoin twin, trustlessly created by
+                  chain-key cryptography and Internet Computer smart contracts
+                  that directly hold raw bitcoin. Send and receive ckBTC with
+                  1-2 second finality and negligible fees.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -117,19 +118,23 @@ function CkbtcPage(): JSX.Element {
               reverse={true}
             >
               <div className="tw-heading-6 md:tw-heading-5 mb-2 md:mb-6">
-                MyLugano 
+                MyLugano
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                ckBTC comes to Lugano 
+                ckBTC comes to Lugano
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                As part of a multi-chain, multi-wallet upgrade, ckBTC has been  
-                integrated into the MyLugano crypto payment app developed by NOKU. 
-                This is a major step towards the Internet Computer infrastructure integrating 
-                with the city of Lugano to eventually enable a plethora of municipal services using bitcoin.
+                As part of a multi-chain, multi-wallet upgrade, ckBTC has been
+                integrated into the MyLugano crypto payment app developed by
+                NOKU. This is a major step towards the Internet Computer
+                infrastructure integrating with the city of Lugano to eventually
+                enable a plethora of municipal services using bitcoin.
               </p>
-              <Link className="link-primary link-with-icon" href="https://medium.com/dfinity/the-dfinity-foundation-announces-partnership-with-the-municipality-of-lugano-and-a-1-million-fund-c6dce1fd24ae">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://medium.com/dfinity/the-dfinity-foundation-announces-partnership-with-the-municipality-of-lugano-and-a-1-million-fund-c6dce1fd24ae"
+              >
                 <LinkArrowRight /> Read the press release
               </Link>
             </TranslatedLayout>
@@ -244,8 +249,8 @@ function CkbtcPage(): JSX.Element {
                   </span>
                 </h3>
                 <p className="tw-lead mb-6">
-                 Send and receive ckBTC value to and from addresses
-                  on either network
+                  Send and receive ckBTC value to and from addresses on either
+                  network
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
@@ -500,23 +505,17 @@ function CkbtcPage(): JSX.Element {
                   </p>
                   <p className="mt-10">
                     <Link
-                      className="button-outline"
-                      href="https://dashboard.internetcomputer.org/bitcoin"
+                      className="link-primary"
+                      href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
                     >
-                      ckBTC dashboard
+                      <LinkArrowRight />
+                      ckBTC &lt;&gt; ICP user guide
                     </Link>
                   </p>
-                  <Link
-                    className="link-primary link-with-icon"
-                    href="https://medium.com/dfinity/threshold-ecdsa-the-key-ingredient-behind-the-internet-computers-bitcoin-and-ethereum-cf22649b98a1"
-                  >
-                    <LinkArrowRight />
-                    Chain-key ECDSA blog
-                  </Link>
                 </div>
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a wrapped token.
+                    Why it’s not a wrapped token
                   </h3>
 
                   <p className="tw-paragraph mb-3">
@@ -526,11 +525,50 @@ function CkbtcPage(): JSX.Element {
                     addresses either on the Bitcoin network or the Internet
                     Computer, making it the first true multi-chain asset.
                   </p>
+
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  >
+                    <LinkArrowUpRight />
+                    ckBTC security audit
+                  </Link>
                 </div>
 
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    How it differs from Lightning.
+                    How ckBTC's security was assessed
+                  </h3>
+
+                  <p className="tw-paragraph mb-3">
+                    Several security assessments are taken on critical
+                    components of the Internet Computer such as ckBTC to ensure
+                    robust security. These include{" "}
+                    <Link href="https://medium.com/dfinity/eliminating-smart-contract-bugs-with-tla-e986aeb6da24/">
+                      TLA+ models
+                    </Link>{" "}
+                    to formally verify some guarantees, several internal and
+                    external security assessments. In 2023, both Bitcoin
+                    integration and ckBTC have undergone an external security
+                    audit conducted by{" "}
+                    <Link href="https://www.trailofbits.com/">
+                      Trail of Bits
+                    </Link>{" "}
+                    with no severe issues found.
+                  </p>
+
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
+                  >
+                    <LinkArrowUpRight />
+                    ckBTC security audit
+                  </Link>
+                </div>
+
+                <div>
+                  <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
+                    How it differs from Lightning
                   </h3>
 
                   <p className="tw-paragraph mb-3">

@@ -6,6 +6,7 @@ import { PageSearchResult } from "@site/search/src/declarations/search/search.di
 import { createFocusTrap } from "focus-trap";
 import Link from "@docusaurus/Link";
 import { trackEvent } from "@site/src/utils/matomo";
+import useLockBodyScroll from "../../../utils/use-lock-body-scroll";
 
 let initialTerm = "";
 let initialResults: PageSearchResult[] | null = null;
@@ -25,6 +26,8 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
     Record<string, true>
   >({});
   const [loading, setLoading] = useState(false);
+
+  useLockBodyScroll();
 
   useEffect(() => {
     actorRefPromise.current = import("./actor").then(({ createActor }) => {
@@ -52,9 +55,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
 
     window.addEventListener("keydown", onKeydown);
 
-    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "unset";
       window.removeEventListener("keydown", onKeydown);
       trap.deactivate();
     };
@@ -104,7 +105,15 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <>
       <motion.div
-        className="fixed inset-0 backdrop-blur-lg z-[3001] overflow-auto"
+        className="fixed h-screen inset-0 backdrop-blur-lg z-[3001] touch-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        aria-modal="true"
+      ></motion.div>
+      <motion.div
+        className="fixed max-h-screen top-0 left-0 right-0 z-[3002] overflow-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -113,7 +122,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
         aria-modal="true"
       >
         <div
-          className="md:container-10 backdrop-blur-0"
+          className="md:container-10 backdrop-blur-0 touch-auto"
           aria-label="Search the website"
         >
           <div
