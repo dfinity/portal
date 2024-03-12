@@ -387,7 +387,7 @@ function FeaturesPage() {
               having to buy and hold tokens to interact with the blockchain to
               pay for gas fees. The Internet Computer has been designed with
               mass adoption in mind from the ground up. Developers charge up
-              their smart contracts with cycles (the IC analogon to gas), so
+              their smart contracts with cycles (the IC analogue to gas), so
               users don’t have to pay when interacting with the smart contracts.
               This removes a major barrier of entry for end users.
             </motion.p>

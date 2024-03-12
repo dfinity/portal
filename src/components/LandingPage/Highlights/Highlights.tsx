@@ -87,7 +87,7 @@ const Highlights: React.FC = () => {
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 pt-5 md:pt-20 order-2 md:order-1">
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
-                The internet runs on routing devices{" "}
+                The Internet runs on routing devices{" "}
               </p>
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
                 Bitcoin runs on PoW mining rigs{" "}
@@ -121,7 +121,7 @@ const Highlights: React.FC = () => {
                 Web2 apps are updated by companies
               </p>
               <p className="text-white/30 tw-lead-sm md:tw-lead-lg mb-4 md:mb-6">
-                Traditionally, blockchains are updated using protocol forks. 
+                Traditionally, blockchains are updated using protocol forks
               </p>
               <p className="text-white tw-lead md:tw-title-sm mb-10 md:mb-20">
                 The Internet Computer is updated by a fully automated DAO
@@ -147,13 +147,13 @@ const Highlights: React.FC = () => {
             <div className="flex-1 pt-10 md:pt-20 order-2 md:order-1">
               <ul className="tw-lead-sm md:tw-lead-lg text-white list-none checklist space-y-6">
                 <li className="checklist-item-white pl-8 md:pl-12 bg-[length:24px] md:bg-[length:36px]">
-                   Web experiences served by smart contracts 
+                   Web experiences served by smart contracts
                 </li>
                 <li className="checklist-item-white pl-8 md:pl-12 bg-[length:24px] md:bg-[length:36px]">
                   Web2 APIs processed through consensus
                 </li>
                 <li className="checklist-item-white pl-8 md:pl-12  bg-[length:24px] md:bg-[length:36px]">
-                  Googleable smart contracts 
+                  Googleable smart contracts
                 </li>
               </ul>
 
@@ -196,6 +196,7 @@ const Highlights: React.FC = () => {
                   <LinkArrowRight />
                   Bitcoin on ICP
                 </Link>
+                &nbsp;
                 <Link
                   href="/ethereum-integration"
                   className="link-white link-with-icon"

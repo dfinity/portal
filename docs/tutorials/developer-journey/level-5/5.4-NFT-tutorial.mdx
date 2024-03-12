@@ -1,0 +1,806 @@
+---
+keywords: [advanced, tutorial, developer journey, nfts]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# 5.4 Creating NFTs on ICP
+
+<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
+
+## Overview
+
+A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT for another. An NFT cannot be replicated or reproduced since they are cryptographically unique. A non-fungible token is a type of token that cannot be exchanged 1:1 with another token of the same type, as the value of the NFT token can vary. In comparison, a **fungible** token can always be transferred 1:1 for another token of the same type.
+
+For example, 1 USD can always be exchanged for 1 USD. However, 1 unique painting cannot be exchanged for another unique painting, since the value of the two paintings will be different.
+
+On the Internet Computer, ICP is a fungible token that can always be exchanged for ICP of equal value. However, an NFT token deployed on ICP cannot be traded 1:1 with another NFT token deployed on ICP.
+
+NFTs have enabled a wide range of different use-cases, since the ownership of an NFT can be verified via the blockchain and cannot be spoofed or faked. Just a few use-cases for NFTs include:
+
+- Providing a way to buy, sell, or trade unique artwork or collectibles.
+
+- Providing a way to buy digital assets, such as domain names or virtual worlds.
+
+- Providing exclusive membership to gated content for users who purchase an NFT from a specific collection.
+
+- Providing proof of ownership for real-world tangible assets, such as property.
+
+- Providing proof of documents, such as an identification card or driver's license.
+
+- Providing a way for content creators to monetize the content they create by minting it as an NFT.
+
+## How do NFTs work?
+
+Similar to fungible tokens, NFTs are created through a process known as minting. Minting is when a token is created on the blockchain by recording the token's data to the chain. When an NFT is minted on ICP, a canister smart contract is used to define the NFT's ownership, data and metadata, and provide the ability for the NFT to be transferred or sold to another user.
+
+When an NFT is created, it is assigned a unique identifier that is used to distinguish the token from all other NFTs. Each token's data is public, including the ownership information, metadata information, and transaction history.
+
+Some NFTs are '1 of 1' tokens, meaning they are globally unique and not part of a series or collection of NFTs. Other times, NFT tokens are '1 of 100' or '1 of 500', meaning they are part of a larger series that several people can purchase and retain the same benefits. '1 of 1' NFTs are often used in cases of unique art or identifying documents, while '1 of 100' NFTs are often used for providing membership to exclusive content or providing tickets to an event.
+
+Even if 5_000 NFTs of the same exact item are minted, each token will have a unique identifier to define it among the others in the series. In some cases, each NFT in the collection will have a unique image to identify it visually; other times, each NFT will be exactly the same except for the unique token ID.
+
+## NFT standards
+
+Similar to token standards, such as the ICRC-1 and ICRC-2 fungible token standards, NFTs are required to use a standard that sets the guidelines for API methods that support necessary NFT functionalities. Some common API methods for NFTs are the ability to mint an NFT, transfer the NFT, and query the NFT's metadata.
+
+Currently on ICP, there are two NFT standards: DIP721 and ICRC-7.
+
+### DIP721
+
+The DIP721 NFT standard is designed as an Internet Computer adaptation of the ERC-721 non-fungible token standard. It is designed to provide a simple, non-ambiguous API for transferring and tracking the ownership of NFTs deployed on ICP.
+
+DIP721 was designed to improve the existing ICP token standards by implementing the following:
+
+- Providing proper metadata support for an NFT.
+
+- Incurring a lesser cycles cost than multi-token standards.
+
+- Providing the ability to track the history of NFT transfers.
+
+- Providing an API that closely follows the original EIP-721 standard, making the ability to import existing Ethereum contracts onto ICP more straightforward.
+
+This tutorial will showcase creating an NFT using the DIP721 standard.
+
+The source code for the DIP721 standard can be found [here](https://github.com/Psychedelic/DIP721), and you can read the full standard specification document [here](https://github.com/Psychedelic/DIP721/blob/develop/spec.md).
+
+### ICRC-7
+
+ICRC-7 is a new standard for non-fungible tokens on ICP. Recall that "ICRC" stands for "Internet Computer Request for Comments", and is the standard created by the Internet Computer working group. An ICRC standard can be used for creating anything on ICP, not just fungible tokens such as the ICRC-1 and ICRC-2 token standards.
+
+The ICRC-7 standard is designed to be a minimal standard for allowing an NFT collection to be deployed on ICP. In an NFT collection, each NFT may have unique metadata information. This metadata may include a unique image, traits or tags, or a description describing the NFT.
+
+The ICRC-7 standard implements several additional API methods compared to the DIP721 standard, such as batch query methods, batch update methods, and collection approval methods.
+
+:::caution
+The ICRC-7 standard isn't used in this tutorial since it is still currently in the drafting stages and is not yet live in production. This tutorial will be updated in the future when the ICRC-7 standard is ready to be used.
+:::
+
+You can read more about the ICRC-7 standard in the specification draft document [here](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md).
+
+## Creating and deploying an NFT
+
+In this tutorial, you'll create an NFT collection that will allow for multiples of the same NFT to be minted. This example will set a maximum supply of 50 NFT tokens, meaning 50 NFTs with unique identifiers will be minted, but each will have the same benefits and attributes.
+
+### Prerequisites
+
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
+
+### Cloning the `dip-721-nft-container` example
+
+To get started, open a new terminal window, navigate into your working directory (`developer_journey`), then use the following commands to clone the DFINITY examples repo and navigate into the `dip-721-nft-container` directory:
+
+```bash
+git clone https://github.com/dfinity/examples/
+cd examples/motoko/dip-721-nft-container
+```
+
+:::info
+A Rust version of this project exists at `examples/rust/dip-721-nft-container`.
+:::
+
+### Confirm your local identity
+
+Verify that you are using the local identity that you'd like to be for deploying and minting your NFTs. This example will showcase using the `DevJourney` identity:
+
+```bash
+dfx identity use DevJourney
+```
+
+### Reviewing the project's files
+
+```bash
+├── README.md
+├── demo.sh
+├── dfx.json
+└── src
+    ├── Main.mo
+    └── Types.mo
+```
+
+This project uses a single-canister architecture as there is only one backend canister defined in the `dfx.json` file. This canister, called `dip721_nft_container`, uses the source code found in the file `src/Main.mo`:
+
+```json
+{
+  "canisters": {
+    "dip721_nft_container": {
+      "main": "src/Main.mo"
+    }
+  }
+}
+```
+
+This project does not provide a frontend or user interface canister, meaning the project can only be interacted with by making calls to the backend canister via the CLI or through the Candid UI interface in a local web browser.
+
+Next, open and review the canister's source code file at `src/Main.mo`. The code has been annotated with comments to explain the code's logic:
+
+
+```motoko
+
+// Import the necessary packages
+import Nat "mo:base/Nat";
+import Nat8 "mo:base/Nat8";
+import Nat16 "mo:base/Nat16";
+import Nat32 "mo:base/Nat32";
+import Nat64 "mo:base/Nat64";
+import List "mo:base/List";
+import Array "mo:base/Array";
+import Option "mo:base/Option";
+import Bool "mo:base/Bool";
+import Principal "mo:base/Principal";
+import Types "./Types";
+
+
+// Define a shared actor class called 'Dip721NFT' that takes a 'Principal' ID as the custodian value and is initialized with the types for the Dip721NonFungibleToken.
+// This actor class also defines several stable variables.
+shared actor class Dip721NFT(custodian: Principal, init : Types.Dip721NonFungibleToken) = Self {
+  stable var transactionId: Types.TransactionId = 0;
+  stable var nfts = List.nil<Types.Nft>();
+  stable var custodians = List.make<Principal>(custodian);
+  stable var logo : Types.LogoResult = init.logo;
+  stable var name : Text = init.name;
+  stable var symbol : Text = init.symbol;
+  stable var maxLimit : Nat16 = init.maxLimit;
+
+  // Define a 'null_address' variable. Check out the forum post for a detailed explanation:
+  // https://forum.dfinity.org/t/is-there-any-address-0-equivalent-at-dfinity-motoko/5445/3
+  let null_address : Principal = Principal.fromText("aaaaa-aa");
+
+  // Define a public function called 'balanceOfDip721' that returns the current balance of NFTs for the current user:
+  public query func balanceOfDip721(user: Principal) : async Nat64 {
+    return Nat64.fromNat(
+      List.size(
+        List.filter(nfts, func(token: Types.Nft) : Bool { token.owner == user })
+      )
+    );
+  };
+
+  // Define a public function called 'ownerOfDip721' that returns the principal that owns an NFT:
+  public query func ownerOfDip721(token_id: Types.TokenId) : async Types.OwnerResult {
+    let item = List.find(nfts, func(token: Types.Nft) : Bool { token.id == token_id });
+    switch (item) {
+      case (null) {
+        return #Err(#InvalidTokenId);
+      };
+      case (?token) {
+        return #Ok(token.owner);
+      };
+    };
+  };
+
+  // Define a shared function called 'safeTransferFromDip721' that provides functionality for transferring NFTs and checks if the transfer is from the 'null_address', and errors if it is:
+  public shared({ caller }) func safeTransferFromDip721(from: Principal, to: Principal, token_id: Types.TokenId) : async Types.TxReceipt {
+    if (to == null_address) {
+      return #Err(#ZeroAddress);
+    } else {
+      return transferFrom(from, to, token_id, caller);
+    };
+  };
+
+  // Define a shared function called 'transferFromDip721' that provides functionality for transferring NFTs without checking if the transfer is from the 'null_address':
+  public shared({ caller }) func transferFromDip721(from: Principal, to: Principal, token_id: Types.TokenId) : async Types.TxReceipt {
+    return transferFrom(from, to, token_id, caller);
+  };
+
+  func transferFrom(from: Principal, to: Principal, token_id: Types.TokenId, caller: Principal) : Types.TxReceipt {
+    let item = List.find(nfts, func(token: Types.Nft) : Bool { token.id == token_id });
+    switch (item) {
+      case null {
+        return #Err(#InvalidTokenId);
+      };
+      case (?token) {
+        if (
+          caller != token.owner and
+          not List.some(custodians, func (custodian : Principal) : Bool { custodian == caller })
+        ) {
+          return #Err(#Unauthorized);
+        } else if (Principal.notEqual(from, token.owner)) {
+          return #Err(#Other);
+        } else {
+          nfts := List.map(nfts, func (item : Types.Nft) : Types.Nft {
+            if (item.id == token.id) {
+              let update : Types.Nft = {
+                owner = to;
+                id = item.id;
+                metadata = token.metadata;
+              };
+              return update;
+            } else {
+              return item;
+            };
+          });
+          transactionId += 1;
+          return #Ok(transactionId);
+        };
+      };
+    };
+  };
+
+  // Define a public function that queries and returns the supported interfaces:
+  public query func supportedInterfacesDip721() : async [Types.InterfaceId] {
+    return [#TransferNotification, #Burn, #Mint];
+  };
+
+ // Define a public function that queries and returns the NFT's logo:
+  public query func logoDip721() : async Types.LogoResult {
+    return logo;
+  };
+
+  // Define a public function that queries and returns the NFT's name:
+  public query func nameDip721() : async Text {
+    return name;
+  };
+
+  // Define a public function that queries and returns the NFT's symbol:
+  public query func symbolDip721() : async Text {
+    return symbol;
+  };
+
+  // Define a public function that queries and returns the NFT's total supply value:
+  public query func totalSupplyDip721() : async Nat64 {
+    return Nat64.fromNat(
+      List.size(nfts)
+    );
+  };
+
+  // Define a public function that queries and returns the NFT's metadata:
+  public query func getMetadataDip721(token_id: Types.TokenId) : async Types.MetadataResult {
+    let item = List.find(nfts, func(token: Types.Nft) : Bool { token.id == token_id });
+    switch (item) {
+      case null {
+        return #Err(#InvalidTokenId);
+      };
+      case (?token) {
+        return #Ok(token.metadata);
+      }
+    };
+  };
+
+  // Define a public function that queries and returns the NFT's max limit value:
+  public query func getMaxLimitDip721() : async Nat16 {
+    return maxLimit;
+  };
+
+  // Define a public function that returns the NFT's metadata for the current user:
+  public func getMetadataForUserDip721(user: Principal) : async Types.ExtendedMetadataResult {
+    let item = List.find(nfts, func(token: Types.Nft) : Bool { token.owner == user });
+    switch (item) {
+      case null {
+        return #Err(#Other);
+      };
+      case (?token) {
+        return #Ok({
+          metadata_desc = token.metadata;
+          token_id = token.id;
+        });
+      }
+    };
+  };
+
+  // Define a public function that queries and returns the token IDs owned by the current user:
+  public query func getTokenIdsForUserDip721(user: Principal) : async [Types.TokenId] {
+    let items = List.filter(nfts, func(token: Types.Nft) : Bool { token.owner == user });
+    let tokenIds = List.map(items, func (item : Types.Nft) : Types.TokenId { item.id });
+    return List.toArray(tokenIds);
+  };
+
+  // Define a public function that mints the NFT token:
+  public shared({ caller }) func mintDip721(to: Principal, metadata: Types.MetadataDesc) : async Types.MintReceipt {
+    if (not List.some(custodians, func (custodian : Principal) : Bool { custodian == caller })) {
+      return #Err(#Unauthorized);
+    };
+
+    let newId = Nat64.fromNat(List.size(nfts));
+    let nft : Types.Nft = {
+      owner = to;
+      id = newId;
+      metadata = metadata;
+    };
+
+    nfts := List.push(nft, nfts);
+
+    transactionId += 1;
+
+    return #Ok({
+      token_id = newId;
+      id = transactionId;
+    });
+  };
+}
+```
+
+
+Then, open and review the `src/Types.mo` file, which defines a series of types that are imported into the `src/Main.mo` file:
+
+```motoko
+import Nat "mo:base/Nat";
+import Nat8 "mo:base/Nat8";
+import Nat16 "mo:base/Nat16";
+import Nat32 "mo:base/Nat32";
+import Nat64 "mo:base/Nat64";
+import Blob "mo:base/Blob";
+import Principal "mo:base/Principal";
+
+module {
+  public type Dip721NonFungibleToken = {
+    logo: LogoResult;
+    name: Text;
+    symbol: Text;
+    maxLimit : Nat16;
+  };
+
+  public type ApiError = {
+    #Unauthorized;
+    #InvalidTokenId;
+    #ZeroAddress;
+    #Other;
+  };
+
+  public type Result<S, E> = {
+    #Ok : S;
+    #Err : E;
+  };
+
+  public type OwnerResult = Result<Principal, ApiError>;
+  public type TxReceipt = Result<Nat, ApiError>;
+
+  public type TransactionId = Nat;
+  public type TokenId = Nat64;
+
+  public type InterfaceId = {
+    #Approval;
+    #TransactionHistory;
+    #Mint;
+    #Burn;
+    #TransferNotification;
+  };
+
+  public type LogoResult = {
+    logo_type: Text;
+    data: Text;
+  };
+
+  public type Nft = {
+    owner: Principal;
+    id: TokenId;
+    metadata: MetadataDesc;
+  };
+
+  public type ExtendedMetadataResult = Result<{
+    metadata_desc: MetadataDesc;
+    token_id: TokenId;
+  }, ApiError>;
+
+  public type MetadataResult = Result<MetadataDesc, ApiError>;
+
+  public type MetadataDesc = [MetadataPart];
+
+  public type MetadataPart = {
+    purpose: MetadataPurpose;
+    key_val_data: [MetadataKeyVal];
+    data: Blob;
+  };
+
+  public type MetadataPurpose = {
+    #Preview;
+    #Rendered;
+  };
+
+  public type MetadataKeyVal = {
+    key: Text;
+    val: MetadataVal;
+  };
+
+  public type MetadataVal = {
+    #TextContent : Text;
+    #BlobContent : Blob;
+    #NatContent : Nat;
+    #Nat8Content: Nat8;
+    #Nat16Content: Nat16;
+    #Nat32Content: Nat32;
+    #Nat64Content: Nat64;
+  };
+
+  public type MintReceipt = Result<MintReceiptPart, ApiError>;
+
+  public type MintReceiptPart = {
+    token_id: TokenId;
+    id: Nat;
+  };
+};
+```
+
+### Starting a local replica
+
+Before you can deploy the project's canisters, you'll need to assure that a local replica is running with the command:
+
+```bash
+dfx start --clean --background
+```
+
+### Deploying the project's canister
+
+Now that you've reviewed the canister's source code, you can now move onto creating your NFT token. To create your NFT, you will need an image file that will be used as the NFT's logo. Save this image file in the project's directory as the name `NFT_logo.png`.
+
+
+![NFT collection logo](../_attachments/NFT_Logo.png)
+
+Then, you can deploy the canister with the following initialization arguments:
+
+```bash
+dfx deploy dip721_nft_container --argument "(
+  principal\"$(dfx identity get-principal)\",
+  record {
+    logo = record {
+      logo_type = \"NFT_logo/png\";
+      data = \"\";
+    };
+    name = \"Dev Journey NFT\";
+    symbol = \"DJNFT\";
+    maxLimit = 50;
+  }
+)"
+```
+
+#### What this command does
+
+- `principal`: Refers to the initial **custodian** of the NFT. A custodian is a user who has the permissions to administrate the NFT.
+
+- `"$(dfx identity get-principal)"`: This string automatically interpolates the current identity used by `dfx` when this command was executed. In this tutorial, that identity will be the `DevJourney` identity.
+
+- `logo`: Refers to the image file that represents the NFT.
+
+- `name`: Refers to the string of text used as the name of the NFT.
+
+- `symbol`: Refers to a short, unique string of characters used to identity the NFT tokens. A short, unique symbol to identify the token.
+
+- `maxLimit`: Refers to the maximum number of NFTs that can be minted.
+
+After running this command, you will receive output that resembles the following:
+
+You will receive output that resembles the following:
+
+```bash
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    dip721_nft_container: http://0.0.0.0:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
+```
+
+### Minting an NFT
+
+Now that your canister is deployed, you can interact with it to mint your first NFT. Use the following command to call the canister's method `mintDip721`:
+
+```bash
+dfx canister call dip721_nft_container mintDip721 \
+"(
+  principal\"$(dfx identity get-principal)\",
+  vec {
+    record {
+      purpose = variant{Rendered};
+      data = blob\"Developer Journey NFT\";
+      key_val_data = vec {
+        record { key = \"description\"; val = variant{TextContent=\"The NFT metadata can hold arbitrary metadata\"}; };
+        record { key = \"tag\"; val = variant{TextContent=\"education\"}; };
+        record { key = \"contentType\"; val = variant{TextContent=\"text/plain\"}; };
+        record { key = \"locationType\"; val = variant{Nat8Content=4:nat8} };
+      }
+    }
+  }
+)"
+```
+
+#### What this command does
+
+This command makes a call to the canister's `mintDip721` method and passes the following parameters to the method:
+
+- `description`: An string of text that describes the NFT's arbitrary metadata.
+
+- `tag`: A string of text used to tag the NFT. Tags are typically used by search engines to help index search results.
+
+- `contentType`: Refers to the type of content being minted into the NFT; in this example, the string 'Developer Journey NFT' is being passed to the method to be minted, so the `contentType` of `text/plain` is set.
+
+- `locationType`: Refers to a `nat8` numerical value that is used to describe the NFT's location.
+
+If successful, this command will return output that resembles the following:
+
+```
+(variant { Ok = record { id = 1 : nat; token_id = 0 : nat64 } })
+```
+
+
+### Transferring an NFT
+
+The DIP721 standard supports transferring an NFT to another principal value through the use of the `transferFromDip721` and `safeTransferFromDip721` methods.
+
+To transfer an NFT to another identity, first you will need a second identity which will become the identity that receives the transferred NFT. Create another identity with the command:
+
+```bash
+dfx identity new NftTransfer
+```
+
+Then, create an environment variable that will store this new identity's principal value:
+
+```bash
+NFT_TRANSFER=$(dfx --identity NftTransfer identity get-principal)
+```
+
+You can verify that this environment variable was set correctly by printing its value with the `echo` command:
+
+```bash
+echo $NFT_TRANSFER
+```
+
+This should return the identity's principal:
+
+```bash
+glrn5-gqnie-bclyf-cskgl-guo64-7p3r3-tb57r-5adx2-c5owk-2s32r-hqe
+```
+
+Now, to transfer the NFT from your `DevJourney` identity to the `NftTransfer` identity, use the following command that calls the `dip721_nft_container` canister's method `transferFromDip721`:
+
+```bash
+dfx canister call dip721_nft_container transferFromDip721 "(principal\"$(dfx identity get-principal)\", principal\"$NFT_TRANSFER\", 0)"
+```
+
+In this command, the `transferFromDip721` method is used to transfer the NFT with token ID of `0` from the current user's principal (defined by `"$(dfx identity get-principal)\"`), to the principal stored in the environment variable `NFT_TRANSFER`.
+
+If successful, this command will return output that resembles the following:
+
+```bash
+(variant { Ok = 2 : nat })
+```
+
+To transfer the NFT back to the original user identity, you can use the same command but with the opposite order of principals:
+
+```bash
+dfx canister call dip721_nft_container transferFromDip721 "(principal\"$NFT_TRANSFER\", principal\"$(dfx identity get-principal)\", 0)"
+```
+
+This second transfer works since the identity making the call, your `DevJourney` identity, has custodian rights to modify the NFT. This command will return output that resembles the following:
+
+```bash
+(variant { Ok = 3 : nat })
+```
+
+### Querying the balance of NFTs for your user principal
+
+To query the balance of NFTs that your user principal owns, you can make a call to the canister's `balanceOfDip721` method with the command:
+
+```bash
+dfx canister call dip721_nft_container balanceOfDip721 "(principal\"$(dfx identity get-principal)\")"
+```
+
+For this tutorial, the output of this command should return a balance of `1`:
+
+```bash
+(1 : nat64)
+```
+
+### Querying the maximum amount of NFTs that can be minted
+
+To query the maximum amount of NFTs that can be minted, you can make a call to the canister's `getMaxLimitDip721` method with the command:
+
+```bash
+dfx canister call dip721_nft_container getMaxLimitDip721
+```
+
+In this tutorial, the output of this command should return a balance of `50`, since this is the value that was set in the `maxLimit` parameter when the NFT canister was originally created:
+
+```bash
+(50 : nat16)
+```
+
+### Querying the NFT's metadata
+
+To query the NFT's metadata information, first you will need the token's ID. This was returned in the output of the command used when you minted the NFT with the `mintDip721` method:
+
+```bash
+(variant { Ok = record { id = 1 : nat; token_id = 0 : nat64 } })
+```
+
+In this example, the token ID is `0`. Then, use this token ID in the following command to call the canister's `getMetadataDip721` method:
+
+```bash
+dfx canister call dip721_nft_container getMetadataDip721 "0"
+```
+
+This command will return the metadata for the NFT with token ID `0`:
+
+```bash
+(
+  variant {
+    Ok = vec {
+      record {
+        data = blob "Developer Journey NFT";
+        key_val_data = vec {
+          record {
+            key = "description";
+            val = variant {
+              TextContent = "The NFT metadata can hold arbitrary metadata"
+            };
+          };
+          record { key = "tag"; val = variant { TextContent = "education" } };
+          record {
+            key = "contentType";
+            val = variant { TextContent = "text/plain" };
+          };
+          record {
+            key = "locationType";
+            val = variant { Nat8Content = 4 : nat8 };
+          };
+        };
+        purpose = variant { Rendered };
+      };
+    }
+  },
+)
+```
+
+### Querying token IDs owned by your user
+
+To query all token IDs owned by your user, you can make a call to the `getTokenIdsForUserDip721` method. At this point in the tutorial, your identity only owns a single NFT. To own multiple NFTs, first mint another with the command:
+
+```bash
+dfx canister call dip721_nft_container mintDip721 \
+"(
+  principal\"$(dfx identity get-principal)\",
+  vec {
+    record {
+      purpose = variant{Rendered};
+      data = blob\"Developer Journey NFT #2\";
+      key_val_data = vec {
+        record { key = \"description\"; val = variant{TextContent=\"This is the second NFT minted.\"}; };
+        record { key = \"tag\"; val = variant{TextContent=\"education\"}; };
+        record { key = \"contentType\"; val = variant{TextContent=\"text/plain\"}; };
+        record { key = \"locationType\"; val = variant{Nat8Content=4:nat8} };
+      }
+    }
+  }
+)"
+```
+
+Then, you can query the token IDs owned by your user principal with the command:
+
+```bash
+dfx canister call dip721_nft_container getTokenIdsForUserDip721 "(principal\"$(dfx identity get-principal)\")"
+```
+
+This command will return the two token IDs (token IDs `0` and `1`) your user principal owns:
+
+```bash
+(vec { 1 : nat64; 0 : nat64 })
+```
+
+### Querying the NFT's information
+
+To query the NFT's logo image, you can make a call to the canister's `logoDip721` method using the command:
+
+```bash
+dfx canister call dip721_nft_container logoDip721
+```
+
+This command will return the NFT logo's image file:
+
+```bash
+(record { data = ""; logo_type = "NFT_logo/png" })
+```
+
+To query the NFT's name, you can make a call to the `nameDip721` method using the command:
+
+```bash
+dfx canister call dip721_nft_container nameDip721
+```
+
+This will return the NFT's name that was set when you created the NFT canister:
+
+```bash
+("Dev Journey NFT")
+```
+
+To query the NFT's symbol, you can make a call to the `symbolDip721` method using the command:
+
+```bash
+dfx canister call dip721_nft_container symbolDip721
+```
+
+This will return the NFT's symbol:
+
+```
+("DJNFT")
+```
+
+To query the NFT's total supply of tokens that have been minted, you can make a call to the `totalSupplyDip721` method using the command:
+
+```bash
+dfx canister call dip721_nft_container totalSupplyDip721
+```
+
+This will return the number of NFTs that have been minted:
+
+```bash
+(2 : nat64)
+```
+
+### Querying the owner of a specific token ID
+
+
+To get the principal ID that owns a specific NFT token ID, you can query the `ownerOfDipe721` method with the token ID by running the following command:
+
+```bash
+dfx canister call dip721_nft_container ownerOfDip721 "0"
+```
+
+This will return your user principal:
+
+```bash
+(
+  variant {
+    Ok = principal "5wuse-ejxao-gkqq6-4dhl5-hn5ps-2mgop-2se4s-w4zle-agr6j-svlhq-3qe"
+  },
+)
+```
+
+
+You can verify that this is the same principal that you used to mint the NFT by querying principal ID of the local developer identity currently used:
+
+```bash
+dfx identity get-principal
+```
+
+## Resources
+
+- [DIP721 standard](https://github.com/Psychedelic/DIP721).
+
+- [DIP721 specification](https://github.com/Psychedelic/DIP721/blob/develop/spec.md).
+
+- [ICRC-7 specification draft document](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md).
+
+
+## Need help?
+
+Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+
+- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+
+- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+
+- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
+
+- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
+
+- [Upcoming hackathons](https://dfinity.org/hackathons/).
+
+- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+
+- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+
+## Next steps
+
+- [5.5 Creating an auction dapp](/docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial)

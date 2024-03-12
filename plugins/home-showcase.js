@@ -1,45 +1,50 @@
+const showcase = require("../showcase.json");
+
+let cache;
+
 /** @type {import('@docusaurus/types').PluginModule} */
 const showcaseProjectsPlugin = async function () {
   return {
     name: "home-showcase",
     async loadContent() {
-      const showcase = require("../showcase.json");
+      if (!cache) {
+        const ids = [
+          "dscvr",
+          "distrikt",
+          "mora",
+          "funded",
+          "kinic",
+          "cubetopia",
+          "plethora",
+          "yumi",
+          "hot-or-not",
+          "taggr",
+          "catalyze",
+        ];
 
-      const ids = [
-        "dscvr",
-        "distrikt",
-        "mora",
-        "funded",
-        "kinic",
-        "cubetopia",
-        "plethora",
-        "yumi",
-        "hot-or-not",
-        "taggr",
-        "catalyze",
-      ];
+        const projects = ids
+          .map((id) => showcase.find((project) => project.id === id))
+          .filter((project, index) => {
+            if (!project) {
+              console.warn(`Project with id ${ids[index]} not found`);
+              return false;
+            }
+            return true;
+          });
 
-      const projects = ids
-        .map((id) => showcase.find((project) => project.id === id))
-        .filter((project, index) => {
-          if (!project) {
-            console.warn(`Project with id ${ids[index]} not found`);
-            return false;
-          }
-          return true;
+        const transformed = projects.map((project) => {
+          return {
+            name: project.name,
+            oneLiner: project.oneLiner,
+            website: project.website,
+            stats: project.stats,
+            logo: project.logo,
+          };
         });
 
-      const transformed = projects.map((project) => {
-        return {
-          name: project.name,
-          oneLiner: project.oneLiner,
-          website: project.website,
-          stats: project.stats,
-          logo: project.logo,
-        };
-      });
-
-      return transformed;
+        cache = transformed;
+      }
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;

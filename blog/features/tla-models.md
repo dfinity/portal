@@ -7,7 +7,7 @@ image: /img/blog/tla-models.webp
 ---
 
 
-Earlier this year, we highlighted the benefits of applying TLA+ to canister smart contracts on the Internet Computer. The TLDR: (1) the potential for immediate monetary loss makes security and correctness critical for smart contracts, (2) formal methods such as TLA+ increase systems’ correctness and security in general, and (3) TLA+ is in particular good at weeding out a very frequent class of bugs, called reentrancy bugs, from canisters.
+Earlier this year, we highlighted the benefits of applying TLA+ to canister smart contracts on the Internet Computer. The TLDR: (1) the potential for immediate monetary loss makes security and correctness critical for smart contracts, (2) formal methods such as TLA+ increase the protocol’s correctness and security in general, and (3) TLA+ is in particular good at weeding out a very frequent class of bugs, called reentrancy bugs, from canisters.
 
 After some cleanup work, we’re excited to announce that we’ve just open sourced all of our TLA+ models. You’ll find models of the following canisters on GitHub:
 

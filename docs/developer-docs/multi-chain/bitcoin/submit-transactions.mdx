@@ -1,0 +1,187 @@
+---
+keywords: [advanced, bitcoin, btc, tutorial, submit transactions, submit bitcoin transactions]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Sending Bitcoin transactions
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
+
+## Overview
+
+To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the following method:
+
+- `bitcoin_send_transaction`: Submits a transaction to the Bitcoin network.
+
+
+## Signing transactions 
+
+Before a transaction can be sent to the Bitcoin network, it must be signed using the Threshold ECDSA API method `sign_with_ecdsa` and an ECDSA public key, which can be returned by calling the API method `ecdsa_public_key`.
+
+A code example using these API methods can be found below:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+  public func ecdsa_public_key(key_name : Text, derivation_path : [Blob]) : async Blob {
+    // Retrieve the public key of this canister at derivation path
+    // from the ECDSA API.
+    let res = await ecdsa_canister_actor.ecdsa_public_key({
+        canister_id = null;
+        derivation_path;
+        key_id = {
+            curve = #secp256k1;
+            name = key_name;
+        };
+    });
+        
+    res.public_key
+  };
+
+ public func sign_with_ecdsa(key_name : Text, derivation_path : [Blob], message_hash : Blob) : async Blob {
+    ExperimentalCycles.add(SIGN_WITH_ECDSA_COST_CYCLES);
+    let res = await ecdsa_canister_actor.sign_with_ecdsa({
+        message_hash;
+        derivation_path;
+        key_id = {
+            curve = #secp256k1;
+            name = key_name;
+        };
+    });
+        
+    res.signature
+  };
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+pub async fn ecdsa_public_key(key_name: String, derivation_path: Vec<Vec<u8>>) -> Vec<u8> {
+    // Retrieve the public key of this canister at the given derivation path
+    // from the ECDSA API.
+    let res: Result<(ECDSAPublicKeyReply,), _> = call(
+        Principal::management_canister(),
+        "ecdsa_public_key",
+        (ECDSAPublicKey {
+            canister_id: None,
+            derivation_path,
+            key_id: EcdsaKeyId {
+                curve: EcdsaCurve::Secp256k1,
+                name: key_name,
+            },
+        },),
+    )
+    .await;
+
+    res.unwrap().0.public_key
+}
+
+pub async fn sign_with_ecdsa(
+    key_name: String,
+    derivation_path: Vec<Vec<u8>>,
+    message_hash: Vec<u8>,
+) -> Vec<u8> {
+    let res: Result<(SignWithECDSAReply,), _> = call_with_payment(
+        Principal::management_canister(),
+        "sign_with_ecdsa",
+        (SignWithECDSA {
+            message_hash,
+            derivation_path,
+            key_id: EcdsaKeyId {
+                curve: EcdsaCurve::Secp256k1,
+                name: key_name,
+            },
+        },),
+        SIGN_WITH_ECDSA_COST_CYCLES,
+    )
+    .await;
+
+    res.unwrap().0.signature
+}
+```
+
+</TabItem>
+</Tabs>
+
+A full example of using the Threshold ECDSA API can be found in the [basic Bitcoin example](https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/EcdsaApi.mo).
+
+## Sending transactions
+
+To send transactions to the Bitcoin network, make a call to the `bitcoin_send_transaction` Bitcoin API method. You can create a function in your canister to call this method such as:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+ type ManagementCanisterActor = actor {
+      bitcoin_send_transaction : SendTransactionRequest -> async ();
+  };
+
+  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+
+  public func send_transaction(network : Network, transaction : [Nat8]) : async () {
+    let transaction_fee =
+        SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
+
+    ExperimentalCycles.add(transaction_fee);
+    await management_canister_actor.bitcoin_send_transaction({
+        network;
+        transaction;
+    })
+  };
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+use ic_cdk::api::management_canister::bitcoin::{
+    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
+    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
+};
+
+pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
+    let transaction_fee = SEND_TRANSACTION_BASE_CYCLES
+        + (transaction.len() as u64) * SEND_TRANSACTION_PER_BYTE_CYCLES;
+
+    let res: Result<(), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_send_transaction",
+        (SendTransactionRequest {
+            network: network.into(),
+            transaction,
+        },),
+        transaction_fee,
+    )
+    .await;
+
+    res.unwrap();
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+Then make a call to this canister's function with the command:
+
+```
+dfx canister call CANISTER_NAME send '(record { destination_address = "ADDRESS"; amount_in_satoshi = 100000000; })'
+```
+
+Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with the destination Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
+
+## Resources
+
+- [Basic Bitcoin example dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+
+- [Motoko Bitcoin integration algorithms](https://github.com/tgalal/motoko-bitcoin/tree/10cf7f2efbba9bb4d077013db1b990143f193844).
+
+- [Basic Bitcoin example dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).

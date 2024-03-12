@@ -16,9 +16,17 @@ const Fallback: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-export const StatsPanel: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const StatsPanel: React.FC<{
+  children: ReactNode;
+  className?: string;
+}> = ({ children, className }) => {
   return (
-    <div className="mt-20 backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl py-12 px-6 md:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10">
+    <div
+      className={clsx(
+        "backdrop-blur-md bg-white/80 border border-white border-solid rounded-xl py-12 px-6 md:px-20 ",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -27,11 +35,23 @@ export const StatsPanel: React.FC<{ children: ReactNode }> = ({ children }) => {
 export const Stat: React.FC<{
   title: ReactNode;
   value: ReactNode | null;
-  fallbackValue: string;
+  style?: React.CSSProperties;
+  fallbackValue?: string;
   titleClassName?: string;
-}> = ({ title, value, fallbackValue, titleClassName }) => {
+  className?: string;
+}> = ({
+  title,
+  value,
+  fallbackValue = "",
+  titleClassName,
+  style = {},
+  className,
+}) => {
   return (
-    <figure className="m-0 flex flex-col gap-2 items-center">
+    <figure
+      className={clsx("m-0 flex flex-col gap-2 items-center", className)}
+      style={style}
+    >
       {value !== null ? (
         <span className="tw-heading-60 text-gradient">{value}</span>
       ) : (

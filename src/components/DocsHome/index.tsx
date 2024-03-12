@@ -6,6 +6,7 @@ import { NetworkStats } from "./NetworkStats";
 import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
 import Blog from "./Blog";
+import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
 
 const queryClient = new QueryClient();
 
@@ -39,54 +40,25 @@ const DocsHomePage: FC = () => {
             Start a DAO, create a token, build dapps and host assets with the
             full tech stack entirely 100% on chain.
           </p>
-          <p className="mb-0">
-            <Link
-              className="button-white button-with-icon"
-              href="/docs/current/developer-docs/"
-            >
-              Start building
-              <LinkArrowRight />
-            </Link>
-          </p>
+          <div className={"flex flex-row gap-2 flex-wrap"}>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="/docs/current/developer-docs/getting-started/overview-of-icp"
+              >
+                Start building
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-1 flex flex-col">
-          <GuidesIcon />
-          <h2 className="tw-heading-5 my-6">Guides</h2>
-          <p className="mb-6 tw-paragraph flex-1">
-            Access all of the documentation guidelines needed to get your
-            project up and running.
-          </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/docs/current/developer-docs/"
-            >
-              Start building
-              <LinkArrowRight />
-            </Link>
-          </p>
-        </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 col-span-1 flex flex-col">
-          <TutorialsIcon />
-          <h2 className="tw-heading-5 my-6">Tutorials</h2>
-          <p className="mb-6 tw-paragraph flex-1">
-            This section will guide developers to create and deploy sample
-            applications in a step-by-step mode.
-          </p>
-          <p className="mb-0">
-            <Link
-              className="link-primary link-with-icon"
-              href="/docs/current/tutorials/"
-            >
-              Start learning
-              <LinkArrowRight />
-            </Link>
-          </p>
+        <div className="sm:col-span-2 md:h-96">
+          <TeaserCarousel />
         </div>
       </section>
       <section className="mt-10">
@@ -96,7 +68,7 @@ const DocsHomePage: FC = () => {
           grid 
           grid-cols-1
           sm:grid-cols-2 
-          md:grid-cols-[1.25fr_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] 
+          md:grid-cols-6 
           px-0
           pb-5 sm:pb-10
         "
@@ -104,8 +76,6 @@ const DocsHomePage: FC = () => {
           <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
             <div className="h-[100px] md:h-[200px] flex-1">
               <h3 className="tw-heading-6 mb-10 sm:mb-0">
-                Programming
-                <br />
                 Languages
               </h3>
             </div>
@@ -114,12 +84,11 @@ const DocsHomePage: FC = () => {
                 Whether you're new to coding or an experienced developer, our
                 documentation portal has everything you need. We provide
                 easy-to-follow guides, tutorials, code samples, and API
-                references for multiple languages like JavaScript, Python, Java,
-                Go, Rust, C++ and more.
+                references for multiple languages like Rust, Motoko, TypeScript, Python.
               </p>
               <p className="mb-0">
                 <Link
-                  href="/docs/current/developer-docs/backend/choosing-language"
+                  href="/docs/current/developer-docs/smart-contracts/write/overview"
                   className="link-primary link-with-icon"
                 >
                   View all <LinkArrowRight />
@@ -140,8 +109,8 @@ const DocsHomePage: FC = () => {
               <div className="flex-1 flex flex-col">
                 <h4 className="tw-heading-5 mb-6">Motoko</h4>
                 <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Get started with high level programming language designed
-                  specifically for the Internet Computer cdcsd
+                  Get started with a high level programming language designed
+                  specifically for the Internet Computer
                 </p>
                 <p className="mb-0">
                   <Link
@@ -154,6 +123,7 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
+
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-r-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
@@ -197,7 +167,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://demergent-labs.github.io/azle"
+                    href="/docs/current/developer-docs/backend/typescript/"
                     className="link-primary"
                     title="Go to Azle docs"
                   >
@@ -206,6 +176,7 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
+
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10  md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
@@ -223,7 +194,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="https://demergent-labs.github.io/kybra"
+                    href="/docs/current/developer-docs/backend/python/"
                     className="link-primary"
                     title="Go to Kybra docs"
                   >
@@ -232,8 +203,191 @@ const DocsHomePage: FC = () => {
                 </p>
               </div>
             </div>
+
+            <div className="snap-center min-w-[80vw] sm:min-w-0  sm:border-r md:border-r-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/solidity.png"
+                  alt="Motoko docs"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Solidity</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Bitfinity allows you to deploy smart contracts on the Internet
+                  Computer written in Solidity, a popular language for DeFi
+                  applications.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/backend/solidity/"
+                    className="link-primary"
+                    title="Go to Solidity"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+
+      <section className="mt-10">
+        <div
+          className="
+          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-6
+          px-0
+          pb-5 sm:pb-10
+        "
+        >
+         <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
+            <div className="h-[100px] md:h-[200px] flex-1">
+              <h3 className="tw-heading-6 mb-10 sm:mb-0">
+                Frameworks
+              </h3>
+            </div>
+            <div className="flex-1 flex flex-col">
+              <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                Get started developing on the Internet Computer using frameworks such as Juno, which make deploying canisters on ICP simple and easy using a UI interface.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/docs/current/developer-docs/web-apps/frameworks/juno"
+                  className="link-primary link-with-icon"
+                >
+                  View all <LinkArrowRight />
+                </Link>
+              </p>
+            </div>
+          </div>
+          <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
+            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/juno.svg"
+                  alt="Juno"
+                  className="h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Juno</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/web-apps/frameworks/juno"
+                    className="link-primary"
+                    title="Juno"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <div
+          className="
+          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-6
+          px-0
+          pb-5 sm:pb-10
+        "
+        >
+          <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
+            <div className="h-[100px] md:h-[200px] flex-1">
+              <h3 className="tw-heading-6 mb-10 sm:mb-0">
+                Quickstart
+                <br />
+                Guides
+              </h3>
+            </div>
+            <div className="flex-1 flex flex-col">
+              <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                If you're a seasoned developer looking to deploy code on ICP,
+                getting started is easy. Our developer Quick Start guides are
+                designed to jumpstart your developer experience on the Internet
+                Computer Protocol using your preferred programming language.
+              </p>
+              <p className="mb-0">
+                <Link
+                  href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+                  className="link-primary link-with-icon"
+                >
+                  View all <LinkArrowRight />
+                </Link>
+              </p>
+            </div>
+            </div>
+          <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
+            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/react.svg"
+                  alt="React quickstart"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">React</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Start here if you're coming to the Internet Computer Protocol
+                  as a React developer.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+                    className="link-primary"
+                    title="Go to Quickstart for React Devs"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+              </div>
+              <div className="snap-center min-w-[80vw] sm:min-w-0  sm:border-r md:border-r-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/juno.svg"
+                  alt="Juno quickstart"
+                  className="w-10 h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Juno</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Get started with Juno, a blockchain-as-a-service platform.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/getting-started/quickstart/juno-quickstart"
+                    className="link-primary"
+                    title="Go to Juno quickstart"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
+            </div>
+            </div>
+            </div>
       </section>
 
       <section className="mt-10">

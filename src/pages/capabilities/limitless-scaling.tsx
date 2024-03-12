@@ -72,11 +72,8 @@ function FeaturePage() {
             </p>
             <h3>Subnet Architecture</h3>
             <p>
-              The Internet Computer Protocol is running on standardized node
-              hardware in independent data centers around the world. The Network
-              Nervous System governance system, scales the network by combining
-              nodes from different data centers to spin up new subnet
-              blockchains.
+            The Internet Computer blockchain runs on a network of nodes owned and operated by a growing community of independent 
+            node providers distributed across the globe. The node providers are selected and vetted by the NNS neuron owners.
               <br />
               <br />
               The Internet Computer's partitioning into subnet blockchains is
@@ -126,7 +123,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/backend/choosing-language"
+              href="/docs/current/developer-docs/smart-contracts/write/overview"
             />
             <CardWithDescription
               title="Community Conversation"
