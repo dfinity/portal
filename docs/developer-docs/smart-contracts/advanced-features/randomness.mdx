@@ -7,11 +7,11 @@ The method takes no input and returns 32 pseudo-random bytes to the caller.
 ## How it works
 Behind the scenes, ICP utilizes a Verifiable Random Function (VRF) to generate randomness.
 
-During each round, the VRF is evaluated with the current round number as input. This process produces a fresh set of random bytes.
+During each round, the VRF is evaluated with the current input being the number of the round. This process produces a fresh set of random bytes.
 
 These bytes become the seed for a pseudorandom number generator (PRNG) called random tape. The random tape is built using [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology) and is used to create unique random values for each canister that requested randomness in the previous round.
 
-`raw_rand` calls only use the random tape from the next round. This ensures that no one can exploit knowledge of the current round's randomness to predict future outputs.
+`raw_rand` calls only use the random tape from the next round. This ensures that no one can exploit knowledge of the current round's randomness to predict future outputs. To learn more about the execution layer of ICP, refer to the [execution layer documentation](https://internetcomputer.org/how-it-works/execution-layer/).
 
 To learn more about the technical details of randomness on ICP, watch the [Community Conversations video on randomness](https://www.youtube.com/watch?v=nl5BuiWClD0).
 
