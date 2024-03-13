@@ -531,22 +531,22 @@ function InternetIdentityPage() {
               className="tw-heading-4 mb-0 md:tw-heading-60 md:flex-1"
               variants={transitions.item}
             >
-              Watch & Learn
+              Get into ICP
             </motion.h2>
             <div className="md:flex-1 md:pt-3">
               <motion.p
                 className="mb-4 tw-paragraph md:tw-lead-sm"
                 variants={transitions.item}
               >
-                From concept to coding — learn all about the Bitcoin Integration
-                feature on ICP through these videos.
+                Watch videos on Internet Identity, tech advancements, the
+                Internet Computer, and global ICP events.
               </motion.p>
               <MotionLink
                 variants={transitions.item}
                 href="https://www.youtube.com/@DFINITY"
                 className="link-primary link-with-icon"
               >
-                Explore more videos <LinkArrowUpRight />
+                Watch new videos every week <LinkArrowUpRight />
               </MotionLink>
             </div>
           </div>

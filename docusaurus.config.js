@@ -227,8 +227,8 @@ const marketingNav = {
       name: "Use",
       auxItems: [
         {
-          name: "Internet Identity",
-          href: "/internet-identity",
+          name: "Create an internet identity",
+          href: "https://identity.ic0.app/",
         },
         { name: "NNS and Staking", href: "https://nns.ic0.app/" },
       ],
@@ -253,7 +253,7 @@ const marketingNav = {
               description: "Govern and get rewards",
             },
             {
-              name: "Create an Internet Identity",
+              name: "Internet Identity",
               href: "/internet-identity",
               description: "Web3 authentication",
             },
