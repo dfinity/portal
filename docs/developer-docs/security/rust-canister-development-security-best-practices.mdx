@@ -716,7 +716,7 @@ Canisters pay for their cycles which makes them inherently vulnerable to attacks
 
 #### Security concern
 
-The correct execution of [canister_inspect_message](../../references/ic-interface-spec#system-api-inspect-message) is not guaranteed in the presence of a malicious node, because it is executed as a [query call](../../references/ic-interface-spec#http-query).
+The correct execution of [canister_inspect_message](../../references/ic-interface-spec#system-api-inspect-message) is not guaranteed because it is executed by a single node and if that node is malicious, it can e.g. simply skip this check. In that case the update call would be executed without any message inspection checks. 
 
 Also note that for inter-canister calls `canister_inspect_message` is not invoked.
 
