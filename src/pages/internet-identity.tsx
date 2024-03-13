@@ -183,7 +183,7 @@ function InternetIdentityPage() {
                   className="link-primary"
                 >
                   <LinkArrowRight />
-                  Integrating with Internet Identity
+                  Integrate Internet Identity
                 </Link>
               </p>
             </TranslatedLayout>
@@ -573,8 +573,8 @@ function InternetIdentityPage() {
                   FAQs
                 </h2>
                 <p className="tw-lead-sm mb-0">
-                  Find answers to commonly asked questions about our Internet
-                  Computer token.
+                  Find answers to commonly asked questions about Internet
+                  Identity.
                 </p>
               </div>
             }

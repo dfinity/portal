@@ -72,9 +72,15 @@ const subnavItems = [
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
       { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
-      { label: "TypeScript", href: "/docs/current/developer-docs/backend/typescript/" },
+      {
+        label: "TypeScript",
+        href: "/docs/current/developer-docs/backend/typescript/",
+      },
       { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      { label: "Solidity", href: "/docs/current/developer-docs/backend/solidity/" },
+      {
+        label: "Solidity",
+        href: "/docs/current/developer-docs/backend/solidity/",
+      },
     ],
   },
   {
@@ -82,7 +88,10 @@ const subnavItems = [
     position: "left",
     label: "Frameworks",
     items: [
-      { label: "Juno", href: "/docs/current/developer-docs/web-apps/frameworks/juno" },
+      {
+        label: "Juno",
+        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
+      },
     ],
   },
   {
@@ -201,11 +210,6 @@ const marketingNav = {
               description: "Native ETH on Internet Computer",
             },
             {
-              name: "Identity on ICP",
-              href: "/internet-identity",
-              description: "One secure identity for all services",
-            },
-            {
               name: "HTTPS Outcalls",
               href: "/https-outcalls",
               description: "Connecting smart contracts to Web2",
@@ -223,8 +227,8 @@ const marketingNav = {
       name: "Use",
       auxItems: [
         {
-          name: "Create an internet identity",
-          href: "https://identity.ic0.app/",
+          name: "Internet Identity",
+          href: "/internet-identity",
         },
         { name: "NNS and Staking", href: "https://nns.ic0.app/" },
       ],
