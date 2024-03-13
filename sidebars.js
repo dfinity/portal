@@ -95,16 +95,26 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Compile",
-          items: ["developer-docs/smart-contracts/compile"],
-        },
-        {
-          type: "category",
           label: "Write",
           items: [
             "developer-docs/smart-contracts/write/overview",
             "developer-docs/smart-contracts/write/resources",
           ],
+        },
+        {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
         },
         {
           type: "category",
