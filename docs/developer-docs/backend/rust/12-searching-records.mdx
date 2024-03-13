@@ -3,6 +3,7 @@ keywords: [intermediate, rust, tutorial, searching records]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 12: Adding and searching simple records
 
@@ -46,7 +47,7 @@ Use `dfx new <project_name>` to create a new project:
 dfx new rust_profile
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Rust':
+You will be prompted to select the language that your backend canister will use. Select 'Rust':
 
 ```
 ? Select a backend language: ›
@@ -56,16 +57,16 @@ You will be prompted to select a language that your backend canister will use. S
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
   ? Select a frontend framework: ›
-❯ SvelteKit
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -82,7 +83,7 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new --type=rust rust_profile
+dfx new rust_profile --type=rust --no-frontend
 ```
 
 </TabItem>
@@ -203,21 +204,21 @@ service : {
 
 Save your changes and close the file to continue.
 
-## Start the local execution environment
+## Start the local canister execution environment
 
-Before you can build the `rust_profile` project, you need to connect to the local execution environment running in your development environment or the Internet Computer blockchain mainnet.
+Before you can build the `rust_profile` project, you need to connect to the local <GlossaryTooltip>replica</GlossaryTooltip> running in your development environment or the Internet Computer blockchain mainnet.
 
-Start the local execution environment on your computer in the background by running the following command:
+Start the local replica on your computer in the background by running the following command:
 
 ``` bash
-dfx start --background --clean
+dfx start --clean --background
 ```
 
 Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click **Allow**.
 
 ## Register, build, and deploy your project
 
-After you connect to the local execution environment running in your development environment, you can register, build, and deploy your project locally.
+After you connect to the local replica running in your development environment, you can register, build, and deploy your project locally.
 
 To do this, run the following command:
 

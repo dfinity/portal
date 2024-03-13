@@ -84,7 +84,7 @@ You can check whether you have the developer tools installed by running `xcode-s
 If you are using a Mac with Apple silicon and are having issues (such as `bad CPU type in executable: dfx`), you may need to install Rosetta.
 
 ```shell
-softwareupdate --install-rosetta 
+softwareupdate --install-rosetta
 ```
 
 ## Failed build when using VMs
@@ -103,7 +103,7 @@ If you are running the IC SDK using a virtual machine image on Ubuntu or CentOS,
 
 ## Address in use error or orphan processes
 
-If you are developing projects locally, you often have the local canister execution environment running either in a separate terminal or in the background. If the local environment processes do not get properly terminated, you might see operating system errors indicating that an address is already in use or or be unable to stop processes normally using the `dfx stop` command.
+If you are developing projects locally, you often have the local replica running either in a separate terminal or in the background. If the local environment processes do not get properly terminated, you might see operating system errors indicating that an address is already in use or or be unable to stop processes normally using the `dfx stop` command.
 
 There are several scenarios in which you might encounter this issue. For example, if you run `dfx start` in a local project directory then change to a different local project directory without first stopping the canister execution environment processes, you might see this issue.
 

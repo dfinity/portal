@@ -71,6 +71,11 @@ const sidebars = {
               label: "Quickstart for React developers",
               id: "developer-docs/getting-started/quickstart/react-quickstart",
             },
+            {
+              type: "doc",
+              label: "Juno quickstart",
+              id: "developer-docs/getting-started/quickstart/juno-quickstart",
+            },
           ],
         },
       ],
@@ -95,6 +100,21 @@ const sidebars = {
             "developer-docs/smart-contracts/write/overview",
             "developer-docs/smart-contracts/write/resources",
           ],
+        },
+        {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
         },
         {
           type: "category",
@@ -221,6 +241,11 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/vetkeys",
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
+            },
+            {
+              type: "doc",
+              label: "On-chain randomness",
+              id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
@@ -482,7 +507,7 @@ const sidebars = {
               items: [
                 "developer-docs/web-apps/user-login/internet-identity/overview",
                 "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-                "developer-docs/web-apps/user-login/internet-identity/integrate-identity",
+                "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
