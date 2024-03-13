@@ -54,8 +54,8 @@ function SustainabilityPage() {
   const isDark = useDarkHeaderInHero(heroRef);
   return (
     <Layout
-      title="Sustainability"
-      description="Scalability and utility with low carbon cost — the Internet Computer is committed to building green tech, not just making claims about it. "
+      title="Blockchain for Sustainable Business"
+      description="Blockchain technology catalyzes sustainability efforts by enhancing transparency, traceability, and accountability in business operations."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-sustainability.jpg"></ShareMeta>
