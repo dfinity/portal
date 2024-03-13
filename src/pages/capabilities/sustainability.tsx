@@ -1,9 +1,14 @@
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "@site/src/components/Common/Icons/LinkArrowUpRight";
 import {
   TranslatedCard,
   TranslatedCardList,
 } from "@site/src/components/Common/TranslatedCards/TranslatedCards";
+import TranslatedLayout from "@site/src/components/Common/TranslatedLayout/TranslatedLayout";
+import { NewsCard } from "@site/src/components/NewsPage/Cards";
+import { Press } from "@site/src/components/NewsPage/types";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
@@ -11,6 +16,19 @@ import React, { useRef } from "react";
 import AnimateSpawn from "../../components/Common/AnimateSpawn";
 import ShareMeta from "../../components/Common/ShareMeta";
 import { useDarkHeaderInHero } from "../../utils/use-dark-header-in-hero";
+
+const MotionLink = motion(Link);
+
+const AnimatedNewsCard = ({
+  news,
+  linkLabel,
+}: Parameters<typeof NewsCard>["0"]) => {
+  return (
+    <motion.div variants={transitions.item} className="flex">
+      <NewsCard news={news} linkLabel={linkLabel} />
+    </motion.div>
+  );
+};
 
 const FeatureCard = ({ iconUrl, title }) => {
   return (
@@ -61,22 +79,20 @@ function SustainabilityPage() {
             <div className="container-10 pt-12 pb-32 md:pb-20 md:pt-36 relative">
               <div className="blob blob-white-dense blob-sm md:blob-md blob-x-5 blob-y-10 md:blob-x-9 opacity-90"></div>
 
-              <div className="sm:w-8/10 md:w-6/10">
-                <motion.h1
-                  className="tw-heading-3 sm:tw-heading-2 mb-6"
-                  variants={transitions.item}
-                >
-                  Blockchain for Sustainable Business
-                </motion.h1>
-                <motion.p
-                  className="tw-lead-sm sm:tw-lead"
-                  variants={transitions.item}
-                >
-                  Blockchain technology catalyzes sustainability efforts by
-                  enhancing transparency, traceability, and accountability in
-                  business operations.
-                </motion.p>
-              </div>
+              <motion.h1
+                className="tw-heading-3 md:tw-heading-2 mb-6 md:w-8/10"
+                variants={transitions.item}
+              >
+                Blockchain for Sustainable Business
+              </motion.h1>
+              <motion.p
+                className="tw-lead-sm md:tw-lead md:w-6/10"
+                variants={transitions.item}
+              >
+                Blockchain technology catalyzes sustainability efforts by
+                enhancing transparency, traceability, and accountability in
+                business operations.
+              </motion.p>
             </div>
           </div>
         </AnimateSpawn>
@@ -175,19 +191,19 @@ function SustainabilityPage() {
             className="container-10 mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-5"
           >
             <FeatureCard
-              iconUrl="/img/features/sustainability/icon-1.png"
+              iconUrl="/img/features/sustainability/icon-1.webp"
               title="Transparency"
             ></FeatureCard>
             <FeatureCard
-              iconUrl="/img/features/sustainability/icon-2.png"
+              iconUrl="/img/features/sustainability/icon-2.webp"
               title="Accountability"
             ></FeatureCard>
             <FeatureCard
-              iconUrl="/img/features/sustainability/icon-3.png"
+              iconUrl="/img/features/sustainability/icon-3.webp"
               title="Verifiability"
             ></FeatureCard>
             <FeatureCard
-              iconUrl="/img/features/sustainability/icon-4.png"
+              iconUrl="/img/features/sustainability/icon-4.webp"
               title="Efficiency"
             ></FeatureCard>
           </AnimateSpawn>
@@ -241,7 +257,7 @@ function SustainabilityPage() {
           variants={transitions.container}
         >
           <img
-            src="/img/features/blob-bg-hero.png"
+            src="/img/features/blob-bg-hero.webp"
             alt=""
             className="absolute left-1/2 -translate-x-7/12 -top-[40vmax] w-[260vmax] max-w-none md:max-w-[300vmin] z-[-1]"
           />
@@ -272,24 +288,24 @@ function SustainabilityPage() {
               variants={transitions.fadeIn}
               src="/img/basics/icon-db.svg"
               aria-hidden
-              className="absolute w-30 md:w-40 top-[-150px] right-[130px] md:top-[-160px] md:right-[20px]"
+              className="absolute -z-1 w-30 md:w-40 top-[-150px] right-[130px] md:top-[-160px] md:right-[20px]"
             />
             <motion.img
               variants={transitions.fadeIn}
               src="/img/basics/icon-iot.svg"
               aria-hidden
-              className="absolute w-30 md:w-40 top-[-220px] right-0 md:top-[-240px] md:right-[-240px]"
+              className="absolute -z-1 w-30 md:w-40 top-[-220px] right-0 md:top-[-240px] md:right-[-240px]"
             />
             <motion.img
               variants={transitions.fadeIn}
               src="/img/basics/icon-plant.svg"
               aria-hidden
-              className="absolute w-30 md:w-40 -top-30 right-[-30px] md:top-[70px] md:right-[-180px]"
+              className="absolute -z-1 w-30 md:w-40 -top-30 right-[-30px] md:top-[70px] md:right-[-180px]"
             />
           </motion.div>
         </AnimateSpawn>
 
-        <section className="bg-page py-20 md:py-30">
+        <section className="bg-page pt-20 md:pt-30">
           <AnimateSpawn
             variants={transitions.container}
             className="container-10"
@@ -308,7 +324,7 @@ function SustainabilityPage() {
                 title="Reporting & certifications"
                 icon={
                   <img
-                    src="/img/features/sustainability/icon-5.png"
+                    src="/img/features/sustainability/icon-5.webp"
                     loading="lazy"
                     aria-hidden="true"
                   />
@@ -328,7 +344,7 @@ function SustainabilityPage() {
                 title="Crypto donation platform"
                 icon={
                   <img
-                    src="/img/features/sustainability/icon-6.png"
+                    src="/img/features/sustainability/icon-6.webp"
                     loading="lazy"
                     aria-hidden="true"
                   />
@@ -348,7 +364,7 @@ function SustainabilityPage() {
                 title="Token-based carbon credit trading platform"
                 icon={
                   <img
-                    src="/img/features/sustainability/icon-7.png"
+                    src="/img/features/sustainability/icon-7.webp"
                     loading="lazy"
                     aria-hidden="true"
                   />
@@ -365,6 +381,218 @@ function SustainabilityPage() {
                 </motion.p>
               </TranslatedCard>
             </TranslatedCardList>
+          </AnimateSpawn>
+        </section>
+
+        <section
+          id="get-report"
+          className="md:container-12 text-white pt-20 md:py-30"
+        >
+          <AnimateSpawn
+            className="px-6 md:px-1/12 pt-6 pb-16 md:py-20 bg-[url(/img/features/sustainability/download-report-bg.webp)] bg-cover md:rounded-[32px] overflow-hidden md:flex relative"
+            variants={transitions.container}
+          >
+            <img
+              src="/img/features/sustainability/img-sustainability-report.webp"
+              alt="Download the sustainability report"
+              loading="lazy"
+              className="w-[130%] max-w-none relative -left-6 md:order-2 md:absolute md:w-[700px] lg:w-[900px] md:-right-20 md:bottom-0 lg:-right-40 lg:-bottom-20 md:left-auto"
+            />
+            <div className="md:w-1/2 md:min-w-5/10 md:order-1">
+              <motion.h3 className="tw-heading-5 mt-4 mb-8 md:tw-heading-3">
+                Download now: Full report of all 10 sustainable business use
+                cases in detail
+              </motion.h3>
+              <form
+                className="md:mr-2/10 grid grid-cols-1 gap-3 md:grid-cols-2"
+                method="post"
+                action="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&id=726e1ebe92"
+              >
+                <input
+                  placeholder="First name"
+                  name="MERGE1"
+                  type="text"
+                  className="input-text input-text-white w-full"
+                  required
+                />
+                <input
+                  placeholder="Last name"
+                  name="MERGE2"
+                  type="text"
+                  className="input-text input-text-white w-full"
+                  required
+                />
+                <input
+                  placeholder="Your Email"
+                  name="MERGE0"
+                  type="email"
+                  className="input-text input-text-white w-full md:col-span-2"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="button-white md:col-span-2 justify-self-start mt-3"
+                >
+                  Download the full report
+                </button>
+              </form>
+              <p className="text-white/50 tw-caption mb-0 mt-6">
+                By providing the contact information required in this form, you
+                agree to be contacted by the DFINITY Foundation in order to
+                inform you about our products and services. Unsubscribe from
+                marketing email communications from DFINITY Foundation by using
+                the unsubscribe link provided in the email.
+              </p>
+            </div>
+          </AnimateSpawn>
+        </section>
+
+        <AnimateSpawn
+          className="bg-infinite overflow-hidden "
+          variants={transitions.container}
+          el={motion.section}
+        >
+          <div className="container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
+            <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5 opacity-70"></div>
+            <div className="flex-1 mt-40 sm:mt-0">
+              <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
+                Connect with us for your Sustainability Use Case
+              </h2>
+              <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
+                Write to us if you would like to develop a use case from the
+                report, or a unique one.
+              </p>
+              <p className="mb-0">
+                <Link href="mailto:comms@dfinity.org" className="button-white">
+                  Get in touch
+                </Link>
+              </p>
+            </div>
+            <div className="flex-1 ">
+              <img
+                src="/img/features/sustainability/get-in-touch.svg"
+                alt=""
+                loading="lazy"
+                className="absolute top-0 right-0 left-0 max-w-md md:max-w-none sm:left-auto sm:-right-30 sm:-top-6"
+              ></img>
+            </div>
+          </div>
+        </AnimateSpawn>
+        <section className="container-12 pt-20 md:pt-30 relative">
+          <div className="flex flex-col gap-16 md:gap-40">
+            <TranslatedLayout
+              imageUrl="/img/features/sustainability/vrc.webp"
+              reverse={true}
+            >
+              <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                Revolutionizing Recycling: Blockchain-powered VRC Initiative
+              </h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                Roland Berger has formed a strategic partnership with The
+                DFINITY Foundation, a Swiss non-profit renowned for its
+                contributions to the Internet Computer Blockchain and extensive
+                blockchain research and development, yielding over 250 patents.
+                This collaboration aims to create the first global recycling
+                incentive standard powered by blockchain, offering a secure and
+                transparent system for tracking recycling credits.
+              </p>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://gulfbusiness.com/cop28-voluntary-recycling-credits-initiative/"
+              >
+                Read the full article
+                <LinkArrowUpRight />
+              </Link>
+            </TranslatedLayout>
+            <TranslatedLayout imageUrl="/img/features/sustainability/cop28.webp">
+              <h3 className="tw-heading-4 md:tw-heading-3 mb-6">ICP @ COP28</h3>
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
+                An international consortium in collaboration with DFINITY
+                Foundation and our partners Roland Berger, BEEAH Group and
+                International Solid Waste Association (ISWA) was at COP28.
+              </p>
+
+              <p className="mb-0">
+                <Link
+                  className="link-primary link-with-icon"
+                  href="https://cryptoslate.com/dfinity-foundation-says-icp-consumes-less-energy-than-cardano-launches-proof-of-green-initiative/"
+                >
+                  Read the full article
+                  <LinkArrowUpRight />
+                </Link>
+              </p>
+            </TranslatedLayout>
+          </div>
+        </section>
+        <section>
+          <AnimateSpawn
+            className="container-10 pt-20 md:pt-30"
+            variants={transitions.container}
+          >
+            <div className="flex flex-col gap-6 md:gap-5 mb-8 md:mb-10 md:flex-row md:w-9/10">
+              <motion.h2
+                className="tw-heading-4 mb-0 md:tw-heading-60 md:flex-1"
+                variants={transitions.item}
+              >
+                News & videos
+              </motion.h2>
+              <div className="md:flex-1 md:pt-3">
+                <motion.p
+                  className="mb-4 tw-paragraph md:tw-lead-sm"
+                  variants={transitions.item}
+                >
+                  From industry news to videos about sustainable topics. Read
+                  the latest about blockchain technology.
+                </motion.p>
+                <MotionLink
+                  variants={transitions.item}
+                  href="/news"
+                  className="link-primary link-with-icon"
+                >
+                  <LinkArrowRight />
+                  Explore more news
+                </MotionLink>
+              </div>
+            </div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="container-12 mb-20 md:mb-30"
+            variants={transitions.container}
+          >
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+              <AnimatedNewsCard
+                news={{
+                  title:
+                    "DFINITY founder says blockchain can bolster efforts to fight climate change",
+                  dateHuman: "December 13, 2023",
+                  press: "cointelegraph.com",
+                  imageUrl:
+                    "/img/features/sustainability/thumb-cointelegraph.webp",
+                  url: "https://gulfbusiness.com/cop28-voluntary-recycling-credits-initiative/",
+                }}
+              />
+              <AnimatedNewsCard
+                news={{
+                  title: "COP28 unveils voluntary recycling credits initiative",
+                  dateHuman: "July 12, 2023",
+                  press: "fastcompanyme.com",
+                  imageUrl:
+                    "/img/features/sustainability/thumb-fastcompany.webp",
+                  url: "https://fastcompanyme.com/news/cop28-unveils-voluntary-recycling-credits-initiative/",
+                }}
+              />
+              <AnimatedNewsCard
+                news={{
+                  title:
+                    "Launch Of Voluntary Recycling Credits: Setting an Incentive Mechanism for the Waste",
+                  dateHuman: "",
+                  press: "",
+                  imageUrl: "/img/features/sustainability/thumb-video-vrc.webp",
+                  url: "https://www.youtube.com/watch?v=YdY8UQ7nrs8&ab_channel=UAEPavilionatCOP28",
+                }}
+                linkLabel="Watch the video"
+              />
+            </div>
           </AnimateSpawn>
         </section>
       </main>
