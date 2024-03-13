@@ -28,13 +28,19 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
+Start `dfx`:
+
+```
+dfx start --clean --background
+```
+
 Use `dfx new <project_name>` to create a new project:
 
 ```
 dfx new ii_integration
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -65,13 +71,25 @@ x Internet Identity
 ⬚ Frontend tests
 ```
 
+
+
 </TabItem>
 
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
+Start `dfx`:
+
+```
+dfx start --clean --background
+```
+
+Use `dfx new <project_name>` to create a new project:
+
 ```bash
 dfx new ii_integration
 ```
+
+As mentioned in the introduction, you'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`.
 
 Open the `dfx.json` file and replace the existing content with the following:
 
@@ -112,17 +130,24 @@ Open the `dfx.json` file and replace the existing content with the following:
 }
 ```
 
+Pull the II canister using `dfx deps`:
+
+```
+dfx deps pull
+```
+
+Initialize the canister. You can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
+
+```
+dfx deps init internet_identity --argument '(null)'
+```
+
+
 </TabItem>
 </Tabs>
 
 
-### Step 2: Start `dfx`:
-
-```
-dfx start --clean --background
-```
-
-### Step 3: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
+### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
 
 ```motoko
 actor {
@@ -134,29 +159,13 @@ actor {
 
 In this actor, there is a single method that responds with the caller's principal. This will show if you make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity.
 
-As mentioned in the introduction, you'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`.
-
-### Step 4: Pull the II canister using `dfx deps`:
-
-```
-dfx deps pull
-```
-
-### Step 5: Initialize the canister.
-
-You can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
-
-```
-dfx deps init internet_identity --argument '(null)'
-```
-
-### Step 6: Install the @dfinity/auth-client package:
+### Step 3: Install the @dfinity/auth-client package:
 
 ```
 npm install @dfinity/auth-client
 ```
 
-### Step 7: Insert the following code into the `src/ii_integration_frontend/src/index.js` file:
+### Step 4: Insert the following code into the `src/ii_integration_frontend/src/index.js` file:
 
 ```
 import {
@@ -211,7 +220,7 @@ This code does the following:
 If you used a project name other than `ii_integration`, you will need to rename the imports and environment variable in the code.
 :::
 
-### Step 8: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
+### Step 5: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
 
 ```html
 <!DOCTYPE html>
@@ -248,7 +257,7 @@ This code provides a simple UI for us to interact with our application.
 If you'd rather clone the repo for this code, it can be found [here](https://github.com/letmejustputthishere/ii_integration_example).
 :::
 
-### Step 9: Deploy the project:
+### Step 6: Deploy the project:
 
 ```
 dfx deps deploy
@@ -259,11 +268,11 @@ dfx deploy
 
 ![Local integration](../_attachments/II_greet_1.png)
 
-### Step 9: Then, select 'Log in'.
+### Step 7: Then, select 'Log in'.
 
 You'll be redirected to the II frontend. Since you're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
-### Step 10: Create a local Internet Identity
+### Step 8: Create a local Internet Identity
 
 - Select 'Create New' from the UI.
 
@@ -287,9 +296,9 @@ This number is your Internet Identity. With this number and your passkey, you wi
 
 Once you save it, select the 'I saved it, continue' button.
 
-### Step 11: Once you are redirected back to the frontend of the app, click the 'Click me!' button.
+### Step 9: Once you are redirected back to the frontend of the app, click the 'Click me!' button.
 
-### Step 12: Your Internet Identity's principal ID will be returned:
+### Step 10: Your Internet Identity's principal ID will be returned:
 
 ![Local integration 4](../_attachments/II_greet_2.png)
 

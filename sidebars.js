@@ -71,6 +71,11 @@ const sidebars = {
               label: "Quickstart for React developers",
               id: "developer-docs/getting-started/quickstart/react-quickstart",
             },
+            {
+              type: "doc",
+              label: "Juno quickstart",
+              id: "developer-docs/getting-started/quickstart/juno-quickstart",
+            },
           ],
         },
       ],
@@ -221,6 +226,11 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/vetkeys",
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
+            },
+            {
+              type: "doc",
+              label: "On-chain randomness",
+              id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",

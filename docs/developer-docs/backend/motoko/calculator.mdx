@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Motoko", "Tutorial"]} />
 
-## Overview 
+## Overview
 In this guide, you are going to write a simple calculator program that creates a single actor with several public entry-point functions to perform basic arithmetic operations.
 
 For this guide, the actor is named `Calc`. The program uses the `cell` variable to contain an integer number that represents the current result of a calculator operation.
@@ -50,26 +50,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new calc
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -86,11 +86,12 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new calc
+dfx new calc --no-frontend
 cd calc
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 
 </TabItem>
 </Tabs>
@@ -109,7 +110,7 @@ For example:
 
 For this guide, changing the name of the source file from `main.mo` to `calc_main.mo` simply illustrates how the setting in the `dfx.json` configuration file determines the source file to be compiled.
 
-In a more complex dapp, you might have multiple source files instead of a single `main` program file. More complex applications might also have specific dependencies between multiple source files that you need to manage using settings in the `dfx.json` configuration file. 
+In a more complex dapp, you might have multiple source files instead of a single `main` program file. More complex applications might also have specific dependencies between multiple source files that you need to manage using settings in the `dfx.json` configuration file.
 
 In a scenario like that, with multiple canisters and programs defined in your `dfx.json` file, having multiple files all named `main.mo` might make navigating your workspace more difficult. The name you choose for each program isn’t significant, but it is important that the name you set in the `dfx.json` file matches the name of your program in the file system.
 

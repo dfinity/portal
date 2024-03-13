@@ -97,6 +97,7 @@ function InternetIdentityPage() {
               imageUrl="/img/internet-identity/image-1.webp"
               reverse={true}
             >
+
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
                 100% decentralized
               </h3>
@@ -366,6 +367,7 @@ function InternetIdentityPage() {
                 />
               }
             >
+
               <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}
