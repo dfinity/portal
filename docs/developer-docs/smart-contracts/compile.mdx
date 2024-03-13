@@ -15,19 +15,33 @@ After you have written the code for your project's <GlossaryTooltip>canisters</G
 
 ## How code is compiled to Wasm
 
-WebAssembly (Wasm) is platform independent and designed to run on a stack-based virtual machine. Wasm itself is not a programming language; it is the result of a programming language being comnpiled and converted into executable machine code. When canister code is compiled into Wasm, the system compiler creates a Wasm module in either a binary format (.wasm) or a compressed binary (.wasm.gz).
+WebAssembly (Wasm) is a platform independent binary format that can be executed in the Wasm virtual machine.
+Many modern compilers support Wasm as the compilation target along with the traditional targets such as x86 and arm32.
 
-This generated Wasm module includes a runtime system which implements a garbage collector function and uses the Wasm heap storage. Then, this module is implemented when the canister's code is installed. 
+There are three types of Wasm depending on where the Wasm virtual machine is hosted and how it interacts with users and the host environment:
 
-<div class="text--center">
-<img src="/img/docs/wasm-module.png" alt="Compile Wasm" width="600"/>
-</div>
+- **Web browser**: the Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
 
-On ICP, [Wasmtime](https://docs.wasmtime.dev/) is supported to run canister smart contracts. 
+- **WASI**: this abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of Web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
+
+- **Vanilla Wasm**: there is no standard API for interacting with users and the host environment. Every host environment provides their own API. ICP uses this approach and provides the set of functions called the System API to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
+
+The Canister Development Kit (CDK) of supported programming language comes with build scripts that link the System API and compile the code to Wasm programs that are compatible with ICP:
+
+- Rust and Motoko compile to the `wasm32-unknown-unknown` target directly under the hood.
+- Azle and Kybra first compile to the `wasm32-wasi` target and then convert the Wasm binary to `wasm32-unknown-unknown` using the `wasi2ic` tool.
+
+For convenience of developers, `dfx` wraps the CDK specific build scripts and provides the `dfx build` command to compile the code to a Wasm binary.
 
 ## Compiling your canister
 
-To compile your canister's Wasm module, you can use the `dfx build` command. The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to compile a specific canister or all canisters defined in the project's [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file.
+To compile your canister's Wasm module, you can use the `dfx build` command. 
+
+:::info
+`dfx` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`. 
+:::
+
+The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to compile a specific canister or all canisters defined in the project's [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file.
 
 Check out the [default project template](/docs/current/developer-docs/getting-started/default-template) for more information on `dfx.json`.
 
@@ -41,7 +55,7 @@ dfx build --network ic // build on the mainnet
 ```
 
 :::caution
-Compiling a canister on the mainnet will cost [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
+Compiling a canister then deploying it on the mainnet will cost [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
 :::
 
 This command must be run from within the project's directory.
