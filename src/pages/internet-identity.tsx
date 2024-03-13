@@ -27,7 +27,7 @@ function InternetIdentityPage() {
   return (
     <Layout
       title="Internet Identity"
-      description="Internet Identity redefines user experiences by removing friction from the authentication journey and enabling data sovereignty."
+      description="Internet Identity on ICP redefines user experiences by removing friction from the authentication journey and enabling data sovereignty."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.jpg"></ShareMeta>
 
