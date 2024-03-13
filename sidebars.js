@@ -457,10 +457,11 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
-            "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
-            "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/serving-static-assets",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/bundlers",
             "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
         },
