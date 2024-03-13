@@ -102,6 +102,21 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
+        },
+        {
           type: "category",
           label: "Deploy",
           items: [
