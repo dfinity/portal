@@ -572,6 +572,13 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "DeAI",
+      items: [
+        "developer-docs/ai/overview"
+      ],
+    },
+    {
+      type: "category",
       label: "DeFi",
       items: [
         {
