@@ -39,7 +39,7 @@ function SustainabilityPage() {
               bg-[url(/img/features/sustainability/download-report-bg-mobile.webp)] 
               md:bg-[url(/img/features/sustainability/download-report-bg.webp)] 
               bg-[length:100%_100%]
-              h-screen max-h-[950px]
+              md:h-screen md:max-h-[760px]
             "
             ref={heroRef}
           >
@@ -56,16 +56,12 @@ function SustainabilityPage() {
                 />
               </motion.div>
               <motion.h1
-                className="tw-heading-5 md:tw-heading-60 mb-8 md:mb-16 md:w-8/10 mt-6"
+                className="tw-heading-5 md:tw-heading-3 mb-8 md:mb-16 md:w-5/10 mt-6"
                 variants={transitions.fadeIn}
               >
-                Download now: Full report of all 10 sustainable business use
-                cases in detail
+                Thank you for signing up to the newsletter!
               </motion.h1>
               <motion.div variants={transitions.fadeIn}>
-                <p className="tw-heading-6 md:tw-heading-5 mb-3 md:mb-8">
-                  Thank you for signing up to the newsletter!
-                </p>
                 <p className="tw-paragraph-sm md:tw-paragraph mb-3">
                   The report will be downloaded automatically...
                 </p>
