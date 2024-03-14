@@ -14,7 +14,10 @@ export const TranslatedCard: React.FC<{
       className="sm:w-4/10 sm:even:self-end sm:-mt-40 lg:-mt-20 sm:first:mt-0"
       variants={transitions.container}
     >
-      <motion.div className="w-30 mb-4" variants={transitions.item}>
+      <motion.div
+        className="w-30 mb-4 aspect-square flex"
+        variants={transitions.item}
+      >
         {icon}
       </motion.div>
       <motion.h3

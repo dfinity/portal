@@ -186,7 +186,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Building green, efficient tech",
+            title: "Blockchain for Sustainable Business",
             href: "/capabilities/sustainability",
             image: "/img/nav/featured-start-here.webp",
           },

@@ -2595,23 +2595,23 @@
     "Online Identity",
     "Web3",
     "Blockchain",
-    "DeFi",
     "Tech",
     "Mainstream",
     "BTC",
+    "DeFi",
+    "Gaming",
     "DAO",
     "NFT",
     "Ordinals",
     "Artificial Intelligence",
     "Sustainability",
-    "Gaming",
     "Metaverse"
   ],
   "types": [
     "Conference",
     "Meetups",
-    "Hackathon",
-    "Webinar"
+    "Webinar",
+    "Hackathon"
   ],
   "regions": [
     "North America",
@@ -2627,7 +2627,6 @@
     "Belgium",
     "Switzerland",
     "France",
-    "United Kingdom",
     "Thailand",
     "United Arab Emirates",
     "Hong Kong",
@@ -2659,12 +2658,12 @@
     "Zurich",
     "Paris",
     "Rotkreuz",
-    "London",
     "Bangkok",
     "Dubai",
     "Hong Kong",
     "Seoul",
     "Geneva",
+    "Thailand",
     "Doha",
     "Lisbon",
     "Nairobi",
@@ -2763,6 +2762,9 @@
     ],
     [
       "IRL"
+    ],
+    [
+      "Virtual"
     ],
     [
       "IRL"
