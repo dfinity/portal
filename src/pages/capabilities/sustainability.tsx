@@ -228,22 +228,19 @@ function SustainabilityPage() {
                   className="tw-heading-6 md:tw-heading-5 pl-8 md:pl-16 relative bg-[url(/img/features/sustainability/icon-check-mobile.svg)] md:bg-[url(/img/features/sustainability/icon-check.svg)] bg-left-top bg-no-repeat min-h-6 md:min-h-16"
                   variants={transitions.item}
                 >
-                  Donec id elit non mi porta gravida at eget metus. Aenean eu
-                  leo quam pellentesque ornare sem
+                  The Greenest Blockchain that provides efficiency at scale. The power consumption of a single transaction on the IC is 0.003 Wh/tx
                 </motion.li>
                 <motion.li
                   className="tw-heading-6 md:tw-heading-5 pl-8 md:pl-16 relative bg-[url(/img/features/sustainability/icon-check-mobile.svg)] md:bg-[url(/img/features/sustainability/icon-check.svg)] bg-left-top bg-no-repeat min-h-6 md:min-h-16"
                   variants={transitions.item}
                 >
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur et
+                  Transparent reporting, the  power consumption of all node machines on the Internet Computer blockchain is reported on a public dashboard 
                 </motion.li>
                 <motion.li
                   className="tw-heading-6 md:tw-heading-5 pl-8 md:pl-16 relative bg-[url(/img/features/sustainability/icon-check-mobile.svg)] md:bg-[url(/img/features/sustainability/icon-check.svg)] bg-left-top bg-no-repeat min-h-6 md:min-h-16"
                   variants={transitions.item}
                 >
-                  Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula, eget lacinia odio sem nec
+                  Existing industry use cases like the blockchain-powered recycling incentive standard initiative built with Roland Berger
                 </motion.li>
               </ul>
             </div>
@@ -340,10 +337,7 @@ function SustainabilityPage() {
                   className="mb-0 tw-paragraph"
                   variants={transitions.item}
                 >
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                  Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula, eget lacinia odio sem nec elit. Nulla vitae elit
-                  libero, a pharetra augue.
+                  Bring reporting on chain. For example: GRI, CDP, B-Corp, EU CSRD enabling hashing of certifications.
                 </motion.p>
               </TranslatedCard>
               <TranslatedCard
@@ -361,10 +355,8 @@ function SustainabilityPage() {
                   className="mb-0 tw-paragraph"
                   variants={transitions.item}
                 >
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                  Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula, eget lacinia odio sem nec elit. Nulla vitae elit
-                  libero, a pharetra augue.
+                  A crypto donation solution, which provides an ecosystem for nonprofits and charities to fundraise Bitcoin and other cryptocurrencies, 
+                  be found by crypto donors, and receive funds instantly.
                 </motion.p>
               </TranslatedCard>
               <TranslatedCard
@@ -382,10 +374,7 @@ function SustainabilityPage() {
                   className="mb-0 tw-paragraph"
                   variants={transitions.item}
                 >
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                  Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula, eget lacinia odio sem nec elit. Nulla vitae elit
-                  libero, a pharetra augue.
+                  Enterprise token marketplace for carbon credits and carbon credit trading with NFTs.
                 </motion.p>
               </TranslatedCard>
             </TranslatedCardList>
