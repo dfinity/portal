@@ -102,6 +102,21 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
+        },
+        {
           type: "category",
           label: "Deploy",
           items: [
@@ -452,10 +467,11 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
-            "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
-            "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/serving-static-assets",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/bundlers",
             "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
         },
@@ -553,6 +569,13 @@ const sidebars = {
           label: "Formal verification",
           id: "developer-docs/security/formal-verification",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "DeAI",
+      items: [
+        "developer-docs/ai/overview"
       ],
     },
     {

@@ -20,7 +20,7 @@
         "Virtual"
       ],
       "status": "Completed",
-      "imageUrl": "/img/events/event-08.webp"
+      "imageUrl": "/img/events/event-15.webp"
     },
     {
       "id": "recMY7EoSMj4uF5dg",
@@ -43,7 +43,113 @@
         "IRL"
       ],
       "status": "Completed",
-      "imageUrl": "/img/events/event-07.webp"
+      "imageUrl": "/img/events/event-14.webp"
+    },
+    {
+      "id": "recfQzCqhpItqbp2b",
+      "eventName": "NFT FEST LUGANO",
+      "description": null,
+      "eventLink": "https://nft-fest.ch/",
+      "topic": [
+        "NFT"
+      ],
+      "startDate": "2023-09-07",
+      "endDate": "2023-09-11",
+      "regions": "Europe",
+      "country": "Switzerland",
+      "city": "Lugano",
+      "type": "Conference",
+      "websiteCategory": "Conferences",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-13.webp"
+    },
+    {
+      "id": "recMpW9oWftN43cBf",
+      "eventName": "Dmail x ICP Networking ",
+      "description": null,
+      "eventLink": "https://lu.ma/ldil72on",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-08",
+      "endDate": "2023-09-08",
+      "regions": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "type": "Meetups",
+      "websiteCategory": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-12.webp"
+    },
+    {
+      "id": "rec7e8UVXkXvGNOXt",
+      "eventName": "\"Web3 Wave: The Future of the Internet\"",
+      "description": null,
+      "eventLink": "https://www.eventbrite.com/e/web3-wave-the-future-of-the-internet-tickets-689801814797?aff=ebdsoporgprofile",
+      "topic": [
+        "Tech"
+      ],
+      "startDate": "2023-09-08",
+      "endDate": "2023-09-08",
+      "regions": "Asia",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur ",
+      "type": "Meetups",
+      "websiteCategory": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-11.webp"
+    },
+    {
+      "id": "recSq05yMfZXh8gid",
+      "eventName": "Meta Era Summit",
+      "description": null,
+      "eventLink": "https://www.metaerasummit.com/",
+      "topic": [
+        "Web3",
+        "Metaverse"
+      ],
+      "startDate": "2023-09-12",
+      "endDate": "2023-09-12",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Conference",
+      "websiteCategory": "Conferences",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-10.webp"
+    },
+    {
+      "id": "reckmN3mwvUP9OCnR",
+      "eventName": "Blockchain Security in Singapore",
+      "description": null,
+      "eventLink": "https://lu.ma/ygba1i77",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-12",
+      "endDate": "2023-09-12",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Meetups",
+      "websiteCategory": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-09.webp"
     },
     {
       "id": "recChdBVNZej6m7VC",
@@ -60,6 +166,49 @@
       "city": "Zürich & Zug",
       "type": "Conference",
       "websiteCategory": "Conferences",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-08.webp"
+    },
+    {
+      "id": "recD9BDwYutwUCRhI",
+      "eventName": "Offchain Vancouver Web 3.0 Meetup",
+      "description": null,
+      "eventLink": "https://www.eventbrite.hk/e/offchain-vancouver-web3-meetup-sept-2023-tickets-710157679737?aff=oddtdtcreator",
+      "topic": [
+        "Web3"
+      ],
+      "startDate": "2023-09-15",
+      "endDate": "2023-09-15",
+      "regions": "North America",
+      "country": "Canada",
+      "city": "Vancouver",
+      "type": "Meetups",
+      "websiteCategory": "Meetups",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Completed",
+      "imageUrl": "/img/events/event-07.webp"
+    },
+    {
+      "id": "recjvnum68E8dXnPm",
+      "eventName": "Web3preneur: Singapore Edition",
+      "description": null,
+      "eventLink": "https://www.web3preneur.events",
+      "topic": [
+        "Web3",
+        "Tech"
+      ],
+      "startDate": "2023-09-15",
+      "endDate": "2023-09-15",
+      "regions": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "type": "Meetups",
+      "websiteCategory": "Meetups",
       "mode": [
         "IRL"
       ],
@@ -1965,7 +2114,7 @@
         "Virtual",
         "IRL"
       ],
-      "status": "Completed",
+      "status": "Confirmed",
       "imageUrl": "/img/events/event-08.webp"
     },
     {
@@ -2036,7 +2185,7 @@
     },
     {
       "id": "recHHbmfHgEbay8ww",
-      "eventName": "ETH Denver 2024",
+      "eventName": "ETH Denver",
       "description": null,
       "eventLink": "https://www.ethdenver.com/",
       "topic": [
@@ -2054,30 +2203,6 @@
       ],
       "status": "Completed",
       "imageUrl": "/img/events/event-04.webp"
-    },
-    {
-      "id": "rec39VQfbAlFQii73",
-      "eventName": "SynergyLabs Incubation Program",
-      "marketingText": "SynergyLabs ICP.Hub is excited to present their Incubation Program on March 20th at 3 pm UTC! Get ready to dive deep into SynergyLabs incubation process and discover what you can expect during the intensive 4-week journey.\n",
-      "description": "SynergyLabs ICP.Hub is excited to present their Incubation Program on March 20th at 3 pm UTC! Get ready to dive deep into SynergyLabs incubation process and discover what you can expect during the intensive 4-week journey.",
-      "eventLink": "https://lu.ma/m01s6vvc",
-      "topic": [
-        "Blockchain",
-        "Tech",
-        "Online Identity",
-        "Gaming"
-      ],
-      "startDate": "2024-03-01",
-      "endDate": "2024-03-20",
-      "country": "Thailand",
-      "city": "Thailand",
-      "type": "Webinar",
-      "websiteCategory": "Meetups",
-      "mode": [
-        "Virtual"
-      ],
-      "status": "Confirmed",
-      "imageUrl": "/img/events/event-03.webp"
     },
     {
       "id": "rec7FfjBj3tgCj15p",
@@ -2098,8 +2223,8 @@
       "mode": [
         "IRL"
       ],
-      "status": "Completed",
-      "imageUrl": "/img/events/event-02.webp"
+      "status": "Confirmed",
+      "imageUrl": "/img/events/event-03.webp"
     },
     {
       "id": "recZz2pZcuOur2fpb",
@@ -2118,8 +2243,8 @@
       "mode": [
         "IRL"
       ],
-      "status": "Completed",
-      "imageUrl": "/img/events/event-01.webp"
+      "status": "Confirmed",
+      "imageUrl": "/img/events/event-02.webp"
     },
     {
       "id": "recuo27fqxtgmOkct",
@@ -2143,7 +2268,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-15.webp"
+      "imageUrl": "/img/events/event-01.webp"
     },
     {
       "id": "recX0QuJDqPUb2R6L",
@@ -2164,7 +2289,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-14.webp"
+      "imageUrl": "/img/events/event-15.webp"
     },
     {
       "id": "recrzkF8VvcWc5lXZ",
@@ -2185,7 +2310,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-13.webp"
+      "imageUrl": "/img/events/event-14.webp"
     },
     {
       "id": "recctYvtoJ7g9dGll",
@@ -2207,7 +2332,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-12.webp"
+      "imageUrl": "/img/events/event-13.webp"
     },
     {
       "id": "recJqLWMCpjhFwQgv",
@@ -2228,7 +2353,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-11.webp"
+      "imageUrl": "/img/events/event-12.webp"
     },
     {
       "id": "reckutkov9mtt3s0g",
@@ -2249,7 +2374,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-10.webp"
+      "imageUrl": "/img/events/event-11.webp"
     },
     {
       "id": "recDY7SoYAGjiwo4F",
@@ -2270,7 +2395,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-09.webp"
+      "imageUrl": "/img/events/event-10.webp"
     },
     {
       "id": "rec264koArrKxuijW",
@@ -2291,7 +2416,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-08.webp"
+      "imageUrl": "/img/events/event-09.webp"
     },
     {
       "id": "recO55Ge3yPM6tOOV",
@@ -2312,7 +2437,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-07.webp"
+      "imageUrl": "/img/events/event-08.webp"
     },
     {
       "id": "recKbPvdCl0vqKecl",
@@ -2334,7 +2459,7 @@
         "IRL"
       ],
       "status": "Confirmed",
-      "imageUrl": "/img/events/event-06.webp"
+      "imageUrl": "/img/events/event-07.webp"
     },
     {
       "id": "rec1SgU9iWNofyCuh",
@@ -2349,6 +2474,28 @@
       "regions": "Asia",
       "country": "Thailand",
       "city": "Bangkok",
+      "type": "Conference",
+      "websiteCategory": "Conferences",
+      "mode": [
+        "IRL"
+      ],
+      "status": "Confirmed",
+      "imageUrl": "/img/events/event-06.webp"
+    },
+    {
+      "id": "recsi5jrehDKjf5JO",
+      "eventName": "DigiAssets",
+      "description": null,
+      "eventLink": "https://digitalassets.wbresearch.com/?utm_campaign=46605.002__BLUE_GPPC&extTreatId=7592368&gad_source=1&gclid=CjwKCAiA8YyuBhBSEiwA5R3-E-pe6c0luIlCgcVMf-j00UfoawLfX1BsfkzzUMYXGVW0lhwMJd0FjRoCkVsQAvD_BwE",
+      "topic": [
+        "DeFi",
+        "Tech"
+      ],
+      "startDate": "2024-05-14",
+      "endDate": "2024-04-15",
+      "regions": "Europe",
+      "country": "United Kingdom",
+      "city": "London",
       "type": "Conference",
       "websiteCategory": "Conferences",
       "mode": [
@@ -2556,7 +2703,10 @@
     "Cologne",
     "Manila",
     "Shanghai",
-    "Zürich & Zug"
+    "Vancouver",
+    "Zürich & Zug",
+    "Kuala Lumpur ",
+    "Lugano"
   ],
   "modes": [
     [
@@ -2615,6 +2765,9 @@
     ],
     [
       "Virtual"
+    ],
+    [
+      "IRL"
     ],
     [
       "IRL"
@@ -2855,6 +3008,27 @@
     ],
     [
       "Virtual"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
+    ],
+    [
+      "IRL"
     ],
     [
       "IRL"

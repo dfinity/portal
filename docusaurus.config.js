@@ -210,11 +210,6 @@ const marketingNav = {
               description: "Native ETH on Internet Computer",
             },
             {
-              name: "Identity on ICP",
-              href: "/internet-identity",
-              description: "One secure identity for all services",
-            },
-            {
               name: "HTTPS Outcalls",
               href: "/https-outcalls",
               description: "Connecting smart contracts to Web2",
@@ -258,7 +253,7 @@ const marketingNav = {
               description: "Govern and get rewards",
             },
             {
-              name: "Create an Internet Identity",
+              name: "Internet Identity",
               href: "/internet-identity",
               description: "Web3 authentication",
             },

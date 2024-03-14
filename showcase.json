@@ -849,7 +849,7 @@
   {
     "id": "juno",
     "name": "Juno",
-    "oneLiner": "Build Web3 dApps like Web2",
+    "oneLiner": "Build Web3 at Lightning Speed",
     "website": "https://juno.build",
     "tags": [
       "Tools / Infrastructure"
@@ -864,8 +864,9 @@
     ],
     "logo": "/img/showcase/juno_logo.svg",
     "screenshots": [
-      "/img/showcase/juno_social_image.png"
-    ]
+      "/img/showcase/juno_social_image.jpg"
+    ],
+    "youtube": "https://www.youtube.com/watch?v=mr_9XArcG9Y"
   },
   {
     "id": "internetidentity",
