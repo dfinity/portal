@@ -43,7 +43,12 @@ const FeatureCard = ({ iconUrl, title }) => {
         flex md:flex-col gap-8 md:gap-5 items-center
       "
     >
-      <img src={iconUrl} alt={title} loading="lazy" className="h-16 md:h-24" />
+      <img
+        src={iconUrl}
+        alt={title}
+        loading="lazy"
+        className="h-16 md:h-24 aspect-square"
+      />
       <h3 className="tw-heading-6 text-white/80 mb-0">{title}</h3>
     </motion.div>
   );
@@ -52,6 +57,13 @@ const FeatureCard = ({ iconUrl, title }) => {
 function SustainabilityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
+
+  function scrollToDownload() {
+    document
+      .getElementById("get-report")
+      .scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <Layout
       title="Blockchain for Sustainable Business"
@@ -105,7 +117,7 @@ function SustainabilityPage() {
           <div className="md:absolute text-center md:right-0 md:top-0 -translate-y-5/12 md:-translate-y-7/12">
             <img
               src="/img/features/sustainability-hero.webp"
-              className="w-full sm:w-[480px] lg:w-[660px]"
+              className="w-full sm:w-[480px] lg:w-[660px] aspect-square"
               alt=""
             />
           </div>
@@ -127,9 +139,9 @@ function SustainabilityPage() {
                 change, and overall operational costs.
               </motion.p>
               <motion.p>
-                <Link href="#get-report" className="button-white">
+                <button onClick={scrollToDownload} className="button-white">
                   Read Sustainable Use Cases Report
-                </Link>
+                </button>
               </motion.p>
             </div>
           </div>
@@ -162,29 +174,14 @@ function SustainabilityPage() {
         <section className="bg-white pt-20 md:pt-30 relative">
           <AnimateSpawn
             variants={transitions.container}
-            className="container-6"
+            className="container-6 text-center"
           >
             <motion.h2
               variants={transitions.item}
-              className="tw-heading-5 md:tw-heading-3 mb-6"
+              className="tw-heading-5 md:tw-heading-3 mb-0"
             >
-              The Internet Computer as a catalyst for sustainability: paving the
-              way for transformation
+              Top 4 reasons for using Blockchain Technology for transformation
             </motion.h2>
-            <motion.p
-              variants={transitions.item}
-              className="tw-lead-sm md:tw-lead mb-6"
-            >
-              The Internet Computer provides far better sustainability than the
-              traditional IT stack, as it takes a completely different
-              architectural approach that makes it more energy efficient.
-            </motion.p>
-            <motion.p
-              variants={transitions.item}
-              className="tw-heading-6 md:tw-heading-5 mb-0"
-            >
-              ICP provides 4 key components for sustainability use cases:
-            </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
             variants={transitions.container}
@@ -214,10 +211,18 @@ function SustainabilityPage() {
             <div className="md:w-6/10">
               <motion.h2
                 variants={transitions.item}
-                className="tw-heading-5 md:tw-heading-3 mb-6"
+                className="tw-heading-5 md:tw-heading-3 mb-3 md:mb-6"
               >
                 Why ICP is the best blockchain for sustainability use cases
               </motion.h2>
+              <motion.p
+                variants={transitions.item}
+                className="tw-lead-sm md:tw-lead mb-3 md:mb-8"
+              >
+                The Internet Computer provides far better sustainability than
+                the traditional IT stack, as it takes a completely different
+                architectural approach that makes it more energy efficient.
+              </motion.p>
               <ul className="list-none pl-0 space-y-4 md:space-y-8">
                 <motion.li
                   className="tw-heading-6 md:tw-heading-5 pl-8 md:pl-16 relative bg-[url(/img/features/sustainability/icon-check-mobile.svg)] md:bg-[url(/img/features/sustainability/icon-check.svg)] bg-left-top bg-no-repeat min-h-6 md:min-h-16"
@@ -327,6 +332,7 @@ function SustainabilityPage() {
                     src="/img/features/sustainability/icon-5.webp"
                     loading="lazy"
                     aria-hidden="true"
+                    className="aspect-square "
                   />
                 }
               >
@@ -347,6 +353,7 @@ function SustainabilityPage() {
                     src="/img/features/sustainability/icon-6.webp"
                     loading="lazy"
                     aria-hidden="true"
+                    className="aspect-square"
                   />
                 }
               >
@@ -367,6 +374,7 @@ function SustainabilityPage() {
                     src="/img/features/sustainability/icon-7.webp"
                     loading="lazy"
                     aria-hidden="true"
+                    className="aspect-square"
                   />
                 }
               >
@@ -396,7 +404,7 @@ function SustainabilityPage() {
               src="/img/features/sustainability/img-sustainability-report.webp"
               alt="Download the sustainability report"
               loading="lazy"
-              className="w-[130%] max-w-none relative -left-6 md:order-2 md:absolute md:w-[700px] lg:w-[900px] md:-right-20 md:bottom-0 lg:-right-40 lg:-bottom-20 md:left-auto"
+              className="w-[130%] max-w-none relative -left-6 md:order-2 md:absolute md:w-[600px] lg:w-[820px] md:-right-20 md:bottom-30 lg:-right-40 lg:-bottom-20 md:left-auto"
             />
             <div className="md:w-1/2 md:min-w-5/10 md:order-1">
               <motion.h3 className="tw-heading-5 mt-4 mb-8 md:tw-heading-3">
@@ -488,7 +496,7 @@ function SustainabilityPage() {
                 Revolutionizing Recycling: Blockchain-powered VRC Initiative
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Roland Berger has formed a strategic partnership with The
+                Roland Berger has formed a strategic partnership with the
                 DFINITY Foundation, a Swiss non-profit renowned for its
                 contributions to the Internet Computer Blockchain and extensive
                 blockchain research and development, yielding over 250 patents.
@@ -505,19 +513,24 @@ function SustainabilityPage() {
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/features/sustainability/cop28.webp">
-              <h3 className="tw-heading-4 md:tw-heading-3 mb-6">ICP @ COP28</h3>
+              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                ICP @ COP28
+              </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                An international consortium in collaboration with DFINITY
-                Foundation and our partners Roland Berger, BEEAH Group and
-                International Solid Waste Association (ISWA) was at COP28.
+                The international consortium in collaboration with DFINITY
+                Foundation and partners Roland Berger, BEEAH Group and
+                International Solid Waste Association (ISWA) came together at
+                the COP28 UN Climate Change Conference to launch the Voluntary
+                Recycling Credits initiative. This marks the world’s first
+                standard to incentivize recycling globally.
               </p>
 
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
-                  href="https://cryptoslate.com/dfinity-foundation-says-icp-consumes-less-energy-than-cardano-launches-proof-of-green-initiative/"
+                  href="https://www.youtube.com/watch?v=YdY8UQ7nrs8&ab_channel=UAEPavilionatCOP28"
                 >
-                  Read the full article
+                  Watch the presentation
                   <LinkArrowUpRight />
                 </Link>
               </p>

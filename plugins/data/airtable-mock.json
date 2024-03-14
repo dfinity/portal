@@ -20,7 +20,7 @@
         "Virtual"
       ],
       "status": "Completed",
-      "imageUrl": "/img/events/event-10.webp"
+      "imageUrl": "/img/events/event-08.webp"
     },
     {
       "id": "recMY7EoSMj4uF5dg",
@@ -43,7 +43,7 @@
         "IRL"
       ],
       "status": "Completed",
-      "imageUrl": "/img/events/event-09.webp"
+      "imageUrl": "/img/events/event-07.webp"
     },
     {
       "id": "recChdBVNZej6m7VC",
@@ -60,49 +60,6 @@
       "city": "Zürich & Zug",
       "type": "Conference",
       "websiteCategory": "Conferences",
-      "mode": [
-        "IRL"
-      ],
-      "status": "Completed",
-      "imageUrl": "/img/events/event-08.webp"
-    },
-    {
-      "id": "recD9BDwYutwUCRhI",
-      "eventName": "Offchain Vancouver Web 3.0 Meetup",
-      "description": null,
-      "eventLink": "https://www.eventbrite.hk/e/offchain-vancouver-web3-meetup-sept-2023-tickets-710157679737?aff=oddtdtcreator",
-      "topic": [
-        "Web3"
-      ],
-      "startDate": "2023-09-15",
-      "endDate": "2023-09-15",
-      "regions": "North America",
-      "country": "Canada",
-      "city": "Vancouver",
-      "type": "Meetups",
-      "websiteCategory": "Meetups",
-      "mode": [
-        "IRL"
-      ],
-      "status": "Completed",
-      "imageUrl": "/img/events/event-07.webp"
-    },
-    {
-      "id": "recjvnum68E8dXnPm",
-      "eventName": "Web3preneur: Singapore Edition",
-      "description": null,
-      "eventLink": "https://www.web3preneur.events",
-      "topic": [
-        "Web3",
-        "Tech"
-      ],
-      "startDate": "2023-09-15",
-      "endDate": "2023-09-15",
-      "regions": "Asia",
-      "country": "Singapore",
-      "city": "Singapore",
-      "type": "Meetups",
-      "websiteCategory": "Meetups",
       "mode": [
         "IRL"
       ],
@@ -2599,7 +2556,6 @@
     "Cologne",
     "Manila",
     "Shanghai",
-    "Vancouver",
     "Zürich & Zug"
   ],
   "modes": [
@@ -2899,12 +2855,6 @@
     ],
     [
       "Virtual"
-    ],
-    [
-      "IRL"
-    ],
-    [
-      "IRL"
     ],
     [
       "IRL"
