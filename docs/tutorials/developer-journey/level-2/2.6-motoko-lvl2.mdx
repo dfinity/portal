@@ -302,7 +302,7 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 ### Configuring canisters in `dfx.json`
 
-As you've seen in previous portions of our developer journey, when a new project is created with `dfx`, a default `dfx.json` file is created in the project's directory. For this guide, you'll need to edit `dfx.json` to specify our three canisters and the location of their Motoko files.
+As you've seen in previous portions of our developer journey, when a new project is created with `dfx`, a default `dfx.json` file is created in the project's directory. For this guide, you'll need to edit `dfx.json` to specify our two canisters and the location of their Motoko files.
 
 First, open the `dfx.json` file in your code editor. Delete the existing content and replace it with the following:
 
@@ -331,14 +331,7 @@ In this file, you can see the definition for each of your three canisters with c
 
 ### Creating canister directories and Motoko files
 
-First, you'll remove the default canister files created by `dfx` since you won't be using them:
-
-```bash
-rm -r src/multiple_actors_backend/
-rm -r src/multiple_actors_frontend/
-```
-
-Then, you'll create new directories for each of your canisters and create an empty `main.mo` file in each:
+First, create new directories for each of your canisters and create an empty `main.mo` file in each:
 
 ```bash
 mkdir src/character_count && touch src/character_count/main.mo
