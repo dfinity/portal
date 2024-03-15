@@ -12,11 +12,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Machine learning is a form of artificial intelligence (AI) that observes statistical algorithms and their data to learn patterns and generalizations. By analyzing these data patterns, machine learning algorithms can execute tasks by predicting the correct result with high accuracy.
 
-One common machine learning model that is used to train data sets is the Modified National Institute of Standards and Technology (MNIST) database that contains a collection of handwritten numbers. This database is commonly used for training different image processing systems and testing different machine learning platforms.
+One common machine learning model that is used to train data sets is the Modified National Institute of Standards and Technology (MNIST) database which contains a collection of handwritten numbers. This database is commonly used for training different image processing systems and testing different machine learning platforms.
 
-The [Rust Burn crate](https://docs.rs/burn/latest/burn/) is a deep learning framework package that can be used for creating machine learning programs. This sample will use the MNIST database and the Rust Burn crate to create a simple app where the user will draw a number and the machine learning model will calculate the probability percentage that the number drawn is a digit between 0-9.
+The [Rust Burn crate](https://docs.rs/burn/latest/burn/) is a deep learning framework package that can be used for creating machine learning programs. This sample will use the MNIST database and the Rust Burn crate to create a simple app where the user will draw a number, and the machine learning model will calculate the probability percentage that the number drawn is a digit between 0-9.
 
-For example, if the user draws the digit `5`, the machine learning model will source the MNIST database and determine visual patterns present in both the user's drawn number and the number `5` and calculate the probability that the user drew the number `5`.
+For example, if the user draws the digit `5`, the machine learning model will source the MNIST database, and determine the visual patterns present in both the user's drawn number and the number `5` and calculate the probability that the user drew the number `5`.
 
 This project is based off of one [found within the Rust Burn examples](https://github.com/tracel-ai/burn/tree/main/examples/mnist-inference-web).
 
@@ -291,7 +291,7 @@ This code defines the MNIST model that will be used to determine what number the
     - Linear(32, 10)
     - Softmax Output
 
-In total, the number of parameters used by the model is 376,95. The accuracy of this model's test is 98.67%. 
+In total, the number of parameters used by the model is 376,952. The accuracy of this model's test is 98.67%.
 
 Next, create another new file called `src/machine_learning_sample_backend/src/state.rs` with the code:
 
@@ -472,7 +472,7 @@ This code creates as MNIST structure that corresponds to a JavaScript class, the
 
 There are two more files we need to edit for our backend canister. The `Cargo.toml` file and the Candid file for our backend canister.
 
-By default, both of files exist at `src/machine_learning_backend`. First, open `Cargo.toml` and insert the following configuration:
+By default, both files exist at `src/machine_learning_backend`. First, open `Cargo.toml` and insert the following configuration:
 
 ```
 [package]
@@ -889,7 +889,7 @@ As a last step before deploying and testing the app, open the `dfx.json` file in
 
 ## Deploying the project
 
-To deploy this project run the command:
+To deploy this project, run the command:
 
 ```
 dfx deploy // Deploy locally
@@ -920,7 +920,7 @@ You will see the MNIST sample interface:
 
 ## Interacting with the machine learning dapp
 
-To use the machine learning model, draw a single digit number in the 'Draw a digit here' box. THe model will determine the probability percentage of what that digit is, then display the percentage on the bar graph.
+To use the machine learning model, draw a single-digit number in the 'Draw a digit here' box. The model will determine the probability percentage of what that digit is, then display the percentage on the bar graph.
 
 For example, draw the number 7:
 
