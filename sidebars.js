@@ -575,7 +575,8 @@ const sidebars = {
       type: "category",
       label: "DeAI",
       items: [
-        "developer-docs/ai/overview"
+        "developer-docs/ai/overview",
+        "developer-docs/ai/machine-learning-sample"
       ],
     },
     {
