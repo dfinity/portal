@@ -13,7 +13,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
-Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
+Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers can manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**.
+
+:::caution
+The cycles wallet will be deprecated in the future. We recommend using the cycles ledger feature instead, which simplifies the cycles management workflow.
+:::
+
+The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
 For the purposes of using the local canister execution environment, the SDK automatically creates a default cycles wallet for you in every project and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local canister execution environment.
 
