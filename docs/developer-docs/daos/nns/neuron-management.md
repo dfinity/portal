@@ -30,7 +30,7 @@ Every user can stake ICP utility tokens into a neuron and pariticipate in the NN
 * **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state. 
 A neuron's dissolve delay and age increases the neuron's voting power. 
 
-* **Maturity (positive number – percent)**:  When neurons vote, over time the NNS increases their maturity to reward them. Maturity can be converted into ICP by spawning (see below).
+* **Maturity**:  When neurons vote, over time the NNS increases their maturity to reward them. Maturity can be converted into ICP by spawning (see below).
 
 ## Interacting with neurons
 All interactions with a neuron go through the following API on the NNS governance canister. This includes everything in a neuron's lifetime such as the neuron's creation, modifications and voting, and unstaking the ICP tokens.
@@ -43,21 +43,36 @@ type ManageNeuron = record {
 ```
 
 ### Creating a neuron and topping it up
-Staking ICP utility tokens in a neuron involves two commands:
-1. Sending ICP utility tokens to the neuron's subaccount.
-2. Claiming the neuron on the NNS governance canister, which tells the governance canister that the transfer in (1) happened, upon which the NNS governance will create a new neuron.
+Staking ICP utility tokens in a neuron involves three steps:
+1. Compute the neuron's account on the ledger, where the staked tokens will be held. This corresponds to a subaccount of the NNS governance canister.
+2. Send ICP utility tokens to the neuron's account computed in (1).
+3. Claim the neuron on the NNS governance canister, which tells the governance canister that the transfer in (2) happened, upon which the NNS governance will create a new neuron.
 
-To follow these steps, you first need to know the principal that should control the neuron and you need to choose a nonce. Based on these two inputs you can compute the required subaccount.
-View for example the method [`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount given a controller principal and a nonce. Make sure you are using an up-to-date version of this code in your application.
+Let us go through these steps in more detail.
+
+**Compute the neuron's account**
+
+To compute the neuron's account in the first Step, proceed as follows.
+
+a)  Learn the principal that should control the neuron and choose a nonce.
+ 
+b) Computed the subaccount based on the two inputs from (a). View for example the method [`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount given a controller principal and a nonce.
+ 
+c) Compute the final account identifier on the ledger using the computed subaccount from (b) and the principal ID of the NNS governance canister. View for example the method [`neuron_subaccount`](https://github.com/dfinity/ic/blob/master/rs/nns/governance/src/governance.rs) which computes the account based on a given subaccount and with the NNS governance principal ID `GOVERNANCE_CANISTER_ID`.
+
+
+ For the above steps, make sure you are using an up-to-date version of this code in your application.
 
 :::info
-It is of utmost importance to ensure that the subaccount is computed correctly in the first step and remembered so that it can be reused in the second step.
+It is of utmost importance to ensure that the account is computed correctly in the first step and remembered so that it can be reused in the second step.
 If this fails, funds could be sent to a dead account and be unrecoverable.
+It is recommended to test the corresponding code thoroughly. 
 
 :::
 
-First learn the controller principal and choose a nonce.
-Then, for the ledger transfer, view the [relevant `candid` interface](https://github.com/dfinity/ic/blob/master/rs/rosetta-api/icp_ledger/ledger.did#L25) which contains the following details for a transaction.
+**Send ICP to the neuron's account**
+
+After having computed the neuron's account, make a transfer to this account. For this, view the [relevant `candid` interface of the ICP ledger](https://github.com/dfinity/ic/blob/master/rs/rosetta-api/icp_ledger/ledger.did#L25) which contains the following details for a transaction.
 ```
 type Transaction = record {
     memo : Memo;
@@ -77,33 +92,37 @@ type Operation = variant {
     ...
 };
 ```
-To make a transfer to the correct subaccount, choose the `memo` equal your chosen nonce and `operation` to be a transfer. You can make the transfer from any `from` account that you control. The `to` account should be the computed subaccount for the neuron. To later stake a neuron, the `amount` must be at least 1 ICP. Set the `fee` to the standard fee of the ICP ledger canister.
+To make a transfer to the correct account, choose the `memo` equal your chosen nonce (from Step (1a)) and `operation` to be a transfer. You can make the transfer from any `from` account that you control. For the `to` account, use the account that you have computed in Step (1).
+To later stake a neuron, the `amount` must be at least 1 ICP. Set the `fee` to the standard fee of the ICP ledger canister.
 
-To complete the second step, claim the neuron using the following `ManageNeuron` command.
+**Claim the neuron**
+
+As a third step, claim the neuron using the following `ManageNeuron` command.
 ```
 type ClaimOrRefreshNeuronFromAccount = record {
   controller : opt principal;
   memo : nat64;
 };
 ```
-The `controller` is the princpal controller chosen in the beginning that will control the neuron and the `memo` is again the chosen nonce. 
+The `controller` is the principal controller chosen in Step (1a) that will control the neuron and the `memo` is again the chosen nonce. 
 
-**Required permissions:** Anyone can make this call and claim a neuron for the specified controller.
+_Required permissions:_ Anyone can make this call and claim a neuron for the specified controller.
 
-
+**Topping up a neuron**
 Topping up an existing neuron with more tokens is called _refreshing_ a neuron and works similarly to claiming a neuron.
-1. Send additional ICP utility tokens to the (existing) neuron's subaccount.
-2. Refresh the neuron on the NNS governance canister, which tells the governance canister tht the transfer in (1) happened, upon which the NNs governance will update the neuron's stake. 
+1. Send additional ICP utility tokens to the (existing) neuron's account.
+2. Refresh the neuron on the NNS governance canister, which tells the governance canister that the transfer in (1) happened, upon which the NNS governance will update the neuron's stake. 
 
 :::info
 Note that refreshing of a neuron will also update the neuron's age to account for the fact that the newly added tokens have no age.
 
 :::
 
-These steps happen analogusly to the above description. 
+These steps happen analogously to the claiming of neurons above.
+Again, care is advised to makes sure that the right account is computed and used.
 When `ClaimOrRefreshNeuronFromAccount` is used, the NNS governance canister will automatically either claim the neuron if it doesn't exist yet or top it up if it exists.
 
-**Required permissions:** Anyone can make this call and top up a neuron, even if they do not have any permissions on the neuron.
+_Required permissions:_ Anyone can make this call and top up a neuron, even if they do not have any permissions on the neuron.
 
 ### Modifying a neuron's state
 Recall from the section Neuron attributes, that a neuron has a dissolve delay and can be non-dissolving, dissolving, or dissolved.
@@ -139,32 +158,11 @@ In both cases, the dissolve delay can be increased but never decreased.
 Only a neuron's controller can start or stop dissolving a neuron or increase its dissolve delay.
 
 
-### Managing permissions of a neuron
-* **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
-
-* **Add hot key**: Add a new hot key that can be used to manage the neuron. This provides an alternative to using the principal’s cold key to manage the neuron, which might be onerous and difficult to keep secure, especially if it is used regularly. A hot key might be a WebAuthn key that is maintained inside a user device, such as a smartphone.
-
-* **Remove hot key**: Remove a hot key that has been previously assigned to the neuron.
-
-```
-type Configure = record { operation : opt Operation };
-type Operation = variant {
-  RemoveHotKey : RemoveHotKey;
-  AddHotKey : AddHotKey;
-  ...
-};
-type AddHotKey = record { new_hot_key : opt principal };
-type RemoveHotKey = record { hot_key_to_remove : opt principal };
-```
-
-**Required permissions:**
-
-
-
-
 ### Spwaning a neuron's rewards
-* **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity falls to zero.
+When a neuron's maturity has risen above a threshold, one can spawn a portion of the maturity. In a first step, this creates a new neuron in a special spawning state which the spawned maturity. After 7 days, the maturity is converted into ICP, taking some [maturity modulation function](https://wiki.internetcomputer.org/wiki/Maturity_modulation#:~:text=The%20maturity%20modulation%20function%20introduces,NNS%20neurons%20and%20SNS%20neurons.) into account. In the end, the new neuron will be dissolved and have these ICP as stake - which can then be disbursed to any account.
+The new neuron can remain controlled by the same principal as the parent neuron, or be assigned to a new principal.
 
+The following command spawns a neuron.
 ```
 type Spawn = record {
   percentage_to_spawn : opt nat32;
@@ -172,6 +170,9 @@ type Spawn = record {
   nonce : opt nat64;
 };
 ```
+The `perpercentage_to_spawn : opt nat32;
+new_controller : opt principal;
+nonce
 
 **Required permissions:**
 
@@ -205,6 +206,26 @@ TODO: HOW TO GET THE ID OF TOPICS BEFORE DOING THIS?
 ```
 type RegisterVote = record { vote : int32; proposal : opt NeuronId };
 type Follow = record { topic : int32; followees : vec NeuronId };
+```
+
+**Required permissions:**
+
+### Managing permissions of a neuron
+* **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
+
+* **Add hot key**: Add a new hot key that can be used to manage the neuron. This provides an alternative to using the principal’s cold key to manage the neuron, which might be onerous and difficult to keep secure, especially if it is used regularly. A hot key might be a WebAuthn key that is maintained inside a user device, such as a smartphone.
+
+* **Remove hot key**: Remove a hot key that has been previously assigned to the neuron.
+
+```
+type Configure = record { operation : opt Operation };
+type Operation = variant {
+  RemoveHotKey : RemoveHotKey;
+  AddHotKey : AddHotKey;
+  ...
+};
+type AddHotKey = record { new_hot_key : opt principal };
+type RemoveHotKey = record { hot_key_to_remove : opt principal };
 ```
 
 **Required permissions:**
