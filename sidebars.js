@@ -163,6 +163,7 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/upgrade",
             "developer-docs/smart-contracts/maintain/resource-limits",
+            "developer-docs/smart-contracts/maintain/trapping",
             {
               type: "category",
               label: "Cost",
