@@ -2,7 +2,6 @@
 
 ## Overview
 
-[From the WebAssembly overview page](https://webassembly.github.io/spec/core/intro/overview.html)
 
 Trapping, in the context of WebAssembly code, refers to an interruption of code execution that returns an error. Trapping is defined by [the WebAssembly documentation](https://webassembly.github.io/spec/core/intro/overview.html) as:
 
@@ -41,9 +40,7 @@ state changes made by the canister before making the inter-canister call and cal
 
 
 This is quite important as it might affect how one can implement canisters safely. Generally speaking, traps should be avoided in callback handler
-invocations. If this is not possible, then it's recommended to use the [cleanup system API call](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-call
-) to ensure that any cleanup action is performed
-(e.g. releasing a lock that was acquired before making an inter-canister call).
+invocations. If this is not possible, then it's recommended to use the [cleanup system API call](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-call) to ensure that any cleanup action is performed (e.g. releasing a lock that was acquired before making an inter-canister call).
 
 
 ## When to use traps explicitly
