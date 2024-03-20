@@ -222,22 +222,22 @@ function AIPage() {
 
         <LinkCardsSection
           className="mb-20 md:mb-30 mt-30 md:mt-40"
-          title="Get familiar with the Internet Computer"
+          title="Explore AI on ICP"
           cards={[
             {
-              label: "Blogs",
+              label: "Apply to DeAI Grants",
               href: "https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7",
             },
             {
-              label: "ICP community events",
+              label: "Start building DeAI",
               href: "/events",
             },
             {
-              label: "Dev docs",
+              label: "Chat with AI to learn more about ICP",
               href: "/docs/current/home",
             },
             {
-              label: "ICP dapps",
+              label: "Join the DeAI working group",
               href: "/ecosystem",
             },
           ]}
