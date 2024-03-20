@@ -85,7 +85,7 @@ dfx start --clean --background
 dfx new https_get
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -128,7 +128,7 @@ cd https_get
 
 ```bash
 dfx start --clean --background
-dfx new https_get
+dfx new https_get --no-frontend
 cd https_get
 ```
 
@@ -471,7 +471,7 @@ The code above is annotated with detailed notes and explanations. Take a moment 
 Now, you can deploy the canister locally with the commands:
 
 ```bash
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy
 ```
 
@@ -492,7 +492,7 @@ Once you open the Candid UI, you can use the 'Call' button to call the `get_icp_
 
 ![HTTP GET](../_attachments/http_get_candid.png)
 
-You can play with a version of this canister running on-chain here: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+You can play with a version of this canister running on-chain: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
 
 ## HTTPS `POST`
 
@@ -814,7 +814,7 @@ The code above is annotated with detailed notes and explanations. Take a moment 
 Now, you can deploy the canister locally with the commands:
 
 ```bash
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy
 ```
 
@@ -835,7 +835,7 @@ Once you open the Candid UI, you can use the 'Call' button to call the `send_htt
 
 ![HTTP POST](../_attachments/http_post_candid.png)
 
-You can play with a version of this canister running on-chain here: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai.
+You can play with a version of this canister running on-chain: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai.
 
 
 ## Need help?

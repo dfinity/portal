@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, hackathon, hackathon prep course]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 7: Obtaining cycles and deploying your dapp to the mainnet
 
@@ -53,7 +54,7 @@ Click **NEXT STEP** to continue.
 Return to your terminal window. If you closed the window in the process, run the following commands to start `dfx` and use your identity. Replace `MyIdentity` with the name of your developer identity:
 
 ```sh
-dfx start --background
+dfx start --clean --background
 dfx identity use MyIdentity
 ```
 
@@ -171,7 +172,7 @@ This command will return the canister's URL, which should look like this:
 https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
 ```
 
-If you open this URL in your web browser, you will see the sample dapp frontend that you saw when you deployed it locally. The only difference is that now your dapp is hosted 100% on-chain, does not rely on your local execution environment to keep running, and you can send this URL to anyone in the world to view your dapp!
+If you open this URL in your web browser, you will see the sample dapp frontend that you saw when you deployed it locally. The only difference is that now your dapp is hosted 100% on-chain, does not rely on your local <GlossaryTooltip>replica</GlossaryTooltip> to keep running, and you can send this URL to anyone in the world to view your dapp!
 
 ## Next steps
 

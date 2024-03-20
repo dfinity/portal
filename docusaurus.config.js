@@ -72,9 +72,15 @@ const subnavItems = [
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
       { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
-      { label: "TypeScript", href: "/docs/current/developer-docs/backend/typescript/" },
+      {
+        label: "TypeScript",
+        href: "/docs/current/developer-docs/backend/typescript/",
+      },
       { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      { label: "Solidity", href: "/docs/current/developer-docs/backend/solidity/" },
+      {
+        label: "Solidity",
+        href: "/docs/current/developer-docs/backend/solidity/",
+      },
     ],
   },
   {
@@ -82,7 +88,10 @@ const subnavItems = [
     position: "left",
     label: "Frameworks",
     items: [
-      { label: "Juno", href: "/docs/current/developer-docs/web-apps/frameworks/juno" },
+      {
+        label: "Juno",
+        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
+      },
     ],
   },
   {
@@ -177,7 +186,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Building green, efficient tech",
+            title: "Blockchain for Sustainable Business",
             href: "/capabilities/sustainability",
             image: "/img/nav/featured-start-here.webp",
           },
@@ -199,11 +208,6 @@ const marketingNav = {
               name: "Ethereum <> ICP",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
-            },
-            {
-              name: "Identity on ICP",
-              href: "/internet-identity",
-              description: "One secure identity for all services",
             },
             {
               name: "HTTPS Outcalls",
@@ -249,7 +253,7 @@ const marketingNav = {
               description: "Govern and get rewards",
             },
             {
-              name: "Create an Internet Identity",
+              name: "Internet Identity",
               href: "/internet-identity",
               description: "Web3 authentication",
             },

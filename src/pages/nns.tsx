@@ -2,7 +2,6 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Layout from "@theme/Layout";
 import React from "react";
-import HeroGraphic from "../components/NnsPage/HeroGraphic";
 import IconHowItWorks from "../../static/img/nns/how-it-works.svg";
 import IconGovern from "../../static/img/nns/govern.svg";
 import IconStake from "../../static/img/nns/stake.svg";
@@ -12,32 +11,12 @@ import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import transitions from "@site/static/transitions.json";
 import Head from "@docusaurus/Head";
 import VideoCard from "../components/Common/VideoCard";
+import {
+  TranslatedCard,
+  TranslatedCardList,
+} from "../components/Common/TranslatedCards/TranslatedCards";
 
 const MotionLink = motion(Link);
-
-const Card: React.FC<{
-  title: React.ReactNode;
-  children: React.ReactNode;
-  icon: React.ReactNode;
-}> = ({ title, children, icon }) => {
-  return (
-    <AnimateSpawn
-      className="sm:w-4/10 sm:even:self-end sm:-mt-40 lg:-mt-20 sm:first:mt-0"
-      variants={transitions.container}
-    >
-      <motion.div className="w-30 mb-4" variants={transitions.item}>
-        {icon}
-      </motion.div>
-      <motion.h3
-        className="tw-heading-4 mb-4 md:tw-heading-3"
-        variants={transitions.item}
-      >
-        {title}
-      </motion.h3>
-      {children}
-    </AnimateSpawn>
-  );
-};
 
 function NnsPage() {
   return (
@@ -110,14 +89,8 @@ function NnsPage() {
           </motion.section>
         </AnimateSpawn>
         <section className="container-12">
-          <div
-            className="
-          flex
-          flex-col
-          gap-16 sm:gap-0
-          "
-          >
-            <Card
+          <TranslatedCardList>
+            <TranslatedCard
               title="How it works"
               icon={<IconHowItWorks aria-hidden="true" />}
             >
@@ -139,8 +112,8 @@ function NnsPage() {
               >
                 Learn more about network governance
               </MotionLink>
-            </Card>
-            <Card
+            </TranslatedCard>
+            <TranslatedCard
               title="Help govern the Internet Computer"
               icon={<IconGovern aria-hidden="true" />}
             >
@@ -169,8 +142,8 @@ function NnsPage() {
               >
                 Go to the NNS
               </MotionLink>
-            </Card>
-            <Card
+            </TranslatedCard>
+            <TranslatedCard
               title="Earn staking rewards"
               icon={<IconStake aria-hidden="true" />}
             >
@@ -181,11 +154,11 @@ function NnsPage() {
                 Voting rewards are distributed among participants who have
                 locked ICP in neurons and are voting either manually or follow
                 other neurons that vote. Rewards are distributed daily to voting
-                neurons as maturity. This maturity is unrealized ICP that can
-                be either staked or spawned. Staking maturity adds to the
-		voting power of the neuron. Spawning mints the maturity into a
-                neuron that becomes liquid after a week so that the ICP
-                contained in the neuron can also be used outside of the NNS.
+                neurons as maturity. This maturity is unrealized ICP that can be
+                either staked or spawned. Staking maturity adds to the voting
+                power of the neuron. Spawning mints the maturity into a neuron
+                that becomes liquid after a week so that the ICP contained in
+                the neuron can also be used outside of the NNS.
               </motion.p>
               <MotionLink
                 className="link-external"
@@ -194,10 +167,9 @@ function NnsPage() {
               >
                 Track staking rewards
               </MotionLink>
-            </Card>
-          </div>
+            </TranslatedCard>
+          </TranslatedCardList>
         </section>
-
         <AnimateSpawn
           variants={transitions.container}
           className="container-10 mt-20 md:mt-30"

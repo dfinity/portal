@@ -35,6 +35,7 @@ Currently supported CDKs include:
 
 If you use GitHub Codespaces or [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your project, installing these dependencies is not necessary.
 
+:::info
 Links to available Codespaces and Gitpod examples can be found in the [hello world example](/docs/current/developer-docs/getting-started/hello-world#create-a-new-project).
 :::
 
@@ -113,7 +114,7 @@ If you are using a machine running Apple silicon, you will need to have
     <h2 id="troubleshooting">Troubleshooting</h2>
     <h3 id="node-js-is-not-properly-installed">Node.js is not properly installed</h3>
     <p>WSL 2 has node.js <code>10.x.x</code> installed by default. But the latest <code>dfx</code> requires
-      node.js <code>16.0.0</code> or higher.</p>
+      node.js <code>16.x.x</code> or <code>18.x.x</code>.</p>
     <h3 id="permission-denied-when-running-dfx-start-">Permission denied when running <code>dfx start</code></h3>
     <p>Projects created from <code>dfx</code> need to be on the Linux filesystem instead of the Windows filesystem.
       Usually <code>cd ~</code> or <code>cd $HOME</code> in the WSL terminal will bring you to the home directory, and
@@ -234,7 +235,7 @@ You can learn more about `dfxvm` [here](https://github.com/dfinity/dfxvm/tree/ma
 
 ## Building from source
 
-If you would like to compile `dfx` by yourself, head over to the [IC SDK repo](https://github.com/dfinity/sdk). The README contains the instructions how you can build it on your own.
+If you would like to compile `dfx` by yourself, head over to the [IC SDK repo](https://github.com/dfinity/sdk). The README contains the instructions on how you can build it on your own.
 
 ### Uninstalling `dfx`
 

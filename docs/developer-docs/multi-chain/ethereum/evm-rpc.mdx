@@ -8,9 +8,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
 
-**EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API. 
+**EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API.
 
-The source code for this project is available on GitHub ([internet-computer-protocol/evm-rpc-canister](https://github.com/internet-computer-protocol/evm-rpc-canister) ⭐️) under the Apache 2.0 license. 
+The source code for this project is available on GitHub ([internet-computer-protocol/evm-rpc-canister](https://github.com/internet-computer-protocol/evm-rpc-canister) ⭐️) under the Apache 2.0 license.
 
 ## Supported RPC methods
 
@@ -35,7 +35,7 @@ The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC p
 - [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/): Ethereum mainnet.
 - [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet.
 
-Many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method. 
+Many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method.
 
 
 ## Importing or deploying the EVM RPC canister
@@ -62,7 +62,7 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
 Next, start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](https://internetcomputer.org/docs/current/developer-docs/backend/subnet-types#fiduciary-subnets)):
 
 ```
-dfx start --background
+dfx start --clean --background
 dfx deploy evm_rpc --argument '(record { nodesInSubnet = 28 })'
 ```
 
@@ -180,10 +180,10 @@ dfx canister call evm_rpc registerProvider '(record { chainId=1; hostname="cloud
 The `registerProvider` command has the following input parameters:
 
 - `chainId`: The ID of the blockchain network.
-- `hostname`: The JSON-RPC API hostname. 
+- `hostname`: The JSON-RPC API hostname.
 - `credentialPath`: The path to the RPC authentication.
 - `cyclesPerCall`: The amount of cycles charged per RPC call.
-- `cyclesPerMessageByte`: The amount of cycles charged per message byte. 
+- `cyclesPerMessageByte`: The amount of cycles charged per message byte.
 
 ## Replacing API keys
 
@@ -219,7 +219,7 @@ Update the configuration for an existing provider using the `updateProvider` met
 dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialPath = opt "/path/to/YOUR-API-KEY" })'
 ```
 
-Note that `credentialPath` should include everything after the hostname. For example, an RPC provider with hostname `rpc.example.org` and credential path `/path/to/secret` will resolve to `https://rpc.example.org/path/to/secret`. 
+Note that `credentialPath` should include everything after the hostname. For example, an RPC provider with hostname `rpc.example.org` and credential path `/path/to/secret` will resolve to `https://rpc.example.org/path/to/secret`.
 
 Some RPC services expect the API key in a request header instead of a URI path. In this case, use a command such as the following:
 
@@ -241,9 +241,9 @@ dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt ve
 
 ### HTTP outcall consensus
 
-Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call. 
+Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call.
 
-If you encounter an issue with consensus, [please let us know](https://github.com/internet-computer-protocol/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case. 
+If you encounter an issue with consensus, [please let us know](https://github.com/internet-computer-protocol/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case.
 
 ### Response size estimates
 

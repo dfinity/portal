@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "FAQ"]} />
 
-The following questions and answers are from the POV developer who wants to know things such as "how does a canister send ckBTC?" or how to write code for smart contracts to hold, send, or receive, please see the other FAQs.
+The following questions and answers are from the POV of a developer.
 
 For questions from the POV of a user who wishes to know how to hold, send, receive these tokens, please see the user FAQs.
 
@@ -16,16 +16,17 @@ For questions from the POV of a user who wishes to know how to hold, send, recei
 
 At high-level:
 
-1. ckETH is only a special case of the [ICRC-1 ledger token standard](https://internetcomputer.org/docs/current/developer-docs/defi/overview/#icrc-1-ledgers)
-2. ICRC-1 standard is a special case of calling another canister on IC
+1. ckETH complies with the [ICRC-1 ledger token standard](https://internetcomputer.org/docs/current/developer-docs/defi/overview/#icrc-1-ledgers). 
 
-More detail:
+2. You can write a smart contract that works with ckETH just like you would for any other `ICRC-1`-compliant token. 
 
-You can write a smart contract that works with ckETH just like you would for any other `ICRC-1`-compliant token. You can find all the ICRC-1 ledger endpoints [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). Requests for balances and transfers must be sent to the ckETH ledger, which has the canister ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
+3. You can find all the ICRC-1 ledger endpoints [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). 
 
-For detailed information and potential code examples, check out out th [ICP documentation](https://internetcomputer.org/docs), the [DFINITY forum](https://forum.dfinity.org), and the [ckETH minter documentation](https://github.com/dfinity/ic/blob/master/rs/ethereum/ckETH/minter/README.adoc).
+4. Requests for balances and transfers must be sent to the ckETH ledger, which has the canister ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
 
-## The best place to start to write contracts that handle ckETH are:
+For detailed information and potential code examples, check out out the [ICP documentation](https://internetcomputer.org/docs), the [DFINITY forum](https://forum.dfinity.org), and the [ckETH minter documentation](https://github.com/dfinity/ic/blob/master/rs/ethereum/ckETH/minter/README.adoc).
+
+## What is the best place to start to write contracts that handle ckETH?
 
 * [High level technical summary](https://forum.dfinity.org/t/cketh-a-canister-issued-ether-twin-token-on-the-ic/22819)
 
@@ -87,21 +88,17 @@ Sources:
 
 Choosing ckETH for your application or service can provide several benefits:
 
-1. **No need for bridges**: ckETH eliminates the need for bridges. It uses the HTTPS outcalls feature, which allows ICP canister smart contracts to call API requests directly. This bypasses potential attack vectors by directly calling Ethereum RPCs through [HTTPS outcalls](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
+1. **Lower transaction fees**: Ethereum holders can interact with ckETH on the Internet Computer, which has significantly lower gas fees than on Ethereum. This allows for more [cost-effective transactions](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
 
-2. **Lower transaction fees**: Ethereum holders can interact with ckETH on the Internet Computer, which has significantly lower gas fees than on Ethereum. This allows for more [cost-effective transactions](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
+2. **Manage an Ethereum wallet directly in an ICP canister**: ICP canister smart contracts can create and manage an Ethereum wallet address using threshold ECDSA. This provides a seamless way to manage [Ethereum wallets](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
 
-3. **Manage an Ethereum wallet directly in an ICP canister**: ICP canister smart contracts can create and manage an Ethereum wallet address using threshold ECDSA. This provides a seamless way to manage [Ethereum wallets](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
+3. **Seamless conversion**: ckETH allows you to enjoy the benefits of fast and cheap transactions and higher security on the Internet Computer, while still being able to seamlessly [convert back to your ETH anytime](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
 
-4. **Seamless conversion**: ckETH allows you to enjoy the benefits of fast and cheap transactions and higher security on the Internet Computer, while still being able to seamlessly [convert back to your ETH anytime](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197).
+4. **Multi-chain environment**: ICP enables a multi-chain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. This provides increased asset liquidity, expanded market access, improved scalability and throughput, and access to [ICP’s unique capabilities](https://internetcomputer.org/ethereum-integration).
 
-5. **Multi-chain environment**: ICP enables a multi-chain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. This provides increased asset liquidity, expanded market access, improved scalability and throughput, and access to [ICP’s unique capabilities](https://internetcomputer.org/ethereum-integration).
+5. **Gasless token swaps**: Using ckETH, users can swap tokens for a few cents with [0 gas fees](https://internetcomputer.org/ethereum-integration).
 
-6. **Gasless token swaps**: Using ckETH, users can swap tokens for a few cents with [0 gas fees](https://internetcomputer.org/ethereum-integration).
-
-7. **Web2 integration**: Connect smart contracts to the world outside blockchain. Fetch real-time price data and more from Web2.
-
-8. **Signing Ethereum transactions**: ICP smart contracts are capable of offering the on-chain Ethereum full node API by using the HTTPS outcalls feature to securely query the Ethereum blockchain, and send transactions to it.
+6. **Web2 integration**: Connect smart contracts to the world outside blockchain. Fetch real-time price data and more from Web2.
 
 In summary, ckETH provides a secure, cost-effective, and efficient way to interact with the Ethereum blockchain, making it a great choice for your application or service.
 
@@ -111,11 +108,9 @@ ckETH offers several advantages in terms of speed, fees, and security:
 
 1. **Speed:** ckETH transactions on ICP have significantly lower latency compared to Ethereum. They can be transferred with 1-2 seconds finality, making them almost instant .
 
-2. **Fees:** Ethereum holders can interact with ckETH on ICP, which has significantly lower gas fees than on Ethereum. Users can swap tokens for a few cents with 0 gas fees .
+2. **Fees:** Ethereum holders can interact with ckETH on ICP, which has significantly lower fees than on Ethereum. Users can swap tokens for a few cents with 0 gas fees .
 
 3. **Security:** ckETH bypasses attack vectors by directly calling Ethereum RPCs through HTTPS outcalls, a feature that enables ICP canister smart contracts to call API requests directly. This minimizes the risk of data leaks, hacks, and breaches.
-
-4. **Integration:** ckETH can be directly processed by smart contracts hosted on ICP, and can be seamlessly converted back to ETH anytime .
 
 Sources:
 - [Internet Computer for Ethereum Developers](https://wiki.internetcomputer.org/wiki/The_Internet_Computer_for_Ethereum_Developers#mw-toc-heading)
@@ -181,7 +176,7 @@ Yes, you can build smart contracts that interact with ckETH on the Internet Comp
 
 5. **Managing an Ethereum wallet**: ICP canister smart contracts can create and manage an Ethereum wallet address using threshold ECDSA. This means that your smart contracts can hold ETH and sign transactions.
 
-6. **Processing and storing large volumes of data**: Smart contracts can process and store large volumes of data at a relatively stable cost that is a tiny fraction of that on traditional blockchain.
+6. **Processing and storing large volumes of data**: Smart contracts can process and store large volumes of data at a relatively stable cost that is a tiny fraction of that on a traditional blockchain.
 
 7. **Serving web experiences directly to end users**: Smart contracts on ICP can serve web experiences directly to end users, providing end-to-end blockchain security.
 
@@ -197,29 +192,23 @@ Please note that the ICP ETH integration is still in development, and more funct
 
 ## What are the transaction fees associated with ckETH?
 
-The transaction fees associated with ckETH on the Internet Computer are significantly lower compared to those on Ethereum. This is one of the key advantages of using ckETH. 
-
-When you use ckETH on ICP, you can send and receive ETH value on ICP DEXs for a few cents with 1-2s finality, and no gas fees . This is in contrast to Ethereum, where the average transaction fees for USDC and USDT were $4.21 and $5.46 respectively in June 2023.
-
-Moreover, the "chain key" versions of Ethereum assets, including ckETH, live on ledgers created by Internet Computer smart contracts, where they can be transferred with 1 second finality and at near zero cost.
-
-Please note that while the transaction fees on ICP are low, there may still be costs associated with converting ETH to ckETH and vice versa, as well as interacting with Ethereum smart contracts from the Internet Computer.
+The trannsaction fees are 0.000002 ckETH.
 
 ## How quickly can transactions be finalized?
 
 ICP is designed to finalize transactions very quickly. Specifically, it can finalize transactions that update canister smart contract state in 1–2 seconds. This is a significant improvement over traditional blockchains like Bitcoin and Ethereum, which can take much longer to finalize transactions.
 
-In addition, ICP splits canister function execution into two types: "update calls" and "query calls". Update calls, which we are already familiar with, take 1–2 seconds to finalize their execution. On the other hand, query calls work differently because any changes they make to state are discarded after they run. This allows query calls to execute in milliseconds.
+In addition, ICP splits canister function execution into two types: "update calls" and "query calls". Update calls take 1–2 seconds to finalize their execution. On the other hand, query calls work differently because any changes they make to state are discarded after they run. This allows query calls to execute in milliseconds.
 
-ICP is capable of processing up to 11,500 transactions per second, executed with an average 1-second finality on dapp subnets and a 2-second finality on the Network Nervous System (NNS) subnet.
+ICP is capable of processing up to over 30 thousand transactions per second (as of [November 2023](https://wiki.internetcomputer.org/wiki/Internet_Computer_performance)), executed with an average 1-second finality on dapp subnets and a 2-second finality on the Network Nervous System (NNS) subnet.
 
 ## Who controls the development and governance of ckETH?
 
-The development and governance of ckETH, the digital twin of ETH on the Internet Computer (ICP), is managed by the ICP ecosystem. The ICP ckETH canister smart contract is responsible for minting ckETH and managing the conversion of ckETH back to ETH. 
+Like many ICP canisters, the 
 
-The governance of the Internet Computer, and by extension ckETH, is decentralized. The evolution of the system depends on the governance mechanism that defines how a system can change. In the case of the Internet Computer, the NNS canisters define the governance mechanisms, including the parameters for staking, voting, and rewards. Users can stake ICP to participate in voting. The DFINITY foundation and the ICA are the parties with the highest voting power in the ecosystem, together holding less than 23% of the total voting power.
+The development and governance of ckETH, the digital twin of ETH on the Internet Computer (ICP), is managed by the ICP ecosystem. 
 
-For more information on the governance and tokenomics of the Internet Computer, you can refer to the [Internet Computer Wiki](https://wiki.internetcomputer.org/wiki/NNS_Canisters) and [Tokenomics of a DAO](https://wiki.internetcomputer.org/wiki/Tokenomics_of_a_DAO).
+Software updates to the ckETH canisters are voted on by the NNS DAO.
 
 **Additional reading**
 
@@ -232,7 +221,7 @@ This answer is a work in progress. Please check back later for an updated respon
 
 # What is the current state of ckETH project?
 
-ckETH is live on the Internet Computer mainnet. It has been added to the ICP dashboard and is also supported in the ICRC-1 wallet. However, with the current ckETH integration, you cannot withdraw to ETH directly from the ICRC-1 wallet. 
+ckETH is live on the Internet Computer mainnet. It has been added to the ICP dashboard. However, with the current ckETH integration, you cannot withdraw to ETH directly from the ICRC-1 wallet. 
 
 The integration is being carried out in phases. Phase 0, which enables chain-key signing and HTTPS outcalls, is already complete. Phase 1 is being built to allow ETH API calls by accessing Web-2 based API providers through HTTPS outcalls. This phase also includes designing and building ckETH and ckERC-20 tokens. The final phase, Phase 2, will revolve around native ETH integration.
 

@@ -8,6 +8,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tomc-Iny0O4?si=YYNNMhSA0r3pcleS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Overview
 
 Candid is an interface description language that is used to describe the public interface of a service. A **service** is usually in the form of an application deployed as a canister on ICP. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister **methods**, regardless of the manner used to interact with the canister. Recall that a method is a piece of code specifying a task which declares a sequence of arguments and their associated result types.
@@ -20,7 +22,7 @@ Up until now in this developer journey, you've utilized the Candid UI a few time
 
 ```
   Backend canister via Candid interface:
-    dependencies_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 These URLs take you to the Candid user interface (UI). Now it's time to take a closer look at the fundamentals of Candid to understand how it works and how it can be used for more complex dapp development.
@@ -146,9 +148,9 @@ This example describes a service called `counter` that consist of the following 
 
 This example Candid interface description helps to illustrate that every method has a sequence of argument and result types. Methods can also include annotations, like the query notation shown in this example (`() -> (int) query;`), which is a feature specific to ICP.
 
-For canisters written in other languages such as Rust, you can develop your service using the language's native types. For Rust examples of how to write Candid service descriptions, see the documentation [here](https://internetcomputer.org/docs/current/developer-docs/backend/rust/candid/).
+For canisters written in other languages such as Rust, you can develop your service using the language's native types. [View Rust examples of how to write Candid service descriptions](https://internetcomputer.org/docs/current/developer-docs/backend/rust/candid/).
 
-To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the `candid-extractor` tool. You can learn more [here](https://internetcomputer.org/docs/current/backend/candid/generating-candid).
+To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the [`candid-extractor` tool](https://internetcomputer.org/docs/current/backend/candid/generating-candid).
 
 
 ## Service upgrades
@@ -220,7 +222,7 @@ dfx start --clean --background
 dfx new candid_example
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -344,7 +346,7 @@ To interact with the Candid UI from a web browser, recall that when a canister i
 
 ```bash
   Backend canister via Candid interface:
-    candid_example_backend: http://127.0.0.1:8080/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
+    candid_example_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
 ```
 
 In this output, you can see the URL for the Candid interface under 'Backend canister via Candid interface'. Opening this URL in a web browser will display the following UI:

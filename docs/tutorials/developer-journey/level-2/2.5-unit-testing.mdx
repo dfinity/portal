@@ -22,7 +22,7 @@ There are three primary types of testing:
 
 ## Motoko unit testing
 
-The Motoko base library contains a series of test files that can be used for unit testing. There are tests for individual types, such as `Text`, `Array`, `Func`, etc. The full library of test files can be found [here](https://github.com/dfinity/motoko-base/tree/master/test).
+The Motoko base library contains a series of test files that can be used for unit testing. There are tests for individual types, such as `Text`, `Array`, `Func`, etc. [Check out the full library of test files](https://github.com/dfinity/motoko-base/tree/master/test).
 
 Many of these tests use a library called Motoko Matchers. Motoko Matchers is a test library that contains several packages that can be imported and used to provide testing functionalities.
 
@@ -112,7 +112,7 @@ Want to learn more about running large, long-running batches of tests? Take a lo
 
 In this developer journey series, you'll continue to focus on exploring and using Motoko. However, it's important to make note of the resources available for Rust testing.
 
-For information about Rust unit testing, see the documentation [here](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades) and [here](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent).
+[Learn more about Rust unit testing](https://mmapped.blog/posts/01-effective-rust-canisters.html).
 
 You may also consider the [DFINITY Rust guidelines on testing](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_tests).
 
@@ -132,13 +132,13 @@ response = pic.update_call(canister_id, method="greeting", ...)
 assert(response == 'Hello, PocketIC!')
 ```
 
-You can learn more about PocketIC [here](https://github.com/dfinity/pocketic-py#readme).
+[Learn more about PocketIC](https://github.com/dfinity/pocketic-py#readme).
 
 ### Tests using Light Replica
 
 Light Replica is a community-developed project designed to provide a local testing and development environment similar to Ethereum's Truffle or Hardhat tools. Light Replica creates a local node designed to replicate the behavior of a real ICP node that includes additional logging and functions to assist with testing. Using this local node, any Wasm file can be tested and interacted with as if it were deployed on a live production node. The Light Replica's codebase includes tests primarily written in Rust and Typescript, and can be beneficial as a tool for Rust development testing, but can be used with any canister that has been compiled into a Wasm file.
 
-You can learn more about Light Replica [here](https://github.com/icopen/lightic/tree/main).
+[Learn more about Light Replica](https://github.com/icopen/lightic/tree/main).
 
 ## End2end (e2e) testing
 
@@ -165,7 +165,7 @@ dfx start --clean --background
 dfx new e2e_tests
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -208,39 +208,18 @@ cd e2e_tests
 
 ```bash
 dfx start --clean --background
-dfx new e2e_tests
+dfx new e2e_tests --no-frontend
 cd e2e_tests
 ```
 
 Remember, by default `dfx new` creates a new project in the Motoko language. If you'd like to create a Rust project, use the flag `--type=rust`.
-
 
 </TabItem>
 </Tabs>
 
 ### Setting up the project
 
-Then, you can remove the `src/e2e_tests_frontend` folder and any sub folders. You won't be using a frontend in this project.
-
-```bash
-rm -r src/e2e_tests_frontend
-```
-
-Then, remove the `e2e_tests_frontend` configuration from the `dfx.json` file. Once that has been completed, your `dfx.json` file should resemble the following:
-
-```json
-{
-  "canisters": {
-    "e2e_tests_backend": {
-      "main": "src/e2e_tests_backend/main.mo",
-      "type": "motoko"
-    }
-  },
-  "version": 1
-}
-```
-
-Next, you'll install `vitest` and `isomorphic-fetch` with the command:
+Next, install `vitest` and `isomorphic-fetch` with the command:
 
 ```bash
 npm install --save-dev vitest isomorphic-fetch
@@ -263,7 +242,7 @@ Then, open your `package.json` file and insert `"test": "vitest"` in the `script
 ```
 
 :::info
-Need the full `package.json` file? A repo containing the full project for this tutorial can be found [here](https://github.com/krpeacock/sample-canister-e2e).
+Need the full `package.json` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
 :::
 
 
@@ -304,7 +283,7 @@ export const createActor = async (canisterId, options) => {
 export const e2e_tests_backendCanister = canisterIds.e2e_tests_backend.local;
 
 export const e2e_tests_backend = await createActor(e2e_tests_backendCanister, {
-  agentOptions: { host: "http://127.0.0.1:8080", fetch },
+  agentOptions: { host: "http://127.0.0.1:4943", fetch },
 });
 ```
 
@@ -403,7 +382,7 @@ test("Should contain a candid interface", async () => {
 ```
 
 :::info
-Need the full `src/tests/e2e_tests_backend.test.ts` file? A repo containing the full project for this tutorial can be found [here](https://github.com/krpeacock/sample-canister-e2e).
+Need the full `src/tests/e2e_tests_backend.test.ts` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
 :::
 
 This test simply checks that our canister's metadata contains a Candid interface.
@@ -433,7 +412,7 @@ Before you upload your code to Github, first edit the `package.json` file. In th
 
 ```json
 "ci": "vitest run",
-"preci": "dfx stop; dfx start --background --clean; dfx deploy; dfx generate"
+"preci": "dfx stop; dfx start --clean --background; dfx deploy; dfx generate"
 ```
 
 This tells the code to automatically start dfx and deploy the project's canister.
@@ -488,7 +467,7 @@ jobs:
           REPLICA_PORT: 8000
 ```
 
-To learn more about Github workflows, check out the [Github documentation here](https://docs.github.com/en/actions/using-workflows).
+To learn more about Github workflows, check out the [Github documentation](https://docs.github.com/en/actions/using-workflows).
 
 ## Need help?
 

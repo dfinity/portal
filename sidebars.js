@@ -71,6 +71,11 @@ const sidebars = {
               label: "Quickstart for React developers",
               id: "developer-docs/getting-started/quickstart/react-quickstart",
             },
+            {
+              type: "doc",
+              label: "Juno quickstart",
+              id: "developer-docs/getting-started/quickstart/juno-quickstart",
+            },
           ],
         },
       ],
@@ -95,6 +100,21 @@ const sidebars = {
             "developer-docs/smart-contracts/write/overview",
             "developer-docs/smart-contracts/write/resources",
           ],
+        },
+        {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
         },
         {
           type: "category",
@@ -143,6 +163,7 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/upgrade",
             "developer-docs/smart-contracts/maintain/resource-limits",
+            "developer-docs/smart-contracts/maintain/trapping",
             {
               type: "category",
               label: "Cost",
@@ -221,6 +242,11 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/vetkeys",
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
+            },
+            {
+              type: "doc",
+              label: "On-chain randomness",
+              id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
@@ -442,10 +468,11 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
-            "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
-            "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/serving-static-assets",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/bundlers",
             "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
         },
@@ -543,6 +570,14 @@ const sidebars = {
           label: "Formal verification",
           id: "developer-docs/security/formal-verification",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "DeAI",
+      items: [
+        "developer-docs/ai/overview",
+        "developer-docs/ai/machine-learning-sample"
       ],
     },
     {
