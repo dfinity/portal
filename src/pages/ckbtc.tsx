@@ -81,7 +81,8 @@ function CkbtcPage(): JSX.Element {
                   ckBTC — a multi-chain bitcoin twin, trustlessly created by
                   chain-key cryptography and Internet Computer smart contracts
                   that directly hold raw bitcoin. Send and receive ckBTC with
-                  1-2 second finality and negligible fees.
+                  1-2 second finality and negligible fees. Only possible because 
+                  ICP smart contracts can call into the Bitcoin network.
                 </motion.p>
               </div>
             </AnimateSpawn>
