@@ -151,7 +151,10 @@ function MultichainPage() {
   return (
     <Layout
       title="Trustless multi-chain on ICP"
-      description="Decentralized applications and services can delight users by incorporating the assets and functionality of multiple blockchains. Using the Internet Computer, developers gain the technical superpowers necessary to deliver such game-changing experiences, while preserving user safety and convenience."
+      description="Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
+      This is because of the innovative Chain Key cryptography that allows for secure, decentralized, communication.          
+      Now users and developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts."
+      
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
