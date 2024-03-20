@@ -26,7 +26,7 @@ function AIPage() {
 
   return (
     <Layout
-      title="Internet Identity"
+      title="Decentralized AI"
       description="Internet Identity on ICP redefines user experiences by removing friction from the authentication journey and enabling data sovereignty."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.jpg"></ShareMeta>
@@ -46,25 +46,14 @@ function AIPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
               variants={transitions.item}
             >
-              A fully decentralized digital identity solution
+              Hello, <br /> Decentralized AI
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Internet Identity redefines user experiences by removing
-                friction from the authentication journey and enabling data
-                sovereignty.
-              </motion.p>
-              <motion.p className="mb-0" variants={transitions.item}>
-                <Link
-                  className="link-white link-with-icon"
-                  href="/docs/current/references/ii-spec/"
-                >
-                  <LinkArrowRight />
-                  Start building
-                </Link>
+                As AI continues to scale, Blockchain has the potential to balance its current centralized properties and foster a more equal distribution of power, data, and control over how society will continue interacting with the internet over the coming decades.
               </motion.p>
             </div>
           </div>
