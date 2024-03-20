@@ -397,41 +397,6 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="icpERC20">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    icpERC20 tokens on Ethereum
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Ethereum provides the world’s preeminent DeFi rails.
-                    Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens, and popular custody
-                    services such as Fireblocks, which are popular among
-                    institutions investing in crypto, custody any ERC20 token as
-                    standard.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The ICP protocol makes it possible to publish any native ICP
-                    token hosted on a standard ledger to Ethereum, in the form
-                    of an icpERC20. The twin is a standard ERC20 token and can
-                    be processed by any service that processes ERC20 tokens.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A service created by a Internet Computer-hosted smart
-                    contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token . The service
-                    also allows icpERC20 twins to be returned to the Internet
-                    Computer, where they retain their native form.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Once an icpERC20 token has been created, it can also be
-                    processed by Ethereum Layer-2 networks, and moved across
-                    other chains using traditional bridges.
-                  </p>
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">icpERC20 is pending</Status>
-                  </p>
-                </ContentCard>
-
                 <ContentCard id="oisy-wallet">
                   <img
                     src="/img/multichain/card-oisy.webp"
@@ -482,144 +447,47 @@ function MultichainPage() {
                     <Status type="pending">BRC20 pending</Status>
                   </p>
                 </ContentCard>
-               
-                {/* <ContentCard id="additional-resources">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Additional resources
-                  </h3>
-                  <p className="flex flex-col gap-6 items-start mb-0">
-                  <Link
-                      className="link-primary"
-                      href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
-                    >
-                      <LinkArrowRight /> Multi-chain FAQs
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="/ecosystem?tag=Ethereum"
-                    >
-                      <LinkArrowRight /> Open source projects with Ethereum
-                      integration
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="/bitcoin-integration/faq"
-                    >
-                      <LinkArrowRight /> FAQ about BTC integration & ckBTC
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="/samples?selectedDomains=Asynchronous+DeFi"
-                    >
-                      <LinkArrowRight /> Sample codes of DeFi projects
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="https://medium.com/dfinity/hackathon-winners-put-top-icp-features-into-practice-90c9abeef342"
-                    >
-                      <LinkArrowRight /> Multi-chain Hackathon Projects
-                    </Link>
-                  </p>
-                </ContentCard>
 
-                <ContentCard id="sample-code">
+                <ContentCard id="icpERC20">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Multi-chain sample code
-                  </h3>
-                  <p className="flex flex-col gap-6 items-start mb-0">
-                    <Link className="link-primary" href="/samples">
-                      <LinkArrowRight /> More Sample codes
-                    </Link>
-                  </p>
-                  <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
-                    {[
-                      "IC ETH Starter",
-                      "Add ERC-20 to IC ETH Starter",
-                      "OISY",
-                      "PoS app for ckBTC",
-                      "ICRC2 Swap Demo",
-                      "Multi-subnet Bitcoin Custody",
-                      "ETH Payment Tutorials",
-                      "B3 Wallet",
-                      "ckBTC",
-                      "ckETH",
-                    ]
-                      .map((title) =>
-                        sampleItems.find(
-                          (item) =>
-                            item.title.toLowerCase() === title.toLowerCase()!
-                        )
-                      )
-                      .map((sample) => (
-                        <Card
-                          key={sample.index}
-                          image={sample.image}
-                          title={sample.title}
-                          domain={sample.domains[0]}
-                          body={sample.body}
-                          links={sample.links}
-                        />
-                      ))}
-                  </div>
-                </ContentCard> */}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 2 */}
-        {/* <section className="container-12 pt-20 md:pt-40">
-          <div className="md:flex">
-            <div className="flex-[5]">
-              <StickySectionNav
-                items={content.map((c) => c.title)}
-                className="hidden md:block"
-                highlightedIndex={highlight.highlightedIndex}
-                onItemClick={onItemClick}
-                title={
-                  <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
-                    XXXXX ICP supercharges smart contracts on other chains
-                  </h2>
-                }
-              ></StickySectionNav>
-            </div>
-            <div className="flex-[7]">
-              <div
-                className="lg:pr-[calc(1/7*100%)] space-y-10 md:space-y-20"
-                ref={(el) => (highlight.elRef.current = el)}
-              >
-
-                <ContentCard id="eth-cronjobs">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Use ICP to create crypto cron jobs on Ethereum
+                    icpERC20 tokens on Ethereum
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A key challenge involved when hosting DeFi and other
-                    services using Ethereum smart contracts, is the secure
-                    initiation of regular jobs. Oftentimes, smart contract jobs
-                    are initiated using external scripts running on insecure
-                    clouds such as Amazon Web Services, where the private key
-                    they maintain to make the calls is vulnerable, in the same
-                    way the private keys used by hot wallets are.
+                    Ethereum provides the world’s preeminent DeFi rails.
+                    Decentralized exchanges such as Uniswap provide immense
+                    liquidity for trading ERC20 tokens, and popular custody
+                    services such as Fireblocks, which are popular among
+                    institutions investing in crypto, custody any ERC20 token as
+                    standard.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer provides a solution. Canister smart
-                    contracts have an API that allows them to schedule their
-                    secure automatic execution for as long as needed into the
-                    future. Using EVM RPC, canisters can be used to initiate
-                    time-based calls into Ethereum smart contracts too – without
-                    a private key being made vulnerable.
+                    The ICP protocol makes it possible to publish any native ICP
+                    token hosted on a standard ledger to Ethereum, in the form
+                    of an icpERC20. The twin is a standard ERC20 token and can
+                    be processed by any service that processes ERC20 tokens.
                   </p>
-
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    A service created by a Internet Computer-hosted smart
+                    contract provides functionality (often relayed by wallets)
+                    to create an icpERC20 twin of an ICP token . The service
+                    also allows icpERC20 twins to be returned to the Internet
+                    Computer, where they retain their native form.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Once an icpERC20 token has been created, it can also be
+                    processed by Ethereum Layer-2 networks, and moved across
+                    other chains using traditional bridges.
+                  </p>
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">pending</Status>
+                    <Status type="pending">icpERC20 is pending</Status>
                   </p>
-                </ContentCard>
+                </ContentCard>      
+            
 
                 <ContentCard id="bitcoin-ordinals">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Bitcoin Ordinal inscription, BRC20 tokens,
-                    and multi-chain
+                    Ordinals, BRC20 inscriptions from ICP using tSchnorr
+
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Canister smart contracts on the Internet Computer can use a
@@ -659,10 +527,10 @@ function MultichainPage() {
                 <ContentCard id="evm-rpc">
                   <img
                     src="/img/multichain/card-cketh.webp"
-                    alt="Call into Ethereum smart contracts from ICP using EVM RPC"
+                    alt="Calling smart contracts on Ethereum from ICP using EVM RPC"
                   />
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Call into Ethereum smart contracts from ICP using EVM RPC
+                    Calling smart contracts on Ethereum from ICP using EVM RPC
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The Internet Computer makes it possible to build almost any
@@ -695,40 +563,62 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="icpERC20">
+                <ContentCard id="eth-cronjobs">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Publish ICP tokens on Ethereum as icpERC20 tokens
+                    Cron jobs on Ethereum from ICP
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Ethereum provides the world’s preeminent DeFi rails.
-                    Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens, and popular custody
-                    services such as Fireblocks, which are popular among
-                    institutions investing in crypto, custody any ERC20 token as
-                    standard.
+                    A key challenge involved when hosting DeFi and other
+                    services using Ethereum smart contracts, is the secure
+                    initiation of regular jobs. Oftentimes, smart contract jobs
+                    are initiated using external scripts running on insecure
+                    clouds such as Amazon Web Services, where the private key
+                    they maintain to make the calls is vulnerable, in the same
+                    way the private keys used by hot wallets are.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The ICP protocol makes it possible to publish any native ICP
-                    token hosted on a standard ledger to Ethereum, in the form
-                    of an icpERC20. The twin is a standard ERC20 token and can
-                    be processed by any service that processes ERC20 tokens.
+                    The Internet Computer provides a solution. Canister smart
+                    contracts have an API that allows them to schedule their
+                    secure automatic execution for as long as needed into the
+                    future. Using EVM RPC, canisters can be used to initiate
+                    time-based calls into Ethereum smart contracts too – without
+                    a private key being made vulnerable.
                   </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A service created by a Internet Computer-hosted smart
-                    contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token . The service
-                    also allows icpERC20 twins to be returned to the Internet
-                    Computer, where they retain their native form.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Once an icpERC20 token has been created, it can also be
-                    processed by Ethereum Layer-2 networks, and moved across
-                    other chains using traditional bridges.
-                  </p>
+
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">icpERC20 is pending</Status>
+                    <Status type="pending">pending</Status>
                   </p>
                 </ContentCard>
+
+                <ContentCard id="unlimited-multichain">
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Unlimited multi-chain via edge routing
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Thus far, the Internet Computer network has only directly
+                    integrated with the Bitcoin and Ethereum networks, enabling
+                    it to produce twins of assets hosted by those networks.
+                    However, more broad multi-chain functionality is easily
+                    produced.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The Internet Computer enables hosted smart contracts to
+                    create accounts on any other blockchain, and sign
+                    transactions that can run on their networks. Transaction
+                    routing can be performed by the UX of Web3 services.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The UX of a Web3 service can provide very fast, and totally
+                    decentralized, edge routing for transactions. For example,
+                    when a canister smart contract has created a transaction for
+                    execution on another blockchain, the UX (e.g JavaScript
+                    running in the web browser) can retrieve the signed
+                    transaction by making a call to the smart contract, and then
+                    push it to the online API of a node in the destination
+                    network, then poll for the result.
+                  </p>
+                </ContentCard>
+                
 
                 <ContentCard id="additional-resources">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
@@ -769,34 +659,6 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="unlimited-multichain">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Unlimited multi-chain via edge routing
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Thus far, the Internet Computer network has only directly
-                    integrated with the Bitcoin and Ethereum networks, enabling
-                    it to produce twins of assets hosted by those networks.
-                    However, more broad multi-chain functionality is easily
-                    produced.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer enables hosted smart contracts to
-                    create accounts on any other blockchain, and sign
-                    transactions that can run on their networks. Transaction
-                    routing can be performed by the UX of Web3 services.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The UX of a Web3 service can provide very fast, and totally
-                    decentralized, edge routing for transactions. For example,
-                    when a canister smart contract has created a transaction for
-                    execution on another blockchain, the UX (e.g JavaScript
-                    running in the web browser) can retrieve the signed
-                    transaction by making a call to the smart contract, and then
-                    push it to the online API of a node in the destination
-                    network, then poll for the result.
-                  </p>
-                </ContentCard>
                 
                 <ContentCard id="sample-code">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
@@ -840,8 +702,9 @@ function MultichainPage() {
                 </ContentCard>
               </div>
             </div>
+            
           </div>
-        </section> */}
+        </section>
 
         <section className="container-10 relative mb-20 md:mb-40 mt-30 md:mt-60">
           <AnimateSpawn
