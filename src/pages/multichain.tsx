@@ -151,7 +151,7 @@ function MultichainPage() {
     <Layout
       title="Trustless multi-chain on ICP"
       description="Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
-      This is because of the innovative Chain Key cryptography that allows for secure, decentralized, communication.          
+      This is because of the innovative chain-key cryptography that allows for secure, decentralized, communication.          
       Now users and developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
