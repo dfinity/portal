@@ -37,7 +37,7 @@ function AIPage() {
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
-        <section className="bg-infinite text-white pt-20" ref={heroRef}>
+        <section className="bg-infinite text-white pt-20 mb-[10vw] lg:mb-3" ref={heroRef}>
           {bgDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
 
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
@@ -57,7 +57,7 @@ function AIPage() {
               </motion.p>
             </div>
           </div>
-          <div className="container-12 relative z-1 h-[200px] md:h-0">
+          <div className="container-12 relative z-1 h-[200px] md:h-0 pointer-events-none">
             <div className="absolute w-[200%] left-1/2 translate-y-1/2 -translate-x-[55%] bottom-1/2 md:left-0 md:absolute md:w-[150%] md:bottom-0 md:-translate-x-[5%] md:translate-y-1/3">
               <img
                 src="/img/decentralized-ai/aiheader.webp"
@@ -69,15 +69,73 @@ function AIPage() {
           </div>
         </section>
 
-        <section className="container-10 relative mt-24 sm:mt-52 md:mt-40">
-          <AnimateSpawn className="md:w-6/12" variants={transitions.container}>
+        <section className="container-6 relative mt-24 sm:mt-52 md:mt-40">
+          <AnimateSpawn variants={transitions.container}>
             <motion.h2
-              className="tw-heading-4 text-gradient md:tw-heading-60 mb-0"
+              className="tw-heading-4 text-gradient md:tw-heading-60 mb-0 text-center"
               variants={transitions.item}
             >
-              Harness the full potential of digital identity
+              Only on the Internet Computer AI runs on the blockchain
             </motion.h2>
           </AnimateSpawn>
+        </section>
+
+
+        <section className="container-10 mt-6 md:mt-10">
+          <TranslatedCardList className="md:mx-1/12">
+            <TranslatedCard
+              title="Built for Scale"
+              icon={
+                <img
+                  src="/img/internet-identity/icon-5.svg"
+                  loading="lazy"
+                  aria-hidden="true"
+                />
+              }
+            >
+
+              <motion.p
+                className="mb-0 tw-paragraph"
+                variants={transitions.item}
+              >
+                Canister smart contracts store up to 400 GB of data, enough to run substantial Large Language Models and AI applications at similar speeds to centralized infrastructure. AI models on the Internet Computer can be fully decentralized and verifiable.
+              </motion.p>
+            </TranslatedCard>
+            <TranslatedCard
+              title="Verifiable"
+              icon={
+                <img
+                  src="/img/internet-identity/icon-6.svg"
+                  loading="lazy"
+                  aria-hidden="true"
+                />
+              }
+            >
+              <motion.p
+                className="mb-0 tw-paragraph"
+                variants={transitions.item}
+              >
+                Prompts get validated as messages on the blockchain, ensuring the security and integrity of all data - a crucial element in developing applications handling sensitive data. Running open-source AI models like Llama 2 on ICP can form the basis for a fully open AI stack.
+              </motion.p>
+            </TranslatedCard>
+            <TranslatedCard
+              title="Tamper proof"
+              icon={
+                <img
+                  src="/img/internet-identity/icon-7.svg"
+                  loading="lazy"
+                  aria-hidden="true"
+                />
+              }
+            >
+              <motion.p
+                className="mb-0 tw-paragraph"
+                variants={transitions.item}
+              >
+                Building AI applications on the Internet Computer allows flexible, clear control permissions for maximum security and privacy. Developers decide on the dapp ‘controller’ - an internet identity, a DAO, or nobody.
+              </motion.p>
+            </TranslatedCard>
+          </TranslatedCardList>
         </section>
 
         <section className="container-12 pt-20 md:pt-30">
@@ -343,86 +401,6 @@ function AIPage() {
               for all providers
             </motion.h2>
           </AnimateSpawn>
-        </section>
-        <section className="container-10 mt-6 md:mt-10">
-          <TranslatedCardList className="md:mx-1/12">
-            <TranslatedCard
-              title="Enterprises"
-              icon={
-                <img
-                  src="/img/internet-identity/icon-5.svg"
-                  loading="lazy"
-                  aria-hidden="true"
-                />
-              }
-            >
-
-              <motion.p
-                className="mb-0 tw-paragraph"
-                variants={transitions.item}
-              >
-                Enhance the user experience by simplifying authentication and
-                credential sharing and reduce costs and cyberthreats by removing
-                the need to store passwords.
-              </motion.p>
-            </TranslatedCard>
-            <TranslatedCard
-              title="Developers"
-              icon={
-                <img
-                  src="/img/internet-identity/icon-6.svg"
-                  loading="lazy"
-                  aria-hidden="true"
-                />
-              }
-            >
-              <motion.p
-                className="mb-0 tw-paragraph"
-                variants={transitions.item}
-              >
-                Add value when designing apps by integrating cutting-edge
-                authentication and credential verification tools into their tech
-                stack.
-              </motion.p>
-            </TranslatedCard>
-            <TranslatedCard
-              title="Education"
-              icon={
-                <img
-                  src="/img/internet-identity/icon-7.svg"
-                  loading="lazy"
-                  aria-hidden="true"
-                />
-              }
-            >
-              <motion.p
-                className="mb-0 tw-paragraph"
-                variants={transitions.item}
-              >
-                Ensure the integrity and accuracy of academic records by issuing
-                digital copies of degrees, qualifications, and certificates
-              </motion.p>
-            </TranslatedCard>
-            <TranslatedCard
-              title="Governments"
-              icon={
-                <img
-                  src="/img/internet-identity/icon-8.svg"
-                  loading="lazy"
-                  aria-hidden="true"
-                />
-              }
-            >
-              <motion.p
-                className="mb-0 tw-paragraph"
-                variants={transitions.item}
-              >
-                Provide citizens with a decentralized digital identity solution
-                instead of putting their data in the hands of a private company
-                that may host servers in a different country or jurisdiction.
-              </motion.p>
-            </TranslatedCard>
-          </TranslatedCardList>
         </section>
 
         <AnimateSpawn
