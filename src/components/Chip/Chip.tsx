@@ -6,6 +6,8 @@ export interface ChipProps {
   children?: ReactNode;
   size?: "default" | "small";
   shape?: "oval" | "rounded";
+  // a tailwind class name to use for the chip's background color
+  color?: string;
 }
 
 export function Chip({
@@ -14,8 +16,11 @@ export function Chip({
   className: overrides = "",
   size = "default",
   shape = "oval",
+  color = "bg-infinite-60",
 }: ChipProps) {
-  const baseClassName = "bg-infinite-60 text-white font-medium";
+  const baseClassName = "text-white font-medium";
+
+  const colorClassName = useMemo(() => color, [color]);
 
   const sizeClassName = useMemo(() => {
     if (size === "default") {
@@ -32,7 +37,7 @@ export function Chip({
 
   return (
     <div
-      className={`${baseClassName} ${sizeClassName} ${shapeClassName} ${overrides}`.trim()}
+      className={`${baseClassName} ${sizeClassName} ${shapeClassName} ${colorClassName} ${overrides}`.trim()}
     >
       {children ?? label}
     </div>
