@@ -649,18 +649,29 @@ const sidebars = {
       label: "Multi-chain",
       items: [
         {
+          type: "doc",
+          label: "Overview",
+          id: "developer-docs/multi-chain/overview",
+        },
+        {
           type: "category",
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
-            "developer-docs/multi-chain/bitcoin/ckbtc",
             {
               type: "category",
-              label: "Advanced",
+              label: "Using the integration",
               items: [
-                "developer-docs/multi-chain/bitcoin/read-state",
-                "developer-docs/multi-chain/bitcoin/submit-transactions",
-                "developer-docs/multi-chain/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckBTC",
+              items: [
+                "developer-docs/multi-chain/bitcoin/ckbtc/overview",
               ],
             },
           ],
@@ -670,9 +681,21 @@ const sidebars = {
           label: "Ethereum",
           items: [
             "developer-docs/multi-chain/ethereum/overview",
-            "developer-docs/multi-chain/ethereum/cketh",
-            "developer-docs/multi-chain/ethereum/evm-rpc",
-            "developer-docs/multi-chain/ethereum/siwe",
+            {
+              type: "category",
+              label: "Using the integration",
+              items: [
+                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
+                "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckETH",
+              items: [
+                "developer-docs/multi-chain/ethereum/cketh/overview",
+              ],
+            },
           ],
         },
       ],

@@ -406,13 +406,13 @@ const redirects = `
   /docs/current/developer-docs/integrations/multi-chain/signatures-faq /docs/current/developer-docs/multi-chain/faq/signatures-faq
   /docs/current/developer-docs/integrations/bitcoin/ /docs/current/developer-docs/multi-chain/bitcoin/overview
   /docs/current/developer-docs/integrations/bitcoin/index /docs/current/developer-docs/multi-chain/bitcoin/overview
-  /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc
-  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/read-state
-  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions
-  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/local-development
+  /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview
+  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
+  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
+  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/integrations/ethereum/overview /docs/current/developer-docs/multi-chain/ethereum/overview
-  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc
-  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/siwe
+  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/using-eth/evm-rpc
+  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works /docs/current/references/https-outcalls-how-it-works
@@ -437,6 +437,13 @@ const redirects = `
   /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
+  /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/ethereum/cketh/overview
+  /docs/current/developer-docs/multi-chain/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/using-eth/evm-rpc
+  /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview
+  /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
+  /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
