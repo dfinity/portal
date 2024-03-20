@@ -151,7 +151,7 @@ function MultichainPage() {
     <Layout
       title="Trustless multi-chain on ICP"
       description="Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
-      This is because of the innovative Chain Key cryptography that allows for secure, decentralized, communication.          
+      This is because of the innovative chain-key cryptography that allows for secure, decentralized, communication.          
       Now users and developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -178,7 +178,7 @@ function MultichainPage() {
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
               Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
-              This is because of the innovative Chain Key cryptography that allows for secure, decentralized, communication.          
+              This is because of the innovative chain-key cryptography that allows for secure, decentralized, communication.          
               Now users and developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts.
               </p>
             </div>
@@ -347,7 +347,7 @@ function MultichainPage() {
 
                 <ContentCard id="bitcoin-ordinals">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Schnorr-enabled Bitcoin Ordinal inscription, BRC20 tokens,
+                    Bitcoin Ordinal inscription, BRC20 tokens,
                     and multi-chain
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
