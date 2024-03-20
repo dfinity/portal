@@ -110,12 +110,11 @@ const StickySectionNav: React.FC<{
 function MultichainPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
-  const [content, setContent] = React.useState<
-    {
-      title: string;
-      id: string;
-    }[]
-  >([]);
+  type ContentCardType = {
+    title: string;
+    id: string;
+   };
+   const [content, setContent] = React.useState<ContentCardType[]>([]);
 
   const highlight = useScrollSpyMenu(".content-card-with-id");
 
@@ -154,7 +153,6 @@ function MultichainPage() {
       description="Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
       This is because of the innovative Chain Key cryptography that allows for secure, decentralized, communication.          
       Now users and developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts."
-      
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
@@ -179,11 +177,9 @@ function MultichainPage() {
                 Trustless multi-chain on ICP
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
-                Decentralized applications and services can delight users by
-                incorporating the assets and functionality of multiple
-                blockchains. Using the Internet Computer, developers gain the
-                technical superpowers necessary to deliver such game-changing
-                experiences, while preserving user safety and convenience.
+              Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
+              This is because of the innovative Chain Key cryptography that allows for secure, decentralized, communication.          
+              Now users and developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts.
               </p>
             </div>
           </div>
@@ -204,14 +200,10 @@ function MultichainPage() {
             className="tw-heading-5 md:tw-heading-3 text-gradient mb-0 md:w-8/10"
             variants={transitions.item}
           >
-            Imagine building secure Web3 services 100% on-chain with no need for
-            traditional IT, using just smart contract software. This full stack
-            decentralization, when augmented with trustless multi-chain
-            capabilities derived from advanced cryptography, would enable the
-            secure custody of diverse crypto assets, their incorporation into
-            highly sophisticated value-producing functionality, and the
-            integration of smart contract logic on other chains. New realms of
-            possibilities would appear.
+            The main benefit of multi-chain functionality on the Internet Computer is that 
+            it allows for the creation of smart contracts that can directly interact with 
+            other blockchains. This is achieved without the need for trusted centralized 
+            bridges, which can be vulnerable to hacking and other security risks.
           </motion.p>
         </AnimateSpawn>
         <section className="bg-infinite relative overflow-hidden">
@@ -231,7 +223,7 @@ function MultichainPage() {
                 into smart contracts on other blockchains, and process their
                 tokens - including bitcoin, ether, ERC20 tokens and BRC20 tokens
                 - either directly on the other chain, or in the form of
-                high-performance trustless local twins.
+                high-performance trustless local twins. 
               </p>
               <h3 className="mt-10 md:mt-20 mb-6 tw-heading-3 text-gradient-purple">
                 But how does this magic work?
