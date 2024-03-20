@@ -347,7 +347,7 @@ function MultichainPage() {
 
                 <ContentCard id="bitcoin-ordinals">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Schnorr-enabled Bitcoin Ordinal inscription, BRC20 tokens,
+                    Bitcoin Ordinal inscription, BRC20 tokens,
                     and multi-chain
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
