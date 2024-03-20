@@ -81,10 +81,15 @@ Each subnet of the IC thereby is its own replicated state machine that makes pro
 
 ## Chain-Key and chain-evolution technology
 
-Many parts of the protocol of the IC depend on [*chain-key cryptography*](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), also referred to as chain-key technology. Chain-key cryptography is the collection of cryptographic mechanisms that enable the decentralized operation of Internet Computer Protocol.
-[Chain-evolution technology](https://internetcomputer.org/how-it-works/#Chain-evolution-technology) refers to specific cryptography-based mechanisms that enable the IC to operate in the long term. 
+Many parts of the protocol of the IC depend on [*chain-key cryptography*](https://internetcomputer.org/how-it-works/#Chain-key-cryptography), also referred to as chain-key technology.
 
-For examples of concrete benefits: chain-evolution technology enables ICP canister smart contracts to call into other blockchains, or for new nodes to efficiently join a subnet or nodes that have been down to efficiently catch up with the remaining part of the subnet. Both chain-key and chain-evolution technology sets the IC apart from other projects in terms of technology.
+Chain-key cryptography is the collection of cryptographic mechanisms that enable the decentralized operation of Internet Computer Protocol.
+
+[Chain-evolution technology](https://internetcomputer.org/how-it-works/#Chain-evolution-technology) refers to specific cryptography-based mechanisms that enable the IC to operate in the long term.
+
+For example, chain-evolution technology enables new nodes to efficiently join a subnet or nodes that have been down to efficiently catch up with the remaining part of the subnet.
+
+Both chain-key and chain-evolution technology sets the IC apart from other projects in terms of technology.
 
 ## Governance
 
