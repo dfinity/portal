@@ -17,10 +17,13 @@ import {
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import VideoCard from "../components/Common/VideoCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
+import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 
 const MotionLink = motion(Link);
 
 function AIPage() {
+  const fontLoaded = useFontsLoaded();
   const heroRef = useRef<HTMLDivElement>(null);
   const bgDark = useDarkHeaderInHero(heroRef);
 
@@ -138,105 +141,36 @@ function AIPage() {
           </TranslatedCardList>
         </section>
 
-        <section className="container-12 pt-20 md:pt-30">
-          <div className="flex flex-col gap-16 md:gap-40">
-            <TranslatedLayout
-              imageUrl="/img/internet-identity/image-1.webp"
-              reverse={true}
-            >
 
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                100% decentralized
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                Internet Identity is fully decentralized because apps built on
-                ICP store data entirely on-chain. It's more secure and fault
-                tolerant than digital identity solutions hosted on protocols
-                that rely on centralized cloud providers like Amazon Web
-                Services.
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/internet-identity/image-2.webp">
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                User friendly
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                Instead of using passwords to sign in to apps, users simply
-                unlock their devices with FaceID, TouchID or passcodes to access
-                their accounts. By unlocking their devices, users authorize the
-                use of a passkey. Passkeys are built on standardized technology,
-                making Internet Identity more convenient than traditional
-                authentication methods.
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/internet-identity/image-3.webp"
-              reverse={true}
-            >
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Enhanced security
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                Internet Identity removes the need for apps to store passwords
-                in a database. When a user creates an Internet Identity, they're
-                automatically assigned a public and private key pair. The
-                private key is locked in a tamper-proof chip on the user's
-                device, so nobody can retrieve it.
-              </p>
-            </TranslatedLayout>
-
-            <TranslatedLayout imageUrl="/img/internet-identity/image-4.webp">
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Strict privacy
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                Every time a user creates an account with an app using Internet
-                Identity, a new key pair is generated and managed for that app.
-                This means users can interact with an app without worrying that
-                it will share their data (like Big Tech's Single Sign-On).
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/internet-identity/image-5.webp"
-              reverse={true}
-            >
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">Multichain</h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-3">
-                Once ICP completes its integration with the Ethereum Virtual
-                Machine, decentralized apps built on the Ethereum protocol will
-                be able to integrate Internet Identity and offer users from both
-                ecosystems a convenient, secure, and private way to log in and
-                share verifiable credentials.
-              </p>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                ICP is compatible with the Ethereum Virtual Machine. Developers
-                building decentralized apps on the Ethereum protocol can
-                integrate Internet Identity and offer users from both ecosystems
-                a convenient, secure, and private way to log in and share
-                verifiable credentials.
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/internet-identity/image-6.webp">
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Easy integration
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-3 md:mb-6">
-                Internet Identity seamlessly integrates with Web2 and Web3 apps.
-                It deploys canister smart contracts to request authentication
-                and verify user identities.
-              </p>
-              <p className="mb-0">
-                <Link
-                  href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
-                  className="link-primary"
-                >
-                  <LinkArrowRight />
-                  Integrate Internet Identity
-                </Link>
-              </p>
-            </TranslatedLayout>
+        <AnimateSpawn
+          className="bg-infinite overflow-hidden mt-20 md:mt-30"
+          variants={transitions.container}
+          el={motion.section}
+        >
+          <div className="container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
+            <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
+            <div className="flex-1 mt-40 sm:mt-0">
+              <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
+                Use AI to learn about the Internet Computer Protocol
+              </h2>
+              <div className="mb-0">
+                <div className="w-full md:w-[550px] mt-4 md:mt-8">
+                  Ask AI Widget
+                  <AskAIWidget />
+                </div>
+              </div>
+            </div>
+            <div className="flex-1">
+              <img
+                src="/img/decentralized-ai/aicoded.webp"
+                alt=""
+                loading="lazy"
+                className="absolute top-0 right-0 w-1/2 w-full max-w-none"
+              ></img>
+            </div>
           </div>
-        </section>
+        </AnimateSpawn>
+
         <section className="bg-infinite pt-24 mt-20 md:mt-30">
           <div className="container-12 text-white">
             <AnimateSpawn
