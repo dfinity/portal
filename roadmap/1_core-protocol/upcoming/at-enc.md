@@ -3,7 +3,7 @@ title: Threshold Key Derivation
 links:
   Forum Link: https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560
   Proposal: 
-eta: 2023
+eta: 2024
 is_community: false
 ---
 
