@@ -87,7 +87,7 @@ function AIPage() {
               title="Built for Scale"
               icon={
                 <img
-                  src="/img/internet-identity/icon-5.svg"
+                  src="/img/decentralized-ai/icon-5.svg"
                   loading="lazy"
                   aria-hidden="true"
                 />
@@ -105,7 +105,7 @@ function AIPage() {
               title="Verifiable"
               icon={
                 <img
-                  src="/img/internet-identity/icon-6.svg"
+                  src="/img/decentralized-ai/icon-6.svg"
                   loading="lazy"
                   aria-hidden="true"
                 />
@@ -122,7 +122,7 @@ function AIPage() {
               title="Tamper proof"
               icon={
                 <img
-                  src="/img/internet-identity/icon-7.svg"
+                  src="/img/decentralized-ai/icon-7.svg"
                   loading="lazy"
                   aria-hidden="true"
                 />
