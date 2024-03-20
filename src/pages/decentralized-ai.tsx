@@ -17,7 +17,7 @@ import {
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import VideoCard from "../components/Common/VideoCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
+import { ChatWidget } from "@site/src/components/LandingPage/Hero/ChatWidget";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 
 const MotionLink = motion(Link);
@@ -26,6 +26,7 @@ function AIPage() {
   const fontLoaded = useFontsLoaded();
   const heroRef = useRef<HTMLDivElement>(null);
   const bgDark = useDarkHeaderInHero(heroRef);
+
 
   return (
     <Layout
@@ -155,8 +156,14 @@ function AIPage() {
               </h2>
               <div className="mb-0">
                 <div className="w-full md:w-[550px] mt-4 md:mt-8">
-                  Ask AI Widget
-                  <AskAIWidget />
+                  <ChatWidget
+                    aiPlaceholders={[
+                      "What is the Internet Computer?",
+                      "How do I build on the Internet Computer?",
+                      "What is the ICP token?",
+                    ]}
+                    fontLoaded={true}
+                  />
                 </div>
               </div>
             </div>
