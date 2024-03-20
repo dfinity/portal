@@ -257,6 +257,11 @@ const marketingNav = {
               href: "/internet-identity",
               description: "Web3 authentication",
             },
+            {
+              name: "Decentralized AI",
+              href: "/decentralized-ai",
+              description: "Decentralized AI",
+            },
           ],
           featured: {
             title: "Enter the ICP ecosystem",
