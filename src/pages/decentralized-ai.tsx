@@ -40,7 +40,7 @@ function AIPage() {
         <section className="bg-infinite text-white pt-20" ref={heroRef}>
           {bgDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
 
-          <div className="container-10 pt-20 pb-12 sm:pb-0 md:pb-40 md:pt-36 relative">
+          <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <div className="blob blob-white blob-xl md:blob-xl md:blob-x-8 md:blob-y-10 opacity-100"></div>
             <motion.h1
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
@@ -57,12 +57,12 @@ function AIPage() {
               </motion.p>
             </div>
           </div>
-          <div className="container-12 relative">
-            <div className="text-center md:w-5/10 relative md:absolute top-0 sm:top-40 md:top-0 translate-y-24 sm:translate-y-10 md:-translate-y-1/2 right-0 -mt-30 md:-mt-30">
+          <div className="container-12 relative z-1 h-[200px] md:h-0">
+            <div className="absolute w-[200%] left-1/2 translate-y-1/2 -translate-x-[55%] bottom-1/2 md:left-0 md:absolute md:w-[150%] md:bottom-0 md:-translate-x-[5%] md:translate-y-1/3">
               <img
-                src="/img/internet-identity/internet-identity-hero.webp"
+                src="/img/decentralized-ai/aiheader.webp"
                 alt="Start building on Internet Identity"
-                className="w-full max-w-sm sm:max-w-[720px] md:max-w-none"
+                className="w-full max-w-none"
                 loading="lazy"
               />
             </div>
