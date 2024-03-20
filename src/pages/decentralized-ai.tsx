@@ -17,6 +17,7 @@ import {
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import VideoCard from "../components/Common/VideoCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
 import { ChatWidget } from "@site/src/components/LandingPage/Hero/ChatWidget";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 
@@ -84,7 +85,6 @@ function AIPage() {
           </AnimateSpawn>
         </section>
 
-
         <section className="container-10 mt-6 md:mt-10">
           <TranslatedCardList className="md:mx-1/12">
             <TranslatedCard
@@ -142,7 +142,6 @@ function AIPage() {
           </TranslatedCardList>
         </section>
 
-
         <AnimateSpawn
           className="bg-infinite overflow-hidden mt-20 md:mt-30"
           variants={transitions.container}
@@ -156,6 +155,7 @@ function AIPage() {
               </h2>
               <div className="mb-0">
                 <div className="w-full md:w-[550px] mt-4 md:mt-8">
+                  <AskAIWidget  />
                   <ChatWidget
                     aiPlaceholders={[
                       "What is the Internet Computer?",
@@ -177,6 +177,49 @@ function AIPage() {
             </div>
           </div>
         </AnimateSpawn>
+
+        
+        <AnimateSpawn
+          el={motion.section}
+          variants={transitions.container}
+          className="mt-20 md:mt-30"
+        >
+          <div className="container-10 mb-10">
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-0 text-gradient"
+              variants={transitions.item}
+            >
+              Coming soon
+            </motion.h2>
+          </div>
+          <div className="md:container-12 grid md:grid-cols-2 gap-5 md:gap-5 pb-16 md:pb-0 bg-white md:bg-transparent">
+            <motion.div
+              className="md:col-span-2 md:rounded-xl backdrop-blur-2xl md:bg-white-60 relative flex flex-col md:flex-row  px-6 md:px-0 pt-10 md:pt-0"
+              variants={transitions.item}
+            >
+              <div className=" flex-1 md:order-2 flex rounded-xl overflow-hidden md:max-w-5/10">
+                <img
+                  src="/img/decentralized-ai/llm-icons.webp"
+                  alt="Helix Markets"
+                  className="w-full relative object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="md:flex-1 md:order-1 md:p-16 md:max-w-5/10 mt-10 md:mt-0">
+                <h2 className="tw-heading-5 md:tw-heading-4 mb-6">
+                  A private enterprise oracle
+                </h2>
+                <p className="tw-lead-sm text-black/60">
+                  An LLM on ICP to improve communications and productivity inside an organization.
+                </p>
+                <p className="tw-lead-sm mt-0 text-black/60">
+                  A chat interface that feeds on company data sources such as GitHub repos, JIRA tickets, Slack conversations, email threads, Google Calendar, and every other enterprise information source that's important. Employees can gain clarity on internal processes, projects, and schedules, and also feed back the model with ideas, tasks, and updates. Using this model, organizations leverage AI to be the glue that holds everything together.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </AnimateSpawn>
+
 
         <section className="bg-infinite pt-24 mt-20 md:mt-30">
           <div className="container-12 text-white">
@@ -343,91 +386,6 @@ function AIPage() {
             </motion.h2>
           </AnimateSpawn>
         </section>
-
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.container}
-          className="mt-20 md:mt-30"
-        >
-          <div className="container-10 mb-10">
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-60 mb-0 text-gradient"
-              variants={transitions.item}
-            >
-              Internet Identity in action
-            </motion.h2>
-          </div>
-          <div className="md:container-12 grid md:grid-cols-2 gap-5 md:gap-5 pb-16 md:pb-0 bg-white md:bg-transparent">
-            <motion.div
-              className="md:col-span-2 md:rounded-xl backdrop-blur-2xl md:bg-white-60 relative flex flex-col md:flex-row  px-6 md:px-0 pt-10 md:pt-0"
-              variants={transitions.item}
-            >
-              <div className=" flex-1 md:order-2 flex rounded-xl overflow-hidden md:max-w-5/10">
-                <img
-                  src="/img/internet-identity/helix.webp"
-                  alt="Helix Markets"
-                  className="w-full relative object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="md:flex-1 md:order-1 md:p-16 md:max-w-5/10 mt-10 md:mt-0">
-                <h2 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Authentication in Helix Markets
-                </h2>
-                <p className="tw-lead-sm mb-0 text-black/60">
-                  Helix Markets is a decentralized exchange offering a unique
-                  and innovative trading experience for crypto enthusiasts. It
-                  introduces features like native multichain liquidity and
-                  decentralized custody.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="md:rounded-xl md:bg-white/60 md:backdrop-blur-2xl px-6 pt-6 md:p-16"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 md:tw-heading-4 mb-4 md:mb-6">
-                The Problem
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-0 text-black/60">
-                One of Helix's biggest obstacles to adoption was the complexity
-                of the authentication process, a common challenge across the
-                Web3 ecosystem. Users need different wallets to log into
-                different dapps, meaning they have to manage multiple key pairs.
-                This friction deterred traders accustomed to the less secure but
-                more convenient Web2 experience.
-              </p>
-            </motion.div>
-            <motion.div
-              className="md:rounded-xl md:bg-white/60 md:backdrop-blur-2xl px-6 pt-6 md:p-16"
-              variants={transitions.item}
-            >
-              <h3 className="tw-heading-5 md:tw-heading-4 mb-4 md:mb-6">
-                The Solution
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-3 text-black/60">
-                Internet Identity provides traders with digital identifiers they
-                can use throughout the Internet Computer ecosystem, streamlining
-                the authentication journey on Helix's platform and offering
-                quicker and easier access to their wallets. As anchors are
-                portable (up to eight devices can be added as passkeys), Helix
-                knows its traders wherever they log in, while public key
-                cryptography eliminates the risk and burden of managing password
-                databases.
-              </p>
-              <p className="tw-paragraph md:tw-lead-sm mb-3 text-black/60">
-                <strong>
-                  ”Internet Identity allows Helix to deliver a Web2 experience
-                  to users of Web3 dapps”
-                </strong>
-              </p>
-              <p className="tw-paragraph md:tw-lead-sm mb-0 text-black/60">
-                <strong>– Gorazd Ocvirk, Co-Founder</strong>
-              </p>
-            </motion.div>
-          </div>
-        </AnimateSpawn>
 
         <AnimateSpawn
           className="container-10 pt-20 md:pt-30"
