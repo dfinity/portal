@@ -248,7 +248,7 @@ function MultichainPage() {
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
                 <b>Chain-key cryptography</b> is the scientific breakthrough that allows ICP smart contracts to 
-                create and sign transactions that are executed on other blockchains, therefore writing to another blockchain directly.
+                create and sign transactions that are executed on other blockchains &ndash; writing to another blockchain directly.
               </p>
               
               <p className="tw-paragraph md:tw-lead-sm mb-6">
