@@ -1,0 +1,82 @@
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "../../../src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "../../../src/components/Tabs/AdornedTab";
+import { BetaChip } from "../../../src/components/Chip/BetaChip";
+import { Chip } from "../../../src/components/Chip/Chip";
+
+The `AdornedTabs` component provides you with a mechanism to insert a start or
+end adornment to any of its `AdornedTab` children.
+
+`startAdornment`: inserts any element before the tab label `endAdornment`:
+inserts any element after the tab label
+
+Both `startAdornment` and `endAdornment` may be used together.
+
+<AdornedTabs groupId="tab-group">
+  <AdornedTab value="1" label="First tab" default startAdornment={(
+    <Chip size={"small"} shape={"rounded"} color={"bg-black"}>
+      First
+    </Chip>
+  )}>
+
+    This is the content contained in the first tab. The MDX parser is quite sensitive to formatting, for example white
+    spaces are important. Any content past the first line is rendered in a code block.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere augue viverra consequat tincidunt.
+    Cras quis lectus condimentum, dignissim metus imperdiet, auctor tortor. Aenean laoreet pellentesque tincidunt. Etiam
+    scelerisque urna quis consequat euismod. Phasellus congue lectus quis luctus malesuada. Morbi ultricies semper
+    pellentesque. Sed nec sem tempus, egestas odio sed, porta lorem. Aenean nec massa a dolor viverra lacinia.
+    Suspendisse condimentum ut est sed aliquet. Etiam ornare lorem ut dui rutrum scelerisque. Ut mollis placerat
+    molestie.
+  </AdornedTab>
+
+  <AdornedTab value="2" label="Second tab">
+    Another tab.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere augue viverra consequat tincidunt. Cras
+    quis lectus condimentum, dignissim metus imperdiet, auctor tortor. Aenean laoreet pellentesque tincidunt. Etiam
+    scelerisque urna quis consequat euismod. Phasellus congue lectus quis luctus malesuada. Morbi ultricies semper
+    pellentesque. Sed nec sem tempus, egestas odio sed, porta lorem. Aenean nec massa a dolor viverra lacinia.
+    Suspendisse condimentum ut est sed aliquet. Etiam ornare lorem ut dui rutrum scelerisque. Ut mollis placerat
+    molestie.
+  </AdornedTab>
+
+  <AdornedTab value="3" label="Beta tab" endAdornment={(
+    <Chip size={"small"} shape={"rounded"}>
+      Beta
+    </Chip>)}>
+
+    A tab group with a "first" badge and a "beta" badge.
+
+    <AdornedTabs groupId="tab-group">
+      <AdornedTab value={"1"} label="First tab" startAdornment={(
+        <Chip size={"small"} shape={"rounded"} color={"bg-black"}>
+          First
+        </Chip>
+      )} />
+
+      <AdornedTab value={2} label="Second tab" />
+      <AdornedTab value={"three"} label="Third tab" endAdornment={(
+        <Chip size={"small"} shape={"rounded"}>
+          Beta
+        </Chip>)} />
+
+      <AdornedTab value={"four"} label="Fourth tab" />
+    </AdornedTabs>
+
+  </AdornedTab>
+</AdornedTabs>
+
+## Beta Tabs
+
+<AdornedTabs>
+  <AdornedTab value={"1"} label="First tab">
+    First tab content
+  </AdornedTab>
+  <AdornedTab value={"beta"} label="Beta tab" endAdornment={<BetaChip />}>
+    Beta tab content
+  </AdornedTab>
+  <TabItem value={"3"} label={"Generic tab"}>
+    Generic tab item
+  </TabItem>
+</AdornedTabs>

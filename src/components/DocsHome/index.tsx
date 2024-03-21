@@ -340,7 +340,7 @@ const DocsHomePage: FC = () => {
                 <img
                   src="/img/docs/react.svg"
                   alt="React quickstart"
-                  className="w-10 h-10"
+                  className="h-10"
                   loading="lazy"
                 />
               </div>
@@ -366,7 +366,7 @@ const DocsHomePage: FC = () => {
                 <img
                   src="/img/docs/juno.svg"
                   alt="Juno quickstart"
-                  className="w-10 h-10"
+                  className="h-10"
                   loading="lazy"
                 />
               </div>
