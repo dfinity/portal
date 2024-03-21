@@ -40,7 +40,7 @@ export default function Home(): JSX.Element {
         <VisionSection>
         The Internet Computer reinvents compute on blockchain, incorporating more 
         than a 1000 years of R&D effort. Everything is now on-chain. HTTP. Data. 
-        Compute. Al. Your Web3 social network. Your orderbook exchange. Full stack 
+        Compute. AI. Your Web3 social network. Your orderbook exchange. Full stack 
         decentralization has arrived on a sovereign network that extends the internet.
         </VisionSection>
         <IntroCards />
