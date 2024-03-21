@@ -454,9 +454,9 @@ function MultichainPage() {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Ethereum provides the world’s preeminent DeFi rails.
                     Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens, and popular custody
-                    services such as Fireblocks, which are popular among
-                    institutions investing in crypto, custody any ERC20 token as
+                    liquidity for trading ERC20 tokens. Popular custody
+                    services such as Fireblocks, which is popular among
+                    investment institutions, custody any ERC20 token as
                     standard.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
