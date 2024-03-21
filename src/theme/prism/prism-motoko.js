@@ -1,11 +1,11 @@
 import { keywords } from "motoko/lib/keywords";
 
 Prism.languages.motoko = Prism.languages.extend("clike", {
+  boolean: /\b(?:_|true|false|null)\b/,
+  builtin: /\b(?:async|[A-Z][a-z0-9_]*)\b/,
   keyword: new RegExp(
     `\\b(?:${keywords.filter((k) => k !== "async").join("|")})\\b`
   ),
-  boolean: /\b(?:_|true|false|null)\b/,
-  builtin: /\b(?:async|[A-Z][a-z0-9_]*)\b/,
   function: null,
   number: [
     /[+-]?\\b0[xX]([A-Fa-f0-9_]+)/,
