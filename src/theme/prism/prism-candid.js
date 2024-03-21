@@ -12,7 +12,7 @@ Prism.languages.candid = {
     }
   ],
   keyword:
-    /\b(?:opt|vec|record|variant|func|blob|principal|nat|nat8|nat16|nat32|nat64|int|int8|int16|int32|int64|float32|float64|bool|text|null|reserved|empty|oneway|query')\b/,
+    /\b(?:opt|vec|record|variant|func|blob|principal|nat|nat8|nat16|nat32|nat64|int|int8|int16|int32|int64|float32|float64|bool|text|null|reserved|empty|oneway|query|composite_query')\b/,
   boolean: /\b(?:_|false|true)\b/,
   number: [
     /[+-]?\\b0[xX]([A-Fa-f0-9_]+)/,
