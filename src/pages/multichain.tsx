@@ -568,7 +568,7 @@ function MultichainPage() {
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A key challenge involved when hosting DeFi and other
-                    services using Ethereum smart contracts, is the secure
+                    services using Ethereum smart contracts is the secure
                     initiation of regular jobs. Oftentimes, smart contract jobs
                     are initiated using external scripts running on insecure
                     clouds such as Amazon Web Services, where the private key
