@@ -248,7 +248,7 @@ function AIPage() {
         </AnimateSpawn>
 
         <AnimateSpawn
-          className="container-10 pt-20 md:pt-30"
+          className="container-12 pt-20 md:pt-30"
           el={motion.section}
           variants={transitions.container}
         >
