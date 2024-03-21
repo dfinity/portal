@@ -1,19 +1,98 @@
-Prism.languages.motoko = Prism.languages.extend('clike', {
-  'string': {
-    pattern: /(^|[^\\])"(?:\\.|[^"\\\r\n])*"|`[^`]*`/,
-    lookbehind: true,
-    greedy: true
-  },
-  'keyword': /\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|actor|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/,
-  'boolean': /\b(?:_|false|iota|nil|true)\b/,
-  'number': [
-    // binary and octal integers
-    /\b0(?:b[01_]+|o[0-7_]+)i?\b/i,
-    // hexadecimal integers and floats
-    /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i,
-    // decimal integers and floats
-    /(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?[\d_]+)?i?(?!\w)/i
+const keywords = [
+  "actor",
+  "and",
+  "async",
+  "assert",
+  "await",
+  "break",
+  "case",
+  "catch",
+  "class",
+  "continue",
+  "debug",
+  "debug_show",
+  "do",
+  "else",
+  "false",
+  "flexible",
+  "for",
+  "from_candid",
+  "func",
+  "if",
+  "ignore",
+  "in",
+  "import",
+  "label",
+  "let",
+  "loop",
+  "module",
+  "not",
+  "null",
+  "object",
+  "or",
+  "private",
+  "public",
+  "query",
+  "return",
+  "shared",
+  "stable",
+  "switch",
+  "system",
+  "throw",
+  "to_candid",
+  "true",
+  "try",
+  "type",
+  "var",
+  "while",
+  "with"
+];
+
+const typeKeywords = [
+  "Any",
+  "None",
+  "Null",
+  "Bool",
+  "Int",
+  "Int8",
+  "Int16",
+  "Int32",
+  "Int64",
+  "Nat",
+  "Nat8",
+  "Nat16",
+  "Nat32",
+  "Nat64",
+  "Float",
+  "Char",
+  "Text",
+  "Blob",
+  "Error",
+  "Principal"
+];
+
+Prism.languages.motoko = {
+  string: [
+    {
+      pattern: /r(#*)"(.|\n)*?"\1(?!#)/,
+      lookbehind: true,
+      greedy: true
+    },
+    {
+      pattern: /b?'\\?(x\w{2}|u\w{4}|U\w{8}|.)'/,
+      lookbehind: true,
+      greedy: true
+    }
   ],
-  'operator': /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
-  'builtin': /\b(?:query|public|async|cap|close|complex|complex(?:64|128)|copy|delete|error|float(?:32|64)|u?int(?:8|16|32|64)?|imag|len|make|new|panic|print(?:ln)?|real|recover|rune|string|uintptr)\b/
-});
+  keyword: new RegExp(keywords.filter((k) => k !== "async").join("|")),
+  boolean: /\b(?:_|true|false|null)\b/,
+  number: [
+    /[+-]?\\b0[xX]([A-Fa-f0-9_]+)/,
+    /[+-]?\\b(\\d[\\d_]*(\\.[0-9_]+)?([eE][+-]?[0-9_]+)?)/
+  ],
+  operator:
+    /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
+  builtin: new RegExp(`async ${typeKeywords.join("|")}`)
+};
+
+Prism.languages.mo = Prism.languages.motoko;

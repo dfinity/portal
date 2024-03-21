@@ -1,19 +1,26 @@
-Prism.languages.candid = Prism.languages.extend('clike', {
-  'string': {
-    pattern: /(^|[^\\])"(?:\\.|[^"\\\r\n])*"|`[^`]*`/,
-    lookbehind: true,
-    greedy: true
-  },
-  'keyword': /\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|actor|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/,
-  'boolean': /\b(?:_|false|iota|nil|true)\b/,
-  'number': [
-    // binary and octal integers
-    /\b0(?:b[01_]+|o[0-7_]+)i?\b/i,
-    // hexadecimal integers and floats
-    /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i,
-    // decimal integers and floats
-    /(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?[\d_]+)?i?(?!\w)/i
+Prism.languages.candid = {
+  string: [
+    {
+      pattern: /r(#*)"(.|\n)*?"\1(?!#)/,
+      lookbehind: true,
+      greedy: true
+    },
+    {
+      pattern: /b?'\\?(x\w{2}|u\w{4}|U\w{8}|.)'/,
+      lookbehind: true,
+      greedy: true
+    }
   ],
-  'operator': /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
-  'builtin': /\b(?:query|public|async|cap|close|complex|complex(?:64|128)|copy|delete|error|float(?:32|64)|u?int(?:8|16|32|64)?|imag|len|make|new|panic|print(?:ln)?|real|recover|rune|string|uintptr)\b/
-});
+  keyword:
+    /\b(?:opt|vec|record|variant|func|blob|principal|nat|nat8|nat16|nat32|nat64|int|int8|int16|int32|int64|float32|float64|bool|text|null|reserved|empty|oneway|query')\b/,
+  boolean: /\b(?:_|false|true)\b/,
+  number: [
+    /[+-]?\\b0[xX]([A-Fa-f0-9_]+)/,
+    /[+-]?\\b(\\d[\\d_]*(\\.[0-9_]+)?([eE][+-]?[0-9_]+)?)/
+  ],
+  operator:
+    /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
+  builtin: /\b(?:import|service|type)\b/
+};
+
+Prism.languages.did = Prism.languages.candid;
