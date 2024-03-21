@@ -5,7 +5,6 @@ import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import { Faq, FaqSection } from "../components/Common/Faq/Faq";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import LinkCardsSection from "../components/Common/LinkCardsSection";
@@ -14,12 +13,22 @@ import {
   TranslatedCard,
   TranslatedCardList,
 } from "../components/Common/TranslatedCards/TranslatedCards";
-import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
-import VideoCard from "../components/Common/VideoCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
 import { ChatWidget } from "@site/src/components/LandingPage/Hero/ChatWidget";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
+import { SmallCard, PromoCard } from "../components/Common/Card";
+import { ProjectInfo } from "../components/Ecosystem/ProjectInfo";
+import {
+  NewsCard
+} from "../components/NewsPage/Cards";
+
+import showcaseData from "../../showcase.json";
+const aiProjects = showcaseData.filter((p) =>
+  (p.tags || []).find((tag) => tag == 'AI')
+); 
+
+console.log(aiProjects);
 
 const MotionLink = motion(Link);
 
@@ -27,7 +36,6 @@ function AIPage() {
   const fontLoaded = useFontsLoaded();
   const heroRef = useRef<HTMLDivElement>(null);
   const bgDark = useDarkHeaderInHero(heroRef);
-
 
   return (
     <Layout
@@ -142,6 +150,26 @@ function AIPage() {
           </TranslatedCardList>
         </section>
 
+        <section className="container-12 mt-40">
+          <h2 className="tw-heading-4 text-gradient md:tw-heading-60 mb-0">The DeAI Ecosystem</h2>
+          <p className="tw-paragraph max-w-96">Learn more about teams already leveraging the Internet Computer as their foundational AI computing infrastructure.</p>
+          <aside className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative" aria-label="AI Project">
+            {aiProjects.map((project, index) => (
+              <SmallCard key={project.website}>
+                <ProjectInfo project={project}></ProjectInfo>
+              </SmallCard>
+            ))}
+            <PromoCard 
+              title="Explore the DeAI ICP Ecosystem"
+              link={{
+                href: "/ecosystem",
+                label: "Explore more DEAI Apps",
+              }}
+            />
+
+          </aside>
+        </section>
+
         <AnimateSpawn
           className="bg-infinite overflow-hidden mt-20 md:mt-30"
           variants={transitions.container}
@@ -178,7 +206,6 @@ function AIPage() {
           </div>
         </AnimateSpawn>
 
-        
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
@@ -217,6 +244,103 @@ function AIPage() {
                 </p>
               </div>
             </motion.div>
+          </div>
+        </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-10 pt-20 md:pt-30"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="flex flex-col gap-6 md:gap-5 mb-8 md:flex-row">
+            <motion.h2
+              className="tw-heading-4 mb-0 md:tw-heading-60 md:flex-1"
+              variants={transitions.item}
+            >
+              News & media
+            </motion.h2>
+            <div className="md:flex-1 md:pt-3">
+              <motion.p
+                className="mb-4 tw-paragraph md:tw-lead-sm"
+                variants={transitions.item}
+              >
+                Get all the news from the Internet Computer ecosystem
+              </motion.p>
+              <MotionLink
+                variants={transitions.item}
+                href="/news"
+                className="link-primary link-with-icon"
+              >
+                Explore more news <LinkArrowUpRight />
+              </MotionLink>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <NewsCard 
+              news={{
+                title: 'AI models as smart contracts on a blockchain.',
+                dateHuman: 'Jan 26, 2024 by @dominic_w',
+                press: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits at the heart of an organization as it grows larger, making it more cohesive, helping with information flow and coordination, and making it more effective.`,
+                url: 'https://twitter.com/dominic_w/status/1750886289702834539',
+                imageUrl: '/img/decentralized-ai/news-1.jpg',
+              }}
+              linkLabel="See the post"
+            />
+
+            <NewsCard 
+              news={{
+                title: 'AWS-Reliant Blockchains Won’t Bring Transparency to AI',
+                dateHuman: 'Jul 29, 2023 by Dominic Williams',
+                press: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries, it faces a major roadblock to large-scale adoption: a lack of trust and transparency.`,
+                url: 'https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/',
+                imageUrl: '/img/decentralized-ai/news-2.jpg',
+              }}
+              linkLabel="Read Now"
+            />
+
+            <NewsCard 
+              news={{
+                title: 'Dfinity taps SingularityNET to bring AI services to DApps',
+                dateHuman: 'Nov 20, 2023 on cointelegraph.com',
+                press: `Research and development firm Dfinity Foundation has partnered with artificial intelligence (AI)-focused blockchain firm SingularityNET to improve the infrastructure of decentralized AI and allow decentralized applications (DApps) on the Internet Computer blockchain to access large language models (LLMs).`,
+                url: 'https://cointelegraph.com/news/decentralized-ai-dfinity-foundation-singularitynet-partnership',
+                imageUrl: '/img/decentralized-ai/news-3.jpg',
+              }}
+              linkLabel="Read Now"
+            />
+
+            <NewsCard 
+              news={{
+                title: 'AI-related crypto are quickly gaining value',
+                dateHuman: 'Nov 03, 2024 by fastcompany.com',
+                press: `Internet Computer (ICP) is the biggest AI crypto, by a wide margin. It’s a decentralized web platform whose goal is to build a secure network for public use—and it’s using large language models to help achieve that.`,
+                url: 'https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency',
+                imageUrl: '/img/decentralized-ai/news-4.jpg',
+              }}
+              linkLabel="Read Now"
+            />
+
+            <NewsCard 
+              news={{
+                title: 'Decentralized AI Offers New Hope for User Data Security',
+                dateHuman: 'March 15, 2024 on metanews.com',
+                press: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks more difficult.`,
+                url: 'https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency',
+                imageUrl: '/img/decentralized-ai/news-5.jpg',
+              }}
+              linkLabel="Read Now"
+            />
+
+            <NewsCard 
+              news={{
+                title: 'DFINITY is revolutionizing dApps with AI on ICP!',
+                dateHuman: 'Sat 16 Mar 2024 on cointribune.com',
+                press: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s cutting-edge artificial intelligence models, DALL-E and GPT-4 Vision Preview, directly into dApps running on the ICP blockchain via the Juno platform. An innovation that comes with significant benefits for developers.`,
+                url: 'https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency',
+                imageUrl: '/img/decentralized-ai/news-6.jpg',
+              }}
+              linkLabel="Read Now"
+            />
           </div>
         </AnimateSpawn>
 
