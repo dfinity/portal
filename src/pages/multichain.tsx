@@ -474,7 +474,7 @@ function MultichainPage() {
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Once an icpERC20 token has been created, it can be
-                    processed by Ethereum Layer-2 networks, and moved across
+                    processed by Ethereum Layer-2 networks and moved across
                     other chains using traditional bridges.
                   </p>
                   <p className="flex gap-2 flex-wrap">
