@@ -175,7 +175,7 @@ function AIPage() {
           variants={transitions.container}
           el={motion.section}
         >
-          <div className="container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
+          <div className="relative container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
             <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
             <div className="flex-1 mt-40 sm:mt-0">
               <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
@@ -195,12 +195,12 @@ function AIPage() {
                 </div>
               </div>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 pointer-events-none">
               <img
                 src="/img/decentralized-ai/aicoded.webp"
-                alt=""
+                alt="Image of a chip labeled 'AI'"
                 loading="lazy"
-                className="absolute top-0 right-0 w-1/2 w-full max-w-none"
+                className="absolute top-0 right-0 w-full md:w-1/2 lg:w-1/2 max-w-none"
               ></img>
             </div>
           </div>
@@ -280,7 +280,7 @@ function AIPage() {
               news={{
                 title: 'AI models as smart contracts on a blockchain.',
                 dateHuman: 'Jan 26, 2024 by @dominic_w',
-                press: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits at the heart of an organization as it grows larger, making it more cohesive, helping with information flow and coordination, and making it more effective.`,
+                press: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits...`,
                 url: 'https://twitter.com/dominic_w/status/1750886289702834539',
                 imageUrl: '/img/decentralized-ai/news-1.jpg',
               }}
@@ -291,7 +291,7 @@ function AIPage() {
               news={{
                 title: 'AWS-Reliant Blockchains Won’t Bring Transparency to AI',
                 dateHuman: 'Jul 29, 2023 by Dominic Williams',
-                press: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries, it faces a major roadblock to large-scale adoption: a lack of trust and transparency.`,
+                press: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries...`,
                 url: 'https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/',
                 imageUrl: '/img/decentralized-ai/news-2.jpg',
               }}
@@ -302,7 +302,7 @@ function AIPage() {
               news={{
                 title: 'Dfinity taps SingularityNET to bring AI services to DApps',
                 dateHuman: 'Nov 20, 2023 on cointelegraph.com',
-                press: `Research and development firm Dfinity Foundation has partnered with artificial intelligence (AI)-focused blockchain firm SingularityNET to improve the infrastructure of decentralized AI and allow decentralized applications (DApps) on the Internet Computer blockchain to access large language models (LLMs).`,
+                press: `Research and development firm Dfinity Foundation has partnered with artificial intelligence (AI)-focused blockchain firm SingularityNET to improve the infrastructure of decentralized AI and allow decentralized applications...`,
                 url: 'https://cointelegraph.com/news/decentralized-ai-dfinity-foundation-singularitynet-partnership',
                 imageUrl: '/img/decentralized-ai/news-3.jpg',
               }}
@@ -324,7 +324,7 @@ function AIPage() {
               news={{
                 title: 'Decentralized AI Offers New Hope for User Data Security',
                 dateHuman: 'March 15, 2024 on metanews.com',
-                press: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks more difficult.`,
+                press: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks...`,
                 url: 'https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency',
                 imageUrl: '/img/decentralized-ai/news-5.jpg',
               }}
@@ -335,7 +335,7 @@ function AIPage() {
               news={{
                 title: 'DFINITY is revolutionizing dApps with AI on ICP!',
                 dateHuman: 'Sat 16 Mar 2024 on cointribune.com',
-                press: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s cutting-edge artificial intelligence models, DALL-E and GPT-4 Vision Preview, directly into dApps running on the ICP blockchain via the Juno platform. An innovation that comes with significant benefits for developers.`,
+                press: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s...`,
                 url: 'https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency',
                 imageUrl: '/img/decentralized-ai/news-6.jpg',
               }}
