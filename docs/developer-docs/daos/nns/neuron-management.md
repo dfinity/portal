@@ -179,7 +179,8 @@ _Required permissions:_
 Only a neuron's controller can spawn maturity from a neuron.
 
 ### Disbursing / unstaking a neuron
-* **Disburse**: When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
+
+When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
 ```
 type Disburse = record {
   to_account : opt AccountIdentifier;
