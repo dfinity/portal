@@ -37,7 +37,7 @@ Integrations with different chains vary in how they utilize these features to fa
 
 ### Bitcoin integration
 
-The integration with Bitcoin primarily uses the threshold ECDSA feature along with a Bitcoin adapter. Threshold ECDSA is used to securely store a smart contract's secret key, which is used to sign transactions. Bitcoin supports ECDSA, allowing ICP smart contracts to directly create and sign transactions on the Bitcoin network. Canisters can also create a Bitcoin address, then send and receive bitcoin as if they were a traditional Bitcoin user.
+The integration with Bitcoin primarily uses the threshold ECDSA signing service along with a Bitcoin adapter. The threshold ECDSA signing service is facilitated by a special large subnet, where each node securely stores a share of the subnet's secret key. To create a signature, the nodes of this subnet need to collaborate with each other. Canisters can then request ECDSA signatures from this signing service in order to create valid transactions for other chains. This way they don't need to own their own secret key. Since Bitcoin supports ECDSA signatures, the ICP smart contracts are able to directly create, sign  and submit transactions to the Bitcoin network. Each canisters has an individual Bitcoin address, which can be used to send and receive bitcoin as if they were a traditional Bitcoin user.
 
 The Bitcoin adapter is a subnet of nodes that participate in the Bitcoin network. They fetch the Bitcoin network state and blocks, then facilitate sending transactions to the Bitcoin network.
 
