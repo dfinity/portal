@@ -29,5 +29,5 @@ export function AdornedTabs(props: AdornedTabsProps) {
       };
     });
 
-  return <Tabs className={"ic0-tabs"} {...props} values={values} />;
+  return <AdornedTabs className={"ic0-tabs"} {...props} values={values} />;
 }

@@ -2,8 +2,9 @@
 keywords: [advanced, bitcoin, btc, tutorial, submit transactions, submit bitcoin transactions]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Sending Bitcoin transactions
@@ -17,13 +18,13 @@ To submit transactions to the Bitcoin network, the Bitcoin integration API expos
 - `bitcoin_send_transaction`: Submits a transaction to the Bitcoin network.
 
 
-## Signing transactions 
+## Signing transactions
 
 Before a transaction can be sent to the Bitcoin network, it must be signed using the Threshold ECDSA API method `sign_with_ecdsa` and an ECDSA public key, which can be returned by calling the API method `ecdsa_public_key`.
 
 A code example using these API methods can be found below:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -38,7 +39,7 @@ A code example using these API methods can be found below:
             name = key_name;
         };
     });
-        
+
     res.public_key
   };
 
@@ -52,7 +53,7 @@ A code example using these API methods can be found below:
             name = key_name;
         };
     });
-        
+
     res.signature
   };
 ```
@@ -107,7 +108,7 @@ pub async fn sign_with_ecdsa(
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 A full example of using the Threshold ECDSA API can be found in the [basic Bitcoin example](https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/EcdsaApi.mo).
 
@@ -115,7 +116,7 @@ A full example of using the Threshold ECDSA API can be found in the [basic Bitco
 
 To send transactions to the Bitcoin network, make a call to the `bitcoin_send_transaction` Bitcoin API method. You can create a function in your canister to call this method such as:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -167,7 +168,7 @@ pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Then make a call to this canister's function with the command:

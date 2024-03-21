@@ -2,8 +2,9 @@
 keywords: [beginner, motoko, tutorial, deploying, canisters]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
@@ -23,7 +24,7 @@ Before getting started, assure you have set up your developer environment accord
 
 Open a terminal window on your local computer, if you don’t already have one open.
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -74,7 +75,7 @@ dfx new explore_hello
 For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Then, navigate into the project with the command:
 

@@ -2,8 +2,9 @@
 keywords: [beginner, rust, tutorial, project organization]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 2: Project organization
@@ -14,7 +15,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 When a new Rust project is created with the command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 ```
@@ -36,7 +37,7 @@ dfx new --type rust example
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 the following project structure is generated:
 

@@ -3,8 +3,9 @@ keywords: [advanced, tutorial, signing transactions, signatures]
 ---
 
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Signing transactions
@@ -13,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-To use Threshold ECDSA, you will need a public key and a transaction to sign. Public keys can be obtained through the `ecdsa_public_key` API method, and transactions can be signed using the `sign_with_ecdsa` API method. 
+To use Threshold ECDSA, you will need a public key and a transaction to sign. Public keys can be obtained through the `ecdsa_public_key` API method, and transactions can be signed using the `sign_with_ecdsa` API method.
 
 ## Cost
 
@@ -21,9 +22,9 @@ To send calls to the Threshold ECDSA API, cycles must be attached to the call. [
 
 ## Obtaining public keys
 
-To sign transactions, first you need to obtain a public key by making a call to the `ecdsa_public_key` API method.  
+To sign transactions, first you need to obtain a public key by making a call to the `ecdsa_public_key` API method.
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -32,7 +33,7 @@ To sign transactions, first you need to obtain a public key by making a call to 
 
   public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
     let caller = Principal.toBlob(msg.caller);
-    
+
     try {
 
       // Make a call to the management canister to request an ECDSA public key:
@@ -41,13 +42,13 @@ To sign transactions, first you need to obtain a public key by making a call to 
           derivation_path = [ caller ];
           key_id = { curve = #secp256k1; name = "test_key_1" };
       });
-      
+
       #Ok({ public_key })
-    
+
     } catch (err) {
-    
+
       #Err(Error.message(err))
-    
+
     }
 
   };
@@ -78,13 +79,13 @@ async fn public_key() -> Result<PublicKeyReply, String> {
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## Signing transactions
 
 To sign a transaction, make a call to the `sign_with_ecdsa` API method:
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -134,7 +135,7 @@ async fn sign(message: String) -> Result<SignatureReply, String> {
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## Resources
 

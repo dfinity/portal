@@ -2,8 +2,9 @@
 keywords: [intermediate, motoko, tutorial, cycles]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
@@ -37,7 +38,7 @@ To create a new project directory for testing access control and switching user 
 
 Create a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -89,7 +90,7 @@ dfx new cycles_hello --no-frontend
     configuration and a default smart contract.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Navigate into your project directory by running the following command:
 

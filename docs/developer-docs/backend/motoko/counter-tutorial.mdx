@@ -2,8 +2,9 @@
 keywords: [beginner, motoko, tutorial, natural numbers]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 11: Incrementing a natural number
@@ -34,7 +35,7 @@ Open a terminal shell on your local computer, if you don’t already have one op
 
 Create a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -85,7 +86,7 @@ dfx new my_counter --no-frontend
 For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
     configuration and a default smart contract.
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 The command creates a new `my_counter` project for your project.
 

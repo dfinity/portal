@@ -2,8 +2,9 @@
 keywords: [https outcalls, advanced, tutorial]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # How to use HTTP outcalls: POST
@@ -57,7 +58,7 @@ Developers should be careful that the destination server understand and use idem
 
 Before you dive in, here is the structure of the code you will touch:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -138,12 +139,12 @@ async fn foo() {
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 - #### Step 1:  Create a new project by running the following command:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```bash
@@ -163,13 +164,13 @@ rustup target add wasm32-unknown-unknown
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 
 - #### Step 2: Edit the backend canister's code.
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 Open the `src/send_http_post_motoko_backend/main.mo` file in a text editor and replace content with:
@@ -519,13 +520,13 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 - The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](/docs/current/references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 
 - #### Step 3:  Edit the Type or Candid files.
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 Create the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
@@ -639,13 +640,13 @@ serde_bytes = "0.11.9"
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 
 - #### Step 4: Test the dapp locally.
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 Deploy the dapp locally:
@@ -692,11 +693,11 @@ Open the candid web UI for backend and call the `send_http_post_request()` metho
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 - #### Step 5: Test the dapp on mainnet.
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 Deploy the dapp to mainnet:
@@ -743,7 +744,7 @@ URLs:
 You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 ## Additional resources

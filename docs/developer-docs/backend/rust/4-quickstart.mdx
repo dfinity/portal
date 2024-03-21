@@ -2,8 +2,9 @@
 keywords: [beginner, rust, tutorial, quickstart]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
@@ -24,7 +25,7 @@ Before getting started, assure you have set up your developer environment accord
 
 To create a new Rust project using the IC SDK, open a terminal window and run the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -73,7 +74,7 @@ dfx new --type=rust rust_hello
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Next, navigate into your project directory by running the following command:

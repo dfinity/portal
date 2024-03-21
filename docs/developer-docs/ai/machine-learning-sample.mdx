@@ -2,8 +2,9 @@
 keywords: [intermediate, tutorial, machine learning, ml, mnist, rust]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Machine learning sample
@@ -36,7 +37,7 @@ This project is based off of one [found within the Rust Burn examples](https://g
 
 To get started, create a new project in your working directory. Open a terminal window, then use the commands:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -89,12 +90,12 @@ cd machine_learning_sample
 
 ```bash
 dfx start --clean --background
-dfx new machine_learning_sample --type=rust 
+dfx new machine_learning_sample --type=rust
 cd machine_learning_sample
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 You can also [clone the GitHub repo for this project](https://github.com/smallstepman/ic-mnist.git) if you want to get started quickly.
 
@@ -264,7 +265,7 @@ pub fn build_and_load_model() -> Model<Backend> {
 
 ### What this code does
 
-This code builds and loads trained parameters into the model. 
+This code builds and loads trained parameters into the model.
 
 Lastly, create one more Rust file called `src/machine_learning_sample_backend/src/web.rs` with the code:
 

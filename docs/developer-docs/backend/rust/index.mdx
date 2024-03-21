@@ -2,8 +2,9 @@
 keywords: [beginner, rust, introduction]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Introduction to developing canisters in Rust
@@ -15,7 +16,7 @@ Rust is a powerful and type-sound modern programming language with an active dev
 ## Overview
 To help pave the way for writing dapps in Rust that can be deployed on the Internet Computer blockchain, you can use the [IC SDK](/docs/current/developer-docs/getting-started/install/). The IC SDK supports the Rust as well as the Motoko programming language. To create a Rust project using the IC SDK, all one needs to do is add the `--type=rust` flag while creating a new project. For example, here you create a Rust project named `hello_world`:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -43,7 +44,7 @@ dfx new --type=rust hello_world
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 To start a new project see [Rust quick start](4-quickstart.mdx).
 
