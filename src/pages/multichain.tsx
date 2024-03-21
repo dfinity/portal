@@ -572,7 +572,7 @@ function MultichainPage() {
                     initiation of regular jobs. Oftentimes, smart contract jobs
                     are initiated using external scripts running on insecure
                     clouds such as Amazon Web Services, where the private key
-                    they maintain to make the calls is vulnerable, in the same
+                    they maintain to make the calls is vulnerable in the same
                     way the private keys used by hot wallets are.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
