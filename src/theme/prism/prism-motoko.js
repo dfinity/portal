@@ -71,19 +71,7 @@ const typeKeywords = [
   "Principal"
 ];
 
-Prism.languages.motoko = {
-  string: [
-    {
-      pattern: /r(#*)"(.|\n)*?"\1(?!#)/,
-      lookbehind: true,
-      greedy: true
-    },
-    {
-      pattern: /b?'\\?(x\w{2}|u\w{4}|U\w{8}|.)'/,
-      lookbehind: true,
-      greedy: true
-    }
-  ],
+Prism.languages.motoko = Prism.languages.extend("clike", {
   keyword: new RegExp(keywords.filter((k) => k !== "async").join("|")),
   boolean: /\b(?:_|true|false|null)\b/,
   number: [
@@ -93,6 +81,6 @@ Prism.languages.motoko = {
   operator:
     /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
   builtin: new RegExp(`async ${typeKeywords.join("|")}`)
-};
+});
 
 Prism.languages.mo = Prism.languages.motoko;
