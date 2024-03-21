@@ -153,6 +153,48 @@ function AIPage() {
           </TranslatedCardList>
         </section>
 
+
+        <AnimateSpawn
+          el={motion.section}
+          variants={transitions.container}
+          className="mt-20 md:mt-30"
+        >
+          <div className="container-10 mb-10">
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-0 text-gradient"
+              variants={transitions.item}
+            >
+              Coming soon
+            </motion.h2>
+          </div>
+          <div className="md:container-12 grid md:grid-cols-2 gap-5 md:gap-5 pb-16 md:pb-0 bg-white md:bg-transparent">
+            <motion.div
+              className="md:col-span-2 md:rounded-xl backdrop-blur-2xl md:bg-white-60 relative flex flex-col md:flex-row  px-6 md:px-0 pt-10 md:pt-0"
+              variants={transitions.item}
+            >
+              <div className=" flex-1 md:order-2 flex rounded-xl overflow-hidden md:max-w-5/10">
+                <img
+                  src="/img/decentralized-ai/llm-icons.webp"
+                  alt="Helix Markets"
+                  className="w-full relative object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="md:flex-1 md:order-1 md:p-16 md:max-w-5/10 mt-10 md:mt-0">
+                <h2 className="tw-heading-5 md:tw-heading-4 mb-6">
+                  A private enterprise oracle
+                </h2>
+                <p className="tw-lead-sm text-black/60">
+                  An LLM on ICP to improve communications and productivity inside an organization.
+                </p>
+                <p className="tw-lead-sm mt-0 text-black/60">
+                  A chat interface that feeds on company data sources such as GitHub repos, JIRA tickets, Slack conversations, email threads, Google Calendar, and every other enterprise information source that's important. Employees can gain clarity on internal processes, projects, and schedules, and also feed back the model with ideas, tasks, and updates. Using this model, organizations leverage AI to be the glue that holds everything together.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </AnimateSpawn>
+
         <section className="container-12 mt-40">
           <section className="container-10 mb-10">
             <h2 className="tw-heading-4 text-gradient md:tw-heading-60 mb-0">The DeAI Ecosystem</h2>
@@ -208,47 +250,6 @@ function AIPage() {
                 className="absolute top-0 right-0 w-full md:w-1/2 lg:w-1/2 max-w-none"
               ></img>
             </div>
-          </div>
-        </AnimateSpawn>
-
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.container}
-          className="mt-20 md:mt-30"
-        >
-          <div className="container-10 mb-10">
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-60 mb-0 text-gradient"
-              variants={transitions.item}
-            >
-              Coming soon
-            </motion.h2>
-          </div>
-          <div className="md:container-12 grid md:grid-cols-2 gap-5 md:gap-5 pb-16 md:pb-0 bg-white md:bg-transparent">
-            <motion.div
-              className="md:col-span-2 md:rounded-xl backdrop-blur-2xl md:bg-white-60 relative flex flex-col md:flex-row  px-6 md:px-0 pt-10 md:pt-0"
-              variants={transitions.item}
-            >
-              <div className=" flex-1 md:order-2 flex rounded-xl overflow-hidden md:max-w-5/10">
-                <img
-                  src="/img/decentralized-ai/llm-icons.webp"
-                  alt="Helix Markets"
-                  className="w-full relative object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="md:flex-1 md:order-1 md:p-16 md:max-w-5/10 mt-10 md:mt-0">
-                <h2 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  A private enterprise oracle
-                </h2>
-                <p className="tw-lead-sm text-black/60">
-                  An LLM on ICP to improve communications and productivity inside an organization.
-                </p>
-                <p className="tw-lead-sm mt-0 text-black/60">
-                  A chat interface that feeds on company data sources such as GitHub repos, JIRA tickets, Slack conversations, email threads, Google Calendar, and every other enterprise information source that's important. Employees can gain clarity on internal processes, projects, and schedules, and also feed back the model with ideas, tasks, and updates. Using this model, organizations leverage AI to be the glue that holds everything together.
-                </p>
-              </div>
-            </motion.div>
           </div>
         </AnimateSpawn>
 
