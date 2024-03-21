@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Hero
-        headline={<>CYPHER&#8203;SPACE AS CLOUD</>}
+        headline={<>COMPUTE ON BLOCKCHAIN</>}
         aiPlaceholders={[
           "Is the Internet Computer decentralized?",
           "What can I do with ICP token?",
