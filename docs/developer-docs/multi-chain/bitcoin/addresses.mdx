@@ -1,0 +1,31 @@
+---
+keywords: [advanced, bitcoin, btc, addresses, signing]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Bitcoin addresses
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
+
+## Overview
+
+A Bitcoin address is a hash value. There are currently two types of Bitcoin address types, P2SH and P2PKH. An address's full public key cannot be provided when sending transactions and token transfers. To redeem transactions sent to your Bitcoin address, you must provide both the transaction signature and public key used to sign the transaction. P2SH addresses were created to provide a means for more complicated transactions, whereas P
+
+
+
+- P2SH: Pay-to-Script-Hash:
+
+- P2PKH: Pay-to-PubkeyHash
+
+
+p2pkh
+Generating a Bitcoin address
+Bitcoin has different types of addresses (e.g. P2PKH, P2SH). Most of these addresses can be generated from an ECDSA public key. The example code showcases how your canister can generate a P2PKH address using the ecdsa_public_key API.
+
+
+
+## Signing transactions
+
+[Learn how to sign and submit Bitcoin transactions](submit-transactions.mdx).
