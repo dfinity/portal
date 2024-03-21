@@ -151,7 +151,7 @@ function MultichainPage() {
     <Layout
       title="Trustless multi-chain on ICP"
       description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-      any trusted intermediary. Unique in blockchain, ICP smart contracts can read and write on different chains thanks to chain-key cryptography."
+      any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read and write on different chains thanks to chain-key cryptography."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
@@ -178,7 +178,7 @@ function MultichainPage() {
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
                 {/* 1. Value proposition */}
               ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-              any trusted intermediary. Unique in blockchain, ICP smart contracts can read and write on different chains thanks to chain-key cryptography.
+              any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read and write on different chains thanks to chain-key cryptography.
               </p>
 
           
