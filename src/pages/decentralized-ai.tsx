@@ -151,8 +151,10 @@ function AIPage() {
         </section>
 
         <section className="container-12 mt-40">
-          <h2 className="tw-heading-4 text-gradient md:tw-heading-60 mb-0">The DeAI Ecosystem</h2>
-          <p className="tw-paragraph max-w-96">Learn more about teams already leveraging the Internet Computer as their foundational AI computing infrastructure.</p>
+          <section className="container-10 mb-10">
+            <h2 className="tw-heading-4 text-gradient md:tw-heading-60 mb-0">The DeAI Ecosystem</h2>
+            <p className="tw-paragraph max-w-96">Learn more about teams already leveraging the Internet Computer as their foundational AI computing infrastructure.</p>
+          </section>
           <aside className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative" aria-label="AI Project">
             {aiProjects.map((project, index) => (
               <SmallCard key={project.website}>
