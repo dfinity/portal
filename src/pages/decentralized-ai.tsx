@@ -23,9 +23,12 @@ import {
   NewsCard
 } from "../components/NewsPage/Cards";
 
+const lisfOfDeaturedAiProjectIds = [
+  'Accelar', 'elnaai', 'icgpt', 'DevinciAI', 'ArcMind', 'juno', 'singularitynet'
+]
 import showcaseData from "../../showcase.json";
 const aiProjects = showcaseData.filter((p) =>
-  (p.tags || []).find((tag) => tag == 'AI')
+  lisfOfDeaturedAiProjectIds.includes(p.id)
 ); 
 
 console.log(aiProjects);
