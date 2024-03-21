@@ -2,8 +2,7 @@
 
 ## Overview
 
-In programming, the [async/await pattern](https://en.wikipedia.org/wiki/Async/await) is a syntactic feature of many programming languages that allows an asynchronous, non-blocking function
-to be structured in a similar way to an ordinary synchronous function.
+In programming, the [async/await pattern](https://en.wikipedia.org/wiki/Async/await) is a syntactic feature of many programming languages that allows an asynchronous, non-blocking function to be structured in a similar way to an ordinary synchronous function.
 
 
 On ICP, `async/await` is useful in the context of inter-canister calls. Inter-canister calls cannot be handled synchronously (as the two canisters
@@ -15,7 +14,7 @@ The `async/await` pattern makes this look straightforward, as the developer can 
 the callee is handled “synchronously”. However, given ICP's message passing model, one has to be careful in case there are [concurrent calls that
 message executions can interleave](https://internetcomputer.org/docs/current/references/message-execution-properties/) as these can lead to inconsistencies if they are not anticipated.
 
-## High-level idea of language runtime for asynchronous code
+## Overview of language runtime for asynchronous code
 
 
 Most languages implement asynchronous code through constructs that they typically call [futures](https://docs.rs/futures/latest/futures/)
