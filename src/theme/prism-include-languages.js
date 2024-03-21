@@ -18,6 +18,7 @@ export default function prismIncludeLanguages(PrismObject) {
 
   // add support for Motoko syntax highlighting
   require("./prism/prism-motoko");
+  // add support for Candid syntax highlighting
   require("./prism/prism-candid");
 
   delete globalThis.Prism;
