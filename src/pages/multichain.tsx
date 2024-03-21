@@ -454,9 +454,9 @@ function MultichainPage() {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Ethereum provides the world’s preeminent DeFi rails.
                     Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens, and popular custody
-                    services such as Fireblocks, which are popular among
-                    institutions investing in crypto, custody any ERC20 token as
+                    liquidity for trading ERC20 tokens. Popular custody
+                    services such as Fireblocks, which is popular among
+                    investment institutions, custody any ERC20 token as
                     standard.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
@@ -468,13 +468,13 @@ function MultichainPage() {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A service created by a Internet Computer-hosted smart
                     contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token . The service
+                    to create an icpERC20 twin of an ICP token. The service
                     also allows icpERC20 twins to be returned to the Internet
                     Computer, where they retain their native form.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Once an icpERC20 token has been created, it can also be
-                    processed by Ethereum Layer-2 networks, and moved across
+                    Once an icpERC20 token has been created, it can be
+                    processed by Ethereum Layer-2 networks and moved across
                     other chains using traditional bridges.
                   </p>
                   <p className="flex gap-2 flex-wrap">
@@ -568,11 +568,11 @@ function MultichainPage() {
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A key challenge involved when hosting DeFi and other
-                    services using Ethereum smart contracts, is the secure
+                    services using Ethereum smart contracts is the secure
                     initiation of regular jobs. Oftentimes, smart contract jobs
                     are initiated using external scripts running on insecure
                     clouds such as Amazon Web Services, where the private key
-                    they maintain to make the calls is vulnerable, in the same
+                    they maintain to make the calls is vulnerable in the same
                     way the private keys used by hot wallets are.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
