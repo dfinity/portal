@@ -182,12 +182,11 @@ Motoko is an Actor-based language and it represents the smart contract as an act
 
 This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor.  The function accepts a name as input and returns a greetings text.
 
-```motoko
-// src/hello_backend/main.mo
+```motoko title="src/hello_backend/main.mo"
 actor {
-public query func greet(name : Text) : async Text {
+  public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
-};
+  };
 };
 ```
 
@@ -203,8 +202,7 @@ This Rust smart contract has a single function called greet. It is marked as que
 
 The function accepts a name as input and returns a greetings text.
 
-```rust
-// src/hello_backend/src/lib.rs
+```rust title="src/hello_backend/src/lib.rs"
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
@@ -215,9 +213,7 @@ fn greet(name: String) -> String {
 
 <TabItem value="typescript" label="TypeScript">
 
-```typescript
-// src/hello_backend/src/index.ts
-
+```typescript title="src/hello_backend/src/index.ts"
 import { Canister, query, text } from 'azle';
 
 export default Canister({
@@ -233,9 +229,7 @@ export default Canister({
 
 Create the project directory and file structure:
 
-```python
-# src/hello_backend/src/main.py
-
+```python title="src/hello_backend/src/main.py"
 from kybra import query
 
 @query

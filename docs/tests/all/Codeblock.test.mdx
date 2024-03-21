@@ -1,0 +1,32 @@
+---
+title: Codeblocks
+description: Testing integration of the Codeblock component in a markdown document
+draft: true
+---
+
+# Codeblocks & Syntax highlighting
+
+## Motoko
+```motoko title="src/hello_backend/main.mo" showLineNumbers
+actor {
+  public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+};
+```
+
+## Rust
+```rust title="src/hello_backend/src/lib.rs" showLineNumbers
+#[ic_cdk::query]
+fn greet(name: String) -> String {
+    format!("Hello, {}!", name)
+}
+```
+
+## Candid
+```candid title="src/counter.did"
+service counter : {
+  // A method taking a reference to a function.
+  subscribe : (func (int) -> ()) -> ();
+}
+```

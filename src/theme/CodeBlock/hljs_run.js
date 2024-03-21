@@ -1,11 +1,3 @@
-import hljs from "highlight.js/lib/core";
-import defineMotoko from "highlightjs-motoko";
-
-registerMotoko();
-hljs.configure({
-  ignoreUnescapedHTML: true,
-  languages: ["motoko", "candid"],
-});
 
 export function extractConfig(props) {
   const name = props.name ? props.name + ".mo" : "stdin";
@@ -45,8 +37,4 @@ export function handleRun({ code, setOutput, setError, config }) {
   } else {
     console.log("moc not found");
   }
-}
-
-export function registerMotoko() {
-  defineMotoko(hljs);
 }
