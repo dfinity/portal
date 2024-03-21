@@ -468,7 +468,7 @@ function MultichainPage() {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A service created by a Internet Computer-hosted smart
                     contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token . The service
+                    to create an icpERC20 twin of an ICP token. The service
                     also allows icpERC20 twins to be returned to the Internet
                     Computer, where they retain their native form.
                   </p>
