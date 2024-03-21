@@ -257,16 +257,16 @@ function AIPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="flex flex-col gap-6 md:gap-5 mb-8 md:flex-row">
+          <div className="flex flex-col gap-6 md:gap-5 mb-8 md:flex-row container-10">
             <motion.h2
-              className="tw-heading-4 mb-0 md:tw-heading-60 md:flex-1"
+              className="tw-heading-4 mb-0 md:tw-heading-60"
               variants={transitions.item}
             >
               News & media
             </motion.h2>
-            <div className="md:flex-1 md:pt-3">
+            <div className="md:flex-1 md:pt-1">
               <motion.p
-                className="mb-4 tw-paragraph md:tw-lead-sm"
+                className="mb-0 mt-2 tw-paragraph md:tw-lead-sm"
                 variants={transitions.item}
               >
                 Get all the news from the Internet Computer ecosystem
