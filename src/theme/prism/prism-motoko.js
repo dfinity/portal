@@ -5,11 +5,12 @@ Prism.languages.motoko = Prism.languages.extend("clike", {
     `\\b(?:${keywords.filter((k) => k !== "async").join("|")})\\b`
   ),
   boolean: /\b(?:_|true|false|null)\b/,
+  builtin: /\b(?:async|[A-Z][a-z0-9_]*)\b/,
+  function: null,
   number: [
     /[+-]?\\b0[xX]([A-Fa-f0-9_]+)/,
     /[+-]?\\b(\\d[\\d_]*(\\.[0-9_]+)?([eE][+-]?[0-9_]+)?)/,
   ],
-  builtin: /\b(?:async|[A-Z][a-z0-9_]*)\b/
 });
 
 Prism.languages.mo = Prism.languages.motoko;
