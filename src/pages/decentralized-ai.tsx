@@ -175,7 +175,7 @@ function AIPage() {
           variants={transitions.container}
           el={motion.section}
         >
-          <div className="relative container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
+          <div id="at-chat" className="relative container-10 py-30 md:py-40 flex flex-col sm:flex-row text-white relative">
             <div className="blob blob-white blob-sm md:blob-xl blob-x-10 blob-y-3 md:blob-y-5"></div>
             <div className="flex-1 mt-40 sm:mt-0">
               <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
@@ -350,19 +350,19 @@ function AIPage() {
           cards={[
             {
               label: "Apply to DeAI Grants",
-              href: "https://medium.com/dfinity/internet-identity-the-end-of-usernames-and-passwords-ff45e4861bf7",
+              href: "#",
             },
             {
               label: "Start building DeAI",
-              href: "/events",
+              href: "/docs/current/developer-docs/ai/overview",
             },
             {
               label: "Chat with AI to learn more about ICP",
-              href: "/docs/current/home",
+              href: "#at-chat",
             },
             {
               label: "Join the DeAI working group",
-              href: "/ecosystem",
+              href: "/docs/current/developer-docs/ai/overview",
             },
           ]}
         />
