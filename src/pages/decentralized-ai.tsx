@@ -164,7 +164,7 @@ function AIPage() {
             <PromoCard 
               title="Explore the DeAI ICP Ecosystem"
               link={{
-                href: "/ecosystem",
+                href: "/ecosystem?tag=AI",
                 label: "Explore more DEAI Apps",
               }}
             />
