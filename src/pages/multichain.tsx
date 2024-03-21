@@ -150,9 +150,8 @@ function MultichainPage() {
   return (
     <Layout
       title="Trustless multi-chain on ICP"
-      description="Unique in blockchain, canister smart contracts on the Internet Computer can talk to other chains.
-      This is because of the innovative chain-key cryptography that allows for secure, decentralized, communication.          
-      Now developers can write contracts that trustlessly custody and process assets on other chains, and call into their smart contracts."
+      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
+      any trusted intermediary. Unique in blockchain, ICP smart contracts can read and write on different chains thanks to chain-key cryptography."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
@@ -179,7 +178,7 @@ function MultichainPage() {
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
                 {/* 1. Value proposition */}
               ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-              any trusted intermediary
+              any trusted intermediary. Unique in blockchain, ICP smart contracts can read and write on different chains thanks to chain-key cryptography.
               </p>
 
           
