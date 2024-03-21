@@ -15,6 +15,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 A Bitcoin address is a hash value. There are currently two types of Bitcoin address types, P2SH and P2PKH. An address's full public key cannot be provided when sending transactions, so to redeem transactions sent to your Bitcoin address, you must provide both the transaction signature and public key used to sign the transaction.
 
+To submit and receive Bitcoin transactions in a canister, you need to generate a Bitcoin address for that canister.
+
 Currently, the `ecdsa_public_key` API supports generating P2PKH addresses.
 
 ## Generating a P2PKH address
