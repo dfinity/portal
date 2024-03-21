@@ -1,4 +1,4 @@
-import { keywords, typeKeywords } from "motoko/lib/keywords";
+import { keywords } from "motoko/lib/keywords";
 
 Prism.languages.motoko = Prism.languages.extend("clike", {
   keyword: new RegExp(
@@ -9,7 +9,7 @@ Prism.languages.motoko = Prism.languages.extend("clike", {
     /[+-]?\\b0[xX]([A-Fa-f0-9_]+)/,
     /[+-]?\\b(\\d[\\d_]*(\\.[0-9_]+)?([eE][+-]?[0-9_]+)?)/,
   ],
-  builtin: /\b(?:[A-Z][a-z0-9_]*)\b/
+  builtin: /\b(?:async|[A-Z][a-z0-9_]*)\b/
 });
 
 Prism.languages.mo = Prism.languages.motoko;
