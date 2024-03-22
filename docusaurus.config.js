@@ -679,6 +679,16 @@ const config = {
                   .toString("base64")}`,
               },
               {
+                label: "Telegram",
+                to: "https://t.me/+m8tiEFaaNR8xNjNl",
+                iconLight: getImageDataUrl(
+                  "./static/img/svgIcons/telegram-white.svg"
+                ),
+                icon: `data:image/svg+xml;base64,${fs
+                  .readFileSync("./static/img/svgIcons/telegram-white.svg")
+                  .toString("base64")}`,
+              },
+              {
                 label: "Medium",
                 to: "https://medium.com/dfinity-network-blog",
                 icon: "data:image/svg+xml,%3Csvg width='24px' height='24px' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='m24 24h-24v-24h24zm-8.986-15.006v7.326c0 .198 0 .234-.127.362l-1.302 1.264v.27h6.32v-.27l-1.257-1.234c-.091-.07-.148-.178-.148-.3 0-.022.002-.043.005-.064v.002-9.07c-.003-.019-.005-.04-.005-.062 0-.121.058-.229.148-.298l.001-.001 1.286-1.234v-.27h-4.456l-3.176 7.924-3.609-7.924h-4.675v.271l1.502 1.813c.127.115.207.281.207.466 0 .022-.001.043-.003.064v-.003 7.126c.007.041.011.088.011.136 0 .222-.088.423-.231.571l-1.69 2.054v.27h4.8v-.27l-1.691-2.054c-.149-.154-.241-.363-.241-.595 0-.04.003-.079.008-.117v.004-6.16l4.215 9.195h.49z'/%3E%3C/svg%3E",
