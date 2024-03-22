@@ -29,9 +29,9 @@ To generate a P2PKH address for a canister, make a call to the `ecdsa_public_key
 ```motoko
 
 /// Returns the P2PKH address of this canister at a specific derivation path.
-public func get_p2pkh_address() : async BitcoinAddress {
-await BitcoinWallet.get_p2pkh_address(NETWORK, KEY_NAME, DERIVATION_PATH)
-};
+    public func get_p2pkh_address() : async BitcoinAddress {
+        await BitcoinWallet.get_p2pkh_address(NETWORK, KEY_NAME, DERIVATION_PATH)
+    };
 
 ```
 
@@ -51,6 +51,7 @@ pub async fn get_p2pkh_address() -> String {
 
 ```
 </TabItem>
+</Tabs>
 
 [Learn more about Bitcoin addresses](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash).
 
