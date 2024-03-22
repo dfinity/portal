@@ -45,15 +45,15 @@ When a canister wants to make a Bitcoin transaction, a request is sent to the Bi
 
 ## ckBTC
 
-ICP implements a smart contract that uses threshold ECDSA and chain-key cryptography to provide a [**ckBTC**](/docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview) token (chain-key BTC) that is backed 1:1 by BTC.
-
 The primary value of chain-key tokens, such as ckBTC, is that it can be transferred with the low finality time (within seconds) and for a fraction of the cost of a transaction on the token's native network (in this instance, a BTC transaction on Bitcoin).
 
-## Use-cases and sample apps
+## Why this is important
 
-Developers that need more advanced interaction with the Bitcoin network need to use the lower-level threshold ECDSA and Bitcoin APIs. An example of such an advanced use case would be working with Bitcoin inscriptions.
+The Bitcoin integration is important because it brings smart contract functionality to Bitcoin, which does not have a native smart contract platform itself, opening up new possibilities for DeFi and dapp development.
 
-The threshold ECDSA API provides a way for smart contracts to sign transactions with their secret keys. The Bitcoin API allows smart contracts to read the Bitcoin state (UTXOs and balances) and send signed transactions.
+## Use-cases and sample dapps
+
+The Bitcoin integration supports both basic and advanced use-cases, such as decentralized exchanges or working with Bitcoin inscriptions.
 
 The ckBTC token is suitable for the common use cases of holding, transferring, and trading BTC.
 
