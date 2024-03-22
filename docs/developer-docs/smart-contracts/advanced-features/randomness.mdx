@@ -1,6 +1,6 @@
 # On-chain randomness
 
-The Internet Computer provides a secure and verifiable way to generate random numbers directly within canisters. This functionality is exposed through the [raw_rand](../../../references/ic-interface-spec.md) method offered by the [management canister](../advanced-features/management-canister.mdx) and the [Motoko Random module](https://internetcomputer.org/docs/current/motoko/main/base/Random). 
+The Internet Computer provides a secure and verifiable way to generate random numbers directly within canisters. This functionality is exposed through the [raw_rand](../../../references/ic-interface-spec.md) method offered by the [management canister](../advanced-features/management-canister.mdx) and the [Motoko Random module](https://internetcomputer.org/docs/current/motoko/main/base/Random).
 
 The method takes no input and returns 32 pseudo-random bytes to the caller.
 
@@ -18,7 +18,7 @@ To learn more about the technical details of randomness on ICP, watch the [Commu
 ## How to use
 Developers can directly access randomness through the `raw_rand` method in the management canister. See the examples below.
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -34,7 +34,7 @@ actor {
 };
 ```
 
-In addition to the `raw_rand` method, Motoko offers a [Random module](https://internetcomputer.org/docs/current/motoko/main/base/Random) for generating random numbers. 
+In addition to the `raw_rand` method, Motoko offers a [Random module](https://internetcomputer.org/docs/current/motoko/main/base/Random) for generating random numbers.
 
 </TabItem>
 
@@ -81,5 +81,5 @@ def random_bytes() -> Async[RandomBytesResult]:
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 

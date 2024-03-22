@@ -2,8 +2,10 @@
 keywords: [advanced, bitcoin, btc, tutorial, read state, read bitcoin state]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Reading the Bitcoin state
@@ -36,7 +38,7 @@ Cycles costs will vary between the Bitcoin testnet and mainnet. For a breakdown 
 
 To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` Bitcoin API method. You can create a function in your canister to call this method such as:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -83,7 +85,7 @@ pub async fn get_utxos(network: BitcoinNetwork, address: String) -> GetUtxosResp
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Then make a call to this canister's function with the command:
@@ -98,7 +100,7 @@ Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with you
 
 To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` Bitcoin API method. You can create a function in your canister to call this method such as:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -146,7 +148,7 @@ pub async fn get_balance(network: BitcoinNetwork, address: String) -> u64 {
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Then make a call to this canister's function with the command:
 
@@ -163,7 +165,7 @@ The transaction fees in the Bitcoin network change dynamically based on the numb
 The function returns 101 numbers that are fees measured in millisatoshi per virtual byte. The `i`-th element of the result corresponds to the `i`-th percentile fee. For example, to get the median fee over the last few blocks, look at the `50`-th element of the result.
 
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -207,7 +209,7 @@ pub async fn get_current_fee_percentiles(network: BitcoinNetwork) -> Vec<Millisa
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Then make a call to this canister's function with the command:
