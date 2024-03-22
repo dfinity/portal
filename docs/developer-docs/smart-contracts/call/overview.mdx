@@ -2,8 +2,10 @@
 keywords: [beginner, concept, call]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -29,7 +31,7 @@ Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryToo
 
 ### Example update call
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -54,7 +56,7 @@ fn increment() {
 
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
 setMessage: update([text], Void, (newMessage) => {
@@ -62,9 +64,9 @@ setMessage: update([text], Void, (newMessage) => {
 })
 ```
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
 @update
@@ -73,8 +75,9 @@ def set_message(new_message: str) -> void:
     message = new_message
 ```
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+
+</AdornedTabs>
 
 ## Query calls
 
@@ -86,7 +89,7 @@ The downside of query calls is that the response is not trusted since it's comin
 
 ### Example query call
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -112,7 +115,7 @@ fn greet(name: String) -> String {
 
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
 getMessage: query([], text, () => {
@@ -120,9 +123,9 @@ getMessage: query([], text, () => {
 }),
 ```
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
 @query
@@ -130,8 +133,8 @@ def get_message() -> str:
     return message
 ```
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+</AdornedTabs>
 
 ## Comparison of update calls vs query calls
 
