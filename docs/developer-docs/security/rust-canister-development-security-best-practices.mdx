@@ -357,7 +357,7 @@ The locks would usually be released in the callback. That bears the risk that th
     async fn example_call_with_locking_per_caller() -> Result<(), String> {
         let caller = ic_cdk::caller();
         // using `?`, return an error immediately if there is already a call in progress for `caller`.
-        let _ = CallerGuard::new(caller)?;
+        let _lock = CallerGuard::new(caller)?;
         // do anything, call other canisters
         Ok(())
     } // here the guard goes out of scope and is dropped
