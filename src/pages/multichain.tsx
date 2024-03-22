@@ -151,7 +151,7 @@ function MultichainPage() {
     <Layout
       title="Trustless multi-chain on ICP"
       description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-      any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read and write on different chains thanks to chain-key cryptography."
+      any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from and write to different chains thanks to chain-key cryptography."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
@@ -178,7 +178,7 @@ function MultichainPage() {
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
                 {/* 1. Value proposition */}
               ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-              any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read and write on different chains thanks to chain-key cryptography.
+              any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from and write to different chains thanks to chain-key cryptography.
               </p>
 
           
@@ -202,9 +202,10 @@ function MultichainPage() {
             variants={transitions.item}
           >
             {/* 2. Problem statement */}
-            Blockchains are becoming increasingly modular and diverse. This creates a challenging environment for 
-            developers who must adapt to various programming models, transaction costs, and settlement times 
-            across different chains, while ensuring safe interoperability of assets and smart contracts.
+            The diversity of blockchains and the lack of interoperability create both a massive hurdle for 
+            wide user adoption and a challenging environment for 
+            developers. Developers must adapt to various programming models, transaction costs, and settlement times 
+            across different chains, while ensuring safe interoperability of assets and smart contracts. 
           </motion.p>
         </AnimateSpawn>
         <section className="bg-infinite relative overflow-hidden">
@@ -236,27 +237,25 @@ function MultichainPage() {
               </p>
           
               <h2 className="text-gradient-purple tw-heading-3 md:tw-heading-60">
-              Multi-chain powered by chain-key cryptography
+              Two pillars of multi-chain
               </h2>
+              {/* 4. ICP solution */}
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-              {/* 4. Our solution */}
-
-              Developed after years of dedicated R&D, chain-key cryptography is the scientific breakthrough that powers the 
-              Internet Computer network. It is a set of cryptographic protocols that enables ICP nodes to create 
-              and sign transactions that can execute on other blockchains. 
-              </p>
-
-              <p className="text-paragraph font-bold md:tw-heading-6 mb-6">
-              This enables ICP to integrate with major blockchains directly at the protocol level. 
-              Building on this capability, the canister smart contracts can trustlessly custody and process assets on 
-              other chains, call into their smart contracts, and even observe events on other chains. 
-              </p>
-
-              <p className="tw-paragraph md:tw-lead-sm mb-6">
+              True multi-chain capability requires enabling smart contracts to read and write across chains.
               For instance, you can write a <i>single</i> <b><i>ICP</i></b> smart contract that can custody <b><i>Bitcoin</i></b> and programmatically trigger 
               sending it based on events observed on a <b><i>Ethereum</i></b> DeFi smart contract.
               </p>
-               
+
+              <p className="tw-paragraph md:tw-lead-sm mb-6">
+                <b>Chain-key cryptography</b> is the scientific breakthrough that allows ICP smart contracts to 
+                create and sign transactions that are executed on other blockchains &ndash; writing to another blockchain directly.
+              </p>
+              
+              <p className="tw-paragraph md:tw-lead-sm mb-6">
+                <b>Direct network integration</b> enables ICP smart contracts to query data and smart contracts from other blockchains, validated
+                by ICP consensus &ndash; <i>reading from other blockchains</i>.
+              </p>
+            
             </div>
           </div>
         </section>
