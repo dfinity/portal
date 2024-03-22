@@ -2,8 +2,10 @@
 keywords: [advanced, tutorial, vetkeys, vetkd]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # vetKeys API demo
@@ -12,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-This demo provides a canister (`src/system_api`) that offers the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158), implemented demonstration, testing, and initial development purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key. 
+This demo provides a canister (`src/system_api`) that offers the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158), implemented demonstration, testing, and initial development purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key.
 
 This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
 
@@ -25,7 +27,7 @@ This demo uses files found in [this repository](https://github.com/dfinity/examp
 
 ### Step 1: Begin by cloning the Github repository containing this project:
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```
@@ -43,7 +45,7 @@ cd examples/rust/vetkd
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ### Step 2: Then, start a local instance of the Internet Computer:
 

@@ -2,11 +2,23 @@ import { useCollapsible } from "@site/src/utils/use-collapsible";
 import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
+import { trackEvent } from "@site/src/utils/matomo";
 
 export const CollapsedVisionSection: React.FC<{
   children?: React.ReactNode;
 }> = ({ children }) => {
   const collapsible = useCollapsible();
+
+  // Handler for button click
+  const handleButtonClick = () => {
+    
+    try {
+      trackEvent('Pitch', 'Expand', 'ICP Pitch');
+    } catch {};
+
+    // Change the open state of the collapsible
+    collapsible.setOpen(true);
+  };
 
   return (
     <div className="mt-8 relative">
@@ -27,7 +39,7 @@ export const CollapsedVisionSection: React.FC<{
                 : "opacity-100"
             }
           `}
-        onClick={() => collapsible.setOpen(true)}
+        onClick={handleButtonClick}
       >
         <svg
           width="24"
