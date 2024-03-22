@@ -3,8 +3,10 @@ keywords: [beginner, tutorial, call, passing arguments]
 ---
 
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -22,7 +24,7 @@ An `array` is a collection of items of the same data type.
 
 The following example defines an array of numbers and a function that returns the array.
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko">
 
 Motoko differentiates between immutable arrays, which cannot be altered, and mutable arrays, which can be modified.
@@ -65,7 +67,7 @@ fn get_numbers(numbers: Vec<u32>) -> Vec<u32> {
 
 </TabItem>
 
-<TabItem value="typescript" label="Typescript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 Azle refers to the `Vec` type to represent the equivalent of an `array` in Typescript. This is because `Vec` aligns with the [Candid](/docs/current/developer-docs/backend/candid/candid-concepts) type.
 
@@ -82,9 +84,9 @@ export default Canister({
 
 To learn more about the `Vec` object in Typescript via Azle, refer to [the Azle book reference on Vec](https://demergent-labs.github.io/azle/reference/candid/vec.html?highlight=array#vec).
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 Kybra refers to the `Vec` type to represent the equivalent of an `array` in Python. This is because `Vec` aligns with the Candid type.
 
@@ -99,7 +101,7 @@ def get_numbers(Vec[int32]) -> Vec[int32]:
 
 To learn more about `Vec` in Python via Kybra, refer to [the Kybra book reference on Vec](https://demergent-labs.github.io/kybra/reference/candid/vec.html).
 
-</TabItem>
+</AdornedTab>
 
 <TabItem value="bash" label="bash">
 
@@ -118,7 +120,7 @@ To learn more about calling a method from a canister in bash, refer to the dfx r
 For additional examples, refer to [type `vec` in the Candid Reference](https://internetcomputer.org/docs/current/references/candid-ref#type-vec-t).
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## Variants
 
@@ -126,7 +128,7 @@ A `variant` type represents a value that is from exactly one of the given cases,
 
 The following example defines a `Day` type representing a day of the week. It utilizes a switch statement to match the input `Day` with one of its variants, returning the corresponding full name of the day.
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -179,7 +181,7 @@ fn get_text(d: Day) -> &'static str {
 
 </TabItem>
 
-<TabItem value="typescript" label="Typescript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
 import { Canister,  query, Variant } from 'azle';
@@ -217,9 +219,9 @@ export default Canister({
 ```
 To learn more about variants in Typescript via Azle, refer to [the Azle book reference on variants](https://demergent-labs.github.io/azle/reference/candid/variant.html?highlight=variant#variant).
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
 from kybra import nat32, Variant, query
@@ -253,7 +255,7 @@ def get_text(d: Day) -> str:
 
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html).
 
-</TabItem>
+</AdornedTab>
 
 <TabItem value="bash" label="bash">
 
@@ -272,4 +274,4 @@ To learn more about calling a method from a canister in bash, refer to the DFX r
 For additional examples, refer to [type variant in the Candid Reference](https://internetcomputer.org/docs/current/references/candid-ref#type-variant--n--t--)
 
 </TabItem>
-</Tabs>
+</AdornedTabs>

@@ -2,8 +2,10 @@
 keywords: [beginner, tutorial, deploy, deploy canisters]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -114,7 +116,7 @@ For certain workflows, it may be important to have a canister execute a task or 
 
 Here is an example:
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 This example uses a global timer that gets called immediately after the canister starts:
@@ -148,7 +150,7 @@ fn init(timer_interval_secs: u64) {
 
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 This example creates a timer function that must be manually called once a canister starts:
 
@@ -280,9 +282,9 @@ async function getRandomness(): Promise<blob> {
 }
 ```
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 This example creates a timer function that must be manually called once a cansiter starts:
 
@@ -305,8 +307,8 @@ def timer_callback():
 
 ```
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+</AdornedTabs>
 
 ## Next steps
 

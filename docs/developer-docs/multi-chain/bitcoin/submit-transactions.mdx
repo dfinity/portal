@@ -2,8 +2,10 @@
 keywords: [advanced, bitcoin, btc, tutorial, submit transactions]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Submitting transactions
@@ -20,7 +22,7 @@ To submit transactions to the Bitcoin network, the Bitcoin integration API expos
 
 To send transactions to the Bitcoin network, make a call to the `bitcoin_send_transaction` Bitcoin API method. You can create a function in your canister to call this method such as:
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -72,7 +74,7 @@ pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Then make a call to this canister's function with the command:
