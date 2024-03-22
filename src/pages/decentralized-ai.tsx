@@ -34,9 +34,7 @@ const { mostRecentVideo } = youtubeData;
 import showcaseData from "../../showcase.json";
 const aiProjects = showcaseData.filter((p) =>
   lisfOfDeaturedAiProjectIds.includes(p.id)
-); 
-
-console.log(aiProjects);
+);
 
 const MotionLink = motion(Link);
 
