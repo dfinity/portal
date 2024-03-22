@@ -636,6 +636,23 @@
     ]
   },
   {
+    "id": "aikinic",
+    "name": "AI Kinic",
+    "oneLiner": "Deploy vector databases, machine learning instances, and much more leveraging web3.",
+    "website": "http://ai.kinic.io/",
+    "tags": [
+      "AI"
+    ],
+    "description": "Artificial Intelligence Tooling For The New Web, Deploy vector databases, machine learning instances, and much more leveraging web3.Kinic Vector DB runs 100% on-chain with the Internet Computer Blockchain",
+    "stats": "",
+    "display": "Normal",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/kinic_logo.webp",
+    "screenshots": [
+      "/img/showcase/kinic_screenshot.webp"
+    ]
+  },
+  {
     "id": "modclub",
     "name": "Modclub",
     "oneLiner": "The world's first AI-powered Web3 crowdwork platform",

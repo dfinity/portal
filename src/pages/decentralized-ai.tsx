@@ -26,7 +26,7 @@ import {
 } from "../components/NewsPage/Cards";
 
 const lisfOfDeaturedAiProjectIds = [
-  'Accelar', 'elnaai', 'icgpt', 'DevinciAI', 'ArcMind', 'juno', 'singularitynet'
+  'Accelar', 'elnaai', 'icgpt', 'aikinic', 'ArcMind', 'juno', 'singularitynet'
 ];
 
 const { mostRecentVideo } = youtubeData;
@@ -74,7 +74,7 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                As AI continues to scale, Blockchain has the potential to balance its current centralized properties and foster a more equal distribution of power, data, and control over how society will continue interacting with the internet over the coming decades.
+                Blockchain has the potential to balance AI's centralized properties by supporting a fairer distribution of power, data, and control over how society interacts with the internet over the coming decades
               </motion.p>
             </div>
           </div>
