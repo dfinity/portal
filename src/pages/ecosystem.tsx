@@ -228,7 +228,7 @@ const ReportCard = () => {
           The first ICP ecosystem report recaps the most substantial ecosystem achievements from 2023 as well as zooms in on several success stories from within the ecosystem.
         </p>
         <Link
-          className="button-white link-with-icon text-center"
+          className="button-white link text-center"
           href="/icp_ecosystem_report_03_2024.pdf"
           target="_blank"
           download
