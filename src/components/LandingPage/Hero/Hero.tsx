@@ -40,8 +40,8 @@ const Hero: React.FC<{
               className="
                 animate-fade-up 
                 font-[1000] uppercase tracking-[-0.03em] leading-none 
-                text-[54px]
-                sm:text-[54px]
+                text-[50px]
+                sm:text-[46px]
                 md:text-[100px] 
                 lg:text-[110px] 
                 text-gradient-white 
