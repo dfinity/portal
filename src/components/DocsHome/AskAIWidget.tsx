@@ -6,7 +6,7 @@ import BrainIcon from "../../../static/img/icon-ai-brain.svg";
 export function AskAIWidget() {
   const { isDocsPage, currentPath } = useIsDocs();
   return (
-    (isDocsPage || currentPath === "/" || currentPath === "/decentralized-ai") && (
+    (isDocsPage || currentPath === "/" || currentPath === "/ai") && (
       // AI chatbot integration via Kapa
       <>
         <Head>
