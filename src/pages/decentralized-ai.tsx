@@ -19,7 +19,7 @@ import { ChatWidget } from "@site/src/components/LandingPage/Hero/ChatWidget";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 import { SmallCard, PromoCard } from "../components/Common/Card";
 import VideoCard from "../components/Common/VideoCard/index";
-import youtubeData from "@site/.docusaurus/youtube/default/youtube.json";
+// import youtubeData from "@site/.docusaurus/youtube/default/youtube.json";
 import { ProjectInfo } from "../components/Ecosystem/ProjectInfo";
 import {
   NewsCard
@@ -29,7 +29,7 @@ const lisfOfDeaturedAiProjectIds = [
   'Accelar', 'elnaai', 'icgpt', 'aikinic', 'ArcMind', 'juno', 'singularitynet'
 ];
 
-const { mostRecentVideo } = youtubeData;
+//const { mostRecentVideo } = youtubeData;
 
 import showcaseData from "../../showcase.json";
 const aiProjects = showcaseData.filter((p) =>
@@ -109,11 +109,11 @@ function AIPage() {
               className="col-span-1 md:col-span-2 mb-10"
             >
               <VideoCard
-                image={mostRecentVideo.thumbnail}
-                title={mostRecentVideo.title}
+                image="https://i.ytimg.com/vi/6qLvIXiCGcM/hqdefault.jpg"
+                title="AI running on the Internet Computer (Demo)"
                 label="Video"
-                link={`https://www.youtube.com/watch?v=${mostRecentVideo.id}`}
-                description={mostRecentVideo.description}
+                link={`https://www.youtube.com/watch?v=6qLvIXiCGcM`}
+                description="Dominic Williams, Chief Scientist and Founder of DFINITY, demos neural network artificial intelligence running inside a canister ..."
               />
             </motion.div>
           </div>
