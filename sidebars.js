@@ -649,11 +649,6 @@ const sidebars = {
       label: "Multi-chain",
       items: [
         {
-          type: "doc",
-          label: "Overview",
-          id: "developer-docs/multi-chain/overview",
-        },
-        {
           type: "category",
           label: "Bitcoin",
           items: [
