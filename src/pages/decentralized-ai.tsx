@@ -18,6 +18,8 @@ import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
 import { ChatWidget } from "@site/src/components/LandingPage/Hero/ChatWidget";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 import { SmallCard, PromoCard } from "../components/Common/Card";
+import VideoCard from "../components/Common/VideoCard/index";
+import youtubeData from "@site/.docusaurus/youtube/default/youtube.json";
 import { ProjectInfo } from "../components/Ecosystem/ProjectInfo";
 import {
   NewsCard
@@ -25,7 +27,10 @@ import {
 
 const lisfOfDeaturedAiProjectIds = [
   'Accelar', 'elnaai', 'icgpt', 'DevinciAI', 'ArcMind', 'juno', 'singularitynet'
-]
+];
+
+const { mostRecentVideo } = youtubeData;
+
 import showcaseData from "../../showcase.json";
 const aiProjects = showcaseData.filter((p) =>
   lisfOfDeaturedAiProjectIds.includes(p.id)
@@ -91,10 +96,31 @@ function AIPage() {
               className="tw-heading-4 text-gradient md:tw-heading-60 mb-0 text-center"
               variants={transitions.item}
             >
-              Only on the Internet Computer AI runs on the blockchain
+              The Internet Computer: AI running on the blockchain
             </motion.h2>
           </AnimateSpawn>
         </section>
+
+        <AnimateSpawn
+          className="container-10 pt-20 md:pt-30"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <motion.div
+              variants={transitions.item}
+              className="col-span-1 md:col-span-2 mb-10"
+            >
+              <VideoCard
+                image={mostRecentVideo.thumbnail}
+                title={mostRecentVideo.title}
+                label="Video"
+                link={`https://www.youtube.com/watch?v=${mostRecentVideo.id}`}
+                description={mostRecentVideo.description}
+              />
+            </motion.div>
+          </div>
+        </AnimateSpawn>
 
         <section className="container-10 mt-6 md:mt-10">
           <TranslatedCardList className="md:mx-1/12">
@@ -130,7 +156,7 @@ function AIPage() {
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}
               >
-                Prompts get validated as messages on the blockchain, ensuring the security and integrity of all data - a crucial element in developing applications handling sensitive data. Running open-source AI models like Llama 2 on ICP can form the basis for a fully open AI stack.
+                Prompts get validated as messages on the blockchain, ensuring the security and integrity of all data - a crucial element in developing applications handling sensitive data. Running open-source AI models like Llama 2 on the Internet Computer can form the basis for a fully open AI stack.
               </motion.p>
             </TranslatedCard>
             <TranslatedCard
