@@ -217,6 +217,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
+              type: "doc",
+              label: "Async code and inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [

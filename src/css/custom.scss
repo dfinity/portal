@@ -200,7 +200,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  @include meta.load-css("highlight.js/styles/github-dark");
   --ifm-color-primary: #e11f7a;
   --ifm-color-primary-dark: #cb1b6e;
   --ifm-color-primary-darker: #c01a68;

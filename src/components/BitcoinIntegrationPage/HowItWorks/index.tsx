@@ -19,7 +19,7 @@ function Index() {
           variants={transitions.item}
           className="tw-heading-5 md:tw-heading-3 text-gradient mb-0"
         >
-          Think DEXs offering BTC trading pairs, decentralized fundraisers
+          With IC canisters calling into BTC network, there can be DEXs offering BTC trading pairs, decentralized fundraisers
           accepting Bitcoin, or Web3 SocialFi services allowing satoshis to be
           sent via chat messages!
         </motion.h2>
