@@ -149,7 +149,7 @@ function MultichainPage() {
 
   return (
     <Layout
-      title="Trustless multi-chain on ICP"
+      title="Chain Fusion Technology"
       description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
       any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from and write to different chains thanks to chain-key cryptography."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
@@ -173,7 +173,7 @@ function MultichainPage() {
             <div className="blob blob-purple blob-xl md:blob-xl md:blob-x-8 md:blob-y-10 opacity-75"></div>
             <div className="md:w-7/10 relative">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 animate-fade-up">
-                Trustless multi-chain on ICP
+                Chain Fusion Technology
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
                 {/* 1. Value proposition */}
@@ -248,7 +248,7 @@ function MultichainPage() {
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
                 <b>Chain-key cryptography</b> is the scientific breakthrough that allows ICP smart contracts to 
-                create and sign transactions that are executed on other blockchains &ndash; writing to another blockchain directly.
+                create and sign transactions that are executed on other blockchains &ndash; <i>writing to other blockchains directly.</i>
               </p>
               
               <p className="tw-paragraph md:tw-lead-sm mb-6">
