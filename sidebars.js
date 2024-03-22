@@ -672,6 +672,7 @@ const sidebars = {
               label: "ckBTC",
               items: [
                 "developer-docs/multi-chain/bitcoin/ckbtc/overview",
+                "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
               ],
             },
           ],
