@@ -663,6 +663,8 @@ const sidebars = {
               label: "Using the integration",
               items: [
                 "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
                 "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
                 "developer-docs/multi-chain/bitcoin/using-btc/local-development",
               ],
