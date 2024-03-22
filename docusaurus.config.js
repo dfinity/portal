@@ -682,7 +682,7 @@ const config = {
                 label: "Telegram",
                 to: "https://t.me/+m8tiEFaaNR8xNjNl",
                 iconLight: getImageDataUrl(
-                  "./static/img/svgIcons/telegram-white.svg"
+                  "./static/img/svgIcons/purple/telegram.svg"
                 ),
                 icon: `data:image/svg+xml;base64,${fs
                   .readFileSync("./static/img/svgIcons/telegram-white.svg")
