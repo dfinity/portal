@@ -11,7 +11,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## What is multi-chain?
 
-The term 'multi-chain' refers to the Internet Computer's ability to trustlessly make direct calls to another blockchain, enabling dapps to expand their capabilities across multiple networks. ICP smart contracts can interact with another chain's smart contracts and manage the chain's native assets. By interacting with assets on other chains, smart contracts can unleash unprecedented possibilities by tapping into the unbounded scalability of IC with extremely low costs while still preserving the highest degree of security. This ability to communicate directly with other blockchain networks is possible using the protocol's unique cryptography features, which support decentralized signing of transactions that natively execute on other networks. ICP currently has multi-chain integrations with the Bitcoin and Ethereum networks.
+The term 'multi-chain' refers to the Internet Computer's ability to trustlessly make direct calls to another blockchain, enabling dapps to expand their capabilities across multiple networks. ICP smart contracts can interact with another chain's smart contracts and native assets. Multi-chain introduces the decentralized custody of assets. Smart contracts can have multiple addresses for receving and holding assets of other chains. 
+
+By interacting with assets on other chains, smart contracts can unleash unprecedented possibilities by tapping into the unbounded scalability of IC with extremely low costs, while still preserving the highest degree of security. This ability to communicate directly with other blockchain networks is possible using the protocol's unique cryptography features, which support decentralized signing of transactions that natively execute on other networks. ICP currently has multi-chain integrations with the Bitcoin and Ethereum networks.
 
 Traditionally, for one blockchain to communicate in this manner with other chains, they need to use a blockchain 'bridge'. Traditional bridges introduce several problems:
 
@@ -23,7 +25,9 @@ Traditionally, for one blockchain to communicate in this manner with other chain
 
 - Bridges do not meet regulatory standards.
 
-On ICP, there are no bridges, hubs, or other intermediaries — just two chains communicating directly.
+On ICP, there are no bridges, hubs, or other intermediaries — just two chains communicating directly. 
+
+When interacting with bridges and multiple chains, there are often additional services and dependencies that must be managed as well. With ICP, there aren't any extra services to manage thanks to ICP's autonomous design. 
 
 ## How multi-chain on ICP works
 
