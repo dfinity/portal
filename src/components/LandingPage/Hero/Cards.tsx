@@ -41,7 +41,7 @@ export const CardsSection = () => {
           Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Trustless multi-chain on ICP
+          Chain Fusion Technology
         </h2>
       </CardWithImage>
 
@@ -53,7 +53,7 @@ export const CardsSection = () => {
           Online Deck [ ICP hosted ]
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Cypherspace
+          Blockchain
           <br />
           as cloud 3.0
         </h2>
