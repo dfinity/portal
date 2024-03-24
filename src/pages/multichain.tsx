@@ -186,7 +186,10 @@ function MultichainPage() {
           <div className="relative">
             <div className="absolute left-0 bottom-0 right-0 h-1/2 bg-page"></div>
             <div className="container-10 relative animate-fade-up animation-delay-300">
-              <img src="/img/multichain/hero2.webp" alt="" className="w-full" />
+              {/* The surrounding div gives the image rounded corners */}
+              <div className="relative" style={{ overflow: 'hidden', borderRadius: '10px',  }}>
+                <img src="/img/multichain/hero2.webp" alt="" className="w-full h-full object-cover" />
+              </div>
             </div>
           </div>
         </section>
