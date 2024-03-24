@@ -222,9 +222,9 @@ function MultichainPage() {
           </div>
           <div className="container-10 pb-20 pt-10 md:py-40">
             <div className="md:w-6/10 text-white relative">
-              <h4 className="text-gradient-purple tw-heading-6 md:tw-heading-60">
+              <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
                 How it is solved today
-              </h4>
+              </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
               {/* 3. How is it solved today */}
 
@@ -242,9 +242,9 @@ function MultichainPage() {
             
               </p>
           
-              <h4 className="text-gradient-purple tw-heading-6 md:tw-heading-60">
+              <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
               The two pillars of chain fusion
-              </h4>
+              </h3>
               {/* 4. ICP solution */}
               <p className="tw-paragraph md:tw-lead-sm mb-6">
               True multi-chain capability requires enabling smart contracts to read and write across chains.
@@ -276,9 +276,17 @@ function MultichainPage() {
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
-                  <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
+                  <>
+                   <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
                     Use cases of chain fusion
                   </h2>
+                  <p className="tw-paragraph md:tw-lead-sm mb-2">
+                    Below are some of the use cases of chain fusion technology.
+                    These can be grouped into two broad classes: use cases for storing assets (Bitcoin, Etherum, etc..)
+                    and use cases emerging from ICP executing smart contracts on other chains.
+                  </p>
+                  </>
+                 
                 }
               ></StickySectionNav>
             </div>
