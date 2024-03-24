@@ -177,17 +177,16 @@ function MultichainPage() {
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
                 {/* 1. Value proposition */}
-              ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-              any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from and write to different chains thanks to chain-key cryptography.
+              ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), 
+              without relying on any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from 
+              and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion.
               </p>
-
-          
             </div>
           </div>
           <div className="relative">
             <div className="absolute left-0 bottom-0 right-0 h-1/2 bg-page"></div>
             <div className="container-10 relative animate-fade-up animation-delay-300">
-              <img src="/img/multichain/hero.webp" alt="" className="w-full" />
+              <img src="/img/multichain/hero2.webp" alt="" className="w-full" />
             </div>
           </div>
         </section>
@@ -198,14 +197,18 @@ function MultichainPage() {
           variants={transitions.container}
         >
           <motion.p
-            className="tw-heading-5 md:tw-heading-3 text-gradient mb-0 md:w-8/10"
+            className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
             variants={transitions.item}
           >
             {/* 2. Problem statement */}
-            The diversity of blockchains and the lack of interoperability create both a massive hurdle for 
-            wide user adoption and a challenging environment for 
-            developers. Developers must adapt to various programming models, transaction costs, and settlement times 
-            across different chains, while ensuring safe interoperability of assets and smart contracts. 
+            The common web3 pattern is building dapps from different blockchains, for instance Ethereum or Solana to store assets,  
+            IPFS or Arweave for serving frontends, and Arbitrum or Optimism for the bulk of smart contract computation. 
+            However, building dapps like this is very cumbersome. Developers must adapt to various programming models, 
+            transaction costs, and settlement times.
+            
+            Chain fusion tremendously simplifies multi-chain dapp development, making it as straightforward and native as 
+            building on a single environment.
+        
           </motion.p>
         </AnimateSpawn>
         <section className="bg-infinite relative overflow-hidden">
@@ -216,9 +219,9 @@ function MultichainPage() {
           </div>
           <div className="container-10 pb-20 pt-10 md:py-40">
             <div className="md:w-6/10 text-white relative">
-              <h2 className="text-gradient-purple tw-heading-3 md:tw-heading-60">
+              <h4 className="text-gradient-purple tw-heading-6 md:tw-heading-60">
                 How it is solved today
-              </h2>
+              </h4>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
               {/* 3. How is it solved today */}
 
@@ -236,9 +239,9 @@ function MultichainPage() {
             
               </p>
           
-              <h2 className="text-gradient-purple tw-heading-3 md:tw-heading-60">
-              Two pillars of multi-chain
-              </h2>
+              <h4 className="text-gradient-purple tw-heading-6 md:tw-heading-60">
+              The two pillars of chain fusion
+              </h4>
               {/* 4. ICP solution */}
               <p className="tw-paragraph md:tw-lead-sm mb-6">
               True multi-chain capability requires enabling smart contracts to read and write across chains.
@@ -271,7 +274,7 @@ function MultichainPage() {
                 onItemClick={onItemClick}
                 title={
                   <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
-                    ICP smart contracts can natively hold assets on other chains
+                    Use cases of chain fusion
                   </h2>
                 }
               ></StickySectionNav>
@@ -281,6 +284,57 @@ function MultichainPage() {
                 className="lg:pr-[calc(1/7*100%)] space-y-10 md:space-y-20"
                 ref={(el) => (highlight.elRef.current = el)}
               >
+
+              <ContentCard id="oisy-wallet">
+                  <img
+                    src="/img/multichain/card-oisy.webp"
+                    alt="Create a web-based multi-chain wallet"
+                  />
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Web-based multi-chain wallet
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    A key problem with hosting traditional wallets such as
+                    MetaMask on a smartphone or laptop is the risk of theft by
+                    extortion, especially in the developing world. For example,
+                    a robber might put a victim up to a wall, and force them to
+                    open their phone under threat of violence. If the victim
+                    maintains crypto in a traditional wallet, it will be seen
+                    and they will lose their crypto.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Chain key makes it possible to create purely web-based
+                    wallets, backed by a canister smart contract that maintains
+                    the crypto. Authentication to such wallets can involve
+                    Internet Identity, Google SSO, or usernames and passwords as
+                    required. These can be opened using a web browser tab in
+                    Incognito mode, which leaves no trace of the wallet when
+                    closed.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The{" "}
+                    <Link href="https://oisy.com" className="link-subtle">
+                      OISY wallet
+                    </Link>{" "}
+                    is a great example. It can custody any ICP asset (including
+                    chain key twins), native bitcoin, native bitcoin BRC20
+                    tokens, and native Ethereum assets, as required.
+                    Self-custodied Ethereum assets can be used in Ethereum DeFi
+                    using the WalletConnect functionality it supports. Users
+                    gain convenience and a better experience, and superior
+                    security.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    <strong>OISY Wallet:</strong>
+                  </p>
+
+                  <p className="flex gap-2 flex-wrap">
+                    <Status type="done">Ethereum assets done</Status>
+                    <Status type="pending">ICP assets pending</Status>
+                    <Status type="pending">Bitcoin pending</Status>
+                    <Status type="pending">BRC20 pending</Status>
+                  </p>
+                </ContentCard>
 
 
                 <ContentCard id="ckbtc">
@@ -395,56 +449,7 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="oisy-wallet">
-                  <img
-                    src="/img/multichain/card-oisy.webp"
-                    alt="Create a web-based multi-chain wallet"
-                  />
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Web-based multi-chain wallet
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A key problem with hosting traditional wallets such as
-                    MetaMask on a smartphone or laptop is the risk of theft by
-                    extortion, especially in the developing world. For example,
-                    a robber might put a victim up to a wall, and force them to
-                    open their phone under threat of violence. If the victim
-                    maintains crypto in a traditional wallet, it will be seen
-                    and they will lose their crypto.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Chain key makes it possible to create purely web-based
-                    wallets, backed by a canister smart contract that maintains
-                    the crypto. Authentication to such wallets can involve
-                    Internet Identity, Google SSO, or usernames and passwords as
-                    required. These can be opened using a web browser tab in
-                    Incognito mode, which leaves no trace of the wallet when
-                    closed.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The{" "}
-                    <Link href="https://oisy.com" className="link-subtle">
-                      OISY wallet
-                    </Link>{" "}
-                    is a great example. It can custody any ICP asset (including
-                    chain key twins), native bitcoin, native bitcoin BRC20
-                    tokens, and native Ethereum assets, as required.
-                    Self-custodied Ethereum assets can be used in Ethereum DeFi
-                    using the WalletConnect functionality it supports. Users
-                    gain convenience and a better experience, and superior
-                    security.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    <strong>OISY Wallet:</strong>
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="done">Ethereum assets done</Status>
-                    <Status type="pending">ICP assets pending</Status>
-                    <Status type="pending">Bitcoin pending</Status>
-                    <Status type="pending">BRC20 pending</Status>
-                  </p>
-                </ContentCard>
+               
 
                 <ContentCard id="icpERC20">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
