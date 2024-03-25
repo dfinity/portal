@@ -109,7 +109,7 @@ function AIPage() {
               className="col-span-1 md:col-span-2 mb-10"
             >
               <VideoCard
-                image="https://i.ytimg.com/vi/6qLvIXiCGcM/hqdefault.jpg"
+                image="/img/decentralized-ai/thumb-ai-video-thumb.webp"
                 title="AI running on the Internet Computer (Demo)"
                 label="Video"
                 link={`https://www.youtube.com/watch?v=6qLvIXiCGcM`}
