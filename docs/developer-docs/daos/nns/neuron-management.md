@@ -14,6 +14,7 @@ If you are building a project that offers neuron staking or custody support, thi
 
 View the most up-to-date [`candid` definition for the NNS governance canister](https://github.com/dfinity/ic/blob/master/rs/nns/governance/canister/governance.did).
 This page will focus on the neuron interactions and explain some of the relevant definitions from this Candid file.
+To keep up to date with new NNS release proposals from DFINITY, you can subscribe to [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551). 
 
 ## Neuron attributes
 Before explaining how to modify a neuron, it is important to understand the most important parts of a neuron.
