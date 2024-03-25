@@ -649,11 +649,6 @@ const sidebars = {
       label: "Multi-chain",
       items: [
         {
-          type: "doc",
-          label: "Overview",
-          id: "developer-docs/multi-chain/overview",
-        },
-        {
           type: "category",
           label: "Bitcoin",
           items: [
@@ -1107,6 +1102,7 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+            "references/supported-signatures",
           ],
         },
         {
