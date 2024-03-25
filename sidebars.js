@@ -651,8 +651,9 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Multi-chain",
+      label: "Chain fusion",
       items: [
+        "developer-docs/multi-chain/overview",
         {
           type: "category",
           label: "Bitcoin",
