@@ -196,11 +196,39 @@ Only a neuron's controller can disburse a neuron.
 
 
 ### Voting with a neuron
+A neuron represents a participant of the NNS DAO and can participate in governance. Concretely, a neuron can submit proposals or vote on them if its dissolve delay is at least 6 months. 
+A neuron can either directly vote to adopt or reject a given proposal or it can _follow_ other neurons for certain decisions - which will automatically cast a ballot for the neuron if enough of the followees voted.
+
+**Vote directly**
+To vote directly, first find out what proposals can be voted on and then find the ID of the proposal you want to vote on.
+The following are the relevant NNS governance API and record that can also be found in the candid file.
+```
+service : (Governance) -> {
+  get_pending_proposals : () -> (vec ProposalInfo) query;
+};
+type ProposalInfo = record {
+  id : opt NeuronId;
+  ...
+};
+ ```
+First use the `get_pending_proposals` API to get the `ProposalInfo` of all proposals that are still pending. 
+Then, as part of this proposal information you can find a proposal's id `id`.
+
+Using this, you can now vote on a proposal using the following neuron command.
+```
+type RegisterVote = record { 
+  vote : int32; 
+  proposal : opt NeuronId 
+};
+```
+The `vote` represents if the neuron should adopt or reject the proposal and the `proposal` is the proposal ID of the proposal that the neuron votes on.
+
+
+
 * **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
 
-* **Recent votes**: A record of recent votes is maintained. This can provide a guide for those wishing to evaluate whether to follow a neuron or how their followers are voting.
 
-* **Vote**: Have the neuron vote to either adopt or reject a proposal with a specified ID.
+* **Vote**: 
 * **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
   - Distribute control over voting power amongst multiple entities.
   - Have a neuron vote automatically when its owner lacks time to evaluate newly submitted proposals.
@@ -211,8 +239,9 @@ A follow rule specifies a set of followers. Once a majority of the followers vot
 
 TODO: HOW TO GET THE ID OF TOPICS BEFORE DOING THIS?
 
-```
-type RegisterVote = record { vote : int32; proposal : opt NeuronId };
+
+ 
+ ```
 type Follow = record { topic : int32; followees : vec NeuronId };
 ```
 
