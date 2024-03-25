@@ -58,8 +58,8 @@ Given a parent extended public key and an index i, it is possible to compute the
 
 The function CKDpub((K<sub>par</sub>, c<sub>par</sub>), i) → (K<sub>i</sub>, c<sub>i</sub>) computes a child extended public key from a parent extended public key and an index i, where i is a byte sequence of arbitrary length (including empty):
 
--   let IKM = ser<sub>P</sub>(K<sub>par</sub>) || i.
--   let OKF = HKDF(c<sub>par</sub>, IKM, utf8("Ed25519"), 96).
--   Split OKF into a 64-byte and a 32-byte sequence, tweak and c<sub>i</sub>, respectively.
--   let K<sub>i</sub> = K<sub>par</sub> + point(parse<sub>512</sub>(tweak)).
--   return (K<sub>i</sub>, c<sub>i</sub>).
+- let IKM = ser<sub>P</sub>(K<sub>par</sub>) || i.
+- let OKM = HKDF(c<sub>par</sub>, IKM, utf8("Ed25519"), 96).
+- Split OKM into a 64-byte and a 32-byte sequence, tweak and c<sub>i</sub>.
+- let K<sub>i</sub> = K<sub>par</sub> + point(parse<sub>512</sub>(tweak)).
+- return (K<sub>i</sub>, c<sub>i</sub>).
