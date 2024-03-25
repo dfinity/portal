@@ -80,7 +80,7 @@ A key question we must answer to fully understand the security of ICP's chain fu
 
 ICP’s decentralization is rooted in the replicated execution and state of canister smart contracts which depends on the honesty of a supermajority of subnet [nodes](/docs/current/developer-docs/getting-started/overview-of-icp/#nodes). These nodes are sourced from various identifiable and DAO-approved providers that operate in globally distributed data centers.
 
-Assuming a supermajority of subnet nodes are honest and in consensus, the final factor of trust lies in the RPC providers when it comes to chain Integration via RPC. While this is seen as less secure than a direct integration that involves running a full node, it's currently deemed an acceptable trade-off (due to a reliance on replicated results from multiple independent providers).
+In case of direct chain integration, the only trust assumption needed is that a supermajority of subnet nodes are honest and in consensus. In case of integration via RPC, users additionally need to trust RPC node providers.
 
 ## How to build applications using chain fusion?
 
