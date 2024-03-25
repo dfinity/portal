@@ -299,33 +299,6 @@ function MultichainPage() {
 
                 {/* Use cases of software orchestration */}
 
-                <ContentCard id="eth-cronjobs">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Cron jobs on Ethereum from ICP
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A key challenge involved when hosting DeFi and other
-                    services using Ethereum smart contracts is the secure
-                    initiation of regular jobs. Oftentimes, smart contract jobs
-                    are initiated using external scripts running on insecure
-                    clouds such as Amazon Web Services, where the private key
-                    they maintain to make the calls is vulnerable in the same
-                    way the private keys used by hot wallets are.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer provides a solution. Canister smart
-                    contracts have an API that allows them to schedule their
-                    secure automatic execution for as long as needed into the
-                    future. Using EVM RPC, canisters can be used to initiate
-                    time-based calls into Ethereum smart contracts too – without
-                    a private key being made vulnerable.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">pending</Status>
-                  </p>
-                </ContentCard>
-
                 <ContentCard id="oisy-wallet">
                   <img
                     src="/img/multichain/card-oisy.webp"
@@ -366,6 +339,33 @@ function MultichainPage() {
                     security.
                   </p>
                   
+                </ContentCard>
+
+                <ContentCard id="eth-cronjobs">
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Cron jobs on Ethereum from ICP
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    A key challenge involved when hosting DeFi and other
+                    services using Ethereum smart contracts is the secure
+                    initiation of regular jobs. Oftentimes, smart contract jobs
+                    are initiated using external scripts running on insecure
+                    clouds such as Amazon Web Services, where the private key
+                    they maintain to make the calls is vulnerable in the same
+                    way the private keys used by hot wallets are.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The Internet Computer provides a solution. Canister smart
+                    contracts have an API that allows them to schedule their
+                    secure automatic execution for as long as needed into the
+                    future. Using EVM RPC, canisters can be used to initiate
+                    time-based calls into Ethereum smart contracts too – without
+                    a private key being made vulnerable.
+                  </p>
+
+                  <p className="flex gap-2 flex-wrap">
+                    <Status type="pending">pending</Status>
+                  </p>
                 </ContentCard>
 
                 <ContentCard id="evm-rpc">
