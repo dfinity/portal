@@ -1110,6 +1110,7 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+            "references/supported-signatures",
           ],
         },
         {
