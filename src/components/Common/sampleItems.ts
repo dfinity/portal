@@ -381,11 +381,11 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust"],
     level: "advanced",
     contentType: ["code samples", "documentation"],
-    body: "Create a dapp that can transfer tokens to its most active users.",
+    body: "Create a canister that can hold and transfer ICRC-1 tokens.",
     links: {
       motoko:
-        "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
+        "https://github.com/dfinity/examples/tree/master/motoko/token_transfer",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/token_transfer",
     },
   },
   {
@@ -447,5 +447,20 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ios-notifications",
     },
-  }
+  },
+  {
+    index: 24,
+    title: "ICP transfer",
+    image: "/img/samples/tokenTransfer.png",
+    domains: ["Global", "Asynchronous DeFi", "Multi-chain"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation"],
+    body: "Create a canister that can hold and transfer ICP tokens.",
+    links: {
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/icp_transfer",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/icp_transfer",
+    },
+  },
 ];
