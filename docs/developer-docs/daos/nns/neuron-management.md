@@ -223,27 +223,27 @@ type RegisterVote = record {
 ```
 The `vote` represents if the neuron should adopt or reject the proposal and the `proposal` is the proposal ID of the proposal that the neuron votes on.
 
+**Set a neuron's following**
 
+In case that a neuron's owner lacks the time or expertise to vote on some proposals, a neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis.
+For any valid topic, a list of followees can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees for all topics where no explicit rule has been specified. 
+There are two topics that are excluded from the catch-all: `Governance` and `SNS & Neuron's Fund`. 
 
-* **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
+:::info
+It is important to understand that a neuron's vote is only cast if the majority of the follwed neurons agree on a decision. Find [here](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) more information and examples regarding the following-rules.
 
+:::
 
-* **Vote**: 
-* **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
-  - Distribute control over voting power amongst multiple entities.
-  - Have a neuron vote automatically when its owner lacks time to evaluate newly submitted proposals.
-  - Have a neuron vote automatically when its owner lacks the expertise to evaluate newly submitted proposals.
-  - For other purposes.
-
-A follow rule specifies a set of followers. Once a majority of the followers vote to adopt or reject a proposal belonging to the specified topic, the neuron votes the same way. If it becomes impossible for a majority of the followers to adopt (for example, because they are split 50–50 between adopt and reject), then the neuron votes to reject. If a rule is specified where the proposal topic is null, then it becomes a catch-all-follow rule, which will be used to vote automatically on proposals belonging to topics for which no specific rule has been specified. If the list of followers is empty, this effectively removes the following rule.
-
-TODO: HOW TO GET THE ID OF TOPICS BEFORE DOING THIS?
-
-
- 
+To define a follow rule, use the following neuron command
  ```
-type Follow = record { topic : int32; followees : vec NeuronId };
+type Follow = record {
+  topic : int32; 
+  followees : vec NeuronId 
+};
 ```
+The argument `topic` defines for which proposal topic this following rule should be applied.
+If the topic is `null`, then this rule is applied for the catch-all and will be applied for all topics where no other explicit rule is defined except for`Governance` and `SNS & Neuron's Fund`.
+The second argument `followees` defines a list of neuron IDs whose decision will be followed. There can be up to 15 followees for each topic (but more followees is not necessarily better - see the rules linked above).
 
 _Required permissions:_
 
