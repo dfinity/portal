@@ -677,13 +677,6 @@ const sidebars = {
                 "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
               ],
             },
-            {
-              type: "category",
-              label: "ckBTC",
-              items: [
-                "developer-docs/multi-chain/bitcoin/ckbtc",
-              ],
-            },
           ],
         },
         {
