@@ -1,0 +1,114 @@
+---
+keywords: [advanced, bitcoin, eth, tutorial, sign transactions]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Signing transactions
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
+
+## Overview
+
+Before a transaction can be sent to the Ethereum network, it must be signed and formatted into a raw ETH transaction.
+
+A code example using the [`ethers-core`](https://github.com/gakonst/ethers-rs) Rust library to sign and format an ETH [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transaction can be found below:
+
+```rust
+#[update(guard = "caller_is_not_anonymous")]
+async fn sign_transaction(req: SignRequest) -> String {
+    use ethers_core::types::transaction::eip1559::Eip1559TransactionRequest;
+    use ethers_core::types::Signature;
+
+    const EIP1559_TX_ID: u8 = 2;
+
+    let caller = ic_cdk::caller();
+
+    let data = req.data.as_ref().map(|s| decode_hex(s));
+
+    let tx = Eip1559TransactionRequest {
+        chain_id: Some(nat_to_u64(&req.chain_id)),
+        from: None,
+        to: Some(
+            Address::from_str(&req.to)
+                .expect("failed to parse the destination address")
+                .into(),
+        ),
+        gas: Some(nat_to_u256(&req.gas)),
+        value: Some(nat_to_u256(&req.value)),
+        nonce: Some(nat_to_u256(&req.nonce)),
+        data,
+        access_list: Default::default(),
+        max_priority_fee_per_gas: Some(nat_to_u256(&req.max_priority_fee_per_gas)),
+        max_fee_per_gas: Some(nat_to_u256(&req.max_fee_per_gas)),
+    };
+
+    let mut unsigned_tx_bytes = tx.rlp().to_vec();
+    unsigned_tx_bytes.insert(0, EIP1559_TX_ID);
+
+    let txhash = keccak256(&unsigned_tx_bytes);
+
+    let (pubkey, signature) = pubkey_and_signature(&caller, txhash.to_vec()).await;
+
+    let signature = Signature {
+        v: y_parity(&txhash, &signature, &pubkey),
+        r: U256::from_big_endian(&signature[0..32]),
+        s: U256::from_big_endian(&signature[32..64]),
+    };
+
+    let mut signed_tx_bytes = tx.rlp_signed(&signature).to_vec();
+    signed_tx_bytes.insert(0, EIP1559_TX_ID);
+
+    format!("0x{}", hex::encode(&signed_tx_bytes))
+}
+
+```
+
+Transactions can also be signed as a hex-encoded message according to [EIP-191](https://eips.ethereum.org/EIPS/eip-191):
+
+```rust
+#[update(guard = "caller_is_not_anonymous")]
+async fn personal_sign(plaintext: String) -> String {
+    let caller = ic_cdk::caller();
+
+    let bytes = decode_hex(&plaintext);
+
+    let message = [
+        b"\x19Ethereum Signed Message:\n",
+        bytes.len().to_string().as_bytes(),
+        bytes.as_ref(),
+    ]
+    .concat();
+
+    let msg_hash = keccak256(&message);
+
+    let (pubkey, mut signature) = pubkey_and_signature(&caller, msg_hash.to_vec()).await;
+
+    let v = y_parity(&msg_hash, &signature, &pubkey);
+    signature.push(v as u8);
+    format!("0x{}", hex::encode(&signature))
+}
+
+/// Computes a signature for a precomputed hash.
+#[update(guard = "caller_is_not_anonymous")]
+async fn sign_prehash(prehash: String) -> String {
+    let caller = ic_cdk::caller();
+
+    let hash_bytes = decode_hex(&prehash);
+
+    let (pubkey, mut signature) = pubkey_and_signature(&caller, hash_bytes.to_vec()).await;
+
+    let v = y_parity(&hash_bytes, &signature, &pubkey);
+    signature.push(v as u8);
+    format!("0x{}", hex::encode(&signature))
+}
+```
+
+## Next steps
+
+Now that your transaction is signed, it can be submitted to Ethereum to be executed.
+
+[Learn how to submit Ethereum transactions](submit-transactions.mdx).
+

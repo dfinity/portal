@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, ethereum, addresses, eth address, transaction signing, signing ]
+keywords: [advanced, ethereum, addresses, eth address ]
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
 
-## Ethereum addresses
+## Overview
 
 On Ethereum, there are two types of addresses: wallet addresses for holding assets and contract addresses. Wallet addresses are public accounts that can send and receive ETH tokens. Contract addresses refer to a smart contract that has been executed on Ethereum and the transactions associated with that contract.
 
@@ -37,6 +37,15 @@ fn pubkey_bytes_to_address(pubkey_bytes: &[u8]) -> String {
 }
 ```
 
+You can also programmatically return the Ethereum address of a caller with code such as this Rust example:
+
+```rust
+#[update(guard = "caller_is_not_anonymous")]
+async fn caller_eth_address() -> String {
+    pubkey_bytes_to_address(&ecdsa_pubkey_of(&ic_cdk::caller()).await)
+}
+```
+
 ## Encoding your principal ID
 
 To convert ETH to ckETH, you will need to make a call to a smart contract on Ethereum and pass in your encoded developer identity principal ID. To encode your developer identity, first get your identity's ID:
@@ -57,3 +66,8 @@ or Bazel:
 bazel run //rs/ethereum/cketh/minter:principal_to_hex -- $(dfx identity get-principal)
 ```
 
+## Next steps
+
+You can use this address to make Ethereum transactions from your canister.
+
+[Learn how to sign Ethereum transactions](sign-transactions.mdx).
