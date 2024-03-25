@@ -38,7 +38,7 @@ To interact with ckETH, some workflows require using a helper smart contract. Im
 
 First [download the ckETH repo](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh). Then, navigate into the subdirectory for either the mainnet(ic/rs/ethereum/cketh/mainnet) or testnet(ic/rs/ethereum/cketh/testnet).
 
-To convert ETH to ckETH, you will need to make a call to a smart contract on Ethereum and pass in your encoded developer identity principal ID. [Learn more about how to get this principal ID and encode it](generating-addresses.mdx).
+To convert ETH to ckETH, you will need to make a call to a smart contract on Ethereum and pass in your encoded developer identity principal ID. [Learn more about how to get this principal ID and encode it](../using-eth/generating-addresses.mdx).
 
 Call the [minter helper](https://etherscan.io/address/0x7574eB42cA208A4f6960ECCAfDF186D627dCC175#writeContract) contract's `deposit` function with your principal ID encoded and the amount to convert into ckETH as arguments:
 
