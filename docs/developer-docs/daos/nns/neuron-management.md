@@ -172,23 +172,27 @@ type Spawn = record {
 ```
 Specify by `perpercentage_to_spawn` the portion of the maturity that should be spawn into a neuron in percentage. This should be a value between 1 and 100 (inclusive). 
 If the spawned neurons should have a different controller than the parent neuron (from which you spawn the maturity), you can optionally define a different controlling principal by `new_controller`. Otherwise, the spawned neuron will have the same controller as the parent neuron. 
-Similarly to when claiming a neuron (see above), you need to specify the new neuron's ledger address and choose a nonce for this in the last argument `nonce`.
+Similarly to claiming a neuron (see above), you need to specify the new neuron's ledger address and choose a nonce for this in the last argument `nonce`.
 Based on this nonce and the controlling principal, the neuron's address is uniquely defined (see section _Compute the neuron's address_).
 
 _Required permissions:_
 Only a neuron's controller can spawn maturity from a neuron.
 
 ### Disbursing / unstaking a neuron
-
-When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
+When a neuron is dissolved, i.e., its dissolve delay is zero, the neuron's controlling principal can instruct it to _disburse_ the neuron’s stake. 
+This means that the staked ICP balance is transferred to a specified new ledger account and is liquid again.
+The following command can be used to disburse a neuron. 
 ```
 type Disburse = record {
   to_account : opt AccountIdentifier;
   amount : opt Amount;
 };
 ```
+The command takes as argument the ledger account `to_account` to which the ICP tokens should be transferred to and the amount `amount` that should be disbursed. The latter allows to only disburse a portion of a neuron's stake.
 
 _Required permissions:_
+Only a neuron's controller can disburse a neuron.
+
 
 ### Voting with a neuron
 * **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
