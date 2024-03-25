@@ -192,7 +192,8 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       background: #fdfdfd;
     }
 
-    .ic-chip-row + p:first-of-type {
+    .ic-chip-row + p:first-of-type,
+    .ic-chip-row + iframe {
       margin-top: 1rem;
     }
   }

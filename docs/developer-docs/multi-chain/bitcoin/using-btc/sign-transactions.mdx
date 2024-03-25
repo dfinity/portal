@@ -1,0 +1,113 @@
+---
+keywords: [advanced, bitcoin, btc, tutorial, sign transactions]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Signing transactions
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
+
+## Overview
+
+Before a transaction can be sent to the Bitcoin network, it must be signed using the Threshold ECDSA API method `sign_with_ecdsa` and an ECDSA public key, which can be returned by calling the API method `ecdsa_public_key`.
+
+## Signing transactions
+
+A code example using these API methods can be found below:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+  public func ecdsa_public_key(key_name : Text, derivation_path : [Blob]) : async Blob {
+    // Retrieve the public key of this canister at derivation path
+    // from the ECDSA API.
+    let res = await ecdsa_canister_actor.ecdsa_public_key({
+        canister_id = null;
+        derivation_path;
+        key_id = {
+            curve = #secp256k1;
+            name = key_name;
+        };
+    });
+
+    res.public_key
+  };
+
+ public func sign_with_ecdsa(key_name : Text, derivation_path : [Blob], message_hash : Blob) : async Blob {
+    ExperimentalCycles.add(SIGN_WITH_ECDSA_COST_CYCLES);
+    let res = await ecdsa_canister_actor.sign_with_ecdsa({
+        message_hash;
+        derivation_path;
+        key_id = {
+            curve = #secp256k1;
+            name = key_name;
+        };
+    });
+        
+    res.signature
+  };
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+pub async fn ecdsa_public_key(key_name: String, derivation_path: Vec<Vec<u8>>) -> Vec<u8> {
+    // Retrieve the public key of this canister at the given derivation path
+    // from the ECDSA API.
+    let res: Result<(ECDSAPublicKeyReply,), _> = call(
+        Principal::management_canister(),
+        "ecdsa_public_key",
+        (ECDSAPublicKey {
+            canister_id: None,
+            derivation_path,
+            key_id: EcdsaKeyId {
+                curve: EcdsaCurve::Secp256k1,
+                name: key_name,
+            },
+        },),
+    )
+    .await;
+
+    res.unwrap().0.public_key
+}
+
+pub async fn sign_with_ecdsa(
+    key_name: String,
+    derivation_path: Vec<Vec<u8>>,
+    message_hash: Vec<u8>,
+) -> Vec<u8> {
+    let res: Result<(SignWithECDSAReply,), _> = call_with_payment(
+        Principal::management_canister(),
+        "sign_with_ecdsa",
+        (SignWithECDSA {
+            message_hash,
+            derivation_path,
+            key_id: EcdsaKeyId {
+                curve: EcdsaCurve::Secp256k1,
+                name: key_name,
+            },
+        },),
+        SIGN_WITH_ECDSA_COST_CYCLES,
+    )
+    .await;
+
+    res.unwrap().0.signature
+}
+```
+
+</TabItem>
+</Tabs>
+
+A full example of using the Threshold ECDSA API can be found in the [basic Bitcoin example](https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/EcdsaApi.mo).
+
+## Next steps
+
+Now that your transaction is signed, it can be submitted to Bitcoin to be executed.
+
+[Learn how to submit Bitcoin transactions](submit-transactions.mdx).
