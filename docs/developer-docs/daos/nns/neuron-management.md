@@ -246,13 +246,11 @@ If the topic is `null`, then this rule is applied for the catch-all and will be 
 The second argument `followees` defines a list of neuron IDs whose decision will be followed. There can be up to 15 followees for each topic (but more followees is not necessarily better - see the rules linked above).
 
 _Required permissions:_
+Voting and setting following can be done by a neuron's controller or a neuron's hot key.
 
 ### Managing permissions of a neuron
-* **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
-
-* **Add hot key**: Add a new hot key that can be used to manage the neuron. This provides an alternative to using the principal’s cold key to manage the neuron, which might be onerous and difficult to keep secure, especially if it is used regularly. A hot key might be a WebAuthn key that is maintained inside a user device, such as a smartphone.
-
-* **Remove hot key**: Remove a hot key that has been previously assigned to the neuron.
+Every neuron has a controller that cannot be changed. In addition, a neuron can have hot keys. Hot keys are defined by a list of principal ID and can be used to perform actions with limited privileges, namely voting and following.
+To manage these permissions, a neuron's controller can add and remove hot keys using the neuron command `Configure` with the `Operation` `AddHotKey` and `RemoveHotKey`, respectively.
 
 ```
 type Configure = record { operation : opt Operation };
@@ -261,8 +259,14 @@ type Operation = variant {
   AddHotKey : AddHotKey;
   ...
 };
-type AddHotKey = record { new_hot_key : opt principal };
-type RemoveHotKey = record { hot_key_to_remove : opt principal };
+type AddHotKey = record { 
+  new_hot_key : opt principal 
+};
+type RemoveHotKey = record { 
+  hot_key_to_remove : opt principal 
+};
 ```
+For adding a hot key, the principal `new_hot_key` to add needs to be provided and for removing an existing hot key principal, the principal `hot_key_to_remove` to be removed from the hot key list needs to be provided.
 
 _Required permissions:_
+Only a neuron's controller can add and remove hot keys.
