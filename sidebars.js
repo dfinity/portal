@@ -217,6 +217,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
+              type: "doc",
+              label: "Async code and inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
@@ -657,9 +662,19 @@ const sidebars = {
               type: "category",
               label: "Using the integration",
               items: [
-                "developer-docs/multi-chain/bitcoin/read-state",
-                "developer-docs/multi-chain/bitcoin/submit-transactions",
-                "developer-docs/multi-chain/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckBTC",
+              items: [
+                "developer-docs/multi-chain/bitcoin/ckbtc/overview",
+                "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
               ],
             },
             {
@@ -680,15 +695,15 @@ const sidebars = {
               type: "category",
               label: "Using the integration",
               items: [
-                "developer-docs/multi-chain/ethereum/evm-rpc",
-                "developer-docs/multi-chain/ethereum/siwe",
+                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
+                "developer-docs/multi-chain/ethereum/using-eth/siwe",
               ],
             },
             {
               type: "category",
               label: "ckETH",
               items: [
-                "developer-docs/multi-chain/ethereum/cketh",
+                "developer-docs/multi-chain/ethereum/cketh/overview",
               ],
             },
           ],
