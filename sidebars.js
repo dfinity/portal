@@ -1109,6 +1109,7 @@ const sidebars = {
             "references/ckbtc-reference",
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
+            "references/t-schnorr-how-it-works",
             "references/vetkeys-overview",
             "references/supported-signatures",
           ],
