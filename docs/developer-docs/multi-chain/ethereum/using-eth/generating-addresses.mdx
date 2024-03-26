@@ -37,35 +37,6 @@ fn pubkey_bytes_to_address(pubkey_bytes: &[u8]) -> String {
 }
 ```
 
-You can also programmatically return the Ethereum address of a caller with code such as this Rust example:
-
-```rust
-#[update(guard = "caller_is_not_anonymous")]
-async fn caller_eth_address() -> String {
-    pubkey_bytes_to_address(&ecdsa_pubkey_of(&ic_cdk::caller()).await)
-}
-```
-
-## Encoding your principal ID
-
-To convert ETH to ckETH, you will need to make a call to a smart contract on Ethereum and pass in your encoded developer identity principal ID. To encode your developer identity, first get your identity's ID:
-
-```
-dfx identity get-principal
-```
-
-Then, you need to convert this principal into a smart contract argument. You can use the [minter dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard) to do this, or you can use Cargo:
-
-```
-cargo run --bin cketh-principal-to-hex $(dfx identity get-principal)
-```
-
-or Bazel:
-
-```
-bazel run //rs/ethereum/cketh/minter:principal_to_hex -- $(dfx identity get-principal)
-```
-
 ## Next steps
 
 You can use this address to make Ethereum transactions from your canister.
