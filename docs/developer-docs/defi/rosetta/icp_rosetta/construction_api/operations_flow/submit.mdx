@@ -1,0 +1,231 @@
+---
+keywords: [intermediate, rosetta, tutorial, derive, accountidentifier]
+---
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Construction-Submit
+
+## How to send signed transactions to the IC
+This section details how to call the `construction/submit` endpoint of the Rosetta construction API.
+The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionsubmit).
+The endpoint sends to transactions to the IC. The first being the `call` transaction which contains the information of what submit, which canister, what function in the canister and with what arguments should be called. 
+The second transaction is a `read_state` which continously fetches the current status of the `call` transaction from the IC. It returns either containing some Error or the response of the canister. 
+This means that a call to the `construction/submit` endpoint is blocking until a result is available. Inside the returned object you will find information about the response from the ledger. 
+
+The `construction/submit` endpoint can be called with the following. 
+```bash
+curl --location '0.0.0.0:8081/construction/submit'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "signed_transaction": "a168726571756573747381826b5452414e53414354494f4e81a266757064617465a367636f6e74656e74bf6c726571756573745f747970656463616c6c6b63616e69737465725f69644a000000000000000201016b6d6574686f645f6e616d656773656e645f70626361726758480a0b0899f29a9eeae1e288e20112040a02080a1a0308904e2a220a207f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad3a0a089cd7c5caff8791e0176673656e646572581d2e70031d8e7ff922b6ad9f2a9eb3c1e77ffa7b6c0d0120dd4ac7e4f7026e696e67726573735f6578706972791b17c04477da6ec16aff6d73656e6465725f7075626b657958583056301006072a8648ce3d020106052b8104000a034200047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c7573676a73656e6465725f73696758406c382fa3a993266ef760e87f2a24098ee77577d2627d0648eb80c09abdfc8e1e69db98391bf28f8bd76d0baa18e3635a36c7da21258351db57879be677cb74bf6a726561645f7374617465a367636f6e74656e74bf6c726571756573745f747970656a726561645f73746174656673656e646572581d2e70031d8e7ff922b6ad9f2a9eb3c1e77ffa7b6c0d0120dd4ac7e4f70265706174687381824e726571756573745f7374617475735820f44e9df174422a8da79510951553aa40f05069061ce7c4d4f49d95299760196e6e696e67726573735f6578706972791b17c04477da6ec16aff6d73656e6465725f7075626b657958583056301006072a8648ce3d020106052b8104000a034200047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c7573676a73656e6465725f73696758401f7fedfbd38d5a9e73491f41d5f923bac0f6696729b29eb7bba02621f9bd184e9cc7c9b455c72bf6940a3ff12e8346d087ac630868771be0dde72343d8549e1c"
+}'
+```
+
+and the response would look something like this.
+
+```json
+{'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}, 'metadata': {'operations': [{'account': {'address': '8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4'}, 'amount': {'currency': {'decimals': 8, 'symbol': 'ICP'}, 'value': '-10'}, 'metadata': {'block_index': 342, 'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}}, 'operation_identifier': {'index': 0}, 'status': 'COMPLETED', 'type': 'TRANSACTION'}, {'account': {'address': '7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad'}, 'amount': {'currency': {'decimals': 8, 'symbol': 'ICP'}, 'value': '10'}, 'metadata': {'block_index': 342, 'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}}, 'operation_identifier': {'index': 1}, 'status': 'COMPLETED', 'type': 'TRANSACTION'}, {'account': {'address': '8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4'}, 'amount': {'currency': {'decimals': 8, 'symbol': 'ICP'}, 'value': '-10000'}, 'metadata': {'block_index': 342, 'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}}, 'operation_identifier': {'index': 2}, 'status': 'COMPLETED', 'type': 'FEE'}]}}
+```
+Building on the previous python code snipped. A call to the `construction/submit` endpoint written in python could be implemented like the following.
+
+Example call: 
+```bash
+python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
+```
+
+```python
+import json
+import requests
+import argparse
+from hashlib import sha256
+import ecdsa
+
+NETWORK_ID = {"blockchain": "Internet Computer", "network": "00000000000000020101"}
+HEADERS = {"Content-Type": "application/json", "charset": "utf-8"}
+
+
+class RosettaClient:
+    # Takes in the private key an the url to the running Rosetta instance
+    def __init__(self, pk, url):
+        self._pk = pk
+        self._url = url
+
+    def public_key(self):
+        return {
+            "hex_bytes": self._pk.verifying_key.to_string("uncompressed").hex(),
+            "curve_type": "secp256k1",
+        }
+
+    def sign(self, payloads):
+        signatures = []
+        for payload in payloads:
+            data_to_sign = bytes.fromhex(payload["hex_bytes"])
+            signature_bytes = self._pk.sign(data_to_sign,hashfunc=sha256).hex()
+            signatures.append(
+                {
+                    "signing_payload": {
+                        "account_identifier": payload["account_identifier"],
+                        "hex_bytes": payload["hex_bytes"],
+                        'signature_type': 'ecdsa',
+                    },
+                    "signature_type": "ecdsa",
+                    "public_key": self.public_key(),
+                    "hex_bytes": signature_bytes,
+                }
+            )
+        return signatures
+
+    # Makes a post request to the Rosetta instance and takes in the suffix of the endpoint of Rosetta as well as the request data
+    def post(self, url_suffix, data):
+        url = self._url + url_suffix
+        response = requests.post(url, data=json.dumps(data), headers=HEADERS)
+        return response.json()
+
+    def construction_derive(
+        self, public_key: str = None, curve_type: str = "secp256k1"
+    ):
+        if public_key is None:
+            public_key = self.public_key()
+        return self.post("/construction/derive", build_data({"public_key": public_key}))
+
+    def construction_preprocess(self, operations, metadata):
+        return self.post(
+            "/construction/preprocess",
+            build_data(
+                {
+                    "operations": operations,
+                    "metadata": metadata,
+                    "network_identifier": NETWORK_ID,
+                }
+            ),
+        )
+
+    def construction_metadata(self, options, public_keys):
+        return self.post(
+            "/construction/metadata",
+            build_data(
+                {
+                    "options": options,
+                    "public_keys": public_keys,
+                }
+            ),
+        )
+
+    def construction_payload(self, public_keys, operations, metadata=None):
+        data = build_data(
+            {
+                "public_keys": public_keys,
+                "operations": operations,
+            }
+        )
+        data["metadata"] = metadata
+        return self.post("/construction/payloads", data)
+
+    def construction_combine(self, unsigned_transaction, signatures):
+        return self.post(
+            "/construction/combine",
+            build_data(
+                {
+                    "unsigned_transaction": unsigned_transaction,
+                    "signatures": signatures,
+                }
+            ),
+        )
+        
+    def construction_submit(self, signed_transaction: str):
+        return self.post('/construction/submit', build_data({
+            'signed_transaction': signed_transaction,
+        }))
+
+
+def icp_amount(amount: int):
+    return {"value": f"{amount}", "currency": {"symbol": "ICP", "decimals": 8}}
+
+
+def fee_operation(index: int, account_id: str, fee: int):
+    return {
+        "operation_identifier": {"index": index},
+        "type": "FEE",
+        "account": {"address": account_id},
+        "amount": icp_amount(-fee),
+    }
+
+
+def transfer_operation(index: int, account_id: str, amount: int):
+    return {
+        "operation_identifier": {"index": index},
+        "type": "TRANSACTION",
+        "account": {"address": account_id},
+        "amount": icp_amount(amount),
+    }
+
+
+# Attaches the network_identifier to the request
+def build_data(d):
+    return {"network_identifier": NETWORK_ID, **d}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--private-key-file", required=True)
+    parser.add_argument("-u", "--ic-url", required=True)
+    parser.add_argument("-is", "--ingress-start", required=False)
+    parser.add_argument("-ie", "--ingress-end", required=False)
+    parser.add_argument("-m", "--memo", required=False)
+    parser.add_argument("-c", "--created-at-time", required=False)
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    with open(args.private_key_file, "rb") as key_file:
+        private_key = ecdsa.SigningKey.from_pem(key_file.read())
+    client = RosettaClient(private_key, args.ic_url)
+
+    # We derive the account identifier from the public key of the provided private key
+    from_account = client.construction_derive(client.public_key())[
+        "account_identifier"
+    ]["address"]
+
+    # An arbitrary accountidentifier to send the ICP to
+    to_account = "7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad"
+
+    # We are going to send 10 ICP in this example
+    icp_amount = 10
+
+    # We create the necessary operations for the transfer
+    from_operation = transfer_operation(0, from_account, -icp_amount)
+    to_operation = transfer_operation(1, to_account, icp_amount)
+
+    options = client.construction_preprocess([from_operation, to_operation], None)[
+        "options"
+    ]
+    public_keys = [client.public_key()]
+
+    # We get the suggested fee from the Rosetta instance
+    fee = int(
+        client.construction_metadata(options, public_keys)["suggested_fee"][0]["value"]
+    )
+    fee_ops = fee_operation(2, from_account, fee)
+
+    result = client.construction_payload(
+        public_keys,
+        [from_operation, to_operation, fee_ops],
+        {
+            "created_at_time": int(args.created_at_time)
+            if args.created_at_time
+            else None,
+            "memo": int(args.memo) if args.memo else None,
+            "ingress_start": int(args.ingress_start) if args.ingress_start else None,
+            "ingress_end": int(args.ingress_end) if args.ingress_end else None,
+        },
+    )
+    signatures = client.sign(result["payloads"])
+    signed_transaction = client.construction_combine(result["unsigned_transaction"], signatures)
+    print(client.construction_submit(signed_transaction["signed_transaction"]))
+    
+if __name__ == "__main__":
+    main()
+```
