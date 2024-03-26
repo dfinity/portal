@@ -20,10 +20,9 @@ To integrate ckBTC into your dapp, you can write code that uses the [ICRC-1 stan
 
 To write canister code that makes calls to the ICRC-1 ledger, you will need to use inter-canister calls and specify the principal ID of the ICRC-1 ledger canister. Then, to interact with ckBTC, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
-You can configure your project to use the ICRC-1 ledger and deploy it locally for local development and testing. [Learn more in the ICRC-1 ledger setup documentation](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup).
+You can deploy the ICRC-1 ledger locally for testing. [Learn more in the ICRC-1 ledger setup documentation](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup).
 
-Once you have your project configured to use the ICRC-1 ledger by following the [ICRC-1 ledger setup documentation](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup), you can interact with it for workflows such as transferring tokens:
-
+Once you have your project configured to use the ICRC-1 ledger, you can interact with it for workflows such as transferring tokens:
 
 <Tabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -154,6 +153,9 @@ async fn transfer(args: TransferArgs) -> Result<BlockIndex, String> {
 // Enable Candid export (see https://internetcomputer.org/docs/current/developer-docs/backend/rust/generating-candid)
 ic_cdk::export_candid!();
 ```
+
+</TabItem>
+</Tabs>
 
 View the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) for more information on sending and receiving tokens.
 

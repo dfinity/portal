@@ -20,10 +20,9 @@ To integrate ckETH into your dapp, you can simply write code that uses the [ICRC
 
 To write canister code that makes calls to the ckETH ledger, you will need to use inter-canister calls and specify the principal ID of the ckETH ledger canister. Then, to interact with ckETH, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
-You can configure your project to use the ckETH ledger and deploy it locally for local development and testing. [Learn more in the ckETH mainnet documentation](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/mainnet#installing-the-ledger).
+You can deploy the ckETH ledger locally for testing. [Learn more in the ckETH ledger documentation](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/mainnet#installing-the-ledger).
 
-Once you have your project configured to use the ckETH ledger by following the [ckETH ledger setup documentation](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/mainnet#installing-the-ledger), you can interact with it for workflows such as transferring tokens:
-
+Once you have your project configured to use the ckETH ledger, you can interact with it for workflows such as transferring tokens:
 
 <Tabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -154,6 +153,9 @@ async fn transfer(args: TransferArgs) -> Result<BlockIndex, String> {
 // Enable Candid export (see https://internetcomputer.org/docs/current/developer-docs/backend/rust/generating-candid)
 ic_cdk::export_candid!();
 ```
+
+</TabItem>
+</Tabs>
 
 View the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) for more information on sending and receiving tokens.
 
