@@ -254,6 +254,7 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/query-stats",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
         },
