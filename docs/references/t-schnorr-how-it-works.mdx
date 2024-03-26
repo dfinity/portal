@@ -60,6 +60,6 @@ The function CKDpub((K<sub>par</sub>, c<sub>par</sub>), i) → (K<sub>i</sub>, c
 
 - let IKM = ser<sub>P</sub>(K<sub>par</sub>) || i.
 - let OKM = HKDF(c<sub>par</sub>, IKM, utf8("Ed25519"), 96).
-- Split OKM into a 64-byte and a 32-byte sequence, tweak and c<sub>i</sub>.
+- Split OKM into a 64-byte and a 32-byte sequence, tweak and c<sub>i</sub>, and reduce tweak modulo n.
 - let K<sub>i</sub> = K<sub>par</sub> + point(parse<sub>512</sub>(tweak)).
 - return (K<sub>i</sub>, c<sub>i</sub>).
