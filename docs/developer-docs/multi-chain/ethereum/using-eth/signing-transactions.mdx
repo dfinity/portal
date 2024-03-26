@@ -66,45 +66,6 @@ async fn sign_transaction(req: SignRequest) -> String {
 
 ```
 
-Transactions can also be signed as a hex-encoded message according to [EIP-191](https://eips.ethereum.org/EIPS/eip-191):
-
-```rust
-#[update(guard = "caller_is_not_anonymous")]
-async fn personal_sign(plaintext: String) -> String {
-    let caller = ic_cdk::caller();
-
-    let bytes = decode_hex(&plaintext);
-
-    let message = [
-        b"\x19Ethereum Signed Message:\n",
-        bytes.len().to_string().as_bytes(),
-        bytes.as_ref(),
-    ]
-    .concat();
-
-    let msg_hash = keccak256(&message);
-
-    let (pubkey, mut signature) = pubkey_and_signature(&caller, msg_hash.to_vec()).await;
-
-    let v = y_parity(&msg_hash, &signature, &pubkey);
-    signature.push(v as u8);
-    format!("0x{}", hex::encode(&signature))
-}
-
-/// Computes a signature for a precomputed hash.
-#[update(guard = "caller_is_not_anonymous")]
-async fn sign_prehash(prehash: String) -> String {
-    let caller = ic_cdk::caller();
-
-    let hash_bytes = decode_hex(&prehash);
-
-    let (pubkey, mut signature) = pubkey_and_signature(&caller, hash_bytes.to_vec()).await;
-
-    let v = y_parity(&hash_bytes, &signature, &pubkey);
-    signature.push(v as u8);
-    format!("0x{}", hex::encode(&signature))
-}
-```
 
 ## Next steps
 
