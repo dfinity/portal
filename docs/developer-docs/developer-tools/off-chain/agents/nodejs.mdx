@@ -1,7 +1,16 @@
+---
+keywords: [intermediate, agents, tutorial, nodejs]
+---
+
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Node.js
 
-## Overview
+<MarkdownChipRow labels={["Intermediate", "Agents", "Tutorial"]} />
 
+
+## Overview
 
 Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to ICP, or to introduce a websocket layer to your application.
 
@@ -180,7 +189,7 @@ You can either run these commands in the terminal, or add them to a `setup.sh` f
 
 ```shell
 # setup.sh
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy nft --argument '(opt record{custodians=opt vec{principal"rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae"}})'
 dfx deploy assets
 dfx canister call asset authorize "(principal  \"rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae\")"

@@ -1,5 +1,4 @@
 import Link from "@docusaurus/Link";
-import snsDataJson from "@site/.docusaurus/sns-data/default/sns-data.json";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
@@ -13,12 +12,19 @@ import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLa
 import VideoCard from "../components/Common/VideoCard";
 import { SpringCounter } from "../components/LandingPage/PreHero/Counters";
 import {
-  DaoCardProps,
   MediumDaoCard,
   MediumDaoCardContainer,
   SmallDaoCard,
 } from "../components/SnsPage/DaoCard";
 import OpenChatCard from "../components/SnsPage/OpenChatCard";
+import {
+  dashboardUrlFromRootCanisterId,
+  extraMetadata,
+  goldDao,
+  openChatDao,
+  snsData,
+  sonicDao,
+} from "../data/sns";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 /*
@@ -36,202 +42,16 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 */
 
-const snsData = snsDataJson as any as {
-  name: string;
-  description: string;
-  url: string;
-  logo: string;
-  rootCanisterId: string;
-  proposalCount: number;
-  icpRaised: number;
-  participants: number;
-}[];
-
-const openChatDao = snsData.find(
-  (dao) => dao.rootCanisterId === "3e3x2-xyaaa-aaaaq-aaalq-cai"
-);
-const sonicDao = snsData.find(
-  (dao) => dao.rootCanisterId === "qtooy-2yaaa-aaaaq-aabvq-cai"
-);
-const goldDao = snsData.find(
-  (dao) => dao.rootCanisterId === "tw2vt-hqaaa-aaaaq-aab6a-cai"
-);
-
 // these are displayed as large cards above the small card grid
-const excludedFromSmallCards = [
+export const excludedFromSmallCards = [
   goldDao.rootCanisterId,
   sonicDao.rootCanisterId,
   openChatDao.rootCanisterId,
 ];
 
-const smallSnsCards = snsData.filter(
+export const smallSnsCards = snsData.filter(
   (dao) => !excludedFromSmallCards.includes(dao.rootCanisterId)
 );
-
-const extraMetadata: Record<string, Partial<DaoCardProps>> = {
-  "tw2vt-hqaaa-aaaaq-aab6a-cai": {
-    // Gold DAO
-    twitter: "https://twitter.com/gldrwa",
-    description: (
-      <>
-        The Gold DAO represents a groundbreaking fusion of traditional gold and
-        modern blockchain technology, allowing anyone in the world to access
-        physical gold instantaneously, without depending on banks.
-      </>
-    ),
-  },
-
-  "qtooy-2yaaa-aaaaq-aabvq-cai": {
-    // Sonic
-    name: "Sonic",
-    twitter: "https://twitter.com/sonic_ooo",
-    description: (
-      <>
-        The open DeFi suite on the Internet Computer blockchain governed by the
-        people for the people. Sonic unleashes the potential of crypto trading
-        through innovative DeFi products.
-      </>
-    ),
-  },
-
-  "3e3x2-xyaaa-aaaaq-aaalq-cai": {
-    // OpenChat
-    twitter: "https://twitter.com/OpenChat",
-    name: "OpenChat raises 1M ICP in 6 hours",
-    description: (
-      <>
-        OpenChat was the first project to launch an SNS DAO on the Internet
-        Computer, marking a significant milestone in the world of blockchain and
-        social media as an open internet service.{" "}
-      </>
-    ),
-  },
-
-  "zxeu2-7aaaa-aaaaq-aaafa-cai": {
-    // Dragginz
-    twitter: "https://twitter.com/dragginzgame",
-    description: (
-      <>
-        A virtual pets game from the creators of Neopets. Non-profit, 100%
-        on-chain baby dragons, crowdsourced world building, magic spells, and a
-        prince in disguise!
-      </>
-    ),
-  },
-
-  "7jkta-eyaaa-aaaaq-aaarq-cai": {
-    // Kinic
-    twitter: "https://twitter.com/kinic_app",
-    description: (
-      <>
-        The first and only dedicated search engine for Web3 content that runs on
-        100% on-chain. Trustless SEO backed by ZKML enables transparent results,
-        instead of ad-based content .
-      </>
-    ),
-  },
-
-  "67bll-riaaa-aaaaq-aaauq-cai": {
-    // Hot or Not
-    twitter: "https://twitter.com/hotornot_dapp",
-    description: (
-      <>
-        A decentralized short-video social media platform governed by the people
-        for the people. Monetized time on social media.
-      </>
-    ),
-  },
-
-  "4m6il-zqaaa-aaaaq-aaa2a-cai": {
-    // IC Ghost
-    twitter: "https://twitter.com/ghost_icp",
-    description: (
-      <>
-        The first decentralized meme coin on the Internet Computer. GHOST is
-        powered by the community and owd by the community.
-      </>
-    ),
-  },
-
-  "x4kx5-ziaaa-aaaaq-aabeq-cai": {
-    // Modclub
-    twitter: "https://twitter.com/ModclubApp",
-    description: (
-      <>
-        A decentralized crowdwork platform that supports dapps by handling
-        resource-intensive tasks such as content moderation, user verification
-        and data labeling.
-      </>
-    ),
-  },
-
-  "xjngq-yaaaa-aaaaq-aabha-cai": {
-    // BOOM DAO
-    twitter: "https://twitter.com/boomdaosns",
-    description: (
-      <>
-        A collaborative hub for all things Web3 gaming. Plus an all-in-one web3
-        game platform and protocol running 100% on-chain on the Internet
-        Computer.
-      </>
-    ),
-  },
-
-  "uly3p-iqaaa-aaaaq-aabma-cai": {
-    // Catalyze
-    twitter: "https://twitter.com/catalyze_one",
-    description: (
-      <>
-        A one-stop social-fi application for organising Web3 experiences and
-        building community. Event management, crowdsourcing, chat function, and
-        reward tooling.
-      </>
-    ),
-  },
-
-  "u67kc-jyaaa-aaaaq-aabpq-cai": {
-    // ICX
-    twitter: "https://twitter.com/icxdao",
-    description: (
-      <>
-        A decentralized social network with the functionalities you love on
-        platforms like Twitter, but with privacy, ownership, and
-        community-driven governance.
-      </>
-    ),
-  },
-
-  "rzbmc-yiaaa-aaaaq-aabsq-cai": {
-    // Nuance
-    twitter: "https://twitter.com/nuancedapp",
-    description: (
-      <>
-        The world's first publishing platform built entirely on-chain. In the
-        same way DeFi has taken the middleman out of finance, Nuance does the
-        same for the written word.
-      </>
-    ),
-  },
-
-  "extk7-gaaaa-aaaaq-aacda-cai": {
-    // Neutrinite
-    twitter: "https://twitter.com/ICPCoins",
-    description: (
-      <>
-        Neutrinite SNS DAO for ICPCoins. This platform is dedicated to securely
-        sourcing data from DEXes, DAOs, and other DeFi applications.
-      </>
-    ),
-  },
-
-  "ecu3s-hiaaa-aaaaq-aacaq-cai": {
-    // Trax
-    twitter: "https://twitter.com/onlyontrax",
-    description: (
-      <>A decentralised music platform own and governed by artists and fans.</>
-    ),
-  },
-};
 
 const aggregateSnsData = [
   {
@@ -323,10 +143,6 @@ const benefits = [
     ),
   },
 ];
-
-function dashboardUrlFromRootCanisterId(rootCanisterId: string) {
-  return `https://dashboard.internetcomputer.org/sns/${rootCanisterId}`;
-}
 
 function SnsPage() {
   const [startCountup, setStartCountup] = React.useState(false);
@@ -659,7 +475,7 @@ function SnsPage() {
             <CardWithDescription
               title="Launch an SNS DAO"
               description=""
-              href="/docs/current/developer-docs/integrations/sns"
+              href="/docs/current/developer-docs/daos/sns"
             />
             <CardWithDescription
               title="FAQ: How to join and participate in an SNS DAO"

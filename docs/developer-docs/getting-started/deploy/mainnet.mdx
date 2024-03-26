@@ -1,8 +1,18 @@
+---
+keywords: [beginner, tutorial, mainnet deployment, deploy]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
 # Mainnet deployment
+
+<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
 ## Overview
 
-To make your canister available to others, you must deploy it to the mainnet. 
+To make your <GlossaryTooltip>canister</GlossaryTooltip> available to others, you must deploy it to the mainnet.
 
 If you are only deploying projects in a local development environment, see the [local development](/docs/current/developer-docs/getting-started/deploy/local) scenario.
 
@@ -14,14 +24,14 @@ Before you download and install this release of the IC SDK, verify the following
 
 -   [x] You have `node.js` installed if you want to access the default frontend for the default project.
 
--   [x] You have ICP tokens or cycles available for you to use.
+-   [x] You have ICP tokens or <GlossaryTooltip>cycles</GlossaryTooltip> available for you to use.
 
 :::info
 You must have **cycles** available to complete this guide. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This guide assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles, then transfer those cycles to a **cycles wallet** that you control.
 
 For information about how to get ICP tokens, see [how you can get ICP tokens](/docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles).
 
-For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network Nervous System dapp quick start](../../../tokenomics/token-holders/nns-app-quickstart).
+For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network Nervous System dapp quick start](/docs/current/developer-docs/daos/nns/nns-app-quickstart).
 
 For information about using your default cycles wallet after you have created it, see [use the default cycles wallet](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
 :::
@@ -58,7 +68,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         npm install
 
-    For more information about this step, see [ensuring node is available in a project](/developer-docs/frontend/index.md#troubleshoot-node).
+    For more information about this step, see [ensuring node is available in a project](/docs/current/developer-docs/web-apps/application-frontends/overview#troubleshoot-node).
 
 - #### Step 3:  Register, build, and deploy your first application by running the following command:
 

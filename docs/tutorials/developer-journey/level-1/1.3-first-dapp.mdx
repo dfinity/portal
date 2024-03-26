@@ -1,20 +1,27 @@
+---
+keywords: [beginner, tutorial, developer journey, first dapp]
+---
+
 import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 1.3 Developing your first dapp
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nUB7_KjE-uU?si=TRqLKWJqJ-apPVxo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 
-At this point in your developer journey, you've covered the fundamentals of canister development and deployed the default 'Hello, world' project template on the Motoko playground. It's time to get into writing code and developing your own first dapp! 
+At this point in your developer journey, you've covered the fundamentals of canister development and deployed the default 'Hello, world' project template on the Motoko playground. It's time to get into writing code and developing your own first dapp!
 
-For this tutorial, you'll be creating a poll dapp that includes both a backend canister and a frontend canister. To recap, backend canisters are used to host the dapp's smart contract code, while frontend canisters are used to host user interface assets, such as HTML and CSS. 
+For this tutorial, you'll be creating a poll dapp that includes both a backend canister and a frontend canister. To recap, backend canisters are used to host the dapp's smart contract code, while frontend canisters are used to host user interface assets, such as HTML and CSS.
 
-The poll dapp will ask the end user a question, then have them vote on which answer they'd like to select. 
+The poll dapp will ask the end user a question, then have them vote on which answer they'd like to select.
 
 ## Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ## Creating a new project
 
@@ -39,7 +46,7 @@ poll                   # The root of the project
 ├── src
 │   ├── poll_backend   # Folder containing the source code of your dapp's backend.
 │   │   └── main.mo    # The default source code file; this is what you'll primarily be working with in this tutorial.
-│   └── poll_frontend  # Folder containing the frontend configuration and assets of your dapp. 
+│   └── poll_frontend  # Folder containing the frontend configuration and assets of your dapp.
 │       └── ...
 └── webpack.config.js  # Web dapp bundler configuration.
 ```
@@ -48,15 +55,15 @@ You will notice that the file structure above has two sub-directories within `sr
 - `src/poll_backend` which contains the files that serve as the backend of the dapp.
 - `src/poll_frontend` which contains the files that serve as the frontend of the dapp.
 
-This file structure is the default template `dfx` creates for a new project. If you'd like to create a project without a frontend canister, the `--no-frontend` flag can be used with the `dfx new` command. 
+This file structure is the default template `dfx` creates for a new project. If you'd like to create a project without a frontend canister, the `--no-frontend` flag can be used with the `dfx new` command.
 
 ## Writing the backend canister code
 
-Let's start writing the code for the backend of our dapp. Open your code editor of choice, then open the file `src/poll_backend/main.mo`. By default, this file will contain the same code you reviewed in the [introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) module. Since you want to write your own code, delete the entire contents of this file. 
+Let's start writing the code for the backend of our dapp. Open your code editor of choice, then open the file `src/poll_backend/main.mo`. By default, this file will contain the same code you reviewed in the [introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) module. Since you want to write your own code, delete the entire contents of this file.
 
-### Creating an actor 
+### Creating an actor
 
-First, you'll create an actor. Recall that an actor is a process with an encapsulated state. Actors contain both code and data, and communicate by sending and receiving messages. A canister can only contain a single actor. 
+First, you'll create an actor. Recall that an actor is a process with an encapsulated state. Actors contain both code and data, and communicate by sending and receiving messages. A canister can only contain a single actor.
 
 In your `src/poll_backend/main.mo` file, paste the following code:
 
@@ -68,13 +75,13 @@ The following example is a **code snippet** that is part of a larger code file. 
 actor {
 
     //actor code goes here
-    
+
 }
 ```
 
-This code defines an actor, but it is currently empty. It does not define any data or send and receive messages. 
+This code defines an actor, but it is currently empty. It does not define any data or send and receive messages.
 
-Next, let's add some code inside the actor that proposes a question for your poll app. For example, you can ask the user, "What is your favorite programming language?". 
+Next, let's add some code inside the actor that proposes a question for your poll app. For example, you can ask the user, "What is your favorite programming language?".
 
 To add this question, insert the following code inside of the actor definition:
 
@@ -91,7 +98,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 
 First, it creates a new actor variable called `question`.
 
-Then, it declares the type of this variable as `Text`, which is the standard type for strings in Motoko. 
+Then, it declares the type of this variable as `Text`, which is the standard type for strings in Motoko.
 :::
 
 Since you are using the type `Text`, you need to import the type `Text` from the Motoko base library. To do this, add an import statement at the top of the file:
@@ -115,16 +122,16 @@ actor {
 }
 ```
 
-Now, our code has an actor with one fixed variable and no methods. 
+Now, our code has an actor with one fixed variable and no methods.
 
-For our next step, you'll add access methods. This is because in order to communicate with other canisters or any other external entity, actors must send and receive messages. 
+For our next step, you'll add access methods. This is because in order to communicate with other canisters or any other external entity, actors must send and receive messages.
 
 Specifically for your poll, you want to create the following functionality:
 
 - Obtain the current poll question.
 - Receive a list of possible options that can be voted on.
-- Submit a vote and have the dapp save the results. 
-- Reset the vote counts to re-run the poll. 
+- Submit a vote and have the dapp save the results.
+- Reset the vote counts to re-run the poll.
 
 ### Defining the `getQuestion` method
 
@@ -135,8 +142,8 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
 ```motoko
-public query func getQuestion() : async Text { 
-    question 
+public query func getQuestion() : async Text {
+    question
 };
 ```
 
@@ -145,16 +152,16 @@ public query func getQuestion() : async Text {
 
 This `getQuestion` method takes the current value of the `question` variable and returns it to the caller. There are some important things regarding methods and their behavior to be aware of, such as:
 
-- All methods that return values on ICP have to be declared as `async` in order to allow asynchronous execution. 
-- Since the `getQuestion` method doesn't change any data, it can be declared as a `query` call. you'll dive further into this shortly. 
-- This method uses the `Text` type that you previously have already imported at the top of the file. 
+- All methods that return values on ICP have to be declared as `async` in order to allow asynchronous execution.
+- Since the `getQuestion` method doesn't change any data, it can be declared as a `query` call. you'll dive further into this shortly.
+- This method uses the `Text` type that you previously have already imported at the top of the file.
 :::
 
 ### Query calls vs. update calls
 
 A **query call** is executed on one node of a subnet. It is not possible to use query calls to alter data.
 
-An **update call** is executed on all nodes of a subnet. The result must pass through consensus on the subnet and has the ability to alter data. 
+An **update call** is executed on all nodes of a subnet. The result must pass through consensus on the subnet and has the ability to alter data.
 
 A detailed comparison breakdown can be found below:
 
@@ -176,19 +183,19 @@ import Text "mo:base/Text";
 actor {
     var question: Text = "What is your favorite programming language?";
 
-    public query func getQuestion() : async Text { 
-      question 
+    public query func getQuestion() : async Text {
+      question
     };
 }
 ```
 
 ### Creating a data structure to store the data
 
-In your poll, you will be storing each poll option and a number associated with how many votes each option has. This collection of data will be in the form of a *key-value store*. In other languages, this data structure is known as a "dictionary" or a "map". In Motoko, this data structure is called an [`RBTree`](/motoko/main/base/RBTree.md). 
+In your poll, you will be storing each poll option and a number associated with how many votes each option has. This collection of data will be in the form of a *key-value store*. In other languages, this data structure is known as a "dictionary" or a "map". In Motoko, this data structure is called an [`RBTree`](/motoko/main/base/RBTree.md).
 
-`RBTree` maps a **vote option** of type `Text` to a **vote count** of type `Nat`. `Text` is a data type for string text values, and `Nat` is a data type for natural numbers, which are whole numbers without decimal points. 
+`RBTree` maps a **vote option** of type `Text` to a **vote count** of type `Nat`. `Text` is a data type for string text values, and `Nat` is a data type for natural numbers, which are whole numbers without decimal points.
 
-To visualize this data structure, the following table displays how a vote option `ID` can be mapped to the current `Vote count` associated with it. 
+To visualize this data structure, the following table displays how a vote option `ID` can be mapped to the current `Vote count` associated with it.
 
 For example, the data structure for our "What is your favorite programming language?" poll may look like this:
 
@@ -203,9 +210,9 @@ For example, the data structure for our "What is your favorite programming langu
 
 In order to store and query the `RBTree` data structure, you need to import a few different things. These are:
 
-- To use `RBTree`, you need to import `RBTree`. 
-- To use `Nat` data types, you need to import `Nat`. 
-- Later in this tutorial you will use `Iter`, which you will import now so that it is ready to use later. 
+- To use `RBTree`, you need to import `RBTree`.
+- To use `Nat` data types, you need to import `Nat`.
+- Later in this tutorial you will use `Iter`, which you will import now so that it is ready to use later.
 
 To import these packages, add the following import statements to the beginning of the `main.mo` file:
 
@@ -229,7 +236,7 @@ In this code, you create a variable called `votes` with the type `RBTree.RBTree<
 
 ### Declaring the `getVotes` method
 
-Now that you have the data collection structure, you need to create a method that queries the amount of vote counts per option. This will be a query call, since it will not alter the data. 
+Now that you have the data collection structure, you need to create a method that queries the amount of vote counts per option. This will be a query call, since it will not alter the data.
 
 Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
 
@@ -240,14 +247,14 @@ The following example is a **code snippet** that is part of a larger code file. 
 
 ```motoko
 // query the list of entries and votes for each one
-// Example: 
-//      * JSON that the frontend will receive using the values above: 
+// Example:
+//      * JSON that the frontend will receive using the values above:
 //      * [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
 
     public query func getVotes() : async [(Text, Nat)] {
-    
+
         Iter.toArray(votes.entries())
-    
+
     };
 
 ```
@@ -257,7 +264,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 
 First, the `getVotes` method returns an [`Array`](/docs/motoko/main/base/Array.md), which is a simple container used to store multiple values. In this code, the array holds elements in that are in the form of a `tuple`. A tuple stores multiple items in a single variable. The tuples in this code are of type `(Text, Nat)`.
 
-Then, the class `Iter` represents an iterator, which is a pointer-like data structure allowing for the data structure's values to be parsed one by one in a sequential manner. This class uses the statement `Iter.toArray(votes.entries())` which executes the `votes.entries()` method, and then produces an iterator of tuples `(Text, Nat)` that represent the `RBTree`'s values. 
+Then, the class `Iter` represents an iterator, which is a pointer-like data structure allowing for the data structure's values to be parsed one by one in a sequential manner. This class uses the statement `Iter.toArray(votes.entries())` which executes the `votes.entries()` method, and then produces an iterator of tuples `(Text, Nat)` that represent the `RBTree`'s values.
 
 Then, the `Iter.toArray()` is a standard function that converts `Iter<(Text,Nat)>` to an array of `(Text, Nat)`. This step is so that the frontend receives an array instead of an iterator.
 :::
@@ -265,7 +272,7 @@ Then, the `Iter.toArray()` is a standard function that converts `Iter<(Text,Nat)
 
 ### Declaring the `votes` method
 
-Our next step is to create a new method called `votes` that uses an update call to update the canister's state. 
+Our next step is to create a new method called `votes` that uses an update call to update the canister's state.
 
 Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
 
@@ -277,18 +284,18 @@ The following example is a **code snippet** that is part of a larger code file. 
 ```motoko
  // This method takes an entry to vote for, updates the data and returns the updated hashmap
 // Example input: vote("Motoko")
-// Example: 
-//      * JSON that the frontend will receive using the values above: 
+// Example:
+//      * JSON that the frontend will receive using the values above:
 //      * [["Motoko","1"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-    
+
   public func vote(entry: Text) : async [(Text, Nat)] {
 
     //Check if the entry already has votes.
-    //Note that "votes_for_entry" is of type ?Nat. This is because: 
+    //Note that "votes_for_entry" is of type ?Nat. This is because:
     // * If the entry is in the RBTree, the RBTree returns a number.
     // * If the entry is not in the RBTree, the RBTree returns `null` for the new entry.
     let votes_for_entry :?Nat = votes.get(entry);
-    
+
     //Need to be explicit about what to do when it is null or a number so every case is taken care of
     let current_votes_for_entry : Nat = switch votes_for_entry {
       case null 0;
@@ -311,7 +318,7 @@ The `?Nat` data type is a [Motoko optional](/docs/motoko/main/base/Option.md) da
 
 ### Declaring the `resetVotes`  method
 
-Lastly, you'll declare the `resetVotes` method that'll be used to reset the state of each vote option back to 0. 
+Lastly, you'll declare the `resetVotes` method that'll be used to reset the state of each vote option back to 0.
 
 Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
 
@@ -323,7 +330,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 //This method resets the vote count for each option and returns the updated hashmap
 // Example JSON that the frontend will get using the values above
 // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-    
+
     public func resetVotes() : async [(Text, Nat)] {
 
       votes.put("Motoko", 0);
@@ -357,37 +364,37 @@ actor {
   var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
 
 
-  public query func getQuestion() : async Text { 
-    question 
+  public query func getQuestion() : async Text {
+    question
   };
 
 // query the list of entries and votes for each one
-// Example: 
-//      * JSON that the frontend will receive using the values above: 
+// Example:
+//      * JSON that the frontend will receive using the values above:
 //      * [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
 
     public query func getVotes() : async [(Text, Nat)] {
-    
+
         Iter.toArray(votes.entries())
-    
+
     };
 
 
 
  // This method takes an entry to vote for, updates the data and returns the updated hashmap
 // Example input: vote("Motoko")
-// Example: 
-//      * JSON that the frontend will receive using the values above: 
+// Example:
+//      * JSON that the frontend will receive using the values above:
 //      * [["Motoko","1"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-    
+
   public func vote(entry: Text) : async [(Text, Nat)] {
 
     //Check if the entry already has votes.
-    //Note that "votes_for_entry" is of type ?Nat. This is because: 
+    //Note that "votes_for_entry" is of type ?Nat. This is because:
     // * If the entry is in the RBTree, the RBTree returns a number.
     // * If the entry is not in the RBTree, the RBTree returns `null` for the new entry.
     let votes_for_entry :?Nat = votes.get(entry);
-    
+
     //Need to be explicit about what to do when it is null or a number so every case is taken care of
     let current_votes_for_entry : Nat = switch votes_for_entry {
       case null 0;
@@ -414,10 +421,10 @@ actor {
 
 ### Deploying the dapp locally
 
-To deploy your dapp locally, first assure that your local ICP execution environment is currently running. If you need to start the local execution environment, run the command:
+To deploy your dapp locally, first assure that your local ICP execution environment is currently running. If you need to start the local canister execution environment, run the command:
 
 ```bash
-dfx start --background
+dfx start --clean --background
 ```
 
 Then, you can deploy the dapp with the command:
@@ -426,9 +433,9 @@ Then, you can deploy the dapp with the command:
 dfx deploy
 ```
 
-You may recall that in the previous module, [exploring a live demo](1.1-live-demo.md), you used the `--playground` flag to deploy your canister to the Motoko playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`. 
+You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the Motoko playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
 
-Additionally, you aren't specifying a canister name in the `dfx deploy` command, which will deploy all canisters listed in the `dfx.json` file, which by default includes both the `poll_backend` and `poll_frontend` canisters. 
+Additionally, you aren't specifying a canister name in the `dfx deploy` command, which will deploy all canisters listed in the `dfx.json` file, which by default includes both the `poll_backend` and `poll_frontend` canisters.
 
 The output of the `dfx deploy` command will resemble the following:
 
@@ -442,7 +449,7 @@ URLs:
 
 ## Adding pre-developed frontend code
 
-Now let's create a frontend for users to interact with your dapp. You will use some basic JavaScript to keep it as simple as possible. 
+Now let's create a frontend for users to interact with your dapp. You will use some basic JavaScript to keep it as simple as possible.
 
 Start by opening the file `/src/poll_frontend/src/index.html` in your code editor, then replace the existing content with the following:
 
@@ -579,10 +586,10 @@ Start by opening the file `/src/poll_frontend/src/index.html` in your code edito
 **What does this code do?**
 The HTML code above is a simple form that provides the end user with options to select using radio buttons. There is nothing 'Web3' or specific to ICP about this code.
 
-Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/developer-docs/frontend/add-stylesheet.mdx).
+Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/current/developer-docs/web-apps/application-frontends/add-stylesheet).
 :::
 
-Lastly, you need to update the `index.js` file in order for your frontend canister to communicate with our backend canister and have the result of that communication reflected within the frontend's HTML. 
+Lastly, you need to update the `index.js` file in order for your frontend canister to communicate with our backend canister and have the result of that communication reflected within the frontend's HTML.
 
 Open the `/src/poll_frontend/src/index.js` file in your code editor and replace the content of `index.js` with the following:
 
@@ -599,7 +606,7 @@ import { poll_backend } from "../../declarations/poll_backend";
 :::info
 **What does this code do?**
 
-In this code, the statement `import { poll_backend } from "../../declarations/poll_backend";` is what allows the frontend to import an interface for the backend canister and seamlessly interact with it. 
+In this code, the statement `import { poll_backend } from "../../declarations/poll_backend";` is what allows the frontend to import an interface for the backend canister and seamlessly interact with it.
 
 :::
 
@@ -611,7 +618,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
    //note that this is at beginning of the submit callback, this is deliberate
   //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault();
- 
+
   // Query the question from the backend
   const question = await poll_backend.getQuestion();
   document.getElementById("question").innerText = question;
@@ -651,7 +658,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
    //note that this is at beginning of the submit callback, this is deliberate
   //This is so the default behavior is set BEFORE the awaits are called below
   e.preventDefault();
- 
+
   // Query the question from the backend
   const question = await poll_backend.getQuestion();
   document.getElementById("question").innerText = question;
@@ -671,7 +678,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 pollForm.addEventListener('submit', async (e) => {
   //note that this is at beginning of the submit callback, this is deliberate
   //This is so the default behavior is set BEFORE the awaits are called below
-  e.preventDefault(); 
+  e.preventDefault();
 
   const formData = new FormData(pollForm);
   const checkedValue = formData.get("option");
@@ -687,7 +694,7 @@ pollForm.addEventListener('submit', async (e) => {
 resetButton.addEventListener('click', async (e) => {
 
     e.preventDefault();
-    
+
     //Reset the options in the backend
     await poll_backend.resetVotes();
     const voteCounts = await poll_backend.getVotes();
@@ -754,13 +761,13 @@ Your finished dapp should be displayed in the browser and look like this:
 
 Congratulations! You've just developed your first full dapp!
 
-You can find the finished code's repo [here](https://github.com/jessiemongeon1/dev-journey-poll-dapp/tree/main) for you to clone or fork. 
+You can find the [finished code's repo](https://github.com/jessiemongeon1/dev-journey-poll-dapp/tree/main) for you to clone or fork.
 
 ## Need help?
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -782,7 +789,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-In this tutorial, you only deployed our dapp to your local environment. In the next module, you'll set up a cycles wallet and acquire cycles in order for you to deploy your dapp to the Internet Computer mainnet. 
+In this tutorial, you only deployed our dapp to your local environment. In the next module, you'll set up a cycles wallet and acquire cycles in order for you to deploy your dapp to the Internet Computer mainnet.
 
 - [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles).
 

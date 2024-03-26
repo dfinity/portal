@@ -43,30 +43,36 @@ function pickThumbnail(thumbnails) {
   return thumbnails.default.url;
 }
 
+let cache;
+
 /** @type {import('@docusaurus/types').PluginModule} */
 const youtubePlugin = async function () {
   return {
     name: "youtube",
     async loadContent() {
-      if (!YOUTUBE_API_KEY) {
-        logger.warn(
-          "Warning: no env variables found for Youtube integration. Using mock youtube data."
-        );
-        return require("./data/youtube-mock");
+      if (!cache) {
+        if (!YOUTUBE_API_KEY) {
+          logger.warn(
+            "Warning: no env variables found for Youtube integration. Using mock youtube data."
+          );
+          return require("./data/youtube-mock");
+        }
+
+        const mostRecentVideo = await getMostRecentVideo();
+        const thumbnal = pickThumbnail(mostRecentVideo.snippet.thumbnails);
+
+        cache = {
+          mostRecentVideo: {
+            id: mostRecentVideo.id.videoId,
+            title: mostRecentVideo.snippet.title,
+            description: mostRecentVideo.snippet.description,
+            thumbnail: thumbnal,
+            publishedAt: mostRecentVideo.snippet.publishedAt,
+          },
+        };
       }
 
-      const mostRecentVideo = await getMostRecentVideo();
-      const thumbnal = pickThumbnail(mostRecentVideo.snippet.thumbnails);
-
-      return {
-        mostRecentVideo: {
-          id: mostRecentVideo.id.videoId,
-          title: mostRecentVideo.snippet.title,
-          description: mostRecentVideo.snippet.description,
-          thumbnail: thumbnal,
-          publishedAt: mostRecentVideo.snippet.publishedAt,
-        },
-      };
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;

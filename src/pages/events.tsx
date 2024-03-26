@@ -123,7 +123,7 @@ function GlobalEventsPage() {
   return (
     <Layout
       title="Global ICP Events"
-      description="Join global community events with latest insights to the Internet Computer blockchain technology. Engage with experts, share ideas, and learn about emerging trends in the dynamic ICP ecosystem."
+      description="Emerse yourself in the Internet Computer community! Connect with ICP enthusiasts worldwide with cutting-edge community events."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-events.jpg"></ShareMeta>
@@ -153,10 +153,7 @@ function GlobalEventsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Join global community events with latest insights to the
-                  Internet Computer blockchain technology. Engage with experts,
-                  share ideas, and learn about emerging trends in the dynamic
-                  ICP ecosystem.
+                  Emerse yourself in the Internet Computer community! Connect with ICP enthusiasts worldwide with cutting-edge community events.
                 </motion.p>
               </div>
             </div>

@@ -26,46 +26,51 @@ renderer.link = (href, title, text) => {
 
 renderer.paragraph = createKatexParagraphRenderer(renderer.paragraph);
 
+let cache;
+
 /** @type {import('@docusaurus/types').PluginModule} */
 const howItWorksArticlesPlugin = async function () {
   return {
     name: "howitworks-articles",
     async loadContent() {
-      const dirs = fs
-        .readdirSync(baseDir, {
-          withFileTypes: true,
-        })
-        .filter((d) => d.isDirectory());
-
-      const subpages = [];
-
-      for (const dir of dirs) {
-        const subpageFiles = fs
-          .readdirSync(path.join(baseDir, dir.name), {
+      if (!cache) {
+        const dirs = fs
+          .readdirSync(baseDir, {
             withFileTypes: true,
           })
-          .filter((d) => d.isFile() && d.name.endsWith(".subpage.md"));
+          .filter((d) => d.isDirectory());
 
-        subpages.push(
-          ...subpageFiles.map((sp) => {
-            const meta = matter(
-              fs.readFileSync(path.join(baseDir, dir.name, sp.name), {
-                encoding: "utf-8",
-              })
-            );
-            return {
-              title: meta.data.title,
-              abstract: meta.data.abstract,
-              shareImage: meta.data.shareImage,
-              slug: meta.data.slug,
-              content: marked.parse(meta.content, { renderer }),
-              fileName: path.join("./how-it-works/", dir.name, sp.name),
-            };
-          })
-        );
+        const subpages = [];
+
+        for (const dir of dirs) {
+          const subpageFiles = fs
+            .readdirSync(path.join(baseDir, dir.name), {
+              withFileTypes: true,
+            })
+            .filter((d) => d.isFile() && d.name.endsWith(".subpage.md"));
+
+          subpages.push(
+            ...subpageFiles.map((sp) => {
+              const meta = matter(
+                fs.readFileSync(path.join(baseDir, dir.name, sp.name), {
+                  encoding: "utf-8",
+                })
+              );
+              return {
+                title: meta.data.title,
+                abstract: meta.data.abstract,
+                shareImage: meta.data.shareImage,
+                slug: meta.data.slug,
+                content: marked.parse(meta.content, { renderer }),
+                fileName: path.join("./how-it-works/", dir.name, sp.name),
+              };
+            })
+          );
+        }
+
+        cache = subpages;
       }
-
-      return subpages;
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { addRoute, createData } = actions;

@@ -40,7 +40,9 @@ const youtubePlugin = require("./plugins/youtube");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
-console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+if (process.env.PREVIEW_CANISTER_ID) {
+  console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+}
 
 const navbarItems = [
   {
@@ -64,39 +66,33 @@ const subnavItems = [
     activeBasePath: "/docs/current/developer-docs/",
   },
   {
-    type: "docSidebar",
+    type: "dropdown",
     position: "left",
-    sidebarId: "motoko",
-    label: "Motoko",
+    label: "Languages",
+    items: [
+      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
+      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
+      {
+        label: "TypeScript",
+        href: "/docs/current/developer-docs/backend/typescript/",
+      },
+      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
+      {
+        label: "Solidity",
+        href: "/docs/current/developer-docs/backend/solidity/",
+      },
+    ],
   },
   {
-    type: "docSidebar",
+    type: "dropdown",
     position: "left",
-    sidebarId: "rust",
-    label: "Rust",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "typescript",
-    label: "Typescript",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "python",
-    label: "Python",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "solidity",
-    label: "Solidity",
-  },
-  {
-    position: "left",
-    to: "blog",
-    label: "Blog",
+    label: "Frameworks",
+    items: [
+      {
+        label: "Juno",
+        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
+      },
+    ],
   },
   {
     type: "dropdown",
@@ -129,7 +125,14 @@ const subnavItems = [
       },
     ],
   },
-];
+  /**
+   * Add UI tests in development mode
+   */
+  process.env.NODE_ENV === "development" && {
+    label: "UI Tests",
+    href: "/docs/current/tests/all",
+  },
+].filter(Boolean);
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
@@ -183,7 +186,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Building green, efficient tech",
+            title: "Blockchain for Sustainable Business",
             href: "/capabilities/sustainability",
             image: "/img/nav/featured-start-here.webp",
           },
@@ -205,11 +208,6 @@ const marketingNav = {
               name: "Ethereum <> ICP",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
-            },
-            {
-              name: "Identity on ICP",
-              href: "/internet-identity",
-              description: "One secure identity for all services",
             },
             {
               name: "HTTPS Outcalls",
@@ -255,7 +253,7 @@ const marketingNav = {
               description: "Govern and get rewards",
             },
             {
-              name: "Create an Internet Identity",
+              name: "Internet Identity",
               href: "/internet-identity",
               description: "Web3 authentication",
             },
@@ -301,7 +299,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Trustless multi-chain",
+            title: "Chain Fusion Technology",
             href: "/multichain",
             image: "/img/nav/featured-use-cases.webp",
           },
@@ -359,7 +357,7 @@ const marketingNav = {
               name: "Programming languages",
 
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/backend/choosing-language",
+              href: "/docs/current/developer-docs/smart-contracts/write/overview",
             },
             {
               name: "Hackathons",
@@ -678,6 +676,16 @@ const config = {
                 ),
                 icon: `data:image/svg+xml;base64,${fs
                   .readFileSync("./static/img/svgIcons/twitter-white.svg")
+                  .toString("base64")}`,
+              },
+              {
+                label: "Telegram",
+                to: "https://t.me/+m8tiEFaaNR8xNjNl",
+                iconLight: getImageDataUrl(
+                  "./static/img/svgIcons/purple/telegram.svg"
+                ),
+                icon: `data:image/svg+xml;base64,${fs
+                  .readFileSync("./static/img/svgIcons/telegram-white.svg")
                   .toString("base64")}`,
               },
               {

@@ -23,17 +23,7 @@ function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
   }).then((res) => res.json());
 }
 
-function transformEventBanner(eventBanner) {
-  if (!eventBanner || eventBanner.length === 0) {
-    return undefined;
-  }
-
-  return {
-    id: eventBanner[0].id,
-    url: eventBanner[0].url,
-    type: eventBanner[0].type,
-  };
-}
+let cache;
 
 /** @type {import('@docusaurus/types').PluginModule} */
 const airtablePlugin = async function () {
@@ -48,144 +38,149 @@ const airtablePlugin = async function () {
   return {
     name: "airtable",
     async loadContent() {
-      if (!AIRTABLE_KEY) {
-        logger.warn(
-          "Warning: no env variables found for Airtable integration. Using mock airtable data."
-        );
-        return require("./data/airtable-mock");
-      }
+      if (!cache) {
+        if (!AIRTABLE_KEY) {
+          logger.warn(
+            "Warning: no env variables found for Airtable integration. Using mock airtable data."
+          );
+          return require("./data/airtable-mock");
+        }
 
-      let records = [];
-      let offset = null;
-      do {
-        const res = await loadRecords({
-          apiKey: AIRTABLE_KEY,
-          baseId: "appBKNYn6DaFccnno",
-          tableName: "tblCZBZ26gbGvPf7j",
-          viewId: "viwx1BHC1Cj8RVG7q",
-          offset,
+        let records = [];
+        let offset = null;
+        do {
+          const res = await loadRecords({
+            apiKey: AIRTABLE_KEY,
+            baseId: "appBKNYn6DaFccnno",
+            tableName: "tblCZBZ26gbGvPf7j",
+            viewId: "viwx1BHC1Cj8RVG7q",
+            offset,
+          });
+          offset = res.offset;
+
+          records.push(
+            ...res.records.map((r) => ({
+              id: r.id,
+              eventName: r.fields["Event Name"],
+              marketingText: r.fields["Marketing Text"],
+              description: !!r.fields["Marketing Text"]
+                ? markdownToPlainText(r.fields["Marketing Text"])
+                : null,
+              eventLink: r.fields["Event Link"],
+              topic: r.fields["Topic"],
+              startDate: r.fields["Start date"],
+              endDate: r.fields["End Date"],
+              regions: r.fields["Regions"], // continent
+              country: r.fields["Country"],
+              city: r.fields["City"],
+              type: r.fields["Type"],
+              websiteCategory: r.fields["Website Category"],
+              mode: r.fields["Mode"],
+              status: r.fields["Status"],
+            }))
+          );
+        } while (!!offset);
+
+        // cut off events happened 6 months ago
+        const endDatecutoff = new Date(
+          Date.now() - 6 * 30 * 24 * 60 * 60 * 1000
+        )
+          .toISOString()
+          .split("T")[0];
+
+        records = records.filter((rec) => {
+          if (!rec.startDate || new Date(rec.startDate) == "Invalid Date") {
+            logger.warn("Invalid event, no start date: " + rec.eventName);
+            return false;
+          }
+
+          if (!rec.endDate || new Date(rec.endDate) == "Invalid Date") {
+            logger.warn("Invalid event, no end date: " + rec.eventName);
+            return false;
+          }
+
+          if (rec.endDate < endDatecutoff) {
+            // old event
+            return false;
+          }
+
+          return true;
         });
-        offset = res.offset;
 
-        records.push(
-          ...res.records.map((r) => ({
-            id: r.id,
-            eventName: r.fields["Event Name"],
-            marketingText: r.fields["Marketing Text"],
-            description: !!r.fields["Marketing Text"]
-              ? markdownToPlainText(r.fields["Marketing Text"])
-              : null,
-            eventLink: r.fields["Event Link"],
-            topic: r.fields["Topic"],
-            startDate: r.fields["Start date"],
-            endDate: r.fields["End Date"],
-            regions: r.fields["Regions"], // continent
-            country: r.fields["Country"],
-            city: r.fields["City"],
-            type: r.fields["Type"],
-            websiteCategory: r.fields["Website Category"],
-            mode: r.fields["Mode"],
-            status: r.fields["Status"],
-          }))
-        );
-      } while (!!offset);
+        const topics = new Set(); // event.topic is a string array
+        const types = new Set(); // string
+        const websiteCategory = new Set(); // string
+        const regions = new Set(); // string
+        const countries = new Set(); // string
+        const cities = new Set(); // string
+        const modes = new Set(); // string
 
-      // cut off events happened 6 months ago
-      const endDatecutoff = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0];
+        for (const rec of records) {
+          if (rec.topic) {
+            for (const t of rec.topic) {
+              topics.add(t);
+            }
+          }
 
-      records = records.filter((rec) => {
-        if (!rec.startDate || new Date(rec.startDate) == "Invalid Date") {
-          logger.warn("Invalid event, no start date: " + rec.eventName);
-          return false;
-        }
+          if (rec.websiteCategory) {
+            websiteCategory.add(rec.websiteCategory);
+          }
 
-        if (!rec.endDate || new Date(rec.endDate) == "Invalid Date") {
-          logger.warn("Invalid event, no end date: " + rec.eventName);
-          return false;
-        }
+          if (rec.type) {
+            types.add(rec.type);
+          } else {
+            logger.warn("Invalid event, no type: " + rec.eventName);
+          }
 
-        if (rec.endDate < endDatecutoff) {
-          // old event
-          return false;
-        }
+          if (rec.regions) {
+            regions.add(rec.regions);
+          }
 
-        return true;
-      });
+          if (rec.country) {
+            countries.add(rec.country);
+          }
 
-      const topics = new Set(); // event.topic is a string array
-      const types = new Set(); // string
-      const websiteCategory = new Set(); // string
-      const regions = new Set(); // string
-      const countries = new Set(); // string
-      const cities = new Set(); // string
-      const modes = new Set(); // string
+          if (rec.city) {
+            cities.add(rec.city);
+          }
 
-      for (const rec of records) {
-        if (rec.topic) {
-          for (const t of rec.topic) {
-            topics.add(t);
+          if (rec.mode) {
+            modes.add(rec.mode);
           }
         }
 
-        if (rec.websiteCategory) {
-          websiteCategory.add(rec.websiteCategory);
-        }
+        // from oldest to newest
+        records.sort((a, b) => b.startDate.localeCompare(a.startDate));
 
-        if (rec.type) {
-          types.add(rec.type);
-        } else {
-          logger.warn("Invalid event, no type: " + rec.eventName);
-        }
+        // enumerate images in ../static/img/news, with pattern event-*.webp
+        const eventImageUrls = fs
+          .readdirSync(path.join(__dirname, "..", "static", "img", "events"))
+          .filter(
+            (filename) =>
+              filename.startsWith("event-") && filename.endsWith(".webp")
+          )
+          .map((filename) => `/img/events/${filename}`);
 
-        if (rec.regions) {
-          regions.add(rec.regions);
-        }
+        // assign images to event articles, old articles keep their images, new articles get new images
+        records.forEach((news, i) => {
+          news.imageUrl = eventImageUrls[i % eventImageUrls.length];
+        });
 
-        if (rec.country) {
-          countries.add(rec.country);
-        }
+        // reverse the order, so that newest articles get the newest images
+        records.reverse();
 
-        if (rec.city) {
-          cities.add(rec.city);
-        }
-
-        if (rec.mode) {
-          modes.add(rec.mode);
-        }
+        cache = {
+          events: records,
+          topics: Array.from(topics),
+          types: Array.from(types),
+          regions: Array.from(regions),
+          countries: Array.from(countries),
+          cities: Array.from(cities),
+          modes: Array.from(modes),
+          websiteCategory: Array.from(websiteCategory),
+        };
       }
-
-      // from oldest to newest
-      records.sort((a, b) => a.startDate.localeCompare(b.startDate));
-
-      // enumerate images in ../static/img/news, with pattern event-*.webp
-      const eventImageUrls = fs
-        .readdirSync(path.join(__dirname, "..", "static", "img", "events"))
-        .filter(
-          (filename) =>
-            filename.startsWith("event-") && filename.endsWith(".webp")
-        )
-        .map((filename) => `/img/events/${filename}`);
-
-      // assign images to event articles, old articles keep their images, new articles get new images
-      records.forEach((news, i) => {
-        news.imageUrl = eventImageUrls[i % eventImageUrls.length];
-      });
-
-      // reverse the order, so that newest articles get the newest images
-      records.reverse();
-
-      return {
-        events: records,
-        topics: Array.from(topics),
-        types: Array.from(types),
-        regions: Array.from(regions),
-        countries: Array.from(countries),
-        cities: Array.from(cities),
-        modes: Array.from(modes),
-        websiteCategory: Array.from(websiteCategory),
-      };
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
@@ -198,30 +193,6 @@ const airtablePlugin = async function () {
           JSON.stringify(content, null, 2)
         );
       }
-    },
-
-    async postBuild({ outDir }) {
-      if (!isProd) {
-        return;
-      }
-
-      // copy the images to the <output_directory>/images/events
-      const destDir = path.join(outDir, "assets", "images", "events");
-
-      // make sure the directory exists
-      fs.mkdirSync(destDir, {
-        recursive: true,
-      });
-
-      // copy all files from the temp directory to the destination directory
-      fs.readdirSync(uniqueDirUnderTemp).forEach((f) => {
-        const src = path.join(uniqueDirUnderTemp, f);
-        const dest = path.join(destDir, f);
-        fs.copyFileSync(src, dest);
-      });
-
-      // delete the temp directory
-      fs.rmdirSync(uniqueDirUnderTemp, { recursive: true });
     },
   };
 };

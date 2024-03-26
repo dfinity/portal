@@ -1,8 +1,16 @@
+---
+keywords: [intermediate, tutorial, developer journey, https outcalls]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 3.2 Using HTTPS outcalls
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 ## Overview
 
-In the past, blockchain networks were only able to communicate with external servers through blockchain oracles, or third-party entities that relayed calls from the blockchain to an external server, then routed the response back to the blockchain. This is because blockchains are a form of replicated state machine, where each replica must perform the same computations within the same state to make the same transitions each round. Since doing computations with results from an external source may lead to a state divergence, tools like oracles have been used in the past. However, on the Internet Computer, canisters can communicate directly with external servers or other blockchains through **HTTPS outcalls**. 
+In the past, blockchain networks were only able to communicate with external servers through blockchain oracles, or third-party entities that relayed calls from the blockchain to an external server, then routed the response back to the blockchain. This is because blockchains are a form of replicated state machine, where each replica must perform the same computations within the same state to make the same transitions each round. Since doing computations with results from an external source may lead to a state divergence, tools like oracles have been used in the past. However, on the Internet Computer, canisters can communicate directly with external servers or other blockchains through **HTTPS outcalls**.
 
 HTTPS outcalls are a feature of canisters on ICP that allow smart contracts to directly make calls to HTTPS servers that are external to ICP. The response of these HTTPS calls can then be used by the smart contract in a way that the replica can safely be updated using the response without the risk of a state divergence.
 
@@ -10,7 +18,7 @@ HTTPS outcalls are a feature of canisters on ICP that allow smart contracts to d
 This guide uses the term **HTTPS** to refer to both the **HTTP** and **HTTPS** protocols. This is because typically all traffic on a public network uses the secure HTTPS protocol.
 :::
 
-HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries, such as an oracle, required for the canister to communicate with external servers, and using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional, 'Web 2', services. 
+HTTPS outcalls provide the ability for different use cases and have several advantages compared to using oracles to handle external requests. Some of these are HTTPS outcalls use a stronger trust model since there are no external intermediaries, such as an oracle, required for the canister to communicate with external servers, and using HTTPS outcalls for communicating with external servers makes using canisters feel much closer to a "traditional" programming workflow that may not use blockchains or oracles. Most real-world dapps have a need for accessing data stored in off-chain entities, since most digital data is still stored in traditional, 'Web 2', services.
 
 ## Supported HTTPS methods
 
@@ -18,7 +26,7 @@ Currently, HTTPS outcalls support `GET`, `HEAD`, and `POST` methods for HTTPS re
 
 ## Cycles
 
-Cycles used to pay for an HTTPS call must be explicitly transferred with the call. They will not be automatically deducted from the caller's balance. 
+Cycles used to pay for an HTTPS call must be explicitly transferred with the call. They will not be automatically deducted from the caller's balance.
 
 ## HTTPS outcalls API
 
@@ -36,7 +44,7 @@ It is recommended to set `max_response_bytes`, since using it appropriately can 
 
 - `headers`: Specifies the list of HTTP request headers and their corresponding values.
 
-- `body`: Specifies the content of the request's body. This field is optional. 
+- `body`: Specifies the content of the request's body. This field is optional.
 
 - `transform`: Specifies a function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. This field is optional; if it is provided, the calling canister itself must export this function.
 
@@ -50,24 +58,26 @@ The returned response, including the response to the `transform` function if spe
 
 ### IPv6
 
-When deploying applications to the Internet Computers, HTTPS outcalls can **only** be made to APIs that support **IPv6**. You can check if an API supports IPv6 by using a tool such as `https://ready.chair6.net/`. 
+When deploying applications to the Internet Computers, HTTPS outcalls can **only** be made to APIs that support **IPv6**. You can check if an API supports IPv6 by using a tool such as `https://ready.chair6.net/`.
 
 ## HTTPS `GET`
 
-To demonstrate how to use the HTTPS `GET` outcall, you'll create a simple canister that has one public method named `get_icp_usd_exchange()`. This method will trigger an HTTP `GET` request to the external service Coinbase, which will return current data on the exchange rate between USD and ICP. This canister will have no frontend, and you will interact with its public methods via the Candid web UI.  
+To demonstrate how to use the HTTPS `GET` outcall, you'll create a simple canister that has one public method named `get_icp_usd_exchange()`. This method will trigger an HTTP `GET` request to the external service Coinbase, which will return current data on the exchange rate between USD and ICP. This canister will have no frontend, and you will interact with its public methods via the Candid web UI.
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -77,10 +87,10 @@ dfx start --clean --background
 dfx new https_get
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -90,7 +100,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
@@ -120,7 +130,7 @@ cd https_get
 
 ```bash
 dfx start --clean --background
-dfx new https_get
+dfx new https_get --no-frontend
 cd https_get
 ```
 
@@ -128,7 +138,7 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ### Creating an HTTP `GET` request
 
@@ -145,7 +155,7 @@ import Nat64 "mo:base/Nat64";
 import Text "mo:base/Text";
 ```
 
-This piece of code imports the libraries that you'll be using. Each of these libraries is part of the Motoko base package, as indicated by 'mo:base'. 
+This piece of code imports the libraries that you'll be using. Each of these libraries is part of the Motoko base package, as indicated by 'mo:base'.
 
 Next, insert the following line below these import statements:
 
@@ -159,7 +169,7 @@ Following the `import Types "Types";` line, now let's insert the code to define 
 
 ```motoko
 actor {
-  
+
   // This function sends our GET request
 
   public func get_icp_usd_exchange() : async Text {
@@ -202,21 +212,21 @@ actor {
         transform = ?transform_context;
     };
 
-    // Now, you need to add some cycles to your call, since cycles to pay for the call must be transferred with the call. 
+    // Now, you need to add some cycles to your call, since cycles to pay for the call must be transferred with the call.
     // The way Cycles.add() works is that it adds those cycles to the next asynchronous call.
     // "Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call".
     // See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
 
     Cycles.add(20_949_972_000);
-    
+
     // Now that you have the HTTP request and cycles to send with the call, you can make the HTTP request and await the response.
 
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
-    
-    // Once you have the response, you need to decode it. The body of the HTTP response should come back as [Nat8], which needs to be decoded into readable text. 
+
+    // Once you have the response, you need to decode it. The body of the HTTP response should come back as [Nat8], which needs to be decoded into readable text.
     // To do this, you:
     //  1. Convert the [Nat8] into a Blob
-    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
+    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional
     //  3. Use a switch to explicitly call out both cases of decoding the Blob into ?Text
 
     let response_body: Blob = Blob.fromArray(http_response.body);
@@ -272,7 +282,7 @@ actor {
 };
 ```
 
-The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality. 
+The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 
 A few important points to note are:
 
@@ -284,9 +294,9 @@ A few important points to note are:
 
 ### The `transform` function
 
-The `transform` function in the code above is important because it takes the raw content and transforms it into a raw HTTP payload. This step sets the payload's headers, which include the Content Security Policy and Strict Transport Security headers. 
+The `transform` function in the code above is important because it takes the raw content and transforms it into a raw HTTP payload. This step sets the payload's headers, which include the Content Security Policy and Strict Transport Security headers.
 
-When developing locally, this function doesn't have much of an effect since only the local replica (one node) is making the call. 
+When developing locally, this function doesn't have much of an effect since only the local replica (one node) is making the call.
 
 When HTTP calls are used on the mainnet, a common error message may appear that indicates not all replicas on the subnet get the same response:
 
@@ -294,7 +304,7 @@ When HTTP calls are used on the mainnet, a common error message may appear that 
 Reject text: Canister http responses were different across replicas, and no consensus was reached
 ```
 
-This error occurs when the replicas on the subnet don't all return the same value for a piece of data within the HTTP response. For example, if you have an application that sends an HTTP request to the Coinbase API for the current price of a token, due to latency the replicas will not all return the same response. To remedy this, you can request the token price for a specific timestamp to assure that the replicas all return the same response. 
+This error occurs when the replicas on the subnet don't all return the same value for a piece of data within the HTTP response. For example, if you have an application that sends an HTTP request to the Coinbase API for the current price of a token, due to latency the replicas will not all return the same response. To remedy this, you can request the token price for a specific timestamp to assure that the replicas all return the same response.
 
 Once you've inserted these snippets of code into the `src/http_get_backend/main.mo` file, save the file. The file should look like this:
 
@@ -366,7 +376,7 @@ actor {
     Cycles.add(20_949_972_000);
 
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
-    
+
     let response_body: Blob = Blob.fromArray(http_response.body);
     let decoded_text: Text = switch (Text.decodeUtf8(response_body)) {
         case (null) { "No value returned" };
@@ -375,32 +385,10 @@ actor {
 
     decoded_text
 
-    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
-      let transformed : Types.CanisterHttpResponsePayload = {
-          status = raw.response.status;
-          body = raw.response.body;
-          headers = [
-              {
-                  name = "Content-Security-Policy";
-                  value = "default-src 'self'";
-              },
-              { name = "Referrer-Policy"; value = "strict-origin" },
-              { name = "Permissions-Policy"; value = "geolocation=(self)" },
-              {
-                  name = "Strict-Transport-Security";
-                  value = "max-age=63072000";
-              },
-              { name = "X-Frame-Options"; value = "DENY" },
-              { name = "X-Content-Type-Options"; value = "nosniff" },
-          ];
-      };
-      transformed;
-  };
-
 };
 ```
 
-:::info 
+:::info
 The `transform` function in the HTTP `POST` request should be used in the same manner that it was in the HTTP `GET` example. You can revisit the [transform function](#the-transform-function) description above for more information.
 :::
 
@@ -416,7 +404,7 @@ Then, open the `src/http_get_backend/Types.mo` file in your code editor and inse
 module Types {
 
   public type Timestamp = Nat64;
-  
+
   // First, define the Type that describes the Request arguments for an HTTPS outcall.
 
     public type HttpRequestArgs = {
@@ -448,7 +436,7 @@ module Types {
     // HTTPS outcalls have an optional "transform" key. These two types help describe it.
     // The transform function can transform the body in any way, add or remove headers, or modify headers.
     // This Type defines a function called 'TransformRawResponse', which is used above.
-    
+
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
@@ -480,17 +468,17 @@ module Types {
 }
 ```
 
-The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality. 
+The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 
 Now, you can deploy the canister locally with the commands:
 
 ```bash
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy
 ```
 
 :::caution
-Recall that if you'd like to deploy this canister on the mainnet, you can use the `--network ic` flag. 
+Recall that if you'd like to deploy this canister on the mainnet, you can use the `--network ic` flag.
 :::
 
 These commands should return the canister's URL. Open the `http_get_backend` canister's URL to open the Candid UI:
@@ -506,19 +494,19 @@ Once you open the Candid UI, you can use the 'Call' button to call the `get_icp_
 
 ![HTTP GET](../_attachments/http_get_candid.png)
 
-You can play with a version of this canister running on-chain here: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
+You can play with a version of this canister running on-chain: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai
 
 ## HTTPS `POST`
 
-To demonstrate how to use the HTTPS `POST` outcall, you'll create a simple canister that has one public method named `send_http_post_request()`. This method will trigger an HTTP `POST` request to a public API service where the HTTPS request can be inspected and you can inspect the request's headers and body to validate that it reflects what the canister sent. 
+To demonstrate how to use the HTTPS `POST` outcall, you'll create a simple canister that has one public method named `send_http_post_request()`. This method will trigger an HTTP `POST` request to a public API service where the HTTPS request can be inspected and you can inspect the request's headers and body to validate that it reflects what the canister sent.
 
 The following are some important notes on `POST` requests:
 
 - Since HTTPS outcalls go through consensus, it is expected that any HTTPS `POST` request may be sent several times to it's destination. This is because it is common for clients to retry requests for a variety of reasons.
 
-- It is recommended that HTTP `POST` requests add the idempotency keys in the header of the request so that the destination knows which `POST` requests from the client are identical. 
+- It is recommended that HTTP `POST` requests add the idempotency keys in the header of the request so that the destination knows which `POST` requests from the client are identical.
 
-- Developers should be cautious using idempotency keys since the destination server may not know how to understand and use them. 
+- Developers should be cautious using idempotency keys since the destination server may not know how to understand and use them.
 
 ### Creating a new project
 
@@ -581,7 +569,7 @@ actor {
 
     // Next, setup the URL and its query parameters. This portion uses a free API.
     let host : Text = "putsreq.com";
-    let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81"; 
+    let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81";
 
     // Then, prepare headers for the system http_request call. Note that idempotency keys should be unique, so you create a function that generates them.
 
@@ -599,11 +587,11 @@ actor {
     // 3. Convert the Blob into an array [Nat8]
 
     let request_body_json: Text = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }";
-    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); 
+    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json);
     let request_body_as_nat8: [Nat8] = Blob.toArray(request_body_as_Blob); // e.g [34, 34,12, 0]
 
 
-    // Then you transform the content 
+    // Then you transform the content
     let transform_context : Types.TransformContext = {
       function = transform;
       context = Blob.fromArray([]);
@@ -615,26 +603,26 @@ actor {
         max_response_bytes = null; //optional for request
         headers = request_headers;
         //note: type of `body` is ?[Nat8] so you pass it here as "?request_body_as_nat8" instead of "request_body_as_nat8"
-        body = ?request_body_as_nat8; 
+        body = ?request_body_as_nat8;
         method = #post;
         transform = ?transform_context;
     };
 
-    // Now, you need to add some cycles to your call, since cycles to pay for the call must be transferred with the call. 
+    // Now, you need to add some cycles to your call, since cycles to pay for the call must be transferred with the call.
     // The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     // "Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
     // See: https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-http_request
 
     Cycles.add(21_850_258_000);
-    
+
     // Now that you have the HTTP request and cycles to send with the call, you can make the HTTP request and await the response.
 
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
-    
-    // Once you have the response, you need to decode it. The body of the HTTP response should come back as [Nat8], which needs to be decoded into readable text. 
+
+    // Once you have the response, you need to decode it. The body of the HTTP response should come back as [Nat8], which needs to be decoded into readable text.
     // To do this, you:
     //  1. Convert the [Nat8] into a Blob
-    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional 
+    //  2. Use Blob.decodeUtf8() method to convert the Blob to a ?Text optional
     //  3. Use Motoko syntax "Let... else" to unwrap what is returned from Text.decodeUtf8()
 
     let response_body: Blob = Blob.fromArray(http_response.body);
@@ -648,7 +636,7 @@ actor {
     result
   };
 
-  // As a final step, you define a private helper function that generates a universally unique identifier. In this exercise, it returns a constant but in practice it should return a unique identifier. 
+  // As a final step, you define a private helper function that generates a universally unique identifier. In this exercise, it returns a constant but in practice it should return a unique identifier.
 
   func generateUUID() : Text {
     "UUID-123456789";
@@ -656,7 +644,7 @@ actor {
 };
 ```
 
-The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality. 
+The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 
 Once you've inserted these snippets of code into the `src/http_post_backend/main.mo` file, save the file. The file should look like this:
 
@@ -700,7 +688,7 @@ actor {
     let ic : Types.IC = actor ("aaaaa-aa");
 
     let host : Text = "putsreq.com";
-    let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81"; 
+    let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81";
 
     let idempotency_key: Text = generateUUID();
     let request_headers = [
@@ -711,9 +699,9 @@ actor {
     ];
 
     let request_body_json: Text = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }";
-    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json); 
+    let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json);
     let request_body_as_nat8: [Nat8] = Blob.toArray(request_body_as_Blob); // e.g [34, 34,12, 0]
- 
+
     let transform_context : Types.TransformContext = {
       function = transform;
       context = Blob.fromArray([]);
@@ -724,13 +712,13 @@ actor {
         max_response_bytes = null; //optional for request
         headers = request_headers;
         //note: type of `body` is ?[Nat8] so you pass it here as "?request_body_as_nat8" instead of "request_body_as_nat8"
-        body = ?request_body_as_nat8; 
+        body = ?request_body_as_nat8;
         method = #post;
         transform = ?transform_context;
     };
 
     Cycles.add(21_850_258_000);
-    
+
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
 
     let response_body: Blob = Blob.fromArray(http_response.body);
@@ -823,17 +811,17 @@ module Types {
 }
 ```
 
-The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality. 
+The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 
 Now, you can deploy the canister locally with the commands:
 
 ```bash
-dfx start --background --clean
+dfx start --clean --background
 dfx deploy
 ```
 
 :::caution
-Recall that if you'd like to deploy this canister on the mainnet, you can use the `--network ic` flag. 
+Recall that if you'd like to deploy this canister on the mainnet, you can use the `--network ic` flag.
 :::
 
 These commands should return the canister's URL. Open the `http_get_backend` canister's URL to open the Candid UI:
@@ -849,14 +837,14 @@ Once you open the Candid UI, you can use the 'Call' button to call the `send_htt
 
 ![HTTP POST](../_attachments/http_post_candid.png)
 
-You can play with a version of this canister running on-chain here: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai.
+You can play with a version of this canister running on-chain: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai.
 
 
 ## Need help?
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 

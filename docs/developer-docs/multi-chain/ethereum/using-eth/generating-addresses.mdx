@@ -1,0 +1,44 @@
+---
+keywords: [advanced, ethereum, addresses, eth address ]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Generating addresses
+
+<MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
+
+## Overview
+
+On Ethereum, there are two types of addresses: wallet addresses for holding assets and contract addresses. Wallet addresses are public accounts that can send and receive ETH tokens. Contract addresses refer to a smart contract that has been executed on Ethereum and the transactions associated with that contract.
+
+Wallet and contract addresses can be queried using the [EVM RPC canister](evm-rpc.mdx).
+
+## Canister ETH addresses
+
+To create an ETH address for your canister, you will need to a public key controlled by your canister. An example in Rust can be found below:
+
+```rust
+/// Converts the public key bytes to an Ethereum address with a checksum.
+fn pubkey_bytes_to_address(pubkey_bytes: &[u8]) -> String {
+    use k256::elliptic_curve::sec1::ToEncodedPoint;
+
+    let key =
+        PublicKey::from_sec1_bytes(pubkey_bytes).expect("failed to parse the public key as SEC1");
+    let point = key.to_encoded_point(false);
+    // we re-encode the key to the decompressed representation.
+    let point_bytes = point.as_bytes();
+    assert_eq!(point_bytes[0], 0x04);
+
+    let hash = keccak256(&point_bytes[1..]);
+
+    ethers_core::utils::to_checksum(&Address::from_slice(&hash[12..32]), None)
+}
+```
+
+## Next steps
+
+You can use this address to make Ethereum transactions from your canister.
+
+[Learn how to sign Ethereum transactions](signing-transactions.mdx).

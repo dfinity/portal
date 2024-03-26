@@ -1,7 +1,16 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [beginner, motoko, tutorial, natural numbers]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 11: Incrementing a natural number
+
+<MarkdownChipRow labels={["Beginner", "Motoko", "Tutorial"]} />
 
 ## Overview
 
@@ -27,7 +36,7 @@ Open a terminal shell on your local computer, if you don’t already have one op
 
 Create a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -36,26 +45,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new my_counter
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -72,13 +81,13 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new my_counter
+dfx new my_counter --no-frontend
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
-
+For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 The command creates a new `my_counter` project for your project.
 
@@ -156,7 +165,7 @@ This keyword ensures that the value for the variable is unchanged when the progr
 
 For more information about stable and flexible variables, see [stable variables and upgrade methods](/motoko/main/upgrades.md) in the [**Motoko programming language guide**](/motoko/main/about-this-guide.md).
 
-For more information about the differences between a query and an update, see [query and update methods](/concepts/canisters-code.md#query-update) in [canisters include both program and state](/concepts/canisters-code.md#canister-state).
+For more information about the differences between a query and an update, see [query and update methods](/docs/current/concepts/canisters-code#query-update) in [canisters include both program and state](/docs/current/concepts/canisters-code#canister-state).
 
 Save your changes and close the file to continue.
 
@@ -185,7 +194,7 @@ Leave the terminal that displays network operations open and switch your focus t
 
 ## Register, build, and deploy the dapp
 
-After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp locally.
+After you connect to the local replica running in your development environment, you can register, build, and deploy your dapp locally.
 
 Register, build, and deploy your dapp by running the following command in your project's directory:
 

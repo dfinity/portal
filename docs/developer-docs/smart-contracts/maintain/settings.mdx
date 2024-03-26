@@ -1,12 +1,21 @@
+---
+keywords: [beginner, tutorial, maintain canisters, settings, canister settings]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 # Settings
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 ## Overview
 
-If you have experimented with using the IC SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as **canisters**. This section provides additional information about the canister lifecycle and how to manage canisters.
+If you have experimented with using the IC SDK by following the tutorials in this section or by cloning examples from the [examples](https://github.com/dfinity/examples) repository, you are already familiar with how to build and deploy programs as <GlossaryTooltip>canisters</GlossaryTooltip>s. This section provides additional information about the canister lifecycle and how to manage canisters.
 
 ## Obtaining a canister identifier
 
-Depending on your preferred development workflow, you can obtain a unique identifier for your canister, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister on a subnet before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
+Depending on your preferred development workflow, you can obtain a unique identifier for your canister, before or after you have a program ready to compile. For example, if you want to reserve a unique identifier for your canister on a <GlossaryTooltip>subnet</GlossaryTooltip> before you have written any code, you can do so by running the `dfx canister create` command. This command essentially creates an empty canister placeholder into which you can later install your code. The resulting canister will obtain a unique identifier.
 
 To obtain a unique identifier for a canister:
 
@@ -28,7 +37,7 @@ To obtain a unique identifier for a canister:
 
 - #### Step 5:  Start the local canister execution environment, if necessary, by running the following command:
 
-        dfx start --background
+        dfx start --clean --background
 
     In most cases, this step is only necessary if you are running the canisters locally.
 
@@ -114,7 +123,7 @@ To set an identity for a project:
 
 - #### Step 3:  Start the local canister execution environment in the background by running the following command:
 
-        dfx start --background
+        dfx start --clean --background
 
 - #### Step 4:  Create a new `registered_owner` identity by running the following command:
 

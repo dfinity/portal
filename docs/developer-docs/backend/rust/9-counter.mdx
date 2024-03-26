@@ -1,7 +1,16 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [beginner, rust, tutorial, counter]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 9: Incrementing a counter
+
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
 ## Overview
 
@@ -19,7 +28,7 @@ This guide provides a simple example of how you can increment a counter by calli
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Create the counter dapp project
 
@@ -27,7 +36,7 @@ Open a terminal window on your local computer, if you don’t already have one o
 
 Start by creating a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -36,26 +45,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new rust_counter
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Rust':
+You will be prompted to select the language that your backend canister will use. Select 'Rust':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -72,11 +81,11 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new --type=rust rust_counter
+dfx new rust_counter --type=rust --no-frontend
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Then, navigate into your project directory by running the command:
 
@@ -88,7 +97,7 @@ cd rust_counter
 Note: the following steps assume the terminal is still open and the current directory is `rust_counter`.
 :::
 
-Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead. 
+Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead.
 
 To replace the default dapp, open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content.
 
@@ -207,19 +216,19 @@ cargo update
 
 ### Start the local canister execution environment
 
-Before you can build the `rust_counter` project, you need to connect to the local canister execution environment running in your development environment or the decentralized Internet Computer blockchain mainnet.
+Before you can build the `rust_counter` project, you need to connect to the local replica running in your development environment or the decentralized Internet Computer blockchain mainnet.
 
 Start the local canister execution environment on your computer in the background by running the following command:
 
 ``` bash
-dfx start --clean --background 
+dfx start --clean --background
 ```
 
 Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click **Allow**.
 
 ### Register, build, and deploy your project
 
-After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your project locally.
+After you connect to the local replica running in your development environment, you can register, build, and deploy your project locally.
 
 Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
 

@@ -1,21 +1,31 @@
-# 2.4 Introduction to Candid 
+---
+keywords: [intermediate, tutorial, developer journey, candid, introduction candid]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# 2.4 Introduction to Candid
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tomc-Iny0O4?si=YYNNMhSA0r3pcleS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Overview
 
 Candid is an interface description language that is used to describe the public interface of a service. A **service** is usually in the form of an application deployed as a canister on ICP. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister **methods**, regardless of the manner used to interact with the canister. Recall that a method is a piece of code specifying a task which declares a sequence of arguments and their associated result types.
 
-Candid is language-agnostic, which is a key benefit since it allows for the inter-operation between canisters written in different languages, such as Motoko, Rust, and JavasScript, and client applications. 
+Candid is language-agnostic, which is a key benefit since it allows for the inter-operation between canisters written in different languages, such as Motoko, Rust, and JavasScript, and client applications.
 
-Candid is unique since it provides functionality and features not available in other technologies, such as JSON or XML. Some of these features include the evolution of service interfaces, direct value mapping for Candid values to the types and values of the canister's language, and the ability to pass complex data such as references to services and methods. Candid also has built-in support for ICP-specific features like query annotation. 
+Candid is unique since it provides functionality and features not available in other technologies, such as JSON or XML. Some of these features include the evolution of service interfaces, direct value mapping for Candid values to the types and values of the canister's language, and the ability to pass complex data such as references to services and methods. Candid also has built-in support for ICP-specific features like query annotation.
 
 Up until now in this developer journey, you've utilized the Candid UI a few times through the web browser. If you recall, in several tutorials you've interacted with the backend canisters in the web browser with the URL from an output such as:
 
 ```
   Backend canister via Candid interface:
-    dependencies_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
-These URLs take you to the Candid user interface (UI). Now it's time to take a closer look at the fundamentals of Candid to understand how it works and how it can be used for more complex dapp development. 
+These URLs take you to the Candid user interface (UI). Now it's time to take a closer look at the fundamentals of Candid to understand how it works and how it can be used for more complex dapp development.
 
 ## Candid types and values
 
@@ -37,16 +47,16 @@ Candid supports the following set of types in order to provide a natural mapping
 
 - Reference types (`Service`, `Func`, `Principal`).
 
-- Special types `Null`, `Reserved` and `Empty`. 
+- Special types `Null`, `Reserved` and `Empty`.
 
-Each of these types is described in detail in the [Candid reference documentation](/docs/references/candid-ref.md).
+Each of these types is described in detail in the [Candid reference documentation](/docs/current/references/candid-ref).
 
 
 ### Candid textual values
 
-Typically, as a developer you may not work with your program data as Candid values; instead, you may work with a host language such as Javascript and utilize Candid to transparently transport your dapp's data to your canister written in Motoko or Rust. The receiving canister treats this data as native Motoko or Rust values. 
+Typically, as a developer you may not work with your program data as Candid values; instead, you may work with a host language such as Javascript and utilize Candid to transparently transport your dapp's data to your canister written in Motoko or Rust. The receiving canister treats this data as native Motoko or Rust values.
 
-In some scenarios, like debugging, logging, or interacting with a service via the terminal command-line, it may be useful to see the Candid values in a human-readable format. In these situations, the textual presentation of Candid values can be used. 
+In some scenarios, like debugging, logging, or interacting with a service via the terminal command-line, it may be useful to see the Candid values in a human-readable format. In these situations, the textual presentation of Candid values can be used.
 
 The syntax for the textual presentation of Candid values is similar to that of Candid types. An example of a textual presentation for a Candid value is:
 
@@ -74,15 +84,15 @@ In contrast, the Candid binary format uses numeric hashes in place of field name
 
 ## Candid service descriptions
 
-Now that you've learned about Candid types, you can learn how to use them to describe a service. Candid uses a service description file with the file extension `.did`. Let's take a closer look at the structure of a service description. 
+Now that you've learned about Candid types, you can learn how to use them to describe a service. Candid uses a service description file with the file extension `.did`. Let's take a closer look at the structure of a service description.
 
 ### The `.did` file
 
-To define Candid types and describe a service, a Candid service description file can be used. This file has the extension `.did`, and can be generated from a service implementation or written manually. 
+To define Candid types and describe a service, a Candid service description file can be used. This file has the extension `.did`, and can be generated from a service implementation or written manually.
 
-The Candid files you have used thus far in the developer journey have been generated automatically. This is because a Motoko canister's Candid files are automatically generated by the Motoko compiler when the canister is compiled, then stored in the project's `/declarations` directory. When Candid files are auto-generated, it is not recommended to edit them manually, and any changes made to the file will be overwritten by `dfx` the next time the project is built and deployed. For canisters written in other languages, the Candid file must be written manually or generated using an external tool. 
+The Candid files you have used thus far in the developer journey have been generated automatically. This is because a Motoko canister's Candid files are automatically generated by the Motoko compiler when the canister is compiled, then stored in the project's `/declarations` directory. When Candid files are auto-generated, it is not recommended to edit them manually, and any changes made to the file will be overwritten by `dfx` the next time the project is built and deployed. For canisters written in other languages, the Candid file must be written manually or generated using an external tool.
 
-### Example Candid service descriptions 
+### Example Candid service descriptions
 
 The simplest service description defines a service with no public methods. This would look like:
 
@@ -104,10 +114,10 @@ In this `ping` method, there are no arguments passed to the method and there are
 
 ### Generating service descriptions
 
-Now that you've taken a look at the basic structure of a Candid service description, let's take a look at how to generate the service description from your code. 
+Now that you've taken a look at the basic structure of a Candid service description, let's take a look at how to generate the service description from your code.
 
 :::info
-Generating Candid files is supported for canisters written in Motoko. Canisters written in other languages will need to have their Candid files written manually. Check out the [Candid interface description](/docs/references/candid-ref.md) for more information on manually writing the service description. 
+Generating Candid files is supported for canisters written in Motoko. Canisters written in other languages will need to have their Candid files written manually. Check out the [Candid interface description](/docs/current/references/candid-ref) for more information on manually writing the service description.
 :::
 
 The following is an example Motoko canister that defines simple `add`, `subtract`, and `get` functions:
@@ -134,34 +144,34 @@ service counter : {
 This example describes a service called `counter` that consist of the following public methods:
 
 - The `add` and `subtract` methods, which change the value of the counter.
-- The `get` method, which reads the current value of the counter. 
+- The `get` method, which reads the current value of the counter.
 
-This example Candid interface description helps to illustrate that every method has a sequence of argument and result types. Methods can also include annotations, like the query notation shown in this example (`() -> (int) query;`), which is a feature specific to ICP. 
+This example Candid interface description helps to illustrate that every method has a sequence of argument and result types. Methods can also include annotations, like the query notation shown in this example (`() -> (int) query;`), which is a feature specific to ICP.
 
-For canisters written in other languages such as Rust, you can develop your service using the language's native types. For Rust examples of how to write Candid service descriptions, see the documentation [here](https://internetcomputer.org/docs/current/developer-docs/backend/rust/candid/).
+For canisters written in other languages such as Rust, you can develop your service using the language's native types. [View Rust examples of how to write Candid service descriptions](https://internetcomputer.org/docs/current/developer-docs/backend/rust/candid/).
 
-To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the `candid-extractor` tool. You can learn more [here](https://internetcomputer.org/docs/current/backend/candid/generating-candid).
+To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the [`candid-extractor` tool](https://internetcomputer.org/docs/current/backend/candid/generating-candid).
 
 
 ## Service upgrades
 
-As your application changes and evolves over time, the methods will most likely change as well. New methods may be introduced, existing methods may expect additional arguments, or new data may be returned. Ideally, developers want to make these changes without breaking any existing workflows or clients. 
+As your application changes and evolves over time, the methods will most likely change as well. New methods may be introduced, existing methods may expect additional arguments, or new data may be returned. Ideally, developers want to make these changes without breaking any existing workflows or clients.
 
 Candid supports service upgrades through a set of specific rules that indicate when a new service type will be able to communicate with any running clients that are using the previous interface description. Services can be upgraded in the following ways:
 
 - New methods can be added.
 
-- Existing methods can return additional values; clients using the previous interface description will ignore these additional values. 
+- Existing methods can return additional values; clients using the previous interface description will ignore these additional values.
 
-- Existing methods can shorten their parameter list; clients using the previous interface description may still send extra arguments, but they will be ignored. 
+- Existing methods can shorten their parameter list; clients using the previous interface description may still send extra arguments, but they will be ignored.
 
-- Existing methods can extend their parameter list with optional arguments; clients using the previous interface description who do not pass that argument will use a `null` value. 
+- Existing methods can extend their parameter list with optional arguments; clients using the previous interface description who do not pass that argument will use a `null` value.
 
 - Existing parameter types may be changed, but only as a supertype of the previously used type.
 
 - Existing result types may be changed, but only as a subtype of the previously used type.
 
-For additional information about the supertypes and subtypes of any given type, check out the [Candid interface reference documentation](/docs/references/candid-ref.md) for each type.
+For additional information about the supertypes and subtypes of any given type, check out the [Candid interface reference documentation](/docs/current/references/candid-ref) for each type.
 
 To demonstrate an example of how a service might be upgraded, let's use the `counter` service example that you looked at in [generating service descriptions](#generating-service-descriptions).
 
@@ -184,7 +194,7 @@ service counter : {
   add : (int) -> (new_val : nat); // Change the parameter result types
   subtract : (nat, trap_on_underflow : opt bool) -> (new_val : nat); // Change the parameter result types
   get : () -> (nat, last_change : timestamp) query; // Change the result types
-} 
+}
 ```
 
 ## Using Candid
@@ -193,16 +203,18 @@ Now that you've taken a deep dive into Candid, let's explore the different ways 
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -212,10 +224,10 @@ dfx start --clean --background
 dfx new candid_example
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -225,7 +237,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
@@ -262,7 +274,7 @@ cd candid_example
 Remember, by default `dfx new` creates a new project in the Motoko language. If you'd like to create a Rust project, use the flag `--type=rust`.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 You'll be using the sample Motoko canister that you looked at in the [generating service descriptions](#generating-service-descriptions) section earlier. Open the `src/candid_example_backend/main.mo` file in your code editor and replace the existing code with the following:
 
@@ -293,7 +305,7 @@ service : {
 
 ### Interacting with a service using the command-line terminal
 
-Now that your canister is deployed, let's use `dfx` to interact with the methods defined by your Candid file. This section of tutorial will look familiar, since in previous tutorials you've interacted with canisters in the same manner - you just hadn't known you were directly interacting with the Candid defined services since the Candid files had been automatically generated for you in the background. 
+Now that your canister is deployed, let's use `dfx` to interact with the methods defined by your Candid file. This section of tutorial will look familiar, since in previous tutorials you've interacted with canisters in the same manner - you just hadn't known you were directly interacting with the Candid defined services since the Candid files had been automatically generated for you in the background.
 
 For example, let's call the `add` method to add a number to our counter with the command:
 
@@ -304,7 +316,7 @@ dfx canister call candid_example_backend add 12
 Then, you can call the `get` method to return the value you just added:
 
 ```bash
-dfx canister call candid_example_backend get  
+dfx canister call candid_example_backend get
 (12 : int)
 ```
 
@@ -317,7 +329,7 @@ dfx canister call candid_example_backend subtract 4
 Then call the `get` method again:
 
 ```bash
-dfx canister call candid_example_backend get  
+dfx canister call candid_example_backend get
 (8 : int)
 ```
 
@@ -328,15 +340,15 @@ dfx canister call candid_example_backend subtract 8
 ```
 
 
-### Interacting with a service using a web browser 
+### Interacting with a service using a web browser
 
-Based on the types of services offered by a canister, Candid can provide a web interface, known as the Candid UI, that allows the developer to call canister functions for debugging and testing from within a web browser. This functionality does not require the development of any frontend code and does not require a frontend canister be created or deployed. 
+Based on the types of services offered by a canister, Candid can provide a web interface, known as the Candid UI, that allows the developer to call canister functions for debugging and testing from within a web browser. This functionality does not require the development of any frontend code and does not require a frontend canister be created or deployed.
 
 To interact with the Candid UI from a web browser, recall that when a canister is deployed, the following output is returned:
 
 ```bash
   Backend canister via Candid interface:
-    candid_example_backend: http://127.0.0.1:8080/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
+    candid_example_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
 ```
 
 In this output, you can see the URL for the Candid interface under 'Backend canister via Candid interface'. Opening this URL in a web browser will display the following UI:
@@ -363,7 +375,7 @@ Lastly, call the 'get' method again to return our final counter value:
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -385,6 +397,6 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-Next, let's explore how to test and debug projects and canisters. 
+Next, let's explore how to test and debug projects and canisters.
 
 - [2.5 Unit, integration, and end2end testing](/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing).

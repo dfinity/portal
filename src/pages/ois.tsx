@@ -274,7 +274,7 @@ function OpenChatPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/docs/current/developer-docs/integrations/sns/"
+                href="/docs/current/developer-docs/daos/sns/"
                 className="link-primary link-with-icon"
               >
                 SNS Technical Documentation <LinkArrowRight />
@@ -313,7 +313,7 @@ function OpenChatPage() {
             <MotionLink
               variants={transitions.fadeIn}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal"
+              href="/docs/current/developer-docs/daos/sns/launching/launch-steps-1proposal"
             >
               Launch an SNS DAO
             </MotionLink>

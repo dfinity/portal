@@ -1,7 +1,18 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [beginner, rust, tutorial, quickstart]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 4: Rust quickstart
+
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
 ## Overview
 
@@ -9,13 +20,13 @@ Applications for the Internet Computer blockchain start as **projects**. You can
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Creating a new Rust project
 
 To create a new Rust project using the IC SDK, open a terminal window and run the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -24,10 +35,10 @@ Use `dfx new <project_name>` to create a new project:
 dfx new rust_hello
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Rust':
+You will be prompted to select the language that your backend canister will use. Select 'Rust':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
   Motoko
 ❯ Rust
   TypeScript (Azle)
@@ -37,7 +48,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -64,7 +75,7 @@ dfx new --type=rust rust_hello
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Next, navigate into your project directory by running the following command:
@@ -73,16 +84,16 @@ Next, navigate into your project directory by running the following command:
 cd rust_hello
 ```
 
-## Starting the local execution environment
+## Starting the local canister execution environment
 
-Next, before you can build your project, you need to connect to either the local execution environment running in your development environment or the decentralized Internet Computer mainnet. For this guide, you'll deploy locally in your developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.mdx).
+Next, before you can build your project, you need to connect to either the local <GlossaryTooltip>replica</GlossaryTooltip> running in your development environment or the decentralized Internet Computer mainnet. For this guide, you'll deploy locally in your developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.mdx).
 
-To start the local execution environment, first check that you are still in the root directory for your project, if needed.
+To start the local canister execution environment, first check that you are still in the root directory for your project, if needed.
 
-Then, start the local execution environment on your computer in the background by running the following command:
+Then, start the local <GlossaryTooltip>replica</GlossaryTooltip> on your computer in the background by running the following command:
 
 ```
-dfx start --background
+dfx start --clean --background
 ```
 
 :::info
@@ -91,7 +102,7 @@ Depending on your platform and local security settings, you might see a warning 
 
 ## Register, build, and deploy your project
 
-After you connect to the local execution environment running in your development environment, you can register, build, and deploy your project locally.
+After you connect to the local replica running in your development environment, you can register, build, and deploy your project locally.
 
 Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
 
@@ -124,7 +135,7 @@ Backend canister via Candid interface:
 
 ## Testing the dapp
 
-There are several ways to interact with your canisters. Let's talk about access from the browser first. 
+There are several ways to interact with your canisters. Let's talk about access from the browser first.
 
 To access the frontend canister (`rust_hello_frontend`) you can simply follow the link that was printed in the terminal in the previous step.
 ```
@@ -149,17 +160,17 @@ dfx canister call rust_hello_backend greet world
 
 Then, verify that the call to the `rust_hello_backend` canister `greet` function returns a text message `("Hello, world!")`.
 
-## Stopping the local execution environment
+## Stopping the local canister execution environment
 
-After testing the application, you can stop the local execution environment so that it doesn’t continue running in the background.
+After testing the application, you can stop the local replica so that it doesn’t continue running in the background.
 
-To stop the local execution environment running on your computer, run the following command:
+To stop the local replica running on your computer, run the following command:
 
 ```
 dfx stop
 ```
 
-When dfx is started again in the future, it should be started with the `dfx start --clean` command to wipe the previous state. 
+When dfx is started again in the future, it should be started with the `dfx start --clean` command to wipe the previous state.
 
 ## Next steps
 

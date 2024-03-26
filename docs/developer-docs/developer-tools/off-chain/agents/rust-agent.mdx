@@ -1,4 +1,12 @@
+---
+keywords: [intermediate, agents, tutorial, rust]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Rust agent
+
+<MarkdownChipRow labels={["Intermediate", "Agents" ]} />
 
 ## Overview
 
@@ -18,7 +26,7 @@ cargo add ic-agent
 
 ## Example
 
-The following is an example of how to use the agent interface to make a call to a canister deployed on the mainnet. The canister being called is the management canister (`aaaaa-aa`), which then creates a placeholder value for a new canister and returns that value. 
+The following is an example of how to use the agent interface to make a call to a canister deployed on the mainnet. The canister being called is the management canister (`aaaaa-aa`), which then creates a placeholder value for a new canister and returns that value.
 
 ```rust
 use ic_agent::{Agent, export::Principal};

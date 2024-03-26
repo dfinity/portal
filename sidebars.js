@@ -24,7 +24,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Install the IC SDK",
+          label: "Installing tools",
           id: "developer-docs/getting-started/install/index",
         },
         {
@@ -70,6 +70,212 @@ const sidebars = {
               type: "doc",
               label: "Quickstart for React developers",
               id: "developer-docs/getting-started/quickstart/react-quickstart",
+            },
+            {
+              type: "doc",
+              label: "Juno quickstart",
+              id: "developer-docs/getting-started/quickstart/juno-quickstart",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Smart contracts",
+      items: [
+        {
+          type: "category",
+          label: "Overview",
+          items: [
+            "developer-docs/smart-contracts/overview/introduction",
+            "developer-docs/smart-contracts/overview/inside-canisters",
+            "developer-docs/smart-contracts/overview/canister-lifecycle",
+          ],
+        },
+        {
+          type: "category",
+          label: "Write",
+          items: [
+            "developer-docs/smart-contracts/write/overview",
+            "developer-docs/smart-contracts/write/resources",
+          ],
+        },
+        {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
+        },
+        {
+          type: "category",
+          label: "Deploy",
+          items: [
+            "developer-docs/smart-contracts/deploy/overview",
+            "developer-docs/smart-contracts/deploy/larger-wasm",
+            "developer-docs/smart-contracts/deploy/sharing",
+          ],
+        },
+        {
+          type: "category",
+          label: "Call",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/smart-contracts/call/overview",
+            },
+            {
+              type: "doc",
+              label: "Passing in arguments",
+              id: "developer-docs/smart-contracts/call/arguments",
+            },
+            {
+              type: "category",
+              label: "Candid",
+              items: [
+                "developer-docs/smart-contracts/candid/candid-concepts",
+                "developer-docs/smart-contracts/candid/candid-howto",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Maintain",
+          items: [
+            "developer-docs/smart-contracts/maintain/control",
+            "developer-docs/smart-contracts/maintain/delete",
+            "developer-docs/smart-contracts/maintain/history",
+            "developer-docs/smart-contracts/maintain/import",
+            "developer-docs/smart-contracts/maintain/recovery",
+            "developer-docs/smart-contracts/maintain/state",
+            "developer-docs/smart-contracts/maintain/settings",
+            "developer-docs/smart-contracts/maintain/storage",
+            "developer-docs/smart-contracts/maintain/upgrade",
+            "developer-docs/smart-contracts/maintain/resource-limits",
+            "developer-docs/smart-contracts/maintain/trapping",
+            {
+              type: "category",
+              label: "Cost",
+              items: [
+                "developer-docs/gas-cost",
+                "developer-docs/cost-estimations-and-examples",
+              ],
+            },
+            {
+              type: "category",
+              label: "Topping up canisters",
+              items: [
+                "developer-docs/smart-contracts/topping-up/topping-up-canister",
+                "developer-docs/smart-contracts/topping-up/cycles_management_services",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Test",
+          items: [
+            "developer-docs/smart-contracts/test/pocket-ic",
+            "developer-docs/smart-contracts/test/staging-environment",
+            "developer-docs/smart-contracts/test/reproducible-builds",
+            "developer-docs/smart-contracts/test/troubleshooting",
+          ],
+        },
+        {
+          type: "category",
+          label: "Advanced features",
+          items: [
+            {
+              type: "doc",
+              label: "Composite queries",
+              id: "developer-docs/smart-contracts/advanced-features/composite-query",
+            },
+            {
+              type: "doc",
+              label: "Management canister",
+              id: "developer-docs/smart-contracts/advanced-features/management-canister",
+            },
+            {
+              type: "doc",
+              label: "Handling GET/POST requests",
+              id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
+            },
+            {
+              type: "doc",
+              label: "Serving an HTTP request",
+              id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
+            },
+            {
+              type: "doc",
+              label: "Async code and inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
+            },
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/making-http-requests",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
+                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
+              ],
+            },
+            {
+              type: "category",
+              label: "On-chain signatures: Threshold ECDSA",
+              items: [
+                "developer-docs/smart-contracts/encryption/t-ecdsa",
+                "developer-docs/smart-contracts/encryption/signing-transactions",
+              ],
+            },
+            {
+              type: "category",
+              label: "On-chain encryption: vetKeys",
+              items: [
+                "developer-docs/smart-contracts/encryption/vetkeys",
+                "developer-docs/smart-contracts/encryption/using-vetkeys",
+              ],
+            },
+            {
+              type: "doc",
+              label: "On-chain randomness",
+              id: "developer-docs/smart-contracts/advanced-features/randomness",
+            },
+            "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/query-stats",
+            "developer-docs/smart-contracts/advanced-features/system-canisters",
+          ],
+        },
+        {
+          type: "category",
+          label: "Best practices",
+          items: [
+            {
+              type: "doc",
+              label: "General",
+              id: "developer-docs/smart-contracts/best-practices/general",
+            },
+            {
+              type: "doc",
+              label: "Storage",
+              id: "developer-docs/smart-contracts/best-practices/storage",
+            },
+            {
+              type: "doc",
+              label: "Troubleshooting latency",
+              id: "developer-docs/smart-contracts/best-practices/troubleshooting",
             },
           ],
         },
@@ -121,6 +327,15 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars",
                 "developer-docs/developer-tools/cli-tools/dfx-json-reference",
+                {
+                  type: "category",
+                  label: "Advanced dfx workflows",
+                  items: [
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/dfx-migration",
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json",
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/specifying-replica-version",
+                  ],
+                },
               ],
             },
             {
@@ -210,6 +425,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider",
               ],
             },
+            "developer-docs/developer-tools/cli-tools/ic-admin",
           ],
         },
         {
@@ -235,7 +451,7 @@ const sidebars = {
             {
               type: "doc",
               id: "developer-docs/developer-tools/on-chain/cdks",
-              },
+            },
           ],
         },
         {
@@ -251,191 +467,44 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Smart contracts",
-      items: [
-        {
-          type: "category",
-          label: "Overview",
-          link: {
-            type: "doc",
-            id: "developer-docs/smart-contracts/overview",
-          },
-          items: [
-            "developer-docs/smart-contracts/development-cycle",
-            "developer-docs/smart-contracts/choosing-language",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Build",
-          id: "developer-docs/smart-contracts/build",
-        },
-        {
-          type: "category",
-          label: "Deploy",
-          items: [
-            "developer-docs/smart-contracts/deploy/overview",
-            "developer-docs/smart-contracts/deploy/larger-wasm",
-            "developer-docs/smart-contracts/deploy/sharing",
-          ],
-        },
-        {
-          type: "category",
-          label: "Call",
-          link: {
-            type: "doc",
-            id: "developer-docs/smart-contracts/call-overview",
-          },
-          items: [
-            {
-              type: "doc",
-              label: "Passing in arguments",
-                id: "developer-docs/backend/arguments",
-            },
-            {
-              type: "category",
-              label: "Candid",
-              items: [
-                "developer-docs/smart-contracts/candid/candid-concepts",
-                "developer-docs/smart-contracts/candid/candid-howto",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Maintain",
-          items:[
-            "developer-docs/smart-contracts/maintain/control",
-            "developer-docs/smart-contracts/maintain/delete",
-             "developer-docs/smart-contracts/maintain/history",
-             "developer-docs/smart-contracts/maintain/import",
-             "developer-docs/smart-contracts/maintain/recovery",
-             "developer-docs/smart-contracts/maintain/state",
-             "developer-docs/smart-contracts/maintain/settings",
-             "developer-docs/smart-contracts/maintain/storage",
-             "developer-docs/smart-contracts/maintain/upgrade",
-             "developer-docs/smart-contracts/maintain/resource-limits",
-             {
-              type: "category",
-              label: "Cost",
-              items: [
-                "developer-docs/gas-cost",
-                "developer-docs/cost-estimations-and-examples",
-              ],
-            },
-            {
-              type: "category",
-              label: "Topping up canisters",
-              items: [
-                "developer-docs/smart-contracts/topping-up/topping-up-canister",
-                "developer-docs/smart-contracts/topping-up/cycles_management_services",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Test",
-          items: [
-            "developer-docs/smart-contracts/test/pocket-ic",
-            "developer-docs/smart-contracts/test/staging-environment",
-            "developer-docs/smart-contracts/test/reproducible-builds",
-            "developer-docs/smart-contracts/test/troubleshooting",
-          ],
-        },
-        {
-          type: "category",
-          label: "On-chain signatures: Threshold ECDSA",
-          items: [
-            "developer-docs/smart-contracts/encryption/t-ecdsa",
-            "developer-docs/smart-contracts/encryption/signing-transactions"
-          ],
-        },
-        {
-          type: "category",
-          label: "On-chain encryption: vetKeys",
-          items: [
-            "developer-docs/smart-contracts/encryption/vetkeys",
-            "developer-docs/smart-contracts/encryption/using-vetkeys",
-          ],
-        },
-        {
-          type: "category",
-          label: "Advanced features",
-          items: [
-            {
-              type: "doc",
-              label: "Composite queries",
-              id: "developer-docs/smart-contracts/advanced-features/composite-query",
-            },
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              items: [
-                "developer-docs/integrations/https-outcalls/https-outcalls-overview",
-                "developer-docs/integrations/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/integrations/https-outcalls/https-outcalls-get",
-                "developer-docs/integrations/https-outcalls/https-outcalls-post",
-              ],
-            },
-            "developer-docs/smart-contracts/advanced-features/periodic-tasks",
-            "developer-docs/smart-contracts/advanced-features/query-stats",
-          ],
-        },
-        {
-          type: "category",
-          label: "Best practices",
-          items: [
-            {
-              type: "doc",
-              label: "Architecture",
-              id: "developer-docs/smart-contracts/best-practices/architecture",
-            },
-            {
-              type: "doc",
-              label: "General",
-              id: "developer-docs/smart-contracts/best-practices/general",
-            },
-            {
-              type: "doc",
-              label: "Storage",
-              id: "developer-docs/smart-contracts/best-practices/storage",
-            },
-            {
-              type: "doc",
-              label: "Troubleshooting latency",
-              id: "developer-docs/smart-contracts/best-practices/troubleshooting",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Web apps",
       items: [
         {
           type: "category",
           label: "Application frontends",
           items: [
-            "developer-docs/frontend/index",
-            "developer-docs/frontend/custom-frontend",
-            "developer-docs/frontend/add-stylesheet",
-            "developer-docs/frontend/boilerplate-frontend",
-            "developer-docs/frontend/existing-frontend",
+            "developer-docs/web-apps/application-frontends/overview",
+            "developer-docs/web-apps/application-frontends/custom-frontend",
+            "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/serving-static-assets",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/bundlers",
+            "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
+        },
+        {
+          type: "category",
+          label: "Browser JS",
+          items: [
+            "developer-docs/web-apps/browser-js/js-frameworks",
+            "developer-docs/web-apps/browser-js/js-request-api",
+          ],
+        },
+        {
+          type: "category",
+          label: "Frameworks",
+          items: ["developer-docs/web-apps/frameworks/juno"],
         },
         {
           type: "category",
           label: "Custom domains",
           items: [
-            "developer-docs/production/custom-domain/custom-domain",
-            "developer-docs/production/custom-domain/dns-setup",
+            "developer-docs/web-apps/custom-domains/using-custom-domains",
+            "developer-docs/web-apps/custom-domains/dns-setup",
           ],
         },
-        "developer-docs/backend/design-dapps",
-        "developer-docs/integrations/independently-verifying-ic-signatures",
+        "developer-docs/web-apps/design-dapps",
+        "developer-docs/web-apps/independently-verifying-ic-signatures",
         {
           type: "category",
           label: "User sign-up and login",
@@ -444,35 +513,37 @@ const sidebars = {
               type: "category",
               label: "Internet Identity (II)",
               items: [
-                "developer-docs/integrations/internet-identity/overview",
-                "developer-docs/integrations/internet-identity/creating-ii",
-                "developer-docs/integrations/internet-identity/integrate-identity",
-                "developer-docs/integrations/internet-identity/alternative-origins",
+                "developer-docs/web-apps/user-login/internet-identity/overview",
+                "developer-docs/web-apps/user-login/internet-identity/creating-ii",
+                "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
+                "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
+            "developer-docs/web-apps/user-login/nfid",
+            "developer-docs/web-apps/user-login/email-password",
           ],
         },
         {
           type: "category",
-          label: "HTTP compatible canisters",
+          label: "Using HTTP certification",
           items: [
             {
               type: "doc",
-              id: "developer-docs/http-compatible-canisters/custom-http-canisters",
+              id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
               label: "Custom HTTP canisters",
             },
             {
               type: "doc",
-              id: "developer-docs/http-compatible-canisters/serving-json-over-http",
+              id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
               label: "Serving JSON over HTTP",
             },
             {
               type: "doc",
-              id: "developer-docs/http-compatible-canisters/serving-static-assets-over-http",
+              id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
               label: "Serving static assets over HTTP",
-            }
-          ]
-        }
+            },
+          ],
+        },
       ],
     },
     {
@@ -500,6 +571,19 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: "doc",
+          label: "Formal verification",
+          id: "developer-docs/security/formal-verification",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "DeAI",
+      items: [
+        "developer-docs/ai/overview",
+        "developer-docs/ai/machine-learning-sample"
       ],
     },
     {
@@ -509,91 +593,90 @@ const sidebars = {
         {
           type: "doc",
           label: "Overview",
-          id: "developer-docs/integrations/ledger/introduction_and_overview",
+          id: "developer-docs/defi/overview",
         },
         {
           type: "category",
           label: "ICP tokens",
           items: [
-            "developer-docs/integrations/ledger/index",
-            "developer-docs/integrations/ledger/collecting-dust",
-            "developer-docs/integrations/ledger/ledger-local-setup",
-            "developer-docs/integrations/ledger/interact-with-ledger",
-            "developer-docs/integrations/ledger/icp-index-local-setup",
+            "developer-docs/defi/icp-tokens/overview",
+            "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/icp-tokens/using-the-ledger",
+            "developer-docs/defi/icp-tokens/icp-index-local-setup",
+            "developer-docs/defi/icp-tokens/account-trimming",
           ],
         },
         {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
-            "developer-docs/integrations/icrc-1/icrc1-ledger-setup",
-            "developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger",
-            "developer-docs/integrations/icrc-1/icrc1-index-setup",
+            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+            "developer-docs/defi/icrc-1/using-icrc1-ledger",
+            "developer-docs/defi/icrc-1/icrc1-index-setup",
           ],
         },
         {
           type: "doc",
           label: "Exchange rate canister",
-          id: "developer-docs/integrations/exchange-rate/exchange-rate-canister",
+          id: "developer-docs/defi/exchange-rate-canister",
         },
         {
           type: "category",
           label: "Rosetta API",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/rosetta/index",
+            id: "developer-docs/defi/rosetta/overview",
           },
           items: [
-            "developer-docs/integrations/rosetta/hotkeys",
-            "developer-docs/integrations/rosetta/neuron-lifecycle",
-            "developer-docs/integrations/rosetta/staking-support",
-            "developer-docs/integrations/rosetta/staking-tutorial",
-            "developer-docs/integrations/rosetta/transfers",
+            "developer-docs/defi/rosetta/hotkeys",
+            "developer-docs/defi/rosetta/neuron-lifecycle",
+            "developer-docs/defi/rosetta/staking-support",
+            "developer-docs/defi/rosetta/staking-tutorial",
+            "developer-docs/defi/rosetta/transfers",
           ],
         },
         {
           type: "category",
           label: "Asset custody",
           items: [
-            "tokenomics/token-holders/custody-options-intro",
-            "tokenomics/token-holders/self-custody-quickstart",
+            "developer-docs/defi/asset-custody/custody-options",
+            "developer-docs/defi/asset-custody/self-custody-quickstart",
           ],
         },
         {
           type: "category",
           label: "NFTs",
-          items: ["developer-docs/use-cases/considerations-for-nft-devs"],
+          items: ["developer-docs/defi/nfts/considerations-for-nft-devs"],
         },
       ],
     },
     {
       type: "category",
-      label: "Multi-chain",
+      label: "Chain fusion",
       items: [
-        {
-          type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/integrations/multi-chain/user-faq",
-            "developer-docs/integrations/multi-chain/ckbtc-faq",
-            "developer-docs/integrations/multi-chain/cketh-faq",
-            "developer-docs/integrations/multi-chain/ckerc20-faq",
-            "developer-docs/integrations/multi-chain/signatures-faq",
-          ],
-        },
+        "developer-docs/multi-chain/overview",
         {
           type: "category",
           label: "Bitcoin",
           items: [
-            "developer-docs/integrations/bitcoin/index",
-            "developer-docs/integrations/bitcoin/ckbtc",
+            "developer-docs/multi-chain/bitcoin/overview",
             {
               type: "category",
-              label: "Advanced",
+              label: "Using the integration",
               items: [
-                "developer-docs/integrations/bitcoin/read-state",
-                "developer-docs/integrations/bitcoin/submit-transactions",
-                "developer-docs/integrations/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckBTC",
+              items: [
+                "developer-docs/multi-chain/bitcoin/ckbtc/overview",
+                "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
               ],
             },
           ],
@@ -602,106 +685,129 @@ const sidebars = {
           type: "category",
           label: "Ethereum",
           items: [
-            "developer-docs/integrations/ethereum/overview",
-            "developer-docs/integrations/ethereum/evm-rpc",
-            "developer-docs/integrations/ethereum/siwe",
+            "developer-docs/multi-chain/ethereum/overview",
+            {
+              type: "category",
+              label: "Using the integration",
+              items: [
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
+                "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckETH",
+              items: [
+                "developer-docs/multi-chain/ethereum/cketh/overview",
+                "developer-docs/multi-chain/ethereum/cketh/making-transactions",
+              ],
+            },
           ],
         },
       ],
     },
-
     {
       type: "category",
       label: "DAOs",
-      link: {
-        type: "doc",
-        id: "developer-docs/integrations/sns/index",
-      },
       items: [
         {
           type: "category",
           label: "Network Nervous System (NNS)",
           items: [
-            "tokenomics/nns/nns-intro",
-            "tokenomics/token-holders/nns-app-quickstart",
-            "tokenomics/nns/neurons-fund",
-            "tokenomics/nns/nns-staking-voting-rewards",
+            "developer-docs/daos/nns/overview",
+            "developer-docs/daos/nns/nns-app-quickstart",
+            "developer-docs/daos/nns/staking-voting-rewards",
+            "developer-docs/daos/nns/neurons-fund",
+            "developer-docs/daos/nns/proposal-requirements",
           ],
         },
         {
           type: "category",
-          label: "Introduction to the SNS",
-          items: [
-            "developer-docs/integrations/sns/introduction/sns-intro-high-level",
-            "developer-docs/integrations/sns/introduction/sns-architecture",
-            "developer-docs/integrations/sns/introduction/sns-launch",
-            "developer-docs/integrations/sns/introduction/dao-alternatives",
-          ],
-        },
-        {
-          type: "category",
-          label: "Preparing an SNS launch",
+          label: "Service Nervous System (SNS)",
           link: {
             type: "doc",
-            id: "developer-docs/integrations/sns/tokenomics/index",
+            id: "developer-docs/daos/sns/index",
           },
           items: [
-            "developer-docs/integrations/sns/tokenomics/sns-checklist",
-            "developer-docs/integrations/sns/tokenomics/predeployment-considerations",
-            "developer-docs/integrations/sns/tokenomics/tokenomics-intro",
-            "developer-docs/integrations/sns/tokenomics/rewards",
-            "developer-docs/integrations/sns/tokenomics/preparation",
-          ],
-        },
-        {
-          type: "category",
-          label: "Integrating with an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/integrating/index",
-          },
-          items: [
-            "developer-docs/integrations/sns/integrating/ledger-integration",
-            "developer-docs/integrations/sns/integrating/index-integration",
-            "developer-docs/integrations/sns/integrating/frontend-integration",
-          ],
-        },
-        {
-          type: "category",
-          label: "Testing an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/testing/testing-before-launch",
-          },
-          items: [
-            "developer-docs/integrations/sns/testing/testing-locally",
-            "developer-docs/integrations/sns/testing/testing-on-mainnet",
-          ],
-        },
-        {
-          type: "category",
-          label: "Launching an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/launching/index",
-          },
-          items: [
-            "developer-docs/integrations/sns/launching/launch-summary-1proposal",
-            "developer-docs/integrations/sns/launching/launch-steps-1proposal",
-          ],
-        },
-        {
-          type: "category",
-          label: "Managing an SNS",
-          link: {
-            type: "doc",
-            id: "developer-docs/integrations/sns/managing/manage-sns-intro",
-          },
-          items: [
-            "developer-docs/integrations/sns/managing/making-proposals",
-            "developer-docs/integrations/sns/managing/cycles-usage",
-            "developer-docs/integrations/sns/managing/sns-asset-canister",
-            "developer-docs/integrations/sns/managing/managing-nervous-system-parameters",
+            {
+              type: "category",
+              label: "Introduction to the SNS",
+              items: [
+                "developer-docs/daos/sns/introduction/sns-intro-high-level",
+                "developer-docs/daos/sns/introduction/sns-architecture",
+                "developer-docs/daos/sns/introduction/sns-launch",
+                "developer-docs/daos/sns/introduction/dao-alternatives",
+              ],
+            },
+            {
+              type: "category",
+              label: "Preparing an SNS launch",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/tokenomics/index",
+              },
+              items: [
+                "developer-docs/daos/sns/tokenomics/sns-checklist",
+                "developer-docs/daos/sns/tokenomics/predeployment-considerations",
+                "developer-docs/daos/sns/tokenomics/tokenomics-intro",
+                "developer-docs/daos/sns/tokenomics/rewards",
+                "developer-docs/daos/sns/tokenomics/preparation",
+              ],
+            },
+            {
+              type: "category",
+              label: "Integrating with an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/integrating/index",
+              },
+              items: [
+                "developer-docs/daos/sns/integrating/ledger-integration",
+                "developer-docs/daos/sns/integrating/index-integration",
+                "developer-docs/daos/sns/integrating/frontend-integration",
+              ],
+            },
+            {
+              type: "category",
+              label: "Testing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/testing/testing-before-launch",
+              },
+              items: [
+                "developer-docs/daos/sns/testing/testing-locally",
+                "developer-docs/daos/sns/testing/testing-on-mainnet",
+              ],
+            },
+            {
+              type: "category",
+              label: "Launching an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/launching/index",
+              },
+              items: [
+                "developer-docs/daos/sns/launching/launch-summary-1proposal",
+                "developer-docs/daos/sns/launching/launch-steps-1proposal",
+              ],
+            },
+            {
+              type: "category",
+              label: "Managing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/managing/manage-sns-intro",
+              },
+              items: [
+                "developer-docs/daos/sns/managing/making-proposals",
+                "developer-docs/daos/sns/managing/cycles-usage",
+                "developer-docs/daos/sns/managing/sns-asset-canister",
+                "developer-docs/daos/sns/managing/managing-nervous-system-parameters",
+              ],
+            },
           ],
         },
       ],
@@ -777,7 +883,7 @@ const sidebars = {
             "references/samples/rust/canister-info/README",
             "references/samples/rust/composite_query/README",
             "references/samples/rust/counter/README",
-            "references/samples/rust/defi/README",
+            "references/samples/rust/defi/src/frontend/README",
             "references/samples/rust/dip721-nft-container/README",
             "references/samples/rust/encrypted-notes-dapp-vetkd/README",
             "references/samples/rust/encrypted-notes-dapp/README",
@@ -934,10 +1040,10 @@ const sidebars = {
         "concepts/canisters-code",
         "concepts/governance",
         "concepts/nodes-subnets",
-        "developer-docs/backend/subnet-types",
+        "concepts/subnet-types",
         "concepts/tokens-cycles",
         "concepts/trust-in-canisters",
-        "references/glossary",
+        "concepts/glossary",
       ],
     },
     {
@@ -957,7 +1063,7 @@ const sidebars = {
           type: "doc",
           label: "Message execution properties",
           id: "references/message-execution-properties",
-	},
+        },
         {
           type: "category",
           label: "Languages",
@@ -987,7 +1093,7 @@ const sidebars = {
             {
               type: "doc",
               label: "ICRC-1 token standard",
-              id: "developer-docs/integrations/icrc-1/index",
+              id: "references/icrc1-standard",
             },
             {
               type: "doc",
@@ -1005,11 +1111,23 @@ const sidebars = {
           type: "category",
           label: "Feature references",
           items: [
-            "developer-docs/integrations/bitcoin/bitcoin-how-it-works",
-            "developer-docs/integrations/bitcoin/ckbtc-reference",
-            "developer-docs/integrations/https-outcalls/https-outcalls-how-it-works",
-            "developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works",
-            "developer-docs/integrations/vetkeys/technology-overview",
+            "references/bitcoin-how-it-works",
+            "references/ckbtc-reference",
+            "references/https-outcalls-how-it-works",
+            "references/t-ecdsa-how-it-works",
+            "references/vetkeys-overview",
+            "references/supported-signatures",
+          ],
+        },
+        {
+          type: "category",
+          label: "FAQs",
+          items: [
+            "developer-docs/multi-chain/faq/user-faq",
+            "developer-docs/multi-chain/faq/ckbtc-faq",
+            "developer-docs/multi-chain/faq/cketh-faq",
+            "developer-docs/multi-chain/faq/ckerc20-faq",
+            "developer-docs/multi-chain/faq/signatures-faq",
           ],
         },
       ],
@@ -1074,6 +1192,7 @@ const sidebars = {
         "developer-docs/backend/motoko/scalability-cancan",
         "developer-docs/backend/motoko/sample-apps",
         "developer-docs/backend/motoko/mo-doc",
+        "developer-docs/backend/motoko/0.11.0-migration-guide",
       ],
     },
     {
@@ -1085,17 +1204,16 @@ const sidebars = {
       },
       items: [
         "motoko/version",
-        "motoko/main/overview",
+        "motoko/main/motoko-introduction",
         "motoko/main/basic-concepts",
-        "motoko/main/base-intro",
+        "motoko/main/overview",
         "motoko/main/language-manual",
         "motoko/main/style",
-        "motoko/main/motoko-grammar",
+        "motoko/main/base-intro",
         "motoko/main/actors-async",
         "motoko/main/actor-classes",
         "motoko/main/caller-id",
         "motoko/main/compatibility",
-        "motoko/main/compiler-ref",
         "motoko/main/control-flow",
         "motoko/main/cycles",
         "motoko/main/errors",
@@ -1105,12 +1223,15 @@ const sidebars = {
         "motoko/main/modules-and-imports",
         "motoko/main/mutable-state",
         "motoko/main/pattern-matching",
+        "motoko/main/pipes",
         "motoko/main/sharing",
-        "motoko/main/stablememory",
         "motoko/main/stable-regions",
+        "motoko/main/stablememory",
         "motoko/main/structural-equality",
         "motoko/main/timers",
         "motoko/main/upgrades",
+        "motoko/main/compiler-ref",
+        "motoko/main/motoko-grammar",
       ],
     },
     {
@@ -1192,4 +1313,17 @@ const sidebars = {
     },
   ],
 };
+
+/**
+ * Add UI tests in development mode
+ */
+if (process.env.NODE_ENV === "development") {
+  sidebars["__ui_tests_internal__"] = [
+    {
+      type: "autogenerated",
+      dirName: "tests",
+    },
+  ];
+}
+
 module.exports = sidebars;
