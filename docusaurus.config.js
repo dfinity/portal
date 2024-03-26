@@ -299,7 +299,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Trustless multi-chain",
+            title: "Chain Fusion Technology",
             href: "/multichain",
             image: "/img/nav/featured-use-cases.webp",
           },
