@@ -689,6 +689,9 @@ const sidebars = {
               type: "category",
               label: "Using the integration",
               items: [
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
                 "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
                 "developer-docs/multi-chain/ethereum/using-eth/siwe",
               ],
@@ -698,6 +701,7 @@ const sidebars = {
               label: "ckETH",
               items: [
                 "developer-docs/multi-chain/ethereum/cketh/overview",
+                "developer-docs/multi-chain/ethereum/cketh/making-transactions",
               ],
             },
           ],
