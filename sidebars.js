@@ -676,6 +676,7 @@ const sidebars = {
               items: [
                 "developer-docs/multi-chain/bitcoin/ckbtc/overview",
                 "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
+                "developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps",
               ],
             },
           ],
@@ -702,6 +703,7 @@ const sidebars = {
               items: [
                 "developer-docs/multi-chain/ethereum/cketh/overview",
                 "developer-docs/multi-chain/ethereum/cketh/making-transactions",
+                "developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps",
               ],
             },
           ],
