@@ -11,7 +11,7 @@ For the purpose of this guide we need to have a private key available with which
 The Rosetta architecture is built so that no private keys are ever sent to Rosetta. All the signing and thus handling of private keys can be done offline. 
 :::
 
-Rosetta supports multiple types of keys. The two that are used most often are `Edwards2559` and `Secp256k1`. If you want to use Rosetta together with dfx you will be using `ECDSA` keys with an `Secp256k1` curve type. For a guide on how to create a new identity you can look at the relevant dfx [section](/docs/developer-docs/developer-tools/cli-tools/cli-reference/dfx-identity.md). 
+Rosetta supports multiple types of keys. The two that are used most often are `Edwards2559` and `Secp256k1`. If you want to use Rosetta together with dfx you will be using `ECDSA` keys with an `Secp256k1` curve type. For a guide on how to create a new identity you can look at the relevant dfx [section](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-identity). 
 For this guide we will be using the `identity.pem` that is created with `dfx identity new`. 
 An example implementation of loading an `identity.pem` file and creating a private key struct than can be used to sign bytes looks like this. 
 
