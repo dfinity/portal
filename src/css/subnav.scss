@@ -1,14 +1,14 @@
 // automatically reposition the subnav in response to the navbar becoming hidden
-nav[class*="navbarHidden_"] ~ .subnav {
-  transform: translate3d(0, calc(-1 * var(--ifm-navbar-height) - 2px), 0);
-}
+//nav[class*="navbarHidden_"] ~ .subnav {
+//  transform: translate3d(0, calc(-1 * var(--ifm-navbar-height) - 2px), 0);
+//}
 
-@media (max-width: 996px) {
-  // keep the subnav in place on mobile
-  nav[class*="navbarHidden_"] ~ .subnav {
-    transform: unset;
-  }
-}
+//@media (max-width: 996px) {
+//  // keep the subnav in place on mobile
+//  nav[class*="navbarHidden_"] ~ .subnav {
+//    transform: unset;
+//  }
+//}
 
 .subnav {
   background: #e8e4ed;

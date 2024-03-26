@@ -1,3 +1,11 @@
+/* keep the nav in place on dev docs pages (i.e. disable hideOnScroll) */
+html.plugin-docs,
+html.plugin-blog {
+  nav[class*="navbarHidden_"] {
+    transform: unset;
+  }
+}
+
 /* Don't display docSidebar items in the top navbar */
 .navbar__inner .navbar__items:first-child .navbar__item {
   display: none;
@@ -57,14 +65,6 @@
     flex: 0 0 auto;
     height: 21px;
     margin-right: 2rem;
-  }
-
-  html.plugin-docs,
-  html.plugin-blog {
-    // keep the nav in place on mobile (i.e. disable hideOnScroll)
-    nav[class*="navbarHidden_"] {
-      transform: unset;
-    }
   }
 
   /* on mobile hide the search bar in the top navbar */
