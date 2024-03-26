@@ -8,11 +8,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## How to acquire network specific metadata
 This section details how to call the `construction/preprocess` endpoint of the Rosetta construction API.
 Preprocess is called prior to `/construction/payloads` to construct a request for any metadata that is needed for transaction construction. The ICP Rosetta implementation will return the required list of public keys that has to be provided by the user and in the metadata it returns the request type that is associated with the given set of operations. 
-The metadata returned from this endpoint will be sent to the /construction/metadata endpoint UNMODIFIED by the caller (in an offline execution environment). 
+The metadata returned from this endpoint will be sent to the `/construction/metadata` endpoint UNMODIFIED by the caller (in an offline execution environment). 
 The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionpreprocess).
 
 An example of a call to the preprocess endpoint would look like the following. Here we are creating two operations, one for debiting the account that the tokens are sent from and a credit operation for the account where the tokens are sent to. 
-For this example we are sending ICP to the arbitrary account `082ecf2e3f647ac600f43f38a68342fba5b8e68b085f02592b77f39808a8d2b5`. 
+For this example we are sending ICP to the arbitrary account `7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad`. 
 ```bash
 curl --location '0.0.0.0:8081/construction/preprocess'  --header 'Content-Type: application/json' --data '{
   "network_identifier": {
@@ -42,7 +42,7 @@ curl --location '0.0.0.0:8081/construction/preprocess'  --header 'Content-Type: 
       },
       "type": "TRANSACTION",
       "account": {
-        "address": "082ecf2e3f647ac600f43f38a68342fba5b8e68b085f02592b77f39808a8d2b5"
+        "address": "7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad"
       },
       "amount": {
         "value": "10",
@@ -150,9 +150,9 @@ def main():
     from_account = client.construction_derive(client.public_key())['account_identifier']['address']
     
     # An arbitrary accountidentifier to send the ICP to
-    to_account = "082ecf2e3f647ac600f43f38a68342fba5b8e68b085f02592b77f39808a8d2b5"
+    to_account = "7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad"
     
-    # We are going to send 10 ICP in this example
+    # We are going to send 10 ICP e8s in this example
     icp_amount = 10
     
     # We create the necessary operations for the transfer

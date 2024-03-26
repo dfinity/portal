@@ -32,4 +32,4 @@ The endpoints that make up the flow of operations are the following:
 - [construction/metadata](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata.mdx): Fetch transaction specific metadata from the ICP ledger. 
 - [construction/payloads](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads.mdx): Fetch signable payloads for the requested set of operations. 
 - [construction/combine](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine.mdx): Combine Signatures and an unsigned transaction into a signed transaction. 
-- [construction/combine](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit.mdx): Send signed transactions to the ICP Ledger canister. 
+- [construction/submit](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit.mdx): Send signed transactions to the ICP Ledger canister. 
