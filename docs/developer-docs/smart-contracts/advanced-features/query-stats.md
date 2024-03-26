@@ -4,24 +4,31 @@
 
 When users interact with a dapp, query calls may be used. Query calls cannot modify a canister's state, making it impossible to track them from the canister's code. 
 
-The **query stats** feature gives developers information about the use of each canister's query call endpoints. With this feature, an approximation of some statistics related to query stats are made available to developers as part of the existing canister status API.
+The **query stats** feature gives developers information about the use of each canister's query calls.
+An approximation of some statistics related to query stats are made available to developers as part of the existing canister status API.
 
-:::caution
-Since query statistics collected in the canister status are approximations, they might not capture all query calls, especially for infrequently used canisters. Query stats are incremented periodically by the system, and therefore lag behind the actual query execution by up to one hour.
+:::note
+The statistics collected in the canister status are an approximation. 
+They might not capture all query calls, especially for infrequently used canisters.
+Query stats are collected in intervals by the system and therefore may lag behind the actual query execution by up to 30 mins.
 :::
 
-Query stats currently do not include cached query calls. 
+:::caution
+Statistics of composite queries are not collected at the moment. This restriction will be lifted soon.
+:::
 
 ## Canister status entries
 
-The feature adds a new field to the canister status which includes:
+The feature exposes the following fields to the canister status endpoint:
 
  - A counter for the total number of query calls executed by that canister.
  - The sum of all instructions executed by the canister for query calls.
  - The sum of the payload sizes of all query requests to the canister.
  - The sum of the payload sizes of all query responses from the canister.
 
-Each value represents the total count since the canister has been created. Rates for these values can be calculated from multiple calls to the canister status and observing the difference between the values in different calls. All values are monotonically increasing.
+Each value represents the total count since the canister has been created.
+Rates for these values can be calculated from multiple calls to the canister status and observing the difference between the values in different calls.
+All values are monotonically increasing.
 
 ## Retrieve query stats using `dfx`
 
@@ -43,7 +50,7 @@ Total query request paylod size (bytes): 0
 Total query response payload size (bytes): 0
 ```
 
-Query stats are available via `dfx` since 0.16.1.
+Query stats are available via `dfx` since version `0.16.1`.
 
 
 ## Use query stats programatically
@@ -59,4 +66,4 @@ let canister_status = canister_status(CanisterIdRecord {
 let query_stats = canister_status.0.query_stats;
 ```
 
-This is supported from `ic-cdk` commit `c01fc1741eb3fec2df0bb4e5c5ff54fa027a6091` and higher.
+This is supported in `ic-cdk` since version `0.12.1`.
