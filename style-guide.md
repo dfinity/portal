@@ -1,4 +1,4 @@
-# Internet Computer developer documentation: style, format, and language guide
+# Dev Docs Style Guide
 
 ## Overview
 
@@ -22,90 +22,59 @@ This guide will outline the following:
 
 ## Page structure
 
-The developers docs contain a wide variety of different document types, such as tutorials, guides, informational pages, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
+The developers docs contain a wide variety of different document types, such as overview pages, concept pages, feature pages, tutorials, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
 
-The following page structure should be followed for informational pages and guides:
+The following example template can be used:
 
 ```
+---
+keywords: [keyword1, keyword2, keyword3]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Page title
+
+<MarkdownChipRow labels={["label1", "label2", "label3"]} />
 
 ## Overview
 
-Text
+Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist). 
 
-## Prerequisites (Optional; only necessary for guides that require prerequisite conditions or parameters be met.)
+## Prerequisites
 
+Optional; only necessary for documents that require prerequisite conditions or parameters be met.
+
+List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page. 
 - [x] Prerequisite 1.
 - [x] Prerequisite 2.
 - [x] Prerequisite 3.
 
 ## Topic 1
 
-Text
+What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required? 
 
 ### Subtopic 1
 
-Text
-
-### Subtopic 2
-
-- Bullet 1.
-- Bullet 2.
-- Bullet 3.
+Include any information about a subtopic of Topic 1 here. This may include nuances with Topic 1 or best practices that should be noted. 
 
 ## Topic 2
 
-Text
+Introduce the second topic. 
 
-### Subtopic 3
+This is optional; there may be only one primary topic within the feature. Use your best judgement for what topics and subtopics your document may need. 
 
-Text
+## Topic 3
+
+If your document includes a step-by-step walkthrough, introduce the walkthrough as a topic, then use the following format:
 
 - #### Step 1: Description of step for reader to take.
 - #### Step 2: Description of step for reader to take.
 - #### Step 3: Description of step for reader to take.
 
-## Conclusion
-
-Text
-
 ## Resources
 - [Link](link.com)
-```
 
-The following page structure should be followed for tutorials:
-
-```
-# Page title
-
-## Overview
-
-Text
-
-## Prerequisites
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Step 1: Description of step
-
-Text
-
-## Step 2: Description of step
-
-Text
-
-## Step 3: Description of step
-
-Text
-
-## Conclusion
-
-Text
-
-## Resources
-- [Link](link.example)
 ```
 
 ## Page headings
@@ -263,6 +232,7 @@ The following language and capitalization of certain terms and phrases should be
 - canister smart contract
 - chain-key signature
 - chain-key cryptography
+- chain fusion
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
 - deployed on ICP
@@ -289,6 +259,7 @@ The following language and capitalization of certain terms and phrases should be
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
+- multi-chain
 - neuron
 - node provider
 - open internet service
@@ -351,7 +322,7 @@ The following punctuation standards should be followed:
 - All bullet point lists should be prefaced with introduction text followed by a colon.
 - All items within a bullet point list should end in a period, regardless if the entry is a full sentence or not.
 - All numbered lists should use the format `1.` for numbering each list entry.
-- All user steps for guides and tutorials should use the format `Step 1:` to preface each step's contents.
+- All user steps for tutorials should use the format `Step 1:` to preface each step's contents.
 
 ## Bulleted lists
 
@@ -472,59 +443,4 @@ Answer
 
 - #### Question 2?
 Answer
-```
-
-### Writing a guide
-When contributing a guide, the following general format and structure should be used. It is important to note that the content of guides will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
-
-```
-# Page title
-
-## Overview
-
-Text
-
-## Prerequisites (Optional; only necessary for guides that require prerequisite conditions or parameters be met.)
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Topic 1
-
-Text
-
-### Subtopic 1
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-### Subtopic 2
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-## Topic 2
-
-Text
-
-### Subtopic 3
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-## Conclusion
-Text
-
-## Resources
-- [Link](link.example)
 ```
