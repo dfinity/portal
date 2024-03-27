@@ -150,11 +150,14 @@ function MultichainPage() {
   return (
     <Layout
       title="Chain Fusion Technology"
-      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-      any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from and write to different chains thanks to chain-key cryptography."
+      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), 
+      without relying on any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from 
+      and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta>
+      {/* <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta> */}
+      <ShareMeta image="/img/multichain/hero2.webp"></ShareMeta>
+
 
       <main
         className="text-black relative "
