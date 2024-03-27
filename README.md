@@ -293,7 +293,7 @@ Keywords must include the words included as document tags (experience level, doc
 
 ## Tabs
 
-To showcase code snippets in several different languages, the Tabs functionality can be used. The Dev Docs uses a custom tab component that defines a 'Beta' badge that is used to lable TypeScript and Python snippets as 'Beta'. 
+To showcase code snippets in several different languages, the Tabs functionality can be used. The Dev Docs uses a custom tab component that defines a 'Beta' badge that is used to label TypeScript and Python snippets as 'Beta'. 
 
 Here is an example of how to use this custom tab component:
 
