@@ -7,9 +7,9 @@ Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://i
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
-## Developer documentation
+# Developer documentation
 
-### Repo structure
+## Repo structure
 
 ```
 docs
@@ -69,9 +69,9 @@ docs
 ├── tutorials // tutorial series (developer journey, hackathon prep course, etc). 
 ```
 
-## Contributing to the Dev Docs 
+# Contributing to the Dev Docs 
 
-### Contributions must:
+## Contributions must:
 
 - Must follow the [developer docs style guide](style-guide.md).
 - Must follow the [best practices and guidelines](#best-practices).
@@ -99,7 +99,7 @@ The developer documentation must follow the provided style guide to be submitted
 
 This style guide includes the standards for capitalization, word choice, formatting, etc. 
 
-## Best practices
+# Best practices
 
 When writing documentation for the Dev Docs, the following guidelines should be followed:
 
@@ -200,7 +200,7 @@ This may include:
 - The Github repo for this feature or tool.
 - Additional reading resources, such as a concepts page or a how it works page.
 
-### Best practices 
+### Guidelines
 When writing documentation, keep the following best practices in mind:
 
 1. When linking other documents, avoid the format:
@@ -431,7 +431,7 @@ Whenever a Pull Request for a branch is created on the repository, a GitHub bot 
 
 You can view the status of the preview build job by navigating to the bottom of the PR and viewing the 'Build deployment preview' job. If this job fails, the preview will not be shown. Any errors in the build must be resolved before the PR can be approved and merged.
 
-## Best practices
+## Deployment best practices
 
 The portal repo uses git submodules to distribute content authoring across several repositories. This can prove
 challenging if you want to make updates to docs that refer to stale content in other repos. Here are some best practices
