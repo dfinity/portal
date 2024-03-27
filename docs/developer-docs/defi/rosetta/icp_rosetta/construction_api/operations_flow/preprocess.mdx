@@ -60,6 +60,8 @@ curl --location '0.0.0.0:8081/construction/preprocess'  --header 'Content-Type: 
 
 Here you are creating two operations, one for debiting the account that the tokens are sent from and a credit operation for the account where the tokens are sent to. 
 For this example, you are sending ICP to the arbitrary account `7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad`. 
+Here you are creating two operations, one for debiting the account that the tokens are sent from and a credit operation for the account where the tokens are sent to. 
+For this example, you are sending ICP to the arbitrary account `7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad`. 
 and the response would look something like this. It contains two fields. The `options` object has to be forwarded to the `construction/metadata` endpoint to fetch network specific data. 
 The `required_public_keys` field indicates for which `account-id` the `construction/payloads` endpoint will need the full public key. 
 
