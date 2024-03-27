@@ -189,7 +189,7 @@ To determine which form suits the document best, answer the following:
 
 - Does the document focus on a specific feature or functionality, or does it showcase an entire dapp/service? 
 - If the development showcases a specific feature, a partial snippet may be appropriate. 
-- Is implementation of this feature/functionality very complex and requires prerequisite knowledge?
+- Is implementation of this feature/functionality very complex? Does it require prerequisite knowledge?
 - If the feature is fairly simple and doesn’t require much prerequisite knowledge, a small partial snippet can be used. 
 - Are the prerequisites for using this code available elsewhere in the documentation? Is it clear that these prerequisites should be followed prior to inserting this feature?
 
