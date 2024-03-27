@@ -1,0 +1,10 @@
+---
+keywords: [intermediate, rosetta, tutorial]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Construction-API implementation
+This section will give you an overview of how you can make transactions via Rosetta using the Construction-API
+## Supported transactions
+The Construction-API allows for offline signing of transactions and then posting them on the IC at a later point in time. It is recommended to first go through [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) of the Construction-API to gain an understanding of how it works, what endpoints to call with what parameters and where the user has to take action upon receiving certain responses. 

@@ -1,0 +1,152 @@
+---
+keywords: [intermediate, rosetta, tutorial, derive, accountidentifier]
+---
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Construction-metadata
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
+This section details how to call the `construction/metadata` endpoint of the Rosetta construction API.
+The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionmetadata).
+## How to fetch metadata from the ICP ledger
+An example of a call to the metadata endpoint can be found below:
+```bash
+curl --location '0.0.0.0:8081/construction/metadata'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "options": {
+    "request_types": [
+      "TRANSACTION"
+    ]
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ]
+}'
+```
+
+The response would resemble the following:
+In the case of the ICP ledger this fee is `10_000` e8s of ICP. 
+
+```json
+{"metadata":{},"suggested_fee":[{"value":"10000","currency":{"symbol":"ICP","decimals":8}}]}⏎                                                                                                                           
+```
+
+For the request type `TRANSACTION` the metadata includes the suggested fee for this operation. 
+In the case of the ICP ledger this fee is `10_000` e8s of ICP. 
+
+For the request type `TRANSACTION` the metadata includes the suggested fee for this operation. 
+In the case of the ICP ledger this fee is `10_000` e8s of ICP. 
+
+A call to the `construction/preprocess` endpoint written in Python could be implemented as follows:
+
+```bash
+python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
+```
+
+```python
+import json
+import requests
+import argparse
+import ecdsa
+
+NETWORK_ID={'blockchain': 'Internet Computer', 'network': '00000000000000020101'}
+HEADERS={'Content-Type': 'application/json', 'charset': 'utf-8'}
+
+class RosettaClient:
+    # Takes in the private key an the url to the running Rosetta instance
+    def __init__(self, pk, url):
+        self._pk = pk
+        self._url = url
+    
+    def public_key(self):
+        return {
+            "hex_bytes": self._pk.verifying_key.to_string("uncompressed").hex(),
+            "curve_type": "secp256k1",
+        }
+    
+    # Makes a post request to the Rosetta instance and takes in the suffix of the endpoint of Rosetta as well as the request data
+    def post(self, url_suffix, data):
+        url = self._url + url_suffix
+        response = requests.post(url, data=json.dumps(data), headers=HEADERS)
+        return response.json()
+    
+    def construction_derive(self, public_key: str = None, curve_type: str = 'secp256k1'):
+        if public_key is None:
+            public_key = self.public_key()
+        return self.post('/construction/derive', build_data({
+            'public_key': public_key
+        }))
+    
+    def construction_preprocess(self, operations, metadata):
+        return self.post('/construction/preprocess', build_data({
+            'operations': operations,
+            'metadata': metadata,
+            'network_identifier': NETWORK_ID
+        }))
+    
+    def construction_metadata(self, options,public_keys):
+        return self.post('/construction/metadata', build_data({
+            'options': options,
+            'public_keys': public_keys,
+        }))
+
+
+def icp_amount(amount: int):
+    return {
+        "value": f'{amount}',
+        "currency": { "symbol": "ICP", "decimals": 8 }
+    }
+
+def transfer_operation(index: int, account_id: str, amount: int):
+    return {
+        "operation_identifier": { "index": index },
+        "type": "TRANSACTION",
+        "account": { "address": account_id },
+        "amount": icp_amount(amount)
+    }
+
+# Attaches the network_identifier to the request
+def build_data(d):
+    return { 'network_identifier': NETWORK_ID, **d }
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-k', '--private-key-file', required=True)
+    parser.add_argument('-u', '--ic-url', required=True)
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
+    with open(args.private_key_file, "rb") as key_file:
+        private_key = ecdsa.SigningKey.from_pem(key_file.read())
+    client = RosettaClient(private_key, args.ic_url)
+
+    # We derive the account identifier from the public key of the provided private key
+    from_account = client.construction_derive(client.public_key())['account_identifier']['address']
+    
+    # An arbitrary accountidentifier to send the ICP to
+    to_account = "7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad"
+    
+    # We are going to send 10 ICP e8s in this example
+    icp_amount = 10
+    
+    # We create the necessary operations for the transfer
+    from_operation = transfer_operation(0, from_account, -icp_amount)
+    to_operation = transfer_operation(1, to_account, icp_amount)
+    
+    options = client.construction_preprocess([from_operation, to_operation], None)["options"]
+    public_keys = [client.public_key()]
+    print(client.construction_metadata(options,public_keys))
+
+if __name__=='__main__':
+    main()
+```
