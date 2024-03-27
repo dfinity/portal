@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module where you obtained a cycles coupon, [1.4: acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles), you created a **developer identity** that you used to create a **cycles wallet** to hold our cycles. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
+When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module where you obtained a cycles coupon, [1.4: acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles), you created a **developer identity** that has a **cycles balance**. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
 
 These three types of authentication are used for interacting with canisters and cycles, but what about interacting with applications or websites built on ICP? For that, end-users can use **Internet Identity**, ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local computer's hardware. Through this simple and flexible authentication method, developers can provide end-users with a frictionless way to authenticate and use their application.
 
@@ -26,7 +26,7 @@ First, let's clearly define the difference between the different types of identi
 
 - **Account identifier**: the identifier associated with your ICP ledger account, as specified in the [ledger](/docs/current/developer-docs/defi/icp-tokens/overview) specification.
 
-- **Wallets**: used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use a cycles wallet to send cycles to and from canisters.
+- **Wallets**: used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use the cycles ledger to send cycles to and from canisters.
 
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead it uses a **passkey** that is stored in your local device's hardware.
 

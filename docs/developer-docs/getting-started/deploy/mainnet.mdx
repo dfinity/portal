@@ -27,13 +27,11 @@ Before you download and install this release of the IC SDK, verify the following
 -   [x] You have ICP tokens or <GlossaryTooltip>cycles</GlossaryTooltip> available for you to use.
 
 :::info
-You must have **cycles** available to complete this guide. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This guide assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles, then transfer those cycles to a **cycles wallet** that you control.
+You must have **cycles** available to complete this guide. To get cycles, you must either convert ICP tokens to cycles or be provided cycles from another source, for example, from a canister controlled by another developer or from a third-party cycles provider. This guide assumes that you have an account with ICP tokens available and illustrates how to convert ICP tokens into cycles.
 
 For information about how to get ICP tokens, see [how you can get ICP tokens](/docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles).
 
 For an introduction to using the Network Nervous System application to manage ICP tokens, see [Network Nervous System dapp quick start](/docs/current/developer-docs/daos/nns/nns-app-quickstart).
-
-For information about using your default cycles wallet after you have created it, see [use the default cycles wallet](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
 :::
 
 ## Check the connection to the mainnet
@@ -58,7 +56,7 @@ To check your connection to ICP:
 
 ## Register, build, and deploy the application
 
-After you have validated your cycles wallet balance, you can register, build, and deploy your sample application.
+After you have a [cycles balance](/docs/current/developer-docs/getting-started/cycles/cycles-faucet), you can register, build, and deploy your sample application.
 
 To deploy your first application on the Internet Computer blockchain mainnet:
 
@@ -107,11 +105,11 @@ To deploy your first application on the Internet Computer blockchain mainnet:
           /index.js.LICENSE.txt (gzip) 1/1 (285 bytes)
         Deployed canisters.
 
-    If you didn’t convert enough ICP tokens to cycles to complete the operation, you can add cycles to your cycles wallet by running a command similar to the following:
+    If you didn’t convert enough ICP tokens to cycles to complete the operation, you can add cycles to your balance by running a command similar to the following:
 
-        dfx ledger --network ic top-up gastn-uqaaa-aaaae-aaafq-cai --amount 1.005
+        dfx cycles convert 1.005 --network ic
 
-    This command converts an additional `1.005` ICP tokens to cycles for the `gastn-uqaaa-aaaae-aaafq-cai` cycles wallet identifier. The command returns output similar to the following:
+    This command converts an additional `1.005` ICP tokens to cycles. The command returns output similar to the following:
 
         Transfer sent at BlockHeight: 81520
         Canister was topped up!
@@ -138,7 +136,7 @@ To deploy your first application on the Internet Computer blockchain mainnet:
 
         ("Hello, everyone!")
 
-- #### Step 6:  Rerun the `dfx wallet balance` command or refresh the browser to see your new cycle balance and recent activity.
+- #### Step 6:  Rerun the `dfx cycles balance --network ic` command or refresh the browser to see your new cycle balance and recent activity.
 
 ## Test the dapp frontend
 

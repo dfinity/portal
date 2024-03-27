@@ -164,7 +164,7 @@ While you must be a canister's controller in order to view the cycles balance of
 There are a few ways to top up a canister:
 
 - Using ICP in your account.
-- Using cycles in your cycles wallet.
+- Using the cycles ledger.
 - Using the NNS dapp web UI.
 - Using a fiat option through [Cycle.express](https://cycle.express/).
 - Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](/docs/current/developer-docs/getting-started/cycles/cycles_management_services).
@@ -177,17 +177,16 @@ If you currently have a balance of ICP tokens within your dfx ledger account ID,
 dfx ledger top-up backend --amount 2.7 --network ic
 ```
 
-### Using a cycles wallet
-
-If you already have converted some ICP into cycles and filled a cycles wallet, you can send cycles from that wallet to the canister with the `dfx canister deposit-cycles` command, such as:
+### Using the cycles ledger
+If you already have converted some ICP into cycles, you can send cycles to the canister with the `dfx cycles top-up` command, such as:
 
 ```sh
-dfx canister deposit-cycles 1000000 backend --network ic
+dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
 ```
 
 ## Getting cycles back from a canister
 
-To withdraw cycles from a canister, the canister must be deleted. The cycles will be returned to the cycles wallet associated with the canister's controller principal.
+To withdraw cycles from a canister, the canister must be deleted. The cycles will be returned to the canister's controller principal.
 
 You can stop and delete the canister with the commands:
 
@@ -207,7 +206,7 @@ Successfully withdrew 3089393970000 cycles.
 Deleting canister backend, with canister_id jqylk-byaaa-aaaal-qbymq-cai
 ```
 
-To confirm that the cycles were withdrawn properly, check your cycles wallet balance with `dfx wallet balance`.
+To confirm that the cycles were withdrawn properly, check your cycles balance with `dfx cycles balance`.
 
 
 ## Setting the canister's freezing threshold

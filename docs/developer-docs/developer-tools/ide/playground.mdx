@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Motoko playground is a development environment that can be used to build and deploy Motoko canisters directly in the web browser using the Motoko playground canister. Motoko playground can also be run locally, or it can be utilized through the `dfx deploy --playground` command via the CLI. Canisters deployed to the playground use resources that are borrowed from a canister pool. All canisters deployed to the playground will time out after 20 minutes, and new canisters will need to be borrowed for further deployments past the timer. 
 
-Motoko playground canisters provide the ability to quickly test canisters and their workflows without needing to configure additional parameters, such as a cycles wallet. 
+Motoko playground canisters provide the ability to quickly test canisters and their workflows without needing to configure additional parameters, such as having cycles.
 
 The Motoko playground is comprised of:
 - The playground's frontend asset canister, which contains:
@@ -38,7 +38,7 @@ Since Motoko playground is designed for short, small-scale testing, there are li
 
 ## `dfx deploy --playground`
 
-Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a cycles wallet, obtain cycles, or configure other parameters that are required for deployment to the mainnet. 
+Through `dfx`, canisters can be deployed directly from the CLI to the Motoko playground using the `--playground` flag. When this flag is used, the canisters in the `dfx` project will be deployed to the mainnet using borrowed resources from the Motoko playground canister pool, and a canister URL will be returned to the developer. This enables developers to test canister functionality or workflow without needing to set up a obtain cycles or configure other parameters that are required for deployment to the mainnet.
 
 ### Prerequisites
 
