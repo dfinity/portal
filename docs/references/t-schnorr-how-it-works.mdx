@@ -49,7 +49,7 @@ We assume the following functions:
 
 Public keys are extended with an extra 256 bits of entropy, which extension is called chain code and consists of 32 bytes.
 An extended public key is represented as (K, c), with K = point(k) and c being the chain code, for some private key k.
-Each extended key has 2<sub>32</sub> child keys using indices 0 through 2<sub>32</sub>-1.
+Each extended key can have an arbitrary number of child keys.
 We do not distinguish between hardened and non-hardenend (aka normal) child keys.
 
 ### Child key derivation (CKD) function
