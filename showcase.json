@@ -85,7 +85,7 @@
     "twitter": "https://twitter.com/funded_app",
     "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
     "usesInternetIdentity": true,
-    "stats": "83,000+ ICP funded",
+    "stats": "100,000+ ICP funded",
     "display": "Normal",
     "logo": "/img/showcase/funded_logo.webp",
     "screenshots": []
@@ -357,9 +357,9 @@
       "Bitcoin",
       "Ethereum"
     ],
-    "description": "Plug Wallet, built and open-sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
+    "description": "Your Plug into the #InternetComputer Identity + Wallet in one Principal ID Hold, send, swap, deposit cycles, ICP, NFTs and log into IC apps in a click! Available on mobile IOS & Android, and as a browser extension on Chrome & Firefox.",
     "github": "https://github.com/Psychedelic/plug",
-    "stats": "100,000+ users",
+    "stats": "150,000+ users",
     "display": "Normal",
     "logo": "/img/showcase/plug_logo.webp",
     "video": "/img/showcase/plug_video.mp4",
