@@ -18,48 +18,64 @@ The section is inspired by [BIP32](https://github.com/bitcoin/bips/blob/master/b
 
 To support the Ed25519 variant of threshold Schnorr signatures on the Internet Computer, a key derivation scheme compatible with Ed25519 signatures is required.
 For a respective signing service on the Internet Computer to be efficient, the signing subnet maintains only a single master key pair and _derives_ signing child keys for each canister.
-Although there exist various hierarchical key derivation schemes (e.g., [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), [SLIP10](https://github.com/satoshilabs/slips/blob/master/slip-0010.md), [BIP32-Ed25519](https://input-output-hk.github.io/adrestia/static/Ed25519_BIP.pdf), [Schnorrkel](https://github.com/w3f/schnorrkel)), none of the analyzed schemes is suitable for the Internet Computer's (threshold) setting.
+Although there exist various hierarchical key derivation schemes (e.g., [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), [SLIP10](https://github.com/satoshilabs/slips/blob/master/slip-0010.md), [BIP32-Ed25519](https://input-output-hk.github.io/adrestia/static/Ed25519_BIP.pdf), [Schnorrkel](https://github.com/w3f/schnorrkel)), all of the analyzed schemes are either incompatible in a threshold setting (e.g., use hardened key derivation only), comply with clamping which adds unnecessary complexity, or otherwise rely on non-standard primitives.
 For this reason, a new derivation scheme is specified here.
-The specified scheme does not make use of _clamping_ (see [RFC8032, Section 5.1.5, Item 2](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.5)), because it is unnecessary in the given setting, and satisfies the following requirements:
+This scheme does not make use of _clamping_ (see [RFC8032, Section 5.1.5, Item 2](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.5)), because it is unnecessary in the given setting, and satisfies the following requirements:
 
 - Off-chain availability: New public keys can be computed off-chain from a master public key without requiring interaction with the IC.
 - Hierarchical derivation: Derived keys are organized in a tree such that from any public key it is possible to derive new child keys. The first level is used to derive unique canister-specific keys from the master key.
-- Compatibility: The scheme is compatible with existing standards, and it is simple to implement using existing libraries.
+- Simplicity: The scheme is simple to implement using existing libraries.
 
 ### Conventions
 
-We will assume the elliptic curve cryptography using the field and curve parameters defined by Ed25519 (see [RFC8032, Section 5.1](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1)). Variables below are either:
+We will assume the elliptic curve (EC) operations using the field and curve parameters as defined by Ed25519 (see [RFC8032, Section 5.1](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1)). Variables below are either:
 
 - Integers modulo the order of the curve's prime order subgroup (referred to as L).
-- Coordinates of points on the curve.
+- Points on the curve.
 - Byte sequences.
 
-Addition (+) of two coordinate pairs is defined as application of the EC group operation.
+Addition (+) of two points is defined as application of the EC group operation.
 Concatenation (||) is the operation of appending one byte sequence onto another.
 
 We assume the following functions:
 
-- point(p): returns the coordinate pair resulting from EC point multiplication (repeated application of the EC group operation) of the Ed25519 base point with the integer p.
-- ser<sub>P</sub>(P): serializes the coordinate pair P = (x,y) as a byte sequence using standard 32-byte compressed form (see [RFC8032, 5.1.2 Encoding](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2)).
+- point(p): returns the point resulting from EC point multiplication (repeated application of the EC group operation) of the Ed25519 base point with the integer p.
+- ser<sub>P</sub>(P): serializes the point to a byte sequence using standard 32-byte compressed form (see [RFC8032, 5.1.2 Encoding](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2)).
 - utf8(s): returns the UTF-8 encoding of string s.
 - parse<sub>512</sub>(p): interprets a 64-byte sequence as a 512-bit number, most significant byte first.
-- HKDF(salt,IKM,info,L) -> OKM: HMAC-based key derivation function (see [RFC5869](https://datatracker.ietf.org/doc/html/rfc5869)) using HMAC-SHA512 (see [RFC4231](https://datatracker.ietf.org/doc/html/rfc4231)) calculating L-bytes long output key material (OKM) from (byte sequences) salt, input key material (IKM), and application specific information *info*.
+- HKDF(salt,IKM,info,N) -> OKM: HMAC-based key derivation function (see [RFC5869](https://datatracker.ietf.org/doc/html/rfc5869)) using HMAC-SHA512 (see [RFC4231](https://datatracker.ietf.org/doc/html/rfc4231)) calculating N-bytes long output key material (OKM) from (byte sequences) salt, input key material (IKM), and application specific information *info*.
 
 ### Extended keys
 
-Public keys are extended with an extra 256 bits of entropy, which extension is called chain code and consists of 32 bytes.
+Public keys are extended with an extra 32 bytes of entropy, which extension is called chain code.
 An extended public key is represented as (K, c), with K = point(k) and c being the chain code, for some private key k.
 Each extended key can have an arbitrary number of child keys.
-We do not distinguish between hardened and non-hardenend (aka normal) child keys.
+The scheme does not support hardened derivation of child keys.
 
 ### Child key derivation (CKD) function
 
 Given a parent extended public key and an index i, it is possible to compute the corresponding child extended public key.
+The function CKDpub computes a child extended public key from a parent extended public key and an index i, where i is a byte sequence of arbitrary length (including empty).
 
-The function CKDpub((K<sub>par</sub>, c<sub>par</sub>), i) → (K<sub>i</sub>, c<sub>i</sub>) computes a child extended public key from a parent extended public key and an index i, where i is a byte sequence of arbitrary length (including empty):
-
+CKDpub((K<sub>par</sub>, c<sub>par</sub>), i) → (K<sub>i</sub>, c<sub>i</sub>):
 - let IKM = ser<sub>P</sub>(K<sub>par</sub>) || i.
 - let OKM = HKDF(c<sub>par</sub>, IKM, utf8("Ed25519"), 96).
 - Split OKM into a 64-byte and a 32-byte sequence, tweak and c<sub>i</sub>.
 - let K<sub>i</sub> = K<sub>par</sub> + point(parse<sub>512</sub>(tweak) mod L).
 - return (K<sub>i</sub>, c<sub>i</sub>).
+
+### Key tree
+
+A key tree can be built by repeatedly applying CKDpub, starting with one root, called the master extended public key M.
+Computing CKDpub(M, i) for different values of i results in a number of level-0 derived keys.
+As each of these is again an extended key, CKDpub can be applied to those as well.
+The sequence of indices used when repeatedly applying CKDpub is called the _derivation path_.
+
+The function KTpub computes a child extended public key from a parent extended public key and a derivation path d.
+
+KTpub((K<sub>par</sub>, c<sub>par</sub>), d) → (K<sub>d</sub>, c<sub>d</sub>):
+- let (K<sub>d</sub>, c<sub>d</sub>) = (K<sub>par</sub>, c<sub>par</sub>)
+- for all indices i in d:
+
+  (K<sub>d</sub>, c<sub>d</sub>) = CKDpub((K<sub>d</sub>, c<sub>d</sub>), i)
+- return (K<sub>d</sub>, c<sub>d</sub>).
