@@ -3,16 +3,17 @@ keywords: [intermediate, rosetta, tutorial, derive, accountidentifier]
 ---
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Construction-Preprocess
+# Construction-preprocess
 
-## How to acquire network specific metadata
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
 This section details how to call the `construction/preprocess` endpoint of the Rosetta construction API.
 Preprocess is called prior to `/construction/payloads` to construct a request for any metadata that is needed for transaction construction. The ICP Rosetta implementation will return the required list of public keys that has to be provided by the user and in the metadata it returns the request type that is associated with the given set of operations. 
 The metadata returned from this endpoint will be sent to the `/construction/metadata` endpoint UNMODIFIED by the caller (in an offline execution environment). 
 The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionpreprocess).
 
-An example of a call to the preprocess endpoint would look like the following. Here we are creating two operations, one for debiting the account that the tokens are sent from and a credit operation for the account where the tokens are sent to. 
-For this example we are sending ICP to the arbitrary account `7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad`. 
+An example of a call to the preprocess endpoint would resemble the following:
 ```bash
 curl --location '0.0.0.0:8081/construction/preprocess'  --header 'Content-Type: application/json' --data '{
   "network_identifier": {
@@ -57,16 +58,20 @@ curl --location '0.0.0.0:8081/construction/preprocess'  --header 'Content-Type: 
 }'
 ```
 
+Here you are creating two operations, one for debiting the account that the tokens are sent from and a credit operation for the account where the tokens are sent to. 
+For this example, you are sending ICP to the arbitrary account `7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad`. 
 and the response would look something like this. It contains two fields. The `options` object has to be forwarded to the `construction/metadata` endpoint to fetch network specific data. 
 The `required_public_keys` field indicates for which `account-id` the `construction/payloads` endpoint will need the full public key. 
 
 ```json
 {"options":{"request_types":["TRANSACTION"]},"required_public_keys":[{"address":"8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"}]}⏎                                                                  
 ```
-The required public keys in this case is the public key that correspons to the sending account. We can derive this public key from the provided private key. To validate that the accountidentifiers match up you can call `construction/derive` with the public key.
-Building on the previous python code snipped. A call to the `construction/preprocess` endpoint written in python could be implemented like the following.
+It contains two fields. The `options` object has to be forwarded to the `construction/metadata` endpoint to fetch network specific data. 
+The `required_public_keys` field indicates for which `account-id` the `construction/payloads` endpoint will need the full public key. 
 
-Example call: 
+The required public keys in this case is the public key that corresponds to the sending account. You can derive this public key from the provided private key. To validate that the `accountidentifiers` matches up, you can call `construction/derive` with the public key.
+A call to the `construction/preprocess` endpoint written in Python could be implemented as follows:
+
 ```bash
 python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
 ```

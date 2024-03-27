@@ -3,16 +3,19 @@ keywords: [intermediate, rosetta, tutorial, derive, accountidentifier]
 ---
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Construction-Submit
+# Construction-submit
 
-## How to send signed transactions to the IC
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
 This section details how to call the `construction/submit` endpoint of the Rosetta construction API.
 The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionsubmit).
 The endpoint sends to transactions to the IC. The first being the `Call Request` which contains the information of what submit, which canister, what function in the canister and with what arguments should be called. 
 The second is a `Read-State Request` which continously fetches the current status of the `Call Request` from the IC. It returns either containing some Error or the response of the canister. 
 This means that a call to the `construction/submit` endpoint is blocking until a result is available. Inside the returned object you will find information about the response from the ledger. 
 
-The `construction/submit` endpoint can be called with the following. 
+The `construction/submit` endpoint can be called with the following:
 ```bash
 curl --location '0.0.0.0:8081/construction/submit'  --header 'Content-Type: application/json' --data '{
   "network_identifier": {
@@ -23,15 +26,14 @@ curl --location '0.0.0.0:8081/construction/submit'  --header 'Content-Type: appl
 }'
 ```
 
-and the response would look something like this.
+The response would resemble the following:
 
 ```json
 {'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}, 'metadata': {'operations': [{'account': {'address': '8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4'}, 'amount': {'currency': {'decimals': 8, 'symbol': 'ICP'}, 'value': '-10'}, 'metadata': {'block_index': 342, 'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}}, 'operation_identifier': {'index': 0}, 'status': 'COMPLETED', 'type': 'TRANSACTION'}, {'account': {'address': '7f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad'}, 'amount': {'currency': {'decimals': 8, 'symbol': 'ICP'}, 'value': '10'}, 'metadata': {'block_index': 342, 'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}}, 'operation_identifier': {'index': 1}, 'status': 'COMPLETED', 'type': 'TRANSACTION'}, {'account': {'address': '8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4'}, 'amount': {'currency': {'decimals': 8, 'symbol': 'ICP'}, 'value': '-10000'}, 'metadata': {'block_index': 342, 'transaction_identifier': {'hash': '93b71e1bdb5016e31f28a7762283c896f1d749cdbd8569c1bf8487f804f7923b'}}, 'operation_identifier': {'index': 2}, 'status': 'COMPLETED', 'type': 'FEE'}]}}
 ```
-Alternatively, a user can querd the `/block` or `block/transaction` endpoints to see whether the transaction has been included in the blockchain of the ICP ledger. 
-Building on the previous python code snipped. A call to the `construction/submit` endpoint written in python could be implemented like the following.
+Alternatively, a user can query the `/block` or `block/transaction` endpoints to see whether the transaction has been included in the blockchain of the ICP ledger. 
+A call to the `construction/submit` endpoint written in Python could be implemented as follows:
 
-Example call: 
 ```bash
 python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
 ```
