@@ -30,7 +30,7 @@ The specified scheme does not make use of _clamping_, because it is unnecessary 
 
 We will assume the elliptic curve cryptography using the field and curve parameters defined by Ed25519 (see [RFC8032, Section 5.1](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1)). Variables below are either:
 
-- Integers modulo the order of the curve (referred to as n).
+- Integers modulo the order of the curve (referred to as L).
 - Coordinates of points on the curve.
 - Byte sequences.
 
@@ -61,5 +61,5 @@ The function CKDpub((K<sub>par</sub>, c<sub>par</sub>), i) → (K<sub>i</sub>, c
 - let IKM = ser<sub>P</sub>(K<sub>par</sub>) || i.
 - let OKM = HKDF(c<sub>par</sub>, IKM, utf8("Ed25519"), 96).
 - Split OKM into a 64-byte and a 32-byte sequence, tweak and c<sub>i</sub>.
-- let K<sub>i</sub> = K<sub>par</sub> + point(parse<sub>512</sub>(tweak) mod n).
+- let K<sub>i</sub> = K<sub>par</sub> + point(parse<sub>512</sub>(tweak) mod L).
 - return (K<sub>i</sub>, c<sub>i</sub>).
