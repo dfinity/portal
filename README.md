@@ -127,7 +127,13 @@ As a more general guideline, the audience can be thought of as the ‘20-29 cryp
 
 This audience should be kept in mind when writing docs. For example:
 
-- When introducing new concepts, tools, and ICP features, assume that the developer will need some additional context. You can provide additional context for other related concepts and features by linking to relevant documents or making mention that the feature builds off of concepts mentioned in another article, then link that article. 
+- When introducing new concepts, tools, and ICP features, assume that the developer will need some additional context. You can provide additional context for other related concepts and features by linking to relevant documents or making mention that the feature builds off of concepts mentioned in another article, then link that article.
+
+- If the topic can be related to another blockchain concept, use that terminology where it makes sense. For example:
+
+	- Smart contracts on ICP are referred to as canisters.
+	- Accounts on ICP are referred to as principals. 
+	- Multi-chain applications on ICP use chain fusion capabilities. 
 
 - When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
 
