@@ -20,7 +20,7 @@ To support the Ed25519 variant of threshold Schnorr signatures on the Internet C
 For a respective signing service on the Internet Computer to be efficient, the signing subnet maintains only a single master key pair and _derives_ signing child keys for each canister.
 Although there exist various hierarchical key derivation schemes (e.g., [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), [SLIP10](https://github.com/satoshilabs/slips/blob/master/slip-0010.md), [BIP32-Ed25519](https://input-output-hk.github.io/adrestia/static/Ed25519_BIP.pdf), [Schnorrkel](https://github.com/w3f/schnorrkel)), none of the analyzed schemes is suitable for the Internet Computer's (threshold) setting.
 For this reason, a new derivation scheme is specified here.
-The specified scheme does not make use of _clamping_, because it is unnecessary in the given setting, and satisfies the following requirements:
+The specified scheme does not make use of _clamping_ (see [RFC8032, Section 5.1.5, Item 2](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.5)), because it is unnecessary in the given setting, and satisfies the following requirements:
 
 - Off-chain availability: New public keys can be computed off-chain from a master public key without requiring interaction with the IC.
 - Hierarchical derivation: Derived keys are organized in a tree such that from any public key it is possible to derive new child keys. This tree can have arbitrary depth. The first level is used to derive unique canister-specific keys from the master key.
