@@ -176,18 +176,19 @@ function MultichainPage() {
                 Chain Fusion Technology
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
-                {/* 1. Value proposition */}
-              ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), without relying on 
-              any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from and write to different chains thanks to chain-key cryptography.
+              ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), 
+              without relying on any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from 
+              and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion.
               </p>
-
-          
             </div>
           </div>
           <div className="relative">
             <div className="absolute left-0 bottom-0 right-0 h-1/2 bg-page"></div>
             <div className="container-10 relative animate-fade-up animation-delay-300">
-              <img src="/img/multichain/hero.webp" alt="" className="w-full" />
+              {/* The surrounding div gives the image rounded corners */}
+              <div className="relative" style={{ overflow: 'hidden', borderRadius: '10px',  }}>
+                <img src="/img/multichain/hero2.webp" alt="" className="w-full h-full object-cover" />
+              </div>
             </div>
           </div>
         </section>
@@ -198,14 +199,17 @@ function MultichainPage() {
           variants={transitions.container}
         >
           <motion.p
-            className="tw-heading-5 md:tw-heading-3 text-gradient mb-0 md:w-8/10"
+            className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
             variants={transitions.item}
           >
-            {/* 2. Problem statement */}
-            The diversity of blockchains and the lack of interoperability create both a massive hurdle for 
-            wide user adoption and a challenging environment for 
-            developers. Developers must adapt to various programming models, transaction costs, and settlement times 
-            across different chains, while ensuring safe interoperability of assets and smart contracts. 
+            The common web3 pattern is building dapps from different blockchains, for instance Ethereum or Solana to store assets,  
+            IPFS or Arweave for serving frontends, and Arbitrum or Optimism for the bulk of smart contract computation. 
+            However, building dapps like this is very cumbersome. Developers must adapt to various programming models, 
+            transaction costs, and settlement times.
+            
+            Chain fusion tremendously simplifies multi-chain dapp development, making it as straightforward and native as 
+            building on a single environment.
+        
           </motion.p>
         </AnimateSpawn>
         <section className="bg-infinite relative overflow-hidden">
@@ -216,13 +220,11 @@ function MultichainPage() {
           </div>
           <div className="container-10 pb-20 pt-10 md:py-40">
             <div className="md:w-6/10 text-white relative">
-              <h2 className="text-gradient-purple tw-heading-3 md:tw-heading-60">
+              <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
                 How it is solved today
-              </h2>
+              </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-              {/* 3. How is it solved today */}
 
-              {/* OPTION 1 */}
               Developers today rely on trusted intermediaries acting as a bridge that make 
               wrapped copies of native tokens for usage on other blockchains. These bridges are slow, inconvenient, but most importantly: 
               they are the achilles heel of web3, this is where majority of hacks happen, tens of billions of dollars of 
@@ -236,10 +238,10 @@ function MultichainPage() {
             
               </p>
           
-              <h2 className="text-gradient-purple tw-heading-3 md:tw-heading-60">
-              Two pillars of multi-chain
-              </h2>
-              {/* 4. ICP solution */}
+              <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
+              The two pillars of chain fusion
+              </h3>
+
               <p className="tw-paragraph md:tw-lead-sm mb-6">
               True multi-chain capability requires enabling smart contracts to read and write across chains.
               For instance, you can write a <i>single</i> <b><i>ICP</i></b> smart contract that can custody <b><i>Bitcoin</i></b> and programmatically trigger 
@@ -260,7 +262,6 @@ function MultichainPage() {
           </div>
         </section>
 
-        {/* Section 1: ICP smart contracts can hold assets on other chains */}
         <section className="container-12 pt-20 md:pt-40">
           <div className="md:flex">
             <div className="flex-[5]">
@@ -270,9 +271,23 @@ function MultichainPage() {
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
-                  <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
-                    ICP smart contracts can natively hold assets on other chains
+                  <>
+                   <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
+                    Use cases of chain fusion
                   </h2>
+                  <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                    Explore Chain Fusion technology use cases, including executing ICP smart contracts 
+                    on other chains and asset storage like Bitcoin and Ethereum.
+                  </p>
+
+                  <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                    These applications range from automating tasks on Ethereum to creating 
+                    ICP smart contracts that manage Bitcoin/Ethereum. 
+                    Developers can also use ckBTC and ckETH to efficiently build DeFi services, 
+                    bypassing high costs and delays.
+                  </p>
+                  </>
+                 
                 }
               ></StickySectionNav>
             </div>
@@ -282,118 +297,7 @@ function MultichainPage() {
                 ref={(el) => (highlight.elRef.current = el)}
               >
 
-
-                <ContentCard id="ckbtc">
-                  <img
-                    src="/img/multichain/card-ckbtc.webp"
-                    alt="The bitcoin twin: ckBTC"
-                  />
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Bitcoin twin: ckBTC
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Internet Computer nodes talk to Bitcoin nodes to download
-                    the Bitcoin network’s blocks and maintain its Unspent
-                    Transaction Output (UTXO) set. Using this information, ICP
-                    acts as a sidechain and hosts a trustless “bitcoin twin”
-                    called ckBTC (“chain key bitcoin”) that can be directly
-                    processed by canister smart contract logic and transferred
-                    with 1 second finality at near zero cost.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    <strong>
-                      Canister smart contracts can be used to provide web-based
-                      wallets, and other Web3 services, that directly
-                      incorporate bitcoin – for example,{" "}
-                      <Link href="https://oc.app/" className="link-subtle">
-                        OpenChat
-                      </Link>{" "}
-                      allows chain key bitcoin to be transferred via instant
-                      chat messages. Canisters can also be used to build a new
-                      generation of “Bitcoin DeFi” services.
-                    </strong>
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    To create ckBTC, a user transfers their bitcoin to a ckBTC
-                    address provided by their wallet (e.g. see functionality
-                    provided at the NNS). Their ckBTC twin can then be sent to
-                    any other ckBTC address, almost instantly for a tiny fee, or
-                    directly to a standard Bitcoin address, causing the bitcoin
-                    twin to return to its native form.
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="bitcoin-ordinals">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ordinals and BRC20 
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Canister smart contracts on the Internet Computer can use a
-                    Bitcoin API to process bitcoin, and also Ordinals, which are
-                    used to create and transfer NFTs on the Bitcoin blockchain.
-                    Fully decentralized Web3 services on the Internet Computer
-                    have taken advantage of the functionality to create
-                    marketplaces for Ordinals e.g.{" "}
-                    <Link href="https://bioniq.io/" className="link-subtle">
-                      Bioniq
-                    </Link>
-                    .
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The processing of bitcoin and Ordinals involves the ICP
-                    protocol processing ECDSA cryptography behind the scenes.
-                    However, inscribing Ordinals and creating and processing
-                    BRC20 assets (e.g. meme coins that piggyback on Bitcoin)
-                    involves Schnorr cryptography, which ICP now also supports.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Because ICP supports Schnorr, web-based smart contract
-                    wallets such as OISY can self-host BRC20, Ethereum, and
-                    native ICP assets.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A further advantage is that canister smart contracts can
-                    sign transactions for execution on chains such as Cardano
-                    and Solana.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr pending</Status>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="cketh">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ethereum asset twins: ckETH and ckERC20
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Internet Computer nodes talk to Ethereum nodes. This enables
-                    ICP to host an “ether twin” called ckETH and “twins'' of
-                    ERC20 tokens, such as ckUSDC, ckUSDT, ckUNISWAP, ck1INCH,
-                    ckAAVE. These can be directly processed by smart contracts
-                    hosted on the Internet Computer.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The “chain key” versions of Ethereum assets live on ledgers
-                    created by Internet Computer smart contracts, where they can
-                    be transferred with 1 second finality and at near zero cost.
-                    Moreover, they can be directly processed by canisters that
-                    provide web-based wallets, and other web3 services hosted on
-                    the Internet Computer, such as SocialFi and GameFi.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    To create chain key Ethereum asset twins, a user transfers
-                    them to an address provided by their wallet. Then they can
-                    be sent to any other chain key address, almost instantly and
-                    at miniscule cost, or directly to a standard Ethereum
-                    address (causing the twin to return to its native form),
-                    after the standard finalization delay and transaction fee.
-                  </p>
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="done">ckETH done</Status>
-                    <Status type="pending">ckERC20 is pending</Status>
-                  </p>
-                </ContentCard>
+                {/* Use cases of software orchestration */}
 
                 <ContentCard id="oisy-wallet">
                   <img
@@ -434,91 +338,33 @@ function MultichainPage() {
                     gain convenience and a better experience, and superior
                     security.
                   </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    <strong>OISY Wallet:</strong>
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="done">Ethereum assets done</Status>
-                    <Status type="pending">ICP assets pending</Status>
-                    <Status type="pending">Bitcoin pending</Status>
-                    <Status type="pending">BRC20 pending</Status>
-                  </p>
+                  
                 </ContentCard>
 
-                <ContentCard id="icpERC20">
+                <ContentCard id="eth-cronjobs">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    icpERC20 tokens on Ethereum
+                    Cron jobs on Ethereum from ICP
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Ethereum provides the world’s preeminent DeFi rails.
-                    Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens. Popular custody
-                    services such as Fireblocks, which is popular among
-                    investment institutions, custody any ERC20 token as
-                    standard.
+                    A key challenge involved when hosting DeFi and other
+                    services using Ethereum smart contracts is the secure
+                    initiation of regular jobs. Oftentimes, smart contract jobs
+                    are initiated using external scripts running on insecure
+                    clouds such as Amazon Web Services, where the private key
+                    they maintain to make the calls is vulnerable in the same
+                    way the private keys used by hot wallets are.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The ICP protocol makes it possible to publish any native ICP
-                    token hosted on a standard ledger to Ethereum, in the form
-                    of an icpERC20. The twin is a standard ERC20 token and can
-                    be processed by any service that processes ERC20 tokens.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A service created by a Internet Computer-hosted smart
-                    contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token. The service
-                    also allows icpERC20 twins to be returned to the Internet
-                    Computer, where they retain their native form.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Once an icpERC20 token has been created, it can be
-                    processed by Ethereum Layer-2 networks and moved across
-                    other chains using traditional bridges.
-                  </p>
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">icpERC20 is pending</Status>
-                  </p>
-                </ContentCard>      
-            
-
-                <ContentCard id="bitcoin-ordinals">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ordinals, BRC20 inscriptions from ICP using tSchnorr
-
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Canister smart contracts on the Internet Computer can use a
-                    Bitcoin API to process bitcoin, and also Ordinals, which are
-                    used to create and transfer NFTs on the Bitcoin blockchain.
-                    Fully decentralized Web3 services on the Internet Computer
-                    have taken advantage of the functionality to create
-                    marketplaces for Ordinals e.g.{" "}
-                    <Link href="https://bioniq.io/" className="link-subtle">
-                      Bioniq
-                    </Link>
-                    .
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The processing of bitcoin and Ordinals involves the ICP
-                    protocol processing ECDSA cryptography behind the scenes.
-                    However, inscribing Ordinals and creating and processing
-                    BRC20 assets (e.g. meme coins that piggyback on Bitcoin)
-                    involves Schnorr cryptography, which ICP now also supports.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Because ICP supports Schnorr, web-based smart contract
-                    wallets such as OISY can self-host BRC20, Ethereum, and
-                    native ICP assets.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A further advantage is that canister smart contracts can
-                    sign transactions for execution on chains such as Cardano
-                    and Solana.
+                    The Internet Computer provides a solution. Canister smart
+                    contracts have an API that allows them to schedule their
+                    secure automatic execution for as long as needed into the
+                    future. Using EVM RPC, canisters can be used to initiate
+                    time-based calls into Ethereum smart contracts too – without
+                    a private key being made vulnerable.
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr pending</Status>
+                    <Status type="pending">pending</Status>
                   </p>
                 </ContentCard>
 
@@ -561,33 +407,6 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="eth-cronjobs">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Cron jobs on Ethereum from ICP
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A key challenge involved when hosting DeFi and other
-                    services using Ethereum smart contracts is the secure
-                    initiation of regular jobs. Oftentimes, smart contract jobs
-                    are initiated using external scripts running on insecure
-                    clouds such as Amazon Web Services, where the private key
-                    they maintain to make the calls is vulnerable in the same
-                    way the private keys used by hot wallets are.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer provides a solution. Canister smart
-                    contracts have an API that allows them to schedule their
-                    secure automatic execution for as long as needed into the
-                    future. Using EVM RPC, canisters can be used to initiate
-                    time-based calls into Ethereum smart contracts too – without
-                    a private key being made vulnerable.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">pending</Status>
-                  </p>
-                </ContentCard>
-
                 <ContentCard id="unlimited-multichain">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
                     Unlimited multi-chain via edge routing
@@ -616,7 +435,208 @@ function MultichainPage() {
                     network, then poll for the result.
                   </p>
                 </ContentCard>
-                
+
+                {/* Use cases of storing assets */}
+                <ContentCard id="ckbtc">
+                  <img
+                    src="/img/multichain/card-ckbtc.webp"
+                    alt="The bitcoin twin: ckBTC"
+                  />
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Bitcoin twin: ckBTC
+                  </h3>
+
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                  Developers use ICP to bring smart contract functionality to Bitcoin.
+                  This new solution brings a new challenge: Bitcoin costs and wait times.
+                  No matter how fast a ICP smart contract is, moving Bitcoin will have the 
+                  costs and wait times of the Bitcoin network.
+                  </p>
+                    
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    To address this, developers also use ckBTC (“chain key bitcoin”). 
+                    This is a trustless "Bitcoin twin" hosted on ICP that can 
+                    be used by ICP smart contracts to move Bitcoin cheaply and quickly. 
+                    This is possible because ICP nodes talk to Bitcoin nodes to download
+                    the Bitcoin network’s blocks and maintain its Unspent
+                    Transaction Output (UTXO) set. CkBTC can be directly
+                    processed by canister smart contract logic and transferred
+                    with 1 second finality at near zero cost.
+                  </p>
+
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    <strong>
+                      Canister smart contracts can be used to provide web-based
+                      wallets, and other Web3 services, that directly
+                      incorporate bitcoin – for example,{" "}
+                      <Link href="https://oc.app/" className="link-subtle">
+                        OpenChat
+                      </Link>{" "}
+                      allows chain key bitcoin to be transferred via instant
+                      chat messages. Canisters can also be used to build a new
+                      generation of “Bitcoin DeFi” services.
+                    </strong>
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    To create ckBTC, a user transfers their bitcoin to a ckBTC
+                    address provided by their wallet (e.g. see functionality
+                    provided at the NNS). Their ckBTC twin can then be sent to
+                    any other ckBTC address, almost instantly for a tiny fee, or
+                    directly to a standard Bitcoin address, causing the bitcoin
+                    twin to return to its native form.
+                  </p>
+                </ContentCard>
+
+                <ContentCard id="bitcoin-ordinals">
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Ordinals and BRC20 
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Creating Bitcoin Ordinals can be expensive and slow. ICP
+                    can help here too. ICP canister smart contracts can use the
+                    Bitcoin API to process bitcoin, and also Ordinals, which are
+                    used to create and transfer NFTs on the Bitcoin blockchain.
+                    Fully decentralized Web3 services on the Internet Computer
+                    have taken advantage of the functionality to create
+                    marketplaces for Ordinals e.g.{" "}
+                    <Link href="https://bioniq.io/" className="link-subtle">
+                      Bioniq
+                    </Link>
+                    .
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The processing of bitcoin and Ordinals involves the ICP
+                    protocol processing ECDSA cryptography behind the scenes.
+                    However, inscribing Ordinals and creating and processing
+                    BRC20 assets (e.g. meme coins that piggyback on Bitcoin)
+                    involves Schnorr cryptography, which ICP now also supports.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Because ICP supports Schnorr, web-based smart contract
+                    wallets such as OISY can self-host BRC20, Ethereum, and
+                    native ICP assets.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    A further advantage is that canister smart contracts can
+                    sign transactions for execution on chains such as Cardano
+                    and Solana.
+                  </p>
+
+                  <p className="flex gap-2 flex-wrap">
+                    <Status type="pending">Schnorr pending</Status>
+                  </p>
+                </ContentCard>
+
+                <ContentCard id="cketh">
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Ethereum asset twins: ckETH and ckERC20
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Developers use ICP to custody Ethereum. This new solution
+                    brings a new developer experience challenge: Ethereum costs and wait times.
+                    To address this, the ICP community uses ckEth ("chain key Ethereum"),
+                    a trustless "Twins of Ethereum" hosted on ICP such as 
+                    “ether twin” called ckETH and “twins'' of
+                    ERC20 tokens, such as ckUSDC, ckUSDT, ckUNISWAP, ck1INCH,
+                    ckAAVE. These can be directly processed by smart contracts
+                    hosted on ICP.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The “chain key” versions of Ethereum assets live on ledgers
+                    created by ICP smart contracts, where they can
+                    be transferred with 1 second finality and at near zero cost.
+                    Moreover, they can be directly processed by canisters that
+                    provide web-based wallets, and other web3 services hosted on
+                    the ICP, such as SocialFi and GameFi.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    To create chain key Ethereum asset twins, a user transfers
+                    them to an address provided by their wallet. Then they can
+                    be sent to any other chain key address, almost instantly and
+                    at miniscule cost, or directly to a standard Ethereum
+                    address (causing the twin to return to its native form),
+                    after the standard finalization delay and transaction fee.
+                  </p>
+                  <p className="flex gap-2 flex-wrap">
+                    <Status type="done">ckETH done</Status>
+                    <Status type="pending">ckERC20 is pending</Status>
+                  </p>
+                </ContentCard>
+
+                <ContentCard id="icpERC20">
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    icpERC20 tokens on Ethereum
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Ethereum provides the world’s preeminent DeFi rails.
+                    Decentralized exchanges such as Uniswap provide immense
+                    liquidity for trading ERC20 tokens. Popular custody
+                    services such as Fireblocks, which is popular among
+                    investment institutions, custody any ERC20 token as
+                    standard.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The ICP protocol makes it possible to publish any native ICP
+                    token hosted on a standard ledger to Ethereum, in the form
+                    of an icpERC20. The twin is a standard ERC20 token and can
+                    be processed by any service that processes ERC20 tokens.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    A service created by a Internet Computer-hosted smart
+                    contract provides functionality (often relayed by wallets)
+                    to create an icpERC20 twin of an ICP token. The service
+                    also allows icpERC20 twins to be returned to the Internet
+                    Computer, where they retain their native form.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Once an icpERC20 token has been created, it can be
+                    processed by Ethereum Layer-2 networks and moved across
+                    other chains using traditional bridges.
+                  </p>
+                  <p className="flex gap-2 flex-wrap">
+                    <Status type="pending">icpERC20 is pending</Status>
+                  </p>
+                </ContentCard>   
+
+                <ContentCard id="bitcoin-ordinals">
+                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
+                    Ordinals, BRC20 inscriptions from ICP using tSchnorr
+
+                  </h3>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Canister smart contracts on the Internet Computer can use a
+                    Bitcoin API to process bitcoin, and also Ordinals, which are
+                    used to create and transfer NFTs on the Bitcoin blockchain.
+                    Fully decentralized Web3 services on the Internet Computer
+                    have taken advantage of the functionality to create
+                    marketplaces for Ordinals e.g.{" "}
+                    <Link href="https://bioniq.io/" className="link-subtle">
+                      Bioniq
+                    </Link>
+                    .
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    The processing of bitcoin and Ordinals involves the ICP
+                    protocol processing ECDSA cryptography behind the scenes.
+                    However, inscribing Ordinals and creating and processing
+                    BRC20 assets (e.g. meme coins that piggyback on Bitcoin)
+                    involves Schnorr cryptography, which ICP now also supports.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    Because ICP supports Schnorr, web-based smart contract
+                    wallets such as OISY can self-host BRC20, Ethereum, and
+                    native ICP assets.
+                  </p>
+                  <p className="tw-paragraph md:tw-lead-sm mb-0">
+                    A further advantage is that canister smart contracts can
+                    sign transactions for execution on chains such as Cardano
+                    and Solana.
+                  </p>
+
+                  <p className="flex gap-2 flex-wrap">
+                    <Status type="pending">Schnorr pending</Status>
+                  </p>
+                </ContentCard>
 
                 <ContentCard id="additional-resources">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
@@ -656,7 +676,6 @@ function MultichainPage() {
                     </Link>
                   </p>
                 </ContentCard>
-
                 
                 <ContentCard id="sample-code">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">

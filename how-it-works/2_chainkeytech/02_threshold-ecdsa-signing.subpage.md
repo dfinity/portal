@@ -7,7 +7,7 @@ slug: threshold-ecdsa-signing
 
 # Chain-key signatures
 
-_Chain-key signatures_ extend chain-key technology to allow transactions targeted at other blockchains to be computed fully on-chain using the Internet Computer Protocol.
+The main application of _chain-key signatures_ is to enable direct interoperability with other blockchains as part of [Chain Fusion Technology](/multichain). Using chain-key signatures, canister smart contracts obtain control over cryptographic keys: They have a public key, from which a blockchain address on another blockchain like Bitcoin or Ethereum can be derived, and they can sign transactions relative to that address. Two major features of ICP that build on chain-key signatures are ckBTC and ckETH, representations of BTC and ETH on the Internet Computer, in which a canister smart contract cryptographically controls the bitcoin and ether that backs the ckBTC and ckETH tokens 1:1.
 Indeed, using chain-key signatures is the strongest, most decentralized way of integrating blockchains as no additional trust assumptions besides that of the two blockchains are required, particularly no additional parties that manage signature keys or their shares.
 
 Just like chain-key technology, a key component of chain-key signatures is threshold cryptography.

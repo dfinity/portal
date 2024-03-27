@@ -651,21 +651,31 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Multi-chain",
+      label: "Chain fusion",
       items: [
+        "developer-docs/multi-chain/overview",
         {
           type: "category",
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
-            "developer-docs/multi-chain/bitcoin/ckbtc",
             {
               type: "category",
-              label: "Advanced",
+              label: "Using the integration",
               items: [
-                "developer-docs/multi-chain/bitcoin/read-state",
-                "developer-docs/multi-chain/bitcoin/submit-transactions",
-                "developer-docs/multi-chain/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckBTC",
+              items: [
+                "developer-docs/multi-chain/bitcoin/ckbtc/overview",
+                "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
               ],
             },
           ],
@@ -675,9 +685,25 @@ const sidebars = {
           label: "Ethereum",
           items: [
             "developer-docs/multi-chain/ethereum/overview",
-            "developer-docs/multi-chain/ethereum/cketh",
-            "developer-docs/multi-chain/ethereum/evm-rpc",
-            "developer-docs/multi-chain/ethereum/siwe",
+            {
+              type: "category",
+              label: "Using the integration",
+              items: [
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
+                "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckETH",
+              items: [
+                "developer-docs/multi-chain/ethereum/cketh/overview",
+                "developer-docs/multi-chain/ethereum/cketh/making-transactions",
+              ],
+            },
           ],
         },
       ],
@@ -1089,6 +1115,7 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+            "references/supported-signatures",
           ],
         },
         {
