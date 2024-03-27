@@ -616,14 +616,31 @@
     "submittableId": "35782696"
   },
   {
+    "id": "singularitynet",
+    "name": "SingularityNET",
+    "oneLiner": "Decentralized AI marketplace",
+    "twitter": "https://twitter.com/singularitynet",
+    "website": "https://linktr.ee/singularitynet",
+    "tags": [
+      "AI"
+    ],
+    "description": "SingularityNET is the world’s leading decentralized AI marketplace, running on blockchain. Our core mission is the development of Artificial General Intelligence (AGI) for a beneficial technological Singularity.",
+    "usesInternetIdentity": false,
+    "stats": "",
+    "display": "Large",
+    "logo": "/img/showcase/singularitynet_logo.webp",
+    "screenshots": [
+      "/img/showcase/singularity_screenshot.webp"
+    ]
+  },
+  {
     "id": "kinic",
     "name": "Kinic",
     "oneLiner": "The world's first Web3 search engine",
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure",
-      "DAO",
-      "AI"
+      "DAO"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
     "description": "The world’s first Web3 search engine indexing all Internet Computer-based dapps.",
@@ -634,6 +651,40 @@
     "screenshots": [
       "/img/showcase/kinic_screenshot.webp"
     ]
+  },
+  {
+    "id": "aikinic",
+    "name": "AI Kinic",
+    "oneLiner": "Deploy vector databases, machine learning instances, and much more leveraging web3.",
+    "website": "https://ai.kinic.io/",
+    "tags": [
+      "AI"
+    ],
+    "description": "Artificial Intelligence Tooling For The New Web, Deploy vector databases, machine learning instances, and much more leveraging web3.Kinic Vector DB runs 100% on-chain with the Internet Computer Blockchain",
+    "stats": "",
+    "display": "Normal",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/kinic_logo.webp",
+    "screenshots": [
+      "/img/showcase/kinic_screenshot.webp"
+    ]
+  },
+  {
+    "name": "ELNA.ai",
+    "description": "ELNA.ai is the world's first fully on-chain decentralized GenAI Companion.",
+    "website": "https://www.elna.ai/",
+    "logo": "/img/showcase/elnaai_logo.png",
+    "display": "Normal",
+    "id": "elnaai",
+    "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/elna-ai",
+    "twitter": "https://twitter.com/elna_live",
+    "submittableId": "44027684"
   },
   {
     "id": "modclub",
@@ -852,7 +903,8 @@
     "oneLiner": "Build Web3 at Lightning Speed",
     "website": "https://juno.build",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],
     "twitter": "https://twitter.com/junobuild",
     "github": "https://github.com/junobuild/juno",
@@ -3674,23 +3726,6 @@
     ],
     "usesInternetIdentity": false,
     "github": "https://github.com/smallstepman/ic-mnist"
-  },
-  {
-    "name": "ELNA.ai",
-    "description": "ELNA.ai is the world's first fully on-chain decentralized GenAI Companion.",
-    "website": "https://www.elna.ai/",
-    "logo": "/img/showcase/elnaai_logo.png",
-    "display": "Normal",
-    "id": "elnaai",
-    "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
-    "tags": [
-      "Tools / Infrastructure",
-      "AI"
-    ],
-    "usesInternetIdentity": false,
-    "github": "https://github.com/elna-ai",
-    "twitter": "https://twitter.com/elna_live",
-    "submittableId": "44027684"
   },
   {
     "id": "vaultbet",

@@ -259,9 +259,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Enter the ICP ecosystem",
-            href: "/ecosystem",
-            image: "/img/nav/featured-web3.webp",
+            title: "Hello, Decentralized AI",
+            href: "/ai",
+            image: "/img/nav/featured-ai.webp",
           },
         },
         {
