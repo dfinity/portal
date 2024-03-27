@@ -594,7 +594,7 @@ const config = {
         },
       ],
       navbar: {
-        hideOnScroll: true,
+        hideOnScroll: false,
 
         logo: {
           alt: "DFINITY Logo",

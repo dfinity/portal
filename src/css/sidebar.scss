@@ -1,10 +1,11 @@
 :root {
   --ifm-menu-color-background-hover: #e8e4ed;
-  --ic0-menu-padding-top: 64px;
+  --ic0-menu-padding-top: 24px;
 }
 
 div[class*="sidebar_"] {
   border-right: var(--ic0-nav-border);
+  padding-top: 0;
 }
 
 div[class*="sidebar_"][class*="sidebarWithHideableNavbar_"] {
@@ -12,6 +13,7 @@ div[class*="sidebar_"][class*="sidebarWithHideableNavbar_"] {
 }
 
 aside[class*="docSidebarContainer_"] {
+  margin-top: 0;
   .menu {
     padding: var(--ic0-menu-padding-top) 20px 60px
       calc(
@@ -104,22 +106,22 @@ aside[class*="docSidebarContainer_"] {
 
   // move the entire sidebar down when the navbar is visible
   .theme-doc-sidebar-container {
-    transition: transform var(--ifm-transition-fast) ease;
-    transform: translate3d(0, var(--ifm-subnav-height), 0);
+    //transition: transform var(--ifm-transition-fast) ease;
+    //transform: translate3d(0, var(--ifm-navbar-height), 0);
   }
 }
 
-nav[class*="navbarHidden_"] ~ .main-wrapper {
-  // move the entire sidebar up when the navbar is hidden to keep the spacing wrt to subnav consistent
-  .theme-doc-sidebar-container {
-    transition: transform var(--ifm-transition-fast) ease;
-    transform: translate3d(
-      0,
-      calc(-1 * var(--ifm-subnav-height) + var(--ic0-menu-padding-top) - 1px),
-      0
-    );
-  }
-}
+//nav[class*="navbarHidden_"] ~ .main-wrapper {
+//  // move the entire sidebar up when the navbar is hidden to keep the spacing wrt to subnav consistent
+//  .theme-doc-sidebar-container {
+//    transition: transform var(--ifm-transition-fast) ease;
+//    transform: translate3d(
+//      0,
+//      calc(-1 * var(--ifm-subnav-height) + var(--ic0-menu-padding-top) - 1px),
+//      0
+//    );
+//  }
+//}
 
 .navbar-sidebar {
   background: var(--ifm-menu-color-background-hover);
