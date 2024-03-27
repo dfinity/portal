@@ -76,6 +76,5 @@ The function KTpub computes a child extended public key from a parent extended p
 KTpub((K<sub>par</sub>, c<sub>par</sub>), d) → (K<sub>d</sub>, c<sub>d</sub>):
 - let (K<sub>d</sub>, c<sub>d</sub>) = (K<sub>par</sub>, c<sub>par</sub>)
 - for all indices i in d:
-
   (K<sub>d</sub>, c<sub>d</sub>) = CKDpub((K<sub>d</sub>, c<sub>d</sub>), i)
 - return (K<sub>d</sub>, c<sub>d</sub>).
