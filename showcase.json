@@ -627,8 +627,11 @@
     "description": "SingularityNET is the world’s leading decentralized AI marketplace, running on blockchain. Our core mission is the development of Artificial General Intelligence (AGI) for a beneficial technological Singularity.",
     "usesInternetIdentity": false,
     "stats": "",
-    "display": "Normal",
-    "logo": "/img/showcase/singularitynet_logo.webp"
+    "display": "Large",
+    "logo": "/img/showcase/singularitynet_logo.webp",
+    "screenshots": [
+      "/img/showcase/kinic_screenshot.webp"
+    ]
   },
   {
     "id": "kinic",
@@ -637,8 +640,7 @@
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure",
-      "DAO",
-      "AI"
+      "DAO"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
     "description": "The world’s first Web3 search engine indexing all Internet Computer-based dapps.",
@@ -666,6 +668,23 @@
     "screenshots": [
       "/img/showcase/kinic_screenshot.webp"
     ]
+  },
+  {
+    "name": "ELNA.ai",
+    "description": "ELNA.ai is the world's first fully on-chain decentralized GenAI Companion.",
+    "website": "https://www.elna.ai/",
+    "logo": "/img/showcase/elnaai_logo.png",
+    "display": "Normal",
+    "id": "elnaai",
+    "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/elna-ai",
+    "twitter": "https://twitter.com/elna_live",
+    "submittableId": "44027684"
   },
   {
     "id": "modclub",
@@ -3707,23 +3726,6 @@
     ],
     "usesInternetIdentity": false,
     "github": "https://github.com/smallstepman/ic-mnist"
-  },
-  {
-    "name": "ELNA.ai",
-    "description": "ELNA.ai is the world's first fully on-chain decentralized GenAI Companion.",
-    "website": "https://www.elna.ai/",
-    "logo": "/img/showcase/elnaai_logo.png",
-    "display": "Normal",
-    "id": "elnaai",
-    "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
-    "tags": [
-      "Tools / Infrastructure",
-      "AI"
-    ],
-    "usesInternetIdentity": false,
-    "github": "https://github.com/elna-ai",
-    "twitter": "https://twitter.com/elna_live",
-    "submittableId": "44027684"
   },
   {
     "id": "vaultbet",
