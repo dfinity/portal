@@ -18,7 +18,6 @@ This guide will outline the following:
 - Code snippets and code blocks.
 - Command line syntax.
 - FAQ sections.
-- How to write a guide.
 
 ## Page structure
 
