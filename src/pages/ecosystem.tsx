@@ -15,16 +15,19 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
 
+
+type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">
+
 import { ProjectInfo } from "../components/Ecosystem/ProjectInfo";
 
 function sortDesktopProjects(
   projects: ShowcaseProject[]
-): Array<ShowcaseProject | "promo"> {
-  const small: Array<ShowcaseProject | "promo"> = projects.filter(
+): EnrichedShowcaseProjects {
+  const small: EnrichedShowcaseProjects = projects.filter(
     (p) => p.display !== "Large"
   );
   const large = projects.filter((p) => p.display === "Large");
-  const sorted: Array<ShowcaseProject | "promo"> = [];
+  const sorted: EnrichedShowcaseProjects = [];
   const columns = 4;
 
   const promoSlots = [8 - 1, 20 - 3, 32 - 2, 48 - 4, 64 - 1];
@@ -33,6 +36,11 @@ function sortDesktopProjects(
     if (small.length >= slot) {
       small.splice(slot, 0, "promo");
     }
+  }
+
+  // add report card after the 1st promo card
+  if (small.length >= 8) {
+    small.splice(0, 0, "report");
   }
 
   while (true) {
@@ -102,6 +110,135 @@ const LargeProjectMedia: React.FC<{
   );
 };
 
+const ProjectInfo: React.FC<{
+  project: ShowcaseProject;
+}> = ({ project }) => {
+  return (
+    <div className="flex flex-col gap-4 h-full max-w-full">
+      <div className="flex gap-2 items-center">
+        <img
+          src={project.logo}
+          className="w-14 max-h-14"
+          alt={`${project.name} logo`}
+        ></img>
+        <div className="flex flex-col justify-center flex-1">
+          <h3 className="tw-heading-5 mb-0" style={{ wordBreak: "break-word" }}>
+            {project.name}
+
+            {project.usesInternetIdentity && (
+              <Tooltip
+                tooltip="Uses Internet Identity"
+                className="text-center w-44"
+              >
+                <img
+                  className="relative bottom-2 left-1 cursor-pointer"
+                  src="/img/showcase/ii-badge.svg"
+                  alt="The project uses Internet Identity"
+                ></img>
+              </Tooltip>
+            )}
+          </h3>
+          {project.stats && (
+            <p className="tw-paragraph-sm text-black-60 mb-0">
+              {project.stats}
+            </p>
+          )}
+        </div>
+      </div>
+      <div className="flex-1 tw-paragraph text-black-60 break-words">
+        {project.description}
+      </div>
+      <div className="flex gap-3">
+        <Link
+          className="button-round"
+          href={project.website}
+          aria-label={`Visit project ${project.name} website at ${project.website}`}
+        >
+          Try it
+        </Link>
+        {project.github && (
+          <Link
+            className="button-round-icon"
+            href={project.github}
+            aria-label={`Go to source code of project ${project.name}`}
+          >
+            <GithubIcon></GithubIcon>
+          </Link>
+        )}
+        {project.youtube && (
+          <Link
+            className="button-round-icon"
+            href={project.youtube}
+            aria-label={`Go to source code of project ${project.name}`}
+          >
+            <YoutubeIcon></YoutubeIcon>
+          </Link>
+        )}
+        {project.twitter && (
+          <Link
+            className="button-round-icon"
+            href={project.twitter}
+            aria-label={`Go to source code of project ${project.name}`}
+          >
+            <TwitterIcon></TwitterIcon>
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const SmallCard = ({ project }: { project: ShowcaseProject }) => {
+  return (
+    <div className="rounded-xl bg-white-80 flex px-6 py-8 backdrop-blur-2xl">
+      <div className="flex flex-col gap-2">
+        <ProjectInfo project={project}></ProjectInfo>
+      </div>
+    </div>
+  );
+};
+
+const PromoCard = () => {
+  return (
+    <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6]">
+      <div className="flex flex-col gap-2">
+        <h3 className="tw-title-sm mb-0">Submit your project</h3>
+        <p className="tw-paragraph text-white/60 flex-1 mb-12">
+          See a project missing? All community members are invited to submit
+          their projects to this page.
+        </p>
+        <Link
+          className="button-white text-center"
+          href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+        >
+          Submit now
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const ReportCard = () => {
+  return (
+    <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
+      <div className="flex flex-col gap-2">
+        <h3 className="tw-title-sm mb-0">ICP Ecosystem Report</h3>
+        <p className="tw-paragraph text-white/60 flex-1 mb-12">
+          The first ICP ecosystem report recaps the most substantial ecosystem achievements from 2023 as well as zooms in on several success stories from within the ecosystem.
+        </p>
+        <Link
+          className="button-white link text-center"
+          href="/icp_ecosystem_report_03_2024.pdf"
+          target="_blank"
+          download
+        >
+          Download Report
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 const LargeCard = ({ project }: { project: ShowcaseProject }) => {
   return (
     <div className="md:col-span-2 lg:col-span-4 rounded-xl  bg-white-80 flex flex-col md:flex-row backdrop-blur-2xl">
@@ -142,7 +279,7 @@ function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
   const [filteredProjects, setFilteredProjects] =
-    React.useState<Array<ShowcaseProject | "promo">>(projects);
+    React.useState<EnrichedShowcaseProjects>(projects);
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
 
@@ -212,16 +349,17 @@ function ShowcasePage(): JSX.Element {
         </section>
         <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative -mt-48 md:-mt-40">
           {filteredProjects.map((project, index) =>
-            project === "promo" ? (
-              <PromoCard 
-                key={`promo_${index}`}
-                title="Submit your project"
+             (project === "promo" || project === "report") ? (
+                project === "promo" ? 
+                (<PromoCard key={`promo_${index}`} title="Submit your project"
                 link={{
                   label: "Submit now",
                   href: "https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
                 }}
                 description="See a project missing? All community members are invited to submit their projects to this page."
-              />
+              />) : 
+                (<ReportCard key={`report_${index}`} />)
+              <PromoCard key={`promo_${index}`} />
             ) : project.display === "Large" &&
               (project.video || project.screenshots?.length > 0) ? (
               <LargeCard project={project} key={project.website} />
