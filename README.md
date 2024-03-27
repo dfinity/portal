@@ -74,6 +74,7 @@ docs
 ### Contributions must:
 
 - Must follow the [developer docs style guide](style-guide.md).
+- Must follow the [best practices and guidelines](#best-practices).
 - Must include [document tags](#document-tags).
 - Must include [SEO keywords](#seo-keywords).
 - Must be in `.mdx` file format to support the previous two components. 
@@ -84,13 +85,13 @@ docs
 
 If proposed documentation additions do not follow the above guidelines, they will need to be revised.
 
-### Adding a document
+## Adding a document
 
 To add a new documentation page, first find the category on the sidebar that you'd like to create a new document under. Then, navigate into that subdirectory in the repo and create a new documentation page. See the [repo structure](#repo-structure) outline for more information. 
 
 All documents must be in `.mdx` format. 
 
-### Format and style guidelines
+## Format and style guidelines
 
 The developer documentation must follow the provided style guide to be submitted:
 
@@ -98,7 +99,124 @@ The developer documentation must follow the provided style guide to be submitted
 
 This style guide includes the standards for capitalization, word choice, formatting, etc. 
 
-### Document tags
+## Best practices
+
+When writing documentation for the Dev Docs, the following guidelines should be followed:
+
+### Audience
+
+The intended audience of the Dev Docs are existing ICP devs and Web3 blockchain devs who are interested in developing on ICP after they have experience with Ethereum/Solidity, Solana, Bitcoin, etc. 
+
+As a more general guideline, the audience can be thought of as the ‘20-29 crypto community’. 
+
+This audience should be kept in mind when writing docs. For example:
+
+- When introducing new concepts, tools, and ICP features, assume that the developer will need some additional context. You can provide additional context for other related concepts and features by linking to relevant documents or making mention that the feature builds off of concepts mentioned in another article, then link that article. 
+
+- When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology. 
+
+### Content
+Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
+
+- The [Reference Technology Overview](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) pages 
+
+- The [How It Works](https://internetcomputer.org/how-it-works) section of the website
+
+- The [Core Concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
+
+Try to answer the following questions within the document:
+
+- What is the feature, tool, or concept?
+- How do developers benefit from using it? Why should they care about it?
+- How can developers use it?
+- What dependencies do they need to download or import into their project to use it?
+- Are there any best practices they should follow?
+- What are the limitations? Are there any nuances they should be aware of? 
+- What resources or docs should they go to for more information?
+
+### Format, language choice, and capitalization
+Avoid using the term ‘we’ in documentation. Either eliminate using pronouns or instead, use ‘your’.
+
+- “Next, we will open the main.mo file.” → “Next, open the main.mo file.”
+
+- “We need to download dfx before we get started.” → “You need to download dfx before you get started.”
+
+Avoid marketing language and trying to 'sell' the feature. Explain the technology’s benefits in a manner that they should sell themselves to developers.
+
+Follow the [Dev Docs Style Guide](style-guide.md) for guidance on:
+- Page structure.
+- Use of page headings.
+- Use of capitalization.
+- Language, spelling, grammar, and word choice.
+- Use of punctuation.
+- Bulleted lists.
+- Bold text.
+- Italic text.
+- Hints.
+- Links and hyperlinks.
+- Code snippets and code blocks.
+- Command line syntax.
+- FAQ sections.
+
+### Duplication and redundancies 
+Avoid duplication of content whenever possible. If content exists elsewhere on the Dev Docs that explains the concept or feature you’d like to include, link to that page rather than re-explaining things. 
+
+Avoid using several sentences that say the same thing. Remove redundancies whenever possible. 
+
+### Code snippets
+When inserting code snippets into a document, you may use full, deploy-ready snippets, or you can use small pieces of code to demonstrate a specific feature or function. 
+
+To determine which form suits the document best, answer the following:
+
+- Does the document focus on a specific feature or functionality, or does it showcase an entire dapp/service? 
+- If the development showcases a specific feature, a partial snippet may be appropriate. 
+- Is implementation of this feature/functionality very complex and requires prerequisite knowledge?
+- If the feature is fairly simple and doesn’t require much prerequisite knowledge, a small partial snippet can be used. 
+- Are the prerequisites for using this code available elsewhere in the documentation? Is it clear that these prerequisites should be followed prior to inserting this feature?
+
+When in doubt, try to use full code snippets. This additional context can help limit confusion and aid in developer onboarding/developer adoption of new features. 
+
+### Simplicity
+Keep content as brief and to-the-point as possible. Do not over-explain concepts. Try to use pointed sentences that do not contain ‘fluff’ words.
+
+Keep in mind that developers want to find the answers to their questions as quickly as possible. Having long-winded explanations that they must decipher can prevent them from staying on the documentation and prevent them from onboarding. 
+
+For non-native English speakers, having long paragraphs with redundant sentences can cause confusion and onboarding friction. 
+
+### Language-agnosity
+Avoid giving the impression that developers must learn and use Motoko to create canisters. When possible, provide code snippets in as many languages as possible. Use the [Docusaurus tab](#tabs) functionality to format these examples. Reach out to @jessiemongeon1 for questions/assistance with this.
+
+For some documentation instances, this may not be possible, such as Rust crates and Motoko libraries.
+
+### Visual aids
+When introducing new protocol concepts or architecture, visual aids can be extremely beneficial for the reader. If possible, create a visual aid to help explain these new concepts. 
+
+[Excalidraw](https://excalidraw.com/) is a recommended tool for creating these visuals.
+
+### Resources
+At the end of the document, it can be beneficial to developers if you include links to additional resources. If a developer reads through the document and still has questions, where should they go?
+This may include:
+- Tutorials that showcase this feature.
+- The Github repo for this feature or tool.
+- Additional reading resources, such as a concepts page or a how it works page.
+
+### Best practices 
+When writing documentation, keep the following best practices in mind:
+
+1. When linking other documents, avoid the format:
+	- “Read more about dfx [here](link.com).”
+Instead, use:
+	- “[Learn more about dfx](link.com).”
+
+2. Be brief. Cut out unnecessary words and sentences. 
+3. Follow the [style guide](style-guide.md) for formatting and language.
+4. Avoid creating duplicate content. Link to existing content whenever possible. 
+5. Provide high-level overviews of technology and concepts. Avoid giving a deep-dive on different technologies. 
+6. Utilize visual aids when possible. 
+7. Utilize language-agnostic examples and code snippets.
+
+
+## Document tags
 
 Document tags are required for all documentation pages. They can be added beneath the title heading (# Title) of the page. 
 
@@ -132,17 +250,17 @@ Documentation pages should include two types of keywords:
 
 Additional, optional (but recommended) tags include:
 
-	- Language
+- Language
 
-		- Motoko / Rust / Python / Typescript / Solidity
-  
-  	- Multi-chain integration
-		
-  		- Bitcoin / Ethereum
+	- Motoko / Rust / Python / Typescript / Solidity
 
- 	- Governance (for NNS/SNS docs)
+- Multi-chain integration
+	
+	- Bitcoin / Ethereum
 
-### SEO keywords
+- Governance (for NNS/SNS docs)
+
+## SEO keywords
 
 SEO keywords are required for all documentation pages. They can be added to the frontmatter of the document (first three lines) using the following format:
 
@@ -154,7 +272,60 @@ keywords: [intermediate, browser js, javascript, agent js, agents]
 
 Keywords must include the words included as document tags (experience level, document type) at minimum. Additional SEO keywords can be added at the author's discretion. 
 
-### Tooltips
+## Tabs
+
+To showcase code snippets in several different languages, the Tabs functionality can be used. The Dev Docs uses a custom tab component that defines a 'Beta' badge that is used to lable TypeScript and Python snippets as 'Beta'. 
+
+Here is an example of how to use this custom tab component:
+
+	import TabItem from "@theme/TabItem";
+	import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+	import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+	import { BetaChip } from "/src/components/Chip/BetaChip";
+	
+	<AdornedTabs groupId="language">
+	<TabItem value="motoko" label="Motoko" default>
+	
+	```motoko
+	
+	Motoko code
+	
+	```
+	
+	</TabItem>
+	<TabItem value="rust" label="Rust">
+	
+	```rust
+	
+	Rust code
+	
+	```
+	
+	</TabItem>
+	
+	<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+	
+	```typescript
+	
+	TypeScript code
+	
+	```
+	
+	</AdornedTab>
+	
+	<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+	
+	```python
+	
+	Python code
+	
+	```
+	
+	</AdornedTab>
+	</AdornedTabs>
+
+
+## Tooltips
 
 Tooltips are pieces of text, usually glossary keywords that display an info box when moused over. Tooltips are optional but recommended for content tagged as 'Beginner'. 
 
