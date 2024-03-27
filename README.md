@@ -129,7 +129,7 @@ This audience should be kept in mind when writing docs. For example:
 
 - When introducing new concepts, tools, and ICP features, assume that the developer will need some additional context. You can provide additional context for other related concepts and features by linking to relevant documents or making mention that the feature builds off of concepts mentioned in another article, then link that article.
 
-- If the topic can be related to another blockchain concept, use that terminology where it makes sense. For example:
+- If an ICP-specific term can be related to a broad blockchain concept, use that terminology where it makes sense. For example:
 
 	- Smart contracts on ICP are referred to as canisters.
 	- Accounts on ICP are referred to as principals. 
