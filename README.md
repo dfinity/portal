@@ -171,7 +171,7 @@ Try to answer the following questions within the document:
 - What are the limitations? Are there any nuances they should be aware of? 
 - What resources or docs should they go to for more information?
 
-## Duplication and redundancies 
+### Duplication and redundancies 
 Avoid duplication of content whenever possible. If content exists elsewhere on the Dev Docs that explains the concept or feature you’d like to include, link to that page rather than re-explaining things. 
 
 Avoid using several sentences that say the same thing. Remove redundancies whenever possible. 
