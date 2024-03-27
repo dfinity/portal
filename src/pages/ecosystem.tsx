@@ -110,113 +110,6 @@ const LargeProjectMedia: React.FC<{
   );
 };
 
-const ProjectInfo: React.FC<{
-  project: ShowcaseProject;
-}> = ({ project }) => {
-  return (
-    <div className="flex flex-col gap-4 h-full max-w-full">
-      <div className="flex gap-2 items-center">
-        <img
-          src={project.logo}
-          className="w-14 max-h-14"
-          alt={`${project.name} logo`}
-        ></img>
-        <div className="flex flex-col justify-center flex-1">
-          <h3 className="tw-heading-5 mb-0" style={{ wordBreak: "break-word" }}>
-            {project.name}
-
-            {project.usesInternetIdentity && (
-              <Tooltip
-                tooltip="Uses Internet Identity"
-                className="text-center w-44"
-              >
-                <img
-                  className="relative bottom-2 left-1 cursor-pointer"
-                  src="/img/showcase/ii-badge.svg"
-                  alt="The project uses Internet Identity"
-                ></img>
-              </Tooltip>
-            )}
-          </h3>
-          {project.stats && (
-            <p className="tw-paragraph-sm text-black-60 mb-0">
-              {project.stats}
-            </p>
-          )}
-        </div>
-      </div>
-      <div className="flex-1 tw-paragraph text-black-60 break-words">
-        {project.description}
-      </div>
-      <div className="flex gap-3">
-        <Link
-          className="button-round"
-          href={project.website}
-          aria-label={`Visit project ${project.name} website at ${project.website}`}
-        >
-          Try it
-        </Link>
-        {project.github && (
-          <Link
-            className="button-round-icon"
-            href={project.github}
-            aria-label={`Go to source code of project ${project.name}`}
-          >
-            <GithubIcon></GithubIcon>
-          </Link>
-        )}
-        {project.youtube && (
-          <Link
-            className="button-round-icon"
-            href={project.youtube}
-            aria-label={`Go to source code of project ${project.name}`}
-          >
-            <YoutubeIcon></YoutubeIcon>
-          </Link>
-        )}
-        {project.twitter && (
-          <Link
-            className="button-round-icon"
-            href={project.twitter}
-            aria-label={`Go to source code of project ${project.name}`}
-          >
-            <TwitterIcon></TwitterIcon>
-          </Link>
-        )}
-      </div>
-    </div>
-  );
-};
-
-const SmallCard = ({ project }: { project: ShowcaseProject }) => {
-  return (
-    <div className="rounded-xl bg-white-80 flex px-6 py-8 backdrop-blur-2xl">
-      <div className="flex flex-col gap-2">
-        <ProjectInfo project={project}></ProjectInfo>
-      </div>
-    </div>
-  );
-};
-
-const PromoCard = () => {
-  return (
-    <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6]">
-      <div className="flex flex-col gap-2">
-        <h3 className="tw-title-sm mb-0">Submit your project</h3>
-        <p className="tw-paragraph text-white/60 flex-1 mb-12">
-          See a project missing? All community members are invited to submit
-          their projects to this page.
-        </p>
-        <Link
-          className="button-white text-center"
-          href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
-        >
-          Submit now
-        </Link>
-      </div>
-    </div>
-  );
-};
 
 const ReportCard = () => {
   return (
@@ -351,15 +244,16 @@ function ShowcasePage(): JSX.Element {
           {filteredProjects.map((project, index) =>
              (project === "promo" || project === "report") ? (
                 project === "promo" ? 
-                (<PromoCard key={`promo_${index}`} title="Submit your project"
-                link={{
-                  label: "Submit now",
-                  href: "https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
-                }}
-                description="See a project missing? All community members are invited to submit their projects to this page."
-              />) : 
+                (<PromoCard 
+                  key={`promo_${index}`} 
+                  title="Submit your project"
+                  link={{
+                    label: "Submit now",
+                    href: "https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+                  }}
+                  description="See a project missing? All community members are invited to submit their projects to this page."
+                />) : 
                 (<ReportCard key={`report_${index}`} />)
-              <PromoCard key={`promo_${index}`} />
             ) : project.display === "Large" &&
               (project.video || project.screenshots?.length > 0) ? (
               <LargeCard project={project} key={project.website} />
