@@ -616,6 +616,21 @@
     "submittableId": "35782696"
   },
   {
+    "id": "singularitynet",
+    "name": "SingularityNET",
+    "oneLiner": "Decentralized AI marketplace",
+    "twitter": "https://twitter.com/singularitynet",
+    "website": "https://linktr.ee/singularitynet",
+    "tags": [
+      "AI"
+    ],
+    "description": "SingularityNET is the world’s leading decentralized AI marketplace, running on blockchain. Our core mission is the development of Artificial General Intelligence (AGI) for a beneficial technological Singularity.",
+    "usesInternetIdentity": false,
+    "stats": "",
+    "display": "Normal",
+    "logo": "/img/showcase/singularitynet_logo.webp"
+  },
+  {
     "id": "kinic",
     "name": "Kinic",
     "oneLiner": "The world's first Web3 search engine",
@@ -869,7 +884,8 @@
     "oneLiner": "Build Web3 at Lightning Speed",
     "website": "https://juno.build",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],
     "twitter": "https://twitter.com/junobuild",
     "github": "https://github.com/junobuild/juno",
@@ -3728,20 +3744,5 @@
     "stats": "1000+ Monthly Users",
     "display": "Normal",
     "logo": "/img/showcase/vaultbet_logo.webp"
-  },
-  {
-    "id": "singularitynet",
-    "name": "SingularityNET",
-    "oneLiner": "Decentralized AI marketplace",
-    "twitter": "https://twitter.com/singularitynet",
-    "website": "https://linktr.ee/singularitynet",
-    "tags": [
-      "AI"
-    ],
-    "description": "SingularityNET is the world’s leading decentralized AI marketplace, running on blockchain. Our core mission is the development of Artificial General Intelligence (AGI) for a beneficial technological Singularity.",
-    "usesInternetIdentity": false,
-    "stats": "",
-    "display": "Normal",
-    "logo": "/img/showcase/singularitynet_logo.webp"
   }
 ]
