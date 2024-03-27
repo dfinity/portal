@@ -4,15 +4,19 @@ keywords: [intermediate, rosetta, tutorial, derive, accountidentifier]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Construction-Derive
+# Construction-derive
 
-## How to derive Accountidentifiers
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
 
 This section details how to derive an ICP adress using the Rosetta construction API. 
-The ICP ledger is using `Accountidentifiers` to represent public keys internally. To derive an accountidentifier from a public key the Rosetta API offers the `construction/derive` endpoint. 
+The ICP ledger is using `accountidentifiers` to represent public keys internally. To derive an `accountidentifier` from a public key the Rosetta API offers the `construction/derive` endpoint. 
 The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionderive).
 
-An example of a call to the derive endpoint would look like the following. 
+## How to derive `accountidentifiers`
+An example of a call to the derive endpoint can be found below:
+
 ```bash
 curl --location '0.0.0.0:8081/construction/derive'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
@@ -26,17 +30,14 @@ curl --location '0.0.0.0:8081/construction/derive'  --header 'Content-Type: appl
 }'
 ```
 
-and the response would look something like this. It represents the accountidentifier used by the ICP ledger. 
+The response would resemble the following, representing the `accountidentifier` used by the ICP ledger:
 
 ```json
 
 {"account_identifier":{"address":"8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"}}⏎                                                                                                                  
 ```
 
-Building on the previous python code [snipped](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.md) a call to the `construction/derive` endpoint written in python could be implemented like the following. Here the constant `NETWORK_ID` is the network_identifier
-that can be fetched at the `network/list` [endpoint](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). 
-
-Example call: 
+A call to the `construction/derive` endpoint written in Python could be implemented such as: 
 ```bash
 python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
 ```
@@ -95,4 +96,3 @@ def main():
 
 if __name__=='__main__':
     main()
-```

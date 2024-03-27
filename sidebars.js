@@ -619,7 +619,7 @@ const sidebars = {
                   items: [
                     {
                       type: "category",
-                      label: "Flow of Operations",
+                      label: "Flow of operations",
                       link: {
                         type: "doc",
                         id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index",
