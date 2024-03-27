@@ -91,70 +91,6 @@ To add a new documentation page, first find the category on the sidebar that you
 
 All documents must be in `.mdx` format. 
 
-## Format and style guidelines
-
-The developer documentation must follow the provided style guide to be submitted:
-
-[Developer docs style guide](style-guide.md).
-
-This style guide includes the standards for capitalization, word choice, formatting, etc. 
-
-# Best practices
-
-When writing documentation for the Dev Docs, the following guidelines should be followed:
-
-## Audience
-
-The intended audience of the Dev Docs are existing ICP devs and Web3 blockchain devs who are interested in developing on ICP after they have experience with Ethereum/Solidity, Solana, Bitcoin, etc. 
-
-As a more general guideline, the audience can be thought of as the ‘20-29 crypto community’. 
-
-This audience should be kept in mind when writing docs. For example:
-
-- When introducing new concepts, tools, and ICP features, assume that the developer will need some additional context. You can provide additional context for other related concepts and features by linking to relevant documents or making mention that the feature builds off of concepts mentioned in another article, then link that article. 
-
-- When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
-
-## Documentation types
-The structure and content of the documentation page will vary based on the document type. Some common types are:
-
-#### Overview
-An overview of a documentation section or broad concept of ICP. When creating an Overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations. 
-
-For Overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended. 
-
-#### Feature or tool detail page
-A page that details a specific tool or feature. Feature or tool pages should provide a deeper explanation of a specific feature or tool, why a developer should use it, and how they can use it. It should describe the currently implemented workflows the feature/tool supports, and should not include details of conceptual ideas that are not currently live for developers to use (future roadmap items, possible improvements in the future, etc.)
-
-#### Concept
-Concept pages describe in more detail a specific concept of ICP. Concept pages should relate to broad Web3 terms whenever possible (smart contracts to canisters, accounts to principals, etc.) 
-Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology. 
-
-#### Tutorial
-A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Journey is an example of a tutorial series. 
-
-#### Reference
-A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
-
-## Content
-Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
-
-- The [Reference Technology Overview](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) pages 
-
-- The [How It Works](https://internetcomputer.org/how-it-works) section of the website
-
-- The [Core Concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
-
-Try to answer the following questions within the document:
-
-- What is the feature, tool, or concept?
-- How do developers benefit from using it? Why should they care about it?
-- How can developers use it?
-- What dependencies do they need to download or import into their project to use it?
-- Are there any best practices they should follow?
-- What are the limitations? Are there any nuances they should be aware of? 
-- What resources or docs should they go to for more information?
-
 ## Format, language choice, and capitalization
 Avoid using the term ‘we’ in documentation. Either eliminate using pronouns or instead, use ‘your’.
 
@@ -178,6 +114,62 @@ Follow the [Dev Docs Style Guide](style-guide.md) for guidance on:
 - Code snippets and code blocks.
 - Command line syntax.
 - FAQ sections.
+
+## Best practices
+
+When writing documentation for the Dev Docs, the following guidelines should be followed:
+
+### Audience
+
+The intended audience of the Dev Docs are existing ICP devs and Web3 blockchain devs who are interested in developing on ICP after they have experience with Ethereum/Solidity, Solana, Bitcoin, etc. 
+
+As a more general guideline, the audience can be thought of as the ‘20-29 crypto community’. 
+
+This audience should be kept in mind when writing docs. For example:
+
+- When introducing new concepts, tools, and ICP features, assume that the developer will need some additional context. You can provide additional context for other related concepts and features by linking to relevant documents or making mention that the feature builds off of concepts mentioned in another article, then link that article. 
+
+- When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
+
+### Documentation types
+The structure and content of the documentation page will vary based on the document type. Some common types are:
+
+#### Overview
+An overview of a documentation section or broad concept of ICP. When creating an Overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations. 
+
+For Overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended. 
+
+#### Feature or tool detail page
+A page that details a specific tool or feature. Feature or tool pages should provide a deeper explanation of a specific feature or tool, why a developer should use it, and how they can use it. It should describe the currently implemented workflows the feature/tool supports, and should not include details of conceptual ideas that are not currently live for developers to use (future roadmap items, possible improvements in the future, etc.)
+
+#### Concept
+Concept pages describe in more detail a specific concept of ICP. Concept pages should relate to broad Web3 terms whenever possible (smart contracts to canisters, accounts to principals, etc.) 
+Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology. 
+
+#### Tutorial
+A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Journey is an example of a tutorial series. 
+
+#### Reference
+A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
+
+### Content
+Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
+
+- The [Reference Technology Overview](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) pages 
+
+- The [How It Works](https://internetcomputer.org/how-it-works) section of the website
+
+- The [Core Concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
+
+Try to answer the following questions within the document:
+
+- What is the feature, tool, or concept?
+- How do developers benefit from using it? Why should they care about it?
+- How can developers use it?
+- What dependencies do they need to download or import into their project to use it?
+- Are there any best practices they should follow?
+- What are the limitations? Are there any nuances they should be aware of? 
+- What resources or docs should they go to for more information?
 
 ## Duplication and redundancies 
 Avoid duplication of content whenever possible. If content exists elsewhere on the Dev Docs that explains the concept or feature you’d like to include, link to that page rather than re-explaining things. 
