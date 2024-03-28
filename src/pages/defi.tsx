@@ -10,14 +10,11 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import RotatingStatPanel, {
-  RotatingStat,
-} from "../components/Common/RotatingStatsPanel";
+import RotatingStatPanel, { RotatingStat } from "../components/Common/RotatingStatsPanel";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const queryClient = new QueryClient();
 
