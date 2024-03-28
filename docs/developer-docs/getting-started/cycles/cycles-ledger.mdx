@@ -1,8 +1,17 @@
+---
+keywords: [beginner, tutorial, cycles]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 # Cycles ledger
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 ## Overview
 
-When developing and deploying canisters on the Internet Computer, developers need to have **cycles** to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management. 
+When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management. 
 
 The biggest difference between the cycles ledger and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
 
@@ -25,6 +34,16 @@ If you need to make arbitrary calls to other canisters with cycles, a cycles wal
 :::
 
 ## Using the cycles ledger
+
+:::caution
+
+To use the cycles ledger, you will need [`dfx` version 0.19.0](/docs/current/developer-docs/getting-started/install/), and you will need to set the following environmental variable:
+
+```
+DFX_CYCLES_LEDGER_SUPPORT_ENABLE=1
+```
+
+:::
 
 ### Obtaining ICP
 
