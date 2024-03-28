@@ -113,8 +113,8 @@ function MultichainPage() {
   type ContentCardType = {
     title: string;
     id: string;
-   };
-   const [content, setContent] = React.useState<ContentCardType[]>([]);
+  };
+  const [content, setContent] = React.useState<ContentCardType[]>([]);
 
   const highlight = useScrollSpyMenu(".content-card-with-id");
 
@@ -158,7 +158,6 @@ function MultichainPage() {
       {/* <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta> */}
       <ShareMeta image="/img/multichain/hero2.webp"></ShareMeta>
 
-
       <main
         className="text-black relative "
         style={{
@@ -179,9 +178,12 @@ function MultichainPage() {
                 Chain Fusion Technology
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
-              ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), 
-              without relying on any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from 
-              and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion.
+                ICP enables direct interoperability with all major blockchains,
+                including Bitcoin, Ethereum, other EVMs (and soon Solana),
+                without relying on any trusted intermediary. Unique compared to
+                other blockchains, ICP smart contracts can read from and write
+                to different chains, enabling developers to write smart
+                contracts spanning different chains. This is chain fusion.
               </p>
             </div>
           </div>
@@ -189,8 +191,15 @@ function MultichainPage() {
             <div className="absolute left-0 bottom-0 right-0 h-1/2 bg-page"></div>
             <div className="container-10 relative animate-fade-up animation-delay-300">
               {/* The surrounding div gives the image rounded corners */}
-              <div className="relative" style={{ overflow: 'hidden', borderRadius: '10px',  }}>
-                <img src="/img/multichain/hero2.webp" alt="" className="w-full h-full object-cover" />
+              <div
+                className="relative"
+                style={{ overflow: "hidden", borderRadius: "10px" }}
+              >
+                <img
+                  src="/img/multichain/hero2.webp"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -205,14 +214,15 @@ function MultichainPage() {
             className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
             variants={transitions.item}
           >
-            The common web3 pattern is building dapps from different blockchains, for instance Ethereum or Solana to store assets,  
-            IPFS or Arweave for serving frontends, and Arbitrum or Optimism for the bulk of smart contract computation. 
-            However, building dapps like this is very cumbersome. Developers must adapt to various programming models, 
-            transaction costs, and settlement times.
-            
-            Chain fusion tremendously simplifies multi-chain dapp development, making it as straightforward and native as 
-            building on a single environment.
-        
+            The common web3 pattern is building dapps from different
+            blockchains, for instance Ethereum or Solana to store assets, IPFS
+            or Arweave for serving frontends, and Arbitrum or Optimism for the
+            bulk of smart contract computation. However, building dapps like
+            this is very cumbersome. Developers must adapt to various
+            programming models, transaction costs, and settlement times. Chain
+            fusion tremendously simplifies multi-chain dapp development, making
+            it as straightforward and native as building on a single
+            environment.
           </motion.p>
         </AnimateSpawn>
         <section className="bg-infinite relative overflow-hidden">
@@ -227,40 +237,58 @@ function MultichainPage() {
                 How it is solved today
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-
-              Developers today rely on trusted intermediaries acting as a bridge that make 
-              wrapped copies of native tokens for usage on other blockchains. These bridges are slow, inconvenient, but most importantly: 
-              they are the achilles heel of web3, this is where majority of hacks happen, tens of billions of dollars of 
-              assets have been lost.
-              <br />
-              <br />
-              There are also rollups, which rely on the security of the base L1 chain. However, it is still not possible to easily 
-              move assets arbitrarily between different rollup chains as each step transfer relies on the main chain 
-              thereby, resulting in expensive L1 gas fees and settlement delays lasting days. Rollups also do not solve 
-              smart contract interoperability across chains, such as between Bitcoin, Ethereum and Solana, etc.
-            
+                Developers today rely on trusted intermediaries acting as a
+                bridge that make wrapped copies of native tokens for usage on
+                other blockchains. These bridges are slow, inconvenient, but
+                most importantly: they are the achilles heel of web3, this is
+                where majority of hacks happen, tens of billions of dollars of
+                assets have been lost.
+                <br />
+                <br />
+                There are also rollups, which rely on the security of the base
+                L1 chain. However, it is still not possible to easily move
+                assets arbitrarily between different rollup chains as each step
+                transfer relies on the main chain thereby, resulting in
+                expensive L1 gas fees and settlement delays lasting days.
+                Rollups also do not solve smart contract interoperability across
+                chains, such as between Bitcoin, Ethereum and Solana, etc.
               </p>
-          
+
               <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
-              The two pillars of chain fusion
+                The two pillars of chain fusion
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-              True multi-chain capability requires enabling smart contracts to read and write across chains.
-              For instance, you can write a <i>single</i> <b><i>ICP</i></b> smart contract that can custody <b><i>Bitcoin</i></b> and programmatically trigger 
-              sending it based on events observed on a <b><i>Ethereum</i></b> DeFi smart contract.
+                True multi-chain capability requires enabling smart contracts to
+                read and write across chains. For instance, you can write a{" "}
+                <i>single</i>{" "}
+                <b>
+                  <i>ICP</i>
+                </b>{" "}
+                smart contract that can custody{" "}
+                <b>
+                  <i>Bitcoin</i>
+                </b>{" "}
+                and programmatically trigger sending it based on events observed
+                on a{" "}
+                <b>
+                  <i>Ethereum</i>
+                </b>{" "}
+                DeFi smart contract.
               </p>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-                <b>Chain-key cryptography</b> is the scientific breakthrough that allows ICP smart contracts to 
-                create and sign transactions that are executed on other blockchains &ndash; <i>writing to other blockchains directly.</i>
+                <b>Chain-key cryptography</b> is the scientific breakthrough
+                that allows ICP smart contracts to create and sign transactions
+                that are executed on other blockchains &ndash;{" "}
+                <i>writing to other blockchains directly.</i>
               </p>
-              
+
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-                <b>Direct network integration</b> enables ICP smart contracts to query data and smart contracts from other blockchains, validated
+                <b>Direct network integration</b> enables ICP smart contracts to
+                query data and smart contracts from other blockchains, validated
                 by ICP consensus &ndash; <i>reading from other blockchains</i>.
               </p>
-            
             </div>
           </div>
         </section>
@@ -275,22 +303,23 @@ function MultichainPage() {
                 onItemClick={onItemClick}
                 title={
                   <>
-                   <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
-                    Use cases of chain fusion
-                  </h2>
-                  <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
-                    Explore Chain Fusion technology use cases, including executing ICP smart contracts 
-                    on other chains and asset storage like Bitcoin and Ethereum.
-                  </p>
+                    <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
+                      Use cases of chain fusion
+                    </h2>
+                    <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                      Explore Chain Fusion technology use cases, including
+                      executing ICP smart contracts on other chains and asset
+                      storage like Bitcoin and Ethereum.
+                    </p>
 
-                  <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
-                    These applications range from automating tasks on Ethereum to creating 
-                    ICP smart contracts that manage Bitcoin/Ethereum. 
-                    Developers can also use ckBTC and ckETH to efficiently build DeFi services, 
-                    bypassing high costs and delays.
-                  </p>
+                    <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                      These applications range from automating tasks on Ethereum
+                      to creating ICP smart contracts that manage
+                      Bitcoin/Ethereum. Developers can also use ckBTC and ckETH
+                      to efficiently build DeFi services, bypassing high costs
+                      and delays.
+                    </p>
                   </>
-                 
                 }
               ></StickySectionNav>
             </div>
@@ -299,7 +328,6 @@ function MultichainPage() {
                 className="lg:pr-[calc(1/7*100%)] space-y-10 md:space-y-20"
                 ref={(el) => (highlight.elRef.current = el)}
               >
-
                 {/* Use cases of software orchestration */}
 
                 <ContentCard id="oisy-wallet">
@@ -330,7 +358,12 @@ function MultichainPage() {
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The{" "}
-                    <Link href="https://oisy.com" className="link-subtle">
+                    <Link
+                      href="https://oisy.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
                       OISY wallet
                     </Link>{" "}
                     is a great example. It can custody any ICP asset (including
@@ -341,7 +374,6 @@ function MultichainPage() {
                     gain convenience and a better experience, and superior
                     security.
                   </p>
-                  
                 </ContentCard>
 
                 <ContentCard id="eth-cronjobs">
@@ -396,10 +428,10 @@ function MultichainPage() {
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Ethereum Virtual Machine Remote Procedural Calls (EVM RPC)
-                    make it possible for Internet Computer canister
-                    smart contracts to interact with smart contracts on any
-                    blockchain which supports the Ethereum JSON-RPC protocol. 
-                    Advanced fully decentralized Web3 services can be created that
+                    make it possible for Internet Computer canister smart
+                    contracts to interact with smart contracts on any blockchain
+                    which supports the Ethereum JSON-RPC protocol. Advanced
+                    fully decentralized Web3 services can be created that
                     maintain the UX and heavy data storage and processing on the
                     Internet Computer, while relying on Ethereum DeFi where
                     financial rails are needed.
@@ -450,21 +482,23 @@ function MultichainPage() {
                   </h3>
 
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                  Developers use ICP to bring smart contract functionality to Bitcoin.
-                  This new solution brings a new challenge: Bitcoin costs and wait times.
-                  No matter how fast a ICP smart contract is, moving Bitcoin will have the 
-                  costs and wait times of the Bitcoin network.
+                    Developers use ICP to bring smart contract functionality to
+                    Bitcoin. This new solution brings a new challenge: Bitcoin
+                    costs and wait times. No matter how fast a ICP smart
+                    contract is, moving Bitcoin will have the costs and wait
+                    times of the Bitcoin network.
                   </p>
-                    
+
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    To address this, developers also use ckBTC (“chain key bitcoin”). 
-                    This is a trustless "Bitcoin twin" hosted on ICP that can 
-                    be used by ICP smart contracts to move Bitcoin cheaply and quickly. 
-                    This is possible because ICP nodes talk to Bitcoin nodes to download
-                    the Bitcoin network’s blocks and maintain its Unspent
-                    Transaction Output (UTXO) set. CkBTC can be directly
-                    processed by canister smart contract logic and transferred
-                    with 1 second finality at near zero cost.
+                    To address this, developers also use ckBTC (“chain key
+                    bitcoin”). This is a trustless "Bitcoin twin" hosted on ICP
+                    that can be used by ICP smart contracts to move Bitcoin
+                    cheaply and quickly. This is possible because ICP nodes talk
+                    to Bitcoin nodes to download the Bitcoin network’s blocks
+                    and maintain its Unspent Transaction Output (UTXO) set.
+                    CkBTC can be directly processed by canister smart contract
+                    logic and transferred with 1 second finality at near zero
+                    cost.
                   </p>
 
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
@@ -472,7 +506,12 @@ function MultichainPage() {
                       Canister smart contracts can be used to provide web-based
                       wallets, and other Web3 services, that directly
                       incorporate bitcoin – for example,{" "}
-                      <Link href="https://oc.app/" className="link-subtle">
+                      <Link
+                        href="https://oc.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-subtle"
+                      >
                         OpenChat
                       </Link>{" "}
                       allows chain key bitcoin to be transferred via instant
@@ -492,17 +531,22 @@ function MultichainPage() {
 
                 <ContentCard id="bitcoin-ordinals">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ordinals and BRC20 
+                    Ordinals and BRC20
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Creating Bitcoin Ordinals can be expensive and slow. ICP
-                    can help here too. ICP canister smart contracts can use the
+                    Creating Bitcoin Ordinals can be expensive and slow. ICP can
+                    help here too. ICP canister smart contracts can use the
                     Bitcoin API to process bitcoin, and also Ordinals, which are
                     used to create and transfer NFTs on the Bitcoin blockchain.
                     Fully decentralized Web3 services on the Internet Computer
                     have taken advantage of the functionality to create
                     marketplaces for Ordinals e.g.{" "}
-                    <Link href="https://bioniq.io/" className="link-subtle">
+                    <Link
+                      href="https://bioniq.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
                       Bioniq
                     </Link>
                     .
@@ -536,18 +580,18 @@ function MultichainPage() {
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Developers use ICP to custody Ethereum. This new solution
-                    brings a new developer experience challenge: Ethereum costs and wait times.
-                    To address this, the ICP community uses ckEth ("chain key Ethereum"),
-                    a trustless "Twins of Ethereum" hosted on ICP such as 
-                    “ether twin” called ckETH and “twins'' of
-                    ERC20 tokens, such as ckUSDC, ckUSDT, ckUNISWAP, ck1INCH,
-                    ckAAVE. These can be directly processed by smart contracts
-                    hosted on ICP.
+                    brings a new developer experience challenge: Ethereum costs
+                    and wait times. To address this, the ICP community uses
+                    ckEth ("chain key Ethereum"), a trustless "Twins of
+                    Ethereum" hosted on ICP such as “ether twin” called ckETH
+                    and “twins'' of ERC20 tokens, such as ckUSDC, ckUSDT,
+                    ckUNISWAP, ck1INCH, ckAAVE. These can be directly processed
+                    by smart contracts hosted on ICP.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The “chain key” versions of Ethereum assets live on ledgers
-                    created by ICP smart contracts, where they can
-                    be transferred with 1 second finality and at near zero cost.
+                    created by ICP smart contracts, where they can be
+                    transferred with 1 second finality and at near zero cost.
                     Moreover, they can be directly processed by canisters that
                     provide web-based wallets, and other web3 services hosted on
                     the ICP, such as SocialFi and GameFi.
@@ -573,10 +617,9 @@ function MultichainPage() {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Ethereum provides the world’s preeminent DeFi rails.
                     Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens. Popular custody
-                    services such as Fireblocks, which is popular among
-                    investment institutions, custody any ERC20 token as
-                    standard.
+                    liquidity for trading ERC20 tokens. Popular custody services
+                    such as Fireblocks, which is popular among investment
+                    institutions, custody any ERC20 token as standard.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The ICP protocol makes it possible to publish any native ICP
@@ -587,24 +630,23 @@ function MultichainPage() {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A service created by a Internet Computer-hosted smart
                     contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token. The service
-                    also allows icpERC20 twins to be returned to the Internet
+                    to create an icpERC20 twin of an ICP token. The service also
+                    allows icpERC20 twins to be returned to the Internet
                     Computer, where they retain their native form.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Once an icpERC20 token has been created, it can be
-                    processed by Ethereum Layer-2 networks and moved across
-                    other chains using traditional bridges.
+                    Once an icpERC20 token has been created, it can be processed
+                    by Ethereum Layer-2 networks and moved across other chains
+                    using traditional bridges.
                   </p>
                   <p className="flex gap-2 flex-wrap">
                     <Status type="pending">icpERC20 is pending</Status>
                   </p>
-                </ContentCard>   
+                </ContentCard>
 
                 <ContentCard id="bitcoin-ordinals">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
                     Ordinals, BRC20 inscriptions from ICP using tSchnorr
-
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Canister smart contracts on the Internet Computer can use a
@@ -613,7 +655,12 @@ function MultichainPage() {
                     Fully decentralized Web3 services on the Internet Computer
                     have taken advantage of the functionality to create
                     marketplaces for Ordinals e.g.{" "}
-                    <Link href="https://bioniq.io/" className="link-subtle">
+                    <Link
+                      href="https://bioniq.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
                       Bioniq
                     </Link>
                     .
@@ -646,7 +693,7 @@ function MultichainPage() {
                     Additional resources
                   </h3>
                   <p className="flex flex-col gap-6 items-start mb-0">
-                  <Link
+                    <Link
                       className="link-primary"
                       href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
                     >
@@ -674,19 +721,21 @@ function MultichainPage() {
                     <Link
                       className="link-primary"
                       href="https://medium.com/dfinity/hackathon-winners-put-top-icp-features-into-practice-90c9abeef342"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <LinkArrowRight /> Multi-chain Hackathon Projects
                     </Link>
                   </p>
                 </ContentCard>
-                
+
                 <ContentCard id="sample-code">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
                     Multi-chain sample code
                   </h3>
                   <p className="flex flex-col gap-6 items-start mb-0">
                     <Link className="link-primary" href="/samples">
-                      <LinkArrowRight /> More Sample codes
+                      <LinkArrowRight /> More Sample code
                     </Link>
                   </p>
                   <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
@@ -722,7 +771,6 @@ function MultichainPage() {
                 </ContentCard>
               </div>
             </div>
-            
           </div>
         </section>
 

@@ -4,7 +4,6 @@ import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const Content: React.FC = () => {
   return (
@@ -155,7 +154,8 @@ const Content: React.FC = () => {
           </p>
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
             <Link
-              href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              to="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              target={"_blank"}
               className="button-outline"
             >
               Code ckBTC

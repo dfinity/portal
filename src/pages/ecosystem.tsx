@@ -18,8 +18,7 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
 
-
-type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">
+type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
 
 function sortDesktopProjects(
   projects: ShowcaseProject[]
@@ -153,6 +152,8 @@ const ProjectInfo: React.FC<{
         <Link
           className="button-round"
           href={project.website}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Visit project ${project.name} website at ${project.website}`}
         >
           Try it
@@ -161,6 +162,8 @@ const ProjectInfo: React.FC<{
           <Link
             className="button-round-icon"
             href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Go to source code of project ${project.name}`}
           >
             <GithubIcon></GithubIcon>
@@ -170,6 +173,8 @@ const ProjectInfo: React.FC<{
           <Link
             className="button-round-icon"
             href={project.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Go to source code of project ${project.name}`}
           >
             <YoutubeIcon></YoutubeIcon>
@@ -179,6 +184,8 @@ const ProjectInfo: React.FC<{
           <Link
             className="button-round-icon"
             href={project.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Go to source code of project ${project.name}`}
           >
             <TwitterIcon></TwitterIcon>
@@ -211,6 +218,8 @@ const PromoCard = () => {
         <Link
           className="button-white text-center"
           href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Submit now
         </Link>
@@ -225,12 +234,15 @@ const ReportCard = () => {
       <div className="flex flex-col gap-2">
         <h3 className="tw-title-sm mb-0">ICP Ecosystem Report</h3>
         <p className="tw-paragraph text-white/60 flex-1 mb-12">
-          The first ICP ecosystem report recaps the most substantial ecosystem achievements from 2023 as well as zooms in on several success stories from within the ecosystem.
+          The first ICP ecosystem report recaps the most substantial ecosystem
+          achievements from 2023 as well as zooms in on several success stories
+          from within the ecosystem.
         </p>
         <Link
           className="button-white link text-center"
           href="/icp_ecosystem_report_03_2024.pdf"
           target="_blank"
+          rel="noopener noreferrer"
           download
         >
           Download Report
@@ -350,8 +362,12 @@ function ShowcasePage(): JSX.Element {
         </section>
         <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative -mt-48 md:-mt-40">
           {filteredProjects.map((project, index) =>
-            (project === "promo" || project === "report") ? (
-              project === "promo" ? (<PromoCard key={`promo_${index}`} />) : (<ReportCard key={`report_${index}`} />)
+            project === "promo" || project === "report" ? (
+              project === "promo" ? (
+                <PromoCard key={`promo_${index}`} />
+              ) : (
+                <ReportCard key={`report_${index}`} />
+              )
             ) : project.display === "Large" &&
               (project.video || project.screenshots?.length > 0) ? (
               <LargeCard project={project} key={project.website} />
@@ -371,6 +387,8 @@ function ShowcasePage(): JSX.Element {
             <p className="mb-0">
               <Link
                 href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="link-primary link-with-icon"
               >
                 Submit your project
