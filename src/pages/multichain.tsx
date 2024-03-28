@@ -737,7 +737,7 @@ function MultichainPage() {
                   </h3>
                   <p className="flex flex-col gap-6 items-start mb-0">
                     <Link className="link-primary" href="/samples">
-                      <LinkArrowRight /> More Sample code
+                      <LinkArrowRight /> More Sample Code
                     </Link>
                   </p>
                   <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
