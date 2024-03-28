@@ -3711,5 +3711,25 @@
     "stats": "1000+ Monthly Users",
     "display": "Normal",
     "logo": "/img/showcase/vaultbet_logo.webp"
+  },
+  {
+    "id": "dmail-network",
+    "name": "Dmail Network",
+    "oneLiner": "AI-powered decentralized messaging infrastructure.",
+    "website": "https://dmail.ai",
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "AI",
+      "Enterprise",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/Dmailofficial",
+    "discord": "https://discord.gg/dmailofficial",
+    "description": "Dmail Network is an AI-powered decentralized communication infrastructure built to provide encrypted emails, unified notifications, and targeted marketing across multiple chains and dApps for users, developers, marketers and influencers.",
+    "usesInternetIdentity": true,
+    "stats": "9,000,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/dmail-network_logo.png"
   }
 ]
