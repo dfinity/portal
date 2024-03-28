@@ -107,6 +107,8 @@ function GamingPage() {
                 <Link
                   href="https://shiku.com/"
                   className="text-white/60 hover:text-white hover:no-underline tw-lead-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   © Shiku Metaverse
                 </Link>
@@ -133,6 +135,8 @@ function GamingPage() {
                 <Link
                   href="https://dragginz.io/"
                   className="text-white/60 hover:text-white hover:no-underline tw-lead-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   © Dragginz
                 </Link>
@@ -160,6 +164,8 @@ function GamingPage() {
                 <Link
                   href="https://cosmicrafts.com/"
                   className="text-white/60 hover:text-white hover:no-underline tw-lead-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   © CosmicRafts
                 </Link>
@@ -308,6 +314,8 @@ function GamingPage() {
                   <Link
                     className="link-primary link-with-icon"
                     href="https://e5owu-aaaaa-aaaah-abs5a-cai.raw.ic0.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Play it here
                     <LinkArrowUpRight />
@@ -337,6 +345,8 @@ function GamingPage() {
               <Link
                 className="link-primary link-with-icon"
                 href="https://jmorc-qiaaa-aaaam-aaeda-cai.ic0.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Build your own VR world
                 <LinkArrowUpRight />
@@ -364,6 +374,8 @@ function GamingPage() {
               <Link
                 className="link-primary link-with-icon"
                 href="https://plethora.game/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Play Plethora
                 <LinkArrowUpRight />
@@ -523,6 +535,8 @@ function GamingPage() {
                 <Link
                   href="https://u52bf-3qaaa-aaaal-qb5wq-cai.icp0.io/"
                   className="link-white link-with-icon"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Start Building with BOOM DAO
                   <LinkArrowUpRight />

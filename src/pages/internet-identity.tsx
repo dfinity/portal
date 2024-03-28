@@ -61,6 +61,8 @@ function InternetIdentityPage() {
                 <Link
                   className="link-white link-with-icon"
                   href="/docs/current/references/ii-spec/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <LinkArrowRight />
                   Start building
@@ -97,7 +99,6 @@ function InternetIdentityPage() {
               imageUrl="/img/internet-identity/image-1.webp"
               reverse={true}
             >
-
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
                 100% decentralized
               </h3>
@@ -181,6 +182,8 @@ function InternetIdentityPage() {
               <p className="mb-0">
                 <Link
                   href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="link-primary"
                 >
                   <LinkArrowRight />
@@ -367,7 +370,6 @@ function InternetIdentityPage() {
                 />
               }
             >
-
               <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}

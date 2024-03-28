@@ -65,6 +65,7 @@ abbr[title] {
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page,
+html.plugin-docs,
 html.plugin-blog {
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;

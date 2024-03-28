@@ -102,6 +102,8 @@ function HTTPSOutcalls() {
             <p className="mb-3 mt-6">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
