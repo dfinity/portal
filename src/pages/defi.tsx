@@ -520,9 +520,7 @@ function DefiPage() {
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href={useBaseUrl(
-                "/docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview"
-              )}
+              href="/docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

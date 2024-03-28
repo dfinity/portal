@@ -155,7 +155,8 @@ const Content: React.FC = () => {
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
             <Link
               to="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
-              target={"_blank"}
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-outline"
             >
               Code ckBTC

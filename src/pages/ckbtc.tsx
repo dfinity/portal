@@ -163,6 +163,8 @@ function CkbtcPage(): JSX.Element {
               <Link
                 className="link-primary link-with-icon"
                 href="https://oc.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkArrowRight /> Join the OpenChat network
               </Link>
@@ -185,6 +187,8 @@ function CkbtcPage(): JSX.Element {
               <Link
                 className="link-primary link-with-icon"
                 href="https://dscvr.one"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkArrowRight />
                 Check out DSCVR
@@ -284,6 +288,8 @@ function CkbtcPage(): JSX.Element {
                 <Link
                   className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform"
                   href="https://icdex.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <img
                     src="/img/showcase/icdex_logo.webp"
@@ -302,6 +308,8 @@ function CkbtcPage(): JSX.Element {
                 <Link
                   className="bg-white/90 border border-white border-solid rounded-xl px-6 py-8 md:p-8 flex flex-col text-black hover:text-black hover:no-underline hover:-translate-y-3 transition-transform h-full"
                   href="https://icpswap.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <img
                     src="/img/showcase/icpswap_logo.webp"

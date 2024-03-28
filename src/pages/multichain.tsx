@@ -696,6 +696,8 @@ function MultichainPage() {
                     <Link
                       className="link-primary"
                       href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <LinkArrowRight /> Multi-chain FAQs
                     </Link>

@@ -60,6 +60,8 @@ function NnsPage() {
                 <MotionLink
                   className="button-white"
                   href="https://nns.ic0.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variants={transitions.item}
                 >
                   Go to the NNS
@@ -108,6 +110,8 @@ function NnsPage() {
               <MotionLink
                 className="link-external"
                 href="https://wiki.internetcomputer.org/wiki/Network_Nervous_System"
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={transitions.item}
               >
                 Learn more about network governance
@@ -138,6 +142,8 @@ function NnsPage() {
               <MotionLink
                 className="button-primary"
                 href="https://nns.ic0.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={transitions.item}
               >
                 Go to the NNS
@@ -163,6 +169,8 @@ function NnsPage() {
               <MotionLink
                 className="link-external"
                 href="https://dashboard.internetcomputer.org/governance"
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={transitions.item}
               >
                 Track staking rewards
@@ -228,6 +236,8 @@ function NnsPage() {
               variants={transitions.item}
               className="button-white"
               href="https://nns.ic0.app"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Go to the NNS
             </MotionLink>

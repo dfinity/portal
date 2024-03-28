@@ -128,7 +128,12 @@ function OpenChatPage() {
             className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
             variants={transitions.item}
           >
-            <Link className="button-primary" href="https://oc.app/">
+            <Link
+              className="button-primary"
+              href="https://oc.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Try OpenChat
             </Link>
             {/* <Link className="button-outline" href="/sns/faq">

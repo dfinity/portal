@@ -412,6 +412,8 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               href="https://github.com/dfinity/portal"
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-outline-white"
             >
               Contribute

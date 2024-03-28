@@ -296,7 +296,11 @@ function NodeProvidersPage() {
               entities evenly distributed across the globe, including...
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
-              <Link href="https://forum.dfinity.org/t/ic-topology-node-diversification-part-ii/23553">
+              <Link
+                href="https://forum.dfinity.org/t/ic-topology-node-diversification-part-ii/23553"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Read about node diversification
               </Link>
             </motion.p>
@@ -466,6 +470,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Introduction_to_ICP"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Brief intro to the Internet Computer
                     </Link>
@@ -474,6 +479,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Sovereign_Network"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       The Internet Computer architecture
                     </Link>
@@ -482,6 +488,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Governance of the Internet Computer
                     </Link>
@@ -490,6 +497,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Node provider overview documentation
                     </Link>
@@ -511,6 +519,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Fill out self-declaration form
                     </Link>
@@ -519,6 +528,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Submit proposal and onboard your nodes to the Internet
                       Computer
@@ -528,6 +538,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Join the node provider matrix channel
                     </Link>
@@ -536,6 +547,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Choose and purchase hardware
                     </Link>
@@ -544,6 +556,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Set up servers in a data center
                     </Link>
@@ -552,6 +565,8 @@ function NodeProvidersPage() {
                 <p className="">
                   <Link
                     href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="button-primary"
                   >
                     Get started
