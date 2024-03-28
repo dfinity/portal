@@ -576,6 +576,7 @@ const sidebars = {
       label: "DeAI",
       items: [
         "developer-docs/ai/overview",
+        "developer-docs/ai/ai-on-chain",
         "developer-docs/ai/machine-learning-sample"
       ],
     },
