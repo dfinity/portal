@@ -1160,6 +1160,7 @@ const sidebars = {
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
         "developer-docs/backend/rust/generating-candid",
+        "developer-docs/backend/rust/message-inspect",
       ],
     },
   ],
