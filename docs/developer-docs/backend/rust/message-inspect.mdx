@@ -31,7 +31,11 @@ The function within this attribute cannot have a return value, and a canister ca
 ```rust
 #[inspect_message]
 fn inspect_message_function() {
-    // ...
+    if /* some condition */ {
+        ic_cdk::api::call::accept_message();
+    } else {
+        /* trap or simply not call accept_message to deny*/
+    }
 }
 ```
 
