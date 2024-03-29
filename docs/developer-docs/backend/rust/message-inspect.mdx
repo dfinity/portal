@@ -39,21 +39,3 @@ fn inspect_message_function() {
 }
 ```
 
-## `inspec_message` with `guards`
-
-To obtain the ingress parameters while implementing `canister_inspect_message`, you must implement a `guard`. A guard is for rejecting a message. Any reply from non-guard code is either a successful reply or a trap.
-
-You can implement a guard in your code such as:
-
-```rust
-#[update(guard = "can_prepare")]
-#[candid_method(update)]
-fn create_batch() -> CreateBatchResponse {
-    STATE.with(|s| match s.borrow_mut().create_batch(time()) {
-        Ok(batch_id) => CreateBatchResponse { batch_id },
-        Err(msg) => trap(&msg),
-    })
-}
-```
-
-
