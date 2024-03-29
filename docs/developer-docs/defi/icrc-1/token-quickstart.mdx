@@ -27,107 +27,11 @@ dfx start --clean --background // Start the local replica.
 
 Then create a new project:
 
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
-
-Use `dfx new <project_name>` to create a new project:
-
 ```
 dfx new new_token
 ```
 
-You will be prompted to select the language that your backend <GlossaryTooltip>canister</GlossaryTooltip> will use:
-
-```
-? Select a backend language: ›
-❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-Then, select a frontend framework for your frontend <GlossaryTooltip>canister</GlossaryTooltip>, or select 'No frontend canister':
-
-```
-  ? Select a frontend framework: ›
-❯ SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-  No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-</TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```bash
-dfx new new_token
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```bash
-dfx new new_token --type=rust
-```
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-```bash
-npx azle new new_token
-cd new_token
-npm install
-```
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-Create the project directory and file structure:
-
-```bash
-mkdir new_token
-cd new_token
-
-mkdir src
-
-touch src/main.py
-touch dfx.json
-```
-
-Create a virtual environment:
-
-```bash
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-```
-
-Install Kybra:
-
-```bash
-pip install kybra
-```
-
-</AdornedTab>
-</AdornedTabs>
-</TabItem>
-</AdornedTabs>
+You may choose any option for language when prompted. 
 
 ## Setup the ledger canister
 
