@@ -610,6 +610,7 @@ const sidebars = {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
+            "developer-docs/defi/icrc-1/token-quickstart",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icrc-1/icrc1-index-setup",

@@ -167,7 +167,7 @@ Transfers from the minting account will create `Mint` transactions. Transfers to
 
 ## Export token settings
 
-To create a token, you will export several environmental variables. The full list can be found below:
+To create a token, you will need to export several environmental variables. The full list can be found below:
 
 ```
 -   The `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
@@ -181,56 +181,6 @@ To create a token, you will export several environmental variables. The full lis
 -   The `FEATURE_FLAGS` is a flag for enabling or disabling certain extension standards to the ICRC-1 standard. In this case the reference implementation also can support ICRC-2 transactions.
 -   Minting 100 tokens to the `DEFAULT` (1 token is by default equal to 10^8 e8s, hence the name).
 -   Setting the transfer fee to 0.0001 tokens.
-```
-
-For each variable, the exported environment variable will be used unless otherwise specified.
-
-Start by specifying the token name and symbol of your choice:
-
-``` sh
-export TOKEN_NAME="My Token"
-export TOKEN_SYMBOL="XMTK"
-```
-
-Set the identity you want to deploy the ledger:
-
-``` sh
-dfx identity use default
-export DEFAULT=$(dfx identity get-principal)
-```
-
-To be able to interact and send some tokens you may want to mint some tokens when you deploy the ledger. This is optional.
-
-You will mint some tokens for the default identity. You can also specify the transfer fee for transferring tokens.
-
-```sh
-export PRE_MINTED_TOKENS=10_000_000_000
-export TRANSFER_FEE=10_000
-```
-
-## Set the initialization values
-
-The values used in this example are the recommended values. You may change them to fit your ICRC-1 ledger's needs.
-
-```sh
-dfx identity new archive_controller
-dfx identity use archive_controller
-export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
-export TRIGGER_THRESHOLD=2000
-export NUM_OF_BLOCK_TO_ARCHIVE=1000
-export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
-```
-
-Specify which standards to support. If you only want to support the ICRC-1 standard then you can set:
-
-``` sh
-export FEATURE_FLAGS=false
-```
-
-If you want your ICRC-1 ledger to also support the extension standard ICRC-2 then set the flag to true:
-
-``` sh
-export FEATURE_FLAGS=true
 ```
 
 ## Deploy the ledger
@@ -256,6 +206,8 @@ record {
  }
 })"
 ```
+
+For additional details, you can learn more in the [ICRC-1 ledger documentation](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup).
 
 Your token has been created locally. To interact with your token, [learn how to interact with the ICRC-1 ledger](/docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger).
 
