@@ -22,7 +22,7 @@ The Bitcoin canister also offers the last piece of crucial functionality: It pro
 The [IC management canister interface](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-management-canister) provides access to all Bitcoin integration endpoints. Their use is illustrated in the following sample flow:
 
 <figure>
-<img src="/img/how-it-works/bitcoin-integration-flow.png" alt="Bitcoin integration sample flow" title="Bitcoin integration sample flow" align="center" style="width:600px">
+<img src="/img/how-it-works/bitcoin-integration-flow.png" alt="Bitcoin integration sample flow" title="Bitcoin integration sample flow" align="center" style="width:600px" />
 </figure>
 
 In this figure, a canister first requests the balance and then the UTXOs of a Bitcoin address. Next, it calls the fee endpoint to get recent fees. Lastly, the canister builds a Bitcoin transaction using some of the UTXOs as inputs. For each input, the ECDSA API is called to obtain the required signatures. Finally, the transaction is submitted.

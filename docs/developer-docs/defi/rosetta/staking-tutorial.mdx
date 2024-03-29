@@ -24,7 +24,7 @@ Rosetta API represents these steps as [operations](https://www.rosetta-api.org/d
 
 You’ll need the following to complete this guide:
 
--  [x] A running Rosetta node: you can use the latest docker image from <https://hub.docker.com/r/dfinity/rosetta-api>. This guide assumes that the Rosetta node runs on address `localhost:8080`.
+-  [x] A running Rosetta node: you can use the latest docker image from \<https://hub.docker.com/r/dfinity/rosetta-api\>. This guide assumes that the Rosetta node runs on address `localhost:8080`.
 
 -  [x] [curl](https://curl.se/).
 
@@ -740,7 +740,7 @@ The response should look like the following:
 
 -   Neuron management operations don’t strictly adhere to the Rosetta specification. If you look up the transaction above by hash using the `/block/transaction` endpoint, it will only contain the ledger transfer. Furthermore, if the transaction only contains the neuron management operations, the returned transaction hash won’t be on the ledger chain at all. That’s why the response `metadata` field includes statuses of all the operations in the same format `/block/transaction` would return them.
 
--   The `STAKE` operation returns the unique identifier of the neuron that the Governance smart contract created. You can use this identifier to find the neuron in the NNS dapp or on <https://ic.rocks>.
+-   The `STAKE` operation returns the unique identifier of the neuron that the Governance smart contract created. You can use this identifier to find the neuron in the NNS dapp or on \<https://ic.rocks\>.
 
 :::
 

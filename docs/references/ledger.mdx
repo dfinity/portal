@@ -73,58 +73,59 @@ The types used to represent these concepts are specified below in Candid syntax.
 
 #### Basic datatypes:   
 
+```
+type Tokens = record {
+     e8s : nat64;
+};
 
-    type Tokens = record {
-         e8s : nat64;
+
+
+// Account identifier  is a 32-byte array.
+// The first 4 bytes is big-endian encoding of a CRC32 checksum of the last 28 bytes
+type AccountIdentifier = blob;
+
+
+//There are three types of operations: minting tokens, burning tokens & transferring tokens
+type Transfer = variant {
+    Mint: record {
+        to: AccountIdentifier;
+        amount: Tokens;
     };
-
-
-
-    // Account identifier  is a 32-byte array.
-    // The first 4 bytes is big-endian encoding of a CRC32 checksum of the last 28 bytes
-    type AccountIdentifier = blob;
-
-
-    //There are three types of operations: minting tokens, burning tokens & transferring tokens
-    type Transfer = variant {
-        Mint: record {
-            to: AccountIdentifier;
-            amount: Tokens;
-        };
-        Burn: record {
-             from: AccountIdentifier;
-             amount: Tokens;
-       };
-        Send: record {
-            from: AccountIdentifier;
-            to: AccountIdentifier;
-            amount: Tokens;
-        };
+    Burn: record {
+         from: AccountIdentifier;
+         amount: Tokens;
+   };
+    Send: record {
+        from: AccountIdentifier;
+        to: AccountIdentifier;
+        amount: Tokens;
     };
+};
 
-    type Memo = u64;
+type Memo = u64;
 
-    // Timestamps are represented as nanoseconds from the UNIX epoch in UTC timezone
-    type TimeStamp = record {
-        timestamp_nanos: nat64;
-    };
+// Timestamps are represented as nanoseconds from the UNIX epoch in UTC timezone
+type TimeStamp = record {
+    timestamp_nanos: nat64;
+};
 
-    Transaction = record {
-        transfer: Transfer;
-        memo: Memo;
-        created_at_time: Timestamp;
-    };
+Transaction = record {
+    transfer: Transfer;
+    memo: Memo;
+    created_at_time: Timestamp;
+};
 
-    Block = record {
-        parent_hash: Hash;
-        transaction: Transaction;
-        timestamp: Timestamp;
-    };
+Block = record {
+    parent_hash: Hash;
+    transaction: Transaction;
+    timestamp: Timestamp;
+};
 
-    type BlockIndex = nat64;
+type BlockIndex = nat64;
 
-    //The ledger is a list of blocks
-    type Ledger = vec Block
+//The ledger is a list of blocks
+type Ledger = vec Block
+```
 
 ## Methods {#_methods}
 
@@ -187,58 +188,59 @@ In this section, the details of the chaining are described, by specifying how a 
 At a high level, the block is serialized using protobuf. However, since protobuf encodings are not necessarily deterministic (and are also not guaranteed to stay fixed) here we provide the specific encoding used, which is guaranteed not to change.
 
 The definition below is recursive. It uses `.` to denote concatenation of byte strings, and two functions that are not defined here, but are well established: `len(x)` is used for the length of bytestring `x`. Moreover, `varint(s)` is used for the variable length encoding of integer `s`. The precise definition of this function can be found in the [protobuf documentation](https://developers.google.com/protocol-buffers/docs/encoding#varints).
+```
+encoded_block(Block{parent_hash, timestamp, transaction}) :=
+    let encoded_transaction = encode_transaction(transaction)
+    in encode_hash(parent_hash) .
+       12 0a 08 . varint(timestamp) .
+       1a . len(encoded_transaction) . encoded_transaction
 
-    encoded_block(Block{parent_hash, timestamp, transaction}) :=
-        let encoded_transaction = encode_transaction(transaction)
-        in encode_hash(parent_hash) .
-           12 0a 08 . varint(timestamp) .
-           1a . len(encoded_transaction) . encoded_transaction
+encode_hash(Nil) := Nil
+encode_hash(hash) := 0a 22 0a 20 . hash
 
-    encode_hash(Nil) := Nil
-    encode_hash(hash) := 0a 22 0a 20 . hash
+encode_transaction(Transaction{operation, memo, created_at_time}) :=
+    let encoded_operation = encode_operation(operation)
+        encoded_memo = encode_memo(memo)
+        encoded_timestamp = encode_timestamp(created_at_time)
+    in encoded_operation .
+       22 . len(encoded_memo) . encoded_memo .
+       32 . len(encoded_timestamp) . encoded_timestamp
 
-    encode_transaction(Transaction{operation, memo, created_at_time}) :=
-        let encoded_operation = encode_operation(operation)
-            encoded_memo = encode_memo(memo)
-            encoded_timestamp = encode_timestamp(created_at_time)
-        in encoded_operation .
-           22 . len(encoded_memo) . encoded_memo .
-           32 . len(encoded_timestamp) . encoded_timestamp
+encode_memo(Nil) := Nil
+encode_memo(Memo{memo}) := 08 . varint(memo)
 
-    encode_memo(Nil) := Nil
-    encode_memo(Memo{memo}) := 08 . varint(memo)
+encode_timestamp(Timestamp{timestamp_nanos}) := 08. varint(timestamp_nanos)
 
-    encode_timestamp(Timestamp{timestamp_nanos}) := 08. varint(timestamp_nanos)
+encode_operation(Burn{AccountIdentifier{from}, Tokens{amount}}) :=
+    // identifiers can be 28 or 32 bytes (4 bytes checksum + 28 bytes hash)
+    let encoded_account_identifier = 0a . len(from) . varint(from)
+        encoded_amount = 08 . varint(amount)
+        encoded_burn = 0a . len(encoded_account_identifier) . encoded_account_identifier .
+                       1a . len(encoded_amount) . encoded_amount
+    in 0a . len(encoded_burn) . encoded_burn
 
-    encode_operation(Burn{AccountIdentifier{from}, Tokens{amount}}) :=
-        // identifiers can be 28 or 32 bytes (4 bytes checksum + 28 bytes hash)
-        let encoded_account_identifier = 0a . len(from) . varint(from)
-            encoded_amount = 08 . varint(amount)
-            encoded_burn = 0a . len(encoded_account_identifier) . encoded_account_identifier .
-                           1a . len(encoded_amount) . encoded_amount
-        in 0a . len(encoded_burn) . encoded_burn
+encode_operation(Mint{AccountIdentifier{to}, Tokens{amount}}) :=
+    // identifiers can be 28 or 32 bytes (4 bytes checksum + 28 bytes hash)
+    let encoded_account_identifier = 0a . len(to) . to
+        encoded_amount = 08 . varint(amount)
+        encoded_mint = 12 . len(encoded_account_identifier) . encoded_account_identifier .
+                       1a . len(encoded_amount) . encoded_amount
+    in 12 . len(encoded_mint) . encoded_mint
 
-    encode_operation(Mint{AccountIdentifier{to}, Tokens{amount}}) :=
-        // identifiers can be 28 or 32 bytes (4 bytes checksum + 28 bytes hash)
-        let encoded_account_identifier = 0a . len(to) . to
-            encoded_amount = 08 . varint(amount)
-            encoded_mint = 12 . len(encoded_account_identifier) . encoded_account_identifier .
-                           1a . len(encoded_amount) . encoded_amount
-        in 12 . len(encoded_mint) . encoded_mint
-
-    encode_operation(Transfer{AccountIdentifier{from},
-                               AccountIdentifier{to},
-                               Tokens{amount},
-                               Tokens{fee}}) :=
-        let encoded_from = 0a . len(from) . from
-            encoded_to = 0a . len(to) . to
-            encoded_amount = 08 . varint(amount)
-            encoded_fee = 08 . varint(fee)
-            encoded_transfer = 0a . len(encoded_from) . encoded_from .
-                               12 . len(encoded_to) . encoded_to .
-                               1a . len(encoded_amount) . encoded_amount .
-                               22 . len(encoded_fee) . encoded_fee
-        in 1a . len(encoded_transfer) . encoded_transfer
+encode_operation(Transfer{AccountIdentifier{from},
+                           AccountIdentifier{to},
+                           Tokens{amount},
+                           Tokens{fee}}) :=
+    let encoded_from = 0a . len(from) . from
+        encoded_to = 0a . len(to) . to
+        encoded_amount = 08 . varint(amount)
+        encoded_fee = 08 . varint(fee)
+        encoded_transfer = 0a . len(encoded_from) . encoded_from .
+                           12 . len(encoded_to) . encoded_to .
+                           1a . len(encoded_amount) . encoded_amount .
+                           22 . len(encoded_fee) . encoded_fee
+    in 1a . len(encoded_transfer) . encoded_transfer
+```
 
 ### Burning and minting tokens {#_burning_and_minting_tokens}
 
@@ -257,56 +259,57 @@ The effect of a transfer from the `minting_account_id` account is that tokens ar
 The Candid signature of the `transfer` method, together with some additional required datatypes is below.
 
 Additional datatypes & canister methods:   
+```
+// Arguments for the `transfer` call.
+type TransferArgs = record {
+    // Transaction memo.
+    // See comments for the `Memo` type.
+    memo: Memo;
+    // The amount that the caller wants to transfer to the destination address.
+    amount: Tokens;
+    // The amount that the caller pays for the transaction.
+    // Must be 10000 e8s.
+    fee: Tokens;
+    // The subaccount from which the caller wants to transfer funds.
+    // If null, the ledger uses the default (all zeros) subaccount to compute the source address.
+    // See comments for the `SubAccount` type.
+    from_subaccount: opt SubAccount;
+    // The destination account.
+    // If the transfer is successful, the balance of this address increases by `amount`.
+    to: AccountIdentifier;
+    // The point in time when the caller created this request.
+    // If null, the ledger uses current ICP time as the timestamp.
+    created_at_time: opt TimeStamp;
+};
 
-    // Arguments for the `transfer` call.
-    type TransferArgs = record {
-        // Transaction memo.
-        // See comments for the `Memo` type.
-        memo: Memo;
-        // The amount that the caller wants to transfer to the destination address.
-        amount: Tokens;
-        // The amount that the caller pays for the transaction.
-        // Must be 10000 e8s.
-        fee: Tokens;
-        // The subaccount from which the caller wants to transfer funds.
-        // If null, the ledger uses the default (all zeros) subaccount to compute the source address.
-        // See comments for the `SubAccount` type.
-        from_subaccount: opt SubAccount;
-        // The destination account.
-        // If the transfer is successful, the balance of this address increases by `amount`.
-        to: AccountIdentifier;
-        // The point in time when the caller created this request.
-        // If null, the ledger uses current ICP time as the timestamp.
-        created_at_time: opt TimeStamp;
-    };
+type TransferError = variant {
+    // The fee that the caller specified in the transfer request was not the one that ledger expects.
+    // The caller can change the transfer fee to the `expected_fee` and retry the request.
+    BadFee : record { expected_fee : Tokens; };
+    // The account specified by the caller doesn't have enough funds.
+    InsufficientFunds : record { balance: Tokens; };
+    // The request is too old.
+    // The ledger only accepts requests created within 24 hours window.
+    // This is a non-recoverable error.
+    TxTooOld : record { allowed_window_nanos: nat64 };
+    // The caller specified `created_at_time` that is too far in future.
+    // The caller can retry the request later.
+    TxCreatedInFuture : null;
+    // The ledger has already executed the request.
+    // `duplicate_of` field is equal to the index of the block containing the original transaction.
+    TxDuplicate : record { duplicate_of: BlockIndex; }
+};
 
-    type TransferError = variant {
-        // The fee that the caller specified in the transfer request was not the one that ledger expects.
-        // The caller can change the transfer fee to the `expected_fee` and retry the request.
-        BadFee : record { expected_fee : Tokens; };
-        // The account specified by the caller doesn't have enough funds.
-        InsufficientFunds : record { balance: Tokens; };
-        // The request is too old.
-        // The ledger only accepts requests created within 24 hours window.
-        // This is a non-recoverable error.
-        TxTooOld : record { allowed_window_nanos: nat64 };
-        // The caller specified `created_at_time` that is too far in future.
-        // The caller can retry the request later.
-        TxCreatedInFuture : null;
-        // The ledger has already executed the request.
-        // `duplicate_of` field is equal to the index of the block containing the original transaction.
-        TxDuplicate : record { duplicate_of: BlockIndex; }
-    };
-
-    type TransferResult = variant {
-        Ok : BlockIndex;
-        Err : TransferError;
-    };
+type TransferResult = variant {
+    Ok : BlockIndex;
+    Err : TransferError;
+};
 
 
-    service : {
-      transfer : (TransferArgs) -> (TransferResult);
-    }
+service : {
+  transfer : (TransferArgs) -> (TransferResult);
+}
+```
 
 ### Getting ledger blocks {#_getting_ledger_blocks}
 
@@ -343,148 +346,147 @@ For example, assume that at some point blocks forming the ledger are stored in `
 -   `start_index` is `l`.
 
 -   `archived_blocks` consists of the list `((li,ri) ∩ (l,l+len),callbacki)i=1..n-1` where `callbacki` is the callback to invoke to retrieve the corresponding blocks:
+```
+type GetBlocksArgs = record {
+    // The index of the first block to fetch.
+    start : BlockIndex;
+    // Max number of blocks to fetch.
+    length : nat64;
+};
 
-        type GetBlocksArgs = record {
-            // The index of the first block to fetch.
-            start : BlockIndex;
-            // Max number of blocks to fetch.
-            length : nat64;
-        };
+/ A prefix of the block range specified in the [GetBlocksArgs] request.
+type BlockRange = record {
+    // A prefix of the requested block range.
+    // The index of the first block is equal to [GetBlocksArgs.from].
+    //
+    // Note that the number of blocks might be less than the requested
+    // [GetBlocksArgs.len] for various reasons, for example:
+    //
+    // 1. The query might have hit the replica with an outdated state
+    //    that doesn't have the full block range yet.
+    // 2. The requested range is too large to fit into a single reply.
+    //
+    // NOTE: the list of blocks can be empty if:
+    // 1. [GetBlocksArgs.len] was zero.
+    // 2. [GetBlocksArgs.from] was larger than the last block known to the canister.
+    blocks : vec Block;
+};
 
-        / A prefix of the block range specified in the [GetBlocksArgs] request.
-        type BlockRange = record {
-            // A prefix of the requested block range.
-            // The index of the first block is equal to [GetBlocksArgs.from].
-            //
-            // Note that the number of blocks might be less than the requested
-            // [GetBlocksArgs.len] for various reasons, for example:
-            //
-            // 1. The query might have hit the replica with an outdated state
-            //    that doesn't have the full block range yet.
-            // 2. The requested range is too large to fit into a single reply.
-            //
-            // NOTE: the list of blocks can be empty if:
-            // 1. [GetBlocksArgs.len] was zero.
-            // 2. [GetBlocksArgs.from] was larger than the last block known to the canister.
-            blocks : vec Block;
-        };
+// A function that is used for fetching archived ledger blocks.
+type QueryArchiveFn = func (GetBlocksArgs) -> (QueryArchiveResult) query;
 
-        // A function that is used for fetching archived ledger blocks.
-        type QueryArchiveFn = func (GetBlocksArgs) -> (QueryArchiveResult) query;
+// The result of a "query_blocks" call.
+//
+// The structure of the result is somewhat complicated because the main ledger canister might
+// not have all the blocks that the caller requested: One or more "archive" canisters might
+// store some of the requested blocks.
+//
+// Note: as of Q4 2021 when this interface is authored, ICP doesn't support making nested
+// query calls within a query call.
+type QueryBlocksResponse = record {
+    // The total number of blocks in the chain.
+    // If the chain length is positive, the index of the last block is `chain_len - 1`.
+    chain_length : nat64;
 
-        // The result of a "query_blocks" call.
-        //
-        // The structure of the result is somewhat complicated because the main ledger canister might
-        // not have all the blocks that the caller requested: One or more "archive" canisters might
-        // store some of the requested blocks.
-        //
-        // Note: as of Q4 2021 when this interface is authored, ICP doesn't support making nested
-        // query calls within a query call.
-        type QueryBlocksResponse = record {
-            // The total number of blocks in the chain.
-            // If the chain length is positive, the index of the last block is `chain_len - 1`.
-            chain_length : nat64;
+    // System certificate for the hash of the latest block in the chain.
+    // Only present if `query_blocks` is called in a non-replicated query context.
+    certificate : opt blob;
 
-            // System certificate for the hash of the latest block in the chain.
-            // Only present if `query_blocks` is called in a non-replicated query context.
-            certificate : opt blob;
+    // List of blocks that were available in the ledger when it processed the call.
+    //
+    // The blocks form a contiguous range, with the first block having index
+    // [first_block_index] (see below), and the last block having index
+    // [first_block_index] + len(blocks) - 1.
+    //
+    // The block range can be an arbitrary sub-range of the originally requested range.
+    blocks : vec Block;
 
-            // List of blocks that were available in the ledger when it processed the call.
-            //
-            // The blocks form a contiguous range, with the first block having index
-            // [first_block_index] (see below), and the last block having index
-            // [first_block_index] + len(blocks) - 1.
-            //
-            // The block range can be an arbitrary sub-range of the originally requested range.
-            blocks : vec Block;
+    // The index of the first block in "blocks".
+    // If the blocks vector is empty, the exact value of this field is not specified.
+    first_block_index : BlockIndex;
 
-            // The index of the first block in "blocks".
-            // If the blocks vector is empty, the exact value of this field is not specified.
-            first_block_index : BlockIndex;
+    // Encoding of instructions for fetching archived blocks whose indices fall into the
+    // requested range.
+    //
+    // For each entry `e` in [archived_blocks], `[e.from, e.from + len)` is a sub-range
+    // of the originally requested block range.
+    archived_blocks : vec record {
+        // The index of the first archived block that can be fetched using the callback.
+        start : BlockIndex;
 
-            // Encoding of instructions for fetching archived blocks whose indices fall into the
-            // requested range.
-            //
-            // For each entry `e` in [archived_blocks], `[e.from, e.from + len)` is a sub-range
-            // of the originally requested block range.
-            archived_blocks : vec record {
-                // The index of the first archived block that can be fetched using the callback.
-                start : BlockIndex;
+        // The number of blocks that can be fetched using the callback.
+        length : nat64;
 
-                // The number of blocks that can be fetched using the callback.
-                length : nat64;
+        // The function that should be called to fetch the archived blocks.
+        // The range of the blocks accessible using this function is given by [from]
+        // and [len] fields above.
+        callback : QueryArchiveFn;
+    };
+};
 
-                // The function that should be called to fetch the archived blocks.
-                // The range of the blocks accessible using this function is given by [from]
-                // and [len] fields above.
-                callback : QueryArchiveFn;
-            };
-        };
+type Archive = record {
+    canister_id: principal;
+};
 
-        type Archive = record {
-            canister_id: principal;
-        };
+type Archives = record {
+    archives: vec Archive;
+};
 
-        type Archives = record {
-            archives: vec Archive;
-        };
+service : {
+    // Queries blocks in the specified range.
+    query_blocks : (GetBlocksArgs) -> (QueryBlocksResponse) query;
 
-        service : {
-        // Queries blocks in the specified range.
-        query_blocks : (GetBlocksArgs) -> (QueryBlocksResponse) query;
-
-        // Returns the existing archive canisters information.
-        archives : () -> (Archives) query;
-
-        }
-
+    // Returns the existing archive canisters information.
+    archives : () -> (Archives) query;
+}
+```
 ### Balance {#_balance}
 
 A transaction ledger tracks the **balances** of all accounts in the natural way (see the **semantics** section below for a more formal definition).
 
 Any principal can obtain the balance of an arbitrary account via the method `account_balance`: the input parameter is the account identifier; the result is the balance associated to the account. The balance of the account with account identifier `minting_account_id` is always 0; the balance of any other account is calculated in the obvious way.
+```
+type AccountBalanceArgs = record {
+    account: AccountIdentifier;
+};
 
-    type AccountBalanceArgs = record {
-        account: AccountIdentifier;
-    };
-
-    service : {
-      // Get the amount of ICP on the specified account.
-      account_balance : (AccountBalanceArgs) -> (Tokens) query;
-    }
-
+service : {
+  // Get the amount of ICP on the specified account.
+  account_balance : (AccountBalanceArgs) -> (Tokens) query;
+}
+```
 ## Semantics {#_semantics}
 
 In this section, the semantics of the public methods exposed by the ledger are described. Somewhat ad-hoc mathematical notation is used, close to the notation introduced above. List concatenation is denoted by \" · \". If L is a list then \|L\| stands for the length of a list L and L\[i\] for the i'th element of L. The first element of L is L\[0\].
 
 ### Basic types {#_basic_types}
+```
+Operation =
+  Transfer = {
+    from: AccountIdentifier;
+    to: AccountIdentifier;
+    amount: Tokens;
+    fee: Tokens;
+  } |
+  Mint = {
+    to: AccountIdentifier;
+    amount: Tokens;
+  } |
+  Burn = {
+    from: AccountIdentifier;
+    amount: Tokens;
+  }
+}
 
-    Operation =
-      Transfer = {
-        from: AccountIdentifier;
-        to: AccountIdentifier;
-        amount: Tokens;
-        fee: Tokens;
-      } |
-      Mint = {
-        to: AccountIdentifier;
-        amount: Tokens;
-      } |
-      Burn = {
-        from: AccountIdentifier;
-        amount: Tokens;
-      }
-    }
+Block = {
+   operation: Operation;
+   memo: Memo;
+   created_at_time: Timestamp;
+   hash: Hash;
+  }
 
-    Block = {
-       operation: Operation;
-       memo: Memo;
-       created_at_time: Timestamp;
-       hash: Hash;
-      }
-
-    Ledger = List(Block)
-
+Ledger = List(Block)
+```
 ### Ledger state {#_ledger_state}
 
 The state of the ledger canister comprises:
@@ -507,40 +509,41 @@ The state of the ledger canister comprises:
     };
 
 Initially, the ledger is set to the empty list and `last_hash` is set to None:
-
-     {
-       ledger = [];
-       last_hash = None;
-       (forall i) S.location(i) = undefined;
-       S.last_archive = 0;
-       S.last_archived_block = -1;
-    }
-
+```
+{
+   ledger = [];
+   last_hash = None;
+   (forall i) S.location(i) = undefined;
+   S.last_archive = 0;
+   S.last_archived_block = -1;
+}
+```
 ### Balances {#_balances}
 
 Given a transaction ledger, the `balance` function associates an ICP balance to a ledger account.
-
-    balance: Ledger x AccountIdentifier -> Nat
-
+```
+balance: Ledger x AccountIdentifier -> Nat
+```
 The function is defined, recursively, as follows:
+```
+balance([],account_id) = 0
 
-    balance([],account_id) = 0
+if (B = Block{Transfer{from,to,amount, fee}, memo, time, hash}) and (to = account_id)) |
+   (B = Block{Mint{to, amount}, memo, time}) and (to = account_id)) then
+   then
+   balance(OlderBlocks · [B] , account_id) = balance(OlderBlocks, account_id) + amount,
 
-    if (B = Block{Transfer{from,to,amount, fee}, memo, time, hash}) and (to = account_id)) |
-       (B = Block{Mint{to, amount}, memo, time}) and (to = account_id)) then
-       then
-       balance(OlderBlocks · [B] , account_id) = balance(OlderBlocks, account_id) + amount,
+if (B = Block{Transfer{from,to,amount,fee},memo,time}} and (from = account_id)
+    then
+    balance(OlderBlocks · [B], account_id) = balance(OlderBlocks,account_id) - (amount+fee)
 
-    if (B = Block{Transfer{from,to,amount,fee},memo,time}} and (from = account_id)
-        then
-        balance(OlderBlocks · [B], account_id) = balance(OlderBlocks,account_id) - (amount+fee)
+if (B = Block{Burn{from,amount}) and (from = account_id)
+   then
+   balance(OlderBlocks · [B], account_id) = balance(OlderBlocks,account_id) - amount
 
-    if (B = Block{Burn{from,amount}) and (from = account_id)
-       then
-       balance(OlderBlocks · [B], account_id) = balance(OlderBlocks,account_id) - amount
-
-    otherwise
-      balance(OlderBlocks · [B], account_id) = balance(OlderBlocks, account_id)
+otherwise
+  balance(OlderBlocks · [B], account_id) = balance(OlderBlocks, account_id)
+```
 
 The semantics of the ledger methods are described as functions which take as input a ledger state, the call arguments and return a (potentially) new state and a reply. In the description of the function some additional functions which reflect system provided information are used. These include `caller()` which returns the principal who invoked the method, `now()` which return ICP time and `drift` a constant indicating permissible time drift between ICP and external time.  `well_formed(.)` denotes a boolean valued function which checks that its input is a well-formed account identifier (i.e. the first four bytes are equal to CRC32 of the remaining 28 bytes).
 
@@ -549,58 +552,60 @@ The semantics of the ledger methods are described as functions which take as inp
 Below `default_subaccount` stands for the all-0 vector.
 
 #### State & arguments:   
-
-    S
-    A = {
-      memo: Memo;
-      amount: Tokens;
-      fee: Tokens;
-      from_subaccount: opt SubAccount;
-      to: AccountIdentifier;
-      created_at_time: opt TimeStamp;
-      }
-
+```
+S
+A = {
+  memo: Memo;
+  amount: Tokens;
+  fee: Tokens;
+  from_subaccount: opt SubAccount;
+  to: AccountIdentifier;
+  created_at_time: opt TimeStamp;
+  }
+```
 #### Resulting state & reply:   
+```
+output (S',R) calculated as follows:
 
-    output (S',R) calculated as follows:
+if created_at_time = None then created_at_time = now();
+if timestamp > now() + drift then (S',R) = (S, Err);
+if now() - timestamp > 24h then (S',R) = (S, Err);
+if not(well_formed(to)) then (S',R) = (S, Err);
 
-    if created_at_time = None then created_at_time = now();
-    if timestamp > now() + drift then (S',R) = (S, Err);
-    if now() - timestamp > 24h then (S',R) = (S, Err);
-    if not(well_formed(to)) then (S',R) = (S, Err);
+if to = `minting_account_id` and (fee ≠ 0 or amount < standard_fee) then (S',R) = (S, Err);
 
-    if to = `minting_account_id` and (fee ≠ 0 or amount < standard_fee) then (S',R) = (S, Err);
+if from_subaccount = None then from_subaccount = default_subaccount;
+from = account_identifier(caller(),from_subaccount)
 
-    if from_subaccount = None then from_subaccount = default_subaccount;
-    from = account_identifier(caller(),from_subaccount)
-
-     if from = `minting_account_id' then B = Block{Mint{to, amount}, memo, timestamp, S.last_hash}
-          else
-            if to = `minting_account_id` then B = Block{Burn{from, amount}, memo, timestamp, S.last_hash}
-                else B = Block{Transfer{from, to, amount, fee}, memo, timestamp, S.last_hash};
-      if exists i (ledger[i].operation, ledger[i].memo, ledger[i].timestamp) = (B.operation,B.memo,B.timestamp) then (S',R)=(S,Err)
+ if from = `minting_account_id' then B = Block{Mint{to, amount}, memo, timestamp, S.last_hash}
       else
-        (S'.ledger = [B] · S.ledger);
-        (S'.lasthash = hash(B));
-         R = |S'.ledger|-1;
-
+        if to = `minting_account_id` then B = Block{Burn{from, amount}, memo, timestamp, S.last_hash}
+            else B = Block{Transfer{from, to, amount, fee}, memo, timestamp, S.last_hash};
+  if exists i (ledger[i].operation, ledger[i].memo, ledger[i].timestamp) = (B.operation,B.memo,B.timestamp) then (S',R)=(S,Err)
+  else
+    (S'.ledger = [B] · S.ledger);
+    (S'.lasthash = hash(B));
+     R = |S'.ledger|-1;
+```
 ### Ledger method: `balance_of` {#_ledger_method_balance_of}
 
 #### State & arguments:   
-
-    S
-    A = {
-        account_id: AccountIdentifier
-    }
+```
+S
+A = {
+    account_id: AccountIdentifier
+}
+```
 
 #### Resulting state & reply:   
+```
+output (S',R) calculated as follows
 
-    output (S',R) calculated as follows
-
-    S' = S
-    if account_id = `minting_account_id`
-       then R = 0
-       else R = balance(S.ledger,account_id))
+S' = S
+if account_id = `minting_account_id`
+   then R = 0
+   else R = balance(S.ledger,account_id))
+```
 
 ### Archiving {#_archiving}
 
@@ -611,62 +616,65 @@ The ledger canister periodically archives part of the blocks it holds. In the im
 The first transition creates a new archive canister.
 
 #### State & arguments:   
-
-    S
-
+```
+S
+```
 #### Resulting state & reply:   
+```
+(S', R) calculated as follows
 
-    (S', R) calculated as follows
-
-    S'.last_archive = S.last_archive+1
-    R = ()
+S'.last_archive = S.last_archive+1
+R = ()
+```
 
 #### Ledger method: `archive` {#_ledger_method_archive}
 
 The second, changes the location of up to `len` many blocks to the archive canister which last created.
 
 #### State & arguments:   
-
-    S
-    A = {
-       len: Nat
-    }
-
+```
+S
+A = {
+   len: Nat
+}
+```
 #### Resulting state & reply:   
+```
+(S', R) calculated as follows
 
-    (S', R) calculated as follows
+S'.location = S.location
+to_archive = min(len, |S.ledger|- S.last_archived_block+1)
+for i = 1 to to_archive
+   S'.location(last_archived_block+i) = S'.last_archive
+S'.last_archived_block = S.last_archived_block + to_archive
 
-    S'.location = S.location
-    to_archive = min(len, |S.ledger|- S.last_archived_block+1)
-    for i = 1 to to_archive
-       S'.location(last_archived_block+i) = S'.last_archive
-    S'.last_archived_block = S.last_archived_block + to_archive
-
-    R = ()
+R = ()
+```
 
 #### Ledger method: `query_blocks` {#_ledger_method_query_blocks}
 
 Given a list of blocks `L=(B0,B1,…​,Bn)`,  `Blocks(index,len)` stands for the list of blocks `(Bindex, Bindex+1,…​,Bindex+len)`. `Restrict(L,len)` is used for the restriction of list `L` to the first `len` blocks, i.e. `(B0,B1,…​,Blen-1)`. The description below assumes an unspecified constant, `bound` which specifies an upperbound on the number of blocks the Ledger canister can return in response to `query_blocks`. The description also assumes the existence of a `certificate` which is a signature by ICP on the (encoding) of the last block in the ledger. However, at this level of abstraction the properties of this certificate are not specified and the details of how the location of the different blocks is concretely provided are omitted.
 
 #### State & arguments:   
-
-    S
-    A = {
-       index: Nat;
-       len: Nat;
-    }
-
+```
+S
+A = {
+   index: Nat;
+   len: Nat;
+}
+```
 #### Resulting state & reply:   
+```
+(S',R) calculated as follows
 
-    (S',R) calculated as follows
+S'=S
 
-    S'=S
-
-    local_blocks = Blocks(S.last_archived_block+1,|S.ledger|-S.last_archived_block+1)
-    R = {
-       length = |S.ledger|,
-       cert = certificate,
-       start_index = S.last_archived_block+1,
-       blocks = Restrict(Blocks(index,len) ∩ local_blocks, bound),
-       location = S.location
-    }
+local_blocks = Blocks(S.last_archived_block+1,|S.ledger|-S.last_archived_block+1)
+R = {
+   length = |S.ledger|,
+   cert = certificate,
+   start_index = S.last_archived_block+1,
+   blocks = Restrict(Blocks(index,len) ∩ local_blocks, bound),
+   location = S.location
+}
+```

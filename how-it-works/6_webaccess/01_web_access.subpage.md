@@ -19,9 +19,9 @@ We now describe how a client can access a website deployed as a canister on the 
 - Canister - Developers can host their dapp as a canister. Canister consists of a bunch of methods. Anyone can send queries to the canister. A query consists of the canister method to be executed and the inputs for the canister method. The Internet Computer receives the queries sent by the users, executes the corresponding canister method and returns the response to the user.
 
 <figure>
-<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:1000px">
+<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:1000px" />
 <figcaption align="center">
-HTTP Gateway converts the format of HTTP Requests to canister queries, and canister responses to HTTP responses.<br>
+HTTP Gateway converts the format of HTTP Requests to canister queries, and canister responses to HTTP responses.<br />
 Boundary nodes route canister queries to appropriate subnet.
 </figcaption>
 </figure>
