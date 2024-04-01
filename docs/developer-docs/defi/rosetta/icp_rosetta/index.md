@@ -92,6 +92,11 @@ The software can accept any valid Rosetta request.
 However, the integration software only prompts for transactions to be signed using Ed25519, rather than all the signature schemes [listed here](https://www.rosetta-api.org/docs/models/SignatureType.html#values), and only replies with a small subset of the potential responses that the specification supports.
 For example, the software doesn’t implement any of the UTXO features of Rosetta, so you won’t see any UTXO messages in any of the software responses.
 
+
+# How to use the Rosetta API
+The interaction with the Rosetta node can be split in two different parts. The first part consists of fetching data from the ledger regarding blocks, transactions and balances. This part is called the Data-API. [View the steps on how to interact with the Data-API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.md). 
+The second part is more complex. To allow users to sign transactions offline and send them back to Rosetta there are a few interactions that the user will have to follow with the Rosetta node. This part is called the flow of operations in the Construction-API. [View an example of how to go through such a flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.md). The reader of this guide can follow along the examples outlined in the section for the Construction-API. 
+
 # Frequently asked questions
 
 The following questions come from the most commonly reported questions and blockers from the developer community regarding Rosetta integration with the Internet Computer.
