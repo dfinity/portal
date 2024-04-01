@@ -582,7 +582,8 @@ const sidebars = {
       label: "DeAI",
       items: [
         "developer-docs/ai/overview",
-        "developer-docs/ai/machine-learning-sample",
+        "developer-docs/ai/ai-on-chain",
+        "developer-docs/ai/machine-learning-sample"
       ],
     },
     {
@@ -651,8 +652,9 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Multi-chain",
+      label: "Chain fusion",
       items: [
+        "developer-docs/multi-chain/overview",
         {
           type: "category",
           label: "Bitcoin",
@@ -675,6 +677,7 @@ const sidebars = {
               items: [
                 "developer-docs/multi-chain/bitcoin/ckbtc/overview",
                 "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
+                "developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps",
               ],
             },
           ],
@@ -688,6 +691,9 @@ const sidebars = {
               type: "category",
               label: "Using the integration",
               items: [
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
                 "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
                 "developer-docs/multi-chain/ethereum/using-eth/siwe",
               ],
@@ -695,7 +701,11 @@ const sidebars = {
             {
               type: "category",
               label: "ckETH",
-              items: ["developer-docs/multi-chain/ethereum/cketh/overview"],
+              items: [
+                "developer-docs/multi-chain/ethereum/cketh/overview",
+                "developer-docs/multi-chain/ethereum/cketh/making-transactions",
+                "developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps",
+              ],
             },
           ],
         },
@@ -1110,6 +1120,7 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+            "references/supported-signatures",
           ],
         },
         {
@@ -1151,6 +1162,7 @@ const sidebars = {
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
         "developer-docs/backend/rust/generating-candid",
+        "developer-docs/backend/rust/message-inspect",
       ],
     },
   ],
