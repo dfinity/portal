@@ -797,13 +797,13 @@ function MultichainPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="Bitcoin <> ICP"
+              title="ICP as a Bitcoin L2"
               description=""
               href="/bitcoin-integration"
             />
 
             <CardWithDescription
-              title="Ethereum <> ICP"
+              title="ICP as an Ethereum sidechain"
               description=""
               href="/ethereum-integration"
             />
