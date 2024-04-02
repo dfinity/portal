@@ -1,8 +1,19 @@
+---
+keywords: [beginner, tutorial, maintain canisters, access control, controllers]
+---
+
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
 # Control
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 ## Overview
 
-A canister is managed by a list of controllers. A controller is specified by a principal, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it has no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted. 
+A <GlossaryTooltip>canister</GlossaryTooltip> is managed by a list of controllers. A controller is specified by a <GlossaryTooltip>principal</GlossaryTooltip>, which can be self-authenticating, e.g. a `dfx` developer identity, or another canister. Canisters can have multiple controllers where each controller has the same administrative rights, or it has no controller, in which case the canister becomes immutable, or blackholed, and cannot be upgraded or deleted.
 
 ## Setting the controllers of a canister
 
@@ -37,7 +48,7 @@ dfx canister update-settings CANISTER_NAME --set-controller CONTROLLER
 - Stopping and starting the canister.
 - Installing code in the canister.
 - Upgrading the canister.
-- Getting the status of the canister which includes its cycles balance, memory usage, and list of controllers.
+- Getting the status of the canister which includes its <GlossaryTooltip>cycles</GlossaryTooltip> balance, memory usage, and list of controllers.
 - Deleting the canister.
 - Updating settings like the freezing threshold, resource allocation, and controllers.
 
@@ -49,7 +60,7 @@ A canister is controlled by a single developer or a team of developers. Each dev
 
 ### MultiSig
 
-A canister is controlled by a multi-signature canister. The multi-signature canister is controlled by a list of developers and requires a threshold number of signatures to perform administrative actions on the canister. This model is more secure than the single developer model, as it requires multiple developers to agree on an action before it can be performed. 
+A canister is controlled by a multi-signature canister. The multi-signature canister is controlled by a list of developers and requires a threshold number of signatures to perform administrative actions on the canister. This model is more secure than the single developer model, as it requires multiple developers to agree on an action before it can be performed.
 
 A canister that can be used for this purpose is the [Threshold canister](https://github.com/dfinity/threshold).
 
@@ -59,7 +70,7 @@ The [Launchtrail canister](https://github.com/spinner-cash/launchtrail) can be u
 
 ###  Decentralized Autonomous Organization (DAO)
 
-A canister is controlled by a DAO, and all upgrades and administrative actions are decided by a vote of the DAO members. The most common DAO model for applications on the Internet Computer is the [Service Nervous System (SNS)](/docs/developer-docs/integrations/sns/index.md).
+A canister is controlled by a DAO, and all upgrades and administrative actions are decided by a vote of the DAO members. The most common DAO model for applications on the Internet Computer is the [Service Nervous System (SNS)](/docs/developer-docs/daos/sns/index.mdx).
 
 The system canisters on ICP are controlled by the Network Nervous System (NNS) root canister, which allows administration of the canisters by NNS proposals.
 

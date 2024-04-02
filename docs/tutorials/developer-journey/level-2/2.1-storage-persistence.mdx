@@ -1,4 +1,15 @@
+---
+keywords: [intermediate, tutorial, developer journey, canister upgrades, canister storage, data persistence]
+---
+
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 2.1 Canister upgrades, storage, and persistence
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-aXjKSz_oXc?si=Tr9dl9-fXac3SfCS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Overview
 
@@ -53,7 +64,7 @@ For canisters written in Rust, stable memory can be utilized through two Rust cr
 Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as **stable storage**, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's **stable memory** feature that was discussed previously.
 
 :::info
-Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. For more information on Rust upgrades, see the documentation [here](../../../developer-docs/backend/rust/7-upgrading.md).
+Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. [Learn more about Rust upgrades](../../../developer-docs/backend/rust/7-upgrading.mdx).
 :::
 
 A **stable variable** is a variable defined within an actor which uses the `stable` keyword as a modifier in the variable's declaration. This indicates that the data stored in the variable should be stored using **stable storage**. If this `stable` keyword is not used, the variable is defined as `flexible` by default, which means it's data does not persist across canister upgrades.
@@ -63,16 +74,18 @@ Let's take a look at defining and using a stable variable that uses Motoko's sta
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -82,26 +95,26 @@ dfx start --clean --background
 dfx new counter
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
-❯ Vanilla JS
+  Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -125,7 +138,7 @@ cd counter
 
 ```bash
 dfx start --clean --background
-dfx new counter
+dfx new counter --no-frontend
 cd counter
 ```
 
@@ -133,7 +146,7 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 Then, open the file `src/counter_backend/main.mo`. Delete all of the content within this file.
@@ -158,7 +171,7 @@ actor Counter {
 The `stable` or `flexible` variable modifications can only be used on `let` and `var` declarations that are within actor fields. These modifiers cannot be used elsewhere in the program.
 :::
 
-You can take a deeper dive into stable variables in the [documentation here](https://internetcomputer.org/docs/current/motoko/main/upgrades#declaring-stable-variables).
+[Take a deeper dive into stable variables](https://internetcomputer.org/docs/current/motoko/main/upgrades#declaring-stable-variables).
 
 Save this file.
 
@@ -180,7 +193,7 @@ You can interact with the counter dapp through the Candid UI URL returned in the
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    counter_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    counter_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 Open the URL in a web browser, then interact with the counter by clicking the 'Call' button 3 times. The counter value will now return '3':
@@ -235,7 +248,7 @@ Upgrading code for canister counter_backend, with canister ID bkyz2-fmaaa-aaaaa-
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    counter_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    counter_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 Now, navigate back to the Candid UI URL provided in the output and click the 'Call' button twice. This time, the counter should increment by 3, resulting in the value '9', since our stable variable held our previous counter value of '3' that was saved prior to the upgrade.

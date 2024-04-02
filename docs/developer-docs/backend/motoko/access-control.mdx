@@ -1,6 +1,16 @@
-import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
+---
+keywords: [intermediate, motoko, tutorial, access control]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 16: Add access control with identities
+
+<MarkdownChipRow labels={["Intermediate", "Motoko", "Tutorial"]} />
 
 ## Overview
 
@@ -32,7 +42,61 @@ Open a terminal window on your local computer, if you don’t already have one o
 
 Create a new project by running the following command:
 
-<DfxNewSnippet />
+<AdornedTabs groupId="version">
+  <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
+
+    Use `dfx new [project_name]` to create a new project:
+
+    ```
+    dfx new access_hello
+    ```
+
+    You will be prompted to select the language that your backend canister will use. Select 'Motoko:
+
+    ```
+    ? Select a backend language: ›
+    ❯ Motoko
+    Rust
+    TypeScript (Azle)
+    Python (Kybra)
+    ```
+
+    Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+
+    ```
+    ? Select a frontend framework: ›
+    SvelteKit
+    React
+    Vue
+    Vanilla JS
+    No JS template
+    ❯ No frontend canister
+    ```
+
+    Lastly, you can include extra features to be added to your project:
+
+    ```
+    ? Add extra features (space to select, enter to confirm) ›
+    ⬚ Internet Identity
+    ⬚ Bitcoin (Regtest)
+    ⬚ Frontend tests
+    ```
+
+  </TabItem>
+
+  <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
+
+    ```bash
+    dfx new access_hello --no-frontend
+    cd access_hello
+    npm install
+    ```
+
+    For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
+
+  </TabItem>
+</AdornedTabs>
 
 Navigate into your project directory by running the following command:
 
@@ -80,7 +144,7 @@ shared({ caller = initializer }) actor class() {
         #authorized;
     };
 
-    // Define the custom types for assigning the permissions 
+    // Define the custom types for assigning the permissions
     public type Permission = {
         #assign_role;
         #lowest;
@@ -185,21 +249,21 @@ Save your changes and close the `main.mo` file to continue.
 
 ## Start the local canister execution environment
 
-Before you can build the `access_hello` project, you need to connect to the local canister execution environment running in your development environment or to the Internet Computer blockchain mainnet.
+Before you can build the `access_hello` project, you need to connect to the local replica running in your development environment or to the Internet Computer blockchain mainnet.
 
 Open a new terminal window or tab on your local computer.
 
 Start the local canister execution environment on your computer by running the following command:
 
 ```
-dfx start --background
+dfx start --clean --background
 ```
 
 After the local canister execution environment completes its startup operations, you can continue to the next step.
 
 ## Register, build, and deploy the dapp
 
-After you connect to the local canister execution environment running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy) command. 
+After you connect to the local replica running in your development environment, you can register, build, and deploy your dapp in a single step by running the [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy) command.
 
 You can also perform each of these steps independently using separate [`dfx canister create`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx_canister_create), [`dfx build`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build), and [`dfx canister install`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx_canister_install) commands.
 
@@ -218,14 +282,14 @@ Committing batch with 18 operations.
 Deployed canisters.
 URLs:
 Frontend canister via browser
-    access_hello_frontend: http://127.0.0.1:8080/?canisterId=cuj6u-c4aaa-aaaaa-qaajq-cai
+    access_hello_frontend: http://127.0.0.1:4943/?canisterId=cuj6u-c4aaa-aaaaa-qaajq-cai
 Backend canister via Candid interface:
-    access_hello_backend: http://127.0.0.1:8080/?canisterId=cbopz-duaaa-aaaaa-qaaka-cai&id=ctiya-peaaa-aaaaa-qaaja-cai
+    access_hello_backend: http://127.0.0.1:4943/?canisterId=cbopz-duaaa-aaaaa-qaaka-cai&id=ctiya-peaaa-aaaaa-qaaja-cai
 ```
 
 ## Check the current identity context
 
-Before you create any additional identities, let’s review the principal identifiers associated with the `owner` identity and the cycles wallet for your `owner` identity. This `owner` identity is created when your canisters were deployed. 
+Before you create any additional identities, let’s review the principal identifiers associated with the `owner` identity and the cycles wallet for your `owner` identity. This `owner` identity is created when your canisters were deployed.
 
 On the Internet Computer blockchain, a principal is the internal representative for a user, canister, node, or subnet. The textual representation for a principal is the external identifier you see displayed with working with the principal data type.
 
@@ -328,7 +392,7 @@ The command displays output similar to the following:
 (principal "scc3r-hhpnt-264cn-t2ud3-sx74o-5txbl-arwi5-h7c4s-wx7zc-sl54q-dqe")
 ```
 
-You will notice that the principal returned is the principal associated with the user context. 
+You will notice that the principal returned is the principal associated with the user context.
 
 ## Assign a role to an identity
 

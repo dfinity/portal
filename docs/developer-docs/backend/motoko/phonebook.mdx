@@ -1,7 +1,17 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [beginner, motoko, tutorial, libraries, library modules, mops, vessel]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 
 # 9: Importing library modules
+
+<MarkdownChipRow labels={["Beginner", "Motoko", "Tutorial"]} />
 
 ## Overview
 
@@ -41,7 +51,7 @@ Then, configure `dfx.json` to use Mops as a `packtool`:
 
 Vessel can be installed by downloading the Vessel binary from [the GitHub release page](https://github.com/dfinity/vessel/releases).
 
-To install a package using Vessel, edit the `vessel.dhall` file to include what packages your project will import. 
+To install a package using Vessel, edit the `vessel.dhall` file to include what packages your project will import.
 
 Then, configure `dfx.json` to use Vessel as a `packtool`:
 
@@ -71,7 +81,7 @@ Open a terminal window on your local computer, if you don’t already have one o
 
 Then, create a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -80,26 +90,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new phonebook
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -116,13 +126,14 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new phonebook
+dfx new phonebook --no-frontend
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+    For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Change into your project directory by running the following command:
 
@@ -198,7 +209,7 @@ Then navigate to the root directory for your project, if necessary.
 Start the local canister execution environment on your local computer by running the following command:
 
 ```
-dfx start --clean
+dfx start --clean --background
 ```
 
 :::info

@@ -1,0 +1,9 @@
+canister=A smart contract on ICP.
+canisters=A smart contract on ICP.
+cycles=Currency unit used to pay for ICP gas fees.
+principal=An entity that can be authenticated by ICP - user, canister, etc.
+principals=An entity that can be authenticated by ICP - user, canister, etc.
+replica=The ICP software used to run a node.
+subnet=A collection of nodes that run their own instance of the ICP consensus algorithm.
+subnets=A collection of nodes that run their own instance of the ICP consensus algorithm.
+NNS=The DAO that governs ICP.

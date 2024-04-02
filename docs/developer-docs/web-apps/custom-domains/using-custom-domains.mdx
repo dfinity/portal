@@ -1,4 +1,12 @@
+---
+keywords: [intermediate, tutorial, custom domains]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Using custom domains
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 ## Overview
 
@@ -18,8 +26,7 @@ the domain with the boundary nodes, you simply have to configure the DNS records
 the custom domain and the boundary nodes take care of obtaining a certificate,
 renewing the certificate before its expiration, and SEO.
 When hosting the domain on your own infrastructure, you need to obtain and renew
-the certificates, and provide your own infrastructure that serves the service worker
-or implements an other form of the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md).
+the certificates, and provide your own infrastructure with support for the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md).
 However, you are also more flexible in how you configure your domain.
 
 :::info
@@ -62,7 +69,7 @@ For non-apex (e.g. www), the name should be the standard “_canister-id.www” 
 
 - #### Step 2: Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
 By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
-Create a new file with the name `.ic-assets.json` inside a directory listed in `sources` in `dfx.json`.
+Create a new file with the name `.ic-assets.json` inside a directory listed in `source` in `dfx.json`.
 
 To use multiple custom domains and their subdomains with a single canister, simply list each one of them on a newline in the `ic-domains`-file:
 ```sh
@@ -144,11 +151,11 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 
 ### DNS configuration
 
-| Record Type   | Host                        | Value                               |
-|---------------|-----------------------------|-------------------------------------|
-| `CNAME`       | foo.bar.com                 | foo.bar.com.icp1.io                 |
-| `TXT`         | _canister-id.foo.bar.com    | hwvjt-wqaaa-aaaam-qadra-cai         |
-| `CNAME`       | _acme-challenge.foo.bar.com | _acme-challenge.foo.bar.com.icp2.io |
+| Record Type   | Host                | Value                               |
+|---------------|---------------------|-------------------------------------|
+| `CNAME`       | @                   | foo.bar.com.icp1.io                 |
+| `TXT`         | _canister-id        | hwvjt-wqaaa-aaaam-qadra-cai         |
+| `CNAME`       | _acme-challenge     | _acme-challenge.foo.bar.com.icp2.io |
 
 :::info
 Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` instead of `foo.bar.com`, `_canister-id.foo` instead of `_canister-id.foo.bar.com`, and `_acme-challenge.foo` instead of `_acme-challenge.foo.bar.com`.

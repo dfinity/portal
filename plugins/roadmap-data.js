@@ -36,57 +36,64 @@ function getItems(baseDir) {
   });
 }
 
+let cache;
+
 /** @type {import('@docusaurus/types').PluginModule} */
 const RoadmapDataPlugin = async function () {
   return {
     name: "roadmap-data",
     async loadContent() {
-      const domains = [];
+      if (!cache) {
+        const domains = [];
 
-      const dirs = fs
-        .readdirSync(path.resolve(__dirname, "..", "roadmap"), {
-          withFileTypes: true,
-        })
-        .filter((d) => d.isDirectory());
+        const dirs = fs
+          .readdirSync(path.resolve(__dirname, "..", "roadmap"), {
+            withFileTypes: true,
+          })
+          .filter((d) => d.isDirectory());
 
-      for (const dir of dirs) {
-        const indexPath = path.resolve(
-          __dirname,
-          "..",
-          "roadmap",
-          dir.name,
-          "index.md"
-        );
-
-        if (!fs.existsSync(indexPath)) {
-          logger.warn(
-            `Warning: no index.md file for roadmap domain "${dir.name}"`
+        for (const dir of dirs) {
+          const indexPath = path.resolve(
+            __dirname,
+            "..",
+            "roadmap",
+            dir.name,
+            "index.md"
           );
-          continue;
+
+          if (!fs.existsSync(indexPath)) {
+            logger.warn(
+              `Warning: no index.md file for roadmap domain "${dir.name}"`
+            );
+            continue;
+          }
+
+          const meta = matter(
+            fs.readFileSync(indexPath, { encoding: "utf-8" })
+          );
+
+          const baseDir = path.resolve(__dirname, "..", "roadmap", dir.name);
+
+          domains.push({
+            name: meta.data.title,
+            description: marked.parse(meta.content),
+            image: {
+              card: meta.data.card,
+              overlay: meta.data.overlay,
+            },
+            groups: {
+              deployed: getItems(path.join(baseDir, "deployed")),
+              inProgress: getItems(path.join(baseDir, "in-progress")),
+              upcoming: getItems(path.join(baseDir, "upcoming")),
+              future: getItems(path.join(baseDir, "future")),
+            },
+          });
         }
+        // console.log(JSON.stringify(domains, null, 2));
 
-        const meta = matter(fs.readFileSync(indexPath, { encoding: "utf-8" }));
-
-        const baseDir = path.resolve(__dirname, "..", "roadmap", dir.name);
-
-        domains.push({
-          name: meta.data.title,
-          description: marked.parse(meta.content),
-          image: {
-            card: meta.data.card,
-            overlay: meta.data.overlay,
-          },
-          groups: {
-            deployed: getItems(path.join(baseDir, "deployed")),
-            inProgress: getItems(path.join(baseDir, "in-progress")),
-            upcoming: getItems(path.join(baseDir, "upcoming")),
-            future: getItems(path.join(baseDir, "future")),
-          },
-        });
+        cache = domains;
       }
-      // console.log(JSON.stringify(domains, null, 2));
-
-      return domains;
+      return cache;
     },
     async contentLoaded({ content, actions }) {
       const { createData } = actions;

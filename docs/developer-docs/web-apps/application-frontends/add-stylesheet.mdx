@@ -1,7 +1,18 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [intermediate, tutorial, frontend, stylesheet]
+---
 
-# Adding a stylesheet
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Add a stylesheet
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
 
 ## Overview
 
@@ -23,7 +34,7 @@ This guide requires you to use the IC SDK version `0.8.0` or later.
 
 - [x]   You have installed the Visual Studio Code plugin for Motoko as described in [VS Code extensions for ICP development](/docs/current/developer-docs/developer-tools/ide/vs-code) if you are using Visual Studio Code as your IDE.
 
-- [x]   You have stopped any local canister execution environment processes running on the local computer.
+- [x]   You have started `dfx` with the command `dfx start --clean --background`.
 
 
 ## Create a new project
@@ -39,7 +50,7 @@ To create a new project directory for your custom frontend dapp:
 - #### Step 4:  Create a new project by running the following command:
 
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -48,10 +59,10 @@ Use `dfx new <project_name>` to create a new project:
 dfx new contacts
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use:
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -61,7 +72,7 @@ You will be prompted to select a language that your backend canister will use:
 Then, select a frontend framework for your frontend canister. Select 'React':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
 ❯ React
   Vue
@@ -88,7 +99,7 @@ dfx new contacts
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 - #### Step 5:  Change to your project directory by running the following command:
 
@@ -424,7 +435,7 @@ To start the environment locally:
 
 - #### Step 2:  Start the local canister execution environment on your local computer by running the following command:
 
-        dfx start --background
+        dfx start --clean --background
 
     After the environment completes its startup operations, you can continue to the next step.
 
@@ -458,7 +469,7 @@ You can now access the frontend for the `contacts` dapp.
 
 To view the frontend:
 
-- #### Step 1:  Open a browser and navigate to the `http://localhost:8080`.
+- #### Step 1:  Open a browser and navigate to the `http://localhost:4943`.
 
 - #### Step 2:  Verify that you are prompted with a "My Contacts" form.
 

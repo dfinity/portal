@@ -23,8 +23,8 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             className="tw-lead-sm md:tw-lead md:w-7/12 mb-0"
           >
             The Internet Computer (ICP) cryptographically integrates with the
-            Bitcoin network, enabling a plethora of native bitcoin smart contract
-            use cases — all without the need for bridges.
+            Bitcoin network, enabling IC smart contracts to call into the Bitcoin network. This creates native bitcoin smart contract
+            use cases — all without the need for bridges and backed by chain-key cryptography.
           </motion.p>
         </AnimateSpawn>
       </div>

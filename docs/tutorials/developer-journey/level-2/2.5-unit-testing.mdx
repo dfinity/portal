@@ -1,8 +1,18 @@
+---
+keywords: [intermediate, tutorial, developer journey, unit testing, e2e testing, integration testing]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # 2.5 Unit, integration, and end2end testing
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ndUqdwdtBhQ?si=hB8Thi_tMVJC0CIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Overview
 
-Testing code is an important stage of any development workflow. Without proper testing before the code is put into production, bugs and errors that may have been caught during testing can be detrimental to production environments. At this point in of our developer journey, it's time to explore tools that can be used to test our code. 
+Testing code is an important stage of any development workflow. Without proper testing before the code is put into production, bugs and errors that may have been caught during testing can be detrimental to production environments. At this point in of our developer journey, it's time to explore tools that can be used to test our code.
 
 There are three primary types of testing:
 
@@ -10,13 +20,13 @@ There are three primary types of testing:
 
 - **Integration testing:** Tests several functions, calculations, and portions of the code together; tests how different parts *integrate* with one another. A common form of integration testing is known as *continuous integration* testing, or CI testing.
 
-- **End2end (e2e) testing:** Tests the app's complete workflow, including buttons, forms, and frontend assets; tests the app from *end to end*. 
+- **End2end (e2e) testing:** Tests the app's complete workflow, including buttons, forms, and frontend assets; tests the app from *end to end*.
 
 ## Motoko unit testing
 
-The Motoko base library contains a series of test files that can be used for unit testing. There are tests for individual types, such as `Text`, `Array`, `Func`, etc. The full library of test files can be found [here](https://github.com/dfinity/motoko-base/tree/master/test). 
+The Motoko base library contains a series of test files that can be used for unit testing. There are tests for individual types, such as `Text`, `Array`, `Func`, etc. [Check out the full library of test files](https://github.com/dfinity/motoko-base/tree/master/test).
 
-Many of these tests use a library called Motoko Matchers. Motoko Matchers is a test library that contains several packages that can be imported and used to provide testing functionalities. 
+Many of these tests use a library called Motoko Matchers. Motoko Matchers is a test library that contains several packages that can be imported and used to provide testing functionalities.
 
 Let's take a look at a simple unit test. This unit test will test the program's error messages:
 
@@ -37,17 +47,17 @@ Suite.run(suite);
 
 This unit test does the following:
 
-- First, it imports the `Suite`, `Testable` and `Matchers` packages from the Motoko Matchers project. 
+- First, it imports the `Suite`, `Testable` and `Matchers` packages from the Motoko Matchers project.
 
     - `Suite` is a package that defines a simple test runner.
 
-    - `Testable` is a package that provides functionality for units to be compared in a test. 
+    - `Testable` is a package that provides functionality for units to be compared in a test.
 
     - `Matchers` is a package that provides functionality for composable assertions that can be used in tests.
 
 - Then, it defines a `Suite`, which is used to build a tree of tests to be run.
 
-- In the suite, 2 tests are defined. One tests if the `Nat` value `10` is equal to `10`. The second tests if the `Nat` value of `5` is greater than `3`. 
+- In the suite, 2 tests are defined. One tests if the `Nat` value `10` is equal to `10`. The second tests if the `Nat` value of `5` is greater than `3`.
 
 - Lastly, the suite is run with the line `Suite.run(suite)`.
 
@@ -82,19 +92,19 @@ actor {
 
 This unit test does the following:
 
-- First, it imports a canister called `CanisterName`. This allows the result of functions within the canister to be tested. 
+- First, it imports a canister called `CanisterName`. This allows the result of functions within the canister to be tested.
 
-- Then, it imports the `Canister`, `Testable` and `Matchers` packages from the Motoko Matchers project. 
+- Then, it imports the `Canister`, `Testable` and `Matchers` packages from the Motoko Matchers project.
 
-- A `batchSize` is defined; this determines how many times the test will be run. 
+- A `batchSize` is defined; this determines how many times the test will be run.
 
-- Two tests are defined. Both test the result of the canister's `greet` function: 
+- Two tests are defined. Both test the result of the canister's `greet` function:
 
     - The first tests if the canister's greeting function is passed the text 'Bob', does the result text equal 'Hello, Bob!'?
 
-    - The second tests if the greeting doesn't greet 'Bob' and instead greets 'George', the greeting should be ignored. 
+    - The second tests if the greeting doesn't greet 'Bob' and instead greets 'George', the greeting should be ignored.
 
-- Then, it runs all tests in the batch, indicated by the `runAll()` call. 
+- Then, it runs all tests in the batch, indicated by the `runAll()` call.
 
 Want to look at a more complex, running example? You can take a look at the unit tests that are used in the [invoice canister example](https://github.com/dfinity/invoice-canister/tree/main/test).
 
@@ -104,7 +114,7 @@ Want to learn more about running large, long-running batches of tests? Take a lo
 
 In this developer journey series, you'll continue to focus on exploring and using Motoko. However, it's important to make note of the resources available for Rust testing.
 
-For information about Rust unit testing, see the documentation [here](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades) and [here](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent). 
+[Learn more about Rust unit testing](https://mmapped.blog/posts/01-effective-rust-canisters.html).
 
 You may also consider the [DFINITY Rust guidelines on testing](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_tests).
 
@@ -124,30 +134,32 @@ response = pic.update_call(canister_id, method="greeting", ...)
 assert(response == 'Hello, PocketIC!')
 ```
 
-You can learn more about PocketIC [here](https://github.com/dfinity/pocketic-py#readme).
+[Learn more about PocketIC](https://github.com/dfinity/pocketic-py#readme).
 
 ### Tests using Light Replica
 
-Light Replica is a community-developed project designed to provide a local testing and development environment similar to Ethereum's Truffle or Hardhat tools. Light Replica creates a local node designed to replicate the behavior of a real ICP node that includes additional logging and functions to assist with testing. Using this local node, any Wasm file can be tested and interacted with as if it were deployed on a live production node. The Light Replica's codebase includes tests primarily written in Rust and Typescript, and can be beneficial as a tool for Rust development testing, but can be used with any canister that has been compiled into a Wasm file. 
+Light Replica is a community-developed project designed to provide a local testing and development environment similar to Ethereum's Truffle or Hardhat tools. Light Replica creates a local node designed to replicate the behavior of a real ICP node that includes additional logging and functions to assist with testing. Using this local node, any Wasm file can be tested and interacted with as if it were deployed on a live production node. The Light Replica's codebase includes tests primarily written in Rust and Typescript, and can be beneficial as a tool for Rust development testing, but can be used with any canister that has been compiled into a Wasm file.
 
-You can learn more about Light Replica [here](https://github.com/icopen/lightic/tree/main).
+[Learn more about Light Replica](https://github.com/icopen/lightic/tree/main).
 
 ## End2end (e2e) testing
 
-Now, let's take a look at creating a project and setting up end2end (e2e) testing for the project. 
+Now, let's take a look at creating a project and setting up end2end (e2e) testing for the project.
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](../level-0/03-dev-env.md).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -157,10 +169,10 @@ dfx start --clean --background
 dfx new e2e_tests
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -170,7 +182,7 @@ You will be prompted to select a language that your backend canister will use. S
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
   SvelteKit
   React
   Vue
@@ -200,39 +212,18 @@ cd e2e_tests
 
 ```bash
 dfx start --clean --background
-dfx new e2e_tests
+dfx new e2e_tests --no-frontend
 cd e2e_tests
 ```
 
 Remember, by default `dfx new` creates a new project in the Motoko language. If you'd like to create a Rust project, use the flag `--type=rust`.
 
-
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ### Setting up the project
 
-Then, you can remove the `src/e2e_tests_frontend` folder and any sub folders. You won't be using a frontend in this project. 
-
-```bash
-rm -r src/e2e_tests_frontend
-```
-
-Then, remove the `e2e_tests_frontend` configuration from the `dfx.json` file. Once that has been completed, your `dfx.json` file should resemble the following:
-
-```json
-{
-  "canisters": {
-    "e2e_tests_backend": {
-      "main": "src/e2e_tests_backend/main.mo",
-      "type": "motoko"
-    }
-  },
-  "version": 1
-}
-```
-
-Next, you'll install `vitest` and `isomorphic-fetch` with the command:
+Next, install `vitest` and `isomorphic-fetch` with the command:
 
 ```bash
 npm install --save-dev vitest isomorphic-fetch
@@ -255,7 +246,7 @@ Then, open your `package.json` file and insert `"test": "vitest"` in the `script
 ```
 
 :::info
-Need the full `package.json` file? A repo containing the full project for this tutorial can be found [here](https://github.com/krpeacock/sample-canister-e2e).
+Need the full `package.json` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
 :::
 
 
@@ -267,10 +258,10 @@ mkdir src/tests/
 
 ### Creating an agent
 
-Now, you'll create a mixture of JavaScript and TypeScript files to create a utility that'll be used to create an **agent** using generated declarations. This file will be called `actor.js`. 
+Now, you'll create a mixture of JavaScript and TypeScript files to create a utility that'll be used to create an **agent** using generated declarations. This file will be called `actor.js`.
 
 :::caution
-You'll be diving a bit into using an **agent** in this portion of the tutorial. Note that the developer journey has briefly mentioned agents thus far, but hasn't fully explored agents yet. The developer journey will cover agents in a future tutorial, but for this tutorial it is important to know that an agent a library used to make calls to the Internet Computer public interface. You'll be using it to communicate the canister's public methods, defined in the `declarations/e2e_tests_backend/e2e_tests_backend.did.js`, to the file containing our the code for our tests. 
+You'll be diving a bit into using an **agent** in this portion of the tutorial. Note that the developer journey has briefly mentioned agents thus far, but hasn't fully explored agents yet. The developer journey will cover agents in a future tutorial, but for this tutorial it is important to know that an agent a library used to make calls to the Internet Computer public interface. You'll be using it to communicate the canister's public methods, defined in the `declarations/e2e_tests_backend/e2e_tests_backend.did.js`, to the file containing our the code for our tests.
 :::
 
 Create a new file in `src/tests/` called `actor.js`, then insert the following content:
@@ -296,7 +287,7 @@ export const createActor = async (canisterId, options) => {
 export const e2e_tests_backendCanister = canisterIds.e2e_tests_backend.local;
 
 export const e2e_tests_backend = await createActor(e2e_tests_backendCanister, {
-  agentOptions: { host: "http://127.0.0.1:8080", fetch },
+  agentOptions: { host: "http://127.0.0.1:4943", fetch },
 });
 ```
 
@@ -304,14 +295,14 @@ This agent file does the following:
 
 - Sets up file handlers by reading the canister IDs from their associated JSON file.
 
-- Fetches the root key since you are testing locally. 
+- Fetches the root key since you are testing locally.
 
 - Imports the interface description language (IDL) from the declarations file (`../declarations/e2e_tests_backend/e2e_tests_backend.did.js`).
 
-- Creates a default actor. 
+- Creates a default actor.
 
 :::caution
-This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally. 
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
 
 This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
 :::
@@ -340,7 +331,7 @@ In this test file, the following things happen:
 
 - A test method is defined which accepts two arguments - a test name and a function.
 
-- Inside the test method, `expect` is used to check the result of the `greet` function against the expected result. 
+- Inside the test method, `expect` is used to check the result of the `greet` function against the expected result.
 
 ### Running a basic test
 
@@ -395,7 +386,7 @@ test("Should contain a candid interface", async () => {
 ```
 
 :::info
-Need the full `src/tests/e2e_tests_backend.test.ts` file? A repo containing the full project for this tutorial can be found [here](https://github.com/krpeacock/sample-canister-e2e).
+Need the full `src/tests/e2e_tests_backend.test.ts` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
 :::
 
 This test simply checks that our canister's metadata contains a Candid interface.
@@ -419,13 +410,13 @@ Then, run the test again with the `npm test` command. This time, the output shou
 
 ## Integration testing
 
-Now that you have a mini tutorial project to use, you'll use it to demonstrate **continuous integration** testing. CI testing is a common automated testing workflow. One example of CI testing is done through Github, where a repository can be configured to run a test every time a change is pushed to the repository's code. 
+Now that you have a mini tutorial project to use, you'll use it to demonstrate **continuous integration** testing. CI testing is a common automated testing workflow. One example of CI testing is done through Github, where a repository can be configured to run a test every time a change is pushed to the repository's code.
 
 Before you upload your code to Github, first edit the `package.json` file. In the `scripts` section of this file, add the following lines:
 
 ```json
 "ci": "vitest run",
-"preci": "dfx stop; dfx start --background --clean; dfx deploy; dfx generate"
+"preci": "dfx stop; dfx start --clean --background; dfx deploy; dfx generate"
 ```
 
 This tells the code to automatically start dfx and deploy the project's canister.
@@ -480,13 +471,13 @@ jobs:
           REPLICA_PORT: 8000
 ```
 
-To learn more about Github workflows, check out the [Github documentation here](https://docs.github.com/en/actions/using-workflows).
+To learn more about Github workflows, check out the [Github documentation](https://docs.github.com/en/actions/using-workflows).
 
 ## Need help?
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat. 
+- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -508,7 +499,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-To wrap up level 2 of our developer journey, you'll dive into Motoko level 2 and learn more about Motoko's fundamentals. 
+To wrap up level 2 of our developer journey, you'll dive into Motoko level 2 and learn more about Motoko's fundamentals.
 
 - [2.6 Motoko level 2](/docs/current/tutorials/developer-journey/level-2/2.6-motoko-lvl2).
 

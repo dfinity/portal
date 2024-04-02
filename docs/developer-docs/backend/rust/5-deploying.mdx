@@ -1,16 +1,24 @@
+---
+keywords: [beginner, rust, tutorial, deploying canisters, deploying]
+---
+
 import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 5: Writing and deploying canisters
 
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
+
 ## Overview
 
-In this guide, you'll learn the steps required to write, compile, deploy, and interact with a Rust backend canister. 
+In this guide, you'll learn the steps required to write, compile, deploy, and interact with a Rust backend canister.
 
 This guide will showcase a simple 'Hello, world!' example.
 
-## Prerequisites 
+## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.md).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
 
 ## Writing the canister
 
@@ -49,7 +57,7 @@ For more information on project structure and code organization, review the [pro
 
 ## Writing the `lib.rs` file
 
-You'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step. 
+You'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step.
 
 Open the `src/hello_world_backend/src/lib.rs` file in a text editor. Replace the existing content with the following:
 
@@ -60,7 +68,7 @@ fn greet(name: String) -> String {
 }
 ```
 
-Save the file. 
+Save the file.
 
 ## Writing the `Cargo.toml` file
 
@@ -84,7 +92,7 @@ ic-cdk = "0.7.0"
 
 Save the file.
 
-## Deploying the canister to your local execution environment 
+## Deploying the canister to your local canister execution environment
 
 ## Creating the canister
 
@@ -119,7 +127,7 @@ dfx canister install hello_world_backend
 
 ### Deploying to the execution environment
 
-To deploy the canister, start the dfx local execution environment with the command:
+To deploy the canister, start the dfx local <GlossaryTooltip>replica</GlossaryTooltip> with the command:
 
 ```
 dfx start --clean --background
@@ -139,9 +147,9 @@ dfx deploy
 
 ## Deploying the canister to the mainnet
 
-To deploy to the mainnet, you will need a cycles wallet with a balance of cycles. 
+To deploy to the mainnet, you will need a cycles wallet with a balance of cycles.
 
-To learn more about setting up a cycles wallet, please review the documentation [here](/docs/current/developer-docs/getting-started/deploy/mainnet). 
+To learn more about setting up a cycles wallet, please review the documentation [here](/docs/current/developer-docs/getting-started/deploy/mainnet).
 
 Once you have gotten your cycles wallet configured and ready to use, check the status of the mainnet to confirm that your local environment can connect to it. You can ping the mainnet with the command:
 
@@ -197,7 +205,7 @@ This will return the output:
 
 ### Testing the canister with PocketIC
 
-[PocketIC](/docs/current/developer-docs/setup/pocket-ic) is a lightweight, deterministic testing solution for programmatic testing of canisters that seamlessly integrates with existing testing infrastructure, such as cargo test. 
+[PocketIC](/docs/current/developer-docs/setup/pocket-ic) is a lightweight, deterministic testing solution for programmatic testing of canisters that seamlessly integrates with existing testing infrastructure, such as cargo test.
 
 You can learn more about PocketIC and how to install it [here](/docs/current/developer-docs/setup/pocket-ic).
 
@@ -225,7 +233,7 @@ use pocket_ic::PocketIc;
     // Create an empty canister as the anonymous principal and add cycles.
     let canister_id = pic.create_canister();
     pic.add_cycles(canister_id, 2_000_000_000_000);
-    
+
     let wasm_bytes = load_counter_wasm(...);
     pic.install_canister(canister_id, wasm_bytes, vec![], None);
     // 'inc' is a counter canister method.
@@ -267,4 +275,4 @@ dfx canister info [canister-name]
 
 ## Next steps
 
-Now that your canister has been written, deployed, and tested, let's take a look at [making inter-canister calls](./6-intercanister.md).
+Now that your canister has been written, deployed, and tested, let's take a look at [making inter-canister calls](./6-intercanister.mdx).

@@ -1,7 +1,17 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [beginner, motoko, templates, project organization]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 2: Project organization
+
+<MarkdownChipRow labels={["Beginner", "Motoko" ]} />
+
 
 ## Overview
 
@@ -12,7 +22,7 @@ As a preview, the following diagram illustrates the development work flow when r
 To explore the code organization of a Motoko project, start by creating a new project by running the following command:
 
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -21,10 +31,10 @@ Use `dfx new <project_name>` to create a new project:
 dfx new explore_hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use:
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
@@ -34,7 +44,7 @@ You will be prompted to select a language that your backend canister will use:
 Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
+  ? Select a frontend framework: ›
 ❯ SvelteKit
   React
   Vue
@@ -60,10 +70,10 @@ Lastly, you can include extra features to be added to your project:
 dfx new explore_hello
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 The `dfx new explore_hello` command creates a new `explore_hello` project, including a default project directory structure under the new project name and a new Git repository for your project. If you have `node.js` installed locally, creating a new project also adds some template frontend code and dependencies.
 
@@ -149,19 +159,19 @@ The contents of the file should resemble the following:
   },
   "output_env_file": ".env",
   "version": 1
-}%        
+}%
 ```
 
 
 Let’s take a look at a few of the default settings.
 
-- There are two canisters defined in this file; `explore_hello_frontend` and `explore_hello_backend`. 
+- There are two canisters defined in this file; `explore_hello_frontend` and `explore_hello_backend`.
 - The `explore_hello_backend` canister has a `main` attribute which specifics the file path of the program's core file, `main.mo`.
-- The `explore_hello_backend` canister has a `type` of 'motoko`, which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
-- The `explore_hello_frontend` canister has a dependency of the `explore_hello_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
-- The `explore_hello_frontend` canister has a frontend endpoint of `src/explore_hello_frontend/src/index.html`, which specifies the primary frontend asset. 
-- Additional assets for the `explore_hello_frontend` canister are specified in the `source` configuration. 
-- Lastly, the `explore_hello_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister. 
+- The `explore_hello_backend` canister has a `type` of 'motoko`, which specifies the programming language. If the canister was written in Rust, this value would read 'rust'.
+- The `explore_hello_frontend` canister has a dependency of the `explore_hello_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran.
+- The `explore_hello_frontend` canister has a frontend endpoint of `src/explore_hello_frontend/src/index.html`, which specifies the primary frontend asset.
+- Additional assets for the `explore_hello_frontend` canister are specified in the `source` configuration.
+- Lastly, the `explore_hello_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister.
 
 ## Review the default program code
 
@@ -193,4 +203,4 @@ You’ll explore code that uses `actor` objects and asynchronous message handlin
 
 ## Next steps
 
-Next, let's set up our [developer environment](/docs/current/developer-docs/backend/motoko/dev-env) before deploying the dapp. 
+Next, let's set up our [developer environment](/docs/current/developer-docs/backend/motoko/dev-env) before deploying the dapp.

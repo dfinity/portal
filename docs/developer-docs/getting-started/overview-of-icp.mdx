@@ -1,6 +1,14 @@
+---
+keywords: [beginner, getting started, what is icp, icp overview, overview]
+---
+
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Overview of ICP
+
+<MarkdownChipRow labels={["Beginner", "Getting started" ]} />
 
 The Internet Computer Protocol (ICP) bridges the gap between traditional programming and blockchain-based development.
 Smart contracts on ICP are expressive and scalable like traditional apps, but benefit from the trustless and decentralized execution of a blockchain.
@@ -151,7 +159,7 @@ If the smart contract does not make any calls, then the message behaves exactly 
 ## Cycles
 
 On other blockchains such as Ethereum, users pay a variable fee for sending and executing transactions depending on the current gas price.
-In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model”, where canisters pay for consumed resources by burning **cycles**.
+In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model”, where <GlossaryTooltip>canisters</GlossaryTooltip> pay for consumed resources by burning **cycles**.
 This is similar to gas in Ethereum, but has a fixed price correlating to a group of fiat currencies.
 
 ## Governance

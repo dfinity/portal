@@ -128,7 +128,12 @@ function OpenChatPage() {
             className="mb-0 flex flex-col items-start sm:flex-row gap-6 md:gap-8"
             variants={transitions.item}
           >
-            <Link className="button-primary" href="https://oc.app/">
+            <Link
+              className="button-primary"
+              href="https://oc.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Try OpenChat
             </Link>
             {/* <Link className="button-outline" href="/sns/faq">
@@ -274,7 +279,7 @@ function OpenChatPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="/docs/current/developer-docs/integrations/sns/"
+                href="/docs/current/developer-docs/daos/sns/"
                 className="link-primary link-with-icon"
               >
                 SNS Technical Documentation <LinkArrowRight />
@@ -313,7 +318,7 @@ function OpenChatPage() {
             <MotionLink
               variants={transitions.fadeIn}
               className="button-outline-white"
-              href="/docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal"
+              href="/docs/current/developer-docs/daos/sns/launching/launch-steps-1proposal"
             >
               Launch an SNS DAO
             </MotionLink>

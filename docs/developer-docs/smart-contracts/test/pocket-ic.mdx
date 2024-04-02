@@ -1,30 +1,40 @@
+---
+keywords: [intermediate, test, tutorial, test code, test canister, pocket ic, pocketic]
+---
+
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 # PocketIC
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 ## Overview
 
-PocketIC is a lightweight, deterministic testing solution for programmatic testing of canisters.
+PocketIC is a lightweight, deterministic testing solution for programmatic testing of <GlossaryTooltip>canisters</GlossaryTooltip>.
 It seamlessly integrates with existing testing infrastructure, such as `cargo test`, and runs as a standalone binary that doesn't require additional containers or virtual machines.
-Currently, PocketIC is supported on macOS and Linux host systems. 
+Currently, PocketIC is supported on macOS and Linux host systems.
 
 While there are other options for testing canisters, they may come with pitfalls such as:
 
 - Installing and testing canisters on the mainnet provides the 'real' workflow experience, but will cost developers real cycles.
 
-- Testing using the local replica provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight. Additionally, testing with `dfx` can be complex, slow, and require additional boilerplate code to get working. 
+- Testing using the local <GlossaryTooltip>replica</GlossaryTooltip> provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight. Additionally, testing with `dfx` can be complex, slow, and require additional boilerplate code to get working.
 
 PocketIC is designed to remedy these pitfalls, resulting in a testing environment that provides the following benefits:
 
-- Deterministic: Synchronous control over the local execution environment. PocketIC removes non-deterministic parts of the replica to make tests fully reproducible.
+- Deterministic: Synchronous control over the local canister execution environment. PocketIC removes non-deterministic parts of the replica to make tests fully reproducible.
 
 - Lightweight: Only provides the necessary components, and strips away the consensus and networking layers.
 
 - Concurrent and independent IC instances: Enabling tests to run in parallel
 
-- Multi-language support: Currently supports Rust, Python and JavaScript/TypeScript, but supports integration with any language that is written against the PocketIC REST-API. 
+- Multi-language support: Currently supports Rust, Python and JavaScript/TypeScript, but supports integration with any language that is written against the PocketIC REST-API.
 
 - Versatile: Allows for fine-grained control over the canister by providing the ability to set stable memory, control how time passes, and other testing environment variables.
- 
-- Support for Xnet calls and multiple subnets. 
+
+- Support for Xnet calls and multiple subnets.
 
 :::caution
 While PocketIC can support integration with any language, Rust and Python will be covered in this guide.
@@ -32,7 +42,7 @@ While PocketIC can support integration with any language, Rust and Python will b
 
 ## PocketIC Rust
 
-To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for MacOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server). 
+To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for MacOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server).
 
 :::info
 PocketIC is currently not natively supported on Windows systems.
@@ -53,7 +63,7 @@ xattr -dr com.apple.quarantine pocket-ic
 ```
 :::
 
-The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable. 
+The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
 
 Add PocketIC Rust do your project with the command:
 
@@ -87,7 +97,7 @@ use pocket_ic::PocketIc;
     // Create an empty canister as the anonymous principal and add cycles.
     let canister_id = pic.create_canister();
     pic.add_cycles(canister_id, 2_000_000_000_000);
-    
+
     let wasm_bytes = load_counter_wasm(...);
     pic.install_canister(canister_id, wasm_bytes, vec![], None);
     // 'inc' is a counter canister method.
@@ -150,7 +160,7 @@ For a larger, more complex example that uses cross canister calls on two differe
 
 ## PocketIC Python
 
-To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for MacOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server). 
+To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for MacOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server).
 
 :::info
 PocketIC is currently not supported natively on Windows systems.
@@ -171,7 +181,7 @@ xattr -dr com.apple.quarantine pocket-ic
 ```
 :::
 
-The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable. 
+The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
 
 Then, run the following command to install PocketIC:
 
@@ -185,7 +195,7 @@ To import PocketIC into your Python code, use the line:
 from pocket_ic import PocketIC
 ```
 
-### Example: create a canister with cycles
+### Example: create a canister with <GlossaryTooltip>cycles</GlossaryTooltip>
 
 ```python
 from pocket_ic import PocketIC

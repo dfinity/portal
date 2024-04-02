@@ -13,6 +13,7 @@ module.exports = {
         page: "1440px",
         "page-10-cols": "1214px",
         "page-8-cols": "987px",
+        "page-6-cols": "760px",
       },
       spacing: {
         12.5: "50px",
@@ -240,6 +241,7 @@ module.exports = {
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-10-cols mx-auto px-6 md:px-12.5',
                 '.container-8': '@apply max-w-page-8-cols mx-auto px-6 md:px-12.5',
+                '.container-6': '@apply max-w-page-6-cols mx-auto px-6 md:px-12.5',
                 '.checklist': '@apply list-none pl-0',
                 '.checklist-item': '@apply font-book bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top',
                 '.checklist-item-white': '@apply font-book bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top',

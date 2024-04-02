@@ -1,7 +1,17 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [intermediate, motoko, tutorial, cycles]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 
 # 13: Accepting cycles from a wallet
+
+<MarkdownChipRow labels={["Intermediate", "Motoko", "Tutorial"]} />
 
 ## Overview
 
@@ -29,7 +39,7 @@ To create a new project directory for testing access control and switching user 
 
 Create a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -38,26 +48,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new cycles_hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -74,13 +84,14 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new cycles_hello
+dfx new cycles_hello --no-frontend
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+    For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Navigate into your project directory by running the following command:
 
@@ -197,7 +208,7 @@ Installing code for canister cycles_Hello_backend, with canister ID bkyz2-fmaaa-
 Deployed canisters.
 URLs:
 Backend canister via Candid interface:
-cycles_hello_backend: http://127.0.0.1:8080/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+cycles_hello_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 ## Test the dapp
@@ -287,7 +298,7 @@ If you are looking for more information about working with cycles, check out the
 -   [dfx identity (command reference)](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-identity).
 -   [ExperimentalCycles (base module)](/motoko/main/base/ExperimentalCycles.md).
 -   [Managing cycles (Motoko language reference)](/motoko/main/cycles.md).
--   [Tokens and cycles (overview)](/concepts/tokens-cycles.md).
+-   [Tokens and cycles (overview)](/docs/current/concepts/tokens-cycles).
 
 ## Next steps
 

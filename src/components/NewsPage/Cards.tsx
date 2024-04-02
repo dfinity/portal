@@ -33,11 +33,11 @@ export const FeaturedNewsCard: React.FC<{
 };
 
 export const NewsCard: React.FC<{
-  news: Press;
+  news: Omit<Press, "tags" | "date" | "id" | "details">;
   linkLabel?: string;
 }> = ({ news, linkLabel = "Read Now" }) => {
   return (
-    <article className="rounded-xl overflow-hidden bg-white flex flex-col">
+    <article className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
       <img
         className="w-full h-[200px] object-center object-cover"
         src={news.imageUrl}
@@ -45,10 +45,13 @@ export const NewsCard: React.FC<{
       ></img>
       <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
         <h3 className="tw-heading-5 mb-3">{news.title}</h3>
-        <div className="tw-paragraph-sm text-black/60 mb-6">
-          {news.dateHuman} by {news.press}
-        </div>
         <div className="flex-1"></div>
+
+        {news.press && news.dateHuman && (
+          <div className="tw-paragraph-sm text-black/60 mb-6">
+            {news.dateHuman} {news.press && "by " + news.press}
+          </div>
+        )}
         <div className="">
           <Link href={news.url} className="link-primary link-with-icon">
             {linkLabel}

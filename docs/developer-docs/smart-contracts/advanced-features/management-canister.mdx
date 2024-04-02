@@ -1,7 +1,16 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+---
+keywords: [advanced, concept, management canister, icp management]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # ICP management canister
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
 
 ## Overview
 
@@ -19,7 +28,7 @@ Certain functionalities, such as threshold signing or access to the bitcoin APIs
 
 :::
 
-The management canister can also be called by users. Most methods are only permitted to be called by the [controllers](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/control/) of the canister. Certain calls can only be made by a canister and are not available for users (e.g. `raw_rand` or `deposit_cycles`). When a user makes a call to the management canister, the cost of processing the request is charged to the canister that is being managed. 
+The management canister can also be called by users. Most methods are only permitted to be called by the [controllers](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/control/) of the canister. Certain calls can only be made by a canister and are not available for users (e.g. `raw_rand` or `deposit_cycles`). When a user makes a call to the management canister, the cost of processing the request is charged to the canister that is being managed.
 
 
 [Read more about the complete interface of the management canister.](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-candid)
@@ -37,7 +46,7 @@ Since the management canister behaves like a canister, users or other canisters 
 
 Here are some examples calling the management canister:
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -72,7 +81,7 @@ async fn install_code(canister_id: CanisterId, wasm_module: Vec<u8>) {
 ```
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
 createCanister: update([], CreateCanisterResult, async () => {
@@ -83,9 +92,9 @@ createCanister: update([], CreateCanisterResult, async () => {
 })
 ```
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
 @update
@@ -101,8 +110,8 @@ def get_raw_rand() -> Async[RawRandResult]:
     )
 ```
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+</AdornedTabs>
 
 ## Typical workflows involving the management canister
 
@@ -121,7 +130,7 @@ One of the special features of ICP is its direct integration with the [Bitcoin](
 
 ### HTTPS outcalls
 
-One more special feature of ICP is the ability for canisters to make http requests to off-chain systems using the [HTTPS outcalls](https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview) feature. This is available through the management canister's [http_request](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request) API. HTTPS outcalls enable canisters to obtain off-chain data, call RPC services of other blockchain networks, or interact with Web2 services and enterprise IT systems off-chain.
+One more special feature of ICP is the ability for canisters to make http requests to off-chain systems using the [HTTPS outcalls](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) feature. This is available through the management canister's [http_request](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request) API. HTTPS outcalls enable canisters to obtain off-chain data, call RPC services of other blockchain networks, or interact with Web2 services and enterprise IT systems off-chain.
 
 ### Retrieving randomness
 

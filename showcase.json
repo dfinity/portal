@@ -85,7 +85,7 @@
     "twitter": "https://twitter.com/funded_app",
     "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
     "usesInternetIdentity": true,
-    "stats": "83,000+ ICP funded",
+    "stats": "100,000+ ICP funded",
     "display": "Normal",
     "logo": "/img/showcase/funded_logo.webp",
     "screenshots": []
@@ -347,7 +347,7 @@
   },
   {
     "id": "plug",
-    "name": "Plug",
+    "name": "Plug Wallet",
     "oneLiner": "Decentralized Wallet for the Internet Computer",
     "website": "https://plugwallet.ooo/",
     "tags": [
@@ -357,9 +357,9 @@
       "Bitcoin",
       "Ethereum"
     ],
-    "description": "Plug Wallet, built and open-sourced by Fleek, is a browser extension that allows you to access your ICP, Cycles and other tokens - as well as log into Internet Computer dapps with one click.",
+    "description": "Your Plug into the #InternetComputer Identity + Wallet in one Principal ID Hold, send, swap, deposit cycles, ICP, NFTs and log into IC apps in a click! Available on mobile IOS & Android, and as a browser extension on Chrome & Firefox.",
     "github": "https://github.com/Psychedelic/plug",
-    "stats": "100,000+ users",
+    "stats": "150,000+ users",
     "display": "Normal",
     "logo": "/img/showcase/plug_logo.webp",
     "video": "/img/showcase/plug_video.mp4",
@@ -622,7 +622,8 @@
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure",
-      "DAO"
+      "DAO",
+      "AI"
     ],
     "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
     "description": "The world’s first Web3 search engine indexing all Internet Computer-based dapps.",
@@ -848,7 +849,7 @@
   {
     "id": "juno",
     "name": "Juno",
-    "oneLiner": "Build Web3 dApps like Web2",
+    "oneLiner": "Build Web3 at Lightning Speed",
     "website": "https://juno.build",
     "tags": [
       "Tools / Infrastructure"
@@ -863,8 +864,9 @@
     ],
     "logo": "/img/showcase/juno_logo.svg",
     "screenshots": [
-      "/img/showcase/juno_social_image.png"
-    ]
+      "/img/showcase/juno_social_image.jpg"
+    ],
+    "youtube": "https://www.youtube.com/watch?v=mr_9XArcG9Y"
   },
   {
     "id": "internetidentity",
@@ -3316,7 +3318,8 @@
     "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
     "stats": "15M parameter llama2",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],    
     "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
     "usesInternetIdentity": true,
@@ -3603,6 +3606,123 @@
     "description": "Decentralized and Fully On-chain Forms Application, that revolutionizes the way you ask and answer questions by leveraging blockchain technology to ensure transparency, security, and fairness.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/formyfi.png",
-    "submittableId": "44539692"
+    "submittableId": "44539692",
+  }
+    "name": "UncensoredGreats",
+    "description": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
+    "website": "https://www.uncensoredgreats.com/",
+    "logo": "/img/showcase/UncensoredGreatsLogo.png",
+    "display": "Normal",
+    "id": "UncensoredGreats",
+    "oneLiner": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
+    "tags": [
+      "SocialFi",
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/UncensoredGreats",
+    "twitter": "https://twitter.com/UCG_DAO",
+    "submittableId": "43861229"
+  },
+  {
+    "name": "ArcMind",
+    "description": "ArcMind AI is a LLM-powered autonomous agent running that uses Chain of thoughts for reasoning, taking actions and completing goals. It orchestrates with web agents to interact with the world in real time, and Vector DB for long term memory store.",
+    "website": "https://arcmindai.app",
+    "logo": "/img/showcase/arcmind_logo.svg",
+    "display": "Normal",
+    "id": "ArcMind",
+    "oneLiner": "A LLM-powered autonomous agent running that uses Chain of thoughts for reasoning, taking actions and completing goals.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/arcmindai/arcmindai",
+    "twitter": "https://twitter.com/arcmindai",
+    "submittableId": "39060710"
+  },
+  {
+    "name": "DeVinci AI Assistant",
+    "description": "DeVinci AI Assistant is a personalized AI assistant that redefines the paradigm of digital privacy and trust and powered by an open-source AI model that operates directly within your browser.",
+    "website": "https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/",
+    "logo": "/img/showcase/DeVinci_logo.png",
+    "display": "Normal",
+    "id": "DevinciAI",
+    "oneLiner": "Browser-based personalized AI assistant that redefines the paradigm of digital privacy and trust.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/patnorris/DecentralizedAIonIC"
+  },
+  {
+    "name": "Accelar",
+    "description": "Accelar is a unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP. Create canisters, workflows, identities, and interact with dApps through a non-custodial wallet.",
+    "website": "https://www.accelar.io",
+    "logo": "/img/showcase/accelar_logo.png",
+    "display": "Normal",
+    "id": "Accelar",
+    "oneLiner": "A unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Accelar-labs",
+    "twitter": "https://twitter.com/accelarlabs",
+    "submittableId": "44378832"
+  },
+  {
+    "name": "IC-Mnist",
+    "description": "IC-Mnist provides a frontend for drawing a digit and a backend that performs an inference using a pretrained MNIST model to predict the drawn digit.",
+    "website": "https://jsi2g-jyaaa-aaaam-abnia-cai.icp0.io/",
+    "logo": "/img/showcase/mnist.png",
+    "display": "Normal",
+    "id": "icmnist",
+    "oneLiner": "IC-Mnist provides a frontend for drawing a digit and a backend that performs an inference using a pretrained MNIST model to predict the drawn digit.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/smallstepman/ic-mnist"
+  },
+  {
+    "name": "ELNA.ai",
+    "description": "ELNA.ai is the world's first fully on-chain decentralized GenAI Companion.",
+    "website": "https://www.elna.ai/",
+    "logo": "/img/showcase/elnaai_logo.png",
+    "display": "Normal",
+    "id": "elnaai",
+    "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/elna-ai",
+    "twitter": "https://twitter.com/elna_live",
+    "submittableId": "44027684"
+  },
+  {
+    "id": "vaultbet",
+    "name": "VaultBet",
+    "oneLiner": "Redefining online betting on the Internet Computer.",
+    "website": "https://vault-bet.com",
+    "tags": [
+      "Games",
+      "DeFi",
+      "Bitcoin",
+      "Ethereum",
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/VaultBet",
+    "discord": "https://discord.gg/qmr92dup3J",
+    "description": "VaultBet is redefining online betting on the Internet Computer. Hosted completely on-chain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
+    "usesInternetIdentity": false,
+    "stats": "1000+ Monthly Users",
+    "display": "Normal",
+    "logo": "/img/showcase/vaultbet_logo.webp"
   }
 ]
