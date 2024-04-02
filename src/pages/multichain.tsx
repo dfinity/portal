@@ -293,7 +293,7 @@ function MultichainPage() {
     func check_evm_log() : async () {
       Cycles.add<system>(EVM_FEE);
       let log = await evm.eth_getLogs(
-        #EthMainnet(?[#Cloudflare]),
+        #EthMainnet(null),
         null,
         {
           // dummy address. Replace with the right one
