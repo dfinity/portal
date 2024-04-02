@@ -357,7 +357,7 @@ The journal ensures the application knows that recovery from an error is needed,
 Extending the ledger example above, the recovery process can look like the following
 
 1. There is a panic and the status of the ledger call is unknown. However, the journal has recorded that a call to transfer with particular parameters and memo has been made, and the deduplication timestamp of the transfer. 
-1. The app calls the ledger to determine whether a transaction with the journaled parameters has succeeded on the ledger. Note that with the ICP ledger, there is a small possibility the transaction is stuck in the message queue, so one needs to wait 24 hours from the deduplication time stamp to ensure the message has either succeeded or failed and is not in transit. Therefore if the ledger does not contain the transaction and it is still within 24 hours of the deduplication timestamp, this step must be repeated.
+1. The app calls the ledger to determine whether a transaction with the journaled parameters has succeeded on the ledger. Due to the guarantee that any pair of messages that are both executed are always executed in the order issued, if the ledger indicates that the transaction has not occurred, then the transaction will never occur.
 1. The app journals the result of the transfer call.
 1. The app journals the intention to update internal state according to the result of the transfer call, then updates the internal state, and finally journals the result of the attempt to update the internal state. (Journaling this step is still useful even if it does not contain outcalls, because outcalls may be introduced later, and the step could conflict with other processes that are not atomic.)
 
