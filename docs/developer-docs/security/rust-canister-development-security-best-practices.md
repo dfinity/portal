@@ -366,41 +366,53 @@ Extending the ledger example above, a recovery process can look like the followi
 
 Note that querying the ICP ledger or an ICRC ledger to determine whether a transaction has succeeded is not straightforward to automate, so it could be done manually.
 
-#### Example Journaling Structures
+#### Example journaling structures and flows
+
+Here is a sketch of data structures and flows that could be used to implement a journal for transaction flows in the example application described above. For simplicity, multiple transaction flows of the same action type from the same caller are not allowed to overlap in time.
 
 The journaling data structures should support the following queries.
 - What are the unresolved actions for a particular user and action type?
 - What are the unresolved actions that have been open for longer than some time T?
 
-Map: Journal by caller
-- Key: (caller, action type) – e.g. (Alice, Withdraw)
-- Value: Transaction journal struct
+* Map: Journal by caller
+  - Key: (caller, action type) – e.g. (Alice, Withdraw)
+  - Value: Journal struct
 
-Map: Transactions by timestamp (ordered map, could use an additional list for the ordering in Motoko)
-- Key: timestamp 
-- Value: list of references to Transaction journal structs
+* Map: Transactions by timestamp (ordered map, could use an additional list for the ordering in Motoko)
+  - Key: timestamp 
+  - Value: list of references to `Transaction journal struct`s
 
-Transaction journal struct
-- Meta data
-  - transaction, including memo
-  - timestamp
-- List of events, e.g. initialized, returned/success, returned/error with error condition
-- Number of times attempted and failed to progress
+* Transaction journal struct (compatible with `Journal struct`)
+  - Meta data
+    - transaction, including memo
+    - timestamp
+  - List of events, e.g. initialized, returned/success, returned/error with error condition
+  - Number of times attempted and failed to progress
 
-#### Example Journaling Flows
+* Map: Transaction audit log
+  - Key: transaction (hash)
+  - Value: result of (completed) transaction
 
-New transaction
-- Lookup in journal by caller, don’t allow new transaction if transaction is ongoing
-- Add to journal by caller
-- Add to transactions by timestamp
+Note that `Journal by caller` is intended to support various types of flows, but only transaction flows are detailed explicitly. `Transactions by timestamp` is an auxiliary structure to be used for searching for transactions that require recovery.
 
-Transaction finished
-- Remove transaction from both Maps
-- Consider creating an audit log event
+Here is a sketch of how the above structures could be used.
 
-Find transactions in unfinished state: 
-- Iterate through Transactions by timestamp map (oldest first)
-- Transactions older than e.g. 10min back can be considered to be in error state
+* When executing a transaction:
+  1. Look up the transaction in the audit log. If an entry exists, return it and exit this flow.
+  2. Look up the transaction flow in the `Journal by caller` map.
+  3. If no entry exists in `Journal by caller`, then:
+     1. Create a new `Transaction journal struct`.
+     2. Add an entry for the `Transaction journal struct` to `Journal by caller`,
+     3. Add an entry for the `Transaction journal struct` to `Transactions by timestamp`.
+  5. Initiate or resume the task flow according to the list of events in the `Transaction journal struct` that was previously obtained or created.
+
+* When a transaction is finished:
+  1. Create an audit log event for the transaction.
+  2. Remove the transaction from both `Transactions by caller` and `Transactions by timestamp`.
+
+* When searching for unfinished transactions that need to be recovered: 
+  - Iterate through `Transactions by timestamp` map (oldest first).
+  - Transactions older than e.g. 10 minutes back that have unresolved tasks should be considered for recovery.
 
 #### Example implementation of journaling
 
