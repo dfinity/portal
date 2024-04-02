@@ -242,7 +242,7 @@ function MultichainPage() {
             <p className="tw-paragraph md:tw-lead-sm mb-3">
               To showcase how powerful chain fusion is, here is a simple example that shows 
               three chains interacting in one smart contract: a{" "}
-                <i>single</i>{" "}
+                single{" "}
                 <b>
                   <i>ICP</i>
                 </b>{" "}
@@ -374,7 +374,7 @@ function MultichainPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-6">
                 True multi-chain capability requires enabling smart contracts to
                 read and write across chains. For instance, you can write a{" "}
-                <i>single</i>{" "}
+                single{" "}
                 <b>
                   <i>ICP</i>
                 </b>{" "}
