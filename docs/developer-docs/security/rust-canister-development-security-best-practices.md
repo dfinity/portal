@@ -362,7 +362,7 @@ Extending the ledger example above, a recovery process can look like the followi
 1. The app journals the result of the transfer call.
 1. The app journals the intention to update internal state according to the result of the transfer call, then updates the internal state, and finally journals the result of the attempt to update the internal state. (Journaling this step is still useful even if it does not contain outcalls, because outcalls may be introduced later, and the step could conflict with other processes that are not atomic.)
 
-Note that querying the ICP ledger or an ICRC ledger to determine whether a transaction has succeeded is not straightforward to automate.
+Note that querying the ICP ledger or an ICRC ledger to determine whether a transaction has succeeded is not straightforward to automate, so it could be done manually.
 
 #### Example Journaling Structures
 
