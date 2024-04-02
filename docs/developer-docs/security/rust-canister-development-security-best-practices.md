@@ -307,7 +307,7 @@ Journaling can be used for ensuring that tasks are completed correctly in an asy
 
 A journal is a chronological list of the records and is kept in the canister’s storage. It keeps track of tasks before they begin and when they are completed. Before each failable task, the journal records the intent to execute the task, and after the task, the journal records the result. Creating a record in the journal is called “journaling”.  For example, to make an unreliable async call to a ledger:
 
-1. Check the journal to ensure the transfer is not already in progress. If it is already in progress, go into recovery (see Recovery section below). Otherwise, journal the intent to call a ledger to transfer 1 token from A to B. The journaled intent should contain sufficient context to later identify what happened to the call.
+1. Check the journal to ensure the transfer is not already in progress. If it is already in progress, go into recovery (see [Recovery](#recovery) section below). Otherwise, journal the intent to call a ledger to transfer 1 token from A to B. The journaled intent should contain sufficient context to later identify what happened to the call.
 
    - An “in progress” transfer would show in the journal as an entry containing intent to do the transfer without an entry containing the result of the transfer call.
 
