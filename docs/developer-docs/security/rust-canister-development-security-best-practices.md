@@ -305,7 +305,9 @@ We proceed to discuss “journaling”, which is currently our recommended way o
 
 Journaling can be used for ensuring that tasks are completed correctly in an asynchronous context, where any instruction or async task can fail. Journaling is generally useful in any security critical application canister on the IC. The journaling concept we describe here is inspired and adapted from journaling in file systems.
 
-A journal is a chronological list of the records and is kept in the canister’s storage. It keeps track of tasks before they begin and when they are completed. Before each failable task, the journal records the intent to execute the task, and after the task, the journal records the result. Creating a record in the journal is called “journaling”.  For example, to make an unreliable async call to a ledger:
+Conceptually, a journal is a chronological list of records kept in a canister’s storage. It keeps track of tasks before they begin and when they are completed. Before each failable task, the journal records the intent to execute the task, and after the task, the journal records the result. The journal supports idempotent task flows by providing the necessary information for the canister to resume flows that failed to complete, report progress for ongoing flows, and report results for completed flows. Retries can be initiated by calls or automatically on heartbeat. If the task flow was completed in a heartbeat, a user can take advantage of idempotency to check the result.
+
+Creating a record in the journal is called “journaling”.  For example, to make an unreliable async call to a ledger:
 
 1. Check the journal to ensure the transfer is not already in progress. If it is already in progress, go into recovery (see [Recovery](#recovery) section below). Otherwise, journal the intent to call a ledger to transfer 1 token from A to B. The journaled intent should contain sufficient context to later identify what happened to the call.
 
