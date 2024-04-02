@@ -12,6 +12,7 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import IntraPageNav from "../components/Common/IntraPageNav";
 import { sampleItems } from "../components/Common/sampleItems";
 import ShareMeta from "../components/Common/ShareMeta";
+import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { unreachable } from "../utils/unreachable";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
@@ -35,7 +36,7 @@ const Status: React.FC<{
   switch (type) {
     case "done":
       return (
-        <div className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-infinite">
+        <span className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-infinite">
           <svg
             width="16"
             height="16"
@@ -50,11 +51,11 @@ const Status: React.FC<{
           </svg>
 
           {children}
-        </div>
+        </span>
       );
     case "pending":
       return (
-        <div className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-black/60">
+        <span className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-black/60">
           <svg
             width="16"
             height="16"
@@ -68,7 +69,7 @@ const Status: React.FC<{
           </svg>
 
           {children}
-        </div>
+        </span>
       );
 
     default:
@@ -206,7 +207,7 @@ function MultichainPage() {
         </section>
 
         <AnimateSpawn
-          className="container-10 py-20 md:py-30"
+          className="container-10 pt-20 md:pt-30"
           el={motion.section}
           variants={transitions.container}
         >
@@ -225,6 +226,80 @@ function MultichainPage() {
             environment.
           </motion.p>
         </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-12 py-20 md:py-40 flex flex-col md:flex-row gap-12 md:gap-1/10"
+          variants={transitions.container}
+          el={motion.section}
+        >
+          <motion.div
+            className="md:w-4/10 flex-shrink-0"
+            variants={transitions.item}
+          >
+            <h2 className="tw-heading-4 md:tw-heading-60 text-gradient mb-3">
+              Example Code
+            </h2>
+            <p className="tw-paragraph md:tw-lead-sm mb-3">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+              molestiae ipsam praesentium excepturi, ducimus veritatis est
+              dolorem minus, distinctio nulla architecto soluta fuga assumenda
+              ab tempore a accusantium, magni earum!
+            </p>
+
+            <p className="tw-paragraph md:tw-lead-sm mb-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+              consequatur neque inventore facilis optio quasi repudiandae quis
+              voluptates aperiam veniam cum, nostrum recusandae aspernatur fuga
+              debitis labore deserunt distinctio ad.
+            </p>
+            <p className="mb-0 mt-8">
+              <Link
+                className="link-primary link-with-icon"
+                href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
+              >
+                <LinkArrowRight></LinkArrowRight>
+                Lorem my ipsum
+              </Link>
+            </p>
+          </motion.div>
+          <motion.div
+            className="md:max-w-5/10 space-y-5"
+            variants={transitions.item}
+          >
+            <CodeBlockString language="motoko">
+              {`
+  public func get_canister_metrics(canister_id : Principal) : async Result.Result<Text, Text> {
+    try {
+      let Actor = actor (Principal.toText(canister_id)) : CanisterWithMetrics;
+      let response = await Actor.http_request({
+        method = "GET";
+        url = "/metrics";
+        headers = [];
+        body = Text.encodeUtf8("");
+      });
+
+      switch (response.status_code) {
+        case (200) {
+          switch (Text.decodeUtf8(response.body)) {
+            case (?body) { #ok(body) };
+            case null { #err("Failed to decode response utf8 body.") };
+          };
+        };
+        case (_) {
+          #err("Canister returned status code " # Nat16.toText(response.status_code) # " for /metrics");
+        };
+      };
+    } catch (err : Error) {
+      Debug.print(debug_show (Error.message(err)));
+      #err("Failed to get canister metrics: " # (Error.message(err)));
+    };
+  };
+            
+            `}
+            </CodeBlockString>
+          </motion.div>
+        </AnimateSpawn>
+
         <section className="bg-infinite relative overflow-hidden">
           <div className="container-12 relative">
             <div className="relative -left-16 sm:left-auto md:absolute md:left-auto md:-right-40 w-full max-w-none md:min-w-0 md:top-60 md:max-w-[calc(65vw-100px)] min-w-[600px] md:w-[800px]">
@@ -298,21 +373,21 @@ function MultichainPage() {
             <div className="flex-[5]">
               <StickySectionNav
                 items={content.map((c) => c.title)}
-                className="hidden md:block"
+                className="hidden md:block pr-10"
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
                   <>
-                    <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
+                    <h2 className="tw-heading-4 md:tw-heading-3 mb-4 text-gradient">
                       Use cases of chain fusion
                     </h2>
-                    <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                    <p className="tw-paragraph-sm md:tw-paragraph mb-2 mr-4">
                       Explore Chain Fusion technology use cases, including
                       executing ICP smart contracts on other chains and asset
                       storage like Bitcoin and Ethereum.
                     </p>
 
-                    <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                    <p className="tw-paragraph-sm md:tw-paragraph mb-10 mr-4">
                       These applications range from automating tasks on Ethereum
                       to creating ICP smart contracts that manage
                       Bitcoin/Ethereum. Developers can also use ckBTC and ckETH
@@ -644,7 +719,7 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="bitcoin-ordinals">
+                <ContentCard id="bitcoin-ordinals-2">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
                     Ordinals, BRC20 inscriptions from ICP using tSchnorr
                   </h3>
