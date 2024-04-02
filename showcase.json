@@ -260,7 +260,8 @@
       "DeFi",
       "Tools / Infrastructure",
       "Bitcoin",
-      "Ethereum"
+      "Ethereum",
+      "DAO"
     ],
     "website": "https://iclight.house/",
     "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
@@ -834,7 +835,8 @@
     "name": "Catalyze",
     "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "DAO"
     ],
     "description": "Catalyze is a decentralized social and community-building platform designed to host engaged and thriving Web3 communities. With a unique and customized engagement economy, Catalyze communities and their members will be rewarded for their participation and contribution. Main features include: direct communication, event & task management, integrated Web3 wallets, NFT Gating, NFT airdrop & sales management.",
     "usesInternetIdentity": true,
@@ -1112,7 +1114,8 @@
     "name": "Seers",
     "website": "https://seers.social/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "DAO"
     ],
     "description": "What if there was decentralized Twitter that included prediction markets? Seers is a Web3 social media platform hosted 100% on-chain combining social media features with prediction markets.",
     "usesInternetIdentity": true,
@@ -1161,7 +1164,8 @@
     "name": "Nuance",
     "website": "https://exwqn-uaaaa-aaaaf-qaeaa-cai.ic0.app/",
     "tags": [
-      "SocialFi"
+      "SocialFi",
+      "DAO"
     ],
     "description": "Nuance is a Web3.0 blogging platform that is hosted on-chain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world's first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
     "usesInternetIdentity": true,
@@ -2049,7 +2053,8 @@
     "website": "https://icpcoins.com",
     "tags": [
       "Tools / Infrastructure",
-      "DeFi"
+      "DeFi",
+      "DAO"
     ],
     "description": "IC coins by market cap. Aggregates stats from all Internet Computer based DEXes. Price, Volume & liquidity score charts.",
     "usesInternetIdentity": false,
@@ -3685,7 +3690,8 @@
     "oneLiner": "ELNA.ai is the world's firsrt fully on-chain decentralized GenAI Companion.",
     "tags": [
       "Tools / Infrastructure",
-      "AI"
+      "AI",
+      "DAO"
     ],
     "usesInternetIdentity": false,
     "github": "https://github.com/elna-ai",
@@ -3711,5 +3717,85 @@
     "stats": "1000+ Monthly Users",
     "display": "Normal",
     "logo": "/img/showcase/vaultbet_logo.webp"
+  },
+  {
+    "id": "icp-governor",
+    "name": "ICP Governor",
+    "oneLiner": "ICP Governor is an application used to manage a single DAO: create proposals, vote, timelock and execute them.",
+    "website": "https://b4umt-saaaa-aaaak-afnpa-cai.icp0.io/",
+    "tags": [
+      "DAO"
+    ],
+    "github": "https://github.com/redsteep/dfinity-icp-governor",
+    "description": "ICP Governor is an application used to manage a single DAO: create proposals, vote, timelock and execute them.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/redsteep_logo.png",
+    "submittableId": "44503539"
+  },
+  {
+    "id": "formyfi",
+    "name": "Formyfi",
+    "oneLiner": "Decentralized & fully on-chain forms.",
+    "website": "https://formyfi.io",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/Talentum-id/formify",
+    "description": "Decentralized & fully on-chain forms. Toolset for conducting surveys in Web3, ensuring security and completeness of data.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/formify_logo.jpeg",
+    "submittableId": "44539692"
+  },
+  {
+    "id": "blendsafe",
+    "name": "Blendsafe",
+    "oneLiner": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
+    "website": "https://deep-ink.ventures",
+    "tags": [
+      "Tools / Infrastructure",
+      "Wallet"
+    ],
+    "github": "https://github.com/deep-ink-ventures/blend-safe",
+    "description": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/blendsafe.png",
+    "submittableId": "44514818"
+  },
+  {
+    "id": "pado",
+    "name": "PADO",
+    "oneLiner": "A zk-attestation and computation network that breaks down barriers between datasets, enriches smart contract functionalities, and enables secure monetization of personal data within privacy-protected data flows.",
+    "website": "https://bupby-pqaaa-aaaam-abykq-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/pado-labs/pado-icp",
+    "twitter": "https://twitter.com/padolabs",
+    "discord": "https://discord.com/invite/FQZFGGq7zv",
+    "description": "A zk-attestation and computation network that breaks down barriers between datasets, enriches smart contract functionalities, and enables secure monetization of personal data within privacy-protected data flows.",
+    "usesInternetIdentity": false,
+    "stats": "25,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/pado_logo.webp",
+    "submittableId": "43873751"
+  },
+  {
+    "id": "openfpl",
+    "name": "OpenFPL",
+    "oneLiner": "Decentralised Fantasy Football.",
+    "website": "https://openfpl.xyz/",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "github": "https://github.com/jamesbeadle/OpenFPL",
+    "twitter": "https://twitter.com/OpenFPL_DAO",
+    "description": "Decentralised Fantasy Football",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/openfpl_logo.png"
   }
 ]
