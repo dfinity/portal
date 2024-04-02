@@ -317,7 +317,7 @@ A journal is a chronological list of the records and is kept in the canister’s
 
    - On failure, record the error.
 
-   - On success, record success.
+   - On success, record success. (In order to commit the record, intercanister call can be made to an endpoint on the same canister that does nothing. Otherwise a trap could erase the journaled result, complicating recovery.)
 
 1. Continue onto the next blocked task.
 
@@ -334,7 +334,7 @@ A journal is a chronological list of the records and is kept in the canister’s
    - Note that any independent task does not need to wait for any part of this flow.
 
 The critical property of the journal is that at any point, if there is a failure, the journal is sufficient to determine what the next safe step should be. If, after step 1 (journal the intent),
-there is a failure in step 2 or 3, and step 3 (record the result) has not been completed, then the application should complete step 3 by finding out what happened to the call in step 2.
+there is a failure in step 2 or 3, and step 3 (record the result) has not been completed, then the application should complete step 3 by finding out what happened to the call in step 2. (If finding out what happened to the call is too difficult to automate, it can be done manually. The journal can indicate whether a manual intervention is necessary, and the type of intervention that is necessary.)
 The fact that the intent has been journaled and the app knows not to reenter the flow until the result has been recorded means the journal acts as a lock on the critical section containing
 the ledger outcall. The lock will not get stuck assuming the application can always find out what happened to a call. Enough context about the call should be recorded in the intent to ensure
 that this is the case. For the ICP ledger, an ID can be generated and recorded in the journaled intent and the ledger can be called with the ID included in the memo so that the result of the
