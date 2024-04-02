@@ -3606,7 +3606,8 @@
     "description": "Decentralized and Fully On-chain Forms Application, that revolutionizes the way you ask and answer questions by leveraging blockchain technology to ensure transparency, security, and fairness.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/formyfi.png",
-    "submittableId": "44539692",
+    "submittableId": "44539692"
+  },
   }
     "name": "UncensoredGreats",
     "description": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
