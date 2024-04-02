@@ -58,6 +58,16 @@ const airtablePlugin = async function () {
           });
           offset = res.offset;
 
+          let eventLink = "#";
+
+          try {
+            eventLink = new URL(r.fields["Event Link"]);
+          } catch (err) {
+            console.log(
+              `Failed to parse event link as url. Got: ${r.fields["Event Link"]}`
+            );
+          }
+
           records.push(
             ...res.records.map((r) => ({
               id: r.id,
@@ -66,7 +76,7 @@ const airtablePlugin = async function () {
               description: !!r.fields["Marketing Text"]
                 ? markdownToPlainText(r.fields["Marketing Text"])
                 : null,
-              eventLink: r.fields["Event Link"],
+              eventLink,
               topic: r.fields["Topic"],
               startDate: r.fields["Start date"],
               endDate: r.fields["End Date"],
