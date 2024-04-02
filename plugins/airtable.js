@@ -183,9 +183,9 @@ function parseAirtableData(records) {
     let eventLink = "#";
 
     try {
-      eventLink = new URL(r.fields["Event Link"]);
+      eventLink = new URL(r.fields["Event Link"]).toString();
     } catch (err) {
-      console.log(
+      console.warn(
         `Failed to parse event link as url. Got: ${r.fields["Event Link"]}`
       );
     }
