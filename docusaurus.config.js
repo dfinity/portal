@@ -438,11 +438,6 @@ const marketingNav = {
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
             },
-            {
-              name: "Accelerator",
-              href: "/accelerator",
-              description: "Accelerator Landing Page",
-            },
           ],
           featured: {
             title: "ICP around the world",

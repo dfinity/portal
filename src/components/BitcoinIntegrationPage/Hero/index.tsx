@@ -16,7 +16,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             variants={transitions.item}
             className="tw-heading-3 mb-2 w-5/6 md:tw-heading-2 md:mb-6 md:w-6/12"
           >
-            Bitcoin &lt;&gt; ICP
+            ICP as a Bitcoin L2
           </motion.h1>
           <motion.p
             variants={transitions.item}
