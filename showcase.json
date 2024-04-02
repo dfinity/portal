@@ -3767,7 +3767,7 @@
   {
     "id": "pado",
     "name": "PADO",
-    "oneLiner": "A zk-attestation and computation network that breaks down barriers between datasets, enriches smart contract functionalities, and enables secure monetization of personal data within privacy-protected data flows.",
+    "oneLiner": "Decentralized computation network based on zkFHE",
     "website": "https://bupby-pqaaa-aaaam-abykq-cai.icp0.io/",
     "tags": [
       "Tools / Infrastructure"
