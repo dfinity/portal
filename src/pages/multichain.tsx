@@ -240,25 +240,36 @@ function MultichainPage() {
               Example Code
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-              molestiae ipsam praesentium excepturi, ducimus veritatis est
-              dolorem minus, distinctio nulla architecto soluta fuga assumenda
-              ab tempore a accusantium, magni earum!
+              To showcase how powerful chain fusion is, here is a simple example that shows 
+              three chains interacting in one smart contract. For instance, you can write a{" "}
+                <i>single</i>{" "}
+                <b>
+                  <i>ICP</i>
+                </b>{" "}
+                smart contract that can custody{" "}
+                <b>
+                  <i>Bitcoin</i>
+                </b>{" "}
+                and programmatically trigger sending it based on events observed
+                on a{" "}
+                <b>
+                  <i>Ethereum</i>
+                </b>{" "}
+                DeFi smart contract.
             </p>
 
+            
+
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-              consequatur neque inventore facilis optio quasi repudiandae quis
-              voluptates aperiam veniam cum, nostrum recusandae aspernatur fuga
-              debitis labore deserunt distinctio ad.
+            This code snippet is written in Motoko, but also possible for Rust, TypeScript, Python, and other languages.
             </p>
             <p className="mb-0 mt-8">
               <Link
                 className="link-primary link-with-icon"
-                href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
+                href="https://play.motoko.org/?tag=3352278366"
               >
                 <LinkArrowRight></LinkArrowRight>
-                Lorem my ipsum
+                Deploy the contract in online editor
               </Link>
             </p>
           </motion.div>
@@ -268,33 +279,53 @@ function MultichainPage() {
           >
             <CodeBlockString language="motoko">
               {`
-  public func get_canister_metrics(canister_id : Principal) : async Result.Result<Text, Text> {
-    try {
-      let Actor = actor (Principal.toText(canister_id)) : CanisterWithMetrics;
-      let response = await Actor.http_request({
-        method = "GET";
-        url = "/metrics";
-        headers = [];
-        body = Text.encodeUtf8("");
-      });
-
-      switch (response.status_code) {
-        case (200) {
-          switch (Text.decodeUtf8(response.body)) {
-            case (?body) { #ok(body) };
-            case null { #err("Failed to decode response utf8 body.") };
-          };
+  import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
+  import ic "ic:aaaaa-aa";
+  import Cycles "mo:base/ExperimentalCycles";
+  import Timer "mo:base/Timer";
+  
+  actor {
+    let EVM_FEE = 1000;
+    let BITCOIN_FEE = 1000;
+  
+     //Function checks the logs of an ETH smart contract for an event
+     //If a particular event is found, it sends bitcoin to an address
+    func check_evm_log() : async () {
+      Cycles.add<system>(EVM_FEE);
+      let log = await evm.eth_getLogs(
+        #EthMainnet(?[#Cloudflare]),
+        null,
+        {
+          // dummy address. Replace with the right one
+          addresses = ["address"];
+          fromBlock = ? #Finalized;
+          toBlock = ? #Finalized;
+          //dummy topics to look at. Replace with topics of interest
+          topics = ?[["topic1", "topic2"]]; 
+        },
+      );
+      switch log {
+        case (#Consistent(#Ok(_))) {
+          // if we get a consistent log, send bitcoin
+          await send_bitcoin();
         };
-        case (_) {
-          #err("Canister returned status code " # Nat16.toText(response.status_code) # " for /metrics");
-        };
+        case _ {};
       };
-    } catch (err : Error) {
-      Debug.print(debug_show (Error.message(err)));
-      #err("Failed to get canister metrics: " # (Error.message(err)));
     };
+  
+    // Function that sends bitcoin. This is used by check_evm_log()
+    func send_bitcoin() : async () {
+      Cycles.add<system>(BITCOIN_FEE);
+      await ic.bitcoin_send_transaction({
+        transaction = "\be\ef";
+        network = #testnet;
+      });
+    };
+  
+    // Check for evm logs every 2 seconds
+    let _ = Timer.setTimer<system>(#seconds 2, check_evm_log);
   };
-            
+  
             `}
             </CodeBlockString>
           </motion.div>
