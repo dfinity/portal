@@ -241,7 +241,7 @@ function MultichainPage() {
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-3">
               To showcase how powerful chain fusion is, here is a simple example that shows 
-              three chains interacting in one smart contract. For instance, you can write a{" "}
+              three chains interacting in one smart contract: a{" "}
                 <i>single</i>{" "}
                 <b>
                   <i>ICP</i>
@@ -261,7 +261,13 @@ function MultichainPage() {
             
 
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-            This code snippet is written in Motoko, but also possible for Rust, TypeScript, Python, and other languages.
+            This code snippet is written in the&nbsp;
+              <Link 
+                rel="stylesheet" 
+                href="/docs/current/tutorials/developer-journey/level-0/intro-languages/#motoko"
+              >
+              Motoko programming language
+              </Link> but is also possible for Rust, TypeScript, Python, and other languages.
             </p>
             <p className="mb-0 mt-8">
               <Link
@@ -284,13 +290,14 @@ function MultichainPage() {
   import Cycles "mo:base/ExperimentalCycles";
   import Timer "mo:base/Timer";
   
+  //Actor is the computational unit of ICP smart contract
   actor {
     let EVM_FEE = 1000;
     let BITCOIN_FEE = 1000;
   
      //Function checks the logs of an ETH smart contract for an event
      //If a particular event is found, it sends bitcoin to an address
-    func check_evm_log() : async () {
+     func check_evm_log() : async () {
       Cycles.add<system>(EVM_FEE);
       let log = await evm.eth_getLogs(
         #EthMainnet(null),
