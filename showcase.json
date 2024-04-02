@@ -3797,5 +3797,33 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/openfpl_logo.png"
+  },
+  {
+    "id": "icghost",
+    "name": "ICGhost",
+    "oneLiner": "The First Decentralized Meme Coin on IC",
+    "website": "https://yadjb-mqaaa-aaaan-qaqlq-cai.icp0.io/",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "description": "The First Decentralized Meme Coin on IC",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/icghost.png"
+  },
+  {
+    "id": "sneed",
+    "name": "sneed",
+    "oneLiner": "The Blank Canvas DAO on the Internet Computer.",
+    "website": "https://icsneed.com/?wp=sneed",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "description": "The Blank Canvas DAO on the Internet Computer.C",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/sneed.png"
   }
 ]
