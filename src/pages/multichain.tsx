@@ -12,6 +12,7 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import IntraPageNav from "../components/Common/IntraPageNav";
 import { sampleItems } from "../components/Common/sampleItems";
 import ShareMeta from "../components/Common/ShareMeta";
+import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { unreachable } from "../utils/unreachable";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
@@ -35,7 +36,7 @@ const Status: React.FC<{
   switch (type) {
     case "done":
       return (
-        <div className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-infinite">
+        <span className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-infinite">
           <svg
             width="16"
             height="16"
@@ -50,11 +51,11 @@ const Status: React.FC<{
           </svg>
 
           {children}
-        </div>
+        </span>
       );
     case "pending":
       return (
-        <div className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-black/60">
+        <span className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-black/60">
           <svg
             width="16"
             height="16"
@@ -68,7 +69,7 @@ const Status: React.FC<{
           </svg>
 
           {children}
-        </div>
+        </span>
       );
 
     default:
@@ -206,7 +207,7 @@ function MultichainPage() {
         </section>
 
         <AnimateSpawn
-          className="container-10 py-20 md:py-30"
+          className="container-10 pt-20 md:pt-30"
           el={motion.section}
           variants={transitions.container}
         >
@@ -225,6 +226,118 @@ function MultichainPage() {
             environment.
           </motion.p>
         </AnimateSpawn>
+
+        <AnimateSpawn
+          className="container-12 py-20 md:py-40 flex flex-col md:flex-row gap-12 md:gap-1/10"
+          variants={transitions.container}
+          el={motion.section}
+        >
+          <motion.div
+            className="md:w-4/10 flex-shrink-0"
+            variants={transitions.item}
+          >
+            <h2 className="tw-heading-4 md:tw-heading-60 text-gradient mb-3">
+              Example Code
+            </h2>
+            <p className="tw-paragraph md:tw-lead-sm mb-3">
+              To showcase how powerful chain fusion is, here is a simple example that shows 
+              three chains interacting in one smart contract: a{" "}
+                single{" "}
+                <b>
+                  <i>ICP</i>
+                </b>{" "}
+                smart contract that can custody{" "}
+                <b>
+                  <i>Bitcoin</i>
+                </b>{" "}
+                and programmatically trigger sending it based on events observed
+                on a{" "}
+                <b>
+                  <i>Ethereum</i>
+                </b>{" "}
+                DeFi smart contract.
+            </p>
+
+            
+
+            <p className="tw-paragraph md:tw-lead-sm mb-3">
+            This code snippet is written in the&nbsp;
+              <Link 
+                rel="stylesheet" 
+                href="/docs/current/tutorials/developer-journey/level-0/intro-languages/#motoko"
+              >
+              Motoko programming language
+              </Link> but is also possible for Rust, TypeScript, Python, and other languages.
+            </p>
+            <p className="mb-0 mt-8">
+              <Link
+                className="link-primary link-with-icon"
+                href="https://play.motoko.org/?tag=3352278366"
+              >
+                <LinkArrowRight></LinkArrowRight>
+                Deploy the contract in online editor
+              </Link>
+            </p>
+          </motion.div>
+          <motion.div
+            className="md:max-w-5/10 space-y-5"
+            variants={transitions.item}
+          >
+            <CodeBlockString language="motoko">
+              {`
+  import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
+  import ic "ic:aaaaa-aa";
+  import Cycles "mo:base/ExperimentalCycles";
+  import Timer "mo:base/Timer";
+  
+  //Actor is the computational unit of ICP smart contract
+  actor {
+    let EVM_FEE = 1000;
+    let BITCOIN_FEE = 1000;
+  
+     //Function checks the logs of an ETH smart contract for an event
+     //If a particular event is found, it sends bitcoin to an address
+     func check_evm_log() : async () {
+      Cycles.add<system>(EVM_FEE);
+      let log = await evm.eth_getLogs(
+        #EthMainnet(null),
+        null,
+        {
+          // dummy address. Replace with the right one
+          addresses = ["address"];
+          fromBlock = ? #Finalized;
+          toBlock = ? #Finalized;
+          //dummy topics to look at. Replace with topics of interest
+          topics = ?[["topic1", "topic2"]]; 
+        },
+      );
+      switch log {
+        case (#Consistent(#Ok(_))) {
+          // if we get a consistent log, send bitcoin
+          await send_bitcoin();
+        };
+        case _ {};
+      };
+    };
+  
+    // Function that sends bitcoin. This is used by check_evm_log()
+    func send_bitcoin() : async () {
+      Cycles.add<system>(BITCOIN_FEE);
+      await ic.bitcoin_send_transaction({
+        transaction = "\be\ef";
+        network = #testnet;
+      });
+    };
+  
+    // Check for evm logs every 2 seconds
+    let _ = Timer.setTimer<system>(#seconds 2, check_evm_log);
+  };
+  
+            `}
+            </CodeBlockString>
+          </motion.div>
+        </AnimateSpawn>
+
         <section className="bg-infinite relative overflow-hidden">
           <div className="container-12 relative">
             <div className="relative -left-16 sm:left-auto md:absolute md:left-auto md:-right-40 w-full max-w-none md:min-w-0 md:top-60 md:max-w-[calc(65vw-100px)] min-w-[600px] md:w-[800px]">
@@ -261,7 +374,7 @@ function MultichainPage() {
               <p className="tw-paragraph md:tw-lead-sm mb-6">
                 True multi-chain capability requires enabling smart contracts to
                 read and write across chains. For instance, you can write a{" "}
-                <i>single</i>{" "}
+                single{" "}
                 <b>
                   <i>ICP</i>
                 </b>{" "}
@@ -298,21 +411,21 @@ function MultichainPage() {
             <div className="flex-[5]">
               <StickySectionNav
                 items={content.map((c) => c.title)}
-                className="hidden md:block"
+                className="hidden md:block pr-10"
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
                   <>
-                    <h2 className="tw-heading-4 md:tw-heading-3 mb-10 text-gradient">
+                    <h2 className="tw-heading-4 md:tw-heading-3 mb-4 text-gradient">
                       Use cases of chain fusion
                     </h2>
-                    <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                    <p className="tw-paragraph-sm md:tw-paragraph mb-2 mr-4">
                       Explore Chain Fusion technology use cases, including
                       executing ICP smart contracts on other chains and asset
                       storage like Bitcoin and Ethereum.
                     </p>
 
-                    <p className="tw-paragraph md:tw-lead-sm mb-2 mr-4">
+                    <p className="tw-paragraph-sm md:tw-paragraph mb-10 mr-4">
                       These applications range from automating tasks on Ethereum
                       to creating ICP smart contracts that manage
                       Bitcoin/Ethereum. Developers can also use ckBTC and ckETH
@@ -644,7 +757,7 @@ function MultichainPage() {
                   </p>
                 </ContentCard>
 
-                <ContentCard id="bitcoin-ordinals">
+                <ContentCard id="bitcoin-ordinals-2">
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
                     Ordinals, BRC20 inscriptions from ICP using tSchnorr
                   </h3>
