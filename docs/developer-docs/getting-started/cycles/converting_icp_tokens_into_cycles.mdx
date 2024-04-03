@@ -52,62 +52,24 @@ This will output something like this:
 12.49840000 ICP
 ```
 
-## Create a cycles wallet
-With those ICP tokens ready, you can start creating your cycles wallet. To start, you have to create a canister which will become your wallet. The base command for this is as follows:
+## Convert ICP to cycles
 
-``` bash
-dfx ledger --network ic create-canister <your-principal-identifier> --amount <icp-tokens>
-```
-
-The two values you have to substitute are your own <GlossaryTooltip>principal</GlossaryTooltip> and the amount of tokens you want to convert.
-
-To figure out your own principal, use the output of the command `dfx identity get-principal`.
-
-For example, if your principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and you want to convert 2.3 ICP into cycles, the command would be:
-
-``` bash
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 2.3
-```
-
-This command will take some time and output something similar to the following:
+With those ICP tokens ready, you can now convert them into cycles using the following command:
 
 ```
-Transfer sent at BlockHeight: 351220
-Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
+dfx cycles convert AMOUNT --network ic
 ```
 
-The ID in this output is the address of the canister where your wallet will live. In this example, it would be `gastn-uqaaa-aaaae-aaafq-cai`.
+:::info
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
 
-Now that the canister is created, you can install the wallet code using this command:
+Please note that the cycles wallet will be removed from dfx in a future release.
+:::
 
-``` bash
-dfx identity --network ic deploy-wallet <canister-identifer>
-```
-
-Here, you have to substitute the canister identifier using the ID you received in the output of the previous command. So, in the example this would look like this:
-
-``` bash
-dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
-```
-
-And the output should look like this:
+Then, check the cycles balance with the command:
 
 ```
-The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-Now your wallet should be configured and ready to go. To check if everything went right, run this to see the identifier of your configured wallet:
-
-``` bash
-dfx identity --network ic get-wallet
-```
-
-This should print the canister ID you used in the commands earlier.
-
-You can also check the balance of your new cycles wallet:
-
-``` bash
-dfx wallet --network ic balance
+dfx cycles balance --network ic
 ```
 
 This should print something looking like this:
