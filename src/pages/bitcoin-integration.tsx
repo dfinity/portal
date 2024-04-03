@@ -15,7 +15,7 @@ function BitcoinIntegration() {
 
   return (
     <Layout
-      title="Bitcoin <> ICP"
+      title="ICP as a Bitcoin L2"
       description="ICP natively integrate with the Bitcoin network without intermediaries.
                    Chain-key Bitcoin (ckBTC), introduces speed, scalability and low
                    transaction fees to bitcoin for practical use."
