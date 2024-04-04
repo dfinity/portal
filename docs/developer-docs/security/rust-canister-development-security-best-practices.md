@@ -357,7 +357,7 @@ The journal can be used to augment the audit trail for recent events. However, i
 The journal ensures the application knows that recovery from an error is needed, and aids in making recovery decisions. In order to support the recovery process, the journal should support querying all unresolved tasks of a certain type, and tasks of a certain type that resulted in an error. Given an intent, the journal should also be able to return the result if it exists and indicate if it does not exist.
 
 Note that recovery can often be complex to automate. In such cases, the journal can support a manual recovery process.
-Extending the ledger example above, a recovery process can look like the following
+Extending the ledger example above, a recovery process could look as follows:
 
 1. There is a panic and the status of the ledger call is unknown. However, the journal has recorded that a call to transfer with particular parameters and memo has been made, and the deduplication timestamp of the transfer. 
 1. The app calls the ledger to determine whether a transaction with the journaled parameters has succeeded on the ledger. Due to the guarantee that any pair of messages that are both executed are always executed in the order issued, if the ledger indicates that the transaction has not occurred, then the transaction will never occur.
