@@ -346,7 +346,7 @@ call can be queried later.
 
 Continuing the above example, let us consider a panic at any point. 
 1. If there is panic before the async outcall, then the journaled intent will be lost, but no state change occurred internally and no outcalls were made so the app is in a safe state. The next step is to record a new intent.
-1. If there is a panic after the async outcall, then the journaled result (step 3) will be lost. This means the app will need to determine the result and journal it before continuing to step 4. As long as it is possible to determine the result, the app is in a safe state even.
+1. If there is a panic after the async outcall and no self-call was used to commit the journal, the journaled result (step 3) will be lost. This means the app will need to determine the result and journal it before continuing to step 4. As long as it is possible to determine the result, the app can be brought back to a consistent state.
 
 #### Journaling And Audit Events
 
