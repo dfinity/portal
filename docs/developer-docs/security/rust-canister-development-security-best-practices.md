@@ -580,7 +580,7 @@ When making inter-canister calls, always handle the error cases (rejects) correc
 
 - Making inter-canister calls to trustworthy canisters is safe, except for the rather unlikely case that there is a bug in the callee that makes it stall forever. 
 
-- If you still want to call untrustworthy canisters, it’s possible to use a state-free proxy canister which could easily be re-installed if it is attacked as described above and is stuck. When the proxy is reinstalled, the caller obtains an error response to the open calls.
+- Interacting with untrustworthy canisters is still possible by using a state-free proxy canister which could easily be re-installed if it is attacked as described above and is stuck. When the proxy is reinstalled, the caller obtains an error response to the open calls.
 
 - Sanitize data returned from inter-canister calls.
 
