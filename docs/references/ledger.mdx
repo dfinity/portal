@@ -502,11 +502,12 @@ The state of the ledger canister comprises:
 -   Location: Nat ↦ Nat;
 
 -   Last_archive: Nat;
-
+```
     State = {
       ledger: Ledger;
       last_hash: Hash | None;
     };
+```
 
 Initially, the ledger is set to the empty list and `last_hash` is set to None:
 ```
