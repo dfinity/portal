@@ -399,16 +399,16 @@ Here is a sketch of how the above structures could be used.
 
 * When executing a transaction:
   1. Look up the transaction in the audit log. If an entry exists, return it and exit this flow.
-  2. Look up the transaction flow in the `Journal by caller` map.
-  3. If no entry exists in `Journal by caller`, then:
+  1. Look up the transaction flow in the `Journal by caller` map.
+  1. If no entry exists in `Journal by caller`, then:
      1. Create a new `Transaction journal struct`.
-     2. Add an entry for the `Transaction journal struct` to `Journal by caller`,
-     3. Add an entry for the `Transaction journal struct` to `Transactions by timestamp`.
-  5. Initiate or resume the task flow according to the list of events in the `Transaction journal struct` that was previously obtained or created.
+     1. Add an entry for the `Transaction journal struct` to `Journal by caller`,
+     1. Add an entry for the `Transaction journal struct` to `Transactions by timestamp`.
+  1. Initiate or resume the task flow according to the list of events in the `Transaction journal struct` that was previously obtained or created.
 
 * When a transaction is finished:
   1. Create an audit log event for the transaction.
-  2. Remove the transaction from both `Transactions by caller` and `Transactions by timestamp`.
+  1. Remove the transaction from both `Transactions by caller` and `Transactions by timestamp`.
 
 * When searching for unfinished transactions that need to be recovered: 
   - Iterate through `Transactions by timestamp` map (oldest first).
