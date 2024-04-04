@@ -26,7 +26,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             The Internet Computer adds the missing smart contract layer to
             Bitcoin. Leveraging{" "}
             <Link
-              className="text-white underline hover:text-white duration-200 ease-in-out"
+              className="text-white underline hover:no-underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
               href="/multichain"
             >
               Chain Fusion Technology
