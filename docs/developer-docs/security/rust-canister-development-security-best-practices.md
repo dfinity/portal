@@ -281,7 +281,7 @@ Note that in canisters implemented in Rust with Rust CDK version 0.5.1, any loca
 
 #### Recommendation
 
-Recall that the responses to inter-canister calls are processed in the corresponding callback. If the callback traps, the cleanup (ic0.call_on_cleanup) is executed. When making an inter-canister call, the ICP reserves sufficiently many cycles to execute the response callback or cleanup (up to the instruction limit). A fixed fraction of the reservation is for the cleanup. Thus, a response or cleanup execution can never “run out of cycles”, but they can run into the instruction limit and trap.
+Recall that the responses to inter-canister calls are processed in the corresponding callback. If the callback traps, the cleanup (ic0.call_on_cleanup) is executed. When making an inter-canister call, the ICP reserves sufficiently many cycles to execute the response callback or cleanup (up to the instruction limit). A fixed fraction of the reservation is set aside for the cleanup. Thus, a response or cleanup execution can never “run out of cycles”, but they can run into the instruction limit and trap.
 
 The naïve recommendation to address the security concern described above would be to avoid traps. However, that can be very difficult to achieve due to the following reasons: 
 
