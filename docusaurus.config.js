@@ -343,6 +343,12 @@ const marketingNav = {
               href: "/docs/current/home",
               description: "Start coding",
             },
+
+            {
+              name: "Olympus",
+              href: "/accelerator",
+              description: "A Web3 acceleration platform",
+            },
             {
               name: "Sample code",
               href: "/samples",
