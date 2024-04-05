@@ -144,21 +144,19 @@ function AcceleratorPage() {
                 </motion.p>
               </div>
               <MotionLink
-                href="/accelerator"
+                href="#"
                 className="button-white"
                 variants={transitions.item}
               >
                 GET EARLY ACCESS
               </MotionLink>
-              {/* <MotionLink
-                href="#"
-                className="button-white pointer-events-none"
-                disabled
-                variants={transitions.item}
-                onClick={(e) => e.preventDefault()}
+              {/* <Link
+                href=""
+                className="button-white pointer-events-none !text-black/30"
+                aria-disabled
               >
-                Coming Soon
-              </MotionLink> */}
+                COMING SOON
+              </Link> */}
             </div>
 
             <AnimateSpawn
@@ -204,7 +202,7 @@ function AcceleratorPage() {
                 imageUrl={item.image}
                 reverse={item.reverse}
               >
-                <aside>
+                <aside className="mb-24 md:mb-0">
                   <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
                     {item.title}
                   </h3>
@@ -256,7 +254,7 @@ function AcceleratorPage() {
                 </motion.p>
               </div>
               <div className="md:w-2/3 relative mt-12 md:mt-0 ">
-                <div className="pointer-events-none md:absolute w-full  md:right-0 md:top-1/2  md:-translate-y-1/2">
+                <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
                   <motion.div
                     className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 blob-y-0"
                     variants={transitions.fadeIn}
@@ -297,12 +295,19 @@ function AcceleratorPage() {
             </div>
             <div>
               <MotionLink
-                href="/accelerator"
+                href="#"
                 className="button-white"
                 variants={transitions.item}
               >
                 GET EARLY ACCESS
               </MotionLink>
+              {/* <Link
+                href=""
+                className="button-white pointer-events-none !text-black/30"
+                aria-disabled
+              >
+                COMING SOON
+              </Link> */}
             </div>
           </AnimateSpawn>
 
