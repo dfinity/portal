@@ -3821,9 +3821,24 @@
       "DeFi",
       "DAO"
     ],
-    "description": "The Blank Canvas DAO on the Internet Computer.C",
+    "description": "The Blank Canvas DAO on the Internet Computer.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/sneed.png"
+  },
+  {
+    "id": "windoge98",
+    "name": "Windoge98",
+    "oneLiner": "The retro flavored utility meme.",
+    "website": "https://windoge98.com",
+    "twitter": "https://x.com/windoge_98",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "description": "Windoge98 is a retro flavored utility meme. A nostalgic portal to the Internet Computer.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/w98.webp"
   }
 ]
