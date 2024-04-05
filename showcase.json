@@ -3854,6 +3854,10 @@
     "id": "gitcoin-passport-client",
     "name": "Gitcoin Passport Client",
     "oneLiner": "A UI that securely retrieves anti-Sybil scoring data from Gitcoin Passport and stores it in a DB.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Ethereum"
+    ],
     "website": "https://internet-computer.vporton.name/gitcoin-passport-client/",
     "github": "https://github.com/vporton/passport-client-dfinity",
     "description": "A UI that securely retrieves anti-Sybil scoring data from Gitcoin Passport and stores it in a DB.",
