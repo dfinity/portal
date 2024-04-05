@@ -343,12 +343,6 @@ const marketingNav = {
               href: "/docs/current/home",
               description: "Start coding",
             },
-
-            {
-              name: "Olympus",
-              href: "/accelerator",
-              description: "A Web3 acceleration platform",
-            },
             {
               name: "Sample code",
               href: "/samples",
@@ -423,6 +417,11 @@ const marketingNav = {
               name: "ICP community",
               href: "/community",
               description: "Join the global community",
+            },
+            {
+              name: "Olympus",
+              href: "/accelerator",
+              description: "A Web3 acceleration platform",
             },
             {
               name: "Sovereign network",

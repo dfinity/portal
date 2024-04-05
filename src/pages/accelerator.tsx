@@ -131,7 +131,7 @@ function AcceleratorPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
                 variants={transitions.item}
               >
-                Olympus - Trustless Web3 Acceleration
+                Trustless Web3 Acceleration
               </motion.h1>
               <div className="relative  md:w-5/10">
                 <motion.p
