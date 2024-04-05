@@ -3830,21 +3830,32 @@
       "DeFi",
       "DAO"
     ],
-    "description": "The Blank Canvas DAO on the Internet Computer.C",
+    "description": "The Blank Canvas DAO on the Internet Computer.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/sneed.png"
   },
+  {
+    "id": "windoge98",
+    "name": "Windoge98",
+    "oneLiner": "The retro flavored utility meme.",
+    "website": "https://windoge98.com",
+    "twitter": "https://x.com/windoge_98",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "description": "Windoge98 is a retro flavored utility meme. A nostalgic portal to the Internet Computer.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/w98.webp"
+},
   {
     "id": "gitcoin-passport-client",
     "name": "Gitcoin Passport Client",
     "oneLiner": "A UI that securely retrieves anti-Sybil scoring data from Gitcoin Passport and stores it in a DB.",
     "website": "https://internet-computer.vporton.name/gitcoin-passport-client/",
     "github": "https://github.com/vporton/passport-client-dfinity",
-    "tags": [
-      "DeFi",
-      "DAO"
-    ],
     "description": "A UI that securely retrieves anti-Sybil scoring data from Gitcoin Passport and stores it in a DB.",
     "usesInternetIdentity": true,
     "display": "Normal",
