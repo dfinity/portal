@@ -419,11 +419,6 @@ const marketingNav = {
               description: "Join the global community",
             },
             {
-              name: "Olympus",
-              href: "/accelerator",
-              description: "A Web3 acceleration platform",
-            },
-            {
               name: "Sovereign network",
               href: "/node-providers",
               description: "Become a node provider",
@@ -445,9 +440,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "ICP around the world",
-            href: "/community",
-            image: "/img/nav/featured-community.webp",
+            title: "Olympus - Acceleration Platform",
+            href: "/olympus",
+            image: "/img/nav/featured-olympus.webp",
           },
         },
       ],

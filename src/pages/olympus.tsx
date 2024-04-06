@@ -148,7 +148,7 @@ function AcceleratorPage() {
                 className="button-white"
                 variants={transitions.item}
               >
-                GET EARLY ACCESS
+                Get early access - BETA
               </MotionLink>
               {/* <Link
                 href=""
