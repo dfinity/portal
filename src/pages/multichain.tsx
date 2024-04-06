@@ -157,7 +157,7 @@ function MultichainPage() {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       {/* <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta> */}
-      <ShareMeta image="/img/multichain/hero2.webp"></ShareMeta>
+      <ShareMeta image="/img/multichain/hero3.webp"></ShareMeta>
 
       <main
         className="text-black relative "
@@ -197,7 +197,7 @@ function MultichainPage() {
                 style={{ overflow: "hidden", borderRadius: "10px" }}
               >
                 <img
-                  src="/img/multichain/hero2.webp"
+                  src="/img/multichain/hero3.webp"
                   alt=""
                   className="w-full h-full object-cover"
                 />
