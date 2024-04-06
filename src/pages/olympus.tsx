@@ -144,7 +144,7 @@ function AcceleratorPage() {
                 </motion.p>
               </div>
               <MotionLink
-                href="#"
+                href="https://zj3dp-waaaa-aaaak-afpxa-cai.icp0.io/"
                 className="button-white"
                 variants={transitions.item}
               >
@@ -295,7 +295,7 @@ function AcceleratorPage() {
             </div>
             <div>
               <MotionLink
-                href="#"
+                href="https://zj3dp-waaaa-aaaak-afpxa-cai.icp0.io/"
                 className="button-white"
                 variants={transitions.item}
               >
