@@ -105,7 +105,7 @@ function AcceleratorPage() {
 
   return (
     <Layout
-      title="Trustless Web3 acceleration"
+      title="Olympus, an On-Chain Acceleration Platform"
       description="Olympus is a multichain startup acceleration platform, fostering collaboration among key stakeholders and leveraging blockchain technology to enhance transparency."
     >
       <ShareMeta image="/img/shareImages/share-accelerator.jpg"></ShareMeta>
@@ -131,7 +131,7 @@ function AcceleratorPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
                 variants={transitions.item}
               >
-                Trustless Web3 Acceleration
+                Olympus, an On-Chain Acceleration Platform
               </motion.h1>
               <div className="relative  md:w-5/10">
                 <motion.p
@@ -148,7 +148,7 @@ function AcceleratorPage() {
                 className="button-white"
                 variants={transitions.item}
               >
-                Get early access - BETA
+                Get Beta Access
               </MotionLink>
               {/* <Link
                 href=""
@@ -299,7 +299,7 @@ function AcceleratorPage() {
                 className="button-white"
                 variants={transitions.item}
               >
-                GET EARLY ACCESS
+                Get Beta Access
               </MotionLink>
               {/* <Link
                 href=""
