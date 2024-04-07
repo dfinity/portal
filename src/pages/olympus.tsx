@@ -108,7 +108,7 @@ function AcceleratorPage() {
       title="Olympus, an On-Chain Acceleration Platform"
       description="Olympus is a multichain startup acceleration platform, fostering collaboration among key stakeholders and leveraging blockchain technology to enhance transparency."
     >
-      <ShareMeta image="/img/shareImages/share-accelerator.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-olympus.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -131,7 +131,8 @@ function AcceleratorPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
                 variants={transitions.item}
               >
-                Olympus, an On-Chain Acceleration Platform
+                Olympus, <br className="md:hidden" /> an On-Chain Acceleration
+                Platform
               </motion.h1>
               <div className="relative  md:w-5/10">
                 <motion.p
