@@ -440,9 +440,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "ICP around the world",
-            href: "/community",
-            image: "/img/nav/featured-community.webp",
+            title: "Olympus - Acceleration Platform",
+            href: "/olympus",
+            image: "/img/nav/featured-olympus.webp",
           },
         },
       ],
