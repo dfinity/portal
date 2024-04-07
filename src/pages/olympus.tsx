@@ -140,7 +140,7 @@ function AcceleratorPage() {
                 >
                   Olympus is a multichain startup acceleration platform,
                   fostering collaboration among key stakeholders and leveraging
-                  blockchain technology to enhance transparency
+                  blockchain technology to enhance transparency.
                 </motion.p>
               </div>
               <MotionLink
@@ -148,7 +148,7 @@ function AcceleratorPage() {
                 className="button-white"
                 variants={transitions.item}
               >
-                Get Beta Access
+                Get Early Access (Beta)
               </MotionLink>
               {/* <Link
                 href=""
@@ -299,7 +299,7 @@ function AcceleratorPage() {
                 className="button-white"
                 variants={transitions.item}
               >
-                Get Beta Access
+                Get Early Access (Beta)
               </MotionLink>
               {/* <Link
                 href=""
