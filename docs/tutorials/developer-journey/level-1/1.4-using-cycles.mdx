@@ -16,17 +16,19 @@ If you recall from the previous module, [Internet Computer terminology](/docs/cu
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
-Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a special canister called a **cycles wallet**. When a canister needs to use the cycles stored in the cycles wallet, the canister's operations are executed using the canister principal of the cycles wallet, rather than your user principal.
+Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to other canister, and create canisters with cycles.
+
+A developer's cycles balance is associated with the principal identity.
 
 :::info
 Recall that a principal is an entity that can be authenticated by ICP.
 :::
 
-Cycles wallets are necessary since a user's principal can't hold cycles directly; only canisters can have cycles balances. Canisters each have their own cycles balance, and don't use cycles within your cycles wallet. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in it's balance or if you're creating a new canister, you will need to proxy the call through the cycles wallet in order to attach the required cycles. To assure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
+Canisters each have their own cycles balance, and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in it's balance or if you're creating a new canister, you will need to proxy the call through the cycles ledger in order to attach the required cycles. To assure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
 
-For local canister execution, the SDK automatically creates a default cycles wallet in every project, and operations performed using cycles are done in the background. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly registered and transferred into them. Production canisters will also require principals to be configured to act as **custodians**, which are principals that have permission to send and receive cycles for the canister.
+For local canister execution, operations performed using cycles are done in the background. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly registered and transferred into them. Production canisters will also require principals to be configured to act as **custodians**, which are principals that have permission to send and receive cycles for the canister.
 
-In this tutorial, you'll learn how to set up a cycles wallet and fill it with cycles to use. Then, in the next tutorial you'll deploy a canister to the mainnet using those cycles.
+In this tutorial, you'll learn how to obtain cycles. Then, in the next tutorial you'll deploy a canister to the mainnet using those cycles.
 
 ## Prerequisites
 
@@ -46,7 +48,7 @@ Each principal can control multiple accounts in the ICP (and other) ledgers.
 You can learn more in the IC [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#principal).
 :::
 
-In this tutorial, you'll create a new identity principal with `dfx`, which you'll use to obtain cycles and deploy a cycles wallet.
+In this tutorial, you'll create a new identity principal with `dfx`, which you'll use to obtain and manage cycles.
 
 First, assure that `dfx` is running; if not, use the following command to start it:
 
@@ -122,7 +124,7 @@ Once the survey has been completed, our team will review your submission. If acc
 Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
 
-Head back to the <https://faucet.dfinity.org> webpage.
+Head back to the /<https://faucet.dfinity.org/> webpage.
 
 Now, click **NEXT STEP** to continue.
 
@@ -142,7 +144,7 @@ dfx identity use DevJourney
 Then, redeem your coupon with the command:
 
 ```bash
-dfx wallet --network ic redeem-faucet-coupon COUPON_CODE
+dfx cycles --network ic redeem-faucet-coupon COUPON_CODE
 ```
 
 Replace **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY faucet bot.
@@ -150,20 +152,10 @@ Replace **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY f
 Verify your cycles balance with the command:
 
 ```bash
-dfx wallet --network ic balance
+dfx cycles --network ic balance
 ```
 
-This should return an output showing 10T cycles in your wallet. To get the canister identifier of your new cycles wallet, run the command:
-
-```bash
-dfx identity --network ic get-wallet
-```
-
-The output of this command should resemble the following:
-
-```bash
-gastn-uqaaa-aaaae-aaafq-cai
-```
+This should return an output showing 10T cycles associated with your identity.
 
 ## Converting ICP tokens to cycles
 
@@ -195,58 +187,24 @@ This will output something like this:
 12.49840000 ICP
 ```
 
-Once you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. This will require your identity principal, which you can obtain by running the command:
+Once you have your ICP tokens ready, you will need to convert them into cycles. To convert ICP into cycles using the cycles ledger, use the command:
 
-```bash
-dfx identity get-principal
+```
+dfx cycles convert AMOUNT --network ic
 ```
 
-Then, to create a cycles wallet, run the following command:
+:::info
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
+
+Please note that the cycles wallet will be removed from dfx in a future release.
+:::
+
+Replace the **AMOUNT** with the number of ICP to convert into cycles.
+
+To verify that your ICP was converted into cycles properly, query the balance of the wallet with the command:
 
 ```bash
-dfx ledger --network ic create-canister <PRINCIPAL_ID> --amount <ICP_TOKENS>
-```
-
-Replace the **PRINCIPAL_ID** with your identity's principal value that was returned from the `dfx identity get-principal` command, then replace **ICP_TOKENS** with the amount of tokens you'd like to convert into cycles.
-
-For example, if your principal is `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and you want to convert 3.5 ICP tokens into cycles, the command would be:
-
-```bash
-dfx ledger --network ic create-canister tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe --amount 3.5
-```
-
-This command will process for a few moments, and will output something that resembles:
-
-```bash
-Transfer sent at BlockHeight: 351220
-Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-The ID in this output is the address of the canister where your wallet will live. In this example, it would be `gastn-uqaaa-aaaae-aaafq-cai`.
-
-Now that your cycles wallet canister has been created, you need to install the wallet code with the command:
-
-```bash
-dfx identity --network ic deploy-wallet <CANISTER_ID>
-```
-
-Replace the **CANISTER_ID** with the value you received in the output of the previous command, such as:
-
-```bash
-dfx identity --network ic deploy-wallet gastn-uqaaa-aaaae-aaafq-cai
-```
-
-The output of this command will resemble the following:
-
-```bash
-Creating a wallet canister on ICP.
-The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
-```
-
-To verify that your wallet is now configured and ready to use, query the balance of the wallet with the command:
-
-```bash
-dfx wallet --network ic balance
+dfx cycles balance --network ic
 ```
 
 This should return your balance in cycles:
@@ -257,7 +215,6 @@ This should return your balance in cycles:
 
 ## Resources
 To further explore cycle management please see the following articles:
-- **[Using a cycles wallet](/docs/current/developer-docs/getting-started/cycles/cycles-wallet)**.
 - **[Getting free cycles from DFINITY cycles faucet](/docs/current/developer-docs/getting-started/cycles/cycles-faucet)**.
 - **[Converting ICP tokens into cycles](/docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles)**.
 

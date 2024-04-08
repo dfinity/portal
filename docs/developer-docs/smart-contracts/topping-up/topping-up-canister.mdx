@@ -37,7 +37,7 @@ For ease of use, you can copy/paste the cycles amounts below:
 Canister cycles balances are not exposed publicly by default; you can only see them if you are the controller of a canister. Using `jqylk-byaaa-aaaal-qbymq-cai` as an example, you can query it by calling:
 
 ```bash
-dfx canister --network ic status jqylk-byaaa-aaaal-qbymq-cai
+dfx canister status jqylk-byaaa-aaaal-qbymq-cai --network ic
 ```
 
 Output will look like this:
@@ -59,13 +59,13 @@ Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
 If you have ICP on the account associated with a `dfx` identity, you can tell the ledger canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS] top-up --amount <AMOUNT> <DESTINATION>`
 
 ```
-dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
+dfx ledger top-up jqylk-byaaa-aaaal-qbymq-cai--network ic --amount 0.1
 ```
 
 ```bash
 dfx ledger account-id
-dfx ledger --network ic balance
-dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
+dfx ledger balance --network ic
+dfx ledger top-up jqylk-byaaa-aaaal-qbymq-cai --network ic --amount 0.1
 ```
 
 -   The `dfx ledger account-id` returns the ledger account id of the current `dfx` identity used.
@@ -74,31 +74,37 @@ dfx ledger --network ic top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai
 -   `top-up --amount 0.1 jqylk-byaaa-aaaal-qbymq-cai` command converts 0.1 ICP into cycles and uses them to refill canister `jqylk-byaaa-aaaal-qbymq-cai`.
 
 
-### Option 2: If you have cycles on your cycles wallet
+### Option 2: If you have cycles
 
-If you have a cycles wallet you control via dfx, you can send cycles from your cycles wallet to a canister of your choice: `dfx canister deposit-cycles <AMOUNT> <DESTINATION>`.
+If you have a cycles balance associated with your developer identity, you can top up a canister with the command:
 
 ```bash
-dfx wallet --network ic balance
-dfx canister --network ic deposit-cycles 1000000 jqylk-byaaa-aaaal-qbymq-cai
+dfx cycles balance --network ic
+dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
 ```
 
--   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on the mainnet.
--   The `canister deposit-cycles` takes cycles from your cycles wallet and gives them to the canister of your choice.
+-   The `cycles balance --network ic` checks the cycles balance of your identity on the mainnet.
+-   The `cycles top-up` transfers cycles to the canister of your choice.
 
-### Special case: topping up another cycles wallet
+### Special case: topping up a cycles wallet
+
+:::info
+Please note that the cycles wallet will be removed from dfx in a future release.
+
+It is recommended to use the cycles ledger instead.
+:::
 
 Cycles wallets are canisters like any other, so you can top them up as well. If you have a cycles wallet you control via dfx, there is another option as well for sending cycles from your cycles wallet to a canister of your choice: `dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`.
 
 In this example, it is assumed you are sending cycles to a cycles wallet with principal `dfds-sddds-aaaal-qbsms-cai`.
 
 ```bash
-dfx wallet --network ic balance
-dfx wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai
+dfx wallet balance --network ic
+dfx wallet send 1000000 dfds-sddds-aaaal-qbsms-cai --network ic
 ```
 
--   The `wallet --network ic balance` checks the cycles balance of your cycles wallet on the mainnet.
--   The `wallet --network ic send 1000000 dfds-sddds-aaaal-qbsms-cai` takes 1000000 cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
+-   The `wallet balance --network ic ` checks the cycles balance of your cycles wallet on the mainnet.
+-   The `wallet send 1000000 dfds-sddds-aaaal-qbsms-cai --network ic` takes 1000000 cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
 
 ## Topping up a canister with the NNS frontend dapp
 
