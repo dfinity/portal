@@ -176,7 +176,7 @@ function AcceleratorPage() {
         </section>
 
         <section className="container-12 pt-20 pb-20 md:pt-30 md:pb-30">
-          <div className="flex flex-col gap-16 md:gap-18">
+          <div className="flex flex-col gap-8 md:gap-18">
             {layoutData.map((item) => (
               <TranslatedLayout
                 key={item.id}
@@ -220,7 +220,7 @@ function AcceleratorPage() {
                 />
               ))}
             </div>
-            <aside className="mt-20 md:mt-40 md:flex md:items-center	">
+            <aside className="md:mt-40 md:flex md:items-center	">
               <div className="pt-24 md:w-1/3">
                 <motion.h3 className="tw-heading-4">Rating Loop</motion.h3>
                 <motion.p className="text-2xl mb-0 ">
@@ -235,7 +235,7 @@ function AcceleratorPage() {
               <div className="md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
                 <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
                   <motion.div
-                    className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 blob-y-2"
+                    className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 blob-y-2 -z-1"
                     variants={transitions.fadeIn}
                   ></motion.div>
                   <motion.img
@@ -302,7 +302,7 @@ function AcceleratorPage() {
             className="mb-20 relative "
           >
             <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
-              Sign up for email updates
+              Sign up for email updates{" "}
               <span className="text-white-60">
                 to keep up to date with the Internet Computer
               </span>
