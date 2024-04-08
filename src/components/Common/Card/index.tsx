@@ -147,7 +147,7 @@ export const ShowcaseCard: React.FC<{
 }> = ({ imgSrc, title, subtitle, description }) => {
   return (
     <motion.div
-      className="bg-white/90 border overflow-hidden border-white border-solid rounded-xl px-6 py-8 md:p-8  text-black "
+      className="bg-white/90 border overflow-hidden border-white border-solid rounded-xl px-6 py-8  text-black "
       variants={transitions.item}
     >
       <img src={imgSrc} loading="lazy" alt="" className="w-20 h-20"></img>

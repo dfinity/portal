@@ -17,7 +17,7 @@ const layoutData = [
     image: "img/accelerator/image_1.webp",
     title: "Inclusive",
     description:
-      "By operating in silos, traditional accelerators risk limiting interaction. Olympus encourages stakeholders from all cohorts to engage directly and transparently on a single collaborative platform.",
+      "While traditional accelerators limit interactions among stakeholders, OLYMPUS empowers founders, investors, mentors and talents to communicate and collaborate directly within the platform.",
     reverse: true,
   },
   {
@@ -25,7 +25,7 @@ const layoutData = [
     image: "img/accelerator/image_2.webp",
     title: "Transparent",
     description:
-      "Metrics and reputation are key factors to make informed decisions. Olympus infrastructure provides on chain growth data for projects and multi-party rating tools to ensure verifiable reputation at all levels. Startups are publicly rated on a range of parameters including team, product, value proposition, business model, and technology.",
+      "Metrics and reputation are key factors to make informed decisions. OLYMPUS infrastructure provides on-chain growth data for projects and multi-party rating tools to ensure verifiable reputation at all levels. Startups are publicly rated on a range of parameters including team, product, value proposition, business model, and technology.",
     reverse: false,
   },
   {
@@ -33,7 +33,7 @@ const layoutData = [
     image: "img/accelerator/image_3.webp",
     title: "Global + Local",
     description:
-      "Olympus offers stakeholders a platform with a global outreach, while leveraging on a localized pipeline of projects scouted and filtered from 40+ countries.",
+      "OLYMPUS provides global outreach and visibility, leveraging communities of investors, mentors, founders and talents across 40+ countries.",
     reverse: true,
   },
   {
@@ -41,7 +41,7 @@ const layoutData = [
     image: "img/accelerator/image_4.webp",
     title: "Multichain",
     description:
-      "The Olympus platform is open to all Web3 stakeholders. Projects get the opportunity to scale faster by accessing a pool of talent, mentorship, capital and users coming from different ecosystems including Bitcoin and Ethereum.",
+      "OLYMPUS is open to all Web3 ecosystems and stakeholders, offering founders the opportunity to accelerate faster, access mentorship and talent pools, and connect with capital.",
     reverse: false,
   },
   {
@@ -49,7 +49,7 @@ const layoutData = [
     image: "img/accelerator/image_5.webp",
     title: "Sustainable",
     description:
-      "Challenging the mainstream acceleration model of “perpetual funding”, Olympus envisions a self-sustaining roadmap both for Web3 founders and the platform itself. Ultimately, this will include the decentralization of Olympus funding mechanism through token offering.",
+      "OLYMPUS challenges the mainstream acceleration model of perpetual funding and replaces it with a self-sustaining roadmap for both Web3 founders and the platform itself.",
     reverse: true,
   },
 ];
@@ -57,43 +57,35 @@ const layoutData = [
 const cardsData = [
   {
     id: 1,
-    imageSrc: "img/accelerator/icon_1.webp",
+    imageSrc: "img/accelerator/icon_1.svg",
     title: "Founders",
     subtitle: "Think outside the box",
     description:
-      "Look beyond the benefits of a legacy accelerator. Scale sustainably thanks to a collaborative ecosystem of mentors, talents, investors, users",
+      "Look beyond the benefits of a legacy accelerator. Scale sustainably thanks to a collaborative ecosystem of mentors, talents, investors, users.",
   },
   {
     id: 2,
-    imageSrc: "img/accelerator/icon_2.webp",
-    title: "Users",
-    subtitle: "Become crypto pioneers",
+    imageSrc: "img/accelerator/icon_2.svg",
+    title: "Talents",
+    subtitle: "Start your journey as Web3 pro",
     description:
-      "Access the founding circles of the latest dapps and actively contribute to their growth",
+      "Access opportunities at early-stage projects and build a solid Web3 network.",
   },
   {
     id: 3,
-    imageSrc: "img/accelerator/icon_3.webp",
-    title: "Talent",
-    subtitle: "Start your journey as Web3 pro",
-    description:
-      "Access opportunities at early-stage projects and build a solid Web3 network",
-  },
-  {
-    id: 4,
-    imageSrc: "img/accelerator/icon_4.webp",
+    imageSrc: "img/accelerator/icon_3.svg",
     title: "Mentors",
     subtitle: "Echo your expertise in the field",
     description:
-      "Share your valuable knowledge with the best founders, and get involved in the next potential killer app",
+      "Share your valuable knowledge with the best founders, and get involved in the next potential killer app.",
   },
   {
-    id: 5,
-    imageSrc: "img/accelerator/icon_5.webp",
+    id: 4,
+    imageSrc: "img/accelerator/icon_4.svg",
     title: "Investors",
     subtitle: "Lead with the right tools",
     description:
-      "Access globally vetted deals involving innovative Web3 projects and leverage verified data and ratings for your decisions",
+      "Access globally vetted deals involving innovative Web3 projects and leverage verified data and ratings for your decisions.",
   },
 ];
 
@@ -105,8 +97,8 @@ function AcceleratorPage() {
 
   return (
     <Layout
-      title="Olympus, an On-Chain Acceleration Platform"
-      description="Olympus is a multichain startup acceleration platform, fostering collaboration among key stakeholders and leveraging blockchain technology to enhance transparency."
+      title="OLYMPUS | The On-chain Acceleration Platform"
+      description="OLYMPUS is the first on-chain Web3 acceleration platform connecting founders, investors, mentors and talents across different ecosystems."
     >
       <ShareMeta image="/img/shareImages/share-olympus.jpg"></ShareMeta>
 
@@ -128,39 +120,35 @@ function AcceleratorPage() {
           <div className="container-10 mb-40 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <div className="relative">
               <motion.h1
-                className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
+                className="tw-heading-3 md:tw-heading-2 mb-1 md:mb-3"
                 variants={transitions.item}
               >
-                Olympus, <br className="md:hidden" /> an On-Chain Acceleration
-                Platform
+                OLYMPUS
               </motion.h1>
+              <motion.h2 className="tw-heading-4 md:tw-heading-3 mb-2 md:mb-6">
+                The On-Chain Acceleration Platform
+              </motion.h2>
               <div className="relative  md:w-5/10">
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Olympus is a multichain startup acceleration platform,
-                  fostering collaboration among key stakeholders and leveraging
-                  blockchain technology to enhance transparency.
+                  OLYMPUS is the first on-chain Web3 acceleration platform
+                  connecting founders, investors, mentors and talents across
+                  different ecosystems.
                 </motion.p>
               </div>
               <MotionLink
-                href="https://zj3dp-waaaa-aaaak-afpxa-cai.icp0.io/"
+                href="https://airtable.com/app5kkXNk5jTbPn4A/shrTV2c1swnQe7DXt"
                 className="button-white"
                 variants={transitions.item}
               >
-                Get Early Access (Beta)
+                Request Early Access
               </MotionLink>
-              {/* <Link
-                href=""
-                className="button-white pointer-events-none !text-black/30"
-                aria-disabled
-              >
-                COMING SOON
-              </Link> */}
             </div>
 
             <AnimateSpawn
+              variants={null}
               el={motion.section}
               className="pointer-events-none relative md:absolute -z-1 right-0 bottom-0 -mt-60 md:mt-0 md:w-2/10"
             >
@@ -178,24 +166,17 @@ function AcceleratorPage() {
         <section className="container-10 relative -mt-8 md:mt-40">
           <AnimateSpawn variants={transitions.container}>
             <motion.h2
-              className="text-gradient tw-heading-4 md:tw-heading-60 mb-0 md:max-w-7/10"
-              variants={transitions.item}
-            >
-              A novel framework for founders, investors, mentors  and
-              contributors
-            </motion.h2>
-            <motion.p
-              className="text-gradient tw-paragraph md:tw-lead mb-8 mt-4 md:max-w-5/10 md:font-bold font-bold"
+              className="text-gradient tw-heading-4 md:tw-heading-60 mb-0 md:max-w-9/12"
               variants={transitions.item}
             >
               A new framework designed to address Web3 adoption challenges and
-              accelerate the next web3 unicorn.
-            </motion.p>
+              accelerate the next set of unicorns.
+            </motion.h2>
           </AnimateSpawn>
         </section>
 
         <section className="container-12 pt-20 pb-20 md:pt-30 md:pb-30">
-          <div className="flex flex-col gap-16 md:gap-20">
+          <div className="flex flex-col gap-8 md:gap-18">
             {layoutData.map((item) => (
               <TranslatedLayout
                 key={item.id}
@@ -203,7 +184,7 @@ function AcceleratorPage() {
                 reverse={item.reverse}
               >
                 <aside className="mb-24 md:mb-0">
-                  <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                  <h3 className="tw-heading-4 md:tw-heading-60 mb-6 -mt-6 md:mt-0">
                     {item.title}
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
@@ -222,13 +203,13 @@ function AcceleratorPage() {
         >
           <div className="container-10 py-20 md:pt-40 md:pb-44">
             <motion.h2
-              className="tw-heading-3 md:text-[60px] md:leading-[70px] mb-10"
+              className="tw-heading-3 md:text-[60px] md:leading-[70px] mb-6"
               variants={transitions.item}
             >
               Value Proposition & Key Personas
             </motion.h2>
 
-            <div className="mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-3 md:mr-12">
+            <div className="md:w-[140%] md:relative md:-left-2/10 mt-12 md:mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-4">
               {cardsData.map((card) => (
                 <ShowcaseCard
                   key={card.id}
@@ -239,24 +220,22 @@ function AcceleratorPage() {
                 />
               ))}
             </div>
-            <aside className="mt-40 md:flex md:items-center	">
+            <aside className="md:mt-40 md:flex md:items-center	">
               <div className="pt-24 md:w-1/3">
-                <motion.h3 className="tw-heading-4">
-                  Continual Rating Loop
-                </motion.h3>
+                <motion.h3 className="tw-heading-4">Rating Loop</motion.h3>
                 <motion.p className="text-2xl mb-0 ">
-                  Olympus participants are in a perpetual feedback loop: users
+                  OLYMPUS participants are in a perpetual feedback loop: users
                   rate projects, projects rate investors, and investors rate
                   mentors. Reputation is stored on the blockchain, making it
-                  consistent and easily accessible. Furthermore, all Olympus
+                  consistent and easily accessible. Furthermore, all OLYMPUS
                   users must pass a proof of personhood test to ensure each
                   rating comes from a verifiable source.
                 </motion.p>
               </div>
-              <div className="md:w-2/3 relative mt-12 md:mt-0 ">
+              <div className="md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
                 <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
                   <motion.div
-                    className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 blob-y-0"
+                    className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 blob-y-2 -z-1"
                     variants={transitions.fadeIn}
                   ></motion.div>
                   <motion.img
@@ -270,7 +249,7 @@ function AcceleratorPage() {
             </aside>
           </div>
         </AnimateSpawn>
-        <section className="max-w-page relative mx-auto mb-20 mt-30 px-6 md:mb-28 md:px-24 md:mt-60 text-center">
+        <section className="max-w-page relative mx-auto mb-10 mt-15 px-6 md:mb-28 md:px-24 md:mt-60 text-center">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
@@ -280,34 +259,19 @@ function AcceleratorPage() {
               variants={transitions.fadeIn}
             ></motion.div>
             <motion.h2
-              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-8/12"
+              className="tw-heading-3 text-center mb-6 w-full mx-auto md:tw-heading-60 md:mb-12 lg:w-8/12"
               variants={transitions.item}
             >
-              Explore the platform
+              Find out how OLYMPUS can help You accelerate
             </motion.h2>
-            <div className="text-center md:w-5/10 mx-auto">
-              <motion.p
-                className="relative tw-text-sm md:tw-text-base mb-8 text-center"
-                variants={transitions.item}
-              >
-                Find out how Olympus can help you build the next big Web3 idea.
-              </motion.p>
-            </div>
             <div>
               <MotionLink
-                href="https://zj3dp-waaaa-aaaak-afpxa-cai.icp0.io/"
+                href="https://airtable.com/app5kkXNk5jTbPn4A/shrTV2c1swnQe7DXt"
                 className="button-white"
                 variants={transitions.item}
               >
-                Get Early Access (Beta)
+                Request Early Access
               </MotionLink>
-              {/* <Link
-                href=""
-                className="button-white pointer-events-none !text-black/30"
-                aria-disabled
-              >
-                COMING SOON
-              </Link> */}
             </div>
           </AnimateSpawn>
 
@@ -338,7 +302,7 @@ function AcceleratorPage() {
             className="mb-20 relative "
           >
             <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
-              Sign up for email updates
+              Sign up for email updates{" "}
               <span className="text-white-60">
                 to keep up to date with the Internet Computer
               </span>

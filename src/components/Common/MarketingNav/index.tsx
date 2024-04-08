@@ -18,6 +18,7 @@ type SectionItem = {
 
 type FeaturedItem = {
   title: string;
+  subtitle?: string;
   href?: string;
   image: string;
 };
@@ -224,7 +225,13 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                 >
                   <span className="tw-heading-5 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
                     {item.sections[selectedSectionIndex].featured.title}
+                    {item.sections[selectedSectionIndex].featured.subtitle && (
+                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                        {item.sections[selectedSectionIndex].featured.subtitle}
+                      </h6>
+                    )}
                   </span>
+
                   <span className="flex-1 text-right">
                     <FeaturedArrowRight />
                   </span>
@@ -507,6 +514,11 @@ const MarketingNav = () => {
                         >
                           <span className="text-white tw-heading-5 flex-[2] group-hover/featured:-translate-y-2 transition-transform">
                             {item.featured.title}
+                            {item.featured.subtitle && (
+                              <h6 className="tw-heading-7 mt-2 leading-6 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                                {item.featured.subtitle}
+                              </h6>
+                            )}
                           </span>
                           <span className="flex-1 text-right">
                             <FeaturedArrowRight />
