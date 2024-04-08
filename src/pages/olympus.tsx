@@ -162,7 +162,6 @@ function AcceleratorPage() {
 
             <AnimateSpawn
               el={motion.section}
-              variants={transitions.container}
               className="pointer-events-none relative md:absolute -z-1 right-0 bottom-0 -mt-60 md:mt-0 md:w-2/10"
             >
               <div className=" md:absolute md:w-[250%] md:bottom-0 md:-right-12  translate-y-1/3 ">
