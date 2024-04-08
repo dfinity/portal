@@ -201,15 +201,15 @@ function AcceleratorPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="container-10 py-20 md:pt-40 md:pb-44">
+          <div className=" py-20 md:pt-40 md:pb-44">
             <motion.h2
-              className="tw-heading-3 md:text-[60px] md:leading-[70px] mb-6"
+              className="container-10 tw-heading-3 md:text-[60px] md:leading-[70px] mb-6"
               variants={transitions.item}
             >
               Value Proposition & Key Personas
             </motion.h2>
 
-            <div className="md:w-[140%] md:relative md:-left-2/10 mt-12 md:mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-4">
+            <div className="container-12 mt-12 md:mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-4">
               {cardsData.map((card) => (
                 <ShowcaseCard
                   key={card.id}
@@ -220,7 +220,7 @@ function AcceleratorPage() {
                 />
               ))}
             </div>
-            <aside className="md:mt-40 md:flex md:items-center	">
+            <aside className="container-10 md:mt-40 md:flex md:items-center	">
               <div className="pt-24 md:w-1/3">
                 <motion.h3 className="tw-heading-4">Rating Loop</motion.h3>
                 <motion.p className="text-2xl mb-0 ">
