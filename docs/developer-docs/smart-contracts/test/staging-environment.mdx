@@ -1,4 +1,11 @@
+---
+keywords: [intermediate, test, tutorial, staging environment, staging]
+---
+
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Staging environment
 
@@ -6,13 +13,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment can be helpful. While local deployments mirror the live mainnet as closely as possible, it is not the same. The local instance only runs as a single subnet. If you want to test canisters of two different subnets connecting to each other, you cannot do this locally. Other benefits of using a staging environment include being able to test an integration with other services, deployment workflows, and estimating costs before setting a feature live.
+Having a separate deployment environment available where features can be end-to-end tested before they get deployed to the production environment can be helpful. While local deployments mirror the live mainnet as closely as possible, it is not the same. The local instance only runs as a single subnet. If you want to test <GlossaryTooltip>canisters</GlossaryTooltip> of two different <GlossaryTooltip>subnets</GlossaryTooltip> connecting to each other, you cannot do this locally. Other benefits of using a staging environment include being able to test an integration with other services, deployment workflows, and estimating costs before setting a feature live.
 
 ## Setting up a staging environment
 
-In a staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myStaging` instead. `myStaging` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`. 
+In a staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myStaging` instead. `myStaging` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`.
 
-Networks are defined in two ways: assumed and explicitly configured. dfx only contains the `ic` network as an assumed environment. The flag `--network ic` can be used to run any command on the mainnet. 
+Networks are defined in two ways: assumed and explicitly configured. dfx only contains the `ic` network as an assumed environment. The flag `--network ic` can be used to run any command on the mainnet.
 
 All other networks are explicitly configured in `dfx.json`. The `"networks"` section should contain at least the `local` network, which gets chosen by default if no other network is specified with the `--network` flag.
 
@@ -34,7 +41,13 @@ The type `persistent` tells `dfx` that the canisters on this network will stay t
 
 ### Configuring a wallet
 
-The cycles wallet for each network is stored separately. The newly created `myStaging` network has no wallet configured yet.
+If you are using a cycles wallet, the cycles wallet for each network is stored separately. The newly created `myStaging` network has no wallet configured yet.
+
+:::caution
+Please note that the cycles wallet will be removed from dfx in a future release.
+
+It is recommended to use the cycles ledger instead.
+:::
 
 To use the same cycles wallet as on the main `ic` network, first make sure the correct identity is set by running the command:
 

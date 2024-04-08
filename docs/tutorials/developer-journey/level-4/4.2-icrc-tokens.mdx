@@ -10,13 +10,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. The acronym "ICRC" stands for "Internet Computer Request for Comments", as the standard was created by the Internet Computer working group. More information can be found on the working group [here](https://github.com/dfinity/ICRC).
+For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. The acronym "ICRC" stands for "Internet Computer Request for Comments", as the standard was created by the Internet Computer working group. [Learn more about the working group](https://github.com/dfinity/ICRC).
 
 :::info
 Standards defined within the ICRC group are not specific to tokens; anything can be standardized using an ICRC standard. Some examples may be the standardization of metadata fields or digital assets other than tokens.
 :::
 
-The purpose of the ICRC-1 standard is to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. A detailed account of the standard can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+The purpose of the ICRC-1 standard is to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. [View a detailed account of the standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
 There are several extensions of the ICRC-1 standard, such as the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Not all ICRC standards must be extensions of the ICRC-1 standard, though. This tutorial will focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard's endpoints.
 
@@ -92,10 +92,12 @@ Before you start, verify that you have set up your developer environment accordi
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -105,7 +107,7 @@ dfx start --clean --background
 dfx new icrc1_ledger_canister
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -156,7 +158,7 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 
 ### Locating the Wasm and Candid files

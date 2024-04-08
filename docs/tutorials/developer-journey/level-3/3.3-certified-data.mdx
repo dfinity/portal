@@ -291,7 +291,7 @@ public func http_request_update(req : HttpRequest) : async HttpResponse {
 
 In this function, a request that was upgraded to an `update` request is stored in the cache with a certification, so that next time it is queried, it can be returned with the certificate and a status code of `200`, rather than the status code of `404`.
 
-The full canister code can be found at `src/demo.mo`, or [here](https://github.com/krpeacock/certified-cache/blob/main/src/demo.mo) on GitHub.
+The full canister code can be found at [`src/demo.mo`](https://github.com/krpeacock/certified-cache/blob/main/src/demo.mo) on GitHub.
 
 Now let's deploy the canister to make some requests:
 

@@ -236,7 +236,12 @@ const UpcomingHubCard: React.FC<{
         {hub.description}
       </p>
       <p className="mb-8 mx-6">
-        <Link className="button-outline button-small" href={hub.link}>
+        <Link
+          className="button-outline button-small"
+          href={hub.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Learn more
         </Link>
       </p>

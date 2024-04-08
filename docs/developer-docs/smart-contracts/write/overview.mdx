@@ -1,25 +1,26 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Overview 
+# Overview
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 
 ICP supports a wide range of application and architecture types.
-Apps can range from single smart contracts to complex, multi-canister projects that are controlled by a DAO, and everything in between.
-To begin writing and structuring your smart application, there are a few different workflows you can follow. 
+Apps can range from single smart contracts to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects that are controlled by a DAO, and everything in between.
+To begin writing and structuring your smart application, there are a few different workflows you can follow.
 - **Standard workflow**:
   The developer writes both the frontend code and the backend code.
   The frontend code is hosted on-chain in a canister and is served to the browser together with other web assets such as HTML and CSS.
   When the frontend code runs in the browser, it calls functions of the backend canister.
- 
+
 - **Framework-based workflow**:
 
-  - [Juno](docs/current/developer-docs/web-apps/frameworks/juno) is a community project that is tailored for Web2 developers.
+  - [Juno](/docs/current/developer-docs/web-apps/frameworks/juno) is a community project that is tailored for Web2 developers.
     It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns.
 	For more details please follow [the official Juno documentation](https://juno.build/docs/intro).
 
-  - [Bitfinity EVM](docs/current/developer-docs/backend/solidity) is tailored for Solidity developers.
+  - [Bitfinity EVM](/docs/current/developer-docs/backend/solidity) is tailored for Solidity developers.
     It is a canister that runs an instance of the Ethereum virtual machine and allows developers to upload and execute smart contracts written in Solidity.
 	For more details please follow [the official Bitfinity documentation](https://docs.bitfinity.network/).
 
@@ -30,18 +31,18 @@ This page will focus on the standard workflow of writing applications consisting
 The backend stores the application’s data and contains the core logic.
 Several languages are supported, such as:
 
-- **Rust**: supported by [DFINITY](https://juno.build/docs/intro).
+- **Rust**: supported by [DFINITY](https://github.com/dfinity/cdk-rs).
   Among ICP languages, Rust is the language with the most production coverage.
   All system smart contracts, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icp_ledger), the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration smart contracts, are written in Rust.
   This language gives the developer full control over all aspects of the smart contract starting from performance to memory management.
-  The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code. 
-  [Learn more about using Rust](docs/current/developer-docs/backend/rust).
+  The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code.
+  [Learn more about using Rust](/docs/current/developer-docs/backend/rust).
 
-- **Motoko**: supported by [DFINITY](https://juno.build/docs/intro).
+- **Motoko**: supported by [DFINITY](https://github.com/dfinity/motoko).
   Motoko is production ready and was specifically designed to onboard developers onto ICP and leverage the actor-based programming model of ICP.
   It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
-  Examples of production smart contracts that use Motoko: [Sonic DEX](https://github.com/sonicdex/sonic-v1), [ICDex](https://github.com/iclighthouse/ICDex), [Cycles manager](https://github.com/CycleOperators/cycles-manager). 
-  [Learn more about using Motoko](docs/current/developer-docs/backend/motoko/).
+  Examples of production smart contracts that use Motoko: [Sonic DEX](https://github.com/sonicdex/sonic-v1), [ICDex](https://github.com/iclighthouse/ICDex), [Cycles manager](https://github.com/CycleOperators/cycles-manager).
+  [Learn more about using Motoko](/docs/current/developer-docs/backend/motoko/).
 
 - **TypeScript (beta)**: supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle.
   Currently Azle is in beta, but already allows writing smart contracts that run on ICP.
@@ -58,15 +59,15 @@ This means that web assets can be stored fully on-chain and developers don’t n
 The typical development workflow of the frontend is:
 
 1. The developer writes HTML, JS, CSS code.
-1. The developer uses the default asset canister created by `dfx` or writes their own custom canister to store the web assets on-chain. 
+1. The developer uses the default asset <GlossaryTooltip>canister</GlossaryTooltip> created by `dfx` or writes their own custom canister to store the web assets on-chain.
 1. Users open the application in the browser by navigating to the URL `https://<canister-id>.ic0.app` or a custom domain that the developer has registered for the canister.
 1. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
-1. When the JS code runs in the browser, it can call the backend canister endpoints using the [agent-js](docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+1. When the JS code runs in the browser, it can call the backend canister endpoints using the [agent-js](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
 Since ICP supports general HTML, JS, and CSS code, any web framework should be compatible with ICP.
 SvelteKit, React, Vue have been used successfully in production.
 `dfx v0.17.0` and newer can be used to automatically generate project templates using frameworks such as these.
-[Lear more about using these frameworks](docs/current/developer-docs/web-apps/browser-js/js-frameworks).
+[Learn more about using these frameworks](/docs/current/developer-docs/web-apps/browser-js/js-frameworks).
 
 One feature of modern web frameworks that currently doesn’t work in a canister is server-side rendering (SSR).
 That’s because SSR requires running JS code in the canister.
@@ -84,18 +85,18 @@ The recommended practice is to use already existing libraries, such as the Rust 
 
 Another question that developers should ask is how to structure their application’s canisters.
 It is possible to build an application consisting of multiple canisters that communicate with each other.
-A common pitfall for new developers is architecting the application for millions of users from the get go without understanding the underlying trade-offs of the system.
+A common pitfall for new developers is designing the application for millions of users from the get go without understanding the underlying trade-offs of the system.
 It is better to start with the simplest possible architecture and iteratively improve it with user growth.
 
 ### Single canister architecture
 This is the simplest possible architecture and the recommended starting point for most developers.
-A single canister can host the entire application stack including its web assets, core logic, and data.
+A single <GlossaryTooltip>canister</GlossaryTooltip> can host the entire application stack including its web assets, core logic, and data.
 Note that by default, `dfx` generates a dual canister project where one canister is the backend canister and the other canister is the frontend canister that stores web assets.
 Since the frontend canister is read-only and all state and logic is in the backend canister, this dual canister architecture is effectively the same as the single canister architecture.
-Even though this architecture is simple, it can scale to thousands of users and gigabytes of data. 
+Even though this architecture is simple, it can scale to thousands of users and gigabytes of data.
 
 ### Canister per subnet architecture
-ICP scales horizontally via subnets, so smart contracts can also scale by utilizing more subnets.
+ICP scales horizontally via <GlossaryTooltip>subnets</GlossaryTooltip>, so smart contracts can also scale by utilizing more subnets.
 One way to achieve this is to have one or multiple canisters per subnet and then shard data over these canisters to distribute the load.
 This is the most scalable architecture and could, in theory, support millions of users and terabytes of data.
 Since the application data and logic is distributed over multiple subnets, this requires expert knowledge of distributed programming.
@@ -114,5 +115,5 @@ Since users are controllers of their canisters, they can install their own code,
 These user benefits come at large development costs because the main canister needs to be programmed in such a way that it can handle all possible actions of potentially malicious user canisters.
 This is a new and unprecedented way of programming.
 There hasn’t been a successful implementation of this vision yet.
-A couple of projects that opted for this architecture have not given the ownership of canisters to the users yet.
+A couple of projects that opted for this architecture, but only [NFID Vaults](https://nfidvaults.com) have given the ownership of canisters to the users.
 A common misconception is that the canister-per-user architecture is the most scalable, actually canister-per-subnet is more performant because it can utilize multiple subnets without having the overhead of too many canisters.

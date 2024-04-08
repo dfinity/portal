@@ -234,10 +234,12 @@ Before you start, verify that you have set up your developer environment accordi
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -247,7 +249,7 @@ dfx start --clean --background
 dfx new multiple_actors
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -298,11 +300,11 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ### Configuring canisters in `dfx.json`
 
-As you've seen in previous portions of our developer journey, when a new project is created with `dfx`, a default `dfx.json` file is created in the project's directory. For this guide, you'll need to edit `dfx.json` to specify our three canisters and the location of their Motoko files.
+As you've seen in previous portions of our developer journey, when a new project is created with `dfx`, a default `dfx.json` file is created in the project's directory. For this guide, you'll need to edit `dfx.json` to specify our two canisters and the location of their Motoko files.
 
 First, open the `dfx.json` file in your code editor. Delete the existing content and replace it with the following:
 
@@ -331,14 +333,7 @@ In this file, you can see the definition for each of your three canisters with c
 
 ### Creating canister directories and Motoko files
 
-First, you'll remove the default canister files created by `dfx` since you won't be using them:
-
-```bash
-rm -r src/multiple_actors_backend/
-rm -r src/multiple_actors_frontend/
-```
-
-Then, you'll create new directories for each of your canisters and create an empty `main.mo` file in each:
+First, create new directories for each of your canisters and create an empty `main.mo` file in each:
 
 ```bash
 mkdir src/character_count && touch src/character_count/main.mo
@@ -419,8 +414,8 @@ Installing code for canister daemon, with canister ID c5kvi-uuaaa-aaaaa-qaaia-ca
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    character_count: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
-    daemon: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
+    character_count: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
+    daemon: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
 ```
 
 

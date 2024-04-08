@@ -40,7 +40,7 @@ Together, the peer-to-peer and consensus layers select and order incoming messag
 
 In the ICP technology stack, the first layer is the peer-to-peer layer. This layer is responsible for the communication between the nodes within a subnet, and facilitates a reliable and secure channel to do so. Through peer-to-peer communication, nodes on a subnet can broadcast messages, referred to as **artifacts**, to all nodes in the subnet.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/peer-to-peer-p2p/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/peer-to-peer-p2p/)
 
 #### Consensus
 
@@ -48,13 +48,13 @@ The consensus layer is responsible for assuring that all nodes in a subnet agree
 
 A unique aspect of ICP consensus protocol is that it provides **cryptographically guaranteed finality**, which is different in comparison to other consensus protocols, such as the one used by Bitcoin, which provides **probabilistic finality**.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/consensus/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/consensus/)
 
 #### Message routing
 
 The message routing layer receives a block of messages from the consensus layer, then places these messages into the input queues of their associated target canisters. This process is called **induction**. The induction process then triggers the **execution** process, which may result in new canister messages in the executed canisters' output queues. After execution has completed, messages in the output queues are routed to their recipient by the message routing component.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/message-routing/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/message-routing/)
 
 #### Execution
 
@@ -62,7 +62,7 @@ The execution layer is responsible for executing canister smart contract code. E
 
 Messages that have been inducted into canister queues on the subnet are executed by the execution layer until either all messages in the queue have been executed or until the cycles limit for the round has been reached.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/execution-layer/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/execution-layer/)
 
 ## Chain-key cryptography
 
@@ -77,7 +77,7 @@ Through chain-key cryptography:
 
 [**Chain-key signatures**](https://internetcomputer.org/how-it-works/chain-key-technology/) provide the ability for transactions that are targeted at other blockchain networks to be computed fully on-chain using ICP. This allows for integrations with other blockchains such as Bitcoin and Ethereum.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/chain-key-technology/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/chain-key-technology/)
 ## Canisters and smart contracts
 
 Smart contracts on ICP are referred to as **canisters**. Canisters are computational units that bundle together both code and state. A canister can define functions that can be called by external services, such as browsers or mobile apps, or that can be called by other canisters.
@@ -90,13 +90,13 @@ A canister is managed by **controllers**. A controller can be a centralized enti
 
 Controllers are also responsible for assuring that a canister contains sufficient **cycles** to pay for the canister's resources, which include network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/canister-lifecycle/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/canister-lifecycle/)
 
 ## Tokens
 
 The Internet Computer's utility token is **ICP**, named after the Internet Computer Protocol. This utility token is used for several functions within the network, such as being staked to have voting power in the NNS, or being used to purchase **cycles**, which are used to power canisters deployed on the mainnet network.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/tokenomics/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/tokenomics/)
 
 ## Governance
 
@@ -104,13 +104,13 @@ Want to go further into this topic? Check out [this documentation.](https://inte
 
 The Internet Computer is governed by the **Network Nervous System (NNS)**, which is a **decentralized autonomous organization (DAO)**. The NNS coordinates the independent nodes that make up the decentralized system of ICP. The NNS is responsible for proposing and voting on decisions such as which subnet a node should belong to, which protocol version the nodes should run, and when nodes should be upgraded to a new version of the protocol. Anyone can participate in the NNS by staking ICP tokens and voting on proposals.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/nns/)
+[Want to go further into this topic?](https://internetcomputer.org/nns/)
 
 ### Service Nervous System
 
 Dapps deployed on ICP can be governed in the same manner that ICP itself is governed - through a DAO, referred to as an **SNS, or Service Nervous System**. An SNS is a version of the NNS that is responsible for tokenizing and decentralizing a single dapp. Once a dapp's control has been handed over to an SNS, it can be managed through proposals that are voted on by those that have staked the dapp's native token.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/sns/)
+[Want to go further into this topic?](https://internetcomputer.org/sns/)
 
 ## Internet Identity
 
@@ -118,7 +118,7 @@ The Internet Computer has pioneered a secure and advanced form of cryptographic 
 
 II can be integrated with dapps on ICP and helps secure your online identity by providing protection from websites collecting your data. II does this through the ability for users to create new anonymous, independent accounts for each website that they visit.
 
-Want to go further into this topic? Check out [this documentation.](https://internetcomputer.org/how-it-works/web-authentication-identity/)
+[Want to go further into this topic?](https://internetcomputer.org/how-it-works/web-authentication-identity/)
 
 ## Need help?
 

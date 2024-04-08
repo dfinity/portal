@@ -317,7 +317,7 @@ See also: "Inter-canister calls" section in [how to audit an Internet Computer c
 
 To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that e.g. a caller (or anyone) can only execute an entire call (which involves several messages) once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above.
 
-The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Note that the `Drop` function is only executed for callbacks and not all messages in general, as `ic0.call_on_cleanup` is only executed for those.
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources (recall that `ic0.call_on_cleanup` is executed if the `reply` or the `reject` callback executed and trapped).
 
     pub struct State {
         pending_requests: BTreeSet<Principal>,
@@ -356,8 +356,10 @@ The locks would usually be released in the callback. That bears the risk that th
     #[candid_method(update)]
     async fn example_call_with_locking_per_caller() -> Result<(), String> {
         let caller = ic_cdk::caller();
-        // using `?`, return an error immediately if there is already a call in progress for `caller`.
-        let _ = CallerGuard::new(caller)?;
+        // using `?`, return an error immediately if there is already a call in progress for `caller`
+        // warning: never use `let _ = CallerGuard::new(caller)?`, because this will drop the guard immediately
+        // and locking would not be effective
+        let _guard = CallerGuard::new(caller)?;
         // do anything, call other canisters
         Ok(())
     } // here the guard goes out of scope and is dropped
@@ -716,13 +718,13 @@ Canisters pay for their cycles which makes them inherently vulnerable to attacks
 
 #### Security concern
 
-The correct execution of [canister_inspect_message](../../references/ic-interface-spec#system-api-inspect-message) is not guaranteed in the presence of a malicious node, because it is executed as a [query call](../../references/ic-interface-spec#http-query).
+The correct execution of [canister_inspect_message](../../references/ic-interface-spec#system-api-inspect-message) is not guaranteed because it is executed by a single node and if that node is malicious, it can e.g. simply skip this check. In that case the update call would be executed without any message inspection checks. 
+
+Also note that for inter-canister calls `canister_inspect_message` is not invoked.
 
 #### Recommendation
 
 Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security critical code, such as [access control checks](#make-sure-any-action-that-only-a-specific-user-should-be-able-to-do-requires-authentication), should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function.
-
-Also note that for inter-canister calls `canister_inspect_message` is not invoked which is another reason to execute the code as part of the update call by using a guard.
 
 ### Do not publicly reveal canister's cycles balance
 

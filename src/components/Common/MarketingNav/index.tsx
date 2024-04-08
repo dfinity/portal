@@ -18,6 +18,7 @@ type SectionItem = {
 
 type FeaturedItem = {
   title: string;
+  subtitle?: string;
   href?: string;
   image: string;
 };
@@ -124,18 +125,21 @@ const Drawer: React.FC<{
   );
 };
 
-const AuxItems: React.FC<{ items: AuxItem[] }> = ({ items }) => {
+const AuxItems: React.FC<{
+  items: AuxItem[];
+}> = ({ items }) => {
   return (
-    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300">
+    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300 md:contents">
       {items.map((item) => (
         <li key={item.name}>
           <Link
             href={item.href}
-            className="text-infinite tw-button-sm inline-flex gap-2 items-center hover:no-underline hover:text-black"
+            className="text-infinite tw-button-sm md:tw-button-xs inline-flex md:flex gap-2 items-center hover:no-underline hover:text-black md:whitespace-nowrap"
           >
             {item.name}
-
-            <LinkArrowUpRight className="w-[14px]" />
+            {isLinkExternal(item.href) && (
+              <LinkArrowUpRight className="w-[14px]" />
+            )}
           </Link>
         </li>
       ))}
@@ -221,7 +225,13 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                 >
                   <span className="tw-heading-5 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
                     {item.sections[selectedSectionIndex].featured.title}
+                    {item.sections[selectedSectionIndex].featured.subtitle && (
+                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                        {item.sections[selectedSectionIndex].featured.subtitle}
+                      </h6>
+                    )}
                   </span>
+
                   <span className="flex-1 text-right">
                     <FeaturedArrowRight />
                   </span>
@@ -230,17 +240,10 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
             )}
           </div>
         </div>
+        {/* desktop aux items */}
         <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center">
-          {item.auxItems.map((item) => (
-            <Link
-              className="tw-button-xs whitespace-nowrap flex items-center gap-2 hover:no-underline hover:text-black"
-              key={item.name}
-              href={item.href}
-            >
-              {item.name}
-              <LinkArrowUpRight className="w-[14px]" />
-            </Link>
-          ))}
+          <AuxItems items={item.auxItems} />
+
           <div className="flex-1"></div>
           <div className="flex gap-7 items-center">
             {item.socialIcons &&
@@ -450,7 +453,7 @@ const MarketingNav = () => {
           ))}
         </ul>
 
-        {/* top level aux items */}
+        {/* top level mobile aux items */}
         <AuxItems items={nav.auxItems} />
       </div>
 
@@ -511,6 +514,11 @@ const MarketingNav = () => {
                         >
                           <span className="text-white tw-heading-5 flex-[2] group-hover/featured:-translate-y-2 transition-transform">
                             {item.featured.title}
+                            {item.featured.subtitle && (
+                              <h6 className="tw-heading-7 mt-2 leading-6 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                                {item.featured.subtitle}
+                              </h6>
+                            )}
                           </span>
                           <span className="flex-1 text-right">
                             <FeaturedArrowRight />
@@ -523,7 +531,7 @@ const MarketingNav = () => {
               )}
             </ul>
 
-            {/* aux items */}
+            {/* level 2 mobile aux items */}
             {nav.mainItems[secondaryMobileNavOpen].auxItems && (
               <AuxItems
                 items={nav.mainItems[secondaryMobileNavOpen].auxItems}

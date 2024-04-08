@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, cycles, free cycles, cycles coupon]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Getting started with free cycles
 
@@ -11,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## What are ICP cycles?
 The Internet Computer Protocol runs on a network of nodes owned and operated by a growing community of independent node providers (NPs) distributed across the globe. NPs spend money for running nodes, e.g. they purchase hardware and require electricity and network bandwidth. The Internet Computer Protocol compensates NPs on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
-To make ICP sustainable, canister smart contracts are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycle balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens.
+To make ICP sustainable, <GlossaryTooltip>canisters</GlossaryTooltip> are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens.
 
 ## Why are cycles different from ICP tokens?
 
@@ -29,8 +30,7 @@ This guide explains how to use **cycles faucet** to acquire your first amount of
 
 ## Step 1: Get a coupon.
 
-First, you will need to navigate to <https://faucet.dfinity.org>. You
-will need to put in a request for cycles on the [DFINITY dev official Discord](https://discord.gg/jnjVVQaE2C) server. You can click on the **REQUEST CYCLES** button on the faucet page to join the Discord server.
+First, you will need to navigate to /<https://faucet.dfinity.org/>. You will need to put in a request for cycles on the [DFINITY dev official Discord](https://discord.gg/jnjVVQaE2C) server. You can click on the **REQUEST CYCLES** button on the faucet page to join the Discord server.
 
 ![Getting Coupon](_attachments/faucet_step_1.png)
 
@@ -68,9 +68,9 @@ Next, confirm your computer has `dfx` installed. Run this command to check the v
 
     dfx --version
 
-If your dfx version is below 0.12.0, please run this command:
+If your `dfx` version is below 0.12.0, please run this command:
 
-    sudo dfx upgrade
+    dfx upgrade
 
 ![Setup SDK](_attachments/faucet_step_4.png)
 
@@ -97,22 +97,28 @@ dfx identity use MyNewIdentity
 You will need to claim your free cycles by running this command:
 
 ```
-dfx wallet --network ic redeem-faucet-coupon <your-coupon-code>
+dfx cycles --network ic redeem-faucet-coupon <your-coupon-code>
 ```
+
+:::info
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
+
+Please note that the cycles wallet will be removed from dfx in a future release.
+:::
 
 ![Claim Cycles](_attachments/faucet_step_5.png)
 
 Click **NEXT STEP** to continue.
 
-## Step 11: Verify wallet canister.
+## Step 11: Verify your balance
 
-The last step is to verify the wallet is setup correctly, by checking its balance using the `dfx wallet --network ic balance` command:
+The last step is to verify the coupon was redeemed correctly by checking your balance using the `dfx cycles --network ic balance` command:
 
-![Verify Wallet Canister](_attachments/faucet_step_6.png)
+![Verify coupon balance](_attachments/faucet_step_6.png)
 
 ## Conclusion
 
-Now you are ready to host a website on ICP or follow one of our dapp tutorials!
+Now you are ready to deploy a canister on the mainnet!
 
 ## Resources
 To further explore cycle management please see the following articles:

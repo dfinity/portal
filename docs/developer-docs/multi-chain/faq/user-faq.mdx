@@ -12,11 +12,23 @@ The following questions and answers are from the POV of a user using consumer ap
 
 For questions from the POV of a developer who wants to know things such as "how does a canister send ckBTC?" or how to write code for smart contracts to hold, send, or receive, please see the other FAQs.
 
+## General multi-chain questions
+
+### What is the purpose of the Internet Computer being having multi-chain smart contracts that can call into other blockchains?
+
+Three reasons:
+
+1. ICP canister smart contracts have a lot of functionality that other blockchain smart contracts do not, now developers of other blockchains can use ICP smart contract functionality for custody on other chains.
+
+2. ICP canister smart contracts are able to call into Bitcoin, giving Bitcoin a powerful smart contract layer, since Bitcoin (unlike Ethereum) does not have native smart contracts.
+
+3. ICP Canister smart contract developers can create software systems that are interoperable with other blockchain smart contracts.
+
 ## ckBTC User Questions
 
 Questions about ckBTC from a user's POV.
 
-## What is ckBTC?
+### What is ckBTC?
 
 Chain-key Bitcoin (ckBTC) is a token on the Internet Computer that is backed 1:1 by bitcoin (BTC). This means that 1 ckBTC can always be redeemed for 1 BTC and vice versa. Unlike other tokens pegged to bitcoin, the ckBTC token does not rely on a third-party bridge for the conversion between BTC and ckBTC, making it a substantially more secure alternative to “wrapped” tokens.
 
@@ -132,7 +144,7 @@ To convert ETH to ckETH and vice versa, you can follow these steps:
 
 **To convert ckETH back to ETH:**
 
-The user again needs to carry out two steps:
+The user again needs to carry out two steps (using the `dfx`):
 
 1. Call the `icrc2_aprove` endpoint on the ckETH ledger (canister ID `ss2fx-dyaaa-aaaar-qacoq-cai`), where the ckEH minter account is the `spender` and `amount` is set at least to the amount to be converted to ETH (minus fees).
 2. Call the `withdraw_eth` endpoint on the ckETH minter (canister ID `sv3dd-oaaaa-aaaar-qacoa-cai`), providing the Ethereum address to be credited and the amount.
@@ -140,11 +152,8 @@ The user again needs to carry out two steps:
 The user can call `retrieve_eth_status` on the ckEH minter to check the status of the retrieval process.
 https://github.com/timohanke/ic/blob/d34903fc2c41e2cff5df86248628f5d0b4fd7168/rs/ethereum/cketh/minter/README.adoc#withdrawal-cketh-to-eth
 
-
-1. When the user wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH. 
-The wallet address `0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80` will send the ETH to the wallet address noted here.
-
 **Additional reading**
+
 - [Withdrawing ckETH](https://github.com/timohanke/ic/blob/d34903fc2c41e2cff5df86248628f5d0b4fd7168/rs/ethereum/cketh/minter/README.adoc#withdrawal-cketh-to-eth)
 - [How to acquire ckETH ](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc#e10f)
 - [Exploring data on ckETH, the digital twin of ETH on ICP](https://medium.com/dfinity/a-data-driven-exploration-of-cketh-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978) 

@@ -65,6 +65,7 @@ abbr[title] {
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page,
+html.plugin-docs,
 html.plugin-blog {
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
@@ -192,7 +193,8 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       background: #fdfdfd;
     }
 
-    .ic-chip-row + p:first-of-type {
+    .ic-chip-row + p:first-of-type,
+    .ic-chip-row + iframe {
       margin-top: 1rem;
     }
   }
@@ -200,7 +202,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  @include meta.load-css("highlight.js/styles/github-dark");
   --ifm-color-primary: #e11f7a;
   --ifm-color-primary-dark: #cb1b6e;
   --ifm-color-primary-darker: #c01a68;

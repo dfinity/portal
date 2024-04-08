@@ -317,7 +317,7 @@ Notice that now the value of `c` is set to `init` rather than set to `0`, to ref
 
 ## Message inspection
 
-When a canister receives an ingress message submitted through HTTP, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_method` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted. `canister_inspect_method` is not used for HTTP query calls, inter-canister calls, for calls made to the management canister. 
+When a canister receives an ingress message submitted through HTTP, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_message` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted. `canister_inspect_message` is not used for HTTP query calls, inter-canister calls, and for calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/docs/current/developer-docs/security/rust-canister-development-security-best-practices#do-not-rely-on-ingress-message-inspection) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks. 
 
 Message inspection is designed to mitigate some denial of service attacks, since it drains canister of their cycles for placing unsolicited calls that are rejected.
 
@@ -455,7 +455,7 @@ public shared func doneTodo3(id : Todo.TodoId) : async Text {
 
 This callsite returns more detailed errors, such as 'There is no todo with that ID', or 'You've already completed this todo', which is much more useful than 'Something went wrong'. 
 
-You can learn more about working with `Option` and `Result` types [here](/docs/current/motoko/main/errors#working-with-optionresult).
+[Learn more about working with `Option` and `Result` types](/docs/current/motoko/main/errors#working-with-optionresult).
 
 ### Asynchronous errors
 

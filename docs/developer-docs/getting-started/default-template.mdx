@@ -2,9 +2,12 @@
 keywords: [beginner, getting started, tutorial, project template, default template]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 
 # Default project template
 
@@ -14,13 +17,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 The `dfx new <project_name>` command creates a new project directory, template files, and a new `<project_name>` Git repository for your project.
 
-When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts. 
+When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts.
 
 ## Exploring the default project structure
 
 By default, the project structure will resemble the following:
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```bash
@@ -73,7 +76,7 @@ hello/
 
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```bash
 hello/
@@ -87,15 +90,15 @@ hello/
 │   │   └── package.json
 │   │   └── hello_backend.did
 │   │   └── src
-│       │   ├── index.ts 
+│       │   ├── index.ts
 │   ├── hello_frontend
 │       ├── assets
 |       |── index.html
 |       |── package.json
 │       └── src
 │           ├── App.js
-│           ├── index.scss 
-│           ├── logo2.svg 
+│           ├── index.scss
+│           ├── logo2.svg
 │           ├── main.js
 │           └── vite-env.d.ts
 |       |── tsconfig.json
@@ -104,9 +107,9 @@ hello/
 ```
 
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```
 hello/
@@ -126,8 +129,8 @@ hello/
 |       |── package.json
 │       └── src
 │           ├── App.js
-│           ├── index.scss 
-│           ├── logo2.svg 
+│           ├── index.scss
+│           ├── logo2.svg
 │           ├── main.js
 │           └── vite-env.d.ts
 |       |── tsconfig.json
@@ -135,8 +138,8 @@ hello/
 └── tsconfig.json
 ```
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+</AdornedTabs>
 
 In this directory, the following files and directories are notable:
 
@@ -150,7 +153,7 @@ In this directory, the following files and directories are notable:
 
 By default, the `dfx.json` file will contain automatically generated configuration settings for your new project. This file is used to configure the components of your project:
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```json
@@ -182,7 +185,7 @@ By default, the `dfx.json` file will contain automatically generated configurati
   },
   "output_env_file": ".env",
   "version": 1
-}      
+}
 ```
 
 </TabItem>
@@ -219,12 +222,12 @@ By default, the `dfx.json` file will contain automatically generated configurati
   },
   "output_env_file": ".env",
   "version": 1
-}%   
+}%
 ```
 
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```json
 {
@@ -256,12 +259,12 @@ By default, the `dfx.json` file will contain automatically generated configurati
   },
   "output_env_file": ".env",
   "version": 1
-} 
+}
 ```
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```json
 {
@@ -297,15 +300,15 @@ By default, the `dfx.json` file will contain automatically generated configurati
 ```
 
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+</AdornedTabs>
 
 
 ## Reviewing the default program code
 
-The backend canister's code will be located in the `src/hello_backend` subdirectory. 
+The backend canister's code will be located in the `src/hello_backend` subdirectory.
 
-<Tabs groupId="language">
+<AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
@@ -330,7 +333,7 @@ fn greet(name: String) -> String {
 
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
 import { Canister, query, text } from 'azle';
@@ -342,9 +345,9 @@ export default Canister({
 })
 ```
 
-</TabItem>
+</AdornedTab>
 
-<TabItem value="python" label="Python">
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
 from kybra import query
@@ -355,8 +358,8 @@ def greet(name: str) -> str:
 ```
 
 
-</TabItem>
-</Tabs>
+</AdornedTab>
+</AdornedTabs>
 
 ## Next steps
 

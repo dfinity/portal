@@ -2,8 +2,10 @@
 keywords: [beginner, motoko, tutorial, deploying, canisters]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
@@ -23,7 +25,7 @@ Before getting started, assure you have set up your developer environment accord
 
 Open a terminal window on your local computer, if you don’t already have one open.
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -32,24 +34,24 @@ Use `dfx new <project_name>` to create a new project:
 dfx new explore_hello
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
-  Vanilla JS
+❯ Vanilla JS
   No JS template
   No frontend canister
 ```
@@ -71,10 +73,10 @@ Lastly, you can include extra features to be added to your project:
 dfx new explore_hello
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Then, navigate into the project with the command:
 

@@ -37,6 +37,7 @@ const sidebars = {
           label: "Cycles",
           items: [
             "developer-docs/getting-started/cycles/cycles-faucet",
+	    "developer-docs/getting-started/cycles/cycles-ledger",
             "developer-docs/getting-started/cycles/cycles-wallet",
             "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
@@ -71,6 +72,11 @@ const sidebars = {
               label: "Quickstart for React developers",
               id: "developer-docs/getting-started/quickstart/react-quickstart",
             },
+            {
+              type: "doc",
+              label: "Juno quickstart",
+              id: "developer-docs/getting-started/quickstart/juno-quickstart",
+            },
           ],
         },
       ],
@@ -91,7 +97,25 @@ const sidebars = {
         {
           type: "category",
           label: "Write",
-          items: ["developer-docs/smart-contracts/write/overview"],
+          items: [
+            "developer-docs/smart-contracts/write/overview",
+            "developer-docs/smart-contracts/write/resources",
+          ],
+        },
+        {
+          type: "doc",
+          label: "Create",
+          id: "developer-docs/smart-contracts/create",
+        },
+        {
+          type: "doc",
+          label: "Install",
+          id: "developer-docs/smart-contracts/install",
+        },
+        {
+          type: "doc",
+          label: "Compile",
+          id: "developer-docs/smart-contracts/compile",
         },
         {
           type: "category",
@@ -140,6 +164,7 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/upgrade",
             "developer-docs/smart-contracts/maintain/resource-limits",
+            "developer-docs/smart-contracts/maintain/trapping",
             {
               type: "category",
               label: "Cost",
@@ -193,6 +218,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
+              type: "doc",
+              label: "Async code and inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
@@ -218,6 +248,11 @@ const sidebars = {
                 "developer-docs/smart-contracts/encryption/vetkeys",
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
+            },
+            {
+              type: "doc",
+              label: "On-chain randomness",
+              id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
@@ -266,7 +301,7 @@ const sidebars = {
                 type: "doc",
                 id: "developer-docs/developer-tools/cli-tools/cli-reference/index",
               },
-              items: [
+	      items: [
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-bootstrap",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
@@ -439,10 +474,11 @@ const sidebars = {
           label: "Application frontends",
           items: [
             "developer-docs/web-apps/application-frontends/overview",
-            "developer-docs/web-apps/application-frontends/serving-static-assets",
             "developer-docs/web-apps/application-frontends/custom-frontend",
-            "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
+            "developer-docs/web-apps/application-frontends/serving-static-assets",
+            "developer-docs/web-apps/application-frontends/add-stylesheet",
+            "developer-docs/web-apps/application-frontends/bundlers",
             "developer-docs/web-apps/application-frontends/webpack-dev-server",
           ],
         },
@@ -479,7 +515,7 @@ const sidebars = {
               items: [
                 "developer-docs/web-apps/user-login/internet-identity/overview",
                 "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-                "developer-docs/web-apps/user-login/internet-identity/integrate-identity",
+                "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
@@ -540,6 +576,15 @@ const sidebars = {
           label: "Formal verification",
           id: "developer-docs/security/formal-verification",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "DeAI",
+      items: [
+        "developer-docs/ai/overview",
+        "developer-docs/ai/ai-on-chain",
+        "developer-docs/ai/machine-learning-sample"
       ],
     },
     {
@@ -662,21 +707,32 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Multi-chain",
+      label: "Chain fusion",
       items: [
+        "developer-docs/multi-chain/overview",
         {
           type: "category",
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
-            "developer-docs/multi-chain/bitcoin/ckbtc",
             {
               type: "category",
-              label: "Advanced",
+              label: "Using the integration",
               items: [
-                "developer-docs/multi-chain/bitcoin/read-state",
-                "developer-docs/multi-chain/bitcoin/submit-transactions",
-                "developer-docs/multi-chain/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckBTC",
+              items: [
+                "developer-docs/multi-chain/bitcoin/ckbtc/overview",
+                "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
+                "developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps",
               ],
             },
           ],
@@ -686,9 +742,26 @@ const sidebars = {
           label: "Ethereum",
           items: [
             "developer-docs/multi-chain/ethereum/overview",
-            "developer-docs/multi-chain/ethereum/cketh",
-            "developer-docs/multi-chain/ethereum/evm-rpc",
-            "developer-docs/multi-chain/ethereum/siwe",
+            {
+              type: "category",
+              label: "Using the integration",
+              items: [
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
+                "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckETH",
+              items: [
+                "developer-docs/multi-chain/ethereum/cketh/overview",
+                "developer-docs/multi-chain/ethereum/cketh/making-transactions",
+                "developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps",
+              ],
+            },
           ],
         },
       ],
@@ -1100,6 +1173,7 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+            "references/supported-signatures",
           ],
         },
         {
@@ -1141,6 +1215,7 @@ const sidebars = {
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
         "developer-docs/backend/rust/generating-candid",
+        "developer-docs/backend/rust/message-inspect",
       ],
     },
   ],

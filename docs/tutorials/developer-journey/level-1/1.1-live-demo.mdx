@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, developer journey, live demo, motoko playground]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 1.1 Exploring a live demo
 
@@ -24,7 +25,7 @@ The Motoko playground is a development environment that hosts a 'canister pool' 
 While the Motoko playground has 'Motoko' in the title, it can be used to deploy canisters written in any development language, not just Motoko.
 :::
 
-The playground is a great way to be able to deploy a canister quickly for short, small-scale testing, or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles and setting up a cycles wallet.
+The playground is a great way to be able to deploy a canister quickly for short, small-scale testing, or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles.
 
 Since the playground is designed for testing purposes, there are several restrictions imposed on canisters that have been deployed to the playground that you should be aware of. These restrictions are:
 
@@ -65,13 +66,13 @@ For more information on file system navigation using the CLI, check out the docu
 
 For a review on the project's structure and our `main.mo` source code file, you can review the [0.6: Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) module.
 
-Before you can deploy the canister, you need to start the local execution environment. To do this, run the command:
+Before you can deploy the canister, you need to start the local canister execution environment. To do this, run the command:
 
 ```bash
 dfx start --clean --background
 ```
 
-This command starts the local execution environment in the background. The `--clean` flag removes any orphan background processes or canister IDs that might cause conflicts in your environment. It is good practice to use this flag when starting `dfx`, since it can help prevent any issues if you forget to use `dfx stop` when moving between projects, or if you have processes running in another terminal that you forgot about.
+This command starts the local <GlossaryTooltip>replica</GlossaryTooltip> in the background. The `--clean` flag removes any orphan background processes or canister IDs that might cause conflicts in your environment. It is good practice to use this flag when starting `dfx`, since it can help prevent any issues if you forget to use `dfx stop` when moving between projects, or if you have processes running in another terminal that you forgot about.
 
 Without the `--background` flag, the output of the execution environment will take over the terminal window and you would need to open a second terminal window to continue running commands.
 

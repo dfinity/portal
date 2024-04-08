@@ -312,7 +312,7 @@ const DocsHomePage: FC = () => {
           <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
             <div className="h-[100px] md:h-[200px] flex-1">
               <h3 className="tw-heading-6 mb-10 sm:mb-0">
-                Quick Start
+                Quickstart
                 <br />
                 Guides
               </h3>
@@ -333,14 +333,14 @@ const DocsHomePage: FC = () => {
                 </Link>
               </p>
             </div>
-          </div>
+            </div>
           <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
             <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
               <div className="mb-16 md:mb-0 md:h-[200px]">
                 <img
                   src="/img/docs/react.svg"
-                  alt="React quick start"
-                  className="w-10 h-10"
+                  alt="React quickstart"
+                  className="h-10"
                   loading="lazy"
                 />
               </div>
@@ -360,9 +360,34 @@ const DocsHomePage: FC = () => {
                   </Link>
                 </p>
               </div>
+              </div>
+              <div className="snap-center min-w-[80vw] sm:min-w-0  sm:border-r md:border-r-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
+              <div className="mb-16 md:mb-0 md:h-[200px]">
+                <img
+                  src="/img/docs/juno.svg"
+                  alt="Juno quickstart"
+                  className="h-10"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h4 className="tw-heading-5 mb-6">Juno</h4>
+                <p className="tw-paragraph text-black/80 mb-6 flex-1">
+                  Get started with Juno, a blockchain-as-a-service platform.
+                </p>
+                <p className="mb-0">
+                  <Link
+                    href="/docs/current/developer-docs/getting-started/quickstart/juno-quickstart"
+                    className="link-primary"
+                    title="Go to Juno quickstart"
+                  >
+                    <LinkArrowRight />
+                  </Link>
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
+            </div>
+            </div>
       </section>
 
       <section className="mt-10">
@@ -387,6 +412,8 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               href="https://github.com/dfinity/portal"
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-outline-white"
             >
               Contribute

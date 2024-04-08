@@ -56,10 +56,12 @@ Finally, to initialize Vessel, run `vessel init` in your project's root folder.
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -69,7 +71,7 @@ dfx start --clean --background
 dfx new mops_example
 ```
 
-You will be prompted to select a language that your backend canister will use. Select 'Motoko':
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
 ? Select a backend language: ›
@@ -119,7 +121,7 @@ cd mops_example
 Remember, by default `dfx new` creates a new project in the Motoko language. If you'd like to create a Rust project, use the flag `--type=rust`.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ### Configuring your project to use Mops
 
@@ -191,7 +193,7 @@ mops install
 
 ### Publishing a package
 
-If you develop a package that you'd like to publish so other developers can use it, you can publish it to the Mops registry! For instructions on publishing a package to Mops, check out the instructions [here](https://github.com/ZenVoich/mops#publish-a-package).
+If you develop a package that you'd like to publish so other developers can use it, you can publish it to the Mops registry! For instructions on publishing a package to Mops, check out the [Mops documentation](https://github.com/ZenVoich/mops#publish-a-package).
 
 ## Using Vessel
 

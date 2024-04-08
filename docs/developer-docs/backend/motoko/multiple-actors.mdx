@@ -2,8 +2,10 @@
 keywords: [intermediate, motoko, tutorial, multiple actors]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 15: Using multiple actors
@@ -37,7 +39,7 @@ Open a terminal shell on your local computer, if you don’t already have one op
 
 Create a new project by running the following command:
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -46,26 +48,26 @@ Use `dfx new <project_name>` to create a new project:
 dfx new multiple_actors
 ```
 
-You will be prompted to select a language that your backend canister will use:
+You will be prompted to select the language that your backend canister will use. Select 'Motoko':
 
 ```
-? Select a backend language: ›  
+? Select a backend language: ›
 ❯ Motoko
   Rust
   TypeScript (Azle)
   Python (Kybra)
 ```
 
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›  
-❯ SvelteKit
+  ? Select a frontend framework: ›
+  SvelteKit
   React
   Vue
   Vanilla JS
   No JS template
-  No frontend canister
+❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -82,13 +84,14 @@ Lastly, you can include extra features to be added to your project:
 <TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
 
 ```bash
-dfx new multiple_actors
+dfx new multiple_actors --no-frontend
 ```
 
-For projects created with `dfx new` (Motoko and Rust) the command automatically generates the project's default configuration and two default smart contracts. 
+    For projects created with `dfx new --no-frontend` (Motoko and Rust) the command automatically generates the project's default
+    configuration and a default smart contract.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 Change to your project directory by running the following command:
 
@@ -228,9 +231,9 @@ Open the `src/rock_paper_scissors/main.mo` file in a text editor and delete the 
 Copy and paste this code into the file:
 
 ```motoko
-import I "mo:base/Iter"; 
+import I "mo:base/Iter";
 
-// Define an actor 
+// Define an actor
 actor RockPaperScissors {
 
   // Define stable variables
@@ -252,7 +255,7 @@ actor RockPaperScissors {
       battle_round();
     };
     var winner = "The contest was a draw";
-    if (alice_score > bob_score) winner := "Alice won" 
+    if (alice_score > bob_score) winner := "Alice won"
     else if (alice_score < bob_score) winner := "Bob won";
     return (winner);
   };
@@ -279,7 +282,7 @@ actor RockPaperScissors {
 
     return ();
   };
-  
+
   // Hard-coded players and choices
   func bob(last : Choice) : Choice {
     return #paper;
@@ -357,9 +360,9 @@ The `dfx deploy` command output displays information about the operations it per
 Deployed canisters.
 URLs:
 Backend canister via Candid interface:
-assistant: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=ahw5u-keaaa-aaaaa-qaaha-cai
-daemon: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
-rock_paper_scissors: http://127.0.0.1:8080/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
+assistant: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=ahw5u-keaaa-aaaaa-qaaha-cai
+daemon: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
+rock_paper_scissors: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
 ```
 
 ## Verify deployment by calling the canisters
