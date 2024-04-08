@@ -57,7 +57,7 @@ const layoutData = [
 const cardsData = [
   {
     id: 1,
-    imageSrc: "img/accelerator/icon_1.webp",
+    imageSrc: "img/accelerator/icon_1.svg",
     title: "Founders",
     subtitle: "Think outside the box",
     description:
@@ -65,7 +65,7 @@ const cardsData = [
   },
   {
     id: 2,
-    imageSrc: "img/accelerator/icon_3.webp",
+    imageSrc: "img/accelerator/icon_2.svg",
     title: "Talents",
     subtitle: "Start your journey as Web3 pro",
     description:
@@ -73,7 +73,7 @@ const cardsData = [
   },
   {
     id: 3,
-    imageSrc: "img/accelerator/icon_4.webp",
+    imageSrc: "img/accelerator/icon_3.svg",
     title: "Mentors",
     subtitle: "Echo your expertise in the field",
     description:
@@ -81,7 +81,7 @@ const cardsData = [
   },
   {
     id: 4,
-    imageSrc: "img/accelerator/icon_5.webp",
+    imageSrc: "img/accelerator/icon_4.svg",
     title: "Investors",
     subtitle: "Lead with the right tools",
     description:
