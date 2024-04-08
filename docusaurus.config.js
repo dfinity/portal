@@ -440,7 +440,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Olympus",
+            title: "OLYMPUS",
             subtitle: "The On-Chain Acceleration Platform",
             href: "/olympus",
             image: "/img/nav/featured-olympus.webp",

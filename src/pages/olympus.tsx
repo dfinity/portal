@@ -176,7 +176,7 @@ function AcceleratorPage() {
         </section>
 
         <section className="container-12 pt-20 pb-20 md:pt-30 md:pb-30">
-          <div className="flex flex-col gap-16 md:gap-20">
+          <div className="flex flex-col gap-16 md:gap-18">
             {layoutData.map((item) => (
               <TranslatedLayout
                 key={item.id}
@@ -184,7 +184,7 @@ function AcceleratorPage() {
                 reverse={item.reverse}
               >
                 <aside className="mb-24 md:mb-0">
-                  <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
+                  <h3 className="tw-heading-4 md:tw-heading-60 mb-6 -mt-6 md:mt-0">
                     {item.title}
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
@@ -203,13 +203,13 @@ function AcceleratorPage() {
         >
           <div className="container-10 py-20 md:pt-40 md:pb-44">
             <motion.h2
-              className="tw-heading-3 md:text-[60px] md:leading-[70px] mb-10"
+              className="tw-heading-3 md:text-[60px] md:leading-[70px] mb-6"
               variants={transitions.item}
             >
               Value Proposition & Key Personas
             </motion.h2>
 
-            <div className="md:w-[140%] md:relative md:-left-2/10 mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-4">
+            <div className="md:w-[140%] md:relative md:-left-2/10 mt-12 md:mt-20 grid grid-cols-1 gap-5 text-black sm:grid-cols-2 md:grid-cols-4">
               {cardsData.map((card) => (
                 <ShowcaseCard
                   key={card.id}
@@ -220,7 +220,7 @@ function AcceleratorPage() {
                 />
               ))}
             </div>
-            <aside className="mt-40 md:flex md:items-center	">
+            <aside className="mt-20 md:mt-40 md:flex md:items-center	">
               <div className="pt-24 md:w-1/3">
                 <motion.h3 className="tw-heading-4">Rating Loop</motion.h3>
                 <motion.p className="text-2xl mb-0 ">
@@ -232,10 +232,10 @@ function AcceleratorPage() {
                   rating comes from a verifiable source.
                 </motion.p>
               </div>
-              <div className="md:w-2/3 relative mt-12 md:mt-64 md:mb-64">
+              <div className="md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
                 <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
                   <motion.div
-                    className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 -blob-y-2"
+                    className="absolute blob blob-white blob-md md:blob-lg blob-x-6 md:blob-x-8 blob-y-2"
                     variants={transitions.fadeIn}
                   ></motion.div>
                   <motion.img
@@ -249,7 +249,7 @@ function AcceleratorPage() {
             </aside>
           </div>
         </AnimateSpawn>
-        <section className="max-w-page relative mx-auto mb-20 mt-30 px-6 md:mb-28 md:px-24 md:mt-60 text-center">
+        <section className="max-w-page relative mx-auto mb-10 mt-15 px-6 md:mb-28 md:px-24 md:mt-60 text-center">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
