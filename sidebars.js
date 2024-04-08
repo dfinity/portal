@@ -677,16 +677,28 @@ const sidebars = {
                         "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
                       ],
                     },
-                    //"developer-docs/defi/rosetta/icp_rosetta/construction_api/transfers",
+                    {
+                      type: "category",
+                      label: "Staking & Neuron Management",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
+                      },
+                      items: [
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
+                      ],
+                    },
                   ],
                 }
               ],
             },
-
-            //"developer-docs/defi/rosetta/hotkeys",
-            //"developer-docs/defi/rosetta/neuron-lifecycle",
-            //"developer-docs/defi/rosetta/staking-support",
-            //"developer-docs/defi/rosetta/staking-tutorial",
           ],
         },
         {

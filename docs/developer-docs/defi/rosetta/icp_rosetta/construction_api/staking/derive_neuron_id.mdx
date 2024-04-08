@@ -1,0 +1,259 @@
+---
+keywords: [intermediate, rosetta, tutorial, derive, staking, neuron]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Derive Neuron ID
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
+Staking requires transferring tokens to a sub-account of the governance canister. To complete the transfer, you need to know both your ICP ledger account identifier (source of the transfer) and the account identifier of the governance sub-account (destination of the transfer).
+Make sure you have enough ICP in your source account to make the transfer to the governance canister. 
+To derive the account identifier of your public key you can look at how the [derive endpoint works](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive.mdx). 
+
+## Deriving the governance canister account identifier
+For neuron creation on the Internet Computer, the process begins with the transfer of ICP tokens to the address destined to become the neuron. 
+This address, while earmarked for a future neuron, does not yet represent an active neuron until the governance canister acknowledges the deposit. 
+It's crucial to understand that, at this juncture, the neuron has not been created; the address is simply a placeholder for the future neuron. 
+By transferring the ICP tokens directly to this designated address, you effectively earmark them for neuron creation. 
+However, the governance canister must be notified of this transfer to activate the neuron. This process is done in the [next step of the guide](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp.mdx). 
+Once the governance canister is aware, it uses the transferred tokens at the specified address to formally establish the neuron.
+
+You can derive the governance canister account identifier you need to send ICP similarly as to how you derive your own account identifier. 
+```bash
+curl --location '0.0.0.0:8081/construction/derive'  --header 'Content-Type: application/json' --data '{
+ "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_key": {
+    "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+    "curve_type": "secp256k1"
+  },
+  "metadata": {
+    "account_type": "neuron",
+    "neuron_index": 0
+  }
+}'
+```
+The response is the account identifier we need to fund with ICP.
+
+```json
+{"account_identifier":{"address":"26d877d2a04f0a9ae5e5a481102d5a865115263f2ed93a0804e3ed7b8d824921"}}
+```
+
+We can then fund this account with the amount of ICP we would like to stake. In this example with want to stake 10 ICP or `1_000_000_000` `e8s`.
+An example implementation buildign on the code snippets from the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) section is the following. 
+Example call.
+```bash
+python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
+```
+```python
+import json
+import requests
+import argparse
+from hashlib import sha256
+import ecdsa
+
+NETWORK_ID = {"blockchain": "Internet Computer", "network": "00000000000000020101"}
+HEADERS = {"Content-Type": "application/json", "charset": "utf-8"}
+
+
+class RosettaClient:
+    # Takes in the private key an the url to the running Rosetta instance
+    def __init__(self, pk, url):
+        self._pk = pk
+        self._url = url
+
+    def public_key(self):
+        return {
+            "hex_bytes": self._pk.verifying_key.to_string("uncompressed").hex(),
+            "curve_type": "secp256k1",
+        }
+
+    def sign(self, payloads):
+        signatures = []
+        for payload in payloads:
+            data_to_sign = bytes.fromhex(payload["hex_bytes"])
+            signature_bytes = self._pk.sign(data_to_sign, hashfunc=sha256).hex()
+            signatures.append(
+                {
+                    "signing_payload": {
+                        "account_identifier": payload["account_identifier"],
+                        "hex_bytes": payload["hex_bytes"],
+                        "signature_type": "ecdsa",
+                    },
+                    "signature_type": "ecdsa",
+                    "public_key": self.public_key(),
+                    "hex_bytes": signature_bytes,
+                }
+            )
+        return signatures
+
+    # Makes a post request to the Rosetta instance and takes in the suffix of the endpoint of Rosetta as well as the request data
+    def post(self, url_suffix, data):
+        url = self._url + url_suffix
+        response = requests.post(url, data=json.dumps(data), headers=HEADERS)
+        return response.json()
+
+    def construction_derive(
+        self, public_key: str = None, curve_type: str = "secp256k1", account_type = None, neuron_index = 0
+    ):  
+        metadata = None
+        if public_key is None:
+            public_key = self.public_key()
+        if account_type is not None:
+            metadata = {"account_type": account_type, "neuron_index": neuron_index}
+            
+        return self.post("/construction/derive", build_data({"public_key": public_key, "metadata": metadata}))
+
+    def construction_preprocess(self, operations, metadata):
+        return self.post(
+            "/construction/preprocess",
+            build_data(
+                {
+                    "operations": operations,
+                    "metadata": metadata,
+                    "network_identifier": NETWORK_ID,
+                }
+            ),
+        )
+
+    def construction_metadata(self, options, public_keys):
+        return self.post(
+            "/construction/metadata",
+            build_data(
+                {
+                    "options": options,
+                    "public_keys": public_keys,
+                }
+            ),
+        )
+
+    def construction_payload(self, public_keys, operations, metadata=None):
+        data = build_data(
+            {
+                "public_keys": public_keys,
+                "operations": operations,
+            }
+        )
+        data["metadata"] = metadata
+        return self.post("/construction/payloads", data)
+
+    def construction_combine(self, unsigned_transaction, signatures):
+        return self.post(
+            "/construction/combine",
+            build_data(
+                {
+                    "unsigned_transaction": unsigned_transaction,
+                    "signatures": signatures,
+                }
+            ),
+        )
+
+    def construction_submit(self, signed_transaction: str):
+        return self.post(
+            "/construction/submit",
+            build_data(
+                {
+                    "signed_transaction": signed_transaction,
+                }
+            ),
+        )
+
+def icp_amount(amount: int):
+    return {"value": f"{amount}", "currency": {"symbol": "ICP", "decimals": 8}}
+
+
+def fee_operation(index: int, account_id: str, fee: int):
+    return {
+        "operation_identifier": {"index": index},
+        "type": "FEE",
+        "account": {"address": account_id},
+        "amount": icp_amount(-fee),
+    }
+
+
+def transfer_operation(index: int, account_id: str, amount: int):
+    return {
+        "operation_identifier": {"index": index},
+        "type": "TRANSACTION",
+        "account": {"address": account_id},
+        "amount": icp_amount(amount),
+    }
+
+
+# Attaches the network_identifier to the request
+def build_data(d):
+    return {"network_identifier": NETWORK_ID, **d}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--private-key-file", required=True)
+    parser.add_argument("-u", "--ic-url", required=True)
+    parser.add_argument("-is", "--ingress-start", required=False)
+    parser.add_argument("-ie", "--ingress-end", required=False)
+    parser.add_argument("-m", "--memo", required=False)
+    parser.add_argument("-c", "--created-at-time", required=False)
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    with open(args.private_key_file, "rb") as key_file:
+        private_key = ecdsa.SigningKey.from_pem(key_file.read())
+    client = RosettaClient(private_key, args.ic_url)
+    # We derive the account identifier of the governance canister that we are going to send the ICP to
+    governance_account_identifier = client.construction_derive(client.public_key(), account_type="neuron")[
+        "account_identifier"
+    ]["address"]
+    
+    # We derive the account identifier from the public key of the provided private key
+    from_account = client.construction_derive(client.public_key())[
+        "account_identifier"
+    ]["address"]
+
+    # We are going to send 10 ICP in this example
+    icp_amount = 10 * 10 ** 8
+
+    # We create the necessary operations for the transfer
+    from_operation = transfer_operation(0, from_account, -icp_amount)
+    to_operation = transfer_operation(1, governance_account_identifier, icp_amount)
+
+    options = client.construction_preprocess([from_operation, to_operation], None)[
+        "options"
+    ]
+    public_keys = [client.public_key()]
+
+    # We get the suggested fee from the Rosetta instance
+    fee = int(
+        client.construction_metadata(options, public_keys)["suggested_fee"][0]["value"]
+    )
+    fee_ops = fee_operation(2, from_account, fee)
+
+    result = client.construction_payload(
+        public_keys,
+        [from_operation, to_operation, fee_ops],
+        {
+            "created_at_time": int(args.created_at_time)
+            if args.created_at_time
+            else None,
+            "memo": int(args.memo) if args.memo else None,
+            "ingress_start": int(args.ingress_start) if args.ingress_start else None,
+            "ingress_end": int(args.ingress_end) if args.ingress_end else None,
+        },
+    )
+    signatures = client.sign(result["payloads"])
+    signed_transaction = client.construction_combine(
+        result["unsigned_transaction"], signatures
+    )
+    print(client.construction_submit(signed_transaction["signed_transaction"]))
+
+
+if __name__ == "__main__":
+    main()
+
+```

@@ -1,0 +1,268 @@
+---
+keywords: [intermediate, rosetta, tutorial, spawn, neuron, staking, info]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch neuron info
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
+In this section of the staking tutorial you will learn how to fetch information about an existing neuron. 
+There are a few variations to this that depend on whether you are the controller of the neuron or whether you are using a [hotkey](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/hotkeys.mdx). 
+
+## Calling NeuronInfo as a controller
+Assuming that you are the controller of the neuron with the `neuron_id` `3094748712371737240` and you are not using a hotkey the corresponding
+payloads call would look like the following.
+
+```bash
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "NEURON_INFO",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+    }
+  ],
+  "metadata": null
+}'
+```
+
+## Calling NeuronInfo with a hotkey
+```bash
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "NEURON_INFO",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+    }
+  ],
+    "metadata": {
+    "neuron_index": 0,
+    "controller": {
+      "public_key": {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+      }
+    }
+  }
+}'
+```
+
+The result of the `NeuronInfo` call would look something like this.
+```json
+{
+    "transaction_identifier": {
+        "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "metadata": {
+        "operations": [
+            {
+                "account": {
+                    "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+                },
+                "metadata": {
+                    "controller": "iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe",
+                    "followees": {},
+                    "hotkeys": [],
+                    "kyc_verified": true,
+                    "maturity_e8s_equivalent": 0,
+                    "neuron_fees_e8s": 0,
+                    "neuron_id": 3094748712371737240,
+                    "neuron_index": 0,
+                    "staked_maturity_e8s": null,
+                    "state": "DISSOLVED"
+                },
+                "operation_identifier": {
+                    "index": 0
+                },
+                "status": "COMPLETED",
+                "type": "NEURON_INFO"
+            }
+        ]
+    }
+}
+
+Right now the neuron is `DISSOLVED` as it has not yet been locked up. This will be done in the next step.
+```
+:::info
+Currently, ICP Rosetta does not support fetching neuron info of a neuron that you are not either the controller of or have a hotkey for. 
+:::
+
+A sample implementation could look something like the following.
+
+```python
+import json
+import requests
+import argparse
+from hashlib import sha256
+import ecdsa
+
+NETWORK_ID = {"blockchain": "Internet Computer", "network": "00000000000000020101"}
+HEADERS = {"Content-Type": "application/json", "charset": "utf-8"}
+
+
+class RosettaClient:
+    # Takes in the private key an the url to the running Rosetta instance
+    def __init__(self, pk, url):
+        self._pk = pk
+        self._url = url
+
+    def public_key(self):
+        return {
+            "hex_bytes": self._pk.verifying_key.to_string("uncompressed").hex(),
+            "curve_type": "secp256k1",
+        }
+
+    def sign(self, payloads):
+        signatures = []
+        for payload in payloads:
+            data_to_sign = bytes.fromhex(payload["hex_bytes"])
+            signature_bytes = self._pk.sign(data_to_sign, hashfunc=sha256).hex()
+            signatures.append(
+                {
+                    "signing_payload": {
+                        "account_identifier": payload["account_identifier"],
+                        "hex_bytes": payload["hex_bytes"],
+                        "signature_type": "ecdsa",
+                    },
+                    "signature_type": "ecdsa",
+                    "public_key": self.public_key(),
+                    "hex_bytes": signature_bytes,
+                }
+            )
+        return signatures
+
+    # Makes a post request to the Rosetta instance and takes in the suffix of the endpoint of Rosetta as well as the request data
+    def post(self, url_suffix, data):
+        url = self._url + url_suffix
+        response = requests.post(url, data=json.dumps(data), headers=HEADERS)
+        return response.json()
+
+    def construction_derive(
+        self, public_key: str = None, curve_type: str = "secp256k1", account_type = None, neuron_index = 0
+    ):  
+        metadata = None
+        if public_key is None:
+            public_key = self.public_key()
+        if account_type is not None:
+            metadata = {"account_type": account_type, "neuron_index": neuron_index}
+            
+        return self.post("/construction/derive", build_data({"public_key": public_key, "metadata": metadata}))
+
+    def construction_payload(self, public_keys, operations, metadata=None):
+        data = build_data(
+            {
+                "public_keys": public_keys,
+                "operations": operations,
+            }
+        )
+        data["metadata"] = metadata
+        return self.post("/construction/payloads", data)
+
+    def construction_combine(self, unsigned_transaction, signatures):
+        return self.post(
+            "/construction/combine",
+            build_data(
+                {
+                    "unsigned_transaction": unsigned_transaction,
+                    "signatures": signatures,
+                }
+            ),
+        )
+
+    def construction_submit(self, signed_transaction: str):
+        return self.post(
+            "/construction/submit",
+            build_data(
+                {
+                    "signed_transaction": signed_transaction,
+                }
+            ),
+        )
+
+def neuron_info_operation(address,neuron_index = 0, controller = None, operation_identifier = 0):
+    return {
+      "operation_identifier": { "index": operation_identifier },
+      "type": "NEURON_INFO",
+      "account": {
+        "address": address
+      },
+      "metadata": {
+        "neuron_index": neuron_index,
+        "controller": controller
+      }
+    },
+
+# Attaches the network_identifier to the request
+def build_data(d):
+    return {"network_identifier": NETWORK_ID, **d}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--private-key-file", required=True)
+    parser.add_argument("-u", "--ic-url", required=True)
+    parser.add_argument("-is", "--ingress-start", required=False)
+    parser.add_argument("-ie", "--ingress-end", required=False)
+    parser.add_argument("-m", "--memo", required=False)
+    parser.add_argument("-c", "--created-at-time", required=False)
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    with open(args.private_key_file, "rb") as key_file:
+        private_key = ecdsa.SigningKey.from_pem(key_file.read())
+    client = RosettaClient(private_key, args.ic_url)
+    
+    neuron_info_ops = neuron_info_operation(client.construction_derive()["account_identifier"]["address"])
+
+    public_keys = [client.public_key()]
+
+    result = client.construction_payload(
+        public_keys,
+        neuron_info_ops,
+    )
+    
+    signatures = client.sign(result["payloads"])
+    signed_transaction = client.construction_combine(
+        result["unsigned_transaction"], signatures
+    )
+    print(json.dumps(client.construction_submit(signed_transaction["signed_transaction"]),indent=4))
+
+
+if __name__ == "__main__":
+    main()
+
+```
