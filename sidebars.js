@@ -694,6 +694,19 @@ const sidebars = {
                         "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
                         "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
                         "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Voting & Following",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
+                      },
+                      items: [
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/voting",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/follow",
                       ],
                     },
                   ],

@@ -110,18 +110,43 @@ The neuron you are trying to add a hotkey for must not have more than 10 hotkeys
 
 The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
+|                      |            |
+|----------------------|------------|
+| Since version        | 1.2.0      |
+| Idempotent?          | yes        |
+| Minimal access level | controller |
+
 #### Add a principal as a hotkey
 
 ``` json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '
 {
-  "operation_identifier": { "index": 0 },
-  "type": "ADD_HOTKEY",
-  "account": { "address": "907ff6c714a545110b42982b72aa39c5b7742d610e234a9d40bf8cf624e7a70d" },
-  "metadata": {
-    "neuron_index": 0,
-    "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
-  }
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "ADD_HOTKEY",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
+      }
+    }
+  ],
+  "metadata": null
 }'
 ```
 
@@ -130,16 +155,35 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 ``` json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data 
 '{
-  "operation_identifier": { "index": 0 },
-  "type": "ADD_HOTKEY",
-  "account": { "address": "907ff6c714a545110b42982b72aa39c5b7742d610e234a9d40bf8cf624e7a70d" },
-  "metadata": {
-    "neuron_index": 0,
-    "public_key": {
-      "hex_bytes":  "1b400d60aaf34eaf6dcbab9bba46001a23497886cf11066f7846933d30e5ad3f",
-      "curve_type": "edwards25519"
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
     }
-  }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "ADD_HOTKEY",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "public_key": {
+          "hex_bytes": "04995aca22a49c8e579a8501f38d64952054f4b33f793376f1d013d93edd10a55c29522e41b5fed16283b70a6f3fa00c6d66420938e89c5d67a58f30c8a5df059e",
+          "curve_type": "secp256k1"
+        }
+      }
+    }
+  ],
+  "metadata": null
 }'
 ```
 
@@ -222,6 +266,10 @@ After this operation the hotekey should not be included in the `NeuronInfo` anym
 
 
 An example implementation of this functionality may look like the following. 
+Example call.
+```bash
+python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081 -hk ~/.config/dfx/identity/default2/identity.pem
+```
 
 ```python
 import json

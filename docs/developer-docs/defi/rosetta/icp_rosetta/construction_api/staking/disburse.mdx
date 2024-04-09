@@ -1,32 +1,38 @@
 ---
-keywords: [intermediate, rosetta, tutorial, spawn, neuron, staking]
+keywords: [intermediate, rosetta, tutorial, spawn, neuron, staking, disburse]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Spawn a neuron
+# Disburse a neuron
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
-In this section you will learn how to split a neuron and spawn a new one out of your existing neuron.
-The `SPAWN` operation transfers all the maturity from the existing neuron to the staked amount of the newly spawned neuron.
+This section will show you how to use Rosetta to follow existing neurons. 
+If you do not want to have to vote on every proposal yourself, you can decide to follow other neurons. This essentially means that you are going to vote the same way on a given proposal as the neuron that you are following. 
 
-|                      |            |
-|----------------------|------------|
-| Since version        | 1.3.0      |
-| Idempotent?          | yes        |
+The `FOLLOW` operation sets a follow rule for a neuron.
+The Governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
+
+The `followees` metadata field contains the list of neurons to follow.
+If the list contains more than one neuron, the neuron will vote according to the majority of followed neurons votes (or abstain in case of draw).
+If the list is empty, the rule for this topic will be discarded (i.e., the neuron will not follow any other neuron for proposals of this type).
+
+|                      |        |
+|----------------------|--------|
+| Since version        | 1.7.0  |
+| Idempotent?          | No    |
 | Minimal access level | controller |
-
-<div class="formalpara-title">
 
 **Prerequisites:**
 
 </div>
 
--   `account.address` is a ledger address of a neuron controller.
+* `account.address` is the ledger address of the neuron controller or hotkey.
+* `metadata.followees` contains an array of valid neuron identifiers.
+* `metadata.topic` is a valid topic identifier.
 
--   The parent neuron has at least 1 ICP worth of maturity.
 
 <div class="formalpara-title">
 
@@ -34,47 +40,62 @@ The `SPAWN` operation transfers all the maturity from the existing neuron to the
 
 </div>
 
--   Parent neuron maturity is set to `0`.
+* Neuron votes according to specified follow rule.
 
--   A new neuron is spawned with a balance equal to the transferred maturity.
+<div class="formalpara-title">
 
-An example command to spawn a new neuron looks like the following. Make sure to give the `spawned_neuron_index` a different index than the parent neuron.
-``` json
+**Calling `FOLLOW` as a controller:**
+
+</div>
+
+```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
-{
-  "operation_identifier": { "index": 0 },
-  "type": "SPAWN",
-  "account": { "address": "907ff6c714a545110b42982b72aa39c5b7742d610e234a9d40bf8cf624e7a70d" },
-  "metadata": {
-    "neuron_index": 0,
-    "controller": {
-      "principal": "sp3em-jkiyw-tospm-2huim-jor4p-et4s7-ay35f-q7tnm-hi4k2-pyicb-xae"
-    },
-    "spawned_neuron_index": 1,
-    "percentage_to_spawn": 75
-  }
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "DISBURSE",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "amount": {
+        "value": "1000000000",
+        "currency": {
+          "symbol": "ICP",
+          "decimals": 8
+        }
+      },
+      "metadata": {
+        "neuron_index": 2,
+        "recipient": "47e0ae0de8af04a961c4b3225cd77b9652777286ce142c2a07fab98da5263100"
+      }
+    }
+  ],
+  "metadata": null
 }'
 ```
 
-:::info
 
-- `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
-
-- `controller` metadata field is optional and equal to the existing neuron controller by default.
-
-- `percentage_to_spawn` metadata field is optional and equal to 100 by default. If specified, the value must be an integer between 1 and 100 (bounds included).
-
-:::
-
-An example implementation could look like the following:
-```python 
-
+The example implementation looks like the following. 
+```python
 import json
 import requests
 import argparse
 from hashlib import sha256
 import ecdsa
 import time
+from ecdsa import VerifyingKey
 
 NETWORK_ID = {"blockchain": "Internet Computer", "network": "00000000000000020101"}
 HEADERS = {"Content-Type": "application/json", "charset": "utf-8"}
@@ -87,10 +108,7 @@ class RosettaClient:
         self._url = url
 
     def public_key(self):
-        return {
-            "hex_bytes": self._pk.verifying_key.to_string("uncompressed").hex(),
-            "curve_type": "secp256k1",
-        }
+        return public_key(self._pk.verifying_key, "secp256k1")
 
     def sign(self, payloads):
         signatures = []
@@ -118,15 +136,22 @@ class RosettaClient:
         return response.json()
 
     def construction_derive(
-        self, public_key: str = None, curve_type: str = "secp256k1", account_type = None, neuron_index = 0
-    ):  
+        self,
+        public_key: str = None,
+        curve_type: str = "secp256k1",
+        account_type=None,
+        neuron_index=0,
+    ):
         metadata = None
         if public_key is None:
             public_key = self.public_key()
         if account_type is not None:
             metadata = {"account_type": account_type, "neuron_index": neuron_index}
-            
-        return self.post("/construction/derive", build_data({"public_key": public_key, "metadata": metadata}))
+
+        return self.post(
+            "/construction/derive",
+            build_data({"public_key": public_key, "metadata": metadata}),
+        )
 
     def construction_payload(self, public_keys, operations, metadata=None):
         data = build_data(
@@ -158,42 +183,36 @@ class RosettaClient:
                 }
             ),
         )
-    
+
     def make_and_submit_transaction(self, operations):
         public_keys = [self.public_key()]
         result = self.construction_payload(public_keys, operations)
+        print(result)
         signatures = self.sign(result["payloads"])
         signed_transaction = self.construction_combine(
             result["unsigned_transaction"], signatures
         )
         return self.construction_submit(signed_transaction["signed_transaction"])
 
-def neuron_info_operation(address,neuron_index = 0, controller = None, operation_identifier = 0):
-    return {
-      "operation_identifier": { "index": operation_identifier },
-      "type": "NEURON_INFO",
-      "account": {
-        "address": address
-      },
-      "metadata": {
-        "neuron_index": neuron_index,
-        "controller": controller
-      }
-    }
+def icp_amount(amount: int):
+    return {"value": f"{amount}", "currency": {"symbol": "ICP", "decimals": 8}}
 
-    
-def spawn_operation(address,neuron_index = 0, operation_identifier = 0, percentage_to_spawn = 100, spawned_neuron_index = 1):
+def public_key(public_key=VerifyingKey, curve_type="secp256k1"):
     return {
-      "operation_identifier": { "index": operation_identifier },
-      "type": "SPAWN",
-      "account": {
-        "address": address
-      },
-      "metadata": {
-        "neuron_index": neuron_index,
-        "percentage_to_spawn": percentage_to_spawn,
-        'spawned_neuron_index': spawned_neuron_index
-      }
+        "hex_bytes": public_key.to_string("uncompressed").hex(),
+        "curve_type": "secp256k1",
+    }
+    
+def disburse_operation(address, recipient, neuron_index=0, operation_identifier=0, amount = 0):
+    return {
+        "operation_identifier": {"index": operation_identifier},
+        "type": "DISBURSE",
+        "account": {"address": address},
+        "amount": icp_amount(amount),
+        "metadata": {
+            "neuron_index": neuron_index,
+            "recipient": recipient,
+        },
     }
 
 # Attaches the network_identifier to the request
@@ -204,6 +223,7 @@ def build_data(d):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-k", "--private-key-file", required=True)
+    parser.add_argument("-hk", "--hot-key-private-key-file", required=False)
     parser.add_argument("-u", "--ic-url", required=True)
     parser.add_argument("-is", "--ingress-start", required=False)
     parser.add_argument("-ie", "--ingress-end", required=False)
@@ -218,10 +238,14 @@ def main():
         private_key = ecdsa.SigningKey.from_pem(key_file.read())
     client = RosettaClient(private_key, args.ic_url)
     
-    spawn_ops = spawn_operation(client.construction_derive()["account_identifier"]["address"])
-    neuron_info_ops = neuron_info_operation(client.construction_derive()["account_identifier"]["address"],neuron_index = 1)
-    print(json.dumps(client.make_and_submit_transaction([spawn_ops]),indent=4))
-    print(json.dumps(client.make_and_submit_transaction([neuron_info_ops]),indent=4))
+    # We derive the account identifier from the public key of the provided private key
+    from_account = client.construction_derive(client.public_key())[
+        "account_identifier"
+    ]["address"]
+
+    icp_amount = 10 * 10 ** 8
+    disburse_ops = disburse_operation(from_account, from_account, neuron_index=2, amount=icp_amount)
+    print(json.dumps(client.make_and_submit_transaction([disburse_ops]), indent=2))
 
 if __name__ == "__main__":
     main()
