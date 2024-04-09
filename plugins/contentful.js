@@ -45,6 +45,8 @@ const contentfulPlugin = async function () {
           if (!isValid(parsedDate))
             parsedDate = parse(item.fields.date, "MMMM d y", new Date());
           if (!isValid(parsedDate))
+            parsedDate = parse(item.fields.date, "MMMM d, yyyy", new Date());
+          if (!isValid(parsedDate))
             parsedDate = parse(item.fields.date, "MMM d y", new Date());
           if (!isValid(parsedDate))
             parsedDate = parse(item.fields.date, "d MMMM y", new Date());
