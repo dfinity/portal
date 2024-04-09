@@ -11,7 +11,7 @@ The Construction-API allows for offline signing of transactions and then posting
 
 In general the Construction-API of Rosetta supports three categories of transaction types:
 - Transfering and approving assets: This is the most basic functionality. In accordance with the ICRC-1 and ICRC-2 standards you can use Rosetta to transfer or approve ICP. TODO
-- Staking & Neuron Management: To be able to stake your ICP and earn rewards for taking part in the voting mechanism of the NNS you will need to create a neuron and configure it so it fits your personal preferences. You can read up on what features are supported and how to use them [here](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/idx.mdx).
+- Staking & Neuron Management: To be able to stake your ICP and earn rewards for taking part in the voting mechanism of the NNS you will need to create a neuron and configure it so it fits your personal preferences. You can read up on what features are supported and how to use them [here](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index.mdx).
 - Voting & Following: To gain rewards in the form of maturity you will need to take part in the voting on the NNS or follow existing neurons. To read up on how to do that you can look at the relevant [section of this guide](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index.mdx). 
 
 ## Example Construction-API Rosetta-Client implementation 
