@@ -146,24 +146,6 @@
     "logo": "/img/showcase/dragginz_logo.png"
   },
   {
-    "id": "dmail",
-    "name": "Dmail",
-    "oneLiner": "Web3 Decentralized Email Client",
-    "website": "https://dmail.ai/",
-    "tags": [
-      "NFT",
-      "SocialFi"
-    ],
-    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets - there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China and saw an immediate round of funding netting a $10M valuation. ",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/dmailofficial",
-    "display": "Normal",
-    "logo": "/img/showcase/dmail_logo.webp",
-    "screenshots": [
-      "/img/showcase/dmail_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "icdex",
     "name": "ICDex",
     "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
@@ -3897,5 +3879,25 @@
     "display": "Normal",
     "logo": "/img/showcase/allkinds_logo.svg",
     "submittableId": "43688836"
+  },
+  {
+    "id": "dmail-network",
+    "name": "Dmail Network",
+    "oneLiner": "AI-powered decentralized messaging infrastructure.",
+    "website": "https://dmail.ai",
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "AI",
+      "Enterprise",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/Dmailofficial",
+    "discord": "https://discord.gg/dmailofficial",
+    "description": "Dmail Network is an AI-powered decentralized communication infrastructure built to provide encrypted emails, unified notifications, and targeted marketing across multiple chains and dApps for users, developers, marketers and influencers",
+    "usesInternetIdentity": true,
+    "stats": "9,000,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/dmail-network_logo.png"
   }
 ]
