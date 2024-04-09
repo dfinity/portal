@@ -81,7 +81,7 @@ def set_message(new_message: str) -> void:
 
 ## Query calls
 
-Query calls are executed on a single node and return a synchronous response. Since they execute on a single node, they do not go through consensus and can be much faster than update calls.
+Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response. Since they execute on a single node, they do not go through consensus and can be much faster than update calls.
 
 :::warning
 The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a certified query (see below) should be used for security-critical calls.
@@ -164,6 +164,10 @@ Composite queries are query calls that can call other queries (on the same <Glos
 ### Certified queries
 
 Certified queries use certified variables to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call and can then be read via a query call.
+
+### Replicated queries
+
+Replicated queries, also referred to as the "query-as-update" execution model, are query calls executed as updates. The query still discards the state changes, but execution happens on all subnet nodes and the results go through consensus.
 
 ### Inter-canister calls
 
