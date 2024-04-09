@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import React from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import ShareMeta from "../components/Common/ShareMeta/ShareMeta";
-import { de, hr } from "date-fns/locale";
 
 const SplitCard: React.FC<{
   children: React.ReactNode;
