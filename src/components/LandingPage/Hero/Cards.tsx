@@ -36,7 +36,7 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage href="/multichain" image="/img/home/btc-eth.webp">
+      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>

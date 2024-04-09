@@ -11,10 +11,11 @@ const redirects = `
   # regular internal redirects (from -> to)
   /docs/current/references/motoko-ref/* /docs/current/motoko/main/base/:splat
   /features/green /capabilities/sustainability
-  /features /capabilities
+  /features /capabilities 
   /openchat /ois
   /howitworks /how-it-works
   /showcase /ecosystem
+  /multichain /chainfusion
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
