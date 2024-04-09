@@ -705,8 +705,8 @@ const sidebars = {
                         id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
                       },
                       items: [
-                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/voting",
-                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/follow",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/voting",
+                        "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
                       ],
                     },
                   ],
