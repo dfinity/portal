@@ -726,6 +726,7 @@ const sidebars = {
             "developer-docs/daos/nns/staking-voting-rewards",
             "developer-docs/daos/nns/neurons-fund",
             "developer-docs/daos/nns/proposal-requirements",
+            "developer-docs/daos/nns/neuron-management",
           ],
         },
         {
