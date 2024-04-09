@@ -15,7 +15,7 @@ Cycles are used to measure the resources, such as memory, storage, and compute p
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in XDR in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
-Unlike ICP tokens, cycles are only associated with canisters and not with user or developer principals. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
+Cycles are only associated with canisters and user or developer principals. Canisters require cycles to perform operations and pay for the resources they use. Developers manage the distribution and ownership of cycles through the **cycles ledger**. The cycles ledger is used to convert ICP tokens into cycles, send cycles to canisters, and create new canisters with cycles.
 
 ## Acquiring cycles using a cycles coupon
 
@@ -61,20 +61,16 @@ dfx identity use MyIdentity
 Then, redeem your coupon with the command, replacing **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY faucet bot:
 
 ```sh
-dfx wallet --network ic redeem-faucet-coupon COUPON_CODE
+dfx cycles --network ic redeem-faucet-coupon COUPON_CODE
 ```
 
 Verify your cycles balance with the command:
 
 ```sh
-dfx wallet --network ic balance
+dfx cycles --network ic balance
 ```
 
-This should return an output showing 10T cycles in your wallet. To get the canister identifier of your new cycles wallet, run the command:
-
-```sh
-dfx identity --network ic get-wallet
-```
+This should return an output showing 10T cycles.
 
 ## Converting ICP tokens to cycles
 
@@ -92,41 +88,15 @@ Once you have sent some ICP to this account ID, you can verify that they were re
 dfx ledger --network ic balance
 ```
 
-After you have your ICP tokens ready, you will need to create a cycles wallet if you haven't already. To check and see if your identity already has a cycles wallet on the mainnet, you can use the following command:
+After you have your ICP tokens ready, you can convert them into cycles using the command:
 
 ```
-dfx identity --ic get-wallet
-```
-
-If your identity has a cycles wallet already, it will be returned in the output, otherwise you'll see an error.
-
-Creating a new cycles wallet will require your identity principal, which you can obtain by running the command:
-
-```
-dfx identity get-principal
-```
-
-Then, to create a cycles wallet, run the following command, replacing the `PRINCIPAL_ID` with your identity's principal value that was returned from the `dfx identity get-principal` command, then replace `ICP_TOKENS` with the amount of tokens you'd like to convert into cycles:
-
-```
-dfx ledger --network ic create-canister <PRINCIPAL_ID> --amount <ICP_TOKENS>
-```
-
-The ID in this output is the address of the canister where your wallet will live. Now that your cycles wallet canister has been created, you need to install the wallet code with the following command, replacing the `CANISTER_ID` with the value you received in the output of the previous command:
-
-```
-dfx identity --network ic deploy-wallet <CANISTER_ID>
-```
-
-To verify that your wallet is now configured and ready to use, query the balance of the wallet with the following command, which should return your balance in cycles:
-
-```
-dfx wallet --network ic balance
+dfx cycles convert AMOUNT --network ic
 ```
 
 ## Deploying your dapp to the mainnet
 
-Now that you've obtained some cycles and created a cycles wallet, you can deploy your [`vite-motoko-react`](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp) sample project to the mainnet.
+Now that you've obtained some cycles, you can deploy your [`vite-motoko-react`](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp) sample project to the mainnet.
 
 First, make sure you have an active connection to the mainnet. In your terminal window, run the command:
 
@@ -149,16 +119,6 @@ dfx deploy --network ic
 ```
 
 In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
-
-:::caution
-If you manually converted ICP tokens into cycles, and your cycles wallet doesn't contain enough cycles to complete this deployment, you can add more cycles to your wallet by replacing `<CYCLE_WALLET_CANISTER_ID>` with the output from `dfx identity --ic get-wallet` in the following command:
-
-```
-dfx ledger top-up <CYCLE_WALLET_CANISTER_ID> --network ic --amount 1.005
-```
-
-This command converts an additional 1.005 ICP tokens to cycles for the 5o6tz-saaaa-aaaaa-qaacq-cai cycles wallet identifier.
-:::
 
 Now, let's use your dapp! To access the dapp's frontend, first you need to get the canister's URL. To get this, run the command:
 

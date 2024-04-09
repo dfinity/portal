@@ -58,27 +58,7 @@ const airtablePlugin = async function () {
           });
           offset = res.offset;
 
-          records.push(
-            ...res.records.map((r) => ({
-              id: r.id,
-              eventName: r.fields["Event Name"],
-              marketingText: r.fields["Marketing Text"],
-              description: !!r.fields["Marketing Text"]
-                ? markdownToPlainText(r.fields["Marketing Text"])
-                : null,
-              eventLink: r.fields["Event Link"],
-              topic: r.fields["Topic"],
-              startDate: r.fields["Start date"],
-              endDate: r.fields["End Date"],
-              regions: r.fields["Regions"], // continent
-              country: r.fields["Country"],
-              city: r.fields["City"],
-              type: r.fields["Type"],
-              websiteCategory: r.fields["Website Category"],
-              mode: r.fields["Mode"],
-              status: r.fields["Status"],
-            }))
-          );
+          records.push(...parseAirtableData(res.records));
         } while (!!offset);
 
         // cut off events happened 6 months ago
@@ -196,5 +176,56 @@ const airtablePlugin = async function () {
     },
   };
 };
+
+function parseAirtableData(records) {
+  return records.map((r) => {
+    // Sanitize the event link to prevent bad links from breaking the website build
+    let eventLink = "#";
+    let startDate,
+      endDate = new Date().toISOString();
+
+    try {
+      eventLink = new URL(r.fields["Event Link"]).toString();
+    } catch (err) {
+      console.warn(
+        `Failed to parse event link as url. Got: ${r.fields["Event Link"]}`
+      );
+    }
+
+    try {
+      startDate = new Date(r.fields["Start date"]).toISOString();
+    } catch (err) {
+      console.warn(
+        `Failed to parse start date. Got: ${r.fields["Start date"]}`
+      );
+    }
+
+    try {
+      endDate = new Date(r.fields["End Date"]).toISOString();
+    } catch (err) {
+      console.warn(`Failed to parse end date. Got: ${r.fields["End Date"]}`);
+    }
+
+    return {
+      id: r.id,
+      eventName: r.fields["Event Name"],
+      marketingText: r.fields["Marketing Text"],
+      description: !!r.fields["Marketing Text"]
+        ? markdownToPlainText(r.fields["Marketing Text"])
+        : null,
+      eventLink,
+      topic: r.fields["Topic"],
+      startDate,
+      endDate,
+      regions: r.fields["Regions"], // continent
+      country: r.fields["Country"],
+      city: r.fields["City"],
+      type: r.fields["Type"],
+      websiteCategory: r.fields["Website Category"],
+      mode: r.fields["Mode"],
+      status: r.fields["Status"],
+    };
+  });
+}
 
 module.exports = airtablePlugin;

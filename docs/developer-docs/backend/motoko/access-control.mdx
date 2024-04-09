@@ -289,7 +289,7 @@ Backend canister via Candid interface:
 
 ## Check the current identity context
 
-Before you create any additional identities, let’s review the principal identifiers associated with the `owner` identity and the cycles wallet for your `owner` identity. This `owner` identity is created when your canisters were deployed.
+Before you create any additional identities, let’s review the principal identifier associated with the `owner` identity, which was created when your canisters were deployed.
 
 On the Internet Computer blockchain, a principal is the internal representative for a user, canister, node, or subnet. The textual representation for a principal is the external identifier you see displayed with working with the principal data type.
 
@@ -357,14 +357,6 @@ Call the `my_role` function to see that your new user identity has not been assi
 
 ```
 dfx --identity ic_admin canister call access_hello_backend my_role
-```
-
-The command displays output similar to the following:
-
-```
-Creating a wallet canister on the local network.
-The wallet canister on the "local" network for user "ic_admin" is "ryjl3-tyaaa-aaaaa-aaaba-cai"
-(null)
 ```
 
 Switch your currently-active identity context to use the new `ic_admin` user identity and display the principal associated with the `ic_admin` user by running the following command:

@@ -13,7 +13,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 As discussed in [tokens and cycles](/docs/current/concepts/tokens-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
-Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**. The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
+Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers can manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**.
+
+:::caution
+Please note that the cycles wallet will be removed from dfx in a future release. We recommend using the cycles ledger feature instead, which simplifies the cycles management workflow.
+:::
+
+The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister principal of the cycles wallet instead of your user principal.
 
 For the purposes of using the local canister execution environment, the SDK automatically creates a default cycles wallet for you in every project and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local canister execution environment.
 
@@ -72,48 +78,13 @@ Authorizing a principal as a custodian does not automatically grant the principa
 
 ## Creating a cycles wallet
 
-### Creating a local cycles wallet
-
-If you are doing local development, your local cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`.
-
-Alternatively, a local instance of the cycles wallet can be deployed manually with the following workflow:
-
 ### Prerequisites
 
 - [x] Install the [IC SDK](/docs/current/developer-docs/getting-started/install/).
 
-- [x] Download and install [Node.js](https://nodejs.org/en/download/current), version 16.x.x and older. Running a version newer than 16.x.x may result in an error.
+### Creating a local cycles wallet
 
-- #### Step 1: Clone the cycles wallet repository and navigate into the directory:
-
-```
-git clone https://github.com/dfinity/cycles-wallet.git
-cd cycles-wallet
-```
-
-- #### Step 2: Install the dependencies with the command:
-
-```
-npm ci
-```
-
-- #### Step 3: Start a local <GlossaryTooltip>replica</GlossaryTooltip> if one is not already running:
-
-```
-dfx start --clean --background
-```
-
-- #### Step 4: Deploy the cycles wallet canister locally:
-
-```
-dfx deploy
-```
-
-- #### Step 5: Get the canister ID of the cycles wallet:
-
-```
-dfx canister id wallet
-```
+If you are doing local development, your local cycles wallet is created when you register a new canister principal using `dfx canister create` or when you register, build, and deploy a canister with `dfx deploy`. 
 
 ### Creating a cycles wallet on the mainnet
 

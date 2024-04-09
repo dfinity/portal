@@ -37,6 +37,7 @@ const sidebars = {
           label: "Cycles",
           items: [
             "developer-docs/getting-started/cycles/cycles-faucet",
+	    "developer-docs/getting-started/cycles/cycles-ledger",
             "developer-docs/getting-started/cycles/cycles-wallet",
             "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
@@ -300,7 +301,7 @@ const sidebars = {
                 type: "doc",
                 id: "developer-docs/developer-tools/cli-tools/cli-reference/index",
               },
-              items: [
+	      items: [
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-bootstrap",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
@@ -610,6 +611,7 @@ const sidebars = {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
+            "developer-docs/defi/icrc-1/token-quickstart",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icrc-1/icrc1-index-setup",
