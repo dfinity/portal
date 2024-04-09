@@ -505,6 +505,7 @@ const sidebars = {
         },
         "developer-docs/web-apps/design-dapps",
         "developer-docs/web-apps/independently-verifying-ic-signatures",
+        "developer-docs/web-apps/obtain-verify-ic-pubkey",
         {
           type: "category",
           label: "User sign-up and login",
