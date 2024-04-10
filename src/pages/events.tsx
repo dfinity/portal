@@ -194,10 +194,10 @@ function GlobalEventsPage() {
                 eventOrPromo === "promo" ? (
                   <PromoCard
                     key="promo"
-                    label="ICP Specific events"
-                    description="Connect with the Internet Computer community, and become part of a growing ecosystem."
+                    label="Join ICP Community Events"
+                    description="Embark on a journey with fellow innovators at the forefront of the Internet Computer space. Engage, learn, and evolve in an ecosystem rich with opportunities."
                     href="https://lu.ma/icpevents"
-                    ctaLabel="SEE MORE"
+                    ctaLabel="Discover Upcoming Events"
                   />
                 ) : (
                   <EventCard key={eventOrPromo.id} event={eventOrPromo} />
