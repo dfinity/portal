@@ -35,7 +35,7 @@ The response will give you the balance of the AccountIdentifier at the most rece
     ]
 }
 ```
-If you want to know the balance of a staked neuron you can specify the account type and you need to make sure the account_identifier you specify corresponds to the ledger address of a neuron. You can find more information about the latter [here](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id.mdx).
+If you want to know the balance of a staked neuron, you can specify the account type. You need to make sure the `account_identifier` you specify corresponds to the [ledger address of a neuron](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id.mdx).
 
 ```bash
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{

@@ -13,7 +13,7 @@ This section will show you how to use Rosetta to follow existing neurons.
 If you do not want to have to vote on every proposal yourself, you can decide to follow other neurons. This essentially means that you are going to vote the same way on a given proposal as the neuron that you are following. 
 
 The `FOLLOW` operation sets a follow rule for a neuron.
-The Governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
+The governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
 
 The `followees` metadata field contains the list of neurons to follow.
 If the list contains more than one neuron, the neuron will vote according to the majority of followed neurons votes (or abstain in case of draw).
@@ -151,14 +151,14 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 
 :::info
 
-The `followees` metadata field contains list of unique neuron identifiers assigned by the Governance canister smart contract, not the list of neuron indices chosen by the caller.
-You can obtain unique neuron identifiers of you your neurons from the `neuron_id` metadata field of the `STAKE` and `NEURON_INFO` operations.
+The `followees` metadata field contains list of unique neuron identifiers assigned by the governance canister smart contract, not the list of neuron indices chosen by the caller.
+You can obtain unique neuron identifiers of your neurons from the `neuron_id` metadata field of the `STAKE` and `NEURON_INFO` operations.
 
 :::
 
 You can see the followee being added to the list of followees when fetching the `NeuronInfo`. 
 
-An example implementation in python looks like the following.
+An example implementation in Python resembles the following:
 ```python
 import json
 import requests

@@ -21,16 +21,15 @@ This section will show you how to use Rosetta to vote on existing proposals.
 First you will need to know which proposals currenty exist on the NNS. You can read up on how to do this [here](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals.md). 
 If you already know the proposal id you want to vote on you can also [fetch](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info.md) the information about the proposal to check that what your are voting on is what you expected. 
 
-### Vote on proposal
-Once you are sure about which proposal you want to vote on you will need the proposal id. It is contained in the proposal info which you retreived in the previous step. 
+### Vote on a proposal
 In this tutorial we will be voting on the proposal with the proposal id `12`. 
-We also have to decide on what to vote meaning:
+We also have to decide on what to vote, meaning:
 - Register a vote, but neither vote for nor against the proposal: 0
 - Vote for the proposal to be adopted: 1
 - Vote for the proposal to be rejected: 2
 
 In this case we will be voting against the proposal. 
-An example call for the `construction/payloads` endpoint looks like the following. 
+An example call for the `construction/payloads` endpoint looks like the following:
 ```
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
   "network_identifier": {
@@ -63,7 +62,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 }'
 ```
 
-The example implementation in python is.
+The example implementation in Python can be found below:
 ```python
 
 import json
