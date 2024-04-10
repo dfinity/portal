@@ -21,6 +21,12 @@ The dissolve timestamp always increases monotonically.
 
 -   If the neuron is in the `DISSOLVED` state, invoking `SET_DISSOLVE_TIMESTAMP` will move it to the `NOT_DISSOLVING` state and will set the dissolve delay accordingly.
 
+|                      |            |
+|----------------------|------------|
+| Since version        | 1.1.0      |
+| Idempotent?          | yes        |
+| Minimal access level | controller |
+
 The example call to the `construction/payloads` endpoint looks like the following. 
 
 ```bash

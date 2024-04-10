@@ -10,6 +10,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 If you do not want to manually have to stake the maturity that you acquired, you can set your neuron to automaticall stake new maturity. 
+
+|                      |        |
+|----------------------|--------|
+| Since version        | 1.7.0  |
+| Idempotent?          | No    |
+| Minimal access level | controller |
+
 An example command for this feature is the following. 
 ```bash
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '

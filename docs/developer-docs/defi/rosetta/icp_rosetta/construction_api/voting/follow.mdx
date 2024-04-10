@@ -1,0 +1,325 @@
+---
+keywords: [intermediate, rosetta, tutorial, spawn, neuron, staking, voting, proposal, follow]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Voting on proposals
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
+This section will show you how to use Rosetta to follow existing neurons. 
+If you do not want to have to vote on every proposal yourself, you can decide to follow other neurons. This essentially means that you are going to vote the same way on a given proposal as the neuron that you are following. 
+
+The `FOLLOW` operation sets a follow rule for a neuron.
+The governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
+
+The `followees` metadata field contains the list of neurons to follow.
+If the list contains more than one neuron, the neuron will vote according to the majority of followed neurons votes (or abstain in case of draw).
+If the list is empty, the rule for this topic will be discarded (i.e., the neuron will not follow any other neuron for proposals of this type).
+
+You can get a [list](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons.md) of publicly known neurons through the `DATA-API`. 
+
+You can restrict the rule to a specific topic by specifying the `topic` metadata field.
+The topic is an integer between 0 and 10 (inclusive).
+The default value for the `topic` field is 0.
+Each topic can have at most one rule associated with it.
+The topic codes are listed below.
+
+0. Undefined (all topics).
+1. Neuron management.
+2. Exchange rate.
+3. Network economics.
+4. Governance.
+5. Node administration.
+6. Participant management.
+7. Subnet management.
+8. Network canister management.
+9. KYC.
+10. Node provider rewards.
+
+|                      |            |
+|----------------------|------------|
+| Since version        | 1.5.0      |
+| Idempotent?          | yes        |
+| Minimal access level | hotkey     |
+
+<div class="formalpara-title">
+
+**Prerequisites:**
+
+</div>
+
+* `account.address` is the ledger address of the neuron controller or hotkey.
+* `metadata.followees` contains an array of valid neuron identifiers.
+* `metadata.topic` is a valid topic identifier.
+
+<div class="formalpara-title">
+
+**Postconditions:**
+
+</div>
+
+* Neuron votes according to specified follow rule.
+
+<div class="formalpara-title">
+
+**Calling `FOLLOW` as a controller:**
+
+</div>
+
+```json
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "FOLLOW",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "followees": [
+          3094748712371737240
+        ],
+        "topic": 0
+      }
+    }
+  ],
+  "metadata": null
+}'
+```
+
+<div class="formalpara-title">
+
+**Calling `FOLLOW` with a hotkey:**
+
+</div>
+
+```json
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "FOLLOW",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "followees": [
+          3094748712371737240
+        ],
+        "topic": 0,
+        "controller": {
+          "public_key": {
+            "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+            "curve_type": "secp256k1"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": null
+}'
+```
+
+:::info
+
+The `followees` metadata field contains list of unique neuron identifiers assigned by the governance canister smart contract, not the list of neuron indices chosen by the caller.
+You can obtain unique neuron identifiers of your neurons from the `neuron_id` metadata field of the `STAKE` and `NEURON_INFO` operations.
+
+:::
+
+You can see the followee being added to the list of followees when fetching the `NeuronInfo`. 
+
+An example implementation in Python resembles the following:
+```python
+import json
+import requests
+import argparse
+from hashlib import sha256
+import ecdsa
+import time
+from ecdsa import VerifyingKey
+
+NETWORK_ID = {"blockchain": "Internet Computer", "network": "00000000000000020101"}
+HEADERS = {"Content-Type": "application/json", "charset": "utf-8"}
+
+
+class RosettaClient:
+    # Takes in the private key an the url to the running Rosetta instance
+    def __init__(self, pk, url):
+        self._pk = pk
+        self._url = url
+
+    def public_key(self):
+        return public_key(self._pk.verifying_key, "secp256k1")
+
+    def sign(self, payloads):
+        signatures = []
+        for payload in payloads:
+            data_to_sign = bytes.fromhex(payload["hex_bytes"])
+            signature_bytes = self._pk.sign(data_to_sign, hashfunc=sha256).hex()
+            signatures.append(
+                {
+                    "signing_payload": {
+                        "account_identifier": payload["account_identifier"],
+                        "hex_bytes": payload["hex_bytes"],
+                        "signature_type": "ecdsa",
+                    },
+                    "signature_type": "ecdsa",
+                    "public_key": self.public_key(),
+                    "hex_bytes": signature_bytes,
+                }
+            )
+        return signatures
+
+    # Makes a post request to the Rosetta instance and takes in the suffix of the endpoint of Rosetta as well as the request data
+    def post(self, url_suffix, data):
+        url = self._url + url_suffix
+        response = requests.post(url, data=json.dumps(data), headers=HEADERS)
+        return response.json()
+
+    def construction_derive(
+        self,
+        public_key: str = None,
+        curve_type: str = "secp256k1",
+        account_type=None,
+        neuron_index=0,
+    ):
+        metadata = None
+        if public_key is None:
+            public_key = self.public_key()
+        if account_type is not None:
+            metadata = {"account_type": account_type, "neuron_index": neuron_index}
+
+        return self.post(
+            "/construction/derive",
+            build_data({"public_key": public_key, "metadata": metadata}),
+        )
+
+    def construction_payload(self, public_keys, operations, metadata=None):
+        data = build_data(
+            {
+                "public_keys": public_keys,
+                "operations": operations,
+            }
+        )
+        data["metadata"] = metadata
+        return self.post("/construction/payloads", data)
+
+    def construction_combine(self, unsigned_transaction, signatures):
+        return self.post(
+            "/construction/combine",
+            build_data(
+                {
+                    "unsigned_transaction": unsigned_transaction,
+                    "signatures": signatures,
+                }
+            ),
+        )
+
+    def construction_submit(self, signed_transaction: str):
+        return self.post(
+            "/construction/submit",
+            build_data(
+                {
+                    "signed_transaction": signed_transaction,
+                }
+            ),
+        )
+
+    def make_and_submit_transaction(self, operations):
+        public_keys = [self.public_key()]
+        result = self.construction_payload(public_keys, operations)
+        signatures = self.sign(result["payloads"])
+        signed_transaction = self.construction_combine(
+            result["unsigned_transaction"], signatures
+        )
+        return self.construction_submit(signed_transaction["signed_transaction"])
+
+def public_key(public_key=VerifyingKey, curve_type="secp256k1"):
+    return {
+        "hex_bytes": public_key.to_string("uncompressed").hex(),
+        "curve_type": "secp256k1",
+    }
+
+def neuron_info_operation(
+    address, neuron_index=0, controller=None, operation_identifier=0
+):
+    return {
+        "operation_identifier": {"index": operation_identifier},
+        "type": "NEURON_INFO",
+        "account": {"address": address},
+        "metadata": {"neuron_index": neuron_index, "controller": controller},
+    }
+
+def follow_operation(address, neuron_index=0, operation_identifier=0, followees=[],topic=0):
+    return {
+        "operation_identifier": {"index": operation_identifier},
+        "type": "FOLLOW",
+        "account": {"address": address},
+        "metadata": {
+            "neuron_index": neuron_index,
+            "followees": followees,
+            "topic": topic,
+        },
+    }
+
+# Attaches the network_identifier to the request
+def build_data(d):
+    return {"network_identifier": NETWORK_ID, **d}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--private-key-file", required=True)
+    parser.add_argument("-hk", "--hot-key-private-key-file", required=False)
+    parser.add_argument("-u", "--ic-url", required=True)
+    parser.add_argument("-is", "--ingress-start", required=False)
+    parser.add_argument("-ie", "--ingress-end", required=False)
+    parser.add_argument("-m", "--memo", required=False)
+    parser.add_argument("-c", "--created-at-time", required=False)
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    with open(args.private_key_file, "rb") as key_file:
+        private_key = ecdsa.SigningKey.from_pem(key_file.read())
+    client = RosettaClient(private_key, args.ic_url)
+    follow_ops = follow_operation(client.construction_derive()["account_identifier"]["address"],neuron_index = 1,followees= [3094748712371737240])
+    print(json.dumps(client.make_and_submit_transaction([follow_ops]),indent=4))
+    
+    neuron_info_ops = neuron_info_operation(client.construction_derive()["account_identifier"]["address"],neuron_index = 1)
+    print(json.dumps(client.make_and_submit_transaction([neuron_info_ops]),indent=4))
+
+if __name__ == "__main__":
+    main()
+```

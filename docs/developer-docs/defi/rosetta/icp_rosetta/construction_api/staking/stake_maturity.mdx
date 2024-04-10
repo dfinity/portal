@@ -10,7 +10,15 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 Once you have a neuron and start accumulating maturity you can either decide to leave the maturity as it is until you decide to convert it to ICP or you can make use of it and stake it additionally to your
-ICP. To do the latter you will have to stake your maturity. You can set how much of the existing maturity you want to stake. In this example command we want to stake the entire maturity (100%). 
+ICP. To do the latter you will have to stake your maturity. You can set how much of the existing maturity you want to stake. 
+The maturity needs to be larger than zero for the operation to work. 
+In this example command we want to stake the entire maturity (100%). 
+
+|                      |            |
+|----------------------|------------|
+| Since version        | 1.4.0      |
+| Idempotent?          | no         |
+| Minimal access level | controller |
 
 ```bash
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '
