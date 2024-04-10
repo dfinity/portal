@@ -157,9 +157,9 @@ export function TeaserCarousel() {
                 </div>
                 {card.mainImage && (
                   <img
+                    loading="lazy"
                     className={"sm:hidden"}
                     src={card.mainImage}
-                    loading="lazy"
                     alt={
                       typeof card.title === "string" ? card.title : "Card image"
                     }
