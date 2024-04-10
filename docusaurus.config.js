@@ -300,7 +300,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Chain Fusion Technology",
-            href: "/multichain",
+            href: "/chainfusion",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
@@ -440,9 +440,10 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "ICP around the world",
-            href: "/community",
-            image: "/img/nav/featured-community.webp",
+            title: "OLYMPUS",
+            subtitle: "The On-Chain Acceleration Platform",
+            href: "/olympus",
+            image: "/img/nav/featured-olympus.webp",
           },
         },
       ],

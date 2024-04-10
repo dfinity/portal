@@ -31,7 +31,7 @@ const Newsletter: React.FC<{
   return (
     <div className="container-12">
       <AnimateSpawn className={className} variants={transitions.container}>
-        <div className="rounded-xl md:rounded-[32px] bg-gradient-100 from-[#3B00B9] to-[#2586B6DE] overflow-hidden relative">
+        <div className="rounded-xl md:rounded-[32px] bg-gradient-100 from-[#3B00B9] to-[#2586B6DE]  relative">
           <div className="px-6 md:px-0 md:mx-1/12 pb-16 md:pb-0 flex flex-col gap-6 md:flex-row md:items-center">
             <div
               className={clsx(

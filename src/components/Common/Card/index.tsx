@@ -138,3 +138,22 @@ export const CardWithBackground: React.FC<{
     </MotionLink>
   );
 };
+
+export const ShowcaseCard: React.FC<{
+  imgSrc: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}> = ({ imgSrc, title, subtitle, description }) => {
+  return (
+    <motion.div
+      className="bg-white/90 border overflow-hidden border-white border-solid rounded-xl px-6 py-8  text-black "
+      variants={transitions.item}
+    >
+      <img src={imgSrc} loading="lazy" alt="" className="w-20 h-20"></img>
+      <h3 className="text-gradient tw-heading-5 mb-2 mt-8 colo">{title}</h3>
+      <h4 className="tw-heading-6 ">{subtitle}</h4>
+      <p className="tw-lead-sm mb-0 text-black/60">{description}</p>
+    </motion.div>
+  );
+};

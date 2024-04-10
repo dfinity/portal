@@ -16,9 +16,7 @@ function BitcoinIntegration() {
   return (
     <Layout
       title="ICP as a Bitcoin L2"
-      description="ICP natively integrate with the Bitcoin network without intermediaries.
-                   Chain-key Bitcoin (ckBTC), introduces speed, scalability and low
-                   transaction fees to bitcoin for practical use."
+      description="The Internet Computer adds the missing smart contract layer to Bitcoin. Leveraging Chain Fusion Technology, ICP can directly read and write to Bitcoin, enabling dapps that natively interact with Bitcoin."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpeg"></ShareMeta>

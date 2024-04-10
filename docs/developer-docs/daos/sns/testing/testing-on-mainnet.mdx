@@ -39,7 +39,7 @@ The main differences to a production SNS deployment are summarized here:
 To perform an SNS testflight using the instructions that follow, you will need the following tools:
 
 - [x] [dfx](https://github.com/dfinity/sdk)
-- [x] [sns-cli](https://github.com/dfinity/ic)
+- [x] [dfx's sns extension](https://github.com/dfinity/dfx-extensions/tree/main/extensions/sns)
 - [x] [quill](https://github.com/dfinity/quill)
 - [x] [didc](https://github.com/dfinity/candid) (for advanced tests)
 
@@ -47,24 +47,20 @@ To perform an SNS testflight using the instructions that follow, you will need t
 Developers can use any set of tools that accomplish the goals of a testflight.
 :::
 
-### Installing `sns-cli`
+### Installing dfx's sns extension
 
-Instead of building `sns-cli` locally, you can download pre-compiled binaries for [Linux](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-linux/sns.gz) and [macOS](https://download.dfinity.systems/ic/82a53257ed63af4f602afdccddadc684df3d24de/openssl-static-binaries/x86_64-darwin/sns.gz). You can replace the commit hash in the links by the most recent one obtained via running the command:
+The extension can be installed from dfx itself:
+
 ```
-./gitlab-ci/src/artifacts/newest_sha_with_disk_image.sh origin/master
+dfx extension install sns --version 0.4.0
 ```
-from the root directory of the [IC monorepo](https://github.com/dfinity/ic).
-
-You can download pre-compiled binaries for quill [here](https://github.com/dfinity/quill/releases).
-
-You can download pre-compiled binaries for didc [here](https://github.com/dfinity/candid/releases).
 
 ### Versions
 
 This guide has been tested with the following version of the tools:
-- **dfx: 0.13.1**
-- **sns-cli: 82a53257ed63af4f602afdccddadc684df3d24de**
-- **quill: v0.4.0**
+- **dfx: 0.16.1**
+- **dfx's sns extension: 0.4.0**
+- **quill: v0.4.2**
 - **didc: 0.3.0 (2022-11-17)**
 
 ## High-level
@@ -84,13 +80,19 @@ Activities developers may need to do in running a testflight:
 
 ## Steps to run a testflight
 
+If you would like to deploy the testflight locally before trying the testflight on mainnet (which requires cycles), first start a local replica:
+
+```bash
+dfx start --clean
+```
+
 ### Step 1. Import and download SNS canisters
 
 To import the SNS canisters in the `dfx.json` file of your project and download their WASM binaries, run
 
 ```bash
-DFX_IC_COMMIT=82a53257ed63af4f602afdccddadc684df3d24de dfx sns import
-DFX_IC_COMMIT=82a53257ed63af4f602afdccddadc684df3d24de dfx sns download
+DFX_IC_COMMIT=94bbea43c7585a1ef970bd569a447c269af9650b dfx sns import
+DFX_IC_COMMIT=94bbea43c7585a1ef970bd569a447c269af9650b dfx sns download
 ```
 in the root directory of your project.
 
@@ -99,7 +101,7 @@ in the root directory of your project.
 To deploy the testflight SNS, run
 
 ```bash
-sns-cli deploy-testflight
+dfx sns deploy-testflight --init-config-file="/path/to/sns_init.yaml"
 ```
 To deploy on the mainnet, pass `--network ic` as an additional argument.
 
