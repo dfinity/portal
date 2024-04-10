@@ -9,21 +9,14 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
-This section will show you how to use Rosetta to follow existing neurons. 
-If you do not want to have to vote on every proposal yourself, you can decide to follow other neurons. This essentially means that you are going to vote the same way on a given proposal as the neuron that you are following. 
-
-The `FOLLOW` operation sets a follow rule for a neuron.
-The Governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
-
-The `followees` metadata field contains the list of neurons to follow.
-If the list contains more than one neuron, the neuron will vote according to the majority of followed neurons votes (or abstain in case of draw).
-If the list is empty, the rule for this topic will be discarded (i.e., the neuron will not follow any other neuron for proposals of this type).
-
 |                      |        |
 |----------------------|--------|
-| Since version        | 1.7.0  |
+| Since version        | 1.4.0  |
 | Idempotent?          | No    |
 | Minimal access level | controller |
+
+This section will show you how to use Rosetta to disburse an existing neuron. 
+
 
 <div class="formalpara-title">
 
@@ -32,9 +25,9 @@ If the list is empty, the rule for this topic will be discarded (i.e., the neuro
 </div>
 
 * `account.address` is the ledger address of the neuron controller or hotkey.
-* `metadata.followees` contains an array of valid neuron identifiers.
-* `metadata.topic` is a valid topic identifier.
-
+*  `amount` is the amount that should be extracted form the dissolved neuron and needs to be eqal or less than the amount of ICP locked in the neuron.
+* `metadata.recipient` contains an account_identifier that should receive the ICP after the neuron is disbursed.
+*  The neuron needs to be in a `DISSOLVED` state to be able to be disbursed. 
 
 <div class="formalpara-title">
 
@@ -42,13 +35,8 @@ If the list is empty, the rule for this topic will be discarded (i.e., the neuro
 
 </div>
 
-* Neuron votes according to specified follow rule.
-
-<div class="formalpara-title">
-
-**Calling `FOLLOW` as a controller:**
-
-</div>
+* The neurons locked funds were reduced by the amount specified in the request
+* `metadata.recipient` received the specified amount.
 
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
@@ -89,7 +77,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 ```
 
 
-The example implementation looks like the following. 
+The example implementation in python looks like the following. 
 ```python
 import json
 import requests

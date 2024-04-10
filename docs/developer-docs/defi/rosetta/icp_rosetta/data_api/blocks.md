@@ -9,7 +9,7 @@ Make sure to use the correct NetworkIdentifier as described in this [section](/d
         "hash": "e189f729b207dafc2583305cf313671a84bb1437ee44435e12eaf3dcfbcb8fcf"
     }
 ```
-The blockidentifer required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash or both. You can select an transaction of your interest in the [ICP dashboard](https://dashboard.internetcomputer.org/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. In the following example we only provide the index, but you are free to use the full blockidentifier or only the hash too.
+The blockidentifer required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash or both. You can select a transaction of your interest in the [ICP dashboard](https://dashboard.internetcomputer.org/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. In the following example we only provide the index, but you are free to use the full blockidentifier or only the hash too.
 
 The request will look something like this:
 

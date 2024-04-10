@@ -361,9 +361,6 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/hotkeys /docs/current/developer-docs/defi/rosetta/hotkeys
   /docs/current/developer-docs/integrations/rosetta/neuron-lifecycle /docs/current/developer-docs/defi/rosetta/neuron-lifecycle
-  /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/staking-support
-  /docs/current/developer-docs/integrations/rosetta/staking-tutorial /docs/current/developer-docs/defi/rosetta/staking-tutorial
-  /docs/current/developer-docs/integrations/rosetta/transfers /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/transfers
   /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/asset-custody/custody-options
   /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs

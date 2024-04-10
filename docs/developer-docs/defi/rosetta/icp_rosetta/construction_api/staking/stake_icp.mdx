@@ -9,15 +9,16 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
+|               |       |
+|---------------|-------|
+| Since version | 1.5.0 |
+| Idempotent?   | yes   |
+| Minimal access level | controller |
+
 This section of the staking tuorial will show you how to use the ICP that was previously sent to the governance account identifier that corresponds to your
 public key to create a neuron and fund the neuron with ICP. 
 The ICP that was sent to this governance account identifier will be used to create a neuron or add the ICP to an already existing neuron. Either way the full amount of ICP that was
 sent to the governance account identifier will be used for staking. 
-
-|               |       |
-|---------------|-------|
-| Since version | 1.0.5 |
-| Idempotent?   | yes   |
 
 The call to the endpoint `construction/payloads` will look something like the following.
 

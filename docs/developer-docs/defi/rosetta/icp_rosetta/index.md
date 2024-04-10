@@ -1,6 +1,6 @@
 # Overview
 The ICP Rosetta allows for communication with the [ICP Ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) and the [NNS Governance Canister](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) through the Rosetta-API standard. 
-This guide is split up into the endpoints of the Data-API and that of the Construction-API. 
+This guide is split up into the endpoints of the [Data-API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.md) and that of the [Construction-API](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.md). 
 
 ## Set up an ICP Rosetta node
 
@@ -28,14 +28,14 @@ docker pull dfinity/rosetta-api
 docker run \
     --interactive \
     --tty \
-    --publish 8080:8080 \
+    --publish 8081:8081 \
     --rm \
     dfinity/rosetta-api
 ```
 
 This command starts the software on the local host and displays output similar to the following:
 
-    Listening on 0.0.0.0:8080
+    Listening on 0.0.0.0:8081
     Starting Rosetta API server
 
 By default, the software connects to a testnet.

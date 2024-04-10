@@ -4,7 +4,7 @@ This endpoint allows you to fetch all pending proposals from the NNS.  It is the
 For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). 
-Pedning proposals are all proposals which not yet have come to a conclusion and may be voted on. It is a direct call to the `get_pending_proposals` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_pending_proposals) of the Governance canister.
+Pending proposals are all proposals which not yet have come to a conclusion and may be voted on. It is a direct call to the `get_pending_proposals` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_pending_proposals) of the Governance canister.
 
 :::info
 This call requires Rosetta to make an online call, so make sure that Rosetta is connected to the internet.

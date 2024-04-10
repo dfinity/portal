@@ -14,16 +14,18 @@ Make sure you have enough ICP in your source account to make the transfer to the
 To derive the account identifier of your public key you can look at how the [derive endpoint works](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive.mdx). 
 
 ## Deriving the governance canister account identifier
+|               |       |
+|---------------|-------|
+| Since version | 1.3.0 |
+| Idempotent?          | no        |
+| Minimal access level | controller |
+
 For neuron creation on the Internet Computer, the process begins with the transfer of ICP tokens to the address destined to become the neuron. 
 This address, while earmarked for a future neuron, does not yet represent an active neuron until the governance canister acknowledges the deposit. 
 It's crucial to understand that, at this juncture, the neuron has not been created; the address is simply a placeholder for the future neuron. 
 By transferring the ICP tokens directly to this designated address, you effectively earmark them for neuron creation. 
 However, the governance canister must be notified of this transfer to activate the neuron. This process is done in the [next step of the guide](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp.mdx). 
 Once the governance canister is aware, it uses the transferred tokens at the specified address to formally establish the neuron.
-
-|               |       |
-|---------------|-------|
-| Since version | 1.3.0 |
 
 You can derive the governance canister account identifier you need to send ICP similarly as to how you derive your own account identifier. 
 

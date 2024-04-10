@@ -9,16 +9,16 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
-In this section of the staking tutorial you will learn how start and stop the dissolving process of a neuron. 
-If you want to retreive the ICP that was locked in the neuron you will have to set the neuron to a dissolving state. 
-You will have to wait at least 6 months between setting the neuron to `DISSOLVING` and receiving back your ICP. The waiting period increases if the set dissolve timestamp
-is further in the future than 6 months. 
-
 |                      |            |
 |----------------------|------------|
 | Since version        | 1.1.0      |
 | Idempotent?          | yes        |
 | Minimal access level | controller |
+
+In this section of the staking tutorial you will learn how start and stop the dissolving process of a neuron. 
+If you want to retreive the ICP that was locked in the neuron you will have to set the neuron to a dissolving state. 
+You will have to wait at least 6 months between setting the neuron to `DISSOLVING` and receiving back your ICP. The waiting period increases if the set dissolve timestamp
+is further in the future than 6 months. 
 
 ## Start Dissolving
 To set a neuron to `DISSOLVING` you can build the payloads request like so. 

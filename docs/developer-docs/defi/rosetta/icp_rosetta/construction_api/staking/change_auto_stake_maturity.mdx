@@ -9,13 +9,14 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
-If you do not want to manually have to stake the maturity that you acquired, you can set your neuron to automaticall stake new maturity. 
-
 |                      |        |
 |----------------------|--------|
 | Since version        | 1.7.0  |
-| Idempotent?          | No    |
+| Idempotent?          | Yes    |
 | Minimal access level | controller |
+
+If you do not want to manually have to stake the maturity that you acquired, you can set your neuron to automatically stake new maturity. 
+You can always deactivate this feature by calling it with the boolean `false`. 
 
 An example command for this feature is the following. 
 ```bash

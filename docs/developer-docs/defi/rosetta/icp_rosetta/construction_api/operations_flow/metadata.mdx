@@ -10,6 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## Overview
 This section details how to call the `construction/metadata` endpoint of the Rosetta construction API.
 The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionmetadata).
+
 ## How to fetch metadata from the ICP ledger
 An example of a call to the metadata endpoint can be found below:
 ```bash
@@ -31,9 +32,7 @@ curl --location '0.0.0.0:8081/construction/metadata'  --header 'Content-Type: ap
   ]
 }'
 ```
-
 The response would resemble the following:
-In the case of the ICP ledger this fee is `10_000` e8s of ICP. 
 
 ```json
 {"metadata":{},"suggested_fee":[{"value":"10000","currency":{"symbol":"ICP","decimals":8}}]}⏎                                                                                                                           
@@ -42,10 +41,7 @@ In the case of the ICP ledger this fee is `10_000` e8s of ICP.
 For the request type `TRANSACTION` the metadata includes the suggested fee for this operation. 
 In the case of the ICP ledger this fee is `10_000` e8s of ICP. 
 
-For the request type `TRANSACTION` the metadata includes the suggested fee for this operation. 
-In the case of the ICP ledger this fee is `10_000` e8s of ICP. 
-
-A call to the `construction/preprocess` endpoint written in Python could be implemented as follows:
+A call to the `construction/metadata` endpoint written in Python could be implemented as follows:
 
 ```bash
 python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081

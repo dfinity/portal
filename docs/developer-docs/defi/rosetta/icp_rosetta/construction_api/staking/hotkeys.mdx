@@ -104,17 +104,16 @@ The version of OpenSSL included in MacOS doesn't support ed25519 by default.
 You may have to install another version of OpenSSL (for example through *brew*), or run the command from a Linux machine.
 
 ## Adding hotkeys to a neuron
-
-The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some non-critical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
-The neuron you are trying to add a hotkey for must not have more than 10 hotkeys already linke to it. 
-
-The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
-
 |                      |            |
 |----------------------|------------|
 | Since version        | 1.2.0      |
 | Idempotent?          | yes        |
 | Minimal access level | controller |
+
+The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some non-critical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
+The neuron you are trying to add a hotkey for must not have more than 10 hotkeys already linke to it. 
+
+The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Add a principal as a hotkey
 

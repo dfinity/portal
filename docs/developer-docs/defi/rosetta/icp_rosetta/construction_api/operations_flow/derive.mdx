@@ -15,6 +15,7 @@ The ICP ledger is using `accountidentifiers` to represent public keys internally
 The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionderive).
 
 ## How to derive `accountidentifiers`
+You have to provide Rosetta with the public key representation as specified in the Rosetta-API [standard](https://docs.cloud.coinbase.com/rosetta/reference/constructionderive). 
 An example of a call to the derive endpoint can be found below:
 
 ```bash
@@ -30,14 +31,15 @@ curl --location '0.0.0.0:8081/construction/derive'  --header 'Content-Type: appl
 }'
 ```
 
-The response would resemble the following, representing the `accountidentifier` used by the ICP ledger:
+The response is the `accountidentifier` used by the ICP ledger:
 
 ```json
 
 {"account_identifier":{"address":"8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"}}⏎                                                                                                                  
 ```
 
-A call to the `construction/derive` endpoint written in Python could be implemented such as: 
+A call to the `construction/derive` endpoint written in Python could be implemented such as the following. 
+In this example the python file for the Rosetta-Client is called `icp_rosetta_client.py` and the private key is located at `~/.config/dfx/identity/default/identity.pem`. 
 ```bash
 python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
 ```

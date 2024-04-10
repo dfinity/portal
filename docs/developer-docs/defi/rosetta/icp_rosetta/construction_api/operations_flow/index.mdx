@@ -17,7 +17,7 @@ The Rosetta architecture is built so that no private keys are ever sent to Roset
 :::
 
 Rosetta supports multiple types of keys. The two that are used most often are `Edwards2559` and `Secp256k1`. If you want to use Rosetta together with `dfx` you will be using `ECDSA` keys with an `Secp256k1` curve type. For a guide on how to create a new identity you can look at the relevant `dfx` [section](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-identity). 
-For this guide you will be using the `identity.pem` that is created with `dfx identity new`. 
+For this guide we will be using the `identity.pem` that is created with `dfx identity new`. 
 Here is an example implementation of loading an `identity.pem` file and creating a private key struct than can be used to sign bytes:
 
 ```python
