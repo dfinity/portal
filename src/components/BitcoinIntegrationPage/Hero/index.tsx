@@ -27,7 +27,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             Bitcoin. Leveraging{" "}
             <Link
               className="text-white underline hover:no-underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
-              href="/multichain"
+              href="/chainfusion"
             >
               Chain Fusion Technology
             </Link>
