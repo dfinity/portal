@@ -3944,7 +3944,7 @@
       "Bitcoin",
       "DeFi"
     ],
-    "github": "github.com/cosmasken/ic-payroll",
+    "github": "https://github.com/cosmasken/ic-payroll",
     "description": "Fully on-chain decentralized human resource management software.",
     "usesInternetIdentity": true,
     "display": "Normal",
