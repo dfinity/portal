@@ -12,23 +12,27 @@ export const FeaturedNewsCard: React.FC<{
   linkLabel?: string;
 }> = ({ reverse = false, news, linkLabel = "Read Now" }) => {
   return (
-    <RoadmapCard
-      reverse={reverse}
-      imgAlt={news.title}
-      imgUrl={news.imageUrl}
-      contentClassName="text-black"
-    >
-      <h3 className="tw-heading-5 md:tw-heading-4 mb-3">{news.title}</h3>
-      <div className="tw-paragraph-sm md:tw-lead-sm text-black/60 mb-6">
-        {news.dateHuman} by {news.press}
-      </div>
-      <div className="">
-        <Link href={news.url} className="link-primary link-with-icon">
-          {linkLabel}
-          <LinkArrowUpRight />
-        </Link>
-      </div>
-    </RoadmapCard>
+    <Link href={news.url} className="link-primary link-with-icon no-underline">
+      <article className="hover:-translate-y-2 transition-transform hover: cursor-pointer">
+        <RoadmapCard
+          reverse={reverse}
+          imgAlt={news.title}
+          imgUrl={news.imageUrl}
+          contentClassName="text-black  "
+        >
+          <h3 className="tw-heading-5 md:tw-heading-4 mb-3">{news.title}</h3>
+          <div className="tw-paragraph-sm md:tw-lead-sm text-black/60 mb-6">
+            {news.dateHuman} by {news.press}
+          </div>
+          <div className="">
+            <Link href={news.url} className="link-primary link-with-icon">
+              {linkLabel}
+              <LinkArrowUpRight />
+            </Link>
+          </div>
+        </RoadmapCard>
+      </article>
+    </Link>
   );
 };
 
@@ -37,29 +41,37 @@ export const NewsCard: React.FC<{
   linkLabel?: string;
 }> = ({ news, linkLabel = "Read Now" }) => {
   return (
-    <article className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
-      <img
-        className="w-full h-[200px] object-center object-cover"
-        src={news.imageUrl}
-        alt={news.title}
-      ></img>
-      <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
-        <h3 className="tw-heading-5 mb-3">{news.title}</h3>
-        <div className="flex-1"></div>
+    <Link
+      href={news.url}
+      className="link-primary link-with-icon no-underline text-black	 hover:text-inherit	"
+    >
+      <article
+        className="rounded-xl overflow-hidden bg-white flex flex-col w-full
+    hover:-translate-y-2 transition-transform hover: cursor-pointer"
+      >
+        <img
+          className="w-full h-[200px] object-center object-cover"
+          src={news.imageUrl}
+          alt={news.title}
+        ></img>{" "}
+        <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
+          <h3 className="tw-heading-5 mb-3">{news.title}</h3>
+          <div className="flex-1"></div>
 
-        {news.press && news.dateHuman && (
-          <div className="tw-paragraph-sm text-black/60 mb-6">
-            {news.dateHuman} {news.press && "by " + news.press}
+          {news.press && news.dateHuman && (
+            <div className="tw-paragraph-sm text-black/60 mb-6">
+              {news.dateHuman} {news.press && "by " + news.press}
+            </div>
+          )}
+          <div className="">
+            <Link href={news.url} className="link-primary link-with-icon">
+              {linkLabel}
+              <LinkArrowUpRight />
+            </Link>
           </div>
-        )}
-        <div className="">
-          <Link href={news.url} className="link-primary link-with-icon">
-            {linkLabel}
-            <LinkArrowUpRight />
-          </Link>
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 };
 

@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 const { isValid, parse } = require("date-fns");
 const { toDate, format, utcToZonedTime } = require("date-fns-tz");
+import axios from "axios";
+import cheerio from "cheerio";
 
 const { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_HOST } =
   process.env;
@@ -34,7 +36,7 @@ const contentfulPlugin = async function () {
           host: CONTENTFUL_HOST,
         });
 
-        const pressEntries = await client.getEntries({});
+        const pressEntries = await client.getEntries({ content_type: "press" });
 
         const press = pressEntries.items.map((item) => {
           let parsedDate = parse(item.fields.date, "MMMM y", new Date());
@@ -66,6 +68,12 @@ const contentfulPlugin = async function () {
             press: item.fields.press,
             url: item.fields.url,
             tags: item.fields.tags || [],
+            previewImageUrl:
+              item.fields.previewImage &&
+              item.fields.previewImage.fields &&
+              item.fields.previewImage.fields.file
+                ? item.fields.previewImage.fields.file.url
+                : null,
           };
         });
 
@@ -77,16 +85,23 @@ const contentfulPlugin = async function () {
           .readdirSync(path.join(__dirname, "..", "static", "img", "news"))
           .filter(
             (filename) =>
-              filename.startsWith("press-") && filename.endsWith(".webp")
+              filename.startsWith("press") && filename.endsWith(".webp")
           )
           .map((filename) => `/img/news/${filename}`);
 
         // assign images to press articles, old articles keep their images, new articles get new images
         press.forEach((news, i) => {
-          news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+          if (news.previewImageUrl) {
+            // If the article contains a previewImage, use the Contentful URL associated with it
+            // Include the access token as a query parameter
+            news.imageUrl = `https:${news.previewImageUrl}`;
+          } else {
+            // Otherwise, use a default image from the pressImageUrls array
+            news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+          }
         });
-
         // reverse the order, so that newest articles get the newest images
+
         press.reverse();
 
         const data = {
