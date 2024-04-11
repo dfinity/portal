@@ -15,13 +15,41 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 This guide shows how to get started developing on ICP quickly by deploying your first 'Hello, world!' smart contract.
 
-## Install dependencies
+## Choosing a developer environment 
+
+To deploy a simple 'Hello, world!' smart contract, you can setup a local developer environment, or you can use a cloud-based developer environment such as Gitpod or GitHub Codespaces that already has the necessary dependencies and tools installed. For this example, Gitpod and Codespaces examples are available for the Motoko and Rust programming languages. Local development using `dfx` supports Motoko, Rust, Python, and TypeScript. 
 
 :::info
-If you use GitHub Codespaces or [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your project, installing these dependencies is not necessary.
 
-Links to available Codespaces and Gitpod examples can be found in [create a new project](#create-a-new-project).
+#### Which environment should you choose?
+
+Gitpod and Codespaces are cloud-based developer environments that can be accessed via a web browser. They do not require downloading any tools or software. These environments use limited cloud resources and may not scale well for building large, complex projects. 
+
+Local development requires downloading and installing dependencies and `dfx`. Using `dfx` directly is better suited for large projects.
 :::
+
+<Tabs groupId="environments">
+<TabItem value="gitpod" label="Gitpod" default>
+
+Motoko variation:
+[![Open the Motoko variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
+
+Rust variation:
+[![Open the Rust variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
+
+</TabItem>
+
+<TabItem value="codespaces" label="GitHub Codespaces">
+
+Motoko variation:
+[![Open the Motoko variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
+
+Rust variation:
+[![Open the Rust variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
+
+</TabItem>
+
+<TabItem value="dfx" label="dfx">
 
 ### Install `dfx`
 
@@ -58,9 +86,6 @@ While `dfx start` is running, you will not be able to run other commands in the 
 
 
 ## Create a new project
-
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
 
@@ -100,87 +125,14 @@ Lastly, you can include extra features to be added to your project:
 ```
 
 </TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```bash
-dfx new hello
-```
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```bash
-dfx new hello --type=rust
-```
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-```bash
-npx azle new hello
-cd hello
-npm install
-```
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-Create the project directory and file structure:
-
-```bash
-mkdir hello
-cd hello
-
-mkdir src
-
-touch src/main.py
-touch dfx.json
-```
-
-Create a virtual environment:
-
-```bash
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-```
-
-Install Kybra:
-
-```bash
-pip install kybra
-```
-
-</AdornedTab>
-</AdornedTabs>
-</TabItem>
-</AdornedTabs>
-
+</Tabs>
 
 ## Smart contract code
-
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 Motoko is an Actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
 
 This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor.  The function accepts a name as input and returns a greetings text.
 
@@ -195,10 +147,6 @@ actor {
 </TabItem>
 
 <TabItem value="rust" label="Rust">
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
 
 This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
 
