@@ -3929,7 +3929,6 @@
       "SocialFi"
     ],
     "twitter": "https://twitter.com/b4b_world",
-    "github": "https://gitlab.com/b4b-world/b4b-icp",
     "description": "B4B.app is a Web3 influencer marketing protocol that brings transparency, ownership, escrow, and on-chain history from all socials",
     "usesInternetIdentity": true,
     "stats": "400+ influencers",
@@ -3976,7 +3975,6 @@
       "AI"
     ],
     "twitter": "https://twitter.com/FrontRowIC",
-    "github": "https://gitlab.com/jobgrader/jobgrader-app",
     "description": "Enabling the crowdworking market to train AI and any other micro tasks on-chain.",
     "usesInternetIdentity": false,
     "display": "Normal",
@@ -4012,7 +4010,6 @@
     ],
     "twitter": "https://twitter.com/MyOrdinalsLoan",
     "github": "https://github.com/gladguy/MyOrdinals.Loan",
-
     "description": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
     "usesInternetIdentity": false,
     "display": "Normal",
