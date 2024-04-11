@@ -1,0 +1,36 @@
+---
+keywords: [intermediate, rosetta, tutorial, approve, icrc, rosetta]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Approve a spender
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
+
+This section will show you how to use ICRC Rosetta to authorize a spender to spend your ICRC-1 tokens. Make sure you are familiar with the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) for Rosetta.  
+The request type that is used for making direct transfers is `APPROVE` and `SPENDER`. In the simplest form it consists of two operations, one for the the approve operation and another for the spender operation. 
+Note that you do not have to specify the `FEE` operation although the `FEE` of the ICRC-1 ledger Rosetta is connected to will deduct the `FEE` automatically. 
+To keep an overview of all the expenses it thus may pay off to include a `FEE` operation to not overlook unexpected debit operations. 
+
+The minimum set of operations that is sent to the `construction/payloads` endpoint is the following. 
+In this case we are approving the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` to spend up to 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe`.
+
+TODO!!!
+
+```bash
+curl --location '0.0.0.0:8082/construction/payloads'  --header 'Content-Type: application/json' --data
+
+```
+
+An example implementation of a transfer may look like the following. 
+Example call.
+```bash
+python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8082 -s ckBTC -d 8
+```
+```python
+
+
+```

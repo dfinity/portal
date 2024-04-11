@@ -713,6 +713,55 @@ const sidebars = {
                 }
               ],
             },
+            {
+              type: "category",
+              label: "ICP Rosetta Implementation",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/rosetta/icp_rosetta/index",
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Data-API",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icp_rosetta/data_api/index",
+                  },
+                  items: [
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
+                    "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Construction-API",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/index",
+                  },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Asset transfer",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
+                      },
+                      items: [
+                        "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
+                        "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
+                      ],
+                    },
+                  ],
+                }
+              ],
+            },
           ],
         },
         {
