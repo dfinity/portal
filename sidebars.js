@@ -461,6 +461,8 @@ const sidebars = {
             "developer-docs/developer-tools/ide/vs-code",
             "developer-docs/developer-tools/ide/playground",
             "developer-docs/developer-tools/ide/gitpod",
+	    "developer-docs/developer-tools/ide/codespaces",
+	    "developer-docs/developer-tools/ide/dev-containers",
           ],
         },
       ],
