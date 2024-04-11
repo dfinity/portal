@@ -90,16 +90,13 @@ const contentfulPlugin = async function () {
         // assign images to press articles, old articles keep their images, new articles get new images
         press.forEach((news, i) => {
           if (news.previewImageUrl) {
-            // If the article contains a previewImage, use the Contentful URL associated with it
-            // Include the access token as a query parameter
             news.imageUrl = `https:${news.previewImageUrl}`;
           } else {
-            // Otherwise, use a default image from the pressImageUrls array
             news.imageUrl = pressImageUrls[i % pressImageUrls.length];
           }
         });
-        // reverse the order, so that newest articles get the newest images
 
+        // reverse the order, so that newest articles get the newest images
         press.reverse();
 
         const data = {
