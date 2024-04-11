@@ -17,15 +17,15 @@ const sidebars = {
           label: "Development workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
+	{
+          type: "doc",
+          label: "Installing tools",
+          id: "developer-docs/getting-started/install/index",
+        },
         {
           type: "doc",
           label: "Hello, world!",
           id: "developer-docs/getting-started/hello-world",
-        },
-        {
-          type: "doc",
-          label: "Installing tools",
-          id: "developer-docs/getting-started/install/index",
         },
         {
           type: "doc",
