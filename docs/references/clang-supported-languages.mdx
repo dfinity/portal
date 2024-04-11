@@ -53,7 +53,7 @@ To prepare a configuration file and build directory:
 
 1.  Create a `dfx.json` file with a `canisters` key by running the following command:
 
-        echo '{"canisters":{"reverse":{"main":"reverse"}}}' > dfx.json
+        echo '\{"canisters":\{"reverse":\{"main":"reverse"\}\}\}' > dfx.json
 
 2.  Create a `build` directory for the dapp by running the following command:
 
@@ -83,9 +83,9 @@ To create a Candid interface description file for this program:
 
     For example:
 
-        service : {
+        service : \{
           "go": (text) -> (text);
-        }
+        \}
 
 4.  Save your changes and close the file to continue.
 

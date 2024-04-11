@@ -83,45 +83,45 @@ After setting Docker up, you can use a `Dockerfile` such as the following to pro
 This Dockerfile is an example of how a Rust build environment can be standardized using Docker.
 
 #### Example Dockerfile
+```dockerfile
+FROM ubuntu:22.04
 
-    FROM ubuntu:22.04
+ENV NVM_DIR=/root/.nvm
+ENV NVM_VERSION=v0.39.1
+ENV NODE_VERSION=18.1.0
 
-    ENV NVM_DIR=/root/.nvm
-    ENV NVM_VERSION=v0.39.1
-    ENV NODE_VERSION=18.1.0
+ENV RUSTUP_HOME=/opt/rustup
+ENV CARGO_HOME=/opt/cargo
+ENV RUST_VERSION=1.62.0
 
-    ENV RUSTUP_HOME=/opt/rustup
-    ENV CARGO_HOME=/opt/cargo
-    ENV RUST_VERSION=1.62.0
+ENV DFX_VERSION=0.14.1
 
-    ENV DFX_VERSION=0.14.1
+# Install a basic environment needed for our build tools
+RUN apt -yq update && \
+    apt -yqq install --no-install-recommends curl ca-certificates \
+        build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake rsync
 
-    # Install a basic environment needed for our build tools
-    RUN apt -yq update && \
-        apt -yqq install --no-install-recommends curl ca-certificates \
-            build-essential pkg-config libssl-dev llvm-dev liblmdb-dev clang cmake rsync
+# Install Node.js using nvm
+ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
+RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
+RUN . "${NVM_DIR}/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "${NVM_DIR}/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "${NVM_DIR}/nvm.sh" && nvm alias default v${NODE_VERSION}
 
-    # Install Node.js using nvm
-    ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}"
-    RUN curl --fail -sSf https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash
-    RUN . "${NVM_DIR}/nvm.sh" && nvm install ${NODE_VERSION}
-    RUN . "${NVM_DIR}/nvm.sh" && nvm use v${NODE_VERSION}
-    RUN . "${NVM_DIR}/nvm.sh" && nvm alias default v${NODE_VERSION}
+# Install Rust and Cargo
+ENV PATH=/opt/cargo/bin:${PATH}
+RUN curl --fail https://sh.rustup.rs -sSf \
+        | sh -s -- -y --default-toolchain ${RUST_VERSION}-x86_64-unknown-linux-gnu --no-modify-path && \
+    rustup default ${RUST_VERSION}-x86_64-unknown-linux-gnu && \
+    rustup target add wasm32-unknown-unknown &&\
+    cargo install ic-wasm
 
-    # Install Rust and Cargo
-    ENV PATH=/opt/cargo/bin:${PATH}
-    RUN curl --fail https://sh.rustup.rs -sSf \
-            | sh -s -- -y --default-toolchain ${RUST_VERSION}-x86_64-unknown-linux-gnu --no-modify-path && \
-        rustup default ${RUST_VERSION}-x86_64-unknown-linux-gnu && \
-        rustup target add wasm32-unknown-unknown &&\
-        cargo install ic-wasm
+# Install dfx
+RUN sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
-    # Install dfx
-    RUN sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-
-    COPY . /canister
-    WORKDIR /canister
-
+COPY . /canister
+WORKDIR /canister
+```
 #### What this does
 There are a couple of things worth noting about this `Dockerfile`:
 
@@ -130,13 +130,13 @@ There are a couple of things worth noting about this `Dockerfile`:
 -   To ensure that specific versions of the build tools are installed, it installs them directly, rather than through `apt` (the package manager of Ubuntu, the Linux distribution running inside of the container). Such package managers usually don’t provide a way of pinning the build tools to specific versions.
 
 To use this `Dockerfile`, get Docker [up and running](https://docs.docker.com), place the `Dockerfile` in the project directory of your canister, and create the Docker container by running:
-
-    docker build -t mycanister .
-
+```
+docker build -t mycanister .
+```
 This creates a Docker container image called `mycanister`, with Node.js, Rust and `dfx` installed in it, and your canister source code copied to `/canister` (recall that you should invoke `docker build` from the canister project directory). You can then enter an interactive shell inside of your container by running:
-
-    docker run -it --rm mycanister
-
+```
+docker run -it --rm mycanister
+```
 From here, you can experiment with the steps needed to build your canister. Once you are confident that the steps are deterministic, you can also put them in the `Dockerfile` (e.g., as `RUN ./build_script.sh` for a build script such as the example below, saved as `./build_script.sh`), to allow the user to automatically reproduce the build of your canister. You can see an example in the [Dockerfile of the Internet Identity canister](https://github.com/dfinity/internet-identity/blob/397d0087a29855564c47f0fd3323f60b5b67a8fa/Dockerfile).
 
 #### Example script for building a Rust project
@@ -145,28 +145,28 @@ An example script to build a Rust project looks as follows:
 :::info
 This is an example build script for a Rust project, and does not include a fully comprehensive example of what a build script may contain, nor does it include build instructions for other languages such as Motoko.
 :::
-
-    #!/bin/bash
-    #
-    # additional setup, e.g., build frontend assets:
-    # ...
-    # Rust build:
-    export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
-    cargo build --locked --target wasm32-unknown-unknown --release
-    ic-wasm target/wasm32-unknown-unknown/release/example_backend.wasm -o example_backend.wasm shrink
-
+```bash
+#!/bin/bash
+#
+# additional setup, e.g., build frontend assets:
+# ...
+# Rust build:
+export RUSTFLAGS="--remap-path-prefix $(readlink -f $(dirname ${0}))=/build --remap-path-prefix ${CARGO_HOME}=/cargo"
+cargo build --locked --target wasm32-unknown-unknown --release
+ic-wasm target/wasm32-unknown-unknown/release/example_backend.wasm -o example_backend.wasm shrink
+```
 A build script such as the one above can be specified as a custom build script in `dfx.json` as follows:
-
-    "canisters": {
-      "example_backend": {
-        "candid": "src/example_backend/example_backend.did",
-        "package": "example_backend",
-        "type": "custom",
-        "wasm": "./example_backend.wasm",
-        "build": "./build_script.sh"
-      }
-    }
-
+```
+"canisters": {
+  "example_backend": {
+    "candid": "src/example_backend/example_backend.did",
+    "package": "example_backend",
+    "type": "custom",
+    "wasm": "./example_backend.wasm",
+    "build": "./build_script.sh"
+  }
+}
+```
 
 
 ### Ensuring the determinism of the build process
@@ -189,26 +189,30 @@ The good news is that all of these tools aim to be deterministic. However, they 
 ### Testing reproducibility
 
 If reproducibility is vital for your code, you should test your builds to increase your confidence in their reproducibility. Such testing is non-trivial: there have been real-world examples where non-determinism in a canister build took a month to show up! Fortunately, the **Debian Reproducible Builds** project created a tool called [reprotest](https://salsa.debian.org/reproducible-builds/reprotest), which can help you automate reproducibility tests. It tests your build by running it in two different environments that differ in characteristics such as paths, time, file order, and others, and comparing the results. To check your build with `reprotest`, add the following line to your `Dockerfile`:
-
-    RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt
-
+```dockerfile
+RUN apt -yqq install --no-install-recommends reprotest disorderfs faketime rsync sudo wabt
+```
 When using `dfx build --network ic`, you need to prebuild your frontend dependencies (e.g., by running `npm ci` before `dfx build --network ic` or by setting the custom build type in `dfx.json` and running `npm ci` in your build script) and your project directory should contain a `canister_ids.json` file containing the IDs of your canisters on the Internet Computer. An example `canister_ids.json` file looks as follows:
 
-    {
-      "example_backend": {
-        "ic": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-      },
-      "example_frontend": {
-        "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-      }
-    }
+```json
+{
+  "example_backend": {
+    "ic": "rrkah-fqaaa-aaaaa-aaaaq-cai"
+  },
+  "example_frontend": {
+    "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+  }
+}
+```
 
 Now, from the root directory of your canister project, you can test the reproducibility of your IC SDK builds as follows:
 
-    docker build -t mycanister .
-    docker run --rm --privileged -it mycanister
-    /canister# mkdir artifacts
-    /canister# reprotest -vv --store-dir=artifacts --variations '+all,-time' 'dfx build --network ic' '.dfx/ic/canisters/*/*.wasm'
+```
+docker build -t mycanister .
+docker run --rm --privileged -it mycanister
+/canister# mkdir artifacts
+/canister# reprotest -vv --store-dir=artifacts --variations '+all,-time' 'dfx build --network ic' '.dfx/ic/canisters/*/*.wasm'
+```
 
 #### What this does
 - The first command builds the Docker container using the `Dockerfile` provided earlier.
@@ -218,13 +222,15 @@ Now, from the root directory of your canister project, you can test the reproduc
 
 If the comparison doesn’t find any differences, you will see an output similar to this one:
 
-    =======================
-    Reproduction successful
-    =======================
-    No differences in ./.dfx/ic/canisters/*/*.wasm
-    6b2a15a918219138836e88e9c95f9c5d2d7b6d465df83ae05d6fd2b0f14f8a97  ./.dfx/ic/canisters/example_backend/example_backend.wasm
-    a047686c1d517e21d447bcd42c9394a12cdb240e06425b830c99d3a689b5ee20  ./.dfx/ic/canisters/example_frontend/assetstorage.wasm
-    a047686c1d517e21d447bcd42c9394a12cdb240e06425b830c99d3a689b5ee20  ./.dfx/ic/canisters/example_frontend/example_frontend.wasm
+```
+=======================
+Reproduction successful
+=======================
+No differences in ./.dfx/ic/canisters/*/*.wasm
+6b2a15a918219138836e88e9c95f9c5d2d7b6d465df83ae05d6fd2b0f14f8a97  ./.dfx/ic/canisters/example_backend/example_backend.wasm
+a047686c1d517e21d447bcd42c9394a12cdb240e06425b830c99d3a689b5ee20  ./.dfx/ic/canisters/example_frontend/assetstorage.wasm
+a047686c1d517e21d447bcd42c9394a12cdb240e06425b830c99d3a689b5ee20  ./.dfx/ic/canisters/example_frontend/example_frontend.wasm
+```
 
 Congratulations - this is a good indicator that your build is not affected by your environment!
 
@@ -268,6 +274,8 @@ Summarizing our recommendations for canister authors:
 
 Finally, if your build is reproducible, you can compare the hash of the resulting Wasm code to the hash of the code that is running in a canister, which you retrieve as follows:
 
-    dfx canister --network ic info <canister-id>
+```
+dfx canister --network ic info <canister-id>
+```
 
 Beware that this hash might change if the controllers upgrade the canister code.
