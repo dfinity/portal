@@ -21,7 +21,7 @@ An **asset** is a record consisting of a symbol (such as "ICP") and a class (eit
 
 #### Aggregation
 
-The XRC calculates exchange rates using a unique aggregation method that selects a specific moment's data from exchanges, avoiding conventional time (TWAP) or volume-weighted (VWAP) techniques. It can derive complex rates (e.g., A/B from A/C and B/C rates) and, when direct pairs exist, it chooses the median rate after filtering. This approach ensures accuracy, timeliness, and minimizes manipulation risks, providing reliable rate information for decentralized applications.
+The XRC calculates exchange rates using a unique aggregation method that combines candlestick chart data for specific one-minute intervals from various exchanges, avoiding conventional time (TWAP) or volume-weighted (VWAP) techniques. It can further derive rates for pairs that are not traded themselves (e.g., A/B from available A/C and B/C rates). After collecting, combining, and filtering rates, the median rate is returned. This approach ensures accuracy, timeliness, and minimizes manipulation risks, providing reliable rate information for decentralized applications.
 
 #### Exchanges
 
