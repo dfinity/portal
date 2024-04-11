@@ -46,7 +46,7 @@ export const NewsCard: React.FC<{
       className="link-primary link-with-icon no-underline text-black	 hover:text-inherit	"
     >
       <article
-        className="rounded-xl overflow-hidden bg-white flex flex-col w-full
+        className="rounded-xl overflow-hidden bg-white flex flex-col h-full w-full
     hover:-translate-y-2 transition-transform hover: cursor-pointer"
       >
         <img
