@@ -6,6 +6,7 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import CodeBlock from "@theme/CodeBlock";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Installing tools
 
@@ -38,7 +39,8 @@ If you use GitHub Codespaces or
 [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your
 project, installing these dependencies is not necessary.
 
-:::info Links to available Codespaces and Gitpod examples can be found in the
+:::info 
+Links to available Codespaces and Gitpod examples can be found in the
 [hello world example](/docs/current/developer-docs/getting-started/hello-world#create-a-new-project).
 :::
 
@@ -52,7 +54,9 @@ There is no native support for `dfx` on Windows. However, by installing the
 Windows Subsystem for Linux (WSL 2), you can run `dfx` on a Windows system as
 described below.
 
-:::caution Not all features of `dfx` may be supported on WSL 2. :::
+:::caution 
+Not all features of `dfx` may be supported on WSL 2. 
+:::
 
 You can download and install the latest version of the
 [`dfx`](https://github.com/dfinity/sdk) by running the command below:
@@ -257,7 +261,9 @@ installed (e.g. because you cloned a repo that was created for a different
 version than you have installed locally), `dfx` will report an error.
 
 :::info
+
 [Learn more about `dfxvm`](https://github.com/dfinity/dfxvm/tree/main).
+
 :::
 
 ## Building from source

@@ -1,0 +1,31 @@
+---
+keywords: [beginner, ide, tutorial, dev containers, containers]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Developer containers
+
+<MarkdownChipRow labels={["Beginner", "IDE", "Tutorial"]} />
+
+## Overview
+
+Developer containers are a local development option that uses [Docker](https://www.docker.com/get-started/) and [VS Code](https://code.visualstudio.com/) to run local containerized environments. Developer containers are a good option for developers on Windows systems, since `dfx` is not natively supported for local development on Windows.  
+
+## Using developer containers
+
+To use developer containers, you must download [Docker](https://www.docker.com/get-started/) and [VS Code](https://code.visualstudio.com/). Then, you can open a GitHub repo in the container using a URL such as:
+
+```
+https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=[GITHUB_URL]
+```
+
+For example, to open the ICP Hello World Motoko example, open the URL:
+
+```
+https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dfinity/icp-hello-world-motoko
+```
+
+When prompted, select 'Open Visual Studio Code'. 
+
+Upon opening in VS Code, you will be prompted to install the required plugins to use the developer containers feature. 
