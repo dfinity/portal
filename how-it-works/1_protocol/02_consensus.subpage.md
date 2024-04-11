@@ -16,7 +16,7 @@ The IC consensus protocol provides _cryptographically guaranteed finality_. The 
 The IC consensus protocol achieves all of these goals making only minimal assumptions about the communication network. In particular, it does not assume any bounds on the time it takes for protocol messages to be delivered – that is, it only assumes an _asynchronous network_ rather than a _synchronous network_. Indeed, for a decentralized network that is globally distributed, _synchrony_ is simply not a realistic assumption. While it is possible to design consensus protocols that work in a purely _asynchronous_ setting, these protocols generally have very poor latency. In order to achieve good latency, the IC consensus protocol requires protocol messages to be delivered in a timely manner to make progress. However, the _correctness_ of the protocol is always guaranteed, regardless of message delays, so long as less than a third of the nodes in the subnet are faulty.
 
 <figure>
-<img src="/img/how-it-works/consensus_orders_messages.png" alt="Consensus round yields an ordered sequences of messages" title="Consensus round yields an ordered sequences of messages" align="center" style="width:600px">
+<img src="/img/how-it-works/consensus_orders_messages.png" alt="Consensus round yields an ordered sequences of messages" title="Consensus round yields an ordered sequences of messages" align="center" style="width:600px" />
 </figure>
 
 The consensus protocol maintains a tree of _notarized_ blocks (with a special origin block at the root). The protocol proceeds in rounds. In each round, at least one notarized block is added to the tree as a child of a notarized block that was added in the previous round. When things go right, there will be only one notarized block added to the tree in that round, and that block will be marked as _finalized_. Moreover, once a block is marked as finalized in this way, all ancestors of that block in the tree of notarized blocks are implicitly finalized. The protocol guarantees that there is always a unique chain of finalized blocks in the tree of notarized blocks. This chain of finalized blocks is the output of consensus.
@@ -42,7 +42,7 @@ As discussed in the section on [chain-key cryptography](https://internetcomputer
 In the scenario where the primary block maker is not faulty, and protocol messages get delivered in a timely manner, only the primary block maker will propose a block, and this block will quickly become notarized and finalized.
 
 <figure>
-<img src="/img/how-it-works/block_maker.png" alt="Blockmaker constructs a new block and broadcasts it" title="Blockmaker constructs a new block and broadcasts it" align="center" style="width:600px">
+<img src="/img/how-it-works/block_maker.png" alt="Blockmaker constructs a new block and broadcasts it" title="Blockmaker constructs a new block and broadcasts it" align="center" style="width:600px" />
 </figure>
 
 ## Notarization
@@ -52,7 +52,7 @@ When a node receives a block proposed by a block maker for the round, it validat
 In the case where the block proposed by the primary block maker gets notarized within a certain amount of time, a node will not support the notarization of any other block in that round. Otherwise, a node may eventually support the notarization of blocks proposed by other block makers of higher rank (but if it has already supported the notarization of a block proposed by a block maker of some rank, it will not support the notarization of blocks proposed by block makers of higher rank).
 
 <figure>
-<img src="/img/how-it-works/consensus_notarization.png" alt="Notarization support of increasing-rank block proposals in a round" title="Notarization support of increasing-rank block proposals in a round" align="center" style="width:600px">
+<img src="/img/how-it-works/consensus_notarization.png" alt="Notarization support of increasing-rank block proposals in a round" title="Notarization support of increasing-rank block proposals in a round" align="center" style="width:600px" />
 <figcaption align="center">
 Notarization support of increasing-rank block proposals in a round
 </figcaption>

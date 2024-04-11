@@ -203,7 +203,7 @@ const Content: React.FC = () => {
             </div>
           </Link>
           <Link
-            href="https://crowdfund-nft.com/"
+            href="https://funded.app/"
             className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
           >
             <img

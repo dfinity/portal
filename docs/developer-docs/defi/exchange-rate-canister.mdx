@@ -19,6 +19,23 @@ The XRC provides this data in response to requests made by other canisters. A re
 
 An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default.
 
+#### Aggregation
+
+The XRC calculates exchange rates using a unique aggregation method that combines candlestick chart data for specific one-minute intervals from various exchanges, avoiding conventional time (TWAP) or volume-weighted (VWAP) techniques. It can further derive rates for pairs that are not traded themselves (e.g., A/B from available A/C and B/C rates). After collecting, combining, and filtering rates, the median rate is returned. This approach ensures accuracy, timeliness, and minimizes manipulation risks, providing reliable rate information for decentralized applications.
+
+#### Exchanges
+
+- [Coinbase](https://api.pro.coinbase.com/products/BASE_ASSET-QUOTE_ASSET/candles?granularity=60&start=START_TIME&end=END_TIME)
+- [Kucoin](https://api.kucoin.com/api/v1/market/candles?symbol=BASE_ASSET-QUOTE_ASSET&type=1min&startAt=START_TIME&endAt=END_TIME)
+- [Okx](https://www.okx.com/api/v5/market/history-candles?instId=BASE_ASSET-QUOTE_ASSET&bar=1m&before=START_TIME&after=END_TIME)
+- [Gateio](https://api.gateio.ws/api/v4/spot/candlesticks?currency_pair=BASE_ASSET_QUOTE_ASSET&interval=1m&from=START_TIME&to=END_TIME)
+- [Mexc](https://www.mexc.com/open/api/v2/market/kline?symbol=BASE_ASSET_QUOTE_ASSET&interval=1m&start_time=START_TIME&limit=1)
+- [Poloniex](https://api.poloniex.com/markets/BASE_ASSET_QUOTE_ASSET/candles?interval=MINUTE_1&startTime=START_TIME&endTime=END_TIME)
+- [Cryptocom](https://api.crypto.com/exchange/v1/public/get-candlestick?instrument_name=BASE_ASSET_QUOTE_ASSET&timeframe=1m&start_ts=START_TIME&count=1)
+- [Bitget](https://api.bitget.com/api/v2/spot/market/candles?symbol=BASE_ASSETQUOTE_ASSET&granularity=1min&startTime=START_TIME&endTime=END_TIME)
+- [Digifinex](https://openapi.digifinex.com/v3/kline?symbol=BASE_ASSET_QUOTE_ASSET&period=1&start_time=START_TIME&end_time=END_TIME)
+
+
 ## Usage
 The canister ID of the XRC is `uf6dk-hyaaa-aaaaq-qaaaq-cai`.
 
@@ -62,18 +79,10 @@ Note: The cycles cost of these requests are expected to be decreased in the next
 
 ## Calling the XRC directly
 
-To call the XRC directly, first export your wallet canister ID as an environment variable with the command:
+To call the XRC directly, you can send a request such as one to get the BTC/USD rate, with the following command:
 
 ```
-export WALLET=[wallet-canister-id]
-```
-
-If you need to get your wallet canister ID, you can run the `dfx wallet addresses` command to return your wallet's canister ID.
-
-Then, you can send a request, such as one to get the BTC/USD rate, with the following command:
-
-```
-dfx canister call --wallet $WALLET --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
+dfx canister call --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
 ```
 
 ## Exchange rate canister demo

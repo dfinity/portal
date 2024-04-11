@@ -123,7 +123,7 @@ function GlobalEventsPage() {
   return (
     <Layout
       title="Global ICP Events"
-      description="Emerse yourself in the Internet Computer community! Connect with ICP enthusiasts worldwide with cutting-edge community events."
+      description="Immerse yourself in the Internet Computer community! Connect with ICP enthusiasts worldwide with cutting-edge community events."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-events.jpg"></ShareMeta>
@@ -153,7 +153,9 @@ function GlobalEventsPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  Emerse yourself in the Internet Computer community! Connect with ICP enthusiasts worldwide with cutting-edge community events.
+                  Immerse yourself in the Internet Computer community! Connect
+                  with ICP enthusiasts worldwide with cutting-edge community
+                  events.
                 </motion.p>
               </div>
             </div>
@@ -186,19 +188,21 @@ function GlobalEventsPage() {
 
         <AnimateSpawn variants={transitions.container}>
           <div className="container-12 grid grid-cols-1 md:grid-cols-3 gap-5 mt-8 md:mt-16">
-            {filteredEvents?.slice(0, showMaxEvents).map((eventOrPromo) =>
-              eventOrPromo === "promo" ? (
-                <PromoCard
-                  key="promo"
-                  label="Is your event missing from ICP's global calendar?"
-                  // Add href and change the ctaLabel when the form is ready
-                  href=""
-                  ctaLabel="Coming soon"
-                />
-              ) : (
-                <EventCard key={eventOrPromo.id} event={eventOrPromo} />
-              )
-            )}
+            {filteredEvents
+              ?.slice(0, showMaxEvents)
+              .map((eventOrPromo) =>
+                eventOrPromo === "promo" ? (
+                  <PromoCard
+                    key="promo"
+                    label="Join ICP Community Events"
+                    description="Embark on a journey with fellow innovators at the forefront of the Internet Computer space. Engage, learn, and evolve in an ecosystem rich with opportunities."
+                    href="https://lu.ma/icpevents"
+                    ctaLabel="Discover Upcoming Events"
+                  />
+                ) : (
+                  <EventCard key={eventOrPromo.id} event={eventOrPromo} />
+                )
+              )}
           </div>
 
           {filteredEvents?.length > showMaxEvents && (

@@ -1,21 +1,21 @@
 [
   {
-    "id": "dscvr",
-    "name": "DSCVR",
-    "oneLiner": "Social portals, community airdrops, crypto tipping on-chain",
-    "website": "https://dscvr.one/",
+    "id": "helix",
+    "name": "Helix Markets",
+    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
+    "website": "https://www.helixmarkets.io/",
     "tags": [
-      "SocialFi",
-      "Ethereum"
+      "Ethereum",
+      "Bitcoin",
+      "DeFi"
     ],
-    "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
-    "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
-    "usesInternetIdentity": true,
-    "stats": "200,000+ users",
     "display": "Large",
-    "logo": "/img/showcase/dscvr_logo.webp",
+    "twitter": "https://twitter.com/HelixMarkets",
+    "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/helix_logo.webp",
     "screenshots": [
-      "/img/showcase/dscvr_screenshot.webp"
+      "/img/showcase/helix_screenshot.png"
     ]
   },
   {
@@ -146,24 +146,6 @@
     "logo": "/img/showcase/dragginz_logo.png"
   },
   {
-    "id": "dmail",
-    "name": "Dmail",
-    "oneLiner": "Web3 Decentralized Email Client",
-    "website": "https://dmail.ai/",
-    "tags": [
-      "NFT",
-      "SocialFi"
-    ],
-    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets - there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China and saw an immediate round of funding netting a $10M valuation. ",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/dmailofficial",
-    "display": "Normal",
-    "logo": "/img/showcase/dmail_logo.webp",
-    "screenshots": [
-      "/img/showcase/dmail_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "icdex",
     "name": "ICDex",
     "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
@@ -179,18 +161,23 @@
     "screenshots": []
   },
   {
-    "id": "helix",
-    "name": "Helix Markets",
-    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
-    "website": "https://t.co/OcdISW1Xww",
+    "id": "dscvr",
+    "name": "DSCVR",
+    "oneLiner": "Social portals, community airdrops, crypto tipping on-chain",
+    "website": "https://dscvr.one/",
     "tags": [
-      "Ethereum",
-      "DeFi"
+      "SocialFi",
+      "Ethereum"
     ],
-    "twitter": "https://twitter.com/HelixMarkets",
-    "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
+    "twitter": "https://twitter.com/DSCVR1?s=20&t=qrUKGHeyFLGiBQjpj3iI9A",
+    "description": "DSCVR is an end-to-end decentralized Web3 social media platform that allows communities to form into groups called Portals. These Portals can be NFT gated, airdrop fungible and non-fungible tokens to their members and much more. DSCVR also allows for tipping posts in a growing number of cryptos, supporting ckBTC, a Bitcoin twin living on the Internet Computer.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.webp"
+    "stats": "200,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/dscvr_logo.webp",
+    "screenshots": [
+      "/img/showcase/dscvr_screenshot.webp"
+    ]
   },
   {
     "id": "distrikt",
@@ -535,7 +522,7 @@
   },
   {
     "id": "finterest",
-    "name": "Finterest",
+    "name": "Finny",
     "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
     "tags": [
       "DeFi",
@@ -2395,7 +2382,8 @@
     "name": "Chainsight Demo",
     "oneLiner": "Interchain Data Processing Layer",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Ethereum"
     ],
     "description": "Chainsight is an interchain data processing layer that makes blockchain data available for decentralized applications. It allows time series analysis and forecasting based on historical data to be incorporated into on-chain application logic in a trustless manner.",
     "usesInternetIdentity": false,
@@ -3240,6 +3228,7 @@
     "stats": "",
     "tags": [
       "Bitcoin",
+      "Ethereum",
       "DeFi"
     ],
     "usesInternetIdentity": true,
@@ -3547,7 +3536,8 @@
     "oneLiner": "Use your Ethereum wallet to sign in to the Internet Computer!",
     "website": "https://github.com/kristoferlund/ic-siwe",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Ethereum"
     ],
     "description": "Rust support library and canister to enable Ethereum users to easily sign in to the Internet Computer. ic_siwe enhances the interoperability between Ethereum and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.",
     "stats": "",
@@ -3755,7 +3745,8 @@
     "website": "https://deep-ink.ventures",
     "tags": [
       "Tools / Infrastructure",
-      "Wallet"
+      "Wallet",
+      "Ethereum"
     ],
     "github": "https://github.com/deep-ink-ventures/blend-safe",
     "description": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
@@ -3821,9 +3812,92 @@
       "DeFi",
       "DAO"
     ],
-    "description": "The Blank Canvas DAO on the Internet Computer.C",
+    "description": "The Blank Canvas DAO on the Internet Computer.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/sneed.png"
+  },
+  {
+    "id": "windoge98",
+    "name": "Windoge98",
+    "oneLiner": "The retro flavored utility meme.",
+    "website": "https://windoge98.com",
+    "twitter": "https://x.com/windoge_98",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "description": "Windoge98 is a retro flavored utility meme. A nostalgic portal to the Internet Computer.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/w98.webp"
+},
+  {
+    "id": "gitcoin-passport-client",
+    "name": "Gitcoin Passport Client",
+    "oneLiner": "A UI that securely retrieves anti-Sybil scoring data from Gitcoin Passport and stores it in a DB.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Ethereum"
+    ],
+    "website": "https://internet-computer.vporton.name/gitcoin-passport-client/",
+    "github": "https://github.com/vporton/passport-client-dfinity",
+    "description": "A UI that securely retrieves anti-Sybil scoring data from Gitcoin Passport and stores it in a DB.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/gitcoin-client.png"
+  },
+  {
+    "id": "gamebloc",
+    "name": "Game Bloc",
+    "oneLiner": "A decentralised platform for hosting game tournaments which can either be crowdfunded or prepaid.",
+    "website": "https://cv4ma-4qaaa-aaaal-adntq-cai.icp0.io/",
+    "github": "https://github.com/Game-Bloc/Gamebloc-ICP",
+    "twitter": "https://twitter.com/game_bloc",
+    "discord": "https://discord.gg/wgRuenwTEK",
+    "tags": [
+      "Games"
+    ],
+    "description": "A decentralised platform for hosting game tournaments which can either be crowdfunded or prepaid.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/gameblock_logo.png",
+    "submittableId": "44503915"
+  },
+  {
+    "id": "allkinds",
+    "name": "AllKinds",
+    "oneLiner": "A web3 social network where people find more meaningful connections.",
+    "website": "https://allkinds.xyz/",
+    "github": "https://github.com/AllKinds/AllkindsICP",
+    "twitter": "https://twitter.com/Allkindsxyz",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "A web3 social network where people find more meaningful connections.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/allkinds_logo.svg",
+    "submittableId": "43688836"
+  },
+  {
+    "id": "dmail-network",
+    "name": "Dmail Network",
+    "oneLiner": "AI-powered decentralized messaging infrastructure.",
+    "website": "https://dmail.ai",
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "AI",
+      "Enterprise",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/Dmailofficial",
+    "discord": "https://discord.gg/dmailofficial",
+    "description": "Dmail Network is an AI-powered decentralized communication infrastructure built to provide encrypted emails, unified notifications, and targeted marketing across multiple chains and dApps for users, developers, marketers and influencers",
+    "usesInternetIdentity": true,
+    "stats": "9,000,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/dmail-network_logo.png"
   }
 ]

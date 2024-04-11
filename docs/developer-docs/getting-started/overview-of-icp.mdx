@@ -10,26 +10,18 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Getting started" ]} />
 
-The Internet Computer Protocol (ICP) bridges the gap between traditional programming and blockchain-based development.
-Smart contracts on ICP are expressive and scalable like traditional apps, but benefit from the trustless and decentralized execution of a blockchain.
+A blockchain is a new and much more secure way to build a computer by a distributed protocol as demonstrated by the Bitcoin network that never has been hacked although being the probably most attractive target ever.
+The drawback of the Bitcoin network that it offers very little computational power and is slow, expensive, and energy inefficient.
+The Internet Computer Protocol (ICP) is a distributed protocol that is far more efficient.
+It offers the security benefits of blockchain with the user experince and performance of the traditional IT stack.
+Smart contracts on ICP are expressive, powerful, and scalable like traditional apps, but inherrit the security and reliablity properties from the blockchain as they are an extention of the blockchain protocol.
+This page walks through the core concepts and features of ICP to show why that's the case.
 
-ICP is designed for a practical balance in the tradeoff between scalability and decentralization.
 
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/icp-tradeoffs.png")}
-    alt="ICP in the tradeoff space"
-    width="500"
-  />
-</div>
-
-In the conceptual diagram above, decentralization increases going from centralized servers to Ethereum, but that happens at the expense of scalability.
-ICP is located in the middle of this spectrum.
-The rest of this page walks through the core concepts and features of ICP to show why that's the case.
 
 ## Subnets
-
-One of the keys for high scalability is sharding.
+A blockchain can only run as fast and offer as much resources as a single node.  
+One of the keys to overcome this limit is sharding.
 ICP shards smart contracts over multiple instances of the blockchain.
 Each instance is called a **subnet** and has its own set of decentralized nodes running the consensus algorithm among themselves, building their own chain of blocks, and executing smart contracts.
 Each subnet runs in parallel with other subnets.
