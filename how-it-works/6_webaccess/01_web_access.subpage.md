@@ -19,26 +19,26 @@ We now describe how a client can access a website deployed as a canister on the 
 - Canister - Developers can host their dapp as a canister. Canister consists of a bunch of methods. Anyone can send queries to the canister. A query consists of the canister method to be executed and the inputs for the canister method. The Internet Computer receives the queries sent by the users, executes the corresponding canister method and returns the response to the user.
 
 <figure>
-<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:1000px">
+<img src="/img/how-it-works/web_access.png" alt="Architecture: HTTP Gateway and Boundary nodes help in forwarding HTTP Request to canisters" title="HTTP Gateway converts the format of messages and Boundary nodes route the message to appropriate subnet" align="center" style="width:1000px" />
 <figcaption align="center">
-HTTP Gateway converts the format of HTTP Requests to canister queries, and canister responses to HTTP responses.<br>
+HTTP Gateway converts the format of HTTP Requests to canister queries, and canister responses to HTTP responses.<br />
 Boundary nodes route canister queries to appropriate subnet.
 </figcaption>
 </figure>
 
-<!-- After a developer deploys an app as a canister, he gets the canister id of the created canister. Any user can then access the website for the app at a URL of the form http://\<canister id\>.ic0.app or http://\<canister id\>.raw.ic0.app. When the user enters the above URL on his browser, the browser contacts DNS service, which resolves the ic0.app domain to an IP address of a boundary node. The browser then makes a HTTP request to the boundary node.  -->
+<!-- After a developer deploys an app as a canister, he gets the canister id of the created canister. Any user can then access the website for the app at a URL of the form `http://<canister id>.ic0.app` or `http://<canister id>.raw.ic0.app`. When the user enters the above URL on his browser, the browser contacts DNS service, which resolves the ic0.app domain to an IP address of a boundary node. The browser then makes a HTTP request to the boundary node.  -->
 
 ## Deploying web apps on the Internet Computer
 
 If a canister wishes to serve web content, it should implement a method that consumes a HTTP request (url, http method and headers) and outputs a HTTP response (status, headers and body). The canister method could return HTML, CSS and Javascript content as part of the HTTP response. Refer to [Internet Computer Interface Spec](/docs/current/references/ic-interface-spec/#ic-http_request) for more details.
 
-There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at http://\<canister id\>.ic0.app and http://\<canister id\>.raw.ic0.app. See [tutorial](/docs/current/samples/host-a-website/) or [watch the video](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
+There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at `http://<canister id>.ic0.app` and `http://<canister id>.raw.ic0.app`. See [tutorial](/docs/current/samples/host-a-website/) or [watch the video](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
 
 ## HTTP gateway protocol
 
 The browser only communicates with HTTP(s) protocol and doesn’t know how to query a canister. To fill the gap between the browser and Internet Computer protocols, we utilize a [HTTP Gateway](/docs/current/references/ic-interface-spec/#http-gateway), which is a software that sits in between the browser and the Internet Computer. The browser sends a http request to the http gateway. The gateway first interprets the URL in the http request and extracts the corresponding canister id. It then converts the http request into a canister query and sends it to the boundary nodes. When the canister sends back a response, the http gateway interprets the response, verifies the signatures, converts into a http response and sends it to the browser.
 
-There are many ways to implement the HTTP Gateway protocol. Currently, there is one main implementation on the boundary nodesn called `icx-proxy`. When the user enters a URL such as https://\<canister id\>.ic0.app or https://\<canister id\>.raw.ic0.app, the browser sends the HTTP request to the boundary node, which acts as a HTTP gateway.
+There are many ways to implement the HTTP Gateway protocol. Currently, there is one main implementation on the boundary nodesn called `icx-proxy`. When the user enters a URL such as `https://<canister id>.ic0.app` or `https://<canister id>.raw.ic0.app`, the browser sends the HTTP request to the boundary node, which acts as a HTTP gateway.
 
 There are many other ways of implementing the HTTP Gateway protocol. The gateway can be implemented as a browser extension or as a [service worker](https://web.dev/learn/pwa/service-workers/). The chromium browser could also be modified to include HTTP Gateway as part of the browser.
 

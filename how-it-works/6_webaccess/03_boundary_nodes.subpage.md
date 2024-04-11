@@ -10,7 +10,7 @@ slug: boundary-nodes
 The boundary nodes form the globally distributed edge of the Internet Computer (IC) through which all the accesses to the canister smart contracts go. The boundary nodes provide a public endpoint for the IC and route all incoming requests to the right subnet, loadbalance requests across replica nodes, and cache responses for improved performance.
 
 <figure>
-<img src="/img/how-it-works/boundary-nodes.webp" alt="Architecture of boundary nodes" title="Architecture of boundary nodes" align="center">
+<img src="/img/how-it-works/boundary-nodes.webp" alt="Architecture of boundary nodes" title="Architecture of boundary nodes" align="center" />
 <figcaption align="left">
 Boundary nodes are the gateway to the Internet Computer, which allow users to seamlessly access the canister smart contracts.
 </figcaption>
