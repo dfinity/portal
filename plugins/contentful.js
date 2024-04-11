@@ -5,8 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const { isValid, parse } = require("date-fns");
 const { toDate, format, utcToZonedTime } = require("date-fns-tz");
-import axios from "axios";
-import cheerio from "cheerio";
 
 const { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_HOST } =
   process.env;
@@ -85,7 +83,7 @@ const contentfulPlugin = async function () {
           .readdirSync(path.join(__dirname, "..", "static", "img", "news"))
           .filter(
             (filename) =>
-              filename.startsWith("press") && filename.endsWith(".webp")
+              filename.startsWith("press-") && filename.endsWith(".webp")
           )
           .map((filename) => `/img/news/${filename}`);
 
