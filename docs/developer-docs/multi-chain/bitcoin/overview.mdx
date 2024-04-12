@@ -9,17 +9,23 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
+# Why it is important
+
+The integration of Internet Computer (ICP) with the Bitcoin network allows ICP smart contracts to directly interact with the Bitcoin network. 
+The is important because it brings smart contract functionality to Bitcoin, opening up new possibilities for DeFi and dapp development.
+For exampple, ICP smart contracts can directly hold, receive, and send BTC, and also facilitate the creation of a ckBTC token that is backed 1:1 by BTC.
+
+# How it works
+
 Smart contracts running on ICP can directly interact with the Bitcoin network without using bridges.
 This is possible because ICP nodes can fetch and validate the Bitcoin network's blocks, and then make them available for smart contracts to query and read.
 Smart contracts can also sign and send Bitcoin transactions, allowing them to directly hold BTC.
 
 This direct Bitcoin integration is based on two features:
 
-- **Threshold ECDSA**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography.
-  This key can be used to digitally sign messages.
-  One of the supported signing algorithms, ECDSA is compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
-- **Bitcoin adapter**: ICP has one subnet whose nodes participate in the Bitcoin network.
-  These nodes are used to fetch the Bitcoin state and blocks and send transactions to the network.
+- **[Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. One of the supported signing algorithms, ECDSA is compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
+
+- **Bitcoin adapter**: ICP has one subnet whose nodes participate in the Bitcoin network. These nodes are used to fetch the Bitcoin state and blocks and send transactions to the network.
 
 The diagram below shows the flow of interacting with the Bitcoin network from a smart contract.
 
@@ -31,13 +37,34 @@ The diagram below shows the flow of interacting with the Bitcoin network from a 
   />
 </div>
 
-ICP also implements a smart contract that uses these two features to provide a **ckBTC** token (chain-key BTC) that is backed 1:1 by BTC.
-Using the ckBTC token is easier and more convenient compared to using the two features directly.
-The main value of ckBTC is that it can be transferred with the low finality time of ICP (within seconds) and for a fraction of the cost of a bitcoin transfer on the Bitcoin network.
+## How it works
+
+At the protocol-level, both the Bitcoin adapter and chain-key ECDSA features expose an API on the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister).
+
+When a canister wants to make a Bitcoin transaction, a request is sent to the Bitcoin subnet that hosts a Bitcoin canister that contains ICP's on-chain Bitcoin state. The request is sent to the Bitcoin network through the Bitcoin adapter and is processed by Bitcoin asynchronously.
+
+## ckBTC
+
+The primary value of chain-key tokens, such as ckBTC, is that it can be transferred with the low finality time (within seconds) and for a fraction of the cost of a transaction on the token's native network (in this instance, a BTC transaction on Bitcoin).
+
+## Why this is important
+
+The Bitcoin integration is important because it brings smart contract functionality to Bitcoin, which does not have a native smart contract platform itself, opening up new possibilities for DeFi and dapp development.
+
+## Use-cases and sample dapps
+
+The Bitcoin integration supports both basic and advanced use-cases, such as decentralized exchanges or working with Bitcoin inscriptions.
 
 The ckBTC token is suitable for the common use cases of holding, transferring, and trading BTC.
-Developers that need more advanced interaction with the Bitcoin network need to use the lower-level threshold ECDSA and Bitcoin APIs.
-An example of such an advanced use case would be working with Bitcoin inscriptions.
-The threshold ECDSA API provides a way for smart contracts to sign transactions with their secret keys.
-The Bitcoin API allows smart contracts to read the Bitcoin state (UTXOs and balances) and send signed transactions.
 
+Sample apps:
+
+- Crowdfunding platforms that accept BTC such as [Funded](https://funded.app/).
+
+- Social applications that support sending crypto to other users, like [OpenChat](https://oc.app/).
+
+- Online eCommerce platforms. [Bitshop](https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/) is one example.
+
+- [Mobile payments](https://play.google.com/store/apps/details?id=com.foo.arth&pli=1).
+
+[View the full list of Bitcoin ecosystem examples](https://internetcomputer.org/ecosystem?tag=Bitcoin).

@@ -61,7 +61,10 @@ const howItWorksArticlesPlugin = async function () {
                 abstract: meta.data.abstract,
                 shareImage: meta.data.shareImage,
                 slug: meta.data.slug,
-                content: marked.parse(meta.content, { renderer }),
+                content: marked.parse(meta.content, {
+                  renderer,
+                  breaks: false,
+                }),
                 fileName: path.join("./how-it-works/", dir.name, sp.name),
               };
             })

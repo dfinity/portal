@@ -340,7 +340,7 @@ const DocsHomePage: FC = () => {
                 <img
                   src="/img/docs/react.svg"
                   alt="React quickstart"
-                  className="w-10 h-10"
+                  className="h-10"
                   loading="lazy"
                 />
               </div>
@@ -366,7 +366,7 @@ const DocsHomePage: FC = () => {
                 <img
                   src="/img/docs/juno.svg"
                   alt="Juno quickstart"
-                  className="w-10 h-10"
+                  className="h-10"
                   loading="lazy"
                 />
               </div>
@@ -412,6 +412,8 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               href="https://github.com/dfinity/portal"
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-outline-white"
             >
               Contribute

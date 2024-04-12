@@ -34,9 +34,7 @@ const contentfulPlugin = async function () {
           host: CONTENTFUL_HOST,
         });
 
-        const pressEntries = await client.getEntries({
-          content_type: "press",
-        });
+        const pressEntries = await client.getEntries({ content_type: "press" });
 
         const press = pressEntries.items.map((item) => {
           let parsedDate = parse(item.fields.date, "MMMM y", new Date());
@@ -44,6 +42,8 @@ const contentfulPlugin = async function () {
             parsedDate = parse(item.fields.date, "MMM y", new Date());
           if (!isValid(parsedDate))
             parsedDate = parse(item.fields.date, "MMMM d y", new Date());
+          if (!isValid(parsedDate))
+            parsedDate = parse(item.fields.date, "MMMM d, yyyy", new Date());
           if (!isValid(parsedDate))
             parsedDate = parse(item.fields.date, "MMM d y", new Date());
           if (!isValid(parsedDate))
@@ -66,6 +66,12 @@ const contentfulPlugin = async function () {
             press: item.fields.press,
             url: item.fields.url,
             tags: item.fields.tags || [],
+            previewImageUrl:
+              item.fields.previewImage &&
+              item.fields.previewImage.fields &&
+              item.fields.previewImage.fields.file
+                ? item.fields.previewImage.fields.file.url
+                : null,
           };
         });
 
@@ -83,7 +89,11 @@ const contentfulPlugin = async function () {
 
         // assign images to press articles, old articles keep their images, new articles get new images
         press.forEach((news, i) => {
-          news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+          if (news.previewImageUrl) {
+            news.imageUrl = `https:${news.previewImageUrl}`;
+          } else {
+            news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+          }
         });
 
         // reverse the order, so that newest articles get the newest images

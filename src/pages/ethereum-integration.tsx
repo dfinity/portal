@@ -82,14 +82,14 @@ function EthereumIntegrationPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                Ethereum &lt;&gt; ICP
+                ICP as an Ethereum sidechain
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                A true World Computer enables a multi-chain environment where
-                centralized bridges are obsolete and smart contracts can
+                Because ICP canister smart contracts can call into Ethereum smart contracts, 
+                it enables a true World Computer in a multi-chain environment smart contracts can
                 seamlessly communicate across blockchains. ICP already
                 integrates with the Bitcoin Network, and native ETH integration
                 is underway.

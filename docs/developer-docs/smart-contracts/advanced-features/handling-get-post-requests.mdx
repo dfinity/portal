@@ -2,8 +2,10 @@
 keywords: [advanced, tutorial, get requests, post requests]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Handling GET/POST requests
@@ -32,7 +34,7 @@ To handle incoming HTTP requests, canisters must define methods for `http_reques
 
 HTTP `GET` requests are used to retrieve and return existing data from an endpoint. To handle a canister's incoming `GET` requests, the `http_request` method can be exposed. Users and other services can call this method using a `query` call. To return HTTP response data, the following examples display how to configure the `http_request` to return an HTTP `GET` request.
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 In Motoko, a `case` configuration can be used to return different `GET` responses based on the endpoint:
@@ -228,13 +230,13 @@ def http_request(req: HttpRequest) -> HttpResponse:
 Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.html) for more info on HTTP requests.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## `POST` requests
 
 HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. To handle incoming `POST` requests, the `htt_request_update` method can be used. This method uses an `update` call, which can be used to change a canister's state. The following examples display how to configure `http_request_update` method within your canister.
 
-<Tabs groupId="languages">
+<AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 In Motoko, a `case` configuration can be used to return different `POST` responses based on the endpoint:
@@ -424,7 +426,7 @@ def http_request_update(req: HttpRequest) -> HttpResponse:
 Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.html) for more info on HTTP requests.
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## Resources
 

@@ -17,15 +17,15 @@ const sidebars = {
           label: "Development workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
+	{
+          type: "doc",
+          label: "Installing tools",
+          id: "developer-docs/getting-started/install/index",
+        },
         {
           type: "doc",
           label: "Hello, world!",
           id: "developer-docs/getting-started/hello-world",
-        },
-        {
-          type: "doc",
-          label: "Installing tools",
-          id: "developer-docs/getting-started/install/index",
         },
         {
           type: "doc",
@@ -37,6 +37,7 @@ const sidebars = {
           label: "Cycles",
           items: [
             "developer-docs/getting-started/cycles/cycles-faucet",
+	    "developer-docs/getting-started/cycles/cycles-ledger",
             "developer-docs/getting-started/cycles/cycles-wallet",
             "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
@@ -217,6 +218,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
+              type: "doc",
+              label: "Async code and inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
@@ -295,7 +301,7 @@ const sidebars = {
                 type: "doc",
                 id: "developer-docs/developer-tools/cli-tools/cli-reference/index",
               },
-              items: [
+	      items: [
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-bootstrap",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
@@ -455,6 +461,8 @@ const sidebars = {
             "developer-docs/developer-tools/ide/vs-code",
             "developer-docs/developer-tools/ide/playground",
             "developer-docs/developer-tools/ide/gitpod",
+	    "developer-docs/developer-tools/ide/codespaces",
+	    "developer-docs/developer-tools/ide/dev-containers",
           ],
         },
       ],
@@ -499,6 +507,7 @@ const sidebars = {
         },
         "developer-docs/web-apps/design-dapps",
         "developer-docs/web-apps/independently-verifying-ic-signatures",
+        "developer-docs/web-apps/obtain-verify-ic-pubkey",
         {
           type: "category",
           label: "User sign-up and login",
@@ -577,6 +586,7 @@ const sidebars = {
       label: "DeAI",
       items: [
         "developer-docs/ai/overview",
+        "developer-docs/ai/ai-on-chain",
         "developer-docs/ai/machine-learning-sample"
       ],
     },
@@ -604,6 +614,7 @@ const sidebars = {
           type: "category",
           label: "ICRC-1 tokens",
           items: [
+            "developer-docs/defi/icrc-1/token-quickstart",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icrc-1/icrc1-index-setup",
@@ -646,21 +657,32 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Multi-chain",
+      label: "Chain fusion",
       items: [
+        "developer-docs/multi-chain/overview",
         {
           type: "category",
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
-            "developer-docs/multi-chain/bitcoin/ckbtc",
             {
               type: "category",
-              label: "Advanced",
+              label: "Using the integration",
               items: [
-                "developer-docs/multi-chain/bitcoin/read-state",
-                "developer-docs/multi-chain/bitcoin/submit-transactions",
-                "developer-docs/multi-chain/bitcoin/local-development",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckBTC",
+              items: [
+                "developer-docs/multi-chain/bitcoin/ckbtc/overview",
+                "developer-docs/multi-chain/bitcoin/ckbtc/making-transactions",
+                "developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps",
               ],
             },
           ],
@@ -670,9 +692,26 @@ const sidebars = {
           label: "Ethereum",
           items: [
             "developer-docs/multi-chain/ethereum/overview",
-            "developer-docs/multi-chain/ethereum/cketh",
-            "developer-docs/multi-chain/ethereum/evm-rpc",
-            "developer-docs/multi-chain/ethereum/siwe",
+            {
+              type: "category",
+              label: "Using the integration",
+              items: [
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
+                "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckETH",
+              items: [
+                "developer-docs/multi-chain/ethereum/cketh/overview",
+                "developer-docs/multi-chain/ethereum/cketh/making-transactions",
+                "developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps",
+              ],
+            },
           ],
         },
       ],
@@ -690,6 +729,7 @@ const sidebars = {
             "developer-docs/daos/nns/staking-voting-rewards",
             "developer-docs/daos/nns/neurons-fund",
             "developer-docs/daos/nns/proposal-requirements",
+            "developer-docs/daos/nns/neuron-management",
           ],
         },
         {
@@ -825,11 +865,11 @@ const sidebars = {
             "references/samples/motoko/send_http_get/README",
             "references/samples/motoko/send_http_post/README",
             "references/samples/motoko/ic-pos/README",
+            "references/samples/motoko/icp_transfer/README",
             "references/samples/motoko/icrc2-swap/README",
             "references/samples/motoko/internet_identity_integration/README",
             "references/samples/motoko/invoice-canister/README",
             "references/samples/motoko/ios-notifications/README",
-            "references/samples/motoko/ledger-transfer/README",
             "references/samples/motoko/minimal-counter-dapp/README",
             "references/samples/motoko/persistent-storage/README",
             "references/samples/motoko/phone-book/README",
@@ -838,6 +878,7 @@ const sidebars = {
             "references/samples/motoko/random_maze/README",
             "references/samples/motoko/simple-to-do/README",
             "references/samples/motoko/threshold-ecdsa/README",
+            "references/samples/motoko/token_transfer/README",
             "references/samples/motoko/vetkd/README",
             "references/samples/motoko/whoami/README",
           ],
@@ -855,15 +896,16 @@ const sidebars = {
             "references/samples/rust/dip721-nft-container/README",
             "references/samples/rust/encrypted-notes-dapp-vetkd/README",
             "references/samples/rust/encrypted-notes-dapp/README",
-            "references/samples/rust/send_http_get/README",
-            "references/samples/rust/send_http_post/README",
+            "references/samples/rust/icp_transfer/README",
             "references/samples/rust/nft-wallet/README",
             "references/samples/rust/performance_counters/README",
             "references/samples/rust/periodic_tasks/README",
             "references/samples/rust/pub-sub/README",
             "references/samples/rust/qrcode/README",
+            "references/samples/rust/send_http_get/README",
+            "references/samples/rust/send_http_post/README",
             "references/samples/rust/threshold-ecdsa/README",
-            "references/samples/rust/tokens_transfer/README",
+            "references/samples/rust/token_transfer/README",
             "references/samples/rust/vetkd/README",
           ],
         },
@@ -1084,6 +1126,7 @@ const sidebars = {
             "references/https-outcalls-how-it-works",
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
+            "references/supported-signatures",
           ],
         },
         {
@@ -1125,6 +1168,7 @@ const sidebars = {
         "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
         "developer-docs/backend/rust/generating-candid",
+        "developer-docs/backend/rust/message-inspect",
       ],
     },
   ],

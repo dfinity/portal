@@ -1,0 +1,38 @@
+---
+title: Developer weekly update March 20, 2024
+description: This week, we have a new agent-js release, an update on the cycles ledger, and a sneak peek into React Native apps on ICP.
+tags: [Devs]
+image: /img/blog/dev-update-blog-march-20.jpg
+---
+
+# Developer weekly update March 20, 2024
+
+![March 20 2024](../../static/img/blog/dev-update-blog-march-20.jpg)
+
+Hello developers, and welcome to this week's developer weekly update! This week, we have a new agent-js release, an update on the cycles ledger, and a sneak peek into React Native apps on ICP. Let's get started!
+
+## Agent-js v1.1.0
+
+This week, a new minor version of agent-js has been released. This release introduces a new `fromPem` method, which is designed to make managing identities easier during CI. It is recommended that developers use caution in any instance where users are transporting unencrypted `pem` files.
+
+Another new feature in this release is certified watermarks, which can be used to help reduce the number of query calls that return stale responses.
+
+You can read the full release notes [on the agent-js GitHub release page](https://github.com/dfinity/agent-js/releases/tag/v1.1.0).
+
+## Cycles ledger
+
+The highly anticipated cycles ledger feature is nearing completion, and is planned to be released in the next major version of `dfx`, v0.19.0!
+
+The cycles ledger has been a topic mentioned in a few previous developer update blog posts, as it has been in the development pipeline for several months. The cycles ledger will replace the cycles wallet feature, significantly simplifying cycles management for developers. With the cycles wallet, developers had to deploy and manage different cycles wallet containers for different developer identities. With the cycles ledger, all a developer will need is their developer identity and the `dfx cycles` command to transfer cycles to other principals, withdraw cycles, or top up canisters.
+
+There will be a detailed Project Spotlight post in the coming weeks here on the Dev Blog that will interview the team behind the cycles ledger and go into much further detail, so keep an eye out!
+
+## React Native for ICP apps
+
+React Native support is coming to ICP via agent-js! In the current agent-js architecture, Webassembly modules are used to verify BLS signatures. The latest version of the `@noble/curves` package provides an alternative solution. Support for the npm package `@noble/curves` will be included in an upcoming agent-js release, allowing for React Native apps to be built!
+
+Want to take a sneak peek? Check out [this tutorial](https://kyle-peacock.com/blog/dfinity/ic-expo/) that creates a React Native app on IC that manually installs and configures the `@noble/curves` package. In the future, this dependency can be managed by npm instead.
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY

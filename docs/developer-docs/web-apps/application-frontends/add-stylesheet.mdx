@@ -3,8 +3,10 @@ keywords: [intermediate, tutorial, frontend, stylesheet]
 ---
 
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Add a stylesheet
@@ -48,7 +50,7 @@ To create a new project directory for your custom frontend dapp:
 - #### Step 4:  Create a new project by running the following command:
 
 
-<Tabs groupId="version">
+<AdornedTabs groupId="version">
 <TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
@@ -97,7 +99,7 @@ dfx new contacts
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 - #### Step 5:  Change to your project directory by running the following command:
 
@@ -174,47 +176,50 @@ You are now ready to create a new frontend for your program.
 - #### Step 1:  Open the webpack configuration file (`webpack.config.js`) in a text editor.
 
 - #### Step 2:  Modify the frontend entry to replace the default index.html with index.jsx.
-
-        entry: {
-          // The frontend.entrypoint points to the HTML file for this build, so you need
-          // to replace the extension to `.js`.
-          index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
-        },
-
+```
+entry: {
+  // The frontend.entrypoint points to the HTML file for this build, so you need
+  // to replace the extension to `.js`.
+  index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
+},
+```
 - #### Step 3:  Locate the commented example for the `module` key above the `plugins` section, then uncomment the following lines:
-
-        module: {
-          rules: [
-            { test: /\.(js|ts)x?$/, loader: "ts-loader" },
-            { test: /\.css$/, use: ['style-loader','css-loader'] }
-          ]
-        },
-
-    These settings enable your program to use the `ts-loader` compiler and to import CSS files.
+```
+module: {
+  rules: [
+    { test: /\.(js|ts)x?$/, loader: "ts-loader" },
+    { test: /\.css$/, use: ['style-loader','css-loader'] }
+  ]
+},
+```
+These settings enable your program to use the `ts-loader` compiler and to import CSS files.
 
 :::info
     Note: if you want to add support for `.scss` or `.sass` files, you should install `sass-loader` with:
 
-        npm install --save react react-dom
+```
+npm install --save react react-dom
+```
 
-    and then add this additional rule beneath the `css-loader` rule in `webpack.config.js`:
-
-        module: {
-          rules: [
-            // ...
-            {
-              test: /\.s[ac]ss$/i,
-              use: [
-                // Creates `style` nodes from JS strings
-                "style-loader",
-                // Translates CSS into CommonJS
-                "css-loader",
-                // Compiles Sass to CSS
-                "sass-loader",
-              ],
-            },
-          ]
-        },
+and then add this additional rule beneath the `css-loader` rule in `webpack.config.js`:
+```
+module: {
+  rules: [
+    // ...
+    {
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        "style-loader",
+        // Translates CSS into CommonJS
+        "css-loader",
+        // Compiles Sass to CSS
+        "sass-loader",
+      ],
+    },
+  ]
+},
+```
 :::
 
 - #### Step 4:  Save your changes and close the `webpack.config.js` file to continue.
@@ -399,27 +404,28 @@ render(<Contact />, document.getElementById("contacts"));
 ```
 
 - #### Step 8:  Rename the modified `index.js` file as `index.jsx` by running the following command:
-
-        mv index.js index.jsx
-
+```
+mv index.js index.jsx
+```
 - #### Step 9:  Open the default `src/contacts_assets/src/index.html` file in a text editor, then remove the `main.css` link and update the `body` contents with `<div id="contacts"></div>`.
 
     For example:
-
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width" />
-            <title>contacts</title>
-            <base href="/" />
-          </head>
-          <body>
-            <main>
-              <div id="contacts"></div>
-            </main>
-          </body>
-        </html>
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>contacts</title>
+    <base href="/" />
+  </head>
+  <body>
+    <main>
+      <div id="contacts"></div>
+    </main>
+  </body>
+</html>
+```
 
 - #### Step 10: Navigate back to the root of your project directory.
 
@@ -432,10 +438,10 @@ To start the environment locally:
 - #### Step 1:  Open a new terminal window or tab on your local computer.
 
 - #### Step 2:  Start the local canister execution environment on your local computer by running the following command:
-
-        dfx start --clean --background
-
-    After the environment completes its startup operations, you can continue to the next step.
+```
+dfx start --clean --background
+```
+After the environment completes its startup operations, you can continue to the next step.
 
 ## Register, build, and deploy the dapp
 
@@ -446,20 +452,21 @@ To deploy the dapp:
 - #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
 - #### Step 2:  Register, build, and deploy your dapp by running the following command:
+```
+dfx deploy
+```
+The `dfx deploy` command output displays information about the operations it performs.
 
-        dfx deploy
+Keep in mind that because you are running the canister execution environment locally, the identifiers displayed when you run the `dfx deploy` command are only valid on your machine.
 
-    The `dfx deploy` command output displays information about the operations it performs.
-
-    Keep in mind that because you are running the canister execution environment locally, the identifiers displayed when you run the `dfx deploy` command are only valid on your machine.
-
-    To deploy canisters on ICP, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
-
-        dfx deploy --network=ic
-
+To deploy canisters on ICP, you must specify that you are deploying to the Internet Computer and not your local environment by using the `--network` command-line option:
+```
+dfx deploy --network=ic
+```
 - #### Step 3:  Start the Webpack development server:
-
-        npm start
+```
+npm start
+```
 
 ## View the frontend
 
@@ -512,5 +519,6 @@ To stop the local development environment:
 - #### Step 1:  In the terminal that displays your webpack dev server, press Control-C to interrupt the development server.
 
 - #### Step 2:  Stop the Internet Computer network by running the following command:
-
-        dfx stop
+```
+dfx stop
+```

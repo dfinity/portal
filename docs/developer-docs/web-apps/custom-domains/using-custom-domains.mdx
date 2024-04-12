@@ -26,8 +26,7 @@ the domain with the boundary nodes, you simply have to configure the DNS records
 the custom domain and the boundary nodes take care of obtaining a certificate,
 renewing the certificate before its expiration, and SEO.
 When hosting the domain on your own infrastructure, you need to obtain and renew
-the certificates, and provide your own infrastructure that serves the service worker
-or implements an other form of the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md).
+the certificates, and provide your own infrastructure with support for the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md).
 However, you are also more flexible in how you configure your domain.
 
 :::info
@@ -68,9 +67,13 @@ For non-apex (e.g. www), the name should be the standard “_canister-id.www” 
 
 --------------------------------------
 
-- #### Step 2: Create a file named `ic-domains` in your canister under `.well-known` containing the custom domain.
+- #### Step 2: Create a file named `ic-domains` in your canister under the `.well-known` directory containing the custom domain.
+
+The `.well-known` directory with the `ic-domains` file should be placed within the canister files, not at the root. The location of the files should allow your frontend framework to include the files during the build process. 
+
 By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
-Create a new file with the name `.ic-assets.json` inside a directory listed in `source` in `dfx.json`.
+
+Create a new file with the name `.ic-assets.json` inside the same top-level directory as the `.well-known` directory.
 
 To use multiple custom domains and their subdomains with a single canister, simply list each one of them on a newline in the `ic-domains`-file:
 ```sh

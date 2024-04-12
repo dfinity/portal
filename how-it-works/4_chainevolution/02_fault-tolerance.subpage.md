@@ -22,7 +22,7 @@ ICP follows a mix of both the approaches. The consensus protocol is divided into
 All the nodes in the subnet listen to the CUP messages broadcast by their peers. Suppose a node observes that a received CUP has a valid signature (signed by at least 2/3 of the nodes in the subnet) and has a different blockchain state hash than the locally available state hash. Then the node initiates the [state sync protocol](https://www.youtube.com/watch?v=WaNJINjGleg) to sync the blockchain state at that height (the height at which the CUP is published). The blockchain state is organized as a Merkle tree and can currently reach a size of up to half a terabyte. The syncing node might already have most of the blockchain state and may not need to download everything. Therefore, the syncing node tries to download only the subtrees of the peers’ blockchain state that differ from its local state. The syncing node first requests for the children of the root of the blockchain state. The syncing node then recursively downloads the subtrees that differ from its local state.
 
 <figure>
-<img src="/img/how-it-works/state-sync.png" alt="Catching-up replica syncing state from up-to-date replica" title="Catching-up replica syncing state from up-to-date replica" align="center" style="width:700px">
+<img src="/img/how-it-works/state-sync.png" alt="Catching-up replica syncing state from up-to-date replica" title="Catching-up replica syncing state from up-to-date replica" align="center" style="width:700px" />
 <figcaption align="left">
 The catching-up replica only syncs the parts of the replicated state that differ from the up-to-date replica
 </figcaption>

@@ -36,12 +36,12 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage href="/multichain" image="/img/home/btc-eth.webp">
+      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Trustless multi-chain on ICP
+          Chain Fusion Technology
         </h2>
       </CardWithImage>
 
@@ -53,7 +53,7 @@ export const CardsSection = () => {
           Online Deck [ ICP hosted ]
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Cypherspace
+          Blockchain
           <br />
           as cloud 3.0
         </h2>

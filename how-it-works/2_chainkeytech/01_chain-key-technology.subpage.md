@@ -7,13 +7,21 @@ slug: chain-key-technology
 
 # Chain-Key Cryptography
 
+_Chain-key cryptography_ enables subnets of the Internet Computer to jointly hold cryptographic keys, in a way that no small subset of potentially misbehaving nodes on the subnet can perform useful operations with the key, but the majority of honest nodes together can. Chain-key cryptography provides three major benefits to ICP:
+
+1. Secure and efficient subnet-to-subnet communication enables ICP to scale horizontally, increasing the compute and memory capacity as more nodes are joining the Internet Computer.
+2. Certified responses enable clients to validate the information they receive from ICP nodes efficiently and without the need of keeping any blockchain state.
+3. Chain-key signatures enable canister smart contracts on ICP to hold assets and invoke smart contracts on other blockchain networks.
+
+In the future, [vetKeys](/docs/current/references/vetkeys-overview) will additionally enable dapps to encrypt data based on encryption keys controlled by canister smart contracts.
+
 ## Signatures
 
 A _digital signature scheme_ is a very traditional type of public-key cryptosystem, in which a secret key (held only by the signer) is used to generate a digital signature on a message, and a public key (available to everyone) may be used to efficiently verify a digital signature on a message. The basic security property achieved by such a scheme is that a valid signature on a message cannot be created without explicitly invoking the signing algorithm with the corresponding secret key.
 
 A _threshold signature scheme_ is a digital signature scheme where the secret signing key is never stored in one location (which would become a single point of failure). Rather, the secret key is effectively split up into _secret shares_, and each secret share is stored on a different machine. To sign a message, these machines must agree to sign the message and coordinate with one another to generate a digital signature in a distributed fashion (importantly, without ever reconstructing the secret signing key in one location).
 
-## Chain-Key Technology
+## Chain-Key Cryptography
 
 While threshold signature schemes is a technology that has been around for a long time, the IC is the first blockchain to fully integrate this technology in the core of its design. As described above, the technology enables _chain-key cryptography_ and all of its benefits -- Efficient verification of blockchain outputs, autonomous evolution of the IC topology, a source of unpredictable and unbiasable pseudo-random numbers for canisters.
 

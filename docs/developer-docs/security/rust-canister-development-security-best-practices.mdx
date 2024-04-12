@@ -78,19 +78,19 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 - By design, for every canister call the caller can be identified. The calling [principal](../../references/ic-interface-spec.md#principals) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](../../references/ic-interface-spec.md#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](../../references/ii-spec.md#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
 
 <!-- -->
+```
+// Let pk be the public key of a principal that is allowed to perform
+// this operation. This pk could be stored in the canister's state.
+if caller() != Principal::self_authenticating(pk) {  ic_cdk::trap(...) }
 
-        // Let pk be the public key of a principal that is allowed to perform
-        // this operation. This pk could be stored in the canister's state.
-        if caller() != Principal::self_authenticating(pk) {  ic_cdk::trap(...) }
-
-        // Alternatively, if the canister keeps data for different principals
-        // in e.g. a map such as BTreeMap<Principal, UserData>, then the canister
-        // must ensure that each caller can only access and perform operations
-        // on their own data:
-        if let Some(user_data) = user_data_store.get_mut(&caller()) {
-            // perform operations on the user's data
-        }
-
+// Alternatively, if the canister keeps data for different principals
+// in e.g. a map such as BTreeMap<Principal, UserData>, then the canister
+// must ensure that each caller can only access and perform operations
+// on their own data:
+if let Some(user_data) = user_data_store.get_mut(&caller()) {
+    // perform operations on the user's data
+}
+```
 - In Rust, the `ic_cdk` crate can be used to authenticate the caller using `ic_cdk::api::caller`. Make sure the returned principal is of type `Principal::self_authenticating` and identify the user’s account using the public key of that principal, see the example code above.
 
 - Do authentication as early as possible in the call to avoid unauthenticated actions and potentially expensive operations before authentication. It is also a good idea to [deny service to anonymous users](#disallow-the-anonymous-principal-in-authenticated-calls).
@@ -106,19 +106,19 @@ The caller from the system API (e.g. `ic0::api::caller` in Rust) may also return
 #### Recommendation
 
 In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could e.g. be done centrally by using a helper method. In Rust it could e.g. look as follows:
-
-    fn caller() -> Result<Principal, String> {
-        let caller = ic0::api::caller();
-        // The anonymous principal is not allowed to interact with canister.
-        if caller == Principal::anonymous() {
-            Err(String::from(
-                "Anonymous principal not allowed to make calls.",
-            ))
-        } else {
-            Ok(caller)
-        }
+```rust
+fn caller() -> Result<Principal, String> {
+    let caller = ic0::api::caller();
+    // The anonymous principal is not allowed to interact with canister.
+    if caller == Principal::anonymous() {
+        Err(String::from(
+            "Anonymous principal not allowed to make calls.",
+        ))
+    } else {
+        Ok(caller)
     }
-
+}
+```
 ## Asset certification
 
 ### Use HTTP asset certification and avoid serving your dapp through `raw.icp0.io`
@@ -183,11 +183,11 @@ Canister memory is not persisted across upgrades. If data needs to be kept acros
 
 - Some libraries (mostly work in progress or partly unfinished) that people work on:
 
-  - <https://github.com/dfinity/stable-structures/>
+  - [https://github.com/dfinity/stable-structures](https://github.com/dfinity/stable-structures)
 
-  - HashMap: <https://github.com/dfinity/stable-structures/pull/1> (currently not production ready.)
+  - HashMap: [https://github.com/dfinity/stable-structures/pull/1](https://github.com/dfinity/stable-structures/pull/1) (currently not production ready.)
 
-  - <https://github.com/seniorjoinu/ic-stable-memory>
+  - [https://github.com/seniorjoinu/ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory)
 
 - See [current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serialiser requiring additional wasm memory".
 
@@ -317,82 +317,85 @@ See also: "Inter-canister calls" section in [how to audit an Internet Computer c
 
 To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that e.g. a caller (or anyone) can only execute an entire call (which involves several messages) once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above.
 
-The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Note that the `Drop` function is only executed for callbacks and not all messages in general, as `ic0.call_on_cleanup` is only executed for those.
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [avoid traps after await](#avoid-traps-after-await). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version 0.5.1, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources (recall that `ic0.call_on_cleanup` is executed if the `reply` or the `reject` callback executed and trapped).
+```rust
+pub struct State {
+    pending_requests: BTreeSet<Principal>,
+}
 
-    pub struct State {
-        pending_requests: BTreeSet<Principal>,
+thread_local! {
+    static STATE: RefCell<State> = RefCell::new(State{pending_requests: BTreeSet::new()});
+}
+
+pub struct CallerGuard {
+    principal: Principal,
+}
+
+impl CallerGuard {
+    pub fn new(principal: Principal) -> Result<Self, String> {
+        STATE.with(|state| {
+            let pending_requests = &mut state.borrow_mut().pending_requests;
+            if pending_requests.contains(&principal){
+                return Err(format!("Already processing a request for principal {:?}", &principal));
+            }
+            pending_requests.insert(principal);
+            Ok(Self { principal })
+        })
+    }
+}
+
+impl Drop for CallerGuard {
+    fn drop(&mut self) {
+        STATE.with(|state| {
+            state.borrow_mut().pending_requests.remove(&self.principal);
+        })
+    }
+}
+
+#[update]
+#[candid_method(update)]
+async fn example_call_with_locking_per_caller() -> Result<(), String> {
+    let caller = ic_cdk::caller();
+    // using `?`, return an error immediately if there is already a call in progress for `caller`
+    // warning: never use `let _ = CallerGuard::new(caller)?`, because this will drop the guard immediately
+    // and locking would not be effective
+    let _guard = CallerGuard::new(caller)?;
+    // do anything, call other canisters
+    Ok(())
+} // here the guard goes out of scope and is dropped
+
+mod test {
+    use super::*;
+
+    #[test]
+    fn should_obtain_guard_for_different_principals() {
+        let principal_1 = Principal::anonymous();
+        let principal_2 = Principal::management_canister();
+        let caller_guard = CallerGuard::new(principal_1);
+        assert!(caller_guard.is_ok());
+        assert!(CallerGuard::new(principal_2).is_ok());
     }
 
-    thread_local! {
-        static STATE: RefCell<State> = RefCell::new(State{pending_requests: BTreeSet::new()});
+    #[test]
+    fn should_not_obtain_guard_twice_for_same_principal() {
+        let principal = Principal::anonymous();
+        let caller_guard = CallerGuard::new(principal);
+        assert!(caller_guard.is_ok());
+        assert!(CallerGuard::new(principal).is_err());
     }
 
-    pub struct CallerGuard {
-        principal: Principal,
-    }
-
-    impl CallerGuard {
-        pub fn new(principal: Principal) -> Result<Self, String> {
-            STATE.with(|state| {
-                let pending_requests = &mut state.borrow_mut().pending_requests;
-                if pending_requests.contains(&principal){
-                    return Err(format!("Already processing a request for principal {:?}", &principal));
-                }
-                pending_requests.insert(principal);
-                Ok(Self { principal })
-            })
-        }
-    }
-
-    impl Drop for CallerGuard {
-        fn drop(&mut self) {
-            STATE.with(|state| {
-                state.borrow_mut().pending_requests.remove(&self.principal);
-            })
-        }
-    }
-
-    #[update]
-    #[candid_method(update)]
-    async fn example_call_with_locking_per_caller() -> Result<(), String> {
-        let caller = ic_cdk::caller();
-        // using `?`, return an error immediately if there is already a call in progress for `caller`.
-        let _ = CallerGuard::new(caller)?;
-        // do anything, call other canisters
-        Ok(())
-    } // here the guard goes out of scope and is dropped
-
-    mod test {
-        use super::*;
-
-        #[test]
-        fn should_obtain_guard_for_different_principals() {
-            let principal_1 = Principal::anonymous();
-            let principal_2 = Principal::management_canister();
-            let caller_guard = CallerGuard::new(principal_1);
-            assert!(caller_guard.is_ok());
-            assert!(CallerGuard::new(principal_2).is_ok());
-        }
-
-        #[test]
-        fn should_not_obtain_guard_twice_for_same_principal() {
-            let principal = Principal::anonymous();
+    #[test]
+    fn should_release_guard_on_drop() {
+        let principal = Principal::anonymous();
+        {
             let caller_guard = CallerGuard::new(principal);
             assert!(caller_guard.is_ok());
-            assert!(CallerGuard::new(principal).is_err());
-        }
-
-        #[test]
-        fn should_release_guard_on_drop() {
-            let principal = Principal::anonymous();
-            {
-                let caller_guard = CallerGuard::new(principal);
-                assert!(caller_guard.is_ok());
-            } // drop caller_guard as it goes out of scope here
-            // it is possible to get a guard again:
-            assert!(CallerGuard::new(principal).is_ok());
-        }
+        } // drop caller_guard as it goes out of scope here
+        // it is possible to get a guard again:
+        assert!(CallerGuard::new(principal).is_ok());
     }
+}
+```
 
 This pattern can be extended e.g. to work for the following use cases:
 
@@ -599,72 +602,73 @@ Since canisters interact with the system API, it is harder to test the code beca
 - For the parts that still interact with the system API: create a thin abstraction of the System API that is faked in unit tests. See the [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). For example, one can implement a ‘Runtime’ as follows and then use the ‘MockRuntime’ in tests (code by Dimitris Sarlis):
 
 <!-- -->
+```rust
+use ic_cdk::api::{
+    call::call, caller, data_certificate, id, print, time, trap,
+};
 
-        use ic_cdk::api::{
-            call::call, caller, data_certificate, id, print, time, trap,
-        };
+#[async_trait]
+pub trait Runtime {
+    fn caller(&self) -> Result<Principal, String>;
+    fn id(&self) -> Principal;
+    fn time(&self) -> u64;
+    fn trap(&self, message: &str) -> !;
+    fn print(&self, message: &str);
+    fn data_certificate(&self) -> Option<Vec<u8>>;
+    (...)
+}
 
-        #[async_trait]
-        pub trait Runtime {
-            fn caller(&self) -> Result<Principal, String>;
-            fn id(&self) -> Principal;
-            fn time(&self) -> u64;
-            fn trap(&self, message: &str) -> !;
-            fn print(&self, message: &str);
-            fn data_certificate(&self) -> Option<Vec<u8>>;
-            (...)
+#[async_trait]
+impl Runtime for RuntimeImpl {
+    fn caller(&self) -> Result<Principal, String> {
+        let caller = caller();
+        // The anonymous principal is not allowed to interact with the canister.
+        if caller == Principal::anonymous() {
+            Err(String::from(
+                "Anonymous principal not allowed to make calls.",
+            ))
+        } else {
+            Ok(caller)
         }
+    }
 
-        #[async_trait]
-        impl Runtime for RuntimeImpl {
-            fn caller(&self) -> Result<Principal, String> {
-                let caller = caller();
-                // The anonymous principal is not allowed to interact with the canister.
-                if caller == Principal::anonymous() {
-                    Err(String::from(
-                        "Anonymous principal not allowed to make calls.",
-                    ))
-                } else {
-                    Ok(caller)
-                }
-            }
+    fn id(&self) -> Principal {
+        id()
+    }
 
-            fn id(&self) -> Principal {
-                id()
-            }
+    fn time(&self) -> u64 {
+        time()
+    }
 
-            fn time(&self) -> u64 {
-                time()
-            }
+    (...)
 
-            (...)
+}
 
-        }
+pub struct MockRuntime {
+    pub caller: Principal,
+    pub canister_id: Principal,
+    pub time: u64,
+    (...)
+}
 
-        pub struct MockRuntime {
-            pub caller: Principal,
-            pub canister_id: Principal,
-            pub time: u64,
-            (...)
-        }
+#[async_trait]
+impl Runtime for MockRuntime {
+    fn caller(&self) -> Result<Principal, String> {
+        Ok(self.caller)
+    }
 
-        #[async_trait]
-        impl Runtime for MockRuntime {
-            fn caller(&self) -> Result<Principal, String> {
-                Ok(self.caller)
-            }
+    fn id(&self) -> Principal {
+        self.canister_id
+    }
 
-            fn id(&self) -> Principal {
-                self.canister_id
-            }
+    fn time(&self) -> u64 {
+        self.time
+    }
 
-            fn time(&self) -> u64 {
-                self.time
-            }
+    (...)
 
-            (...)
-
-        }
+}
+```
 
 ### Make canister builds reproducible
 

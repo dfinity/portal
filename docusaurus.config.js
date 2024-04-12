@@ -200,12 +200,12 @@ const marketingNav = {
               description: "Transforming the internet",
             },
             {
-              name: "Bitcoin <> ICP",
+              name: "ICP as a Bitcoin L2",
               href: "/bitcoin-integration",
               description: "Bringing smart contracts to Bitcoin",
             },
             {
-              name: "Ethereum <> ICP",
+              name: "ICP as an Ethereum sidechain",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
             },
@@ -299,8 +299,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Trustless multi-chain",
-            href: "/multichain",
+            title: "Chain Fusion Technology",
+            href: "/chainfusion",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
@@ -440,9 +440,10 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "ICP around the world",
-            href: "/community",
-            image: "/img/nav/featured-community.webp",
+            title: "OLYMPUS",
+            subtitle: "The On-Chain Acceleration Platform",
+            href: "/olympus",
+            image: "/img/nav/featured-olympus.webp",
           },
         },
       ],
@@ -676,6 +677,16 @@ const config = {
                 ),
                 icon: `data:image/svg+xml;base64,${fs
                   .readFileSync("./static/img/svgIcons/twitter-white.svg")
+                  .toString("base64")}`,
+              },
+              {
+                label: "Telegram",
+                to: "https://t.me/+m8tiEFaaNR8xNjNl",
+                iconLight: getImageDataUrl(
+                  "./static/img/svgIcons/purple/telegram.svg"
+                ),
+                icon: `data:image/svg+xml;base64,${fs
+                  .readFileSync("./static/img/svgIcons/telegram-white.svg")
                   .toString("base64")}`,
               },
               {
