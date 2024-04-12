@@ -915,7 +915,7 @@ const sidebars = {
           items: [
             "references/samples/native-apps/unity_ii_applink/README",
             "references/samples/native-apps/unity_ii_deeplink/README",
-            "references/samples/native-apps/unity_ii_universallink/README",
+            "references/samples/native-apps/unity_ii_deeplink/ii_integration_dapp/README",
           ],
         },
         {
