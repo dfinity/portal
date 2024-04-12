@@ -12,7 +12,7 @@ The execution layer is the topmost layer of the IC core protocol stack. It deter
 A canister smart contract on the IC consists of a Web Assembly (Wasm) bytecode representing the smart contract program and a set of memory pages representing its state. The Wasm bytecode can be modified by installing or updating the canister. The smart contract state gets modified when executing messages on the canister smart contract. Both the bytecode and the memory pages, i.e., the state, of the canister, are maintained by every node machine of the subnet the canister is installed on. Each node in the subnet holding the same canister state and ensuring that the state transitions in the same way on every node in every round is the foundation of realizing a replicated state machine and the security and resilience properties thereof that make blockchains so unique.
 
 <figure>
-<img src="/img/how-it-works/canister.png" alt="Structure of a canister" title="Structure of a canister" align="center" style="width:600px">
+<img src="/img/how-it-works/canister.png" alt="Structure of a canister" title="Structure of a canister" align="center" style="width:600px" />
 </figure>
 
 ## Replicated Message Execution
@@ -28,7 +28,7 @@ New messages targeted at other subnets are placed into the target cross-subnet q
 The execution layer is designed at its core to execute multiple canisters concurrently on different CPU cores. This is possible because each canister has its own isolated state and canister communication is asynchronous. This form of concurrent execution within a subnet together with the capability of all of the IC's subnets executing canisters concurrently makes the IC scalable like the public cloud: The IC scales out by adding more subnets.
 
 <figure>
-<img src="/img/how-it-works/execution_layer.png" alt="Execution layer process consensus blocks and updates state" title="Execution layer process consensus blocks and updates state" align="center" style="width:400px">
+<img src="/img/how-it-works/execution_layer.png" alt="Execution layer process consensus blocks and updates state" title="Execution layer process consensus blocks and updates state" align="center" style="width:400px" />
 </figure>
 
 ## Non-replicated Message Execution
@@ -67,7 +67,7 @@ The memory the canister uses in terms of both its Wasm code and canister state n
 Pricing for a resource on the IC is extremely competitive. Prices for a given resource, e.g., executing Wasm instructions, scale with the replication factor of the subnet, i.e., the number of nodes that power the subnet.
 
 <figure>
-<img src="/img/how-it-works/execution_consumes_cycles.png" alt="Execution layer consumes cycles" title="Execution layer consumes cycles" align="center" style="width:600px">
+<img src="/img/how-it-works/execution_consumes_cycles.png" alt="Execution layer consumes cycles" title="Execution layer consumes cycles" align="center" style="width:600px" />
 </figure>
 
 ## Random Number Generation

@@ -15,6 +15,7 @@ const redirects = `
   /openchat /ois
   /howitworks /how-it-works
   /showcase /ecosystem
+  /multichain /chainfusion
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home

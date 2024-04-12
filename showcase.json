@@ -146,24 +146,6 @@
     "logo": "/img/showcase/dragginz_logo.png"
   },
   {
-    "id": "dmail",
-    "name": "Dmail",
-    "oneLiner": "Web3 Decentralized Email Client",
-    "website": "https://dmail.ai/",
-    "tags": [
-      "NFT",
-      "SocialFi"
-    ],
-    "description": "Dmail is the Web3 replacement for e-mail. Hosted completely on-chain and built on the Internet Computer, this dapp enables users to send and receive blockchain-backed, encrypted messages. In addition, Dmail addresses are owned by users as NFT assets - there is a natively built marketplace. Dmail was the winner of the 2021 Warpspeed ICP Hackathon in China and saw an immediate round of funding netting a $10M valuation. ",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/dmailofficial",
-    "display": "Normal",
-    "logo": "/img/showcase/dmail_logo.webp",
-    "screenshots": [
-      "/img/showcase/dmail_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "icdex",
     "name": "ICDex",
     "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
@@ -540,7 +522,7 @@
   },
   {
     "id": "finterest",
-    "name": "Finterest",
+    "name": "Finny",
     "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
     "tags": [
       "DeFi",
@@ -3897,5 +3879,157 @@
     "display": "Normal",
     "logo": "/img/showcase/allkinds_logo.svg",
     "submittableId": "43688836"
+  },
+  {
+    "id": "dmail-network",
+    "name": "Dmail Network",
+    "oneLiner": "AI-powered decentralized messaging infrastructure.",
+    "website": "https://dmail.ai",
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "AI",
+      "Enterprise",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://twitter.com/Dmailofficial",
+    "discord": "https://discord.gg/dmailofficial",
+    "description": "Dmail Network is an AI-powered decentralized communication infrastructure built to provide encrypted emails, unified notifications, and targeted marketing across multiple chains and dApps for users, developers, marketers and influencers",
+    "usesInternetIdentity": true,
+    "stats": "9,000,000+ users",
+    "display": "Normal",
+    "logo": "/img/showcase/dmail-network_logo.png"
+  },
+  {
+    "id": "datapond",
+    "name": "Datapond",
+    "oneLiner": "A hub for exposing and tracing data used by AI to generate results.",
+    "website": "https://recheck.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "AI"
+    ],
+    "twitter": "https://twitter.com/recheck_io",
+    "github": "https://github.com/ReCheck-io/icp-datapond-integration",
+    "description": "DataPond is a hub for exposing and tracing data used by AI to generate results. It enables end users and businesses to store files on Internet Computer and to control how they are consumed by AI tools as input for training, reasoning, or producing answers. DataPond is available as an open-source toolbox for developers who want to bridge their decentralized applications with AI transparently and efficiently.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/ReCheck_logo.png",
+    "submittableId": "44626241"
+  },
+  {
+    "id": "b4b",
+    "name": "B4B",
+    "oneLiner": "A Web3 influencer marketing protocol that brings transparency, ownership, escrow, and on-chain history from all socials.",
+    "website": "https://b4b.world",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "SocialFi"
+    ],
+    "twitter": "https://twitter.com/b4b_world",
+    "description": "B4B.app is a Web3 influencer marketing protocol that brings transparency, ownership, escrow, and on-chain history from all socials",
+    "usesInternetIdentity": true,
+    "stats": "400+ influencers",
+    "display": "Normal",
+    "logo": "/img/showcase/b4b_logo.png",
+    "submittableId": "44548318"
+  },
+  {
+    "id": "pochi",
+    "name": "pochi",
+    "oneLiner": "Fully on-chain decentralized human resource management software.",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "github": "https://github.com/cosmasken/ic-payroll",
+    "description": "Fully on-chain decentralized human resource management software.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/pochi_logo.png",
+    "submittableId": "44311024"
+  },
+  {
+    "id": "frontrow",
+    "name": "Front Row",
+    "oneLiner": "Decentralised ticketing platform offering fully on-chain, dynamic and tradable digital ticketing to event organisers.",
+    "website": "https://xw7l2-viaaa-aaaal-qditq-cai.icp0.io/",
+    "tags": [
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/FrontRowIC",
+    "description": "Decentralised ticketing platform offering fully on-chain, dynamic and tradable digital ticketing to event organisers.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/frontrow_logo.png",
+    "submittableId": "43814286"
+  },
+  {
+    "id": "Jobgrader",
+    "name": "Jobgrader",
+    "oneLiner": "Enabling the crowdworking market to train AI and any other micro tasks on-chain.",
+    "website": "https://jobgrader.app",
+    "tags": [
+      "AI"
+    ],
+    "twitter": "https://twitter.com/FrontRowIC",
+    "description": "Enabling the crowdworking market to train AI and any other micro tasks on-chain.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/jobgrader_logo.png",
+    "submittableId": "44503915"
+  },
+  {
+    "id": "rentspace",
+    "name": "RentSpace",
+    "oneLiner": "A property rental platform that enables tenants to pay fees and rent in either cryptocurrency or traditional money.",
+    "website": "https://rentb.space/",
+    "tags": [
+      "DeFi",
+      "SocialFi"
+    ],
+    "twitter": "https://twitter.com/RentSpaceco",
+    "github": "https://github.com/ICP-hub/RentSpace-ICP",
+    "discord": "https://discord.gg/hCFmTWFx85",
+    "description": "A property rental platform that enables tenants to pay fees and rent in either cryptocurrency or traditional money.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/rentspace_logo.png",
+    "submittableId": "44394368"
+  },
+  {
+    "id": "myordinalsloan",
+    "name": "MyOrdinals.Loan",
+    "oneLiner": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
+    "website": "https://myordinals.loan/",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "twitter": "https://twitter.com/MyOrdinalsLoan",
+    "github": "https://github.com/gladguy/MyOrdinals.Loan",
+    "description": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/myordinalsloan_logo.png",
+    "submittableId": "41341564"
+  },
+  {
+    "id": "yuku",
+    "name": "Yuku",
+    "oneLiner": "An AI Web3 Platform featuring NFT Aggregator, 3D space, and AI Avatar integration.",
+    "website": "https://yuku.app/",
+    "tags": [
+      "DAO",
+      "SocialFi",
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/yukuapp",
+    "description": "An AI Web3 Platform featuring NFT Aggregator, 3D space, and AI Avatar integration.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/yuku_logo.png"
   }
 ]

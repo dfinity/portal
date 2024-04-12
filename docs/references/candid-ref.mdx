@@ -352,7 +352,7 @@ In addition, for technical reasons related to upgrading and higher-order service
 
 `opt opt "test"` translates to `[["test"]]`.
 
-## Type record { n : t, … }
+## Type record \{ n : t, … \}
 
 A `record` type is a collection of labeled values. For example, the following code gives the name `address` to the type of records that have the textual fields `street`, `city` and `country` and a numerical field of `zip_code`.
 
@@ -455,7 +455,7 @@ Else it translates to a record object. For example, `{ "first name": "Candid", a
 
 If the field name is a hash, we use `_hash_` as the field name, for example, `{ _1_: 42, "1": "test" }`.
 
-## Type variant { n : t, … }
+## Type variant \{ n : t, … \}
 
 A `variant` type represents a value that is from exactly one of the given cases, or **tags**. So a value of the type:
 
@@ -636,7 +636,7 @@ type F4 = shared query () -> async Text;
 #### Corresponding JavaScript values  
 `[Principal.fromText("aaaaa-aa"), "create_canister"]`
 
-## Type service: {…}
+## Type service: \{…\}
 
 Services may want to pass around references to not just individual functions (using the [`func` type](#type-func)), but references to whole services. In this case, Candid types can be used to declare the complete interface of such a service.
 
