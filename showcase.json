@@ -4015,5 +4015,21 @@
     "display": "Normal",
     "logo": "/img/showcase/myordinalsloan_logo.png",
     "submittableId": "41341564"
+  },
+  {
+    "id": "yuku",
+    "name": "Yuku",
+    "oneLiner": "An AI Web3 Platform featuring NFT Aggregator, 3D space, and AI Avatar integration.",
+    "website": "https://yuku.app/",
+    "tags": [
+      "DAO",
+      "SocialFi",
+      "NFT"
+    ],
+    "twitter": "https://twitter.com/yukuapp",
+    "description": "An AI Web3 Platform featuring NFT Aggregator, 3D space, and AI Avatar integration.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/yuku_logo.png"
   }
 ]
