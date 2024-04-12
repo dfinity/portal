@@ -156,8 +156,7 @@ function MultichainPage() {
       and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      {/* <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta> */}
-      <ShareMeta image="/img/multichain/hero3.webp"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
 
       <main
         className="text-black relative "
@@ -199,7 +198,7 @@ function MultichainPage() {
                 <img
                   src="/img/multichain/hero3.webp"
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-xl"
                 />
               </div>
             </div>
@@ -240,34 +239,34 @@ function MultichainPage() {
               Example Code
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              To showcase how powerful chain fusion is, here is a simple example that shows 
-              three chains interacting in one smart contract: a{" "}
-                single{" "}
-                <b>
-                  <i>ICP</i>
-                </b>{" "}
-                smart contract that can custody{" "}
-                <b>
-                  <i>Bitcoin</i>
-                </b>{" "}
-                and programmatically trigger sending it based on events observed
-                on a{" "}
-                <b>
-                  <i>Ethereum</i>
-                </b>{" "}
-                DeFi smart contract.
+              To showcase how powerful chain fusion is, here is a simple example
+              that shows three chains interacting in one smart contract: a{" "}
+              single{" "}
+              <b>
+                <i>ICP</i>
+              </b>{" "}
+              smart contract that can custody{" "}
+              <b>
+                <i>Bitcoin</i>
+              </b>{" "}
+              and programmatically trigger sending it based on events observed
+              on a{" "}
+              <b>
+                <i>Ethereum</i>
+              </b>{" "}
+              DeFi smart contract.
             </p>
 
-            
-
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-            This code snippet is written in the&nbsp;
-              <Link 
-                rel="stylesheet" 
+              This code snippet is written in the&nbsp;
+              <Link
+                rel="stylesheet"
                 href="/docs/current/tutorials/developer-journey/level-0/intro-languages/#motoko"
               >
-              Motoko programming language
-              </Link> but is also possible for Rust, TypeScript, Python, and other languages.
+                Motoko programming language
+              </Link>{" "}
+              but is also possible for Rust, TypeScript, Python, and other
+              languages.
             </p>
             <p className="mb-0 mt-8">
               <Link
