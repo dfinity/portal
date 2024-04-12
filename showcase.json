@@ -4031,5 +4031,27 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/yuku_logo.png"
+  },
+  {
+    "id": "icto",
+    "name": "ICTO",
+    "oneLiner": "ICTO is a one-stop platform automating token operations on the Internet Computer.",
+    "tags": [
+      "Tools / Infrastructure",
+      "NFT",
+      "DAO",
+      "DeFi"
+    ],
+    "description": "ICTO is an automated token management platform that simplifies vesting schedules, recurring payroll distributions, token lock and tokenized crowdfunding for projects building on the Internet Computer. It provides modular smart contracts, allowing any project to transparently handle token operations without technical friction.",
+    "usesInternetIdentity": true,
+    "website": "https://icto.app",
+    "github": "https://github.com/ICTO-Labs",
+    "twitter": "https://twitter.com/icto_app",
+    "display": "Large",    
+    "logo": "/img/showcase/icto_logo.png",
+    "screenshots": [
+      "/img/showcase/icto_screenshot_0.png"
+    ],
+    "submittableId": "45095733"
   }
 ]
