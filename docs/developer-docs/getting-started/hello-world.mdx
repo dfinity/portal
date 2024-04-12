@@ -21,30 +21,34 @@ To deploy a simple 'Hello, world!' smart contract, you can setup a local develop
 
 :::info
 
-#### Which environment should you choose?
+**Which environment should you choose?**
 
 Gitpod and Codespaces are cloud-based developer environments that can be accessed via a web browser. They do not require downloading any tools or software. These environments use limited cloud resources and may not scale well for building large, complex projects. 
 
 Local development requires downloading and installing dependencies and `dfx`. Using `dfx` directly is better suited for large projects.
 :::
 
-<Tabs groupId="environments">
+<AdornedTabs groupId="environments">
 <TabItem value="gitpod" label="Gitpod" default>
 
-Motoko variation:
+#### Motoko variation
+
 [![Open the Motoko variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
 
-Rust variation:
+#### Rust variation
+
 [![Open the Rust variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
 
 </TabItem>
 
 <TabItem value="codespaces" label="GitHub Codespaces">
 
-Motoko variation:
+#### Motoko variation
+
 [![Open the Motoko variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
 
-Rust variation:
+#### Rust variation
+
 [![Open the Rust variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
 
 </TabItem>
@@ -125,16 +129,16 @@ Lastly, you can include extra features to be added to your project:
 ```
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## Smart contract code
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-Motoko is an Actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
+Motoko is an actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
 
-This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor.  The function accepts a name as input and returns a greetings text.
+This hello world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. The function accepts a name as input and returns a greetings text.
 
 ```motoko title="src/hello_backend/main.mo"
 actor {
