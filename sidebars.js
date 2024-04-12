@@ -909,6 +909,24 @@ const sidebars = {
             "references/samples/rust/vetkd/README",
           ],
         },
+        {
+          type: "category",
+          label: "Native dApps",
+          items: [
+            "references/samples/native-apps/unity_ii_applink/README",
+            "references/samples/native-apps/unity_ii_deeplink/README",
+            "references/samples/native-apps/unity_ii_universallink/README",
+          ],
+        },
+        {
+          type: "category",
+          label: "Svelte",
+          items: [
+            "references/samples/svelte/svelte-motoko-starter/README",
+            "references/samples/svelte/svelte-starter/README",
+            "references/samples/svelte/sveltekit-starter/README",
+          ],
+        },
       ],
     },
     {
