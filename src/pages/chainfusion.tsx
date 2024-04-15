@@ -5,7 +5,7 @@ import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
@@ -16,6 +16,9 @@ import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { unreachable } from "../utils/unreachable";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
+import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
 
 const ContentCard: React.FC<{
   id: string;
@@ -116,7 +119,7 @@ function MultichainPage() {
     id: string;
   };
   const [content, setContent] = React.useState<ContentCardType[]>([]);
-
+  const [isExpanded, toggleExpand] = useState(false);
   const highlight = useScrollSpyMenu(".content-card-with-id");
 
   useEffect(() => {
@@ -231,10 +234,7 @@ function MultichainPage() {
           variants={transitions.container}
           el={motion.section}
         >
-          <motion.div
-            className="md:w-4/10 flex-shrink-0"
-            variants={transitions.item}
-          >
+          <motion.div className="md:w-4/10 " variants={transitions.item}>
             <h2 className="tw-heading-4 md:tw-heading-60 text-gradient mb-3">
               Example Code
             </h2>
@@ -278,12 +278,13 @@ function MultichainPage() {
               </Link>
             </p>
           </motion.div>
-          <motion.div
-            className="md:max-w-5/10 space-y-5"
-            variants={transitions.item}
-          >
-            <CodeBlockString language="motoko">
-              {`
+          <motion.div className="md:max-w-5/10 space-y-5 ">
+            <motion.div
+              className={` ${isExpanded ? "h-auto" : "h-72"} overflow-hidden`}
+              variants={transitions.item}
+            >
+              <CodeBlockString language="motoko">
+                {`
   import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
   import ic "ic:aaaaa-aa";
   import Cycles "mo:base/ExperimentalCycles";
@@ -333,7 +334,25 @@ function MultichainPage() {
   };
   
             `}
-            </CodeBlockString>
+              </CodeBlockString>
+            </motion.div>
+            <motion.div className="text-center">
+              {isExpanded ? (
+                <Link
+                  className="link-primary link-with-icon md:hover:cursor-pointer text-center"
+                  onClick={() => toggleExpand(!isExpanded)}
+                >
+                  Hide <LinkArrowUp></LinkArrowUp>
+                </Link>
+              ) : (
+                <Link
+                  className="link-primary link-with-icon md:hover:cursor-pointer text-center"
+                  onClick={() => toggleExpand(!isExpanded)}
+                >
+                  Expand <LinkArrowDown></LinkArrowDown>
+                </Link>
+              )}
+            </motion.div>
           </motion.div>
         </AnimateSpawn>
 
