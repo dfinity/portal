@@ -819,7 +819,6 @@ function FeaturesPage() {
               blob-top-right
             "
           ></motion.div>
-
           {smallCardsData.map((card, index) => (
             <SmallCard key={index} href={card.href}>
               <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
