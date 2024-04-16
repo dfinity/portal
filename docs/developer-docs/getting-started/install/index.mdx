@@ -74,9 +74,60 @@ You can download and install the latest version of the
   </TabItem>
   
   <TabItem value="windows" label="Install on Windows">
-    There is no native support for <code>dfx</code> on Windows. However, by installing the Windows Subsystem for Linux (WSL), you can run <code>dfx</code> also on a Windows system as described below.
+    There is no native support for <code>dfx</code> on Windows. However, you can develop ICP canisters on Windows using a Docker container or by installing the Windows Subsystem for Linux (WSL).
 
-    ## Installing WSL 2
+    ## Using Docker
+
+    Docker is a containerization software that allows you to run a localized version of another operating system, such as Linux, then run Linux-based software and applications. Containers do not have access to the files and applications outside of the container unless given explicit permission.
+
+    To use Docker, first [install Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+    Open the Docker Desktop application to start the Docker Daemon. Then, open a command line window and pull the DFINITY ICP developer environment Docker image:
+
+    ```
+    docker pull ghcr.io/dfinity/icp-dev-env:latest
+    ```
+
+    Then, run an instance of this Docker image with the command:
+
+    ```
+    docker run --platform linux/x86_64 -dit ghcr.io/dfinity/icp-dev-env:latest
+    ```
+
+    Confirm that your container is running by using the `docker ps` command:
+
+    ```
+    CONTAINER ID   IMAGE                                COMMAND   CREATED          STATUS          PORTS     NAMES
+    b197b1da16df   ghcr.io/dfinity/icp-dev-env:latest   "bash"    37 seconds ago   Up 36 seconds             peaceful_lumiere
+    ```
+
+    Now you can navigate into your Docker container and begin running commands such as `dfx`. To navigate into the canister, run the command:
+
+    ```
+    docker exec -it <NAME> bash
+    ```
+
+    Replace `<NAME>` with the canister name shown in the `docker ps` output.
+
+    If successful, your command line prompt will change such as:
+
+    ```
+    root@b197b1da16df:/#
+    ```
+
+    Verify that `dfx` has been installed and is ready to use by running the command:
+
+    ```
+    dfx --version
+    ```
+
+    This should return the version of `dfx` that was installed:
+
+    ```
+    dfx 0.18.0
+    ```
+
+    ## Using WSL 2
     Follow Microsoft&#39;s instructions for installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>. Make sure you are running Windows 10 (version 2004 or higher) or Windows 11.
 
     ### Supported WSL Versions
