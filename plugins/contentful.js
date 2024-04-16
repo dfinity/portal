@@ -52,7 +52,7 @@ const contentfulPlugin = async function () {
             parsedDate = parse(item.fields.date, "d MMM y", new Date());
 
           if (!isValid(parsedDate)) {
-            throw new Error("Invalid date: " + item.fields.date);
+            return null;
           }
 
           const normalizedDate = format(parsedDate, "MMM d, y");
