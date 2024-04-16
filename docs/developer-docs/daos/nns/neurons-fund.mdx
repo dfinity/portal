@@ -28,9 +28,10 @@ Neurons can join or leave the NF using a checkbox in the NNS front-end applicati
 ### 2: NF's participation in decentralization swaps
 
 If a proposal to create an SNS is adopted, the decentralization swap, where initial tokens of the SNS are sold, starts. 
-The extent of the NF's involvement in a specific SNS swap is decided by the Matched Funding scheme. This scheme correlates the fund participation with the level of direct participation. For further information see [here](https://wiki.internetcomputer.org/wiki/Matched_Funding). At the beginning of the swap, NF neurons' maturity is reduced proportionally to the maximum possible NF participation (`M`)
 
-If the decentralization swap is successful, the NNS mints an amount of `X` ICP as determined by the Matched Funding scheme. 
+The extent of the NF's involvement in a specific SNS swap is decided by the Matched Funding scheme. Under this scheme, the NF’s contribution increases in proportion to the direct participation in the swap. This design ensures that the fund's involvement accurately reflects market interest and participation levels. For further information on Matched Funding see [here](https://wiki.internetcomputer.org/wiki/Matched_Funding).  
+
+At the beginning of the swap, NF neurons' maturity is reduced proportionally to the maximum possible NF participation (`M`). If the decentralization swap is successful, the NNS mints an amount of `X` ICP as determined by the Matched Funding scheme. 
   * The SNS treasury receives `X` ICP.
   * The NNS NF treasury receives SNS neurons corresponding to `X` ICP. This is provided as a basket of neurons with various dissolve delays for each participating NF neuron.
   * If the participation amount `X` is less than `M`, NF neurons' maturity is increased again to compensate.
@@ -54,3 +55,8 @@ When a set of neurons from a decentralization swap of an SNS dissolves, the NNS 
 The maturity of NF neurons whose maturity was reduced when a participation in a SNS-controlled dapp was made is increased by the amount determined by the NNS in the previous step. In the worst case this amount could also be zero.
 
 The NNS can sell the tokens from an SNS at a later point in time. After the NNS sells tokens from an SNS, the received ICP will be burned.
+
+### References
+
+* [Wiki page - Matched Funding](https://wiki.internetcomputer.org/wiki/Matched_Funding)
+* [SNS tokenomics analyzer](https://dashboard.internetcomputer.org/sns/tokenomics)
