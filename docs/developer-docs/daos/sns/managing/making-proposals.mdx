@@ -326,6 +326,27 @@ The SNS DAO has control over a treasury from which funds can be sent to other ac
 
 This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
 
+#### Maximum 7-day Amount Total
+
+The rate that funds can be transferred from the treasury is limited. To explain how this works,
+first, define T to be the value of the tokens in the treasury in units of [XDR]. T can fall within
+three size regimes:
+
+[XDR]: https://en.wikipedia.org/wiki/Special_drawing_rights
+
+| *Size* | *Max T (XDR)* |
+| small  |      100_000  |
+| medium |    1_200_000  |
+| large  |    (infinity) |
+
+The total amount that can be transferred from the treasury in a 7 day period is at most L(T), where
+L(T) is given by this table:
+
+| *Treasury Size* | *L(T)*        | *Fraction of T* |
+| small           |             T |            100% |
+| medium          |      0.25 * T |             25% |
+| large           |   300_000 XDR |        0% - 25% |
+
 #### Relevant type signatures
 
 ```candid
