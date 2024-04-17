@@ -334,18 +334,20 @@ three size regimes:
 
 [XDR]: https://en.wikipedia.org/wiki/Special_drawing_rights
 
-| *Size* | *Max T (XDR)* |
-| small  |      100_000  |
-| medium |    1_200_000  |
-| large  |    (infinity) |
+| Size   | Max T (XDR) |
+|:------ | -----------:|
+| small  |    100_000  |
+| medium |  1_200_000  |
+| large  |  (infinity) |
 
 The total amount that can be transferred from the treasury in a 7 day period is at most L(T), where
 L(T) is given by this table:
 
-| *Treasury Size* | *L(T)*        | *Fraction of T* |
-| small           |             T |            100% |
-| medium          |      0.25 * T |             25% |
-| large           |   300_000 XDR |        0% - 25% |
+| Treasury Size | L(T)        | Fraction of T |
+|:------------- | -----------:| -------------:|
+| small         |           T |          100% |
+| medium        |    0.25 * T |           25% |
+| large         | 300_000 XDR |      0% - 25% |
 
 ICP and SNS tokens are considered separately.
 
