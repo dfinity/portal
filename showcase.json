@@ -2868,7 +2868,8 @@
     "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
     "stats": "Private alpha testnet has been launched; the network and user interface are ready for operation.",
     "tags": [
-      "Tools / Infrastructure", "Enterprise"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "usesInternetIdentity": false,
     "twitter": "https://twitter.com/sama_network",
@@ -3150,27 +3151,27 @@
     "submittableId": "41506799"
   },
   {
-  "name": "BitBasel Art Marketplace",
-  "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol",
-  "website": "https://bitbasel.com/",
-  "logo": "/img/showcase/bitbasel-art-marketplace_logo.webp",
-  "screenshots": [
-    "/img/showcase/bitbasel-art-marketplace_screenshot.webp"
-  ],
-  "display": "Normal",
-  "id": "bitbasel-art-marketplace",
-  "oneLiner": "A curated marketplace for buying and selling digital artwork.",
-  "stats": "100+ artworks",
-  "tags": [
-    "Bitcoin",
-    "NFT"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/BitBasel",
-  "twitter": "https://twitter.com/bitbaselart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
-  "submittableId": "41349769"
- }, 
- {
+    "name": "BitBasel Art Marketplace",
+    "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol",
+    "website": "https://bitbasel.com/",
+    "logo": "/img/showcase/bitbasel-art-marketplace_logo.webp",
+    "screenshots": [
+      "/img/showcase/bitbasel-art-marketplace_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "bitbasel-art-marketplace",
+    "oneLiner": "A curated marketplace for buying and selling digital artwork.",
+    "stats": "100+ artworks",
+    "tags": [
+      "Bitcoin",
+      "NFT"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/BitBasel",
+    "twitter": "https://twitter.com/bitbaselart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+    "submittableId": "41349769"
+  },
+  {
     "name": "Hobbi",
     "description": "With Hobbi, you can create a profile and record all the multimedia content you consume. Whether it's a movie, a book, or even a video game, register and share your profile with whomever you want.",
     "website": "https://hobbi.me",
@@ -3279,7 +3280,7 @@
     "oneLiner": "Working group with a vision to develop correct rarity metrics for all types of NFTs",
     "website": "https://www.outrank.io",
     "tags": [
-      "NFT", 
+      "NFT",
       "Tools / Infrastructure"
     ],
     "description": "Open-source code, on-chain rarity calculator, and empirical research to allow users to better understand NFT rarity",
@@ -3297,14 +3298,14 @@
     "oneLiner": "tooling for uploading and accessing mind and body data from a firebase API onto ICP canister, blueberry data as a reference example",
     "logo": "/img/showcase/ic-mind-body-canister.png",
     "tags": [
-        "Tools / Infrastructure"
-      ],
+      "Tools / Infrastructure"
+    ],
     "description": "POC of a decentralized mind and body data management tooling that leverages Internet Computer (IC) technology. This POC provides methods and interface to submit HTTP Outcall requests to a proxy API that interfaces with a Firebase FIrestore database. It provides an example front end react application that interacts with a motoko backend.",
     "usesInternetIdentity": true,
     "github": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "submittableId": "44190088"
- },
- {
+  },
+  {
     "id": "icgpt",
     "name": "icgpt",
     "oneLiner": "A fun dApp to demonstrate on-chain LLMs",
@@ -3314,15 +3315,15 @@
     "tags": [
       "Tools / Infrastructure",
       "AI"
-    ],    
+    ],
     "logo": "/img/showcase/icpp-logo.dracula-cyan.112x112.png",
     "usesInternetIdentity": true,
     "github": "https://github.com/icppWorld/icgpt",
     "youtube": "https://youtu.be/2DhTpYrs-f0",
     "twitter": "https://twitter.com/icpp_pro",
     "submittableId": "43877997"
- },
- {
+  },
+  {
     "name": "Ping",
     "description": "Ping is a notification service that boosts ecosystem engagement by creating a direct communication channel between dapp developers and their respective users.",
     "website": "https://h7jna-pqaaa-aaaak-afgiq-cai.icp0.io/",
@@ -3340,197 +3341,200 @@
     "submittableId": "41431540"
   },
   {
-  "name": "Alphaday",
-  "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services and much more into one customizable UI.",
-  "website": "https://app.alphaday.com/b/dfinity/",
-  "logo": "/img/showcase/Alphaday_logo.png",
-  "screenshots": [
-    "/img/showcase/Alphaday_screenshot.png"
-  ],
-  "video": "/img/showcase/Alphaday_video.mp4",
-  "display": "Normal",
-  "id": "alphaday",
-  "oneLiner": "The one tool you need to stay up to date and with crypto.",
-  "stats": "15,000+ Active Users",
-  "tags": [
-    "SocialFi",
-    "Tools / Infrastructure"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/AlphadayHQ ",
-  "twitter": "https://twitter.com/AlphadayHQ ",
-  "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
-  "submittableId": "34117398",
-  "videoContentType": "video/mp4"
+    "name": "Alphaday",
+    "description": "Alphaday is a powerful crypto workflow aggregator that pulls in news, on-chain data, social media, web3 services and much more into one customizable UI.",
+    "website": "https://app.alphaday.com/b/dfinity/",
+    "logo": "/img/showcase/Alphaday_logo.png",
+    "screenshots": [
+      "/img/showcase/Alphaday_screenshot.png"
+    ],
+    "video": "/img/showcase/Alphaday_video.mp4",
+    "display": "Normal",
+    "id": "alphaday",
+    "oneLiner": "The one tool you need to stay up to date and with crypto.",
+    "stats": "15,000+ Active Users",
+    "tags": [
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/AlphadayHQ ",
+    "twitter": "https://twitter.com/AlphadayHQ ",
+    "youtube": "https://www.youtube.com/watch?v=ThCd_W3rK_8 ",
+    "submittableId": "34117398",
+    "videoContentType": "video/mp4"
   },
   {
-  "name": "Metaversity1",
-  "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
-  "website": "https://sunshineluyao.github.io/icp-nns/",
-  "logo": "/img/showcase/Metaversity_logo.webp",
-  "screenshots": [
-    "/img/showcase/Metaversity_screenshot.webp"
-  ],
-  "video": "",
-  "display": "Normal",
-  "id": "Metaversity",
-  "oneLiner": "Boosting Web3 Skills & Inclusion with Clear Data & Visuals",
-  "stats": "Web3 for All",
-  "tags": [
-    "AI",
-    "Tools / Infrastructure",
-    "DAO"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/sunshineluyao/icp-nns",
-  "twitter": "https://twitter.com/sunshineluyao",
-  "youtube": "https://youtu.be/_Oftr6GrokY",
-  "submittableId": " 34624410"
-},
-  {
-  "name": "Datanome",
-  "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
-  "website": "https://app.datanome.com",
-  "logo": "/img/showcase/datanome-logo.png",
-  "screenshots": [
-    "/img/showcase/datanome-screenshot.png"
-  ],
-  "video": "",
-  "display": "Normal",
-  "id": "datanome",
-  "oneLiner": "Decentralized data marketplace",
-  "stats": "Alpha phase",
-  "tags": [
-    "NFT",
-    "DeFi"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/datanomeproject",
-  "twitter": "https://twitter.com/datanomeproject",
-  "youtube": "",
-  "submittableId": "39687036",
-  "videoContentType": "video/mp4"
+    "name": "Metaversity1",
+    "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
+    "website": "https://sunshineluyao.github.io/icp-nns/",
+    "logo": "/img/showcase/Metaversity_logo.webp",
+    "screenshots": [
+      "/img/showcase/Metaversity_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "Metaversity",
+    "oneLiner": "Boosting Web3 Skills & Inclusion with Clear Data & Visuals",
+    "stats": "Web3 for All",
+    "tags": [
+      "AI",
+      "Tools / Infrastructure",
+      "DAO"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/sunshineluyao/icp-nns",
+    "twitter": "https://twitter.com/sunshineluyao",
+    "youtube": "https://youtu.be/_Oftr6GrokY",
+    "submittableId": " 34624410"
   },
   {
-  "name": "glue",
-  "description": "An easy-to-use solution for community leaders and members to perform holder verification of NFTs and tokens on Discord.",
-  "website": "https://github.com/glue-org",
-  "logo": "/img/showcase/glue_logo.webp",
-  "screenshots": [
-    "/img/showcase/glue_screenshot.webp"
-  ],
-  "video": "/img/showcase/glue_video.mp4",
-  "display": "Normal",
-  "id": "glue",
-  "oneLiner": "Holder verification for tokens and NFTs for discord.",
-  "stats": "9000+ users",
-  "tags": [
-    "NFT",
-    "Tools / Infrastructure",
-    "DAO"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/glue-org",
-  "twitter": "https://twitter.com/glue_org",
-  "youtube": "",
-  "submittableId": "28043953",
-  "videoContentType": "video/mp4"
+    "name": "Datanome",
+    "description": "Datanome is a decentralized data platform aimed at simplifying the buying, selling, and working with data. It is essentially a decentralized version of Snowflake with a simplified version of Deepnote on top.",
+    "website": "https://app.datanome.com",
+    "logo": "/img/showcase/datanome-logo.png",
+    "screenshots": [
+      "/img/showcase/datanome-screenshot.png"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "datanome",
+    "oneLiner": "Decentralized data marketplace",
+    "stats": "Alpha phase",
+    "tags": [
+      "NFT",
+      "DeFi"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/datanomeproject",
+    "twitter": "https://twitter.com/datanomeproject",
+    "youtube": "",
+    "submittableId": "39687036",
+    "videoContentType": "video/mp4"
   },
   {
-  "name": "ICSoccerWorld",
-  "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
-  "website": "https://github.com/ktimam/ICSimpleSoccer",
-  "logo": "/img/showcase/ICSoccerWorld.png",
-  "display": "Normal",
-  "id": "ICSoccerWorld",
-  "oneLiner": "Physics Based Soccer Simulation.",
-  "stats": "Community Dev Demo",
-  "tags": [
-    "NFT",
-    "Metaverse",
-    "Games"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/ktimam/ICSimpleSoccer",
-  "twitter": "https://twitter.com/ICSoccerWorld",
-  "youtube": "",
-  "submittableId": "44414655",
-  "videoContentType": "video/mp4"
+    "name": "glue",
+    "description": "An easy-to-use solution for community leaders and members to perform holder verification of NFTs and tokens on Discord.",
+    "website": "https://github.com/glue-org",
+    "logo": "/img/showcase/glue_logo.webp",
+    "screenshots": [
+      "/img/showcase/glue_screenshot.webp"
+    ],
+    "video": "/img/showcase/glue_video.mp4",
+    "display": "Normal",
+    "id": "glue",
+    "oneLiner": "Holder verification for tokens and NFTs for discord.",
+    "stats": "9000+ users",
+    "tags": [
+      "NFT",
+      "Tools / Infrastructure",
+      "DAO"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/glue-org",
+    "twitter": "https://twitter.com/glue_org",
+    "youtube": "",
+    "submittableId": "28043953",
+    "videoContentType": "video/mp4"
   },
   {
-  "name": "Mapz",
-  "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
-  "website": "https://onzmk-taaaa-aaaal-acw4a-cai.icp0.io/",
-  "logo": "/img/showcase/Mapz_logo.png",
-  "screenshots": [
-    "/img/showcase/Mapz_screenshot.png"
-  ],
-  "display": "Normal",
-  "id": "mapz",
-  "oneLiner": "Airbnb for EV charging powered by Blockchain",
-  "stats": "3000+ users",
-  "tags": [
-    "NFT"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/nbelthan/Mapz-navigator",
-  "twitter": "https://twitter.com/Mapzlive",
-  "youtube": "",
-  "submittableId": "43548962"
+    "name": "ICSoccerWorld",
+    "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
+    "website": "https://github.com/ktimam/ICSimpleSoccer",
+    "logo": "/img/showcase/ICSoccerWorld.png",
+    "display": "Normal",
+    "id": "ICSoccerWorld",
+    "oneLiner": "Physics Based Soccer Simulation.",
+    "stats": "Community Dev Demo",
+    "tags": [
+      "NFT",
+      "Metaverse",
+      "Games"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ktimam/ICSimpleSoccer",
+    "twitter": "https://twitter.com/ICSoccerWorld",
+    "youtube": "",
+    "submittableId": "44414655",
+    "videoContentType": "video/mp4"
   },
   {
-  "id": "IcpKit",
-  "name": "IcpKit",
-  "oneLiner": "A Swift package for interacting with the IC on iOS and MacOS",
-  "website": "https://github.com/kosta-bity/IcpKit",
-  "tags": ["Wallet", "Tools / Infrastructure"],
-  "description": "A comprehensive iOS package for writing mobile applications that interact with the Internet Computer Protocol (ICP), written in Swift. IcpKit aims at facilitating the interaction between iOS apps and the ICP blockchain.",
-  "stats": "1 iOS app",
-  "logo": "/img/showcase/icpkit_logo.png",
-  "usesInternetIdentity": false,
-  "github": "https://github.com/kosta-bity/IcpKit",
-  "youtube": "https://youtu.be/vavGeUkNF8g",
-  "twitter": "https://twitter.com/kosta__g/status/1752691646150455584",
-  "submittableId": "40467179"
+    "name": "Mapz",
+    "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
+    "website": "https://onzmk-taaaa-aaaal-acw4a-cai.icp0.io/",
+    "logo": "/img/showcase/Mapz_logo.png",
+    "screenshots": [
+      "/img/showcase/Mapz_screenshot.png"
+    ],
+    "display": "Normal",
+    "id": "mapz",
+    "oneLiner": "Airbnb for EV charging powered by Blockchain",
+    "stats": "3000+ users",
+    "tags": [
+      "NFT"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/nbelthan/Mapz-navigator",
+    "twitter": "https://twitter.com/Mapzlive",
+    "youtube": "",
+    "submittableId": "43548962"
   },
   {
-  "name": "🐲 Dragon Eyes 👀",
-  "description": "Provably fair dice rolling game as a testament that randomness can be obtained on-chain",
-  "website": "https://icdragon.xyz/",
-  "logo": "/img/showcase/icdragon_logo.png",
-  "screenshots": [
-    "/img/showcase/icdragon_screenshot.png"
-  ],
-  "display": "Normal",
-  "id": "dragon-eyes",
-  "oneLiner": "Provably fair and fun dice rolling game with a quirk",
-  "stats": "1500+ transactions",
-  "tags": [
-    "Games"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/icdragoneyes/dragon_canister",
-  "twitter": "https://twitter.com/icdragoneyes",
-  "youtube": "",
-  "submittableId": ""
+    "id": "IcpKit",
+    "name": "IcpKit",
+    "oneLiner": "A Swift package for interacting with the IC on iOS and MacOS",
+    "website": "https://github.com/kosta-bity/IcpKit",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "description": "A comprehensive iOS package for writing mobile applications that interact with the Internet Computer Protocol (ICP), written in Swift. IcpKit aims at facilitating the interaction between iOS apps and the ICP blockchain.",
+    "stats": "1 iOS app",
+    "logo": "/img/showcase/icpkit_logo.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/kosta-bity/IcpKit",
+    "youtube": "https://youtu.be/vavGeUkNF8g",
+    "twitter": "https://twitter.com/kosta__g/status/1752691646150455584",
+    "submittableId": "40467179"
   },
   {
-  "id": "relinkdxyz",
-  "name": "{r}elinkd",
-  "oneLiner": "Digital identity + scores protocol and dapp", 
-  "website": "https://relinkd.xyz/",
-  "tags": [
-    "Tools / Infrastructure", 
-    "SocialFi"
-  ],
-  "description": "Digital identity + scores protocol and dapp. We're building a decentralized identity protocol, aggregating on-chain and off-chain credentials into the scores for creating trustworthy self-sovereign identity and personal brand profiles.",
-  "stats": "1000 users",
-  "logo": "/img/showcase/relinkdxyz.png",
-  "usesInternetIdentity": false,
-  "github": "https://github.com/relinkd",
-  "twitter": "https://twitter.com/relinkdxyz"
-},
-{
+    "name": "🐲 Dragon Eyes 👀",
+    "description": "Provably fair dice rolling game as a testament that randomness can be obtained on-chain",
+    "website": "https://icdragon.xyz/",
+    "logo": "/img/showcase/icdragon_logo.png",
+    "screenshots": [
+      "/img/showcase/icdragon_screenshot.png"
+    ],
+    "display": "Normal",
+    "id": "dragon-eyes",
+    "oneLiner": "Provably fair and fun dice rolling game with a quirk",
+    "stats": "1500+ transactions",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/icdragoneyes/dragon_canister",
+    "twitter": "https://twitter.com/icdragoneyes",
+    "youtube": "",
+    "submittableId": ""
+  },
+  {
+    "id": "relinkdxyz",
+    "name": "{r}elinkd",
+    "oneLiner": "Digital identity + scores protocol and dapp",
+    "website": "https://relinkd.xyz/",
+    "tags": [
+      "Tools / Infrastructure",
+      "SocialFi"
+    ],
+    "description": "Digital identity + scores protocol and dapp. We're building a decentralized identity protocol, aggregating on-chain and off-chain credentials into the scores for creating trustworthy self-sovereign identity and personal brand profiles.",
+    "stats": "1000 users",
+    "logo": "/img/showcase/relinkdxyz.png",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/relinkd",
+    "twitter": "https://twitter.com/relinkdxyz"
+  },
+  {
     "id": "ic_siwe",
     "name": "ic_siwe (Sign-In with Ethereum)",
     "oneLiner": "Use your Ethereum wallet to sign in to the Internet Computer!",
@@ -3548,7 +3552,7 @@
       "/img/showcase/ic_siwe_screenshot.png"
     ],
     "submittableId": "44265779"
-  },  
+  },
   {
     "name": "EA Kazi",
     "description": "A decentralized synergy of Fiver and Udemy providing a verifiable and trust system for the Web3 GIG Economy built on ICP.",
@@ -3831,7 +3835,7 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/w98.webp"
-},
+  },
   {
     "id": "gitcoin-passport-client",
     "name": "Gitcoin Passport Client",
@@ -4047,11 +4051,152 @@
     "website": "https://icto.app",
     "github": "https://github.com/ICTO-Labs",
     "twitter": "https://twitter.com/icto_app",
-    "display": "Large",    
+    "display": "Large",
     "logo": "/img/showcase/icto_logo.png",
     "screenshots": [
       "/img/showcase/icto_screenshot_0.png"
     ],
     "submittableId": "45095733"
+  },
+  {
+    "id": "appicdao",
+    "name": "AppIC DAO",
+    "oneLiner": "First-ever infrastructure layer that allows users and dapps to transfer and swap tokens between ICP and different blockchains such as Bitcoin, Ethereum, Solana, and EVM chains.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "Ethereum",
+      "DeFi"
+    ],
+    "description": "First-ever infrastructure layer that allows users and dapps to transfer and swap tokens between ICP and different blockchains such as Bitcoin, Ethereum, Solana, and EVM chains.",
+    "usesInternetIdentity": true,
+    "website": "https://app.appic.solutions/",
+    "github": "https://github.com/VFans-org/VFANS-IC-Publics",
+    "display": "Normal",
+    "logo": "/img/showcase/vfans_logo.png",
+    "stats": "3,000+ users",
+    "submittableId": "44324587"
+  },
+  {
+    "id": "gotcha",
+    "name": "Gotcha Captcha",
+    "oneLiner": "CAPTCHAs to distinguish humans and bots on the Internet in the AI era.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "CAPTCHAs to distinguish humans and bots on the Internet in the AI era.",
+    "usesInternetIdentity": false,
+    "website": "https://www.gotcha.land/",
+    "twitter": "https://twitter.com/GotCHA_labs",
+    "display": "Normal",
+    "logo": "/img/showcase/gotcha_logo.png",
+    "submittableId": "35891457"
+  },
+  {
+    "id": "optigames",
+    "name": "OptiGames",
+    "oneLiner": "Flexible framework for fully on-chain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Gaming"
+    ],
+    "description": "Flexible framework for fully on-chain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
+    "usesInternetIdentity": true,
+    "website": "https://tpxio-7yaaa-aaaak-qdbaa-cai.icp0.io/",
+    "github": "https://github.com/OptiSwapGames/optiswapgames",
+    "display": "Normal",
+    "logo": "/img/showcase/Optigames_logo.svg",
+    "submittableId": "39903719"
+  },
+  {
+    "id": "zokshpay",
+    "name": "Zoksh Pay",
+    "oneLiner": "A non-custodial payment solution that enables businesses to accept over 1000 currencies across 17 blockchains.",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "A non-custodial payment solution that enables businesses to accept over 1000 currencies across 17 blockchains.",
+    "usesInternetIdentity": false,
+    "website": "https://zoksh.com/",
+    "twitter": "https://twitter.com/zokshpay",
+    "display": "Normal",
+    "logo": "/img/showcase/Zoksh_logo.jpg",
+    "stats": "Over 1 million USD in volume",
+    "submittableId": "43963890"
+  },
+  {
+    "id": "secureguardescrow",
+    "name": "Secure Guard Escrow",
+    "oneLiner": "A solution in making online transactions safe and sound.",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "A solution in making online transactions safe and sound.",
+    "usesInternetIdentity": false,
+    "website": "https://cojoz-raaaa-aaaao-a3b7q-cai.icp0.io/",
+    "github": "https://github.com/bix-tech/secure-guard-escrow",
+    "display": "Normal",
+    "logo": "/img/showcase/secure_guard_escrow_logo.png",
+    "submittableId": "44880325"
+  },
+  {
+    "id": "icapproject",
+    "name": "Internet Computer Analytics Platform",
+    "oneLiner": "A framework for users to query and analyze data from various sources in the ICP ecosystem.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A framework for users to query and analyze data from various sources in the ICP ecosystem.",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/mobr-ai/icap",
+    "display": "Normal",
+    "logo": "/img/showcase/ICAP_logo.png",
+    "submittableId": "44300129"
+  },
+  {
+    "id": "swimmingpool",
+    "name": "Swimming Pool",
+    "oneLiner": "Fully onchain permissionless stablecoin protocol, collateralizing your BTC, ETH and other crypto assets.",
+    "tags": [
+      "Bitcoin",
+      "Ethereum",
+      "DeFi"
+    ],
+    "description": "Fully onchain permissionless stablecoin protocol, collateralizing your BTC, ETH and other crypto assets.",
+    "usesInternetIdentity": false,
+    "website": "https://swmpool.xyz",
+    "twitter": "https://twitter.com/swmpool_finance",
+    "github": "https://github.com/SWMPool/SwimmingPool",
+    "display": "Normal",
+    "logo": "/img/showcase/swimming_pool_logo.png"
+  },
+  {
+    "id": "icpnftcreater",
+    "name": "ICP NFT Creater",
+    "oneLiner": "Shopify app designed to streamline the process of creating and launching NFT collections, product certificates, and more on ICP.",
+    "tags": [
+      "NFT"
+    ],
+    "description": "Shopify app designed to streamline the process of creating and launching NFT collections, product certificates, and more on ICP.",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/tuminfei/ic_nft_creater",
+    "display": "Normal",
+    "logo": "/img/showcase/ic_nft_creater_logo.png",
+    "submittableId": "44503669"
+  },
+  {
+    "id": "codegov",
+    "name": "codegov",
+    "oneLiner": "Advancing decentralization of ICP through NNS Replica Version Management proposal reviews, informed, independent voting by skilled developers in the ICP community, and NNS tooling.",
+    "tags": [
+      "DAO"
+    ],
+    "description": "Advancing decentralization of ICP through NNS Replica Version Management proposal reviews, informed, independent voting by skilled developers in the ICP community, and NNS tooling.",
+    "usesInternetIdentity": false,
+    "website": "https://www.codegov.org/",
+    "twitter": "https://twitter.com/codegovorg",
+    "github": "https://github.com/CodeGov-org/codegov-website",
+    "display": "Normal",
+    "logo": "/img/showcase/codegov_logo.png"
   }
 ]
