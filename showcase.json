@@ -4061,14 +4061,14 @@
   {
     "id": "appicdao",
     "name": "AppIC DAO",
-    "oneLiner": "First-ever infrastructure layer that allows users and dapps to transfer and swap tokens between ICP and different blockchains such as Bitcoin, Ethereum, Solana, and EVM chains.",
+    "oneLiner": "First-ever infrastructure layer that allows transferring and swapping of tokens between ICP and blockchains such as Bitcoin, Ethereum, and Solana.",
     "tags": [
       "Tools / Infrastructure",
       "Bitcoin",
       "Ethereum",
       "DeFi"
     ],
-    "description": "First-ever infrastructure layer that allows users and dapps to transfer and swap tokens between ICP and different blockchains such as Bitcoin, Ethereum, Solana, and EVM chains.",
+    "description": "First-ever infrastructure layer that allows transferring and swapping of tokens between ICP and blockchains such as Bitcoin, Ethereum, and Solana.",
     "usesInternetIdentity": true,
     "website": "https://app.appic.solutions/",
     "github": "https://github.com/VFans-org/VFANS-IC-Publics",
@@ -4098,7 +4098,7 @@
     "oneLiner": "Flexible framework for fully on-chain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
     "tags": [
       "Tools / Infrastructure",
-      "Gaming"
+      "Games"
     ],
     "description": "Flexible framework for fully on-chain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
     "usesInternetIdentity": true,
