@@ -287,7 +287,7 @@ function MultichainPage() {
           <motion.div className="md:max-w-5/10 space-y-5 ">
             <AnimatePresence>
               <motion.div
-                initial={true}
+                initial={false}
                 animate={{
                   height: isCodeSnippetExpanded ? "auto" : "24rem",
                 }}
