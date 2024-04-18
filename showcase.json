@@ -4071,11 +4071,10 @@
     "description": "First-ever infrastructure layer that allows transferring and swapping of tokens between ICP and blockchains such as Bitcoin, Ethereum, and Solana.",
     "usesInternetIdentity": true,
     "website": "https://app.appic.solutions/",
-    "github": "https://github.com/VFans-org/VFANS-IC-Publics",
+    "github": "https://github.com/Appic-Solutions",
     "display": "Normal",
-    "logo": "/img/showcase/vfans_logo.png",
-    "stats": "3,000+ users",
-    "submittableId": "44324587"
+    "logo": "/img/showcase/appic_logo.jpg",
+    "submittableId": "44626035"
   },
   {
     "id": "gotcha",
@@ -4198,5 +4197,65 @@
     "github": "https://github.com/CodeGov-org/codegov-website",
     "display": "Normal",
     "logo": "/img/showcase/codegov_logo.jpg"
+  },
+  {
+    "id": "deaichat",
+    "name": "DeAI Chat",
+    "oneLiner": "A chat and API interface allowing communication with an AI model.",
+    "tags": [
+      "AI",
+      "SocialFi"
+    ],
+    "description": "A chat and API interface allowing communication with an AI model.",
+    "usesInternetIdentity": false,
+    "website": "https://deai.chat/",
+    "twitter": "https://twitter.com/deai_chat",
+    "display": "Normal",
+    "logo": "/img/showcase/deai_chat_logo.jpeg"
+  },
+  {
+    "id": "onicai",
+    "name": "Onicai",
+    "oneLiner": "A B2B Platform for configuring Generative AI white label solutions.",
+    "tags": [
+      "AI"
+    ],
+    "description": "A B2B Platform for configuring Generative AI white label solutions.",
+    "usesInternetIdentity": false,
+    "website": "https://onicai.com/",
+    "github": "https://github.com/onicai",
+    "display": "Normal",
+    "logo": "/img/showcase/onicai_logo.png"
+  },
+  {
+    "id": "spotlabs",
+    "name": "Spotlabs",
+    "oneLiner": "A DeAI app for business tooling and infrastructure.",
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "description": "A DeAI app for business tooling and infrastructure.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/SpotLabsAI/SpotLabs/",
+    "display": "Normal",
+    "logo": "/img/showcase/spotlabs_logo.png"
+  },
+  {
+    "id": "vfans",
+    "name": "VFans",
+    "oneLiner": "A decentralized content platform for publishing video/articles and subscribing through mobile payments.",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "description": "A decentralized content platform for publishing video/articles and subscribing through mobile payments.",
+    "usesInternetIdentity": true,
+    "website": "https://www.vfans.org/",
+    "github": "https://github.com/VFans-org/VFANS-IC-Publics",
+    "display": "Normal",
+    "logo": "/img/showcase/vfans_logo.png",
+    "stats": "3,000+ users",
+    "submittableId": "44324587"
   }
 ]
