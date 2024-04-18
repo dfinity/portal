@@ -4187,11 +4187,11 @@
   {
     "id": "codegov",
     "name": "codegov",
-    "oneLiner": "Advancing decentralization of ICP through NNS Replica Version Management proposal reviews, informed, independent voting by skilled developers in the ICP community, and NNS tooling.",
+    "oneLiner": "Advancing decentralization of ICP through NNS Replica Version Management proposal reviews, informed, independent voting, and NNS tooling.",
     "tags": [
       "DAO"
     ],
-    "description": "Advancing decentralization of ICP through NNS Replica Version Management proposal reviews, informed, independent voting by skilled developers in the ICP community, and NNS tooling.",
+    "description": "Advancing decentralization of ICP through NNS Replica Version Management proposal reviews, informed, independent voting, and NNS tooling.",
     "usesInternetIdentity": false,
     "website": "https://www.codegov.org/",
     "twitter": "https://twitter.com/codegovorg",
