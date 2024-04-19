@@ -4,8 +4,8 @@ import Card from "@site/src/components/SamplesPage/Card";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
@@ -16,6 +16,9 @@ import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { unreachable } from "../utils/unreachable";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
+import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
 
 const ContentCard: React.FC<{
   id: string;
@@ -110,13 +113,15 @@ const StickySectionNav: React.FC<{
 
 function MultichainPage() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const codeRef = useRef<HTMLDivElement>(null);
+
   const isDark = useDarkHeaderInHero(heroRef);
   type ContentCardType = {
     title: string;
     id: string;
   };
   const [content, setContent] = React.useState<ContentCardType[]>([]);
-
+  const [isCodeSnippetExpanded, toggleCodeSnippetExpand] = useState(false);
   const highlight = useScrollSpyMenu(".content-card-with-id");
 
   useEffect(() => {
@@ -232,7 +237,8 @@ function MultichainPage() {
           el={motion.section}
         >
           <motion.div
-            className="md:w-4/10 flex-shrink-0"
+            ref={codeRef}
+            className="md:w-4/10 "
             variants={transitions.item}
           >
             <h2 className="tw-heading-4 md:tw-heading-60 text-gradient mb-3">
@@ -278,12 +284,18 @@ function MultichainPage() {
               </Link>
             </p>
           </motion.div>
-          <motion.div
-            className="md:max-w-5/10 space-y-5"
-            variants={transitions.item}
-          >
-            <CodeBlockString language="motoko">
-              {`
+          <motion.div className="md:max-w-5/10 space-y-5 ">
+            <AnimatePresence>
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isCodeSnippetExpanded ? "auto" : "24rem",
+                }}
+                className="overflow-hidden rounded-md"
+                transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+              >
+                <CodeBlockString language="motoko">
+                  {`
   import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
   import ic "ic:aaaaa-aa";
   import Cycles "mo:base/ExperimentalCycles";
@@ -333,7 +345,28 @@ function MultichainPage() {
   };
   
             `}
-            </CodeBlockString>
+                </CodeBlockString>
+              </motion.div>
+
+              <motion.div className="text-center">
+                <Link
+                  className="link-primary link-with-icon md:hover:cursor-pointer text-center select-none"
+                  onClick={() =>
+                    toggleCodeSnippetExpand(!isCodeSnippetExpanded)
+                  }
+                >
+                  {isCodeSnippetExpanded ? (
+                    <>
+                      Hide <LinkArrowUp></LinkArrowUp>
+                    </>
+                  ) : (
+                    <>
+                      Expand <LinkArrowDown></LinkArrowDown>
+                    </>
+                  )}
+                </Link>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         </AnimateSpawn>
 
