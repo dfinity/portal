@@ -4289,5 +4289,22 @@
     "twiter": "https://twitter.com/OmnityNetwork",
     "display": "Normal",
     "logo": "/img/showcase/omnitynetwork_logo.jpeg"
+  },
+  ,
+   {
+    "id": "odoc",
+    "name": "odoc",
+    "oneLiner": "Tasks managment, documentations, and smart contracts for online workers and freelancers",
+    "tags": [
+      "DAO",
+      "SocialFi",
+    ],
+    "description": "Odoc is a place where you can hire and work. It is empowering Freelancers with Transparent and Liberating Smart Contracts on the Blockchain.",
+    "usesInternetIdentity": true,
+    "website": "https://lwdq3-vqaaa-aaaal-acwda-cai.icp0.io/",
+    "twitter": "https://twitter.com/odoc_icp",
+    "github": "https://github.com/aliscie/odoc",
+    "display": "Normal",
+    "logo": "https://github.com/aliscie/odoc/assets/58806996/604acd01-325a-4bb3-b75c-b7ada8b445f0"
   }
 ]
