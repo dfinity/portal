@@ -4269,7 +4269,24 @@
     "description": "A Bitcoin-backed Stablecoin.",
     "usesInternetIdentity": false,
     "website": "https://talerdao.org/",
+    "twiter": "https://twitter.com/taler_dao",
     "display": "Normal",
     "logo": "/img/showcase/talerdao_logo.jpeg"
+  },
+  {
+    "id": "omnitynetwork",
+    "name": "Omnity Network",
+    "oneLiner": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
+    "tags": [
+      "Bitcoin",
+      "Ethereum",
+      "Tools / Infrastructure"
+    ],
+    "description": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
+    "usesInternetIdentity": false,
+    "website": "https://www.omnity.network/",
+    "twiter": "https://twitter.com/OmnityNetwork",
+    "display": "Normal",
+    "logo": "/img/showcase/omnitynetwork_logo.jpeg"
   }
 ]
