@@ -1,0 +1,117 @@
+---
+keywords: [advanced, ethereum, evm rpc, evm, tutorial]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# How it works
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
+
+## Overview
+
+The EVM RPC canister introduces a layer between an ICP canister and an RPC provider. RPC providers, such as CloudFlare and Alchemy, provide services for interacting with blockchain networks. The ICP EVM RPC canister acts as a gateway for a dapp's canisters to communicate with and query information from EVM-compatible chains. It provides endpoints that ICP developers can use to interact with Ethereum smart contracts, and provides ample processing such that the responses received from the Ethereum network are immediately useful within a canister.
+
+## How it works
+
+To make calls to these external chains, the EVM RPC canister utilizes the ICP [HTTPS outcalls](/docs/current/references/https-outcalls-how-it-works) feature to make calls to JSON-RPC endpoints. HTTPS outcalls are used to make outgoing HTTP calls to traditional Web2 servers. The response returned from these servers can be used safely in the context of a canister without the risk of state divergence between the replicas on a subnet.
+
+When a canister makes an HTTPS outcall, it calls the management canister API using the `http_request` method. The networking adapter on each replica executes the HTTP request by sending it to the external server. When the response is returned from the external server, the response goes through consensus on the subnet where at least 2/3 of the subnet's nodes must agree on the response. Once the response is validated, it is sent to the management canister, which returns it to the canister that made originated the request.
+
+In the case of the EVM RPC canister, a canister makes a request to the EVM RPC canister for a specified RPC method, and the EVM RPC canister makes the HTTP outcall to the RPC endpoint on behalf of that canister.
+
+Each call to a JSON-RPC endpoint requires an API key to authenticate with the RPC provider. The EVM RPC canister manages these keys on behalf of the developer, but a developer's personal keys may be passed to the call instead if desired. API keys typically have a subscription fee associated with them, but developers who use the EVM RPC canister's pre-configured keys do not need to subscribe to the RPC services themselves.
+
+## Typed Candid-RPC requests
+
+The EVM-RPC canister includes fully-typed Candid interfaces to provide first-class support for certain RPC methods. The primary benefit of these Candid-RPC methods is the ability to query multiple APIs.
+
+This requires transforming and canonicalizing the HTTPS outcall responses on a case-by-case basis, trading flexibility for increased confidence in the result.
+
+Below is an overview of the types and method interfaces for the initial Candid-RPC endpoints:
+
+```
+type EthMainnetService = variant { Cloudflare; Ankr; ... };
+type EthSepoliaService = variant { BlockPi; PublicNode; Ankr; ... };
+
+type CandidRpcSource = variant {
+  EthMainnet : opt vec EthMainnetService;
+  EthSepolia : opt vec EthSepoliaService;
+  ...
+};
+
+type MultiRpcResult<T> = variant {
+  Consistent : Result<T, RpcError>;
+  Inconsistent : vec (
+    variant {  Ethereum : EthereumService;  Sepolia : SepoliaService; ... },
+    Result<T, RpcError>
+  );
+};
+
+eth_getLogs : (CandidRpcSource, EthGetLogsParam)
+  -> (MultiRpcResult<vec LogEntry>);
+
+eth_getBlockByNumber : (CandidRpcSource, BlockSpec)
+  -> (MultiRpcResult<Block>);
+
+eth_getTransactionReceipt : (CandidRpcSource, Hash)
+  -> (MultiRpcResult<opt TransactionReceipt>);
+
+eth_getTransactionCount : (CandidRpcSource, GetTransactionCountParam)
+  -> (MultiRpcResult<TransactionCount>);
+
+eth_feeHistory : (CandidRpcSource, FeeHistoryParam)
+  -> (MultiRpcResult<FeeHistory>);
+
+eth_sendRawTransaction : (CandidRpcSource, text)
+  -> (MultiRpcResult<SendRawTransactionResult>);
+
+```
+
+The shared Candid types are defined as follows:
+
+- `EthMainnetService`: An RPC service compatible with the Ethereum mainnet.
+
+- `EthTestnetService`: An RPC service compatible with the Sepolia testnet.
+
+- `CandidRpcSource`: An input for Candid-RPC methods representing which chain and service(s) to use for the RPC call. By default, the canister uses all available services.
+
+## General JSON-RPC requests
+
+A general-purpose JSON-RPC endpoint is available for use cases requiring functionality beyond the supported Candid-RPC interface, making it possible to call a wider range of RPC services and EVM blockchains.
+
+This endpoint also offers an improved developer experience when using the [ethers-providers](https://docs.rs/ethers-providers/latest/ethers_providers/) Rust crate or [ethers](https://www.npmjs.com/package/ethers) npm package, which implement strongly-typed functions with convenient type conversions for each JSON-RPC method.
+
+`request`
+
+type JsonRpcSource = variant {
+  Chain : nat64;
+  Service : record { hostname : text; chainId : opt nat64, headers: opt vec (text, text) };
+  Provider : nat64;
+  Custom : record { url : text; headers : vec (text, text) };
+};
+
+request : (
+  source : JsonRpcSource,
+  jsonRequest : text,
+  maxResponseBytes : nat64
+) -> (
+  Result<text, RpcError>
+);
+
+`source`: Any of the following enum variants:
+
+- `Chain(nat64)`: The relevant EVM network identifier (reference list).
+
+- `Service { hostname : text; chainId : opt nat64 }`: A specific RPC service with the given hostname (e.g. “cloudflare-eth.com”) and optional chain id (`1` for Ethereum mainnet).
+
+- `Provider(nat64)`: The ID of the registered provider to be used for this call.
+
+- `Custom { url : text; headers : vec (text, text)  }`: A custom JSON-RPC API. It is only recommended to use this if no registered provider exists for a given EVM network.
+
+- `jsonRpcPayload`: The payload for the JSON-RPC request (documentation).
+
+- `maxResponseBytes`: The expected maximum size of the HTTPS response, in bytes.
+
+In many cases, these JSON-RPC methods work without canonicalization for HTTPS outcall consensus. We address individual edge cases as they arise using the same canonicalization logic as the corresponding Candid-RPC endpoint.
+

@@ -4,13 +4,9 @@ keywords: [advanced, ethereum, evm rpc, evm, tutorial]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# EVM RPC canister
+# Using the EVM RPC canister
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
-
-**EVM RPC** is an Internet Computer canister smart contract for communicating with [Ethereum](https://ethereum.org/en/) and other [EVM blockchains](https://chainlist.org/?testnets=true) using an on-chain API.
-
-The source code for this project is available on GitHub ([internet-computer-protocol/evm-rpc-canister](https://github.com/internet-computer-protocol/evm-rpc-canister) ⭐️) under the Apache 2.0 license.
 
 ## Supported RPC methods
 
@@ -23,7 +19,7 @@ The following JSON-RPC methods are available as part of the canister's [Candid i
 - [`eth_getTransactionReceipt`](https://docs.alchemy.com/reference/eth-gettransactionreceipt): Queries details about a submitted transaction.
 - [`eth_sendRawTransaction`](https://docs.alchemy.com/reference/eth-sendrawtransaction): Submits a signed transaction to the Ethereum network.
 
-Other RPC methods (including those specific to non-Ethereum networks) may be accessed using the canister's `request` method.
+Other RPC methods, including those specific to non-Ethereum networks, may be accessed using the canister's `request` method.
 
 ## Supported RPC providers
 
@@ -37,10 +33,38 @@ The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC p
 
 Many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method.
 
-
 ## Importing or deploying the EVM RPC canister
 
-To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent) project, add the following to your `dfx.json` file:
+### Using `dfx deps`
+
+To use the EVM RPC canister, you can pull it into your project using `dfx deps` by configuring your project's `dfx.json` file:
+
+```json
+{
+  "canisters": {
+    "evm_rpc": {
+      "type": "pull",
+      "id": "7hfb6-caaaa-aaaar-qadga-cai",
+    }
+  }
+}
+```
+
+Then, run the commands:
+
+```
+# Start the local replica
+dfx start --background
+
+# Locally deploy the `evm_rpc` canister
+dfx deps pull
+dfx deps init evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deps deploy
+```
+
+### Using Candid and Wasm files
+
+Alternatively, you can include the EVM RPC canister by specifying the Candid and Wasm files in your `dfx.json` file:
 
 ```json
 {
@@ -59,12 +83,14 @@ To include the EVM RPC canister in a [dfx](https://internetcomputer.org/docs/cur
 }
 ```
 
-Next, start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](https://internetcomputer.org/docs/current/developer-docs/backend/subnet-types#fiduciary-subnets)):
+Then start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](https://internetcomputer.org/docs/current/developer-docs/backend/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --clean --background
 dfx deploy evm_rpc --argument '(record { nodesInSubnet = 28 })'
 ```
+
+### Fork the EVM RPC canister
 
 Another option is to create a fork of the EVM RPC canister:
 
@@ -78,7 +104,7 @@ To deploy your own canister on the mainnet, run the `dfx deploy` command with th
 dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 28 })'
 ```
 
-Note that when deploying your own canister, you may encounter API rate limits. Refer to the [Replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
+Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
 
 ## Example usage
 
@@ -93,27 +119,38 @@ JSON_RPC_SOURCE=Chain=1
 RPC_CONFIG=null
 
 # Get event logs for smart contract `0xdAC1...1ec7`
-dfx canister call evm_rpc eth_getLogs "(variant {$CANDID_SOURCE}, $RPC_CONFIG, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc eth_getLogs "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=$CYCLES --wallet=$WALLET
 
 # Get the latest Ethereum block info
-dfx canister call evm_rpc eth_getBlockByNumber "(variant {$CANDID_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=$CYCLES --wallet=$WALLET
 
 # Get receipt for transaction `0xdd5d...4746f`
-dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$CANDID_SOURCE}, $RPC_CONFIG, \"0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f\")" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f\")" --with-cycles=$CYCLES --wallet=$WALLET
 
 # Get number of transactions for contract `0xdAC1...1ec7`
-dfx canister call evm_rpc eth_getTransactionCount "(variant {$CANDID_SOURCE}, $RPC_CONFIG, record {address = \"0xdAC17F958D2ee523a2206206994597C13D831ec7\"; block = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {address = \"0xdAC17F958D2ee523a2206206994597C13D831ec7\"; block = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
 
 # Get the fee history for the last 3 Ethereum blocks
-dfx canister call evm_rpc eth_feeHistory "(variant {$CANDID_SOURCE}, $RPC_CONFIG, record {blockCount = 3; newestBlock = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {blockCount = 3; newestBlock = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
 
 # Send a raw transaction
-dfx canister call evm_rpc eth_sendRawTransaction "(variant {$SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
 
 # Send a raw JSON-RPC request
-dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\": \"2.0\", \"method\": \"eth_gasPrice\", \"params\": [], \"id\": 1 }"'", 1000)" --with-cycles=$CYCLES --wallet=$WALLET
+dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\": \"2.0\", \"method\": \"eth_gasPrice\", \"params\": [], \"id\": 1 }"'", 1000)" --with-cycles=$CYCLES --wallet=$WALLET // Local deployment
+
+dfx canister call evm_rpc request '(variant {$JSON_RPC_SOURCE}, "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)' --wallet $(dfx identity get-wallet --ic) --with-cycles 1000000000 --ic // Mainnet deployment
 ```
 
+`RpcConfig` makes it possible to adjust how the RPC canister performs the HTTPS outcalls. Currently, `RpcConfig` only supports an optional `responseSizeEstimate` which can be fine-tuned to reduce the cost of the RPC requests.
+
+### Authorization (local replica)
+
+```bash
+PRINCIPAL=$(dfx identity get-principal)
+dfx canister call evm_rpc authorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
+dfx canister call evm_rpc getAuthorized '(variant { RegisterProvider })'
+dfx canister call evm_rpc deauthorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
 
 ## Custom JSON-RPC requests
 
@@ -133,7 +170,7 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 
 ## Specifying RPC services
 
-There are several ways to use specific JSON-RPC services:
+`RpcServices` is used to specify which HTTPS outcall APIs to use in the request. There are several ways to use specific JSON-RPC services:
 
 ```candid
 // Used for Candid-RPC canister methods (`eth_getLogs`, `eth_getBlockByNumber`, etc.)
@@ -255,8 +292,3 @@ dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSi
 
 If the response is larger than the estimate, the canister will double the max response size and retry until either receiving a response or running out of cycles given by the `--with-cycles` flag.
 
-## Costs
-
-JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD.
-
-These costs are paid by sending cycles with each RPC call, such as by using the `--with-cycles` flag when calling a canister with [dfx](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call). Learn more about [cycles](/docs/current/developer-docs/gas-cost).

@@ -1,0 +1,77 @@
+---
+keywords: [advanced, ethereum, evm rpc, evm, costs]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# EVM RPC costs
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
+
+## Overview
+
+Each call made to the EVM RPC canister costs [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet). These costs are paid by attaching cycles to each RPC call by using the `--with-cycles` flag when calling the EVM RPC canister with [dfx](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
+
+## Costs
+
+JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD.
+
+The following formula shows how to calculate the cycles cost for an RPC request:
+
+```
+(
+  3M
+  + 60K * nodes_in_subnet
+  + 400 * request_size
+  + 800 * max_response
+  + provider_cost
+) * nodes_in_subnet
+```
+
+In order to accurately measure the HTTPS outcall cost and protect from an accidental large responses, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation.
+
+Developers may choose to repeatedly call this method with an increasingly large value for `maxResponseBytes` (as performed by ckETH) to handle variable response sizes. We defer this choice of strategy to the caller. Various retry strategies could eventually be included as another canister method, although this is out of scope for the MVP. It’s worth noting that the caller essentially pays for each outcall as though they are sending these requests from their own canister.
+
+Additionally, the `RpcConfig` parameter supports an optional `responseSizeEstimate` which can be fine-tuned to reduce the cost of the RPC requests.
+
+Here is an approximate cost breakdown in USD for an RPC request on the Ethereum mainnet using Cloudflare Web3 and assuming a 13-node subnet:
+
+```
+JSON-RPC API request: $0.0001
+HTTPS outcalls: $0.001 (assuming 1kB request and 1kB response)
+Base cost: $0.0008
+JSON Request: $0.00008 / kB
+JSON Response: $0.00008 / kB
+```
+
+## Attaching the correct amount of cycles
+
+To determine how many cycles need to be sent with your RPC call, you can use the `requestCost` query method:
+
+```
+`requestCost`
+
+requestCost : (
+  source : JsonRpcSource,
+  jsonRequest : text,
+  maxResponseBytes :  nat64
+) -> (
+  Result<nat, RpcError>
+) query;
+```
+
+This query method accepts the same arguments as the canister's [`request`](evm-rpc.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
+
+Once you have determined how many cycles your call will need, you can send them in your call using the `--with-cycles` flag:
+
+```
+dfx canister call evm_rpc eth_getBlockByNumber "(variant {$CANDID_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=100000000 --wallet=default
+```
+
+
+
+
+
+
+
+
