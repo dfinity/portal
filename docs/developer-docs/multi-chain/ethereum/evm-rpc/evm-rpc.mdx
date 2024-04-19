@@ -144,6 +144,55 @@ dfx canister call evm_rpc request '(variant {$JSON_RPC_SOURCE}, "{\"jsonrpc\":\"
 
 `RpcConfig` makes it possible to adjust how the RPC canister performs the HTTPS outcalls. Currently, `RpcConfig` only supports an optional `responseSizeEstimate` which can be fine-tuned to reduce the cost of the RPC requests.
 
+## Sample use case
+
+Below is a simple use case making a call to `eth_get_logs` using a piece of Rust code and the EVM RPC canister:
+
+Rust method implementation:
+
+```rust
+#[ic_cdk::update]
+async fn get_logs(get_logs_args: GetLogsArgs) -> Vec<evm_rpc::LogEntry> {
+    let rpc_providers = RpcServices::EthMainnet(Some(vec![EthMainnetService::Alchemy]));
+
+    let cycles = 10_000_000_000_000;
+    let (result,) = EVM_RPC
+        .eth_get_logs(rpc_providers, None, get_logs_args, cycles)
+        .await
+        .expect("Call failed");
+
+    match result {
+        MultiGetLogsResult::Consistent(r) => match r {
+            GetLogsResult::Ok(block) => block,
+            GetLogsResult::Err(err) => panic!("{err:?}"),
+        },
+        MultiGetLogsResult::Inconsistent(_) => {
+            panic!("RPC providers gave inconsistent results")
+        }
+    }
+}
+```
+
+Call made with `dfx`:
+
+```
+dfx canister call dappcon_backend get_logs --candid src/dappcon_backend/dappcon_backend.did  '(
+  record {
+    fromBlock = opt variant { Number = 4_365_627 : nat };
+    toBlock = opt variant { Latest };
+    addresses = vec { "0xb59f67a8bff5d8cd03f6ac17265c550ed8f33907" };
+    topics = opt vec {
+      vec { "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef" };
+        vec { "0x00000000000000000000000000b46c2526e227482e2ebb8f4c69e4674d262e75" };
+        vec { "0x00000000000000000000000054a2d42a40f51259dedd1978f6c118a0f0eff078" };
+      };
+    };
+  },
+)'
+```
+
+This example use case displays a caveat that comes with mapping the `eth_getLogs` spec to Candid, where a topic can either be a single value or array of topics. A single-element array is equivalent to passing a string.
+
 ### Authorization (local replica)
 
 ```bash
