@@ -4257,5 +4257,19 @@
     "logo": "/img/showcase/vfans_logo.png",
     "stats": "3,000+ users",
     "submittableId": "44324587"
+  },
+  {
+    "id": "talerdao",
+    "name": "Taler DAO",
+    "oneLiner": "A Bitcoin-backed Stablecoin.",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "description": "A Bitcoin-backed Stablecoin.",
+    "usesInternetIdentity": false,
+    "website": "https://talerdao.org/",
+    "display": "Normal",
+    "logo": "/img/showcase/talerdao_logo.jpeg"
   }
 ]
