@@ -74,7 +74,7 @@ function WhatIsIcpPage() {
                 The best way to understand the Internet Computer is 
                 by seeing its starting point: the power of smart contracts.
                 Below is a breakdown of why smart contracts are powerful 
-                and how the Internet computer unleashes their power.
+                and how the Internet Computer makes design decisions to unleash their power.
               </motion.p>
             </div>
           </AnimateSpawn>
