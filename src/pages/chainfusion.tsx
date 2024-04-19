@@ -291,7 +291,7 @@ function MultichainPage() {
                 animate={{
                   height: isCodeSnippetExpanded ? "auto" : "24rem",
                 }}
-                className="overflow-hidden"
+                className="overflow-hidden rounded-md"
                 transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
               >
                 <CodeBlockString language="motoko">
