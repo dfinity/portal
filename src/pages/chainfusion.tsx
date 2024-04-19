@@ -544,7 +544,7 @@ function MultichainPage() {
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">pending</Status>
+                    <Status type="pending">in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -715,7 +715,7 @@ function MultichainPage() {
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr pending</Status>
+                    <Status type="pending">Schnorr in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -751,7 +751,7 @@ function MultichainPage() {
                   </p>
                   <p className="flex gap-2 flex-wrap">
                     <Status type="done">ckETH done</Status>
-                    <Status type="pending">ckERC20 is pending</Status>
+                    <Status type="pending">ckERC20 is in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -785,7 +785,7 @@ function MultichainPage() {
                     using traditional bridges.
                   </p>
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">icpERC20 is pending</Status>
+                    <Status type="pending">icpERC20 is in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -829,7 +829,7 @@ function MultichainPage() {
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr pending</Status>
+                    <Status type="pending">Schnorr in progress</Status>
                   </p>
                 </ContentCard>
 
