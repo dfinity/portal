@@ -412,7 +412,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/integrations/ethereum/overview /docs/current/developer-docs/multi-chain/ethereum/overview
-  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/using-eth/evm-rpc
+  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/using-eth/evm-rpc/
   /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference

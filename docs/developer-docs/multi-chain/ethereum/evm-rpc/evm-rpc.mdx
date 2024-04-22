@@ -262,21 +262,93 @@ switch result {
 <TabItem value="rust" label="Rust">
 
 ```rust
-pub struct EvmRpcCanister;
-impl EvmRpcCanister {
-    pub async fn eth_get_block_by_number(
-        services: RpcServices,
-        config: Option<RpcConfig>,
-        block_tag: BlockTag,
-        cycles: u128,
-    ) -> CallResult<(MultiGetBlockByNumberResult,)> {
-        ic_cdk::api::call::call_with_payment128(
-            CANISTER_ID,
-            "eth_getBlockByNumber",
-            (services, config, block_tag),
-            cycles,
-        )
-        .await
+use candid::candid_method;
+use ic_cdk_macros::update;
+
+use e2e::declarations::EVM_RPC_STAGING_FIDUCIARY::{
+    Block, BlockTag, GetBlockByNumberResult, MultiGetBlockByNumberResult, MultiGetLogsResult,
+    ProviderError, RpcError, RpcService, RpcServices, EVM_RPC_STAGING_FIDUCIARY as evm_rpc,
+};
+
+fn main() {}
+
+#[update]
+#[candid_method(update)]
+pub async fn test() {
+    assert!(ic_cdk::api::is_controller(&ic_cdk::caller()));
+
+    // Define request parameters
+    let params = (
+        RpcService::Chain(1), // Ethereum mainnet
+        "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":null,\"id\":1}".to_string(),
+        1000 as u64,
+    );
+
+    // Get cycles cost
+    let (cycles_result,): (Result<u128, RpcError>,) =
+        ic_cdk::api::call::call(evm_rpc.0, "requestCost", params.clone())
+            .await
+            .unwrap();
+    let cycles = cycles_result
+        .unwrap_or_else(|e| ic_cdk::trap(&format!("error in `request_cost`: {:?}", e)));
+
+    // Call without sending cycles
+    let (result_without_cycles,): (Result<String, RpcError>,) =
+        ic_cdk::api::call::call(evm_rpc.0, "request", params.clone())
+            .await
+            .unwrap();
+    match result_without_cycles {
+        Ok(s) => ic_cdk::trap(&format!("response from `request` without cycles: {:?}", s)),
+        Err(RpcError::ProviderError(ProviderError::TooFewCycles { expected, .. })) => {
+            assert_eq!(expected, cycles)
+        }
+        Err(err) => ic_cdk::trap(&format!("error in `request` without cycles: {:?}", err)),
+    }
+
+    // Call with expected number of cycles
+    let (result,): (Result<String, RpcError>,) =
+        ic_cdk::api::call::call_with_payment128(evm_rpc.0, "request", params, cycles)
+            .await
+            .unwrap();
+    match result {
+        Ok(response) => {
+            // Check response structure around gas price
+            assert_eq!(
+                &response[..36],
+                "{\"id\":1,\"jsonrpc\":\"2.0\",\"result\":\"0x"
+            );
+            assert_eq!(&response[response.len() - 2..], "\"}");
+        }
+        Err(err) => ic_cdk::trap(&format!("error in `request` with cycles: {:?}", err)),
+    }
+
+    // Call a Candid-RPC method
+    // This would benefit from a caller-side library with generic type definitions for result values
+    let (results,): (MultiGetBlockByNumberResult,) = ic_cdk::api::call::call_with_payment128(
+        evm_rpc.0,
+        "eth_getBlockByNumber",
+        (
+            RpcServices::EthMainnet(None),
+            (),
+            BlockTag::Number(123.into()),
+        ),
+        10000000000,
+    )
+    .await
+    .unwrap();
+    match results {
+        MultiGetBlockByNumberResult::Consistent(result) => match result {
+            GetBlockByNumberResult::Ok(block) => {
+                assert_eq!(block.hash, "aaaaaa");
+            }
+            GetBlockByNumberResult::Err(err) => {
+                ic_cdk::trap(&format!("error in `eth_getBlockByNumber`: {:?}", err))
+            }
+        },
+        MultiGetBlockByNumberResult::Inconsistent(results) => ic_cdk::trap(&format!(
+            "inconsistent results in `eth_getBlockByNumber`: {:?}",
+            results
+        )),
     }
 }
 ```
@@ -783,12 +855,23 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-[Motoko example]
+```motoko
+let services = #EthMainnet;
+let config = null;
+```
+
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-[Rust example]
+```rust
+    // Define request parameters
+    let params = (
+        RpcService::Chain(1), // Ethereum mainnet
+        "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":null,\"id\":1}".to_string(),
+        1000 as u64,
+    );
+```
 
 
 </TabItem>
