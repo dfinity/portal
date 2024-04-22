@@ -3,6 +3,9 @@ keywords: [advanced, ethereum, evm rpc, evm, tutorial]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 # Using the EVM RPC canister
 
@@ -106,49 +109,15 @@ dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 28 })'
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
 
-## Example usage
+## Get event logs
 
-```bash
-# Configuration
-NETWORK=local
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-JSON_RPC_SOURCE=Chain=1
-RPC_CONFIG=null
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
 
-# Get event logs for smart contract `0xdAC1...1ec7`
-dfx canister call evm_rpc eth_getLogs "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=$CYCLES --wallet=$WALLET
+[Motoko example]
 
-# Get the latest Ethereum block info
-dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=$CYCLES --wallet=$WALLET
-
-# Get receipt for transaction `0xdd5d...4746f`
-dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f\")" --with-cycles=$CYCLES --wallet=$WALLET
-
-# Get number of transactions for contract `0xdAC1...1ec7`
-dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {address = \"0xdAC17F958D2ee523a2206206994597C13D831ec7\"; block = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
-
-# Get the fee history for the last 3 Ethereum blocks
-dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {blockCount = 3; newestBlock = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
-
-# Send a raw transaction
-dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
-
-# Send a raw JSON-RPC request
-dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\": \"2.0\", \"method\": \"eth_gasPrice\", \"params\": [], \"id\": 1 }"'", 1000)" --with-cycles=$CYCLES --wallet=$WALLET // Local deployment
-
-dfx canister call evm_rpc request '(variant {$JSON_RPC_SOURCE}, "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)' --wallet $(dfx identity get-wallet --ic) --with-cycles 1000000000 --ic // Mainnet deployment
-```
-
-`RpcConfig` makes it possible to adjust how the RPC canister performs the HTTPS outcalls. Currently, `RpcConfig` only supports an optional `responseSizeEstimate` which can be fine-tuned to reduce the cost of the RPC requests.
-
-## Sample use case
-
-Below is a simple use case making a call to `eth_getLogs` using a piece of Rust code and the EVM RPC canister:
-
-Rust method implementation:
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[ic_cdk::update]
@@ -173,7 +142,415 @@ async fn get_logs(get_logs_args: GetLogsArgs) -> Vec<evm_rpc::LogEntry> {
 }
 ```
 
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc eth_getLogs "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {addresses = vec {\"ADDRESS\"}})" --with-cycles=$CYCLES --wallet=$WALLET
+
+```
+
+</TabItem>
+</AdornedTabs>
+
 This example use case displays a caveat that comes with mapping the `eth_getLogs` spec to Candid, where a topic can either be a single value or array of topics. A single-element array is equivalent to passing a string.
+
+## Get the latest Ethereum block info
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+import EvmRpc "canister:evm_rpc";
+
+import Debug "mo:base/Debug";
+import Cycles "mo:base/ExperimentalCycles";
+
+actor {
+
+  /// Retrieve the latest block on the Ethereum blockchain.
+  public func getLatestEthereumBlock() : async EvmRpc.Block {
+
+    // Select RPC services
+    let services : EvmRpc.RpcServices = #EthMainnet(?[#Cloudflare]);
+
+    // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
+    Cycles.add<system>(1000000000);
+    let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
+
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok block)) {
+        block;
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(results)) {
+        Debug.trap("Inconsistent results");
+      };
+    };
+  };
+};
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+pub struct EvmRpcCanister;
+impl EvmRpcCanister {
+    pub async fn eth_get_block_by_number(
+        services: RpcServices,
+        config: Option<RpcConfig>,
+        block_tag: BlockTag,
+        cycles: u128,
+    ) -> CallResult<(MultiGetBlockByNumberResult,)> {
+        ic_cdk::api::call::call_with_payment128(
+            CANISTER_ID,
+            "eth_getBlockByNumber",
+            (services, config, block_tag),
+            cycles,
+        )
+        .await
+    }
+}
+```
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=$CYCLES --wallet=$WALLET
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Get receipt for transaction
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+[Rust example]
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"TRANSACTION_ID\")" --with-cycles=$CYCLES --wallet=$WALLET
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Call an Ethereum smart contract
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+pub async fn eth_call(
+    contract_address: String,
+    abi: &Contract,
+    function_name: &str,
+    args: &[Token],
+    block_number: &str,
+) -> Vec<Token> {
+    let f = match abi.functions_by_name(function_name).map(|v| &v[..]) {
+        Ok([f]) => f,
+        Ok(fs) => panic!(
+            "Found {} function overloads. Please pass one of the following: {}",
+            fs.len(),
+            fs.iter()
+                .map(|f| format!("{:?}", f.abi_signature()))
+                .collect::<Vec<_>>()
+                .join(", ")
+        ),
+        Err(_) => abi
+            .functions()
+            .find(|f| function_name == f.abi_signature())
+            .expect("Function not found"),
+    };
+    let data = f
+        .encode_input(args)
+        .expect("Error while encoding input args");
+    let json_rpc_payload = serde_json::to_string(&JsonRpcRequest {
+        id: next_id().await.0.try_into().unwrap(),
+        jsonrpc: "2.0".to_string(),
+        method: "eth_call".to_string(),
+        params: (
+            EthCallParams {
+                to: contract_address,
+                data: to_hex(&data),
+            },
+            block_number.to_string(),
+        ),
+    })
+    .expect("Error while encoding JSON-RPC request");
+
+    let res: CallResult<(RequestResult,)> = call_with_payment(
+        crate::declarations::evm_rpc::evm_rpc.0,
+        "request",
+        (
+            RpcService::EthSepolia(EthSepoliaService::BlockPi),
+            json_rpc_payload,
+            2048_u64,
+        ),
+        2_000_000_000,
+    )
+    .await;
+
+    match res {
+        Ok((RequestResult::Ok(ok),)) => {
+            let json: JsonRpcResult =
+                serde_json::from_str(&ok).expect("JSON was not well-formatted");
+            let result = from_hex(&json.result.expect("Unexpected JSON response")).unwrap();
+            f.decode_output(&result).expect("Error decoding output")
+        }
+        err => panic!("Response error: {err:?}"),
+    }
+}
+
+</TabItem>
+</AdornedTabs>
+
+## Get number of transactions for a contract
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+[Rust example]
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {address = \"CONTRACT_ADDRESS\"; block = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Get the fee history
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+pub async fn fee_history(
+    network: String,
+    block_count: u128,
+    newest_block: BlockTag,
+    reward_percentiles: Option<serde_bytes::ByteBuf>,
+) -> FeeHistory {
+    let config = None;
+    let args = FeeHistoryArgs {
+        blockCount: block_count,
+        newestBlock: newest_block,
+        rewardPercentiles: reward_percentiles,
+    };
+
+    let services = match network.as_str() {
+        "EthSepolia" => RpcServices::EthSepolia(Some(vec![EthSepoliaService::Alchemy])),
+        "EthMainnet" => RpcServices::EthMainnet(None),
+        _ => RpcServices::EthSepolia(None),
+    };
+
+    let cycles = 10000000;
+    match EvmRpcCanister::eth_fee_history(services, config, args, cycles).await {
+        Ok((res,)) => match res {
+            MultiFeeHistoryResult::Consistent(fee_history) => match fee_history {
+                FeeHistoryResult::Ok(fee_history) => fee_history.unwrap(),
+                FeeHistoryResult::Err(e) => {
+                    ic_cdk::trap(format!("Error: {:?}", e).as_str());
+                }
+            },
+            MultiFeeHistoryResult::Inconsistent(_) => {
+                ic_cdk::trap("Fee history is inconsistent");
+            }
+        },
+        Err(e) => ic_cdk::trap(format!("Error: {:?}", e).as_str()),
+    }
+}
+```
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {blockCount = 3; newestBlock = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Send a raw transaction
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+
+pub async fn send_raw_transaction(network: String, raw_tx: String) -> SendRawTransactionStatus {
+    let config = None;
+    let services = match network.as_str() {
+        "EthSepolia" => RpcServices::EthSepolia(Some(vec![EthSepoliaService::Alchemy])),
+        "EthMainnet" => RpcServices::EthMainnet(None),
+        _ => RpcServices::EthSepolia(None),
+    };
+
+    let cycles = 10000000;
+    match EvmRpcCanister::eth_send_raw_transaction(services, config, raw_tx, cycles).await {
+        Ok((res,)) => match res {
+            MultiSendRawTransactionResult::Consistent(status) => match status {
+                SendRawTransactionResult::Ok(status) => status,
+                SendRawTransactionResult::Err(e) => {
+                    ic_cdk::trap(format!("Error: {:?}", e).as_str());
+                }
+            },
+            MultiSendRawTransactionResult::Inconsistent(_) => {
+                ic_cdk::trap("Status is inconsistent");
+            }
+        },
+        Err(e) => ic_cdk::trap(format!("Error: {:?}", e).as_str()),
+    }
+}
+```
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Send a raw JSON-RPC request
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+[Rust example]
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```bash
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+JSON_RPC_SOURCE=Chain=1
+RPC_CONFIG=null
+
+dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\": \"2.0\", \"method\": \"eth_gasPrice\", \"params\": [], \"id\": 1 }"'", 1000)" --with-cycles=$CYCLES --wallet=$WALLET // Local deployment
+
+```
+
+</TabItem>
+</AdornedTabs>
 
 ### Authorization (local replica)
 
