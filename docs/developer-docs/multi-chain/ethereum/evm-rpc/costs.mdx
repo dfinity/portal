@@ -3,6 +3,9 @@ keywords: [advanced, ethereum, evm rpc, evm, costs]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 # EVM RPC costs
 
@@ -21,11 +24,11 @@ The following formula shows how to calculate the cycles cost for an RPC request:
 ```
 (
   3M
-  + 60K * nodes_in_subnet
-  + 400 * request_size
-  + 800 * max_response
-  + provider_cost
-) * nodes_in_subnet
+  + 60K * nodes_in_subnet // Number of nodes in the subnet
+  + 400 * request_size // Size of the HTTP request in bytes
+  + 800 * max_response // Maximum HTTP response size in bytes
+  + provider_cost // Fixed cost for selected RPC provider
+) * nodes_in_subnet //  Fixed canister overhead cost per node in subnet
 ```
 
 In order to accurately measure the HTTPS outcall cost and protect from an accidental large responses, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation.
@@ -62,11 +65,82 @@ requestCost : (
 
 This query method accepts the same arguments as the canister's [`request`](evm-rpc.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
 
-Once you have determined how many cycles your call will need, you can send them in your call using the `--with-cycles` flag:
+Once you have determined how many cycles your call will need, you can send them in your call through a CDK, or using `dfx` with the `--with-cycles` flag.
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+
+actor {
+  /// Retrieve the latest block on the Ethereum blockchain.
+  public func getLatestEthereumBlock() : async EvmRpc.Block {
+
+    // Select RPC services
+    let services : EvmRpc.RpcServices = #EthMainnet(?[#Cloudflare]);
+
+    // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
+    Cycles.add<system>(1000000000);
+    let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
+
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok block)) {
+        block;
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(results)) {
+        Debug.trap("Inconsistent results");
+      };
+    };
+  };
+};
+```
+
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+
+/// returns latest block number in `U256` and hex encoded form
+pub async fn latest_block_number() -> (U256, String) {
+    let RequestResult::Ok(response) = rpc_request_with_cycles(
+        1_000_000_000,
+        "{\"jsonrpc\":\"2.0\",\"method\":\"eth_blockNumber\",\"params\":[]}".into(),
+        2000,
+    )
+    .await
+    .expect("RPC failed")
+    .0
+    else {
+        panic!("oops")
+    };
+    let json: JsonRpcResult = serde_json::from_str(&response).expect("JSON was not well-formatted");
+    if let Some(err) = json.error {
+        panic!("JSON-RPC error code {}: {}", err.code, err.message);
+    }
+    let hex_result = json.result.expect("Unexpected JSON response");
+    let result = from_hex(&hex_result).unwrap();
+
+    (U256::from_big_endian(&result), hex_result)
+}
+
+```
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
 
 ```
 dfx canister call evm_rpc eth_getBlockByNumber "(variant {$CANDID_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=100000000 --wallet=default
 ```
+
+</TabItem>
+</AdornedTabs>
 
 ## Next steps
 
