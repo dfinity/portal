@@ -47,7 +47,7 @@ requestCost : (
 ) query;
 ```
 
-This query method accepts the same arguments as the canister's [`request`](evm-rpc.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
+This query method accepts the same arguments as the canister's [`request`](evm-rpc-canister.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
 
 Once you have determined how many cycles your call will need, you can send them in your call through a CDK or using `dfx` with the `--with-cycles` flag.
 
@@ -123,9 +123,3 @@ JSON Response: $0.00008 / kB
 ## Next steps
 
 [View some sample projects using the EVM RPC canister](samples.mdx).
-
-
-
-
-
-
