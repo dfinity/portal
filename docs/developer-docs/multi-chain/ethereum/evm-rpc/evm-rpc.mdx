@@ -699,7 +699,40 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-[Motoko example]
+```motoko
+import EvmRpc "canister:evm_rpc";
+
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+// Configure JSON-RPC request
+let service = #EthMainnet;
+let json = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}";
+let maxResponseBytes = 1000;
+
+// Optionally retrieve the exact number of cycles for an RPC request
+let cyclesResult = await EvmRpc.requestCost(service, json, maxResponseBytes);
+let cycles = switch cyclesResult {
+    case (#Ok cycles) { cycles };
+    case (#Err err) {
+        Debug.trap("Error while calling `requestCost`: " # debug_show err);
+    };
+};
+
+// Submit the RPC request
+Cycles.add<system>(cycles);
+let result = await EvmRpc.request(service, json, maxResponseBytes);
+
+// Process response
+let cycles = switch result {
+    case (#Ok response) {
+        Debug.print("Success:" # debug_show response);
+    };
+    case (#Err err) {
+        Debug.trap("Error while calling `request`: " # debug_show err);
+    };
+};
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
