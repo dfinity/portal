@@ -114,6 +114,7 @@ Note that when deploying your own canister, you may encounter API rate limits. R
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
+```motoko
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -306,6 +307,7 @@ dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CON
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
+```motoko
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -442,6 +444,7 @@ pub async fn eth_call(
         err => panic!("Response error: {err:?}"),
     }
 }
+```
 
 </TabItem>
 </AdornedTabs>
@@ -451,7 +454,7 @@ pub async fn eth_call(
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```
+```motoko
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -528,7 +531,6 @@ dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -646,7 +648,6 @@ dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, r
 <TabItem value="rust" label="Rust">
 
 ```rust
-
 pub async fn send_raw_transaction(network: String, raw_tx: String) -> SendRawTransactionStatus {
     let config = None;
     let services = match network.as_str() {
