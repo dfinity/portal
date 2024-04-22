@@ -16,6 +16,7 @@ impl<T: Ord> Default for State<T> {
 }
 
 pub struct CallerGuard<T: Ord> {
+    /// We use `Rc` and `RefCell` here as we need both multiple owners (every lock is an owner) and mutable borrows for the state (updating the state after releasing the lock).
     state: Rc<RefCell<State<T>>>,
     lock: T,
 }
