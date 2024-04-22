@@ -114,7 +114,57 @@ Note that when deploying your own canister, you may encounter API rate limits. R
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-[Motoko example]
+import EvmRpc "canister:evm_rpc";
+
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+// Configure RPC request
+
+let services = #EthMainnet;
+let config = null;
+
+// Add cycles to next call
+
+Cycles.add<system>(1000000000);
+
+// Call an RPC method
+
+let result = await EvmRpc.eth_getLogs(
+    services,
+    config,
+    {
+        addresses = ["0xB9B002e70AdF0F544Cd0F6b80BF12d4925B0695F"];
+        fromBlock = ?#Number 19520540;
+        toBlock = ?#Number 19520940;
+        topics = ?[
+            ["0x4d69d0bd4287b7f66c548f90154dc81bc98f65a1b362775df5ae171a2ccd262b"],
+            [
+                "0x000000000000000000000000352413d00d2963dfc58bc2d6c57caca1e714d428",
+                "0x000000000000000000000000b6bc16189ec3d33041c893b44511c594b1736b8a",
+            ],
+        ];
+    },
+);
+
+// Process results
+
+switch result {
+  // Consistent, successful results
+  case (#Consistent(#Ok value)) {
+    Debug.print("Success: " # debug_show value);
+  };
+  // Consistent error message
+  case (#Consistent(#Err error)) {
+    Debug.trap("Error: " # debug_show error);
+  };
+  // Inconsistent results between RPC providers
+  case (#Inconsistent(results)) {
+    Debug.trap("Inconsistent results");
+  };
+};
+
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -173,35 +223,36 @@ This example use case displays a caveat that comes with mapping the `eth_getLogs
 ```motoko
 import EvmRpc "canister:evm_rpc";
 
-import Debug "mo:base/Debug";
 import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
 
-actor {
+// Configure RPC request
 
-  /// Retrieve the latest block on the Ethereum blockchain.
-  public func getLatestEthereumBlock() : async EvmRpc.Block {
+let services = #EthMainnet;
+let config = null;
 
-    // Select RPC services
-    let services : EvmRpc.RpcServices = #EthMainnet(?[#Cloudflare]);
+// Add cycles to next call
 
-    // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
-    Cycles.add<system>(1000000000);
-    let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
+Cycles.add<system>(1000000000);
 
-    switch result {
-      // Consistent, successful results
-      case (#Consistent(#Ok block)) {
-        block;
-      };
-      // Consistent error message
-      case (#Consistent(#Err error)) {
-        Debug.trap("Error: " # debug_show error);
-      };
-      // Inconsistent results between RPC providers
-      case (#Inconsistent(results)) {
-        Debug.trap("Inconsistent results");
-      };
-    };
+// Call an RPC method
+
+let result = await EvmRpc.eth_getBlockByNumber(services, config, #Latest);
+
+// Process results
+
+switch result {
+  // Consistent, successful results
+  case (#Consistent(#Ok value)) {
+    Debug.print("Success: " # debug_show value);
+  };
+  // Consistent error message
+  case (#Consistent(#Err error)) {
+    Debug.trap("Error: " # debug_show error);
+  };
+  // Inconsistent results between RPC providers
+  case (#Inconsistent(results)) {
+    Debug.trap("Inconsistent results");
   };
 };
 ```
@@ -255,7 +306,43 @@ dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CON
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-[Motoko example]
+import EvmRpc "canister:evm_rpc";
+
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+// Configure RPC request
+
+let services = #EthMainnet;
+let config = null;
+
+// Add cycles to next call
+
+Cycles.add<system>(1000000000);
+
+// Call an RPC method
+
+let result = await EvmRpc.eth_getTransactionReceipt(services, config, "0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f");
+
+
+// Process results
+
+switch result {
+  // Consistent, successful results
+  case (#Consistent(#Ok value)) {
+    Debug.print("Success: " # debug_show value);
+  };
+  // Consistent error message
+  case (#Consistent(#Err error)) {
+    Debug.trap("Error: " # debug_show error);
+  };
+  // Inconsistent results between RPC providers
+  case (#Inconsistent(results)) {
+    Debug.trap("Inconsistent results");
+  };
+};
+
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -293,6 +380,7 @@ dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RP
 </TabItem>
 <TabItem value="rust" label="Rust">
 
+```rust
 pub async fn eth_call(
     contract_address: String,
     abi: &Contract,
@@ -363,7 +451,50 @@ pub async fn eth_call(
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-[Motoko example]
+```
+import EvmRpc "canister:evm_rpc";
+
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+// Configure RPC request
+
+let services = #EthMainnet;
+let config = null;
+
+// Add cycles to next call
+
+Cycles.add<system>(1000000000);
+
+// Call an RPC method
+
+let result = await EvmRpc.eth_getTransactionCount(
+    services,
+    config,
+    {
+        address = "0x1789F79e95324A47c5Fd6693071188e82E9a3558";
+        block = #Latest;
+    },
+);
+
+
+// Process results
+
+switch result {
+  // Consistent, successful results
+  case (#Consistent(#Ok value)) {
+    Debug.print("Success: " # debug_show value);
+  };
+  // Consistent error message
+  case (#Consistent(#Err error)) {
+    Debug.trap("Error: " # debug_show error);
+  };
+  // Inconsistent results between RPC providers
+  case (#Inconsistent(results)) {
+    Debug.trap("Inconsistent results");
+  };
+};
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -396,7 +527,51 @@ dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-[Motoko example]
+```motoko
+
+import EvmRpc "canister:evm_rpc";
+
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+// Configure RPC request
+
+let services = #EthMainnet;
+let config = null;
+
+// Add cycles to next call
+
+Cycles.add<system>(1000000000);
+
+// Call an RPC method
+
+let result = await EvmRpc.eth_feeHistory(
+    services,
+    config,
+    {
+        blockCount = 3;
+        newestBlock = #Latest;
+        rewardPercentiles = null;
+    },
+);
+
+// Process results
+
+switch result {
+  // Consistent, successful results
+  case (#Consistent(#Ok value)) {
+    Debug.print("Success: " # debug_show value);
+  };
+  // Consistent error message
+  case (#Consistent(#Err error)) {
+    Debug.trap("Error: " # debug_show error);
+  };
+  // Inconsistent results between RPC providers
+  case (#Inconsistent(results)) {
+    Debug.trap("Inconsistent results");
+  };
+};
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -571,11 +746,28 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 
 ## Specifying an EVM chain
 
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+[Motoko example]
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+[Rust example]
+
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
 To use a specific EVM chain, specify the chain's ID in the `Chain` variant:
 
 ```
 dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 100000000 request '(variant {Chain=0x1},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
 ```
+
+</TabItem>
+</AdornedTabs>
 
 ## Specifying RPC services
 
@@ -602,12 +794,6 @@ type RpcService = variant {
   Provider : nat64;
   Custom : record { url : text; headers : opt vec (text, text) };
 };
-```
-
-Here is an example command to submit an RPC request to the [Arbitrum](https://arbitrum.io/) L2 network:
-
-```bash
-dfx canister call evm_rpc eth_getBlockByNumber '(variant {Custom = record {chainId = 42161; services = vec {record {url = "https://1rpc.io/arb"}}}}, null, variant {Latest})' --with-cycles 10000000000 --wallet=$(dfx identity get-wallet)
 ```
 
 ## Registering your own provider
