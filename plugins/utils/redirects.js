@@ -439,7 +439,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/ethereum/cketh/overview
-  /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/ /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/
+  /docs/current/developer-docs/multi-chain/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/
   /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
