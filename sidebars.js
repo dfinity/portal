@@ -708,7 +708,7 @@ const sidebars = {
               items: [
                 "developer-docs/multi-chain/ethereum/evm-rpc/overview",
                 "developer-docs/multi-chain/ethereum/evm-rpc/how-it-works",
-                "developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc",
+                "developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister",
                 "developer-docs/multi-chain/ethereum/evm-rpc/costs",
                 "developer-docs/multi-chain/ethereum/evm-rpc/samples",
               ],
