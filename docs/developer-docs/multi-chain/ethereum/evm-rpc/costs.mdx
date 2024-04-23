@@ -19,6 +19,8 @@ Each call made to the EVM RPC canister costs [cycles](/docs/current/developer-do
 
 JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD.
 
+Because the Candid-RPC methods of the EVM RPC canister use built-in retries and multiple providers, the amount of cycles required for each RPC call isn't predictable beforehand. The idea for these methods is to send a maximum cycles budget to perform the request.
+
 The following formula shows how to calculate the cycles cost for an RPC request:
 
 ```
@@ -99,9 +101,13 @@ dfx canister call evm_rpc eth_getBlockByNumber "(variant {$CANDID_SOURCE}, $RPC_
 </AdornedTabs>
 
 
-In order to accurately measure the HTTPS outcall cost and protect from an accidental large responses, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation.
+In order to accurately measure the HTTPS outcall cost and protect from an accidental large responses, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation. Developers can determine this value by measuring the size of expected JSON responses from an API playground such as [Alchemy Sandbox](https://sandbox.alchemy.com/).
 
-Developers may choose to repeatedly call this method with an increasingly large value for `maxResponseBytes` to handle variable response sizes. The EVM RPC canister retries the call if:
+The Candid RPC methods use a built-in default response bytes, which you can override with the `RpcConfig` value.
+
+You may choose to repeatedly call the `request` method with an increasingly large value for `maxResponseBytes` to handle variable response sizes. We defer this choice of strategy to the caller for raw JSON-RPC calls. For Candid-RPC convenience methods, the canister doubles the max response size and retries until the response size is sufficient, starting with a reasonable default for each RPC method. In contrast, the JSON-RPC canister only ever makes one request, deferring the retry logic to the caller. It’s worth noting that the caller essentially pays for each outcall as though they are sending these requests from their own canister.
+
+The EVM RPC canister retries the call if:
 
 - There are enough cycles left that have been sent by the caller.
 
@@ -111,14 +117,19 @@ Additionally, the `RpcConfig` parameter supports an optional `responseSizeEstima
 
 Here is an approximate cost breakdown in USD for an RPC request on the Ethereum mainnet using Cloudflare Web3 and assuming a 13-node subnet:
 
-```
-JSON-RPC API request: $0.0001
-HTTPS outcalls: $0.001 (assuming 1kB request and 1kB response)
-Base cost: $0.0008
-JSON Request: $0.00008 / kB
-JSON Response: $0.00008 / kB
-```
+- Total cost: ~ $0.0021 (assuming consensus between 3 RPC providers)
 
+  - Cost per RPC provider: ~ $0.000686 (assuming 1kb request and 1kb response)
+
+    - Canister overhead: ~ $0.0000364
+
+    - HTTPS outcall overhead: ~ $0.00025
+
+    - JSON Request: ~ $0.0002 / kB
+
+    - JSON Response: ~ $0.0002 / kB
+
+Note that the cost is multiplied by the number of RPC services used for the agreement / consensus logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
 
 ## Next steps
 
