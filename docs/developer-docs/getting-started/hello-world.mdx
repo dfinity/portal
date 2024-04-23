@@ -3,6 +3,7 @@ keywords: [beginner, getting started, tutorial, hello world]
 ---
 
 import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
@@ -139,6 +140,24 @@ Lastly, you can include extra features to be added to your project:
 </AdornedTabs>
 
 ## Smart contract code
+
+The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
+
+The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
+
+The `hello_backend` canister is used to store the dapp's functions and core logic. 
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+:::info
+It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API. 
+:::
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
