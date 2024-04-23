@@ -172,7 +172,7 @@ function WhatIsIcpPage() {
             </motion.h2>
 
             <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
-            Smart contracts are a disruptive, new compute paradigm enabling completely novel applications and providing additional guarantees to existing ones. 
+            Smart contracts are a disruptive, new compute paradigm enabling novel applications and adding guarantees to existing ones. 
             Below is a list of some of the most important features of smart contracts.
             </h3>
           </div>
@@ -207,7 +207,7 @@ function WhatIsIcpPage() {
               </h2>
               <p className="tw-lead-sm">
               No trust in the developer or cloud/infrastructure providers is required. 
-              They can also form communities that collectively govern applications.
+              Users can also form communities that collectively govern applications.
               </p>
               <p>
                 {/* <Link
@@ -251,7 +251,7 @@ function WhatIsIcpPage() {
             variants={transitions.item}
           >
             <h2 className=" tw-heading-3 md:tw-heading-60 mb-24 md:mb-20 sm:w-8/10 mx-auto">
-              ICP's goal is to unlock all the limitations smart contracts have so their true power is unleashed.
+              ICP's goal is to remove all the limitations smart contracts have so their true power is unleashed.
             </h2>
           </motion.div>
           <motion.div
@@ -277,12 +277,12 @@ function WhatIsIcpPage() {
                 className="tw-heading-3 md:tw-heading-60 text-gradient text-center inline-block mb-0"
                 variants={transitions.item}
               >
-                How does ICP unlock the power of smart contracts?
+                How does ICP unleash the power of smart contracts?
               </motion.h2>
 
               <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
             It starts by recognizing the limitations that smart contracts have.
-            ICP is designed to overcome these limitations and unlock the true 
+            ICP is designed to overcome these limitations and reveal the true 
             power of smart contracts so they can be used for the world's software.
             </h3>
             </AnimateSpawn>
@@ -316,8 +316,8 @@ function WhatIsIcpPage() {
               You can’t expect the world’s software to move to a platform 
               that is orders of magnitude more expensive and resource 
               intensive than alternatives. Running smart contracts must be 
-              possible at prices comparable to cloud offerings and without 
-              consuming, i.e. wasting, resources order of magnitude more. 
+              possible at prices comparable to cloud offerings and without
+              wasting resources. 
               </p>
               {/* <Link className="link-primary link-with-icon" href="/sns">
                 <LinkArrowRight /> User-run Web3
@@ -328,7 +328,7 @@ function WhatIsIcpPage() {
                 Dev friendliness
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                ICP support programming languages and patterns known to developers,
+                ICP support programming languages and patterns known to developers.
               </p>
               {/* <Link
                 className="link-primary link-with-icon"
@@ -346,11 +346,10 @@ function WhatIsIcpPage() {
                 State-of-the-art user experience
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-              users can simply use their existing browser to interact 
-              with smart contracts. No special software or token is 
-              required. You can’t expect that mainstream software runs 
-              as a smart contract if it means all its users have to jump 
-              through hoops. 
+              Users interact with smart contracts through an internet browser, 
+              with no dedicated software or token required. One cannot expect 
+              mainstream software running as a smart contract if it means all 
+              users have to jump through hoops.
               </p>
               {/* <Link
                 className="link-primary link-with-icon"
@@ -472,7 +471,7 @@ function WhatIsIcpPage() {
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                 Smart contracts run in an asynchronous environment (as opposed to Ethereum's synchronous model) 
                 to maximize throughput and efficiency. The implication of this design decision: 
-                a more complex programming model for web3 developers, but one more familiar to web2 developers.
+                a more complex programming model for web3 developers, but one more familiar to Web2 developers.
                 </p>
               </motion.div>
               <motion.div
@@ -501,8 +500,8 @@ function WhatIsIcpPage() {
                 <h3 className="tw-lead my-3 md:tw-title-sm">Deterministic decentralization</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                  Deterministic decentralization algorithmically maximizes decentralization and security 
-                 while minimizing replication. DAO selected diverse node providers that are identified. 
-                 The implication of this design decision: The replication factor is not as high as it is on Bitcoin and the-like. 
+                 while minimizing replication. The DAO that governs ICP actively votes and elects a diverse set of node providers that are identified 
+                 so no small group of node providers owns a majority of the compute power. The implication of this design decision: The replication factor is not as high as it is on Bitcoin and the-like. 
                 </p>
               </motion.div>
               <motion.div
@@ -516,7 +515,7 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">WebAssembly (Wasm)</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                By choosing WebAssembly as the portable binary-format for 
+                By choosing WebAssembly as the portable binary format for 
                 smart contracts, ICP builds on an Internet community standard 
                 with strong backers. Many mappings from popular languages to 
                 Wasm are available and writing smart contracts in these languages 
@@ -535,7 +534,7 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">Reverse gas</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Allow users to interact with smart contracts without holding a token.
+                  Allows users to interact with smart contracts without holding a token.
                 </p>
               </motion.div>
 
@@ -550,7 +549,7 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">Smart contracts serve web assets</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                Users can use their standard browser to interact with smart contracts. .
+                Users interact with smart contracts through a standard browser.
                 </p>
               </motion.div>
 
@@ -565,7 +564,7 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">Chain key cryptography</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                easily read trustworthy statements from ICP by simply verifying a signature, 
+                Easily read trustworthy statements from ICP by simply verifying a signature, 
                 as the chain has a single cryptographic public key. Decentralized by 
                 using threshold cryptography under the hood. 
                 </p>
@@ -582,8 +581,7 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">NNS DAO</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                The community uses a DAO as the governance system to 
-                decide on upgrades of the protocol, network topology changes and the governance system itself.
+                ICP uses the NNS as its governance DAO, and also to decide on protocol upgrades and network topology changes.
                 </p>
               </motion.div>
             </AnimateSpawn>
