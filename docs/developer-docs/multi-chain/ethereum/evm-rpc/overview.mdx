@@ -54,7 +54,7 @@ RPC providers often require API keys be used to authenticate RPC requests. Authe
 
 - Storing API keys securely is not supported at the platform level and requires developers to use their own strategies for protecting their keys, creating an additional complexity for developers who want to use reproducible builds. Personal keys are also visible to all nodes on the ICP subnet. [Learn more about authentication](how-it-works.mdx#authentication).
 
-To provide a solution for developers, the production EVM RPC manages the API keys for each RPC provider on behalf of the developer. If a developer wants to use their own API keys, however, they can [pass their own keys](evm-rpc.mdx#replacing-api-keys) to the EVM RPC canister. Test variations of the EVM RPC canister do not use API keys.
+To provide a solution for developers, the production EVM RPC manages the API keys for each RPC provider on behalf of the developer. If a developer wants to use their own API keys, however, they can [pass their own keys](evm-rpc-canister.mdx#replacing-api-keys) to the EVM RPC canister. Test variations of the EVM RPC canister do not use API keys.
 
 ## Costs
 
@@ -83,7 +83,3 @@ Learn more about the [costs of  EVM RPC requests](costs.mdx).
 - [Costs of RPC requests](costs.mdx)
 
 - [Samples using the EVM RPC canister](samples.mdx)
-
-
-
-
