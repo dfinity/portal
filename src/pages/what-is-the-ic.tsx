@@ -281,12 +281,37 @@ function WhatIsIcpPage() {
               </motion.h2>
 
               <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
-            It starts by recognizing the limitations that smart contracts have.
-            ICP is designed to overcome these limitations and reveal the true 
-            power of smart contracts so they can be used for the world's software.
-            </h3>
+                It starts by recognizing the limitations that smart contracts have.
+                <br/>
+                <br/>
+                Compared to software applications in centralized cloud providers, most smart contracts...
+                  <div className="text-left">
+                  <ul className="list-disc pl-5">
+                      <li>
+                        are slower
+                      </li>
+                      <li>
+                        more expensive
+                      </li>
+                      <li>
+                        cannot host both frontend and backend
+                      </li>
+                      <li>
+                        cannot make HTTP requests to other providers
+                      </li>
+                      <li>
+                        do not provide users a good user experience
+                      </li>
+                  </ul>
+                  </div>
+                <br/>
+                The Harsh truth that ICP embraces is that smart contracts are the future but 
+                they need to be better to host the world's software.
+              </h3>
+
             </AnimateSpawn>
           </div>
+          
 
           <div className="flex flex-col gap-16 md:gap-40">
             <TranslatedLayout imageUrl="/img/what-is-the-ic/internet-identity.webp">
@@ -313,7 +338,7 @@ function WhatIsIcpPage() {
                 Efficient
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-              You can’t expect the world’s software to move to a platform 
+              You cannot expect the world’s software to move to a platform 
               that is orders of magnitude more expensive and resource 
               intensive than alternatives. Running smart contracts must be 
               possible at prices comparable to cloud offerings and without
