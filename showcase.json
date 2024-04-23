@@ -4298,7 +4298,6 @@
     "screenshots": [
       "/img/showcase/icpanda-dao_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "icpanda-dao",
     "oneLiner": "A decentralized Panda meme brand built on the Internet Computer.",
@@ -4310,8 +4309,101 @@
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/ldclabs/ic-panda",
-    "twitter": "https://twitter.com/ICPandaDAO",
-    "youtube": "",
-    "submittableId": ""
+    "twitter": "https://twitter.com/ICPandaDAO"
+  },
+  {
+    "id": "odoc",
+    "name": "odoc",
+    "oneLiner": "Tasks managment, documentations, and smart contracts for online workers and freelancers.",
+    "tags": [
+      "DAO",
+      "SocialFi"
+    ],
+    "description": "Odoc is a place where you can hire and work. It is empowering Freelancers with Transparent and Liberating Smart Contracts on the Blockchain.",
+    "usesInternetIdentity": true,
+    "website": "https://lwdq3-vqaaa-aaaal-acwda-cai.icp0.io/",
+    "twitter": "https://twitter.com/odoc_icp",
+    "github": "https://github.com/aliscie/odoc",
+    "display": "Normal",
+    "logo": "/img/showcase/odoc_logo.png"
+  },
+  {
+    "id": "zkcross-icp-bridge",
+    "name": "ZkCross",
+    "oneLiner": "One-click limitless liquidity across blockchains.",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "One-click limitless liquidity across blockchains.",
+    "usesInternetIdentity": true,
+    "website": "https://zkcross.network/",
+    "github": "https://github.com/zkCross-Network/zkCross-ICP",
+    "twitter": "https://twitter.com/ZkCrossNetwork",
+    "display": "Normal",
+    "logo": "/img/showcase/zkCross_logo.png"
+  },
+  {
+    "id": "icp-coffee-app",
+    "name": "Plural Finance",
+    "oneLiner": "Enabling coffee farmers to submit data reports on their yields and processes for crop insurance purposes.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Enabling coffee farmers to submit data reports on their yields and processes for crop insurance purposes.",
+    "usesInternetIdentity": true,
+    "website": "https://plural.fi/",
+    "github": "https://github.com/nuwrldnf8r/coffee_app_icp",
+    "twitter": "https://www.twitter.com/pluralfi",
+    "display": "Normal",
+    "logo": "/img/showcase/pluralfinance_logo.png",
+    "submittableId": "44635741"
+  },
+  {
+    "id": "icpexchange",
+    "name": "ICPEx",
+    "oneLiner": "Decentralized exchange built entirely on the chain based on the ICP.",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Decentralized exchange built entirely on the chain based on the ICP.",
+    "usesInternetIdentity": true,
+    "website": "https://icpex.org/",
+    "github": "https://github.com/ICPExchange",
+    "twitter": "https://twitter.com/ICPExchange",
+    "display": "Normal",
+    "stats": "229 tokens and 90 liquidity pools created",
+    "logo": "/img/showcase/icpex_logo.png",
+    "submittableId": "44773760"
+  },
+  {
+    "id": "orderswaplayer2",
+    "name": "Orderswap Layer2",
+    "oneLiner": "A Layer2 built on ICP.",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "description": "A Layer2 built on ICP.",
+    "usesInternetIdentity": true,
+    "website": "https://hk.ex3.one",
+    "github": "https://github.com/deland-labs",
+    "twitter": "https://twitter.com/DelandLabs",
+    "display": "Normal",
+    "logo": "/img/showcase/deland_labs_logo.png",
+    "submittableId": "35502016"
+  },
+  {
+    "id": "candb",
+    "name": "CanDB",
+    "oneLiner": "Flexible and truly horizontally scalable NoSQL database built for ICP.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Flexible and truly horizontally scalable NoSQL database built for ICP.",
+    "usesInternetIdentity": false,
+    "website": "https://ykgs2-ziaaa-aaaak-qcfya-cai.icp0.io/",
+    "github": "https://github.com/ORIGYN-SA/CanDB",
+    "display": "Normal",
+    "logo": "/img/showcase/candb_logo.png"
   }
 ]
