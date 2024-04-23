@@ -65,16 +65,14 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 What is the
-                <br className="hidden md:block" /> Internet Computer
+                <br className="hidden md:block" /> ICP blockchain?
               </motion.h1>
               <motion.p
                 className="pb-[15%] sm:pb-0 tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                The best way to understand the Internet Computer is 
-                by seeing its starting point: the power of smart contracts.
-                Below is a breakdown of why smart contracts are powerful 
-                and how the Internet Computer makes design decisions to unleash their power.
+                ICP is best understood by exploring its foundation: smart contracts. 
+                Here's a simple explanation of why smart contracts are effective and how ICP's vision is to unlock their power.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -121,126 +119,47 @@ function WhatIsIcpPage() {
           </div>
         </AnimateSpawn>
 
-        {/* Section with 6 cards */}
-        {/* <section
-          className="mt-20 md:mt-48
-          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
-          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
-          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
-          relative "
+        {/* ICP's vision */}
+        <section
+          // className="mt-20 md:mt-28
+          // bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
+          // sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
+          // md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
+          // relative "
         >
-          <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
+          <div className="container-10 md:w-6/10 md:mx-auto">
+            <motion.h2
+              // className="tw-heading-3 md:tw-heading-60 text-center mb-0"
+              className="tw-heading-4 md:tw-heading-60 text-center text-gradient mb-3"
 
-          <div className="container-12">
-            <AnimateSpawn
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-5"
-              variants={transitions.container}
+              variants={transitions.item}
             >
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
+              ICP's vision
+            </motion.h2>
+
+            <h2 
+              className="tw-heading-4 md:tw-heading-3 md:mb-6 mt-2"
+              // className="tw-paragraph md:tw-lead-sm mb-3"
+              // className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
               >
-                <img
-                  src="/img/what-is-the-ic/icon-tamperproof.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Tamperproof</h3>
-                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                  Canister software is tamperproof, does not need to be
-                  protected by a firewall, and cannot be infected with
-                  ransomware. Because the Internet Computer is created by
-                  advanced math, there are no backdoors.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-autonomous.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Autonomous</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Canisters can be made unmodifiable, creating permanent logic
-                  on the network, or placed under the control of autonomous
-                  governance – empowering communities to run Web3, or securing
-                  an enterprise.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-simple.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Simple</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  The global spend on IT personnel is now $1.8 trillion.
-                  Canister software greatly simplifies the development and
-                  maintenance of online systems and services, driving cost
-                  savings, and making you faster to market.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-sovereign.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Sovereign</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  If your enterprise, government or Web3 service builds on
-                  centralized traditional IT, there are kill switches and
-                  backdoors, which deny you true sovereignty. Build on the
-                  network instead.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-web3-ois.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Web3 + OIS</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Canisters support more powerful tokenization models that
-                  advance Web3. Autonomous governance can create “open Internet
-                  services” (OISs) that are exclusively managed by their
-                  communities.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Next-gen AI</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  The Internet Computer is currently adding support for Web3 “AI
-                  compute units.” AI will also run on the network, supporting
-                  native Web3 integrations, and trustlessness combinations of
-                  models and data.
-                </p>
-              </motion.div>
-            </AnimateSpawn>
+              It all starts with smart contracts. ICP blockchain is designed and built around the idea smart contracts are a disruptive, new compute paradigm enabling 
+              completely novel applications and more more software will run as smart contracts. 
+              <br/>
+              <br/>
+
+                <div
+                  className="text-gradient"
+                >
+                  <i>This is what separates ICP from other blockchains.</i>
+                </div>
+            
+              <br/>
+              All performance, efficiency, features, cryptographic capabilities are all designed to serve this vision:
+              a world where all the world's software runs as smart contracts.
+            </h2>
           </div>
-        </section> */}
+         
+        </section>
 
         {/* Context Section */}
         <section className="bg-infinite text-white pt-20 md:pt-44">
@@ -249,13 +168,13 @@ function WhatIsIcpPage() {
               className="tw-heading-3 md:tw-heading-60 text-center mb-0"
               variants={transitions.item}
             >
-              Where do I start in understanding ICP and its goals?
+              Why are smart contracts so important?
             </motion.h2>
 
-            <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6 mt-6">
-              The starting point is simple: smart contracts are a disruptive, new compute paradigm enabling 
-              completely novel applications and providing additional guarantees to existing ones.
-            </h2>
+            <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
+            Smart contracts are a disruptive, new compute paradigm enabling completely novel applications and providing additional guarantees to existing ones. 
+            Below is a list of some of the most important features of smart contracts.
+            </h3>
           </div>
           <div className=" container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
             <TranslatedLayout imageUrl="/img/what-is-the-ic/node-providers.webp">
@@ -266,7 +185,7 @@ function WhatIsIcpPage() {
               <p className="tw-lead-sm">
               Because smart contracts are decentrally executed, no single person, 
               organization, or government can stop or change their state unless the 
-              code foresees that – code is law. That constitutes a completely 
+              code foresees that &mdash; code is law. That constitutes a completely 
               new level of security that allows software to own things of great value.
               </p>
               <p>
@@ -358,8 +277,14 @@ function WhatIsIcpPage() {
                 className="tw-heading-3 md:tw-heading-60 text-gradient text-center inline-block mb-0"
                 variants={transitions.item}
               >
-                What is ICP's vision?
+                How does ICP unlock the power of smart contracts?
               </motion.h2>
+
+              <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
+            It starts by recognizing the limitations that smart contracts have.
+            ICP is designed to overcome these limitations and unlock the true 
+            power of smart contracts so they can be used for the world's software.
+            </h3>
             </AnimateSpawn>
           </div>
 
