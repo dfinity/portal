@@ -134,9 +134,9 @@ Lastly, you can include extra features to be added to your project:
 
 ## Smart contract code
 
-In this project, there are two canisters, `hello_backend` and `hello_frontend`.
+The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
 
-The `hello_frontend` canister is used to store the dapp's frontend assets. These include files and code such as HTML, CSS, JavaScript, React, images, videos, the app's user interface. 
+The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
 
 The `hello_backend` canister is used to store the dapp's functions and core logic. 
 
@@ -148,9 +148,9 @@ The `hello_backend` canister is used to store the dapp's functions and core logi
   />
 </div>
 
-
-It is important to note that canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend means since this allows any language to be used for the backend canister without needing to use a library for the assets storage API. 
-
+:::info
+It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API. 
+:::
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
