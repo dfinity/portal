@@ -17,15 +17,25 @@ This guide shows how to get started developing on ICP quickly by deploying your 
 
 ## Choosing a developer environment 
 
-To deploy a simple 'Hello, world!' smart contract, you can setup a local developer environment, or you can use a cloud-based developer environment such as Gitpod or GitHub Codespaces that already has the necessary dependencies and tools installed. For this example, Gitpod and Codespaces examples are available for the Motoko and Rust programming languages. Local development using `dfx` supports Motoko, Rust, Python, and TypeScript. 
+To deploy a simple 'Hello, world!' smart contract, you can use a variety of developer environments, such as:
+
+- Native installation of tools on Linux, Mac, or Windows (using WSL) systems.
+
+- Cloud-based environments such as Gitpod or GitHub Codespaces.
+
+- Containerized environments using Docker or Dev Containers. 
+
+Each developer environment uses [`dfx`](./install/index.mdx), the command-line tool that is used for developing and deploying smart contracts on ICP. 
 
 :::info
 
 **Which environment should you choose?**
 
-Gitpod and Codespaces are cloud-based developer environments that can be accessed via a web browser. They do not require downloading any tools or software. These environments use limited cloud resources and may not scale well for building large, complex projects. 
+Native installation requires downloading and installing `dfx` and its dependencies manually. Using `dfx` directly is better suited for large projects.
 
-Local development requires downloading and installing dependencies and `dfx`. Using `dfx` directly is better suited for large projects.
+Gitpod and Codespaces are cloud-based developer environments that can be accessed via a web browser. The Gitpod and GitHub Codespace examples linked on this page come with the necessary tools and dependencies pre-installed. These environments use limited cloud resources and may not scale well for building large, complex projects. 
+
+Containerized environments require downloading and installing the container software, such as Docker, plus downloading a container image and any necessary dependencies or tools that may not be included in the container image. 
 :::
 
 <AdornedTabs groupId="environments">
@@ -53,7 +63,7 @@ Local development requires downloading and installing dependencies and `dfx`. Us
 
 </TabItem>
 
-<TabItem value="dfx" label="dfx">
+<TabItem value="dfx" label="Native installation">
 
 ### Install `dfx`
 
@@ -195,7 +205,7 @@ def greet(name: str) -> str:
 </AdornedTabs>
 
 
-## Deploy locally
+## Deploy to the local environment
 
 Deploy the project's <GlossaryTooltip>canisters</GlossaryTooltip> locally:
 
