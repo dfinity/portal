@@ -4289,5 +4289,29 @@
     "twiter": "https://twitter.com/OmnityNetwork",
     "display": "Normal",
     "logo": "/img/showcase/omnitynetwork_logo.jpeg"
+  },
+  {
+    "name": "ICPanda DAO",
+    "description": "ICPanda DAO is dedicated to building the Panda meme brand across the Internet Computer's decentralized ecosystem, enhancing the connection between pandas and humans. Our focus extends beyond the animals themselves, embracing all valuable and praiseworthy ideas, positioning the Panda meme as a symbol of cherished concepts globally.",
+    "website": "https://panda.fans/",
+    "logo": "/img/showcase/icpanda-dao_logo.webp",
+    "screenshots": [
+      "/img/showcase/icpanda-dao_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "icpanda-dao",
+    "oneLiner": "A decentralized Panda meme brand built on the Internet Computer.",
+    "stats": "50,000+ users",
+    "tags": [
+      "DAO",
+      "SocialFi",
+      "NFT"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ldclabs/ic-panda",
+    "twitter": "https://twitter.com/ICPandaDAO",
+    "youtube": "",
+    "submittableId": ""
   }
 ]
