@@ -67,6 +67,15 @@ const SingleCard: React.FC<{
   );
 };
 
+interface CardData {
+  title: string;
+  description: string;
+  image: string;
+  href: string | null;
+  refText: string | null;
+  imageSide: "right" | "left";
+}
+
 const SmallCard: React.FC<{
   children: React.ReactNode;
   className?: string;
@@ -86,6 +95,124 @@ const SmallCard: React.FC<{
     </AnimateSpawn>
   );
 };
+
+const cardsData: CardData[] = [
+  {
+    title: "Serve web directly from smart contracts",
+    description:
+      "The Internet Computer is the only blockchain with canister smart contracts that can serve web by processing HTTP requests. This allows 100% of online services to run from the blockchain, which allows for full decentralization.",
+    image: "/img/features/serve-web.webp",
+    href: null,
+    refText: null,
+    imageSide: "right",
+  },
+  {
+    title: "Connect Web2 and Web3 without oracles",
+    description:
+      "Until now, blockchains had to rely on expensive and slow oracles to read from off-chain data sources. ICP smart contracts can directly connect to Web2 APIs, making oracles obsolete. This opens up countless possibilities like sending emails, push notifications, fetching digital asset or fiat prices and many more — directly from the blockchain.",
+    image: "/img/features/no-oracles-image.webp",
+    href: "/https-outcalls",
+    refText: "About HTTPS outcalls",
+    imageSide: "left",
+  },
+  {
+    title: "First googleable smart contracts in the world",
+    description:
+      "Search engines like Google can’t index smart contracts running on other blockchains. As developers have to use centralized cloud providers to store the frontends, at least those become searchable. A compromise. The Internet Computer hosts smart contracts that can directly be indexed by all popular search engines. No frontends on public cloud required. This is how true Web3 works.",
+    image: "/img/features/seo-image.webp",
+    href: "https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853",
+    refText: "Read the blog",
+    imageSide: "right",
+  },
+  {
+    title: "The brain of the Internet Computer",
+    description:
+      "The Internet Computer is governed by a fully on-chain permissionless system that regularly upgrades the protocol following the intentions of ICP token holders expressed through their votes.",
+    image: "/img/features/nns-image.webp",
+    href: "/nns",
+    refText: "Participate in ICP governance",
+    imageSide: "right",
+  },
+  {
+    title: "Turn any Web3 service into a DAO",
+    description:
+      "The Internet Computer allows developers to turn their dapps into a DAO to achieve full decentralization — 100% on-chain",
+    image: "/img/features/sns-image.webp",
+    href: "/sns",
+    refText: "Overview of ICP DAOs",
+    imageSide: "left",
+  },
+];
+
+const dePinCardsData: CardData[] = [
+  {
+    title: "Loka Mining",
+    description:
+      "Loka is a platform that enables retail investors to acquire BTC at a lower-than-market price by providing liquidity to Bitcoin miners without any exposure to centralized party risk using the trustless non-custodial escrow and fully decentralized mining pool.",
+    image: "/img/features/nns_image.webp",
+    href: "https://lokamining.com",
+    refText: "Learn more",
+    imageSide: "right",
+  },
+  {
+    title: "RentSpace",
+    description:
+      "RentSpace is pioneering the future of property rentals by harnessing the power of blockchain technology and Web3 innovations. Their mission is to revolutionize the real estate industry by providing features like Tik-Tok-style video marketing, crypto and fiat payment integrations, collaborative booking, and action-based rewards programs.",
+    image: "/img/features/sns_image.webp",
+    href: "https://rentb.space",
+    refText: "Learn more",
+    imageSide: "left",
+  },
+];
+
+const smallCardsData = [
+  {
+    title: "Chain-key cryptography",
+    description:
+      "The Internet Computer protocol uses a toolbox of advanced cryptographic mechanisms, collectively known as chain-key cryptography, which allows the IC to achieve functionalities and scalability that are impossible on other blockchains.",
+    href: "/how-it-works#Chain-key-technology",
+  },
+  {
+    title: "Concurrent execution",
+    description: `Enabled by the IC's asynchronous communication, "actor" smart
+contracts run in parallel, unlocking horizontal scaling and
+preventing reentrancy attacks like the infamous DAO attack, which
+caused a major chain to hard fork and a loss of 60 million USD.`,
+    href: "/capabilities/actor-model",
+  },
+  {
+    title: "Heartbeats",
+    description: `On other blockchain networks, smart contract computations can only
+  be invoked by submitting a new transaction to their networks. The
+  Internet Computer provides a means for canister smart contracts to
+  be configured so that they are invoked by the blockchain itself,
+  at some specified block interval.`,
+    href: "/capabilities/daemon-contracts",
+  },
+  {
+    title: "Multi-block transactions",
+    description: `Smart contract calls (TXs) can be long-running and can span
+  multiple blocks. This removes the tedious "round gas limit" most
+  blockchains have, simplifies smart contract programming, and
+  unlocks new use cases.`,
+    href: "/capabilities/multi-block-transactions",
+  },
+  {
+    title: "WebAssembly (Wasm)",
+    description: `Use any language that compiles to Wasm to write canister smart
+  contracts. SDKs are available for Motoko, Rust, TypeScript, Python
+  and C++. Any other language that compiles to Wasm can be used as
+  well.`,
+    href: "/capabilities/webassembly",
+  },
+  {
+    title: "Subnets & infinite scalability",
+    description: `The Internet Computer incorporates a novel subnet architecture
+  that enables infinite scalability, making 100% on-chain
+  mass-market Web3 services possible. No cloud servers needed.`,
+    href: "/capabilities/limitless-scaling",
+  },
+];
 
 function FeaturesPage() {
   return (
@@ -157,76 +284,38 @@ function FeaturesPage() {
           </div>
         </AnimateSpawn>
         <section className="container-12 grid md:grid-cols-2 gap-5">
-          <SplitCard
-            imageSide="right"
-            image={
-              <img
-                src="/img/features/serve-web.webp"
-                alt=""
-                className="aspect-[1159/629]"
-                width="1159"
-                loading="lazy"
-              ></img>
-            }
-            className="md:col-span-2"
-          >
-            <motion.h3
-              className="tw-heading-4 md:tw-heading-3 mb-4"
-              variants={transitions.item}
+          {cardsData.slice(0, 2).map((card, index) => (
+            <SplitCard
+              className="md:col-span-2"
+              key={index}
+              imageSide={card.imageSide}
+              image={<img src={card.image} alt="" loading="lazy"></img>}
             >
-              Serve web directly from smart contracts
-            </motion.h3>
-            <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-0 text-black-60"
-              variants={transitions.item}
-            >
-              The Internet Computer is the only blockchain with canister smart
-              contracts that can serve web by processing HTTP requests. This
-              allows 100% of online services to run from the blockchain, which
-              allows for full decentralization.
-            </motion.p>
-          </SplitCard>
-
-          <SplitCard
-            imageSide="left"
-            image={
-              <img
-                src="/img/features/no-oracles-image.webp"
-                alt=""
-                className="aspect-[1160/760]"
-                width="1160"
-                loading="lazy"
-              ></img>
-            }
-            className="md:col-span-2"
-          >
-            <motion.h3
-              variants={transitions.item}
-              className="tw-heading-4 md:tw-heading-3 mb-4 "
-            >
-              Connect Web2 and Web3 without oracles
-            </motion.h3>
-            <motion.p
-              className="tw-paragraph md:tw-lead-sm text-black-60 mb-6"
-              variants={transitions.item}
-            >
-              Until now, blockchains had to rely on expensive and slow oracles
-              to read from off-chain data sources. ICP smart contracts can
-              directly connect to Web2 APIs, making oracles obsolete. This opens
-              up countless possibilities like sending emails, push
-              notifications, fetching digital asset or fiat prices and many more
-              — directly from the blockhain.
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link
-                href="/https-outcalls"
-                className="tw-heading-6 flex gap-2 items-center"
+              <motion.h3
+                className="tw-heading-4 md:tw-heading-3 mb-4"
+                variants={transitions.item}
               >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                About HTTPS outcalls
-              </Link>
-            </motion.p>
-          </SplitCard>
+                {card.title}
+              </motion.h3>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm mb-0 text-black-60 mb-6"
+                variants={transitions.item}
+              >
+                {card.description}
+              </motion.p>
+              {card.refText && card.href && (
+                <motion.p className="mb-0" variants={transitions.item}>
+                  <Link
+                    href={card.href}
+                    className="tw-heading-6 flex gap-2 items-center"
+                  >
+                    <RightPointer className="w-6 h-6"></RightPointer>
+                    {card.refText}
+                  </Link>
+                </motion.p>
+              )}
+            </SplitCard>
+          ))}
           <SingleCard className="bg-gradient-100 from-[#0E031F] to-[#281447] text-white relative pb-52">
             <img
               src="/img/features/astronaut-image.webp"
@@ -311,48 +400,39 @@ function FeaturesPage() {
               ))}
             </div>
           </SingleCard>
-
-          <SplitCard
-            imageSide="right"
-            image={
-              <img
-                src="/img/features/seo-image.webp"
-                alt=""
-                loading="lazy"
-                className="aspect-[1159/706]"
-                width="1159"
-              ></img>
-            }
-            className="md:col-span-2"
-          >
-            <motion.h3
-              variants={transitions.item}
-              className="tw-heading-4 md:tw-heading-3 mb-4 "
+          {cardsData.slice(2, 3).map((card, index) => (
+            <SplitCard
+              key={index}
+              className="md:col-span-2"
+              imageSide={card.imageSide}
+              image={<img src={card.image} alt="" loading="lazy"></img>}
             >
-              First googleable smart contracts in the world
-            </motion.h3>
-            <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-6 text-black-60"
-              variants={transitions.item}
-            >
-              Search engines like Google can’t index smart contracts running on
-              other blockchains. As developers have to use centralized cloud
-              providers to store the frontends, at least those become
-              searchable. A compromise. The Internet Computer hosts smart
-              contracts that can directly be indexed by all popular search
-              engines. No frontends on public cloud required. This is how true
-              Web3 works.
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link
-                href="https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853"
-                className="tw-heading-6 flex gap-2 items-center"
+              <motion.h3
+                className="tw-heading-4 md:tw-heading-3 mb-4"
+                variants={transitions.item}
               >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                Read the blog
-              </Link>
-            </motion.p>
-          </SplitCard>
+                {card.title}
+              </motion.h3>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm mb-0 text-black-60 mb-6"
+                variants={transitions.item}
+              >
+                {card.description}
+              </motion.p>
+              {card.refText && card.href && (
+                <motion.p className="mb-0" variants={transitions.item}>
+                  <Link
+                    href={card.href}
+                    className="tw-heading-6 flex gap-2 items-center"
+                  >
+                    <RightPointer className="w-6 h-6"></RightPointer>
+                    {card.refText}
+                  </Link>
+                </motion.p>
+              )}
+            </SplitCard>
+          ))}
+
           <SingleCard>
             <motion.h3
               variants={transitions.item}
@@ -403,7 +483,84 @@ function FeaturesPage() {
             </motion.p>
           </SingleCard>
         </section>
+        <AnimateSpawn
+          className="container-10 text-white relative mt-20 md:mt-64 mb-32 md:mb-20"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <motion.div
+            variants={transitions.fadeIn}
+            className="
+            z-[-1]
+            blob
+            blob-purple 
+            blob-md md:blob-lg
+            blob-center
+          "
+          ></motion.div>
+          <div className="md:w-8/10  mx-auto text-center">
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-6"
+              variants={transitions.item}
+            >
+              ICP as a DePIN Network
+            </motion.h2>
+            <motion.p
+              className="tw-lead-sm  md:tw-lead mb-0"
+              variants={transitions.item}
+            >
+              Decentralized physical infrastructure networks (DePINs) are
+              blockchain protocols that build, maintain, and operate hardware
+              infrastructure in an open and decentralized manner. The Internet
+              Computer is one of the leading DePIN networks, hosted by special
+              node machines dedicated to creating a sovereign network, governed
+              by an advanced DAO. Canister smart contracts can rent compute and
+              storage on the network.
+            </motion.p>
+          </div>
+        </AnimateSpawn>
 
+        <section className="container-12 grid md:grid-cols-2 gap-5">
+          {dePinCardsData.map((card, index) => (
+            <SplitCard
+              key={index}
+              className="md:col-span-2"
+              imageSide={card.imageSide}
+              image={
+                <img
+                  className={card.imageSide === "right" ? "float-right" : null}
+                  src={card.image}
+                  alt=""
+                  loading="lazy"
+                ></img>
+              }
+            >
+              <motion.h3
+                className="tw-heading-4 md:tw-heading-3 mb-4"
+                variants={transitions.item}
+              >
+                {card.title}
+              </motion.h3>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm mb-0 text-black-60 mb-6"
+                variants={transitions.item}
+              >
+                {card.description}
+              </motion.p>
+              {card.refText && card.href && (
+                <motion.p className="mb-0" variants={transitions.item}>
+                  <Link
+                    href={card.href}
+                    className="tw-heading-6 flex gap-2 items-center"
+                  >
+                    <RightPointer className="w-6 h-6"></RightPointer>
+                    {card.refText}
+                  </Link>
+                </motion.p>
+              )}
+            </SplitCard>
+          ))}
+        </section>
         <AnimateSpawn
           className="container-10 text-white relative mb-20 mt-44  md:mt-56"
           el={motion.section}
@@ -568,81 +725,54 @@ function FeaturesPage() {
           </div>
         </AnimateSpawn>
         <section className="container-12 grid md:grid-cols-2 gap-5">
-          <SplitCard
-            imageSide="right"
-            image={
-              <img
-                src="/img/features/nns-image.webp"
-                alt=""
-                className=""
-                loading="lazy"
-              ></img>
-            }
-            className="md:col-span-2"
-          >
-            <motion.h3
-              className="tw-heading-4 md:tw-heading-3 mb-4 "
-              variants={transitions.item}
+          {cardsData.slice(3, 5).map((card, index) => (
+            <SplitCard
+              className="md:col-span-2"
+              key={index}
+              imageSide={card.imageSide}
+              imageSideClassName={
+                card.image === "/img/features/sns-image.webp"
+                  ? "relative w-full min-h-[50vw] sm:min-h-[20vh] md:min-h-0 md:h-full overflow-hidden"
+                  : null
+              }
+              image={
+                <img
+                  className={
+                    card.image === "/img/features/sns-image.webp"
+                      ? "px-6 w-[550px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                      : null
+                  }
+                  src={card.image}
+                  alt=""
+                  loading="lazy"
+                ></img>
+              }
             >
-              The brain of the Internet Computer
-            </motion.h3>
-            <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-6 text-black-60"
-              variants={transitions.item}
-            >
-              The Internet Computer is governed by a fully on-chain
-              permissionless system that regularly upgrades the protocol
-              following the intentions of ICP token holders expressed through
-              their votes.
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link
-                href="/nns"
-                className="tw-heading-6 flex gap-2 items-center"
+              <motion.h3
+                className="tw-heading-4 md:tw-heading-3 mb-4"
+                variants={transitions.item}
               >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                Participate in ICP governance
-              </Link>
-            </motion.p>
-          </SplitCard>
-
-          <SplitCard
-            imageSide="left"
-            imageSideClassName="relative w-full min-h-[50vw] sm:min-h-[20vh] md:min-h-0 md:h-full overflow-hidden"
-            image={
-              <img
-                src="/img/features/sns-image.webp"
-                alt=""
-                className="px-6 w-[550px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                loading="lazy"
-              ></img>
-            }
-            className="md:col-span-2"
-            contentSideClassName="relative z-10"
-          >
-            <motion.h3
-              className="tw-heading-4 md:tw-heading-3 mb-4 "
-              variants={transitions.item}
-            >
-              Turn any Web3 service into a DAO
-            </motion.h3>
-            <motion.p
-              className="tw-paragraph md:tw-lead-sm mb-6 text-black-60"
-              variants={transitions.item}
-            >
-              The Internet Computer allows developers to turn their dapps into a
-              DAO to achieve full decentralization — 100% on-chain
-            </motion.p>
-            <motion.p className="mb-0" variants={transitions.item}>
-              <Link
-                href="/sns"
-                className="tw-heading-6 flex gap-2 items-center"
+                {card.title}
+              </motion.h3>
+              <motion.p
+                className="tw-paragraph md:tw-lead-sm mb-0 text-black-60 mb-6"
+                variants={transitions.item}
               >
-                <RightPointer className="w-6 h-6"></RightPointer>
-                Overview of ICP DAOs
-              </Link>
-            </motion.p>
-          </SplitCard>
+                {card.description}
+              </motion.p>
+              {card.refText && card.href && (
+                <motion.p className="mb-0" variants={transitions.item}>
+                  <Link
+                    href={card.href}
+                    className="tw-heading-6 flex gap-2 items-center"
+                  >
+                    <RightPointer className="w-6 h-6"></RightPointer>
+                    {card.refText}
+                  </Link>
+                </motion.p>
+              )}
+            </SplitCard>
+          ))}
         </section>
 
         <AnimateSpawn
@@ -689,70 +819,16 @@ function FeaturesPage() {
               blob-top-right
             "
           ></motion.div>
-          <SmallCard href="/how-it-works#Chain-key-technology">
-            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Chain-key cryptography
-            </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
-              The Internet Computer protocol uses a toolbox of advanced
-              cryptographic mechanisms, collectively known as chain-key
-              cryptography, which allows the IC to achieve functionalities and
-              scalability that are impossible on other blockchains.
-            </p>
-          </SmallCard>
-          <SmallCard href="/capabilities/actor-model">
-            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Concurrent execution
-            </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
-              Enabled by the IC's asynchronous communication, "actor" smart
-              contracts run in parallel, unlocking horizontal scaling and
-              preventing reentrancy attacks like the infamous DAO attack, which
-              caused a major chain to hard fork and a loss of 60 million USD.
-            </p>
-          </SmallCard>
-          <SmallCard href="/capabilities/daemon-contracts">
-            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">Heartbeats</h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
-              On other blockchain networks, smart contract computations can only
-              be invoked by submitting a new transaction to their networks. The
-              Internet Computer provides a means for canister smart contracts to
-              be configured so that they are invoked by the blockchain itself,
-              at some specified block interval.
-            </p>
-          </SmallCard>
-          <SmallCard href="/capabilities/multi-block-transactions">
-            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Multi-block transactions
-            </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
-              Smart contract calls (TXs) can be long-running and can span
-              multiple blocks. This removes the tedious "round gas limit" most
-              blockchains have, simplifies smart contract programming, and
-              unlocks new use cases.
-            </p>
-          </SmallCard>
-          <SmallCard href="/capabilities/webassembly">
-            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
-              WebAssembly (Wasm)
-            </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
-              Use any language that compiles to Wasm to write canister smart
-              contracts. SDKs are available for Motoko, Rust, TypeScript, Python
-              and C++. Any other language that compiles to Wasm can be used as
-              well.
-            </p>
-          </SmallCard>
-          <SmallCard href="/capabilities/limitless-scaling">
-            <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
-              Subnets &amp; infinite scalability
-            </h3>
-            <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
-              The Internet Computer incorporates a novel subnet architecture
-              that enables infinite scalability, making 100% on-chain
-              mass-market Web3 services possible. No cloud servers needed.
-            </p>
-          </SmallCard>
+          {smallCardsData.map((card, index) => (
+            <SmallCard key={index} href={card.href}>
+              <h3 className="tw-heading-6 md:tw-heading-5 mb-3">
+                {card.title}
+              </h3>
+              <p className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0">
+                {card.description}
+              </p>
+            </SmallCard>
+          ))}
         </section>
         <AnimateSpawn
           className="container-10 text-white relative my-44 md:my-56"

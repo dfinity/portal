@@ -34,10 +34,15 @@ const {
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
+const snsDataPlugin = require("./plugins/sns-data");
+const airtablePlugin = require("./plugins/airtable");
+const youtubePlugin = require("./plugins/youtube");
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
-console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+if (process.env.PREVIEW_CANISTER_ID) {
+  console.log("PREVIEW_CANISTER_ID:", process.env.PREVIEW_CANISTER_ID);
+}
 
 const navbarItems = [
   {
@@ -51,37 +56,43 @@ const subnavItems = [
     type: "doc",
     position: "left",
     docId: "home",
-    label: "Docs",
+    label: "Home",
   },
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "tutorials",
-    label: "Tutorials",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
-    sidebarId: "guides",
-    label: "Guides",
+    sidebarId: "build",
+    label: "Build",
     activeBasePath: "/docs/current/developer-docs/",
   },
   {
-    type: "docSidebar",
+    type: "dropdown",
     position: "left",
-    sidebarId: "references",
-    label: "References",
+    label: "Languages",
+    items: [
+      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
+      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
+      {
+        label: "TypeScript",
+        href: "/docs/current/developer-docs/backend/typescript/",
+      },
+      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
+      {
+        label: "Solidity",
+        href: "/docs/current/developer-docs/backend/solidity/",
+      },
+    ],
   },
   {
-    type: "docSidebar",
+    type: "dropdown",
     position: "left",
-    sidebarId: "motoko",
-    label: "Motoko",
-  },
-  {
-    position: "left",
-    to: "blog",
-    label: "Blog",
+    label: "Frameworks",
+    items: [
+      {
+        label: "Juno",
+        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
+      },
+    ],
   },
   {
     type: "dropdown",
@@ -114,7 +125,14 @@ const subnavItems = [
       },
     ],
   },
-];
+  /**
+   * Add UI tests in development mode
+   */
+  process.env.NODE_ENV === "development" && {
+    label: "UI Tests",
+    href: "/docs/current/tests/all",
+  },
+].filter(Boolean);
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
@@ -168,7 +186,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Building green, efficient tech",
+            title: "Blockchain for Sustainable Business",
             href: "/capabilities/sustainability",
             image: "/img/nav/featured-start-here.webp",
           },
@@ -182,19 +200,14 @@ const marketingNav = {
               description: "Transforming the internet",
             },
             {
-              name: "Bitcoin <> ICP",
+              name: "ICP as a Bitcoin L2",
               href: "/bitcoin-integration",
               description: "Bringing smart contracts to Bitcoin",
             },
             {
-              name: "Ethereum <> ICP",
+              name: "ICP as an Ethereum sidechain",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
-            },
-            {
-              name: "Identity on ICP",
-              href: "/internet-identity",
-              description: "One secure identity for all services",
             },
             {
               name: "HTTPS Outcalls",
@@ -240,7 +253,7 @@ const marketingNav = {
               description: "Govern and get rewards",
             },
             {
-              name: "Create an Internet Identity",
+              name: "Internet Identity",
               href: "/internet-identity",
               description: "Web3 authentication",
             },
@@ -255,8 +268,8 @@ const marketingNav = {
           name: "Use cases",
           items: [
             {
-              name: "Open Internet Services",
-              href: "/ois",
+              name: "DAOs on ICP",
+              href: "/sns",
               description: "Community-owned services",
             },
             {
@@ -286,8 +299,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Trustless multi-chain",
-            href: "/multichain",
+            title: "Chain Fusion Technology",
+            href: "/chainfusion",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
@@ -317,7 +330,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Free Cycles",
-          href: "/docs/current/developer-docs/setup/cycles/cycles-faucet",
+          href: "/docs/current/developer-docs/getting-started/cycles/cycles-faucet",
         },
       ],
 
@@ -344,7 +357,7 @@ const marketingNav = {
               name: "Programming languages",
 
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/backend/choosing-language",
+              href: "/docs/current/developer-docs/smart-contracts/write/overview",
             },
             {
               name: "Hackathons",
@@ -354,7 +367,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Learn to build step by step",
-            href: "/docs/current/tutorials/",
+            href: "/docs/current/tutorials/developer-journey/",
             image: "/img/nav/featured-develop.webp",
           },
         },
@@ -411,20 +424,26 @@ const marketingNav = {
               description: "Become a node provider",
             },
             {
+              name: "Events",
+              href: "/events",
+              description: "Meet fellow Web3 enthusiasts",
+            },
+            {
+              name: "News",
+              href: "/news",
+              description: "Stay up to date",
+            },
+            {
               name: "Community Blog",
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
             },
-            {
-              name: "Upcoming events",
-              description: "Meet fellow Web3 enthusiasts",
-              href: "https://dfinity.org/events-and-news/",
-            },
           ],
           featured: {
-            title: "ICP around the world",
-            href: "/community",
-            image: "/img/nav/featured-community.webp",
+            title: "OLYMPUS",
+            subtitle: "The On-Chain Acceleration Platform",
+            href: "/olympus",
+            image: "/img/nav/featured-olympus.webp",
           },
         },
       ],
@@ -478,7 +497,6 @@ const config = {
   },
   scripts: [],
   plugins: [
-    ["docusaurus2-dotenv", { systemvars: true }],
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
@@ -494,6 +512,9 @@ const config = {
     matomoPlugin,
     blogPostsPlugin,
     contentfulPlugin,
+    snsDataPlugin,
+    airtablePlugin,
+    youtubePlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
@@ -638,6 +659,11 @@ const config = {
                 label: "Brand Materials",
                 href: "https://dfinity.frontify.com/d/pD7yZhsmpqos",
               },
+              {
+                label: "Press Kit",
+                href: "/press-kit.zip",
+                isDownload: true,
+              },
             ],
           },
           {
@@ -651,6 +677,16 @@ const config = {
                 ),
                 icon: `data:image/svg+xml;base64,${fs
                   .readFileSync("./static/img/svgIcons/twitter-white.svg")
+                  .toString("base64")}`,
+              },
+              {
+                label: "Telegram",
+                to: "https://t.me/+m8tiEFaaNR8xNjNl",
+                iconLight: getImageDataUrl(
+                  "./static/img/svgIcons/purple/telegram.svg"
+                ),
+                icon: `data:image/svg+xml;base64,${fs
+                  .readFileSync("./static/img/svgIcons/telegram-white.svg")
                   .toString("base64")}`,
               },
               {

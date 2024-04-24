@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from "react";
+import React, { ReactNode, lazy, useRef } from "react";
 import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
 import Link from "@docusaurus/Link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +15,28 @@ interface CarouselCard {
 }
 
 const CARDS: Array<CarouselCard> = [
+  {
+    title: (
+      <h2 className={"text-white"}>ICP Demystified: Learn the Essentials</h2>
+    ),
+    subtitle: (
+      <p className={"text-white"}>
+        Explore the Protocol and Its Features with Our "Zero to dApp Educate
+        Series".
+      </p>
+    ),
+    backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
+    cta: (
+      <Link
+        className="button-transparent button-with-icon pl-0"
+        href="https://youtube.com/playlist?list=PLuhDt1vhGcrcRcHvSKmxIgJAh1b3rcR7N&si=sIElj5bAkJeMqDoA"
+      >
+        Watch now!
+        <LinkArrowRight />
+      </Link>
+    ),
+    mainImage: "/img/docs/teaser-cards/main-zero-to-dapp.webp",
+  },
   {
     title: (
       <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
@@ -47,7 +69,7 @@ const CARDS: Array<CarouselCard> = [
     cta: (
       <Link
         className="button-transparent button-with-icon pl-0"
-        href="/docs/current/tutorials"
+        href="/docs/current/tutorials/developer-journey/"
       >
         Start tutorials
         <LinkArrowRight />
@@ -135,6 +157,7 @@ export function TeaserCarousel() {
                 </div>
                 {card.mainImage && (
                   <img
+                    loading="lazy"
                     className={"sm:hidden"}
                     src={card.mainImage}
                     alt={

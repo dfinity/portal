@@ -1,4 +1,4 @@
-# Internet Computer developer documentation: style, format, and language guide
+# Dev Docs Style Guide
 
 ## Overview
 
@@ -18,96 +18,62 @@ This guide will outline the following:
 - Code snippets and code blocks.
 - Command line syntax.
 - FAQ sections.
-- The difference between a tutorial and a guide.
-- How to write a tutorial.
-- How to write a guide.
 
 ## Page structure
 
-The developers docs contain a wide variety of different document types, such as tutorials, guides, informational pages, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
+The developers docs contain a wide variety of different document types, such as overview pages, concept pages, feature pages, tutorials, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
 
-The following page structure should be followed for informational pages and guides:
+The following example template can be used:
 
 ```
+---
+keywords: [keyword1, keyword2, keyword3]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Page title
+
+<MarkdownChipRow labels={["label1", "label2", "label3"]} />
 
 ## Overview
 
-Text
+Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist). 
 
-## Prerequisites (Optional; only necessary for guides that require prerequisite conditions or parameters be met.)
+## Prerequisites
 
+Optional; only necessary for documents that require prerequisite conditions or parameters be met.
+
+List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page. 
 - [x] Prerequisite 1.
 - [x] Prerequisite 2.
 - [x] Prerequisite 3.
 
 ## Topic 1
 
-Text
+What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required? 
 
 ### Subtopic 1
 
-Text
-
-### Subtopic 2
-
-- Bullet 1.
-- Bullet 2.
-- Bullet 3.
+Include any information about a subtopic of Topic 1 here. This may include nuances with Topic 1 or best practices that should be noted. 
 
 ## Topic 2
 
-Text
+Introduce the second topic. 
 
-### Subtopic 3
+This is optional; there may be only one primary topic within the feature. Use your best judgement for what topics and subtopics your document may need. 
 
-Text
+## Topic 3
+
+If your document includes a step-by-step walkthrough, introduce the walkthrough as a topic, then use the following format:
 
 - #### Step 1: Description of step for reader to take.
 - #### Step 2: Description of step for reader to take.
 - #### Step 3: Description of step for reader to take.
 
-## Conclusion
-
-Text
-
 ## Resources
 - [Link](link.com)
-```
 
-The following page structure should be followed for tutorials:
-
-```
-# Page title
-
-## Overview
-
-Text
-
-## Prerequisites
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Step 1: Description of step
-
-Text
-
-## Step 2: Description of step
-
-Text
-
-## Step 3: Description of step
-
-Text
-
-## Conclusion
-
-Text
-
-## Resources
-- [Link](link.example)
 ```
 
 ## Page headings
@@ -263,6 +229,9 @@ The following language and capitalization of certain terms and phrases should be
 - built on ICP
 - canister
 - canister smart contract
+- chain-key signature
+- chain-key cryptography
+- chain fusion
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
 - deployed on ICP
@@ -289,10 +258,13 @@ The following language and capitalization of certain terms and phrases should be
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
+- multi-chain
 - neuron
 - node provider
 - open internet service
 - reverse gas model
+- Sybil resistance
+- Sybil attack
 - vetKeys
 - Web3
 - World Wide Web
@@ -349,7 +321,7 @@ The following punctuation standards should be followed:
 - All bullet point lists should be prefaced with introduction text followed by a colon.
 - All items within a bullet point list should end in a period, regardless if the entry is a full sentence or not.
 - All numbered lists should use the format `1.` for numbering each list entry.
-- All user steps for guides and tutorials should use the format `Step 1:` to preface each step's contents.
+- All user steps for tutorials should use the format `Step 1:` to preface each step's contents.
 
 ## Bulleted lists
 
@@ -411,6 +383,8 @@ Links that are referenced within the developer docs should use the following for
 - In-line links should not capitalize the title of the page or section that is being linked. For example:
     - The below section [demonstrating trust](#demonstrating-trust).
     - The Wiki [contains some ideas](https://wiki.internetcomputer.org/wiki/Dealing_with_cycles_limit_exceeded_errors) how one can work around the cycles limit.
+- Links should not use the format of 'See the documentation [here](link)'. 
+    - All links should use the format '[Learn more about ICP](link)'.
 
 ## Code snippets and code blocks
 The following format should be used for code snippets and code blocks:
@@ -450,7 +424,7 @@ dfx deploy --background
 
 ```
 dfx identity new Alice --disable-encryption
-````
+```
 
 ```
 dfx deploy internet_identity --argument '(null)'
@@ -468,108 +442,4 @@ Answer
 
 - #### Question 2?
 Answer
-```
-
-## Difference between tutorials and guides
-
-
-Tutorials should be either stand-alone projects that a user can follow A-Z that may build off of an example code, may use a variety of different concepts, tools, or assets, and ultimately results in a working example project, or should be a comprehensive, intentional collection or series that is meant to be followed from start to finish (such as the Developer Journey). 
-
-In contrast, guides should be more focused on individual concepts or workflows and then building off of those. Guides should not need to be followed in a specific order or be part of a series for the reader to utilize and benefit from them. For example, the guides for building a smart contract backend with Motoko each focus and build upon individual concepts within Motoko, such as using integers in calculator functions or querying using an actor.
-
-### Writing a tutorial
-When contributing a tutorial, the following general format and structure should be used. It is important to note that the content of tutorials will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
-
-An exeption to this format is the Developer Journey tutorial series, which uses a slightly different standardized format due to the unique nature of the Developer Journey series. All other tutorials should follow this format. 
-
-```
-# Page title (Title that should be displayed on the sidebar)
-
-## Overview
-
-This section should contain an overview of what the tutorial will teach the developer. This information includes what technology features are being highlighted (HTTPS outcalls, Bitcoin integration, ledger, etc) and should explain why these features are important to the developer. This section should also provide an overview of what is being built (DEX, NFT example, etc). 
-
-## Prerequisites
-
-This section should be used to list any prerequisites that a developer will need to follow this tutorial, assuming they have not followed any other tutorial. Common prerequisites include installing the IC SDK, installing an IDE, and installing Node.js. 
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Step 1: Description of step (This should describe what the developer will accomplish in this step. Ex: “Create a new project”, “Open the main.mo file”, “Write a function that makes an inter-canister call”, etc.)
-
-Include any context or additional information for the developer to complete this step. Typically this will include the code snippet, command to run, or other information about what the developer must do. It is also beneficial to include the ‘why’ a developer is completing this step to help further their understanding.
-
-### Subtopic 1 (Subtopics are optional. They can be used to break up tutorials that cover several different concepts, such as an HTTP outcalls tutorial that covers both GET and POST requests; subtopics can be used to break the tutorial into two parts - one for GET and one for POST.)
-
-Include any context or additional information about what the subtopic is and how it relates to the overall theme of the tutorial. 
-
-## Step 2: Description of step 
-
-Text
-
-– Repeat above format as necessary for duration of tutorial
-
-## Conclusion
-
-Wrap up the tutorial by reiterating what the developer learned about, what they accomplished, and what they are able to do with the result of this tutorial (continue building, enhance example by adding additional features, etc.)
-
-## Resources
-- [Link](link.example)
-```
-
-### Writing a guide
-When contributing a guide, the following general format and structure should be used. It is important to note that the content of guides will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
-
-```
-# Page title
-
-## Overview
-
-Text
-
-## Prerequisites (Optional; only necessary for guides that require prerequisite conditions or parameters be met.)
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Topic 1
-
-Text
-
-### Subtopic 1
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-### Subtopic 2
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-## Topic 2
-
-Text
-
-### Subtopic 3
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-## Conclusion
-Text
-
-## Resources
-- [Link](link.example)
 ```

@@ -16,52 +16,18 @@ import TwitterIcon from "@site/static/img/svgIcons/twitter.svg";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
 
-const Pill: React.FC<{
-  children: React.ReactNode;
-  isActive: boolean;
-  onClick: () => void;
-}> = ({ children, isActive, onClick }) => {
-  return (
-    <button
-      className={clsx(
-        "whitespace-nowrap rounded-full inline-flex group gap-2 px-4 py-2 appearance-none border-solid border border-white/50 tw-title-navigation font-circular hover:text-infinite  hover:bg-white  hover:border-transparent",
-        isActive
-          ? "text-infinite bg-white border-transparent"
-          : "text-white bg-transparent border-white"
-      )}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
-
-const PillSecondaryLabel: React.FC<{
-  children: React.ReactNode;
-  isActive: boolean;
-}> = ({ children, isActive }) => {
-  return (
-    <span
-      className={
-        isActive
-          ? "text-infinite/60"
-          : "text-white/50 group-hover:text-infinite/60"
-      }
-    >
-      {children}
-    </span>
-  );
-};
+type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
 
 function sortDesktopProjects(
   projects: ShowcaseProject[]
-): Array<ShowcaseProject | "promo"> {
-  const small: Array<ShowcaseProject | "promo"> = projects.filter(
+): EnrichedShowcaseProjects {
+  const small: EnrichedShowcaseProjects = projects.filter(
     (p) => p.display !== "Large"
   );
   const large = projects.filter((p) => p.display === "Large");
-  const sorted: Array<ShowcaseProject | "promo"> = [];
+  const sorted: EnrichedShowcaseProjects = [];
   const columns = 4;
 
   const promoSlots = [8 - 1, 20 - 3, 32 - 2, 48 - 4, 64 - 1];
@@ -70,6 +36,11 @@ function sortDesktopProjects(
     if (small.length >= slot) {
       small.splice(slot, 0, "promo");
     }
+  }
+
+  // add report card after the 1st promo card
+  if (small.length >= 8) {
+    small.splice(0, 0, "report");
   }
 
   while (true) {
@@ -181,6 +152,8 @@ const ProjectInfo: React.FC<{
         <Link
           className="button-round"
           href={project.website}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Visit project ${project.name} website at ${project.website}`}
         >
           Try it
@@ -189,6 +162,8 @@ const ProjectInfo: React.FC<{
           <Link
             className="button-round-icon"
             href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Go to source code of project ${project.name}`}
           >
             <GithubIcon></GithubIcon>
@@ -198,6 +173,8 @@ const ProjectInfo: React.FC<{
           <Link
             className="button-round-icon"
             href={project.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Go to source code of project ${project.name}`}
           >
             <YoutubeIcon></YoutubeIcon>
@@ -207,6 +184,8 @@ const ProjectInfo: React.FC<{
           <Link
             className="button-round-icon"
             href={project.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Go to source code of project ${project.name}`}
           >
             <TwitterIcon></TwitterIcon>
@@ -239,8 +218,34 @@ const PromoCard = () => {
         <Link
           className="button-white text-center"
           href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Submit now
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const ReportCard = () => {
+  return (
+    <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
+      <div className="flex flex-col gap-2">
+        <h3 className="tw-title-sm mb-0">ICP Ecosystem Report</h3>
+        <p className="tw-paragraph text-white/60 flex-1 mb-12">
+          The first ICP ecosystem report recaps the most substantial ecosystem
+          achievements from 2023 as well as zooms in on several success stories
+          from within the ecosystem.
+        </p>
+        <Link
+          className="button-white link text-center"
+          href="/icp_ecosystem_report_03_2024.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+        >
+          Download Report
         </Link>
       </div>
     </div>
@@ -287,7 +292,7 @@ function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
   const [filteredProjects, setFilteredProjects] =
-    React.useState<Array<ShowcaseProject | "promo">>(projects);
+    React.useState<EnrichedShowcaseProjects>(projects);
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
 
@@ -325,11 +330,15 @@ function ShowcasePage(): JSX.Element {
             <h1 className="md:tw-heading-2 mb-8 md:mb-10 relative">
               Enter the <br className="md:hidden" /> ICP ecosystem
             </h1>
-            <div className="flex overflow-auto -mx-6 px-6 pb-4 md:mx-0 md:overflow-visible md:m-0 md:p-0 md:flex-wrap gap-3 relative ecosystem-pills-scrollbar ">
+            <div className="flex overflow-auto -mx-6 px-6 pb-4 md:mx-0 md:overflow-visible md:m-0 md:p-0 md:flex-wrap gap-3 relative light-pills-scrollbar ">
               {/* <button className="rounded-full px-3 appearance-none border-solid border border-[#d2d2d2] hover:text-white  hover:bg-infinite  hover:border-transparent flex items-center">
             <SearchIcon />
           </button> */}
-              <Pill isActive={!queryTag} onClick={() => setQueryTag(undefined)}>
+              <Pill
+                isActive={!queryTag}
+                onClick={() => setQueryTag(undefined)}
+                variant="light"
+              >
                 All projects
                 <PillSecondaryLabel isActive={!queryTag}>
                   {projects.length}
@@ -340,6 +349,7 @@ function ShowcasePage(): JSX.Element {
                   isActive={tag === queryTag}
                   onClick={() => setQueryTag(tag)}
                   key={tag}
+                  variant="light"
                 >
                   {tag}
                   <PillSecondaryLabel isActive={tag === queryTag}>
@@ -352,8 +362,12 @@ function ShowcasePage(): JSX.Element {
         </section>
         <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative -mt-48 md:-mt-40">
           {filteredProjects.map((project, index) =>
-            project === "promo" ? (
-              <PromoCard key={`promo_${index}`} />
+            project === "promo" || project === "report" ? (
+              project === "promo" ? (
+                <PromoCard key={`promo_${index}`} />
+              ) : (
+                <ReportCard key={`report_${index}`} />
+              )
             ) : project.display === "Large" &&
               (project.video || project.screenshots?.length > 0) ? (
               <LargeCard project={project} key={project.website} />
@@ -373,6 +387,8 @@ function ShowcasePage(): JSX.Element {
             <p className="mb-0">
               <Link
                 href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="link-primary link-with-icon"
               >
                 Submit your project

@@ -29,16 +29,14 @@ jobs:
       - run: git submodule update --init
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install DFX
         uses: dfinity/setup-dfx@main
 
       - name: Dump Identity
         run: |
-          mkdir ~/.config/dfx
-          mkdir ~/.config/dfx/identity
-          mkdir ~/.config/dfx/identity/default
+          mkdir -p ~/.config/dfx/identity/default
           echo $DFX_IDENTITY_DESIGN_TEAM | base64 -d > ~/.config/dfx/identity/default/identity.pem
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
         env:
@@ -67,6 +65,8 @@ jobs:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
       - name: Get URL
         id: get-url

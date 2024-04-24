@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Hero
-        headline={<>CYPHER&#8203;SPACE AS CLOUD</>}
+        headline={<>COMPUTE ON BLOCKCHAIN</>}
         aiPlaceholders={[
           "Is the Internet Computer decentralized?",
           "What can I do with ICP token?",
@@ -38,22 +38,10 @@ export default function Home(): JSX.Element {
         <CardsSection />
         <NewsSection />
         <VisionSection>
-          Step into the era of blockchain as a limitless smart contract cloud
-          that hosts everything on-chain: data, content, computations, and user
-          experiences. Forget legacy IT and build tamperproof and unstoppable
-          Web3 social media, gaming, virtual reality, decentralized finance, and
-          enterprise infrastructure. Join the movement and realize the
-          game-changing Internet Computer paradigm of full stack
-          decentralization and seamless multi-chain today.
-          <CollapsedVisionSection>
-            You will be in good company. The Internet Computer network's ICP
-            protocol was created by the crypto industry’s largest R&D operation
-            in a multi-year international effort – it’s the product of more than
-            1,000 person years of research and development at the DFINITY
-            Foundation, including work by world famous cryptographers and
-            engineers focused on a singular vision: deliver infinite blockchain
-            that can be used as an alternative to traditional IT.
-          </CollapsedVisionSection>
+        The Internet Computer reinvents compute on blockchain, incorporating more 
+        than a 1000 years of R&D effort. Everything is now on-chain. HTTP. Data. 
+        Compute. AI. Your Web3 social network. Your orderbook exchange. Full stack 
+        decentralization has arrived on a sovereign network that extends the internet.
         </VisionSection>
         <IntroCards />
       </Hero>
@@ -94,7 +82,12 @@ export default function Home(): JSX.Element {
           />
           <FoundationSection></FoundationSection>
 
-          <NewsletterSection />
+          <NewsletterSection formUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0">
+            Sign up for email updates{" "}
+            <span className="text-white-60">
+              to keep up to date with the Internet Computer
+            </span>
+          </NewsletterSection>
         </div>
       </main>
       <SectionsBar />

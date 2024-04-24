@@ -8,23 +8,9 @@ import { motion } from "framer-motion";
 
 const MotionLink = motion(Link);
 
-export type Press = {
-  id: string;
-  title: string;
-  details: string;
-  date: string;
-  dateHuman: string;
-  press: string;
-  url: string;
-  tags: string[];
-};
-
 const NewsPageLink = () => {
   return (
-    <Link
-      className="link-white link-with-icon"
-      href="https://dfinity.org/events-and-news/#news"
-    >
+    <Link className="link-white link-with-icon" href="/news">
       More News
       <LinkArrowUpRight></LinkArrowUpRight>
     </Link>

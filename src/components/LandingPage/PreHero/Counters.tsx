@@ -8,6 +8,8 @@ export const SpringCounter: React.FC<{
   format: (x: number) => string;
   className?: string;
   springConfig?: [friction: number, mass: number, tenstion: number];
+  enabled?: boolean;
+  delay?: number;
 }> = ({
   target,
   initialTarget,
@@ -15,16 +17,27 @@ export const SpringCounter: React.FC<{
   format,
   className,
   springConfig = [4, 3, 1],
+  enabled = true,
+  delay = 0,
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const spring = useRef<Spring | null>(null);
+  const startAt = useRef(Date.now());
+
+  useEffect(() => {
+    if (enabled) {
+      startAt.current = Date.now();
+    }
+  }, [enabled]);
 
   useEffect(() => {
     let lastHandle = -1;
     let lastValue = "";
     function paint() {
-      if (spring.current) {
-        spring.current.update(60);
+      if (spring.current && enabled) {
+        if (Date.now() - startAt.current > delay) {
+          spring.current.update(60);
+        }
         const nextValue = format(spring.current.x);
         if (lastValue !== nextValue) {
           ref.current.innerText = format(spring.current.x);
@@ -39,7 +52,7 @@ export const SpringCounter: React.FC<{
     return () => {
       lastHandle >= 0 && cancelAnimationFrame(lastHandle);
     };
-  }, [format, target, initialValue, initialTarget]);
+  }, [format, target, initialValue, initialTarget, enabled]);
 
   useEffect(() => {
     if (!spring.current) {

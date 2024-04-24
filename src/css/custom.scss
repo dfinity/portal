@@ -41,6 +41,7 @@
 
   --ic0-nav-border: 1px solid white;
   --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
+  --ic0-docs-background: white;
 }
 
 /* browser resets */
@@ -64,12 +65,13 @@ abbr[title] {
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page,
+html.plugin-docs,
 html.plugin-blog {
   --ifm-navbar-padding-horizontal: 24px;
   --ifm-navbar-y-padding: 0;
   --ifm-navbar-height: 88px;
   --ifm-subnav-height: 54px;
-  --ifm-color-primary: #791e94;
+  --ifm-color-primary: #3b00b9;
   --ifm-navbar-link-hover-color: #791e94;
   --ifm-navbar-x-padding: 50px;
 
@@ -110,11 +112,11 @@ html.plugin-blog {
 
 html.docs-doc-page:not(.docs-doc-id-home) {
   --ifm-toc-border-color: transparent;
-  --ifm-toc-padding-horizontal: 0;
 
   // style the article body
   main[class*="docMainContainer_"] {
-    background: var(--ic0-article-background);
+    background: var(--ic0-docs-background);
+    font-size: 1.1rem;
 
     a {
       font-weight: 500;
@@ -162,7 +164,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       div[class*="docItemContainer_"],
       div.blog-post-content-layout {
         // padding around article content
-        padding: 40px 100px;
+        padding: 40px 80px;
       }
     }
 
@@ -182,12 +184,23 @@ html.docs-doc-page:not(.docs-doc-id-home) {
         text-transform: uppercase;
       }
     }
+
+    .tabs-container {
+      padding: 8px 16px 32px 16px;
+      border-radius: 16px;
+      border: 1px solid #cecece;
+      background: #fdfdfd;
+    }
+
+    .ic-chip-row + p:first-of-type,
+    .ic-chip-row + iframe {
+      margin-top: 1rem;
+    }
   }
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  @include meta.load-css("highlight.js/styles/github-dark");
   --ifm-color-primary: #e11f7a;
   --ifm-color-primary-dark: #cb1b6e;
   --ifm-color-primary-darker: #c01a68;

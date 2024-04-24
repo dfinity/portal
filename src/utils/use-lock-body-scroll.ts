@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useLockBodyScroll = (modalRef: React.RefObject<HTMLDivElement>) => {
+const useLockBodyScroll = () => {
   useEffect(() => {
     // Get original body overflow
     const originalStyle = window.getComputedStyle(document.body).overflow;
@@ -17,7 +17,7 @@ const useLockBodyScroll = (modalRef: React.RefObject<HTMLDivElement>) => {
       document.body.style.overflow = originalStyle;
       document.body.style.touchAction = originalTouchAction;
     };
-  }, [modalRef]); // Empty array ensures effect is only run on mount and unmount
+  }, []);
 };
 
 export default useLockBodyScroll;

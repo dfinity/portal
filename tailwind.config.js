@@ -13,6 +13,7 @@ module.exports = {
         page: "1440px",
         "page-10-cols": "1214px",
         "page-8-cols": "987px",
+        "page-6-cols": "760px",
       },
       spacing: {
         12.5: "50px",
@@ -219,6 +220,7 @@ module.exports = {
                 ".tw-caption": "@apply text-caption font-book",
                 '.button-primary': '@apply text-center inline-block bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors border-none',
                 '.button-white': '@apply text-center inline-block bg-white rounded-xl text-infinite tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-white-80 hover:text-infinite transition-colors border-none',
+                '.button-ghost': '@apply text-center inline-block bg-transparent rounded-xl border-none text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-black/20 transition-colors',
                 '.button-outline': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
                 '.button-outline-white': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-transparent': "@apply button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80",
@@ -239,6 +241,7 @@ module.exports = {
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
                 '.container-10': '@apply max-w-page-10-cols mx-auto px-6 md:px-12.5',
                 '.container-8': '@apply max-w-page-8-cols mx-auto px-6 md:px-12.5',
+                '.container-6': '@apply max-w-page-6-cols mx-auto px-6 md:px-12.5',
                 '.checklist': '@apply list-none pl-0',
                 '.checklist-item': '@apply font-book bg-[url(\'/img/checkmark.svg\')] bg-no-repeat bg-left-top',
                 '.checklist-item-white': '@apply font-book bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top',

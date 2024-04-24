@@ -55,7 +55,7 @@ const Search = () => {
           bg-transparent px-2 md:px-5 py-1 md:py-2
           font-circular md:text-infinite md:docs:text-black
           flex gap-2 items-center
-          md:order-last md:ml-6
+          md:order-last
           outline-offset-2
           absolute right-[64px] md:static
           text-black

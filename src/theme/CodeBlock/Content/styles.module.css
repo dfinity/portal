@@ -98,7 +98,8 @@
   background-color: #242834;
   border-radius: var(--ifm-global-radius);
   transition: opacity 200ms ease-in-out;
-  opacity: 0;
+  opacity: 1;
+  z-index: 1;
 }
 .defaultCodeBlock div[class*="buttonGroup_"] button,
 .buttonGroup button {

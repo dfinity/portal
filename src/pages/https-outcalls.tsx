@@ -102,6 +102,8 @@ function HTTPSOutcalls() {
             <p className="mb-3 mt-6">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
@@ -164,7 +166,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Dev docs"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/"
+              href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/"
             />
             <CardWithDescription
               title="Beyond oracles"

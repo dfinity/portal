@@ -236,7 +236,12 @@ const UpcomingHubCard: React.FC<{
         {hub.description}
       </p>
       <p className="mb-8 mx-6">
-        <Link className="button-outline button-small" href={hub.link}>
+        <Link
+          className="button-outline button-small"
+          href={hub.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Learn more
         </Link>
       </p>
@@ -346,10 +351,10 @@ const RotatingStatPanel: React.FC<{}> = () => {
   const statsToDisplay = activeIndexes.map((index, i) => stats[i][index]);
 
   return (
-    <StatsPanel className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10">
+    <StatsPanel className="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-between gap-10">
       {statsToDisplay.map((stat, index) => (
         <Stat
-          key={stat.title}
+          key={index} // use index here to avoid remounting for each stat
           title={<FadeInOutTitle title={stat.title} />}
           titleClassName="whitespace-nowrap"
           value={
@@ -360,7 +365,7 @@ const RotatingStatPanel: React.FC<{}> = () => {
               format={(value) =>
                 value > 1000000
                   ? `${(value / 1000000).toFixed(0)} mil`
-                  : value.toString()
+                  : value.toFixed(0)
               }
               springConfig={[3, 1, 10]}
             />

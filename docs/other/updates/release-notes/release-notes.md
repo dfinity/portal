@@ -2,6 +2,12 @@
 
 | Version | Release Notes                                                       | Migration Guide                                                                                            |
 |---------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| 0.15.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.18.0) | [migration guide](https://github.com/dfinity/sdk/blob/master/docs/migration/dfx-0.18.0-migration-guide.md) |
+| 0.17.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.17.0) |                                                                                                            |
+| 0.16.1  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.16.1) |                                                                                                            |
+| 0.16.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.16.0) |                                                                                                            |
+| 0.15.3  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.15.3) |                                                                                                            |
+| 0.15.2  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.15.2) |                                                                                                            |
 | 0.15.1  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.15.1) |                                                                                                            |
 | 0.15.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.15.0) | [migration guide](https://github.com/dfinity/sdk/blob/master/docs/migration/dfx-0.15-migration-guide.md)   |
 | 0.14.4  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.14.4) |                                                                                                            |

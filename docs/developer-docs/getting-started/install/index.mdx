@@ -1,0 +1,460 @@
+---
+keywords: [beginner, getting started, tutorial, tools]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import CodeBlock from "@theme/CodeBlock";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Installing tools
+
+<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+
+## Overview
+
+When developing on ICP, there are two primary tools used: `dfx`, a CLI tool used
+to create, deploy, and manage <GlossaryTooltip>canisters</GlossaryTooltip>, and
+a **canister development kit** (CDK) which provides an environment for writing
+canister code in different programming languages while supporting ICP features.
+
+Currently supported CDKs include:
+
+- [Motoko](/docs/current/motoko/main/motoko): ICP's native programming language.
+
+- [Rust CDK](https://github.com/dfinity/cdk-rs).
+
+- [Kybra: Python CDK (Beta)](/docs/current/developer-docs/backend/python).
+
+- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript).
+
+- [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity).
+
+- [C++ CDK](https://docs.icpp.world/).
+
+## Gitpod and GitHub Codespaces
+
+If you use GitHub Codespaces or
+[Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your
+project, installing these dependencies is not necessary.
+
+:::info 
+Links to available Codespaces and Gitpod examples can be found in the
+[hello world example](/docs/current/developer-docs/getting-started/hello-world#create-a-new-project).
+:::
+
+## Installing `dfx`
+
+`dfx` is part of the [IC SDK](https://github.com/dfinity/sdk).
+
+`dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
+
+There is no native support for `dfx` on Windows. However, by installing the
+Windows Subsystem for Linux (WSL 2), you can run `dfx` on a Windows system as
+described below.
+
+:::caution 
+Not all features of `dfx` may be supported on WSL 2. 
+:::
+
+You can download and install the latest version of the
+[`dfx`](https://github.com/dfinity/sdk) by running the command below:
+
+<AdornedTabs>
+  <TabItem value="apple" label="Install on Mac/Linux" default={true}>
+    To install the IC SDK, run
+
+    ```bash
+    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+    ```
+
+    If you are using a machine running Apple silicon, you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed. You can install Rosetta by running `softwareupdate --install-rosetta` in your terminal.
+
+  </TabItem>
+  
+  <TabItem value="windows" label="Install on Windows">
+    There is no native support for <code>dfx</code> on Windows. However, you can develop ICP canisters on Windows using a Docker container or by installing the Windows Subsystem for Linux (WSL).
+
+    ## Using Docker
+
+    Docker is a containerization software that allows you to run a localized version of another operating system, such as Linux, then run Linux-based software and applications. Containers do not have access to the files and applications outside of the container unless given explicit permission.
+
+    To use Docker, first [install Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+    Open the Docker Desktop application to start the Docker Daemon. Then, open a command line window and pull the DFINITY ICP developer environment Docker image:
+
+    ```
+    docker pull ghcr.io/dfinity/icp-dev-env:latest
+    ```
+
+    Then, run an instance of this Docker image with the command:
+
+    ```
+    docker run --platform linux/x86_64 -dit ghcr.io/dfinity/icp-dev-env:latest
+    ```
+
+    Confirm that your container is running by using the `docker ps` command:
+
+    ```
+    CONTAINER ID   IMAGE                                COMMAND   CREATED          STATUS          PORTS     NAMES
+    b197b1da16df   ghcr.io/dfinity/icp-dev-env:latest   "bash"    37 seconds ago   Up 36 seconds             peaceful_lumiere
+    ```
+
+    Now you can navigate into your Docker container and begin running commands such as `dfx`. To navigate into the canister, run the command:
+
+    ```
+    docker exec -it <NAME> bash
+    ```
+
+    Replace `<NAME>` with the canister name shown in the `docker ps` output.
+
+    If successful, your command line prompt will change such as:
+
+    ```
+    root@b197b1da16df:/#
+    ```
+
+    Verify that `dfx` has been installed and is ready to use by running the command:
+
+    ```
+    dfx --version
+    ```
+
+    This should return the version of `dfx` that was installed:
+
+    ```
+    dfx 0.18.0
+    ```
+
+    ## Using WSL 2
+    Follow Microsoft&#39;s instructions for installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>. Make sure you are running Windows 10 (version 2004 or higher) or Windows 11.
+
+    ### Supported WSL Versions
+    Theoretically, WSL 1 and WSL 2 should both allow you to run <code>dfx</code>. However, it is recommended to use WSL 2. <a href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">WSL Comparison</a> explains the differences between WSL1 and WSL 2.
+
+    ### Check your WSL version
+    Run the command <code>wsl –list –verbose (wsl -l -v)</code> to check the Linux distributions installed on your Windows machine. Below is an example output:
+
+    <CodeBlock language="bash">
+      NAME STATE VERSION
+      * Ubuntu Running 2
+    </CodeBlock>
+
+    To learn more about the <code>wsl</code> command, check the <a href="https://docs.microsoft.com/en-us/windows/wsl/basic-commands">command reference for WSL</a>.
+
+    ### Upgrade from WSL 1
+    If you have WSL 1 installed, follow the <a href="https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">upgrade instructions</a> to upgrade to WSL 2. Basically you need to:
+
+    <ul>
+      <li>Step 1: Install the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">WSL 2 Linux kernel update package</a>.</li>
+      <li>Step 2: Run the following command to set your Linux distributions to version 2: <code>wsl--set-version &lt;distribution name&gt; 2</code></li>
+    </ul>
+
+    ## Running Linux
+    After you have WSL installed, you can launch the Linux distributions by name.
+
+    For example, run the command:
+    <code>Ubuntu.exe</code> to start the <code>Ubuntu</code> distribution from the command line.
+
+    ## Installing dfx
+
+    Once you have WSL installed, you can install <code>dfx</code> by running:
+    <CodeBlock language="bash">
+      sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+    </CodeBlock>
+
+    ## Troubleshooting
+
+    ### Node.js is not properly installed
+
+    WSL 2 has node.js <code>10.x.x</code> installed by default. But the latest
+
+    <code>dfx</code> requires node.js <code>16.x.x</code> or <code>18.x.x</code>.
+
+    ### Permission denied when running <code>dfx start</code>
+
+    Projects created from <code>dfx</code> need to be on the Linux filesystem
+    instead of the Windows filesystem. Usually <code>cd ~</code> or <code>cd
+    $HOME</code> in the WSL terminal will bring you to the home directory, and
+    creating projects in there should work.
+
+    ### No internet access on WSL
+
+    If you don’t have internet access on WSL, for instance you cannot ping any
+    server successfully, most likely the nameserver on WSL is set to an internal WSL
+    proxy. You can check the <code>/etc/resolv.conf</code> file to see if it’s the
+    case. If it’s true, please follow the below steps to set to a valid nameserver:
+
+    <br />
+
+    <ul>
+      <li>
+        Step 1: Create the <code>/etc/wsl.conf</code> file and add the below content
+        to it, this will prevent WSL from regenerating the{" "}
+        <code>/etc/resolv.conf</code> file after restarting.
+      </li>
+    </ul>
+
+    <CodeBlock language="toml">
+      [network]
+      generateResolvConf = false
+    </CodeBlock>
+
+    <ul>
+      <li>Step 2: Modify the nameserver in the <code>/etc/resolv.conf</code> file to a valid one, for example the Google nameserver <code>8.8.8.8</code>.</li>
+      <li>Step 3: On Windows, restart WSL to let this fix take effect.</li>
+      <code>wsl.exe --shutdown</code>
+    </ul>
+
+  </TabItem>
+</AdornedTabs>
+
+### Core components in a versioned directory
+
+The `~/.cache/dfinity/versions` directory stores one or more versioned
+subdirectories of `dfx`. Each versioned subdirectory contains the all of the
+directories and files required for a specific version of `dfx`. For example, if
+you list the contents of the `~/.cache/dfinity/versions/0.9.3` directory you
+would see the following core components:
+
+```
+total 349192
+drwxr-xr-x  17 pubs  staff       544 Mar 15 11:55 .
+drwxr-xr-x   4 pubs  staff       128 Mar 25 14:36 ..
+drwxr-xr-x  49 pubs  staff      1568 Mar 15 11:55 base
+drwxr-xr-x  20 pubs  staff       640 Mar 15 11:55 bootstrap
+-r-x------   1 pubs  staff  66253292 Mar 15 11:55 dfx
+-r-x------   1 pubs  staff  10496256 Dec 31  1969 ic-ref
+-r-x------   1 pubs  staff   5663644 Dec 31  1969 ic-starter
+-r-x------   1 pubs  staff      9604 Dec 31  1969 libcharset.1.0.0.dylib
+-r-x------   1 pubs  staff     38220 Dec 31  1969 libffi.7.dylib
+-r-x------   1 pubs  staff    668300 Dec 31  1969 libgmp.10.dylib
+-r-x------   1 pubs  staff    958248 Dec 31  1969 libiconv.2.4.0.dylib
+-r-x------   1 pubs  staff      4200 Dec 31  1969 libiconv.dylib
+-r-x------   1 pubs  staff     96900 Dec 31  1969 libz.1.2.11.dylib
+-r-x------   1 pubs  staff  15417684 Dec 31  1969 mo-doc
+-r-x------   1 pubs  staff  14634020 Dec 31  1969 mo-ide
+-r-x------   1 pubs  staff  15111508 Dec 31  1969 moc
+-r-x------   1 pubs  staff  49404128 Dec 31  1969 replica
+```
+
+#### Motoko base directory
+
+The `base` directory in the versioned subdirectory of `dfx` contains the Motoko
+base library modules that are compatible with that version of `dfx`. Because the
+Motoko base library is evolving rapidly, you should only use the base modules
+that are packaged with the version of `dfx` that you have installed.
+
+### Using the `dfx` version manager
+
+Alteratively, to upgrade or install a specific version of `dfx` the dfx version
+manager (`dfxvm`) can be used.
+
+First, install `dfxvm` using the following `curl` command:
+
+```
+sh -ci "$(curl -fsSL https://raw.githubusercontent.com/dfinity/sdk/dfxvm-install-script/install.sh)"
+```
+
+Upon installation, you will be prompted to select which version of `dfx` you'd
+like to install. You can also pass the intended version using an environment
+variable, such as:
+
+```
+DFX_VERSION=0.15.1 sh -ci "$(curl -fsSL https://raw.githubusercontent.com/dfinity/sdk/dfxvm-install-script/install.sh)"
+```
+
+#### Installing a specific version
+
+Once `dfxvm` is installed, you can install other specific versions of `dfx`
+using the command:
+
+```
+dfxvm install [VERSION_NUMBER]
+```
+
+For example, you can install `0.15.0` with the command:
+
+```
+dfxvm install 0.15.0
+```
+
+#### Uninstalling a specific version
+
+To uninstall a version of dfx using `dfxvm`, use the command:
+
+```
+dfxvm uninstall [VERSION_NUMBER]
+```
+
+For example, to uninstall version `0.14.4`, use the command:
+
+```
+dfxvm uninstall 0.14.4
+```
+
+#### Upgrading to the latest version
+
+To update dfx to the latest version, use the command:
+
+```
+dfxvm update
+```
+
+#### Setting a default version
+
+If defined, `dfx` will always run the version specified in the project's
+`dfx.json` in the key `"dfx"`. For example, if your `dfx.json` contains
+`"dfx": "0.11.1"`, any `dfx` command you run within this project's directory
+will be executed by `dfx` of version `0.11.1`. Should the defined version not be
+installed (e.g. because you cloned a repo that was created for a different
+version than you have installed locally), `dfx` will report an error.
+
+:::info
+
+[Learn more about `dfxvm`](https://github.com/dfinity/dfxvm/tree/main).
+
+:::
+
+## Building from source
+
+If you would like to compile `dfx` by yourself, head over to the
+[IC SDK repo](https://github.com/dfinity/sdk). The README contains the
+instructions on how you can build it on your own.
+
+### Uninstalling `dfx`
+
+When you install `dfx`, the installation script puts the required binary files
+in a local directory and creates a cache. You can remove the `dfx` binaries and
+cache from your local computer by running the `uninstall` script located in the
+`.cache` folder.
+
+For example:
+
+```bash
+~/.cache/dfinity/uninstall.sh
+```
+
+If you are uninstalling because you want to immediately reinstall a clean
+version of `dfx`, you can run the following command:
+
+```bash
+~/.cache/dfinity/uninstall.sh && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+```
+
+## Installing a CDK
+
+### Motoko
+
+By default, Motoko is installed with `dfx`. Alternatively, you can build it from
+source following
+[these instructions](https://github.com/dfinity/motoko/blob/master/Building.md).
+
+### Rust
+
+By default, the Rust CDK is installed with `dfx`. Alternatively, you can install
+it yourself by adding the following dependency in your `Cargo.toml` file:
+
+```toml
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ic-cdk = "0.12"
+# Only necessary if you want to define Candid data types
+candid = "0.10"
+```
+
+Below is a brief example on how to use the Rust CDK:
+
+```rust
+#[ic_cdk::query]
+fn hello() -> String {
+    "world".to_string()
+}
+```
+
+### TypeScript / JavaScript
+
+The TypeScript and JavaScript CDK, known as Azle, can be installed with `dfx` in
+versions `v0.16.1` and newer. To install it manually, you can follow
+[these steps](https://github.com/demergent-labs/azle/tree/main/examples/hello_world).
+
+:::caution 
+
+Azle is currently in beta and should be used with caution. 
+
+:::
+
+### Python
+
+The Python CDK, known as Kybra, can be installed by following these steps:
+
+- #### Step 1: Install `pyenv`
+
+```
+curl https://pyenv.run | bash
+```
+
+- #### Step 2: Install Python 3.10.7:
+
+```
+~/.pyenv/bin/pyenv install 3.10.7
+```
+
+- #### Step 3: Install `dfx` v0.14.2:
+
+```
+DFX_VERSION=0.14.2 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+```
+
+- #### Step 4: Add `$HOME/bin` to your path:
+
+```
+echo 'export PATH="$PATH:$HOME/bin"' >> "$HOME/.bashrc"
+```
+
+:::caution 
+
+Kybra is currently in beta and should be used with caution. 
+
+:::
+
+### Solidity
+
+Solidity smart contracts can be created using the Bitfinity EVM. To use the
+Bitfinity EVM, you can make calls to the
+[Bitfinity mainnet or testnet](https://docs.bitfinity.network/getting-started/network-endpoints).
+
+[Learn more about how to use the Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview)
+
+:::caution Bitfinity EVM is currently in beta and should be used with caution.
+:::
+
+### C++
+
+C++ is supported through the ICPP-pro CDK, which can be installed with the
+following steps:
+
+- #### Step 1: Install `icpp-pro` with `pip`:
+
+```
+pip install icpp-pro
+```
+
+- #### Step 2: Install `wasi-sdk`:
+
+```
+icpp install-wasi-sdk
+```
+
+- #### Step 3: Install the latest version of `dfx`:
+
+```
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+## Next steps
+
+- [Learn about developer accounts](/docs/current/developer-docs/getting-started/accounts).

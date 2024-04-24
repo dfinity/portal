@@ -1,0 +1,116 @@
+---
+keywords: [intermediate, defi, overview, tokens, deploy a token, create a token, icrc1]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Token quickstart
+
+<MarkdownChipRow labels={["Intermediate"  ]} />
+
+## Overview
+
+Custom tokens can be created and deployed on ICP using the ICRC-1 token standard. This standard defines a set of general functionalities that all ledgers must adhere to. ICRC-1 is designed to create a universally accepted standard for creating and recording tokens and their transactions on ICP. Any tokens and their corresponding ledgers must fulfill all requirements of the standard.
+
+There are several extensions of the ICRC-1 standard that extend functionality, however, not all ICRC standards must be an extension of the ICRC-1 standard.
+
+This guide will provide a quickstart on how you can create and deploy your own custom token on ICP using the ICRC-1 standard.
+
+## Create a new project
+
+First, download `dfx` and start the local replica:
+
+```
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)" // Download and install `dfx`.
+dfx start --clean --background // Start the local replica.
+```
+
+Then create a new project:
+
+```
+dfx new new_token
+```
+
+## Setup the ledger canister
+
+Download and install the latest Wasm for the ICRC-1 ledger canister:
+
+```
+curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/326df23607fc8280a047daba2d8462f1dfc57466/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
+chmod +x download_latest_icrc1_ledger.sh
+./download_latest_icrc1_ledger.sh
+```
+
+## Edit `dfx.json`
+
+Next, edit the project's `dfx.json` to define the Candid and Wasm files for the ICRC-1 ledger canister:
+
+```json
+  "canisters": {
+    "icrc1_ledger_canister": {
+      "type": "custom",
+        "candid": "icrc1_ledger.did",
+        "wasm" : "icrc1_ledger.wasm.gz",
+    }
+  },
+```
+
+## Create a minter identity
+
+Create a developer identity to mint tokens:
+
+``` sh
+dfx identity new minter
+dfx identity use minter
+export MINTER=$(dfx identity get-principal)
+```
+
+Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
+
+## Export token settings
+
+To create a token, you will need to export several environmental variables. The full list can be found below:
+
+```
+-   The `PRE_MINTED_TOKENS` is amount of tokens that are minted during deployment for a specific account (In this tutorial it will be the `DEFAULT` account).
+-   The `TRANSFER_FEE` is the transfer fee that users of the ledger will have to pay anytime they want to make a transfer.
+-   The `ARCHIVE_CONTROLLER` is the [controller principal](/docs/current/developer-docs/getting-started/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
+-   The `TRIGGER_THRESHOLD` is the number of blocks to archive when the trigger threshold is exceeded.
+-   The `CYCLE_FOR_ARCHIVE_CREATION` is the amount of cycles that will be sent to the archive canister when it is created.
+-   The `NUM_OF_BLOCK_TO_ARCHIVE` is the number of blocks that will be archived.
+-   The `TOKEN_SYMBOL` is the ticker symbol of your new token.
+-   The `MINTER` is the account of the Principal responsible for minting and burning tokens (see the [icrc-1 ledger documentation](https://github.com/dfinity/ICRC-1)).
+-   The `FEATURE_FLAGS` is a flag for enabling or disabling certain extension standards to the ICRC-1 standard. In this case the reference implementation also can support ICRC-2 transactions.
+-   Minting 100 tokens to the `DEFAULT` (1 token is by default equal to 10^8 e8s, hence the name).
+-   Setting the transfer fee to 0.0001 tokens.
+```
+
+## Deploy the ledger
+
+Deploy the ICRC-1 ledger canister locally and pass in the arguments to create your token:
+
+``` sh
+dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init =
+record {
+     token_symbol = \"${TOKEN_SYMBOL}\";
+     token_name = \"${TOKEN_NAME}\";
+     minting_account = record { owner = principal \"${MINTER}\" };
+     transfer_fee = ${TRANSFER_FEE};
+     metadata = vec {};
+     feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
+     initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
+     archive_options = record {
+         num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
+         trigger_threshold = ${TRIGGER_THRESHOLD};
+         controller_id = principal \"${ARCHIVE_CONTROLLER}\";
+         cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
+     };
+ }
+})"
+```
+
+For additional details, you can learn more in the [ICRC-1 ledger documentation](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup).
+
+Your token has been created locally. To interact with your token, [learn how to interact with the ICRC-1 ledger](/docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger).
+
+
