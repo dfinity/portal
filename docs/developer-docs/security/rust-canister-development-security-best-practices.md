@@ -416,7 +416,14 @@ Here is a sketch of how the above structures could be used.
 
 #### Example implementation of journaling
 
-GoldDAO's GLDT-swap has an implementation of journaling. See https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L654. In their case the journal entries are recorded in the "registry". Note that in GLDT-swap there is also a separate concept of "record" which is a permanent audit trail, and is not used for journaling.
+GoldDAO's GLDT-swap has an implementation of journaling. In their case the journal entries are recorded in the "registry". Note that in GLDT-swap there is also a separate concept of "record" which is a permanent audit trail, and is not used for journaling. Note that some error paths require manual recovery. See the following reference points:
+
+* Registry (aka journal) structure
+  * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/registry.rs#L18
+  * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L654
+* The registry is used in `notify_sale_nft_origyn` to record progress and enforce correctness of the flow.
+  * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#910
+  * Note that not all details of the flow appear in the registry. The amount of detail to include depends one's goals for recovery.
 
 ### Avoid traps after await
 
