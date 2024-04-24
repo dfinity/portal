@@ -319,7 +319,7 @@ Creating a record in the journal is called “journaling”.  For example, to ma
 
    - On failure, record the error.
 
-   - On success, record success. (In order to commit the record, intercanister call can be made to an endpoint on the same canister that does nothing. Otherwise a trap could erase the journaled result, complicating recovery.)
+   - On success, record success. (In order to commit the record, inter-canister call can be made to an endpoint on the same canister that does nothing. Otherwise a trap could erase the journaled result, complicating recovery.)
 
 1. Continue onto the next blocked task.
 
