@@ -18,7 +18,9 @@ To make calls to these external chains, the EVM RPC canister utilizes the ICP [H
 
 When a canister makes an HTTPS outcall, it calls the management canister API using the `http_request` method. The networking adapter on each replica executes the HTTP request by sending it to the external server. When the response is returned from the external server, the response goes through consensus on the subnet where at least 2/3 of the subnet's nodes must agree on the response. Once the response is validated, it is sent to the management canister, which returns it to the canister that made originated the request.
 
-In the case of the EVM RPC canister, a canister makes a request to the EVM RPC canister for a specified RPC method, and the EVM RPC canister makes the HTTP outcall to the RPC endpoint on behalf of that canister.
+In the case of the EVM RPC canister, a canister makes a request to the EVM RPC canister for a specified RPC method, and the EVM RPC canister makes the HTTP outcall to one or more RPC endpoints on behalf of that canister.
+
+By default for Candid-RPC methods such as `eth_getTransactionReceipt`, the EVM RPC canister sends the same request to at least three different RPC providers and compares the results. If there are discrepancies, the caller receives a set of `Inconsistent` results to handle in a way that makes sense for the use case. Otherwise, the method will return a `Consistent` result with a Candid value corresponding to the JSON-RPC response.
 
 ## Authentication
 
