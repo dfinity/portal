@@ -54,13 +54,21 @@ This requires transforming and canonicalizing the HTTPS outcall responses on a c
 
 Below is an overview of the types and method interfaces for the initial Candid-RPC endpoints:
 
-```
-type EthMainnetService = variant { Cloudflare; Ankr; ... };
-type EthSepoliaService = variant { BlockPi; PublicNode; Ankr; ... };
+```candid
+type EthMainnetService = variant { Alchemy; Ankr; BlockPi; Cloudflare; PublicNode; ... };
+type EthSepoliaService = variant { Alchemy; Ankr; BlockPi; PublicNode; ... };
 
-type CandidRpcSource = variant {
+type RpcServices = variant {
   EthMainnet : opt vec EthMainnetService;
   EthSepolia : opt vec EthSepoliaService;
+  Custom : record {
+    chainId : nat64;
+    services : vec record { url : text; headers : opt vec HttpHeader };
+  };
+};
+
+type RpcConfig = record {
+  responseSizeEstimate : opt nat64,
   ...
 };
 
@@ -72,22 +80,22 @@ type MultiRpcResult<T> = variant {
   );
 };
 
-eth_getLogs : (CandidRpcSource, EthGetLogsParam)
+eth_getLogs : (RpcServices, RpcConfig, EthGetLogsParam)
   -> (MultiRpcResult<vec LogEntry>);
 
-eth_getBlockByNumber : (CandidRpcSource, BlockSpec)
+eth_getBlockByNumber : (RpcServices, RpcConfig, BlockTag)
   -> (MultiRpcResult<Block>);
 
-eth_getTransactionReceipt : (CandidRpcSource, Hash)
+eth_getTransactionReceipt : (RpcServices, RpcConfig, Hash)
   -> (MultiRpcResult<opt TransactionReceipt>);
 
-eth_getTransactionCount : (CandidRpcSource, GetTransactionCountParam)
+eth_getTransactionCount : (RpcServices, RpcConfig, GetTransactionCountArgs)
   -> (MultiRpcResult<TransactionCount>);
 
-eth_feeHistory : (CandidRpcSource, FeeHistoryParam)
+eth_feeHistory : (RpcServices, RpcConfig, FeeHistoryArgs)
   -> (MultiRpcResult<FeeHistory>);
 
-eth_sendRawTransaction : (CandidRpcSource, text)
+eth_sendRawTransaction : (RpcServices, RpcConfig, text)
   -> (MultiRpcResult<SendRawTransactionResult>);
 
 ```
