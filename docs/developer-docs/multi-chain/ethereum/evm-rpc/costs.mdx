@@ -86,24 +86,22 @@ let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
 <TabItem value="rust" label="Rust">
 
 ```rust
-
 use ic_cdk::api::call::call_with_payment128;
-use declarations::evm_rpc::{Block, BlockTag, RpcError, RpcService, EVM_RPC as evm_rpc};
+use declarations::evm_rpc::{Block, BlockTag, MultiGetBlockByNumberResult, RpcError, RpcService, EVM_RPC as evm_rpc};
 
 let cycles = 1000000000;
-ic_cdk::api::call::call_with_payment128(
+let (results,): (MultiGetBlockByNumberResult,) = call_with_payment128(
     evm_rpc.0,
     "eth_getBlockByNumber",
     (
         RpcServices::EthMainnet(None),
         (),
-        BlockTag::Number(123.into()),
+        BlockTag::Number(19709434.into()),
     ),
     cycles,
 )
 .await
 .unwrap();
-
 ```
 
 </TabItem>
