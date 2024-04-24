@@ -421,7 +421,26 @@ switch result {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-A Rust example for this method is currently not available. Please check back later.
+```rust
+use ic_cdk::api::call::call_with_payment128;
+use declarations::evm_rpc::{
+    BlockTag, MultiGetTransactionReceiptResult, RpcError, RpcServices, evm_rpc,
+};
+
+let cycles = 10000000000;
+let (results,): (MultiGetTransactionReceiptResult,) = call_with_payment128(
+    evm_rpc.0,
+    "eth_getTransactionReceipt",
+    (
+        RpcServices::EthMainnet(None),
+        (),
+        "0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f",
+    ),
+    10000000000,
+)
+.await
+.unwrap();
+```
 
 
 </TabItem>
@@ -574,7 +593,29 @@ switch result {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-A Rust example for this method is currently not available. Please check back later.
+```rust
+use ic_cdk::api::call::call_with_payment128;
+use declarations::evm_rpc::{
+    BlockTag, GetTransactionCountArgs, MultiGetTransactionCountResult, RpcError, RpcServices, evm_rpc,
+};
+
+let cycles = 10000000000;
+let (results,): (MultiGetTransactionCountResult,) = call_with_payment128(
+    evm_rpc.0,
+    "eth_getTransactionCount",
+    (
+        RpcServices::EthMainnet(None),
+        (),
+        GetTransactionCountArgs {
+            address: "0x1789F79e95324A47c5Fd6693071188e82E9a3558".to_string(),
+            block: BlockTag::Latest,
+        },
+    ),
+   cycles,
+)
+.await
+.unwrap();
+```
 
 
 </TabItem>
@@ -832,7 +873,26 @@ let cycles = switch result {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-A Rust example for this method is currently not available. Please check back later.
+```rust
+use declarations::evm_rpc::{RpcError, RpcService, evm_rpc};
+
+let cycles = 1000000000;
+let params = (
+    RpcService::EthMainnet,
+    "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":null,\"id\":1}".to_string(),
+    1000_u64, // Max response size in bytes
+);
+let (result,): (Result<String, RpcError>,) =
+    ic_cdk::api::call::call_with_payment128(evm_rpc.0, "request", params, cycles)
+        .await
+        .unwrap();
+match result {
+    Ok(response) => {
+        // Process JSON response
+    }
+    Err(err) => ic_cdk::trap(&format!("Error while performing RPC call: {:?}", err)),
+}
+```
 
 
 </TabItem>
