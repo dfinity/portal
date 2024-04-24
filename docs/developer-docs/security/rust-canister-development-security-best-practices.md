@@ -390,7 +390,7 @@ The journaling data structures should support the following queries.
   - Number of times attempted and failed to progress
 
 * Map: Transaction audit log
-  - Key: transaction (hash)
+  - Key: transaction (hash) -- the transaction should include a unique ID so the key is unique to the transaction
   - Value: result of (completed) transaction
 
 Note that `Journal by caller` is intended to support various types of flows, but only transaction flows are detailed explicitly. `Transactions by timestamp` is an auxiliary structure to be used for searching for transactions that require recovery.
