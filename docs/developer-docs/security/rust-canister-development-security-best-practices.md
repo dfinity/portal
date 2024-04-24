@@ -572,7 +572,7 @@ When making inter-canister calls, always handle the error cases (rejects) correc
 
 - If inter-canister calls are made to potentially malicious canisters, this can lead to DoS issues or there could be issues related to candid decoding. Also, the data returned from a canister call could be assumed to be trustworthy when it is not.
 
-- If a canister is called with a callback, the receiver can stall indefinitely if the peer does not respond, resulting in DoS. A canister can no longer be upgraded if it is in that state. Recovery would involve reinstalling, wiping the state of the canister. Note that even a trustworthy canister could have a bug causing it to stall indefinitely. However, such a bug seems rather unlikely to occur. 
+- When another canister is called with a callback being registered, and the receiver stalls the response indefinitely by not responding, the result would be a DoS. Additionally, that canister can no longer be upgraded if it has callbacks registered. Recovery would require wiping the state of the canister by reinstalling it. Note that even a trustworthy canister could have a bug causing it to stall indefinitely. However, such a bug seems rather unlikely to occur. 
 
 - In summary, this can DoS a canister, consume an excessive amount of resources, or lead to logic bugs if the behavior of the canister depends on the inter-canister call response.
 
