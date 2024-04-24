@@ -394,14 +394,11 @@ For example, if the treasury contains 75_000 XDR worth of SNS tokens, then this 
 To assess the tokens in the treasury, external price information is fetched at the time of proposal
 submission.
 
-The price of ICP is taken from the Cycles Minting Canister's
-[get_average_icp_xdr_conversion_rate][icp-price] method.
+The price of ICP is taken from the cycles minting canister's
+[get_average_icp_xdr_conversion_rate icp-price](https://sourcegraph.com/github.com/dfinity/ic@8efb7e81a1f1257a38621b1f12eccc8b8b1c7e39/-/blob/rs/nns/cmc/src/main.rs?L901:33-901:44)
+method.
 
-[icp-price]: https://sourcegraph.com/github.com/dfinity/ic@8efb7e81a1f1257a38621b1f12eccc8b8b1c7e39/-/blob/rs/nns/cmc/src/main.rs?L901:33-901:44
-
-The price of the SNS token in ICP is taken from the Swap Canister's [get_derived_state] method.
-
-[get_derived_state]: https://sourcegraph.com/github.com/dfinity/ic@8efb7e81a1f1257a38621b1f12eccc8b8b1c7e39/-/blob/rs/sns/swap/proto/ic_sns_swap/pb/v1/swap.proto?L1304-1325
+The price of the SNS token in ICP is taken from the swap canister's [get_derived_state](https://sourcegraph.com/github.com/dfinity/ic@8efb7e81a1f1257a38621b1f12eccc8b8b1c7e39/-/blob/rs/sns/swap/proto/ic_sns_swap/pb/v1/swap.proto?L1304-1325) method.
 
 #### Relevant type signatures
 
