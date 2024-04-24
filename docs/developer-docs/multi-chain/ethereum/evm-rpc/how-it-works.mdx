@@ -128,7 +128,7 @@ type RpcService = variant {
 };
 
 request : (
-  source : RpcService,
+  service : RpcService,
   jsonRequest : text,
   maxResponseBytes : nat64
 ) -> (
