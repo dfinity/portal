@@ -4316,8 +4316,7 @@
     "name": "odoc",
     "oneLiner": "Tasks managment, documentations, and smart contracts for online workers and freelancers.",
     "tags": [
-      "DAO",
-      "SocialFi"
+      "Tools / Infrastructure"
     ],
     "description": "Odoc is a place where you can hire and work. It is empowering freelancers with transparent and liberating smart contracts on the blockchain.",
     "usesInternetIdentity": true,
