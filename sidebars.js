@@ -146,6 +146,7 @@ const sidebars = {
               items: [
                 "developer-docs/smart-contracts/candid/candid-concepts",
                 "developer-docs/smart-contracts/candid/candid-howto",
+                "developer-docs/smart-contracts/candid/candid-tools",
               ],
             },
           ],
@@ -187,6 +188,7 @@ const sidebars = {
           type: "category",
           label: "Test",
           items: [
+            "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
             "developer-docs/smart-contracts/test/staging-environment",
             "developer-docs/smart-contracts/test/reproducible-builds",
