@@ -104,9 +104,11 @@ The shared Candid types are defined as follows:
 
 - `EthMainnetService`: An RPC service compatible with the Ethereum mainnet.
 
-- `EthTestnetService`: An RPC service compatible with the Sepolia testnet.
+- `EthSepoliaService`: An RPC service compatible with the Sepolia testnet.
 
-- `CandidRpcSource`: An input for Candid-RPC methods representing which chain and service(s) to use for the RPC call. By default, the canister uses all available services.
+- `RpcServices`: An input for Candid-RPC methods representing which chain and service(s) to use for the RPC call. By default, the canister uses all available services.
+
+- `RpcConfig`: An optional input for Candid-RPC methods used to customize how the RPC request is performed by the canister.
 
 ## General JSON-RPC requests
 
