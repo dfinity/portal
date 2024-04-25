@@ -863,52 +863,6 @@ Your canisters should not publicly expose their cycles balance (available throug
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
 
-### Validate inputs
-
-#### Security concern
-
-The data sent in [query and update calls](/references/ic-interface-spec.md#http-interface) is generally untrusted. The message size limit is a few MB. This can e.g. lead the following issues:
-
-- If unvalidated data is rendered in web UIs or displayed in other systems, this can lead to injection attacks (e.g. XSS).
-
-- Messages of big size could be sent and potentially stored in the canister, consuming an excessive amount of storage.
-
-- Big inputs (e.g. big lists or strings) could trigger an excessive amount of computation, resulting in DoS and consuming many cycles. See also [protect against draining the cycles balance](#protect-against-draining-the-cycles-balance).
-
-#### Recommendation
-
-- Perform input validation, see e.g. the [OWASP cheat sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html).
-
-- "Large data attacks" section in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) (be aware of Candid space bombs).
-
-- [ASVS](https://owasp.org/www-project-application-security-verification-standard/) 5.1.4: Verify that structured data is strongly typed and validated against a defined schema including allowed characters, length and pattern (e.g. credit card numbers or telephone, or validating that two related fields are reasonable, such as checking that suburb and zip/postcode match).
-
-### Rust: Don’t use unsafe Rust code
-
-#### Security concern
-
-Unsafe Rust code is risky because it may introduce memory corruption issues.
-
-#### Recommendation
-
-- Avoid unsafe code whenever possible.
-
-- See the [Rust security guidelines](https://anssi-fr.github.io/rust-guide/04_language.html#unsafe-code).
-
-- Consider the [DFINITY Rust guidelines](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_avoid_unsafe_code).
-
-### Rust: Avoid integer overflows
-
-#### Security concern
-
-Integers in Rust may overflow. While such overflows lead to panics in the debug configuration, the values are just wrapped around silently in release compilation. This can cause major security issues e.g. when the integers are used as indices, unique IDs, or if cycles or ICP amounts are computed.
-
-#### Recommendation
-
-- Review your code carefully for any integer operations that may wrap around.
-
-- Use the `saturated` or `checked` variants of these operations, such as `saturated_add`, `saturated_sub`, `checked_add` , `checked_sub`, etc. See e.g. the [Rust docs](https://doc.rust-lang.org/std/primitive.u32.html#method.saturating_add) for `u32`.
-
 ### Rust: Avoid floating point arithmetic for financial information
 
 #### Security concern

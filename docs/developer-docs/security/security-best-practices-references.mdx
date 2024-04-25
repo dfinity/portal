@@ -1,0 +1,42 @@
+---
+sidebar_position: 5
+sidebar_label: Further Reading
+keywords: [security, concept]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security Best Practices: Further Reading and Resources
+
+<MarkdownChipRow labels={["Security", "Concept"]} />
+
+These are some resources for further reading. They can be useful for developing secure dapps or security reviewing them.
+
+## General
+* [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) by Joachim Breitner
+* [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+* [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+
+## Rust
+* [Secure Rust Guidelines](https://anssi-fr.github.io/rust-guide/01_introduction.html), in particular on [unsafe code](https://anssi-fr.github.io/rust-guide/04_language.html#unsafe-code), [overflows](https://anssi-fr.github.io/rust-guide/04_language.html#integer-overflows) and [Cargo-audit](https://anssi-fr.github.io/rust-guide/03_libraries.html#cargo-audit)
+  * For overflowing operations, consider using `saturated` or `checked` variants of these operations, such as `saturated_add`, `saturated_sub`, `checked_add` , `checked_sub`, etc. See e.g. the [Rust docs](https://doc.rust-lang.org/std/primitive.u32.html#method.saturating_add) for `u32`.
+
+## Crypto
+* [OWASP Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/) points out issues related to cryptography, or the lack thereof.
+* [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/) (see Section V6)
+* **Use the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API).** Storing key material in browser storage (such as [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) or [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)) is considered unsafe because these keys can be accessed by JavaScript code, e.g. in an XSS attack. To protect the private key from direct access, use Web Crypto's [generateKey](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey) using `extractable=false`. See also the [encrypted notes example](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/src/frontend/src/lib/crypto.ts#L149-L159).
+
+## Web Security
+* **Set security headers.** Useful resources:
+  * [securityheaders.com](https://securityheaders.com/)
+  * [Permissions policy generator](https://www.permissionspolicy.com/)
+  * [Content Security Policy evaluator](https://csp-evaluator.withgoogle.com/) and [strict CSP](https://csp.withgoogle.com/docs/strict-csp.html)
+  * [OWASP secure headers project](https://owasp.org/www-project-secure-headers/)
+* [SSL Server Test](https://www.ssllabs.com/ssltest/)
+* Don’t use features that could lead to XSS, such as e.g. [@html in Svelte](https://svelte.dev/docs#template-syntax-html).
+* **Log out securely.** Clear all session data (especially [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) and [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)), clear [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API), etc. on logout. Make sure also other browser tabs showing the same origin are logged out if the logout is triggered in one tab. This may not happen automatically when agent-js is used, since agent-js keeps the private key in memory once initialized. 
+
+## Testing
+These are some useful references for testing canisters which don't necessarily relate to security. However, having good test coverage is essential for developing secure applications. 
+* In [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html): [Test upgrades](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades), [Make code target-independent](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent)
+* Consider [PocketIC](/docs/current/developer-docs/smart-contracts/test/pocket-ic) for canister testing
