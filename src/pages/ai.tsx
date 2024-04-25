@@ -231,9 +231,8 @@ function AIPage() {
                   Problem of trust in AI
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 ">
-                  As AI forces its way into our lives and companies race to
-                  build more AI-powered products, so far, users have no option
-                  but to blindly trust the underlying AI models.{" "}
+                  As companies race to build AI-powered products, they leave
+                  users no option but to blindly trust the underlying AI models.{" "}
                   <Link
                     className="font-bold"
                     to="https://twitter.com/AnthropicAI/status/1745854907968880970"
