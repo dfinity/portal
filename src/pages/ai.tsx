@@ -607,7 +607,7 @@ let result = model.run(tvec!
             },
             {
               label: "Join the DeAI working group",
-              href: "/docs/current/developer-docs/ai/overview ",
+              href: "/docs/current/developer-docs/ai/overview",
             },
           ]}
         />
