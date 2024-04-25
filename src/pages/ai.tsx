@@ -266,12 +266,10 @@ function AIPage() {
               />
               <h3 className="tw-lead my-3 md:tw-title-sm">Model integrity</h3>
               <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                Users need assurances that their AI prompts are answered by a
-                secure model. Traditional methods like source code analysis
-                don't work for AI, but providing access to inspect training data
-                and models can help users confirm the integrity of the AI.
-                Additionally, it's essential that users can verify their prompts
-                are handled by the authenticated model.
+                Users need guarantees that their AI prompts are answered by a
+                model that has not been tampered with. Traditional techniques
+                for assessing the integrity of software, such as source code
+                analysis, are unusable for AI models.
               </p>
             </motion.div>
             <motion.div
