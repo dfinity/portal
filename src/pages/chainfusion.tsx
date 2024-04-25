@@ -296,6 +296,7 @@ function MultichainPage() {
               >
                 <CodeBlockString language="motoko">
                   {`
+  // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
   import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
   import ic "ic:aaaaa-aa";
   import Cycles "mo:base/ExperimentalCycles";
@@ -303,12 +304,12 @@ function MultichainPage() {
   
   //Actor is the computational unit of ICP smart contract
   actor {
-    let EVM_FEE = 1000;
-    let BITCOIN_FEE = 1000;
+    let EVM_FEE = 1_000_000_000;
+    let BITCOIN_FEE = 1_000_000_000;
   
      //Function checks the logs of an ETH smart contract for an event
      //If a particular event is found, it sends bitcoin to an address
-     func check_evm_log() : async () {
+     public func check_evm_log() : async () {
       Cycles.add<system>(EVM_FEE);
       let log = await evm.eth_getLogs(
         #EthMainnet(null),
@@ -332,7 +333,7 @@ function MultichainPage() {
     };
   
     // Function that sends bitcoin. This is used by check_evm_log()
-    func send_bitcoin() : async () {
+    public func send_bitcoin() : async () {
       Cycles.add<system>(BITCOIN_FEE);
       await ic.bitcoin_send_transaction({
         transaction = "\be\ef";
