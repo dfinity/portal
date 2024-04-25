@@ -115,7 +115,7 @@ function WhatIsIcpPage() {
               // className="tw-paragraph md:tw-lead-sm mb-3"
               // className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
               >
-                The common perception is that smart contracts are primarily for financial uses like DeFi. 
+                A common perception is that smart contracts are primarily for financial uses like DeFi. 
                 ICP, however, expands this notion by designing its blockchain for a 
                 variety of applications. It's not just about finance; 
                 ICP <a href="/ecosystem">ecosystem</a>&nbsp;includes every dap apps like games, social media, communication tools, developer infrastructure, and even&nbsp; 
