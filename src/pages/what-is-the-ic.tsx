@@ -68,7 +68,7 @@ function WhatIsIcpPage() {
                 <br className="hidden md:block" /> ICP blockchain?
               </motion.h1>
               <motion.p
-                className="pb-[15%] sm:pb-0 tw-lead-sm md:tw-lead mb-0"
+                className="pb-[15%] sm:pb-0 tw-lead-sm md:tw-lead mb-4"
                 variants={transitions.item}
               >
                 ICP is best understood by exploring its foundation: smart contracts. 
@@ -84,42 +84,15 @@ function WhatIsIcpPage() {
           variants={transitions.container}
         >
           <div className="">
-            {/* <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-10 text-gradient"
-              variants={transitions.item}
-            >
-              The Internet Computer — a public decentralized network that scales, but that i
-              <br />
-              Host social networks, media streaming and more, that support Web3
-              functionality, are tamperproof, and can trustlessly interact with
-              the outside world.
-            </motion.h2> */}
-
             <motion.p
               className="mb-0 flex flex-col items-start gap-6 md:gap-8"
               variants={transitions.item}
             >
-              {/* <Link className="button-primary text-center" href="/capabilities">
-                Internet Computer capabilities
-              </Link> */}
-              
-              {/* <Link
-                className="link-primary link-with-icon"
-                href="https://wiki.internetcomputer.org/wiki/History"
-              >
-                <span>
-                  <span className="hidden sm:inline">Wiki history </span>
-                  <span className="sm:hidden">History </span>
-                  of the Internet Computer
-                </span>
-                <LinkArrowUpRight />
-              </Link> */}
-
             </motion.p>
           </div>
         </AnimateSpawn>
 
-        {/* ICP's vision */}
+        {/* ICP's vision blurb */}
         <section
           // className="mt-20 md:mt-28
           // bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
@@ -142,8 +115,13 @@ function WhatIsIcpPage() {
               // className="tw-paragraph md:tw-lead-sm mb-3"
               // className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
               >
-              It all starts with smart contracts. ICP blockchain is designed and built around the idea smart contracts are a disruptive, new compute paradigm enabling 
-              completely novel applications and more more software will run as smart contracts. 
+                The common perception is that smart contracts are primarily for financial uses like DeFi. 
+                ICP, however, expands this notion by designing its blockchain for a 
+                variety of applications. It's not just about finance; 
+                ICP <a href="/ecosystem">ecosystem</a>&nbsp;includes every dap apps like games, social media, communication tools, developer infrastructure, and even&nbsp; 
+                <a href="https://www.youtube.com/watch?v=kP893pQIQvY">AI models</a>. 
+                This wider scope demands a blockchain that is fast, efficient, and equipped with features that cater 
+                to a range of software needs.
               <br/>
               <br/>
 
@@ -152,16 +130,14 @@ function WhatIsIcpPage() {
                 >
                   <i>This is what separates ICP from other blockchains.</i>
                 </div>
-            
+          
               <br/>
-              All performance, efficiency, features, cryptographic capabilities are all designed to serve this vision:
-              a world where all the world's software runs as smart contracts.
             </h2>
           </div>
          
         </section>
 
-        {/* Context Section */}
+        {/* Why are smart contracts important? */}
         <section className="bg-infinite text-white pt-20 md:pt-44">
           <div className="container-10 md:w-6/10 md:mx-auto">
             <motion.h2
@@ -176,70 +152,63 @@ function WhatIsIcpPage() {
             Below is a list of some of the most important features of smart contracts.
             </h3>
           </div>
-          <div className=" container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/node-providers.webp">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Unstoppable and tamper-proof
-              </h2>
 
-              <p className="tw-lead-sm">
-              Because smart contracts are decentrally executed, no single person, 
-              organization, or government can stop or change their state unless the 
-              code foresees that &mdash; code is law. That constitutes a completely 
-              new level of security that allows software to own things of great value.
-              </p>
-              <p>
-                {/* <Link
-                  href="/node-providers"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  Sovereign hardware network
-                </Link> */}
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/what-is-the-ic/subnet-blockchains.webp"
-              reverse={true}
+          <div className="container-12 text-black">
+            <AnimateSpawn
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-5"
+              variants={transitions.container}
             >
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Users can truly own digital assets
-              </h2>
-              <p className="tw-lead-sm">
-              No trust in the developer or cloud/infrastructure providers is required. 
-              Users can also form communities that collectively govern applications.
-              </p>
-              <p>
-                {/* <Link
-                  href="/how-it-works#Architecture"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  ICP architecture
-                </Link> */}
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/smart-contracts.webp">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-              Developers can build decentralized applications (dapps) with novel business models
-              </h2>
-              <p className="tw-lead-sm">
-              For example, users who neither know nor trust each other can do business together without 
-              an intermediary. Complex financial services can be built without the need 
-              of banks, giving power back to the users, reducing overhead and cost.
-              </p>
-              <p>
-                {/* <Link
-                  href="https://medium.com/dfinity/webassembly-on-the-internet-computer-a1d0c71c5b94"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowUpRight />
-                  WebAssembly smart contracts
-                </Link> */}
-              </p>
-            </TranslatedLayout>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/icon-tamperproof.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3 className="tw-lead my-3 md:tw-title-sm">Unstoppable and tamper-proof</h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
+                Because smart contracts are executed in a decentralized way, no single person, organization, or
+                government can stop or change their state unless the code foresees that — code is law. 
+                That constitutes a completely new level of security that allows software to own things of great value.
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/icon-autonomous.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3 className="tw-lead my-3 md:tw-title-sm">Users can truly own digital assets</h3>
+                <p className="tw-paragraph-sm text-black/60  mb-0">
+                No trust in the developer or cloud/infrastructure providers is required. Users can also 
+                form communities that collectively govern applications.
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/icon-simple.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3 className="tw-lead my-3 md:tw-title-sm">Developers can build decentralized applications (dapps) with novel business models</h3>
+                <p className="tw-paragraph-sm text-black/60  mb-0">
+                For example, users who neither know nor trust each other can do business together without an intermediary. 
+                Complex financial services can be built without the need of banks, giving power back to the users, reducing overhead and cost.
+                </p>
+              </motion.div>
+            </AnimateSpawn>
           </div>
         </section>
+
+        {/* mini section: ICP's goal is to remove all the limitations smart */}
         <AnimateSpawn
           className="pt-30 md:pt-40 bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_75%,transparent_75%,transparent_100%)] text-white relative"
           el={motion.section}
@@ -266,7 +235,7 @@ function WhatIsIcpPage() {
           </motion.div>
         </AnimateSpawn>
 
-        {/* Vision Section */}
+        {/* What Features ICP has to unleash power of smart contracts */}
         <section className="container-12 pt-10 md:pt-16 pb-30 md:pb-20 relative">
           <div className="text-center mb-16 md:mb-20">
             <AnimateSpawn
@@ -279,36 +248,6 @@ function WhatIsIcpPage() {
               >
                 How does ICP unleash the power of smart contracts?
               </motion.h2>
-
-              <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
-                It starts by recognizing the limitations that smart contracts have.
-                <br/>
-                <br/>
-                Compared to software applications in centralized cloud providers, most smart contracts...
-                  <div className="text-left">
-                  <ul className="list-disc pl-5">
-                      <li>
-                        are slower
-                      </li>
-                      <li>
-                        more expensive
-                      </li>
-                      <li>
-                        cannot host both frontend and backend
-                      </li>
-                      <li>
-                        cannot make HTTP requests to other providers
-                      </li>
-                      <li>
-                        do not provide users a good user experience
-                      </li>
-                  </ul>
-                  </div>
-                <br/>
-                The Harsh truth that ICP embraces is that smart contracts are the future but 
-                they need to be better to host the world's software.
-              </h3>
-
             </AnimateSpawn>
           </div>
           
@@ -410,7 +349,10 @@ function WhatIsIcpPage() {
               </p>
             </TranslatedLayout>
 
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/multi-chain.webp">
+            <TranslatedLayout
+              imageUrl="/img/what-is-the-ic/reverse-gas-model.webp"
+              reverse={true}
+            >
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
               Upgradability
               </h3>
@@ -419,27 +361,17 @@ function WhatIsIcpPage() {
               e.g. security vulnerabilities. However, this must not come at the 
               cost of a central authority being in control. 
               </p>
-              <p className="mb-3">
-                {/* <Link
-                  className="link-primary link-with-icon"
-                  href="/bitcoin-integration"
-                >
-                  <LinkArrowRight /> Bitcoin
-                </Link> */}
-              </p>
-              <p className="mb-3">
-                {/* <Link
-                  className="link-primary link-with-icon"
-                  href="/ethereum-integration"
-                >
-                  <LinkArrowRight /> Ethereum
-                </Link> */}
-              </p>
+              {/* <Link
+                className="link-primary link-with-icon"
+                href="/capabilities/reverse-gas"
+              >
+                <LinkArrowRight /> Gas-free Web3
+              </Link> */}
             </TranslatedLayout>
           </div>
         </section>
 
-        {/* How Section */}
+        {/*what design choices ICP has to achieve vision */}
         <section className="container-12 pt-10 md:pt-16 pb-30 md:pb-20 relative">
           <div className="text-center mb-16 md:mb-20">
             <AnimateSpawn
@@ -454,13 +386,6 @@ function WhatIsIcpPage() {
               </motion.h2>
             </AnimateSpawn>
           </div>
-        {/* <section
-          className="mt-20 md:mt-48
-          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
-          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
-          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
-          relative "
-        > */}
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
 
           <div className="container-12">
@@ -613,7 +538,7 @@ function WhatIsIcpPage() {
           </div>
         </section>
 
-
+        {/* Ending section */}
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 mt-30">
           <AnimateSpawn
             className=" relative text-white"
