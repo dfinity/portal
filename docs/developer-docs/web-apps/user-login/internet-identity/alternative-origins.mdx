@@ -31,11 +31,15 @@ For more information, see the [Internet Identity specification](https://github.c
 
 ## Configuring alternative origins
 
-For this example, you will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at https://internetcomputer.org and https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
+For this example, you will have two domains, **A** and **B**. **A** will be the canonical origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at `https://yourcustomdomain.com` and `https://www.yourdomain.com`.
 
-In this example, **A** would be the canister ID, or https://hwvjt-wqaaa-aaaam-qadra-cai.icp0.io.
+In this example, **A** would be `https://yourcustomdomain.com`.
 
-**B** would be the alternative origin, or https://internetcomputer.org.
+**B** would be the alternative origin, or `https://www.yourdomain.com`.
+
+:::info
+Your custom domains must be registered with the boundary nodes.
+:::
 
 ### Listing origins
 
