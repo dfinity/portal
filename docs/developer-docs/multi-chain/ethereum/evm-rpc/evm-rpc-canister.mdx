@@ -167,6 +167,16 @@ switch result {
 
 ```
 
+As described in the official [Ethereum JSON-RPC documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs), the topics field is an order-dependent two-dimensional array which encodes the boolean logic for the relevant topics.
+
+For example:
+
+- `[[A], [B]]` corresponds to `A and B`.
+
+- `[[A, B]]` corresponds to `A or B`.
+
+- `[[A], [B, C]]` corresponds to `A and (B or C)`.
+
 </TabItem>
 <TabItem value="rust" label="Rust">
 
