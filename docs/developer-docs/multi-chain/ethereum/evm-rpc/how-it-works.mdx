@@ -140,11 +140,11 @@ request : (
 
 - `EthSepolia`: Selects a built-in provider for the Sepolia testnet.
 
-- `Chain`: Selects a provider from the list of built-in providers with the given chain ID. An extensive list of chain IDs can be found on [ChainList.org](https://chainlist.org).
+- `Chain`: Selects a provider from the list of built-in providers with the given chain ID. An extensive list of chain IDs can be found on [ChainList.org](https://chainlist.org). Specifying `Chain` with no registered provider results in an error.
 
 - `Provider`: Selects the RPC provider with the given id.
 
-- `Custom`: Uses the provided JSON-RPC API information. This option can be used to pass a custom API key.
+- `Custom`: Uses the provided JSON-RPC API information. This option can be used to pass a custom API key. `header` in `Custom` makes it possible to send HTTP headers with the request, usually for passing the API key.
 
 The list of all built-in providers can be found by calling the `getProvider` canister method. If multiple providers are found for an RPC request, the canister prioritizes providers with primary set to true and chooses the option with the lowest id.
 
