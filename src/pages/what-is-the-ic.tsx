@@ -198,7 +198,7 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Developers can build decentralized applications (dapps) with novel business models</h3>
+                <h3 className="tw-lead my-3 md:tw-title-sm">Developers can build dapps with novel business models</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
                 For example, users who neither know nor trust each other can do business together without an intermediary. 
                 Complex financial services can be built without the need of banks, giving power back to the users, reducing overhead and cost.
