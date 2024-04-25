@@ -133,8 +133,8 @@ function AIPage() {
 
   return (
     <Layout
-      title="Hello, Decentralized AI"
-      description="Train and run AI models as smart contracts on-chain to overcome AI’s trust and resilience shortcomings. ICP’s computational power and smart contract expressiveness is in a unique position to tackle this challenge."
+      title="Decentralized AI on Internet Computer - Secure and Trustworthy AI Solutions"
+      description="Explore how the Internet Computer Protocol (ICP) leverages blockchain technology to offer decentralized AI solutions, ensuring model integrity, data confidentiality, and resilience against disruptions. Discover how AI smart contracts on ICP can transform trust and security in artificial intelligence."
     >
       <ShareMeta image="/img/shareImages/share-ai.jpg"></ShareMeta>
 
@@ -178,7 +178,7 @@ function AIPage() {
             </div>
           </div>
           <div className="container-12 relative z-1 h-[200px] md:h-0 pointer-events-none">
-            <div className="absolute w-2/3 left-1/2 translate-y-1/2 -translate-x-[55%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
+            <div className="absolute w-2/3 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[55%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
               <img
                 src="/img/decentralized-ai/aiheader.svg"
                 alt="Start building on Internet Identity"
