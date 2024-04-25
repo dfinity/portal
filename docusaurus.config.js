@@ -486,7 +486,7 @@ const config = {
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
