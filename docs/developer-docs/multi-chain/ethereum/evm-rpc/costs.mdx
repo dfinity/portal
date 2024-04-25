@@ -68,7 +68,7 @@ requestCost : (
 This query method accepts the same arguments as the canister's [`request`](evm-rpc-canister.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
 
 :::info
-The canister will continue retrying the request until it runs out of cycles. This is important for requests such as `eth_getLogs`, where one request might return 100x as much data than the same request a few days earlier if there is a spike in smart contract activity. As a result, the optimal cycles budget is different for each use case. It is suggested to send send 10_000_000_000 cycles as a starting point and adjusting from there.
+The EVM RPC canister will continue retrying the request until it runs out of cycles sent with the request. This is important for requests such as `eth_getLogs`, where one request might return 100x as much data than the same request a few days earlier if there is a spike in smart contract activity. As a result, the optimal cycles budget is different for each use case. It is suggested to send send 10_000_000_000 cycles as a starting point and adjusting from there.
 :::
 
 Once you have determined how many cycles your call will need, you can send them in your call through a CDK or using `dfx` with the `--with-cycles` flag.
