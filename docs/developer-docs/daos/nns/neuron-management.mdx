@@ -55,7 +55,7 @@ By using this API, a user can request information about a list of neurons.
 The user can define which neurons to get information from by defining a list of neuron IDs in the argument `neuron_ids`. 
 In addition, if the argument `include_neurons_readable_by_caller` is set to true, the neurons who the user is authorized to read are also included (i.e., the neurons for which the user is a controller or hot key).
 
-The answer to such a query is defined by `ListNeuronsResponse`. First, it contains a map that points for each neuron that was requested to the corresponding `NeuronInfo` (assuming the neuron exists). This is the public information about a neuron and the exact definition can be found [here](https://github.com/dfinity/ic/blob/7184d168d44f3ba27f750285a0fba43a0c56190a/rs/nns/governance/src/gen/ic_nns_governance.pb.v1.rs#L50).
+The answer to such a query is defined by `ListNeuronsResponse`. First, it contains a map that points for each neuron that was requested to the corresponding `NeuronInfo` (assuming the neuron exists). This is the public information about a [neuron and the exact definition](https://github.com/dfinity/ic/blob/7184d168d44f3ba27f750285a0fba43a0c56190a/rs/nns/governance/src/gen/ic_nns_governance.pb.v1.rs#L50).
 In addition, for each requested neuron that exists and for which the calling user is authorized to read the full neuron (controller or hot key), the full neuron is returned.
 
 ## Interacting with neurons
@@ -196,7 +196,8 @@ To move a neuron from non-dissovling into dissovling state, and start the timer,
 
 To move a neuron from dissolving into non-dissolving state, and stop the timer at the dissolve state that the neuron has, use `StopDissolving`.
 
-No matter in which dissolve state a neuron is, its dissolve delay can be increased up to a maximum of eight years.
+No matter in which dissolve state a neuron is, its dissolve delay can be increased up to a maximum of eight years. If two neurons are merged, the resulting dissolve delay will be the greater of the two neurons. The dissolve state of the target neuron remains unchanged.
+
 To do so, there are two options.
 You can use `IncreaseDissolveDelay` and specify by the argument `additional_dissolve_delay_seconds` by how many seconds the current remaining dissolve delay should be increased. For example, if a neuron has 6 months dissolve delay, choosing the argument 2 months (in seconds) for `IncreaseDissolveDelay`, would result in a neuron with 8 months dissolve delay. 
 Alternatively, you can specify how much dissolve delay a neuron should have after the operation by using `SetDissolveTimestamp` and setting a target time stamp `dissolve_timestamp_seconds` in seconds from the Unix epoch.
