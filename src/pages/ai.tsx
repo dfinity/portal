@@ -166,10 +166,9 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Train and run AI models as smart contracts on-chain to overcome
-                AI’s trust and resilience shortcomings. ICP’s computational
-                power and smart contract expressiveness is in a unique position
-                to tackle this challenge.
+                Train and run AI models as smart contracts fully onchain to
+                benefit from security, resilience, and computation power of the
+                ICP blockchain.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -246,7 +245,9 @@ function AIPage() {
                     Research shows
                   </Link>{" "}
                   that it is possible to tamper with AI models in an
-                  undetectable way.
+                  undetectable way. Users have no visibility into how their data
+                  is used and how AI produces the response. The problem of trust
+                  in AI will get increasingly important in the future.
                 </motion.p>
               </div>
             </aside>
@@ -274,7 +275,7 @@ function AIPage() {
                 Users need guarantees that their AI prompts are answered by a
                 model that has not been tampered with. Traditional techniques
                 for assessing the integrity of software, such as source code
-                analysis, are unusable for AI models.
+                analysis, are infeasible for AI models due to their large sizes.
               </p>
             </motion.div>
             <motion.div
@@ -331,7 +332,7 @@ function AIPage() {
                   <motion.p className="text-2xl mb-0 ">
                     <motion.span className="font-bold">DeAI </motion.span>
                     involves running AI training and inference as smart
-                    contracts on-chain, which addresses AI’s trust issues. Users
+                    contracts onchain, which addresses AI’s trust issues. Users
                     can verify the inputs to the models they utilize, reducing
                     the need to trust them blindly. However, AI training and
                     inference are highly resource-intensive, and the limited
@@ -442,7 +443,7 @@ function AIPage() {
               </div>
               <div className="w-full md:w-auto rounded-2xl">
                 <CodeBlockString showLineNumbers language="rust">
-                  {`// Setup
+                  {`// Setup:
 let proto: ModelProto =     
 ModelProto::decode(onnx_file)?;    
 let model = tract_onnx::onnx()     
@@ -458,39 +459,43 @@ let result = model.run(tvec!
             </AnimateSpawn>
           </div>
         </AnimateSpawn>
-        {/* <section className="container-10 mt-12 md:mt-20 ">
+        <section className="container-10 mt-12 md:mt-44 md:mb-44">
           <AnimateSpawn
             className="mt-16 md:mt-24 mb-60 md:mb-24 relative"
             variants={transitions.container}
           >
             <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient ">
-              ICP DeAI Roadmap
+              What the future holds
             </motion.h4>
-            <motion.p className="mt-6 md:mt-8 mb-4 md:mb-8 md:w-4/10">
+            <motion.p className="mt-6 mb-4 md:mb-6 md:w-[55%]">
               Blockchain AI is still in its early stages. Currently, smart
-              contracts can run small AI models like ImageNet for on-chain image
+              contracts can run small AI models like ImageNet for onchain image
               classification. Short-term improvements will decrease latency and
               support larger models, while the long-term goal is to enable smart
               contracts to perform AI computations on GPUs, allowing both
-              training and inference of large models fully on-chain.
+              training and inference of large models fully onchain.
             </motion.p>
-            <motion.div>
+            <motion.div className="">
+              <motion.p className="tw-lead-sm mb-2 my-2 font-bold">
+                Detailed roadmap coming soon.
+              </motion.p>
+            </motion.div>
+            {/* <motion.div>
               <motion.p className="tw-lead-sm mb-2 my-2">Short-term</motion.p>
               <RoadMapList items={shortTermRoadmapItems} />
             </motion.div>
             <motion.div>
               <motion.p className="tw-lead-sm mb-2 mt-4">Long-term</motion.p>
               <RoadMapList items={longTermRoadmapItems} />
-            </motion.div>
+            </motion.div> */}
             <div
-              className="
-         
+              className=" w-[120%] sm:w-7/10 md:w-[85%]
               absolute
-              -left-2 sm:left-auto
               bottom-0
-              translate-y-[120%] md:translate-y-[15%]
-              sm:right-0
-              sm:translate-x-3/10 select-none 
+              
+              translate-y-[110%] translate-x-[-10%] md:translate-y-[45%] md:translate-x-[55%]
+              sm:translate-y-[80%] sm:translate-x-[20%]
+              select-none 
             "
             >
               <img
@@ -500,10 +505,10 @@ let result = model.run(tvec!
               />
             </div>
           </AnimateSpawn>
-        </section> */}
+        </section>
 
         <AnimateSpawn
-          className="container-12 pt-16 md:pt-30"
+          className="container-12 pt-16 md:pt-40"
           el={motion.section}
           variants={transitions.container}
         >
@@ -635,7 +640,7 @@ let result = model.run(tvec!
             },
             {
               label: "Join the DeAI working group",
-              href: "/docs/current/developer-docs/ai/overview",
+              href: "https://forum.dfinity.org/t/technical-working-group-deai/24621",
             },
           ]}
         />
