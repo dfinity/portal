@@ -701,8 +701,18 @@ const sidebars = {
                 "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
                 "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
                 "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
-                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
                 "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "EVM RPC canister",
+              items: [
+                "developer-docs/multi-chain/ethereum/evm-rpc/overview",
+                "developer-docs/multi-chain/ethereum/evm-rpc/how-it-works",
+                "developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister",
+                "developer-docs/multi-chain/ethereum/evm-rpc/costs",
+                "developer-docs/multi-chain/ethereum/evm-rpc/samples",
               ],
             },
             {
