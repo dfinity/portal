@@ -112,13 +112,14 @@ function WhatIsIcpPage() {
             </motion.h2>
 
             <h2 
-              className="tw-heading-4 md:tw-heading-3 md:mb-6 mt-2"
+              className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-2"
               // className="tw-paragraph md:tw-lead-sm mb-3"
               // className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
               >
                 A common perception is that smart contracts are primarily for DeFi.
-                ICP, however, expands this notion by designing its blockchain for a 
-                variety of applications. It's not just about finance; 
+                ICP's canister smart contracts already are much more powerful, and will become even more powerful as the protocol evolves.
+                As such they allow for a much broader spectrum of use cases.
+                It's not just about finance; 
                 ICP <a href="/ecosystem">ecosystem</a>
                 &nbsp;already includes smart contracts that fully implement all kinds of apps such games, social media, communication tools, developer infrastructure, and even&nbsp;
                 <a href="https://www.youtube.com/watch?v=kP893pQIQvY">AI models</a>. 
@@ -170,9 +171,9 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">Unstoppable and tamper-proof</h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                Because smart contracts are executed in a decentralized way, no single person, organization, or
-                government can stop or change their state unless the code foresees that — code is law. 
-                That constitutes a completely new level of security that allows software to own things of great value.
+                Because smart contracts are executed in a distributed and decentralized way, no single person, organization, 
+                or government can stop or change their state unless the code foresees that — code is law. That constitutes a 
+                completely new level of security and reliability that is simply not achievable on the traditional IT stack.
                 </p>
               </motion.div>
               <motion.div
