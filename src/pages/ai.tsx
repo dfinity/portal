@@ -188,7 +188,7 @@ function AIPage() {
             </div>
           </div>
         </section>
-        <section className="container-10 mt-24 mb-12 md:mb-20 ">
+        <section className="container-10 mt-32 mb-12 md:mb-20 ">
           <AnimateSpawn
             className="mt-32 md:mt-24 md:w-7/10"
             variants={transitions.container}
@@ -313,7 +313,7 @@ function AIPage() {
         </section>
 
         <AnimateSpawn variants={transitions.container}>
-          <section className="bg-infinite text-white pt-6 pb-24" ref={heroRef}>
+          <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
             <article className="container-10 mt-12 md:mt-20 ">
               <h3 className="tw-heading-4 md:tw-heading-60 text-center text-gradient-purple mb-0 ">
                 Solving AI’s Trust Problem
@@ -337,7 +337,7 @@ function AIPage() {
                     computational demands of AI.
                   </motion.p>
                 </div>
-                <div className="md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
+                <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
                   <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
                     <motion.div
                       className="absolute blob blob-white blob-md md:blob-lg blob-x-8 md:blob-x-9 blob-y-15 -z-1"
@@ -352,7 +352,7 @@ function AIPage() {
                   </div>
                 </div>
               </aside>
-              <aside className="mt-12 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-12">
+              <aside className="mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-24">
                 {trustCards.map((card, index) => (
                   <TrustCard key={index} {...card} />
                 ))}
@@ -363,7 +363,7 @@ function AIPage() {
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
-          className="mt-16 md:mt-30"
+          className="mt-20 md:mt-40"
         >
           <div className="container-10 mb-10">
             <div className="flex flex-col md:flex-row gap-6 items-center">
