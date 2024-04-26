@@ -3,6 +3,7 @@ keywords: [beginner, getting started, tutorial, hello world]
 ---
 
 import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
@@ -17,15 +18,22 @@ This guide shows how to get started developing on ICP quickly by deploying your 
 
 ## Choosing a developer environment 
 
-To deploy a simple 'Hello, world!' smart contract, you can setup a local developer environment, or you can use a cloud-based developer environment such as Gitpod or GitHub Codespaces that already has the necessary dependencies and tools installed. For this example, Gitpod and Codespaces examples are available for the Motoko and Rust programming languages. Local development using `dfx` supports Motoko, Rust, Python, and TypeScript. 
+To deploy a simple 'Hello, world!' smart contract, you can use a variety of developer environments, such as:
+
+- Native installation of tools on Linux, Mac, or Windows (using WSL) systems.
+
+- Cloud-based environments such as Gitpod or GitHub Codespaces.
+
+Each developer environment uses [`dfx`](./install/index.mdx), a command-line tool that is used for developing and deploying smart contracts on ICP. 
 
 :::info
 
 **Which environment should you choose?**
 
-Gitpod and Codespaces are cloud-based developer environments that can be accessed via a web browser. They do not require downloading any tools or software. These environments use limited cloud resources and may not scale well for building large, complex projects. 
+Native installation requires downloading and installing `dfx` and its dependencies manually. Using a native installation of `dfx` is better suited for large projects.
 
-Local development requires downloading and installing dependencies and `dfx`. Using `dfx` directly is better suited for large projects.
+Gitpod and GitHub Codespaces are cloud-based developer environments that can be accessed via a web browser. The Gitpod and GitHub Codespace examples linked on this page come with the necessary tools and dependencies pre-installed. These environments use limited cloud resources and may not scale well for building large, complex projects. 
+
 :::
 
 <AdornedTabs groupId="environments">
@@ -53,7 +61,7 @@ Local development requires downloading and installing dependencies and `dfx`. Us
 
 </TabItem>
 
-<TabItem value="dfx" label="dfx">
+<TabItem value="dfx" label="Native installation">
 
 ### Install `dfx`
 
@@ -133,6 +141,24 @@ Lastly, you can include extra features to be added to your project:
 
 ## Smart contract code
 
+The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
+
+The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
+
+The `hello_backend` canister is used to store the dapp's functions and core logic. 
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+:::info
+It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API. 
+:::
+
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
@@ -195,7 +221,7 @@ def greet(name: str) -> str:
 </AdornedTabs>
 
 
-## Deploy locally
+## Deploy to the local environment
 
 Deploy the project's <GlossaryTooltip>canisters</GlossaryTooltip> locally:
 
