@@ -71,8 +71,9 @@ function WhatIsIcpPage() {
                 className="pb-[15%] sm:pb-0 tw-lead-sm md:tw-lead mb-4"
                 variants={transitions.item}
               >
-                ICP is best understood by exploring its foundation: smart contracts. 
-                Here's a simple explanation of why smart contracts are effective and how ICP's vision is to unlock their power.
+                ICP is best understood by exploring its foundation: canister smart contracts. 
+                Here's a simple explanation of why canister smart contracts are effective, how they much more power full than ordinary smart contracts, 
+                and how they will change to world as ICP's vision is being realized.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -115,13 +116,13 @@ function WhatIsIcpPage() {
               // className="tw-paragraph md:tw-lead-sm mb-3"
               // className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
               >
-                A common perception is that smart contracts are primarily for financial uses like DeFi. 
+                A common perception is that smart contracts are primarily for DeFi.
                 ICP, however, expands this notion by designing its blockchain for a 
                 variety of applications. It's not just about finance; 
-                ICP <a href="/ecosystem">ecosystem</a>&nbsp;includes every dap apps like games, social media, communication tools, developer infrastructure, and even&nbsp; 
+                ICP <a href="/ecosystem">ecosystem</a>
+                &nbsp;already includes smart contracts that fully implement all kinds of apps such games, social media, communication tools, developer infrastructure, and even&nbsp;
                 <a href="https://www.youtube.com/watch?v=kP893pQIQvY">AI models</a>. 
-                This wider scope demands a blockchain that is fast, efficient, and equipped with features that cater 
-                to a range of software needs.
+                This wider scope is possible because ICP is a blockchain that is fast, efficient, and equipped with features that cater to a range of software needs.
               <br/>
               <br/>
 
