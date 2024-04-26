@@ -90,7 +90,9 @@ const TrustCard: React.FC<TrustCardProps> = ({
 }) => (
   <div className="flex flex-col text-white">
     <img src={imageSrc} alt={imageAlt} className="w-3/10" />
-    <div className="mt-6 text-2xl font-bold leading-8">{title}</div>
+    <div className="mt-6 tw-heading-5 md:tw-heading-4 font-bold leading-8">
+      {title}
+    </div>
     {link && linkText ? (
       <div className="mt-2 text-base leading-6 font-[450]">
         {description}
@@ -314,7 +316,7 @@ function AIPage() {
 
         <AnimateSpawn variants={transitions.container}>
           <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
-            <article className="container-10 mt-12 md:mt-20 ">
+            <article className="container-10 mt-12 md:mt-20">
               <h3 className="tw-heading-4 md:tw-heading-60 text-center text-gradient-purple mb-0 ">
                 Solving AI’s Trust Problem
               </h3>
@@ -352,7 +354,7 @@ function AIPage() {
                   </div>
                 </div>
               </aside>
-              <aside className="mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-24">
+              <aside className="mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-x-[4.5rem] gap-y-20">
                 {trustCards.map((card, index) => (
                   <TrustCard key={index} {...card} />
                 ))}
@@ -388,7 +390,7 @@ function AIPage() {
             </div>
 
             <AnimateSpawn
-              className="container-10 mt-12 mb-5 px-0"
+              className="container-10 mt-12 mb-5 !p-0"
               el={motion.section}
               variants={transitions.container}
             >
