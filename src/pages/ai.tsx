@@ -194,8 +194,8 @@ function AIPage() {
             variants={transitions.container}
           >
             <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient">
-              *Nearly half of people worldwide (49%) expressed concerns about
-              the misuse of AI for harmful purposes.
+              A recent study on AI finds that nearly half of the respondents
+              (49%) are concerned about the misuse of AI for nefarious purposes.
             </motion.h4>
             <motion.p className="my-8">
               Survey in the{" "}
