@@ -309,7 +309,7 @@ function MultichainPage() {
   
      //Function checks the logs of an ETH smart contract for an event
      //If a particular event is found, it sends bitcoin to an address
-     public func check_evm_log() : async () {
+     func check_evm_log() : async () {
       Cycles.add<system>(EVM_FEE);
       let log = await evm.eth_getLogs(
         #EthMainnet(null),
