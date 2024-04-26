@@ -216,7 +216,7 @@ function AIPage() {
         </section>
         <section className="container-12 relative mt-24 sm:mt-52 md:mt-40">
           <AnimateSpawn variants={transitions.container}>
-            <aside className="container-10 md:mt-40 md:flex md:items-center pl-0 pr-0	">
+            <aside className="container-10 md:mt-40 md:flex md:items-center !pl-0 !pr-0	">
               <div className=" w-[115%] -ml-6 md:-ml-0 md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
                 <div className="pointer-events-none md:absolute w-full right-0 md:right-20 md:top-1/2  md:-translate-y-1/2">
                   <motion.img
@@ -512,7 +512,7 @@ let result = model.run(tvec!
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="flex flex-col gap-6 p-0 md:gap-5 mb-8 md:flex-row container-10">
+          <div className="flex flex-col gap-6 !p-0 md:gap-5 mb-8 md:flex-row container-10">
             <motion.h2
               className="tw-heading-4 mb-0 md:tw-heading-60"
               variants={transitions.item}
