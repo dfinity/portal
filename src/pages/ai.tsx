@@ -148,12 +148,15 @@ function AIPage() {
       >
         {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
         <section
-          className="bg-infinite text-white pt-20 mb-[10vw] lg:mb-3"
+          className="text-white pt-20 mb-[10vw] lg:mb-3"
+          style={{
+            background: "linear-gradient(54deg, #3B00B9 0%, #D38ED7 153.06%)",
+          }}
           ref={heroRef}
         >
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
+              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10 "
               variants={transitions.item}
             >
               Hello, <br /> Decentralized AI
@@ -180,7 +183,7 @@ function AIPage() {
             </div>
           </div>
           <div className="container-12 relative z-1 h-[200px] md:h-0 pointer-events-none">
-            <div className="absolute w-2/3 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[55%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
+            <div className="absolute w-10/12 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[50%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
               <img
                 src="/img/decentralized-ai/aiheader.svg"
                 alt="Start building on Internet Identity"
@@ -190,9 +193,9 @@ function AIPage() {
             </div>
           </div>
         </section>
-        <section className="container-10 mt-32 mb-12 md:mb-20 ">
+        <section className="container-10 mt-44 md:mt-60 mb-12 md:mb-20 ">
           <AnimateSpawn
-            className="mt-32 md:mt-24 md:w-7/10"
+            className="mt-32 md:mt-24"
             variants={transitions.container}
           >
             <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient">
@@ -214,9 +217,9 @@ function AIPage() {
         </section>
         <section className="container-12 relative mt-24 sm:mt-52 md:mt-40">
           <AnimateSpawn variants={transitions.container}>
-            <aside className="container-10 md:mt-40 md:flex md:items-center pl-0	">
-              <div className="md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
-                <div className="pointer-events-none md:absolute w-full  md:right-24 md:top-1/2  md:-translate-y-1/2">
+            <aside className="container-10 md:mt-40 md:flex md:items-center pl-0 pr-0	">
+              <div className=" w-[115%] -ml-6 md:-ml-0 md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
+                <div className="pointer-events-none md:absolute w-full right-0 md:right-20 md:top-1/2  md:-translate-y-1/2">
                   <motion.img
                     variants={transitions.fadeIn}
                     src="/img/decentralized-ai/trust-img-1.webp"
@@ -250,7 +253,7 @@ function AIPage() {
           </AnimateSpawn>
         </section>
         <section className="container-12  relative mt-24 mb-24 sm:mt-52 md:mt-40">
-          <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient text-center m-12 md:mb-16">
+          <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient text-left md:text-center my-12  md:mb-16 md:w-5/10 md:mx-auto">
             What is required to establish trust?
           </motion.h4>
           <AnimateSpawn
@@ -258,7 +261,7 @@ function AIPage() {
             variants={transitions.container}
           >
             <motion.div
-              className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
+              className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8"
               variants={transitions.item}
             >
               <img
@@ -266,7 +269,7 @@ function AIPage() {
                 alt=""
                 className="h-24"
               />
-              <h3 className="tw-lead my-3 md:tw-title-sm">Model integrity</h3>
+              <h3 className="tw-lead my-3 md:tw-title-sm ">Model integrity</h3>
               <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
                 Users need guarantees that their AI prompts are answered by a
                 model that has not been tampered with. Traditional techniques
@@ -275,7 +278,7 @@ function AIPage() {
               </p>
             </motion.div>
             <motion.div
-              className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
+              className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8"
               variants={transitions.item}
             >
               <img
@@ -295,7 +298,7 @@ function AIPage() {
               </p>
             </motion.div>
             <motion.div
-              className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
+              className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8"
               variants={transitions.item}
             >
               <img
@@ -317,10 +320,10 @@ function AIPage() {
         <AnimateSpawn variants={transitions.container}>
           <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
             <article className="container-10 mt-12 md:mt-20">
-              <h3 className="tw-heading-4 md:tw-heading-60 text-center text-gradient-purple mb-0 ">
+              <h3 className="tw-heading-4 md:tw-heading-60  text-left md:text-center text-gradient-purple mb-0 md:w-5/10 md:mx-auto">
                 Solving AI’s Trust Problem
               </h3>
-              <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center pl-0	">
+              <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center pl-0	pr-0">
                 <div className="md:w-1/3">
                   <motion.h3 className="tw-heading-5 md:tw-heading-4">
                     Decentralized AI
@@ -431,7 +434,7 @@ function AIPage() {
                   </MotionLink>
                   <Link
                     href="/docs/current/developer-docs/ai/ai-on-chain"
-                    className="mt-6 md:mt-0 link-primary link-with-icon items-center ml-6"
+                    className="mt-6 md:mt-0 link-primary link-with-icon items-center ml-0 md:ml-6"
                   >
                     More about DeAI in the Dev docs <LinkArrowRight />
                   </Link>
@@ -504,7 +507,7 @@ let result = model.run(tvec!
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="flex flex-col gap-6 md:gap-5 mb-8 md:flex-row container-10">
+          <div className="flex flex-col gap-6 p-0 md:gap-5 mb-8 md:flex-row container-10">
             <motion.h2
               className="tw-heading-4 mb-0 md:tw-heading-60"
               variants={transitions.item}
@@ -528,63 +531,89 @@ let result = model.run(tvec!
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <NewsCard
-              news={{
-                title: "AI models as smart contracts on a blockchain.",
-                dateHuman: "Jan 26, 2024 by @dominic_w",
-                press: "@dominic_w",
-                details: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits...`,
-                url: "https://twitter.com/dominic_w/status/1750886289702834539",
-                imageUrl: "/img/decentralized-ai/news-1.jpg",
-              }}
-              linkLabel="See the post"
-            />
+            <Link
+              href="https://twitter.com/dominic_w/status/1750886289702834539"
+              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
+            >
+              <NewsCard
+                news={{
+                  title: "AI models as smart contracts on a blockchain.",
+                  dateHuman: "Jan 26, 2024 by @dominic_w",
+                  press: "@dominic_w",
+                  details: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits...`,
+                  url: "https://twitter.com/dominic_w/status/1750886289702834539",
+                  imageUrl: "/img/decentralized-ai/news-1.jpg",
+                }}
+                linkLabel="See the post"
+              />
+            </Link>
+            <Link
+              href="https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/"
+              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
+            >
+              <NewsCard
+                news={{
+                  title:
+                    "AWS-Reliant Blockchains Won’t Bring Transparency to AI",
+                  dateHuman: "Jul 29, 2023",
+                  press: "Dominic Williams",
+                  details: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries...`,
+                  url: "https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/",
+                  imageUrl: "/img/decentralized-ai/news-2.jpg",
+                }}
+                linkLabel="Read Now"
+              />
+            </Link>
 
-            <NewsCard
-              news={{
-                title: "AWS-Reliant Blockchains Won’t Bring Transparency to AI",
-                dateHuman: "Jul 29, 2023",
-                press: "Dominic Williams",
-                details: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries...`,
-                url: "https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/",
-                imageUrl: "/img/decentralized-ai/news-2.jpg",
-              }}
-              linkLabel="Read Now"
-            />
-            <NewsCard
-              news={{
-                title: "AI-related crypto are quickly gaining value",
-                dateHuman: "Nov 03, 2024",
-                press: "fastcompany.com",
-                details: `Internet Computer (ICP) is the biggest AI crypto, by a wide margin. It’s a decentralized web platform whose goal is to build a secure network for public use—and it’s using large language models to help achieve that.`,
-                url: "https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency",
-                imageUrl: "/img/decentralized-ai/news-4.jpg",
-              }}
-              linkLabel="Read Now"
-            />
-            <NewsCard
-              news={{
-                title:
-                  "Decentralized AI Offers New Hope for User Data Security",
-                dateHuman: "March 15, 2024",
-                press: "metanews.com",
-                details: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks...`,
-                url: "https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency",
-                imageUrl: "/img/decentralized-ai/news-5.jpg",
-              }}
-              linkLabel="Read Now"
-            />
-            <NewsCard
-              news={{
-                title: "DFINITY is revolutionizing dApps with AI on ICP!",
-                dateHuman: "Sat 16 Mar 2024",
-                press: "cointribune.com",
-                details: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s...`,
-                url: "https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency",
-                imageUrl: "/img/decentralized-ai/news-6.jpg",
-              }}
-              linkLabel="Read Now"
-            />
+            <Link
+              href="https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency"
+              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
+            >
+              <NewsCard
+                news={{
+                  title: "AI-related crypto are quickly gaining value",
+                  dateHuman: "Nov 03, 2024",
+                  press: "fastcompany.com",
+                  details: `Internet Computer (ICP) is the biggest AI crypto, by a wide margin. It’s a decentralized web platform whose goal is to build a secure network for public use—and it’s using large language models to help achieve that.`,
+                  url: "https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency",
+                  imageUrl: "/img/decentralized-ai/news-4.jpg",
+                }}
+                linkLabel="Read Now"
+              />
+            </Link>
+            <Link
+              href="https://metanews.com/decentralized-ai-offers-new-hope-for-user-data-security/"
+              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
+            >
+              <NewsCard
+                news={{
+                  title:
+                    "Decentralized AI Offers New Hope for User Data Security",
+                  dateHuman: "March 15, 2024",
+                  press: "metanews.com",
+                  details: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks...`,
+                  url: "https://metanews.com/decentralized-ai-offers-new-hope-for-user-data-security/",
+                  imageUrl: "/img/decentralized-ai/news-5.jpg",
+                }}
+                linkLabel="Read Now"
+              />{" "}
+            </Link>
+            <Link
+              href="https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/"
+              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
+            >
+              <NewsCard
+                news={{
+                  title: "DFINITY is revolutionizing dApps with AI on ICP!",
+                  dateHuman: "Sat 16 Mar 2024",
+                  press: "cointribune.com",
+                  details: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s...`,
+                  url: "https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/",
+                  imageUrl: "/img/decentralized-ai/news-6.jpg",
+                }}
+                linkLabel="Read Now"
+              />{" "}
+            </Link>
           </div>
         </AnimateSpawn>
 
