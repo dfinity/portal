@@ -29,17 +29,17 @@ const cards = [
     stats: "50,000+ users",
   },
   {
-    logo: require("../../../../static/img/basics/distrikt-logo.webp").default,
-    title: "Distrikt",
-    oneLiner: "Professional social media platform",
-    stats: "70,000+ users",
+    logo: require("../../../../static/img/basics/bioniq-logo.webp").default,
+    title: "Bioniq",
+    oneLiner: "Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging",
+    stats: "45,000+ users",
   },
 
   {
-    logo: require("../../../../static/img/basics/dscvr-logo.webp").default,
-    title: "DSCVR",
-    oneLiner: "Decentralized social news aggregator",
-    stats: "40,000+ users",
+    logo: require("../../../../static/img/basics/helix-logo.webp").default,
+    title: "Helix",
+    oneLiner: "Decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
+    stats: "2,000+ users",
   },
 ];
 

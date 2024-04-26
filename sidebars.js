@@ -146,6 +146,7 @@ const sidebars = {
               items: [
                 "developer-docs/smart-contracts/candid/candid-concepts",
                 "developer-docs/smart-contracts/candid/candid-howto",
+                "developer-docs/smart-contracts/candid/candid-tools",
               ],
             },
           ],
@@ -187,6 +188,7 @@ const sidebars = {
           type: "category",
           label: "Test",
           items: [
+            "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
             "developer-docs/smart-contracts/test/staging-environment",
             "developer-docs/smart-contracts/test/reproducible-builds",
@@ -699,8 +701,18 @@ const sidebars = {
                 "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
                 "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
                 "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
-                "developer-docs/multi-chain/ethereum/using-eth/evm-rpc",
                 "developer-docs/multi-chain/ethereum/using-eth/siwe",
+              ],
+            },
+            {
+              type: "category",
+              label: "EVM RPC canister",
+              items: [
+                "developer-docs/multi-chain/ethereum/evm-rpc/overview",
+                "developer-docs/multi-chain/ethereum/evm-rpc/how-it-works",
+                "developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister",
+                "developer-docs/multi-chain/ethereum/evm-rpc/costs",
+                "developer-docs/multi-chain/ethereum/evm-rpc/samples",
               ],
             },
             {

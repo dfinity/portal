@@ -326,6 +326,80 @@ The SNS DAO has control over a treasury from which funds can be sent to other ac
 
 This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
 
+#### Maximum 7-day amount total
+
+The rate at which funds can be transferred from the treasury is capped. The cap varies based on the
+value of the tokens in the treasury in [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights),
+denoted as T. For the purposes of capping, T can fall within three ranges:
+
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Range of T (XDR)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Small</td>
+      <td>0 ≤ T ≤ 100_000</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>100_000 &#60; T ≤ 1_200_000</td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td>1_200_000 &#60; T️ &#60; &#8734;</td>
+    </tr>
+  </tbody>
+</table>
+
+The total amount that can be transferred from the treasury in a 7 day period is at most L(T), where
+L(T) defines the rules that depend on the amount T in the treasury and is defined in the following
+table:
+
+<table>
+  <thead>
+    <tr>
+      <th>Treasury size</th>
+      <th>L(T)</th>
+      <th>Fraction of T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Small</td>
+      <td>T</td>
+      <td>100%</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>0.25 * T</td>
+      <td>25%</td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td>300_000 XDR</td>
+      <td>0% - 25%</td>
+    </tr>
+  </tbody>
+</table>
+
+ICP and SNS tokens are considered separately.
+
+For example, if the treasury contains 75_000 XDR worth of SNS tokens, then this amount is considered
+"small". In this case up to 75_000 XDR worth of SNS tokens can be transferred from the treasury.
+
+To assess the tokens in the treasury, external price information is fetched at the time of proposal
+submission.
+
+The price of ICP is taken from the cycles minting canister's
+[get_average_icp_xdr_conversion_rate](https://sourcegraph.com/github.com/dfinity/ic@8efb7e81a1f1257a38621b1f12eccc8b8b1c7e39/-/blob/rs/nns/cmc/src/main.rs?L901:33-901:44)
+method.
+
+The price of the SNS token in ICP is taken from the swap canister's [get_derived_state](https://sourcegraph.com/github.com/dfinity/ic@8efb7e81a1f1257a38621b1f12eccc8b8b1c7e39/-/blob/rs/sns/swap/proto/ic_sns_swap/pb/v1/swap.proto?L1304-1325) method.
+
 #### Relevant type signatures
 
 ```candid
