@@ -333,7 +333,7 @@ function MultichainPage() {
     };
   
     // Function that sends bitcoin. This is used by check_evm_log()
-    public func send_bitcoin() : async () {
+    func send_bitcoin() : async () {
       Cycles.add<system>(BITCOIN_FEE);
       await ic.bitcoin_send_transaction({
         transaction = "\be\ef";
