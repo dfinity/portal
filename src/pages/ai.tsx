@@ -623,7 +623,7 @@ let result = model.run(tvec!
           cards={[
             {
               label: "Apply to DeAI Grants",
-              href: "#",
+              href: "https://dfinity.org/grants",
             },
             {
               label: "Start building DeAI",
@@ -631,7 +631,7 @@ let result = model.run(tvec!
             },
             {
               label: "Chat with AI to learn more about ICP",
-              href: "#at-chat",
+              href: "/",
             },
             {
               label: "Join the DeAI working group",
