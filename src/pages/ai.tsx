@@ -324,7 +324,7 @@ function AIPage() {
               <h3 className="tw-heading-4 md:tw-heading-60  text-left md:text-center text-gradient-purple mb-0 md:w-5/10 md:mx-auto">
                 Solving AI’s Trust Problem
               </h3>
-              <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center pl-0	pr-0">
+              <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center !pl-0	!pr-0">
                 <div className="md:w-1/3">
                   <motion.h3 className="tw-heading-5 md:tw-heading-4">
                     Decentralized AI
