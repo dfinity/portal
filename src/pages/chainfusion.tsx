@@ -266,14 +266,14 @@ function MultichainPage() {
             </p>
 
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              This code snippet is written in the&nbsp;
+              This code snippet is written in both Rust and the&nbsp;
               <Link
                 rel="stylesheet"
                 href="/docs/current/tutorials/developer-journey/level-0/intro-languages/#motoko"
               >
                 Motoko programming language
               </Link>{" "}
-              but is also possible for Rust, TypeScript, Python, and other
+              but is also possible for TypeScript, Python, and other
               languages.
             </p>
             <p className="mb-0 mt-8">
@@ -433,7 +433,7 @@ async fn send_bitcoin() {
     .expect("Call failed");
 }
 
-//TYPE DECLARATIONS
+//TYPE DECLARATIONSpush
 
 #[derive(CandidType, Deserialize, Debug, Clone)]
 pub enum EthSepoliaService {
