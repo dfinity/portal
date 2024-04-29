@@ -94,17 +94,19 @@ dfx identity use MyNewIdentity
 
 ## Step 10: Now, claim your cycles.
 
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
+
+To use the cycles ledger, you will need [`dfx` version 0.19.0](/docs/current/developer-docs/getting-started/install/), and you will need to set the following environmental variable:
+
+```
+DFX_CYCLES_LEDGER_SUPPORT_ENABLE=1
+```
+
 You will need to claim your free cycles by running this command:
 
 ```
 dfx cycles --network ic redeem-faucet-coupon <your-coupon-code>
 ```
-
-:::info
-This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
-
-Please note that the cycles wallet will be removed from dfx in a future release.
-:::
 
 ![Claim Cycles](_attachments/faucet_step_5.png)
 
