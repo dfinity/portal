@@ -43,7 +43,7 @@ Your custom domains must be registered with the boundary nodes.
 
 ### Listing origins
 
-For origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid origin. You'll be placing the config files in `src/assets` directory of your frontend canister. If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
+On origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid alternative origin. You'll be placing the config files in `src/assets` directory of your frontend canister. If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
 
 ```json
 "source": [
@@ -116,4 +116,4 @@ Then, configure the `.well-known` directory to be included, with:
 
 This includes a general rule to not ignore the `.well-known` directory, and rules to deliver the `ii-alternative-origins` with access control and content-type headers.
 
-Then, all you need to do is deploy your canister. When you attempt to authenticate from origin **B** from then on, you will get back the same principal you get while using **A**.
+Then, all you need to do is deploy your canister. When you attempt to authenticate from origin **B** from then on, you will get back the same principal you get while using **A**. This needs to be supplemented with the information configured with the `AuthClient` to specifically request to use domain **A** when authenticating from **B**, i.e. set `derivationOrigin` in call options to `login`.
