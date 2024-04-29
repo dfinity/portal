@@ -10,6 +10,7 @@
       "DeFi"
     ],
     "display": "Large",
+    "stats": "2,000+ users",
     "twitter": "https://twitter.com/HelixMarkets",
     "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
     "usesInternetIdentity": true,
@@ -30,6 +31,7 @@
     ],
     "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
     "display": "Large",
+    "stats": "45,000+ users",
     "logo": "/img/showcase/bioniq-logo.jpeg",
     "screenshots": [
       "/img/showcase/bioniq-screenshot-min.png"
