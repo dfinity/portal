@@ -601,6 +601,62 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 quill send message.json
 ```
 
+### `ManageLedgerParameters`
+The proposal `ManageLedgerParameters` can be used to update some of the SNS ledger canister's parameters.
+For now, the only ledger parameter that can be changed is the transfer fee.
+Later, additional paramters might be added.
+Fields where a value is set to `None` will remain unchanged.
+
+#### Relevant type signatures
+
+```candid
+  type ManageLedgerParameters = record {
+    transfer_fee : opt nat64
+  };
+```
+
+Example in bash:
+
+```bash
+TODO
+```
+
+### `ManageDappCanisterSettings`
+This proposal allows to upgrade the settings of one or more SNS DAO-controlled dapp canister.
+The canisters whose settings should be updates are specified in `canister_ids` and the proposal allows updating
+the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or public),
+the memory allocation, and the compute allocation.
+
+#### Relevant type signatures
+
+```candid
+type ManageDappCanisterSettings = record {
+  freezing_threshold : opt nat64;
+  canister_ids : vec principal;
+  reserved_cycles_limit : opt nat64;
+  log_visibility : opt int32;
+  memory_allocation : opt nat64;
+  compute_allocation : opt nat64;
+};
+enum LogVisibility {
+  LOG_VISIBILITY_UNSPECIFIED = 0;
+  LOG_VISIBILITY_CONTROLLERS = 1;
+  LOG_VISIBILITY_PUBLIC = 2;
+}
+```
+
+#### Putting it together
+
+```
+TODO
+```
+
+Example in bash:
+
+```bash
+TODO
+```
+
 ## Generic proposals
 
 Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it but that might be very dapp-specific. Generic proposals, also called generic functions or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
