@@ -574,7 +574,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "References",
+              label: "Important resources",
               id: "developer-docs/security/security-best-practices-references",
             },
           ],
