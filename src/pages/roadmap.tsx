@@ -20,7 +20,7 @@ export interface Element {
   title: string
   overview: string
   description: string
-  progress: string
+  progress: `done` | `in_progress` | `future` | ``
   stack_rank: number
   forum: string
   proposal: string
@@ -81,7 +81,14 @@ function getElementsGroupedByMilestones(
   return milesSonesMap;
 }
 
+function getMilesone (milestone: string):Milestone|null {
+  return themes.milestones.find((m) => m.metal === milestone);
+}
+
+
 const groupedElements = getElementsGroupedByMilestones(themes.milestones, themes.elements);
+
+console.log(groupedElements)
 
 
 export const ThemeSection: React.FC<{theme: Root}> = ({
@@ -91,35 +98,30 @@ export const ThemeSection: React.FC<{theme: Root}> = ({
     <section className="space-y-6 md:space-y-16">
       <h2 className="tw-heading-4 md:tw-heading-3 mb-6">{theme.categoryName}</h2>
       <p className="tw-paragraph-sm md:tw-lead-sm mb-10">{theme.categoryDescription}</p>
-      <h3>Mile Stones</h3>
-      <div className="space-y-6">
-        {theme.milestones.map((milestone) => (
-          <div>
-            <div key={milestone.title} className="space-y-2">
-              <h4 className="tw-heading-5">{milestone.metal}</h4>
-              <p className="tw-paragraph-sm">{milestone.title}</p>
-              <p className="tw-paragraph-sm">{milestone.description}</p>
+      <h3>Milestones</h3>
+      <div className="space-y-2 flex gap-4 items-stretch">
+        {Array.from(groupedElements.keys()).map((milestone) => (
+          <div className="bg-white p-5 rounded-s text-black w-1/5">
+            <div key={milestone} className="space-y-2">
+              <h4 className="tw-heading-5">{milestone}</h4>
             </div>
-            <div className="w-full overflow-x-auto">
-              <div className="flex">
-                {groupedElements.get(milestone.metal).map((element) => (
-                  <div key={element.title}>
-                    <h4 className="tw-heading-5">{element.title}</h4>
-                    <p className="tw-paragraph-sm">{element.overview}</p>
-                    <p className="tw-paragraph-sm">{element.description}</p>
-                    <p className="tw-paragraph-sm">{element.progress}</p>
-                    <p className="tw-paragraph-sm">{element.stack_rank}</p>
-                    <p className="tw-paragraph-sm">{element.forum}</p>
-                    <p className="tw-paragraph-sm">{element.proposal}</p>
-                    <p className="tw-paragraph-sm">{element.wiki}</p>
-                    <p className="tw-paragraph-sm">{element.docs}</p>
-                    <p className="tw-paragraph-sm">{element.eta}</p>
-                    <p className="tw-paragraph-sm">{element.is_community}</p>
-                    <p className="tw-paragraph-sm">{element.in_beta}</p>
-                    <p className="tw-paragraph-sm">{element.notes}</p>
+            <div className="w-full flex gap-2 flex-wrap">
+                {groupedElements.get(milestone).map((element) => (
+                  <div key={element.title} className="flex items-center space-x-4">
+                    {element.progress === 'done' && (
+                      <div className="w-2 h-2 bg-green rounded-full"></div>
+                    ) || element.progress === 'in_progress' && (
+                      <div className="w-2 h-2 bg-[#ffc061] rounded-full"></div>
+                    ) || (element.progress === 'future' || element.progress === '') && (
+                      <div className="w-2 h-2 bg-black rounded-full"></div>
+                    )}
                   </div>
                 ))}
-              </div>
+            </div>
+            <div>
+              <p>
+                {getMilesone(milestone)?.title}
+              </p>
             </div>
           </div>
         ))}
