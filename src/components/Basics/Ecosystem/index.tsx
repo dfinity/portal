@@ -43,6 +43,13 @@ const cards = [
   },
 ];
 
+function truncate(str, num) {
+  if (str.length <= num) {
+    return str;
+  }
+  return str.slice(0, num) + '...';
+}
+
 const mobileProjects = [...cards].reverse();
 
 const Ecosystem = () => {
@@ -80,7 +87,7 @@ const Ecosystem = () => {
             <div className={styles.card} key={card.title}>
               <img src={card.logo} alt={`${card.title} logo`} loading="lazy" />
               <h3 className="">{card.title}</h3>
-              <p className="">{card.oneLiner}</p>
+              <p className="">{truncate(card.oneLiner, 46)}</p>
               <span className={styles.stats}>{card.stats}</span>
             </div>
           ))}
@@ -90,7 +97,7 @@ const Ecosystem = () => {
             <div className={styles.card} key={card.title}>
               <img src={card.logo} alt={`${card.title} logo`} loading="lazy" />
               <h3 className="">{card.title}</h3>
-              <p className="">{card.oneLiner}</p>
+              <p className="">{truncate(card.oneLiner, 46)}</p>
               <span className={styles.stats}>{card.stats}</span>
             </div>
           ))}
