@@ -229,6 +229,9 @@ If no nonce is provided, the governance canister chooses a random one.
 _Required permissions:_
 Only a neuron's controller can spawn maturity from a neuron.
 
+
+
+
 ### Disbursing / unstaking a neuron
 When a neuron is dissolved, i.e., its dissolve delay is zero, the neuron's controlling principal can instruct it to _disburse_ the neuron’s stake. 
 This means that the staked ICP balance is transferred to a specified ledger account and is liquid again.
@@ -301,3 +304,19 @@ The second argument `followees` defines a list of neuron IDs whose decision will
 _Required permissions:_
 Voting and setting following can be done by a neuron's controller or a neuron's hot key.
 
+### Splitting a neuron
+A neuron can be split in two neurons, for example to set different dissolve delays.
+A user can choose how much of the neuron's stake should be split into a new neuron.
+The new neuron will inherit the parent neuron's hot keys and followees.
+Note that the maturity is not affected and the new neuron will start with no maturity.
+
+```
+type Split = record {
+    amount_e8s : nat64
+};
+```
+The command takes as argument the amount of tokens `amount_e8s` that are split from the parent neuron into a
+new neuron.
+
+_Required permissions:_
+Only a neuron's controller can split a neuron.
