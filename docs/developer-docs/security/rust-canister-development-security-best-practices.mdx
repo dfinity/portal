@@ -383,37 +383,6 @@ GoldDAO's GLDT-swap has an implementation of journaling. In their case the journ
   * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#910
   * Note that not all details of the flow appear in the registry. The amount of detail to include depends one's goals for recovery.
 
-### Avoid traps after await
-
-*This section is deprecated in favor of [Securely handle traps in callbacks](#Securely-handle-traps-in-callbacks)*
-
-#### Security concern
-
-Traps / panics roll back the canister state, as described in Property 5 above. So any state change followed by a trap or panic can be risky. This is also an important concern when inter-canister calls are made. If a panic/trap occurs after an `await` to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call callback invocation, and not before the entire call!
-
-This may e.g. lead to the following issues:
-
-- Suppose some state changes are applied and then an inter-canister call is issued. Also, assume that these state changes leave the canister in an inconsistent state, and that state is only made consistent again in the callback. Now if there is a trap in the callback, this leaves the canister in an inconsistent state.
-- A concrete bug of this kind is the following. Assume an inter-canister call is issued to transfer funds. In the callback, the canister accounts for having made that transfer by reflecting that fact in the canister storage. However, suppose the callback also updates some usage statistics data, which eventually leads to a trap when some data structure becomes full. As soon as that is the case, the canister ends up in an inconsistent state because the state changes in the callback are no longer applied and thus the transfers are not correctly accounted for.
-  ![example_highlighted_code](./_attachments/example_trap_after_await.png)
-  This example is also discussed in this [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
-- Another example: if e.g. part of the canister state is locked before an inter-canister call and released in the callback, the lock may never be released if the callback traps.
-
-- Generally, there can be bugs where data is not persisted when the developer expected it to be.
-
-Note that in Rust, from Rust CDK version 0.5.1, any local variables still go out of scope if a callback traps. The CDK actually calls into the `ic0.call_on_cleanup` API to release these resources. This helps to prevent some of the above issues, as e.g. it is possible to use Rust's `Drop` implementation to release locked resources, as we discuss in ["Be aware that there is no reliable message ordering"](#be-aware-that-there-is-no-reliable-message-ordering).
-
-#### Recommendation
-
-- Watch the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) which shows a concrete example of an issue as described here.
-
-- [Don’t lock shared resources across await boundaries](https://mmapped.blog/posts/01-effective-rust-canisters.html#dont-lock) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
-
-- [Don’t panic after `await`](https://mmapped.blog/posts/01-effective-rust-canisters.html#panic-await) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
-
-- For context: [IC interface spec on message execution](/references/ic-interface-spec.md#message-execution).
-- See also: "Inter-canister calls" section in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
-
 ### Be aware that there is no reliable message ordering
 
 #### Security concern
