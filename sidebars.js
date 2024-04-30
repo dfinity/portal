@@ -1170,6 +1170,11 @@ const sidebars = {
             "developer-docs/multi-chain/faq/signatures-faq",
           ],
         },
+        {
+          type: "doc",
+          label: "Execution errors",
+          id: "references/execution-errors",
+        },
       ],
     },
   ],
