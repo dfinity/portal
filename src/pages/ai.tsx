@@ -167,7 +167,7 @@ function AIPage() {
                 variants={transitions.item}
               >
                 Train and run AI models as smart contracts fully onchain to
-                benefit from security, resilience, and computation power of the
+                benefit from the security, resilience, and computation power of the
                 ICP blockchain.
               </motion.p>
               {/* <MotionLink
@@ -232,11 +232,12 @@ function AIPage() {
                   className="tw-heading-4 md:tw-heading-60 mb-6 md:mb-12"
                   variants={transitions.item}
                 >
-                  Problem of trust in AI
+                  The black-box AI problem
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 ">
                   As companies race to build AI-powered products, they leave
-                  users no option but to blindly trust the underlying AI models.{" "}
+                  users no option but to blindly trust the underlying AI models.
+                  Their behavior is non-deterministic and not verifiable. Worse, {" "}
                   <Link
                     className="font-bold"
                     to="https://twitter.com/AnthropicAI/status/1745854907968880970"
@@ -246,8 +247,10 @@ function AIPage() {
                   </Link>{" "}
                   that it is possible to tamper with AI models in an
                   undetectable way. Users have no visibility into how their data
-                  is used and how AI produces the response. The problem of trust
-                  in AI will get increasingly important in the future.
+                  is used and how AI models produces responses.
+                  Since AI models behave like black boxes to users, building
+                  trustworthy AI models is a difficult challenge that can be
+                  solved by training and running the models on ICP.
                 </motion.p>
               </div>
             </aside>
@@ -340,7 +343,8 @@ function AIPage() {
                     networks often fall short. In contrast, the advanced design
                     of the Internet Computer Protocol (ICP) successfully marries
                     the security of smart contracts with the robust
-                    computational demands of AI.
+                    computational demands of AI. The following properties of ICP
+                    make decentralized and trustworthy AI possible.
                   </motion.p>
                 </div>
                 <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
