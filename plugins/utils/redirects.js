@@ -445,6 +445,14 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
+  /docs/current/developer-docs/daos/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/integrating/index /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

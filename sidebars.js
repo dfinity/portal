@@ -737,11 +737,34 @@ const sidebars = {
           label: "Network Nervous System (NNS)",
           items: [
             "developer-docs/daos/nns/overview",
-            "developer-docs/daos/nns/nns-app-quickstart",
-            "developer-docs/daos/nns/staking-voting-rewards",
-            "developer-docs/daos/nns/neurons-fund",
+            {
+              type: "category",
+              label: "Using the NNS dapp",
+              items: [
+              "developer-docs/daos/nns/nns-app-quickstart",
+              ],
+            },
+            {
+              type: "category",
+              label: "Neurons",
+              items: [
+              "developer-docs/daos/nns/neuron-management",
+              "developer-docs/daos/nns/staking-voting-rewards",
+              {
+                type: "category",
+                label: "Advanced",
+                items: [ ],
+              },
+            ],
+          },
+        ],
+        },
+        "developer-docs/daos/nns/neurons-fund",
+        {
+          type: "category",
+          label: "Proposals",
+          items: [
             "developer-docs/daos/nns/proposal-requirements",
-            "developer-docs/daos/nns/neuron-management",
           ],
         },
         {
@@ -752,6 +775,7 @@ const sidebars = {
             id: "developer-docs/daos/sns/index",
           },
           items: [
+            "developer-docs/daos/sns/overview",
             {
               type: "category",
               label: "Introduction to the SNS",
@@ -764,42 +788,17 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Preparing an SNS launch",
+              label: "Before an SNS launch",
               link: {
                 type: "doc",
                 id: "developer-docs/daos/sns/tokenomics/index",
               },
               items: [
-                "developer-docs/daos/sns/tokenomics/sns-checklist",
                 "developer-docs/daos/sns/tokenomics/predeployment-considerations",
                 "developer-docs/daos/sns/tokenomics/tokenomics-intro",
                 "developer-docs/daos/sns/tokenomics/rewards",
                 "developer-docs/daos/sns/tokenomics/preparation",
-              ],
-            },
-            {
-              type: "category",
-              label: "Integrating with an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/integrating/index",
-              },
-              items: [
-                "developer-docs/daos/sns/integrating/ledger-integration",
-                "developer-docs/daos/sns/integrating/index-integration",
-                "developer-docs/daos/sns/integrating/frontend-integration",
-              ],
-            },
-            {
-              type: "category",
-              label: "Testing an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/testing/testing-before-launch",
-              },
-              items: [
-                "developer-docs/daos/sns/testing/testing-locally",
-                "developer-docs/daos/sns/testing/testing-on-mainnet",
+                "developer-docs/daos/sns/tokenomics/sns-checklist",
               ],
             },
             {
@@ -812,6 +811,19 @@ const sidebars = {
               items: [
                 "developer-docs/daos/sns/launching/launch-summary-1proposal",
                 "developer-docs/daos/sns/launching/launch-steps-1proposal",
+                "developer-docs/daos/sns/launching/integrating",
+              ],
+            },
+            {
+              type: "category",
+              label: "Testing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/testing/testing-before-launch",
+              },
+              items: [
+                "developer-docs/daos/sns/testing/testing-locally",
+                "developer-docs/daos/sns/testing/testing-on-mainnet",
               ],
             },
             {
