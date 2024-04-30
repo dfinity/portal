@@ -594,7 +594,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "DeFi",
+      label: "Digital assets",
       items: [
         {
           type: "doc",
@@ -730,7 +730,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "DAOs",
+      label: "Governance",
       items: [
         {
           type: "category",
