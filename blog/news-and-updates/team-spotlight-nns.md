@@ -44,7 +44,7 @@ For the first installment of this series, we sat down with the Network Nervous S
 
 **Does the NNS DAO have a role that it plays in the SNS initiative and the launching of new SNSs?**
 
-*The NNS DAO approves and initiates the launch of new SNSs. This means that if someone wants to hand over a dapp’s control to a new SNS, then this process needs approval from the NNS community. You can read more details about this process [here](/docs/current/developer-docs/daos/sns/launching/launch-summary).*
+*The NNS DAO approves and initiates the launch of new SNSs. This means that if someone wants to hand over a dapp’s control to a new SNS, then this process needs approval from the NNS community. You can read more details about this process [here](/docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal).*
 
 **Let's talk about the team's roadmap. What is the primary project that the NNS team is working on or focused on currently?**
 
