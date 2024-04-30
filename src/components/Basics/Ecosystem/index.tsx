@@ -29,19 +29,26 @@ const cards = [
     stats: "50,000+ users",
   },
   {
-    logo: require("../../../../static/img/basics/bioniq-logo.webp").default,
+    logo: require("../../../../static/img/basics/bioniq-logo.jpeg").default,
     title: "Bioniq",
     oneLiner: "Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging",
     stats: "45,000+ users",
   },
 
   {
-    logo: require("../../../../static/img/basics/helix-logo.webp").default,
+    logo: require("../../../../static/img/basics/helix_logo.webp").default,
     title: "Helix",
     oneLiner: "Decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
     stats: "2,000+ users",
   },
 ];
+
+function truncate(str, num) {
+  if (str.length <= num) {
+    return str;
+  }
+  return str.slice(0, num) + '...';
+}
 
 const mobileProjects = [...cards].reverse();
 
@@ -80,7 +87,7 @@ const Ecosystem = () => {
             <div className={styles.card} key={card.title}>
               <img src={card.logo} alt={`${card.title} logo`} loading="lazy" />
               <h3 className="">{card.title}</h3>
-              <p className="">{card.oneLiner}</p>
+              <p className="">{truncate(card.oneLiner, 46)}</p>
               <span className={styles.stats}>{card.stats}</span>
             </div>
           ))}
@@ -90,7 +97,7 @@ const Ecosystem = () => {
             <div className={styles.card} key={card.title}>
               <img src={card.logo} alt={`${card.title} logo`} loading="lazy" />
               <h3 className="">{card.title}</h3>
-              <p className="">{card.oneLiner}</p>
+              <p className="">{truncate(card.oneLiner, 46)}</p>
               <span className={styles.stats}>{card.stats}</span>
             </div>
           ))}

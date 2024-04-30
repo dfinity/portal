@@ -141,6 +141,14 @@ dfx start --clean --background
 dfx identity use DevJourney
 ```
 
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
+
+To use the cycles ledger, you will need [`dfx` version 0.19.0](/docs/current/developer-docs/getting-started/install/), and you will need to set the following environmental variable:
+
+```
+DFX_CYCLES_LEDGER_SUPPORT_ENABLE=1
+```
+
 Then, redeem your coupon with the command:
 
 ```bash
