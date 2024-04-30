@@ -237,13 +237,16 @@ A **call** is a canister's implementation of either an [update](/references/ic-i
 
 :::info
 Note that if the code does not `await` the response, the code after the callback (until the next inter-canister call is triggered using `await`) is executed in the same message.
-
+:::
 
 For example, consider the following Motoko code:
 
 ![example_highlighted_code](./_attachments/example_highlighted_code.png)
 
 The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message executes lines 3-5: when the inter-canister call returns (blue box). This part is called the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially.
+
+:::info
+Note that an `await` in the code does not necessarily mean that an inter-canister call is made and thus a message execution ends and the code after the `await` is executed as a separate message (callback). Async code with the `await` syntax (e.g. in Rust or Motoko) can also be used "internally" in the canister, without issuing an inter-canister call. In that case, the code part including the `await` will be processed within a single message. 
 :::
 
 - **Property 3**: successfully delivered requests are received in the order in which they were sent. In particular, if a canister A sends `m1` and `m2` to canister B in that order, then, if both are accepted, `m1` is executed before `m2`.
