@@ -237,8 +237,8 @@ function AIPage() {
                 <motion.p className="text-2xl mb-0 ">
                   As companies race to build AI-powered products, they leave
                   users no option but to blindly trust the underlying AI models.
-                  Their behavior is non-deterministic and not verifiable. Worse, {" "}
-                  <Link
+                  Their behavior is non-deterministic and not verifiable. Worse,
+                  {" "}<Link
                     className="font-bold"
                     to="https://twitter.com/AnthropicAI/status/1745854907968880970"
                     target="_blank"
@@ -325,7 +325,7 @@ function AIPage() {
           <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
             <article className="container-10 mt-12 md:mt-20">
               <h3 className="tw-heading-4 md:tw-heading-60  text-left md:text-center text-gradient-purple mb-0 md:w-5/10 md:mx-auto">
-                Solving AI’s Trust Problem
+                Making AI trustworthy
               </h3>
               <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center !pl-0	!pr-0">
                 <div className="md:w-1/3">
