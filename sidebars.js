@@ -328,6 +328,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-upgrade",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars",
+                "developer-docs/developer-tools/cli-tools/dfx-json",
                 "developer-docs/developer-tools/cli-tools/dfx-json-reference",
                 {
                   type: "category",
