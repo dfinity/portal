@@ -9,8 +9,9 @@ A list of possible errors returned when executing canisters.
 
 ## Errors
 
+
 ### Method not found
-A canister was called with a method name not exported by that canister.
+The canister was called with a method name not exported by that canister.
 
 An example of this error is:
 ```
@@ -24,3 +25,189 @@ To fix this error, consider:
 - The canister code of the callee has not been modified to a version that deprecates the method.
 
 For further information on calling canisters see the [smart contract docs](../developer-docs/smart-contracts/call/overview) and the [IC spec](./ic-interface-spec#system-api-requests).
+
+
+### Instruction limit exceeded
+The canister reached the maximum number of allowed instructions before completing execution.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Canister exceeded the instruction limit for single message execution.
+```
+
+Instruction limits differ depending on the message type and can be found in the [documentation on resource limits][limits].
+
+To fix this error, consider using tools such as the [performance counter API](https://internetcomputer.org/docs/current/references/samples/rust/performance_counters/) or [canbench][canbench] to determine which sections of code are using significant instructions and optimize them.
+
+
+### Trapped
+The canister encountered a WebAssembly trap.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Canister trapped: <WebAssembly error>
+```
+
+Some examples of WebAssembly operations that will trap are out-of-bounds accesses, integer division by zero, the `unreachable` instruction, etc. Further information can be found in the [WebAssembly documentation](https://webassembly.github.io/spec/core/index.html).
+
+To fix this error, consider testing the canister to see if there are any unhandled errors.
+
+
+### Trapped explicitly
+The canister aborted execution by calling the `ic0.trap` API.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Canister called `ic0.trap` with message: <Canister error message>
+```
+
+When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](https://internetcomputer.org/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
+
+To fix this error, consider testing the canister to see if certain inputs can trigger panics.
+
+
+### Wasm module not found
+The canister exists, but has no Wasm module installed.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Attempted to execute a message, but the canister contains no Wasm module.
+```
+
+Canisters can [exist without having Wasm code installed](https://internetcomputer.org/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-uninstall_code).
+
+To better diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module the "Module hash" field will be non-null.
+
+To fix this error, consitder installing code using [`dfx deploy`](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy), or the APIs for [`install_code`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-install_chunked_code).
+
+
+### Out of memory
+The canister was tried to request more memory than its allocation allowed during execution, causing the execution to fail.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Canister exceeded its allowed memory allocation.
+```
+
+There are [system wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
+
+In addition, canisters may reserve memory using the [`memory-allocation` setting](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8). In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
+
+To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
+
+To fix this error, consider:
+
+  - If the canister has reached its current memory allocation, try allocating more memory.
+  - If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
+  - If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak.[canbench][canbench] can help with profiling memory usage.
+  - If the subnet is full, try moving the canister to a subnet which has more memory available.
+
+
+### Reserved pages for old Motoko
+The canister is running an older version of Motoko which requires reserving some additional pages on the Wasm heap for upgrading and tried to allocate those reserved pages.
+
+An example of this error is:
+```
+  Canister tried to allocate pages reserved for upgrading older versions of Motoko.
+```
+
+Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
+
+To fix this error, upgrade to the [latest version of `dfx`](https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation) which will use a newer version of Motoko.
+
+
+### Slice overrun
+The canister tried to perform a large copy that cannot be performed in a single round.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Canister attempted to perform a large memory operation that used N instructions and exceeded the slice limit M.
+```
+
+In order to maintain a consistent block rate, there is a limit on the number of operations ICP can perform within a single round. A single large copy (possibly to or from stable memory, or within the main heap) could be too large to execute within a single round and cannot be automatically broken up into smaller copies.
+
+To fix this error, inspect the canister code for locations that may be executing large copies and split them up into multiple smaller copies.
+
+
+### Memory access limit exceeded
+The amount of data that the canister tried to read or write from stable memory exceeded the limits for a single message.
+
+An example of this error is:
+```
+  Error from Canister xxx-xxx: Canister exceeded memory access limits: Exceeded the limit for the number of modified pages in the stable memory in a single message execution: limit: 8388608 KB.
+```
+
+Although the stable memory of a canister can hold 100s of GiBs of data, each individual message needs to execute within a round and so is limited to reading and writing only a portion of that data. Current limits can be found in the page on [ICP limits][limits].
+
+To fix this error, break up operations that read or write large regions of stable memory into multiple messages (possibly using self-calls).
+
+
+### Insufficient cycles in memory grow
+The canister does not have enough cycles to grow its memory.
+
+An exmaple of this error is:
+```
+  Canister cannot grow memory by 65536 bytes due to insufficient cycles.
+```
+
+Since canister's need to pay for their memory each round, growing the memory requires that the canister have enough cycles to pay for the increased usage.
+
+To fix this error, top up the canister with more cycles on decrease its [freezing threshold][setting-freezing-threshold].
+
+
+### Reserved cyles limit exceeded in memory grow
+Growing the canister's memory would require reserving more cycles than allowed by the canister's reserved cycles limit.
+
+An example of this error is:
+```
+  Canister cannot grow memory by 65536 bytes due to its reserved cycles limit. The current limit (5000000000) would be exceeded by 1000000.
+```
+
+When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve and this error indicates that a canister failed to grow its memory because doing so would cause the number of reserved cycles to exceed that limit.
+
+To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
+
+To fix this error, consider increasing the canister's reserved cycles limit, or moving to a subnet with lower memory usage.
+
+
+### Insufficient cycles in message memory grow
+The canister doesn't have enough cycles to allocate the memory required to send a message.
+
+An example of this error is:
+```
+  Canister cannot grow message memory by 10240 bytes due to insufficient cycles.
+```
+
+Sending a message to another canister requires reserving space in the subnet's memory usage for the message and its response. This error indicates that a canister doesn't have enough cycles to pay for this memory usage without freezing.
+
+To fix this error, top up the canister with more cycles on decrease its [freezing threshold][setting-freezing-threshold].
+
+
+
+### Wasm memory limit exceeded
+The canister tried to grow its Wasm heap memory beyond the limit imposed by its Wasm memory limit setting.
+
+An example of this error is:
+```
+  Canister exceeded its current Wasm memory limit of 2147483648 bytes. The peak Wasm memory usage was 2147485000 bytes. If the canister reaches 4GiB, then it may stop functioning and may become unrecoverable. Please reach out to the canister owner to investigate the reason for the increased memory usage. It might be necessary to move data from the Wasm memory to the stable memory. If such high Wasm memory usage is expected and safe, then the developer can increase the Wasm memory limit in the canister settings.
+```
+
+Canisters may impose limits on the amount of Wasm heap memory they are allowed to use in order to prevent them from using the full 4 GiB. This is desirable because a canister that uses the full 4 GiB may to be able to upgrade if the pre-upgrade hook requires allocating more heap memory.
+
+
+To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's Wasm memory limit. If the memory usage is unexpected, try using [canbench][canbench] to determine if there is a memory leak.
+
+To fix this error, consider re-architecting the canister to use stable memory instead of heap memory or sharding the data across multiple canisters. Raising the memory limit may be another option if you are certain the canister can use more memory and still be upgradeable.
+
+
+
+
+[limits]: https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
+
+[canbench]: https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation
+
+[dfx-canister-status]: https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status
+
+[canister-status-api]: https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-canister_status
+
+[setting-freezing-threshold]: https://internetcomputer.org/docs/current/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
