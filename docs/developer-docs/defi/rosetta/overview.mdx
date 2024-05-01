@@ -162,7 +162,7 @@ The following steps can be used to generate and verify accounts:
 You can call the [`/construction/derive`](https://www.rosetta-api.org/docs/ConstructionApi.html#constructionderive) endpoint with the hex-encoded 32-byte public key. or all the `pub_key_to_address` function in the JavaScript SDK.
 
 - #### How to verify the checksum of an account address?
-After hex decoding, the first 4 bytes is the big-endian CRC32 checksum of the rest of the address. Then, call [`address_from_hex`](https://github.com/dfinity/rosetta-client#working-with-account-addresses) in the JavaScript SDK. It returns and error if checksum doesn’t match.
+After hex decoding, the first 4 bytes is the big-endian CRC32 checksum of the rest of the address. Then, call [`address_from_hex`](https://github.com/dfinity/rosetta-client#working-with-account-addresses) in the JavaScript SDK. It returns an error if checksum doesn’t match.
 [Here](https://gist.github.com/TerrorJack/d6c79b33e5b5d0f5d52f3a2c5cdacc60) is a Java implementation of address validation logic.
 
 - #### What are `signature_type` and `curve_type` for ED25519?
