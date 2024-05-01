@@ -445,6 +445,58 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
+  /docs/current/developer-docs/backend/motoko/infrastructure /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/current/motoko/getting-started/basic-concepts
+  /docs/current/developer-docs/backend/motoko/dev-env /docs/current/motoko/getting-started/dev-env
+  /docs/current/developer-docs/backend/motoko/at-a-glance /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/deploying /docs/current/motoko/getting-started/quickstart
+  /docs/current/developer-docs/backend/motoko/upgrading /docs/current/motoko/canister-maintenance/upgrades
+  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/current/motoko/writing-motoko/intercanister-calls
+  /docs/current/developer-docs/backend/motoko/optimizing /docs/current/motoko/canister-maintenance/optimization
+  /docs/current/developer-docs/backend/motoko/phonebook /docs/current/motoko/writing-motoko/modules-and-imports
+  /docs/current/developer-docs/backend/motoko/calculator /docs/current/motoko/writing-motoko/integers
+  /docs/current/developer-docs/backend/motoko/counter-tutorial /docs/current/motoko/writing-motoko/local-objects-classes
+  /docs/current/developer-docs/backend/motoko/hello-location /docs/current/motoko/writing-motoko/arguments
+  /docs/current/developer-docs/backend/motoko/simple-cycles /docs/current/motoko/canister-maintenance/cycles
+  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/current/motoko/writing-motoko/actors-async
+  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/current/motoko/writing-motoko/actor-classes
+  /docs/current/developer-docs/backend/motoko/access-control /docs/current/motoko/writing-motoko/caller-id
+  /docs/current/developer-docs/backend/motoko/candid-ui /docs/current/motoko/writing-motoko/candid-ui
+  /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/sample-apps  /docs/current/developer-docs/samples/overview
+  /docs/current/developer-docs/backend/motoko/mo-doc /docs/current/motoko/reference/generating-docs
+  /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/migration-guides/0.11.0-migration-guide
+  /docs/current/motoko/main/about-this-guide /docs/current/motoko/getting-started/motoko-introduction
+  /motoko/main/motoko /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/motoko/version /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko-introduction /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/motoko/main/basic-concepts /docs/current/motoko/getting-started/basic-concepts
+  /docs/current/motoko/main/overview /docs/current/motoko/getting-started/motoko-introduction
+  /docs/current/motoko/main/language-manual /docs/current/motoko/reference/language-manual
+  /docs/current/motoko/main/style /docs/current/motoko/reference/style
+  /docs/current/motoko/main/base-intro /docs/current/motoko/writing-motoko/modules-and-imports
+  /docs/current/motoko/main/actors-async /docs/current/motoko/writing-motoko/actors-async
+  /docs/current/motoko/main/actor-classes /docs/current/motoko/writing-motoko/actor-classes
+  /docs/current/motoko/main/caller-id /docs/current/motoko/writing-motoko/caller-id
+  /docs/current/motoko/main/compatibility /docs/current/motoko/canister-maintenance/compatibility
+  /docs/current/motoko/main/control-flow /docs/current/motoko/writing-motoko/control-flow
+  /docs/current/motoko/main/cycles /docs/current/motoko/canister-maintenance/cycles
+  /docs/current/motoko/main/errors /docs/current/motoko/writing-motoko/errors
+  /docs/current/motoko/main/heartbeats /docs/current/motoko/writing-motoko/heartbeats
+  /docs/current/motoko/main/local-objects-classes /docs/current/motoko/writing-motoko/local-objects-classes
+  /docs/current/motoko/main/message-inspection /docs/current/motoko/writing-motoko/message-inspection
+  /docs/current/motoko/main/modules-and-imports /docs/current/motoko/writing-motoko/module-imports
+  /docs/current/motoko/main/mutable-state /docs/current/motoko/writing-motoko/mutable-state
+  /docs/current/motoko/main/pattern-matching /docs/current/motoko/writing-motoko/pattern-matching
+  /docs/current/motoko/main/pipes /docs/current/motoko/writing-motoko/pipes
+  /docs/current/motoko/main/sharing /docs/current/motoko/writing-motoko/sharing
+  /docs/current/motoko/main/stable-regions /docs/current/motoko/stable-memory/stable-regions
+  /docs/current/motoko/main/stablememory /docs/current/motoko/stable-memory/stablememory
+  /docs/current/motoko/main/structural-equality /docs/current/motoko/writing-motoko/structural-equality
+  /docs/current/motoko/main/timers /docs/current/motoko/writing-motoko/timers
+  /docs/current/motoko/main/upgrades /docs/current/motoko/canister-maintenance/upgrades
+  /docs/current/motoko/main/compiler-ref /docs/current/motoko/reference/compiler-ref
+  /docs/current/motoko/main/motoko-grammar /docs/current/motoko/reference/motoko-grammar
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
