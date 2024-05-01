@@ -1245,7 +1245,6 @@ const sidebars = {
       },
       items: [
         "motoko/version",
-        "motoko/main/motoko-introduction",
         "motoko/main/basic-concepts",
         "motoko/main/overview",
         "motoko/main/language-manual",
