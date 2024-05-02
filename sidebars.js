@@ -923,7 +923,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Native dApps",
+          label: "Native dapps",
           items: [
             "references/samples/native-apps/unity_ii_applink/README",
             "references/samples/native-apps/unity_ii_deeplink/README",
