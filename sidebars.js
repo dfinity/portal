@@ -750,11 +750,6 @@ const sidebars = {
               items: [
               "developer-docs/daos/nns/neuron-management",
               "developer-docs/daos/nns/staking-voting-rewards",
-              {
-                type: "category",
-                label: "Advanced",
-                items: [ ],
-              },
             ],
           },
         ],
