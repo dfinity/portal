@@ -463,7 +463,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/access-control /docs/current/motoko/main/writing-motoko/caller-id
   /docs/current/developer-docs/backend/motoko/candid-ui /docs/current/motoko/main/writing-motoko/candid-ui
   /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/motoko/sample-apps  /docs/current/developer-docs/samples/overview
+  /docs/current/developer-docs/backend/motoko/sample-apps  /docs/current/samples/overview
   /docs/current/developer-docs/backend/motoko/mo-doc /docs/current/motoko/main/reference/generating-docs
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
@@ -485,13 +485,13 @@ const redirects = `
   /docs/current/motoko/main/heartbeats /docs/current/motoko/main/writing-motoko/heartbeats
   /docs/current/motoko/main/local-objects-classes /docs/current/motoko/main/writing-motoko/local-objects-classes
   /docs/current/motoko/main/message-inspection /docs/current/motoko/main/writing-motoko/message-inspection
-  /docs/current/motoko/main/modules-and-imports /docs/current/motoko/main/writing-motoko/module-imports
+  /docs/current/motoko/main/modules-and-imports /docs/current/motoko/main/writing-motoko/modules-and-imports
   /docs/current/motoko/main/mutable-state /docs/current/motoko/main/writing-motoko/mutable-state
   /docs/current/motoko/main/pattern-matching /docs/current/motoko/main/writing-motoko/pattern-matching
   /docs/current/motoko/main/pipes /docs/current/motoko/main/writing-motoko/pipes
   /docs/current/motoko/main/sharing /docs/current/motoko/main/writing-motoko/sharing
-  /docs/current/motoko/main/stable-regions /docs/current/motoko/stable-memory/stable-regions
-  /docs/current/motoko/main/stablememory /docs/current/motoko/stable-memory/stablememory
+  /docs/current/motoko/main/stable-regions /docs/current/motoko/main/stable-memory/stable-regions
+  /docs/current/motoko/main/stablememory /docs/current/motoko/main/stable-memory/stablememory
   /docs/current/motoko/main/structural-equality /docs/current/motoko/main/writing-motoko/structural-equality
   /docs/current/motoko/main/timers /docs/current/motoko/main/writing-motoko/timers
   /docs/current/motoko/main/upgrades /docs/current/motoko/main/canister-maintenance/upgrades
