@@ -145,4 +145,4 @@ Python:     from kybra import ic
 
 - Backend developers guide: [Optimizing Rust canisters](/docs/current/developer-docs/backend/rust/optimizing).
 
-- Motoko developers guide: [Optimizing canisters](/docs/current/developer-docs/backend/motoko/optimizing).
+- Motoko developers guide: [Optimizing canisters](/docs/current/motoko/main/getting-started/motoko-introductionoptimizing).

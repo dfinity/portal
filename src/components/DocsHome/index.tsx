@@ -114,7 +114,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="/docs/current/motoko/main/motoko"
+                    href="/docs/current/motoko/main/getting-started/motoko-introduction"
                     className="link-primary"
                     title="Go to Motoko docs"
                   >
