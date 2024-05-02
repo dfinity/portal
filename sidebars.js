@@ -773,16 +773,6 @@ const sidebars = {
             "developer-docs/daos/sns/overview",
             {
               type: "category",
-              label: "Introduction to the SNS",
-              items: [
-                "developer-docs/daos/sns/introduction/sns-intro-high-level",
-                "developer-docs/daos/sns/introduction/sns-architecture",
-                "developer-docs/daos/sns/introduction/sns-launch",
-                "developer-docs/daos/sns/introduction/dao-alternatives",
-              ],
-            },
-            {
-              type: "category",
               label: "Before an SNS launch",
               link: {
                 type: "doc",
