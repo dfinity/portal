@@ -328,6 +328,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-upgrade",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars",
+                "developer-docs/developer-tools/cli-tools/dfx-json",
                 "developer-docs/developer-tools/cli-tools/dfx-json-reference",
                 {
                   type: "category",
@@ -1169,6 +1170,11 @@ const sidebars = {
             "developer-docs/multi-chain/faq/ckerc20-faq",
             "developer-docs/multi-chain/faq/signatures-faq",
           ],
+        },
+        {
+          type: "doc",
+          label: "Execution errors",
+          id: "references/execution-errors",
         },
       ],
     },
