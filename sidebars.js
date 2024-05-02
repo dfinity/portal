@@ -881,7 +881,6 @@ const sidebars = {
             "references/samples/motoko/icp_transfer/README",
             "references/samples/motoko/icrc2-swap/README",
             "references/samples/motoko/internet_identity_integration/README",
-            "references/samples/motoko/invoice-canister/README",
             "references/samples/motoko/ios-notifications/README",
             "references/samples/motoko/minimal-counter-dapp/README",
             "references/samples/motoko/persistent-storage/README",
