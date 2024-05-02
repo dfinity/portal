@@ -1,44 +1,6 @@
 import Link from "@docusaurus/Link";
 import roadmapData from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 
-export interface Root {
-  categoryName: string
-  categoryDescription: string
-  milestones: Milestone[]
-  elements: Element[]
-}
-
-export interface Milestone {
-  title: string
-  description: string
-  metal: string
-  eta: string
-  notes: string
-}
-
-export interface Element {
-  title: string
-  overview: string
-  description: string
-  progress: `done` | `in_progress` | `future` | ``
-  stack_rank: number
-  forum: string
-  proposal: string
-  wiki: string
-  docs: string
-  eta: string
-  is_community: boolean
-  in_beta: boolean
-  notes: string
-  milestone?: string
-  imported?: boolean
-}
-
-
-import roadmapData2 from "@site/.docusaurus/roadmap-data/default/roadmap-data2.json";
-
-import completedRoadmapItems from "@site/roadmap/completed";
-import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
 import GithubIcon from "@site/static/img/svgIcons/github.svg";
 import transitions from "@site/static/transitions.json";
@@ -50,85 +12,47 @@ import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
 import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
-import { RoadmapDomain } from "../components/RoadmapPage/RoadmapTypes";
+import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 import { FormDescription } from "@site/docs/references/samples/motoko/ic-pos/src/icpos_frontend/components/ui/form";
+import { theme } from "@site/tailwind.config";
 
 const MotionLink = motion(Link);
 
-const data = roadmapData as RoadmapDomain[];
+const data = roadmapData as RootObject[];
 
-const themes = roadmapData2 as Root;
+const milestoneElementsToProgress = (milestoneElements: any[]) => {
+  const elementsCount = milestoneElements.length;
+  const elementsCountInProgress = milestoneElements.filter(
+    (element) => element.progress === "in_progress"
+  ).length;
+  const elementsCountDone = milestoneElements.filter(
+    (element) => element.progress === "deployed"
+  ).length;
 
-function getElementsGroupedByMilestones(
-  milestones: Milestone[],
-  elements: Element[]
-): Map<string, Element[]> {
-  const milesSonesMap = new Map();
+  const progressDone = (elementsCountDone / elementsCount) * 100;
+  const progressInProgress = (elementsCountInProgress / elementsCount) * 100;
 
-  milestones.forEach((milestone) => {
-    milesSonesMap.set(milestone.metal, []);
-  });
 
-  milesSonesMap.set('Future', []);
-
-  elements.forEach((element) => {
-    const milestone = element.milestone || 'Future';
-    if (milesSonesMap.has(milestone)) {
-      milesSonesMap.get(milestone).push(element);
-    }
-  });
-
-  return milesSonesMap;
+  return (<div className="flex">
+    <div className="h-5 bg-white" style={{width: progressDone + '%'}}></div>
+    <div className="h-5 bg-green" style={{width: progressInProgress + '%'}}></div>
+  </div>)
 }
 
-function getMilesone (milestone: string):Milestone|null {
-  return themes.milestones.find((m) => m.metal === milestone);
+function milestoneName(name: string) {
+  let title = name;
+  if (name == "orphans_past") {
+    title = "Previous Tasks";
+  } else if (name == "orphans_future") {
+    title = "Future Tasks";
+  }
+  return title;
 }
 
-
-const groupedElements = getElementsGroupedByMilestones(themes.milestones, themes.elements);
-
-console.log(groupedElements)
-
-
-export const ThemeSection: React.FC<{theme: Root}> = ({
-  theme,
-}) => {
-  return (
-    <section className="space-y-6 md:space-y-16">
-      <h2 className="tw-heading-4 md:tw-heading-3 mb-6">{theme.categoryName}</h2>
-      <p className="tw-paragraph-sm md:tw-lead-sm mb-10">{theme.categoryDescription}</p>
-      <h3>Milestones</h3>
-      <div className="space-y-2 flex gap-4 items-stretch">
-        {Array.from(groupedElements.keys()).map((milestone) => (
-          <div className="bg-white p-5 rounded-s text-black w-1/5">
-            <div key={milestone} className="space-y-2">
-              <h4 className="tw-heading-5">{milestone}</h4>
-            </div>
-            <div className="w-full flex gap-2 flex-wrap">
-                {groupedElements.get(milestone).map((element) => (
-                  <div key={element.title} className="flex items-center space-x-4">
-                    {element.progress === 'done' && (
-                      <div className="w-2 h-2 bg-green rounded-full"></div>
-                    ) || element.progress === 'in_progress' && (
-                      <div className="w-2 h-2 bg-[#ffc061] rounded-full"></div>
-                    ) || (element.progress === 'future' || element.progress === '') && (
-                      <div className="w-2 h-2 bg-black rounded-full"></div>
-                    )}
-                  </div>
-                ))}
-            </div>
-            <div>
-              <p>
-                {getMilesone(milestone)?.title}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+function indexToColor(index: number, total: number) {
+  const hue = (index / total) * 360;
+  return `oklch(.3, .1, ${hue})`;
+}
 
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
@@ -161,35 +85,39 @@ const RoadmapPage: React.FC = () => {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                This roadmap shows the status of many projects across the Internet Computer stack, but not all - more to come over the next few weeks.
+                The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack, but not all - more to come over the next few weeks.
               </p>
             </div>
           </div>
         </section>
 
         <section className="container-10 -mt-52 md:-mt-32 relative">
-          <ThemeSection theme={themes} />
-          <AnimateSpawn
-            el={motion.img}
-            variants={transitions.fadeIn}
-            src={BlobPurple}
-            alt=""
-            className="absolute pointer-events-none max-w-none w-[600px] md:w-[1400px] -left-[300px] md:-left-[700px] top-[1680px] md:top-1/2 -translate-y-1/2 z-[-1000]"
-            // variants={transitions.item}
-          />
-
-
-
-          <div className="space-y-6 md:space-y-16">
-            {data.map((domain, index) => (
-              <DomainCard
-                domain={domain}
-                index={index}
-                key={domain.name}
-                onOpen={() => openOverlay(index)}
-              ></DomainCard>
-            ))}
-          </div>
+          {data.map((theme, indexTheme) => (
+            <article key={theme.name}>
+              <h1 className="tw-heading-4 uppercase">{theme.name}</h1>
+              <p className="tw-paragraph">{theme.description}</p>
+              <section 
+                aria-label="milestones"
+                className="flex gap-8 items-stretch overflow-x-auto scrollbar-hide mt-8 pb-8"
+              >
+                {theme.milestones.map((milestone, index) => (
+                  milestone.elements.length > 0 && (
+                    <article 
+                      key={milestone.name}
+                      className={`text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-8`}
+                      style={{
+                        backgroundColor: indexToColor(indexTheme, data.length),
+                      }}
+                    >
+                      <h2>{milestone.metal == 'none' ? milestoneName(milestone.name) : milestone.metal}</h2>
+                      {milestoneElementsToProgress(milestone.elements)}
+                      <p>{milestoneName(milestone.name)}</p>
+                    </article>
+                  )
+                ))}
+              </section>
+            </article>
+          ))}
         </section>
       </main>
     </Layout>
