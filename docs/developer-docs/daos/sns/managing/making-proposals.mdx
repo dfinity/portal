@@ -618,7 +618,20 @@ Fields where a value is set to `None` will remain unchanged.
 Example in bash:
 
 ```bash
-TODO
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Change Our Transfer Fee to 314_159 e8s";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Change our transfer fee to 314_159 e8s.";
+        action = opt variant {
+            ManageLedgerParameters = record {
+                transfer_fee = opt 314_159;
+            }
+        }
+    }
+)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
+
+quill send message.json
 ```
 
 ### `ManageDappCanisterSettings`
@@ -645,16 +658,24 @@ enum LogVisibility {
 }
 ```
 
-#### Putting it together
-
-```
-TODO
-```
-
 Example in bash:
 
 ```bash
-TODO
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Set the Memory Allocation of the Widget Canister to 314_159 Bytes";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Set the memory allocation of the Widget Canister to 314_159 bytes.";
+        action = opt variant {
+            ManageDappCanisterSettings = record {
+                canister_ids = vec { principal "WIDGET-CANISTER-ID" };
+                memory_allocation = opt 314_159;
+            }
+        }
+    }
+)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
+
+quill send message.json
 ```
 
 ## Generic proposals
