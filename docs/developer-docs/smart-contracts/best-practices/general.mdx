@@ -4,7 +4,7 @@ keywords: [beginner, concept, best practices, developer]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Developer best practices 
+# Developer best practices
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
@@ -20,19 +20,19 @@ Ensure all canisters have sufficient cycles to sustain operations for several ye
 
 Refer to [topping up cycles page](/docs/current/developer-docs/production/topping-up-canister) to learn how to top-up cycles effectively.
 
-Refer to the [cycles estimate](/docs/current/developer-docs/gas-cost) page to estimate cycle usage. 
+Refer to the [cycles estimate](/docs/current/developer-docs/gas-cost) page to estimate cycle usage.
 
 ### Recommendation: Manage cycle depletion.
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, ensuring at least 90 to 180 days' worth of cycles for proactive management.
 
-Refer to [this resource](/docs/current/developer-docs/production/topping-up-canister#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister. 
+Refer to [this resource](/docs/current/developer-docs/production/topping-up-canister#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister.
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
 
 ### Recommendation: Efficient implementations.
 
-Optimize canister implementation to avoid unnecessary costs. 
+Optimize canister implementation to avoid unnecessary costs.
 
 Use [canister timers](/docs/current/developer-docs/backend/periodic-tasks) over plain heartbeats for reduced daily costs.
 
@@ -47,15 +47,15 @@ Use [canister timers](/docs/current/developer-docs/backend/periodic-tasks) over 
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
-6. Be mindful of calling an [actor class]((https://internetcomputer.org/docs/current/motoko/main/actor-classes), as the overhead is similar to that of installing a fresh canister.
+6. Be mindful of calling an [actor class]((/docs/current/motoko/main/actor-classes), as the overhead is similar to that of installing a fresh canister.
 
-#### Rust 
+#### Rust
 1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message
 2. Refer to recommended blogs and articles for effective Rust canister development.
 
 #### Resources
 
-Several resources on efficient implementations include: 
+Several resources on efficient implementations include:
 
 - [Blog post on effective Rust canisters by Roman Kashitsyn](https://mmapped.blog/posts/01-effective-rust-canisters.html)
 - [Good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)

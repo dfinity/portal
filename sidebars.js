@@ -328,6 +328,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-upgrade",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars",
+                "developer-docs/developer-tools/cli-tools/dfx-json",
                 "developer-docs/developer-tools/cli-tools/dfx-json-reference",
                 {
                   type: "category",
@@ -594,7 +595,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "DeFi",
+      label: "Digital assets",
       items: [
         {
           type: "doc",
@@ -730,18 +731,36 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "DAOs",
+      label: "Governance",
       items: [
         {
           type: "category",
           label: "Network Nervous System (NNS)",
           items: [
             "developer-docs/daos/nns/overview",
-            "developer-docs/daos/nns/nns-app-quickstart",
-            "developer-docs/daos/nns/staking-voting-rewards",
-            "developer-docs/daos/nns/neurons-fund",
+            {
+              type: "category",
+              label: "Using the NNS dapp",
+              items: [
+              "developer-docs/daos/nns/nns-app-quickstart",
+              ],
+            },
+            {
+              type: "category",
+              label: "Neurons",
+              items: [
+              "developer-docs/daos/nns/neuron-management",
+              "developer-docs/daos/nns/staking-voting-rewards",
+            ],
+          },
+        ],
+        },
+        "developer-docs/daos/nns/neurons-fund",
+        {
+          type: "category",
+          label: "Proposals",
+          items: [
             "developer-docs/daos/nns/proposal-requirements",
-            "developer-docs/daos/nns/neuron-management",
           ],
         },
         {
@@ -752,54 +771,20 @@ const sidebars = {
             id: "developer-docs/daos/sns/index",
           },
           items: [
+            "developer-docs/daos/sns/overview",
             {
               type: "category",
-              label: "Introduction to the SNS",
-              items: [
-                "developer-docs/daos/sns/introduction/sns-intro-high-level",
-                "developer-docs/daos/sns/introduction/sns-architecture",
-                "developer-docs/daos/sns/introduction/sns-launch",
-                "developer-docs/daos/sns/introduction/dao-alternatives",
-              ],
-            },
-            {
-              type: "category",
-              label: "Preparing an SNS launch",
+              label: "Before an SNS launch",
               link: {
                 type: "doc",
                 id: "developer-docs/daos/sns/tokenomics/index",
               },
               items: [
-                "developer-docs/daos/sns/tokenomics/sns-checklist",
                 "developer-docs/daos/sns/tokenomics/predeployment-considerations",
                 "developer-docs/daos/sns/tokenomics/tokenomics-intro",
                 "developer-docs/daos/sns/tokenomics/rewards",
                 "developer-docs/daos/sns/tokenomics/preparation",
-              ],
-            },
-            {
-              type: "category",
-              label: "Integrating with an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/integrating/index",
-              },
-              items: [
-                "developer-docs/daos/sns/integrating/ledger-integration",
-                "developer-docs/daos/sns/integrating/index-integration",
-                "developer-docs/daos/sns/integrating/frontend-integration",
-              ],
-            },
-            {
-              type: "category",
-              label: "Testing an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/testing/testing-before-launch",
-              },
-              items: [
-                "developer-docs/daos/sns/testing/testing-locally",
-                "developer-docs/daos/sns/testing/testing-on-mainnet",
+                "developer-docs/daos/sns/tokenomics/sns-checklist",
               ],
             },
             {
@@ -812,6 +797,19 @@ const sidebars = {
               items: [
                 "developer-docs/daos/sns/launching/launch-summary-1proposal",
                 "developer-docs/daos/sns/launching/launch-steps-1proposal",
+                "developer-docs/daos/sns/launching/integrating",
+              ],
+            },
+            {
+              type: "category",
+              label: "Testing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/testing/testing-before-launch",
+              },
+              items: [
+                "developer-docs/daos/sns/testing/testing-locally",
+                "developer-docs/daos/sns/testing/testing-on-mainnet",
               ],
             },
             {
@@ -891,6 +889,7 @@ const sidebars = {
             "references/samples/motoko/simple-to-do/README",
             "references/samples/motoko/threshold-ecdsa/README",
             "references/samples/motoko/token_transfer/README",
+	    "references/samples/motoko/token_transfer_from/README",
             "references/samples/motoko/vetkd/README",
             "references/samples/motoko/whoami/README",
           ],
@@ -918,6 +917,7 @@ const sidebars = {
             "references/samples/rust/send_http_post/README",
             "references/samples/rust/threshold-ecdsa/README",
             "references/samples/rust/token_transfer/README",
+            "references/samples/rust/token_transfer_from/README",
             "references/samples/rust/vetkd/README",
           ],
         },
@@ -1169,6 +1169,11 @@ const sidebars = {
             "developer-docs/multi-chain/faq/ckerc20-faq",
             "developer-docs/multi-chain/faq/signatures-faq",
           ],
+        },
+        {
+          type: "doc",
+          label: "Execution errors",
+          id: "references/execution-errors",
         },
       ],
     },
