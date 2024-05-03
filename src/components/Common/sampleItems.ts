@@ -104,7 +104,7 @@ export const sampleItems: SampleItem[] = [
   {
     index: 3,
     title: "PoS app for ckBTC",
-    image: "/img/samples/pos-app-for-ckbtc.png",
+    image: "/img/samples/pos-app-for-ckbtc.webp",
     domains: ["Multi-chain"],
     languages: ["motoko"],
     level: "advanced",
