@@ -55,6 +55,13 @@ const contentfulPlugin = async function () {
             return null;
           }
 
+          let url;
+          try {
+            url = new URL(item.fields.url);
+          } catch (_) {
+            return null;
+          }
+
           const normalizedDate = format(parsedDate, "MMM d, y");
 
           return {
@@ -64,7 +71,7 @@ const contentfulPlugin = async function () {
             date: format(parsedDate, "y-MM-dd"),
             dateHuman: normalizedDate,
             press: item.fields.press,
-            url: item.fields.url,
+            url: url.href,
             tags: item.fields.tags || [],
             previewImageUrl:
               item.fields.previewImage &&
