@@ -15,7 +15,7 @@ function Developers(): JSX.Element {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-developers.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-developers.jpeg"></ShareMeta>
 
       <main className="w-full overflow-hidden">
         <Header />
