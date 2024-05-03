@@ -1,16 +1,16 @@
 # Overview
-The ICRC Rosetta allows for communication with the ICRC-1 compatible ledgers through the Rosetta-API standard. Examples for them are the [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) and the [ckETH ledger](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
+The ICRC Rosetta allows for communication with the ICRC-1 compatible ledgers through the [Rosetta-API standard](https://docs.cloud.coinbase.com/rosetta/docs/welcome). Examples for them are the [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) and the [ckETH ledger](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
 This guide is split up into the endpoints of the [Data-API](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/index.md) and that of the [Construction-API](/docs/developer-docs/defi/rosetta/icrc_rosetta/construction_api/index.md). 
 
 ## Set up an ICRC Rosetta node
 
-You can set up a Rosetta API-compliant node to interact with the Internet Computer and your ICRC-1 ledger of choice.
+You can set up a Rosetta API-compliant node for ICRC to interact with the Internet Computer and your ICRC-1 ledger of choice.
 To keep the instructions simple, you can use a Docker image to create the integration with the Rosetta API.
 You can also build and run the binary using the source code.
 
 If you don’t already have [Docker](https://docs.docker.com/get-docker/) on your computer, download and install the latest version.
 
-To set up a Rosetta node (which connects to a testnet):
+To set up a ICRC Rosetta node:
 
 ### Step 1:  [Install Docker](https://docs.docker.com/get-docker/) and [start the Docker daemon](https://docs.docker.com/config/daemon/).
 
@@ -35,7 +35,13 @@ docker run \
     --network-type mainnet \
     --ledger-id mxzaz-hqaaa-aaaar-qaada-cai
 ```
-The default port if not specified is `8080`. The default network is the testnet. For further help on what the options for ICRC-Rosetta are you can run.
+The default port if not specified is `8080`. The default network is the testnet. 
+This command starts the software on the local host and displays output similar to the following:
+
+    2024-04-11T08:03:55.720213Z  INFO rs/rosetta-api/icrc1/rosetta/src/main.rs:403: Starting Rosetta server
+    ⠖ [00:02:10] [#############################>-----------------------------------------------------------------------------------------------------------------------------------------------------------------] (628.8s) 
+
+For further help on what the options for ICRC-Rosetta are you can run.
 ``` bash
 docker run \
     --interactive \
@@ -45,11 +51,6 @@ docker run \
     dfinity/ic-icrc-rosetta-api \
     --help
 ```
-
-This command starts the software on the local host and displays output similar to the following:
-
-    2024-04-11T08:03:55.720213Z  INFO rs/rosetta-api/icrc1/rosetta/src/main.rs:403: Starting Rosetta server
-    ⠖ [00:02:10] [#############################>-----------------------------------------------------------------------------------------------------------------------------------------------------------------] (628.8s) 
 
 By default, the software connects to a testnet.
 It **does not** connect to any ICRC-1 ledger canister running on the Internet Computer blockchain mainnet.
