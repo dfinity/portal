@@ -4411,11 +4411,11 @@
   {
     "id": "personal-dao",
     "name": "Personal DAO",
-    "oneLiner": "A web3 app that functions as a gated DAO, treasury, data storage solution & more.",
+    "oneLiner": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
     "tags": [
       "DAO"
     ],
-    "description": "A web3 app that functions as a gated DAO, treasury, data storage solution & more.",
+    "description": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
     "usesInternetIdentity": true,
     "twitter": "https://x.com/Personal_DAO",
     "discord": "https://discord.gg/r85DtR2TjG",
@@ -4425,13 +4425,13 @@
   {
     "id": "icp-canister-bridge",
     "name": "ICP Canister Bridge",
-    "oneLiner": "A bridge powered by ICP enables seamless swaps between the Lightning Network and EVM-compatible chains.",
+    "oneLiner": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
     "tags": [
       "Bitcoin",
       "Ethereum",
       "Tools / Infrastructure"
     ],
-    "description": "A bridge powered by ICP enables seamless swaps between the Lightning Network and EVM-compatible chains.",
+    "description": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
     "usesInternetIdentity": false,
     "website": "https://vue2j-giaaa-aaaam-ab4bq-cai.icp0.io",
     "github": "https://github.com/Bitcoin-AI/icp-canister-bridge",
