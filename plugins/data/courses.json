@@ -1,0 +1,523 @@
+[
+  {
+    "index": "recigJa2SHhTuy87Z",
+    "title": "Zero to ICP",
+    "body": "This foundational course introduces newcomers to the basics of the Internet Computer Protocol (ICP). Participants will learn how to set up their development environment, understand the core concepts of the protocol, and prepare for more advanced study in ICP technologies.",
+    "languages": [],
+    "level": [],
+    "contentType": [],
+    "topics": [],
+    "tags": []
+  },
+  {
+    "index": "recEc6xkpHAoKTdD5",
+    "title": "ICP Zero to Dapp",
+    "body": "Dive into decentralized application (Dapp) development on the Internet Computer in this practical course. You will learn to build and deploy your own Dapps, utilizing ICP's seamless integration capabilities and decentralized infrastructure.",
+    "languages": [
+      null
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      null
+    ],
+    "tags": [
+      "Academic Overview",
+      "Beginner"
+    ]
+  },
+  {
+    "index": "recGaPcMiYtKittQI",
+    "title": "TypeScript on ICP",
+    "body": "In this beginner course on Decade, you will learn essential Internet Computer concepts and how to write canister smart contracts using TypeScript.",
+    "languages": [
+      "none",
+      "typescript, rust"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "motoko language, boundary nodes, consensus, message routing, execution, chainkey, bitcoin integration, tokenomics, nns, sns, canisters, internet identity",
+      "azle language, canisters, candid ui, stable structures, setup, rust"
+    ],
+    "tags": [
+      "Article",
+      "Article, Guide",
+      "Beginner"
+    ],
+    "link": "https://dacade.org/communities/icp/courses/typescript-smart-contract-101"
+  },
+  {
+    "index": "recvcNLkHcs1N79KV",
+    "title": "ICP Rust Bootcamp",
+    "body": "From core concepts, to the ICP EVM model, to hands-on experience with Rust using the Remix IDE, this Rise In bootcamp will open your eyes to the potential of Web3 development.",
+    "languages": [
+      "rust",
+      "rust, frontend"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      "icp, icp overview",
+      "icp, icp overview, canisters, management canister, nodes, inter canister calls, subnets, chainkey, nns",
+      "smart contract, icp, rust",
+      "icp, rust, smart contract, environment setup",
+      "rust, state management, stable structures, stable memory",
+      "state management, rust, stable memory, stable structures",
+      "query calls, update calls",
+      "candid",
+      "smart contract",
+      "smart contract, candid",
+      "frontend"
+    ],
+    "tags": [
+      "Presentation",
+      "Tutorial",
+      "Beginner"
+    ],
+    "link": "https://www.risein.com/courses/build-on-internet-computer-with-icp-rust-cdk"
+  },
+  {
+    "index": "rec9TFavDAZm1JQuk",
+    "title": "ICP Developer I (ES)",
+    "body": "A 4-week basics course in Spanish that covers canister development using Motoko, creating a backend and frontend canister, and ending with building your own dapp on the Internet Computer.",
+    "languages": [
+      "motoko"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "environment setup",
+      "icp overview",
+      "motoko language, cdk",
+      "canisters, cycles",
+      "frontend",
+      "deploying canister",
+      "demo"
+    ],
+    "tags": [
+      "Guide",
+      "Beginner"
+    ],
+    "link": "https://icp-esp.gitbook.io/icp-developer/"
+  },
+  {
+    "index": "recPRf7i9kmi0EHhb",
+    "title": "ICP Developer II (ES)",
+    "body": "The purpose of this ICP Developer II is for you to continue developing the Canister frontend of your project and finish this week with your first DApp running 100% on-chain on the Internet Computer network",
+    "languages": [
+      "motoko"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "dapp",
+      "frontend",
+      "internet identity, authentication",
+      "deploying canister",
+      "demo"
+    ],
+    "tags": [
+      "Guide",
+      "Beginner"
+    ],
+    "link": "https://icp-esp.gitbook.io/icp-developer-ii/"
+  },
+  {
+    "index": "recK6MEkzaqkjzKwz",
+    "title": "Rust Smart Contract 101",
+    "body": "This course provides an in-depth introduction to developing smart contracts using Rust on the Internet Computer. It focuses on the key aspects of Rust programming, smart contract security, and the deployment of contracts on the ICP network.",
+    "languages": [
+      "typescript, rust"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "azle language, canisters, candid ui, stable structures, setup, rust"
+    ],
+    "tags": [
+      "Article, Guide",
+      "Beginner"
+    ],
+    "link": "https://dacade.org/communities/icp/courses/rust-smart-contract-101"
+  },
+  {
+    "index": "recLcdxCQMBmL6t0m",
+    "title": "Community Conversations",
+    "body": "Engage with the vibrant Internet Computer community in this interactive course. It features live discussions, Q&A sessions with experienced developers, and insights into the latest ICP developments and community projects.",
+    "languages": [
+      "none"
+    ],
+    "level": [
+      "expert"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      "execution, testing, tla"
+    ],
+    "tags": [
+      "Tutorial",
+      "Expert"
+    ],
+    "link": "https://www.youtube.com/playlist?list=PLuhDt1vhGcrdQu9Hw8eLDV9OTZXE5lklI"
+  },
+  {
+    "index": "recQ59FWXmZvUre4u",
+    "title": "Motoko Bootcamp",
+    "body": "Master the Internet Computer’s native language, Motoko, in this comprehensive bootcamp. From basic syntax to advanced features, this course covers all you need to start building powerful and efficient smart contracts on ICP.",
+    "languages": [
+      "none",
+      "motoko",
+      "motoko, frontend"
+    ],
+    "level": [
+      "intermediate",
+      "beginner"
+    ],
+    "contentType": [
+      "text",
+      "video"
+    ],
+    "topics": [
+      "internet identity, webauthn, delegations",
+      "query calls, update calls, cycles, motoko language, wasm, canisters, actor model",
+      "icp, cycles, canisters, wasm, http gateway, subnets, chainkey, icp overview",
+      "motoko language, wasm, candid ui, canisters, inter canister calls",
+      "dfx, setup",
+      "motoko language",
+      "candid",
+      "canisters, dfx, candid ui"
+    ],
+    "tags": [
+      "Article",
+      "Presentation",
+      "Tutorial",
+      "Intermediate",
+      "Beginner"
+    ],
+    "link": "https://www.youtube.com/playlist?list=PLeNYxb7vPrkhuCcBWVL1GHTc82-CqUE75"
+  },
+  {
+    "index": "recXvo57f2kvA15na",
+    "title": "ICP 101",
+    "body": "An introductory course that covers the essentials of the Internet Computer and its revolutionary approach to blockchain technology. Learn about the architecture, consensus mechanism, and the overall ecosystem of the ICP.",
+    "languages": [
+      "none"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      "icp overview"
+    ],
+    "tags": [
+      "Presentation",
+      "Beginner"
+    ]
+  },
+  {
+    "index": "recgiB7RLdzsnFxdJ",
+    "title": "TypeScript Bootcamp",
+    "body": "Web3 with TypeScript Bootcamp powered by Code & State and get started in Web3 in one week",
+    "languages": [
+      "typescript",
+      "typescript, frontend"
+    ],
+    "level": [
+      "beginner"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      "azle language, icp overview, setup",
+      "icp overview, dao",
+      "azle language, candid",
+      "azle language, stable memory, stable structures",
+      "asset canister, http gateway, boundary nodes, service worker, internet identity",
+      "azle language, inter canister calls, cycles, timers",
+      "azle language, http outcalls",
+      "azle language, bitcoin integration, chainkey, threshold ecdsa, ckbtc",
+      "azle language, best practices, security"
+    ],
+    "tags": [
+      "Tutorial",
+      "Beginner"
+    ],
+    "link": "https://www.youtube.com/playlist?list=PLeNYxb7vPrkj3SNntZ9ANchomvAPdrU8F"
+  },
+  {
+    "index": "recqd3jI8HZRHvI7o",
+    "title": "Inside the Internet Computer",
+    "body": "This course offers a deep dive into the technical underpinnings and innovative features of the Internet Computer. Explore its unique node structure, governance model, and the science behind its high-speed transaction capabilities.",
+    "languages": [
+      "none"
+    ],
+    "level": [
+      "expert"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      "chainkey, icp",
+      "nns, icp",
+      "consensus, icp",
+      "icp, p2p",
+      "icp, ni-dkg",
+      "icp, authentication, identity",
+      "icp, icp upgrades",
+      "icp, certification",
+      "icp, resumption",
+      "icp, message routing",
+      "icp, canisters",
+      "icp, bootstrapping",
+      "icp, state synchronization",
+      "icp, ingress message lifecycle",
+      "icp, execution",
+      "icp, security"
+    ],
+    "tags": [
+      "Academic Overview",
+      "Expert"
+    ],
+    "link": "https://www.youtube.com/playlist?list=PLuhDt1vhGcrfHG_rnRKsqZO1jL_Pd970h"
+  },
+  {
+    "index": "recScb2Sb2MqxvqrR",
+    "title": "ICP Explained",
+    "body": "Gain a clear understanding of the Internet Computer and its position within the broader blockchain landscape. This course breaks down complex topics into understandable segments, perfect for those new to blockchain technologies.",
+    "languages": [
+      "none"
+    ],
+    "level": [
+      "intermediate"
+    ],
+    "contentType": [
+      "video"
+    ],
+    "topics": [
+      "motoko language, icp",
+      "consensus, icp",
+      "nodes, topology",
+      "chainkey, vetkeys, icp",
+      "boundary nodes, http gateway, icp",
+      "p2p, icp, subnets",
+      "icp, chainkey",
+      "icp, execution, canisters, query calls, update calls, inter canister calls, chainkey, management canister",
+      "icp, nodes",
+      "icp, asset canister, certification, http gateway",
+      "icp, http gateway, certification",
+      "icp, message routing",
+      "runtime, execution, wasm, icp"
+    ],
+    "tags": [
+      "Presentation",
+      "Intermediate"
+    ],
+    "link": "https://drive.google.com/drive/folders/10ym7WCaC6vTqpbYxAGoAj8Z2We1ifQ4J"
+  },
+  {
+    "index": "recBgUAr1wVK5ke4n",
+    "title": "ICP Documentation",
+    "body": "Learn how to navigate and utilize the extensive documentation available for the Internet Computer. This course helps developers find the resources they need to build, deploy, and maintain applications on the ICP.",
+    "languages": [
+      "none"
+    ],
+    "level": [
+      "beginner",
+      "intermediate"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "cycles, cycles wallet, cycles faucet, cycles management",
+      "standard, icrc2",
+      "icrc1, standard",
+      "nft, best practices",
+      "best practices, security"
+    ],
+    "tags": [
+      "Tutorial",
+      "Standard",
+      "Guide",
+      "Article",
+      "Article, Best Practice",
+      "Beginner",
+      "Intermediate"
+    ],
+    "link": "https://internetcomputer.org/docs/current/home"
+  },
+  {
+    "index": "rechLPlhRFAsYw9nq",
+    "title": "Internet Computer Education",
+    "body": "The Internet Computer reinvents the internet as a global computer that hosts open internet services & secure software. New open-source materials every month.",
+    "languages": [
+      "motoko",
+      "motoko, frontend"
+    ],
+    "level": [
+      "intermediate"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "motoko language",
+      "governance",
+      "token, payment",
+      "nns, motoko language",
+      "icp, motoko language",
+      "wasm, motoko language",
+      "query calls, update calls, http gateway, access control, inter canister calls, autonomous canisters, motoko language"
+    ],
+    "tags": [
+      "Guide",
+      "Intermediate"
+    ],
+    "link": "https://github.com/DFINITY-Education"
+  },
+  {
+    "index": "recNydhGkRrOk9xYr",
+    "title": "Resource",
+    "body": "This course serves as a comprehensive guide to the various resources available for Internet Computer developers. Discover tools, community forums, and expert tips to enhance your development skills and knowledge.",
+    "languages": [
+      "none",
+      "motoko",
+      "frontend, rust",
+      "motoko, rust"
+    ],
+    "level": [
+      "beginner",
+      "expert",
+      "intermediate"
+    ],
+    "contentType": [
+      "text",
+      "video"
+    ],
+    "topics": [
+      "ckbtc, bitcoin integration",
+      "sns",
+      "motoko language, candid, tooling, stable memory, dao, authentication, testing, icp overview, chainkey, vetkeys, cycles management",
+      "motoko language, candid, tooling, stable memory, dao, authentication, rust, testing, icp overview, chainkey, vetkeys, cycles management",
+      "icp overview",
+      "candid",
+      "http outcalls, ethereum, stable memory, chainkey",
+      "execution, testing, tla",
+      "stable memory",
+      "tokenomics",
+      "dao"
+    ],
+    "tags": [
+      "Article",
+      "Presentation",
+      "Tutorial",
+      "Aggregation",
+      "Standard",
+      "Presentation, Global R&D",
+      "Presentation, ICP.Lab",
+      "Demo, Example",
+      "Beginner",
+      "Expert",
+      "Intermediate"
+    ]
+  },
+  {
+    "index": "recKl8buUZTYRg3MZ",
+    "title": "mmapped",
+    "body": "Explore the innovative 'mmapped' technology on the Internet Computer in this specialized course. Understand how memory-mapped files can be used to enhance the performance and scalability of your decentralized applications.",
+    "languages": [
+      "rust",
+      "none"
+    ],
+    "level": [
+      "intermediate",
+      "expert"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "canisters, rust",
+      "icp ledger, token, icp",
+      "icp, orthogonal persistence",
+      "icp, subnets",
+      "stable memory, stable structures",
+      "stable memory, internet identity, icp",
+      "ckbtc, stable memory, stable structures",
+      "candid"
+    ],
+    "tags": [
+      "Guide, Best Practice",
+      "Article",
+      "Tutorial",
+      "Article, Best Practice",
+      "Intermediate",
+      "Expert"
+    ],
+    "link": "https://mmapped.blog/"
+  },
+  {
+    "index": "recbYDlHQ6J2clhR6",
+    "title": "The Azle Book",
+    "body": "This book is intended to be an in-depth guide to canister development in TypeScript on the Internet Computer (IC).",
+    "languages": [
+      "none",
+      "typescript"
+    ],
+    "level": [
+      "beginner",
+      "intermediate"
+    ],
+    "contentType": [
+      "text"
+    ],
+    "topics": [
+      "canisters, query calls, update calls, azle language",
+      "update calls, azle language",
+      "query calls, azle language",
+      "candid, azle language",
+      "stable structures, stable memory, azle language",
+      "icp overview",
+      "inter canister calls, azle language"
+    ],
+    "tags": [
+      "Article",
+      "Guide",
+      "Beginner",
+      "Intermediate"
+    ],
+    "link": "https://demergent-labs.github.io/azle/the_azle_book.html"
+  }
+]

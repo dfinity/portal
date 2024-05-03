@@ -75,16 +75,21 @@
   font-size: 32px;
   line-height: 28px;
 }
+@media (max-width: 600px) {
+  .title {
+    font-size: 18px; /* Font size for mobile devices */
+  }
+}
 
 .numberOfItems {
   font-weight: 500;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 12px;
   height: 26px;
   background-color: #ffffff;
   border-radius: 13px;
-  padding: 2px 8px;
-  margin: 0 12px 0 8px;
+  padding: 6px 8px;
+  margin: 0 12px 10px 8px;
 }
 
 .clearFilters {

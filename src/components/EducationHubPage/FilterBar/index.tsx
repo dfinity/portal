@@ -8,37 +8,17 @@ import Close from "@site/static/img/svgIcons/close.svg";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { SampleContentType } from "../../Common/sampleItems";
+import { CourseContentType } from "../../Common/courseItems";
 
-const languageOptions = ["Motoko", "Rust", "Javascript", "Other"];
-const domainOptions = [
-  "Global",
-  "Multi-chain",
-  "GameFi",
-  "Asynchronous DeFi",
-  "Website",
-  "Metaverse and NFTs",
-  "Blue Sky",
-  "SocialFi",
-  "Public Good / Social Impact",
-];
-const levelOptions = ["Beginner", "Intermediate", "Advanced"];
-const contentTypeOptions: SampleContentType[] = [
-  "code samples",
-  "videos",
-  "documentation",
-  "tutorial",
-  "live demos",
-  "community repo",
-];
+const languageOptions = ["Motoko", "Rust", "TypeScript", "None"];
+const levelOptions = ["Beginner", "Intermediate", "Expert"];
+const contentTypeOptions: CourseContentType[] = ["text", "video"];
 const sortByOptions = ["Relevance", "A to Z", "Z to A"];
 
 function Index({
   numberOfItems,
   selectedLanguages,
   setSelectedLanguages,
-  selectedDomains,
-  setSelectedDomains,
   selectedLevels,
   setSelectedLevels,
   selectedContentTypes,
@@ -59,7 +39,6 @@ function Index({
 
   const clearFilters = () => {
     setSelectedLanguages([]);
-    setSelectedDomains([]);
     setSelectedLevels([]);
     setSelectedContentTypes([]);
     setSelectedSortBy("Relevance");
@@ -73,13 +52,6 @@ function Index({
       );
     } else {
       setSelectedLanguages([...selectedLanguages, language]);
-    }
-  };
-  const updateSelectedDomains = (domain) => {
-    if (selectedDomains.includes(domain)) {
-      setSelectedDomains(selectedDomains.filter((item) => item !== domain));
-    } else {
-      setSelectedDomains([...selectedDomains, domain]);
     }
   };
   const updateSelectedLevels = (level) => {
@@ -121,12 +93,11 @@ function Index({
   return (
     <>
       <div id="start" />
-      <div className="container-10">
+      <div className="container-10 !px-0">
         <div className={styles.filterBarHeader}>
           <h3 className={styles.title}>Courses</h3>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
           {(selectedLanguages.length > 0 ||
-            selectedDomains.length > 0 ||
             selectedLevels.length > 0 ||
             selectedContentTypes.length > 0 ||
             searchTerm.length > 0) && (
@@ -148,7 +119,7 @@ function Index({
           <div className={styles.filterIcon}>
             <Filter />
           </div>
-          <span className={styles.title}>Sample codes</span>
+          <span className={styles.title}>Courses</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
         <div ref={selectBoxesRef} className={styles.selectBoxes}>
@@ -183,39 +154,6 @@ function Index({
                         }
                       />
                       {language}
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-          <div className={styles.selectBoxContainer}>
-            <button
-              className={styles.selectBox}
-              style={{
-                color: selectedDomains.length > 0 ? "#3B00B9" : "black",
-              }}
-              onClick={() => updateCurrentSelection("domain")}
-            >
-              <p className={styles.selectTitle}>Domain</p>
-              <div className={styles.selectionArrow}>
-                {currentSelection === "domain" ? <ArrowUp /> : <ArrowDown />}
-              </div>
-            </button>
-            {currentSelection === "domain" && (
-              <div className={styles.selectOptionsContainer}>
-                <div className={styles.selectOptions}>
-                  {domainOptions.map((domain) => (
-                    <label key={domain} className={styles.selectOption}>
-                      <input
-                        type="checkbox"
-                        className={styles.checkbox}
-                        key={domain}
-                        value={domain}
-                        checked={selectedDomains.includes(domain)}
-                        onChange={(e) => updateSelectedDomains(e.target.value)}
-                      />
-                      {domain}
                     </label>
                   ))}
                 </div>
@@ -301,7 +239,7 @@ function Index({
           <div className={styles.selectBoxContainer}>
             <input
               type="text"
-              placeholder="Search samples..."
+              placeholder="Search in courses"
               className={clsx(styles.inputBox)}
               onChange={(e) => setSearchTerm(e.target.value)}
               value={searchTerm}
@@ -346,7 +284,7 @@ function Index({
           <div className={styles.filterIcon}>
             <Filter />
           </div>
-          <span className={styles.title}>Sample codes</span>
+          <span className={styles.title}>Courses</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
       </div>
@@ -367,7 +305,7 @@ function Index({
               >
                 <Close />
               </div>
-              <p className={styles.mobileFilterTitle}>Sample codes</p>
+              <p className={styles.mobileFilterTitle}>Courses</p>
               <div className={styles.mobileSelectContainer}>
                 <p>Language</p>
                 <div className={styles.mobileFilterOptions}>
@@ -389,22 +327,7 @@ function Index({
                     </label>
                   ))}
                 </div>
-                <p>Domain</p>
-                <div className={styles.mobileFilterOptions}>
-                  {domainOptions.map((domain) => (
-                    <label key={domain} className={styles.selectOption}>
-                      <input
-                        type="checkbox"
-                        className={styles.checkbox}
-                        key={domain}
-                        value={domain}
-                        checked={selectedDomains.includes(domain)}
-                        onChange={(e) => updateSelectedDomains(e.target.value)}
-                      />
-                      {domain}
-                    </label>
-                  ))}
-                </div>
+
                 <p>Level</p>
                 <div className={styles.mobileFilterOptions}>
                   {levelOptions.map((level) => (
@@ -446,11 +369,11 @@ function Index({
                     </label>
                   ))}
                 </div>
-                <p>Search samples</p>
+                <p>Search Courses</p>
                 <div className={styles.mobileFilterOptions}>
                   <input
                     type="text"
-                    placeholder="Search samples..."
+                    placeholder="Search courses..."
                     className={clsx(styles.inputBox)}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     value={searchTerm}

@@ -2,20 +2,16 @@ import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
-import Header from "@site/src/components/SamplesPage/Header";
-import Card from "@site/src/components/SamplesPage/Card";
+import Card from "@site/src/components/EducationHubPage/Card";
 import FilterBar from "@site/src/components/EducationHubPage/FilterBar";
-import BGCircle from "@site/static/img/purpleBlurredCircle.webp";
-import BGCircleCommunity from "@site/static/img/samples/purplePinkBlur.png";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import {
-  SampleContentType,
-  SampleDomain,
-  SampleItem,
-  sampleItems,
-  SampleLanguage,
-  SampleLevel,
-} from "@site/src/components/Common/sampleItems";
+  CourseContentType,
+  CourseItem,
+  courseItems,
+  CourseLanguage,
+  CourseLevel,
+} from "@site/src/components/Common/courseItems";
 import communityProjects from "@site/community/communityProjects";
 import {
   deserializeStringList,
@@ -36,61 +32,41 @@ import { NewsCard } from "../components/NewsPage/Cards";
 import clsx from "clsx";
 import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import PromoCard from "../components/GlobalEvents/PromoCard";
 
 const MotionLink = motion(Link);
-const CommunityProjectCard: React.FC<{ project: SampleItem }> = ({
-  project,
-}) => {
-  return (
-    <Card
-      image={
-        !project.image
-          ? require(`../../static/img/samples/default.gif`).default
-          : project.image
-      }
-      title={project.title}
-      domain={project.domains[0]}
-      body={project.body}
-      links={project.links}
-    />
-  );
-};
 
-function filterSamples(
-  samples: SampleItem[],
-  selectedLanguages: SampleLanguage[],
-  selectedDomains: SampleDomain[],
-  selectedLevels: SampleLevel[],
-  selectedContentTypes: SampleContentType[],
+function filterCourses(
+  courses: CourseItem[],
+  selectedLanguages: CourseLanguage[],
+  selectedLevels: CourseLevel[],
+  selectedContentTypes: CourseContentType[],
   searchTerm: string
-): SampleItem[] {
+): CourseItem[] {
   if (selectedLanguages.length > 0) {
-    samples = samples.filter(({ languages }) =>
+    courses = courses.filter(({ languages }) =>
       languages?.some((item) => selectedLanguages.includes(item))
     );
   }
-  if (selectedDomains.length > 0) {
-    samples = samples.filter(({ domains }) =>
-      domains?.some((item) => selectedDomains.includes(item))
+  if (selectedLevels.length > 0) {
+    courses = courses.filter(({ level }) =>
+      level?.some((item) => selectedLevels.includes(item))
     );
   }
-  if (selectedLevels.length > 0) {
-    samples = samples.filter(({ level }) => selectedLevels.includes(level));
-  }
   if (selectedContentTypes.length > 0) {
-    samples = samples.filter(({ contentType }) =>
+    courses = courses.filter(({ contentType }) =>
       contentType?.some((item) => selectedContentTypes.includes(item))
     );
   }
 
   if (searchTerm.trim() !== "") {
     const term = searchTerm.trim().toLowerCase();
-    samples = samples.filter(
+    courses = courses.filter(
       ({ body, title }) =>
         body.toLowerCase().includes(term) || title.toLowerCase().includes(term)
     );
   }
-  return samples;
+  return courses;
 }
 
 function EducationHubPage() {
@@ -103,20 +79,12 @@ function EducationHubPage() {
       deserialize: (s) => s,
     });
   const [selectedLanguages, setSelectedLanguages] = useQueryParam<
-    SampleLanguage[]
+    CourseLanguage[]
   >("selectedLanguages", [], {
     serialize: serializeStringList,
     deserialize: deserializeStringList,
   });
-  const [selectedDomains, setSelectedDomains] = useQueryParam<SampleDomain[]>(
-    "selectedDomains",
-    [],
-    {
-      serialize: serializeStringList,
-      deserialize: deserializeStringList,
-    }
-  );
-  const [selectedLevels, setSelectedLevels] = useQueryParam<SampleLevel[]>(
+  const [selectedLevels, setSelectedLevels] = useQueryParam<CourseLevel[]>(
     "selectedLevels",
     [],
     {
@@ -124,20 +92,27 @@ function EducationHubPage() {
       deserialize: deserializeStringList,
     }
   );
+  const [selectedTopics, setSelectedTopics] = useQueryParam<CourseTopic[]>(
+    "selectedTopics",
+    [],
+    {
+      serialize: serializeStringList,
+      deserialize: deserializeStringList,
+    }
+  );
   const [selectedContentTypes, setSelectedContentTypes] = useQueryParam<
-    SampleContentType[]
+    CourseContentType[]
   >("selectedContentTypes", [], {
     serialize: serializeStringList,
     deserialize: deserializeStringList,
   });
 
-  const sampleStartRef = useRef<HTMLDivElement>();
+  const coursesStartRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
     if (
       queryParamInitialized &&
       (selectedLanguages.length > 0 ||
-        selectedDomains.length > 0 ||
         selectedLevels.length > 0 ||
         selectedContentTypes.length > 0 ||
         searchTerm.length > 0)
@@ -145,59 +120,37 @@ function EducationHubPage() {
       window.scrollTo({
         top:
           window.scrollY +
-          sampleStartRef.current.getBoundingClientRect().top -
+          coursesStartRef.current.getBoundingClientRect().top -
           50,
       });
     }
   }, [queryParamInitialized]);
 
   const [selectedSortBy, setSelectedSortBy] = React.useState("Relevance");
-  const [filteredSamples, setFilteredSamples] = React.useState(sampleItems);
-  const [filteredCommunitySamples, setFilteredCommunitySamples] =
-    React.useState(communityProjects);
-  const [numberOfItems, setNumberOfItems] = React.useState(16);
-  const [numberOfCommunityItems, setNumberOfCommunityItems] =
-    React.useState(40);
+  const [filteredCourses, setFilteredCourses] = React.useState(courseItems);
+  const [numberOfItems, setNumberOfItems] = React.useState(7);
 
-  const sortSamples = (samples) => {
+  const sortCourses = (courses) => {
     if (selectedSortBy === "Relevance") {
-      samples.sort((a, b) => a.index - b.index);
+      courses.sort((a, b) => a.index - b.index);
     } else if (selectedSortBy === "A to Z") {
-      samples.sort((a, b) => a.title.localeCompare(b.title));
+      courses.sort((a, b) => a.title.localeCompare(b.title));
     } else if (selectedSortBy === "Z to A") {
-      samples.sort((a, b) => b.title.localeCompare(a.title));
+      courses.sort((a, b) => b.title.localeCompare(a.title));
     }
   };
 
   useEffect(() => {
-    let tempFilteredSamples = filterSamples(
-      communityProjects,
+    let tempFilteredCourses = filterCourses(
+      courseItems,
       selectedLanguages,
-      selectedDomains,
       selectedLevels,
       selectedContentTypes,
       searchTerm
     );
-    sortSamples(tempFilteredSamples);
-    setFilteredCommunitySamples([...tempFilteredSamples]);
-
-    tempFilteredSamples = filterSamples(
-      sampleItems,
-      selectedLanguages,
-      selectedDomains,
-      selectedLevels,
-      selectedContentTypes,
-      searchTerm
-    );
-    sortSamples(tempFilteredSamples);
-    setFilteredSamples([...tempFilteredSamples]);
-  }, [
-    selectedLanguages,
-    selectedDomains,
-    selectedLevels,
-    selectedContentTypes,
-    searchTerm,
-  ]);
+    sortCourses(tempFilteredCourses);
+    setFilteredCourses(tempFilteredCourses);
+  }, [selectedLanguages, selectedLevels, selectedContentTypes, searchTerm]);
 
   return (
     <Layout title="Education Hub" description="Education page.">
@@ -255,22 +208,14 @@ function EducationHubPage() {
             </div>
           </div>
         </section>
-        <section className="container-10 mt-24">
-          <motion.h3 className="tw-heading-5 md:tw-heading-4">
-            Courses
-          </motion.h3>
-
+        <section className="container-10 mt-24 mb-24">
           <AnimateSpawn variants={transitions.container}>
-            <section className="container-10 relative mt-20 md:mt-40 lg:mb-30">
-              <motion.div variants={transitions.item} className="md:ml-1/12">
+            <section className="">
+              <motion.div variants={transitions.item}>
                 <FilterBar
-                  numberOfItems={
-                    filteredSamples.length + filteredCommunitySamples.length
-                  }
+                  numberOfItems={filteredCourses.length}
                   selectedLanguages={selectedLanguages}
                   setSelectedLanguages={setSelectedLanguages}
-                  selectedDomains={selectedDomains}
-                  setSelectedDomains={setSelectedDomains}
                   selectedLevels={selectedLevels}
                   setSelectedLevels={setSelectedLevels}
                   selectedContentTypes={selectedContentTypes}
@@ -283,44 +228,66 @@ function EducationHubPage() {
               </motion.div>
               <motion.div
                 variants={transitions.item}
-                className="mt-12 md:ml-1/12"
-                ref={sampleStartRef}
+                className="mt-12"
+                ref={coursesStartRef}
               >
-                <p className="tw-heading-6 md:tw-heading-5">Featured samples</p>
-
-                {filteredSamples.length === 0 && (
-                  <p className="tw-paragraph text-black-60">
-                    No featured samples available
-                  </p>
-                )}
+                <p className="tw-heading-6 md:tw-heading-5">
+                  Azyle course topics
+                </p>
+                <p className="tw-paragraph text-black-60">
+                  Donec sed odio dui. Maecenas faucibus mollis interdum.{" "}
+                </p>
               </motion.div>
               <motion.div
                 variants={transitions.item}
                 className={clsx(
-                  "relative mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity",
-                  filteredSamples.length === 0 ? "" : "mt-11 mb-20"
+                  "relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity items-stretch",
+                  filteredCourses.length === 0 ? "" : "mt-11 mb-20"
                 )}
               >
-                {filteredSamples.slice(0, numberOfItems).map((sample) => (
+                {filteredCourses.slice(0, numberOfItems).map((course) => (
                   <Card
-                    key={sample.index}
-                    image={sample.image}
-                    title={sample.title}
-                    domain={sample.domains[0]}
-                    body={sample.body}
-                    links={sample.links}
+                    key={course.index}
+                    title={course.title}
+                    body={course.body}
+                    languages={course.languages}
+                    tags={course.tags}
+                    link={course.link}
                   />
                 ))}
+                <div
+                  className="rounded-xl  text-white flex px-4 py-8 md:px-6 md:py-8  backdrop-blur-2xl"
+                  style={{
+                    background:
+                      " var(--gradient-dark-purple, linear-gradient(54deg, #3B00B9 0%, #D38ED7 131.95%))",
+                  }}
+                >
+                  <div className="flex flex-col gap-2">
+                    <h3 className="tw-lead mb-0">Submit your course</h3>
+                    <p className="tw-paragraph text-white/60">
+                      Duis mollis, est non commodo luctus, nisi erat porttitor.
+                    </p>
+                    <div className="flex-1"></div>
+                    <p className="mt-2 mb-0">
+                      <Link
+                        className={clsx("button-white text-center w-full")}
+                        href={""}
+                      >
+                        Submit Now
+                      </Link>
+                    </p>
+                  </div>
+                </div>
               </motion.div>
-              {filteredSamples.length > numberOfItems && (
+              {filteredCourses.length > numberOfItems && (
                 <div
                   className="flex mt-20 items-center justify-center tw-heading-6 text-infinite hover:text-black-60"
-                  onClick={() => setNumberOfItems(numberOfItems + 16)}
+                  onClick={() => setNumberOfItems(numberOfItems + 8)}
                 >
                   <div className="inline-block mr-2 h-6">
                     <PlusIcon />
                   </div>
-                  <p className="mb-0">Load more</p>
+                  <p className="mb-0 cursor-pointer select-none">Load more</p>
                 </div>
               )}
             </section>
