@@ -4417,6 +4417,7 @@
     ],
     "description": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
     "usesInternetIdentity": true,
+    "website": "https://fkkq7-siaaa-aaaap-qaaya-cai.ic0.app/",
     "twitter": "https://x.com/Personal_DAO",
     "discord": "https://discord.gg/r85DtR2TjG",
     "display": "Normal",
@@ -4467,21 +4468,7 @@
     "twitter": "https://twitter.com/icfootprint",
     "display": "Normal",
     "logo": "/img/showcase/ic_footprint_logo.png"
-  },
-  {
-    "id": "nx-governance",
-    "name": "NX Governance",
-    "oneLiner": "A multi-chain governance framework built on ICP.",
-    "tags": [
-      "DAO",
-      "Tools / Infrastructure"
-    ],
-    "description": "A multi-chain governance framework built on ICP",
-    "usesInternetIdentity": false,
-    "github": "https://github.com/nx-fi/nx-governance",
-    "display": "Normal",
-    "logo": "/img/showcase/nx_governance_logo.png"
-  },
+  }
   {
     "id": "galactic-bridge",
     "name": "Galactic Bridge",
