@@ -47,7 +47,7 @@ export const CardsSection = () => {
 
       <CardWithImage href="/ai" image="/img/home/ai.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
-          Use AI models
+          Run AI models
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Decentralized AI</h2>
       </CardWithImage>
