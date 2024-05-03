@@ -20,7 +20,7 @@ function HTTPSOutcalls() {
       world, opening up a plethora of use cases."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-https-outcalls.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-https-outcalls.jpg"></ShareMeta>
 
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
