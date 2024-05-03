@@ -37,13 +37,6 @@ const contentfulPlugin = async function () {
         const pressEntries = await client.getEntries({ content_type: "press" });
 
         const press = pressEntries.items.map((item) => {
-          if (!item.fields) {
-            return null;
-          }
-          if (!item.fields.date || !item.fields.url) {
-            return null;
-          }
-
           let parsedDate = parse(item.fields.date, "MMMM y", new Date());
           if (!isValid(parsedDate))
             parsedDate = parse(item.fields.date, "MMM y", new Date());
