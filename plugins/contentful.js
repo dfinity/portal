@@ -62,6 +62,9 @@ const contentfulPlugin = async function () {
           let url;
           try {
             url = new URL(item.fields.url);
+            if (url.host === "airtable.com") {
+              return null;
+            }
           } catch (_) {
             return null;
           }
