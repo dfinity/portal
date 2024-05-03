@@ -36,54 +36,56 @@ const contentfulPlugin = async function () {
 
         const pressEntries = await client.getEntries({ content_type: "press" });
 
-        const press = pressEntries.items.map((item) => {
-          let parsedDate = parse(item.fields.date, "MMMM y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMM y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMMM d y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMMM d, yyyy", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMM d y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "d MMMM y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "d MMM y", new Date());
+        const press = pressEntries.items
+          .map((item) => {
+            let parsedDate = parse(item.fields.date, "MMMM y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMM y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMMM d y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMMM d, yyyy", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMM d y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "d MMMM y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "d MMM y", new Date());
 
-          if (!isValid(parsedDate)) {
-            return null;
-          }
-
-          let url;
-          try {
-            url = new URL(item.fields.url);
-            if (url.host === "airtable.com") {
+            if (!isValid(parsedDate)) {
               return null;
             }
-          } catch (_) {
-            return null;
-          }
 
-          const normalizedDate = format(parsedDate, "MMM d, y");
+            let url;
+            try {
+              url = new URL(item.fields.url);
+              if (url.host === "airtable.com") {
+                return null;
+              }
+            } catch (_) {
+              return null;
+            }
 
-          return {
-            id: item.sys.id,
-            title: item.fields.title,
-            details: item.fields.details,
-            date: format(parsedDate, "y-MM-dd"),
-            dateHuman: normalizedDate,
-            press: item.fields.press,
-            url: url.href,
-            tags: item.fields.tags || [],
-            previewImageUrl:
-              item.fields.previewImage &&
-              item.fields.previewImage.fields &&
-              item.fields.previewImage.fields.file
-                ? item.fields.previewImage.fields.file.url
-                : null,
-          };
-        });
+            const normalizedDate = format(parsedDate, "MMM d, y");
+
+            return {
+              id: item.sys.id,
+              title: item.fields.title,
+              details: item.fields.details,
+              date: format(parsedDate, "y-MM-dd"),
+              dateHuman: normalizedDate,
+              press: item.fields.press,
+              url: url.href,
+              tags: item.fields.tags || [],
+              previewImageUrl:
+                item.fields.previewImage &&
+                item.fields.previewImage.fields &&
+                item.fields.previewImage.fields.file
+                  ? item.fields.previewImage.fields.file.url
+                  : null,
+            };
+          })
+          .filter((item) => item !== null);
 
         // from oldest to newest
         press.sort((a, b) => a.date.localeCompare(b.date));
