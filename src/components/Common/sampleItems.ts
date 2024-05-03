@@ -104,7 +104,7 @@ export const sampleItems: SampleItem[] = [
   {
     index: 3,
     title: "PoS app for ckBTC",
-    image: "/img/samples/pos-app-for-ckbtc.png",
+    image: "/img/samples/pos-app-for-ckbtc.webp",
     domains: ["Multi-chain"],
     languages: ["motoko"],
     level: "advanced",
@@ -461,6 +461,21 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/icp_transfer",
       rust: "https://github.com/dfinity/examples/tree/master/rust/icp_transfer",
+    },
+  },
+  {
+    index: 25,
+    title: "Token transfer_from",
+    image: "/img/samples/tokenTransfer.png",
+    domains: ["Global", "Asynchronous DeFi", "Multi-chain"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation"],
+    body: "Create a canister that can hold and transfer ICRC-1 tokens on behalf of accounts to other accounts.",
+    links: {
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/token_transfer_from",
     },
   },
 ];
