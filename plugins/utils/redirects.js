@@ -368,20 +368,20 @@ const redirects = `
   /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/asset-custody/custody-options
   /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs
-  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/introduction/sns-intro-high-level
-  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/introduction/sns-architecture
-  /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/introduction/sns-launch
-  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/introduction/dao-alternatives
+  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/tokenomics/ /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-checklist /docs/current/developer-docs/daos/sns/tokenomics/sns-checklist
   /docs/current/developer-docs/integrations/sns/tokenomics/predeployment-considerations  /docs/current/developer-docs/daos/sns/tokenomics/predeployment-considerations
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro  /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
   /docs/current/developer-docs/integrations/sns/tokenomics/rewards /docs/current/developer-docs/daos/sns/tokenomics/rewards
   /docs/current/developer-docs/integrations/sns/tokenomics/preparation /docs/current/developer-docs/daos/sns/tokenomics/preparation
-  /docs/current/developer-docs/integrations/sns/integrating/ /docs/current/developer-docs/daos/sns/integrating/
-  /docs/current/developer-docs/integrations/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/integrating/ledger-integration
-  /docs/current/developer-docs/integrations/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/integrating/index-integration
-  /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/integrating/frontend-integration
+  /docs/current/developer-docs/integrations/sns/integrating/ /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/integrations/sns/testing/testing-before-launch /docs/current/developer-docs/daos/sns/testing/testing-before-launch
   /docs/current/developer-docs/integrations/sns/testing/testing-locally /docs/current/developer-docs/daos/sns/testing/testing-locally
   /docs/current/developer-docs/integrations/sns/testing/testing-on-mainnet /docs/current/developer-docs/daos/sns/testing/testing-on-mainnet
@@ -445,6 +445,14 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
+  /docs/current/developer-docs/daos/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/integrating/index /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
