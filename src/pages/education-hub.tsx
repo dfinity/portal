@@ -12,7 +12,6 @@ import {
   CourseLanguage,
   CourseLevel,
 } from "@site/src/components/Common/courseItems";
-import communityProjects from "@site/community/communityProjects";
 import {
   deserializeStringList,
   serializeStringList,
