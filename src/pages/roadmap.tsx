@@ -6,7 +6,7 @@ import GithubIcon from "@site/static/img/svgIcons/github.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { RefObject, useState, useEffect } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
@@ -60,40 +60,33 @@ function milestoneName(name: string) {
   return title;
 }
 
-function indexToColor(index: number, total: number) {
-  const hue = (index / total) * 360;
-  const colors = [
-    "#f15a24",
-    "#fbb03b",
-    "#ed1e79",
-    "#4b19d6",
-    "#29abe2",
-    "#79d11c",
-  ];
-  const colorPairs = [
-    [colors[0], colors[1]],
-    [colors[1], colors[2]],
-    [colors[2], colors[3]],
-    [colors[3], colors[4]],
-    [colors[4], colors[5]],
-    [colors[1], colors[0]],
-    [colors[2], colors[1]],
-    [colors[3], colors[2]],
-    [colors[4], colors[3]],
-    [colors[5], colors[4]],
-  ];
+function indexToColor(index: number, total: number, relI) {
+  const hueStart = -30;
+  const hueRange = 200;
   const relativeIndex = index / total;
-  const closestPair = colorPairs[Math.floor(relativeIndex * colorPairs.length)];
-  const [color1, color2] = closestPair;
+  const hue = (relativeIndex * -hueRange + hueStart) % 360;
+  if (!relI) {
+    return `linear-gradient(-315deg, hsl(${hue} 30% 25%), hsl(${hue + 5} 80% 25%))`;
+  } else {
+    return `hsl(${hue} ${30 + relI * 20}% ${25 - relI * 20}%)`;
+  }
+}
 
-  return `linear-gradient(-315deg, ${color1}, ${color2})`;
-  return `linear-gradient(-45deg, oklch(40%, .15, ${hue}), oklch(20%, .15, ${hue}))`;
+function scrollBy(ref: RefObject<T>, direction: 1) {
+  const element = ref.current;
+  element.scrollBy({ left: window.innerWidth / 4 * direction, behavior: 'smooth' });
+}
+
+function elementHasOverflown(element: HTMLElement) {
+  return element.scrollWidth > element.clientWidth;
 }
 
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
   const [overlayAnchor, setOverlayAnchor] = useState(null);
+
+  const scrollRefs = new Array(data.length).fill('').map(_ => React.useRef(null));
 
   function openOverlay(at: number, anchor: number | null = null) {
     document.body.style.overflow = "hidden";
@@ -107,6 +100,30 @@ const RoadmapPage: React.FC = () => {
     setOverlayOpen(false);
   }
 
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      const rect = entries[0].contentRect;
+      scrollRefs.forEach(ref => {
+        const controls = ref.current.parentElement.querySelectorAll('[data-slidecontrol]');
+        if( elementHasOverflown(ref.current) ) {
+          controls.forEach((el: HTMLElement) => {
+            el.classList.remove('hidden')
+          });
+        } else {
+          controls.forEach((el: HTMLElement) => {
+            el.classList.add('hidden')
+          });
+        }
+      });
+    });
+
+    observer.observe(document.documentElement);
+
+    return () => {
+      observer.unobserve(document.documentElement);
+    };
+  }, []);
+
   return (
     <Layout
       title="Roadmap"
@@ -115,7 +132,7 @@ const RoadmapPage: React.FC = () => {
     >
       <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
 
-      <main className="w-full overflow-hidden bg-[#0a0023] text-white">
+      <main className={'w-full overflow-hidden bg-[#0a0023] text-white'}>
         <section className="">
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
@@ -139,7 +156,16 @@ const RoadmapPage: React.FC = () => {
               <h1 className="tw-heading-4 uppercase">{theme.name}</h1>
 
               <p className="tw-paragraph">{theme.description}</p>
+              
+              <button data-slidecontrol onClick={
+                scrollBy.bind(null, scrollRefs[indexTheme], -1)
+              }>prev </button>
+              <button data-slidecontrol onClick={
+                scrollBy.bind(null, scrollRefs[indexTheme], 1)
+              }>next </button>
               <section
+                ref={scrollRefs[indexTheme]}
+                data-scroll={indexTheme}
                 aria-label="milestones"
                 className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8"
                 style={{
@@ -153,7 +179,7 @@ const RoadmapPage: React.FC = () => {
                         key={milestone.name}
                         className="snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
                         style={{
-                          background: indexToColor(indexTheme, data.length),
+                          background: indexToColor(indexTheme, data.length, index / theme.milestones.length),
                         }}
                         onClick={() => openOverlay(indexTheme, index)}
                       >
