@@ -141,14 +141,17 @@ const RoadmapPage: React.FC = () => {
               <p className="tw-paragraph">{theme.description}</p>
               <section
                 aria-label="milestones"
-                className="flex gap-6 items-stretch overflow-x-auto scrollbar-hide mt-8 pb-8"
+                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8"
+                style={{
+                  scrollbarWidth: "none",
+                }}
               >
                 {theme.milestones.map(
                   (milestone, index) =>
                     milestone.elements.length > 0 && (
                       <article
                         key={milestone.name}
-                        className="text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
+                        className="snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
                         style={{
                           background: indexToColor(indexTheme, data.length),
                         }}
