@@ -14,8 +14,10 @@ This section will show you how to use the ICRC Rosetta implementation to authori
 The request types used for making direct transfers are `APPROVE` and `SPENDER`. They consist of two operations, one for the the approve operation and another for the spender operation. 
 :::info
 You do not have to specify the `FEE` operation, although the `FEE` of the ICRC-1 ledger `FEE` will be deducted automatically by Rosetta. 
-To keep an overview of all the expenses it thus may pay off to include a `FEE` operation to not overlook unexpected debit operations. 
-
+Calls may include a `FEE` operation to not overlook unexpected debit operations. 
+:::
+### Prerequisites 
+- Make sure you are familiar with the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) for Rosetta.  
 The minimum set of operations that is sent to the `construction/payloads` endpoint is the following. 
 In this case we are approving the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` to spend up to 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe`.
 
