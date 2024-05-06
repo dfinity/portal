@@ -83,14 +83,9 @@ const Overlay: React.FC<{
   onClose: () => void;
   openAt: number;
   data: RoadmapDomain[];
-}> = ({ onClose, openAt, data }) => {
+  anchor: number | null;
+}> = ({ onClose, openAt, data, anchor }) => {
   const overlayRef = useRef<HTMLDivElement>();
-  useEffect(() => {
-    overlayRef.current.scrollTop =
-      document
-        .querySelector(`#roadmap_domain_${openAt}`)
-        .getBoundingClientRect().top - 48;
-  }, []);
 
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
@@ -103,6 +98,8 @@ const Overlay: React.FC<{
       window.removeEventListener("keydown", onKeydown);
     };
   }, [onClose]);
+
+  console.log(anchor);
 
   return (
     <motion.div
@@ -135,142 +132,14 @@ const Overlay: React.FC<{
               />
             </svg>
           </button>
-        </div>
-        <div className="flex flex-col md:gap-12 -mt-10">
-          {data.map((domain, index) => (
-            <div
-              className="bg-white flex flex-col md:rounded-xl md:overflow-hidden"
-              id={`roadmap_domain_${index}`}
-              key={`roadmap_domain_${index}`}
-            >
-              <img
-                src={domain.image.overlay}
-                alt=""
-                className="w-full h-[200px] object-cover md:h-[450px]"
-              />
-              <div className="p-6 pb-16 md:p-12">
-                <h2 className="tw-heading-4 md:tw-heading-60 mb-3 text-infinite">
-                  {domain.name}
-                </h2>
-                <div
-                  className="tw-paragraph md:tw-lead-sm text-black-60 mb-8 md:mb-16"
-                  dangerouslySetInnerHTML={{ __html: domain.description }}
-                ></div>
-                <div className="space-y-8 md:space-y-16">
-                  {domain.groups.deployed?.length > 0 && (
-                    <OverlayGroup
-                      deployed={true}
-                      pillClassName="bg-infinite"
-                      items={domain.groups.deployed}
-                      pill={
-                        <>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M3 7.99943L6.84682 12L13 5.59977L11.4617 4L6.84682 8.80045L4.53829 6.39966L3 7.99943Z"
-                              fill="white"
-                            />
-                          </svg>
-                          Deployed
-                        </>
-                      }
-                      aside={
-                        <span className="tw-paragraph text-black-60 flex gap-2 items-center h-6">
-                          <CommunityIcon></CommunityIcon>
-                          Community requests
-                        </span>
-                      }
-                    ></OverlayGroup>
-                  )}
-                  {domain.groups.inProgress?.length > 0 && (
-                    <OverlayGroup
-                      deployed={false}
-                      pillClassName="bg-razzmatazz"
-                      items={domain.groups.inProgress}
-                      pill={
-                        <>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M8 3C8.98891 3 9.95561 3.29324 10.7779 3.84265C11.6001 4.39206 12.241 5.17295 12.6194 6.08658C12.9978 7.00021 13.0969 8.00555 12.9039 8.97545C12.711 9.94536 12.2348 10.8363 11.5355 11.5355C10.8363 12.2348 9.94536 12.711 8.97545 12.9039C8.00555 13.0969 7.00021 12.9978 6.08658 12.6194C5.17295 12.241 4.39206 11.6001 3.84265 10.7779C3.29324 9.95561 3 8.98891 3 8H5C5 8.59334 5.17595 9.17336 5.50559 9.66671C5.83524 10.1601 6.30377 10.5446 6.85195 10.7716C7.40013 10.9987 8.00333 11.0581 8.58527 10.9424C9.16721 10.8266 9.70176 10.5409 10.1213 10.1213C10.5409 9.70176 10.8266 9.16721 10.9424 8.58527C11.0581 8.00333 10.9987 7.40013 10.7716 6.85195C10.5446 6.30377 10.1601 5.83524 9.66671 5.50559C9.17336 5.17595 8.59334 5 8 5V3Z"
-                              fill="white"
-                            />
-                          </svg>
-                          In Progress
-                        </>
-                      }
-                    ></OverlayGroup>
-                  )}
-
-                  {domain.groups.upcoming?.length > 0 && (
-                    <OverlayGroup
-                      deployed={false}
-                      pillClassName="bg-black-60 backdrop-blur-2xl"
-                      items={domain.groups.upcoming}
-                      pill={
-                        <>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <circle cx="2.5" cy="8" r="1.5" fill="white" />
-                            <circle cx="8" cy="8" r="1.5" fill="white" />
-                            <circle cx="13.5" cy="8" r="1.5" fill="white" />
-                          </svg>
-                          Upcoming
-                        </>
-                      }
-                    ></OverlayGroup>
-                  )}
-                  {domain.groups.future?.length > 0 && (
-                    <OverlayGroup
-                      deployed={false}
-                      pillClassName="bg-blue text-white"
-                      items={domain.groups.future}
-                      pill={
-                        <>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M4.33333 8L1 11.3333L2.66667 13L7.66667 8L2.66667 3L1 4.66667L4.33333 8Z"
-                              fill="white"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M10.8153 8L7.48193 11.3333L9.1486 13L14.1486 8L9.1486 3L7.48193 4.66667L10.8153 8Z"
-                              fill="white"
-                            />
-                          </svg>
-                          Future
-                        </>
-                      }
-                    ></OverlayGroup>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+          <div className="text-black">
+            {data[openAt].name} <br />
+            {anchor !== null &&
+              data[openAt] &&
+              data[openAt].milestones &&
+              data[openAt].milestones[anchor] &&
+              data[openAt].milestones[anchor].name}
+          </div>
         </div>
       </div>
     </motion.div>

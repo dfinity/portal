@@ -11,7 +11,7 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
 import DomainCard from "../components/RoadmapPage/DomainCard";
-i//import Overlay from "../components/RoadmapPage/Overlay";
+import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 import { FormDescription } from "@site/docs/references/samples/motoko/ic-pos/src/icpos_frontend/components/ui/form";
 import { theme } from "@site/tailwind.config";
@@ -20,26 +20,35 @@ const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
 
-function elementCount (milestoneElements: any[], progress: string) {
-  return milestoneElements.filter(
-    (element) => element.progress === progress
-  ).length;
+function elementCount(milestoneElements: any[], progress: string) {
+  return milestoneElements.filter((element) => element.progress === progress)
+    .length;
 }
 
 const milestoneElementsToProgress = (milestoneElements: any[]) => {
   const elementsCount = milestoneElements.length;
-  const elementsCountInProgress = elementCount(milestoneElements, "in_progress")
-  const elementsCountDone = elementCount(milestoneElements, "deployed")
+  const elementsCountInProgress = elementCount(
+    milestoneElements,
+    "in_progress"
+  );
+  const elementsCountDone = elementCount(milestoneElements, "deployed");
 
   const progressDone = (elementsCountDone / elementsCount) * 100;
   const progressInProgress = (elementsCountInProgress / elementsCount) * 100;
 
-
-  return (<div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
-    <div className="h-2 bg-green rounded-xl" style={{width: progressDone + '%'}}></div>
-    <div className="h-2 bg-white" style={{width: progressInProgress + '%'}}></div>
-  </div>)
-}
+  return (
+    <div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
+      <div
+        className="h-2 bg-green rounded-xl"
+        style={{ width: progressDone + "%" }}
+      ></div>
+      <div
+        className="h-2 bg-white"
+        style={{ width: progressInProgress + "%" }}
+      ></div>
+    </div>
+  );
+};
 
 function milestoneName(name: string) {
   let title = name;
@@ -51,11 +60,16 @@ function milestoneName(name: string) {
   return title;
 }
 
-
-
 function indexToColor(index: number, total: number) {
   const hue = (index / total) * 360;
-  const colors = ['#f15a24', '#fbb03b', '#ed1e79', '#4b19d6', '#29abe2', '#79d11c'];
+  const colors = [
+    "#f15a24",
+    "#fbb03b",
+    "#ed1e79",
+    "#4b19d6",
+    "#29abe2",
+    "#79d11c",
+  ];
   const colorPairs = [
     [colors[0], colors[1]],
     [colors[1], colors[2]],
@@ -79,10 +93,12 @@ function indexToColor(index: number, total: number) {
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
+  const [overlayAnchor, setOverlayAnchor] = useState(null);
 
-  function openOverlay(at: number) {
+  function openOverlay(at: number, anchor: number | null = null) {
     document.body.style.overflow = "hidden";
     setOverlayOpenAt(at);
+    setOverlayAnchor(anchor);
     setOverlayOpen(true);
   }
 
@@ -106,7 +122,12 @@ const RoadmapPage: React.FC = () => {
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
-                The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack, but not all - more to come over the next few weeks.
+                The DFINITY Foundation is committing R&D resources in various
+                domains of development with the intent of making the Internet
+                Computer blockchain more efficient, faster and easier to use.
+                This roadmap shows the status of many projects across the
+                Internet Computer stack, but not all - more to come over the
+                next few weeks.
               </p>
             </div>
           </div>
@@ -117,36 +138,58 @@ const RoadmapPage: React.FC = () => {
             <article key={theme.name}>
               <h1 className="tw-heading-4 uppercase">{theme.name}</h1>
 
-              <p className="tw-paragraph">
-                {theme.description}
-              </p>
-              <section 
+              <p className="tw-paragraph">{theme.description}</p>
+              <section
                 aria-label="milestones"
                 className="flex gap-6 items-stretch overflow-x-auto scrollbar-hide mt-8 pb-8"
               >
-                {theme.milestones.map((milestone, index) => (
-                  milestone.elements.length > 0 && (
-                    <article 
-                      key={milestone.name}
-                      className="text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
-                      style={{
-                        background: indexToColor(indexTheme, data.length),
-                      }}
-                      onClick={() => openOverlay(index)}
-                    >
-                      <div className="grow">
-                        <h2 className="mb-0">{milestone.metal == 'none' ? milestoneName(milestone.name) : milestone.metal}</h2>
-                        <p className="text-xs">{milestone.eta != 'none' ? <span><span className="opacity-35">Milestone</span> {milestone.eta}</span> : <span>&nbsp;</span>}</p>
-                        {milestoneElementsToProgress(milestone.elements)}
-                      </div>
-                      <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
-                    </article>
-                  )
-                ))}
+                {theme.milestones.map(
+                  (milestone, index) =>
+                    milestone.elements.length > 0 && (
+                      <article
+                        key={milestone.name}
+                        className="text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
+                        style={{
+                          background: indexToColor(indexTheme, data.length),
+                        }}
+                        onClick={() => openOverlay(indexTheme, index)}
+                      >
+                        <div className="grow">
+                          <h2 className="mb-0">
+                            {milestone.metal == "none"
+                              ? milestoneName(milestone.name)
+                              : milestone.metal}
+                          </h2>
+                          <p className="text-xs">
+                            {milestone.eta != "none" ? (
+                              <span>
+                                <span className="opacity-35">Milestone</span>{" "}
+                                {milestone.eta}
+                              </span>
+                            ) : (
+                              <span>&nbsp;</span>
+                            )}
+                          </p>
+                          {milestoneElementsToProgress(milestone.elements)}
+                        </div>
+                        <p className="mb-0 mt-5">
+                          {milestoneName(milestone.name)}
+                        </p>
+                      </article>
+                    )
+                )}
               </section>
             </article>
           ))}
         </section>
+        {overlayOpen && (
+          <Overlay
+            onClose={closeOverlay}
+            openAt={overlayOpenAt}
+            data={data}
+            anchor={overlayAnchor}
+          ></Overlay>
+        )}
       </main>
     </Layout>
   );
