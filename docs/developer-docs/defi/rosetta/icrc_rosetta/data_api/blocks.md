@@ -1,17 +1,30 @@
-# How to fetch blocks
-This endpoint allows you to fetch blocks at a certain block height.  It is the implementation of the [/block endpoint](https://www.rosetta-api.org/docs/BlockApi.html#block) of the Rosetta API standard. 
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8082`.
+---
+keywords: [intermediate, rosetta, tutorial]
+---
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). For this example the following arbitrary BlockIdentifier is used:
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch blocks
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+The `block` endpoint allows you to fetch blocks at a certain block height.  It is the implementation of the [/block endpoint](https://www.rosetta-api.org/docs/BlockApi.html#block) of the Rosetta API standard. 
+### Prerequisites
+- Your Rosetta instance is up and running under the address `0.0.0.0:8082`.
+
+- Make sure to use the correct [`NetworkIdentifier`](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). For this example the following arbitrary `BlockIdentifier` is used:
 ```bash
 "block_identifier": {
         "index": 1357691,
         "hash": "0415ed9ea78fed787e125179c99a7d0e599ee6e4cb0d610eed2c791e6e3f5e19"
     }
 ```
-The blockidentifer required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash or both. You can select a transaction of your interest in for example the [ckBTC dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. In the following example we only provide the index, but you are free to use the full blockidentifier or only the hash too. If you are connecting to a different ICRC-1 ledger other than the ckBTC ledger, you cannot use the index and hash from the ckBTC ledger. 
+The `BlockIdentifer` required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash or both. For example, you can select a transaction of interest in the [ckBTC dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. The following example only provides the index, but you are free to use the full `BlockIdentifier` or only the hash.
 
-The request will look something like this:
+:::caution
+If you are connecting to a different ICRC-1 ledger other than the ckBTC ledger, you cannot use the index and hash from the ckBTC ledger. 
+:::
+## Example
+The request will resemble the following:
 
 ```bash
 curl --location '0.0.0.0:8082/block'  --header 'Content-Type: application/json' --data '{
