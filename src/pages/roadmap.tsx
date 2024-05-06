@@ -150,11 +150,11 @@ const RoadmapPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="container-10 -mt-52 md:-mt-32 relative">
+        <section className="container-10 -mt-52 md:-mt-32 relative  mb-40">
           {data.map((theme, indexTheme) => (
-            <article key={theme.name}>
-              <h1 className="tw-heading-4 uppercase">{theme.name}</h1>
-              <p className="tw-paragraph">{theme.description}</p>
+            <article key={theme.name} className="mt-20">
+              <h1 className="tw-heading-3">{theme.name}</h1>
+              <p className="tw-paragraph max-w-xs opacity-60">{theme.description}</p>
               
               <button data-slidecontrol onClick={
                 scrollBy.bind(null, scrollRefs[indexTheme], -1)
