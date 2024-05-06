@@ -109,7 +109,7 @@ function HowItWorks() {
           }
         `}
       </style>
-      <ShareMeta image="/img/shareImages/share-how-it-works.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-how-it-works.webp"></ShareMeta>
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
           <DarkHeroStyles></DarkHeroStyles>
