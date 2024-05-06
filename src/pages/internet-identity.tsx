@@ -162,13 +162,6 @@ function InternetIdentityPage() {
                 ecosystems a convenient, secure, and private way to log in and
                 share verifiable credentials.
               </p>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                ICP is compatible with the Ethereum Virtual Machine. Developers
-                building decentralized apps on the Ethereum protocol can
-                integrate Internet Identity and offer users from both ecosystems
-                a convenient, secure, and private way to log in and share
-                verifiable credentials.
-              </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/internet-identity/image-6.webp">
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
