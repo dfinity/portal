@@ -43,7 +43,7 @@ const milestoneElementsToProgress = (milestoneElements: any[]) => {
         style={{ width: progressDone + "%" }}
       ></div>
       <div
-        className="h-1 bg-[#1e3640] rounded-xl"
+        className="h-1 bg-green rounded-xl"
         style={{ width: progressInProgress + "%" }}
       ></div>
     </div>
