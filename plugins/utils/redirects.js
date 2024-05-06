@@ -69,7 +69,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
-  /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/about-this-guide
+  /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
@@ -86,9 +86,9 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
 
-  /docs/developers-guide/ /docs/current/motoko/main/about-this-guide
-  /docs/developers-guide/about-this-guide /docs/current/motoko/main/about-this-guide
-  /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/language-manual
+  /docs/developers-guide/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/reference/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/compile
@@ -101,7 +101,7 @@ const redirects = `
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/getting-started/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
-  /docs/developers-guide/tutorials-intro /docs/current/developer-docs/backend/motoko/
+  /docs/developers-guide/tutorials-intro /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview
@@ -139,7 +139,7 @@ const redirects = `
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/daos/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/developers-guide/tutorials/* /docs/current/developer-docs/backend/motoko/:splat
+  /docs/developers-guide/tutorials/* /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/current/motoko/main/:splat
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
@@ -149,14 +149,14 @@ const redirects = `
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
-  /docs/current/developer-docs/build/backend/* /docs/current/developer-docs/backend/motoko/:splat
+  /docs/current/developer-docs/build/backend/* /docs/current/motoko/main/getting-started/motoko-introduction
   /sustainability /capabilities/sustainability
   /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-journey/
   /install.sh)" /docs/current/developer-docs/getting-started/install/
-  /docs/current/motoko/intro/ /docs/current/motoko/main/motoko
+  /docs/current/motoko/intro/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/getting-started/install/
-  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/integrations/internet-identity/integrate-internet-identity/
+  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/getting-started/install/
@@ -175,7 +175,7 @@ const redirects = `
   /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
   /docs/current/concepts/data-centers /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
-  /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/motoko
+  /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/developer-docs/daos/sns/launching/launch-steps-1proposal
   /docs/current/developer-docs/frontend/javascript-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
@@ -368,20 +368,20 @@ const redirects = `
   /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/asset-custody/custody-options
   /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs
-  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/introduction/sns-intro-high-level
-  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/introduction/sns-architecture
-  /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/introduction/sns-launch
-  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/introduction/dao-alternatives
+  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/tokenomics/ /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-checklist /docs/current/developer-docs/daos/sns/tokenomics/sns-checklist
   /docs/current/developer-docs/integrations/sns/tokenomics/predeployment-considerations  /docs/current/developer-docs/daos/sns/tokenomics/predeployment-considerations
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro  /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
   /docs/current/developer-docs/integrations/sns/tokenomics/rewards /docs/current/developer-docs/daos/sns/tokenomics/rewards
   /docs/current/developer-docs/integrations/sns/tokenomics/preparation /docs/current/developer-docs/daos/sns/tokenomics/preparation
-  /docs/current/developer-docs/integrations/sns/integrating/ /docs/current/developer-docs/daos/sns/integrating/
-  /docs/current/developer-docs/integrations/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/integrating/ledger-integration
-  /docs/current/developer-docs/integrations/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/integrating/index-integration
-  /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/integrating/frontend-integration
+  /docs/current/developer-docs/integrations/sns/integrating/ /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/integrations/sns/testing/testing-before-launch /docs/current/developer-docs/daos/sns/testing/testing-before-launch
   /docs/current/developer-docs/integrations/sns/testing/testing-locally /docs/current/developer-docs/daos/sns/testing/testing-locally
   /docs/current/developer-docs/integrations/sns/testing/testing-on-mainnet /docs/current/developer-docs/daos/sns/testing/testing-on-mainnet
@@ -412,7 +412,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/integrations/ethereum/overview /docs/current/developer-docs/multi-chain/ethereum/overview
-  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/using-eth/evm-rpc
+  /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
   /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference
@@ -439,12 +439,72 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/ethereum/cketh/overview
-  /docs/current/developer-docs/multi-chain/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/using-eth/evm-rpc
   /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
+  /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
+  /docs/current/developer-docs/backend/motoko/infrastructure /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/current/motoko/main/getting-started/basic-concepts
+  /docs/current/developer-docs/backend/motoko/dev-env /docs/current/motoko/main/getting-started/dev-env
+  /docs/current/developer-docs/backend/motoko/at-a-glance /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/deploying /docs/current/motoko/main/getting-started/quickstart
+  /docs/current/developer-docs/backend/motoko/upgrading /docs/current/motoko/main/canister-maintenance/upgrades
+  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/current/motoko/main/writing-motoko/intercanister-calls
+  /docs/current/developer-docs/backend/motoko/optimizing /docs/current/motoko/main/canister-maintenance/optimization
+  /docs/current/developer-docs/backend/motoko/phonebook /docs/current/motoko/main/writing-motoko/modules-and-imports
+  /docs/current/developer-docs/backend/motoko/calculator /docs/current/motoko/main/writing-motoko/integers
+  /docs/current/developer-docs/backend/motoko/counter-tutorial /docs/current/motoko/main/writing-motoko/local-objects-classes
+  /docs/current/developer-docs/backend/motoko/hello-location /docs/current/motoko/main/writing-motoko/arguments
+  /docs/current/developer-docs/backend/motoko/simple-cycles /docs/current/motoko/main/canister-maintenance/cycles
+  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/current/motoko/main/writing-motoko/actors-async
+  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/current/motoko/main/writing-motoko/actor-classes
+  /docs/current/developer-docs/backend/motoko/access-control /docs/current/motoko/main/writing-motoko/caller-id
+  /docs/current/developer-docs/backend/motoko/candid-ui /docs/current/motoko/main/writing-motoko/candid-ui
+  /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/sample-apps  /docs/current/samples/overview
+  /docs/current/developer-docs/backend/motoko/mo-doc /docs/current/motoko/main/reference/generating-docs
+  /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/main/migration-guides/0.11.0-migration-guide
+  /docs/current/motoko/main/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
+  /motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/version /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/basic-concepts /docs/current/motoko/main/getting-started/basic-concepts
+  /docs/current/motoko/main/overview /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/language-manual /docs/current/motoko/main/reference/language-manual
+  /docs/current/motoko/main/style /docs/current/motoko/main/reference/style
+  /docs/current/motoko/main/base-intro /docs/current/motoko/main/writing-motoko/modules-and-imports
+  /docs/current/motoko/main/actors-async /docs/current/motoko/main/writing-motoko/actors-async
+  /docs/current/motoko/main/actor-classes /docs/current/motoko/main/writing-motoko/actor-classes
+  /docs/current/motoko/main/caller-id /docs/current/motoko/main/writing-motoko/caller-id
+  /docs/current/motoko/main/compatibility /docs/current/motoko/main/canister-maintenance/compatibility
+  /docs/current/motoko/main/control-flow /docs/current/motoko/main/writing-motoko/control-flow
+  /docs/current/motoko/main/cycles /docs/current/motoko/main/canister-maintenance/cycles
+  /docs/current/motoko/main/errors /docs/current/motoko/main/writing-motoko/errors
+  /docs/current/motoko/main/heartbeats /docs/current/motoko/main/writing-motoko/heartbeats
+  /docs/current/motoko/main/local-objects-classes /docs/current/motoko/main/writing-motoko/local-objects-classes
+  /docs/current/motoko/main/message-inspection /docs/current/motoko/main/writing-motoko/message-inspection
+  /docs/current/motoko/main/modules-and-imports /docs/current/motoko/main/writing-motoko/modules-and-imports
+  /docs/current/motoko/main/mutable-state /docs/current/motoko/main/writing-motoko/mutable-state
+  /docs/current/motoko/main/pattern-matching /docs/current/motoko/main/writing-motoko/pattern-matching
+  /docs/current/motoko/main/pipes /docs/current/motoko/main/writing-motoko/pipes
+  /docs/current/motoko/main/sharing /docs/current/motoko/main/writing-motoko/sharing
+  /docs/current/motoko/main/stable-regions /docs/current/motoko/main/stable-memory/stable-regions
+  /docs/current/motoko/main/stablememory /docs/current/motoko/main/stable-memory/stablememory
+  /docs/current/motoko/main/structural-equality /docs/current/motoko/main/writing-motoko/structural-equality
+  /docs/current/motoko/main/timers /docs/current/motoko/main/writing-motoko/timers
+  /docs/current/motoko/main/upgrades /docs/current/motoko/main/canister-maintenance/upgrades
+  /docs/current/motoko/main/compiler-ref /docs/current/motoko/main/reference/compiler-ref
+  /docs/current/motoko/main/motoko-grammar /docs/current/motoko/main/reference/motoko-grammar
+  /docs/current/developer-docs/daos/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/introduction/dao-alternatives /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/daos/sns/integrating/index /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/daos/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

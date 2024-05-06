@@ -11,15 +11,15 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management. 
+When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management.
 
 The biggest difference between the cycles ledger and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
 
 - Cycles wallets are a complex solution to associate cycles with principal IDs.
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
-- If a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost. 
+- If a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost.
 
-In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles. 
+In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles.
 
 The cycles ledger currently complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, the cycles ledger also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
 
@@ -28,7 +28,7 @@ The cycles ledger currently complies with the ICRC-1, ICRC-2, and ICRC-3 standar
 - Creating new canisters using cycles.
 
 :::caution
-It is important to note that the cycles ledger does not provide the ability to make arbitrary calls to other canisters with cycles, while the cycles wallet can. This is because open call contexts may cause complications with the cycles ledger. 
+It is important to note that the cycles ledger does not provide the ability to make arbitrary calls to other canisters with cycles, while the cycles wallet can. This is because open call contexts may cause complications with the cycles ledger.
 
 If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used as before. The cycles ledger can be used to load the cycles wallet with cycles.
 :::
@@ -159,12 +159,12 @@ If no flag is specified and there aren't any canisters that exist in the project
 
 If no flag is specified and the project contains canisters on a single subnet, then that subnet is used.
 
-If no flag is specified and the project contains canisters on multiple subnets, `dfx` will prompt you to specify a subnet. 
+If no flag is specified and the project contains canisters on multiple subnets, `dfx` will prompt you to specify a subnet.
 
 ## Fees
 
 Most functions of the cycle ledger incur a fee. The full breakdown of fees can be found below:
 
 - To transfer cycles between different principal IDs using the cycles ledger, the transfer fee is 100m cycles per transaction.
-- To send cycles from the cycles ledger to another canister, the fee is 100m cycles.  
-- To create a canister, the fee is the transfer fee (100m cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](https://internetcomputer.org/docs/current/developer-docs/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 100B cycles. This means the total fee will be 100_100_000_000 cycles. 
+- To send cycles from the cycles ledger to another canister, the fee is 100m cycles.
+- To create a canister, the fee is the transfer fee (100m cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](/docs/current/developer-docs/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 100B cycles. This means the total fee will be 100_100_000_000 cycles.

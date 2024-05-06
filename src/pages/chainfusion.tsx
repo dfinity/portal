@@ -4,8 +4,8 @@ import Card from "@site/src/components/SamplesPage/Card";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
@@ -16,6 +16,11 @@ import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { unreachable } from "../utils/unreachable";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
+import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 const ContentCard: React.FC<{
   id: string;
@@ -110,13 +115,15 @@ const StickySectionNav: React.FC<{
 
 function MultichainPage() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const codeRef = useRef<HTMLDivElement>(null);
+
   const isDark = useDarkHeaderInHero(heroRef);
   type ContentCardType = {
     title: string;
     id: string;
   };
   const [content, setContent] = React.useState<ContentCardType[]>([]);
-
+  const [isCodeSnippetExpanded, toggleCodeSnippetExpand] = useState(false);
   const highlight = useScrollSpyMenu(".content-card-with-id");
 
   useEffect(() => {
@@ -156,8 +163,7 @@ function MultichainPage() {
       and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      {/* <ShareMeta image="/img/shareImages/share-multichain.jpg"></ShareMeta> */}
-      <ShareMeta image="/img/multichain/hero3.webp"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
 
       <main
         className="text-black relative "
@@ -199,7 +205,7 @@ function MultichainPage() {
                 <img
                   src="/img/multichain/hero3.webp"
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-xl"
                 />
               </div>
             </div>
@@ -233,41 +239,42 @@ function MultichainPage() {
           el={motion.section}
         >
           <motion.div
-            className="md:w-4/10 flex-shrink-0"
+            ref={codeRef}
+            className="md:w-4/10 "
             variants={transitions.item}
           >
             <h2 className="tw-heading-4 md:tw-heading-60 text-gradient mb-3">
               Example Code
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              To showcase how powerful chain fusion is, here is a simple example that shows 
-              three chains interacting in one smart contract: a{" "}
-                single{" "}
-                <b>
-                  <i>ICP</i>
-                </b>{" "}
-                smart contract that can custody{" "}
-                <b>
-                  <i>Bitcoin</i>
-                </b>{" "}
-                and programmatically trigger sending it based on events observed
-                on a{" "}
-                <b>
-                  <i>Ethereum</i>
-                </b>{" "}
-                DeFi smart contract.
+              To showcase how powerful chain fusion is, here is a simple example
+              that shows three chains interacting in one smart contract: a{" "}
+              single{" "}
+              <b>
+                <i>ICP</i>
+              </b>{" "}
+              smart contract that can custody{" "}
+              <b>
+                <i>Bitcoin</i>
+              </b>{" "}
+              and programmatically trigger sending it based on events observed
+              on a{" "}
+              <b>
+                <i>Ethereum</i>
+              </b>{" "}
+              DeFi smart contract.
             </p>
 
-            
-
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-            This code snippet is written in the&nbsp;
-              <Link 
-                rel="stylesheet" 
+              This code snippet is written in both Rust and the&nbsp;
+              <Link
+                rel="stylesheet"
                 href="/docs/current/tutorials/developer-journey/level-0/intro-languages/#motoko"
               >
-              Motoko programming language
-              </Link> but is also possible for Rust, TypeScript, Python, and other languages.
+                Motoko programming language
+              </Link>{" "}
+              but is also possible for TypeScript, Python, and other
+              languages.
             </p>
             <p className="mb-0 mt-8">
               <Link
@@ -279,62 +286,335 @@ function MultichainPage() {
               </Link>
             </p>
           </motion.div>
-          <motion.div
-            className="md:max-w-5/10 space-y-5"
-            variants={transitions.item}
-          >
-            <CodeBlockString language="motoko">
-              {`
-  import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
-  import ic "ic:aaaaa-aa";
-  import Cycles "mo:base/ExperimentalCycles";
-  import Timer "mo:base/Timer";
-  
-  //Actor is the computational unit of ICP smart contract
-  actor {
-    let EVM_FEE = 1000;
-    let BITCOIN_FEE = 1000;
-  
-     //Function checks the logs of an ETH smart contract for an event
-     //If a particular event is found, it sends bitcoin to an address
-     func check_evm_log() : async () {
-      Cycles.add<system>(EVM_FEE);
-      let log = await evm.eth_getLogs(
-        #EthMainnet(null),
-        null,
-        {
-          // dummy address. Replace with the right one
-          addresses = ["address"];
-          fromBlock = ? #Finalized;
-          toBlock = ? #Finalized;
-          //dummy topics to look at. Replace with topics of interest
-          topics = ?[["topic1", "topic2"]]; 
-        },
-      );
-      switch log {
-        case (#Consistent(#Ok(_))) {
-          // if we get a consistent log, send bitcoin
-          await send_bitcoin();
-        };
-        case _ {};
+          <motion.div className="md:max-w-5/10 space-y-5 ">
+            <AnimatePresence>
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isCodeSnippetExpanded ? "auto" : "24rem",
+                }}
+                className="overflow-hidden rounded-md"
+                transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+              >
+                <Tabs>
+                  <TabItem value="motoko" label="Motoko" default>
+
+                  <CodeBlockString language="motoko" showLineNumbers={true}>
+                                    {`
+// This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
+import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
+import ic "ic:aaaaa-aa";
+import Cycles "mo:base/ExperimentalCycles";
+import Timer "mo:base/Timer";
+
+//Actor is the computational unit of ICP smart contract
+actor {
+  let EVM_FEE = 1_000_000_000;
+  let BITCOIN_FEE = 1_000_000_000;
+
+  //Function checks the logs of an ETH smart contract for an event
+  //If a particular event is found, it sends bitcoin to an address
+  func check_evm_log() : async () {
+    Cycles.add<system>(EVM_FEE);
+    let log = await evm.eth_getLogs(
+      #EthMainnet(null),
+      null,
+      {
+        // dummy address. Replace with the right one
+        addresses = ["address"];
+        fromBlock = ? #Finalized;
+        toBlock = ? #Finalized;
+        //dummy topics to look at. Replace with topics of interest
+        topics = ?[["topic1", "topic2"]]; 
+      },
+    );
+    switch log {
+      case (#Consistent(#Ok(_))) {
+        // if we get a consistent log, send bitcoin
+        await send_bitcoin();
       };
+      case _ {};
     };
-  
-    // Function that sends bitcoin. This is used by check_evm_log()
-    func send_bitcoin() : async () {
-      Cycles.add<system>(BITCOIN_FEE);
-      await ic.bitcoin_send_transaction({
-        transaction = "\be\ef";
-        network = #testnet;
-      });
-    };
-  
-    // Check for evm logs every 2 seconds
-    let _ = Timer.setTimer<system>(#seconds 2, check_evm_log);
   };
-  
-            `}
-            </CodeBlockString>
+
+  // Function that sends bitcoin. This is used by check_evm_log()
+  func send_bitcoin() : async () {
+    Cycles.add<system>(BITCOIN_FEE);
+    await ic.bitcoin_send_transaction({
+      transaction = "\be\ef";
+      network = #testnet;
+    });
+  };
+
+  // Check for evm logs every 2 seconds
+  let _ = Timer.setTimer<system>(#seconds 2, check_evm_log);
+};
+
+                              `}
+                  </CodeBlockString>
+
+                  </TabItem>
+
+                  <TabItem value="rust" label="Rust">
+
+                    <CodeBlockString language="rust" showLineNumbers={true}>
+                      {`
+#![allow(non_snake_case, clippy::large_enum_variant, clippy::enum_variant_names)]
+use std::time::Duration;
+
+use candid::{self, CandidType, Deserialize, Principal};
+
+pub const SCRAPING_LOGS_INTERVAL: Duration = Duration::from_secs(3 * 60);
+
+fn setup_timers() {
+    // // Start scraping logs immediately after the install, then repeat with the interval.
+    ic_cdk_timers::set_timer(Duration::ZERO, || ic_cdk::spawn(check_evm_log()));
+    ic_cdk_timers::set_timer_interval(SCRAPING_LOGS_INTERVAL, || ic_cdk::spawn(check_evm_log()));
+}
+
+#[ic_cdk::init]
+fn init() {
+    // start timers upon canister initialization
+    setup_timers();
+}
+
+// Function checks the logs of an ETH smart contract for an event
+// If a particular event is found, it sends bitcoin to an address
+async fn check_evm_log() {
+    // the cycles we attach to the message to pay for the service provide by
+    // the EVM RPC canister
+    let cycles = 10_000_000_000;
+    // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
+    let canister_id =
+        Principal::from_text("a6d44-nyaaa-aaaap-abp7q-cai").expect("principal should be valid");
+    // call the eth_getLogs function on the EVM RPC canister
+    let (result,) = ic_cdk::api::call::call_with_payment128::<
+        (RpcServices, Option<RpcConfig>, GetLogsArgs),
+        (MultiGetLogsResult,),
+    >(
+        canister_id,
+        "eth_getLogs",
+        (
+            RpcServices::EthMainnet(None),
+            None,
+            // for more information on eth_getLogs check
+            // https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs
+            GetLogsArgs {
+                fromBlock: Some(BlockTag::Finalized),
+                toBlock: Some(BlockTag::Finalized),
+                addresses: vec!["dummy_address".to_string()],
+                topics: Some(vec![vec!["topic1".to_string()], vec!["topic2".to_string()]]),
+            },
+        ),
+        cycles,
+    )
+    .await
+    .expect("Call failed");
+
+    match result {
+        MultiGetLogsResult::Consistent(_) => send_bitcoin().await,
+        MultiGetLogsResult::Inconsistent(_) => {
+            panic!("RPC providers gave inconsistent results")
+        }
+    }
+}
+
+// Function that sends bitcoin. This is used by check_evm_log()
+async fn send_bitcoin() {
+    // for more information on bitcoin_send_transaction check
+    // https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin_send_transaction
+    ic_cdk::api::management_canister::bitcoin::bitcoin_send_transaction(
+        ic_cdk::api::management_canister::bitcoin::SendTransactionRequest {
+            transaction: b"beef".into(),
+            network: ic_cdk::api::management_canister::bitcoin::BitcoinNetwork::Testnet,
+        },
+    )
+    .await
+    .expect("Call failed");
+}
+
+//TYPE DECLARATIONSpush
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum EthSepoliaService {
+    Alchemy,
+    BlockPi,
+    PublicNode,
+    Ankr,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub struct HttpHeader {
+    pub value: String,
+    pub name: String,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub struct RpcApi {
+    pub url: String,
+    pub headers: Option<Vec<HttpHeader>>,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum EthMainnetService {
+    Alchemy,
+    BlockPi,
+    Cloudflare,
+    PublicNode,
+    Ankr,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum RpcServices {
+    EthSepolia(Option<Vec<EthSepoliaService>>),
+    Custom { chainId: u64, services: Vec<RpcApi> },
+    EthMainnet(Option<Vec<EthMainnetService>>),
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct RpcConfig {
+    pub responseSizeEstimate: Option<u64>,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum BlockTag {
+    Earliest,
+    Safe,
+    Finalized,
+    Latest,
+    Number(candid::Nat),
+    Pending,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub struct JsonRpcError {
+    pub code: i64,
+    pub message: String,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum ProviderError {
+    TooFewCycles {
+        expected: candid::Nat,
+        received: candid::Nat,
+    },
+    MissingRequiredProvider,
+    ProviderNotFound,
+    NoPermission,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum ValidationError {
+    CredentialPathNotAllowed,
+    HostNotAllowed(String),
+    CredentialHeaderNotAllowed,
+    UrlParseError(String),
+    Custom(String),
+    InvalidHex(String),
+}
+
+#[derive(CandidType, Deserialize, Debug, PartialEq)]
+pub enum RejectionCode {
+    NoError,
+    CanisterError,
+    SysTransient,
+    DestinationInvalid,
+    Unknown,
+    SysFatal,
+    CanisterReject,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum HttpOutcallError {
+    IcError {
+        code: RejectionCode,
+        message: String,
+    },
+    InvalidHttpJsonRpcResponse {
+        status: u16,
+        body: String,
+        parsingError: Option<String>,
+    },
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum RpcError {
+    JsonRpcError(JsonRpcError),
+    ProviderError(ProviderError),
+    ValidationError(ValidationError),
+    HttpOutcallError(HttpOutcallError),
+}
+
+#[derive(CandidType, Deserialize)]
+pub enum RpcService {
+    EthSepolia(EthSepoliaService),
+    Custom(RpcApi),
+    EthMainnet(EthMainnetService),
+    Chain(u64),
+    Provider(u64),
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct GetLogsArgs {
+    pub fromBlock: Option<BlockTag>,
+    pub toBlock: Option<BlockTag>,
+    pub addresses: Vec<String>,
+    pub topics: Option<Vec<Vec<String>>>,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone, PartialEq)]
+pub struct LogEntry {
+    pub transactionHash: Option<String>,
+    pub blockNumber: Option<candid::Nat>,
+    pub data: String,
+    pub blockHash: Option<String>,
+    pub transactionIndex: Option<candid::Nat>,
+    pub topics: Vec<String>,
+    pub address: String,
+    pub logIndex: Option<candid::Nat>,
+    pub removed: bool,
+}
+
+#[derive(CandidType, Deserialize)]
+pub enum GetLogsResult {
+    Ok(Vec<LogEntry>),
+    Err(RpcError),
+}
+
+#[derive(CandidType, Deserialize)]
+pub enum MultiGetLogsResult {
+    Consistent(GetLogsResult),
+    Inconsistent(Vec<(RpcService, GetLogsResult)>),
+}
+                      `}
+                    </CodeBlockString>
+
+                  </TabItem>
+                  </Tabs>
+               
+                
+
+              </motion.div>
+
+              <motion.div className="text-center">
+                <Link
+                  className="link-primary link-with-icon md:hover:cursor-pointer text-center select-none"
+                  onClick={() =>
+                    toggleCodeSnippetExpand(!isCodeSnippetExpanded)
+                  }
+                >
+                  {isCodeSnippetExpanded ? (
+                    <>
+                      Hide <LinkArrowUp></LinkArrowUp>
+                    </>
+                  ) : (
+                    <>
+                      Expand <LinkArrowDown></LinkArrowDown>
+                    </>
+                  )}
+                </Link>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         </AnimateSpawn>
 
@@ -512,7 +792,7 @@ function MultichainPage() {
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">pending</Status>
+                    <Status type="pending">in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -683,7 +963,7 @@ function MultichainPage() {
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr pending</Status>
+                    <Status type="pending">Schnorr in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -719,7 +999,7 @@ function MultichainPage() {
                   </p>
                   <p className="flex gap-2 flex-wrap">
                     <Status type="done">ckETH done</Status>
-                    <Status type="pending">ckERC20 is pending</Status>
+                    <Status type="pending">ckERC20 is in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -753,7 +1033,7 @@ function MultichainPage() {
                     using traditional bridges.
                   </p>
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">icpERC20 is pending</Status>
+                    <Status type="pending">icpERC20 is in progress</Status>
                   </p>
                 </ContentCard>
 
@@ -797,7 +1077,7 @@ function MultichainPage() {
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr pending</Status>
+                    <Status type="pending">Schnorr in progress</Status>
                   </p>
                 </ContentCard>
 

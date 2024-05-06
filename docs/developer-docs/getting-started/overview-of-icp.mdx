@@ -10,14 +10,25 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Getting started" ]} />
 
-A blockchain is a new and much more secure way to build a computer by a distributed protocol as demonstrated by the Bitcoin network that never has been hacked although being the probably most attractive target ever.
-The drawback of the Bitcoin network that it offers very little computational power and is slow, expensive, and energy inefficient.
-The Internet Computer Protocol (ICP) is a distributed protocol that is far more efficient.
-It offers the security benefits of blockchain with the user experince and performance of the traditional IT stack.
-Smart contracts on ICP are expressive, powerful, and scalable like traditional apps, but inherrit the security and reliablity properties from the blockchain as they are an extention of the blockchain protocol.
-This page walks through the core concepts and features of ICP to show why that's the case.
+The Internet Computer Protocol (ICP) is a blockchain based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem), [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication), and [a novel consensus algorithm](https://eprint.iacr.org/2021/632.pdf).
 
+It was carefully designed to give smart contracts near native performance and scalability while maintaining the security of decentralized execution.
+In addition to classical DeFi smart contracts, such as ledgers and exchanges, ICP can run compute- and storage-heavy applications such as [image classification](https://github.com/dfinity/examples/tree/master/rust/image-classification) fully on-chain.
 
+Another important design aspect of ICP is its seamless and secure integration with existing ecosystems.
+Smart contracts on ICP can host web assets and serve HTTP requests from users, thus fulfilling the promise of Web3.
+They can also interact with RPC nodes of other blockchains and Web2 servers through secure HTTP requests.
+These features, combined with threshold signatures, give smart contracts the ability to hold assets and make transactions on other blockchains such as Bitcoin and Ethereum.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/icp-intro.png")}
+    alt="Overview of ICP"
+    width="500"
+  />
+</div>
+
+Read on to learn more about how these features are made possible. 
 
 ## Subnets
 A blockchain can only run as fast and offer as much resources as a single node.  

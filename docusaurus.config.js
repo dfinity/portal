@@ -71,7 +71,7 @@ const subnavItems = [
     label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
+      { label: "Motoko", href: "/docs/current/motoko/main/getting-started/motoko-introduction" },
       {
         label: "TypeScript",
         href: "/docs/current/developer-docs/backend/typescript/",
@@ -259,9 +259,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Enter the ICP ecosystem",
-            href: "/ecosystem",
-            image: "/img/nav/featured-web3.webp",
+            title: "Hello, Decentralized AI",
+            href: "/ai",
+            image: "/img/nav/featured-ai.webp",
           },
         },
         {

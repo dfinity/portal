@@ -341,7 +341,7 @@ function WebAssemblyPage() {
             <CardWithDescription
               title="Motoko"
               description="The Internet Computer’s native language, designed to support all features ICP has to offer, and has a less steep learning curve compared to Rust. Supported, and maintained by DFINITY."
-              href="/docs/current/motoko/main/motoko"
+              href="/docs/current/motoko/main/getting-started/motoko-introduction"
             />
             <CardWithDescription
               title="TypeScript"

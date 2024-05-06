@@ -1,0 +1,138 @@
+---
+keywords: [advanced, ethereum, evm rpc, evm, costs]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+
+# EVM RPC costs
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
+
+## Overview
+
+Each call made to the EVM RPC canister costs [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
+
+## Costs
+
+JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD.
+
+Because the Candid-RPC methods of the EVM RPC canister use built-in retries and multiple providers, the amount of cycles required for each RPC call isn't predictable beforehand. The idea for these methods is to send a maximum cycles budget to perform the request.
+
+The following formula shows how to calculate the cycles cost for an RPC request:
+
+```
+(
+  3M
+  + 60K * nodes_in_subnet // Number of nodes in the subnet
+  + 400 * request_size // Size of the HTTP request in bytes
+  + 800 * max_response // Maximum HTTP response size in bytes
+  + provider_cost // Fixed cost for selected RPC provider
+) * nodes_in_subnet //  Fixed canister overhead cost per node in subnet
+```
+
+Here is an approximate cost breakdown in USD for an RPC request on the Ethereum mainnet using Cloudflare Web3 and assuming a 13-node subnet:
+
+- Total cost: ~ $0.0021 (assuming consensus between 3 RPC providers)
+
+  - Cost per RPC provider: ~ $0.000686 (assuming 1kb request and 1kb response)
+
+    - Canister overhead: ~ $0.0000364
+
+    - HTTPS outcall overhead: ~ $0.00025
+
+    - JSON Request: ~ $0.0002 / kB
+
+    - JSON Response: ~ $0.0002 / kB
+
+Note that the cost is multiplied by the number of RPC services used for the agreement / consensus logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
+
+## Attaching the correct amount of cycles
+
+To determine how many cycles need to be sent with your RPC call, you can use the `requestCost` query method:
+
+```
+`requestCost`
+
+requestCost : (
+  source : JsonRpcSource,
+  jsonRequest : text,
+  maxResponseBytes :  nat64
+) -> (
+  Result<nat, RpcError>
+) query;
+```
+
+This query method accepts the same arguments as the canister's [`request`](evm-rpc-canister.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
+
+:::info
+The EVM RPC canister will continue retrying the request until it runs out of cycles sent with the request. This is important for requests such as `eth_getLogs`, where one request might return 100x as much data than the same request a few days earlier if there is a spike in smart contract activity. As a result, the optimal cycles budget is different for each use case. It is suggested to send 10_000_000_000 cycles as a starting point and adjust from there.
+:::
+
+Once you have determined how many cycles your call will need, you can send them in your call through a CDK or using `dfx` with the `--with-cycles` flag.
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+
+import EvmRpc "canister:evm_rpc";
+import Cycles "mo:base/ExperimentalCycles";
+
+Cycles.add<system>(1000000000);
+let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
+```
+
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+use ic_cdk::api::call::call_with_payment128;
+use declarations::evm_rpc::{Block, BlockTag, MultiGetBlockByNumberResult, RpcError, RpcService, EVM_RPC as evm_rpc};
+
+let cycles = 1000000000;
+let (results,): (MultiGetBlockByNumberResult,) = call_with_payment128(
+    evm_rpc.0,
+    "eth_getBlockByNumber",
+    (
+        RpcServices::EthMainnet(None),
+        (),
+        BlockTag::Number(19709434.into()),
+    ),
+    cycles,
+)
+.await
+.unwrap();
+```
+
+</TabItem>
+<TabItem value="dfx" label="dfx">
+
+```
+dfx canister call evm_rpc eth_getBlockByNumber "(variant {$CANDID_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=100000000 --wallet=default
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+In order to accurately measure the HTTPS outcall cost and protect from an accidental large responses, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation. Developers can determine this value by measuring the size of expected JSON responses from an API playground such as [Alchemy Sandbox](https://sandbox.alchemy.com/).
+
+The Candid RPC methods use a built-in default response bytes, which you can override with the `RpcConfig` value.
+
+You may choose to repeatedly call the `request` method with an increasingly large value for `maxResponseBytes` to handle variable response sizes. We defer this choice of strategy to the caller for raw JSON-RPC calls. For Candid-RPC convenience methods, the canister doubles the max response size and retries until the response size is sufficient, starting with a reasonable default for each RPC method. In contrast, the JSON-RPC canister only ever makes one request, deferring the retry logic to the caller. It’s worth noting that the caller essentially pays for each outcall as though they are sending these requests from their own canister.
+
+The EVM RPC canister retries the call if:
+
+- There are enough cycles left that have been sent by the caller.
+
+- The call fails due to `maxResponseBytes` being set too low. Each RPC method has a built-in default `maxResponseBytes` setting that can be overridden.
+
+Additionally, the `RpcConfig` parameter supports an optional `responseSizeEstimate` which can be fine-tuned to reduce the cost of the RPC requests.
+
+## Next steps
+
+[View some sample projects using the EVM RPC canister](samples.mdx).

@@ -98,7 +98,7 @@ npm install
 
 ### Generating Candid declarations
 
-For this example, you'll use an example project that takes a variable size input and generates a random maze using that size. For example, if `6` is entered, a 6x6 maze will be generated. Recall  that Motoko projects have the ability to autogenerate the project's Candid files. Let's start with generating those Candid files with the command:
+For this example, you'll use an example project that takes a variable size input and generates a random maze using that size. For example, if `6` is entered, a 6x6 maze will be generated. Recall that Motoko projects have the ability to autogenerate the project's Candid files. Let's start with generating those Candid files with the command:
 
 ```bash
 dfx generate
@@ -128,9 +128,9 @@ service : {
 }
 ```
 
-Recall that this Candid interface specification defines a service interface with a single method. The single method, `generate` accepts a single argument of type `Nat` and returns type `Text`. This is because you will enter a number (`Nat`) to generate the maze, which will then be displayed using emoji characters displayed using type `Text`. Recall that unless a call is defined as a query, all calls are treated as an update call by default.
+Recall that this Candid interface specification defines a service interface with a single method. The single method, `generate` accepts a single argument of type `Nat` and returns type `Text`. This is because you will enter a number (`Nat`) to generate the maze, which will then be displayed using emoji characters of type `Text`. Recall that unless a call is defined as a query, all calls are treated as an update call by default.
 
-In JavaScript, type `Text` maps to type `String`. You can see a full mapping list of Candid types and their JavaScript equivalents in the [Candid types reference.](/docs/current/references/candid-ref).
+In JavaScript, type `Text` maps to type `String`. You can see a full mapping list of Candid types and their JavaScript equivalents in the [Candid types reference](/docs/current/references/candid-ref).
 
 Next, let's look at the `src/declarations/random_maze/random_maze.did.d.ts`:
 

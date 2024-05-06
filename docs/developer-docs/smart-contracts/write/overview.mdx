@@ -42,7 +42,7 @@ Several languages are supported, such as:
   Motoko is production ready and was specifically designed to onboard developers onto ICP and leverage the actor-based programming model of ICP.
   It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
   Examples of production smart contracts that use Motoko: [Sonic DEX](https://github.com/sonicdex/sonic-v1), [ICDex](https://github.com/iclighthouse/ICDex), [Cycles manager](https://github.com/CycleOperators/cycles-manager).
-  [Learn more about using Motoko](/docs/current/developer-docs/backend/motoko/).
+  [Learn more about using Motoko](/docs/current/motoko/main/getting-started/motoko-introduction).
 
 - **TypeScript (beta)**: supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle.
   Currently Azle is in beta, but already allows writing smart contracts that run on ICP.
@@ -90,10 +90,17 @@ It is better to start with the simplest possible architecture and iteratively im
 
 ### Single canister architecture
 This is the simplest possible architecture and the recommended starting point for most developers.
-A single <GlossaryTooltip>canister</GlossaryTooltip> can host the entire application stack including its web assets, core logic, and data.
-Note that by default, `dfx` generates a dual canister project where one canister is the backend canister and the other canister is the frontend canister that stores web assets.
-Since the frontend canister is read-only and all state and logic is in the backend canister, this dual canister architecture is effectively the same as the single canister architecture.
+A single <GlossaryTooltip>canister</GlossaryTooltip> can host the entire application stack including its web assets, core logic, and data. To write a single canister that hosts frontend assets and backend core logic, you will need to use a library for the assets storage API, such as the `ic-certified-assets` library for Rust canisters. A few examples of single canister projects include:
+
+- [HTTP greet example](https://github.com/krpeacock/server/tree/main/examples/http_greet).
+
+- [Internet Identity integration example](https://github.com/dfinity/internet-identity/tree/main/demos/using-dev-build).
+
 Even though this architecture is simple, it can scale to thousands of users and gigabytes of data.
+
+:::info
+Note that by default, `dfx` generates a dual canister project where one canister is the backend canister and the other canister is the frontend canister that stores web assets. This is because having a dedicated canister for the frontend allows any language to be used for the backend canister without needing to use a library for the assets storage API.
+:::
 
 ### Canister per subnet architecture
 ICP scales horizontally via <GlossaryTooltip>subnets</GlossaryTooltip>, so smart contracts can also scale by utilizing more subnets.
