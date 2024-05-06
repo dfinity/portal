@@ -4,80 +4,9 @@ keywords: [intermediate, governance, concept, nns]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Neuron and proposal details
+# Advanced
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
-
-## Overview
-
-Only [neurons](/docs/current/concepts/governance) with at least 10 ICP and 6 months of dissolve delay can submit proposals to the NNS. To learn more on how to submit a proposal, refer to the [how to create an NNS motion proposal](https://wiki.internetcomputer.org/wiki/How-To:_Create_an_NNS_motion_proposal).
-
-## Neurons
-
-Neurons have the following attributes:
-
-* **Identity (uint64)**: The general identity of the neuron object. When a neuron is configured to follow another neuron, this is the value that is used. This is a random 64-bit value selected by NNS governance at neuron creation.
-
-* **Account (bytes)**: The ledger account where the locked ICP balance resides.
-
-* **Controller (principal ID)**: The principal that actually controls the neuron. The principal must identify a public key pair, which acts as a “master key,” such that the corresponding secret key should be kept very secure. The principal might control many neurons.
-
-* **Hot Keys (list of principal ID)**: Keys that can be used to perform actions with limited privileges, such as voting, without exposing the secret key corresponding to the principal (e.g., could be a WebAuthn key).
-
-* **CreatedAt (timestamp)**: When the Neuron was created.
-
-* **AgingSince (timestamp)**: The timestamp corresponding to the time this neuron has started aging. This is either the creation time or the last time at which the neuron has stopped dissolving. This value is meaningless when the neuron is dissolving since a dissolving neuron always has an age of zero.
-
-* **DissolveState**: At any time, at most one of WhenDissolved and DissolveDelay are specified.
-
-* **WhenDissolved (timestamp)**: When the dissolve timer is running, this stores the timestamp in seconds from the Unix epoch, at which point the neuron becomes dissolved. At any time while the neuron is dissolving, the neuron owner may pause dissolving, in which case DissolveDelay will get assigned to WhenDissolved minus the timestamp when the action is taken.
-
-* **DissolveDelay (duration)**: When the dissolve timer is stopped, this stores how much time the dissolve timer will be started with. It can be eight years at most. At any time while in this state, the neuron owner may (re)start dissolving, in which case WhenDissolved will get assigned to the timestamp when the action is taken plus DissolveDelay.
-
-* **Maturity (positive number – percent)**: The maturity of a neuron, which determines its ability to spawn a new neuron and corresponding locked balance of newly minted ICP in expectation equal to this value in percent of the stake of the spawning neuron. When new neurons are created, their maturity is zero. When neurons vote, over time the NNS increases their maturity to reward them.
-
-* **Follow relationships (mapping from topic to list of followers)**: A neuron can be configured to vote automatically by following other neurons on a topic-by-topic basis. For any valid topic, a list of followers can be specified, and the neuron will follow the vote of a majority of the followers on a proposal with a type belonging to that topic. If a null topic is specified, this acts as a catch-all that enables the neuron to follow the vote of followees where a rule has not been specified.
-
-* **Recent votes**: A record of recent votes is maintained. This can provide a guide for those wishing to evaluate whether to follow a neuron or how their followers are voting.
-
-* **NotForProfit (boolean)**: Whether this neuron is “not for profit,” making it dissolvable by voting.
-
-The following attributes can be computed:
-
-* **Age (seconds)** (computed from AgingSince and current time): T  he period that has elapsed since the neuron was created or last stopped dissolving. Conceptually, whenever a neuron starts dissolving, then its age is reset to zero and remains zero while it is dissolving. If a dissolving neuron has been turned off, the current time becomes the effective neuron creation date to calculate the age.
-* **State (NON-DISSOLVING or DISSOLVING or DISSOLVED)** (computed from DissolveState and the current time):
-
-    - Non-Dissolving: In this state, the neuron is non-dissolving with a specific DissolveDelay. It accrues age by the passage of time and it can vote if DissolveDelay is at least six months. The method `start_dissolving` can be called to transfer the neuron to the DISSOLVING state. The method `increase_dissolve_delay` can be used to increase the dissolve delay without affecting the state or the age of the neuron.
-    - Dissolving: In this state, the neuron’s effective dissolve delay decreases with time. While dissolving, the neuron’s age is considered zero. Eventually it will reach the DISSOLVED state. The method `stop_dissolving` can be called to transfer the neuron to the non-dissolving state, and the neuron will start aging again. The method `increase_dissolve_delay` can be used to increase the dissolve delay, but this will not stop the timer or affect the age of the neuron.
-    - Dissolved: In the dissolved state, the neuron’s stake can be disbursed using the disburse method. It cannot vote as its dissolve delay is considered to be zero. If the method `increase_dissolve_delay` is called in this state, the neuron will become non-dissolving with the specified dissolve delay and start aging again. Neuron holders have an incentive not to keep neurons in the dissolved state for a long time: if the holders want to make their tokens liquid, they disburse the neuron’s stake, and if they want to earn voting rewards, they increase the dissolve delay. If these incentives turn out to be insufficient, the NNS may decide to impose further restrictions on dissolved neurons.
-
-### Commands
-The principal that controls a neuron may instruct it to perform some of these popular actions below. [View all possible actions](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/nns/governance/proto/ic_nns_governance/pb/v1/governance.proto?L829).
-
-* **Start dissolving**: The dissolve delay is like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on dissolve mode and counting down. The neuron can be instructed to start “dissolving.” When the neuron is dissolving, its dissolve delay falls over time until it is either stopped or reaches zero. A neuron cannot vote (or earn rewards for voting) when its dissolve delay falls below six months. Once the dissolve delay reaches zero, it stops falling and the controlling principal can instruct the neuron to disburse.
-
-* **Stop dissolving**: A neuron that is dissolving can be instructed to stop, whereupon its dissolve delay stops falling with time.
-
-* **Disburse**: When the dissolve delay of the neuron is 0, its controlling principal can instruct it to disburse the neuron’s stake. Its locked ICP balance is transferred to a specified new ledger account, and the neuron and its own ledger account disappear.
-
-* **Increase dissolve delay**: The dissolve delay of a neuron can be increased up to a maximum of eight years.
-
-* **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity is decreased by the amount that was spawned to the new neuron.
-
-* **Add hot key**: Add a new hot key that can be used to manage the neuron. This provides an alternative to using the principal’s cold key to manage the neuron, which might be onerous and difficult to keep secure, especially if it is used regularly. A hot key might be a WebAuthn key that is maintained inside a user device, such as a smartphone.
-
-* **Remove hot key**: Temove a hot key that has been previously assigned to the neuron.
-
-The following actions can be initiated using the principal or a hot key that has been configured:
-
-* **Vote**: Have the neuron vote to either adopt or reject a proposal with a specified ID.
-* **Follow**: Add a rule that enables the neuron to vote automatically on proposals that belong to a specific topic, by specifying a group of followee neurons whose majority vote is followed. The configuration of such follow rules can be used to:
-    - Distribute control over voting power amongst multiple entities.
-    - Have a neuron vote automatically when its owner lacks time to evaluate newly submitted proposals.
-    - Have a neuron vote automatically when its own lacks the expertise to evaluate newly submitted proposals.
-    - For other purposes.
-
-A follow rule specifies a set of followers. Once a majority of the followers vote to adopt or reject a proposal belonging to the specified topic, the neuron votes the same way. If it becomes impossible for a majority of the followers to adopt (for example, because they are split 50–50 between adopt and reject), then the neuron votes to reject. If a rule is specified where the proposal topic is null, then it becomes a catch-all-follow rule, which will be used to vote automatically on proposals belonging to topics for which no specific rule has been specified. If the list of followers is empty, this effectively removes the following rule.
 
 ## Proposal format
 
@@ -89,33 +18,111 @@ Each proposal submitted to the NNS has the following fields:
 
 * **Proposer**: The ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. The balance needs to be enough to pay the charge on (all) rejection(s). The NNS requires a neuron to have a dissolve delay of ≥ 6 months to vote, and which also applies to submitting proposals.
 
-* **Proposal Type**: The type of the proposal. This infers what topic it belongs to (e.g., #NodeAdmin), the system function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function.
+* **Proposal Type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](TODO).
 
 * **Parameters**: The parameters that will be passed to the system function and invoked if the proposal is adopted, as determined by its type. When a proposal is submitted, the NNS checks these parameters.
 
 The NNS assigns a unique identity to each proposal that it receives.
 
-## Proposal topics
+## Proposal topics & types
 
-Each type of proposal belongs to a specific “proposal topic,” such as “#NodeAdmin” or “#NetworkEconomics,” which determines details about how it will be processed.
+Each proposal is of a _proposal type_, which determines what happens if the proposal is adopted or rejected. Technically this defines which canister method is invoked with which arguments.
+Each type of proposal belongs to a specific _proposal topic_. Topics are used for [following](TODO) and also determine some other details about how the proposal is processed.
+For example, the voting period and the voting reward weight are defined per topic.
 
-* **#NeuronManagement**: A special topic using which a neuron can be managed by the followees for this topic. Votes on this topic are not included in the voting history of the neuron. For proposals on this topic, only the neuron’s followers on the topic that the proposals pertain to are allowed to vote. Because the set of eligible voters for proposals on this topic is restricted, proposals on this topic have a shorter than normal voting period.
-* **#NetworkEconomics**: Proposals that administer network economics; for example, determining what rewards should be paid to node operators.
-* **#Governance**: All proposals that administer governance; for example, motions and the configuration of certain parameters.
-* **#NodeAdmin**: All proposals that administer node machines including but not limited to upgrading or configuring the OS, upgrading or configuring the virtual machine framework, and upgrading or configuring the node replica software.
-* **#ParticipantManagement**: All proposals that administer network participants; for example, granting and revoking DCIDs (data center identities) or NPIDs (node provider identities).
-* **#SubnetManagement**: All proposals that administer network subnets; for example, creating new subnets, adding and removing subnet nodes, and splitting subnets.
-* **#NetworkCanisterManagement**: Installing and upgrading “system” [[NNS Canisters|canisters]] that belong to the network; for example, upgrading the voting rules in the NNS DAO itself.
-* **#NodeProviderRewards**: Topic for proposals to reward node providers.
+We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
 
-## Proposal types
+### Topic NetworkCanisterManagement
+Installing and upgrading _system canisters_ that belong to the network.
+This includes the NNS DAO canisters, such as the governance and root canister, the ICP ledger canister with archive and index,
+other canister on the system subnets such as Internet Identity (II),
+the ckBTC, ckETH, and ckERC20 canisters,
+and the Wasm version of the SNS canisers (governance, root, ledger, swap). // TODO: link to SNS
 
-Each proposal is an instance of a specific “proposal type”, which determines what information it contains. For each type of proposal, the NNS maintains a corresponding system function, which it invokes whenever a proposal of that type is adopted. When a proposal is adopted by the NNS, it invokes the corresponding system function by drawing information from the proposal’s content to fill the parameters.
+* NnsCanisterUpgrade: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
+* NnsCanisterInstall: A proposal to add a new canister to be installed and executed in the NNS subnetwork. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
+* NnsRootUpgrade: A proposal to upgrade the root canister in the NNS subnetwork. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module.
+* HardResetNnsRootToVersion: Uninstall and Install Root with the WASM provided in the function.  If InitArgs are provided They will be passed to the canister_init function of the WASM provided. This function is meant as a Break Glass mechanism for when an open call context in the Root canister is preventing root or another canister from upgrading.
+* StopOrStartNnsCanister: Stop or start an NNS canister. Usually this is done as part of a canister upgrade, but this proposal offers the flexibility to just start or stop a canister if needed.
 
-* **ManageNeuron (#NeuronManagement, Restricted Voting)**: This type of proposal calls a major function on a specified target neuron. Only the followers of the target neuron may vote on these proposals.
+The following are specific for SNS canisters.
+* AddSnsWasm: Add a new SNS canister WASM to SNS-W. All SNS DAOs can then upgrade to new version along the upgrade path defined in SNS-W. //TODO: (link to SNS page).
+* InsertSnsWasmUpgradePathEntries: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
+The following proposal is specific for the bitcoin canister:
+* BitcoinSetConfig:
 
-* **ManageNetworkEconomics (#NetworkEconomics)**: This is a single proposal type that can update one or several economic parameters:
+**How to verify these proposals**
+If you are looking to verify system canister upgrade proposals, apart from regularly checking open proposals, you might want to consider
+the following information.
+* For NNS core canister updates, ...
+    https://dfinity.slack.com/archives/C039M7YS6F6/p1714984758970069
+    Relevant repositories
+    How to verify code corresponds to git version
+* For updates to the ledger suite, which includes the ICP ledger but also all ICRC ledger (used for ckBTC, ckETC, ckERC20), ...
+    https://dfinity.slack.com/archives/C01AVALTNSH/p1714984964794409
+    Relevant repositories
+    How to verify code corresponds to git version
+* For updates to the II canister, you can find the code in [this repository](https://github.com/dfinity/internet-identity).
+Each proposal points to the relevant commit that was used.
+You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit in the proposal
+itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486))
+and in the []Github release pages](https://github.com/dfinity/internet-identity/releases).
 
+
+### Topic IcOsVersionElection
+For upgrading the ICP protocol, the NNS DAO can first elect new IC OS versions (the software that is run by the different nodes) and in a second step selected nodes can then be upgraded to the previously elected versions.
+This proposal type is for the first part, i.e., to elect new versions.
+
+The topic contains the following types.
+* ReviseElectedGuestosVersions: A proposal to change the set of elected GuestOS versions. The version to elect (identified by the hash of the installation image) is added to the registry. Besides creating a record for that version, the proposal also appends that version to the list of elected versions that can be installed on nodes of a subnet. Only elected GuestOS versions can be deployed.
+* ReviseElectedHostosVersions: A proposal to change the set of currently elected HostOS versions, by electing a new version, and/or un-electing some priorly elected versions. HostOS versions are identified by the hash of the installation image. The version to elect is added to the Registry, and the versions to unelect are removed from the Registry, ensuring that HostOS cannot upgrade to these versions anymore.
+*// TODO: is this deprecated? BlessReplicaVersion: A proposal to bless a new version to which the replicas can be upgraded. The proposal registers a replica version (identified by the hash of the installation image) in the registry. Besides creating a record for that version, the proposal also appends that version to the list of “blessed versions” that can be installed on a subnet. By itself, this proposal does not affect any upgrade.
+*// TODO: is this deprecated? RetireReplicaVersion: A proposal to retire previously elected and unused replica versions. The specified versions are removed from the registry and the "blessed versions" record. This ensures that the replica cannot upgrade to these versions anymore.
+
+**How to verify these proposals**
+If you are looking to verify IC OS Version Election proposals, apart from regularly checking open proposals,
+you might want to consider the following information.
+* For each such proposal that the DFINITY foundation submits, there is a post on the forum
+(see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)).
+You can find the relevant posts by following the category is `Governance` and the additional tags `replica` and `release`.
+* The relevant code is in [this repository](https://github.com/dfinity/ic ).
+* To verify that the code in the proposal is built from the given git-commit in the proposal, you can follow the
+instructions "IC-OS Verification" that can be found in the proposal itself or in the related forum post
+(for example in [this proposal](https://dashboard.internetcomputer.org/proposal/129627) or [the related forum post](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247#ic-os-verification-9).
+* DFINITY aims at a weekly release cycle - so you can expect roughly one proposal each week plus any additional feature builds.
+
+### Topic IcOsVersionDeployment
+This proposal is used to upgrade selected nodes to IC OS Versions that have previously been approved ("elected") by the NNS DAO with a proposal of topic IcOsVersionElection.
+
+The topic contains the following proposal types.
+* DeployHostosToSomeNodes: Deploy a HostOS version to a given set of nodes. The proposal changes the HostOS version that is used on the specified nodes.
+* DeployGuestosToAllSubnetNodes: Deploy a GuestOS version to a given subnet. The proposal changes the GuestOS version that is used on the specified subnet. The version must be contained in the list of elected GuestOS versions. The upgrade is completed when the subnet creates the next regular CUP.
+* DeployGuestosToSomeApiBoundaryNodes: A proposal to update the version of a set of API Boundary Nodes.
+* DeployGuestosToAllUnassignedNodes: A proposal to update the version of all unassigned nodes.
+
+### Topic Governance
+The are less technical proposal that administer governance.
+In contrast to other topics, this topic has reward weight 20. This means that participation in this topic is rewarded more.
+The topic includes the following proposal types.
+* Motion: Motion proposals are the only proposals that don't have a direct on-chain effect. Rather they can be used as polls that should guide the future strategy of the ICP ecosystem.
+* UninstallCode: Uninstall code of a canister.
+* SetDefaultFollowees set_default_followees
+* RegisterKnownNeuron: This proposal registers a known neuron, also called named neurons. This gives a given neuron a name and a short description and enusres that he neuron will be shown on the NNS dapp when people select who to follow for voting decisions.
+
+### Topic SnsAndCommunityFund
+This topic includes proposals that concern [SNS DAO launches](./sns/launching/) and the [Neurons' Fund](.neurons-fund.mdx) (formerly called Community Fund).
+In contrast to other topics, this topic has reward weight 20. This means that participation in this topic is rewarded more.
+The topic currently only includes one proposal type that is still in use.
+* CreateServiceNervousSystem: This proposal launches a new SNS DAO and specifies all settings, including the initial token distribution, the conditions for the initial decentralization swap, the initial SNS DAO parameters, as well as the Neurons' Fund contribution.
+
+
+### Topic NetworkEconomics
+This topic includes proposals that administer network economics; for example, determining what rewards should be paid to node operators.
+* NetworkEconomics: Network economics contains the parameters for several operations related to the economy of the network and
+settings of the NNS DAO that can be changed by a proposal of this type.
+A single proposal can update one or several economic parameters -- default values (0) are considered unchanged.
+Thus, a valid proposal only needs to set the parameters that it wishes to change. (Note that this also means that it is not possible to set any of the values to 0.)
+The following parameters can be changed.
     * **Reject cost**: The amount of ICP the proposer of a rejected proposal will be charged to prevent the spamming of frivolous proposals.
 
     * **Minimum neuron stake**: Set the minimum number of ICP required for the creation of a neuron. The same limit must also be respected when increasing the dissolve delay or changing the neuron state from dissolving to aging.
@@ -131,76 +138,82 @@ Each proposal is an instance of a specific “proposal type”, which determines
     * **Transaction fee**: The transaction fee that must be paid for each ledger transaction.
 
     * **Maximum number of proposals to keep per topic**: The maximum number of proposals to keep, per topic. When the total number of proposals for a given topic is greater than this number, the oldest proposals that have reached a “final” state may be deleted to save space.
+    * **Neurons' Fund Economics**: This includes all parameters related to the [Neurons' Fund](./neurons-fund.mdx).
+    `max_theoretical_neurons_fund_participation_amount_xdr`, which is a theoretical limit which should be smaller
+    than any realistic amount of maturity that practically needs to be reserved from the Neurons' Fund for a given SNS swap.
+    `neurons_fund_matched_funding_curve_coefficients` defines a thresholds specifying the shape of the matching function used by the Neurons' Fund to determine how much to contribute for a given direct participation amount.
+    `minimum_icp_xdr_rate` and `maximum_icp_xdr_rate` are respectively the minimum and maximum value of the ICP/XDR conversion rate
+    used by the Neurons' Fund for converting XDR values into ICP.
+* ClearProvisionalWhitelist: Clears the provisional whitelist, which allows the listed principals to create canisters with cycles. The mechanism is only needed for bootstrap and testing and must be deactivated afterward.
+* UpdateNodeRewardsTable:  Update the node rewards table.
 
-* **Motion (#Governance)**: A motion is a text that can be adopted or rejected. No code is executed when a motion is adopted. An adopted motion should guide the future strategy of the Internet Computer ecosystem.
+### Topic SubnetManagement
+All proposals that administer network subnets; for example, creating new subnets, adding and removing subnet nodes, and splitting subnets.
+* CreateSubnet: Combine a specified set of nodes, typically drawn from data centers and operators in such a way as to guarantee their independence, into a new decentralized subnet. The execution of this external update first initiates a new instance of the distributed key generation protocol. The transcript of that protocol is written to a new subnet record in the registry, together with initial configuration information for the subnet, from where the nodes comprising the subnet pick it up.
+* AddNodeToSubnet: Add a new node to a subnet. The node cannot be currently assigned to a subnet. The execution of this proposal changes an existing subnet record to add a node. From the perspective of the NNS, this update is a simple update of the subnet record in the registry.
+* RecoverSubnet: Update a subnet’s recovery CUP (used to recover subnets that have stalled). Nodes that find a recovery CUP for their subnet will load that CUP from the registry and restart the replica from that CUP.
+* RemoveNodesFromSubnet: Remove a node from a subnet. It then becomes available for reassignment. The execution of this proposal changes an existing subnet record to remove a node. From the perspective of the NNS, this update is a simple update of the subnet record in the registry.
+* ChangeSubnetMembership: Change the subnet node membership. In a way, this function combines the separate functions for adding and removing nodes from the subnet record, but adds the property of atomic node replacement (node swap) on top. The nodes that are being added to the subnet must be currently unassigned. The nodes that are being removed from the subnet must be currently assigned to the subnet.
+* UpdateConfigOfSubnet:  Update a subnet's configuration. This proposal updates the subnet record in the registry, with the changes being picked up by the nodes on the subnet when they reference the respective registry version. Subnet configuration comprises protocol parameters that must be consistent across the subnet (e.g. message sizes).
+* SetAuthorizedSubnetworks: Informs the cycles minting canister that a certain principal is authorized to use certain subnetworks (from a list). Can also be used to set the “default” list of subnetworks that principals without special authorization are allowed to use.
+* SetFirewallConfig: Change the Firewall configuration in the registry (configures which boundary nodes subnet blockchain replicas will communicate with).
+* AddFirewallRules: Add firewall rules in the registry
+* RemoveFirewallRules: Remove firewall rules in the registry
+* UpdateFirewallRules: Update firewall rules in the registry
+* RerouteCanisterRanges: Update the routing table in the registry.
+* PrepareCanisterMigration: Insert or update `canister_migrations` entries. This is used during a subnet migration of canisters (e.g., when a subnet needs to be split).
+* CompleteCanisterMigration: Remove `canister_migrations` entries. This is used during a subnet migration of canisters (e.g., when a subnet needs to be split).
+* UpdateSubnetType: Updates the available subnet types in the cycles minting canister.
+* ChangeSubnetTypeAssignment: Changes the assignment of subnets to subnet types in the cycles minting canister. Currently available are..
+* UpdateSnsWasmSnsSubnetIds: Update the list of SNS subnet IDs that SNS WASM will deploy SNS instances to.
 
-* **ApproveGenesisKYC (#KYC)**: When new neurons are created at Genesis, they have GenesisKYC=false. This restricts what actions they can perform. Specifically, they cannot spawn new neurons, and once their dissolve delays are zero, they cannot be disbursed and their balances unlocked to new accounts. This proposal sets GenesisKYC=true for batches of principals.
+### Topic ParticipantManagement
+All proposals that administer network participants; for example, granting and revoking DCIDs (data center identities) or NPIDs (node provider identities).
+* AddOrRemoveDataCenters: Add or remove Data Center records.
+* AddOrRemoveNodeProvider: Assign (or revoke) an identity to a node provider, associating key information regarding the legal person associated that should provide a way to uniquely identify it.
+
+### Topic NodeAdmin
+All proposals that administer node machines including but not limited to upgrading or configuring the OS, upgrading or configuring the virtual machine framework, and upgrading or configuring the node replica software.
+
+* AssignNoid: Assign an identity to a node operator, such as a funding partner, associating key information regarding its ownership, the jurisdiction in which it is located, and other information. The node operator is stored as a record in the registry. It contains the remaining node allowance for that node operator, that is the number of nodes the node operator can still add to the IC. When an additional node is added by the node operator, the remaining allowance is decreased.
+* UpdateNodeOperatorConfig: Change a node operator’s allowance in the registry.
+* RemoveNodeOperators: Remove Node Operator from the registry.
+* RemoveNodes: Remove unassigned nodes from the registry.
+* UpdateUnassignedNodesConfig
+* UpdateElectedHostosVersions
+* UpdateNodesHostosVersion
+* UpdateSshReadonlyAccessForAllUnassignedNodes
+
+
+### Topic KYC
+* ApproveGenesisKYC: Approve Genesis KYC for a given list of principals.
+
+When new neurons are created at Genesis, they have GenesisKYC=false. This restricts what actions they can perform. Specifically, they cannot spawn new neurons, and once their dissolve delays are zero, they cannot be disbursed and their balances unlocked to new accounts. This proposal sets GenesisKYC=true for batches of principals.
 (Special note: The Genesis event disburses all ICP in the form of neurons, whose principals must be KYCed. Consequently, all neurons created after Genesis have GenesisKYC=true set automatically since they must have been derived from balances that have already been KYCed.)
 
-* **AddOrRemoveNodeProvider (#ParticipantManagement)**: Assign (or revoke) an identity to a node provider, associating key information regarding the legal person associated that should provide a way to uniquely identify it.
 
-* **RewardNodeProvider (#NodeProviderRewards)**: Propose to reward a Gen-1 node provider an amount of ICP as compensation for providing Gen-1 nodes to ICP.
 
-* **SetDefaultFollowees (#Governance)**: Specify the list of followers that a freshly created neuron should have.
+### Topic NeuronManagement (Restricted Voting)
+A special topic using which a neuron can be managed by the followees for this topic.
+Votes on this topic are not included in the voting history of the neuron.
+For proposals on this topic, only the neuron’s followers on the topic that the proposals pertain to are allowed to vote.
+Because the set of eligible voters for proposals on this topic is restricted, proposals on this topic have a shorter than normal voting period.
+The topic only includes one proposal type.
+* ManageNeuron: The proposal calls a major function on a specified target neuron. Only the followers of the target neuron may vote on these proposals.
 
-The following is a list of proposal types that call other NNS canisters:
 
-* **CreateSubnet (#SubnetManagement)**: Combine a specified set of nodes, typically drawn from data centers and operators in such a way as to guarantee their independence, into a new decentralized subnet. The execution of this external update first initiates a new instance of the distributed key generation protocol. The transcript of that protocol is written to a new subnet record in the registry, together with initial configuration information for the subnet, from where the nodes comprising the subnet pick it up.
 
-* **AddNodeToSubnet (#SubnetManagement)**: Add a new node to a subnet. The node cannot be currently assigned to a subnet. The execution of this proposal changes an existing subnet record to add a node. From the perspective of the NNS, this update is a simple update of the subnet record in the registry.
+### Unused / deprecated topics
+* Topic NodeProviderRewards => not used
+    Topic for proposals to reward node providers.
+* Topic ExchangeRate=> not used
+    NnsFunction::IcpXdrConversionRate
+* Topic SnsDecentralizationSale=> deprecated
 
-* **InstallNetworkCanister (#NetworkCanisterManagement)**: A proposal to add a new canister to be installed and executed in the NNS subnetwork. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that be installed.
 
-* **UpgradeNetworkCanister (#NetworkCanisterManagement)**: A proposal to upgrade an existing canister in the NNS subnetwork. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
+## Proposal types
 
-* **BlessReplicaVersion (#NodeAdmin)**: A proposal to bless a new version to which the replicas can be upgraded. The proposal registers a replica version (identified by the hash of the installation image) in the registry. Besides creating a record for that version, the proposal also appends that version to the list of “blessed versions” that can be installed on a subnet. By itself, this proposal does not affect any upgrade. (In the future, there will only be one blessed version of the replica software at any given time.)
 
-* **RecoverSubnet (#SubnetManagement)**: Update a subnet’s recovery CUP (used to recover subnets that have stalled). Nodes that find a recovery CUP for their subnet will load that CUP from the registry and restart the replica from that CUP.
 
-* **UpdateSubnetConfig (#SubnetManagement)**: Update a subnet’s configuration. This proposal updates the subnet record in the registry, with the changes being picked up by the nodes on the subnet when they reference the respective registry version. Subnet configuration comprises protocol parameters that must be consistent across the subnet (e.g., message sizes).
+Each proposal is an instance of a specific “proposal type”, which determines what information it contains. For each type of proposal, the NNS maintains a corresponding system function, which it invokes whenever a proposal of that type is adopted. When a proposal is adopted by the NNS, it invokes the corresponding system function by drawing information from the proposal’s content to fill the parameters.
 
-* **AssignNPID (#ParticipantManagement)**: Assign an identity to a node operator associating key information regarding its ownership, the jurisdiction in which it is located, and other information. The node operator is stored as a record in the registry. It contains the remaining node allowance for that node operator, that is the number of nodes the node operator can still add to ICP. When an additional node is added by the node operator, the remaining allowance is decreased.
-
-* **RootUpgrade (#NetworkCanisterManagement)**: A proposal to upgrade the root canister in the NNS subnetwork. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module as well as the authorization settings.
-
-* **SetICPSDR (#ExchangeRate)**: Instruct the NNS about the market value of 1 ICP as measured by an IMF SDR. This setting affects cycles pricing (as the value of cycles shall be constant concerning IMF SDRs).
-
-* **UpgradeSubnetToReplicaVersion (#SubnetManagement)**: Update the replica version running on a given subnet. The proposal changes the replica version that is used on the specified subnet. The version must be contained in the list of blessed replica versions. The upgrade is performed when the subnet creates the next regular CUP.
-
-* **ClearProvisionalWhitelist (#NetworkEconomics)**: Clears the provisional whitelist, which allows the listed principals to create canisters with cycles. The mechanism is only needed for bootstrap and testing and must be deactivated afterward.
-
-* **RemoveNodeFromSubnet (#SubnetManagement)**: Remove a node from a subnet. It then becomes available for reassignment. The execution of this proposal changes an existing subnet record to remove a node. From the perspective of the NNS, this update is a simple update of the subnet record in the registry.
-
-* **SetAuthorizedSubnetworks (#Governance)**: Informs the cycles minting canister that a certain principal is authorized to use certain subnetworks (from a list). Can also be used to set the “default” list of subnetworks that principals without special authorization are allowed to use.
-
-* **SetFirewallConfig (#SubnetManagement)**: Change the Firewall configuration in the registry (configures which boundary nodes subnet blockchain replicas will communicate with).
-
-* **UpdateNodeOperatorConfig (#NodeAdmin)**: Change a node operator’s allowance in the registry.
-
-* **StopOrStartNNSCanister (#NetworkCanisterManagement)**: Stop or start an NNS canister.
-
-## ICP tokens
-ICP are native utility tokens that play three key roles in the network:
-
-* **Facilitating network governance**: ICP tokens can be locked to create neurons that participate in network governance by voting, through which they can earn economic rewards.
-
-* **Production of cycles for compute**: ICP provides a source store of value that can be converted into “cycles,” which power computation in the role of fuel that is burned when it is used. The NNS converts ICP to cycles at a variable rate, so chosen to ensure users of the network can always create new cycles at approximately constant cost concerning IMF SDR, such that the cost of acquiring fuel is predictable.
-
-* **Rewarding participants**: The network provides rewards to incentivize those playing important roles that enable the network to function, including a) the provision of “voting rewards” to those participating in governance, and b) the provision of “node provider rewards” to those operating the node machines that are hosting the network.
-
-## Ledger
-The ICP ledger is hosted within the NNS and records all balances of ICP in the manner similar to a spreadsheet. Each row is called an “account,” which has two fields (i.e., there are two “columns”):
-
-* **Account identifier (bytes)**: A unique value that is derived from the identity of the “principal” that “controls” the account. Currently, the principal must either be (i) the owner of a public key pair, or (ii) a canister smart contract that is part of the NNS. Account identifiers are derived by hashing the concatenation of a domain separator, the principal ID, and the subaccount (or zeros if no subaccount is given).
-
-* **Balance**: The quantity of ICP assigned to the account.
-
-When the principal is a public key or Canister, they can apply the following operation to an account:
-
-* **Send**: Transfer a portion of the ICP balance to another account. If all the ICP is sent to another account, then the transfering account ceases to exist (i.e., is deleted from the ledger).
-
-Operations that require interaction between the ledger and the governance system (Neurons):
-
-* **Create neuron**: When the principal is a public key holder, they may lock a portion of their balance inside a new neuron. Technically, creating the neuron is done in two stages. First, transfer the ICP to be staked to an account of the governance canister (which corresponds to a new neuron — the details of the association are omitted here). Then notify the governance canister of the incoming transfer which updates its internal neuron bookkeeping. To move these ICP to a different account, such as back to the original account, where they can once again be controlled like a normal balance, the associated neuron must be fully dissolved and disbursed (destroyed).
-
-* **Refresh stake**: The stake of a neuron may be increased by transferring to its address/account in the ledger and notifying the governance canister of the incoming transfer. Refreshing the stake will change the maturity and age of the neuron prorated. For example, if the stake is doubled, the maturity and age will be halved, so spawning will yield the same amount and the age bonus will be the same as before (in absolute terms).
