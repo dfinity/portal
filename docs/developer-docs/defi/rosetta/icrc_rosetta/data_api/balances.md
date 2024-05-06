@@ -1,9 +1,22 @@
-# How to fetch account balances
-This endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard. 
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8082`.
+---
+keywords: [intermediate, rosetta, tutorial]
+---
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). For this example an arbitrary AccountIdentifier with the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` and the default subaccount `0000000000000000000000000000000000000000000000000000000000000000` was used. 
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
+# Fetching account balances
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+The `account_balance` endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard. 
+
+### Prerequisites
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8082`.
+
+- Make sure to use the correct [`NetworkIdentifier`](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). For this example an arbitrary `AccountIdentifier` with the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` and the default subaccount `0000000000000000000000000000000000000000000000000000000000000000` was used. 
+
+## Example
 ```bash
 curl --location '0.0.0.0:8082/account/balance'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
@@ -19,7 +32,7 @@ curl --location '0.0.0.0:8082/account/balance'  --header 'Content-Type: applicat
 }'
 ```
 
-The response will give you the balance of the AccountIdentifier at the most recent block.
+The response will give you the balance of the `AccountIdentifier` at the most recent block.
 
 ```bash
 {

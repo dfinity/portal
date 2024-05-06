@@ -15,9 +15,12 @@ The request type that is used for making direct transfers is `TRANSFER`. In the 
 :::info
 You do not have to specify the `FEE` operation, although the `FEE` of the ICRC-1 ledger will be deducted automatically by Rosetta.
 The call may include a `FEE` operation to not overlook unexpected debit operations. 
+### Prerequisites 
+- Make sure you are familiar with the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) for Rosetta.  
+## Transfer tokens
 
-The minimum set of operations that is sent to the `construction/payloads` endpoint is the following. 
-In this case we are sending 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe` to principal `xmiu5-jqaaa-aaaag-qbz7q-cai`.
+An example of the minimum set of operations that is sent to the `construction/payloads` endpoint can be found below.
+In this example, you are sending 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe` to principal `xmiu5-jqaaa-aaaag-qbz7q-cai`.
 
 ```bash
 curl --location '0.0.0.0:8082/construction/payloads'  --header 'Content-Type: application/json' --data
@@ -77,8 +80,7 @@ curl --location '0.0.0.0:8082/construction/payloads'  --header 'Content-Type: ap
 
 ```
 
-An example implementation of a transfer may look like the following. 
-Example call.
+An example implementation of a transfer may resemble the following:
 ```bash
 python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8082 -s ckBTC -d 8
 ```

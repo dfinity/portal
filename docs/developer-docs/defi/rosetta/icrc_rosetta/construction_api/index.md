@@ -5,18 +5,19 @@ keywords: [intermediate, rosetta, tutorial]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Construction-API implementation
-This section will give you an overview of how you can make transactions via Rosetta using the Construction-API
-## Supported transactions
-The Construction-API allows for offline signing of transactions and then posting them on the IC at a later point in time. It is recommended to first go through [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) of the Construction-API to gain an understanding of how it works, what endpoints to call with what parameters and where the user has to take action upon receiving certain responses. 
 
-Currently, the Construction-API of Rosetta supports only one category of transactions which is the transfer of assets. According to the ICRC-1 and ICRC-2 standards this can be done in the following ways:
-- [Direct Transfers](/docs/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer.mdx): This is the most basic functionality. In accordance with the ICRC-1 standard you can use Rosetta to transfer ICP. 
-- [Approve Spender](/docs/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve.mdx): You can approve a spender to spend your tokens for you. This feature adheres to the ICRC-2 standard. 
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
-## Example Construction-API Rosetta-Client implementation 
-This guide will show sample codes of various parts of a Rosetta client implementation throughout the tutorials. 
-It is recommended to go through each section as the relevant parts of the Rosetta client will be showcased there. 
-For the sake of completion we list the entire Rosetta-Client sample implementation for all functionalities of the Construction-API written in python here. 
+## Overview 
+
+The Construction-API allows for offline signing of transactions and then posting them on ICP at a later point in time. It is recommended to first go through [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) of the Construction-API to gain an understanding of how it works, what endpoints to call with what parameters, and where the user has to take action upon receiving certain responses. 
+
+Currently, the Construction-API of Rosetta supports only one category of transactions, which is the transfer of assets. According to the ICRC-1 and ICRC-2 standards this can be done in the following ways:
+- [Direct transfers](/docs/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer.mdx): This is the most basic functionality. In accordance with the ICRC-1 standard you can use Rosetta to transfer ICP. 
+- [Approve spender](/docs/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve.mdx): You can approve a spender to spend your tokens for you. This feature adheres to the ICRC-2 standard. 
+
+## Example implementation 
+For the sake of completion, the entire Rosetta-Client sample implementation in this example lists all functionalities of the Construction-API. 
 
 You may use it as a starting point to bootstrap your client implementation in your language of choice. 
 
