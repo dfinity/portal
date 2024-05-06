@@ -4407,5 +4407,94 @@
     "github": "https://github.com/ORIGYN-SA/CanDB",
     "display": "Normal",
     "logo": "/img/showcase/candb_logo.png"
+  },
+  {
+    "id": "personal-dao",
+    "name": "Personal DAO",
+    "oneLiner": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
+    "tags": [
+      "DAO"
+    ],
+    "description": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
+    "usesInternetIdentity": true,
+    "website": "https://fkkq7-siaaa-aaaap-qaaya-cai.ic0.app/",
+    "twitter": "https://x.com/Personal_DAO",
+    "discord": "https://discord.gg/r85DtR2TjG",
+    "display": "Normal",
+    "logo": "/img/showcase/personal_dao_logo.png"
+  },
+  {
+    "id": "icp-canister-bridge",
+    "name": "ICP Canister Bridge",
+    "oneLiner": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
+    "tags": [
+      "Bitcoin",
+      "Ethereum",
+      "Tools / Infrastructure"
+    ],
+    "description": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
+    "usesInternetIdentity": false,
+    "website": "https://vue2j-giaaa-aaaam-ab4bq-cai.icp0.io",
+    "github": "https://github.com/Bitcoin-AI/icp-canister-bridge",
+    "display": "Normal",
+    "logo": "/img/showcase/icp_canister_bridge_logo.png"
+  },
+  {
+    "id": "communities-ooo",
+    "name": "Communities.ooo",
+    "oneLiner": "A tool that creates online communities as NFTs owned by the creators.",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "description": "A tool that creates online communities as NFTs owned by the creators",
+    "usesInternetIdentity": false,
+    "website": "https://www.communities.ooo/",
+    "github": "https://github.com/LiveDuo/communities",
+    "youtube": "https://www.youtube.com/watch?v=GqROYKOaFv4",
+    "display": "Normal",
+    "logo": "/img/showcase/communities_ooo_logo.png"
+  },
+  {
+    "id": "ic-footprint",
+    "name": "IC Footprint",
+    "oneLiner": "A blockchain ESG platform that tracks ICP environmental metrics and provides tooling to reduce the environmental impact of the network.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A blockchain ESG platform that tracks ICP environmental metrics and provides tooling to reduce the environmental impact of the network.",
+    "usesInternetIdentity": true,
+    "website": "https://owqnd-biaaa-aaaak-qidaq-cai.icp0.io/",
+    "twitter": "https://twitter.com/icfootprint",
+    "display": "Normal",
+    "logo": "/img/showcase/ic_footprint_logo.png"
+  },
+  {
+    "id": "galactic-bridge",
+    "name": "Galactic Bridge",
+    "oneLiner": "A cross-chain bridge that allows users to move between Solana and ICP.",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "A cross-chain bridge that allows users to move between Solana and ICP.",
+    "usesInternetIdentity": false,
+    "website": "https://galactic-bridge-tzbjl.ondigitalocean.app/",
+    "github": "https://github.com/weichain/galactic-bridge-icp",
+    "display": "Normal",
+    "logo": "/img/showcase/gBridge_logo.png"
+  },
+  {
+    "id": "amplify-e2e-platform",
+    "name": "Amplify Platform",
+    "oneLiner": "A platform that enables Twitter (X) accounts to boost post engagement by rewarding interacting users with ICP and select ICRC tokens.",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "A platform that enables Twitter (X) accounts to boost post engagement by rewarding interacting users with ICP and select ICRC tokens.",
+    "usesInternetIdentity": false,
+    "website": "https://amplify-icp.com/",
+    "twitter": "https://twitter.com/Amplify_ICP",
+    "display": "Normal",
+    "logo": "/img/showcase/amplify_logo.png"
   }
 ]
