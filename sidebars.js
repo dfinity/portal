@@ -760,7 +760,16 @@ const sidebars = {
           type: "category",
           label: "Proposals",
           items: [
-            "developer-docs/daos/nns/proposal-requirements",
+	    "developer-docs/daos/nns/proposal-overview",
+	    "developer-docs/daos/nns/proposal-lifecycle",
+	    "developer-docs/daos/nns/proposal-voting",
+	    {
+              type: "category",
+              label: "Advanced",
+              items: [
+              "developer-docs/daos/nns/proposal-advanced",
+            ],
+          },
           ],
         },
         {
