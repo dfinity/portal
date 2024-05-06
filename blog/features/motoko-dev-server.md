@@ -25,7 +25,7 @@ However, this feature is almost nonexistent when developing a decentralized appl
 
 ---
 
-This is where the [Motoko programming language](/docs/current/motoko/main/motoko) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/current/motoko/main/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
+This is where the [Motoko programming language](/docs/current/motoko/main/getting-started/motoko-introduction) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/current/motoko/main/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
 
 Over the past six months, DFINITY has adopted full-stack live reloading in our internal Motoko projects, saving a huge amount of development time and allowing us to quickly try lots of different ideas to improve the end-user experience of our Internet Computer dapps.
 
@@ -63,7 +63,7 @@ Once you’ve installed the tool, run `mo-dev --help` to view usage examples and
 
 ## Candid UI
 
-Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/current/developer-docs/backend/motoko/candid-ui). Here’s a command which will redeploy the canister on file change:
+Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
 
 ```sh
 mo-dev --deploy -y

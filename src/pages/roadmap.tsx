@@ -40,7 +40,7 @@ const RoadmapPage: React.FC = () => {
       description="The DFINITY Foundation is committing R&D resources in various domains of development with the intent of making the Internet Computer blockchain more efficient, faster and easier to use. This roadmap shows the status of many projects across the Internet Computer stack."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
-      <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-roadmap.webp"></ShareMeta>
 
       <main className="w-full overflow-hidden">
         <section className="overflow-hidden bg-infinite text-white">
