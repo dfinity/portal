@@ -713,6 +713,52 @@ const sidebars = {
                 }
               ],
             },
+            {
+              type: "category",
+              label: "ICRC Rosetta Implementation",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/rosetta/icrc_rosetta/index",
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Data-API",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icrc_rosetta/data_api/index",
+                  },
+                  items: [
+                    "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
+                    "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
+                    "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
+                    "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Construction-API",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/index",
+                  },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Asset transfer",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
+                      },
+                      items: [
+                        "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
+                        "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
+                      ],
+                    },
+                  ],
+                }
+              ],
+            },
           ],
         },
         {
