@@ -4394,18 +4394,28 @@
     "logo": "/img/showcase/deland_labs.png",
     "submittableId": "35502016"
   },
-  {
-    "id": "candb",
-    "name": "CanDB",
-    "oneLiner": "Flexible and truly horizontally scalable NoSQL database built for ICP.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Flexible and truly horizontally scalable NoSQL database built for ICP.",
-    "usesInternetIdentity": false,
-    "website": "https://ykgs2-ziaaa-aaaak-qcfya-cai.icp0.io/",
-    "github": "https://github.com/ORIGYN-SA/CanDB",
-    "display": "Normal",
-    "logo": "/img/showcase/candb_logo.png"
-  }
+ {
+  "name": "ICprotector",
+  "description": "The dapp where users can create proposals or vote wether projects are scams, frauds or Rug pulls.\nA ranking system for all Projects on the Internet Computer.",
+  "website": "https://icprotector.io/",
+  "logo": "/img/showcase/icprotector_logo.webp",
+  "screenshots": [
+    "/img/showcase/icprotector_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "icprotector",
+  "oneLiner": "Users can create proposals or vote wether projects are scams",
+  "stats": "followers 1176+",
+  "tags": [
+    "SocialFi",
+    "NFT",
+    "DAO"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/ICProtector/ICProtectorDAO",
+  "twitter": "https://twitter.com/ICPProtector",
+  "youtube": "",
+  "submittableId": ""
+}
 ]
