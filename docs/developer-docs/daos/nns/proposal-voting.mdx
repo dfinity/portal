@@ -8,4 +8,28 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
+
+
+
+
+##Notes
 Link to [voting rewards](./staking-voting-rewards.mdx)
+
+Currently, the most user-friendly way to vote on NNS proposals is via the NNS Frontend dapp: https://nns.ic0.app/. For voting, users would first learn which are the open proposals on the governance canister that they can actually vote on. This information is available, for example on Internet Computer dashboard: https://dashboard.internetcomputer.org/governance or in the NNS frontend dapp.
+
+Neuron following and liquid democracy
+Users may not have the time or knowledge to participate in all voting decisions. Therefore, instead of directly voting on proposals, neuron holders may choose to delegate their vote to other neurons that they trust with certain decisions. This concept of delegating the right to vote to other voters who then effectively vote with more voting power is called liquid democracy.
+
+Concretely, for each proposal topic a neuron can specify a set of other neurons that it would like to follow (so-called followees). In addition, a neuron can specify a set of followees for "all other topics" that are not covered by specific rules. The governance canister keeps track of this relation of follower and followee neurons. It then automatically casts a vote for a follower neuron based on the decision of the followees. In particular, if more than 50% of the followees vote "yes", then a "yes" vote is cast for the follower and if at least 50% of the followees vote "no", then a "no" vote is cast for the follower.
+
+Example. Consider neuron N1 that follows the set of neurons {N2, N3, N4, N5} on all proposal topics. Consider now that a proposal is submitted by another neuron N6. Assume in a first scenario that first N2 votes "No" and then N3 votes "No" on the proposal. In that case, the governance canister will also send a "No" vote for N1 two out of four followees voted "No" (which also means that it is not possible anymore to get more than 50% "Yes" votes). Assume a second scenario where N2 votes "Yes" and then N3 votes "Yes" on the proposal. In that case, no vote is sent yet for N1. However, if either N4 and N5 also send a "Yes" vote, a "Yes" vote is also cast for N1.
+
+This liquid democracy has great advantages. First, it allows even neurons that do not have enough knowledge of a certain topic to nevertheless participate in governance by choosing the neurons that they trust with certain decisions and by delegating their vote to them. In particular, a neuron can choose a different set of followees for different topics. Moreover, this mechanism allows neuron holders to get voting rewards from voting participation even if they do not have time to actively participate in all voting decision.
+
+
+
+Viewing NNS Proposals
+You can see all the NNS proposals on the Internet Computer dashboard: https://dashboard.internetcomputer.org/governance
+
+Discussing NNS Proposals
+Voters can freely discuss proposal anywhere they like. A lot of NNS proposals are discussed on the developer forum: https://forum.dfinity.org/c/roadmap/29.
