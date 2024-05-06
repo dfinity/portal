@@ -18,8 +18,8 @@ Calls may include a `FEE` operation to not overlook unexpected debit operations.
 :::
 ### Prerequisites 
 - Make sure you are familiar with the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) for Rosetta.  
-The minimum set of operations that is sent to the `construction/payloads` endpoint is the following. 
-In this case we are approving the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` to spend up to 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe`.
+An example of the minimum set of operations that is sent to the `construction/payloads` endpoint can be found below.
+In this example, you are approving the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` to spend up to 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe`.
 
 ```bash
 curl --location '0.0.0.0:8082/construction/payloads'  --header 'Content-Type: application/json' --data '{
