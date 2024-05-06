@@ -18,7 +18,7 @@ Each proposal submitted to the NNS has the following fields:
 
 * **Proposer**: The ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. The balance needs to be enough to pay the charge on (all) rejection(s). The NNS requires a neuron to have a dissolve delay of ≥ 6 months to vote, and which also applies to submitting proposals.
 
-* **Proposal Type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](TODO).
+* **Proposal Type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](./proposal-voting).
 
 * **Parameters**: The parameters that will be passed to the system function and invoked if the proposal is adopted, as determined by its type. When a proposal is submitted, the NNS checks these parameters.
 
@@ -49,12 +49,48 @@ The following are specific for SNS canisters.
 * AddSnsWasm: Add a new SNS canister WASM to SNS-W. All SNS DAOs can then upgrade to new version along the upgrade path defined in SNS-W. //TODO: (link to SNS page).
 * InsertSnsWasmUpgradePathEntries: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
 The following proposal is specific for the bitcoin canister:
-* BitcoinSetConfig:
+* BitcoinSetConfig: //TODO: https://dashboard.internetcomputer.org/proposal/129394
 
-**How to verify these proposals**
-If you are looking to verify system canister upgrade proposals, apart from regularly checking open proposals, you might want to consider
-the following information.
-* For NNS core canister updates, ...
+**How to verify NNS core canister upgrades**
+If you are looking to verify NNS core canister upgrades, apart from regularly checking open proposals,
+you might want to consider the following information for proposal submitted by the DFINITY foundation.
+* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the
+  following sub-directories are relevant: `rs/rosetta-api/icp_ledger/src`, `rs/rosetta-api/ledger_core`, `rs/rosetta-api/ledger_canister_core`,
+  `rs/packages/icrc-ledger_types`, `rs/registry/canister`, `rs/nns/governance`, `rs/rosetta-api/ledger_canister/ledger`,
+   `rs/rosetta-api/icp_ledger/archive`, `rs/nns/handlers/root/impl`, `rs/nns/cmc`, `rs/nns/handlers/lifeline`,
+   `rs/nns/gtc`, `rs/nns/identity`, `rs/nns/nns-ui`, `rs/nns/sns-wasm`.
+* NNS core canister upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit
+in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394).
+
+
+**How to verify ledger canister upgrades**
+If you are looking to verify the ledger suite, which includes the ICP ledger but also all ICRC ledger (used for ckBTC, ckETC, ckERC20),
+apart from regularly checking open proposals, you might want to consider the following information for proposal submitted by the DFINITY foundation.
+//TODO
+
+
+**How to verify Internet Identity upgrades**
+If you are looking to verify Internet Identity (II) canister upgrades, apart from regularly checking open proposals,
+you might want to consider the following information for proposal submitted by the DFINITY foundation.
+* For updates to the II canister, you can find the code in [this repository](https://github.com/dfinity/internet-identity).
+* Each proposal points to the relevant commit that was used.
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit in the proposal
+itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486))
+and in the []Github release pages](https://github.com/dfinity/internet-identity/releases).
+
+**How to verify SNS canister Wasm upgrades**
+If you are looking to verify SNS canister Wasm upgrades, apart from regularly checking open proposals,
+you might want to consider the following information for proposal submitted by the DFINITY foundation.
+* You can find the code for the SNS governance, SNS root, and SNS swap in [this repository](https://github.com/dfinity/ic/tree/master/rs/sns).
+The SNS also uses the ICRC ledger suite, which you can find in [this repository](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icrc1).
+* SNS upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/sns-upgrade-aggregation-thread/24259).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit
+in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129633).
+
+
+
+* For , ...
     https://dfinity.slack.com/archives/C039M7YS6F6/p1714984758970069
     Relevant repositories
     How to verify code corresponds to git version
@@ -62,11 +98,6 @@ the following information.
     https://dfinity.slack.com/archives/C01AVALTNSH/p1714984964794409
     Relevant repositories
     How to verify code corresponds to git version
-* For updates to the II canister, you can find the code in [this repository](https://github.com/dfinity/internet-identity).
-Each proposal points to the relevant commit that was used.
-You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit in the proposal
-itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486))
-and in the []Github release pages](https://github.com/dfinity/internet-identity/releases).
 
 
 ### Topic IcOsVersionElection
@@ -79,7 +110,7 @@ The topic contains the following types.
 
 **How to verify these proposals**
 If you are looking to verify IC OS Version Election proposals, apart from regularly checking open proposals,
-you might want to consider the following information.
+you might want to consider the following information for proposal submitted by the DFINITY foundation.
 * For each such proposal that the DFINITY foundation submits, there is a post on the forum
 (see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)).
 You can find the relevant posts by following the category is `Governance` and the additional tags `replica` and `release`.
