@@ -39,11 +39,11 @@ const milestoneElementsToProgress = (milestoneElements: any[]) => {
   return (
     <div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
       <div
-        className="h-2 bg-green rounded-xl"
+        className="h-1 bg-[#1e3640] rounded-xl"
         style={{ width: progressDone + "%" }}
       ></div>
       <div
-        className="h-2 bg-white"
+        className="h-1 bg-[#1e3640] rounded-xl"
         style={{ width: progressInProgress + "%" }}
       ></div>
     </div>
