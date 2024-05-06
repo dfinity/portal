@@ -17,7 +17,7 @@ Most endpoints require some information about the network represented as a [`Net
 - Your rosetta instance is up and running under the address `0.0.0.0:8082`.
 
 ## Fetch network list
-The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the NetworkIdentifier you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check of ICP rosetta. You can fetch the endpoint using the following command:  
+The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the `NetworkIdentifier` you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check. You can fetch the endpoint using the following command:  
 
 ```bash
 curl --location '0.0.0.0:8082/network/list' --header 'Content-Type: application/json' --data '{
@@ -25,7 +25,7 @@ curl --location '0.0.0.0:8082/network/list' --header 'Content-Type: application/
 }'
 ```
 
-The response will look something like this:
+The response will resemble the following:
 
 ```bash
 {
@@ -37,11 +37,11 @@ The response will look something like this:
     ]
 }
 ```
-In this case we are connected to the ckBTC ledger with the canister id `mxzaz-hqaaa-aaaar-qaada-cai`. 
-You can use this NetworkIdentifer with other endpoints which will require you to provide it in the data section of your `HTTP` call. 
+This example is connected to the ckBTC ledger with the canister id `mxzaz-hqaaa-aaaar-qaada-cai`. 
+You can use this `NetworkIdentifer `with other endpoints which will require you to provide it in the data section of your `HTTP` call. 
 
-## Fetch Network Options
-This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a NetworkIdentifier.
+## Fetch network options
+This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a `NetworkIdentifier`.
 
 ```bash
 curl --location '0.0.0.0:8082/network/options' --header 'Content-Type: application/json' --data '{
@@ -53,7 +53,7 @@ curl --location '0.0.0.0:8082/network/options' --header 'Content-Type: applicati
 }'
 ```
 
-The response will give you information on the error types, the supported operations and some metadata about the ICP Rosetta node you are running. 
+The response will give you information on the error types, the supported operations, and metadata about the ICP Rosetta node you are running. 
 
 ```bash
 {
@@ -165,7 +165,7 @@ The response will give you information on the error types, the supported operati
 
 ```
 
-## Fetch Network Status
+## Fetch network status
 This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkstatus) returns the current status of the network requested.
 
 ```bash

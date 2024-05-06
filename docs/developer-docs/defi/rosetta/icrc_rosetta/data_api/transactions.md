@@ -1,14 +1,30 @@
-# How to fetch block transactions
-This endpoint allows you to fetch a transaction at a certain block height.  It is the implementation of the [/block endpoint](https://www.rosetta-api.org/docs/BlockApi.html#blocktransaction) of the Rosetta API standard. 
+---
+keywords: [intermediate, rosetta, tutorial]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch block transactions
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview 
+
+The `block_transaction` endpoint allows you to fetch a transaction at a certain block height. It is the implementation of the [/block endpoint](https://www.rosetta-api.org/docs/BlockApi.html#blocktransaction) of the Rosetta API standard. 
 
 :::info
-Note that in the case of the ICRC-1 ledger a block always contains exactly one transaction. The hash of the block as well as the index of the block is guarenteed to be unique 
-while the hash of the transaction is not. 
+An ICRC-1 ledger block always contains exactly one transaction. The hash of the block as well as the index of the block is guaranteed to be unique while the hash of the transaction is not. 
 :::
 
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8082`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
+### Prerequisites
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8082`.
+
+- Make sure to use the correct `[NetworkIdentifier`](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). 
+
+## Example
+For this example the following arbitrary `BlockIdentifier` and `TransactionIdentifier` are used:
 ```bash
 "block_identifier": {
         "index": 1357691,
@@ -18,7 +34,7 @@ Make sure to use the correct NetworkIdentifier as described in this [section](/d
         "hash": "700481a99b9a10cf4c4d037141ae5f1472fefe1f5be6b43d02577e398da4bdfe"
     }
 ```
-The request is the following: 
+An example request can be found below:
 
 ```bash
 curl --location '0.0.0.0:8082/block/transaction'  --header 'Content-Type: application/json' --data '{
@@ -33,9 +49,11 @@ curl --location '0.0.0.0:8082/block/transaction'  --header 'Content-Type: applic
     "transaction_identifier": {
         "hash": "700481a99b9a10cf4c4d037141ae5f1472fefe1f5be6b43d02577e398da4bdfe"
     }
-}
+}'
 ```
-The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.md) as there is only one transaction withing a block.
+
+The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.md) as there is only one transaction within a block.
+
 
 ```json
 {
