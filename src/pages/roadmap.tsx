@@ -20,8 +20,8 @@ const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
 
-function elementCount(milestoneElements: any[], progress: string) {
-  return milestoneElements.filter((element) => element.progress === progress)
+function elementCount(milestoneElements: any[], status: string) {
+  return milestoneElements.filter((element) => element.status === status)
     .length;
 }
 
@@ -154,7 +154,6 @@ const RoadmapPage: React.FC = () => {
           {data.map((theme, indexTheme) => (
             <article key={theme.name}>
               <h1 className="tw-heading-4 uppercase">{theme.name}</h1>
-
               <p className="tw-paragraph">{theme.description}</p>
               
               <button data-slidecontrol onClick={
@@ -185,9 +184,9 @@ const RoadmapPage: React.FC = () => {
                       >
                         <div className="grow">
                           <h2 className="mb-0">
-                            {milestone.metal == "none"
+                            {milestone.milestone_id == "none"
                               ? milestoneName(milestone.name)
-                              : milestone.metal}
+                              : milestone.milestone_id}
                           </h2>
                           <p className="text-xs">
                             {milestone.eta != "none" ? (
