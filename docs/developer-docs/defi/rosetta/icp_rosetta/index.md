@@ -89,7 +89,7 @@ Any submitted transaction that refers back to a too old transaction is rejected 
 
 Other than this requirement, the Rosetta API integration software fully complies with all standard Rosetta endpoints and passes all of the `rosetta-cli` tests.
 The software can accept any valid Rosetta request.
-However, the integration software only prompts for transactions to be signed using Ed25519 and SECP256k1, rather than all the signature schemes [listed here](https://www.rosetta-api.org/docs/models/SignatureType.html#values), and only replies with a small subset of the potential responses that the specification supports.
+However, the integration software only prompts for transactions to be signed using Ed25519 and SECP256k1, rather than all the [signature schemes listed](https://www.rosetta-api.org/docs/models/SignatureType.html#values), and only replies with a small subset of the potential responses that the specification supports.
 For example, the software doesn’t implement any of the UTXO features of Rosetta, so you won’t see any UTXO messages in any of the software responses.
 
 
