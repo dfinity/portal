@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-This section will show you how to use ICRC Rosetta to authorize a spender to spend your ICRC-1 tokens. Make sure you are familiar with the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) for Rosetta.  
+This section will show you how to use the ICRC Rosetta implementation to authorize a spender to spend your ICRC-1 tokens. Make sure you are familiar with the [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) for Rosetta.  
 The request type that is used for making direct transfers is `APPROVE` and `SPENDER`. In the simplest form it consists of two operations, one for the the approve operation and another for the spender operation. 
 Note that you do not have to specify the `FEE` operation although the `FEE` of the ICRC-1 ledger Rosetta is connected to will deduct the `FEE` automatically. 
 To keep an overview of all the expenses it thus may pay off to include a `FEE` operation to not overlook unexpected debit operations. 
