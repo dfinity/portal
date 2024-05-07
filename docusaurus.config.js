@@ -71,7 +71,10 @@ const subnavItems = [
     label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      { label: "Motoko", href: "/docs/current/motoko/main/getting-started/motoko-introduction" },
+      {
+        label: "Motoko",
+        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
+      },
       {
         label: "TypeScript",
         href: "/docs/current/developer-docs/backend/typescript/",
@@ -437,6 +440,11 @@ const marketingNav = {
               name: "Community Blog",
               href: "https://medium.com/dfinity",
               description: "Keep up to date",
+            },
+            {
+              name: "Education Hub",
+              href: "/education-hub",
+              description: "Education Hub",
             },
           ],
           featured: {
