@@ -10,7 +10,7 @@ An [asset canister](https://github.com/dfinity/sdk/tree/master/src/canisters/fro
 
 To serve web content, a canister must implement a method that consumes an HTTP request (url, http method, and headers) and outputs an HTTP response (status, headers, and body). The canister method could return assets in the form of HTML, CSS, and Javascript content as part of the HTTP response.
 
-A canister configured as `"type": "asset"` already contains the boilerplate code to facilitate these HTTP requests, making serving static content simple. Once the asset canister is deployed on ICP, the frontend interface can be accessed at http://<canister id>.ic0.app and http://<canister id>.raw.ic0.app.
+A canister configured as `"type": "asset"` already contains the boilerplate code to facilitate these HTTP requests, making serving static content simple. Once the asset canister is deployed on ICP, the frontend interface can be accessed at http://<canister id>.icp0.io and http://<canister id>.raw.icp0.io.
 
 ## Default settings
 
@@ -77,9 +77,9 @@ Other third-party options for serving assets include:
 
 - [`ic-pluto`](https://crates.io/crates/ic-pluto)
 
-- [mops server](https://mops.one/server)
+- [Motoko server](https://mops.one/server)
 
-- [mops certified-http](https://mops.one/certified-http)
+- [Certified HTTP](https://mops.one/certified-http)
 
 - Express (via Azle)
 
@@ -151,7 +151,9 @@ Here is a sample:
 
 ## Dynamic URLs
 
-Dynamic URLs are currently not supported. The asset canister is only for static assets.
+Dynamic URLs are currently not supported by the default asset canister.
+
+If a developer would like to support dynamic URLs, custom logic can be implemented using [third-party options for serving assets](#third-party-options-for-serving-assets).
 
 ## 404 pages and aliasing
 
