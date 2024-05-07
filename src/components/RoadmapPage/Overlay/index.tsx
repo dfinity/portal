@@ -6,80 +6,6 @@ import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 
-const ItemCard: React.FC<{ item: RoadmapItem; deployed: boolean }> = ({
-  item,
-  deployed,
-}) => {
-  return (
-    <div className="border-black-20 border-solid border rounded-xl px-6 py-4 md:py-8 pb-6 flex flex-col gap-2 md:gap-3">
-      <h4 className="tw-heading-6 md:tw-heading-5 mb-0 relative flex items-start gap-4">
-        <span className="flex-1">
-          <span className="mr-3"> {item.name}</span>
-          {item.in_beta && (
-            <span
-              style={{
-                backgroundImage:
-                  "linear-gradient(108.55deg, #3B00B9 0%, #18D0B5 149.76%)",
-              }}
-              className="inline-flex relative -top-1 text-white rounded-full font-circular tw-caption font-bold px-2 py-1"
-            >
-              Beta
-            </span>
-          )}
-        </span>
-        {item.is_community && (
-          <CommunityIcon className="text-infinite mt-1"></CommunityIcon>
-        )}
-      </h4>
-      {item.description && (
-        <div
-          className="tw-paragraph-sm md:tw-paragraph text-black-60 mb-0 prose prose-a:underline prose-a:text-infinite hover:prose-a:no-underline hover:prose-a:text-black"
-          dangerouslySetInnerHTML={{ __html: item.description }}
-        ></div>
-      )}
-      {item.links.map((link) => (
-        <Link className="link-primary" href={link.url} key={link.text}>
-          {link.text}
-          <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-        </Link>
-      ))}
-      {item.eta && (
-        <span className="mt-1 md:mt-2 tw-paragraph-sm md:tw-paragraph text-black-60">
-          {deployed ? "Deployed " : "Expected "}
-          {item.eta}
-        </span>
-      )}
-    </div>
-  );
-};
-
-const OverlayGroup: React.FC<{
-  items: RoadmapItem[];
-  pillClassName: string;
-  pill: React.ReactNode;
-  aside?: React.ReactNode;
-  deployed: boolean;
-}> = ({ items, pill, pillClassName, aside, deployed }) => {
-  return (
-    <div>
-      <div className="md:hidden mb-6">{aside}</div>
-      <div className="flex flex-col items-start md:flex-row md:justify-between md:items-center mb-6 gap-6 sticky top-6 z-[1]">
-        <span
-          className={`${pillClassName} rounded-full tw-title-navigation text-white py-2 px-4 inline-flex items-center gap-2`}
-        >
-          {pill}
-        </span>
-        <span className="hidden md:block">{aside}</span>
-      </div>
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
-        {items.map((item) => (
-          <ItemCard key={item.name} item={item} deployed={deployed}></ItemCard>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const deployedIcon = (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="24" height="24" rx="12" fill="#18D0B5" />
@@ -224,13 +150,15 @@ const Overlay: React.FC<{
       exit={{ opacity: 0 }}
       ref={overlayRef}
     >
+
+      <div className="fixed inset-0"></div>
       <div
         className="relative container-10 !px-0 md:px-6 md:py-12 text-white bg-black/60"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-6 pr-6 md:top-20 z-10 md:pr-8">
+        <div className="pr-6 md:top-20 z-10 md:pr-8">
           <Link
-            className="link-primary text-white cursor-pointer"
+            className="link-primary text-white cursor-pointer fixed top-20"
             onClick={onClose}
           >
             <LinkArrowLeft /> Back to Roadmap
