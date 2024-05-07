@@ -4,9 +4,6 @@ const markdownToPlainText = require("./utils/markdown-to-plain-text");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
-const axios = require("axios");
-const dotenv = require("dotenv");
-dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 // const dotenv = require("dotenv");
 const isDev = (process.env.NODE_ENV || "development") === "development";
@@ -24,35 +21,6 @@ function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
       Authorization: `Bearer ${apiKey}`,
     },
   }).then((res) => res.json());
-}
-
-async function fetchAllRecords() {
-  let offset;
-  let records = [];
-
-  const BASE_ID = "app1LOpIHEj6dTeEx";
-  const TABLE_NAME = "tblpf2akkElbGlqti";
-  const VIEW_NAME = "viwDJz26NeIdJvqle";
-
-  while (true) {
-    const response = await axios.get(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`,
-      {
-        params: { offset, view: VIEW_NAME },
-        headers: {
-          Authorization: `Bearer ${AIRTABLE_KEY}`,
-        },
-      }
-    );
-
-    records = [...records, ...response.data.records];
-
-    offset = response.data.offset;
-    if (!offset) {
-      break;
-    }
-  }
-  return records;
 }
 
 let cache;
@@ -192,44 +160,8 @@ const airtablePlugin = async function () {
           websiteCategory: Array.from(websiteCategory),
         };
       }
-
-      // Fetch all records from the second Airtable base and table
-      const records2 = await fetchAllRecords();
-
-      const courses = records2.map((record) => {
-        const fields = record.fields;
-        return {
-          index: record.id,
-          title: fields["Course name"],
-          body: fields["Course Description"],
-          languages: fields["Languages covered"]?.map((language) =>
-            language?.toLowerCase()
-          ),
-          level: fields["Levels covered"]?.map((level) => level?.toLowerCase()),
-          contentType: fields["Media type"]?.map((content) =>
-            content?.toLowerCase()
-          ),
-          topics: fields["Topics covered"]?.map((topic) =>
-            topic?.toLowerCase()
-          ),
-          tags: (fields["Content Format"] || []).concat(
-            fields["Levels covered"] || []
-          ),
-          link: fields["Course Link"],
-        };
-      });
-
-      fs.writeFileSync(
-        path.resolve(__dirname, "./data/courses.json"),
-        JSON.stringify(courses, null, 2),
-        {
-          encoding: "utf-8",
-        }
-      );
-
       return cache;
     },
-
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
       createData("airtable-events.json", JSON.stringify(content, null, 2));
