@@ -32,12 +32,16 @@ const milestoneComponent = (
   color: string, 
   overlayTrigger = () => {}
 ) => {
-  let wrapperClasses = "snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col min-h-80";
+  let wrapperClasses = "snap-always snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64";
   const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
-    wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+    wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
-    wrapperClasses += ` bg-[var(--color)] min-w-[525px]`;
+    wrapperClasses += ` w-[450px] border-2 border-solid border-[var(--color)]`;
+  }
+
+  if (milestone.status === "in_progress") {
+    wrapperClasses += ` bg-[var(--color)] w-[450px]`;
   }
 
   if (milestone.name === "orphans_past") {
@@ -61,22 +65,24 @@ const milestoneComponent = (
           <strong className="">{milestone.name === "orphans_past" ? "Past features" : "Future features"}</strong>
         </div>
       ) : (
-        <div className="flex min-h-full">
-          <div className="grow">
-            <h2 className="mb-0 tw-heading-4 uppercase">
-              {milestone.milestone_id == "none"
-                ? milestoneName(milestone.name)
-                : milestone.milestone_id}
-            </h2>
-            <p className="text-xs mb-0">
-              {milestone.eta != "none" ? (
-                <span>
-                  <span className="opacity-35">Milestone</span> {milestone.eta}
-                </span>
-              ) : (
-                <span>&nbsp;</span>
-              )}
-            </p>
+        <div className="flex min-h-full gap-20">
+          <div className="grow flex flex-col justify-between">
+            <header>
+              <h2 className="mb-0 tw-heading-4 uppercase">
+                {milestone.milestone_id == "none"
+                  ? milestoneName(milestone.name)
+                  : milestone.milestone_id}
+              </h2>
+              <p className="text-xs mb-0">
+                {milestone.eta && milestone.eta != "none" ? (
+                  <span>
+                    <span className="opacity-35">Milestone</span> {milestone.eta}
+                  </span>
+                ) : (
+                  <span>&nbsp;</span>
+                )}
+              </p>
+            </header>
             <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
           </div>
           <div className="self-end">
@@ -196,13 +202,15 @@ const RoadmapPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="container-10 -mt-52 md:-mt-32 relative  mb-40">
+        <section className="-mt-52 md:-mt-32 relative  mb-40">
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
-              <h1 className="tw-heading-3">{theme.name}</h1>
-              <p className="tw-paragraph max-w-sm opacity-60">
-                {theme.description}
-              </p>
+              <header class="container-10">
+                <h1 className="tw-heading-3">{theme.name}</h1>
+                <p className="tw-paragraph max-w-sm opacity-60">
+                  {theme.description}
+                </p>
+              </header>
 
               <button
                 data-slidecontrol
