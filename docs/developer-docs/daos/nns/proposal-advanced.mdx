@@ -33,11 +33,8 @@ For example, the voting period and the voting reward weight are defined per topi
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
 
 ### Topic: `NetworkCanisterManagement`
-Installing and upgrading _system canisters_ that belong to the network.
-This includes the NNS DAO canisters, such as the governance and root canister, the ICP ledger canister with archive and index,
-other canister on the system subnets such as Internet Identity (II),
-the ckBTC, ckETH, and ckERC20 canisters,
-and the Wasm version of the SNS canisers (governance, root, ledger, swap). // TODO: link to SNS
+Installing and upgrading [**system canisters**](/docs/current/developer-docs/smart-contracts/advanced-features/system-canisters/) that belong to the network.
+This includes the NNS DAO canisters, the ICP ledger canister, and other canisters on the system subnets such as Internet Identity (II), ckBTC, ckETH, ckERC20, and the Wasm version of the SNS canisters (governance, root, ledger, swap). // TODO: link to SNS
 
 * NnsCanisterUpgrade: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
 * NnsCanisterInstall: A proposal to add a new canister to be installed and executed in the NNS subnetwork. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
