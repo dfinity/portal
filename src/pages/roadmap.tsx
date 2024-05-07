@@ -25,30 +25,6 @@ function elementCount(milestoneElements: any[], status: string) {
     .length;
 }
 
-const milestoneElementsToProgress = (milestoneElements: any[]) => {
-  const elementsCount = milestoneElements.length;
-  const elementsCountInProgress = elementCount(
-    milestoneElements,
-    "in_progress"
-  );
-  const elementsCountDone = elementCount(milestoneElements, "deployed");
-
-  const progressDone = elementsCountDone / elementsCount;
-  const progressInProgress = elementsCountInProgress / elementsCount;
-
-  return (
-    <div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
-      <div
-        className="h-1 bg-[#1e3640] rounded-xl"
-        style={{ width: progressDone * 100 + "%" }}
-      ></div>
-      <div
-        className="h-1 bg-green rounded-xl"
-        style={{ width: progressInProgress * 100 + "%" }}
-      ></div>
-    </div>
-  );
-};
 
 const milestoneComponent = (
   milestone: any, 
@@ -56,13 +32,22 @@ const milestoneComponent = (
   color: string, 
   overlayTrigger = () => {}
 ) => {
-  let wrapperClasses = "snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col";
+  let wrapperClasses = "snap-always snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64";
   const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
-  console.log(milestone)
   if (isOrphan) {
-    wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+    wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
-    wrapperClasses += ` bg-[var(--color)]`;
+    wrapperClasses += ` w-[450px] border-2 border-solid border-[var(--color)]`;
+  }
+
+  if (milestone.status === "in_progress") {
+    wrapperClasses += ` bg-[var(--color)] w-[450px]`;
+  }
+
+  if (milestone.name === "orphans_past") {
+    wrapperClasses += ` order-1`;
+  } else {
+    wrapperClasses += ` order-2`;
   }
 
   const style = { "--color": color } as React.CSSProperties;
@@ -75,30 +60,35 @@ const milestoneComponent = (
       onClick={overlayTrigger}
     >
       {isOrphan ? (
-        <div className="grow">
+        <div className="grow flex flex-col justify-end">
           <strong className="block text-[120px] font-light leading-none">{milestone.elements!.length}</strong>
           <strong className="">{milestone.name === "orphans_past" ? "Past features" : "Future features"}</strong>
         </div>
       ) : (
-        <div className="grow">
-          <div>
-            <h2 className="mb-0">
-              {milestone.milestone_id == "none"
-                ? milestoneName(milestone.name)
-                : milestone.milestone_id}
-            </h2>
-            <p className="text-xs">
-              {milestone.eta != "none" ? (
-                <span>
-                  <span className="opacity-35">Milestone</span> {milestone.eta}
-                </span>
-              ) : (
-                <span>&nbsp;</span>
-              )}
-            </p>
-            {milestoneElementsToProgress(milestone.elements)}
+        <div className="flex min-h-full gap-20">
+          <div className="grow flex flex-col justify-between">
+            <header>
+              <h2 className="mb-0 tw-heading-4 uppercase">
+                {milestone.milestone_id == "none"
+                  ? milestoneName(milestone.name)
+                  : milestone.milestone_id}
+              </h2>
+              <p className="text-xs mb-0">
+                {milestone.eta && milestone.eta != "none" ? (
+                  <span>
+                    <span className="opacity-35">Milestone</span> {milestone.eta}
+                  </span>
+                ) : (
+                  <span>&nbsp;</span>
+                )}
+              </p>
+            </header>
+            <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
           </div>
-          <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
+          <div className="self-end">
+            <strong className="block text-[120px] font-light leading-none text-right">{milestone.elements!.length}</strong>
+            <strong>Feature{milestone.elements!.length > 1 ? 's' : ''}</strong>
+          </div>
         </div>
       )}
     </article>
@@ -212,13 +202,15 @@ const RoadmapPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="container-10 -mt-52 md:-mt-32 relative  mb-40">
+        <section className="-mt-52 md:-mt-32 relative  mb-40">
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
-              <h1 className="tw-heading-3">{theme.name}</h1>
-              <p className="tw-paragraph max-w-xs opacity-60">
-                {theme.description}
-              </p>
+              <header class="container-10">
+                <h1 className="tw-heading-3">{theme.name}</h1>
+                <p className="tw-paragraph max-w-sm opacity-60">
+                  {theme.description}
+                </p>
+              </header>
 
               <button
                 data-slidecontrol
