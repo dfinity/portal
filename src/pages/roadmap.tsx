@@ -20,14 +20,14 @@ function elementCount(milestoneElements: any[], status: string) {
     .length;
 }
 
-
 const milestoneComponent = (
   milestone: any, 
   index: number, 
   color: string, 
   overlayTrigger = () => {}
 ) => {
-  let wrapperClasses = "snap-always snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64";
+  const style = { "--color": color } as React.CSSProperties;
+  let wrapperClasses = "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--sml)]";
   const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
@@ -45,7 +45,9 @@ const milestoneComponent = (
     wrapperClasses += ` order-2`;
   }
 
-  const style = { "--color": color } as React.CSSProperties;
+  if (milestone.name === "orphans_future") {
+    wrapperClasses += ` order-3 mr-[100dvw]`;
+  }
 
   return (
     <article
@@ -223,10 +225,11 @@ const RoadmapPage: React.FC = () => {
                 ref={scrollRefs[indexTheme]}
                 data-scroll={indexTheme}
                 aria-label="milestones"
-                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8"
+                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8 w-full scrollbar-hide box-border pl-[var(--sml)] pr-[var(--sml)]"
                 style={{
                   scrollbarWidth: "none",
-                }}
+                  '--sml': 'calc((100dvw - 1214px) / 2 + 50px)',
+                } as React.CSSProperties}
               >
                 {theme.milestones.map(
                   (milestone, index) =>
