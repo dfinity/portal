@@ -56,13 +56,18 @@ const milestoneComponent = (
   color: string, 
   overlayTrigger = () => {}
 ) => {
-  let wrapperClasses = "snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col";
+  let wrapperClasses = "snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col min-h-80";
   const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
-  console.log(milestone)
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
   } else {
-    wrapperClasses += ` bg-[var(--color)]`;
+    wrapperClasses += ` bg-[var(--color)] min-w-[525px]`;
+  }
+
+  if (milestone.name === "orphans_past") {
+    wrapperClasses += ` order-1`;
+  } else {
+    wrapperClasses += ` order-2`;
   }
 
   const style = { "--color": color } as React.CSSProperties;
@@ -75,14 +80,14 @@ const milestoneComponent = (
       onClick={overlayTrigger}
     >
       {isOrphan ? (
-        <div className="grow">
+        <div className="grow flex flex-col justify-end">
           <strong className="block text-[120px] font-light leading-none">{milestone.elements!.length}</strong>
           <strong className="">{milestone.name === "orphans_past" ? "Past features" : "Future features"}</strong>
         </div>
       ) : (
         <div className="grow">
-          <div>
-            <h2 className="mb-0">
+          <div className="max-w-72">
+            <h2 className="mb-0 tw-heading-4 uppercase">
               {milestone.milestone_id == "none"
                 ? milestoneName(milestone.name)
                 : milestone.milestone_id}
@@ -97,8 +102,8 @@ const milestoneComponent = (
               )}
             </p>
             {milestoneElementsToProgress(milestone.elements)}
+            <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
           </div>
-          <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
         </div>
       )}
     </article>
