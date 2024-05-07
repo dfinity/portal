@@ -39,7 +39,7 @@ This includes the NNS DAO canisters, the ICP ledger canister, and other canister
 * `NnsCanisterUpgrade`: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
 * `NnsCanisterInstall`: A proposal to add a new canister to be installed and executed on the NNS subnet. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
 * `NnsRootUpgrade`: A proposal to upgrade the root canister on the NNS subnet. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module.
-* `HardResetNnsRootToVersion`: Uninstall and reinstall root with the Wasm provided in the function.  If `InitArgs` are provided, they will be passed to the `canister_init` function of the Wasm provided. This function is meant as a 'break glass' mechanism for when an open call context in the root canister is preventing root or another canisters from upgrading.
+* `HardResetNnsRootToVersion`: Uninstall and install root with the Wasm provided in the function.  If `InitArgs` are provided, they will be passed to the `canister_init` function of the Wasm provided. This function is meant as a 'break glass' mechanism for when an open call context in the root canister is preventing root or another canisters from upgrading.
 * `StopOrStartNnsCanister`: Stop or start an NNS canister. Usually this is done as part of a canister upgrade, but this proposal offers the flexibility to just start or stop a canister if needed.
 
 The following proposal types are specific for SNS canisters:
@@ -77,9 +77,13 @@ If you are looking to verify NNS core canister upgrades apart from regularly che
 **How to verify ledger canister upgrades**
 If you are looking to verify the ledger suite, which includes the ICP ledger and all ICRC ledgers (used for ckBTC, ckETC, ckERC20) apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 //TODO
+* For updates to the ledger suite, which includes the ICP ledger but also all ICRC ledger (used for ckBTC, ckETC, ckERC20), ...
+    https://dfinity.slack.com/archives/C01AVALTNSH/p1714984964794409
+    Relevant repositories
+    How to verify code corresponds to git version
 
 
-## How to verify Internet Identity upgrades
+**How to verify Internet Identity upgrades**
 
 If you are looking to verify [Internet Identity (II)](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview) canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
@@ -97,17 +101,6 @@ The SNS also uses the ICRC ledger suite, which you can find in [this repository]
 in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129633).
 
 
-
-* For , ...
-    https://dfinity.slack.com/archives/C039M7YS6F6/p1714984758970069
-    Relevant repositories
-    How to verify code corresponds to git version
-* For updates to the ledger suite, which includes the ICP ledger but also all ICRC ledger (used for ckBTC, ckETC, ckERC20), ...
-    https://dfinity.slack.com/archives/C01AVALTNSH/p1714984964794409
-    Relevant repositories
-    How to verify code corresponds to git version
-
-
 ### Topic: `IcOsVersionElection`
 To upgrade the ICP protocol, the NNS DAO first elects new IC OS versions (the software that is run by ICP nodes), then in a second step, selected nodes can be upgraded to the previously elected IC OS versions.
 This proposal type is for the first part, i.e., to elect new versions.
@@ -117,7 +110,7 @@ This topic contains the following proposal types:
 * `ReviseElectedGuestosVersions`: A proposal to change the set of elected GuestOS versions. The version to elect (identified by the hash of the installation image) is added to the registry. Besides creating a record for that version, the proposal also appends that version to the list of elected versions that can be installed on nodes of a subnet. Only elected GuestOS versions can be deployed.
 * `ReviseElectedHostosVersions`: A proposal to change the set of currently elected HostOS versions by electing a new version, and/or un-electing some priorly elected versions. HostOS versions are identified by the hash of the installation image. The version to elect is added to the registry, and the versions to un-elect are removed from the registry, ensuring that HostOS cannot upgrade to these versions anymore.
 
-**How to verify these proposals**
+**How to verify Ic OS Version Election proposals**
 If you are looking to verify IC OS Version Election proposals, apart from regularly checking open proposals,
 you might want to consider the following information for proposal submitted by the DFINITY foundation.
 * For each such proposal that the DFINITY foundation submits, there is a post on the forum
