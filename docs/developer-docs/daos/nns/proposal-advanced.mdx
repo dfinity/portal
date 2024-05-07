@@ -36,11 +36,11 @@ We present the proposals grouped by their topics, with the corresponding proposa
 Installing and upgrading [**system canisters**](/docs/current/developer-docs/smart-contracts/advanced-features/system-canisters/) that belong to the network.
 This includes the NNS DAO canisters, the ICP ledger canister, and other canisters on the system subnets such as Internet Identity (II), ckBTC, ckETH, ckERC20, and the Wasm version of the SNS canisters (governance, root, ledger, swap). // TODO: link to SNS
 
-* NnsCanisterUpgrade: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
-* NnsCanisterInstall: A proposal to add a new canister to be installed and executed in the NNS subnetwork. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
-* NnsRootUpgrade: A proposal to upgrade the root canister in the NNS subnetwork. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module.
-* HardResetNnsRootToVersion: Uninstall and Install Root with the WASM provided in the function.  If InitArgs are provided They will be passed to the canister_init function of the WASM provided. This function is meant as a Break Glass mechanism for when an open call context in the Root canister is preventing root or another canister from upgrading.
-* StopOrStartNnsCanister: Stop or start an NNS canister. Usually this is done as part of a canister upgrade, but this proposal offers the flexibility to just start or stop a canister if needed.
+* `NnsCanisterUpgrade`: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
+* `NnsCanisterInstall`: A proposal to add a new canister to be installed and executed on the NNS subnet. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
+* `NnsRootUpgrade`: A proposal to upgrade the root canister on the NNS subnet. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module.
+* `HardResetNnsRootToVersion`: Uninstall and reinstall root with the Wasm provided in the function.  If `InitArgs` are provided, they will be passed to the `canister_init` function of the Wasm provided. This function is meant as a 'break glass' mechanism for when an open call context in the root canister is preventing root or another canisters from upgrading.
+* `StopOrStartNnsCanister`: Stop or start an NNS canister. Usually this is done as part of a canister upgrade, but this proposal offers the flexibility to just start or stop a canister if needed.
 
 The following proposal types are specific for SNS canisters:
 
