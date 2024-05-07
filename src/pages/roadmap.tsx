@@ -33,18 +33,18 @@ const milestoneElementsToProgress = (milestoneElements: any[]) => {
   );
   const elementsCountDone = elementCount(milestoneElements, "deployed");
 
-  const progressDone = (elementsCountDone / elementsCount) * 100;
-  const progressInProgress = (elementsCountInProgress / elementsCount) * 100;
+  const progressDone = (elementsCountDone / elementsCount);
+  const progressInProgress = (elementsCountInProgress / elementsCount);
 
   return (
     <div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
       <div
         className="h-1 bg-[#1e3640] rounded-xl"
-        style={{ width: progressDone + "%" }}
+        style={{ width: progressDone * 100 + "%" }}
       ></div>
       <div
         className="h-1 bg-green rounded-xl"
-        style={{ width: progressInProgress + "%" }}
+        style={{ width: progressInProgress * 100 + "%" }}
       ></div>
     </div>
   );

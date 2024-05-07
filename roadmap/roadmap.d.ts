@@ -39,44 +39,12 @@ interface Elements10 {
   status: string;
   is_community: boolean;
   in_beta: boolean;
-  notes: string;
-  milestone_id?: string;
-}
-
-interface Elements9 {
-  title: string;
-  overview: string;
-  description: string;
-  forum: string;
-  proposal: string;
-  wiki: string;
-  docs: string;
-  eta?: string;
-  status: string;
-  is_community?: boolean;
-  in_beta?: boolean;
-  milestone_id?: string;
-  notes: string;
-}
-
-interface Elements8 {
-  title: string;
-  overview: string;
-  description: string;
-  forum: string;
-  proposal: string;
-  wiki: string;
-  docs: string;
-  eta?: string;
-  status: string;
-  is_community: boolean;
-  in_beta: boolean;
   milestone_id?: string;
   notes: string;
   imported?: boolean;
 }
 
-interface Elements7 {
+interface Elements9 {
   title: string;
   overview: string;
   description: string;
@@ -93,7 +61,7 @@ interface Elements7 {
   imported?: boolean;
 }
 
-interface Elements6 {
+interface Elements8 {
   title: string;
   overview: string;
   description: string;
@@ -110,7 +78,7 @@ interface Elements6 {
   imported: boolean;
 }
 
-interface Elements5 {
+interface Elements7 {
   title: string;
   overview: string;
   description: string;
@@ -127,7 +95,23 @@ interface Elements5 {
   imported?: boolean;
 }
 
-interface Elements4 {
+interface Elements6 {
+  title: string;
+  overview: string;
+  description: string;
+  forum: string;
+  proposal: string;
+  wiki: string;
+  docs: string;
+  eta?: string;
+  status: string;
+  is_community: boolean;
+  in_beta: boolean;
+  milestone_id?: string;
+  notes: string;
+}
+
+interface Elements5 {
   title: string;
   overview: string;
   description: string;
@@ -144,7 +128,7 @@ interface Elements4 {
   imported?: boolean;
 }
 
-interface Elements3 {
+interface Elements4 {
   title: string;
   overview: string;
   description: string;
@@ -158,6 +142,22 @@ interface Elements3 {
   notes: string;
   imported?: boolean;
   wiki?: string;
+}
+
+interface Elements3 {
+  title: string;
+  overview: string;
+  description: string;
+  forum: string;
+  proposal: string;
+  wiki: string;
+  docs: string;
+  eta?: string;
+  status: string;
+  is_community?: boolean;
+  in_beta?: boolean;
+  notes: string;
+  milestone_id?: string;
 }
 
 interface Elements2 {

@@ -1,6 +1,6 @@
 [
   {
-    "name": "ICP as compute platform",
+    "name": "Compute platform",
     "description": "Blockchain Singularity — all computations of the world can run on ICP.",
     "milestones": [
       {
@@ -67,7 +67,7 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Iridium",
-            "notes": ""
+            "notes": "Ulan: might be opt-in for larger instruction limits for queries (e.g., for AI)"
           }
         ]
       },
@@ -77,21 +77,6 @@
         "milestone_id": "iacp-2",
         "eta": "",
         "elements": [
-          {
-            "title": "Increase Stable Memory Limit to 400GiB",
-            "overview": "Increasing the stable memory limit of a canister from 96GiB to 400 GiB.",
-            "description": "Currently, a canister can access 96GiB of stable memory. This feature will increase this limit to 400GiB for all canisters, allowing canisters to hold more state. The API will remain unchanged. A single message however will not be able to write to more than 8GiB.",
-            "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "iacp-2",
-            "notes": "?? maybe 500 GB to make it news"
-          },
           {
             "title": "Log-structured merge tree (LSMT) storage layer",
             "overview": "Rewrite the storage layer to rely on log-structured merge trees (LSMTs) instead of XFS reflinking. This will give more fine-grained control over what happens during checkpointing and thus enable further more targeted performance improvements.",
@@ -108,7 +93,7 @@
             "notes": "@David: as discussed, this is now a separate item, the other one is in the deployed section; please fill in the details as you see fit"
           },
           {
-            "title": "Support 1TB replicated storage",
+            "title": "Support 1TB of replicated storage",
             "overview": "Protocol improvements and optimizations of on-disk access and for syncing to reach 1TB of replicated state.",
             "description": "This feature captures the goal to support 1TB of replicated storage per subnets. Work on this feature includes protocol improvements and optimizations related to interacting with the replicated state on disk and when syncing it via state sync. It also includes efforts to make sure that node machines match the hardware requirements in terms of physical disk size etc.",
             "forum": "",
@@ -124,7 +109,22 @@
             "imported": true
           },
           {
-            "title": "Large ingress messages and bandwidth",
+            "title": "Increase Stable Memory Limit to 400GiB",
+            "overview": "Increasing the stable memory limit of a canister from 96GiB to 400 GiB.",
+            "description": "Currently, a canister can access 96GiB of stable memory. This feature will increase this limit to 400GiB for all canisters, allowing canisters to hold more state. The API will remain unchanged. A single message however will not be able to write to more than 8GiB.",
+            "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "Q2 2024",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "iacp-2",
+            "notes": "?? maybe 500 GB to make it news"
+          },
+          {
+            "title": "Large ingress messages and increased consensus bandwidth",
             "overview": "Support of larger ingress messages than 2 MB and increased ingress bandwidth of subnets.",
             "description": "The current ICP protocol stack constrains ingress messages to 2 MB of size, and constrains the aggregate ingress message size per block to at most 4 MB. The support of large ingress messages intends to lift this limitation and allow for (much) larger ingress messages and therefore to increase the aggregate ingress capacity per block. The technical approach is to only include metadata about the large ingress message, specifically also its hash, in the block to be run through ICP consensus, while the actual large payload is provided directly to the subnet nodes. Via the metadata that goes trough consensus, the nodes can be assured that they all have received the same message. This approach helps to increase the ingress capacity per round and reduce the overhead incurred through the P2P protocol.",
             "forum": "",
@@ -506,7 +506,7 @@
             "eta": "",
             "is_community": false,
             "in_beta": false,
-            "notes": "?? is this part of Iridium also as part of the new messaging model?; David: final."
+            "notes": "Ulan: may not happen, check; David: final."
           },
           {
             "title": "Query call metrics",
@@ -520,7 +520,21 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": ""
+            "notes": "almost done"
+          },
+          {
+            "title": "Increasing instruction limits for query and update calls",
+            "overview": "Raising instruction limits of query and update calls. They have limitations of a few billion instructions currently.",
+            "description": "Both query and update calls currently have limits in terms of how many instructions can be executed per call. This feature is about increasing those limits by further protocol enhancements. In the current design of the ICP, there are both inherent and practical limits by how much the instructions limits of canister calls can be raised and this feature will need to find a sweet spot within this space to obtain a decent ratio of improvement for the resources spent. Deterministic time slicing (DTS) has already raised the limits of update calls considerably by spanning them over multiple rounds. DTS offers some more potential to increase the number of instructions executed by update calls, but this is limited to what can be computed within a single epoch (the rounds between two checkpoints in a subnet).",
+            "eta": "",
+            "status": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "notes": "should be reasonable; community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/53; ?? how realistic is this"
           },
           {
             "title": "Dapp-level metrics",
@@ -555,7 +569,7 @@
           {
             "title": "Support of 1M canisters per subnet",
             "overview": "Allowing up to 1 million canisters to run on a subnet, up from the current 100K canisters.",
-            "description": "The current protocol implementation supports between 50K and 100K canisters per subnet. This is not sufficient in the long term, for example, for dapp architectures that spawn a canister per user and want to grow to millions of users as they would require many of subnets just to host one dapp, while not hitting other subnet limitations such as compute or storage. The goal is to grow the supported number of canisters per subnet to around one million. This requires, among other things, revisiting the current architecture of the backing storage of canisters and how checkpointing the storage is done. A key idea is to differentiate between active and passive canisters, i.e., such that have been active in a given DKG interval and such that have not, respectively. For non-active canisters, processing done during checkpointing, such as writing the canister's backing file to SSD, can be skipped.",
+            "description": "The current protocol implementation supports up to 100K canisters per subnet. This is not sufficient in the long term, for example, for dapp architectures that spawn a canister per user and want to grow to millions of users as they would require many of subnets just to host one dapp, while not hitting other subnet limitations such as compute or storage. The goal is to grow the supported number of canisters per subnet to around one million. This requires, among other things, revisiting the current architecture of the backing storage of canisters and how checkpointing the storage is done. A key idea is to differentiate between active and passive canisters, i.e., such that have been active in a given DKG interval and such that have not, respectively. For non-active canisters, processing done during checkpointing, such as writing the canister's backing file to SSD, can be skipped.",
             "proposal": "",
             "wiki": "",
             "docs": "",
@@ -598,7 +612,7 @@
             "notes": "?? Manu: is this up in the future or made obsolete by including hashes of ingress messages in blocks; Is this part of large ingress messages or orthogonal"
           },
           {
-            "title": "Configurable Wasm Heap Limit",
+            "title": "Configurable Wasm memory limit",
             "overview": "Introduce explicit configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
             "description": "The Wasm heap of canisters is limited to 4GiB. The limit is fundamental and cannot be increased because of 32-bit memory addresses. If a canister uses all of the available heap space, it will start producing out-of-memory errors and may stop working, which could lead to data loss and bricking of the canister. The developer may not realize this until it is too late to fix the issue. <br><br> This feature aims to introduce an explicit Wasm heap limit that can be configured in the canister settings. The default value for this limit will be a conservative amount, such as 3GiB. If a canister tries to use more memory than the limit, it will receive an out-of-memory error. This will alert the developer to the potential memory issue and allow them to safely upgrade the canister to a version that uses less memory.",
             "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
@@ -621,10 +635,10 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "notes": "relates to Messages to specified canister version"
+            "notes": "?? Martin; relates to Messages to specified canister version"
           },
           {
             "title": "Canister Logging MVP",
@@ -652,7 +666,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
+            "notes": "David ??",
             "imported": true
           },
           {
@@ -699,20 +713,6 @@
             "imported": true
           },
           {
-            "title": "Auction-based resource pricing when hitting capacity limits",
-            "overview": "Augmenting the cloud-like ICP resource pricing model with auction-based pricing during high-load times to help control demand and fight off DoS attacks.",
-            "description": "The current resource pricing on ICP charges a fixed amount of cycles per resource consumed, e.g., per ingress message received or per threshold ECDSA signature computed. This fixed-price model can break down under high load if the resource cannot be elastically scaled. This is currently the case for the majority of resources. An auction-based pricing model for high-load situations can mitigate the related issues by auctioning off resources in a fair manner in case of contention over scarce resources. Particularly, it also helps reducing the potential of DoS attacks against the IC.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "Jan: remove; Ulan: we need more exploration here before committing. David: +1; I think the new messaging model may also provide some interesting properties in terms of auction-based pricing."
-          },
-          {
             "title": "Secure XNet cycles protocol",
             "overview": "Securely sending cycles from a less-trusted subnet, e.g., a UTOPIA subnet, rented subnet, or low-replication subnet, to a regular ICP subnet.",
             "description": "Future extensions of ICP such as private subnets or subnets with a smaller number of nodes may not fulfill the conditions of cycles security and thus require that inter-subnet calls initiated on such subnets to other ICP subnets be secured accordingly. This feature will look into the challenges of securely handling cycles in those types of subnets.",
@@ -738,7 +738,7 @@
             "eta": "",
             "is_community": false,
             "in_beta": false,
-            "notes": "One-shot messaging: https://dfinity.atlassian.net/browse/IC-829; named callbacks: https://dfinity.atlassian.net/browse/IC-1099"
+            "notes": "?? check with Dimitris for name callbacks; could already be solved with best-effort messaging; One-shot messaging: https://dfinity.atlassian.net/browse/IC-829; named callbacks: https://dfinity.atlassian.net/browse/IC-1099"
           },
           {
             "title": "Queries at specified block height",
@@ -753,20 +753,6 @@
             "is_community": false,
             "in_beta": false,
             "notes": "another use case: data bases, query same version when sharded data \n esp when done from frontend \n XNet msgs from frontend: need to have consistent state \n - XNet query messages, particularly for FE-driven arch \n need canister versioning also (other feature) \n - relevant together with this one. Ulan: needs discussion; David: also seems to overlap somewhat with the replica-signed (or at least certified) queries. David: I would drop this -- it is not a feature by itself. It may be that we require it for certified queries or for something else (e.g., the feature mentioned in the beginning of this line). But as far as I can tell it has no standalone value."
-          },
-          {
-            "title": "Atomic transactions",
-            "overview": "Atomicity of transactions involving cross canister calls within a subnet. Helpful for applications in the DeFi area.",
-            "description": "The execution model of the IC is based on the actor model using asynchronous communication with responses between canisters. The asynchronous messaging model allows for unbounded scalability, but does not have atomic transactions and in this respect is quite different to the synchronous execution model of the EVM, where all transactions are atomic, i.e., are either executed as a whole or do not have an effect when failing. This feature is looking at allowing for atomicity of transactions involving calls between canisters within a subnet. Atomicity for inter-subnet canister calls is not achievable in the general case.",
-            "status": "future",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/57, Atomic cross-canister calls. Ulan: needs discussion. David: +1 re needs discussion."
           },
           {
             "title": "Hyper-scalable inter-subnet message routing",
@@ -810,20 +796,6 @@
             "notes": "David: lgtm."
           },
           {
-            "title": "Subnet upgrades without downtime",
-            "overview": "Canister should not incur downtime during network upgrades to guarantee availability of critical dapps such as DeFi.",
-            "description": "Being an alternative to the Web2 technology stack requires ICP canisters to be able to operate without downtime, even during subnet upgrades. This can be achieved at different levels of the protocol stack, e.g., at the message routing level by rerouting traffic or at the application level through a frontend canister rerouting traffic to different backends, each coming with its own challenges and upsides. The details of how the zero-downtime functionality will be achieved for canisters on ICP are still to be decided.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "to be further discussed, remove for now"
-          },
-          {
             "title": "Libraries for large data transfers",
             "overview": "Provide more generalized abstractions to overcome message size limits and make them invisible to developers.",
             "description": "The message size limit of 2MB for a single message on ICP requires dapps to chunk data transfers in order to transfer data sets larger than the limit. Abstracting message size limits through user-space libraries helps avoid that every dapp hitting those limits reimplements this functionality, e.g., chunking, on their own. This would also establish a quasi standard for this problem domain and thus make devs more efficient.",
@@ -833,7 +805,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "is_community": false,
+            "is_community": true,
             "in_beta": false,
             "notes": "community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/55"
           },
@@ -852,20 +824,6 @@
             "notes": "community list (Hamish Peebles); Ulan: Needs discussion. David: even if we implement deduplication it is not clear how charging would work. Do we really wanna commit to the fact that this wastes cycles in the roadmap? dso: rephrased the storage and cycles wasting"
           },
           {
-            "title": "Increasing instruction limits for query and update calls",
-            "overview": "Raising instruction limits of query and update calls. They have limitations of a few billion instructions currently.",
-            "description": "Both query and update calls currently have limits in terms of how many instructions can be executed per call. This feature is about increasing those limits by further protocol enhancements. In the current design of the ICP, there are both inherent and practical limits by how much the instructions limits of canister calls can be raised and this feature will need to find a sweet spot within this space to obtain a decent ratio of improvement for the resources spent. Deterministic time slicing (DTS) has already raised the limits of update calls considerably by spanning them over multiple rounds. DTS offers some more potential to increase the number of instructions executed by update calls, but this is limited to what can be computed within a single epoch (the rounds between two checkpoints in a subnet).",
-            "eta": "",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "should be reasonable; community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/53; ?? how realistic is this"
-          },
-          {
             "title": "Reduction of call latencies",
             "overview": "Reduce call latencies for the most-used call patterns that negatively affect dapp responsiveness.",
             "description": "The responsiveness of a dapp is affected mainly by the various kinds of call patterns used on ICP: Query calls, update calls, cross-canister calls, http outcalls, etc. Improving the platform for better dapp responsiveness requires an assessment of the different call patterns, their latencies, and how frequently they are used in dapps and what the worst offenders are for different dapp architectures. Based on this, efforts need to taken to improve where optimizations have the largest positive effect on overall dapp responsiveness. It should be noted that the ICP stack has already been quite aggressively optimized in some parts and that latency reduction is expected to hit inherent (physical) limitations, e.g., the message propagation times between the geographically distributed nodes of a subnet, sooner or later in those part of the stack.",
@@ -875,14 +833,14 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "is_community": false,
+            "is_community": true,
             "in_beta": false,
             "notes": "community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/54; David: I wonder whether reduced latencies is the most fruitful direction to look into as we are already close to the theoretical optimum in many cases; maybe throughput is the more realistic thing we might be able tweak (especially cross subnet)."
           },
           {
-            "title": "Wasi compliance and integration",
-            "overview": "Implement missing Wasi functions, particularly sockets, and integrate into the protocol stack.",
-            "description": "Full Wasi support would allow users of Kybra and Azle to use more PyPi and NPM packages, respectively, that require missing Wasi functionality to be implemented, particularly sockets. This will help developer adoption of ICP through much more powerful use of the Python and TypeScript-based CDKs. Also, moving the current Wasi implementation (a polyfill) into the protocol stack is to be considered as part of this effort.",
+            "title": "WASI V2 support",
+            "overview": "WASI V2 is the upcoming standard for running Wasm programs outside of browser environments.It is expected to become the de-facto standard and be targeted by many libraries and thus should be supported by ICP.",
+            "description": "",
             "status": "",
             "forum": "",
             "proposal": "",
@@ -892,20 +850,6 @@
             "is_community": true,
             "in_beta": false,
             "notes": "community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/41; ?? how realistic is this? Ulan: I am discussing this with Jordan and the author of Wasi polyfill. Hopefully, we can keep this in community. Let's remove this item. Dieter: merged both Wasi-related items and kept them for now as they are also part of the internal org-wide roadmap."
-          },
-          {
-            "title": "Derived canister IDs",
-            "overview": "Deterministically derived canister IDs.",
-            "description": "Being able to deterministically derive a canister ID would open up interesting new use cases, but also creates challenges in terms of routing and canister upgrades if derivation were based on the canister's Wasm.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Jordan Last), Austin: https://forum.dfinity.org/t/derived-canister-ids/17434, others https://forum.dfinity.org/t/feature-request-deterministic-canister-id-derivation/21725; Ulan: I don't understand what this means."
           },
           {
             "title": "HTTPS outcalls V2",
@@ -933,7 +877,7 @@
             "status": "",
             "is_community": true,
             "in_beta": false,
-            "notes": ""
+            "notes": "maybe V2 is enough"
           },
           {
             "title": "XNet composite queries",
@@ -950,20 +894,6 @@
             "notes": "also part of community list (Jordan Last); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/56; ?? What else would be required for Jordan's request? Ulan: we are not planning to work on this year."
           },
           {
-            "title": "Read-your-own-writes query consistency",
-            "overview": "Strengthening consistency for queries by supporting queries with read-your-own-writes semantics.",
-            "description": "This feature is intended to avoid confusion that can be caused by the current weaker consistency when a query reads a previous state height and thereby misses committed state changes resulting from one's own update calls. Ideally, this feature is provided as a \"consistency\" query mode in the user agents, where the current query semantics is exposed through a performance-oriented \"performance\" mode.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
             "title": "Capacity reservations for system calls",
             "overview": "Allowing canisters to reserve capacity for certain crucial system calls such as chain-key signing or HTTPS outcalls. Reserved capacity is guaranteed to be available to the canister.",
             "description": "",
@@ -975,7 +905,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "notes": ""
+            "notes": "maybe frame more broadly; problem with reservations is getting pricing right"
           },
           {
             "title": "Replica key lifecycle V2 — Proactive security",
@@ -1003,10 +933,10 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "notes": ""
+            "notes": "also would nice to have general punishment for not well behaving nodes"
           },
           {
-            "title": "Charge the caller for update and query calls",
+            "title": "User-paid messages",
             "overview": "Using the regular gas model for specific settings: The caller, instead of the canister, pays for update and query calls.",
             "description": "",
             "forum": "",
@@ -1017,7 +947,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "notes": ""
+            "notes": "was: Charge the caller for update and query calls; exploration: nice, but not doing it right now; ?? update text"
           },
           {
             "title": "Subnet splitting V2",
@@ -1037,34 +967,6 @@
             "title": "P2P unicast",
             "overview": "Utilizing unicast at the P2P layer to communicate artefacts instead of gossip to decrease bandwidth requirements and improve throughput.",
             "description": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
-            "title": "Improved ingress management by canister",
-            "overview": "Canisters can decide how many ingress manages it wants to accept to better protect against DoS attacks.",
-            "description": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "?? Jan: canister can decide how many ingress msgs it wants to accept; DDoS; per dapp; maybe ask Björn; Sam: delete?"
-          },
-          {
-            "title": "Capacity reservations for ingress",
-            "overview": "Allowing canisters to reserve ingress capacity, analogous to reservations for storage or CPU. Reserved ingress capacity is guaranteed to be available to the canister.",
-            "description": "For some dapps it is criticial to be reachable, even during high network load. This feature enables dapps to reserve ingress capacity which is then available to them regardless of network congestion.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1129,7 +1031,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": ""
+            "notes": "Ulan: maybe remove"
           },
           {
             "title": "Structured data storage",
@@ -1141,23 +1043,9 @@
             "docs": "",
             "eta": "",
             "status": "future",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "?? is this stable structures v2?; Sam: stable structures is basic db structure; to better perform queries, can have structured data storage; maybe library; easily store, query data in stable memory; view your data like in regular DB; DB-level convenience and features on IC"
-          },
-          {
-            "title": "Mature Web2 DB solutions on ICP",
-            "overview": "Bringing mature, robust database solutions that people know from Web2 to ICP.",
-            "description": "This community-requested feature is about bringing the more traditional databases that are well known in the Web2 space to ICP. This can help make it easier for Web2 developers to onboard on ICP as they can partly reuse the technology stack they are used to from Web2. Potential candidate DBs to bring into ICP are Postgres, MySQL, MongoDB, SQLite, and vector DBs.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
             "is_community": true,
             "in_beta": false,
-            "notes": "community list (Joseph Granata) https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/63 and Jordan Last https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/42"
+            "notes": "?? is this stable structures v2?; Sam: stable structures is basic db structure; to better perform queries, can have structured data storage; maybe library; easily store, query data in stable memory; view your data like in regular DB; DB-level convenience and features on IC"
           },
           {
             "title": "Inter-subnet messaging across trust zones",
@@ -1186,20 +1074,6 @@
             "is_community": false,
             "in_beta": false,
             "notes": ""
-          },
-          {
-            "title": "Canister high availability",
-            "overview": "Highly-available canisters also during subnet upgrades by rerouting traffic to another instance of the canister running on a different subnet.",
-            "description": "In the current ICP architecture, a canister on a subnet is not available while the subnet is being upgraded. Certain dapps demand uninterrupted operation, which people are also used to from Web2. This feature brings high availability to canisters by allowing for deployments of a canister on multiple subnets and routing to either of the canisters be done. When one of the canisters is down, messages can be routed to the other canister.",
-            "status": "future",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "?? based on service addresses instead of canister principals? open: how to address to have the same state in both canisters? or is this working well only for stateless services?"
           }
         ]
       }
@@ -1216,7 +1090,7 @@
         "eta": "2024-05-23",
         "elements": [
           {
-            "title": "Threshold ECDSA signing latency reduction",
+            "title": "Chain-key ECDSA signing latency & throughput improvements",
             "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of consensus rounds required through protocol improvements.",
             "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticably reducing signing latency. Also, the throughput for threshold signing is expected to increase as part of this effort. The optimizations will benefit all applications using chain-key ECDSA.",
             "status": "in_progress",
@@ -1231,7 +1105,7 @@
             "notes": ""
           },
           {
-            "title": "RPC-based integration with EVM chains",
+            "title": "RPC canister for Ethereum & EVM integration",
             "overview": "Communication integration of ICP with EVM blockchains via JSON RPC providers.",
             "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Wthereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-criticial queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. Using multiple RPC providers allows for reducing trust in any single entity, thereby making the approach more decentralized.",
             "status": "in_progress",
@@ -1246,7 +1120,7 @@
             "notes": ""
           },
           {
-            "title": "Chain-key ERC20 (ckERC20) tokens",
+            "title": "Chain-key ERC20 (ckERC20) tokens &amp; USDC",
             "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20).",
             "description": "This feature brings some of Ethereum's ERC20 tokens over to the IC in the form of chain-key tokens, i.e., twin tokens of the original tokens on the Ethereum network. Particularly the ckERC20 twins of stablecoins, such as USDC and USDT, are of tremendous importance to the IC due to the potential liquidity they can bring over to the ICP ecosystem. The initial implementation is done using HTTPS outcalls to multiple Ethereum JSON RPC providers for reading from and writing to the Ethereum network. Chain-key ECDSA signing (threshold ECDSA) is used for creating the required transactions on the Ethereum network in a completely trustless manner.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382",
@@ -1298,6 +1172,21 @@
             "in_beta": false,
             "milestone_id": "Bismuth",
             "notes": "also https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
+          },
+          {
+            "title": "Bitcoin block headers available on chain",
+            "overview": "",
+            "description": "The current Bitcoin integration holds only the full UTXO state of the Bitcoin network on chain in a canister. This is sufficient for many Bitcoin use cases, but not for the novel use cases of inscriptions, such as those using the BRC20 or Runes protocols. Those require access to certain parts of Bitcoin blocks, specifically the witness area where the inscriptions are stored. Making all block headers available on chain through an API allows anyone to trustlessly verify any Bitcoin block obtained, e.g., through HTTPS outcalls. This allows for indexing Bitcoin ordinals in a completely decentralized and trustless manner fully on chain for the first time.",
+            "status": "",
+            "eta": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Bismuth",
+            "notes": ""
           }
         ]
       },
@@ -1674,11 +1563,11 @@
     ]
   },
   {
-    "name": "Trusted AI",
+    "name": "Decentralized AI",
     "description": "On-chain AI: Verifiable training of AI models and securely running them on the ICP blockchain. Having training data in canisters makes the data untamperable and enables verifiability of the model trained with this data.",
     "milestones": [
       {
-        "name": "On-chain AI inference",
+        "name": "Decentralized fully-on-chain AI inference",
         "description": "ICP can run on-chain AI inference in a fully decentralized manner for the first time. This enables integrity-protected AI models and hence an unhackable AI that you can trust.",
         "milestone_id": "Platinum",
         "eta": "2025-03",
@@ -1698,7 +1587,7 @@
             "notes": ""
           },
           {
-            "title": "Page prefetching",
+            "title": "Performance improvements for paging in memory (prefetching)",
             "overview": "Workloads like AI that require to load a large number of continuous memory pages benefit from prefetching pages to reduce the number of page faults and therefore increase performance.",
             "description": "",
             "status": "",
@@ -1728,6 +1617,20 @@
           {
             "title": "SIMD support for Wasm execution",
             "overview": "SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
+            "description": "",
+            "status": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Platinum",
+            "notes": ""
+          },
+          {
+            "title": "Deterministic inference",
+            "overview": "",
             "description": "",
             "status": "",
             "forum": "",
@@ -2564,58 +2467,6 @@
     "description": "Blockchain-based self-sovereign identity for Web2 and Web3.",
     "milestones": [
       {
-        "name": "Blockchain-based self-sovereign identity (SSI) for Web2 &amp; Web3",
-        "description": "Internet Identity is now a powerful authentication and self-sovereign identity platform. Users can obtain credentials that certify aspects of their identities and use them to selectively reveal attributes when authenticating to both Web2 and Web3 services, while always remaining in full control over their data and privacy.",
-        "milestone_id": "Iron",
-        "eta": "2024-06-18",
-        "elements": [
-          {
-            "title": "Verifiable Credentials",
-            "overview": "Verifiable credentials are digital representations of data (qualifications, achievements, or attributes) that are cryptographically secured and portable, enabling efficient and trustworthy sharing of personal data while maintaining privacy and control.",
-            "description": "The verifiable credentials protocol facilitates the issuance, presentation, and verification of digital credentials in a decentralized and interoperable manner. Based on W3C's Verifiable Credentials Data Model and the work of the IC's Wallet and Identity Standards Working Group, the protocol outlines a structured approach for parties to issue credentials containing information about individuals, digitally sign them using cryptographic methods to ensure integrity and authenticity, and present these credentials to relying parties when needed. Relying parties can then verify the credentials' authenticity by verifying the digital signatures and checking against decentralized or centralized registries as necessary, enabling trustful interactions while preserving individuals' privacy and control over their data.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://github.com/dfinity/wg-identity-authentication",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Iron",
-            "notes": "IC-1522: https://dfinity.atlassian.net/browse/IC-1522; also community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
-          },
-          {
-            "title": "Self-Sovereign Identity (SSI) SDK for Relying Parties",
-            "overview": "Tooling and standards for devs to effortlessly build relying parties for the ICP verifiable credentials functionality.",
-            "description": "Tooling and standards that help community devs to easily build relying parties helps bootstrap a strong identity ecosystem on ICP, providing ICP an edge over other blockchain networks.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Iron",
-            "notes": "forum wishlist; SSI SDK: Framework for DID, DIDDoc, verified credentials, selective disclosure etc."
-          },
-          {
-            "title": "Verifiable credentials playground",
-            "overview": "A dapp that introduces the concepts of verifiable credentials to prospective identity issuers and relying parties to facilitate adoption.",
-            "description": "The verifiable credentials playground comprises both an issuer and a relying party dapp. The dapps implement a full end-to-end experience using ICP's verifiable credentials capabilities. The dapps are intended for educational purposes and can act as a template for issuer and relying party dapps building on the verifiable credentials feature.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Iron",
-            "notes": ""
-          }
-        ]
-      },
-      {
         "name": "orphans_past",
         "description": "Orphans from the past",
         "milestone_id": "none",
@@ -2810,6 +2661,50 @@
         "eta": "none",
         "elements": [
           {
+            "title": "Verifiable Credentials",
+            "overview": "Verifiable credentials are digital representations of data (qualifications, achievements, or attributes) that are cryptographically secured and portable, enabling efficient and trustworthy sharing of personal data while maintaining privacy and control.",
+            "description": "The verifiable credentials protocol facilitates the issuance, presentation, and verification of digital credentials in a decentralized and interoperable manner. Based on W3C's Verifiable Credentials Data Model and the work of the IC's Wallet and Identity Standards Working Group, the protocol outlines a structured approach for parties to issue credentials containing information about individuals, digitally sign them using cryptographic methods to ensure integrity and authenticity, and present these credentials to relying parties when needed. Relying parties can then verify the credentials' authenticity by verifying the digital signatures and checking against decentralized or centralized registries as necessary, enabling trustful interactions while preserving individuals' privacy and control over their data.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://github.com/dfinity/wg-identity-authentication",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Iron",
+            "notes": "IC-1522: https://dfinity.atlassian.net/browse/IC-1522; also community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
+          },
+          {
+            "title": "Verifiable Credentials SDK for Relying Parties",
+            "overview": "We will be providing tooling, libraries and standards so that relying parties looking to integrate to ICPs VC platform can do so correctly and efficiently.",
+            "description": "The next step after the release of ICP's verifiable credential protocol, is to increase its use and make ICP the top platform for self-sovereign identity. We want to facilitiate both web2 and web3 apps to adopt our VC platform.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": true,
+            "milestone_id": "Iron",
+            "notes": "forum wishlist; SSI SDK: Framework for DID, DIDDoc, verified credentials, selective disclosure etc."
+          },
+          {
+            "title": "Verifiable credentials playground",
+            "overview": "A dapp that introduces the concepts of verifiable credentials to prospective identity issuers and relying parties with the aim to facilitate adoption.",
+            "description": "The verifiable credentials playground comprises both an issuer and a relying party dapp. Both dapps implement a full end-to-end experience using ICP's verifiable credentials capabilities. The dapps are intended for educational purposes and can act as a template for issuer and relying party dapps building on ICP's VC platform.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Iron",
+            "notes": ""
+          },
+          {
             "title": "Identity signer standards",
             "overview": "Standards to enable an untrusted relying party (e.g., canister or Web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
             "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
@@ -2826,7 +2721,7 @@
           {
             "title": "Resident passkeys",
             "overview": "Explore the potential of resident passkeys to remove the requirement for users to remember their identity numbers.",
-            "description": "",
+            "description": "We want to double-down on ICP's adoption of passkeys. Passkeys are now used by all the major web2 and web3 players, the aim here is to reduce sign-up and sign-in friction as much as possible by identifying how II can use resident passkeys.",
             "status": "",
             "forum": "",
             "proposal": "",
@@ -2852,8 +2747,8 @@
             "notes": ""
           },
           {
-            "title": "Verifiable Credentials extension allowing issuer FE participation",
-            "overview": "",
+            "title": "Verifiable Credentials protocol extension",
+            "overview": "The current VC protocol only interacts with the issuer backend when credentials are shared. We want to extend the protocol and allow the VC Issuer frontend to participate in credential sharing. This will unlock significant capabitilies including better UX for existing issuers and improved integration when issuers separate front-end and back-end canisters.",
             "description": "",
             "status": "",
             "forum": "",
@@ -2965,11 +2860,11 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": "team does not know how to improve further; ?? Jan"
+            "notes": ""
           },
           {
             "title": "Transaction Approval",
-            "overview": "Allows an untrusted relying party (e.g., canister or Web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
+            "overview": "Allows an untrusted relying party (e.g., canister or Web app) to request from a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
             "description": "Users will be able to confirm and authorize a digital currency transaction initiated through the wallet interface. This will require the user to review the transaction details, such as the recipient address, amount, and any associated fees, before digitally signing the transaction by authenticating with their Internet Identity. ",
             "forum": "",
             "proposal": "",
@@ -3052,8 +2947,8 @@
         "eta": "2024-12",
         "elements": [
           {
-            "title": "Oisy v2",
-            "overview": "",
+            "title": "Self-custody Oisy",
+            "overview": "Shift Oisy's ownership model to a per-user canister. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
             "description": "",
             "status": "in_progress",
             "forum": "",
@@ -3066,8 +2961,8 @@
             "notes": ""
           },
           {
-            "title": "Orbit",
-            "overview": "Multisig-like wallet that can enforce complex access control policies on resources. E.g., requiring 2 out of 3 people to authorize ICP transactions above a defined value threshold.",
+            "title": "Signer standards in Oisy",
+            "overview": "We will upgrade Oisy to support the signer standards. The benefit of signers standards is in fostering a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
             "description": "",
             "status": "in_progress",
             "forum": "",
@@ -3077,6 +2972,28 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Silver",
+            "notes": "https://dfinity.atlassian.net/browse/IC-1710"
+          }
+        ]
+      },
+      {
+        "name": "Institutional wallet support on ICP",
+        "description": "",
+        "milestone_id": "choose-a-metal1",
+        "eta": "",
+        "elements": [
+          {
+            "title": "Orbit institutional-grade wallet",
+            "overview": "Multisig-like wallet that can enforce complex access control policies on resources. E.g., requiring 2 out of 3 people to authorize ICP transactions above a defined value threshold.",
+            "description": "",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "choose-a-metal1",
             "notes": ""
           }
         ]
@@ -3274,10 +3191,10 @@
             "notes": ""
           },
           {
-            "title": "Generic hardware wallet transactions",
-            "overview": "Supporting generic transactions through the Ledger hardware wallet. Going beyond only ICP transfers supports many novel use cases.",
+            "title": "Implement ICRC-21 in Ledger devices",
+            "overview": "The implmentation of ICRC-21 in Ledger devices will allow us to support generic transactions.",
             "description": "",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3300,8 +3217,8 @@
             "notes": "generic support for ck tokens in the wallet"
           },
           {
-            "title": "Full Ledger Live integration",
-            "overview": "Complete integration with Ledger Live, incl. staking, buying, CL cards etc.",
+            "title": "Ledger Live staking integration",
+            "overview": "Ledger live acquires the ability to stake ICP.",
             "description": "",
             "forum": "",
             "proposal": "",
@@ -3311,7 +3228,7 @@
             "status": "",
             "is_community": true,
             "in_beta": false,
-            "notes": "community list"
+            "notes": "https://dfinity.atlassian.net/browse/GIX-2454"
           },
           {
             "title": "ICRC-7/-37 NFT standard in mobile wallets",
@@ -4054,7 +3971,7 @@
             "notes": "final; reviewed by Dimitris"
           },
           {
-            "title": "Mainnet canister logging",
+            "title": "Canister logging",
             "overview": "New APIs for writing and reading canister runtime logs.",
             "description": "This allows a developer to store and retrieve runtime logs of canisters deployed to mainnet through a dedicated memory buffer. The logs survive upgrades and traps and ensure developers are able to record key error data.",
             "forum": "https://forum.dfinity.org/t/canister-logging/21300",
@@ -4363,6 +4280,21 @@
             "imported": true
           },
           {
+            "title": "New project builder and templates",
+            "overview": "More powerful workflows for creating new projects using dfx new.",
+            "description": "The dfx project builder (dfx new) will receive a redesign that includes an improved UI, additional and updated templates, and more configuration options",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "Q1 2024",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "notes": "final; reviewed by Jason; https://dfinity.atlassian.net/browse/IC-1582",
+            "imported": true
+          },
+          {
             "title": "Motoko Stable Regions",
             "overview": "Run-time-based stable memory data structures allocating memory in multiple different regions. Improves Motoko's stable memory support towards towards composable use cases.",
             "description": "The current stable memory module in base has been \"experimental\" for a long time, and requires a more composable API to graduate from this status. <br><br> Stable regions address the problem that today's ExperimentalStableMemory module only provides a single, monolithic memory that makes it unsuitable for directly building composable software parts. <br><br> Stable regions permit a new API that supports composable use cases. <br><br> Stable regions also bring Motoko closer to parity with Rust canister development support today, by giving a run-time-system-based analogue of a special Rust library for stable data structures that allocates “pages” for them from stable memory in separate memory regions.",
@@ -4410,21 +4342,6 @@
             "eta": "Q2 2024",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason",
-            "imported": true
-          },
-          {
-            "title": "New project builder and templates",
-            "overview": "More powerful workflows for creating new projects using dfx new.",
-            "description": "The dfx project builder (dfx new) will receive a redesign that includes an improved UI, additional and updated templates, and more configuration options",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "Q1 2024",
-            "status": "in_progress",
-            "is_community": false,
             "in_beta": false,
             "notes": "final; reviewed by Jason",
             "imported": true
