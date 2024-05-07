@@ -33,8 +33,8 @@ const milestoneElementsToProgress = (milestoneElements: any[]) => {
   );
   const elementsCountDone = elementCount(milestoneElements, "deployed");
 
-  const progressDone = (elementsCountDone / elementsCount);
-  const progressInProgress = (elementsCountInProgress / elementsCount);
+  const progressDone = elementsCountDone / elementsCount;
+  const progressInProgress = elementsCountInProgress / elementsCount;
 
   return (
     <div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
@@ -47,6 +47,43 @@ const milestoneElementsToProgress = (milestoneElements: any[]) => {
         style={{ width: progressInProgress * 100 + "%" }}
       ></div>
     </div>
+  );
+};
+
+const milestoneComponent = (
+  milestone: any, 
+  index: number, 
+  color: string, 
+  overlayTrigger = () => {}
+) => {
+  return (
+    <article
+      key={milestone.name}
+      className="snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
+      style={{
+        background: color,
+      }}
+      onClick={overlayTrigger}
+    >
+      <div className="grow">
+        <h2 className="mb-0">
+          {milestone.milestone_id == "none"
+            ? milestoneName(milestone.name)
+            : milestone.milestone_id}
+        </h2>
+        <p className="text-xs">
+          {milestone.eta != "none" ? (
+            <span>
+              <span className="opacity-35">Milestone</span> {milestone.eta}
+            </span>
+          ) : (
+            <span>&nbsp;</span>
+          )}
+        </p>
+        {milestoneElementsToProgress(milestone.elements)}
+      </div>
+      <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
+    </article>
   );
 };
 
@@ -66,7 +103,9 @@ function indexToColor(index: number, total: number, relI) {
   const relativeIndex = index / total;
   const hue = (relativeIndex * -hueRange + hueStart) % 360;
   if (!relI) {
-    return `linear-gradient(-315deg, hsl(${hue} 30% 25%), hsl(${hue + 5} 80% 25%))`;
+    return `linear-gradient(-315deg, hsl(${hue} 30% 25%), hsl(${
+      hue + 5
+    } 80% 25%))`;
   } else {
     return `hsl(${hue} ${30 + relI * 20}% ${25 - relI * 20}%)`;
   }
@@ -74,7 +113,10 @@ function indexToColor(index: number, total: number, relI) {
 
 function scrollBy(ref: RefObject<T>, direction: 1) {
   const element = ref.current;
-  element.scrollBy({ left: window.innerWidth / 4 * direction, behavior: 'smooth' });
+  element.scrollBy({
+    left: (window.innerWidth / 4) * direction,
+    behavior: "smooth",
+  });
 }
 
 function elementHasOverflown(element: HTMLElement) {
@@ -86,7 +128,9 @@ const RoadmapPage: React.FC = () => {
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
   const [overlayAnchor, setOverlayAnchor] = useState(null);
 
-  const scrollRefs = new Array(data.length).fill('').map(_ => React.useRef(null));
+  const scrollRefs = new Array(data.length)
+    .fill("")
+    .map((_) => React.useRef(null));
 
   function openOverlay(at: number, anchor: number | null = null) {
     document.body.style.overflow = "hidden";
@@ -103,15 +147,17 @@ const RoadmapPage: React.FC = () => {
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
       const rect = entries[0].contentRect;
-      scrollRefs.forEach(ref => {
-        const controls = ref.current.parentElement.querySelectorAll('[data-slidecontrol]');
-        if( elementHasOverflown(ref.current) ) {
+      scrollRefs.forEach((ref) => {
+        const controls = ref.current.parentElement.querySelectorAll(
+          "[data-slidecontrol]"
+        );
+        if (elementHasOverflown(ref.current)) {
           controls.forEach((el: HTMLElement) => {
-            el.classList.remove('hidden')
+            el.classList.remove("hidden");
           });
         } else {
           controls.forEach((el: HTMLElement) => {
-            el.classList.add('hidden')
+            el.classList.add("hidden");
           });
         }
       });
@@ -132,7 +178,7 @@ const RoadmapPage: React.FC = () => {
     >
       <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
 
-      <main className={'w-full overflow-hidden bg-[#0a0023] text-white'}>
+      <main className={"w-full overflow-hidden bg-[#0a0023] text-white"}>
         <section className="">
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
@@ -154,14 +200,22 @@ const RoadmapPage: React.FC = () => {
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
               <h1 className="tw-heading-3">{theme.name}</h1>
-              <p className="tw-paragraph max-w-xs opacity-60">{theme.description}</p>
-              
-              <button data-slidecontrol onClick={
-                scrollBy.bind(null, scrollRefs[indexTheme], -1)
-              }>prev </button>
-              <button data-slidecontrol onClick={
-                scrollBy.bind(null, scrollRefs[indexTheme], 1)
-              }>next </button>
+              <p className="tw-paragraph max-w-xs opacity-60">
+                {theme.description}
+              </p>
+
+              <button
+                data-slidecontrol
+                onClick={scrollBy.bind(null, scrollRefs[indexTheme], -1)}
+              >
+                prev{" "}
+              </button>
+              <button
+                data-slidecontrol
+                onClick={scrollBy.bind(null, scrollRefs[indexTheme], 1)}
+              >
+                next{" "}
+              </button>
               <section
                 ref={scrollRefs[indexTheme]}
                 data-scroll={indexTheme}
@@ -173,37 +227,15 @@ const RoadmapPage: React.FC = () => {
               >
                 {theme.milestones.map(
                   (milestone, index) =>
-                    milestone.elements.length > 0 && (
-                      <article
-                        key={milestone.name}
-                        className="snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
-                        style={{
-                          background: indexToColor(indexTheme, data.length, index / theme.milestones.length),
-                        }}
-                        onClick={() => openOverlay(indexTheme, index)}
-                      >
-                        <div className="grow">
-                          <h2 className="mb-0">
-                            {milestone.milestone_id == "none"
-                              ? milestoneName(milestone.name)
-                              : milestone.milestone_id}
-                          </h2>
-                          <p className="text-xs">
-                            {milestone.eta != "none" ? (
-                              <span>
-                                <span className="opacity-35">Milestone</span>{" "}
-                                {milestone.eta}
-                              </span>
-                            ) : (
-                              <span>&nbsp;</span>
-                            )}
-                          </p>
-                          {milestoneElementsToProgress(milestone.elements)}
-                        </div>
-                        <p className="mb-0 mt-5">
-                          {milestoneName(milestone.name)}
-                        </p>
-                      </article>
+                    milestone.elements.length > 0 && milestoneComponent(
+                      milestone, 
+                      index, 
+                      indexToColor(
+                        indexTheme,
+                        data.length,
+                        index / theme.milestones.length
+                      ),
+                      () => openOverlay(indexTheme, index)
                     )
                 )}
               </section>
