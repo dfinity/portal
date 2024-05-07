@@ -15,7 +15,7 @@ The canister was called with a method name not exported by that canister.
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister has no update method 'foobar'.
+  Canister has no update method 'foobar'.
 ```
 
 To fix this error, consider:
@@ -32,7 +32,7 @@ The canister reached the maximum number of allowed instructions before completin
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister exceeded the instruction limit for single message execution.
+  Canister exceeded the instruction limit for single message execution.
 ```
 
 Instruction limits differ depending on the message type and can be found in the [documentation on resource limits][limits].
@@ -45,7 +45,7 @@ The canister encountered a WebAssembly trap.
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister trapped: <WebAssembly error>
+  Canister trapped: <WebAssembly error>
 ```
 
 Some examples of WebAssembly operations that will trap are out-of-bounds accesses, integer division by zero, the `unreachable` instruction, etc. Further information can be found in the [WebAssembly documentation](https://webassembly.github.io/spec/core/index.html).
@@ -58,7 +58,7 @@ The canister aborted execution by calling the `ic0.trap` API.
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister called `ic0.trap` with message: <Canister error message>
+  Canister called `ic0.trap` with message: <Canister error message>
 ```
 
 When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](https://internetcomputer.org/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
@@ -71,7 +71,7 @@ The canister exists, but has no Wasm module installed.
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Attempted to execute a message, but the canister contains no Wasm module.
+  Attempted to execute a message, but the canister contains no Wasm module.
 ```
 
 Canisters can [exist without having Wasm code installed](https://internetcomputer.org/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-uninstall_code).
@@ -86,7 +86,7 @@ The canister was tried to request more memory than its allocation allowed during
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister exceeded its allowed memory allocation.
+  Canister exceeded its allowed memory allocation.
 ```
 
 There are [system wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
@@ -121,7 +121,7 @@ The canister tried to perform a large copy that cannot be performed in a single 
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister attempted to perform a large memory operation that used N instructions and exceeded the slice limit M.
+  Canister attempted to perform a large memory operation that used N instructions and exceeded the slice limit M.
 ```
 
 In order to maintain a consistent block rate, there is a limit on the number of operations ICP can perform within a single round. A single large copy (possibly to or from stable memory, or within the main heap) could be too large to execute within a single round and cannot be automatically broken up into smaller copies.
@@ -134,7 +134,7 @@ The amount of data that the canister tried to read or write from stable memory e
 
 An example of this error is:
 ```
-  Error from Canister xxx-xxx: Canister exceeded memory access limits: Exceeded the limit for the number of modified pages in the stable memory in a single message execution: limit: 8388608 KB.
+  Canister exceeded memory access limits: Exceeded the limit for the number of modified pages in the stable memory in a single message execution: limit: 8388608 KB.
 ```
 
 Although the stable memory of a canister can hold 100s of GiBs of data, each individual message needs to execute within a round and so is limited to reading and writing only a portion of that data. Current limits can be found in the page on [ICP limits][limits].
