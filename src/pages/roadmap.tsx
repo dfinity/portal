@@ -27,7 +27,7 @@ const milestoneComponent = (
   overlayTrigger = () => {}
 ) => {
   const style = { "--color": color } as React.CSSProperties;
-  let wrapperClasses = "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--sml)]";
+  let wrapperClasses = "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
   const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
@@ -225,10 +225,10 @@ const RoadmapPage: React.FC = () => {
                 ref={scrollRefs[indexTheme]}
                 data-scroll={indexTheme}
                 aria-label="milestones"
-                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8 w-full scrollbar-hide box-border pl-[var(--sml)] pr-[var(--sml)]"
+                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
                 style={{
                   scrollbarWidth: "none",
-                  '--sml': 'calc((100dvw - 1214px) / 2 + 50px)',
+                  '--offcut': 'max(0rem, calc((100dvw - 1214px) / 2 + 50px))',
                 } as React.CSSProperties}
               >
                 {theme.milestones.map(
