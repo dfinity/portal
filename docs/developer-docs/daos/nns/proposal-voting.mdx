@@ -38,14 +38,32 @@ There are at least two ways how neurons to follow can be found and set in a neur
 * A user with an actively voting neuron who is offering to be followed can communicate their neuron ID to others, for example on the forum or their website. Other neurons can then [follow them](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#step-5-enter-a-neuron-id-to-follow-or-select-a-group-of-neurons-from-the-menu-provided) using this neuron ID.
 * A user with an actively voting neuron who is offering to be followed can register a **known neuron**, also called **named neuron**, in the NNS governance canister. Neurons who would like to follow others can see a list of all registered neurons with their name and optionally a short description and can just select one of them to follow (without having to remember an ID).
 
-### How to become a known neuron
+## How to become a known neuron
+To become a known neuron in the NNS DAO, you first need to create a neuron and then submit an NNS proposal to register the known neuron in the NNS governance. After that it will be visible to all NNS DAO users who are setting up their following.
+A know neuron can have a name and optionally a short description. Often the owers use this to describe the principle according to which they plan to vote and the proposal topics which the known neuron will vote on.
+Recall that following is done based on proposal topics, so this is relevant information for followers as they want to follow neurons that vote in order not to miss out on [voting rewards](./staking-voting-rewards.mdx).
 
-Create a neuron: https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#stake-icp-utility-tokens-in-a-neuron
-Register your neuron as a known neurons with a name and a description
+### Create and set up a neuron
+There are multiple options how to create and set up a neuron that is then registered as a know neuron.
+A known neuron can be operated by an individual person or a centralized organization or it can be operated by a group of people.
+Depending on this, different neuron creation options might be more suitable.
 
-- Submit a proposal:
+If you would like to create a known neuron that is operated by one party that knows the neuron's controlling key and can change the neuron, you can use one of the following options:
+* [Create the neuron on the NNS dapp](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#stake-icp-utility-tokens-in-a-neuron).
+* Create the neuron on the NNS dapp but controlled by a hardware ledger wallet. //TODO: link??
+* Create the neuron via the quill command line tool. //TODO: link??
 
-voting is then as with any other neuron
+If you would like to create a decentralized know neuron operated by a group, where no single member can change the neuron without agreement from others, you can use one of the following options:
+* Create a neuron that is controlled by a canister which is governed by a DAO. (Note: in the future canister-controlled neurons might get less rewards. This is something still discussed with the community but should be accountd for when choosing the neuron setup.)
+* Create a neuron for which no one knows the controlling key and which is operated only by manage-neuron proposals.
 
-##Notes
-Link to [voting rewards](./staking-voting-rewards.mdx)
+### Register the neuron as a known neuron
+To register a neuron as a know neuron, you need to submit a NNS proposal. The proposal can be submitted by any neuron that has has at least 10 ICP staked.
+
+To submit a proposal, you require the following setup
+```TODO
+```
+
+Next you can choose a name and a description for your neuron and submit a proposal to register it as follows.
+```TODO
+```
