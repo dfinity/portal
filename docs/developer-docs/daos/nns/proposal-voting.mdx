@@ -8,45 +8,33 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
-The NNS DAO is an open governance system where everyone can become a participant by staking some ICP in a neuron.
-Thus, any user can get voting rights by [staking some ICP in a neuron](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#stake-icp-utility-tokens-in-a-neuron) and locking the tokens for at least 6 months (called the neuron's dissolve delay).
+The NNS DAO is an open governance system where everyone can become a participant by staking some ICP in a neuron. Thus, any user can get voting rights by [staking some ICP in a neuron](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#stake-icp-utility-tokens-in-a-neuron) and locking the tokens for at least 6 months (called the neuron's dissolve delay).
 
 ## Finding proposals and discussions
 
-You can see all the NNS proposals on the [Internet Computer dashboard](https://dashboard.internetcomputer.org/governance) or on the [NNS dapp](https://nns.ic0.app/).
-Voters can freely discuss proposal anywhere they like. A lot of NNS proposals are discussed on the [developer forum](https://forum.dfinity.org/c/roadmap/29).
+You can see all the NNS proposals on the [Internet Computer dashboard](https://dashboard.internetcomputer.org/governance) or on the [NNS dapp](https://nns.ic0.app/). Voters can freely discuss proposal anywhere they like. A lot of NNS proposals are discussed on the [developer forum](https://forum.dfinity.org/c/roadmap/29).
 
 ## Direct voting
 When a user has an eligible neuron and would like to vote on an open proposal, one option is to directly vote to adopt or reject the proposal. Currently, the most user-friendly way to first find the open proposals that a user can vote on and to then cast a vote is via the NNS Frontend dapp: https://nns.ic0.app/ as explained [here](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#vote-on-proposals).
 
 ## Liquid democracy / Following
-Users may not have the time or knowledge to participate in all voting decisions.
-Therefore, instead of directly voting on proposals, neuron holders may choose to delegate their vote to other neurons that
- they trust with certain decisions. This concept of delegating the right to vote to other voters who then effectively vote
- with more voting power is called **liquid democracy**.
- In the NNS DAO, this is also called **following**, as a neuron follows the decision of some other neurons.
- The liquid democracy allows even neurons that do not have enough knowledge of a certain topic to participate
- in governance by choosing the neurons that they trust with certain decisions.
+Users may not have the time or knowledge to participate in all voting decisions. Therefore, instead of directly voting on proposals, neuron holders may choose to delegate their vote to other neurons that they trust with certain decisions. This concept of delegating the right to vote to other voters who then effectively vote with more voting power is called **liquid democracy**. In the NNS DAO, this is also called **following**, as a neuron follows the decision of some other neurons. The liquid democracy allows even neurons that do not have enough knowledge of a certain topic to participate in governance by choosing the neurons that they trust with certain decisions.
 
 ### How to follow a neuron
-Concretely, proposals are grouped into different [**proposal topics**](./proposal-voting.mdx#Proposal topics and types) and following is done on a per-topic basis.
-Refer to [this documentation](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) for more information about how you can set up your neuron to follow a group of other neurons.
+Concretely, proposals are grouped into different [**proposal topics**](./proposal-voting.mdx#Proposal topics and types) and following is done on a per-topic basis. Refer to [this documentation](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) for more information about how you can set up your neuron to follow a group of other neurons.
 
 ### How to find neurons to follow
 In order for some neurons to follow others, there need to be some voting neurons that can be followed.
-There are at least two ways how neurons to follow can be found and set in a neuron:
+
+There are two ways how neurons to follow can be found and set in a neuron:
 * A user with an actively voting neuron who is offering to be followed can communicate their neuron ID to others, for example on the forum or their website. Other neurons can then [follow them](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#step-5-enter-a-neuron-id-to-follow-or-select-a-group-of-neurons-from-the-menu-provided) using this neuron ID.
 * A user with an actively voting neuron who is offering to be followed can register a **known neuron**, also called **named neuron**, in the NNS governance canister. Neurons who would like to follow others can see a list of all registered neurons with their name and optionally a short description and can just select one of them to follow (without having to remember an ID).
 
 ## How to become a known neuron
-To become a known neuron in the NNS DAO, you first need to create a neuron and then submit an NNS proposal to register the known neuron in the NNS governance. After that it will be visible to all NNS DAO users who are setting up their following.
-A know neuron can have a name and optionally a short description. Often the owers use this to describe the principle according to which they plan to vote and the proposal topics which the known neuron will vote on.
-Recall that following is done based on proposal topics, so this is relevant information for followers as they want to follow neurons that vote in order not to miss out on [voting rewards](./staking-voting-rewards.mdx).
+To become a known neuron in the NNS DAO, you first need to create a neuron and then submit an NNS proposal to register the known neuron in the NNS governance. After that it will be visible to all NNS DAO users who are setting up their following. A know neuron can have a name and optionally a short description. Often the owers use this to describe the principle according to which they plan to vote and the proposal topics which the known neuron will vote on. Recall that following is done based on proposal topics, so this is relevant information for followers as they want to follow neurons that vote in order not to miss out on [voting rewards](./staking-voting-rewards.mdx).
 
 ### Create and set up a neuron
-There are multiple options how to create and set up a neuron that is then registered as a know neuron.
-A known neuron can be operated by an individual person or a centralized organization or it can be operated by a group of people.
-Depending on this, different neuron creation options might be more suitable.
+There are multiple options how to create and set up a neuron that is then registered as a know neuron. A known neuron can be operated by an individual person or a centralized organization or it can be operated by a group of people. Depending on this, different neuron creation options might be more suitable.
 
 If you would like to create a known neuron that is operated by one party that knows the neuron's controlling key and can change the neuron, you can use one of the following options:
 * [Create the neuron on the NNS dapp](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#stake-icp-utility-tokens-in-a-neuron).
