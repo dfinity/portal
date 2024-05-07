@@ -444,8 +444,11 @@ function WhatIsIcpPage() {
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-2 text-left">
                   <strong>What it is: </strong>Protocols usually develop slowly as building consensus takes time. 
                   A key feature of ICP among blockchains is its ability to frequently 
-                  update without losing decentralization. ICP self-upgrades through the 
-                  NNS DAO, and since its launch, it has undergone hundreds of upgrades. 
+                  update without losing decentralization. ICP self-upgrades through the&nbsp;  
+                  <a href="https://medium.com/dfinity/the-network-nervous-system-governing-the-internet-computer-1d176605d66a">
+                  NNS DAO,
+                  </a>
+                  &nbsp;and since its launch, it has <a href="https://dashboard.internetcomputer.org/governance">undergone hundreds of upgrades.</a> 
                 </p>
 
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph text-left">
@@ -511,8 +514,11 @@ function WhatIsIcpPage() {
                 <h3 className="tw-lead my-3 md:tw-title-sm">Asynchronous execution</h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-2 text-left">
                   <strong>What it is: </strong>Smart contracts run in an asynchronous 
-                  environment (as opposed to Ethereum's synchronous model). This is because in a synchronous environment
-                  the "whole world waits" for one's smart contract transactions. This is easy for a 
+                  environment (as opposed to Ethereum's synchronous model). This is because in a&nbsp;  
+                  <a href="/how-it-works/architecture-of-the-internet-computer/#asynchronous-messaging">
+                  synchronous environment
+                  </a>
+                  &nbsp;the "whole world waits" for one's smart contract transactions. This is easy for a 
                   developer to reason about but it comes with large performance penalties.
                   ICP has an asynchronous environment to enable many smart contracts to be processing simultaneously.
                   The implication of this design decision: a more complex programming model for web3 developers, 
@@ -536,8 +542,10 @@ function WhatIsIcpPage() {
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-2 text-left">
                   <strong>What it is: </strong>
                   Blockchains get their security from replication, having many computers do the same computations 
-                  and check each others work. This is great for security, but also inefficient, as many computers redo the same work.
-                  Deterministic decentralization algorithmically maximizes decentralization and security while minimizing replication. 
+                  and check each others work. This is great for security, but also inefficient, as many computers redo the same work.&nbsp; 
+                  <a href="https://wiki.internetcomputer.org/wiki/Deterministic_Decentralization">
+                  Deterministic decentralization
+                  </a>&nbsp;algorithmically maximizes decentralization and security while minimizing replication. 
                   The decentralization maximized include: number of unique node providers, their location, their data centers, etc... 
                   The implication of this design 
                   decision: The replication factor is not as high as it is on Bitcoin 
@@ -562,8 +570,9 @@ function WhatIsIcpPage() {
                 <h3 className="tw-lead my-3 md:tw-title-sm">WebAssembly (Wasm)</h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-2 text-left">
                   <strong>What it is: </strong>WebAssembly is a widely accepted open 
-                  standard for binary formats. ICP uses WebAssembly to handle the 
-                  binary format of its smart contracts. This allows developers to 
+                  standard for binary formats.&nbsp; 
+                  <a href="/capabilities/webassembly/"> ICP uses WebAssembly</a>
+                  &nbsp;to handle the binary format of its smart contracts. This allows developers to 
                   write smart contracts in many popular programming languages with 
                   minimal extra development effort, thanks to the available mappings 
                   from these languages to WebAssembly.
@@ -585,8 +594,15 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">Reverse gas</h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-2 text-left">
-                  <strong>What it is: </strong>Allows users to interact with smart contracts 
-                  without holding a token.
+                  <strong>What it is: </strong>The&nbsp;  
+                  
+                  <a href="https://internetcomputer.org/docs/current/developer-docs/gas-cost/#the-reverse-gas-model">
+                  reverse gas model
+                  </a>
+                  &nbsp;enables developers to prepay gas fees by loading 
+                  their smart contracts with 'cycles.' This allows users to interact with these contracts without needing 
+                  tokens or a wallet, simplifying entry into Web3. By removing common barriers, this 
+                  model offers a user experience similar to traditional web applications, facilitating easier adoption.
                 </p>
 
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph text-left">
@@ -605,8 +621,8 @@ function WhatIsIcpPage() {
                 />
                 <h3 className="tw-lead my-3 md:tw-title-sm">Smart contracts serve web assets</h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-2 text-left">
-                  <strong>What it is: </strong>Users interact with smart contracts through 
-                  a standard browser without needing plugins or custom software.
+                  <strong>What it is: </strong>Users interact with smart contracts through a&nbsp;
+                  <a href="/capabilities/serve-web-content/">standard browser</a>&nbsp;without needing plugins or custom software.
                 </p>
 
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph text-left">
