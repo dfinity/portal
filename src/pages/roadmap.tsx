@@ -25,30 +25,6 @@ function elementCount(milestoneElements: any[], status: string) {
     .length;
 }
 
-const milestoneElementsToProgress = (milestoneElements: any[]) => {
-  const elementsCount = milestoneElements.length;
-  const elementsCountInProgress = elementCount(
-    milestoneElements,
-    "in_progress"
-  );
-  const elementsCountDone = elementCount(milestoneElements, "deployed");
-
-  const progressDone = elementsCountDone / elementsCount;
-  const progressInProgress = elementsCountInProgress / elementsCount;
-
-  return (
-    <div className="flex rounded-xl overflow-hidden p-0.5 bg-white">
-      <div
-        className="h-1 bg-[#1e3640] rounded-xl"
-        style={{ width: progressDone * 100 + "%" }}
-      ></div>
-      <div
-        className="h-1 bg-green rounded-xl"
-        style={{ width: progressInProgress * 100 + "%" }}
-      ></div>
-    </div>
-  );
-};
 
 const milestoneComponent = (
   milestone: any, 
@@ -85,14 +61,14 @@ const milestoneComponent = (
           <strong className="">{milestone.name === "orphans_past" ? "Past features" : "Future features"}</strong>
         </div>
       ) : (
-        <div className="grow">
-          <div className="max-w-72">
+        <div className="flex min-h-full">
+          <div className="grow">
             <h2 className="mb-0 tw-heading-4 uppercase">
               {milestone.milestone_id == "none"
                 ? milestoneName(milestone.name)
                 : milestone.milestone_id}
             </h2>
-            <p className="text-xs">
+            <p className="text-xs mb-0">
               {milestone.eta != "none" ? (
                 <span>
                   <span className="opacity-35">Milestone</span> {milestone.eta}
@@ -101,8 +77,11 @@ const milestoneComponent = (
                 <span>&nbsp;</span>
               )}
             </p>
-            {milestoneElementsToProgress(milestone.elements)}
-            <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
+            <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
+          </div>
+          <div className="self-end">
+            <strong className="block text-[120px] font-light leading-none text-right">{milestone.elements!.length}</strong>
+            <strong>Feature{milestone.elements!.length > 1 ? 's' : ''}</strong>
           </div>
         </div>
       )}
@@ -221,7 +200,7 @@ const RoadmapPage: React.FC = () => {
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
               <h1 className="tw-heading-3">{theme.name}</h1>
-              <p className="tw-paragraph max-w-xs opacity-60">
+              <p className="tw-paragraph max-w-sm opacity-60">
                 {theme.description}
               </p>
 
