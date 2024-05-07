@@ -1,8 +1,6 @@
 import Link from "@docusaurus/Link";
 import roadmapData from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
 
-import BlobPurple from "@site/static/img/purpleBlurredCircle.webp";
-import GithubIcon from "@site/static/img/svgIcons/github.svg";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,11 +8,8 @@ import React, { RefObject, useState, useEffect } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
-import DomainCard from "../components/RoadmapPage/DomainCard";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
-import { FormDescription } from "@site/docs/references/samples/motoko/ic-pos/src/icpos_frontend/components/ui/form";
-import { theme } from "@site/tailwind.config";
 
 const MotionLink = motion(Link);
 
