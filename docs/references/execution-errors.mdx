@@ -111,7 +111,7 @@ An example of this error is:
   Canister tried to allocate pages reserved for upgrading older versions of Motoko.
 ```
 
-Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
+Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
 
 To fix this error, upgrade to the [latest version of `dfx`](https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation) which will use a newer version of Motoko.
 
