@@ -8,31 +8,31 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
-## Proposal format
+## Overview
 
 Each proposal submitted to the NNS has the following fields:
 
-* **Summary**: Text providing a short description of the proposal, composed using a maximum of 280 bytes.
+* **Summary**: Text providing a short description of the proposal using a maximum of 280 bytes.
 
-* **URL**: The web address of additional content required to evaluate the proposal, specified using HTTPS. For example, the address might describe content supporting the assignment of a DCID (data center id) to a new data center.
+* **URL**: The web address of additional content required to evaluate the proposal, specified using HTTPS. For example, the URL's content might describe supporting the assignment of a DCID (data center ID) to a new data center.
 
-* **Proposer**: The ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. The balance needs to be enough to pay the charge on (all) rejection(s). The NNS requires a neuron to have a dissolve delay of ≥ 6 months to vote, and which also applies to submitting proposals.
+* **Proposer**: The ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. The balance needs to be enough to pay the charge on all rejection(s). The NNS requires a neuron to have a dissolve delay of ≥ 6 months to vote, which also applies to submitting proposals.
 
-* **Proposal Type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](./proposal-voting).
+* **Proposal type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](./proposal-voting).
 
 * **Parameters**: The parameters that will be passed to the system function and invoked if the proposal is adopted, as determined by its type. When a proposal is submitted, the NNS checks these parameters.
 
 The NNS assigns a unique identity to each proposal that it receives.
 
-## Proposal topics & types
+## Proposal topics and types
 
-Each proposal is of a _proposal type_, which determines what happens if the proposal is adopted or rejected. Technically this defines which canister method is invoked with which arguments.
-Each type of proposal belongs to a specific _proposal topic_. Topics are used for [following](TODO) and also determine some other details about how the proposal is processed.
+Each proposal has a **proposal type**, which determines what happens if the proposal is adopted or rejected. This defines which canister method is invoked with which arguments.
+Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](TODO) and also determine some other details about how the proposal is processed.
 For example, the voting period and the voting reward weight are defined per topic.
 
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
 
-### Topic NetworkCanisterManagement
+### Topic: `NetworkCanisterManagement`
 Installing and upgrading _system canisters_ that belong to the network.
 This includes the NNS DAO canisters, such as the governance and root canister, the ICP ledger canister with archive and index,
 other canister on the system subnets such as Internet Identity (II),
@@ -45,39 +45,50 @@ and the Wasm version of the SNS canisers (governance, root, ledger, swap). // TO
 * HardResetNnsRootToVersion: Uninstall and Install Root with the WASM provided in the function.  If InitArgs are provided They will be passed to the canister_init function of the WASM provided. This function is meant as a Break Glass mechanism for when an open call context in the Root canister is preventing root or another canister from upgrading.
 * StopOrStartNnsCanister: Stop or start an NNS canister. Usually this is done as part of a canister upgrade, but this proposal offers the flexibility to just start or stop a canister if needed.
 
-The following are specific for SNS canisters.
-* AddSnsWasm: Add a new SNS canister WASM to SNS-W. All SNS DAOs can then upgrade to new version along the upgrade path defined in SNS-W. //TODO: (link to SNS page).
-* InsertSnsWasmUpgradePathEntries: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
-The following proposal is specific for the bitcoin canister:
-* BitcoinSetConfig: //TODO: https://dashboard.internetcomputer.org/proposal/129394
+The following proposal types are specific for SNS canisters:
+
+* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in SNS-W. //TODO: (link to SNS page).
+* `InsertSnsWasmUpgradePathEntries`: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
+
+The following proposal type is specific for the Bitcoin canister:
+* `BitcoinSetConfig`: //TODO: https://dashboard.internetcomputer.org/proposal/129394
 
 **How to verify NNS core canister upgrades**
-If you are looking to verify NNS core canister upgrades, apart from regularly checking open proposals,
-you might want to consider the following information for proposal submitted by the DFINITY foundation.
-* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the
-  following sub-directories are relevant: `rs/rosetta-api/icp_ledger/src`, `rs/rosetta-api/ledger_core`, `rs/rosetta-api/ledger_canister_core`,
-  `rs/packages/icrc-ledger_types`, `rs/registry/canister`, `rs/nns/governance`, `rs/rosetta-api/ledger_canister/ledger`,
-   `rs/rosetta-api/icp_ledger/archive`, `rs/nns/handlers/root/impl`, `rs/nns/cmc`, `rs/nns/handlers/lifeline`,
-   `rs/nns/gtc`, `rs/nns/identity`, `rs/nns/nns-ui`, `rs/nns/sns-wasm`.
+If you are looking to verify NNS core canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
+
+* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant: 
+      - `rs/rosetta-api/icp_ledger/src`
+      - `rs/rosetta-api/ledger_core`
+      - `rs/rosetta-api/ledger_canister_core`
+      - `rs/packages/icrc-ledger_types`
+      - `rs/registry/canister`
+      - `rs/nns/governance`
+      - `rs/rosetta-api/ledger_canister/ledger`,
+      - `rs/rosetta-api/icp_ledger/archive`
+      - `rs/nns/handlers/root/impl`
+      - `rs/nns/cmc`
+      - `rs/nns/handlers/lifeline`,
+      - `rs/nns/gtc`
+      - `rs/nns/identity`
+      - `rs/nns/nns-ui`
+      - `rs/nns/sns-wasm`
+      
 * NNS core canister upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
-* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit
-in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
 
 
 **How to verify ledger canister upgrades**
-If you are looking to verify the ledger suite, which includes the ICP ledger but also all ICRC ledger (used for ckBTC, ckETC, ckERC20),
-apart from regularly checking open proposals, you might want to consider the following information for proposal submitted by the DFINITY foundation.
+If you are looking to verify the ledger suite, which includes the ICP ledger and all ICRC ledgers (used for ckBTC, ckETC, ckERC20) apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 //TODO
 
 
-**How to verify Internet Identity upgrades**
-If you are looking to verify Internet Identity (II) canister upgrades, apart from regularly checking open proposals,
-you might want to consider the following information for proposal submitted by the DFINITY foundation.
-* For updates to the II canister, you can find the code in [this repository](https://github.com/dfinity/internet-identity).
+## How to verify Internet Identity upgrades
+
+If you are looking to verify [Internet Identity (II)](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview) canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
+
+* For updates to the II canister, you can find the code in [the II repository](https://github.com/dfinity/internet-identity).
 * Each proposal points to the relevant commit that was used.
-* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided git commit in the proposal
-itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486))
-and in the []Github release pages](https://github.com/dfinity/internet-identity/releases).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486)) and in the [Github release pages](https://github.com/dfinity/internet-identity/releases).
 
 **How to verify SNS canister Wasm upgrades**
 If you are looking to verify SNS canister Wasm upgrades, apart from regularly checking open proposals,
