@@ -91,7 +91,7 @@ An example of this error is:
 
 There are [system wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
 
-In addition, canisters may reserve memory using the [`memory-allocation` setting](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8). In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
+In addition, canisters may reserve memory using the [`memory-allocation` setting](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8). In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
 
 To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
 
