@@ -56,33 +56,51 @@ const milestoneComponent = (
   color: string, 
   overlayTrigger = () => {}
 ) => {
+  let wrapperClasses = "snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col";
+  const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
+  console.log(milestone)
+  if (isOrphan) {
+    wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+  } else {
+    wrapperClasses += ` bg-[var(--color)]`;
+  }
+
+  const style = { "--color": color } as React.CSSProperties;
+
   return (
     <article
       key={milestone.name}
-      className="snap-always snap-start text-white rounded-md w-64 basis-64 shrink-0 grow-0 p-6 flex flex-col"
-      style={{
-        background: color,
-      }}
+      className={wrapperClasses}
+      style={style}
       onClick={overlayTrigger}
     >
-      <div className="grow">
-        <h2 className="mb-0">
-          {milestone.milestone_id == "none"
-            ? milestoneName(milestone.name)
-            : milestone.milestone_id}
-        </h2>
-        <p className="text-xs">
-          {milestone.eta != "none" ? (
-            <span>
-              <span className="opacity-35">Milestone</span> {milestone.eta}
-            </span>
-          ) : (
-            <span>&nbsp;</span>
-          )}
-        </p>
-        {milestoneElementsToProgress(milestone.elements)}
-      </div>
-      <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
+      {isOrphan ? (
+        <div className="grow">
+          <strong className="block text-[120px] font-light leading-none">{milestone.elements!.length}</strong>
+          <strong className="">{milestone.name === "orphans_past" ? "Past features" : "Future features"}</strong>
+        </div>
+      ) : (
+        <div className="grow">
+          <div>
+            <h2 className="mb-0">
+              {milestone.milestone_id == "none"
+                ? milestoneName(milestone.name)
+                : milestone.milestone_id}
+            </h2>
+            <p className="text-xs">
+              {milestone.eta != "none" ? (
+                <span>
+                  <span className="opacity-35">Milestone</span> {milestone.eta}
+                </span>
+              ) : (
+                <span>&nbsp;</span>
+              )}
+            </p>
+            {milestoneElementsToProgress(milestone.elements)}
+          </div>
+          <p className="mb-0 mt-5">{milestoneName(milestone.name)}</p>
+        </div>
+      )}
     </article>
   );
 };
@@ -102,13 +120,11 @@ function indexToColor(index: number, total: number, relI) {
   const hueRange = 200;
   const relativeIndex = index / total;
   const hue = (relativeIndex * -hueRange + hueStart) % 360;
-  if (!relI) {
-    return `linear-gradient(-315deg, hsl(${hue} 30% 25%), hsl(${
-      hue + 5
-    } 80% 25%))`;
-  } else {
+  /*if (!relI) {*/
+    return `hsl(${hue.toFixed(2)} 40% 25%)`;
+  /*} else {
     return `hsl(${hue} ${30 + relI * 20}% ${25 - relI * 20}%)`;
-  }
+  }*/
 }
 
 function scrollBy(ref: RefObject<T>, direction: 1) {

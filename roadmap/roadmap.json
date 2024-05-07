@@ -4,10 +4,11 @@
     "description": "Blockchain Singularity — all computations of the world can run on ICP.",
     "milestones": [
       {
-        "name": "End-to-end message processing latency reduction",
-        "description": "Reducing the end-to-end client-perceived latency of ingress message processing through a combination of multiple approaches.",
+        "name": "Reduced end-to-end latency",
+        "description": "User-perceived end-to-end latency for processing ingress messages is decreased by measures at different levels of the protocol stack: an optimized P2P layer, synchronous ingress submission, and geo-aware routing capabilities of Boundary Nodes. This milestone marks a significant reduction in perceived end-to-end latency and brings user experience closer to Web2.",
         "milestone_id": "Iridium",
         "eta": "Q3 2024",
+        "status": "in_progress",
         "elements": [
           {
             "title": "QUIC-based transport and P2P layer for consensus",
@@ -73,9 +74,10 @@
       },
       {
         "name": "Improved storage capacity and throughput",
-        "description": "Improved storage capacity and ingress throughput for subnets.",
-        "milestone_id": "iacp-2",
+        "description": "Storage capacity of ICP subnets is substantially increased, as is storage per canister smart contract. This allows the world's largest smart contracts to grow even larger, far surpassing smart contracts on other chains. The size of ingress messages and ingress bandwidth is increased resulting in more flexibility through large ingress messages as well as more bandwidth.",
+        "milestone_id": "Niobium-tbd",
         "eta": "",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Log-structured merge tree (LSMT) storage layer",
@@ -89,7 +91,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "iacp-2",
+            "milestone_id": "Niobium-tbd",
             "notes": "@David: as discussed, this is now a separate item, the other one is in the deployed section; please fill in the details as you see fit"
           },
           {
@@ -104,7 +106,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "iacp-2",
+            "milestone_id": "Niobium-tbd",
             "notes": "Lgtm from Ulan if David is okay with it; David: LGTM as well.",
             "imported": true
           },
@@ -120,7 +122,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "iacp-2",
+            "milestone_id": "Niobium-tbd",
             "notes": "?? maybe 500 GB to make it news"
           },
           {
@@ -135,7 +137,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "iacp-2",
+            "milestone_id": "Niobium-tbd",
             "notes": ""
           }
         ]
@@ -1085,9 +1087,10 @@
     "milestones": [
       {
         "name": "ICP’s Chain Fusion technology has full support for EVM chains",
-        "description": "This milestone enables chain fusion for the Ethereum network and EVM chains in general.  It will enable canister smart contracts to hold and transaction tokens on these chains and interact with their smart contracts. You will be able to build dapps that combine the best of each chain.",
+        "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains: ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a completely trustless manner using chain-key ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, freely transfer tokens across chains, and call smart contracts on other chains or be called by such.",
         "milestone_id": "Dilithium",
         "eta": "2024-05-23",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Chain-key ECDSA signing latency & throughput improvements",
@@ -1138,10 +1141,11 @@
         ]
       },
       {
-        "name": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes",
-        "description": "This milestone enables chain fusion for the Bitcoin network, enabling fully decentralized support of Bitcoin ordinals and runes. This milestone completes the full enablement of Bitcoin with smart contracts through ICP's advanced chain-key cryptography functionalities. You will be able to build dapps that combine the best of Bitcoin and ICP seamlessly.",
+        "name": "ICP’s Chain Fusion technology has full support for Bitcoin ordinals protocols",
+        "description": "ICP’s Chain Fusion technology has full support for Bitcoin ordinals protocols such as BRC20 and Runes. So far, ICPs fully-on-chain capabilities have been constrained to Bitcoin being used as a means of value transfer. This milestone provides additional functionality that enables smart contracts to index and issue ordinals in a completely decentralized manner for the first time, thereby putting ICP into a unique position.",
         "milestone_id": "Bismuth",
         "eta": "2024-07-25",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Chain-key signing - Multiple keys per subnet",
@@ -1195,9 +1199,10 @@
         "description": "This milestone enables Chain Fusion for the Solana network. This removes the gap between Solana and ICP and allows for building smart contracts that combine the powers of the two networks. Smart contracts on either network will be able to call smart contracts on the other network.",
         "milestone_id": "Holmium",
         "eta": "Q4 2024",
+        "status": "future",
         "elements": [
           {
-            "title": "Threshold EdDSA signatures",
+            "title": "Chain-key EdDSA signing",
             "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve, like Solana or Cardano.",
             "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require EdDSA threshold signatures. An example for EdDSA is the direct integration with blockchains using EdDSA to sign transactions, such as Cardano or Solana. Schnorr and EdDSA are very similar because EdDSA is based on a variant of Schnorr using a specific family of elliptic curves, thus they can share the same high-level protocol.",
             "status": "in_progress",
@@ -1568,9 +1573,10 @@
     "milestones": [
       {
         "name": "Decentralized fully-on-chain AI inference",
-        "description": "ICP can run on-chain AI inference in a fully decentralized manner for the first time. This enables integrity-protected AI models and hence an unhackable AI that you can trust.",
+        "description": "ICP can run on-chain AI inference in a fully decentralized manner for the first time. This helps users gain trust in AI as in traditional AI systems, users have no visibility into how their data is used and how AI models produce responses, whether they work correctly, reliably, and consistently. Since AI models behave like black boxes to users, building trustworthy AI models is a difficult challenge. This can be addressed if users are able to verify how a model has been trained and the inference process uses that very model that generates an output. ICP's computational power and smart contract expressiveness are uniquely positioned to solve this problem.",
         "milestone_id": "Platinum",
         "eta": "2025-03",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Wasm64 execution environment",
@@ -1759,10 +1765,11 @@
     "description": "Features related to strengthening data privacy and confidentiality on ICP.",
     "milestones": [
       {
-        "name": "Canister smart contracts can store (and compute on) encrypted data.",
-        "description": "ICP smart contracts can hold client-encrypted data. On-chain data always remains encrypted, while decryption is done only in the client using a securely derived key. Your dapps benefit from novel privacy-enhanced use cases that are enabled by this.",
+        "name": "VETkeys protocol support in replica",
+        "description": "Fusing blockchain and data privacy in a scalable and integrated manner through advanced cryptography, enabling confidential data storage on chain without any off-chain components involved. On-chain data is cryptographically protected through encryption.",
         "milestone_id": "Thorium",
         "eta": "Q1 2025",
+        "status": "in_progress",
         "elements": [
           {
             "title": "VETkeys — Threshold Key Derivation",
@@ -1905,9 +1912,10 @@
     "milestones": [
       {
         "name": "New Boundary Node architecture",
-        "description": "Boundary nodes get split into NNS-controlled API Boundary Nodes and HTTP Gateways. Anyone will be able to run a Boundary Node, enabling a much more decentralized ICP edge infrastructure with a diverse set of Boundary Node providers.",
+        "description": "The IC is accessible through decentralized infrastructure. The current Boundary nodes get split into NNS-controlled API Boundary Nodes and HTTP Gateways. Anyone will be able to run a Boundary Node, enabling a much more decentralized ICP edge infrastructure with a diverse set of Boundary Node providers.",
         "milestone_id": "Vanadium",
         "eta": "Q2 2024",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Future Boundary-Node Architecture",
@@ -1952,6 +1960,46 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Vanadium",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "Decentralized Access Logs and Metrics",
+        "description": "The boundary node logs and metrics are publicly available and verifiable.",
+        "milestone_id": "Cerium-tbd",
+        "eta": "",
+        "status": "future",
+        "elements": [
+          {
+            "title": "SEV-SNP-protected API Boundary Node",
+            "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
+            "description": "This feature aims to enhance security in the API boundary node through trusted execution, leveraging AMD SEV-SNP. This ensures that the software stack running on the API boundary nodes remains untampered and verifiable by anyone (through remote attestation). Consequently, API calls served by these nodes are shielded from access by the Node Providers, as well as boosting confidence in the accuracy and integrity of reported metrics.",
+            "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "milestone_id": "Cerium-tbd",
+            "status": "upcoming",
+            "is_community": true,
+            "in_beta": false,
+            "notes": "Securing the Boundary Node VM with the AMD SEV-SNP secure execution environment.",
+            "imported": true
+          },
+          {
+            "title": "Public API Boundary Node logs and metrics",
+            "overview": "",
+            "description": "This feature enables anyone to analyze the API boundary node access logs by making them publicly available. This allows developers to better understand the usage patterns (e.g., what endpoints of the canister are being called and by which applications), as well as provide usage statistics (i.e., daily active users).",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "milestone_id": "Cerium-tbd",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": false,
+            "in_beta": false,
             "notes": ""
           }
         ]
@@ -2130,7 +2178,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "notes": "?? already in progress, PoC done by intern?"
+            "notes": "already in progress, PoC done by intern"
           },
           {
             "title": "Subnet rental",
@@ -2187,21 +2235,6 @@
             "is_community": false,
             "in_beta": false,
             "notes": "Certifying queries by boundary nodes issuing queries to multiple replicas and responding with signed responses.",
-            "imported": true
-          },
-          {
-            "title": "SEV-SNP-protected API Boundary Node",
-            "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
-            "description": "This feature aims to enhance security in the API boundary node through trusted execution, leveraging AMD SEV-SNP. This ensures that the software stack running on the API boundary nodes remains untampered and verifiable by anyone (through remote attestation). Consequently, API calls served by these nodes are shielded from access by the Node Providers, as well as boosting confidence in the accuracy and integrity of reported metrics.",
-            "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "upcoming",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "Securing the Boundary Node VM with the AMD SEV-SNP secure execution environment.",
             "imported": true
           },
           {
@@ -2467,6 +2500,58 @@
     "description": "Blockchain-based self-sovereign identity for Web2 and Web3.",
     "milestones": [
       {
+        "name": "Operational Verifiable Credentials platform that can be used by users and developers",
+        "description": "Enabling true on-chain self-sovereign identity, incl. KYC integration to support use cases like those in the regulated financial domain, e.g., security tokens.",
+        "milestone_id": "Iron",
+        "eta": "2024-06-18",
+        "elements": [
+          {
+            "title": "Verifiable Credentials",
+            "overview": "Verifiable credentials are digital representations of data (qualifications, achievements, or attributes) that are cryptographically secured and portable, enabling efficient and trustworthy sharing of personal data while maintaining privacy and control.",
+            "description": "The verifiable credentials protocol facilitates the issuance, presentation, and verification of digital credentials in a decentralized and interoperable manner. Based on W3C's Verifiable Credentials Data Model and the work of the IC's Wallet and Identity Standards Working Group, the protocol outlines a structured approach for parties to issue credentials containing information about individuals, digitally sign them using cryptographic methods to ensure integrity and authenticity, and present these credentials to relying parties when needed. Relying parties can then verify the credentials' authenticity by verifying the digital signatures and checking against decentralized or centralized registries as necessary, enabling trustful interactions while preserving individuals' privacy and control over their data.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://github.com/dfinity/wg-identity-authentication",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Iron",
+            "notes": "IC-1522: https://dfinity.atlassian.net/browse/IC-1522; also community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
+          },
+          {
+            "title": "Verifiable Credentials SDK for Relying Parties",
+            "overview": "We will be providing tooling, libraries and standards so that relying parties looking to integrate to ICPs VC platform can do so correctly and efficiently.",
+            "description": "The next step after the release of ICP's verifiable credential protocol, is to increase its use and make ICP the top platform for self-sovereign identity. We want to facilitiate both web2 and web3 apps to adopt our VC platform.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": true,
+            "milestone_id": "Iron",
+            "notes": "forum wishlist; SSI SDK: Framework for DID, DIDDoc, verified credentials, selective disclosure etc."
+          },
+          {
+            "title": "Verifiable credentials playground",
+            "overview": "A dapp that introduces the concepts of verifiable credentials to prospective identity issuers and relying parties with the aim to facilitate adoption.",
+            "description": "The verifiable credentials playground comprises both an issuer and a relying party dapp. Both dapps implement a full end-to-end experience using ICP's verifiable credentials capabilities. The dapps are intended for educational purposes and can act as a template for issuer and relying party dapps building on ICP's VC platform.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Iron",
+            "notes": ""
+          }
+        ]
+      },
+      {
         "name": "orphans_past",
         "description": "Orphans from the past",
         "milestone_id": "none",
@@ -2660,50 +2745,6 @@
         "milestone_id": "none",
         "eta": "none",
         "elements": [
-          {
-            "title": "Verifiable Credentials",
-            "overview": "Verifiable credentials are digital representations of data (qualifications, achievements, or attributes) that are cryptographically secured and portable, enabling efficient and trustworthy sharing of personal data while maintaining privacy and control.",
-            "description": "The verifiable credentials protocol facilitates the issuance, presentation, and verification of digital credentials in a decentralized and interoperable manner. Based on W3C's Verifiable Credentials Data Model and the work of the IC's Wallet and Identity Standards Working Group, the protocol outlines a structured approach for parties to issue credentials containing information about individuals, digitally sign them using cryptographic methods to ensure integrity and authenticity, and present these credentials to relying parties when needed. Relying parties can then verify the credentials' authenticity by verifying the digital signatures and checking against decentralized or centralized registries as necessary, enabling trustful interactions while preserving individuals' privacy and control over their data.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://github.com/dfinity/wg-identity-authentication",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Iron",
-            "notes": "IC-1522: https://dfinity.atlassian.net/browse/IC-1522; also community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
-          },
-          {
-            "title": "Verifiable Credentials SDK for Relying Parties",
-            "overview": "We will be providing tooling, libraries and standards so that relying parties looking to integrate to ICPs VC platform can do so correctly and efficiently.",
-            "description": "The next step after the release of ICP's verifiable credential protocol, is to increase its use and make ICP the top platform for self-sovereign identity. We want to facilitiate both web2 and web3 apps to adopt our VC platform.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": true,
-            "milestone_id": "Iron",
-            "notes": "forum wishlist; SSI SDK: Framework for DID, DIDDoc, verified credentials, selective disclosure etc."
-          },
-          {
-            "title": "Verifiable credentials playground",
-            "overview": "A dapp that introduces the concepts of verifiable credentials to prospective identity issuers and relying parties with the aim to facilitate adoption.",
-            "description": "The verifiable credentials playground comprises both an issuer and a relying party dapp. Both dapps implement a full end-to-end experience using ICP's verifiable credentials capabilities. The dapps are intended for educational purposes and can act as a template for issuer and relying party dapps building on ICP's VC platform.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": true,
-            "milestone_id": "Iron",
-            "notes": ""
-          },
           {
             "title": "Identity signer standards",
             "overview": "Standards to enable an untrusted relying party (e.g., canister or Web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
@@ -2942,9 +2983,10 @@
     "milestones": [
       {
         "name": "Next-generation wallets with network custody",
-        "description": "ICP's new Oisy and Orbit wallets are released for end users and institutional clients, respectively. Oisy becomes the main wallet on ICP for end users. You can now hand off custody of your assets to advanced, fully on-chain wallets. No centralized entity is required any more as a custodian.",
+        "description": "Chain-key technology and II enable network custody and non-custodial wallets.",
         "milestone_id": "Silver",
         "eta": "2024-12",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Self-custody Oisy",
@@ -2977,10 +3019,11 @@
         ]
       },
       {
-        "name": "Institutional wallet support on ICP",
-        "description": "",
-        "milestone_id": "choose-a-metal1",
+        "name": "Orbit institutional-grade wallet",
+        "description": "t.b.d.",
+        "milestone_id": "Fermium-tbd",
         "eta": "",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Orbit institutional-grade wallet",
@@ -2993,7 +3036,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "choose-a-metal1",
+            "milestone_id": "Fermium-tbd",
             "notes": ""
           }
         ]
@@ -3313,6 +3356,7 @@
         "description": "The next big step for ICP's governance: Make more information on voting activity of named neurons available and increase active DAO participation. This is achieved by a multi-faceted approach: Enabling governance participants to provide more information about their future voting behaviour to make it easier for followers to decide on whom to follow; encourage the diligent active voting of neurons; making information on SNS DAOs readily available in a communities portal; and simplify the following experience for more diverse following requirements. Better transparency and increased active voting participation. This milestone boosts the excellency in active governance participation.",
         "milestone_id": "Titanium",
         "eta": "2025-03",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Engagement platform for named neurons",
@@ -3954,6 +3998,7 @@
         "description": "Canister development and operations is simplified by improved canister logging and error handling, canister snapshot capabilities, and cycles consumption insights. This helps streamline the way you develop and manage your canister smart contracts of your dapp during the whole life cycle.",
         "milestone_id": "Nickel",
         "eta": "2024-10",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Canister snapshots",
