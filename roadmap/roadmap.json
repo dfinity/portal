@@ -22,8 +22,7 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Iridium",
-            "notes": "?? Rosti"
+            "milestone_id": "Iridium"
           },
           {
             "title": "Synchronous ingress message submission",
@@ -37,8 +36,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Iridium",
-            "notes": "?? Rosti"
+            "milestone_id": "Iridium"
           },
           {
             "title": "Geolocation-aware ingress routing",
@@ -52,23 +50,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Iridium",
-            "notes": "?? Rüdiger"
-          },
-          {
-            "title": "Charging for query calls",
-            "overview": "Charge a fair price in cycles for executed query calls. Currently query calls are free and only update calls are charged for.",
-            "description": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Iridium",
-            "notes": "Ulan: might be opt-in for larger instruction limits for queries (e.g., for AI)"
+            "milestone_id": "Iridium"
           }
         ]
       },
@@ -91,8 +73,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium-tbd",
-            "notes": "@David: as discussed, this is now a separate item, the other one is in the deployed section; please fill in the details as you see fit"
+            "milestone_id": "Niobium-tbd"
           },
           {
             "title": "Support 1TB of replicated storage",
@@ -107,13 +88,12 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Niobium-tbd",
-            "notes": "Lgtm from Ulan if David is okay with it; David: LGTM as well.",
             "imported": true
           },
           {
-            "title": "Increase Stable Memory Limit to 400GiB",
-            "overview": "Increasing the stable memory limit of a canister from 96GiB to 400 GiB.",
-            "description": "Currently, a canister can access 96GiB of stable memory. This feature will increase this limit to 400GiB for all canisters, allowing canisters to hold more state. The API will remain unchanged. A single message however will not be able to write to more than 8GiB.",
+            "title": "Increase Stable Memory Limit to 500GiB",
+            "overview": "Increasing the stable memory limit of a canister to 500 GiB.",
+            "description": "This feature will increase the current memory limit of canisters to 500 GiB for all canisters, allowing canisters to hold more state. The API will remain unchanged. A single message, however, will not be able to write to more than 8GiB.",
             "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
             "proposal": "",
             "wiki": "",
@@ -122,8 +102,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium-tbd",
-            "notes": "?? maybe 500 GB to make it news"
+            "milestone_id": "Niobium-tbd"
           },
           {
             "title": "Large ingress messages and increased consensus bandwidth",
@@ -137,8 +116,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium-tbd",
-            "notes": ""
+            "milestone_id": "Niobium-tbd"
           }
         ]
       },
@@ -160,7 +138,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -175,7 +152,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -190,7 +166,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -205,7 +180,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -219,8 +193,7 @@
             "eta": "2023",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Increase Stable Memory Limit to 96GiB",
@@ -233,8 +206,7 @@
             "eta": "Jan 2023",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "https://dfinity.atlassian.net/browse/IC-1461"
+            "in_beta": false
           },
           {
             "title": "Bazel-based Build System",
@@ -248,7 +220,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -263,7 +234,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -278,7 +248,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "David: final.",
             "imported": true
           },
           {
@@ -293,7 +262,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -308,7 +276,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -323,7 +290,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -338,7 +304,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -353,7 +318,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "David: final.",
             "imported": true
           },
           {
@@ -368,7 +332,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": true,
-            "notes": "",
             "imported": true
           },
           {
@@ -383,7 +346,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "final; reviewed by Dimitris",
             "imported": true
           },
           {
@@ -398,7 +360,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "David: final",
             "imported": true
           },
           {
@@ -412,8 +373,7 @@
             "in_beta": false,
             "status": "deployed",
             "forum": "https://forum.dfinity.org/t/allow-installation-of-large-wasm-modules/17372",
-            "eta": "Q1 24",
-            "notes": "Ulan: lgtm"
+            "eta": "Q1 24"
           },
           {
             "title": "Replica-signed queries",
@@ -426,8 +386,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "David: certified queries in a dedicated feature captured in the boundary nodes category; made sure this only discusses signed queries. this can be considered final IMO."
+            "in_beta": false
           },
           {
             "title": "Reassigning Nodes to Different Subnets",
@@ -441,7 +400,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -456,7 +414,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "?? category; Certified on-chain metrics on node performance accessible through an API. likely https://dfinity.atlassian.net/browse/IC-1591, Trustworthy node metrics for useful work",
             "imported": true
           },
           {
@@ -470,8 +427,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Sam: done with P2P improvements; if we ever plan to have substantial efforts there again, we can open a new item; sync, direct access, erasure coding ...; dso: there is no public roadmap item on P2P improvements, this leaving this here now to capture the reduced latency"
+            "in_beta": false
           }
         ]
       },
@@ -493,8 +449,7 @@
             "eta": "2024",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": "David: final."
+            "milestone_id": ""
           },
           {
             "title": "Small guaranteed-response messages",
@@ -507,8 +462,7 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Ulan: may not happen, check; David: final."
+            "in_beta": false
           },
           {
             "title": "Query call metrics",
@@ -521,8 +475,21 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Charging for query calls",
+            "overview": "Charge a fair price in cycles for executed query calls. Currently query calls are free and only update calls are charged for.",
+            "description": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": true,
             "in_beta": false,
-            "notes": "almost done"
+            "milestone_id": ""
           },
           {
             "title": "Increasing instruction limits for query and update calls",
@@ -535,8 +502,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "should be reasonable; community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/53; ?? how realistic is this"
+            "in_beta": false
           },
           {
             "title": "Dapp-level metrics",
@@ -550,8 +516,7 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": ""
+            "milestone_id": ""
           },
           {
             "title": "Wallet apps (\"Wapps\")",
@@ -565,8 +530,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": ""
+            "milestone_id": ""
           },
           {
             "title": "Support of 1M canisters per subnet",
@@ -580,8 +544,7 @@
             "is_community": false,
             "in_beta": false,
             "forum": "https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/9",
-            "milestone_id": "",
-            "notes": "related forum post (Hamish from OpenChat): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/9"
+            "milestone_id": ""
           },
           {
             "title": "Support multiple TB of replicated storage",
@@ -596,7 +559,6 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "",
-            "notes": "Ulan: lgtm if David is okay with it.; David: LGTM as well, I think phrasing the goals in terms of the subnet capacity is good for the roadmap. Together with the many canisters goal this covers most of the scalability work.",
             "imported": true
           },
           {
@@ -610,8 +572,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? Manu: is this up in the future or made obsolete by including hashes of ingress messages in blocks; Is this part of large ingress messages or orthogonal"
+            "in_beta": false
           },
           {
             "title": "Configurable Wasm memory limit",
@@ -625,7 +586,6 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": "final; reviewed by Dimitris and Ulan",
             "imported": true
           },
           {
@@ -639,8 +599,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? Martin; relates to Messages to specified canister version"
+            "in_beta": false
           },
           {
             "title": "Canister Logging MVP",
@@ -653,7 +612,6 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "notes": "final; reviewed by Dimitris; also in community list (Jordan Last)",
             "in_beta": false
           },
           {
@@ -668,7 +626,6 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "David ??",
             "imported": true
           },
           {
@@ -682,8 +639,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "only have msg accepted by the specified version \n related to how can one verify the canister, source code etc. \n verifiable canisters relates to this \n should split \n - verify code is correct: formal methods, tools; TLA+ annotations \n - verify correct code runs in the canisters: canister history; deterministic builds \n  - see below; : there was a discussion about exactly this; no high priority; discussed as one way to use canister history to prevent some weird attacks? Ulan: deferring to David"
+            "in_beta": false
           },
           {
             "title": "Capabilities",
@@ -696,8 +652,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "https://docs.google.com/presentation/d/13INFELqOBrWlaVJvnewwwx8lZIBCr40P6uvmgkt6cDk/edit#slide=id.p \n Like credentials; dapp can do things in your behalf \n ~ authZ \n Björn T: not only users, but also canisters can use capabilities; everyone who uses canister does so because they have capability; can give capability to others; on app layer can realize it as a bearer token; implementation based on PKC; user needs to sign tx and not send only token; canister needs to send message and token; the token is linked to the principal via PKC, need to sign with same key as user. Ulan: I think we need more exploration here before putting it on the public roadmap."
+            "in_beta": false
           },
           {
             "title": "Canister groups",
@@ -711,7 +666,6 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "notes": "Ulan: do we plan to work on this actually?",
             "imported": true
           },
           {
@@ -725,8 +679,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "see original file"
+            "in_beta": false
           },
           {
             "title": "Messaging model enhancements",
@@ -739,8 +692,7 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? check with Dimitris for name callbacks; could already be solved with best-effort messaging; One-shot messaging: https://dfinity.atlassian.net/browse/IC-829; named callbacks: https://dfinity.atlassian.net/browse/IC-1099"
+            "in_beta": false
           },
           {
             "title": "Queries at specified block height",
@@ -753,8 +705,7 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "another use case: data bases, query same version when sharded data \n esp when done from frontend \n XNet msgs from frontend: need to have consistent state \n - XNet query messages, particularly for FE-driven arch \n need canister versioning also (other feature) \n - relevant together with this one. Ulan: needs discussion; David: also seems to overlap somewhat with the replica-signed (or at least certified) queries. David: I would drop this -- it is not a feature by itself. It may be that we require it for certified queries or for something else (e.g., the feature mentioned in the beginning of this line). But as far as I can tell it has no standalone value."
+            "in_beta": false
           },
           {
             "title": "Hyper-scalable inter-subnet message routing",
@@ -767,8 +718,7 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "David: lgtm. There seems to be a duplicate entry. We should either drop this one or the other one. dso: merged the duplicate into this (minor changes)"
+            "in_beta": false
           },
           {
             "title": "Canister migration",
@@ -781,8 +731,7 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "David lgtm."
+            "in_beta": false
           },
           {
             "title": "Subnet deletion",
@@ -794,8 +743,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "in_beta": false,
-            "notes": "David: lgtm."
+            "in_beta": false
           },
           {
             "title": "Libraries for large data transfers",
@@ -808,8 +756,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/55"
+            "in_beta": false
           },
           {
             "title": "Wasm deduplication",
@@ -822,8 +769,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Hamish Peebles); Ulan: Needs discussion. David: even if we implement deduplication it is not clear how charging would work. Do we really wanna commit to the fact that this wastes cycles in the roadmap? dso: rephrased the storage and cycles wasting"
+            "in_beta": false
           },
           {
             "title": "Reduction of call latencies",
@@ -836,8 +782,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/54; David: I wonder whether reduced latencies is the most fruitful direction to look into as we are already close to the theoretical optimum in many cases; maybe throughput is the more realistic thing we might be able tweak (especially cross subnet)."
+            "in_beta": false
           },
           {
             "title": "WASI V2 support",
@@ -850,8 +795,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/41; ?? how realistic is this? Ulan: I am discussing this with Jordan and the author of Wasi polyfill. Hopefully, we can keep this in community. Let's remove this item. Dieter: merged both Wasi-related items and kept them for now as they are also part of the internal org-wide roadmap."
+            "in_beta": false
           },
           {
             "title": "HTTPS outcalls V2",
@@ -864,8 +808,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "maybe put HTTP outcall queries into a separate feature (HTTP outcalls V3): done"
+            "in_beta": false
           },
           {
             "title": "HTTPS outcalls V3",
@@ -878,8 +821,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "maybe V2 is enough"
+            "in_beta": false
           },
           {
             "title": "XNet composite queries",
@@ -892,8 +834,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "also part of community list (Jordan Last); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/56; ?? What else would be required for Jordan's request? Ulan: we are not planning to work on this year."
+            "in_beta": false
           },
           {
             "title": "Capacity reservations for system calls",
@@ -906,8 +847,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "maybe frame more broadly; problem with reservations is getting pricing right"
+            "in_beta": false
           },
           {
             "title": "Replica key lifecycle V2 — Proactive security",
@@ -920,8 +860,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Resilience against slow nodes",
@@ -934,8 +873,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "also would nice to have general punishment for not well behaving nodes"
+            "in_beta": false
           },
           {
             "title": "User-paid messages",
@@ -948,8 +886,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "was: Charge the caller for update and query calls; exploration: nice, but not doing it right now; ?? update text"
+            "in_beta": false
           },
           {
             "title": "Subnet splitting V2",
@@ -962,8 +899,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "V1: https://dfinity.atlassian.net/browse/IC-680"
+            "in_beta": false
           },
           {
             "title": "P2P unicast",
@@ -976,8 +912,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Blob storage",
@@ -990,8 +925,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? Björn T: erasure coding; when writing, goes through consensus, or would be possible to only upload hash of data and not run it through consensus; when canister reads, must go through consensus; when user reads, need not go through consensus; proably targeted at users reading, not canisters; effort: more than 1 year, more than 2 people; very large; reimplement significant parts of protocol; requires us to solve many problems we have in our protocol; currently rely on full replication of all data; major rewriting of stack; solve resilience etc. again for this"
+            "in_beta": false
           },
           {
             "title": "Blob streaming (download)",
@@ -1004,8 +938,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "see related item"
+            "in_beta": false
           },
           {
             "title": "Blob streaming (upload)",
@@ -1018,8 +951,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? should we constrain blob storage only to users reading and writing? should we only consider the efficient read / write scenario bypassing consensus? Björn T; builds on top of above; split into first reading and then writing"
+            "in_beta": false
           },
           {
             "title": "Eternal storage",
@@ -1032,8 +964,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Ulan: maybe remove"
+            "in_beta": false
           },
           {
             "title": "Structured data storage",
@@ -1046,8 +977,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "?? is this stable structures v2?; Sam: stable structures is basic db structure; to better perform queries, can have structured data storage; maybe library; easily store, query data in stable memory; view your data like in regular DB; DB-level convenience and features on IC"
+            "in_beta": false
           },
           {
             "title": "Inter-subnet messaging across trust zones",
@@ -1060,8 +990,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Using cycles across trust zones",
@@ -1074,8 +1003,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           }
         ]
       }
@@ -1104,8 +1032,7 @@
             "eta": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Dilithium",
-            "notes": ""
+            "milestone_id": "Dilithium"
           },
           {
             "title": "RPC canister for Ethereum & EVM integration",
@@ -1119,8 +1046,7 @@
             "eta": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Dilithium",
-            "notes": ""
+            "milestone_id": "Dilithium"
           },
           {
             "title": "Chain-key ERC20 (ckERC20) tokens &amp; USDC",
@@ -1135,7 +1061,6 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Dilithium",
-            "notes": "",
             "imported": true
           }
         ]
@@ -1159,8 +1084,7 @@
             "eta": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Bismuth",
-            "notes": "?? is this part of the milestone"
+            "milestone_id": "Bismuth"
           },
           {
             "title": "Threshold Schnorr signatures",
@@ -1174,8 +1098,7 @@
             "docs": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Bismuth",
-            "notes": "also https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
+            "milestone_id": "Bismuth"
           },
           {
             "title": "Bitcoin block headers available on chain",
@@ -1189,8 +1112,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Bismuth",
-            "notes": ""
+            "milestone_id": "Bismuth"
           }
         ]
       },
@@ -1213,8 +1135,7 @@
             "docs": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Holmium",
-            "notes": "also https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
+            "milestone_id": "Holmium"
           },
           {
             "title": "Solana RPC canister",
@@ -1228,8 +1149,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Holmium",
-            "notes": ""
+            "milestone_id": "Holmium"
           },
           {
             "title": "Chain-key SOL (ckSOL) token",
@@ -1243,8 +1163,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Holmium",
-            "notes": ""
+            "milestone_id": "Holmium"
           }
         ]
       },
@@ -1266,7 +1185,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -1281,7 +1199,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -1296,7 +1213,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -1311,7 +1227,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -1325,8 +1240,7 @@
             "docs": "",
             "eta": "2023-09-23",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Chain-key Ether (ckETH) token",
@@ -1340,7 +1254,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           }
         ]
@@ -1362,8 +1275,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Oracles with signed responses",
@@ -1376,8 +1288,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Chain-Key BRC20 (ckBRC20) tokens",
@@ -1390,8 +1301,7 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Direct Ethereum Integration",
@@ -1405,7 +1315,6 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -1419,8 +1328,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "On-chain Ethereum block explorer",
@@ -1433,8 +1341,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Chain-key ECDSA - Throughput improvements",
@@ -1447,8 +1354,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Larger threshold for threshold signing and key backup",
@@ -1461,8 +1367,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Threshold signing with substantially increased throughput",
@@ -1475,8 +1380,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "X-chain token minter V2 (ERC20-ICRC)",
@@ -1489,8 +1393,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "X-chain token minter V3",
@@ -1503,8 +1406,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "ICRC-1 interface for native BTC, ERC20 and others",
@@ -1517,8 +1419,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Ethereum and Bitcoin optimistic logging and settlement",
@@ -1531,8 +1432,7 @@
             "docs": "",
             "eta": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Native USDC integration through CCTP",
@@ -1546,8 +1446,7 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": "community list"
+            "milestone_id": ""
           },
           {
             "title": "BTC ordinals indexer and inscriber",
@@ -1560,8 +1459,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           }
         ]
       }
@@ -1589,8 +1487,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum",
-            "notes": ""
+            "milestone_id": "Platinum"
           },
           {
             "title": "Performance improvements for paging in memory (prefetching)",
@@ -1603,8 +1500,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum",
-            "notes": ""
+            "milestone_id": "Platinum"
           },
           {
             "title": "AI inference engine performance improvements",
@@ -1617,8 +1513,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum",
-            "notes": ""
+            "milestone_id": "Platinum"
           },
           {
             "title": "SIMD support for Wasm execution",
@@ -1631,8 +1526,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum",
-            "notes": ""
+            "milestone_id": "Platinum"
           },
           {
             "title": "Deterministic inference",
@@ -1645,8 +1539,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum",
-            "notes": ""
+            "milestone_id": "Platinum"
           }
         ]
       },
@@ -1673,8 +1566,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Shared canister memory through memory mapping",
@@ -1686,8 +1578,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "AI nodes in subnets",
@@ -1699,8 +1590,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "ICP subnets receive GPU support for machine learning. Initially, one GPU per GPU-enabled subnet for training with verifiable data and will grow to GPUs on every node machine in GPU-enabled subnets for fully decentralized and trustless training and execution of models."
+            "in_beta": false
           },
           {
             "title": "Marketplace for AI models",
@@ -1712,8 +1602,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Marketplace for AI training data",
@@ -1725,8 +1614,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Low-replication subnets for LLMs",
@@ -1739,8 +1627,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list"
+            "in_beta": false
           },
           {
             "title": "Scalable vector DB",
@@ -1753,8 +1640,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list; https://forum.dfinity.org/t/technical-working-group-deai/24621/62"
+            "in_beta": false
           }
         ]
       }
@@ -1784,7 +1670,6 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Thorium",
-            "notes": "final; reviewed by Andrea",
             "imported": true
           },
           {
@@ -1800,7 +1685,6 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Thorium",
-            "notes": "?? we need to think what else we need for VETkeys to make the feature viable",
             "imported": false
           }
         ]
@@ -1829,7 +1713,6 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "https://dfinity.atlassian.net/browse/IC-437",
             "imported": true
           },
           {
@@ -1843,8 +1726,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "SEV-SNP-enabled ECDSA subnet",
@@ -1857,8 +1739,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "SEV-SNP for app subnets",
@@ -1871,8 +1752,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Fully-homomorphic encryption (FHE)",
@@ -1885,8 +1765,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Andrea"
+            "in_beta": false
           },
           {
             "title": "Cryptographic multi-party computation (MPC)",
@@ -1899,8 +1778,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Andrea; Andrea: might merge with FHE because they have strong overlap and we do not know yet whether and what we are going to build here; dso: keep for now in order to have broader roadmap"
+            "in_beta": false
           }
         ]
       }
@@ -1930,7 +1808,6 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Vanadium",
-            "notes": "architecture is done, move to deployed when both API BN and HTTP Gateway implementations are ready",
             "imported": true
           },
           {
@@ -1944,8 +1821,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Vanadium",
-            "notes": "IC-720: https://dfinity.atlassian.net/browse/IC-720"
+            "milestone_id": "Vanadium"
           },
           {
             "title": "(Community-owned) HTTP Gateways",
@@ -1959,8 +1835,7 @@
             "status": "upcoming",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Vanadium",
-            "notes": ""
+            "milestone_id": "Vanadium"
           }
         ]
       },
@@ -1984,7 +1859,6 @@
             "status": "upcoming",
             "is_community": true,
             "in_beta": false,
-            "notes": "Securing the Boundary Node VM with the AMD SEV-SNP secure execution environment.",
             "imported": true
           },
           {
@@ -1999,8 +1873,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           }
         ]
       },
@@ -2022,7 +1895,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2036,8 +1908,7 @@
             "eta": "Feb 2024",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "https://dfinity.atlassian.net/browse/IC-792"
+            "in_beta": false
           },
           {
             "title": "ICOS Boundary Nodes",
@@ -2051,7 +1922,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2066,7 +1936,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2081,7 +1950,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2096,7 +1964,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2111,7 +1978,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "IC-1379: https://dfinity.atlassian.net/browse/IC-1379; maybe done already; Bringing WebSockets to canisters as a bi-directional communication between canisters and dapp frontends.",
             "imported": true
           },
           {
@@ -2126,7 +1992,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2140,8 +2005,7 @@
             "eta": "Q4 2023",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Rüdi"
+            "in_beta": false
           },
           {
             "title": "Replica Node Storage Upgrade",
@@ -2155,7 +2019,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "?? is this done",
             "imported": true
           }
         ]
@@ -2177,8 +2040,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": false,
-            "in_beta": false,
-            "notes": "already in progress, PoC done by intern"
+            "in_beta": false
           },
           {
             "title": "Subnet rental",
@@ -2191,8 +2053,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Non-NNS-approved API Boundary Nodes",
@@ -2204,8 +2065,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Björn T: current view: HTTP gateways not managed anyways; node API would be public; does not know feature; reason for not having BN would be confidential canisters; good reason to not go through BN in such case; or overloaded BNs."
+            "in_beta": false
           },
           {
             "title": "HTTP Asset Caching",
@@ -2219,7 +2079,6 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "notes": "Developers can specify caching policies on assets to be enforced by HTTP gateways.",
             "imported": true
           },
           {
@@ -2234,7 +2093,6 @@
             "status": "upcoming",
             "is_community": false,
             "in_beta": false,
-            "notes": "Certifying queries by boundary nodes issuing queries to multiple replicas and responding with signed responses.",
             "imported": true
           },
           {
@@ -2247,8 +2105,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "status": "upcoming",
-            "notes": "?? Could we refer to the same motion proposal as for API gateway as this is coming from the Boundary Node? https://dashboard.internetcomputer.org/proposal/35671; then it would be a community feature also; argument may apply to many other Boundary Node features"
+            "status": "upcoming"
           },
           {
             "title": "Certification libraries",
@@ -2260,8 +2117,7 @@
             "wiki": "",
             "docs": "https://github.com/dfinity/response-verification",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "CDN canisters on edge infrastructure",
@@ -2273,8 +2129,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Björn T: single canister copied; no replica on BN; constrained what canister can do; no X-canister call; content that is read a lot and not written a lot; Dom wants this; large effort; certified canister state pulled to boundary node; if have canister with lots of assets; ~ CDN; because it's a canister, can outsource some computation there; relatively far away; not defined how exactly, e.g., driven by BN or user; canister would need to spec that it is sufficiently public to allow for that; ?? API BN or gateway?"
+            "in_beta": false
           },
           {
             "title": "Chain Name System (CNS)",
@@ -2287,8 +2142,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "IC-1555: https://dfinity.atlassian.net/browse/IC-1555; Rüdi"
+            "in_beta": false
           },
           {
             "title": "Improved node management support",
@@ -2301,8 +2155,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? include SSH access here; goal: NP can troubleshoot and maintain nodes without generating security issues; SSH access and metrics are separate items, what exactly is this about; SSH to guest? SSH access, metrics, troubleshooting"
+            "in_beta": false
           },
           {
             "title": "Node Provider Remuneration V3",
@@ -2316,7 +2169,6 @@
             "status": "",
             "is_community": true,
             "in_beta": false,
-            "notes": "IC-1496: https://dfinity.atlassian.net/browse/IC-1496; Adding penalties for unhealthy nodes to the Remuneration Model V2.",
             "imported": true
           },
           {
@@ -2330,8 +2182,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Penalties for non-compliant node providers",
@@ -2344,8 +2195,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Autonomous capacity management",
@@ -2358,8 +2208,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Community can run system tests",
@@ -2372,8 +2221,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Decentralized backup and recovery",
@@ -2386,8 +2234,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? Sam: means that everyone should be able to backup subnets; is CUP and all of the state; - remove item? or talk about encrypted backup with key escrowed on NNS"
+            "in_beta": false
           },
           {
             "title": "Rewards-driven DRE",
@@ -2400,8 +2247,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Public access to a subset of node metrics",
@@ -2414,8 +2260,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": false,
-            "in_beta": false,
-            "notes": "https://dfinity.atlassian.net/browse/IC-1479: Allow public access to a subset of node metrics"
+            "in_beta": false
           },
           {
             "title": "Off-chain observability stack for Node Providers",
@@ -2429,7 +2274,6 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2444,7 +2288,6 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2459,7 +2302,6 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2474,7 +2316,6 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -2488,8 +2329,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           }
         ]
       }
@@ -2517,8 +2357,7 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Iron",
-            "notes": "IC-1522: https://dfinity.atlassian.net/browse/IC-1522; also community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/48"
+            "milestone_id": "Iron"
           },
           {
             "title": "Verifiable Credentials SDK for Relying Parties",
@@ -2532,8 +2371,7 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": true,
-            "milestone_id": "Iron",
-            "notes": "forum wishlist; SSI SDK: Framework for DID, DIDDoc, verified credentials, selective disclosure etc."
+            "milestone_id": "Iron"
           },
           {
             "title": "Verifiable credentials playground",
@@ -2546,8 +2384,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": true,
-            "milestone_id": "Iron",
-            "notes": ""
+            "milestone_id": "Iron"
           }
         ]
       },
@@ -2568,8 +2405,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Recovery phrase verification",
@@ -2582,8 +2418,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Protected recovery phrase",
@@ -2596,8 +2431,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "II stable memory migration",
@@ -2610,8 +2444,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "II archive canister",
@@ -2624,8 +2457,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "II canister subnet migration",
@@ -2638,8 +2470,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "DoS protection based on Captchas",
@@ -2652,8 +2483,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Identity creation rate limiting",
@@ -2666,8 +2496,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "II metrics",
@@ -2680,8 +2509,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "II Temporary Keys",
@@ -2694,8 +2522,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Streamlined II onboarding",
@@ -2708,8 +2535,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Alternative origins",
@@ -2722,8 +2548,7 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "allowing domain migration for RPs; ?? Do we want to have this on the roadmap?"
+            "in_beta": false
           },
           {
             "title": "Login security in stages",
@@ -2734,8 +2559,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "deployed",
-            "notes": "quick at first, seed phrase, second device only later (reminder, …); ?? Jan: anything else you expect? the II team does not have additional ideas on how to improve on what is there now"
+            "status": "deployed"
           }
         ]
       },
@@ -2756,8 +2580,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Resident passkeys",
@@ -2770,8 +2593,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": ""
+            "milestone_id": ""
           },
           {
             "title": "ICP DID (Decentralised Identifier) method",
@@ -2784,8 +2606,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": ""
+            "milestone_id": ""
           },
           {
             "title": "Verifiable Credentials protocol extension",
@@ -2798,8 +2619,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": ""
+            "milestone_id": ""
           },
           {
             "title": "Verifiable Credentials Billing",
@@ -2813,8 +2633,7 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": "Either one-off fee or pay-per-use model."
+            "milestone_id": ""
           },
           {
             "title": "Support II authentication to Web2 service",
@@ -2828,8 +2647,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": "?? likely done already; duplicate of II item"
+            "milestone_id": ""
           },
           {
             "title": "External services authentication to canisters",
@@ -2843,8 +2661,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": "?? improve name"
+            "milestone_id": ""
           },
           {
             "title": "Usernames instead of Anchors",
@@ -2858,8 +2675,7 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "",
-            "notes": ""
+            "milestone_id": ""
           },
           {
             "title": "Decentralized KYC",
@@ -2872,8 +2688,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "?? should this be part of Iron already for an SSI solution: no"
+            "in_beta": false
           },
           {
             "title": "Social recovery",
@@ -2886,8 +2701,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Configurable II",
@@ -2900,8 +2714,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Transaction Approval",
@@ -2914,8 +2727,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Root domain name independence",
@@ -2928,8 +2740,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Identity management",
@@ -2942,8 +2753,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "sessions open, attributes shared, pseudonyms used"
+            "in_beta": false
           },
           {
             "title": "Signing with delegated identities",
@@ -2956,8 +2766,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "forum wishlist"
+            "in_beta": false
           },
           {
             "title": "ZK-II (Zero-knowledge II)",
@@ -2970,8 +2779,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "formerly: Cryptographically privacy-preserving II; ?? Do we want to expose the weakness we currently have? Is this public? Otherwise rephrase"
+            "in_beta": false
           }
         ]
       }
@@ -2999,8 +2807,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Silver",
-            "notes": ""
+            "milestone_id": "Silver"
           },
           {
             "title": "Signer standards in Oisy",
@@ -3013,8 +2820,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Silver",
-            "notes": "https://dfinity.atlassian.net/browse/IC-1710"
+            "milestone_id": "Silver"
           }
         ]
       },
@@ -3036,8 +2842,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Fermium-tbd",
-            "notes": ""
+            "milestone_id": "Fermium-tbd"
           }
         ]
       },
@@ -3057,8 +2862,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "ICRC-2: Approve and transfer_from for ICRC-1 tokens",
@@ -3070,8 +2874,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Oisy",
@@ -3083,8 +2886,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "ICRC-3: transaction log for ICRC ledgers standard",
@@ -3097,8 +2899,7 @@
             "eta": "March 2024",
             "status": "deployed",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "On-ramp for ICP and other tokens",
@@ -3110,8 +2911,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "maybe split into ICP and other tokens"
+            "in_beta": false
           }
         ]
       },
@@ -3132,174 +2932,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final"
-          },
-          {
-            "title": "Rosetta for ICRC ledgers",
-            "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
-            "description": "Rosetta is a quasi standard put forth by Coinbase for the integration of blockchain ledgers with centralized exchanges. Besides a Rosetta implementation for the ICP ledger, an implementation for ICRC ledgers using ICRC-3 as block storage format is implemented in the scope of this feature.",
-            "status": "in_progress",
-            "eta": "2024",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Andrea"
-          },
-          {
-            "title": "Trust Wallet integration",
-            "overview": "Integrating ICP with the widely-used Trust Wallet project. Can help adoption of ICP beyond the current audience.",
-            "description": "Trust Wallet is a widely-used wallet integrating with a wide range of blockchain platforms. Integrating with Trust Wallet may help improve adoption of ICP. Integrating with Trust Wallet requires enabling the Trust Wallet Core library to sign ICP transactions, adding ICP to the Trust Wallet token repository, and providing a Rosetta node for them to access the ledger.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "IC-1614: https://dfinity.atlassian.net/browse/IC-1614"
-          },
-          {
-            "title": "ICRC 4: Batch transfers for fungible tokens standard",
-            "overview": "Extension standard for ICRC-1 defining batch transfers for ICRC-1 tokens. Batching transactions improves throughput and can reduce cost.",
-            "description": "Some use cases of token ledgers such as token distributions or specifically airdrops can benefit from the added support of batch transactions by a ledger. A batch transaction allows the caller to batch a larger number of individual transactions into a single canister method invocation. This not only saves on cycles for the method call overhead, but also allows for drastically increasing throughput of the ledger, which would otherwise be constrained by the subnet's ingress of XNet capacity.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
-            "title": "ICRC-21 canister call consent messages",
-            "overview": "Standard for a protocol for obtaining human-readable consent messages for canister calls.",
-            "description": "This specification describes a protocol for obtaining human-readable consent messages for canister calls. These messages are intended to be shown to users to help them make informed decisions about whether to approve a canister call / sign a transaction. The protocol is designed in such a way that it can be used interactively (e.g. in a browser-based signer) or non-interactively (e.g. in a cold signer).",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
-            "title": "ICRC-22 payment request formats",
-            "overview": "Standard for serializing payment requests for tokens on ICP as URL and thus also QR code.",
-            "description": "This standard defines the format of URLs for expressing the parameters required for making payments. The URLs can be expressed as a QR code to realize a simple visual channel between devices, e.g., a payment terminal and a user's mobile device.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
-            "title": "ICRC-7: Basic non-fungible token (NFT) standard",
-            "overview": "Basic non-fungible token (NFT) standard for the Internet Computer featuring batch APIs.",
-            "description": "ICRC-7 defines the basic NFT standard for the Internet Computer. ICRC-7 is a basic NFT standard for NFTs without a contained marketplace. The API is simple yet comprises batch functionality for higher throughput of operations for both query and update calls. This standard is expected to unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
-            "title": "ICRC-37: Approve / transfer_from extension for ICRC-7.",
-            "overview": "Approve / transfer_from extension for the ICRC-7 basic NFT standard for the Internet Computer. Simplifies many scenarios by avoiding error scenarios of regular transfers.",
-            "description": "ICRC-37 extends ICRC-7 with approve and transfer_from semantics. This semantics is prominently usef for tokens in the Ethereum ecosystem and allows a token holder to approve a spender to transfer tokens on their behalf. The spender can, as long as an approval is valid, transfer tokens on behalf of their owner. This simplifies many use cases where certain errors otherwise make their handling tricky. Together with ICRC07, this standard is expected to help unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "notes": ""
-          },
-          {
-            "title": "Implement ICRC-21 in Ledger devices",
-            "overview": "The implmentation of ICRC-21 in Ledger devices will allow us to support generic transactions.",
-            "description": "",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "IC-1577: https://dfinity.atlassian.net/browse/IC-1577"
-          },
-          {
-            "title": "Chain-key token (ck token) support in the ICP wallet",
-            "overview": "Support for chain-key tokens (ck tokens) in the ICP wallet.",
-            "description": "",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": "generic support for ck tokens in the wallet"
-          },
-          {
-            "title": "Ledger Live staking integration",
-            "overview": "Ledger live acquires the ability to stake ICP.",
-            "description": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "https://dfinity.atlassian.net/browse/GIX-2454"
-          },
-          {
-            "title": "ICRC-7/-37 NFT standard in mobile wallets",
-            "overview": "Bringing the ICRC-7 and ICRC-37 standards for NFTs on ICP to mobile wallets.",
-            "description": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": "community list"
-          },
-          {
-            "title": "Fireblocks integration",
-            "overview": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutionals.",
-            "description": "",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Cycles ledger",
@@ -3312,8 +2945,161 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
+          },
+          {
+            "title": "Rosetta for ICRC ledgers",
+            "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
+            "description": "Rosetta is a quasi standard put forth by Coinbase for the integration of blockchain ledgers with centralized exchanges. Besides a Rosetta implementation for the ICP ledger, an implementation for ICRC ledgers using ICRC-3 as block storage format is implemented in the scope of this feature.",
+            "status": "in_progress",
+            "eta": "2024",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Trust Wallet integration",
+            "overview": "Integrating ICP with the widely-used Trust Wallet project. Can help adoption of ICP beyond the current audience.",
+            "description": "Trust Wallet is a widely-used wallet integrating with a wide range of blockchain platforms. Integrating with Trust Wallet may help improve adoption of ICP. Integrating with Trust Wallet requires enabling the Trust Wallet Core library to sign ICP transactions, adding ICP to the Trust Wallet token repository, and providing a Rosetta node for them to access the ledger.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-4: Batch transfers for fungible tokens standard",
+            "overview": "Extension standard for ICRC-1 defining batch transfers for ICRC-1 tokens. Batching transactions improves throughput and can reduce cost.",
+            "description": "Some use cases of token ledgers such as token distributions or specifically airdrops can benefit from the added support of batch transactions by a ledger. A batch transaction allows the caller to batch a larger number of individual transactions into a single canister method invocation. This not only saves on cycles for the method call overhead, but also allows for drastically increasing throughput of the ledger, which would otherwise be constrained by the subnet's ingress of XNet capacity.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-21 canister call consent messages",
+            "overview": "Standard for a protocol for obtaining human-readable consent messages for canister calls.",
+            "description": "This specification describes a protocol for obtaining human-readable consent messages for canister calls. These messages are intended to be shown to users to help them make informed decisions about whether to approve a canister call / sign a transaction. The protocol is designed in such a way that it can be used interactively (e.g. in a browser-based signer) or non-interactively (e.g. in a cold signer).",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-22 payment request formats",
+            "overview": "Standard for serializing payment requests for tokens on ICP as URL and thus also QR code.",
+            "description": "This standard defines the format of URLs for expressing the parameters required for making payments. The URLs can be expressed as a QR code to realize a simple visual channel between devices, e.g., a payment terminal and a user's mobile device.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-7: Basic non-fungible token (NFT) standard",
+            "overview": "Basic non-fungible token (NFT) standard for the Internet Computer featuring batch APIs.",
+            "description": "ICRC-7 defines the basic NFT standard for the Internet Computer. ICRC-7 is a basic NFT standard for NFTs without a contained marketplace. The API is simple yet comprises batch functionality for higher throughput of operations for both query and update calls. This standard is expected to unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-37: Approve / transfer_from extension for ICRC-7.",
+            "overview": "Approve / transfer_from extension for the ICRC-7 basic NFT standard for the Internet Computer. Simplifies many scenarios by avoiding error scenarios of regular transfers.",
+            "description": "ICRC-37 extends ICRC-7 with approve and transfer_from semantics. This semantics is prominently usef for tokens in the Ethereum ecosystem and allows a token holder to approve a spender to transfer tokens on their behalf. The spender can, as long as an approval is valid, transfer tokens on behalf of their owner. This simplifies many use cases where certain errors otherwise make their handling tricky. Together with ICRC07, this standard is expected to help unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Implement ICRC-21 in Ledger devices",
+            "overview": "The implmentation of ICRC-21 in Ledger devices will allow us to support generic transactions.",
+            "description": "",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Chain-key token (ck token) support in the ICP wallet",
+            "overview": "Support for chain-key tokens (ck tokens) in the ICP wallet.",
+            "description": "",
+            "status": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Ledger Live staking integration",
+            "overview": "Ledger live acquires the ability to stake ICP.",
+            "description": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-7/-37 NFT standard in mobile wallets",
+            "overview": "Bringing the ICRC-7 and ICRC-37 standards for NFTs on ICP to mobile wallets.",
+            "description": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Fireblocks integration",
+            "overview": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutionals.",
+            "description": "",
+            "status": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": false,
+            "in_beta": false
           },
           {
             "title": "Ledger metrics",
@@ -3326,22 +3112,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "?? details"
-          },
-          {
-            "title": "More tokens on Coinmarketcap",
-            "overview": "More of the tokens in the ICP ecosystem should become listed on Coinmarketcap.",
-            "description": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": true,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           }
         ]
       }
@@ -3369,8 +3140,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium",
-            "notes": ""
+            "milestone_id": "Titanium"
           },
           {
             "title": "Increase and facilitate active participation in SNS DAOs",
@@ -3383,8 +3153,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium",
-            "notes": ""
+            "milestone_id": "Titanium"
           },
           {
             "title": "Encourage diligent active voting",
@@ -3397,8 +3166,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium",
-            "notes": ""
+            "milestone_id": "Titanium"
           },
           {
             "title": "SNS communities portal",
@@ -3411,8 +3179,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium",
-            "notes": ""
+            "milestone_id": "Titanium"
           },
           {
             "title": "Simplify neuron following experience",
@@ -3426,8 +3193,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium",
-            "notes": "named neurons, batch configs; ?? Jan: what exactly is meant here, we may better switch to another model; Björn T: SNS painful to use for investor; on-chain following was stop-gap solution; should not have been encoded on chain; pushing towards tooling to not require on-chain following; Q: how important? right thing to make it less painful if there's another solution coming? within SNS, not across SNS probably; now: all neurons with short dissolve delay (DD) follow the one with long DD; only need to configure those with long DD; batch not so important for this reason; for NNS have named neurons; for SNS no convention; batch is not a strong tool to solve this"
+            "milestone_id": "Titanium"
           }
         ]
       },
@@ -3449,7 +3215,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3464,7 +3229,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3479,7 +3243,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3494,7 +3257,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3509,7 +3271,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3524,7 +3285,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3539,7 +3299,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3553,7 +3312,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3568,7 +3326,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3583,7 +3340,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "?? is this deployed yet; IC-1493: https://dfinity.atlassian.net/browse/IC-1493; New Node Provider remuneration scheme for the 2nd gen hardware: Higher rewards for first nodes, more refined rewards for new geographies.",
             "imported": true
           },
           {
@@ -3597,8 +3353,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "this is about the rollout of the feature in SNS ledgers, not the implementation, which is separate"
+            "in_beta": false
           }
         ]
       },
@@ -3618,8 +3373,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Increase reward for SNS launch proposals to 20",
@@ -3631,8 +3385,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Periodic Confirmation of Neuron Followees",
@@ -3645,7 +3398,6 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3658,8 +3410,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Allow ecosystem wallets to connect to the NNS dapp",
@@ -3671,8 +3422,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Simplification of NNS neurons",
@@ -3684,8 +3434,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "NNS Neuron ID Indexing",
@@ -3699,7 +3448,6 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3714,7 +3462,6 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -3729,7 +3476,6 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": false
           },
           {
@@ -3743,8 +3489,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? relates to the new active neurons item"
+            "in_beta": false
           },
           {
             "title": "Archiving of NNS proposals",
@@ -3757,8 +3502,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Maintain neurons’ voting history",
@@ -3771,8 +3515,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Private voting",
@@ -3785,8 +3528,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "changed to private voting instead of using voting protocols; verifiable, ...; Interesting particularly for whales to not reveal their voting behavior to everyone. Björn T: cryptographically anonymous voting; don't see this to be done in the near future"
+            "in_beta": false
           },
           {
             "title": "Financial reporting",
@@ -3799,8 +3541,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Make proposals easier to understand",
@@ -3813,8 +3554,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "?? Sam: rather remove; way too many proposals, not realistic that someone reads them; now people follow; just this is not enough; rather do something like parties; make more concrete or remove; community list; e.g., use AI to summarize a proposal and drill down interactively"
+            "in_beta": false
           },
           {
             "title": "Neuron instant dissolve functionality",
@@ -3827,8 +3567,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "?? Do we want to have this on the public roadmap?"
+            "in_beta": false
           },
           {
             "title": "Safeguards for critical SNS proposals, including the SNS treasury",
@@ -3842,7 +3581,6 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "notes": "https://dfinity.atlassian.net/browse/IC-1663",
             "imported": true
           },
           {
@@ -3855,8 +3593,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "SNS cycles management",
@@ -3868,8 +3605,7 @@
             "wiki": "",
             "docs": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "SNS canister have automated top-up of cycles and similar ideas"
+            "in_beta": false
           },
           {
             "title": "Neuron fund phase II (end of investment)",
@@ -3882,8 +3618,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "not even the idea what should happen here is clear"
+            "in_beta": false
           },
           {
             "title": "Hide 0 balances for SNS tokens/neurons",
@@ -3897,7 +3632,6 @@
             "status": "future",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": false
           },
           {
@@ -3912,7 +3646,6 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": false
           },
           {
@@ -3926,8 +3659,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "contested whether all ledger parameters should be updateable via proposals; ICRC-2 enabling clearly wanted"
+            "in_beta": false
           },
           {
             "title": "SNS swap participation with additional tokens",
@@ -3940,8 +3672,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Standalone \"SNS\" DAO",
@@ -3954,8 +3685,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Simplified SNS life cycle",
@@ -3968,8 +3698,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "change token name moved to other item, better upgrades of SNS canisters; Björn T: assumes it's about cases where upgrade fails; hard to handle failures; must do specific upgrade paths for individual projects; much handholding required currently for upgrades; hard to recover when upgrade process goes wrong; need to build specific upgrades to recover; works, but hard operationally; ask Lara"
+            "in_beta": false
           },
           {
             "title": "Improved node provider reward scheme",
@@ -3982,8 +3711,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "uses metrics of https://dfinity.atlassian.net/browse/IC-1591"
+            "in_beta": false
           }
         ]
       }
@@ -4012,8 +3740,7 @@
             "eta": "Q2 2024",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel",
-            "notes": "final; reviewed by Dimitris"
+            "milestone_id": "Nickel"
           },
           {
             "title": "Canister logging",
@@ -4028,7 +3755,6 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Nickel",
-            "notes": "final; reviewed by Jason; community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/51",
             "imported": true
           },
           {
@@ -4044,7 +3770,6 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Nickel",
-            "notes": "final; Ulan: lgtm",
             "imported": true
           },
           {
@@ -4058,8 +3783,7 @@
             "docs": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel",
-            "notes": "community list (Jordan Last)"
+            "milestone_id": "Nickel"
           },
           {
             "title": "Cycles consumption insights",
@@ -4074,7 +3798,6 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Nickel",
-            "notes": "",
             "imported": true
           }
         ]
@@ -4097,7 +3820,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4112,7 +3834,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4127,7 +3848,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4142,7 +3862,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4157,7 +3876,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4172,7 +3890,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4187,7 +3904,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4202,7 +3918,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4216,8 +3931,7 @@
             "eta": "Dec 2023",
             "status": "deployed",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason; no consensus, no round times; fast for testing; goal: replace replica in DFX with ; DFX is full replica incl. consensus incl. artificial delay;  is execution environment; https://dfinity.atlassian.net/browse/IC-1538"
+            "in_beta": false
           },
           {
             "title": "Improved Unit Testing for Motoko",
@@ -4231,7 +3945,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4246,7 +3959,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4261,7 +3973,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4276,7 +3987,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4291,7 +4001,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4306,7 +4015,6 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4321,7 +4029,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4336,7 +4043,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "final; reviewed by Jason; https://dfinity.atlassian.net/browse/IC-1582",
             "imported": true
           },
           {
@@ -4351,7 +4057,6 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "notes": "",
             "imported": true
           },
           {
@@ -4365,8 +4070,7 @@
             "eta": "Q1 2024",
             "status": "deployed",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason; community list"
+            "in_beta": false
           }
         ]
       },
@@ -4388,7 +4092,6 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": "final; reviewed by Jason",
             "imported": true
           },
           {
@@ -4403,7 +4106,6 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": "?? done; final; reviewed by Jason; https://dfinity.atlassian.net/browse/SDKTG-7",
             "imported": true
           },
           {
@@ -4418,7 +4120,6 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "notes": "final; reviewed by Jason",
             "imported": true
           },
           {
@@ -4432,8 +4133,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason; DFX new: IC-1582: https://dfinity.atlassian.net/browse/IC-1582; dfx new: https://docs.google.com/document/d/1-heMmkTud1Oi0gVDhWp04duXMZHEfVlz4e8gxlRg8PM/edit#heading=h.zgq3j2p4c23t; DFX extensions: SDK-826: https://dfinity.atlassian.net/browse/SDK-826; probably split"
+            "in_beta": false
           },
           {
             "title": "Tutorials",
@@ -4446,8 +4146,7 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason"
+            "in_beta": false
           },
           {
             "title": "Motoko orthogonal persistence",
@@ -4460,8 +4159,7 @@
             "eta": "",
             "status": "in_progress",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Luc; IC-1635: https://dfinity.atlassian.net/browse/IC-1635; design doc: https://docs.google.com/document/d/10j2Uaq7-Q8S0rI836j3_kUVk2bktPHLVpr-0vVsk6Zs/edit; Luc: stable variables: regular state of program is automatically persisted; whole main memory (RAM) would be persistent; compiler needs to handle if data representation changes; already have stable persistence now, ser/deser automatic, only takes time and can hit cycles limit; idea: don't need to serialize/deserialize any more; no limits, scales arbitrarily; also 64-bit addresses; don't need stable memory; the runtime systems checks upgrade compatibility and prevents memory corruption by incompatible upgrades. Some simple migrations are automatically supported. More complex data structure changes require manual migration."
+            "in_beta": false
           },
           {
             "title": "Streaming support for the Asset Canister",
@@ -4475,7 +4173,6 @@
             "status": "upcoming",
             "is_community": true,
             "in_beta": false,
-            "notes": "final; reviewed by Jason",
             "imported": true
           },
           {
@@ -4490,7 +4187,6 @@
             "status": "upcoming",
             "is_community": false,
             "in_beta": false,
-            "notes": "final",
             "imported": true
           },
           {
@@ -4504,8 +4200,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason; community list (Jordan Last): https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/51 (monitoring part); related to canister lifecycle hooks"
+            "in_beta": false
           },
           {
             "title": "IC agents for additional languages",
@@ -4517,8 +4212,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "Implemented by both Dfinity and community"
+            "in_beta": false
           },
           {
             "title": "Mobile app IC agents",
@@ -4531,8 +4225,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Specify placement subnet for new canisters",
@@ -4545,8 +4238,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason; community list"
+            "in_beta": false
           },
           {
             "title": "Verifiable canisters",
@@ -4572,8 +4264,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason"
+            "in_beta": false
           },
           {
             "title": "PocketIC shipped and bundled with dfx",
@@ -4586,8 +4277,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": ""
+            "in_beta": false
           },
           {
             "title": "Candid improvements",
@@ -4600,8 +4290,7 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false,
-            "notes": "?? details"
+            "in_beta": false
           },
           {
             "title": "Protocol Interface Specification evolution",
@@ -4614,8 +4303,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "response of Björn T: currently have problem that you don't know which version of spec is implemented when talking to IC; would like to, but don't have resources: subnet makes claim which IF spec version it implements; read from state tree; pull version of spec; mostly in dev process; need to adjust spec compliance tests; the more we go to UTOPIA, the more versions will diverge; need this as prerequisite; for UTOPIA would need better version compatibility, subnets will be on vastly different versions; feature becomes relevant; currently protocol not prepared, e.g., XNet changes only test version n to n-1 working together"
+            "in_beta": false
           },
           {
             "title": "Ingress deduplication",
@@ -4628,8 +4316,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "IC-1335: https://dfinity.atlassian.net/browse/IC-1335"
+            "in_beta": false
           },
           {
             "title": "Easy asset creation",
@@ -4642,8 +4329,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "Out-of-the-box ledgers"
+            "in_beta": false
           },
           {
             "title": "Higher-level stable memory libraries",
@@ -4655,8 +4341,7 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "final; reviewed by Jason; community list"
+            "in_beta": false
           },
           {
             "title": "REST- &amp; JSON-centric interfaces",
@@ -4668,8 +4353,7 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list; merged requests by Jordan Last (https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/44) and Joseph Granata (https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/63)"
+            "in_beta": false
           },
           {
             "title": "Regulatory compliance support",
@@ -4681,8 +4365,7 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (D. Fisher); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/23"
+            "in_beta": false
           },
           {
             "title": "Automatic canister top-up using Web2 payment rails",
@@ -4695,8 +4378,7 @@
             "eta": "",
             "status": "future",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list: https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/51"
+            "in_beta": false
           },
           {
             "title": "Bring Actix to the IC",
@@ -4708,8 +4390,7 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Joseph Granata); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/63"
+            "in_beta": false
           },
           {
             "title": "A file system on ICP",
@@ -4721,8 +4402,7 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Joseph Granata); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/63"
+            "in_beta": false
           },
           {
             "title": "Easily upload files to ICP",
@@ -4734,8 +4414,7 @@
             "wiki": "",
             "docs": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Joseph Granata); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/63"
+            "in_beta": false
           },
           {
             "title": "Motoko-written interactive Web UIs running in Wasm",
@@ -4748,8 +4427,7 @@
             "eta": "",
             "status": "",
             "is_community": true,
-            "in_beta": false,
-            "notes": "community list (Mike Adey); https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/16; building on JSInterop"
+            "in_beta": false
           },
           {
             "title": "Motoko editor support V2",
@@ -4762,8 +4440,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Luc; debugging: on-line debugging; cannot use DFX etc.; PocketIC neither; support of AI like Copilot but specifically trained/optimized for Motoko, more specific, highlight, QA (relatively simple); testing: more easily handle unit tests, integration tests, run in IDE; coverage analysis (idea, not on roadmap)"
+            "in_beta": false
           },
           {
             "title": "Motoko package manager shipped with dfx",
@@ -4776,8 +4453,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Luc; ?? details; ?? Vessel still relevant?; Luc: Mops is recommended, but there are limitations: people do usually not like installing an extra package manager; why not ship it with Motoko; idea: integrate Mops with Motoko; not clear where it is coming, more an idea; another idea: use package manager in in playground; most people use Mops, more flexible, larger number of packages, more decentralized"
+            "in_beta": false
           },
           {
             "title": "More Motoko libraries",
@@ -4790,8 +4466,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Luc; Luc: idea is to make new standard library designed with lessons learnt; selected data structures that work on IC; unified style -> Motoko standard library V2; fully reworked; use also high-quality community implementations"
+            "in_beta": false
           },
           {
             "title": "Language-interoperability support in Motoko",
@@ -4804,8 +4479,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Luc; Luc: Rust libraries with constraints (e.g., stateless) can be integrated with Motoko; e.g., crypto libraries; full integration would be hard; in .Net you can use C++ with C# (interop); integrate high-performance code; other approaches: Wasm component model: multi-lang integration with own memory management per language/component (in Wasm WG); FFI: different type models, makes it more complicated, may not have direct mapping, may need to copy"
+            "in_beta": false
           },
           {
             "title": "Support of popular languages",
@@ -4818,8 +4492,7 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false,
-            "notes": "final; reviewed by Luc"
+            "in_beta": false
           }
         ]
       }

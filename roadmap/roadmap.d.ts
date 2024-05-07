@@ -10,41 +10,54 @@ interface Milestone {
   milestone_id: string;
   eta: string;
   status?: string;
-  elements: (Element | Elements2 | Elements3 | Elements4 | Elements5 | Elements6 | Elements7 | Elements8 | Elements9 | Elements10 | Elements11)[];
-}
-
-interface Elements11 {
-  title: string;
-  overview: string;
-  description: string;
-  status: string;
-  forum: string;
-  proposal: string;
-  wiki: string;
-  docs: string;
-  is_community: boolean;
-  in_beta: boolean;
-  notes: string;
-  eta?: string;
+  elements: (Element | Elements2 | Elements3 | Elements4 | Elements5 | Elements6 | Elements7 | Elements8 | Elements9 | Elements10)[];
 }
 
 interface Elements10 {
   title: string;
   overview: string;
   description: string;
+  status: string;
   forum: string;
   proposal: string;
   wiki: string;
+  docs: string;
+  is_community: boolean;
+  in_beta: boolean;
+  milestone_id: string;
+}
+
+interface Elements9 {
+  title: string;
+  overview: string;
+  description: string;
+  forum: string;
+  proposal: string;
   docs: string;
   eta?: string;
   status: string;
   is_community: boolean;
   in_beta: boolean;
-  notes: string;
   milestone_id?: string;
+  wiki?: string;
+  imported?: boolean;
 }
 
-interface Elements9 {
+interface Elements8 {
+  title: string;
+  overview: string;
+  description: string;
+  status: string;
+  forum: string;
+  proposal: string;
+  wiki: string;
+  docs: string;
+  is_community: boolean;
+  in_beta: boolean;
+  eta?: string;
+}
+
+interface Elements7 {
   title: string;
   overview: string;
   description: string;
@@ -57,41 +70,6 @@ interface Elements9 {
   is_community?: boolean;
   in_beta?: boolean;
   milestone_id?: string;
-  notes: string;
-}
-
-interface Elements8 {
-  title: string;
-  overview: string;
-  description: string;
-  forum: string;
-  proposal: string;
-  wiki: string;
-  docs: string;
-  eta?: string;
-  status: string;
-  is_community: boolean;
-  in_beta: boolean;
-  milestone_id?: string;
-  notes: string;
-  imported?: boolean;
-}
-
-interface Elements7 {
-  title: string;
-  overview: string;
-  description: string;
-  forum: string;
-  proposal: string;
-  wiki: string;
-  docs: string;
-  eta: string;
-  status: string;
-  is_community?: boolean;
-  in_beta: boolean;
-  milestone_id?: string;
-  notes: string;
-  imported?: boolean;
 }
 
 interface Elements6 {
@@ -104,11 +82,10 @@ interface Elements6 {
   docs: string;
   eta: string;
   status: string;
-  is_community: boolean;
+  is_community?: boolean;
   in_beta: boolean;
-  milestone_id: string;
-  notes: string;
-  imported: boolean;
+  milestone_id?: string;
+  imported?: boolean;
 }
 
 interface Elements5 {
@@ -117,35 +94,16 @@ interface Elements5 {
   description: string;
   forum: string;
   proposal: string;
+  wiki: string;
   docs: string;
   eta?: string;
   status: string;
   is_community: boolean;
   in_beta: boolean;
   milestone_id?: string;
-  notes: string;
-  wiki?: string;
-  imported?: boolean;
 }
 
 interface Elements4 {
-  title: string;
-  overview: string;
-  description: string;
-  forum: string;
-  proposal: string;
-  wiki?: string;
-  docs: string;
-  eta?: string;
-  status: string;
-  is_community: boolean;
-  in_beta: boolean;
-  milestone_id?: string;
-  notes?: string;
-  imported?: boolean;
-}
-
-interface Elements3 {
   title: string;
   overview: string;
   description: string;
@@ -156,24 +114,40 @@ interface Elements3 {
   status: string;
   is_community: boolean;
   in_beta: boolean;
-  notes: string;
   imported?: boolean;
   wiki?: string;
+}
+
+interface Elements3 {
+  title: string;
+  overview: string;
+  description: string;
+  forum: string;
+  proposal: string;
+  wiki: string;
+  docs: string;
+  eta: string;
+  status: string;
+  is_community: boolean;
+  in_beta: boolean;
+  imported?: boolean;
+  milestone_id?: string;
 }
 
 interface Elements2 {
   title: string;
   overview: string;
   description: string;
-  status: string;
   forum: string;
   proposal: string;
   wiki: string;
   docs: string;
+  eta?: string;
+  status: string;
   is_community: boolean;
   in_beta: boolean;
-  milestone_id: string;
-  notes: string;
+  milestone_id?: string;
+  imported?: boolean;
 }
 
 interface Element {
@@ -188,8 +162,7 @@ interface Element {
   status: string;
   is_community: boolean;
   in_beta: boolean;
-  notes: string;
-  imported?: boolean;
-  milestone_id?: string;
+  milestone_id: string;
+  imported: boolean;
 }
 
