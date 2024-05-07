@@ -61,7 +61,7 @@ An example of this error is:
   Error from Canister xxx-xxx: Canister called `ic0.trap` with message: <Canister error message>
 ```
 
-When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](https://internetcomputer.org/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
+When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
 
 To fix this error, consider testing the canister to see if certain inputs can trigger panics.
 
