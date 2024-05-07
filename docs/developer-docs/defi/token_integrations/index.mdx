@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Developers have several options for integrating with the ICP or ICRC-1 ledgers. They can use either the ICRC Rosetta or ICP Rosetta implementations, which is commonly recommended, it might be useful for certain workflows  to directly integrate with these ledgers. This section will describe what a direct integration means, how it can be achieved, and how it differs to using Rosetta.
 
-# ICP architecture overview 
+##  Token architecture overview 
 
 The ICP network comprises a set of (communicating) blockchains that we call subnets. Each of these blockchains hosts a number of smart contracts, called canisters. Communication with the Internet Computer uses the Internet Computer Protocol. The protocol specifies how external parties can call into canisters and how to verify the results. Verification on the internet computer does not use the concept of a validator, and it does not require running a full node. Instead, output visible to the external world is digitally signed and can be verified using the master key of the internet computer. 
 
