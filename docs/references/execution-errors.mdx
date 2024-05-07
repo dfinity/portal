@@ -74,7 +74,7 @@ An example of this error is:
   Error from Canister xxx-xxx: Attempted to execute a message, but the canister contains no Wasm module.
 ```
 
-Canisters can [exist without having Wasm code installed](https://internetcomputer.org/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-uninstall_code).
+Canisters can [exist without having Wasm code installed](/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](/docs/current/references/ic-interface-spec#ic-uninstall_code).
 
 To better diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module the "Module hash" field will be non-null.
 
