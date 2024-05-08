@@ -38,7 +38,7 @@ It is possible to write a single canister that contains both the program logic a
 Since smart contracts can be written in different languages, it is important that they all agree on the binary format in which they accept their arguments and return results.
 This common format allows users and smart contracts to call other smart contracts regardless of the language they were written in.
 In traditional programming, this concept is known as [Application Binary Interface (ABI)](https://en.wikipedia.org/wiki/Application_binary_interface).
-ICP has its own ABI language called **[Candid](https://internetcomputer.org/docs/current/developer-docs/backend/candid/)**, which is similar to JSON or Protobuf, but tailored for ICP.
+ICP has its own ABI language called **[Candid](/docs/current/developer-docs/backend/candid/)**, which is similar to JSON or Protobuf, but tailored for ICP.
 
 During the build process, `dfx` uses the backend ABI to automatically generate JavaScript boilerplate code for the frontend.
 Under the hood, the boilerplate code uses a library called [agent-js](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTP requests from the browser to the backend canister.
@@ -61,19 +61,20 @@ There are several different environments that can be used to write, deploy, and 
 
 - [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod): Gitpod is an open-source cloud-based development environment that can be used to develop in the web browser without downloading tools or dependencies to your local machine. Gitpod can be used for long-term projects, as it does not use a temporary resource allocation system such as the Motoko Playground. Smart contract projects can be developed using Gitpod by spawning a new Gitpod workspace and configuring it to download and install `dfx`. [The Hello, world! Gitpod example can be used to learn more about Gitpod configuration](https://github.com/dfinity/icp-hello-world-motoko).
 
-- [GitHub Codespaces](https://github.com/codespaces): GitHub Codespaces is a proprietary cloud-based environment similar to Gitpod that can be used to develop smart contracts from within a web browser. To develop smart contracts, you can deploy a new codespace environment and download `dfx`. [The Hello, world! GitHub Codespaces example can be used to learn more about using codespaces](https://github.com/dfinity/icp-hello-world-motoko).
+- [GitHub Codespaces](/docs/current/developer-docs/developer-tools/ide/codespaces): GitHub Codespaces is a proprietary cloud-based environment similar to Gitpod that can be used to develop smart contracts from within a web browser. To develop smart contracts, you can deploy a new codespace environment and download `dfx`. [The Hello, world! GitHub Codespaces example can be used to learn more about using codespaces](https://github.com/dfinity/icp-hello-world-motoko).
 
 :::info
-### Differences between Gitpod and GitHub Codespaces
 
-Gitpod:
+**Differences between Gitpod and GitHub Codespaces**
+
+[**Gitpod**](/docs/current/developer-docs/developer-tools/ide/gitpod):
 - Open-source.
 - Choose a repository to deploy into the Gitpod. Must pick an existing repo.
 - Choose from several different IDEs to be used in the workspace (VSCode, Terminal, PyCharm, etc).
 - Supports snapshots.
 - GitLab and Bitbucket integrations.
 
-GitHub Codespaces:
+[**GitHub Codespaces**](/docs/current/developer-docs/developer-tools/ide/codespaces):
 - Proprietary GitHub software.
 - Do not need to select an existing repo to deploy into the Codespace. You can choose between several different template development environments that come with pre-installed dependencies, or choose an existing repo.
 - Cannot choose between different IDEs to be used in the Codespace.
@@ -82,7 +83,7 @@ GitHub Codespaces:
 - Does not integrate with GitLab or Bitbucket.
 :::
 
-- Using containers: Developer containers, such as [Docker containers](https://www.docker.com/), can be used for creating smart contracts and deploying them locally in a containerized environment. Containers can be useful for running several different projects simultaneously in your local environment that may be using different versions of `dfx` and different dependencies.
+- [Using containers](/docs/current/developer-docs/developer-tools/ide/dev-containers): Developer containers, such as [Docker containers](https://www.docker.com/), can be used for creating smart contracts and deploying them locally in a containerized environment. Containers can be useful for running several different projects simultaneously in your local environment that may be using different versions of `dfx` and different dependencies.
 
 - [Juno](/docs/current/developer-docs/web-apps/frameworks/juno): Juno is a blockchain-as-a-service platform that can be used to create and deploy smart contracts on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite', allowing you to deploy on-chain dapps by interacting with just the Juno web console or through the CLI.
 
@@ -115,7 +116,7 @@ There are three ways to call the functions of the backend smart contract:
    This is the standard way to interact with the smart contract that regular users would also use.
 1. Use the `dfx canister call` command and pass the input arguments as command line arguments.
    Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the smart contract.
-1. Write an off-chain program that uses an [agent library](https://internetcomputer.org/docs/current/developer-docs/agents/) to send messages to the smart contract.
+1. Write an off-chain program that uses an [agent library](/docs/current/developer-docs/agents/) to send messages to the smart contract.
 
 <div class="text--center">
   <img

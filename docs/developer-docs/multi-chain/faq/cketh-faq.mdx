@@ -16,11 +16,11 @@ For questions from the POV of a user who wishes to know how to hold, send, recei
 
 At high-level:
 
-1. ckETH complies with the [ICRC-1 ledger token standard](https://internetcomputer.org/docs/current/developer-docs/defi/overview/#icrc-1-ledgers). 
+1. ckETH complies with the [ICRC-1 ledger token standard](/docs/current/developer-docs/defi/overview/#icrc-1-ledgers).
 
-2. You can write a smart contract that works with ckETH just like you would for any other `ICRC-1`-compliant token. 
+2. You can write a smart contract that works with ckETH just like you would for any other `ICRC-1`-compliant token.
 
-3. You can find all the ICRC-1 ledger endpoints [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). 
+3. You can find all the ICRC-1 ledger endpoints [here](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
 4. Requests for balances and transfers must be sent to the ckETH ledger, which has the canister ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
 
@@ -64,7 +64,7 @@ Sources:
 - [How to Acquire ckETH](https://medium.com/dfinity/how-to-acquire-ckETH-02d863c835fc#e10f)
 - [Ethereum + ICP > Multi-chain DeFi](https://internetcomputer.org/ethereum-integration)
 
-## What are the benefits of using ckETH over traditional Ethereum transactions? 
+## What are the benefits of using ckETH over traditional Ethereum transactions?
 
 The benefits of using ckETH over traditional Ethereum transactions primarily revolve around transaction speed, cost, and interoperability with the ICP ecosystem.
 
@@ -84,7 +84,7 @@ Sources:
 - [Internet Computer for Ethereum Developers](https://wiki.internetcomputer.org/wiki/The_Internet_Computer_for_Ethereum_Developers#A_very_brief_introduction_to_the_Internet_Computer)
 - [Extend Bitcoin, Ethereum and other blockchains](https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains#firstHeading)
 
-## Why should I choose ckETH for my application or service? 
+## Why should I choose ckETH for my application or service?
 
 Choosing ckETH for your application or service can provide several benefits:
 
@@ -146,13 +146,13 @@ This answer is a work in progress. Please check back later for an updated respon
 
 ckETH ensures the security of the funds it handles in several ways:
 
-1. **No need for bridges**: ckETH uses a feature called HTTPS outcalls that enables ICP canister smart contracts to call API requests directly. This bypasses attack vectors by directly calling Ethereum RPCs, eliminating the need for potentially insecure bridges. 
+1. **No need for bridges**: ckETH uses a feature called HTTPS outcalls that enables ICP canister smart contracts to call API requests directly. This bypasses attack vectors by directly calling Ethereum RPCs, eliminating the need for potentially insecure bridges.
 
 2. **Managing an Ethereum wallet directly in an ICP canister**: ICP canister smart contracts can create and manage an Ethereum wallet address using threshold ECDSA. This means that the ICP ckETH minter canister smart contract can generate an address that holds ETH and signs transactions, adding an extra layer of security.
 
-3. **NNS DAO governance**: The development of ckETH includes measures to guarantee long-term maintenance and provide more security to ETH through NNS DAO governance. This ensures that the management and development of ckETH are in the hands of a decentralized community, reducing the risk of malicious actions by a single party. 
+3. **NNS DAO governance**: The development of ckETH includes measures to guarantee long-term maintenance and provide more security to ETH through NNS DAO governance. This ensures that the management and development of ckETH are in the hands of a decentralized community, reducing the risk of malicious actions by a single party.
 
-4. **Chain-key signatures**: ICP has the ability to sign native transactions on other blockchains without using risky bridges. This feature is used in the operation of ckETH, further enhancing its security. 
+4. **Chain-key signatures**: ICP has the ability to sign native transactions on other blockchains without using risky bridges. This feature is used in the operation of ckETH, further enhancing its security.
 
 Remember, while these features enhance the security of ckETH, it's always important to exercise caution and good security practices when dealing with cryptocurrencies.
 
@@ -187,7 +187,7 @@ Please note that the ICP ETH integration is still in development, and more funct
 **Additional reading**
 
 - [A data driven exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978).
-- [Developer Journey: 5.2: ICP ETH tutorial](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview).
+- [Developer Journey: 5.2: ICP ETH tutorial](/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview).
 - [ICP Ethereum integration explained](https://medium.com/dfinity/internet-computer-ethereum-integration-explained-6967456e35f9#58f6).
 
 ## What are the transaction fees associated with ckETH?
@@ -204,9 +204,9 @@ ICP is capable of processing up to over 30 thousand transactions per second (as 
 
 ## Who controls the development and governance of ckETH?
 
-Like many ICP canisters, the 
+Like many ICP canisters, the
 
-The development and governance of ckETH, the digital twin of ETH on the Internet Computer (ICP), is managed by the ICP ecosystem. 
+The development and governance of ckETH, the digital twin of ETH on the Internet Computer (ICP), is managed by the ICP ecosystem.
 
 Software updates to the ckETH canisters are voted on by the NNS DAO.
 
@@ -221,7 +221,7 @@ This answer is a work in progress. Please check back later for an updated respon
 
 # What is the current state of ckETH project?
 
-ckETH is live on the Internet Computer mainnet. It has been added to the ICP dashboard. However, with the current ckETH integration, you cannot withdraw to ETH directly from the ICRC-1 wallet. 
+ckETH is live on the Internet Computer mainnet. It has been added to the ICP dashboard. However, with the current ckETH integration, you cannot withdraw to ETH directly from the ICRC-1 wallet.
 
 The integration is being carried out in phases. Phase 0, which enables chain-key signing and HTTPS outcalls, is already complete. Phase 1 is being built to allow ETH API calls by accessing Web-2 based API providers through HTTPS outcalls. This phase also includes designing and building ckETH and ckERC-20 tokens. The final phase, Phase 2, will revolve around native ETH integration.
 

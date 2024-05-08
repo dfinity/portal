@@ -298,8 +298,12 @@ const RoadmapPage: React.FC = () => {
       description="This roadmap shows the status of many projects across the Internet Computer stack, but not all - more to come over the next few weeks."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
+<<<<<<< HEAD
       <style>{css}</style>
       <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
+=======
+      <ShareMeta image="/img/shareImages/share-roadmap.webp"></ShareMeta>
+>>>>>>> master
 
       <main className={"w-full overflow-hidden bg-[#0a0023] text-white"}>
         <section className="relative pb-[50vw] md:pb-10">
