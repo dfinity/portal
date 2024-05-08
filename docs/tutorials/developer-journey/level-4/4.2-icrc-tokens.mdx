@@ -177,7 +177,7 @@ Open the `dfx.json` file in the project's directory and replace the existing con
     "icrc1_ledger_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz"
     }
   },
   "defaults": {
@@ -195,7 +195,7 @@ Next, you'll use the `minter` identity you created in the last module, [4.1 Usin
 
 ```bash
 dfx identity use minter
-export MINTER_ACCOUNT_ID=$(dfx ledger account-id)
+export MINTER_ACCOUNT_ID=$(dfx identity get-wallet)
 ```
 
 The environment variable `MINTER_ACCOUNT_ID` is the principal ID responsible for minting and burning tokens.
@@ -267,7 +267,7 @@ dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --ar
 record {
      token_symbol = \"${TOKEN_SYMBOL}\";
      token_name = \"${TOKEN_NAME}\";
-     minting_account = record { owner = principal \"${MINTER}\" };
+     minting_account = record { owner = principal \"${MINTER_ACCOUNT_ID}\" };
      transfer_fee = ${TRANSFER_FEE};
      metadata = vec {};
      feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
